@@ -1,0 +1,3 @@
+# Recommended Folder Structure
+
+kyron/ ├── app/ # Flutter client │ ├── lib/ │ │ ├── core/ # DI, constants │ │ ├── features/ # feed, camera, auth │ │ └── l10n/ # arb files │ ├── test/ │ └── pubspec.yaml ├── api/ # NestJS services │ ├── src/ │ │ ├── gateway/ │ │ ├── feed/ │ │ ├── media/ │ │ └── identity/ │ ├── test/ │ └── package.json ├── media/ # GStreamer & Rust micro-services ├── identity/ # AT-Protocol node ├── infra/ # Docker, k8s, Terraform ├── docs/ # Diagrams, investor one-pager ├── scripts/ # Seed, migrate, helper cli └── tests/ # E2E Playwright / flutter_driver
