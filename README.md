@@ -65,7 +65,7 @@ cd app && flutter pub get && flutter run -d chrome   # web client
   └────DID+repo────────┘
 ```
 
-Full diagram → [ARCHITECTURE.md](docs/ARCHITECTURE.md)
+Full diagram → [ARCHITECTURE.md](ARCHITECTURE.md)
 
 ---
 
