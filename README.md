@@ -40,7 +40,7 @@ Social graphs are **locked gardens**. Kyron gives every user a **cryptographic p
 - Docker Desktop
 
 ```bash
-git clone https://github.com/kyronso/kyron.git && cd kyron
+git clone https://github.com/KyronLabs/kyron.git && cd kyron
 docker compose up -d                # Postgres · Redis · Pinecone-mock
 cd api && pnpm i && pnpm dev        # backend  → http://localhost:3000
 cd app && flutter pub get && flutter run -d chrome   # web client
