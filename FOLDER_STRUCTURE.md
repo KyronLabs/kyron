@@ -1,6 +1,6 @@
 # Kyron Repository Folder Structure
 
-
+'''
 kyron/                          # repository root
 │
 ├── app/                        # Flutter cross-platform client
@@ -48,3 +48,5 @@ kyron/                          # repository root
 └── tests/                      # cross-service e2e tests
 ├── playwright/             # web e2e specs
 └── postman_collections/    # API smoke tests
+
+'''
