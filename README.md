@@ -1,8 +1,8 @@
 # Kyron — The User-Owned Social Stack
 
-[![CI](https://github.com/kyronso/kyron/actions/workflows/ci.yml/badge.svg)](https://github.com/kyronso/kyron/actions)
+[![CI](https://github.com/KyronLabs/kyron/actions/workflows/ci.yml/badge.svg)](https://github.com/KyronLabs/kyron/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Stars](https://img.shields.io/github/stars/kyronso/kyron?style=social)](https://github.com/kyronso/kyron)
+[![Stars](https://img.shields.io/github/stars/KyronLabs/kyron?style=social)](https://github.com/kyronso/kyron)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 > One code-base → iOS · Android · Web.  
@@ -78,13 +78,13 @@ Full diagram → [ARCHITECTURE.md](docs/ARCHITECTURE.md)
 | Public Launch | 12 m | 250 k MAU, CF-positive |
 | Federation v2 | 18 m | 50 self-hosted nodes |
 
-Detailed issues → [Projects board](https://github.com/kyronso/kyron/projects)
+Detailed issues → [Projects board](https://github.com/KyronLabs/kyron/projects)
 
 ---
 
 ## Contributing = Equity
 We use **Contributor Equity Agreements**: every merged PR earns you **Kyron Points** convertible to future token warrants.  
-Start with [`good first issue`](https://github.com/kyronso/kyron/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) → ship → get paid in upside, not stickers.
+Start with [`good first issue`](https://github.com/KyronLabs/kyron/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) → ship → get paid in upside, not stickers.
 
 ---
 
