@@ -1,7 +1,5 @@
-```markdown
 # Kyron Repository Folder Structure
 
-```
 
 kyron/                          # repository root
 │
