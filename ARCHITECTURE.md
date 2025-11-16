@@ -24,19 +24,20 @@ Kyron uses a micro-service pattern with a GraphQL/WS gateway and AT-Protocol for
 
 ## Diagram
 (Place `docs/architecture.png` here or use ASCII below)
-
+```
 ┌─Flutter(iOS/Android/Web)──┐
 │  AR+Camera │  GraphQL/WS  │
 └─────▲───────────▲─────────┘
-      │           │
+       │             │
 ┌─────┴───────────┴─────────┐
-│  NestJS Gateway           │
+│       NestJS Gateway           │
 └─────▲─────────▲───────────┘
       │gRPC      │GraphQL
 ┌─────┴────┐ ┌────┴──────────┐
-│Feed Svc  │ │Media Svc      │
+│Feed Svc    │ │  Media Svc      │
 └────▲─────┘ └────▲──────────┘
-     │Redis       │S3
+      │Redis         │S3
 ┌────┴────────────┴────────┐
-│  Postgres  │  Pinecone  │
+│  Postgres  │  Pinecone       │
 └──────────────────────────┘
+```
