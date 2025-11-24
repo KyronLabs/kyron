@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: kyron_postgres
+    environment:
+      POSTGRES_USER: kyron
+      POSTGRES_PASSWORD: kyronpass
+      POSTGRES_DB: kyron_db
+    ports:
+      - "5433:5432"  # Host 5433 → Container 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kyron -d kyron_db -h 127.0.0.1 -p 5432"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+  redis:
+    image: redis:7
+    container_name: kyron_redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
