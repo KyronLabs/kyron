@@ -1,0 +1,14 @@
+name: Feature Request
+description: Suggest an idea
+title: "[feat]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User story
+      placeholder: As a ..., I want ... so that ...
+  - type: textarea
+    id: value
+    attributes:
+      label: Why is this important?
