@@ -10,6 +10,8 @@
     "start": "node dist/main.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev --name init --skip-seed",
+    "prisma:deploy": "prisma migrate deploy",
+    "prisma:studio": "prisma studio",
     "prisma:seed": "ts-node prisma/seed.ts",
     "start:dev": "ts-node-dev --respawn --transpile-only src/main.ts",
     "start:prod": "node dist/main.js"

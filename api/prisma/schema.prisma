@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -8,67 +7,162 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id               String              @id @default(uuid())
-  email            String              @unique
-  password         String
-  name             String?
-  role             UserRole            @default(USER)
-  createdAt        DateTime            @default(now())
-  updatedAt        DateTime            @updatedAt
-
-  emailVerifiedAt  DateTime?
-  emailVerification EmailVerification?
-  refreshTokens    RefreshToken[]
-  passwordReset    PasswordReset?
-}
-
+// Enums
 enum UserRole {
   USER
   ADMIN
+  MODERATOR
 }
 
-model SystemModule {
-  id      String @id @default(uuid())
-  key     String @unique
-  name    String
-  enabled Boolean @default(false)
+enum EmailStatus {
+  PENDING
+  VERIFIED
+  BOUNCED
 }
 
-model AppSetting {
-  id    String @id @default(uuid())
-  key   String @unique
-  value String
+enum AccountStatus {
+  ACTIVE
+  SUSPENDED
+  DELETED
 }
 
+// Main User model
+model User {
+  id                  String              @id @default(uuid())
+  email               String              @unique
+  username            String?             @unique
+  password            String
+  name                String?
+  role                UserRole            @default(USER)
+  status              AccountStatus       @default(ACTIVE)
+  
+  // Email verification
+  emailStatus         EmailStatus         @default(PENDING)
+  emailVerifiedAt     DateTime?
+  
+  // Security
+  failedLoginAttempts Int                 @default(0)
+  lockedUntil         DateTime?
+  lastLoginAt         DateTime?
+  
+  // Timestamps
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  deletedAt           DateTime?
+
+  // Relations
+  emailVerification   EmailVerification?
+  refreshTokens       RefreshToken[]
+  passwordResets      PasswordReset[]
+  sessions            UserSession[]
+  profile             UserProfile?
+
+  @@index([email, status])
+  @@index([username])
+  auditLogs AuditLog[]
+}
+
+// Separate profile for extensibility
+model UserProfile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  avatarUrl   String?
+  bio         String?
+  location    String?
+  website     String?
+  dateOfBirth DateTime?
+  
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Email Verification
 model EmailVerification {
   id        String   @id @default(uuid())
   userId    String   @unique
   code      String
   expiresAt DateTime
   createdAt DateTime @default(now())
+  attempts  Int      @default(0)
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+// Session tracking
+model UserSession {
+  id            String   @id @default(uuid())
+  userId        String
+  token         String   @unique
+  ipAddress     String?
+  userAgent     String?
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime
+  lastActivity  DateTime @default(now())
+  
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, expiresAt])
+}
+
+// Refresh Tokens
 model RefreshToken {
   id        String   @id @default(uuid())
   token     String   @unique
   userId    String
   expiresAt DateTime
   createdAt DateTime @default(now())
+  sessionId String?
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
+  @@index([userId, expiresAt])
 }
 
+// Password Resets
 model PasswordReset {
   id        String   @id @default(uuid())
   userId    String   @unique
   token     String   @unique
   expiresAt DateTime
   createdAt DateTime @default(now())
+  usedAt    DateTime?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Audit log
+model AuditLog {
+  id          String   @id @default(uuid())
+  userId      String?
+  action      String
+  ipAddress   String?
+  userAgent   String?
+  details     Json?
+  createdAt   DateTime @default(now())
+  
+  user        User?    @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
+  @@index([action])
+}
+
+// System modules
+model SystemModule {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  name        String
+  description String?
+  enabled     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// App settings
+model AppSetting {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
+  type        String   @default("string")
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
