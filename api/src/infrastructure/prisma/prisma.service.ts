@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/await-thenable */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+
 import {
   Injectable,
   OnModuleInit,
@@ -13,25 +14,16 @@ export class PrismaService
   implements OnModuleInit, OnModuleDestroy
 {
   private readonly logger = new Logger(PrismaService.name);
-  emailVerification: any;
-  refreshToken: any;
-  passwordReset: any;
 
-  async onModuleInit() {
+  async onModuleInit(): Promise<void> {
     this.logger.log('Connecting to Postgres via Prisma...');
     await this.$connect();
     this.logger.log('Prisma connected.');
   }
-  $connect() {
-    throw new Error('Method not implemented.');
-  }
 
-  async onModuleDestroy() {
+  async onModuleDestroy(): Promise<void> {
     this.logger.log('Disconnecting Prisma...');
     await this.$disconnect();
     this.logger.log('Prisma disconnected.');
-  }
-  $disconnect() {
-    throw new Error('Method not implemented.');
   }
 }
