@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Injectable, Logger } from '@nestjs/common';
-import * as sgMail from '@sendgrid/mail';
+import sgMail = require('@sendgrid/mail');
 
 @Injectable()
 export class EmailService {
