@@ -1,20 +1,22 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Injectable, Logger } from '@nestjs/common';
-import sgMail = require('@sendgrid/mail');
+import sgMail from '@sendgrid/mail';
 
 @Injectable()
 export class EmailService {
   private readonly logger = new Logger(EmailService.name);
 
   constructor() {
-    if (!process.env.SENDGRID_API_KEY) {
-      this.logger.error('SENDGRID_API_KEY not set in environment');
-    } else {
-      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const apiKey = process.env.SENDGRID_API_KEY;
+
+    if (!apiKey) {
+      this.logger.error(
+        'SENDGRID_API_KEY is missing in environment variables.',
+      );
+      return;
     }
+
+    sgMail.setApiKey(apiKey);
+    this.logger.log('SendGrid initialized successfully.');
   }
 
   // ---------------------------
@@ -38,7 +40,7 @@ export class EmailService {
       this.logger.log(`Verification email sent to ${email}`);
     } catch (err) {
       this.logger.error(`SendGrid error sending verify code`, err);
-      throw err;
+      throw new Error('Failed to send verification email');
     }
   }
 
@@ -76,7 +78,7 @@ export class EmailService {
       this.logger.log(`Password reset email sent to ${email}`);
     } catch (err) {
       this.logger.error(`SendGrid error sending password reset`, err);
-      throw err;
+      throw new Error('Failed to send password reset email');
     }
   }
 }

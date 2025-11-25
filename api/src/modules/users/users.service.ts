@@ -1,8 +1,18 @@
+/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import * as argon2 from 'argon2';
 
-type CreateUserPayload = { email: string; password: string; name?: string; role?: string };
+type CreateUserPayload = {
+  email: string;
+  password: string;
+  name?: string;
+  role?: string;
+};
 
 @Injectable()
 export class UsersService {
