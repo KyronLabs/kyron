@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var PrismaService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PrismaService = void 0;
+/* eslint-disable @typescript-eslint/await-thenable */
 const common_1 = require("@nestjs/common");
 const client_1 = require("@prisma/client");
 let PrismaService = PrismaService_1 = class PrismaService extends client_1.PrismaClient {
@@ -20,10 +21,16 @@ let PrismaService = PrismaService_1 = class PrismaService extends client_1.Prism
         await this.$connect();
         this.logger.log('Prisma connected.');
     }
+    $connect() {
+        throw new Error('Method not implemented.');
+    }
     async onModuleDestroy() {
         this.logger.log('Disconnecting Prisma...');
         await this.$disconnect();
         this.logger.log('Prisma disconnected.');
+    }
+    $disconnect() {
+        throw new Error('Method not implemented.');
     }
 };
 exports.PrismaService = PrismaService;

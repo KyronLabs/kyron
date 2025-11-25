@@ -8,29 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
-const jwt_1 = require("@nestjs/jwt");
 const auth_service_1 = require("./auth.service");
-const jwt_strategy_1 = require("./jwt.strategy");
-const config_1 = require("@nestjs/config");
-const users_module_1 = require("../users/users.module");
 const auth_controller_1 = require("./auth.controller");
+const email_service_1 = require("../../infrastructure/email/email.service");
+const users_module_1 = require("../users/users.module");
+const prisma_service_1 = require("../../infrastructure/prisma/prisma.service");
+const jwt_1 = require("@nestjs/jwt");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            jwt_1.JwtModule.registerAsync({
-                useFactory: (config) => ({
-                    secret: config.get('jwt.secret'),
-                    signOptions: { expiresIn: config.get('jwt.expiresIn') },
-                }),
-                inject: [config_1.ConfigService],
+            jwt_1.JwtModule.register({
+                secret: process.env.JWT_SECRET,
+                signOptions: { expiresIn: `${process.env.JWT_EXPIRES_SECONDS || 900}s` },
             }),
             users_module_1.UsersModule,
         ],
-        providers: [auth_service_1.AuthService, jwt_strategy_1.JwtStrategy],
         controllers: [auth_controller_1.AuthController],
+        providers: [auth_service_1.AuthService, email_service_1.EmailService, prisma_service_1.PrismaService],
         exports: [auth_service_1.AuthService],
     })
 ], AuthModule);
