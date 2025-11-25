@@ -1,13 +1,8 @@
-import { IsBoolean } from 'class-validator';
-
-import { IsEmail } from 'class-validator';
-
-import { IsOptional } from 'class-validator';
-
-import { IsString } from 'class-validator';
+import { IsBoolean, IsEmail, IsOptional, IsString } from 'class-validator';
 
 export class RegisterDto {
   @IsString()
+  @IsOptional()
   username?: string;
 
   @IsEmail()

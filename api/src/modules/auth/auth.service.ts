@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
@@ -90,7 +91,7 @@ export class AuthService {
         data: {
           email,
           password: hashed,
-          username,
+          username: username || null,
           role: UserRole.USER,
           status: AccountStatus.ACTIVE,
           emailStatus: EmailStatus.PENDING,
@@ -111,9 +112,10 @@ export class AuthService {
 
       this.logger.log(`User registered: ${user.id}`);
 
+      // IMPORTANT: return a stable key called `userId` so clients can rely on it
       return {
         message: 'Verification email sent',
-        tempUserId: user.id,
+        userId: user.id,
         email: user.email,
       };
     } catch (error) {
