@@ -1,24 +1,22 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
-import { JwtStrategy } from './jwt.strategy';
-import { ConfigService } from '@nestjs/config';
-import { UsersModule } from '../users/users.module';
 import { AuthController } from './auth.controller';
+import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { EmailService } from '../../infrastructure/email/email.service';
+import { UsersModule } from '../users/users.module';
 
 @Module({
   imports: [
-    JwtModule.registerAsync({
-      useFactory: (config: ConfigService) => ({
-        secret: config.get('jwt.secret'),
-        signOptions: { expiresIn: config.get('jwt.expiresIn') },
-      }),
-      inject: [ConfigService],
-    }),
     UsersModule,
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: Number(process.env.JWT_EXPIRES_SECONDS || 900) },
+    }),
   ],
-  providers: [AuthService, JwtStrategy],
   controllers: [AuthController],
+  providers: [AuthService, PrismaService, EmailService],
   exports: [AuthService],
 })
 export class AuthModule {}
