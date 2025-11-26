@@ -3,7 +3,6 @@
     "module": "commonjs",
     "target": "ES2021",
     "lib": ["es2021"],
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "strict": true,
