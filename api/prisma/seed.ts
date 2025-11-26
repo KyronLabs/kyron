@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
@@ -6,65 +9,63 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🚀 Seeding Kyron initial data...');
 
-  // Give DB a moment to settle (even after healthcheck)
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
   // ------------------------------------------
-  // 1. Create admin user
+  // 1. ADMIN ACCOUNT
   // ------------------------------------------
+
   const adminEmail = 'admin@kyron.app';
-  try {
-    const existingAdmin = await prisma.user.findUnique({
-      where: { email: adminEmail },
+
+  const existingAdmin = await prisma.user.findUnique({
+    where: { email: adminEmail },
+  });
+
+  if (!existingAdmin) {
+    const hashed = await bcrypt.hash('Admin123!', 10);
+
+    await prisma.user.create({
+      data: {
+        email: adminEmail,
+        password: hashed,
+        role: 'ADMIN',
+        name: 'Kyron Administrator',
+        emailStatus: 'VERIFIED',
+      },
     });
 
-    if (!existingAdmin) {
-      const hashedPassword = await bcrypt.hash('Admin123!', 10);
-      await prisma.user.create({
-        data: {
-          email: adminEmail,
-          password: hashedPassword,
-          name: 'Kyron Administrator',
-          role: 'ADMIN',
-        },
-      });
-      console.log('✔ Admin user created');
-    } else {
-      console.log('✔ Admin user already exists');
-    }
-  } catch (error) {
-    console.error('❌ Error with admin user:', error);
-    throw error;
+    console.log('✔ Admin user created');
+  } else {
+    console.log('✔ Admin user already exists');
   }
 
   // ------------------------------------------
-  // 2. Create baseline system modules
+  // 2. SYSTEM MODULES
   // ------------------------------------------
+
   const modules = [
-    { key: 'AUTH', name: 'Authentication Module', enabled: true },
+    { key: 'AUTH', name: 'Authentication', enabled: true },
     { key: 'USER_MANAGEMENT', name: 'User Management', enabled: true },
-    { key: 'NOTIFICATIONS', name: 'Notifications Module', enabled: false },
+    { key: 'NOTIFICATIONS', name: 'Notifications', enabled: false },
     { key: 'ANALYTICS', name: 'Analytics Suite', enabled: false },
-    { key: 'PAYMENTS', name: 'Payment Processing', enabled: false },
-    { key: 'MESSAGING', name: 'Messaging Module', enabled: false },
+    { key: 'PAYMENTS', name: 'Payments', enabled: false },
+    { key: 'MESSAGING', name: 'Messaging System', enabled: false },
   ];
 
   for (const mod of modules) {
-    const exists = await prisma.systemModule.findUnique({
+    await prisma.systemModule.upsert({
       where: { key: mod.key },
+      update: {},
+      create: mod,
     });
-
-    if (!exists) {
-      await prisma.systemModule.create({ data: mod });
-      console.log(`✔ Module created: ${mod.key}`);
-    } else {
-      console.log(`✔ Module exists: ${mod.key}`);
-    }
   }
 
+  console.log('✔ System modules synced');
+
   // ------------------------------------------
-  // 3. Create future-proof app settings
+  // 3. GLOBAL APP SETTINGS
   // ------------------------------------------
+
   const settings = [
     { key: 'APP_NAME', value: 'Kyron' },
     { key: 'APP_STATUS', value: 'OPERATIONAL' },
@@ -72,25 +73,54 @@ async function main() {
     { key: 'MAINTENANCE_MODE', value: 'false' },
   ];
 
-  for (const setting of settings) {
-    const exists = await prisma.appSetting.findUnique({
-      where: { key: setting.key },
+  for (const s of settings) {
+    await prisma.appSetting.upsert({
+      where: { key: s.key },
+      update: {},
+      create: s,
     });
-
-    if (!exists) {
-      await prisma.appSetting.create({ data: setting });
-      console.log(`✔ Setting created: ${setting.key}`);
-    } else {
-      console.log(`✔ Setting exists: ${setting.key}`);
-    }
   }
 
-  console.log('🎉 Kyron seed complete!');
+  console.log('✔ App settings synced');
+
+  // ------------------------------------------
+  // 4. INTEREST SEED
+  // ------------------------------------------
+
+  const interests = [
+    { slug: 'tech', name: 'Technology' },
+    { slug: 'music', name: 'Music' },
+    { slug: 'sports', name: 'Sports' },
+    { slug: 'gaming', name: 'Gaming' },
+    { slug: 'movies', name: 'Movies & TV' },
+    { slug: 'business', name: 'Business' },
+    { slug: 'finance', name: 'Finance' },
+    { slug: 'science', name: 'Science' },
+    { slug: 'ai', name: 'Artificial Intelligence' },
+    { slug: 'crypto', name: 'Crypto & Web3' },
+    { slug: 'art', name: 'Art & Design' },
+    { slug: 'fashion', name: 'Fashion & Style' },
+    { slug: 'food', name: 'Food & Cooking' },
+    { slug: 'travel', name: 'Travel' },
+    { slug: 'health', name: 'Health & Fitness' },
+  ];
+
+  for (const item of interests) {
+    await prisma.interest.upsert({
+      where: { slug: item.slug },
+      update: {},
+      create: item,
+    });
+  }
+
+  console.log('✔ Interests seeded');
+
+  console.log('🎉 Kyron initial seed complete!');
 }
 
 main()
-  .catch((e) => {
-    console.error('❌ Seed failed:', e);
+  .catch((err) => {
+    console.error('❌ Seed error:', err);
     process.exit(1);
   })
   .finally(async () => {

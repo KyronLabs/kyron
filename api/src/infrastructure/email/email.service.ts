@@ -25,7 +25,7 @@ export class EmailService {
   async sendVerifyCode(email: string, code: string) {
     const msg = {
       to: email,
-      from: process.env.EMAIL_FROM || 'noreply@kyron.spidroid.com',
+      from: process.env.EMAIL_FROM || 'Kyron',
       subject: 'Verify your Kyron account',
       html: `
         <h2>Your Verification Code</h2>

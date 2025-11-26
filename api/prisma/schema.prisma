@@ -1,3 +1,6 @@
+// ==========================================
+// 1.  GENERATOR & DATASOURCE
+// ==========================================
 generator client {
   provider = "prisma-client-js"
 }
@@ -5,9 +8,13 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  // optional: map to native UUID type and keep created_at columns immutable
+  // extensions = [uuidOssp]
 }
 
-// Enums
+// ==========================================
+// 2.  ENUMS
+// ==========================================
 enum UserRole {
   USER
   ADMIN
@@ -26,143 +33,210 @@ enum AccountStatus {
   DELETED
 }
 
-// Main User model
+// ==========================================
+// 3.  CORE USER
+// ==========================================
 model User {
-  id                  String              @id @default(uuid())
-  email               String              @unique
-  username            String?             @unique
+  id                  String          @id @default(uuid()) @db.Uuid
+  email               String          @unique
+  username            String?         @unique
   password            String
   name                String?
-  role                UserRole            @default(USER)
-  status              AccountStatus       @default(ACTIVE)
-  
+  role                UserRole        @default(USER)
+  status              AccountStatus   @default(ACTIVE)
+
   // Email verification
-  emailStatus         EmailStatus         @default(PENDING)
+  emailStatus         EmailStatus     @default(PENDING)
   emailVerifiedAt     DateTime?
-  
+
   // Security
-  failedLoginAttempts Int                 @default(0)
+  failedLoginAttempts Int             @default(0)
   lockedUntil         DateTime?
   lastLoginAt         DateTime?
-  
+
   // Timestamps
-  createdAt           DateTime            @default(now())
-  updatedAt           DateTime            @updatedAt
-  deletedAt           DateTime?
+  createdAt           DateTime        @default(now()) @db.Timestamptz()
+  updatedAt           DateTime        @updatedAt @db.Timestamptz()
+  deletedAt           DateTime?       @db.Timestamptz()
 
   // Relations
+  profile             UserProfile?
   emailVerification   EmailVerification?
+  sessions            UserSession[]
   refreshTokens       RefreshToken[]
   passwordResets      PasswordReset[]
-  sessions            UserSession[]
-  profile             UserProfile?
+  auditLogs           AuditLog[]
+  interests           UserInterest[]
+  followers           Follow[]        @relation("follower")
+  following           Follow[]        @relation("following")
 
-  @@index([email, status])
+  @@index([email])
+  @@index([status])
   @@index([username])
-  auditLogs AuditLog[]
 }
 
-// Separate profile for extensibility
+// ==========================================
+// 4.  USER PROFILE
+// ==========================================
 model UserProfile {
-  id          String   @id @default(uuid())
-  userId      String   @unique
+  id          String    @id @default(uuid()) @db.Uuid
+  userId      String    @unique @db.Uuid
   avatarUrl   String?
+  coverUrl    String?   // NEW
   bio         String?
   location    String?
   website     String?
-  dateOfBirth DateTime?
-  
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dateOfBirth DateTime? @db.Date
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([userId])
 }
 
-// Email Verification
+// ==========================================
+// 5.  EMAIL VERIFICATION
+// ==========================================
 model EmailVerification {
-  id        String   @id @default(uuid())
-  userId    String   @unique
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @unique @db.Uuid
   code      String
-  expiresAt DateTime
-  createdAt DateTime @default(now())
+  expiresAt DateTime @db.Timestamptz()
+  createdAt DateTime @default(now()) @db.Timestamptz()
   attempts  Int      @default(0)
 
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
-// Session tracking
+// ==========================================
+// 6.  SESSIONS
+// ==========================================
 model UserSession {
-  id            String   @id @default(uuid())
-  userId        String
-  token         String   @unique
-  ipAddress     String?
-  userAgent     String?
-  createdAt     DateTime @default(now())
-  expiresAt     DateTime
-  lastActivity  DateTime @default(now())
-  
-  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String    @id @default(uuid()) @db.Uuid
+  userId       String    @db.Uuid
+  token        String    @unique
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime  @default(now()) @db.Timestamptz()
+  expiresAt    DateTime  @db.Timestamptz()
+  lastActivity DateTime  @default(now()) @db.Timestamptz()
+
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([userId, expiresAt])
 }
 
-// Refresh Tokens
+// ==========================================
+// 7.  REFRESH TOKENS
+// ==========================================
 model RefreshToken {
-  id        String   @id @default(uuid())
+  id        String   @id @default(uuid()) @db.Uuid
   token     String   @unique
-  userId    String
-  expiresAt DateTime
-  createdAt DateTime @default(now())
+  userId    String   @db.Uuid
+  expiresAt DateTime @db.Timestamptz()
+  createdAt DateTime @default(now()) @db.Timestamptz()
   sessionId String?
-  
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([userId, expiresAt])
 }
 
-// Password Resets
+// ==========================================
+// 8.  PASSWORD RESETS
+// ==========================================
 model PasswordReset {
-  id        String   @id @default(uuid())
-  userId    String   @unique
-  token     String   @unique
-  expiresAt DateTime
-  createdAt DateTime @default(now())
-  usedAt    DateTime?
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @unique @db.Uuid
+  token     String    @unique
+  expiresAt DateTime  @db.Timestamptz()
+  createdAt DateTime  @default(now()) @db.Timestamptz()
+  usedAt    DateTime? @db.Timestamptz()
 
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
-// Audit log
+// ==========================================
+// 9.  AUDIT LOG
+// ==========================================
 model AuditLog {
-  id          String   @id @default(uuid())
-  userId      String?
-  action      String
-  ipAddress   String?
-  userAgent   String?
-  details     Json?
-  createdAt   DateTime @default(now())
-  
-  user        User?    @relation(fields: [userId], references: [id])
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String?   @db.Uuid
+  action    String
+  ipAddress String?
+  userAgent String?
+  details   Json?
+  createdAt DateTime  @default(now()) @db.Timestamptz()
+
+  user      User?     @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
   @@index([userId, createdAt])
   @@index([action])
 }
 
-// System modules
+// ==========================================
+// 10.  INTERESTS
+// ==========================================
+model Interest {
+  id    String         @id @default(uuid()) @db.Uuid
+  slug  String         @unique
+  name  String
+  users UserInterest[]
+
+  @@index([slug])
+}
+
+model UserInterest {
+  id         String    @id @default(uuid()) @db.Uuid
+  userId     String    @db.Uuid
+  interestId String    @db.Uuid
+
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  interest   Interest  @relation(fields: [interestId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([userId, interestId])
+  @@index([userId])
+  @@index([interestId])
+}
+
+// ==========================================
+// 11.  FOLLOW (future-proof)
+// ==========================================
+model Follow {
+  id          String   @id @default(uuid()) @db.Uuid
+  followerId  String   @db.Uuid
+  followingId String   @db.Uuid
+  createdAt   DateTime @default(now()) @db.Timestamptz()
+
+  follower    User     @relation("follower", fields: [followerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  following   User     @relation("following", fields: [followingId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([followerId, followingId])
+  @@index([followerId])
+  @@index([followingId])
+}
+
+// ==========================================
+// 12.  SYSTEM MODULES
+// ==========================================
 model SystemModule {
-  id          String   @id @default(uuid())
+  id          String   @id @default(uuid()) @db.Uuid
   key         String   @unique
   name        String
   description String?
   enabled     Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now()) @db.Timestamptz()
+  updatedAt   DateTime @updatedAt @db.Timestamptz()
 }
 
-// App settings
+// ==========================================
+// 13.  APP SETTINGS
+// ==========================================
 model AppSetting {
-  id          String   @id @default(uuid())
+  id          String   @id @default(uuid()) @db.Uuid
   key         String   @unique
   value       String
   type        String   @default("string")
   description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now()) @db.Timestamptz()
+  updatedAt   DateTime @updatedAt @db.Timestamptz()
 }
