@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import sgMail from '@sendgrid/mail';
+import * as sgMail from '@sendgrid/mail';
 
 @Injectable()
 export class EmailService {
@@ -19,13 +19,10 @@ export class EmailService {
     this.logger.log('SendGrid initialized successfully.');
   }
 
-  // ---------------------------
-  // Send Verification Code
-  // ---------------------------
   async sendVerifyCode(email: string, code: string) {
     const msg = {
       to: email,
-      from: process.env.EMAIL_FROM || 'Kyron',
+      from: process.env.EMAIL_FROM || 'noreply@kyron.app',
       subject: 'Verify your Kyron account',
       html: `
         <h2>Your Verification Code</h2>
@@ -39,20 +36,18 @@ export class EmailService {
       await sgMail.send(msg);
       this.logger.log(`Verification email sent to ${email}`);
     } catch (err) {
-      this.logger.error(`SendGrid error sending verify code`, err);
+      const error = err instanceof Error ? err : new Error(String(err));
+      this.logger.error(`SendGrid error sending verify code: ${error.message}`);
       throw new Error('Failed to send verification email');
     }
   }
 
-  // ---------------------------
-  // Send Password Reset Email
-  // ---------------------------
   async sendPasswordReset(email: string, token: string) {
     const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
 
     const msg = {
       to: email,
-      from: process.env.EMAIL_FROM || 'noreply@kyron.spidroid.com',
+      from: process.env.EMAIL_FROM || 'noreply@kyron.app',
       subject: 'Reset your Kyron password',
       html: `
         <h2>Password Reset Request</h2>
@@ -77,7 +72,10 @@ export class EmailService {
       await sgMail.send(msg);
       this.logger.log(`Password reset email sent to ${email}`);
     } catch (err) {
-      this.logger.error(`SendGrid error sending password reset`, err);
+      const error = err instanceof Error ? err : new Error(String(err));
+      this.logger.error(
+        `SendGrid error sending password reset: ${error.message}`,
+      );
       throw new Error('Failed to send password reset email');
     }
   }
