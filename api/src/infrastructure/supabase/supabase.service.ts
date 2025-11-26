@@ -1,88 +1,99 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // src/infrastructure/supabase/supabase.service.ts
-import { Injectable, Logger } from '@nestjs/common';
+// src/infrastructure/supabase/supabase.service.ts
+import {
+  Injectable,
+  Logger,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 @Injectable()
 export class SupabaseService {
   private readonly logger = new Logger(SupabaseService.name);
-  private readonly supabase: SupabaseClient;
-  private readonly bucket: string;
-  private readonly avatarFolder: string;
-  private readonly coverFolder: string;
+  private client: SupabaseClient;
 
   constructor() {
     const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_SERVICE_KEY;
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
     if (!url || !key) {
-      this.logger.error('SUPABASE_URL or SUPABASE_SERVICE_KEY is not set');
-      throw new Error('Supabase config missing');
+      throw new Error('Supabase environment variables missing');
     }
 
-    this.supabase = createClient(url, key, {
-      auth: { persistSession: false },
+    this.client = createClient(url, key, {
+      auth: {
+        persistSession: false,
+      },
     });
-
-    this.bucket = process.env.SUPABASE_BUCKET || 'kyron-media';
-    this.avatarFolder = process.env.AVATAR_FOLDER || 'avatars';
-    this.coverFolder = process.env.COVER_FOLDER || 'covers';
   }
 
-  /**
-   * Upload a file buffer to a given folder and return public URL
-   * - path should be unique (we generate unique names for you in ProfileService)
-   */
-  async uploadFile(
-    folder: string,
-    path: string,
-    fileBuffer: Buffer,
-    contentType: string,
-  ): Promise<{ publicUrl: string }> {
-    const key = `${folder}/${path}`;
+  // -----------------------------------------------------------------------
+  // FOLDER HELPERS (required by ProfileService)
+  // -----------------------------------------------------------------------
+  getAvatarFolder() {
+    return 'avatars';
+  }
 
-    // upsert true makes subsequent uploads replace
-    const resp = await this.supabase.storage
-      .from(this.bucket)
-      .upload(key, fileBuffer, {
-        contentType,
+  getCoverFolder() {
+    return 'covers';
+  }
+
+  // -----------------------------------------------------------------------
+  // UNIVERSAL UPLOAD (returns { publicUrl })
+  // -----------------------------------------------------------------------
+  async uploadFile(
+    bucket: string,
+    path: string,
+    buffer: Buffer,
+    mime: string,
+  ): Promise<{ publicUrl: string }> {
+    const { error: uploadErr } = await this.client.storage
+      .from(bucket)
+      .upload(path, buffer, {
         upsert: true,
+        contentType: mime,
       });
 
-    if (resp.error) {
-      this.logger.error('Supabase upload error', resp.error);
-      throw resp.error;
+    if (uploadErr) {
+      this.logger.error(uploadErr);
+      throw new InternalServerErrorException(uploadErr.message);
     }
 
-    // get public URL (if bucket public). If bucket is private, you can create signed URL.
-    const { publicURL, error } = this.supabase.storage
-      .from(this.bucket)
-      .getPublicUrl(key);
+    // get public URL (Supabase returns: { data: { publicUrl } })
+    const { data } = this.client.storage.from(bucket).getPublicUrl(path);
+    const publicUrl = data.publicUrl;
+
+    if (!publicUrl) {
+      throw new InternalServerErrorException('Failed to generate public URL');
+    }
+
+    return { publicUrl };
+  }
+
+  // -----------------------------------------------------------------------
+  // Signed URL
+  // -----------------------------------------------------------------------
+  async createSignedUrl(bucket: string, path: string): Promise<string> {
+    const { data, error } = await this.client.storage
+      .from(bucket)
+      .createSignedUrl(path, 60 * 60);
 
     if (error) {
-      this.logger.error('Supabase getPublicUrl error', error);
-      throw error;
+      throw new InternalServerErrorException(error.message);
     }
 
-    return { publicUrl: publicURL! };
+    return data.signedUrl;
   }
 
-  async createSignedUrl(path: string, expiresInSeconds = 60 * 60) {
-    const resp = await this.supabase.storage
-      .from(this.bucket)
-      .createSignedUrl(path, expiresInSeconds);
-    if (resp.error) throw resp.error;
-    return resp.signedUrl!;
-  }
+  // -----------------------------------------------------------------------
+  // DELETE FILE
+  // -----------------------------------------------------------------------
+  async deleteFile(bucket: string, path: string): Promise<void> {
+    const { error } = await this.client.storage.from(bucket).remove([path]);
 
-  // convenience helpers
-  getAvatarFolder() {
-    return this.avatarFolder;
-  }
-  getCoverFolder() {
-    return this.coverFolder;
-  }
-  getBucket() {
-    return this.bucket;
+    if (error) {
+      throw new InternalServerErrorException(error.message);
+    }
   }
 }
