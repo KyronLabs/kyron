@@ -5,6 +5,7 @@
     "lib": ["es2021"],
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
