@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import sgMail from '@sendgrid/mail';
+import * as sgMail from '@sendgrid/mail';
 
 @Injectable()
 export class EmailService {
@@ -9,14 +9,12 @@ export class EmailService {
     const apiKey = process.env.SENDGRID_API_KEY;
 
     if (!apiKey) {
-      this.logger.error(
-        'SENDGRID_API_KEY is missing in environment variables.',
-      );
+      this.logger.error('SENDGRID_API_KEY is missing.');
       return;
     }
 
     sgMail.setApiKey(apiKey);
-    this.logger.log('SendGrid initialized successfully.');
+    this.logger.log('SendGrid initialized.');
   }
 
   async sendVerifyCode(email: string, code: string) {
@@ -37,7 +35,7 @@ export class EmailService {
       this.logger.log(`Verification email sent to ${email}`);
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
-      this.logger.error(`SendGrid error sending verify code: ${error.message}`);
+      this.logger.error(`SendGrid verify error: ${error.message}`);
       throw new Error('Failed to send verification email');
     }
   }
@@ -54,17 +52,14 @@ export class EmailService {
         <p>Click the link below to reset your password:</p>
 
         <a href="${resetUrl}" style="
-            display:inline-block;
-            padding:10px 20px;
-            background-color:#4f46e5;
-            color:white;
-            border-radius:5px;
-            text-decoration:none;
-            font-weight:bold;">
+          display:inline-block;
+          padding:10px 20px;
+          background-color:#4f46e5;
+          color:#fff;
+          border-radius:5px;
+          text-decoration:none;">
           Reset Password
         </a>
-
-        <p>This link will expire in 1 hour.</p>
       `,
     };
 
@@ -73,9 +68,7 @@ export class EmailService {
       this.logger.log(`Password reset email sent to ${email}`);
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
-      this.logger.error(
-        `SendGrid error sending password reset: ${error.message}`,
-      );
+      this.logger.error(`SendGrid reset error: ${error.message}`);
       throw new Error('Failed to send password reset email');
     }
   }
