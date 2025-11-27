@@ -2,7 +2,8 @@
 // 1.  GENERATOR & DATASOURCE
 // ==========================================
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"] // keeps connection alive + retries
 }
 
 datasource db {
