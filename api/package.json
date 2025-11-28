@@ -14,7 +14,7 @@
     "prisma:studio": "prisma studio",
     "prisma:seed": "ts-node prisma/seed.ts",
     "start:dev": "ts-node-dev --respawn --transpile-only src/main.ts",
-    "start:prod": "node dist/main.js"
+    "start:prod": "node dist/src/main.js"
   },
   "dependencies": {
     "@fastify/helmet": "^13.0.2",
