@@ -19,15 +19,17 @@ async function bootstrap() {
     { bufferLogs: true },
   );
 
+  // 🔊  FORCE  ALL  LOG  LEVELS  (error / warn / log / debug / verbose)
+  app.useLogger(['error', 'warn', 'log', 'debug', 'verbose']);
+
   const config = app.get(ConfigService);
   await app.register(helmet);
 
   await app.register(rateLimit, {
     max: config.get<number>('RATE_LIMIT_MAX') ?? 100,
-    timeWindow: 60 * 1000, // ms instead of human string
+    timeWindow: 60 * 1000,
   });
 
-  app.useLogger(logger);
   app.enableCors({
     origin: config.get('CORS_ORIGIN') || true,
     credentials: true,
