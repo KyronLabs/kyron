@@ -15,6 +15,7 @@ import * as argon2 from 'argon2';
 import * as crypto from 'crypto';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { EmailService } from '../../infrastructure/email/email.service';
+import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { User, UserRole, AccountStatus, EmailStatus } from '@prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
@@ -26,6 +27,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwt: JwtService,
     private readonly emailService: EmailService,
+    private readonly supabase: SupabaseService,
   ) {}
 
   private generateCode(): string {
@@ -112,7 +114,6 @@ export class AuthService {
 
       this.logger.log(`User registered: ${user.id}`);
 
-      // IMPORTANT: return a stable key called `userId` so clients can rely on it
       return {
         message: 'Verification email sent',
         userId: user.id,
@@ -147,9 +148,13 @@ export class AuthService {
       if (!rec) {
         throw new BadRequestException('Invalid verification code');
       }
+
       if (rec.expiresAt < new Date()) {
+        // remove expired record (optional)
+        await this.prisma.emailVerification.delete({ where: { userId } }).catch(() => {});
         throw new BadRequestException('Verification code expired');
       }
+
       if (rec.code !== code) {
         await this.prisma.emailVerification.update({
           where: { userId },
@@ -160,6 +165,7 @@ export class AuthService {
         throw new BadRequestException('Invalid verification code');
       }
 
+      // mark email verified on user
       await this.prisma.user.update({
         where: { id: userId },
         data: {
@@ -168,26 +174,77 @@ export class AuthService {
         },
       });
 
+      // cleanup verification record
       await this.prisma.emailVerification.delete({ where: { userId } });
 
+      // fetch user with profile
       const user = await this.prisma.user.findUnique({
         where: { id: userId },
         include: { profile: true },
       });
 
       if (!user) {
-        throw new InternalServerErrorException(
-          'User not found after verification',
-        );
+        throw new InternalServerErrorException('User not found after verification');
+      }
+
+      // --- ensure profile exists and has a coverUrl ---
+      // NOTE: this.supabase.getRandomDefaultCover() must return a public HTTP URL (string)
+      try {
+        if (!user.profile) {
+          // create profile with a default cover (if available)
+          let coverUrl: string | null = null;
+          try {
+            coverUrl = await this.supabase.getRandomDefaultCover();
+          } catch (e) {
+            // don't crash verification on supabase failure; log and continue
+            this.logger.error(`Failed to fetch default cover from storage: ${String(e)}`);
+            coverUrl = null;
+          }
+
+          await this.prisma.userProfile.create({
+            data: {
+              userId,
+              avatarUrl: null,
+              coverUrl,
+            },
+          });
+        } else if (!user.profile.coverUrl) {
+          // set cover only if missing
+          let coverUrl: string | null = null;
+          try {
+            coverUrl = await this.supabase.getRandomDefaultCover();
+          } catch (e) {
+            this.logger.error(`Failed to fetch default cover from storage: ${String(e)}`);
+            coverUrl = null;
+          }
+
+          if (coverUrl) {
+            await this.prisma.userProfile.update({
+              where: { userId },
+              data: { coverUrl },
+            });
+          }
+        }
+      } catch (err) {
+        // log but don't fail verification for non-critical profile/cover writes
+        this.logger.error(`Profile/cover assignment failed for user ${userId}: ${String(err)}`);
       }
 
       this.logger.log(`Email verified for user: ${userId}`);
 
-      return this.issueTokensForUser(user);
-    } catch (error) {
-      if (error instanceof BadRequestException) {
-        throw error;
+      // return tokens for the user (issueTokensForUser expects a User object)
+      // Re-fetch user to have latest profile - optional but safe
+      const refreshedUser = await this.prisma.user.findUnique({
+        where: { id: userId },
+      });
+
+      if (!refreshedUser) {
+        throw new InternalServerErrorException('User not found after verification (final)');
       }
+
+      return this.issueTokensForUser(refreshedUser);
+    } catch (error) {
+      if (error instanceof BadRequestException) throw error;
 
       const errorMessage = this.isError(error) ? error.message : String(error);
       this.logger.error(
@@ -195,9 +252,7 @@ export class AuthService {
         this.isError(error) ? error.stack : undefined,
       );
 
-      throw new InternalServerErrorException(
-        'Verification failed. Please try again.',
-      );
+      throw new InternalServerErrorException('Verification failed. Please try again.');
     }
   }
 
