@@ -11,6 +11,7 @@ import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
 @Module({
   imports: [
     UsersModule,
+    SupabaseModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: Number(process.env.JWT_EXPIRES_SECONDS || 900) },
