@@ -1,5 +1,5 @@
 // src/modules/profile/dto/update-profile.dto.ts
-import { IsOptional, IsString, IsArray, ArrayUnique } from 'class-validator';
+import { IsOptional, IsString, IsArray } from 'class-validator';
 
 export class UpdateProfileDto {
   @IsOptional()
@@ -18,9 +18,7 @@ export class UpdateProfileDto {
   @IsString()
   website?: string;
 
-  // interest ids (prisma uuid strings)
   @IsOptional()
   @IsArray()
-  @ArrayUnique()
-  interests?: string[];
+  interests?: string[]; // array of interest IDs (prisma UUIDs)
 }
