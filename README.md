@@ -1,3 +1,5 @@
+![Kyron Logo](./docs/logo1.svg)
+
 # Kyron — The User-Owned Social Stack
 
 [![CI](https://github.com/KyronLabs/kyron/actions/workflows/ci.yml/badge.svg)](https://github.com/KyronLabs/kyron/actions)
