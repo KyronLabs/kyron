@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-// src/modules/profile/profile.service.ts
+
 import { Injectable, Logger, BadRequestException } from '@nestjs/common';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
@@ -18,22 +18,25 @@ export class ProfileService {
   ) {}
 
   private buildFileName(userId: string, prefix: string, originalName: string) {
-    const ext = originalName.includes('.')
-      ? originalName.split('.').pop()
-      : 'bin';
+    const ext = originalName.includes('.') ? originalName.split('.').pop() : 'bin';
     return `${userId}_${prefix}_${Date.now()}.${ext}`;
   }
 
+  // -----------------------------------------------------
+  // AVATAR UPLOAD
+  // -----------------------------------------------------
   async uploadAvatar(
     userId: string,
     fileBuffer: Buffer,
     originalName: string,
     mimeType: string,
   ) {
-    if (!fileBuffer || fileBuffer.length === 0)
+    if (!fileBuffer?.length) {
       throw new BadRequestException('Empty file');
+    }
 
     const filename = this.buildFileName(userId, 'avatar', originalName);
+
     const { publicUrl } = await this.supabase.uploadFile(
       this.supabase.getAvatarFolder(),
       filename,
@@ -41,7 +44,6 @@ export class ProfileService {
       mimeType,
     );
 
-    // upsert user profile if missing
     await this.prisma.userProfile.upsert({
       where: { userId },
       update: { avatarUrl: publicUrl },
@@ -52,16 +54,21 @@ export class ProfileService {
     return publicUrl;
   }
 
+  // -----------------------------------------------------
+  // COVER UPLOAD
+  // -----------------------------------------------------
   async uploadCover(
     userId: string,
     fileBuffer: Buffer,
     originalName: string,
     mimeType: string,
   ) {
-    if (!fileBuffer || fileBuffer.length === 0)
+    if (!fileBuffer?.length) {
       throw new BadRequestException('Empty file');
+    }
 
     const filename = this.buildFileName(userId, 'cover', originalName);
+
     const { publicUrl } = await this.supabase.uploadFile(
       this.supabase.getCoverFolder(),
       filename,
@@ -79,6 +86,9 @@ export class ProfileService {
     return publicUrl;
   }
 
+  // -----------------------------------------------------
+  // PROFILE UPDATE
+  // -----------------------------------------------------
   async updateProfile(
     userId: string,
     payload: {
@@ -91,14 +101,14 @@ export class ProfileService {
   ) {
     const { name, bio, location, website, interests } = payload;
 
-    // upsert profile
+    // update or create profile
     await this.prisma.userProfile.upsert({
       where: { userId },
       create: { userId, bio, location, website },
       update: { bio, location, website },
     });
 
-    // update user display name
+    // update name in user table
     if (typeof name !== 'undefined') {
       await this.prisma.user.update({
         where: { id: userId },
@@ -106,20 +116,19 @@ export class ProfileService {
       });
     }
 
-    // replace interests
+    // update interests
     if (Array.isArray(interests)) {
-      // remove any existing then create new relations
       await this.prisma.userInterest.deleteMany({ where: { userId } });
 
-      const connect = interests.map((interestId) => ({
+      const rows = interests.map((interestId) => ({
         id: uuidv4(),
         userId,
         interestId,
       }));
 
-      if (connect.length > 0) {
+      if (rows.length > 0) {
         await this.prisma.userInterest.createMany({
-          data: connect,
+          data: rows,
           skipDuplicates: true,
         });
       }
@@ -128,12 +137,16 @@ export class ProfileService {
     return { ok: true };
   }
 
+  // -----------------------------------------------------
+  // GET PROFILE
+  // -----------------------------------------------------
   async getProfile(userId: string) {
-    const user = await this.prisma.user.findUnique({
+    return await this.prisma.user.findUnique({
       where: { id: userId },
-      include: { profile: true, interests: { include: { interest: true } } },
+      include: {
+        profile: true,
+        interests: { include: { interest: true } },
+      },
     });
-
-    return user;
   }
 }
