@@ -6,6 +6,7 @@ import { AuthController } from './auth.controller';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { EmailService } from '../../infrastructure/email/email.service';
 import { UsersModule } from '../users/users.module';
+import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
 
 @Module({
   imports: [
