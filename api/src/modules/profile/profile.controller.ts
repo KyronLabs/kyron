@@ -5,78 +5,64 @@
 import {
   Controller,
   Post,
-  UseInterceptors,
+  UseGuards,
   UploadedFile,
+  UseInterceptors,
   Req,
-  BadRequestException,
   Body,
-  Patch,
+  Put,
   Get,
   Param,
-  UseGuards,
+  BadRequestException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ProfileService } from './profile.service';
-import { Request } from 'express';
-import { UpdateProfileDto } from './dto/update-profile.dto';
-import { UploadResponseDto } from './dto/upload-response.dto';
-import { AuthGuard } from '../../common/guards/auth.guard'; // assume you have a guard
+import { AuthGuard } from '../../common/guards/auth.guard'; // adjust path if different
 
 @Controller('profile')
 export class ProfileController {
-  constructor(private readonly svc: ProfileService) {}
+  constructor(private readonly profileService: ProfileService) {}
 
-  // Avatar upload (multipart/form-data -> file)
+  // Upload avatar (multipart/form-data: file)
+  @UseGuards(AuthGuard)
   @Post('avatar')
-  @UseGuards(AuthGuard)
   @UseInterceptors(FileInterceptor('file'))
-  async uploadAvatar(
-    @UploadedFile() file: Express.Multer.File,
-    @Req() req: Request,
-  ): Promise<UploadResponseDto> {
-    const userId = (req.user as any)?.sub;
-    if (!userId) throw new BadRequestException('No user');
-
-    if (!file) throw new BadRequestException('File required');
-    const url = await this.svc.uploadAvatar(
-      userId,
-      file.buffer,
-      file.originalname,
-      file.mimetype,
-    );
-    return { url };
+  async uploadAvatar(@Req() req: any, @UploadedFile() file: Express.Multer.File) {
+    if (!file) throw new BadRequestException('No file uploaded');
+    // req.user.id assumed
+    const userId = req.user?.id;
+    return this.profileService.uploadAvatar(userId, file.buffer, file.originalname, file.mimetype);
   }
 
+  // Upload cover
+  @UseGuards(AuthGuard)
   @Post('cover')
-  @UseGuards(AuthGuard)
   @UseInterceptors(FileInterceptor('file'))
-  async uploadCover(
-    @UploadedFile() file: Express.Multer.File,
-    @Req() req: Request,
-  ): Promise<UploadResponseDto> {
-    const userId = (req.user as any)?.sub;
-    if (!userId) throw new BadRequestException('No user');
-
-    if (!file) throw new BadRequestException('File required');
-    const url = await this.svc.uploadCover(
-      userId,
-      file.buffer,
-      file.originalname,
-      file.mimetype,
-    );
-    return { url };
+  async uploadCover(@Req() req: any, @UploadedFile() file: Express.Multer.File) {
+    if (!file) throw new BadRequestException('No file uploaded');
+    const userId = req.user?.id;
+    return this.profileService.uploadCover(userId, file.buffer, file.originalname, file.mimetype);
   }
 
-  // update profile metadata & interests
-  @Patch()
+  // Update profile (name/bio/location/website/interests)
   @UseGuards(AuthGuard)
-  async updateProfile(@Body() body: UpdateProfileDto, @Req() req: Request) {
-    const userId = (req.user as any)?.sub;
-    return await this.svc.updateProfile(userId, body as any);
+  @Put()
+  async updateProfile(@Req() req: any, @Body() body: any) {
+    const userId = req.user?.id;
+    return this.profileService.updateProfile(userId, body);
   }
 
+  // Get own profile
+  @UseGuards(AuthGuard)
+  @Get('me')
+  async getMyProfile(@Req() req: any) {
+    const userId = req.user?.id;
+    return this.profileService.getProfile(userId);
+  }
+
+  // Get someone else's profile by id (public)
   @Get(':id')
   async getProfile(@Param('id') id: string) {
-    return await this.svc.getProfile(id);
+    return this.profileService.getProfile(id);
   }
 }
