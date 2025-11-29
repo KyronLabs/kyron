@@ -1,99 +1,123 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // src/infrastructure/supabase/supabase.service.ts
 // src/infrastructure/supabase/supabase.service.ts
-import {
-  Injectable,
-  Logger,
-  InternalServerErrorException,
-} from '@nestjs/common';
+// src/infrastructure/supabase/supabase.service.ts
+import { Injectable, Logger } from '@nestjs/common';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 @Injectable()
 export class SupabaseService {
   private readonly logger = new Logger(SupabaseService.name);
-  private client: SupabaseClient;
+  private readonly client: SupabaseClient;
+
+  // Buckets / folders from env
+  private readonly avatarBucket = process.env.SUPABASE_AVATAR_BUCKET || 'avatars';
+  private readonly coverBucket = process.env.SUPABASE_COVER_BUCKET || 'covers';
+  private readonly defaultCoversFolder =
+    process.env.SUPABASE_DEFAULT_COVERS_FOLDER || 'default_covers';
+  private readonly signedUrlExpiry =
+    Number(process.env.SUPABASE_URL_EXPIRY_SECONDS) || 3600; // seconds
 
   constructor() {
     const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const key = process.env.SUPABASE_KEY;
 
     if (!url || !key) {
-      throw new Error('Supabase environment variables missing');
+      this.logger.error('Supabase URL/KEY not found in environment variables');
+      // continue, but calls will fail — better than crashing at import time
     }
 
-    this.client = createClient(url, key, {
-      auth: {
-        persistSession: false,
-      },
+    this.client = createClient(url ?? '', key ?? '', {
+      // optional settings
     });
+    this.logger.log('Supabase client initialized');
   }
 
-  // -----------------------------------------------------------------------
-  // FOLDER HELPERS (required by ProfileService)
-  // -----------------------------------------------------------------------
-  getAvatarFolder() {
-    return 'avatars';
+  // Return the bucket name for avatars (so existing calls like getAvatarFolder() keep working)
+  getAvatarFolder(): string {
+    return this.avatarBucket;
   }
 
-  getCoverFolder() {
-    return 'covers';
+  // Return the bucket name for covers
+  getCoverFolder(): string {
+    return this.coverBucket;
   }
 
-  // -----------------------------------------------------------------------
-  // UNIVERSAL UPLOAD (returns { publicUrl })
-  // -----------------------------------------------------------------------
+  // Upload a Buffer to a bucket. `path` may include subfolders (e.g. "avatars/uid_avatar.png")
+  // Returns { publicUrl }.
   async uploadFile(
     bucket: string,
     path: string,
     buffer: Buffer,
-    mime: string,
+    mimeType?: string,
   ): Promise<{ publicUrl: string }> {
-    const { error: uploadErr } = await this.client.storage
+    // path must not have a leading slash
+    const cleanedPath = path.replace(/^\/+/, '');
+    const options = mimeType ? { contentType: mimeType, upsert: true } : { upsert: true };
+
+    const { error: uploadError } = await this.client.storage
       .from(bucket)
-      .upload(path, buffer, {
-        upsert: true,
-        contentType: mime,
-      });
+      .upload(cleanedPath, buffer, options);
 
-    if (uploadErr) {
-      this.logger.error(uploadErr);
-      throw new InternalServerErrorException(uploadErr.message);
+    if (uploadError) {
+      this.logger.error('Supabase upload error', uploadError);
+      throw uploadError;
     }
 
-    // get public URL (Supabase returns: { data: { publicUrl } })
-    const { data } = this.client.storage.from(bucket).getPublicUrl(path);
-    const publicUrl = data.publicUrl;
-
-    if (!publicUrl) {
-      throw new InternalServerErrorException('Failed to generate public URL');
-    }
-
-    return { publicUrl };
+    const { data: urlData } = this.client.storage.from(bucket).getPublicUrl(cleanedPath);
+    // urlData.publicUrl exists per supabase API
+    return { publicUrl: urlData.publicUrl };
   }
 
-  // -----------------------------------------------------------------------
-  // Signed URL
-  // -----------------------------------------------------------------------
-  async createSignedUrl(bucket: string, path: string): Promise<string> {
+  // Create a signed URL (expiresIn seconds) — useful if you don't want public access.
+  async createSignedUrl(bucket: string, path: string, expiresInSeconds?: number) {
+    const cleanedPath = path.replace(/^\/+/, '');
+    const expiry = expiresInSeconds ?? this.signedUrlExpiry;
+
     const { data, error } = await this.client.storage
       .from(bucket)
-      .createSignedUrl(path, 60 * 60);
+      .createSignedUrl(cleanedPath, expiry);
 
     if (error) {
-      throw new InternalServerErrorException(error.message);
+      this.logger.error('Supabase createSignedUrl error', error);
+      throw error;
     }
 
-    return data.signedUrl;
+    // data.signedUrl
+    return { signedUrl: data.signedUrl, expiresAtSeconds: expiry };
   }
 
-  // -----------------------------------------------------------------------
-  // DELETE FILE
-  // -----------------------------------------------------------------------
-  async deleteFile(bucket: string, path: string): Promise<void> {
-    const { error } = await this.client.storage.from(bucket).remove([path]);
+  // List objects inside a folder (returns array of public URLs)
+  async listPublicFiles(bucket: string, folder = '', limit = 200) {
+    const prefix = folder.replace(/^\/+|\/+$/g, ''); // remove leading/trailing slashes
+    const { data, error } = await this.client.storage.from(bucket).list(prefix || '', {
+      limit,
+      offset: 0,
+      sortBy: { column: 'name', order: 'asc' },
+    });
 
     if (error) {
-      throw new InternalServerErrorException(error.message);
+      this.logger.error('Supabase list error', error);
+      throw error;
     }
+
+    const urls = (data || []).map((item) => {
+      const filePath = prefix ? `${prefix}/${item.name}` : item.name;
+      const { data: urlData } = this.client.storage.from(bucket).getPublicUrl(filePath);
+      return urlData.publicUrl;
+    });
+
+    return urls;
+  }
+
+  // Return a random default cover public URL (or throw if none)
+  async getRandomDefaultCover(): Promise<string> {
+    const urls = await this.listPublicFiles(this.coverBucket, this.defaultCoversFolder, 1000);
+    if (!urls || urls.length === 0) {
+      throw new Error('No default covers available');
+    }
+    const idx = Math.floor(Math.random() * urls.length);
+    return urls[idx];
   }
 }
+
