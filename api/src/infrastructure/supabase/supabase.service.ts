@@ -6,83 +6,88 @@ import { Injectable, Logger } from '@nestjs/common';
 export class SupabaseService {
   private readonly logger = new Logger(SupabaseService.name);
   private readonly client: SupabaseClient;
-  private readonly bucketName = process.env.SUPABASE_BUCKET_NAME || 'covers';
+
+  // Bucket name is EXACTLY "kyron-media"
+  private readonly bucket = process.env.SUPABASE_BUCKET_NAME || 'kyron-media';
 
   constructor() {
     const url = process.env.SUPABASE_URL;
     const key = process.env.SUPABASE_KEY;
 
     if (!url || !key) {
-      this.logger.error('SUPABASE_URL or SUPABASE_KEY missing');
+      this.logger.error('Supabase config missing: SUPABASE_URL or SUPABASE_KEY');
       throw new Error('Supabase config missing');
     }
 
-    this.client = createClient(url, key); // FIXED — no { fetch }
+    this.client = createClient(url, key);
   }
 
+  // -----------------------------------------------------
+  // Upload a file
+  // -----------------------------------------------------
   async uploadFile(
     folder: string,
-    filename: string,
+    fileName: string,
     buffer: Buffer,
     mimeType: string,
-  ): Promise<{ publicUrl: string }> {
-    const path = `${folder}/${filename}`;
+  ) {
+    const fullPath = `${folder}/${fileName}`;
 
-    const { error: uploadError } = await this.client.storage
-      .from(this.bucketName)
-      .upload(path, buffer, {
+    const { error } = await this.client.storage
+      .from(this.bucket)
+      .upload(fullPath, buffer, {
         contentType: mimeType,
         upsert: true,
       });
 
-    if (uploadError) {
-      this.logger.error(`Supabase upload error: ${uploadError.message}`);
-      throw uploadError;
-    }
-
-    const { data } = this.client.storage
-      .from(this.bucketName)
-      .getPublicUrl(path);
-
-    if (!data?.publicUrl) {
-      throw new Error(`Failed to get public URL for ${path}`);
-    }
-
-    return { publicUrl: data.publicUrl };
-  }
-
-  async getRandomDefaultCover(): Promise<string | null> {
-    const folder = 'default_covers';
-
-    const { data, error } = await this.client.storage
-      .from(this.bucketName)
-      .list(folder);
-
     if (error) {
-      this.logger.error(`Supabase list error: ${error.message}`);
+      this.logger.error(`Upload failed for ${fullPath}`, error);
       throw error;
     }
 
-    if (!data || data.length === 0) {
-      this.logger.warn(`No default covers in ${this.bucketName}/${folder}`);
+    const { data } = this.client.storage.from(this.bucket).getPublicUrl(fullPath);
+    return { publicUrl: data.publicUrl };
+  }
+
+  // -----------------------------------------------------
+  // Default cover folder
+  // -----------------------------------------------------
+  getCoverFolder() {
+    // actual path inside bucket
+    return 'covers';
+  }
+
+  async getRandomDefaultCover(): Promise<string | null> {
+    const folder = 'covers/default_covers';
+
+    const { data, error } = await this.client.storage
+      .from(this.bucket)
+      .list(folder, {
+        limit: 1000,
+      });
+
+    if (error) {
+      this.logger.error(`Error listing default covers`, error);
+      throw error;
+    }
+
+    if (!data?.length) {
+      this.logger.warn(`No default covers found in ${folder}`);
       return null;
     }
 
     const file = data[Math.floor(Math.random() * data.length)];
     const path = `${folder}/${file.name}`;
 
-    const { data: urlData } = this.client.storage
-      .from(this.bucketName)
-      .getPublicUrl(path);
-
-    return urlData?.publicUrl ?? null;
+    const { data: urlData } = this.client.storage.from(this.bucket).getPublicUrl(path);
+    return urlData.publicUrl;
   }
 
+  // -----------------------------------------------------
+  // Avatar folder
+  // -----------------------------------------------------
   getAvatarFolder() {
+    // if you created: kyron-media/avatars/
     return process.env.SUPABASE_AVATAR_BUCKET || 'avatars';
-  }
-
-  getCoverFolder() {
-    return this.bucketName;
   }
 }
