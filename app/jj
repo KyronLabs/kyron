@@ -1,418 +1,60 @@
-It is still not working.. I dont think IT has anything to do with the main.ts.....  The other logs like the SendGrid being initialized are on display but not the logs about sending the email.. Its like the api is not registering that a signup button has been clicked.... Lets go through the frontend stuff once again and see whyy its happening... import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import '../widgets/app_input_field.dart';
-import '../widgets/password_input_field.dart';
-import '../widgets/app_button.dart';
-import '../widgets/password_requirements.dart';
-import '../routes.dart';
-import '../theme/app_theme.dart';
-import '../repositories/auth_repository.dart';
+-- 1) user_profiles
+create table if not exists public.user_profiles (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null unique,
+  display_name text,
+  bio text,
+  avatar_url text,
+  cover_url text,
+  location text,
+  website text,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+-- triggers to update updated_at
+create or replace function public.update_timestamp()
+returns trigger as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$ language plpgsql;
 
-  @override
-  State<SignupScreen> createState() => _SignupScreenState();
-}
+drop trigger if exists trg_user_profiles_updated on public.user_profiles;
+create trigger trg_user_profiles_updated
+before update on public.user_profiles
+for each row execute procedure public.update_timestamp();
 
-class _SignupScreenState extends State<SignupScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _username = TextEditingController();
-  final _email = TextEditingController();
-  final _password = TextEditingController();
+-- 2) interests
+create table if not exists public.interests (
+  id uuid primary key default gen_random_uuid(),
+  slug text unique not null,
+  name text not null
+);
 
-  bool _isLoading = false;
+-- 3) user_interests
+create table if not exists public.user_interests (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null,
+  interest_id uuid not null,
+  created_at timestamptz default now()
+);
 
-  @override
-  void dispose() {
-    _username.dispose();
-    _email.dispose();
-    _password.dispose();
-    super.dispose();
-  }
+create index if not exists idx_user_interests_user on public.user_interests(user_id);
+create index if not exists idx_user_interests_interest on public.user_interests(interest_id);
 
-  Future<void> _submit() async {
-    if (!(_formKey.currentState?.validate() ?? false)) return;
-
-    setState(() => _isLoading = true);
-
-    try {
-      final repo = AuthRepository();
-
-      final res = await repo.register(
-        email: _email.text.trim(),
-        password: _password.text.trim(),
-        username: _username.text.trim().isEmpty ? null : _username.text.trim(),
-      );
-
-      // backend now returns `userId` explicitly
-      final userId = (res.data as Map<String, dynamic>)['userId'] as String?;
-
-      if (userId == null) {
-        // If backend didn't return it, show a helpful message
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Signup succeeded but server did not return userId')),
-        );
-        return;
-      }
-
-      if (!mounted) return;
-
-      Navigator.pushNamed(
-        context,
-        Routes.signupVerifyEmail,
-        arguments: {
-          'email': _email.text.trim(),
-          'userId': userId,
-        },
-      );
-    } catch (err) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Signup failed: $err')),
-      );
-    } finally {
-      if (mounted) setState(() => _isLoading = false);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Create your account')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 8),
-
-              // USERNAME
-              AppInputField(
-                hint: 'Username',
-                prefix: const Text('@', style: TextStyle(color: Color(0xFF7E8A9A))),
-                controller: _username,
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'[a-z0-9_]')),
-                ],
-                validator: (v) {
-                  if (v?.isEmpty ?? true) return null; // allow empty username
-                  if (!RegExp(r'^[a-z0-9_]+$').hasMatch(v!)) {
-                    return 'Username must be lowercase (a-z, 0-9, _)';
-                  }
-                  return null;
-                },
-              ),
-
-              const SizedBox(height: 12),
-
-              // EMAIL
-              AppInputField(
-                hint: 'Email',
-                controller: _email,
-                keyboardType: TextInputType.emailAddress,
-                validator: (v) {
-                  if (v?.isEmpty ?? true) return 'Enter email';
-                  return null;
-                },
-              ),
-
-              const SizedBox(height: 12),
-
-              // PASSWORD
-              PasswordInputField(
-                controller: _password,
-                validator: (v) =>
-                    (v?.length ?? 0) < 8 ? 'Password too short' : null,
-                onChanged: (_) => setState(() {}),
-              ),
-
-              const SizedBox(height: 12),
-
-              PasswordRequirements(password: _password.text),
-
-              const SizedBox(height: 16),
-
-              AppButton(
-                label: 'Continue',
-                onTap: _submit,
-                isLoading: _isLoading,
-              ),
-
-              const Spacer(),
-
-              // TERMS + PRIVACY
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: "By signing up you agree to our ",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  children: [
-                    TextSpan(
-                      text: "Terms",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(
-                            color: AppTheme.accent,
-                            decoration: TextDecoration.underline,
-                          ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.pushNamed(
-                            context,
-                            Routes.webview,
-                            arguments: {
-                              "url":
-                                  "https://kyron-terms-and-privacy.onrender.com/terms.html ",
-                              "title": "Terms of Service",
-                            },
-                          );
-                        },
-                    ),
-                    TextSpan(
-                      text: " and ",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    TextSpan(
-                      text: "Privacy Policy",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(
-                            color: AppTheme.accent,
-                            decoration: TextDecoration.underline,
-                          ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.pushNamed(
-                            context,
-                            Routes.webview,
-                            arguments: {
-                              "url":
-                                  "https://kyron-terms-and-privacy.onrender.com/privacy.html ",
-                              "title": "Privacy Policy",
-                            },
-                          );
-                        },
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}import 'package:dio/dio.dart';  // Need this import for Response type
-import '../models/auth_tokens.dart';
-import '../services/secure_storage_service.dart';
-import '../services/api_client.dart';
-
-class AuthRepository {
-  final ApiClient _client = ApiClient();
-  final SecureStorageService _storage = SecureStorageService();
-
-  Future<AuthTokens> login({required String email, required String password}) async {
-    final res = await _client.dio.post('/auth/login', data: {'email': email, 'password': password});
-    final data = res.data as Map<String, dynamic>;
-    final access = data['accessToken'] as String;
-    final refresh = data['refreshToken'] as String;
-    final expiresIn = (data['expiresIn'] as num).toInt();
-    final expiresAt = DateTime.now().add(Duration(seconds: expiresIn));
-    final tokens = AuthTokens(accessToken: access, refreshToken: refresh, expiresAt: expiresAt);
-    await _storage.writeAccessToken(access, expiresAt);
-    await _storage.writeRefreshToken(refresh);
-    return tokens;
-  }
-
-  Future<AuthTokens> verifyEmail({required String userId, required String code}) async {
-    final res = await _client.dio.post('/auth/verify-email', data: {'userId': userId, 'code': code});
-    final data = res.data as Map<String, dynamic>;
-    final access = data['accessToken'] as String;
-    final refresh = data['refreshToken'] as String;
-    final expiresIn = (data['expiresIn'] as num).toInt();
-    final expiresAt = DateTime.now().add(Duration(seconds: expiresIn));
-    final tokens = AuthTokens(accessToken: access, refreshToken: refresh, expiresAt: expiresAt);
-    await _storage.writeAccessToken(access, expiresAt);
-    await _storage.writeRefreshToken(refresh);
-    return tokens;
-  }
-
-  Future<bool> refresh() async {
-    final refreshToken = await _storage.readRefreshToken();
-    if (refreshToken == null) return false;
-    try {
-      final res = await _client.dio.post('/auth/refresh', data: {'refreshToken': refreshToken});
-      final data = res.data as Map<String, dynamic>;
-      final access = data['accessToken'] as String;
-      final refresh = data['refreshToken'] as String;
-      final expiresIn = (data['expiresIn'] as num).toInt();
-      final expiresAt = DateTime.now().add(Duration(seconds: expiresIn));
-      await _storage.writeAccessToken(access, expiresAt);
-      await _storage.writeRefreshToken(refresh);
-      return true;
-    } on DioException {
-      await _storage.clearAll();
-      return false;
-    }
-  }
-
-  Future<void> logout() async {
-    final refreshToken = await _storage.readRefreshToken();
-    try {
-      if (refreshToken != null) {
-        await _client.dio.post('/auth/logout', data: {'refreshToken': refreshToken});
-      }
-    } catch (_) {}
-    await _storage.clearAll();
-  }
-
-  Future<bool> hasValidAccessToken() async {
-    final token = await _storage.readAccessToken();
-    final expiry = await _storage.readAccessExpiry();
-    if (token == null || expiry == null) return false;
-    return expiry.isAfter(DateTime.now());
-  }
-
-  // Public method to access /identity/me
-  Future<Response> getMe() async {
-    return await _client.dio.get('/identity/me');
-  }
-
-  // Public method for registration
-  Future<Response> register({required String email, required String password, String? username}) async {
-    final body = {
-      'email': email,
-      'password': password,
-    };
-
-    if (username != null && username.isNotEmpty) {
-      body['username'] = username;
-    }
-
-    return await _client.dio.post('/auth/register', data: body);
-  }
-}class AuthTokens {
-  final String accessToken;
-  final String refreshToken;
-  final DateTime expiresAt;
-
-  AuthTokens({
-    required this.accessToken,
-    required this.refreshToken,
-    required this.expiresAt,
-  });
-}
-import 'dart:async';
-import 'package:dio/dio.dart';
-import '../services/secure_storage_service.dart';
-import '../repositories/auth_repository.dart';
-
-class ApiClient {
-  static final ApiClient _instance = ApiClient._internal();
-  factory ApiClient() => _instance;
-  ApiClient._internal() {
-    _dio = Dio(BaseOptions(baseUrl: baseUrl, connectTimeout: const Duration(seconds: 10)));
-    _dio.interceptors.add(InterceptorsWrapper(
-      onRequest: (options, handler) async {
-        final token = await SecureStorageService().readAccessToken();
-        if (token != null) {
-          options.headers['Authorization'] = 'Bearer $token';
-        }
-        handler.next(options);
-      },
-      onError: (err, handler) async {
-        if (err.response?.statusCode == 401) {
-          // attempt refresh
-          try {
-            await _refreshTokenLock.synchronized(() async {
-              // Double-check fresh tokens
-              final token = await SecureStorageService().readAccessToken();
-              if (token != null) {
-                // maybe another request refreshed already
-                return;
-              }
-              final repo = AuthRepository();
-              final refreshed = await repo.refresh();
-              if (refreshed) {
-                // repeat original request
-                final newToken = await SecureStorageService().readAccessToken();
-                if (newToken != null) {
-                  err.requestOptions.headers['Authorization'] = 'Bearer $newToken';
-                  final cloneReq = await _dio.fetch(err.requestOptions);
-                  handler.resolve(cloneReq);
-                  return;
-                }
-              }
-            });
-          } catch (e) {
-            handler.next(err);
-            return;
-          }
-        }
-        handler.next(err);
-      },
-    ));
-  }
-
-  late final Dio _dio;
-  // change this to your API base
-  static const String baseUrl = 'https://kyron.spidroid.com ';
-  final _refreshTokenLock = _Lock();
-
-  Dio get dio => _dio;
-}
-
-/// tiny synchronized lock
-class _Lock {
-  Completer<void>? _c;
-  Future<T> synchronized<T>(Future<T> Function() fn) async {
-    while (_c != null) {
-      await _c!.future;
-    }
-    _c = Completer<void>();
-    try {
-      return await fn();
-    } finally {
-      _c!.complete();
-      _c = null;
-    }
-  }
-}
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-class SecureStorageService {
-  static final SecureStorageService _instance = SecureStorageService._internal();
-  factory SecureStorageService() => _instance;
-  SecureStorageService._internal();
-
-  final FlutterSecureStorage _storage = const FlutterSecureStorage();
-
-  static const _kAccessTokenKey = 'access_token';
-  static const _kRefreshTokenKey = 'refresh_token';
-  static const _kAccessExpKey = 'access_expires_at';
-
-  Future<void> writeAccessToken(String token, DateTime expiresAt) async {
-    await _storage.write(key: _kAccessTokenKey, value: token);
-    await _storage.write(key: _kAccessExpKey, value: expiresAt.toIso8601String());
-  }
-
-  Future<void> writeRefreshToken(String token) async {
-    await _storage.write(key: _kRefreshTokenKey, value: token);
-  }
-
-  Future<String?> readAccessToken() => _storage.read(key: _kAccessTokenKey);
-  Future<String?> readRefreshToken() => _storage.read(key: _kRefreshTokenKey);
-  Future<DateTime?> readAccessExpiry() async {
-    final v = await _storage.read(key: _kAccessExpKey);
-    if (v == null) return null;
-    return DateTime.tryParse(v);
-  }
-
-  Future<void> clearAll() async => await _storage.deleteAll();
-}
-
+-- 4) seed some interests
+insert into public.interests (slug, name)
+values
+('technology','Technology'),
+('music','Music'),
+('travel','Travel'),
+('photography','Photography'),
+('gaming','Gaming'),
+('art','Art'),
+('food','Food'),
+('sports','Sports'),
+('fashion','Fashion'),
+('science','Science')
+on conflict (slug) do nothing;
