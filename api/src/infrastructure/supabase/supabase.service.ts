@@ -33,13 +33,11 @@ export class SupabaseService {
   /** Upload a Buffer (or Readable) to the bucket/folder and return { publicUrl, path } */
   async uploadFile(folder: string, filename: string, fileBuf: Buffer, contentType?: string) {
     const path = `${folder}/${filename}`;
-    this.logger.log(`Uploading to ${this.bucketName}/${path} (size: ${fileBuf.length})`);
 
-    // Supabase v2 supports Buffer directly on Node
     const { error } = await this.client.storage
       .from(this.bucketName)
       .upload(path, fileBuf, {
-        contentType: contentType,
+        contentType,
         upsert: true,
       });
 
@@ -48,16 +46,14 @@ export class SupabaseService {
       throw new Error(`Supabase upload failed: ${error.message}`);
     }
 
-    const { data: urlData, error: urlErr } = this.client.storage
+    const { data: urlData } = this.client.storage
       .from(this.bucketName)
       .getPublicUrl(path);
 
-    if (urlErr) {
-      this.logger.error('Supabase getPublicUrl error', urlErr);
-      throw new Error(`Supabase getPublicUrl failed: ${urlErr.message}`);
-    }
-
-    return { publicUrl: urlData?.publicUrl ?? null, path };
+    return {
+      publicUrl: urlData?.publicUrl ?? null,
+      path,
+    };
   }
 
   /** Generate a signed URL (useful if your bucket is private). Expires seconds default 3600 */
