@@ -22,131 +22,116 @@ export class ProfileService {
     return `${userId}_${prefix}_${Date.now()}.${ext}`;
   }
 
-  // -----------------------------------------------------
-  // AVATAR UPLOAD
-  // -----------------------------------------------------
-  async uploadAvatar(
-    userId: string,
-    fileBuffer: Buffer,
-    originalName: string,
-    mimeType: string,
-  ) {
-    if (!fileBuffer?.length) {
-      throw new BadRequestException('Empty file');
-    }
+  /** Upload avatar buffer to storage, update profile row in Supabase */
+  async uploadAvatar(userId: string, fileBuffer: Buffer, originalName: string, mimeType?: string) {
+    if (!fileBuffer || fileBuffer.length === 0) throw new BadRequestException('Empty file');
 
     const filename = this.buildFileName(userId, 'avatar', originalName);
+    const folder = this.supabase.getAvatarFolder(); // e.g. avatars
+    const { publicUrl } = await this.supabase.uploadFile(folder, filename, fileBuffer, mimeType);
 
-    const { publicUrl } = await this.supabase.uploadFile(
-      this.supabase.getAvatarFolder(),
-      filename,
-      fileBuffer,
-      mimeType,
-    );
-
-    await this.prisma.userProfile.upsert({
-      where: { userId },
-      update: { avatarUrl: publicUrl },
-      create: { userId, avatarUrl: publicUrl },
+    // Upsert profile row in Supabase table
+    await this.supabase.upsertProfileRow({
+      user_id: userId,
+      avatar_url: publicUrl,
+      updated_at: new Date().toISOString(),
     });
 
     this.logger.log(`Avatar uploaded for ${userId}: ${publicUrl}`);
     return publicUrl;
   }
 
-  // -----------------------------------------------------
-  // COVER UPLOAD
-  // -----------------------------------------------------
-  async uploadCover(
-    userId: string,
-    fileBuffer: Buffer,
-    originalName: string,
-    mimeType: string,
-  ) {
-    if (!fileBuffer?.length) {
-      throw new BadRequestException('Empty file');
-    }
+  /** Upload cover buffer to storage, update profile row in Supabase */
+  async uploadCover(userId: string, fileBuffer: Buffer, originalName: string, mimeType?: string) {
+    if (!fileBuffer || fileBuffer.length === 0) throw new BadRequestException('Empty file');
 
     const filename = this.buildFileName(userId, 'cover', originalName);
+    const folder = `${this.supabase.getCoverFolder()}`; // e.g. covers
+    const { publicUrl } = await this.supabase.uploadFile(folder, filename, fileBuffer, mimeType);
 
-    const { publicUrl } = await this.supabase.uploadFile(
-      this.supabase.getCoverFolder(),
-      filename,
-      fileBuffer,
-      mimeType,
-    );
-
-    await this.prisma.userProfile.upsert({
-      where: { userId },
-      update: { coverUrl: publicUrl },
-      create: { userId, coverUrl: publicUrl },
+    await this.supabase.upsertProfileRow({
+      user_id: userId,
+      cover_url: publicUrl,
+      updated_at: new Date().toISOString(),
     });
 
     this.logger.log(`Cover uploaded for ${userId}: ${publicUrl}`);
     return publicUrl;
   }
 
-  // -----------------------------------------------------
-  // PROFILE UPDATE
-  // -----------------------------------------------------
-  async updateProfile(
-    userId: string,
-    payload: {
-      name?: string;
-      bio?: string;
-      location?: string;
-      website?: string;
-      interests?: string[];
-    },
-  ) {
+  /** Update profile fields and interests */
+  async updateProfile(userId: string, payload: {
+    name?: string;
+    bio?: string;
+    location?: string;
+    website?: string;
+    interests?: string[];
+  }) {
     const { name, bio, location, website, interests } = payload;
 
-    // update or create profile
-    await this.prisma.userProfile.upsert({
-      where: { userId },
-      create: { userId, bio, location, website },
-      update: { bio, location, website },
+    await this.supabase.upsertProfileRow({
+      user_id: userId,
+      display_name: name ?? undefined,
+      bio: bio ?? undefined,
+      location: location ?? undefined,
+      website: website ?? undefined,
+      updated_at: new Date().toISOString(),
     });
 
-    // update name in user table
+    // If display name present, also persist to users via Prisma (optional)
     if (typeof name !== 'undefined') {
       await this.prisma.user.update({
         where: { id: userId },
-        data: { name },
+        data: { name: name ?? null },
       });
     }
 
-    // update interests
+    // Replace interests using Supabase table
     if (Array.isArray(interests)) {
-      await this.prisma.userInterest.deleteMany({ where: { userId } });
-
-      const rows = interests.map((interestId) => ({
-        id: uuidv4(),
-        userId,
-        interestId,
-      }));
-
-      if (rows.length > 0) {
-        await this.prisma.userInterest.createMany({
-          data: rows,
-          skipDuplicates: true,
-        });
-      }
+      // validate interest ids exist optionally
+      await this.supabase.replaceUserInterests(userId, interests);
     }
 
     return { ok: true };
   }
 
-  // -----------------------------------------------------
-  // GET PROFILE
-  // -----------------------------------------------------
+  /** Get combined user + profile + interests */
   async getProfile(userId: string) {
-    return await this.prisma.user.findUnique({
+    // get user from Prisma (authoritative)
+    const user = await this.prisma.user.findUnique({
       where: { id: userId },
-      include: {
-        profile: true,
-        interests: { include: { interest: true } },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        name: true,
+        role: true,
+        createdAt: true,
       },
     });
+
+    // get profile from Supabase
+    const profile = await this.supabase.getProfileRow(userId);
+
+    // get interests joined
+    const interests = await this.supabase.getClient()
+      .from('user_interests')
+      .select('interest_id, interests(name, slug)')
+      .eq('user_id', userId);
+
+    // Assemble clean object
+    return {
+      user,
+      profile,
+      interests: Array.isArray((interests as any).data) ? (interests as any).data : [],
+    };
+  }
+
+  async listInterests() {
+    return await this.supabase.listInterests();
+  }
+
+  async getRandomDefaultCover() {
+    return await this.supabase.getRandomDefaultCover();
   }
 }
