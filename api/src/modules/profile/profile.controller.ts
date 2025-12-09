@@ -1,69 +1,79 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
+// src/modules/profile/profile.controller.ts
 import {
   Controller,
+  Get,
   Post,
-  UseGuards,
+  Patch,
   UploadedFile,
   UseInterceptors,
-  Req,
-  Put,
+  UseGuards,
   Body,
-  Get,
-  BadRequestException,
-  Param,
+  Req,
+  Logger,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ProfileService } from './profile.service';
-import { AuthGuard } from '../../common/guards/auth.guard';
+import { AuthGuard } from '../../common/guards/auth.guard'; // your existing auth guard
+import { Request } from 'express';
 
 @Controller('profile')
 export class ProfileController {
-  constructor(private readonly profile: ProfileService) {}
+  private readonly logger = new Logger(ProfileController.name);
+  constructor(private readonly svc: ProfileService) {}
 
+  // get my profile
+  @UseGuards(AuthGuard)
+  @Get('me')
+  async me(@Req() req: Request) {
+    // assume your AuthGuard attaches userId to req.user?.id
+    const userId = (req as any).user?.id;
+    return await this.svc.getProfile(userId);
+  }
+
+  // update profile body fields
+  @UseGuards(AuthGuard)
+  @Patch()
+  async update(@Req() req: Request, @Body() body: any) {
+    const userId = (req as any).user?.id;
+    return await this.svc.updateProfile(userId, body);
+  }
+
+  // upload avatar (multipart form-data with file field 'file')
   @UseGuards(AuthGuard)
   @Post('avatar')
   @UseInterceptors(FileInterceptor('file'))
-  async uploadAvatar(@Req() req: any, @UploadedFile() file: Express.Multer.File) {
-    if (!file) throw new BadRequestException('No file provided');
-
-    return this.profile.uploadAvatar(
-      req.user.id,
-      file.buffer,
-      file.originalname,
-      file.mimetype,
-    );
+  async uploadAvatar(@Req() req: Request, @UploadedFile() file: Express.Multer.File) {
+    const userId = (req as any).user?.id;
+    if (!file) throw new Error('no file uploaded');
+    const url = await this.svc.uploadAvatar(userId, file.buffer, file.originalname, file.mimetype);
+    return { url };
   }
 
+  // upload cover
   @UseGuards(AuthGuard)
   @Post('cover')
   @UseInterceptors(FileInterceptor('file'))
-  async uploadCover(@Req() req: any, @UploadedFile() file: Express.Multer.File) {
-    if (!file) throw new BadRequestException('No file provided');
-
-    return this.profile.uploadCover(
-      req.user.id,
-      file.buffer,
-      file.originalname,
-      file.mimetype,
-    );
+  async uploadCover(@Req() req: Request, @UploadedFile() file: Express.Multer.File) {
+    const userId = (req as any).user?.id;
+    if (!file) throw new Error('no file uploaded');
+    const url = await this.svc.uploadCover(userId, file.buffer, file.originalname, file.mimetype);
+    return { url };
   }
 
   @UseGuards(AuthGuard)
-  @Put()
-  async updateProfile(@Req() req: any, @Body() body: any) {
-    return this.profile.updateProfile(req.user.id, body);
+  @Get('default-cover/random')
+  async randomDefaultCover() {
+    const url = await this.svc.getRandomDefaultCover();
+    return { url };
   }
 
-  @UseGuards(AuthGuard)
-  @Get('me')
-  async getMe(@Req() req: any) {
-    return this.profile.getProfile(req.user.id);
-  }
-
-  @Get(':id')
-  async getProfile(@Param('id') id: string) {
-    return this.profile.getProfile(id);
+  @Get('interests')
+  async interests() {
+    const rows = await this.svc.listInterests();
+    return { data: rows };
   }
 }
