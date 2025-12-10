@@ -1,65 +1,76 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
   Controller,
   Get,
   Post,
   Patch,
-  UploadedFile,
-  UseInterceptors,
   UseGuards,
   Body,
   Req,
   Logger,
 } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { AuthGuard } from '../../common/guards/auth.guard';
 import { ProfileService } from './profile.service';
-import { AuthGuard } from '../../common/guards/auth.guard'; // your existing auth guard
 import { Request } from 'express';
+import { UserRole } from '@prisma/client';
 
 @Controller('profile')
 export class ProfileController {
   private readonly logger = new Logger(ProfileController.name);
   constructor(private readonly svc: ProfileService) {}
 
-  // get my profile
+  // Get my profile
   @UseGuards(AuthGuard)
   @Get('me')
-  async me(@Req() req: Request) {
-    // assume your AuthGuard attaches userId to req.user?.id
-    const userId = (req as any).user?.id;
+  async me(@Req() req: any) {
+    const userId = req.user?.id;
     return await this.svc.getProfile(userId);
   }
 
-  // update profile body fields
+  // Update profile text fields
   @UseGuards(AuthGuard)
   @Patch()
-  async update(@Req() req: Request, @Body() body: any) {
-    const userId = (req as any).user?.id;
+  async update(@Req() req: any, @Body() body: any) {
+    const userId = req.user?.id;
     return await this.svc.updateProfile(userId, body);
   }
 
-  // upload avatar (multipart form-data with file field 'file')
+  // ✅ Upload avatar (Fastify style)
   @UseGuards(AuthGuard)
   @Post('avatar')
-  @UseInterceptors(FileInterceptor('file'))
-  async uploadAvatar(@Req() req: Request, @UploadedFile() file: Express.Multer.File) {
-    const userId = (req as any).user?.id;
-    if (!file) throw new Error('no file uploaded');
-    const url = await this.svc.uploadAvatar(userId, file.buffer, file.originalname, file.mimetype);
+  async uploadAvatar(@Req() req: any) {
+    const userId = req.user?.id;
+    
+    const file = await req.file(); // Fastify multipart
+    if (!file) throw new Error('No file uploaded');
+    
+    const buffer = await file.toBuffer();
+    const url = await this.svc.uploadAvatar(
+      userId,
+      buffer,
+      file.filename,
+      file.mimetype,
+    );
     return { url };
   }
 
-  // upload cover
+  // ✅ Upload cover (Fastify style)
   @UseGuards(AuthGuard)
   @Post('cover')
-  @UseInterceptors(FileInterceptor('file'))
-  async uploadCover(@Req() req: Request, @UploadedFile() file: Express.Multer.File) {
-    const userId = (req as any).user?.id;
-    if (!file) throw new Error('no file uploaded');
-    const url = await this.svc.uploadCover(userId, file.buffer, file.originalname, file.mimetype);
+  async uploadCover(@Req() req: any) {
+    const userId = req.user?.id;
+    
+    const file = await req.file(); // Fastify multipart
+    if (!file) throw new Error('No file uploaded');
+    
+    const buffer = await file.toBuffer();
+    const url = await this.svc.uploadCover(
+      userId,
+      buffer,
+      file.filename,
+      file.mimetype,
+    );
     return { url };
   }
 

@@ -8,7 +8,7 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
   imports: [
     SupabaseModule,
-    JwtModule.register({})
+    JwtModule.register({}) // Makes JwtService available to AuthGuard
   ],
   controllers: [ProfileController],
   providers: [ProfileService, PrismaService],
