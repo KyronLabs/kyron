@@ -1,4 +1,8 @@
 "use strict";
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,15 +15,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ProfileService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProfileService = void 0;
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-// src/modules/profile/profile.service.ts
 const common_1 = require("@nestjs/common");
 const supabase_service_1 = require("../../infrastructure/supabase/supabase.service");
 const prisma_service_1 = require("../../infrastructure/prisma/prisma.service");
-const uuid_1 = require("uuid");
 let ProfileService = ProfileService_1 = class ProfileService {
     constructor(supabase, prisma) {
         this.supabase = supabase;
@@ -27,77 +25,98 @@ let ProfileService = ProfileService_1 = class ProfileService {
         this.logger = new common_1.Logger(ProfileService_1.name);
     }
     buildFileName(userId, prefix, originalName) {
-        const ext = originalName.includes('.')
-            ? originalName.split('.').pop()
-            : 'bin';
+        const ext = originalName.includes('.') ? originalName.split('.').pop() : 'bin';
         return `${userId}_${prefix}_${Date.now()}.${ext}`;
     }
+    /** Upload avatar buffer to storage, update profile row in Supabase */
     async uploadAvatar(userId, fileBuffer, originalName, mimeType) {
         if (!fileBuffer || fileBuffer.length === 0)
             throw new common_1.BadRequestException('Empty file');
         const filename = this.buildFileName(userId, 'avatar', originalName);
-        const { publicUrl } = await this.supabase.uploadFile(this.supabase.getAvatarFolder(), filename, fileBuffer, mimeType);
-        // upsert user profile if missing
-        await this.prisma.userProfile.upsert({
-            where: { userId },
-            update: { avatarUrl: publicUrl },
-            create: { userId, avatarUrl: publicUrl },
+        const folder = this.supabase.getAvatarFolder(); // e.g. avatars
+        const { publicUrl } = await this.supabase.uploadFile(folder, filename, fileBuffer, mimeType);
+        // Upsert profile row in Supabase table
+        await this.supabase.upsertProfileRow({
+            user_id: userId,
+            avatar_url: publicUrl,
+            updated_at: new Date().toISOString(),
         });
         this.logger.log(`Avatar uploaded for ${userId}: ${publicUrl}`);
         return publicUrl;
     }
+    /** Upload cover buffer to storage, update profile row in Supabase */
     async uploadCover(userId, fileBuffer, originalName, mimeType) {
         if (!fileBuffer || fileBuffer.length === 0)
             throw new common_1.BadRequestException('Empty file');
         const filename = this.buildFileName(userId, 'cover', originalName);
-        const { publicUrl } = await this.supabase.uploadFile(this.supabase.getCoverFolder(), filename, fileBuffer, mimeType);
-        await this.prisma.userProfile.upsert({
-            where: { userId },
-            update: { coverUrl: publicUrl },
-            create: { userId, coverUrl: publicUrl },
+        const folder = `${this.supabase.getCoverFolder()}`; // e.g. covers
+        const { publicUrl } = await this.supabase.uploadFile(folder, filename, fileBuffer, mimeType);
+        await this.supabase.upsertProfileRow({
+            user_id: userId,
+            cover_url: publicUrl,
+            updated_at: new Date().toISOString(),
         });
         this.logger.log(`Cover uploaded for ${userId}: ${publicUrl}`);
         return publicUrl;
     }
+    /** Update profile fields and interests */
     async updateProfile(userId, payload) {
         const { name, bio, location, website, interests } = payload;
-        // upsert profile
-        await this.prisma.userProfile.upsert({
-            where: { userId },
-            create: { userId, bio, location, website },
-            update: { bio, location, website },
+        await this.supabase.upsertProfileRow({
+            user_id: userId,
+            display_name: name ?? undefined,
+            bio: bio ?? undefined,
+            location: location ?? undefined,
+            website: website ?? undefined,
+            updated_at: new Date().toISOString(),
         });
-        // update user display name
+        // If display name present, also persist to users via Prisma (optional)
         if (typeof name !== 'undefined') {
             await this.prisma.user.update({
                 where: { id: userId },
-                data: { name },
+                data: { name: name ?? null },
             });
         }
-        // replace interests
+        // Replace interests using Supabase table
         if (Array.isArray(interests)) {
-            // remove any existing then create new relations
-            await this.prisma.userInterest.deleteMany({ where: { userId } });
-            const connect = interests.map((interestId) => ({
-                id: (0, uuid_1.v4)(),
-                userId,
-                interestId,
-            }));
-            if (connect.length > 0) {
-                await this.prisma.userInterest.createMany({
-                    data: connect,
-                    skipDuplicates: true,
-                });
-            }
+            // validate interest ids exist optionally
+            await this.supabase.replaceUserInterests(userId, interests);
         }
         return { ok: true };
     }
+    /** Get combined user + profile + interests */
     async getProfile(userId) {
+        // get user from Prisma (authoritative)
         const user = await this.prisma.user.findUnique({
             where: { id: userId },
-            include: { profile: true, interests: { include: { interest: true } } },
+            select: {
+                id: true,
+                email: true,
+                username: true,
+                name: true,
+                role: true,
+                createdAt: true,
+            },
         });
-        return user;
+        // get profile from Supabase
+        const profile = await this.supabase.getProfileRow(userId);
+        // get interests joined
+        const interests = await this.supabase.getClient()
+            .from('user_interests')
+            .select('interest_id, interests(name, slug)')
+            .eq('user_id', userId);
+        // Assemble clean object
+        return {
+            user,
+            profile,
+            interests: Array.isArray(interests.data) ? interests.data : [],
+        };
+    }
+    async listInterests() {
+        return await this.supabase.listInterests();
+    }
+    async getRandomDefaultCover() {
+        return await this.supabase.getRandomDefaultCover();
     }
 };
 exports.ProfileService = ProfileService;

@@ -15,6 +15,7 @@ const auth_controller_1 = require("./auth.controller");
 const prisma_service_1 = require("../../infrastructure/prisma/prisma.service");
 const email_service_1 = require("../../infrastructure/email/email.service");
 const users_module_1 = require("../users/users.module");
+const supabase_module_1 = require("../../infrastructure/supabase/supabase.module");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
@@ -22,6 +23,7 @@ exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
         imports: [
             users_module_1.UsersModule,
+            supabase_module_1.SupabaseModule,
             jwt_1.JwtModule.register({
                 secret: process.env.JWT_SECRET,
                 signOptions: { expiresIn: Number(process.env.JWT_EXPIRES_SECONDS || 900) },

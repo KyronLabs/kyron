@@ -55,13 +55,15 @@ const argon2 = __importStar(require("argon2"));
 const crypto = __importStar(require("crypto"));
 const prisma_service_1 = require("../../infrastructure/prisma/prisma.service");
 const email_service_1 = require("../../infrastructure/email/email.service");
+const supabase_service_1 = require("../../infrastructure/supabase/supabase.service");
 const client_1 = require("@prisma/client");
 const library_1 = require("@prisma/client/runtime/library");
 let AuthService = AuthService_1 = class AuthService {
-    constructor(prisma, jwt, emailService) {
+    constructor(prisma, jwt, emailService, supabase) {
         this.prisma = prisma;
         this.jwt = jwt;
         this.emailService = emailService;
+        this.supabase = supabase;
         this.logger = new common_1.Logger(AuthService_1.name);
     }
     generateCode() {
@@ -127,7 +129,6 @@ let AuthService = AuthService_1 = class AuthService {
             });
             await this.emailService.sendVerifyCode(email, code);
             this.logger.log(`User registered: ${user.id}`);
-            // IMPORTANT: return a stable key called `userId` so clients can rely on it
             return {
                 message: 'Verification email sent',
                 userId: user.id,
@@ -155,6 +156,8 @@ let AuthService = AuthService_1 = class AuthService {
                 throw new common_1.BadRequestException('Invalid verification code');
             }
             if (rec.expiresAt < new Date()) {
+                // remove expired record (optional)
+                await this.prisma.emailVerification.delete({ where: { userId } }).catch(() => { });
                 throw new common_1.BadRequestException('Verification code expired');
             }
             if (rec.code !== code) {
@@ -166,6 +169,7 @@ let AuthService = AuthService_1 = class AuthService {
                 });
                 throw new common_1.BadRequestException('Invalid verification code');
             }
+            // mark email verified on user
             await this.prisma.user.update({
                 where: { id: userId },
                 data: {
@@ -173,7 +177,9 @@ let AuthService = AuthService_1 = class AuthService {
                     emailStatus: client_1.EmailStatus.VERIFIED,
                 },
             });
+            // cleanup verification record
             await this.prisma.emailVerification.delete({ where: { userId } });
+            // fetch user with profile
             const user = await this.prisma.user.findUnique({
                 where: { id: userId },
                 include: { profile: true },
@@ -181,13 +187,64 @@ let AuthService = AuthService_1 = class AuthService {
             if (!user) {
                 throw new common_1.InternalServerErrorException('User not found after verification');
             }
+            // --- ensure profile exists and has a coverUrl ---
+            // NOTE: this.supabase.getRandomDefaultCover() must return a public HTTP URL (string)
+            try {
+                if (!user.profile) {
+                    // create profile with a default cover (if available)
+                    let coverUrl = null;
+                    try {
+                        coverUrl = await this.supabase.getRandomDefaultCover();
+                    }
+                    catch (e) {
+                        // don't crash verification on supabase failure; log and continue
+                        this.logger.error(`Failed to fetch default cover from storage: ${String(e)}`);
+                        coverUrl = null;
+                    }
+                    await this.prisma.userProfile.create({
+                        data: {
+                            userId,
+                            avatarUrl: null,
+                            coverUrl,
+                        },
+                    });
+                }
+                else if (!user.profile.coverUrl) {
+                    // set cover only if missing
+                    let coverUrl = null;
+                    try {
+                        coverUrl = await this.supabase.getRandomDefaultCover();
+                    }
+                    catch (e) {
+                        this.logger.error(`Failed to fetch default cover from storage: ${String(e)}`);
+                        coverUrl = null;
+                    }
+                    if (coverUrl) {
+                        await this.prisma.userProfile.update({
+                            where: { userId },
+                            data: { coverUrl },
+                        });
+                    }
+                }
+            }
+            catch (err) {
+                // log but don't fail verification for non-critical profile/cover writes
+                this.logger.error(`Profile/cover assignment failed for user ${userId}: ${String(err)}`);
+            }
             this.logger.log(`Email verified for user: ${userId}`);
-            return this.issueTokensForUser(user);
+            // return tokens for the user (issueTokensForUser expects a User object)
+            // Re-fetch user to have latest profile - optional but safe
+            const refreshedUser = await this.prisma.user.findUnique({
+                where: { id: userId },
+            });
+            if (!refreshedUser) {
+                throw new common_1.InternalServerErrorException('User not found after verification (final)');
+            }
+            return this.issueTokensForUser(refreshedUser);
         }
         catch (error) {
-            if (error instanceof common_1.BadRequestException) {
+            if (error instanceof common_1.BadRequestException)
                 throw error;
-            }
             const errorMessage = this.isError(error) ? error.message : String(error);
             this.logger.error(`Email verification failed: ${errorMessage}`, this.isError(error) ? error.stack : undefined);
             throw new common_1.InternalServerErrorException('Verification failed. Please try again.');
@@ -445,6 +502,7 @@ exports.AuthService = AuthService = AuthService_1 = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService,
         jwt_1.JwtService,
-        email_service_1.EmailService])
+        email_service_1.EmailService,
+        supabase_service_1.SupabaseService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

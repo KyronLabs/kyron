@@ -17,6 +17,7 @@ const prisma_module_1 = require("./infrastructure/prisma/prisma.module");
 const config_module_1 = require("./config/config.module");
 const users_module_1 = require("./modules/users/users.module");
 const auth_module_1 = require("./modules/auth/auth.module");
+const profile_module_1 = require("./modules/profile/profile.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -32,6 +33,7 @@ exports.AppModule = AppModule = __decorate([
             gateway_module_1.GatewayModule,
             users_module_1.UsersModule,
             auth_module_1.AuthModule,
+            profile_module_1.ProfileModule,
         ],
         controllers: [],
         providers: [],

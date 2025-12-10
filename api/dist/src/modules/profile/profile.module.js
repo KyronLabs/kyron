@@ -7,19 +7,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProfileModule = void 0;
-// src/modules/profile/profile.module.ts
 const common_1 = require("@nestjs/common");
 const profile_service_1 = require("./profile.service");
 const profile_controller_1 = require("./profile.controller");
-const supabase_service_1 = require("../../infrastructure/supabase/supabase.service");
+const supabase_module_1 = require("../../infrastructure/supabase/supabase.module");
 const prisma_service_1 = require("../../infrastructure/prisma/prisma.service");
 let ProfileModule = class ProfileModule {
 };
 exports.ProfileModule = ProfileModule;
 exports.ProfileModule = ProfileModule = __decorate([
     (0, common_1.Module)({
+        imports: [supabase_module_1.SupabaseModule],
         controllers: [profile_controller_1.ProfileController],
-        providers: [profile_service_1.ProfileService, supabase_service_1.SupabaseService, prisma_service_1.PrismaService],
+        providers: [profile_service_1.ProfileService, prisma_service_1.PrismaService],
         exports: [profile_service_1.ProfileService],
     })
 ], ProfileModule);

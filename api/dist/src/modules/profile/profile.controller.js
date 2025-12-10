@@ -1,4 +1,7 @@
 "use strict";
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,87 +14,106 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var ProfileController_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProfileController = void 0;
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-// src/modules/profile/profile.controller.ts
 const common_1 = require("@nestjs/common");
 const platform_express_1 = require("@nestjs/platform-express");
 const profile_service_1 = require("./profile.service");
-const update_profile_dto_1 = require("./dto/update-profile.dto");
-const auth_guard_1 = require("../../common/guards/auth.guard"); // assume you have a guard
-let ProfileController = class ProfileController {
+const auth_guard_1 = require("../../common/guards/auth.guard"); // your existing auth guard
+let ProfileController = ProfileController_1 = class ProfileController {
     constructor(svc) {
         this.svc = svc;
+        this.logger = new common_1.Logger(ProfileController_1.name);
     }
-    // Avatar upload (multipart/form-data -> file)
-    async uploadAvatar(file, req) {
-        const userId = req.user?.sub;
-        if (!userId)
-            throw new common_1.BadRequestException('No user');
+    // get my profile
+    async me(req) {
+        // assume your AuthGuard attaches userId to req.user?.id
+        const userId = req.user?.id;
+        return await this.svc.getProfile(userId);
+    }
+    // update profile body fields
+    async update(req, body) {
+        const userId = req.user?.id;
+        return await this.svc.updateProfile(userId, body);
+    }
+    // upload avatar (multipart form-data with file field 'file')
+    async uploadAvatar(req, file) {
+        const userId = req.user?.id;
         if (!file)
-            throw new common_1.BadRequestException('File required');
+            throw new Error('no file uploaded');
         const url = await this.svc.uploadAvatar(userId, file.buffer, file.originalname, file.mimetype);
         return { url };
     }
-    async uploadCover(file, req) {
-        const userId = req.user?.sub;
-        if (!userId)
-            throw new common_1.BadRequestException('No user');
+    // upload cover
+    async uploadCover(req, file) {
+        const userId = req.user?.id;
         if (!file)
-            throw new common_1.BadRequestException('File required');
+            throw new Error('no file uploaded');
         const url = await this.svc.uploadCover(userId, file.buffer, file.originalname, file.mimetype);
         return { url };
     }
-    // update profile metadata & interests
-    async updateProfile(body, req) {
-        const userId = req.user?.sub;
-        return await this.svc.updateProfile(userId, body);
+    async randomDefaultCover() {
+        const url = await this.svc.getRandomDefaultCover();
+        return { url };
     }
-    async getProfile(id) {
-        return await this.svc.getProfile(id);
+    async interests() {
+        const rows = await this.svc.listInterests();
+        return { data: rows };
     }
 };
 exports.ProfileController = ProfileController;
 __decorate([
-    (0, common_1.Post)('avatar'),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Get)('me'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], ProfileController.prototype, "me", null);
+__decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Patch)(),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], ProfileController.prototype, "update", null);
+__decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Post)('avatar'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file')),
-    __param(0, (0, common_1.UploadedFile)()),
-    __param(1, (0, common_1.Req)()),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], ProfileController.prototype, "uploadAvatar", null);
 __decorate([
-    (0, common_1.Post)('cover'),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Post)('cover'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file')),
-    __param(0, (0, common_1.UploadedFile)()),
-    __param(1, (0, common_1.Req)()),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], ProfileController.prototype, "uploadCover", null);
 __decorate([
-    (0, common_1.Patch)(),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
-    __param(0, (0, common_1.Body)()),
-    __param(1, (0, common_1.Req)()),
+    (0, common_1.Get)('default-cover/random'),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [update_profile_dto_1.UpdateProfileDto, Object]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], ProfileController.prototype, "updateProfile", null);
+], ProfileController.prototype, "randomDefaultCover", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)('interests'),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], ProfileController.prototype, "getProfile", null);
-exports.ProfileController = ProfileController = __decorate([
+], ProfileController.prototype, "interests", null);
+exports.ProfileController = ProfileController = ProfileController_1 = __decorate([
     (0, common_1.Controller)('profile'),
     __metadata("design:paramtypes", [profile_service_1.ProfileService])
 ], ProfileController);

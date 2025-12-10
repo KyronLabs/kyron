@@ -15,13 +15,14 @@ const prisma_service_1 = require("./infrastructure/prisma/prisma.service");
 async function bootstrap() {
     const logger = new common_1.Logger('Bootstrap');
     const app = await core_1.NestFactory.create(app_module_1.AppModule, new platform_fastify_1.FastifyAdapter({ logger: false }), { bufferLogs: true });
+    // 🔊  FORCE  ALL  LOG  LEVELS  (error / warn / log / debug / verbose)
+    app.useLogger(['error', 'warn', 'log', 'debug', 'verbose']);
     const config = app.get(config_1.ConfigService);
     await app.register(helmet_1.default);
     await app.register(rate_limit_1.default, {
         max: config.get('RATE_LIMIT_MAX') ?? 100,
-        timeWindow: 60 * 1000, // ms instead of human string
+        timeWindow: 60 * 1000,
     });
-    app.useLogger(logger);
     app.enableCors({
         origin: config.get('CORS_ORIGIN') || true,
         credentials: true,

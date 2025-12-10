@@ -38,7 +38,6 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsArray)(),
-    (0, class_validator_1.ArrayUnique)(),
     __metadata("design:type", Array)
 ], UpdateProfileDto.prototype, "interests", void 0);
 //# sourceMappingURL=update-profile.dto.js.map
