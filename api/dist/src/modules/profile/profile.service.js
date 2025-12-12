@@ -164,7 +164,7 @@ let ProfileService = ProfileService_1 = class ProfileService {
         const cleanIds = targetIds
             .filter((id) => id !== userId)
             .filter((v, i, a) => a.indexOf(v) === i);
-        await this.prisma.userFollowers.createMany({
+        await this.prisma.follow.createMany({
             data: cleanIds.map((id) => ({
                 followerId: userId,
                 followingId: id,
@@ -202,13 +202,13 @@ let ProfileService = ProfileService_1 = class ProfileService {
             return this.getRandomSuggestedUsers(userId);
         }
         const { data: profiles, error: profileErr } = await client
-            .from('profiles')
+            .from('user_profiles')
             .select('*')
             .in('user_id', relatedUserIds)
             .limit(50);
         if (profileErr)
             throw new Error(profileErr.message);
-        const followingRows = await this.prisma.userFollowers.findMany({
+        const followingRows = await this.prisma.follow.findMany({
             where: {
                 followerId: userId,
                 followingId: { in: relatedUserIds },
@@ -229,14 +229,14 @@ let ProfileService = ProfileService_1 = class ProfileService {
     async getRandomSuggestedUsers(userId) {
         const client = this.supabase.getClient();
         const { data, error } = await client
-            .from('profiles')
+            .from('user_profiles')
             .select('*')
             .neq('user_id', userId)
             .order('updated_at', { ascending: false })
             .limit(20);
         if (error)
             throw new Error(error.message);
-        const followingRows = await this.prisma.userFollowers.findMany({
+        const followingRows = await this.prisma.follow.findMany({
             where: {
                 followerId: userId,
                 followingId: { in: data.map((x) => x.user_id) },
