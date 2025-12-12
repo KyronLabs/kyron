@@ -216,7 +216,7 @@ export class ProfileService {
       .filter((id) => id !== userId)
       .filter((v, i, a) => a.indexOf(v) === i);
 
-    await this.prisma.userFollowers.createMany({
+    await this.prisma.follow.createMany({
       data: cleanIds.map((id) => ({
         followerId: userId,
         followingId: id,
@@ -271,7 +271,7 @@ export class ProfileService {
 
     if (profileErr) throw new Error(profileErr.message);
 
-    const followingRows = await this.prisma.userFollowers.findMany({
+    const followingRows = await this.prisma.follow.findMany({
       where: {
         followerId: userId,
         followingId: { in: relatedUserIds },
@@ -304,7 +304,7 @@ export class ProfileService {
 
     if (error) throw new Error(error.message);
 
-    const followingRows = await this.prisma.userFollowers.findMany({
+    const followingRows = await this.prisma.follow.findMany({
       where: {
         followerId: userId,
         followingId: { in: data.map((x: any) => x.user_id) },
