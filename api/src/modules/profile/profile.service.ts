@@ -134,4 +134,49 @@ export class ProfileService {
   async getRandomDefaultCover() {
     return await this.supabase.getRandomDefaultCover();
   }
+
+  async saveInterests(userId: string, labels: string[]) {
+  this.logger.log(`Saving interests for user ${userId}: ${labels}`);
+
+  // normalize all names/slugs
+  const normalized = labels.map(l => l.toLowerCase().trim());
+
+  // 1. Fetch matching interest rows from Supabase
+  const { data: interestRows, error: fetchErr } = await this.supabase
+    .getClient()
+    .from('interests')
+    .select('id, slug, name')
+    .in('slug', normalized);
+
+  if (fetchErr) throw new Error(fetchErr.message);
+
+  if (!interestRows || interestRows.length === 0) {
+    throw new BadRequestException('No valid interests found.');
+  }
+
+  // 2. Delete old interests
+  const { error: delErr } = await this.supabase
+    .getClient()
+    .from('user_interests')
+    .delete()
+    .eq('user_id', userId);
+
+  if (delErr) throw new Error(delErr.message);
+
+  // 3. Insert new
+  const payload = interestRows.map(row => ({
+    user_id: userId,
+    interest_id: row.id,
+  }));
+
+  const { error: insertErr } = await this.supabase
+    .getClient()
+    .from('user_interests')
+    .insert(payload);
+
+  if (insertErr) throw new Error(insertErr.message);
+
+  return { ok: true, count: payload.length };
+  }
+
 }

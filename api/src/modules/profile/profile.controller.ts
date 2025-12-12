@@ -9,6 +9,7 @@ import {
   Body,
   Req,
   Logger,
+  BadRequestException,
 } from '@nestjs/common';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import { ProfileService } from './profile.service';
@@ -86,4 +87,19 @@ export class ProfileController {
     const rows = await this.svc.listInterests();
     return { data: rows };
   }
+
+  // Save user interests (Onboarding Step 2)
+  @UseGuards(AuthGuard)
+  @Post('interests')
+  async saveInterests(@Req() req: any, @Body() body: any) {
+   const userId = req.user?.id;
+    const interests = body.interests as string[];
+
+    if (!Array.isArray(interests)) {
+      throw new BadRequestException('Invalid interests array');
+  }
+
+    return await this.svc.saveInterests(userId, interests);
+  }
+
 }
