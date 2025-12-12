@@ -6,7 +6,6 @@
 import { Injectable, Logger, BadRequestException } from '@nestjs/common';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class ProfileService {
@@ -22,32 +21,59 @@ export class ProfileService {
     return `${userId}_${prefix}_${Date.now()}.${ext}`;
   }
 
-  /** Upload avatar buffer to storage, update profile row in Supabase */
-  async uploadAvatar(userId: string, fileBuffer: Buffer, originalName: string, mimeType?: string) {
-    if (!fileBuffer || fileBuffer.length === 0) throw new BadRequestException('Empty file');
+  /* ------------------------------------------
+   *  UPLOAD AVATAR
+   * ---------------------------------------- */
+  async uploadAvatar(
+    userId: string,
+    fileBuffer: Buffer,
+    originalName: string,
+    mimeType?: string,
+  ) {
+    if (!fileBuffer || fileBuffer.length === 0)
+      throw new BadRequestException('Empty file');
 
     const filename = this.buildFileName(userId, 'avatar', originalName);
-    const folder = this.supabase.getAvatarFolder(); // e.g. avatars
-    const { publicUrl } = await this.supabase.uploadFile(folder, filename, fileBuffer, mimeType);
+    const folder = this.supabase.getAvatarFolder();
 
-    // Upsert profile row in Supabase table
+    const { publicUrl } = await this.supabase.uploadFile(
+      folder,
+      filename,
+      fileBuffer,
+      mimeType,
+    );
+
     await this.supabase.upsertProfileRow({
       user_id: userId,
       avatar_url: publicUrl,
       updated_at: new Date().toISOString(),
     });
 
-    this.logger.log(`Avatar uploaded for ${userId}: ${publicUrl}`);
+    this.logger.log(`Avatar updated for ${userId}`);
     return publicUrl;
   }
 
-  /** Upload cover buffer to storage, update profile row in Supabase */
-  async uploadCover(userId: string, fileBuffer: Buffer, originalName: string, mimeType?: string) {
-    if (!fileBuffer || fileBuffer.length === 0) throw new BadRequestException('Empty file');
+  /* ------------------------------------------
+   *  UPLOAD COVER
+   * ---------------------------------------- */
+  async uploadCover(
+    userId: string,
+    fileBuffer: Buffer,
+    originalName: string,
+    mimeType?: string,
+  ) {
+    if (!fileBuffer || fileBuffer.length === 0)
+      throw new BadRequestException('Empty file');
 
     const filename = this.buildFileName(userId, 'cover', originalName);
-    const folder = `${this.supabase.getCoverFolder()}`; // e.g. covers
-    const { publicUrl } = await this.supabase.uploadFile(folder, filename, fileBuffer, mimeType);
+    const folder = this.supabase.getCoverFolder();
+
+    const { publicUrl } = await this.supabase.uploadFile(
+      folder,
+      filename,
+      fileBuffer,
+      mimeType,
+    );
 
     await this.supabase.upsertProfileRow({
       user_id: userId,
@@ -55,18 +81,23 @@ export class ProfileService {
       updated_at: new Date().toISOString(),
     });
 
-    this.logger.log(`Cover uploaded for ${userId}: ${publicUrl}`);
+    this.logger.log(`Cover updated for ${userId}`);
     return publicUrl;
   }
 
-  /** Update profile fields and interests */
-  async updateProfile(userId: string, payload: {
-    name?: string;
-    bio?: string;
-    location?: string;
-    website?: string;
-    interests?: string[];
-  }) {
+  /* ------------------------------------------
+   *  UPDATE PROFILE DATA
+   * ---------------------------------------- */
+  async updateProfile(
+    userId: string,
+    payload: {
+      name?: string;
+      bio?: string;
+      location?: string;
+      website?: string;
+      interests?: string[];
+    },
+  ) {
     const { name, bio, location, website, interests } = payload;
 
     await this.supabase.upsertProfileRow({
@@ -78,7 +109,6 @@ export class ProfileService {
       updated_at: new Date().toISOString(),
     });
 
-    // If display name present, also persist to users via Prisma (optional)
     if (typeof name !== 'undefined') {
       await this.prisma.user.update({
         where: { id: userId },
@@ -86,18 +116,17 @@ export class ProfileService {
       });
     }
 
-    // Replace interests using Supabase table
     if (Array.isArray(interests)) {
-      // validate interest ids exist optionally
       await this.supabase.replaceUserInterests(userId, interests);
     }
 
     return { ok: true };
   }
 
-  /** Get combined user + profile + interests */
+  /* ------------------------------------------
+   *  GET USER PROFILE
+   * ---------------------------------------- */
   async getProfile(userId: string) {
-    // get user from Prisma (authoritative)
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
       select: {
@@ -110,94 +139,186 @@ export class ProfileService {
       },
     });
 
-    // get profile from Supabase
     const profile = await this.supabase.getProfileRow(userId);
 
-    // get interests joined
-    const interests = await this.supabase.getClient()
+    const interests = await this.supabase
+      .getClient()
       .from('user_interests')
-      .select('interest_id, interests(name, slug)')
+      .select('interest_id, interest(id, name, slug)')
       .eq('user_id', userId);
 
-    // Assemble clean object
     return {
       user,
       profile,
-      interests: Array.isArray((interests as any).data) ? (interests as any).data : [],
+      interests: Array.isArray((interests as any).data)
+        ? (interests as any).data
+        : [],
     };
   }
 
   async listInterests() {
-    return await this.supabase.listInterests();
+    return this.supabase.listInterests();
   }
 
   async getRandomDefaultCover() {
-    return await this.supabase.getRandomDefaultCover();
+    return this.supabase.getRandomDefaultCover();
   }
 
+  /* ------------------------------------------
+   *  SAVE INTERESTS
+   * ---------------------------------------- */
   async saveInterests(userId: string, labels: string[]) {
-  this.logger.log(`Saving interests for user ${userId}: ${labels}`);
+    this.logger.log(`Saving interests for ${userId}`);
 
-  // normalize all names/slugs
-  const normalized = labels.map(l => l.toLowerCase().trim());
+    const normalized = labels.map((l) => l.toLowerCase().trim());
 
-  // 1. Fetch matching interest rows from Supabase
-  const { data: interestRows, error: fetchErr } = await this.supabase
-    .getClient()
-    .from('interests')
-    .select('id, slug, name')
-    .in('slug', normalized);
+    const { data: interestRows, error: fetchErr } = await this.supabase
+      .getClient()
+      .from('interests')
+      .select('id, slug, name')
+      .in('slug', normalized);
 
-  if (fetchErr) throw new Error(fetchErr.message);
+    if (fetchErr) throw new Error(fetchErr.message);
 
-  if (!interestRows || interestRows.length === 0) {
-    throw new BadRequestException('No valid interests found.');
+    if (!interestRows || interestRows.length === 0)
+      throw new BadRequestException('No valid interests found');
+
+    const { error: delErr } = await this.supabase
+      .getClient()
+      .from('user_interests')
+      .delete()
+      .eq('user_id', userId);
+
+    if (delErr) throw new Error(delErr.message);
+
+    const payload = interestRows.map((row) => ({
+      user_id: userId,
+      interest_id: row.id,
+    }));
+
+    const { error: insertErr } = await this.supabase
+      .getClient()
+      .from('user_interests')
+      .insert(payload);
+
+    if (insertErr) throw new Error(insertErr.message);
+
+    return { ok: true, count: payload.length };
   }
 
-  // 2. Delete old interests
-  const { error: delErr } = await this.supabase
-    .getClient()
-    .from('user_interests')
-    .delete()
-    .eq('user_id', userId);
-
-  if (delErr) throw new Error(delErr.message);
-
-  // 3. Insert new
-  const payload = interestRows.map(row => ({
-    user_id: userId,
-    interest_id: row.id,
-  }));
-
-  const { error: insertErr } = await this.supabase
-    .getClient()
-    .from('user_interests')
-    .insert(payload);
-
-  if (insertErr) throw new Error(insertErr.message);
-
-  return { ok: true, count: payload.length };
-  }
-
+  /* ------------------------------------------
+   *  BULK FOLLOW
+   * ---------------------------------------- */
   async followMany(userId: string, targetIds: string[]) {
-  this.logger.log(`User ${userId} following ${targetIds.length} accounts`);
+    if (targetIds.length === 0) return { ok: true, count: 0 };
 
-  if (targetIds.length === 0) return { ok: true, count: 0 };
+    const cleanIds = targetIds
+      .filter((id) => id !== userId)
+      .filter((v, i, a) => a.indexOf(v) === i);
 
-  // Remove duplicates & filter out self-follow
-  const cleanIds = targetIds
-    .filter(id => id !== userId)
-    .filter((v, i, a) => a.indexOf(v) === i);
+    await this.prisma.userFollowers.createMany({
+      data: cleanIds.map((id) => ({
+        followerId: userId,
+        followingId: id,
+      })),
+      skipDuplicates: true,
+    });
 
-  // Bulk follow via Prisma
-  await this.prisma.userFollowers.createMany({
-    data: cleanIds.map(id => ({
-      followerId: userId,
-      followingId: id,
-    })),
-    skipDuplicates: true,
-  });
+    return { ok: true, count: cleanIds.length };
+  }
 
-  return { ok: true, count: cleanIds.length };
+  /* ------------------------------------------
+   *  SUGGESTED USERS (interest matching)
+   * ---------------------------------------- */
+  async getSuggestedUsers(userId: string) {
+    this.logger.log(`Generating suggestions for ${userId}`);
+
+    const client = this.supabase.getClient();
+
+    const { data: myInterests, error: myErr } = await client
+      .from('user_interests')
+      .select('interest_id')
+      .eq('user_id', userId);
+
+    if (myErr) throw new Error(myErr.message);
+
+    const interestIds = (myInterests ?? []).map((i) => i.interest_id);
+
+    if (interestIds.length === 0) {
+      return this.getRandomSuggestedUsers(userId);
+    }
+
+    const { data: matches, error: matchErr } = await client
+      .from('user_interests')
+      .select('user_id')
+      .in('interest_id', interestIds);
+
+    if (matchErr) throw new Error(matchErr.message);
+
+    const relatedUserIds = [
+      ...new Set(matches.map((m: any) => m.user_id).filter((id) => id !== userId)),
+    ];
+
+    if (relatedUserIds.length === 0) {
+      return this.getRandomSuggestedUsers(userId);
+    }
+
+    const { data: profiles, error: profileErr } = await client
+      .from('profiles')
+      .select('*')
+      .in('user_id', relatedUserIds)
+      .limit(50);
+
+    if (profileErr) throw new Error(profileErr.message);
+
+    const followingRows = await this.prisma.userFollowers.findMany({
+      where: {
+        followerId: userId,
+        followingId: { in: relatedUserIds },
+      },
+    });
+
+    const followingSet = new Set(followingRows.map((f: { followingId: string }) => f.followingId));
+
+    return profiles.map((p: any) => ({
+      id: p.user_id,
+      avatar: p.avatar_url,
+      handle: p.display_name ?? '@user',
+      bio: p.bio,
+      isFollowing: followingSet.has(p.user_id),
+    }));
+  }
+
+  /* ------------------------------------------
+   *  FALLBACK SUGGESTED USERS
+   * ---------------------------------------- */
+  async getRandomSuggestedUsers(userId: string) {
+    const client = this.supabase.getClient();
+
+    const { data, error } = await client
+      .from('profiles')
+      .select('*')
+      .neq('user_id', userId)
+      .order('updated_at', { ascending: false })
+      .limit(20);
+
+    if (error) throw new Error(error.message);
+
+    const followingRows = await this.prisma.userFollowers.findMany({
+      where: {
+        followerId: userId,
+        followingId: { in: data.map((x: any) => x.user_id) },
+      },
+    });
+
+    const followingSet = new Set(followingRows.map((f: { followingId: string }) => f.followingId));
+
+    return data.map((p: any) => ({
+      id: p.user_id,
+      avatar: p.avatar_url,
+      handle: p.display_name ?? '@user',
+      bio: p.bio,
+      isFollowing: followingSet.has(p.user_id),
+    }));
   }
 }

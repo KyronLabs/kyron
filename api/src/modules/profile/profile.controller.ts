@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import {
   Controller,
   Get,
@@ -14,105 +15,135 @@ import {
 import { AuthGuard } from '../../common/guards/auth.guard';
 import { ProfileService } from './profile.service';
 import { Request } from 'express';
-import { UserRole } from '@prisma/client';
+
+interface AuthRequest extends Request {
+  user: {
+    id: string;
+    email: string;
+    role: string;
+  };
+}
 
 @Controller('profile')
 export class ProfileController {
   private readonly logger = new Logger(ProfileController.name);
+
   constructor(private readonly svc: ProfileService) {}
 
-  // Get my profile
+  // ------------------------------------
+  // GET MY PROFILE
+  // ------------------------------------
   @UseGuards(AuthGuard)
   @Get('me')
-  async me(@Req() req: any) {
-    const userId = req.user?.id;
-    return await this.svc.getProfile(userId);
+  async me(@Req() req: AuthRequest) {
+    return this.svc.getProfile(req.user.id);
   }
 
-  // Update profile text fields
+  // ------------------------------------
+  // UPDATE PROFILE
+  // ------------------------------------
   @UseGuards(AuthGuard)
   @Patch()
-  async update(@Req() req: any, @Body() body: any) {
-    const userId = req.user?.id;
-    return await this.svc.updateProfile(userId, body);
+  async update(@Req() req: AuthRequest, @Body() body: any) {
+    return this.svc.updateProfile(req.user.id, body);
   }
 
-  // ✅ Upload avatar (Fastify style)
+  // ------------------------------------
+  // UPLOAD AVATAR
+  // ------------------------------------
   @UseGuards(AuthGuard)
   @Post('avatar')
   async uploadAvatar(@Req() req: any) {
-    const userId = req.user?.id;
-    
-    const file = await req.file(); // Fastify multipart
+    const userId = (req as any).user.id;
+
+    const file = await req.file();
     if (!file) throw new Error('No file uploaded');
-    
+
     const buffer = await file.toBuffer();
+
     const url = await this.svc.uploadAvatar(
       userId,
       buffer,
       file.filename,
       file.mimetype,
     );
+
     return { url };
   }
 
-  // ✅ Upload cover (Fastify style)
+  // ------------------------------------
+  // UPLOAD COVER
+  // ------------------------------------
   @UseGuards(AuthGuard)
   @Post('cover')
   async uploadCover(@Req() req: any) {
-    const userId = req.user?.id;
-    
-    const file = await req.file(); // Fastify multipart
+    const userId = (req as any).user.id;
+
+    const file = await req.file();
     if (!file) throw new Error('No file uploaded');
-    
+
     const buffer = await file.toBuffer();
+
     const url = await this.svc.uploadCover(
       userId,
       buffer,
       file.filename,
       file.mimetype,
     );
+
     return { url };
   }
 
   @UseGuards(AuthGuard)
   @Get('default-cover/random')
   async randomDefaultCover() {
-    const url = await this.svc.getRandomDefaultCover();
-    return { url };
+    return { url: await this.svc.getRandomDefaultCover() };
   }
 
+  // ------------------------------------
+  // LIST INTERESTS
+  // ------------------------------------
   @Get('interests')
   async interests() {
-    const rows = await this.svc.listInterests();
-    return { data: rows };
+    return { data: await this.svc.listInterests() };
   }
 
-  // Save user interests (Onboarding Step 2)
+  // ------------------------------------
+  // SAVE INTERESTS
+  // ------------------------------------
   @UseGuards(AuthGuard)
   @Post('interests')
-  async saveInterests(@Req() req: any, @Body() body: any) {
-   const userId = req.user?.id;
-    const interests = body.interests as string[];
+  async saveInterests(@Req() req: AuthRequest, @Body() body: any) {
+    const interests = body.interests;
 
     if (!Array.isArray(interests)) {
       throw new BadRequestException('Invalid interests array');
+    }
+
+    return this.svc.saveInterests(req.user.id, interests);
   }
 
-    return await this.svc.saveInterests(userId, interests);
-  }
-
+  // ------------------------------------
+  // FOLLOW MANY
+  // ------------------------------------
   @UseGuards(AuthGuard)
   @Post('follow-many')
-  async followMany(@Req() req: any, @Body() body: any) {
-    const userId = req.user?.id;
-    const ids = body.ids as string[];
+  async followMany(@Req() req: AuthRequest, @Body() body: any) {
+    const ids = body.ids;
 
-  if (!Array.isArray(ids)) {
-    throw new BadRequestException('ids must be an array of user IDs');
+    if (!Array.isArray(ids)) {
+      throw new BadRequestException('ids must be an array of user IDs');
+    }
+
+    return this.svc.followMany(req.user.id, ids);
   }
 
-    return await this.svc.followMany(userId, ids);
+  // ------------------------------------
+  // GET SUGGESTED USERS
+  // ------------------------------------
+  @UseGuards(AuthGuard)
+  @Get('suggested')
+  async getSuggested(@Req() req: AuthRequest) {
+    return this.svc.getSuggestedUsers(req.user.id);
   }
-
 }
