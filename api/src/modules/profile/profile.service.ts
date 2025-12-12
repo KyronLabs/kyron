@@ -264,7 +264,7 @@ export class ProfileService {
     }
 
     const { data: profiles, error: profileErr } = await client
-      .from('profiles')
+      .from('user_profiles')
       .select('*')
       .in('user_id', relatedUserIds)
       .limit(50);
@@ -296,7 +296,7 @@ export class ProfileService {
     const client = this.supabase.getClient();
 
     const { data, error } = await client
-      .from('profiles')
+      .from('user_profiles')
       .select('*')
       .neq('user_id', userId)
       .order('updated_at', { ascending: false })
