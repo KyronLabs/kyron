@@ -9,16 +9,26 @@ const app_module_1 = require("./app.module");
 const platform_fastify_1 = require("@nestjs/platform-fastify");
 const helmet_1 = __importDefault(require("@fastify/helmet"));
 const rate_limit_1 = __importDefault(require("@fastify/rate-limit"));
+const multipart_1 = __importDefault(require("@fastify/multipart"));
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const prisma_service_1 = require("./infrastructure/prisma/prisma.service");
 async function bootstrap() {
     const logger = new common_1.Logger('Bootstrap');
     const app = await core_1.NestFactory.create(app_module_1.AppModule, new platform_fastify_1.FastifyAdapter({ logger: false }), { bufferLogs: true });
-    // 🔊  FORCE  ALL  LOG  LEVELS  (error / warn / log / debug / verbose)
     app.useLogger(['error', 'warn', 'log', 'debug', 'verbose']);
     const config = app.get(config_1.ConfigService);
     await app.register(helmet_1.default);
+    // ✅ Register multipart plugin (CRITICAL for file uploads)
+    await app.register(multipart_1.default, {
+        limits: {
+            fieldNameSize: 100,
+            fieldSize: 1000000,
+            fields: 10,
+            fileSize: 5000000, // 5MB
+            files: 1,
+        },
+    });
     await app.register(rate_limit_1.default, {
         max: config.get('RATE_LIMIT_MAX') ?? 100,
         timeWindow: 60 * 1000,
@@ -28,7 +38,6 @@ async function bootstrap() {
         credentials: true,
     });
     const port = config.get('PORT', 3000);
-    // Graceful shutdown: ensure Prisma disconnects cleanly
     const prismaService = app.get(prisma_service_1.PrismaService);
     await app.listen(port, '0.0.0.0');
     logger.log(`🚀 Kyron API (Fastify) running on http://localhost:${port}`);

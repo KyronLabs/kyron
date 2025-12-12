@@ -12,12 +12,16 @@ const profile_service_1 = require("./profile.service");
 const profile_controller_1 = require("./profile.controller");
 const supabase_module_1 = require("../../infrastructure/supabase/supabase.module");
 const prisma_service_1 = require("../../infrastructure/prisma/prisma.service");
+const jwt_1 = require("@nestjs/jwt");
 let ProfileModule = class ProfileModule {
 };
 exports.ProfileModule = ProfileModule;
 exports.ProfileModule = ProfileModule = __decorate([
     (0, common_1.Module)({
-        imports: [supabase_module_1.SupabaseModule],
+        imports: [
+            supabase_module_1.SupabaseModule,
+            jwt_1.JwtModule.register({}) // Makes JwtService available to AuthGuard
+        ],
         controllers: [profile_controller_1.ProfileController],
         providers: [profile_service_1.ProfileService, prisma_service_1.PrismaService],
         exports: [profile_service_1.ProfileService],
