@@ -179,4 +179,25 @@ export class ProfileService {
   return { ok: true, count: payload.length };
   }
 
+  async followMany(userId: string, targetIds: string[]) {
+  this.logger.log(`User ${userId} following ${targetIds.length} accounts`);
+
+  if (targetIds.length === 0) return { ok: true, count: 0 };
+
+  // Remove duplicates & filter out self-follow
+  const cleanIds = targetIds
+    .filter(id => id !== userId)
+    .filter((v, i, a) => a.indexOf(v) === i);
+
+  // Bulk follow via Prisma
+  await this.prisma.userFollowers.createMany({
+    data: cleanIds.map(id => ({
+      followerId: userId,
+      followingId: id,
+    })),
+    skipDuplicates: true,
+  });
+
+  return { ok: true, count: cleanIds.length };
+  }
 }

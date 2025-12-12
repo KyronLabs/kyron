@@ -12,6 +12,7 @@ export class PrismaService
   implements OnModuleInit, OnModuleDestroy
 {
   private readonly logger = new Logger(PrismaService.name);
+  userFollowers: any;
 
   async onModuleInit(): Promise<void> {
     let attempts = 0;

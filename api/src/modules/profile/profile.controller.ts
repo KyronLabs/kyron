@@ -102,4 +102,17 @@ export class ProfileController {
     return await this.svc.saveInterests(userId, interests);
   }
 
+  @UseGuards(AuthGuard)
+  @Post('follow-many')
+  async followMany(@Req() req: any, @Body() body: any) {
+    const userId = req.user?.id;
+    const ids = body.ids as string[];
+
+  if (!Array.isArray(ids)) {
+    throw new BadRequestException('ids must be an array of user IDs');
+  }
+
+    return await this.svc.followMany(userId, ids);
+  }
+
 }
