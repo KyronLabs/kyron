@@ -3,14 +3,12 @@
 // ==========================================
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters"] // keeps connection alive + retries
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  // optional: map to native UUID type and keep created_at columns immutable
-  // extensions = [uuidOssp]
 }
 
 // ==========================================
@@ -46,6 +44,10 @@ model User {
   role                UserRole        @default(USER)
   status              AccountStatus   @default(ACTIVE)
 
+  // 🔥 NEW: DID & Kyron Points
+  did                 String?         @unique
+  kyronPoints         Int             @default(0)
+
   // Email verification
   emailStatus         EmailStatus     @default(PENDING)
   emailVerifiedAt     DateTime?
@@ -70,10 +72,12 @@ model User {
   interests           UserInterest[]
   followers           Follow[]        @relation("follower")
   following           Follow[]        @relation("following")
+  kyronPointEvents    KyronPointEvent[] // 🔥 NEW
 
   @@index([email])
   @@index([status])
   @@index([username])
+  @@index([did]) // 🔥 NEW
 }
 
 // ==========================================
@@ -83,7 +87,7 @@ model UserProfile {
   id          String    @id @default(uuid()) @db.Uuid
   userId      String    @unique @db.Uuid
   avatarUrl   String?
-  coverUrl    String?   // NEW
+  coverUrl    String?
   bio         String?
   location    String?
   website     String?
@@ -217,7 +221,23 @@ model Follow {
 }
 
 // ==========================================
-// 12.  SYSTEM MODULES
+// 12.  KYRON POINTS ENGINE (IMMUTABLE)
+// ==========================================
+model KyronPointEvent {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  amount    Int
+  reason    String
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([createdAt])
+}
+
+// ==========================================
+// 13.  SYSTEM MODULES
 // ==========================================
 model SystemModule {
   id          String   @id @default(uuid()) @db.Uuid
@@ -230,7 +250,7 @@ model SystemModule {
 }
 
 // ==========================================
-// 13.  APP SETTINGS
+// 14.  APP SETTINGS
 // ==========================================
 model AppSetting {
   id          String   @id @default(uuid()) @db.Uuid

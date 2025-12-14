@@ -9,6 +9,8 @@ import {
   UseGuards,
   Body,
   Req,
+  Param,
+  Query,
   Logger,
   BadRequestException,
 } from '@nestjs/common';
@@ -30,27 +32,84 @@ export class ProfileController {
 
   constructor(private readonly svc: ProfileService) {}
 
-  // ------------------------------------
-  // GET MY PROFILE
-  // ------------------------------------
+  // ==========================================
+  // PHASE 1: GET /profile/me (CANONICAL)
+  // ==========================================
   @UseGuards(AuthGuard)
   @Get('me')
-  async me(@Req() req: AuthRequest) {
+  async getMe(@Req() req: AuthRequest) {
+    return this.svc.getMe(req.user.id);
+  }
+
+  // ==========================================
+  // PHASE 2: FOLLOW SYSTEM
+  // ==========================================
+  @UseGuards(AuthGuard)
+  @Post('follow/:targetId')
+  async follow(@Req() req: AuthRequest, @Param('targetId') targetId: string) {
+    return this.svc.follow(req.user.id, targetId);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('unfollow/:targetId')
+  async unfollow(@Req() req: AuthRequest, @Param('targetId') targetId: string) {
+    return this.svc.unfollow(req.user.id, targetId);
+  }
+
+  // ==========================================
+  // PHASE 3: KYRON POINTS
+  // ==========================================
+  @UseGuards(AuthGuard)
+  @Post('kp/award')
+  async awardKP(
+    @Req() req: AuthRequest,
+    @Body() body: { userId: string; amount: number; reason: string },
+  ) {
+    // TODO: Add admin guard or internal-only guard
+    return this.svc.awardKP(body.userId, body.amount, body.reason);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('kp/history')
+  async getKPHistory(@Req() req: AuthRequest, @Query('limit') limit?: string) {
+    const limitNum = limit ? parseInt(limit, 10) : 50;
+    return this.svc.getKPHistory(req.user.id, limitNum);
+  }
+
+  @Get('kp/leaderboard')
+  async getKPLeaderboard(@Query('limit') limit?: string) {
+    const limitNum = limit ? parseInt(limit, 10) : 100;
+    return this.svc.getKPLeaderboard(limitNum);
+  }
+
+  // ==========================================
+  // PHASE 4: PUBLIC PROFILE
+  // ==========================================
+  @Get(':username')
+  async getPublicProfile(
+    @Param('username') username: string,
+    @Req() req: any,
+  ) {
+    // Optional: get viewerId from auth if logged in
+    const viewerId = req.user?.id;
+    return this.svc.getPublicProfile(username, viewerId);
+  }
+
+  // ==========================================
+  // LEGACY ENDPOINTS (Backward Compatibility)
+  // ==========================================
+  @UseGuards(AuthGuard)
+  @Get('legacy/profile')
+  async getLegacyProfile(@Req() req: AuthRequest) {
     return this.svc.getProfile(req.user.id);
   }
 
-  // ------------------------------------
-  // UPDATE PROFILE
-  // ------------------------------------
   @UseGuards(AuthGuard)
   @Patch()
   async update(@Req() req: AuthRequest, @Body() body: any) {
     return this.svc.updateProfile(req.user.id, body);
   }
 
-  // ------------------------------------
-  // UPLOAD AVATAR
-  // ------------------------------------
   @UseGuards(AuthGuard)
   @Post('avatar')
   async uploadAvatar(@Req() req: any) {
@@ -71,9 +130,6 @@ export class ProfileController {
     return { url };
   }
 
-  // ------------------------------------
-  // UPLOAD COVER
-  // ------------------------------------
   @UseGuards(AuthGuard)
   @Post('cover')
   async uploadCover(@Req() req: any) {
@@ -100,17 +156,11 @@ export class ProfileController {
     return { url: await this.svc.getRandomDefaultCover() };
   }
 
-  // ------------------------------------
-  // LIST INTERESTS
-  // ------------------------------------
   @Get('interests')
   async interests() {
     return { data: await this.svc.listInterests() };
   }
 
-  // ------------------------------------
-  // SAVE INTERESTS
-  // ------------------------------------
   @UseGuards(AuthGuard)
   @Post('interests')
   async saveInterests(@Req() req: AuthRequest, @Body() body: any) {
@@ -123,9 +173,6 @@ export class ProfileController {
     return this.svc.saveInterests(req.user.id, interests);
   }
 
-  // ------------------------------------
-  // FOLLOW MANY
-  // ------------------------------------
   @UseGuards(AuthGuard)
   @Post('follow-many')
   async followMany(@Req() req: AuthRequest, @Body() body: any) {
@@ -138,9 +185,6 @@ export class ProfileController {
     return this.svc.followMany(req.user.id, ids);
   }
 
-  // ------------------------------------
-  // GET SUGGESTED USERS
-  // ------------------------------------
   @UseGuards(AuthGuard)
   @Get('suggested')
   async getSuggested(@Req() req: AuthRequest) {

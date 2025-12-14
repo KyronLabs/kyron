@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import { Injectable, Logger, BadRequestException } from '@nestjs/common';
+import { Injectable, Logger, BadRequestException, NotFoundException } from '@nestjs/common';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
@@ -16,14 +16,202 @@ export class ProfileService {
     private readonly prisma: PrismaService,
   ) {}
 
+  // ==========================================
+  // PHASE 1: GET /profile/me (SINGLE SOURCE OF TRUTH)
+  // ==========================================
+  async getMe(userId: string) {
+    const [user, profile, followers, following] = await Promise.all([
+      this.prisma.user.findUnique({
+        where: { id: userId },
+        select: {
+          id: true,
+          username: true,
+          did: true,
+          kyronPoints: true,
+        },
+      }),
+
+      this.prisma.userProfile.findUnique({
+        where: { userId },
+        select: {
+          avatarUrl: true,
+          coverUrl: true,
+        },
+      }),
+
+      this.prisma.follow.count({
+        where: { followingId: userId },
+      }),
+
+      this.prisma.follow.count({
+        where: { followerId: userId },
+      }),
+    ]);
+
+    if (!user) throw new NotFoundException('User not found');
+
+    return {
+      user,
+      profile,
+      stats: {
+        followers,
+        following,
+      },
+    };
+  }
+
+  // ==========================================
+  // PHASE 2: FOLLOW SYSTEM
+  // ==========================================
+  async follow(userId: string, targetId: string) {
+    if (userId === targetId) {
+      throw new BadRequestException('Cannot follow yourself');
+    }
+
+    await this.prisma.follow.upsert({
+      where: {
+        followerId_followingId: {
+          followerId: userId,
+          followingId: targetId,
+        },
+      },
+      update: {},
+      create: {
+        followerId: userId,
+        followingId: targetId,
+      },
+    });
+
+    this.logger.log(`User ${userId} followed ${targetId}`);
+    return { success: true };
+  }
+
+  async unfollow(userId: string, targetId: string) {
+    await this.prisma.follow.deleteMany({
+      where: {
+        followerId: userId,
+        followingId: targetId,
+      },
+    });
+
+    this.logger.log(`User ${userId} unfollowed ${targetId}`);
+    return { success: true };
+  }
+
+  // ==========================================
+  // PHASE 3: KYRON POINTS ENGINE (IMMUTABLE)
+  // ==========================================
+  async awardKP(userId: string, amount: number, reason: string) {
+    const [event, updatedUser] = await this.prisma.$transaction([
+      this.prisma.kyronPointEvent.create({
+        data: { userId, amount, reason },
+      }),
+      this.prisma.user.update({
+        where: { id: userId },
+        data: {
+          kyronPoints: { increment: amount },
+        },
+      }),
+    ]);
+
+    this.logger.log(`Awarded ${amount} KP to ${userId} for: ${reason}`);
+    return { event, newTotal: updatedUser.kyronPoints };
+  }
+
+  async getKPHistory(userId: string, limit = 50) {
+    return this.prisma.kyronPointEvent.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+      take: limit,
+    });
+  }
+
+  async getKPLeaderboard(limit = 100) {
+    return this.prisma.user.findMany({
+      where: { status: 'ACTIVE' },
+      select: {
+        id: true,
+        username: true,
+        kyronPoints: true,
+        profile: {
+          select: {
+            avatarUrl: true,
+          },
+        },
+      },
+      orderBy: { kyronPoints: 'desc' },
+      take: limit,
+    });
+  }
+
+  // ==========================================
+  // PHASE 4: PUBLIC PROFILE
+  // ==========================================
+  async getPublicProfile(username: string, viewerId?: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { username },
+      select: {
+        id: true,
+        username: true,
+        did: true,
+        kyronPoints: true,
+        profile: {
+          select: {
+            avatarUrl: true,
+            coverUrl: true,
+            bio: true,
+          },
+        },
+      },
+    });
+
+    if (!user) throw new NotFoundException('User not found');
+
+    const [followers, following, isFollowing] = await Promise.all([
+      this.prisma.follow.count({
+        where: { followingId: user.id },
+      }),
+
+      this.prisma.follow.count({
+        where: { followerId: user.id },
+      }),
+
+      viewerId
+        ? this.prisma.follow
+            .findFirst({
+              where: {
+                followerId: viewerId,
+                followingId: user.id,
+              },
+            })
+            .then((f) => !!f)
+        : Promise.resolve(false),
+    ]);
+
+    return {
+      user: {
+        username: user.username,
+        did: user.did,
+        kyronPoints: user.kyronPoints,
+      },
+      profile: user.profile,
+      stats: {
+        followers,
+        following,
+        isFollowing,
+      },
+    };
+  }
+
+  // ==========================================
+  // LEGACY: SUPABASE-BASED PROFILE METHODS
+  // (Keep for backward compatibility during migration)
+  // ==========================================
   private buildFileName(userId: string, prefix: string, originalName: string) {
     const ext = originalName.includes('.') ? originalName.split('.').pop() : 'bin';
     return `${userId}_${prefix}_${Date.now()}.${ext}`;
   }
 
-  /* ------------------------------------------
-   *  UPLOAD AVATAR
-   * ---------------------------------------- */
   async uploadAvatar(
     userId: string,
     fileBuffer: Buffer,
@@ -43,19 +231,20 @@ export class ProfileService {
       mimeType,
     );
 
-    await this.supabase.upsertProfileRow({
-      user_id: userId,
-      avatar_url: publicUrl,
-      updated_at: new Date().toISOString(),
+    // Update Prisma instead of Supabase
+    await this.prisma.userProfile.upsert({
+      where: { userId },
+      update: { avatarUrl: publicUrl },
+      create: {
+        userId,
+        avatarUrl: publicUrl,
+      },
     });
 
     this.logger.log(`Avatar updated for ${userId}`);
     return publicUrl;
   }
 
-  /* ------------------------------------------
-   *  UPLOAD COVER
-   * ---------------------------------------- */
   async uploadCover(
     userId: string,
     fileBuffer: Buffer,
@@ -75,19 +264,20 @@ export class ProfileService {
       mimeType,
     );
 
-    await this.supabase.upsertProfileRow({
-      user_id: userId,
-      cover_url: publicUrl,
-      updated_at: new Date().toISOString(),
+    // Update Prisma instead of Supabase
+    await this.prisma.userProfile.upsert({
+      where: { userId },
+      update: { coverUrl: publicUrl },
+      create: {
+        userId,
+        coverUrl: publicUrl,
+      },
     });
 
     this.logger.log(`Cover updated for ${userId}`);
     return publicUrl;
   }
 
-  /* ------------------------------------------
-   *  UPDATE PROFILE DATA
-   * ---------------------------------------- */
   async updateProfile(
     userId: string,
     payload: {
@@ -100,15 +290,7 @@ export class ProfileService {
   ) {
     const { name, bio, location, website, interests } = payload;
 
-    await this.supabase.upsertProfileRow({
-      user_id: userId,
-      display_name: name ?? undefined,
-      bio: bio ?? undefined,
-      location: location ?? undefined,
-      website: website ?? undefined,
-      updated_at: new Date().toISOString(),
-    });
-
+    // Update Prisma User
     if (typeof name !== 'undefined') {
       await this.prisma.user.update({
         where: { id: userId },
@@ -116,6 +298,25 @@ export class ProfileService {
       });
     }
 
+    // Update Prisma UserProfile
+    if (bio !== undefined || location !== undefined || website !== undefined) {
+      await this.prisma.userProfile.upsert({
+        where: { userId },
+        update: {
+          bio: bio ?? undefined,
+          location: location ?? undefined,
+          website: website ?? undefined,
+        },
+        create: {
+          userId,
+          bio: bio ?? null,
+          location: location ?? null,
+          website: website ?? null,
+        },
+      });
+    }
+
+    // Handle interests via Supabase (if still using it)
     if (Array.isArray(interests)) {
       await this.supabase.replaceUserInterests(userId, interests);
     }
@@ -123,9 +324,6 @@ export class ProfileService {
     return { ok: true };
   }
 
-  /* ------------------------------------------
-   *  GET USER PROFILE
-   * ---------------------------------------- */
   async getProfile(userId: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
@@ -136,11 +334,19 @@ export class ProfileService {
         name: true,
         role: true,
         createdAt: true,
+        profile: {
+          select: {
+            avatarUrl: true,
+            coverUrl: true,
+            bio: true,
+            location: true,
+            website: true,
+          },
+        },
       },
     });
 
-    const profile = await this.supabase.getProfileRow(userId);
-
+    // Still get interests from Supabase if needed
     const interests = await this.supabase
       .getClient()
       .from('user_interests')
@@ -149,7 +355,7 @@ export class ProfileService {
 
     return {
       user,
-      profile,
+      profile: user?.profile,
       interests: Array.isArray((interests as any).data)
         ? (interests as any).data
         : [],
@@ -164,9 +370,6 @@ export class ProfileService {
     return this.supabase.getRandomDefaultCover();
   }
 
-  /* ------------------------------------------
-   *  SAVE INTERESTS
-   * ---------------------------------------- */
   async saveInterests(userId: string, labels: string[]) {
     this.logger.log(`Saving interests for ${userId}`);
 
@@ -206,9 +409,6 @@ export class ProfileService {
     return { ok: true, count: payload.length };
   }
 
-  /* ------------------------------------------
-   *  BULK FOLLOW
-   * ---------------------------------------- */
   async followMany(userId: string, targetIds: string[]) {
     if (targetIds.length === 0) return { ok: true, count: 0 };
 
@@ -227,9 +427,6 @@ export class ProfileService {
     return { ok: true, count: cleanIds.length };
   }
 
-  /* ------------------------------------------
-   *  SUGGESTED USERS (interest matching)
-   * ---------------------------------------- */
   async getSuggestedUsers(userId: string) {
     this.logger.log(`Generating suggestions for ${userId}`);
 
@@ -278,7 +475,7 @@ export class ProfileService {
       },
     });
 
-    const followingSet = new Set(followingRows.map((f: { followingId: string }) => f.followingId));
+    const followingSet = new Set(followingRows.map((f) => f.followingId));
 
     return profiles.map((p: any) => ({
       id: p.user_id,
@@ -289,9 +486,6 @@ export class ProfileService {
     }));
   }
 
-  /* ------------------------------------------
-   *  FALLBACK SUGGESTED USERS
-   * ---------------------------------------- */
   async getRandomSuggestedUsers(userId: string) {
     const client = this.supabase.getClient();
 
@@ -311,7 +505,7 @@ export class ProfileService {
       },
     });
 
-    const followingSet = new Set(followingRows.map((f: { followingId: string }) => f.followingId));
+    const followingSet = new Set(followingRows.map((f) => f.followingId));
 
     return data.map((p: any) => ({
       id: p.user_id,
