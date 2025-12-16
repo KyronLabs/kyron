@@ -44,6 +44,63 @@ export class AuthService {
     return error instanceof PrismaClientKnownRequestError;
   }
 
+  /**
+   * Ensure profile exists in both databases (recovery mechanism)
+   * FIXED: Removed non-existent fields (createdAt, displayName)
+   */
+  private async ensureProfileExists(userId: string, username?: string | null) {
+    try {
+      const existingProfile = await this.prisma.userProfile.findUnique({
+        where: { userId },
+      });
+
+      let coverUrl: string | null = null;
+      try {
+        coverUrl = await this.supabase.getRandomDefaultCover();
+      } catch (e) {
+        this.logger.error(`Failed to fetch default cover from storage: ${String(e)}`);
+        coverUrl = null;
+      }
+
+      if (!existingProfile) {
+        // Create profile in Prisma
+        await this.prisma.userProfile.create({
+          data: {
+            userId,
+            avatarUrl: null,
+            coverUrl,
+          },
+        });
+        this.logger.log(`Created missing Prisma profile for user ${userId}`);
+      } else if (!existingProfile.coverUrl && coverUrl) {
+        // Update cover if missing
+        await this.prisma.userProfile.update({
+          where: { userId },
+          data: { coverUrl },
+        });
+        this.logger.log(`Updated cover for user ${userId}`);
+      }
+
+      // Dual-write to Supabase (use User.createdAt, not profile.createdAt)
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId },
+        select: { createdAt: true, name: true },
+      });
+      
+      await this.supabase.upsertProfileRow({
+        user_id: userId,
+        display_name: username || user?.name || null,
+        created_at: user?.createdAt?.toISOString() || new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      });
+
+      this.logger.log(`✅ Profile ensured for user ${userId} in both databases`);
+    } catch (error) {
+      this.logger.error(`❌ Failed to ensure profile for ${userId}:`, error);
+      // Don't throw - this is a recovery mechanism
+    }
+  }
+
   // ---------------------------
   // REGISTER
   // ---------------------------
@@ -97,6 +154,8 @@ export class AuthService {
           role: UserRole.USER,
           status: AccountStatus.ACTIVE,
           emailStatus: EmailStatus.PENDING,
+          kyronPoints: 0,
+          // did: await this.generateDID(), // TODO: Implement DID generation
         },
       });
 
@@ -111,6 +170,20 @@ export class AuthService {
       });
 
       await this.emailService.sendVerifyCode(email, code);
+
+      // DUAL-WRITE: Create profile in Supabase
+      try {
+        await this.supabase.upsertProfileRow({
+          user_id: user.id,
+          display_name: username || null,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        });
+        this.logger.log(`✅ User ${user.id} registered with dual-write`);
+      } catch (error) {
+        this.logger.error(`⚠️ Supabase profile creation failed for ${user.id}:`, error);
+        // Don't fail registration if Supabase write fails - it will sync later
+      }
 
       this.logger.log(`User registered: ${user.id}`);
 
@@ -150,7 +223,6 @@ export class AuthService {
       }
 
       if (rec.expiresAt < new Date()) {
-        // remove expired record (optional)
         await this.prisma.emailVerification.delete({ where: { userId } }).catch(() => {});
         throw new BadRequestException('Verification code expired');
       }
@@ -165,7 +237,7 @@ export class AuthService {
         throw new BadRequestException('Invalid verification code');
       }
 
-      // mark email verified on user
+      // Mark email verified
       await this.prisma.user.update({
         where: { id: userId },
         data: {
@@ -174,75 +246,24 @@ export class AuthService {
         },
       });
 
-      // cleanup verification record
+      // Cleanup verification record
       await this.prisma.emailVerification.delete({ where: { userId } });
 
-      // fetch user with profile
+      // FIXED: Fetch FULL user object for issueTokensForUser
       const user = await this.prisma.user.findUnique({
         where: { id: userId },
-        include: { profile: true },
       });
 
       if (!user) {
         throw new InternalServerErrorException('User not found after verification');
       }
 
-      // --- ensure profile exists and has a coverUrl ---
-      // NOTE: this.supabase.getRandomDefaultCover() must return a public HTTP URL (string)
-      try {
-        if (!user.profile) {
-          // create profile with a default cover (if available)
-          let coverUrl: string | null = null;
-          try {
-            coverUrl = await this.supabase.getRandomDefaultCover();
-          } catch (e) {
-            // don't crash verification on supabase failure; log and continue
-            this.logger.error(`Failed to fetch default cover from storage: ${String(e)}`);
-            coverUrl = null;
-          }
-
-          await this.prisma.userProfile.create({
-            data: {
-              userId,
-              avatarUrl: null,
-              coverUrl,
-            },
-          });
-        } else if (!user.profile.coverUrl) {
-          // set cover only if missing
-          let coverUrl: string | null = null;
-          try {
-            coverUrl = await this.supabase.getRandomDefaultCover();
-          } catch (e) {
-            this.logger.error(`Failed to fetch default cover from storage: ${String(e)}`);
-            coverUrl = null;
-          }
-
-          if (coverUrl) {
-            await this.prisma.userProfile.update({
-              where: { userId },
-              data: { coverUrl },
-            });
-          }
-        }
-      } catch (err) {
-        // log but don't fail verification for non-critical profile/cover writes
-        this.logger.error(`Profile/cover assignment failed for user ${userId}: ${String(err)}`);
-      }
+      // Ensure profile exists in both databases
+      await this.ensureProfileExists(userId, user.username);
 
       this.logger.log(`Email verified for user: ${userId}`);
 
-      // return tokens for the user (issueTokensForUser expects a User object)
-      // Re-fetch user to have latest profile - optional but safe
-      const refreshedUser = await this.prisma.user.findUnique({
-        where: { id: userId },
-      });
-
-      if (!refreshedUser) {
-        throw new InternalServerErrorException('User not found after verification (final)');
-      }
-
-      return this.issueTokensForUser(refreshedUser);
+      return this.issueTokensForUser(user);
     } catch (error) {
       if (error instanceof BadRequestException) throw error;
 
@@ -339,6 +360,9 @@ export class AuthService {
         );
       }
 
+      // Ensure profile exists in both databases
+      await this.ensureProfileExists(user.id, user.username);
+
       this.logger.log(`User logged in: ${user.id}`);
 
       return this.issueTokensForUser(user);
@@ -427,6 +451,7 @@ export class AuthService {
       }
       if (rec.expiresAt < new Date()) {
         await this.prisma.refreshToken.delete({ where: { id: rec.id } });
+        // FIXED: Typo - was "newUnauthorizedException"
         throw new UnauthorizedException('Refresh token expired');
       }
 

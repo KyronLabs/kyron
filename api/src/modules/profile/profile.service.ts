@@ -18,9 +18,10 @@ export class ProfileService {
 
   // ==========================================
   // PHASE 1: GET /profile/me (SINGLE SOURCE OF TRUTH)
+  // Reads from Prisma (authoritative) + Supabase (supplemental)
   // ==========================================
   async getMe(userId: string) {
-    const [user, profile, followers, following] = await Promise.all([
+    const [user, prismaProfile, followers, following] = await Promise.all([
       this.prisma.user.findUnique({
         where: { id: userId },
         select: {
@@ -50,18 +51,66 @@ export class ProfileService {
 
     if (!user) throw new NotFoundException('User not found');
 
+    // If Prisma profile is missing, try to sync from Supabase
+    if (!prismaProfile) {
+      this.logger.warn(`User ${userId} missing Prisma profile, attempting Supabase sync`);
+      await this.syncProfileFromSupabase(userId);
+      
+      // Retry after sync
+      const syncedProfile = await this.prisma.userProfile.findUnique({
+        where: { userId },
+      });
+
+      return {
+        user,
+        profile: syncedProfile || { avatarUrl: null, coverUrl: null },
+        stats: { followers, following },
+      };
+    }
+
     return {
       user,
-      profile,
-      stats: {
-        followers,
-        following,
-      },
+      profile: prismaProfile,
+      stats: { followers, following },
     };
   }
 
   // ==========================================
-  // PHASE 2: FOLLOW SYSTEM
+  // DUAL-WRITE: Sync profile from Supabase to Prisma (Recovery)
+  // ==========================================
+  private async syncProfileFromSupabase(userId: string) {
+    try {
+      const supabaseProfile = await this.supabase.getProfileRow(userId);
+      
+      if (supabaseProfile) {
+        await this.prisma.userProfile.upsert({
+          where: { userId },
+          update: {
+            avatarUrl: supabaseProfile.avatar_url,
+            coverUrl: supabaseProfile.cover_url,
+            bio: supabaseProfile.bio,
+            location: supabaseProfile.location,
+            website: supabaseProfile.website,
+          },
+          create: {
+            userId,
+            avatarUrl: supabaseProfile.avatar_url,
+            coverUrl: supabaseProfile.cover_url,
+            bio: supabaseProfile.bio,
+            location: supabaseProfile.location,
+            website: supabaseProfile.website,
+          },
+        });
+        
+        this.logger.log(`✅ Synced profile from Supabase for user ${userId}`);
+      }
+    } catch (error) {
+      this.logger.error(`Failed to sync from Supabase for user ${userId}:`, error);
+    }
+  }
+
+  // ==========================================
+  // PHASE 2: FOLLOW SYSTEM (Prisma only)
   // ==========================================
   async follow(userId: string, targetId: string) {
     if (userId === targetId) {
@@ -99,7 +148,7 @@ export class ProfileService {
   }
 
   // ==========================================
-  // PHASE 3: KYRON POINTS ENGINE (IMMUTABLE)
+  // PHASE 3: KYRON POINTS ENGINE (Prisma only)
   // ==========================================
   async awardKP(userId: string, amount: number, reason: string) {
     const [event, updatedUser] = await this.prisma.$transaction([
@@ -145,7 +194,7 @@ export class ProfileService {
   }
 
   // ==========================================
-  // PHASE 4: PUBLIC PROFILE
+  // PHASE 4: PUBLIC PROFILE (Read from Prisma)
   // ==========================================
   async getPublicProfile(username: string, viewerId?: string) {
     const user = await this.prisma.user.findUnique({
@@ -204,9 +253,10 @@ export class ProfileService {
   }
 
   // ==========================================
-  // LEGACY: SUPABASE-BASED PROFILE METHODS
-  // (Keep for backward compatibility during migration)
+  // DUAL-WRITE OPERATIONS
+  // These write to BOTH Prisma AND Supabase
   // ==========================================
+  
   private buildFileName(userId: string, prefix: string, originalName: string) {
     const ext = originalName.includes('.') ? originalName.split('.').pop() : 'bin';
     return `${userId}_${prefix}_${Date.now()}.${ext}`;
@@ -224,6 +274,7 @@ export class ProfileService {
     const filename = this.buildFileName(userId, 'avatar', originalName);
     const folder = this.supabase.getAvatarFolder();
 
+    // 1. Upload to Supabase Storage (CDN)
     const { publicUrl } = await this.supabase.uploadFile(
       folder,
       filename,
@@ -231,17 +282,24 @@ export class ProfileService {
       mimeType,
     );
 
-    // Update Prisma instead of Supabase
-    await this.prisma.userProfile.upsert({
-      where: { userId },
-      update: { avatarUrl: publicUrl },
-      create: {
-        userId,
-        avatarUrl: publicUrl,
-      },
-    });
+    // 2. DUAL-WRITE: Update both databases
+    await Promise.all([
+      // Write to Prisma (source of truth)
+      this.prisma.userProfile.upsert({
+        where: { userId },
+        update: { avatarUrl: publicUrl },
+        create: { userId, avatarUrl: publicUrl },
+      }),
+      
+      // Write to Supabase (fast public reads)
+      this.supabase.upsertProfileRow({
+        user_id: userId,
+        avatar_url: publicUrl,
+        updated_at: new Date().toISOString(),
+      }),
+    ]);
 
-    this.logger.log(`Avatar updated for ${userId}`);
+    this.logger.log(`✅ Avatar updated for ${userId} (dual-write)`);
     return publicUrl;
   }
 
@@ -257,6 +315,7 @@ export class ProfileService {
     const filename = this.buildFileName(userId, 'cover', originalName);
     const folder = this.supabase.getCoverFolder();
 
+    // 1. Upload to Supabase Storage (CDN)
     const { publicUrl } = await this.supabase.uploadFile(
       folder,
       filename,
@@ -264,17 +323,24 @@ export class ProfileService {
       mimeType,
     );
 
-    // Update Prisma instead of Supabase
-    await this.prisma.userProfile.upsert({
-      where: { userId },
-      update: { coverUrl: publicUrl },
-      create: {
-        userId,
-        coverUrl: publicUrl,
-      },
-    });
+    // 2. DUAL-WRITE: Update both databases
+    await Promise.all([
+      // Write to Prisma (source of truth)
+      this.prisma.userProfile.upsert({
+        where: { userId },
+        update: { coverUrl: publicUrl },
+        create: { userId, coverUrl: publicUrl },
+      }),
+      
+      // Write to Supabase (fast public reads)
+      this.supabase.upsertProfileRow({
+        user_id: userId,
+        cover_url: publicUrl,
+        updated_at: new Date().toISOString(),
+      }),
+    ]);
 
-    this.logger.log(`Cover updated for ${userId}`);
+    this.logger.log(`✅ Cover updated for ${userId} (dual-write)`);
     return publicUrl;
   }
 
@@ -290,40 +356,58 @@ export class ProfileService {
   ) {
     const { name, bio, location, website, interests } = payload;
 
-    // Update Prisma User
-    if (typeof name !== 'undefined') {
-      await this.prisma.user.update({
-        where: { id: userId },
-        data: { name: name ?? null },
-      });
-    }
+    // DUAL-WRITE: Update both databases
+    await Promise.all([
+      // Update Prisma User (if name changed)
+      name !== undefined
+        ? this.prisma.user.update({
+            where: { id: userId },
+            data: { name: name ?? null },
+          })
+        : Promise.resolve(),
 
-    // Update Prisma UserProfile
-    if (bio !== undefined || location !== undefined || website !== undefined) {
-      await this.prisma.userProfile.upsert({
-        where: { userId },
-        update: {
-          bio: bio ?? undefined,
-          location: location ?? undefined,
-          website: website ?? undefined,
-        },
-        create: {
-          userId,
-          bio: bio ?? null,
-          location: location ?? null,
-          website: website ?? null,
-        },
-      });
-    }
+      // Update Prisma Profile
+      (bio !== undefined || location !== undefined || website !== undefined)
+        ? this.prisma.userProfile.upsert({
+            where: { userId },
+            update: {
+              bio: bio ?? undefined,
+              location: location ?? undefined,
+              website: website ?? undefined,
+            },
+            create: {
+              userId,
+              bio: bio ?? null,
+              location: location ?? null,
+              website: website ?? null,
+            },
+          })
+        : Promise.resolve(),
 
-    // Handle interests via Supabase (if still using it)
+      // Update Supabase (public-facing)
+      this.supabase.upsertProfileRow({
+        user_id: userId,
+        display_name: name ?? undefined,
+        bio: bio ?? undefined,
+        location: location ?? undefined,
+        website: website ?? undefined,
+        updated_at: new Date().toISOString(),
+      }),
+    ]);
+
+    // Handle interests (Supabase only for now)
     if (Array.isArray(interests)) {
       await this.supabase.replaceUserInterests(userId, interests);
     }
 
+    this.logger.log(`✅ Profile updated for ${userId} (dual-write)`);
     return { ok: true };
   }
 
+  // ==========================================
+  // READ OPERATIONS (Legacy/Helper Methods)
+  // ==========================================
+  
   async getProfile(userId: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
@@ -346,7 +430,7 @@ export class ProfileService {
       },
     });
 
-    // Still get interests from Supabase if needed
+    // Get interests from Supabase
     const interests = await this.supabase
       .getClient()
       .from('user_interests')
