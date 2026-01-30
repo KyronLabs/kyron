@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kyron — Own Your Feed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* SF Pro system font stack */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Custom gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* Accent red */
+    .accent-red {
+      color: #ff3b30;
+    }
+    
+    /* Accent blue */
+    .accent-blue {
+      color: #007aff;
+    }
+    
+    /* Subtle hover lift */
+    .hover-lift {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="text-xl font-semibold tracking-tight">Kyron</a>
+      <div class="flex items-center gap-6">
+        <a href="#features" class="text-sm text-gray-500 hover:text-black transition-colors">Features</a>
+        <a href="#about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/login" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-5xl md:text-7xl font-semibold tracking-tight leading-tight mb-6">
+        Own your<br>
+        <span class="accent-blue">feed</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-500 leading-relaxed mb-10 max-w-xl mx-auto">
+        A user-owned social stack. No algorithms you don't control. No data you don't own. Just you and your community.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/login" class="inline-flex items-center justify-center px-8 py-4 bg-black text-white rounded-full text-base font-medium hover:bg-gray-900 transition-colors hover-lift">
+          Get Started
+        </a>
+        <a href="#features" class="inline-flex items-center justify-center px-8 py-4 bg-gray-100 text-black rounded-full text-base font-medium hover:bg-gray-200 transition-colors">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section id="features" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Built different</h2>
+        <p class="text-gray-500 text-lg">Everything you need, nothing you don't.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-white rounded-2xl p-8 hover-lift">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Own your data</h3>
+          <p class="text-gray-500 leading-relaxed">Your posts, your identity, your choice. Export everything with one tap. No lock-in, ever.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-white rounded-2xl p-8 hover-lift">
+          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Zero-follower discovery</h3>
+          <p class="text-gray-500 leading-relaxed">AI-ranked feed that surfaces great content, whether you have 0 followers or 100,000.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-white rounded-2xl p-8 hover-lift">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">AR-first creation</h3>
+          <p class="text-gray-500 leading-relaxed">Built-in AR lenses at 30fps. Create, remix, and share immersive moments.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-white rounded-2xl p-8 hover-lift">
+          <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Communities</h3>
+          <p class="text-gray-500 leading-relaxed">Create or join spaces around shared interests. Moderated by humans, not algorithms.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="bg-white rounded-2xl p-8 hover-lift">
+          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Creator equity</h3>
+          <p class="text-gray-500 leading-relaxed">10% of revenue pooled and redistributed to creators. Watch time matters, not follower count.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="bg-white rounded-2xl p-8 hover-lift">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Privacy by design</h3>
+          <p class="text-gray-500 leading-relaxed">E2EE on every post if you want it. No tracking, no surveillance, no compromises.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-6">Built on open protocols</h2>
+      <p class="text-gray-500 text-lg leading-relaxed mb-8">
+        Kyron is built on the AT Protocol, the same open standard powering Bluesky. Your identity is portable. Your data is yours. If you ever want to leave, you can take everything with you—no questions asked.
+      </p>
+      <div class="flex justify-center gap-8 text-sm text-gray-400">
+        <span>Open source</span>
+        <span>•</span>
+        <span>MIT licensed</span>
+        <span>•</span>
+        <span>Community governed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 bg-black text-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-6">Ready to own your feed?</h2>
+      <p class="text-gray-400 text-lg mb-10">Join thousands of creators building the future of social.</p>
+      <a href="/login" class="inline-flex items-center justify-center px-10 py-4 bg-white text-black rounded-full text-base font-medium hover:bg-gray-100 transition-colors hover-lift">
+        Get Started
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-sm text-gray-400">
+        © 2025 Kyron. All rights reserved.
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="#" class="hover:text-black transition-colors">Privacy</a>
+        <a href="#" class="hover:text-black transition-colors">Terms</a>
+        <a href="#" class="hover:text-black transition-colors">GitHub</a>
+        <a href="#" class="hover:text-black transition-colors">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+ 
