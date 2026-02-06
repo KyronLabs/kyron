@@ -52,9 +52,82 @@
       transform: translateY(-2px);
       color: #000;
     }
+
+    /* Fade to white dots */
+    .fade-dots {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      height: 400px;
+      justify-content: center;
+      background: linear-gradient(to bottom, #000000, #ffffff);
+      padding: 60px 0;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .dot:nth-child(1) { opacity: 1; }
+    .dot:nth-child(2) { opacity: 0.9; }
+    .dot:nth-child(3) { opacity: 0.8; }
+    .dot:nth-child(4) { opacity: 0.7; }
+    .dot:nth-child(5) { opacity: 0.6; }
+    .dot:nth-child(6) { opacity: 0.5; }
+    .dot:nth-child(7) { opacity: 0.4; }
+    .dot:nth-child(8) { opacity: 0.3; }
+    .dot:nth-child(9) { opacity: 0.2; }
+    .dot:nth-child(10) { opacity: 0.1; }
+
+    /* Frame styles */
+    .frame-wrapper {
+      padding: 12px;
+      background: white;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .frame-wrapper img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .framed-banner {
+      margin-bottom: 32px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .feature-image-wrapper {
+      margin-bottom: 16px;
+      width: 100%;
+    }
   </style>
 </head>
 <body class="bg-white text-black antialiased">
+
+  <!-- Decorative Fade to White Dots -->
+  <div class="fade-dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
 
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
@@ -78,8 +151,17 @@
     </div>
   </nav>
 
+  <!-- Framed Banner Image -->
+  <section class="px-6 pt-20 pb-12">
+    <div class="framed-banner">
+      <div class="frame-wrapper">
+        <img src="images/banner-hero.jpg" alt="Kyron social platform visual representation" />
+      </div>
+    </div>
+  </section>
+
   <!-- Hero Section -->
-  <section class="pt-32 pb-20 px-6">
+  <section class="pt-12 pb-20 px-6">
     <div class="max-w-3xl mx-auto text-center">
       <h1 class="text-5xl md:text-7xl font-semibold tracking-tight leading-tight mb-6">
         Own your<br>
@@ -110,6 +192,11 @@
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Feature 1 -->
         <div class="bg-white rounded-2xl p-8 hover-lift">
+          <div class="feature-image-wrapper">
+            <div class="frame-wrapper">
+              <img src="images/feature-ownership.jpg" alt="Data ownership visualization" />
+            </div>
+          </div>
           <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
@@ -121,6 +208,11 @@
 
         <!-- Feature 2 -->
         <div class="bg-white rounded-2xl p-8 hover-lift">
+          <div class="feature-image-wrapper">
+            <div class="frame-wrapper">
+              <img src="images/feature-discovery.jpg" alt="Discovery and AI ranking visualization" />
+            </div>
+          </div>
           <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -144,6 +236,11 @@
 
         <!-- Feature 4 -->
         <div class="bg-white rounded-2xl p-8 hover-lift">
+          <div class="feature-image-wrapper">
+            <div class="frame-wrapper">
+              <img src="images/feature-community.jpg" alt="Community and connection visualization" />
+            </div>
+          </div>
           <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
