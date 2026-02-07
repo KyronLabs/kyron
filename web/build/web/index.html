@@ -53,35 +53,48 @@
       color: #000;
     }
 
-    /* Fade to white dots */
-    .fade-dots {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      height: 400px;
-      justify-content: center;
-      background: linear-gradient(to bottom, #000000, #ffffff);
-      padding: 60px 0;
+    /* Fade to white dots background */
+    .dots-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+      grid-auto-rows: repeat(auto-fill, minmax(40px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: black;
+      justify-self: center;
+      align-self: center;
     }
 
-    .dot:nth-child(1) { opacity: 1; }
-    .dot:nth-child(2) { opacity: 0.9; }
-    .dot:nth-child(3) { opacity: 0.8; }
-    .dot:nth-child(4) { opacity: 0.7; }
-    .dot:nth-child(5) { opacity: 0.6; }
-    .dot:nth-child(6) { opacity: 0.5; }
-    .dot:nth-child(7) { opacity: 0.4; }
-    .dot:nth-child(8) { opacity: 0.3; }
-    .dot:nth-child(9) { opacity: 0.2; }
-    .dot:nth-child(10) { opacity: 0.1; }
+    /* Fade dots from top to bottom */
+    .dots-background .dot:nth-child(-n + 10) { opacity: 1; }
+    .dots-background .dot:nth-child(n + 11):nth-child(-n + 20) { opacity: 0.9; }
+    .dots-background .dot:nth-child(n + 21):nth-child(-n + 30) { opacity: 0.8; }
+    .dots-background .dot:nth-child(n + 31):nth-child(-n + 40) { opacity: 0.7; }
+    .dots-background .dot:nth-child(n + 41):nth-child(-n + 50) { opacity: 0.6; }
+    .dots-background .dot:nth-child(n + 51):nth-child(-n + 60) { opacity: 0.5; }
+    .dots-background .dot:nth-child(n + 61):nth-child(-n + 70) { opacity: 0.4; }
+    .dots-background .dot:nth-child(n + 71):nth-child(-n + 80) { opacity: 0.3; }
+    .dots-background .dot:nth-child(n + 81):nth-child(-n + 90) { opacity: 0.2; }
+    .dots-background .dot:nth-child(n + 91) { opacity: 0.1; }
+
+    /* Container for dots background */
+    .dots-section {
+      position: relative;
+    }
 
     /* Frame styles */
     .frame-wrapper {
@@ -102,9 +115,15 @@
 
     .framed-banner {
       margin-bottom: 32px;
-      max-width: 900px;
+      max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+      height: 250px;
+    }
+
+    .framed-banner .frame-wrapper img {
+      height: 100%;
+      object-fit: cover;
     }
 
     .feature-image-wrapper {
@@ -114,20 +133,6 @@
   </style>
 </head>
 <body class="bg-white text-black antialiased">
-
-  <!-- Decorative Fade to White Dots -->
-  <div class="fade-dots">
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-  </div>
 
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
@@ -151,32 +156,52 @@
     </div>
   </nav>
 
-  <!-- Framed Banner Image -->
-  <section class="px-6 pt-20 pb-12">
-    <div class="framed-banner">
-      <div class="frame-wrapper">
-        <img src="images/banner-hero.jpg" alt="Kyron social platform visual representation" />
-      </div>
+  <!-- Banner and Hero with Dots Background -->
+  <section class="dots-section relative">
+    <!-- Dots background grid -->
+    <div class="dots-background">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
     </div>
-  </section>
 
-  <!-- Hero Section -->
-  <section class="pt-12 pb-20 px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-5xl md:text-7xl font-semibold tracking-tight leading-tight mb-6">
-        Own your<br>
-        <span class="accent-blue">feed</span>
-      </h1>
-      <p class="text-lg md:text-xl text-gray-500 leading-relaxed mb-10 max-w-xl mx-auto">
-        A user-owned social stack. No algorithms you don't control. No data you don't own. Just you and your community.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/app" class="inline-flex items-center justify-center px-8 py-4 bg-black text-white rounded-full text-base font-medium hover:bg-gray-900 transition-colors hover-lift">
-          Get Started
-        </a>
-        <a href="#features" class="inline-flex items-center justify-center px-8 py-4 bg-gray-100 text-black rounded-full text-base font-medium hover:bg-gray-200 transition-colors">
-          Learn More
-        </a>
+    <!-- Content on top of dots -->
+    <div class="relative z-10">
+      <!-- Framed Banner Image -->
+      <div class="px-6 pt-20 pb-12">
+        <div class="framed-banner">
+          <div class="frame-wrapper">
+            <img src="images/banner-hero.jpg" alt="Kyron social platform visual representation" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="pt-12 pb-20 px-6">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-5xl md:text-7xl font-semibold tracking-tight leading-tight mb-6">
+            Own your<br>
+            <span class="accent-blue">feed</span>
+          </h1>
+          <p class="text-lg md:text-xl text-gray-500 leading-relaxed mb-10 max-w-xl mx-auto">
+            A user-owned social stack. No algorithms you don't control. No data you don't own. Just you and your community.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/app" class="inline-flex items-center justify-center px-8 py-4 bg-black text-white rounded-full text-base font-medium hover:bg-gray-900 transition-colors hover-lift">
+              Get Started
+            </a>
+            <a href="#features" class="inline-flex items-center justify-center px-8 py-4 bg-gray-100 text-black rounded-full text-base font-medium hover:bg-gray-200 transition-colors">
+              Learn More
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
