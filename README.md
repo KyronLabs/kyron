@@ -1,4 +1,4 @@
-![Kyron Logo](./docs/logo1.svg)
+![Kyron Logo](./docs/favicon.svg)
 
 # Kyron — The User-Owned Social Stack
 
