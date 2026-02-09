@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: kyron-web
+    env: static
+    buildCommand: echo "Build complete"
+    staticPublishPath: ./web/build/web
+    routes:
+      - path: /app
+        destination: ./web/build/web/app
+      - path: /
+        destination: ./web/build/web
