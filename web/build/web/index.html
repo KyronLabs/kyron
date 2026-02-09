@@ -3,7 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kyron — Own Your Feed</title>
+  
+  <!-- Primary Meta Tags -->
+  <title>Kyron — Own Your Feed | User-Owned Social Platform</title>
+  <meta name="title" content="Kyron — Own Your Feed | User-Owned Social Platform">
+  <meta name="description" content="Kyron is a user-owned social stack built on open protocols. No algorithms you don't control. No data you don't own. Just you and your community.">
+  <meta name="keywords" content="social network, decentralized, AT Protocol, Bluesky, user-owned, privacy, open source, social media, feed, community">
+  <meta name="author" content="Kyron">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://kyron.social">
+  
+  <!-- Favicon / Site Icon for Google -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kyron.social">
+  <meta property="og:title" content="Kyron — Own Your Feed">
+  <meta property="og:description" content="A user-owned social stack. No algorithms you don't control. No data you don't own. Just you and your community.">
+  <meta property="og:image" content="https://kyron.social/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Kyron">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://kyron.social">
+  <meta property="twitter:title" content="Kyron — Own Your Feed">
+  <meta property="twitter:description" content="A user-owned social stack. No algorithms you don't control. No data you don't own. Just you and your community.">
+  <meta property="twitter:image" content="https://kyron.social/images/og-image.png">
+  
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Kyron",
+    "url": "https://kyron.social",
+    "description": "A user-owned social stack built on open protocols",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Kyron",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://kyron.social/images/logo.png"
+      }
+    },
+    "sameAs": [
+      "https://twitter.com/kyron",
+      "https://github.com/kyron",
+      "https://bsky.app/profile/kyron.social"
+    ]
+  }
+  </script>
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#000000">
+  <meta name="msapplication-TileColor" content="#000000">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* SF Pro system font stack */
@@ -21,12 +85,9 @@
     /* ---------- HERO DOTS BACKGROUND ---------- */
     .hero-dots-bg {
       background-color: white;
-      /* Stacked gradients: fade to white on top, radial dots below */
       background-image: 
         linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,1) 100%),
         radial-gradient(circle at center, #d1d5db 1.5px, transparent 1.5px);
-      
-      /* 24px x 24px dot grid */
       background-size: 100% 100%, 24px 24px;
       background-position: 0 0, 0 0;
       background-repeat: no-repeat, repeat;
@@ -62,9 +123,9 @@
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 text-xl font-semibold tracking-tight group">
+      <a href="#" class="flex items-center gap-3 text-xl font-semibold tracking-tight group" aria-label="Kyron Home">
         <div class="w-8 h-8 rounded-lg bg-black flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
             <path d="M2 17l10 5 10-5"/>
             <path d="M2 12l10 5 10-5"/>
@@ -115,7 +176,7 @@
         <!-- Feature 1 -->
         <div class="bg-white rounded-2xl p-8 hover-lift">
           <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
             </svg>
           </div>
@@ -126,7 +187,7 @@
         <!-- Feature 2 -->
         <div class="bg-white rounded-2xl p-8 hover-lift">
           <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
           </div>
@@ -137,7 +198,7 @@
         <!-- Feature 3 -->
         <div class="bg-white rounded-2xl p-8 hover-lift">
           <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
             </svg>
@@ -149,7 +210,7 @@
         <!-- Feature 4 -->
         <div class="bg-white rounded-2xl p-8 hover-lift">
           <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
           </div>
@@ -160,7 +221,7 @@
         <!-- Feature 5 -->
         <div class="bg-white rounded-2xl p-8 hover-lift">
           <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
           </div>
@@ -171,7 +232,7 @@
         <!-- Feature 6 -->
         <div class="bg-white rounded-2xl p-8 hover-lift">
           <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
           </div>
@@ -215,7 +276,7 @@
     <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex items-center gap-2 text-sm text-gray-400">
         <div class="w-5 h-5 rounded bg-black flex items-center justify-center">
-          <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
             <path d="M2 17l10 5 10-5"/>
           </svg>
@@ -227,28 +288,28 @@
         <div class="flex items-center gap-4">
           <!-- GitHub -->
           <a href="https://github.com/kyron" class="social-icon text-gray-400 hover:text-black" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
             </svg>
           </a>
 
           <!-- Twitter/X -->
           <a href="https://twitter.com/kyron" class="social-icon text-gray-400 hover:text-black" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
           </a>
 
           <!-- Bluesky -->
           <a href="https://bsky.app/profile/kyron.social" class="social-icon text-gray-400 hover:text-black" aria-label="Bluesky" target="_blank" rel="noopener noreferrer">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 2.08 0 3.238c0 .378.384 3.138.64 4.531.788 4.224 2.627 5.656 5.184 5.656 1.113 0 2.258-.326 3.138-.869 1.304-.832 2.567-2.521 2.567-2.521s1.262 1.689 2.567 2.521c.88.543 2.025.869 3.138.869 2.557 0 4.396-1.432 5.184-5.656.256-1.393.64-4.153.64-4.531 0-1.158-.139-1.33-.902-1.673-.659-.299-1.664-.621-4.3.24-2.752 1.942-5.711 5.881-6.798 7.995z"/>
             </svg>
           </a>
 
           <!-- Discord -->
           <a href="https://discord.gg/kyron" class="social-icon text-gray-400 hover:text-black" aria-label="Discord" target="_blank" rel="noopener noreferrer">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
             </svg>
           </a>
