@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Primary Meta Tags -->
   <title>Kyron — Own Your Feed | User-Owned Social Platform</title>
   <meta name="title" content="Kyron — Own Your Feed | User-Owned Social Platform">
@@ -12,17 +12,17 @@
   <meta name="author" content="Kyron">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
-  
+
   <!-- Canonical URL -->
   <link rel="canonical" href="https://kyron.spidroid.com">
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="manifest" href="/images/site.webmanifest">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kyron.spidroid.com">
@@ -32,14 +32,14 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Kyron">
-  
+
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://kyron.spidroid.com">
   <meta property="twitter:title" content="Kyron — Own Your Feed">
   <meta property="twitter:description" content="A user-owned social stack. No algorithms you don't control. No data you don't own. Just you and your community.">
   <meta property="twitter:image" content="https://kyron.spidroid.com/images/og-image.png">
-  
+
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -53,7 +53,7 @@
       "name": "Kyron",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://kyron.spidroid.com/images/logo.png"
+        "url": "https://kyron.spidroid.com/images/logo_with_bg.webp"
       }
     },
     "sameAs": [
@@ -63,11 +63,11 @@
     ]
   }
   </script>
-  
+
   <!-- Theme Color -->
   <meta name="theme-color" content="#000000">
   <meta name="msapplication-TileColor" content="#000000">
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -75,7 +75,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    
+
     html {
       scroll-behavior: smooth;
     }
@@ -89,11 +89,11 @@
       background-position: 0 0, 0 0;
       background-repeat: no-repeat, repeat;
     }
-    
+
     .accent-blue {
       color: #007aff;
     }
-    
+
     .hover-lift {
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
@@ -109,20 +109,58 @@
       transform: translateY(-2px);
       color: #000;
     }
+
+    /* Mockup image animation */
+    .mockup-container {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease-out 0.3s forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mockup-image {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mockup-image:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Logo styling */
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .logo-group:hover .logo-img {
+      transform: scale(1.05);
+    }
+
+    .footer-logo {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body class="bg-white text-black antialiased">
 
   <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 text-xl font-semibold tracking-tight group" aria-label="Kyron Home">
-        <div class="w-8 h-8 rounded-lg bg-black flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-            <path d="M2 17l10 5 10-5"/>
-            <path d="M2 12l10 5 10-5"/>
-          </svg>
-        </div>
+      <a href="#" class="logo-group flex items-center gap-3 text-xl font-semibold tracking-tight group" aria-label="Kyron Home">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="logo-img" width="32" height="32">
         <span>Kyron</span>
       </a>
       <div class="flex items-center gap-6">
@@ -150,6 +188,20 @@
           Learn More
         </a>
       </div>
+      
+      <!-- Mockup Image Section -->
+      <div class="mockup-container mt-16 relative">
+        <div class="relative max-w-4xl mx-auto">
+          <img 
+            src="/images/mockup.png" 
+            alt="Kyron App Interface Preview" 
+            class="mockup-image w-full h-auto rounded-2xl"
+            loading="eager"
+          >
+          <!-- Subtle gradient overlay at bottom for seamless transition -->
+          <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -161,7 +213,7 @@
         <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Built different</h2>
         <p class="text-gray-500 text-lg">Everything you need, nothing you don't.</p>
       </div>
-      
+
       <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-white rounded-2xl p-8 hover-lift">
           <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
@@ -256,15 +308,10 @@
   <footer class="py-12 px-6 border-t border-gray-100">
     <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex items-center gap-2 text-sm text-gray-400">
-        <div class="w-5 h-5 rounded bg-black flex items-center justify-center">
-          <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-            <path d="M2 17l10 5 10-5"/>
-          </svg>
-        </div>
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="footer-logo" width="20" height="20">
         <span>© 2025 Kyron. All rights reserved.</span>
       </div>
-      
+
       <div class="flex items-center gap-8">
         <div class="flex items-center gap-4">
           <a href="https://github.com/kyron" class="social-icon text-gray-400 hover:text-black" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
