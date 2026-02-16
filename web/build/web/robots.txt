@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /app/login
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://kyron.spidroid.com/sitemap.xml
+
+Crawl-delay: 1
