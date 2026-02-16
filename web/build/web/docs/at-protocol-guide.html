@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AT Protocol Guide | Kyron Docs</title>
+  <meta name="description" content="Learn about AT Protocol, the open standard powering Kyron.">
+  <meta name="canonical" href="https://kyron.spidroid.com/docs/at-protocol-guide">
+  <meta property="og:title" content="AT Protocol Guide">
+  <meta property="og:description" content="Learn about AT Protocol, the open standard powering Kyron.">
+  <meta property="og:url" content="https://kyron.spidroid.com/docs/at-protocol-guide">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html { scroll-behavior: smooth; }
+    .accent-blue { color: #007aff; }
+    .hero-dots-bg { background-color: white; background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,1) 100%), radial-gradient(circle at center, #d1d5db 1.5px, transparent 1.5px); background-size: 100% 100%, 24px 24px; background-position: 0 0, 0 0; background-repeat: no-repeat, repeat; }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
+        <span>Kyron</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="/features" class="text-sm text-gray-500 hover:text-black transition-colors">Features</a>
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="hero-dots-bg pt-32 pb-20 px-6">
+    <article class="max-w-3xl mx-auto">
+      <div class="mb-12">
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+          <a href="/docs" class="hover:text-black">Docs</a>
+          <span>/</span>
+          <span>AT Protocol Guide</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6">
+          AT Protocol <span class="accent-blue">Guide</span>
+        </h1>
+        <p class="text-xl text-gray-500">
+          Understand the technology behind Kyron and other decentralized social networks.
+        </p>
+      </div>
+
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-semibold mb-6 mt-12">What is AT Protocol?</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          AT Protocol (Authenticated Transfer Protocol) is an open standard for decentralized social networks. It's designed to enable interoperability between different social platforms while maintaining user privacy and data ownership.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Core Concepts</h2>
+        
+        <h3 class="text-2xl font-semibold mb-4">DIDs (Decentralized Identifiers)</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          A DID is a unique identifier that you control. It's like a username, but you own it cryptographically. Your DID is portable—you can use it on any AT Protocol app.
+        </p>
+
+        <h3 class="text-2xl font-semibold mb-4">Personal Data Repositories (PDR)</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          Your PDR is where your data lives. It's a personal data store that you control. You can run it yourself or use a hosting provider. Your data is encrypted and only you can authorize access to it.
+        </p>
+
+        <h3 class="text-2xl font-semibold mb-4">Lexicons</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          Lexicons define the structure of data in AT Protocol. They're like schemas that describe what a post, profile, or follow looks like. Anyone can define new lexicons.
+        </p>
+
+        <h3 class="text-2xl font-semibold mb-4">Federation</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          AT Protocol is federated, meaning multiple servers can interoperate. You can follow people on different servers, and your data can be replicated across multiple providers.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">How It Works</h2>
+        <ol class="list-decimal list-inside text-gray-600 mb-8 space-y-3">
+          <li><strong>Create Identity:</strong> You create a DID and set up your personal data repository</li>
+          <li><strong>Create Content:</strong> You post content to your repository</li>
+          <li><strong>Share:</strong> You share your DID with others</li>
+          <li><strong>Discover:</strong> Apps can discover your content through your DID</li>
+          <li><strong>Interact:</strong> Others can follow you, like, and comment on your posts</li>
+          <li><strong>Portability:</strong> You can move to a different app and keep your identity and data</li>
+        </ol>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Key Benefits</h2>
+        <ul class="list-disc list-inside text-gray-600 mb-8 space-y-3">
+          <li><strong>User Control:</strong> You own your identity and data</li>
+          <li><strong>Interoperability:</strong> Apps can work together</li>
+          <li><strong>Portability:</strong> You can switch apps without losing your data</li>
+          <li><strong>Privacy:</strong> Your data is encrypted and only you authorize access</li>
+          <li><strong>Innovation:</strong> Anyone can build new apps on AT Protocol</li>
+        </ul>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Getting Started</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          To get started with AT Protocol on Kyron:
+        </p>
+        <ol class="list-decimal list-inside text-gray-600 mb-8 space-y-3">
+          <li>Create a Kyron account</li>
+          <li>Your DID is automatically created</li>
+          <li>Start posting and connecting with others</li>
+          <li>Your data is stored in your personal repository</li>
+          <li>You can export your data anytime</li>
+        </ol>
+
+        <div class="bg-blue-50 rounded-lg p-6 my-8">
+          <p class="text-gray-700 mb-4">
+            <strong>Ready to experience AT Protocol?</strong>
+          </p>
+          <a href="/app" class="inline-flex items-center justify-center px-6 py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors">
+            Join Kyron
+          </a>
+        </div>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Learn More</h2>
+        <ul class="list-disc list-inside text-gray-600 mb-8 space-y-2">
+          <li><a href="https://atproto.com" class="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">AT Protocol Official Site</a></li>
+          <li><a href="/docs/quick-start" class="text-blue-600 hover:underline">Kyron Quick Start Guide</a></li>
+          <li><a href="/docs/migration" class="text-blue-600 hover:underline">Migrating from Other Platforms</a></li>
+        </ul>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex justify-between mt-16 pt-8 border-t border-gray-200">
+        <a href="/docs/quick-start" class="text-blue-600 hover:text-blue-700 font-medium">← Quick Start</a>
+        <a href="/docs/migration" class="text-blue-600 hover:text-blue-700 font-medium">Migration Guide →</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="py-12 px-6 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
+        <span>© 2025 Kyron. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="https://kyron-terms-and-privacy.onrender.com/privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        <a href="https://kyron-terms-and-privacy.onrender.com/terms.html" class="hover:text-black transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

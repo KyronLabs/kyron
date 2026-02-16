@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Source | Kyron</title>
+  <meta name="description" content="Kyron is open source. Contribute to the future of decentralized social.">
+  <meta name="canonical" href="https://kyron.spidroid.com/open-source">
+  <meta property="og:title" content="Open Source | Kyron">
+  <meta property="og:description" content="Kyron is open source. Contribute to the future of decentralized social.">
+  <meta property="og:url" content="https://kyron.spidroid.com/open-source">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html { scroll-behavior: smooth; }
+    .accent-blue { color: #007aff; }
+    .hero-dots-bg { background-color: white; background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,1) 100%), radial-gradient(circle at center, #d1d5db 1.5px, transparent 1.5px); background-size: 100% 100%, 24px 24px; background-position: 0 0, 0 0; background-repeat: no-repeat, repeat; }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
+        <span>Kyron</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="/features" class="text-sm text-gray-500 hover:text-black transition-colors">Features</a>
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="hero-dots-bg pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6">
+          Open <span class="accent-blue">Source</span>
+        </h1>
+        <p class="text-xl text-gray-500">Kyron is built on open source. Contribute and help shape the future.</p>
+      </div>
+
+      <!-- Why Open Source -->
+      <div class="grid md:grid-cols-3 gap-8 mb-20">
+        <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <h3 class="text-xl font-semibold mb-4">🔓 Transparency</h3>
+          <p class="text-gray-600">
+            See exactly how Kyron works. No hidden algorithms or proprietary code. Full transparency.
+          </p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <h3 class="text-xl font-semibold mb-4">🤝 Community</h3>
+          <p class="text-gray-600">
+            Contribute code, report bugs, and help improve Kyron. Your voice matters.
+          </p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <h3 class="text-xl font-semibold mb-4">🚀 Innovation</h3>
+          <p class="text-gray-600">
+            Build on top of Kyron. Create new features and apps using our open APIs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Repositories -->
+      <div class="mb-20">
+        <h2 class="text-2xl font-semibold mb-8">Main Repositories</h2>
+        <div class="space-y-4">
+          <a href="https://github.com/KyronLabs/kyron" class="block bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow" target="_blank" rel="noopener noreferrer">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold">kyron</h3>
+              <span class="text-gray-400">→</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-3">Main Kyron repository with web, iOS, and Android apps</p>
+            <div class="flex gap-4">
+              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">TypeScript</span>
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Dart</span>
+              <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">MIT License</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/KyronLabs/kyron-sdk-js" class="block bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow" target="_blank" rel="noopener noreferrer">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold">kyron-sdk-js</h3>
+              <span class="text-gray-400">→</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-3">JavaScript SDK for building on Kyron</p>
+            <div class="flex gap-4">
+              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">JavaScript</span>
+              <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">MIT License</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/KyronLabs/kyron-sdk-python" class="block bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow" target="_blank" rel="noopener noreferrer">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold">kyron-sdk-python</h3>
+              <span class="text-gray-400">→</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-3">Python SDK for Kyron integration</p>
+            <div class="flex gap-4">
+              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Python</span>
+              <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">MIT License</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/KyronLabs/kyron-sdk-flutter" class="block bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow" target="_blank" rel="noopener noreferrer">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold">kyron-sdk-flutter</h3>
+              <span class="text-gray-400">→</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-3">Flutter SDK for mobile development</p>
+            <div class="flex gap-4">
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Dart</span>
+              <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">MIT License</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contributing -->
+      <div class="bg-blue-50 rounded-2xl p-12 mb-20">
+        <h2 class="text-2xl font-semibold mb-6">How to Contribute</h2>
+        <ol class="space-y-6">
+          <li class="flex gap-4">
+            <span class="text-2xl font-bold text-blue-600">1</span>
+            <div>
+              <h3 class="font-semibold mb-2">Fork the Repository</h3>
+              <p class="text-gray-600">Create your own fork on GitHub</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-2xl font-bold text-blue-600">2</span>
+            <div>
+              <h3 class="font-semibold mb-2">Create a Branch</h3>
+              <p class="text-gray-600">Create a feature branch for your changes</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-2xl font-bold text-blue-600">3</span>
+            <div>
+              <h3 class="font-semibold mb-2">Make Changes</h3>
+              <p class="text-gray-600">Implement your feature or fix</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-2xl font-bold text-blue-600">4</span>
+            <div>
+              <h3 class="font-semibold mb-2">Submit a Pull Request</h3>
+              <p class="text-gray-600">Open a PR with a clear description of your changes</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-2xl font-bold text-blue-600">5</span>
+            <div>
+              <h3 class="font-semibold mb-2">Review & Merge</h3>
+              <p class="text-gray-600">Our team reviews and merges your contribution</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Code of Conduct -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-12 mb-20">
+        <h2 class="text-2xl font-semibold mb-6">Code of Conduct</h2>
+        <p class="text-gray-600 mb-6">
+          We're committed to providing a welcoming and inclusive environment for all contributors.
+        </p>
+        <ul class="space-y-3 text-gray-600">
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">✓</span>
+            <span>Be respectful and inclusive</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">✓</span>
+            <span>Welcome diverse perspectives</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">✓</span>
+            <span>Provide constructive feedback</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">✓</span>
+            <span>Report issues appropriately</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-black text-white rounded-2xl p-12 text-center">
+        <h2 class="text-2xl font-semibold mb-4">Ready to Contribute?</h2>
+        <p class="text-gray-400 mb-8">Join our community of developers and help build the future of social.</p>
+        <a href="https://github.com/KyronLabs/kyron" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors" target="_blank" rel="noopener noreferrer">
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 px-6 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
+        <span>© 2025 Kyron. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="https://kyron-terms-and-privacy.onrender.com/privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        <a href="https://kyron-terms-and-privacy.onrender.com/terms.html" class="hover:text-black transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
