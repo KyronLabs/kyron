@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features | Kyron — Own Your Feed</title>
+  <meta name="description" content="Explore all Kyron features: data ownership, AI discovery, AR creation, communities, creator equity, and privacy by design.">
+  <meta name="canonical" href="https://kyron.spidroid.com/features">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    html { scroll-behavior: smooth; }
+    .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .accent-blue { color: #007aff; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; min-width: 200px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 40; }
+    .dropdown-menu.active { display: block; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1rem; color: #6b7280; text-decoration: none; font-size: 0.875rem; transition: color 0.2s ease, background-color 0.2s ease; }
+    .dropdown-menu a:hover { background-color: #f9fafb; color: #000; }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
+        <span>Kyron</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <div class="relative">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/features">Overview</a>
+            <a href="/features/data-ownership">Data Ownership</a>
+            <a href="/features/discovery">Discovery</a>
+            <a href="/features/ar-creation">AR Creation</a>
+            <a href="/features/communities">Communities</a>
+            <a href="/features/creator-equity">Creator Equity</a>
+            <a href="/features/privacy">Privacy</a>
+          </div>
+        </div>
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-32 pb-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6">
+          Features that put <span class="accent-blue">you</span> first
+        </h1>
+        <p class="text-xl text-gray-500 max-w-2xl mx-auto">
+          Kyron is built on principles of ownership, transparency, and user control. Explore what makes us different.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 mb-20">
+        <!-- Feature 1 -->
+        <div class="hover-lift">
+          <div class="bg-blue-50 rounded-2xl p-12 mb-6 h-48 flex items-center justify-center">
+            <svg class="w-20 h-20 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-semibold mb-3">Own Your Data</h2>
+          <p class="text-gray-500 mb-6">Your posts, your identity, your choice. Export everything with one tap. No lock-in, ever.</p>
+          <a href="/features/data-ownership" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+            Learn more →
+          </a>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="hover-lift">
+          <div class="bg-red-50 rounded-2xl p-12 mb-6 h-48 flex items-center justify-center">
+            <svg class="w-20 h-20 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-semibold mb-3">Zero-Follower Discovery</h2>
+          <p class="text-gray-500 mb-6">AI-ranked feed that surfaces great content, whether you have 0 followers or 100,000.</p>
+          <a href="/features/discovery" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+            Learn more →
+          </a>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="hover-lift">
+          <div class="bg-blue-50 rounded-2xl p-12 mb-6 h-48 flex items-center justify-center">
+            <svg class="w-20 h-20 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-semibold mb-3">AR-First Creation</h2>
+          <p class="text-gray-500 mb-6">Built-in AR lenses at 30fps. Create, remix, and share immersive moments.</p>
+          <a href="/features/ar-creation" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+            Learn more →
+          </a>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="hover-lift">
+          <div class="bg-gray-100 rounded-2xl p-12 mb-6 h-48 flex items-center justify-center">
+            <svg class="w-20 h-20 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-semibold mb-3">Communities</h2>
+          <p class="text-gray-500 mb-6">Create or join spaces around shared interests. Moderated by humans, not algorithms.</p>
+          <a href="/features/communities" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+            Learn more →
+          </a>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="hover-lift">
+          <div class="bg-red-50 rounded-2xl p-12 mb-6 h-48 flex items-center justify-center">
+            <svg class="w-20 h-20 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-semibold mb-3">Creator Equity</h2>
+          <p class="text-gray-500 mb-6">10% of revenue pooled and redistributed to creators. Watch time matters, not follower count.</p>
+          <a href="/features/creator-equity" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+            Learn more →
+          </a>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="hover-lift">
+          <div class="bg-blue-50 rounded-2xl p-12 mb-6 h-48 flex items-center justify-center">
+            <svg class="w-20 h-20 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-semibold mb-3">Privacy by Design</h2>
+          <p class="text-gray-500 mb-6">E2EE on every post if you want it. No tracking, no surveillance, no compromises.</p>
+          <a href="/features/privacy" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+            Learn more →
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-black text-white rounded-2xl p-12 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Ready to experience the difference?</h2>
+        <p class="text-gray-400 mb-8">Join thousands of creators building the future of social.</p>
+        <a href="/app" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 px-6 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
+        <span>© 2025 Kyron. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="https://kyron-terms-and-privacy.onrender.com/privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        <a href="https://kyron-terms-and-privacy.onrender.com/terms.html" class="hover:text-black transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('div').querySelector('.dropdown-menu');
+      dropdown.classList.toggle('active');
+    }
+    document.addEventListener('click', function(event) {
+      const dropdown = document.querySelector('.dropdown-menu');
+      if (dropdown && !event.target.closest('div')) {
+        dropdown.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

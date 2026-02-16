@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Kyron</title>
+  <meta name="description" content="Learn about Kyron's mission to build user-owned social platforms on open protocols. Meet the team and our values.">
+  <meta name="canonical" href="https://kyron.spidroid.com/about">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html { scroll-behavior: smooth; }
+    .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; min-width: 200px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 40; }
+    .dropdown-menu.active { display: block; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1rem; color: #6b7280; text-decoration: none; font-size: 0.875rem; transition: color 0.2s ease, background-color 0.2s ease; }
+    .dropdown-menu a:hover { background-color: #f9fafb; color: #000; }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
+        <span>Kyron</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <div class="relative">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/features">Overview</a>
+            <a href="/features/data-ownership">Data Ownership</a>
+            <a href="/features/discovery">Discovery</a>
+            <a href="/features/ar-creation">AR Creation</a>
+            <a href="/features/communities">Communities</a>
+            <a href="/features/creator-equity">Creator Equity</a>
+            <a href="/features/privacy">Privacy</a>
+          </div>
+        </div>
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors font-medium">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6">
+          Building the future of <span class="text-blue-600">social</span>
+        </h1>
+        <p class="text-xl text-gray-500 max-w-2xl mx-auto">
+          Kyron is a mission-driven team building user-owned social platforms on open protocols. We believe creators and communities deserve better.
+        </p>
+      </div>
+
+      <!-- Mission Section -->
+      <div class="mb-20">
+        <h2 class="text-3xl font-semibold mb-6">Our Mission</h2>
+        <p class="text-lg text-gray-600 leading-relaxed mb-6">
+          We're building a social platform where creators own their data, communities thrive without algorithms controlling them, and everyone has a voice—regardless of follower count.
+        </p>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Traditional platforms extract value from creators and communities. Kyron flips the model: you own your identity, your posts, and your relationships. You decide what you see. You keep the value you create.
+        </p>
+      </div>
+
+      <!-- Values Section -->
+      <div class="mb-20">
+        <h2 class="text-3xl font-semibold mb-12">Our Values</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">User Ownership</h3>
+            <p class="text-gray-600">Your data is yours. You control your identity, posts, and relationships. No lock-in, ever.</p>
+          </div>
+
+          <div>
+            <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Open Protocols</h3>
+            <p class="text-gray-600">Built on AT Protocol, the same open standard powering Bluesky. Interoperable and decentralized.</p>
+          </div>
+
+          <div>
+            <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Creator Equity</h3>
+            <p class="text-gray-600">10% of revenue goes to creators. Watch time matters more than follower count.</p>
+          </div>
+
+          <div>
+            <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Privacy First</h3>
+            <p class="text-gray-600">E2EE on every post. No tracking, no surveillance, no compromises on privacy.</p>
+          </div>
+
+          <div>
+            <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4m0 0l1 1m-1-1l-1 1m1-1l1-1m-1 1l-1-1M9 4H5a2 2 0 00-2 2v14a2 2 0 002 2h4"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Open Source</h3>
+            <p class="text-gray-600">MIT licensed. Community-driven development. No gatekeepers.</p>
+          </div>
+
+          <div>
+            <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Zero-Follower Discovery</h3>
+            <p class="text-gray-600">AI-powered feed surfaces great content regardless of follower count.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="bg-black text-white rounded-2xl p-12 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Join Us in Building the Future</h2>
+        <p class="text-gray-400 mb-8 max-w-xl mx-auto">
+          Whether you're a creator, developer, or community builder, there's a place for you in Kyron.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/app" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors">
+            Get Started
+          </a>
+          <a href="/careers" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors">
+            View Careers
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 px-6 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
+        <span>© 2025 Kyron. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="https://kyron-terms-and-privacy.onrender.com/privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        <a href="https://kyron-terms-and-privacy.onrender.com/terms.html" class="hover:text-black transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('div').querySelector('.dropdown-menu');
+      dropdown.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

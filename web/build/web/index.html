@@ -174,12 +174,12 @@
       color: #000;
     }
 
-    /* Mockup image animation - NO OUTLINE VERSION */
+    /* Mockup image animation */
     .mockup-container {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.8s ease-out 0.3s forwards;
-      margin-top: 3rem; /* Reduced from mt-16 (4rem) */
+      margin-top: 3rem;
     }
 
     @keyframes fadeUp {
@@ -190,10 +190,9 @@
     }
 
     .mockup-image {
-      /* Removed box-shadow that was creating the outline effect */
       transition: transform 0.3s ease;
-      border: none; /* Explicitly remove any border */
-      outline: none; /* Remove outline */
+      border: none;
+      outline: none;
     }
 
     .mockup-image:hover {
@@ -222,12 +221,56 @@
 
     /* Reduced spacing utilities */
     .compact-section {
-      padding-top: 4rem; /* Reduced from 5rem (20) */
+      padding-top: 4rem;
       padding-bottom: 4rem;
     }
 
     .compact-gap {
-      gap: 0.5rem; /* Reduced gap between top and bottom items */
+      gap: 0.5rem;
+    }
+
+    /* Dropdown menu styles */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      min-width: 200px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      z-index: 40;
+    }
+
+    .dropdown-menu.active {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #6b7280;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f9fafb;
+      color: #000;
+    }
+
+    .dropdown-menu a:first-child {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .dropdown-menu a:last-child {
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
+
+    .features-dropdown {
+      position: relative;
     }
   </style>
 </head>
@@ -238,13 +281,34 @@
 
   <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="https://kyron.spidroid.com" class="logo-group flex items-center gap-3 text-xl font-semibold tracking-tight group" aria-label="Kyron Home">
+      <a href="/" class="logo-group flex items-center gap-3 text-xl font-semibold tracking-tight group" aria-label="Kyron Home">
         <img src="/images/logo_with_bg.webp" alt="Kyron" class="logo-img" width="32" height="32">
         <span>Kyron</span>
       </a>
       <div class="flex items-center gap-6">
-        <a href="#features" class="text-sm text-gray-500 hover:text-black transition-colors">Features</a>
-        <a href="#about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <!-- Features Dropdown -->
+        <div class="features-dropdown">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)" aria-haspopup="true" aria-expanded="false">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/features">Overview</a>
+            <a href="/features/data-ownership">Data Ownership</a>
+            <a href="/features/discovery">Discovery</a>
+            <a href="/features/ar-creation">AR Creation</a>
+            <a href="/features/communities">Communities</a>
+            <a href="/features/creator-equity">Creator Equity</a>
+            <a href="/features/privacy">Privacy</a>
+          </div>
+        </div>
+
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
         <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">Log In</a>
       </div>
     </div>
@@ -269,7 +333,7 @@
           </a>
         </div>
         
-        <!-- Mockup Image Section - NO OUTLINE, REDUCED SPACING -->
+        <!-- Mockup Image Section -->
         <div class="mockup-container relative">
           <div class="relative max-w-4xl mx-auto">
             <img 
@@ -306,6 +370,7 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">Own your data</h3>
             <p class="text-gray-500 leading-relaxed">Your posts, your identity, your choice. Export everything with one tap. No lock-in, ever.</p>
+            <a href="/features/data-ownership" class="inline-block mt-4 text-blue-600 hover:text-blue-700 text-sm font-medium">Learn more →</a>
           </article>
 
           <article class="bg-white rounded-2xl p-8 hover-lift">
@@ -316,6 +381,7 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">Zero-follower discovery</h3>
             <p class="text-gray-500 leading-relaxed">AI-ranked feed that surfaces great content, whether you have 0 followers or 100,000.</p>
+            <a href="/features/discovery" class="inline-block mt-4 text-blue-600 hover:text-blue-700 text-sm font-medium">Learn more →</a>
           </article>
 
           <article class="bg-white rounded-2xl p-8 hover-lift">
@@ -327,6 +393,7 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">AR-first creation</h3>
             <p class="text-gray-500 leading-relaxed">Built-in AR lenses at 30fps. Create, remix, and share immersive moments.</p>
+            <a href="/features/ar-creation" class="inline-block mt-4 text-blue-600 hover:text-blue-700 text-sm font-medium">Learn more →</a>
           </article>
 
           <article class="bg-white rounded-2xl p-8 hover-lift">
@@ -337,6 +404,7 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">Communities</h3>
             <p class="text-gray-500 leading-relaxed">Create or join spaces around shared interests. Moderated by humans, not algorithms.</p>
+            <a href="/features/communities" class="inline-block mt-4 text-blue-600 hover:text-blue-700 text-sm font-medium">Learn more →</a>
           </article>
 
           <article class="bg-white rounded-2xl p-8 hover-lift">
@@ -347,6 +415,7 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">Creator equity</h3>
             <p class="text-gray-500 leading-relaxed">10% of revenue pooled and redistributed to creators. Watch time matters, not follower count.</p>
+            <a href="/features/creator-equity" class="inline-block mt-4 text-blue-600 hover:text-blue-700 text-sm font-medium">Learn more →</a>
           </article>
 
           <article class="bg-white rounded-2xl p-8 hover-lift">
@@ -357,6 +426,7 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">Privacy by design</h3>
             <p class="text-gray-500 leading-relaxed">E2EE on every post if you want it. No tracking, no surveillance, no compromises.</p>
+            <a href="/features/privacy" class="inline-block mt-4 text-blue-600 hover:text-blue-700 text-sm font-medium">Learn more →</a>
           </article>
         </div>
       </div>
@@ -432,6 +502,22 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('.features-dropdown').querySelector('.dropdown-menu');
+      dropdown.classList.toggle('active');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const dropdown = document.querySelector('.features-dropdown');
+      if (!dropdown.contains(event.target)) {
+        dropdown.querySelector('.dropdown-menu').classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
