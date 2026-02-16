@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR-First Creation | Kyron Features</title>
+  <meta name="description" content="Create immersive AR content at 30fps. Built-in lenses, MediaPipe integration, and lightweight models under 6MB.">
+  <meta name="canonical" href="https://kyron.spidroid.com/features/ar-creation">
+  <meta property="og:title" content="AR-First Creation | Kyron">
+  <meta property="og:description" content="Create immersive AR content at 30fps with built-in lenses and MediaPipe.">
+  <meta property="og:url" content="https://kyron.spidroid.com/features/ar-creation">
+  <meta name="twitter:title" content="AR-First Creation | Kyron">
+  <meta name="twitter:description" content="Create immersive AR content at 30fps with built-in lenses and MediaPipe.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html { scroll-behavior: smooth; }
+    .accent-blue { color: #007aff; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; min-width: 200px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 40; }
+    .dropdown-menu.active { display: block; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1rem; color: #6b7280; text-decoration: none; font-size: 0.875rem; transition: color 0.2s ease, background-color 0.2s ease; }
+    .dropdown-menu a:hover { background-color: #f9fafb; color: #000; }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight" aria-label="Kyron Home">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
+        <span>Kyron</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <div class="relative">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)" aria-haspopup="true" aria-expanded="false">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/features">Overview</a>
+            <a href="/features/data-ownership">Data Ownership</a>
+            <a href="/features/discovery">Discovery</a>
+            <a href="/features/ar-creation">AR Creation</a>
+            <a href="/features/communities">Communities</a>
+            <a href="/features/creator-equity">Creator Equity</a>
+            <a href="/features/privacy">Privacy</a>
+          </div>
+        </div>
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <div class="mb-8 flex items-center gap-2 text-sm text-gray-500">
+        <a href="/" class="hover:text-black">Home</a>
+        <span>/</span>
+        <a href="/features" class="hover:text-black">Features</a>
+        <span>/</span>
+        <span>AR Creation</span>
+      </div>
+
+      <div class="mb-16">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6">
+          AR-first <span class="accent-blue">creation</span>
+        </h1>
+        <p class="text-xl text-gray-500">
+          Create immersive AR content at 30fps. Built-in lenses, remix tools, and a creator marketplace.
+        </p>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="bg-blue-50 rounded-2xl p-12 mb-16 h-64 flex items-center justify-center">
+        <svg class="w-32 h-32 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        </svg>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="prose prose-lg max-w-none mb-16">
+        <h2 class="text-3xl font-semibold mb-6">Why AR Matters for Creators</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          AR is the future of social content. It's more engaging than static posts, more immersive than videos, and more fun to create. But most platforms treat AR as an afterthought. Kyron makes it first-class.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Built-In Lenses at 30fps</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Kyron ships with a library of AR lenses you can use immediately. Face filters, object detection, hand tracking, and more. All running at smooth 30fps on mobile devices.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">MediaPipe Integration</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          We use Google's MediaPipe for fast, accurate pose and hand detection. Models are lightweight (under 6MB) and run entirely on-device. No server calls, no latency, no privacy concerns.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Create Your Own Lenses</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Use our lens creation toolkit to build custom AR effects. Remix existing lenses, add your own assets, and publish to the marketplace. Earn revenue when others use your lenses.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Remix and Collaborate</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Create content with lenses from other creators. Remix, remix, remix. Build on each other's work and create something new. The more you remix, the more visibility you get.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Lens Marketplace</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Creators who build popular lenses earn revenue. Every time someone uses your lens, you get a cut. It's a new way to monetize creativity.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-black text-white rounded-2xl p-12 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Create a Lens</h2>
+        <p class="text-gray-400 mb-8">Start building immersive AR experiences today.</p>
+        <a href="/app" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors">
+          Get Started
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-16 flex justify-between">
+        <a href="/features/discovery" class="text-blue-600 hover:text-blue-700 font-medium">← Discovery</a>
+        <a href="/features/communities" class="text-blue-600 hover:text-blue-700 font-medium">Communities →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 px-6 border-t border-gray-100" role="contentinfo">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
+        <span>© 2025 Kyron. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="https://kyron-terms-and-privacy.onrender.com/privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        <a href="https://kyron-terms-and-privacy.onrender.com/terms.html" class="hover:text-black transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('div').querySelector('.dropdown-menu');
+      dropdown.classList.toggle('active');
+    }
+    document.addEventListener('click', function(event) {
+      const dropdown = document.querySelector('.dropdown-menu');
+      if (dropdown && !event.target.closest('div')) {
+        dropdown.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

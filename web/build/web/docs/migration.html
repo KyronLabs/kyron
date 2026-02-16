@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Migration Guide | Kyron Docs</title>
+  <meta name="description" content="Migrate your data from Twitter, Instagram, Bluesky, and other platforms to Kyron. Bring your followers and posts with you.">
+  <meta name="canonical" href="https://kyron.spidroid.com/docs/migration">
+  <meta property="og:title" content="Migration Guide | Kyron">
+  <meta property="og:description" content="Migrate your data from other platforms to Kyron.">
+  <meta property="og:url" content="https://kyron.spidroid.com/docs/migration">
+  <meta name="twitter:title" content="Migration Guide | Kyron">
+  <meta name="twitter:description" content="Migrate your data from other platforms to Kyron.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html { scroll-behavior: smooth; }
+    .accent-blue { color: #007aff; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; min-width: 200px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 40; }
+    .dropdown-menu.active { display: block; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1rem; color: #6b7280; text-decoration: none; font-size: 0.875rem; transition: color 0.2s ease, background-color 0.2s ease; }
+    .dropdown-menu a:hover { background-color: #f9fafb; color: #000; }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight" aria-label="Kyron Home">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
+        <span>Kyron</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <div class="relative">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)" aria-haspopup="true" aria-expanded="false">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/features">Overview</a>
+            <a href="/features/data-ownership">Data Ownership</a>
+            <a href="/features/discovery">Discovery</a>
+            <a href="/features/ar-creation">AR Creation</a>
+            <a href="/features/communities">Communities</a>
+            <a href="/features/creator-equity">Creator Equity</a>
+            <a href="/features/privacy">Privacy</a>
+          </div>
+        </div>
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <div class="mb-8 flex items-center gap-2 text-sm text-gray-500">
+        <a href="/" class="hover:text-black">Home</a>
+        <span>/</span>
+        <a href="/docs" class="hover:text-black">Docs</a>
+        <span>/</span>
+        <span>Migration</span>
+      </div>
+
+      <div class="mb-16">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6">
+          Bring your data with <span class="accent-blue">you</span>
+        </h1>
+        <p class="text-xl text-gray-500">
+          Migrate from Twitter, Instagram, Bluesky, and other platforms. Your data is yours to move.
+        </p>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="prose prose-lg max-w-none mb-16">
+        <h2 class="text-3xl font-semibold mb-6">Why Migrate to Kyron?</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          You've built an audience and created content on other platforms. Switching shouldn't mean starting from scratch. Kyron makes it easy to bring your data with you—your followers, your posts, your identity.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">What You Can Migrate</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Depending on the platform, you can migrate:
+        </p>
+        <ul class="list-disc list-inside text-gray-600 mb-8 space-y-2">
+          <li>Your profile information (bio, profile picture, links)</li>
+          <li>Your posts and media</li>
+          <li>Your followers and following lists</li>
+          <li>Your likes and bookmarks</li>
+          <li>Your communities and group memberships</li>
+        </ul>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Migration from Twitter/X</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          <strong>Step 1:</strong> Go to twitter.com/settings/download_your_data and request your data archive. Twitter will email you a link to download your data (usually within 24 hours).
+        </p>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          <strong>Step 2:</strong> In Kyron, go to Settings → Import Data → Twitter. Upload your data archive.
+        </p>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          <strong>Step 3:</strong> Kyron will import your posts, followers, and profile information. This usually takes a few minutes depending on the size of your archive.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Migration from Bluesky</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          <strong>Step 1:</strong> Go to bsky.app/settings/export and export your data. Bluesky will download a JSON file with all your data.
+        </p>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          <strong>Step 2:</strong> In Kyron, go to Settings → Import Data → Bluesky. Upload your exported file.
+        </p>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          <strong>Step 3:</strong> Kyron will import your data. Since Bluesky uses AT Protocol (same as Kyron), the import is seamless.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Migration from Instagram</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          <strong>Step 1:</strong> Go to instagram.com/download/request and request your data. Instagram will email you a download link (usually within a few days).
+        </p>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          <strong>Step 2:</strong> In Kyron, go to Settings → Import Data → Instagram. Upload your data archive.
+        </p>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          <strong>Step 3:</strong> Kyron will import your posts, followers, and profile. Note: Instagram followers won't automatically follow you on Kyron, but we'll help you invite them.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Inviting Your Followers</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          After migrating your data, you can invite your followers to join Kyron. We'll generate a custom invite link you can share on your old platform. Your followers can click the link and follow you on Kyron.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">AT Protocol Portability</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Kyron is built on AT Protocol, the same open standard powering Bluesky. This means your data is truly portable. You can:
+        </p>
+        <ul class="list-disc list-inside text-gray-600 mb-8 space-y-2">
+          <li>Use the same identity across multiple AT Protocol apps</li>
+          <li>Switch platforms without losing your identity or data</li>
+          <li>Export your data anytime and use it elsewhere</li>
+          <li>Run your own server if you want complete control</li>
+        </ul>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Need Help?</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          If you run into any issues during migration, our support team is here to help. Email support@kyron.spidroid.com or join our Discord community for assistance.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-black text-white rounded-2xl p-12 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Ready to Migrate?</h2>
+        <p class="text-gray-400 mb-8">Bring your data to Kyron and start fresh.</p>
+        <a href="/app" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors">
+          Get Started
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-16 flex justify-between">
+        <a href="/docs/quick-start" class="text-blue-600 hover:text-blue-700 font-medium">← Quick Start</a>
+        <a href="/docs" class="text-blue-600 hover:text-blue-700 font-medium">Back to Docs →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 px-6 border-t border-gray-100" role="contentinfo">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
+        <span>© 2025 Kyron. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="https://kyron-terms-and-privacy.onrender.com/privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        <a href="https://kyron-terms-and-privacy.onrender.com/terms.html" class="hover:text-black transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('div').querySelector('.dropdown-menu');
+      dropdown.classList.toggle('active');
+    }
+    document.addEventListener('click', function(event) {
+      const dropdown = document.querySelector('.dropdown-menu');
+      if (dropdown && !event.target.closest('div')) {
+        dropdown.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

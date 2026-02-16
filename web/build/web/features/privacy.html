@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy by Design | Kyron Features</title>
+  <meta name="description" content="E2EE on every post. Signal Protocol encryption. No tracking, no surveillance, no compromises.">
+  <meta name="canonical" href="https://kyron.spidroid.com/features/privacy">
+  <meta property="og:title" content="Privacy by Design | Kyron">
+  <meta property="og:description" content="E2EE on every post. No tracking, no surveillance, no compromises on privacy.">
+  <meta property="og:url" content="https://kyron.spidroid.com/features/privacy">
+  <meta name="twitter:title" content="Privacy by Design | Kyron">
+  <meta name="twitter:description" content="E2EE on every post. No tracking, no surveillance, no compromises on privacy.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html { scroll-behavior: smooth; }
+    .accent-blue { color: #007aff; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; min-width: 200px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 40; }
+    .dropdown-menu.active { display: block; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1rem; color: #6b7280; text-decoration: none; font-size: 0.875rem; transition: color 0.2s ease, background-color 0.2s ease; }
+    .dropdown-menu a:hover { background-color: #f9fafb; color: #000; }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight" aria-label="Kyron Home">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
+        <span>Kyron</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <div class="relative">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)" aria-haspopup="true" aria-expanded="false">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/features">Overview</a>
+            <a href="/features/data-ownership">Data Ownership</a>
+            <a href="/features/discovery">Discovery</a>
+            <a href="/features/ar-creation">AR Creation</a>
+            <a href="/features/communities">Communities</a>
+            <a href="/features/creator-equity">Creator Equity</a>
+            <a href="/features/privacy">Privacy</a>
+          </div>
+        </div>
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <div class="mb-8 flex items-center gap-2 text-sm text-gray-500">
+        <a href="/" class="hover:text-black">Home</a>
+        <span>/</span>
+        <a href="/features" class="hover:text-black">Features</a>
+        <span>/</span>
+        <span>Privacy</span>
+      </div>
+
+      <div class="mb-16">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6">
+          Privacy by <span class="accent-blue">design</span>
+        </h1>
+        <p class="text-xl text-gray-500">
+          E2EE on every post. No tracking, no surveillance, no compromises.
+        </p>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="bg-blue-50 rounded-2xl p-12 mb-16 h-64 flex items-center justify-center">
+        <svg class="w-32 h-32 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="prose prose-lg max-w-none mb-16">
+        <h2 class="text-3xl font-semibold mb-6">Privacy Is a Right, Not a Feature</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Most social platforms treat privacy as an afterthought. They track everything: what you click, what you read, who you follow, where you are. Then they sell this data to advertisers. Kyron is different.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">End-to-End Encryption</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Every post on Kyron can be encrypted end-to-end using the Signal Protocol. Only you and the people you choose can read your posts. Even Kyron can't read them.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Optional, Not Mandatory</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          You decide which posts are encrypted. Want to share publicly? No encryption. Want to share with just close friends? E2EE. Want to share with a specific group? E2EE to that group. You're in control.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">No Tracking</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Kyron doesn't track you. We don't use cookies to follow you across the web. We don't know where you are. We don't know what other sites you visit. We don't sell your data. Period.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">No Ads, No Surveillance</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Kyron doesn't show ads. We don't need to track you to make money. Our revenue comes from subscriptions and premium features. This means we're not incentivized to invade your privacy.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Differential Privacy</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          When we analyze data to improve Kyron, we use differential privacy techniques. We add noise to the data so individual privacy is protected. We can improve our service without compromising your privacy.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Transparent Privacy Policy</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Our privacy policy is written in plain English, not legal jargon. We explain exactly what data we collect, why we collect it, and how we use it. No hidden clauses, no fine print.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Your Data Is Yours</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          You can export all your data anytime. You can delete your account and all your data. You can move to another platform and take your data with you. Your data is yours, not ours.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-black text-white rounded-2xl p-12 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Secure Your Posts</h2>
+        <p class="text-gray-400 mb-8">Share with confidence on a platform that respects your privacy.</p>
+        <a href="/app" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors">
+          Get Started
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-16 flex justify-between">
+        <a href="/features/creator-equity" class="text-blue-600 hover:text-blue-700 font-medium">← Creator Equity</a>
+        <a href="/features" class="text-blue-600 hover:text-blue-700 font-medium">Back to Features →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 px-6 border-t border-gray-100" role="contentinfo">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
+        <span>© 2025 Kyron. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="https://kyron-terms-and-privacy.onrender.com/privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        <a href="https://kyron-terms-and-privacy.onrender.com/terms.html" class="hover:text-black transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('div').querySelector('.dropdown-menu');
+      dropdown.classList.toggle('active');
+    }
+    document.addEventListener('click', function(event) {
+      const dropdown = document.querySelector('.dropdown-menu');
+      if (dropdown && !event.target.closest('div')) {
+        dropdown.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

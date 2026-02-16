@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communities | Kyron Features</title>
+  <meta name="description" content="Create spaces around shared interests. Human moderation, transparent rules, no algorithmic interference.">
+  <meta name="canonical" href="https://kyron.spidroid.com/features/communities">
+  <meta property="og:title" content="Communities | Kyron">
+  <meta property="og:description" content="Create spaces around shared interests with human moderation and transparent rules.">
+  <meta property="og:url" content="https://kyron.spidroid.com/features/communities">
+  <meta name="twitter:title" content="Communities | Kyron">
+  <meta name="twitter:description" content="Create spaces around shared interests with human moderation and transparent rules.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html { scroll-behavior: smooth; }
+    .accent-blue { color: #007aff; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; min-width: 200px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 40; }
+    .dropdown-menu.active { display: block; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1rem; color: #6b7280; text-decoration: none; font-size: 0.875rem; transition: color 0.2s ease, background-color 0.2s ease; }
+    .dropdown-menu a:hover { background-color: #f9fafb; color: #000; }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight" aria-label="Kyron Home">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
+        <span>Kyron</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <div class="relative">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)" aria-haspopup="true" aria-expanded="false">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/features">Overview</a>
+            <a href="/features/data-ownership">Data Ownership</a>
+            <a href="/features/discovery">Discovery</a>
+            <a href="/features/ar-creation">AR Creation</a>
+            <a href="/features/communities">Communities</a>
+            <a href="/features/creator-equity">Creator Equity</a>
+            <a href="/features/privacy">Privacy</a>
+          </div>
+        </div>
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <div class="mb-8 flex items-center gap-2 text-sm text-gray-500">
+        <a href="/" class="hover:text-black">Home</a>
+        <span>/</span>
+        <a href="/features" class="hover:text-black">Features</a>
+        <span>/</span>
+        <span>Communities</span>
+      </div>
+
+      <div class="mb-16">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6">
+          Spaces that belong to <span class="accent-blue">you</span>
+        </h1>
+        <p class="text-xl text-gray-500">
+          Create or join communities around shared interests. Moderated by humans, not algorithms.
+        </p>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="bg-gray-100 rounded-2xl p-12 mb-16 h-64 flex items-center justify-center">
+        <svg class="w-32 h-32 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="prose prose-lg max-w-none mb-16">
+        <h2 class="text-3xl font-semibold mb-6">Communities, Not Algorithms</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Kyron communities are spaces where people with shared interests gather. Unlike algorithmic feeds, communities are transparent and human-moderated. You know the rules, you know who's in charge, and you have a voice in how the community evolves.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Create Your Own Community</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Starting a community is simple. Choose a topic, set your rules, and invite people. You become the moderator and set the culture. Communities can be public or private, open or invite-only.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Human Moderation</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Moderation is done by humans, not algorithms. Community leaders decide what's acceptable. They can remove spam, enforce rules, and create a safe space for their members. No hidden algorithms deciding what people see.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Transparent Rules</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Every community has public rules. Members know exactly what's expected. If a post is removed, you know why. No surprises, no shadowbanning, no mystery moderation.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Member Roles</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Communities can have multiple roles: moderators, contributors, members. Different roles have different permissions. You control who can post, who can moderate, and who can invite new members.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Monetization</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Community leaders can monetize their communities. Charge membership fees, sell exclusive content, or receive tips from members. The revenue goes directly to you—no middleman taking a cut.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-black text-white rounded-2xl p-12 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Start a Community</h2>
+        <p class="text-gray-400 mb-8">Build a space around your passion or interests.</p>
+        <a href="/app" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors">
+          Get Started
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-16 flex justify-between">
+        <a href="/features/ar-creation" class="text-blue-600 hover:text-blue-700 font-medium">← AR Creation</a>
+        <a href="/features/creator-equity" class="text-blue-600 hover:text-blue-700 font-medium">Creator Equity →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 px-6 border-t border-gray-100" role="contentinfo">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
+        <span>© 2025 Kyron. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="https://kyron-terms-and-privacy.onrender.com/privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        <a href="https://kyron-terms-and-privacy.onrender.com/terms.html" class="hover:text-black transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('div').querySelector('.dropdown-menu');
+      dropdown.classList.toggle('active');
+    }
+    document.addEventListener('click', function(event) {
+      const dropdown = document.querySelector('.dropdown-menu');
+      if (dropdown && !event.target.closest('div')) {
+        dropdown.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

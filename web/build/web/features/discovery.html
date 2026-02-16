@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero-Follower Discovery | Kyron Features</title>
+  <meta name="description" content="AI-powered feed that surfaces great content regardless of follower count. Vector embeddings and Pinecone-powered discovery.">
+  <meta name="canonical" href="https://kyron.spidroid.com/features/discovery">
+  <meta property="og:title" content="Zero-Follower Discovery | Kyron">
+  <meta property="og:description" content="AI-powered feed that surfaces great content regardless of follower count.">
+  <meta property="og:url" content="https://kyron.spidroid.com/features/discovery">
+  <meta name="twitter:title" content="Zero-Follower Discovery | Kyron">
+  <meta name="twitter:description" content="AI-powered feed that surfaces great content regardless of follower count.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html { scroll-behavior: smooth; }
+    .accent-blue { color: #007aff; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; min-width: 200px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 40; }
+    .dropdown-menu.active { display: block; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1rem; color: #6b7280; text-decoration: none; font-size: 0.875rem; transition: color 0.2s ease, background-color 0.2s ease; }
+    .dropdown-menu a:hover { background-color: #f9fafb; color: #000; }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight" aria-label="Kyron Home">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
+        <span>Kyron</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <div class="relative">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)" aria-haspopup="true" aria-expanded="false">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/features">Overview</a>
+            <a href="/features/data-ownership">Data Ownership</a>
+            <a href="/features/discovery">Discovery</a>
+            <a href="/features/ar-creation">AR Creation</a>
+            <a href="/features/communities">Communities</a>
+            <a href="/features/creator-equity">Creator Equity</a>
+            <a href="/features/privacy">Privacy</a>
+          </div>
+        </div>
+        <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
+        <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
+        <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <div class="mb-8 flex items-center gap-2 text-sm text-gray-500">
+        <a href="/" class="hover:text-black">Home</a>
+        <span>/</span>
+        <a href="/features" class="hover:text-black">Features</a>
+        <span>/</span>
+        <span>Discovery</span>
+      </div>
+
+      <div class="mb-16">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6">
+          Zero-follower <span class="accent-blue">discovery</span>
+        </h1>
+        <p class="text-xl text-gray-500">
+          AI-powered feed that surfaces great content regardless of follower count. Your voice matters from day one.
+        </p>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="bg-red-50 rounded-2xl p-12 mb-16 h-64 flex items-center justify-center">
+        <svg class="w-32 h-32 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="prose prose-lg max-w-none mb-16">
+        <h2 class="text-3xl font-semibold mb-6">The Problem with Follower-Based Discovery</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          On traditional platforms, your reach depends on your follower count. A brilliant post from someone with 10 followers gets buried. Meanwhile, mediocre content from accounts with millions of followers floods the feed. This creates a catch-22: you need followers to be seen, but you can't get followers if nobody sees you.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">How Kyron's Discovery Works</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Kyron uses vector embeddings and AI to rank content by quality, not popularity. Every post is analyzed for relevance, engagement potential, and alignment with your interests. The result: a feed that surfaces great content from creators you've never heard of.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">The Technology Behind It</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          We use Pinecone for vector similarity search and Redis for real-time caching. Posts are embedded using state-of-the-art language models, then ranked based on:
+        </p>
+        <ul class="list-disc list-inside text-gray-600 mb-8 space-y-2">
+          <li><strong>Content quality:</strong> Grammar, clarity, originality</li>
+          <li><strong>Relevance:</strong> How well it matches your interests</li>
+          <li><strong>Engagement potential:</strong> Likelihood others will engage</li>
+          <li><strong>Freshness:</strong> Recent posts ranked higher</li>
+          <li><strong>Diversity:</strong> Avoid showing too much of the same topic</li>
+        </ul>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Fair Visibility for All</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Whether you have 0 followers or 100,000, your posts get the same fair chance. A brilliant insight from a new creator can go viral. Mediocre content from an influencer gets less visibility. This levels the playing field and rewards quality over popularity.
+        </p>
+
+        <h2 class="text-3xl font-semibold mb-6 mt-12">Transparent Ranking</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Unlike algorithmic black boxes, you can see why content is ranked the way it is. We show you the factors that influenced each post's visibility, so you understand how to create content that resonates.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-black text-white rounded-2xl p-12 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Try the Feed</h2>
+        <p class="text-gray-400 mb-8">Experience discovery that rewards quality, not followers.</p>
+        <a href="/app" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors">
+          Get Started
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-16 flex justify-between">
+        <a href="/features/data-ownership" class="text-blue-600 hover:text-blue-700 font-medium">← Data Ownership</a>
+        <a href="/features/ar-creation" class="text-blue-600 hover:text-blue-700 font-medium">AR Creation →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 px-6 border-t border-gray-100" role="contentinfo">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
+        <span>© 2025 Kyron. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-500">
+        <a href="https://kyron-terms-and-privacy.onrender.com/privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        <a href="https://kyron-terms-and-privacy.onrender.com/terms.html" class="hover:text-black transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('div').querySelector('.dropdown-menu');
+      dropdown.classList.toggle('active');
+    }
+    document.addEventListener('click', function(event) {
+      const dropdown = document.querySelector('.dropdown-menu');
+      if (dropdown && !event.target.closest('div')) {
+        dropdown.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
