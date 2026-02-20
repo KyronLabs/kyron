@@ -19,18 +19,56 @@
 </head>
 <body class="bg-white text-black antialiased">
 
-  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3 text-xl font-semibold tracking-tight">
-        <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-8 h-8 rounded" width="32" height="32">
-        <span>Kyron</span>
+      <a href="/" class="logo-group flex items-center gap-2 text-lg font-semibold tracking-tight group flex-shrink-0" aria-label="Kyron Home">
+        <img src="/images/logo_with_bg.webp" alt="Kyron" class="logo-img" width="32" height="32">
+        <span class="hidden sm:inline">Kyron</span>
       </a>
-      <div class="flex items-center gap-6">
-        <a href="/features" class="text-sm text-gray-500 hover:text-black transition-colors">Features</a>
+      <div class="hidden md:flex items-center gap-6">
+        <!-- Features Dropdown -->
+        <div class="features-dropdown">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)" aria-haspopup="true" aria-expanded="false">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/features">Overview</a>
+            <a href="/features/data-ownership">Data Ownership</a>
+            <a href="/features/discovery">Discovery</a>
+            <a href="/features/ar-creation">AR Creation</a>
+            <a href="/features/communities">Communities</a>
+            <a href="/features/creator-equity">Creator Equity</a>
+            <a href="/features/privacy">Privacy</a>
+          </div>
+        </div>
+
         <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
         <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
+        <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
         <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
+        <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">Log In</a>
+      </div>
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center gap-4">
         <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700">Log In</a>
+        <button onclick="toggleMobileMenu()" class="p-2 text-gray-500 hover:text-black" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100">
+      <div class="px-6 py-4 space-y-3">
+        <a href="/features" class="block text-sm text-gray-500 hover:text-black py-2">Features</a>
+        <a href="/blog" class="block text-sm text-gray-500 hover:text-black py-2">Blog</a>
+        <a href="/docs" class="block text-sm text-gray-500 hover:text-black py-2">Docs</a>
+        <a href="/community" class="block text-sm text-gray-500 hover:text-black py-2">Community</a>
+        <a href="/about" class="block text-sm text-gray-500 hover:text-black py-2">About</a>
       </div>
     </div>
   </nav>
