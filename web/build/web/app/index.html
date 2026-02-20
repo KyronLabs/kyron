@@ -32,7 +32,11 @@
   <title>app</title>
   <link rel="manifest" href="manifest.json">
 </head>
-<body>
+<body>  <!-- Black dots background -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle, rgba(0,0,0,1) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.05;"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,1) 85%);"></div>
+  </div>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
