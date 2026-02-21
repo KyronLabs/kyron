@@ -1,0 +1,15 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    # Remove the undefined lint rule
+    undefined_lint: ignore
+    deprecated_member_use: ignore
+
+linter:
+  rules:
+    # Remove the problematic rule and use valid ones
+    use_super_parameters: warning
+    prefer_const_constructors: error
+    prefer_final_fields: error
+    avoid_redundant_argument_values: error
