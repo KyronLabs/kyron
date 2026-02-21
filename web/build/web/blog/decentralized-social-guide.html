@@ -19,6 +19,12 @@
 </head>
 <body class="bg-white text-black antialiased">
 
+  <!-- Black dots background -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle, rgba(0,0,0,1) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.05;"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,1) 85%);"></div>
+  </div>
+
       <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="/" class="logo-group flex items-center gap-2 text-lg font-semibold tracking-tight group flex-shrink-0" aria-label="Kyron Home">
@@ -73,7 +79,7 @@
     </div>
   </nav>
 
-  <main class="hero-dots-bg pt-32 pb-20 px-6">
+  <main class="hero-dots-bg pt-32 pb-20 px-6 relative z-10">
     <article class="max-w-3xl mx-auto">
       <div class="mb-12">
         <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
@@ -178,7 +184,7 @@
     </article>
   </main>
 
-  <footer class="py-12 px-6 border-t border-gray-100">
+  <footer class="py-12 px-6 border-t border-gray-100 relative z-10">
     <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex items-center gap-2 text-sm text-gray-500">
         <img src="/images/logo_with_bg.webp" alt="Kyron" class="w-5 h-5 rounded" width="20" height="20">
