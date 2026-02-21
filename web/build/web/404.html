@@ -12,23 +12,76 @@
     html { scroll-behavior: smooth; }
     .accent-blue { color: #007aff; }
     .hero-dots-bg { background-color: white; background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,1) 100%), radial-gradient(circle at center, #d1d5db 1.5px, transparent 1.5px); background-size: 100% 100%, 24px 24px; background-position: 0 0, 0 0; background-repeat: no-repeat, repeat; }
+
+    #liquid-404-canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      cursor: none;
+      filter: drop-shadow(0 8px 32px rgba(0,122,255,0.18));
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .ripple-hint {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+      text-transform: uppercase;
+      margin-top: 4px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Dropdown styles */
+    .features-dropdown { position: relative; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 8px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 8px;
+      min-width: 180px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      z-index: 100;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 12px;
+      font-size: 14px;
+      color: #374151;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .dropdown-menu a:hover { background: #f9fafb; color: black; }
+    .features-dropdown:hover .dropdown-menu { display: block; }
   </style>
 </head>
 <body class="bg-white text-black antialiased">
 
-      <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="/" class="logo-group flex items-center gap-2 text-lg font-semibold tracking-tight group flex-shrink-0" aria-label="Kyron Home">
         <img src="/images/logo_with_bg.webp" alt="Kyron" class="logo-img" width="32" height="32">
         <span>Kyron</span>
       </a>
       <div class="hidden md:flex items-center gap-6">
-        <!-- Features Dropdown -->
         <div class="features-dropdown">
-          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" onclick="toggleDropdown(event)" aria-haspopup="true" aria-expanded="false">
+          <button class="text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
             Features
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
           <div class="dropdown-menu">
@@ -41,24 +94,21 @@
             <a href="/features/privacy">Privacy</a>
           </div>
         </div>
-
         <a href="/blog" class="text-sm text-gray-500 hover:text-black transition-colors">Blog</a>
         <a href="/docs" class="text-sm text-gray-500 hover:text-black transition-colors">Docs</a>
         <a href="/community" class="text-sm text-gray-500 hover:text-black transition-colors">Community</a>
         <a href="/about" class="text-sm text-gray-500 hover:text-black transition-colors">About</a>
         <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">Log In</a>
       </div>
-      <!-- Mobile menu button -->
       <div class="md:hidden flex items-center gap-4">
         <a href="/app/login" class="text-sm font-medium text-blue-600 hover:text-blue-700">Log In</a>
-        <button onclick="toggleMobileMenu()" class="p-2 text-gray-500 hover:text-black" aria-label="Toggle menu">
+        <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="p-2 text-gray-500 hover:text-black" aria-label="Toggle menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
       </div>
     </div>
-    <!-- Mobile menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100">
       <div class="px-6 py-4 space-y-3">
         <a href="/features" class="block text-sm text-gray-500 hover:text-black py-2">Features</a>
@@ -72,14 +122,19 @@
 
   <main class="hero-dots-bg min-h-screen flex items-center justify-center px-6 pt-20">
     <div class="max-w-2xl mx-auto text-center">
-      <div class="mb-8">
-        <h1 class="text-9xl md:text-[150px] font-bold text-gray-200 leading-none">404</h1>
+
+      <!-- Liquid 404 Canvas -->
+      <div class="mb-8 flex flex-col items-center">
+        <div class="canvas-wrapper">
+          <canvas id="liquid-404-canvas" width="600" height="200" aria-label="404 with liquid animation"></canvas>
+        </div>
+        <p class="ripple-hint">move your cursor over the liquid</p>
       </div>
-      
+
       <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
         Page not <span class="accent-blue">found</span>
       </h2>
-      
+
       <p class="text-xl text-gray-500 mb-12 leading-relaxed">
         The page you're looking for doesn't exist. It might have been moved or deleted. Let's get you back on track.
       </p>
@@ -148,5 +203,272 @@
     </div>
   </footer>
 
+  <script>
+  (() => {
+    const canvas = document.getElementById('liquid-404-canvas');
+    const ctx = canvas.getContext('2d');
+
+    const W = canvas.width;
+    const H = canvas.height;
+
+    // ─── Physics state ───────────────────────────────────────────
+    let liquidLevel = 0.62;      // 0 = top, 1 = bottom (normalised)
+    let waveAngle   = 0;         // primary wave phase
+    let waveAngle2  = 0;         // secondary wave phase
+    let tiltAngle   = 0;         // left-right gravity tilt (radians)
+    let tiltVelocity = 0;        // angular velocity of tilt
+    let mouseX = W / 2;
+    let ripples = [];            // { x, age, strength }
+
+    // ─── Mouse / pointer interaction ─────────────────────────────
+    canvas.addEventListener('mousemove', e => {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = W / rect.width;
+      const localX = (e.clientX - rect.left) * scaleX;
+      const localY = (e.clientY - rect.top) * (H / rect.height);
+
+      // Gravity tilt: cursor left of centre → liquid tilts left
+      const norm = (localX - W / 2) / (W / 2);   // -1 … +1
+      tiltVelocity += norm * 0.0006;
+
+      // Ripple at cursor position on the wave surface
+      const surfaceY = getSurfaceY(localX);
+      if (Math.abs(localY - surfaceY) < 30) {
+        ripples.push({ x: localX, age: 0, strength: 1.2 });
+      }
+      mouseX = localX;
+    });
+
+    canvas.addEventListener('click', e => {
+      const rect = canvas.getBoundingClientRect();
+      const localX = (e.clientX - rect.left) * (W / rect.width);
+      ripples.push({ x: localX, age: 0, strength: 2.8 });
+    });
+
+    // Mobile tilt support
+    window.addEventListener('deviceorientation', e => {
+      if (e.gamma !== null) {
+        const norm = Math.max(-1, Math.min(1, e.gamma / 45));
+        tiltVelocity += norm * 0.0004;
+      }
+    });
+
+    // ─── Wave helpers ─────────────────────────────────────────────
+    function getSurfaceY(x) {
+      // Base wave (two overlapping sines + tilt)
+      const tiltOffset = Math.sin(tiltAngle) * (x - W / 2) * 0.25;
+      const base = H * liquidLevel + tiltOffset;
+      const w1 = Math.sin(x * 0.022 + waveAngle) * 6;
+      const w2 = Math.sin(x * 0.013 - waveAngle2) * 4;
+      return base + w1 + w2;
+    }
+
+    function buildWavePath() {
+      ctx.beginPath();
+      ctx.moveTo(0, H);
+      for (let x = 0; x <= W; x += 2) {
+        let y = getSurfaceY(x);
+        // Add ripple contributions
+        for (const r of ripples) {
+          const dist = Math.abs(x - r.x);
+          const decay = Math.exp(-dist * 0.015) * Math.exp(-r.age * 0.04);
+          y += Math.sin(dist * 0.18 - r.age * 0.5) * r.strength * decay * 8;
+        }
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H);
+      ctx.lineTo(0, H);
+      ctx.closePath();
+    }
+
+    // ─── Off-screen text mask ─────────────────────────────────────
+    // We render the "404" text as a clip mask.
+    // The text sits on an off-screen canvas; we use it as a clipping region.
+    const maskCanvas = document.createElement('canvas');
+    maskCanvas.width = W;
+    maskCanvas.height = H;
+    const mCtx = maskCanvas.getContext('2d');
+
+    function drawTextMask() {
+      mCtx.clearRect(0, 0, W, H);
+      mCtx.fillStyle = 'black';
+      mCtx.font = `900 ${H * 0.86}px -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif`;
+      mCtx.textAlign = 'center';
+      mCtx.textBaseline = 'middle';
+      mCtx.fillText('404', W / 2, H / 2 + 4);
+    }
+    drawTextMask();
+
+    // ─── Main draw loop ───────────────────────────────────────────
+    function draw(ts) {
+      // Physics update
+      waveAngle  += 0.028;
+      waveAngle2 += 0.019;
+      tiltVelocity *= 0.96;           // damping
+      tiltAngle += tiltVelocity;
+      tiltAngle *= 0.97;              // restore to level
+
+      // Gravity nudge: tilt slowly decays back to zero
+      tiltAngle -= tiltAngle * 0.02;
+
+      // Age & prune ripples
+      ripples = ripples
+        .map(r => ({ ...r, age: r.age + 1 }))
+        .filter(r => r.age < 80);
+
+      // ── 1. Clear ────────────────────────────────────────────────
+      ctx.clearRect(0, 0, W, H);
+
+      // ── 2. Draw text outline (ghost) ────────────────────────────
+      ctx.save();
+      ctx.font = `900 ${H * 0.86}px -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.strokeStyle = '#e5e7eb';
+      ctx.lineWidth = 2;
+      ctx.strokeText('404', W / 2, H / 2 + 4);
+      ctx.restore();
+
+      // ── 3. Clip to text shape and draw liquid ───────────────────
+      ctx.save();
+
+      // Use the mask canvas: draw it with destination-in later
+      // Approach: clip path via text
+      ctx.font = `900 ${H * 0.86}px -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      // Create clipping region from text
+      ctx.beginPath();
+      // We need to use the offscreen mask canvas as an image
+      // Strategy: composite mode
+      // 1. Draw wave
+      // 2. Use globalCompositeOperation = 'destination-in' with text
+      // But that clears the ghost outline. Use a separate composite layer.
+
+      // Render to temp off-screen
+      const tmp = document.createElement('canvas');
+      tmp.width = W; tmp.height = H;
+      const tCtx = tmp.getContext('2d');
+
+      // Draw gradient liquid + waves on tmp
+      // Background fill: deep liquid colour
+      tCtx.fillStyle = 'rgba(0,100,255,0.12)';
+      tCtx.fillRect(0, 0, W, H);
+
+      // Rear wave (darker, slightly offset)
+      tCtx.save();
+      tCtx.globalAlpha = 0.5;
+      const grad2 = tCtx.createLinearGradient(0, 0, 0, H);
+      grad2.addColorStop(0, '#60a5fa');
+      grad2.addColorStop(1, '#1d4ed8');
+      tCtx.fillStyle = grad2;
+
+      tCtx.beginPath();
+      tCtx.moveTo(0, H);
+      for (let x = 0; x <= W; x += 2) {
+        let y = getSurfaceY(x) + 6;
+        for (const r of ripples) {
+          const dist = Math.abs(x - r.x);
+          const decay = Math.exp(-dist * 0.015) * Math.exp(-r.age * 0.04);
+          y += Math.sin(dist * 0.18 - r.age * 0.5) * r.strength * decay * 6;
+        }
+        if (x === 0) tCtx.moveTo(x, y);
+        else tCtx.lineTo(x, y);
+      }
+      tCtx.lineTo(W, H);
+      tCtx.lineTo(0, H);
+      tCtx.closePath();
+      tCtx.fill();
+      tCtx.restore();
+
+      // Front wave (main liquid)
+      const grad = tCtx.createLinearGradient(0, H * 0.2, 0, H);
+      grad.addColorStop(0,   '#93c5fd');
+      grad.addColorStop(0.3, '#3b82f6');
+      grad.addColorStop(0.7, '#1d4ed8');
+      grad.addColorStop(1,   '#1e3a8a');
+      tCtx.fillStyle = grad;
+
+      tCtx.save();
+      buildWavePath.call({ ctx: tCtx });
+      // Re-implement for tCtx
+      tCtx.beginPath();
+      tCtx.moveTo(0, H);
+      for (let x = 0; x <= W; x += 2) {
+        let y = getSurfaceY(x);
+        for (const r of ripples) {
+          const dist = Math.abs(x - r.x);
+          const decay = Math.exp(-dist * 0.015) * Math.exp(-r.age * 0.04);
+          y += Math.sin(dist * 0.18 - r.age * 0.5) * r.strength * decay * 8;
+        }
+        if (x === 0) tCtx.moveTo(x, y);
+        else tCtx.lineTo(x, y);
+      }
+      tCtx.lineTo(W, H);
+      tCtx.lineTo(0, H);
+      tCtx.closePath();
+      tCtx.fill();
+      tCtx.restore();
+
+      // Shine / highlight strip near the wave crest
+      tCtx.save();
+      tCtx.globalAlpha = 0.22;
+      tCtx.strokeStyle = '#ffffff';
+      tCtx.lineWidth = 3;
+      tCtx.beginPath();
+      for (let x = 0; x <= W; x += 2) {
+        let y = getSurfaceY(x) - 2;
+        for (const r of ripples) {
+          const dist = Math.abs(x - r.x);
+          const decay = Math.exp(-dist * 0.015) * Math.exp(-r.age * 0.04);
+          y += Math.sin(dist * 0.18 - r.age * 0.5) * r.strength * decay * 8;
+        }
+        if (x === 0) tCtx.moveTo(x, y);
+        else tCtx.lineTo(x, y);
+      }
+      tCtx.stroke();
+      tCtx.restore();
+
+      // Bubble particles (tiny circles rising through liquid area)
+      tCtx.save();
+      tCtx.globalAlpha = 0.35;
+      tCtx.fillStyle = '#bfdbfe';
+      const bubbleSeeds = [
+        { xf: 0.12, phase: 0.0, r: 3 },
+        { xf: 0.28, phase: 1.2, r: 2 },
+        { xf: 0.41, phase: 2.4, r: 4 },
+        { xf: 0.55, phase: 0.7, r: 2 },
+        { xf: 0.67, phase: 3.1, r: 3 },
+        { xf: 0.79, phase: 1.8, r: 2 },
+        { xf: 0.90, phase: 2.9, r: 3 },
+      ];
+      for (const b of bubbleSeeds) {
+        const bx = b.xf * W + Math.sin(waveAngle * 0.7 + b.phase) * 6;
+        const surfY = getSurfaceY(bx);
+        const rise = ((waveAngle * 0.4 + b.phase) % (Math.PI * 2)) / (Math.PI * 2);
+        const by = surfY + (H - surfY) * (1 - rise);
+        tCtx.beginPath();
+        tCtx.arc(bx, by, b.r, 0, Math.PI * 2);
+        tCtx.fill();
+      }
+      tCtx.restore();
+
+      // Mask: keep only where text is
+      tCtx.globalCompositeOperation = 'destination-in';
+      tCtx.drawImage(maskCanvas, 0, 0);
+      tCtx.globalCompositeOperation = 'source-over';
+
+      // Composite the layered liquid onto main canvas
+      ctx.drawImage(tmp, 0, 0);
+      ctx.restore();
+
+      requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+  })();
+  </script>
 </body>
 </html>
