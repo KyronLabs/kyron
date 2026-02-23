@@ -1,0 +1,1362 @@
+#!/usr/bin/env python3
+"""
+🔥 AdWatch Earn Bot - Ultimate Edition
+A high-performance, gamified ad-watching platform with beautiful UX
+"""
+
+import sqlite3
+import logging
+import asyncio
+import random
+import string
+import hashlib
+import time
+from datetime import datetime, timedelta
+from dataclasses import dataclass
+from typing import Optional, Dict, List
+from functools import wraps
+
+from telegram import (
+    Update, InlineKeyboardButton, InlineKeyboardMarkup, 
+    LabeledPrice, InlineKeyboardButton, InputMediaPhoto
+)
+from telegram.ext import (
+    Application, CommandHandler, CallbackQueryHandler, 
+    ContextTypes, ConversationTypes, MessageHandler, filters
+)
+from telegram.constants import ParseMode
+
+# ==================== 🔥 BEAST CONFIGURATION ====================
+@dataclass
+class Config:
+    # Bot Core
+    BOT_TOKEN: str = "YOUR_BOT_TOKEN_HERE"
+    ADMIN_IDS: List[int] = None  # List of admin IDs
+    
+    # Economy
+    POINTS_PER_AD: int = 10
+    WITHDRAWAL_THRESHOLD: int = 50
+    DAILY_BONUS: int = 50
+    STREAK_BONUS_MULTIPLIER: float = 1.5
+    
+    # Gamification
+    MAX_STREAK_DAYS: int = 7
+    LEVELS: Dict[int, Dict] = None
+    
+    # Cooldowns (seconds)
+    AD_COOLDOWN: int = 30
+    DAILY_BONUS_COOLDOWN: int = 86400  # 24 hours
+    
+    # Withdrawal
+    MIN_WITHDRAWAL: int = 50
+    MAX_WITHDRAWAL: int = 10000
+    
+    def __post_init__(self):
+        self.ADMIN_IDS = [6721760969]  # Replace with your ID
+        self.LEVELS = {
+            1: {"name": "🥉 Bronze Watcher", "min": 0, "multiplier": 1.0, "color": "#CD7F32"},
+            2: {"name": "🥈 Silver Viewer", "min": 100, "multiplier": 1.2, "color": "#C0C0C0"},
+            3: {"name": "🥇 Gold Streamer", "min": 500, "multiplier": 1.5, "color": "#FFD700"},
+            4: {"name": "💎 Platinum Binge", "min": 2000, "multiplier": 2.0, "color": "#E5E4E2"},
+            5: {"name": "👑 Diamond Master", "min": 10000, "multiplier": 3.0, "color": "#B9F2FF"},
+        }
+
+CONFIG = Config()
+
+# ==================== 🎨 VISUAL ASSETS ====================
+class Assets:
+    """Rich visual elements for the bot"""
+    
+    EMOJIS = {
+        'money': '💰',
+        'fire': '🔥',
+        'star': '⭐',
+        'rocket': '🚀',
+        'crown': '👑',
+        'gem': '💎',
+        'chart': '📊',
+        'wallet': '👛',
+        'time': '⏰',
+        'check': '✅',
+        'cross': '❌',
+        'warning': '⚠️',
+        'gift': '🎁',
+        'trophy': '🏆',
+        'lightning': '⚡',
+        'target': '🎯',
+        'lock': '🔒',
+        'unlock': '🔓',
+        'back': '◀️',
+        'forward': '▶️',
+        'refresh': '🔄',
+        'new': '🆕',
+        'hot': '🌶️',
+        'cool': '😎',
+        'party': '🎉',
+        'sad': '😢',
+        'think': '🤔',
+        'eyes': '👀',
+        'ad': '📺',
+    }
+    
+    @staticmethod
+    def progress_bar(current: int, total: int, length: int = 10) -> str:
+        """Generate a beautiful progress bar"""
+        filled = int(length * current / total)
+        bar = '█' * filled + '░' * (length - filled)
+        percentage = (current / total) * 100
+        return f"`[{bar}]` {percentage:.1f}%"
+    
+    @staticmethod
+    def header(text: str, emoji: str = '🔥') -> str:
+        """Create styled headers"""
+        return f"\n{'═' * 30}\n{emoji} *{text}* {emoji}\n{'═' * 30}\n"
+    
+    @staticmethod
+    def box(text: str, style: str = 'double') -> str:
+        """Create text boxes"""
+        if style == 'double':
+            return f"╔{'═' * 28}╗\n║ {text:^26} ║\n╚{'═' * 28}╝"
+        return f"┌{'─' * 28}┐\n│ {text:^26} │\n└{'─' * 28}┘"
+
+# ==================== 🗄️ DATABASE LAYER ====================
+class Database:
+    """Advanced database operations with connection pooling"""
+    
+    def __init__(self, db_name: str = 'adwatch_beast.db'):
+        self.db_name = db_name
+        self.init_db()
+    
+    def get_conn(self):
+        return sqlite3.connect(self.db_name, check_same_thread=False)
+    
+    def init_db(self):
+        """Initialize database with all tables"""
+        conn = self.get_conn()
+        c = conn.cursor()
+        
+        # Users table with full gamification
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS users (
+                user_id INTEGER PRIMARY KEY,
+                username TEXT,
+                first_name TEXT,
+                last_name TEXT,
+                points INTEGER DEFAULT 0,
+                total_earned INTEGER DEFAULT 0,
+                ads_watched INTEGER DEFAULT 0,
+                level INTEGER DEFAULT 1,
+                streak_days INTEGER DEFAULT 0,
+                last_active DATE,
+                last_ad_watch TIMESTAMP,
+                last_daily_bonus TIMESTAMP,
+                referral_code TEXT UNIQUE,
+                referred_by INTEGER,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                is_banned INTEGER DEFAULT 0
+            )
+        ''')
+        
+        # Withdrawals table
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS withdrawals (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER,
+                amount INTEGER,
+                method TEXT,
+                address TEXT,
+                status TEXT DEFAULT 'pending',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                processed_at TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(user_id)
+            )
+        ''')
+        
+        # Ad watch history
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS ad_history (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER,
+                points_earned INTEGER,
+                watched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(user_id)
+            )
+        ''')
+        
+        # Referrals tracking
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS referrals (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                referrer_id INTEGER,
+                referred_id INTEGER,
+                earned_points INTEGER DEFAULT 0,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (referrer_id) REFERENCES users(user_id),
+                FOREIGN KEY (referred_id) REFERENCES users(user_id)
+            )
+        ''')
+        
+        conn.commit()
+        conn.close()
+    
+    def get_user(self, user_id: int) -> Optional[Dict]:
+        """Get complete user data"""
+        conn = self.get_conn()
+        c = conn.cursor()
+        c.execute("SELECT * FROM users WHERE user_id=?", (user_id,))
+        row = c.fetchone()
+        conn.close()
+        
+        if not row:
+            return None
+        
+        columns = [description[0] for description in c.description]
+        return dict(zip(columns, row))
+    
+    def create_user(self, user_id: int, username: str, first_name: str, 
+                    last_name: str, referred_by: Optional[int] = None) -> Dict:
+        """Create new user with referral code"""
+        referral_code = self._generate_ref_code()
+        
+        conn = self.get_conn()
+        c = conn.cursor()
+        c.execute('''
+            INSERT INTO users (user_id, username, first_name, last_name, 
+                             referral_code, referred_by, last_active)
+            VALUES (?, ?, ?, ?, ?, ?, date('now'))
+        ''', (user_id, username, first_name, last_name, referral_code, referred_by))
+        conn.commit()
+        conn.close()
+        
+        # Handle referral bonus
+        if referred_by:
+            self._process_referral(referred_by, user_id)
+        
+        return self.get_user(user_id)
+    
+    def _generate_ref_code(self) -> str:
+        """Generate unique referral code"""
+        return ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
+    
+    def _process_referral(self, referrer_id: int, referred_id: int):
+        """Process referral rewards"""
+        bonus = 50  # Points for referrer
+        conn = self.get_conn()
+        c = conn.cursor()
+        
+        # Add bonus to referrer
+        c.execute("UPDATE users SET points = points + ? WHERE user_id=?", 
+                 (bonus, referrer_id))
+        
+        # Record referral
+        c.execute('''
+            INSERT INTO referrals (referrer_id, referred_id, earned_points)
+            VALUES (?, ?, ?)
+        ''', (referrer_id, referred_id, bonus))
+        
+        conn.commit()
+        conn.close()
+    
+    def update_user_activity(self, user_id: int):
+        """Update last active timestamp"""
+        conn = self.get_conn()
+        c = conn.cursor()
+        c.execute("UPDATE users SET last_active = date('now') WHERE user_id=?", 
+                 (user_id,))
+        conn.commit()
+        conn.close()
+    
+    def add_points(self, user_id: int, points: int, source: str = "ad_watch"):
+        """Add points and update stats"""
+        conn = self.get_conn()
+        c = conn.cursor()
+        
+        c.execute('''
+            UPDATE users 
+            SET points = points + ?, 
+                total_earned = total_earned + ?,
+                ads_watched = CASE WHEN ? = 'ad_watch' THEN ads_watched + 1 ELSE ads_watched END
+            WHERE user_id=?
+        ''', (points, points, source, user_id))
+        
+        # Record in history if ad watch
+        if source == "ad_watch":
+            c.execute('''
+                INSERT INTO ad_history (user_id, points_earned)
+                VALUES (?, ?)
+            ''', (user_id, points))
+        
+        conn.commit()
+        conn.close()
+        self._check_level_up(user_id)
+    
+    def _check_level_up(self, user_id: int):
+        """Check and update user level based on total earned"""
+        user = self.get_user(user_id)
+        if not user:
+            return
+        
+        total = user['total_earned']
+        new_level = 1
+        
+        for level, data in sorted(CONFIG.LEVELS.items(), reverse=True):
+            if total >= data['min']:
+                new_level = level
+                break
+        
+        if new_level > user['level']:
+            conn = self.get_conn()
+            c = conn.cursor()
+            c.execute("UPDATE users SET level = ? WHERE user_id=?", 
+                     (new_level, user_id))
+            conn.commit()
+            conn.close()
+    
+    def deduct_points(self, user_id: int, points: int) -> bool:
+        """Deduct points if sufficient balance"""
+        user = self.get_user(user_id)
+        if not user or user['points'] < points:
+            return False
+        
+        conn = self.get_conn()
+        c = conn.cursor()
+        c.execute("UPDATE users SET points = points - ? WHERE user_id=?", 
+                 (points, user_id))
+        conn.commit()
+        conn.close()
+        return True
+    
+    def create_withdrawal(self, user_id: int, amount: int, 
+                         method: str, address: str) -> int:
+        """Create withdrawal request"""
+        conn = self.get_conn()
+        c = conn.cursor()
+        c.execute('''
+            INSERT INTO withdrawals (user_id, amount, method, address)
+            VALUES (?, ?, ?, ?)
+        ''', (user_id, amount, method, address))
+        withdrawal_id = c.lastrowid
+        conn.commit()
+        conn.close()
+        return withdrawal_id
+    
+    def get_leaderboard(self, limit: int = 10) -> List[Dict]:
+        """Get top earners"""
+        conn = self.get_conn()
+        c = conn.cursor()
+        c.execute('''
+            SELECT user_id, first_name, total_earned, level 
+            FROM users 
+            WHERE is_banned = 0
+            ORDER BY total_earned DESC 
+            LIMIT ?
+        ''', (limit,))
+        rows = c.fetchall()
+        conn.close()
+        return [{
+            'user_id': row[0],
+            'name': row[1],
+            'earned': row[2],
+            'level': row[3]
+        } for row in rows]
+    
+    def get_stats(self) -> Dict:
+        """Get global bot statistics"""
+        conn = self.get_conn()
+        c = conn.cursor()
+        
+        c.execute("SELECT COUNT(*) FROM users")
+        total_users = c.fetchone()[0]
+        
+        c.execute("SELECT SUM(total_earned) FROM users")
+        total_earned = c.fetchone()[0] or 0
+        
+        c.execute("SELECT SUM(ads_watched) FROM users")
+        total_ads = c.fetchone()[0] or 0
+        
+        c.execute("SELECT COUNT(*) FROM withdrawals WHERE status='pending'")
+        pending_withdrawals = c.fetchone()[0]
+        
+        conn.close()
+        
+        return {
+            'users': total_users,
+            'earned': total_earned,
+            'ads': total_ads,
+            'pending': pending_withdrawals
+        }
+
+db = Database()
+
+# ==================== 🎮 USER STATE MANAGEMENT ====================
+class UserState:
+    """Manage user states and cooldowns"""
+    
+    @staticmethod
+    def can_watch_ad(user_id: int) -> tuple[bool, int]:
+        """Check if user can watch ad (cooldown)"""
+        user = db.get_user(user_id)
+        if not user or not user['last_ad_watch']:
+            return True, 0
+        
+        last_watch = datetime.fromisoformat(user['last_ad_watch'])
+        elapsed = (datetime.now() - last_watch).total_seconds()
+        
+        if elapsed >= CONFIG.AD_COOLDOWN:
+            return True, 0
+        return False, int(CONFIG.AD_COOLDOWN - elapsed)
+    
+    @staticmethod
+    def update_ad_watch(user_id: int):
+        """Update last ad watch time"""
+        conn = db.get_conn()
+        c = conn.cursor()
+        c.execute('''
+            UPDATE users 
+            SET last_ad_watch = ? 
+            WHERE user_id=?
+        ''', (datetime.now().isoformat(), user_id))
+        conn.commit()
+        conn.close()
+    
+    @staticmethod
+    def get_daily_bonus_status(user_id: int) -> tuple[bool, int]:
+        """Check if daily bonus is available"""
+        user = db.get_user(user_id)
+        if not user or not user['last_daily_bonus']:
+            return True, 0
+        
+        last_bonus = datetime.fromisoformat(user['last_daily_bonus'])
+        elapsed = (datetime.now() - last_bonus).total_seconds()
+        
+        if elapsed >= CONFIG.DAILY_BONUS_COOLDOWN:
+            return True, 0
+        return False, int(CONFIG.DAILY_BONUS_COOLDOWN - elapsed)
+    
+    @staticmethod
+    def claim_daily_bonus(user_id: int) -> int:
+        """Process daily bonus with streak"""
+        user = db.get_user(user_id)
+        streak = user['streak_days'] if user else 0
+        
+        # Check if streak continues (within 48 hours)
+        if user and user['last_daily_bonus']:
+            last = datetime.fromisoformat(user['last_daily_bonus'])
+            if (datetime.now() - last).days <= 2:
+                streak = min(streak + 1, CONFIG.MAX_STREAK_DAYS)
+            else:
+                streak = 1
+        
+        # Calculate bonus with streak multiplier
+        base_bonus = CONFIG.DAILY_BONUS
+        multiplier = 1 + (streak * 0.1)  # 10% per streak day
+        total_bonus = int(base_bonus * multiplier)
+        
+        # Update user
+        conn = db.get_conn()
+        c = conn.cursor()
+        c.execute('''
+            UPDATE users 
+            SET points = points + ?,
+                streak_days = ?,
+                last_daily_bonus = ?
+            WHERE user_id=?
+        ''', (total_bonus, streak, datetime.now().isoformat(), user_id))
+        conn.commit()
+        conn.close()
+        
+        return total_bonus, streak
+
+# ==================== 🎨 UI BUILDERS ====================
+class UI:
+    """Beautiful UI components"""
+    
+    @staticmethod
+    def main_menu(user_id: int) -> tuple[str, InlineKeyboardMarkup]:
+        """Build main menu with user stats"""
+        user = db.get_user(user_id)
+        if not user:
+            return "Error loading user data", InlineKeyboardMarkup([])
+        
+        level_data = CONFIG.LEVELS[user['level']]
+        next_level = CONFIG.LEVELS.get(user['level'] + 1)
+        
+        # Calculate progress to next level
+        if next_level:
+            progress_current = user['total_earned'] - level_data['min']
+            progress_total = next_level['min'] - level_data['min']
+            progress_pct = min(100, (progress_current / progress_total) * 100)
+        else:
+            progress_pct = 100
+        
+        text = (
+            f"{Assets.header('ADWATCH EARN', '🔥')}"
+            f"👤 *{user['first_name']}* | {level_data['name']}\n"
+            f"{Assets.progress_bar(int(progress_pct), 100)}\n\n"
+            f"💰 *Balance:* `{user['points']}` points\n"
+            f"📊 *Total Earned:* `{user['total_earned']}` points\n"
+            f"👀 *Ads Watched:* `{user['ads_watched']}`\n"
+            f"🔥 *Streak:* `{user['streak_days']}` days\n"
+            f"🎁 *Multiplier:* `x{level_data['multiplier']}`\n\n"
+            f"💸 *Min Withdrawal:* `{CONFIG.MIN_WITHDRAWAL}` points"
+        )
+        
+        keyboard = [
+            [
+                InlineKeyboardButton(f"{Assets.EMOJIS['ad']} WATCH AD (+{CONFIG.POINTS_PER_AD})", 
+                                   callback_data='watch_ad'),
+                InlineKeyboardButton(f"{Assets.EMOJIS['gift']} DAILY BONUS", 
+                                   callback_data='daily_bonus')
+            ],
+            [
+                InlineKeyboardButton(f"{Assets.EMOJIS['wallet']} BALANCE", 
+                                   callback_data='balance'),
+                InlineKeyboardButton(f"{Assets.EMOJIS['chart']} LEADERBOARD", 
+                                   callback_data='leaderboard')
+            ],
+            [
+                InlineKeyboardButton(f"{Assets.EMOJIS['rocket']} WITHDRAW", 
+                                   callback_data='withdraw'),
+                InlineKeyboardButton(f"{Assets.EMOJIS['trophy']} MY STATS", 
+                                   callback_data='stats')
+            ],
+            [
+                InlineKeyboardButton(f"{Assets.EMOJIS['new']} REFER & EARN", 
+                                   callback_data='referral'),
+                InlineKeyboardButton(f"{Assets.EMOJIS['cool']} HELP", 
+                                   callback_data='help')
+            ]
+        ]
+        
+        return text, InlineKeyboardMarkup(keyboard)
+    
+    @staticmethod
+    def earn_menu(user_id: int) -> tuple[str, InlineKeyboardMarkup]:
+        """Build earn submenu"""
+        can_watch, cooldown = UserState.can_watch_ad(user_id)
+        
+        if can_watch:
+            ad_button = InlineKeyboardButton(
+                f"🎬 WATCH AD NOW (+{CONFIG.POINTS_PER_AD})", 
+                callback_data='confirm_watch_ad'
+            )
+            status = f"{Assets.EMOJIS['check']} *Ready to earn!*"
+        else:
+            mins, secs = divmod(cooldown, 60)
+            ad_button = InlineKeyboardButton(
+                f"⏳ COOLDOWN ({mins:02d}:{secs:02d})", 
+                callback_data='cooldown_info'
+            )
+            status = f"{Assets.EMOJIS['time']} *Cooldown active*"
+        
+        can_bonus, bonus_cd = UserState.get_daily_bonus_status(user_id)
+        if can_bonus:
+            bonus_button = InlineKeyboardButton(
+                f"🎁 CLAIM DAILY BONUS", 
+                callback_data='claim_daily'
+            )
+            bonus_status = f"{Assets.EMOJIS['check']} *Available!*"
+        else:
+            hours, rem = divmod(bonus_cd, 3600)
+            mins, secs = divmod(rem, 60)
+            bonus_button = InlineKeyboardButton(
+                f"⏰ BONUS IN {hours:02d}:{mins:02d}:{secs:02d}", 
+                callback_data='bonus_cooldown'
+            )
+            bonus_status = f"{Assets.EMOJIS['time']} *Come back later*"
+        
+        text = (
+            f"{Assets.header('EARN POINTS', Assets.EMOJIS['money'])}\n"
+            f"{status}\n"
+            f"{bonus_status}\n\n"
+            f"💡 *Tip:* Higher levels earn more per ad!"
+        )
+        
+        keyboard = [
+            [ad_button],
+            [bonus_button],
+            [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]
+        ]
+        
+        return text, InlineKeyboardMarkup(keyboard)
+    
+    @staticmethod
+    def withdrawal_menu(user_id: int) -> tuple[str, InlineKeyboardMarkup]:
+        """Build withdrawal interface"""
+        user = db.get_user(user_id)
+        points = user['points'] if user else 0
+        
+        can_withdraw = points >= CONFIG.MIN_WITHDRAWAL
+        
+        text = (
+            f"{Assets.header('WITHDRAWAL', Assets.EMOJIS['money'])}\n"
+            f"💰 *Your Balance:* `{points}` points\n"
+            f"💸 *Minimum:* `{CONFIG.MIN_WITHDRAWAL}` points\n"
+            f"📤 *Maximum:* `{CONFIG.MAX_WITHDRAWAL}` points\n\n"
+        )
+        
+        if can_withdraw:
+            text += f"{Assets.EMOJIS['check']} *You can withdraw!*"
+            keyboard = [
+                [InlineKeyboardButton("💳 PayPal", callback_data='withdraw_paypal'),
+                 InlineKeyboardButton("₿ Crypto", callback_data='withdraw_crypto')],
+                [InlineKeyboardButton("💰 Gift Card", callback_data='withdraw_giftcard')],
+                [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]
+            ]
+        else:
+            needed = CONFIG.MIN_WITHDRAWAL - points
+            text += f"{Assets.EMOJIS['warning']} *Need {needed} more points*"
+            keyboard = [
+                [InlineKeyboardButton(f"{Assets.EMOJIS['ad']} EARN MORE", callback_data='earn')],
+                [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]
+            ]
+        
+        return text, InlineKeyboardMarkup(keyboard)
+    
+    @staticmethod
+    def referral_info(user_id: int) -> tuple[str, InlineKeyboardMarkup]:
+        """Build referral page"""
+        user = db.get_user(user_id)
+        if not user:
+            return "Error", InlineKeyboardMarkup([])
+        
+        ref_link = f"https://t.me/{context.bot.username}?start={user['referral_code']}"
+        
+        text = (
+            f"{Assets.header('REFER & EARN', Assets.EMOJIS['rocket'])}\n"
+            f"Invite friends and earn *50 points* per referral!\n\n"
+            f"🔗 *Your Link:*\n`{ref_link}`\n\n"
+            f"📊 *Stats:*\n"
+            f"👥 Referrals: `{user.get('referral_count', 0)}`\n"
+            f"💰 Earned from refs: `{user.get('ref_earnings', 0)}`"
+        )
+        
+        keyboard = [
+            [InlineKeyboardButton("📤 SHARE LINK", url=f"https://t.me/share/url?url={ref_link}&text=Join me on AdWatch Earn!")],
+            [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]
+        ]
+        
+        return text, InlineKeyboardMarkup(keyboard)
+
+# ==================== 🤖 BOT HANDLERS ====================
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+logger = logging.getLogger(__name__)
+
+# Conversation states
+WITHDRAW_AMOUNT, WITHDRAW_ADDRESS = range(2)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Enhanced start command with referral tracking"""
+    user = update.effective_user
+    
+    # Check for referral code
+    referred_by = None
+    if context.args:
+        try:
+            referred_by = int(context.args[0])
+        except ValueError:
+            pass
+    
+    # Get or create user
+    db_user = db.get_user(user.id)
+    if not db_user:
+        db_user = db.create_user(
+            user.id, user.username, user.first_name, 
+            user.last_name, referred_by
+        )
+        if referred_by:
+            await context.bot.send_message(
+                chat_id=referred_by,
+                text=f"🎉 *New Referral!*\n{user.first_name} joined using your link!\n+50 points added!",
+                parse_mode=ParseMode.MARKDOWN
+            )
+    
+    # Welcome animation
+    welcome_text = (
+        f"{Assets.EMOJIS['fire']}{Assets.EMOJIS['fire']}{Assets.EMOJIS['fire']}\n"
+        f"*WELCOME TO ADWATCH EARN!*\n"
+        f"{Assets.EMOJIS['fire']}{Assets.EMOJIS['fire']}{Assets.EMOJIS['fire']}\n\n"
+        f"Hey {user.first_name}! 👋\n"
+        f"Watch ads, earn points, withdraw cash!\n\n"
+        f"{Assets.EMOJIS['money']} Earn *{CONFIG.POINTS_PER_AD}* points per ad\n"
+        f"{Assets.EMOJIS['gift']} Daily bonuses up to *{CONFIG.DAILY_BONUS}* points\n"
+        f"{Assets.EMOJIS['trophy']} Level up for *multipliers*\n"
+        f"{Assets.EMOJIS['rocket']} Withdraw at *{CONFIG.MIN_WITHDRAWAL}* points"
+    )
+    
+    await update.message.reply_text(
+        welcome_text,
+        parse_mode=ParseMode.MARKDOWN
+    )
+    
+    # Send main menu
+    await asyncio.sleep(0.5)
+    text, markup = UI.main_menu(user.id)
+    await update.message.reply_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+
+async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Main callback query router"""
+    query = update.callback_query
+    await query.answer()
+    data = query.data
+    user_id = query.from_user.id
+    
+    # Navigation
+    if data == 'main_menu':
+        text, markup = UI.main_menu(user_id)
+        await query.edit_message_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+    
+    elif data == 'earn':
+        text, markup = UI.earn_menu(user_id)
+        await query.edit_message_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+    
+    elif data == 'balance':
+        user = db.get_user(user_id)
+        level_data = CONFIG.LEVELS[user['level']]
+        
+        text = (
+            f"{Assets.header('YOUR BALANCE', Assets.EMOJIS['wallet'])}\n"
+            f"💰 *Current:* `{user['points']}` points\n"
+            f"📈 *Total Earned:* `{user['total_earned']}` points\n"
+            f"🎯 *Level:* {level_data['name']}\n"
+            f"⚡ *Multiplier:* `x{level_data['multiplier']}`\n"
+            f"🔥 *Streak:* `{user['streak_days']}` days\n"
+            f"👀 *Ads Watched:* `{user['ads_watched']}`"
+        )
+        
+        keyboard = [[InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]]
+        await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    
+    elif data == 'confirm_watch_ad' or data == 'watch_ad':
+        await process_ad_watch(update, context)
+    
+    elif data == 'cooldown_info':
+        await query.answer("Please wait for the cooldown to finish!", show_alert=True)
+    
+    elif data == 'claim_daily':
+        await process_daily_bonus(update, context)
+    
+    elif data == 'withdraw':
+        text, markup = UI.withdrawal_menu(user_id)
+        await query.edit_message_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+    
+    elif data.startswith('withdraw_'):
+        method = data.split('_')[1]
+        context.user_data['withdraw_method'] = method
+        await query.edit_message_text(
+            f"{Assets.header('WITHDRAWAL', Assets.EMOJIS['money'])}\n"
+            f"💳 *Method:* {method.upper()}\n"
+            f"💰 *Your Balance:* `{db.get_user(user_id)['points']}` points\n\n"
+            f"Enter amount to withdraw ({CONFIG.MIN_WITHDRAWAL}-{CONFIG.MAX_WITHDRAWAL}):",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return WITHDRAW_AMOUNT
+    
+    elif data == 'leaderboard':
+        await show_leaderboard(update, context)
+    
+    elif data == 'stats':
+        await show_stats(update, context)
+    
+    elif data == 'referral':
+        text, markup = UI.referral_info(user_id)
+        await query.edit_message_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+    
+    elif data == 'help':
+        await show_help(update, context)
+
+async def process_ad_watch(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle ad watching with beautiful animation"""
+    query = update.callback_query
+    user_id = query.from_user.id
+    
+    # Check cooldown
+    can_watch, cooldown = UserState.can_watch_ad(user_id)
+    if not can_watch:
+        mins, secs = divmod(cooldown, 60)
+        await query.answer(f"Wait {mins:02d}:{secs:02d}!", show_alert=True)
+        return
+    
+    # Simulate ad watching with progress
+Assets.EMOJIS['gift']} DAILY BONUS", 
+                                   callback_data='daily_bonus')
+            ],
+            [
+                InlineKeyboardButton(f"{Assets.EMOJIS['wallet']} BALANCE", 
+                                   callback_data='balance'),
+                InlineKeyboardButton(f"{Assets.EMOJIS['chart']} LEADERBOARD", 
+                                   callback_data='leaderboard')
+            ],
+            [
+                InlineKeyboardButton(f"{Assets.EMOJIS['rocket']} WITHDRAW", 
+                                   callback_data='withdraw'),
+                InlineKeyboardButton(f"{Assets.EMOJIS['trophy']} MY STATS", 
+                                   callback_data='stats')
+            ],
+            [
+                InlineKeyboardButton(f"{Assets.EMOJIS['new']} REFER & EARN", 
+                                   callback_data='referral'),
+                InlineKeyboardButton(f"{Assets.EMOJIS['cool']} HELP", 
+                                   callback_data='help')
+            ]
+        ]
+        
+        return text, InlineKeyboardMarkup(keyboard)
+    
+    @staticmethod
+    def earn_menu(user_id: int) -> tuple[str, InlineKeyboardMarkup]:
+        """Build earn submenu"""
+        can_watch, cooldown = UserState.can_watch_ad(user_id)
+        
+        if can_watch:
+            ad_button = InlineKeyboardButton(
+                f"🎬 WATCH AD NOW (+{CONFIG.POINTS_PER_AD})", 
+                callback_data='confirm_watch_ad'
+            )
+            status = f"{Assets.EMOJIS['check']} *Ready to earn!*"
+        else:
+            mins, secs = divmod(cooldown, 60)
+            ad_button = InlineKeyboardButton(
+                f"⏳ COOLDOWN ({mins:02d}:{secs:02d})", 
+                callback_data='cooldown_info'
+            )
+            status = f"{Assets.EMOJIS['time']} *Cooldown active*"
+        
+        can_bonus, bonus_cd = UserState.get_daily_bonus_status(user_id)
+        if can_bonus:
+            bonus_button = InlineKeyboardButton(
+                f"🎁 CLAIM DAILY BONUS", 
+                callback_data='claim_daily'
+            )
+            bonus_status = f"{Assets.EMOJIS['check']} *Available!*"
+        else:
+            hours, rem = divmod(bonus_cd, 3600)
+            mins, secs = divmod(rem, 60)
+            bonus_button = InlineKeyboardButton(
+                f"⏰ BONUS IN {hours:02d}:{mins:02d}:{secs:02d}", 
+                callback_data='bonus_cooldown'
+            )
+            bonus_status = f"{Assets.EMOJIS['time']} *Come back later*"
+        
+        text = (
+            f"{Assets.header('EARN POINTS', Assets.EMOJIS['money'])}\n"
+            f"{status}\n"
+            f"{bonus_status}\n\n"
+            f"💡 *Tip:* Higher levels earn more per ad!"
+        )
+        
+        keyboard = [
+            [ad_button],
+            [bonus_button],
+            [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]
+        ]
+        
+        return text, InlineKeyboardMarkup(keyboard)
+    
+    @staticmethod
+    def withdrawal_menu(user_id: int) -> tuple[str, InlineKeyboardMarkup]:
+        """Build withdrawal interface"""
+        user = db.get_user(user_id)
+        points = user['points'] if user else 0
+        
+        can_withdraw = points >= CONFIG.MIN_WITHDRAWAL
+        
+        text = (
+            f"{Assets.header('WITHDRAWAL', Assets.EMOJIS['money'])}\n"
+            f"💰 *Your Balance:* `{points}` points\n"
+            f"💸 *Minimum:* `{CONFIG.MIN_WITHDRAWAL}` points\n"
+            f"📤 *Maximum:* `{CONFIG.MAX_WITHDRAWAL}` points\n\n"
+        )
+        
+        if can_withdraw:
+            text += f"{Assets.EMOJIS['check']} *You can withdraw!*"
+            keyboard = [
+                [InlineKeyboardButton("💳 PayPal", callback_data='withdraw_paypal'),
+                 InlineKeyboardButton("₿ Crypto", callback_data='withdraw_crypto')],
+                [InlineKeyboardButton("💰 Gift Card", callback_data='withdraw_giftcard')],
+                [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]
+            ]
+        else:
+            needed = CONFIG.MIN_WITHDRAWAL - points
+            text += f"{Assets.EMOJIS['warning']} *Need {needed} more points*"
+            keyboard = [
+                [InlineKeyboardButton(f"{Assets.EMOJIS['ad']} EARN MORE", callback_data='earn')],
+                [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]
+            ]
+        
+        return text, InlineKeyboardMarkup(keyboard)
+    
+    @staticmethod
+    def referral_info(user_id: int) -> tuple[str, InlineKeyboardMarkup]:
+        """Build referral page"""
+        user = db.get_user(user_id)
+        if not user:
+            return "Error", InlineKeyboardMarkup([])
+        
+        ref_link = f"https://t.me/{context.bot.username}?start={user['referral_code']}"
+        
+        text = (
+            f"{Assets.header('REFER & EARN', Assets.EMOJIS['rocket'])}\n"
+            f"Invite friends and earn *50 points* per referral!\n\n"
+            f"🔗 *Your Link:*\n`{ref_link}`\n\n"
+            f"📊 *Stats:*\n"
+            f"👥 Referrals: `{user.get('referral_count', 0)}`\n"
+            f"💰 Earned from refs: `{user.get('ref_earnings', 0)}`"
+        )
+        
+        keyboard = [
+            [InlineKeyboardButton("📤 SHARE LINK", url=f"https://t.me/share/url?url={ref_link}&text=Join me on AdWatch Earn!")],
+            [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]
+        ]
+        
+        return text, InlineKeyboardMarkup(keyboard)
+
+# ==================== 🤖 BOT HANDLERS ====================
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+logger = logging.getLogger(__name__)
+
+# Conversation states
+WITHDRAW_AMOUNT, WITHDRAW_ADDRESS = range(2)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Enhanced start command with referral tracking"""
+    user = update.effective_user
+    
+    # Check for referral code
+    referred_by = None
+    if context.args:
+        try:
+            referred_by = int(context.args[0])
+        except ValueError:
+            pass
+    
+    # Get or create user
+    db_user = db.get_user(user.id)
+    if not db_user:
+        db_user = db.create_user(
+            user.id, user.username, user.first_name, 
+            user.last_name, referred_by
+        )
+        if referred_by:
+            await context.bot.send_message(
+                chat_id=referred_by,
+                text=f"🎉 *New Referral!*\n{user.first_name} joined using your link!\n+50 points added!",
+                parse_mode=ParseMode.MARKDOWN
+            )
+    
+    # Welcome animation
+    welcome_text = (
+        f"{Assets.EMOJIS['fire']}{Assets.EMOJIS['fire']}{Assets.EMOJIS['fire']}\n"
+        f"*WELCOME TO ADWATCH EARN!*\n"
+        f"{Assets.EMOJIS['fire']}{Assets.EMOJIS['fire']}{Assets.EMOJIS['fire']}\n\n"
+        f"Hey {user.first_name}! 👋\n"
+        f"Watch ads, earn points, withdraw cash!\n\n"
+        f"{Assets.EMOJIS['money']} Earn *{CONFIG.POINTS_PER_AD}* points per ad\n"
+        f"{Assets.EMOJIS['gift']} Daily bonuses up to *{CONFIG.DAILY_BONUS}* points\n"
+        f"{Assets.EMOJIS['trophy']} Level up for *multipliers*\n"
+        f"{Assets.EMOJIS['rocket']} Withdraw at *{CONFIG.MIN_WITHDRAWAL}* points"
+    )
+    
+    await update.message.reply_text(
+        welcome_text,
+        parse_mode=ParseMode.MARKDOWN
+    )
+    
+    # Send main menu
+    await asyncio.sleep(0.5)
+    text, markup = UI.main_menu(user.id)
+    await update.message.reply_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+
+async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Main callback query router"""
+    query = update.callback_query
+    await query.answer()
+    data = query.data
+    user_id = query.from_user.id
+    
+    # Navigation
+    if data == 'main_menu':
+        text, markup = UI.main_menu(user_id)
+        await query.edit_message_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+    
+    elif data == 'earn':
+        text, markup = UI.earn_menu(user_id)
+        await query.edit_message_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+    
+    elif data == 'balance':
+        user = db.get_user(user_id)
+        level_data = CONFIG.LEVELS[user['level']]
+        
+        text = (
+            f"{Assets.header('YOUR BALANCE', Assets.EMOJIS['wallet'])}\n"
+            f"💰 *Current:* `{user['points']}` points\n"
+            f"📈 *Total Earned:* `{user['total_earned']}` points\n"
+            f"🎯 *Level:* {level_data['name']}\n"
+            f"⚡ *Multiplier:* `x{level_data['multiplier']}`\n"
+            f"🔥 *Streak:* `{user['streak_days']}` days\n"
+            f"👀 *Ads Watched:* `{user['ads_watched']}`"
+        )
+        
+        keyboard = [[InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]]
+        await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    
+    elif data == 'confirm_watch_ad' or data == 'watch_ad':
+        await process_ad_watch(update, context)
+    
+    elif data == 'cooldown_info':
+        await query.answer("Please wait for the cooldown to finish!", show_alert=True)
+    
+    elif data == 'claim_daily':
+        await process_daily_bonus(update, context)
+    
+    elif data == 'withdraw':
+        text, markup = UI.withdrawal_menu(user_id)
+        await query.edit_message_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+    
+    elif data.startswith('withdraw_'):
+        method = data.split('_')[1]
+        context.user_data['withdraw_method'] = method
+        await query.edit_message_text(
+            f"{Assets.header('WITHDRAWAL', Assets.EMOJIS['money'])}\n"
+            f"💳 *Method:* {method.upper()}\n"
+            f"💰 *Your Balance:* `{db.get_user(user_id)['points']}` points\n\n"
+            f"Enter amount to withdraw ({CONFIG.MIN_WITHDRAWAL}-{CONFIG.MAX_WITHDRAWAL}):",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return WITHDRAW_AMOUNT
+    
+    elif data == 'leaderboard':
+        await show_leaderboard(update, context)
+    
+    elif data == 'stats':
+        await show_stats(update, context)
+    
+    elif data == 'referral':
+        text, markup = UI.referral_info(user_id)
+        await query.edit_message_text(text, reply_markup=markup, parse_mode=ParseMode.MARKDOWN)
+    
+    elif data == 'help':
+        await show_help(update, context)
+
+async def process_ad_watch(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle ad watching with beautiful animation"""
+    query = update.callback_query
+    user_id = query.from_user.id
+    
+    # Check cooldown
+    can_watch, cooldown = UserState.can_watch_ad(user_id)
+    if not can_watch:
+        mins, secs = divmod(cooldown, 60)
+        await query.answer(f"Wait {mins:02d}:{secs:02d}!", show_alert=True)
+        return
+    
+    # Simulate ad watching with progress
+    msg = await query.edit_message_text(
+        f"{Assets.EMOJIS['ad']} *Loading Ad...*",
+        parse_mode=ParseMode.MARKDOWN
+    )
+    
+    # Beautiful progress animation
+    stages = ["▪️▫️▫️▫️▫️", "▪️▪️▫️▫️▫️", "▪️▪️▪️▫️▫️", "▪️▪️▪️▪️▫️", "▪️▪️▪️▪️▪️"]
+    for stage in stages:
+        await msg.edit_text(
+            f"{Assets.EMOJIS['ad']} *Watching Ad...*\n{stage}",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        await asyncio.sleep(0.8)
+    
+    # Calculate earnings with multiplier
+    user = db.get_user(user_id)
+    level_data = CONFIG.LEVELS[user['level']]
+    base_points = CONFIG.POINTS_PER_AD
+    bonus_points = int(base_points * (level_data['multiplier'] - 1))
+    total_points = base_points + bonus_points
+    
+    # Update database
+    UserState.update_ad_watch(user_id)
+    db.add_points(user_id, total_points)
+    
+    # Success animation
+    success_text = (
+        f"{Assets.EMOJIS['check']} *AD COMPLETED!*\n\n"
+        f"💰 *+{base_points}* base points\n"
+    )
+    if bonus_points > 0:
+        success_text += f"⚡ *+{bonus_points}* level bonus (x{level_data['multiplier']})\n"
+    success_text += f"━━━━━━━━━━━━━━━\n🎁 *Total: +{total_points} points*"
+    
+    keyboard = [
+        [InlineKeyboardButton(f"{Assets.EMOJIS['ad']} WATCH ANOTHER", callback_data='confirm_watch_ad')],
+        [InlineKeyboardButton(f"{Assets.EMOJIS['back']} MAIN MENU", callback_data='main_menu')]
+    ]
+    
+    await msg.edit_text(
+        success_text,
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode=ParseMode.MARKDOWN
+    )
+
+async def process_daily_bonus(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle daily bonus claim"""
+    query = update.callback_query
+    user_id = query.from_user.id
+    
+    can_claim, cooldown = UserState.get_daily_bonus_status(user_id)
+    if not can_claim:
+        hours, rem = divmod(cooldown, 3600)
+        mins, secs = divmod(rem, 60)
+        await query.answer(f"Next bonus in {hours}h {mins}m!", show_alert=True)
+        return
+    
+    points, streak = UserState.claim_daily_bonus(user_id)
+    
+    # Streak animation
+    fire_streak = "🔥" * min(streak, 5)
+    
+    text = (
+        f"{Assets.EMOJIS['gift']} *DAILY BONUS CLAIMED!*\n\n"
+        f"💰 *+{points}* points received!\n"
+        f"{fire_streak} *Streak: {streak} days*\n\n"
+    )
+    
+    if streak >= 7:
+        text += f"{Assets.EMOJIS['crown']} *MAX STREAK BONUS ACTIVE!*"
+    else:
+        next_bonus = int(CONFIG.DAILY_BONUS * (1 + ((streak + 1) * 0.1)))
+        text += f"📈 Tomorrow: *{next_bonus}* points"
+    
+    keyboard = [
+        [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='earn')]
+    ]
+    
+    await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+
+async def show_leaderboard(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Display beautiful leaderboard"""
+    query = update.callback_query
+    leaders = db.get_leaderboard(10)
+    
+    text = f"{Assets.header('LEADERBOARD', Assets.EMOJIS['trophy'])}\n"
+    
+    medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟']
+    
+    for i, user in enumerate(leaders):
+        level_name = CONFIG.LEVELS[user['level']]['name'].split()[0]  # Just emoji
+        text += (
+            f"{medals[i]} *{user['name']}* {level_name}\n"
+            f"   💰 {user['earned']:,} points\n"
+        )
+    
+    keyboard = [[InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]]
+    await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+
+async def show_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Show user detailed statistics"""
+    query = update.callback_query
+    user_id = query.from_user.id
+    user = db.get_user(user_id)
+    global_stats = db.get_stats()
+    
+    # Calculate earnings per ad
+    avg_per_ad = user['total_earned'] / user['ads_watched'] if user['ads_watched'] > 0 else 0
+    
+    text = (
+        f"{Assets.header('YOUR STATS', Assets.EMOJIS['chart'])}\n"
+        f"📅 *Joined:* {user['created_at'][:10]}\n"
+        f"👀 *Ads Watched:* `{user['ads_watched']}`\n"
+        f"💰 *Avg per Ad:* `{avg_per_ad:.1f}` points\n"
+        f"🔥 *Current Streak:* `{user['streak_days']}` days\n"
+        f"📊 *Global Rank:* Coming soon...\n\n"
+        f"{Assets.header('GLOBAL STATS', Assets.EMOJIS['earth'])}\n"
+        f"👥 *Total Users:* `{global_stats['users']}`\n"
+        f"💸 *Total Earned:* `{global_stats['earned']:,}` points\n"
+        f"📺 *Total Ads:* `{global_stats['ads']:,}`"
+    )
+    
+    keyboard = [[InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]]
+    await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+
+async def show_help(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Display help information"""
+    query = update.callback_query
+    
+    text = (
+        f"{Assets.header('HELP CENTER', Assets.EMOJIS['cool'])}\n"
+        f"*How to earn:*\n"
+        f"{Assets.EMOJIS['ad']} Watch ads every 30 seconds\n"
+        f"{Assets.EMOJIS['gift']} Claim daily bonuses\n"
+        f"{Assets.EMOJIS['rocket']} Refer friends (+50 pts)\n\n"
+        f"*Withdrawal:*\n"
+        f"• Minimum: {CONFIG.MIN_WITHDRAWAL} points\n"
+        f"• Methods: PayPal, Crypto, Gift Cards\n"
+        f"• Processing: 24-48 hours\n\n"
+        f"*Levels:*\n"
+    )
+    
+    for level, data in CONFIG.LEVELS.items():
+        text += f"{data['name']} (x{data['multiplier']})\n"
+    
+    keyboard = [
+        [InlineKeyboardButton("📞 Support", url="https://t.me/your_support")],
+        [InlineKeyboardButton(f"{Assets.EMOJIS['back']} BACK", callback_data='main_menu')]
+    ]
+    
+    await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+
+# Withdrawal conversation handlers
+async def withdraw_amount(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Process withdrawal amount input"""
+    try:
+        amount = int(update.message.text)
+        if amount < CONFIG.MIN_WITHDRAWAL or amount > CONFIG.MAX_WITHDRAWAL:
+            await update.message.reply_text(
+                f"❌ Amount must be between {CONFIG.MIN_WITHDRAWAL} and {CONFIG.MAX_WITHDRAWAL}!"
+            )
+            return WITHDRAW_AMOUNT
+        
+        user = db.get_user(update.effective_user.id)
+        if amount > user['points']:
+            await update.message.reply_text("❌ Insufficient balance!")
+            return WITHDRAW_AMOUNT
+        
+        context.user_data['withdraw_amount'] = amount
+        
+        method = context.user_data.get('withdraw_method', 'paypal')
+        await update.message.reply_text(
+            f"💳 *Method:* {method.upper()}\n"
+            f"💰 *Amount:* {amount} points\n\n"
+            f"Please enter your {method} address/email:",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return WITHDRAW_ADDRESS
+        
+    except ValueError:
+        await update.message.reply_text("❌ Please enter a valid number!")
+        return WITHDRAW_AMOUNT
+
+async def withdraw_address(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Process withdrawal address and confirm"""
+    address = update.message.text
+    amount = context.user_data.get('withdraw_amount', 0)
+    method = context.user_data.get('withdraw_method', 'paypal')
+    user_id = update.effective_user.id
+    
+    # Create withdrawal
+    withdrawal_id = db.create_withdrawal(user_id, amount, method, address)
+    db.deduct_points(user_id, amount)
+    
+    # Notify user
+    await update.message.reply_text(
+        f"{Assets.EMOJIS['check']} *WITHDRAWAL REQUESTED!*\n\n"
+        f"🆔 *ID:* `{withdrawal_id}`\n"
+        f"💰 *Amount:* {amount} points\n"
+        f"💳 *Method:* {method.upper()}\n"
+        f"📍 *Address:* `{address}`\n\n"
+        f"⏳ Status: Pending\n"
+        f"📅 Processing: 24-48 hours",
+        parse_mode=ParseMode.MARKDOWN
+    )
+    
+    # Notify admins
+    for admin_id in CONFIG.ADMIN_IDS:
+        try:
+            await context.bot.send_message(
+                chat_id=admin_id,
+                text=(
+                    f"🚨 *NEW WITHDRAWAL*\n\n"
+                    f"User: `{user_id}`\n"
+                    f"Amount: {amount} points\n"
+                    f"Method: {method}\n"
+                    f"Address: `{address}`"
+                ),
+                parse_mode=ParseMode.MARKDOWN
+            )
+        except:
+            pass
+    
+    return ConversationHandler.END
+
+async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Cancel conversation"""
+    await update.message.reply_text("❌ Cancelled.")
+    return ConversationHandler.END
+
+# Admin commands
+async def admin_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Admin: View bot statistics"""
+    if update.effective_user.id not in CONFIG.ADMIN_IDS:
+        return
+    
+    stats = db.get_stats()
+    await update.message.reply_text(
+        f"📊 *BOT STATISTICS*\n\n"
+        f"👥 Users: {stats['users']}\n"
+        f"💰 Total Earned: {stats['earned']:,}\n"
+        f"📺 Total Ads: {stats['ads']:,}\n"
+        f"⏳ Pending Withdrawals: {stats['pending']}",
+        parse_mode=ParseMode.MARKDOWN
+    )
+
+async def admin_broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Admin: Broadcast message to all users"""
+    if update.effective_user.id not in CONFIG.ADMIN_IDS:
+        return
+    
+    if not context.args:
+        await update.message.reply_text("Usage: /broadcast <message>")
+        return
+    
+    message = ' '.join(context.args)
+    # Implementation would query all users and send message
+    await update.message.reply_text(f"Broadcasting: {message}")
+
+# Error handler
+async def error_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle errors gracefully"""
+    logger.error(f"Update {update} caused error {context.error}")
+    if update and update.effective_message:
+        await update.effective_message.reply_text(
+            "⚠️ An error occurred. Please try again or contact support."
+        )
+
+# ==================== 🚀 MAIN ====================
+def main():
+    """Initialize and run the beast"""
+    # Create application
+    application = Application.builder().token(CONFIG.BOT_TOKEN).build()
+    
+    # Add handlers
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("admin", admin_stats))
+    application.add_handler(CommandHandler("broadcast", admin_broadcast))
+    
+    # Withdrawal conversation
+    withdraw_conv = ConversationHandler(
+        entry_points=[CallbackQueryHandler(button_handler, pattern='^withdraw_')],
+        states={
+            WITHDRAW_AMOUNT: [MessageHandler(filters.TEXT & ~filters.COMMAND, withdraw_amount)],
+            WITHDRAW_ADDRESS: [MessageHandler(filters.TEXT & ~filters.COMMAND, withdraw_address)],
+        },
+        fallbacks=[CommandHandler("cancel", cancel)],
+    )
+    application.add_handler(withdraw_conv)
+    
+    # Main callback handler (must be last)
+    application.add_handler(CallbackQueryHandler(button_handler))
+    
+    # Error handler
+    application.add_error_handler(error_handler)
+    
+    # Start
+    print("🔥 ADWATCH EARN BOT IS RUNNING 🔥")
+    print("=" * 50)
+    application.run_polling(allowed_updates=Update.ALL_TYPES)
+
+if __name__ == '__main__':
+    main()
