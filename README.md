@@ -1,105 +1,160 @@
-![Kyron Logo](./docs/favicon.svg)
+<div align="center">
 
-# Kyron — The User-Owned Social Stack
+<img src="./docs/favicon.svg" width="88" height="88" alt="Kyron" />
+
+# KYRON
+
+### The User-Owned Social Stack
+
+*TikTok-grade discovery. Instagram AR. YouTube shelf-life. Bluesky portability.*  
+*One codebase → iOS · Android · Web.*
+
+<br>
 
 [![CI](https://github.com/KyronLabs/kyron/actions/workflows/ci.yml/badge.svg)](https://github.com/KyronLabs/kyron/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Stars](https://img.shields.io/github/stars/KyronLabs/kyron?style=social)](https://github.com/KyronLabs/kyron)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
-> One code-base → iOS · Android · Web.  
-> TikTok-grade discovery, Instagram AR camera, YouTube shelf-life, Bluesky portability.
+</div>
 
 ---
 
-## TL;DR for Investors
-- **Problem**: 5 gatekeepers control 90 % of social ad spend; creators keep < 30 %.  
-- **Solution**: portable identity + on-device AR + vector feed + creator-equity pool.  
-- **Biz model**: 10 % ad-share pool + white-label enterprise nodes → cash-flow positive at **250 k MAU** (conservative CPM €6).  
-- **Moat**: patent-pending vector-rank engine + GPL-3 AR pipeline + AT-Protocol federation.  
-- **Stage**: pre-seed, alpha in 90 days, 6 full-stack contributors, MIT-licensed core.
+## ◈ The Problem, In One Sentence
+
+> Five gatekeepers control 90% of social ad spend — and creators keep less than 30 cents of every dollar they generate.
+
+Kyron fixes the ownership layer.
 
 ---
 
-## Why Kyron?
-Social graphs are **locked gardens**. Kyron gives every user a **cryptographic passport** (DID) that unlocks:
+## ◈ For Investors
 
-| Feature | Status | Demo |
-|---------|--------|------|
-| Zero-follower discovery | ✅ | [video](https://v.kyron.so) |
-| AR camera lenses (30 fps) | ✅ | [clip](https://cam.kyron.so) |
-| Per-post privacy dial (public → e2ee) | ✅ | [gif](https://gif.kyron.so) |
-| Real-time trending (<200 ms) | ✅ | [gif](https://gif.kyron.so) |
-| Creator equity pool (10 % rev-share) | 🚧 | code complete, test-net |
+| Signal | Detail |
+|:-------|:-------|
+| **Problem** | 5 platforms own the graph, the algorithm, and the money |
+| **Solution** | Portable identity + on-device AR + vector feed + creator equity pool |
+| **Business model** | 10% ad-share pool + white-label enterprise nodes → CF-positive at **250k MAU** (conservative CPM €6) |
+| **Moat** | Patent-pending vector-rank engine · GPL-3 AR pipeline · AT Protocol federation |
+| **Stage** | Pre-seed · alpha in 90 days · 6 full-stack contributors · MIT-licensed core |
 
 ---
 
-## Quickstart (local dev in 5 min)
+## ◈ Why Kyron Exists
 
-**Prerequisites**  
-- Node.js 20 + pnpm  
-- Flutter 3.19  
-- Docker Desktop
+Social graphs are **locked gardens**. Your followers, your content, your audience — all held hostage by platforms that could suspend you tomorrow.
+
+Kyron gives every user a **cryptographic passport** (DID). Your identity is yours. Your data leaves with you. Your audience is portable.
+
+| Feature | Status | |
+|:--------|:------:|:--|
+| Zero-follower discovery | ✅ Live | [Watch demo →](https://v.kyron.so) |
+| AR camera lenses · 30fps | ✅ Live | [See a clip →](https://cam.kyron.so) |
+| Per-post privacy dial (public → E2EE) | ✅ Live | [See it →](https://gif.kyron.so) |
+| Real-time trending · <200ms | ✅ Live | [See it →](https://gif.kyron.so) |
+| Creator equity pool · 10% rev-share | 🚧 Soon | Code complete · on testnet |
+
+---
+
+## ◈ Quickstart
+
+> Local dev in under 5 minutes.
+
+**Prerequisites:** Node.js 20 + pnpm · Flutter 3.19 · Docker Desktop
 
 ```bash
+# 1. Clone
 git clone https://github.com/KyronLabs/kyron.git && cd kyron
-docker compose up -d                # Postgres · Redis · Pinecone-mock
-cd api && pnpm i && pnpm dev        # backend  → http://localhost:3000
-cd app && flutter pub get && flutter run -d chrome   # web client
+
+# 2. Spin up infrastructure
+docker compose up -d              # Postgres · Redis · Pinecone-mock
+
+# 3. Start backend
+cd api && pnpm i && pnpm dev      # → http://localhost:3000
+
+# 4. Start frontend
+cd app && flutter pub get && flutter run -d chrome
 ```
 
 ---
 
-## Architecture Snapshot
+## ◈ Architecture
 
 ```
-┌─ Flutter (iOS/Android/Web) ─┐
-│ AR camera │ vector cache    │
-└──────▲───────────▲──────────┘
-       │GraphQL+WS │gRPC
-┌──────┴───────────┴──────────┐
-│ NestJS gateway  │  media-svc│
-├──────┬───────────┬──────────┤
-│Redis │Postgres   │Pinecone  │
-└──────┴───────────┴──────────┘
-  ▲                    ▲
-  │AT-Protocol node    │FFmpeg
-  └────DID+repo────────┘
+┌────────────────────────────────────────┐
+│        Flutter  (iOS · Android · Web)  │
+│        AR Camera  ·  Vector Cache      │
+└──────────────┬──────────────┬──────────┘
+               │  GraphQL+WS  │  gRPC
+┌──────────────┴──────────────┴──────────┐
+│     NestJS API Gateway   ·  media-svc  │
+├──────────────┬──────────────┬──────────┤
+│    Redis     │  Postgres    │ Pinecone │
+└──────────────┴──────────────┴──────────┘
+        ▲                          ▲
+        │   AT Protocol Node       │  FFmpeg
+        └────── DID + Repo ────────┘
 ```
 
-Full diagram → [ARCHITECTURE.md](ARCHITECTURE.md)
+Full diagram → [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 ---
 
-## Roadmap & KPIs
+## ◈ Roadmap
 
-| Milestone | Date | KPI |
-|-----------|------|-----|
-| Alpha (MVP) | 90 d | 1 k DAUs, <300 ms feed P95 |
-| Private Beta | 6 m | 25 k MAU, 40 % D1 retention |
-| Public Launch | 12 m | 250 k MAU, CF-positive |
-| Federation v2 | 18 m | 50 self-hosted nodes |
+| Milestone | Target | KPI |
+|:----------|:------:|:----|
+| **Alpha · MVP** | 90 days | 1k DAUs · feed P95 <300ms |
+| **Private Beta** | 6 months | 25k MAU · 40% D1 retention |
+| **Public Launch** | 12 months | 250k MAU · cash-flow positive |
+| **Federation v2** | 18 months | 50 self-hosted nodes live |
 
-Detailed issues → [Projects board](https://github.com/KyronLabs/kyron/projects)
-
----
-
-## Contributing = Equity
-We use **Contributor Equity Agreements**: every merged PR earns you **Kyron Points** convertible to future token warrants.  
-Start with [`good first issue`](https://github.com/KyronLabs/kyron/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) → ship → get paid in upside, not stickers.
+Track everything live → [Projects Board](https://github.com/KyronLabs/kyron/projects)
 
 ---
 
-## Governance & License
-- Code: MIT (see [LICENSE](LICENSE))  
-- Conduct: [Contributor Covenant 2.1](CODE_OF_CONDUCT.md)  
-- Security: report → security@kyron.so (PGP in [SECURITY.md](SECURITY.md))  
-- DAO snapshot planned at v1.0 → code decides, not VCs.
+## ◈ Contributing = Equity
+
+We don't do stickers. We do upside.
+
+Every merged PR earns you **Kyron Points** — convertible to future token warrants under our **Contributor Equity Agreement**. Ship real code, earn a real stake.
+
+**Get started:**
+
+1. Browse [`good first issue`](https://github.com/KyronLabs/kyron/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) labels
+2. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) · sign your commits with `git commit -s`
+3. Open a PR against `main` → merge → earn
+
+> The DAO snapshot is planned at v1.0. Code decides. Not VCs.
 
 ---
 
-## Star ⭐ & Share
-If you believe social should be **user-owned**, star the repo and share with creators who deserve better than 30 %.
+## ◈ Governance & Legal
+
+| Topic | Details |
+|:------|:--------|
+| **License** | MIT — see [`LICENSE`](LICENSE) |
+| **Code of Conduct** | [Contributor Covenant 2.1](CODE_OF_CONDUCT.md) |
+| **Security** | Report to [security@kyron.so](mailto:security@kyron.so) · PGP key in [`SECURITY.md`](SECURITY.md) |
+| **Governance** | DAO snapshot planned at v1.0 — code decides, not VCs |
 
 ---
-Kyron — *“Be the lord of your own feed.”*
+
+<div align="center">
+
+### ⭐ Star & Share
+
+If you believe social should be **user-owned** —  
+star the repo and share it with every creator who deserves more than 30%.
+
+<br>
+
+---
+
+*"Be the lord of your own feed."*
+
+**[kyron.spidroid.com](https://kyron.spidroid.com)** · **[Discord](https://discord.gg/kyron)** · **[Bluesky](https://bsky.app)**
+
+*Kyron is built by [KyronLabs](https://github.com/KyronLabs), a subsidiary of [Spidroid Technologies Inc.](https://spidroid.com)*
+
+</div>
