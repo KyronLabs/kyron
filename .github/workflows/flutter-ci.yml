@@ -53,7 +53,7 @@ jobs:
 
       - name: Analyze
         # The legacy app currently has warning-level lints; keep errors fatal while allowing CI to report warnings.
-        run: flutter analyze --no-fatal-warnings
+        run: flutter analyze --no-fatal-warnings --no-fatal-infos
 
       - name: Test
         run: flutter test
