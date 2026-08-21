@@ -11,5 +11,9 @@ void main() {
       ),
     );
     expect(find.byType(MaterialApp), findsOneWidget);
+
+    // Complete KyronApp's startup delay so the test leaves no pending fake timers.
+    await tester.pump(const Duration(milliseconds: 100));
+    await tester.pump();
   });
 }
