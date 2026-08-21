@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   KYRON_BUILD_NUMBER: ${{ github.run_number }}
@@ -47,10 +47,20 @@ jobs:
       - name: Rename artifact
         run: cp build/app/outputs/flutter-apk/app-debug.apk "build/app/outputs/flutter-apk/kyron-${{ steps.version.outputs.version }}+${KYRON_BUILD_NUMBER}-debug.apk"
 
-      - name: Upload debug APK
+      - name: Upload debug APK as workflow artifact
         uses: actions/upload-artifact@v4
         with:
           name: kyron-debug-${{ steps.version.outputs.version }}-${{ github.run_number }}
           path: app/build/app/outputs/flutter-apk/*-debug.apk
           if-no-files-found: error
           retention-days: 14
+
+      - name: Publish debug prerelease
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: debug-${{ steps.version.outputs.version }}-${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
+          name: Kyron ${{ steps.version.outputs.version }} debug build ${{ github.run_number }}
+          prerelease: true
+          generate_release_notes: false
+          files: app/build/app/outputs/flutter-apk/*-debug.apk
