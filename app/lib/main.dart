@@ -23,7 +23,10 @@ void main() async {
 
 
 class KyronApp extends ConsumerStatefulWidget {
-  const KyronApp({super.key});
+  const KyronApp({super.key, this.enableLocalDatabase = true});
+
+  /// Allows tests and unsupported platforms to skip native database startup.
+  final bool enableLocalDatabase;
 
 
   @override
@@ -51,7 +54,7 @@ class _KyronAppState extends ConsumerState<KyronApp> {
 
     
     // Pre-warm composer - ONLY on non-web platforms
-    if (!kIsWeb) {
+    if (!kIsWeb && widget.enableLocalDatabase) {
       await DraftService().database; // Initialize DB in background
     }
     

@@ -7,7 +7,7 @@ void main() {
   testWidgets('App starts', (WidgetTester tester) async {
     await tester.pumpWidget(
       ProviderScope(
-        child: const KyronApp(),
+        child: const KyronApp(enableLocalDatabase: false),
       ),
     );
     expect(find.byType(MaterialApp), findsOneWidget);
