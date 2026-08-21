@@ -1,0 +1,48 @@
+name: Create Versioned Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Semantic version component to increment
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+
+permissions:
+  contents: write
+
+jobs:
+  version-and-tag:
+    name: Bump version and create tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump pubspec version
+        id: version
+        run: |
+          version=$(python3 scripts/bump-version.py "${{ inputs.bump }}")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and tag
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git add app/pubspec.yaml
+          git commit -m "chore(release): v${VERSION}"
+          git tag -a "v${VERSION}" -m "Kyron v${VERSION}"
+          git push origin main "v${VERSION}"

@@ -158,3 +158,13 @@ star the repo and share it with every creator who deserves more than 30%.
 *Kyron is built by [KyronLabs](https://github.com/KyronLabs), a subsidiary of [Spidroid Technologies Inc.](https://spidroid.com)*
 
 </div>
+
+## Flutter builds and releases
+
+The Flutter client lives in `app/`. Its public version is defined in `app/pubspec.yaml` as `MAJOR.MINOR.PATCH+BUILD`. The `MAJOR`, `MINOR`, and `PATCH` components follow semantic versioning. GitHub Actions supplies a monotonically increasing build number from the workflow run number so every generated artifact has a unique Android version code.
+
+Every push to `main` produces a downloadable debug APK from the **Flutter Debug Build** workflow. The **Flutter CI** workflow runs dependency installation, formatting checks, static analysis, and widget tests on pushes and pull requests that modify the Flutter app.
+
+To create a versioned release, open the **Create Versioned Release** workflow in GitHub Actions and choose `patch`, `minor`, or `major`. The workflow updates `app/pubspec.yaml`, commits the change, and creates a matching `vX.Y.Z` tag. The tag starts the **Flutter Android Release** workflow, which publishes a signed APK and Android App Bundle to a GitHub Release.
+
+Before creating a distributable release, configure these repository secrets: `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, and `ANDROID_KEY_PASSWORD`. The keystore should be an upload key and must never be committed to the repository. Release builds intentionally fail when the keystore secret is absent rather than publishing an artifact signed with the debug key.

@@ -1,0 +1,57 @@
+name: Flutter Debug Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - '.github/workflows/flutter-debug.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FLUTTER_BUILD_NUMBER: ${{ github.run_number }}
+
+jobs:
+  debug-apk:
+    name: Build debug APK
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Read app version
+        id: version
+        run: |
+          version=$(sed -nE 's/^version: ([0-9]+\.[0-9]+\.[0-9]+).*/\1/p' pubspec.yaml)
+          test -n "$version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Build debug APK
+        run: flutter build apk --debug --build-number "$FLUTTER_BUILD_NUMBER"
+
+      - name: Rename artifact
+        run: cp build/app/outputs/flutter-apk/app-debug.apk "build/app/outputs/flutter-apk/kyron-${{ steps.version.outputs.version }}+${FLUTTER_BUILD_NUMBER}-debug.apk"
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: kyron-debug-${{ steps.version.outputs.version }}-${{ github.run_number }}
+          path: app/build/app/outputs/flutter-apk/*-debug.apk
+          if-no-files-found: error
+          retention-days: 14
