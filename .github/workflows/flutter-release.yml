@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 env:
-  FLUTTER_BUILD_NUMBER: ${{ github.run_number }}
+  KYRON_BUILD_NUMBER: ${{ github.run_number }}
 
 jobs:
   release:
@@ -62,16 +62,16 @@ jobs:
           EOF
 
       - name: Build release APK
-        run: flutter build apk --release --build-number "$FLUTTER_BUILD_NUMBER"
+        run: flutter build apk --release --build-number "$KYRON_BUILD_NUMBER"
 
       - name: Build release App Bundle
-        run: flutter build appbundle --release --build-number "$FLUTTER_BUILD_NUMBER"
+        run: flutter build appbundle --release --build-number "$KYRON_BUILD_NUMBER"
 
       - name: Rename release artifacts
         working-directory: .
         env:
           VERSION: ${{ steps.version.outputs.version }}
-          BUILD_NUMBER: ${{ env.FLUTTER_BUILD_NUMBER }}
+          BUILD_NUMBER: ${{ env.KYRON_BUILD_NUMBER }}
         run: |
           mkdir -p release-artifacts
           cp app/build/app/outputs/flutter-apk/app-release.apk "release-artifacts/kyron-${VERSION}+${BUILD_NUMBER}-release.apk"

@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  FLUTTER_BUILD_NUMBER: ${{ github.run_number }}
+  KYRON_BUILD_NUMBER: ${{ github.run_number }}
 
 jobs:
   debug-apk:
@@ -42,10 +42,10 @@ jobs:
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Build debug APK
-        run: flutter build apk --debug --build-number "$FLUTTER_BUILD_NUMBER"
+        run: flutter build apk --debug --build-number "$KYRON_BUILD_NUMBER"
 
       - name: Rename artifact
-        run: cp build/app/outputs/flutter-apk/app-debug.apk "build/app/outputs/flutter-apk/kyron-${{ steps.version.outputs.version }}+${FLUTTER_BUILD_NUMBER}-debug.apk"
+        run: cp build/app/outputs/flutter-apk/app-debug.apk "build/app/outputs/flutter-apk/kyron-${{ steps.version.outputs.version }}+${KYRON_BUILD_NUMBER}-debug.apk"
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
