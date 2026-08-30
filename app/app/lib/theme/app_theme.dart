@@ -127,6 +127,17 @@ class AppTheme {
   static const lightPillBg = Color(0xFFF7F7F7);  // contrast_50 (light)
   
   // ===========================================================================
+  // BACKWARD COMPATIBILITY
+  // ===========================================================================
+  
+  static const background = lightBackground;
+  static const surface = lightSurface;
+  static const textPrimary = lightTextPrimary;
+  static const textSecondary = lightTextSecondary;
+  static const space6 = space8;
+  static const space18 = space16;
+  
+  // ===========================================================================
   // TYPOGRAPHY - Fractional font sizes from Bluesky ALF
   // ===========================================================================
   
@@ -206,116 +217,101 @@ class AppTheme {
   
   static TextTheme _baseTextTheme(Color primary, Color secondary, Color tertiary) => TextTheme(
     // Display
-    displayLarge: TextStyle(
+    displayLarge: const TextStyle(
       fontSize: fontSize9, // 37.5
       fontWeight: fontWeightBold,
-      color: primary,
-      letterSpacing: 0,  // Zero tracking
-      height: lineHeightTight,
-    ),
-    displayMedium: TextStyle(
-      fontSize: fontSize8, // 30.0
-      fontWeight: fontWeightBold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightTight,
     ),
-    displaySmall: TextStyle(
+    displayMedium: const TextStyle(
+      fontSize: fontSize8, // 30.0
+      fontWeight: fontWeightBold,
+      letterSpacing: 0,
+      height: lineHeightTight,
+    ),
+    displaySmall: const TextStyle(
       fontSize: fontSize7, // 24.3
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightTight,
     ),
     
     // Headlines
-    headlineLarge: TextStyle(
+    headlineLarge: const TextStyle(
       fontSize: fontSize6, // 20.6
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    headlineMedium: TextStyle(
+    headlineMedium: const TextStyle(
       fontSize: fontSize5, // 18.8
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    headlineSmall: TextStyle(
+    headlineSmall: const TextStyle(
       fontSize: fontSize4, // 16.9
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
     
     // Titles
-    titleLarge: TextStyle(
+    titleLarge: const TextStyle(
       fontSize: fontSize3, // 15.0 (base)
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    titleMedium: TextStyle(
+    titleMedium: const TextStyle(
       fontSize: fontSize2, // 13.1
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    titleSmall: TextStyle(
+    titleSmall: const TextStyle(
       fontSize: fontSize1, // 11.3
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
     
     // Body
-    bodyLarge: TextStyle(
+    bodyLarge: const TextStyle(
       fontSize: fontSize4, // 16.9
       fontWeight: fontWeightRegular,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightRelaxed,
     ),
-    bodyMedium: TextStyle(
+    bodyMedium: const TextStyle(
       fontSize: fontSize3, // 15.0 (base)
       fontWeight: fontWeightRegular,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightRelaxed,
     ),
-    bodySmall: TextStyle(
+    bodySmall: const TextStyle(
       fontSize: fontSize2, // 13.1
       fontWeight: fontWeightRegular,
-      color: secondary,
       letterSpacing: 0,
       height: lineHeightRelaxed,
     ),
     
     // Labels
-    labelLarge: TextStyle(
+    labelLarge: const TextStyle(
       fontSize: fontSize4, // 16.9
       fontWeight: fontWeightMedium,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    labelMedium: TextStyle(
+    labelMedium: const TextStyle(
       fontSize: fontSize3, // 15.0
       fontWeight: fontWeightMedium,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    labelSmall: TextStyle(
+    labelSmall: const TextStyle(
       fontSize: fontSize2, // 13.1
       fontWeight: fontWeightMedium,
-      color: secondary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
@@ -331,7 +327,7 @@ class AppTheme {
       brightness: Brightness.light,
       scaffoldBackgroundColor: lightBackgroundStart,
       canvasColor: lightSurface,
-      colorScheme: ColorScheme.light(
+      colorScheme: const ColorScheme.light(
         primary: accent,
         onPrimary: Colors.white,
         secondary: accent,
@@ -370,7 +366,7 @@ class AppTheme {
         elevation: 0,
         titleTextStyle: TextStyle(
           color: lightTextPrimary,
-          fontSize: fontSize5, // 18.8
+          fontSize: fontSize5,
           fontWeight: fontWeightSemibold,
           letterSpacing: 0,
           height: lineHeightSnug,
@@ -387,7 +383,7 @@ class AppTheme {
             borderRadius: BorderRadius.circular(radiusFull),
           ),
           textStyle: const TextStyle(
-            fontSize: fontSize3, // 15.0
+            fontSize: fontSize3,
             fontWeight: fontWeightMedium,
             letterSpacing: 0,
           ),
@@ -404,7 +400,7 @@ class AppTheme {
             borderRadius: BorderRadius.circular(radiusFull),
           ),
           textStyle: const TextStyle(
-            fontSize: fontSize3, // 15.0
+            fontSize: fontSize3,
             fontWeight: fontWeightMedium,
             letterSpacing: 0,
           ),
@@ -498,7 +494,7 @@ class AppTheme {
         elevation: 0,
         titleTextStyle: TextStyle(
           color: darkTextPrimary,
-          fontSize: fontSize5, // 18.8
+          fontSize: fontSize5,
           fontWeight: fontWeightSemibold,
           letterSpacing: 0,
           height: lineHeightSnug,
@@ -515,7 +511,7 @@ class AppTheme {
             borderRadius: BorderRadius.circular(radiusFull),
           ),
           textStyle: const TextStyle(
-            fontSize: fontSize3, // 15.0
+            fontSize: fontSize3,
             fontWeight: fontWeightMedium,
             letterSpacing: 0,
           ),
@@ -532,7 +528,7 @@ class AppTheme {
             borderRadius: BorderRadius.circular(radiusFull),
           ),
           textStyle: const TextStyle(
-            fontSize: fontSize3, // 15.0
+            fontSize: fontSize3,
             fontWeight: fontWeightMedium,
             letterSpacing: 0,
           ),
@@ -622,7 +618,7 @@ class AppTheme {
         elevation: 0,
         titleTextStyle: TextStyle(
           color: dimTextPrimary,
-          fontSize: fontSize5, // 18.8
+          fontSize: fontSize5,
           fontWeight: fontWeightSemibold,
           letterSpacing: 0,
           height: lineHeightSnug,
@@ -638,7 +634,7 @@ class AppTheme {
             borderRadius: BorderRadius.circular(radiusFull),
           ),
           textStyle: const TextStyle(
-            fontSize: fontSize3, // 15.0
+            fontSize: fontSize3,
             fontWeight: fontWeightMedium,
             letterSpacing: 0,
           ),
@@ -655,7 +651,7 @@ class AppTheme {
         ),
       ),
       dividerTheme: DividerThemeData(
-        color: dimTextSecondary.withOpacity(0.3),
+        color: dimTextSecondary.withOpacity(0.2),
         thickness: 1,
         space: 1,
       ),
@@ -665,6 +661,11 @@ class AppTheme {
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(radius20),
           ),
+        ),
+      ),
+      chipTheme: ChipThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(radiusFull),
         ),
       ),
     );
@@ -707,6 +708,21 @@ extension ThemeColors on BuildContext {
       Theme.of(this).brightness == Brightness.dark
           ? AppTheme.darkTextTertiary
           : AppTheme.lightTextTertiary;
+
+  Color get surface =>
+      Theme.of(this).brightness == Brightness.dark
+          ? AppTheme.darkSurface
+          : AppTheme.lightSurface;
+
+  Color get background =>
+      Theme.of(this).brightness == Brightness.dark
+          ? AppTheme.darkBackground
+          : AppTheme.lightBackground;
+
+  Color get textPrimary =>
+      Theme.of(this).brightness == Brightness.dark
+          ? AppTheme.darkTextPrimary
+          : AppTheme.lightTextPrimary;
 }
 
 /// Extension for spacing
@@ -722,10 +738,10 @@ extension Spacing on num {
   EdgeInsets get rPad => EdgeInsets.only(right: toDouble());
 }
 
-/// Extension for radius
-extension Radius on num {
+/// Extension for radius on num - carefully named to avoid conflicts
+extension NumRadius on num {
   BorderRadius get radius => BorderRadius.all(Radius.circular(toDouble()));
-  Radius get r => Radius.circular(toDouble());
+  Radius get circular => Radius.circular(toDouble());
   BorderRadius get topRadius => BorderRadius.vertical(
     top: Radius.circular(toDouble()),
   );
