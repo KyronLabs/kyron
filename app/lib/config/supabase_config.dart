@@ -9,11 +9,11 @@ class SupabaseConfig {
 
   static const String url = String.fromEnvironment(
     'SUPABASE_URL',
-    defaultValue: 'https://iyajzmgnykgkivabxiuw.supabase.co',
+    defaultValue: 'https://zgzvclssemsyctstwgod.supabase.co',
   );
 
   static const String anonKey = String.fromEnvironment(
     'SUPABASE_ANON_KEY',
-    defaultValue: 'sb_publishable_uemaN4qKH1_K2h8STNCQDw_a4iO58do',
+    defaultValue: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnenZjbHNzZW1zeWN0c3R3Z29kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQxNTkyODgsImV4cCI6MjA3OTczNTI4OH0.Yq-yTerb4EI4Qi-jpgKYZHtIUik5PkLxArxqK_cngOE',
   );
 }
