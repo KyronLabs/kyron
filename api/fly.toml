@@ -7,7 +7,7 @@ app = 'kyron'
 primary_region = 'fra'
 
 [deploy]
-  release_command = "sh -c 'export DATABASE_URL=\"$DATABASE_URL\" && npx prisma migrate deploy'"
+  release_command = "sh -c 'export DATABASE_URL=\"$DATABASE_URL\" && npx prisma db push'"
   strategy = 'rolling'
 
 [http_service]
