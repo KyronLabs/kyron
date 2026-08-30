@@ -20,6 +20,10 @@ export class HealthController {
       auth: {
         supabase: this.supabaseToken.enabled ? 'configured' : 'not configured',
         issuer: this.supabaseToken.configuredIssuer,
+        // A project that has not moved to JWT signing keys serves an empty key
+        // set and signs HS256, so "which signatures can this deployment
+        // check" is the other half of the answer.
+        accepts: this.supabaseToken.accepts,
       },
     };
   }

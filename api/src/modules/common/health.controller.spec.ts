@@ -12,9 +12,13 @@ import { SupabaseTokenService } from '../auth/supabase-token.service';
 describe('HealthController', () => {
   const originalUrl = process.env.SUPABASE_URL;
 
+  const originalSecret = process.env.SUPABASE_JWT_SECRET;
+
   afterEach(() => {
     if (originalUrl === undefined) delete process.env.SUPABASE_URL;
     else process.env.SUPABASE_URL = originalUrl;
+    if (originalSecret === undefined) delete process.env.SUPABASE_JWT_SECRET;
+    else process.env.SUPABASE_JWT_SECRET = originalSecret;
   });
 
   const controller = async () => {
@@ -27,13 +31,26 @@ describe('HealthController', () => {
 
   it('stays ok and names the issuer when Supabase is configured', async () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    delete process.env.SUPABASE_JWT_SECRET;
     const body = (await controller()).health();
 
     expect(body.status).toBe('ok');
     expect(body.auth).toEqual({
       supabase: 'configured',
       issuer: 'https://project-ref.supabase.co/auth/v1',
+      accepts: ['ES256 via JWKS', 'RS256 via JWKS'],
     });
+  });
+
+  it('reports HS256 once a shared secret is configured', async () => {
+    // A project that has not moved to JWT signing keys serves an empty key
+    // set, so "configured" alone does not say whether its tokens can be
+    // checked. The algorithm list is the half that does.
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    process.env.SUPABASE_JWT_SECRET = 'a-legacy-project-shared-secret';
+    const body = (await controller()).health();
+
+    expect(body.auth.accepts).toContain('HS256');
   });
 
   it('trims a trailing slash rather than doubling it into the issuer', async () => {
@@ -54,6 +71,7 @@ describe('HealthController', () => {
     expect(body.auth).toEqual({
       supabase: 'not configured',
       issuer: null,
+      accepts: [],
     });
   });
 });
