@@ -741,8 +741,8 @@ extension Spacing on num {
   EdgeInsets get rPad => EdgeInsets.only(right: toDouble());
 }
 
-/// Extension for radius
-extension Radius on num {
+/// Extension for radius on num
+extension RadiusExtension on num {
   BorderRadius get radius => BorderRadius.all(Radius.circular(toDouble()));
   Radius get r => Radius.circular(toDouble());
   BorderRadius get topRadius => BorderRadius.vertical(
