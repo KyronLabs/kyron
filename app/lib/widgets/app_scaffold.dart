@@ -6,7 +6,12 @@ class AppScaffold extends StatelessWidget {
   final Widget? bottomNavigationBar;
   final EdgeInsetsGeometry? padding;
 
-  const AppScaffold({super.key, this.child, this.appBar, this.bottomNavigationBar, this.padding});
+  const AppScaffold(
+      {super.key,
+      this.child,
+      this.appBar,
+      this.bottomNavigationBar,
+      this.padding});
 
   @override
   Widget build(BuildContext context) {

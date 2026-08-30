@@ -67,9 +67,10 @@ class SimpleAppBar extends StatelessWidget {
             ),
             // Settings button
             IconButton(
-              onPressed: onSettingsTap ?? () {
-                Navigator.pushNamed(context, '/settings');
-              },
+              onPressed: onSettingsTap ??
+                  () {
+                    Navigator.pushNamed(context, '/settings');
+                  },
               icon: Icon(
                 Icons.settings_outlined,
                 color: scheme.onSurface.withValues(alpha: 0.7),

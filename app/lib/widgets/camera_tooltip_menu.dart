@@ -61,7 +61,8 @@ class _CameraTooltipMenuState extends State<CameraTooltipMenu> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      _menuItem(Icons.photo_library, 'Gallery', widget.onGallery),
+                      _menuItem(
+                          Icons.photo_library, 'Gallery', widget.onGallery),
                       _menuItem(widget.secondaryIcon, widget.secondaryLabel,
                           widget.onSecondary),
                     ],
@@ -94,11 +95,13 @@ class _CameraTooltipMenuState extends State<CameraTooltipMenu> {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 18, color: scheme.onSurface.withValues(alpha: .75)),
+            Icon(icon,
+                size: 18, color: scheme.onSurface.withValues(alpha: .75)),
             const SizedBox(width: 10),
             Text(label,
                 style: TextStyle(
-                    color: scheme.onSurface.withValues(alpha: .9), fontSize: 14)),
+                    color: scheme.onSurface.withValues(alpha: .9),
+                    fontSize: 14)),
           ],
         ),
       ),

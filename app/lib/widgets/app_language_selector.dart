@@ -4,7 +4,8 @@ class AppLanguageSelector extends StatelessWidget {
   final String selected;
   final void Function(String)? onChanged;
 
-  const AppLanguageSelector({super.key, this.selected = 'English', this.onChanged});
+  const AppLanguageSelector(
+      {super.key, this.selected = 'English', this.onChanged});
 
   @override
   Widget build(BuildContext context) {

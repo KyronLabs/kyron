@@ -47,11 +47,14 @@ class ProfileModel {
       avatarUrl: 'https://picsum.photos/300/300?random=1',
       coverUrl: 'https://picsum.photos/800/300?random=2',
       kyronPoints: 1042,
-      bio: 'Building the user-owned feed. AR lenses, climate memes, and the occasional hot take. Founder @kyron.',
+      bio:
+          'Building the user-owned feed. AR lenses, climate memes, and the occasional hot take. Founder @kyron.',
       socials: ['kyron.so', '@alice', 'alice@kyron.so'],
       badges: [
-        BadgeModel(emoji: '👑', label: 'Creator', description: 'Content Creator'),
-        BadgeModel(emoji: '✅', label: 'Verified', description: 'Verified Account'),
+        BadgeModel(
+            emoji: '👑', label: 'Creator', description: 'Content Creator'),
+        BadgeModel(
+            emoji: '✅', label: 'Verified', description: 'Verified Account'),
         BadgeModel(emoji: '⚡', label: '0G', description: 'Zero Gravity Member'),
         BadgeModel(emoji: '🏆', label: '1K Club', description: '1K Followers'),
       ],

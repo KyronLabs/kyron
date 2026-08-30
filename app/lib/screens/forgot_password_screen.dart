@@ -43,7 +43,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 validator: (v) => (v?.isEmpty ?? true) ? 'Enter email' : null,
               ),
               const SizedBox(height: 12),
-              AppButton(label: 'Submit', onTap: _submit, isLoading: false,),
+              AppButton(
+                label: 'Submit',
+                onTap: _submit,
+                isLoading: false,
+              ),
             ],
           ),
         ),

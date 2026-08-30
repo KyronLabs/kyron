@@ -13,10 +13,11 @@ class ProfileIdentityStrip extends SliverPersistentHeaderDelegate {
   });
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     final scheme = Theme.of(context).colorScheme;
     final isShrunk = shrinkOffset > 100; // Trigger when avatar reaches 64px
-    
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 120),
       curve: Curves.easeOut,
@@ -56,7 +57,7 @@ class ProfileIdentityStrip extends SliverPersistentHeaderDelegate {
                 ),
               ),
               const SizedBox(width: 12),
-              
+
               // Handle + KP
               Expanded(
                 child: Column(
@@ -82,12 +83,13 @@ class ProfileIdentityStrip extends SliverPersistentHeaderDelegate {
                       ],
                     ),
                     const SizedBox(height: 4),
-                    
+
                     // DID chip
                     GestureDetector(
                       onTap: onShowDID,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
                           color: scheme.primaryContainer,
                           borderRadius: BorderRadius.circular(8),
@@ -95,7 +97,8 @@ class ProfileIdentityStrip extends SliverPersistentHeaderDelegate {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(Iconsax.document_copy, size: 10, color: scheme.primary),
+                            Icon(Iconsax.document_copy,
+                                size: 10, color: scheme.primary),
                             const SizedBox(width: 4),
                             Text(
                               'did:plc:abcdef…',
@@ -127,7 +130,8 @@ class ProfileIdentityStrip extends SliverPersistentHeaderDelegate {
   double get minExtent => 80;
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => true;
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+      true;
 }
 
 class ProfileActionStrip extends SliverPersistentHeaderDelegate {
@@ -146,10 +150,11 @@ class ProfileActionStrip extends SliverPersistentHeaderDelegate {
   });
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     final scheme = Theme.of(context).colorScheme;
     final isOwnProfile = profile.isOwnProfile;
-    
+
     return Container(
       color: scheme.surface,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -202,7 +207,8 @@ class ProfileActionStrip extends SliverPersistentHeaderDelegate {
   double get minExtent => 56;
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => true;
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+      true;
 }
 
 class _ActionPill extends StatelessWidget {
@@ -219,7 +225,7 @@ class _ActionPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -238,10 +244,12 @@ class _ActionPill extends StatelessWidget {
                 : null,
             color: isPrimary ? null : Colors.transparent,
             borderRadius: BorderRadius.circular(22),
-            border: isPrimary ? null : Border.all(
-              color: scheme.onSurface.withOpacity(0.3),
-              width: 1,
-            ),
+            border: isPrimary
+                ? null
+                : Border.all(
+                    color: scheme.onSurface.withOpacity(0.3),
+                    width: 1,
+                  ),
           ),
           child: Center(
             child: Text(

@@ -15,9 +15,10 @@ class ProfileTabs extends SliverPersistentHeaderDelegate {
   });
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Container(
       color: scheme.surface,
       child: Column(
@@ -54,7 +55,7 @@ class ProfileTabs extends SliverPersistentHeaderDelegate {
               ],
             ),
           ),
-          
+
           // Bottom border
           Divider(
             height: 1,
@@ -73,7 +74,8 @@ class ProfileTabs extends SliverPersistentHeaderDelegate {
   double get minExtent => 49;
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => true;
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+      true;
 }
 
 class _TabButton extends StatelessWidget {
@@ -92,7 +94,7 @@ class _TabButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
@@ -117,7 +119,9 @@ class _TabButton extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-                    color: isActive ? scheme.primary : scheme.onSurface.withOpacity(0.6),
+                    color: isActive
+                        ? scheme.primary
+                        : scheme.onSurface.withOpacity(0.6),
                   ),
                 ),
                 const SizedBox(width: 4),
@@ -126,7 +130,9 @@ class _TabButton extends StatelessWidget {
                     count.toString(),
                     style: TextStyle(
                       fontSize: 12,
-                      color: isActive ? scheme.primary : scheme.onSurface.withOpacity(0.4),
+                      color: isActive
+                          ? scheme.primary
+                          : scheme.onSurface.withOpacity(0.4),
                     ),
                   ),
               ],

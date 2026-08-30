@@ -4,7 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 // State management
-final interestTabsProvider = StateNotifierProvider<InterestTabsNotifier, List<String>>((ref) {
+final interestTabsProvider =
+    StateNotifierProvider<InterestTabsNotifier, List<String>>((ref) {
   return InterestTabsNotifier();
 });
 
@@ -48,7 +49,8 @@ class _InterestTabsState extends ConsumerState<InterestTabs> {
     final tabs = ref.watch(interestTabsProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final pillBg = isDark ? const Color(0xFF1F1F23) : const Color(0xFFF7F7F7);
-    final textPrimary = isDark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
+    final textPrimary =
+        isDark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
 
     return Container(
       height: 44,
@@ -74,7 +76,7 @@ class _InterestTabsState extends ConsumerState<InterestTabs> {
               },
             ),
           ),
-          
+
           // Fixed add button
           Padding(
             padding: const EdgeInsets.only(right: 16),
@@ -85,7 +87,8 @@ class _InterestTabsState extends ConsumerState<InterestTabs> {
     );
   }
 
-  Widget _buildTabPill(BuildContext context, String label, bool isActive, Color bg, Color text, VoidCallback onTap) {
+  Widget _buildTabPill(BuildContext context, String label, bool isActive,
+      Color bg, Color text, VoidCallback onTap) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -94,7 +97,9 @@ class _InterestTabsState extends ConsumerState<InterestTabs> {
         decoration: BoxDecoration(
           color: isActive ? const Color(0xFF4C8FFF).withOpacity(0.1) : bg,
           borderRadius: BorderRadius.circular(12),
-          border: isActive ? Border.all(color: const Color(0xFF4C8FFF).withOpacity(0.3)) : null,
+          border: isActive
+              ? Border.all(color: const Color(0xFF4C8FFF).withOpacity(0.3))
+              : null,
         ),
         child: Center(
           child: Text(
@@ -113,9 +118,11 @@ class _InterestTabsState extends ConsumerState<InterestTabs> {
   Widget _buildAddButton(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final surface = isDark ? const Color(0xFF1A1A1D) : const Color(0xFFF8FAFC);
-    final borderColor = isDark ? const Color(0xFF666666) : const Color(0xFF999999);
-    final iconColor = isDark ? Colors.white.withOpacity(0.6) : const Color(0xFF718096);
-    
+    final borderColor =
+        isDark ? const Color(0xFF666666) : const Color(0xFF999999);
+    final iconColor =
+        isDark ? Colors.white.withOpacity(0.6) : const Color(0xFF718096);
+
     return GestureDetector(
       onTap: () => _showAddInterestSheet(context),
       child: Container(
@@ -160,7 +167,7 @@ class AddInterestSheet extends ConsumerStatefulWidget {
 class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
-  
+
   final List<String> _availableInterests = [
     '#SnowLeopard',
     '#ClimateLens',
@@ -188,13 +195,16 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = isDark ? const Color(0xFF0D0D0F) : const Color(0xFFFFFFFF);
     final surface = isDark ? const Color(0xFF1A1A1D) : const Color(0xFFF8FAFC);
-    final textPrimary = isDark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
-    final textSecondary = isDark ? const Color(0xFF7E8A9A) : const Color(0xFF718096);
+    final textPrimary =
+        isDark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
+    final textSecondary =
+        isDark ? const Color(0xFF7E8A9A) : const Color(0xFF718096);
 
     final filteredInterests = _availableInterests
-        .where((interest) => 
+        .where((interest) =>
             !tabs.contains(interest) &&
-            (_searchQuery.isEmpty || interest.toLowerCase().contains(_searchQuery.toLowerCase())))
+            (_searchQuery.isEmpty ||
+                interest.toLowerCase().contains(_searchQuery.toLowerCase())))
         .toList();
 
     return DraggableScrollableSheet(
@@ -218,7 +228,8 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
                   children: [
                     _buildYourTabsSection(tabs, textPrimary, textSecondary),
                     const SizedBox(height: 24),
-                    _buildAvailableSection(filteredInterests, textPrimary, textSecondary),
+                    _buildAvailableSection(
+                        filteredInterests, textPrimary, textSecondary),
                   ],
                 ),
               ),
@@ -283,13 +294,15 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
     );
   }
 
-  Widget _buildYourTabsSection(List<String> tabs, Color primary, Color secondary) {
+  Widget _buildYourTabsSection(
+      List<String> tabs, Color primary, Color secondary) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Your Tabs',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: primary),
+          style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.w600, color: primary),
         ),
         const SizedBox(height: 4),
         Text(
@@ -302,7 +315,9 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: tabs.length,
           onReorder: (oldIndex, newIndex) {
-            ref.read(interestTabsProvider.notifier).reorderTabs(oldIndex, newIndex);
+            ref
+                .read(interestTabsProvider.notifier)
+                .reorderTabs(oldIndex, newIndex);
           },
           itemBuilder: (context, index) {
             final tab = tabs[index];
@@ -315,9 +330,13 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
 
   Widget _buildDraggableChip(String label, Color text, {required Key key}) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final chipBg = isDark ? const Color(0xFF4C8FFF).withOpacity(0.1) : const Color(0xFF4C8FFF).withOpacity(0.08);
-    final borderColor = isDark ? const Color(0xFF4C8FFF).withOpacity(0.3) : const Color(0xFF4C8FFF).withOpacity(0.2);
-    
+    final chipBg = isDark
+        ? const Color(0xFF4C8FFF).withOpacity(0.1)
+        : const Color(0xFF4C8FFF).withOpacity(0.08);
+    final borderColor = isDark
+        ? const Color(0xFF4C8FFF).withOpacity(0.3)
+        : const Color(0xFF4C8FFF).withOpacity(0.2);
+
     return Container(
       key: key,
       margin: const EdgeInsets.only(bottom: 8),
@@ -334,7 +353,8 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
           Expanded(
             child: Text(
               label,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: text),
+              style: TextStyle(
+                  fontSize: 14, fontWeight: FontWeight.w500, color: text),
             ),
           ),
           if (ref.read(interestTabsProvider).length > 2)
@@ -349,13 +369,15 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
     );
   }
 
-  Widget _buildAvailableSection(List<String> interests, Color primary, Color secondary) {
+  Widget _buildAvailableSection(
+      List<String> interests, Color primary, Color secondary) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Available Interests',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: primary),
+          style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.w600, color: primary),
         ),
         const SizedBox(height: 12),
         ...interests.map((interest) => _buildToggleChip(interest, primary)),
@@ -371,9 +393,11 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
     final chipBg = isDark ? const Color(0xFF1F1F23) : const Color(0xFFF7F7F7);
 
     return GestureDetector(
-      onTap: canAdd && !isAdded ? () {
-        ref.read(interestTabsProvider.notifier).addTab(label);
-      } : null,
+      onTap: canAdd && !isAdded
+          ? () {
+              ref.read(interestTabsProvider.notifier).addTab(label);
+            }
+          : null,
       child: AnimatedOpacity(
         duration: const Duration(milliseconds: 150),
         opacity: !canAdd ? 0.5 : 1.0,
@@ -389,13 +413,15 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
               Expanded(
                 child: Text(
                   label,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: text),
+                  style: TextStyle(
+                      fontSize: 14, fontWeight: FontWeight.w500, color: text),
                 ),
               ),
               Icon(
                 canAdd ? Icons.add_circle_outline : Icons.check_circle,
                 size: 20,
-                color: canAdd ? const Color(0xFF4C8FFF) : const Color(0xFF4CD4B0),
+                color:
+                    canAdd ? const Color(0xFF4C8FFF) : const Color(0xFF4CD4B0),
               ),
             ],
           ),

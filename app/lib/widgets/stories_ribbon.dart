@@ -38,8 +38,8 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
           error: (error, stack) => const SizedBox.shrink(),
           data: (stories) {
             final visibleStories = stories.take(_maxVisiblePills).toList();
-            final overflowCount = stories.length > _maxVisiblePills 
-                ? stories.length - _maxVisiblePills 
+            final overflowCount = stories.length > _maxVisiblePills
+                ? stories.length - _maxVisiblePills
                 : 0;
 
             return Semantics(
@@ -48,7 +48,7 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: isDark 
+                      color: isDark
                           ? scheme.outline.withOpacity(0.2)
                           : scheme.outline.withOpacity(0.15),
                       width: 1,
@@ -57,12 +57,14 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
                 ),
                 child: Container(
                   height: 110,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: ListView.builder(
                     controller: _ribbonController,
                     scrollDirection: Axis.horizontal,
                     physics: const _SnapScrollPhysics(),
-                    itemCount: visibleStories.length + (overflowCount > 0 ? 1 : 0),
+                    itemCount:
+                        visibleStories.length + (overflowCount > 0 ? 1 : 0),
                     itemBuilder: (context, index) {
                       if (index == _maxVisiblePills && overflowCount > 0) {
                         return _buildOverflowPill(overflowCount);
@@ -74,7 +76,8 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
                         status: story.status,
                         onTap: () => _handleTap(context, story),
                         onLongPress: () => _showProfilePreview(context, story),
-                        onSwipeLeft: story.isYourStory && story.status == StoryStatus.uploading
+                        onSwipeLeft: story.isYourStory &&
+                                story.status == StoryStatus.uploading
                             ? () => _cancelUpload(context, story)
                             : () => _hideStory(context, story),
                         avatarUrl: story.avatarUrl,
@@ -99,7 +102,7 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: isDark 
+            color: isDark
                 ? scheme.outline.withOpacity(0.2)
                 : scheme.outline.withOpacity(0.15),
             width: 1,
@@ -143,7 +146,7 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(
-          color: isDark 
+          color: isDark
               ? scheme.outline.withOpacity(0.3)
               : scheme.outline.withOpacity(0.2),
           width: 1.5,
@@ -242,12 +245,13 @@ class _SnapScrollPhysics extends ScrollPhysics {
   }
 
   @override
-  Simulation? createBallisticSimulation(ScrollMetrics position, double velocity) {
+  Simulation? createBallisticSimulation(
+      ScrollMetrics position, double velocity) {
     const tolerance = Tolerance.defaultTolerance;
     final target = _getTargetPixel(position);
-    
+
     if ((target - position.pixels).abs() < tolerance.distance) return null;
-    
+
     return ScrollSpringSimulation(
       const SpringDescription(
         mass: 0.5,

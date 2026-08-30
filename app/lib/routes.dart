@@ -79,11 +79,13 @@ class Routes {
 
       case '/onboard/step2':
         final args = settings.arguments as OnboardingModel;
-        return MaterialPageRoute(builder: (_) => OnboardStep2Screen(model: args));
+        return MaterialPageRoute(
+            builder: (_) => OnboardStep2Screen(model: args));
 
       case '/onboard/step3':
         final args = settings.arguments as OnboardingModel;
-        return MaterialPageRoute(builder: (_) => OnboardStep3Screen(model: args));
+        return MaterialPageRoute(
+            builder: (_) => OnboardStep3Screen(model: args));
 
       case '/forgot':
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
@@ -93,7 +95,7 @@ class Routes {
 
       case '/profile':
         final args = settings.arguments;
-  
+
         if (args is ProfileModel) {
           return MaterialPageRoute(
             builder: (_) => ProfileScreen(
@@ -120,7 +122,7 @@ class Routes {
             ),
           );
         }
-        
+
       case '/settings':
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
 
@@ -128,28 +130,36 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
 
       case '/settings/change-email':
-        return MaterialPageRoute(builder: (_) => const SettingsChangeEmailScreen());
-        
+        return MaterialPageRoute(
+            builder: (_) => const SettingsChangeEmailScreen());
+
       case '/settings/blocked-users':
-        return MaterialPageRoute(builder: (_) => const SettingsBlockedUsersScreen());
-        
+        return MaterialPageRoute(
+            builder: (_) => const SettingsBlockedUsersScreen());
+
       case '/settings/password-login':
-        return MaterialPageRoute(builder: (_) => const SettingsPasswordLoginScreen());
-        
+        return MaterialPageRoute(
+            builder: (_) => const SettingsPasswordLoginScreen());
+
       case '/settings/font-size':
-        return MaterialPageRoute(builder: (_) => const SettingsFontSizeScreen());
-        
+        return MaterialPageRoute(
+            builder: (_) => const SettingsFontSizeScreen());
+
       case '/settings/language':
-        return MaterialPageRoute(builder: (_) => const SettingsLanguageScreen());
-        
+        return MaterialPageRoute(
+            builder: (_) => const SettingsLanguageScreen());
+
       case '/settings/notifications':
-        return MaterialPageRoute(builder: (_) => const SettingsNotificationsScreen());
-        
+        return MaterialPageRoute(
+            builder: (_) => const SettingsNotificationsScreen());
+
       case '/settings/contact-support':
-        return MaterialPageRoute(builder: (_) => const SettingsContactSupportScreen());
-        
+        return MaterialPageRoute(
+            builder: (_) => const SettingsContactSupportScreen());
+
       case '/settings/feedback':
-        return MaterialPageRoute(builder: (_) => const SettingsFeedbackScreen());
+        return MaterialPageRoute(
+            builder: (_) => const SettingsFeedbackScreen());
 
       case '/composer':
         return MaterialPageRoute(builder: (_) => const ComposerScreen());

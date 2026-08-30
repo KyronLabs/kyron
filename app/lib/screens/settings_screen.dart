@@ -38,7 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void _computeCacheSize() {
     // Simulate cache computation - cached for 60s (Doherty)
     if (_cacheTimer?.isActive ?? false) return;
-    
+
     final random = DateTime.now().millisecondsSinceEpoch % 40 + 10;
     setState(() => _cacheSize = '$random MB');
     _cacheTimer = Timer(const Duration(seconds: 60), _computeCacheSize);
@@ -134,7 +134,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         subtitle,
                         style: TextStyle(
                           fontSize: 15,
-                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withOpacity(0.6),
                           fontFamily: 'SF Pro Rounded',
                         ),
                       ),
@@ -164,7 +167,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Log Out?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const Text('Log Out?',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 16),
             const Text('Are you sure you want to log out of @alice?'),
             const SizedBox(height: 24),
@@ -179,11 +183,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
                     onPressed: () {
                       Navigator.pop(context);
                       // Perform logout and navigate to welcome
-                      Navigator.pushNamedAndRemoveUntil(context, Routes.welcome, (route) => false);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, Routes.welcome, (route) => false);
                     },
                     child: const Text('Log Out'),
                   ),
@@ -199,7 +205,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Scaffold(
       backgroundColor: scheme.background,
       appBar: AppBar(
@@ -230,7 +236,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               label: '@alice',
               subtitle: 'alice@kyron.so',
               trailing: TextButton(
-                onPressed: () => Navigator.pushNamed(context, Routes.settingsChangeEmail),
+                onPressed: () =>
+                    Navigator.pushNamed(context, Routes.settingsChangeEmail),
                 child: const Text('Change Email'),
               ),
               helpText: 'Your profile and contact information',
@@ -240,7 +247,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               label: 'did:plc:abc…',
               trailing: TextButton(
                 onPressed: () {
-                  Clipboard.setData(const ClipboardData(text: 'did:plc:abcdef1234567890abcdef12'));
+                  Clipboard.setData(const ClipboardData(
+                      text: 'did:plc:abcdef1234567890abcdef12'));
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('DID copied to clipboard')),
                   );
@@ -249,8 +257,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               helpText: 'Your Decentralized Identifier',
             ),
-            Divider(height: 1, thickness: 0.33, color: scheme.onSurface.withOpacity(0.1)),
-            
+            Divider(
+                height: 1,
+                thickness: 0.33,
+                color: scheme.onSurface.withOpacity(0.1)),
+
             // Privacy & Safety Group (3 items)
             _groupHeader('Privacy & Safety'),
             _settingsRow(
@@ -267,18 +278,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
               icon: Iconsax.user_remove,
               label: 'Blocked Users',
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.settingsBlockedUsers),
+              onTap: () =>
+                  Navigator.pushNamed(context, Routes.settingsBlockedUsers),
               helpText: 'Manage blocked accounts',
             ),
             _settingsRow(
               icon: Iconsax.key,
               label: 'Password & Login',
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.settingsPasswordLogin),
+              onTap: () =>
+                  Navigator.pushNamed(context, Routes.settingsPasswordLogin),
               helpText: 'Security settings',
             ),
-            Divider(height: 1, thickness: 0.33, color: scheme.onSurface.withOpacity(0.1)),
-            
+            Divider(
+                height: 1,
+                thickness: 0.33,
+                color: scheme.onSurface.withOpacity(0.1)),
+
             // Content & Display Group (4 items)
             _groupHeader('Content & Display'),
             _settingsRow(
@@ -299,7 +315,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               label: 'Font Size',
               subtitle: 'Medium',
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.settingsFontSize),
+              onTap: () =>
+                  Navigator.pushNamed(context, Routes.settingsFontSize),
               helpText: 'Adjust text size',
             ),
             _settingsRow(
@@ -307,7 +324,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               label: 'Language',
               subtitle: 'English',
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.settingsLanguage),
+              onTap: () =>
+                  Navigator.pushNamed(context, Routes.settingsLanguage),
               helpText: 'Choose your language',
             ),
             _settingsRow(
@@ -320,8 +338,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               helpText: 'Automatically download media',
             ),
-            Divider(height: 1, thickness: 0.33, color: scheme.onSurface.withOpacity(0.1)),
-            
+            Divider(
+                height: 1,
+                thickness: 0.33,
+                color: scheme.onSurface.withOpacity(0.1)),
+
             // App & Device Group (4 items)
             _groupHeader('App & Device'),
             _settingsRow(
@@ -338,7 +359,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               icon: Iconsax.notification,
               label: 'Push Notifications',
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.settingsNotifications),
+              onTap: () =>
+                  Navigator.pushNamed(context, Routes.settingsNotifications),
               helpText: 'Notification preferences',
             ),
             _settingsRow(
@@ -365,15 +387,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
               helpText: 'Free up storage space',
             ),
-            Divider(height: 1, thickness: 0.33, color: scheme.onSurface.withOpacity(0.1)),
-            
+            Divider(
+                height: 1,
+                thickness: 0.33,
+                color: scheme.onSurface.withOpacity(0.1)),
+
             // Help & Support Group (3 items)
             _groupHeader('Help & Support'),
             _settingsRow(
               icon: Iconsax.info_circle,
               label: 'Help Centre',
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.webview, arguments: {
+              onTap: () =>
+                  Navigator.pushNamed(context, Routes.webview, arguments: {
                 'url': 'https://help.kyron.so',
                 'title': 'Help Centre',
               }),
@@ -383,31 +409,38 @@ class _SettingsScreenState extends State<SettingsScreen> {
               icon: Iconsax.call,
               label: 'Contact Support',
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.settingsContactSupport),
+              onTap: () =>
+                  Navigator.pushNamed(context, Routes.settingsContactSupport),
               helpText: 'Get help from our team',
             ),
             _settingsRow(
               icon: Iconsax.message_edit,
               label: 'Send Feedback',
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.settingsFeedback),
+              onTap: () =>
+                  Navigator.pushNamed(context, Routes.settingsFeedback),
               helpText: 'Tell us what you think',
             ),
-            Divider(height: 1, thickness: 0.33, color: scheme.onSurface.withOpacity(0.1)),
-            
+            Divider(
+                height: 1,
+                thickness: 0.33,
+                color: scheme.onSurface.withOpacity(0.1)),
+
             // Danger Zone (1 item)
             const SizedBox(height: 20),
             Container(
               decoration: BoxDecoration(
                 border: Border(
-                  top: BorderSide(color: scheme.error.withOpacity(0.3), width: 1),
+                  top: BorderSide(
+                      color: scheme.error.withOpacity(0.3), width: 1),
                 ),
               ),
               child: _settingsRow(
                 icon: Iconsax.logout,
                 label: 'Log Out',
                 subtitle: '@alice',
-                trailing: const Icon(Iconsax.arrow_right_3, size: 20, color: Colors.red),
+                trailing: const Icon(Iconsax.arrow_right_3,
+                    size: 20, color: Colors.red),
                 onTap: _showLogoutConfirmation,
               ),
             ),

@@ -18,7 +18,8 @@ class ProfileChips extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white : AppTheme.lightTextPrimary;
     final surfaceColor = isDark ? AppTheme.surface : AppTheme.lightSurface;
-    final textSecondaryColor = isDark ? AppTheme.textSecondary : AppTheme.lightTextSecondary;
+    final textSecondaryColor =
+        isDark ? AppTheme.textSecondary : AppTheme.lightTextSecondary;
 
     return SizedBox(
       height: 48, // CRITICAL: Fixed height constraint
@@ -39,7 +40,8 @@ class ProfileChips extends StatelessWidget {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 120),
                 curve: Curves.easeOutQuad,
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 decoration: BoxDecoration(
                   color: isActive
                       ? AppTheme.accent.withOpacity(.18)
@@ -57,7 +59,9 @@ class ProfileChips extends StatelessWidget {
                   children: [
                     // icon / platform emoji
                     Text(
-                      chip['icon']?.toString() ?? chip['platform']?.toString() ?? '',
+                      chip['icon']?.toString() ??
+                          chip['platform']?.toString() ??
+                          '',
                       style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(width: 6),
@@ -68,7 +72,8 @@ class ProfileChips extends StatelessWidget {
                       style: TextStyle(
                         color: isActive ? AppTheme.accent : textColor,
                         fontSize: 14,
-                        fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
+                        fontWeight:
+                            isActive ? FontWeight.w600 : FontWeight.normal,
                       ),
                     ),
 
@@ -78,7 +83,8 @@ class ProfileChips extends StatelessWidget {
                       Text(
                         '${chip['count']}',
                         style: TextStyle(
-                          color: isActive ? AppTheme.accent : textSecondaryColor,
+                          color:
+                              isActive ? AppTheme.accent : textSecondaryColor,
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),

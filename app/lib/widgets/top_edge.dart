@@ -44,15 +44,12 @@ class TopEdge extends ConsumerWidget {
                 data: (user) => CircleAvatar(
                   radius: 16,
                   backgroundColor: scheme.tertiaryContainer,
-                  backgroundImage: user.avatarUrl != null 
-                      ? NetworkImage(user.avatarUrl!) 
+                  backgroundImage: user.avatarUrl != null
+                      ? NetworkImage(user.avatarUrl!)
                       : null,
                   child: user.avatarUrl == null
-                      ? Icon(
-                          Iconsax.user, 
-                          size: 16, 
-                          color: scheme.onTertiaryContainer
-                        )
+                      ? Icon(Iconsax.user,
+                          size: 16, color: scheme.onTertiaryContainer)
                       : null,
                 ),
               ),
@@ -115,11 +112,7 @@ class TopEdge extends ConsumerWidget {
         shape: BoxShape.circle,
         color: scheme.tertiaryContainer,
       ),
-      child: Icon(
-        Iconsax.user, 
-        size: 16, 
-        color: scheme.onTertiaryContainer
-      ),
+      child: Icon(Iconsax.user, size: 16, color: scheme.onTertiaryContainer),
     );
   }
 }

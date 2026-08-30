@@ -19,7 +19,7 @@ class MainContainer extends StatefulWidget {
 class _MainContainerState extends State<MainContainer> {
   int _currentIndex = 0;
   final GlobalKey<AppDrawerState> _drawerKey = GlobalKey<AppDrawerState>();
-  
+
   double _navHideProgress = 0.0; // 0.0 = visible, 1.0 = hidden
 
   void _handleScrollProgress(double progress) {
@@ -78,7 +78,10 @@ class _MainContainerState extends State<MainContainer> {
         extendBody: true, // Allow body to extend behind bottom nav
         body: _getCurrentPage(),
         bottomNavigationBar: Transform.translate(
-          offset: Offset(0, 80 * _navHideProgress), // Slide down 80px (nav height + safe area)
+          offset: Offset(
+              0,
+              80 *
+                  _navHideProgress), // Slide down 80px (nav height + safe area)
           child: BottomNavV4(
             currentIndex: _currentIndex,
             onTap: _onNavTap,

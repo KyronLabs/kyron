@@ -82,7 +82,7 @@ class DraftService {
       updatedAt: DateTime.now(),
     );
     _currentDraftId = draft.id;
-    
+
     await db.insert(
       'drafts',
       draft.toMap(),

@@ -36,8 +36,8 @@ class ComposerDraft {
       id: map['id'],
       content: map['content'] ?? '',
       privacy: map['privacy'] ?? 'Public',
-      scheduledAt: map['scheduledAt'] != null 
-          ? DateTime.parse(map['scheduledAt']) 
+      scheduledAt: map['scheduledAt'] != null
+          ? DateTime.parse(map['scheduledAt'])
           : null,
       mediaPaths: List<String>.from(jsonDecode(map['mediaPaths'] ?? '[]')),
       createdAt: DateTime.parse(map['createdAt']),

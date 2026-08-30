@@ -9,18 +9,17 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _ctrl;
 
   @override
   void initState() {
     super.initState();
     _ctrl = AnimationController(
-      vsync: this, 
-      duration: const Duration(milliseconds: 700)
-    );
+        vsync: this, duration: const Duration(milliseconds: 700));
     _ctrl.forward();
-    
+
     // NO automatic navigation - RootScreen handles navigation
     // This prevents the "unmounted widget" error
   }

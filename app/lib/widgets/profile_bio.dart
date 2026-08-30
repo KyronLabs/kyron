@@ -19,7 +19,7 @@ class _ProfileBioBlockState extends State<ProfileBioBlock> {
     final scheme = Theme.of(context).colorScheme;
     final textScale = MediaQuery.of(context).textScaleFactor;
     final maxLines = textScale > 1.5 ? 4 : 6;
-    
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: Column(
@@ -60,9 +60,9 @@ class _ProfileBioBlockState extends State<ProfileBioBlock> {
                   ),
               ],
             ),
-          
+
           const SizedBox(height: 12),
-          
+
           // Social links
           Wrap(
             spacing: 12,
@@ -71,7 +71,7 @@ class _ProfileBioBlockState extends State<ProfileBioBlock> {
               final parts = social.split(' ');
               final emoji = parts[0];
               final handle = parts[1];
-              
+
               return GestureDetector(
                 onTap: () {
                   // Handle link based on type

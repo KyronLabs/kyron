@@ -7,10 +7,11 @@ class NotificationSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    
+
     return Shimmer.fromColors(
       baseColor: isDark ? const Color(0xFF1F1F23) : const Color(0xFFF0F0F0),
-      highlightColor: isDark ? const Color(0xFF2A2A2D) : const Color(0xFFE0E0E0),
+      highlightColor:
+          isDark ? const Color(0xFF2A2A2D) : const Color(0xFFE0E0E0),
       child: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) => Container(

@@ -28,7 +28,8 @@ class StoryPill extends StatefulWidget {
   State<StoryPill> createState() => _StoryPillState();
 }
 
-class _StoryPillState extends State<StoryPill> with SingleTickerProviderStateMixin {
+class _StoryPillState extends State<StoryPill>
+    with SingleTickerProviderStateMixin {
   late AnimationController _pulseController;
   late Animation<double> _pulseAnimation;
   double _dragOffset = 0.0;
@@ -57,7 +58,8 @@ class _StoryPillState extends State<StoryPill> with SingleTickerProviderStateMix
   Widget build(BuildContext context) {
     if (widget.isReducedMotion) {
       _pulseController.stop();
-    } else if (widget.status == StoryStatus.unseen && !_pulseController.isAnimating) {
+    } else if (widget.status == StoryStatus.unseen &&
+        !_pulseController.isAnimating) {
       _pulseController.repeat(reverse: true);
     }
 
@@ -104,7 +106,8 @@ class _StoryPillState extends State<StoryPill> with SingleTickerProviderStateMix
                     alignment: Alignment.center,
                     children: [
                       // Outer ring for unseen stories (animated gradient)
-                      if (widget.status == StoryStatus.unseen && !widget.isReducedMotion)
+                      if (widget.status == StoryStatus.unseen &&
+                          !widget.isReducedMotion)
                         Container(
                           width: 50,
                           height: 50,
@@ -115,12 +118,14 @@ class _StoryPillState extends State<StoryPill> with SingleTickerProviderStateMix
                                 const Color(0xFF8B5CF6),
                                 const Color(0xFF14B8A6),
                               ],
-                              transform: GradientRotation(_pulseController.value * 2 * 3.14159),
+                              transform: GradientRotation(
+                                  _pulseController.value * 2 * 3.14159),
                             ),
                           ),
                         ),
                       // Static ring for other statuses
-                      if (widget.status != StoryStatus.unseen || widget.isReducedMotion)
+                      if (widget.status != StoryStatus.unseen ||
+                          widget.isReducedMotion)
                         Container(
                           width: 50,
                           height: 50,
@@ -163,7 +168,8 @@ class _StoryPillState extends State<StoryPill> with SingleTickerProviderStateMix
                           height: 16,
                           child: CircularProgressIndicator(
                             strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
                           ),
                         ),
                     ],
@@ -176,8 +182,8 @@ class _StoryPillState extends State<StoryPill> with SingleTickerProviderStateMix
                       style: TextStyle(
                         fontSize: 12,
                         color: _getLabelColor(context),
-                        fontWeight: widget.status == StoryStatus.yourStory 
-                            ? FontWeight.w600 
+                        fontWeight: widget.status == StoryStatus.yourStory
+                            ? FontWeight.w600
                             : FontWeight.w500,
                       ),
                       maxLines: 2,
@@ -230,7 +236,7 @@ class _StoryPillState extends State<StoryPill> with SingleTickerProviderStateMix
 
     switch (widget.status) {
       case StoryStatus.unseen:
-        return isDark 
+        return isDark
             ? scheme.primary.withOpacity(0.4)
             : scheme.primary.withOpacity(0.3);
       case StoryStatus.yourStory:

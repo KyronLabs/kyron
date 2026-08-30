@@ -7,15 +7,15 @@ import '../providers/current_user_provider.dart';
 
 class SlidingDrawerContent extends ConsumerWidget {
   final VoidCallback onCloseDrawer;
-  
+
   const SlidingDrawerContent({super.key, required this.onCloseDrawer});
-  
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final userAsync = ref.watch(currentUserProvider);
-    
+
     return Material(
       color: scheme.surface,
       child: SafeArea(
@@ -40,9 +40,9 @@ class SlidingDrawerContent extends ConsumerWidget {
       ),
     );
   }
-  
+
   // ============= HEADER SECTION =============
-  
+
   Widget _header(BuildContext context, ColorScheme scheme, dynamic user) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -85,7 +85,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 12),
-          
+
           // Username & KP
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -113,7 +113,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 4),
-          
+
           // DID Badge
           if (user.did != null)
             GestureDetector(
@@ -127,7 +127,8 @@ class SlidingDrawerContent extends ConsumerWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Iconsax.document_copy, size: 12, color: scheme.primary),
+                    Icon(Iconsax.document_copy,
+                        size: 12, color: scheme.primary),
                     const SizedBox(width: 4),
                     Text(
                       _truncateDID(user.did!),
@@ -145,7 +146,7 @@ class SlidingDrawerContent extends ConsumerWidget {
       ),
     );
   }
-  
+
   // Loading skeleton for header
   Widget _headerSkeleton(BuildContext context, ColorScheme scheme) {
     return Padding(
@@ -163,7 +164,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 12),
-          
+
           // Username skeleton
           Container(
             width: 120,
@@ -174,7 +175,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 8),
-          
+
           // DID skeleton
           Container(
             width: 100,
@@ -188,7 +189,7 @@ class SlidingDrawerContent extends ConsumerWidget {
       ),
     );
   }
-  
+
   // Error state for header
   Widget _headerError(BuildContext context, ColorScheme scheme) {
     return Padding(
@@ -223,15 +224,15 @@ class SlidingDrawerContent extends ConsumerWidget {
       ),
     );
   }
-  
+
   // Helper to truncate DID
   String _truncateDID(String did) {
     if (did.length <= 15) return did;
     return '${did.substring(0, 15)}…';
   }
-  
+
   // ============= FOOTER SECTION =============
-    
+
   Widget _footerV2(BuildContext context, ColorScheme scheme, bool isDark) {
     return Container(
       padding: EdgeInsets.only(
@@ -252,7 +253,9 @@ class SlidingDrawerContent extends ConsumerWidget {
                 Navigator.pushNamed(context, '/terms');
               }),
               const SizedBox(width: 16),
-              Text('•', style: TextStyle(color: scheme.onSurface.withOpacity(0.3), fontSize: 10)),
+              Text('•',
+                  style: TextStyle(
+                      color: scheme.onSurface.withOpacity(0.3), fontSize: 10)),
               const SizedBox(width: 16),
               _textLink(context, 'Privacy', onTap: () {
                 onCloseDrawer();
@@ -260,9 +263,9 @@ class SlidingDrawerContent extends ConsumerWidget {
               }),
             ],
           ),
-          
+
           const SizedBox(height: 12),
-          
+
           // Row 2: Help & Feedback
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -278,9 +281,9 @@ class SlidingDrawerContent extends ConsumerWidget {
               }),
             ],
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // Version info
           Text(
             'Kyron v1.0.0',
@@ -295,10 +298,10 @@ class SlidingDrawerContent extends ConsumerWidget {
       ),
     );
   }
-  
+
   Widget _textLink(BuildContext context, String label, {VoidCallback? onTap}) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return GestureDetector(
       onTap: onTap,
       child: Text(
@@ -312,11 +315,12 @@ class SlidingDrawerContent extends ConsumerWidget {
       ),
     );
   }
-  
-  Widget _chipButton(BuildContext context, String label, IconData icon, {VoidCallback? onTap}) {
+
+  Widget _chipButton(BuildContext context, String label, IconData icon,
+      {VoidCallback? onTap}) {
     final scheme = Theme.of(context).colorScheme;
     final isDark = scheme.brightness == Brightness.dark;
-    
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -348,13 +352,14 @@ class SlidingDrawerContent extends ConsumerWidget {
       ),
     );
   }
-  
+
   // ============= NAVIGATION SECTION =============
-  
+
   Widget _sectionDivider(ColorScheme scheme) {
-    return Divider(height: 1, thickness: 1, color: scheme.onSurface.withOpacity(0.1));
+    return Divider(
+        height: 1, thickness: 1, color: scheme.onSurface.withOpacity(0.1));
   }
-  
+
   Widget _navigation(BuildContext context, ColorScheme scheme, bool isDark) {
     return Flexible(
       child: ListView(
@@ -399,7 +404,7 @@ class SlidingDrawerContent extends ConsumerWidget {
       ),
     );
   }
-  
+
   Widget _pillButton({
     required IconData icon,
     required String label,
@@ -409,9 +414,11 @@ class SlidingDrawerContent extends ConsumerWidget {
     return Builder(
       builder: (context) {
         final isDark = Theme.of(context).brightness == Brightness.dark;
-        final pillBgColor = isDark ? const Color(0xFF1F1F23) : const Color(0xFFF7F7F7);
-        final onSurfaceColor = isDark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
-        
+        final pillBgColor =
+            isDark ? const Color(0xFF1F1F23) : const Color(0xFFF7F7F7);
+        final onSurfaceColor =
+            isDark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
+
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
           child: Material(
@@ -430,7 +437,8 @@ class SlidingDrawerContent extends ConsumerWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(icon, size: 20, color: onSurfaceColor.withOpacity(0.8)),
+                    Icon(icon,
+                        size: 20, color: onSurfaceColor.withOpacity(0.8)),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
@@ -444,7 +452,8 @@ class SlidingDrawerContent extends ConsumerWidget {
                     ),
                     if (badge != null)
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
                           color: Theme.of(context).colorScheme.secondary,
                           borderRadius: BorderRadius.circular(8),
@@ -467,12 +476,12 @@ class SlidingDrawerContent extends ConsumerWidget {
       },
     );
   }
-  
+
   // ============= DID MODAL =============
-  
+
   void _showDIDModal(BuildContext context, String did) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -493,7 +502,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
-            
+
             Text(
               'Decentralized ID',
               style: TextStyle(
@@ -503,7 +512,7 @@ class SlidingDrawerContent extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 16),
-            
+
             // DID Display
             Container(
               padding: const EdgeInsets.all(16),
@@ -526,7 +535,7 @@ class SlidingDrawerContent extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            
+
             // Action Buttons
             Row(
               children: [

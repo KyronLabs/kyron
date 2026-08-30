@@ -47,8 +47,11 @@ class _WebViewScreenState extends State<WebViewScreen> {
         title: const Text('Share Link'),
         content: Text(_currentUrl),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
-          TextButton(onPressed: () {/* Copy logic */}, child: const Text('Copy')),
+          TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel')),
+          TextButton(
+              onPressed: () {/* Copy logic */}, child: const Text('Copy')),
         ],
       ),
     );
@@ -91,17 +94,22 @@ class _WebViewScreenState extends State<WebViewScreen> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(widget.title ?? 'Web Page', style: Theme.of(context).textTheme.bodyLarge),
+            Text(widget.title ?? 'Web Page',
+                style: Theme.of(context).textTheme.bodyLarge),
             if (_currentUrl.isNotEmpty)
               Text(
                 _shortenUrl(_currentUrl),
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppTheme.textSecondary),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall
+                    ?.copyWith(color: AppTheme.textSecondary),
               ),
           ],
         ),
         actions: [
           IconButton(icon: const Icon(Icons.share), onPressed: _shareUrl),
-          IconButton(icon: const Icon(Icons.more_vert), onPressed: _showBrowserMenu),
+          IconButton(
+              icon: const Icon(Icons.more_vert), onPressed: _showBrowserMenu),
         ],
       ),
       body: Stack(

@@ -24,12 +24,13 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
     super.initState();
     _textController = TextEditingController();
     _focusNode = FocusNode();
-    
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final content = ref.read(composerProvider).content;
       if (content.isNotEmpty) {
         _textController.text = content;
-        _textController.selection = TextSelection.collapsed(offset: content.length);
+        _textController.selection =
+            TextSelection.collapsed(offset: content.length);
       }
     });
   }
@@ -76,7 +77,8 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
         actions: [
           Consumer(
             builder: (context, ref, _) {
-              final canPost = ref.watch(composerProvider.select((s) => s.canPost));
+              final canPost =
+                  ref.watch(composerProvider.select((s) => s.canPost));
               return TextButton(
                 onPressed: canPost ? _handlePost : null,
                 style: TextButton.styleFrom(
@@ -96,13 +98,13 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
         children: [
           // URL Preview (if link detected)
           const UrlPreview(),
-          
+
           // Composer Field + Character Counter
           Expanded(
             child: SingleChildScrollView(
               controller: _scrollController,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12)
-              .copyWith(bottom: 0),
+                  .copyWith(bottom: 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -114,7 +116,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
               ),
             ),
           ),
-          
+
           // Action Ribbon
           const ActionRibbon(),
         ],
@@ -126,7 +128,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
     return Consumer(
       builder: (context, ref, _) {
         final state = ref.watch(composerProvider);
-        
+
         return TextField(
           controller: _textController,
           focusNode: _focusNode,
@@ -139,7 +141,11 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
           decoration: InputDecoration(
             hintText: state.placeholderText,
             hintStyle: TextStyle(
-              color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(.6),
+              color: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.color
+                  ?.withOpacity(.6),
             ),
             border: InputBorder.none,
             focusedBorder: InputBorder.none,

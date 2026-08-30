@@ -39,7 +39,8 @@ class _PostsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return MasonryGridView.builder(
       padding: const EdgeInsets.all(16),
-      physics: const NeverScrollableScrollPhysics(), // FIXED: Disable independent scrolling
+      physics:
+          const NeverScrollableScrollPhysics(), // FIXED: Disable independent scrolling
       gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),
@@ -83,7 +84,8 @@ class _RepliesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: const EdgeInsets.all(16),
-      physics: const NeverScrollableScrollPhysics(), // FIXED: Disable independent scrolling
+      physics:
+          const NeverScrollableScrollPhysics(), // FIXED: Disable independent scrolling
       itemCount: count,
       itemBuilder: (context, index) {
         return Card(
@@ -113,7 +115,8 @@ class _MediaGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       padding: const EdgeInsets.all(16),
-      physics: const NeverScrollableScrollPhysics(), // FIXED: Disable independent scrolling
+      physics:
+          const NeverScrollableScrollPhysics(), // FIXED: Disable independent scrolling
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 8,
@@ -154,7 +157,8 @@ class _LikesGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return MasonryGridView.builder(
       padding: const EdgeInsets.all(16),
-      physics: const NeverScrollableScrollPhysics(), // FIXED: Disable independent scrolling
+      physics:
+          const NeverScrollableScrollPhysics(), // FIXED: Disable independent scrolling
       gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),

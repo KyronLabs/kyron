@@ -26,7 +26,8 @@ class AtomicCard extends StatefulWidget {
   State<AtomicCard> createState() => _AtomicCardState();
 }
 
-class _AtomicCardState extends State<AtomicCard> with SingleTickerProviderStateMixin {
+class _AtomicCardState extends State<AtomicCard>
+    with SingleTickerProviderStateMixin {
   late bool _isFollowing;
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
@@ -40,8 +41,10 @@ class _AtomicCardState extends State<AtomicCard> with SingleTickerProviderStateM
       duration: const Duration(milliseconds: 80),
     );
     _scaleAnimation = TweenSequence<double>([
-      TweenSequenceItem(tween: Tween<double>(begin: 1.0, end: 1.1), weight: 0.5),
-      TweenSequenceItem(tween: Tween<double>(begin: 1.1, end: 1.0), weight: 0.5),
+      TweenSequenceItem(
+          tween: Tween<double>(begin: 1.0, end: 1.1), weight: 0.5),
+      TweenSequenceItem(
+          tween: Tween<double>(begin: 1.1, end: 1.0), weight: 0.5),
     ]).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
   }
 
@@ -64,7 +67,7 @@ class _AtomicCardState extends State<AtomicCard> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     final textScale = MediaQuery.of(context).textScaleFactor;
     final scheme = Theme.of(context).colorScheme;
-    
+
     // Card dimensions
     const cardWidth = 100.0;
     const cardHeight = 120.0;
@@ -72,7 +75,7 @@ class _AtomicCardState extends State<AtomicCard> with SingleTickerProviderStateM
     const buttonHeight = 32.0;
     const buttonWidth = 80.0;
     const padding = 12.0;
-    
+
     return Semantics(
       label: '${widget.handle}, ${widget.bio ?? 'Creator'}, Follow button',
       child: AnimatedBuilder(
@@ -133,7 +136,7 @@ class _AtomicCardState extends State<AtomicCard> with SingleTickerProviderStateM
                       ),
                     ),
                     const SizedBox(height: 8),
-                    
+
                     // @handle (15pt)
                     Text(
                       widget.handle,
@@ -147,7 +150,7 @@ class _AtomicCardState extends State<AtomicCard> with SingleTickerProviderStateM
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    
+
                     // Bio (13pt, 2 lines)
                     if (widget.bio != null && widget.bio!.isNotEmpty) ...[
                       const SizedBox(height: 4),
@@ -163,9 +166,9 @@ class _AtomicCardState extends State<AtomicCard> with SingleTickerProviderStateM
                         overflow: TextOverflow.ellipsis,
                       ),
                     ],
-                    
+
                     const Spacer(),
-                    
+
                     // Follow button (32px height, 80px width)
                     _buildButton(),
                   ],
@@ -180,7 +183,7 @@ class _AtomicCardState extends State<AtomicCard> with SingleTickerProviderStateM
 
   Widget _buildButton() {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Container(
       width: 80.0,
       height: 32.0,

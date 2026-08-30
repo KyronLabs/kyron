@@ -9,7 +9,7 @@ class CharCounter extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(composerProvider);
     final progress = state.charProgress;
-    
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -34,7 +34,11 @@ class CharCounter extends ConsumerWidget {
               '${state.charCount}/1000',
               style: TextStyle(
                 fontSize: 11,
-                color: Theme.of(context).textTheme.bodySmall?.color?.withOpacity(.6),
+                color: Theme.of(context)
+                    .textTheme
+                    .bodySmall
+                    ?.color
+                    ?.withOpacity(.6),
               ),
             ),
           ),

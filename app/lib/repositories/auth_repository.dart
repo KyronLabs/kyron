@@ -52,7 +52,8 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
-    final res = await _auth.signInWithPassword(email: email, password: password);
+    final res =
+        await _auth.signInWithPassword(email: email, password: password);
     final session = res.session;
     final account = res.user;
     if (session == null || account == null) {
@@ -161,6 +162,5 @@ class AuthRepository {
   Future<void> setOnboardingCompleted() =>
       _storage.writeHasCompletedOnboarding(true);
 
-  Future<bool> isOnboardingComplete() =>
-      _storage.readHasCompletedOnboarding();
+  Future<bool> isOnboardingComplete() => _storage.readHasCompletedOnboarding();
 }

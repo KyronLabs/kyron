@@ -18,7 +18,8 @@ class ActionRibbon extends ConsumerWidget {
       height: 56,
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(color: scheme.outline.withValues(alpha: .15), width: .5),
+          top: BorderSide(
+              color: scheme.outline.withValues(alpha: .15), width: .5),
         ),
       ),
       child: Row(
@@ -36,10 +37,12 @@ class ActionRibbon extends ConsumerWidget {
             onLongPress: () => PrivacySelector.showDetailed(context),
           ),
           _buildIconButton(
-            icon: ref.watch(composerProvider).scheduledAt == null 
-                ? Icons.timer_outlined 
+            icon: ref.watch(composerProvider).scheduledAt == null
+                ? Icons.timer_outlined
                 : Icons.timer,
-            label: ref.watch(composerProvider).scheduledAt == null ? 'Now' : 'Later',
+            label: ref.watch(composerProvider).scheduledAt == null
+                ? 'Now'
+                : 'Later',
             onTap: () => ScheduleSelector.show(context),
           ),
           _buildIconButton(
@@ -81,11 +84,16 @@ class ActionRibbon extends ConsumerWidget {
 
   IconData _getPrivacyIcon(String privacy) {
     switch (privacy) {
-      case 'Public': return Icons.public;
-      case 'Followers': return Icons.people;
-      case 'Mutuals': return Icons.people_alt;
-      case 'E2EE': return Icons.lock;
-      default: return Icons.public;
+      case 'Public':
+        return Icons.public;
+      case 'Followers':
+        return Icons.people;
+      case 'Mutuals':
+        return Icons.people_alt;
+      case 'E2EE':
+        return Icons.lock;
+      default:
+        return Icons.public;
     }
   }
 }

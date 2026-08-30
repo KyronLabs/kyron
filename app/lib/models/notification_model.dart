@@ -28,7 +28,7 @@ class NotificationModel {
   String get displayTimestamp {
     final now = DateTime.now();
     final diff = now.difference(timestamp);
-    
+
     if (diff.inMinutes < 1) return 'now';
     if (diff.inMinutes < 60) return '${diff.inMinutes}m';
     if (diff.inHours < 24) return '${diff.inHours}h';
@@ -40,7 +40,7 @@ class NotificationModel {
   String get groupKey {
     final now = DateTime.now();
     final diff = now.difference(timestamp);
-    
+
     if (diff.inDays == 0) return 'Today';
     if (diff.inDays == 1) return 'Yesterday';
     if (diff.inDays < 7) return 'This Week';

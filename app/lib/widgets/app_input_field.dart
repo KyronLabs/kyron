@@ -25,9 +25,9 @@ class AppInputField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.validator,
     this.inputFormatters,
-    this.onChanged,      // NEW
-    this.maxLines,       // NEW
-    this.maxLength,      // NEW
+    this.onChanged, // NEW
+    this.maxLines, // NEW
+    this.maxLength, // NEW
   });
 
   @override
@@ -35,9 +35,11 @@ class AppInputField extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final scheme = Theme.of(context).colorScheme;
 
-    final fillColor   = isDark ? const Color(0xFF1A1A1D) : AppTheme.lightSurface;
-    final hintColor   = isDark ? Colors.white.withValues(alpha: 0.6) : AppTheme.lightTextSecondary;
-    final hasPrefix   = prefix != null;
+    final fillColor = isDark ? const Color(0xFF1A1A1D) : AppTheme.lightSurface;
+    final hintColor = isDark
+        ? Colors.white.withValues(alpha: 0.6)
+        : AppTheme.lightTextSecondary;
+    final hasPrefix = prefix != null;
 
     return TextFormField(
       controller: controller,
@@ -45,14 +47,15 @@ class AppInputField extends StatelessWidget {
       validator: validator,
       inputFormatters: inputFormatters,
       style: Theme.of(context).textTheme.bodyLarge,
-      onChanged: onChanged,                // NEW
-      maxLines: maxLines ?? 1,             // NEW
-      maxLength: maxLength,                // NEW
+      onChanged: onChanged, // NEW
+      maxLines: maxLines ?? 1, // NEW
+      maxLength: maxLength, // NEW
       decoration: InputDecoration(
         filled: true,
         fillColor: fillColor,
         hintText: hint,
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: hintColor),
+        hintStyle:
+            Theme.of(context).textTheme.bodyMedium?.copyWith(color: hintColor),
         prefixIcon: hasPrefix
             ? Padding(
                 padding: const EdgeInsets.only(left: 16, right: 0),
@@ -68,7 +71,8 @@ class AppInputField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: hintColor.withValues(alpha: 0.3), width: 1.0),
+          borderSide:
+              BorderSide(color: hintColor.withValues(alpha: 0.3), width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),

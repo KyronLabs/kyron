@@ -39,17 +39,23 @@ class LongPressSheet extends StatelessWidget {
                     leading: Icon(items.values.elementAt(i),
                         color: scheme.onSurface.withValues(alpha: .75)),
                     title: Text(items.keys.elementAt(i)),
-                    onTap: () => Navigator.pop(context, items.keys.elementAt(i)),
+                    onTap: () =>
+                        Navigator.pop(context, items.keys.elementAt(i)),
                     shape: RoundedRectangleBorder(
                       borderRadius: i == 0
-                          ? const BorderRadius.vertical(top: Radius.circular(20))
+                          ? const BorderRadius.vertical(
+                              top: Radius.circular(20))
                           : i == items.length - 1
-                              ? const BorderRadius.vertical(bottom: Radius.circular(20))
+                              ? const BorderRadius.vertical(
+                                  bottom: Radius.circular(20))
                               : BorderRadius.zero,
                     ),
                   ),
                   if (i < items.length - 1)
-                    Divider(height: 1, thickness: 1, color: scheme.outline.withValues(alpha: .15)),
+                    Divider(
+                        height: 1,
+                        thickness: 1,
+                        color: scheme.outline.withValues(alpha: .15)),
                 ],
               ],
             ),

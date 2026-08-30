@@ -12,7 +12,7 @@ class ProfileKPBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final progress = (kyronPoints % 1000) / 1000; // Progress to next 1000
-    
+
     return SizedBox(
       width: 32,
       height: 4,
@@ -25,7 +25,7 @@ class ProfileKPBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(2),
             ),
           ),
-          
+
           // Foreground (animated)
           AnimatedFractionallySizedBox(
             widthFactor: progress,
@@ -42,4 +42,4 @@ class ProfileKPBar extends StatelessWidget {
       ),
     );
   }
-}                                                                                   
+}
