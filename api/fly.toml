@@ -12,8 +12,18 @@ primary_region = 'fra'
   strategy = 'rolling'
   release_command = "sh -c 'export DATABASE_URL=\"$DATABASE_URL\" && npx prisma db push --accept-data-loss'"
 
+# The app reads PORT (main.ts falls back to 3000 only if it is unset). Setting
+# it here alongside internal_port keeps the listener and the proxy on the same
+# number by construction -- they had drifted to 3000 and 8080 respectively,
+# which Fly reported as "instance refused connection. is your app listening on
+# 0.0.0.0:8080?" while the app logged that it was listening on 0.0.0.0:3000.
+# 8080 rather than 3000 because that is Fly's default and what the deployed
+# proxy already expected.
+[env]
+  PORT = '8080'
+
 [http_service]
-  internal_port = 3000
+  internal_port = 8080
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
