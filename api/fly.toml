@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for kyron on 2026-08-30T10:03:27Z
+# fly.toml app configuration file generated for kyron on 2026-08-30T18:31:40Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'kyron'
-primary_region = 'fra'
+primary_region = 'nrt'
 
 [build]
 
