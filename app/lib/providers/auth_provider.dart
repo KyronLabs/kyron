@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user.dart';
 import '../repositories/auth_repository.dart';
-import '../services/secure_storage_service.dart';
 import 'current_user_provider.dart';
 
 enum AuthStatus { unknown, unauthenticated, authenticating, authenticated }
@@ -58,9 +57,11 @@ class AuthNotifier extends Notifier<AuthState> {
         return;
       }
       
-      // If we have user data but token is expired, try refresh
-      final refreshToken = await SecureStorageService().readRefreshToken();
-      if (refreshToken != null && user != null) {
+      // Access token expired but a session is still on disk -- worth a refresh.
+      // This used to gate on a refresh token in secure storage; Supabase keeps
+      // its own session store, so that lookup always came back null and an
+      // expired session was never recovered at startup.
+      if (_repo.hasPersistedSession && user != null) {
         print('🔄 Bootstrap: Token expired/missing, attempting refresh...');
         try {
           final refreshed = await _repo.refresh();

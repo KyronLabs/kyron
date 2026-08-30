@@ -46,26 +46,30 @@ class _SignupScreenState extends State<SignupScreen> {
         username: _username.text.trim().isEmpty ? null : _username.text.trim(),
       );
 
-      // backend now returns `userId` explicitly
-      final userId = (res.data as Map<String, dynamic>)['userId'] as String?;
+      if (!mounted) return;
 
-      if (userId == null) {
-        // If backend didn't return it, show a helpful message
+      // The project has email auto-confirm on, so sign-up returns a live
+      // session and the account is usable straight away -- there is no code to
+      // enter. A null session means confirmation was turned back on, in which
+      // case the user has mail waiting and must not be dropped into the app.
+      if (res == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Signup succeeded but server did not return userId')),
+          const SnackBar(
+            content: Text('Check your email to confirm your account.'),
+          ),
+        );
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Routes.login,
+          (route) => false,
         );
         return;
       }
 
-      if (!mounted) return;
-
-      Navigator.pushNamed(
+      Navigator.pushNamedAndRemoveUntil(
         context,
-        Routes.signupVerifyEmail,
-        arguments: {
-          'email': _email.text.trim(),
-          'userId': userId,
-        },
+        Routes.home,
+        (route) => false,
       );
     } catch (err) {
       ScaffoldMessenger.of(context).showSnackBar(

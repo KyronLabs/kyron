@@ -1,8 +1,9 @@
-import 'package:dio/dio.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide User;
+import 'package:supabase_flutter/supabase_flutter.dart' as sb;
+
 import '../models/auth_tokens.dart';
 import '../models/user.dart';
 import '../services/secure_storage_service.dart';
-import '../services/api_client.dart';
 
 class LoginResponse {
   final AuthTokens tokens;
@@ -10,172 +11,156 @@ class LoginResponse {
   LoginResponse({required this.tokens, required this.user});
 }
 
+/// Authentication against Supabase.
+///
+/// Supabase owns credentials, sessions and refresh. The Kyron API no longer
+/// issues tokens; it verifies Supabase access tokens instead, so everything
+/// here goes through the SDK and the API is left to serve domain data.
+///
+/// Session persistence and refresh are handled by supabase_flutter itself.
+/// SecureStorageService is still used for the cached user record and the
+/// onboarding flag, which are app state rather than credentials.
 class AuthRepository {
-  final ApiClient _client = ApiClient();
   final SecureStorageService _storage = SecureStorageService();
+
+  GoTrueClient get _auth => Supabase.instance.client.auth;
+
+  /// Maps a Supabase account onto the app's User. `id` is the Supabase subject,
+  /// which is also the primary key the API provisions its own row under, so the
+  /// two stay aligned without a mapping table.
+  User _toUser(sb.User account) {
+    final meta = account.userMetadata ?? const <String, dynamic>{};
+    return User(
+      id: account.id,
+      email: account.email ?? '',
+      username: meta['username'] as String? ??
+          meta['user_name'] as String? ??
+          meta['preferred_username'] as String?,
+      name: meta['full_name'] as String? ?? meta['name'] as String?,
+    );
+  }
+
+  AuthTokens _toTokens(Session session) => AuthTokens(
+        accessToken: session.accessToken,
+        refreshToken: session.refreshToken ?? '',
+        expiresAt: session.expiresAt != null
+            ? DateTime.fromMillisecondsSinceEpoch(session.expiresAt! * 1000)
+            : DateTime.now().add(const Duration(hours: 1)),
+      );
 
   Future<LoginResponse> loginWithUser({
     required String email,
     required String password,
   }) async {
-    try {
-      print('🔐 AuthRepository.loginWithUser: starting for $email');
-
-      final res = await _client.dio.post('/auth/login',
-          data: {'email': email, 'password': password});
-
-      final data = res.data as Map<String, dynamic>;
-      
-      final access = data['accessToken'] as String;
-      final refresh = data['refreshToken'] as String;
-      final expiresIn = (data['expiresIn'] as num).toInt();
-      final expiresAt = DateTime.now().add(Duration(seconds: expiresIn));
-
-      final userData = data['user'] as Map<String, dynamic>;
-      final user = User.fromJson(userData);
-
-      final tokens = AuthTokens(
-        accessToken: access, 
-        refreshToken: refresh, 
-        expiresAt: expiresAt
-      );
-
-      // Persist tokens
-      await _storage.writeAccessToken(access, expiresAt);
-      await _storage.writeRefreshToken(refresh);
-      await _storage.writeUserData(user);
-
-      print('✅ AuthRepository.loginWithUser: success for ${user.email}');
-      return LoginResponse(tokens: tokens, user: user);
-    } catch (e) {
-      print('❌ AuthRepository.loginWithUser error: $e');
-      rethrow;
+    final res = await _auth.signInWithPassword(email: email, password: password);
+    final session = res.session;
+    final account = res.user;
+    if (session == null || account == null) {
+      throw const AuthException('Sign-in did not return a session.');
     }
-  }
-
-  Future<AuthTokens> verifyEmail({
-    required String userId,
-    required String code,
-  }) async {
-    final res = await _client.dio.post('/auth/verify-email',
-        data: {'userId': userId, 'code': code});
-
-    final data = res.data as Map<String, dynamic>;
-
-    final access = data['accessToken'] as String;
-    final refresh = data['refreshToken'] as String;
-    final expiresIn = (data['expiresIn'] as num).toInt();
-    final expiresAt = DateTime.now().add(Duration(seconds: expiresIn));
-
-    final user = User.fromJson(data['user'] as Map<String, dynamic>);
-
-    await _storage.writeAccessToken(access, expiresAt);
-    await _storage.writeRefreshToken(refresh);
+    final user = _toUser(account);
     await _storage.writeUserData(user);
-
-    return AuthTokens(accessToken: access, refreshToken: refresh, expiresAt: expiresAt);
+    return LoginResponse(tokens: _toTokens(session), user: user);
   }
 
-  
-  Future<bool> refresh() async {
-    print('🔄 AuthRepository.refresh() called');
-    
-    final refreshToken = await _storage.readRefreshToken();
-    if (refreshToken == null) {
-      print('❌ No refresh token found');
-      return false;
-    }
+  /// Creates the account. The project has email auto-confirm enabled, so this
+  /// returns a usable session immediately and there is no code to enter. If
+  /// confirmation is ever switched on, `session` comes back null and the caller
+  /// should route to a "check your email" screen instead of straight into the
+  /// app -- which is why the session is returned rather than assumed.
+  Future<LoginResponse?> register({
+    required String email,
+    required String password,
+    String? username,
+  }) async {
+    final res = await _auth.signUp(
+      email: email,
+      password: password,
+      data: {
+        if (username != null && username.isNotEmpty) 'username': username,
+      },
+    );
+    final session = res.session;
+    final account = res.user;
+    if (session == null || account == null) return null;
 
+    final user = _toUser(account);
+    await _storage.writeUserData(user);
+    return LoginResponse(tokens: _toTokens(session), user: user);
+  }
+
+  Future<void> logout() async {
     try {
-      print('🔄 Attempting token refresh...');
-      final res = await _client.dio.post('/auth/refresh', 
-        data: {'refreshToken': refreshToken}
-      );
-      
-      final data = res.data as Map<String, dynamic>;
-      
-      final access = data['accessToken'] as String;
-      final newRefresh = data['refreshToken'] as String?;
-      final expiresIn = (data['expiresIn'] as num).toInt();
-      final expiresAt = DateTime.now().add(Duration(seconds: expiresIn));
+      await _auth.signOut();
+    } finally {
+      // Clear local caches even if the network sign-out fails, so the device
+      // is not left showing a signed-in shell.
+      await _storage.clearAll();
+    }
+  }
 
-      await _storage.writeAccessToken(access, expiresAt);
-      if (newRefresh != null) {
-        await _storage.writeRefreshToken(newRefresh);
-      }
-      
-      print('✅ Token refresh successful');
-      return true;
-      
-    } catch (e) {
-      print('❌ Token refresh failed: $e');
-      // Clear tokens on refresh failure
+  /// The SDK refreshes on its own schedule; this forces one and reports whether
+  /// a usable session survived.
+  Future<bool> refresh() async {
+    try {
+      final res = await _auth.refreshSession();
+      return res.session != null;
+    } catch (_) {
       await _storage.clearAll();
       return false;
     }
   }
 
-  Future<void> logout() async {
-    final refreshToken = await _storage.readRefreshToken();
-    try {
-      if (refreshToken != null) {
-        await _client.dio.post('/auth/logout', data: {'refreshToken': refreshToken});
-      }
-    } catch (_) {}
-    await _storage.clearAll();
+  /// True when the SDK holds a session at all, expired or not. Distinct from
+  /// [hasValidSession]: an expired session is still worth a refresh attempt.
+  bool get hasPersistedSession => _auth.currentSession != null;
+
+  bool get hasValidSession {
+    final session = _auth.currentSession;
+    return session != null && !session.isExpired;
   }
 
-  Future<bool> hasValidAccessToken() async {
-    return await _storage.hasValidAccessToken();
-  }
+  Future<bool> hasValidAccessToken() async => hasValidSession;
 
+  /// Prefers the live Supabase account over the cached copy so a profile edit
+  /// made elsewhere is not masked by stale local data.
   Future<User?> getStoredUserData() async {
-    return await _storage.readUserData();
+    final account = _auth.currentUser;
+    if (account != null) return _toUser(account);
+    return _storage.readUserData();
   }
 
-  Future<Response> register({
+  Future<void> sendPasswordReset(String email) =>
+      _auth.resetPasswordForEmail(email);
+
+  /// Confirms a sign-up with the 6-digit code Supabase mails out. Only reachable
+  /// when email auto-confirm is disabled on the project; with it enabled,
+  /// sign-up already returns a session and nothing sends a code.
+  Future<LoginResponse> verifyEmailOtp({
     required String email,
-    required String password,
-    String? username,
+    required String code,
   }) async {
-    final body = {
-      'email': email,
-      'password': password,
-      if (username != null && username.isNotEmpty) 'username': username,
-    };
-
-    return await _client.dio.post('/auth/register', data: body);
+    final res = await _auth.verifyOTP(
+      email: email,
+      token: code,
+      type: OtpType.signup,
+    );
+    final session = res.session;
+    final account = res.user;
+    if (session == null || account == null) {
+      throw const AuthException('Verification did not return a session.');
+    }
+    final user = _toUser(account);
+    await _storage.writeUserData(user);
+    return LoginResponse(tokens: _toTokens(session), user: user);
   }
 
-  // ✅ NEW: Onboarding completion methods
-  Future<void> setOnboardingCompleted() async {
-    await _storage.writeHasCompletedOnboarding(true);
-  }
+  Future<void> resendSignupCode(String email) =>
+      _auth.resend(type: OtpType.signup, email: email);
 
-  Future<bool> isOnboardingComplete() async {
-    return await _storage.readHasCompletedOnboarding();
-  }
+  Future<void> setOnboardingCompleted() =>
+      _storage.writeHasCompletedOnboarding(true);
 
-Future<void> debugPrintStoredTokens() async {
-  print('🔍 DEBUG: Checking stored tokens...');
-  final storage = SecureStorageService();
-  final token = await storage.readAccessToken();
-  final expiry = await storage.readAccessExpiry();
-  final refresh = await storage.readRefreshToken();
-  final user = await storage.readUserData();
-  final onboarding = await storage.readHasCompletedOnboarding();
-  
-  print('  Access Token: ${token != null ? "Present (${token.length} chars)" : "NULL"}');
-  print('  Refresh Token: ${refresh != null ? "Present" : "NULL"}');
-  print('  Expiry: $expiry');
-  print('  User: ${user?.email ?? "NULL"}');
-  print('  Has completed onboarding: $onboarding');
-  
-  if (expiry != null) {
-    final now = DateTime.now();
-    print('  Token is ${expiry.isAfter(now) ? "VALID" : "EXPIRED"} (now: $now)');
-  }
-  
-  print('  Token age: ${expiry != null ? DateTime.now().difference(expiry).inSeconds.abs() : "N/A"} seconds');
- }
+  Future<bool> isOnboardingComplete() =>
+      _storage.readHasCompletedOnboarding();
 }

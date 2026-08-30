@@ -7,11 +7,21 @@ import 'routes.dart';
 import 'providers/auth_provider.dart';
 import 'screens/root_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'config/supabase_config.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy(); // Removes # from URLs on web
+
+  // Supabase is the identity provider. Initialising here means the SDK has
+  // restored any persisted session before the first widget builds, so the app
+  // does not flash the login screen for an already-signed-in user.
+  await Supabase.initialize(
+    url: SupabaseConfig.url,
+    anonKey: SupabaseConfig.anonKey,
+  );
 
 
   runApp(

@@ -9,12 +9,10 @@ import '../models/onboarding_model.dart';
 
 class SignupVerifyEmailScreen extends StatefulWidget {
   final String email;
-  final String userId;
 
   const SignupVerifyEmailScreen({
     super.key,
     required this.email,
-    required this.userId,
   });
 
   @override
@@ -82,8 +80,8 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
 
     try {
       final repo = AuthRepository();
-      await repo.verifyEmail(
-        userId: widget.userId,
+      await repo.verifyEmailOtp(
+        email: widget.email,
         code: _code,
       );
 

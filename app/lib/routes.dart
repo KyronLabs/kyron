@@ -66,7 +66,6 @@ class Routes {
         return MaterialPageRoute(
           builder: (_) => SignupVerifyEmailScreen(
             email: args?['email'] ?? '',
-            userId: args?['userId'] ?? '',
           ),
         );
 
