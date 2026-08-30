@@ -39,7 +39,10 @@ model User {
   id                  String          @id @default(uuid()) @db.Uuid
   email               String          @unique
   username            String?         @unique
-  password            String
+  // Nullable: accounts provisioned from a Supabase access token have no local
+  // password. Supabase holds the credential; this row only mirrors the identity
+  // so the relations below still have something to hang off.
+  password            String?
   name                String?
   role                UserRole        @default(USER)
   status              AccountStatus   @default(ACTIVE)

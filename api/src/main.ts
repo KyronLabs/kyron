@@ -16,7 +16,12 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter({ logger: false }),
-    { bufferLogs: true },
+    // Not buffering. Provider initialisation -- notably PrismaService's connect
+    // retry loop -- runs inside create(), and a failure there rejects before
+    // useLogger() is ever reached, so buffered records are dropped and the boot
+    // fails in total silence. Unbuffered costs some log ordering at startup and
+    // buys knowing why the process died.
+    { bufferLogs: false },
   );
 
   app.useLogger(['error', 'warn', 'log', 'debug', 'verbose']);
@@ -84,5 +89,9 @@ void bootstrap().catch((error) => {
     'Failed to start Kyron API',
     error instanceof Error ? error.stack : String(error),
   );
-  process.exit(1);
+  // Set the code and let the event loop drain rather than exiting immediately;
+  // the unref'd timer only fires if something is still holding the process
+  // open, so a failed boot reports its reason and still cannot hang the machine.
+  process.exitCode = 1;
+  setTimeout(() => process.exit(1), 250).unref();
 });

@@ -331,6 +331,15 @@ export class AuthService {
         );
       }
 
+      // Accounts provisioned from a Supabase token carry no local password.
+      // Reject them here rather than letting argon2 see a null: their
+      // credential lives in Supabase and must be presented as an access token.
+      if (!user.password) {
+        throw new BadRequestException(
+          'This account signs in through Kyron accounts. Use the app sign-in instead of a password.',
+        );
+      }
+
       const ok = await argon2.verify(user.password, pass);
       if (!ok) {
         await this.prisma.user.update({

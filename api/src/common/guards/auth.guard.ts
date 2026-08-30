@@ -1,25 +1,33 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import {
   Injectable,
   CanActivate,
   ExecutionContext,
   UnauthorizedException,
   ForbiddenException,
+  Logger,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { PrismaService } from '@/infrastructure/prisma/prisma.service';
 import { Request } from 'express';
-import { UserRole } from '@prisma/client';
+import { User, UserRole, EmailStatus } from '@prisma/client';
 import { getJwtSecret } from '@/config/jwt-secret';
+import {
+  SupabaseTokenService,
+  type SupabaseClaims,
+} from '@/modules/auth/supabase-token.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+  private readonly logger = new Logger(AuthGuard.name);
+
   constructor(
     private readonly jwt: JwtService,
     private readonly prisma: PrismaService,
     private readonly reflector: Reflector,
+    private readonly supabaseToken: SupabaseTokenService,
   ) {}
 
   async canActivate(ctx: ExecutionContext): Promise<boolean> {
@@ -31,25 +39,18 @@ export class AuthGuard implements CanActivate {
 
     const token = authHeader.split(' ')[1];
 
-    let payload: any;
-    try {
-      payload = await this.jwt.verifyAsync(token, {
-        secret: getJwtSecret(),
-      });
-    } catch {
-      throw new UnauthorizedException('Invalid or expired token');
-    }
-
-    const user = await this.prisma.user.findUnique({
-      where: { id: payload.sub },
-    });
+    // Supabase is the identity provider. Its tokens are tried first; the legacy
+    // path below stays only until every client has moved over, and can go once
+    // no Kyron-issued token is still in circulation.
+    const claims = await this.supabaseToken.verify(token);
+    const user = claims
+      ? await this.resolveSupabaseUser(claims)
+      : await this.resolveLegacyUser(token);
 
     if (!user) throw new UnauthorizedException('User not found');
 
-    // Attach user to request
     (request as any).user = user;
 
-    // Check role-based authorization (optional)
     const requiredRoles =
       this.reflector.get<UserRole[]>('roles', ctx.getHandler()) || [];
 
@@ -58,5 +59,67 @@ export class AuthGuard implements CanActivate {
     }
 
     return true;
+  }
+
+  /**
+   * Supabase owns the account; this row mirrors it so the rest of the schema
+   * (profile, follows, points) still has a User to relate to. Provisioned on
+   * first sight rather than by a migration, because a user can appear in
+   * Supabase at any time -- including through Google or GitHub, which never
+   * touch this API.
+   */
+  private async resolveSupabaseUser(claims: SupabaseClaims): Promise<User> {
+    const existing = await this.prisma.user.findUnique({
+      where: { id: claims.sub },
+    });
+    if (existing) return existing;
+
+    const email = claims.email ?? `${claims.sub}@users.noreply.kyron.so`;
+    const meta = claims.user_metadata ?? {};
+    const name = meta.full_name ?? meta.name ?? null;
+
+    try {
+      const created = await this.prisma.user.create({
+        data: {
+          id: claims.sub,
+          email,
+          name,
+          password: null,
+          role: UserRole.USER,
+          // Supabase would not have issued this token if the account were not
+          // usable, so the mirrored row starts verified.
+          emailStatus: EmailStatus.VERIFIED,
+          emailVerifiedAt: new Date(),
+        },
+      });
+      this.logger.log(`Provisioned local user ${created.id} from Supabase`);
+      return created;
+    } catch (error) {
+      // Two concurrent first requests race here, and an address already present
+      // from the pre-Supabase era collides on the unique email. Recover by
+      // reading back whichever row won.
+      const recovered = await this.prisma.user.findFirst({
+        where: { OR: [{ id: claims.sub }, { email }] },
+      });
+      if (recovered) return recovered;
+      this.logger.error(
+        `Could not provision a local user for Supabase subject ${claims.sub}`,
+        error instanceof Error ? error.stack : String(error),
+      );
+      throw new UnauthorizedException('Could not resolve account');
+    }
+  }
+
+  /** Kyron-issued HS256 token. Remove once no client mints these. */
+  private async resolveLegacyUser(token: string): Promise<User | null> {
+    let payload: { sub?: string };
+    try {
+      payload = await this.jwt.verifyAsync(token, { secret: getJwtSecret() });
+    } catch {
+      throw new UnauthorizedException('Invalid or expired token');
+    }
+    if (!payload.sub)
+      throw new UnauthorizedException('Invalid or expired token');
+    return this.prisma.user.findUnique({ where: { id: payload.sub } });
   }
 }

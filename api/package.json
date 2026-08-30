@@ -43,6 +43,7 @@
     "class-validator": "^0.14.2",
     "fastify": "^5.6.2",
     "ioredis": "^5.8.2",
+    "jose": "^6.2.10",
     "multer": "^2.0.2",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
@@ -90,6 +91,10 @@
     ],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
+    "_comment_transformIgnorePatterns": "jose ships ESM only. Node 22 can require() it, which is why the built app works, but jest uses its own registry and needs it transformed.",
+    "transformIgnorePatterns": [
+      "node_modules/(?!jose)"
+    ],
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
