@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../models/onboarding_model.dart';
 import '../routes.dart';
 import '../theme/app_theme.dart';
 import '../widgets/app_button.dart';
 import '../widgets/gradient_scaffold.dart';
 import '../services/profile_service.dart';
+import '../utils/api_error_message.dart';
 
 class OnboardStep2Screen extends StatefulWidget {
   final OnboardingModel model;
@@ -17,10 +19,20 @@ class OnboardStep2Screen extends StatefulWidget {
 class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
   final _profileService = ProfileService();
   final List<String> _allInterests = [
-    'Technology','Sports','Music','Art','Travel','Food',
-    'Fashion','Science','Gaming','Photography','Fitness','Books'
+    'Technology',
+    'Sports',
+    'Music',
+    'Art',
+    'Travel',
+    'Food',
+    'Fashion',
+    'Science',
+    'Gaming',
+    'Photography',
+    'Fitness',
+    'Books',
   ];
-  
+
   bool _isLoading = false;
 
   void _toggle(String interest) {
@@ -39,12 +51,12 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
     Object? arguments,
   ) async {
     setState(() => _isLoading = true);
-    
+
     try {
       if (widget.model.interests.isNotEmpty) {
         await _profileService.saveInterests(widget.model.interests);
       }
-      
+
       // Pass arguments to the route
       if (mounted) {
         Navigator.pushNamed(context, routeName, arguments: arguments);
@@ -52,9 +64,8 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
     } catch (e) {
       debugPrint('NAVIGATION ERROR: $e');
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(describeApiError(e))));
       }
     } finally {
       if (mounted) {
@@ -82,7 +93,10 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
         actions: [
           TextButton(
             onPressed: _isLoading ? null : _skip,
-            child: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w500)),
+            child: const Text(
+              'Skip',
+              style: TextStyle(fontWeight: FontWeight.w500),
+            ),
           ),
           const SizedBox(width: 8),
         ],
@@ -92,9 +106,15 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('What do you love?', style: Theme.of(context).textTheme.displayLarge),
+            Text(
+              'What do you love?',
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
             const SizedBox(height: 8),
-            Text('Select a few topics to personalise your feed.', style: Theme.of(context).textTheme.bodyMedium),
+            Text(
+              'Select a few topics to personalise your feed.',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
             const SizedBox(height: 24),
 
             Expanded(
@@ -110,18 +130,19 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
               ),
             ),
 
-            AppButton(
-              label: 'Next',
-              onTap: _next,
-              isLoading: _isLoading,
-            ),
+            AppButton(label: 'Next', onTap: _next, isLoading: _isLoading),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildTag(String label, bool selected, ColorScheme scheme, bool isDark) {
+  Widget _buildTag(
+    String label,
+    bool selected,
+    ColorScheme scheme,
+    bool isDark,
+  ) {
     final bg = selected
         ? scheme.primary.withValues(alpha: .12)
         : (isDark ? AppTheme.surface : AppTheme.lightSurface);
@@ -137,7 +158,9 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
           border: Border.all(
             color: selected
                 ? scheme.primary.withValues(alpha: .35)
-                : (isDark ? Colors.transparent : scheme.onSurface.withValues(alpha: .12)),
+                : (isDark
+                      ? Colors.transparent
+                      : scheme.onSurface.withValues(alpha: .12)),
             width: 1,
           ),
         ),

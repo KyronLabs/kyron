@@ -7,6 +7,7 @@ import '../providers/auth_provider.dart';
 import '../routes.dart';
 import '../services/profile_service.dart';
 import '../widgets/atomic_card.dart';
+import '../utils/api_error_message.dart';
 
 class OnboardStep3Screen extends ConsumerStatefulWidget {
   final OnboardingModel model;
@@ -70,9 +71,9 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
           debugPrint('step3: followSuggested failed: $e');
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text(
-                  'Could not follow everyone. You can find them later.',
+                  'Could not follow everyone: ${describeApiError(e)}',
                 ),
               ),
             );

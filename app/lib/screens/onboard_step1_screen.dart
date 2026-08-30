@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import '../models/onboarding_model.dart';
 import '../routes.dart';
 import '../theme/app_theme.dart';
+import '../utils/api_error_message.dart';
 import '../widgets/app_button.dart';
 import '../widgets/app_input_field.dart';
 import '../widgets/camera_tooltip_menu.dart';
@@ -55,7 +56,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
       await _profileService.randomCover();
     } catch (e) {
       debugPrint('randomiseCover failed: $e');
-      _report('Could not fetch a cover right now.');
+      _report(describeApiError(e));
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -85,9 +86,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
         );
       } catch (e) {
         debugPrint('step1: updateProfile failed: $e');
-        _report(
-          'Could not save your profile. Check your connection and try again.',
-        );
+        _report(describeApiError(e));
         return;
       }
 
@@ -103,7 +102,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
           );
         } catch (e) {
           debugPrint('step1: avatar upload failed: $e');
-          _report('Your photo could not be uploaded. You can add it later.');
+          _report('Photo not uploaded: ${describeApiError(e)}');
         }
       }
 
@@ -112,7 +111,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
           await _profileService.uploadCover(File(widget.model.localCoverPath!));
         } catch (e) {
           debugPrint('step1: cover upload failed: $e');
-          _report('Your cover could not be uploaded. You can add it later.');
+          _report('Cover not uploaded: ${describeApiError(e)}');
         }
       } else {
         // Picking a random default cover is a nicety, and it is the call most
