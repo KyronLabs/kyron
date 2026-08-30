@@ -10,7 +10,6 @@ import rateLimit from '@fastify/rate-limit';
 import multipart from '@fastify/multipart';
 import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { PrismaService } from './infrastructure/prisma/prisma.service';
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
@@ -66,7 +65,6 @@ async function bootstrap() {
 
   const port = config.get<number>('PORT', 3000);
 
-  const prismaService = app.get(PrismaService);
   await app.listen(port, '0.0.0.0');
   logger.log(`🚀 Kyron API (Fastify) running on http://localhost:${port}`);
 
@@ -75,7 +73,13 @@ async function bootstrap() {
     await app.close();
     process.exit(0);
   };
-  process.on('SIGINT', shutdown);
-  process.on('SIGTERM', shutdown);
+  process.on('SIGINT', () => void shutdown());
+  process.on('SIGTERM', () => void shutdown());
 }
-bootstrap();
+void bootstrap().catch((error) => {
+  new Logger('Bootstrap').error(
+    'Failed to start Kyron API',
+    error instanceof Error ? error.stack : String(error),
+  );
+  process.exit(1);
+});
