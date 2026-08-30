@@ -128,4 +128,40 @@ describe('SupabaseTokenService', () => {
     expect(svc.enabled).toBe(false);
     expect(await svc.verify(await sign({ sub: 'x' }))).toBeNull();
   });
+
+  describe('isAsymmetric', () => {
+    // Tells "not mine to verify" apart from "invalid", which is what lets the
+    // guard answer a Supabase token with a 503 naming the misconfiguration
+    // rather than a 401 the user reads as an expired session.
+    it('recognises a Supabase ES256 token even with the verifier disabled', async () => {
+      const token = await sign({ sub: 'x' });
+      delete process.env.SUPABASE_URL;
+      const svc = new SupabaseTokenService();
+      expect(svc.enabled).toBe(false);
+      expect(svc.isAsymmetric(token)).toBe(true);
+    });
+
+    it('does not claim a legacy HS256 token', async () => {
+      const legacy = await new SignJWT({ sub: 'x' })
+        .setProtectedHeader({ alg: 'HS256' })
+        .setIssuedAt()
+        .setExpirationTime('1h')
+        .sign(new TextEncoder().encode('a'.repeat(32)));
+      expect(service().isAsymmetric(legacy)).toBe(false);
+    });
+
+    it('does not claim an unsigned token', () => {
+      const unsecured = `${Buffer.from(
+        JSON.stringify({ alg: 'none', typ: 'JWT' }),
+      ).toString('base64url')}.${Buffer.from(
+        JSON.stringify({ sub: 'x' }),
+      ).toString('base64url')}.`;
+      expect(service().isAsymmetric(unsecured)).toBe(false);
+    });
+
+    it('does not throw on a value that is not a JWT', () => {
+      expect(service().isAsymmetric('not-a-token')).toBe(false);
+      expect(service().isAsymmetric('')).toBe(false);
+    });
+  });
 });

@@ -1,5 +1,10 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose';
+import {
+  createRemoteJWKSet,
+  decodeProtectedHeader,
+  jwtVerify,
+  type JWTPayload,
+} from 'jose';
 
 /**
  * Claims we rely on from a Supabase access token. Supabase signs these with
@@ -28,8 +33,16 @@ export class SupabaseTokenService {
   constructor() {
     const baseUrl = process.env.SUPABASE_URL?.replace(/\/+$/, '');
     if (!baseUrl) {
-      this.logger.warn(
-        'SUPABASE_URL is not set; Supabase access tokens cannot be verified.',
+      // Supabase is the only identity provider a current client uses, so an
+      // unset SUPABASE_URL is not a degraded mode -- it means every
+      // authenticated request will fail. Logged at error level because a
+      // warning here was easy to miss in a boot log, and the resulting 401s
+      // read to users as an expired session rather than a misconfigured server.
+      this.logger.error(
+        'SUPABASE_URL is not set: no JWKS can be fetched, so no Supabase ' +
+          'access token can be verified and every authenticated request will ' +
+          'be refused. Set it to the project URL, e.g. ' +
+          'https://<project-ref>.supabase.co',
       );
       this.issuer = null;
       this.jwks = null;
@@ -41,10 +54,36 @@ export class SupabaseTokenService {
     this.jwks = createRemoteJWKSet(
       new URL(`${this.issuer}/.well-known/jwks.json`),
     );
+    // Stated at boot because a SUPABASE_URL pointing at the wrong project is
+    // indistinguishable, from the outside, from one that is not set: both end
+    // as a 401 on every authenticated request.
+    this.logger.log(`Accepting Supabase access tokens from ${this.issuer}`);
   }
 
   get enabled(): boolean {
     return this.jwks !== null;
+  }
+
+  /** The issuer tokens must carry, or null when unconfigured. Not a secret. */
+  get configuredIssuer(): string | null {
+    return this.issuer;
+  }
+
+  /**
+   * Whether the token was issued by an asymmetric provider -- Supabase signs
+   * ES256 -- as opposed to the legacy HS256 tokens this API used to mint.
+   * Reads the unverified header only, so it says nothing about authenticity;
+   * it exists to tell "this token is not mine to verify" apart from
+   * "this token is invalid", which decides whether a rejection is the caller's
+   * problem or the server's.
+   */
+  isAsymmetric(token: string): boolean {
+    try {
+      const { alg } = decodeProtectedHeader(token);
+      return typeof alg === 'string' && alg !== 'none' && !alg.startsWith('HS');
+    } catch {
+      return false;
+    }
   }
 
   /**
@@ -63,7 +102,21 @@ export class SupabaseTokenService {
         return null;
       }
       return payload as SupabaseClaims;
-    } catch {
+    } catch (error) {
+      // Swallowing this whole is what made a broken deployment silent: a wrong
+      // issuer, an unreachable JWKS endpoint and a forged token all became the
+      // same null, and the caller reported all three as an expired session.
+      // Only tokens that claim to be Supabase's are logged, so an attacker
+      // cannot fill the log by posting arbitrary strings.
+      if (this.isAsymmetric(token)) {
+        const reason =
+          error instanceof Error
+            ? `${(error as { code?: string }).code ?? error.name}: ${error.message}`
+            : String(error);
+        this.logger.warn(
+          `Rejected an access token issued for ${this.issuer ?? 'nothing'} -- ${reason}`,
+        );
+      }
       return null;
     }
   }

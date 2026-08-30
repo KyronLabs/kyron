@@ -6,6 +6,7 @@ import {
   ExecutionContext,
   UnauthorizedException,
   ForbiddenException,
+  ServiceUnavailableException,
   Logger,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
@@ -43,6 +44,30 @@ export class AuthGuard implements CanActivate {
     // path below stays only until every client has moved over, and can go once
     // no Kyron-issued token is still in circulation.
     const claims = await this.supabaseToken.verify(token);
+
+    // A Supabase token that did not verify while the verifier is switched off
+    // is not a bad token -- it is a server that cannot check it. Falling
+    // through to the legacy HS256 path here would reject it as "invalid or
+    // expired", which the client shows as an expired session and the user
+    // answers by signing in again, landing straight back on the same error.
+    // Say what is actually true instead, and make the cause greppable in the
+    // deployment log.
+    if (
+      !claims &&
+      !this.supabaseToken.enabled &&
+      this.supabaseToken.isAsymmetric(token)
+    ) {
+      this.logger.error(
+        'Refused an access token because SUPABASE_URL is not set, so there is ' +
+          'no key set to verify it against. Every authenticated request fails ' +
+          'until it is configured.',
+      );
+      throw new ServiceUnavailableException(
+        'Sign-in cannot be verified right now: this server is missing its ' +
+          'identity provider configuration.',
+      );
+    }
+
     const user = claims
       ? await this.resolveSupabaseUser(claims)
       : await this.resolveLegacyUser(token);
