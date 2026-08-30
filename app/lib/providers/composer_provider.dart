@@ -58,12 +58,12 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   final DraftService _draftService;
   Timer? _placeholderTimer;
 
-  ComposerNotifier(this._draftService) 
-    : super(ComposerState(
-        content: '',
-        privacy: 'Public',
-        placeholderText: _getRandomPlaceholder(),
-      )) {
+  ComposerNotifier(this._draftService)
+      : super(ComposerState(
+          content: '',
+          privacy: 'Public',
+          placeholderText: _getRandomPlaceholder(),
+        )) {
     _loadDraft();
   }
 
@@ -76,7 +76,8 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   ];
 
   static String _getRandomPlaceholder() {
-    return _placeholders[DateTime.now().millisecondsSinceEpoch % _placeholders.length];
+    return _placeholders[
+        DateTime.now().millisecondsSinceEpoch % _placeholders.length];
   }
 
   void rotatePlaceholder() {
@@ -122,7 +123,8 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
   void toggleSchedule() {
     if (state.scheduledAt == null) {
-      state = state.copyWith(scheduledAt: DateTime.now().add(const Duration(minutes: 30)));
+      state = state.copyWith(
+          scheduledAt: DateTime.now().add(const Duration(minutes: 30)));
     } else {
       state = state.copyWith(scheduledAt: null);
     }
@@ -134,36 +136,38 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   }
 
   Future<void> post() async {
-  if (!state.canPost) return;
-  
-  state = state.copyWith(isPosting: true);
-  HapticFeedback.mediumImpact();
+    if (!state.canPost) return;
 
-  try {
-    await Future.delayed(const Duration(seconds: 1));
-    debugPrint('Posted: ${state.content} | Privacy: ${state.privacy} | Scheduled: ${state.scheduledAt}');
-    
-    // Use the public getter
-    await _draftService.deleteDraft(_draftService.currentDraftId ?? '');
-    
-    state = ComposerState(
-      content: '',
-      privacy: 'Public',
-      placeholderText: _getRandomPlaceholder(),
-    );
-  } catch (e) {
-    debugPrint('Post failed: $e');
-    state = state.copyWith(isPosting: false);
-    rethrow;
+    state = state.copyWith(isPosting: true);
+    HapticFeedback.mediumImpact();
+
+    try {
+      await Future.delayed(const Duration(seconds: 1));
+      debugPrint(
+          'Posted: ${state.content} | Privacy: ${state.privacy} | Scheduled: ${state.scheduledAt}');
+
+      // Use the public getter
+      await _draftService.deleteDraft(_draftService.currentDraftId ?? '');
+
+      state = ComposerState(
+        content: '',
+        privacy: 'Public',
+        placeholderText: _getRandomPlaceholder(),
+      );
+    } catch (e) {
+      debugPrint('Post failed: $e');
+      state = state.copyWith(isPosting: false);
+      rethrow;
+    }
   }
- }
 
   void addMedia(String path) {
     state = state.copyWith(mediaPaths: [...state.mediaPaths, path]);
   }
 
   void removeMedia(String path) {
-    state = state.copyWith(mediaPaths: state.mediaPaths.where((p) => p != path).toList());
+    state = state.copyWith(
+        mediaPaths: state.mediaPaths.where((p) => p != path).toList());
   }
 
   @override

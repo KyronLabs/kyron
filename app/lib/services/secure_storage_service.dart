@@ -3,7 +3,8 @@ import 'dart:convert';
 import '../models/user.dart';
 
 class SecureStorageService {
-  static final SecureStorageService _instance = SecureStorageService._internal();
+  static final SecureStorageService _instance =
+      SecureStorageService._internal();
   factory SecureStorageService() => _instance;
   SecureStorageService._internal();
 
@@ -17,7 +18,8 @@ class SecureStorageService {
 
   Future<void> writeAccessToken(String token, DateTime expiresAt) async {
     await _storage.write(key: _kAccessTokenKey, value: token);
-    await _storage.write(key: _kAccessExpKey, value: expiresAt.toIso8601String());
+    await _storage.write(
+        key: _kAccessExpKey, value: expiresAt.toIso8601String());
   }
 
   Future<void> writeRefreshToken(String token) async {
@@ -56,7 +58,8 @@ class SecureStorageService {
   }
 
   Future<void> writeHasCompletedOnboarding(bool completed) async {
-    await _storage.write(key: _kOnboardingCompleteKey, value: completed ? '1' : '0');
+    await _storage.write(
+        key: _kOnboardingCompleteKey, value: completed ? '1' : '0');
   }
 
   Future<bool> readHasCompletedOnboarding() async {

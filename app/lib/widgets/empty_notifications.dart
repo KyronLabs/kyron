@@ -7,7 +7,7 @@ class EmptyNotifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +55,8 @@ class EmptyNotifications extends StatelessWidget {
             label: const Text('Explore'),
             style: ElevatedButton.styleFrom(
               minimumSize: const Size(160, 48),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
             ),
           ),
         ],

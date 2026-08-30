@@ -91,48 +91,49 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Semantics(
-      label: 'Post by ${widget.post.creatorHandle}, ${widget.post.displayTimestamp}, ${widget.post.likes} likes. Double-tap to like, swipe right to bookmark.',
+      label:
+          'Post by ${widget.post.creatorHandle}, ${widget.post.displayTimestamp}, ${widget.post.likes} likes. Double-tap to like, swipe right to bookmark.',
       child: FocusTraversalGroup(
         child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 12), // 96px between cards
+          margin:
+              const EdgeInsets.symmetric(vertical: 12), // 96px between cards
           child: Stack(
             children: [
               // Layer Z: Background Media
               if (widget.post.mediaType != PostMediaType.none)
                 _buildMediaLayer(scheme),
-              
+
               // Layer Y: Gradient Scrim (40% height)
               if (widget.post.mediaType != PostMediaType.none)
                 _buildScrimLayer(scheme),
-              
+
               // Layer X: Content
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Creator Strip
                   _buildCreatorStrip(scheme),
-                  
+
                   // Caption (max 3 lines)
-                  if (widget.post.caption.isNotEmpty)
-                    _buildCaption(scheme),
-                  
+                  if (widget.post.caption.isNotEmpty) _buildCaption(scheme),
+
                   // Community Pill
                   if (widget.post.communityTag != null)
                     _buildCommunityPill(scheme),
-                  
+
                   // Stats Row
                   _buildStatsRow(scheme),
-                  
+
                   // Action Bar (48px icons)
                   _buildActionBar(scheme),
                 ],
               ),
-              
+
               // Layer W: Interactive Overlays
               _buildGestureOverlay(scheme),
-              
+
               // Layer V: Accessibility
               _buildAccessibilityOverlay(),
             ],
@@ -190,7 +191,8 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
         children: [
           // Avatar (40px)
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, Routes.profile, arguments: widget.post.creatorDid),
+            onTap: () => Navigator.pushNamed(context, Routes.profile,
+                arguments: widget.post.creatorDid),
             child: Container(
               width: 40,
               height: 40,
@@ -205,7 +207,7 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
             ),
           ),
           const SizedBox(width: 12),
-          
+
           // Handle + Timestamp
           Expanded(
             child: Column(
@@ -224,14 +226,18 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
                     if (widget.post.isLive)
                       Container(
                         margin: const EdgeInsets.only(left: 8),
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: const Text(
                           'LIVE',
-                          style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 10,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                   ],
@@ -246,7 +252,7 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
               ],
             ),
           ),
-          
+
           // Follow Pill (28px height) or Edit icon for self-post
           if (!widget.post.isSelfPost)
             _FollowPill(
@@ -268,7 +274,7 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
 
   Widget _buildCaption(ColorScheme scheme) {
     final maxLines = MediaQuery.of(context).textScaleFactor > 1.5 ? 2 : 3;
-    
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Text(
@@ -288,7 +294,8 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
       child: GestureDetector(
-        onTap: () => Navigator.pushNamed(context, '/community', arguments: widget.post.communityTag),
+        onTap: () => Navigator.pushNamed(context, '/community',
+            arguments: widget.post.communityTag),
         child: Container(
           height: 32,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -299,7 +306,8 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
               end: Alignment.bottomRight,
               colors: [scheme.primary, scheme.secondary],
             ),
-            border: Border.all(color: scheme.primary.withOpacity(0.3), width: 1),
+            border:
+                Border.all(color: scheme.primary.withOpacity(0.3), width: 1),
           ),
           child: Text(
             widget.post.communityTag!,
@@ -319,7 +327,10 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         children: [
-          _Stat(icon: Iconsax.heart, count: widget.post.likes, isActive: widget.post.isLiked),
+          _Stat(
+              icon: Iconsax.heart,
+              count: widget.post.likes,
+              isActive: widget.post.isLiked),
           const SizedBox(width: 16),
           _Stat(icon: Iconsax.message, count: widget.post.comments),
           const SizedBox(width: 16),
@@ -480,7 +491,7 @@ class _Stat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -527,8 +538,8 @@ class _ActionButton extends StatelessWidget {
       label: semanticsLabel,
       child: IconButton(
         icon: Icon(icon, size: 24),
-        color: isActive 
-            ? Theme.of(context).colorScheme.primary 
+        color: isActive
+            ? Theme.of(context).colorScheme.primary
             : Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
         onPressed: onTap,
         constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
@@ -550,7 +561,7 @@ class _FollowPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -560,7 +571,9 @@ class _FollowPill extends StatelessWidget {
           color: isFollowing ? scheme.surface : scheme.primary,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: isFollowing ? scheme.onSurface.withOpacity(0.3) : Colors.transparent,
+            color: isFollowing
+                ? scheme.onSurface.withOpacity(0.3)
+                : Colors.transparent,
             width: 1,
           ),
         ),

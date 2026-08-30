@@ -4,7 +4,7 @@ class KyronToggle extends StatefulWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
   final String semanticsLabel;
-  
+
   const KyronToggle({
     super.key,
     required this.value,
@@ -16,7 +16,8 @@ class KyronToggle extends StatefulWidget {
   State<KyronToggle> createState() => _KyronToggleState();
 }
 
-class _KyronToggleState extends State<KyronToggle> with SingleTickerProviderStateMixin {
+class _KyronToggleState extends State<KyronToggle>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -50,7 +51,7 @@ class _KyronToggleState extends State<KyronToggle> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    
+
     return Semantics(
       label: widget.semanticsLabel,
       value: widget.value ? 'On' : 'Off',
@@ -64,12 +65,21 @@ class _KyronToggleState extends State<KyronToggle> with SingleTickerProviderStat
               width: 48,
               height: 28,
               decoration: BoxDecoration(
-                gradient: widget.value ? const LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [Color(0xFF8A2BE2), Color(0xFF20B2AA)], // violet → teal
-                ) : null,
-                color: widget.value ? null : (isDark ? const Color(0xFF333333) : const Color(0xFFD1D5DB)),
+                gradient: widget.value
+                    ? const LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Color(0xFF8A2BE2),
+                          Color(0xFF20B2AA)
+                        ], // violet → teal
+                      )
+                    : null,
+                color: widget.value
+                    ? null
+                    : (isDark
+                        ? const Color(0xFF333333)
+                        : const Color(0xFFD1D5DB)),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Padding(

@@ -4,7 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class GoogleButton extends StatelessWidget {
   final VoidCallback onTap;
   final String label;
-  const GoogleButton({super.key, required this.onTap, this.label = 'Continue with Google'});
+  const GoogleButton(
+      {super.key, required this.onTap, this.label = 'Continue with Google'});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,9 @@ class GoogleButton extends StatelessWidget {
             height: 20,
           ),
           const SizedBox(width: 12),
-          Text(label, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16)),
+          Text(label,
+              style:
+                  const TextStyle(fontWeight: FontWeight.w500, fontSize: 16)),
         ],
       ),
     );

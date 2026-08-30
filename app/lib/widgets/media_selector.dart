@@ -23,13 +23,16 @@ class _MediaSelectorSheet extends StatelessWidget {
 
     const options = [
       _MediaOption(icon: Icons.camera_alt, label: 'Camera', value: 'camera'),
-      _MediaOption(icon: Icons.photo_library, label: 'Gallery', value: 'gallery'),
+      _MediaOption(
+          icon: Icons.photo_library, label: 'Gallery', value: 'gallery'),
       _MediaOption(icon: Icons.view_in_ar, label: 'AR Lens', value: 'ar_lens'),
       _MediaOption(icon: Icons.poll, label: 'Poll', value: 'poll'),
       _MediaOption(icon: Icons.mic, label: 'Audio', value: 'audio_space'),
       _MediaOption(icon: Icons.attach_file, label: 'File', value: 'file'),
-      _MediaOption(icon: Icons.location_on, label: 'Location', value: 'location'),
-      _MediaOption(icon: Icons.contact_phone, label: 'Contact', value: 'contact'),
+      _MediaOption(
+          icon: Icons.location_on, label: 'Location', value: 'location'),
+      _MediaOption(
+          icon: Icons.contact_phone, label: 'Contact', value: 'contact'),
     ];
 
     return DraggableScrollableSheet(
@@ -59,17 +62,18 @@ class _MediaSelectorSheet extends StatelessWidget {
                   ),
                 ),
               ),
-              
+
               // Title row
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 child: Row(
                   children: [
                     Text(
                       'Add Media',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     const Spacer(),
                     IconButton(
@@ -82,12 +86,13 @@ class _MediaSelectorSheet extends StatelessWidget {
                   ],
                 ),
               ),
-              
+
               // Grid
               Expanded(
                 child: GridView.builder(
                   controller: scrollController,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
                     crossAxisSpacing: 16,
@@ -119,7 +124,7 @@ class _MediaOption {
   final IconData icon;
   final String label;
   final String value;
-  
+
   const _MediaOption({
     required this.icon,
     required this.label,
@@ -139,7 +144,7 @@ class _MediaGridItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Material(
       color: Colors.transparent,
       child: InkWell(

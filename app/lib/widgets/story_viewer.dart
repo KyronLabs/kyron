@@ -23,7 +23,8 @@ class _StoryViewerState extends State<StoryViewer> {
   @override
   void initState() {
     super.initState();
-    _currentIndex = widget.allStories.indexWhere((s) => s.id == widget.initialStory.id);
+    _currentIndex =
+        widget.allStories.indexWhere((s) => s.id == widget.initialStory.id);
     _pageController = PageController(initialPage: _currentIndex);
     _checkReducedMotion();
   }
@@ -80,7 +81,9 @@ class _StoryViewerState extends State<StoryViewer> {
                     onTap: () {
                       if (_currentIndex > 0) {
                         _pageController.previousPage(
-                          duration: _isReducedMotion ? Duration.zero : const Duration(milliseconds: 150),
+                          duration: _isReducedMotion
+                              ? Duration.zero
+                              : const Duration(milliseconds: 150),
                           curve: Curves.easeOut,
                         );
                       }
@@ -92,7 +95,9 @@ class _StoryViewerState extends State<StoryViewer> {
                     onTap: () {
                       if (_currentIndex < widget.allStories.length - 1) {
                         _pageController.nextPage(
-                          duration: _isReducedMotion ? Duration.zero : const Duration(milliseconds: 150),
+                          duration: _isReducedMotion
+                              ? Duration.zero
+                              : const Duration(milliseconds: 150),
                           curve: Curves.easeOut,
                         );
                       }

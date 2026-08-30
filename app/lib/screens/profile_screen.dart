@@ -9,7 +9,7 @@ class ProfileScreen extends StatefulWidget {
   final String did;
   final String? handle;
   final ProfileModel? profile;
-  
+
   const ProfileScreen({
     super.key,
     required this.did,
@@ -59,12 +59,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
       handle: widget.handle ?? '@user_${did.substring(did.length - 4)}',
       displayName: 'User ${did.substring(did.length - 4)}',
       avatarUrl: 'https://picsum.photos/300/300?random=${did.hashCode % 100}',
-      coverUrl: 'https://picsum.photos/800/300?random=${did.hashCode % 100 + 1}',
+      coverUrl:
+          'https://picsum.photos/800/300?random=${did.hashCode % 100 + 1}',
       kyronPoints: 500 + (did.hashCode % 1000),
       bio: 'User with DID: ${did.substring(0, 16)}...',
       socials: [],
       badges: [
-        BadgeModel(emoji: '👤', label: 'Member', description: 'Community Member'),
+        BadgeModel(
+            emoji: '👤', label: 'Member', description: 'Community Member'),
       ],
       postsCount: 25 + (did.hashCode % 50),
       repliesCount: 50 + (did.hashCode % 100),
@@ -125,17 +127,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
               builder: (BuildContext context, BoxConstraints constraints) {
                 // Calculate shrink progress (0.0 = fully expanded, 1.0 = fully collapsed)
                 final double top = constraints.biggest.height;
-                final double collapsedHeight = kToolbarHeight + MediaQuery.of(context).padding.top;
+                final double collapsedHeight =
+                    kToolbarHeight + MediaQuery.of(context).padding.top;
                 final double expandedHeight = 200;
                 final double shrinkOffset = expandedHeight - top;
-                final double shrinkProgress = (shrinkOffset / (expandedHeight - collapsedHeight)).clamp(0.0, 1.0);
+                final double shrinkProgress =
+                    (shrinkOffset / (expandedHeight - collapsedHeight))
+                        .clamp(0.0, 1.0);
 
                 // Avatar size animation: 100 -> 40
                 final double avatarSize = 100 - (60 * shrinkProgress);
-                
+
                 // Avatar position animation
-                final double leftPosition = 20 + (36 * shrinkProgress); // Move from 20 to 56 (next to back button)
-                final double topPosition = expandedHeight - 50 - (shrinkOffset); // Start from bottom of cover
+                final double leftPosition = 20 +
+                    (36 *
+                        shrinkProgress); // Move from 20 to 56 (next to back button)
+                final double topPosition = expandedHeight -
+                    50 -
+                    (shrinkOffset); // Start from bottom of cover
 
                 return Stack(
                   clipBehavior: Clip.none,
@@ -157,7 +166,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             },
                           )
                         : _buildDefaultCover(),
-                    
+
                     // Animated avatar
                     Positioned(
                       left: leftPosition,
@@ -265,7 +274,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         if (!_profile.isOwnProfile)
                           IconButton(
                             onPressed: () {},
-                            icon: const Icon(Iconsax.setting_2, color: Colors.black),
+                            icon: const Icon(Iconsax.setting_2,
+                                color: Colors.black),
                           ),
                       ],
                     ),
@@ -276,7 +286,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     // Kyron Points
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 6),
                       decoration: BoxDecoration(
                         color: Colors.blue[50],
                         borderRadius: BorderRadius.circular(12),
@@ -356,10 +367,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          _buildStatTab('Posts', _profile.postsCount, ProfileTab.posts),
-                          _buildStatTab('Replies', _profile.repliesCount, ProfileTab.replies),
-                          _buildStatTab('Media', _profile.mediaCount, ProfileTab.media),
-                          _buildStatTab('Likes', _profile.likesCount, ProfileTab.likes),
+                          _buildStatTab(
+                              'Posts', _profile.postsCount, ProfileTab.posts),
+                          _buildStatTab('Replies', _profile.repliesCount,
+                              ProfileTab.replies),
+                          _buildStatTab(
+                              'Media', _profile.mediaCount, ProfileTab.media),
+                          _buildStatTab(
+                              'Likes', _profile.likesCount, ProfileTab.likes),
                         ],
                       ),
                     ),
@@ -451,7 +466,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onPressed: () {},
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Colors.blue),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -475,7 +491,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onPressed: () {},
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Colors.grey),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -502,7 +519,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             child: IconButton(
               onPressed: () {},
-              icon: const Icon(Iconsax.setting_2, color: Colors.black, size: 16),
+              icon:
+                  const Icon(Iconsax.setting_2, color: Colors.black, size: 16),
               padding: EdgeInsets.zero,
             ),
           ),
@@ -523,7 +541,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: _isFollowing ? Colors.grey[200] : Colors.blue,
                 foregroundColor: _isFollowing ? Colors.black : Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -549,7 +568,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onPressed: () {},
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Colors.blue),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -699,7 +719,8 @@ class _StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => 70; // Height when not stuck
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return child;
   }
 

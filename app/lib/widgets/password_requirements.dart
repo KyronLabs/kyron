@@ -15,13 +15,13 @@ class PasswordRequirements extends StatelessWidget {
   Widget _row(String text, bool ok, BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final scheme = Theme.of(context).colorScheme;
-    
+
     // Dynamic colors
     final successColor = const Color(0xFF4CD4B0);
-    final inactiveColor = isDark 
-        ? const Color(0xFF7E8A9A) 
-        : AppTheme.lightTextSecondary;
-    final textColor = ok ? (isDark ? Colors.white : scheme.onSurface) : inactiveColor;
+    final inactiveColor =
+        isDark ? const Color(0xFF7E8A9A) : AppTheme.lightTextSecondary;
+    final textColor =
+        ok ? (isDark ? Colors.white : scheme.onSurface) : inactiveColor;
 
     return Row(
       children: [

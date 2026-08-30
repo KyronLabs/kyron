@@ -24,7 +24,7 @@ class User {
       username: json['username'] as String?,
       name: json['name'] as String?,
       role: json['role'] as String? ?? 'USER',
-      did: json['did'] as String?, 
+      did: json['did'] as String?,
       kyronPoints: (json['kyronPoints'] as num?)?.toInt() ?? 0,
     );
   }

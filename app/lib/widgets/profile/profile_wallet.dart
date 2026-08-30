@@ -27,7 +27,7 @@ class AppButton extends StatelessWidget {
           side: const BorderSide(color: AppTheme.accent),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
-        child: isLoading 
+        child: isLoading
             ? const SizedBox(
                 width: 16,
                 height: 16,
@@ -99,7 +99,7 @@ class ProfileWallet extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          
+
           // KP with buttons
           Row(
             children: [

@@ -33,7 +33,7 @@ class ProfileOrbit extends StatelessWidget {
               },
             ),
           ),
-          
+
           // Scrim gradient
           Container(
             decoration: const BoxDecoration(
@@ -48,7 +48,7 @@ class ProfileOrbit extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Avatar and name section
           Positioned(
             left: 16,

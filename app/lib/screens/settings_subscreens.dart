@@ -10,7 +10,9 @@ class SettingsChangeEmailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Iconsax.arrow_left), onPressed: () => Navigator.pop(context)),
+        leading: IconButton(
+            icon: const Icon(Iconsax.arrow_left),
+            onPressed: () => Navigator.pop(context)),
         title: const Text('Change Email'),
       ),
       body: const Center(child: Text('Change Email Screen')),
@@ -25,7 +27,9 @@ class SettingsBlockedUsersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Iconsax.arrow_left), onPressed: () => Navigator.pop(context)),
+        leading: IconButton(
+            icon: const Icon(Iconsax.arrow_left),
+            onPressed: () => Navigator.pop(context)),
         title: const Text('Blocked Users'),
       ),
       body: const Center(child: Text('Blocked Users Screen')),
@@ -40,7 +44,9 @@ class SettingsPasswordLoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Iconsax.arrow_left), onPressed: () => Navigator.pop(context)),
+        leading: IconButton(
+            icon: const Icon(Iconsax.arrow_left),
+            onPressed: () => Navigator.pop(context)),
         title: const Text('Password & Login'),
       ),
       body: const Center(child: Text('Password & Login Screen')),
@@ -55,7 +61,9 @@ class SettingsFontSizeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Iconsax.arrow_left), onPressed: () => Navigator.pop(context)),
+        leading: IconButton(
+            icon: const Icon(Iconsax.arrow_left),
+            onPressed: () => Navigator.pop(context)),
         title: const Text('Font Size'),
       ),
       body: const Center(child: Text('Font Size Screen')),
@@ -70,7 +78,9 @@ class SettingsLanguageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Iconsax.arrow_left), onPressed: () => Navigator.pop(context)),
+        leading: IconButton(
+            icon: const Icon(Iconsax.arrow_left),
+            onPressed: () => Navigator.pop(context)),
         title: const Text('Language'),
       ),
       body: const Center(child: Text('Language Screen')),
@@ -85,7 +95,9 @@ class SettingsNotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Iconsax.arrow_left), onPressed: () => Navigator.pop(context)),
+        leading: IconButton(
+            icon: const Icon(Iconsax.arrow_left),
+            onPressed: () => Navigator.pop(context)),
         title: const Text('Push Notifications'),
       ),
       body: const Center(child: Text('Notifications Screen')),
@@ -100,7 +112,9 @@ class SettingsContactSupportScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Iconsax.arrow_left), onPressed: () => Navigator.pop(context)),
+        leading: IconButton(
+            icon: const Icon(Iconsax.arrow_left),
+            onPressed: () => Navigator.pop(context)),
         title: const Text('Contact Support'),
       ),
       body: const Center(child: Text('Contact Support Screen')),
@@ -115,7 +129,9 @@ class SettingsFeedbackScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Iconsax.arrow_left), onPressed: () => Navigator.pop(context)),
+        leading: IconButton(
+            icon: const Icon(Iconsax.arrow_left),
+            onPressed: () => Navigator.pop(context)),
         title: const Text('Send Feedback'),
       ),
       body: const Center(child: Text('Send Feedback Screen')),

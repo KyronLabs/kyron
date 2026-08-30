@@ -14,13 +14,15 @@ class RootScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authState = ref.watch(authNotifierProvider);
-    
-    print('🔄 RootScreen: authState.status = ${authState.status}, user = ${authState.user?.email}');
+
+    print(
+        '🔄 RootScreen: authState.status = ${authState.status}, user = ${authState.user?.email}');
 
     // If we're still determining auth state, show splash
-    if (authState.status == AuthStatus.unknown || 
+    if (authState.status == AuthStatus.unknown ||
         authState.status == AuthStatus.authenticating) {
-      print('📱 RootScreen: Showing SplashScreen (auth state: ${authState.status})');
+      print(
+          '📱 RootScreen: Showing SplashScreen (auth state: ${authState.status})');
       return const SplashScreen();
     }
 
@@ -33,8 +35,9 @@ class RootScreen extends ConsumerWidget {
     // If authenticated, check onboarding
     if (authState.status == AuthStatus.authenticated) {
       final user = authState.user;
-      print('📱 RootScreen: User authenticated: ${user?.email}, checking onboarding...');
-      
+      print(
+          '📱 RootScreen: User authenticated: ${user?.email}, checking onboarding...');
+
       // Use a FutureBuilder to check onboarding status
       return FutureBuilder<bool>(
         future: _checkOnboardingStatus(ref),
@@ -43,10 +46,10 @@ class RootScreen extends ConsumerWidget {
             print('📱 RootScreen: Checking onboarding status...');
             return const SplashScreen();
           }
-          
+
           final hasCompletedOnboarding = snapshot.data ?? false;
           print('📱 RootScreen: Onboarding complete? $hasCompletedOnboarding');
-          
+
           if (!hasCompletedOnboarding && user != null) {
             print('📱 RootScreen: Showing OnboardStep1Screen');
             return OnboardStep1Screen(
@@ -55,7 +58,7 @@ class RootScreen extends ConsumerWidget {
                 ..bio = '',
             );
           }
-          
+
           print('📱 RootScreen: Showing HomeScreen');
           return const MainContainer();
         },

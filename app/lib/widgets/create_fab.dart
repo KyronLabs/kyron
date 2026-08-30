@@ -41,7 +41,8 @@ class CreateFab extends StatelessWidget {
             backgroundColor: isDark ? Colors.white : Colors.black,
             elevation: 2,
             shape: const CircleBorder(),
-            child: Icon(Iconsax.add_copy, size: 24, color: isDark ? Colors.black : Colors.white),
+            child: Icon(Iconsax.add_copy,
+                size: 24, color: isDark ? Colors.black : Colors.white),
           ),
         ],
       ),
@@ -55,7 +56,10 @@ class CreateFab extends StatelessWidget {
       'Poll': Iconsax.chart,
       'Space (audio)': Iconsax.microphone,
     };
-    final result = await showModalBottomSheet<String>(context: ctx, backgroundColor: Colors.transparent, builder: (_) => LongPressSheet(items: items));
+    final result = await showModalBottomSheet<String>(
+        context: ctx,
+        backgroundColor: Colors.transparent,
+        builder: (_) => LongPressSheet(items: items));
     if (result == 'Text Post') Navigator.pushNamed(ctx, Routes.composer);
   }
 }

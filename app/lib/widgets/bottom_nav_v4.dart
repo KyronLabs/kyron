@@ -7,7 +7,8 @@ class BottomNavV4 extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
 
-  const BottomNavV4({super.key, required this.currentIndex, required this.onTap});
+  const BottomNavV4(
+      {super.key, required this.currentIndex, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,9 @@ class BottomNavV4 extends StatelessWidget {
       child: Container(
         height: 64,
         decoration: BoxDecoration(
-          border: Border(top: BorderSide(color: scheme.outline.withValues(alpha: .15), width: .5)),
+          border: Border(
+              top: BorderSide(
+                  color: scheme.outline.withValues(alpha: .15), width: .5)),
           color: isDark ? AppTheme.surface : AppTheme.lightSurface,
         ),
         child: SafeArea(
@@ -51,9 +54,19 @@ class BottomNavV4 extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 22, color: isActive ? scheme.primary : scheme.onSurface.withValues(alpha: .6)),
+          Icon(icon,
+              size: 22,
+              color: isActive
+                  ? scheme.primary
+                  : scheme.onSurface.withValues(alpha: .6)),
           const SizedBox(height: 2),
-          Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: isActive ? scheme.primary : scheme.onSurface.withValues(alpha: .6))),
+          Text(label,
+              style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: isActive
+                      ? scheme.primary
+                      : scheme.onSurface.withValues(alpha: .6))),
         ],
       ),
     );
@@ -67,7 +80,7 @@ class _RingFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     // Total size including ring
     const double totalSize = 56.0;
     // Reduced FAB size
@@ -126,6 +139,7 @@ class _RingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_RingPainter oldDelegate) {
-    return oldDelegate.color != color || oldDelegate.ringThickness != ringThickness;
+    return oldDelegate.color != color ||
+        oldDelegate.ringThickness != ringThickness;
   }
 }

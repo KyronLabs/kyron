@@ -23,7 +23,7 @@ class NotificationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Slidable(
       key: Key(notification.id),
       endActionPane: ActionPane(
@@ -50,11 +50,12 @@ class NotificationItem extends StatelessWidget {
         onTap: onTap,
         onLongPress: () => onMarkAsRead(),
         child: Semantics(
-          label: '${notification.actorHandle} ${notification.actionText}, ${notification.displayTimestamp}',
+          label:
+              '${notification.actorHandle} ${notification.actionText}, ${notification.displayTimestamp}',
           child: Container(
             height: 72,
-            color: notification.isRead 
-                ? scheme.surface 
+            color: notification.isRead
+                ? scheme.surface
                 : scheme.primaryContainer.withOpacity(0.1),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             child: Row(
@@ -71,10 +72,11 @@ class NotificationItem extends StatelessWidget {
                       color: scheme.primary,
                     ),
                   ),
-                
+
                 // Avatar (40px)
                 GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, Routes.profile, arguments: notification.actorDid),
+                  onTap: () => Navigator.pushNamed(context, Routes.profile,
+                      arguments: notification.actorDid),
                   child: Container(
                     width: 40,
                     height: 40,
@@ -89,7 +91,7 @@ class NotificationItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                
+
                 // Content
                 Expanded(
                   child: Column(
@@ -106,7 +108,8 @@ class NotificationItem extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: notification.actorHandle,
-                              style: const TextStyle(fontWeight: FontWeight.w600),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w600),
                             ),
                             TextSpan(text: ' ${notification.actionText}'),
                           ],
@@ -130,7 +133,7 @@ class NotificationItem extends StatelessWidget {
                     ],
                   ),
                 ),
-                
+
                 // Timestamp
                 Text(
                   notification.displayTimestamp,

@@ -33,7 +33,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     if (!(_formKey.currentState?.validate() ?? false)) return;
 
     setState(() => _isLoading = true);
-    
+
     // Use authNotifier instead of AuthRepository directly
     final authNotifier = ref.read(authNotifierProvider.notifier);
     final success = await authNotifier.login(
@@ -46,11 +46,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     if (success) {
       // CRITICAL FIX: Navigate to home with cleared stack
-      Navigator.pushNamedAndRemoveUntil(
-        context, 
-        Routes.home, 
-        (_) => false
-      );
+      Navigator.pushNamedAndRemoveUntil(context, Routes.home, (_) => false);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -81,9 +77,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 hint: 'Email',
                 controller: _email,
                 keyboardType: TextInputType.emailAddress,
-                validator: (v) => (v?.isEmpty ?? true)
-                    ? 'Enter your email'
-                    : null,
+                validator: (v) =>
+                    (v?.isEmpty ?? true) ? 'Enter your email' : null,
               ),
 
               const SizedBox(height: 12),
@@ -142,8 +137,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               const SizedBox(height: 12),
 
               TextButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(Routes.signup),
+                onPressed: () => Navigator.of(context).pushNamed(Routes.signup),
                 child: const Text('Create account'),
               ),
 
@@ -158,10 +152,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   children: [
                     TextSpan(
                       text: 'Terms',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: AppTheme.accent,
                             decoration: TextDecoration.underline,
                           ),
@@ -184,10 +175,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ),
                     TextSpan(
                       text: 'Privacy Policy',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: AppTheme.accent,
                             decoration: TextDecoration.underline,
                           ),

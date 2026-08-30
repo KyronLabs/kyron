@@ -24,38 +24,38 @@ class ProfilePassport extends StatelessWidget {
           Text(
             bio,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.white.withOpacity(0.9),
-            ),
+                  color: Colors.white.withOpacity(0.9),
+                ),
           ),
           const SizedBox(height: 12),
-          
+
           // Links (max 5, >5 collapses)
-          ...links.take(5).map((link) =>
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Row(
-                children: [
-                  Icon(
-                    _getPlatformIcon(link['platform']),
-                    color: Colors.white.withOpacity(0.7),
-                    size: 16,
+          ...links.take(5).map(
+                (link) => Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Row(
+                    children: [
+                      Icon(
+                        _getPlatformIcon(link['platform']),
+                        color: Colors.white.withOpacity(0.7),
+                        size: 16,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        '${link['platform']}',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: Colors.white.withOpacity(0.7),
+                            ),
+                      ),
+                      if (link['verified']) ...[
+                        const SizedBox(width: 4),
+                        Icon(Icons.verified, color: AppTheme.accent, size: 14),
+                      ],
+                    ],
                   ),
-                  const SizedBox(width: 8),
-                  Text(
-                    '${link['platform']}',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Colors.white.withOpacity(0.7),
-                    ),
-                  ),
-                  if (link['verified']) ...[
-                    const SizedBox(width: 4),
-                    Icon(Icons.verified, color: AppTheme.accent, size: 14),
-                  ],
-                ],
+                ),
               ),
-            ),
-          ),
-          
+
           // "+X" collapse indicator
           if (links.length > 5)
             TextButton(
@@ -63,8 +63,8 @@ class ProfilePassport extends StatelessWidget {
               child: Text(
                 '+${links.length - 5} more',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppTheme.accent,
-                ),
+                      color: AppTheme.accent,
+                    ),
               ),
             ),
         ],

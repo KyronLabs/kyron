@@ -46,7 +46,8 @@ class ProfileGalaxy extends StatelessWidget {
                           color: Colors.black.withOpacity(0.8),
                           borderRadius: BorderRadius.circular(4),
                         ),
-                        child: const Icon(Icons.view_in_ar, color: Colors.white, size: 16),
+                        child: const Icon(Icons.view_in_ar,
+                            color: Colors.white, size: 16),
                       )
                     : const SizedBox.shrink(),
               ),

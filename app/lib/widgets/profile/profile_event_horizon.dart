@@ -19,7 +19,7 @@ class ProfileEventHorizon extends StatelessWidget {
       "All caught up. Time to create something new?",
       "End of line. But every ending is a new beginning.",
     ];
-    
+
     final message = messages[DateTime.now().day % messages.length];
 
     return Container(
@@ -37,9 +37,9 @@ class ProfileEventHorizon extends StatelessWidget {
           Text(
             message,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.white.withOpacity(0.7),
-              fontStyle: FontStyle.italic,
-            ),
+                  color: Colors.white.withOpacity(0.7),
+                  fontStyle: FontStyle.italic,
+                ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),

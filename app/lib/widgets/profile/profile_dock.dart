@@ -34,11 +34,12 @@ class ProfileDock extends StatelessWidget {
           children: [
             // Back button
             IconButton(
-              icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
+              icon: const Icon(Icons.arrow_back_ios,
+                  color: Colors.white, size: 20),
               onPressed: onBack,
             ),
             const SizedBox(width: 8),
-            
+
             // Avatar with proper error handling
             CircleAvatar(
               radius: 20,
@@ -48,10 +49,11 @@ class ProfileDock extends StatelessWidget {
                 // This is a void function - just log the error
                 debugPrint('Avatar image error: $exception');
               },
-              child: const Icon(Icons.person, color: Colors.white), // Fallback child
+              child: const Icon(Icons.person,
+                  color: Colors.white), // Fallback child
             ),
             const SizedBox(width: 12),
-            
+
             // Username
             Expanded(
               child: Text(
@@ -63,7 +65,7 @@ class ProfileDock extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             // Action buttons
             if (isOwnProfile)
               IconButton(

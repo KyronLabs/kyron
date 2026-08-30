@@ -39,7 +39,7 @@ class _ProfileCoverState extends State<ProfileCover> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Stack(
       children: [
         // Cover Image with Parallax
@@ -66,7 +66,7 @@ class _ProfileCoverState extends State<ProfileCover> {
             ),
           ),
         ),
-        
+
         // Scrim Gradient
         Positioned.fill(
           child: DecoratedBox(
@@ -82,7 +82,7 @@ class _ProfileCoverState extends State<ProfileCover> {
             ),
           ),
         ),
-        
+
         // Floating Buttons
         Positioned(
           top: MediaQuery.of(context).padding.top + 16,
@@ -92,7 +92,7 @@ class _ProfileCoverState extends State<ProfileCover> {
             onTap: widget.onBack,
           ),
         ),
-        
+
         Positioned(
           top: MediaQuery.of(context).padding.top + 16,
           right: 16,
@@ -101,7 +101,7 @@ class _ProfileCoverState extends State<ProfileCover> {
             onTap: widget.onSettings,
           ),
         ),
-        
+
         // Avatar (overlaps bottom)
         Positioned(
           bottom: -36,

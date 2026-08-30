@@ -26,11 +26,14 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final scheme = Theme.of(context).colorScheme;
-    
+
     // Dynamic colors based on theme
     final fillColor = isDark ? const Color(0xFF1A1A1D) : AppTheme.lightSurface;
-    final hintColor = isDark ? Colors.white.withValues(alpha: 0.6) : AppTheme.lightTextSecondary;
-    final iconColor = isDark ? const Color(0xFF7E8A9A) : AppTheme.lightTextSecondary;
+    final hintColor = isDark
+        ? Colors.white.withValues(alpha: 0.6)
+        : AppTheme.lightTextSecondary;
+    final iconColor =
+        isDark ? const Color(0xFF7E8A9A) : AppTheme.lightTextSecondary;
 
     return TextFormField(
       controller: widget.controller,
@@ -42,14 +45,17 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
         filled: true,
         fillColor: fillColor,
         hintText: widget.hint,
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: hintColor),
-        
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-        
+        hintStyle:
+            Theme.of(context).textTheme.bodyMedium?.copyWith(color: hintColor),
+
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+
         // Theme-aware borders
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: hintColor.withValues(alpha: 0.3), width: 1.0),
+          borderSide:
+              BorderSide(color: hintColor.withValues(alpha: 0.3), width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -63,7 +69,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: scheme.error, width: 1.5),
         ),
-        
+
         suffixIcon: IconButton(
           onPressed: () => setState(() => _obscure = !_obscure),
           icon: Icon(

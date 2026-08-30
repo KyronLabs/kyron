@@ -25,11 +25,11 @@ class FeedCanvas extends StatelessWidget {
         controller: scrollController,
         padding: EdgeInsets.only(
           top: 8, // Vertical margin below InterestTabs
-          bottom: MediaQuery.of(context).padding.bottom + 80, // Space for bottom nav
+          bottom: MediaQuery.of(context).padding.bottom +
+              80, // Space for bottom nav
         ),
         physics: const BouncingScrollPhysics(), // Smooth iOS-style scrolling
         children: [
-           
           // Feed content
           _buildFeedContent(context),
         ],
@@ -44,10 +44,14 @@ class FeedCanvas extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
+            color: Theme.of(context)
+                .colorScheme
+                .surfaceContainerHighest
+                .withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.1),
+              color:
+                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.1),
             ),
           ),
           child: Column(
@@ -57,7 +61,10 @@ class FeedCanvas extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
+                    backgroundColor: Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withValues(alpha: 0.2),
                     child: Icon(
                       Icons.person,
                       color: Theme.of(context).colorScheme.primary,
@@ -79,7 +86,10 @@ class FeedCanvas extends StatelessWidget {
                         '@user${index + 1}',
                         style: TextStyle(
                           fontSize: 13,
-                          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withValues(alpha: 0.6),
                         ),
                       ),
                     ],

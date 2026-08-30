@@ -32,8 +32,9 @@ class ApiClient {
     RequestInterceptorHandler handler,
   ) async {
     // 🔥 CRITICAL FIX: Skip auth header for public routes
-    final isPublicRoute = _publicRoutes.any((route) => options.path.endsWith(route));
-    
+    final isPublicRoute =
+        _publicRoutes.any((route) => options.path.endsWith(route));
+
     if (!isPublicRoute) {
       // Read the token off the live session rather than a stored copy: the
       // Supabase SDK refreshes in the background, so whatever it holds now is
@@ -62,8 +63,7 @@ class ApiClient {
     // being attached and reaching the API.
     if (err.response?.statusCode == 401 && req.extra['retried'] != true) {
       try {
-        final refreshed =
-            await Supabase.instance.client.auth.refreshSession();
+        final refreshed = await Supabase.instance.client.auth.refreshSession();
         final token = refreshed.session?.accessToken;
         if (token != null && token.isNotEmpty) {
           req.extra['retried'] = true;

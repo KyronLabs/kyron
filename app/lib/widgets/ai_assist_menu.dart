@@ -5,7 +5,7 @@ import '../theme/app_theme.dart';
 class AiAssistMenu {
   static Future<void> show(BuildContext context) async {
     HapticFeedback.lightImpact();
-    
+
     await showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -55,8 +55,8 @@ class _AiAssistPlaceholder extends StatelessWidget {
           Text(
             'AI Assist',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(height: 8),
           // Message
@@ -65,8 +65,8 @@ class _AiAssistPlaceholder extends StatelessWidget {
             'Tone rewrites, shorten, emoji-fy, and translate\n'
             'coming soon!',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: scheme.onSurface.withValues(alpha: .7),
-            ),
+                  color: scheme.onSurface.withValues(alpha: .7),
+                ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 24),

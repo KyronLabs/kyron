@@ -22,34 +22,41 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 const AppLogo(size: 96),
                 const SizedBox(height: 20),
-                Text('Welcome back.', style: Theme.of(context).textTheme.displayLarge),
+                Text('Welcome back.',
+                    style: Theme.of(context).textTheme.displayLarge),
                 const SizedBox(height: 12),
-                Text("Let's get started.", style: Theme.of(context).textTheme.bodyMedium),
+                Text("Let's get started.",
+                    style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(height: 28),
                 GoogleButton(onTap: () {/* connect google */}),
                 const SizedBox(height: 12),
                 AppButton(
-                  label: 'Login', 
-                  onTap: () => Navigator.of(context).pushReplacementNamed(Routes.login), // ✅ FIXED
+                  label: 'Login',
+                  onTap: () => Navigator.of(context)
+                      .pushReplacementNamed(Routes.login), // ✅ FIXED
                 ),
                 const SizedBox(height: 12),
                 AppButton(
-                  label: 'Create Account', 
-                  onTap: () => Navigator.of(context).pushReplacementNamed(Routes.signup), // ✅ FIXED
+                  label: 'Create Account',
+                  onTap: () => Navigator.of(context)
+                      .pushReplacementNamed(Routes.signup), // ✅ FIXED
                   isOutlined: true,
                 ),
                 const SizedBox(height: 20),
-                AppLanguageSelector(selected: 'English', onChanged: (v) {/* ui only */}),
+                AppLanguageSelector(
+                    selected: 'English', onChanged: (v) {/* ui only */}),
                 const SizedBox(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, Routes.webview, arguments: {
-                          'url': 'https://kyron-terms-and-privacy.onrender.com/terms.html',
-                          'title': 'Terms of Service',
-                        });
+                        Navigator.pushNamed(context, Routes.webview,
+                            arguments: {
+                              'url':
+                                  'https://kyron-terms-and-privacy.onrender.com/terms.html',
+                              'title': 'Terms of Service',
+                            });
                       },
                       child: Text(
                         'Terms of Service',
@@ -62,10 +69,12 @@ class WelcomeScreen extends StatelessWidget {
                     const SizedBox(width: 24),
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, Routes.webview, arguments: {
-                          'url': 'https://kyron-terms-and-privacy.onrender.com/privacy.html',
-                          'title': 'Privacy Policy',
-                        });
+                        Navigator.pushNamed(context, Routes.webview,
+                            arguments: {
+                              'url':
+                                  'https://kyron-terms-and-privacy.onrender.com/privacy.html',
+                              'title': 'Privacy Policy',
+                            });
                       },
                       child: Text(
                         'Privacy Policy',

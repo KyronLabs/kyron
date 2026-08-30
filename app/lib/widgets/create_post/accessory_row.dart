@@ -14,8 +14,10 @@ class AccessoryRow extends ConsumerWidget {
     // --- real outline icons --------------------------------------------------
     final chips = [
       _Chip('Hashtag', Icons.tag_outlined, () => _insertTag(ref)),
-      _Chip('Mention', Icons.alternate_email_outlined, () => _insertMention(ref)),
-      _Chip('Emoji', Icons.emoji_emotions_outlined, () => _openEmoji(context, ref)),
+      _Chip(
+          'Mention', Icons.alternate_email_outlined, () => _insertMention(ref)),
+      _Chip('Emoji', Icons.emoji_emotions_outlined,
+          () => _openEmoji(context, ref)),
       _Chip('Voice', Icons.keyboard_voice_outlined, () => _toggleVoice(ref)),
       _Chip('Assist', Icons.auto_awesome_outlined, () => _showAssist(context)),
     ];
@@ -25,7 +27,8 @@ class AccessoryRow extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(color: scheme.outline.withValues(alpha: .15), width: .5),
+          top: BorderSide(
+              color: scheme.outline.withValues(alpha: .15), width: .5),
         ),
       ),
       child: ListView.separated(
@@ -41,7 +44,8 @@ class AccessoryRow extends ConsumerWidget {
   }
 
   /* ---------------- helpers ---------------- */
-  Widget _buildChip(BuildContext c, String label, IconData icon, VoidCallback onTap) {
+  Widget _buildChip(
+      BuildContext c, String label, IconData icon, VoidCallback onTap) {
     final scheme = Theme.of(c).colorScheme;
     return InkWell(
       onTap: onTap,
