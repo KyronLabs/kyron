@@ -36,23 +36,15 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Verify formatting of changed Dart files
-        shell: bash
-        run: |
-          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
-            diff_range="origin/${GITHUB_BASE_REF}...HEAD"
-          elif [[ "$GITHUB_EVENT_BEFORE" != "0000000000000000000000000000000000000000" ]]; then
-            diff_range="$GITHUB_EVENT_BEFORE $GITHUB_SHA"
-          else
-            diff_range="HEAD^ HEAD"
-          fi
-
-          mapfile -t changed_files < <(git diff --name-only --diff-filter=ACMRT $diff_range -- '*.dart' | sed 's#^app/##' | grep -E '^(lib|test)/' || true)
-          if (( ${#changed_files[@]} == 0 )); then
-            echo "No changed Dart files require formatting validation."
-            exit 0
-          fi
-          dart format --output=none --set-exit-if-changed "${changed_files[@]}"
+      # Checks the whole tree rather than a diff. The previous version derived
+      # its file list from a diff range that differed between events -- a push
+      # saw only that push's files, a pull request saw everything since the
+      # base -- so the same commit could pass on one and fail on the other, and
+      # a file nobody touched was never examined. That was survivable only
+      # because most of the tree was unformatted anyway; now that it is clean,
+      # checking everything is both simpler and stricter.
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed lib test
 
       - name: Analyze
         # The legacy app currently has warning-level lints; keep errors fatal while allowing CI to report warnings.
