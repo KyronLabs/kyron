@@ -1,1 +1,64 @@
-/app
+# ─────────────────────────────────────────────────────────────
+# Kyron monorepo — root ignore rules
+#
+# NOTE: web/build/web is intentionally COMMITTED. render.yaml serves it
+# as a static site with no build step (staticPublishPath: ./web/build/web),
+# so it is a deploy artifact, not generated output. Do not add `build/`
+# as a bare pattern here — it would silently break the website deploy.
+# ─────────────────────────────────────────────────────────────
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Secrets — match every shape of env file, not just a bare `.env`.
+# (A stale `kyron-api_OLD.env` leaked past the old `.env`-only rule.)
+.env
+.env.*
+*.env
+!.env.example
+!.env.*.example
+
+# Signing material — must never be committed
+*.jks
+*.keystore
+*.p12
+*.pem
+*.mobileprovision
+key.properties
+
+# Node / NestJS build output (api/dist is rebuilt inside api/Dockerfile)
+/api/dist/
+*.tsbuildinfo
+
+# Next.js (root package.json)
+/.next/
+/out/
+
+# Flutter / Dart
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+/app/build/
+/app/app/build/
+
+# JVM crash dumps from Gradle/Android builds
+hs_err_pid*.log
+replay_pid*.log
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Logs
+*.log
+!web/build/**/*.log
+npm-debug.log*
+yarn-error.log*
