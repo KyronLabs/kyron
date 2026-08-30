@@ -4,20 +4,15 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { ConfigService } from '@nestjs/config';
+import { getJwtSecret } from '../../config/jwt-secret';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(config: ConfigService) {
-    const secret =
-      config.get<string>('JWT_SECRET') ||
-      config.get<string>('JWT_SECRET'.toUpperCase()) ||
-      'default_fallback_secret'; // prevents undefined
-
+  constructor() {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: secret, // now always a string
+      secretOrKey: getJwtSecret(),
       passReqToCallback: false,
     });
   }

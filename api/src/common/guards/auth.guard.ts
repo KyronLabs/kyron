@@ -12,6 +12,7 @@ import { Reflector } from '@nestjs/core';
 import { PrismaService } from '@/infrastructure/prisma/prisma.service';
 import { Request } from 'express';
 import { UserRole } from '@prisma/client';
+import { getJwtSecret } from '@/config/jwt-secret';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -33,7 +34,7 @@ export class AuthGuard implements CanActivate {
     let payload: any;
     try {
       payload = await this.jwt.verifyAsync(token, {
-        secret: process.env.JWT_SECRET,
+        secret: getJwtSecret(),
       });
     } catch {
       throw new UnauthorizedException('Invalid or expired token');
