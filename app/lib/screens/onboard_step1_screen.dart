@@ -45,63 +45,82 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
   /* ---------- AI / random helpers ---------- */
   void _generateAIAvatar() => debugPrint('TODO: AI avatar generation');
   void _randomiseCover() async {
-  if (_isLoading) return;
-  try {
-    setState(() => _isLoading = true);
-    await _profileService.randomCover();
-  } catch (_) {}
-  finally {
-    if (mounted) setState(() => _isLoading = false);
-  }
+    if (_isLoading) return;
+    try {
+      setState(() => _isLoading = true);
+      await _profileService.randomCover();
+    } catch (e) {
+      debugPrint('randomiseCover failed: $e');
+      _report('Could not fetch a cover right now.');
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
   }
 
   /* ---------- navigation ---------- */
-  Future<void> _next() async {
-  if (_isLoading) return;
-  setState(() => _isLoading = true);
-
-  try {
-    debugPrint('⚡ STEP1 START');
-
-    widget.model.displayName = _nameCtrl.text.trim();
-    widget.model.bio = _bioCtrl.text.trim();
-
-    debugPrint('⚡ updating profile text...');
-    await _profileService.updateProfile(
-      name: widget.model.displayName,
-      bio: widget.model.bio.isEmpty ? null : widget.model.bio,
-    );
-
-    if (widget.model.localAvatarPath != null) {
-      debugPrint('⚡ uploading avatar...');
-      await _profileService.uploadAvatar(File(widget.model.localAvatarPath!));
-    }
-
-    if (widget.model.localCoverPath != null) {
-      debugPrint('⚡ uploading cover...');
-      await _profileService.uploadCover(File(widget.model.localCoverPath!));
-    } else {
-      debugPrint('⚡ randomizing cover...');
-      await _profileService.randomCover();
-    }
-
-    debugPrint('⚡ DONE! now navigating…');
-
-    if (mounted) {
-      await Future.delayed(const Duration(milliseconds: 100));
-      debugPrint('⚡ pushing onboard2');
-      Navigator.pushNamed(
-        context,
-        Routes.onboardStep2,
-        arguments: widget.model,
-      );
-    }
-  } catch (e, s) {
-    debugPrint('❌ ERROR IN STEP1: $e');
-    debugPrint(s.toString());
-  } finally {
-    if (mounted) setState(() => _isLoading = false);
+  void _report(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
+
+  Future<void> _next() async {
+    if (_isLoading) return;
+    setState(() => _isLoading = true);
+
+    try {
+      widget.model.displayName = _nameCtrl.text.trim();
+      widget.model.bio = _bioCtrl.text.trim();
+
+      // Essential. If the profile itself cannot be saved there is nothing to
+      // carry forward, so this is the only failure that stops the flow.
+      try {
+        await _profileService.updateProfile(
+          name: widget.model.displayName,
+          bio: widget.model.bio.isEmpty ? null : widget.model.bio,
+        );
+      } catch (e) {
+        debugPrint('step1: updateProfile failed: $e');
+        _report('Could not save your profile. Check your connection and try again.');
+        return;
+      }
+
+      // Everything below is decoration. It used to sit in the same try as the
+      // profile save, under a catch that only debugPrinted -- so a failing
+      // image upload or cover lookup left the user on this screen with no
+      // message and no way forward. Each is now allowed to fail on its own
+      // without trapping anyone here.
+      if (widget.model.localAvatarPath != null) {
+        try {
+          await _profileService.uploadAvatar(File(widget.model.localAvatarPath!));
+        } catch (e) {
+          debugPrint('step1: avatar upload failed: $e');
+          _report('Your photo could not be uploaded. You can add it later.');
+        }
+      }
+
+      if (widget.model.localCoverPath != null) {
+        try {
+          await _profileService.uploadCover(File(widget.model.localCoverPath!));
+        } catch (e) {
+          debugPrint('step1: cover upload failed: $e');
+          _report('Your cover could not be uploaded. You can add it later.');
+        }
+      } else {
+        // Picking a random default cover is a nicety, and it is the call most
+        // likely to fail: it reads a storage folder that may not exist yet.
+        // Silently skip it rather than stranding the user.
+        try {
+          await _profileService.randomCover();
+        } catch (e) {
+          debugPrint('step1: randomCover failed (ignored): $e');
+        }
+      }
+
+      if (!mounted) return;
+      Navigator.pushNamed(context, Routes.onboardStep2, arguments: widget.model);
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
   }
 
   @override
@@ -122,77 +141,103 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
         padding: const EdgeInsets.only(bottom: 32),
         child: Column(
           children: [
-            /* ---------- COVER SECTION ---------- */
+            /* ---------- COVER + AVATAR ----------
+               One stack, explicitly sized to the cover plus the part of the
+               avatar that hangs below it. The avatar used to be a sibling
+               shifted up with Transform.translate, which moves paint but not
+               layout, so it reserved its full height and left a gap under it. */
             SizedBox(
-              height: 200,
+              height: 200 + 64,
               child: Stack(
+                clipBehavior: Clip.none,
                 children: [
                   /* cover image or placeholder */
-                  Positioned.fill(
-                    child: widget.model.localCoverPath != null
-                        ? Image.file(File(widget.model.localCoverPath!),
-                            fit: BoxFit.cover)
-                        : Container(
-                            color:
-                                isDark ? AppTheme.surface : AppTheme.lightSurface,
-                            child: Center(
-                              child: Icon(Icons.add_photo_alternate,
-                                  size: 56,
-                                  color: scheme.onSurface.withValues(alpha: .35)),
-                            ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 200,
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: widget.model.localCoverPath != null
+                              ? Image.file(File(widget.model.localCoverPath!),
+                                  fit: BoxFit.cover)
+                              : Container(
+                                  color: isDark
+                                      ? AppTheme.surface
+                                      : AppTheme.lightSurface,
+                                  child: Center(
+                                    child: Icon(Icons.add_photo_alternate,
+                                        size: 56,
+                                        color: scheme.onSurface
+                                            .withValues(alpha: .35)),
+                                  ),
+                                ),
+                        ),
+                        Positioned(
+                          right: 16,
+                          bottom: 16,
+                          child: CameraTooltipMenu(
+                            onGallery: _pickCover,
+                            onSecondary: _randomiseCover,
+                            secondaryLabel: 'Randomise',
+                            secondaryIcon: Icons.shuffle,
                           ),
+                        ),
+                      ],
+                    ),
                   ),
 
-                  /* translucent camera button with tooltip menu */
+                  /* avatar, straddling the bottom edge of the cover */
                   Positioned(
-                    right: 16,
-                    bottom: 16,
-                    child: CameraTooltipMenu(
-                      onGallery: _pickCover,
-                      onSecondary: _randomiseCover,
-                      secondaryLabel: 'Randomise',
-                      secondaryIcon: Icons.shuffle,
+                    top: 200 - 64,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: SizedBox(
+                        width: 128,
+                        height: 128,
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            CircleAvatar(
+                              radius: 64,
+                              backgroundColor: isDark
+                                  ? AppTheme.surface
+                                  : AppTheme.lightSurface,
+                              backgroundImage:
+                                  widget.model.localAvatarPath != null
+                                      ? FileImage(
+                                          File(widget.model.localAvatarPath!))
+                                      : null,
+                              child: widget.model.localAvatarPath == null
+                                  ? Icon(Icons.person,
+                                      size: 64,
+                                      color: scheme.onSurface
+                                          .withValues(alpha: .45))
+                                  : null,
+                            ),
+                            Positioned(
+                              right: 0,
+                              bottom: 0,
+                              child: CameraTooltipMenu(
+                                onGallery: _pickAvatar,
+                                onSecondary: _generateAIAvatar,
+                                secondaryLabel: 'Generate AI',
+                                secondaryIcon: Icons.auto_awesome,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
 
-            /* ---------- AVATAR SECTION (overlaps cover) ---------- */
-            Transform.translate(
-              offset: const Offset(0, -40),
-              child: Center(
-                child: Stack(
-                  children: [
-                    CircleAvatar(
-                      radius: 64,
-                      backgroundColor:
-                          isDark ? AppTheme.surface : AppTheme.lightSurface,
-                      backgroundImage: widget.model.localAvatarPath != null
-                          ? FileImage(File(widget.model.localAvatarPath!))
-                          : null,
-                      child: widget.model.localAvatarPath == null
-                          ? Icon(Icons.person,
-                              size: 64,
-                              color: scheme.onSurface.withValues(alpha: .45))
-                          : null,
-                    ),
-
-                    /* translucent camera button with tooltip menu */
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: CameraTooltipMenu(
-                        onGallery: _pickAvatar,
-                        onSecondary: _generateAIAvatar,
-                        secondaryLabel: 'Generate AI',
-                        secondaryIcon: Icons.auto_awesome,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            const SizedBox(height: 24),
 
             /* ---------- TEXT FIELDS ---------- */
             Padding(
@@ -214,13 +259,11 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                   ),
                   const SizedBox(height: 32),
                   AppButton(
-  label: 'Continue',
-  isLoading: _isLoading,
-  onTap: () {
-    if (!_canProceed || _isLoading) return;
-    _next();
-  },
-),
+                    label: 'Continue',
+                    isLoading: _isLoading,
+                    enabled: _canProceed,
+                    onTap: _next,
+                  ),
                 ],
               ),
             ),

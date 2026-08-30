@@ -59,12 +59,32 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
     setState(() => _finishing = true);
 
     try {
+      // Following suggestions is optional. It used to share a try with the
+      // steps below under a catch that only debugPrinted, so a failed follow
+      // meant onboarding was never marked complete and nothing navigated --
+      // leaving the user stuck on the last screen of the flow with no message.
       if (widget.model.followedAccounts.isNotEmpty) {
-        await _profileService.followSuggested(widget.model.followedAccounts);
+        try {
+          await _profileService.followSuggested(widget.model.followedAccounts);
+        } catch (e) {
+          debugPrint('step3: followSuggested failed: $e');
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Could not follow everyone. You can find them later.'),
+              ),
+            );
+          }
+        }
       }
 
-      final authRepo = ref.read(authRepositoryProvider);
-      await authRepo.setOnboardingCompleted();
+      // Finishing onboarding is local state, so this should not fail -- but if
+      // it does, still let the user through rather than trapping them here.
+      try {
+        await ref.read(authRepositoryProvider).setOnboardingCompleted();
+      } catch (e) {
+        debugPrint('step3: setOnboardingCompleted failed: $e');
+      }
 
       if (mounted) {
         Navigator.pushNamedAndRemoveUntil(
@@ -73,8 +93,6 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
           (_) => false,
         );
       }
-    } catch (e) {
-      debugPrint("ONBOARD STEP 3 ERROR: $e");
     } finally {
       if (mounted) setState(() => _finishing = false);
     }
