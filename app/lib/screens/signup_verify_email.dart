@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '../widgets/gradient_scaffold.dart';
 import '../widgets/app_button.dart';
 import '../routes.dart';
 import '../theme/app_theme.dart';
 import '../repositories/auth_repository.dart';
 import '../models/onboarding_model.dart';
+import '../utils/api_error_message.dart';
 
 class SignupVerifyEmailScreen extends StatefulWidget {
   final String email;
 
-  const SignupVerifyEmailScreen({
-    super.key,
-    required this.email,
-  });
+  const SignupVerifyEmailScreen({super.key, required this.email});
 
   @override
-  State<SignupVerifyEmailScreen> createState() => _SignupVerifyEmailScreenState();
+  State<SignupVerifyEmailScreen> createState() =>
+      _SignupVerifyEmailScreenState();
 }
 
 class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
-  final List<TextEditingController> _controllers =
-      List.generate(6, (_) => TextEditingController());
-  final List<FocusNode> _focusNodes =
-      List.generate(6, (_) => FocusNode());
+  final List<TextEditingController> _controllers = List.generate(
+    6,
+    (_) => TextEditingController(),
+  );
+  final List<FocusNode> _focusNodes = List.generate(6, (_) => FocusNode());
 
   bool _isLoading = false;
   bool _canResend = false;
@@ -80,10 +81,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
 
     try {
       final repo = AuthRepository();
-      await repo.verifyEmailOtp(
-        email: widget.email,
-        code: _code,
-      );
+      await repo.verifyEmailOtp(email: widget.email, code: _code);
 
       if (!mounted) return;
 
@@ -92,12 +90,13 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
         context,
         Routes.onboardStep1,
         arguments: OnboardingModel()
-          ..displayName = widget.email.split('@')[0] // Use email prefix as display name
+          ..displayName =
+              widget.email.split('@')[0] // Use email prefix as display name
           ..bio = '',
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Verification failed: $e")),
+        SnackBar(content: Text("Verification failed: ${describeApiError(e)}")),
       );
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -106,9 +105,9 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
 
   void _resendCode() {
     _startCountdown();
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Verification code resent.")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("Verification code resent.")));
   }
 
   @override
@@ -122,25 +121,19 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
           children: [
             const SizedBox(height: 40),
             Icon(Icons.email_outlined, size: 64, color: AppTheme.accent),
-
             const SizedBox(height: 24),
-
             Text(
               "Enter the 6-digit code",
               style: Theme.of(context).textTheme.displayLarge,
               textAlign: TextAlign.center,
             ),
-
             const SizedBox(height: 12),
-
             Text(
               "We sent it to ${widget.email}",
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
-
             const SizedBox(height: 40),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(6, (i) {
@@ -170,7 +163,9 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(
-                          color: AppTheme.lightTextSecondary.withValues(alpha: 0.3),
+                          color: AppTheme.lightTextSecondary.withValues(
+                            alpha: 0.3,
+                          ),
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -185,17 +180,9 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                 );
               }),
             ),
-
             const SizedBox(height: 32),
-
-            AppButton(
-              label: "Verify",
-              onTap: _verify,
-              isLoading: _isLoading,
-            ),
-
+            AppButton(label: "Verify", onTap: _verify, isLoading: _isLoading),
             const Spacer(),
-
             Center(
               child: _canResend
                   ? TextButton(

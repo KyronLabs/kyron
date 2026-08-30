@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/app_theme.dart';
 
 class AppButton extends StatelessWidget {
@@ -24,17 +25,21 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     final style = isOutlined
         ? OutlinedButton.styleFrom(
             minimumSize: const Size.fromHeight(48),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+            ),
             foregroundColor: scheme.primary,
             side: BorderSide(color: scheme.primary.withOpacity(0.24)),
           )
         : ElevatedButton.styleFrom(
             minimumSize: const Size.fromHeight(48),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+            ),
             foregroundColor: Colors.white,
             backgroundColor: scheme.primary,
           );
@@ -60,7 +65,7 @@ class AppButton extends StatelessWidget {
 
   Widget _buildContent(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    
+
     return Row(
       mainAxisSize: MainAxisSize.min, // Keeps content centered
       children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+
 import '../widgets/app_input_field.dart';
 import '../widgets/password_input_field.dart';
 import '../widgets/app_button.dart';
@@ -8,6 +9,7 @@ import '../widgets/password_requirements.dart';
 import '../routes.dart';
 import '../theme/app_theme.dart';
 import '../repositories/auth_repository.dart';
+import '../utils/api_error_message.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -66,14 +68,10 @@ class _SignupScreenState extends State<SignupScreen> {
         return;
       }
 
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        Routes.home,
-        (route) => false,
-      );
+      Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
     } catch (err) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Signup failed: $err')),
+        SnackBar(content: Text('Signup failed: ${describeApiError(err)}')),
       );
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -96,7 +94,10 @@ class _SignupScreenState extends State<SignupScreen> {
               // USERNAME
               AppInputField(
                 hint: 'Username',
-                prefix: const Text('@', style: TextStyle(color: Color(0xFF7E8A9A))),
+                prefix: const Text(
+                  '@',
+                  style: TextStyle(color: Color(0xFF7E8A9A)),
+                ),
                 controller: _username,
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(r'[a-z0-9_]')),
@@ -156,10 +157,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   children: [
                     TextSpan(
                       text: "Terms",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: AppTheme.accent,
                             decoration: TextDecoration.underline,
                           ),
@@ -182,10 +180,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     TextSpan(
                       text: "Privacy Policy",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: AppTheme.accent,
                             decoration: TextDecoration.underline,
                           ),

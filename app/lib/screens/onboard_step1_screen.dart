@@ -1,11 +1,16 @@
 // lib/screens/onboard_step1_screen.dart
 import 'dart:io';
+
 import 'package:flutter/material.dart';
+
 import '../services/profile_service.dart';
+
 import 'package:image_picker/image_picker.dart';
+
 import '../models/onboarding_model.dart';
 import '../routes.dart';
 import '../theme/app_theme.dart';
+import '../utils/api_error_message.dart';
 import '../widgets/app_button.dart';
 import '../widgets/app_input_field.dart';
 import '../widgets/camera_tooltip_menu.dart';
@@ -39,19 +44,29 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
 
   Future<void> _pickCover() async {
     final file = await _picker.pickImage(source: ImageSource.gallery);
-    if (file != null) setState(() => widget.model.localCoverPath = file.path);
+    if (file != null) {
+      setState(() => widget.model.chooseLocalCover(file.path));
+    }
   }
 
   /* ---------- AI / random helpers ---------- */
   void _generateAIAvatar() => debugPrint('TODO: AI avatar generation');
-  void _randomiseCover() async {
+  Future<void> _randomiseCover() async {
     if (_isLoading) return;
     try {
       setState(() => _isLoading = true);
-      await _profileService.randomCover();
+      final url = await _profileService.randomCover();
+      if (!mounted) return;
+      if (url == null) {
+        // Storage holds no default covers, so there is nothing to pick.
+        // Saying so beats a button that appears to do nothing.
+        _report('No default covers are available yet.');
+        return;
+      }
+      setState(() => widget.model.chooseRemoteCover(url));
     } catch (e) {
       debugPrint('randomiseCover failed: $e');
-      _report('Could not fetch a cover right now.');
+      _report(describeApiError(e));
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -60,7 +75,8 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
   /* ---------- navigation ---------- */
   void _report(String message) {
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   Future<void> _next() async {
@@ -77,10 +93,15 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
         await _profileService.updateProfile(
           name: widget.model.displayName,
           bio: widget.model.bio.isEmpty ? null : widget.model.bio,
+          // Persist the cover the user actually saw. _next() used to call
+          // randomCover() here instead, which only fetched a URL and discarded
+          // it -- saving nothing, and liable to roll a different cover than
+          // the one previewed.
+          coverUrl: widget.model.remoteCoverUrl,
         );
       } catch (e) {
         debugPrint('step1: updateProfile failed: $e');
-        _report('Could not save your profile. Check your connection and try again.');
+        _report(describeApiError(e));
         return;
       }
 
@@ -91,10 +112,12 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
       // without trapping anyone here.
       if (widget.model.localAvatarPath != null) {
         try {
-          await _profileService.uploadAvatar(File(widget.model.localAvatarPath!));
+          await _profileService.uploadAvatar(
+            File(widget.model.localAvatarPath!),
+          );
         } catch (e) {
           debugPrint('step1: avatar upload failed: $e');
-          _report('Your photo could not be uploaded. You can add it later.');
+          _report('Photo not uploaded: ${describeApiError(e)}');
         }
       }
 
@@ -103,21 +126,16 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
           await _profileService.uploadCover(File(widget.model.localCoverPath!));
         } catch (e) {
           debugPrint('step1: cover upload failed: $e');
-          _report('Your cover could not be uploaded. You can add it later.');
-        }
-      } else {
-        // Picking a random default cover is a nicety, and it is the call most
-        // likely to fail: it reads a storage folder that may not exist yet.
-        // Silently skip it rather than stranding the user.
-        try {
-          await _profileService.randomCover();
-        } catch (e) {
-          debugPrint('step1: randomCover failed (ignored): $e');
+          _report('Cover not uploaded: ${describeApiError(e)}');
         }
       }
 
       if (!mounted) return;
-      Navigator.pushNamed(context, Routes.onboardStep2, arguments: widget.model);
+      Navigator.pushNamed(
+        context,
+        Routes.onboardStep2,
+        arguments: widget.model,
+      );
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -161,19 +179,44 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                       children: [
                         Positioned.fill(
                           child: widget.model.localCoverPath != null
-                              ? Image.file(File(widget.model.localCoverPath!),
-                                  fit: BoxFit.cover)
-                              : Container(
-                                  color: isDark
-                                      ? AppTheme.surface
-                                      : AppTheme.lightSurface,
-                                  child: Center(
-                                    child: Icon(Icons.add_photo_alternate,
-                                        size: 56,
-                                        color: scheme.onSurface
-                                            .withValues(alpha: .35)),
-                                  ),
-                                ),
+                              ? Image.file(
+                                  File(widget.model.localCoverPath!),
+                                  fit: BoxFit.cover,
+                                )
+                              : widget.model.remoteCoverUrl != null
+                                  ? Image.network(
+                                      widget.model.remoteCoverUrl!,
+                                      fit: BoxFit.cover,
+                                      errorBuilder: (context, error, stack) =>
+                                          Container(
+                                        color: isDark
+                                            ? AppTheme.surface
+                                            : AppTheme.lightSurface,
+                                        child: Center(
+                                          child: Icon(
+                                            Icons.broken_image_outlined,
+                                            size: 40,
+                                            color: scheme.onSurface.withValues(
+                                              alpha: .35,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : Container(
+                                      color: isDark
+                                          ? AppTheme.surface
+                                          : AppTheme.lightSurface,
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.add_photo_alternate,
+                                          size: 56,
+                                          color: scheme.onSurface.withValues(
+                                            alpha: .35,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                         ),
                         Positioned(
                           right: 16,
@@ -209,13 +252,17 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                               backgroundImage:
                                   widget.model.localAvatarPath != null
                                       ? FileImage(
-                                          File(widget.model.localAvatarPath!))
+                                          File(widget.model.localAvatarPath!),
+                                        )
                                       : null,
                               child: widget.model.localAvatarPath == null
-                                  ? Icon(Icons.person,
+                                  ? Icon(
+                                      Icons.person,
                                       size: 64,
-                                      color: scheme.onSurface
-                                          .withValues(alpha: .45))
+                                      color: scheme.onSurface.withValues(
+                                        alpha: .45,
+                                      ),
+                                    )
                                   : null,
                             ),
                             Positioned(
@@ -236,7 +283,6 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                 ],
               ),
             ),
-
             const SizedBox(height: 24),
 
             /* ---------- TEXT FIELDS ---------- */

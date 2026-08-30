@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/onboarding_model.dart';
 import '../models/suggested_user.dart';
 import '../providers/auth_provider.dart';
 import '../routes.dart';
 import '../services/profile_service.dart';
 import '../widgets/atomic_card.dart';
+import '../utils/api_error_message.dart';
 
 class OnboardStep3Screen extends ConsumerStatefulWidget {
   final OnboardingModel model;
   const OnboardStep3Screen({super.key, required this.model});
 
   @override
-  ConsumerState<OnboardStep3Screen> createState() =>
-      _OnboardStep3ScreenState();
+  ConsumerState<OnboardStep3Screen> createState() => _OnboardStep3ScreenState();
 }
 
 class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
@@ -70,8 +71,10 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
           debugPrint('step3: followSuggested failed: $e');
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Could not follow everyone. You can find them later.'),
+              SnackBar(
+                content: Text(
+                  'Could not follow everyone: ${describeApiError(e)}',
+                ),
               ),
             );
           }
@@ -87,11 +90,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
       }
 
       if (mounted) {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          Routes.home,
-          (_) => false,
-        );
+        Navigator.pushNamedAndRemoveUntil(context, Routes.home, (_) => false);
       }
     } finally {
       if (mounted) setState(() => _finishing = false);
@@ -105,12 +104,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Discover people"),
-        actions: [
-          TextButton(
-            onPressed: _finish,
-            child: const Text("Skip"),
-          )
-        ],
+        actions: [TextButton(onPressed: _finish, child: const Text("Skip"))],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -152,7 +146,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
                       bio: u.bio,
                       isInitiallyFollowing: u.isFollowing,
                       onFollowToggle: () => _toggle(u),
-                      onTap: () {},     // Open profile preview later
+                      onTap: () {}, // Open profile preview later
                     );
                   },
                 ),
@@ -167,7 +161,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
                     ? const CircularProgressIndicator()
                     : const Text("Finish"),
               ),
-            )
+            ),
           ],
         ),
       ),

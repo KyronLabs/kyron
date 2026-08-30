@@ -49,10 +49,12 @@ class ProfileService {
   Future<void> updateProfile({
     required String name,
     String? bio,
+    String? coverUrl,
   }) async {
     await _dio.patch('/profile', data: {
       'name': name,
       'bio': bio,
+      if (coverUrl != null) 'coverUrl': coverUrl,
     });
   }
 
@@ -70,8 +72,14 @@ class ProfileService {
     });
   }
 
-  Future<void> randomCover() async {
-    await _dio.get('/profile/default-cover/random');
+  /// Returns a URL from the default cover set, or null when storage holds
+  /// none. This used to return void and discard the response, so "Randomise"
+  /// could not display anything even when the request succeeded.
+  Future<String?> randomCover() async {
+    final res = await _dio.get('/profile/default-cover/random');
+    final data = res.data;
+    if (data is Map && data['url'] is String) return data['url'] as String;
+    return null;
   }
 
   Future<List<SuggestedUser>> getSuggestedUsers() async {
@@ -80,5 +88,4 @@ class ProfileService {
 
     return data.map((e) => SuggestedUser.fromJson(e)).toList();
   }
-
 }
