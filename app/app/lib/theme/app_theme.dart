@@ -127,6 +127,20 @@ class AppTheme {
   static const lightPillBg = Color(0xFFF7F7F7);  // contrast_50 (light)
   
   // ===========================================================================
+  // BACKWARD COMPATIBILITY - Old property names (deprecated but kept for compatibility)
+  // ===========================================================================
+  
+  // Old names mapped to new names for backward compatibility
+  static const background = lightBackground;
+  static const surface = lightSurface;
+  static const textPrimary = lightTextPrimary;
+  static const textSecondary = lightTextSecondary;
+  
+  // Spacing constants for backward compatibility
+  static const space6 = space8;
+  static const space18 = space16;
+  
+  // ===========================================================================
   // TYPOGRAPHY - Fractional font sizes from Bluesky ALF
   // ===========================================================================
   
@@ -206,116 +220,101 @@ class AppTheme {
   
   static TextTheme _baseTextTheme(Color primary, Color secondary, Color tertiary) => TextTheme(
     // Display
-    displayLarge: TextStyle(
+    displayLarge: const TextStyle(
       fontSize: fontSize9, // 37.5
       fontWeight: fontWeightBold,
-      color: primary,
       letterSpacing: 0,  // Zero tracking
       height: lineHeightTight,
     ),
-    displayMedium: TextStyle(
+    displayMedium: const TextStyle(
       fontSize: fontSize8, // 30.0
       fontWeight: fontWeightBold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightTight,
     ),
-    displaySmall: TextStyle(
+    displaySmall: const TextStyle(
       fontSize: fontSize7, // 24.3
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightTight,
     ),
     
     // Headlines
-    headlineLarge: TextStyle(
+    headlineLarge: const TextStyle(
       fontSize: fontSize6, // 20.6
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    headlineMedium: TextStyle(
+    headlineMedium: const TextStyle(
       fontSize: fontSize5, // 18.8
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    headlineSmall: TextStyle(
+    headlineSmall: const TextStyle(
       fontSize: fontSize4, // 16.9
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
     
     // Titles
-    titleLarge: TextStyle(
+    titleLarge: const TextStyle(
       fontSize: fontSize3, // 15.0 (base)
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    titleMedium: TextStyle(
+    titleMedium: const TextStyle(
       fontSize: fontSize2, // 13.1
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    titleSmall: TextStyle(
+    titleSmall: const TextStyle(
       fontSize: fontSize1, // 11.3
       fontWeight: fontWeightSemibold,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
     
     // Body
-    bodyLarge: TextStyle(
+    bodyLarge: const TextStyle(
       fontSize: fontSize4, // 16.9
       fontWeight: fontWeightRegular,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightRelaxed,
     ),
-    bodyMedium: TextStyle(
+    bodyMedium: const TextStyle(
       fontSize: fontSize3, // 15.0 (base)
       fontWeight: fontWeightRegular,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightRelaxed,
     ),
-    bodySmall: TextStyle(
+    bodySmall: const TextStyle(
       fontSize: fontSize2, // 13.1
       fontWeight: fontWeightRegular,
-      color: secondary,
       letterSpacing: 0,
       height: lineHeightRelaxed,
     ),
     
     // Labels
-    labelLarge: TextStyle(
+    labelLarge: const TextStyle(
       fontSize: fontSize4, // 16.9
       fontWeight: fontWeightMedium,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    labelMedium: TextStyle(
+    labelMedium: const TextStyle(
       fontSize: fontSize3, // 15.0
       fontWeight: fontWeightMedium,
-      color: primary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
-    labelSmall: TextStyle(
+    labelSmall: const TextStyle(
       fontSize: fontSize2, // 13.1
       fontWeight: fontWeightMedium,
-      color: secondary,
       letterSpacing: 0,
       height: lineHeightSnug,
     ),
@@ -331,7 +330,7 @@ class AppTheme {
       brightness: Brightness.light,
       scaffoldBackgroundColor: lightBackgroundStart,
       canvasColor: lightSurface,
-      colorScheme: ColorScheme.light(
+      colorScheme: const ColorScheme.light(
         primary: accent,
         onPrimary: Colors.white,
         secondary: accent,
@@ -365,7 +364,7 @@ class AppTheme {
         hintStyle: TextStyle(color: lightTextSecondary),
         errorStyle: const TextStyle(color: errorPink),
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
         titleTextStyle: TextStyle(
@@ -419,19 +418,19 @@ class AppTheme {
           splashFactory: NoSplash.splashFactory,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: const CardTheme(
         elevation: 0,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      dividerTheme: DividerThemeData(
-        color: lightTextSecondary.withOpacity(0.2),
+      dividerTheme: const DividerThemeData(
+        color: Color(0xFFB0B0B0),
         thickness: 1,
         space: 1,
       ),
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: lightSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -439,13 +438,13 @@ class AppTheme {
           ),
         ),
       ),
-      dialogTheme: DialogTheme(
+      dialogTheme: const DialogTheme(
         backgroundColor: lightSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      chipTheme: ChipThemeData(
+      chipTheme: const ChipThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
@@ -459,7 +458,7 @@ class AppTheme {
       brightness: Brightness.dark,
       scaffoldBackgroundColor: darkBackground,
       canvasColor: darkSurface,
-      colorScheme: ColorScheme.dark(
+      colorScheme: const ColorScheme.dark(
         primary: accent,
         onPrimary: Colors.white,
         secondary: accent,
@@ -493,7 +492,7 @@ class AppTheme {
         hintStyle: TextStyle(color: darkTextSecondary),
         errorStyle: const TextStyle(color: errorPink),
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
         titleTextStyle: TextStyle(
@@ -547,7 +546,7 @@ class AppTheme {
           splashFactory: NoSplash.splashFactory,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: const CardTheme(
         elevation: 0,
         margin: EdgeInsets.zero,
         color: darkSurface,
@@ -555,12 +554,12 @@ class AppTheme {
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      dividerTheme: DividerThemeData(
-        color: darkTextSecondary.withOpacity(0.2),
+      dividerTheme: const DividerThemeData(
+        color: Color(0xFF5C5C5C),
         thickness: 1,
         space: 1,
       ),
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: darkSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -568,13 +567,13 @@ class AppTheme {
           ),
         ),
       ),
-      dialogTheme: DialogTheme(
+      dialogTheme: const DialogTheme(
         backgroundColor: darkSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      chipTheme: ChipThemeData(
+      chipTheme: const ChipThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
@@ -588,7 +587,7 @@ class AppTheme {
       brightness: Brightness.dark,
       scaffoldBackgroundColor: dimBackground,
       canvasColor: dimSurface,
-      colorScheme: ColorScheme.dark(
+      colorScheme: const ColorScheme.dark(
         primary: accent,
         onPrimary: Colors.white,
         secondary: accent,
@@ -617,7 +616,7 @@ class AppTheme {
         contentPadding: const EdgeInsets.symmetric(vertical: space16, horizontal: space16),
         hintStyle: TextStyle(color: dimTextSecondary),
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
         titleTextStyle: TextStyle(
@@ -646,7 +645,7 @@ class AppTheme {
           splashFactory: NoSplash.splashFactory,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: const CardTheme(
         elevation: 0,
         margin: EdgeInsets.zero,
         color: dimSurface,
@@ -654,17 +653,22 @@ class AppTheme {
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      dividerTheme: DividerThemeData(
-        color: dimTextSecondary.withOpacity(0.3),
+      dividerTheme: const DividerThemeData(
+        color: Color(0xFF607080),
         thickness: 1,
         space: 1,
       ),
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: dimSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(radius20),
           ),
+        ),
+      ),
+      chipTheme: const ChipThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(radiusFull),
         ),
       ),
     );
@@ -707,6 +711,21 @@ extension ThemeColors on BuildContext {
       Theme.of(this).brightness == Brightness.dark
           ? AppTheme.darkTextTertiary
           : AppTheme.lightTextTertiary;
+
+  Color get surface =>
+      Theme.of(this).brightness == Brightness.dark
+          ? AppTheme.darkSurface
+          : AppTheme.lightSurface;
+
+  Color get background =>
+      Theme.of(this).brightness == Brightness.dark
+          ? AppTheme.darkBackground
+          : AppTheme.lightBackground;
+
+  Color get textPrimary =>
+      Theme.of(this).brightness == Brightness.dark
+          ? AppTheme.darkTextPrimary
+          : AppTheme.lightTextPrimary;
 }
 
 /// Extension for spacing
