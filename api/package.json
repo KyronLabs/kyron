@@ -7,6 +7,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "jest",
     "start": "node dist/src/main.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev --name init --skip-seed",

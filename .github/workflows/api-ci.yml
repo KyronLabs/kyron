@@ -1,0 +1,70 @@
+name: API CI
+
+# The Flutter workflows are path-filtered to app/**, so nothing ran against
+# api/ at all: no build, no typecheck, no tests. Everything below was being
+# checked by hand, or not at all.
+on:
+  push:
+    branches: [main, dev]
+    paths:
+      - 'api/**'
+      - '.github/workflows/api-ci.yml'
+  pull_request:
+    paths:
+      - 'api/**'
+      - '.github/workflows/api-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Build and test the API
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Matches NODE_VERSION in api/Dockerfile, so CI and the deployed image
+      # do not diverge on runtime behaviour.
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: api/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Prisma Client is generated, never committed. tsc and jest both fail
+      # without it, so this has to come before either.
+      - name: Generate Prisma Client
+        run: npm run prisma:generate
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      # jest's rootDir is src and its testRegex only matches *.spec.ts, so this
+      # runs the unit specs. test/app.e2e-spec.ts boots the whole AppModule and
+      # needs a live Postgres plus JWT_SECRET, so it is deliberately excluded
+      # rather than being made to fail here.
+      - name: Unit tests
+        run: npm test
+
+      # Not blocking yet. eslint currently reports 31 errors and 15 warnings,
+      # all no-unsafe-* type-safety findings around untyped Prisma/Supabase
+      # responses -- real work, not formatting, and too much to fold into the
+      # change that introduced this workflow. The formatting backlog (155 of
+      # the original 186 problems) is already cleared. Flip continue-on-error
+      # to false once the remainder is fixed, so regressions actually gate.
+      - name: Lint (non-blocking)
+        run: npm run lint
+        continue-on-error: true
