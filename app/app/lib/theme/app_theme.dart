@@ -436,13 +436,13 @@ class AppTheme {
           ),
         ),
       ),
-      dialogTheme: const DialogThemeData(
+      dialogTheme: DialogThemeData(
         backgroundColor: lightSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      chipTheme: const ChipThemeData(
+      chipTheme: ChipThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
@@ -566,13 +566,13 @@ class AppTheme {
           ),
         ),
       ),
-      dialogTheme: const DialogThemeData(
+      dialogTheme: DialogThemeData(
         backgroundColor: darkSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      chipTheme: const ChipThemeData(
+      chipTheme: ChipThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
@@ -658,7 +658,7 @@ class AppTheme {
         thickness: 1,
         space: 1,
       ),
-      bottomSheetTheme: const BottomSheetThemeData(
+      bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: dimSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -666,7 +666,7 @@ class AppTheme {
           ),
         ),
       ),
-      chipTheme: const ChipThemeData(
+      chipTheme: ChipThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
