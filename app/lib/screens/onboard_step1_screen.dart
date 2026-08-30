@@ -8,6 +8,7 @@ import '../services/profile_service.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../models/onboarding_model.dart';
+import '../repositories/auth_repository.dart';
 import '../routes.dart';
 import '../theme/app_theme.dart';
 import '../utils/api_error_message.dart';
@@ -32,6 +33,13 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
   final TextEditingController _bioCtrl = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   final _profileService = ProfileService();
+  final _authRepository = AuthRepository();
+
+  /// Whether Supabase still holds a valid session for this device. A 401 while
+  /// this is true is the server refusing a good token, not an expired sign-in,
+  /// and telling the two apart is what stops "Session expired" sending people
+  /// back to a login screen that cannot help them.
+  bool get _sessionIsLive => _authRepository.hasValidSession;
 
   /* ---------- helpers ---------- */
   bool get _canProceed => _nameCtrl.text.trim().isNotEmpty;
@@ -66,7 +74,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
       setState(() => widget.model.chooseRemoteCover(url));
     } catch (e) {
       debugPrint('randomiseCover failed: $e');
-      _report(describeApiError(e));
+      _report(describeApiError(e, sessionIsLive: _sessionIsLive));
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -101,7 +109,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
         );
       } catch (e) {
         debugPrint('step1: updateProfile failed: $e');
-        _report(describeApiError(e));
+        _report(describeApiError(e, sessionIsLive: _sessionIsLive));
         return;
       }
 
@@ -117,7 +125,10 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
           );
         } catch (e) {
           debugPrint('step1: avatar upload failed: $e');
-          _report('Photo not uploaded: ${describeApiError(e)}');
+          _report(
+            'Photo not uploaded: '
+            '${describeApiError(e, sessionIsLive: _sessionIsLive)}',
+          );
         }
       }
 
@@ -126,7 +137,10 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
           await _profileService.uploadCover(File(widget.model.localCoverPath!));
         } catch (e) {
           debugPrint('step1: cover upload failed: $e');
-          _report('Cover not uploaded: ${describeApiError(e)}');
+          _report(
+            'Cover not uploaded: '
+            '${describeApiError(e, sessionIsLive: _sessionIsLive)}',
+          );
         }
       }
 

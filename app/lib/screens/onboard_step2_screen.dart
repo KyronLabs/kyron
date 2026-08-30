@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../models/onboarding_model.dart';
+import '../repositories/auth_repository.dart';
 import '../routes.dart';
 import '../theme/app_theme.dart';
 import '../utils/api_error_message.dart';
@@ -30,6 +31,11 @@ class OnboardStep2Screen extends StatefulWidget {
 
 class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
   final _profileService = ProfileService();
+  final _authRepository = AuthRepository();
+
+  /// See [_OnboardStep1ScreenState]: a 401 while the session is valid is the
+  /// server refusing a good token, not an expired sign-in.
+  bool get _sessionIsLive => _authRepository.hasValidSession;
 
   List<InterestOption> _options = const [];
   bool _isLoading = false;
@@ -72,7 +78,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _loadError = describeApiError(e);
+        _loadError = describeApiError(e, sessionIsLive: _sessionIsLive);
         _isLoadingOptions = false;
       });
     }
@@ -93,6 +99,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
     String routeName,
     Object? arguments, {
     bool saveInterests = true,
+    bool clearStack = false,
   }) async {
     setState(() => _isLoading = true);
 
@@ -102,13 +109,25 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
       }
 
       if (mounted) {
-        Navigator.pushNamed(context, routeName, arguments: arguments);
+        if (clearStack) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            routeName,
+            (_) => false,
+            arguments: arguments,
+          );
+        } else {
+          Navigator.pushNamed(context, routeName, arguments: arguments);
+        }
       }
     } catch (e) {
       debugPrint('step2: saving interests failed: $e');
       if (mounted) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(describeApiError(e))));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(describeApiError(e, sessionIsLive: _sessionIsLive)),
+          ),
+        );
       }
     } finally {
       if (mounted) {
@@ -123,8 +142,17 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
 
   /// Skip means skip: it used to still save whatever was selected, so tapping
   /// it after picking a tag did the work anyway and could fail on the way out.
+  ///
+  /// It also used to push the app on top of the onboarding stack, leaving the
+  /// back button pointing at a flow the user had just chosen to leave.
   Future<void> _skip() async {
-    await _handleNavigation(context, Routes.home, null, saveInterests: false);
+    await _handleNavigation(
+      context,
+      Routes.home,
+      null,
+      saveInterests: false,
+      clearStack: true,
+    );
   }
 
   @override

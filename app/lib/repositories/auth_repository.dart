@@ -162,5 +162,41 @@ class AuthRepository {
   Future<void> setOnboardingCompleted() =>
       _storage.writeHasCompletedOnboarding(true);
 
-  Future<bool> isOnboardingComplete() => _storage.readHasCompletedOnboarding();
+  /// Whether this account has been through onboarding.
+  ///
+  /// Onboarding belongs to the account, not the handset. This used to read a
+  /// local flag written only when the user reached the end of step 3, so
+  /// reinstalling, switching device or clearing app data replayed the whole
+  /// flow for an established account -- and any failure before step 3 meant it
+  /// was never recorded at all, which put people back on "Create your profile"
+  /// on every launch with no way to get past it.
+  ///
+  /// The profile row is the real signal: step 1 writes it, so an account with a
+  /// display name is an account that has been through the part that matters.
+  /// The local flag stays as a cache so the common path costs nothing.
+  Future<bool> isOnboardingComplete() async {
+    if (await _storage.readHasCompletedOnboarding()) return true;
+
+    final userId = _auth.currentUser?.id;
+    if (userId == null) return false;
+
+    try {
+      final row = await Supabase.instance.client
+          .from('user_profiles')
+          .select('display_name')
+          .eq('user_id', userId)
+          .maybeSingle();
+
+      final displayName = row?['display_name'] as String?;
+      if (displayName == null || displayName.trim().isEmpty) return false;
+
+      await _storage.writeHasCompletedOnboarding(true);
+      return true;
+    } catch (_) {
+      // Unreachable Supabase proves nothing either way. Answering false sends
+      // the user through a flow they may not need, which is recoverable;
+      // answering true would drop them into an app with no profile behind it.
+      return false;
+    }
+  }
 }
