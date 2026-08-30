@@ -28,7 +28,7 @@ class ProfileModel {
     required this.socials,
     required this.badges,
     required this.postsCount,
-    required this.repliesCount,
+    required this.circularepliesCount,
     required this.mediaCount,
     required this.likesCount,
     this.isFollowing = false,

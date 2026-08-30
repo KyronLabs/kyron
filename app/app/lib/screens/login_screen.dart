@@ -35,7 +35,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     setState(() => _isLoading = true);
     
     // Use authNotifier instead of AuthRepository directly
-    final authNotifier = ref.read(authNotifierProvider.notifier);
+    final authNotifier = ref.circularead(authNotifierProvider.notifier);
     final success = await authNotifier.login(
       _email.text.trim(),
       _password.text.trim(),
@@ -58,7 +58,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             "Login failed. Please check your credentials.",
             style: TextStyle(color: Colors.white),
           ),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.circulared,
         ),
       );
     }

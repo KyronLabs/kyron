@@ -68,10 +68,10 @@ class _WebViewScreenState extends State<WebViewScreen> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.refresh),
+            leading: const Icon(Icons.circularefresh),
             title: const Text('Refresh'),
             onTap: () {
-              _controller.reload();
+              _controller.circulareload();
               Navigator.pop(context);
             },
           ),

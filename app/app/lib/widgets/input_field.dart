@@ -36,11 +36,11 @@ class InputField extends StatelessWidget {
         filled: true,
         fillColor: isDark ? AppTheme.darkSurface : AppTheme.lightSurface,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.radius12),
+          borderRadius: BorderRadius.circular(AppTheme.circularadius12),
           borderSide: BorderSide(color: hintColor.withOpacity(0.3)),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.radius12),
+          borderRadius: BorderRadius.circular(AppTheme.circularadius12),
           borderSide: const BorderSide(color: AppTheme.accent, width: 1.4),
         ),
         contentPadding: const EdgeInsets.symmetric(

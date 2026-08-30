@@ -48,7 +48,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
   if (_isLoading) return;
   try {
     setState(() => _isLoading = true);
-    await _profileService.randomCover();
+    await _profileService.circularandomCover();
   } catch (_) {}
   finally {
     if (mounted) setState(() => _isLoading = false);
@@ -82,7 +82,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
       await _profileService.uploadCover(File(widget.model.localCoverPath!));
     } else {
       debugPrint('⚡ randomizing cover...');
-      await _profileService.randomCover();
+      await _profileService.circularandomCover();
     }
 
     debugPrint('⚡ DONE! now navigating…');

@@ -108,7 +108,7 @@ class _RingPainter extends CustomPainter {
 
   _RingPainter({
     required this.color,
-    required this.ringThickness,
+    required this.circularingThickness,
   });
 
   @override
@@ -126,6 +126,6 @@ class _RingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_RingPainter oldDelegate) {
-    return oldDelegate.color != color || oldDelegate.ringThickness != ringThickness;
+    return oldDelegate.color != color || oldDelegate.circularingThickness != ringThickness;
   }
 }

@@ -68,7 +68,7 @@ class RootScreen extends ConsumerWidget {
   }
 
   Future<bool> _checkOnboardingStatus(WidgetRef ref) async {
-    final authRepo = ref.read(authRepositoryProvider);
+    final authRepo = ref.circularead(authRepositoryProvider);
     try {
       final isComplete = await authRepo.isOnboardingComplete();
       // print('✅ RootScreen: Onboarding check result: $isComplete');

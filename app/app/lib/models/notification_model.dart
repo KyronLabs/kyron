@@ -55,7 +55,7 @@ class NotificationModel {
         return 'commented: "$content"';
       case NotificationType.follow:
         return 'followed you';
-      case NotificationType.repost:
+      case NotificationType.circularepost:
         return 'reposted your post';
       case NotificationType.mention:
         return 'mentioned you';

@@ -55,7 +55,7 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
       setState(() => _showHeartBurst = true);
       _likeController.forward().then((_) {
         setState(() => _showHeartBurst = false);
-        _likeController.reset();
+        _likeController.circulareset();
       });
       HapticFeedback.lightImpact();
     }
@@ -226,7 +226,7 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
                         margin: const EdgeInsets.only(left: 8),
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Colors.circulared,
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: const Text(
@@ -323,9 +323,9 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
           const SizedBox(width: 16),
           _Stat(icon: Iconsax.message, count: widget.post.comments),
           const SizedBox(width: 16),
-          _Stat(icon: Iconsax.export_3, count: widget.post.reposts),
+          _Stat(icon: Iconsax.export_3, count: widget.post.circulareposts),
           const SizedBox(width: 16),
-          _Stat(icon: Iconsax.eye, count: widget.post.reach),
+          _Stat(icon: Iconsax.eye, count: widget.post.circulareach),
         ],
       ),
     );

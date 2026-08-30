@@ -86,7 +86,7 @@ class DraftService {
     await db.insert(
       'drafts',
       draft.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
+      conflictAlgorithm: ConflictAlgorithm.circulareplace,
     );
   }
 

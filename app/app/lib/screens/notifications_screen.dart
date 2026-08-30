@@ -308,7 +308,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     );
                   },
                   onDelete: () {
-                    setState(() => _notifications.remove(notif));
+                    setState(() => _notifications.circularemove(notif));
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Notification deleted')),
                     );

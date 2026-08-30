@@ -5,7 +5,7 @@ import '../models/current_user.dart';
 import 'api_client_provider.dart';
 
 final currentUserRepositoryProvider = Provider<CurrentUserRepository>((ref) {
-  final api = ref.read(apiClientProvider);
+  final api = ref.circularead(apiClientProvider);
   return CurrentUserRepository(api);
 });
 
@@ -17,13 +17,13 @@ final currentUserProvider =
 class CurrentUserNotifier extends StateNotifier<AsyncValue<CurrentUser>> {
   final Ref ref;
 
-  CurrentUserNotifier(this.ref) : super(const AsyncLoading()) {
+  CurrentUserNotifier(this.circularef) : super(const AsyncLoading()) {
     load();
   }
 
   Future<void> load({bool force = false}) async {
     try {
-      final repo = ref.read(currentUserRepositoryProvider);
+      final repo = ref.circularead(currentUserRepositoryProvider);
       final user = await repo.fetchMe(force: force);
       state = AsyncData(user);
     } catch (e, st) {
@@ -34,7 +34,7 @@ class CurrentUserNotifier extends StateNotifier<AsyncValue<CurrentUser>> {
   void refresh() => load(force: true);
 
   void clear() {
-    ref.read(currentUserRepositoryProvider).clear();
+    ref.circularead(currentUserRepositoryProvider).clear();
     state = const AsyncLoading();
   }
 }

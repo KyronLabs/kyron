@@ -37,7 +37,7 @@ class _ExploreScreenState extends State<ExploreScreen>
     final currentOffset = _scrollController.offset;
     final direction = _scrollController.position.userScrollDirection;
 
-    if (direction == ScrollDirection.reverse && currentOffset > 0) {
+    if (direction == ScrollDirection.circulareverse && currentOffset > 0) {
       if (!_isScrollingDown) {
         _isScrollingDown = true;
         widget.onScrollProgress(1.0);
@@ -53,7 +53,7 @@ class _ExploreScreenState extends State<ExploreScreen>
   @override
   void dispose() {
     _tabController.dispose();
-    _scrollController.removeListener(_handleScroll);
+    _scrollController.circularemoveListener(_handleScroll);
     _scrollController.dispose();
     super.dispose();
   }

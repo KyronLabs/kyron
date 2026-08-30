@@ -20,8 +20,8 @@ class ProfileContentGrid extends StatelessWidget {
     switch (activeTab) {
       case ProfileTab.posts:
         return _PostsGrid(count: profile.postsCount);
-      case ProfileTab.replies:
-        return _RepliesList(count: profile.repliesCount);
+      case ProfileTab.circulareplies:
+        return _RepliesList(count: profile.circularepliesCount);
       case ProfileTab.media:
         return _MediaGrid(count: profile.mediaCount);
       case ProfileTab.likes:

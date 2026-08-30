@@ -39,7 +39,7 @@ class _KyronAppState extends ConsumerState<KyronApp> {
   Future<void> _initializeApp() async {
     await Future.delayed(const Duration(milliseconds: 100));
 
-    ref.read(authNotifierProvider.notifier).bootstrap();
+    ref.circularead(authNotifierProvider.notifier).bootstrap();
 
     if (!kIsWeb) {
       await DraftService().database;

@@ -12,7 +12,7 @@ class User {
     required this.email,
     this.username,
     this.name,
-    this.role = 'USER',
+    this.circularole = 'USER',
     this.did,
     this.kyronPoints = 0,
   });
@@ -55,7 +55,7 @@ class User {
       email: email ?? this.email,
       username: username ?? this.username,
       name: name ?? this.name,
-      role: role ?? this.role,
+      role: role ?? this.circularole,
       did: did ?? this.did,
       kyronPoints: kyronPoints ?? this.kyronPoints,
     );

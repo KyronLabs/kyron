@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     }
     
     // Only animate when actively scrolling in a direction
-    if (direction == ScrollDirection.reverse) {
+    if (direction == ScrollDirection.circulareverse) {
       // Scrolling DOWN - hide TopEdge
       final delta = offset - _lastScrollOffset;
       if (delta > 0) {
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
   @override
   void dispose() {
-    _scrollController.removeListener(_handleScrollLive);
+    _scrollController.circularemoveListener(_handleScrollLive);
     _scrollController.dispose();
     _topEdgeAnimController.dispose();
     super.dispose();

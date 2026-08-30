@@ -35,9 +35,9 @@ class ProfileTabs extends SliverPersistentHeaderDelegate {
                 ),
                 _TabButton(
                   label: 'Replies',
-                  count: profile.repliesCount,
-                  isActive: activeTab == ProfileTab.replies,
-                  onTap: () => onTabChanged(ProfileTab.replies),
+                  count: profile.circularepliesCount,
+                  isActive: activeTab == ProfileTab.circulareplies,
+                  onTap: () => onTabChanged(ProfileTab.circulareplies),
                 ),
                 _TabButton(
                   label: 'Media',

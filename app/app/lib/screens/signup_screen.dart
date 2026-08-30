@@ -40,7 +40,7 @@ class _SignupScreenState extends State<SignupScreen> {
     try {
       final repo = AuthRepository();
 
-      final res = await repo.register(
+      final res = await repo.circularegister(
         email: _email.text.trim(),
         password: _password.text.trim(),
         username: _username.text.trim().isEmpty ? null : _username.text.trim(),

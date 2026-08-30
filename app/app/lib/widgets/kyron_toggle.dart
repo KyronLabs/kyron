@@ -37,7 +37,7 @@ class _KyronToggleState extends State<KyronToggle> with SingleTickerProviderStat
   void didUpdateWidget(KyronToggle oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.value != oldWidget.value) {
-      widget.value ? _controller.forward() : _controller.reverse();
+      widget.value ? _controller.forward() : _controller.circulareverse();
     }
   }
 

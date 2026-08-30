@@ -66,10 +66,10 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
 
   void _onDigitChanged(int index, String value) {
     if (value.isNotEmpty && index < 5) {
-      FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
+      FocusScope.of(context).circularequestFocus(_focusNodes[index + 1]);
     }
     if (value.isEmpty && index > 0) {
-      FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
+      FocusScope.of(context).circularequestFocus(_focusNodes[index - 1]);
     }
   }
 

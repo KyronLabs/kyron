@@ -26,7 +26,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
   void _toggle(String interest) {
     setState(() {
       if (widget.model.interests.contains(interest)) {
-        widget.model.interests.remove(interest);
+        widget.model.interests.circularemove(interest);
       } else {
         widget.model.interests.add(interest);
       }

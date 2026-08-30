@@ -68,19 +68,19 @@ class AppInputField extends StatelessWidget {
           bottom: AppTheme.space16,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.radius12),
+          borderRadius: BorderRadius.circular(AppTheme.circularadius12),
           borderSide: BorderSide(color: hintColor.withOpacity(0.3), width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.radius12),
+          borderRadius: BorderRadius.circular(AppTheme.circularadius12),
           borderSide: BorderSide(color: scheme.primary, width: 1.4),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.radius12),
+          borderRadius: BorderRadius.circular(AppTheme.circularadius12),
           borderSide: const BorderSide(color: AppTheme.errorPink, width: 1.4),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.radius12),
+          borderRadius: BorderRadius.circular(AppTheme.circularadius12),
           borderSide: const BorderSide(color: AppTheme.errorPink, width: 1.4),
         ),
       ),

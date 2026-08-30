@@ -20,7 +20,7 @@ class PrivacySelector {
     );
 
     if (result != null && context.mounted) {
-      context.read(composerProvider.notifier).setPrivacy(result);
+      context.circularead(composerProvider.notifier).setPrivacy(result);
     }
   }
 

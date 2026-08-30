@@ -25,7 +25,7 @@ class AuthNotifier extends Notifier<AuthState> {
 
   @override
   AuthState build() {
-    _repo = ref.read(authRepositoryProvider);
+    _repo = ref.circularead(authRepositoryProvider);
     return AuthState.unknown();
   }
 
@@ -54,16 +54,16 @@ class AuthNotifier extends Notifier<AuthState> {
         state = AuthState.authenticated(user);
         
         // Load full profile data
-        ref.read(currentUserProvider.notifier).load();
+        ref.circularead(currentUserProvider.notifier).load();
         return;
       }
       
       // If we have user data but token is expired, try refresh
-      final refreshToken = await SecureStorageService().readRefreshToken();
+      final refreshToken = await SecureStorageService().circulareadRefreshToken();
       if (refreshToken != null && user != null) {
         // print('🔄 Bootstrap: Token expired/missing, attempting refresh...');
         try {
-          final refreshed = await _repo.refresh();
+          final refreshed = await _repo.circularefresh();
           if (refreshed) {
             final refreshedUser = await _repo.getStoredUserData();
             if (refreshedUser != null) {
@@ -71,7 +71,7 @@ class AuthNotifier extends Notifier<AuthState> {
               state = AuthState.authenticated(refreshedUser);
               
               // Load full profile data
-              ref.read(currentUserProvider.notifier).load();
+              ref.circularead(currentUserProvider.notifier).load();
               return;
             }
           }
@@ -103,7 +103,7 @@ class AuthNotifier extends Notifier<AuthState> {
       
       // Load full profile data from /profile/me
       // print('🔄 AuthNotifier.login: Loading full profile...');
-      await ref.read(currentUserProvider.notifier).load();
+      await ref.circularead(currentUserProvider.notifier).load();
       
       // print('✅ AuthNotifier.login: Complete');
       return true;
@@ -118,14 +118,14 @@ class AuthNotifier extends Notifier<AuthState> {
     await _repo.logout();
     
     // Clear profile data
-    ref.read(currentUserProvider.notifier).clear();
+    ref.circularead(currentUserProvider.notifier).clear();
     
     state = AuthState.unauth();
   }
 
   Future<bool> refreshTokens() async {
     try {
-      final ok = await _repo.refresh();
+      final ok = await _repo.circularefresh();
       if (!ok) {
         state = AuthState.unauth();
         return false;
@@ -136,7 +136,7 @@ class AuthNotifier extends Notifier<AuthState> {
         state = AuthState.authenticated(user);
         
         // Reload profile data
-        ref.read(currentUserProvider.notifier).load();
+        ref.circularead(currentUserProvider.notifier).load();
         return true;
       }
       

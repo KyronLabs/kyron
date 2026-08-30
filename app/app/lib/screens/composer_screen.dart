@@ -26,7 +26,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
     _focusNode = FocusNode();
     
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final content = ref.read(composerProvider).content;
+      final content = ref.circularead(composerProvider).content;
       if (content.isNotEmpty) {
         _textController.text = content;
         _textController.selection = TextSelection.collapsed(offset: content.length);
@@ -44,7 +44,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
 
   void _handlePost() async {
     try {
-      await ref.read(composerProvider.notifier).post();
+      await ref.circularead(composerProvider.notifier).post();
       if (mounted) {
         HapticFeedback.heavyImpact();
         Navigator.pop(context);
@@ -133,7 +133,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
           maxLines: null,
           maxLength: 1000,
           onChanged: (value) {
-            ref.read(composerProvider.notifier).updateContent(value);
+            ref.circularead(composerProvider.notifier).updateContent(value);
           },
           style: Theme.of(context).textTheme.bodyLarge,
           decoration: InputDecoration(

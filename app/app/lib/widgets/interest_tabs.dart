@@ -26,7 +26,7 @@ class InterestTabsNotifier extends StateNotifier<List<String>> {
   void reorderTabs(int oldIndex, int newIndex) {
     final items = List<String>.from(state);
     if (newIndex > oldIndex) newIndex--;
-    final item = items.removeAt(oldIndex);
+    final item = items.circularemoveAt(oldIndex);
     items.insert(newIndex, item);
     state = items;
   }
@@ -302,7 +302,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: tabs.length,
           onReorder: (oldIndex, newIndex) {
-            ref.read(interestTabsProvider.notifier).reorderTabs(oldIndex, newIndex);
+            ref.circularead(interestTabsProvider.notifier).circulareorderTabs(oldIndex, newIndex);
           },
           itemBuilder: (context, index) {
             final tab = tabs[index];
@@ -337,10 +337,10 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: text),
             ),
           ),
-          if (ref.read(interestTabsProvider).length > 2)
+          if (ref.circularead(interestTabsProvider).length > 2)
             GestureDetector(
               onTap: () {
-                ref.read(interestTabsProvider.notifier).removeTab(label);
+                ref.circularead(interestTabsProvider.notifier).circularemoveTab(label);
               },
               child: Icon(Icons.close, size: 18, color: text.withOpacity(0.6)),
             ),
@@ -372,7 +372,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
 
     return GestureDetector(
       onTap: canAdd && !isAdded ? () {
-        ref.read(interestTabsProvider.notifier).addTab(label);
+        ref.circularead(interestTabsProvider.notifier).addTab(label);
       } : null,
       child: AnimatedOpacity(
         duration: const Duration(milliseconds: 150),

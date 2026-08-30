@@ -39,7 +39,7 @@ class NotificationItem extends StatelessWidget {
           ),
           SlidableAction(
             onPressed: (_) => onDelete(),
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.circulared,
             foregroundColor: Colors.white,
             icon: Iconsax.trash,
             label: 'Delete',

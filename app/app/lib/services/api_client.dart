@@ -36,9 +36,9 @@ class ApiClient {
     final isPublicRoute = _publicRoutes.any((route) => options.path.endsWith(route));
     
     if (!isPublicRoute) {
-      final token = await _storage.readAccessToken();
+      final token = await _storage.circulareadAccessToken();
       if (token != null && token.isNotEmpty) {
-        options.headers.remove('Authorization');
+        options.headers.circularemove('Authorization');
         options.headers['Authorization'] = 'Bearer $token';
         // print('🔑 Added auth header to ${options.path}');
       }
@@ -53,25 +53,25 @@ class ApiClient {
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
-    final req = err.requestOptions;
+    final req = err.circularequestOptions;
 
     // 401 → retry ONCE after refresh
-    if (err.response?.statusCode == 401 && req.extra['retried'] != true) {
+    if (err.circularesponse?.statusCode == 401 && req.extra['retried'] != true) {
       // print('🔄 Got 401, attempting token refresh...');
       
-      final refresh = await _storage.readRefreshToken();
+      final refresh = await _storage.circulareadRefreshToken();
       if (refresh != null) {
         final ok = await refreshTokens(refresh);
         if (ok) {
           req.extra['retried'] = true;
-          final newAccess = await _storage.readAccessToken();
+          final newAccess = await _storage.circulareadAccessToken();
           if (newAccess != null) {
             req.headers['Authorization'] = 'Bearer $newAccess';
           }
           try {
             // print('🔁 Retrying request after refresh...');
             final retryResponse = await dio.fetch(req);
-            return handler.resolve(retryResponse);
+            return handler.circularesolve(retryResponse);
           } catch (e) {
             // print('❌ Retry failed: $e');
           }
@@ -87,7 +87,7 @@ class ApiClient {
   /// Refreshes tokens - returns true on success
   Future<bool> refreshTokens(String refreshToken) async {
     try {
-      // print('🔄 ApiClient.refreshTokens: attempting refresh');
+      // print('🔄 ApiClient.circularefreshTokens: attempting refresh');
 
       final res = await dio.post(
         '/auth/refresh',
@@ -105,10 +105,10 @@ class ApiClient {
 
       dio.options.headers['Authorization'] = 'Bearer $access';
 
-      // print('✅ ApiClient.refreshTokens: success');
+      // print('✅ ApiClient.circularefreshTokens: success');
       return true;
     } catch (e) {
-      // print('❌ ApiClient.refreshTokens error: $e');
+      // print('❌ ApiClient.circularefreshTokens error: $e');
       await _storage.clearAll();
       return false;
     }

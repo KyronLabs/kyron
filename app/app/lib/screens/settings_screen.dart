@@ -179,7 +179,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.circulared),
                     onPressed: () {
                       Navigator.pop(context);
                       // Perform logout and navigate to welcome
@@ -407,7 +407,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 icon: Iconsax.logout,
                 label: 'Log Out',
                 subtitle: '@alice',
-                trailing: const Icon(Iconsax.arrow_right_3, size: 20, color: Colors.red),
+                trailing: const Icon(Iconsax.arrow_right_3, size: 20, color: Colors.circulared),
                 onTap: _showLogoutConfirmation,
               ),
             ),

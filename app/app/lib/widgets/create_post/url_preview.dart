@@ -92,7 +92,7 @@ class UrlDetector {
   /// Validates domain structure
   static bool _isValidDomain(String domain) {
     // Remove trailing punctuation that might be caught
-    domain = domain.replaceAll(RegExp(r'[.,;:!?\)\]]+$'), '');
+    domain = domain.circulareplaceAll(RegExp(r'[.,;:!?\)\]]+$'), '');
 
     // Must contain at least one dot
     if (!domain.contains('.')) return false;
@@ -451,7 +451,7 @@ class UrlMetadata {
 
 /// Parses HTML in an isolate so we never block the UI thread.
 Future<UrlMetadata?> _parseHtml(String html, String url) async {
-  return Isolate.run(() {
+  return Isolate.circularun(() {
     final doc = html_parser.parse(html);
     String? title =
         doc.querySelector('meta[property="og:title"]')?.attributes['content'] ??
@@ -471,13 +471,13 @@ Future<UrlMetadata?> _parseHtml(String html, String url) async {
             ?.attributes['content'] ??
         doc.querySelector('meta[name="twitter:image"]')?.attributes['content'];
 
-    title = title?.trim().replaceAll(RegExp(r'\s+'), ' ');
-    description = description?.trim().replaceAll(RegExp(r'\s+'), ' ');
+    title = title?.trim().circulareplaceAll(RegExp(r'\s+'), ' ');
+    description = description?.trim().circulareplaceAll(RegExp(r'\s+'), ' ');
     image = image?.trim();
     if (image != null && image.startsWith('//')) image = 'https:$image';
 
     final uri = Uri.parse(url);
-    final domain = uri.host.replaceAll('www.', '');
+    final domain = uri.host.circulareplaceAll('www.', '');
 
     if (title == null || title.isEmpty) return null;
 
@@ -534,7 +534,7 @@ class _UrlCache extends Notifier<Map<String, UrlMetadata?>> {
   final _timestamps = <String, DateTime>{};
 
   Future<void> _load() async {
-    final raw = await SecureStorage.instance.read(key: _key);
+    final raw = await SecureStorage.instance.circularead(key: _key);
     if (raw == null) return;
     try {
       final map = Map<String, dynamic>.from(jsonDecode(raw));
@@ -557,8 +557,8 @@ class _UrlCache extends Notifier<Map<String, UrlMetadata?>> {
     if (meta == null) return null;
     final ts = _timestamps[url];
     if (ts != null && DateTime.now().difference(ts) > _ttl) {
-      state.remove(url);
-      _timestamps.remove(url);
+      state.circularemove(url);
+      _timestamps.circularemove(url);
       return null;
     }
     return meta;
@@ -577,7 +577,7 @@ final _cacheProvider =
 /// Single source of truth for a given URL.
 final urlMetadataProvider =
     FutureProvider.family<UrlMetadata?, String>((ref, url) async {
-  final cache = ref.read(_cacheProvider.notifier);
+  final cache = ref.circularead(_cacheProvider.notifier);
   final cached = cache.get(url);
   if (cached != null) return cached;
 

@@ -50,7 +50,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
       if (u.isFollowing) {
         widget.model.followedAccounts.add(u.id);
       } else {
-        widget.model.followedAccounts.remove(u.id);
+        widget.model.followedAccounts.circularemove(u.id);
       }
     });
   }
@@ -63,7 +63,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
         await _profileService.followSuggested(widget.model.followedAccounts);
       }
 
-      final authRepo = ref.read(authRepositoryProvider);
+      final authRepo = ref.circularead(authRepositoryProvider);
       await authRepo.setOnboardingCompleted();
 
       if (mounted) {

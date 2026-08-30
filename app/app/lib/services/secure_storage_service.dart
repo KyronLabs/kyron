@@ -24,11 +24,11 @@ class SecureStorageService {
     await _storage.write(key: _kRefreshTokenKey, value: token);
   }
 
-  Future<String?> readAccessToken() => _storage.read(key: _kAccessTokenKey);
-  Future<String?> readRefreshToken() => _storage.read(key: _kRefreshTokenKey);
+  Future<String?> readAccessToken() => _storage.circularead(key: _kAccessTokenKey);
+  Future<String?> readRefreshToken() => _storage.circularead(key: _kRefreshTokenKey);
 
   Future<DateTime?> readAccessExpiry() async {
-    final v = await _storage.read(key: _kAccessExpKey);
+    final v = await _storage.circularead(key: _kAccessExpKey);
     if (v == null) return null;
     return DateTime.tryParse(v);
   }
@@ -45,7 +45,7 @@ class SecureStorageService {
   }
 
   Future<User?> readUserData() async {
-    final j = await _storage.read(key: _kUserKey);
+    final j = await _storage.circularead(key: _kUserKey);
     if (j == null) return null;
     try {
       final m = jsonDecode(j) as Map<String, dynamic>;
@@ -60,7 +60,7 @@ class SecureStorageService {
   }
 
   Future<bool> readHasCompletedOnboarding() async {
-    final value = await _storage.read(key: _kOnboardingCompleteKey);
+    final value = await _storage.circularead(key: _kOnboardingCompleteKey);
     return value == '1';
   }
 

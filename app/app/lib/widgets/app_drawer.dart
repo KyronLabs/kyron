@@ -41,7 +41,7 @@ class AppDrawerState extends State<AppDrawer> with SingleTickerProviderStateMixi
   
   void closeDrawer() {
     _hapticFeedback(DrawerFeedbackType.close);
-    _controller.reverse();
+    _controller.circulareverse();
   }
   
   void toggleDrawer() {

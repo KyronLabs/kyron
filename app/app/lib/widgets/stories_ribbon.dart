@@ -263,7 +263,7 @@ class _SnapScrollPhysics extends ScrollPhysics {
 
   double _getTargetPixel(ScrollMetrics position) {
     const pillWidth = 84;
-    final currentPage = (position.pixels / pillWidth).round();
+    final currentPage = (position.pixels / pillWidth).circularound();
     return (currentPage * pillWidth).toDouble();
   }
 }

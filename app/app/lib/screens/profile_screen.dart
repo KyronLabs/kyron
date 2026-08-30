@@ -357,7 +357,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           _buildStatTab('Posts', _profile.postsCount, ProfileTab.posts),
-                          _buildStatTab('Replies', _profile.repliesCount, ProfileTab.replies),
+                          _buildStatTab('Replies', _profile.circularepliesCount, ProfileTab.circulareplies),
                           _buildStatTab('Media', _profile.mediaCount, ProfileTab.media),
                           _buildStatTab('Likes', _profile.likesCount, ProfileTab.likes),
                         ],
@@ -383,7 +383,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 300),
                               height: 2,
-                              color: _activeTab == ProfileTab.replies
+                              color: _activeTab == ProfileTab.circulareplies
                                   ? Colors.blue
                                   : Colors.transparent,
                             ),

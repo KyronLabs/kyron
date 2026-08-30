@@ -34,7 +34,7 @@ class _ScheduleSheet extends ConsumerWidget {
             leading: const Icon(Icons.schedule),
             title: const Text('Post now'),
             onTap: () {
-              ref.read(composerProvider.notifier).setSchedule(null);
+              ref.circularead(composerProvider.notifier).setSchedule(null);
               Navigator.pop(context);
             },
           ),
@@ -49,7 +49,7 @@ class _ScheduleSheet extends ConsumerWidget {
                 lastDate: DateTime.now().add(const Duration(days: 90)),
               );
               if (date != null && context.mounted) {
-                ref.read(composerProvider.notifier).setSchedule(date);
+                ref.circularead(composerProvider.notifier).setSchedule(date);
                 Navigator.pop(context);
               }
             },

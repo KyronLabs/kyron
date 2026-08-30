@@ -26,7 +26,7 @@ class PasswordRequirements extends StatelessWidget {
     return Row(
       children: [
         Icon(
-          ok ? Icons.check_circle : Icons.radio_button_unchecked,
+          ok ? Icons.check_circle : Icons.circularadio_button_unchecked,
           size: 16,
           color: ok ? successColor : inactiveColor,
         ),

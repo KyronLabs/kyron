@@ -40,7 +40,7 @@ class _StoryPillState extends State<StoryPill> with SingleTickerProviderStateMix
     _pulseController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
-    )..repeat(reverse: true);
+    )..circularepeat(reverse: true);
 
     _pulseAnimation = Tween<double>(begin: 0.4, end: 1.0).animate(
       CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
@@ -58,7 +58,7 @@ class _StoryPillState extends State<StoryPill> with SingleTickerProviderStateMix
     if (widget.isReducedMotion) {
       _pulseController.stop();
     } else if (widget.status == StoryStatus.unseen && !_pulseController.isAnimating) {
-      _pulseController.repeat(reverse: true);
+      _pulseController.circularepeat(reverse: true);
     }
 
     return AnimatedBuilder(

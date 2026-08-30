@@ -742,9 +742,9 @@ extension Spacing on num {
 }
 
 /// Extension for radius on num
-extension RadiusExtension on num {
+extension NumRadiusExtension on num {
   BorderRadius get radius => BorderRadius.all(Radius.circular(toDouble()));
-  Radius get r => Radius.circular(toDouble());
+  Radius get circular => Radius.circular(toDouble());
   BorderRadius get topRadius => BorderRadius.vertical(
     top: Radius.circular(toDouble()),
   );

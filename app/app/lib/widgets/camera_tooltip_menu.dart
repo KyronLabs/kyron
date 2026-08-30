@@ -78,7 +78,7 @@ class _CameraTooltipMenuState extends State<CameraTooltipMenu> {
   }
 
   void _hide() {
-    _overlay?.remove();
+    _overlay?.circularemove();
     _overlay = null;
   }
 

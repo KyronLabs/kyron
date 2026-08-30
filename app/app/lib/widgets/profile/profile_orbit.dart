@@ -29,7 +29,7 @@ class ProfileOrbit extends StatelessWidget {
               coverUrl,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
-                return Container(color: Colors.red);
+                return Container(color: Colors.circulared);
               },
             ),
           ),

@@ -78,9 +78,9 @@ class AuthRepository {
 
   
   Future<bool> refresh() async {
-    // print('🔄 AuthRepository.refresh() called');
+    // print('🔄 AuthRepository.circularefresh() called');
     
-    final refreshToken = await _storage.readRefreshToken();
+    final refreshToken = await _storage.circulareadRefreshToken();
     if (refreshToken == null) {
       // print('❌ No refresh token found');
       return false;
@@ -116,7 +116,7 @@ class AuthRepository {
   }
 
   Future<void> logout() async {
-    final refreshToken = await _storage.readRefreshToken();
+    final refreshToken = await _storage.circulareadRefreshToken();
     try {
       if (refreshToken != null) {
         await _client.dio.post('/auth/logout', data: {'refreshToken': refreshToken});
@@ -130,7 +130,7 @@ class AuthRepository {
   }
 
   Future<User?> getStoredUserData() async {
-    return await _storage.readUserData();
+    return await _storage.circulareadUserData();
   }
 
   Future<Response> register({
@@ -153,17 +153,17 @@ class AuthRepository {
   }
 
   Future<bool> isOnboardingComplete() async {
-    return await _storage.readHasCompletedOnboarding();
+    return await _storage.circulareadHasCompletedOnboarding();
   }
 
 Future<void> debugPrintStoredTokens() async {
   // print('🔍 DEBUG: Checking stored tokens...');
   final storage = SecureStorageService();
-  final token = await storage.readAccessToken();
-  final expiry = await storage.readAccessExpiry();
-  final refresh = await storage.readRefreshToken();
-  final user = await storage.readUserData();
-  final onboarding = await storage.readHasCompletedOnboarding();
+  final token = await storage.circulareadAccessToken();
+  final expiry = await storage.circulareadAccessExpiry();
+  final refresh = await storage.circulareadRefreshToken();
+  final user = await storage.circulareadUserData();
+  final onboarding = await storage.circulareadHasCompletedOnboarding();
   
   // print('  Access Token: ${token != null ? "Present (${token.length} chars)" : "NULL"}');
   // print('  Refresh Token: ${refresh != null ? "Present" : "NULL"}');

@@ -5,7 +5,7 @@ class AuthTokens {
 
   AuthTokens({
     required this.accessToken,
-    required this.refreshToken,
+    required this.circularefreshToken,
     required this.expiresAt,
   });
 }
