@@ -16,7 +16,7 @@ class ApiClient {
   ApiClient() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://api.kyron.spidroid.com',
+        baseUrl: 'https://kyron.fly.dev',
         connectTimeout: const Duration(seconds: 20),
         receiveTimeout: const Duration(seconds: 20),
       ),
