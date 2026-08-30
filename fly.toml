@@ -1,0 +1,33 @@
+app = "kyron"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  FLUTTER_HOST = "0.0.0.0"
+  FLUTTER_PORT = "8080"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.http_checks]]
+    interval = 10000
+    grace_period = "5s"
+    method = "get"
+    path = "/"
+    protocol = "http"
+    timeout = 2000
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "requests"
