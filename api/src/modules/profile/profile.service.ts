@@ -363,10 +363,11 @@ export class ProfileService {
       bio?: string;
       location?: string;
       website?: string;
+      coverUrl?: string;
       interests?: string[];
     },
   ) {
-    const { name, bio, location, website, interests } = payload;
+    const { name, bio, location, website, coverUrl, interests } = payload;
 
     // DUAL-WRITE: Update both databases
     await Promise.all([
@@ -379,19 +380,24 @@ export class ProfileService {
         : Promise.resolve(),
 
       // Update Prisma Profile
-      bio !== undefined || location !== undefined || website !== undefined
+      bio !== undefined ||
+      location !== undefined ||
+      website !== undefined ||
+      coverUrl !== undefined
         ? this.prisma.userProfile.upsert({
             where: { userId },
             update: {
               bio: bio ?? undefined,
               location: location ?? undefined,
               website: website ?? undefined,
+              coverUrl: coverUrl ?? undefined,
             },
             create: {
               userId,
               bio: bio ?? null,
               location: location ?? null,
               website: website ?? null,
+              coverUrl: coverUrl ?? null,
             },
           })
         : Promise.resolve(),
@@ -403,6 +409,7 @@ export class ProfileService {
         bio: bio ?? undefined,
         location: location ?? undefined,
         website: website ?? undefined,
+        cover_url: coverUrl ?? undefined,
         updated_at: new Date().toISOString(),
       }),
     ]);

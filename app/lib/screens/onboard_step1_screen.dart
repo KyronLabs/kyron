@@ -44,16 +44,26 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
 
   Future<void> _pickCover() async {
     final file = await _picker.pickImage(source: ImageSource.gallery);
-    if (file != null) setState(() => widget.model.localCoverPath = file.path);
+    if (file != null) {
+      setState(() => widget.model.chooseLocalCover(file.path));
+    }
   }
 
   /* ---------- AI / random helpers ---------- */
   void _generateAIAvatar() => debugPrint('TODO: AI avatar generation');
-  void _randomiseCover() async {
+  Future<void> _randomiseCover() async {
     if (_isLoading) return;
     try {
       setState(() => _isLoading = true);
-      await _profileService.randomCover();
+      final url = await _profileService.randomCover();
+      if (!mounted) return;
+      if (url == null) {
+        // Storage holds no default covers, so there is nothing to pick.
+        // Saying so beats a button that appears to do nothing.
+        _report('No default covers are available yet.');
+        return;
+      }
+      setState(() => widget.model.chooseRemoteCover(url));
     } catch (e) {
       debugPrint('randomiseCover failed: $e');
       _report(describeApiError(e));
@@ -83,6 +93,11 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
         await _profileService.updateProfile(
           name: widget.model.displayName,
           bio: widget.model.bio.isEmpty ? null : widget.model.bio,
+          // Persist the cover the user actually saw. _next() used to call
+          // randomCover() here instead, which only fetched a URL and discarded
+          // it -- saving nothing, and liable to roll a different cover than
+          // the one previewed.
+          coverUrl: widget.model.remoteCoverUrl,
         );
       } catch (e) {
         debugPrint('step1: updateProfile failed: $e');
@@ -112,15 +127,6 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
         } catch (e) {
           debugPrint('step1: cover upload failed: $e');
           _report('Cover not uploaded: ${describeApiError(e)}');
-        }
-      } else {
-        // Picking a random default cover is a nicety, and it is the call most
-        // likely to fail: it reads a storage folder that may not exist yet.
-        // Silently skip it rather than stranding the user.
-        try {
-          await _profileService.randomCover();
-        } catch (e) {
-          debugPrint('step1: randomCover failed (ignored): $e');
         }
       }
 
@@ -177,20 +183,40 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                                   File(widget.model.localCoverPath!),
                                   fit: BoxFit.cover,
                                 )
-                              : Container(
-                                  color: isDark
-                                      ? AppTheme.surface
-                                      : AppTheme.lightSurface,
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.add_photo_alternate,
-                                      size: 56,
-                                      color: scheme.onSurface.withValues(
-                                        alpha: .35,
+                              : widget.model.remoteCoverUrl != null
+                                  ? Image.network(
+                                      widget.model.remoteCoverUrl!,
+                                      fit: BoxFit.cover,
+                                      errorBuilder: (context, error, stack) =>
+                                          Container(
+                                        color: isDark
+                                            ? AppTheme.surface
+                                            : AppTheme.lightSurface,
+                                        child: Center(
+                                          child: Icon(
+                                            Icons.broken_image_outlined,
+                                            size: 40,
+                                            color: scheme.onSurface.withValues(
+                                              alpha: .35,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : Container(
+                                      color: isDark
+                                          ? AppTheme.surface
+                                          : AppTheme.lightSurface,
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.add_photo_alternate,
+                                          size: 56,
+                                          color: scheme.onSurface.withValues(
+                                            alpha: .35,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
                         ),
                         Positioned(
                           right: 16,
