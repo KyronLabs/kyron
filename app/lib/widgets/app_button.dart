@@ -7,12 +7,18 @@ class AppButton extends StatelessWidget {
   final bool isOutlined;
   final bool isLoading; // Loading state
 
+  /// When false the button is visibly inert. Screens used to fake this by
+  /// returning early from onTap, which is indistinguishable from a broken
+  /// button: it depresses and nothing happens.
+  final bool enabled;
+
   const AppButton({
     super.key,
     required this.label,
     required this.onTap,
     this.isOutlined = false,
     this.isLoading = false,
+    this.enabled = true,
   });
 
   @override
@@ -33,17 +39,19 @@ class AppButton extends StatelessWidget {
             backgroundColor: scheme.primary,
           );
 
+    final isInteractive = enabled && !isLoading;
+
     return AnimatedScale(
       scale: isLoading ? 0.98 : 1.0, // Slight shrink when loading
       duration: const Duration(milliseconds: 120),
       child: isOutlined
           ? OutlinedButton(
-              onPressed: isLoading ? null : onTap, // Disable when loading
+              onPressed: isInteractive ? onTap : null,
               style: style,
               child: _buildContent(context),
             )
           : ElevatedButton(
-              onPressed: isLoading ? null : onTap, // Disable when loading
+              onPressed: isInteractive ? onTap : null,
               style: style,
               child: _buildContent(context),
             ),
