@@ -40,7 +40,7 @@ class _MediaSelectorSheet extends StatelessWidget {
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
-            color: isDark ? AppTheme.surface : AppTheme.lightSurface,
+            color: isDark ? AppTheme.lightSurface : AppTheme.lightSurface,
             borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(

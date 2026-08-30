@@ -119,7 +119,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 Expanded(
                   child: Divider(
                     thickness: 0.5,
-                    color: AppTheme.textSecondary.withOpacity(0.3),
+                    color: AppTheme.lightTextSecondary.withOpacity(0.3),
                   ),
                 ),
                 Padding(
@@ -127,14 +127,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   child: Text(
                     'or',
                     style: TextStyle(
-                      color: AppTheme.textSecondary.withOpacity(0.6),
+                      color: AppTheme.lightTextSecondary.withOpacity(0.6),
                     ),
                   ),
                 ),
                 Expanded(
                   child: Divider(
                     thickness: 0.5,
-                    color: AppTheme.textSecondary.withOpacity(0.3),
+                    color: AppTheme.lightTextSecondary.withOpacity(0.3),
                   ),
                 ),
               ]),

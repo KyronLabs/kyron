@@ -75,10 +75,10 @@ class ProfileWallet extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppTheme.surface.withOpacity(0.1), // Fixed
+        color: AppTheme.lightSurface.withOpacity(0.1), // Fixed
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppTheme.textSecondary.withOpacity(0.2), // Fixed
+          color: AppTheme.lightTextSecondary.withOpacity(0.2), // Fixed
         ),
       ),
       child: Column(

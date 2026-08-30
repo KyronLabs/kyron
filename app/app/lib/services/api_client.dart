@@ -40,10 +40,10 @@ class ApiClient {
       if (token != null && token.isNotEmpty) {
         options.headers.remove('Authorization');
         options.headers['Authorization'] = 'Bearer $token';
-        print('🔑 Added auth header to ${options.path}');
+        // print('🔑 Added auth header to ${options.path}');
       }
     } else {
-      print('🌐 Public route: ${options.path} (no auth header)');
+      // print('🌐 Public route: ${options.path} (no auth header)');
     }
 
     handler.next(options);
@@ -57,7 +57,7 @@ class ApiClient {
 
     // 401 → retry ONCE after refresh
     if (err.response?.statusCode == 401 && req.extra['retried'] != true) {
-      print('🔄 Got 401, attempting token refresh...');
+      // print('🔄 Got 401, attempting token refresh...');
       
       final refresh = await _storage.readRefreshToken();
       if (refresh != null) {
@@ -69,15 +69,15 @@ class ApiClient {
             req.headers['Authorization'] = 'Bearer $newAccess';
           }
           try {
-            print('🔁 Retrying request after refresh...');
+            // print('🔁 Retrying request after refresh...');
             final retryResponse = await dio.fetch(req);
             return handler.resolve(retryResponse);
           } catch (e) {
-            print('❌ Retry failed: $e');
+            // print('❌ Retry failed: $e');
           }
         }
       } else {
-        print('❌ No refresh token available');
+        // print('❌ No refresh token available');
       }
     }
 
@@ -87,7 +87,7 @@ class ApiClient {
   /// Refreshes tokens - returns true on success
   Future<bool> refreshTokens(String refreshToken) async {
     try {
-      print('🔄 ApiClient.refreshTokens: attempting refresh');
+      // print('🔄 ApiClient.refreshTokens: attempting refresh');
 
       final res = await dio.post(
         '/auth/refresh',
@@ -105,10 +105,10 @@ class ApiClient {
 
       dio.options.headers['Authorization'] = 'Bearer $access';
 
-      print('✅ ApiClient.refreshTokens: success');
+      // print('✅ ApiClient.refreshTokens: success');
       return true;
     } catch (e) {
-      print('❌ ApiClient.refreshTokens error: $e');
+      // print('❌ ApiClient.refreshTokens error: $e');
       await _storage.clearAll();
       return false;
     }

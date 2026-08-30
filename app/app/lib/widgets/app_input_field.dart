@@ -62,10 +62,10 @@ class AppInputField extends StatelessWidget {
             : null,
         prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
         contentPadding: EdgeInsets.only(
-          left: hasPrefix ? AppTheme.space6 : AppTheme.space16,
+          left: hasPrefix ? AppTheme.space8 : AppTheme.space16,
           right: AppTheme.space16,
-          top: AppTheme.space18,
-          bottom: AppTheme.space18,
+          top: AppTheme.space16,
+          bottom: AppTheme.space16,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppTheme.radius12),

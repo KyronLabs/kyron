@@ -95,7 +95,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
             if (_currentUrl.isNotEmpty)
               Text(
                 _shortenUrl(_currentUrl),
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppTheme.textSecondary),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppTheme.lightTextSecondary),
               ),
           ],
         ),

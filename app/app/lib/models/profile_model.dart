@@ -1,5 +1,3 @@
-// lib/models/profile_model.dart
-import 'package:flutter/material.dart';
 
 class ProfileModel {
   final String did;

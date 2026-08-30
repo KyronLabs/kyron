@@ -60,7 +60,7 @@ class ProfileOrbit extends StatelessWidget {
                 CircleAvatar(
                   radius: 32,
                   backgroundImage: NetworkImage(avatarUrl),
-                  backgroundColor: AppTheme.surface,
+                  backgroundColor: AppTheme.lightSurface,
                   onBackgroundImageError: (exception, stackTrace) {
                     debugPrint('Avatar image error: $exception');
                   },

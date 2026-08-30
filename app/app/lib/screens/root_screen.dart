@@ -15,40 +15,40 @@ class RootScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final authState = ref.watch(authNotifierProvider);
     
-    print('🔄 RootScreen: authState.status = ${authState.status}, user = ${authState.user?.email}');
+    // print('🔄 RootScreen: authState.status = ${authState.status}, user = ${authState.user?.email}');
 
     // If we're still determining auth state, show splash
     if (authState.status == AuthStatus.unknown || 
         authState.status == AuthStatus.authenticating) {
-      print('📱 RootScreen: Showing SplashScreen (auth state: ${authState.status})');
+      // print('📱 RootScreen: Showing SplashScreen (auth state: ${authState.status})');
       return const SplashScreen();
     }
 
     // If unauthenticated, show welcome
     if (authState.status == AuthStatus.unauthenticated) {
-      print('📱 RootScreen: Showing WelcomeScreen (unauthenticated)');
+      // print('📱 RootScreen: Showing WelcomeScreen (unauthenticated)');
       return const WelcomeScreen();
     }
 
     // If authenticated, check onboarding
     if (authState.status == AuthStatus.authenticated) {
       final user = authState.user;
-      print('📱 RootScreen: User authenticated: ${user?.email}, checking onboarding...');
+      // print('📱 RootScreen: User authenticated: ${user?.email}, checking onboarding...');
       
       // Use a FutureBuilder to check onboarding status
       return FutureBuilder<bool>(
         future: _checkOnboardingStatus(ref),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            print('📱 RootScreen: Checking onboarding status...');
+            // print('📱 RootScreen: Checking onboarding status...');
             return const SplashScreen();
           }
           
           final hasCompletedOnboarding = snapshot.data ?? false;
-          print('📱 RootScreen: Onboarding complete? $hasCompletedOnboarding');
+          // print('📱 RootScreen: Onboarding complete? $hasCompletedOnboarding');
           
           if (!hasCompletedOnboarding && user != null) {
-            print('📱 RootScreen: Showing OnboardStep1Screen');
+            // print('📱 RootScreen: Showing OnboardStep1Screen');
             return OnboardStep1Screen(
               model: OnboardingModel()
                 ..displayName = user.name ?? user.email.split('@')[0]
@@ -56,14 +56,14 @@ class RootScreen extends ConsumerWidget {
             );
           }
           
-          print('📱 RootScreen: Showing HomeScreen');
+          // print('📱 RootScreen: Showing HomeScreen');
           return const MainContainer();
         },
       );
     }
 
     // Fallback
-    print('📱 RootScreen: Fallback to SplashScreen');
+    // print('📱 RootScreen: Fallback to SplashScreen');
     return const SplashScreen();
   }
 
@@ -71,10 +71,10 @@ class RootScreen extends ConsumerWidget {
     final authRepo = ref.read(authRepositoryProvider);
     try {
       final isComplete = await authRepo.isOnboardingComplete();
-      print('✅ RootScreen: Onboarding check result: $isComplete');
+      // print('✅ RootScreen: Onboarding check result: $isComplete');
       return isComplete;
     } catch (e) {
-      print('❌ RootScreen: Error checking onboarding: $e');
+      // print('❌ RootScreen: Error checking onboarding: $e');
       return false;
     }
   }

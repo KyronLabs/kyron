@@ -23,7 +23,7 @@ class BottomNavV4 extends StatelessWidget {
         height: 64,
         decoration: BoxDecoration(
           border: Border(top: BorderSide(color: scheme.outline.withValues(alpha: .15), width: .5)),
-          color: isDark ? AppTheme.surface : AppTheme.lightSurface,
+          color: isDark ? AppTheme.lightSurface : AppTheme.lightSurface,
         ),
         child: SafeArea(
           child: Row(

@@ -31,11 +31,11 @@ class AuthNotifier extends Notifier<AuthState> {
 
   /// Called at app startup
   Future<void> bootstrap() async {
-    print('🔄 AuthNotifier.bootstrap() called');
+    // print('🔄 AuthNotifier.bootstrap() called');
     
     // If already authenticated, skip
     if (state.status == AuthStatus.authenticated) {
-      print('⚠️ Already authenticated, skipping bootstrap');
+      // print('⚠️ Already authenticated, skipping bootstrap');
       return;
     }
     
@@ -46,11 +46,11 @@ class AuthNotifier extends Notifier<AuthState> {
       final user = await _repo.getStoredUserData();
       final hasValidToken = await _repo.hasValidAccessToken();
       
-      print('🔍 Bootstrap: hasValidToken=$hasValidToken, user=${user?.email}');
+      // print('🔍 Bootstrap: hasValidToken=$hasValidToken, user=${user?.email}');
       
       // If we have a valid token AND user data, we're authenticated
       if (hasValidToken && user != null) {
-        print('✅ Bootstrap: Valid token and user found, setting authenticated');
+        // print('✅ Bootstrap: Valid token and user found, setting authenticated');
         state = AuthState.authenticated(user);
         
         // Load full profile data
@@ -61,13 +61,13 @@ class AuthNotifier extends Notifier<AuthState> {
       // If we have user data but token is expired, try refresh
       final refreshToken = await SecureStorageService().readRefreshToken();
       if (refreshToken != null && user != null) {
-        print('🔄 Bootstrap: Token expired/missing, attempting refresh...');
+        // print('🔄 Bootstrap: Token expired/missing, attempting refresh...');
         try {
           final refreshed = await _repo.refresh();
           if (refreshed) {
             final refreshedUser = await _repo.getStoredUserData();
             if (refreshedUser != null) {
-              print('✅ Bootstrap: Token refresh successful');
+              // print('✅ Bootstrap: Token refresh successful');
               state = AuthState.authenticated(refreshedUser);
               
               // Load full profile data
@@ -76,16 +76,16 @@ class AuthNotifier extends Notifier<AuthState> {
             }
           }
         } catch (e) {
-          print('❌ Bootstrap: Refresh failed: $e');
+          // print('❌ Bootstrap: Refresh failed: $e');
         }
       }
       
       // If we get here, we're not authenticated
-      print('🚫 Bootstrap: No valid session found');
+      // print('🚫 Bootstrap: No valid session found');
       state = AuthState.unauth();
       
     } catch (e) {
-      print('❌ Bootstrap error: $e');
+      // print('❌ Bootstrap error: $e');
       state = AuthState.unauth();
     }
   }
@@ -93,22 +93,22 @@ class AuthNotifier extends Notifier<AuthState> {
   Future<bool> login(String email, String password) async {
     state = AuthState.authenticating();
     try {
-      print('🔐 AuthNotifier.login: Starting for $email');
+      // print('🔐 AuthNotifier.login: Starting for $email');
       
       final resp = await _repo.loginWithUser(email: email, password: password);
       
-      print('✅ AuthNotifier.login: Backend responded, user=${resp.user.email}');
+      // print('✅ AuthNotifier.login: Backend responded, user=${resp.user.email}');
       
       state = AuthState.authenticated(resp.user);
       
       // Load full profile data from /profile/me
-      print('🔄 AuthNotifier.login: Loading full profile...');
+      // print('🔄 AuthNotifier.login: Loading full profile...');
       await ref.read(currentUserProvider.notifier).load();
       
-      print('✅ AuthNotifier.login: Complete');
+      // print('✅ AuthNotifier.login: Complete');
       return true;
     } catch (e) {
-      print('❌ Login error: $e');
+      // print('❌ Login error: $e');
       state = AuthState.unauth();
       return false;
     }
@@ -143,7 +143,7 @@ class AuthNotifier extends Notifier<AuthState> {
       state = AuthState.unauth();
       return false;
     } catch (e) {
-      print('❌ Refresh tokens error: $e');
+      // print('❌ Refresh tokens error: $e');
       state = AuthState.unauth();
       return false;
     }

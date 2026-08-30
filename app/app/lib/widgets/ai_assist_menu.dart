@@ -27,7 +27,7 @@ class _AiAssistPlaceholder extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: isDark ? AppTheme.surface : AppTheme.lightSurface,
+        color: isDark ? AppTheme.lightSurface : AppTheme.lightSurface,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(

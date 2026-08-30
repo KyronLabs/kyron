@@ -17,8 +17,8 @@ class ProfileChips extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white : AppTheme.lightTextPrimary;
-    final surfaceColor = isDark ? AppTheme.surface : AppTheme.lightSurface;
-    final textSecondaryColor = isDark ? AppTheme.textSecondary : AppTheme.lightTextSecondary;
+    final surfaceColor = isDark ? AppTheme.lightSurface : AppTheme.lightSurface;
+    final textSecondaryColor = isDark ? AppTheme.lightTextSecondary : AppTheme.lightTextSecondary;
 
     return SizedBox(
       height: 48, // CRITICAL: Fixed height constraint

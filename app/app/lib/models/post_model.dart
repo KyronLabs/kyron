@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 enum PostMediaType { image, video, arLens, none }
 
 class PostModel {

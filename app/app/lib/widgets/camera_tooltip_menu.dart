@@ -54,7 +54,7 @@ class _CameraTooltipMenuState extends State<CameraTooltipMenu> {
                 elevation: 6,
                 borderRadius: BorderRadius.circular(12),
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? AppTheme.surface
+                    ? AppTheme.lightSurface
                     : AppTheme.lightSurface,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 6),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '../theme/app_theme.dart';
 import '../widgets/profile/profile_orbit.dart';
 //import '../widgets/profile/profile_dock.dart';
@@ -49,19 +50,19 @@ class _ProfilePageState extends State<ProfilePage> {
       {'name': 'AR Lenses', 'count': 12, 'cover': 'https://picsum.photos/200/200?random=3'},
     ],
     'badges': [
-      {'name': 'Early Adopter', 'icon': '🚀', 'verified': true},
-      {'name': 'AR Creator', 'icon': '🎭', 'verified': true},
-      {'name': 'Top 1%', 'icon': '👑', 'verified': false},
+      {'name': 'Early Adopter', 'icon': '\ud83d\ude80', 'verified': true},
+      {'name': 'AR Creator', 'icon': '\ud83c\udfad', 'verified': true},
+      {'name': 'Top 1%', 'icon': '\ud83d\udc51', 'verified': false},
     ],
   };
 
   @override
   void initState() {
     super.initState();
-    
+
     // Transparent status bar
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    
+
     _scrollController.addListener(() {
       if (_scrollController.hasClients) {
         setState(() {
@@ -88,9 +89,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final backgroundColor = isDark ? AppTheme.background : AppTheme.lightBackgroundStart;
-    final surfaceColor = isDark ? AppTheme.surface : AppTheme.lightSurface;
-    final textColor = isDark ? AppTheme.textPrimary : AppTheme.lightTextPrimary;
+    final backgroundColor = isDark ? AppTheme.darkBackground : AppTheme.lightBackgroundStart;
+    final surfaceColor = isDark ? AppTheme.darkSurface : AppTheme.lightSurface;
+    final textColor = isDark ? AppTheme.darkTextPrimary : AppTheme.lightTextPrimary;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
@@ -99,132 +100,125 @@ class _ProfilePageState extends State<ProfilePage> {
         systemNavigationBarColor: Colors.transparent,
       ),
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         backgroundColor: backgroundColor,
-        body: SafeArea(
-          top: false, // Allow content under status bar
-          child: CustomScrollView(
-            controller: _scrollController,
-            slivers: [
-              // ProfileOrbit
-              SliverToBoxAdapter(
-                child: ProfileOrbit(
-                  coverUrl: _profileData['coverUrl'],
-                  avatarUrl: _profileData['avatarUrl'],
-                  displayName: _profileData['displayName'],
-                  did: _profileData['did'],
-                  scrollOffset: _scrollOffset,
+        body: CustomScrollView(
+          controller: _scrollController,
+          slivers: [
+            SliverAppBar(
+              expandedHeight: 200,
+              collapsedHeight: 80,
+              pinned: true,
+              stretch: true,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    if (_profileData['coverUrl'] != null)
+                      Image.network(
+                        _profileData['coverUrl']!,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Container(color: surfaceColor);
+                        },
+                        errorBuilder: (context, error, stackTrace) => Container(color: surfaceColor),
+                      ),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          colors: [
+                            backgroundColor,
+                            backgroundColor.withOpacity(0.8),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            CircleAvatar(
+                              radius: 35,
+                              backgroundImage: NetworkImage(_profileData['avatarUrl']!),
+                              backgroundColor: surfaceColor,
+                            ),
+                            const SizedBox(width: 16),
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  _profileData['displayName']!,
+                                  style: TextStyle(
+                                    color: textColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  _profileData['username']!,
+                                  style: TextStyle(
+                                    color: textColor.withOpacity(0.7),
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              
-              // ProfileDock (Sticky Header)
-              //SliverPersistentHeader(
-              //  pinned: true,
-              //  delegate: _DockDelegate(
-               //   minHeight: 56,
-               //   maxHeight: 56,
-              //    child: Container(
-               //     color: surfaceColor,
-               //     child: ProfileDock(
-               //       username: _profileData['username'],
-               //       avatarUrl: _profileData['avatarUrl'],
-               //       kyronPoints: _profileData['kyronPoints'],
-               //       isOwnProfile: widget.isOwnProfile,
-                //      onBack: () => Navigator.pop(context),
-               //       onSettings: () {
-               //         ScaffoldMessenger.of(context).showSnackBar(
-               //           const SnackBar(content: Text('Settings tapped')),
-               //         );
-               //       },
-               //       onFollow: () {
-               //         ScaffoldMessenger.of(context).showSnackBar(
-               //           const SnackBar(content: Text('Follow tapped')),
-              //          );
-               //       },
-               //       onMessage: () {
-               //         ScaffoldMessenger.of(context).showSnackBar(
-               //           const SnackBar(content: Text('Message tapped')),
-               //         );
-              //        },
-               //     ),
-               //   ),
-              //  ),
-              //),
-              
-              // Content Area
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  const SizedBox(height: 16),
-                  // ProfileChips
-                  ProfileChips(
-                    chips: [
-                      {'icon': '📸', 'label': 'Posts', 'count': _profileData['posts']},
-                      {'icon': '🎭', 'label': 'AR Lenses', 'count': 12},
-                      {'icon': '📁', 'label': 'Collections', 'count': _profileData['collections'].length},
-                      {'icon': '🏆', 'label': 'Badges', 'count': _profileData['badges'].length},
-                      {'icon': '📊', 'label': 'Stats', 'count': null},
-                    ],
-                    onChipSelected: (index) {
-                      setState(() => _selectedChipIndex = index);
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  // ProfilePassport
-                  ProfilePassport(
-                    bio: _profileData['bio'],
-                    links: _profileData['links'],
-                    onShowMoreLinks: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Show more links tapped')),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  // ProfileGalaxy
-                  ProfileGalaxy(
-                    posts: _generateMockPosts(),
-                    onPostTap: (index) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Post $index tapped')),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 40),
-                ]),
+            ),
+            SliverToBoxAdapter(
+              child: ProfileOrbit(
+                userId: widget.userId,
+                points: _profileData['kyronPoints'],
+                followers: _profileData['followers'],
+                following: _profileData['following'],
+                posts: _profileData['posts'],
+                scrollOffset: _scrollOffset,
               ),
-            ],
-          ),
+            ),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverToBoxAdapter(
+                child: ProfileChips(
+                  badges: _profileData['badges'],
+                  collections: _profileData['collections'],
+                  links: _profileData['links'],
+                  bio: _profileData['bio'],
+                ),
+              ),
+            ),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverToBoxAdapter(
+                child: ProfilePassport(
+                  userId: widget.userId,
+                  displayName: _profileData['displayName']!,
+                  username: _profileData['username']!,
+                  did: _profileData['did']!,
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: ProfileGalaxy(
+                posts: _generateMockPosts(),
+              ),
+            ),
+          ],
         ),
       ),
     );
-  }
-}
-
-// Sliver Delegate for Dock
-class _DockDelegate extends SliverPersistentHeaderDelegate {
-  final double minHeight;
-  final double maxHeight;
-  final Widget child;
-
-  _DockDelegate({
-    required this.minHeight,
-    required this.maxHeight,
-    required this.child,
-  });
-
-  @override
-  double get minExtent => minHeight;
-  @override
-  double get maxExtent => maxHeight;
-
-  @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox.expand(child: child);
-  }
-
-  @override
-  bool shouldRebuild(_DockDelegate oldDelegate) {
-    return maxHeight != oldDelegate.maxHeight ||
-        minHeight != oldDelegate.minHeight ||
-        child != oldDelegate.child;
   }
 }

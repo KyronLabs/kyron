@@ -31,7 +31,7 @@ class LongPressSheet extends StatelessWidget {
           Material(
             elevation: 0,
             borderRadius: BorderRadius.circular(20),
-            color: isDark ? AppTheme.surface : AppTheme.lightSurface,
+            color: isDark ? AppTheme.lightSurface : AppTheme.lightSurface,
             child: Column(
               children: [
                 for (int i = 0; i < items.length; i++) ...[

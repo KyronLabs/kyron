@@ -26,10 +26,10 @@ class ProfileEventHorizon extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppTheme.surface.withOpacity(0.05),
+        color: AppTheme.lightSurface.withOpacity(0.05),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppTheme.textSecondary.withOpacity(0.1),
+          color: AppTheme.lightTextSecondary.withOpacity(0.1),
         ),
       ),
       child: Column(

@@ -124,7 +124,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
   Widget _buildTag(String label, bool selected, ColorScheme scheme, bool isDark) {
     final bg = selected
         ? scheme.primary.withValues(alpha: .12)
-        : (isDark ? AppTheme.surface : AppTheme.lightSurface);
+        : (isDark ? AppTheme.lightSurface : AppTheme.lightSurface);
     final fg = selected ? scheme.primary : scheme.onSurface;
 
     return GestureDetector(

@@ -134,7 +134,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                             fit: BoxFit.cover)
                         : Container(
                             color:
-                                isDark ? AppTheme.surface : AppTheme.lightSurface,
+                                isDark ? AppTheme.lightSurface : AppTheme.lightSurface,
                             child: Center(
                               child: Icon(Icons.add_photo_alternate,
                                   size: 56,
@@ -167,7 +167,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                     CircleAvatar(
                       radius: 64,
                       backgroundColor:
-                          isDark ? AppTheme.surface : AppTheme.lightSurface,
+                          isDark ? AppTheme.lightSurface : AppTheme.lightSurface,
                       backgroundImage: widget.model.localAvatarPath != null
                           ? FileImage(File(widget.model.localAvatarPath!))
                           : null,

@@ -19,7 +19,7 @@ class AuthRepository {
     required String password,
   }) async {
     try {
-      print('🔐 AuthRepository.loginWithUser: starting for $email');
+      // print('🔐 AuthRepository.loginWithUser: starting for $email');
 
       final res = await _client.dio.post('/auth/login',
           data: {'email': email, 'password': password});
@@ -45,10 +45,10 @@ class AuthRepository {
       await _storage.writeRefreshToken(refresh);
       await _storage.writeUserData(user);
 
-      print('✅ AuthRepository.loginWithUser: success for ${user.email}');
+      // print('✅ AuthRepository.loginWithUser: success for ${user.email}');
       return LoginResponse(tokens: tokens, user: user);
     } catch (e) {
-      print('❌ AuthRepository.loginWithUser error: $e');
+      // print('❌ AuthRepository.loginWithUser error: $e');
       rethrow;
     }
   }
@@ -78,16 +78,16 @@ class AuthRepository {
 
   
   Future<bool> refresh() async {
-    print('🔄 AuthRepository.refresh() called');
+    // print('🔄 AuthRepository.refresh() called');
     
     final refreshToken = await _storage.readRefreshToken();
     if (refreshToken == null) {
-      print('❌ No refresh token found');
+      // print('❌ No refresh token found');
       return false;
     }
 
     try {
-      print('🔄 Attempting token refresh...');
+      // print('🔄 Attempting token refresh...');
       final res = await _client.dio.post('/auth/refresh', 
         data: {'refreshToken': refreshToken}
       );
@@ -104,11 +104,11 @@ class AuthRepository {
         await _storage.writeRefreshToken(newRefresh);
       }
       
-      print('✅ Token refresh successful');
+      // print('✅ Token refresh successful');
       return true;
       
     } catch (e) {
-      print('❌ Token refresh failed: $e');
+      // print('❌ Token refresh failed: $e');
       // Clear tokens on refresh failure
       await _storage.clearAll();
       return false;
@@ -157,7 +157,7 @@ class AuthRepository {
   }
 
 Future<void> debugPrintStoredTokens() async {
-  print('🔍 DEBUG: Checking stored tokens...');
+  // print('🔍 DEBUG: Checking stored tokens...');
   final storage = SecureStorageService();
   final token = await storage.readAccessToken();
   final expiry = await storage.readAccessExpiry();
@@ -165,17 +165,17 @@ Future<void> debugPrintStoredTokens() async {
   final user = await storage.readUserData();
   final onboarding = await storage.readHasCompletedOnboarding();
   
-  print('  Access Token: ${token != null ? "Present (${token.length} chars)" : "NULL"}');
-  print('  Refresh Token: ${refresh != null ? "Present" : "NULL"}');
-  print('  Expiry: $expiry');
-  print('  User: ${user?.email ?? "NULL"}');
-  print('  Has completed onboarding: $onboarding');
+  // print('  Access Token: ${token != null ? "Present (${token.length} chars)" : "NULL"}');
+  // print('  Refresh Token: ${refresh != null ? "Present" : "NULL"}');
+  // print('  Expiry: $expiry');
+  // print('  User: ${user?.email ?? "NULL"}');
+  // print('  Has completed onboarding: $onboarding');
   
   if (expiry != null) {
     final now = DateTime.now();
-    print('  Token is ${expiry.isAfter(now) ? "VALID" : "EXPIRED"} (now: $now)');
+    // print('  Token is ${expiry.isAfter(now) ? "VALID" : "EXPIRED"} (now: $now)');
   }
   
-  print('  Token age: ${expiry != null ? DateTime.now().difference(expiry).inSeconds.abs() : "N/A"} seconds');
+  // print('  Token age: ${expiry != null ? DateTime.now().difference(expiry).inSeconds.abs() : "N/A"} seconds');
  }
 }

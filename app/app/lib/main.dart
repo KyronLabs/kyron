@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart'; // Add this import
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'services/draft_service.dart';
 import 'theme/app_theme.dart';
 import 'routes.dart';
@@ -8,11 +9,9 @@ import 'providers/auth_provider.dart';
 import 'screens/root_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setPathUrlStrategy(); // Removes # from URLs on web
-
+  setPathUrlStrategy();
 
   runApp(
     const ProviderScope(
@@ -21,19 +20,15 @@ void main() async {
   );
 }
 
-
 class KyronApp extends ConsumerStatefulWidget {
   const KyronApp({super.key});
-
 
   @override
   ConsumerState<KyronApp> createState() => _KyronAppState();
 }
 
-
 class _KyronAppState extends ConsumerState<KyronApp> {
   bool _isInitialized = false;
-
 
   @override
   void initState() {
@@ -41,32 +36,26 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     _initializeApp();
   }
 
-
   Future<void> _initializeApp() async {
-    // Wait a bit for everything to initialize
     await Future.delayed(const Duration(milliseconds: 100));
-    
-    // Run bootstrap
+
     ref.read(authNotifierProvider.notifier).bootstrap();
 
-    
-    // Pre-warm composer - ONLY on non-web platforms
     if (!kIsWeb) {
-      await DraftService().database; // Initialize DB in background
+      await DraftService().database;
     }
-    
+
     setState(() {
       _isInitialized = true;
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     if (!_isInitialized) {
-      return MaterialApp(
+      return const MaterialApp(
         home: Scaffold(
-          backgroundColor: AppTheme.background,
+          backgroundColor: AppTheme.lightBackground,
           body: Center(
             child: CircularProgressIndicator(
               color: AppTheme.accent,
@@ -75,7 +64,6 @@ class _KyronAppState extends ConsumerState<KyronApp> {
         ),
       );
     }
-
 
     return MaterialApp(
       title: 'Kyron',
@@ -87,5 +75,4 @@ class _KyronAppState extends ConsumerState<KyronApp> {
       onGenerateRoute: Routes.onGenerateRoute,
     );
   }
-  
 }
