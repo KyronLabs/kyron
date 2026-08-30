@@ -361,11 +361,12 @@ class AppTheme {
         hintStyle: TextStyle(color: lightTextSecondary),
         errorStyle: const TextStyle(color: errorPink),
       ),
-      appBarTheme: AppBarTheme(
+      primaryTextTheme: _baseTextTheme(lightTextPrimary, lightTextSecondary, lightTextTertiary),
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        centerTitle: false,
         titleTextStyle: TextStyle(
-          color: lightTextPrimary,
           fontSize: fontSize5,
           fontWeight: fontWeightSemibold,
           letterSpacing: 0,
@@ -415,19 +416,19 @@ class AppTheme {
           splashFactory: NoSplash.splashFactory,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 0,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      dividerTheme: DividerThemeData(
-        color: lightTextSecondary.withOpacity(0.2),
+      dividerTheme: const DividerThemeData(
+        color: Color(0xFFD9D9D9),
         thickness: 1,
         space: 1,
       ),
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: lightSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -435,13 +436,13 @@ class AppTheme {
           ),
         ),
       ),
-      dialogTheme: DialogTheme(
+      dialogTheme: const DialogThemeData(
         backgroundColor: lightSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      chipTheme: ChipThemeData(
+      chipTheme: const ChipThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
@@ -489,11 +490,12 @@ class AppTheme {
         hintStyle: TextStyle(color: darkTextSecondary),
         errorStyle: const TextStyle(color: errorPink),
       ),
-      appBarTheme: AppBarTheme(
+      primaryTextTheme: _baseTextTheme(darkTextPrimary, darkTextSecondary, darkTextTertiary),
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        centerTitle: false,
         titleTextStyle: TextStyle(
-          color: darkTextPrimary,
           fontSize: fontSize5,
           fontWeight: fontWeightSemibold,
           letterSpacing: 0,
@@ -543,7 +545,7 @@ class AppTheme {
           splashFactory: NoSplash.splashFactory,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 0,
         margin: EdgeInsets.zero,
         color: darkSurface,
@@ -551,12 +553,12 @@ class AppTheme {
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      dividerTheme: DividerThemeData(
-        color: darkTextSecondary.withOpacity(0.2),
+      dividerTheme: const DividerThemeData(
+        color: Color(0xFF384858),
         thickness: 1,
         space: 1,
       ),
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: darkSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -564,13 +566,13 @@ class AppTheme {
           ),
         ),
       ),
-      dialogTheme: DialogTheme(
+      dialogTheme: const DialogThemeData(
         backgroundColor: darkSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      chipTheme: ChipThemeData(
+      chipTheme: const ChipThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
@@ -613,11 +615,12 @@ class AppTheme {
         contentPadding: const EdgeInsets.symmetric(vertical: space16, horizontal: space16),
         hintStyle: TextStyle(color: dimTextSecondary),
       ),
-      appBarTheme: AppBarTheme(
+      primaryTextTheme: _baseTextTheme(dimTextPrimary, dimTextSecondary, dimTextTertiary),
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        centerTitle: false,
         titleTextStyle: TextStyle(
-          color: dimTextPrimary,
           fontSize: fontSize5,
           fontWeight: fontWeightSemibold,
           letterSpacing: 0,
@@ -642,7 +645,7 @@ class AppTheme {
           splashFactory: NoSplash.splashFactory,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 0,
         margin: EdgeInsets.zero,
         color: dimSurface,
@@ -650,12 +653,12 @@ class AppTheme {
           borderRadius: BorderRadius.circular(radius12),
         ),
       ),
-      dividerTheme: DividerThemeData(
-        color: dimTextSecondary.withOpacity(0.2),
+      dividerTheme: const DividerThemeData(
+        color: Color(0xFF485868),
         thickness: 1,
         space: 1,
       ),
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: dimSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -663,7 +666,7 @@ class AppTheme {
           ),
         ),
       ),
-      chipTheme: ChipThemeData(
+      chipTheme: const ChipThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
