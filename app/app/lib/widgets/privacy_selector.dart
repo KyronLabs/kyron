@@ -28,7 +28,3 @@ class PrivacySelector {
     debugPrint('Show detailed privacy');
   }
 }
-
-extension on BuildContext {
-  read(ProviderBase<Object?, dynamic> provider) {}
-}

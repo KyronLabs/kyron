@@ -41,7 +41,7 @@ class _MediaSelectorSheet extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             color: isDark ? AppTheme.lightSurface : AppTheme.lightSurface,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

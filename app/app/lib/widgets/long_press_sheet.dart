@@ -42,9 +42,9 @@ class LongPressSheet extends StatelessWidget {
                     onTap: () => Navigator.pop(context, items.keys.elementAt(i)),
                     shape: RoundedRectangleBorder(
                       borderRadius: i == 0
-                          ? const BorderRadius.vertical(top: Radius.circular(20))
+                          ? BorderRadius.vertical(top: Radius.circular(20))
                           : i == items.length - 1
-                              ? const BorderRadius.vertical(bottom: Radius.circular(20))
+                              ? BorderRadius.vertical(bottom: Radius.circular(20))
                               : BorderRadius.zero,
                     ),
                   ),

@@ -205,7 +205,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
         return Container(
           decoration: BoxDecoration(
             color: bg,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(
             children: [

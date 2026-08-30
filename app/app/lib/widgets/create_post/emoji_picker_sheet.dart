@@ -47,7 +47,7 @@ class __EmojiPickerWidgetState extends State<_EmojiPickerWidget> {
         return Container(
           decoration: BoxDecoration(
             color: isDark ? AppTheme.lightSurface : AppTheme.lightSurface,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(
             children: [

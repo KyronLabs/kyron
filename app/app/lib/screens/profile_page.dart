@@ -25,7 +25,6 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final ScrollController _scrollController = ScrollController();
   double _scrollOffset = 0;
-  int _selectedChipIndex = 0;
 
   // Mock data
   final Map<String, dynamic> _profileData = {
@@ -90,8 +89,6 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final backgroundColor = isDark ? AppTheme.darkBackground : AppTheme.lightBackgroundStart;
-    final surfaceColor = isDark ? AppTheme.darkSurface : AppTheme.lightSurface;
-    final textColor = isDark ? AppTheme.darkTextPrimary : AppTheme.lightTextPrimary;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
@@ -120,9 +117,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         fit: BoxFit.cover,
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) return child;
-                          return Container(color: surfaceColor);
+                          return Container(color: isDark ? AppTheme.darkSurface : AppTheme.lightSurface);
                         },
-                        errorBuilder: (context, error, stackTrace) => Container(color: surfaceColor),
+                        errorBuilder: (context, error, stackTrace) => Container(color: isDark ? AppTheme.darkSurface : AppTheme.lightSurface),
                       ),
                     Container(
                       decoration: BoxDecoration(
@@ -147,7 +144,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             CircleAvatar(
                               radius: 35,
                               backgroundImage: NetworkImage(_profileData['avatarUrl']!),
-                              backgroundColor: surfaceColor,
+                              backgroundColor: isDark ? AppTheme.darkSurface : AppTheme.lightSurface,
                             ),
                             const SizedBox(width: 16),
                             Column(
@@ -157,7 +154,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Text(
                                   _profileData['displayName']!,
                                   style: TextStyle(
-                                    color: textColor,
+                                    color: isDark ? AppTheme.darkTextPrimary : AppTheme.lightTextPrimary,
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -165,7 +162,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Text(
                                   _profileData['username']!,
                                   style: TextStyle(
-                                    color: textColor.withOpacity(0.7),
+                                    color: (isDark ? AppTheme.darkTextPrimary : AppTheme.lightTextPrimary).withOpacity(0.7),
                                     fontSize: 14,
                                   ),
                                 ),
@@ -181,11 +178,10 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             SliverToBoxAdapter(
               child: ProfileOrbit(
-                userId: widget.userId,
-                points: _profileData['kyronPoints'],
-                followers: _profileData['followers'],
-                following: _profileData['following'],
-                posts: _profileData['posts'],
+                coverUrl: _profileData['coverUrl']!,
+                avatarUrl: _profileData['avatarUrl']!,
+                displayName: _profileData['displayName']!,
+                did: _profileData['did']!,
                 scrollOffset: _scrollOffset,
               ),
             ),
@@ -193,10 +189,8 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               sliver: SliverToBoxAdapter(
                 child: ProfileChips(
-                  badges: _profileData['badges'],
-                  collections: _profileData['collections'],
-                  links: _profileData['links'],
-                  bio: _profileData['bio'],
+                  chips: _profileData['collections'],
+                  onChipSelected: (index) {},
                 ),
               ),
             ),
@@ -204,16 +198,16 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               sliver: SliverToBoxAdapter(
                 child: ProfilePassport(
-                  userId: widget.userId,
-                  displayName: _profileData['displayName']!,
-                  username: _profileData['username']!,
-                  did: _profileData['did']!,
+                  bio: _profileData['bio']!,
+                  links: _profileData['links'],
+                  onShowMoreLinks: () {},
                 ),
               ),
             ),
             SliverToBoxAdapter(
               child: ProfileGalaxy(
                 posts: _generateMockPosts(),
+                onPostTap: (index) {},
               ),
             ),
           ],
