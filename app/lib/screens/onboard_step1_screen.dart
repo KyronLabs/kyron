@@ -1,8 +1,12 @@
 // lib/screens/onboard_step1_screen.dart
 import 'dart:io';
+
 import 'package:flutter/material.dart';
+
 import '../services/profile_service.dart';
+
 import 'package:image_picker/image_picker.dart';
+
 import '../models/onboarding_model.dart';
 import '../routes.dart';
 import '../theme/app_theme.dart';
@@ -60,7 +64,8 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
   /* ---------- navigation ---------- */
   void _report(String message) {
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   Future<void> _next() async {
@@ -80,7 +85,9 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
         );
       } catch (e) {
         debugPrint('step1: updateProfile failed: $e');
-        _report('Could not save your profile. Check your connection and try again.');
+        _report(
+          'Could not save your profile. Check your connection and try again.',
+        );
         return;
       }
 
@@ -91,7 +98,9 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
       // without trapping anyone here.
       if (widget.model.localAvatarPath != null) {
         try {
-          await _profileService.uploadAvatar(File(widget.model.localAvatarPath!));
+          await _profileService.uploadAvatar(
+            File(widget.model.localAvatarPath!),
+          );
         } catch (e) {
           debugPrint('step1: avatar upload failed: $e');
           _report('Your photo could not be uploaded. You can add it later.');
@@ -117,7 +126,11 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
       }
 
       if (!mounted) return;
-      Navigator.pushNamed(context, Routes.onboardStep2, arguments: widget.model);
+      Navigator.pushNamed(
+        context,
+        Routes.onboardStep2,
+        arguments: widget.model,
+      );
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -161,17 +174,22 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                       children: [
                         Positioned.fill(
                           child: widget.model.localCoverPath != null
-                              ? Image.file(File(widget.model.localCoverPath!),
-                                  fit: BoxFit.cover)
+                              ? Image.file(
+                                  File(widget.model.localCoverPath!),
+                                  fit: BoxFit.cover,
+                                )
                               : Container(
                                   color: isDark
                                       ? AppTheme.surface
                                       : AppTheme.lightSurface,
                                   child: Center(
-                                    child: Icon(Icons.add_photo_alternate,
-                                        size: 56,
-                                        color: scheme.onSurface
-                                            .withValues(alpha: .35)),
+                                    child: Icon(
+                                      Icons.add_photo_alternate,
+                                      size: 56,
+                                      color: scheme.onSurface.withValues(
+                                        alpha: .35,
+                                      ),
+                                    ),
                                   ),
                                 ),
                         ),
@@ -208,14 +226,18 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                                   : AppTheme.lightSurface,
                               backgroundImage:
                                   widget.model.localAvatarPath != null
-                                      ? FileImage(
-                                          File(widget.model.localAvatarPath!))
-                                      : null,
+                                  ? FileImage(
+                                      File(widget.model.localAvatarPath!),
+                                    )
+                                  : null,
                               child: widget.model.localAvatarPath == null
-                                  ? Icon(Icons.person,
+                                  ? Icon(
+                                      Icons.person,
                                       size: 64,
-                                      color: scheme.onSurface
-                                          .withValues(alpha: .45))
+                                      color: scheme.onSurface.withValues(
+                                        alpha: .45,
+                                      ),
+                                    )
                                   : null,
                             ),
                             Positioned(
