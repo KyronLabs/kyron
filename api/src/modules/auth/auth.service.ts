@@ -18,6 +18,7 @@ import { EmailService } from '../../infrastructure/email/email.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { User, UserRole, AccountStatus, EmailStatus } from '@prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { getJwtSecret } from '../../config/jwt-secret';
 
 @Injectable()
 export class AuthService {
@@ -393,7 +394,7 @@ export class AuthService {
 
       const payload = { sub: user.id, role: user.role };
       const accessToken = this.jwt.sign(payload, {
-        secret: process.env.JWT_SECRET,
+        secret: getJwtSecret(),
         expiresIn: `${expiresIn}s`,
       });
 
