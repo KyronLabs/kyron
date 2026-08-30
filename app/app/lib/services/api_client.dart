@@ -5,7 +5,7 @@ class ApiClient {
   late final Dio dio;
   final SecureStorageService _storage = SecureStorageService();
 
-  // 🔥 Routes that should NOT have Authorization header
+  // f4a1 Routes that should NOT have Authorization header
   static const _publicRoutes = [
     '/auth/login',
     '/auth/register',
@@ -16,7 +16,7 @@ class ApiClient {
   ApiClient() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://api.kyron.spidroid.com',
+        baseUrl: 'https://kyron.fly.dev',
         connectTimeout: const Duration(seconds: 20),
         receiveTimeout: const Duration(seconds: 20),
       ),
@@ -32,7 +32,7 @@ class ApiClient {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    // 🔥 CRITICAL FIX: Skip auth header for public routes
+    // f4a1 CRITICAL FIX: Skip auth header for public routes
     final isPublicRoute = _publicRoutes.any((route) => options.path.endsWith(route));
     
     if (!isPublicRoute) {
@@ -40,10 +40,10 @@ class ApiClient {
       if (token != null && token.isNotEmpty) {
         options.headers.remove('Authorization');
         options.headers['Authorization'] = 'Bearer $token';
-        print('🔑 Added auth header to ${options.path}');
+        print('\u0001f4f1 Added auth header to ${options.path}');
       }
     } else {
-      print('🌐 Public route: ${options.path} (no auth header)');
+      print('\u0001f302 Public route: ${options.path} (no auth header)');
     }
 
     handler.next(options);
@@ -55,9 +55,9 @@ class ApiClient {
   ) async {
     final req = err.requestOptions;
 
-    // 401 → retry ONCE after refresh
+    // 401 f504 retry ONCE after refresh
     if (err.response?.statusCode == 401 && req.extra['retried'] != true) {
-      print('🔄 Got 401, attempting token refresh...');
+      print('\u0001f4e2 Got 401, attempting token refresh...');
       
       final refresh = await _storage.readRefreshToken();
       if (refresh != null) {
@@ -69,15 +69,15 @@ class ApiClient {
             req.headers['Authorization'] = 'Bearer $newAccess';
           }
           try {
-            print('🔁 Retrying request after refresh...');
+            print('\u0001f4e1 Retrying request after refresh...');
             final retryResponse = await dio.fetch(req);
             return handler.resolve(retryResponse);
           } catch (e) {
-            print('❌ Retry failed: $e');
+            print('\u0000274c Retry failed: $e');
           }
         }
       } else {
-        print('❌ No refresh token available');
+        print('\u0000274c No refresh token available');
       }
     }
 
@@ -87,7 +87,7 @@ class ApiClient {
   /// Refreshes tokens - returns true on success
   Future<bool> refreshTokens(String refreshToken) async {
     try {
-      print('🔄 ApiClient.refreshTokens: attempting refresh');
+      print('\u0001f4e2 ApiClient.refreshTokens: attempting refresh');
 
       final res = await dio.post(
         '/auth/refresh',
@@ -105,10 +105,10 @@ class ApiClient {
 
       dio.options.headers['Authorization'] = 'Bearer $access';
 
-      print('✅ ApiClient.refreshTokens: success');
+      print('\u00002705 ApiClient.refreshTokens: success');
       return true;
     } catch (e) {
-      print('❌ ApiClient.refreshTokens error: $e');
+      print('\u0000274c ApiClient.refreshTokens error: $e');
       await _storage.clearAll();
       return false;
     }
