@@ -7,7 +7,12 @@ import 'package:dio/dio.dart';
 /// someone to check their connection when the server is unreachable or
 /// returning a 500 sends them to fix something that is not broken, so the cases
 /// are kept apart here and a status code is always included when there is one.
-String describeApiError(Object error) {
+///
+/// Pass [sessionIsLive] when the caller still holds a valid signed-in session.
+/// It only changes what a 401 or 403 is allowed to claim: without it, every
+/// rejection is reported as an expired session, which is the wrong advice when
+/// the session is demonstrably fine and the server is the one refusing it.
+String describeApiError(Object error, {bool sessionIsLive = false}) {
   if (error is! DioException) return 'Something went wrong. Please try again.';
 
   switch (error.type) {
@@ -30,7 +35,13 @@ String describeApiError(Object error) {
       final status = error.response?.statusCode;
       if (status == null) return 'Kyron returned an unreadable response.';
       if (status == 401 || status == 403) {
-        return 'Your session has expired. Please sign in again.';
+        // "Sign in again" is a loop when the session is already valid: the user
+        // signs in, lands back on the same screen and gets the same error,
+        // because nothing about their credentials was ever the problem.
+        return sessionIsLive
+            ? 'Kyron could not verify your sign-in (error $status). That is a '
+                'problem on our end, not with your account.'
+            : 'Your session has expired. Please sign in again.';
       }
       if (status >= 500) {
         // Explicitly not the caller's connection.

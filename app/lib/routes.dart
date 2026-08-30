@@ -10,7 +10,7 @@ import 'screens/login_screen.dart';
 import 'screens/signup_screen.dart';
 import 'screens/forgot_password_screen.dart';
 import 'screens/signup_verify_email.dart';
-import 'screens/main_container.dart';
+import 'screens/root_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/notifications_screen.dart';
 import 'screens/webview_screen.dart';
@@ -90,8 +90,15 @@ class Routes {
       case '/forgot':
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
 
+      // The gate, not the app shell. Every way into the app arrives here --
+      // sign-in, sign-up, and the end of onboarding -- and RootScreen is the
+      // single place that chooses between the welcome screen, onboarding and
+      // MainContainer. Pointing this straight at MainContainer is what let
+      // sign-up drop people into a half-configured app: the onboarding check
+      // only ran on a cold start, so the launch right after signing up looked
+      // fine and the next one demanded a profile.
       case '/home':
-        return MaterialPageRoute(builder: (_) => const MainContainer());
+        return MaterialPageRoute(builder: (_) => const RootScreen());
 
       case '/profile':
         final args = settings.arguments;

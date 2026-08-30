@@ -20,6 +20,10 @@ class OnboardStep3Screen extends ConsumerStatefulWidget {
 class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
   final _profileService = ProfileService();
 
+  /// See [_OnboardStep1ScreenState]: a 401 while the session is valid is the
+  /// server refusing a good token, not an expired sign-in.
+  bool get _sessionIsLive => ref.read(authRepositoryProvider).hasValidSession;
+
   bool _loadingSuggestions = true;
   bool _finishing = false;
 
@@ -73,7 +77,8 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  'Could not follow everyone: ${describeApiError(e)}',
+                  'Could not follow everyone: '
+                  '${describeApiError(e, sessionIsLive: _sessionIsLive)}',
                 ),
               ),
             );
