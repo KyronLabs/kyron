@@ -24,8 +24,10 @@ export class PrismaService
         return;
       } catch (err) {
         attempts++;
-        this.logger.warn(`DB connect attempt ${attempts} failed, retrying in 2 s…`);
-        await new Promise(res => setTimeout(res, 2000));
+        this.logger.warn(
+          `DB connect attempt ${attempts} failed, retrying in 2 s…`,
+        );
+        await new Promise((res) => setTimeout(res, 2000));
       }
     }
     throw new Error('Could not connect to Postgres after 5 attempts');

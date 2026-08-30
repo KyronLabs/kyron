@@ -9,7 +9,9 @@ export class EmailService {
     this.logger.log('📨 Initializing SendGrid EmailService...');
     const apiKey = process.env.SENDGRID_API_KEY;
     if (!apiKey) {
-      this.logger.error('❌ SENDGRID_API_KEY is missing in environment variables.');
+      this.logger.error(
+        '❌ SENDGRID_API_KEY is missing in environment variables.',
+      );
       return;
     }
     this.logger.log(`🔐 SENDGRID_API_KEY loaded (length: ${apiKey.length})`);
@@ -17,18 +19,27 @@ export class EmailService {
     this.logger.log('🧪 sgMail object BEFORE setApiKey():');
     this.logger.log(JSON.stringify(Object.keys(sgMail)));
 
-    if ((sgMail as any).default && typeof (sgMail as any).default.setApiKey === 'function') {
-      this.logger.warn('⚠ sgMail is wrapped in default export. Using sgMail.default instead.');
+    if (
+      (sgMail as any).default &&
+      typeof (sgMail as any).default.setApiKey === 'function'
+    ) {
+      this.logger.warn(
+        '⚠ sgMail is wrapped in default export. Using sgMail.default instead.',
+      );
       (sgMail as any).default.setApiKey(apiKey);
       this.logger.log('✅ SendGrid initialized through sgMail.default');
       return;
     }
     if (typeof sgMail.setApiKey === 'function') {
       sgMail.setApiKey(apiKey);
-      this.logger.log('✅ SendGrid initialized normally via sgMail.setApiKey()');
+      this.logger.log(
+        '✅ SendGrid initialized normally via sgMail.setApiKey()',
+      );
       return;
     }
-    this.logger.error('❌ sgMail.setApiKey is NOT a function! Dumping sgMail object...');
+    this.logger.error(
+      '❌ sgMail.setApiKey is NOT a function! Dumping sgMail object...',
+    );
     this.logger.error(JSON.stringify(sgMail, null, 2));
     throw new Error('SendGrid initialization failed: setApiKey not found.');
   }
@@ -51,7 +62,10 @@ export class EmailService {
       await (sgMail as any).send(msg);
       this.logger.log(`✅ Verification email sent to ${email}`);
     } catch (err: any) {
-      this.logger.error('SendGrid raw error:', err.response?.body || err.message || err);
+      this.logger.error(
+        'SendGrid raw error:',
+        err.response?.body || err.message || err,
+      );
       throw new Error('Failed to send verification email');
     }
   }
@@ -75,7 +89,10 @@ export class EmailService {
       await (sgMail as any).send(msg);
       this.logger.log(`✅ Password reset email sent to ${email}`);
     } catch (err: any) {
-      this.logger.error('SendGrid raw error:', err.response?.body || err.message || err);
+      this.logger.error(
+        'SendGrid raw error:',
+        err.response?.body || err.message || err,
+      );
       throw new Error('Failed to send password reset email');
     }
   }

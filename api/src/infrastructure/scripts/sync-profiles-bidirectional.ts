@@ -40,13 +40,13 @@ async function syncProfiles() {
         // ========================================
         if (!user.profile) {
           console.log('   ⚠️  Missing Prisma profile, creating...');
-          
+
           await prisma.userProfile.create({
             data: {
               userId: user.id,
             },
           });
-          
+
           prismaCreated++;
           console.log('   ✅ Prisma profile created');
         } else {
@@ -64,25 +64,25 @@ async function syncProfiles() {
 
         if (!supabaseProfile) {
           console.log('   ⚠️  Missing Supabase profile, creating...');
-          
-          // Get the latest Prisma profile data
-          const latestProfile = user.profile || await prisma.userProfile.findUnique({
-            where: { userId: user.id },
-          });
 
-          const { error } = await supabase
-            .from('user_profiles')
-            .insert({
-              user_id: user.id,
-              avatar_url: latestProfile?.avatarUrl || null,
-              cover_url: latestProfile?.coverUrl || null,
-              bio: latestProfile?.bio || null,
-              location: latestProfile?.location || null,
-              website: latestProfile?.website || null,
-              display_name: user.name || user.username || null,
-              created_at: user.createdAt.toISOString(),
-              updated_at: new Date().toISOString(),
-            });
+          // Get the latest Prisma profile data
+          const latestProfile =
+            user.profile ||
+            (await prisma.userProfile.findUnique({
+              where: { userId: user.id },
+            }));
+
+          const { error } = await supabase.from('user_profiles').insert({
+            user_id: user.id,
+            avatar_url: latestProfile?.avatarUrl || null,
+            cover_url: latestProfile?.coverUrl || null,
+            bio: latestProfile?.bio || null,
+            location: latestProfile?.location || null,
+            website: latestProfile?.website || null,
+            display_name: user.name || user.username || null,
+            created_at: user.createdAt.toISOString(),
+            updated_at: new Date().toISOString(),
+          });
 
           if (error) {
             console.error('   ❌ Supabase creation failed:', error.message);
@@ -93,19 +93,21 @@ async function syncProfiles() {
           }
         } else {
           // Profile exists, check if we need to sync data from Prisma
-          const latestProfile = user.profile || await prisma.userProfile.findUnique({
-            where: { userId: user.id },
-          });
+          const latestProfile =
+            user.profile ||
+            (await prisma.userProfile.findUnique({
+              where: { userId: user.id },
+            }));
 
           if (latestProfile) {
-            const needsUpdate = 
+            const needsUpdate =
               supabaseProfile.avatar_url !== latestProfile.avatarUrl ||
               supabaseProfile.cover_url !== latestProfile.coverUrl ||
               supabaseProfile.bio !== latestProfile.bio;
 
             if (needsUpdate) {
               console.log('   🔄 Syncing Prisma data to Supabase...');
-              
+
               const { error } = await supabase
                 .from('user_profiles')
                 .update({
@@ -130,7 +132,6 @@ async function syncProfiles() {
             }
           }
         }
-
       } catch (err) {
         console.error(`   ❌ Error processing user ${user.id}:`, err);
         errors++;
@@ -141,22 +142,24 @@ async function syncProfiles() {
     // STEP 2: Check for orphaned Supabase profiles
     // ========================================
     console.log('\n\n🔍 Checking for orphaned Supabase profiles...');
-    
+
     const { data: allSupabaseProfiles } = await supabase
       .from('user_profiles')
       .select('user_id');
 
     let orphanedCount = 0;
-    
+
     if (allSupabaseProfiles) {
       for (const sp of allSupabaseProfiles) {
         const userExists = await prisma.user.findUnique({
           where: { id: sp.user_id },
         });
-        
+
         if (!userExists) {
           orphanedCount++;
-          console.log(`⚠️  Orphaned profile: ${sp.user_id} (user doesn't exist in Prisma)`);
+          console.log(
+            `⚠️  Orphaned profile: ${sp.user_id} (user doesn't exist in Prisma)`,
+          );
         }
       }
     }
@@ -180,7 +183,6 @@ async function syncProfiles() {
     } else {
       console.log('\n⚠️  Some errors occurred, check logs above');
     }
-
   } catch (error) {
     console.error('❌ Fatal error during sync:', error);
     throw error;

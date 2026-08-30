@@ -86,10 +86,7 @@ export class ProfileController {
   // PHASE 4: PUBLIC PROFILE
   // ==========================================
   @Get(':username')
-  async getPublicProfile(
-    @Param('username') username: string,
-    @Req() req: any,
-  ) {
+  async getPublicProfile(@Param('username') username: string, @Req() req: any) {
     // Optional: get viewerId from auth if logged in
     const viewerId = req.user?.id;
     return this.svc.getPublicProfile(username, viewerId);
@@ -113,7 +110,7 @@ export class ProfileController {
   @UseGuards(AuthGuard)
   @Post('avatar')
   async uploadAvatar(@Req() req: any) {
-    const userId = (req as any).user.id;
+    const userId = req.user.id;
 
     const file = await req.file();
     if (!file) throw new Error('No file uploaded');
@@ -133,7 +130,7 @@ export class ProfileController {
   @UseGuards(AuthGuard)
   @Post('cover')
   async uploadCover(@Req() req: any) {
-    const userId = (req as any).user.id;
+    const userId = req.user.id;
 
     const file = await req.file();
     if (!file) throw new Error('No file uploaded');

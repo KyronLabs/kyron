@@ -31,7 +31,12 @@ export class SupabaseService {
   // Storage helpers
   // ---------------------------
   /** Upload a Buffer (or Readable) to the bucket/folder and return { publicUrl, path } */
-  async uploadFile(folder: string, filename: string, fileBuf: Buffer, contentType?: string) {
+  async uploadFile(
+    folder: string,
+    filename: string,
+    fileBuf: Buffer,
+    contentType?: string,
+  ) {
     const path = `${folder}/${filename}`;
 
     const { error } = await this.client.storage
@@ -71,13 +76,17 @@ export class SupabaseService {
 
   /** Return public URL for path */
   getPublicUrl(path: string) {
-    const { data } = this.client.storage.from(this.bucketName).getPublicUrl(path);
+    const { data } = this.client.storage
+      .from(this.bucketName)
+      .getPublicUrl(path);
     return data?.publicUrl ?? null;
   }
 
   /** List files in a folder (for default_covers random pick) */
   async listFiles(folder: string, opts?: { limit?: number; offset?: number }) {
-    const { data, error } = await this.client.storage.from(this.bucketName).list(folder, opts);
+    const { data, error } = await this.client.storage
+      .from(this.bucketName)
+      .list(folder, opts);
     if (error) {
       this.logger.error('Supabase list error', error);
       throw error;
@@ -100,7 +109,9 @@ export class SupabaseService {
   // Use the Supabase client to operate on Supabase-managed tables.
   // ---------------------------
   async upsertProfileRow(profileRow: Record<string, any>) {
-    const { data, error } = await this.client.from('user_profiles').upsert(profileRow, { onConflict: 'user_id' });
+    const { data, error } = await this.client
+      .from('user_profiles')
+      .upsert(profileRow, { onConflict: 'user_id' });
     if (error) {
       this.logger.error('upsertProfileRow error', error);
       throw error;
@@ -109,7 +120,12 @@ export class SupabaseService {
   }
 
   async getProfileRow(userId: string) {
-    const { data, error } = await this.client.from('user_profiles').select('*').eq('user_id', userId).limit(1).maybeSingle();
+    const { data, error } = await this.client
+      .from('user_profiles')
+      .select('*')
+      .eq('user_id', userId)
+      .limit(1)
+      .maybeSingle();
     if (error) {
       this.logger.error('getProfileRow error', error);
       throw error;
@@ -119,13 +135,20 @@ export class SupabaseService {
 
   async replaceUserInterests(userId: string, interestIds: string[]) {
     // Delete existing
-    const { error: delErr } = await this.client.from('user_interests').delete().eq('user_id', userId);
+    const { error: delErr } = await this.client
+      .from('user_interests')
+      .delete()
+      .eq('user_id', userId);
     if (delErr) {
       this.logger.error('replaceUserInterests delete error', delErr);
       throw delErr;
     }
     if (interestIds.length === 0) return;
-    const rows = interestIds.map((id) => ({ id: this._uuid(), user_id: userId, interest_id: id }));
+    const rows = interestIds.map((id) => ({
+      id: this._uuid(),
+      user_id: userId,
+      interest_id: id,
+    }));
     const { error } = await this.client.from('user_interests').insert(rows);
     if (error) {
       this.logger.error('replaceUserInterests insert error', error);
@@ -134,7 +157,10 @@ export class SupabaseService {
   }
 
   async listInterests() {
-    const { data, error } = await this.client.from('interests').select('*').order('name', { ascending: true });
+    const { data, error } = await this.client
+      .from('interests')
+      .select('*')
+      .order('name', { ascending: true });
     if (error) {
       this.logger.error('listInterests error', error);
       throw error;
@@ -145,11 +171,14 @@ export class SupabaseService {
   // Small helper for uuidv4 to avoid adding uuid here
   private _uuid() {
     // simple fallback uuid generator (v4)
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      const r = (Math.random() * 16) | 0;
-      const v = c === 'x' ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+      /[xy]/g,
+      function (c) {
+        const r = (Math.random() * 16) | 0;
+        const v = c === 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      },
+    );
   }
 
   // Expose raw client if you ever need it

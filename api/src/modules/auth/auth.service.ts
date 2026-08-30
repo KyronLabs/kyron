@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   Injectable,
   BadRequestException,
@@ -59,7 +54,9 @@ export class AuthService {
       try {
         coverUrl = await this.supabase.getRandomDefaultCover();
       } catch (e) {
-        this.logger.error(`Failed to fetch default cover from storage: ${String(e)}`);
+        this.logger.error(
+          `Failed to fetch default cover from storage: ${String(e)}`,
+        );
         coverUrl = null;
       }
 
@@ -87,7 +84,7 @@ export class AuthService {
         where: { id: userId },
         select: { createdAt: true, name: true },
       });
-      
+
       await this.supabase.upsertProfileRow({
         user_id: userId,
         display_name: username || user?.name || null,
@@ -95,7 +92,9 @@ export class AuthService {
         updated_at: new Date().toISOString(),
       });
 
-      this.logger.log(`✅ Profile ensured for user ${userId} in both databases`);
+      this.logger.log(
+        `✅ Profile ensured for user ${userId} in both databases`,
+      );
     } catch (error) {
       this.logger.error(`❌ Failed to ensure profile for ${userId}:`, error);
       // Don't throw - this is a recovery mechanism
@@ -182,7 +181,10 @@ export class AuthService {
         });
         this.logger.log(`✅ User ${user.id} registered with dual-write`);
       } catch (error) {
-        this.logger.error(`⚠️ Supabase profile creation failed for ${user.id}:`, error);
+        this.logger.error(
+          `⚠️ Supabase profile creation failed for ${user.id}:`,
+          error,
+        );
         // Don't fail registration if Supabase write fails - it will sync later
       }
 
@@ -224,7 +226,9 @@ export class AuthService {
       }
 
       if (rec.expiresAt < new Date()) {
-        await this.prisma.emailVerification.delete({ where: { userId } }).catch(() => {});
+        await this.prisma.emailVerification
+          .delete({ where: { userId } })
+          .catch(() => {});
         throw new BadRequestException('Verification code expired');
       }
 
@@ -256,7 +260,9 @@ export class AuthService {
       });
 
       if (!user) {
-        throw new InternalServerErrorException('User not found after verification');
+        throw new InternalServerErrorException(
+          'User not found after verification',
+        );
       }
 
       // Ensure profile exists in both databases
@@ -274,7 +280,9 @@ export class AuthService {
         this.isError(error) ? error.stack : undefined,
       );
 
-      throw new InternalServerErrorException('Verification failed. Please try again.');
+      throw new InternalServerErrorException(
+        'Verification failed. Please try again.',
+      );
     }
   }
 

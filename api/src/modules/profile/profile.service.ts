@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import { Injectable, Logger, BadRequestException, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  BadRequestException,
+  NotFoundException,
+} from '@nestjs/common';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
@@ -53,9 +58,11 @@ export class ProfileService {
 
     // If Prisma profile is missing, try to sync from Supabase
     if (!prismaProfile) {
-      this.logger.warn(`User ${userId} missing Prisma profile, attempting Supabase sync`);
+      this.logger.warn(
+        `User ${userId} missing Prisma profile, attempting Supabase sync`,
+      );
       await this.syncProfileFromSupabase(userId);
-      
+
       // Retry after sync
       const syncedProfile = await this.prisma.userProfile.findUnique({
         where: { userId },
@@ -81,7 +88,7 @@ export class ProfileService {
   private async syncProfileFromSupabase(userId: string) {
     try {
       const supabaseProfile = await this.supabase.getProfileRow(userId);
-      
+
       if (supabaseProfile) {
         await this.prisma.userProfile.upsert({
           where: { userId },
@@ -101,11 +108,14 @@ export class ProfileService {
             website: supabaseProfile.website,
           },
         });
-        
+
         this.logger.log(`✅ Synced profile from Supabase for user ${userId}`);
       }
     } catch (error) {
-      this.logger.error(`Failed to sync from Supabase for user ${userId}:`, error);
+      this.logger.error(
+        `Failed to sync from Supabase for user ${userId}:`,
+        error,
+      );
     }
   }
 
@@ -256,9 +266,11 @@ export class ProfileService {
   // DUAL-WRITE OPERATIONS
   // These write to BOTH Prisma AND Supabase
   // ==========================================
-  
+
   private buildFileName(userId: string, prefix: string, originalName: string) {
-    const ext = originalName.includes('.') ? originalName.split('.').pop() : 'bin';
+    const ext = originalName.includes('.')
+      ? originalName.split('.').pop()
+      : 'bin';
     return `${userId}_${prefix}_${Date.now()}.${ext}`;
   }
 
@@ -290,7 +302,7 @@ export class ProfileService {
         update: { avatarUrl: publicUrl },
         create: { userId, avatarUrl: publicUrl },
       }),
-      
+
       // Write to Supabase (fast public reads)
       this.supabase.upsertProfileRow({
         user_id: userId,
@@ -331,7 +343,7 @@ export class ProfileService {
         update: { coverUrl: publicUrl },
         create: { userId, coverUrl: publicUrl },
       }),
-      
+
       // Write to Supabase (fast public reads)
       this.supabase.upsertProfileRow({
         user_id: userId,
@@ -367,7 +379,7 @@ export class ProfileService {
         : Promise.resolve(),
 
       // Update Prisma Profile
-      (bio !== undefined || location !== undefined || website !== undefined)
+      bio !== undefined || location !== undefined || website !== undefined
         ? this.prisma.userProfile.upsert({
             where: { userId },
             update: {
@@ -407,7 +419,7 @@ export class ProfileService {
   // ==========================================
   // READ OPERATIONS (Legacy/Helper Methods)
   // ==========================================
-  
+
   async getProfile(userId: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
@@ -537,7 +549,9 @@ export class ProfileService {
     if (matchErr) throw new Error(matchErr.message);
 
     const relatedUserIds = [
-      ...new Set(matches.map((m: any) => m.user_id).filter((id) => id !== userId)),
+      ...new Set(
+        matches.map((m: any) => m.user_id).filter((id) => id !== userId),
+      ),
     ];
 
     if (relatedUserIds.length === 0) {
