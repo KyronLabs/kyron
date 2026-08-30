@@ -66,7 +66,10 @@ async function bootstrap() {
   const port = config.get<number>('PORT', 3000);
 
   await app.listen(port, '0.0.0.0');
-  logger.log(`🚀 Kyron API (Fastify) running on http://localhost:${port}`);
+  // Report the address actually bound. This previously said "localhost", which
+  // reads as a loopback-only bind and is the first thing anyone checks when a
+  // platform reports the app is not reachable on 0.0.0.0.
+  logger.log(`🚀 Kyron API (Fastify) listening on 0.0.0.0:${port}`);
 
   const shutdown = async () => {
     logger.log('SIGINT/SIGTERM received: closing Nest app...');

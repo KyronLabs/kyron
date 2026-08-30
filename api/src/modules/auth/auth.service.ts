@@ -169,7 +169,25 @@ export class AuthService {
         },
       });
 
-      await this.emailService.sendVerifyCode(email, code);
+      try {
+        await this.emailService.sendVerifyCode(email, code);
+      } catch (emailError) {
+        // The user and emailVerification rows are already committed at this
+        // point, and nothing above is transactional. Without this compensation
+        // a failed send leaves the account alive in PENDING state: the caller
+        // sees a 500, and every retry then trips the "Email already registered"
+        // check above, so the address can neither register nor log in. Deleting
+        // the user cascades to emailVerification.
+        await this.prisma.user
+          .delete({ where: { id: user.id } })
+          .catch((cleanupError: unknown) => {
+            this.logger.error(
+              `Could not roll back user ${user.id} after the verification email failed; the account is left unverified and will block re-registration`,
+              this.isError(cleanupError) ? cleanupError.stack : undefined,
+            );
+          });
+        throw emailError;
+      }
 
       // DUAL-WRITE: Create profile in Supabase
       try {

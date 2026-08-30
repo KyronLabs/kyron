@@ -18,6 +18,22 @@ import { AuthGuard } from '../../common/guards/auth.guard';
 import { ProfileService } from './profile.service';
 import { Request } from 'express';
 
+/**
+ * The slice of the Fastify multipart request these handlers touch. Typed
+ * locally because @fastify/multipart augments FastifyRequest, which the Nest
+ * @Req() decorator does not surface here.
+ */
+interface MultipartFile {
+  filename: string;
+  mimetype: string;
+  toBuffer(): Promise<Buffer>;
+}
+
+interface MultipartRequest {
+  user: { id: string };
+  file(): Promise<MultipartFile | undefined>;
+}
+
 interface AuthRequest extends Request {
   user: {
     id: string;
@@ -109,7 +125,7 @@ export class ProfileController {
 
   @UseGuards(AuthGuard)
   @Post('avatar')
-  async uploadAvatar(@Req() req: any) {
+  async uploadAvatar(@Req() req: MultipartRequest) {
     const userId = req.user.id;
 
     const file = await req.file();
@@ -129,7 +145,7 @@ export class ProfileController {
 
   @UseGuards(AuthGuard)
   @Post('cover')
-  async uploadCover(@Req() req: any) {
+  async uploadCover(@Req() req: MultipartRequest) {
     const userId = req.user.id;
 
     const file = await req.file();

@@ -12,7 +12,7 @@ export class FeedService {
   private readonly logger = new Logger(FeedService.name);
   private posts: Post[] = [];
 
-  async createPost(p: Partial<Post>) {
+  createPost(p: Partial<Post>): Promise<Post> {
     const post: Post = {
       id: (Math.random() * 1e9).toFixed(0),
       authorId: p.authorId || 'anon',
@@ -21,10 +21,10 @@ export class FeedService {
     };
     this.posts.unshift(post);
     this.logger.log(`post created ${post.id}`);
-    return post;
+    return Promise.resolve(post);
   }
 
-  async listRecent(limit = 20) {
-    return this.posts.slice(0, limit);
+  listRecent(limit = 20): Promise<Post[]> {
+    return Promise.resolve(this.posts.slice(0, limit));
   }
 }

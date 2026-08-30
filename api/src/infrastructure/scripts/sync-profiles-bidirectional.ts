@@ -4,6 +4,14 @@
 import { PrismaClient } from '@prisma/client';
 import { createClient } from '@supabase/supabase-js';
 
+/** Columns this script reads back from the untyped supabase-js client. */
+interface SupabaseProfile {
+  user_id: string;
+  avatar_url?: string | null;
+  cover_url?: string | null;
+  bio?: string | null;
+}
+
 const prisma = new PrismaClient();
 
 async function syncProfiles() {
@@ -56,11 +64,11 @@ async function syncProfiles() {
         // ========================================
         // Check/Create Supabase profile
         // ========================================
-        const { data: supabaseProfile } = await supabase
+        const { data: supabaseProfile } = (await supabase
           .from('user_profiles')
           .select('*')
           .eq('user_id', user.id)
-          .maybeSingle();
+          .maybeSingle()) as { data: SupabaseProfile | null };
 
         if (!supabaseProfile) {
           console.log('   ⚠️  Missing Supabase profile, creating...');
@@ -143,9 +151,11 @@ async function syncProfiles() {
     // ========================================
     console.log('\n\n🔍 Checking for orphaned Supabase profiles...');
 
-    const { data: allSupabaseProfiles } = await supabase
+    const { data: allSupabaseProfiles } = (await supabase
       .from('user_profiles')
-      .select('user_id');
+      .select('user_id')) as {
+      data: Pick<SupabaseProfile, 'user_id'>[] | null;
+    };
 
     let orphanedCount = 0;
 

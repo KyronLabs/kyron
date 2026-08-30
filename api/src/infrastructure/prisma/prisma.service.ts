@@ -26,6 +26,7 @@ export class PrismaService
         attempts++;
         this.logger.warn(
           `DB connect attempt ${attempts} failed, retrying in 2 s…`,
+          err instanceof Error ? err.message : String(err),
         );
         await new Promise((res) => setTimeout(res, 2000));
       }

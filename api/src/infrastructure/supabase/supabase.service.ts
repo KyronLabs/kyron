@@ -2,6 +2,29 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
+/**
+ * Row shapes returned by the untyped supabase-js client. Declared locally
+ * rather than generated, so the client's `any` results stop leaking out of
+ * these methods into callers. The index signature keeps columns not listed
+ * here reachable without widening the whole result back to `any`.
+ */
+export interface ProfileRow {
+  user_id: string;
+  display_name?: string | null;
+  avatar_url?: string | null;
+  cover_url?: string | null;
+  bio?: string | null;
+  location?: string | null;
+  website?: string | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+}
+
+export interface InterestRow {
+  id: string;
+  name: string;
+}
+
 @Injectable()
 export class SupabaseService {
   private readonly logger = new Logger(SupabaseService.name);
@@ -119,7 +142,7 @@ export class SupabaseService {
     return data;
   }
 
-  async getProfileRow(userId: string) {
+  async getProfileRow(userId: string): Promise<ProfileRow | null> {
     const { data, error } = await this.client
       .from('user_profiles')
       .select('*')
@@ -130,7 +153,7 @@ export class SupabaseService {
       this.logger.error('getProfileRow error', error);
       throw error;
     }
-    return data;
+    return data as ProfileRow | null;
   }
 
   async replaceUserInterests(userId: string, interestIds: string[]) {
@@ -156,7 +179,7 @@ export class SupabaseService {
     }
   }
 
-  async listInterests() {
+  async listInterests(): Promise<InterestRow[]> {
     const { data, error } = await this.client
       .from('interests')
       .select('*')
@@ -165,7 +188,7 @@ export class SupabaseService {
       this.logger.error('listInterests error', error);
       throw error;
     }
-    return data;
+    return (data ?? []) as InterestRow[];
   }
 
   // Small helper for uuidv4 to avoid adding uuid here

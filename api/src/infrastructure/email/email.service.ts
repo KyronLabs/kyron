@@ -1,9 +1,53 @@
 import { Injectable, Logger } from '@nestjs/common';
 import sgMail from '@sendgrid/mail';
 
+/** The surface of @sendgrid/mail this service uses. */
+interface SendGridClient {
+  setApiKey(apiKey: string): void;
+  send(msg: {
+    to: string;
+    from: string;
+    subject: string;
+    html: string;
+  }): Promise<unknown>;
+}
+
+/**
+ * Depending on how the package resolves under CJS, the mail service can arrive
+ * either as the module itself or nested under `.default`. Pick whichever
+ * actually carries setApiKey, once, so call sites get a typed client.
+ */
+function resolveSendGridClient(): SendGridClient {
+  const mod = sgMail as unknown as SendGridClient & {
+    default?: SendGridClient;
+  };
+  return typeof mod.default?.setApiKey === 'function' ? mod.default : mod;
+}
+
+/** SendGrid's error shape when a send is rejected. */
+interface SendGridError {
+  response?: { body?: unknown };
+  message?: string;
+}
+
+function describeSendGridError(err: unknown): unknown {
+  const e = err as SendGridError;
+  return e?.response?.body ?? e?.message ?? err;
+}
+
 @Injectable()
 export class EmailService {
   private readonly logger = new Logger(EmailService.name);
+
+  /**
+   * False when SENDGRID_API_KEY was absent at construction. The constructor
+   * returns early in that case without calling setApiKey, so every send would
+   * otherwise reach SendGrid unauthenticated and come back "Permission denied,
+   * wrong credentials" -- which reads like a bad key rather than a missing one.
+   */
+  private configured = false;
+
+  private readonly client: SendGridClient = resolveSendGridClient();
 
   constructor() {
     this.logger.log('📨 Initializing SendGrid EmailService...');
@@ -14,29 +58,15 @@ export class EmailService {
       );
       return;
     }
+    this.configured = true;
     this.logger.log(`🔐 SENDGRID_API_KEY loaded (length: ${apiKey.length})`);
     this.logger.log(`📤 EMAIL_FROM = ${process.env.EMAIL_FROM}`);
-    this.logger.log('🧪 sgMail object BEFORE setApiKey():');
-    this.logger.log(JSON.stringify(Object.keys(sgMail)));
-
-    if (
-      (sgMail as any).default &&
-      typeof (sgMail as any).default.setApiKey === 'function'
-    ) {
-      this.logger.warn(
-        '⚠ sgMail is wrapped in default export. Using sgMail.default instead.',
-      );
-      (sgMail as any).default.setApiKey(apiKey);
-      this.logger.log('✅ SendGrid initialized through sgMail.default');
+    if (typeof this.client.setApiKey === 'function') {
+      this.client.setApiKey(apiKey);
+      this.logger.log('✅ SendGrid initialized');
       return;
     }
-    if (typeof sgMail.setApiKey === 'function') {
-      sgMail.setApiKey(apiKey);
-      this.logger.log(
-        '✅ SendGrid initialized normally via sgMail.setApiKey()',
-      );
-      return;
-    }
+    this.configured = false;
     this.logger.error(
       '❌ sgMail.setApiKey is NOT a function! Dumping sgMail object...',
     );
@@ -44,7 +74,17 @@ export class EmailService {
     throw new Error('SendGrid initialization failed: setApiKey not found.');
   }
 
+  private assertConfigured() {
+    if (!this.configured) {
+      throw new Error(
+        'SENDGRID_API_KEY is not set, so no mail can be sent. Set it on the ' +
+          'deployment (fly secrets set SENDGRID_API_KEY=...) and restart.',
+      );
+    }
+  }
+
   async sendVerifyCode(email: string, code: string) {
+    this.assertConfigured();
     this.logger.log(`➡ Sending verification code to: ${email}`);
     const msg = {
       to: email,
@@ -59,18 +99,16 @@ export class EmailService {
     };
     try {
       this.logger.debug('📤 Sending email via sgMail.send()...');
-      await (sgMail as any).send(msg);
+      await this.client.send(msg);
       this.logger.log(`✅ Verification email sent to ${email}`);
-    } catch (err: any) {
-      this.logger.error(
-        'SendGrid raw error:',
-        err.response?.body || err.message || err,
-      );
+    } catch (err: unknown) {
+      this.logger.error('SendGrid raw error:', describeSendGridError(err));
       throw new Error('Failed to send verification email');
     }
   }
 
   async sendPasswordReset(email: string, token: string) {
+    this.assertConfigured();
     this.logger.log(`➡ Sending password reset email to: ${email}`);
     const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
     const msg = {
@@ -86,13 +124,10 @@ export class EmailService {
     };
     try {
       this.logger.debug('📤 Sending email via sgMail.send()...');
-      await (sgMail as any).send(msg);
+      await this.client.send(msg);
       this.logger.log(`✅ Password reset email sent to ${email}`);
-    } catch (err: any) {
-      this.logger.error(
-        'SendGrid raw error:',
-        err.response?.body || err.message || err,
-      );
+    } catch (err: unknown) {
+      this.logger.error('SendGrid raw error:', describeSendGridError(err));
       throw new Error('Failed to send password reset email');
     }
   }
