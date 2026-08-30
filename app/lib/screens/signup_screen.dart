@@ -158,16 +158,17 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextSpan(
                       text: "Terms",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppTheme.accent,
-                        decoration: TextDecoration.underline,
-                      ),
+                            color: AppTheme.accent,
+                            decoration: TextDecoration.underline,
+                          ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Navigator.pushNamed(
                             context,
                             Routes.webview,
                             arguments: {
-                              "url": "https://kyron-terms-and-privacy.onrender.com/terms.html",
+                              "url":
+                                  "https://kyron-terms-and-privacy.onrender.com/terms.html",
                               "title": "Terms of Service",
                             },
                           );
@@ -180,16 +181,17 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextSpan(
                       text: "Privacy Policy",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppTheme.accent,
-                        decoration: TextDecoration.underline,
-                      ),
+                            color: AppTheme.accent,
+                            decoration: TextDecoration.underline,
+                          ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Navigator.pushNamed(
                             context,
                             Routes.webview,
                             arguments: {
-                              "url": "https://kyron-terms-and-privacy.onrender.com/privacy.html",
+                              "url":
+                                  "https://kyron-terms-and-privacy.onrender.com/privacy.html",
                               "title": "Privacy Policy",
                             },
                           );

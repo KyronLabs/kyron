@@ -162,9 +162,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 24),
-
             Expanded(child: _buildOptions(scheme, isDark)),
-
             const SizedBox(height: 16),
             AppButton(
               label: 'Next',
@@ -235,8 +233,8 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
             color: selected
                 ? scheme.primary.withValues(alpha: .35)
                 : (isDark
-                      ? Colors.transparent
-                      : scheme.onSurface.withValues(alpha: .12)),
+                    ? Colors.transparent
+                    : scheme.onSurface.withValues(alpha: .12)),
             width: 1,
           ),
         ),

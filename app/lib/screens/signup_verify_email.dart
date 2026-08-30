@@ -121,25 +121,19 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
           children: [
             const SizedBox(height: 40),
             Icon(Icons.email_outlined, size: 64, color: AppTheme.accent),
-
             const SizedBox(height: 24),
-
             Text(
               "Enter the 6-digit code",
               style: Theme.of(context).textTheme.displayLarge,
               textAlign: TextAlign.center,
             ),
-
             const SizedBox(height: 12),
-
             Text(
               "We sent it to ${widget.email}",
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
-
             const SizedBox(height: 40),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(6, (i) {
@@ -156,7 +150,9 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                     onChanged: (value) => _onDigitChanged(i, value),
-                    style: Theme.of(context).textTheme.displayLarge
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayLarge
                         ?.copyWith(fontSize: 28),
                     decoration: InputDecoration(
                       filled: true,
@@ -184,13 +180,9 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                 );
               }),
             ),
-
             const SizedBox(height: 32),
-
             AppButton(label: "Verify", onTap: _verify, isLoading: _isLoading),
-
             const Spacer(),
-
             Center(
               child: _canResend
                   ? TextButton(
@@ -199,7 +191,9 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                     )
                   : Text(
                       "Resend code in $_countdown seconds",
-                      style: Theme.of(context).textTheme.bodyMedium
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
                           ?.copyWith(color: AppTheme.lightTextSecondary),
                     ),
             ),

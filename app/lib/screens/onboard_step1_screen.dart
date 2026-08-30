@@ -225,10 +225,10 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                                   : AppTheme.lightSurface,
                               backgroundImage:
                                   widget.model.localAvatarPath != null
-                                  ? FileImage(
-                                      File(widget.model.localAvatarPath!),
-                                    )
-                                  : null,
+                                      ? FileImage(
+                                          File(widget.model.localAvatarPath!),
+                                        )
+                                      : null,
                               child: widget.model.localAvatarPath == null
                                   ? Icon(
                                       Icons.person,
@@ -257,7 +257,6 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                 ],
               ),
             ),
-
             const SizedBox(height: 24),
 
             /* ---------- TEXT FIELDS ---------- */
