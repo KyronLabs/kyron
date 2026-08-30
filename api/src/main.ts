@@ -41,8 +41,26 @@ async function bootstrap() {
     timeWindow: 60 * 1000,
   });
 
+  // CORS_ORIGIN is a comma-separated allow-list. Unset, we reflect whatever
+  // Origin the request carries -- which together with credentials:true lets any
+  // site issue authenticated cross-origin requests. That is fine locally and
+  // wrong in production, so warn loudly rather than throw: this check must not
+  // be able to take down a running deployment on its own.
+  const allowedOrigins = config
+    .get<string>('CORS_ORIGIN')
+    ?.split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+  if (!allowedOrigins?.length) {
+    logger.warn(
+      'CORS_ORIGIN is not set: reflecting any origin with credentials enabled. ' +
+        'Set it to a comma-separated allow-list before exposing this publicly.',
+    );
+  }
+
   app.enableCors({
-    origin: config.get('CORS_ORIGIN') || true,
+    origin: allowedOrigins?.length ? allowedOrigins : true,
     credentials: true,
   });
 

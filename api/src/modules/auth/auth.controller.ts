@@ -28,4 +28,11 @@ export class AuthController {
   refresh(@Body() dto: RefreshDto) {
     return this.auth.refreshTokens(dto.refreshToken);
   }
+
+  // The client has always posted here (auth_repository.dart logout()), but the
+  // route was never declared, so the refresh token outlived the session.
+  @Post('logout')
+  logout(@Body() dto: RefreshDto) {
+    return this.auth.logout(dto.refreshToken);
+  }
 }
