@@ -12,6 +12,12 @@ export class HealthController {
   @Get()
   async health() {
     const databaseReachable = await this.prisma.isReachable();
+    // Only on the failure path, and only when DNS actually has something to
+    // say. This endpoint exists so a misconfiguration can be diagnosed without
+    // log access, and "unreachable" alone has meant three different faults.
+    const databaseDetail = databaseReachable
+      ? null
+      : await this.prisma.diagnoseHost();
 
     return {
       // Deliberately still "ok" with the database down, and still HTTP 200.
@@ -21,6 +27,7 @@ export class HealthController {
       status: databaseReachable ? 'ok' : 'degraded',
       timestamp: Date.now(),
       database: databaseReachable ? 'reachable' : 'unreachable',
+      ...(databaseDetail ? { databaseDetail } : {}),
       // Which identity provider this deployment will accept tokens from, and
       // which signatures it can check. Every authenticated route fails when
       // either is wrong, and the only symptom used to be a 401 that looked

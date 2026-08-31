@@ -22,14 +22,20 @@ describe('HealthController', () => {
     else process.env.SUPABASE_JWT_SECRET = originalSecret;
   });
 
-  const controller = async (databaseReachable = true) => {
+  const controller = async (
+    databaseReachable = true,
+    diagnosis: string | null = null,
+  ) => {
     const moduleRef = await Test.createTestingModule({
       controllers: [HealthController],
       providers: [
         SupabaseTokenService,
         {
           provide: PrismaService,
-          useValue: { isReachable: () => Promise.resolve(databaseReachable) },
+          useValue: {
+            isReachable: () => Promise.resolve(databaseReachable),
+            diagnoseHost: () => Promise.resolve(diagnosis),
+          },
         },
       ],
     }).compile();
@@ -90,6 +96,38 @@ describe('HealthController', () => {
     // Auth config is still reported: whichever half is broken, the other one
     // should still be answerable in the same request.
     expect(body.auth.issuer).toBe('https://project-ref.supabase.co/auth/v1');
+  });
+
+  it('carries the DNS diagnosis when there is one', async () => {
+    // "unreachable" has meant three different faults: a hostname that does not
+    // exist, an IPv6-only host on a platform without IPv6, and a database that
+    // is genuinely down. This endpoint is the view from outside the machine,
+    // so the distinction belongs here and not only in the log.
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    const body = await (
+      await controller(false, 'db.x.supabase.co resolves only to IPv6')
+    ).health();
+
+    expect(body.database).toBe('unreachable');
+    expect(body.databaseDetail).toContain('only to IPv6');
+  });
+
+  it('omits the detail when DNS has nothing to add', async () => {
+    // The host resolves to IPv4, so the fault is past name resolution. An
+    // empty or speculative field would send someone the wrong way.
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    const body = await (await controller(false, null)).health();
+
+    expect(body.database).toBe('unreachable');
+    expect(body).not.toHaveProperty('databaseDetail');
+  });
+
+  it('never carries a detail while the database is reachable', async () => {
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    const body = await (await controller(true, 'stale explanation')).health();
+
+    expect(body.database).toBe('reachable');
+    expect(body).not.toHaveProperty('databaseDetail');
   });
 
   it('says so, and stays ok, when Supabase is not configured', async () => {
