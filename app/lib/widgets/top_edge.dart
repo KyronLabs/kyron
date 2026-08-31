@@ -64,7 +64,7 @@ class TopEdge extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: onSearchTap,
-                  icon: const Icon(Iconsax.search_normal_1, size: 22),
+                  icon: const Icon(Iconsax.search_normal_1_copy, size: 22),
                   tooltip: 'Search',
                   constraints: const BoxConstraints(
                     minWidth: 32,
@@ -78,7 +78,7 @@ class TopEdge extends StatelessWidget {
                 const SizedBox(width: 2),
                 IconButton(
                   onPressed: onNotificationTap,
-                  icon: const Icon(Iconsax.notification, size: 22),
+                  icon: const Icon(Iconsax.notification_copy, size: 22),
                   tooltip: 'Notifications',
                   constraints: const BoxConstraints(
                     minWidth: 32,

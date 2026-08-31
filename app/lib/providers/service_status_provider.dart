@@ -29,7 +29,27 @@ class ServiceStatus {
     required this.latency,
   });
 
-  bool get isHealthy => status == 'ok' && database == 'connected';
+  /// The API reports its database as `reachable` or `unreachable`, and its own
+  /// status as `ok` or `degraded`. Comparing against "connected" -- a word the
+  /// endpoint has never used -- made every healthy deployment show the red
+  /// "something is not right" banner over four rows that all read fine.
+  bool get isHealthy =>
+      status == 'ok' && database == 'reachable' && mirrorTables == 'present';
+
+  /// What is wrong, when something is. Null when everything checks out.
+  String? get problem {
+    if (database != 'reachable') {
+      return databaseDetail ?? 'Kyron cannot reach its database.';
+    }
+    if (mirrorTables == 'missing') {
+      return 'The database is missing tables this version needs.';
+    }
+    if (mirrorTables == 'unknown') {
+      return 'Kyron could not check its database tables.';
+    }
+    if (status != 'ok') return 'Kyron reported itself as "$status".';
+    return null;
+  }
 
   factory ServiceStatus.fromJson(
     Map<String, dynamic> json,

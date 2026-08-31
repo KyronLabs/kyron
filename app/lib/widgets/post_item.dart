@@ -156,7 +156,7 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
             : null,
       ),
       child: widget.post.mediaType == PostMediaType.video
-          ? const Center(child: Icon(Iconsax.play_circle, size: 48))
+          ? const Center(child: Icon(Iconsax.play_circle_copy, size: 48))
           : widget.post.mediaType == PostMediaType.arLens
               ? const Center(child: Text('AR Lens Preview'))
               : null,
@@ -263,7 +263,7 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
             )
           else
             IconButton(
-              icon: Icon(Iconsax.more, size: 20, color: scheme.onSurface),
+              icon: Icon(Iconsax.more_copy, size: 20, color: scheme.onSurface),
               onPressed: widget.onMore,
               constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
             ),
@@ -328,15 +328,15 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
       child: Row(
         children: [
           _Stat(
-              icon: Iconsax.heart,
+              icon: Iconsax.heart_copy,
               count: widget.post.likes,
               isActive: widget.post.isLiked),
           const SizedBox(width: 16),
-          _Stat(icon: Iconsax.message, count: widget.post.comments),
+          _Stat(icon: Iconsax.message_copy, count: widget.post.comments),
           const SizedBox(width: 16),
-          _Stat(icon: Iconsax.export_3, count: widget.post.reposts),
+          _Stat(icon: Iconsax.export_3_copy, count: widget.post.reposts),
           const SizedBox(width: 16),
-          _Stat(icon: Iconsax.eye, count: widget.post.reach),
+          _Stat(icon: Iconsax.eye_copy, count: widget.post.reach),
         ],
       ),
     );
@@ -349,29 +349,29 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _ActionButton(
-            icon: Iconsax.heart,
+            icon: Iconsax.heart_copy,
             isActive: widget.post.isLiked,
             onTap: widget.onLike,
             semanticsLabel: 'Like',
           ),
           _ActionButton(
-            icon: Iconsax.export_3,
+            icon: Iconsax.export_3_copy,
             onTap: widget.onRepost,
             semanticsLabel: 'Repost',
           ),
           _ActionButton(
-            icon: Iconsax.message,
+            icon: Iconsax.message_copy,
             onTap: widget.onComment,
             semanticsLabel: 'Comment',
           ),
           _ActionButton(
-            icon: Iconsax.bookmark,
+            icon: Iconsax.bookmark_copy,
             isActive: widget.post.isBookmarked,
             onTap: widget.onBookmark,
             semanticsLabel: 'Bookmark',
           ),
           _ActionButton(
-            icon: Iconsax.share,
+            icon: Iconsax.share_copy,
             onTap: widget.onShare,
             semanticsLabel: 'Share',
           ),
@@ -406,7 +406,7 @@ class _PostItemState extends State<PostItem> with TickerProviderStateMixin {
                       child: Transform.scale(
                         scale: 1.0 + (_likeController.value * 0.2),
                         child: Icon(
-                          Iconsax.heart,
+                          Iconsax.heart_copy,
                           size: 80,
                           color: scheme.primary,
                         ),
@@ -442,32 +442,32 @@ class _ActionSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
-            leading: const Icon(Iconsax.heart),
+            leading: const Icon(Iconsax.heart_copy),
             title: const Text('Like'),
             onTap: () => Navigator.pop(context, 'like'),
           ),
           ListTile(
-            leading: const Icon(Iconsax.message),
+            leading: const Icon(Iconsax.message_copy),
             title: const Text('Comment'),
             onTap: () => Navigator.pop(context, 'comment'),
           ),
           ListTile(
-            leading: const Icon(Iconsax.export_3),
+            leading: const Icon(Iconsax.export_3_copy),
             title: const Text('Repost'),
             onTap: () => Navigator.pop(context, 'repost'),
           ),
           ListTile(
-            leading: const Icon(Iconsax.bookmark),
+            leading: const Icon(Iconsax.bookmark_copy),
             title: const Text('Bookmark'),
             onTap: () => Navigator.pop(context, 'bookmark'),
           ),
           ListTile(
-            leading: const Icon(Iconsax.volume_slash),
+            leading: const Icon(Iconsax.volume_slash_copy),
             title: const Text('Mute'),
             onTap: () => Navigator.pop(context, 'mute'),
           ),
           ListTile(
-            leading: const Icon(Iconsax.trash),
+            leading: const Icon(Iconsax.trash_copy),
             title: const Text('Hide Post'),
             onTap: () => Navigator.pop(context, 'hide'),
           ),

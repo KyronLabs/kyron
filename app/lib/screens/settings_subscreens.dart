@@ -178,7 +178,8 @@ class _SettingsPasswordLoginScreenState
               decoration: InputDecoration(
                 labelText: 'New password',
                 suffixIcon: IconButton(
-                  icon: Icon(_obscure ? Iconsax.eye_slash : Iconsax.eye),
+                  icon: Icon(
+                      _obscure ? Iconsax.eye_slash_copy : Iconsax.eye_copy),
                   onPressed: () => setState(() => _obscure = !_obscure),
                 ),
               ),
@@ -359,7 +360,7 @@ class SettingsBlockedUsersScreen extends StatelessWidget {
     return const SettingsScaffold(
       title: 'Blocked Users',
       child: _Unavailable(
-        icon: Iconsax.user_minus,
+        icon: Iconsax.user_minus_copy,
         title: 'Blocking is not available yet',
         detail:
             'There is nothing behind this screen on the server, so an empty '
@@ -411,7 +412,7 @@ class SettingsFeedbackScreen extends StatelessWidget {
     return const SettingsScaffold(
       title: 'Send Feedback',
       child: _Unavailable(
-        icon: Iconsax.message_question,
+        icon: Iconsax.message_question_copy,
         title: 'Feedback has nowhere to go yet',
         detail:
             'A form here would accept what you write and drop it -- there is '
@@ -440,7 +441,7 @@ class _Note extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Iconsax.info_circle,
+          Icon(Iconsax.info_circle_copy,
               size: 18, color: scheme.onSurface.withValues(alpha: .6)),
           const SizedBox(width: SpacingTokens.space8),
           Expanded(

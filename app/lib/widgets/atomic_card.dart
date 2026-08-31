@@ -125,7 +125,7 @@ class _AtomicCardState extends State<AtomicCard>
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
                             return Icon(
-                              Iconsax.user,
+                              Iconsax.user_copy,
                               size: 20,
                               color: scheme.onSurface.withOpacity(0.6),
                             );

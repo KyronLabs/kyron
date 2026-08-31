@@ -8,7 +8,9 @@ import 'screens/about_subscreens.dart';
 import 'screens/coming_soon_screen.dart';
 import 'screens/edit_profile_screen.dart';
 import 'screens/help_screen.dart';
+import 'screens/post_analytics_screen.dart';
 import 'screens/post_collection_screen.dart';
+import 'screens/post_detail_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/settings_subscreens.dart';
@@ -47,6 +49,7 @@ class Routes {
   static const settings = '/settings';
   static const notifications = '/notifications';
   static const postDetail = '/post';
+  static const postAnalytics = '/post/analytics';
   static const profile = '/profile';
   static const editProfile = '/profile/edit';
   static const search = '/search';
@@ -140,6 +143,22 @@ class Routes {
 
       case notifications:
         return _page(const NotificationsScreen());
+
+      case postDetail:
+        final id = settings.arguments;
+        return _page(
+          id is String && id.isNotEmpty
+              ? PostDetailScreen(postId: id)
+              : const _UnknownRoute(name: postDetail),
+        );
+
+      case postAnalytics:
+        final id = settings.arguments;
+        return _page(
+          id is String && id.isNotEmpty
+              ? PostAnalyticsScreen(postId: id)
+              : const _UnknownRoute(name: postAnalytics),
+        );
 
       case help:
         return _page(const HelpScreen());

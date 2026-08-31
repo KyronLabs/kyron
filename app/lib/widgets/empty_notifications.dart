@@ -31,7 +31,7 @@ class EmptyNotifications extends StatelessWidget {
                     ),
                   ),
                   child: Icon(
-                    Iconsax.notification,
+                    Iconsax.notification_copy,
                     size: 60,
                     color: Colors.white.withOpacity(0.8),
                   ),
@@ -51,7 +51,7 @@ class EmptyNotifications extends StatelessWidget {
           const SizedBox(height: 16),
           ElevatedButton.icon(
             onPressed: () => Navigator.pushNamed(context, '/explore'),
-            icon: const Icon(Iconsax.search_normal),
+            icon: const Icon(Iconsax.search_normal_copy),
             label: const Text('Explore'),
             style: ElevatedButton.styleFrom(
               minimumSize: const Size(160, 48),

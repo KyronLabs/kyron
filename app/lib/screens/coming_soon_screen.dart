@@ -25,14 +25,14 @@ class ComingSoonScreen extends StatelessWidget {
 
   const ComingSoonScreen.arLens({super.key})
       : title = 'AR Lens',
-        icon = Iconsax.camera,
+        icon = Iconsax.camera_copy,
         detail =
             'Recording and publishing AR lenses is still being built. Nothing '
                 'you capture would be saved yet, so the camera stays closed.';
 
   const ComingSoonScreen.poll({super.key})
       : title = 'Poll',
-        icon = Iconsax.chart,
+        icon = Iconsax.chart_copy,
         detail =
             'Polls need somewhere to keep the options and count the votes. '
                 'That is not in place yet, so a poll posted today would lose '
@@ -40,7 +40,7 @@ class ComingSoonScreen extends StatelessWidget {
 
   const ComingSoonScreen.space({super.key})
       : title = 'Space',
-        icon = Iconsax.microphone,
+        icon = Iconsax.microphone_copy,
         detail = 'Live audio rooms need a media server Kyron does not run yet. '
             'Starting one now would put you in a room nobody could join.';
 
@@ -51,7 +51,7 @@ class ComingSoonScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
@@ -93,7 +93,7 @@ class ComingSoonScreen extends StatelessWidget {
                     context,
                     Routes.composer,
                   ),
-                  icon: const Icon(Iconsax.note_text, size: 18),
+                  icon: const Icon(Iconsax.note_text_copy, size: 18),
                   label: const Text('Write a text post instead'),
                 ),
               ],

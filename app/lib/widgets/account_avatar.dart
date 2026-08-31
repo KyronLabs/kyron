@@ -40,7 +40,7 @@ class AccountAvatar extends ConsumerWidget {
       radius: radius,
       backgroundColor: scheme.primary.withValues(alpha: 0.15),
       foregroundImage: avatarUrl == null ? null : NetworkImage(avatarUrl),
-      child: Icon(Iconsax.user, size: radius, color: scheme.primary),
+      child: Icon(Iconsax.user_copy, size: radius, color: scheme.primary),
     );
 
     if (ringColor != null) {

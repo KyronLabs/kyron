@@ -12,10 +12,10 @@ class CreateFab extends StatelessWidget {
   /// Each entry's icon and the route it opens. Every one of these went
   /// nowhere but Text Post, so three of the four closed the sheet in silence.
   static const _options = <String, ({IconData icon, String route})>{
-    'Text post': (icon: Iconsax.note_text, route: Routes.composer),
-    'AR Lens': (icon: Iconsax.camera, route: Routes.createArLens),
-    'Poll': (icon: Iconsax.chart, route: Routes.createPoll),
-    'Space (audio)': (icon: Iconsax.microphone, route: Routes.createSpace),
+    'Text post': (icon: Iconsax.note_text_copy, route: Routes.composer),
+    'AR Lens': (icon: Iconsax.camera_copy, route: Routes.createArLens),
+    'Poll': (icon: Iconsax.chart_copy, route: Routes.createPoll),
+    'Space (audio)': (icon: Iconsax.microphone_copy, route: Routes.createSpace),
   };
 
   @override

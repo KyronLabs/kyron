@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { FeedService } from './feed.service';
 import { CreatePostDto } from './dto/create-post.dto';
+import { CreateCommentDto } from './dto/create-comment.dto';
 import { ListFeedDto } from './dto/list-feed.dto';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
@@ -62,6 +63,62 @@ export class FeedController {
   @Get('saved')
   saved(@Req() req: AuthRequest, @Query() query: ListFeedDto) {
     return this.svc.listSaved(req.user.id, query.limit, query.cursor);
+  }
+
+  /** One post on its own, for the screen that shows it with its thread. */
+  @Get('posts/:id')
+  post(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.getPost(id, req.user.id);
+  }
+
+  @Get('posts/:id/comments')
+  comments(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Query() query: ListFeedDto,
+  ) {
+    return this.svc.listComments(id, req.user.id, query.limit, query.cursor);
+  }
+
+  @Post('posts/:id/comments')
+  addComment(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() dto: CreateCommentDto,
+  ) {
+    // The author is the token's subject, exactly as it is for a post.
+    return this.svc.addComment(id, req.user.id, dto.content, dto.parentId);
+  }
+
+  @Get('comments/:id/replies')
+  replies(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Query() query: ListFeedDto,
+  ) {
+    return this.svc.listReplies(id, req.user.id, query.limit, query.cursor);
+  }
+
+  @Delete('comments/:id')
+  async removeComment(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+  ) {
+    await this.svc.deleteComment(req.user.id, id);
+    return { ok: true };
+  }
+
+  /** Records that this reader opened the post. Idempotent per reader. */
+  @Put('posts/:id/view')
+  async view(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    await this.svc.recordView(id, req.user.id);
+    return { ok: true };
+  }
+
+  /** How a post is doing. Answers 404 to anyone but its author. */
+  @Get('posts/:id/analytics')
+  analytics(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.analytics(id, req.user.id);
   }
 
   @Put('posts/:id/like')

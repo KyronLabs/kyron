@@ -14,6 +14,9 @@ class FeedPost {
   /// How many people have liked it.
   final int likes;
 
+  /// How many comments and replies it has.
+  final int comments;
+
   /// Whether you have. Saves are private, so there is no count for them.
   final bool liked;
   final bool saved;
@@ -24,6 +27,7 @@ class FeedPost {
     required this.createdAt,
     required this.author,
     this.likes = 0,
+    this.comments = 0,
     this.liked = false,
     this.saved = false,
   });
@@ -38,16 +42,24 @@ class FeedPost {
           (json['author'] as Map<String, dynamic>?) ?? const {},
         ),
         likes: (json['likes'] as num?)?.toInt() ?? 0,
+        comments: (json['comments'] as num?)?.toInt() ?? 0,
         liked: json['likedByViewer'] == true,
         saved: json['savedByViewer'] == true,
       );
 
-  FeedPost copyWith({int? likes, bool? liked, bool? saved}) => FeedPost(
+  FeedPost copyWith({
+    int? likes,
+    int? comments,
+    bool? liked,
+    bool? saved,
+  }) =>
+      FeedPost(
         id: id,
         content: content,
         createdAt: createdAt,
         author: author,
         likes: likes ?? this.likes,
+        comments: comments ?? this.comments,
         liked: liked ?? this.liked,
         saved: saved ?? this.saved,
       );

@@ -82,6 +82,8 @@ model User {
   followers         Follow[]           @relation("following")
   likes             PostLike[]
   saves             PostSave[]
+  comments          Comment[]
+  views             PostView[]
   kyronPointEvents  KyronPointEvent[] // 🔥 NEW
 
   @@index([email])
@@ -126,9 +128,11 @@ model Post {
   createdAt DateTime  @default(now()) @db.Timestamptz()
   updatedAt DateTime  @updatedAt @db.Timestamptz()
 
-  author User      @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  likes  PostLike[]
-  saves  PostSave[]
+  author   User       @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  likes    PostLike[]
+  saves    PostSave[]
+  comments Comment[]
+  views    PostView[]
 
   @@index([authorId])
   // The feed's only ordering. id breaks ties so a cursor is stable when two
@@ -296,6 +300,58 @@ model PostSave {
   @@unique([userId, postId])
   @@index([postId])
   @@index([userId, createdAt(sort: Desc)])
+}
+
+// ==========================================
+// 11c. COMMENTS
+// ==========================================
+// Self-referencing, so a reply is a comment with a parent rather than a second
+// table. One level is what the screen renders: a reply to a reply is attached
+// to the same thread, because a tree deeper than that does not fit on a phone
+// and every client ends up flattening it anyway.
+model Comment {
+  id       String  @id @default(uuid()) @db.Uuid
+  postId   String  @db.Uuid
+  authorId String  @db.Uuid
+  parentId String? @db.Uuid
+  content  String  @db.Text
+
+  // Soft delete, for the same reason posts have one: a removed comment still
+  // holds its place in a cursor, and its replies still need a parent to hang
+  // off.
+  deletedAt DateTime? @db.Timestamptz()
+  createdAt DateTime  @default(now()) @db.Timestamptz()
+  updatedAt DateTime  @updatedAt @db.Timestamptz()
+
+  post    Post      @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  author  User      @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  parent  Comment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  replies Comment[] @relation("CommentReplies")
+
+  @@index([authorId])
+  // A post's top-level comments, oldest first -- the order a thread reads in.
+  @@index([postId, parentId, createdAt])
+  @@index([parentId, createdAt])
+}
+
+// ==========================================
+// 11d. POST VIEWS
+// ==========================================
+// One row per person per post, not per open: an impression counter that counts
+// the same person twice tells an author nothing, and refreshing would inflate
+// it without limit.
+model PostView {
+  id       String @id @default(uuid()) @db.Uuid
+  postId   String @db.Uuid
+  viewerId String @db.Uuid
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  viewer User @relation(fields: [viewerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([postId, viewerId])
+  @@index([postId, createdAt])
 }
 
 // ==========================================
