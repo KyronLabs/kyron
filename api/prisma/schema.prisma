@@ -36,46 +36,47 @@ enum AccountStatus {
 // 3.  CORE USER
 // ==========================================
 model User {
-  id                  String          @id @default(uuid()) @db.Uuid
-  email               String          @unique
-  username            String?         @unique
+  id       String        @id @default(uuid()) @db.Uuid
+  email    String        @unique
+  username String?       @unique
   // Nullable: accounts provisioned from a Supabase access token have no local
   // password. Supabase holds the credential; this row only mirrors the identity
   // so the relations below still have something to hang off.
-  password            String?
-  name                String?
-  role                UserRole        @default(USER)
-  status              AccountStatus   @default(ACTIVE)
+  password String?
+  name     String?
+  role     UserRole      @default(USER)
+  status   AccountStatus @default(ACTIVE)
 
   // 🔥 NEW: DID & Kyron Points
-  did                 String?         @unique
-  kyronPoints         Int             @default(0)
+  did         String? @unique
+  kyronPoints Int     @default(0)
 
   // Email verification
-  emailStatus         EmailStatus     @default(PENDING)
-  emailVerifiedAt     DateTime?
+  emailStatus     EmailStatus @default(PENDING)
+  emailVerifiedAt DateTime?
 
   // Security
-  failedLoginAttempts Int             @default(0)
+  failedLoginAttempts Int       @default(0)
   lockedUntil         DateTime?
   lastLoginAt         DateTime?
 
   // Timestamps
-  createdAt           DateTime        @default(now()) @db.Timestamptz()
-  updatedAt           DateTime        @updatedAt @db.Timestamptz()
-  deletedAt           DateTime?       @db.Timestamptz()
+  createdAt DateTime  @default(now()) @db.Timestamptz()
+  updatedAt DateTime  @updatedAt @db.Timestamptz()
+  deletedAt DateTime? @db.Timestamptz()
 
   // Relations
-  profile             UserProfile?
-  emailVerification   EmailVerification?
-  sessions            UserSession[]
-  refreshTokens       RefreshToken[]
-  passwordResets      PasswordReset[]
-  auditLogs           AuditLog[]
-  interests           UserInterest[]
-  followers           Follow[]        @relation("follower")
-  following           Follow[]        @relation("following")
-  kyronPointEvents    KyronPointEvent[] // 🔥 NEW
+  profile           UserProfile?
+  emailVerification EmailVerification?
+  sessions          UserSession[]
+  refreshTokens     RefreshToken[]
+  passwordResets    PasswordReset[]
+  auditLogs         AuditLog[]
+  interests         UserInterest[]
+  posts             Post[]
+  followers         Follow[]           @relation("follower")
+  following         Follow[]           @relation("following")
+  kyronPointEvents  KyronPointEvent[] // 🔥 NEW
 
   @@index([email])
   @@index([status])
@@ -96,9 +97,35 @@ model UserProfile {
   website     String?
   dateOfBirth DateTime? @db.Date
 
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([userId])
+}
+
+// ==========================================
+// 4b. POSTS
+// ==========================================
+// The feed used to live in a private array on FeedService: unauthenticated,
+// with the author taken from the request body, and emptied on every restart.
+// Render restarts the service when it goes idle, so in practice it was always
+// empty and the client rendered placeholders instead.
+model Post {
+  id       String @id @default(uuid()) @db.Uuid
+  authorId String @db.Uuid
+  content  String @db.Text
+
+  // Soft delete: a removed post still has to hold its place in a cursor, and
+  // deleting the row outright would silently shift every page after it.
+  deletedAt DateTime? @db.Timestamptz()
+  createdAt DateTime  @default(now()) @db.Timestamptz()
+  updatedAt DateTime  @updatedAt @db.Timestamptz()
+
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([authorId])
+  // The feed's only ordering. id breaks ties so a cursor is stable when two
+  // posts share a timestamp, which is common when seeding or importing.
+  @@index([createdAt(sort: Desc), id(sort: Desc)])
 }
 
 // ==========================================
@@ -112,23 +139,23 @@ model EmailVerification {
   createdAt DateTime @default(now()) @db.Timestamptz()
   attempts  Int      @default(0)
 
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 // ==========================================
 // 6.  SESSIONS
 // ==========================================
 model UserSession {
-  id           String    @id @default(uuid()) @db.Uuid
-  userId       String    @db.Uuid
-  token        String    @unique
+  id           String   @id @default(uuid()) @db.Uuid
+  userId       String   @db.Uuid
+  token        String   @unique
   ipAddress    String?
   userAgent    String?
-  createdAt    DateTime  @default(now()) @db.Timestamptz()
-  expiresAt    DateTime  @db.Timestamptz()
-  lastActivity DateTime  @default(now()) @db.Timestamptz()
+  createdAt    DateTime @default(now()) @db.Timestamptz()
+  expiresAt    DateTime @db.Timestamptz()
+  lastActivity DateTime @default(now()) @db.Timestamptz()
 
-  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([userId, expiresAt])
 }
@@ -144,7 +171,7 @@ model RefreshToken {
   createdAt DateTime @default(now()) @db.Timestamptz()
   sessionId String?
 
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([userId, expiresAt])
 }
@@ -160,22 +187,22 @@ model PasswordReset {
   createdAt DateTime  @default(now()) @db.Timestamptz()
   usedAt    DateTime? @db.Timestamptz()
 
-  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 // ==========================================
 // 9.  AUDIT LOG
 // ==========================================
 model AuditLog {
-  id        String    @id @default(uuid()) @db.Uuid
-  userId    String?   @db.Uuid
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String?  @db.Uuid
   action    String
   ipAddress String?
   userAgent String?
   details   Json?
-  createdAt DateTime  @default(now()) @db.Timestamptz()
+  createdAt DateTime @default(now()) @db.Timestamptz()
 
-  user      User?     @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
   @@index([userId, createdAt])
   @@index([action])
@@ -194,12 +221,12 @@ model Interest {
 }
 
 model UserInterest {
-  id         String    @id @default(uuid()) @db.Uuid
-  userId     String    @db.Uuid
-  interestId String    @db.Uuid
+  id         String @id @default(uuid()) @db.Uuid
+  userId     String @db.Uuid
+  interestId String @db.Uuid
 
-  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  interest   Interest  @relation(fields: [interestId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  interest Interest @relation(fields: [interestId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@unique([userId, interestId])
   @@index([userId])
@@ -215,8 +242,8 @@ model Follow {
   followingId String   @db.Uuid
   createdAt   DateTime @default(now()) @db.Timestamptz()
 
-  follower    User     @relation("follower", fields: [followerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  following   User     @relation("following", fields: [followingId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  follower  User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  following User @relation("following", fields: [followingId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@unique([followerId, followingId])
   @@index([followerId])

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import '../widgets/gradient_scaffold.dart';
 import '../widgets/app_button.dart';
 import '../routes.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../repositories/auth_repository.dart';
 import '../models/onboarding_model.dart';
 import '../utils/api_error_message.dart';
@@ -120,7 +120,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 40),
-            Icon(Icons.email_outlined, size: 64, color: AppTheme.accent),
+            Icon(Icons.email_outlined, size: 64, color: KyronTheme.accent),
             const SizedBox(height: 24),
             Text(
               "Enter the 6-digit code",
@@ -156,14 +156,14 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                         ?.copyWith(fontSize: 28),
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: AppTheme.lightSurface,
+                      fillColor: KyronTheme.lightSurface,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(
-                          color: AppTheme.lightTextSecondary.withValues(
+                          color: KyronTheme.lightTextSecondary.withValues(
                             alpha: 0.3,
                           ),
                         ),
@@ -171,7 +171,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(
-                          color: AppTheme.accent,
+                          color: KyronTheme.accent,
                           width: 2,
                         ),
                       ),
@@ -194,7 +194,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium
-                          ?.copyWith(color: AppTheme.lightTextSecondary),
+                          ?.copyWith(color: KyronTheme.lightTextSecondary),
                     ),
             ),
           ],

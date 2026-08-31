@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class PasswordRequirements extends StatelessWidget {
   final String password;
@@ -19,7 +19,7 @@ class PasswordRequirements extends StatelessWidget {
     // Dynamic colors
     final successColor = const Color(0xFF4CD4B0);
     final inactiveColor =
-        isDark ? const Color(0xFF7E8A9A) : AppTheme.lightTextSecondary;
+        isDark ? const Color(0xFF7E8A9A) : KyronTheme.lightTextSecondary;
     final textColor =
         ok ? (isDark ? Colors.white : scheme.onSurface) : inactiveColor;
 

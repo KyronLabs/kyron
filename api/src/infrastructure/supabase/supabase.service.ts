@@ -142,6 +142,31 @@ export class SupabaseService {
     return data;
   }
 
+  /**
+   * Whether the public mirror tables this API writes to actually exist.
+   *
+   * They live in the Supabase project rather than in Prisma's schema, so no
+   * migration in this repository can guarantee them and nothing fails until a
+   * write is attempted. When they were absent, every profile save answered 500
+   * and the only way to find out was to query PostgREST by hand.
+   */
+  async mirrorTablesPresent(): Promise<boolean> {
+    const results = await Promise.all(
+      ['user_profiles', 'interests', 'user_interests'].map(async (table) => {
+        const { error } = await this.client.from(table).select('*').limit(1);
+        if (!error) return true;
+        // PGRST205 is "table not in the schema cache" -- it does not exist.
+        if (error.code === 'PGRST205') return false;
+        // Anything else -- a bad key, a network failure -- means the check
+        // learned nothing. Throwing lets the caller report that honestly;
+        // returning true here reported the tables as present on the strength
+        // of a request that never reached the schema.
+        throw error;
+      }),
+    );
+    return results.every(Boolean);
+  }
+
   async getProfileRow(userId: string): Promise<ProfileRow | null> {
     const { data, error } = await this.client
       .from('user_profiles')

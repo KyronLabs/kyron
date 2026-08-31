@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class AppButton extends StatelessWidget {
   final String label;

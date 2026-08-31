@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class ProfilePassport extends StatelessWidget {
   final String bio;
@@ -49,7 +49,8 @@ class ProfilePassport extends StatelessWidget {
                       ),
                       if (link['verified']) ...[
                         const SizedBox(width: 4),
-                        Icon(Icons.verified, color: AppTheme.accent, size: 14),
+                        Icon(Icons.verified,
+                            color: KyronTheme.accent, size: 14),
                       ],
                     ],
                   ),
@@ -63,7 +64,7 @@ class ProfilePassport extends StatelessWidget {
               child: Text(
                 '+${links.length - 5} more',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: AppTheme.accent,
+                      color: KyronTheme.accent,
                     ),
               ),
             ),

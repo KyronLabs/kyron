@@ -8,7 +8,7 @@ import {
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
 import multipart from '@fastify/multipart';
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
@@ -67,6 +67,23 @@ async function bootstrap() {
     origin: allowedOrigins?.length ? allowedOrigins : true,
     credentials: true,
   });
+
+  // Nothing validated DTOs before this. Every class-validator decorator in the
+  // codebase was inert, which is why POST /auth/login with an empty body
+  // answered 500 rather than 400: the handler ran with undefined fields and
+  // threw somewhere further in.
+  //
+  // whitelist strips properties the DTO does not declare, rather than
+  // rejecting them, so a client sending an extra field keeps working. That
+  // stripping is also a control in its own right: it is what stops a body
+  // smuggling in a field a handler was not meant to accept.
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+      transformOptions: { enableImplicitConversion: false },
+    }),
+  );
 
   const port = config.get<number>('PORT', 3000);
 

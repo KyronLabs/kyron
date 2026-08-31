@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import '../../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class EmojiPickerSheet {
   static Future<Emoji?> show(BuildContext context) async {
@@ -46,7 +46,7 @@ class __EmojiPickerWidgetState extends State<_EmojiPickerWidget> {
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
-            color: isDark ? AppTheme.surface : AppTheme.lightSurface,
+            color: isDark ? KyronTheme.darkSurface : KyronTheme.lightSurface,
             borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(

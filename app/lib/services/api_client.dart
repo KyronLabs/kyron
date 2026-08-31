@@ -50,9 +50,7 @@ class ApiClient {
         options.headers.remove('Authorization');
         options.headers['Authorization'] = 'Bearer $token';
       }
-    } else {
-      print('🌐 Public route: ${options.path} (no auth header)');
-    }
+    } else {}
 
     handler.next(options);
   }

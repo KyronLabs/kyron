@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class AiAssistMenu {
   static Future<void> show(BuildContext context) async {
@@ -27,7 +27,7 @@ class _AiAssistPlaceholder extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: isDark ? AppTheme.surface : AppTheme.lightSurface,
+        color: isDark ? KyronTheme.darkSurface : KyronTheme.lightSurface,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../widgets/app_logo.dart';
 import '../widgets/google_button.dart';
 import '../widgets/app_button.dart';
@@ -61,7 +61,7 @@ class WelcomeScreen extends StatelessWidget {
                       child: Text(
                         'Terms of Service',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: AppTheme.accent,
+                              color: KyronTheme.accent,
                               decoration: TextDecoration.underline,
                             ),
                       ),
@@ -79,7 +79,7 @@ class WelcomeScreen extends StatelessWidget {
                       child: Text(
                         'Privacy Policy',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: AppTheme.accent,
+                              color: KyronTheme.accent,
                               decoration: TextDecoration.underline,
                             ),
                       ),

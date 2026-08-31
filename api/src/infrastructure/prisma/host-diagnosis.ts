@@ -15,6 +15,8 @@
  * both look exactly like an outage until someone resolves the host by hand.
  */
 
+import { isIP } from 'net';
+
 /** The DNS surface used here, injected so this is testable without a network. */
 export interface DnsResolver {
   resolve4(host: string): Promise<string[]>;
@@ -52,6 +54,11 @@ export async function diagnoseUnreachableHost(
   host: string,
   dns: DnsResolver,
 ): Promise<string | null> {
+  // A literal address is not a name and never resolves. Saying it "does not
+  // resolve" would be a confident, wrong answer -- the exact failure this file
+  // exists to prevent.
+  if (isIP(host) !== 0) return null;
+
   const [v4, v6] = await Promise.all([
     addressesOf((h) => dns.resolve4(h), host),
     addressesOf((h) => dns.resolve6(h), host),

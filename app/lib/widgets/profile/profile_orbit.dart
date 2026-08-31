@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class ProfileOrbit extends StatelessWidget {
   final String coverUrl;
@@ -60,7 +60,7 @@ class ProfileOrbit extends StatelessWidget {
                 CircleAvatar(
                   radius: 32,
                   backgroundImage: NetworkImage(avatarUrl),
-                  backgroundColor: AppTheme.surface,
+                  backgroundColor: KyronTheme.darkSurface,
                   onBackgroundImageError: (exception, stackTrace) {
                     debugPrint('Avatar image error: $exception');
                   },

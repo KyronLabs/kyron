@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_app/widgets/create_fab.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class BottomNavV4 extends StatelessWidget {
   final int currentIndex;
@@ -26,7 +26,7 @@ class BottomNavV4 extends StatelessWidget {
           border: Border(
               top: BorderSide(
                   color: scheme.outline.withValues(alpha: .15), width: .5)),
-          color: isDark ? AppTheme.surface : AppTheme.lightSurface,
+          color: isDark ? KyronTheme.darkSurface : KyronTheme.lightSurface,
         ),
         child: SafeArea(
           child: Row(

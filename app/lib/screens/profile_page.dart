@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../widgets/profile/profile_orbit.dart';
 //import '../widgets/profile/profile_dock.dart';
 import '../widgets/profile/profile_chips.dart';
@@ -116,9 +116,11 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final backgroundColor =
-        isDark ? AppTheme.background : AppTheme.lightBackgroundStart;
-    final surfaceColor = isDark ? AppTheme.surface : AppTheme.lightSurface;
-    final textColor = isDark ? AppTheme.textPrimary : AppTheme.lightTextPrimary;
+        isDark ? KyronTheme.darkBackground : KyronTheme.lightBackgroundStart;
+    final surfaceColor =
+        isDark ? KyronTheme.darkSurface : KyronTheme.lightSurface;
+    final textColor =
+        isDark ? KyronTheme.darkTextPrimary : KyronTheme.lightTextPrimary;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(

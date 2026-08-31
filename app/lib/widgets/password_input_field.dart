@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class PasswordInputField extends StatefulWidget {
   final TextEditingController? controller;
@@ -28,12 +28,13 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
     final scheme = Theme.of(context).colorScheme;
 
     // Dynamic colors based on theme
-    final fillColor = isDark ? const Color(0xFF1A1A1D) : AppTheme.lightSurface;
+    final fillColor =
+        isDark ? const Color(0xFF1A1A1D) : KyronTheme.lightSurface;
     final hintColor = isDark
         ? Colors.white.withValues(alpha: 0.6)
-        : AppTheme.lightTextSecondary;
+        : KyronTheme.lightTextSecondary;
     final iconColor =
-        isDark ? const Color(0xFF7E8A9A) : AppTheme.lightTextSecondary;
+        isDark ? const Color(0xFF7E8A9A) : KyronTheme.lightTextSecondary;
 
     return TextFormField(
       controller: widget.controller,

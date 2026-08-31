@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class WebViewScreen extends StatefulWidget {
   final String url;
@@ -102,7 +102,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall
-                    ?.copyWith(color: AppTheme.textSecondary),
+                    ?.copyWith(color: KyronTheme.darkTextSecondary),
               ),
           ],
         ),

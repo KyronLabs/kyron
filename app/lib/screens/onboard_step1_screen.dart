@@ -10,7 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import '../models/onboarding_model.dart';
 import '../repositories/auth_repository.dart';
 import '../routes.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/app_button.dart';
 import '../widgets/app_input_field.dart';
@@ -204,8 +204,8 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                                       errorBuilder: (context, error, stack) =>
                                           Container(
                                         color: isDark
-                                            ? AppTheme.surface
-                                            : AppTheme.lightSurface,
+                                            ? KyronTheme.darkSurface
+                                            : KyronTheme.lightSurface,
                                         child: Center(
                                           child: Icon(
                                             Icons.broken_image_outlined,
@@ -219,8 +219,8 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                                     )
                                   : Container(
                                       color: isDark
-                                          ? AppTheme.surface
-                                          : AppTheme.lightSurface,
+                                          ? KyronTheme.darkSurface
+                                          : KyronTheme.lightSurface,
                                       child: Center(
                                         child: Icon(
                                           Icons.add_photo_alternate,
@@ -261,8 +261,8 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
                             CircleAvatar(
                               radius: 64,
                               backgroundColor: isDark
-                                  ? AppTheme.surface
-                                  : AppTheme.lightSurface,
+                                  ? KyronTheme.darkSurface
+                                  : KyronTheme.lightSurface,
                               backgroundImage:
                                   widget.model.localAvatarPath != null
                                       ? FileImage(

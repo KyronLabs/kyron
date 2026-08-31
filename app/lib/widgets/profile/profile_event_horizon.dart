@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../../widgets/app_button.dart';
 
 class ProfileEventHorizon extends StatelessWidget {
@@ -26,10 +26,10 @@ class ProfileEventHorizon extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppTheme.surface.withOpacity(0.05),
+        color: KyronTheme.darkSurface.withOpacity(0.05),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppTheme.textSecondary.withOpacity(0.1),
+          color: KyronTheme.darkTextSecondary.withOpacity(0.1),
         ),
       ),
       child: Column(

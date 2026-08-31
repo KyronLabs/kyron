@@ -1,7 +1,7 @@
 // lib/widgets/app_input_field.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class AppInputField extends StatelessWidget {
   final String? hint;
@@ -35,10 +35,11 @@ class AppInputField extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final scheme = Theme.of(context).colorScheme;
 
-    final fillColor = isDark ? const Color(0xFF1A1A1D) : AppTheme.lightSurface;
+    final fillColor =
+        isDark ? const Color(0xFF1A1A1D) : KyronTheme.lightSurface;
     final hintColor = isDark
         ? Colors.white.withValues(alpha: 0.6)
-        : AppTheme.lightTextSecondary;
+        : KyronTheme.lightTextSecondary;
     final hasPrefix = prefix != null;
 
     return TextFormField(

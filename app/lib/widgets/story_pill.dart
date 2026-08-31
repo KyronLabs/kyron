@@ -1,7 +1,7 @@
 // lib/widgets/story_pill.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/stories_provider.dart';
 
 class StoryPill extends StatefulWidget {

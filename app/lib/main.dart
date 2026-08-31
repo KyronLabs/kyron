@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'; // Add this import
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'services/draft_service.dart';
-import 'theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import 'routes.dart';
 import 'providers/auth_provider.dart';
 import 'screens/root_screen.dart';
@@ -74,10 +74,10 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     if (!_isInitialized) {
       return MaterialApp(
         home: Scaffold(
-          backgroundColor: AppTheme.background,
+          backgroundColor: KyronTheme.darkBackground,
           body: Center(
             child: CircularProgressIndicator(
-              color: AppTheme.accent,
+              color: KyronTheme.accent,
             ),
           ),
         ),
@@ -87,8 +87,8 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     return MaterialApp(
       title: 'Kyron',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
+      theme: KyronTheme.lightTheme,
+      darkTheme: KyronTheme.darkTheme,
       themeMode: ThemeMode.system,
       home: const RootScreen(),
       onGenerateRoute: Routes.onGenerateRoute,

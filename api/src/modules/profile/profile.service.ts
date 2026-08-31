@@ -369,7 +369,7 @@ export class ProfileService {
   ) {
     const { name, bio, location, website, coverUrl, interests } = payload;
 
-    // DUAL-WRITE: Update both databases
+    // Prisma is the source of truth and must succeed.
     await Promise.all([
       // Update Prisma User (if name changed)
       name !== undefined
@@ -401,9 +401,16 @@ export class ProfileService {
             },
           })
         : Promise.resolve(),
+    ]);
 
-      // Update Supabase (public-facing)
-      this.supabase.upsertProfileRow({
+    // The Supabase row mirrors that for public reads. It used to sit in the
+    // same Promise.all, so a mirror that could not be written failed the whole
+    // request -- and when public.user_profiles did not exist in the project at
+    // all, every save answered 500 and "Create your profile" could not be
+    // completed by anyone. A mirror is not worth blocking the write it mirrors.
+    let mirrored = true;
+    try {
+      await this.supabase.upsertProfileRow({
         user_id: userId,
         display_name: name ?? undefined,
         bio: bio ?? undefined,
@@ -411,16 +418,33 @@ export class ProfileService {
         website: website ?? undefined,
         cover_url: coverUrl ?? undefined,
         updated_at: new Date().toISOString(),
-      }),
-    ]);
+      });
+    } catch (error) {
+      // Loud, because the consequence is real even though it is not fatal:
+      // this row is what other people see, and what a fresh install reads to
+      // decide whether onboarding is already done.
+      mirrored = false;
+      this.logger.error(
+        `Saved the profile for ${userId} but could not mirror it to Supabase. ` +
+          'Public reads will not see it until this is fixed; if the table is ' +
+          'missing, apply the user_profiles migration to the project this API ' +
+          'is configured for.',
+        error instanceof Error ? error.stack : String(error),
+      );
+    }
 
-    // Handle interests (Supabase only for now)
+    // Interests live only in Supabase, so a failure here is data loss rather
+    // than a stale mirror. It stays fatal, and stays after the writes above so
+    // it cannot roll them back.
     if (Array.isArray(interests)) {
       await this.supabase.replaceUserInterests(userId, interests);
     }
 
-    this.logger.log(`✅ Profile updated for ${userId} (dual-write)`);
-    return { ok: true };
+    this.logger.log(
+      `✅ Profile updated for ${userId}` +
+        (mirrored ? ' (dual-write)' : ' (Prisma only -- mirror failed)'),
+    );
+    return { ok: true, mirrored };
   }
 
   // ==========================================
