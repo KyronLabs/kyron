@@ -14,7 +14,7 @@ const row = (id: string, createdAt = new Date()) => ({
     username: 'author',
     profile: { avatarUrl: 'https://example.test/a.png' },
   },
-  _count: { likes: 0 },
+  _count: { likes: 0, comments: 0 },
   // Empty means the reader has not liked or saved it: the relation is filtered
   // to their own row, so at most one ever comes back.
   likes: [] as { id: string }[],
@@ -31,9 +31,45 @@ describe('FeedService', () => {
   const post = {
     create: jest.fn<Promise<Row>, [unknown]>(),
     findMany: jest.fn<Promise<Row[]>, [unknown]>(),
-    findFirst: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
+    findFirst: jest.fn<Promise<Record<string, unknown> | null>, [unknown]>(),
     findUnique: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
     updateMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
+  };
+
+  /** A comment row in the shape commentShape selects. */
+  const commentRow = (id: string, parentId: string | null = null) => ({
+    id,
+    content: `comment ${id}`,
+    createdAt: new Date(),
+    parentId,
+    authorId: 'author-1',
+    author: {
+      id: 'author-1',
+      name: 'Author',
+      username: 'author',
+      profile: { avatarUrl: null },
+    },
+    _count: { replies: 0 },
+  });
+
+  type CommentRow = ReturnType<typeof commentRow>;
+
+  const comment = {
+    create: jest.fn<Promise<CommentRow>, [unknown]>(),
+    findMany: jest.fn<Promise<CommentRow[]>, [unknown]>(),
+    findFirst: jest.fn<
+      Promise<{ id: string; parentId?: string | null } | null>,
+      [unknown]
+    >(),
+    findUnique: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
+    updateMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
+    count: jest.fn<Promise<number>, [unknown]>(),
+  };
+
+  const postView = {
+    upsert: jest.fn<Promise<unknown>, [unknown]>(),
+    count: jest.fn<Promise<number>, [unknown]>(),
+    findMany: jest.fn<Promise<{ createdAt: Date }[]>, [unknown]>(),
   };
 
   const relation = () => ({
@@ -51,7 +87,10 @@ describe('FeedService', () => {
     const moduleRef = await Test.createTestingModule({
       providers: [
         FeedService,
-        { provide: PrismaService, useValue: { post, postLike, postSave } },
+        {
+          provide: PrismaService,
+          useValue: { post, postLike, postSave, comment, postView },
+        },
       ],
     }).compile();
     return moduleRef.get(FeedService);
@@ -162,11 +201,16 @@ describe('FeedService', () => {
   describe('viewer state on a post', () => {
     it("reports a post the reader has liked, and the post's total", async () => {
       post.findMany.mockResolvedValue([
-        { ...row('a'), _count: { likes: 7 }, likes: [{ id: 'like-1' }] },
+        {
+          ...row('a'),
+          _count: { likes: 7, comments: 2 },
+          likes: [{ id: 'like-1' }],
+        },
       ]);
       const page = await (await service()).listRecent(VIEWER, 20);
 
       expect(page.items[0].likes).toBe(7);
+      expect(page.items[0].comments).toBe(2);
       expect(page.items[0].likedByViewer).toBe(true);
       expect(page.items[0].savedByViewer).toBe(false);
     });
@@ -268,6 +312,172 @@ describe('FeedService', () => {
         (await service()).listSaved(VIEWER, 20, 'gone'),
       ).rejects.toThrow(NotFoundException);
       expect(postSave.findMany).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('addComment', () => {
+    it('takes the author from its argument and trims the content', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      comment.create.mockResolvedValue(commentRow('c1'));
+      await (await service()).addComment('p1', 'user-9', '  hi  ');
+
+      expect(comment.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            postId: 'p1',
+            authorId: 'user-9',
+            content: 'hi',
+            parentId: null,
+          }) as unknown,
+        }),
+      );
+    });
+
+    it('attaches a reply to a reply to the same thread, not a third level', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      // The comment being replied to is itself a reply, under 'top'.
+      comment.findFirst.mockResolvedValue({ id: 'c2', parentId: 'top' });
+      comment.create.mockResolvedValue(commentRow('c3', 'top'));
+
+      await (await service()).addComment('p1', 'u', 'nested', 'c2');
+
+      expect(comment.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({ parentId: 'top' }) as unknown,
+        }),
+      );
+    });
+
+    it('refuses a parent comment that belongs to another post', async () => {
+      // Scoped by postId, so an id lifted from a different thread matches
+      // nothing rather than being grafted on.
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      comment.findFirst.mockResolvedValue(null);
+
+      await expect(
+        (await service()).addComment('p1', 'u', 'hi', 'elsewhere'),
+      ).rejects.toThrow(NotFoundException);
+      expect(comment.create).not.toHaveBeenCalled();
+    });
+
+    it('refuses to comment on a post that is deleted or missing', async () => {
+      post.findFirst.mockResolvedValue(null);
+
+      await expect(
+        (await service()).addComment('gone', 'u', 'hi'),
+      ).rejects.toThrow(NotFoundException);
+    });
+  });
+
+  describe('listComments', () => {
+    it('reads a thread oldest first, top level only', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      comment.findMany.mockResolvedValue([]);
+      await (await service()).listComments('p1', VIEWER, 20);
+
+      expect(comment.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { postId: 'p1', parentId: null, deletedAt: null },
+          // A conversation reads in the order it happened, unlike every other
+          // list here.
+          orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+        }),
+      );
+    });
+
+    it('marks the reader own comments so they can delete them', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      comment.findMany.mockResolvedValue([
+        commentRow('c1'),
+        { ...commentRow('c2'), authorId: VIEWER },
+      ]);
+
+      const page = await (await service()).listComments('p1', VIEWER, 20);
+
+      expect(page.items.map((c) => c.mine)).toEqual([false, true]);
+    });
+  });
+
+  describe('deleteComment', () => {
+    it('soft deletes, scoped to the author', async () => {
+      comment.updateMany.mockResolvedValue({ count: 1 });
+      await (await service()).deleteComment('user-1', 'c1');
+
+      expect(comment.updateMany).toHaveBeenCalledWith({
+        where: { id: 'c1', authorId: 'user-1', deletedAt: null },
+        data: { deletedAt: expect.any(Date) as unknown },
+      });
+    });
+
+    it("reports not found for someone else's comment", async () => {
+      comment.updateMany.mockResolvedValue({ count: 0 });
+
+      await expect(
+        (await service()).deleteComment('someone-else', 'c1'),
+      ).rejects.toThrow(NotFoundException);
+    });
+  });
+
+  describe('recordView', () => {
+    it('counts a reader once, however many times they open it', async () => {
+      post.findFirst.mockResolvedValue({ authorId: 'someone-else' });
+      await (await service()).recordView('p1', VIEWER);
+
+      expect(postView.upsert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { postId_viewerId: { postId: 'p1', viewerId: VIEWER } },
+          update: {},
+        }),
+      );
+    });
+
+    it("does not count the author's own opens as reach", async () => {
+      post.findFirst.mockResolvedValue({ authorId: VIEWER });
+      await (await service()).recordView('p1', VIEWER);
+
+      expect(postView.upsert).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('analytics', () => {
+    it('answers 404 to anyone but the author', async () => {
+      // Forbidden would confirm the post exists to someone with no business
+      // knowing its reach.
+      post.findFirst.mockResolvedValue({
+        id: 'p1',
+        authorId: 'someone-else',
+        createdAt: new Date(),
+      });
+
+      await expect((await service()).analytics('p1', VIEWER)).rejects.toThrow(
+        NotFoundException,
+      );
+    });
+
+    it('groups views by day, oldest first', async () => {
+      post.findFirst.mockResolvedValue({
+        id: 'p1',
+        authorId: VIEWER,
+        createdAt: new Date('2026-08-30T00:00:00Z'),
+      });
+      postView.count.mockResolvedValue(3);
+      postLike.count.mockResolvedValue(1);
+      postSave.count.mockResolvedValue(0);
+      comment.count.mockResolvedValue(2);
+      postView.findMany.mockResolvedValue([
+        { createdAt: new Date('2026-08-30T09:00:00Z') },
+        { createdAt: new Date('2026-08-30T18:00:00Z') },
+        { createdAt: new Date('2026-08-31T07:00:00Z') },
+      ]);
+
+      const report = await (await service()).analytics('p1', VIEWER);
+
+      expect(report.views).toBe(3);
+      expect(report.comments).toBe(2);
+      expect(report.timeline).toEqual([
+        { date: '2026-08-30', views: 2 },
+        { date: '2026-08-31', views: 1 },
+      ]);
     });
   });
 

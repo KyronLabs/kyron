@@ -21,16 +21,20 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   // Filter tabs
   final List<Map<String, dynamic>> _filters = [
-    {'label': 'All', 'icon': Iconsax.notification, 'type': null},
-    {'label': 'Likes', 'icon': Iconsax.heart, 'type': NotificationType.like},
+    {'label': 'All', 'icon': Iconsax.notification_copy, 'type': null},
+    {
+      'label': 'Likes',
+      'icon': Iconsax.heart_copy,
+      'type': NotificationType.like
+    },
     {
       'label': 'Comments',
-      'icon': Iconsax.message,
+      'icon': Iconsax.message_copy,
       'type': NotificationType.comment
     },
     {
       'label': 'Follows',
-      'icon': Iconsax.user_add,
+      'icon': Iconsax.user_add_copy,
       'type': NotificationType.follow
     },
   ];
@@ -169,7 +173,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       backgroundColor: scheme.background,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(

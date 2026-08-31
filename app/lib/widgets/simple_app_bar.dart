@@ -59,7 +59,7 @@ class SimpleAppBar extends StatelessWidget {
               onPressed: () => Navigator.pushNamed(context, Routes.search),
               tooltip: 'Search',
               icon: Icon(
-                Iconsax.search_normal_1,
+                Iconsax.search_normal_1_copy,
                 color: scheme.onSurface.withValues(alpha: 0.7),
                 size: 22,
               ),
@@ -69,7 +69,7 @@ class SimpleAppBar extends StatelessWidget {
                   () => Navigator.pushNamed(context, Routes.settings),
               tooltip: 'Settings',
               icon: Icon(
-                Iconsax.setting_2,
+                Iconsax.setting_2_copy,
                 color: scheme.onSurface.withValues(alpha: 0.7),
                 size: 22,
               ),

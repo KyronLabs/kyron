@@ -51,8 +51,10 @@ class SlidingDrawerContent extends ConsumerWidget {
             ),
             const SizedBox(height: SpacingTokens.space16),
             _sectionDivider(scheme),
-            _navigation(context),
-            const Spacer(),
+            // Expanded, with no Spacer under it. Both were flexible before, so
+            // the list and the gap below it split the leftover space evenly
+            // and the last item was cut off halfway down.
+            Expanded(child: _navigation(context)),
             _footer(context, scheme),
             SizedBox(height: MediaQuery.of(context).padding.bottom + 6),
           ],
@@ -86,7 +88,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                   foregroundImage: user.avatarUrl == null
                       ? null
                       : NetworkImage(user.avatarUrl!),
-                  child: Icon(Iconsax.user,
+                  child: Icon(Iconsax.user_copy,
                       size: 24, color: scheme.onTertiaryContainer),
                 ),
               ),
@@ -244,7 +246,8 @@ class SlidingDrawerContent extends ConsumerWidget {
               color: scheme.errorContainer,
               border: Border.all(color: scheme.error, width: 2),
             ),
-            child: Icon(Iconsax.user, size: 24, color: scheme.onErrorContainer),
+            child: Icon(Iconsax.user_copy,
+                size: 24, color: scheme.onErrorContainer),
           ),
           const SizedBox(height: SpacingTokens.space12),
           Text(
@@ -286,47 +289,45 @@ class SlidingDrawerContent extends ConsumerWidget {
       );
 
   Widget _navigation(BuildContext context) {
-    return Flexible(
-      child: ListView(
-        padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          _pillButton(
-            context,
-            icon: Iconsax.people,
-            label: 'Communities',
-            onTap: () {
-              onCloseDrawer();
-              onSelectTab?.call(communitiesTab);
-            },
-          ),
-          _pillButton(
-            context,
-            icon: Iconsax.archive_add,
-            label: 'Saved posts',
-            onTap: () => _go(context, Routes.savedPosts),
-          ),
-          _pillButton(
-            context,
-            icon: Iconsax.heart,
-            label: 'Liked posts',
-            onTap: () => _go(context, Routes.likedPosts),
-          ),
-          _pillButton(
-            context,
-            icon: Iconsax.setting,
-            label: 'Settings',
-            onTap: () => _go(context, Routes.settings),
-          ),
-          _pillButton(
-            context,
-            icon: Iconsax.info_circle,
-            label: 'Help & Support',
-            onTap: () => _go(context, Routes.help),
-          ),
-        ],
-      ),
+    return ListView(
+      padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
+      // Scrollable rather than shrink-wrapped: on a short screen, or at a
+      // large text size, the items no longer have to fit to be reachable.
+      children: [
+        _pillButton(
+          context,
+          icon: Iconsax.people_copy,
+          label: 'Communities',
+          onTap: () {
+            onCloseDrawer();
+            onSelectTab?.call(communitiesTab);
+          },
+        ),
+        _pillButton(
+          context,
+          icon: Iconsax.archive_add_copy,
+          label: 'Saved posts',
+          onTap: () => _go(context, Routes.savedPosts),
+        ),
+        _pillButton(
+          context,
+          icon: Iconsax.heart_copy,
+          label: 'Liked posts',
+          onTap: () => _go(context, Routes.likedPosts),
+        ),
+        _pillButton(
+          context,
+          icon: Iconsax.setting_copy,
+          label: 'Settings',
+          onTap: () => _go(context, Routes.settings),
+        ),
+        _pillButton(
+          context,
+          icon: Iconsax.info_circle_copy,
+          label: 'Help & Support',
+          onTap: () => _go(context, Routes.help),
+        ),
+      ],
     );
   }
 
@@ -434,10 +435,10 @@ class SlidingDrawerContent extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _chipButton(context, 'Help', Iconsax.info_circle,
+              _chipButton(context, 'Help', Iconsax.info_circle_copy,
                   onTap: () => _go(context, Routes.help)),
               const SizedBox(width: SpacingTokens.space12),
-              _chipButton(context, 'Feedback', Iconsax.message_edit,
+              _chipButton(context, 'Feedback', Iconsax.message_edit_copy,
                   onTap: () => _go(context, Routes.settingsFeedback)),
             ],
           ),
@@ -598,7 +599,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                   const SnackBar(content: Text('DID copied to clipboard')),
                 );
               },
-              icon: const Icon(Iconsax.copy, size: 18),
+              icon: const Icon(Iconsax.copy_copy, size: 18),
               label: const Text('Copy'),
               style: FilledButton.styleFrom(
                 minimumSize: const Size.fromHeight(48),

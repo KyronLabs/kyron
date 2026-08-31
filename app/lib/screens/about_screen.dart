@@ -52,7 +52,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
@@ -66,7 +66,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             const SizedBox(height: SpacingTokens.space16),
             _group('Legal'),
             _Row(
-              icon: Iconsax.document_text,
+              icon: Iconsax.document_text_copy,
               label: LegalLinks.termsTitle,
               onTap: () => Navigator.pushNamed(
                 context,
@@ -75,7 +75,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
               ),
             ),
             _Row(
-              icon: Iconsax.shield_tick,
+              icon: Iconsax.shield_tick_copy,
               label: LegalLinks.privacyTitle,
               onTap: () => Navigator.pushNamed(
                 context,
@@ -86,19 +86,19 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             _divider(scheme),
             _group('Diagnostics'),
             _Row(
-              icon: Iconsax.status_up,
+              icon: Iconsax.status_up_copy,
               label: 'Service status',
               subtitle: 'Whether Kyron is reachable right now',
               onTap: () => Navigator.pushNamed(context, Routes.aboutStatus),
             ),
             _Row(
-              icon: Iconsax.document_code,
+              icon: Iconsax.document_code_copy,
               label: 'System log',
               subtitle: 'What this app has been doing',
               onTap: () => Navigator.pushNamed(context, Routes.aboutSystemLog),
             ),
             _Row(
-              icon: Iconsax.warning_2,
+              icon: Iconsax.warning_2_copy,
               label: 'Send error report',
               subtitle: 'Share the log with support',
               onTap: () =>
@@ -107,7 +107,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             _divider(scheme),
             _group('Storage'),
             _Row(
-              icon: Iconsax.trash,
+              icon: Iconsax.trash_copy,
               label: 'Clear cache',
               subtitle: _cacheBytes == null
                   ? 'Measuring…'
@@ -123,10 +123,10 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             _divider(scheme),
             _group('Build'),
             _Row(
-              icon: Iconsax.mobile,
+              icon: Iconsax.mobile_copy,
               label: 'App version',
               subtitle: _info?.display ?? 'Reading…',
-              trailing: const Icon(Iconsax.copy, size: 18),
+              trailing: const Icon(Iconsax.copy_copy, size: 18),
               onTap: _info == null ? null : () => _copyBuild(_info!),
             ),
             const SizedBox(height: SpacingTokens.space40),
@@ -208,7 +208,8 @@ class _Wordmark extends StatelessWidget {
             color: scheme.primary.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
           ),
-          child: Icon(Iconsax.flash_circle, size: 32, color: scheme.primary),
+          child:
+              Icon(Iconsax.flash_circle_copy, size: 32, color: scheme.primary),
         ),
         const SizedBox(height: SpacingTokens.space12),
         Text('Kyron', style: Theme.of(context).textTheme.titleLarge),
@@ -246,7 +247,7 @@ class _Row extends StatelessWidget {
       leading: Icon(icon, size: 20),
       title: Text(label),
       subtitle: subtitle == null ? null : Text(subtitle!),
-      trailing: trailing ?? const Icon(Iconsax.arrow_right_3, size: 18),
+      trailing: trailing ?? const Icon(Iconsax.arrow_right_3_copy, size: 18),
       onTap: onTap,
       enabled: onTap != null,
     );

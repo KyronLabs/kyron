@@ -14,9 +14,48 @@ export interface FeedPost {
   };
   /** How many people have liked it. */
   likes: number;
+  /** How many comments and replies it has. */
+  comments: number;
   /** Whether the reader has. Saves are private, so there is no count. */
   likedByViewer: boolean;
   savedByViewer: boolean;
+}
+
+/** One comment, or one reply to a comment. */
+export interface FeedComment {
+  id: string;
+  content: string;
+  createdAt: Date;
+  author: {
+    id: string;
+    name: string | null;
+    username: string | null;
+    avatarUrl: string | null;
+  };
+  /** Null on a top-level comment. */
+  parentId: string | null;
+  /** How many replies hang off it. Always 0 on a reply. */
+  replies: number;
+  /** Whether the reader wrote it, and so may delete it. */
+  mine: boolean;
+}
+
+export interface CommentPage {
+  items: FeedComment[];
+  nextCursor: string | null;
+}
+
+/** What an author can see about their own post. */
+export interface PostAnalytics {
+  postId: string;
+  createdAt: Date;
+  /** Distinct people who opened it. Counted once each, not per open. */
+  views: number;
+  likes: number;
+  saves: number;
+  comments: number;
+  /** Views per day since it was posted, oldest first. */
+  timeline: { date: string; views: number }[];
 }
 
 export interface FeedPage {
@@ -242,6 +281,250 @@ export class FeedService {
     if (!post) throw new NotFoundException('Post not found.');
   }
 
+  /** One post on its own, for the screen that shows it with its thread. */
+  async getPost(postId: string, viewerId: string): Promise<FeedPost> {
+    const post = await this.prisma.post.findFirst({
+      where: { id: postId, deletedAt: null },
+      select: this.shapeFor(viewerId),
+    });
+    if (!post) throw new NotFoundException('Post not found.');
+    return this.toFeedPost(post);
+  }
+
+  /**
+   * Records that someone opened a post.
+   *
+   * One row per person per post: an impression count that rises every time the
+   * same reader refreshes tells the author nothing. The author's own opens are
+   * not counted -- checking your own post is not reach.
+   */
+  async recordView(postId: string, viewerId: string): Promise<void> {
+    const post = await this.prisma.post.findFirst({
+      where: { id: postId, deletedAt: null },
+      select: { authorId: true },
+    });
+    if (!post) throw new NotFoundException('Post not found.');
+    if (post.authorId === viewerId) return;
+
+    await this.prisma.postView.upsert({
+      where: { postId_viewerId: { postId, viewerId } },
+      create: { postId, viewerId },
+      update: {},
+    });
+  }
+
+  /**
+   * A post's top-level comments, oldest first.
+   *
+   * Oldest first, unlike every other list here: a thread is a conversation and
+   * reads in the order it happened. The cursor is therefore ascending too.
+   */
+  async listComments(
+    postId: string,
+    viewerId: string,
+    limit = DEFAULT_LIMIT,
+    cursor?: string,
+  ): Promise<CommentPage> {
+    await this.requireVisiblePost(postId);
+    return this.commentPage(
+      { postId, parentId: null, deletedAt: null },
+      viewerId,
+      limit,
+      cursor,
+    );
+  }
+
+  /** The replies under one comment, oldest first. */
+  async listReplies(
+    commentId: string,
+    viewerId: string,
+    limit = DEFAULT_LIMIT,
+    cursor?: string,
+  ): Promise<CommentPage> {
+    const parent = await this.prisma.comment.findFirst({
+      where: { id: commentId, deletedAt: null },
+      select: { id: true },
+    });
+    if (!parent) throw new NotFoundException('Comment not found.');
+
+    return this.commentPage(
+      { parentId: commentId, deletedAt: null },
+      viewerId,
+      limit,
+      cursor,
+    );
+  }
+
+  /**
+   * Adds a comment, or a reply to one.
+   *
+   * A reply to a reply is attached to the thread it is already in rather than
+   * nesting a third level: the screen renders two, and a deeper tree would be
+   * flattened on the way out anyway.
+   */
+  async addComment(
+    postId: string,
+    authorId: string,
+    content: string,
+    parentId?: string,
+  ): Promise<FeedComment> {
+    await this.requireVisiblePost(postId);
+
+    let threadParentId: string | null = null;
+    if (parentId) {
+      const parent = await this.prisma.comment.findFirst({
+        where: { id: parentId, postId, deletedAt: null },
+        select: { id: true, parentId: true },
+      });
+      // Scoped to this post, so a comment id from another thread cannot be
+      // grafted onto it.
+      if (!parent) throw new NotFoundException('Comment not found.');
+      threadParentId = parent.parentId ?? parent.id;
+    }
+
+    const comment = await this.prisma.comment.create({
+      data: {
+        postId,
+        authorId,
+        parentId: threadParentId,
+        content: content.trim(),
+      },
+      select: this.commentShape,
+    });
+    return this.toFeedComment(comment, authorId);
+  }
+
+  /** Soft delete, and only by the author of the comment. */
+  async deleteComment(authorId: string, commentId: string): Promise<void> {
+    const { count } = await this.prisma.comment.updateMany({
+      where: { id: commentId, authorId, deletedAt: null },
+      data: { deletedAt: new Date() },
+    });
+    if (count === 0) throw new NotFoundException('Comment not found.');
+  }
+
+  /**
+   * How a post is doing. Only its author may ask.
+   *
+   * Reporting this to anyone would hand every account a reach figure for every
+   * post on the service, which is the author's to know.
+   */
+  async analytics(postId: string, viewerId: string): Promise<PostAnalytics> {
+    const post = await this.prisma.post.findFirst({
+      where: { id: postId, deletedAt: null },
+      select: { id: true, authorId: true, createdAt: true },
+    });
+    // Not found rather than forbidden: telling a stranger the post exists but
+    // is not theirs is more than they need to know.
+    if (!post || post.authorId !== viewerId) {
+      throw new NotFoundException('Post not found.');
+    }
+
+    const [views, likes, saves, comments, rows] = await Promise.all([
+      this.prisma.postView.count({ where: { postId } }),
+      this.prisma.postLike.count({ where: { postId } }),
+      this.prisma.postSave.count({ where: { postId } }),
+      this.prisma.comment.count({ where: { postId, deletedAt: null } }),
+      this.prisma.postView.findMany({
+        where: { postId },
+        select: { createdAt: true },
+        orderBy: { createdAt: 'asc' },
+      }),
+    ]);
+
+    // Grouped here rather than in SQL: a post's view rows are bounded by the
+    // number of people who have seen it, and a groupBy on a date expression is
+    // not something Prisma expresses without raw SQL.
+    const byDay = new Map<string, number>();
+    for (const row of rows) {
+      const day = row.createdAt.toISOString().slice(0, 10);
+      byDay.set(day, (byDay.get(day) ?? 0) + 1);
+    }
+
+    return {
+      postId: post.id,
+      createdAt: post.createdAt,
+      views,
+      likes,
+      saves,
+      comments,
+      timeline: [...byDay.entries()].map(([date, count]) => ({
+        date,
+        views: count,
+      })),
+    };
+  }
+
+  private async commentPage(
+    where: {
+      postId?: string;
+      parentId: string | null;
+      deletedAt: null;
+    },
+    viewerId: string,
+    limit: number,
+    cursor?: string,
+  ): Promise<CommentPage> {
+    if (cursor) {
+      const anchor = await this.prisma.comment.findUnique({
+        where: { id: cursor },
+        select: { id: true },
+      });
+      if (!anchor) throw new NotFoundException('That page no longer exists.');
+    }
+
+    const rows = await this.prisma.comment.findMany({
+      where,
+      orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+      take: limit + 1,
+      cursor: cursor ? { id: cursor } : undefined,
+      skip: cursor ? 1 : 0,
+      select: this.commentShape,
+    });
+
+    const hasMore = rows.length > limit;
+    const page = hasMore ? rows.slice(0, limit) : rows;
+
+    return {
+      items: page.map((row) => this.toFeedComment(row, viewerId)),
+      nextCursor: hasMore ? page[page.length - 1].id : null,
+    };
+  }
+
+  private readonly commentShape = {
+    id: true,
+    content: true,
+    createdAt: true,
+    parentId: true,
+    authorId: true,
+    author: {
+      select: {
+        id: true,
+        name: true,
+        username: true,
+        profile: { select: { avatarUrl: true } },
+      },
+    },
+    _count: { select: { replies: true } },
+  } as const;
+
+  private toFeedComment(row: CommentRow, viewerId: string): FeedComment {
+    return {
+      id: row.id,
+      content: row.content,
+      createdAt: row.createdAt,
+      parentId: row.parentId,
+      author: {
+        id: row.author.id,
+        name: row.author.name,
+        username: row.author.username,
+        avatarUrl: row.author.profile?.avatarUrl ?? null,
+      },
+      replies: row._count.replies,
+      mine: row.authorId === viewerId,
+    };
+  }
+
   /** Soft delete, and only by the author. */
   async deletePost(authorId: string, postId: string): Promise<void> {
     const { count } = await this.prisma.post.updateMany({
@@ -274,7 +557,7 @@ export class FeedService {
           profile: { select: { avatarUrl: true } },
         },
       },
-      _count: { select: { likes: true } },
+      _count: { select: { likes: true, comments: true } },
       likes: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       saves: { where: { userId: viewerId }, select: { id: true }, take: 1 },
     } as const;
@@ -292,10 +575,27 @@ export class FeedService {
         avatarUrl: row.author.profile?.avatarUrl ?? null,
       },
       likes: row._count.likes,
+      comments: row._count.comments,
       likedByViewer: row.likes.length > 0,
       savedByViewer: row.saves.length > 0,
     };
   }
+}
+
+/** A row shaped by {@link FeedService.commentShape}. */
+interface CommentRow {
+  id: string;
+  content: string;
+  createdAt: Date;
+  parentId: string | null;
+  authorId: string;
+  author: {
+    id: string;
+    name: string | null;
+    username: string | null;
+    profile: { avatarUrl: string | null } | null;
+  };
+  _count: { replies: number };
 }
 
 /** A row shaped by {@link FeedService.shapeFor}. */
@@ -309,7 +609,7 @@ interface PostRow {
     username: string | null;
     profile: { avatarUrl: string | null } | null;
   };
-  _count: { likes: number };
+  _count: { likes: number; comments: number };
   likes: { id: string }[];
   saves: { id: string }[];
 }

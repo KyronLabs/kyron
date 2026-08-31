@@ -162,7 +162,8 @@ class _Header extends ConsumerWidget {
                   foregroundImage: profile.avatarUrl == null
                       ? null
                       : NetworkImage(profile.avatarUrl!),
-                  child: Icon(Iconsax.user, size: 32, color: scheme.primary),
+                  child:
+                      Icon(Iconsax.user_copy, size: 32, color: scheme.primary),
                 ),
               ),
               const Spacer(),
@@ -196,9 +197,9 @@ class _Header extends ConsumerWidget {
               runSpacing: SpacingTokens.space4,
               children: [
                 if (profile.location != null)
-                  _Meta(icon: Iconsax.location, text: profile.location!),
+                  _Meta(icon: Iconsax.location_copy, text: profile.location!),
                 if (profile.website != null)
-                  _Meta(icon: Iconsax.link, text: profile.website!),
+                  _Meta(icon: Iconsax.link_copy, text: profile.website!),
               ],
             ),
           ],
@@ -216,10 +217,12 @@ class _Header extends ConsumerWidget {
   }
 }
 
-/// Posts, followers and following, side by side.
+/// Posts, followers, following and points.
 ///
 /// The follower count was the only stat the client kept, even though the same
-/// response carried the other two.
+/// response carried the others. Laid out as four equal columns rather than a
+/// row of pairs: side by side with a Spacer they needed 477 logical pixels and
+/// overflowed a 360-wide phone by 157, which pushed the points off the edge.
 class _Counts extends StatelessWidget {
   final ProfileModel profile;
 
@@ -229,13 +232,10 @@ class _Counts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _Count(value: profile.posts, label: 'Posts'),
-        const SizedBox(width: SpacingTokens.space24),
-        _Count(value: profile.followers, label: 'Followers'),
-        const SizedBox(width: SpacingTokens.space24),
-        _Count(value: profile.following, label: 'Following'),
-        const Spacer(),
-        _Count(value: profile.kyronPoints, label: 'KP'),
+        Expanded(child: _Count(value: profile.posts, label: 'Posts')),
+        Expanded(child: _Count(value: profile.followers, label: 'Followers')),
+        Expanded(child: _Count(value: profile.following, label: 'Following')),
+        Expanded(child: _Count(value: profile.kyronPoints, label: 'KP')),
       ],
     );
   }
@@ -251,20 +251,21 @@ class _Count extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
 
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.baseline,
-      textBaseline: TextBaseline.alphabetic,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           formatCount(value),
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
         ),
-        const SizedBox(width: SpacingTokens.space4),
         Text(
           label,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 13,
+            fontSize: 12,
             color: scheme.onSurface.withValues(alpha: 0.6),
           ),
         ),
@@ -292,7 +293,7 @@ class _PrimaryActionState extends ConsumerState<_PrimaryAction> {
     if (widget.profile.isOwnProfile) {
       return OutlinedButton.icon(
         onPressed: () => Navigator.pushNamed(context, Routes.editProfile),
-        icon: const Icon(Iconsax.edit, size: 16),
+        icon: const Icon(Iconsax.edit_copy, size: 16),
         label: const Text('Edit profile'),
       );
     }
@@ -306,7 +307,8 @@ class _PrimaryActionState extends ConsumerState<_PrimaryAction> {
               dimension: 14,
               child: CircularProgressIndicator(strokeWidth: 2),
             )
-          : Icon(following ? Iconsax.user_tick : Iconsax.user_add, size: 16),
+          : Icon(following ? Iconsax.user_tick_copy : Iconsax.user_add_copy,
+              size: 16),
       label: Text(following ? 'Following' : 'Follow'),
     );
   }
@@ -379,11 +381,16 @@ class _DidChip extends StatelessWidget {
           children: [
             Icon(Iconsax.document_copy, size: 12, color: scheme.primary),
             const SizedBox(width: SpacingTokens.space4),
-            Text(
-              did,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 11, color: scheme.primary),
+            // Flexible, because a Row hands a non-flex child an unbounded
+            // width -- so the ellipsis never engaged and a long DID ran off
+            // the edge of the chip instead.
+            Flexible(
+              child: Text(
+                did,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 11, color: scheme.primary),
+              ),
             ),
           ],
         ),

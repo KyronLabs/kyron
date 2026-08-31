@@ -51,7 +51,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
@@ -99,18 +99,19 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     onPickCover: () => _upload('cover'),
                   ),
                   const SizedBox(height: SpacingTokens.space24),
-                  _field(_name, 'Display name', Iconsax.user, maxLength: 50),
+                  _field(_name, 'Display name', Iconsax.user_copy,
+                      maxLength: 50),
                   const SizedBox(height: SpacingTokens.space16),
-                  _field(_bio, 'Bio', Iconsax.note_text,
+                  _field(_bio, 'Bio', Iconsax.note_text_copy,
                       maxLength: 300, maxLines: 4),
                   const SizedBox(height: SpacingTokens.space16),
-                  _field(_location, 'Location', Iconsax.location,
+                  _field(_location, 'Location', Iconsax.location_copy,
                       maxLength: 80),
                   const SizedBox(height: SpacingTokens.space16),
                   _field(
                     _website,
                     'Website',
-                    Iconsax.link,
+                    Iconsax.link_copy,
                     maxLength: 200,
                     keyboardType: TextInputType.url,
                     validator: (value) {
@@ -253,7 +254,7 @@ class _ImageRow extends StatelessWidget {
             child: Center(
               child: uploading == 'cover'
                   ? const CircularProgressIndicator()
-                  : Icon(Iconsax.gallery_edit,
+                  : Icon(Iconsax.gallery_edit_copy,
                       color: scheme.onSurface.withValues(alpha: 0.7)),
             ),
           ),
@@ -269,7 +270,7 @@ class _ImageRow extends StatelessWidget {
                 avatarUrl == null ? null : NetworkImage(avatarUrl!),
             child: uploading == 'avatar'
                 ? const CircularProgressIndicator()
-                : Icon(Iconsax.camera, color: scheme.primary),
+                : Icon(Iconsax.camera_copy, color: scheme.primary),
           ),
         ),
         const SizedBox(height: SpacingTokens.space8),

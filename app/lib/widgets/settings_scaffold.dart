@@ -22,7 +22,7 @@ class SettingsScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),

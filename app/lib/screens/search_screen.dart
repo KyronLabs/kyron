@@ -43,7 +43,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
@@ -59,7 +59,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             suffixIcon: state.isIdle
                 ? null
                 : IconButton(
-                    icon: const Icon(Iconsax.close_circle, size: 18),
+                    icon: const Icon(Iconsax.close_circle_copy, size: 18),
                     tooltip: 'Clear',
                     onPressed: () {
                       _controller.clear();
@@ -76,14 +76,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Widget _body(SearchState state) {
     if (state.isIdle) {
       return const _Hint(
-        icon: Iconsax.search_normal_1,
+        icon: Iconsax.search_normal_1_copy,
         title: 'Find people on Kyron',
         detail: 'Search by handle or display name.',
       );
     }
     if (state.isTooShort) {
       return const _Hint(
-        icon: Iconsax.keyboard,
+        icon: Iconsax.keyboard_copy,
         title: 'Keep typing',
         detail: 'Two characters or more.',
       );
@@ -102,7 +102,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     }
     if (state.foundNothing) {
       return _Hint(
-        icon: Iconsax.user_search,
+        icon: Iconsax.user_search_copy,
         title: 'No one matched',
         detail: 'Nobody on Kyron matches "${state.query.trim()}".',
       );
@@ -139,7 +139,7 @@ class _Result extends StatelessWidget {
         backgroundColor: scheme.primary.withValues(alpha: 0.2),
         foregroundImage:
             person.avatarUrl == null ? null : NetworkImage(person.avatarUrl!),
-        child: Icon(Iconsax.user, size: 20, color: scheme.primary),
+        child: Icon(Iconsax.user_copy, size: 20, color: scheme.primary),
       ),
       title: Text(
         person.displayName,

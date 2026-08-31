@@ -6,12 +6,17 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/feed_post.dart';
 import '../providers/feed_provider.dart';
 import '../routes.dart';
+import '../utils/format_count.dart';
 
 /// One post, wherever it appears.
 ///
 /// The feed, a profile and the saved and liked lists all render posts, and all
 /// four used to draw their own card -- so a like button existed on one of them
 /// and did nothing on the rest. This is the only card.
+///
+/// Separated by a hairline rather than boxed: a rounded outline around every
+/// post turns a feed into a stack of tiles, and the border was competing with
+/// the card's own fill for the same edge.
 class PostCard extends ConsumerWidget {
   final FeedPost post;
 
@@ -25,152 +30,192 @@ class PostCard extends ConsumerWidget {
     final scheme = Theme.of(context).colorScheme;
     final handle = post.author.handle;
 
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: SpacingTokens.space16,
-        vertical: SpacingTokens.space8,
-      ),
-      padding: const EdgeInsets.all(SpacingTokens.space16),
+    return DecoratedBox(
       decoration: BoxDecoration(
-        color: scheme.surfaceContainerHighest.withValues(alpha: 0.3),
-        borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
-        border: Border.all(color: scheme.outline.withValues(alpha: 0.1)),
+        border: Border(
+          bottom: BorderSide(
+            color: scheme.outline.withValues(alpha: 0.15),
+            width: 0.5,
+          ),
+        ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          InkWell(
-            onTap: () => _openAuthor(context),
-            borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: scheme.primary.withValues(alpha: 0.2),
-                  foregroundImage: post.author.avatarUrl == null
-                      ? null
-                      : NetworkImage(post.author.avatarUrl!),
-                  child: Icon(Iconsax.user, color: scheme.primary, size: 20),
-                ),
-                const SizedBox(width: SpacingTokens.space12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        post.author.displayName,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 15,
-                        ),
-                      ),
-                      // Only when the account actually has a handle. The old
-                      // feed printed "@user" for everyone.
-                      if (handle != null)
-                        Text(
-                          handle,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: scheme.onSurface.withValues(alpha: 0.6),
+      child: InkWell(
+        // The whole post opens the post, not its author. Tapping a post to
+        // land on somebody's profile is not what anyone means by it.
+        onTap: () => Navigator.pushNamed(
+          context,
+          Routes.postDetail,
+          arguments: post.id,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingTokens.space16,
+            vertical: SpacingTokens.space12,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () => openAuthor(context, post.author),
+                child: PostAvatar(author: post.author),
+              ),
+              const SizedBox(width: SpacingTokens.space12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Flexible(
+                          child: GestureDetector(
+                            onTap: () => openAuthor(context, post.author),
+                            child: Text(
+                              post.author.displayName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 15,
+                              ),
+                            ),
                           ),
                         ),
-                    ],
-                  ),
-                ),
-                Text(
-                  _age(post.createdAt),
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: scheme.onSurface.withValues(alpha: 0.5),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: SpacingTokens.space12),
-          Text(
-            post.content,
-            style: const TextStyle(fontSize: 15, height: 1.4),
-          ),
-          const SizedBox(height: SpacingTokens.space8),
-          Row(
-            children: [
-              _action(
-                context,
-                ref,
-                icon: post.liked ? Iconsax.heart_circle : Iconsax.heart,
-                // Zero shows nothing rather than "0": a post with no likes
-                // reads better bare than with a count nobody wants to see.
-                label: post.likes > 0 ? '${post.likes}' : null,
-                active: post.liked,
-                activeColor: scheme.error,
-                tooltip: post.liked ? 'Unlike' : 'Like',
-                onTap: () => _run(
-                  context,
-                  ref
-                      .read(postListProvider(source).notifier)
-                      .toggleLike(post.id),
-                ),
-              ),
-              const SizedBox(width: SpacingTokens.space20),
-              _action(
-                context,
-                ref,
-                icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add,
-                active: post.saved,
-                activeColor: scheme.primary,
-                tooltip: post.saved ? 'Remove from saved' : 'Save',
-                onTap: () => _run(
-                  context,
-                  ref
-                      .read(postListProvider(source).notifier)
-                      .toggleSave(post.id),
+                        // Only when the account actually has a handle. The old
+                        // feed printed "@user" for everyone.
+                        if (handle != null) ...[
+                          const SizedBox(width: SpacingTokens.space4),
+                          Flexible(
+                            child: Text(
+                              handle,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: scheme.onSurface.withValues(alpha: 0.55),
+                              ),
+                            ),
+                          ),
+                        ],
+                        const SizedBox(width: SpacingTokens.space4),
+                        Text(
+                          '· ${age(post.createdAt)}',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: scheme.onSurface.withValues(alpha: 0.45),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: SpacingTokens.space4),
+                    Text(
+                      post.content,
+                      style: const TextStyle(fontSize: 15, height: 1.35),
+                    ),
+                    const SizedBox(height: SpacingTokens.space8),
+                    _Actions(post: post, source: source),
+                  ],
                 ),
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
+}
 
-  void _openAuthor(BuildContext context) {
-    final username = post.author.username;
-    // No handle means no public profile to open; a tap that navigates nowhere
-    // is better than one that opens an empty screen.
-    if (username == null || username.isEmpty) return;
-    Navigator.pushNamed(context, Routes.profile, arguments: username);
-  }
+/// The author's picture beside a post. Small: at radius 20 it was competing
+/// with the post itself for the eye.
+class PostAvatar extends StatelessWidget {
+  final FeedAuthor author;
+  final double radius;
 
-  /// Shows whatever the mutation reports, and nothing when it succeeds.
-  static Future<void> _run(
-    BuildContext context,
-    Future<String?> action,
-  ) async {
-    final message = await action;
-    if (message == null || !context.mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message)),
+  const PostAvatar({super.key, required this.author, this.radius = 16});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return CircleAvatar(
+      radius: radius,
+      backgroundColor: scheme.primary.withValues(alpha: 0.15),
+      foregroundImage:
+          author.avatarUrl == null ? null : NetworkImage(author.avatarUrl!),
+      child: Icon(Iconsax.user_copy, color: scheme.primary, size: radius),
     );
   }
+}
 
-  Widget _action(
-    BuildContext context,
-    WidgetRef ref, {
-    required IconData icon,
-    String? label,
-    required bool active,
-    required Color activeColor,
-    required String tooltip,
-    required VoidCallback onTap,
-  }) {
+class _Actions extends ConsumerWidget {
+  final FeedPost post;
+  final PostListSource source;
+
+  const _Actions({required this.post, required this.source});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
-    final color =
-        active ? activeColor : scheme.onSurface.withValues(alpha: 0.6);
+    final notifier = ref.read(postListProvider(source).notifier);
+
+    return Row(
+      children: [
+        _Action(
+          // Outline until you act on it, filled once you have -- so the state
+          // reads at a glance instead of only by colour.
+          icon: Iconsax.message_text_copy,
+          label: post.comments > 0 ? formatCount(post.comments) : null,
+          tooltip: 'Comments',
+          onTap: () => Navigator.pushNamed(
+            context,
+            Routes.postDetail,
+            arguments: post.id,
+          ),
+        ),
+        const SizedBox(width: SpacingTokens.space24),
+        _Action(
+          icon: post.liked ? Iconsax.heart : Iconsax.heart_copy,
+          label: post.likes > 0 ? formatCount(post.likes) : null,
+          active: post.liked,
+          activeColor: scheme.error,
+          tooltip: post.liked ? 'Unlike' : 'Like',
+          onTap: () => report(context, notifier.toggleLike(post.id)),
+        ),
+        const SizedBox(width: SpacingTokens.space24),
+        _Action(
+          icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,
+          active: post.saved,
+          activeColor: scheme.primary,
+          tooltip: post.saved ? 'Remove from saved' : 'Save',
+          onTap: () => report(context, notifier.toggleSave(post.id)),
+        ),
+      ],
+    );
+  }
+}
+
+class _Action extends StatelessWidget {
+  final IconData icon;
+  final String? label;
+  final bool active;
+  final Color? activeColor;
+  final String tooltip;
+  final VoidCallback onTap;
+
+  const _Action({
+    required this.icon,
+    this.label,
+    this.active = false,
+    this.activeColor,
+    required this.tooltip,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final color = active
+        ? (activeColor ?? scheme.primary)
+        : scheme.onSurface.withValues(alpha: 0.55);
 
     return Tooltip(
       message: tooltip,
@@ -178,17 +223,14 @@ class PostCard extends ConsumerWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: SpacingTokens.space4,
-            vertical: SpacingTokens.space4,
-          ),
+          padding: const EdgeInsets.all(SpacingTokens.space4),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, size: 18, color: color),
+              Icon(icon, size: 17, color: color),
               if (label != null) ...[
                 const SizedBox(width: SpacingTokens.space4),
-                Text(label, style: TextStyle(fontSize: 13, color: color)),
+                Text(label!, style: TextStyle(fontSize: 12, color: color)),
               ],
             ],
           ),
@@ -196,15 +238,31 @@ class PostCard extends ConsumerWidget {
       ),
     );
   }
+}
 
-  /// Compact relative age. Deliberately coarse: a feed does not need seconds,
-  /// and a rebuild per second to keep them honest is not worth it.
-  static String _age(DateTime at) {
-    final d = DateTime.now().difference(at);
-    if (d.inMinutes < 1) return 'now';
-    if (d.inHours < 1) return '${d.inMinutes}m';
-    if (d.inDays < 1) return '${d.inHours}h';
-    if (d.inDays < 7) return '${d.inDays}d';
-    return '${(d.inDays / 7).floor()}w';
-  }
+/// Opens an author's profile, if they have a handle to open one by.
+void openAuthor(BuildContext context, FeedAuthor author) {
+  final username = author.username;
+  // No handle means no public profile; a tap that navigates nowhere is better
+  // than one that opens an empty screen.
+  if (username == null || username.isEmpty) return;
+  Navigator.pushNamed(context, Routes.profile, arguments: username);
+}
+
+/// Shows whatever a mutation reports, and nothing when it succeeds.
+Future<void> report(BuildContext context, Future<String?> action) async {
+  final message = await action;
+  if (message == null || !context.mounted) return;
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+}
+
+/// Compact relative age. Deliberately coarse: a feed does not need seconds,
+/// and a rebuild per second to keep them honest is not worth it.
+String age(DateTime at) {
+  final d = DateTime.now().difference(at);
+  if (d.inMinutes < 1) return 'now';
+  if (d.inHours < 1) return '${d.inMinutes}m';
+  if (d.inDays < 1) return '${d.inHours}h';
+  if (d.inDays < 7) return '${d.inDays}d';
+  return '${(d.inDays / 7).floor()}w';
 }

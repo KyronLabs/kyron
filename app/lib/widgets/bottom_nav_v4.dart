@@ -32,11 +32,14 @@ class BottomNavV4 extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(child: _item(context, Iconsax.home, 'Home', 0)),
-              Expanded(child: _item(context, Iconsax.discover, 'Explore', 1)),
+              Expanded(child: _item(context, Iconsax.home_copy, 'Home', 0)),
+              Expanded(
+                  child: _item(context, Iconsax.discover_copy, 'Explore', 1)),
               Expanded(child: _RingFab()), // ← FAB with ring
-              Expanded(child: _item(context, Iconsax.people, 'Communities', 3)),
-              Expanded(child: _item(context, Iconsax.message, 'Messages', 4)),
+              Expanded(
+                  child: _item(context, Iconsax.people_copy, 'Communities', 3)),
+              Expanded(
+                  child: _item(context, Iconsax.message_copy, 'Messages', 4)),
             ],
           ),
         ),

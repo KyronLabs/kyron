@@ -27,14 +27,14 @@ class ServiceStatusScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
         title: const Text('Service status'),
         actions: [
           IconButton(
-            icon: const Icon(Iconsax.refresh, size: 20),
+            icon: const Icon(Iconsax.refresh_copy, size: 20),
             tooltip: 'Check again',
             onPressed: ref.read(serviceStatusProvider.notifier).check,
           ),
@@ -50,7 +50,7 @@ class ServiceStatusScreen extends ConsumerWidget {
           data: (status) => ListView(
             padding: const EdgeInsets.all(SpacingTokens.space20),
             children: [
-              _Banner(healthy: status.isHealthy),
+              _Banner(healthy: status.isHealthy, problem: status.problem),
               const SizedBox(height: SpacingTokens.space24),
               _Line('API', status.status),
               _Line('Database', status.database),
@@ -82,7 +82,10 @@ class ServiceStatusScreen extends ConsumerWidget {
 class _Banner extends StatelessWidget {
   final bool healthy;
 
-  const _Banner({required this.healthy});
+  /// What is wrong, in a sentence. Null when nothing is.
+  final String? problem;
+
+  const _Banner({required this.healthy, this.problem});
 
   @override
   Widget build(BuildContext context) {
@@ -98,14 +101,17 @@ class _Banner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(healthy ? Iconsax.tick_circle : Iconsax.warning_2, color: color),
+          Icon(healthy ? Iconsax.tick_circle_copy : Iconsax.warning_2_copy,
+              color: color),
           const SizedBox(width: SpacingTokens.space12),
           Expanded(
             child: Text(
               healthy
-                  ? 'Kyron is up and the database is connected.'
-                  : 'Kyron answered, but something is not right. The rows '
-                      'below say what.',
+                  ? 'Kyron is up and its database is reachable.'
+                  // Say what is wrong, rather than pointing at rows that all
+                  // read fine and leaving the reader to guess which one meant
+                  // something.
+                  : problem ?? 'Kyron answered, but something is not right.',
               style: TextStyle(color: color, fontWeight: FontWeight.w600),
             ),
           ),
@@ -206,19 +212,19 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
         title: const Text('System log'),
         actions: [
           IconButton(
-            icon: const Icon(Iconsax.copy, size: 20),
+            icon: const Icon(Iconsax.copy_copy, size: 20),
             tooltip: 'Copy',
             onPressed: _copy,
           ),
           IconButton(
-            icon: const Icon(Iconsax.trash, size: 20),
+            icon: const Icon(Iconsax.trash_copy, size: 20),
             tooltip: 'Clear',
             onPressed: _clear,
           ),
@@ -416,13 +422,13 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
           const SizedBox(height: SpacingTokens.space16),
           FilledButton.icon(
             onPressed: _send,
-            icon: const Icon(Iconsax.send_1, size: 18),
+            icon: const Icon(Iconsax.send_1_copy, size: 18),
             label: const Text('Send to support'),
           ),
           const SizedBox(height: SpacingTokens.space8),
           OutlinedButton.icon(
             onPressed: _copy,
-            icon: const Icon(Iconsax.copy, size: 18),
+            icon: const Icon(Iconsax.copy_copy, size: 18),
             label: const Text('Copy report instead'),
           ),
           const SizedBox(height: SpacingTokens.space16),

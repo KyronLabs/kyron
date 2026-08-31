@@ -38,7 +38,7 @@ class PostCollectionScreen extends StatelessWidget {
         emptyDetail =
             'Tap the archive icon on any post to keep it here. Only you can '
                 'see what you save.',
-        emptyIcon = Iconsax.archive_add,
+        emptyIcon = Iconsax.archive_add_copy,
         errorTitle = 'Could not load your saved posts';
 
   const PostCollectionScreen.liked({super.key})
@@ -46,7 +46,7 @@ class PostCollectionScreen extends StatelessWidget {
         title = 'Liked posts',
         emptyTitle = 'No likes yet',
         emptyDetail = 'Posts you like show up here, most recent first.',
-        emptyIcon = Iconsax.heart,
+        emptyIcon = Iconsax.heart_copy,
         errorTitle = 'Could not load your liked posts';
 
   @override
@@ -54,7 +54,7 @@ class PostCollectionScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),

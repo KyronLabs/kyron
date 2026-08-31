@@ -1,4 +1,5 @@
 import '../models/feed_post.dart';
+import '../models/post_comment.dart';
 import '../services/api_client.dart';
 
 class FeedRepository {
@@ -88,4 +89,64 @@ class FeedRepository {
   }
 
   Future<void> delete(String postId) => _api.dio.delete('/feed/posts/$postId');
+
+  /// One post on its own, for the screen that shows it with its thread.
+  Future<FeedPost> byId(String postId) async {
+    final res = await _api.dio.get<Map<String, dynamic>>('/feed/posts/$postId');
+    return FeedPost.fromJson(res.data ?? const {});
+  }
+
+  Future<CommentPage> comments(String postId,
+      {String? cursor, int limit = 20}) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/feed/posts/$postId/comments',
+      queryParameters: {
+        'limit': limit,
+        if (cursor != null) 'cursor': cursor,
+      },
+    );
+    return CommentPage.fromJson(res.data ?? const {});
+  }
+
+  Future<CommentPage> replies(String commentId,
+      {String? cursor, int limit = 20}) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/feed/comments/$commentId/replies',
+      queryParameters: {
+        'limit': limit,
+        if (cursor != null) 'cursor': cursor,
+      },
+    );
+    return CommentPage.fromJson(res.data ?? const {});
+  }
+
+  Future<PostComment> addComment(
+    String postId,
+    String content, {
+    String? parentId,
+  }) async {
+    final res = await _api.dio.post<Map<String, dynamic>>(
+      '/feed/posts/$postId/comments',
+      data: {
+        'content': content,
+        if (parentId != null) 'parentId': parentId,
+      },
+    );
+    return PostComment.fromJson(res.data ?? const {});
+  }
+
+  Future<void> deleteComment(String commentId) =>
+      _api.dio.delete<void>('/feed/comments/$commentId');
+
+  /// Records that this reader opened the post. Idempotent per reader, and the
+  /// author's own opens are not counted.
+  Future<void> recordView(String postId) =>
+      _api.dio.put<void>('/feed/posts/$postId/view');
+
+  /// How the post is doing. Answers 404 to anyone but its author.
+  Future<PostAnalytics> analytics(String postId) async {
+    final res = await _api.dio
+        .get<Map<String, dynamic>>('/feed/posts/$postId/analytics');
+    return PostAnalytics.fromJson(res.data ?? const {});
+  }
 }

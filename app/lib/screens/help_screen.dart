@@ -21,7 +21,7 @@ class HelpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
@@ -32,10 +32,10 @@ class HelpScreen extends StatelessWidget {
           children: [
             _group(context, 'Get help'),
             ListTile(
-              leading: const Icon(Iconsax.book, size: 20),
+              leading: const Icon(Iconsax.book_copy, size: 20),
               title: const Text('Help Centre'),
               subtitle: const Text('Guides and answers to common questions'),
-              trailing: const Icon(Iconsax.export_3, size: 16),
+              trailing: const Icon(Iconsax.export_3_copy, size: 16),
               onTap: () => Navigator.pushNamed(
                 context,
                 Routes.webview,
@@ -46,18 +46,18 @@ class HelpScreen extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: const Icon(Iconsax.call, size: 20),
+              leading: const Icon(Iconsax.call_copy, size: 20),
               title: const Text('Contact support'),
               subtitle: const Text('Reach a person'),
-              trailing: const Icon(Iconsax.arrow_right_3, size: 18),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsContactSupport),
             ),
             ListTile(
-              leading: const Icon(Iconsax.message_edit, size: 20),
+              leading: const Icon(Iconsax.message_edit_copy, size: 20),
               title: const Text('Send feedback'),
               subtitle: const Text('Tell us what is missing or broken'),
-              trailing: const Icon(Iconsax.arrow_right_3, size: 18),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsFeedback),
             ),
@@ -68,17 +68,17 @@ class HelpScreen extends StatelessWidget {
             ),
             _group(context, 'Something is broken'),
             ListTile(
-              leading: const Icon(Iconsax.status_up, size: 20),
+              leading: const Icon(Iconsax.status_up_copy, size: 20),
               title: const Text('Service status'),
               subtitle: const Text('Check whether Kyron is reachable'),
-              trailing: const Icon(Iconsax.arrow_right_3, size: 18),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () => Navigator.pushNamed(context, Routes.aboutStatus),
             ),
             ListTile(
-              leading: const Icon(Iconsax.warning_2, size: 20),
+              leading: const Icon(Iconsax.warning_2_copy, size: 20),
               title: const Text('Send error report'),
               subtitle: const Text('Share the app log with support'),
-              trailing: const Icon(Iconsax.arrow_right_3, size: 18),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.aboutErrorReport),
             ),
@@ -89,15 +89,15 @@ class HelpScreen extends StatelessWidget {
             ),
             _group(context, 'Policies'),
             ListTile(
-              leading: const Icon(Iconsax.document_text, size: 20),
+              leading: const Icon(Iconsax.document_text_copy, size: 20),
               title: const Text(LegalLinks.termsTitle),
-              trailing: const Icon(Iconsax.arrow_right_3, size: 18),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () => Navigator.pushNamed(context, Routes.terms),
             ),
             ListTile(
-              leading: const Icon(Iconsax.shield_tick, size: 20),
+              leading: const Icon(Iconsax.shield_tick_copy, size: 20),
               title: const Text(LegalLinks.privacyTitle),
-              trailing: const Icon(Iconsax.arrow_right_3, size: 18),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () => Navigator.pushNamed(context, Routes.privacy),
             ),
             const SizedBox(height: SpacingTokens.space40),

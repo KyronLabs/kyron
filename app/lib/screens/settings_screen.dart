@@ -207,7 +207,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   foregroundImage:
                       avatarUrl == null ? null : NetworkImage(avatarUrl),
                   child: Icon(
-                    Iconsax.user,
+                    Iconsax.user_copy,
                     size: 20,
                     color: Theme.of(context)
                         .colorScheme
@@ -282,7 +282,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       backgroundColor: scheme.background,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left),
+          icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
@@ -291,7 +291,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Iconsax.close_square),
+            icon: const Icon(Iconsax.close_square_copy),
             onPressed: () => Navigator.pop(context),
           ),
         ],
@@ -304,7 +304,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // Account Group (3 items)
             _groupHeader('Account'),
             _settingsRow(
-              icon: Iconsax.user,
+              icon: Iconsax.user_copy,
               label: _handle,
               subtitle: _email,
               trailing: TextButton(
@@ -337,7 +337,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // Privacy & Safety Group (3 items)
             _groupHeader('Privacy & Safety'),
             _settingsRow(
-              icon: Iconsax.lock,
+              icon: Iconsax.lock_copy,
               label: 'Private Account',
               trailing: KyronToggle(
                 value: _privateAccount,
@@ -347,17 +347,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Only followers can see your posts',
             ),
             _settingsRow(
-              icon: Iconsax.user_remove,
+              icon: Iconsax.user_remove_copy,
               label: 'Blocked Users',
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsBlockedUsers),
               helpText: 'Manage blocked accounts',
             ),
             _settingsRow(
-              icon: Iconsax.key,
+              icon: Iconsax.key_copy,
               label: 'Password & Login',
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsPasswordLogin),
               helpText: 'Security settings',
@@ -370,7 +370,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // Content & Display Group (4 items)
             _groupHeader('Content & Display'),
             _settingsRow(
-              icon: Iconsax.moon,
+              icon: Iconsax.moon_copy,
               label: 'Dark Mode',
               trailing: KyronToggle(
                 value: _darkMode,
@@ -383,27 +383,27 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Use dark theme',
             ),
             _settingsRow(
-              icon: Iconsax.text,
+              icon: Iconsax.text_copy,
               label: 'Font Size',
               subtitle: AppPreferences.labelForScale(
                 ref.watch(preferencesProvider).textScale,
               ),
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsFontSize),
               helpText: 'Adjust text size',
             ),
             _settingsRow(
-              icon: Iconsax.global,
+              icon: Iconsax.global_copy,
               label: 'Language',
               subtitle: ref.watch(preferencesProvider).language.nativeName,
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsLanguage),
               helpText: 'Choose your language',
             ),
             _settingsRow(
-              icon: Iconsax.direct_inbox,
+              icon: Iconsax.direct_inbox_copy,
               label: 'Auto-Download',
               trailing: KyronToggle(
                 value: _autoDownload,
@@ -420,7 +420,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // App & Device Group (4 items)
             _groupHeader('App & Device'),
             _settingsRow(
-              icon: Iconsax.save_add,
+              icon: Iconsax.save_add_copy,
               label: 'Data Saver',
               trailing: KyronToggle(
                 value: _dataSaver,
@@ -430,15 +430,15 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Reduce data usage',
             ),
             _settingsRow(
-              icon: Iconsax.notification,
+              icon: Iconsax.notification_copy,
               label: 'Push Notifications',
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsNotifications),
               helpText: 'Notification preferences',
             ),
             _settingsRow(
-              icon: Iconsax.location,
+              icon: Iconsax.location_copy,
               label: 'Location',
               trailing: KyronToggle(
                 value: _location,
@@ -455,9 +455,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // Help & Support Group (3 items)
             _groupHeader('Help & Support'),
             _settingsRow(
-              icon: Iconsax.info_circle,
+              icon: Iconsax.info_circle_copy,
               label: 'Help Centre',
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.webview, arguments: {
                 'url': 'https://help.kyron.so',
@@ -466,25 +466,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Browse help articles',
             ),
             _settingsRow(
-              icon: Iconsax.call,
+              icon: Iconsax.call_copy,
               label: 'Contact Support',
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsContactSupport),
               helpText: 'Get help from our team',
             ),
             _settingsRow(
-              icon: Iconsax.message_edit,
+              icon: Iconsax.message_edit_copy,
               label: 'Send Feedback',
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsFeedback),
               helpText: 'Tell us what you think',
             ),
             _settingsRow(
-              icon: Iconsax.info_circle,
+              icon: Iconsax.info_circle_copy,
               label: 'About',
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.about),
               helpText: 'Version, policies, status and the system log',
             ),
@@ -503,7 +503,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 ),
               ),
               child: _settingsRow(
-                icon: Iconsax.logout,
+                icon: Iconsax.logout_copy,
                 label: 'Log Out',
                 subtitle: _handle,
                 trailing: _loggingOut
@@ -511,7 +511,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         dimension: 20,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : const Icon(Iconsax.arrow_right_3,
+                    : const Icon(Iconsax.arrow_right_3_copy,
                         size: 20, color: Colors.red),
                 // Null while signing out, so a second tap cannot start another
                 // sign-out over the top of the first.

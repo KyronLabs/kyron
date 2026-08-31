@@ -164,17 +164,17 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
         children: [
           const SizedBox(width: SpacingTokens.space8),
           _toolButton(
-            icon: Iconsax.hashtag,
+            icon: Iconsax.hashtag_copy,
             tooltip: 'Add a hashtag',
             onTap: () => _insert('#'),
           ),
           _toolButton(
-            icon: Iconsax.tag_user,
+            icon: Iconsax.tag_user_copy,
             tooltip: 'Mention someone',
             onTap: () => _insert('@'),
           ),
           _toolButton(
-            icon: Iconsax.emoji_happy,
+            icon: Iconsax.emoji_happy_copy,
             tooltip: 'Insert an emoji',
             onTap: _insertEmoji,
           ),
@@ -257,7 +257,7 @@ class _AuthorLine extends ConsumerWidget {
           backgroundColor: scheme.primary.withValues(alpha: 0.2),
           foregroundImage:
               user?.avatarUrl == null ? null : NetworkImage(user!.avatarUrl!),
-          child: Icon(Iconsax.user, size: 18, color: scheme.primary),
+          child: Icon(Iconsax.user_copy, size: 18, color: scheme.primary),
         ),
         const SizedBox(width: SpacingTokens.space12),
         Expanded(
@@ -292,7 +292,8 @@ class _ErrorBanner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(Iconsax.warning_2, size: 18, color: scheme.onErrorContainer),
+          Icon(Iconsax.warning_2_copy,
+              size: 18, color: scheme.onErrorContainer),
           const SizedBox(width: SpacingTokens.space8),
           Expanded(
             child: Text(
