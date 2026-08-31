@@ -1,6 +1,6 @@
 // In profile_wallet.dart
 import 'package:flutter/material.dart';
-import '../../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 // Add this AppButton if you don't have it yet
 class AppButton extends StatelessWidget {
@@ -23,8 +23,8 @@ class AppButton extends StatelessWidget {
       return OutlinedButton(
         onPressed: onTap,
         style: OutlinedButton.styleFrom(
-          foregroundColor: AppTheme.accent,
-          side: const BorderSide(color: AppTheme.accent),
+          foregroundColor: KyronTheme.accent,
+          side: const BorderSide(color: KyronTheme.accent),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         child: isLoading
@@ -40,7 +40,7 @@ class AppButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppTheme.accent,
+        backgroundColor: KyronTheme.accent,
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
@@ -75,10 +75,10 @@ class ProfileWallet extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppTheme.surface.withOpacity(0.1), // Fixed
+        color: KyronTheme.darkSurface.withOpacity(0.1), // Fixed
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppTheme.textSecondary.withOpacity(0.2), // Fixed
+          color: KyronTheme.darkTextSecondary.withOpacity(0.2), // Fixed
         ),
       ),
       child: Column(
@@ -87,7 +87,7 @@ class ProfileWallet extends StatelessWidget {
           // DID badge
           Row(
             children: [
-              const Icon(Icons.qr_code, color: AppTheme.accent, size: 20),
+              const Icon(Icons.qr_code, color: KyronTheme.accent, size: 20),
               const SizedBox(width: 8),
               Text(
                 'DID: $did',

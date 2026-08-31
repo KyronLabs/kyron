@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 /// A camera-icon button that reveals a 2-option tooltip menu.
 /// [onGallery]  – required callback for “Gallery” pick
@@ -54,8 +54,8 @@ class _CameraTooltipMenuState extends State<CameraTooltipMenu> {
                 elevation: 6,
                 borderRadius: BorderRadius.circular(12),
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? AppTheme.surface
-                    : AppTheme.lightSurface,
+                    ? KyronTheme.darkSurface
+                    : KyronTheme.lightSurface,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 6),
                   child: Column(

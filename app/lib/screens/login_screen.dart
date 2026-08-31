@@ -5,7 +5,7 @@ import '../widgets/app_input_field.dart';
 import '../widgets/password_input_field.dart';
 import '../widgets/app_button.dart';
 import '../routes.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/auth_provider.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -114,7 +114,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 Expanded(
                   child: Divider(
                     thickness: 0.5,
-                    color: AppTheme.textSecondary.withOpacity(0.3),
+                    color: KyronTheme.darkTextSecondary.withOpacity(0.3),
                   ),
                 ),
                 Padding(
@@ -122,14 +122,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   child: Text(
                     'or',
                     style: TextStyle(
-                      color: AppTheme.textSecondary.withOpacity(0.6),
+                      color: KyronTheme.darkTextSecondary.withOpacity(0.6),
                     ),
                   ),
                 ),
                 Expanded(
                   child: Divider(
                     thickness: 0.5,
-                    color: AppTheme.textSecondary.withOpacity(0.3),
+                    color: KyronTheme.darkTextSecondary.withOpacity(0.3),
                   ),
                 ),
               ]),
@@ -153,7 +153,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     TextSpan(
                       text: 'Terms',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppTheme.accent,
+                            color: KyronTheme.accent,
                             decoration: TextDecoration.underline,
                           ),
                       recognizer: TapGestureRecognizer()
@@ -176,7 +176,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     TextSpan(
                       text: 'Privacy Policy',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppTheme.accent,
+                            color: KyronTheme.accent,
                             decoration: TextDecoration.underline,
                           ),
                       recognizer: TapGestureRecognizer()

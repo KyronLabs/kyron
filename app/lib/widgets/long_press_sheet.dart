@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class LongPressSheet extends StatelessWidget {
   final Map<String, IconData> items;
@@ -31,7 +31,7 @@ class LongPressSheet extends StatelessWidget {
           Material(
             elevation: 0,
             borderRadius: BorderRadius.circular(20),
-            color: isDark ? AppTheme.surface : AppTheme.lightSurface,
+            color: isDark ? KyronTheme.darkSurface : KyronTheme.lightSurface,
             child: Column(
               children: [
                 for (int i = 0; i < items.length; i++) ...[

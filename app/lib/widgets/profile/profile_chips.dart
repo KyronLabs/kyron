@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class ProfileChips extends StatelessWidget {
   final List<Map<String, dynamic>> chips;
@@ -16,10 +16,11 @@ class ProfileChips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textColor = isDark ? Colors.white : AppTheme.lightTextPrimary;
-    final surfaceColor = isDark ? AppTheme.surface : AppTheme.lightSurface;
+    final textColor = isDark ? Colors.white : KyronTheme.lightTextPrimary;
+    final surfaceColor =
+        isDark ? KyronTheme.darkSurface : KyronTheme.lightSurface;
     final textSecondaryColor =
-        isDark ? AppTheme.textSecondary : AppTheme.lightTextSecondary;
+        isDark ? KyronTheme.darkTextSecondary : KyronTheme.lightTextSecondary;
 
     return SizedBox(
       height: 48, // CRITICAL: Fixed height constraint
@@ -44,12 +45,12 @@ class ProfileChips extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 decoration: BoxDecoration(
                   color: isActive
-                      ? AppTheme.accent.withOpacity(.18)
+                      ? KyronTheme.accent.withOpacity(.18)
                       : surfaceColor.withOpacity(.08),
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(
                     color: isActive
-                        ? AppTheme.accent
+                        ? KyronTheme.accent
                         : textSecondaryColor.withOpacity(.18),
                     width: isActive ? 2 : 1,
                   ),
@@ -70,7 +71,7 @@ class ProfileChips extends StatelessWidget {
                     Text(
                       chip['label'] as String,
                       style: TextStyle(
-                        color: isActive ? AppTheme.accent : textColor,
+                        color: isActive ? KyronTheme.accent : textColor,
                         fontSize: 14,
                         fontWeight:
                             isActive ? FontWeight.w600 : FontWeight.normal,
@@ -84,7 +85,7 @@ class ProfileChips extends StatelessWidget {
                         '${chip['count']}',
                         style: TextStyle(
                           color:
-                              isActive ? AppTheme.accent : textSecondaryColor,
+                              isActive ? KyronTheme.accent : textSecondaryColor,
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),

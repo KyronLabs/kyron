@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class ProfileDock extends StatelessWidget {
   final String username;
@@ -27,7 +27,7 @@ class ProfileDock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 56,
-      color: AppTheme.surface,
+      color: KyronTheme.darkSurface,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
@@ -44,7 +44,7 @@ class ProfileDock extends StatelessWidget {
             CircleAvatar(
               radius: 20,
               backgroundImage: NetworkImage(avatarUrl),
-              backgroundColor: AppTheme.surface,
+              backgroundColor: KyronTheme.darkSurface,
               onBackgroundImageError: (exception, stackTrace) {
                 // This is a void function - just log the error
                 debugPrint('Avatar image error: $exception');

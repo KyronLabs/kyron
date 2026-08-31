@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class GradientScaffold extends StatelessWidget {
   final PreferredSizeWidget? appBar;
@@ -28,8 +28,8 @@ class GradientScaffold extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    AppTheme.lightBackgroundStart,
-                    AppTheme.lightBackgroundEnd,
+                    KyronTheme.lightBackgroundStart,
+                    KyronTheme.lightBackgroundEnd,
                   ],
                 ),
               ),

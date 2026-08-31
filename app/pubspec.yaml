@@ -10,6 +10,16 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # The design system, consumed rather than copied. app/lib/theme/app_theme.dart
+  # was a hand-written near-duplicate that had drifted into its own vocabulary;
+  # a git dependency makes that impossible to repeat.
+  # TODO: move ref to main (or a version tag) once the design-system PR merges.
+  kyron_design_system:
+    git:
+      url: https://github.com/KyronLabs/design-system.git
+      path: flutter
+      ref: claude/kyron-project-review-s5olgg
+
   flutter_secure_storage: ^9.2.4
   flutter_riverpod: ^3.0.3 
   flutter_svg: ^2.0.10

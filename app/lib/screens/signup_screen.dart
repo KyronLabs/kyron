@@ -7,7 +7,7 @@ import '../widgets/password_input_field.dart';
 import '../widgets/app_button.dart';
 import '../widgets/password_requirements.dart';
 import '../routes.dart';
-import '../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../repositories/auth_repository.dart';
 import '../utils/api_error_message.dart';
 
@@ -158,7 +158,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextSpan(
                       text: "Terms",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppTheme.accent,
+                            color: KyronTheme.accent,
                             decoration: TextDecoration.underline,
                           ),
                       recognizer: TapGestureRecognizer()
@@ -181,7 +181,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextSpan(
                       text: "Privacy Policy",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppTheme.accent,
+                            color: KyronTheme.accent,
                             decoration: TextDecoration.underline,
                           ),
                       recognizer: TapGestureRecognizer()

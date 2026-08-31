@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_theme.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class ProfileKPBar extends StatelessWidget {
   final int kyronPoints;
@@ -33,7 +33,7 @@ class ProfileKPBar extends StatelessWidget {
             curve: Curves.easeOutQuad,
             child: Container(
               decoration: BoxDecoration(
-                color: AppTheme.accent,
+                color: KyronTheme.accent,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
