@@ -159,8 +159,11 @@ class AuthRepository {
   Future<void> resendSignupCode(String email) =>
       _auth.resend(type: OtpType.signup, email: email);
 
-  Future<void> setOnboardingCompleted() =>
-      _storage.writeHasCompletedOnboarding(true);
+  Future<void> setOnboardingCompleted() async {
+    final userId = _auth.currentUser?.id;
+    if (userId == null) return;
+    await _storage.writeOnboardingCompletedFor(userId);
+  }
 
   /// Whether this account has been through onboarding.
   ///
@@ -173,12 +176,15 @@ class AuthRepository {
   ///
   /// The profile row is the real signal: step 1 writes it, so an account with a
   /// display name is an account that has been through the part that matters.
-  /// The local flag stays as a cache so the common path costs nothing.
+  /// The local record stays as a cache so the common path costs nothing -- but
+  /// it is keyed by account, because the store is per device. As a bare
+  /// boolean it meant the second account to sign up on a handset skipped
+  /// onboarding entirely, landing on the home screen as @user with no profile.
   Future<bool> isOnboardingComplete() async {
-    if (await _storage.readHasCompletedOnboarding()) return true;
-
     final userId = _auth.currentUser?.id;
     if (userId == null) return false;
+
+    if (await _storage.readOnboardingCompletedFor() == userId) return true;
 
     try {
       final row = await Supabase.instance.client
@@ -190,7 +196,7 @@ class AuthRepository {
       final displayName = row?['display_name'] as String?;
       if (displayName == null || displayName.trim().isEmpty) return false;
 
-      await _storage.writeHasCompletedOnboarding(true);
+      await _storage.writeOnboardingCompletedFor(userId);
       return true;
     } catch (_) {
       // Unreachable Supabase proves nothing either way. Answering false sends

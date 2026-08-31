@@ -57,15 +57,19 @@ class SecureStorageService {
     }
   }
 
-  Future<void> writeHasCompletedOnboarding(bool completed) async {
-    await _storage.write(
-        key: _kOnboardingCompleteKey, value: completed ? '1' : '0');
+  /// Records that [userId] finished onboarding on this device.
+  ///
+  /// The account id rather than a bare boolean, because the store is per
+  /// device and onboarding is per account. As a boolean, a second account
+  /// signing up on the same handset inherited the first one's completion and
+  /// was taken straight to the home screen with no profile behind it.
+  Future<void> writeOnboardingCompletedFor(String userId) async {
+    await _storage.write(key: _kOnboardingCompleteKey, value: userId);
   }
 
-  Future<bool> readHasCompletedOnboarding() async {
-    final value = await _storage.read(key: _kOnboardingCompleteKey);
-    return value == '1';
-  }
+  /// The account that finished onboarding here, or null if none has.
+  Future<String?> readOnboardingCompletedFor() =>
+      _storage.read(key: _kOnboardingCompleteKey);
 
   Future<void> clearAll() async {
     await _storage.deleteAll();
