@@ -17,6 +17,13 @@ on:
 permissions:
   contents: read
 
+# Superseded by the next push to the same branch or pull request. A run
+# against a commit nobody is looking at any more is a queue slot the current
+# one is waiting behind.
+concurrency:
+  group: api-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-test:
     name: Build and test the API

@@ -16,9 +16,15 @@ on:
 permissions:
   contents: write
 
+# Two of these at once would race on the version bump and push, and the loser
+# would tag a version it did not write.
+concurrency:
+  group: create-release
+  cancel-in-progress: false
+
 jobs:
   version-and-tag:
-    name: Bump version and create tag
+    name: Bump version, stamp the changelog and tag
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -32,17 +38,29 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      # First, so a release with nothing written about it fails before the
+      # version has been bumped and committed. The release workflow reads this
+      # same file for the published notes, so an empty section would have
+      # produced a release whose description was blank.
+      - name: Require notes under Unreleased
+        run: python3 scripts/changelog.py unreleased
+
       - name: Bump pubspec version
         id: version
         run: |
           version=$(python3 scripts/bump-version.py "${{ inputs.bump }}")
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
+      - name: Stamp the changelog
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: python3 scripts/changelog.py release "$VERSION"
+
       - name: Commit and tag
         env:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
-          git add app/pubspec.yaml
+          git add app/pubspec.yaml CHANGELOG.md
           git commit -m "chore(release): v${VERSION}"
           git tag -a "v${VERSION}" -m "Kyron v${VERSION}"
           git push origin main "v${VERSION}"
