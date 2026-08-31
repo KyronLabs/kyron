@@ -43,8 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                   isOutlined: true,
                 ),
                 const SizedBox(height: 20),
-                AppLanguageSelector(
-                    selected: 'English', onChanged: (v) {/* ui only */}),
+                const AppLanguageSelector(),
                 const SizedBox(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

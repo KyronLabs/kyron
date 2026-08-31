@@ -628,8 +628,8 @@ packages:
     dependency: "direct main"
     description:
       path: flutter
-      ref: "claude/kyron-project-review-s5olgg"
-      resolved-ref: "1536ce1e637eda594bbcb38207dcdeec38cb65da"
+      ref: main
+      resolved-ref: "63ed36c3aa7a2346e2da1c6c0b5470fb1fa1ecdf"
       url: "https://github.com/KyronLabs/design-system.git"
     source: git
     version: "0.1.0"
