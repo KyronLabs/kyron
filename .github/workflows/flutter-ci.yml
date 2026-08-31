@@ -5,14 +5,25 @@ on:
     branches: [main, dev]
     paths:
       - 'app/**'
+      - 'CHANGELOG.md'
+      - 'scripts/changelog.py'
       - '.github/workflows/flutter-ci.yml'
   pull_request:
     paths:
       - 'app/**'
+      - 'CHANGELOG.md'
+      - 'scripts/changelog.py'
       - '.github/workflows/flutter-ci.yml'
 
 permissions:
   contents: read
+
+# Superseded by the next push to the same branch or pull request. A run
+# against a commit nobody is looking at any more is a queue slot the current
+# one is waiting behind.
+concurrency:
+  group: flutter-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   analyze-and-test:
@@ -52,3 +63,19 @@ jobs:
 
       - name: Test
         run: flutter test
+
+  # A separate job, because it has nothing to do with Flutter and should not
+  # wait behind an Android toolchain to tell you a heading is malformed.
+  changelog:
+    name: Check the changelog parses
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # The release workflow reads the published notes out of this file, and
+      # the release-cutting workflow refuses to tag while Unreleased is empty.
+      # Both would fail at the worst moment -- mid-release -- if a heading were
+      # malformed, so it is checked on every change instead.
+      - name: Parse CHANGELOG.md
+        run: python3 scripts/changelog.py unreleased

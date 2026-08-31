@@ -11,6 +11,13 @@ on:
 permissions:
   contents: write
 
+# One debug build per branch at a time. Cancelled on a newer push: an older
+# build is superseded the moment the next commit lands, and publishing it after
+# would put a stale APK behind the "Latest" badge.
+concurrency:
+  group: debug-build-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   KYRON_BUILD_NUMBER: ${{ github.run_number }}
 
@@ -24,6 +31,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history and tags, so the release notes below can list what has
+          # landed since the previous debug build.
+          fetch-depth: 0
+
+      # Pinned rather than left to whatever the runner image ships. The Android
+      # Gradle Plugin and Kotlin target 17 (app/android/app/build.gradle.kts).
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -41,7 +60,42 @@ jobs:
           test -n "$version"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - name: Build debug APK
+      # Every one of these releases shipped with an empty body, so the releases
+      # page was thirty-odd identically-titled builds with no way to tell what
+      # was in any of them.
+      - name: Describe what is in this build
+        working-directory: .
+        run: |
+          set -euo pipefail
+          # Not piped to `head`: under `pipefail`, head exiting early sends
+          # git SIGPIPE and fails the step.
+          tags=$(git tag --list 'debug-*' --sort=-creatordate)
+          previous=${tags%%$'\n'*}
+          if [ -n "$previous" ]; then
+            range="${previous}..HEAD"
+            header="Changes since \`${previous}\`:"
+          else
+            range=HEAD
+            header="Commits in this build:"
+          fi
+
+          {
+            echo 'notes<<KYRON_NOTES_EOF'
+            echo "$header"
+            echo
+            git log --no-merges -n 40 --pretty='- %s (`%h`)' "$range"
+            echo
+            echo "Built from \`$(git rev-parse --short HEAD)\`."
+            echo
+            echo 'This is a development build. `arm64-v8a` suits any phone from'
+            echo 'roughly 2015 onwards; the `universal` APK works everywhere and'
+            echo 'is about three times the size.'
+            echo 'KYRON_NOTES_EOF'
+          } >> "$GITHUB_ENV"
+
+      # Two builds, because --split-per-abi replaces the universal APK rather
+      # than adding to it.
+      - name: Build per-architecture debug APKs
         env:
           # Optional. supabase_config.dart carries a committed default; this
           # lets a build override it without one being in the repository. The
@@ -50,17 +104,55 @@ jobs:
           # refuses to launch rather than reach a Supabase it was not meant to.
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          flutter build apk --debug --build-number "$KYRON_BUILD_NUMBER" \
+          flutter build apk --debug --split-per-abi \
+            --build-number "$KYRON_BUILD_NUMBER" \
             ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
 
-      - name: Rename artifact
-        run: cp build/app/outputs/flutter-apk/app-debug.apk "build/app/outputs/flutter-apk/kyron-${{ steps.version.outputs.version }}+${KYRON_BUILD_NUMBER}-debug.apk"
+      # Collected before the universal build runs: both write into the same
+      # flutter-apk directory, and the second build is not obliged to leave the
+      # first one's output there.
+      - name: Collect per-architecture APKs
+        working-directory: .
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          BUILD_NUMBER: ${{ env.KYRON_BUILD_NUMBER }}
+        run: |
+          set -euo pipefail
+          mkdir -p debug-artifacts
+          stem="kyron-${VERSION}+${BUILD_NUMBER}-debug"
 
-      - name: Upload debug APK as workflow artifact
+          for abi in arm64-v8a armeabi-v7a x86_64; do
+            src="app/build/app/outputs/flutter-apk/app-${abi}-debug.apk"
+            # Missing means the split build did not produce it, which is a
+            # broken build rather than a smaller one.
+            test -f "$src" || { echo "Missing $src"; exit 1; }
+            cp "$src" "debug-artifacts/${stem}-${abi}.apk"
+          done
+
+      - name: Build universal debug APK
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          flutter build apk --debug \
+            --build-number "$KYRON_BUILD_NUMBER" \
+            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
+
+      - name: Collect the universal APK
+        working-directory: .
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          BUILD_NUMBER: ${{ env.KYRON_BUILD_NUMBER }}
+        run: |
+          set -euo pipefail
+          cp app/build/app/outputs/flutter-apk/app-debug.apk \
+            "debug-artifacts/kyron-${VERSION}+${BUILD_NUMBER}-debug-universal.apk"
+          ls -lh debug-artifacts
+
+      - name: Upload debug APKs as workflow artifacts
         uses: actions/upload-artifact@v4
         with:
           name: kyron-debug-${{ steps.version.outputs.version }}-${{ github.run_number }}
-          path: app/build/app/outputs/flutter-apk/*-debug.apk
+          path: debug-artifacts/*.apk
           if-no-files-found: error
           retention-days: 14
 
@@ -69,13 +161,17 @@ jobs:
       # every build was a prerelease the endpoint returned 404 and no build ever
       # showed as current. make_latest is explicit because tag names sort
       # lexicographically -- debug-0.1.0-9 sorts after debug-0.1.0-20.
+      #
+      # Once a versioned release exists this should become prerelease: true,
+      # so that "Latest" means the shipped build rather than the newest commit.
       - name: Publish debug release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: debug-${{ steps.version.outputs.version }}-${{ github.run_number }}
           target_commitish: ${{ github.sha }}
           name: Kyron ${{ steps.version.outputs.version }} debug build ${{ github.run_number }}
+          body: ${{ env.notes }}
           prerelease: false
           make_latest: true
           generate_release_notes: false
-          files: app/build/app/outputs/flutter-apk/*-debug.apk
+          files: debug-artifacts/*.apk

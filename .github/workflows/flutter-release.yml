@@ -8,6 +8,13 @@ on:
 permissions:
   contents: write
 
+# A tag is pushed once, but a re-run or a retag should not race a half-finished
+# publish. Never cancelled: a release part-way through uploading is worse than
+# one that finishes and is then superseded.
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 env:
   KYRON_BUILD_NUMBER: ${{ github.run_number }}
 
@@ -21,6 +28,16 @@ jobs:
     steps:
       - name: Checkout release tag
         uses: actions/checkout@v4
+
+      # Pinned rather than left to whatever the runner image ships. The Android
+      # Gradle Plugin and Kotlin target 17 (app/android/app/build.gradle.kts),
+      # and a runner image bumping its default JDK would otherwise break a
+      # release build with no change on our side.
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -44,6 +61,31 @@ jobs:
           }
           echo "version=$pubspec_version" >> "$GITHUB_OUTPUT"
 
+      # A tag used to go straight to a published, signed, installable build
+      # without anything having been checked on the way. CI runs on branches,
+      # but a tag can point at any commit -- including one that never saw it.
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed lib test
+
+      - name: Analyze
+        run: flutter analyze --no-fatal-warnings --no-fatal-infos
+
+      - name: Test
+        run: flutter test
+
+      # Read before anything is built, so a release with no notes fails in
+      # thirty seconds rather than after a full Android build.
+      - name: Read release notes from the changelog
+        working-directory: .
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          {
+            echo 'notes<<KYRON_NOTES_EOF'
+            python3 scripts/changelog.py show "$VERSION"
+            echo 'KYRON_NOTES_EOF'
+          } >> "$GITHUB_ENV"
+
       - name: Decode Android signing key
         working-directory: .
         env:
@@ -61,7 +103,11 @@ jobs:
           storeFile=../upload-keystore.jks
           EOF
 
-      - name: Build release APK
+      # Two APK builds, because --split-per-abi replaces the universal APK
+      # rather than adding to it. Both are published: the per-architecture ones
+      # are roughly a third the size, and the universal one is what to reach
+      # for when you do not know which architecture a handset is.
+      - name: Build per-architecture release APKs
         env:
           # Optional. supabase_config.dart carries a committed default; this
           # lets a build override it without one being in the repository. The
@@ -70,33 +116,77 @@ jobs:
           # refuses to launch rather than reach a Supabase it was not meant to.
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          flutter build apk --release --build-number "$KYRON_BUILD_NUMBER" \
+          flutter build apk --release --split-per-abi \
+            --build-number "$KYRON_BUILD_NUMBER" \
             ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
 
-      - name: Build release App Bundle
-        env:
-          # Optional. supabase_config.dart carries a committed default; this
-          # lets a build override it without one being in the repository. The
-          # publishable key is safe to commit -- what was not safe was the
-          # wrong project's key being committed, which is why the app now
-          # refuses to launch rather than reach a Supabase it was not meant to.
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-        run: |
-          flutter build appbundle --release --build-number "$KYRON_BUILD_NUMBER" \
-            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
-
-      - name: Rename release artifacts
+      # Collected before the universal build runs: both write into the same
+      # flutter-apk directory, and the second build is not obliged to leave the
+      # first one's output there.
+      - name: Collect per-architecture APKs
         working-directory: .
         env:
           VERSION: ${{ steps.version.outputs.version }}
           BUILD_NUMBER: ${{ env.KYRON_BUILD_NUMBER }}
         run: |
+          set -euo pipefail
           mkdir -p release-artifacts
-          cp app/build/app/outputs/flutter-apk/app-release.apk "release-artifacts/kyron-${VERSION}+${BUILD_NUMBER}-release.apk"
-          cp app/build/app/outputs/bundle/release/app-release.aab "release-artifacts/kyron-${VERSION}+${BUILD_NUMBER}-release.aab"
+          stem="kyron-${VERSION}+${BUILD_NUMBER}"
+
+          for abi in arm64-v8a armeabi-v7a x86_64; do
+            src="app/build/app/outputs/flutter-apk/app-${abi}-release.apk"
+            # Missing means the split build did not produce it, which is a
+            # broken release rather than a smaller one.
+            test -f "$src" || { echo "Missing $src"; exit 1; }
+            cp "$src" "release-artifacts/${stem}-${abi}.apk"
+          done
+
+      - name: Build universal release APK
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          flutter build apk --release \
+            --build-number "$KYRON_BUILD_NUMBER" \
+            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
+
+      - name: Build release App Bundle
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          flutter build appbundle --release \
+            --build-number "$KYRON_BUILD_NUMBER" \
+            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
+
+      - name: Collect the universal APK and the bundle
+        working-directory: .
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          BUILD_NUMBER: ${{ env.KYRON_BUILD_NUMBER }}
+        run: |
+          set -euo pipefail
+          stem="kyron-${VERSION}+${BUILD_NUMBER}"
+          cp app/build/app/outputs/flutter-apk/app-release.apk \
+            "release-artifacts/${stem}-universal.apk"
+          cp app/build/app/outputs/bundle/release/app-release.aab \
+            "release-artifacts/${stem}.aab"
+          ls -lh release-artifacts
 
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          generate_release_notes: true
+          name: Kyron ${{ steps.version.outputs.version }}
+          # The changelog, not GitHub's generated notes. Generated notes cover
+          # everything since the previous tag, and the previous tag is nearly
+          # always a debug build -- so a versioned release described whatever
+          # happened since the last push to main, which is usually nothing.
+          body: |
+            ${{ env.notes }}
+
+            ---
+
+            **Which APK?** `arm64-v8a` for any phone from roughly 2015 onwards.
+            `armeabi-v7a` for older 32-bit devices, `x86_64` for emulators. The
+            `universal` build works everywhere and is about three times the size.
+          generate_release_notes: false
+          make_latest: true
           files: release-artifacts/*
