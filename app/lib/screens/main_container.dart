@@ -20,13 +20,24 @@ class _MainContainerState extends State<MainContainer> {
   int _currentIndex = 0;
   final GlobalKey<AppDrawerState> _drawerKey = GlobalKey<AppDrawerState>();
 
-  double _navHideProgress = 0.0; // 0.0 = visible, 1.0 = hidden
+  /// 0.0 = nav visible, 1.0 = hidden.
+  ///
+  /// A notifier rather than State, because this changes on every scroll frame.
+  /// It used to be a field updated with setState, which rebuilt this whole
+  /// widget sixty times a second while scrolling -- the drawer, its content,
+  /// the Scaffold, and _getCurrentPage(), which constructs a fresh HomeScreen
+  /// and with it the entire feed. The nav slides four pixels and the entire
+  /// screen was rebuilt to do it. Only the Transform below listens now.
+  final ValueNotifier<double> _navHideProgress = ValueNotifier<double>(0.0);
 
   void _handleScrollProgress(double progress) {
-    // Update nav hide progress in real-time
-    setState(() {
-      _navHideProgress = progress;
-    });
+    _navHideProgress.value = progress;
+  }
+
+  @override
+  void dispose() {
+    _navHideProgress.dispose();
+    super.dispose();
   }
 
   void _onNavTap(int index) {
@@ -77,14 +88,18 @@ class _MainContainerState extends State<MainContainer> {
       child: Scaffold(
         extendBody: true, // Allow body to extend behind bottom nav
         body: _getCurrentPage(),
-        bottomNavigationBar: Transform.translate(
-          offset: Offset(
-              0,
-              80 *
-                  _navHideProgress), // Slide down 80px (nav height + safe area)
+        bottomNavigationBar: ValueListenableBuilder<double>(
+          valueListenable: _navHideProgress,
+          // The nav itself is built once and passed through, so a scroll frame
+          // moves an existing subtree instead of rebuilding one.
           child: BottomNavV4(
             currentIndex: _currentIndex,
             onTap: _onNavTap,
+          ),
+          builder: (context, progress, child) => Transform.translate(
+            // Slide down by the nav height plus safe area.
+            offset: Offset(0, 80 * progress),
+            child: child,
           ),
         ),
       ),
