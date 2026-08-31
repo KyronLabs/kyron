@@ -2,6 +2,7 @@ import { Test } from '@nestjs/testing';
 import { HealthController } from './health.controller';
 import { SupabaseTokenService } from '../auth/supabase-token.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 
 /**
  * /health is the only way to see, from outside the machine, which identity
@@ -25,6 +26,7 @@ describe('HealthController', () => {
   const controller = async (
     databaseReachable = true,
     diagnosis: string | null = null,
+    mirrorTables: boolean | 'throws' = true,
   ) => {
     const moduleRef = await Test.createTestingModule({
       controllers: [HealthController],
@@ -35,6 +37,15 @@ describe('HealthController', () => {
           useValue: {
             isReachable: () => Promise.resolve(databaseReachable),
             diagnoseHost: () => Promise.resolve(diagnosis),
+          },
+        },
+        {
+          provide: SupabaseService,
+          useValue: {
+            mirrorTablesPresent: () =>
+              mirrorTables === 'throws'
+                ? Promise.reject(new Error('network'))
+                : Promise.resolve(mirrorTables),
           },
         },
       ],
@@ -128,6 +139,36 @@ describe('HealthController', () => {
 
     expect(body.database).toBe('reachable');
     expect(body).not.toHaveProperty('databaseDetail');
+  });
+
+  it('reports the mirror tables as missing when they are', async () => {
+    // The fault this exists for: user_profiles, interests and user_interests
+    // did not exist in the project the API writes to, so every profile save
+    // answered 500. "database: reachable" said nothing about it -- the
+    // database was reachable, it simply did not hold these tables.
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    const body = await (await controller(true, null, false)).health();
+
+    expect(body.database).toBe('reachable');
+    expect(body.mirrorTables).toBe('missing');
+  });
+
+  it('reports them present when they are', async () => {
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    const body = await (await controller(true, null, true)).health();
+
+    expect(body.mirrorTables).toBe('present');
+  });
+
+  it('says unknown rather than missing when the check itself fails', async () => {
+    // A transport or permission failure is not evidence the tables are gone,
+    // and reporting "missing" would send someone to re-run a migration that
+    // was never the problem.
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    const body = await (await controller(true, null, 'throws')).health();
+
+    expect(body.mirrorTables).toBe('unknown');
+    expect(body.status).toBe('ok');
   });
 
   it('says so, and stays ok, when Supabase is not configured', async () => {

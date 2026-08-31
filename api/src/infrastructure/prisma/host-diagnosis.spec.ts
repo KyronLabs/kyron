@@ -60,6 +60,19 @@ describe('diagnoseUnreachableHost', () => {
     ).toContain('does not resolve');
   });
 
+  it('says nothing about a literal IP address', async () => {
+    // Caught by booting against DATABASE_URL=...@127.0.0.1..., which reported
+    // "127.0.0.1 does not resolve to any address" -- confidently wrong, and
+    // exactly the kind of misdirection this file exists to prevent.
+    const never: DnsResolver = {
+      resolve4: notFound,
+      resolve6: notFound,
+    };
+    expect(await diagnoseUnreachableHost('127.0.0.1', never)).toBeNull();
+    expect(await diagnoseUnreachableHost('::1', never)).toBeNull();
+    expect(await diagnoseUnreachableHost('10.0.0.5', never)).toBeNull();
+  });
+
   it('does not hang when a lookup never settles', async () => {
     // A diagnostic must never be slower than the failure it explains.
     const hangs: DnsResolver = {
