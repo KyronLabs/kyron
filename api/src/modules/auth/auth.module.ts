@@ -4,7 +4,6 @@ import { JwtModule } from '@nestjs/jwt';
 import { getJwtSecret } from '../../config/jwt-secret';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
-import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { EmailService } from '../../infrastructure/email/email.service';
 import { UsersModule } from '../users/users.module';
 import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
@@ -19,7 +18,9 @@ import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, PrismaService, EmailService],
+  // PrismaService comes from the @Global() PrismaModule. Re-providing it here
+  // built a second PrismaClient with its own connection pool.
+  providers: [AuthService, EmailService],
   exports: [AuthService],
 })
 export class AuthModule {}

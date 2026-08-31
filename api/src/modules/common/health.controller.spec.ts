@@ -1,6 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { HealthController } from './health.controller';
 import { SupabaseTokenService } from '../auth/supabase-token.service';
+import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
 /**
  * /health is the only way to see, from outside the machine, which identity
@@ -21,10 +22,16 @@ describe('HealthController', () => {
     else process.env.SUPABASE_JWT_SECRET = originalSecret;
   });
 
-  const controller = async () => {
+  const controller = async (databaseReachable = true) => {
     const moduleRef = await Test.createTestingModule({
       controllers: [HealthController],
-      providers: [SupabaseTokenService],
+      providers: [
+        SupabaseTokenService,
+        {
+          provide: PrismaService,
+          useValue: { isReachable: () => Promise.resolve(databaseReachable) },
+        },
+      ],
     }).compile();
     return moduleRef.get(HealthController);
   };
@@ -32,7 +39,7 @@ describe('HealthController', () => {
   it('stays ok and names the issuer when Supabase is configured', async () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
     delete process.env.SUPABASE_JWT_SECRET;
-    const body = (await controller()).health();
+    const body = await (await controller()).health();
 
     expect(body.status).toBe('ok');
     expect(body.auth).toEqual({
@@ -48,21 +55,46 @@ describe('HealthController', () => {
     // checked. The algorithm list is the half that does.
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
     process.env.SUPABASE_JWT_SECRET = 'a-legacy-project-shared-secret';
-    const body = (await controller()).health();
+    const body = await (await controller()).health();
 
     expect(body.auth.accepts).toContain('HS256');
   });
 
   it('trims a trailing slash rather than doubling it into the issuer', async () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co/';
-    const body = (await controller()).health();
+    const body = await (await controller()).health();
 
+    expect(body.auth.issuer).toBe('https://project-ref.supabase.co/auth/v1');
+  });
+
+  it('reports the database as reachable when it answers', async () => {
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    const body = await (await controller(true)).health();
+
+    expect(body.status).toBe('ok');
+    expect(body.database).toBe('reachable');
+  });
+
+  it('reports degraded, not unhealthy, when the database is unreachable', async () => {
+    // Deliberately still 'degraded' rather than a failure: the process is
+    // serving, and reporting unhealthy takes the machine out of rotation and
+    // hides the one piece of information this endpoint exists to give. The
+    // API used to refuse to boot in this situation, and a machine that exits
+    // at boot is not restarted -- so a ten-second database outage took it
+    // down until someone deployed again by hand.
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    const body = await (await controller(false)).health();
+
+    expect(body.status).toBe('degraded');
+    expect(body.database).toBe('unreachable');
+    // Auth config is still reported: whichever half is broken, the other one
+    // should still be answerable in the same request.
     expect(body.auth.issuer).toBe('https://project-ref.supabase.co/auth/v1');
   });
 
   it('says so, and stays ok, when Supabase is not configured', async () => {
     delete process.env.SUPABASE_URL;
-    const body = (await controller()).health();
+    const body = await (await controller()).health();
 
     // Still ok: the process is healthy, it just cannot authenticate anyone.
     // Reporting unhealthy here would take the machine out of the load

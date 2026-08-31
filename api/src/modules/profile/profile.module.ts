@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { ProfileService } from './profile.service';
 import { ProfileController } from './profile.controller';
 import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
-import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { JwtModule } from '@nestjs/jwt';
 import { SupabaseTokenModule } from '../auth/supabase-token.module';
 
@@ -15,7 +14,8 @@ import { SupabaseTokenModule } from '../auth/supabase-token.module';
     JwtModule.register({}), // Makes JwtService available to AuthGuard
   ],
   controllers: [ProfileController],
-  providers: [ProfileService, PrismaService],
+  // PrismaService comes from the @Global() PrismaModule.
+  providers: [ProfileService],
   exports: [ProfileService],
 })
 export class ProfileModule {}

@@ -5,6 +5,7 @@ import { SupabaseTokenModule } from '../auth/supabase-token.module';
 @Module({
   imports: [SupabaseTokenModule],
   controllers: [HealthController],
+  // PrismaService comes from the @Global() PrismaModule.
   providers: [],
   exports: [],
 })
