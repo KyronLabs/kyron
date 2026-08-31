@@ -5,6 +5,7 @@ import 'services/draft_service.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'routes.dart';
 import 'providers/auth_provider.dart';
+import 'providers/preferences_provider.dart';
 import 'screens/root_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -84,6 +85,12 @@ class _KyronAppState extends ConsumerState<KyronApp> {
       );
     }
 
+    // The chosen scale is applied here so it reaches every screen, rather
+    // than only the one that sets it. Clamped to exactly the chosen value:
+    // compounding it with the platform's own accessibility scale would take
+    // the largest setting somewhere no layout has been checked against.
+    final textScale = ref.watch(preferencesProvider).textScale;
+
     return MaterialApp(
       title: 'Kyron',
       debugShowCheckedModeBanner: false,
@@ -92,6 +99,11 @@ class _KyronAppState extends ConsumerState<KyronApp> {
       themeMode: ThemeMode.system,
       home: const RootScreen(),
       onGenerateRoute: Routes.onGenerateRoute,
+      builder: (context, child) => MediaQuery.withClampedTextScaling(
+        minScaleFactor: textScale,
+        maxScaleFactor: textScale,
+        child: child ?? const SizedBox.shrink(),
+      ),
     );
   }
 }

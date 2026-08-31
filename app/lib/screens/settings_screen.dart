@@ -1,19 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../providers/preferences_provider.dart';
+import '../services/app_preferences.dart';
 import '../widgets/kyron_toggle.dart';
 import '../routes.dart';
 import 'dart:async';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
+  ConsumerState<SettingsScreen> createState() => _SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class _SettingsScreenState extends ConsumerState<SettingsScreen> {
+  /// The signed-in account, read from the live Supabase session.
+  ///
+  /// These rows used to read "@alice" and "alice@kyron.so" -- hard-coded, so
+  /// the settings screen showed the same person to everyone, and "Log Out"
+  /// named an account nobody was signed in as.
+  String get _email =>
+      Supabase.instance.client.auth.currentUser?.email ?? 'Not signed in';
+
+  String get _handle {
+    final metadata =
+        Supabase.instance.client.auth.currentUser?.userMetadata ?? const {};
+    final username = (metadata['username'] as String?)?.trim();
+    if (username != null && username.isNotEmpty) return '@$username';
+    // No placeholder handle: "@user" for everyone is what made a real account
+    // indistinguishable from filler elsewhere in the app.
+    final email = Supabase.instance.client.auth.currentUser?.email;
+    return email ?? 'Your account';
+  }
+
   // Local state for toggles (batch save on exit)
   bool _privateAccount = false;
   bool _darkMode = true;
@@ -233,8 +256,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _groupHeader('Account'),
             _settingsRow(
               icon: Iconsax.user,
-              label: '@alice',
-              subtitle: 'alice@kyron.so',
+              label: _handle,
+              subtitle: _email,
               trailing: TextButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, Routes.settingsChangeEmail),
@@ -313,7 +336,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _settingsRow(
               icon: Iconsax.text,
               label: 'Font Size',
-              subtitle: 'Medium',
+              subtitle: AppPreferences.labelForScale(
+                ref.watch(preferencesProvider).textScale,
+              ),
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsFontSize),
@@ -322,7 +347,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _settingsRow(
               icon: Iconsax.global,
               label: 'Language',
-              subtitle: 'English',
+              subtitle: ref.watch(preferencesProvider).language.nativeName,
               trailing: const Icon(Iconsax.arrow_right_3, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsLanguage),
@@ -438,7 +463,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: _settingsRow(
                 icon: Iconsax.logout,
                 label: 'Log Out',
-                subtitle: '@alice',
+                subtitle: _handle,
                 trailing: const Icon(Iconsax.arrow_right_3,
                     size: 20, color: Colors.red),
                 onTap: _showLogoutConfirmation,
