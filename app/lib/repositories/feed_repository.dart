@@ -22,6 +22,61 @@ class FeedRepository {
     return FeedPage.fromJson(res.data ?? const {});
   }
 
+  /// One account's posts, newest first, with the same cursor rules as [recent].
+  Future<FeedPage> byAuthor(
+    String userId, {
+    String? cursor,
+    int limit = 20,
+  }) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/feed/users/$userId/posts',
+      queryParameters: {
+        'limit': limit,
+        if (cursor != null) 'cursor': cursor,
+      },
+    );
+    return FeedPage.fromJson(res.data ?? const {});
+  }
+
+  /// The posts you have liked, most recently liked first.
+  Future<FeedPage> liked({String? cursor, int limit = 20}) =>
+      _page('/feed/liked', cursor, limit);
+
+  /// The posts you have saved. Private to you -- there is no path for another
+  /// account's saves.
+  Future<FeedPage> saved({String? cursor, int limit = 20}) =>
+      _page('/feed/saved', cursor, limit);
+
+  Future<FeedPage> _page(String path, String? cursor, int limit) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      path,
+      queryParameters: {
+        'limit': limit,
+        if (cursor != null) 'cursor': cursor,
+      },
+    );
+    return FeedPage.fromJson(res.data ?? const {});
+  }
+
+  /// Returns the post's recounted like total, so the screen shows the server's
+  /// number rather than its own guess.
+  Future<int> setLiked(String postId, bool liked) async {
+    final path = '/feed/posts/$postId/like';
+    final res = liked
+        ? await _api.dio.put<Map<String, dynamic>>(path)
+        : await _api.dio.delete<Map<String, dynamic>>(path);
+    return (res.data?['likes'] as num?)?.toInt() ?? 0;
+  }
+
+  Future<void> setSaved(String postId, bool saved) async {
+    final path = '/feed/posts/$postId/save';
+    if (saved) {
+      await _api.dio.put<void>(path);
+    } else {
+      await _api.dio.delete<void>(path);
+    }
+  }
+
   Future<FeedPost> create(String content) async {
     final res = await _api.dio.post<Map<String, dynamic>>(
       '/feed/posts',

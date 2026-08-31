@@ -10,7 +10,7 @@
     "lint": "eslint src",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "jest",
-    "start": "prisma migrate deploy || echo '[start] prisma migrate deploy failed; starting anyway -- GET /health reports the database state' ; node dist/src/main.js",
+    "start": "sh scripts/start.sh",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev --name init --skip-seed",
     "prisma:deploy": "prisma migrate deploy",

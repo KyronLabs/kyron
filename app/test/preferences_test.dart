@@ -38,7 +38,7 @@ void main() {
     test('defaults before anything is stored', () async {
       final prefs = AppPreferences();
       expect(await prefs.readLanguage(), AppLanguage.english);
-      expect(await prefs.readTextScale(), 1.0);
+      expect(await prefs.readTextScale(), AppPreferences.defaultTextScale);
       expect(await prefs.readPushEnabled(), isTrue);
       expect(await prefs.readEmailEnabled(), isTrue);
     });
@@ -59,7 +59,10 @@ void main() {
       // A value from a build with a different set would otherwise render at a
       // size no screen was ever checked against.
       SharedPreferences.setMockInitialValues({'pref_text_scale': 4.0});
-      expect(await AppPreferences().readTextScale(), 1.0);
+      expect(
+        await AppPreferences().readTextScale(),
+        AppPreferences.defaultTextScale,
+      );
     });
 
     test('round-trips the notification switches', () async {
@@ -81,7 +84,7 @@ void main() {
     });
 
     test('an unknown scale still gets a sensible label', () {
-      expect(AppPreferences.labelForScale(99), 'Medium');
+      expect(AppPreferences.labelForScale(99), 'Small');
     });
   });
 }

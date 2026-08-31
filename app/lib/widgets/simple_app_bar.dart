@@ -1,5 +1,10 @@
 // lib/widgets/simple_app_bar.dart
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
+
+import '../routes.dart';
+import 'account_avatar.dart';
 
 class SimpleAppBar extends StatelessWidget {
   final String title;
@@ -29,32 +34,17 @@ class SimpleAppBar extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
         child: Row(
           children: [
-            // Avatar button
-            GestureDetector(
+            AccountAvatar(
+              radius: 18,
+              ringColor: scheme.primary.withValues(alpha: 0.3),
+              ringWidth: 1.5,
               onTap: onAvatarTap,
-              child: Container(
-                width: 36,
-                height: 36,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: scheme.primary.withValues(alpha: 0.15),
-                  border: Border.all(
-                    color: scheme.primary.withValues(alpha: 0.3),
-                    width: 1.5,
-                  ),
-                ),
-                child: Icon(
-                  Icons.person,
-                  color: scheme.primary,
-                  size: 20,
-                ),
-              ),
+              tooltip: 'Menu',
             ),
-            const SizedBox(width: 12),
-            // Title
+            const SizedBox(width: SpacingTokens.space12),
             Expanded(
               child: Text(
                 title,
@@ -65,16 +55,23 @@ class SimpleAppBar extends StatelessWidget {
                 ),
               ),
             ),
-            // Settings button
+            IconButton(
+              onPressed: () => Navigator.pushNamed(context, Routes.search),
+              tooltip: 'Search',
+              icon: Icon(
+                Iconsax.search_normal_1,
+                color: scheme.onSurface.withValues(alpha: 0.7),
+                size: 22,
+              ),
+            ),
             IconButton(
               onPressed: onSettingsTap ??
-                  () {
-                    Navigator.pushNamed(context, '/settings');
-                  },
+                  () => Navigator.pushNamed(context, Routes.settings),
+              tooltip: 'Settings',
               icon: Icon(
-                Icons.settings_outlined,
+                Iconsax.setting_2,
                 color: scheme.onSurface.withValues(alpha: 0.7),
-                size: 24,
+                size: 22,
               ),
             ),
           ],

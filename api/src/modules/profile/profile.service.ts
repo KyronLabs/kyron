@@ -26,33 +26,39 @@ export class ProfileService {
   // Reads from Prisma (authoritative) + Supabase (supplemental)
   // ==========================================
   async getMe(userId: string) {
-    const [user, prismaProfile, followers, following] = await Promise.all([
-      this.prisma.user.findUnique({
-        where: { id: userId },
-        select: {
-          id: true,
-          username: true,
-          did: true,
-          kyronPoints: true,
-        },
-      }),
+    const [user, prismaProfile, followers, following, posts] =
+      await Promise.all([
+        this.prisma.user.findUnique({
+          where: { id: userId },
+          select: {
+            id: true,
+            // The profile screen leads with a display name. Without it the
+            // client had nothing to show but the handle, so every profile
+            // read "@name" twice over.
+            name: true,
+            username: true,
+            did: true,
+            kyronPoints: true,
+          },
+        }),
 
-      this.prisma.userProfile.findUnique({
-        where: { userId },
-        select: {
-          avatarUrl: true,
-          coverUrl: true,
-        },
-      }),
+        this.prisma.userProfile.findUnique({
+          where: { userId },
+          select: this.profileShape,
+        }),
 
-      this.prisma.follow.count({
-        where: { followingId: userId },
-      }),
+        this.prisma.follow.count({
+          where: { followingId: userId },
+        }),
 
-      this.prisma.follow.count({
-        where: { followerId: userId },
-      }),
-    ]);
+        this.prisma.follow.count({
+          where: { followerId: userId },
+        }),
+
+        this.prisma.post.count({
+          where: { authorId: userId, deletedAt: null },
+        }),
+      ]);
 
     if (!user) throw new NotFoundException('User not found');
 
@@ -66,21 +72,45 @@ export class ProfileService {
       // Retry after sync
       const syncedProfile = await this.prisma.userProfile.findUnique({
         where: { userId },
+        select: this.profileShape,
       });
 
       return {
         user,
-        profile: syncedProfile || { avatarUrl: null, coverUrl: null },
-        stats: { followers, following },
+        profile: syncedProfile ?? this.emptyProfile,
+        stats: { followers, following, posts },
       };
     }
 
     return {
       user,
       profile: prismaProfile,
-      stats: { followers, following },
+      stats: { followers, following, posts },
     };
   }
+
+  /**
+   * The profile columns both profile endpoints return.
+   *
+   * Named once so /profile/me and /profile/:username cannot drift apart: they
+   * previously selected different sets, and the client had to guess which
+   * fields a given response would carry.
+   */
+  private readonly profileShape = {
+    avatarUrl: true,
+    coverUrl: true,
+    bio: true,
+    location: true,
+    website: true,
+  } as const;
+
+  private readonly emptyProfile = {
+    avatarUrl: null,
+    coverUrl: null,
+    bio: null,
+    location: null,
+    website: null,
+  };
 
   // ==========================================
   // DUAL-WRITE: Sync profile from Supabase to Prisma (Recovery)
@@ -211,28 +241,27 @@ export class ProfileService {
       where: { username },
       select: {
         id: true,
+        name: true,
         username: true,
         did: true,
         kyronPoints: true,
-        profile: {
-          select: {
-            avatarUrl: true,
-            coverUrl: true,
-            bio: true,
-          },
-        },
+        profile: { select: this.profileShape },
       },
     });
 
     if (!user) throw new NotFoundException('User not found');
 
-    const [followers, following, isFollowing] = await Promise.all([
+    const [followers, following, posts, isFollowing] = await Promise.all([
       this.prisma.follow.count({
         where: { followingId: user.id },
       }),
 
       this.prisma.follow.count({
         where: { followerId: user.id },
+      }),
+
+      this.prisma.post.count({
+        where: { authorId: user.id, deletedAt: null },
       }),
 
       viewerId
@@ -249,16 +278,71 @@ export class ProfileService {
 
     return {
       user: {
+        // The id is what the client needs to follow, unfollow or ask for this
+        // account's posts. Withholding it meant the follow button on a public
+        // profile had no target.
+        id: user.id,
+        name: user.name,
         username: user.username,
         did: user.did,
         kyronPoints: user.kyronPoints,
       },
-      profile: user.profile,
+      profile: user.profile ?? this.emptyProfile,
       stats: {
         followers,
         following,
+        posts,
         isFollowing,
       },
+    };
+  }
+
+  /**
+   * People matching a handle or display name.
+   *
+   * Case-insensitive contains rather than a prefix: someone searching for
+   * "kyron" should find "teamkyron", which a prefix match would miss. The
+   * caller is excluded -- your own account is not a search result.
+   */
+  async searchProfiles(query: string, viewerId: string, limit = 20) {
+    const q = query.trim();
+    if (q.length < 2) return { items: [] };
+
+    const users = await this.prisma.user.findMany({
+      where: {
+        id: { not: viewerId },
+        deletedAt: null,
+        OR: [
+          { username: { contains: q, mode: 'insensitive' } },
+          { name: { contains: q, mode: 'insensitive' } },
+        ],
+      },
+      // An exact handle sorts first; beyond that, the most-followed people are
+      // the ones a short query most likely meant.
+      orderBy: [{ kyronPoints: 'desc' }, { username: 'asc' }],
+      take: limit,
+      select: {
+        id: true,
+        name: true,
+        username: true,
+        did: true,
+        kyronPoints: true,
+        profile: { select: { avatarUrl: true, bio: true } },
+        _count: { select: { followers: true } },
+      },
+    });
+
+    return {
+      items: users.map((user) => ({
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        did: user.did,
+        kyronPoints: user.kyronPoints,
+        avatarUrl: user.profile?.avatarUrl ?? null,
+        bio: user.profile?.bio ?? null,
+        followers: user._count.followers,
+      })),
     };
   }
 

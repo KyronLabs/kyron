@@ -19,9 +19,15 @@ class AppPreferences {
   /// A name for each, in the same order.
   static const textScaleLabels = <String>['Small', 'Medium', 'Large', 'Larger'];
 
+  /// What a fresh install gets. Stated once so the store, the in-memory state
+  /// and the label fallback cannot disagree about it.
+  static const defaultTextScale = 0.85;
+
   static String labelForScale(double scale) {
     final index = textScales.indexOf(scale);
-    return index == -1 ? textScaleLabels[1] : textScaleLabels[index];
+    return index == -1
+        ? labelForScale(defaultTextScale)
+        : textScaleLabels[index];
   }
 
   Future<SharedPreferences> get _prefs => SharedPreferences.getInstance();
@@ -36,7 +42,9 @@ class AppPreferences {
   /// set would otherwise render at a size no screen was checked against.
   Future<double> readTextScale() async {
     final stored = (await _prefs).getDouble(_kTextScale);
-    if (stored == null || !textScales.contains(stored)) return 1.0;
+    if (stored == null || !textScales.contains(stored)) {
+      return defaultTextScale;
+    }
     return stored;
   }
 

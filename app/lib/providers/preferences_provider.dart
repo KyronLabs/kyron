@@ -21,7 +21,7 @@ class PreferencesState {
 
   const PreferencesState({
     this.language = AppLanguage.english,
-    this.textScale = 1.0,
+    this.textScale = AppPreferences.defaultTextScale,
     this.pushEnabled = true,
     this.emailEnabled = true,
     this.isLoaded = false,

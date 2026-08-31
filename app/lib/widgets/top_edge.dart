@@ -1,11 +1,10 @@
 // lib/widgets/top_edge.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../providers/current_user_provider.dart';
+import 'account_avatar.dart';
 
-class TopEdge extends ConsumerWidget {
+class TopEdge extends StatelessWidget {
   final String logoPath;
   final VoidCallback? onProfileTap;
   final VoidCallback? onLogoTap;
@@ -22,9 +21,8 @@ class TopEdge extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final userAsync = ref.watch(currentUserProvider);
 
     return Container(
       height: 56,
@@ -36,23 +34,10 @@ class TopEdge extends ConsumerWidget {
           /// LEFT – PROFILE AVATAR
           Align(
             alignment: Alignment.centerLeft,
-            child: GestureDetector(
+            child: AccountAvatar(
+              radius: 16,
               onTap: onProfileTap,
-              child: userAsync.when(
-                loading: () => _avatarPlaceholder(scheme),
-                error: (_, __) => _avatarPlaceholder(scheme),
-                data: (user) => CircleAvatar(
-                  radius: 16,
-                  backgroundColor: scheme.tertiaryContainer,
-                  backgroundImage: user.avatarUrl != null
-                      ? NetworkImage(user.avatarUrl!)
-                      : null,
-                  child: user.avatarUrl == null
-                      ? Icon(Iconsax.user,
-                          size: 16, color: scheme.onTertiaryContainer)
-                      : null,
-                ),
-              ),
+              tooltip: 'Menu',
             ),
           ),
 
@@ -80,16 +65,21 @@ class TopEdge extends ConsumerWidget {
                 IconButton(
                   onPressed: onSearchTap,
                   icon: const Icon(Iconsax.search_normal_1, size: 22),
+                  tooltip: 'Search',
                   constraints: const BoxConstraints(
                     minWidth: 32,
                     minHeight: 32,
                   ),
                   padding: EdgeInsets.zero,
                 ),
-                const SizedBox(width: 8),
+                // The two used to sit 18 logical pixels apart -- the eight
+                // here plus each button's own five of padding -- which read as
+                // two unrelated controls rather than one pair.
+                const SizedBox(width: 2),
                 IconButton(
                   onPressed: onNotificationTap,
                   icon: const Icon(Iconsax.notification, size: 22),
+                  tooltip: 'Notifications',
                   constraints: const BoxConstraints(
                     minWidth: 32,
                     minHeight: 32,
@@ -101,18 +91,6 @@ class TopEdge extends ConsumerWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _avatarPlaceholder(ColorScheme scheme) {
-    return Container(
-      width: 32,
-      height: 32,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: scheme.tertiaryContainer,
-      ),
-      child: Icon(Iconsax.user, size: 16, color: scheme.onTertiaryContainer),
     );
   }
 }

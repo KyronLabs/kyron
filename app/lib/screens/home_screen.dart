@@ -5,6 +5,7 @@ import '../widgets/top_edge.dart';
 import '../widgets/interest_tabs.dart';
 import '../widgets/feed_canvas.dart';
 import '../widgets/app_drawer.dart';
+import '../routes.dart';
 
 class HomeScreen extends StatefulWidget {
   final GlobalKey<AppDrawerState> drawerKey;
@@ -159,9 +160,9 @@ class _HomeScreenState extends State<HomeScreen>
                 widget.drawerKey.currentState?.toggleDrawer();
               },
               onLogoTap: _scrollToTop,
-              onSearchTap: () => debugPrint('Search'),
+              onSearchTap: () => Navigator.pushNamed(context, Routes.search),
               onNotificationTap: () =>
-                  Navigator.pushNamed(context, '/notifications'),
+                  Navigator.pushNamed(context, Routes.notifications),
             ),
           ),
         ),

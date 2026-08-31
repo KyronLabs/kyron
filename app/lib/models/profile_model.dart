@@ -1,82 +1,142 @@
 // lib/models/profile_model.dart
-import 'package:flutter/material.dart';
 
+import 'current_user.dart';
+
+/// A profile, as GET /profile/me and GET /profile/:username return it.
+///
+/// The old shape carried badges, verification, a socials list and separate
+/// reply, media and like counts. The API knows none of those, so every one of
+/// them had to be invented -- and it was: `ProfileModel.mock()` and a
+/// `_fetchProfileByDid` that derived follower counts from `did.hashCode`. A
+/// field only exists here once the server can answer for it.
 class ProfileModel {
-  final String did;
-  final String handle;
-  final String displayName;
-  final String avatarUrl;
-  final String? coverUrl;
+  final String id;
+  final String? name;
+  final String? username;
+  final String? did;
   final int kyronPoints;
+  final String? avatarUrl;
+  final String? coverUrl;
   final String? bio;
-  final List<String> socials;
-  final List<BadgeModel> badges;
-  final int postsCount;
-  final int repliesCount;
-  final int mediaCount;
-  final int likesCount;
+  final String? location;
+  final String? website;
+  final int followers;
+  final int following;
+  final int posts;
+
+  /// Whether the viewer follows this account. Always false on your own.
   final bool isFollowing;
-  final bool isVerified;
+
   final bool isOwnProfile;
 
-  ProfileModel({
-    required this.did,
-    required this.handle,
-    required this.displayName,
-    required this.avatarUrl,
-    this.coverUrl,
+  const ProfileModel({
+    required this.id,
+    this.name,
+    this.username,
+    this.did,
     required this.kyronPoints,
+    this.avatarUrl,
+    this.coverUrl,
     this.bio,
-    required this.socials,
-    required this.badges,
-    required this.postsCount,
-    required this.repliesCount,
-    required this.mediaCount,
-    required this.likesCount,
+    this.location,
+    this.website,
+    required this.followers,
+    required this.following,
+    required this.posts,
     this.isFollowing = false,
-    this.isVerified = false,
     this.isOwnProfile = false,
   });
 
-  // Helper method to create a mock profile
-  static ProfileModel mock() {
+  factory ProfileModel.fromJson(
+    Map<String, dynamic> json, {
+    bool isOwnProfile = false,
+  }) {
+    final user = _map(json['user']);
+    final profile = _map(json['profile']);
+    final stats = _map(json['stats']);
+
     return ProfileModel(
-      did: 'did:plc:abcdef123456',
-      handle: '@alice',
-      displayName: 'Alice Johnson',
-      avatarUrl: 'https://picsum.photos/300/300?random=1',
-      coverUrl: 'https://picsum.photos/800/300?random=2',
-      kyronPoints: 1042,
-      bio:
-          'Building the user-owned feed. AR lenses, climate memes, and the occasional hot take. Founder @kyron.',
-      socials: ['kyron.so', '@alice', 'alice@kyron.so'],
-      badges: [
-        BadgeModel(
-            emoji: '👑', label: 'Creator', description: 'Content Creator'),
-        BadgeModel(
-            emoji: '✅', label: 'Verified', description: 'Verified Account'),
-        BadgeModel(emoji: '⚡', label: '0G', description: 'Zero Gravity Member'),
-        BadgeModel(emoji: '🏆', label: '1K Club', description: '1K Followers'),
-      ],
-      postsCount: 42,
-      repliesCount: 128,
-      mediaCount: 24,
-      likesCount: 512,
-      isFollowing: false,
-      isVerified: true,
-      isOwnProfile: false,
+      id: user['id'] as String? ?? '',
+      name: user['name'] as String?,
+      username: user['username'] as String?,
+      did: user['did'] as String?,
+      kyronPoints: _int(user['kyronPoints']),
+      avatarUrl: profile['avatarUrl'] as String?,
+      coverUrl: profile['coverUrl'] as String?,
+      bio: profile['bio'] as String?,
+      location: profile['location'] as String?,
+      website: profile['website'] as String?,
+      followers: _int(stats['followers']),
+      following: _int(stats['following']),
+      posts: _int(stats['posts']),
+      isFollowing: stats['isFollowing'] == true,
+      isOwnProfile: isOwnProfile,
     );
   }
-}
 
-class BadgeModel {
-  final String emoji;
-  final String label;
-  final String description;
+  /// Your own profile, from the response the drawer and top bar already hold.
+  ///
+  /// Saves a second round trip when you open your profile from the app shell:
+  /// /profile/me has been read by then, and it carries the same fields.
+  factory ProfileModel.fromCurrentUser(CurrentUser user) => ProfileModel(
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        did: user.did,
+        kyronPoints: user.kyronPoints,
+        avatarUrl: user.avatarUrl,
+        coverUrl: user.coverUrl,
+        bio: user.bio,
+        location: user.location,
+        website: user.website,
+        followers: user.followers,
+        following: user.following,
+        posts: user.posts,
+        isOwnProfile: true,
+      );
 
-  BadgeModel({
-    required this.emoji,
-    required this.label,
-    required this.description,
-  });
+  ProfileModel copyWith({
+    int? followers,
+    bool? isFollowing,
+  }) {
+    return ProfileModel(
+      id: id,
+      name: name,
+      username: username,
+      did: did,
+      kyronPoints: kyronPoints,
+      avatarUrl: avatarUrl,
+      coverUrl: coverUrl,
+      bio: bio,
+      location: location,
+      website: website,
+      followers: followers ?? this.followers,
+      following: following,
+      posts: posts,
+      isFollowing: isFollowing ?? this.isFollowing,
+      isOwnProfile: isOwnProfile,
+    );
+  }
+
+  /// What to put above the profile. Falls back through name, then handle --
+  /// never to a placeholder, which is what made a real account look like
+  /// filler everywhere else in the app.
+  String get displayName {
+    final n = name?.trim();
+    if (n != null && n.isNotEmpty) return n;
+    final u = username?.trim();
+    if (u != null && u.isNotEmpty) return u;
+    return isOwnProfile ? 'Your account' : 'Someone on Kyron';
+  }
+
+  /// The @handle, or null when the account has not set one yet.
+  String? get handle {
+    final u = username?.trim();
+    return (u == null || u.isEmpty) ? null : '@$u';
+  }
+
+  static Map<String, dynamic> _map(Object? value) =>
+      value is Map<String, dynamic> ? value : const <String, dynamic>{};
+
+  static int _int(Object? value) => value is num ? value.toInt() : 0;
 }

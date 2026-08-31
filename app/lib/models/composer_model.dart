@@ -1,67 +1,46 @@
-import 'dart:convert';
-
+/// An unsent post, kept on the device so leaving the screen does not lose it.
 class ComposerDraft {
   final String? id;
   final String content;
-  final String privacy;
-  final DateTime? scheduledAt;
-  final List<String> mediaPaths;
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  ComposerDraft({
+  const ComposerDraft({
     this.id,
     required this.content,
-    this.privacy = 'Public',
-    this.scheduledAt,
-    this.mediaPaths = const [],
     required this.createdAt,
     required this.updatedAt,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'content': content,
-      'privacy': privacy,
-      'scheduledAt': scheduledAt?.toIso8601String(),
-      'mediaPaths': jsonEncode(mediaPaths),
-      'createdAt': createdAt.toIso8601String(),
-      'updatedAt': updatedAt.toIso8601String(),
-    };
-  }
+  /// The drafts table also has privacy, scheduledAt and mediaPaths columns,
+  /// from a composer that offered all three while the API supported none of
+  /// them. They are written empty rather than dropped: the columns are NOT
+  /// NULL, and migrating the table would throw away whatever unsent draft an
+  /// existing install is holding.
+  Map<String, Object?> toMap() => {
+        'id': id,
+        'content': content,
+        'privacy': '',
+        'scheduledAt': null,
+        'mediaPaths': '[]',
+        'createdAt': createdAt.toIso8601String(),
+        'updatedAt': updatedAt.toIso8601String(),
+      };
 
-  factory ComposerDraft.fromMap(Map<String, dynamic> map) {
+  factory ComposerDraft.fromMap(Map<String, Object?> map) {
+    final now = DateTime.now();
     return ComposerDraft(
-      id: map['id'],
-      content: map['content'] ?? '',
-      privacy: map['privacy'] ?? 'Public',
-      scheduledAt: map['scheduledAt'] != null
-          ? DateTime.parse(map['scheduledAt'])
-          : null,
-      mediaPaths: List<String>.from(jsonDecode(map['mediaPaths'] ?? '[]')),
-      createdAt: DateTime.parse(map['createdAt']),
-      updatedAt: DateTime.parse(map['updatedAt']),
+      id: map['id'] as String?,
+      content: map['content'] as String? ?? '',
+      createdAt: DateTime.tryParse(map['createdAt'] as String? ?? '') ?? now,
+      updatedAt: DateTime.tryParse(map['updatedAt'] as String? ?? '') ?? now,
     );
   }
 
-  ComposerDraft copyWith({
-    String? id,
-    String? content,
-    String? privacy,
-    DateTime? scheduledAt,
-    List<String>? mediaPaths,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  }) {
-    return ComposerDraft(
-      id: id ?? this.id,
-      content: content ?? this.content,
-      privacy: privacy ?? this.privacy,
-      scheduledAt: scheduledAt ?? this.scheduledAt,
-      mediaPaths: mediaPaths ?? this.mediaPaths,
-      createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? DateTime.now(),
-    );
-  }
+  ComposerDraft copyWith({String? id, String? content}) => ComposerDraft(
+        id: id ?? this.id,
+        content: content ?? this.content,
+        createdAt: createdAt,
+        updatedAt: DateTime.now(),
+      );
 }

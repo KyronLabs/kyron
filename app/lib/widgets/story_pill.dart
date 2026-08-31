@@ -1,7 +1,5 @@
 // lib/widgets/story_pill.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/physics.dart';
-import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/stories_provider.dart';
 
 class StoryPill extends StatefulWidget {
@@ -31,7 +29,6 @@ class StoryPill extends StatefulWidget {
 class _StoryPillState extends State<StoryPill>
     with SingleTickerProviderStateMixin {
   late AnimationController _pulseController;
-  late Animation<double> _pulseAnimation;
   double _dragOffset = 0.0;
   bool _isDragging = false;
 
@@ -42,10 +39,6 @@ class _StoryPillState extends State<StoryPill>
       vsync: this,
       duration: const Duration(seconds: 2),
     )..repeat(reverse: true);
-
-    _pulseAnimation = Tween<double>(begin: 0.4, end: 1.0).animate(
-      CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
-    );
   }
 
   @override

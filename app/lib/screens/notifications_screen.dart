@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../models/notification_model.dart';
 import '../widgets/notification_item.dart';

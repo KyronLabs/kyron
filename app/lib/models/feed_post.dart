@@ -11,11 +11,21 @@ class FeedPost {
   final DateTime createdAt;
   final FeedAuthor author;
 
+  /// How many people have liked it.
+  final int likes;
+
+  /// Whether you have. Saves are private, so there is no count for them.
+  final bool liked;
+  final bool saved;
+
   const FeedPost({
     required this.id,
     required this.content,
     required this.createdAt,
     required this.author,
+    this.likes = 0,
+    this.liked = false,
+    this.saved = false,
   });
 
   factory FeedPost.fromJson(Map<String, dynamic> json) => FeedPost(
@@ -27,6 +37,19 @@ class FeedPost {
         author: FeedAuthor.fromJson(
           (json['author'] as Map<String, dynamic>?) ?? const {},
         ),
+        likes: (json['likes'] as num?)?.toInt() ?? 0,
+        liked: json['likedByViewer'] == true,
+        saved: json['savedByViewer'] == true,
+      );
+
+  FeedPost copyWith({int? likes, bool? liked, bool? saved}) => FeedPost(
+        id: id,
+        content: content,
+        createdAt: createdAt,
+        author: author,
+        likes: likes ?? this.likes,
+        liked: liked ?? this.liked,
+        saved: saved ?? this.saved,
       );
 }
 

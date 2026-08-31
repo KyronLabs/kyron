@@ -43,6 +43,12 @@ dependencies:
   shimmer: ^3.0.0
   url_strategy: ^0.3.0
 
+  # The About screen reports the running build and clears the on-device cache.
+  # Both were previously invented: the version was the literal string "1.0.0"
+  # and the cache size was a random number between 10 and 50 MB.
+  package_info_plus: ^8.0.0
+  path_provider: ^2.1.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

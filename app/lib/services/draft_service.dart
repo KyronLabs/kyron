@@ -1,22 +1,25 @@
-import 'dart:async';
-import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+
 import '../models/composer_model.dart';
 
+/// The one unsent post the composer is holding.
+///
+/// The auto-save loop this used to run polled every three seconds through four
+/// callbacks, three of which fed a privacy and schedule the API has never
+/// accepted. The composer now saves on the way out instead.
 class DraftService {
   static final DraftService _instance = DraftService._internal();
   factory DraftService() => _instance;
-  String? get currentDraftId => _currentDraftId;
   DraftService._internal();
 
   Database? _database;
-  Timer? _autoSaveTimer;
   String? _currentDraftId;
 
+  String? get currentDraftId => _currentDraftId;
+
   Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDB();
-    return _database!;
+    return _database ??= await _initDB();
   }
 
   Future<Database> _initDB() async {
@@ -40,46 +43,14 @@ class DraftService {
     );
   }
 
-  void startAutoSave({
-    required Function() onSave,
-    required String Function() getCurrentContent,
-    required String Function() getCurrentPrivacy,
-    required DateTime? Function() getCurrentSchedule,
-  }) {
-    _autoSaveTimer?.cancel();
-    _autoSaveTimer = Timer.periodic(const Duration(seconds: 3), (_) async {
-      final content = getCurrentContent();
-      if (content.trim().isNotEmpty) {
-        await saveDraft(
-          content: content,
-          privacy: getCurrentPrivacy(),
-          scheduledAt: getCurrentSchedule(),
-        );
-        onSave();
-      }
-    });
-  }
-
-  void stopAutoSave() {
-    _autoSaveTimer?.cancel();
-    _autoSaveTimer = null;
-  }
-
-  Future<void> saveDraft({
-    required String content,
-    required String privacy,
-    required DateTime? scheduledAt,
-    List<String> mediaPaths = const [],
-  }) async {
+  Future<void> saveDraft({required String content}) async {
     final db = await database;
+    final now = DateTime.now();
     final draft = ComposerDraft(
-      id: _currentDraftId ?? DateTime.now().millisecondsSinceEpoch.toString(),
+      id: _currentDraftId ?? now.millisecondsSinceEpoch.toString(),
       content: content,
-      privacy: privacy,
-      scheduledAt: scheduledAt,
-      mediaPaths: mediaPaths,
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
+      createdAt: now,
+      updatedAt: now,
     );
     _currentDraftId = draft.id;
 
@@ -92,17 +63,12 @@ class DraftService {
 
   Future<ComposerDraft?> getLatestDraft() async {
     final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query(
-      'drafts',
-      orderBy: 'updatedAt DESC',
-      limit: 1,
-    );
-    if (maps.isNotEmpty) {
-      final draft = ComposerDraft.fromMap(maps.first);
-      _currentDraftId = draft.id;
-      return draft;
-    }
-    return null;
+    final rows = await db.query('drafts', orderBy: 'updatedAt DESC', limit: 1);
+    if (rows.isEmpty) return null;
+
+    final draft = ComposerDraft.fromMap(rows.first);
+    _currentDraftId = draft.id;
+    return draft;
   }
 
   Future<void> deleteDraft(String id) async {

@@ -72,8 +72,6 @@ class _AtomicCardState extends State<AtomicCard>
     const cardWidth = 100.0;
     const cardHeight = 120.0;
     const avatarSize = 40.0;
-    const buttonHeight = 32.0;
-    const buttonWidth = 80.0;
     const padding = 12.0;
 
     return Semantics(
