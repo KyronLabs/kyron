@@ -1,6 +1,5 @@
 // lib/widgets/stories_ribbon.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/physics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/stories_provider.dart';
 import 'story_pill.dart';

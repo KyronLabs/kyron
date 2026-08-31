@@ -14,7 +14,9 @@ import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
     SupabaseModule,
     JwtModule.register({
       secret: getJwtSecret(),
-      signOptions: { expiresIn: Number(process.env.JWT_EXPIRES_SECONDS || 900) },
+      signOptions: {
+        expiresIn: Number(process.env.JWT_EXPIRES_SECONDS || 900),
+      },
     }),
   ],
   controllers: [AuthController],

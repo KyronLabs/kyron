@@ -16,6 +16,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import { ProfileService } from './profile.service';
+import { SearchProfilesDto } from './dto/search-profiles.dto';
 import { Request } from 'express';
 
 /**
@@ -32,6 +33,11 @@ interface MultipartFile {
 interface MultipartRequest {
   user: { id: string };
   file(): Promise<MultipartFile | undefined>;
+}
+
+/** An unguarded route: `user` is present only when a token was supplied. */
+interface OptionalAuthRequest extends Request {
+  user?: { id: string };
 }
 
 interface AuthRequest extends Request {
@@ -99,13 +105,12 @@ export class ProfileController {
   }
 
   // ==========================================
-  // PHASE 4: PUBLIC PROFILE
+  // PHASE 4: FINDING PEOPLE
   // ==========================================
-  @Get(':username')
-  async getPublicProfile(@Param('username') username: string, @Req() req: any) {
-    // Optional: get viewerId from auth if logged in
-    const viewerId = req.user?.id;
-    return this.svc.getPublicProfile(username, viewerId);
+  @UseGuards(AuthGuard)
+  @Get('search')
+  async search(@Req() req: AuthRequest, @Query() query: SearchProfilesDto) {
+    return this.svc.searchProfiles(query.q, req.user.id, query.limit);
   }
 
   // ==========================================
@@ -202,5 +207,22 @@ export class ProfileController {
   @Get('suggested')
   async getSuggested(@Req() req: AuthRequest) {
     return this.svc.getSuggestedUsers(req.user.id);
+  }
+
+  // ==========================================
+  // PUBLIC PROFILE -- DECLARED LAST, DELIBERATELY
+  // ==========================================
+  // ':username' matches any single segment, so Nest resolves it before any
+  // route declared after it. Sitting above them, it swallowed
+  // GET /profile/interests and GET /profile/suggested: both answered "User not
+  // found" for an account named "interests" or "suggested". Any new
+  // fixed-name route belongs above this one.
+  @Get(':username')
+  async getPublicProfile(
+    @Param('username') username: string,
+    @Req() req: OptionalAuthRequest,
+  ) {
+    // Signed-in callers additionally learn whether they follow this account.
+    return this.svc.getPublicProfile(username, req.user?.id);
   }
 }

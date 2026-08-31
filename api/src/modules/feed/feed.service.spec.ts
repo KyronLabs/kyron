@@ -14,7 +14,14 @@ const row = (id: string, createdAt = new Date()) => ({
     username: 'author',
     profile: { avatarUrl: 'https://example.test/a.png' },
   },
+  _count: { likes: 0 },
+  // Empty means the reader has not liked or saved it: the relation is filtered
+  // to their own row, so at most one ever comes back.
+  likes: [] as { id: string }[],
+  saves: [] as { id: string }[],
 });
+
+const VIEWER = 'viewer-1';
 
 type Row = ReturnType<typeof row>;
 
@@ -24,18 +31,37 @@ describe('FeedService', () => {
   const post = {
     create: jest.fn<Promise<Row>, [unknown]>(),
     findMany: jest.fn<Promise<Row[]>, [unknown]>(),
+    findFirst: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
     findUnique: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
     updateMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
   };
 
+  const relation = () => ({
+    findMany: jest.fn<Promise<{ id: string; post: Row }[]>, [unknown]>(),
+    findUnique: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
+    upsert: jest.fn<Promise<unknown>, [unknown]>(),
+    deleteMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
+    count: jest.fn<Promise<number>, [unknown]>(),
+  });
+
+  let postLike = relation();
+  let postSave = relation();
+
   const service = async () => {
     const moduleRef = await Test.createTestingModule({
-      providers: [FeedService, { provide: PrismaService, useValue: { post } }],
+      providers: [
+        FeedService,
+        { provide: PrismaService, useValue: { post, postLike, postSave } },
+      ],
     }).compile();
     return moduleRef.get(FeedService);
   };
 
-  beforeEach(() => jest.resetAllMocks());
+  beforeEach(() => {
+    jest.resetAllMocks();
+    postLike = relation();
+    postSave = relation();
+  });
 
   describe('createPost', () => {
     it('takes the author from its argument, never from the caller', async () => {
@@ -74,7 +100,7 @@ describe('FeedService', () => {
   describe('listRecent', () => {
     it('excludes soft-deleted posts and orders newest first', async () => {
       post.findMany.mockResolvedValue([]);
-      await (await service()).listRecent();
+      await (await service()).listRecent(VIEWER);
 
       expect(post.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -86,7 +112,7 @@ describe('FeedService', () => {
 
     it('asks for one row more than the page, to detect a next page', async () => {
       post.findMany.mockResolvedValue([]);
-      await (await service()).listRecent(20);
+      await (await service()).listRecent(VIEWER, 20);
 
       expect(post.findMany).toHaveBeenCalledWith(
         expect.objectContaining({ take: 21 }),
@@ -95,7 +121,7 @@ describe('FeedService', () => {
 
     it('returns a cursor and trims the probe row when more remain', async () => {
       post.findMany.mockResolvedValue([row('a'), row('b'), row('c')]);
-      const page = await (await service()).listRecent(2);
+      const page = await (await service()).listRecent(VIEWER, 2);
 
       expect(page.items.map((i) => i.id)).toEqual(['a', 'b']);
       // The cursor is the last returned row, not the probe -- pointing at the
@@ -105,7 +131,7 @@ describe('FeedService', () => {
 
     it('reports no cursor on the last page', async () => {
       post.findMany.mockResolvedValue([row('a'), row('b')]);
-      const page = await (await service()).listRecent(2);
+      const page = await (await service()).listRecent(VIEWER, 2);
 
       expect(page.items).toHaveLength(2);
       expect(page.nextCursor).toBeNull();
@@ -114,7 +140,7 @@ describe('FeedService', () => {
     it('skips the cursor row itself', async () => {
       post.findUnique.mockResolvedValue({ id: 'anchor' });
       post.findMany.mockResolvedValue([]);
-      await (await service()).listRecent(20, 'anchor');
+      await (await service()).listRecent(VIEWER, 20, 'anchor');
 
       expect(post.findMany).toHaveBeenCalledWith(
         expect.objectContaining({ cursor: { id: 'anchor' }, skip: 1 }),
@@ -126,10 +152,122 @@ describe('FeedService', () => {
       // Prisma throw and surface as a server error.
       post.findUnique.mockResolvedValue(null);
 
-      await expect((await service()).listRecent(20, 'gone')).rejects.toThrow(
-        NotFoundException,
-      );
+      await expect(
+        (await service()).listRecent(VIEWER, 20, 'gone'),
+      ).rejects.toThrow(NotFoundException);
       expect(post.findMany).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('viewer state on a post', () => {
+    it("reports a post the reader has liked, and the post's total", async () => {
+      post.findMany.mockResolvedValue([
+        { ...row('a'), _count: { likes: 7 }, likes: [{ id: 'like-1' }] },
+      ]);
+      const page = await (await service()).listRecent(VIEWER, 20);
+
+      expect(page.items[0].likes).toBe(7);
+      expect(page.items[0].likedByViewer).toBe(true);
+      expect(page.items[0].savedByViewer).toBe(false);
+    });
+
+    it('scopes the like and save relations to the reader', async () => {
+      // Without the filter every post would come back carrying everyone's
+      // likes, and the reader's own flag would be "did anybody like this".
+      post.findMany.mockResolvedValue([]);
+      await (await service()).listRecent(VIEWER, 20);
+
+      const args = post.findMany.mock.calls[0][0] as {
+        select: {
+          likes: { where: { userId: string } };
+          saves: { where: { userId: string } };
+        };
+      };
+      expect(args.select.likes.where).toEqual({ userId: VIEWER });
+      expect(args.select.saves.where).toEqual({ userId: VIEWER });
+    });
+  });
+
+  describe('listByAuthor', () => {
+    it('filters to that author and still excludes deleted posts', async () => {
+      post.findMany.mockResolvedValue([]);
+      await (await service()).listByAuthor('author-9', VIEWER, 20);
+
+      expect(post.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { authorId: 'author-9', deletedAt: null },
+        }),
+      );
+    });
+  });
+
+  describe('setLiked', () => {
+    it('upserts, so a double tap cannot like twice', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      postLike.count.mockResolvedValue(1);
+      await (await service()).setLiked(VIEWER, 'p1', true);
+
+      expect(postLike.upsert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { userId_postId: { userId: VIEWER, postId: 'p1' } },
+          update: {},
+        }),
+      );
+    });
+
+    it('returns the recounted total, not an incremented guess', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      postLike.count.mockResolvedValue(4);
+
+      await expect(
+        (await service()).setLiked(VIEWER, 'p1', true),
+      ).resolves.toEqual({ liked: true, likes: 4 });
+    });
+
+    it('refuses to like a post that is deleted or missing', async () => {
+      post.findFirst.mockResolvedValue(null);
+
+      await expect(
+        (await service()).setLiked(VIEWER, 'gone', true),
+      ).rejects.toThrow(NotFoundException);
+      expect(postLike.upsert).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('listSaved', () => {
+    it("reads only the reader's own saves, newest first", async () => {
+      postSave.findMany.mockResolvedValue([]);
+      await (await service()).listSaved(VIEWER, 20);
+
+      expect(postSave.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { userId: VIEWER, post: { deletedAt: null } },
+          orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+        }),
+      );
+    });
+
+    it('cursors on the save, not on the post', async () => {
+      // The list is ordered by when you saved, so a post-id cursor would point
+      // into a different ordering and skip or repeat rows.
+      postSave.findMany.mockResolvedValue([
+        { id: 'save-a', post: row('p1') },
+        { id: 'save-b', post: row('p2') },
+        { id: 'save-c', post: row('p3') },
+      ]);
+      const page = await (await service()).listSaved(VIEWER, 2);
+
+      expect(page.items.map((i) => i.id)).toEqual(['p1', 'p2']);
+      expect(page.nextCursor).toBe('save-b');
+    });
+
+    it('answers 404 for a cursor that no longer exists', async () => {
+      postSave.findUnique.mockResolvedValue(null);
+
+      await expect(
+        (await service()).listSaved(VIEWER, 20, 'gone'),
+      ).rejects.toThrow(NotFoundException);
+      expect(postSave.findMany).not.toHaveBeenCalled();
     });
   });
 

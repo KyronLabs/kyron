@@ -1,0 +1,87 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
+
+import '../models/profile_model.dart';
+import '../repositories/profile_repository.dart';
+import '../utils/api_error_message.dart';
+import 'api_client_provider.dart';
+import 'current_user_provider.dart';
+
+final profileRepositoryProvider = Provider<ProfileRepository>(
+  (ref) => ProfileRepository(ref.read(apiClientProvider)),
+);
+
+/// One profile, addressed by handle.
+///
+/// A null username means "mine", which reads the cached /profile/me the drawer
+/// and top bar already hold rather than issuing a second request for the same
+/// row.
+final profileProvider = StateNotifierProvider.family<ProfileNotifier,
+    AsyncValue<ProfileModel>, String?>(
+  (ref, username) => ProfileNotifier(ref, username),
+);
+
+class ProfileNotifier extends StateNotifier<AsyncValue<ProfileModel>> {
+  final Ref _ref;
+  final String? _username;
+
+  /// Guards the follow button against a second tap landing on top of the
+  /// first, which would post two follows and leave the count out by one.
+  bool _busy = false;
+
+  ProfileNotifier(this._ref, this._username) : super(const AsyncLoading()) {
+    load();
+  }
+
+  bool get isMine => _username == null;
+
+  Future<void> load({bool force = false}) async {
+    state = const AsyncLoading();
+    try {
+      if (isMine) {
+        final repo = _ref.read(currentUserRepositoryProvider);
+        state = AsyncData(
+          ProfileModel.fromCurrentUser(await repo.fetchMe(force: force)),
+        );
+      } else {
+        final repo = _ref.read(profileRepositoryProvider);
+        state = AsyncData(await repo.byUsername(_username!));
+      }
+    } catch (e, st) {
+      state = AsyncError(e, st);
+    }
+  }
+
+  /// Follows or unfollows, moving the count immediately and putting it back if
+  /// the request fails. Returns an error message to show, or null on success.
+  Future<String?> toggleFollow() async {
+    final current = state.value;
+    if (current == null || current.isOwnProfile || _busy) return null;
+
+    _busy = true;
+    final wasFollowing = current.isFollowing;
+    state = AsyncData(
+      current.copyWith(
+        isFollowing: !wasFollowing,
+        followers: current.followers + (wasFollowing ? -1 : 1),
+      ),
+    );
+
+    try {
+      final repo = _ref.read(profileRepositoryProvider);
+      if (wasFollowing) {
+        await repo.unfollow(current.id);
+      } else {
+        await repo.follow(current.id);
+      }
+      // Your own following count moved too.
+      _ref.read(currentUserProvider.notifier).refresh();
+      return null;
+    } catch (e) {
+      state = AsyncData(current);
+      return describeApiError(e, sessionIsLive: true);
+    } finally {
+      _busy = false;
+    }
+  }
+}

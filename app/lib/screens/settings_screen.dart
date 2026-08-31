@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../providers/auth_provider.dart';
+import '../providers/current_user_provider.dart';
 import '../providers/preferences_provider.dart';
+import '../utils/api_error_message.dart';
 import '../services/app_preferences.dart';
 import '../widgets/kyron_toggle.dart';
 import '../routes.dart';
@@ -37,36 +39,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     return email ?? 'Your account';
   }
 
+  bool _loggingOut = false;
+
   // Local state for toggles (batch save on exit)
   bool _privateAccount = false;
   bool _darkMode = true;
   bool _autoDownload = true;
   bool _dataSaver = false;
   bool _location = false;
-  String _cacheSize = '12 MB';
-  Timer? _cacheTimer;
-
-  @override
-  void initState() {
-    super.initState();
-    _computeCacheSize();
-  }
-
-  @override
-  void dispose() {
-    _cacheTimer?.cancel();
-    super.dispose();
-  }
-
-  void _computeCacheSize() {
-    // Simulate cache computation - cached for 60s (Doherty)
-    if (_cacheTimer?.isActive ?? false) return;
-
-    final random = DateTime.now().millisecondsSinceEpoch % 40 + 10;
-    setState(() => _cacheSize = '$random MB');
-    _cacheTimer = Timer(const Duration(seconds: 60), _computeCacheSize);
-  }
-
   void _resetToDefault(String setting) {
     // Hidden gesture: swipe left resets (power-users)
     ScaffoldMessenger.of(context).showSnackBar(
@@ -176,10 +156,36 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     );
   }
 
+  /// Signs out, then sends the app back through the root gate.
+  ///
+  /// The confirm button used to pop the sheet and navigate to the welcome
+  /// screen, under a comment reading "Perform logout and navigate to welcome"
+  /// -- it did only the second half. Nothing ever called signOut, so the
+  /// Supabase session survived untouched and the next launch restored it: you
+  /// appeared to log out, and came back signed in.
+  Future<void> _performLogout() async {
+    Navigator.pop(context);
+    setState(() => _loggingOut = true);
+    try {
+      await ref.read(authNotifierProvider.notifier).logout();
+      if (!mounted) return;
+      // Back to the root rather than straight to welcome, so RootScreen makes
+      // the call from the auth state it can now see.
+      Navigator.pushNamedAndRemoveUntil(context, Routes.home, (_) => false);
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _loggingOut = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not sign out: ${describeApiError(e)}')),
+      );
+    }
+  }
+
   void _showLogoutConfirmation() {
+    final avatarUrl = ref.read(currentUserProvider).value?.avatarUrl;
+
     showModalBottomSheet(
       context: context,
-      isDismissible: true,
       builder: (context) => Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
@@ -190,10 +196,58 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Who is actually being signed out. This asked about "@alice" for
+            // everyone, so it named an account nobody was signed in as.
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 22,
+                  backgroundColor:
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
+                  foregroundImage:
+                      avatarUrl == null ? null : NetworkImage(avatarUrl),
+                  child: Icon(
+                    Iconsax.user,
+                    size: 20,
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface
+                        .withValues(alpha: .5),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        _handle,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        _email,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
             const Text('Log Out?',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 16),
-            const Text('Are you sure you want to log out of @alice?'),
+            const SizedBox(height: 8),
+            const Text(
+              "You will need to sign in again to get back to your account.",
+            ),
             const SizedBox(height: 24),
             Row(
               children: [
@@ -208,12 +262,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   child: ElevatedButton(
                     style:
                         ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      // Perform logout and navigate to welcome
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, Routes.welcome, (route) => false);
-                    },
+                    onPressed: _performLogout,
                     child: const Text('Log Out'),
                   ),
                 ),
@@ -398,20 +447,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
               helpText: 'Allow location access',
             ),
-            _settingsRow(
-              icon: Iconsax.trash,
-              label: 'Clear Cache',
-              subtitle: _cacheSize,
-              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
-              onTap: () {
-                setState(() => _cacheSize = '0 MB');
-                _computeCacheSize();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Cache cleared')),
-                );
-              },
-              helpText: 'Free up storage space',
-            ),
             Divider(
                 height: 1,
                 thickness: 0.33,
@@ -446,6 +481,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   Navigator.pushNamed(context, Routes.settingsFeedback),
               helpText: 'Tell us what you think',
             ),
+            _settingsRow(
+              icon: Iconsax.info_circle,
+              label: 'About',
+              trailing: const Icon(Iconsax.arrow_right_3, size: 20),
+              onTap: () => Navigator.pushNamed(context, Routes.about),
+              helpText: 'Version, policies, status and the system log',
+            ),
             Divider(
                 height: 1,
                 thickness: 0.33,
@@ -457,16 +499,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                      color: scheme.error.withOpacity(0.3), width: 1),
+                      color: scheme.error.withValues(alpha: 0.3), width: 1),
                 ),
               ),
               child: _settingsRow(
                 icon: Iconsax.logout,
                 label: 'Log Out',
                 subtitle: _handle,
-                trailing: const Icon(Iconsax.arrow_right_3,
-                    size: 20, color: Colors.red),
-                onTap: _showLogoutConfirmation,
+                trailing: _loggingOut
+                    ? const SizedBox.square(
+                        dimension: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : const Icon(Iconsax.arrow_right_3,
+                        size: 20, color: Colors.red),
+                // Null while signing out, so a second tap cannot start another
+                // sign-out over the top of the first.
+                onTap: _loggingOut ? null : _showLogoutConfirmation,
               ),
             ),
             const SizedBox(height: 40),

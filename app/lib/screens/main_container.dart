@@ -1,6 +1,5 @@
 // lib/screens/main_container.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import '../widgets/bottom_nav_v4.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/sliding_drawer_content.dart';
@@ -84,6 +83,8 @@ class _MainContainerState extends State<MainContainer> {
         onCloseDrawer: () {
           _drawerKey.currentState?.closeDrawer();
         },
+        // Communities is one of these tabs, not a route of its own.
+        onSelectTab: _onNavTap,
       ),
       child: Scaffold(
         extendBody: true, // Allow body to extend behind bottom nav

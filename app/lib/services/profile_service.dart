@@ -49,11 +49,15 @@ class ProfileService {
   Future<void> updateProfile({
     required String name,
     String? bio,
+    String? location,
+    String? website,
     String? coverUrl,
   }) async {
     await _dio.patch('/profile', data: {
       'name': name,
       'bio': bio,
+      if (location != null) 'location': location,
+      if (website != null) 'website': website,
       if (coverUrl != null) 'coverUrl': coverUrl,
     });
   }

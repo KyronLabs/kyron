@@ -104,8 +104,6 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Discover people"),
