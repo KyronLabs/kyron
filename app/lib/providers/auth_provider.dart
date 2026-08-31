@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user.dart';
 import '../repositories/auth_repository.dart';
@@ -33,13 +34,8 @@ class AuthNotifier extends Notifier<AuthState> {
 
   /// Called at app startup
   Future<void> bootstrap() async {
-    print('🔄 AuthNotifier.bootstrap() called');
-
     // If already authenticated, skip
-    if (state.status == AuthStatus.authenticated) {
-      print('⚠️ Already authenticated, skipping bootstrap');
-      return;
-    }
+    if (state.status == AuthStatus.authenticated) return;
 
     state = AuthState.authenticating();
 
@@ -48,11 +44,8 @@ class AuthNotifier extends Notifier<AuthState> {
       final user = await _repo.getStoredUserData();
       final hasValidToken = await _repo.hasValidAccessToken();
 
-      print('🔍 Bootstrap: hasValidToken=$hasValidToken, user=${user?.email}');
-
       // If we have a valid token AND user data, we're authenticated
       if (hasValidToken && user != null) {
-        print('✅ Bootstrap: Valid token and user found, setting authenticated');
         state = AuthState.authenticated(user);
 
         // Load full profile data
@@ -65,13 +58,11 @@ class AuthNotifier extends Notifier<AuthState> {
       // its own session store, so that lookup always came back null and an
       // expired session was never recovered at startup.
       if (_repo.hasPersistedSession && user != null) {
-        print('🔄 Bootstrap: Token expired/missing, attempting refresh...');
         try {
           final refreshed = await _repo.refresh();
           if (refreshed) {
             final refreshedUser = await _repo.getStoredUserData();
             if (refreshedUser != null) {
-              print('✅ Bootstrap: Token refresh successful');
               state = AuthState.authenticated(refreshedUser);
 
               // Load full profile data
@@ -80,38 +71,38 @@ class AuthNotifier extends Notifier<AuthState> {
             }
           }
         } catch (e) {
-          print('❌ Bootstrap: Refresh failed: $e');
+          _log('session refresh failed', e);
         }
       }
 
       // If we get here, we're not authenticated
-      print('🚫 Bootstrap: No valid session found');
       state = AuthState.unauth();
     } catch (e) {
-      print('❌ Bootstrap error: $e');
+      _log('bootstrap failed', e);
       state = AuthState.unauth();
     }
+  }
+
+  /// Diagnostics for a failure the user sees only as a sign-in screen.
+  ///
+  /// Debug builds only, and never carries an email or a token: these lines
+  /// used to print the signed-in address on every launch, which put it in the
+  /// device log and in any bug report taken from the device.
+  void _log(String what, Object error) {
+    if (kDebugMode) debugPrint('auth: $what -- $error');
   }
 
   Future<bool> login(String email, String password) async {
     state = AuthState.authenticating();
     try {
-      print('🔐 AuthNotifier.login: Starting for $email');
-
       final resp = await _repo.loginWithUser(email: email, password: password);
-
-      print('✅ AuthNotifier.login: Backend responded, user=${resp.user.email}');
-
       state = AuthState.authenticated(resp.user);
 
       // Load full profile data from /profile/me
-      print('🔄 AuthNotifier.login: Loading full profile...');
       await ref.read(currentUserProvider.notifier).load();
-
-      print('✅ AuthNotifier.login: Complete');
       return true;
     } catch (e) {
-      print('❌ Login error: $e');
+      _log('sign-in failed', e);
       state = AuthState.unauth();
       return false;
     }
@@ -146,7 +137,7 @@ class AuthNotifier extends Notifier<AuthState> {
       state = AuthState.unauth();
       return false;
     } catch (e) {
-      print('❌ Refresh tokens error: $e');
+      _log('token refresh failed', e);
       state = AuthState.unauth();
       return false;
     }

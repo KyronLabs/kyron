@@ -9,12 +9,10 @@ import {
   ServiceUnavailableException,
   Logger,
 } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { PrismaService } from '@/infrastructure/prisma/prisma.service';
 import { Request } from 'express';
 import { User, UserRole, EmailStatus } from '@prisma/client';
-import { getJwtSecret } from '@/config/jwt-secret';
 import {
   SupabaseTokenService,
   type SupabaseClaims,
@@ -25,7 +23,6 @@ export class AuthGuard implements CanActivate {
   private readonly logger = new Logger(AuthGuard.name);
 
   constructor(
-    private readonly jwt: JwtService,
     private readonly prisma: PrismaService,
     private readonly reflector: Reflector,
     private readonly supabaseToken: SupabaseTokenService,
@@ -40,9 +37,10 @@ export class AuthGuard implements CanActivate {
 
     const token = authHeader.split(' ')[1];
 
-    // Supabase is the identity provider. Its tokens are tried first; the legacy
-    // path below stays only until every client has moved over, and can go once
-    // no Kyron-issued token is still in circulation.
+    // Supabase is the only identity provider. This used to fall back to
+    // verifying Kyron-issued HS256 tokens, which was a second way in kept
+    // alive for clients that had not moved over; every current client
+    // authenticates through Supabase, so that path is gone.
     const claims = await this.supabaseToken.verify(token);
 
     // A token this server is not configured to check is not a bad token --
@@ -64,11 +62,9 @@ export class AuthGuard implements CanActivate {
       );
     }
 
-    const user = claims
-      ? await this.resolveSupabaseUser(claims)
-      : await this.resolveLegacyUser(token);
+    if (!claims) throw new UnauthorizedException('Invalid or expired token');
 
-    if (!user) throw new UnauthorizedException('User not found');
+    const user = await this.resolveSupabaseUser(claims);
 
     (request as any).user = user;
 
@@ -129,18 +125,5 @@ export class AuthGuard implements CanActivate {
       );
       throw new UnauthorizedException('Could not resolve account');
     }
-  }
-
-  /** Kyron-issued HS256 token. Remove once no client mints these. */
-  private async resolveLegacyUser(token: string): Promise<User | null> {
-    let payload: { sub?: string };
-    try {
-      payload = await this.jwt.verifyAsync(token, { secret: getJwtSecret() });
-    } catch {
-      throw new UnauthorizedException('Invalid or expired token');
-    }
-    if (!payload.sub)
-      throw new UnauthorizedException('Invalid or expired token');
-    return this.prisma.user.findUnique({ where: { id: payload.sub } });
   }
 }
