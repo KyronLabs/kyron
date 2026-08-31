@@ -5,6 +5,8 @@ import {
   Logger,
 } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
+import { promises as dns } from 'dns';
+import { diagnoseUnreachableHost, type DnsResolver } from './host-diagnosis';
 
 /** Attempts and backoff for the connection made at boot. */
 const CONNECT_ATTEMPTS = 5;
@@ -24,6 +26,16 @@ export function describeDatabaseHost(url: string | undefined): string | null {
     const { hostname, port } = new URL(url);
     if (!hostname) return null;
     return port ? `${hostname}:${port}` : hostname;
+  } catch {
+    return null;
+  }
+}
+
+/** Just the hostname, for a DNS lookup. Same redaction rules as above. */
+export function databaseHostname(url: string | undefined): string | null {
+  if (!url) return null;
+  try {
+    return new URL(url).hostname || null;
   } catch {
     return null;
   }
@@ -76,10 +88,29 @@ export class PrismaService
         `${CONNECT_ATTEMPTS} attempts. Starting anyway: Prisma connects on ` +
         'first query, so this recovers on its own once the database is ' +
         'reachable. Until then every data route will fail and GET /health ' +
-        'reports the database as unreachable. If the host above is not one ' +
-        'you recognise, check DATABASE_URL -- a name that does not resolve ' +
-        'looks exactly like a database that is down.',
+        'reports the database as unreachable.',
     );
+
+    const diagnosis = await this.diagnoseHost();
+    if (diagnosis) this.logger.error(diagnosis);
+  }
+
+  /**
+   * What DNS can say about why the database host is unreachable, or null when
+   * it resolves to IPv4 and the fault lies past name resolution.
+   *
+   * Resolved on demand rather than cached: the answer changes the moment
+   * DATABASE_URL is corrected, and a stale explanation is worse than none.
+   */
+  async diagnoseHost(resolver: DnsResolver = dns): Promise<string | null> {
+    const hostname = databaseHostname(process.env.DATABASE_URL);
+    if (!hostname) return null;
+    try {
+      return await diagnoseUnreachableHost(hostname, resolver);
+    } catch {
+      // A diagnostic must never be the thing that breaks a boot.
+      return null;
+    }
   }
 
   /** Whether a trivial query round-trips right now. Used by GET /health. */
