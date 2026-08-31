@@ -30848,7 +30848,7 @@ aGW:function aGW(a){this.a=a},
 aGX:function aGX(){},
 aGT:function aGT(a){this.a=a},
 aGY:function aGY(a){this.a=a},
-yg(){var s,r=new A.tX($.SR()),q=A.bg3("https://kyron.fly.dev",B.zW,B.zW),p=new A.XQ(A.d([B.VA],t.i6))
+yg(){var s,r=new A.tX($.SR()),q=A.bg3("https://kyron-47r6.onrender.com",B.zW,B.zW),p=new A.XQ(A.d([B.VA],t.i6))
 p.I(p,B.dPH)
 s=new A.ak_($,p,$,new A.aoo(51200),!1)
 s.Qb$=q

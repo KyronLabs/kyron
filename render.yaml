@@ -1,4 +1,7 @@
 services:
+  # The Flutter web build and the marketing pages, published as static files.
+  # There is no build step: web/build/web is committed and served as-is, which
+  # is why the compiled bundle carries the API URL baked in.
   - type: web
     name: kyron-web
     env: static
@@ -9,3 +12,49 @@ services:
         destination: ./web/build/web/app
       - path: /
         destination: ./web/build/web
+
+  # The API. This service already exists, created in the dashboard rather than
+  # from this file, so it was reproducible only by hand -- and nothing in the
+  # repository recorded where the app's requests actually go.
+  #
+  # CHECK BEFORE APPLYING. Two details here were inferred from the outside and
+  # could not be read from the dashboard:
+  #
+  #   name  Render adopts an existing service by matching `name`. The live one
+  #         answers on kyron-47r6.onrender.com, so it is almost certainly
+  #         `kyron` -- but a name that does not match creates a SECOND service
+  #         instead of adopting the running one.
+  #   env   The boot log shows `npm run start` -> `node dist/src/main.js`,
+  #         which is what this Dockerfile's CMD does; it is also what a native
+  #         Node service would do. If the service was created as a Node
+  #         runtime rather than Docker, replace the three docker keys below
+  #         with buildCommand and startCommand instead.
+  #
+  # Confirm both in the dashboard before applying this blueprint.
+  - type: web
+    name: kyron
+    env: docker
+    dockerfilePath: ./api/Dockerfile
+    dockerContext: ./api
+    healthCheckPath: /health
+    envVars:
+      # sync: false means Render keeps whatever is set in the dashboard and
+      # never takes a value from this file. None of these belong in a public
+      # repository: DATABASE_URL carries the database password, and
+      # SUPABASE_JWT_SECRET signs every token the Supabase project issues,
+      # service_role included.
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      # Only needed while the Supabase project signs with its legacy shared
+      # secret. Once it moves to JWT signing keys the API verifies via JWKS and
+      # this can be removed. GET /health reports which of the two is in use.
+      - key: SUPABASE_JWT_SECRET
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
