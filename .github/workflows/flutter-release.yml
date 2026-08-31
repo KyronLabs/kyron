@@ -62,10 +62,28 @@ jobs:
           EOF
 
       - name: Build release APK
-        run: flutter build apk --release --build-number "$KYRON_BUILD_NUMBER"
+        env:
+          # Optional. supabase_config.dart carries a committed default; this
+          # lets a build override it without one being in the repository. The
+          # publishable key is safe to commit -- what was not safe was the
+          # wrong project's key being committed, which is why the app now
+          # refuses to launch rather than reach a Supabase it was not meant to.
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          flutter build apk --release --build-number "$KYRON_BUILD_NUMBER" \
+            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
 
       - name: Build release App Bundle
-        run: flutter build appbundle --release --build-number "$KYRON_BUILD_NUMBER"
+        env:
+          # Optional. supabase_config.dart carries a committed default; this
+          # lets a build override it without one being in the repository. The
+          # publishable key is safe to commit -- what was not safe was the
+          # wrong project's key being committed, which is why the app now
+          # refuses to launch rather than reach a Supabase it was not meant to.
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          flutter build appbundle --release --build-number "$KYRON_BUILD_NUMBER" \
+            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
 
       - name: Rename release artifacts
         working-directory: .

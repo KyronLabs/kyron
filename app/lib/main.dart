@@ -14,6 +14,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy(); // Removes # from URLs on web
 
+  // Fails here, with the name of the missing value, rather than as an opaque
+  // authorization error on the first request.
+  SupabaseConfig.assertConfigured();
+
   // Supabase is the identity provider. Initialising here means the SDK has
   // restored any persisted session before the first widget builds, so the app
   // does not flash the login screen for an already-signed-in user.

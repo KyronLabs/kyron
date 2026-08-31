@@ -45,21 +45,17 @@ export class AuthGuard implements CanActivate {
     // no Kyron-issued token is still in circulation.
     const claims = await this.supabaseToken.verify(token);
 
-    // A Supabase token that did not verify while the verifier is switched off
-    // is not a bad token -- it is a server that cannot check it. Falling
-    // through to the legacy HS256 path here would reject it as "invalid or
-    // expired", which the client shows as an expired session and the user
-    // answers by signing in again, landing straight back on the same error.
-    // Say what is actually true instead, and make the cause greppable in the
-    // deployment log.
-    if (
-      !claims &&
-      !this.supabaseToken.enabled &&
-      this.supabaseToken.isAsymmetric(token)
-    ) {
+    // A token this server is not configured to check is not a bad token --
+    // it is a server that cannot check it. Falling through to the legacy
+    // HS256 path here would reject it as "invalid or expired", which the
+    // client shows as an expired session and the user answers by signing in
+    // again, landing straight back on the same error. Say what is actually
+    // true instead, and make the cause greppable in the deployment log.
+    const missing = claims ? null : this.supabaseToken.missingConfigFor(token);
+    if (missing) {
       this.logger.error(
-        'Refused an access token because SUPABASE_URL is not set, so there is ' +
-          'no key set to verify it against. Every authenticated request fails ' +
+        `Refused an access token because ${missing} is not set, so there is ` +
+          'nothing to verify it against. Every authenticated request fails ' +
           'until it is configured.',
       );
       throw new ServiceUnavailableException(
