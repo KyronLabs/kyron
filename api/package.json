@@ -91,7 +91,6 @@
     ],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
-    "_comment_transformIgnorePatterns": "jose ships ESM only. Node 22 can require() it, which is why the built app works, but jest uses its own registry and needs it transformed.",
     "transformIgnorePatterns": [
       "node_modules/(?!jose)"
     ],
@@ -102,6 +101,12 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1"
+    },
+    "setupFiles": [
+      "<rootDir>/test-env.ts"
+    ]
   }
 }
