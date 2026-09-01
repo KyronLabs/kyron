@@ -1,3 +1,5 @@
+import 'post_media.dart';
+
 /// A post exactly as GET /feed/recent returns it.
 ///
 /// Deliberately not PostModel. That one carries likes, reposts, reach,
@@ -17,9 +19,23 @@ class FeedPost {
   /// How many comments and replies it has.
   final int comments;
 
+  /// Plain reposts. A quote is a post of its own and counted as one.
+  final int reposts;
+
+  /// Attachments, in the order the author put them.
+  final List<PostMedia> media;
+
+  /// The post this one quotes, one level deep. Null for most posts, and null
+  /// when the quoted post has since been deleted.
+  final QuotedPost? quotedPost;
+
+  /// Who may reply.
+  final ReplyPolicy replyPolicy;
+
   /// Whether you have. Saves are private, so there is no count for them.
   final bool liked;
   final bool saved;
+  final bool reposted;
 
   const FeedPost({
     required this.id,
@@ -28,8 +44,13 @@ class FeedPost {
     required this.author,
     this.likes = 0,
     this.comments = 0,
+    this.reposts = 0,
+    this.media = const [],
+    this.quotedPost,
+    this.replyPolicy = ReplyPolicy.everyone,
     this.liked = false,
     this.saved = false,
+    this.reposted = false,
   });
 
   factory FeedPost.fromJson(Map<String, dynamic> json) => FeedPost(
@@ -43,15 +64,24 @@ class FeedPost {
         ),
         likes: (json['likes'] as num?)?.toInt() ?? 0,
         comments: (json['comments'] as num?)?.toInt() ?? 0,
+        reposts: (json['reposts'] as num?)?.toInt() ?? 0,
+        media: PostMedia.listFrom(json['media']),
+        quotedPost: json['quotedPost'] is Map<String, dynamic>
+            ? QuotedPost.fromJson(json['quotedPost'] as Map<String, dynamic>)
+            : null,
+        replyPolicy: ReplyPolicy.fromJson(json['replyPolicy']),
         liked: json['likedByViewer'] == true,
         saved: json['savedByViewer'] == true,
+        reposted: json['repostedByViewer'] == true,
       );
 
   FeedPost copyWith({
     int? likes,
     int? comments,
+    int? reposts,
     bool? liked,
     bool? saved,
+    bool? reposted,
   }) =>
       FeedPost(
         id: id,
@@ -60,8 +90,13 @@ class FeedPost {
         author: author,
         likes: likes ?? this.likes,
         comments: comments ?? this.comments,
+        reposts: reposts ?? this.reposts,
+        media: media,
+        quotedPost: quotedPost,
+        replyPolicy: replyPolicy,
         liked: liked ?? this.liked,
         saved: saved ?? this.saved,
+        reposted: reposted ?? this.reposted,
       );
 }
 
@@ -103,6 +138,36 @@ class FeedAuthor {
     final u = username?.trim();
     return (u == null || u.isEmpty) ? null : '@$u';
   }
+}
+
+/// A quoted post, without its own quote. One level, so a chain of quotes
+/// cannot render into an unbounded stack of cards.
+class QuotedPost {
+  final String id;
+  final String content;
+  final DateTime createdAt;
+  final FeedAuthor author;
+  final List<PostMedia> media;
+
+  const QuotedPost({
+    required this.id,
+    required this.content,
+    required this.createdAt,
+    required this.author,
+    this.media = const [],
+  });
+
+  factory QuotedPost.fromJson(Map<String, dynamic> json) => QuotedPost(
+        id: json['id'] as String? ?? '',
+        content: json['content'] as String? ?? '',
+        createdAt:
+            DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
+                DateTime.now(),
+        author: FeedAuthor.fromJson(
+          (json['author'] as Map<String, dynamic>?) ?? const {},
+        ),
+        media: PostMedia.listFrom(json['media']),
+      );
 }
 
 /// One page of the feed.

@@ -7,6 +7,11 @@ import '../models/feed_post.dart';
 import '../providers/feed_provider.dart';
 import '../routes.dart';
 import '../utils/format_count.dart';
+import 'media_grid.dart';
+import 'post_options_sheet.dart';
+import 'post_text.dart';
+import 'quoted_post_card.dart';
+import 'repost_sheet.dart';
 
 /// One post, wherever it appears.
 ///
@@ -104,13 +109,28 @@ class PostCard extends ConsumerWidget {
                             color: scheme.onSurface.withValues(alpha: 0.45),
                           ),
                         ),
+                        const Spacer(),
+                        // Far right of the header, where an overflow menu is
+                        // looked for.
+                        _OverflowButton(post: post, source: source),
                       ],
                     ),
-                    const SizedBox(height: SpacingTokens.space4),
-                    Text(
-                      post.content,
-                      style: const TextStyle(fontSize: 15, height: 1.35),
-                    ),
+                    if (post.content.trim().isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: SpacingTokens.space2,
+                          bottom: SpacingTokens.space4,
+                        ),
+                        child: PostText(content: post.content),
+                      ),
+                    if (post.media.isNotEmpty) ...[
+                      const SizedBox(height: SpacingTokens.space8),
+                      MediaGrid(media: post.media),
+                    ],
+                    if (post.quotedPost != null) ...[
+                      const SizedBox(height: SpacingTokens.space8),
+                      QuotedPostCard(post: post.quotedPost!),
+                    ],
                     const SizedBox(height: SpacingTokens.space8),
                     _Actions(post: post, source: source),
                   ],
@@ -171,7 +191,22 @@ class _Actions extends ConsumerWidget {
             arguments: post.id,
           ),
         ),
-        const SizedBox(width: SpacingTokens.space24),
+        const SizedBox(width: SpacingTokens.space20),
+        _Action(
+          icon:
+              post.reposted ? Iconsax.repeat_circle_copy : Iconsax.repeat_copy,
+          label: post.reposts > 0 ? formatCount(post.reposts) : null,
+          active: post.reposted,
+          activeColor: scheme.tertiary,
+          tooltip: 'Repost',
+          onTap: () => RepostSheet.show(
+            context,
+            ref,
+            post: post,
+            source: source,
+          ),
+        ),
+        const SizedBox(width: SpacingTokens.space20),
         _Action(
           icon: post.liked ? Iconsax.heart : Iconsax.heart_copy,
           label: post.likes > 0 ? formatCount(post.likes) : null,
@@ -180,7 +215,7 @@ class _Actions extends ConsumerWidget {
           tooltip: post.liked ? 'Unlike' : 'Like',
           onTap: () => report(context, notifier.toggleLike(post.id)),
         ),
-        const SizedBox(width: SpacingTokens.space24),
+        const SizedBox(width: SpacingTokens.space20),
         _Action(
           icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,
           active: post.saved,
@@ -189,6 +224,32 @@ class _Actions extends ConsumerWidget {
           onTap: () => report(context, notifier.toggleSave(post.id)),
         ),
       ],
+    );
+  }
+}
+
+class _OverflowButton extends ConsumerWidget {
+  final FeedPost post;
+  final PostListSource source;
+
+  const _OverflowButton({required this.post, required this.source});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return InkWell(
+      onTap: () =>
+          PostOptionsSheet.show(context, ref, post: post, source: source),
+      borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+      child: Padding(
+        padding: const EdgeInsets.all(SpacingTokens.space4),
+        child: Icon(
+          Iconsax.more_copy,
+          size: 16,
+          color: scheme.onSurface.withValues(alpha: 0.5),
+        ),
+      ),
     );
   }
 }

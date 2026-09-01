@@ -5,13 +5,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../models/feed_post.dart';
+import '../models/post_media.dart';
 import '../providers/composer_provider.dart';
 import '../providers/current_user_provider.dart';
+import '../routes.dart';
+import '../services/draft_service.dart';
 import '../widgets/create_post/char_counter.dart';
-import '../widgets/create_post/emoji_picker_sheet.dart';
 import '../widgets/create_post/url_preview.dart';
+import '../widgets/draft_sheet.dart';
+import '../widgets/gif_picker_sheet.dart';
+import '../widgets/interaction_settings_sheet.dart';
+import '../widgets/media_tray.dart';
+import '../widgets/quoted_post_card.dart';
 
-/// Writing a text post.
+/// Writing a post.
 ///
 /// The screen this replaces had a ribbon of five controls, of which one did
 /// anything: privacy and scheduling the API has never accepted, an AI Assist
@@ -20,7 +28,10 @@ import '../widgets/create_post/url_preview.dart';
 /// empty TODOs. The Post button itself slept for a second, printed to the
 /// console and cleared the box without writing anything.
 class ComposerScreen extends ConsumerStatefulWidget {
-  const ComposerScreen({super.key});
+  /// Set when the composer was opened to quote a post.
+  final QuotedPost? quoting;
+
+  const ComposerScreen({super.key, this.quoting});
 
   @override
   ConsumerState<ComposerScreen> createState() => _ComposerScreenState();
@@ -30,14 +41,22 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
   late final TextEditingController _textController;
   final FocusNode _focusNode = FocusNode();
 
+  int _draftCount = 0;
+
   @override
   void initState() {
     super.initState();
     _textController = TextEditingController();
 
-    // The provider may already hold a restored draft.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
+
+      final quoting = widget.quoting;
+      if (quoting != null) {
+        ref.read(composerProvider.notifier).quote(quoting);
+      }
+
+      // The provider may already hold a restored draft.
       final content = ref.read(composerProvider).content;
       if (content.isNotEmpty && _textController.text.isEmpty) {
         _textController.value = TextEditingValue(
@@ -46,7 +65,13 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
         );
       }
       _focusNode.requestFocus();
+      _countDrafts();
     });
+  }
+
+  Future<void> _countDrafts() async {
+    final count = await DraftService().count();
+    if (mounted) setState(() => _draftCount = count);
   }
 
   @override
@@ -69,13 +94,19 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
+          // Tight against the close button. The default leading width leaves a
+          // gap wide enough to read as an indent.
+          leadingWidth: 40,
+          titleSpacing: 0,
           leading: IconButton(
             icon: const Icon(Icons.close),
             tooltip: 'Close',
             onPressed: _close,
           ),
-          title: const Text('New post'),
+          title: Text(state.quoting == null ? 'New post' : 'Quote post'),
           actions: [
+            _DraftsButton(count: _draftCount, onTap: _openDrafts),
+            const SizedBox(width: SpacingTokens.space4),
             Padding(
               padding: const EdgeInsets.only(right: SpacingTokens.space8),
               child: FilledButton(
@@ -105,15 +136,28 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _AuthorLine(),
-                      const SizedBox(height: SpacingTokens.space12),
+                      const SizedBox(height: SpacingTokens.space8),
+                      _InteractionButton(policy: state.replyPolicy),
+                      const SizedBox(height: SpacingTokens.space8),
                       _composerField(scheme),
+                      MediaTray(
+                        media: state.media,
+                        onRemove:
+                            ref.read(composerProvider.notifier).removeMedia,
+                        onRetry: ref.read(composerProvider.notifier).retryMedia,
+                        onDescribe: _describe,
+                      ),
+                      if (state.quoting != null) ...[
+                        const SizedBox(height: SpacingTokens.space12),
+                        QuotedPostCard(post: state.quoting!),
+                      ],
                       const UrlPreview(),
                     ],
                   ),
                 ),
               ),
               const CharCounter(),
-              _toolbar(scheme),
+              _toolbar(scheme, state),
             ],
           ),
         ),
@@ -126,7 +170,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
       controller: _textController,
       focusNode: _focusNode,
       maxLines: null,
-      minLines: 5,
+      minLines: 4,
       autocorrect: true,
       keyboardType: TextInputType.multiline,
       textCapitalization: TextCapitalization.sentences,
@@ -147,9 +191,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
     );
   }
 
-  /// What is left once the controls with nothing behind them are gone: the
-  /// three that put a character where the cursor is.
-  Widget _toolbar(ColorScheme scheme) {
+  Widget _toolbar(ColorScheme scheme, ComposerState state) {
     return Container(
       height: 52,
       decoration: BoxDecoration(
@@ -163,36 +205,85 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
       child: Row(
         children: [
           const SizedBox(width: SpacingTokens.space8),
-          _toolButton(
+          _tool(
+            icon: Iconsax.gallery_copy,
+            tooltip: 'Add a photo',
+            enabled: state.canAddMedia,
+            onTap: () => _addMedia(video: false),
+          ),
+          _tool(
+            icon: Iconsax.video_copy,
+            tooltip: 'Add a video',
+            enabled: state.canAddMedia,
+            onTap: () => _addMedia(video: true),
+          ),
+          _tool(
+            icon: Iconsax.emoji_happy_copy,
+            tooltip: 'Add a GIF',
+            enabled: state.canAddMedia,
+            onTap: _addGif,
+          ),
+          const VerticalDivider(indent: 14, endIndent: 14, width: 8),
+          _tool(
             icon: Iconsax.hashtag_copy,
             tooltip: 'Add a hashtag',
             onTap: () => _insert('#'),
           ),
-          _toolButton(
+          _tool(
             icon: Iconsax.tag_user_copy,
             tooltip: 'Mention someone',
             onTap: () => _insert('@'),
-          ),
-          _toolButton(
-            icon: Iconsax.emoji_happy_copy,
-            tooltip: 'Insert an emoji',
-            onTap: _insertEmoji,
           ),
         ],
       ),
     );
   }
 
-  Widget _toolButton({
+  Widget _tool({
     required IconData icon,
     required String tooltip,
     required VoidCallback onTap,
+    bool enabled = true,
   }) {
     return IconButton(
       icon: Icon(icon, size: 20),
       tooltip: tooltip,
-      onPressed: onTap,
+      onPressed: enabled ? onTap : null,
     );
+  }
+
+  Future<void> _addMedia({required bool video}) async {
+    final message =
+        await ref.read(composerProvider.notifier).addMedia(video: video);
+    if (message != null && mounted) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
+    }
+  }
+
+  Future<void> _addGif() async {
+    final path = await GifPickerSheet.show(context);
+    if (path == null || !mounted) return;
+    await ref.read(composerProvider.notifier).attachFile(path, MediaKind.gif);
+  }
+
+  Future<void> _describe(PendingMedia item) async {
+    final alt = await askForAltText(context, item.alt);
+    if (alt == null || !mounted) return;
+    ref.read(composerProvider.notifier).describeMedia(item.path, alt);
+  }
+
+  Future<void> _openDrafts() async {
+    await Navigator.pushNamed(context, Routes.drafts);
+    if (!mounted) return;
+
+    // The drafts screen may have loaded one into the composer.
+    final content = ref.read(composerProvider).content;
+    _textController.value = TextEditingValue(
+      text: content,
+      selection: TextSelection.collapsed(offset: content.length),
+    );
+    await _countDrafts();
   }
 
   /// Puts [text] where the cursor is and leaves the cursor after it, so typing
@@ -216,13 +307,6 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
     _focusNode.requestFocus();
   }
 
-  Future<void> _insertEmoji() async {
-    final emoji = await EmojiPickerSheet.show(context);
-    // The picker used to return the chosen emoji into a variable nobody read,
-    // so picking one closed the sheet and did nothing.
-    if (emoji != null) _insert(emoji.emoji);
-  }
-
   Future<void> _handlePost() async {
     final posted = await ref.read(composerProvider.notifier).post();
     if (!mounted || !posted) return;
@@ -235,12 +319,107 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
     );
   }
 
-  /// Keeps whatever is written before leaving, so backing out by accident does
-  /// not lose it.
+  /// Closing with something written offers to keep it. Closing straight away
+  /// throws away what was typed; refusing to close is worse.
   Future<void> _close() async {
-    await ref.read(composerProvider.notifier).saveDraft();
+    final notifier = ref.read(composerProvider.notifier);
+    if (!ref.read(composerProvider).hasContent) {
+      notifier.clear();
+      if (mounted) Navigator.pop(context);
+      return;
+    }
+
+    final choice = await DraftSheet.show(context);
     if (!mounted) return;
-    Navigator.pop(context);
+
+    switch (choice) {
+      case DraftChoice.keepEditing:
+        return;
+      case DraftChoice.save:
+        await notifier.saveDraft();
+        notifier.clear();
+        if (!mounted) return;
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Draft saved')),
+        );
+      case DraftChoice.discard:
+        await notifier.discardDraft();
+        if (mounted) Navigator.pop(context);
+    }
+  }
+}
+
+/// The reply setting, as a chip under the author line.
+class _InteractionButton extends ConsumerWidget {
+  final ReplyPolicy policy;
+
+  const _InteractionButton({required this.policy});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return InkWell(
+      onTap: () async {
+        final chosen = await InteractionSettingsSheet.show(context, policy);
+        if (chosen != null) {
+          ref.read(composerProvider.notifier).setReplyPolicy(chosen);
+        }
+      },
+      borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space12,
+          vertical: 6,
+        ),
+        decoration: BoxDecoration(
+          color: scheme.primary.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Iconsax.global_copy, size: 14, color: scheme.primary),
+            const SizedBox(width: SpacingTokens.space4),
+            Text(
+              policy.label,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: scheme.primary,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _DraftsButton extends StatelessWidget {
+  final int count;
+  final VoidCallback onTap;
+
+  const _DraftsButton({required this.count, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return TextButton(
+      onPressed: onTap,
+      style: TextButton.styleFrom(
+        foregroundColor: scheme.onSurface.withValues(alpha: 0.8),
+        padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space8),
+        minimumSize: Size.zero,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      child: Text(
+        count == 0 ? 'Drafts' : 'Drafts ($count)',
+        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+      ),
+    );
   }
 }
 
@@ -298,10 +477,7 @@ class _ErrorBanner extends StatelessWidget {
           Expanded(
             child: Text(
               message,
-              style: TextStyle(
-                fontSize: 13,
-                color: scheme.onErrorContainer,
-              ),
+              style: TextStyle(fontSize: 13, color: scheme.onErrorContainer),
             ),
           ),
           if (onRetry != null)

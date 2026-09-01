@@ -14,6 +14,24 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Attachments on posts and comments: up to four images, GIFs or clips each,
+  with a full-screen viewer that pinch-zooms, swipes between attachments,
+  swipes down to dismiss, plays video with a scrubber, and shares or copies a
+  link. Each attachment can carry a description for screen readers.
+- Reposting, and quoting with your own words above the original.
+- An overflow menu on every post: translate, copy the text or a link, show
+  more or fewer posts like it, hide it, mute the thread, mute words or tags,
+  mute or block the author, and report the post or the account.
+- A report flow with twelve reasons, which keeps one report per person and
+  copies the reported content so it stays reviewable after deletion.
+- Muted words and tags, and a screen listing muted and blocked accounts.
+- Hashtags are indexed, highlighted, and open a screen of everything carrying
+  them. Mentions and links are picked out too.
+- An interaction setting on the composer -- who can reply -- enforced by the
+  server rather than shown and ignored.
+- Drafts: closing the composer with something written offers to save, discard
+  or keep editing, and a drafts screen lists what is waiting.
+- A GIF picker, when the build carries a `TENOR_API_KEY`.
 - A post has its own screen: the post in full, its comments, and one level of
   replies under each, with a composer that can reply to a specific comment.
 - Post analytics for the author of a post — viewers, likes, saves, comments,
@@ -31,6 +49,10 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- The Android application id is `so.kyron.app`. It was still the Flutter
+  template's `com.example.app`, which Google Play rejects outright. An
+  installed build will not update over one carrying the old id.
+
 - The profile screen reads the signed-in account and public profiles from the
   API instead of deriving them from the DID in the route.
 - Posts are separated by a hairline rather than boxed in rounded outlines, and
@@ -40,6 +62,17 @@ section for that version, so what is written here is what people read.
 - The default text size is Small.
 
 ### Fixed
+
+- `POST /media/transcode` took two paths from an unauthenticated request body
+  and interpolated both into a shell command, so any caller could run
+  arbitrary commands on the API container.
+- The system log read "Nothing logged yet" however much had gone wrong. Every
+  API request and profile load is recorded now.
+- Typing in the composer fired a haptic on every keystroke.
+- The settings screen had a close button beside its back button, and its DID
+  row showed and copied the same invented identifier for everyone.
+- The selected bottom-navigation tab is filled again, rather than relying on
+  colour alone.
 
 - A blank profile page, caused by a `Spacer` in a row that overflowed by 157
   logical pixels on a 360-wide phone.

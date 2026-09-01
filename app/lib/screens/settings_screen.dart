@@ -357,14 +357,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Only followers can see your posts',
             ),
             _settingsRow(
-              icon: Iconsax.user_remove_copy,
-              label: 'Blocked Users',
-              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
-              onTap: () =>
-                  Navigator.pushNamed(context, Routes.settingsBlockedUsers),
-              helpText: 'Manage blocked accounts',
-            ),
-            _settingsRow(
               icon: Iconsax.key_copy,
               label: 'Password & Login',
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
@@ -438,6 +430,20 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 semanticsLabel: 'Data Saver',
               ),
               helpText: 'Reduce data usage',
+            ),
+            _settingsRow(
+              icon: Iconsax.text_block_copy,
+              label: 'Muted words and tags',
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+              onTap: () => Navigator.pushNamed(context, Routes.mutedWords),
+              helpText: 'Keep posts containing these out of your feed',
+            ),
+            _settingsRow(
+              icon: Iconsax.volume_slash_copy,
+              label: 'Muted and blocked accounts',
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+              onTap: () => Navigator.pushNamed(context, Routes.mutedAccounts),
+              helpText: 'Who you have muted or blocked',
             ),
             _settingsRow(
               icon: Iconsax.notification_copy,

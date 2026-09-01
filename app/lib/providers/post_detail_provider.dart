@@ -1,8 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
+import 'package:image_picker/image_picker.dart';
+
 import '../models/feed_post.dart';
 import '../models/post_comment.dart';
+import '../models/post_media.dart';
 import '../repositories/feed_repository.dart';
 import '../utils/api_error_message.dart';
 import 'feed_provider.dart';
@@ -20,6 +23,9 @@ class PostDetailState {
 
   final bool isLoading;
   final bool isSending;
+
+  /// Attachments on the comment being written.
+  final List<PendingMedia> media;
   final String? error;
   final String? nextCursor;
 
@@ -30,11 +36,19 @@ class PostDetailState {
     this.expanded = const {},
     this.isLoading = true,
     this.isSending = false,
+    this.media = const [],
     this.error,
     this.nextCursor,
   });
 
   bool get hasMore => nextCursor != null;
+
+  /// How many attachments one comment may carry, matching the server.
+  static const maxMedia = 4;
+
+  bool get canAttach => media.length < maxMedia;
+
+  bool get isUploading => media.any((m) => m.isUploading);
 
   /// True only once a load has finished and found nothing, so the empty state
   /// never flashes before the thread arrives.
@@ -47,6 +61,7 @@ class PostDetailState {
     Set<String>? expanded,
     bool? isLoading,
     bool? isSending,
+    List<PendingMedia>? media,
     String? error,
     String? nextCursor,
     bool clearError = false,
@@ -59,6 +74,7 @@ class PostDetailState {
       expanded: expanded ?? this.expanded,
       isLoading: isLoading ?? this.isLoading,
       isSending: isSending ?? this.isSending,
+      media: media ?? this.media,
       error: clearError ? null : (error ?? this.error),
       nextCursor: clearCursor ? null : (nextCursor ?? this.nextCursor),
     );
@@ -153,21 +169,113 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
     }
   }
 
+  // ---- Attachments --------------------------------------------------------
+
+  /// Picks images or a clip for the comment and uploads them straight away, so
+  /// a slow upload happens while the reply is still being written.
+  Future<String?> attach({required bool video}) async {
+    if (!state.canAttach) {
+      return 'A comment can carry at most ${PostDetailState.maxMedia} attachments.';
+    }
+
+    final picker = ImagePicker();
+    try {
+      final List<XFile> picked;
+      if (video) {
+        final clip = await picker.pickVideo(
+          source: ImageSource.gallery,
+          maxDuration: const Duration(minutes: 2),
+        );
+        picked = clip == null ? const [] : [clip];
+      } else {
+        picked = await picker.pickMultiImage(
+          limit: PostDetailState.maxMedia - state.media.length,
+        );
+      }
+      if (picked.isEmpty) return null;
+
+      for (final file in picked.take(
+        PostDetailState.maxMedia - state.media.length,
+      )) {
+        await _upload(
+          PendingMedia(
+            path: file.path,
+            kind: video ? MediaKind.video : MediaKind.image,
+          ),
+        );
+      }
+      return null;
+    } catch (_) {
+      return 'Could not open your gallery.';
+    }
+  }
+
+  Future<void> _upload(PendingMedia pending) async {
+    state = state.copyWith(media: [...state.media, pending]);
+    try {
+      final uploaded = await _repo.uploadMedia(pending);
+      _replaceMedia(pending.path, uploaded);
+    } catch (e) {
+      _replaceMedia(
+        pending.path,
+        pending.copyWith(error: describeApiError(e, sessionIsLive: true)),
+      );
+    }
+  }
+
+  void detach(String path) {
+    state = state.copyWith(
+      media: state.media.where((m) => m.path != path).toList(),
+    );
+  }
+
+  Future<void> retryAttachment(String path) async {
+    final failed = state.media.where((m) => m.path == path).firstOrNull;
+    if (failed == null) return;
+    detach(path);
+    await _upload(failed.copyWith(clearError: true));
+  }
+
+  void describeAttachment(String path, String alt) {
+    state = state.copyWith(
+      media: [
+        for (final m in state.media) m.path == path ? m.copyWith(alt: alt) : m,
+      ],
+    );
+  }
+
+  void _replaceMedia(String path, PendingMedia updated) {
+    state = state.copyWith(
+      media: [
+        for (final m in state.media) m.path == path ? updated : m,
+      ],
+    );
+  }
+
   /// Posts a comment, or a reply to [parentId]. Returns an error to show, or
   /// null on success.
+  ///
+  /// A comment carrying only a picture is a comment, which is what the server
+  /// accepts too.
   Future<String?> comment(String content, {String? parentId}) async {
-    if (content.trim().isEmpty || state.isSending) return null;
+    final hasContent = content.trim().isNotEmpty || state.media.isNotEmpty;
+    if (!hasContent || state.isSending || state.isUploading) return null;
 
     state = state.copyWith(isSending: true, clearError: true);
     try {
-      final created =
-          await _repo.addComment(_postId, content.trim(), parentId: parentId);
+      final created = await _repo.addComment(
+        _postId,
+        content.trim(),
+        parentId: parentId,
+        media: state.media,
+      );
 
       if (parentId == null) {
         // Oldest first, so a new comment goes at the end of the thread.
         state = state.copyWith(
           comments: [...state.comments, created],
           isSending: false,
+          media: const [],
         );
       } else {
         state = state.copyWith(
@@ -181,6 +289,7 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
           },
           expanded: {...state.expanded, parentId},
           isSending: false,
+          media: const [],
         );
       }
 

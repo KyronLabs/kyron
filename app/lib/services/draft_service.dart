@@ -3,11 +3,12 @@ import 'package:sqflite/sqflite.dart';
 
 import '../models/composer_model.dart';
 
-/// The one unsent post the composer is holding.
+/// The unsent posts held on this device.
 ///
 /// The auto-save loop this used to run polled every three seconds through four
 /// callbacks, three of which fed a privacy and schedule the API has never
-/// accepted. The composer now saves on the way out instead.
+/// accepted. The composer saves on the way out instead, and more than one
+/// draft is kept so the drafts screen has something to show.
 class DraftService {
   static final DraftService _instance = DraftService._internal();
   factory DraftService() => _instance;
@@ -17,6 +18,10 @@ class DraftService {
   String? _currentDraftId;
 
   String? get currentDraftId => _currentDraftId;
+
+  /// Which draft the composer is editing. Set when one is opened from the
+  /// drafts screen, so saving updates it rather than adding a duplicate.
+  set currentDraftId(String? id) => _currentDraftId = id;
 
   Future<Database> get database async {
     return _database ??= await _initDB();
@@ -59,6 +64,19 @@ class DraftService {
       draft.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  /// Every draft, most recently touched first.
+  Future<List<ComposerDraft>> allDrafts() async {
+    final db = await database;
+    final rows = await db.query('drafts', orderBy: 'updatedAt DESC');
+    return rows.map(ComposerDraft.fromMap).toList();
+  }
+
+  Future<int> count() async {
+    final db = await database;
+    final rows = await db.rawQuery('SELECT COUNT(*) AS n FROM drafts');
+    return (rows.first['n'] as int?) ?? 0;
   }
 
   Future<ComposerDraft?> getLatestDraft() async {

@@ -5,7 +5,11 @@ import 'models/onboarding_model.dart';
 import 'models/profile_model.dart';
 import 'screens/about_screen.dart';
 import 'screens/about_subscreens.dart';
+import 'models/feed_post.dart';
 import 'screens/coming_soon_screen.dart';
+import 'screens/drafts_screen.dart';
+import 'screens/hashtag_screen.dart';
+import 'screens/muted_screens.dart';
 import 'screens/edit_profile_screen.dart';
 import 'screens/help_screen.dart';
 import 'screens/post_analytics_screen.dart';
@@ -50,6 +54,10 @@ class Routes {
   static const notifications = '/notifications';
   static const postDetail = '/post';
   static const postAnalytics = '/post/analytics';
+  static const hashtag = '/tag';
+  static const drafts = '/composer/drafts';
+  static const mutedWords = '/settings/muted-words';
+  static const mutedAccounts = '/settings/muted-accounts';
   static const profile = '/profile';
   static const editProfile = '/profile/edit';
   static const search = '/search';
@@ -192,9 +200,6 @@ class Routes {
       case settingsChangeEmail:
         return _page(const SettingsChangeEmailScreen());
 
-      case settingsBlockedUsers:
-        return _page(const SettingsBlockedUsersScreen());
-
       case settingsPasswordLogin:
         return _page(const SettingsPasswordLoginScreen());
 
@@ -213,8 +218,39 @@ class Routes {
       case settingsFeedback:
         return _page(const SettingsFeedbackScreen());
 
+      // A QuotedPost argument opens the composer to quote it.
       case composer:
-        return _page(const ComposerScreen());
+        final quoting = settings.arguments;
+        return _page(ComposerScreen(
+          quoting: switch (quoting) {
+            QuotedPost q => q,
+            FeedPost p => QuotedPost(
+                id: p.id,
+                content: p.content,
+                createdAt: p.createdAt,
+                author: p.author,
+                media: p.media,
+              ),
+            _ => null,
+          },
+        ));
+
+      case drafts:
+        return _page(const DraftsScreen());
+
+      case hashtag:
+        final tag = settings.arguments;
+        return _page(
+          tag is String && tag.isNotEmpty
+              ? HashtagScreen(tag: tag)
+              : const _UnknownRoute(name: hashtag),
+        );
+
+      case mutedWords:
+        return _page(const MutedWordsScreen());
+
+      case mutedAccounts:
+        return _page(const MutedAccountsScreen());
 
       case createArLens:
         return _page(const ComingSoonScreen.arLens());

@@ -352,25 +352,6 @@ class SettingsNotificationsScreen extends ConsumerWidget {
   }
 }
 
-class SettingsBlockedUsersScreen extends StatelessWidget {
-  const SettingsBlockedUsersScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const SettingsScaffold(
-      title: 'Blocked Users',
-      child: _Unavailable(
-        icon: Iconsax.user_minus_copy,
-        title: 'Blocking is not available yet',
-        detail:
-            'There is nothing behind this screen on the server, so an empty '
-            'list here would not mean you have blocked nobody -- it would mean '
-            'Kyron cannot tell. It will list them once blocking exists.',
-      ),
-    );
-  }
-}
-
 class SettingsContactSupportScreen extends StatelessWidget {
   const SettingsContactSupportScreen({super.key});
 

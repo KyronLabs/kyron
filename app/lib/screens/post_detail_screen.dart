@@ -9,10 +9,17 @@ import '../models/current_user.dart';
 import '../models/feed_post.dart';
 import '../models/post_comment.dart';
 import '../providers/current_user_provider.dart';
+import '../providers/feed_provider.dart';
 import '../providers/post_detail_provider.dart';
 import '../routes.dart';
 import '../utils/format_count.dart';
+import '../widgets/media_grid.dart';
+import '../widgets/media_tray.dart';
 import '../widgets/post_card.dart';
+import '../widgets/post_options_sheet.dart';
+import '../widgets/post_text.dart';
+import '../widgets/quoted_post_card.dart';
+import '../widgets/repost_sheet.dart';
 
 /// One post, with its comments and their replies.
 ///
@@ -180,9 +187,31 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                 ],
               ),
             ),
+          MediaTray(
+            media: state.media,
+            height: 84,
+            onRemove: _notifier.detach,
+            onRetry: _notifier.retryAttachment,
+            onDescribe: (item) async {
+              final alt = await askForAltText(context, item.alt);
+              if (alt != null && mounted) {
+                _notifier.describeAttachment(item.path, alt);
+              }
+            },
+          ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              IconButton(
+                icon: const Icon(Iconsax.gallery_copy, size: 20),
+                tooltip: 'Add a photo',
+                onPressed: state.canAttach ? () => _attach(video: false) : null,
+              ),
+              IconButton(
+                icon: const Icon(Iconsax.video_copy, size: 20),
+                tooltip: 'Add a video',
+                onPressed: state.canAttach ? () => _attach(video: true) : null,
+              ),
               Expanded(
                 child: TextField(
                   controller: _controller,
@@ -209,15 +238,27 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                       )
                     : const Icon(Iconsax.send_1_copy, size: 20),
                 tooltip: 'Send',
-                onPressed: _controller.text.trim().isEmpty || state.isSending
-                    ? null
-                    : _send,
+                // A picture with no words is a reply; an empty box is not.
+                onPressed:
+                    (_controller.text.trim().isEmpty && state.media.isEmpty) ||
+                            state.isSending ||
+                            state.isUploading
+                        ? null
+                        : _send,
               ),
             ],
           ),
         ],
       ),
     );
+  }
+
+  Future<void> _attach({required bool video}) async {
+    final message = await _notifier.attach(video: video);
+    if (message != null && mounted) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
+    }
   }
 
   void _replyTo(PostComment comment) {
@@ -244,14 +285,14 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   }
 }
 
-class _Post extends StatelessWidget {
+class _Post extends ConsumerWidget {
   final FeedPost post;
   final PostDetailNotifier notifier;
 
   const _Post({required this.post, required this.notifier});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
     final handle = post.author.handle;
 
@@ -301,12 +342,25 @@ class _Post extends StatelessWidget {
                   ),
                 ),
               ),
+              _Overflow(post: post),
             ],
           ),
           const SizedBox(height: SpacingTokens.space12),
           // Bigger than in the feed: on a screen showing one post, the post is
           // the content rather than one row of a list.
-          Text(post.content, style: const TextStyle(fontSize: 17, height: 1.4)),
+          if (post.content.trim().isNotEmpty)
+            PostText(
+              content: post.content,
+              style: const TextStyle(fontSize: 17, height: 1.4),
+            ),
+          if (post.media.isNotEmpty) ...[
+            const SizedBox(height: SpacingTokens.space12),
+            MediaGrid(media: post.media),
+          ],
+          if (post.quotedPost != null) ...[
+            const SizedBox(height: SpacingTokens.space12),
+            QuotedPostCard(post: post.quotedPost!),
+          ],
           const SizedBox(height: SpacingTokens.space12),
           Text(
             _stamp(post.createdAt),
@@ -330,6 +384,29 @@ class _Post extends StatelessWidget {
                 style: TextButton.styleFrom(
                   foregroundColor: post.liked
                       ? scheme.error
+                      : scheme.onSurface.withValues(alpha: 0.7),
+                ),
+              ),
+              TextButton.icon(
+                onPressed: () => RepostSheet.show(
+                  context,
+                  ref,
+                  post: post,
+                  source: PostListSource.recent,
+                ),
+                icon: Icon(
+                  post.reposted
+                      ? Iconsax.repeat_circle_copy
+                      : Iconsax.repeat_copy,
+                  size: 18,
+                  color: post.reposted ? scheme.tertiary : null,
+                ),
+                label: Text(
+                  post.reposts > 0 ? formatCount(post.reposts) : 'Repost',
+                ),
+                style: TextButton.styleFrom(
+                  foregroundColor: post.reposted
+                      ? scheme.tertiary
                       : scheme.onSurface.withValues(alpha: 0.7),
                 ),
               ),
@@ -375,6 +452,33 @@ class _Post extends StatelessWidget {
     final minute = at.minute.toString().padLeft(2, '0');
     final meridiem = at.hour < 12 ? 'AM' : 'PM';
     return '$hour:$minute $meridiem · ${at.day} ${months[at.month - 1]} ${at.year}';
+  }
+}
+
+/// The overflow menu, top right of the post.
+class _Overflow extends ConsumerWidget {
+  final FeedPost post;
+
+  const _Overflow({required this.post});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return IconButton(
+      icon: Icon(
+        Iconsax.more_copy,
+        size: 18,
+        color: scheme.onSurface.withValues(alpha: 0.6),
+      ),
+      tooltip: 'More',
+      onPressed: () => PostOptionsSheet.show(
+        context,
+        ref,
+        post: post,
+        source: PostListSource.recent,
+      ),
+    );
   }
 }
 
@@ -534,8 +638,18 @@ class _CommentRow extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: SpacingTokens.space2),
-                Text(comment.content,
-                    style: const TextStyle(fontSize: 14, height: 1.35)),
+                if (comment.content.trim().isNotEmpty)
+                  PostText(
+                    content: comment.content,
+                    style: const TextStyle(fontSize: 14, height: 1.35),
+                  ),
+                if (comment.media.isNotEmpty) ...[
+                  const SizedBox(height: SpacingTokens.space8),
+                  MediaGrid(
+                    media: comment.media,
+                    radius: RadiusTokens.radiusSm,
+                  ),
+                ],
                 Row(
                   children: [
                     TextButton(

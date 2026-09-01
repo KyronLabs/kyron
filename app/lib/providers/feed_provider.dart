@@ -33,6 +33,10 @@ class PostListSource {
   factory PostListSource.author(String userId) =>
       PostListSource._('author', userId);
 
+  /// Posts carrying a hashtag, given without its leading #.
+  factory PostListSource.hashtag(String tag) =>
+      PostListSource._('hashtag', tag.toLowerCase());
+
   @override
   bool operator ==(Object other) =>
       other is PostListSource && other.kind == kind && other.userId == userId;
@@ -113,6 +117,8 @@ class PostListNotifier extends StateNotifier<FeedState> {
         return _repo.saved(cursor: cursor);
       case 'author':
         return _repo.byAuthor(_source.userId!, cursor: cursor);
+      case 'hashtag':
+        return _repo.byHashtag(_source.userId!, cursor: cursor);
       default:
         return _repo.recent(cursor: cursor);
     }
@@ -159,6 +165,39 @@ class PostListNotifier extends StateNotifier<FeedState> {
   /// Puts a newly written post at the top without a round trip for the page.
   void prepend(FeedPost post) {
     state = state.copyWith(posts: <FeedPost>[post, ...state.posts]);
+  }
+
+  /// Drops a post from this list.
+  ///
+  /// For hiding, muting and blocking: an action whose whole point is "stop
+  /// showing me this" that leaves it on screen has not visibly done anything.
+  void remove(String postId) {
+    state = state.copyWith(
+      posts: state.posts.where((p) => p.id != postId).toList(),
+    );
+  }
+
+  /// Reposts or undoes it, moving the count immediately and putting it back if
+  /// the request fails. Returns an error message to show, or null on success.
+  Future<String?> toggleRepost(String postId) async {
+    final post = _find(postId);
+    if (post == null) return null;
+
+    final next = !post.reposted;
+    _replace(post.copyWith(
+      reposted: next,
+      reposts: (post.reposts + (next ? 1 : -1)).clamp(0, 1 << 31),
+    ));
+
+    try {
+      final reposts = await _repo.setReposted(postId, next);
+      final current = _find(postId);
+      if (current != null) _replace(current.copyWith(reposts: reposts));
+      return null;
+    } catch (e) {
+      _replace(post);
+      return describeApiError(e, sessionIsLive: true);
+    }
   }
 
   /// Likes or unlikes, moving the count immediately and putting it back if the

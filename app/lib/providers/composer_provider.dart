@@ -1,11 +1,15 @@
 import 'dart:async';
+import 'dart:io';
+import 'dart:ui' as ui;
 
 import 'package:characters/characters.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../models/feed_post.dart';
+import '../models/post_media.dart';
 import '../services/app_log.dart';
 import '../services/draft_service.dart';
 import '../utils/api_error_message.dart';
@@ -21,6 +25,15 @@ class ComposerState {
   final bool hasUnsavedChanges;
   final String placeholderText;
 
+  /// Attachments chosen on the device, uploading or uploaded.
+  final List<PendingMedia> media;
+
+  /// Who may reply to the post being written.
+  final ReplyPolicy replyPolicy;
+
+  /// The post being quoted, if this composer was opened from one.
+  final QuotedPost? quoting;
+
   /// Set when the last attempt to post failed, so the screen can say why
   /// rather than clearing the box and hoping.
   final String? error;
@@ -30,6 +43,9 @@ class ComposerState {
     this.isPosting = false,
     this.hasUnsavedChanges = false,
     required this.placeholderText,
+    this.media = const [],
+    this.replyPolicy = ReplyPolicy.everyone,
+    this.quoting,
     this.error,
   });
 
@@ -37,11 +53,17 @@ class ComposerState {
   /// below cannot disagree about it.
   static const maxCharacters = 1000;
 
+  /// How many attachments one post may carry, matching the server.
+  static const maxMedia = 4;
+
   ComposerState copyWith({
     String? content,
     bool? isPosting,
     bool? hasUnsavedChanges,
     String? placeholderText,
+    List<PendingMedia>? media,
+    ReplyPolicy? replyPolicy,
+    QuotedPost? quoting,
     String? error,
     bool clearError = false,
   }) {
@@ -50,6 +72,9 @@ class ComposerState {
       isPosting: isPosting ?? this.isPosting,
       hasUnsavedChanges: hasUnsavedChanges ?? this.hasUnsavedChanges,
       placeholderText: placeholderText ?? this.placeholderText,
+      media: media ?? this.media,
+      replyPolicy: replyPolicy ?? this.replyPolicy,
+      quoting: quoting ?? this.quoting,
       error: clearError ? null : (error ?? this.error),
     );
   }
@@ -60,12 +85,24 @@ class ComposerState {
 
   bool get isOverLimit => charCount > maxCharacters;
 
-  bool get canPost => content.trim().isNotEmpty && !isPosting && !isOverLimit;
+  bool get hasMedia => media.isNotEmpty;
+
+  bool get isUploading => media.any((m) => m.isUploading);
+
+  /// True when there is something a draft would be worth keeping.
+  bool get hasContent => content.trim().isNotEmpty || media.isNotEmpty;
+
+  bool get canAddMedia => media.length < maxMedia;
+
+  /// A post carrying only an attachment is a post; one that is empty and
+  /// unattached is not, which is what the server enforces too.
+  bool get canPost => hasContent && !isPosting && !isOverLimit && !isUploading;
 }
 
 class ComposerNotifier extends StateNotifier<ComposerState> {
   final Ref _ref;
   final DraftService _draftService;
+  final ImagePicker _picker = ImagePicker();
   Timer? _placeholderTimer;
 
   ComposerNotifier(this._ref, this._draftService)
@@ -110,8 +147,8 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   }
 
   void updateContent(String value) {
-    // No haptic here. This fires on every keystroke, so typing a sentence buzzed
-    // the handset forty times.
+    // No haptic here. This fires on every keystroke, so typing a sentence
+    // buzzed the handset forty times.
     state = state.copyWith(
       content: value,
       hasUnsavedChanges: true,
@@ -119,12 +156,163 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     );
   }
 
+  void setReplyPolicy(ReplyPolicy policy) {
+    HapticFeedback.selectionClick();
+    state = state.copyWith(replyPolicy: policy, hasUnsavedChanges: true);
+  }
+
+  /// Opens the composer on a post being quoted.
+  void quote(QuotedPost post) {
+    state = state.copyWith(quoting: post);
+  }
+
+  // ---- Attachments --------------------------------------------------------
+
+  /// Picks images or a video and starts uploading them straight away.
+  ///
+  /// Uploading as they are chosen rather than on send: a slow upload should
+  /// happen while the post is still being written, not after the Post button
+  /// has been pressed.
+  Future<String?> addMedia({required bool video}) async {
+    if (!state.canAddMedia) {
+      return 'A post can carry at most ${ComposerState.maxMedia} attachments.';
+    }
+
+    try {
+      final List<XFile> picked;
+      if (video) {
+        final clip = await _picker.pickVideo(
+          source: ImageSource.gallery,
+          maxDuration: const Duration(minutes: 2),
+        );
+        picked = clip == null ? const [] : [clip];
+      } else {
+        picked = await _picker.pickMultiImage(
+          limit: ComposerState.maxMedia - state.media.length,
+        );
+      }
+
+      if (picked.isEmpty) return null;
+
+      final room = ComposerState.maxMedia - state.media.length;
+      for (final file in picked.take(room)) {
+        await _attach(file, video: video);
+      }
+      return null;
+    } catch (e) {
+      AppLog.instance.error('composer', 'Could not pick media: $e');
+      return 'Could not open your gallery.';
+    }
+  }
+
+  /// Attaches something already downloaded, such as a chosen GIF.
+  Future<void> attachFile(String path, MediaKind kind) async {
+    await _attach(XFile(path), video: kind == MediaKind.video, kind: kind);
+  }
+
+  Future<void> _attach(XFile file,
+      {required bool video, MediaKind? kind}) async {
+    final resolved = kind ?? (video ? MediaKind.video : MediaKind.image);
+
+    // Measured here, where the image is already being decoded for the preview.
+    // Doing it on the server would mean decoding untrusted image data there
+    // for a number used only for layout.
+    var width = 0;
+    var height = 0;
+    if (resolved != MediaKind.video) {
+      final size = await _decodeSize(file.path);
+      width = size.$1;
+      height = size.$2;
+    }
+
+    final pending = PendingMedia(
+      path: file.path,
+      kind: resolved,
+      width: width > 0 ? width : null,
+      height: height > 0 ? height : null,
+    );
+
+    state = state.copyWith(
+      media: [...state.media, pending],
+      hasUnsavedChanges: true,
+    );
+
+    try {
+      final uploaded =
+          await _ref.read(feedRepositoryProvider).uploadMedia(pending);
+      _replaceMedia(pending.path, uploaded);
+    } catch (e) {
+      _replaceMedia(
+        pending.path,
+        pending.copyWith(error: describeApiError(e, sessionIsLive: true)),
+      );
+      AppLog.instance.error('composer', 'Attachment upload failed: $e');
+    }
+  }
+
+  Future<(int, int)> _decodeSize(String path) async {
+    try {
+      final bytes = await File(path).readAsBytes();
+      final descriptor = await ui.instantiateImageCodec(bytes);
+      final frame = await descriptor.getNextFrame();
+      final size = (frame.image.width, frame.image.height);
+      frame.image.dispose();
+      descriptor.dispose();
+      return size;
+    } catch (_) {
+      // Not fatal: without dimensions the grid falls back to a fixed box.
+      return (0, 0);
+    }
+  }
+
+  void removeMedia(String path) {
+    state = state.copyWith(
+      media: state.media.where((m) => m.path != path).toList(),
+      hasUnsavedChanges: true,
+    );
+  }
+
+  void describeMedia(String path, String alt) {
+    state = state.copyWith(
+      media: [
+        for (final m in state.media) m.path == path ? m.copyWith(alt: alt) : m,
+      ],
+    );
+  }
+
+  /// Retries one failed upload without disturbing the others.
+  Future<void> retryMedia(String path) async {
+    final failed = state.media.where((m) => m.path == path).firstOrNull;
+    if (failed == null) return;
+
+    _replaceMedia(path, failed.copyWith(clearError: true));
+    try {
+      final uploaded =
+          await _ref.read(feedRepositoryProvider).uploadMedia(failed);
+      _replaceMedia(path, uploaded);
+    } catch (e) {
+      _replaceMedia(
+        path,
+        failed.copyWith(error: describeApiError(e, sessionIsLive: true)),
+      );
+    }
+  }
+
+  void _replaceMedia(String path, PendingMedia updated) {
+    state = state.copyWith(
+      media: [
+        for (final m in state.media) m.path == path ? updated : m,
+      ],
+    );
+  }
+
+  // ---- Sending ------------------------------------------------------------
+
   /// Publishes the post and puts it at the top of the feed.
   ///
   /// This used to sleep for a second, print the content to the debug console
   /// and clear the box. The Post button reported success every time and no
-  /// post was ever written -- which is why the feed stayed empty however much
-  /// people typed into it.
+  /// post was ever written.
   Future<bool> post() async {
     if (!state.canPost) return false;
 
@@ -132,8 +320,12 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     HapticFeedback.mediumImpact();
 
     try {
-      final FeedPost created =
-          await _ref.read(feedRepositoryProvider).create(state.content.trim());
+      final FeedPost created = await _ref.read(feedRepositoryProvider).create(
+            state.content.trim(),
+            media: state.media,
+            quotedPostId: state.quoting?.id,
+            replyPolicy: state.replyPolicy,
+          );
 
       // Straight to the top of the feed, so the post is visible the moment
       // the screen closes rather than after the next refresh.
@@ -144,10 +336,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
       final draftId = _draftService.currentDraftId;
       if (draftId != null) await _draftService.deleteDraft(draftId);
 
-      state = ComposerState(
-        content: '',
-        placeholderText: _randomPlaceholder(),
-      );
+      clear();
       return true;
     } catch (e) {
       final message = describeApiError(e, sessionIsLive: true);
@@ -160,9 +349,18 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   }
 
   /// Keeps what is typed so it survives leaving the screen.
+  ///
+  /// Attachments are not kept: they live in a cache directory the system may
+  /// clear, so a restored draft would point at files that are no longer there.
   Future<void> saveDraft() async {
     if (state.content.trim().isEmpty) return;
     await _draftService.saveDraft(content: state.content);
+  }
+
+  Future<void> discardDraft() async {
+    final id = _draftService.currentDraftId;
+    if (id != null) await _draftService.deleteDraft(id);
+    clear();
   }
 
   void clear() {
