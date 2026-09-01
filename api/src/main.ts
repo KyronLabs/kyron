@@ -8,6 +8,7 @@ import {
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
 import multipart from '@fastify/multipart';
+import { MediaService } from './modules/media/media.service';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
@@ -29,13 +30,17 @@ async function bootstrap() {
   const config = app.get(ConfigService);
   await app.register(helmet);
 
-  // ✅ Register multipart plugin (CRITICAL for file uploads)
+  // The plugin enforces this before a handler sees the request, so a limit
+  // here that is lower than the one MediaService advertises makes that check
+  // unreachable: it was 5 MB against a stated 25, and every video upload came
+  // back 413 with no message anyone could act on. Named once, in the service
+  // that owns the rule.
   await app.register(multipart, {
     limits: {
       fieldNameSize: 100,
-      fieldSize: 1000000,
+      fieldSize: 1_000_000,
       fields: 10,
-      fileSize: 5000000, // 5MB
+      fileSize: MediaService.maxBytes,
       files: 1,
     },
   });

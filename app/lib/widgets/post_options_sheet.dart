@@ -9,9 +9,11 @@ import '../providers/current_user_provider.dart';
 import '../providers/feed_provider.dart';
 import '../providers/moderation_provider.dart';
 import '../repositories/moderation_repository.dart';
+import '../routes.dart';
 import '../screens/report_screen.dart';
 import '../screens/translation_sheet.dart';
 import '../services/app_log.dart';
+import 'interaction_settings_sheet.dart';
 
 /// The menu behind a post's overflow button.
 ///
@@ -140,6 +142,37 @@ class _OptionsState extends ConsumerState<_Options> {
               ),
             ),
 
+            // Your own post. These were missing entirely, so the only menu a
+            // post's author saw was the feed-control half -- no way to see how
+            // it was doing, and no way to delete it.
+            if (mine) ...[
+              _divider(scheme),
+              _Item(
+                icon: Iconsax.chart_2_copy,
+                label: 'Post analytics',
+                subtitle: 'Viewers, likes, saves and comments',
+                onTap: () => _replace(
+                  () => Navigator.pushNamed(
+                    context,
+                    Routes.postAnalytics,
+                    arguments: _post.id,
+                  ),
+                ),
+              ),
+              _Item(
+                icon: Iconsax.global_copy,
+                label: 'Who can reply',
+                subtitle: _post.replyPolicy.label,
+                onTap: _changeReplyPolicy,
+              ),
+              _Item(
+                icon: Iconsax.trash_copy,
+                label: 'Delete post',
+                destructive: true,
+                onTap: _confirmDelete,
+              ),
+            ],
+
             if (!mine) ...[
               _divider(scheme),
               _Item(
@@ -238,6 +271,52 @@ class _OptionsState extends ConsumerState<_Options> {
         const SnackBar(content: Text('That did not go through. Try again.')),
       );
     }
+  }
+
+  /// Changing the reply setting after the fact. The composer offers it before
+  /// posting; a post that turns out to need it later had no way to get it.
+  Future<void> _changeReplyPolicy() async {
+    final chosen =
+        await InteractionSettingsSheet.show(context, _post.replyPolicy);
+    if (chosen == null || !mounted) return;
+
+    await _run(
+      () => ref.read(feedRepositoryProvider).setReplyPolicy(_post.id, chosen),
+      'Replies: ${chosen.label.toLowerCase()}',
+    );
+  }
+
+  Future<void> _confirmDelete() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Delete this post?'),
+        content: const Text(
+          'It is removed from your profile and from everyone else\'s feed. '
+          'Replies to it go with it.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, true),
+            style: TextButton.styleFrom(
+              foregroundColor: Theme.of(dialogContext).colorScheme.error,
+            ),
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !mounted) return;
+    await _run(
+      () => ref.read(feedRepositoryProvider).delete(_post.id),
+      'Post deleted',
+      removesPost: true,
+    );
   }
 
   Future<void> _confirmBlock() async {

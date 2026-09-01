@@ -228,7 +228,6 @@ Future<String?> askForAltText(BuildContext context, String? current) {
             autofocus: true,
             decoration: const InputDecoration(
               hintText: 'What is in this picture?',
-              border: OutlineInputBorder(),
             ),
           ),
         ],

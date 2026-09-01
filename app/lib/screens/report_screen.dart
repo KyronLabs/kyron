@@ -186,7 +186,6 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
           onChanged: (_) => setState(() {}),
           decoration: const InputDecoration(
             hintText: 'What happened, and what should we look at?',
-            border: OutlineInputBorder(),
           ),
         ),
         if (_error != null) ...[

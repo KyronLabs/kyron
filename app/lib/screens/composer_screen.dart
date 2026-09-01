@@ -128,6 +128,11 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
                 _ErrorBanner(
                   message: state.error!,
                   onRetry: state.canPost ? _handlePost : null,
+                )
+              else if (state.onlyFailedMedia)
+                const _ErrorBanner(
+                  message: 'Those attachments did not upload. Tap one to try '
+                      'again, or remove it.',
                 ),
               Expanded(
                 child: SingleChildScrollView(

@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   ParseUUIDPipe,
+  Patch,
   Post,
   Put,
   Query,
@@ -14,6 +15,7 @@ import {
 import { FeedService } from './feed.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { CreateCommentDto } from './dto/create-comment.dto';
+import { ReplyPolicyDto } from './dto/reply-policy.dto';
 import { ListFeedDto } from './dto/list-feed.dto';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
@@ -170,6 +172,15 @@ export class FeedController {
   @Delete('posts/:id/save')
   unsave(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
     return this.svc.setSaved(req.user.id, id, false);
+  }
+
+  @Patch('posts/:id/reply-policy')
+  replyPolicy(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() dto: ReplyPolicyDto,
+  ) {
+    return this.svc.setReplyPolicy(req.user.id, id, dto.replyPolicy);
   }
 
   @Delete('posts/:id')

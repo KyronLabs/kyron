@@ -70,7 +70,9 @@ void main() {
       ),
     );
     await tester.pump();
-    await tester.pump(const Duration(milliseconds: 100));
+    // Long enough for the system log's debounced write to fire. A timer still
+    // pending when the tree is disposed fails the test.
+    await tester.pump(const Duration(seconds: 3));
 
     expect(find.text('Epigone'), findsWidgets);
     expect(find.text('Followers'), findsOneWidget);
@@ -89,7 +91,9 @@ void main() {
 
       await tester.pumpWidget(_app(entry.value));
       await tester.pump();
-      await tester.pump(const Duration(milliseconds: 100));
+      // Long enough for the system log's debounced write to fire. A timer
+      // still pending when the tree is disposed fails the test.
+      await tester.pump(const Duration(seconds: 3));
 
       expect(tester.takeException(), isNull, reason: entry.key);
       expect(find.text('Followers'), findsOneWidget);
@@ -103,7 +107,9 @@ void main() {
 
     await tester.pumpWidget(_app(FeedState(posts: [_post('a'), _post('b')])));
     await tester.pump();
-    await tester.pump(const Duration(milliseconds: 100));
+    // Long enough for the system log's debounced write to fire. A timer still
+    // pending when the tree is disposed fails the test.
+    await tester.pump(const Duration(seconds: 3));
 
     expect(tester.takeException(), isNull);
     expect(find.text('post a'), findsOneWidget);

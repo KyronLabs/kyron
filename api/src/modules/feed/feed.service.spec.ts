@@ -3,6 +3,7 @@ import { Test } from '@nestjs/testing';
 import { FeedService } from './feed.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ModerationService } from '../moderation/moderation.service';
+import { MediaService } from '../media/media.service';
 
 /** One row in the shape the service selects. */
 const row = (id: string, createdAt = new Date()) => ({
@@ -690,10 +691,13 @@ describe('FeedService', () => {
       await (await service()).listRecent(VIEWER, 20);
 
       const args = post.findMany.mock.calls[0][0] as {
-        where: { AND: { content?: unknown }[] };
+        where: { AND: { NOT?: unknown }[] };
       };
-      expect(args.where.AND[0].content).toEqual({
-        not: { contains: 'spoiler', mode: 'insensitive' },
+      // NOT at the clause level: Prisma's NestedStringFilter has no `mode`, so
+      // `content: { not: { contains, mode } }` is rejected at query time and
+      // every feed request 500s once a word is muted.
+      expect(args.where.AND[0].NOT).toEqual({
+        content: { contains: 'spoiler', mode: 'insensitive' },
       });
     });
 
@@ -802,6 +806,41 @@ describe('FeedService', () => {
           update: {},
         }),
       );
+    });
+  });
+
+  describe('MediaService limits', () => {
+    it('states one maximum, which the multipart plugin is configured from', () => {
+      // The plugin rejects an oversized upload before any handler runs, so a
+      // lower limit there makes this check unreachable -- which is exactly
+      // what made every video upload answer 413 with nothing to act on.
+      expect(MediaService.maxBytes).toBe(25 * 1024 * 1024);
+    });
+  });
+
+  describe('setReplyPolicy', () => {
+    it('is scoped to the author', async () => {
+      post.updateMany.mockResolvedValue({ count: 1 });
+      await (await service()).setReplyPolicy('user-1', 'p1', 'NOBODY' as never);
+
+      expect(post.updateMany).toHaveBeenCalledWith({
+        where: { id: 'p1', authorId: 'user-1', deletedAt: null },
+        data: { replyPolicy: 'NOBODY' },
+      });
+    });
+
+    it("reports not found for someone else's post, not forbidden", async () => {
+      // Distinguishing the two would confirm the post exists to a caller who
+      // is not allowed to know that.
+      post.updateMany.mockResolvedValue({ count: 0 });
+
+      await expect(
+        (await service()).setReplyPolicy(
+          'someone-else',
+          'p1',
+          'NOBODY' as never,
+        ),
+      ).rejects.toThrow(NotFoundException);
     });
   });
 

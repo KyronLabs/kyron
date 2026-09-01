@@ -94,9 +94,26 @@ class ComposerState {
 
   bool get canAddMedia => media.length < maxMedia;
 
+  /// Attachments that actually uploaded. Only these are sent.
+  bool get hasReadyMedia => media.any((m) => m.isReady);
+
+  /// True when an attachment failed and nothing else would go with it.
+  bool get onlyFailedMedia =>
+      content.trim().isEmpty && media.isNotEmpty && !hasReadyMedia;
+
   /// A post carrying only an attachment is a post; one that is empty and
   /// unattached is not, which is what the server enforces too.
-  bool get canPost => hasContent && !isPosting && !isOverLimit && !isUploading;
+  ///
+  /// Checked against *uploaded* attachments, not chosen ones. With pictures
+  /// that all failed to upload the old check saw content and enabled Post,
+  /// which then sent no text and no media and came back "A post needs text
+  /// or an attachment" -- naming a problem the composer was already showing
+  /// on every tile.
+  bool get canPost =>
+      (content.trim().isNotEmpty || hasReadyMedia) &&
+      !isPosting &&
+      !isOverLimit &&
+      !isUploading;
 }
 
 class ComposerNotifier extends StateNotifier<ComposerState> {
@@ -183,7 +200,10 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
       if (video) {
         final clip = await _picker.pickVideo(
           source: ImageSource.gallery,
-          maxDuration: const Duration(minutes: 2),
+          // image_picker does not compress, so this is the only lever on how
+          // big the file arrives. A minute of phone video is already close to
+          // the server's limit.
+          maxDuration: const Duration(minutes: 1),
         );
         picked = clip == null ? const [] : [clip];
       } else {
@@ -210,9 +230,29 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     await _attach(XFile(path), video: kind == MediaKind.video, kind: kind);
   }
 
+  /// The server's limit, mirrored so an oversized file is refused here rather
+  /// than after uploading it and being told 413.
+  static const maxAttachmentBytes = 25 * 1024 * 1024;
+
   Future<void> _attach(XFile file,
       {required bool video, MediaKind? kind}) async {
     final resolved = kind ?? (video ? MediaKind.video : MediaKind.image);
+
+    final bytes = await file.length();
+    if (bytes > maxAttachmentBytes) {
+      state = state.copyWith(
+        media: [
+          ...state.media,
+          PendingMedia(
+            path: file.path,
+            kind: resolved,
+            error: 'That file is larger than '
+                '${maxAttachmentBytes ~/ (1024 * 1024)} MB.',
+          ),
+        ],
+      );
+      return;
+    }
 
     // Measured here, where the image is already being decoded for the preview.
     // Doing it on the server would mean decoding untrusted image data there

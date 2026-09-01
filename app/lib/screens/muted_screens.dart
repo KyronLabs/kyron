@@ -88,7 +88,6 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                           onSubmitted: (_) => _add(),
                           decoration: const InputDecoration(
                             hintText: 'A word, phrase or #tag',
-                            border: OutlineInputBorder(),
                             isDense: true,
                           ),
                         ),
