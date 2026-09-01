@@ -645,7 +645,7 @@ packages:
     description:
       path: flutter
       ref: main
-      resolved-ref: "63ed36c3aa7a2346e2da1c6c0b5470fb1fa1ecdf"
+      resolved-ref: "686c9c3b9dd42dac43371399e4f624e8111a9b7b"
       url: "https://github.com/KyronLabs/design-system.git"
     source: git
     version: "0.1.0"

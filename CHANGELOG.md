@@ -63,6 +63,8 @@ section for that version, so what is written here is what people read.
 - Text fields are slimmer: one shared input theme across the three modes,
   denser padding, and no outline ring by default -- the accent border appears
   on focus. Screens that drew their own outline no longer override it.
+- The app resolves the design system at the commit carrying that input theme,
+  rather than the one before it.
 - Search results carry an avatar, a two-line bio, follower and Kyron Point
   counts, and a Follow button that works from the list, separated by hairlines
   rather than stacked as bare rows.
