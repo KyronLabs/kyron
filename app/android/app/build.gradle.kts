@@ -14,7 +14,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.app"
+    namespace = "so.kyron.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -28,8 +28,11 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.app"
+        // Google Play rejects com.example.* outright, so the template default
+        // this replaced could never have been published. Changing it renames
+        // the package: an installed build will not update over one with the
+        // old id, and has to be uninstalled first.
+        applicationId = "so.kyron.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

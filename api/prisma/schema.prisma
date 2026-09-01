@@ -84,6 +84,14 @@ model User {
   saves             PostSave[]
   comments          Comment[]
   views             PostView[]
+  reposts           Repost[]
+  hiddenPosts       HiddenPost[]
+  mutes             Mute[]             @relation("MuteOwner")
+  mutedBy           Mute[]             @relation("MuteTarget")
+  blocking          Block[]            @relation("Blocker")
+  blockedBy         Block[]            @relation("Blocked")
+  reportsMade       Report[]           @relation("Reporter")
+  interestSignals   InterestSignal[]
   kyronPointEvents  KyronPointEvent[] // 🔥 NEW
 
   @@index([email])
@@ -128,11 +136,30 @@ model Post {
   createdAt DateTime  @default(now()) @db.Timestamptz()
   updatedAt DateTime  @updatedAt @db.Timestamptz()
 
-  author   User       @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  // Who may reply. The composer offers this and the server enforces it; a
+  // setting the client shows and the server ignores is not a setting.
+  replyPolicy ReplyPolicy @default(EVERYONE)
+
+  // Set when this post quotes another. A repost without a quote is a Repost
+  // row instead -- it has no content of its own to store.
+  quotedPostId String? @db.Uuid
+
+  author   User             @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   likes    PostLike[]
   saves    PostSave[]
   comments Comment[]
   views    PostView[]
+  media    Media[]
+  reposts  Repost[]
+  hashtags PostHashtag[]
+  hidden   HiddenPost[]
+  mutes    Mute[]
+  signals  InterestSignal[]
+
+  // SetNull, not Cascade: deleting a quoted post should not delete everyone's
+  // commentary on it. The client renders the gap.
+  quotedPost Post?  @relation("PostQuotes", fields: [quotedPostId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  quotedBy   Post[] @relation("PostQuotes")
 
   @@index([authorId])
   // The feed's only ordering. id breaks ties so a cursor is stable when two
@@ -327,6 +354,7 @@ model Comment {
   author  User      @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   parent  Comment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   replies Comment[] @relation("CommentReplies")
+  media   Media[]
 
   @@index([authorId])
   // A post's top-level comments, oldest first -- the order a thread reads in.
@@ -352,6 +380,237 @@ model PostView {
 
   @@unique([postId, viewerId])
   @@index([postId, createdAt])
+}
+
+// ==========================================
+// 11e. MEDIA
+// ==========================================
+enum MediaKind {
+  IMAGE
+  VIDEO
+  GIF
+}
+
+enum ReplyPolicy {
+  EVERYONE
+  FOLLOWERS
+  MENTIONED
+  NOBODY
+}
+
+// One table for both, with exactly one of postId/commentId set. Two tables
+// would duplicate every column and every upload path for no gain: a picture
+// attached to a reply is the same picture attached to a post.
+model Media {
+  id        String    @id @default(uuid()) @db.Uuid
+  postId    String?   @db.Uuid
+  commentId String?   @db.Uuid
+  kind      MediaKind @default(IMAGE)
+  url       String
+
+  // Stored so a list can reserve the right space before the bytes arrive.
+  // Without them every image pops the layout as it loads.
+  width  Int?
+  height Int?
+
+  /// Author-supplied description, for anyone using a screen reader.
+  alt String?
+
+  /// Order within its post or comment, 0 first.
+  position Int @default(0)
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  post    Post?    @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([postId, position])
+  @@index([commentId, position])
+}
+
+// ==========================================
+// 11f. REPOSTS
+// ==========================================
+// A plain repost. A quote is a Post with quotedPostId set, because it has
+// content of its own; this has none, so a row is the whole record.
+model Repost {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  postId    String   @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([userId, postId])
+  @@index([postId])
+  @@index([userId, createdAt(sort: Desc)])
+}
+
+// ==========================================
+// 11g. HASHTAGS
+// ==========================================
+model Hashtag {
+  id  String @id @default(uuid()) @db.Uuid
+  // Stored lower-cased so #Kyron and #kyron are one tag. The client renders
+  // whichever casing the post used.
+  tag String @unique
+
+  createdAt DateTime      @default(now()) @db.Timestamptz()
+  posts     PostHashtag[]
+}
+
+model PostHashtag {
+  postId    String @db.Uuid
+  hashtagId String @db.Uuid
+
+  post    Post    @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  hashtag Hashtag @relation(fields: [hashtagId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([postId, hashtagId])
+  @@index([hashtagId])
+}
+
+// ==========================================
+// 11h. MODERATION AND FEED CONTROL
+// ==========================================
+enum MuteKind {
+  USER
+  WORD
+  THREAD
+}
+
+enum InterestKind {
+  MORE
+  LESS
+}
+
+enum ReportTarget {
+  POST
+  COMMENT
+  USER
+}
+
+enum ReportReason {
+  SPAM
+  HARASSMENT
+  HATE
+  VIOLENCE
+  SELF_HARM
+  SEXUAL_CONTENT
+  CHILD_SAFETY
+  MISINFORMATION
+  IMPERSONATION
+  INTELLECTUAL_PROPERTY
+  ILLEGAL_GOODS
+  SOMETHING_ELSE
+}
+
+enum ReportStatus {
+  RECEIVED
+  REVIEWING
+  ACTIONED
+  DISMISSED
+}
+
+// Blocking is mutual in effect: neither account sees the other's posts, and
+// neither can follow the other. Enforced in the feed query, not just hidden
+// in the client.
+model Block {
+  id        String   @id @default(uuid()) @db.Uuid
+  blockerId String   @db.Uuid
+  blockedId String   @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  blocker User @relation("Blocker", fields: [blockerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  blocked User @relation("Blocked", fields: [blockedId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([blockerId, blockedId])
+  @@index([blockedId])
+}
+
+// One table for the three kinds of mute, with exactly one target column set.
+// They are the same idea -- "do not show me this" -- and one table means the
+// feed reads them in one query rather than three.
+model Mute {
+  id     String   @id @default(uuid()) @db.Uuid
+  userId String   @db.Uuid
+  kind   MuteKind
+
+  targetUserId String? @db.Uuid
+  targetPostId String? @db.Uuid
+
+  /// Lower-cased for WORD mutes. Matched case-insensitively against content.
+  phrase String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  user       User  @relation("MuteOwner", fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  targetUser User? @relation("MuteTarget", fields: [targetUserId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  targetPost Post? @relation(fields: [targetPostId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([userId, kind, targetUserId, targetPostId, phrase])
+  @@index([userId, kind])
+}
+
+/// A single post the reader asked not to see again.
+model HiddenPost {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  postId    String   @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([userId, postId])
+  @@index([userId])
+}
+
+/// "Show more of this" and "show less of this", recorded against the post that
+/// prompted it. Kept even though the feed is chronological today: a signal
+/// thrown away is a signal that cannot inform ranking later.
+model InterestSignal {
+  id     String       @id @default(uuid()) @db.Uuid
+  userId String       @db.Uuid
+  postId String       @db.Uuid
+  kind   InterestKind
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([userId, postId])
+  @@index([userId, kind])
+}
+
+model Report {
+  id         String       @id @default(uuid()) @db.Uuid
+  reporterId String       @db.Uuid
+  target     ReportTarget
+  targetId   String       @db.Uuid
+  reason     ReportReason
+
+  /// What the reporter added in their own words. Optional.
+  detail String? @db.Text
+
+  status ReportStatus @default(RECEIVED)
+
+  /// A copy of what was reported, taken at the time. Without it a report is
+  /// unreviewable the moment its subject edits or deletes the content.
+  snapshot String? @db.Text
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  reporter User @relation("Reporter", fields: [reporterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  // One report per person per thing. A second one is the same complaint, and
+  // counting it twice would make a brigade look like a consensus.
+  @@unique([reporterId, target, targetId])
+  @@index([target, targetId])
+  @@index([status, createdAt])
 }
 
 // ==========================================

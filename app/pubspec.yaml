@@ -43,6 +43,14 @@ dependencies:
   shimmer: ^3.0.0
   url_strategy: ^0.3.0
 
+  # Attachments. video_player for a clip in the feed and the viewer,
+  # photo_view for pinch-to-zoom on an image, share_plus to hand one to
+  # another app. Without these the media viewer is a picture you cannot
+  # zoom, a video you cannot play and a Share button that does nothing.
+  video_player: ^2.9.2
+  photo_view: ^0.15.0
+  share_plus: ^10.1.2
+
   # The About screen reports the running build and clears the on-device cache.
   # Both were previously invented: the version was the literal string "1.0.0"
   # and the cache size was a random number between 10 and 50 MB.

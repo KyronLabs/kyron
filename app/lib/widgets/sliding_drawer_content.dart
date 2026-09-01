@@ -183,7 +183,7 @@ class SlidingDrawerContent extends ConsumerWidget {
         Text(
           formatCount(value),
           style: TextStyle(
-            fontSize: 13,
+            fontSize: 15,
             fontWeight: FontWeight.w700,
             color: scheme.onSurface,
           ),
@@ -192,8 +192,8 @@ class SlidingDrawerContent extends ConsumerWidget {
         Text(
           label,
           style: TextStyle(
-            fontSize: 13,
-            color: scheme.onSurface.withValues(alpha: 0.6),
+            fontSize: 14,
+            color: scheme.onSurface.withValues(alpha: 0.7),
           ),
         ),
       ],

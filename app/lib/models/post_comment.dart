@@ -1,6 +1,7 @@
 // lib/models/post_comment.dart
 
 import 'feed_post.dart';
+import 'post_media.dart';
 
 /// One comment on a post, or one reply to a comment.
 class PostComment {
@@ -18,6 +19,9 @@ class PostComment {
   /// Whether you wrote it, and so may delete it.
   final bool mine;
 
+  /// Attachments, in the order they were added.
+  final List<PostMedia> media;
+
   const PostComment({
     required this.id,
     required this.content,
@@ -26,6 +30,7 @@ class PostComment {
     this.parentId,
     this.replies = 0,
     this.mine = false,
+    this.media = const [],
   });
 
   bool get isReply => parentId != null;
@@ -42,6 +47,7 @@ class PostComment {
         parentId: json['parentId'] as String?,
         replies: (json['replies'] as num?)?.toInt() ?? 0,
         mine: json['mine'] == true,
+        media: PostMedia.listFrom(json['media']),
       );
 
   PostComment copyWith({int? replies}) => PostComment(
@@ -52,6 +58,7 @@ class PostComment {
         parentId: parentId,
         replies: replies ?? this.replies,
         mine: mine,
+        media: media,
       );
 }
 

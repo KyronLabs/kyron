@@ -32,14 +32,20 @@ class BottomNavV4 extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(child: _item(context, Iconsax.home_copy, 'Home', 0)),
               Expanded(
-                  child: _item(context, Iconsax.discover_copy, 'Explore', 1)),
+                child:
+                    _item(context, Iconsax.home_copy, Iconsax.home, 'Home', 0),
+              ),
+              Expanded(
+                  child: _item(context, Iconsax.discover_copy, Iconsax.discover,
+                      'Explore', 1)),
               Expanded(child: _RingFab()), // ← FAB with ring
               Expanded(
-                  child: _item(context, Iconsax.people_copy, 'Communities', 3)),
+                  child: _item(context, Iconsax.people_copy, Iconsax.people,
+                      'Communities', 3)),
               Expanded(
-                  child: _item(context, Iconsax.message_copy, 'Messages', 4)),
+                  child: _item(context, Iconsax.message_copy, Iconsax.message,
+                      'Messages', 4)),
             ],
           ),
         ),
@@ -47,7 +53,18 @@ class BottomNavV4 extends StatelessWidget {
     );
   }
 
-  Widget _item(BuildContext context, IconData icon, String label, int index) {
+  /// The tab you are on is drawn filled, the rest outlined.
+  ///
+  /// Outlining every tab left colour as the only thing distinguishing the
+  /// current one, which is a weak signal and no signal at all to anyone who
+  /// cannot separate the two hues.
+  Widget _item(
+    BuildContext context,
+    IconData icon,
+    IconData activeIcon,
+    String label,
+    int index,
+  ) {
     final scheme = Theme.of(context).colorScheme;
     final isActive = currentIndex == index;
 
@@ -57,7 +74,7 @@ class BottomNavV4 extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon,
+          Icon(isActive ? activeIcon : icon,
               size: 22,
               color: isActive
                   ? scheme.primary

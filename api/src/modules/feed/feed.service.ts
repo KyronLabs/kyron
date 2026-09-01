@@ -1,5 +1,12 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
+import { MediaKind, Prisma, ReplyPolicy } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { ModerationService } from '../moderation/moderation.service';
 
 /** A post as the feed returns it, with just enough of its author to render. */
 export interface FeedPost {
@@ -16,9 +23,36 @@ export interface FeedPost {
   likes: number;
   /** How many comments and replies it has. */
   comments: number;
+  /** Plain reposts. Quotes are posts of their own and counted as such. */
+  reposts: number;
   /** Whether the reader has. Saves are private, so there is no count. */
   likedByViewer: boolean;
   savedByViewer: boolean;
+  repostedByViewer: boolean;
+  /** Who may reply to it. */
+  replyPolicy: ReplyPolicy;
+  media: FeedMedia[];
+  /** The post this one quotes, one level deep. Null for most posts. */
+  quotedPost: QuotedPost | null;
+}
+
+export interface FeedMedia {
+  id: string;
+  kind: MediaKind;
+  url: string;
+  width: number | null;
+  height: number | null;
+  alt: string | null;
+}
+
+/** A quoted post, without its own quote -- one level, so a chain cannot
+ * recurse into an unbounded response. */
+export interface QuotedPost {
+  id: string;
+  content: string;
+  createdAt: Date;
+  author: FeedPost['author'];
+  media: FeedMedia[];
 }
 
 /** One comment, or one reply to a comment. */
@@ -36,6 +70,7 @@ export interface FeedComment {
   parentId: string | null;
   /** How many replies hang off it. Always 0 on a reply. */
   replies: number;
+  media: FeedMedia[];
   /** Whether the reader wrote it, and so may delete it. */
   mine: boolean;
 }
@@ -70,15 +105,117 @@ const DEFAULT_LIMIT = 20;
 export class FeedService {
   private readonly logger = new Logger(FeedService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly moderation: ModerationService,
+  ) {}
 
-  async createPost(authorId: string, content: string): Promise<FeedPost> {
+  /** How many attachments one post or comment may carry. */
+  static readonly maxMedia = 4;
+
+  async createPost(
+    authorId: string,
+    input: {
+      content: string;
+      media?: {
+        url: string;
+        kind?: MediaKind;
+        width?: number;
+        height?: number;
+        alt?: string;
+      }[];
+      quotedPostId?: string;
+      replyPolicy?: ReplyPolicy;
+    },
+  ): Promise<FeedPost> {
+    const content = input.content.trim();
+    const media = input.media ?? [];
+
+    if (media.length > FeedService.maxMedia) {
+      throw new BadRequestException(
+        `A post can carry at most ${FeedService.maxMedia} attachments.`,
+      );
+    }
+    // A post has to say something. Media alone is a post; empty and unattached
+    // is not, and the client should not be able to create one.
+    if (!content && media.length === 0) {
+      throw new BadRequestException('A post needs text or an attachment.');
+    }
+
+    if (input.quotedPostId) {
+      // Checked here so quoting a deleted post fails with a message rather
+      // than a foreign key error.
+      await this.requireVisiblePost(input.quotedPostId);
+    }
+
     const post = await this.prisma.post.create({
-      data: { authorId, content: content.trim() },
+      data: {
+        authorId,
+        content,
+        replyPolicy: input.replyPolicy ?? ReplyPolicy.EVERYONE,
+        quotedPostId: input.quotedPostId,
+        media: {
+          create: media.map((item, index) => ({
+            url: item.url,
+            kind: item.kind ?? MediaKind.IMAGE,
+            width: item.width,
+            height: item.height,
+            alt: item.alt,
+            position: index,
+          })),
+        },
+        hashtags: { create: await this.hashtagLinks(content) },
+      },
       select: this.shapeFor(authorId),
     });
+
     this.logger.log(`post ${post.id} created by ${authorId}`);
     return this.toFeedPost(post);
+  }
+
+  /**
+   * Every #tag in the text, as rows to attach to a post.
+   *
+   * Extracted server-side rather than trusted from the client: the tags a post
+   * is indexed under have to be the tags it actually contains, or a post can
+   * be filed under anything its author names in a field nobody sees.
+   */
+  private async hashtagLinks(content: string) {
+    const tags = FeedService.hashtagsIn(content);
+    if (tags.length === 0) return [];
+
+    // Upserted one at a time rather than createMany + findMany: the set is
+    // small, and this returns the ids without a second round trip.
+    const rows = await Promise.all(
+      tags.map((tag) =>
+        this.prisma.hashtag.upsert({
+          where: { tag },
+          create: { tag },
+          update: {},
+          select: { id: true },
+        }),
+      ),
+    );
+    return rows.map((row) => ({ hashtagId: row.id }));
+  }
+
+  /**
+   * The hashtags in a piece of text, lower-cased and de-duplicated.
+   *
+   * Deliberately narrow: letters, digits and underscore, and never a tag that
+   * is only digits -- "#1" in "ranked #1" is not a topic.
+   */
+  static hashtagsIn(content: string): string[] {
+    const found = new Set<string>();
+    // A tag must start at a boundary, so "a#b" and a colour like "#ffffff"
+    // written mid-word are not swept up.
+    const pattern = /(?<![\w#])#([\p{L}\p{N}_]{1,50})/gu;
+    for (const match of content.matchAll(pattern)) {
+      const tag = match[1].toLowerCase();
+      if (/^\d+$/.test(tag)) continue;
+      found.add(tag);
+    }
+    return [...found];
   }
 
   /**
@@ -93,12 +230,95 @@ export class FeedService {
     limit = DEFAULT_LIMIT,
     cursor?: string,
   ): Promise<FeedPage> {
-    return this.page({ deletedAt: null }, viewerId, limit, cursor);
+    // Filtered in the query, not in the client. Hiding a blocked account's
+    // posts after they have been sent is not blocking: the content still
+    // arrived, and anything reading the response can see it.
+    const where = await this.withFilters({ deletedAt: null }, viewerId);
+    return this.page(where, viewerId, limit, cursor);
+  }
+
+  /** One account's posts, filtered by whom the reader has blocked. */
+  private async withFilters(
+    where: Prisma.PostWhereInput,
+    viewerId: string,
+  ): Promise<Prisma.PostWhereInput> {
+    const filters = await this.moderation.filtersFor(viewerId);
+    const excluded = [...filters.blockedUserIds, ...filters.mutedUserIds];
+    const hiddenIds = [...filters.hiddenPostIds, ...filters.mutedPostIds];
+
+    return {
+      ...where,
+      ...(excluded.length ? { authorId: { notIn: excluded } } : {}),
+      ...(hiddenIds.length || filters.mutedPhrases.length
+        ? {
+            AND: [
+              // A muted thread hides the post and everything quoting it.
+              ...(hiddenIds.length
+                ? [
+                    {
+                      id: { notIn: hiddenIds },
+                      quotedPostId: { notIn: hiddenIds },
+                    } as Prisma.PostWhereInput,
+                  ]
+                : []),
+              // Case-insensitive substring, which is what someone muting a
+              // word means -- not a whole-word match they would have to guess
+              // the plural of.
+              ...filters.mutedPhrases.map(
+                (phrase) =>
+                  ({
+                    content: {
+                      not: { contains: phrase, mode: 'insensitive' },
+                    },
+                  }) as Prisma.PostWhereInput,
+              ),
+            ],
+          }
+        : {}),
+    };
+  }
+
+  /** Plain reposts. A quote is a post and appears in the feed as one. */
+  async setReposted(viewerId: string, postId: string, reposted: boolean) {
+    await this.requireVisiblePost(postId);
+    if (reposted) {
+      await this.prisma.repost.upsert({
+        where: { userId_postId: { userId: viewerId, postId } },
+        create: { userId: viewerId, postId },
+        update: {},
+      });
+    } else {
+      await this.prisma.repost.deleteMany({
+        where: { userId: viewerId, postId },
+      });
+    }
+    return {
+      reposted,
+      reposts: await this.prisma.repost.count({ where: { postId } }),
+    };
+  }
+
+  /** Posts carrying a given hashtag, newest first. */
+  async listByHashtag(
+    tag: string,
+    viewerId: string,
+    limit = DEFAULT_LIMIT,
+    cursor?: string,
+  ): Promise<FeedPage> {
+    const normalised = tag.replace(/^#/, '').toLowerCase();
+    const where = await this.withFilters(
+      {
+        deletedAt: null,
+        hashtags: { some: { hashtag: { tag: normalised } } },
+      },
+      viewerId,
+    );
+    return this.page(where, viewerId, limit, cursor);
   }
 
   /** The paging every post list shares: same ordering, cursor and page size. */
   private async page(
-    where: { authorId?: string; deletedAt: null },
+    where: Prisma.PostWhereInput,
     viewerId: string,
     limit: number,
     cursor?: string,
@@ -273,6 +493,73 @@ export class FeedService {
     return { saved };
   }
 
+  /**
+   * Whether this account may reply to that post.
+   *
+   * The composer offers a reply setting; a setting the server does not enforce
+   * is decoration. NotFound rather than Forbidden for a blocked reader, so a
+   * block does not confirm the post exists to someone shut out of it.
+   */
+  private async requireReplyAllowed(postId: string, authorId: string) {
+    const post = await this.prisma.post.findFirst({
+      where: { id: postId, deletedAt: null },
+      select: { authorId: true, replyPolicy: true, content: true },
+    });
+    if (!post) throw new NotFoundException('Post not found.');
+
+    // Your own post is always open to you, whatever you set.
+    if (post.authorId === authorId) return;
+
+    const blocked = await this.prisma.block.findFirst({
+      where: {
+        OR: [
+          { blockerId: post.authorId, blockedId: authorId },
+          { blockerId: authorId, blockedId: post.authorId },
+        ],
+      },
+      select: { id: true },
+    });
+    if (blocked) throw new NotFoundException('Post not found.');
+
+    switch (post.replyPolicy) {
+      case ReplyPolicy.NOBODY:
+        throw new BadRequestException('Replies are turned off for this post.');
+
+      case ReplyPolicy.FOLLOWERS: {
+        const follows = await this.prisma.follow.findFirst({
+          where: { followerId: authorId, followingId: post.authorId },
+          select: { id: true },
+        });
+        if (!follows) {
+          throw new BadRequestException(
+            'Only people who follow the author can reply to this post.',
+          );
+        }
+        return;
+      }
+
+      case ReplyPolicy.MENTIONED: {
+        const me = await this.prisma.user.findUnique({
+          where: { id: authorId },
+          select: { username: true },
+        });
+        const handle = me?.username?.toLowerCase();
+        const mentioned =
+          handle != null &&
+          new RegExp(`(?<![\\w@])@${handle}\\b`, 'i').test(post.content);
+        if (!mentioned) {
+          throw new BadRequestException(
+            'Only people mentioned in this post can reply to it.',
+          );
+        }
+        return;
+      }
+
+      case ReplyPolicy.EVERYONE:
+        return;
+    }
+  }
+
   private async requireVisiblePost(postId: string) {
     const post = await this.prisma.post.findFirst({
       where: { id: postId, deletedAt: null },
@@ -367,8 +654,24 @@ export class FeedService {
     authorId: string,
     content: string,
     parentId?: string,
+    media: {
+      url: string;
+      kind?: MediaKind;
+      width?: number;
+      height?: number;
+      alt?: string;
+    }[] = [],
   ): Promise<FeedComment> {
-    await this.requireVisiblePost(postId);
+    if (media.length > FeedService.maxMedia) {
+      throw new BadRequestException(
+        `A comment can carry at most ${FeedService.maxMedia} attachments.`,
+      );
+    }
+    if (!content.trim() && media.length === 0) {
+      throw new BadRequestException('A comment needs text or an attachment.');
+    }
+
+    await this.requireReplyAllowed(postId, authorId);
 
     let threadParentId: string | null = null;
     if (parentId) {
@@ -388,6 +691,16 @@ export class FeedService {
         authorId,
         parentId: threadParentId,
         content: content.trim(),
+        media: {
+          create: media.map((item, index) => ({
+            url: item.url,
+            kind: item.kind ?? MediaKind.IMAGE,
+            width: item.width,
+            height: item.height,
+            alt: item.alt,
+            position: index,
+          })),
+        },
       },
       select: this.commentShape,
     });
@@ -491,22 +804,21 @@ export class FeedService {
     };
   }
 
-  private readonly commentShape = {
-    id: true,
-    content: true,
-    createdAt: true,
-    parentId: true,
-    authorId: true,
-    author: {
-      select: {
-        id: true,
-        name: true,
-        username: true,
-        profile: { select: { avatarUrl: true } },
-      },
-    },
-    _count: { select: { replies: true } },
-  } as const;
+  // A getter, not a field: class fields initialise in declaration order and
+  // this one is declared above mediaShape, so reading it eagerly would see
+  // undefined.
+  private get commentShape() {
+    return {
+      id: true,
+      content: true,
+      createdAt: true,
+      parentId: true,
+      authorId: true,
+      author: { select: this.authorShape },
+      _count: { select: { replies: true } },
+      media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+    } as const;
+  }
 
   private toFeedComment(row: CommentRow, viewerId: string): FeedComment {
     return {
@@ -521,6 +833,7 @@ export class FeedService {
         avatarUrl: row.author.profile?.avatarUrl ?? null,
       },
       replies: row._count.replies,
+      media: row.media,
       mine: row.authorId === viewerId,
     };
   }
@@ -549,35 +862,80 @@ export class FeedService {
       id: true,
       content: true,
       createdAt: true,
-      author: {
-        select: {
-          id: true,
-          name: true,
-          username: true,
-          profile: { select: { avatarUrl: true } },
-        },
-      },
-      _count: { select: { likes: true, comments: true } },
+      replyPolicy: true,
+      author: { select: this.authorShape },
+      _count: { select: { likes: true, comments: true, reposts: true } },
       likes: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       saves: { where: { userId: viewerId }, select: { id: true }, take: 1 },
+      reposts: { where: { userId: viewerId }, select: { id: true }, take: 1 },
+      media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+      // One level. A quote of a quote of a quote would otherwise walk the
+      // chain into an unbounded response.
+      quotedPost: {
+        select: {
+          id: true,
+          content: true,
+          createdAt: true,
+          deletedAt: true,
+          author: { select: this.authorShape },
+          media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+        },
+      },
     } as const;
   }
 
+  private readonly authorShape = {
+    id: true,
+    name: true,
+    username: true,
+    profile: { select: { avatarUrl: true } },
+  } as const;
+
+  private readonly mediaShape = {
+    id: true,
+    kind: true,
+    url: true,
+    width: true,
+    height: true,
+    alt: true,
+  } as const;
+
   private toFeedPost(row: PostRow): FeedPost {
+    const quoted = row.quotedPost;
     return {
       id: row.id,
       content: row.content,
       createdAt: row.createdAt,
-      author: {
-        id: row.author.id,
-        name: row.author.name,
-        username: row.author.username,
-        avatarUrl: row.author.profile?.avatarUrl ?? null,
-      },
+      author: this.toAuthor(row.author),
       likes: row._count.likes,
       comments: row._count.comments,
+      reposts: row._count.reposts,
       likedByViewer: row.likes.length > 0,
       savedByViewer: row.saves.length > 0,
+      repostedByViewer: row.reposts.length > 0,
+      replyPolicy: row.replyPolicy,
+      media: row.media,
+      // A deleted quote target is dropped rather than rendered: the row is
+      // kept by SetNull so the quoting post survives, but its content is gone.
+      quotedPost:
+        quoted && quoted.deletedAt === null
+          ? {
+              id: quoted.id,
+              content: quoted.content,
+              createdAt: quoted.createdAt,
+              author: this.toAuthor(quoted.author),
+              media: quoted.media,
+            }
+          : null,
+    };
+  }
+
+  private toAuthor(author: AuthorRow): FeedPost['author'] {
+    return {
+      id: author.id,
+      name: author.name,
+      username: author.username,
+      avatarUrl: author.profile?.avatarUrl ?? null,
     };
   }
 }
@@ -596,6 +954,14 @@ interface CommentRow {
     profile: { avatarUrl: string | null } | null;
   };
   _count: { replies: number };
+  media: FeedMedia[];
+}
+
+interface AuthorRow {
+  id: string;
+  name: string | null;
+  username: string | null;
+  profile: { avatarUrl: string | null } | null;
 }
 
 /** A row shaped by {@link FeedService.shapeFor}. */
@@ -603,13 +969,17 @@ interface PostRow {
   id: string;
   content: string;
   createdAt: Date;
-  author: {
-    id: string;
-    name: string | null;
-    username: string | null;
-    profile: { avatarUrl: string | null } | null;
-  };
-  _count: { likes: number; comments: number };
+  replyPolicy: ReplyPolicy;
+  author: AuthorRow;
+  _count: { likes: number; comments: number; reposts: number };
   likes: { id: string }[];
   saves: { id: string }[];
+  reposts: { id: string }[];
+  media: FeedMedia[];
+  quotedPost:
+    | (Omit<QuotedPost, 'author'> & {
+        author: AuthorRow;
+        deletedAt: Date | null;
+      })
+    | null;
 }

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/legacy.dart';
 
 import '../models/profile_model.dart';
 import '../repositories/profile_repository.dart';
+import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
 import 'api_client_provider.dart';
 import 'current_user_provider.dart';
@@ -40,14 +41,25 @@ class ProfileNotifier extends StateNotifier<AsyncValue<ProfileModel>> {
     try {
       if (isMine) {
         final repo = _ref.read(currentUserRepositoryProvider);
-        state = AsyncData(
-          ProfileModel.fromCurrentUser(await repo.fetchMe(force: force)),
+        final me = await repo.fetchMe(force: force);
+        AppLog.instance.info(
+          'profile',
+          'Loaded your profile (${me.id.isEmpty ? 'no id' : me.id})',
         );
+        state = AsyncData(ProfileModel.fromCurrentUser(me));
       } else {
         final repo = _ref.read(profileRepositoryProvider);
-        state = AsyncData(await repo.byUsername(_username!));
+        final profile = await repo.byUsername(_username!);
+        AppLog.instance.info('profile', 'Loaded @$_username');
+        state = AsyncData(profile);
       }
     } catch (e, st) {
+      // Logged as well as shown: the screen can only display one line, and a
+      // blank profile with no explanation is what this is here to prevent.
+      AppLog.instance.error(
+        'profile',
+        'Could not load ${_username == null ? 'your profile' : '@$_username'}: $e',
+      );
       state = AsyncError(e, st);
     }
   }

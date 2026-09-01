@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'app_log.dart';
+
 class ApiClient {
   late final Dio dio;
 
@@ -28,6 +30,7 @@ class ApiClient {
     )..interceptors.add(
         InterceptorsWrapper(
           onRequest: _onRequest,
+          onResponse: _onResponse,
           onError: _onError,
         ),
       );
@@ -55,11 +58,33 @@ class ApiClient {
     handler.next(options);
   }
 
+  void _onResponse(Response<dynamic> res, ResponseInterceptorHandler handler) {
+    // Kept at info, and deliberately without any body: the log can be sent to
+    // support, and a profile or a feed page is somebody's content.
+    AppLog.instance.info(
+      'api',
+      '${res.requestOptions.method} ${res.requestOptions.path} '
+          '-- ${res.statusCode}',
+    );
+    handler.next(res);
+  }
+
   Future<void> _onError(
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
     final req = err.requestOptions;
+
+    // Recorded so About > System log has something to show. It reported
+    // "Nothing logged yet" no matter what went wrong, because the only things
+    // that ever wrote to it were a failed post and a cache clear -- so the one
+    // screen built for diagnosing a problem never saw any of them.
+    AppLog.instance.error(
+      'api',
+      '${req.method} ${req.path} -- '
+          '${err.response?.statusCode ?? err.type.name}'
+          '${err.message == null ? '' : ': ${err.message}'}',
+    );
 
     // A 401 means the access token the SDK handed us was rejected. Ask Supabase
     // for a fresh session and replay the request once. Refresh itself is the

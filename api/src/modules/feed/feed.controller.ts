@@ -30,7 +30,12 @@ export class FeedController {
   @Post('posts')
   create(@Req() req: AuthRequest, @Body() dto: CreatePostDto) {
     // The author is the verified token's subject, never a field of the body.
-    return this.svc.createPost(req.user.id, dto.content);
+    return this.svc.createPost(req.user.id, {
+      content: dto.content,
+      media: dto.media,
+      quotedPostId: dto.quotedPostId,
+      replyPolicy: dto.replyPolicy,
+    });
   }
 
   @Get('recent')
@@ -87,7 +92,13 @@ export class FeedController {
     @Body() dto: CreateCommentDto,
   ) {
     // The author is the token's subject, exactly as it is for a post.
-    return this.svc.addComment(id, req.user.id, dto.content, dto.parentId);
+    return this.svc.addComment(
+      id,
+      req.user.id,
+      dto.content,
+      dto.parentId,
+      dto.media,
+    );
   }
 
   @Get('comments/:id/replies')
@@ -129,6 +140,26 @@ export class FeedController {
   @Delete('posts/:id/like')
   unlike(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
     return this.svc.setLiked(req.user.id, id, false);
+  }
+
+  @Put('posts/:id/repost')
+  repost(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.setReposted(req.user.id, id, true);
+  }
+
+  @Delete('posts/:id/repost')
+  unrepost(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.setReposted(req.user.id, id, false);
+  }
+
+  /** Posts carrying a hashtag. The tag may be given with or without its #. */
+  @Get('tags/:tag')
+  byHashtag(
+    @Req() req: AuthRequest,
+    @Param('tag') tag: string,
+    @Query() query: ListFeedDto,
+  ) {
+    return this.svc.listByHashtag(tag, req.user.id, query.limit, query.cursor);
   }
 
   @Put('posts/:id/save')

@@ -1,4 +1,5 @@
 // lib/services/app_log.dart
+import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
 
@@ -75,6 +76,10 @@ class AppLog {
   SharedPreferences? _prefs;
   bool _loaded = false;
 
+  /// Coalesces writes. Every API call now writes a line, and persisting each
+  /// one separately would put a disk write on the tail of every request.
+  Timer? _flush;
+
   List<LogEntry> get entries => List.unmodifiable(_entries);
 
   /// Reads whatever the last run left behind. Safe to call more than once.
@@ -87,9 +92,22 @@ class AppLog {
       if (raw == null) return;
       final decoded = jsonDecode(raw);
       if (decoded is! List) return;
+      // Prepended, not appended: anything logged during startup reached the
+      // buffer before this finished reading, and the older run's entries
+      // belong before them.
+      final restored = <LogEntry>[];
       for (final item in decoded) {
         final entry = LogEntry.fromJson(item);
-        if (entry != null) _entries.add(entry);
+        if (entry != null) restored.add(entry);
+      }
+      _entries.addAll(<LogEntry>[]);
+      final live = _entries.toList();
+      _entries
+        ..clear()
+        ..addAll(restored)
+        ..addAll(live);
+      while (_entries.length > maxEntries) {
+        _entries.removeFirst();
       }
       revision.value++;
     } catch (_) {
@@ -117,12 +135,25 @@ class AppLog {
       _entries.removeFirst();
     }
     revision.value++;
-    unawaited(_persist());
+    _schedulePersist();
   }
 
   Future<void> clear() async {
+    _flush?.cancel();
     _entries.clear();
     revision.value++;
+    await _persist();
+  }
+
+  /// Writes at most once every couple of seconds, however many lines arrive.
+  void _schedulePersist() {
+    if (_flush?.isActive ?? false) return;
+    _flush = Timer(const Duration(seconds: 2), () => unawaited(_persist()));
+  }
+
+  /// Forces a write now, for a caller that is about to be killed.
+  Future<void> flush() async {
+    _flush?.cancel();
     await _persist();
   }
 

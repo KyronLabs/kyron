@@ -11,7 +11,7 @@ import '../providers/profile_provider.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
-import '../widgets/post_list_view.dart';
+import '../widgets/post_card.dart';
 
 /// One account: yours, or somebody else's.
 ///
@@ -40,32 +40,143 @@ class ProfileScreen extends ConsumerWidget {
   }
 }
 
-class _Loaded extends ConsumerWidget {
+/// The profile, once it has loaded.
+///
+/// This screen owns its scroll view rather than handing header slivers to the
+/// shared list widget. The indirection bought nothing -- no other caller passes
+/// a header -- and it put the one screen that renders a `SliverAppBar` through
+/// a widget written for three that do not.
+class _Loaded extends ConsumerStatefulWidget {
   final ProfileModel profile;
   final String? username;
 
   const _Loaded({required this.profile, required this.username});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // An account with no posts yet still has an id, so the list is always
-    // addressable; an empty id only happens on a malformed response, and the
-    // list renders its empty state rather than requesting nonsense.
-    return PostListView(
-      source: PostListSource.author(profile.id),
-      errorTitle: 'Could not load these posts',
-      emptyTitle:
-          profile.isOwnProfile ? 'You have not posted yet' : 'No posts yet',
-      emptyDetail: profile.isOwnProfile
-          ? 'Anything you post shows up here.'
-          : '${profile.displayName} has not posted anything yet.',
-      padding: const EdgeInsets.only(bottom: SpacingTokens.space40),
-      headerSlivers: [
-        _CoverBar(profile: profile),
-        SliverToBoxAdapter(
-          child: _Header(profile: profile, username: username),
+  ConsumerState<_Loaded> createState() => _LoadedState();
+}
+
+class _LoadedState extends ConsumerState<_Loaded> {
+  /// How close to the end before the next page is requested.
+  static const double _loadMoreThreshold = 600;
+
+  final ScrollController _controller = ScrollController();
+
+  PostListSource get _source => PostListSource.author(widget.profile.id);
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(_maybeLoadMore);
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(_maybeLoadMore);
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _maybeLoadMore() {
+    if (!_controller.hasClients) return;
+    final position = _controller.position;
+    if (position.maxScrollExtent - position.pixels > _loadMoreThreshold) return;
+    ref.read(postListProvider(_source).notifier).loadMore();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final profile = widget.profile;
+    final posts = ref.watch(postListProvider(_source));
+
+    return RefreshIndicator(
+      onRefresh: () async {
+        await ref.read(profileProvider(widget.username).notifier).load(
+              force: true,
+            );
+        await ref.read(postListProvider(_source).notifier).refresh();
+      },
+      child: CustomScrollView(
+        controller: _controller,
+        physics: const AlwaysScrollableScrollPhysics(
+          parent: BouncingScrollPhysics(),
         ),
-      ],
+        slivers: [
+          _CoverBar(profile: profile),
+          SliverToBoxAdapter(
+            child: _Header(profile: profile, username: widget.username),
+          ),
+          _posts(profile, posts),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: SpacingTokens.space40),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _posts(ProfileModel profile, FeedState state) {
+    if (state.isLoadingFirstPage && state.posts.isEmpty) {
+      return const SliverToBoxAdapter(
+        child: Padding(
+          padding: EdgeInsets.all(SpacingTokens.space32),
+          child: Center(child: CircularProgressIndicator()),
+        ),
+      );
+    }
+
+    if (state.posts.isEmpty) {
+      final scheme = Theme.of(context).colorScheme;
+      final failed = state.error;
+      return SliverToBoxAdapter(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingTokens.space32,
+            vertical: SpacingTokens.space32,
+          ),
+          child: Column(
+            children: [
+              Icon(
+                failed == null
+                    ? Icons.forum_outlined
+                    : Icons.cloud_off_outlined,
+                size: 40,
+                color: scheme.onSurface.withValues(alpha: .35),
+              ),
+              const SizedBox(height: SpacingTokens.space12),
+              Text(
+                failed ??
+                    (profile.isOwnProfile
+                        ? 'Anything you post shows up here.'
+                        : '${profile.displayName} has not posted anything yet.'),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: scheme.onSurface.withValues(alpha: .7),
+                ),
+              ),
+              if (failed != null)
+                TextButton(
+                  onPressed:
+                      ref.read(postListProvider(_source).notifier).refresh,
+                  child: const Text('Try again'),
+                ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return SliverList.builder(
+      itemCount: state.posts.length + (state.isLoadingMore ? 1 : 0),
+      itemBuilder: (context, index) {
+        if (index >= state.posts.length) {
+          return const Padding(
+            padding: EdgeInsets.all(SpacingTokens.space16),
+            child: Center(child: CircularProgressIndicator()),
+          );
+        }
+        return PostCard(post: state.posts[index], source: _source);
+      },
     );
   }
 }
@@ -258,15 +369,15 @@ class _Count extends StatelessWidget {
           formatCount(value),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+          style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
         ),
         Text(
           label,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 12,
-            color: scheme.onSurface.withValues(alpha: 0.6),
+            fontSize: 13,
+            color: scheme.onSurface.withValues(alpha: 0.7),
           ),
         ),
       ],

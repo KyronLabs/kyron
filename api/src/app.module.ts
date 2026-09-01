@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { GatewayModule } from './modules/gateway/gateway.module';
 import { FeedModule } from './modules/feed/feed.module';
 import { MediaModule } from './modules/media/media.module';
+import { ModerationModule } from './modules/moderation/moderation.module';
 import { IdentityModule } from './modules/identity/identity.module';
 import { CommonModule } from './modules/common/common.module';
 import { PrismaModule } from './infrastructure/prisma/prisma.module';
@@ -18,6 +19,7 @@ import { ProfileModule } from './modules/profile/profile.module';
     IdentityModule,
     MediaModule,
     FeedModule,
+    ModerationModule,
     GatewayModule,
     UsersModule,
     AuthModule,
