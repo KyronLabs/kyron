@@ -63,6 +63,11 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- The API would not start: MediaModule injected SupabaseService without
+  importing SupabaseModule, which type-checks, builds, and passes every unit
+  test, then fails at boot. AppModule's whole dependency graph is now compiled
+  in a test, so a module that forgets an import fails in CI instead of on
+  Render.
 - `POST /media/transcode` took two paths from an unauthenticated request body
   and interpolated both into a shell command, so any caller could run
   arbitrary commands on the API container.
