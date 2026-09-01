@@ -110,7 +110,8 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   }
 
   void updateContent(String value) {
-    HapticFeedback.selectionClick();
+    // No haptic here. This fires on every keystroke, so typing a sentence buzzed
+    // the handset forty times.
     state = state.copyWith(
       content: value,
       hasUnsavedChanges: true,

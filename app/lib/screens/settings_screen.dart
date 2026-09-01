@@ -41,6 +41,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   bool _loggingOut = false;
 
+  /// Enough of a DID to recognise, in the width a settings row allows.
+  static String _shortDid(String did) =>
+      did.length <= 24 ? did : '${did.substring(0, 21)}…';
+
   // Local state for toggles (batch save on exit)
   bool _privateAccount = false;
   bool _darkMode = true;
@@ -289,12 +293,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           'Settings',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Iconsax.close_square_copy),
-            onPressed: () => Navigator.pop(context),
-          ),
-        ],
       ),
       body: FocusTraversalGroup(
         policy: OrderedTraversalPolicy(),
@@ -314,20 +312,32 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
               helpText: 'Your profile and contact information',
             ),
-            _settingsRow(
-              icon: Iconsax.document_copy,
-              label: 'did:plc:abc…',
-              trailing: TextButton(
-                onPressed: () {
-                  Clipboard.setData(const ClipboardData(
-                      text: 'did:plc:abcdef1234567890abcdef12'));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('DID copied to clipboard')),
-                  );
-                },
-                child: const Text('Copy'),
-              ),
-              helpText: 'Your Decentralized Identifier',
+            // The real one. This row showed "did:plc:abc…" and copied
+            // "did:plc:abcdef1234567890abcdef12" -- the same invented
+            // identifier for everyone, to anyone who tapped Copy.
+            Consumer(
+              builder: (context, ref, _) {
+                final did = ref.watch(currentUserProvider).asData?.value.did;
+                return _settingsRow(
+                  icon: Iconsax.document_copy,
+                  label: did == null ? 'No DID yet' : _shortDid(did),
+                  trailing: did == null
+                      ? null
+                      : TextButton(
+                          onPressed: () async {
+                            await Clipboard.setData(ClipboardData(text: did));
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('DID copied to clipboard'),
+                              ),
+                            );
+                          },
+                          child: const Text('Copy'),
+                        ),
+                  helpText: 'Your Decentralized Identifier',
+                );
+              },
             ),
             Divider(
                 height: 1,
