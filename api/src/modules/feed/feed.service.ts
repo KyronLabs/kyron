@@ -261,14 +261,19 @@ export class FeedService {
                     } as Prisma.PostWhereInput,
                   ]
                 : []),
+              // NOT at the clause level, not `content: { not: {...} }`.
+              // Prisma's NestedStringFilter carries no `mode`, so the nested
+              // form is rejected at query time -- every feed request answered
+              // 500 the moment one word was muted.
+              //
               // Case-insensitive substring, which is what someone muting a
               // word means -- not a whole-word match they would have to guess
               // the plural of.
               ...filters.mutedPhrases.map(
                 (phrase) =>
                   ({
-                    content: {
-                      not: { contains: phrase, mode: 'insensitive' },
+                    NOT: {
+                      content: { contains: phrase, mode: 'insensitive' },
                     },
                   }) as Prisma.PostWhereInput,
               ),
@@ -836,6 +841,26 @@ export class FeedService {
       media: row.media,
       mine: row.authorId === viewerId,
     };
+  }
+
+  /**
+   * Changes who may reply, after the post has gone out.
+   *
+   * updateMany scoped to the author, for the same reason deletePost is: a post
+   * belonging to someone else matches nothing rather than being reported as
+   * forbidden, which would confirm it exists.
+   */
+  async setReplyPolicy(
+    authorId: string,
+    postId: string,
+    replyPolicy: ReplyPolicy,
+  ) {
+    const { count } = await this.prisma.post.updateMany({
+      where: { id: postId, authorId, deletedAt: null },
+      data: { replyPolicy },
+    });
+    if (count === 0) throw new NotFoundException('Post not found.');
+    return { replyPolicy };
   }
 
   /** Soft delete, and only by the author. */

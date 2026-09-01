@@ -107,7 +107,6 @@ class _SheetState extends State<_Sheet> {
                 decoration: const InputDecoration(
                   hintText: 'Search GIFs',
                   prefixIcon: Icon(Iconsax.search_normal_1_copy, size: 18),
-                  border: OutlineInputBorder(),
                   isDense: true,
                 ),
               ),

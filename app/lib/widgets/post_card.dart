@@ -110,9 +110,6 @@ class PostCard extends ConsumerWidget {
                           ),
                         ),
                         const Spacer(),
-                        // Far right of the header, where an overflow menu is
-                        // looked for.
-                        _OverflowButton(post: post, source: source),
                       ],
                     ),
                     if (post.content.trim().isNotEmpty)
@@ -136,6 +133,11 @@ class PostCard extends ConsumerWidget {
                   ],
                 ),
               ),
+              // A sibling of the avatar, not a child of the header row. Inside
+              // it the button sat after the timestamp behind a Spacer, so a
+              // long display name squeezed the Spacer to nothing and the menu
+              // drifted inwards -- its position depended on the author's name.
+              _OverflowButton(post: post, source: source),
             ],
           ),
         ),
@@ -238,12 +240,13 @@ class _OverflowButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
 
-    return InkWell(
-      onTap: () =>
-          PostOptionsSheet.show(context, ref, post: post, source: source),
-      borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
-      child: Padding(
-        padding: const EdgeInsets.all(SpacingTokens.space4),
+    return SizedBox(
+      width: 28,
+      height: 28,
+      child: InkWell(
+        onTap: () =>
+            PostOptionsSheet.show(context, ref, post: post, source: source),
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
         child: Icon(
           Iconsax.more_copy,
           size: 16,

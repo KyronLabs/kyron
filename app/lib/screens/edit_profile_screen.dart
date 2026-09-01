@@ -152,7 +152,6 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(icon, size: 18),
-        border: const OutlineInputBorder(),
       ),
     );
   }

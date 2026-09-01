@@ -60,8 +60,36 @@ section for that version, so what is written here is what people read.
 - Every icon that has an outline variant uses it; a liked heart and a saved
   bookmark stay filled, because an outline one reads as not-yet-done.
 - The default text size is Small.
+- Text fields are slimmer: one shared input theme across the three modes,
+  denser padding, and no outline ring by default -- the accent border appears
+  on focus. Screens that drew their own outline no longer override it.
+- Search results carry an avatar, a two-line bio, follower and Kyron Point
+  counts, and a Follow button that works from the list, separated by hairlines
+  rather than stacked as bare rows.
+- A post's author gets their own section in its overflow menu: analytics, who
+  can reply, and delete.
 
 ### Fixed
+
+- Video attachments always failed with a bare 413. The multipart plugin capped
+  uploads at 5 MB while the media service advertised 25, and the plugin rejects
+  a request before any handler runs, so the service's own limit was
+  unreachable. One limit now, named by the service that owns the rule, and an
+  oversize upload comes back with a message that says the size.
+- The composer's Post button stayed enabled when every attachment had failed to
+  upload, so pressing it sent an empty post and the API answered "A post needs
+  text or an attachment". It now counts uploaded attachments, not chosen ones,
+  and says when the only attachments are failed ones.
+- Muting a word broke the whole feed with a 500. The muted-phrase filter put
+  Prisma's `mode: 'insensitive'` inside a nested `not`, where it is not a valid
+  field; it belongs on the clause.
+- A post's overflow menu drifted inward on a long display name, because it sat
+  inside the same row as the name. It is a sibling of the avatar now, so it
+  pins to the card's right edge whatever the name is.
+- The profile screen is rebuilt without the collapsing app bar and without any
+  flexible child in a row that can overflow -- the counts wrap instead. It also
+  records each stage it reaches in the system log, so a blank page names itself
+  rather than having to be reproduced.
 
 - The API would not start: MediaModule injected SupabaseService without
   importing SupabaseModule, which type-checks, builds, and passes every unit

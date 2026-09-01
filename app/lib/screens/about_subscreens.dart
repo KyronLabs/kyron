@@ -403,7 +403,6 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
             maxLength: 1000,
             decoration: const InputDecoration(
               hintText: 'What you were doing when it happened.',
-              border: OutlineInputBorder(),
             ),
           ),
           const SizedBox(height: SpacingTokens.space8),

@@ -143,6 +143,13 @@ class FeedRepository {
 
   Future<void> delete(String postId) => _api.dio.delete('/feed/posts/$postId');
 
+  /// Changes who may reply, after the post has gone out.
+  Future<void> setReplyPolicy(String postId, ReplyPolicy policy) =>
+      _api.dio.patch<void>(
+        '/feed/posts/$postId/reply-policy',
+        data: {'replyPolicy': policy.wire},
+      );
+
   /// One post on its own, for the screen that shows it with its thread.
   Future<FeedPost> byId(String postId) async {
     final res = await _api.dio.get<Map<String, dynamic>>('/feed/posts/$postId');

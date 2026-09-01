@@ -9,16 +9,18 @@ import '../models/profile_model.dart';
 import '../providers/feed_provider.dart';
 import '../providers/profile_provider.dart';
 import '../routes.dart';
+import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import '../widgets/post_card.dart';
 
 /// One account: yours, or somebody else's.
 ///
-/// What stood here rendered a profile out of `did.hashCode` -- follower counts,
-/// badges, a bio reading "User with DID: ..." and a grid of numbered
-/// placeholder tiles, all derived from the identifier in the route. It looked
-/// like a working profile for an account that did not exist.
+/// Deliberately plain in its construction. What stood here used a
+/// SliverAppBar with a FlexibleSpaceBar and Spacers inside rows, and rendered
+/// blank on a real handset while passing every widget test -- so the exotic
+/// parts are gone. A normal AppBar, a cover in a box, and rows that cannot
+/// overflow.
 class ProfileScreen extends ConsumerWidget {
   /// The handle to show, without its leading @. Null means the signed-in
   /// account.
@@ -31,21 +33,31 @@ class ProfileScreen extends ConsumerWidget {
     final state = ref.watch(profileProvider(username));
 
     return Scaffold(
-      body: state.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, _) => _Failed(username: username, error: error),
-        data: (profile) => _Loaded(profile: profile, username: username),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Iconsax.arrow_left_copy),
+          onPressed: () => Navigator.pop(context),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+        ),
+        title: Text(
+          state.asData?.value.displayName ??
+              (username == null ? 'Your profile' : '@$username'),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+      body: SafeArea(
+        top: false,
+        child: state.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (error, _) => _Failed(username: username, error: error),
+          data: (profile) => _Loaded(profile: profile, username: username),
+        ),
       ),
     );
   }
 }
 
-/// The profile, once it has loaded.
-///
-/// This screen owns its scroll view rather than handing header slivers to the
-/// shared list widget. The indirection bought nothing -- no other caller passes
-/// a header -- and it put the one screen that renders a `SliverAppBar` through
-/// a widget written for three that do not.
 class _Loaded extends ConsumerStatefulWidget {
   final ProfileModel profile;
   final String? username;
@@ -68,6 +80,13 @@ class _LoadedState extends ConsumerState<_Loaded> {
   void initState() {
     super.initState();
     _controller.addListener(_maybeLoadMore);
+    // Logged so a screen that comes up empty on a handset says how far it got.
+    AppLog.instance.info(
+      'profile',
+      'Rendering ${widget.profile.handle ?? widget.profile.id} '
+          '(${widget.profile.posts} posts, ${widget.profile.followers} '
+          'followers, ${widget.profile.following} following)',
+    );
   }
 
   @override
@@ -91,9 +110,9 @@ class _LoadedState extends ConsumerState<_Loaded> {
 
     return RefreshIndicator(
       onRefresh: () async {
-        await ref.read(profileProvider(widget.username).notifier).load(
-              force: true,
-            );
+        await ref
+            .read(profileProvider(widget.username).notifier)
+            .load(force: true);
         await ref.read(postListProvider(_source).notifier).refresh();
       },
       child: CustomScrollView(
@@ -102,7 +121,7 @@ class _LoadedState extends ConsumerState<_Loaded> {
           parent: BouncingScrollPhysics(),
         ),
         slivers: [
-          _CoverBar(profile: profile),
+          SliverToBoxAdapter(child: _Cover(profile: profile)),
           SliverToBoxAdapter(
             child: _Header(profile: profile, username: widget.username),
           ),
@@ -150,9 +169,7 @@ class _LoadedState extends ConsumerState<_Loaded> {
                         ? 'Anything you post shows up here.'
                         : '${profile.displayName} has not posted anything yet.'),
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: scheme.onSurface.withValues(alpha: .7),
-                ),
+                style: TextStyle(color: scheme.onSurface.withValues(alpha: .7)),
               ),
               if (failed != null)
                 TextButton(
@@ -181,33 +198,28 @@ class _LoadedState extends ConsumerState<_Loaded> {
   }
 }
 
-/// The cover photo, collapsing into a plain bar with the name in it.
-class _CoverBar extends StatelessWidget {
+/// The cover photo, as a plain box.
+class _Cover extends StatelessWidget {
   final ProfileModel profile;
 
-  const _CoverBar({required this.profile});
+  const _Cover({required this.profile});
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
 
-    return SliverAppBar(
-      expandedHeight: 170,
-      pinned: true,
-      backgroundColor: scheme.surface,
-      // The title only appears once the cover has scrolled away, so it does
-      // not sit on top of the photo.
-      title: Text(profile.displayName),
-      leading: const BackButton(),
-      flexibleSpace: FlexibleSpaceBar(
-        background: profile.coverUrl == null
-            ? _DefaultCover(scheme: scheme)
-            : Image.network(
-                profile.coverUrl!,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => _DefaultCover(scheme: scheme),
-              ),
-      ),
+    return SizedBox(
+      height: 130,
+      width: double.infinity,
+      child: profile.coverUrl == null
+          ? _DefaultCover(scheme: scheme)
+          : Image.network(
+              profile.coverUrl!,
+              fit: BoxFit.cover,
+              errorBuilder: (_, __, ___) => _DefaultCover(scheme: scheme),
+              loadingBuilder: (context, child, progress) =>
+                  progress == null ? child : _DefaultCover(scheme: scheme),
+            ),
     );
   }
 }
@@ -245,19 +257,26 @@ class _Header extends ConsumerWidget {
     final scheme = Theme.of(context).colorScheme;
     final handle = profile.handle;
     final bio = profile.bio?.trim();
+    final location = profile.location?.trim();
+    final website = profile.website?.trim();
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(
         SpacingTokens.space20,
-        SpacingTokens.space16,
+        SpacingTokens.space12,
         SpacingTokens.space20,
         SpacingTokens.space8,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // spaceBetween rather than a Spacer. A flexible child in a row that
+          // overflows is allocated negative space, which debug clamps and
+          // reports and release does not -- and this row carries a button
+          // whose width depends on its label.
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               // Flat: a ring, no drop shadow. The avatar used to float above
               // the cover on a blurred black shadow, which read as a bug
@@ -268,22 +287,25 @@ class _Header extends ConsumerWidget {
                   border: Border.all(color: scheme.surface, width: 3),
                 ),
                 child: CircleAvatar(
-                  radius: 40,
+                  radius: 36,
                   backgroundColor: scheme.primary.withValues(alpha: 0.2),
                   foregroundImage: profile.avatarUrl == null
                       ? null
                       : NetworkImage(profile.avatarUrl!),
                   child:
-                      Icon(Iconsax.user_copy, size: 32, color: scheme.primary),
+                      Icon(Iconsax.user_copy, size: 30, color: scheme.primary),
                 ),
               ),
-              const Spacer(),
-              _PrimaryAction(profile: profile, username: username),
+              Flexible(
+                child: _PrimaryAction(profile: profile, username: username),
+              ),
             ],
           ),
           const SizedBox(height: SpacingTokens.space12),
           Text(
             profile.displayName,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(context)
                 .textTheme
                 .titleLarge
@@ -292,6 +314,8 @@ class _Header extends ConsumerWidget {
           if (handle != null)
             Text(
               handle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 14,
                 color: scheme.onSurface.withValues(alpha: 0.6),
@@ -301,16 +325,17 @@ class _Header extends ConsumerWidget {
             const SizedBox(height: SpacingTokens.space12),
             Text(bio, style: const TextStyle(fontSize: 15, height: 1.4)),
           ],
-          if (profile.location != null || profile.website != null) ...[
+          if ((location != null && location.isNotEmpty) ||
+              (website != null && website.isNotEmpty)) ...[
             const SizedBox(height: SpacingTokens.space8),
             Wrap(
               spacing: SpacingTokens.space16,
               runSpacing: SpacingTokens.space4,
               children: [
-                if (profile.location != null)
-                  _Meta(icon: Iconsax.location_copy, text: profile.location!),
-                if (profile.website != null)
-                  _Meta(icon: Iconsax.link_copy, text: profile.website!),
+                if (location != null && location.isNotEmpty)
+                  _Meta(icon: Iconsax.location_copy, text: location),
+                if (website != null && website.isNotEmpty)
+                  _Meta(icon: Iconsax.link_copy, text: website),
               ],
             ),
           ],
@@ -330,10 +355,10 @@ class _Header extends ConsumerWidget {
 
 /// Posts, followers, following and points.
 ///
-/// The follower count was the only stat the client kept, even though the same
-/// response carried the others. Laid out as four equal columns rather than a
-/// row of pairs: side by side with a Spacer they needed 477 logical pixels and
-/// overflowed a 360-wide phone by 157, which pushed the points off the edge.
+/// A Wrap, not a Row. Four figures beside four labels is the widest thing on
+/// the screen, and at a large text size or on a narrow handset it is the row
+/// most likely to run out of space -- so it takes a second line rather than
+/// overflowing.
 class _Counts extends StatelessWidget {
   final ProfileModel profile;
 
@@ -341,12 +366,14 @@ class _Counts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Wrap(
+      spacing: SpacingTokens.space20,
+      runSpacing: SpacingTokens.space8,
       children: [
-        Expanded(child: _Count(value: profile.posts, label: 'Posts')),
-        Expanded(child: _Count(value: profile.followers, label: 'Followers')),
-        Expanded(child: _Count(value: profile.following, label: 'Following')),
-        Expanded(child: _Count(value: profile.kyronPoints, label: 'KP')),
+        _Count(value: profile.posts, label: 'Posts'),
+        _Count(value: profile.followers, label: 'Followers'),
+        _Count(value: profile.following, label: 'Following'),
+        _Count(value: profile.kyronPoints, label: 'KP'),
       ],
     );
   }
@@ -362,22 +389,19 @@ class _Count extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           formatCount(value),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
         ),
+        const SizedBox(width: SpacingTokens.space4),
         Text(
           label,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 13,
-            color: scheme.onSurface.withValues(alpha: 0.7),
+            fontSize: 14,
+            color: scheme.onSurface.withValues(alpha: 0.65),
           ),
         ),
       ],
@@ -402,25 +426,22 @@ class _PrimaryActionState extends ConsumerState<_PrimaryAction> {
   @override
   Widget build(BuildContext context) {
     if (widget.profile.isOwnProfile) {
-      return OutlinedButton.icon(
+      return OutlinedButton(
         onPressed: () => Navigator.pushNamed(context, Routes.editProfile),
-        icon: const Icon(Iconsax.edit_copy, size: 16),
-        label: const Text('Edit profile'),
+        child: const Text('Edit profile', maxLines: 1),
       );
     }
 
     final following = widget.profile.isFollowing;
 
-    return FilledButton.tonalIcon(
+    return FilledButton.tonal(
       onPressed: _busy ? null : _toggle,
-      icon: _busy
+      child: _busy
           ? const SizedBox.square(
               dimension: 14,
               child: CircularProgressIndicator(strokeWidth: 2),
             )
-          : Icon(following ? Iconsax.user_tick_copy : Iconsax.user_add_copy,
-              size: 16),
-      label: Text(following ? 'Following' : 'Follow'),
+          : Text(following ? 'Following' : 'Follow', maxLines: 1),
     );
   }
 
@@ -520,40 +541,39 @@ class _Failed extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
 
-    return SafeArea(
-      child: Column(
-        children: [
-          const Align(alignment: Alignment.centerLeft, child: BackButton()),
-          const Spacer(),
-          Icon(Icons.person_off_outlined,
-              size: 48, color: scheme.onSurface.withValues(alpha: .35)),
-          const SizedBox(height: SpacingTokens.space16),
-          Text(
-            username == null
-                ? 'Could not load your profile'
-                : 'Could not load @$username',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          const SizedBox(height: SpacingTokens.space8),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: SpacingTokens.space32),
-            child: Text(
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(SpacingTokens.space32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.person_off_outlined,
+                size: 48, color: scheme.onSurface.withValues(alpha: .35)),
+            const SizedBox(height: SpacingTokens.space16),
+            Text(
+              username == null
+                  ? 'Could not load your profile'
+                  : 'Could not load @$username',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: SpacingTokens.space8),
+            Text(
               describeApiError(error, sessionIsLive: true),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: scheme.onSurface.withValues(alpha: .7),
                   ),
             ),
-          ),
-          const SizedBox(height: SpacingTokens.space20),
-          TextButton(
-            onPressed: () =>
-                ref.read(profileProvider(username).notifier).load(force: true),
-            child: const Text('Try again'),
-          ),
-          const Spacer(flex: 2),
-        ],
+            const SizedBox(height: SpacingTokens.space20),
+            TextButton(
+              onPressed: () => ref
+                  .read(profileProvider(username).notifier)
+                  .load(force: true),
+              child: const Text('Try again'),
+            ),
+          ],
+        ),
       ),
     );
   }
