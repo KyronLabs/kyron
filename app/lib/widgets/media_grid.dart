@@ -39,9 +39,19 @@ class MediaGrid extends StatelessWidget {
   }
 
   Widget _single(BuildContext context) {
-    // The server's recorded ratio, clamped: a very tall image would otherwise
-    // take the whole screen, and a very wide one would be a sliver.
-    final ratio = (media.first.aspectRatio ?? 4 / 3).clamp(0.6, 2.0);
+    final item = media.first;
+
+    // The attachment's own shape, not a box it has to fit into. A single clip
+    // was being poured into a 4:3 default and clamped at 0.6, so a portrait
+    // video -- which is most of them -- came out letterboxed with a black bar
+    // down each side, and a tall one was cropped.
+    //
+    // Videos get the wider bounds, because a 9:16 clip is normal and a 9:16
+    // photograph usually is not.
+    final ratio = item.isVideo
+        ? SizedInlineVideo.ratioFor(item)
+        : (item.aspectRatio ?? 4 / 3).clamp(0.6, 2.0);
+
     return AspectRatio(
       aspectRatio: ratio,
       child: _tile(context, 0),

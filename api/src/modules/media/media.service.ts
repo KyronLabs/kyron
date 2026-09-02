@@ -21,6 +21,8 @@ const ACCEPTED: Record<string, MediaKind> = {
   'video/mp4': MediaKind.VIDEO,
   'video/quicktime': MediaKind.VIDEO,
   'video/webm': MediaKind.VIDEO,
+  // What the composer's voice recorder produces: AAC in an m4a container.
+  'audio/mp4': MediaKind.VOICE,
 };
 
 const EXTENSIONS: Record<string, string> = {
@@ -32,6 +34,7 @@ const EXTENSIONS: Record<string, string> = {
   'video/mp4': 'mp4',
   'video/quicktime': 'mov',
   'video/webm': 'webm',
+  'audio/mp4': 'm4a',
 };
 
 @Injectable()
@@ -119,6 +122,11 @@ export class MediaService {
       if (brand.startsWith('qt')) return 'video/quicktime';
       if (brand.startsWith('hei') || brand.startsWith('mif'))
         return 'image/heic';
+      // M4A and M4B are the same container as MP4 with an audio-only brand.
+      // Without this a voice recording is stored as a video and the client
+      // hands it to a video player that has nothing to draw.
+      if (brand.startsWith('M4A') || brand.startsWith('M4B'))
+        return 'audio/mp4';
       return 'video/mp4';
     }
 

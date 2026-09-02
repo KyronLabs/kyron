@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:video_player/video_player.dart';
@@ -11,14 +12,14 @@ import '../models/post_media.dart';
 
 /// A clip as it appears in the feed.
 ///
-/// What stood here drew a grey rectangle with a play glyph on it and nothing
-/// else -- no first frame, no controls, and no playback until the attachment
-/// was opened in the full-screen viewer. Which is why every video post read as
-/// blank.
+/// Sizes itself to the video, rather than the other way round. It used to be
+/// dropped into a box of a fixed ratio, so a portrait clip was letterboxed
+/// with a black bar down each side and a landscape one was cropped -- the
+/// reason a video post looked wrong whatever shape the video was.
 ///
-/// This initialises the player in place, which is what produces a poster: the
-/// first frame is what `VideoPlayer` paints before anything is playing. It
-/// then plays and pauses itself as it scrolls in and out of view.
+/// The player also *is* the poster: `VideoPlayer` paints the first frame once
+/// initialised, so there is nothing to fetch separately and nothing to show
+/// before the clip is ready to play.
 class InlineVideo extends StatefulWidget {
   final PostMedia media;
 
@@ -31,11 +32,17 @@ class InlineVideo extends StatefulWidget {
   /// Opens the full-screen viewer. Null leaves the tile playing in place.
   final VoidCallback? onExpand;
 
+  /// Draw the controls. False on a wall of tiles, where a scrubber and a
+  /// volume button on every thumbnail is noise -- the tile is a link to the
+  /// post, not a player.
+  final bool chrome;
+
   const InlineVideo({
     super.key,
     required this.media,
     this.autoplay = true,
     this.onExpand,
+    this.chrome = true,
   });
 
   @override
@@ -76,7 +83,7 @@ class _InlineVideoState extends State<InlineVideo> {
       await controller.initialize();
       await controller.setVolume(0);
       await controller.setLooping(true);
-    } catch (error) {
+    } catch (_) {
       if (!mounted) return;
       setState(() => _failure = 'This clip could not be played.');
       return;
@@ -134,6 +141,7 @@ class _InlineVideoState extends State<InlineVideo> {
     if (controller == null || !controller.value.isInitialized) return;
 
     _manual = true;
+    unawaited(HapticFeedback.selectionClick());
     if (controller.value.isPlaying) {
       await controller.pause();
       _hideControls?.cancel();
@@ -149,6 +157,7 @@ class _InlineVideoState extends State<InlineVideo> {
     final controller = _controller;
     if (controller == null) return;
     _muted = !_muted;
+    unawaited(HapticFeedback.selectionClick());
     await controller.setVolume(_muted ? 0 : 1);
     if (mounted) setState(() {});
     _scheduleHide();
@@ -178,139 +187,141 @@ class _InlineVideoState extends State<InlineVideo> {
 
     final playing = controller.value.isPlaying;
 
+    // The video fills the frame it is given. Sizing to the clip's own ratio is
+    // the caller's job -- see InlineVideo.sized -- so that a tile in a grid can
+    // still be square if the grid needs it to be.
+    final surface = Stack(
+      fit: StackFit.expand,
+      children: [
+        FittedBox(
+          fit: BoxFit.cover,
+          clipBehavior: Clip.hardEdge,
+          child: SizedBox(
+            width: controller.value.size.width,
+            height: controller.value.size.height,
+            child: VideoPlayer(controller),
+          ),
+        ),
+        if (widget.chrome) ..._chrome(scheme, controller, playing),
+      ],
+    );
+
     return VisibilityDetector(
       // Keyed by the attachment, so two clips in one post are tracked apart.
       key: Key('inline-video-${widget.media.id}'),
       onVisibilityChanged: _onVisibility,
-      child: GestureDetector(
-        onTap: _controlsVisible ? _togglePlay : _showControls,
-        child: ColoredBox(
-          color: Colors.black,
-          child: Stack(
-            fit: StackFit.expand,
+      child: widget.chrome
+          ? GestureDetector(
+              onTap: _controlsVisible ? _togglePlay : _showControls,
+              child: surface,
+            )
+          : surface,
+    );
+  }
+
+  List<Widget> _chrome(
+    ColorScheme scheme,
+    VideoPlayerController controller,
+    bool playing,
+  ) {
+    return [
+      // A scrim under the controls, so white glyphs stay legible over a
+      // bright frame.
+      AnimatedOpacity(
+        opacity: _controlsVisible ? 1 : 0,
+        duration: const Duration(milliseconds: 180),
+        child: const DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.center,
+              end: Alignment.bottomCenter,
+              colors: [Color(0x00000000), Color(0x99000000)],
+            ),
+          ),
+        ),
+      ),
+
+      // Filled, not outlined. An outline play triangle reads as a button that
+      // has not been pressed yet; this is the state of the clip, so it is
+      // solid.
+      AnimatedOpacity(
+        opacity: _controlsVisible || !playing ? 1 : 0,
+        duration: const Duration(milliseconds: 180),
+        child: Center(
+          child: _RoundControl(
+            icon: playing ? Icons.pause_rounded : Icons.play_arrow_rounded,
+            size: 30,
+            diameter: 52,
+            tooltip: playing ? 'Pause' : 'Play',
+            onPressed: _togglePlay,
+          ),
+        ),
+      ),
+
+      if (widget.onExpand != null)
+        Positioned(
+          right: SpacingTokens.space8,
+          top: SpacingTokens.space8,
+          child: AnimatedOpacity(
+            opacity: _controlsVisible ? 1 : 0,
+            duration: const Duration(milliseconds: 180),
+            child: _RoundControl(
+              icon: Icons.open_in_full_rounded,
+              size: 17,
+              diameter: 32,
+              tooltip: 'Full screen',
+              onPressed: widget.onExpand!,
+            ),
+          ),
+        ),
+
+      // Time, scrubber and volume on one line along the bottom, rather than
+      // scattered into three corners.
+      Positioned(
+        left: SpacingTokens.space8,
+        right: SpacingTokens.space8,
+        bottom: SpacingTokens.space8,
+        child: AnimatedOpacity(
+          opacity: _controlsVisible ? 1 : 0,
+          duration: const Duration(milliseconds: 180),
+          child: Row(
             children: [
-              Center(
-                child: AspectRatio(
-                  aspectRatio: controller.value.aspectRatio,
-                  child: VideoPlayer(controller),
+              Text(
+                _clock(controller.value),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-
-              // A scrim under the controls, so white glyphs stay legible over
-              // a bright frame.
-              AnimatedOpacity(
-                opacity: _controlsVisible ? 1 : 0,
-                duration: const Duration(milliseconds: 180),
-                child: const DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.center,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0x00000000), Color(0x8C000000)],
-                    ),
+              const SizedBox(width: SpacingTokens.space8),
+              Expanded(
+                child: VideoProgressIndicator(
+                  controller,
+                  allowScrubbing: true,
+                  padding: EdgeInsets.zero,
+                  colors: VideoProgressColors(
+                    playedColor: Colors.white,
+                    bufferedColor: Colors.white38,
+                    backgroundColor: Colors.white24,
                   ),
                 ),
               ),
-
-              // Filled, not outlined. An outline play triangle reads as a
-              // button that has not been pressed yet; this is the state of the
-              // clip, so it is solid.
-              AnimatedOpacity(
-                opacity: _controlsVisible || !playing ? 1 : 0,
-                duration: const Duration(milliseconds: 180),
-                child: Center(
-                  child: _RoundControl(
-                    icon: playing ? Icons.pause_rounded : Icons.play_arrow,
-                    size: 30,
-                    diameter: 52,
-                    tooltip: playing ? 'Pause' : 'Play',
-                    onPressed: _togglePlay,
-                  ),
-                ),
-              ),
-
-              Positioned(
-                right: SpacingTokens.space8,
-                top: SpacingTokens.space8,
-                child: AnimatedOpacity(
-                  opacity: _controlsVisible ? 1 : 0,
-                  duration: const Duration(milliseconds: 180),
-                  child: _RoundControl(
-                    icon: _muted ? Icons.volume_off : Icons.volume_up,
-                    size: 18,
-                    diameter: 32,
-                    tooltip: _muted ? 'Unmute' : 'Mute',
-                    onPressed: _toggleMute,
-                  ),
-                ),
-              ),
-
-              if (widget.onExpand != null)
-                Positioned(
-                  left: SpacingTokens.space8,
-                  top: SpacingTokens.space8,
-                  child: AnimatedOpacity(
-                    opacity: _controlsVisible ? 1 : 0,
-                    duration: const Duration(milliseconds: 180),
-                    child: _RoundControl(
-                      icon: Icons.fullscreen,
-                      size: 20,
-                      diameter: 32,
-                      tooltip: 'Full screen',
-                      onPressed: widget.onExpand!,
-                    ),
-                  ),
-                ),
-
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    AnimatedOpacity(
-                      opacity: _controlsVisible ? 1 : 0,
-                      duration: const Duration(milliseconds: 180),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          right: SpacingTokens.space8,
-                          bottom: SpacingTokens.space4,
-                        ),
-                        child: Text(
-                          _clock(controller.value),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
-                    // Always visible: it is how you tell a playing clip from a
-                    // stalled one once the controls have faded.
-                    VideoProgressIndicator(
-                      controller,
-                      allowScrubbing: true,
-                      padding: EdgeInsets.zero,
-                      colors: VideoProgressColors(
-                        playedColor: scheme.primary,
-                        bufferedColor: Colors.white24,
-                        backgroundColor: Colors.white12,
-                      ),
-                    ),
-                  ],
-                ),
+              const SizedBox(width: SpacingTokens.space8),
+              _FlatControl(
+                icon:
+                    _muted ? Icons.volume_off_rounded : Icons.volume_up_rounded,
+                tooltip: _muted ? 'Unmute' : 'Mute',
+                onPressed: _toggleMute,
               ),
             ],
           ),
         ),
       ),
-    );
+    ];
   }
 
-  /// `1:04 / 3:12`, or just the duration before playback starts.
+  /// `1:04 / 3:12`.
   static String _clock(VideoPlayerValue value) {
     String format(Duration d) {
       final minutes = d.inMinutes;
@@ -319,6 +330,54 @@ class _InlineVideoState extends State<InlineVideo> {
     }
 
     return '${format(value.position)} / ${format(value.duration)}';
+  }
+}
+
+/// A clip at its own shape, ready to drop straight into a post.
+///
+/// The ratio comes from what the uploader's device measured, so the box is the
+/// right shape before a single byte of video has arrived and the post does not
+/// jump when it does. Bounded, because a corrupt or absurd pair of dimensions
+/// would otherwise produce a post one pixel tall or three screens high.
+class SizedInlineVideo extends StatelessWidget {
+  final PostMedia media;
+  final bool autoplay;
+  final VoidCallback? onExpand;
+
+  const SizedInlineVideo({
+    super.key,
+    required this.media,
+    this.autoplay = true,
+    this.onExpand,
+  });
+
+  /// Narrower than this and a clip is a sliver; wider and it is a strip.
+  static const double minRatio = 0.5;
+  static const double maxRatio = 1.9;
+
+  /// What to assume when the upload recorded no dimensions. Portrait, because
+  /// most clips people post are.
+  static const double fallbackRatio = 0.75;
+
+  static double ratioFor(PostMedia media) {
+    final width = media.width;
+    final height = media.height;
+    if (width == null || height == null || width <= 0 || height <= 0) {
+      return fallbackRatio;
+    }
+    return (width / height).clamp(minRatio, maxRatio);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: ratioFor(media),
+      child: InlineVideo(
+        media: media,
+        autoplay: autoplay,
+        onExpand: onExpand,
+      ),
+    );
   }
 }
 
@@ -352,9 +411,43 @@ class _RoundControl extends StatelessWidget {
             height: diameter,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: Color(0x8C000000),
+              color: Color(0x66000000),
             ),
             child: Icon(icon, size: size, color: Colors.white),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A control on the scrubber line, with no disc behind it -- the scrim under
+/// the row is already doing that job.
+class _FlatControl extends StatelessWidget {
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onPressed;
+
+  const _FlatControl({
+    required this.icon,
+    required this.tooltip,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltip,
+      child: Semantics(
+        button: true,
+        label: tooltip,
+        child: InkWell(
+          onTap: onPressed,
+          customBorder: const CircleBorder(),
+          child: SizedBox(
+            width: 26,
+            height: 26,
+            child: Icon(icon, size: 18, color: Colors.white),
           ),
         ),
       ),
@@ -382,7 +475,8 @@ class _Placeholder extends StatelessWidget {
               const SizedBox(height: SpacingTokens.space8),
               Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: SpacingTokens.space16),
+                  horizontal: SpacingTokens.space16,
+                ),
                 child: Text(
                   label!,
                   textAlign: TextAlign.center,

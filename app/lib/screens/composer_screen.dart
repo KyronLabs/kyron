@@ -1,4 +1,6 @@
 // lib/screens/composer_screen.dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +15,7 @@ import '../routes.dart';
 import '../services/draft_service.dart';
 import '../widgets/create_post/char_counter.dart';
 import '../widgets/create_post/poll_editor.dart';
+import '../widgets/create_post/voice_recorder_sheet.dart';
 import '../widgets/create_post/url_preview.dart';
 import '../widgets/draft_sheet.dart';
 import '../widgets/gif_picker_sheet.dart';
@@ -32,14 +35,18 @@ class ComposerScreen extends ConsumerStatefulWidget {
   /// Set when the composer was opened to quote a post.
   final QuotedPost? quoting;
 
-  /// Opens with a blank poll already attached, for the Poll entry on the
-  /// create menu.
+  /// Opens with a blank poll already attached.
   final bool startWithPoll;
+
+  /// Opens the voice recorder straight away, for the Voice post entry on the
+  /// create menu.
+  final bool startWithVoice;
 
   const ComposerScreen({
     super.key,
     this.quoting,
     this.startWithPoll = false,
+    this.startWithVoice = false,
   });
 
   @override
@@ -70,6 +77,12 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
       // draft's answers away.
       if (widget.startWithPoll && ref.read(composerProvider).poll == null) {
         ref.read(composerProvider.notifier).togglePoll();
+      }
+
+      // Only when nothing is attached yet, so arriving here over a restored
+      // draft does not throw its recording away.
+      if (widget.startWithVoice && ref.read(composerProvider).media.isEmpty) {
+        unawaited(_recordVoice());
       }
 
       // The provider may already hold a restored draft.
@@ -249,6 +262,12 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
             onTap: _addGif,
           ),
           _tool(
+            icon: Iconsax.microphone_copy,
+            tooltip: 'Record a voice post',
+            enabled: !state.hasVoice,
+            onTap: _recordVoice,
+          ),
+          _tool(
             icon: Iconsax.chart_2_copy,
             tooltip: state.hasPoll ? 'Remove the poll' : 'Add a poll',
             // Not disabled with attachments present -- it swaps to a poll and
@@ -286,6 +305,13 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
       color: active ? Theme.of(context).colorScheme.primary : null,
       onPressed: enabled ? onTap : null,
     );
+  }
+
+  /// Opens the recorder and attaches whatever comes back.
+  Future<void> _recordVoice() async {
+    final recording = await VoiceRecorderSheet.show(context);
+    if (recording == null || !mounted) return;
+    await ref.read(composerProvider.notifier).attachVoice(recording);
   }
 
   Future<void> _addMedia({required bool video}) async {

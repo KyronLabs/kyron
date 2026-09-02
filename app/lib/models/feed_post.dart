@@ -1,5 +1,6 @@
 import 'post_media.dart';
 import 'poll.dart';
+import '../widgets/create_post/url_preview.dart' show firstLinkIn;
 
 /// A post exactly as GET /feed/recent returns it.
 ///
@@ -109,20 +110,13 @@ class FeedPost {
         poll: poll ?? this.poll,
       );
 
-  /// The first http(s) link in the text, or null.
+  /// The first link in the text, or null.
   ///
-  /// Used to decide whether a post gets a link card. Matches what the post
-  /// body highlights, so a card cannot appear under a link the text did not
-  /// pick out -- or fail to appear under one it did.
-  String? get firstLink {
-    final match = RegExp(
-      r'https?://[^\s<>"]+',
-      caseSensitive: false,
-    ).firstMatch(content);
-    if (match == null) return null;
-    // Trailing punctuation belongs to the sentence, not the address.
-    return match.group(0)!.replaceAll(RegExp(r'[.,;:!?)\]]+$'), '');
-  }
+  /// Shares the composer's detector rather than keeping a second copy: a card
+  /// that appears while writing and not when read -- or the reverse -- is
+  /// exactly what two regexes drifting apart produces. Bare hosts count, so
+  /// "m.facebook.com" gets a card without anyone typing a scheme.
+  String? get firstLink => firstLinkIn(content);
 }
 
 class FeedAuthor {

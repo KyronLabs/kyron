@@ -14,6 +14,14 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Voice posts. Record up to ten minutes in the composer and the post carries a
+  waveform you can play and scrub. The waveform is sampled while the microphone
+  is open, because that is the only place the signal exists -- reading it back
+  would mean decoding the audio again, and doing it on the server would mean
+  decoding every upload to draw a picture of it.
+- A hashtag you searched for is highlighted in the body of every post carrying
+  it, so a post with five tags does not make you read all five.
+
 - Link previews. A post carrying a link shows the page's card, fetched and
   cached by the API rather than by each reader's device -- which is both
   faster and the difference between one request per link and one per reader.
@@ -70,6 +78,22 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- "Space" was one word covering two different things. Recording your voice and
+  broadcasting live are separate entries now, and the one that is not built
+  says so when you open it rather than sharing a name with the one that is.
+- Poll is gone from the create menu: a poll is written in the text composer,
+  under the question it belongs to, so a second door into the same screen did
+  nothing the first did not.
+- Videos are a wall of tiles in the feed rather than on the profile, and the
+  profile's Media tab is the tiled one.
+- Post actions: reply, repost and like sit together on the left with their
+  counts; save and share, which carry no count, go to the right. Repost turns
+  green, a like red and a save amber, and each gives the lightest haptic the
+  platform has.
+- Picking a search date is three scrolling wheels in a sheet rather than a
+  calendar grid, with a tick as each item passes. The day wheel follows the
+  month and year, so the 30th of February cannot be picked.
+
 - One button. The design system's outlined and elevated themes both set an
   infinite minimum width, which is right for the call to action at the foot of
   a form and is why "Edit profile" grew to swallow the profile header. Every
@@ -108,6 +132,19 @@ section for that version, so what is written here is what people read.
   can reply, and delete.
 
 ### Fixed
+
+- Videos were poured into a box of a fixed shape, so a portrait clip -- which
+  is most of them -- came out letterboxed with a black bar down each side, and
+  a tall one was cropped. A clip is now drawn at its own dimensions.
+- Pulling to refresh the profile dragged the whole page, cover and all, away
+  from the top of the screen. Bouncing physics did that; clamping holds the
+  content still and lets the spinner come down over it.
+- The avatar sat below the cover instead of straddling its lower edge.
+- "m.facebook.com" got no link preview: the detector required a scheme nobody
+  types. Bare hosts are matched now, without conjuring links out of "1.5",
+  "e.g." or "8.30".
+- A poll showed no results until you had voted, which contradicts what the card
+  is for -- the counts are in the same response either way.
 
 - Video posts rendered as a blank grey rectangle until the attachment was
   opened. The tile drew a play glyph with no player behind it. A clip now

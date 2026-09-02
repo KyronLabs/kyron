@@ -193,7 +193,7 @@ class _Option extends StatelessWidget {
                       dimension: 14,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  else if (!poll.canVote)
+                  else
                     Text(
                       '${(share * 100).round()}%',
                       style: TextStyle(

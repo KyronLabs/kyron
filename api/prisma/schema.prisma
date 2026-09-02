@@ -391,6 +391,8 @@ enum MediaKind {
   IMAGE
   VIDEO
   GIF
+  /// A voice recording made in the composer.
+  VOICE
 }
 
 enum ReplyPolicy {
@@ -417,6 +419,19 @@ model Media {
 
   /// Author-supplied description, for anyone using a screen reader.
   alt String?
+
+  /// How long a voice recording runs, in milliseconds. Null for everything
+  /// else -- a still has no duration, and a video's is read from the file.
+  durationMs Int?
+
+  /// The recording's loudness over time, 0-100, one value per bar of the
+  /// waveform. Sampled on the device while recording, because that is the only
+  /// place the signal exists: deriving it on the server would mean decoding
+  /// every upload to draw a picture of it.
+  ///
+  /// Stored as ints rather than a blob so it can be read back without a
+  /// decoding step, and capped by the client at a bar count that fits a phone.
+  waveform Int[]
 
   /// Order within its post or comment, 0 first.
   position Int @default(0)

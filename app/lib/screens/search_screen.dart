@@ -61,26 +61,26 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             focusNode: _focus,
             textInputAction: TextInputAction.search,
             onChanged: notifier.query,
-            style: const TextStyle(fontSize: 15),
+            style: const TextStyle(fontSize: 16),
             decoration: InputDecoration(
               hintText: state.mode == SearchMode.people
                   ? 'Search people'
                   : 'Search posts',
-              // Tighter than the shared theme: an app-bar field sits inside a
-              // 56-tall bar, and the default padding leaves it touching both
-              // edges.
+              // A little taller than the shared theme's 10, because this is
+              // the one field on the screen and the thing you came to use --
+              // 40 tall made it read as an afterthought in the bar.
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: SpacingTokens.space12,
-                vertical: SpacingTokens.space8,
+                vertical: SpacingTokens.space12,
               ),
-              prefixIcon: const Icon(Iconsax.search_normal_1_copy, size: 18),
+              prefixIcon: const Icon(Iconsax.search_normal_1_copy, size: 19),
               prefixIconConstraints: const BoxConstraints(
-                minWidth: 38,
-                minHeight: 34,
+                minWidth: 40,
+                minHeight: 42,
               ),
               suffixIconConstraints: const BoxConstraints(
                 minWidth: 40,
-                minHeight: 34,
+                minHeight: 42,
               ),
               suffixIcon: _Trailing(
                 showClear: !state.isIdle,

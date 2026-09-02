@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -10,6 +13,8 @@ import '../utils/format_count.dart';
 import 'link_preview_card.dart';
 import 'media_grid.dart';
 import 'poll_card.dart';
+import 'post_action_colors.dart';
+import 'voice_post_player.dart';
 import 'post_options_sheet.dart';
 import 'post_text.dart';
 import 'quoted_post_card.dart';
@@ -31,7 +36,16 @@ class PostCard extends ConsumerWidget {
   /// Which list this card belongs to; its like and save taps go there.
   final PostListSource source;
 
-  const PostCard({super.key, required this.post, required this.source});
+  /// A hashtag to pick out in the body, without its leading #. Set by the
+  /// screen showing one tag's posts.
+  final String? highlightTag;
+
+  const PostCard({
+    super.key,
+    required this.post,
+    required this.source,
+    this.highlightTag,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -121,11 +135,21 @@ class PostCard extends ConsumerWidget {
                           top: SpacingTokens.space2,
                           bottom: SpacingTokens.space4,
                         ),
-                        child: PostText(content: post.content),
+                        child: PostText(
+                          content: post.content,
+                          highlightTag: highlightTag,
+                        ),
                       ),
-                    if (post.media.isNotEmpty) ...[
+                    // Voice is a player, not a picture, so it does not go
+                    // through the grid -- a grid tile has no room for a
+                    // waveform and no way to play anything.
+                    for (final voice in post.media.where((m) => m.isVoice))
+                      VoicePostPlayer(media: voice),
+                    if (post.media.any((m) => m.isVisual)) ...[
                       const SizedBox(height: SpacingTokens.space8),
-                      MediaGrid(media: post.media),
+                      MediaGrid(
+                        media: post.media.where((m) => m.isVisual).toList(),
+                      ),
                     ],
                     if (post.poll != null)
                       PollCard(
@@ -194,9 +218,13 @@ class _Actions extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final scheme = Theme.of(context).colorScheme;
     final notifier = ref.read(postListProvider(source).notifier);
 
+    // The three that are about the post -- reply, repost, like -- sit
+    // together on the left with their counts. Save and share are about what
+    // *you* do with it afterwards and carry no count, so they go to the right
+    // rather than being strung along the same evenly spaced row where a bare
+    // icon reads as a number that happens to be missing.
     return Row(
       children: [
         _Action(
@@ -217,7 +245,7 @@ class _Actions extends ConsumerWidget {
               post.reposted ? Iconsax.repeat_circle_copy : Iconsax.repeat_copy,
           label: post.reposts > 0 ? formatCount(post.reposts) : null,
           active: post.reposted,
-          activeColor: scheme.tertiary,
+          activeColor: PostActionColors.repost,
           tooltip: 'Repost',
           onTap: () => RepostSheet.show(
             context,
@@ -231,19 +259,19 @@ class _Actions extends ConsumerWidget {
           icon: post.liked ? Iconsax.heart : Iconsax.heart_copy,
           label: post.likes > 0 ? formatCount(post.likes) : null,
           active: post.liked,
-          activeColor: scheme.error,
+          activeColor: PostActionColors.like,
           tooltip: post.liked ? 'Unlike' : 'Like',
           onTap: () => report(context, notifier.toggleLike(post.id)),
         ),
-        const SizedBox(width: SpacingTokens.space20),
+        const Spacer(),
         _Action(
           icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,
           active: post.saved,
-          activeColor: scheme.primary,
+          activeColor: PostActionColors.save,
           tooltip: post.saved ? 'Remove from saved' : 'Save',
           onTap: () => report(context, notifier.toggleSave(post.id)),
         ),
-        const SizedBox(width: SpacingTokens.space20),
+        const SizedBox(width: SpacingTokens.space12),
         _Action(
           icon: Iconsax.export_1_copy,
           tooltip: 'Share',
@@ -308,7 +336,13 @@ class _Action extends StatelessWidget {
     return Tooltip(
       message: tooltip,
       child: InkWell(
-        onTap: onTap,
+        // selectionClick is the lightest thing the platform offers -- the tick
+        // of a picker passing a notch, not the thud of a confirmation. Anything
+        // heavier on a control people press while reading is intrusive.
+        onTap: () {
+          unawaited(HapticFeedback.selectionClick());
+          onTap();
+        },
         borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
         child: Padding(
           padding: const EdgeInsets.all(SpacingTokens.space4),

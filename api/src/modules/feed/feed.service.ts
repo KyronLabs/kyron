@@ -64,6 +64,13 @@ export interface FeedMedia {
   width: number | null;
   height: number | null;
   alt: string | null;
+  /** How long a voice recording runs, in ms. Null for anything else. */
+  durationMs: number | null;
+  /**
+   * Loudness over time, 0-100, one value per waveform bar. Empty for anything
+   * that is not a voice recording.
+   */
+  waveform: number[];
 }
 
 /** A quoted post, without its own quote -- one level, so a chain cannot
@@ -144,6 +151,8 @@ export class FeedService {
         width?: number;
         height?: number;
         alt?: string;
+        durationMs?: number;
+        waveform?: number[];
       }[];
       quotedPostId?: string;
       replyPolicy?: ReplyPolicy;
@@ -185,6 +194,8 @@ export class FeedService {
           create: media.map((item, index) => ({
             url: item.url,
             kind: item.kind ?? MediaKind.IMAGE,
+            durationMs: item.durationMs,
+            waveform: item.waveform ?? [],
             width: item.width,
             height: item.height,
             alt: item.alt,
@@ -893,6 +904,8 @@ export class FeedService {
       width?: number;
       height?: number;
       alt?: string;
+      durationMs?: number;
+      waveform?: number[];
     }[] = [],
   ): Promise<FeedComment> {
     if (media.length > FeedService.maxMedia) {
@@ -928,6 +941,8 @@ export class FeedService {
           create: media.map((item, index) => ({
             url: item.url,
             kind: item.kind ?? MediaKind.IMAGE,
+            durationMs: item.durationMs,
+            waveform: item.waveform ?? [],
             width: item.width,
             height: item.height,
             alt: item.alt,
@@ -1173,6 +1188,8 @@ export class FeedService {
     width: true,
     height: true,
     alt: true,
+    durationMs: true,
+    waveform: true,
   } as const;
 
   private toFeedPost(row: PostRow): FeedPost {

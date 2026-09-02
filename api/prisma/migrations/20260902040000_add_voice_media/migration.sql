@@ -1,0 +1,6 @@
+-- AlterEnum
+ALTER TYPE "MediaKind" ADD VALUE 'VOICE';
+
+-- AlterTable
+ALTER TABLE "Media" ADD COLUMN "durationMs" INTEGER;
+ALTER TABLE "Media" ADD COLUMN "waveform" INTEGER[] DEFAULT ARRAY[]::INTEGER[];

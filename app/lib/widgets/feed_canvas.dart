@@ -45,6 +45,9 @@ class FeedCanvas extends ConsumerWidget {
           // everyone-newest-first feed, so Following and Videos recoloured a
           // pill and showed the same posts.
           source: feedSourceForTab(tab),
+          // Videos are a wall of tiles: a column of full-width players is
+          // unreadable, and the point of the tab is seeing what is there.
+          asTiles: tab == 'Videos',
           scrollController: scrollController,
           errorTitle: 'Could not load your feed',
           emptyTitle: _emptyTitle(tab),

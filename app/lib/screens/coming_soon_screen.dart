@@ -38,11 +38,12 @@ class ComingSoonScreen extends StatelessWidget {
                 'That is not in place yet, so a poll posted today would lose '
                 'every answer.';
 
-  const ComingSoonScreen.space({super.key})
-      : title = 'Space',
-        icon = Iconsax.microphone_copy,
-        detail = 'Live audio rooms need a media server Kyron does not run yet. '
-            'Starting one now would put you in a room nobody could join.';
+  const ComingSoonScreen.live({super.key})
+      : title = 'Go live',
+        icon = Iconsax.video_copy,
+        detail = 'Going live needs a media server Kyron does not run yet. '
+            'Starting a broadcast now would put you in a room nobody could '
+            'join. Recording a voice post works today.';
 
   @override
   Widget build(BuildContext context) {

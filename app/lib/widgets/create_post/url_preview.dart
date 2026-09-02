@@ -45,22 +45,90 @@ class UrlPreview extends ConsumerWidget {
   }
 }
 
-/// The first http(s) link in a piece of text, or null.
+/// The first web link in a piece of text, or null.
 ///
-/// Deliberately narrower than what the old detector accepted. It guessed at
-/// bare domains and at `ftp://`, so typing "1.5" or "e.g." conjured a card for
-/// a site nobody meant to link -- and the server will not fetch anything but
-/// http and https anyway, so offering more here only produces failures.
+/// Handles a bare host as well as a full URL: someone writing
+/// "m.facebook.com" means a link, and requiring them to type the scheme is
+/// requiring them to think about something nobody thinks about. A bare host is
+/// returned with `https://` in front, which is what the server would have to
+/// assume anyway.
+///
+/// The risk with bare hosts is conjuring a link out of ordinary prose --
+/// "1.5", "e.g.", "etc.", a sentence with no space after the full stop. Three
+/// things guard against it:
+///
+///  * the last label has to be a plausible TLD: letters only, at least two of
+///    them, so "1.5" and "8.30" cannot match;
+///  * the label before it has to contain a letter, so "1.co" does not match;
+///  * a short list of abbreviations people actually write is excluded outright.
+///
+/// It is still a guess, which is why a bare host only ever produces a preview
+/// card -- never a rewritten link in the post's text.
 String? firstLinkIn(String text) {
-  final match = RegExp(
-    r'https?://[^\s<>"]+',
-    caseSensitive: false,
-  ).firstMatch(text);
+  final explicit = _explicit.firstMatch(text);
+  final bare = _bare.firstMatch(text);
+
+  // Whichever comes first in the text, so a post that opens with a bare host
+  // and later carries a full URL still previews the one the reader meets first.
+  final match = switch ((explicit, bare)) {
+    (null, null) => null,
+    (final e?, null) => e,
+    (null, final b?) => b,
+    (final e?, final b?) => e.start <= b.start ? e : b,
+  };
   if (match == null) return null;
 
-  // Trailing punctuation belongs to the sentence, not the address.
-  final url = match.group(0)!.replaceAll(RegExp(r'[.,;:!?)\]]+$'), '');
-  return url.length < 12 ? null : url;
+  final raw = _trimTrailing(match.group(0)!);
+  if (raw.isEmpty) return null;
+
+  if (match == explicit) {
+    // "https://" on its own is not a link to anything.
+    return raw.length < 12 ? null : raw;
+  }
+
+  if (_notALink.contains(raw.toLowerCase())) return null;
+  return 'https://$raw';
+}
+
+/// A URL that names its own scheme.
+final _explicit = RegExp(r'https?://[^\s<>"]+', caseSensitive: false);
+
+/// A bare host, optionally with a path: `example.com`, `m.facebook.com/x`.
+///
+/// `(?<![\w@./-])` stops it matching inside something longer -- the tail of a
+/// URL already matched, an email address, or a file name.
+final _bare = RegExp(
+  r'(?<![\w@./-])'
+  r'(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+' // labels, dot-separated
+  r'[a-z]{2,24}' // the TLD: letters only
+  r'(?:/[^\s<>"]*)?', // an optional path
+  caseSensitive: false,
+);
+
+/// Abbreviations that look like hosts and are not.
+const _notALink = {
+  'e.g',
+  'i.e',
+  'etc',
+  'vs',
+  'a.m',
+  'p.m',
+  'u.s',
+  'u.k',
+};
+
+/// Trailing punctuation belongs to the sentence, not the address.
+String _trimTrailing(String url) {
+  var trimmed = url.replaceAll(RegExp(r'[.,;:!?]+$'), '');
+  // A closing bracket is only part of the address if the address opened one --
+  // Wikipedia URLs do, "(see example.com)" does not.
+  while (trimmed.endsWith(')') && !trimmed.contains('(')) {
+    trimmed = trimmed.substring(0, trimmed.length - 1);
+  }
+  while (trimmed.endsWith(']') && !trimmed.contains('[')) {
+    trimmed = trimmed.substring(0, trimmed.length - 1);
+  }
+  return trimmed;
 }
 
 class _Pending extends StatelessWidget {

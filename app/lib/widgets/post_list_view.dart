@@ -4,6 +4,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../providers/feed_provider.dart';
 import 'post_card.dart';
+import 'media_tile_grid.dart';
 
 /// A scrolling list of posts, with every state it can be in.
 ///
@@ -26,6 +27,13 @@ class PostListView extends ConsumerStatefulWidget {
   /// Slivers to render above the posts -- a profile header, say.
   final List<Widget> headerSlivers;
 
+  /// Lay the posts out as a staggered wall of attachments rather than a
+  /// column of cards. What the feed's Videos tab uses.
+  final bool asTiles;
+
+  /// A hashtag to pick out in every post's body, without its leading #.
+  final String? highlightTag;
+
   final EdgeInsets padding;
 
   const PostListView({
@@ -38,6 +46,8 @@ class PostListView extends ConsumerStatefulWidget {
     this.scrollController,
     this.headerSlivers = const [],
     this.padding = EdgeInsets.zero,
+    this.asTiles = false,
+    this.highlightTag,
   });
 
   @override
@@ -123,6 +133,10 @@ class _PostListViewState extends ConsumerState<PostListView> {
       );
     }
 
+    if (widget.asTiles) {
+      return MediaTileGrid(posts: state.posts, videosOnly: true);
+    }
+
     // Builder, not a list of everything: the feed this replaces constructed
     // every post up front whether or not any were on screen.
     return SliverList.builder(
@@ -135,7 +149,11 @@ class _PostListViewState extends ConsumerState<PostListView> {
             child: Center(child: CircularProgressIndicator()),
           );
         }
-        return PostCard(post: state.posts[index], source: widget.source);
+        return PostCard(
+          post: state.posts[index],
+          source: widget.source,
+          highlightTag: widget.highlightTag,
+        );
       },
     );
   }

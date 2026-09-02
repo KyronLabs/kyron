@@ -78,11 +78,15 @@ class _Tile extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
-            child: item.kind == MediaKind.video
+            // A clip and a recording have no still to show, so each gets
+            // the glyph for what it is rather than a broken image.
+            child: item.kind == MediaKind.video || item.isVoice
                 ? ColoredBox(
                     color: scheme.surfaceContainerHighest,
                     child: Icon(
-                      Iconsax.video_copy,
+                      item.isVoice
+                          ? Iconsax.microphone_copy
+                          : Iconsax.video_copy,
                       color: scheme.onSurface.withValues(alpha: .5),
                     ),
                   )
