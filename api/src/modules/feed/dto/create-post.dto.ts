@@ -64,6 +64,17 @@ export class PostMediaDto {
   @Max(20000)
   height?: number;
 
+  /**
+   * A still from a video, uploaded beside it.
+   *
+   * Same rule as the attachment itself: it must be a URL this deployment
+   * served, or a post could point a reader's device at anything.
+   */
+  @IsOptional()
+  @IsUrl({ require_protocol: true, protocols: ['https'] })
+  @MaxLength(2048)
+  thumbnailUrl?: string;
+
   @IsOptional()
   @IsString()
   @MaxLength(400)

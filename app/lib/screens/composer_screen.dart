@@ -370,14 +370,24 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
   }
 
   Future<void> _handlePost() async {
-    final posted = await ref.read(composerProvider.notifier).post();
+    final notifier = ref.read(composerProvider.notifier);
+    final posted = await notifier.post();
     if (!mounted || !posted) return;
+
+    // Named rather than folded into "Posted": something that went out
+    // incomplete should not report the same success as something that did not.
+    final warning = notifier.takeWarning();
 
     HapticFeedback.heavyImpact();
     _textController.clear();
     Navigator.pop(context);
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Posted')),
+      SnackBar(
+        content: Text(warning ?? 'Posted'),
+        duration: warning == null
+            ? const Duration(seconds: 2)
+            : const Duration(seconds: 6),
+      ),
     );
   }
 

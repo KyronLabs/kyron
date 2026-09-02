@@ -149,8 +149,13 @@ class _PostListViewState extends ConsumerState<PostListView> {
             child: Center(child: CircularProgressIndicator()),
           );
         }
+        final post = state.posts[index];
         return PostCard(
-          post: state.posts[index],
+          // Keyed by the post, so a scrolled-away card's element is reused
+          // for the same post rather than for whichever one lands in that
+          // slot -- which handed a video's player to a different clip.
+          key: ValueKey(post.id),
+          post: post,
           source: widget.source,
           highlightTag: widget.highlightTag,
         );

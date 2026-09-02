@@ -51,19 +51,33 @@ class _SheetState extends State<_Sheet> {
   String? _path;
   String? _failure;
 
+  /// Measured rather than counted. A periodic timer that fires late -- which
+  /// they do, under load -- would otherwise leave the clock running slow, and
+  /// the length recorded on the post with it.
+  final Stopwatch _clockRun = Stopwatch();
   Duration _elapsed = Duration.zero;
   Timer? _ticker;
   StreamSubscription<Amplitude>? _amplitudes;
 
-  /// One value per bar, 0-100.
-  final List<int> _waveform = [];
+  /// Every loudness reading taken, 0-100, at full resolution.
+  ///
+  /// Kept whole rather than folded down as it goes: the live waveform scrolls
+  /// through the tail of this, and halving it mid-recording made the row jump
+  /// as every bar suddenly stood for twice as long. It is downsampled once, on
+  /// the way out.
+  final List<int> _samples = [];
 
   /// The longest a voice post may run. Matches the server's cap.
   static const _limit = Duration(minutes: 10);
 
   /// How often loudness is sampled. Ten a second is smooth enough to look
-  /// alive and coarse enough that ten minutes still fits [maxBars].
+  /// alive without being more readings than the bar row can use.
   static const _sampleEvery = Duration(milliseconds: 100);
+
+  /// A ceiling on readings held in memory, in case the platform delivers them
+  /// faster than it was asked to. Ten minutes at the sample rate is six
+  /// thousand; this is well past that and still nothing.
+  static const _maxSamples = 20000;
 
   @override
   void dispose() {
@@ -105,13 +119,17 @@ class _SheetState extends State<_Sheet> {
     }
 
     _path = path;
-    _waveform.clear();
+    _samples.clear();
     _elapsed = Duration.zero;
+    _clockRun
+      ..reset()
+      ..start();
 
     _amplitudes =
         _recorder.onAmplitudeChanged(_sampleEvery).listen(_onAmplitude);
     _ticker = Timer.periodic(const Duration(milliseconds: 200), (_) {
-      setState(() => _elapsed += const Duration(milliseconds: 200));
+      if (!mounted) return;
+      setState(() => _elapsed = _clockRun.elapsed);
       if (_elapsed >= _limit) unawaited(_stop());
     });
 
@@ -130,22 +148,18 @@ class _SheetState extends State<_Sheet> {
     // mapping leaves ordinary speech as a barely visible ripple.
     final level = (math.sqrt(normalised) * 100).round();
 
-    if (_waveform.length < VoiceWaveform.maxBars) {
-      _waveform.add(level);
-    } else {
-      // Past the cap, halve the resolution rather than stop drawing: every
-      // other bar is dropped and new ones keep arriving, so a long recording
-      // stays a picture of the whole thing rather than of its first minute.
-      for (var i = 0; i < _waveform.length ~/ 2; i++) {
-        _waveform[i] = math.max(_waveform[i * 2], _waveform[i * 2 + 1]);
-      }
-      _waveform.removeRange(_waveform.length ~/ 2, _waveform.length);
-      _waveform.add(level);
-    }
+    if (_samples.length >= _maxSamples) return;
+    _samples.add(level);
+    // Rebuilt on every reading, so the waveform knows a bar has arrived and
+    // can time its scroll from it. The bars themselves are repainted on every
+    // frame by the waveform's own ticker, not by this.
+    if (mounted) setState(() {});
   }
 
   Future<void> _stop() async {
     _ticker?.cancel();
+    _clockRun.stop();
+    _elapsed = _clockRun.elapsed;
     await _amplitudes?.cancel();
     _amplitudes = null;
 
@@ -164,10 +178,13 @@ class _SheetState extends State<_Sheet> {
   Future<void> _discard() async {
     final path = _path;
     _path = null;
+    _clockRun
+      ..stop()
+      ..reset();
     setState(() {
       _stage = _Stage.idle;
       _elapsed = Duration.zero;
-      _waveform.clear();
+      _samples.clear();
     });
     // Deleted rather than left behind: a discarded recording is somebody's
     // voice sitting in a cache directory.
@@ -185,7 +202,7 @@ class _SheetState extends State<_Sheet> {
         path: path,
         kind: MediaKind.voice,
         duration: _elapsed,
-        waveform: List<int>.unmodifiable(_waveform),
+        waveform: VoiceWaveform.downsample(_samples, VoiceWaveform.maxBars),
       ),
     );
   }
@@ -234,25 +251,7 @@ class _SheetState extends State<_Sheet> {
               color: scheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
             ),
-            child: Center(
-              child: _waveform.isEmpty
-                  ? Text(
-                      _stage == _Stage.idle
-                          ? 'Up to ten minutes.'
-                          : 'Listening…',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: scheme.onSurface.withValues(alpha: 0.55),
-                      ),
-                    )
-                  : VoiceWaveform(
-                      levels: _waveform,
-                      // Nothing has played yet, so nothing is filled in.
-                      progress: _stage == _Stage.recording ? 1 : 0,
-                      color: scheme.primary,
-                      trackColor: scheme.onSurface.withValues(alpha: 0.25),
-                    ),
-            ),
+            child: Center(child: _waveformView(scheme)),
           ),
           const SizedBox(height: SpacingTokens.space12),
           Text(
@@ -315,6 +314,40 @@ class _SheetState extends State<_Sheet> {
           },
         ],
       ),
+    );
+  }
+
+  /// The bars, or a line saying why there are none yet.
+  ///
+  /// While recording they scroll, newest at the right, so the row moves with
+  /// the voice. Once stopped they are the whole recording at rest, which is
+  /// what the post will carry.
+  Widget _waveformView(ColorScheme scheme) {
+    if (_samples.isEmpty) {
+      return Text(
+        _stage == _Stage.idle ? 'Up to ten minutes.' : 'Listening…',
+        style: TextStyle(
+          fontSize: 13,
+          color: scheme.onSurface.withValues(alpha: 0.55),
+        ),
+      );
+    }
+
+    if (_stage == _Stage.recording) {
+      return LiveWaveform(
+        levels: _samples,
+        sampleEvery: _sampleEvery,
+        color: scheme.primary,
+      );
+    }
+
+    return VoiceWaveform(
+      levels: VoiceWaveform.downsample(_samples, VoiceWaveform.maxBars),
+      // Nothing has played yet, so nothing is filled in.
+      progress: 0,
+      smoothing: Duration.zero,
+      color: scheme.primary,
+      trackColor: scheme.onSurface.withValues(alpha: 0.25),
     );
   }
 

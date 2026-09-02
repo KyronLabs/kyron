@@ -9,6 +9,8 @@ import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
 
 import '../models/post_media.dart';
+import '../services/app_log.dart';
+import '../services/video_pool.dart';
 
 /// Full-screen media, opened from a post.
 ///
@@ -280,26 +282,48 @@ class _VideoState extends State<_Video> {
     _open();
   }
 
+  /// Leased rather than opened directly, so the clip somebody has just opened
+  /// full screen counts against the same budget as the ones behind it -- and
+  /// takes a decoder off one of them rather than asking the phone for one more
+  /// than it has.
   Future<void> _open() async {
-    final controller = VideoPlayerController.networkUrl(Uri.parse(widget.url));
     try {
-      await controller.initialize();
+      final controller = await VideoPool.instance.open(
+        widget.url,
+        owner: this,
+        onEvicted: _onEvicted,
+      );
+      if (!mounted) {
+        VideoPool.instance.release(this);
+        return;
+      }
+      if (controller == null) {
+        setState(() => _error = 'This clip could not be played.');
+        return;
+      }
       await controller.setLooping(true);
       await controller.play();
       if (!mounted) {
-        await controller.dispose();
+        VideoPool.instance.release(this);
         return;
       }
       setState(() => _controller = controller);
     } catch (e) {
-      await controller.dispose();
+      AppLog.instance.error('media', 'Clip would not open full screen: $e');
       if (mounted) setState(() => _error = '$e');
+    }
+  }
+
+  void _onEvicted() {
+    _controller = null;
+    if (mounted) {
+      setState(() => _error = 'This clip stopped to make room for another.');
     }
   }
 
   @override
   void dispose() {
-    _controller?.dispose();
+    VideoPool.instance.release(this);
     super.dispose();
   }
 

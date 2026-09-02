@@ -433,6 +433,17 @@ model Media {
   /// decoding step, and capped by the client at a bar count that fits a phone.
   waveform Int[]
 
+  /// A still from a video, uploaded alongside it by the composer.
+  ///
+  /// Stored so a list can draw a clip without opening a decoder for it. A
+  /// phone has a hard ceiling on how many videos it can decode at once --
+  /// exceeding it fails the surface and the tile goes black -- so a wall of
+  /// clips has to be a wall of pictures with one player over the top.
+  ///
+  /// Null for anything that is not a video, and for videos posted before the
+  /// composer started sending one.
+  thumbnailUrl String?
+
   /// Order within its post or comment, 0 first.
   position Int @default(0)
 

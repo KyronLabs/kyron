@@ -42,6 +42,31 @@ describe('FeedService', () => {
     updateMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
   };
 
+  /**
+   * The argument of the last post.create, narrowed to the parts these tests
+   * assert on.
+   *
+   * Prisma's own create type is a deep generic keyed off the model; naming
+   * only the columns and selections under test says what is being checked
+   * without dragging that in.
+   */
+  interface CreateArg {
+    data: {
+      media: { create: Record<string, unknown>[] };
+      poll?: {
+        create: {
+          options: { create: { text: string; position: number }[] };
+        };
+      };
+    };
+    select: {
+      media: { select: Record<string, boolean> };
+      poll?: unknown;
+    };
+  }
+
+  const lastCreate = () => post.create.mock.calls.at(-1)![0] as CreateArg;
+
   /** A comment row in the shape commentShape selects. */
   const commentRow = (id: string, parentId: string | null = null) => ({
     id,
@@ -630,6 +655,157 @@ describe('FeedService', () => {
       expect(hashtag.upsert).toHaveBeenCalledWith(
         expect.objectContaining({ where: { tag: 'kyron' } }),
       );
+    });
+
+    it('stores the still that came up with a clip', async () => {
+      // Without it every list drawing the post has to open a decoder for the
+      // clip, and a phone runs out of those long before it runs out of posts.
+      hashtag.upsert.mockResolvedValue({ id: 'h1' });
+      post.create.mockResolvedValue(row('p1'));
+
+      await (
+        await service()
+      ).createPost('u', {
+        content: '',
+        media: [
+          {
+            url: 'https://example.test/a.mp4',
+            kind: 'VIDEO',
+            thumbnailUrl: 'https://example.test/a.jpg',
+            width: 720,
+            height: 1280,
+          },
+        ],
+      });
+
+      const written = lastCreate();
+      expect(written.data.media.create[0]).toMatchObject({
+        url: 'https://example.test/a.mp4',
+        thumbnailUrl: 'https://example.test/a.jpg',
+        width: 720,
+        height: 1280,
+      });
+      // And read back, or the composer's own copy of the post has no still
+      // and the list it goes into opens a decoder anyway.
+      expect(written.select.media.select.thumbnailUrl).toBe(true);
+    });
+  });
+
+  describe('a poll on a post', () => {
+    /** A poll row in the shape shapeFor selects. */
+    const pollRow = (closesAt: Date) => ({
+      id: 'poll-1',
+      closesAt,
+      _count: { votes: 3 },
+      options: [
+        { id: 'o1', text: 'Yes', _count: { votes: 2 } },
+        { id: 'o2', text: 'No', _count: { votes: 1 } },
+      ],
+      votes: [{ optionId: 'o1' }],
+    });
+
+    it('writes the answers with the post and reads them back', async () => {
+      // The whole round trip in one test: a poll that is sent, stored and
+      // returned. A post that comes back without the poll it was created with
+      // renders as its question and nothing else.
+      hashtag.upsert.mockResolvedValue({ id: 'h1' });
+      const closesAt = new Date(Date.now() + 60 * 60 * 1000);
+      post.create.mockResolvedValue({
+        ...row('p1'),
+        poll: pollRow(closesAt),
+      } as unknown as Row);
+
+      const created = await (
+        await service()
+      ).createPost('u', {
+        content: 'Which one?',
+        poll: { options: ['Yes', 'No'], durationMinutes: 60 },
+      });
+
+      const written = lastCreate();
+      expect(written.data.poll?.create.options.create).toEqual([
+        { text: 'Yes', position: 0 },
+        { text: 'No', position: 1 },
+      ]);
+      expect(written.select.poll).toBeDefined();
+
+      expect(created.poll).toEqual({
+        id: 'poll-1',
+        closesAt,
+        closed: false,
+        totalVotes: 3,
+        votedOptionId: 'o1',
+        options: [
+          { id: 'o1', text: 'Yes', votes: 2 },
+          { id: 'o2', text: 'No', votes: 1 },
+        ],
+      });
+    });
+
+    it("closes a poll against the server clock, not the reader's", async () => {
+      hashtag.upsert.mockResolvedValue({ id: 'h1' });
+      post.create.mockResolvedValue({
+        ...row('p1'),
+        poll: pollRow(new Date(Date.now() - 1000)),
+      } as unknown as Row);
+
+      const created = await (
+        await service()
+      ).createPost('u', {
+        content: 'Which one?',
+        poll: { options: ['Yes', 'No'], durationMinutes: 60 },
+      });
+
+      expect(created.poll?.closed).toBe(true);
+    });
+
+    it('a post with no poll says so rather than inventing one', async () => {
+      hashtag.upsert.mockResolvedValue({ id: 'h1' });
+      post.create.mockResolvedValue({ ...row('p1'), poll: null } as Row);
+
+      const created = await (
+        await service()
+      ).createPost('u', { content: 'no poll here' });
+
+      expect(created.poll).toBeNull();
+    });
+
+    it('refuses a poll with one answer', async () => {
+      await expect(
+        (await service()).createPost('u', {
+          content: 'Which one?',
+          poll: { options: ['Yes', '  '], durationMinutes: 60 },
+        }),
+      ).rejects.toThrow(BadRequestException);
+      expect(post.create).not.toHaveBeenCalled();
+    });
+
+    it('refuses two answers that read the same', async () => {
+      await expect(
+        (await service()).createPost('u', {
+          content: 'Which one?',
+          poll: { options: ['Yes', 'YES'], durationMinutes: 60 },
+        }),
+      ).rejects.toThrow(BadRequestException);
+    });
+
+    it('refuses a poll that would run for a year', async () => {
+      await expect(
+        (await service()).createPost('u', {
+          content: 'Which one?',
+          poll: { options: ['Yes', 'No'], durationMinutes: 60 * 24 * 365 },
+        }),
+      ).rejects.toThrow(BadRequestException);
+    });
+
+    it('refuses a poll with no question above it', async () => {
+      // A set of buttons with nothing over them is not a poll.
+      await expect(
+        (await service()).createPost('u', {
+          content: '   ',
+          poll: { options: ['Yes', 'No'], durationMinutes: 60 },
+        }),
+      ).rejects.toThrow(BadRequestException);
     });
   });
 

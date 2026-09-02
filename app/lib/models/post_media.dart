@@ -16,6 +16,15 @@ class PostMedia {
   /// The author's description, read out by a screen reader.
   final String? alt;
 
+  /// A still from a video, uploaded beside it by the composer.
+  ///
+  /// A phone can only decode a handful of videos at once. Past that ceiling
+  /// the next surface fails and the tile goes black, which is why a list of
+  /// clips has to be a list of pictures with one player over the top. Null
+  /// for anything that is not a video, and for clips posted before the
+  /// composer started sending one.
+  final String? thumbnailUrl;
+
   /// How long a voice recording runs. Null for everything else.
   final Duration? duration;
 
@@ -33,6 +42,7 @@ class PostMedia {
     this.width,
     this.height,
     this.alt,
+    this.thumbnailUrl,
     this.duration,
     this.waveform = const [],
   });
@@ -61,6 +71,7 @@ class PostMedia {
         width: (json['width'] as num?)?.toInt(),
         height: (json['height'] as num?)?.toInt(),
         alt: json['alt'] as String?,
+        thumbnailUrl: _text(json['thumbnailUrl']),
         duration: json['durationMs'] is num
             ? Duration(milliseconds: (json['durationMs'] as num).toInt())
             : null,
@@ -76,9 +87,17 @@ class PostMedia {
         if (width != null) 'width': width,
         if (height != null) 'height': height,
         if (alt != null && alt!.trim().isNotEmpty) 'alt': alt!.trim(),
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
         if (duration != null) 'durationMs': duration!.inMilliseconds,
         if (waveform.isNotEmpty) 'waveform': waveform,
       };
+
+  /// A string field, with blank treated as absent. The server stores an empty
+  /// string as easily as a null, and an empty URL is not a picture.
+  static String? _text(Object? value) {
+    final text = value is String ? value.trim() : '';
+    return text.isEmpty ? null : text;
+  }
 
   static MediaKind _kindOf(Object? value) {
     switch ((value as String?)?.toUpperCase()) {
@@ -119,6 +138,16 @@ class PendingMedia {
 
   final String? alt;
 
+  /// A still pulled out of a chosen video, on disk.
+  ///
+  /// Generated the moment the clip is attached, so the tray shows the video
+  /// rather than an icon standing in for one, and uploaded with it so every
+  /// list that later draws the post has a picture to draw.
+  final String? thumbnailPath;
+
+  /// The uploaded still. Null until [thumbnailPath] has gone up.
+  final String? thumbnailUrl;
+
   /// How long a voice recording runs, and its loudness over time. Both are
   /// measured while recording and carried through the upload unchanged.
   final Duration? duration;
@@ -132,11 +161,15 @@ class PendingMedia {
     this.url,
     this.error,
     this.alt,
+    this.thumbnailPath,
+    this.thumbnailUrl,
     this.duration,
     this.waveform = const [],
   });
 
   bool get isVoice => kind == MediaKind.voice;
+
+  bool get isVideo => kind == MediaKind.video;
 
   bool get isUploading => url == null && error == null;
   bool get isReady => url != null;
@@ -147,6 +180,9 @@ class PendingMedia {
     String? alt,
     int? width,
     int? height,
+    String? thumbnailPath,
+    String? thumbnailUrl,
+    Duration? duration,
     bool clearError = false,
   }) =>
       PendingMedia(
@@ -157,7 +193,9 @@ class PendingMedia {
         url: url ?? this.url,
         error: clearError ? null : (error ?? this.error),
         alt: alt ?? this.alt,
-        duration: duration,
+        thumbnailPath: thumbnailPath ?? this.thumbnailPath,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        duration: duration ?? this.duration,
         waveform: waveform,
       );
 
@@ -168,7 +206,10 @@ class PendingMedia {
         if (width != null) 'width': width,
         if (height != null) 'height': height,
         if (alt != null && alt!.trim().isNotEmpty) 'alt': alt!.trim(),
-        if (duration != null) 'durationMs': duration!.inMilliseconds,
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
+        // Only a recording carries these. A clip's own duration is read off
+        // the file by whatever plays it.
+        if (isVoice && duration != null) 'durationMs': duration!.inMilliseconds,
         if (waveform.isNotEmpty) 'waveform': waveform,
       };
 }
