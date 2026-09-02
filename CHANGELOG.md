@@ -98,6 +98,9 @@ section for that version, so what is written here is what people read.
   on focus. Screens that drew their own outline no longer override it.
 - The app resolves the design system at the commit carrying that input theme,
   rather than the one before it.
+- Text fields stand 40 tall, the same height as a button, so a field and a
+  button beside each other line up. Labels and hints come down from Material's
+  16 to 14, which was larger than the body text around them.
 - Search results carry an avatar, a two-line bio, follower and Kyron Point
   counts, and a Follow button that works from the list, separated by hairlines
   rather than stacked as bare rows.
