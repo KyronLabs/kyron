@@ -3,6 +3,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/post_media.dart';
+import 'inline_video.dart';
 import 'media_viewer.dart';
 
 /// The attachments under a post, laid out by how many there are.
@@ -99,17 +100,31 @@ class MediaGrid extends StatelessWidget {
     final item = media[index];
     final scheme = Theme.of(context).colorScheme;
 
+    // A clip has its own controls, so it takes its own taps; only a still
+    // opens the viewer by being tapped anywhere.
     return GestureDetector(
-      onTap: () => MediaViewer.open(context, media, initialIndex: index),
+      onTap: item.isVideo
+          ? null
+          : () => MediaViewer.open(context, media, initialIndex: index),
       child: Hero(
         tag: item.id,
         child: Stack(
           fit: StackFit.expand,
           children: [
-            // A video's poster frame is not something the server produces, so
-            // a clip shows its own placeholder rather than a broken image.
+            // A clip plays in place, and paints its own first frame as the
+            // poster. It used to be a grey rectangle with a play glyph and no
+            // player behind it, which is why a video post read as blank until
+            // it was opened.
             if (item.isVideo)
-              ColoredBox(color: scheme.surfaceContainerHighest)
+              InlineVideo(
+                media: item,
+                // One clip at a time. Four autoplaying videos in one post is
+                // four decoders and four streams for a post nobody has
+                // stopped to watch yet.
+                autoplay: media.length == 1,
+                onExpand: () =>
+                    MediaViewer.open(context, media, initialIndex: index),
+              )
             else
               Image.network(
                 item.url,
@@ -124,19 +139,6 @@ class MediaGrid extends StatelessWidget {
                 loadingBuilder: (context, child, progress) => progress == null
                     ? child
                     : ColoredBox(color: scheme.surfaceContainerHighest),
-              ),
-            if (item.isVideo)
-              Center(
-                child: Container(
-                  width: 44,
-                  height: 44,
-                  decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.55),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(Iconsax.play_circle_copy,
-                      color: Colors.white, size: 26),
-                ),
               ),
             if (item.kind == MediaKind.gif)
               Positioned(

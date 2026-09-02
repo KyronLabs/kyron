@@ -14,6 +14,14 @@ class ProfileSummary {
   final int followers;
   final int kyronPoints;
 
+  /// Whether the reader already follows this person. Filled by the endpoints
+  /// that return a list of people, so a row can carry a working Follow button
+  /// without a request per row.
+  final bool isFollowing;
+
+  /// True on the reader's own row, which never gets a Follow button.
+  final bool isSelf;
+
   const ProfileSummary({
     required this.id,
     this.name,
@@ -23,6 +31,8 @@ class ProfileSummary {
     this.bio,
     this.followers = 0,
     this.kyronPoints = 0,
+    this.isFollowing = false,
+    this.isSelf = false,
   });
 
   factory ProfileSummary.fromJson(Map<String, dynamic> json) => ProfileSummary(
@@ -34,6 +44,22 @@ class ProfileSummary {
         bio: json['bio'] as String?,
         followers: (json['followers'] as num?)?.toInt() ?? 0,
         kyronPoints: (json['kyronPoints'] as num?)?.toInt() ?? 0,
+        isFollowing: json['isFollowing'] == true,
+        isSelf: json['isSelf'] == true,
+      );
+
+  ProfileSummary copyWith({bool? isFollowing, int? followers}) =>
+      ProfileSummary(
+        id: id,
+        name: name,
+        username: username,
+        did: did,
+        avatarUrl: avatarUrl,
+        bio: bio,
+        followers: followers ?? this.followers,
+        kyronPoints: kyronPoints,
+        isFollowing: isFollowing ?? this.isFollowing,
+        isSelf: isSelf,
       );
 
   String get displayName {

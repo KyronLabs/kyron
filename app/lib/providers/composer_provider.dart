@@ -14,6 +14,7 @@ import '../services/app_log.dart';
 import '../services/draft_service.dart';
 import '../utils/api_error_message.dart';
 import 'feed_provider.dart';
+import '../models/composer_poll.dart';
 
 final composerProvider = StateNotifierProvider<ComposerNotifier, ComposerState>(
   (ref) => ComposerNotifier(ref, DraftService()),
@@ -34,6 +35,9 @@ class ComposerState {
   /// The post being quoted, if this composer was opened from one.
   final QuotedPost? quoting;
 
+  /// The poll being attached, or null. A post carries at most one.
+  final ComposerPoll? poll;
+
   /// Set when the last attempt to post failed, so the screen can say why
   /// rather than clearing the box and hoping.
   final String? error;
@@ -46,6 +50,7 @@ class ComposerState {
     this.media = const [],
     this.replyPolicy = ReplyPolicy.everyone,
     this.quoting,
+    this.poll,
     this.error,
   });
 
@@ -64,8 +69,10 @@ class ComposerState {
     List<PendingMedia>? media,
     ReplyPolicy? replyPolicy,
     QuotedPost? quoting,
+    ComposerPoll? poll,
     String? error,
     bool clearError = false,
+    bool clearPoll = false,
   }) {
     return ComposerState(
       content: content ?? this.content,
@@ -75,6 +82,7 @@ class ComposerState {
       media: media ?? this.media,
       replyPolicy: replyPolicy ?? this.replyPolicy,
       quoting: quoting ?? this.quoting,
+      poll: clearPoll ? null : (poll ?? this.poll),
       error: clearError ? null : (error ?? this.error),
     );
   }
@@ -90,9 +98,14 @@ class ComposerState {
   bool get isUploading => media.any((m) => m.isUploading);
 
   /// True when there is something a draft would be worth keeping.
-  bool get hasContent => content.trim().isNotEmpty || media.isNotEmpty;
+  bool get hasContent =>
+      content.trim().isNotEmpty || media.isNotEmpty || poll != null;
 
-  bool get canAddMedia => media.length < maxMedia;
+  /// A poll takes the whole post: an answer people are meant to pick between
+  /// should not be competing with four photographs above it.
+  bool get canAddMedia => media.length < maxMedia && poll == null;
+
+  bool get hasPoll => poll != null;
 
   /// Attachments that actually uploaded. Only these are sent.
   bool get hasReadyMedia => media.any((m) => m.isReady);
@@ -111,6 +124,10 @@ class ComposerState {
   /// on every tile.
   bool get canPost =>
       (content.trim().isNotEmpty || hasReadyMedia) &&
+      // A poll needs a question above it and two answers under it, so the
+      // Post button is inert until both are there rather than the server
+      // rejecting it after the fact.
+      (poll == null || (poll!.isComplete && content.trim().isNotEmpty)) &&
       !isPosting &&
       !isOverLimit &&
       !isUploading;
@@ -353,6 +370,27 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   /// This used to sleep for a second, print the content to the debug console
   /// and clear the box. The Post button reported success every time and no
   /// post was ever written.
+  /// Attaches a blank poll, or removes the one already there.
+  ///
+  /// Removing does not ask: nothing has been posted, and the answers are two
+  /// short strings that are quick to retype. Attaching one clears any
+  /// attachments, because a post carries either.
+  void togglePoll() {
+    if (state.poll != null) {
+      state = state.copyWith(clearPoll: true, hasUnsavedChanges: true);
+      return;
+    }
+    state = state.copyWith(
+      poll: ComposerPoll.blank(),
+      media: const [],
+      hasUnsavedChanges: true,
+    );
+  }
+
+  void setPoll(ComposerPoll poll) {
+    state = state.copyWith(poll: poll, hasUnsavedChanges: true);
+  }
+
   Future<bool> post() async {
     if (!state.canPost) return false;
 
@@ -365,6 +403,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
             media: state.media,
             quotedPostId: state.quoting?.id,
             replyPolicy: state.replyPolicy,
+            poll: state.poll,
           );
 
       // Straight to the top of the feed, so the post is visible the moment

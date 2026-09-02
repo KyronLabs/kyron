@@ -56,6 +56,7 @@ dependencies:
   # and the cache size was a random number between 10 and 50 MB.
   package_info_plus: ^8.0.0
   path_provider: ^2.1.4
+  visibility_detector: ^0.4.0+2
 
 dev_dependencies:
   flutter_test:

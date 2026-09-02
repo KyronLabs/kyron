@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
-import '../providers/feed_provider.dart';
+import 'interest_tabs.dart';
 import 'post_list_view.dart';
 
 /// The home feed.
@@ -20,16 +20,35 @@ class FeedCanvas extends ConsumerWidget {
   /// Height of the fade under the tab strip, in logical pixels.
   static const double _topFadeHeight = 16;
 
+  static String _emptyTitle(String tab) => switch (tab) {
+        'Following' => 'Nothing from the people you follow',
+        'Videos' => 'No videos yet',
+        _ => 'Nothing here yet',
+      };
+
+  static String _emptyDetail(String tab) => switch (tab) {
+        'Following' =>
+          'Follow a few accounts and their posts will show up here.',
+        'Videos' => 'Posts carrying a clip will show up here.',
+        'For You' => 'Posts will show up here as people write them.',
+        _ => 'Nothing has been posted under #$tab yet.',
+      };
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final tab = ref.watch(selectedFeedTabProvider);
+
     return Stack(
       children: [
         PostListView(
-          source: PostListSource.recent,
+          // Whatever the top bar's selected tab reads. It was pinned to the
+          // everyone-newest-first feed, so Following and Videos recoloured a
+          // pill and showed the same posts.
+          source: feedSourceForTab(tab),
           scrollController: scrollController,
           errorTitle: 'Could not load your feed',
-          emptyTitle: 'Nothing here yet',
-          emptyDetail: 'Posts from people you follow will show up here.',
+          emptyTitle: _emptyTitle(tab),
+          emptyDetail: _emptyDetail(tab),
           padding: EdgeInsets.only(
             top: SpacingTokens.space8,
             bottom: MediaQuery.of(context).padding.bottom + 80,

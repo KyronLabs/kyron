@@ -29,9 +29,23 @@ class PostListSource {
   /// Posts you have saved.
   static const saved = PostListSource._('saved');
 
+  /// Posts from the accounts you follow. The top bar's Following tab.
+  static const following = PostListSource._('following');
+
+  /// Posts carrying a video. The top bar's Videos tab.
+  static const videos = PostListSource._('videos');
+
   /// One account's posts, for a profile screen.
   factory PostListSource.author(String userId) =>
       PostListSource._('author', userId);
+
+  /// One account's posts that carry a photo, GIF or clip.
+  factory PostListSource.authorMedia(String userId) =>
+      PostListSource._('author:media', userId);
+
+  /// One account's posts that carry a video.
+  factory PostListSource.authorVideos(String userId) =>
+      PostListSource._('author:video', userId);
 
   /// Posts carrying a hashtag, given without its leading #.
   factory PostListSource.hashtag(String tag) =>
@@ -115,8 +129,16 @@ class PostListNotifier extends StateNotifier<FeedState> {
         return _repo.liked(cursor: cursor);
       case 'saved':
         return _repo.saved(cursor: cursor);
+      case 'following':
+        return _repo.following(cursor: cursor);
+      case 'videos':
+        return _repo.videos(cursor: cursor);
       case 'author':
         return _repo.byAuthor(_source.userId!, cursor: cursor);
+      case 'author:media':
+        return _repo.byAuthor(_source.userId!, cursor: cursor, has: 'media');
+      case 'author:video':
+        return _repo.byAuthor(_source.userId!, cursor: cursor, has: 'video');
       case 'hashtag':
         return _repo.byHashtag(_source.userId!, cursor: cursor);
       default:
@@ -259,6 +281,13 @@ class PostListNotifier extends StateNotifier<FeedState> {
     }
     return null;
   }
+
+  /// Swaps in a post the server has just returned.
+  ///
+  /// Used after a poll vote, where the answer comes back with recounted
+  /// totals: showing the server's numbers rather than incrementing our own
+  /// keeps two people voting at once from each seeing their own count.
+  void replace(FeedPost post) => _replace(post);
 
   void _replace(FeedPost post) {
     state = state.copyWith(

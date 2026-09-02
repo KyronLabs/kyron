@@ -3,11 +3,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
+import '../providers/feed_provider.dart';
+
 // State management
 final interestTabsProvider =
     StateNotifierProvider<InterestTabsNotifier, List<String>>((ref) {
   return InterestTabsNotifier();
 });
+
+/// Which tab the feed is showing.
+///
+/// Lifted out of the strip's own State. It was a plain `_selectedIndex` that
+/// only recoloured a pill: pressing Following or Videos changed the highlight
+/// and nothing else, and every tab read the same everyone-newest-first feed.
+final selectedFeedTabProvider = StateProvider<String>((ref) => 'For You');
+
+/// The feed a tab reads.
+///
+/// The three built-in tabs map onto their own endpoints. An interest tab the
+/// reader added is a topic, so it reads that hashtag's feed -- which is what
+/// makes adding one worth doing.
+PostListSource feedSourceForTab(String tab) {
+  switch (tab) {
+    case 'For You':
+      return PostListSource.recent;
+    case 'Following':
+      return PostListSource.following;
+    case 'Videos':
+      return PostListSource.videos;
+    default:
+      return PostListSource.hashtag(tab.replaceAll(RegExp(r'[\s#]'), ''));
+  }
+}
 
 class InterestTabsNotifier extends StateNotifier<List<String>> {
   InterestTabsNotifier() : super(['For You', 'Following', 'Videos']);
@@ -42,11 +69,10 @@ class InterestTabs extends ConsumerStatefulWidget {
 }
 
 class _InterestTabsState extends ConsumerState<InterestTabs> {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     final tabs = ref.watch(interestTabsProvider);
+    final selected = ref.watch(selectedFeedTabProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final pillBg = isDark ? const Color(0xFF1F1F23) : const Color(0xFFF7F7F7);
     final textPrimary =
@@ -65,13 +91,14 @@ class _InterestTabsState extends ConsumerState<InterestTabs> {
               padding: const EdgeInsets.only(left: 16, right: 8),
               itemCount: tabs.length,
               itemBuilder: (context, index) {
+                final tab = tabs[index];
                 return _buildTabPill(
                   context,
-                  tabs[index],
-                  index == _selectedIndex,
+                  tab,
+                  tab == selected,
                   pillBg,
                   textPrimary,
-                  () => setState(() => _selectedIndex = index),
+                  () => ref.read(selectedFeedTabProvider.notifier).state = tab,
                 );
               },
             ),

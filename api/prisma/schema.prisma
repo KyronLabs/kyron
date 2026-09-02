@@ -92,6 +92,7 @@ model User {
   blockedBy         Block[]            @relation("Blocked")
   reportsMade       Report[]           @relation("Reporter")
   interestSignals   InterestSignal[]
+  pollVotes         PollVote[]
   kyronPointEvents  KyronPointEvent[] // 🔥 NEW
 
   @@index([email])
@@ -155,6 +156,7 @@ model Post {
   hidden   HiddenPost[]
   mutes    Mute[]
   signals  InterestSignal[]
+  poll     Poll?
 
   // SetNull, not Cascade: deleting a quoted post should not delete everyone's
   // commentary on it. The client renders the gap.
@@ -653,4 +655,90 @@ model AppSetting {
   description String?
   createdAt   DateTime @default(now()) @db.Timestamptz()
   updatedAt   DateTime @updatedAt @db.Timestamptz()
+}
+
+// ==========================================
+// 15.  LINK PREVIEWS
+// ==========================================
+// One cached fetch of a URL's Open Graph card, keyed by the URL as it was
+// normalised. Cached because a link in a popular post would otherwise be
+// fetched once per reader, which is both slow for them and a way to point the
+// whole readership at one site at once.
+//
+// `failedAt` is stored rather than the row simply being absent: a URL that has
+// no card, or would not load, must not be re-fetched on every scroll past it.
+model LinkPreview {
+  id  String @id @default(uuid()) @db.Uuid
+  url String @unique
+
+  title       String?
+  description String? @db.Text
+  imageUrl    String?
+  siteName    String?
+
+  /// The host, kept separately so the card can show it without re-parsing.
+  host String
+
+  /// Set when the fetch produced no usable card. Retried after a while, since
+  /// a site that was down when a post was written may be up when it is read.
+  failedAt DateTime? @db.Timestamptz()
+
+  fetchedAt DateTime @default(now()) @db.Timestamptz()
+
+  @@index([fetchedAt])
+}
+
+// ==========================================
+// 16.  POLLS
+// ==========================================
+// A poll belongs to exactly one post. Options are rows rather than a JSON
+// column so a vote can reference one by id and be counted by the database --
+// counting votes by reading and rewriting a JSON array loses concurrent votes.
+model Poll {
+  id     String @id @default(uuid()) @db.Uuid
+  postId String @unique @db.Uuid
+
+  /// When voting closes. Stored as an instant, not a duration, so the closing
+  /// time does not move when the row is read.
+  closesAt DateTime @db.Timestamptz()
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  post    Post         @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  options PollOption[]
+  votes   PollVote[]
+}
+
+model PollOption {
+  id     String @id @default(uuid()) @db.Uuid
+  pollId String @db.Uuid
+  text   String
+
+  /// Order as the author wrote them, 0 first. Without this the options would
+  /// come back in whatever order the database found them, which changes
+  /// between reads and moves the answers under the reader's finger.
+  position Int @default(0)
+
+  poll  Poll       @relation(fields: [pollId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  votes PollVote[]
+
+  @@index([pollId, position])
+}
+
+model PollVote {
+  id       String @id @default(uuid()) @db.Uuid
+  pollId   String @db.Uuid
+  optionId String @db.Uuid
+  userId   String @db.Uuid
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  poll   Poll       @relation(fields: [pollId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  option PollOption @relation(fields: [optionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user   User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  // One vote per person per poll, enforced here rather than in the handler:
+  // two taps racing each other both pass a "have you voted?" check.
+  @@unique([pollId, userId])
+  @@index([optionId])
 }

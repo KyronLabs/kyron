@@ -346,6 +346,89 @@ export class ProfileService {
     };
   }
 
+  /**
+   * The accounts following a user, or the accounts they follow.
+   *
+   * Paged by the Follow row's own id rather than an offset: a list that is
+   * being followed and unfollowed while it is read shifts under an offset, and
+   * the reader sees the same person twice or misses one entirely.
+   *
+   * `isFollowing` is filled from the reader's own follows in one query, so the
+   * list can show a working Follow button without a request per row.
+   */
+  async listFollows(
+    userId: string,
+    direction: 'followers' | 'following',
+    viewerId: string,
+    limit = 30,
+    cursor?: string,
+  ) {
+    const user = await this.prisma.user.findFirst({
+      where: { id: userId, deletedAt: null },
+      select: { id: true },
+    });
+    if (!user) throw new NotFoundException('That account does not exist.');
+
+    const rows = await this.prisma.follow.findMany({
+      where:
+        direction === 'followers'
+          ? { followingId: userId }
+          : { followerId: userId },
+      orderBy: { createdAt: 'desc' },
+      // One extra, to learn whether there is another page without counting.
+      take: limit + 1,
+      ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
+      select: {
+        id: true,
+        follower: { select: this.summaryShape },
+        following: { select: this.summaryShape },
+      },
+    });
+
+    const page = rows.slice(0, limit);
+    const people = page.map((row) =>
+      direction === 'followers' ? row.follower : row.following,
+    );
+
+    // Which of these the reader already follows, in one query rather than one
+    // per row.
+    const followed = await this.prisma.follow.findMany({
+      where: {
+        followerId: viewerId,
+        followingId: { in: people.map((person) => person.id) },
+      },
+      select: { followingId: true },
+    });
+    const followedIds = new Set(followed.map((row) => row.followingId));
+
+    return {
+      items: people.map((person) => ({
+        id: person.id,
+        name: person.name,
+        username: person.username,
+        did: person.did,
+        kyronPoints: person.kyronPoints,
+        avatarUrl: person.profile?.avatarUrl ?? null,
+        bio: person.profile?.bio ?? null,
+        followers: person._count.followers,
+        isFollowing: followedIds.has(person.id),
+        // Your own row never carries a Follow button.
+        isSelf: person.id === viewerId,
+      })),
+      nextCursor: rows.length > limit ? page[page.length - 1].id : null,
+    };
+  }
+
+  private readonly summaryShape = {
+    id: true,
+    name: true,
+    username: true,
+    did: true,
+    kyronPoints: true,
+    profile: { select: { avatarUrl: true, bio: true } },
+    _count: { select: { followers: true } },
+  } as const;
+
   // ==========================================
   // DUAL-WRITE OPERATIONS
   // These write to BOTH Prisma AND Supabase

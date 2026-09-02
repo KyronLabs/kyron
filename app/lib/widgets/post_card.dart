@@ -7,11 +7,14 @@ import '../models/feed_post.dart';
 import '../providers/feed_provider.dart';
 import '../routes.dart';
 import '../utils/format_count.dart';
+import 'link_preview_card.dart';
 import 'media_grid.dart';
+import 'poll_card.dart';
 import 'post_options_sheet.dart';
 import 'post_text.dart';
 import 'quoted_post_card.dart';
 import 'repost_sheet.dart';
+import 'share_post_sheet.dart';
 
 /// One post, wherever it appears.
 ///
@@ -124,6 +127,21 @@ class PostCard extends ConsumerWidget {
                       const SizedBox(height: SpacingTokens.space8),
                       MediaGrid(media: post.media),
                     ],
+                    if (post.poll != null)
+                      PollCard(
+                        postId: post.id,
+                        poll: post.poll!,
+                        onVoted: (updated) => ref
+                            .read(postListProvider(source).notifier)
+                            .replace(updated),
+                      ),
+                    // Only when there is nothing else competing for the
+                    // space: a post with its own pictures does not also need a
+                    // thumbnail of the page it links to.
+                    if (post.media.isEmpty &&
+                        post.quotedPost == null &&
+                        post.firstLink != null)
+                      LinkPreviewCard(url: post.firstLink!),
                     if (post.quotedPost != null) ...[
                       const SizedBox(height: SpacingTokens.space8),
                       QuotedPostCard(post: post.quotedPost!),
@@ -224,6 +242,12 @@ class _Actions extends ConsumerWidget {
           activeColor: scheme.primary,
           tooltip: post.saved ? 'Remove from saved' : 'Save',
           onTap: () => report(context, notifier.toggleSave(post.id)),
+        ),
+        const SizedBox(width: SpacingTokens.space20),
+        _Action(
+          icon: Iconsax.export_1_copy,
+          tooltip: 'Share',
+          onTap: () => SharePostSheet.show(context, post),
         ),
       ],
     );

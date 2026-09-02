@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../models/profile_model.dart';
 import '../providers/feed_provider.dart';
@@ -12,15 +13,29 @@ import '../routes.dart';
 import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import '../widgets/action_button.dart';
 import '../widgets/post_card.dart';
+import '../widgets/video_tile_grid.dart';
+
+/// Which of the profile's tabs is showing.
+enum ProfileTab { posts, media, videos, likes }
+
+extension on ProfileTab {
+  String get label => switch (this) {
+        ProfileTab.posts => 'Posts',
+        ProfileTab.media => 'Media',
+        ProfileTab.videos => 'Videos',
+        ProfileTab.likes => 'Likes',
+      };
+}
 
 /// One account: yours, or somebody else's.
 ///
-/// Deliberately plain in its construction. What stood here used a
-/// SliverAppBar with a FlexibleSpaceBar and Spacers inside rows, and rendered
-/// blank on a real handset while passing every widget test -- so the exotic
-/// parts are gone. A normal AppBar, a cover in a box, and rows that cannot
-/// overflow.
+/// Built as a single [CustomScrollView] with the tab strip as a pinned sliver,
+/// rather than a NestedScrollView over a TabBarView. One scroll controller,
+/// one scrollable, and no coordination between an outer and inner position --
+/// which is what the previous version got wrong badly enough to render blank
+/// on a handset while passing every widget test.
 class ProfileScreen extends ConsumerWidget {
   /// The handle to show, without its leading @. Null means the signed-in
   /// account.
@@ -33,29 +48,44 @@ class ProfileScreen extends ConsumerWidget {
     final state = ref.watch(profileProvider(username));
 
     return Scaffold(
+      // The cover runs to the very top of the screen, under the status bar,
+      // so the bar and its back button float over the image rather than
+      // sitting on a white strip above it.
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left_copy),
-          onPressed: () => Navigator.pop(context),
-          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-        ),
-        title: Text(
-          state.asData?.value.displayName ??
-              (username == null ? 'Your profile' : '@$username'),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        leading: const _GlassBack(),
+        actions: [
+          if (state.hasValue)
+            Padding(
+              padding: const EdgeInsets.only(right: SpacingTokens.space8),
+              child: _GlassAction(
+                icon: Iconsax.export_1_copy,
+                tooltip: 'Share this profile',
+                onPressed: () => shareProfile(state.value!),
+              ),
+            ),
+        ],
       ),
-      body: SafeArea(
-        top: false,
-        child: state.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (error, _) => _Failed(username: username, error: error),
-          data: (profile) => _Loaded(profile: profile, username: username),
-        ),
+      body: state.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, _) => _Failed(username: username, error: error),
+        data: (profile) => _Loaded(profile: profile, username: username),
       ),
     );
   }
+}
+
+/// Hands the profile's public address to the system share sheet.
+Future<void> shareProfile(ProfileModel profile) async {
+  final handle = profile.username?.trim();
+  final url = handle == null || handle.isEmpty
+      ? 'https://kyron.so/u/${profile.id}'
+      : 'https://kyron.so/@$handle';
+  await Share.share(url, subject: '${profile.displayName} on Kyron');
 }
 
 class _Loaded extends ConsumerStatefulWidget {
@@ -73,8 +103,14 @@ class _LoadedState extends ConsumerState<_Loaded> {
   static const double _loadMoreThreshold = 600;
 
   final ScrollController _controller = ScrollController();
+  ProfileTab _tab = ProfileTab.posts;
 
-  PostListSource get _source => PostListSource.author(widget.profile.id);
+  PostListSource get _source => switch (_tab) {
+        ProfileTab.posts => PostListSource.author(widget.profile.id),
+        ProfileTab.media => PostListSource.authorMedia(widget.profile.id),
+        ProfileTab.videos => PostListSource.authorVideos(widget.profile.id),
+        ProfileTab.likes => PostListSource.liked,
+      };
 
   @override
   void initState() {
@@ -84,8 +120,8 @@ class _LoadedState extends ConsumerState<_Loaded> {
     AppLog.instance.info(
       'profile',
       'Rendering ${widget.profile.handle ?? widget.profile.id} '
-          '(${widget.profile.posts} posts, ${widget.profile.followers} '
-          'followers, ${widget.profile.following} following)',
+          '(${widget.profile.followers} followers, '
+          '${widget.profile.following} following)',
     );
   }
 
@@ -102,6 +138,14 @@ class _LoadedState extends ConsumerState<_Loaded> {
     if (position.maxScrollExtent - position.pixels > _loadMoreThreshold) return;
     ref.read(postListProvider(_source).notifier).loadMore();
   }
+
+  /// The tabs on offer. Likes are private, so only your own profile has one.
+  List<ProfileTab> get _tabs => [
+        ProfileTab.posts,
+        ProfileTab.media,
+        ProfileTab.videos,
+        if (widget.profile.isOwnProfile) ProfileTab.likes,
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +169,19 @@ class _LoadedState extends ConsumerState<_Loaded> {
           SliverToBoxAdapter(
             child: _Header(profile: profile, username: widget.username),
           ),
-          _posts(profile, posts),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: _TabStrip(
+              tabs: _tabs,
+              selected: _tab,
+              onSelect: (tab) {
+                if (tab == _tab) return;
+                setState(() => _tab = tab);
+              },
+              background: Theme.of(context).colorScheme.surface,
+            ),
+          ),
+          ..._body(profile, posts),
           const SliverToBoxAdapter(
             child: SizedBox(height: SpacingTokens.space40),
           ),
@@ -134,71 +190,191 @@ class _LoadedState extends ConsumerState<_Loaded> {
     );
   }
 
-  Widget _posts(ProfileModel profile, FeedState state) {
+  List<Widget> _body(ProfileModel profile, FeedState state) {
     if (state.isLoadingFirstPage && state.posts.isEmpty) {
-      return const SliverToBoxAdapter(
-        child: Padding(
-          padding: EdgeInsets.all(SpacingTokens.space32),
-          child: Center(child: CircularProgressIndicator()),
+      return const [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.all(SpacingTokens.space32),
+            child: Center(child: CircularProgressIndicator()),
+          ),
         ),
-      );
+      ];
     }
 
     if (state.posts.isEmpty) {
-      final scheme = Theme.of(context).colorScheme;
-      final failed = state.error;
-      return SliverToBoxAdapter(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: SpacingTokens.space32,
-            vertical: SpacingTokens.space32,
-          ),
-          child: Column(
-            children: [
-              Icon(
-                failed == null
-                    ? Icons.forum_outlined
-                    : Icons.cloud_off_outlined,
-                size: 40,
-                color: scheme.onSurface.withValues(alpha: .35),
-              ),
-              const SizedBox(height: SpacingTokens.space12),
-              Text(
-                failed ??
-                    (profile.isOwnProfile
-                        ? 'Anything you post shows up here.'
-                        : '${profile.displayName} has not posted anything yet.'),
-                textAlign: TextAlign.center,
-                style: TextStyle(color: scheme.onSurface.withValues(alpha: .7)),
-              ),
-              if (failed != null)
-                TextButton(
-                  onPressed:
-                      ref.read(postListProvider(_source).notifier).refresh,
-                  child: const Text('Try again'),
-                ),
-            ],
-          ),
-        ),
-      );
+      return [SliverToBoxAdapter(child: _empty(profile, state.error))];
     }
 
-    return SliverList.builder(
-      itemCount: state.posts.length + (state.isLoadingMore ? 1 : 0),
-      itemBuilder: (context, index) {
-        if (index >= state.posts.length) {
-          return const Padding(
-            padding: EdgeInsets.all(SpacingTokens.space16),
-            child: Center(child: CircularProgressIndicator()),
-          );
-        }
-        return PostCard(post: state.posts[index], source: _source);
-      },
+    // Videos are tiles, not cards: a column of players is unreadable, and the
+    // point of the tab is seeing what is there at a glance.
+    if (_tab == ProfileTab.videos) {
+      return [
+        VideoTileGrid(posts: state.posts),
+        if (state.isLoadingMore)
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(SpacingTokens.space16),
+              child: Center(child: CircularProgressIndicator()),
+            ),
+          ),
+      ];
+    }
+
+    return [
+      SliverList.builder(
+        itemCount: state.posts.length + (state.isLoadingMore ? 1 : 0),
+        itemBuilder: (context, index) {
+          if (index >= state.posts.length) {
+            return const Padding(
+              padding: EdgeInsets.all(SpacingTokens.space16),
+              child: Center(child: CircularProgressIndicator()),
+            );
+          }
+          return PostCard(post: state.posts[index], source: _source);
+        },
+      ),
+    ];
+  }
+
+  Widget _empty(ProfileModel profile, String? failed) {
+    final scheme = Theme.of(context).colorScheme;
+    final who =
+        profile.isOwnProfile ? 'You have' : '${profile.displayName} has';
+
+    final message = failed ??
+        switch (_tab) {
+          ProfileTab.posts => profile.isOwnProfile
+              ? 'Anything you post shows up here.'
+              : '$who not posted anything yet.',
+          ProfileTab.media => '$who not posted any photos or clips.',
+          ProfileTab.videos => '$who not posted any videos.',
+          ProfileTab.likes => 'Posts you like are kept here, just for you.',
+        };
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: SpacingTokens.space32,
+        vertical: SpacingTokens.space32,
+      ),
+      child: Column(
+        children: [
+          Icon(
+            failed == null ? Iconsax.document_copy : Iconsax.cloud_cross_copy,
+            size: 40,
+            color: scheme.onSurface.withValues(alpha: .35),
+          ),
+          const SizedBox(height: SpacingTokens.space12),
+          Text(
+            message,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: scheme.onSurface.withValues(alpha: .7)),
+          ),
+          if (failed != null) ...[
+            const SizedBox(height: SpacingTokens.space12),
+            ActionButton(
+              label: 'Try again',
+              icon: Iconsax.refresh_copy,
+              kind: ActionButtonKind.tonal,
+              onPressed: ref.read(postListProvider(_source).notifier).refresh,
+            ),
+          ],
+        ],
+      ),
     );
   }
 }
 
-/// The cover photo, as a plain box.
+/// The tab strip, pinned under the header once it reaches the top.
+class _TabStrip extends SliverPersistentHeaderDelegate {
+  final List<ProfileTab> tabs;
+  final ProfileTab selected;
+  final ValueChanged<ProfileTab> onSelect;
+  final Color background;
+
+  const _TabStrip({
+    required this.tabs,
+    required this.selected,
+    required this.onSelect,
+    required this.background,
+  });
+
+  static const double _height = 46;
+
+  @override
+  double get minExtent => _height;
+
+  @override
+  double get maxExtent => _height;
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlaps) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return Material(
+      color: background,
+      child: Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                for (final tab in tabs)
+                  Expanded(
+                    child: InkWell(
+                      onTap: () => onSelect(tab),
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          Center(
+                            child: Text(
+                              tab.label,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: tab == selected
+                                    ? FontWeight.w700
+                                    : FontWeight.w500,
+                                color: tab == selected
+                                    ? scheme.onSurface
+                                    : scheme.onSurface.withValues(alpha: 0.6),
+                              ),
+                            ),
+                          ),
+                          if (tab == selected)
+                            Container(
+                              height: 3,
+                              width: 32,
+                              decoration: BoxDecoration(
+                                color: scheme.primary,
+                                borderRadius: const BorderRadius.vertical(
+                                  top: Radius.circular(3),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 1,
+            thickness: 0.5,
+            color: scheme.outline.withValues(alpha: 0.2),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  bool shouldRebuild(_TabStrip old) =>
+      old.selected != selected ||
+      old.background != background ||
+      old.tabs.length != tabs.length;
+}
+
+/// The cover photo, running the full width and up under the status bar.
 class _Cover extends StatelessWidget {
   final ProfileModel profile;
 
@@ -207,19 +383,38 @@ class _Cover extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    // Plus the status bar, because the body starts behind it.
+    final height = 160 + MediaQuery.paddingOf(context).top;
 
     return SizedBox(
-      height: 130,
+      height: height,
       width: double.infinity,
-      child: profile.coverUrl == null
-          ? _DefaultCover(scheme: scheme)
-          : Image.network(
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          if (profile.coverUrl == null)
+            _DefaultCover(scheme: scheme)
+          else
+            Image.network(
               profile.coverUrl!,
               fit: BoxFit.cover,
               errorBuilder: (_, __, ___) => _DefaultCover(scheme: scheme),
               loadingBuilder: (context, child, progress) =>
                   progress == null ? child : _DefaultCover(scheme: scheme),
             ),
+          // Keeps the white back and share buttons legible over a pale cover.
+          const DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0x66000000), Color(0x00000000)],
+                stops: [0, 0.45],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -246,6 +441,58 @@ class _DefaultCover extends StatelessWidget {
   }
 }
 
+/// A back button that stays visible over a photograph.
+class _GlassBack extends StatelessWidget {
+  const _GlassBack();
+
+  @override
+  Widget build(BuildContext context) {
+    return _GlassAction(
+      icon: Iconsax.arrow_left_copy,
+      tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+      onPressed: () => Navigator.pop(context),
+    );
+  }
+}
+
+class _GlassAction extends StatelessWidget {
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onPressed;
+
+  const _GlassAction({
+    required this.icon,
+    required this.tooltip,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Tooltip(
+        message: tooltip,
+        child: Semantics(
+          button: true,
+          label: tooltip,
+          child: InkWell(
+            onTap: onPressed,
+            customBorder: const CircleBorder(),
+            child: Container(
+              width: 36,
+              height: 36,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0x59000000),
+              ),
+              child: Icon(icon, size: 19, color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _Header extends ConsumerWidget {
   final ProfileModel profile;
   final String? username;
@@ -265,29 +512,25 @@ class _Header extends ConsumerWidget {
         SpacingTokens.space20,
         SpacingTokens.space12,
         SpacingTokens.space20,
-        SpacingTokens.space8,
+        0,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // spaceBetween rather than a Spacer. A flexible child in a row that
           // overflows is allocated negative space, which debug clamps and
-          // reports and release does not -- and this row carries a button
-          // whose width depends on its label.
+          // reports and release does not.
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              // Flat: a ring, no drop shadow. The avatar used to float above
-              // the cover on a blurred black shadow, which read as a bug
-              // against a light cover.
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: scheme.surface, width: 3),
                 ),
                 child: CircleAvatar(
-                  radius: 36,
+                  radius: 38,
                   backgroundColor: scheme.primary.withValues(alpha: 0.2),
                   foregroundImage: profile.avatarUrl == null
                       ? null
@@ -297,7 +540,7 @@ class _Header extends ConsumerWidget {
                 ),
               ),
               Flexible(
-                child: _PrimaryAction(profile: profile, username: username),
+                child: _Actions(profile: profile, username: username),
               ),
             ],
           ),
@@ -306,19 +549,23 @@ class _Header extends ConsumerWidget {
             profile.displayName,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge
-                ?.copyWith(fontWeight: FontWeight.w700),
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w800,
+              height: 1.2,
+            ),
           ),
           if (handle != null)
-            Text(
-              handle,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 14,
-                color: scheme.onSurface.withValues(alpha: 0.6),
+            Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Text(
+                handle,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: scheme.onSurface.withValues(alpha: 0.6),
+                ),
               ),
             ),
           if (bio != null && bio.isNotEmpty) ...[
@@ -345,20 +592,17 @@ class _Header extends ConsumerWidget {
             const SizedBox(height: SpacingTokens.space12),
             _DidChip(did: profile.did!),
           ],
-          const SizedBox(height: SpacingTokens.space8),
-          Divider(color: scheme.outline.withValues(alpha: 0.15)),
+          const SizedBox(height: SpacingTokens.space12),
         ],
       ),
     );
   }
 }
 
-/// Posts, followers, following and points.
+/// Followers, following and points.
 ///
-/// A Wrap, not a Row. Four figures beside four labels is the widest thing on
-/// the screen, and at a large text size or on a narrow handset it is the row
-/// most likely to run out of space -- so it takes a second line rather than
-/// overflowing.
+/// The post count is gone: it sits directly above a tab called Posts, which
+/// then shows them. Followers and following open the list they name.
 class _Counts extends StatelessWidget {
   final ProfileModel profile;
 
@@ -370,31 +614,70 @@ class _Counts extends StatelessWidget {
       spacing: SpacingTokens.space20,
       runSpacing: SpacingTokens.space8,
       children: [
-        _Count(value: profile.posts, label: 'Posts'),
-        _Count(value: profile.followers, label: 'Followers'),
-        _Count(value: profile.following, label: 'Following'),
+        _Count(
+          value: profile.followers,
+          label: 'Followers',
+          onTap: () => Navigator.pushNamed(
+            context,
+            Routes.followers,
+            arguments: FollowListArgs(
+              userId: profile.id,
+              title: profile.displayName,
+              followers: true,
+            ),
+          ),
+        ),
+        _Count(
+          value: profile.following,
+          label: 'Following',
+          onTap: () => Navigator.pushNamed(
+            context,
+            Routes.following,
+            arguments: FollowListArgs(
+              userId: profile.id,
+              title: profile.displayName,
+              followers: false,
+            ),
+          ),
+        ),
         _Count(value: profile.kyronPoints, label: 'KP'),
       ],
     );
   }
 }
 
+/// What a followers-or-following screen needs to open.
+class FollowListArgs {
+  final String userId;
+  final String title;
+
+  /// True for the people following this account, false for those it follows.
+  final bool followers;
+
+  const FollowListArgs({
+    required this.userId,
+    required this.title,
+    required this.followers,
+  });
+}
+
 class _Count extends StatelessWidget {
   final int value;
   final String label;
+  final VoidCallback? onTap;
 
-  const _Count({required this.value, required this.label});
+  const _Count({required this.value, required this.label, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
 
-    return Row(
+    final content = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           formatCount(value),
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
         ),
         const SizedBox(width: SpacingTokens.space4),
         Text(
@@ -406,42 +689,70 @@ class _Count extends StatelessWidget {
         ),
       ],
     );
+
+    if (onTap == null) return content;
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 2),
+        child: content,
+      ),
+    );
   }
 }
 
-/// Follow, unfollow, or edit your own profile.
-class _PrimaryAction extends ConsumerStatefulWidget {
+/// Follow or unfollow, or edit and share your own.
+class _Actions extends ConsumerStatefulWidget {
   final ProfileModel profile;
   final String? username;
 
-  const _PrimaryAction({required this.profile, required this.username});
+  const _Actions({required this.profile, required this.username});
 
   @override
-  ConsumerState<_PrimaryAction> createState() => _PrimaryActionState();
+  ConsumerState<_Actions> createState() => _ActionsState();
 }
 
-class _PrimaryActionState extends ConsumerState<_PrimaryAction> {
+class _ActionsState extends ConsumerState<_Actions> {
   bool _busy = false;
 
   @override
   Widget build(BuildContext context) {
-    if (widget.profile.isOwnProfile) {
-      return OutlinedButton(
-        onPressed: () => Navigator.pushNamed(context, Routes.editProfile),
-        child: const Text('Edit profile', maxLines: 1),
-      );
-    }
+    final profile = widget.profile;
 
-    final following = widget.profile.isFollowing;
-
-    return FilledButton.tonal(
-      onPressed: _busy ? null : _toggle,
-      child: _busy
-          ? const SizedBox.square(
-              dimension: 14,
-              child: CircularProgressIndicator(strokeWidth: 2),
-            )
-          : Text(following ? 'Following' : 'Follow', maxLines: 1),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        ActionIconButton(
+          icon: Iconsax.export_1_copy,
+          tooltip: 'Share this profile',
+          onPressed: () => shareProfile(profile),
+        ),
+        const SizedBox(width: SpacingTokens.space8),
+        Flexible(
+          child: profile.isOwnProfile
+              ? ActionButton(
+                  label: 'Edit profile',
+                  icon: Iconsax.edit_2_copy,
+                  kind: ActionButtonKind.outlined,
+                  onPressed: () =>
+                      Navigator.pushNamed(context, Routes.editProfile),
+                )
+              : ActionButton(
+                  label: profile.isFollowing ? 'Following' : 'Follow',
+                  icon: profile.isFollowing
+                      ? Iconsax.tick_circle_copy
+                      : Iconsax.add,
+                  kind: profile.isFollowing
+                      ? ActionButtonKind.outlined
+                      : ActionButtonKind.primary,
+                  busy: _busy,
+                  onPressed: _toggle,
+                ),
+        ),
+      ],
     );
   }
 
@@ -547,7 +858,7 @@ class _Failed extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.person_off_outlined,
+            Icon(Iconsax.profile_delete_copy,
                 size: 48, color: scheme.onSurface.withValues(alpha: .35)),
             const SizedBox(height: SpacingTokens.space16),
             Text(
@@ -566,11 +877,13 @@ class _Failed extends ConsumerWidget {
                   ),
             ),
             const SizedBox(height: SpacingTokens.space20),
-            TextButton(
+            ActionButton(
+              label: 'Try again',
+              icon: Iconsax.refresh_copy,
+              kind: ActionButtonKind.tonal,
               onPressed: () => ref
                   .read(profileProvider(username).notifier)
                   .load(force: true),
-              child: const Text('Try again'),
             ),
           ],
         ),
