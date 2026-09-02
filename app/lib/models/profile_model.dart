@@ -98,6 +98,7 @@ class ProfileModel {
   ProfileModel copyWith({
     int? followers,
     bool? isFollowing,
+    bool? isOwnProfile,
   }) {
     return ProfileModel(
       id: id,
@@ -114,7 +115,7 @@ class ProfileModel {
       following: following,
       posts: posts,
       isFollowing: isFollowing ?? this.isFollowing,
-      isOwnProfile: isOwnProfile,
+      isOwnProfile: isOwnProfile ?? this.isOwnProfile,
     );
   }
 

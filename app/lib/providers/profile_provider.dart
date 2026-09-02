@@ -37,7 +37,14 @@ class ProfileNotifier extends StateNotifier<AsyncValue<ProfileModel>> {
   bool get isMine => _username == null;
 
   Future<void> load({bool force = false}) async {
-    state = const AsyncLoading();
+    // Only a first load empties the screen. A reload used to drop straight
+    // back to AsyncLoading, which replaced the whole page with a spinner --
+    // tearing down the scroll view, its controller and the chosen tab, and
+    // putting the reader back at the top of a page they had scrolled. Pulling
+    // to refresh did that every time, which is what made the profile feel as
+    // though it would not scroll.
+    if (state.value == null) state = const AsyncLoading();
+
     try {
       if (isMine) {
         final repo = _ref.read(currentUserRepositoryProvider);
@@ -50,8 +57,16 @@ class ProfileNotifier extends StateNotifier<AsyncValue<ProfileModel>> {
       } else {
         final repo = _ref.read(profileRepositoryProvider);
         final profile = await repo.byUsername(_username!);
-        AppLog.instance.info('profile', 'Loaded @$_username');
-        state = AsyncData(profile);
+        AppLog.instance.info('profile', 'Loaded $_username');
+        // A profile can be reached by account id as well as by handle, so the
+        // one being read may be the reader's own. Without this it would offer
+        // to follow you and hide your own Likes tab.
+        final me = _ref.read(currentUserProvider).asData?.value;
+        state = AsyncData(
+          me != null && me.id == profile.id
+              ? profile.copyWith(isOwnProfile: true)
+              : profile,
+        );
       }
     } catch (e, st) {
       // Logged as well as shown: the screen can only display one line, and a

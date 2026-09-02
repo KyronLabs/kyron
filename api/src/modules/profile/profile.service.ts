@@ -16,6 +16,18 @@ import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 export class ProfileService {
   private readonly logger = new Logger(ProfileService.name);
 
+  /**
+   * Whether a path segment is an account id rather than a handle.
+   *
+   * Handles are validated on the way in and cannot take this shape, so there
+   * is nothing for the two to collide over.
+   */
+  static isUuid(value: string): boolean {
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      value,
+    );
+  }
+
   constructor(
     private readonly supabase: SupabaseService,
     private readonly prisma: PrismaService,
@@ -236,9 +248,17 @@ export class ProfileService {
   // ==========================================
   // PHASE 4: PUBLIC PROFILE (Read from Prisma)
   // ==========================================
-  async getPublicProfile(username: string, viewerId?: string) {
+  async getPublicProfile(handleOrId: string, viewerId?: string) {
+    // Either a handle or an id. Not every account has a handle -- one is only
+    // set during onboarding -- and without this an account that skipped it was
+    // unreachable: every list that offered to open it had nothing to open it
+    // by, so the tap did nothing at all.
+    const where = ProfileService.isUuid(handleOrId)
+      ? { id: handleOrId }
+      : { username: handleOrId };
+
     const user = await this.prisma.user.findUnique({
-      where: { username },
+      where,
       select: {
         id: true,
         name: true,

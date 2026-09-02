@@ -137,6 +137,24 @@ class _LoadedState extends ConsumerState<_Loaded> {
     ref.read(postListProvider(_source).notifier).loadMore();
   }
 
+  /// Pulls the view back inside the content when the content gets shorter.
+  ///
+  /// Switching from a long tab to a short one -- Posts to Likes, say -- leaves
+  /// the position where it was while everything under it shrinks, so the
+  /// reader is left staring at a screen of blank below the end of a list they
+  /// have not scrolled. Same for a post being deleted from under them. Run on
+  /// every frame that changes the body, because a tab's posts arrive from the
+  /// network some frames after the tab is chosen.
+  void _clampScroll() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_controller.hasClients) return;
+      final position = _controller.position;
+      if (position.pixels > position.maxScrollExtent) {
+        _controller.jumpTo(position.maxScrollExtent);
+      }
+    });
+  }
+
   /// The tabs on offer. Likes are private, so only your own profile has one.
   List<ProfileTab> get _tabs => [
         ProfileTab.posts,
@@ -148,6 +166,7 @@ class _LoadedState extends ConsumerState<_Loaded> {
   Widget build(BuildContext context) {
     final profile = widget.profile;
     final posts = ref.watch(postListProvider(_source));
+    _clampScroll();
 
     return RefreshIndicator(
       onRefresh: () async {

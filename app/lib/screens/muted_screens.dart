@@ -298,13 +298,11 @@ class _PeopleState extends State<_People> {
               ),
               title: Text(person.displayName),
               subtitle: person.handle == null ? null : Text(person.handle!),
-              onTap: person.username == null
-                  ? null
-                  : () => Navigator.pushNamed(
-                        context,
-                        Routes.profile,
-                        arguments: person.username,
-                      ),
+              onTap: () => openProfile(
+                context,
+                username: person.username,
+                userId: person.id,
+              ),
               trailing: TextButton(
                 onPressed: () async {
                   await widget.unmute(person.id);

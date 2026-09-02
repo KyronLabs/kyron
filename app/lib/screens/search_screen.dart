@@ -179,11 +179,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         final person = state.results[index];
         return PersonTile(
           person: person,
-          onOpen: () {
-            final handle = person.username;
-            if (handle == null || handle.isEmpty) return;
-            Navigator.pushNamed(context, Routes.profile, arguments: handle);
-          },
+          onOpen: () => openProfile(
+            context,
+            username: person.username,
+            userId: person.id,
+          ),
         );
       },
     );

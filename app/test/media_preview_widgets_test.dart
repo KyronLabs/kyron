@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/post_media.dart';
 import 'package:kyron_app/widgets/inline_video.dart';
@@ -125,7 +126,7 @@ void main() {
       )));
 
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
-      expect(find.byIcon(Icons.play_arrow_rounded), findsNothing);
+      expect(find.byIcon(Iconsax.play), findsNothing);
     });
 
     testWidgets('offers a play button when it is waiting to be started',
@@ -139,7 +140,7 @@ void main() {
         ),
       )));
 
-      expect(find.byIcon(Icons.play_arrow_rounded), findsOneWidget);
+      expect(find.byIcon(Iconsax.play), findsOneWidget);
     });
   });
 }

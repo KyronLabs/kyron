@@ -32,9 +32,6 @@ class InlineVideo extends StatefulWidget {
   /// reading is hostile; tapping the speaker turns it on deliberately.
   final bool autoplay;
 
-  /// Opens the full-screen viewer. Null leaves the tile playing in place.
-  final VoidCallback? onExpand;
-
   /// Draw the controls. False on a wall of tiles, where a scrubber and a
   /// volume button on every thumbnail is noise -- the tile is a link to the
   /// post, not a player.
@@ -44,7 +41,6 @@ class InlineVideo extends StatefulWidget {
     super.key,
     required this.media,
     this.autoplay = true,
-    this.onExpand,
     this.chrome = true,
   });
 
@@ -77,11 +73,21 @@ class _InlineVideoState extends State<InlineVideo> {
   bool _controlsVisible = true;
   Timer? _hideControls;
 
+  /// Waits for the tile to settle before asking for a decoder.
+  ///
+  /// A fast scroll takes a clip past the threshold and out again inside a few
+  /// frames. Opening one for each of those is a burst of work for clips nobody
+  /// looked at, and it is what makes a list of them stutter.
+  Timer? _settle;
+
   /// Set when every decoder was busy being opened and this tile has to ask
   /// again in a moment. Bounded, so a tile cannot sit in a retry loop.
   Timer? _retry;
   int _retriesLeft = _maxRetries;
   static const int _maxRetries = 3;
+
+  /// How long a clip has to stay on screen before it is worth a decoder.
+  static const Duration _settleDelay = Duration(milliseconds: 220);
 
   /// How much of the tile has to be on screen before a clip is worth a
   /// decoder. High enough that two clips either side of a boundary do not
@@ -104,6 +110,7 @@ class _InlineVideoState extends State<InlineVideo> {
     if (old.media.url != widget.media.url) {
       _hideControls?.cancel();
       _retry?.cancel();
+      _cancelSettle();
       _controller?.removeListener(_onTick);
       _controller = null;
       VideoPool.instance.release(this);
@@ -120,6 +127,7 @@ class _InlineVideoState extends State<InlineVideo> {
   void dispose() {
     _hideControls?.cancel();
     _retry?.cancel();
+    _cancelSettle();
     _controller?.removeListener(_onTick);
     // The pool owns the controller and disposes it. Releasing here rather than
     // disposing directly is what keeps its count of open decoders honest.
@@ -222,6 +230,15 @@ class _InlineVideoState extends State<InlineVideo> {
     if (mounted) setState(() {});
   }
 
+  /// Stops a pending settle and forgets it, so the next time this tile comes
+  /// into view it can start a new one. Cancelling without clearing the handle
+  /// left it non-null, and the guard against a second timer then blocked every
+  /// later attempt -- the clip would never open again.
+  void _cancelSettle() {
+    _settle?.cancel();
+    _settle = null;
+  }
+
   void _scheduleHide() {
     _hideControls?.cancel();
     _hideControls = Timer(const Duration(seconds: 2), () {
@@ -237,6 +254,7 @@ class _InlineVideoState extends State<InlineVideo> {
     if (fraction <= 0) {
       // Off screen entirely: give the decoder back. Nobody is watching it, and
       // holding it is what starves the clip somebody is watching.
+      _cancelSettle();
       if (controller != null || _opening) {
         _hideControls?.cancel();
         _retry?.cancel();
@@ -252,16 +270,26 @@ class _InlineVideoState extends State<InlineVideo> {
     }
 
     if (fraction < _playThreshold) {
+      _cancelSettle();
       if (controller != null && controller.value.isPlaying) {
         unawaited(controller.pause());
       }
       return;
     }
 
-    if (widget.autoplay && !_manual) {
-      unawaited(_ensure(play: true));
-    } else if (controller != null) {
+    if (controller != null) {
       VideoPool.instance.touch(this);
+      if (widget.autoplay && !_manual && !controller.value.isPlaying) {
+        unawaited(controller.play());
+      }
+      return;
+    }
+
+    if (widget.autoplay && !_manual && _settle == null) {
+      _settle = Timer(_settleDelay, () {
+        _settle = null;
+        if (mounted) unawaited(_ensure(play: true));
+      });
     }
   }
 
@@ -388,31 +416,14 @@ class _InlineVideoState extends State<InlineVideo> {
         duration: const Duration(milliseconds: 180),
         child: Center(
           child: _RoundControl(
-            icon: playing ? Icons.pause_rounded : Icons.play_arrow_rounded,
-            size: 30,
+            icon: playing ? Iconsax.pause : Iconsax.play,
+            size: 24,
             diameter: 52,
             tooltip: playing ? 'Pause' : 'Play',
             onPressed: _togglePlay,
           ),
         ),
       ),
-
-      if (widget.onExpand != null)
-        Positioned(
-          right: SpacingTokens.space8,
-          top: SpacingTokens.space8,
-          child: AnimatedOpacity(
-            opacity: _controlsVisible ? 1 : 0,
-            duration: const Duration(milliseconds: 180),
-            child: _RoundControl(
-              icon: Icons.open_in_full_rounded,
-              size: 17,
-              diameter: 32,
-              tooltip: 'Full screen',
-              onPressed: widget.onExpand!,
-            ),
-          ),
-        ),
 
       // Time, scrubber and volume on one line along the bottom, rather than
       // scattered into three corners.
@@ -541,8 +552,8 @@ class VideoPoster extends StatelessWidget {
                       color: Color(0x66000000),
                     ),
                     child: const Icon(
-                      Icons.play_arrow_rounded,
-                      size: 30,
+                      Iconsax.play,
+                      size: 24,
                       color: Colors.white,
                     ),
                   ),
@@ -600,13 +611,11 @@ class VideoPoster extends StatelessWidget {
 class SizedInlineVideo extends StatelessWidget {
   final PostMedia media;
   final bool autoplay;
-  final VoidCallback? onExpand;
 
   const SizedInlineVideo({
     super.key,
     required this.media,
     this.autoplay = true,
-    this.onExpand,
   });
 
   /// Narrower than this and a clip is a sliver; wider and it is a strip.
@@ -630,11 +639,7 @@ class SizedInlineVideo extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: ratioFor(media),
-      child: InlineVideo(
-        media: media,
-        autoplay: autoplay,
-        onExpand: onExpand,
-      ),
+      child: InlineVideo(media: media, autoplay: autoplay),
     );
   }
 }

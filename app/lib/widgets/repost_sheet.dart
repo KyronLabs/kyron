@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/feed_post.dart';
-import '../providers/feed_provider.dart';
 import '../routes.dart';
 
 /// The choice behind the repost button: pass it on as-is, or say something.
 class RepostSheet {
   const RepostSheet._();
 
+  /// [onRepost] does the reposting and answers with a message to show, or
+  /// null when it worked.
+  ///
+  /// Passed in rather than looked up here, because the post lives somewhere
+  /// different on each screen that shows this sheet: in a list on the feed,
+  /// and on its own on the post's screen. Reposting through the feed's copy
+  /// from the post's own screen left the button on that screen unchanged.
   static Future<void> show(
-    BuildContext context,
-    WidgetRef ref, {
+    BuildContext context, {
     required FeedPost post,
-    required PostListSource source,
+    required Future<String?> Function() onRepost,
   }) {
     HapticFeedback.lightImpact();
     return showModalBottomSheet<void>(
@@ -42,9 +46,7 @@ class RepostSheet {
               ),
               onTap: () async {
                 Navigator.pop(sheetContext);
-                final message = await ref
-                    .read(postListProvider(source).notifier)
-                    .toggleRepost(post.id);
+                final message = await onRepost();
                 if (message != null && context.mounted) {
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text(message)));
