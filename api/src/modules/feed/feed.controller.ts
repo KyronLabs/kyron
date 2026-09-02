@@ -63,6 +63,12 @@ export class FeedController {
     return this.svc.voteOnPoll(req.user.id, id, body.optionId);
   }
 
+  /** Take a vote back, while the poll is still open. */
+  @Delete('posts/:id/poll/vote')
+  retractVote(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.retractVote(req.user.id, id);
+  }
+
   /** Post search: words, an account, a date range, an attachment kind. */
   @Get('search')
   searchPosts(@Req() req: AuthRequest, @Query() query: SearchPostsDto) {

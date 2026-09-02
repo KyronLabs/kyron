@@ -809,6 +809,92 @@ describe('FeedService', () => {
     });
   });
 
+  describe('taking a vote back', () => {
+    const pollModel = () => ({
+      findUnique: jest.fn<Promise<unknown>, [unknown]>(),
+    });
+    const voteModel = () => ({
+      create: jest.fn<Promise<unknown>, [unknown]>(),
+      deleteMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
+    });
+
+    const open = (closesAt: Date) => ({
+      id: 'poll-1',
+      closesAt,
+      post: { deletedAt: null },
+    });
+
+    it('removes the vote and answers with the poll as it now stands', () => {
+      // A poll with no way out punishes a mistap: the row is written the
+      // instant an option is touched, and there was nothing to undo it with.
+      const poll = pollModel();
+      const pollVote = voteModel();
+      poll.findUnique.mockResolvedValue(open(new Date(Date.now() + 60_000)));
+      pollVote.deleteMany.mockResolvedValue({ count: 1 });
+      post.findFirst.mockResolvedValue(row('p1'));
+
+      return service({ poll, pollVote }).then(async (svc) => {
+        await svc.retractVote(VIEWER, 'p1');
+
+        expect(pollVote.deleteMany).toHaveBeenCalledWith({
+          where: { pollId: 'poll-1', userId: VIEWER },
+        });
+      });
+    });
+
+    it('is content for there to be no vote to remove', async () => {
+      // deleteMany, not delete: taking back a vote you never cast leaves you
+      // exactly where you asked to be.
+      const poll = pollModel();
+      const pollVote = voteModel();
+      poll.findUnique.mockResolvedValue(open(new Date(Date.now() + 60_000)));
+      pollVote.deleteMany.mockResolvedValue({ count: 0 });
+      post.findFirst.mockResolvedValue(row('p1'));
+
+      await expect(
+        (await service({ poll, pollVote })).retractVote(VIEWER, 'p1'),
+      ).resolves.toBeDefined();
+    });
+
+    it('refuses once voting has closed', async () => {
+      // A closed poll is a result, and a result that can be changed afterwards
+      // is not one.
+      const poll = pollModel();
+      const pollVote = voteModel();
+      poll.findUnique.mockResolvedValue(open(new Date(Date.now() - 1000)));
+
+      await expect(
+        (await service({ poll, pollVote })).retractVote(VIEWER, 'p1'),
+      ).rejects.toThrow(BadRequestException);
+      expect(pollVote.deleteMany).not.toHaveBeenCalled();
+    });
+
+    it('reports a poll that is not there', async () => {
+      const poll = pollModel();
+      const pollVote = voteModel();
+      poll.findUnique.mockResolvedValue(null);
+
+      await expect(
+        (await service({ poll, pollVote })).retractVote(VIEWER, 'p1'),
+      ).rejects.toThrow(NotFoundException);
+    });
+
+    it('will not touch a poll on a deleted post', async () => {
+      const poll = pollModel();
+      const pollVote = voteModel();
+      poll.findUnique.mockResolvedValue({
+        id: 'poll-1',
+        closesAt: new Date(Date.now() + 60_000),
+        post: { deletedAt: new Date() },
+      });
+
+      await expect(
+        (await service({ poll, pollVote })).retractVote(VIEWER, 'p1'),
+      ).rejects.toThrow(NotFoundException);
+      expect(pollVote.deleteMany).not.toHaveBeenCalled();
+    });
+  });
+
   describe("the feed applies the reader's filters", () => {
     it('excludes blocked and muted accounts in the query', async () => {
       // Filtered server-side: hiding a blocked account's posts after they have

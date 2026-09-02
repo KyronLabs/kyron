@@ -238,6 +238,11 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                     border: InputBorder.none,
                     counterText: '',
                     isDense: true,
+                    // The one field that is not the standard height. It sits
+                    // in a bar with two icon buttons and grows as you type;
+                    // a floor under it makes an empty reply bar taller than
+                    // the row it lives in.
+                    constraints: const BoxConstraints(),
                   ),
                 ),
               ),

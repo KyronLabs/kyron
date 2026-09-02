@@ -96,6 +96,11 @@ class _PostListViewState extends ConsumerState<PostListView> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || !_controller.hasClients) return;
       final position = _controller.position;
+      // Only while nothing is moving. Being past the end is the normal state
+      // during an overscroll and for every frame of a fling that runs off it,
+      // and jumping the position there stops the gesture dead -- which is what
+      // turned a flick into something that had to be shoved.
+      if (position.isScrollingNotifier.value) return;
       if (position.pixels > position.maxScrollExtent) {
         _controller.jumpTo(position.maxScrollExtent);
       }
@@ -111,9 +116,11 @@ class _PostListViewState extends ConsumerState<PostListView> {
       onRefresh: _notifier.refresh,
       child: CustomScrollView(
         controller: _controller,
-        physics: const AlwaysScrollableScrollPhysics(
-          parent: BouncingScrollPhysics(),
-        ),
+        // The platform's own, through AlwaysScrollable so pulling to refresh
+        // still works on a list too short to scroll. Bouncing was iOS physics
+        // on an Android build: a flick carried further than the finger and
+        // came back, which reads as the list arguing with you.
+        physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
           ...widget.headerSlivers,
           SliverPadding(
