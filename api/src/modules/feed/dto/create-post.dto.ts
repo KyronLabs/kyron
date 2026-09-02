@@ -1,6 +1,7 @@
 import { Type } from 'class-transformer';
 import {
   ArrayMaxSize,
+  ArrayMinSize,
   IsArray,
   IsEnum,
   IsInt,
@@ -46,6 +47,27 @@ export class PostMediaDto {
   alt?: string;
 }
 
+export class CreatePollDto {
+  /**
+   * Between two and four answers. Bounded here so an unreasonable array never
+   * reaches the service; the service checks the same thing, because it is also
+   * the last point before rows are written.
+   */
+  @IsArray()
+  @ArrayMinSize(2, { message: 'A poll needs at least two answers.' })
+  @ArrayMaxSize(4, { message: 'A poll can have at most four answers.' })
+  @IsString({ each: true })
+  @MaxLength(80, { each: true })
+  options!: string[];
+
+  /** Five minutes to seven days. */
+  @Type(() => Number)
+  @IsInt()
+  @Min(5)
+  @Max(7 * 24 * 60)
+  durationMinutes!: number;
+}
+
 export class CreatePostDto {
   // Not IsNotEmpty: a post carrying only an image is a post. The service
   // rejects one that is empty *and* unattached.
@@ -68,6 +90,12 @@ export class CreatePostDto {
   @IsOptional()
   @IsEnum(ReplyPolicy, { message: 'That is not a reply setting we recognise.' })
   replyPolicy?: ReplyPolicy;
+
+  /** Attach a poll. The service enforces the answer count and duration. */
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => CreatePollDto)
+  poll?: CreatePollDto;
 
   // authorId used to be accepted here. With the route unguarded that let any
   // caller post as any user by naming them in the body; the author now comes

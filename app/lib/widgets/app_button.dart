@@ -1,15 +1,28 @@
+// lib/widgets/app_button.dart
 import 'package:flutter/material.dart';
 
+import 'action_button.dart';
+
+/// The full-width button at the foot of an auth form.
+///
+/// Kept as its own name because a dozen call sites use it, but it is now
+/// [ActionButton] underneath rather than a fourth hand-rolled button style.
+/// The auth screens had their own `ElevatedButton.styleFrom` with a 14-pixel
+/// radius while everything else was a stadium, which is part of why they
+/// looked untouched by the rest of the design work.
 class AppButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final bool isOutlined;
-  final bool isLoading; // Loading state
+  final bool isLoading;
 
   /// When false the button is visibly inert. Screens used to fake this by
   /// returning early from onTap, which is indistinguishable from a broken
   /// button: it depresses and nothing happens.
   final bool enabled;
+
+  /// An optional leading icon, at the 18-pixel size the rest of the app uses.
+  final IconData? icon;
 
   const AppButton({
     super.key,
@@ -18,70 +31,18 @@ class AppButton extends StatelessWidget {
     this.isOutlined = false,
     this.isLoading = false,
     this.enabled = true,
+    this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
-    final style = isOutlined
-        ? OutlinedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
-            ),
-            foregroundColor: scheme.primary,
-            side: BorderSide(color: scheme.primary.withOpacity(0.24)),
-          )
-        : ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
-            ),
-            foregroundColor: Colors.white,
-            backgroundColor: scheme.primary,
-          );
-
-    final isInteractive = enabled && !isLoading;
-
-    return AnimatedScale(
-      scale: isLoading ? 0.98 : 1.0, // Slight shrink when loading
-      duration: const Duration(milliseconds: 120),
-      child: isOutlined
-          ? OutlinedButton(
-              onPressed: isInteractive ? onTap : null,
-              style: style,
-              child: _buildContent(context),
-            )
-          : ElevatedButton(
-              onPressed: isInteractive ? onTap : null,
-              style: style,
-              child: _buildContent(context),
-            ),
-    );
-  }
-
-  Widget _buildContent(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
-    return Row(
-      mainAxisSize: MainAxisSize.min, // Keeps content centered
-      children: [
-        Text(label),
-        if (isLoading) ...[
-          const SizedBox(width: 12), // Space between text and loader
-          SizedBox(
-            width: 16,
-            height: 16,
-            child: CircularProgressIndicator(
-              strokeWidth: 2,
-              valueColor: AlwaysStoppedAnimation<Color>(
-                isOutlined ? scheme.primary : Colors.white,
-              ),
-            ),
-          ),
-        ],
-      ],
+    return ActionButton(
+      label: label,
+      icon: icon,
+      kind: isOutlined ? ActionButtonKind.outlined : ActionButtonKind.primary,
+      expand: true,
+      busy: isLoading,
+      onPressed: enabled ? onTap : null,
     );
   }
 }

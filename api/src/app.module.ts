@@ -10,6 +10,7 @@ import { AppConfigModule } from './config/config.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ProfileModule } from './modules/profile/profile.module';
+import { LinksModule } from './modules/links/links.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ProfileModule } from './modules/profile/profile.module';
     UsersModule,
     AuthModule,
     ProfileModule,
+    LinksModule,
   ],
   controllers: [],
   providers: [],

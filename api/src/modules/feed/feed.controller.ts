@@ -17,6 +17,8 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { ReplyPolicyDto } from './dto/reply-policy.dto';
 import { ListFeedDto } from './dto/list-feed.dto';
+import { SearchPostsDto } from './dto/search-posts.dto';
+import { VotePollDto } from './dto/vote-poll.dto';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 
@@ -45,6 +47,45 @@ export class FeedController {
     return this.svc.listRecent(req.user.id, query.limit, query.cursor);
   }
 
+  /** Vote in a post's poll. One vote per person, enforced by the database. */
+  @Post('posts/:id/poll/vote')
+  vote(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() body: VotePollDto,
+  ) {
+    return this.svc.voteOnPoll(req.user.id, id, body.optionId);
+  }
+
+  /** Post search: words, an account, a date range, an attachment kind. */
+  @Get('search')
+  searchPosts(@Req() req: AuthRequest, @Query() query: SearchPostsDto) {
+    return this.svc.searchPosts(
+      req.user.id,
+      {
+        q: query.q,
+        from: query.from,
+        after: query.after,
+        before: query.before,
+        has: query.has,
+      },
+      query.limit,
+      query.cursor,
+    );
+  }
+
+  /** Posts from the accounts you follow. The top bar's Following tab. */
+  @Get('following')
+  following(@Req() req: AuthRequest, @Query() query: ListFeedDto) {
+    return this.svc.listFollowing(req.user.id, query.limit, query.cursor);
+  }
+
+  /** Posts carrying a video. The top bar's Videos tab. */
+  @Get('videos')
+  videos(@Req() req: AuthRequest, @Query() query: ListFeedDto) {
+    return this.svc.listVideos(req.user.id, query.limit, query.cursor);
+  }
+
   /** One account's posts -- what a profile screen's Posts tab reads. */
   @Get('users/:userId/posts')
   byAuthor(
@@ -57,6 +98,7 @@ export class FeedController {
       req.user.id,
       query.limit,
       query.cursor,
+      query.has,
     );
   }
 

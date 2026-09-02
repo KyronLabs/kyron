@@ -4,6 +4,8 @@ import '../models/feed_post.dart';
 import '../models/post_media.dart';
 import '../models/post_comment.dart';
 import '../services/api_client.dart';
+import '../models/composer_poll.dart';
+import '../models/link_preview.dart';
 
 class FeedRepository {
   final ApiClient _api;
@@ -27,19 +29,81 @@ class FeedRepository {
   }
 
   /// One account's posts, newest first, with the same cursor rules as [recent].
+  ///
+  /// [has] narrows to posts carrying an attachment: `media` for anything
+  /// visual, or `image`, `gif` or `video` for one kind. That is what the
+  /// profile's Media and Videos tabs read.
   Future<FeedPage> byAuthor(
     String userId, {
     String? cursor,
     int limit = 20,
+    String? has,
   }) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/feed/users/$userId/posts',
       queryParameters: {
         'limit': limit,
         if (cursor != null) 'cursor': cursor,
+        if (has != null) 'has': has,
       },
     );
     return FeedPage.fromJson(res.data ?? const {});
+  }
+
+  /// Posts from the accounts you follow, newest first.
+  Future<FeedPage> following({String? cursor, int limit = 20}) =>
+      _page('/feed/following', cursor, limit);
+
+  /// Posts carrying a video, newest first.
+  Future<FeedPage> videos({String? cursor, int limit = 20}) =>
+      _page('/feed/videos', cursor, limit);
+
+  /// Post search. At least one of [query] and [from] has to be given.
+  Future<FeedPage> search({
+    String? query,
+    String? from,
+    DateTime? after,
+    DateTime? before,
+    String? has,
+    String? cursor,
+    int limit = 20,
+  }) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/feed/search',
+      queryParameters: {
+        'limit': limit,
+        if (query != null && query.isNotEmpty) 'q': query,
+        if (from != null && from.isNotEmpty) 'from': from,
+        // Sent as an instant rather than a local date, so a filter set in one
+        // timezone means the same moment when the server applies it.
+        if (after != null) 'after': after.toUtc().toIso8601String(),
+        if (before != null) 'before': before.toUtc().toIso8601String(),
+        if (has != null && has.isNotEmpty) 'has': has,
+        if (cursor != null) 'cursor': cursor,
+      },
+    );
+    return FeedPage.fromJson(res.data ?? const {});
+  }
+
+  /// Records a vote and answers with the post carrying the updated poll.
+  Future<FeedPost> voteOnPoll(String postId, String optionId) async {
+    final res = await _api.dio.post<Map<String, dynamic>>(
+      '/feed/posts/$postId/poll/vote',
+      data: {'optionId': optionId},
+    );
+    return FeedPost.fromJson(res.data ?? const {});
+  }
+
+  /// The Open Graph card for a link, or null when it has none.
+  Future<LinkPreview?> linkPreview(String url) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/links/preview',
+      queryParameters: {'url': url},
+    );
+    final preview = res.data?['preview'];
+    return preview is Map<String, dynamic>
+        ? LinkPreview.fromJson(preview)
+        : null;
   }
 
   /// The posts you have liked, most recently liked first.
@@ -86,6 +150,7 @@ class FeedRepository {
     List<PendingMedia> media = const [],
     String? quotedPostId,
     ReplyPolicy replyPolicy = ReplyPolicy.everyone,
+    ComposerPoll? poll,
   }) async {
     final res = await _api.dio.post<Map<String, dynamic>>(
       '/feed/posts',
@@ -97,6 +162,7 @@ class FeedRepository {
           'media':
               media.where((m) => m.isReady).map((m) => m.toJson()).toList(),
         if (quotedPostId != null) 'quotedPostId': quotedPostId,
+        if (poll != null) 'poll': poll.toJson(),
         'replyPolicy': replyPolicy.wire,
       },
     );

@@ -10,6 +10,7 @@ import {
   Body,
   Req,
   Param,
+  ParseUUIDPipe,
   Query,
   Logger,
   BadRequestException,
@@ -17,6 +18,7 @@ import {
 import { AuthGuard } from '../../common/guards/auth.guard';
 import { ProfileService } from './profile.service';
 import { SearchProfilesDto } from './dto/search-profiles.dto';
+import { ListFollowsDto } from './dto/list-follows.dto';
 import { Request } from 'express';
 
 /**
@@ -111,6 +113,45 @@ export class ProfileController {
   @Get('search')
   async search(@Req() req: AuthRequest, @Query() query: SearchProfilesDto) {
     return this.svc.searchProfiles(query.q, req.user.id, query.limit);
+  }
+
+  /**
+   * Who follows this account, and who it follows.
+   *
+   * Declared above the legacy catch-all below: a route with a parameter
+   * segment declared first swallows every static path after it, which is how
+   * /profile/interests once answered "User not found".
+   */
+  @UseGuards(AuthGuard)
+  @Get('users/:userId/followers')
+  async followers(
+    @Req() req: AuthRequest,
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @Query() query: ListFollowsDto,
+  ) {
+    return this.svc.listFollows(
+      userId,
+      'followers',
+      req.user.id,
+      query.limit,
+      query.cursor,
+    );
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('users/:userId/following')
+  async following(
+    @Req() req: AuthRequest,
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @Query() query: ListFollowsDto,
+  ) {
+    return this.svc.listFollows(
+      userId,
+      'following',
+      req.user.id,
+      query.limit,
+      query.cursor,
+    );
   }
 
   // ==========================================

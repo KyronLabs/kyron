@@ -1,5 +1,5 @@
 import { Transform } from 'class-transformer';
-import { IsInt, IsOptional, IsUUID, Max, Min } from 'class-validator';
+import { IsInt, IsOptional, IsString, IsUUID, Max, Min } from 'class-validator';
 
 export class ListFeedDto {
   /** Newest first; omit for the first page. */
@@ -14,4 +14,19 @@ export class ListFeedDto {
   @Min(1)
   @Max(50)
   limit?: number;
+
+  /**
+   * Narrows an author's posts to those carrying an attachment of one kind --
+   * what the profile's Media and Videos tabs read.
+   *
+   * Anything unrecognised is ignored rather than rejected: a newer client
+   * asking for a kind this deployment does not know should get the unfiltered
+   * list, not an error.
+   */
+  @IsOptional()
+  @IsString()
+  @Transform(({ value }: { value: unknown }) =>
+    typeof value === 'string' ? value.trim().toLowerCase() : value,
+  )
+  has?: string;
 }

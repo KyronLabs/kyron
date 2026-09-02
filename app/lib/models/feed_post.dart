@@ -1,4 +1,5 @@
 import 'post_media.dart';
+import 'poll.dart';
 
 /// A post exactly as GET /feed/recent returns it.
 ///
@@ -37,6 +38,9 @@ class FeedPost {
   final bool saved;
   final bool reposted;
 
+  /// The poll attached to it, or null. Most posts have none.
+  final Poll? poll;
+
   const FeedPost({
     required this.id,
     required this.content,
@@ -51,6 +55,7 @@ class FeedPost {
     this.liked = false,
     this.saved = false,
     this.reposted = false,
+    this.poll,
   });
 
   factory FeedPost.fromJson(Map<String, dynamic> json) => FeedPost(
@@ -73,6 +78,9 @@ class FeedPost {
         liked: json['likedByViewer'] == true,
         saved: json['savedByViewer'] == true,
         reposted: json['repostedByViewer'] == true,
+        poll: json['poll'] is Map<String, dynamic>
+            ? Poll.fromJson(json['poll'] as Map<String, dynamic>)
+            : null,
       );
 
   FeedPost copyWith({
@@ -82,6 +90,7 @@ class FeedPost {
     bool? liked,
     bool? saved,
     bool? reposted,
+    Poll? poll,
   }) =>
       FeedPost(
         id: id,
@@ -97,7 +106,23 @@ class FeedPost {
         liked: liked ?? this.liked,
         saved: saved ?? this.saved,
         reposted: reposted ?? this.reposted,
+        poll: poll ?? this.poll,
       );
+
+  /// The first http(s) link in the text, or null.
+  ///
+  /// Used to decide whether a post gets a link card. Matches what the post
+  /// body highlights, so a card cannot appear under a link the text did not
+  /// pick out -- or fail to appear under one it did.
+  String? get firstLink {
+    final match = RegExp(
+      r'https?://[^\s<>"]+',
+      caseSensitive: false,
+    ).firstMatch(content);
+    if (match == null) return null;
+    // Trailing punctuation belongs to the sentence, not the address.
+    return match.group(0)!.replaceAll(RegExp(r'[.,;:!?)\]]+$'), '');
+  }
 }
 
 class FeedAuthor {

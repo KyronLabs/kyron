@@ -32,6 +32,7 @@ import 'screens/composer_screen.dart';
 import 'screens/onboard_step1_screen.dart';
 import 'screens/onboard_step2_screen.dart';
 import 'screens/onboard_step3_screen.dart';
+import 'screens/follow_list_screen.dart';
 
 class Routes {
   static const splash = '/';
@@ -60,6 +61,8 @@ class Routes {
   static const mutedAccounts = '/settings/muted-accounts';
   static const profile = '/profile';
   static const editProfile = '/profile/edit';
+  static const followers = '/profile/followers';
+  static const following = '/profile/following';
   static const search = '/search';
   static const savedPosts = '/saved';
   static const likedPosts = '/liked';
@@ -168,6 +171,15 @@ class Routes {
               : const _UnknownRoute(name: postAnalytics),
         );
 
+      case followers:
+      case following:
+        final args = settings.arguments;
+        return _page(
+          args is FollowListArgs
+              ? FollowListScreen(args: args)
+              : _UnknownRoute(name: settings.name ?? followers),
+        );
+
       case help:
         return _page(const HelpScreen());
 
@@ -255,8 +267,11 @@ class Routes {
       case createArLens:
         return _page(const ComingSoonScreen.arLens());
 
+      // Polls are written in the composer, beneath the question they belong
+      // to, rather than on a screen of their own -- so this opens the composer
+      // with one already attached.
       case createPoll:
-        return _page(const ComingSoonScreen.poll());
+        return _page(const ComposerScreen(startWithPoll: true));
 
       case createSpace:
         return _page(const ComingSoonScreen.space());

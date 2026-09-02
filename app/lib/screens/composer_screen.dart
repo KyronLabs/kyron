@@ -12,6 +12,7 @@ import '../providers/current_user_provider.dart';
 import '../routes.dart';
 import '../services/draft_service.dart';
 import '../widgets/create_post/char_counter.dart';
+import '../widgets/create_post/poll_editor.dart';
 import '../widgets/create_post/url_preview.dart';
 import '../widgets/draft_sheet.dart';
 import '../widgets/gif_picker_sheet.dart';
@@ -31,7 +32,15 @@ class ComposerScreen extends ConsumerStatefulWidget {
   /// Set when the composer was opened to quote a post.
   final QuotedPost? quoting;
 
-  const ComposerScreen({super.key, this.quoting});
+  /// Opens with a blank poll already attached, for the Poll entry on the
+  /// create menu.
+  final bool startWithPoll;
+
+  const ComposerScreen({
+    super.key,
+    this.quoting,
+    this.startWithPoll = false,
+  });
 
   @override
   ConsumerState<ComposerScreen> createState() => _ComposerScreenState();
@@ -54,6 +63,13 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
       final quoting = widget.quoting;
       if (quoting != null) {
         ref.read(composerProvider.notifier).quote(quoting);
+      }
+
+      // Only when there is not one already: arriving here from the create
+      // menu with a restored draft that has a poll would otherwise throw the
+      // draft's answers away.
+      if (widget.startWithPoll && ref.read(composerProvider).poll == null) {
+        ref.read(composerProvider.notifier).togglePoll();
       }
 
       // The provider may already hold a restored draft.
@@ -156,7 +172,11 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
                         const SizedBox(height: SpacingTokens.space12),
                         QuotedPostCard(post: state.quoting!),
                       ],
-                      const UrlPreview(),
+                      const PollEditor(),
+                      // Suppressed while a poll is attached: the card would
+                      // sit under the answers and make it unclear which the
+                      // reader is meant to act on.
+                      if (state.poll == null) const UrlPreview(),
                     ],
                   ),
                 ),
@@ -228,6 +248,15 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
             enabled: state.canAddMedia,
             onTap: _addGif,
           ),
+          _tool(
+            icon: Iconsax.chart_2_copy,
+            tooltip: state.hasPoll ? 'Remove the poll' : 'Add a poll',
+            // Not disabled with attachments present -- it swaps to a poll and
+            // clears them, which the notifier does deliberately. Greying it
+            // out would leave no way to change your mind.
+            active: state.hasPoll,
+            onTap: ref.read(composerProvider.notifier).togglePoll,
+          ),
           const VerticalDivider(indent: 14, endIndent: 14, width: 8),
           _tool(
             icon: Iconsax.hashtag_copy,
@@ -249,10 +278,12 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
     required String tooltip,
     required VoidCallback onTap,
     bool enabled = true,
+    bool active = false,
   }) {
     return IconButton(
       icon: Icon(icon, size: 20),
       tooltip: tooltip,
+      color: active ? Theme.of(context).colorScheme.primary : null,
       onPressed: enabled ? onTap : null,
     );
   }

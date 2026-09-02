@@ -14,6 +14,27 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Link previews. A post carrying a link shows the page's card, fetched and
+  cached by the API rather than by each reader's device -- which is both
+  faster and the difference between one request per link and one per reader.
+  The fetch refuses private and link-local addresses, follows redirects by
+  hand so every hop is checked, caps what it reads, and remembers a failure so
+  a dead link is not retried on every scroll past it.
+- Polls. Two to four answers, five minutes to seven days, written under the
+  question in the composer rather than on a screen of their own. Results are
+  always visible, before and after voting. One vote per person is enforced by
+  a database constraint, not by a check two taps can race past.
+- A share action on every post: the system share sheet, copy link, copy text,
+  or quote it.
+- A tab pager on the profile -- Posts, Media, Videos, and Likes on your own --
+  and screens for who follows an account and who it follows, each with a
+  Follow button that works from the list.
+- Videos as a staggered wall of tiles, each keeping its own shape rather than
+  being cropped square.
+- Search filters, behind a button at the end of the search field: an account,
+  a date range, and what a post carries. Search now covers posts as well as
+  people.
+
 - Attachments on posts and comments: up to four images, GIFs or clips each,
   with a full-screen viewer that pinch-zooms, swipes between attachments,
   swipes down to dismiss, plays video with a scrubber, and shares or copies a
@@ -49,6 +70,18 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- One button. The design system's outlined and elevated themes both set an
+  infinite minimum width, which is right for the call to action at the foot of
+  a form and is why "Edit profile" grew to swallow the profile header. Every
+  button is now the proportions the composer's own already had.
+- The profile: the cover runs to the top of the screen under the bar, the
+  display name is larger with the handle beneath it, the post count is gone
+  from above a tab called Posts, and Edit profile is joined by a share button.
+- The composer's link preview no longer fetches the page on the device. Six
+  hundred lines -- an isolate, an HTML parse and three URL-guessing strategies
+  -- became a request to the same endpoint readers use, so what the author
+  sees while writing is what the post will actually carry.
+
 - The Android application id is `so.kyron.app`. It was still the Flutter
   template's `com.example.app`, which Google Play rejects outright. An
   installed build will not update over one carrying the old id.
@@ -72,6 +105,18 @@ section for that version, so what is written here is what people read.
   can reply, and delete.
 
 ### Fixed
+
+- Video posts rendered as a blank grey rectangle until the attachment was
+  opened. The tile drew a play glyph with no player behind it. A clip now
+  plays in place -- which is also what paints its first frame as the poster --
+  with a real play/pause control, a scrubber, a mute toggle, and autoplay,
+  muted, once half of it is on screen.
+- The Following and Videos tabs in the top bar recoloured a pill and changed
+  nothing: every tab read the same everyone-newest-first feed. Each now reads
+  its own, and an interest tab you add reads that topic's.
+- The sign-in and sign-up screens never picked up the shared input theme --
+  both field widgets set their own fill, their own 18-pixel padding and their
+  own resting outline, so every other screen moved on without them.
 
 - Video attachments always failed with a bare 413. The multipart plugin capped
   uploads at 5 MB while the media service advertised 25, and the plugin rejects
