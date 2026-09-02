@@ -86,6 +86,14 @@ class FeedRepository {
     return FeedPage.fromJson(res.data ?? const {});
   }
 
+  /// Takes a vote back and answers with the post carrying the updated poll.
+  Future<FeedPost> retractVote(String postId) async {
+    final res = await _api.dio.delete<Map<String, dynamic>>(
+      '/feed/posts/$postId/poll/vote',
+    );
+    return FeedPost.fromJson(res.data ?? const {});
+  }
+
   /// Records a vote and answers with the post carrying the updated poll.
   Future<FeedPost> voteOnPoll(String postId, String optionId) async {
     final res = await _api.dio.post<Map<String, dynamic>>(

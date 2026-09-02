@@ -110,8 +110,8 @@ class MediaGrid extends StatelessWidget {
     final item = media[index];
     final scheme = Theme.of(context).colorScheme;
 
-    // A clip has its own controls, so it takes its own taps; only a still
-    // opens the viewer by being tapped anywhere.
+    // Both open the viewer; a clip does it through its own tap handler, which
+    // sits above this one so the sound button can take its own taps first.
     return GestureDetector(
       onTap: item.isVideo
           ? null
@@ -132,6 +132,8 @@ class MediaGrid extends StatelessWidget {
                 // four decoders and four streams for a post nobody has
                 // stopped to watch yet.
                 autoplay: media.length == 1,
+                onOpen: () =>
+                    MediaViewer.open(context, media, initialIndex: index),
               )
             else
               Image.network(

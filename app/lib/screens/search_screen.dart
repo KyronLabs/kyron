@@ -66,21 +66,21 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               hintText: state.mode == SearchMode.people
                   ? 'Search people'
                   : 'Search posts',
-              // A little taller than the shared theme's 10, because this is
-              // the one field on the screen and the thing you came to use --
-              // 40 tall made it read as an afterthought in the bar.
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: SpacingTokens.space12,
-                vertical: SpacingTokens.space12,
-              ),
+              // No padding of its own any more. This field was the one that
+              // looked right, so its height became the theme's -- and a field
+              // that restates it is a field that drifts away from it again.
               prefixIcon: const Icon(Iconsax.search_normal_1_copy, size: 19),
+              // Matching the design system's field height. Written out rather
+              // than read from it because these are the icon boxes, not the
+              // field: they have to agree with it, and a box shorter than the
+              // field pulls the glyph off centre.
               prefixIconConstraints: const BoxConstraints(
                 minWidth: 40,
-                minHeight: 42,
+                minHeight: 44,
               ),
               suffixIconConstraints: const BoxConstraints(
                 minWidth: 40,
-                minHeight: 42,
+                minHeight: 44,
               ),
               suffixIcon: _Trailing(
                 showClear: !state.isIdle,

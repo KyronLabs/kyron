@@ -626,6 +626,43 @@ export class FeedService {
   }
 
   /**
+   * Takes a vote back, and answers with the poll as it now stands.
+   *
+   * A poll with no way out is a poll that punishes a mistap: the row was
+   * written the instant the option was touched, and there was nothing to undo
+   * it with. Retracting is not editing -- the vote is removed rather than
+   * moved -- so the counts stay honest and voting again is a fresh vote.
+   *
+   * Still refused once voting has closed. A closed poll is a result, and a
+   * result that can be changed afterwards is not one.
+   */
+  async retractVote(viewerId: string, postId: string): Promise<FeedPost> {
+    const poll = await this.prisma.poll.findUnique({
+      where: { postId },
+      select: {
+        id: true,
+        closesAt: true,
+        post: { select: { deletedAt: true } },
+      },
+    });
+
+    if (!poll || poll.post.deletedAt !== null) {
+      throw new NotFoundException('That poll no longer exists.');
+    }
+    if (poll.closesAt.getTime() <= Date.now()) {
+      throw new BadRequestException('This poll has closed.');
+    }
+
+    // deleteMany rather than delete: removing a vote that is not there is the
+    // state the caller asked for, not an error to report.
+    await this.prisma.pollVote.deleteMany({
+      where: { pollId: poll.id, userId: viewerId },
+    });
+
+    return this.getPost(postId, viewerId);
+  }
+
+  /**
    * Post search, with the filters the search screen offers.
    *
    * `from` is a handle rather than an id because that is what someone types.

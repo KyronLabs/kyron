@@ -12,6 +12,7 @@ class AppPreferences {
   static const _kTextScale = 'pref_text_scale';
   static const _kPushEnabled = 'pref_push_enabled';
   static const _kEmailEnabled = 'pref_email_enabled';
+  static const _kVideoMuted = 'pref_video_muted';
 
   /// The scales the font-size screen offers, smallest first.
   static const textScales = <double>[0.85, 1.0, 1.15, 1.3];
@@ -31,6 +32,17 @@ class AppPreferences {
   }
 
   Future<SharedPreferences> get _prefs => SharedPreferences.getInstance();
+
+  /// Whether video plays silently. One answer for the whole app, remembered
+  /// across launches: turning the sound on used to be something you did to one
+  /// clip, so watching a feed meant unmuting every post in it.
+  ///
+  /// Muted on a fresh install. A feed that starts talking is hostile.
+  Future<bool> readVideoMuted() async =>
+      (await _prefs).getBool(_kVideoMuted) ?? true;
+
+  Future<void> writeVideoMuted(bool muted) async =>
+      (await _prefs).setBool(_kVideoMuted, muted);
 
   Future<AppLanguage> readLanguage() async =>
       AppLanguage.fromCode((await _prefs).getString(_kLanguage));

@@ -1,6 +1,7 @@
 // lib/widgets/media_viewer.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:photo_view/photo_view.dart';
@@ -9,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
 
 import '../models/post_media.dart';
+import '../providers/video_settings_provider.dart';
 import '../services/app_log.dart';
 import '../services/video_pool.dart';
 
@@ -263,16 +265,16 @@ class _AltText extends StatelessWidget {
 }
 
 /// A video with a scrubber, played in place.
-class _Video extends StatefulWidget {
+class _Video extends ConsumerStatefulWidget {
   final String url;
 
   const _Video({required this.url});
 
   @override
-  State<_Video> createState() => _VideoState();
+  ConsumerState<_Video> createState() => _VideoState();
 }
 
-class _VideoState extends State<_Video> {
+class _VideoState extends ConsumerState<_Video> {
   VideoPlayerController? _controller;
   String? _error;
 
@@ -301,6 +303,10 @@ class _VideoState extends State<_Video> {
         setState(() => _error = 'This clip could not be played.');
         return;
       }
+      // The app's one answer about sound, not this screen's own. Opening a
+      // clip full screen used to start it at full volume however deliberately
+      // the feed behind it had been muted.
+      await controller.setVolume(ref.read(videoMutedProvider) ? 0 : 1);
       await controller.setLooping(true);
       await controller.play();
       if (!mounted) {
@@ -329,6 +335,11 @@ class _VideoState extends State<_Video> {
 
   @override
   Widget build(BuildContext context) {
+    final muted = ref.watch(videoMutedProvider);
+    ref.listen<bool>(videoMutedProvider, (_, next) {
+      _controller?.setVolume(next ? 0 : 1);
+    });
+
     if (_error != null) return const _Unavailable();
 
     final controller = _controller;
@@ -380,7 +391,58 @@ class _VideoState extends State<_Video> {
             colors: const VideoProgressColors(playedColor: Colors.white),
           ),
         ),
+        // Turning the sound on here turns it on everywhere, so going back to
+        // the feed does not mean muting your way through it again.
+        Positioned(
+          right: SpacingTokens.space20,
+          bottom: SpacingTokens.space40 + SpacingTokens.space24,
+          child: _ViewerSound(
+            muted: muted,
+            onPressed: ref.read(videoMutedProvider.notifier).toggle,
+          ),
+        ),
       ],
+    );
+  }
+}
+
+/// Sound on or off, from inside the full-screen player.
+class _ViewerSound extends StatelessWidget {
+  final bool muted;
+  final VoidCallback onPressed;
+
+  const _ViewerSound({required this.muted, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    final label = muted ? 'Turn sound on' : 'Turn sound off';
+
+    return Tooltip(
+      message: label,
+      child: Semantics(
+        button: true,
+        label: label,
+        child: InkWell(
+          onTap: () {
+            HapticFeedback.selectionClick();
+            onPressed();
+          },
+          customBorder: const CircleBorder(),
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.black.withValues(alpha: 0.5),
+            ),
+            child: Icon(
+              muted ? Iconsax.volume_slash : Iconsax.volume_high,
+              size: 19,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

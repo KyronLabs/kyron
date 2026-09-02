@@ -1,5 +1,8 @@
 // lib/widgets/poll_card.dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -7,6 +10,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/feed_post.dart';
 import '../models/poll.dart';
 import '../providers/feed_provider.dart';
+import '../repositories/feed_repository.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 
@@ -55,11 +59,23 @@ class _PollCardState extends ConsumerState<PollCard> {
                 option: option,
                 poll: poll,
                 busy: _voting == option.id,
+                // Your own answer, tapped again, takes the vote back. A poll
+                // with no way out punishes a mistap: the row is written the
+                // instant the option is touched and there was nothing to undo
+                // it with.
+                //
                 // Every row is inert while any vote is in flight, so a second
                 // tap cannot start a request the first has already lost.
-                onVote: poll.canVote && _voting == null
-                    ? () => _vote(option.id)
-                    : null,
+                onVote: _voting != null || poll.closed
+                    ? null
+                    : poll.votedOptionId == option.id
+                        ? () => _retract(option.id)
+                        : poll.hasVoted
+                            // Not inert, and not a second vote either: a row
+                            // that does nothing when tapped is worse than one
+                            // that says why it will not.
+                            ? _explainSwitch
+                            : () => _vote(option.id),
               ),
             ),
           Row(
@@ -88,17 +104,53 @@ class _PollCardState extends ConsumerState<PollCard> {
               ),
             ],
           ),
+          // Said rather than left to be discovered. Nothing about a filled row
+          // suggests it can be tapped again, so without this the way out is a
+          // feature only somebody who mistapped twice would ever find.
+          if (poll.hasVoted && !poll.closed)
+            Padding(
+              padding: const EdgeInsets.only(top: SpacingTokens.space4),
+              child: Text(
+                'Tap your answer again to take your vote back.',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: scheme.onSurface.withValues(alpha: 0.45),
+                ),
+              ),
+            ),
         ],
       ),
     );
   }
 
-  Future<void> _vote(String optionId) async {
+  void _explainSwitch() {
+    unawaited(HapticFeedback.selectionClick());
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Take your vote back first to change it.'),
+        duration: Duration(seconds: 3),
+      ),
+    );
+  }
+
+  Future<void> _vote(String optionId) => _run(
+        optionId,
+        (repo) => repo.voteOnPoll(widget.postId, optionId),
+      );
+
+  Future<void> _retract(String optionId) => _run(
+        optionId,
+        (repo) => repo.retractVote(widget.postId),
+      );
+
+  Future<void> _run(
+    String optionId,
+    Future<FeedPost> Function(FeedRepository repo) action,
+  ) async {
     setState(() => _voting = optionId);
+    unawaited(HapticFeedback.selectionClick());
     try {
-      final post = await ref
-          .read(feedRepositoryProvider)
-          .voteOnPoll(widget.postId, optionId);
+      final post = await action(ref.read(feedRepositoryProvider));
       widget.onVoted?.call(post);
     } catch (error) {
       if (!mounted) return;
@@ -154,7 +206,7 @@ class _Option extends StatelessWidget {
             // The filled bar. A FractionallySizedBox rather than a computed
             // width: the row's width is not known here, and measuring it would
             // mean a LayoutBuilder per option.
-            if (!poll.canVote)
+            if (poll.hasVoted || poll.closed)
               Align(
                 alignment: Alignment.centerLeft,
                 child: FractionallySizedBox(

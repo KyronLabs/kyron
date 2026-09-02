@@ -3,52 +3,65 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../models/post_media.dart';
+import '../providers/video_settings_provider.dart';
 import '../services/app_log.dart';
 import '../services/video_pool.dart';
 
 /// A clip as it appears in the feed.
 ///
-/// Shows the still the composer uploaded with the clip, and only opens a
-/// decoder when the clip is actually being watched -- through [VideoPool],
-/// which holds the number open at any moment to a handful. A phone will only
-/// decode so many videos at once; opening one per clip on screen is what made
-/// a scrolling feed and a wall of tiles paint for a moment and then go black.
+/// Shows the still the composer uploaded, and only opens a decoder when the
+/// clip is on screen -- through [VideoPool], which holds the number open at
+/// any moment to a handful. A phone will only decode so many videos at once;
+/// opening one per clip on screen is what made a scrolling feed and a wall of
+/// tiles paint for a moment and then go black.
+///
+/// It is not a player. It plays while it is on screen, and a tap anywhere on
+/// it opens the clip full screen, where there is room for a scrubber and a
+/// reason to want one. A play button on a tile puts a control people hit by
+/// accident on top of the one thing they want the tile to do.
+///
+/// Nothing here rebuilds per frame of playback either. Driving a scrubber from
+/// a tile meant a setState on every frame of every visible clip, which is a
+/// rebuild of the post around it sixty times a second while somebody is trying
+/// to scroll past it.
 ///
 /// Sizes itself to whatever box it is given. Picking that box from the clip's
 /// own shape is [SizedInlineVideo]'s job, so a tile in a grid can still be
 /// square when the grid needs it to be.
-class InlineVideo extends StatefulWidget {
+class InlineVideo extends ConsumerStatefulWidget {
   final PostMedia media;
 
   /// Start playing, muted, once enough of the tile is on screen.
-  ///
-  /// Muted because an autoplaying clip that makes noise while someone is
-  /// reading is hostile; tapping the speaker turns it on deliberately.
   final bool autoplay;
 
-  /// Draw the controls. False on a wall of tiles, where a scrubber and a
-  /// volume button on every thumbnail is noise -- the tile is a link to the
-  /// post, not a player.
+  /// Draw the sound button. False on a wall of tiles, where a control on every
+  /// thumbnail is noise: there the tile is a link to a post, not a player.
   final bool chrome;
+
+  /// Opens the clip full screen. Null leaves the tile inert, so the tap
+  /// belongs to whatever is underneath it.
+  final VoidCallback? onOpen;
 
   const InlineVideo({
     super.key,
     required this.media,
     this.autoplay = true,
     this.chrome = true,
+    this.onOpen,
   });
 
   @override
-  State<InlineVideo> createState() => _InlineVideoState();
+  ConsumerState<InlineVideo> createState() => _InlineVideoState();
 }
 
-class _InlineVideoState extends State<InlineVideo> {
+class _InlineVideoState extends ConsumerState<InlineVideo> {
   VideoPlayerController? _controller;
 
   /// True between asking the pool for a decoder and getting one.
@@ -57,21 +70,6 @@ class _InlineVideoState extends State<InlineVideo> {
   /// Non-null once the clip itself turned out to be unplayable. Kept so the
   /// tile can say so rather than retrying forever on something broken.
   String? _failure;
-
-  bool _muted = true;
-
-  /// Whether the user has taken control. Once they have, scrolling the tile
-  /// away still stops it, but scrolling back does not start it again: a clip
-  /// somebody deliberately paused must stay paused.
-  bool _manual = false;
-
-  /// Set while a decoder is being opened for a clip that should play the
-  /// moment it arrives.
-  bool _wantsPlayback = false;
-
-  /// Hides the controls a moment after they appear, the way a player does.
-  bool _controlsVisible = true;
-  Timer? _hideControls;
 
   /// Waits for the tile to settle before asking for a decoder.
   ///
@@ -108,53 +106,38 @@ class _InlineVideoState extends State<InlineVideo> {
     // Recycled onto a different clip. Without this the tile would keep
     // playing the previous one behind the new one's still.
     if (old.media.url != widget.media.url) {
-      _hideControls?.cancel();
-      _retry?.cancel();
       _cancelSettle();
-      _controller?.removeListener(_onTick);
+      _retry?.cancel();
       _controller = null;
       VideoPool.instance.release(this);
       _opening = false;
       _failure = null;
-      _manual = false;
-      _wantsPlayback = false;
-      _controlsVisible = true;
       _retriesLeft = _maxRetries;
     }
   }
 
   @override
   void dispose() {
-    _hideControls?.cancel();
-    _retry?.cancel();
     _cancelSettle();
-    _controller?.removeListener(_onTick);
+    _retry?.cancel();
     // The pool owns the controller and disposes it. Releasing here rather than
     // disposing directly is what keeps its count of open decoders honest.
     VideoPool.instance.release(this);
     super.dispose();
   }
 
+  /// Stops a pending settle and forgets it, so the next time this tile comes
+  /// into view it can start a new one.
+  void _cancelSettle() {
+    _settle?.cancel();
+    _settle = null;
+  }
+
   /// Gets hold of a decoder, opening one if this tile has none.
-  Future<void> _ensure({required bool play}) async {
-    if (_failure != null) return;
-
-    final existing = _controller;
-    if (existing != null) {
-      VideoPool.instance.touch(this);
-      if (play && !existing.value.isPlaying) await existing.play();
-      return;
-    }
-
-    if (_opening) {
-      // Already on its way. Remember whether it should be playing when it
-      // lands rather than queueing a second request for the same clip.
-      _wantsPlayback = _wantsPlayback || play;
-      return;
-    }
+  Future<void> _ensure() async {
+    if (_failure != null || _opening || _controller != null) return;
 
     _opening = true;
-    _wantsPlayback = play;
     if (mounted) setState(() {});
 
     VideoPlayerController? controller;
@@ -184,66 +167,36 @@ class _InlineVideoState extends State<InlineVideo> {
       // both of those settle within a moment and the tile may never move
       // again to trigger another attempt.
       setState(() => _opening = false);
-      if (_wantsPlayback && _retriesLeft > 0) {
+      if (_retriesLeft > 0) {
         _retriesLeft--;
         _retry?.cancel();
         _retry = Timer(const Duration(milliseconds: 450), () {
-          if (mounted && _controller == null) unawaited(_ensure(play: true));
+          if (mounted && _controller == null) unawaited(_ensure());
         });
       }
       return;
     }
 
     _retriesLeft = _maxRetries;
-
-    await controller.setVolume(_muted ? 0 : 1);
+    await controller.setVolume(ref.read(videoMutedProvider) ? 0 : 1);
     await controller.setLooping(true);
     if (!mounted) {
       VideoPool.instance.release(this);
       return;
     }
 
-    // Rebuilds on every frame of playback, which is what moves the scrubber.
-    controller.addListener(_onTick);
     setState(() {
       _controller = controller;
       _opening = false;
     });
 
-    if (_wantsPlayback) {
-      await controller.play();
-      _scheduleHide();
-    }
+    if (widget.autoplay) await controller.play();
   }
 
   /// The pool took this tile's decoder back for a clip closer to the reader.
   void _onEvicted() {
-    _controller?.removeListener(_onTick);
     _controller = null;
-    // A clip that was taken away was not paused by anyone, so it is fair to
-    // start it again when it next comes into view.
-    _manual = false;
     if (mounted) setState(() {});
-  }
-
-  void _onTick() {
-    if (mounted) setState(() {});
-  }
-
-  /// Stops a pending settle and forgets it, so the next time this tile comes
-  /// into view it can start a new one. Cancelling without clearing the handle
-  /// left it non-null, and the guard against a second timer then blocked every
-  /// later attempt -- the clip would never open again.
-  void _cancelSettle() {
-    _settle?.cancel();
-    _settle = null;
-  }
-
-  void _scheduleHide() {
-    _hideControls?.cancel();
-    _hideControls = Timer(const Duration(seconds: 2), () {
-      if (mounted) setState(() => _controlsVisible = false);
-    });
   }
 
   void _onVisibility(VisibilityInfo info) {
@@ -256,12 +209,9 @@ class _InlineVideoState extends State<InlineVideo> {
       // holding it is what starves the clip somebody is watching.
       _cancelSettle();
       if (controller != null || _opening) {
-        _hideControls?.cancel();
         _retry?.cancel();
-        _controller?.removeListener(_onTick);
         _controller = null;
         _opening = false;
-        _wantsPlayback = false;
         VideoPool.instance.release(this);
         if (mounted) setState(() {});
       }
@@ -279,63 +229,30 @@ class _InlineVideoState extends State<InlineVideo> {
 
     if (controller != null) {
       VideoPool.instance.touch(this);
-      if (widget.autoplay && !_manual && !controller.value.isPlaying) {
+      if (widget.autoplay && !controller.value.isPlaying) {
         unawaited(controller.play());
       }
       return;
     }
 
-    if (widget.autoplay && !_manual && _settle == null) {
+    if (widget.autoplay && _settle == null) {
       _settle = Timer(_settleDelay, () {
         _settle = null;
-        if (mounted) unawaited(_ensure(play: true));
+        if (mounted) unawaited(_ensure());
       });
     }
   }
 
-  Future<void> _togglePlay() async {
-    final controller = _controller;
-    unawaited(HapticFeedback.selectionClick());
-
-    if (controller == null) {
-      // Tapping a still is how a clip that is not autoplaying gets started.
-      _manual = true;
-      if (mounted) setState(() => _controlsVisible = true);
-      await _ensure(play: true);
-      return;
-    }
-
-    _manual = true;
-    if (controller.value.isPlaying) {
-      await controller.pause();
-      _hideControls?.cancel();
-      if (mounted) setState(() => _controlsVisible = true);
-    } else {
-      VideoPool.instance.touch(this);
-      await controller.play();
-      _scheduleHide();
-    }
-    if (mounted) setState(() {});
-  }
-
-  Future<void> _toggleMute() async {
-    final controller = _controller;
-    if (controller == null) return;
-    _muted = !_muted;
-    unawaited(HapticFeedback.selectionClick());
-    await controller.setVolume(_muted ? 0 : 1);
-    if (mounted) setState(() {});
-    _scheduleHide();
-  }
-
-  void _showControls() {
-    setState(() => _controlsVisible = true);
-    _scheduleHide();
-  }
-
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
+    // One answer for the whole app, so turning the sound on for one clip turns
+    // it on for the next one too -- rather than making somebody unmute every
+    // post in a feed.
+    final muted = ref.watch(videoMutedProvider);
+    ref.listen<bool>(videoMutedProvider, (_, next) {
+      unawaited(_controller?.setVolume(next ? 0 : 1) ?? Future<void>.value());
+    });
+
     final controller = _controller;
     final ready = controller != null && controller.value.isInitialized;
 
@@ -368,7 +285,14 @@ class _InlineVideoState extends State<InlineVideo> {
             ),
           ),
           if (widget.chrome)
-            ..._chrome(scheme, controller, controller.value.isPlaying),
+            Positioned(
+              right: SpacingTokens.space8,
+              bottom: SpacingTokens.space8,
+              child: _SoundButton(
+                muted: muted,
+                onPressed: ref.read(videoMutedProvider.notifier).toggle,
+              ),
+            ),
         ],
       );
     }
@@ -377,109 +301,60 @@ class _InlineVideoState extends State<InlineVideo> {
       // Keyed by the attachment, so two clips in one post are tracked apart.
       key: Key('inline-video-${widget.media.id}-$_instance'),
       onVisibilityChanged: _onVisibility,
-      child: widget.chrome && _failure == null
-          ? GestureDetector(
-              onTap: _controlsVisible || !ready ? _togglePlay : _showControls,
+      child: widget.onOpen == null
+          ? body
+          : GestureDetector(
+              // The whole clip opens the clip. Nothing here toggles playback:
+              // a tile that stops when you touch it is a tile that fights the
+              // one thing you wanted from it.
+              onTap: () {
+                unawaited(HapticFeedback.selectionClick());
+                widget.onOpen!();
+              },
               child: body,
-            )
-          : body,
+            ),
     );
   }
+}
 
-  List<Widget> _chrome(
-    ColorScheme scheme,
-    VideoPlayerController controller,
-    bool playing,
-  ) {
-    return [
-      // A scrim under the controls, so white glyphs stay legible over a
-      // bright frame.
-      AnimatedOpacity(
-        opacity: _controlsVisible ? 1 : 0,
-        duration: const Duration(milliseconds: 180),
-        child: const DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.center,
-              end: Alignment.bottomCenter,
-              colors: [Color(0x00000000), Color(0x99000000)],
+/// Sound on or off, for every clip in the app.
+class _SoundButton extends StatelessWidget {
+  final bool muted;
+  final VoidCallback onPressed;
+
+  const _SoundButton({required this.muted, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    final label = muted ? 'Turn sound on' : 'Turn sound off';
+
+    return Tooltip(
+      message: label,
+      child: Semantics(
+        button: true,
+        label: label,
+        child: GestureDetector(
+          // Its own tap, so turning the sound on does not also open the clip.
+          onTap: () {
+            unawaited(HapticFeedback.selectionClick());
+            onPressed();
+          },
+          child: Container(
+            width: 32,
+            height: 32,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Color(0x73000000),
+            ),
+            child: Icon(
+              muted ? Iconsax.volume_slash : Iconsax.volume_high,
+              size: 16,
+              color: Colors.white,
             ),
           ),
         ),
       ),
-
-      // Filled, not outlined. An outline play triangle reads as a button that
-      // has not been pressed yet; this is the state of the clip, so it is
-      // solid.
-      AnimatedOpacity(
-        opacity: _controlsVisible || !playing ? 1 : 0,
-        duration: const Duration(milliseconds: 180),
-        child: Center(
-          child: _RoundControl(
-            icon: playing ? Iconsax.pause : Iconsax.play,
-            size: 24,
-            diameter: 52,
-            tooltip: playing ? 'Pause' : 'Play',
-            onPressed: _togglePlay,
-          ),
-        ),
-      ),
-
-      // Time, scrubber and volume on one line along the bottom, rather than
-      // scattered into three corners.
-      Positioned(
-        left: SpacingTokens.space8,
-        right: SpacingTokens.space8,
-        bottom: SpacingTokens.space8,
-        child: AnimatedOpacity(
-          opacity: _controlsVisible ? 1 : 0,
-          duration: const Duration(milliseconds: 180),
-          child: Row(
-            children: [
-              Text(
-                _clock(controller.value),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(width: SpacingTokens.space8),
-              Expanded(
-                child: VideoProgressIndicator(
-                  controller,
-                  allowScrubbing: true,
-                  padding: EdgeInsets.zero,
-                  colors: VideoProgressColors(
-                    playedColor: Colors.white,
-                    bufferedColor: Colors.white38,
-                    backgroundColor: Colors.white24,
-                  ),
-                ),
-              ),
-              const SizedBox(width: SpacingTokens.space8),
-              _FlatControl(
-                icon:
-                    _muted ? Icons.volume_off_rounded : Icons.volume_up_rounded,
-                tooltip: _muted ? 'Unmute' : 'Mute',
-                onPressed: _toggleMute,
-              ),
-            ],
-          ),
-        ),
-      ),
-    ];
-  }
-
-  /// `1:04 / 3:12`.
-  static String _clock(VideoPlayerValue value) {
-    String format(Duration d) {
-      final minutes = d.inMinutes;
-      final seconds = d.inSeconds.remainder(60).toString().padLeft(2, '0');
-      return '$minutes:$seconds';
-    }
-
-    return '${format(value.position)} / ${format(value.duration)}';
+    );
   }
 }
 
@@ -640,80 +515,6 @@ class SizedInlineVideo extends StatelessWidget {
     return AspectRatio(
       aspectRatio: ratioFor(media),
       child: InlineVideo(media: media, autoplay: autoplay),
-    );
-  }
-}
-
-class _RoundControl extends StatelessWidget {
-  final IconData icon;
-  final double size;
-  final double diameter;
-  final String tooltip;
-  final VoidCallback onPressed;
-
-  const _RoundControl({
-    required this.icon,
-    required this.size,
-    required this.diameter,
-    required this.tooltip,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Tooltip(
-      message: tooltip,
-      child: Semantics(
-        button: true,
-        label: tooltip,
-        child: InkWell(
-          onTap: onPressed,
-          customBorder: const CircleBorder(),
-          child: Container(
-            width: diameter,
-            height: diameter,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0x66000000),
-            ),
-            child: Icon(icon, size: size, color: Colors.white),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// A control on the scrubber line, with no disc behind it -- the scrim under
-/// the row is already doing that job.
-class _FlatControl extends StatelessWidget {
-  final IconData icon;
-  final String tooltip;
-  final VoidCallback onPressed;
-
-  const _FlatControl({
-    required this.icon,
-    required this.tooltip,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Tooltip(
-      message: tooltip,
-      child: Semantics(
-        button: true,
-        label: tooltip,
-        child: InkWell(
-          onTap: onPressed,
-          customBorder: const CircleBorder(),
-          child: SizedBox(
-            width: 26,
-            height: 26,
-            child: Icon(icon, size: 18, color: Colors.white),
-          ),
-        ),
-      ),
     );
   }
 }

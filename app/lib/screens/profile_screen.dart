@@ -6,6 +6,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../models/post_media.dart';
 import '../models/profile_model.dart';
 import '../providers/feed_provider.dart';
 import '../providers/profile_provider.dart';
@@ -16,6 +17,7 @@ import '../utils/format_count.dart';
 import '../widgets/action_button.dart';
 import '../widgets/post_card.dart';
 import '../widgets/media_tile_grid.dart';
+import '../widgets/media_viewer.dart';
 
 /// Which of the profile's tabs is showing.
 enum ProfileTab { posts, media, likes }
@@ -149,6 +151,11 @@ class _LoadedState extends ConsumerState<_Loaded> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || !_controller.hasClients) return;
       final position = _controller.position;
+      // Only while nothing is moving. Being past the end is the normal state
+      // during an overscroll and for every frame of a fling that runs off it,
+      // and jumping the position there stops the gesture dead -- which is what
+      // turned a flick into something that had to be shoved.
+      if (position.isScrollingNotifier.value) return;
       if (position.pixels > position.maxScrollExtent) {
         _controller.jumpTo(position.maxScrollExtent);
       }
@@ -454,18 +461,32 @@ class _CoverAndHeader extends StatelessWidget {
           left: SpacingTokens.space20,
           // Half above the cover's lower edge, half below it.
           top: coverHeight - _avatarSize / 2,
-          child: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: scheme.surface, width: avatarRing),
-            ),
-            child: CircleAvatar(
-              radius: avatarRadius,
-              backgroundColor: scheme.primary.withValues(alpha: 0.2),
-              foregroundImage: profile.avatarUrl == null
-                  ? null
-                  : NetworkImage(profile.avatarUrl!),
-              child: Icon(Iconsax.user_copy, size: 32, color: scheme.primary),
+          child: GestureDetector(
+            // A picture of someone at 84 pixels across is a thumbnail of a
+            // picture. Tapping it opens the picture.
+            onTap: profile.avatarUrl == null
+                ? null
+                : () => MediaViewer.open(context, [
+                      PostMedia(
+                        id: 'avatar-${profile.id}',
+                        kind: MediaKind.image,
+                        url: profile.avatarUrl!,
+                        alt: '${profile.displayName}\u2019s profile picture',
+                      ),
+                    ]),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: scheme.surface, width: avatarRing),
+              ),
+              child: CircleAvatar(
+                radius: avatarRadius,
+                backgroundColor: scheme.primary.withValues(alpha: 0.2),
+                foregroundImage: profile.avatarUrl == null
+                    ? null
+                    : NetworkImage(profile.avatarUrl!),
+                child: Icon(Iconsax.user_copy, size: 32, color: scheme.primary),
+              ),
             ),
           ),
         ),
@@ -481,8 +502,14 @@ class _Cover extends StatelessWidget {
   const _Cover({required this.profile});
 
   /// Plus the status bar, because the body starts behind it.
+  ///
+  /// A third shorter than it was. At 160 the cover pushed the name, the counts
+  /// and the tabs so far down that a phone opened on the picture and almost
+  /// nothing else.
+  static const double bannerHeight = 107;
+
   static double heightIn(BuildContext context) =>
-      160 + MediaQuery.paddingOf(context).top;
+      bannerHeight + MediaQuery.paddingOf(context).top;
 
   @override
   Widget build(BuildContext context) {
