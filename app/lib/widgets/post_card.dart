@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -9,11 +6,10 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/feed_post.dart';
 import '../providers/feed_provider.dart';
 import '../routes.dart';
-import '../utils/format_count.dart';
 import 'link_preview_card.dart';
 import 'media_grid.dart';
 import 'poll_card.dart';
-import 'post_action_colors.dart';
+import 'post_actions_row.dart';
 import 'voice_post_player.dart';
 import 'post_options_sheet.dart';
 import 'post_text.dart';
@@ -220,64 +216,21 @@ class _Actions extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(postListProvider(source).notifier);
 
-    // The three that are about the post -- reply, repost, like -- sit
-    // together on the left with their counts. Save and share are about what
-    // *you* do with it afterwards and carry no count, so they go to the right
-    // rather than being strung along the same evenly spaced row where a bare
-    // icon reads as a number that happens to be missing.
-    return Row(
-      children: [
-        _Action(
-          // Outline until you act on it, filled once you have -- so the state
-          // reads at a glance instead of only by colour.
-          icon: Iconsax.message_text_copy,
-          label: post.comments > 0 ? formatCount(post.comments) : null,
-          tooltip: 'Comments',
-          onTap: () => Navigator.pushNamed(
-            context,
-            Routes.postDetail,
-            arguments: post.id,
-          ),
-        ),
-        const SizedBox(width: SpacingTokens.space20),
-        _Action(
-          icon:
-              post.reposted ? Iconsax.repeat_circle_copy : Iconsax.repeat_copy,
-          label: post.reposts > 0 ? formatCount(post.reposts) : null,
-          active: post.reposted,
-          activeColor: PostActionColors.repost,
-          tooltip: 'Repost',
-          onTap: () => RepostSheet.show(
-            context,
-            ref,
-            post: post,
-            source: source,
-          ),
-        ),
-        const SizedBox(width: SpacingTokens.space20),
-        _Action(
-          icon: post.liked ? Iconsax.heart : Iconsax.heart_copy,
-          label: post.likes > 0 ? formatCount(post.likes) : null,
-          active: post.liked,
-          activeColor: PostActionColors.like,
-          tooltip: post.liked ? 'Unlike' : 'Like',
-          onTap: () => report(context, notifier.toggleLike(post.id)),
-        ),
-        const Spacer(),
-        _Action(
-          icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,
-          active: post.saved,
-          activeColor: PostActionColors.save,
-          tooltip: post.saved ? 'Remove from saved' : 'Save',
-          onTap: () => report(context, notifier.toggleSave(post.id)),
-        ),
-        const SizedBox(width: SpacingTokens.space12),
-        _Action(
-          icon: Iconsax.export_1_copy,
-          tooltip: 'Share',
-          onTap: () => SharePostSheet.show(context, post),
-        ),
-      ],
+    return PostActionsRow(
+      post: post,
+      onReply: () => Navigator.pushNamed(
+        context,
+        Routes.postDetail,
+        arguments: post.id,
+      ),
+      onRepost: () => RepostSheet.show(
+        context,
+        post: post,
+        onRepost: () => notifier.toggleRepost(post.id),
+      ),
+      onLike: () => report(context, notifier.toggleLike(post.id)),
+      onSave: () => report(context, notifier.toggleSave(post.id)),
+      onShare: () => SharePostSheet.show(context, post),
     );
   }
 }
@@ -309,66 +262,12 @@ class _OverflowButton extends ConsumerWidget {
   }
 }
 
-class _Action extends StatelessWidget {
-  final IconData icon;
-  final String? label;
-  final bool active;
-  final Color? activeColor;
-  final String tooltip;
-  final VoidCallback onTap;
-
-  const _Action({
-    required this.icon,
-    this.label,
-    this.active = false,
-    this.activeColor,
-    required this.tooltip,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final color = active
-        ? (activeColor ?? scheme.primary)
-        : scheme.onSurface.withValues(alpha: 0.55);
-
-    return Tooltip(
-      message: tooltip,
-      child: InkWell(
-        // selectionClick is the lightest thing the platform offers -- the tick
-        // of a picker passing a notch, not the thud of a confirmation. Anything
-        // heavier on a control people press while reading is intrusive.
-        onTap: () {
-          unawaited(HapticFeedback.selectionClick());
-          onTap();
-        },
-        borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
-        child: Padding(
-          padding: const EdgeInsets.all(SpacingTokens.space4),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, size: 17, color: color),
-              if (label != null) ...[
-                const SizedBox(width: SpacingTokens.space4),
-                Text(label!, style: TextStyle(fontSize: 12, color: color)),
-              ],
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// Opens an author's profile, if they have a handle to open one by.
+/// Opens an author's profile.
+///
+/// By handle when they have one, by account id otherwise -- an account that
+/// never set a handle still has a profile, and used to be unreachable.
 void openAuthor(BuildContext context, FeedAuthor author) {
-  final username = author.username;
-  // No handle means no public profile; a tap that navigates nowhere is better
-  // than one that opens an empty screen.
-  if (username == null || username.isEmpty) return;
-  Navigator.pushNamed(context, Routes.profile, arguments: username);
+  openProfile(context, username: author.username, userId: author.id);
 }
 
 /// Shows whatever a mutation reports, and nothing when it succeeds.

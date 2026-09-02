@@ -241,11 +241,11 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
         return PersonTile(
           person: person,
           onChanged: notifier.replace,
-          onOpen: () {
-            final handle = person.username;
-            if (handle == null || handle.isEmpty) return;
-            Navigator.pushNamed(context, Routes.profile, arguments: handle);
-          },
+          onOpen: () => openProfile(
+            context,
+            username: person.username,
+            userId: person.id,
+          ),
         );
       },
     );

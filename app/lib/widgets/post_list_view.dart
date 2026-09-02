@@ -87,9 +87,25 @@ class _PostListViewState extends ConsumerState<PostListView> {
   PostListNotifier get _notifier =>
       ref.read(postListProvider(widget.source).notifier);
 
+  /// Pulls the view back inside the content when the content gets shorter.
+  ///
+  /// Hiding, muting or blocking drops a post out of the list. Doing that near
+  /// the bottom leaves the position past the new end, and the reader is left
+  /// looking at blank space below it.
+  void _clampScroll() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_controller.hasClients) return;
+      final position = _controller.position;
+      if (position.pixels > position.maxScrollExtent) {
+        _controller.jumpTo(position.maxScrollExtent);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(postListProvider(widget.source));
+    _clampScroll();
 
     return RefreshIndicator(
       onRefresh: _notifier.refresh,

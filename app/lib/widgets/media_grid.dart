@@ -132,8 +132,6 @@ class MediaGrid extends StatelessWidget {
                 // four decoders and four streams for a post nobody has
                 // stopped to watch yet.
                 autoplay: media.length == 1,
-                onExpand: () =>
-                    MediaViewer.open(context, media, initialIndex: index),
               )
             else
               Image.network(

@@ -34,11 +34,17 @@ export class FeedController {
   @Post('posts')
   create(@Req() req: AuthRequest, @Body() dto: CreatePostDto) {
     // The author is the verified token's subject, never a field of the body.
+    //
+    // Named field by field rather than spread, so nothing the body carries can
+    // reach the service unless it is meant to. The cost of that is a field
+    // going missing in silence, which is what happened to the poll: it was
+    // validated, dropped here, and the post was written without it.
     return this.svc.createPost(req.user.id, {
       content: dto.content,
       media: dto.media,
       quotedPostId: dto.quotedPostId,
       replyPolicy: dto.replyPolicy,
+      poll: dto.poll,
     });
   }
 

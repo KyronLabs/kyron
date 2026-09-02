@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
@@ -237,8 +238,8 @@ class _PlayButton extends StatelessWidget {
                     ),
                   )
                 : Icon(
-                    playing ? Icons.pause_rounded : Icons.play_arrow_rounded,
-                    size: 20,
+                    playing ? Iconsax.pause : Iconsax.play,
+                    size: 17,
                     color: scheme.primary,
                   ),
           ),

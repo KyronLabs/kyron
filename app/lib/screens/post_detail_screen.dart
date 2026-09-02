@@ -13,13 +13,18 @@ import '../providers/feed_provider.dart';
 import '../providers/post_detail_provider.dart';
 import '../routes.dart';
 import '../utils/format_count.dart';
+import '../widgets/link_preview_card.dart';
 import '../widgets/media_grid.dart';
 import '../widgets/media_tray.dart';
+import '../widgets/poll_card.dart';
+import '../widgets/post_actions_row.dart';
 import '../widgets/post_card.dart';
 import '../widgets/post_options_sheet.dart';
 import '../widgets/post_text.dart';
 import '../widgets/quoted_post_card.dart';
 import '../widgets/repost_sheet.dart';
+import '../widgets/share_post_sheet.dart';
+import '../widgets/voice_post_player.dart';
 
 /// One post, with its comments and their replies.
 ///
@@ -113,7 +118,13 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
         padding: const EdgeInsets.only(bottom: SpacingTokens.space16),
         itemCount: state.comments.length + 2 + (state.hasMore ? 1 : 0),
         itemBuilder: (context, index) {
-          if (index == 0) return _Post(post: post, notifier: _notifier);
+          if (index == 0) {
+            return _Post(
+              post: post,
+              notifier: _notifier,
+              onReply: () => _replyTo(null),
+            );
+          }
           if (index == 1) return _ThreadHeading(count: post.comments);
 
           final commentIndex = index - 2;
@@ -261,7 +272,9 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
     }
   }
 
-  void _replyTo(PostComment comment) {
+  /// Puts the cursor in the box. A null comment replies to the post itself,
+  /// which is what the post's own reply button does.
+  void _replyTo(PostComment? comment) {
     setState(() => _replyingTo = comment);
     _focus.requestFocus();
   }
@@ -289,12 +302,21 @@ class _Post extends ConsumerWidget {
   final FeedPost post;
   final PostDetailNotifier notifier;
 
-  const _Post({required this.post, required this.notifier});
+  /// Puts the cursor in the box at the bottom of this screen. Reply is the one
+  /// action here that does not need to go anywhere.
+  final VoidCallback onReply;
+
+  const _Post({
+    required this.post,
+    required this.notifier,
+    required this.onReply,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
     final handle = post.author.handle;
+    final visual = post.media.where((m) => m.isVisual).toList();
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(
@@ -346,6 +368,7 @@ class _Post extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: SpacingTokens.space12),
+
           // Bigger than in the feed: on a screen showing one post, the post is
           // the content rather than one row of a list.
           if (post.content.trim().isNotEmpty)
@@ -353,78 +376,77 @@ class _Post extends ConsumerWidget {
               content: post.content,
               style: const TextStyle(fontSize: 17, height: 1.4),
             ),
-          if (post.media.isNotEmpty) ...[
+
+          // Everything a card shows, in the order a card shows it. This screen
+          // used to hand the whole media list to the grid -- so a voice post
+          // was a tile with nothing in it -- and drew neither a poll nor a
+          // link preview at all.
+          for (final voice in post.media.where((m) => m.isVoice))
+            VoicePostPlayer(media: voice),
+          if (visual.isNotEmpty) ...[
             const SizedBox(height: SpacingTokens.space12),
-            MediaGrid(media: post.media),
+            MediaGrid(media: visual),
           ],
+          if (post.poll != null)
+            PollCard(
+              postId: post.id,
+              poll: post.poll!,
+              onVoted: notifier.replacePost,
+            ),
+          if (post.media.isEmpty &&
+              post.quotedPost == null &&
+              post.firstLink != null)
+            LinkPreviewCard(url: post.firstLink!),
           if (post.quotedPost != null) ...[
             const SizedBox(height: SpacingTokens.space12),
             QuotedPostCard(post: post.quotedPost!),
           ],
+
           const SizedBox(height: SpacingTokens.space12),
           Text(
             _stamp(post.createdAt),
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 13,
               color: scheme.onSurface.withValues(alpha: 0.5),
             ),
           ),
-          const SizedBox(height: SpacingTokens.space8),
-          Divider(color: scheme.outline.withValues(alpha: 0.15)),
-          Row(
-            children: [
-              TextButton.icon(
-                onPressed: () => report(context, notifier.toggleLike()),
-                icon: Icon(
-                  post.liked ? Iconsax.heart : Iconsax.heart_copy,
-                  size: 18,
-                  color: post.liked ? scheme.error : null,
-                ),
-                label: Text(post.likes > 0 ? formatCount(post.likes) : 'Like'),
-                style: TextButton.styleFrom(
-                  foregroundColor: post.liked
-                      ? scheme.error
-                      : scheme.onSurface.withValues(alpha: 0.7),
-                ),
-              ),
-              TextButton.icon(
-                onPressed: () => RepostSheet.show(
-                  context,
-                  ref,
-                  post: post,
-                  source: PostListSource.recent,
-                ),
-                icon: Icon(
-                  post.reposted
-                      ? Iconsax.repeat_circle_copy
-                      : Iconsax.repeat_copy,
-                  size: 18,
-                  color: post.reposted ? scheme.tertiary : null,
-                ),
-                label: Text(
-                  post.reposts > 0 ? formatCount(post.reposts) : 'Repost',
-                ),
-                style: TextButton.styleFrom(
-                  foregroundColor: post.reposted
-                      ? scheme.tertiary
-                      : scheme.onSurface.withValues(alpha: 0.7),
-                ),
-              ),
-              TextButton.icon(
-                onPressed: () => report(context, notifier.toggleSave()),
-                icon: Icon(
-                  post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,
-                  size: 18,
-                  color: post.saved ? scheme.primary : null,
-                ),
-                label: Text(post.saved ? 'Saved' : 'Save'),
-                style: TextButton.styleFrom(
-                  foregroundColor: post.saved
-                      ? scheme.primary
-                      : scheme.onSurface.withValues(alpha: 0.7),
-                ),
-              ),
-            ],
+
+          // Counts spelled out, which is what the room on this screen is for:
+          // "1 like" rather than a bare 1 beside a heart, and never "1 likes".
+          if (post.likes > 0 || post.reposts > 0 || post.comments > 0) ...[
+            const _Hairline(),
+            Wrap(
+              spacing: SpacingTokens.space16,
+              runSpacing: SpacingTokens.space4,
+              children: [
+                if (post.reposts > 0)
+                  _Tally(text: countLabel(post.reposts, 'repost')),
+                if (post.likes > 0)
+                  _Tally(text: countLabel(post.likes, 'like')),
+                if (post.comments > 0)
+                  _Tally(
+                    text: countLabel(post.comments, 'reply', plural: 'replies'),
+                  ),
+              ],
+            ),
+          ],
+
+          const _Hairline(),
+          // The same row as the card, from the same widget -- so the two
+          // cannot drift apart again. Counts are off here because they are
+          // spelled out above.
+          PostActionsRow(
+            post: post,
+            showCounts: false,
+            onReply: onReply,
+            onRepost: () => RepostSheet.show(
+              context,
+              post: post,
+              onRepost: notifier.toggleRepost,
+            ),
+            onLike: () => report(context, notifier.toggleLike()),
+            onSave: () => report(context, notifier.toggleSave()),
+            onShare: () => SharePostSheet.show(context, post),
           ),
         ],
       ),
@@ -451,7 +473,55 @@ class _Post extends ConsumerWidget {
     final hour = at.hour % 12 == 0 ? 12 : at.hour % 12;
     final minute = at.minute.toString().padLeft(2, '0');
     final meridiem = at.hour < 12 ? 'AM' : 'PM';
-    return '$hour:$minute $meridiem · ${at.day} ${months[at.month - 1]} ${at.year}';
+    return '$hour:$minute $meridiem \u00b7 ${at.day} ${months[at.month - 1]} ${at.year}';
+  }
+}
+
+/// The separator this screen uses, matching the one between posts in a feed:
+/// a half-pixel hairline the full width of the content, not a Material
+/// Divider with its own inset and its own idea of how much space to take.
+class _Hairline extends StatelessWidget {
+  const _Hairline();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
+      child: Container(
+        height: 0.5,
+        color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.15),
+      ),
+    );
+  }
+}
+
+/// One spelled-out count under a post.
+class _Tally extends StatelessWidget {
+  final String text;
+
+  const _Tally({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(
+          fontSize: 13,
+          color: scheme.onSurface.withValues(alpha: 0.6),
+        ),
+        children: [
+          TextSpan(
+            text: text.split(' ').first,
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              color: scheme.onSurface,
+            ),
+          ),
+          TextSpan(text: ' ${text.split(' ').sublist(1).join(' ')}'),
+        ],
+      ),
+    );
   }
 }
 
@@ -643,10 +713,15 @@ class _CommentRow extends StatelessWidget {
                     content: comment.content,
                     style: const TextStyle(fontSize: 14, height: 1.35),
                   ),
-                if (comment.media.isNotEmpty) ...[
+                // Split the same way a post's are: a recording is a player,
+                // not a picture, and putting one through the grid draws a
+                // tile with nothing in it.
+                for (final voice in comment.media.where((m) => m.isVoice))
+                  VoicePostPlayer(media: voice),
+                if (comment.media.any((m) => m.isVisual)) ...[
                   const SizedBox(height: SpacingTokens.space8),
                   MediaGrid(
-                    media: comment.media,
+                    media: comment.media.where((m) => m.isVisual).toList(),
                     radius: RadiusTokens.radiusSm,
                   ),
                 ],

@@ -151,7 +151,10 @@ class PostListNotifier extends StateNotifier<FeedState> {
     state = state.copyWith(isLoadingFirstPage: true, clearError: true);
     try {
       final page = await _page();
-      state = FeedState(posts: page.items, nextCursor: page.nextCursor);
+      state = FeedState(
+        posts: dedupePosts(page.items),
+        nextCursor: page.nextCursor,
+      );
     } catch (e) {
       // The session is live here -- these screens are only reachable signed in
       // -- so a 401 is the server refusing a good token, not an expired one.
@@ -171,7 +174,7 @@ class PostListNotifier extends StateNotifier<FeedState> {
     try {
       final page = await _page(cursor: cursor);
       state = state.copyWith(
-        posts: <FeedPost>[...state.posts, ...page.items],
+        posts: dedupePosts([...state.posts, ...page.items]),
         isLoadingMore: false,
         nextCursor: page.nextCursor,
         clearCursor: page.nextCursor == null,
@@ -186,7 +189,7 @@ class PostListNotifier extends StateNotifier<FeedState> {
 
   /// Puts a newly written post at the top without a round trip for the page.
   void prepend(FeedPost post) {
-    state = state.copyWith(posts: <FeedPost>[post, ...state.posts]);
+    state = state.copyWith(posts: dedupePosts([post, ...state.posts]));
   }
 
   /// Drops a post from this list.
@@ -296,6 +299,20 @@ class PostListNotifier extends StateNotifier<FeedState> {
       ],
     );
   }
+}
+
+/// The list with each post once, keeping the first of any repeat.
+///
+/// A page boundary that moves while someone is posting hands back a row the
+/// list already has, and a post written here is prepended to a list a refresh
+/// may then also return. Two cards for one post is wrong on its own; it is
+/// also two widgets sharing a key, which a list refuses to build.
+List<FeedPost> dedupePosts(List<FeedPost> posts) {
+  final seen = <String>{};
+  return [
+    for (final post in posts)
+      if (seen.add(post.id)) post,
+  ];
 }
 
 final postListProvider =

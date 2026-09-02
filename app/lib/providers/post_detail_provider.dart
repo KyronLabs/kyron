@@ -333,6 +333,17 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
         return post.copyWith(saved: next);
       });
 
+  Future<String?> toggleRepost() => _mutate((post) async {
+        final next = !post.reposted;
+        final reposts = await _repo.setReposted(post.id, next);
+        return post.copyWith(reposted: next, reposts: reposts);
+      });
+
+  /// Takes the post as the server just returned it -- after a poll vote, say.
+  void replacePost(FeedPost post) {
+    state = state.copyWith(post: post);
+  }
+
   Future<String?> _mutate(
     Future<FeedPost> Function(FeedPost post) change,
   ) async {

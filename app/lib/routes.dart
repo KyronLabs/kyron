@@ -312,6 +312,22 @@ class Routes {
   }
 }
 
+/// Opens someone's profile: by handle when they have one, by account id when
+/// they do not.
+///
+/// A handle is only set during onboarding, so plenty of accounts have none --
+/// including, in testing, the signed-in one. Every list that offered to open a
+/// profile required a handle and quietly did nothing without one, which is why
+/// people found in search, in followers and in following could not be opened
+/// at all.
+void openProfile(BuildContext context, {String? username, String? userId}) {
+  final handle = username?.replaceFirst('@', '').trim();
+  final id = userId?.trim();
+  final target = handle != null && handle.isNotEmpty ? handle : id;
+  if (target == null || target.isEmpty) return;
+  Navigator.pushNamed(context, Routes.profile, arguments: target);
+}
+
 class _UnknownRoute extends StatelessWidget {
   final String? name;
 
