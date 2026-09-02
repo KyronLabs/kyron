@@ -45,4 +45,7 @@
     </queries>
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Recording a voice post. Asked for at the moment someone taps
+         record, not at launch. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 </manifest>

@@ -107,6 +107,9 @@ class ComposerState {
 
   bool get hasPoll => poll != null;
 
+  /// Whether a voice recording is attached. A post carries one or none.
+  bool get hasVoice => media.any((m) => m.isVoice);
+
   /// Attachments that actually uploaded. Only these are sent.
   bool get hasReadyMedia => media.any((m) => m.isReady);
 
@@ -389,6 +392,33 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
   void setPoll(ComposerPoll poll) {
     state = state.copyWith(poll: poll, hasUnsavedChanges: true);
+  }
+
+  /// Attaches a finished voice recording and uploads it.
+  ///
+  /// Only ever one: a post is a voice post or it is not, and two recordings
+  /// stacked in one post give a reader no way to know which to play first.
+  Future<void> attachVoice(PendingMedia recording) async {
+    state = state.copyWith(
+      // Replaces rather than appends, and clears any pictures: a voice post
+      // carries its own attachment and nothing else.
+      media: [recording],
+      clearPoll: true,
+      hasUnsavedChanges: true,
+      clearError: true,
+    );
+
+    try {
+      final uploaded =
+          await _ref.read(feedRepositoryProvider).uploadMedia(recording);
+      _replaceMedia(recording.path, uploaded);
+    } catch (e) {
+      _replaceMedia(
+        recording.path,
+        recording.copyWith(error: describeApiError(e, sessionIsLive: true)),
+      );
+      AppLog.instance.error('composer', 'Voice upload failed: \$e');
+    }
   }
 
   Future<bool> post() async {

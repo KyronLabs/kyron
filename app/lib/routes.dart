@@ -48,8 +48,8 @@ class Routes {
   static const home = '/home';
   static const composer = '/composer';
   static const createArLens = '/create/ar-lens';
-  static const createPoll = '/create/poll';
-  static const createSpace = '/create/space';
+  static const createVoicePost = '/create/voice';
+  static const goLive = '/create/live';
   static const webview = '/webview';
   static const settings = '/settings';
   static const notifications = '/notifications';
@@ -267,14 +267,12 @@ class Routes {
       case createArLens:
         return _page(const ComingSoonScreen.arLens());
 
-      // Polls are written in the composer, beneath the question they belong
-      // to, rather than on a screen of their own -- so this opens the composer
-      // with one already attached.
-      case createPoll:
-        return _page(const ComposerScreen(startWithPoll: true));
+      // A voice post is a normal post that opens with the recorder up.
+      case createVoicePost:
+        return _page(const ComposerScreen(startWithVoice: true));
 
-      case createSpace:
-        return _page(const ComingSoonScreen.space());
+      case goLive:
+        return _page(const ComingSoonScreen.live());
 
       case webview:
         final args = settings.arguments as Map<String, String>?;

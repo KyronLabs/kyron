@@ -5,6 +5,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../providers/search_provider.dart';
 import 'action_button.dart';
+import 'date_wheel_sheet.dart';
 
 /// A date the way it reads on a chip: `4 Mar 2026`.
 String formatFilterDate(DateTime value) =>
@@ -313,13 +314,14 @@ class _DateField extends StatelessWidget {
 
   Future<void> _pick(BuildContext context) async {
     final now = DateTime.now();
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: value ?? now,
+    final picked = await DateWheelSheet.show(
+      context,
+      title: '\$label date',
+      initial: value,
       // Kyron did not exist before this, and a date in the future matches
       // nothing -- so neither is offered.
-      firstDate: firstDate ?? DateTime(2024),
-      lastDate: lastDate ?? now,
+      first: firstDate ?? DateTime(2024),
+      last: lastDate ?? now,
     );
     if (picked != null) onPick(picked);
   }

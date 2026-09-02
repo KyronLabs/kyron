@@ -9,13 +9,24 @@ import 'long_press_sheet.dart';
 class CreateFab extends StatelessWidget {
   const CreateFab({super.key});
 
-  /// Each entry's icon and the route it opens. Every one of these went
-  /// nowhere but Text Post, so three of the four closed the sheet in silence.
+  /// Each entry's icon and the route it opens.
+  ///
+  /// Poll is gone: a poll is written in the text composer, under the question
+  /// it belongs to, so a second door into the same screen was one entry doing
+  /// nothing the first did not.
+  ///
+  /// "Space" was one word covering two different things. Recording your voice
+  /// and broadcasting live are not the same feature, and the second needs a
+  /// media server this does not run -- so they are two entries, and the one
+  /// that is not built says so when you open it.
   static const _options = <String, ({IconData icon, String route})>{
     'Text post': (icon: Iconsax.note_text_copy, route: Routes.composer),
+    'Voice post': (
+      icon: Iconsax.microphone_copy,
+      route: Routes.createVoicePost,
+    ),
     'AR Lens': (icon: Iconsax.camera_copy, route: Routes.createArLens),
-    'Poll': (icon: Iconsax.chart_copy, route: Routes.createPoll),
-    'Space (audio)': (icon: Iconsax.microphone_copy, route: Routes.createSpace),
+    'Go live': (icon: Iconsax.video_copy, route: Routes.goLive),
   };
 
   @override

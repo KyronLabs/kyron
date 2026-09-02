@@ -90,8 +90,11 @@ class ActionButton extends StatelessWidget {
         EdgeInsetsDirectional.only(start: icon == null ? 20 : 16, end: 20),
       ),
       shape: const WidgetStatePropertyAll(StadiumBorder()),
-      textStyle: const WidgetStatePropertyAll(
-        TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+      textStyle: WidgetStatePropertyAll(
+        TextStyle(
+          fontSize: expand ? 16 : 14,
+          fontWeight: FontWeight.w600,
+        ),
       ),
       splashFactory: NoSplash.splashFactory,
       foregroundColor: WidgetStateProperty.resolveWith(

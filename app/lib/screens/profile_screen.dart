@@ -15,16 +15,15 @@ import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import '../widgets/action_button.dart';
 import '../widgets/post_card.dart';
-import '../widgets/video_tile_grid.dart';
+import '../widgets/media_tile_grid.dart';
 
 /// Which of the profile's tabs is showing.
-enum ProfileTab { posts, media, videos, likes }
+enum ProfileTab { posts, media, likes }
 
 extension on ProfileTab {
   String get label => switch (this) {
         ProfileTab.posts => 'Posts',
         ProfileTab.media => 'Media',
-        ProfileTab.videos => 'Videos',
         ProfileTab.likes => 'Likes',
       };
 }
@@ -108,7 +107,6 @@ class _LoadedState extends ConsumerState<_Loaded> {
   PostListSource get _source => switch (_tab) {
         ProfileTab.posts => PostListSource.author(widget.profile.id),
         ProfileTab.media => PostListSource.authorMedia(widget.profile.id),
-        ProfileTab.videos => PostListSource.authorVideos(widget.profile.id),
         ProfileTab.likes => PostListSource.liked,
       };
 
@@ -143,7 +141,6 @@ class _LoadedState extends ConsumerState<_Loaded> {
   List<ProfileTab> get _tabs => [
         ProfileTab.posts,
         ProfileTab.media,
-        ProfileTab.videos,
         if (widget.profile.isOwnProfile) ProfileTab.likes,
       ];
 
@@ -161,13 +158,19 @@ class _LoadedState extends ConsumerState<_Loaded> {
       },
       child: CustomScrollView(
         controller: _controller,
+        // Clamping, not bouncing. With bouncing physics a pull-to-refresh
+        // drags the whole list -- cover and all -- away from the top of the
+        // screen and leaves a band of blank behind it. Clamping holds the
+        // content still and lets the spinner come down over it.
         physics: const AlwaysScrollableScrollPhysics(
-          parent: BouncingScrollPhysics(),
+          parent: ClampingScrollPhysics(),
         ),
         slivers: [
-          SliverToBoxAdapter(child: _Cover(profile: profile)),
           SliverToBoxAdapter(
-            child: _Header(profile: profile, username: widget.username),
+            child: _CoverAndHeader(
+              profile: profile,
+              username: widget.username,
+            ),
           ),
           SliverPersistentHeader(
             pinned: true,
@@ -206,11 +209,11 @@ class _LoadedState extends ConsumerState<_Loaded> {
       return [SliverToBoxAdapter(child: _empty(profile, state.error))];
     }
 
-    // Videos are tiles, not cards: a column of players is unreadable, and the
-    // point of the tab is seeing what is there at a glance.
-    if (_tab == ProfileTab.videos) {
+    // Media is a wall, not a column of cards: the point of the tab is seeing
+    // everything at a glance, and a caption above each attachment defeats it.
+    if (_tab == ProfileTab.media) {
       return [
-        VideoTileGrid(posts: state.posts),
+        MediaTileGrid(posts: state.posts),
         if (state.isLoadingMore)
           const SliverToBoxAdapter(
             child: Padding(
@@ -248,7 +251,6 @@ class _LoadedState extends ConsumerState<_Loaded> {
               ? 'Anything you post shows up here.'
               : '$who not posted anything yet.',
           ProfileTab.media => '$who not posted any photos or clips.',
-          ProfileTab.videos => '$who not posted any videos.',
           ProfileTab.likes => 'Posts you like are kept here, just for you.',
         };
 
@@ -374,20 +376,99 @@ class _TabStrip extends SliverPersistentHeaderDelegate {
       old.tabs.length != tabs.length;
 }
 
+/// The cover, the avatar straddling its lower edge, and everything under it.
+///
+/// One widget, because the avatar has to be drawn *outside* the cover's box --
+/// half of it hangs below the photograph. Two stacked children in a Column
+/// cannot do that; a Stack with `clipBehavior: Clip.none` can.
+class _CoverAndHeader extends StatelessWidget {
+  final ProfileModel profile;
+  final String? username;
+
+  const _CoverAndHeader({required this.profile, required this.username});
+
+  /// The avatar's radius, and the white ring around it.
+  static const double avatarRadius = 42;
+  static const double avatarRing = 3.5;
+
+  static double get _avatarSize => (avatarRadius + avatarRing) * 2;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final coverHeight = _Cover.heightIn(context);
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _Cover(profile: profile),
+            // The band the avatar's lower half occupies. The action buttons
+            // sit in it, to the right of the avatar, which is where they line
+            // up with it rather than floating above the name.
+            SizedBox(
+              height: _avatarSize / 2 + SpacingTokens.space8,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: SpacingTokens.space20,
+                  right: SpacingTokens.space20,
+                  top: SpacingTokens.space8,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Flexible(
+                      child: _Actions(profile: profile, username: username),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            _Header(profile: profile, username: username),
+          ],
+        ),
+        Positioned(
+          left: SpacingTokens.space20,
+          // Half above the cover's lower edge, half below it.
+          top: coverHeight - _avatarSize / 2,
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: scheme.surface, width: avatarRing),
+            ),
+            child: CircleAvatar(
+              radius: avatarRadius,
+              backgroundColor: scheme.primary.withValues(alpha: 0.2),
+              foregroundImage: profile.avatarUrl == null
+                  ? null
+                  : NetworkImage(profile.avatarUrl!),
+              child: Icon(Iconsax.user_copy, size: 32, color: scheme.primary),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 /// The cover photo, running the full width and up under the status bar.
 class _Cover extends StatelessWidget {
   final ProfileModel profile;
 
   const _Cover({required this.profile});
 
+  /// Plus the status bar, because the body starts behind it.
+  static double heightIn(BuildContext context) =>
+      160 + MediaQuery.paddingOf(context).top;
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    // Plus the status bar, because the body starts behind it.
-    final height = 160 + MediaQuery.paddingOf(context).top;
 
     return SizedBox(
-      height: height,
+      height: heightIn(context),
       width: double.infinity,
       child: Stack(
         fit: StackFit.expand,
@@ -507,44 +588,18 @@ class _Header extends ConsumerWidget {
     final location = profile.location?.trim();
     final website = profile.website?.trim();
 
+    // The avatar and the action buttons live in _CoverAndHeader, which draws
+    // them across the cover's lower edge. What is left here starts at the name.
     return Padding(
       padding: const EdgeInsets.fromLTRB(
         SpacingTokens.space20,
-        SpacingTokens.space12,
+        0,
         SpacingTokens.space20,
         0,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // spaceBetween rather than a Spacer. A flexible child in a row that
-          // overflows is allocated negative space, which debug clamps and
-          // reports and release does not.
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: scheme.surface, width: 3),
-                ),
-                child: CircleAvatar(
-                  radius: 38,
-                  backgroundColor: scheme.primary.withValues(alpha: 0.2),
-                  foregroundImage: profile.avatarUrl == null
-                      ? null
-                      : NetworkImage(profile.avatarUrl!),
-                  child:
-                      Icon(Iconsax.user_copy, size: 30, color: scheme.primary),
-                ),
-              ),
-              Flexible(
-                child: _Actions(profile: profile, username: username),
-              ),
-            ],
-          ),
-          const SizedBox(height: SpacingTokens.space12),
           Text(
             profile.displayName,
             maxLines: 2,

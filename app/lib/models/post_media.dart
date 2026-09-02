@@ -1,6 +1,6 @@
 // lib/models/post_media.dart
 
-enum MediaKind { image, video, gif }
+enum MediaKind { image, video, gif, voice }
 
 /// One attachment on a post or a comment.
 class PostMedia {
@@ -16,6 +16,16 @@ class PostMedia {
   /// The author's description, read out by a screen reader.
   final String? alt;
 
+  /// How long a voice recording runs. Null for everything else.
+  final Duration? duration;
+
+  /// Loudness over time, 0-100, one value per bar of the waveform.
+  ///
+  /// Sampled on the device while recording, because that is the only place the
+  /// signal exists -- deriving it on the server would mean decoding every
+  /// upload just to draw a picture of it.
+  final List<int> waveform;
+
   const PostMedia({
     required this.id,
     required this.kind,
@@ -23,9 +33,17 @@ class PostMedia {
     this.width,
     this.height,
     this.alt,
+    this.duration,
+    this.waveform = const [],
   });
 
   bool get isVideo => kind == MediaKind.video;
+
+  bool get isVoice => kind == MediaKind.voice;
+
+  /// Whether this is something to look at rather than listen to. Decides
+  /// whether an attachment belongs in the media grid or under it.
+  bool get isVisual => !isVoice;
 
   /// Width over height, or null when the server did not record them. Callers
   /// fall back to a fixed box rather than guessing a shape.
@@ -43,6 +61,13 @@ class PostMedia {
         width: (json['width'] as num?)?.toInt(),
         height: (json['height'] as num?)?.toInt(),
         alt: json['alt'] as String?,
+        duration: json['durationMs'] is num
+            ? Duration(milliseconds: (json['durationMs'] as num).toInt())
+            : null,
+        waveform: (json['waveform'] as List<dynamic>? ?? const [])
+            .whereType<num>()
+            .map((value) => value.toInt().clamp(0, 100))
+            .toList(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -51,6 +76,8 @@ class PostMedia {
         if (width != null) 'width': width,
         if (height != null) 'height': height,
         if (alt != null && alt!.trim().isNotEmpty) 'alt': alt!.trim(),
+        if (duration != null) 'durationMs': duration!.inMilliseconds,
+        if (waveform.isNotEmpty) 'waveform': waveform,
       };
 
   static MediaKind _kindOf(Object? value) {
@@ -59,6 +86,8 @@ class PostMedia {
         return MediaKind.video;
       case 'GIF':
         return MediaKind.gif;
+      case 'VOICE':
+        return MediaKind.voice;
       default:
         return MediaKind.image;
     }
@@ -90,6 +119,11 @@ class PendingMedia {
 
   final String? alt;
 
+  /// How long a voice recording runs, and its loudness over time. Both are
+  /// measured while recording and carried through the upload unchanged.
+  final Duration? duration;
+  final List<int> waveform;
+
   const PendingMedia({
     required this.path,
     required this.kind,
@@ -98,7 +132,11 @@ class PendingMedia {
     this.url,
     this.error,
     this.alt,
+    this.duration,
+    this.waveform = const [],
   });
+
+  bool get isVoice => kind == MediaKind.voice;
 
   bool get isUploading => url == null && error == null;
   bool get isReady => url != null;
@@ -119,6 +157,8 @@ class PendingMedia {
         url: url ?? this.url,
         error: clearError ? null : (error ?? this.error),
         alt: alt ?? this.alt,
+        duration: duration,
+        waveform: waveform,
       );
 
   /// What the create-post request carries. Only ever called once uploaded.
@@ -128,6 +168,8 @@ class PendingMedia {
         if (width != null) 'width': width,
         if (height != null) 'height': height,
         if (alt != null && alt!.trim().isNotEmpty) 'alt': alt!.trim(),
+        if (duration != null) 'durationMs': duration!.inMilliseconds,
+        if (waveform.isNotEmpty) 'waveform': waveform,
       };
 }
 

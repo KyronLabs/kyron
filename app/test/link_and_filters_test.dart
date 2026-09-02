@@ -39,14 +39,45 @@ void main() {
       );
     });
 
-    test('does not invent a link from a bare domain', () {
-      // The old detector guessed at these, so "e.g." and "1.5" conjured cards
-      // for sites nobody meant to link.
-      expect(firstLinkIn('e.g. this is 1.5 times example.com'), isNull);
+    test('finds a bare host and assumes https', () {
+      // What someone actually types. Requiring the scheme is requiring them to
+      // think about something nobody thinks about.
+      expect(firstLinkIn('see m.facebook.com'), 'https://m.facebook.com');
+      expect(firstLinkIn('example.com'), 'https://example.com');
+      expect(
+        firstLinkIn('go to example.co.uk/help now'),
+        'https://example.co.uk/help',
+      );
+    });
+
+    test('does not conjure a link out of ordinary prose', () {
+      // Each of these is a full stop between two things that are not a host.
+      expect(firstLinkIn('it is 1.5 times bigger'), isNull);
+      expect(firstLinkIn('e.g. this one'), isNull);
+      expect(firstLinkIn('i.e. that one'), isNull);
+      expect(firstLinkIn('and so on, etc. next'), isNull);
+      expect(firstLinkIn('at 8.30 tomorrow'), isNull);
+      expect(firstLinkIn('version 2.1 shipped'), isNull);
+    });
+
+    test('does not treat an email address as a host', () {
+      expect(firstLinkIn('write to me@example.com'), isNull);
+    });
+
+    test('prefers whichever link comes first in the text', () {
+      expect(
+        firstLinkIn('example.com then https://other.example.com'),
+        'https://example.com',
+      );
+      expect(
+        firstLinkIn('https://other.example.com then example.com'),
+        'https://other.example.com',
+      );
     });
 
     test('ignores a scheme the server will not fetch', () {
-      expect(firstLinkIn('ftp://example.com/a'), isNull);
+      // ftp:// has no host the bare matcher can pick up either, because the
+      // "//" is not a word boundary it accepts.
       expect(firstLinkIn('file:///etc/passwd'), isNull);
     });
 

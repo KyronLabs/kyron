@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../routes.dart';
+import 'post_action_colors.dart';
 
 /// A post's text, with its hashtags, mentions and links picked out.
 ///
@@ -15,11 +16,20 @@ class PostText extends StatefulWidget {
   final TextStyle? style;
   final int? maxLines;
 
+  /// A hashtag to pick out from the others, without its leading #.
+  ///
+  /// Set by the screen showing one tag's posts. A post often carries four or
+  /// five tags, all of them the same accent blue, and finding the one you
+  /// searched for means reading every tag on every post. The one you asked for
+  /// gets a highlighter behind it.
+  final String? highlightTag;
+
   const PostText({
     super.key,
     required this.content,
     this.style,
     this.maxLines,
+    this.highlightTag,
   });
 
   @override
@@ -112,8 +122,24 @@ class _PostTextState extends State<PostText> {
         ..onTap = () => _open(context, text);
       _recognizers.add(recognizer);
 
+      final highlighted = widget.highlightTag != null &&
+          text.startsWith('#') &&
+          text.substring(1).toLowerCase() == widget.highlightTag!.toLowerCase();
+
       spans.add(
-        TextSpan(text: text, style: linkStyle, recognizer: recognizer),
+        TextSpan(
+          text: text,
+          style: highlighted
+              // Dark text on the highlighter, not the accent colour: blue on
+              // yellow is unreadable, and the point is to be spotted.
+              ? linkStyle.copyWith(
+                  color: const Color(0xFF1A1A1A),
+                  backgroundColor: PostActionColors.highlight,
+                  fontWeight: FontWeight.w700,
+                )
+              : linkStyle,
+          recognizer: recognizer,
+        ),
       );
       last = match.end;
     }

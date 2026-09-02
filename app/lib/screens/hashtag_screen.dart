@@ -28,6 +28,10 @@ class HashtagScreen extends StatelessWidget {
       body: SafeArea(
         child: PostListView(
           source: PostListSource.hashtag(normalised),
+          // The tag you came here for, highlighted in the body of every post
+          // -- a post carrying five tags otherwise makes you read all five to
+          // find the one you searched for.
+          highlightTag: normalised,
           errorTitle: 'Could not load #$normalised',
           emptyTitle: 'Nothing tagged #$normalised yet',
           emptyDetail: 'Posts using this tag will show up here.',

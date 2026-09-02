@@ -35,6 +35,29 @@ export class PostMediaDto {
   @Max(20000)
   width?: number;
 
+  /** How long a voice recording runs, in milliseconds. Capped at ten
+   * minutes, which is the longest the composer will record. */
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(10 * 60 * 1000)
+  durationMs?: number;
+
+  /**
+   * Loudness over time, 0-100, one value per waveform bar.
+   *
+   * Bounded on both the count and each value: it is drawn straight into a
+   * row of bars, so an unbounded array is an unbounded row and a value
+   * outside 0-100 is a bar taller than its container.
+   */
+  @IsOptional()
+  @IsArray()
+  @ArrayMaxSize(256)
+  @IsInt({ each: true })
+  @Min(0, { each: true })
+  @Max(100, { each: true })
+  waveform?: number[];
+
   @IsOptional()
   @IsInt()
   @Min(1)
