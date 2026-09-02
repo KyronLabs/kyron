@@ -9,17 +9,20 @@ import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../models/post_media.dart';
+import '../services/app_log.dart';
+import '../services/video_pool.dart';
 
 /// A clip as it appears in the feed.
 ///
-/// Sizes itself to the video, rather than the other way round. It used to be
-/// dropped into a box of a fixed ratio, so a portrait clip was letterboxed
-/// with a black bar down each side and a landscape one was cropped -- the
-/// reason a video post looked wrong whatever shape the video was.
+/// Shows the still the composer uploaded with the clip, and only opens a
+/// decoder when the clip is actually being watched -- through [VideoPool],
+/// which holds the number open at any moment to a handful. A phone will only
+/// decode so many videos at once; opening one per clip on screen is what made
+/// a scrolling feed and a wall of tiles paint for a moment and then go black.
 ///
-/// The player also *is* the poster: `VideoPlayer` paints the first frame once
-/// initialised, so there is nothing to fetch separately and nothing to show
-/// before the clip is ready to play.
+/// Sizes itself to whatever box it is given. Picking that box from the clip's
+/// own shape is [SizedInlineVideo]'s job, so a tile in a grid can still be
+/// square when the grid needs it to be.
 class InlineVideo extends StatefulWidget {
   final PostMedia media;
 
@@ -52,63 +55,171 @@ class InlineVideo extends StatefulWidget {
 class _InlineVideoState extends State<InlineVideo> {
   VideoPlayerController? _controller;
 
-  /// Non-null once initialisation failed. Kept so the tile can say so rather
-  /// than spinning forever on a clip that will never load.
+  /// True between asking the pool for a decoder and getting one.
+  bool _opening = false;
+
+  /// Non-null once the clip itself turned out to be unplayable. Kept so the
+  /// tile can say so rather than retrying forever on something broken.
   String? _failure;
 
   bool _muted = true;
 
   /// Whether the user has taken control. Once they have, scrolling the tile
-  /// out of view still pauses it, but scrolling back does not resume: a clip
+  /// away still stops it, but scrolling back does not start it again: a clip
   /// somebody deliberately paused must stay paused.
   bool _manual = false;
+
+  /// Set while a decoder is being opened for a clip that should play the
+  /// moment it arrives.
+  bool _wantsPlayback = false;
 
   /// Hides the controls a moment after they appear, the way a player does.
   bool _controlsVisible = true;
   Timer? _hideControls;
 
+  /// Set when every decoder was busy being opened and this tile has to ask
+  /// again in a moment. Bounded, so a tile cannot sit in a retry loop.
+  Timer? _retry;
+  int _retriesLeft = _maxRetries;
+  static const int _maxRetries = 3;
+
+  /// How much of the tile has to be on screen before a clip is worth a
+  /// decoder. High enough that two clips either side of a boundary do not
+  /// both claim one.
+  static const double _playThreshold = 0.6;
+
+  /// Distinguishes this tile from every other one alive.
+  ///
+  /// The visibility key cannot be the attachment's id alone: the same post can
+  /// be on screen in two places at once -- a feed behind an open profile, say
+  /// -- and two detectors sharing a key report over each other.
+  static int _nextInstance = 0;
+  late final int _instance = _nextInstance++;
+
   @override
-  void initState() {
-    super.initState();
-    unawaited(_open());
-  }
-
-  Future<void> _open() async {
-    final controller = VideoPlayerController.networkUrl(
-      Uri.parse(widget.media.url),
-    );
-    _controller = controller;
-
-    try {
-      await controller.initialize();
-      await controller.setVolume(0);
-      await controller.setLooping(true);
-    } catch (_) {
-      if (!mounted) return;
-      setState(() => _failure = 'This clip could not be played.');
-      return;
+  void didUpdateWidget(InlineVideo old) {
+    super.didUpdateWidget(old);
+    // Recycled onto a different clip. Without this the tile would keep
+    // playing the previous one behind the new one's still.
+    if (old.media.url != widget.media.url) {
+      _hideControls?.cancel();
+      _retry?.cancel();
+      _controller?.removeListener(_onTick);
+      _controller = null;
+      VideoPool.instance.release(this);
+      _opening = false;
+      _failure = null;
+      _manual = false;
+      _wantsPlayback = false;
+      _controlsVisible = true;
+      _retriesLeft = _maxRetries;
     }
-
-    if (!mounted) {
-      unawaited(controller.dispose());
-      return;
-    }
-    // Rebuilds on every frame of playback, which is what moves the scrubber.
-    controller.addListener(_onTick);
-    setState(() {});
-    _scheduleHide();
-  }
-
-  void _onTick() {
-    if (mounted) setState(() {});
   }
 
   @override
   void dispose() {
     _hideControls?.cancel();
+    _retry?.cancel();
     _controller?.removeListener(_onTick);
-    _controller?.dispose();
+    // The pool owns the controller and disposes it. Releasing here rather than
+    // disposing directly is what keeps its count of open decoders honest.
+    VideoPool.instance.release(this);
     super.dispose();
+  }
+
+  /// Gets hold of a decoder, opening one if this tile has none.
+  Future<void> _ensure({required bool play}) async {
+    if (_failure != null) return;
+
+    final existing = _controller;
+    if (existing != null) {
+      VideoPool.instance.touch(this);
+      if (play && !existing.value.isPlaying) await existing.play();
+      return;
+    }
+
+    if (_opening) {
+      // Already on its way. Remember whether it should be playing when it
+      // lands rather than queueing a second request for the same clip.
+      _wantsPlayback = _wantsPlayback || play;
+      return;
+    }
+
+    _opening = true;
+    _wantsPlayback = play;
+    if (mounted) setState(() {});
+
+    VideoPlayerController? controller;
+    try {
+      controller = await VideoPool.instance.open(
+        widget.media.url,
+        owner: this,
+        onEvicted: _onEvicted,
+      );
+    } catch (error) {
+      AppLog.instance.error('media', 'Clip would not open: $error');
+      if (!mounted) return;
+      setState(() {
+        _opening = false;
+        _failure = 'This clip could not be played.';
+      });
+      return;
+    }
+
+    if (!mounted) {
+      VideoPool.instance.release(this);
+      return;
+    }
+    if (controller == null) {
+      // Either every decoder was busy opening, or this tile's lease was given
+      // up while it waited. The still stands in; ask again shortly, because
+      // both of those settle within a moment and the tile may never move
+      // again to trigger another attempt.
+      setState(() => _opening = false);
+      if (_wantsPlayback && _retriesLeft > 0) {
+        _retriesLeft--;
+        _retry?.cancel();
+        _retry = Timer(const Duration(milliseconds: 450), () {
+          if (mounted && _controller == null) unawaited(_ensure(play: true));
+        });
+      }
+      return;
+    }
+
+    _retriesLeft = _maxRetries;
+
+    await controller.setVolume(_muted ? 0 : 1);
+    await controller.setLooping(true);
+    if (!mounted) {
+      VideoPool.instance.release(this);
+      return;
+    }
+
+    // Rebuilds on every frame of playback, which is what moves the scrubber.
+    controller.addListener(_onTick);
+    setState(() {
+      _controller = controller;
+      _opening = false;
+    });
+
+    if (_wantsPlayback) {
+      await controller.play();
+      _scheduleHide();
+    }
+  }
+
+  /// The pool took this tile's decoder back for a clip closer to the reader.
+  void _onEvicted() {
+    _controller?.removeListener(_onTick);
+    _controller = null;
+    // A clip that was taken away was not paused by anyone, so it is fair to
+    // start it again when it next comes into view.
+    _manual = false;
+    if (mounted) setState(() {});
+  }
+
+  void _onTick() {
+    if (mounted) setState(() {});
   }
 
   void _scheduleHide() {
@@ -119,34 +230,60 @@ class _InlineVideoState extends State<InlineVideo> {
   }
 
   void _onVisibility(VisibilityInfo info) {
+    if (!mounted) return;
+    final fraction = info.visibleFraction;
     final controller = _controller;
-    if (controller == null || !controller.value.isInitialized) return;
 
-    // Half on screen before it starts. Lower and two clips either side of a
-    // boundary would both be playing.
-    final visible = info.visibleFraction > 0.5;
+    if (fraction <= 0) {
+      // Off screen entirely: give the decoder back. Nobody is watching it, and
+      // holding it is what starves the clip somebody is watching.
+      if (controller != null || _opening) {
+        _hideControls?.cancel();
+        _retry?.cancel();
+        _controller?.removeListener(_onTick);
+        _controller = null;
+        _opening = false;
+        _wantsPlayback = false;
+        VideoPool.instance.release(this);
+        if (mounted) setState(() {});
+      }
+      _retriesLeft = _maxRetries;
+      return;
+    }
 
-    if (!visible && controller.value.isPlaying) {
-      unawaited(controller.pause());
-    } else if (visible &&
-        widget.autoplay &&
-        !_manual &&
-        !controller.value.isPlaying) {
-      unawaited(controller.play());
+    if (fraction < _playThreshold) {
+      if (controller != null && controller.value.isPlaying) {
+        unawaited(controller.pause());
+      }
+      return;
+    }
+
+    if (widget.autoplay && !_manual) {
+      unawaited(_ensure(play: true));
+    } else if (controller != null) {
+      VideoPool.instance.touch(this);
     }
   }
 
   Future<void> _togglePlay() async {
     final controller = _controller;
-    if (controller == null || !controller.value.isInitialized) return;
+    unawaited(HapticFeedback.selectionClick());
+
+    if (controller == null) {
+      // Tapping a still is how a clip that is not autoplaying gets started.
+      _manual = true;
+      if (mounted) setState(() => _controlsVisible = true);
+      await _ensure(play: true);
+      return;
+    }
 
     _manual = true;
-    unawaited(HapticFeedback.selectionClick());
     if (controller.value.isPlaying) {
       await controller.pause();
       _hideControls?.cancel();
       if (mounted) setState(() => _controlsVisible = true);
     } else {
+      VideoPool.instance.touch(this);
       await controller.play();
       _scheduleHide();
     }
@@ -172,50 +309,52 @@ class _InlineVideoState extends State<InlineVideo> {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final controller = _controller;
+    final ready = controller != null && controller.value.isInitialized;
 
+    final Widget body;
     if (_failure != null) {
-      return _Placeholder(
-        scheme: scheme,
-        icon: Iconsax.video_slash_copy,
-        label: _failure!,
+      body = VideoPoster(
+        media: widget.media,
+        badge: VideoPosterBadge.none,
+        label: _failure,
+      );
+    } else if (!ready) {
+      // The still, with the play badge on it unless a decoder is already on
+      // its way -- in which case a spinner says so rather than a button that
+      // has already been pressed.
+      body = VideoPoster(
+        media: widget.media,
+        badge: _opening ? VideoPosterBadge.busy : VideoPosterBadge.play,
+      );
+    } else {
+      body = Stack(
+        fit: StackFit.expand,
+        children: [
+          FittedBox(
+            fit: BoxFit.cover,
+            clipBehavior: Clip.hardEdge,
+            child: SizedBox(
+              width: controller.value.size.width,
+              height: controller.value.size.height,
+              child: VideoPlayer(controller),
+            ),
+          ),
+          if (widget.chrome)
+            ..._chrome(scheme, controller, controller.value.isPlaying),
+        ],
       );
     }
 
-    if (controller == null || !controller.value.isInitialized) {
-      return _Placeholder(scheme: scheme, icon: Iconsax.video_copy);
-    }
-
-    final playing = controller.value.isPlaying;
-
-    // The video fills the frame it is given. Sizing to the clip's own ratio is
-    // the caller's job -- see InlineVideo.sized -- so that a tile in a grid can
-    // still be square if the grid needs it to be.
-    final surface = Stack(
-      fit: StackFit.expand,
-      children: [
-        FittedBox(
-          fit: BoxFit.cover,
-          clipBehavior: Clip.hardEdge,
-          child: SizedBox(
-            width: controller.value.size.width,
-            height: controller.value.size.height,
-            child: VideoPlayer(controller),
-          ),
-        ),
-        if (widget.chrome) ..._chrome(scheme, controller, playing),
-      ],
-    );
-
     return VisibilityDetector(
       // Keyed by the attachment, so two clips in one post are tracked apart.
-      key: Key('inline-video-${widget.media.id}'),
+      key: Key('inline-video-${widget.media.id}-$_instance'),
       onVisibilityChanged: _onVisibility,
-      child: widget.chrome
+      child: widget.chrome && _failure == null
           ? GestureDetector(
-              onTap: _controlsVisible ? _togglePlay : _showControls,
-              child: surface,
+              onTap: _controlsVisible || !ready ? _togglePlay : _showControls,
+              child: body,
             )
-          : surface,
+          : body,
     );
   }
 
@@ -331,6 +470,125 @@ class _InlineVideoState extends State<InlineVideo> {
 
     return '${format(value.position)} / ${format(value.duration)}';
   }
+}
+
+/// What to draw over a still.
+enum VideoPosterBadge {
+  /// A filled play button, for a clip waiting to be started.
+  play,
+
+  /// A spinner, while a decoder is being opened.
+  busy,
+
+  /// Nothing.
+  none,
+}
+
+/// A clip's still: the picture the composer pulled out of it on upload.
+///
+/// This is what a list of clips is made of. Drawing the video itself would
+/// mean a decoder per tile, and a phone runs out of those long before it runs
+/// out of tiles.
+class VideoPoster extends StatelessWidget {
+  final PostMedia media;
+  final VideoPosterBadge badge;
+
+  /// Said under the badge. Used to explain a clip that will not play.
+  final String? label;
+
+  const VideoPoster({
+    super.key,
+    required this.media,
+    this.badge = VideoPosterBadge.play,
+    this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final still = media.thumbnailUrl;
+
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        if (still != null)
+          Image.network(
+            still,
+            fit: BoxFit.cover,
+            errorBuilder: (_, __, ___) => _ground(scheme),
+            loadingBuilder: (context, child, progress) =>
+                progress == null ? child : _ground(scheme),
+          )
+        else
+          _ground(scheme),
+
+        // A scrim, so a white glyph stays readable over a bright frame.
+        if (badge != VideoPosterBadge.none && still != null)
+          const DecoratedBox(
+            decoration: BoxDecoration(color: Color(0x33000000)),
+          ),
+
+        Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              switch (badge) {
+                VideoPosterBadge.play => Container(
+                    width: 52,
+                    height: 52,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0x66000000),
+                    ),
+                    child: const Icon(
+                      Icons.play_arrow_rounded,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                  ),
+                VideoPosterBadge.busy => const SizedBox.square(
+                    dimension: 26,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2.4,
+                      color: Colors.white,
+                    ),
+                  ),
+                VideoPosterBadge.none => const SizedBox.shrink(),
+              },
+              if (label != null) ...[
+                const SizedBox(height: SpacingTokens.space8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SpacingTokens.space16,
+                  ),
+                  child: Text(
+                    label!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: scheme.onSurface.withValues(alpha: 0.6),
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// What stands behind a clip with no still: clips posted before the composer
+  /// started sending one, and stills that fail to load.
+  Widget _ground(ColorScheme scheme) => ColoredBox(
+        color: scheme.surfaceContainerHighest,
+        child: Center(
+          child: Icon(
+            Iconsax.video_copy,
+            color: scheme.onSurface.withValues(alpha: 0.28),
+          ),
+        ),
+      );
 }
 
 /// A clip at its own shape, ready to drop straight into a post.
@@ -449,45 +707,6 @@ class _FlatControl extends StatelessWidget {
             height: 26,
             child: Icon(icon, size: 18, color: Colors.white),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _Placeholder extends StatelessWidget {
-  final ColorScheme scheme;
-  final IconData icon;
-  final String? label;
-
-  const _Placeholder({required this.scheme, required this.icon, this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return ColoredBox(
-      color: scheme.surfaceContainerHighest,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, color: scheme.onSurface.withValues(alpha: .4)),
-            if (label != null) ...[
-              const SizedBox(height: SpacingTokens.space8),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: SpacingTokens.space16,
-                ),
-                child: Text(
-                  label!,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: scheme.onSurface.withValues(alpha: .6),
-                  ),
-                ),
-              ),
-            ],
-          ],
         ),
       ),
     );

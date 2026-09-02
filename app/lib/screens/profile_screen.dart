@@ -234,7 +234,9 @@ class _LoadedState extends ConsumerState<_Loaded> {
               child: Center(child: CircularProgressIndicator()),
             );
           }
-          return PostCard(post: state.posts[index], source: _source);
+          final post = state.posts[index];
+          // Keyed, so recycling a card's element keeps it on the same post.
+          return PostCard(key: ValueKey(post.id), post: post, source: _source);
         },
       ),
     ];

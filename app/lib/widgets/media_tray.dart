@@ -78,24 +78,7 @@ class _Tile extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
-            // A clip and a recording have no still to show, so each gets
-            // the glyph for what it is rather than a broken image.
-            child: item.kind == MediaKind.video || item.isVoice
-                ? ColoredBox(
-                    color: scheme.surfaceContainerHighest,
-                    child: Icon(
-                      item.isVoice
-                          ? Iconsax.microphone_copy
-                          : Iconsax.video_copy,
-                      color: scheme.onSurface.withValues(alpha: .5),
-                    ),
-                  )
-                : Image.file(
-                    File(item.path),
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) =>
-                        ColoredBox(color: scheme.surfaceContainerHighest),
-                  ),
+            child: _preview(scheme),
           ),
           if (item.isUploading)
             DecoratedBox(
@@ -173,6 +156,73 @@ class _Tile extends StatelessWidget {
             ),
         ],
       ),
+    );
+  }
+
+  /// What the tile shows.
+  ///
+  /// A picture is the file itself. A clip is the still pulled out of it the
+  /// moment it was attached -- the tray used to draw a camcorder glyph on a
+  /// grey square instead, so the one place you check what you are about to
+  /// post showed you nothing about it. A recording has no frame to show, so
+  /// it keeps its glyph.
+  Widget _preview(ColorScheme scheme) {
+    if (item.isVoice) {
+      return ColoredBox(
+        color: scheme.surfaceContainerHighest,
+        child: Icon(
+          Iconsax.microphone_copy,
+          color: scheme.onSurface.withValues(alpha: .5),
+        ),
+      );
+    }
+
+    // A clip whose still is still being read, or one the device would not give
+    // a frame for at all. Marked as a clip rather than left as a blank square,
+    // because on a device where the frame never arrives this is what stays.
+    final source = item.isVideo ? item.thumbnailPath : item.path;
+    if (source == null) {
+      return ColoredBox(
+        color: scheme.surfaceContainerHighest,
+        child: Icon(
+          Iconsax.video_copy,
+          color: scheme.onSurface.withValues(alpha: .4),
+        ),
+      );
+    }
+
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Image.file(
+          File(source),
+          fit: BoxFit.cover,
+          // Cache at roughly the size it is drawn at rather than decoding a
+          // twelve-megapixel photograph into memory to fill a hundred-pixel
+          // square.
+          cacheWidth: 320,
+          filterQuality: FilterQuality.low,
+          errorBuilder: (_, __, ___) =>
+              ColoredBox(color: scheme.surfaceContainerHighest),
+        ),
+        if (item.isVideo)
+          const Center(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0x66000000),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(4),
+                child: Icon(
+                  Icons.play_arrow_rounded,
+                  size: 18,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

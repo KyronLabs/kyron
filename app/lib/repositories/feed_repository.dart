@@ -4,6 +4,7 @@ import '../models/feed_post.dart';
 import '../models/post_media.dart';
 import '../models/post_comment.dart';
 import '../services/api_client.dart';
+import '../services/app_log.dart';
 import '../models/composer_poll.dart';
 import '../models/link_preview.dart';
 
@@ -173,14 +174,48 @@ class FeedRepository {
   ///
   /// Separate from creating the post so a slow upload does not hold a
   /// half-typed post hostage, and a failed post does not lose the pictures.
+  ///
+  /// A clip goes up with the still the composer pulled out of it, so every
+  /// list that later draws the post has a picture rather than having to open a
+  /// decoder for it.
   Future<PendingMedia> uploadMedia(PendingMedia pending) async {
+    final url = await _upload(
+      pending.path,
+      width: pending.width,
+      height: pending.height,
+    );
+
+    var thumbnailUrl = pending.thumbnailUrl;
+    final still = pending.thumbnailPath;
+    if (thumbnailUrl == null && still != null) {
+      // Best effort, and deliberately not fatal: a clip whose still would not
+      // upload is still a clip worth posting, and the reader falls back to
+      // opening a player for it. Logged rather than swallowed so a run of
+      // these is visible.
+      try {
+        thumbnailUrl = await _upload(still);
+      } catch (error) {
+        AppLog.instance
+            .error('media', 'A clip went up without its still: $error');
+      }
+    }
+
+    return pending.copyWith(
+      url: url,
+      thumbnailUrl: thumbnailUrl,
+      clearError: true,
+    );
+  }
+
+  /// Puts one file on the server and answers with the URL it was given.
+  Future<String> _upload(String path, {int? width, int? height}) async {
     final form = FormData.fromMap({
       'file': await MultipartFile.fromFile(
-        pending.path,
-        filename: pending.path.split('/').last,
+        path,
+        filename: path.split('/').last,
       ),
-      if (pending.width != null) 'width': '${pending.width}',
-      if (pending.height != null) 'height': '${pending.height}',
+      if (width != null) 'width': '$width',
+      if (height != null) 'height': '$height',
     });
 
     final res = await _api.dio.post<Map<String, dynamic>>(
@@ -191,7 +226,7 @@ class FeedRepository {
 
     final url = res.data?['url'] as String?;
     if (url == null) throw StateError('The upload returned no URL.');
-    return pending.copyWith(url: url, clearError: true);
+    return url;
   }
 
   /// Returns the post's recounted repost total.

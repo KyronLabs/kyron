@@ -12,6 +12,7 @@ import '../models/feed_post.dart';
 import '../models/post_media.dart';
 import '../services/app_log.dart';
 import '../services/draft_service.dart';
+import '../services/video_still.dart';
 import '../utils/api_error_message.dart';
 import 'feed_provider.dart';
 import '../models/composer_poll.dart';
@@ -285,17 +286,38 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
       height = size.$2;
     }
 
-    final pending = PendingMedia(
+    var pending = PendingMedia(
       path: file.path,
       kind: resolved,
       width: width > 0 ? width : null,
       height: height > 0 ? height : null,
     );
 
+    // Shown before the still is ready, so choosing a clip does not leave the
+    // composer looking like nothing happened while a frame is decoded.
     state = state.copyWith(
       media: [...state.media, pending],
       hasUnsavedChanges: true,
     );
+
+    if (resolved == MediaKind.video) {
+      // The still is both the preview in the tray and the picture every list
+      // later draws the post with. Its dimensions are the clip's own, with the
+      // file's rotation already applied -- which is why they are read from the
+      // frame rather than from the player, whose size for a portrait phone
+      // recording is the landscape frame it is stored as.
+      final still = await extractVideoStill(file.path);
+      if (still != null) {
+        pending = pending.copyWith(
+          thumbnailPath: still.path,
+          width: still.width,
+          height: still.height,
+        );
+      }
+      // The composer may have been cleared while the frame was decoding.
+      if (!state.media.any((m) => m.path == pending.path)) return;
+      _replaceMedia(pending.path, pending);
+    }
 
     try {
       final uploaded =
@@ -421,11 +443,28 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     }
   }
 
+  /// Set by [post] when the post went out but part of it did not come back.
+  ///
+  /// Not part of the state: the composer clears itself on a successful post,
+  /// and this has to outlive that so the screen can say what happened.
+  String? _warning;
+
+  /// The warning from the last post, if any. Reading it clears it.
+  String? takeWarning() {
+    final warning = _warning;
+    _warning = null;
+    return warning;
+  }
+
   Future<bool> post() async {
     if (!state.canPost) return false;
 
     state = state.copyWith(isPosting: true, clearError: true);
     HapticFeedback.mediumImpact();
+
+    final attachedPoll = state.poll;
+    final attachedMedia = state.media.where((m) => m.isReady).length;
+    _warning = null;
 
     try {
       final FeedPost created = await _ref.read(feedRepositoryProvider).create(
@@ -435,6 +474,27 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
             replyPolicy: state.replyPolicy,
             poll: state.poll,
           );
+
+      // The post is written either way, so this is not a failure to retry --
+      // but it is not a success to report as one. A poll that goes out and
+      // comes back missing means the server did not store it, and saying so
+      // is the difference between a bug and a mystery.
+      if (attachedPoll != null && created.poll == null) {
+        _warning = 'Your post went out, but its poll was not saved. '
+            'The server did not return one.';
+        AppLog.instance.error(
+          'composer',
+          'Post ${created.id} came back without the poll that was sent '
+              '(${attachedPoll.filled.length} answers).',
+        );
+      } else if (attachedMedia > 0 && created.media.length < attachedMedia) {
+        _warning = 'Your post went out, but not every attachment was saved.';
+        AppLog.instance.error(
+          'composer',
+          'Post ${created.id} came back with ${created.media.length} of '
+              '$attachedMedia attachments.',
+        );
+      }
 
       // Straight to the top of the feed, so the post is visible the moment
       // the screen closes rather than after the next refresh.

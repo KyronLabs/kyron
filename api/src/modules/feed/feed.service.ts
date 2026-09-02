@@ -64,6 +64,12 @@ export interface FeedMedia {
   width: number | null;
   height: number | null;
   alt: string | null;
+  /**
+   * A still from a video, so a list can draw the clip without opening a
+   * decoder for it. Null for anything that is not a video, and for clips
+   * posted before the composer started sending one.
+   */
+  thumbnailUrl: string | null;
   /** How long a voice recording runs, in ms. Null for anything else. */
   durationMs: number | null;
   /**
@@ -151,6 +157,7 @@ export class FeedService {
         width?: number;
         height?: number;
         alt?: string;
+        thumbnailUrl?: string;
         durationMs?: number;
         waveform?: number[];
       }[];
@@ -194,6 +201,7 @@ export class FeedService {
           create: media.map((item, index) => ({
             url: item.url,
             kind: item.kind ?? MediaKind.IMAGE,
+            thumbnailUrl: item.thumbnailUrl,
             durationMs: item.durationMs,
             waveform: item.waveform ?? [],
             width: item.width,
@@ -904,6 +912,7 @@ export class FeedService {
       width?: number;
       height?: number;
       alt?: string;
+      thumbnailUrl?: string;
       durationMs?: number;
       waveform?: number[];
     }[] = [],
@@ -941,6 +950,7 @@ export class FeedService {
           create: media.map((item, index) => ({
             url: item.url,
             kind: item.kind ?? MediaKind.IMAGE,
+            thumbnailUrl: item.thumbnailUrl,
             durationMs: item.durationMs,
             waveform: item.waveform ?? [],
             width: item.width,
@@ -1188,6 +1198,7 @@ export class FeedService {
     width: true,
     height: true,
     alt: true,
+    thumbnailUrl: true,
     durationMs: true,
     waveform: true,
   } as const;

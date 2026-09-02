@@ -1,5 +1,6 @@
 // lib/widgets/media_tile_grid.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
@@ -18,7 +19,10 @@ import 'inline_video.dart';
 /// the wall readable.
 ///
 /// Built as a sliver so a screen can put it inside the same scroll view as its
-/// header rather than nesting a second scrollable.
+/// header rather than nesting a second scrollable, and as a *lazy* one: it
+/// used to lay both columns out inside a single box adapter, which builds
+/// every tile whether or not it is on screen. Two hundred posts meant two
+/// hundred live tiles.
 class MediaTileGrid extends StatelessWidget {
   final List<FeedPost> posts;
 
@@ -35,58 +39,41 @@ class MediaTileGrid extends StatelessWidget {
   ///
   /// An attachment with a broken or absurd ratio would otherwise produce a
   /// tile either one pixel tall or taller than the screen.
-  static const double _minRatio = 0.5;
-  static const double _maxRatio = 1.6;
+  static const double minRatio = 0.5;
+  static const double maxRatio = 1.6;
 
   @override
   Widget build(BuildContext context) {
-    // Two columns filled shortest-first, which is what keeps a staggered wall
-    // level instead of letting one column run away.
-    final left = <_Tile>[];
-    final right = <_Tile>[];
-    var leftHeight = 0.0;
-    var rightHeight = 0.0;
-
+    final tiles = <_Entry>[];
     for (final post in posts) {
       final media = _pick(post);
-      if (media == null) continue;
-
-      final ratio = _ratioOf(media);
-      final tile = _Tile(post: post, media: media, ratio: ratio);
-      // Height for a unit-width column, which is all that is needed to
-      // compare the two.
-      final height = 1 / ratio;
-
-      if (leftHeight <= rightHeight) {
-        left.add(tile);
-        leftHeight += height;
-      } else {
-        right.add(tile);
-        rightHeight += height;
+      if (media != null) {
+        tiles.add(_Entry(post: post, media: media));
       }
     }
 
-    if (left.isEmpty && right.isEmpty) {
+    if (tiles.isEmpty) {
       return const SliverToBoxAdapter(child: SizedBox.shrink());
     }
 
     return SliverPadding(
       padding: const EdgeInsets.all(SpacingTokens.space8),
-      sliver: SliverToBoxAdapter(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: _Column(tiles: left)),
-            const SizedBox(width: SpacingTokens.space8),
-            Expanded(child: _Column(tiles: right)),
-          ],
+      sliver: SliverMasonryGrid.count(
+        crossAxisCount: 2,
+        mainAxisSpacing: SpacingTokens.space8,
+        crossAxisSpacing: SpacingTokens.space8,
+        childCount: tiles.length,
+        itemBuilder: (context, index) => _Tile(
+          post: tiles[index].post,
+          media: tiles[index].media,
+          ratio: ratioOf(tiles[index].media),
         ),
       ),
     );
   }
 
   /// The attachment a tile shows: the first video when the wall is videos
-  /// only, otherwise the first attachment of any kind.
+  /// only, otherwise the first attachment worth looking at.
   PostMedia? _pick(FeedPost post) {
     if (videosOnly) {
       for (final media in post.media) {
@@ -94,38 +81,30 @@ class MediaTileGrid extends StatelessWidget {
       }
       return null;
     }
-    return post.media.isEmpty ? null : post.media.first;
+    for (final media in post.media) {
+      // A voice recording has nothing to show, so a post carrying only one
+      // does not belong on a wall of pictures.
+      if (media.isVisual) return media;
+    }
+    return null;
   }
 
-  static double _ratioOf(PostMedia media) {
+  static double ratioOf(PostMedia media) {
     final width = media.width;
     final height = media.height;
     if (width == null || height == null || width <= 0 || height <= 0) {
       // Nothing recorded: assume portrait, which is what most clips are.
       return 0.75;
     }
-    return (width / height).clamp(_minRatio, _maxRatio);
+    return (width / height).clamp(minRatio, maxRatio);
   }
 }
 
-class _Column extends StatelessWidget {
-  final List<_Tile> tiles;
+class _Entry {
+  final FeedPost post;
+  final PostMedia media;
 
-  const _Column({required this.tiles});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        for (final tile in tiles)
-          Padding(
-            padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
-            child: tile,
-          ),
-      ],
-    );
-  }
+  const _Entry({required this.post, required this.media});
 }
 
 class _Tile extends StatelessWidget {
@@ -153,10 +132,18 @@ class _Tile extends StatelessWidget {
             AspectRatio(
               aspectRatio: ratio,
               child: media.isVideo
-                  // Never autoplaying: a wall of tiles would start every clip
-                  // on screen at once. The player still paints its first
-                  // frame, which is the poster, and playing one is a tap away.
-                  ? InlineVideo(media: media, autoplay: false, chrome: false)
+                  // A still, never a player. A wall shows a dozen tiles at
+                  // once and a phone will not decode a dozen clips; this is
+                  // where it used to run out and the tiles went black. A clip
+                  // posted before the composer started sending a still falls
+                  // back to a decoder, which the pool holds to a handful.
+                  ? (media.thumbnailUrl != null
+                      ? VideoPoster(media: media, badge: VideoPosterBadge.none)
+                      : InlineVideo(
+                          media: media,
+                          autoplay: false,
+                          chrome: false,
+                        ))
                   : Image.network(
                       media.url,
                       fit: BoxFit.cover,
@@ -181,7 +168,7 @@ class _Tile extends StatelessWidget {
               const Positioned(
                 right: 8,
                 top: 8,
-                child: _Chip(icon: Icons.play_arrow, label: 'Video'),
+                child: _Chip(icon: Icons.play_arrow_rounded, label: 'Video'),
               ),
 
             Positioned(
