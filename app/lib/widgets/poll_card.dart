@@ -176,7 +176,7 @@ class _Option extends StatelessWidget {
 
   /// Tall enough to read and to press. A minimum rather than a fixed height:
   /// at a larger text size a fixed row crops the answer inside it.
-  static const double _minHeight = 48;
+  static const double _minHeight = 52;
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +184,7 @@ class _Option extends StatelessWidget {
     final share = option.share(poll.totalVotes).clamp(0.0, 1.0);
     final mine = poll.votedOptionId == option.id;
 
-    final radius = BorderRadius.circular(RadiusTokens.radiusMd);
+    final radius = BorderRadius.circular(RadiusTokens.radiusLg);
 
     return InkWell(
       onTap: onVote,
@@ -194,13 +194,15 @@ class _Option extends StatelessWidget {
         child: Stack(
           children: [
             // The track, and the answer as it reads on it.
+            //
+            // A fill rather than an outline. An outline around every answer
+            // draws four boxes and leaves the reader to find the numbers
+            // inside them; a filled track reads as an empty bar, which is
+            // what it is.
             DecoratedBox(
               decoration: BoxDecoration(
-                color: scheme.onSurface.withValues(alpha: 0.05),
+                color: scheme.onSurface.withValues(alpha: 0.06),
                 borderRadius: radius,
-                border: Border.all(
-                  color: scheme.onSurface.withValues(alpha: mine ? 0.2 : 0.1),
-                ),
               ),
               child: _Row(
                 option: option,
