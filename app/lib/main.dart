@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart'; // Add this import
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart'; // Add this import
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'services/app_log.dart';
 import 'services/draft_service.dart';
@@ -46,6 +47,36 @@ void main() async {
     const ProviderScope(
       child: KyronApp(),
     ),
+  );
+}
+
+/// The theme, with the status bar told which way round to draw itself.
+///
+/// Not part of the design system's themes because it is a platform detail
+/// rather than a colour: the bar belongs to the system, and what has to be
+/// said about it is which brightness its icons should be.
+ThemeData _withStatusBar(ThemeData theme) => theme.copyWith(
+      appBarTheme:
+          theme.appBarTheme.copyWith(systemOverlayStyle: _statusBarFor(theme)),
+    );
+
+/// Icons that can be seen against a surface of this brightness.
+///
+/// Dark icons on a light theme, light on a dark one -- the opposite of the
+/// brightness, which is the part that reads backwards until you say it out
+/// loud. The bars themselves are transparent: the app draws under them.
+SystemUiOverlayStyle _statusBarFor(ThemeData theme) {
+  final light = theme.brightness == Brightness.light;
+  final icons = light ? Brightness.dark : Brightness.light;
+
+  return SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: icons,
+    // iOS words the same idea the other way round: it asks for the brightness
+    // of what is behind the bar, not of the icons on it.
+    statusBarBrightness: theme.brightness,
+    systemNavigationBarColor: theme.colorScheme.surface,
+    systemNavigationBarIconBrightness: icons,
   );
 }
 
@@ -176,15 +207,23 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     return MaterialApp(
       title: 'Kyron',
       debugShowCheckedModeBanner: false,
-      theme: KyronTheme.lightTheme,
-      darkTheme: KyronTheme.darkTheme,
+      theme: _withStatusBar(KyronTheme.lightTheme),
+      darkTheme: _withStatusBar(KyronTheme.darkTheme),
       themeMode: ThemeMode.system,
       home: const RootScreen(),
       onGenerateRoute: Routes.onGenerateRoute,
-      builder: (context, child) => MediaQuery.withClampedTextScaling(
-        minScaleFactor: textScale,
-        maxScaleFactor: textScale,
-        child: child ?? const SizedBox.shrink(),
+      builder: (context, child) => AnnotatedRegion<SystemUiOverlayStyle>(
+        // The fallback for every screen that has no app bar of its own.
+        // Android keeps whatever the last screen asked for, so without this a
+        // screen opened after one that wanted white icons -- a profile over
+        // its cover photo, say -- kept them, and on a white background that is
+        // a status bar you cannot read.
+        value: _statusBarFor(Theme.of(context)),
+        child: MediaQuery.withClampedTextScaling(
+          minScaleFactor: textScale,
+          maxScaleFactor: textScale,
+          child: child ?? const SizedBox.shrink(),
+        ),
       ),
     );
   }
