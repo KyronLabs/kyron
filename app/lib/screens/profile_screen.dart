@@ -18,6 +18,7 @@ import '../widgets/action_button.dart';
 import '../widgets/post_card.dart';
 import '../widgets/media_tile_grid.dart';
 import '../widgets/media_viewer.dart';
+import '../widgets/toast.dart';
 
 /// Which of the profile's tabs is showing.
 enum ProfileTab { posts, media, likes }
@@ -866,10 +867,7 @@ class _ActionsState extends ConsumerState<_Actions> {
         .toggleFollow();
     if (!mounted) return;
     setState(() => _busy = false);
-    if (message != null) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(message)));
-    }
+    if (message != null) Toast.show(context, message);
   }
 }
 
@@ -908,8 +906,11 @@ class _DidChip extends StatelessWidget {
       onTap: () async {
         await Clipboard.setData(ClipboardData(text: did));
         if (!context.mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('DID copied to clipboard')),
+        Toast.show(
+          context,
+          'DID copied',
+          spot: ToastSpot.middle,
+          icon: Iconsax.copy_copy,
         );
       },
       borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),

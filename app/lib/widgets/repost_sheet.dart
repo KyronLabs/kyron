@@ -5,6 +5,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/feed_post.dart';
 import '../routes.dart';
+import 'toast.dart';
 
 /// The choice behind the repost button: pass it on as-is, or say something.
 class RepostSheet {
@@ -48,8 +49,7 @@ class RepostSheet {
                 Navigator.pop(sheetContext);
                 final message = await onRepost();
                 if (message != null && context.mounted) {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text(message)));
+                  Toast.show(context, message);
                 }
               },
             ),

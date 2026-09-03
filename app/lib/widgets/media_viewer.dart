@@ -15,10 +15,12 @@ import '../models/post_media.dart';
 import '../providers/video_settings_provider.dart';
 import '../services/app_log.dart';
 import '../services/video_pool.dart';
+import '../services/video_stage.dart';
 import '../utils/decode_size.dart';
 import '../utils/deferred_rebuild.dart';
 import 'inline_video.dart';
 import 'playback_bar.dart';
+import 'toast.dart';
 
 /// How long the chrome takes to get out of the way.
 const Duration _chromeDuration = Duration(milliseconds: 220);
@@ -93,6 +95,13 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
     super.initState();
     // Full bleed, and put back on the way out.
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+
+    // Takes the stage before anything is loaded. Whatever is playing in the
+    // feed underneath stops now rather than when this clip is ready -- the
+    // wait for a decoder is not a reason to keep hearing the post you just
+    // scrolled past.
+    VideoStage.instance.claim(this, (_) {});
+
     // After the frame: opening takes a decoder off a clip in the feed, and
     // that clip is told so -- which it cannot be from inside a build.
     whenNotBuilding(_syncVideo);
@@ -101,6 +110,8 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
   @override
   void dispose() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    // Hands the stage back, so the feed picks up where it left off.
+    VideoStage.instance.withdraw(this);
     VideoPool.instance.release(this);
     _pages.dispose();
     super.dispose();
@@ -355,8 +366,13 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
   Future<void> _copyLink() async {
     await Clipboard.setData(ClipboardData(text: _current.url));
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Link copied')),
+    // In the middle: the viewer is a black screen with nothing at the
+    // bottom to tie a message to, and the eye is already in the middle of it.
+    Toast.show(
+      context,
+      'Link copied',
+      spot: ToastSpot.middle,
+      icon: Iconsax.copy_copy,
     );
   }
 

@@ -166,4 +166,70 @@ void main() {
   test('withdrawing something that was never reported is not an error', () {
     expect(() => VideoStage.instance.withdraw(Object()), returnsNormally);
   });
+
+  group('a full-screen player', () {
+    test('stops the feed the moment it opens, before it has loaded', () async {
+      // The complaint this fixes: opening a clip full screen left the feed's
+      // clip playing underneath until the new one had finished loading.
+      final feed = _Clip('feed');
+      feed.report(0.95, 5);
+      await _settle();
+      expect(feed.playing, isTrue);
+
+      final viewer = Object();
+      VideoStage.instance.claim(viewer, (_) {});
+      await _settle();
+
+      expect(feed.playing, isFalse);
+      expect(VideoStage.instance.active, same(viewer));
+    });
+
+    test('beats a clip dead centre, which centrality alone would not',
+        () async {
+      // The margin protects whoever holds the stage. A viewer is not a
+      // contender on centrality -- it is the screen -- so it does not go
+      // through that comparison at all.
+      final feed = _Clip('feed');
+      feed.report(1, 0);
+      await _settle();
+
+      final viewer = Object();
+      VideoStage.instance.claim(viewer, (_) {});
+      await _settle();
+
+      expect(VideoStage.instance.active, same(viewer));
+    });
+
+    test('nothing in the feed can take it back while it is open', () async {
+      final viewer = Object();
+      VideoStage.instance.claim(viewer, (_) {});
+      await _settle();
+
+      final feed = _Clip('feed');
+      for (var i = 0; i < 5; i++) {
+        feed.report(1, 0);
+        await _settle();
+      }
+
+      expect(feed.changes, isEmpty);
+      expect(VideoStage.instance.active, same(viewer));
+    });
+
+    test('hands the feed back when it closes', () async {
+      final feed = _Clip('feed');
+      feed.report(0.95, 5);
+      await _settle();
+
+      final viewer = Object();
+      VideoStage.instance.claim(viewer, (_) {});
+      await _settle();
+      expect(feed.playing, isFalse);
+
+      VideoStage.instance.withdraw(viewer);
+      await _settle();
+
+      expect(feed.playing, isTrue);
+      expect(VideoStage.instance.active, same(feed));
+    });
+  });
 }

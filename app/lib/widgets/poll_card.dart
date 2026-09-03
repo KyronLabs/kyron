@@ -13,6 +13,8 @@ import '../providers/feed_provider.dart';
 import '../repositories/feed_repository.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import 'answer_shape.dart';
+import 'toast.dart';
 
 /// A poll under a post.
 ///
@@ -110,11 +112,10 @@ class _PollCardState extends ConsumerState<PollCard> {
 
   void _explainSwitch() {
     unawaited(HapticFeedback.selectionClick());
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Take your vote back first to change it.'),
-        duration: Duration(seconds: 3),
-      ),
+    Toast.show(
+      context,
+      'Take your vote back first to change it.',
+      spot: ToastSpot.middle,
     );
   }
 
@@ -139,9 +140,7 @@ class _PollCardState extends ConsumerState<PollCard> {
       widget.onVoted?.call(post);
     } catch (error) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(describeApiError(error, sessionIsLive: true))),
-      );
+      Toast.show(context, describeApiError(error, sessionIsLive: true));
     } finally {
       if (mounted) setState(() => _voting = null);
     }
@@ -176,7 +175,7 @@ class _Option extends StatelessWidget {
 
   /// Tall enough to read and to press. A minimum rather than a fixed height:
   /// at a larger text size a fixed row crops the answer inside it.
-  static const double _minHeight = 52;
+  static const double _minHeight = AnswerShape.minHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +183,7 @@ class _Option extends StatelessWidget {
     final share = option.share(poll.totalVotes).clamp(0.0, 1.0);
     final mine = poll.votedOptionId == option.id;
 
-    final radius = BorderRadius.circular(RadiusTokens.radiusLg);
+    final radius = BorderRadius.circular(AnswerShape.radius);
 
     return InkWell(
       onTap: onVote,

@@ -22,6 +22,7 @@ import '../widgets/gif_picker_sheet.dart';
 import '../widgets/interaction_settings_sheet.dart';
 import '../widgets/media_tray.dart';
 import '../widgets/quoted_post_card.dart';
+import '../widgets/toast.dart';
 
 /// Writing a post.
 ///
@@ -318,8 +319,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
     final message =
         await ref.read(composerProvider.notifier).addMedia(video: video);
     if (message != null && mounted) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(message)));
+      Toast.show(context, message);
     }
   }
 
@@ -381,13 +381,14 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
     HapticFeedback.heavyImpact();
     _textController.clear();
     Navigator.pop(context);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(warning ?? 'Posted'),
-        duration: warning == null
-            ? const Duration(seconds: 2)
-            : const Duration(seconds: 6),
-      ),
+    Toast.show(
+      context,
+      warning ?? 'Posted',
+      icon: warning == null ? Iconsax.tick_circle : Iconsax.info_circle,
+      // A warning is a sentence to read, not a word to glance at.
+      stay: warning == null
+          ? const Duration(seconds: 2)
+          : const Duration(seconds: 6),
     );
   }
 
@@ -412,9 +413,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
         notifier.clear();
         if (!mounted) return;
         Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Draft saved')),
-        );
+        Toast.show(context, 'Draft saved', icon: Iconsax.archive_tick);
       case DraftChoice.discard:
         await notifier.discardDraft();
         if (mounted) Navigator.pop(context);

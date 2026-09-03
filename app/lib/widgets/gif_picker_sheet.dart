@@ -8,6 +8,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../services/gif_search.dart';
+import 'toast.dart';
 
 /// Picking a GIF. Returns the path of the downloaded file, ready to attach.
 ///
@@ -207,9 +208,7 @@ class _SheetState extends State<_Sheet> {
     } catch (_) {
       if (!mounted) return;
       setState(() => _downloading = null);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('That GIF could not be downloaded.')),
-      );
+      Toast.show(context, 'That GIF could not be downloaded.');
     }
   }
 }
