@@ -12,6 +12,7 @@ import 'package:visibility_detector/visibility_detector.dart';
 import '../models/post_media.dart';
 import '../providers/video_settings_provider.dart';
 import '../utils/decode_size.dart';
+import '../utils/deferred_rebuild.dart';
 import '../services/app_log.dart';
 import '../services/video_pool.dart';
 import '../services/video_stage.dart';
@@ -234,9 +235,16 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
   }
 
   /// The pool took this tile's decoder back for a clip closer to the reader.
+  ///
+  /// Reached from inside a build: opening a clip full screen takes a decoder
+  /// off one in the feed, and does it from the viewer's initState. The field
+  /// is cleared straight away -- a build in between must not draw a disposed
+  /// controller -- and the repaint waits for the frame to finish.
   void _onEvicted() {
     _controller = null;
-    if (mounted) setState(() {});
+    whenNotBuilding(() {
+      if (mounted) setState(() {});
+    });
   }
 
   void _onVisibility(VisibilityInfo info) {

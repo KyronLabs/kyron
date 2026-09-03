@@ -1,4 +1,6 @@
 // lib/widgets/media_viewer.dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +15,13 @@ import '../models/post_media.dart';
 import '../providers/video_settings_provider.dart';
 import '../services/app_log.dart';
 import '../services/video_pool.dart';
+import '../utils/decode_size.dart';
+import '../utils/deferred_rebuild.dart';
+import 'inline_video.dart';
+import 'playback_bar.dart';
+
+/// How long the chrome takes to get out of the way.
+const Duration _chromeDuration = Duration(milliseconds: 220);
 
 /// Full-screen media, opened from a post.
 ///
@@ -20,7 +29,7 @@ import '../services/video_pool.dart';
 /// between attachments, swipe down to dismiss, play a video with a scrubber,
 /// read the author's description, copy the link and hand the file to another
 /// app.
-class MediaViewer extends StatefulWidget {
+class MediaViewer extends ConsumerStatefulWidget {
   final List<PostMedia> media;
   final int initialIndex;
 
@@ -51,10 +60,10 @@ class MediaViewer extends StatefulWidget {
   }
 
   @override
-  State<MediaViewer> createState() => _MediaViewerState();
+  ConsumerState<MediaViewer> createState() => _MediaViewerState();
 }
 
-class _MediaViewerState extends State<MediaViewer> {
+class _MediaViewerState extends ConsumerState<MediaViewer> {
   late final PageController _pages =
       PageController(initialPage: widget.initialIndex);
   late int _index = widget.initialIndex;
@@ -62,27 +71,139 @@ class _MediaViewerState extends State<MediaViewer> {
   /// How far the sheet has been dragged down, for the swipe-to-dismiss.
   double _dragOffset = 0;
 
-  /// Hidden while zoomed in, so the chrome does not sit over the picture.
+  /// Whether the chrome is on screen. Tapping the picture puts it away.
   bool _chromeVisible = true;
+
+  /// The clip on the page being watched, if that page carries one.
+  ///
+  /// One controller for the whole viewer rather than one per page: a gallery
+  /// keeps the pages either side built and ready, so a page owning its own
+  /// player left the clip you had swiped away from still holding a decoder --
+  /// and taking one back stops whoever has gone longest without it, which was
+  /// the clip you had just swiped to.
+  VideoPlayerController? _controller;
+  bool _opening = false;
+  String? _videoError;
+
+  /// Which url [_controller] belongs to, so a rebuild does not reopen it.
+  String? _openFor;
 
   @override
   void initState() {
     super.initState();
     // Full bleed, and put back on the way out.
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    // After the frame: opening takes a decoder off a clip in the feed, and
+    // that clip is told so -- which it cannot be from inside a build.
+    whenNotBuilding(_syncVideo);
   }
 
   @override
   void dispose() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    VideoPool.instance.release(this);
     _pages.dispose();
     super.dispose();
   }
 
   PostMedia get _current => widget.media[_index];
 
+  /// Points the one controller at whatever the current page is showing.
+  Future<void> _syncVideo() async {
+    final item = _current;
+    final wanted = item.isVideo ? item.url : null;
+
+    if (wanted == _openFor) return;
+
+    // Whatever was playing is not what is on screen any more.
+    _openFor = wanted;
+    _controller = null;
+    _videoError = null;
+    VideoPool.instance.release(this);
+
+    if (wanted == null) {
+      if (mounted) setState(() => _opening = false);
+      return;
+    }
+
+    if (mounted) setState(() => _opening = true);
+
+    VideoPlayerController? controller;
+    try {
+      controller = await VideoPool.instance.open(
+        wanted,
+        owner: this,
+        onEvicted: _onEvicted,
+      );
+    } catch (error) {
+      AppLog.instance.error('media', 'Clip would not open full screen: $error');
+      if (mounted) {
+        setState(() {
+          _opening = false;
+          _videoError = 'This clip could not be played.';
+        });
+      }
+      return;
+    }
+
+    // Swiped on again while it was opening.
+    if (!mounted || _openFor != wanted) {
+      VideoPool.instance.release(this);
+      return;
+    }
+    if (controller == null) {
+      setState(() {
+        _opening = false;
+        _videoError = 'This clip could not be played.';
+      });
+      return;
+    }
+
+    await controller.setVolume(ref.read(videoMutedProvider) ? 0 : 1);
+    await controller.setLooping(true);
+    if (!mounted || _openFor != wanted) {
+      VideoPool.instance.release(this);
+      return;
+    }
+
+    setState(() {
+      _controller = controller;
+      _opening = false;
+    });
+    await controller.play();
+  }
+
+  void _onEvicted() {
+    _controller = null;
+    _openFor = null;
+    whenNotBuilding(() {
+      if (mounted) {
+        setState(
+            () => _videoError = 'This clip stopped to make room for another.');
+      }
+    });
+  }
+
+  Future<void> _togglePlay() async {
+    final controller = _controller;
+    if (controller == null) return;
+    if (controller.value.isPlaying) {
+      await controller.pause();
+    } else {
+      VideoPool.instance.touch(this);
+      await controller.play();
+    }
+    if (mounted) setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Turning the sound on here turns it on everywhere, and the clip that is
+    // already playing has to hear about it.
+    ref.listen<bool>(videoMutedProvider, (_, next) {
+      _controller?.setVolume(next ? 0 : 1);
+    });
+
     // Fades the backdrop as the sheet is dragged, so the gesture reads as
     // dismissal rather than the page coming apart.
     final progress = (_dragOffset.abs() / 320).clamp(0.0, 1.0);
@@ -96,7 +217,12 @@ class _MediaViewerState extends State<MediaViewer> {
             child: PhotoViewGallery.builder(
               pageController: _pages,
               itemCount: widget.media.length,
-              onPageChanged: (index) => setState(() => _index = index),
+              onPageChanged: (index) {
+                setState(() => _index = index);
+                // The one controller follows the page rather than every page
+                // opening its own.
+                unawaited(_syncVideo());
+              },
               backgroundDecoration:
                   const BoxDecoration(color: Colors.transparent),
               // Dragging vertically dismisses; the gallery keeps the
@@ -105,8 +231,14 @@ class _MediaViewerState extends State<MediaViewer> {
               builder: (context, index) {
                 final item = widget.media[index];
                 if (item.isVideo) {
+                  final controller = _controller;
+                  final live = index == _index && controller != null;
                   return PhotoViewGalleryPageOptions.customChild(
-                    child: _Video(url: item.url),
+                    child: _videoError != null && index == _index
+                        ? const _Unavailable()
+                        : live
+                            ? _ViewerVideo(controller: controller)
+                            : _VideoStandIn(media: item),
                     heroAttributes: PhotoViewHeroAttributes(tag: item.id),
                     minScale: PhotoViewComputedScale.contained,
                     maxScale: PhotoViewComputedScale.contained,
@@ -146,17 +278,75 @@ class _MediaViewerState extends State<MediaViewer> {
             ),
           ),
 
-          if (_chromeVisible) ...[
-            _TopBar(
-              index: _index,
-              total: widget.media.length,
-              onClose: () => Navigator.of(context).pop(),
-              onCopyLink: _copyLink,
-              onShare: _share,
+          // Slid away rather than switched off, so tapping the picture reads
+          // as the controls getting out of the way.
+          AnimatedSlide(
+            offset: Offset(0, _chromeVisible ? 0 : -1),
+            duration: _chromeDuration,
+            curve: Curves.easeOutCubic,
+            child: AnimatedOpacity(
+              opacity: _chromeVisible ? 1 : 0,
+              duration: _chromeDuration,
+              child: IgnorePointer(
+                ignoring: !_chromeVisible,
+                child: _TopBar(
+                  index: _index,
+                  total: widget.media.length,
+                  onClose: () => Navigator.of(context).pop(),
+                  onCopyLink: _copyLink,
+                  onShare: _share,
+                ),
+              ),
             ),
-            if (_current.alt != null && _current.alt!.trim().isNotEmpty)
-              _AltText(text: _current.alt!),
-          ],
+          ),
+
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: AnimatedSlide(
+              offset: Offset(0, _chromeVisible ? 0 : 1),
+              duration: _chromeDuration,
+              curve: Curves.easeOutCubic,
+              child: AnimatedOpacity(
+                opacity: _chromeVisible ? 1 : 0,
+                duration: _chromeDuration,
+                child: IgnorePointer(
+                  ignoring: !_chromeVisible,
+                  child: DecoratedBox(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0x00000000), Color(0xCC000000)],
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (_current.alt != null &&
+                            _current.alt!.trim().isNotEmpty)
+                          _AltText(text: _current.alt!),
+                        if (_controller != null)
+                          _VideoControls(
+                            controller: _controller!,
+                            muted: ref.watch(videoMutedProvider),
+                            onPlayPause: _togglePlay,
+                            onToggleSound:
+                                ref.read(videoMutedProvider.notifier).toggle,
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          if (_opening)
+            const Center(
+              child: CircularProgressIndicator(color: Colors.white),
+            ),
         ],
       ),
     );
@@ -234,194 +424,198 @@ class _AltText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 0,
-      right: 0,
-      bottom: 0,
-      child: Container(
-        padding: EdgeInsets.fromLTRB(
-          SpacingTokens.space20,
-          SpacingTokens.space16,
-          SpacingTokens.space20,
-          MediaQuery.of(context).padding.bottom + SpacingTokens.space20,
-        ),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.transparent,
-              Colors.black.withValues(alpha: 0.8),
-            ],
-          ),
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(color: Colors.white, fontSize: 14),
+    // No scrim of its own: it sits inside the chrome's, which already darkens
+    // the bottom of the picture for the controls under it.
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        SpacingTokens.space20,
+        SpacingTokens.space16,
+        SpacingTokens.space20,
+        SpacingTokens.space8,
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(color: Colors.white, fontSize: 14),
+      ),
+    );
+  }
+}
+
+/// The one clip the viewer is playing.
+///
+/// Owned by the viewer rather than by the page showing it. Each page used to
+/// open its own: a gallery keeps the pages either side of the one you are on
+/// built and ready, so swiping to the next clip left the previous one holding
+/// a decoder -- and since decoders are taken from whoever has gone longest
+/// without one, the clip you had just swiped to was stopped so the one behind
+/// you could keep going. One controller, moved as you move, cannot do that.
+class _ViewerVideo extends StatelessWidget {
+  final VideoPlayerController controller;
+
+  const _ViewerVideo({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: AspectRatio(
+        aspectRatio: controller.value.aspectRatio,
+        // Its own layer: a playing clip pushes a frame sixty times a second,
+        // and the chrome over it should not be repainted at that rate.
+        child: RepaintBoundary(child: VideoPlayer(controller)),
+      ),
+    );
+  }
+}
+
+/// What a clip looks like on a page that is not the one being watched.
+class _VideoStandIn extends StatelessWidget {
+  final PostMedia media;
+
+  const _VideoStandIn({required this.media});
+
+  @override
+  Widget build(BuildContext context) {
+    final still = media.thumbnailUrl;
+
+    return Center(
+      child: AspectRatio(
+        aspectRatio: SizedInlineVideo.ratioFor(media),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            if (still != null)
+              Image.network(
+                still,
+                fit: BoxFit.contain,
+                cacheWidth: decodeWidth(context),
+                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+              ),
+            const Center(
+              child: Icon(Iconsax.play, size: 44, color: Colors.white54),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-/// A video with a scrubber, played in place.
-class _Video extends ConsumerStatefulWidget {
-  final String url;
+/// Play, the scrubber, and sound -- in that order, along the bottom.
+class _VideoControls extends StatelessWidget {
+  final VideoPlayerController controller;
+  final bool muted;
+  final VoidCallback onPlayPause;
+  final VoidCallback onToggleSound;
 
-  const _Video({required this.url});
-
-  @override
-  ConsumerState<_Video> createState() => _VideoState();
-}
-
-class _VideoState extends ConsumerState<_Video> {
-  VideoPlayerController? _controller;
-  String? _error;
-
-  @override
-  void initState() {
-    super.initState();
-    _open();
-  }
-
-  /// Leased rather than opened directly, so the clip somebody has just opened
-  /// full screen counts against the same budget as the ones behind it -- and
-  /// takes a decoder off one of them rather than asking the phone for one more
-  /// than it has.
-  Future<void> _open() async {
-    try {
-      final controller = await VideoPool.instance.open(
-        widget.url,
-        owner: this,
-        onEvicted: _onEvicted,
-      );
-      if (!mounted) {
-        VideoPool.instance.release(this);
-        return;
-      }
-      if (controller == null) {
-        setState(() => _error = 'This clip could not be played.');
-        return;
-      }
-      // The app's one answer about sound, not this screen's own. Opening a
-      // clip full screen used to start it at full volume however deliberately
-      // the feed behind it had been muted.
-      await controller.setVolume(ref.read(videoMutedProvider) ? 0 : 1);
-      await controller.setLooping(true);
-      await controller.play();
-      if (!mounted) {
-        VideoPool.instance.release(this);
-        return;
-      }
-      setState(() => _controller = controller);
-    } catch (e) {
-      AppLog.instance.error('media', 'Clip would not open full screen: $e');
-      if (mounted) setState(() => _error = '$e');
-    }
-  }
-
-  void _onEvicted() {
-    _controller = null;
-    if (mounted) {
-      setState(() => _error = 'This clip stopped to make room for another.');
-    }
-  }
-
-  @override
-  void dispose() {
-    VideoPool.instance.release(this);
-    super.dispose();
-  }
+  const _VideoControls({
+    required this.controller,
+    required this.muted,
+    required this.onPlayPause,
+    required this.onToggleSound,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final muted = ref.watch(videoMutedProvider);
-    ref.listen<bool>(videoMutedProvider, (_, next) {
-      _controller?.setVolume(next ? 0 : 1);
-    });
+    // Only this row is rebuilt as the clip plays, not the page around it.
+    return ValueListenableBuilder<VideoPlayerValue>(
+      valueListenable: controller,
+      builder: (context, value, _) {
+        final total = value.duration;
+        final position = value.position;
 
-    if (_error != null) return const _Unavailable();
-
-    final controller = _controller;
-    if (controller == null) {
-      return const Center(
-          child: CircularProgressIndicator(color: Colors.white));
-    }
-
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Center(
-          child: AspectRatio(
-            aspectRatio: controller.value.aspectRatio,
-            child: VideoPlayer(controller),
+        return Padding(
+          padding: EdgeInsets.fromLTRB(
+            SpacingTokens.space12,
+            SpacingTokens.space8,
+            SpacingTokens.space12,
+            MediaQuery.paddingOf(context).bottom + SpacingTokens.space16,
           ),
-        ),
-        // Tapping the frame toggles playback; the viewer's own tap handler
-        // sits below this and only sees taps that miss the video.
-        GestureDetector(
-          onTap: () => setState(() {
-            controller.value.isPlaying ? controller.pause() : controller.play();
-          }),
-          child: ValueListenableBuilder<VideoPlayerValue>(
-            valueListenable: controller,
-            builder: (context, value, _) => AnimatedOpacity(
-              opacity: value.isPlaying ? 0 : 1,
-              duration: const Duration(milliseconds: 150),
-              child: Container(
-                width: 64,
-                height: 64,
-                decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.5),
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(Iconsax.play_circle_copy,
-                    color: Colors.white, size: 34),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  _RoundButton(
+                    icon: value.isPlaying ? Iconsax.pause : Iconsax.play,
+                    tooltip: value.isPlaying ? 'Pause' : 'Play',
+                    onPressed: onPlayPause,
+                  ),
+                  const SizedBox(width: SpacingTokens.space12),
+                  Expanded(
+                    child: PlaybackBar(
+                      position: position,
+                      buffered: _bufferedTo(value),
+                      total: total,
+                      onSeek: (to) => controller.seekTo(to),
+                    ),
+                  ),
+                  const SizedBox(width: SpacingTokens.space12),
+                  _RoundButton(
+                    icon: muted ? Iconsax.volume_slash : Iconsax.volume_high,
+                    tooltip: muted ? 'Turn sound on' : 'Turn sound off',
+                    onPressed: onToggleSound,
+                  ),
+                ],
               ),
-            ),
+              const SizedBox(height: SpacingTokens.space8),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: SpacingTokens.space4,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(_clock(position), style: _timeStyle),
+                    Text(_clock(total), style: _timeStyle),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ),
-        Positioned(
-          left: SpacingTokens.space20,
-          right: SpacingTokens.space20,
-          bottom: SpacingTokens.space40,
-          child: VideoProgressIndicator(
-            controller,
-            allowScrubbing: true,
-            colors: const VideoProgressColors(playedColor: Colors.white),
-          ),
-        ),
-        // Turning the sound on here turns it on everywhere, so going back to
-        // the feed does not mean muting your way through it again.
-        Positioned(
-          right: SpacingTokens.space20,
-          bottom: SpacingTokens.space40 + SpacingTokens.space24,
-          child: _ViewerSound(
-            muted: muted,
-            onPressed: ref.read(videoMutedProvider.notifier).toggle,
-          ),
-        ),
-      ],
+        );
+      },
     );
   }
+
+  static const _timeStyle = TextStyle(
+    color: Colors.white70,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    fontFeatures: [FontFeature.tabularFigures()],
+  );
+
+  /// How far the clip has downloaded. The ranges arrive in order, so the end
+  /// of the last one is the end of what is ready to play.
+  static Duration _bufferedTo(VideoPlayerValue value) =>
+      value.buffered.isEmpty ? Duration.zero : value.buffered.last.end;
+
+  static String _clock(Duration d) {
+    final minutes = d.inMinutes;
+    final seconds = d.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return '$minutes:$seconds';
+  }
 }
 
-/// Sound on or off, from inside the full-screen player.
-class _ViewerSound extends StatelessWidget {
-  final bool muted;
+/// A control on the viewer's chrome.
+class _RoundButton extends StatelessWidget {
+  final IconData icon;
+  final String tooltip;
   final VoidCallback onPressed;
 
-  const _ViewerSound({required this.muted, required this.onPressed});
+  const _RoundButton({
+    required this.icon,
+    required this.tooltip,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final label = muted ? 'Turn sound on' : 'Turn sound off';
-
     return Tooltip(
-      message: label,
+      message: tooltip,
       child: Semantics(
         button: true,
-        label: label,
+        label: tooltip,
         child: InkWell(
           onTap: () {
             HapticFeedback.selectionClick();
@@ -433,13 +627,9 @@ class _ViewerSound extends StatelessWidget {
             height: 40,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.black.withValues(alpha: 0.5),
+              color: Colors.white.withValues(alpha: 0.14),
             ),
-            child: Icon(
-              muted ? Iconsax.volume_slash : Iconsax.volume_high,
-              size: 19,
-              color: Colors.white,
-            ),
+            child: Icon(icon, size: 18, color: Colors.white),
           ),
         ),
       ),
