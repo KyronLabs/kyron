@@ -11,8 +11,10 @@ import 'package:visibility_detector/visibility_detector.dart';
 
 import '../models/post_media.dart';
 import '../providers/video_settings_provider.dart';
+import '../utils/decode_size.dart';
 import '../services/app_log.dart';
 import '../services/video_pool.dart';
+import '../services/video_stage.dart';
 
 /// A clip as it appears in the feed.
 ///
@@ -22,10 +24,16 @@ import '../services/video_pool.dart';
 /// opening one per clip on screen is what made a scrolling feed and a wall of
 /// tiles paint for a moment and then go black.
 ///
-/// It is not a player. It plays while it is on screen, and a tap anywhere on
-/// it opens the clip full screen, where there is room for a scrubber and a
-/// reason to want one. A play button on a tile puts a control people hit by
-/// accident on top of the one thing they want the tile to do.
+/// It is not a player. A tap anywhere on it opens the clip full screen, where
+/// there is room for a scrubber and a reason to want one. A play button on a
+/// tile puts a control people hit by accident on top of the one thing they
+/// want the tile to do.
+///
+/// Whether it plays is not its own decision either: it reports where it is to
+/// [VideoStage], which plays exactly one clip -- the one nearest the middle of
+/// the screen. Deciding per tile meant every clip that was on screen enough
+/// started, and the one arriving from the bottom stopped the one being watched
+/// in the middle.
 ///
 /// Nothing here rebuilds per frame of playback either. Driving a scrubber from
 /// a tile meant a setState on every frame of every visible clip, which is a
@@ -87,11 +95,6 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
   /// How long a clip has to stay on screen before it is worth a decoder.
   static const Duration _settleDelay = Duration(milliseconds: 220);
 
-  /// How much of the tile has to be on screen before a clip is worth a
-  /// decoder. High enough that two clips either side of a boundary do not
-  /// both claim one.
-  static const double _playThreshold = 0.6;
-
   /// Distinguishes this tile from every other one alive.
   ///
   /// The visibility key cannot be the attachment's id alone: the same post can
@@ -109,8 +112,10 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
       _cancelSettle();
       _retry?.cancel();
       _controller = null;
+      VideoStage.instance.withdraw(this);
       VideoPool.instance.release(this);
       _opening = false;
+      _onStage = false;
       _failure = null;
       _retriesLeft = _maxRetries;
     }
@@ -120,6 +125,7 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
   void dispose() {
     _cancelSettle();
     _retry?.cancel();
+    VideoStage.instance.withdraw(this);
     // The pool owns the controller and disposes it. Releasing here rather than
     // disposing directly is what keeps its count of open decoders honest.
     VideoPool.instance.release(this);
@@ -131,6 +137,38 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
   void _cancelSettle() {
     _settle?.cancel();
     _settle = null;
+  }
+
+  /// Whether this clip currently holds the stage.
+  bool _onStage = false;
+
+  /// The stage has handed this clip the floor, or taken it back.
+  void _onStageChanged(bool active) {
+    if (!mounted) return;
+    _onStage = active;
+
+    final controller = _controller;
+    if (!active) {
+      _cancelSettle();
+      if (controller != null && controller.value.isPlaying) {
+        unawaited(controller.pause());
+      }
+      return;
+    }
+
+    if (controller != null) {
+      VideoPool.instance.touch(this);
+      unawaited(controller.play());
+      return;
+    }
+
+    // Waits for the clip to settle before asking for a decoder. A fast scroll
+    // hands the stage to each clip it passes for a frame or two, and opening
+    // one for each of those is a burst of work for clips nobody looked at.
+    _settle ??= Timer(_settleDelay, () {
+      _settle = null;
+      if (mounted && _onStage) unawaited(_ensure());
+    });
   }
 
   /// Gets hold of a decoder, opening one if this tile has none.
@@ -167,11 +205,11 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
       // both of those settle within a moment and the tile may never move
       // again to trigger another attempt.
       setState(() => _opening = false);
-      if (_retriesLeft > 0) {
+      if (_retriesLeft > 0 && _onStage) {
         _retriesLeft--;
         _retry?.cancel();
         _retry = Timer(const Duration(milliseconds: 450), () {
-          if (mounted && _controller == null) unawaited(_ensure());
+          if (mounted && _onStage && _controller == null) unawaited(_ensure());
         });
       }
       return;
@@ -190,7 +228,9 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
       _opening = false;
     });
 
-    if (widget.autoplay) await controller.play();
+    // Only if it still holds the stage. Opening takes long enough for the
+    // scroll to have moved on and given the floor to something else.
+    if (_onStage) await controller.play();
   }
 
   /// The pool took this tile's decoder back for a clip closer to the reader.
@@ -200,47 +240,44 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
   }
 
   void _onVisibility(VisibilityInfo info) {
-    if (!mounted) return;
+    if (!mounted || !widget.autoplay) return;
     final fraction = info.visibleFraction;
-    final controller = _controller;
 
     if (fraction <= 0) {
-      // Off screen entirely: give the decoder back. Nobody is watching it, and
-      // holding it is what starves the clip somebody is watching.
+      // Off screen entirely: out of the running, and give the decoder back.
+      // Nobody is watching it, and holding it starves whoever is on stage.
       _cancelSettle();
-      if (controller != null || _opening) {
+      VideoStage.instance.withdraw(this);
+      _onStage = false;
+      if (_controller != null || _opening) {
         _retry?.cancel();
         _controller = null;
         _opening = false;
         VideoPool.instance.release(this);
-        if (mounted) setState(() {});
+        setState(() {});
       }
       _retriesLeft = _maxRetries;
       return;
     }
 
-    if (fraction < _playThreshold) {
-      _cancelSettle();
-      if (controller != null && controller.value.isPlaying) {
-        unawaited(controller.pause());
-      }
-      return;
-    }
+    VideoStage.instance.report(
+      this,
+      visibleFraction: fraction,
+      distance: _distanceFromMiddle(),
+      onChanged: _onStageChanged,
+    );
+  }
 
-    if (controller != null) {
-      VideoPool.instance.touch(this);
-      if (widget.autoplay && !controller.value.isPlaying) {
-        unawaited(controller.play());
-      }
-      return;
-    }
-
-    if (widget.autoplay && _settle == null) {
-      _settle = Timer(_settleDelay, () {
-        _settle = null;
-        if (mounted) unawaited(_ensure());
-      });
-    }
+  /// How far this clip's middle is from the middle of the screen.
+  ///
+  /// What decides which clip is worth playing. Visible fraction alone cannot:
+  /// three clips can each be most of the way on screen, and only one of them
+  /// is the one being looked at.
+  double _distanceFromMiddle() {
+    final box = context.findRenderObject() as RenderBox?;
+    if (box == null || !box.hasSize) return double.infinity;
+    final middle = box.localToGlobal(box.size.center(Offset.zero)).dy;
+    return (middle - MediaQuery.sizeOf(context).height / 2).abs();
   }
 
   @override
@@ -275,13 +312,18 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
       body = Stack(
         fit: StackFit.expand,
         children: [
-          FittedBox(
-            fit: BoxFit.cover,
-            clipBehavior: Clip.hardEdge,
-            child: SizedBox(
-              width: controller.value.size.width,
-              height: controller.value.size.height,
-              child: VideoPlayer(controller),
+          // Its own layer. A playing clip pushes a new frame sixty times a
+          // second; without a boundary around it the list around it is
+          // repainted at the same rate.
+          RepaintBoundary(
+            child: FittedBox(
+              fit: BoxFit.cover,
+              clipBehavior: Clip.hardEdge,
+              child: SizedBox(
+                width: controller.value.size.width,
+                height: controller.value.size.height,
+                child: VideoPlayer(controller),
+              ),
             ),
           ),
           if (widget.chrome)
@@ -401,6 +443,8 @@ class VideoPoster extends StatelessWidget {
           Image.network(
             still,
             fit: BoxFit.cover,
+            cacheWidth: decodeWidth(context),
+            filterQuality: FilterQuality.low,
             errorBuilder: (_, __, ___) => _ground(scheme),
             loadingBuilder: (context, child, progress) =>
                 progress == null ? child : _ground(scheme),

@@ -10,6 +10,7 @@ import 'providers/preferences_provider.dart';
 import 'screens/root_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 import 'config/supabase_config.dart';
 
 void main() async {
@@ -21,6 +22,13 @@ void main() async {
   // on screen or in the log to say which screen or why. This says both, and
   // records it so About > System log still has it after the screen is closed.
   ErrorWidget.builder = _describeBuildFailure;
+
+  // How often a clip is told where it is. The default is half a second, which
+  // is long enough that scrolling past two clips hands the second one the
+  // stage after the reader has already gone by it. Short enough to keep up,
+  // long enough not to be per-frame work on every clip on screen.
+  VisibilityDetectorController.instance.updateInterval =
+      const Duration(milliseconds: 180);
 
   // Fails here, with the name of the missing value, rather than as an opaque
   // authorization error on the first request.

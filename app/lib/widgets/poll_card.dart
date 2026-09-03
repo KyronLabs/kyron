@@ -78,31 +78,16 @@ class _PollCardState extends ConsumerState<PollCard> {
                             : () => _vote(option.id),
               ),
             ),
-          Row(
-            children: [
-              Text(
-                '${formatCount(poll.totalVotes)} '
-                '${poll.totalVotes == 1 ? 'vote' : 'votes'}',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: scheme.onSurface.withValues(alpha: 0.6),
-                ),
-              ),
-              Text(
-                '  ·  ',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: scheme.onSurface.withValues(alpha: 0.4),
-                ),
-              ),
-              Text(
-                poll.remaining,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: scheme.onSurface.withValues(alpha: 0.6),
-                ),
-              ),
-            ],
+          // One line of text rather than three in a row: three of them ran off
+          // the edge at a larger text size, because nothing in a Row gives way.
+          Text(
+            '${formatCount(poll.totalVotes)} '
+            '${poll.totalVotes == 1 ? 'vote' : 'votes'}'
+            '  \u00b7  ${poll.remaining}',
+            style: TextStyle(
+              fontSize: 12,
+              color: scheme.onSurface.withValues(alpha: 0.6),
+            ),
           ),
           // Said rather than left to be discovered. Nothing about a filled row
           // suggests it can be tapped again, so without this the way out is a
@@ -163,6 +148,19 @@ class _PollCardState extends ConsumerState<PollCard> {
   }
 }
 
+/// One answer, drawn as a bar that fills to its share of the vote.
+///
+/// A loader, not a tinted box: the fill is a solid block of the theme's
+/// strongest colour, running from the left to exactly the share this answer
+/// has, so the row reads as a quantity at a glance rather than as a box with a
+/// number in the corner.
+///
+/// It is drawn twice -- once in the colours that read on the track, once in
+/// the colours that read on the fill, with the second clipped to the fill's
+/// width. Both layers are laid out at the full width, so the words line up
+/// exactly and each half of a label that straddles the boundary stays legible.
+/// One layer with a single text colour has to be wrong on one side or the
+/// other.
 class _Option extends StatelessWidget {
   final PollOption option;
   final Poll poll;
@@ -176,85 +174,66 @@ class _Option extends StatelessWidget {
     this.onVote,
   });
 
+  /// Tall enough to read and to press. A minimum rather than a fixed height:
+  /// at a larger text size a fixed row crops the answer inside it.
+  static const double _minHeight = 48;
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final share = option.share(poll.totalVotes);
+    final share = option.share(poll.totalVotes).clamp(0.0, 1.0);
     final mine = poll.votedOptionId == option.id;
-    // Once the poll is decided, the leader is worth marking -- but only when
-    // it is actually ahead, not when everything is tied at zero.
-    final leading = poll.totalVotes > 0 &&
-        option.votes ==
-            poll.options.map((o) => o.votes).reduce((a, b) => a > b ? a : b);
+
+    final radius = BorderRadius.circular(RadiusTokens.radiusMd);
 
     return InkWell(
       onTap: onVote,
-      borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
-      child: Container(
-        height: 38,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
-          border: Border.all(
-            color:
-                mine ? scheme.primary : scheme.outline.withValues(alpha: 0.3),
-            width: mine ? 1.4 : 1,
-          ),
-        ),
-        clipBehavior: Clip.antiAlias,
+      borderRadius: radius,
+      child: ClipRRect(
+        borderRadius: radius,
         child: Stack(
           children: [
-            // The filled bar. A FractionallySizedBox rather than a computed
-            // width: the row's width is not known here, and measuring it would
-            // mean a LayoutBuilder per option.
-            if (poll.hasVoted || poll.closed)
-              Align(
-                alignment: Alignment.centerLeft,
-                child: FractionallySizedBox(
-                  widthFactor: share.clamp(0.0, 1.0),
-                  heightFactor: 1,
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 260),
-                    color: (mine || leading ? scheme.primary : scheme.onSurface)
-                        .withValues(alpha: mine ? 0.22 : 0.1),
-                  ),
+            // The track, and the answer as it reads on it.
+            DecoratedBox(
+              decoration: BoxDecoration(
+                color: scheme.onSurface.withValues(alpha: 0.05),
+                borderRadius: radius,
+                border: Border.all(
+                  color: scheme.onSurface.withValues(alpha: mine ? 0.2 : 0.1),
                 ),
               ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: SpacingTokens.space12,
+              child: _Row(
+                option: option,
+                mine: mine,
+                busy: busy,
+                share: share,
+                textColor: scheme.onSurface.withValues(alpha: 0.85),
+                mutedColor: scheme.onSurface.withValues(alpha: 0.55),
               ),
-              child: Row(
-                children: [
-                  if (mine) ...[
-                    Icon(Iconsax.tick_circle, size: 15, color: scheme.primary),
-                    const SizedBox(width: SpacingTokens.space4),
-                  ],
-                  Expanded(
-                    child: Text(
-                      option.text,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: mine ? FontWeight.w700 : FontWeight.w500,
-                      ),
-                    ),
+            ),
+
+            // The same row again, in the colours that read on a solid fill,
+            // clipped to how far the fill reaches.
+            Positioned.fill(
+              child: TweenAnimationBuilder<double>(
+                tween: Tween<double>(end: share),
+                duration: const Duration(milliseconds: 320),
+                curve: Curves.easeOutCubic,
+                builder: (context, value, child) => ClipRect(
+                  clipper: _FillClipper(value),
+                  child: child,
+                ),
+                child: ColoredBox(
+                  color: scheme.onSurface,
+                  child: _Row(
+                    option: option,
+                    mine: mine,
+                    busy: busy,
+                    share: share,
+                    textColor: scheme.surface,
+                    mutedColor: scheme.surface.withValues(alpha: 0.85),
                   ),
-                  if (busy)
-                    const SizedBox.square(
-                      dimension: 14,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  else
-                    Text(
-                      '${(share * 100).round()}%',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
-                        color: scheme.onSurface.withValues(alpha: 0.75),
-                      ),
-                    ),
-                ],
+                ),
               ),
             ),
           ],
@@ -262,4 +241,89 @@ class _Option extends StatelessWidget {
       ),
     );
   }
+}
+
+/// The contents of an answer row, drawn once per colour scheme.
+class _Row extends StatelessWidget {
+  final PollOption option;
+  final bool mine;
+  final bool busy;
+  final double share;
+  final Color textColor;
+  final Color mutedColor;
+
+  const _Row({
+    required this.option,
+    required this.mine,
+    required this.busy,
+    required this.share,
+    required this.textColor,
+    required this.mutedColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: _Option._minHeight),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space16,
+          vertical: SpacingTokens.space12,
+        ),
+        child: Row(
+          children: [
+            if (mine) ...[
+              Icon(Iconsax.tick_circle, size: 16, color: textColor),
+              const SizedBox(width: SpacingTokens.space8),
+            ],
+            Expanded(
+              child: Text(
+                option.text,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: mine ? FontWeight.w700 : FontWeight.w500,
+                  color: textColor,
+                  height: 1.2,
+                ),
+              ),
+            ),
+            const SizedBox(width: SpacingTokens.space12),
+            if (busy)
+              SizedBox.square(
+                dimension: 15,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: mutedColor,
+                ),
+              )
+            else
+              Text(
+                '${(share * 100).round()}%',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: mutedColor,
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Shows the leftmost [share] of what it wraps.
+class _FillClipper extends CustomClipper<Rect> {
+  final double share;
+
+  const _FillClipper(this.share);
+
+  @override
+  Rect getClip(Size size) =>
+      Rect.fromLTWH(0, 0, size.width * share.clamp(0.0, 1.0), size.height);
+
+  @override
+  bool shouldReclip(_FillClipper old) => old.share != share;
 }
