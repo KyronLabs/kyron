@@ -7,6 +7,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/feed_post.dart';
 import '../models/post_media.dart';
 import '../routes.dart';
+import '../utils/decode_size.dart';
 import '../utils/format_count.dart';
 import 'inline_video.dart';
 
@@ -147,6 +148,9 @@ class _Tile extends StatelessWidget {
                   : Image.network(
                       media.url,
                       fit: BoxFit.cover,
+                      // Two columns, so half the screen wide.
+                      cacheWidth: decodeWidth(context, fraction: 0.5),
+                      filterQuality: FilterQuality.low,
                       errorBuilder: (_, __, ___) => ColoredBox(
                         color: scheme.surfaceContainerHighest,
                         child: Icon(

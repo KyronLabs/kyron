@@ -3,6 +3,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/post_media.dart';
+import '../utils/decode_size.dart';
 import 'inline_video.dart';
 import 'media_viewer.dart';
 
@@ -139,6 +140,13 @@ class MediaGrid extends StatelessWidget {
               Image.network(
                 item.url,
                 fit: BoxFit.cover,
+                // A grid of four is drawn at half the width; one on its own
+                // fills it.
+                cacheWidth: decodeWidth(
+                  context,
+                  fraction: media.length == 1 ? 1.0 : 0.5,
+                ),
+                filterQuality: FilterQuality.low,
                 errorBuilder: (_, __, ___) => ColoredBox(
                   color: scheme.surfaceContainerHighest,
                   child: Icon(
