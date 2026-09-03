@@ -16,6 +16,7 @@ import 'post_text.dart';
 import 'quoted_post_card.dart';
 import 'repost_sheet.dart';
 import 'share_post_sheet.dart';
+import 'toast.dart';
 
 /// One post, wherever it appears.
 ///
@@ -274,7 +275,7 @@ void openAuthor(BuildContext context, FeedAuthor author) {
 Future<void> report(BuildContext context, Future<String?> action) async {
   final message = await action;
   if (message == null || !context.mounted) return;
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+  Toast.show(context, message);
 }
 
 /// Compact relative age. Deliberately coarse: a feed does not need seconds,

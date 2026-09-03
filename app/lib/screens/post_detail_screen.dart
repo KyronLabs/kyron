@@ -25,6 +25,7 @@ import '../widgets/quoted_post_card.dart';
 import '../widgets/repost_sheet.dart';
 import '../widgets/share_post_sheet.dart';
 import '../widgets/voice_post_player.dart';
+import '../widgets/toast.dart';
 
 /// One post, with its comments and their replies.
 ///
@@ -271,10 +272,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
 
   Future<void> _attach({required bool video}) async {
     final message = await _notifier.attach(video: video);
-    if (message != null && mounted) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(message)));
-    }
+    if (message != null && mounted) Toast.show(context, message);
   }
 
   /// Puts the cursor in the box. A null comment replies to the post itself,
@@ -292,8 +290,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
     if (!mounted) return;
 
     if (message != null) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(message)));
+      Toast.show(context, message);
       return;
     }
 

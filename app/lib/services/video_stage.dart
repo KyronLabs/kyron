@@ -50,8 +50,31 @@ class VideoStage {
   Object? _active;
   bool _scheduled = false;
 
+  /// Something that is not competing on centrality: the full-screen player.
+  ///
+  /// While one of these holds the stage nothing else can, however central it
+  /// is. Opening a clip full screen used to leave the feed's clip playing
+  /// underneath until the new one had finished loading and taken a decoder off
+  /// it -- so the sound of a post you had scrolled past carried on over the
+  /// one you had just opened.
+  Object? _claim;
+
   /// Which clip is playing, or null when none is. Read by tests.
   Object? get active => _active;
+
+  /// Takes the stage outright, for as long as [owner] holds it.
+  ///
+  /// Answered straight away rather than after a decoder arrives: what has to
+  /// stop is whatever is playing now, and that cannot wait on the network.
+  void claim(Object owner, StageChanged onChanged) {
+    _candidates[owner] = _Candidate(
+      visibleFraction: 1,
+      distance: 0,
+      onChanged: onChanged,
+    );
+    _claim = owner;
+    _schedule();
+  }
 
   /// Says where [owner] is. Called as a clip scrolls.
   void report(
@@ -77,6 +100,7 @@ class VideoStage {
   /// Takes [owner] out of the running -- it has scrolled away, or gone.
   void withdraw(Object owner) {
     if (_candidates.remove(owner) == null) return;
+    if (identical(_claim, owner)) _claim = null;
     if (identical(_active, owner)) _active = null;
     _schedule();
   }
@@ -106,6 +130,10 @@ class VideoStage {
 
   /// The clip that should be playing.
   Object? _pick() {
+    // A full-screen player is the screen, not a contender on it.
+    final claim = _claim;
+    if (claim != null) return claim;
+
     Object? best;
     var bestDistance = double.infinity;
 
@@ -134,5 +162,6 @@ class VideoStage {
   void reset() {
     _candidates.clear();
     _active = null;
+    _claim = null;
   }
 }

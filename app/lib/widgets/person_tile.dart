@@ -10,6 +10,7 @@ import '../repositories/profile_repository.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import 'action_button.dart';
+import 'toast.dart';
 
 /// One person in a list: search results, followers, following.
 ///
@@ -157,11 +158,7 @@ class _PersonTileState extends ConsumerState<PersonTile> {
       );
     } catch (error) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(describeApiError(error, sessionIsLive: true)),
-        ),
-      );
+      Toast.show(context, describeApiError(error, sessionIsLive: true));
     } finally {
       if (mounted) setState(() => _busy = false);
     }

@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../models/feed_post.dart';
+import 'toast.dart';
 
 /// Sharing one post.
 ///
@@ -104,10 +105,17 @@ class _Sheet extends StatelessWidget {
     String value,
     String confirmation,
   ) async {
-    final messenger = ScaffoldMessenger.of(context);
+    // Captured before the pop: by the time there is something to report,
+    // this sheet's own context is gone.
+    final overlay = Toast.anchor(context);
     Navigator.pop(context);
     await Clipboard.setData(ClipboardData(text: value));
-    messenger.showSnackBar(SnackBar(content: Text(confirmation)));
+    Toast.showOn(
+      overlay,
+      confirmation,
+      spot: ToastSpot.middle,
+      icon: Iconsax.copy_copy,
+    );
   }
 }
 

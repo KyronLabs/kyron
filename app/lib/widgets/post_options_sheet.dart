@@ -14,6 +14,7 @@ import '../screens/report_screen.dart';
 import '../screens/translation_sheet.dart';
 import '../services/app_log.dart';
 import 'interaction_settings_sheet.dart';
+import 'toast.dart';
 
 /// The menu behind a post's overflow button.
 ///
@@ -255,7 +256,9 @@ class _OptionsState extends ConsumerState<_Options> {
     if (_busy) return;
     setState(() => _busy = true);
 
-    final messenger = ScaffoldMessenger.of(context);
+    // Captured before the pop: this sheet is gone by the time it has
+    // something to say about what it did.
+    final overlay = Toast.anchor(context);
     final navigator = Navigator.of(context);
     try {
       await action();
@@ -263,13 +266,11 @@ class _OptionsState extends ConsumerState<_Options> {
         ref.read(postListProvider(widget.source).notifier).remove(_post.id);
       }
       navigator.pop();
-      messenger.showSnackBar(SnackBar(content: Text(done)));
+      Toast.showOn(overlay, done);
     } catch (e) {
       AppLog.instance.error('moderation', 'Action failed: $e');
       navigator.pop();
-      messenger.showSnackBar(
-        const SnackBar(content: Text('That did not go through. Try again.')),
-      );
+      Toast.showOn(overlay, 'That did not go through. Try again.');
     }
   }
 
