@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../providers/feed_provider.dart';
+import '../routes.dart';
+import '../screens/video_feed_screen.dart';
 import 'post_card.dart';
 import 'media_tile_grid.dart';
 
@@ -157,7 +159,15 @@ class _PostListViewState extends ConsumerState<PostListView> {
     }
 
     if (widget.asTiles) {
-      return MediaTileGrid(posts: state.posts, videosOnly: true);
+      return MediaTileGrid(
+        posts: state.posts,
+        videosOnly: true,
+        onOpen: (post) => Navigator.pushNamed(
+          context,
+          Routes.videoFeed,
+          arguments: VideoFeedArgs(source: widget.source, postId: post.id),
+        ),
+      );
     }
 
     // Builder, not a list of everything: the feed this replaces constructed

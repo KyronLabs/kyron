@@ -26,6 +26,7 @@ import 'screens/forgot_password_screen.dart';
 import 'screens/signup_verify_email.dart';
 import 'screens/root_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/video_feed_screen.dart';
 import 'screens/notifications_screen.dart';
 import 'screens/webview_screen.dart';
 import 'screens/composer_screen.dart';
@@ -61,6 +62,7 @@ class Routes {
   static const mutedAccounts = '/settings/muted-accounts';
   static const profile = '/profile';
   static const editProfile = '/profile/edit';
+  static const videoFeed = '/videos';
   static const followers = '/profile/followers';
   static const following = '/profile/following';
   static const search = '/search';
@@ -169,6 +171,14 @@ class Routes {
           id is String && id.isNotEmpty
               ? PostAnalyticsScreen(postId: id)
               : const _UnknownRoute(name: postAnalytics),
+        );
+
+      case videoFeed:
+        final args = settings.arguments;
+        return _page(
+          args is VideoFeedArgs
+              ? VideoFeedScreen(args: args)
+              : const _UnknownRoute(name: videoFeed),
         );
 
       case followers:
