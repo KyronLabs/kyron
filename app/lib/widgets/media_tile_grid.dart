@@ -30,10 +30,16 @@ class MediaTileGrid extends StatelessWidget {
   /// Only tile posts carrying a video. Used by the feed's Videos tab.
   final bool videosOnly;
 
+  /// What a tile opens. Null opens the post, which is what a wall of mixed
+  /// attachments wants; the Videos tab hands over its own, so a clip opens
+  /// full screen among the other clips rather than as a post to read.
+  final void Function(FeedPost post)? onOpen;
+
   const MediaTileGrid({
     super.key,
     required this.posts,
     this.videosOnly = false,
+    this.onOpen,
   });
 
   /// Bounds on how extreme a tile's shape may get.
@@ -68,6 +74,7 @@ class MediaTileGrid extends StatelessWidget {
           post: tiles[index].post,
           media: tiles[index].media,
           ratio: ratioOf(tiles[index].media),
+          onOpen: onOpen,
         ),
       ),
     );
@@ -112,8 +119,14 @@ class _Tile extends StatelessWidget {
   final FeedPost post;
   final PostMedia media;
   final double ratio;
+  final void Function(FeedPost post)? onOpen;
 
-  const _Tile({required this.post, required this.media, required this.ratio});
+  const _Tile({
+    required this.post,
+    required this.media,
+    required this.ratio,
+    this.onOpen,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -121,11 +134,9 @@ class _Tile extends StatelessWidget {
     final caption = post.content.trim();
 
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(
-        context,
-        Routes.postDetail,
-        arguments: post.id,
-      ),
+      onTap: () => onOpen == null
+          ? Navigator.pushNamed(context, Routes.postDetail, arguments: post.id)
+          : onOpen!(post),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
         child: Stack(
