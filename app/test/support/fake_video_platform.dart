@@ -22,6 +22,10 @@ class FakeVideoPlatform extends VideoPlayerPlatform
   /// Fails every open, to stand in for a clip that will not play.
   bool failOnCreate = false;
 
+  /// The frame size every clip reports. Landscape by default, which is the
+  /// shape the screen has to letterbox rather than crop.
+  Size reportedSize = const Size(640, 360);
+
   final Map<int, StreamController<VideoEvent>> _events = {};
 
   int get live => created.length - disposed.length;
@@ -43,7 +47,7 @@ class FakeVideoPlatform extends VideoPlayerPlatform
       VideoEvent(
         eventType: VideoEventType.initialized,
         duration: const Duration(seconds: 10),
-        size: const Size(640, 360),
+        size: reportedSize,
       ),
     );
     return id;

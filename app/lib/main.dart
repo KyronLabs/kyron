@@ -13,6 +13,7 @@ import 'package:url_strategy/url_strategy.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'config/supabase_config.dart';
+import 'utils/route_watch.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -212,6 +213,10 @@ class _KyronAppState extends ConsumerState<KyronApp> {
       themeMode: ThemeMode.system,
       home: const RootScreen(),
       onGenerateRoute: Routes.onGenerateRoute,
+      // Lets a screen know when another one covers it. A pushed route
+      // leaves the screen underneath alive and running, and a clip left
+      // playing under a profile page is heard but not seen.
+      navigatorObservers: [routeObserver],
       builder: (context, child) => AnnotatedRegion<SystemUiOverlayStyle>(
         // The fallback for every screen that has no app bar of its own.
         // Android keeps whatever the last screen asked for, so without this a
