@@ -14,11 +14,14 @@ import '../routes.dart';
 import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import '../models/conversation.dart';
+import '../providers/messages_provider.dart';
 import '../widgets/action_button.dart';
 import '../widgets/post_card.dart';
 import '../widgets/media_tile_grid.dart';
 import '../widgets/media_viewer.dart';
 import '../widgets/toast.dart';
+import 'thread_screen.dart';
 
 /// Which of the profile's tabs is showing.
 enum ProfileTab { posts, media, likes }
@@ -820,6 +823,7 @@ class _Actions extends ConsumerStatefulWidget {
 
 class _ActionsState extends ConsumerState<_Actions> {
   bool _busy = false;
+  bool _opening = false;
 
   @override
   Widget build(BuildContext context) {
@@ -835,6 +839,18 @@ class _ActionsState extends ConsumerState<_Actions> {
           onPressed: () => shareProfile(profile),
         ),
         const SizedBox(width: SpacingTokens.space8),
+        // Where a conversation starts. There was nowhere else to start one
+        // from: the messages screen listed threads and had no way to open the
+        // first.
+        if (!profile.isOwnProfile) ...[
+          ActionIconButton(
+            icon: Iconsax.message_text_copy,
+            tooltip: 'Message',
+            busy: _opening,
+            onPressed: _message,
+          ),
+          const SizedBox(width: SpacingTokens.space8),
+        ],
         Flexible(
           child: profile.isOwnProfile
               ? ActionButton(
@@ -858,6 +874,38 @@ class _ActionsState extends ConsumerState<_Actions> {
         ),
       ],
     );
+  }
+
+  /// Opens the conversation with this account, starting one if there is none.
+  Future<void> _message() async {
+    setState(() => _opening = true);
+    try {
+      final id = await ref
+          .read(messagesRepositoryProvider)
+          .openWith(widget.profile.id);
+      if (!mounted) return;
+      await Navigator.pushNamed(
+        context,
+        Routes.thread,
+        arguments: ThreadArgs(
+          conversationId: id,
+          // Enough for the header to have a name before the first page lands.
+          people: [
+            MessagePerson(
+              id: widget.profile.id,
+              name: widget.profile.name,
+              username: widget.profile.username,
+              avatarUrl: widget.profile.avatarUrl,
+            ),
+          ],
+        ),
+      );
+    } catch (error) {
+      if (!mounted) return;
+      Toast.show(context, describeApiError(error, sessionIsLive: true));
+    } finally {
+      if (mounted) setState(() => _opening = false);
+    }
   }
 
   Future<void> _toggle() async {

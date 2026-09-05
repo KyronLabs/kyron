@@ -163,12 +163,18 @@ class ActionIconButton extends StatelessWidget {
 
   final bool outlined;
 
+  /// Shows a spinner in place of the glyph and refuses further taps, the same
+  /// way [ActionButton] does. An icon button that fires a request needs it as
+  /// much as a labelled one: without it a slow tap looks like a dead control.
+  final bool busy;
+
   const ActionIconButton({
     super.key,
     required this.icon,
     required this.onPressed,
     required this.tooltip,
     this.outlined = true,
+    this.busy = false,
   });
 
   @override
@@ -181,7 +187,7 @@ class ActionIconButton extends StatelessWidget {
         button: true,
         label: tooltip,
         child: InkWell(
-          onTap: onPressed,
+          onTap: busy ? null : onPressed,
           customBorder: const CircleBorder(),
           child: Container(
             width: ActionButton.height,
@@ -192,7 +198,16 @@ class ActionIconButton extends StatelessWidget {
                   ? Border.all(color: scheme.outline.withValues(alpha: 0.4))
                   : null,
             ),
-            child: Icon(icon, size: 18, color: scheme.onSurface),
+            alignment: Alignment.center,
+            child: busy
+                ? SizedBox.square(
+                    dimension: 16,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: scheme.onSurface,
+                    ),
+                  )
+                : Icon(icon, size: 18, color: scheme.onSurface),
           ),
         ),
       ),

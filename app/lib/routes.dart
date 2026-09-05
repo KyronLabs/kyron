@@ -9,6 +9,7 @@ import 'models/feed_post.dart';
 import 'screens/coming_soon_screen.dart';
 import 'screens/drafts_screen.dart';
 import 'screens/hashtag_screen.dart';
+import 'screens/thread_screen.dart';
 import 'screens/topic_screen.dart';
 import 'screens/muted_screens.dart';
 import 'screens/edit_profile_screen.dart';
@@ -59,6 +60,7 @@ class Routes {
   static const postAnalytics = '/post/analytics';
   static const hashtag = '/tag';
   static const topic = '/topic';
+  static const thread = '/thread';
   static const drafts = '/composer/drafts';
   static const mutedWords = '/settings/muted-words';
   static const mutedAccounts = '/settings/muted-accounts';
@@ -276,6 +278,14 @@ class Routes {
           topicArgs is TopicArgs
               ? TopicScreen(args: topicArgs)
               : const _UnknownRoute(name: topic),
+        );
+
+      case thread:
+        final threadArgs = settings.arguments;
+        return _page(
+          threadArgs is ThreadArgs
+              ? ThreadScreen(args: threadArgs)
+              : const _UnknownRoute(name: thread),
         );
 
       case mutedWords:

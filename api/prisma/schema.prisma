@@ -73,6 +73,8 @@ model User {
   passwordResets    PasswordReset[]
   auditLogs         AuditLog[]
   interests         UserInterest[]
+  conversations     ConversationMember[]
+  messagesSent      Message[]
   posts             Post[]
   // These two read backwards from their relation names, so they are spelled
   // out. `Follow.follower` holds followerId, so its back-reference is the set
@@ -788,4 +790,67 @@ model PollVote {
   // two taps racing each other both pass a "have you voted?" check.
   @@unique([pollId, userId])
   @@index([optionId])
+}
+
+// ==========================================
+// 14.  DIRECT MESSAGES
+// ==========================================
+// Stored on the server in plain text, like the posts are. Worth being explicit
+// about: this is not end-to-end encrypted, and anything with the service role
+// can read it. What it does guarantee is that nobody else can -- every read
+// goes through membership, and a block closes the conversation both ways.
+model Conversation {
+  id String @id @default(uuid()) @db.Uuid
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  // Bumped on every message, because the list is ordered by which
+  // conversation moved last and ordering by a subquery over messages would be
+  // a sort over the whole table per page.
+  lastMessageAt DateTime @default(now()) @db.Timestamptz()
+
+  members  ConversationMember[]
+  messages Message[]
+
+  @@index([lastMessageAt(sort: Desc)])
+}
+
+model ConversationMember {
+  conversationId String @db.Uuid
+  userId         String @db.Uuid
+
+  joinedAt DateTime @default(now()) @db.Timestamptz()
+
+  // How far this member has read. Null until they have opened it once, which
+  // is not the same as having read nothing: a conversation they started and
+  // never came back to should not show its own message as unread.
+  lastReadAt DateTime? @db.Timestamptz()
+
+  // Set when this member leaves the thread out of their own list. The rows
+  // stay, because the other side's history is the same rows.
+  hiddenAt DateTime? @db.Timestamptz()
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([conversationId, userId])
+  @@index([userId])
+}
+
+model Message {
+  id             String @id @default(uuid()) @db.Uuid
+  conversationId String @db.Uuid
+  senderId       String @db.Uuid
+
+  body String @db.Text
+
+  createdAt DateTime  @default(now()) @db.Timestamptz()
+  // Soft delete, for the same reason posts have one: a removed message still
+  // holds its place in a cursor.
+  deletedAt DateTime? @db.Timestamptz()
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([conversationId, createdAt(sort: Desc), id(sort: Desc)])
 }
