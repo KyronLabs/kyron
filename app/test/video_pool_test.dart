@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/services/video_pool.dart';
+import 'package:video_player/video_player.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
 import 'support/fake_video_platform.dart';
@@ -18,7 +19,7 @@ void main() {
     VideoPool.instance.releaseAll();
   });
 
-  Future<void> openFor(Object owner, String url) =>
+  Future<VideoPlayerController?> openFor(Object owner, String url) =>
       VideoPool.instance.open(url, owner: owner, onEvicted: () {});
 
   test('opens one decoder per clip', () async {
@@ -155,6 +156,59 @@ void main() {
 
     expect(VideoPool.instance.liveCount, 0);
     expect(platform.live, 0);
+  });
+
+  group('a lease taken back while its owner is still setting it up', () {
+    test('is no longer held by that owner', () async {
+      // The window this closes: a tile opens a decoder, then spends three
+      // awaits on volume, looping and the first play. The pool can hand its
+      // slot to a clip nearer the middle of the screen across any of them, and
+      // a tile that puts the controller back into its state afterwards mounts
+      // a player on a decoder that has already been disposed.
+      final a = Object();
+      final controller = await openFor(a, 'https://example.com/a.mp4');
+      expect(VideoPool.instance.holds(a, controller!), isTrue);
+
+      // Fill the budget, which takes the oldest lease back.
+      for (var i = 0; i < VideoPool.budget; i++) {
+        await openFor(Object(), 'https://example.com/$i.mp4');
+      }
+
+      expect(VideoPool.instance.holds(a, controller), isFalse);
+    });
+
+    test('tells its owner before the controller is disposed', () async {
+      // The other way round leaves a window in which the owner still has the
+      // controller and anything that rebuilds draws a player around nothing.
+      int? liveWhenTold;
+      final a = Object();
+      await VideoPool.instance.open(
+        'https://example.com/a.mp4',
+        owner: a,
+        onEvicted: () => liveWhenTold = platform.live,
+      );
+
+      for (var i = 0; i < VideoPool.budget; i++) {
+        await openFor(Object(), 'https://example.com/$i.mp4');
+      }
+
+      expect(liveWhenTold, isNotNull, reason: 'the owner was told at all');
+      expect(
+        liveWhenTold,
+        VideoPool.budget,
+        reason: 'its decoder was still open when it was told',
+      );
+    });
+
+    test('holds is false for a controller that was never this owner\'s',
+        () async {
+      final a = Object();
+      final b = Object();
+      final theirs = await openFor(b, 'https://example.com/b.mp4');
+      await openFor(a, 'https://example.com/a.mp4');
+
+      expect(VideoPool.instance.holds(a, theirs!), isFalse);
+    });
   });
 
   test('releaseAll drops everything', () async {
