@@ -1,6 +1,7 @@
 // lib/screens/video_feed_screen.dart
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,9 +17,11 @@ import '../routes.dart';
 import '../services/app_log.dart';
 import '../services/video_pool.dart';
 import '../services/video_stage.dart';
+import '../utils/clip_page_physics.dart';
 import '../utils/decode_size.dart';
 import '../utils/deferred_rebuild.dart';
 import '../utils/format_count.dart';
+import '../utils/route_watch.dart';
 import '../widgets/playback_bar.dart';
 import '../widgets/post_action_colors.dart';
 import '../widgets/post_card.dart';
@@ -52,9 +55,21 @@ class VideoFeedScreen extends ConsumerStatefulWidget {
   ConsumerState<VideoFeedScreen> createState() => _VideoFeedScreenState();
 }
 
-class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen> {
+class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen>
+    with RouteCoverAware<VideoFeedScreen> {
   PageController? _pages;
   int _index = 0;
+
+  /// Whether another screen is sitting on top of this one.
+  ///
+  /// A pushed route leaves this screen built and running underneath it, so
+  /// without this the clip carries on playing -- heard, from a profile page
+  /// that has nothing to do with it.
+  bool _covered = false;
+
+  /// Whether the clip was playing when that screen went up, so coming back
+  /// leaves it the way it was found.
+  bool _resumeOnReturn = false;
 
   /// The clip on the page being watched.
   ///
@@ -84,6 +99,37 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen> {
     VideoPool.instance.release(this);
     _pages?.dispose();
     super.dispose();
+  }
+
+  /// A profile, a post, a hashtag: pushed over this screen, which carries on
+  /// underneath. Stop the sound, and hand back the stage -- the screen that
+  /// covered this one has clips of its own, and they cannot play while this
+  /// one is still claiming to be the screen.
+  @override
+  void onCovered() {
+    _covered = true;
+    final controller = _controller;
+    // Nothing open yet counts as playing: it was on its way to playing.
+    _resumeOnReturn = controller?.value.isPlaying ?? true;
+    if (controller != null) unawaited(controller.pause());
+    VideoStage.instance.withdraw(this);
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void onUncovered() {
+    _covered = false;
+    VideoStage.instance.claim(this, (_) {});
+    if (!_resumeOnReturn) return;
+    _resumeOnReturn = false;
+    // The decoder may have gone to a clip on the screen that was covering this
+    // one, in which case there is nothing left to resume and the page has to
+    // be opened again.
+    if (_controller == null) {
+      unawaited(_syncVideo());
+    } else {
+      unawaited(_setPlaying(true));
+    }
   }
 
   /// The posts in this list that carry a clip, in order.
@@ -128,6 +174,12 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen> {
           PageView.builder(
             controller: _pages,
             scrollDirection: Axis.vertical,
+            // Snapping of this screen's own. The stock one asks for half a
+            // page of drag, and here a page is the whole screen.
+            pageSnapping: false,
+            physics: ClipPageScrollPhysics(
+              parent: ScrollConfiguration.of(context).getScrollPhysics(context),
+            ),
             itemCount: clips.length,
             onPageChanged: _onPage,
             itemBuilder: (context, index) => _Page(
@@ -139,7 +191,7 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen> {
               controller: index == _index ? _controller : null,
               opening: index == _index && _opening,
               failure: index == _index ? _failure : null,
-              onTogglePlay: _togglePlay,
+              onSetPlaying: _setPlaying,
             ),
           ),
           const _TopBar(),
@@ -222,7 +274,9 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen> {
       _controller = controller;
       _opening = false;
     });
-    await controller.play();
+    // Opened while another screen was pushed over this one: it is ready for
+    // coming back, not for playing out of sight.
+    if (!_covered) await controller.play();
   }
 
   void _onEvicted() {
@@ -233,15 +287,19 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen> {
     });
   }
 
-  Future<void> _togglePlay() async {
+  /// Starts or stops the clip on the page being watched.
+  ///
+  /// Told what to be rather than to toggle, because a double tap has to put
+  /// playback back exactly where the first of its two taps found it.
+  Future<void> _setPlaying(bool play) async {
     final controller = _controller;
     if (controller == null) return;
-    unawaited(HapticFeedback.selectionClick());
-    if (controller.value.isPlaying) {
-      await controller.pause();
-    } else {
+    if (controller.value.isPlaying == play) return;
+    if (play) {
       VideoPool.instance.touch(this);
       await controller.play();
+    } else {
+      await controller.pause();
     }
     if (mounted) setState(() {});
   }
@@ -321,15 +379,35 @@ class _TopBar extends StatelessWidget {
   }
 }
 
+/// How much of a clip [BoxFit.cover] cuts off, as a fraction of its area.
+double _coverCrop(double clip, double screen) {
+  if (clip <= 0 || screen <= 0) return 0;
+  return 1 - (clip < screen ? clip / screen : screen / clip);
+}
+
+/// Past this much lost, the clip is letterboxed instead of cropped.
+///
+/// A portrait clip on a portrait phone loses a sliver off the top and bottom,
+/// and cropping that is better than two black bars. A landscape clip on the
+/// same screen loses three quarters of its width, and a strip out of the
+/// middle of a clip is not the clip.
+const double _maxCrop = 0.4;
+
+/// Fill the screen while filling it still shows the clip.
+BoxFit _fitFor(double? clip, double screen) {
+  if (clip == null || clip <= 0) return BoxFit.cover;
+  return _coverCrop(clip, screen) > _maxCrop ? BoxFit.contain : BoxFit.cover;
+}
+
 /// One clip, filling the screen.
-class _Page extends ConsumerWidget {
+class _Page extends ConsumerStatefulWidget {
   final FeedPost post;
   final PostMedia media;
   final PostListSource source;
   final VideoPlayerController? controller;
   final bool opening;
   final String? failure;
-  final VoidCallback onTogglePlay;
+  final ValueChanged<bool> onSetPlaying;
 
   const _Page({
     required this.post,
@@ -338,50 +416,128 @@ class _Page extends ConsumerWidget {
     required this.controller,
     required this.opening,
     required this.failure,
-    required this.onTogglePlay,
+    required this.onSetPlaying,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final live = controller != null && controller!.value.isInitialized;
-    final playing = live && controller!.value.isPlaying;
+  ConsumerState<_Page> createState() => _PageState();
+}
+
+class _PageState extends ConsumerState<_Page>
+    with SingleTickerProviderStateMixin {
+  /// The heart a double tap throws up over the clip.
+  late final AnimationController _burst = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 700),
+  );
+
+  /// Open for as long as a second tap would still count as a double tap.
+  Timer? _window;
+
+  /// What playback was doing before the first of those two taps.
+  bool? _playingBeforeTap;
+
+  @override
+  void dispose() {
+    _window?.cancel();
+    _burst.dispose();
+    super.dispose();
+  }
+
+  /// A tap plays or pauses. Two taps like.
+  ///
+  /// The pause happens on the first tap rather than after the double-tap
+  /// window has closed -- a pause that lands a third of a second late is a
+  /// pause that feels broken -- and the second tap puts playback back exactly
+  /// where it found it. So a double tap only ever likes.
+  void _onTap() {
+    final open = _window;
+    if (open != null) {
+      open.cancel();
+      _window = null;
+      final before = _playingBeforeTap;
+      _playingBeforeTap = null;
+      if (before != null) widget.onSetPlaying(before);
+      _like();
+      return;
+    }
+
+    final controller = widget.controller;
+    if (controller != null && controller.value.isInitialized) {
+      final playing = controller.value.isPlaying;
+      _playingBeforeTap = playing;
+      unawaited(HapticFeedback.selectionClick());
+      widget.onSetPlaying(!playing);
+    }
+    _window = Timer(kDoubleTapTimeout, () {
+      _window = null;
+      _playingBeforeTap = null;
+    });
+  }
+
+  void _like() {
+    unawaited(HapticFeedback.mediumImpact());
+    _burst.forward(from: 0);
+    // Only ever a like. Taking one back is something you mean to do, and a
+    // stray second tap on the way to pausing is not.
+    if (widget.post.liked) return;
+    unawaited(
+      report(
+        context,
+        ref
+            .read(postListProvider(widget.source).notifier)
+            .toggleLike(widget.post.id),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = widget.controller;
+    final live = controller != null && controller.value.isInitialized;
+    final playing = live && controller.value.isPlaying;
 
     return GestureDetector(
       // The whole screen is the play button, which is what a screen with one
-      // clip on it should be.
-      onTap: onTogglePlay,
+      // clip on it should be. Opaque because it has to answer for the whole
+      // screen: a letterboxed clip leaves black above and below it that is
+      // nobody's child, and a tap landing there has to count.
+      behavior: HitTestBehavior.opaque,
+      onTap: _onTap,
       child: Stack(
         fit: StackFit.expand,
         children: [
           if (live)
-            // Filling the screen, cropped rather than letterboxed: a clip
-            // shown small in the middle of a black screen is a clip nobody
-            // came here to watch.
-            RepaintBoundary(
-              child: FittedBox(
-                fit: BoxFit.cover,
-                clipBehavior: Clip.hardEdge,
-                child: SizedBox(
-                  width: controller!.value.size.width,
-                  height: controller!.value.size.height,
-                  child: VideoPlayer(controller!),
+            LayoutBuilder(
+              builder: (context, constraints) => RepaintBoundary(
+                child: FittedBox(
+                  fit: _fitFor(
+                    controller.value.aspectRatio,
+                    constraints.biggest.aspectRatio,
+                  ),
+                  clipBehavior: Clip.hardEdge,
+                  child: SizedBox(
+                    width: controller.value.size.width,
+                    height: controller.value.size.height,
+                    child: VideoPlayer(controller),
+                  ),
                 ),
               ),
             )
           else
-            _Still(media: media),
+            _Still(media: widget.media),
 
-          if (opening)
+          if (widget.opening)
             const Center(
               child: CircularProgressIndicator(color: Colors.white),
             ),
 
-          if (failure != null)
+          if (widget.failure != null)
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(SpacingTokens.space32),
                 child: Text(
-                  failure!,
+                  widget.failure!,
                   textAlign: TextAlign.center,
                   style: const TextStyle(color: Colors.white70, fontSize: 15),
                 ),
@@ -408,8 +564,8 @@ class _Page extends ConsumerWidget {
             ),
           ),
 
-          _Rail(post: post, source: source),
-          _Caption(post: post),
+          _Rail(post: widget.post, source: widget.source),
+          _Caption(post: widget.post),
 
           if (live)
             Positioned(
@@ -419,19 +575,62 @@ class _Page extends ConsumerWidget {
               child: SafeArea(
                 top: false,
                 child: ValueListenableBuilder<VideoPlayerValue>(
-                  valueListenable: controller!,
+                  valueListenable: controller,
                   builder: (context, value, _) => PlaybackBar(
                     position: value.position,
                     buffered: value.buffered.isEmpty
                         ? Duration.zero
                         : value.buffered.last.end,
                     total: value.duration,
-                    onSeek: controller!.seekTo,
+                    onSeek: controller.seekTo,
                   ),
                 ),
               ),
             ),
+
+          _HeartBurst(animation: _burst),
         ],
+      ),
+    );
+  }
+}
+
+/// The heart a double tap stamps over the middle of the clip.
+class _HeartBurst extends StatelessWidget {
+  final Animation<double> animation;
+
+  const _HeartBurst({required this.animation});
+
+  @override
+  Widget build(BuildContext context) {
+    return IgnorePointer(
+      child: Center(
+        child: AnimatedBuilder(
+          animation: animation,
+          builder: (context, child) {
+            final t = animation.value;
+            // Nothing at all until there has been a double tap, and nothing
+            // left over once it is done.
+            if (t == 0 || t == 1) return const SizedBox.shrink();
+            // Up fast, held, then gone: a stamp rather than a fade.
+            final scale = t < 0.2 ? 0.5 + t * 3.25 : 1.15 - (t - 0.2) * 0.1875;
+            final opacity = t < 0.1
+                ? t * 10
+                : t > 0.7
+                    ? (1 - t) / 0.3
+                    : 1.0;
+            return Opacity(
+              opacity: opacity.clamp(0.0, 1.0),
+              child: Transform.scale(scale: scale, child: child),
+            );
+          },
+          child: const Icon(
+            Iconsax.heart,
+            size: 112,
+            color: Colors.white,
+            shadows: [Shadow(color: Colors.black45, blurRadius: 24)],
+          ),
+        ),
       ),
     );
   }
@@ -448,11 +647,15 @@ class _Still extends StatelessWidget {
     final still = media.thumbnailUrl;
     if (still == null) return const ColoredBox(color: Colors.black);
 
-    return Image.network(
-      still,
-      fit: BoxFit.cover,
-      cacheWidth: decodeWidth(context),
-      errorBuilder: (_, __, ___) => const ColoredBox(color: Colors.black),
+    // The same fit the player will use, so the frame does not jump the moment
+    // the decoder arrives.
+    return LayoutBuilder(
+      builder: (context, constraints) => Image.network(
+        still,
+        fit: _fitFor(media.aspectRatio, constraints.biggest.aspectRatio),
+        cacheWidth: decodeWidth(context),
+        errorBuilder: (_, __, ___) => const ColoredBox(color: Colors.black),
+      ),
     );
   }
 }
@@ -540,6 +743,63 @@ class _Rail extends ConsumerWidget {
     final notifier = ref.read(postListProvider(source).notifier);
     final muted = ref.watch(videoMutedProvider);
 
+    final buttons = <Widget>[
+      _RailButton(
+        icon: post.liked ? Iconsax.heart : Iconsax.heart_copy,
+        label: post.likes > 0 ? formatCount(post.likes) : null,
+        colour: post.liked ? PostActionColors.like : Colors.white,
+        tooltip: post.liked ? 'Unlike' : 'Like',
+        onTap: () => report(context, notifier.toggleLike(post.id)),
+      ),
+      _RailButton(
+        icon: Iconsax.message_text_copy,
+        label: post.comments > 0 ? formatCount(post.comments) : null,
+        tooltip: 'Reply',
+        onTap: () => Navigator.pushNamed(
+          context,
+          Routes.postDetail,
+          arguments: post.id,
+        ),
+      ),
+      _RailButton(
+        icon: post.reposted ? Iconsax.repeat_circle_copy : Iconsax.repeat_copy,
+        label: post.reposts > 0 ? formatCount(post.reposts) : null,
+        colour: post.reposted ? PostActionColors.repost : Colors.white,
+        tooltip: 'Repost',
+        onTap: () => RepostSheet.show(
+          context,
+          post: post,
+          onRepost: () => notifier.toggleRepost(post.id),
+        ),
+      ),
+      _RailButton(
+        icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,
+        colour: post.saved ? PostActionColors.save : Colors.white,
+        tooltip: post.saved ? 'Remove from saved' : 'Save',
+        onTap: () => report(context, notifier.toggleSave(post.id)),
+      ),
+      _RailButton(
+        icon: Iconsax.export_1_copy,
+        tooltip: 'Share',
+        onTap: () => SharePostSheet.show(context, post),
+      ),
+      _RailButton(
+        icon: muted ? Iconsax.volume_slash : Iconsax.volume_high,
+        tooltip: muted ? 'Turn sound on' : 'Turn sound off',
+        onTap: ref.read(videoMutedProvider.notifier).toggle,
+      ),
+      _RailButton(
+        icon: Iconsax.more_copy,
+        tooltip: 'More',
+        onTap: () => PostOptionsSheet.show(
+          context,
+          ref,
+          post: post,
+          source: source,
+        ),
+      ),
+    ];
+
     return Positioned(
       right: SpacingTokens.space8,
       bottom: 0,
@@ -550,64 +810,14 @@ class _Rail extends ConsumerWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _RailButton(
-                icon: post.liked ? Iconsax.heart : Iconsax.heart_copy,
-                label: post.likes > 0 ? formatCount(post.likes) : null,
-                colour: post.liked ? PostActionColors.like : Colors.white,
-                tooltip: post.liked ? 'Unlike' : 'Like',
-                onTap: () => report(context, notifier.toggleLike(post.id)),
-              ),
-              _RailButton(
-                icon: Iconsax.message_text_copy,
-                label: post.comments > 0 ? formatCount(post.comments) : null,
-                tooltip: 'Reply',
-                onTap: () => Navigator.pushNamed(
-                  context,
-                  Routes.postDetail,
-                  arguments: post.id,
-                ),
-              ),
-              _RailButton(
-                icon: post.reposted
-                    ? Iconsax.repeat_circle_copy
-                    : Iconsax.repeat_copy,
-                label: post.reposts > 0 ? formatCount(post.reposts) : null,
-                colour: post.reposted ? PostActionColors.repost : Colors.white,
-                tooltip: 'Repost',
-                onTap: () => RepostSheet.show(
-                  context,
-                  post: post,
-                  onRepost: () => notifier.toggleRepost(post.id),
-                ),
-              ),
-              _RailButton(
-                icon: post.saved
-                    ? Iconsax.archive_tick
-                    : Iconsax.archive_add_copy,
-                colour: post.saved ? PostActionColors.save : Colors.white,
-                tooltip: post.saved ? 'Remove from saved' : 'Save',
-                onTap: () => report(context, notifier.toggleSave(post.id)),
-              ),
-              _RailButton(
-                icon: Iconsax.export_1_copy,
-                tooltip: 'Share',
-                onTap: () => SharePostSheet.show(context, post),
-              ),
-              _RailButton(
-                icon: muted ? Iconsax.volume_slash : Iconsax.volume_high,
-                tooltip: muted ? 'Turn sound on' : 'Turn sound off',
-                onTap: ref.read(videoMutedProvider.notifier).toggle,
-              ),
-              _RailButton(
-                icon: Iconsax.more_copy,
-                tooltip: 'More',
-                onTap: () => PostOptionsSheet.show(
-                  context,
-                  ref,
-                  post: post,
-                  source: source,
-                ),
-              ),
+              for (var i = 0; i < buttons.length; i++) ...[
+                // Each button carries its own padding, which is the tap
+                // target; this is the gap you can see between them. Without
+                // it a count sits hard against the icon below it and the
+                // whole rail reads as one block.
+                if (i > 0) const SizedBox(height: _railGap),
+                buttons[i],
+              ],
             ],
           ),
         ),
@@ -615,6 +825,9 @@ class _Rail extends ConsumerWidget {
     );
   }
 }
+
+/// The visible gap between two buttons on the rail.
+const double _railGap = SpacingTokens.space12;
 
 class _RailButton extends StatelessWidget {
   final IconData icon;
