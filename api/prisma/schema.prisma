@@ -153,6 +153,7 @@ model Post {
   media    Media[]
   reposts  Repost[]
   hashtags PostHashtag[]
+  topics   PostTopic[]
   hidden   HiddenPost[]
   mutes    Mute[]
   signals  InterestSignal[]
@@ -257,8 +258,28 @@ model Interest {
   slug  String         @unique
   name  String
   users UserInterest[]
+  posts PostTopic[]
 
   @@index([slug])
+}
+
+// A topic the author filed a post under.
+//
+// Separate from PostHashtag because the two are different things. A hashtag is
+// whatever somebody typed; a topic is one of a fixed set, chosen deliberately,
+// and the same set people pick from when they say what they are into. Before
+// this, a topic could only be shown as "what the people who follow it are
+// posting", which is a guess about the author rather than a fact about the
+// post.
+model PostTopic {
+  postId     String @db.Uuid
+  interestId String @db.Uuid
+
+  post     Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  interest Interest @relation(fields: [interestId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([postId, interestId])
+  @@index([interestId])
 }
 
 model UserInterest {

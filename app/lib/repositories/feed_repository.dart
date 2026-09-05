@@ -161,6 +161,7 @@ class FeedRepository {
     String? quotedPostId,
     ReplyPolicy replyPolicy = ReplyPolicy.everyone,
     ComposerPoll? poll,
+    List<String> topics = const [],
   }) async {
     final res = await _api.dio.post<Map<String, dynamic>>(
       '/feed/posts',
@@ -173,6 +174,7 @@ class FeedRepository {
               media.where((m) => m.isReady).map((m) => m.toJson()).toList(),
         if (quotedPostId != null) 'quotedPostId': quotedPostId,
         if (poll != null) 'poll': poll.toJson(),
+        if (topics.isNotEmpty) 'topics': topics,
         'replyPolicy': replyPolicy.wire,
       },
     );
