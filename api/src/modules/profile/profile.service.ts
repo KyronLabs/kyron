@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -11,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { AccountStatus } from '@prisma/client';
 
 @Injectable()
 export class ProfileService {
@@ -676,8 +676,74 @@ export class ProfileService {
     };
   }
 
-  async listInterests() {
-    return this.supabase.listInterests();
+  /**
+   * The topic catalogue, with how many people are into each and whether the
+   * reader is one of them.
+   *
+   * Read from Prisma rather than Supabase, because the counts and the reader's
+   * own picks live in `user_interests` and joining across the two clients to
+   * get them would be three round trips for what is two.
+   */
+  async listTopics(viewerId: string) {
+    const [topics, mine] = await Promise.all([
+      this.prisma.interest.findMany({
+        orderBy: { name: 'asc' },
+        select: {
+          id: true,
+          slug: true,
+          name: true,
+          _count: { select: { users: true } },
+        },
+      }),
+      this.prisma.userInterest.findMany({
+        where: { userId: viewerId },
+        select: { interestId: true },
+      }),
+    ]);
+
+    const followed = new Set(mine.map((row) => row.interestId));
+    return {
+      items: topics.map((topic) => ({
+        slug: topic.slug,
+        name: topic.name,
+        people: topic._count.users,
+        following: followed.has(topic.id),
+      })),
+    };
+  }
+
+  /**
+   * Adds or removes one topic, leaving the rest alone.
+   *
+   * [saveInterests] replaces the whole set, which is what onboarding wants and
+   * exactly what a single toggle on the Explore wall must not do.
+   */
+  async setTopic(userId: string, slug: string, following: boolean) {
+    const normalised = slug.trim().toLowerCase();
+    const interest = await this.prisma.interest.findUnique({
+      where: { slug: normalised },
+      select: { id: true },
+    });
+    if (!interest) throw new NotFoundException('That topic does not exist.');
+
+    if (following) {
+      await this.prisma.userInterest.upsert({
+        where: {
+          userId_interestId: { userId, interestId: interest.id },
+        },
+        create: { userId, interestId: interest.id },
+        update: {},
+      });
+    } else {
+      await this.prisma.userInterest.deleteMany({
+        where: { userId, interestId: interest.id },
+      });
+    }
+
+    const people = await this.prisma.userInterest.count({
+      where: { interestId: interest.id },
+    });
+    return { slug: normalised, following, people };
   }
 
   async getRandomDefaultCover() {
@@ -741,94 +807,136 @@ export class ProfileService {
     return { ok: true, count: cleanIds.length };
   }
 
-  async getSuggestedUsers(userId: string) {
-    this.logger.log(`Generating suggestions for ${userId}`);
+  /**
+   * Accounts worth following, best match first.
+   *
+   * Ranked on what there is to rank on: how many topics you have in common,
+   * then how many people already follow them, then how recently they joined.
+   * Anyone you already follow, have blocked, or have been blocked by is not a
+   * suggestion, and neither are you.
+   *
+   * Scored in memory over a bounded candidate set rather than in SQL. The
+   * shared-topic count is not a column, and a query that could order by it
+   * would be a join across three tables per page for a list that is at most a
+   * few hundred rows wide.
+   */
+  async listSuggested(viewerId: string, limit = 20, cursor?: number) {
+    const offset = ProfileService.parseOffset(cursor);
 
-    const client = this.supabase.getClient();
+    const [myTopics, following, blocks] = await Promise.all([
+      this.prisma.userInterest.findMany({
+        where: { userId: viewerId },
+        select: { interestId: true },
+      }),
+      this.prisma.follow.findMany({
+        where: { followerId: viewerId },
+        select: { followingId: true },
+      }),
+      this.prisma.block.findMany({
+        where: { OR: [{ blockerId: viewerId }, { blockedId: viewerId }] },
+        select: { blockerId: true, blockedId: true },
+      }),
+    ]);
 
-    const { data: myInterests, error: myErr } = await client
-      .from('user_interests')
-      .select('interest_id')
-      .eq('user_id', userId);
-
-    if (myErr) throw new Error(myErr.message);
-
-    const interestIds = (myInterests ?? []).map((i) => i.interest_id);
-
-    if (interestIds.length === 0) {
-      return this.getRandomSuggestedUsers(userId);
+    const excluded = new Set<string>([viewerId]);
+    for (const row of following) excluded.add(row.followingId);
+    for (const row of blocks) {
+      excluded.add(row.blockerId);
+      excluded.add(row.blockedId);
     }
 
-    const { data: matches, error: matchErr } = await client
-      .from('user_interests')
-      .select('user_id')
-      .in('interest_id', interestIds);
-
-    if (matchErr) throw new Error(matchErr.message);
-
-    const relatedUserIds = [
-      ...new Set(
-        matches.map((m: any) => m.user_id).filter((id) => id !== userId),
-      ),
-    ];
-
-    if (relatedUserIds.length === 0) {
-      return this.getRandomSuggestedUsers(userId);
+    const topicIds = myTopics.map((row) => row.interestId);
+    const shared = new Map<string, number>();
+    if (topicIds.length > 0) {
+      const matches = await this.prisma.userInterest.findMany({
+        where: {
+          interestId: { in: topicIds },
+          userId: { notIn: [...excluded] },
+        },
+        select: { userId: true },
+        take: ProfileService.suggestionCandidates,
+      });
+      for (const row of matches) {
+        shared.set(row.userId, (shared.get(row.userId) ?? 0) + 1);
+      }
     }
 
-    const { data: profiles, error: profileErr } = await client
-      .from('user_profiles')
-      .select('*')
-      .in('user_id', relatedUserIds)
-      .limit(50);
+    const eligible = {
+      deletedAt: null,
+      status: AccountStatus.ACTIVE,
+      id: { notIn: [...excluded] },
+    };
+    const select = { ...this.summaryShape, createdAt: true };
 
-    if (profileErr) throw new Error(profileErr.message);
+    // Everyone who shares a topic, plus the newest accounts on top. The second
+    // half is what keeps this from being an empty tab for a reader who picked
+    // no topics, or whose topics nobody else has yet.
+    const [matched, recent] = await Promise.all([
+      shared.size === 0
+        ? Promise.resolve([])
+        : this.prisma.user.findMany({
+            where: { ...eligible, id: { in: [...shared.keys()] } },
+            take: ProfileService.suggestionCandidates,
+            select,
+          }),
+      this.prisma.user.findMany({
+        where: eligible,
+        orderBy: { createdAt: 'desc' },
+        take: ProfileService.suggestionCandidates,
+        select,
+      }),
+    ]);
 
-    const followingRows = await this.prisma.follow.findMany({
-      where: {
-        followerId: userId,
-        followingId: { in: relatedUserIds },
-      },
+    const byId = new Map(
+      [...matched, ...recent].map((person) => [person.id, person]),
+    );
+    const candidates = [...byId.values()];
+
+    candidates.sort((a, b) => {
+      const byTopics = (shared.get(b.id) ?? 0) - (shared.get(a.id) ?? 0);
+      if (byTopics !== 0) return byTopics;
+      const byFollowers = b._count.followers - a._count.followers;
+      if (byFollowers !== 0) return byFollowers;
+      return b.createdAt.getTime() - a.createdAt.getTime();
     });
 
-    const followingSet = new Set(followingRows.map((f) => f.followingId));
-
-    return profiles.map((p: any) => ({
-      id: p.user_id,
-      avatar: p.avatar_url,
-      handle: p.display_name ?? '@user',
-      bio: p.bio,
-      isFollowing: followingSet.has(p.user_id),
-    }));
+    const page = candidates.slice(offset, offset + limit);
+    return {
+      items: page.map((person) => ({
+        id: person.id,
+        name: person.name,
+        username: person.username,
+        did: person.did,
+        kyronPoints: person.kyronPoints,
+        avatarUrl: person.profile?.avatarUrl ?? null,
+        bio: person.profile?.bio ?? null,
+        followers: person._count.followers,
+        // Everyone here is someone the reader does not follow: that is what
+        // makes them a suggestion.
+        isFollowing: false,
+        isSelf: false,
+        /** How many topics this account has in common with the reader. */
+        sharedTopics: shared.get(person.id) ?? 0,
+      })),
+      // An offset rather than a row id. The order is computed here, not by the
+      // database, so there is no row a cursor could name.
+      nextCursor: candidates.length > offset + limit ? offset + limit : null,
+    };
   }
 
-  async getRandomSuggestedUsers(userId: string) {
-    const client = this.supabase.getClient();
-
-    const { data, error } = await client
-      .from('user_profiles')
-      .select('*')
-      .neq('user_id', userId)
-      .order('updated_at', { ascending: false })
-      .limit(20);
-
-    if (error) throw new Error(error.message);
-
-    const followingRows = await this.prisma.follow.findMany({
-      where: {
-        followerId: userId,
-        followingId: { in: data.map((x: any) => x.user_id) },
-      },
-    });
-
-    const followingSet = new Set(followingRows.map((f) => f.followingId));
-
-    return data.map((p: any) => ({
-      id: p.user_id,
-      avatar: p.avatar_url,
-      handle: p.display_name ?? '@user',
-      bio: p.bio,
-      isFollowing: followingSet.has(p.user_id),
-    }));
+  /** Where a suggestions page starts. Anything unusable starts at the top. */
+  private static parseOffset(cursor?: number): number {
+    if (cursor === undefined || !Number.isInteger(cursor) || cursor < 0) {
+      return 0;
+    }
+    return Math.min(cursor, ProfileService.suggestionCandidates);
   }
+
+  /**
+   * How wide the pool that is scored is.
+   *
+   * The whole point of ranking in memory is that the set is small. Past this
+   * the suggestions are no better and the query is no longer cheap.
+   */
+  private static readonly suggestionCandidates = 200;
 }

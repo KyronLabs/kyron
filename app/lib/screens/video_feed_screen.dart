@@ -269,6 +269,14 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen>
       VideoPool.instance.release(this);
       return;
     }
+    // The pool can take the lease back across any of those awaits. Asking it
+    // rather than trusting [_openFor]: a page swiped away from and back to
+    // sets that field to the same url again, which would let a controller
+    // disposed in between look current.
+    if (!VideoPool.instance.holds(this, controller)) {
+      setState(() => _opening = false);
+      return;
+    }
 
     setState(() {
       _controller = controller;

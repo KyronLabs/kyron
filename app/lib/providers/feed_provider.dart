@@ -51,6 +51,10 @@ class PostListSource {
   factory PostListSource.hashtag(String tag) =>
       PostListSource._('hashtag', tag.toLowerCase());
 
+  /// Posts by the people who follow a topic, named by its slug.
+  factory PostListSource.topic(String slug) =>
+      PostListSource._('topic', slug.toLowerCase());
+
   @override
   bool operator ==(Object other) =>
       other is PostListSource && other.kind == kind && other.userId == userId;
@@ -141,6 +145,8 @@ class PostListNotifier extends StateNotifier<FeedState> {
         return _repo.byAuthor(_source.userId!, cursor: cursor, has: 'video');
       case 'hashtag':
         return _repo.byHashtag(_source.userId!, cursor: cursor);
+      case 'topic':
+        return _repo.byTopic(_source.userId!, cursor: cursor);
       default:
         return _repo.recent(cursor: cursor);
     }

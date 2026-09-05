@@ -3,9 +3,11 @@
 
 import {
   Controller,
+  Delete,
   Get,
   Post,
   Patch,
+  Put,
   UseGuards,
   Body,
   Req,
@@ -19,6 +21,7 @@ import { AuthGuard } from '../../common/guards/auth.guard';
 import { ProfileService } from './profile.service';
 import { SearchProfilesDto } from './dto/search-profiles.dto';
 import { ListFollowsDto } from './dto/list-follows.dto';
+import { ListSuggestedDto } from './dto/list-suggested.dto';
 import { Request } from 'express';
 
 /**
@@ -215,9 +218,24 @@ export class ProfileController {
     return { url: await this.svc.getRandomDefaultCover() };
   }
 
+  /** The topic catalogue, with its counts and the reader's own picks. */
+  @UseGuards(AuthGuard)
   @Get('interests')
-  async interests() {
-    return { data: await this.svc.listInterests() };
+  async interests(@Req() req: AuthRequest) {
+    return this.svc.listTopics(req.user.id);
+  }
+
+  /** Follows one topic, leaving the rest of the reader's picks alone. */
+  @UseGuards(AuthGuard)
+  @Put('interests/:slug')
+  async followTopic(@Req() req: AuthRequest, @Param('slug') slug: string) {
+    return this.svc.setTopic(req.user.id, slug, true);
+  }
+
+  @UseGuards(AuthGuard)
+  @Delete('interests/:slug')
+  async unfollowTopic(@Req() req: AuthRequest, @Param('slug') slug: string) {
+    return this.svc.setTopic(req.user.id, slug, false);
   }
 
   @UseGuards(AuthGuard)
@@ -244,10 +262,14 @@ export class ProfileController {
     return this.svc.followMany(req.user.id, ids);
   }
 
+  /** Accounts worth following, best match first. */
   @UseGuards(AuthGuard)
   @Get('suggested')
-  async getSuggested(@Req() req: AuthRequest) {
-    return this.svc.getSuggestedUsers(req.user.id);
+  async getSuggested(
+    @Req() req: AuthRequest,
+    @Query() query: ListSuggestedDto,
+  ) {
+    return this.svc.listSuggested(req.user.id, query.limit, query.cursor);
   }
 
   // ==========================================

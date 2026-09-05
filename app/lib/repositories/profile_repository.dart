@@ -1,3 +1,4 @@
+import '../models/explore_entry.dart';
 import '../models/profile_model.dart';
 import '../models/profile_summary.dart';
 import '../services/api_client.dart';
@@ -41,6 +42,59 @@ class ProfileRepository {
     );
     return FollowPage.fromJson(res.data ?? const {});
   }
+
+  /// Accounts worth following, best match first.
+  ///
+  /// Paged by an offset rather than a row id: the order is computed by the
+  /// server from shared topics and follower counts, so there is no row a
+  /// cursor could name.
+  Future<SuggestionPage> suggested({int? cursor, int limit = 20}) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/profile/suggested',
+      queryParameters: {
+        'limit': limit,
+        if (cursor != null) 'cursor': cursor,
+      },
+    );
+    return SuggestionPage.fromJson(res.data ?? const {});
+  }
+
+  /// The topic catalogue, with its counts and the reader's own picks.
+  Future<List<Topic>> topics() async {
+    final res = await _api.dio.get<Map<String, dynamic>>('/profile/interests');
+    return (res.data?['items'] as List<dynamic>? ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(Topic.fromJson)
+        .toList();
+  }
+
+  /// Follows or unfollows one topic, leaving the reader's other picks alone.
+  /// Returns the recounted number of people into it.
+  Future<int> setTopic(String slug, bool following) async {
+    final path = '/profile/interests/${Uri.encodeComponent(slug)}';
+    final res = following
+        ? await _api.dio.put<Map<String, dynamic>>(path)
+        : await _api.dio.delete<Map<String, dynamic>>(path);
+    return (res.data?['people'] as num?)?.toInt() ?? 0;
+  }
+}
+
+/// One page of suggestions, with where the next one starts.
+class SuggestionPage {
+  final List<ProfileSummary> items;
+
+  /// Null once the ranking has run out.
+  final int? nextCursor;
+
+  const SuggestionPage({required this.items, this.nextCursor});
+
+  factory SuggestionPage.fromJson(Map<String, dynamic> json) => SuggestionPage(
+        items: (json['items'] as List<dynamic>? ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(ProfileSummary.fromJson)
+            .toList(),
+        nextCursor: (json['nextCursor'] as num?)?.toInt(),
+      );
 }
 
 /// One page of people, with where the next one starts.

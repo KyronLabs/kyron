@@ -223,6 +223,14 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
       VideoPool.instance.release(this);
       return;
     }
+    // Setting a controller up is three awaits, and the pool can take the lease
+    // back across any of them for a clip closer to the reader. Without this the
+    // tile puts a controller the pool has already disposed back into its state,
+    // and the next build mounts a player on a decoder that is gone.
+    if (!VideoPool.instance.holds(this, controller)) {
+      setState(() => _opening = false);
+      return;
+    }
 
     setState(() {
       _controller = controller;

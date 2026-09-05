@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../models/explore_entry.dart';
 import '../models/feed_post.dart';
 import '../models/post_media.dart';
 import '../models/post_comment.dart';
@@ -249,6 +250,22 @@ class FeedRepository {
   /// Posts carrying a hashtag, given without its leading #.
   Future<FeedPage> byHashtag(String tag, {String? cursor, int limit = 20}) =>
       _page('/feed/tags/${Uri.encodeComponent(tag)}', cursor, limit);
+
+  /// Posts by the people who follow a topic.
+  Future<FeedPage> byTopic(String slug, {String? cursor, int limit = 20}) =>
+      _page('/feed/topics/${Uri.encodeComponent(slug)}', cursor, limit);
+
+  /// The hashtags being used right now, most used first.
+  Future<List<TrendingTag>> trendingTags({int limit = 25}) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/feed/trending/tags',
+      queryParameters: {'limit': limit},
+    );
+    return (res.data?['items'] as List<dynamic>? ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(TrendingTag.fromJson)
+        .toList();
+  }
 
   Future<void> delete(String postId) => _api.dio.delete('/feed/posts/$postId');
 

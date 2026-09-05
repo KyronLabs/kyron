@@ -181,7 +181,17 @@ class _Stat extends StatelessWidget {
       children: [
         Icon(icon, size: 13, color: muted),
         const SizedBox(width: SpacingTokens.space4),
-        Text(text, style: TextStyle(fontSize: 12, color: muted)),
+        // Flexible, because the Wrap around this hands it whatever width is
+        // left on the line: a six-figure follower count at a large text scale
+        // is wider than that, and a stat that cannot shrink overflows.
+        Flexible(
+          child: Text(
+            text,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontSize: 12, color: muted),
+          ),
+        ),
       ],
     );
   }

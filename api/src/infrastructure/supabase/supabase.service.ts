@@ -20,11 +20,6 @@ export interface ProfileRow {
   updated_at?: string | null;
 }
 
-export interface InterestRow {
-  id: string;
-  name: string;
-}
-
 @Injectable()
 export class SupabaseService {
   private readonly logger = new Logger(SupabaseService.name);
@@ -202,18 +197,6 @@ export class SupabaseService {
       this.logger.error('replaceUserInterests insert error', error);
       throw error;
     }
-  }
-
-  async listInterests(): Promise<InterestRow[]> {
-    const { data, error } = await this.client
-      .from('interests')
-      .select('*')
-      .order('name', { ascending: true });
-    if (error) {
-      this.logger.error('listInterests error', error);
-      throw error;
-    }
-    return (data ?? []) as InterestRow[];
   }
 
   // Small helper for uuidv4 to avoid adding uuid here

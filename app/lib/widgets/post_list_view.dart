@@ -6,6 +6,7 @@ import '../providers/feed_provider.dart';
 import '../routes.dart';
 import '../screens/video_feed_screen.dart';
 import 'post_card.dart';
+import 'list_message.dart';
 import 'media_tile_grid.dart';
 
 /// A scrolling list of posts, with every state it can be in.
@@ -203,39 +204,12 @@ class _PostListViewState extends ConsumerState<PostListView> {
     required String detail,
     required String action,
   }) {
-    final scheme = Theme.of(context).colorScheme;
-
-    return SliverFillRemaining(
-      hasScrollBody: false,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: SpacingTokens.space32,
-          vertical: SpacingTokens.space40,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon,
-                size: 48, color: scheme.onSurface.withValues(alpha: .35)),
-            const SizedBox(height: SpacingTokens.space16),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: SpacingTokens.space8),
-            Text(
-              detail,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: scheme.onSurface.withValues(alpha: .7),
-                  ),
-            ),
-            const SizedBox(height: SpacingTokens.space20),
-            TextButton(onPressed: _notifier.refresh, child: Text(action)),
-          ],
-        ),
-      ),
-    );
+    return ListMessage(
+      icon: icon,
+      title: title,
+      detail: detail,
+      action: action,
+      onAction: _notifier.refresh,
+    ).sliver;
   }
 }

@@ -10,6 +10,7 @@ import '../providers/api_client_provider.dart';
 import '../repositories/profile_repository.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/list_message.dart';
 import '../widgets/person_tile.dart';
 import 'profile_screen.dart' show FollowListArgs;
 
@@ -209,13 +210,22 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
     }
 
     if (state.people.isEmpty) {
-      return _Empty(
-        message: state.error ??
-            (widget.args.followers
-                ? 'Nobody is following this account yet.'
-                : 'This account is not following anyone yet.'),
-        failed: state.error != null,
-        onRetry: notifier.refresh,
+      final failed = state.error != null;
+      // A ListView, not a bare Column: pull-to-refresh needs something
+      // scrollable under it, and a centred column is not.
+      return ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        children: [
+          ListMessage(
+            icon: failed ? Iconsax.cloud_cross_copy : Iconsax.people_copy,
+            title: state.error ??
+                (widget.args.followers
+                    ? 'Nobody is following this account yet.'
+                    : 'This account is not following anyone yet.'),
+            action: failed ? 'Try again' : null,
+            onAction: failed ? notifier.refresh : null,
+          ),
+        ],
       );
     }
 
@@ -248,54 +258,6 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
           ),
         );
       },
-    );
-  }
-}
-
-class _Empty extends StatelessWidget {
-  final String message;
-  final bool failed;
-  final VoidCallback onRetry;
-
-  const _Empty({
-    required this.message,
-    required this.failed,
-    required this.onRetry,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
-    // A ListView, not a Column: pull-to-refresh needs something scrollable
-    // under it, and a centred Column is not.
-    return ListView(
-      physics: const AlwaysScrollableScrollPhysics(),
-      children: [
-        const SizedBox(height: 120),
-        Icon(
-          failed ? Iconsax.cloud_cross_copy : Iconsax.people_copy,
-          size: 40,
-          color: scheme.onSurface.withValues(alpha: 0.35),
-        ),
-        const SizedBox(height: SpacingTokens.space12),
-        Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: SpacingTokens.space32),
-          child: Text(
-            message,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.7)),
-          ),
-        ),
-        if (failed) ...[
-          const SizedBox(height: SpacingTokens.space12),
-          Center(
-            child:
-                TextButton(onPressed: onRetry, child: const Text('Try again')),
-          ),
-        ],
-      ],
     );
   }
 }

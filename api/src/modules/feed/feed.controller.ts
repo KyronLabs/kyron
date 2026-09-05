@@ -208,6 +208,27 @@ export class FeedController {
     return this.svc.setReposted(req.user.id, id, false);
   }
 
+  /** The hashtags being used right now, most used first. */
+  @Get('trending/tags')
+  trending(@Req() req: AuthRequest, @Query() query: ListFeedDto) {
+    return this.svc.trendingTags(req.user.id, query.limit);
+  }
+
+  /**
+   * Posts by the people who follow a topic.
+   *
+   * Declared above `tags/:tag` only for readability -- the two prefixes cannot
+   * collide -- and both above nothing that could swallow them.
+   */
+  @Get('topics/:slug')
+  byTopic(
+    @Req() req: AuthRequest,
+    @Param('slug') slug: string,
+    @Query() query: ListFeedDto,
+  ) {
+    return this.svc.listByTopic(slug, req.user.id, query.limit, query.cursor);
+  }
+
   /** Posts carrying a hashtag. The tag may be given with or without its #. */
   @Get('tags/:tag')
   byHashtag(

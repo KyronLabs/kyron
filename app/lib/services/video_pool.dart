@@ -123,6 +123,19 @@ class VideoPool {
     return controller;
   }
 
+  /// Whether [owner] still holds [controller].
+  ///
+  /// A lease can be taken back while its owner is part way through setting the
+  /// controller up -- volume, looping, the first play -- and every one of those
+  /// is an await. Without this the owner comes back from the await and puts a
+  /// controller the pool has already disposed into its state, and the next
+  /// build mounts a player on a decoder that is gone: "No active player with
+  /// ID 37", and the controller used after being disposed.
+  bool holds(Object owner, VideoPlayerController controller) {
+    final lease = _leaseFor(owner);
+    return lease != null && identical(lease.controller, controller);
+  }
+
   /// Marks [owner]'s lease as the most recently used, so it is the last to be
   /// taken back.
   void touch(Object owner) {
@@ -171,10 +184,23 @@ class VideoPool {
     while (_leases.length >= budget) {
       final victim = _oldest();
       if (victim == null) return false;
-      _retire(victim);
-      victim.onEvicted();
+      _evict(victim);
     }
     return true;
+  }
+
+  /// Takes a lease back: the owner is told first, and the controller is
+  /// disposed only once it has let go.
+  ///
+  /// That order is the whole point. Disposing first leaves a window in which
+  /// the owner still has the controller in its state, and anything that
+  /// rebuilds in that window mounts a player on a decoder that no longer
+  /// exists. [_oldest] only ever offers a lease that has finished opening, so
+  /// there is no cancellation to handle here.
+  void _evict(_Lease lease) {
+    _leases.remove(lease);
+    lease.onEvicted();
+    unawaited(lease.controller.dispose());
   }
 
   /// The lease to take back first: the least recently used *open* one that is
