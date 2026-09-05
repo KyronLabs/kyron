@@ -45,6 +45,7 @@ export class FeedController {
       quotedPostId: dto.quotedPostId,
       replyPolicy: dto.replyPolicy,
       poll: dto.poll,
+      topics: dto.topics,
     });
   }
 

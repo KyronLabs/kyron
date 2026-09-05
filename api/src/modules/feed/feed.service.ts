@@ -183,6 +183,14 @@ export class FeedService {
       quotedPostId?: string;
       replyPolicy?: ReplyPolicy;
       poll?: { options: string[]; durationMinutes: number };
+      /** Topic slugs the author filed it under. */
+      topics?: string[];
+      /**
+       * The community to write into, already checked. Resolved by the caller
+       * rather than here: whether the author may post into it is the
+       * communities module's rule, and this module should not learn it twice.
+       */
+      communityId?: string;
     },
   ): Promise<FeedPost> {
     const content = input.content.trim();
@@ -210,10 +218,13 @@ export class FeedService {
       await this.requireVisiblePost(input.quotedPostId);
     }
 
+    const topicIds = await this.topicLinks(input.topics ?? []);
+
     const post = await this.prisma.post.create({
       data: {
         authorId,
         content,
+        communityId: input.communityId,
         replyPolicy: input.replyPolicy ?? ReplyPolicy.EVERYONE,
         quotedPostId: input.quotedPostId,
         media: {
@@ -230,6 +241,7 @@ export class FeedService {
           })),
         },
         hashtags: { create: await this.hashtagLinks(content) },
+        topics: { create: topicIds.map((interestId) => ({ interestId })) },
         poll: poll
           ? {
               create: {
@@ -251,6 +263,41 @@ export class FeedService {
 
     this.logger.log(`post ${post.id} created by ${authorId}`);
     return this.toFeedPost(post);
+  }
+
+  /** How many topics one post may be filed under. */
+  static readonly maxTopics = 3;
+
+  /**
+   * Resolves topic slugs to rows to attach to a post.
+   *
+   * Unknown slugs are an error rather than something to drop quietly: a
+   * composer that offers a topic the server does not have is a composer out of
+   * step with it, and silently posting without the topic hides that.
+   */
+  private async topicLinks(slugs: string[]): Promise<string[]> {
+    const wanted = [
+      ...new Set(
+        slugs.map((slug) => slug.trim().toLowerCase()).filter(Boolean),
+      ),
+    ];
+    if (wanted.length === 0) return [];
+    if (wanted.length > FeedService.maxTopics) {
+      throw new BadRequestException(
+        `A post can be filed under at most ${FeedService.maxTopics} topics.`,
+      );
+    }
+
+    const rows = await this.prisma.interest.findMany({
+      where: { slug: { in: wanted } },
+      select: { id: true, slug: true },
+    });
+    if (rows.length !== wanted.length) {
+      const known = new Set(rows.map((row) => row.slug));
+      const missing = wanted.filter((slug) => !known.has(slug));
+      throw new BadRequestException(`No such topic: ${missing.join(', ')}.`);
+    }
+    return rows.map((row) => row.id);
   }
 
   /**
@@ -313,7 +360,13 @@ export class FeedService {
     // Filtered in the query, not in the client. Hiding a blocked account's
     // posts after they have been sent is not blocking: the content still
     // arrived, and anything reading the response can see it.
-    const where = await this.withFilters({ deletedAt: null }, viewerId);
+    // Community posts are left out. They were written into a named place with
+    // its own members, and pushing them at everybody is what makes people stop
+    // posting in them.
+    const where = await this.withFilters(
+      { deletedAt: null, communityId: null },
+      viewerId,
+    );
     return this.page(where, viewerId, limit, cursor);
   }
 
@@ -448,11 +501,10 @@ export class FeedService {
   /**
    * Posts by the people who follow a topic.
    *
-   * A topic is a row in the interest catalogue, and nothing links one to a
-   * post: interests are something an account has, not something a post
-   * carries. What a topic can honestly show is what the people who chose it
-   * are posting -- which is what discovery by interest means anywhere it
-   * works.
+   * Two things, in one list: posts the author filed under this topic, and
+   * posts by people who say it is what they are into. The first is the exact
+   * answer and the second is why the screen is not empty -- most posts carry
+   * no topic, and a topic showing only the handful that do looks dead.
    */
   async listByTopic(
     slug: string,
@@ -470,8 +522,43 @@ export class FeedService {
     const where = await this.withFilters(
       {
         deletedAt: null,
-        author: { interests: { some: { interestId: interest.id } } },
+        OR: [
+          // Filed under it by whoever wrote it.
+          { topics: { some: { interestId: interest.id } } },
+          // Or written by somebody who says this is what they are into. Kept
+          // alongside the explicit link rather than replaced by it: most posts
+          // carry no topic at all, and a topic that only shows the handful
+          // that do is a topic that looks dead.
+          { author: { interests: { some: { interestId: interest.id } } } },
+        ],
       },
+      viewerId,
+    );
+    return this.page(where, viewerId, limit, cursor);
+  }
+
+  /**
+   * What has been posted into one community, newest first.
+   *
+   * Takes a slug rather than an id so the client can open a community from a
+   * link without looking it up first.
+   */
+  async listByCommunity(
+    slug: string,
+    viewerId: string,
+    limit = DEFAULT_LIMIT,
+    cursor?: string,
+  ): Promise<FeedPage> {
+    const community = await this.prisma.community.findFirst({
+      where: { slug: slug.trim().toLowerCase(), deletedAt: null },
+      select: { id: true },
+    });
+    if (!community) {
+      throw new NotFoundException('That community does not exist.');
+    }
+
+    const where = await this.withFilters(
+      { deletedAt: null, communityId: community.id },
       viewerId,
     );
     return this.page(where, viewerId, limit, cursor);

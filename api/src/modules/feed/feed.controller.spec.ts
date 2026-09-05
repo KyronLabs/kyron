@@ -71,7 +71,19 @@ describe('FeedController.create', () => {
       quotedPostId: '11111111-1111-4111-8111-111111111111',
       replyPolicy: 'FOLLOWERS',
       poll: undefined,
+      topics: undefined,
     });
+  });
+
+  it('forwards the topics the author filed it under', async () => {
+    await (
+      await controller()
+    ).create(request, dto({ topics: ['music', 'code'] }));
+
+    expect(createPost).toHaveBeenCalledWith(
+      'viewer-1',
+      expect.objectContaining({ topics: ['music', 'code'] }),
+    );
   });
 
   it('takes the author from the token, never from the body', async () => {

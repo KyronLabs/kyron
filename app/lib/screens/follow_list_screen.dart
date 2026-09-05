@@ -10,7 +10,7 @@ import '../providers/api_client_provider.dart';
 import '../repositories/profile_repository.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
-import '../widgets/list_message.dart';
+import '../widgets/mascot.dart';
 import '../widgets/person_tile.dart';
 import 'profile_screen.dart' show FollowListArgs;
 
@@ -213,20 +213,21 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
       final failed = state.error != null;
       // A ListView, not a bare Column: pull-to-refresh needs something
       // scrollable under it, and a centred column is not.
-      return ListView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        children: [
-          ListMessage(
-            icon: failed ? Iconsax.cloud_cross_copy : Iconsax.people_copy,
-            title: state.error ??
-                (widget.args.followers
-                    ? 'Nobody is following this account yet.'
-                    : 'This account is not following anyone yet.'),
-            action: failed ? 'Try again' : null,
-            onAction: failed ? notifier.refresh : null,
-          ),
-        ],
-      );
+      if (failed) {
+        return EmptyState.failed(
+          title: 'Could not load this list',
+          detail: state.error,
+          onAction: notifier.refresh,
+        ).scrollable;
+      }
+      return EmptyState(
+        title: widget.args.followers
+            ? 'No followers yet'
+            : 'Not following anyone yet',
+        detail: widget.args.followers
+            ? 'When somebody follows this account, they will show up here.'
+            : 'The accounts this one follows will show up here.',
+      ).scrollable;
     }
 
     return ListView.separated(

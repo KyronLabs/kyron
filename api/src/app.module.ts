@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { GatewayModule } from './modules/gateway/gateway.module';
 import { FeedModule } from './modules/feed/feed.module';
+import { MessagesModule } from './modules/messages/messages.module';
+import { CommunitiesModule } from './modules/communities/communities.module';
 import { MediaModule } from './modules/media/media.module';
 import { ModerationModule } from './modules/moderation/moderation.module';
 import { IdentityModule } from './modules/identity/identity.module';
@@ -20,6 +22,8 @@ import { LinksModule } from './modules/links/links.module';
     IdentityModule,
     MediaModule,
     FeedModule,
+    MessagesModule,
+    CommunitiesModule,
     ModerationModule,
     GatewayModule,
     UsersModule,

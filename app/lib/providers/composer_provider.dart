@@ -17,8 +17,14 @@ import '../utils/api_error_message.dart';
 import 'feed_provider.dart';
 import '../models/composer_poll.dart';
 
+/// Where saved drafts live.
+///
+/// Behind a provider rather than constructed inline so it can be replaced --
+/// by a test, or by anything that has no local database to talk to.
+final draftServiceProvider = Provider<DraftService>((ref) => DraftService());
+
 final composerProvider = StateNotifierProvider<ComposerNotifier, ComposerState>(
-  (ref) => ComposerNotifier(ref, DraftService()),
+  (ref) => ComposerNotifier(ref, ref.read(draftServiceProvider)),
 );
 
 class ComposerState {
@@ -39,6 +45,13 @@ class ComposerState {
   /// The poll being attached, or null. A post carries at most one.
   final ComposerPoll? poll;
 
+  /// Topics the author has filed this post under, by slug.
+  ///
+  /// The author's choice, not something derived from what they wrote: a topic
+  /// is a deliberate act of filing, which is exactly what makes it worth more
+  /// than the hashtags the text happens to contain.
+  final List<String> topics;
+
   /// Set when the last attempt to post failed, so the screen can say why
   /// rather than clearing the box and hoping.
   final String? error;
@@ -52,6 +65,7 @@ class ComposerState {
     this.replyPolicy = ReplyPolicy.everyone,
     this.quoting,
     this.poll,
+    this.topics = const [],
     this.error,
   });
 
@@ -62,6 +76,9 @@ class ComposerState {
   /// How many attachments one post may carry, matching the server.
   static const maxMedia = 4;
 
+  /// How many topics one post may be filed under, matching the server.
+  static const maxTopics = 3;
+
   ComposerState copyWith({
     String? content,
     bool? isPosting,
@@ -71,6 +88,7 @@ class ComposerState {
     ReplyPolicy? replyPolicy,
     QuotedPost? quoting,
     ComposerPoll? poll,
+    List<String>? topics,
     String? error,
     bool clearError = false,
     bool clearPoll = false,
@@ -84,6 +102,7 @@ class ComposerState {
       replyPolicy: replyPolicy ?? this.replyPolicy,
       quoting: quoting ?? this.quoting,
       poll: clearPoll ? null : (poll ?? this.poll),
+      topics: topics ?? this.topics,
       error: clearError ? null : (error ?? this.error),
     );
   }
@@ -175,12 +194,19 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   void stopPlaceholderRotation() => _placeholderTimer?.cancel();
 
   Future<void> _loadDraft() async {
-    final draft = await _draftService.getLatestDraft();
-    if (draft != null && draft.content.trim().isNotEmpty) {
-      state = state.copyWith(
-        content: draft.content,
-        hasUnsavedChanges: true,
-      );
+    // Guarded, because this runs while the composer is being built and there
+    // is nothing above it to catch a throw. A device with no readable draft
+    // store should open an empty composer, not fail to open one.
+    try {
+      final draft = await _draftService.getLatestDraft();
+      if (draft != null && draft.content.trim().isNotEmpty) {
+        state = state.copyWith(
+          content: draft.content,
+          hasUnsavedChanges: true,
+        );
+      }
+    } catch (error) {
+      AppLog.instance.error('composer', 'Draft would not load: $error');
     }
   }
 
@@ -192,6 +218,20 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
       hasUnsavedChanges: true,
       clearError: true,
     );
+  }
+
+  /// Files this post under a topic, or takes it back out.
+  ///
+  /// Capped rather than refused past the limit: the chip is simply not
+  /// selectable once three are on, which is a rule you can see rather than a
+  /// message you get after tapping.
+  void toggleTopic(String slug) {
+    final chosen = [...state.topics];
+    if (!chosen.remove(slug)) {
+      if (chosen.length >= ComposerState.maxTopics) return;
+      chosen.add(slug);
+    }
+    state = state.copyWith(topics: chosen, hasUnsavedChanges: true);
   }
 
   void setReplyPolicy(ReplyPolicy policy) {
@@ -473,6 +513,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
             quotedPostId: state.quoting?.id,
             replyPolicy: state.replyPolicy,
             poll: state.poll,
+            topics: state.topics,
           );
 
       // The post is written either way, so this is not a failure to retry --

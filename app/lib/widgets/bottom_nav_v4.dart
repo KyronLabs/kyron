@@ -4,6 +4,13 @@ import 'package:kyron_app/widgets/create_fab.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 class BottomNavV4 extends StatelessWidget {
+  /// The bar's own height, before the safe area under it.
+  ///
+  /// Named because the body extends behind this bar: anything a screen floats
+  /// over its own content -- a button to start a community, say -- has to sit
+  /// above it, and guessing the number is how it ends up half hidden.
+  static const double height = 64;
+
   final int currentIndex;
   final ValueChanged<int> onTap;
 
@@ -21,7 +28,7 @@ class BottomNavV4 extends StatelessWidget {
         highlightColor: Colors.transparent,
       ),
       child: Container(
-        height: 64,
+        height: height,
         decoration: BoxDecoration(
           border: Border(
               top: BorderSide(

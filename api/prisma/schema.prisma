@@ -73,6 +73,9 @@ model User {
   passwordResets    PasswordReset[]
   auditLogs         AuditLog[]
   interests         UserInterest[]
+  conversations     ConversationMember[]
+  messagesSent      Message[]
+  communities       CommunityMember[]
   posts             Post[]
   // These two read backwards from their relation names, so they are spelled
   // out. `Follow.follower` holds followerId, so its back-reference is the set
@@ -153,6 +156,12 @@ model Post {
   media    Media[]
   reposts  Repost[]
   hashtags PostHashtag[]
+  topics   PostTopic[]
+
+  // Set when the post was written into a community rather than the feed.
+  // Nullable, because most posts are not.
+  communityId String?    @db.Uuid
+  community   Community? @relation(fields: [communityId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   hidden   HiddenPost[]
   mutes    Mute[]
   signals  InterestSignal[]
@@ -164,6 +173,7 @@ model Post {
   quotedBy   Post[] @relation("PostQuotes")
 
   @@index([authorId])
+  @@index([communityId])
   // The feed's only ordering. id breaks ties so a cursor is stable when two
   // posts share a timestamp, which is common when seeding or importing.
   @@index([createdAt(sort: Desc), id(sort: Desc)])
@@ -257,8 +267,28 @@ model Interest {
   slug  String         @unique
   name  String
   users UserInterest[]
+  posts PostTopic[]
 
   @@index([slug])
+}
+
+// A topic the author filed a post under.
+//
+// Separate from PostHashtag because the two are different things. A hashtag is
+// whatever somebody typed; a topic is one of a fixed set, chosen deliberately,
+// and the same set people pick from when they say what they are into. Before
+// this, a topic could only be shown as "what the people who follow it are
+// posting", which is a guess about the author rather than a fact about the
+// post.
+model PostTopic {
+  postId     String @db.Uuid
+  interestId String @db.Uuid
+
+  post     Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  interest Interest @relation(fields: [interestId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([postId, interestId])
+  @@index([interestId])
 }
 
 model UserInterest {
@@ -767,4 +797,113 @@ model PollVote {
   // two taps racing each other both pass a "have you voted?" check.
   @@unique([pollId, userId])
   @@index([optionId])
+}
+
+// ==========================================
+// 14.  DIRECT MESSAGES
+// ==========================================
+// Stored on the server in plain text, like the posts are. Worth being explicit
+// about: this is not end-to-end encrypted, and anything with the service role
+// can read it. What it does guarantee is that nobody else can -- every read
+// goes through membership, and a block closes the conversation both ways.
+model Conversation {
+  id String @id @default(uuid()) @db.Uuid
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  // Bumped on every message, because the list is ordered by which
+  // conversation moved last and ordering by a subquery over messages would be
+  // a sort over the whole table per page.
+  lastMessageAt DateTime @default(now()) @db.Timestamptz()
+
+  members  ConversationMember[]
+  messages Message[]
+
+  @@index([lastMessageAt(sort: Desc)])
+}
+
+model ConversationMember {
+  conversationId String @db.Uuid
+  userId         String @db.Uuid
+
+  joinedAt DateTime @default(now()) @db.Timestamptz()
+
+  // How far this member has read. Null until they have opened it once, which
+  // is not the same as having read nothing: a conversation they started and
+  // never came back to should not show its own message as unread.
+  lastReadAt DateTime? @db.Timestamptz()
+
+  // Set when this member leaves the thread out of their own list. The rows
+  // stay, because the other side's history is the same rows.
+  hiddenAt DateTime? @db.Timestamptz()
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([conversationId, userId])
+  @@index([userId])
+}
+
+model Message {
+  id             String @id @default(uuid()) @db.Uuid
+  conversationId String @db.Uuid
+  senderId       String @db.Uuid
+
+  body String @db.Text
+
+  createdAt DateTime  @default(now()) @db.Timestamptz()
+  // Soft delete, for the same reason posts have one: a removed message still
+  // holds its place in a cursor.
+  deletedAt DateTime? @db.Timestamptz()
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([conversationId, createdAt(sort: Desc), id(sort: Desc)])
+}
+
+// ==========================================
+// 15.  COMMUNITIES
+// ==========================================
+enum CommunityRole {
+  OWNER
+  MODERATOR
+  MEMBER
+}
+
+model Community {
+  id String @id @default(uuid()) @db.Uuid
+
+  // What it is addressed by. Lower-cased on the way in, like a hashtag, so
+  // /c/Design and /c/design are the same place.
+  slug String @unique
+
+  name        String
+  description String? @db.Text
+  avatarUrl   String?
+
+  createdById String   @db.Uuid
+  createdAt   DateTime @default(now()) @db.Timestamptz()
+
+  // Soft delete, so a post that pointed at it still resolves to something.
+  deletedAt DateTime? @db.Timestamptz()
+
+  members CommunityMember[]
+  posts   Post[]
+
+  @@index([slug])
+  @@index([createdAt(sort: Desc), id(sort: Desc)])
+}
+
+model CommunityMember {
+  communityId String        @db.Uuid
+  userId      String        @db.Uuid
+  role        CommunityRole @default(MEMBER)
+  joinedAt    DateTime      @default(now()) @db.Timestamptz()
+
+  community Community @relation(fields: [communityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([communityId, userId])
+  @@index([userId])
 }

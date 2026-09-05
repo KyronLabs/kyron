@@ -228,10 +228,22 @@ describe('FeedService', () => {
 
       expect(post.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { deletedAt: null },
+          where: { deletedAt: null, communityId: null },
           orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
         }),
       );
+    });
+
+    it('leaves out what was posted into a community', async () => {
+      // A community post was written into a named place with its own members.
+      // Pushing it at everybody is what makes people stop posting in them.
+      post.findMany.mockResolvedValue([]);
+      await (await service()).listRecent(VIEWER);
+
+      const [args] = post.findMany.mock.calls[0] as [
+        { where: Record<string, unknown> },
+      ];
+      expect(args.where.communityId).toBeNull();
     });
 
     it('asks for one row more than the page, to detect a next page', async () => {

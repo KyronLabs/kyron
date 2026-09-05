@@ -125,6 +125,18 @@ export class CreatePostDto {
   @IsEnum(ReplyPolicy, { message: 'That is not a reply setting we recognise.' })
   replyPolicy?: ReplyPolicy;
 
+  /**
+   * Topic slugs the author filed this post under, from the catalogue the
+   * composer offers. Slugs rather than ids, because a slug is what the client
+   * already holds and what a topic screen is addressed by.
+   */
+  @IsOptional()
+  @IsArray()
+  @ArrayMaxSize(3, { message: 'A post can be filed under at most 3 topics.' })
+  @IsString({ each: true })
+  @MaxLength(64, { each: true })
+  topics?: string[];
+
   /** Attach a poll. The service enforces the answer count and duration. */
   @IsOptional()
   @ValidateNested()

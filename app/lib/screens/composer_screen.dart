@@ -23,6 +23,7 @@ import '../widgets/interaction_settings_sheet.dart';
 import '../widgets/media_tray.dart';
 import '../widgets/quoted_post_card.dart';
 import '../widgets/toast.dart';
+import '../widgets/topic_picker.dart';
 
 /// Writing a post.
 ///
@@ -96,6 +97,10 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
       }
       _focusNode.requestFocus();
       _countDrafts();
+      // The composer holds five placeholders and a method to cycle them, and
+      // nothing had ever called it: the box showed whichever one the clock
+      // landed on and then kept it for as long as the screen was open.
+      ref.read(composerProvider.notifier).startPlaceholderRotation();
     });
   }
 
@@ -106,6 +111,10 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
 
   @override
   void dispose() {
+    // The provider outlives this screen -- it is where an unsent post is kept
+    // -- so a timer started here has to be stopped here, or it goes on
+    // rotating a placeholder nobody is looking at for the rest of the session.
+    ref.read(composerProvider.notifier).stopPlaceholderRotation();
     _textController.dispose();
     _focusNode.dispose();
     super.dispose();
@@ -187,6 +196,10 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
                         QuotedPostCard(post: state.quoting!),
                       ],
                       const PollEditor(),
+                      // Under the box rather than in the toolbar: filing is
+                      // something you do to what you have written, so it
+                      // belongs after it.
+                      const TopicPicker(),
                       // Suppressed while a poll is attached: the card would
                       // sit under the answers and make it unclear which the
                       // reader is meant to act on.
