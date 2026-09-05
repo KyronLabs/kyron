@@ -55,6 +55,10 @@ class PostListSource {
   factory PostListSource.topic(String slug) =>
       PostListSource._('topic', slug.toLowerCase());
 
+  /// What has been posted into one community, named by its slug.
+  factory PostListSource.community(String slug) =>
+      PostListSource._('community', slug.toLowerCase());
+
   @override
   bool operator ==(Object other) =>
       other is PostListSource && other.kind == kind && other.userId == userId;
@@ -147,6 +151,8 @@ class PostListNotifier extends StateNotifier<FeedState> {
         return _repo.byHashtag(_source.userId!, cursor: cursor);
       case 'topic':
         return _repo.byTopic(_source.userId!, cursor: cursor);
+      case 'community':
+        return _repo.byCommunity(_source.userId!, cursor: cursor);
       default:
         return _repo.recent(cursor: cursor);
     }

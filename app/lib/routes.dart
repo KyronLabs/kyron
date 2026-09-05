@@ -9,6 +9,7 @@ import 'models/feed_post.dart';
 import 'screens/coming_soon_screen.dart';
 import 'screens/drafts_screen.dart';
 import 'screens/hashtag_screen.dart';
+import 'screens/community_screen.dart';
 import 'screens/thread_screen.dart';
 import 'screens/topic_screen.dart';
 import 'screens/muted_screens.dart';
@@ -61,6 +62,7 @@ class Routes {
   static const hashtag = '/tag';
   static const topic = '/topic';
   static const thread = '/thread';
+  static const community = '/community';
   static const drafts = '/composer/drafts';
   static const mutedWords = '/settings/muted-words';
   static const mutedAccounts = '/settings/muted-accounts';
@@ -72,7 +74,6 @@ class Routes {
   static const search = '/search';
   static const savedPosts = '/saved';
   static const likedPosts = '/liked';
-  static const community = '/community';
   static const help = '/help';
   static const terms = '/terms';
   static const privacy = '/privacy';
@@ -278,6 +279,14 @@ class Routes {
           topicArgs is TopicArgs
               ? TopicScreen(args: topicArgs)
               : const _UnknownRoute(name: topic),
+        );
+
+      case community:
+        final slug = settings.arguments;
+        return _page(
+          slug is String && slug.isNotEmpty
+              ? CommunityScreen(slug: slug)
+              : const _UnknownRoute(name: community),
         );
 
       case thread:

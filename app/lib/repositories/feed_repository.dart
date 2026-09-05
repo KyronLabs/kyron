@@ -257,6 +257,18 @@ class FeedRepository {
   Future<FeedPage> byTopic(String slug, {String? cursor, int limit = 20}) =>
       _page('/feed/topics/${Uri.encodeComponent(slug)}', cursor, limit);
 
+  /// What has been posted into one community.
+  Future<FeedPage> byCommunity(
+    String slug, {
+    String? cursor,
+    int limit = 20,
+  }) =>
+      _page(
+        '/communities/${Uri.encodeComponent(slug)}/posts',
+        cursor,
+        limit,
+      );
+
   /// The hashtags being used right now, most used first.
   Future<List<TrendingTag>> trendingTags({int limit = 25}) async {
     final res = await _api.dio.get<Map<String, dynamic>>(

@@ -185,6 +185,12 @@ export class FeedService {
       poll?: { options: string[]; durationMinutes: number };
       /** Topic slugs the author filed it under. */
       topics?: string[];
+      /**
+       * The community to write into, already checked. Resolved by the caller
+       * rather than here: whether the author may post into it is the
+       * communities module's rule, and this module should not learn it twice.
+       */
+      communityId?: string;
     },
   ): Promise<FeedPost> {
     const content = input.content.trim();
@@ -218,6 +224,7 @@ export class FeedService {
       data: {
         authorId,
         content,
+        communityId: input.communityId,
         replyPolicy: input.replyPolicy ?? ReplyPolicy.EVERYONE,
         quotedPostId: input.quotedPostId,
         media: {
@@ -353,7 +360,13 @@ export class FeedService {
     // Filtered in the query, not in the client. Hiding a blocked account's
     // posts after they have been sent is not blocking: the content still
     // arrived, and anything reading the response can see it.
-    const where = await this.withFilters({ deletedAt: null }, viewerId);
+    // Community posts are left out. They were written into a named place with
+    // its own members, and pushing them at everybody is what makes people stop
+    // posting in them.
+    const where = await this.withFilters(
+      { deletedAt: null, communityId: null },
+      viewerId,
+    );
     return this.page(where, viewerId, limit, cursor);
   }
 
@@ -519,6 +532,33 @@ export class FeedService {
           { author: { interests: { some: { interestId: interest.id } } } },
         ],
       },
+      viewerId,
+    );
+    return this.page(where, viewerId, limit, cursor);
+  }
+
+  /**
+   * What has been posted into one community, newest first.
+   *
+   * Takes a slug rather than an id so the client can open a community from a
+   * link without looking it up first.
+   */
+  async listByCommunity(
+    slug: string,
+    viewerId: string,
+    limit = DEFAULT_LIMIT,
+    cursor?: string,
+  ): Promise<FeedPage> {
+    const community = await this.prisma.community.findFirst({
+      where: { slug: slug.trim().toLowerCase(), deletedAt: null },
+      select: { id: true },
+    });
+    if (!community) {
+      throw new NotFoundException('That community does not exist.');
+    }
+
+    const where = await this.withFilters(
+      { deletedAt: null, communityId: community.id },
       viewerId,
     );
     return this.page(where, viewerId, limit, cursor);

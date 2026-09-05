@@ -75,6 +75,7 @@ model User {
   interests         UserInterest[]
   conversations     ConversationMember[]
   messagesSent      Message[]
+  communities       CommunityMember[]
   posts             Post[]
   // These two read backwards from their relation names, so they are spelled
   // out. `Follow.follower` holds followerId, so its back-reference is the set
@@ -156,6 +157,11 @@ model Post {
   reposts  Repost[]
   hashtags PostHashtag[]
   topics   PostTopic[]
+
+  // Set when the post was written into a community rather than the feed.
+  // Nullable, because most posts are not.
+  communityId String?    @db.Uuid
+  community   Community? @relation(fields: [communityId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   hidden   HiddenPost[]
   mutes    Mute[]
   signals  InterestSignal[]
@@ -167,6 +173,7 @@ model Post {
   quotedBy   Post[] @relation("PostQuotes")
 
   @@index([authorId])
+  @@index([communityId])
   // The feed's only ordering. id breaks ties so a cursor is stable when two
   // posts share a timestamp, which is common when seeding or importing.
   @@index([createdAt(sort: Desc), id(sort: Desc)])
@@ -853,4 +860,50 @@ model Message {
   sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([conversationId, createdAt(sort: Desc), id(sort: Desc)])
+}
+
+// ==========================================
+// 15.  COMMUNITIES
+// ==========================================
+enum CommunityRole {
+  OWNER
+  MODERATOR
+  MEMBER
+}
+
+model Community {
+  id String @id @default(uuid()) @db.Uuid
+
+  // What it is addressed by. Lower-cased on the way in, like a hashtag, so
+  // /c/Design and /c/design are the same place.
+  slug String @unique
+
+  name        String
+  description String? @db.Text
+  avatarUrl   String?
+
+  createdById String   @db.Uuid
+  createdAt   DateTime @default(now()) @db.Timestamptz()
+
+  // Soft delete, so a post that pointed at it still resolves to something.
+  deletedAt DateTime? @db.Timestamptz()
+
+  members CommunityMember[]
+  posts   Post[]
+
+  @@index([slug])
+  @@index([createdAt(sort: Desc), id(sort: Desc)])
+}
+
+model CommunityMember {
+  communityId String        @db.Uuid
+  userId      String        @db.Uuid
+  role        CommunityRole @default(MEMBER)
+  joinedAt    DateTime      @default(now()) @db.Timestamptz()
+
+  community Community @relation(fields: [communityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([communityId, userId])
+  @@index([userId])
 }
