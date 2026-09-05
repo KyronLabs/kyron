@@ -6,7 +6,7 @@ import '../providers/feed_provider.dart';
 import '../routes.dart';
 import '../screens/video_feed_screen.dart';
 import 'post_card.dart';
-import 'list_message.dart';
+import 'mascot.dart';
 import 'media_tile_grid.dart';
 
 /// A scrolling list of posts, with every state it can be in.
@@ -204,7 +204,7 @@ class _PostListViewState extends ConsumerState<PostListView> {
     required String detail,
     required String action,
   }) {
-    return ListMessage(
+    return EmptyState(
       icon: icon,
       title: title,
       detail: detail,

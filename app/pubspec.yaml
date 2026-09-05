@@ -74,6 +74,7 @@ flutter:
   assets:
     - lib/assets/logo.svg
     - lib/assets/google.svg
+    - lib/assets/mascot.svg
 
 fonts:
   - family: Inter

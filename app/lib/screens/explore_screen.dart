@@ -12,8 +12,9 @@ import '../providers/explore_provider.dart';
 import '../routes.dart';
 import '../utils/format_count.dart';
 import '../widgets/app_drawer.dart';
-import '../widgets/list_message.dart';
+import '../widgets/mascot.dart';
 import '../widgets/person_tile.dart';
+import '../widgets/section_tabs.dart';
 import '../widgets/simple_app_bar.dart';
 import '../widgets/toast.dart';
 import 'topic_screen.dart';
@@ -76,8 +77,6 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen>
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
     return Column(
       children: [
         SafeArea(
@@ -87,28 +86,9 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen>
             onAvatarTap: () => widget.drawerKey.currentState?.toggleDrawer(),
           ),
         ),
-        DecoratedBox(
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: scheme.outline.withValues(alpha: 0.15),
-                width: 0.5,
-              ),
-            ),
-          ),
-          child: TabBar(
-            controller: _tabs,
-            indicatorColor: scheme.primary,
-            labelColor: scheme.primary,
-            unselectedLabelColor: scheme.onSurface.withValues(alpha: 0.6),
-            labelStyle:
-                const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
-            tabs: const [
-              Tab(text: 'Trending'),
-              Tab(text: 'Topics'),
-              Tab(text: 'People'),
-            ],
-          ),
+        SectionTabs(
+          controller: _tabs,
+          labels: const ['Trending', 'Topics', 'People'],
         ),
         Expanded(
           child: NotificationListener<UserScrollNotification>(
@@ -140,16 +120,18 @@ class _TrendingTab extends ConsumerWidget {
     return RefreshIndicator(
       onRefresh: notifier.refresh,
       child: state.items.isEmpty
-          ? _Message(
-              icon: state.error != null
-                  ? Iconsax.cloud_cross_copy
-                  : Iconsax.hashtag_copy,
-              title: state.error ?? 'Nothing is trending yet',
-              detail: state.error != null
-                  ? null
-                  : 'Hashtags people are using turn up here as they are used.',
-              onRetry: state.error != null ? notifier.refresh : null,
-            )
+          ? (state.error != null
+                  ? EmptyState.failed(
+                      title: 'Could not load trending',
+                      detail: state.error,
+                      onAction: notifier.refresh,
+                    )
+                  : const EmptyState(
+                      title: 'Nothing is trending yet',
+                      detail: 'Hashtags turn up here as people start using '
+                          'them. Post one and it could be this list.',
+                    ))
+              .scrollable
           : ListView.separated(
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.symmetric(
@@ -235,16 +217,18 @@ class _TopicsTab extends ConsumerWidget {
     return RefreshIndicator(
       onRefresh: notifier.refresh,
       child: state.items.isEmpty
-          ? _Message(
-              icon: state.error != null
-                  ? Iconsax.cloud_cross_copy
-                  : Iconsax.category_copy,
-              title: state.error ?? 'No topics yet',
-              detail: state.error != null
-                  ? null
-                  : 'Topics are set up by Kyron. There are none right now.',
-              onRetry: state.error != null ? notifier.refresh : null,
-            )
+          ? (state.error != null
+                  ? EmptyState.failed(
+                      title: 'Could not load topics',
+                      detail: state.error,
+                      onAction: notifier.refresh,
+                    )
+                  : const EmptyState(
+                      title: 'No topics yet',
+                      detail: 'Topics are set up by Kyron, and there are none '
+                          'right now. Check back soon.',
+                    ))
+              .scrollable
           : GridView.builder(
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.all(SpacingTokens.space16),
@@ -409,16 +393,20 @@ class _PeopleTabState extends ConsumerState<_PeopleTab> {
     return RefreshIndicator(
       onRefresh: notifier.refresh,
       child: state.people.isEmpty
-          ? _Message(
-              icon: state.error != null
-                  ? Iconsax.cloud_cross_copy
-                  : Iconsax.people_copy,
-              title: state.error ?? 'Nobody left to suggest',
-              detail: state.error != null
-                  ? null
-                  : 'You already follow everyone Kyron would put here.',
-              onRetry: notifier.refresh,
-            )
+          ? (state.error != null
+                  ? EmptyState.failed(
+                      title: 'Could not load suggestions',
+                      detail: state.error,
+                      onAction: notifier.refresh,
+                    )
+                  : EmptyState(
+                      title: 'Nobody left to suggest',
+                      detail: 'You already follow everyone Kyron would put '
+                          'here. Follow a topic and this list fills up again.',
+                      action: 'Refresh',
+                      onAction: notifier.refresh,
+                    ))
+              .scrollable
           : ListView.separated(
               controller: _scroll,
               physics: const AlwaysScrollableScrollPhysics(),
@@ -476,40 +464,4 @@ double _topicCardHeight(BuildContext context) {
     112,
     SpacingTokens.space12 * 2 + name + SpacingTokens.space8 + count,
   );
-}
-
-/// A tab with nothing in it, scrollable so pull-to-refresh still works.
-class _Message extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String? detail;
-  final VoidCallback? onRetry;
-
-  const _Message({
-    required this.icon,
-    required this.title,
-    this.detail,
-    this.onRetry,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) => ListView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        children: [
-          ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: ListMessage(
-              icon: icon,
-              title: title,
-              detail: detail,
-              action: onRetry == null ? null : 'Try again',
-              onAction: onRetry,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
