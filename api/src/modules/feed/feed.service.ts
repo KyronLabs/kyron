@@ -133,6 +133,16 @@ export interface FeedPage {
   nextCursor: string | null;
 }
 
+/** One hashtag on the Explore wall. */
+export interface TrendingTag {
+  /** Without its leading #, which is how every tag is stored. */
+  tag: string;
+  /** Posts carrying it that the reader can see, all time. */
+  posts: number;
+  /** How many of those are inside the trending window. What ranks it. */
+  recent: number;
+}
+
 const DEFAULT_LIMIT = 20;
 
 @Injectable()
@@ -146,6 +156,15 @@ export class FeedService {
 
   /** How many attachments one post or comment may carry. */
   static readonly maxMedia = 4;
+
+  /**
+   * How far back trending looks.
+   *
+   * A week rather than a day: on a network this size a day is often nothing at
+   * all, and an Explore page that is empty most mornings is worse than one
+   * that moves slowly.
+   */
+  static readonly trendingWindowMs = 7 * 24 * 60 * 60 * 1000;
 
   async createPost(
     authorId: string,
@@ -362,6 +381,100 @@ export class FeedService {
       reposted,
       reposts: await this.prisma.repost.count({ where: { postId } }),
     };
+  }
+
+  /**
+   * The hashtags being used right now, most used first.
+   *
+   * Trending is a window, not a total: a tag with four hundred posts from last
+   * year is not trending, and one with nine from this morning is. So the
+   * ranking is the count inside [trendingWindowMs], and the number shown is
+   * the total -- because the total is what you find when you tap through.
+   *
+   * Filtered the way the feed is. A tag kept alive by an account the reader
+   * has blocked is not trending as far as they are concerned.
+   */
+  async trendingTags(
+    viewerId: string,
+    limit = DEFAULT_LIMIT,
+  ): Promise<{ items: TrendingTag[] }> {
+    const visible = await this.withFilters({ deletedAt: null }, viewerId);
+    const since = new Date(Date.now() - FeedService.trendingWindowMs);
+
+    const ranked = await this.prisma.postHashtag.groupBy({
+      by: ['hashtagId'],
+      where: { post: { ...visible, createdAt: { gte: since } } },
+      _count: { postId: true },
+      orderBy: { _count: { postId: 'desc' } },
+      take: limit,
+    });
+    if (ranked.length === 0) return { items: [] };
+
+    const hashtagIds = ranked.map((row) => row.hashtagId);
+    const [tags, totals] = await Promise.all([
+      this.prisma.hashtag.findMany({
+        where: { id: { in: hashtagIds } },
+        select: { id: true, tag: true },
+      }),
+      this.prisma.postHashtag.groupBy({
+        by: ['hashtagId'],
+        where: { hashtagId: { in: hashtagIds }, post: visible },
+        _count: { postId: true },
+      }),
+    ]);
+
+    const nameOf = new Map(tags.map((row) => [row.id, row.tag]));
+    const totalOf = new Map(
+      totals.map((row) => [row.hashtagId, row._count.postId]),
+    );
+
+    return {
+      items: ranked.flatMap((row) => {
+        const tag = nameOf.get(row.hashtagId);
+        // Deleted between the two queries: dropped, rather than rendered as a
+        // blank row that goes nowhere.
+        if (!tag) return [];
+        return [
+          {
+            tag,
+            posts: totalOf.get(row.hashtagId) ?? row._count.postId,
+            recent: row._count.postId,
+          },
+        ];
+      }),
+    };
+  }
+
+  /**
+   * Posts by the people who follow a topic.
+   *
+   * A topic is a row in the interest catalogue, and nothing links one to a
+   * post: interests are something an account has, not something a post
+   * carries. What a topic can honestly show is what the people who chose it
+   * are posting -- which is what discovery by interest means anywhere it
+   * works.
+   */
+  async listByTopic(
+    slug: string,
+    viewerId: string,
+    limit = DEFAULT_LIMIT,
+    cursor?: string,
+  ): Promise<FeedPage> {
+    const normalised = slug.trim().toLowerCase();
+    const interest = await this.prisma.interest.findUnique({
+      where: { slug: normalised },
+      select: { id: true },
+    });
+    if (!interest) throw new NotFoundException('That topic does not exist.');
+
+    const where = await this.withFilters(
+      {
+        deletedAt: null,
+        author: { interests: { some: { interestId: interest.id } } },
+      },
+      viewerId,
+    );
+    return this.page(where, viewerId, limit, cursor);
   }
 
   /** Posts carrying a given hashtag, newest first. */

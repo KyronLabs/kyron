@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import '../models/suggested_user.dart';
+import '../models/profile_summary.dart';
 import '../services/api_client.dart';
 
 class ProfileService {
@@ -86,10 +86,16 @@ class ProfileService {
     return null;
   }
 
-  Future<List<SuggestedUser>> getSuggestedUsers() async {
+  /// Accounts worth following, best match first. The first page only: this is
+  /// a step in a flow, not a list to scroll for ever.
+  Future<List<ProfileSummary>> getSuggestedUsers() async {
     final res = await _dio.get('/profile/suggested');
-    final data = res.data as List;
-
-    return data.map((e) => SuggestedUser.fromJson(e)).toList();
+    final data = res.data;
+    final items = data is Map ? data['items'] : null;
+    if (items is! List) return const [];
+    return items
+        .whereType<Map<String, dynamic>>()
+        .map(ProfileSummary.fromJson)
+        .toList();
   }
 }

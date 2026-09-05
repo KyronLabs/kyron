@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/onboarding_model.dart';
-import '../models/suggested_user.dart';
+import '../models/profile_summary.dart';
 import '../providers/auth_provider.dart';
 import '../routes.dart';
 import '../services/profile_service.dart';
 import '../widgets/atomic_card.dart';
+import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
 
 class OnboardStep3Screen extends ConsumerStatefulWidget {
@@ -27,7 +28,11 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
   bool _loadingSuggestions = true;
   bool _finishing = false;
 
-  List<SuggestedUser> _suggested = [];
+  List<ProfileSummary> _suggested = [];
+
+  /// Who has been picked here, so a card can show its own state without the
+  /// list being rebuilt from the server after every tap.
+  final Set<String> _picked = {};
 
   @override
   void initState() {
@@ -38,24 +43,27 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
   Future<void> _loadSuggestions() async {
     try {
       final users = await _profileService.getSuggestedUsers();
+      if (!mounted) return;
       setState(() {
         _suggested = users;
         _loadingSuggestions = false;
       });
     } catch (e) {
-      debugPrint('ERROR SUGGESTIONS: $e');
+      // Suggestions are optional; the step still works without them. Recorded
+      // rather than printed, so it is still there in About > System log.
+      AppLog.instance.error('onboarding', 'Suggestions would not load: $e');
+      if (!mounted) return;
       setState(() => _loadingSuggestions = false);
     }
   }
 
-  void _toggle(SuggestedUser u) {
+  void _toggle(ProfileSummary person) {
     setState(() {
-      u.isFollowing = !u.isFollowing;
-
-      if (u.isFollowing) {
-        widget.model.followedAccounts.add(u.id);
+      if (_picked.remove(person.id)) {
+        widget.model.followedAccounts.remove(person.id);
       } else {
-        widget.model.followedAccounts.remove(u.id);
+        _picked.add(person.id);
+        widget.model.followedAccounts.add(person.id);
       }
     });
   }
@@ -142,14 +150,18 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
                   ),
                   itemCount: _suggested.length,
                   itemBuilder: (_, i) {
-                    final u = _suggested[i];
+                    final person = _suggested[i];
                     return AtomicCard(
-                      avatarUrl: u.avatar ?? "",
-                      handle: u.handle,
-                      bio: u.bio,
-                      isInitiallyFollowing: u.isFollowing,
-                      onFollowToggle: () => _toggle(u),
-                      onTap: () {}, // Open profile preview later
+                      avatarUrl: person.avatarUrl ?? '',
+                      handle: person.handle ?? person.displayName,
+                      bio: person.bio,
+                      isInitiallyFollowing: _picked.contains(person.id),
+                      onFollowToggle: () => _toggle(person),
+                      onTap: () => openProfile(
+                        context,
+                        username: person.username,
+                        userId: person.id,
+                      ),
                     );
                   },
                 ),
