@@ -60,6 +60,11 @@ model User {
   lockedUntil         DateTime?
   lastLoginAt         DateTime?
 
+  // Notifications are derived from the likes, comments, reposts and follows
+  // themselves, so there is no per-row read state to keep. This one watermark
+  // is what makes them unread: anything after it has not been looked at.
+  notificationsSeenAt DateTime? @db.Timestamptz()
+
   // Timestamps
   createdAt DateTime  @default(now()) @db.Timestamptz()
   updatedAt DateTime  @updatedAt @db.Timestamptz()
