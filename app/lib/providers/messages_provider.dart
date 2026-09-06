@@ -139,6 +139,21 @@ final conversationListProvider = StateNotifierProvider.family<
   );
 });
 
+/// Reloads both tabs, and the badge with them.
+///
+/// The two lists are separate notifiers that each load once, when their tab is
+/// first looked at. That is what made a conversation appear under Unread and
+/// not under All: Unread was fetched a minute later than All and had seen the
+/// message that arrived in between. Nothing that changes what either list
+/// should hold may refresh only the tab it happened on.
+Future<void> refreshConversations(WidgetRef ref) async {
+  await Future.wait([
+    ref.read(conversationListProvider(false).notifier).refresh(),
+    ref.read(conversationListProvider(true).notifier).refresh(),
+  ]);
+  ref.invalidate(unreadConversationsProvider);
+}
+
 /// How many conversations hold something unread. Drives the tab's badge.
 final unreadConversationsProvider = FutureProvider<int>((ref) async {
   return ref.read(messagesRepositoryProvider).unreadCount();

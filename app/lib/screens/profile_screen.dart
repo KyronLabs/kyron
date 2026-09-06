@@ -850,6 +850,7 @@ class _ActionsState extends ConsumerState<_Actions> {
                       Navigator.pushNamed(context, Routes.editProfile),
                 )
               : ActionButton(
+                  compact: true,
                   label: profile.isFollowing ? 'Following' : 'Follow',
                   icon: profile.isFollowing
                       ? Iconsax.tick_circle_copy

@@ -126,6 +126,7 @@ class _CommunityTileState extends ConsumerState<CommunityTile> {
             SizedBox(
               width: 96,
               child: ActionButton(
+                compact: true,
                 label: community.joined ? 'Joined' : 'Join',
                 icon: community.joined ? Iconsax.tick_circle_copy : Iconsax.add,
                 kind: community.joined

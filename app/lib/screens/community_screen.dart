@@ -163,6 +163,7 @@ class _Header extends StatelessWidget {
               SizedBox(
                 width: 112,
                 child: ActionButton(
+                  compact: true,
                   label: community.joined ? 'Joined' : 'Join',
                   icon:
                       community.joined ? Iconsax.tick_circle_copy : Iconsax.add,

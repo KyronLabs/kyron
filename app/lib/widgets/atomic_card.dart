@@ -1,7 +1,19 @@
+// lib/widgets/atomic_card.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
+import 'action_button.dart';
+
+/// One suggested account, as a card in a grid.
+///
+/// What this replaces was written before the app had a design system and
+/// never caught up: a hard-coded 100x120 box inside a 150-tall grid slot, so
+/// it overflowed by thirteen pixels on every card that had a bio; a
+/// purple-to-teal gradient on the Follow button, which is not a colour Kyron
+/// uses anywhere else; and a font family the app does not ship, so every
+/// label silently fell back to a different one than the rest of the screen.
 class AtomicCard extends StatefulWidget {
   final String avatarUrl;
   final String handle;
@@ -22,200 +34,123 @@ class AtomicCard extends StatefulWidget {
     this.onLongPress,
   });
 
+  /// What a grid slot has to be for one of these to fit.
+  ///
+  /// Measured rather than guessed: the tallest arrangement is an avatar, a
+  /// name, two lines of bio and the button, plus the padding around them.
+  /// Scales with the reader's text size, because at 1.3x the old fixed height
+  /// clipped the button off entirely.
+  static double slotHeight(BuildContext context) {
+    final scaler = MediaQuery.textScalerOf(context);
+    final name = scaler.scale(14) * 1.25;
+    final bio = scaler.scale(12) * 1.3 * 2;
+    return _padding * 2 +
+        _avatar +
+        8 +
+        name +
+        4 +
+        bio +
+        10 +
+        ActionButton.compactHeight;
+  }
+
+  static const double _avatar = 44;
+  static const double _padding = 12;
+
   @override
   State<AtomicCard> createState() => _AtomicCardState();
 }
 
-class _AtomicCardState extends State<AtomicCard>
-    with SingleTickerProviderStateMixin {
-  late bool _isFollowing;
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
+class _AtomicCardState extends State<AtomicCard> {
+  late bool _following = widget.isInitiallyFollowing;
 
-  @override
-  void initState() {
-    super.initState();
-    _isFollowing = widget.isInitiallyFollowing;
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 80),
-    );
-    _scaleAnimation = TweenSequence<double>([
-      TweenSequenceItem(
-          tween: Tween<double>(begin: 1.0, end: 1.1), weight: 0.5),
-      TweenSequenceItem(
-          tween: Tween<double>(begin: 1.1, end: 1.0), weight: 0.5),
-    ]).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _toggleFollow() {
-    setState(() {
-      _isFollowing = !_isFollowing;
-    });
-    _controller.forward(from: 0);
-    HapticFeedback.lightImpact();
+  void _toggle() {
+    setState(() => _following = !_following);
+    HapticFeedback.selectionClick();
     widget.onFollowToggle?.call();
   }
 
   @override
   Widget build(BuildContext context) {
-    final textScale = MediaQuery.of(context).textScaleFactor;
     final scheme = Theme.of(context).colorScheme;
-
-    // Card dimensions
-    const cardWidth = 100.0;
-    const cardHeight = 120.0;
-    const avatarSize = 40.0;
-    const padding = 12.0;
+    final bio = widget.bio?.trim();
 
     return Semantics(
-      label: '${widget.handle}, ${widget.bio ?? 'Creator'}, Follow button',
-      child: AnimatedBuilder(
-        animation: _scaleAnimation,
-        builder: (context, child) {
-          return Transform.scale(
-            scale: _scaleAnimation.value,
-            child: child,
-          );
-        },
-        child: Container(
-          width: cardWidth,
-          height: cardHeight,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: scheme.onSurface.withOpacity(0.3),
-              width: 1,
-            ),
-            color: Colors.transparent,
-          ),
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: widget.onTap,
-              onLongPress: widget.onLongPress,
-              borderRadius: BorderRadius.circular(8),
-              child: Padding(
-                padding: const EdgeInsets.all(padding),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Avatar (40px)
-                    Container(
-                      width: avatarSize,
-                      height: avatarSize,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: scheme.primary,
-                          width: 1,
-                        ),
-                      ),
-                      child: ClipOval(
-                        child: Image.network(
-                          widget.avatarUrl,
-                          width: avatarSize,
-                          height: avatarSize,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Icon(
-                              Iconsax.user_copy,
-                              size: 20,
-                              color: scheme.onSurface.withOpacity(0.6),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-
-                    // @handle (15pt)
-                    Text(
-                      widget.handle,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'SF Pro Rounded',
-                        color: scheme.onSurface,
-                      ),
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-
-                    // Bio (13pt, 2 lines)
-                    if (widget.bio != null && widget.bio!.isNotEmpty) ...[
-                      const SizedBox(height: 4),
-                      Text(
-                        widget.bio!,
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: scheme.onSurface.withOpacity(0.7),
-                          fontFamily: 'SF Pro Rounded',
-                        ),
-                        textAlign: TextAlign.center,
-                        maxLines: textScale > 1.5 ? 3 : 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-
-                    const Spacer(),
-
-                    // Follow button (32px height, 80px width)
-                    _buildButton(),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildButton() {
-    final scheme = Theme.of(context).colorScheme;
-
-    return Container(
-      width: 80.0,
-      height: 32.0,
-      decoration: _isFollowing
-          ? BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: scheme.onSurface.withOpacity(0.3),
-                width: 1,
-              ),
-              color: Colors.transparent,
-            )
-          : BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              gradient: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Color(0xFF8A2BE2), Color(0xFF20B2AA)],
-              ),
-            ),
+      button: true,
+      label: widget.handle,
       child: Material(
-        color: Colors.transparent,
+        color: scheme.surface,
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
         child: InkWell(
-          onTap: _toggleFollow,
-          borderRadius: BorderRadius.circular(16),
-          child: Center(
-            child: Text(
-              _isFollowing ? 'Following' : 'Follow',
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-                color: _isFollowing ? scheme.onSurface : Colors.white,
-                fontFamily: 'SF Pro Rounded',
+          onTap: widget.onTap,
+          onLongPress: widget.onLongPress,
+          borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
+          child: Ink(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
+              border: Border.all(
+                color: scheme.outline.withValues(alpha: 0.22),
               ),
+            ),
+            padding: const EdgeInsets.all(AtomicCard._padding),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  radius: AtomicCard._avatar / 2,
+                  backgroundColor: scheme.primary.withValues(alpha: 0.15),
+                  foregroundImage: widget.avatarUrl.isEmpty
+                      ? null
+                      : NetworkImage(widget.avatarUrl),
+                  child: Icon(
+                    Iconsax.user_copy,
+                    size: 20,
+                    color: scheme.primary,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  widget.handle,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 14,
+                    height: 1.25,
+                    fontWeight: FontWeight.w700,
+                    color: scheme.onSurface,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                // Always two lines tall, whether or not there is a bio, so a
+                // row of cards lines its buttons up instead of stepping.
+                SizedBox(
+                  height: MediaQuery.textScalerOf(context).scale(12) * 1.3 * 2,
+                  child: bio == null || bio.isEmpty
+                      ? null
+                      : Text(
+                          bio,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 12,
+                            height: 1.3,
+                            color: scheme.onSurface.withValues(alpha: 0.65),
+                          ),
+                        ),
+                ),
+                const SizedBox(height: 10),
+                ActionButton(
+                  compact: true,
+                  expand: false,
+                  label: _following ? 'Following' : 'Follow',
+                  kind: _following
+                      ? ActionButtonKind.outlined
+                      : ActionButtonKind.primary,
+                  onPressed: _toggle,
+                ),
+              ],
             ),
           ),
         ),

@@ -60,11 +60,21 @@ class ActionButton extends StatelessWidget {
     this.expand = false,
     this.busy = false,
     this.destructive = false,
+    this.compact = false,
   });
+
+  /// Shorter, for a button that sits inside a row of content rather than
+  /// under it -- Follow beside a name, Join beside a community. At [height]
+  /// these were taller than the two lines of text they sat next to and read
+  /// as the loudest thing on the screen.
+  final bool compact;
 
   /// The height of a non-[expand] button. Anything placed beside one -- an
   /// icon button in a header row, say -- should match it.
   static const double height = 40;
+
+  /// The height of a [compact] one.
+  static const double compactHeight = 32;
 
   @override
   Widget build(BuildContext context) {
@@ -81,18 +91,27 @@ class ActionButton extends StatelessWidget {
 
     final style = ButtonStyle(
       minimumSize: WidgetStatePropertyAll(
-        expand ? const Size.fromHeight(48) : const Size(0, height),
+        expand
+            ? const Size.fromHeight(48)
+            : Size(0, compact ? compactHeight : height),
       ),
       // Without this the 48-tall minimum from the theme is still enforced by
       // the tap target, which leaves an invisible band above and below.
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       padding: WidgetStatePropertyAll(
-        EdgeInsetsDirectional.only(start: icon == null ? 20 : 16, end: 20),
+        compact
+            ? EdgeInsetsDirectional.only(start: icon == null ? 14 : 10, end: 14)
+            : EdgeInsetsDirectional.only(
+                start: icon == null ? 20 : 16, end: 20),
       ),
       shape: const WidgetStatePropertyAll(StadiumBorder()),
       textStyle: WidgetStatePropertyAll(
         TextStyle(
-          fontSize: expand ? 16 : 14,
+          fontSize: expand
+              ? 16
+              : compact
+                  ? 13
+                  : 14,
           fontWeight: FontWeight.w600,
         ),
       ),
