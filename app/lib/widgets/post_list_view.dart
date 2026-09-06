@@ -6,7 +6,7 @@ import '../providers/feed_provider.dart';
 import '../routes.dart';
 import '../screens/video_feed_screen.dart';
 import 'post_card.dart';
-import 'mascot.dart';
+import 'empty_state.dart';
 import 'media_tile_grid.dart';
 
 /// A scrolling list of posts, with every state it can be in.
@@ -17,10 +17,11 @@ import 'media_tile_grid.dart';
 class PostListView extends ConsumerStatefulWidget {
   final PostListSource source;
 
-  /// Shown, with [emptyDetail], once a load finishes and finds nothing.
+  /// Shown, with [emptyDetail] and [emptyArt], once a load finishes and
+  /// finds nothing.
   final String emptyTitle;
   final String emptyDetail;
-  final IconData emptyIcon;
+  final EmptyArt emptyArt;
   final String errorTitle;
 
   /// Supplied by a parent that owns the scrolling, as the home screen does to
@@ -44,7 +45,7 @@ class PostListView extends ConsumerStatefulWidget {
     required this.source,
     required this.emptyTitle,
     required this.emptyDetail,
-    this.emptyIcon = Icons.forum_outlined,
+    this.emptyArt = EmptyArt.posts,
     this.errorTitle = 'Could not load these posts',
     this.scrollController,
     this.headerSlivers = const [],
@@ -143,20 +144,20 @@ class _PostListViewState extends ConsumerState<PostListView> {
       );
     }
     if (state.error != null && state.posts.isEmpty) {
-      return _message(
-        icon: Icons.cloud_off_outlined,
+      return EmptyState.failed(
         title: widget.errorTitle,
         detail: state.error!,
-        action: 'Try again',
-      );
+        onAction: _notifier.refresh,
+      ).sliver;
     }
     if (state.isEmpty) {
-      return _message(
-        icon: widget.emptyIcon,
+      return EmptyState(
+        art: widget.emptyArt,
         title: widget.emptyTitle,
         detail: widget.emptyDetail,
         action: 'Refresh',
-      );
+        onAction: _notifier.refresh,
+      ).sliver;
     }
 
     if (widget.asTiles) {
@@ -195,21 +196,5 @@ class _PostListViewState extends ConsumerState<PostListView> {
         );
       },
     );
-  }
-
-  /// Empty and error share a shape: something to read, and something to do.
-  Widget _message({
-    required IconData icon,
-    required String title,
-    required String detail,
-    required String action,
-  }) {
-    return EmptyState(
-      icon: icon,
-      title: title,
-      detail: detail,
-      action: action,
-      onAction: _notifier.refresh,
-    ).sliver;
   }
 }

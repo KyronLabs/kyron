@@ -10,6 +10,7 @@ import '../providers/service_status_provider.dart';
 import '../services/app_info.dart';
 import '../services/app_log.dart';
 import '../widgets/settings_scaffold.dart';
+import '../widgets/empty_state.dart';
 
 // ===========================================================================
 // SERVICE STATUS
@@ -129,23 +130,13 @@ class _Unreachable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(SpacingTokens.space32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.cloud_off_outlined, size: 44, color: scheme.error),
-            const SizedBox(height: SpacingTokens.space16),
-            Text('Kyron did not answer',
-                style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: SpacingTokens.space8),
-            Text(message, textAlign: TextAlign.center),
-            const SizedBox(height: SpacingTokens.space16),
-            TextButton(onPressed: onRetry, child: const Text('Check again')),
-          ],
+      child: SingleChildScrollView(
+        child: EmptyState.failed(
+          title: 'Kyron did not answer',
+          detail: message,
+          action: 'Check again',
+          onAction: onRetry,
         ),
       ),
     );
@@ -238,17 +229,13 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
             // thing you opened this to read.
             final entries = AppLog.instance.entries.reversed.toList();
             if (entries.isEmpty) {
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(SpacingTokens.space32),
-                  child: Text(
-                    'Nothing logged yet. Failed requests and other notable '
-                    'events show up here.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: scheme.onSurface.withValues(alpha: .6),
-                    ),
-                  ),
+              return const Center(
+                child: EmptyState(
+                  compact: true,
+                  art: EmptyArt.drafts,
+                  title: 'Nothing logged yet',
+                  detail: 'Failed requests and other notable events show up '
+                      'here.',
                 ),
               );
             }

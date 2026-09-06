@@ -5,6 +5,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../providers/feed_provider.dart';
 import '../widgets/post_list_view.dart';
+import '../widgets/empty_state.dart';
 
 /// What the people who follow a topic are posting.
 ///
@@ -38,13 +39,13 @@ class TopicScreen extends StatelessWidget {
         child: PostListView(
           source: PostListSource.topic(args.slug),
           errorTitle: 'Could not load ${args.name}',
-          emptyTitle: 'Nothing here yet',
+          emptyTitle: 'Nothing filed here yet',
           // Says what a topic feed actually is, because it is not obvious:
           // nothing links a post to a topic, so what a topic can show is what
           // the people who chose it are posting.
           emptyDetail:
               'Posts from the people who follow ${args.name} will show up here.',
-          emptyIcon: Iconsax.category_copy,
+          emptyArt: EmptyArt.topics,
           padding: const EdgeInsets.only(bottom: SpacingTokens.space40),
         ),
       ),

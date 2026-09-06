@@ -1,7 +1,10 @@
 // lib/widgets/top_edge.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../providers/notifications_provider.dart';
 import 'account_avatar.dart';
 
 class TopEdge extends StatelessWidget {
@@ -76,21 +79,73 @@ class TopEdge extends StatelessWidget {
                 // here plus each button's own five of padding -- which read as
                 // two unrelated controls rather than one pair.
                 const SizedBox(width: 2),
-                IconButton(
-                  onPressed: onNotificationTap,
-                  icon: const Icon(Iconsax.notification_copy, size: 22),
-                  tooltip: 'Notifications',
-                  constraints: const BoxConstraints(
-                    minWidth: 32,
-                    minHeight: 32,
-                  ),
-                  padding: EdgeInsets.zero,
-                ),
+                _NotificationButton(onPressed: onNotificationTap),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+/// The bell, and how many things have happened since it was last opened.
+///
+/// A count rather than a bare dot: "3" and "40" are different enough to be
+/// worth telling apart before deciding whether to look.
+class _NotificationButton extends ConsumerWidget {
+  final VoidCallback? onPressed;
+
+  const _NotificationButton({this.onPressed});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final scheme = Theme.of(context).colorScheme;
+    // Nothing while it is still loading and nothing if it fails: a badge is
+    // not worth an error state, and a wrong number is worse than none.
+    final unread = ref.watch(unreadNotificationsProvider).asData?.value ?? 0;
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        IconButton(
+          onPressed: onPressed,
+          icon: const Icon(Iconsax.notification_copy, size: 22),
+          tooltip:
+              unread == 0 ? 'Notifications' : 'Notifications, $unread unread',
+          constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+          padding: EdgeInsets.zero,
+        ),
+        if (unread > 0)
+          Positioned(
+            top: -2,
+            right: -4,
+            // Ignored by the pointer so the badge cannot eat the tap that is
+            // meant for the bell underneath it.
+            child: IgnorePointer(
+              child: Container(
+                constraints: const BoxConstraints(minWidth: 16),
+                height: 16,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                decoration: BoxDecoration(
+                  color: scheme.error,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: scheme.surface, width: 1.5),
+                ),
+                child: Text(
+                  unread > 99 ? '99+' : '$unread',
+                  style: TextStyle(
+                    fontSize: 10,
+                    height: 1,
+                    fontWeight: FontWeight.w700,
+                    color: scheme.onError,
+                  ),
+                ),
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

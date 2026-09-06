@@ -9,7 +9,7 @@ import '../models/conversation.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
 import '../widgets/app_drawer.dart';
-import '../widgets/mascot.dart';
+import '../widgets/empty_state.dart';
 import '../widgets/post_card.dart' show age;
 import '../widgets/section_tabs.dart';
 import '../widgets/simple_app_bar.dart';
@@ -164,10 +164,12 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                     )
                   : widget.unreadOnly
                       ? const EmptyState(
+                          art: EmptyArt.caughtUp,
                           title: 'Nothing unread',
                           detail: 'Every conversation is caught up.',
                         )
                       : const EmptyState(
+                          art: EmptyArt.messages,
                           title: 'No messages yet',
                           detail: 'Open somebody\'s profile and tap Message to '
                               'start a conversation.',

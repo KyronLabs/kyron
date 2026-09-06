@@ -12,7 +12,7 @@ import '../providers/explore_provider.dart';
 import '../routes.dart';
 import '../utils/format_count.dart';
 import '../widgets/app_drawer.dart';
-import '../widgets/mascot.dart';
+import '../widgets/empty_state.dart';
 import '../widgets/person_tile.dart';
 import '../widgets/section_tabs.dart';
 import '../widgets/simple_app_bar.dart';
@@ -127,6 +127,7 @@ class _TrendingTab extends ConsumerWidget {
                       onAction: notifier.refresh,
                     )
                   : const EmptyState(
+                      art: EmptyArt.trending,
                       title: 'Nothing is trending yet',
                       detail: 'Hashtags turn up here as people start using '
                           'them. Post one and it could be this list.',
@@ -224,6 +225,7 @@ class _TopicsTab extends ConsumerWidget {
                       onAction: notifier.refresh,
                     )
                   : const EmptyState(
+                      art: EmptyArt.topics,
                       title: 'No topics yet',
                       detail: 'Topics are set up by Kyron, and there are none '
                           'right now. Check back soon.',
@@ -400,6 +402,7 @@ class _PeopleTabState extends ConsumerState<_PeopleTab> {
                       onAction: notifier.refresh,
                     )
                   : EmptyState(
+                      art: EmptyArt.people,
                       title: 'Nobody left to suggest',
                       detail: 'You already follow everyone Kyron would put '
                           'here. Follow a topic and this list fills up again.',

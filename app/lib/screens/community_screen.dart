@@ -10,7 +10,7 @@ import '../providers/feed_provider.dart';
 import '../utils/format_count.dart';
 import '../widgets/action_button.dart';
 import '../widgets/hairline.dart';
-import '../widgets/mascot.dart';
+import '../widgets/empty_state.dart';
 import '../widgets/post_list_view.dart';
 import '../widgets/toast.dart';
 import 'community_composer_screen.dart';
@@ -81,7 +81,7 @@ class CommunityScreen extends ConsumerWidget {
                           emptyDetail: community.joined
                               ? 'Be the first to say something.'
                               : 'Join to post in ${community.name}.',
-                          emptyIcon: Iconsax.messages_2_copy,
+                          emptyArt: EmptyArt.communities,
                           padding: const EdgeInsets.only(
                             bottom: SpacingTokens.space40,
                           ),

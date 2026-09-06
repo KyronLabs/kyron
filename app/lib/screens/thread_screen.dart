@@ -11,7 +11,7 @@ import '../models/conversation.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
-import '../widgets/mascot.dart';
+import '../widgets/empty_state.dart';
 import '../widgets/post_card.dart' show age;
 import '../widgets/toast.dart';
 
@@ -202,6 +202,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
                   onAction: notifier.refresh,
                 )
               : const EmptyState(
+                  art: EmptyArt.messages,
                   title: 'Say something',
                   detail: 'This is the beginning of the conversation.',
                 ))

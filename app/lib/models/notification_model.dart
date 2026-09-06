@@ -1,33 +1,92 @@
 import 'package:intl/intl.dart';
 
-enum NotificationType { like, comment, follow, repost, mention }
+/// What somebody did. The screen's tabs narrow to one of the first three.
+enum NotificationType { like, comment, follow, repost }
+
+/// Who did it.
+class NotificationActor {
+  final String id;
+  final String? name;
+  final String? username;
+  final String? avatarUrl;
+
+  const NotificationActor({
+    required this.id,
+    this.name,
+    this.username,
+    this.avatarUrl,
+  });
+
+  factory NotificationActor.fromJson(Map<String, dynamic> json) =>
+      NotificationActor(
+        id: json['id'] as String? ?? '',
+        name: json['name'] as String?,
+        username: json['username'] as String?,
+        avatarUrl: json['avatarUrl'] as String?,
+      );
+
+  /// What the row calls them. Falls back through the display name and the
+  /// handle rather than showing a blank where a name should be.
+  String get label {
+    final name = this.name?.trim();
+    if (name != null && name.isNotEmpty) return name;
+    final username = this.username?.trim();
+    if (username != null && username.isNotEmpty) return '@$username';
+    return 'Someone';
+  }
+}
 
 class NotificationModel {
   final String id;
-  final String actorDid;
-  final String actorHandle;
-  final String actorAvatarUrl;
   final NotificationType type;
-  final String content;
+  final NotificationActor actor;
+
+  /// The post it happened to. Null for a follow.
+  final String? postId;
+
+  /// The start of that post, so the row says which one.
   final String? postSnippet;
+
+  /// What was written, for a comment.
+  final String? content;
+
   final DateTime timestamp;
   final bool isRead;
 
-  NotificationModel({
+  const NotificationModel({
     required this.id,
-    required this.actorDid,
-    required this.actorHandle,
-    required this.actorAvatarUrl,
     required this.type,
-    required this.content,
-    this.postSnippet,
+    required this.actor,
     required this.timestamp,
     required this.isRead,
+    this.postId,
+    this.postSnippet,
+    this.content,
   });
 
+  factory NotificationModel.fromJson(Map<String, dynamic> json) {
+    final at = DateTime.tryParse(json['createdAt'] as String? ?? '');
+    return NotificationModel(
+      id: json['id'] as String? ?? '',
+      type: switch (json['kind'] as String?) {
+        'comment' => NotificationType.comment,
+        'follow' => NotificationType.follow,
+        'repost' => NotificationType.repost,
+        _ => NotificationType.like,
+      },
+      actor: NotificationActor.fromJson(
+        (json['actor'] as Map<String, dynamic>?) ?? const {},
+      ),
+      postId: json['postId'] as String?,
+      postSnippet: json['postSnippet'] as String?,
+      content: json['content'] as String?,
+      timestamp: (at ?? DateTime.now()).toLocal(),
+      isRead: json['unread'] != true,
+    );
+  }
+
   String get displayTimestamp {
-    final now = DateTime.now();
-    final diff = now.difference(timestamp);
+    final diff = DateTime.now().difference(timestamp);
 
     if (diff.inMinutes < 1) return 'now';
     if (diff.inMinutes < 60) return '${diff.inMinutes}m';
@@ -38,27 +97,35 @@ class NotificationModel {
   }
 
   String get groupKey {
-    final now = DateTime.now();
-    final diff = now.difference(timestamp);
+    final diff = DateTime.now().difference(timestamp);
 
     if (diff.inDays == 0) return 'Today';
     if (diff.inDays == 1) return 'Yesterday';
-    if (diff.inDays < 7) return 'This Week';
+    if (diff.inDays < 7) return 'This week';
     return 'Older';
   }
 
-  String get actionText {
-    switch (type) {
-      case NotificationType.like:
-        return 'liked your post';
-      case NotificationType.comment:
-        return 'commented: "$content"';
-      case NotificationType.follow:
-        return 'followed you';
-      case NotificationType.repost:
-        return 'reposted your post';
-      case NotificationType.mention:
-        return 'mentioned you';
-    }
-  }
+  String get actionText => switch (type) {
+        NotificationType.like => 'liked your post',
+        NotificationType.comment => 'replied to your post',
+        NotificationType.follow => 'followed you',
+        NotificationType.repost => 'reposted your post',
+      };
+}
+
+/// One page of them.
+class NotificationPage {
+  final List<NotificationModel> items;
+  final String? nextCursor;
+
+  const NotificationPage({required this.items, this.nextCursor});
+
+  factory NotificationPage.fromJson(Map<String, dynamic> json) =>
+      NotificationPage(
+        items: ((json['items'] as List<dynamic>?) ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(NotificationModel.fromJson)
+            .toList(),
+        nextCursor: json['nextCursor'] as String?,
+      );
 }

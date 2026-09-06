@@ -8,6 +8,7 @@ import '../models/profile_summary.dart';
 import '../providers/moderation_provider.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/empty_state.dart';
 
 /// Words and tags that keep posts out of your feed.
 class MutedWordsScreen extends ConsumerStatefulWidget {
@@ -116,10 +117,11 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
               child: words == null
                   ? const Center(child: CircularProgressIndicator())
                   : words.isEmpty
-                      ? _Empty(
-                          icon: Iconsax.text_block_copy,
+                      ? const EmptyState(
+                          art: EmptyArt.muted,
                           title: 'Nothing muted',
-                          detail: 'Add a word or a tag above.',
+                          detail: 'Add a word or a tag above. Posts carrying '
+                              'it stay out of your feed.',
                         )
                       : ListView.separated(
                           itemCount: words.length,
@@ -252,6 +254,8 @@ class _People extends StatefulWidget {
 class _PeopleState extends State<_People> {
   late Future<List<ProfileSummary>> _people = widget.load();
 
+  void _reload() => setState(() => _people = widget.load());
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
@@ -260,10 +264,10 @@ class _PeopleState extends State<_People> {
       future: _people,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return _Empty(
-            icon: Icons.cloud_off_outlined,
+          return EmptyState.failed(
             title: 'Could not load this list',
             detail: describeApiError(snapshot.error!, sessionIsLive: true),
+            onAction: _reload,
           );
         }
         if (!snapshot.hasData) {
@@ -272,8 +276,8 @@ class _PeopleState extends State<_People> {
 
         final people = snapshot.data!;
         if (people.isEmpty) {
-          return _Empty(
-            icon: Iconsax.profile_2user_copy,
+          return EmptyState(
+            art: EmptyArt.muted,
             title: widget.emptyTitle,
             detail: widget.emptyDetail,
           );
@@ -306,7 +310,7 @@ class _PeopleState extends State<_People> {
               trailing: TextButton(
                 onPressed: () async {
                   await widget.unmute(person.id);
-                  setState(() => _people = widget.load());
+                  _reload();
                 },
                 child: Text(widget.action),
               ),
@@ -314,44 +318,6 @@ class _PeopleState extends State<_People> {
           },
         );
       },
-    );
-  }
-}
-
-class _Empty extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String detail;
-
-  const _Empty({
-    required this.icon,
-    required this.title,
-    required this.detail,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(SpacingTokens.space32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon,
-                size: 40, color: scheme.onSurface.withValues(alpha: .35)),
-            const SizedBox(height: SpacingTokens.space12),
-            Text(title, style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: SpacingTokens.space8),
-            Text(
-              detail,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: scheme.onSurface.withValues(alpha: .7)),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

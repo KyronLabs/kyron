@@ -9,6 +9,7 @@ import '../utils/api_error_message.dart';
 import '../widgets/app_button.dart';
 import '../widgets/gradient_scaffold.dart';
 import '../services/profile_service.dart';
+import '../widgets/empty_state.dart';
 
 /// One row of the `interests` table. The screen shows [name] and sends [slug]:
 /// the API matches submitted values against slug, so sending the display label
@@ -224,7 +225,15 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
     }
 
     if (_options.isEmpty) {
-      return const Center(child: Text('No interests are available yet.'));
+      return const Center(
+        child: EmptyState(
+          compact: true,
+          art: EmptyArt.topics,
+          title: 'No interests yet',
+          detail: 'Kyron has not published any to pick from. Skip this step '
+              'and set them later from your profile.',
+        ),
+      );
     }
 
     return SingleChildScrollView(

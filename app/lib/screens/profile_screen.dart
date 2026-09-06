@@ -21,6 +21,7 @@ import '../widgets/post_card.dart';
 import '../widgets/media_tile_grid.dart';
 import '../widgets/media_viewer.dart';
 import '../widgets/toast.dart';
+import '../widgets/empty_state.dart';
 import 'thread_screen.dart';
 
 /// Which of the profile's tabs is showing.
@@ -273,49 +274,37 @@ class _LoadedState extends ConsumerState<_Loaded> {
   }
 
   Widget _empty(ProfileModel profile, String? failed) {
-    final scheme = Theme.of(context).colorScheme;
+    if (failed != null) {
+      return EmptyState.failed(
+        title: 'Could not load these posts',
+        detail: failed,
+        onAction: ref.read(postListProvider(_source).notifier).refresh,
+      );
+    }
+
     final who =
         profile.isOwnProfile ? 'You have' : '${profile.displayName} has';
+    final mine = profile.isOwnProfile;
 
-    final message = failed ??
-        switch (_tab) {
-          ProfileTab.posts => profile.isOwnProfile
+    return switch (_tab) {
+      ProfileTab.posts => EmptyState(
+          art: EmptyArt.posts,
+          title: mine ? 'You have not posted yet' : 'No posts yet',
+          detail: mine
               ? 'Anything you post shows up here.'
               : '$who not posted anything yet.',
-          ProfileTab.media => '$who not posted any photos or clips.',
-          ProfileTab.likes => 'Posts you like are kept here, just for you.',
-        };
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: SpacingTokens.space32,
-        vertical: SpacingTokens.space32,
-      ),
-      child: Column(
-        children: [
-          Icon(
-            failed == null ? Iconsax.document_copy : Iconsax.cloud_cross_copy,
-            size: 40,
-            color: scheme.onSurface.withValues(alpha: .35),
-          ),
-          const SizedBox(height: SpacingTokens.space12),
-          Text(
-            message,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: scheme.onSurface.withValues(alpha: .7)),
-          ),
-          if (failed != null) ...[
-            const SizedBox(height: SpacingTokens.space12),
-            ActionButton(
-              label: 'Try again',
-              icon: Iconsax.refresh_copy,
-              kind: ActionButtonKind.tonal,
-              onPressed: ref.read(postListProvider(_source).notifier).refresh,
-            ),
-          ],
-        ],
-      ),
-    );
+        ),
+      ProfileTab.media => EmptyState(
+          art: EmptyArt.videos,
+          title: 'Nothing to look at yet',
+          detail: '$who not posted any photos or clips.',
+        ),
+      ProfileTab.likes => const EmptyState(
+          art: EmptyArt.likes,
+          title: 'No likes yet',
+          detail: 'Posts you like are kept here, just for you.',
+        ),
+    };
   }
 }
 
@@ -1002,42 +991,15 @@ class _Failed extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final scheme = Theme.of(context).colorScheme;
-
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(SpacingTokens.space32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Iconsax.profile_delete_copy,
-                size: 48, color: scheme.onSurface.withValues(alpha: .35)),
-            const SizedBox(height: SpacingTokens.space16),
-            Text(
-              username == null
-                  ? 'Could not load your profile'
-                  : 'Could not load @$username',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: SpacingTokens.space8),
-            Text(
-              describeApiError(error, sessionIsLive: true),
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: scheme.onSurface.withValues(alpha: .7),
-                  ),
-            ),
-            const SizedBox(height: SpacingTokens.space20),
-            ActionButton(
-              label: 'Try again',
-              icon: Iconsax.refresh_copy,
-              kind: ActionButtonKind.tonal,
-              onPressed: () => ref
-                  .read(profileProvider(username).notifier)
-                  .load(force: true),
-            ),
-          ],
+      child: SingleChildScrollView(
+        child: EmptyState.failed(
+          title: username == null
+              ? 'Could not load your profile'
+              : 'Could not load @$username',
+          detail: describeApiError(error, sessionIsLive: true),
+          onAction: () =>
+              ref.read(profileProvider(username).notifier).load(force: true),
         ),
       ),
     );

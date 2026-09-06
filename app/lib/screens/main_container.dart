@@ -1,5 +1,8 @@
 // lib/screens/main_container.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../providers/notifications_provider.dart';
 import '../widgets/bottom_nav_v4.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/sliding_drawer_content.dart';
@@ -8,14 +11,15 @@ import 'explore_screen.dart';
 import 'communities_screen.dart';
 import 'messages_screen.dart';
 
-class MainContainer extends StatefulWidget {
+class MainContainer extends ConsumerStatefulWidget {
   const MainContainer({super.key});
 
   @override
-  State<MainContainer> createState() => _MainContainerState();
+  ConsumerState<MainContainer> createState() => _MainContainerState();
 }
 
-class _MainContainerState extends State<MainContainer> {
+class _MainContainerState extends ConsumerState<MainContainer>
+    with WidgetsBindingObserver {
   int _currentIndex = 0;
   final GlobalKey<AppDrawerState> _drawerKey = GlobalKey<AppDrawerState>();
 
@@ -34,7 +38,27 @@ class _MainContainerState extends State<MainContainer> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  /// Refreshes the bell's count when the app comes back to the foreground.
+  ///
+  /// Kyron has no push channel, so nothing tells the running app that
+  /// somebody liked a post. Coming back to it is the one moment the count is
+  /// worth re-asking for; polling on a timer would spend a request a minute
+  /// to move a number nobody is looking at.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      ref.invalidate(unreadNotificationsProvider);
+    }
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _navHideProgress.dispose();
     super.dispose();
   }
