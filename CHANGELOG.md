@@ -14,6 +14,14 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- A reply can carry pictures and a clip, over the same basket the post composer
+  and the chat already use.
+- "Show N replies" carries the faces of the people who actually answered, sent
+  with the comment rather than fetched a row at a time, and never padded out: a
+  face there is a claim that a particular person is in the conversation.
+- A jump-to-end button on the chat, the post and the comment page. Downwards
+  where the newest thing is, upwards where the subject is, and only once the
+  list has moved far enough that there is somewhere to go.
 - Voice posts. Record up to ten minutes in the composer and the post carries a
   waveform you can play and scrub. The waveform is sampled while the microphone
   is open, because that is the only place the signal exists -- reading it back
@@ -78,6 +86,16 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- No dropdown menus anywhere. The conversation menu, the comment overflow, the
+  community member row and the language picker are bottomsheets now, off one
+  shared sheet. A popup opens against the top of the screen on a row near the
+  top and under your hand on one near the bottom, and its rows are too small to
+  hit accurately on a phone. The conversation sheet offers Mute or Unmute
+  rather than both, which needed the server to say which one you are in.
+- The overflow glyph is the outlined weight rather than the bold one, which was
+  the heaviest thing in a comment.
+- Thread rails are a hair rather than two points, and the root comment on a
+  reply page threads with everything under it instead of being drawn above it.
 - "Space" was one word covering two different things. Recording your voice and
   broadcasting live are separate entries now, and the one that is not built
   says so when you open it rather than sharing a name with the one that is.
@@ -133,6 +151,21 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- A reply went to the wrong person. Every reply to a reply was re-hung on that
+  reply's own parent, so answering somebody halfway down a thread filed the
+  answer beside them under the top comment, addressed to whoever wrote that. A
+  reply now keeps the parent it was written under.
+- A band of empty screen sat between the tab strip and the first row in
+  Explore, Messages and Communities. Those pages draw their own top chrome
+  inside a SafeArea, but that SafeArea is a sibling of the tab body rather than
+  its parent, so the status bar inset was still on the MediaQuery below it --
+  and a list built without an explicit padding quietly adopts it.
+- The newest message in a chat had moved to the top. The provider already hands
+  the screen oldest-first and the screen reversed it again.
+- The Bio field's icon hung halfway down the box, pointing at nothing. It sits
+  on the first line now, at any text scale.
+- "Open in Browser" in the browser sheet closed the sheet and did nothing. It
+  opens the browser, and says so when no app can.
 - Videos were poured into a box of a fixed shape, so a portrait clip -- which
   is most of them -- came out letterboxed with a black bar down each side, and
   a tall one was cropped. A clip is now drawn at its own dimensions.
