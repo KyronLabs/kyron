@@ -51,6 +51,29 @@ export class MessagesController {
     return this.svc.openWith(req.user.id, dto.userId);
   }
 
+  /** Silences a conversation for the reader. Their own setting, not the
+   * other side's. */
+  @Put(':id/mute')
+  mute(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.setMuted(req.user.id, id, true);
+  }
+
+  @Delete(':id/mute')
+  unmute(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.setMuted(req.user.id, id, false);
+  }
+
+  /**
+   * Blocks the other person and takes the thread out of the reader's list.
+   *
+   * One call rather than two: blocking somebody you are talking to and
+   * leaving their thread sitting in your list is not a state anybody wants.
+   */
+  @Put(':id/block')
+  block(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.blockOther(req.user.id, id);
+  }
+
   @Get(':id')
   messages(
     @Req() req: AuthRequest,
@@ -69,7 +92,7 @@ export class MessagesController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() dto: SendMessageDto,
   ) {
-    return this.svc.send(req.user.id, id, dto.body);
+    return this.svc.send(req.user.id, id, dto.body ?? '', dto.media ?? []);
   }
 
   @Put(':id/read')

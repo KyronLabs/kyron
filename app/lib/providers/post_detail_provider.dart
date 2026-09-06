@@ -169,6 +169,45 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
     }
   }
 
+  /// Likes a comment, or takes the like back.
+  ///
+  /// Moved before the request lands and put back if it fails: a heart that
+  /// fills and stays filled while the server disagrees is worse than one that
+  /// flickers.
+  Future<String?> toggleCommentLike(PostComment comment) async {
+    final wanted = !comment.liked;
+    _replaceComment(comment.copyWith(
+      liked: wanted,
+      likes: (comment.likes + (wanted ? 1 : -1)).clamp(0, 1 << 31),
+    ));
+    try {
+      final likes = await _repo.setCommentLike(comment.id, wanted);
+      _replaceComment(comment.copyWith(liked: wanted, likes: likes));
+      return null;
+    } catch (error) {
+      _replaceComment(comment);
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  /// Swaps one comment for an updated copy, wherever it is held -- the
+  /// top-level list, or one of the fetched reply runs.
+  void _replaceComment(PostComment updated) {
+    state = state.copyWith(
+      comments: [
+        for (final row in state.comments)
+          if (row.id == updated.id) updated else row,
+      ],
+      replies: {
+        for (final entry in state.replies.entries)
+          entry.key: [
+            for (final row in entry.value)
+              if (row.id == updated.id) updated else row,
+          ],
+      },
+    );
+  }
+
   // ---- Attachments --------------------------------------------------------
 
   /// Picks images or a clip for the comment and uploads them straight away, so

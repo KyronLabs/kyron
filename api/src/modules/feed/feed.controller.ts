@@ -167,6 +167,31 @@ export class FeedController {
     return this.svc.listReplies(id, req.user.id, query.limit, query.cursor);
   }
 
+  /**
+   * One comment and everything under it, for the page a reply opens.
+   *
+   * Declared above the ':id' routes below it for the usual reason: a fixed
+   * segment after a parameter is fine, but two parameterised routes at the
+   * same depth are matched in declaration order.
+   */
+  @Get('comments/:id/thread')
+  thread(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.commentThread(req.user.id, id);
+  }
+
+  @Put('comments/:id/like')
+  likeComment(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.setCommentLike(req.user.id, id, true);
+  }
+
+  @Delete('comments/:id/like')
+  unlikeComment(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+  ) {
+    return this.svc.setCommentLike(req.user.id, id, false);
+  }
+
   @Delete('comments/:id')
   async removeComment(
     @Req() req: AuthRequest,

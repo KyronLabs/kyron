@@ -174,6 +174,22 @@ class PendingMedia {
   bool get isUploading => url == null && error == null;
   bool get isReady => url != null;
 
+  /// What a bubble draws while this is still going up.
+  ///
+  /// The local file, so an attachment is visible from the moment it is picked
+  /// rather than being an empty box for the length of the upload.
+  PostMedia get asPlaceholder => PostMedia(
+        id: path,
+        kind: kind,
+        url: url ?? path,
+        width: width,
+        height: height,
+        alt: alt,
+        duration: duration,
+        waveform: waveform,
+        thumbnailUrl: thumbnailUrl ?? thumbnailPath,
+      );
+
   PendingMedia copyWith({
     String? url,
     String? error,

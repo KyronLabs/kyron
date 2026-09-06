@@ -142,9 +142,12 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
                 child: GridView.builder(
                   padding: EdgeInsets.zero,
                   physics: const BouncingScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    mainAxisExtent: 150,
+                    // Asked for rather than assumed. A fixed 150 clipped every
+                    // card that had a bio by thirteen pixels, and more than
+                    // that at a larger text size.
+                    mainAxisExtent: AtomicCard.slotHeight(context),
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
                   ),

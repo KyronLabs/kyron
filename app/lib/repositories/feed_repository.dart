@@ -320,6 +320,26 @@ class FeedRepository {
     return CommentPage.fromJson(res.data ?? const {});
   }
 
+  /// One comment and everything under it, for the page a reply opens.
+  Future<CommentThread> commentThread(String commentId) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/feed/comments/$commentId/thread',
+    );
+    return CommentThread.fromJson(res.data ?? const {});
+  }
+
+  /// Likes a comment, or takes the like back. Returns the settled count.
+  Future<int> setCommentLike(String commentId, bool liked) async {
+    final res = liked
+        ? await _api.dio.put<Map<String, dynamic>>(
+            '/feed/comments/$commentId/like',
+          )
+        : await _api.dio.delete<Map<String, dynamic>>(
+            '/feed/comments/$commentId/like',
+          );
+    return (res.data?['likes'] as num?)?.toInt() ?? 0;
+  }
+
   Future<PostComment> addComment(
     String postId,
     String content, {

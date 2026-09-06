@@ -1,10 +1,31 @@
 import { Transform } from 'class-transformer';
-import { IsInt, IsOptional, IsString, IsUUID, Max, Min } from 'class-validator';
+import {
+  IsInt,
+  IsOptional,
+  IsString,
+  Matches,
+  Max,
+  Min,
+} from 'class-validator';
+
+/**
+ * A cursor is either a post id or a ranked position.
+ *
+ * The chronological lists page by the id of the last row they returned. The
+ * ranked feed cannot: it recomputes an order per request, so an id names a
+ * position that may not exist next time. Its cursor carries the session seed
+ * and an offset instead -- `r<seed>-<offset>` -- and both shapes come through
+ * this one field.
+ */
+const CURSOR =
+  /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|r\d{1,10}-\d{1,7})$/i;
 
 export class ListFeedDto {
-  /** Newest first; omit for the first page. */
+  /** Omit for the first page. */
   @IsOptional()
-  @IsUUID('4', { message: 'cursor must be a post id from a previous page.' })
+  @Matches(CURSOR, {
+    message: 'cursor must come from a previous page.',
+  })
   cursor?: string;
 
   // Capped so one request cannot ask for the whole table.

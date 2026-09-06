@@ -78,4 +78,79 @@ class CommunitiesRepository {
     );
     return FeedPost.fromJson(res.data ?? const {});
   }
+
+  /// Everyone in a community. Members only, enforced by the server.
+  Future<CommunityMemberPage> members(
+    String slug, {
+    String? cursor,
+    int limit = 30,
+  }) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/communities/${Uri.encodeComponent(slug)}/members',
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
+    );
+    return CommunityMemberPage.fromJson(res.data ?? const {});
+  }
+
+  /// Who has been removed. Moderators and the owner.
+  Future<List<CommunityMember>> bans(String slug) async {
+    final res = await _api.dio.get<List<dynamic>>(
+      '/communities/${Uri.encodeComponent(slug)}/bans',
+    );
+    return (res.data ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(CommunityMember.fromJson)
+        .toList();
+  }
+
+  /// Name, description, avatar, banner. The owner only.
+  Future<Community> update(
+    String slug, {
+    String? name,
+    String? description,
+    String? avatarUrl,
+    String? bannerUrl,
+  }) async {
+    final res = await _api.dio.patch<Map<String, dynamic>>(
+      '/communities/${Uri.encodeComponent(slug)}',
+      data: {
+        if (name != null) 'name': name,
+        if (description != null) 'description': description,
+        if (avatarUrl != null) 'avatarUrl': avatarUrl,
+        if (bannerUrl != null) 'bannerUrl': bannerUrl,
+      },
+    );
+    return Community.fromJson(res.data ?? const {});
+  }
+
+  /// Promotes or demotes somebody.
+  Future<CommunityMember> setRole(
+    String slug,
+    String userId,
+    CommunityRole role,
+  ) async {
+    final res = await _api.dio.put<Map<String, dynamic>>(
+      '/communities/${Uri.encodeComponent(slug)}/members/$userId/role',
+      data: {'role': role.wire},
+    );
+    return CommunityMember.fromJson(res.data ?? const {});
+  }
+
+  /// Removes somebody and keeps them out.
+  Future<void> removeMember(String slug, String userId, {String? reason}) =>
+      _api.dio.delete<Map<String, dynamic>>(
+        '/communities/${Uri.encodeComponent(slug)}/members/$userId',
+        data: {if (reason != null && reason.isNotEmpty) 'reason': reason},
+      );
+
+  /// Lets somebody removed come back.
+  Future<void> unban(String slug, String userId) =>
+      _api.dio.delete<Map<String, dynamic>>(
+        '/communities/${Uri.encodeComponent(slug)}/bans/$userId',
+      );
+
+  /// Closes a community. Soft, so its posts still resolve.
+  Future<void> remove(String slug) => _api.dio.delete<Map<String, dynamic>>(
+        '/communities/${Uri.encodeComponent(slug)}',
+      );
 }

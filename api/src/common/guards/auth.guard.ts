@@ -86,14 +86,16 @@ export class AuthGuard implements CanActivate {
    * touch this API.
    */
   private async resolveSupabaseUser(claims: SupabaseClaims): Promise<User> {
+    const meta = claims.user_metadata ?? {};
+    const name = meta.full_name ?? meta.name ?? null;
+    const username = this.handleFrom(meta);
+
     const existing = await this.prisma.user.findUnique({
       where: { id: claims.sub },
     });
-    if (existing) return existing;
+    if (existing) return this.backfill(existing, { name, username });
 
     const email = claims.email ?? `${claims.sub}@users.noreply.kyron.so`;
-    const meta = claims.user_metadata ?? {};
-    const name = meta.full_name ?? meta.name ?? null;
 
     try {
       const created = await this.prisma.user.create({
@@ -101,6 +103,11 @@ export class AuthGuard implements CanActivate {
           id: claims.sub,
           email,
           name,
+          // Sign-up asks for a handle and Supabase keeps it in the token's
+          // metadata, but nothing here ever read it back out. Every account
+          // provisioned this way had a null username, which is why a
+          // finished profile still introduced itself as "Your account".
+          username: username ?? undefined,
           password: null,
           role: UserRole.USER,
           // Supabase would not have issued this token if the account were not
@@ -118,12 +125,59 @@ export class AuthGuard implements CanActivate {
       const recovered = await this.prisma.user.findFirst({
         where: { OR: [{ id: claims.sub }, { email }] },
       });
-      if (recovered) return recovered;
+      if (recovered) return this.backfill(recovered, { name, username });
       this.logger.error(
         `Could not provision a local user for Supabase subject ${claims.sub}`,
         error instanceof Error ? error.stack : String(error),
       );
       throw new UnauthorizedException('Could not resolve account');
+    }
+  }
+
+  /**
+   * The handle the identity provider knows this account by.
+   *
+   * Kyron's own sign-up writes `username`; GitHub and Twitter write
+   * `user_name`; most OIDC providers write `preferred_username`. Normalised
+   * to what the rest of the schema stores, and dropped rather than mangled if
+   * what comes back is not a handle at all.
+   */
+  private handleFrom(meta: {
+    username?: string;
+    user_name?: string;
+    preferred_username?: string;
+  }): string | null {
+    const raw = (meta.username ?? meta.user_name ?? meta.preferred_username)
+      ?.trim()
+      .replace(/^@/, '');
+    if (!raw) return null;
+    return /^[A-Za-z0-9_.]{2,30}$/.test(raw) ? raw : null;
+  }
+
+  /**
+   * Fills in what a row provisioned by an earlier version never got.
+   *
+   * Accounts created before the guard read the token's metadata have no name
+   * and no handle, and nothing else would ever set them: this runs once per
+   * account, on the first request after the gap is noticed, and leaves any
+   * value the user has since chosen alone.
+   */
+  private async backfill(
+    user: User,
+    from: { name: string | null; username: string | null },
+  ): Promise<User> {
+    const data: { name?: string; username?: string } = {};
+    if (!user.name?.trim() && from.name) data.name = from.name;
+    if (!user.username?.trim() && from.username) data.username = from.username;
+    if (Object.keys(data).length === 0) return user;
+
+    try {
+      return await this.prisma.user.update({ where: { id: user.id }, data });
+    } catch {
+      // The handle is unique, and somebody else may already hold it. Not
+      // being able to fill it in is not a reason to fail the request -- the
+      // user can set one from Edit profile.
+      return user;
     }
   }
 }

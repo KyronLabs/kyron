@@ -3,6 +3,7 @@ import 'package:kyron_app/models/conversation.dart';
 import 'package:kyron_app/providers/messages_provider.dart';
 import 'package:kyron_app/repositories/messages_repository.dart';
 import 'package:kyron_app/services/api_client.dart';
+import 'package:kyron_app/models/post_media.dart';
 
 class _Down implements Exception {}
 
@@ -35,7 +36,11 @@ class _FakeMessages extends MessagesRepository {
   }
 
   @override
-  Future<DirectMessage> send(String id, String body) async {
+  Future<DirectMessage> send(
+    String id,
+    String body, {
+    List<PendingMedia> media = const [],
+  }) async {
     sent.add(body);
     if (sendFails) throw _Down();
     return DirectMessage(

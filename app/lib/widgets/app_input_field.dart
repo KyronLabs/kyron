@@ -20,7 +20,12 @@ class AppInputField extends StatelessWidget {
   final String? label;
 
   final TextEditingController? controller;
-  final Widget? prefix;
+
+  /// Sits inline with the text, not in an icon slot. An `@` in front of a
+  /// handle is part of the value being typed; as a prefixIcon it was given a
+  /// 42-wide box of its own and left a gap the width of a word between it and
+  /// the hint.
+  final String? prefixText;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
@@ -35,7 +40,7 @@ class AppInputField extends StatelessWidget {
     this.hint,
     this.label,
     this.controller,
-    this.prefix,
+    this.prefixText,
     this.keyboardType = TextInputType.text,
     this.validator,
     this.inputFormatters,
@@ -58,16 +63,13 @@ class AppInputField extends StatelessWidget {
       maxLength: maxLength,
       textInputAction: textInputAction,
       autocorrect: autocorrect,
-      style: const TextStyle(fontSize: 15),
+      // No size of its own. Overriding this to 15 is what made every auth
+      // field two pixels shorter than the identical field on a settings
+      // screen, which is the sort of difference you feel without seeing.
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
-        prefixIcon: prefix,
-        // Sized to the theme's own density rather than Material's default,
-        // which reserves a 48-wide box and pushes the text off centre.
-        prefixIconConstraints: prefix == null
-            ? null
-            : const BoxConstraints(minWidth: 42, minHeight: 0),
+        prefixText: prefixText,
         // The screens that use this show their own count where they want one;
         // the built-in counter rendered a second, differently formatted one.
         counterText: '',

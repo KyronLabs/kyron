@@ -81,6 +81,8 @@ model User {
   conversations     ConversationMember[]
   messagesSent      Message[]
   communities       CommunityMember[]
+  communityBans     CommunityBan[]     @relation("CommunityBanned")
+  communityBansMade CommunityBan[]     @relation("CommunityBanner")
   posts             Post[]
   // These two read backwards from their relation names, so they are spelled
   // out. `Follow.follower` holds followerId, so its back-reference is the set
@@ -89,6 +91,7 @@ model User {
   following         Follow[]           @relation("follower")
   followers         Follow[]           @relation("following")
   likes             PostLike[]
+  commentLikes      CommentLike[]
   saves             PostSave[]
   comments          Comment[]
   views             PostView[]
@@ -336,6 +339,23 @@ model Follow {
 // Separate tables rather than one with a `kind` column: a like is public and
 // counted on the post, a save is private to the person who made it, and
 // keeping them apart means a query for one cannot accidentally leak the other.
+// A like on a comment. The same shape as PostLike, and separate for the same
+// reason the tables are: a comment is not a post, and a single polymorphic
+// "like" table would need a check constraint to stop a row pointing at both.
+model CommentLike {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  commentId String   @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  comment Comment @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  // One like per person per comment. Without it a double tap counts twice.
+  @@unique([userId, commentId])
+  @@index([commentId])
+}
+
 model PostLike {
   id        String   @id @default(uuid()) @db.Uuid
   userId    String   @db.Uuid
@@ -387,11 +407,12 @@ model Comment {
   createdAt DateTime  @default(now()) @db.Timestamptz()
   updatedAt DateTime  @updatedAt @db.Timestamptz()
 
-  post    Post      @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  author  User      @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  parent  Comment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  replies Comment[] @relation("CommentReplies")
+  post    Post          @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  author  User          @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  parent  Comment?      @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  replies Comment[]     @relation("CommentReplies")
   media   Media[]
+  likes   CommentLike[]
 
   @@index([authorId])
   // A post's top-level comments, oldest first -- the order a thread reads in.
@@ -444,6 +465,7 @@ model Media {
   id        String    @id @default(uuid()) @db.Uuid
   postId    String?   @db.Uuid
   commentId String?   @db.Uuid
+  messageId String?   @db.Uuid
   kind      MediaKind @default(IMAGE)
   url       String
 
@@ -486,9 +508,11 @@ model Media {
 
   post    Post?    @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  message Message? @relation(fields: [messageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([postId, position])
   @@index([commentId, position])
+  @@index([messageId, position])
 }
 
 // ==========================================
@@ -842,6 +866,10 @@ model ConversationMember {
   // stay, because the other side's history is the same rows.
   hiddenAt DateTime? @db.Timestamptz()
 
+  // Set when this member wants it quiet. Their own setting: muting is not
+  // something the other side should be able to see or undo.
+  mutedAt DateTime? @db.Timestamptz()
+
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
@@ -863,6 +891,7 @@ model Message {
 
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  media        Media[]
 
   @@index([conversationId, createdAt(sort: Desc), id(sort: Desc)])
 }
@@ -886,6 +915,7 @@ model Community {
   name        String
   description String? @db.Text
   avatarUrl   String?
+  bannerUrl   String?
 
   createdById String   @db.Uuid
   createdAt   DateTime @default(now()) @db.Timestamptz()
@@ -895,9 +925,30 @@ model Community {
 
   members CommunityMember[]
   posts   Post[]
+  bans    CommunityBan[]
 
   @@index([slug])
   @@index([createdAt(sort: Desc), id(sort: Desc)])
+}
+
+// Somebody removed from a community.
+//
+// A separate row rather than a flag on the membership, because removing
+// deletes the membership: without this, "you are out" and "join again" are the
+// same button, and a moderator's decision lasts until the person taps it.
+model CommunityBan {
+  communityId String   @db.Uuid
+  userId      String   @db.Uuid
+  bannedById  String   @db.Uuid
+  reason      String?  @db.Text
+  createdAt   DateTime @default(now()) @db.Timestamptz()
+
+  community Community @relation(fields: [communityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user      User      @relation("CommunityBanned", fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  bannedBy  User      @relation("CommunityBanner", fields: [bannedById], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([communityId, userId])
+  @@index([userId])
 }
 
 model CommunityMember {

@@ -65,7 +65,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Sign in to Kyron')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Form(
           key: _formKey,
           child: Column(

@@ -24,6 +24,9 @@ export interface SupabaseClaims extends JWTPayload {
   user_metadata?: {
     full_name?: string;
     name?: string;
+    /** What Kyron's own sign-up form writes. */
+    username?: string;
+    /** What GitHub and Twitter call the same thing. */
     user_name?: string;
     preferred_username?: string;
   };

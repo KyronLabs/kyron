@@ -122,6 +122,7 @@ class _PersonTileState extends ConsumerState<PersonTile> {
             if (!_person.isSelf) ...[
               const SizedBox(width: SpacingTokens.space8),
               ActionButton(
+                compact: true,
                 label: _person.isFollowing ? 'Following' : 'Follow',
                 kind: _person.isFollowing
                     ? ActionButtonKind.outlined

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 import '../models/conversation.dart';
+import '../models/post_media.dart';
 import '../repositories/messages_repository.dart';
 import '../utils/api_error_message.dart';
 import 'api_client_provider.dart';
@@ -139,6 +140,21 @@ final conversationListProvider = StateNotifierProvider.family<
   );
 });
 
+/// Reloads both tabs, and the badge with them.
+///
+/// The two lists are separate notifiers that each load once, when their tab is
+/// first looked at. That is what made a conversation appear under Unread and
+/// not under All: Unread was fetched a minute later than All and had seen the
+/// message that arrived in between. Nothing that changes what either list
+/// should hold may refresh only the tab it happened on.
+Future<void> refreshConversations(WidgetRef ref) async {
+  await Future.wait([
+    ref.read(conversationListProvider(false).notifier).refresh(),
+    ref.read(conversationListProvider(true).notifier).refresh(),
+  ]);
+  ref.invalidate(unreadConversationsProvider);
+}
+
 /// How many conversations hold something unread. Drives the tab's badge.
 final unreadConversationsProvider = FutureProvider<int>((ref) async {
   return ref.read(messagesRepositoryProvider).unreadCount();
@@ -247,9 +263,14 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   /// On screen before it is anywhere else, and replaced by the real row when
   /// the server answers. A chat that sits still until a round trip completes
   /// is a chat that feels broken on a slow connection.
-  Future<void> send(String body, {required String senderId}) async {
+  Future<void> send(
+    String body, {
+    required String senderId,
+    List<PendingMedia> media = const [],
+  }) async {
     final text = body.trim();
-    if (text.isEmpty) return;
+    // A picture with no words is a message; an empty box is not.
+    if (text.isEmpty && media.isEmpty) return;
 
     final placeholder = DirectMessage(
       id: 'pending-${_pending++}',
@@ -257,11 +278,14 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       senderId: senderId,
       createdAt: DateTime.now(),
       sending: true,
+      // Shown from the local file while it goes up, so the bubble is not an
+      // empty box for the length of the upload.
+      media: media.map((item) => item.asPlaceholder).toList(),
     );
     state = state.copyWith(messages: [...state.messages, placeholder]);
 
     try {
-      final sent = await _repo.send(_conversationId, text);
+      final sent = await _repo.send(_conversationId, text, media: media);
       _replace(placeholder.id, sent);
     } catch (_) {
       _replace(
@@ -270,9 +294,33 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   }
 
   /// Sends a failed message again, from the bubble that says it failed.
+  ///
+  /// Text only: the attachments were uploaded against the failed attempt and
+  /// their local files may be gone, so a retry that promised to resend them
+  /// could silently drop them.
   Future<void> retry(DirectMessage message) async {
     _drop(message.id);
     await send(message.body, senderId: message.senderId);
+  }
+
+  /// Silences this conversation, or unsilences it.
+  Future<String?> setMuted(bool muted) async {
+    try {
+      await _repo.setMuted(_conversationId, muted);
+      return null;
+    } catch (error) {
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  /// Blocks the other person. The server hides the thread with it.
+  Future<String?> blockOther() async {
+    try {
+      await _repo.blockOther(_conversationId);
+      return null;
+    } catch (error) {
+      return describeApiError(error, sessionIsLive: true);
+    }
   }
 
   /// Removes one of the reader's own messages.

@@ -14,6 +14,7 @@ import '../widgets/empty_state.dart';
 import '../widgets/post_list_view.dart';
 import '../widgets/toast.dart';
 import 'community_composer_screen.dart';
+import 'community_manage_screen.dart';
 
 /// One community: what it is, who is in it, and what has been posted into it.
 class CommunityScreen extends ConsumerWidget {
@@ -35,6 +36,24 @@ class CommunityScreen extends ConsumerWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(community?.name ?? 'Community'),
+        actions: [
+          // Only for somebody who can act on it. A menu whose every entry
+          // refuses is worse than no menu.
+          if (community != null && (community.role?.canModerate ?? false))
+            IconButton(
+              tooltip: 'Manage',
+              icon: const Icon(Iconsax.setting_2_copy, size: 20),
+              onPressed: () async {
+                await Navigator.push<Community>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => CommunityManageScreen(community: community),
+                  ),
+                );
+                notifier.refresh();
+              },
+            ),
+        ],
       ),
       // Only for members. A button that answers "join first" is a button that
       // should not have been there.
@@ -129,81 +148,112 @@ class _Header extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final description = community.description?.trim();
 
-    return Padding(
-      padding: const EdgeInsets.all(SpacingTokens.space16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+    final banner = community.bannerUrl?.trim();
+    final avatar = community.avatarUrl?.trim();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (banner != null && banner.isNotEmpty)
+          AspectRatio(
+            // Wide and shallow: a banner is a strip behind the name, and a
+            // taller one pushes the posts off the first screen.
+            aspectRatio: 3 / 1,
+            child: Image.network(
+              banner,
+              fit: BoxFit.cover,
+              // Nothing rather than a broken-image glyph: a banner that will
+              // not load is not worth telling anybody about.
+              errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+            ),
+          ),
+        Padding(
+          padding: const EdgeInsets.all(SpacingTokens.space16),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      community.name,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                      ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (avatar != null && avatar.isNotEmpty) ...[
+                    CircleAvatar(
+                      radius: 24,
+                      backgroundColor: scheme.primary.withValues(alpha: 0.15),
+                      foregroundImage: NetworkImage(avatar),
                     ),
-                    const SizedBox(height: 2),
-                    Text(
-                      'c/${community.slug}',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: scheme.onSurface.withValues(alpha: 0.55),
-                      ),
-                    ),
+                    const SizedBox(width: SpacingTokens.space12),
                   ],
-                ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          community.name,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          'c/${community.slug}',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: scheme.onSurface.withValues(alpha: 0.55),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: SpacingTokens.space12),
+                  SizedBox(
+                    width: 112,
+                    child: ActionButton(
+                      compact: true,
+                      label: community.joined ? 'Joined' : 'Join',
+                      icon: community.joined
+                          ? Iconsax.tick_circle_copy
+                          : Iconsax.add,
+                      kind: community.joined
+                          ? ActionButtonKind.outlined
+                          : ActionButtonKind.primary,
+                      busy: busy,
+                      onPressed: onToggle,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: SpacingTokens.space12),
-              SizedBox(
-                width: 112,
-                child: ActionButton(
-                  label: community.joined ? 'Joined' : 'Join',
-                  icon:
-                      community.joined ? Iconsax.tick_circle_copy : Iconsax.add,
-                  kind: community.joined
-                      ? ActionButtonKind.outlined
-                      : ActionButtonKind.primary,
-                  busy: busy,
-                  onPressed: onToggle,
+              if (description != null && description.isNotEmpty) ...[
+                const SizedBox(height: SpacingTokens.space12),
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 14,
+                    height: 1.4,
+                    color: scheme.onSurface.withValues(alpha: 0.8),
+                  ),
                 ),
+              ],
+              const SizedBox(height: SpacingTokens.space12),
+              Row(
+                children: [
+                  _Stat(
+                    value: community.members,
+                    noun: 'member',
+                    icon: Iconsax.people_copy,
+                  ),
+                  const SizedBox(width: SpacingTokens.space16),
+                  _Stat(
+                    value: community.posts,
+                    noun: 'post',
+                    icon: Iconsax.message_text_copy,
+                  ),
+                ],
               ),
             ],
           ),
-          if (description != null && description.isNotEmpty) ...[
-            const SizedBox(height: SpacingTokens.space12),
-            Text(
-              description,
-              style: TextStyle(
-                fontSize: 14,
-                height: 1.4,
-                color: scheme.onSurface.withValues(alpha: 0.8),
-              ),
-            ),
-          ],
-          const SizedBox(height: SpacingTokens.space12),
-          Row(
-            children: [
-              _Stat(
-                value: community.members,
-                noun: 'member',
-                icon: Iconsax.people_copy,
-              ),
-              const SizedBox(width: SpacingTokens.space16),
-              _Stat(
-                value: community.posts,
-                noun: 'post',
-                icon: Iconsax.message_text_copy,
-              ),
-            ],
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

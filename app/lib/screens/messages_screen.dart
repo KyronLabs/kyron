@@ -41,7 +41,24 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen>
   bool _hidden = false;
 
   @override
+  void initState() {
+    super.initState();
+    _tabs.addListener(_onTabChanged);
+  }
+
+  /// Reloads both lists whenever the tab changes.
+  ///
+  /// They are separate notifiers that each fetch once, so whichever tab was
+  /// opened second held newer data than the first. That is what made a
+  /// conversation show under Unread and not under All.
+  void _onTabChanged() {
+    if (_tabs.indexIsChanging) return;
+    refreshConversations(ref);
+  }
+
+  @override
   void dispose() {
+    _tabs.removeListener(_onTabChanged);
     _tabs.dispose();
     super.dispose();
   }
@@ -139,8 +156,9 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
         people: conversation.people,
       ),
     );
-    // Whatever was said while the thread was open belongs in this list.
-    if (mounted) await notifier.refresh();
+    // Whatever was said while the thread was open belongs in both lists:
+    // reading it empties Unread, and it moves to the top of All.
+    if (mounted) await refreshConversations(ref);
   }
 
   @override
@@ -204,6 +222,7 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                     if (error != null && context.mounted) {
                       Toast.show(context, error);
                     }
+                    if (context.mounted) await refreshConversations(ref);
                   },
                 );
               },

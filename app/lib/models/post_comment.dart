@@ -22,6 +22,10 @@ class PostComment {
   /// Attachments, in the order they were added.
   final List<PostMedia> media;
 
+  /// How many people liked it, and whether you are one of them.
+  final int likes;
+  final bool liked;
+
   const PostComment({
     required this.id,
     required this.content,
@@ -31,6 +35,8 @@ class PostComment {
     this.replies = 0,
     this.mine = false,
     this.media = const [],
+    this.likes = 0,
+    this.liked = false,
   });
 
   bool get isReply => parentId != null;
@@ -48,9 +54,11 @@ class PostComment {
         replies: (json['replies'] as num?)?.toInt() ?? 0,
         mine: json['mine'] == true,
         media: PostMedia.listFrom(json['media']),
+        likes: (json['likes'] as num?)?.toInt() ?? 0,
+        liked: json['liked'] == true,
       );
 
-  PostComment copyWith({int? replies}) => PostComment(
+  PostComment copyWith({int? replies, int? likes, bool? liked}) => PostComment(
         id: id,
         content: content,
         createdAt: createdAt,
@@ -59,6 +67,32 @@ class PostComment {
         replies: replies ?? this.replies,
         mine: mine,
         media: media,
+        likes: likes ?? this.likes,
+        liked: liked ?? this.liked,
+      );
+}
+
+/// One comment, everything under it, and which post it belongs to.
+class CommentThread {
+  final String postId;
+  final PostComment root;
+  final List<PostComment> replies;
+
+  const CommentThread({
+    required this.postId,
+    required this.root,
+    required this.replies,
+  });
+
+  factory CommentThread.fromJson(Map<String, dynamic> json) => CommentThread(
+        postId: json['postId'] as String? ?? '',
+        root: PostComment.fromJson(
+          (json['root'] as Map<String, dynamic>?) ?? const {},
+        ),
+        replies: ((json['replies'] as List<dynamic>?) ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(PostComment.fromJson)
+            .toList(),
       );
 }
 

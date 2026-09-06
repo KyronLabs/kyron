@@ -4,6 +4,7 @@ import { FeedService } from './feed.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { MediaService } from '../media/media.service';
+import { RankingService } from './ranking.service';
 
 /** One row in the shape the service selects. */
 const row = (id: string, createdAt = new Date()) => ({
@@ -113,6 +114,12 @@ describe('FeedService', () => {
 
   const follow = {
     findFirst: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
+    // Ranking asks who the reader follows.
+    findMany: jest.fn<Promise<{ followingId: string }[]>, [unknown]>(),
+  };
+
+  const userInterest = {
+    findMany: jest.fn<Promise<{ interestId: string }[]>, [unknown]>(),
   };
 
   const user = {
@@ -150,6 +157,7 @@ describe('FeedService', () => {
     const moduleRef = await Test.createTestingModule({
       providers: [
         FeedService,
+        RankingService,
         {
           provide: PrismaService,
           useValue: {
@@ -162,6 +170,7 @@ describe('FeedService', () => {
             block,
             follow,
             user,
+            userInterest,
             repost: relation(),
             ...extra,
           },
@@ -176,6 +185,11 @@ describe('FeedService', () => {
     jest.resetAllMocks();
     postLike = relation();
     postSave = relation();
+    // Ranking reads these on every feed request. Empty is the default: a
+    // reader who follows nobody and has liked nothing still gets a feed.
+    follow.findMany.mockResolvedValue([]);
+    postLike.findMany.mockResolvedValue([]);
+    userInterest.findMany.mockResolvedValue([]);
     moderation.filtersFor.mockResolvedValue({
       blockedUserIds: [],
       mutedUserIds: [],
@@ -222,19 +236,7 @@ describe('FeedService', () => {
   });
 
   describe('listRecent', () => {
-    it('excludes soft-deleted posts and orders newest first', async () => {
-      post.findMany.mockResolvedValue([]);
-      await (await service()).listRecent(VIEWER);
-
-      expect(post.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: { deletedAt: null, communityId: null },
-          orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
-        }),
-      );
-    });
-
-    it('leaves out what was posted into a community', async () => {
+    it('excludes soft-deleted posts and community posts', async () => {
       // A community post was written into a named place with its own members.
       // Pushing it at everybody is what makes people stop posting in them.
       post.findMany.mockResolvedValue([]);
@@ -243,29 +245,44 @@ describe('FeedService', () => {
       const [args] = post.findMany.mock.calls[0] as [
         { where: Record<string, unknown> },
       ];
+      expect(args.where.deletedAt).toBeNull();
       expect(args.where.communityId).toBeNull();
     });
 
-    it('asks for one row more than the page, to detect a next page', async () => {
+    it('reads a pool to rank, not a page to return', async () => {
+      // The rows the query asks for are candidates. Taking exactly one page
+      // would mean ranking whatever twenty happened to be newest, which is
+      // the ordering this replaces.
       post.findMany.mockResolvedValue([]);
       await (await service()).listRecent(VIEWER, 20);
 
       expect(post.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({ take: 21 }),
+        expect.objectContaining({ take: FeedService.candidatePool }),
       );
     });
 
-    it('returns a cursor and trims the probe row when more remain', async () => {
+    it('bounds the pool to a recent window', async () => {
+      post.findMany.mockResolvedValue([]);
+      await (await service()).listRecent(VIEWER);
+
+      const [args] = post.findMany.mock.calls[0] as [
+        { where: { createdAt?: { gte?: Date } } },
+      ];
+      expect(args.where.createdAt?.gte).toBeInstanceOf(Date);
+    });
+
+    it('returns a page and a cursor that carries the session', async () => {
       post.findMany.mockResolvedValue([row('a'), row('b'), row('c')]);
       const page = await (await service()).listRecent(VIEWER, 2);
 
-      expect(page.items.map((i) => i.id)).toEqual(['a', 'b']);
-      // The cursor is the last returned row, not the probe -- pointing at the
-      // probe would skip it on the next page.
-      expect(page.nextCursor).toBe('b');
+      expect(page.items).toHaveLength(2);
+      // Not a post id: a ranking is recomputed per request, so an id names a
+      // position that may not exist next time. The cursor carries the seed
+      // and the offset instead.
+      expect(page.nextCursor).toMatch(/^r\d+-2$/);
     });
 
-    it('reports no cursor on the last page', async () => {
+    it('reports no cursor once the pool is exhausted', async () => {
       post.findMany.mockResolvedValue([row('a'), row('b')]);
       const page = await (await service()).listRecent(VIEWER, 2);
 
@@ -273,25 +290,46 @@ describe('FeedService', () => {
       expect(page.nextCursor).toBeNull();
     });
 
-    it('skips the cursor row itself', async () => {
-      post.findUnique.mockResolvedValue({ id: 'anchor' });
-      post.findMany.mockResolvedValue([]);
-      await (await service()).listRecent(VIEWER, 20, 'anchor');
+    it('continues the same ranking on the next page', async () => {
+      const rows = [row('a'), row('b'), row('c'), row('d')];
+      post.findMany.mockResolvedValue(rows);
 
-      expect(post.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({ cursor: { id: 'anchor' }, skip: 1 }),
-      );
+      const svc = await service();
+      const first = await svc.listRecent(VIEWER, 2);
+      const second = await svc.listRecent(VIEWER, 2, first.nextCursor!);
+
+      const seen = [...first.items, ...second.items].map((i) => i.id);
+      // The seed travels in the cursor, so page two continues page one
+      // rather than reshuffling and repeating a post.
+      expect(new Set(seen).size).toBe(seen.length);
     });
 
-    it('answers 404, not 500, for a cursor that no longer exists', async () => {
-      // A client holding a cursor to a deleted post would otherwise make
-      // Prisma throw and surface as a server error.
-      post.findUnique.mockResolvedValue(null);
+    it('gives two sessions different orders from the same posts', async () => {
+      // The complaint this answers: the same posts in the same sequence every
+      // time. Enough candidates that a difference is not chance.
+      const rows = Array.from({ length: 40 }, (_, i) => row(`p${i}`));
+      post.findMany.mockResolvedValue(rows);
+
+      const svc = await service();
+      const runs = await Promise.all(
+        Array.from({ length: 6 }, () => svc.listRecent(VIEWER, 10)),
+      );
+      const orders = new Set(
+        runs.map((page) => page.items.map((i) => i.id).join(',')),
+      );
+
+      expect(orders.size).toBeGreaterThan(1);
+    });
+
+    it('takes an unreadable cursor as a fresh start, not an error', async () => {
+      // A stale client should get a feed, not a 400.
+      post.findMany.mockResolvedValue([row('a')]);
 
       await expect(
-        (await service()).listRecent(VIEWER, 20, 'gone'),
-      ).rejects.toThrow(NotFoundException);
-      expect(post.findMany).not.toHaveBeenCalled();
+        (await service()).listRecent(VIEWER, 20, 'nonsense'),
+      ).resolves.toMatchObject({
+        items: [expect.objectContaining({ id: 'a' })],
+      });
     });
   });
 
