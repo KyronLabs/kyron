@@ -7,6 +7,7 @@ import {
 import { MediaKind, Prisma, ReplyPolicy } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ModerationService } from '../moderation/moderation.service';
+import { RankingService } from './ranking.service';
 
 /** A post as the feed returns it, with just enough of its author to render. */
 export interface FeedPost {
@@ -156,6 +157,7 @@ export class FeedService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly moderation: ModerationService,
+    private readonly ranking: RankingService,
   ) {}
 
   /** How many attachments one post or comment may carry. */
@@ -272,6 +274,14 @@ export class FeedService {
   /** How many topics one post may be filed under. */
   static readonly maxTopics = 3;
 
+  // How many recent posts the ranker gets to choose between. Wide enough that
+  // scoring has something to do, bounded so one request cannot read the table.
+  static readonly candidatePool = 400;
+
+  // How far back likes count towards author affinity, and how many are read.
+  static readonly affinityDays = 30;
+  static readonly affinitySample = 200;
+
   // How deep a comment page walks before it stops following replies.
   static readonly maxThreadDepth = 8;
 
@@ -378,7 +388,130 @@ export class FeedService {
       { deletedAt: null, communityId: null },
       viewerId,
     );
-    return this.page(where, viewerId, limit, cursor);
+    return this.rankedPage(where, viewerId, limit, cursor);
+  }
+
+  /**
+   * A scored page, rather than the newest N.
+   *
+   * `ORDER BY createdAt DESC` gives every reader the same posts in the same
+   * order every session until somebody writes something new, which is what
+   * made the feed feel like a list rather than a feed. This reads a bounded
+   * pool of recent candidates, scores them for this reader, and pages the
+   * result.
+   *
+   * The cursor carries the session seed and an offset instead of a post id: a
+   * ranking is recomputed per request, so an id names a position that may not
+   * exist on the next page. Carrying the seed is what makes page two continue
+   * page one rather than reshuffle under the reader.
+   */
+  private async rankedPage(
+    where: Prisma.PostWhereInput,
+    viewerId: string,
+    limit: number,
+    cursor?: string,
+  ): Promise<FeedPage> {
+    const { seed, offset } = this.readRankCursor(cursor);
+    const since = new Date(Date.now() - RankingService.windowHours * 3_600_000);
+
+    const [rows, viewer] = await Promise.all([
+      this.prisma.post.findMany({
+        where: { ...where, createdAt: { gte: since } },
+        orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+        // The pool, not the page. Wide enough that ranking has something to
+        // choose between, bounded so one request cannot read the table.
+        take: FeedService.candidatePool,
+        select: this.shapeFor(viewerId),
+      }),
+      this.rankingViewer(viewerId),
+    ]);
+
+    const candidates = rows.map((row) => ({
+      row,
+      id: row.id,
+      authorId: row.authorId,
+      createdAt: row.createdAt,
+      likes: row._count?.likes ?? 0,
+      comments: row._count?.comments ?? 0,
+      reposts: row._count?.reposts ?? 0,
+      seen: (row.views?.length ?? 0) > 0,
+      followed: viewer.followedIds.has(row.authorId),
+      topicIds: (row.topics ?? []).map((t) => t.interestId),
+    }));
+
+    const ranked = this.ranking.rank(candidates, viewer, {
+      seed,
+      offset,
+      limit,
+    });
+
+    return {
+      items: ranked.items.map((entry) => this.toFeedPost(entry.row)),
+      nextCursor:
+        ranked.nextOffset === null
+          ? null
+          : this.writeRankCursor(seed, ranked.nextOffset),
+    };
+  }
+
+  /**
+   * The seed and offset a ranked cursor carries.
+   *
+   * A fresh seed on every first page is what makes two sessions read
+   * differently; an unreadable cursor is treated as a fresh start rather than
+   * an error, because a stale client should get a feed, not a 400.
+   */
+  private readRankCursor(cursor?: string): { seed: number; offset: number } {
+    if (cursor) {
+      const match = /^r(\d+)-(\d+)$/.exec(cursor);
+      if (match) {
+        return { seed: Number(match[1]), offset: Number(match[2]) };
+      }
+    }
+    return { seed: (Math.random() * 0xffffffff) >>> 0, offset: 0 };
+  }
+
+  private writeRankCursor(seed: number, offset: number): string {
+    return `r${seed}-${offset}`;
+  }
+
+  /** What the reader brings to the ranking: who they follow and engage with. */
+  private async rankingViewer(viewerId: string) {
+    const [follows, likes, topics] = await Promise.all([
+      this.prisma.follow.findMany({
+        where: { followerId: viewerId },
+        select: { followingId: true },
+      }),
+      // Recent likes stand in for affinity: whose posts does this reader
+      // actually touch, as opposed to whom did they follow once and forget.
+      this.prisma.postLike.findMany({
+        where: {
+          userId: viewerId,
+          createdAt: {
+            gte: new Date(Date.now() - FeedService.affinityDays * 86_400_000),
+          },
+        },
+        orderBy: { createdAt: 'desc' },
+        take: FeedService.affinitySample,
+        select: { post: { select: { authorId: true } } },
+      }),
+      this.prisma.userInterest.findMany({
+        where: { userId: viewerId },
+        select: { interestId: true },
+      }),
+    ]);
+
+    const affinity = new Map<string, number>();
+    for (const like of likes) {
+      const author = like.post?.authorId;
+      if (author) affinity.set(author, (affinity.get(author) ?? 0) + 1);
+    }
+
+    return {
+      affinity,
+      followedIds: new Set(follows.map((f) => f.followingId)),
+      topicIds: new Set(topics.map((t) => t.interestId)),
+    };
   }
 
   /** One account's posts, filtered by whom the reader has blocked. */
@@ -1469,6 +1602,11 @@ export class FeedService {
       content: true,
       createdAt: true,
       replyPolicy: true,
+      // Ranking needs these three and the shape is read everywhere, so they
+      // are here rather than in a second query per page.
+      authorId: true,
+      views: { where: { viewerId }, select: { id: true }, take: 1 },
+      topics: { select: { interestId: true } },
       author: { select: this.authorShape },
       _count: { select: { likes: true, comments: true, reposts: true } },
       likes: { where: { userId: viewerId }, select: { id: true }, take: 1 },

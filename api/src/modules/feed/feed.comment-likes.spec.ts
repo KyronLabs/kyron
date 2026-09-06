@@ -1,6 +1,7 @@
 import { FeedService } from './feed.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { NotFoundException } from '@nestjs/common';
+import { RankingService } from './ranking.service';
 
 const ME = 'me';
 
@@ -32,7 +33,11 @@ function serviceWith({
   };
 
   return {
-    svc: new FeedService(prisma as unknown as PrismaService, {} as never),
+    svc: new FeedService(
+      prisma as unknown as PrismaService,
+      {} as never,
+      new RankingService(),
+    ),
     prisma,
     created,
     deleted,

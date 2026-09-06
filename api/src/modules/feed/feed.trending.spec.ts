@@ -1,6 +1,7 @@
 import { FeedService } from './feed.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { RankingService } from './ranking.service';
 
 /** No blocks, no mutes: the plain case, so the ranking is what is under test. */
 const noFilters = {
@@ -34,7 +35,11 @@ function serviceWith(options: {
   } as unknown as PrismaService;
 
   return {
-    service: new FeedService(prisma, options.moderation ?? noFilters),
+    service: new FeedService(
+      prisma,
+      options.moderation ?? noFilters,
+      new RankingService(),
+    ),
     calls,
   };
 }

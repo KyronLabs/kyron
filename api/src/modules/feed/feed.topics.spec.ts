@@ -2,6 +2,7 @@ import { BadRequestException } from '@nestjs/common';
 import { FeedService } from './feed.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { RankingService } from './ranking.service';
 
 const noFilters = {
   filtersFor: jest.fn().mockResolvedValue({
@@ -53,7 +54,11 @@ function serviceWith() {
       }),
     },
   } as unknown as PrismaService;
-  return { service: new FeedService(prisma, noFilters), created, prisma };
+  return {
+    service: new FeedService(prisma, noFilters, new RankingService()),
+    created,
+    prisma,
+  };
 }
 
 /** What the create call asked to be written into PostTopic. */
