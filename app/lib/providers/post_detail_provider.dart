@@ -190,6 +190,19 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
     }
   }
 
+  /// One comment by id, from wherever it is held.
+  PostComment? _find(String id) {
+    for (final row in state.comments) {
+      if (row.id == id) return row;
+    }
+    for (final run in state.replies.values) {
+      for (final row in run) {
+        if (row.id == id) return row;
+      }
+    }
+    return null;
+  }
+
   /// Swaps one comment for an updated copy, wherever it is held -- the
   /// top-level list, or one of the fetched reply runs.
   void _replaceComment(PostComment updated) {
@@ -318,10 +331,6 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
         );
       } else {
         state = state.copyWith(
-          comments: [
-            for (final c in state.comments)
-              c.id == parentId ? c.copyWith(replies: c.replies + 1) : c,
-          ],
           replies: {
             ...state.replies,
             parentId: [...(state.replies[parentId] ?? const []), created],
@@ -330,6 +339,13 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
           isSending: false,
           media: const [],
         );
+        // The parent may be a reply itself, and its count lives wherever it
+        // is held. Bumping only the top-level list left a nested comment
+        // saying it had no answers while its answer was on screen under it.
+        final parent = _find(parentId);
+        if (parent != null) {
+          _replaceComment(parent.copyWith(replies: parent.replies + 1));
+        }
       }
 
       _bumpCommentCount(1);

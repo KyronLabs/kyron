@@ -164,10 +164,15 @@ class MessagePage {
   final String? nextCursor;
   final List<MessagePerson> people;
 
+  /// Whether the reader has silenced this conversation. Read from the server
+  /// rather than guessed, so the menu offers Mute or Unmute and not both.
+  final bool muted;
+
   const MessagePage({
     this.items = const [],
     this.nextCursor,
     this.people = const [],
+    this.muted = false,
   });
 
   factory MessagePage.fromJson(Map<String, dynamic> json) => MessagePage(
@@ -180,6 +185,7 @@ class MessagePage {
             .whereType<Map<String, dynamic>>()
             .map(MessagePerson.fromJson)
             .toList(),
+        muted: json['muted'] as bool? ?? false,
       );
 }
 

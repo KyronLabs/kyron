@@ -164,4 +164,62 @@ void main() {
       expect(elbow.radius, lessThanOrEqualTo(elbow.turnY));
     });
   });
+
+  group('assembleThread', () {
+    test('admits a run once its own parent is in the list', () {
+      // b is a reply to a; c is a reply to b. Both runs are open.
+      final flat = assembleThread(
+        comments: [c('a')],
+        replies: {
+          'a': [c('b', parent: 'a')],
+          'b': [c('c', parent: 'b')],
+        },
+        expanded: {'a', 'b'},
+      );
+
+      final layout = buildThreadLayout(flat, collapseAfter: all);
+      expect(layout.rows.map((r) => r.comment.id), ['a', 'b', 'c']);
+      expect(layout.rows.map((r) => r.depth), [0, 1, 2]);
+    });
+
+    test('leaves out a run whose parent is not on screen', () {
+      // The run under b is still cached, but a has been collapsed, so b is
+      // nowhere. Letting c through would promote it to a top-level comment --
+      // a reply appearing as though it were addressed to the post.
+      final flat = assembleThread(
+        comments: [c('a')],
+        replies: {
+          'a': [c('b', parent: 'a')],
+          'b': [c('c', parent: 'b')],
+        },
+        expanded: {'b'},
+      );
+
+      expect(flat.map((x) => x.id), ['a']);
+
+      final layout = buildThreadLayout(flat, collapseAfter: all);
+      expect(layout.rows.every((r) => r.depth == 0), isTrue);
+      expect(layout.rows.map((r) => r.comment.id), ['a']);
+    });
+
+    test('order does not decide what gets in', () {
+      // The deepest run is listed first. A single pass over the map would
+      // drop it; the walk keeps going until nothing new is admitted.
+      final flat = assembleThread(
+        comments: [c('a')],
+        replies: {
+          'c': [c('d', parent: 'c')],
+          'b': [c('c', parent: 'b')],
+          'a': [c('b', parent: 'a')],
+        },
+        expanded: {'a', 'b', 'c'},
+      );
+
+      expect(flat.map((x) => x.id).toSet(), {'a', 'b', 'c', 'd'});
+      expect(
+        buildThreadLayout(flat, collapseAfter: all).rows.map((r) => r.depth),
+        [0, 1, 2, 3],
+      );
+    });
+  });
 }

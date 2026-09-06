@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/app_language.dart';
 import '../providers/preferences_provider.dart';
+import 'action_sheet.dart';
 
 /// The language picker on the get-started screen.
 ///
@@ -18,28 +19,30 @@ class AppLanguageSelector extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selected = ref.watch(preferencesProvider).language;
 
-    return PopupMenuButton<AppLanguage>(
-      tooltip: 'Change language',
-      icon: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            selected.nativeName,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          const SizedBox(width: 8),
-          const Icon(Icons.language, size: 18),
-        ],
+    return TextButton.icon(
+      onPressed: () async {
+        final chosen = await ActionSheet.show<AppLanguage>(
+          context,
+          title: 'LANGUAGE',
+          actions: [
+            for (final language in AppLanguage.values)
+              SheetAction(
+                value: language,
+                label: language.nativeName,
+                icon: Icons.language,
+                selected: language == selected,
+              ),
+          ],
+        );
+        if (chosen != null) {
+          ref.read(preferencesProvider.notifier).setLanguage(chosen);
+        }
+      },
+      icon: Text(
+        selected.nativeName,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
-      itemBuilder: (_) => [
-        for (final language in AppLanguage.values)
-          PopupMenuItem(
-            value: language,
-            child: Text(language.nativeName),
-          ),
-      ],
-      onSelected: (language) =>
-          ref.read(preferencesProvider.notifier).setLanguage(language),
+      label: const Icon(Icons.language, size: 18),
     );
   }
 }

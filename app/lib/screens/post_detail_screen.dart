@@ -13,6 +13,7 @@ import '../providers/feed_provider.dart';
 import '../providers/post_detail_provider.dart';
 import '../routes.dart';
 import '../utils/format_count.dart';
+import '../widgets/jump_to_end.dart';
 import '../widgets/link_preview_card.dart';
 import '../widgets/media_grid.dart';
 import '../widgets/media_tray.dart';
@@ -96,7 +97,23 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(child: _body(state, me)),
+            Expanded(
+              child: Stack(
+                children: [
+                  Positioned.fill(child: _body(state, me)),
+                  // Upwards: the post is at the top, and a long comment
+                  // thread leaves the reader nowhere to get back to it.
+                  Positioned(
+                    right: SpacingTokens.space12,
+                    top: SpacingTokens.space12,
+                    child: JumpToEnd(
+                      controller: _scroll,
+                      direction: JumpDirection.top,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             if (post != null) _composer(state),
           ],
         ),
@@ -159,8 +176,11 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
           // Replies are fetched only when asked for, so an unexpanded comment
           // simply has no children in the flat list. The affordance is driven
           // by the count the server sent, not by what happens to be loaded.
-          final foldedReplies =
-              comment.replies > 0 && !expanded && row.depth == 0;
+          //
+          // At every depth, not just the top: a reply now keeps the parent it
+          // was written under, so a nested comment has answers of its own and
+          // gating this on depth 0 hid them behind nothing at all.
+          final foldedReplies = comment.replies > 0 && !expanded;
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,27 +202,28 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                   onAction: (action) => _commentAction(action, comment),
                 ),
               ),
+              // A row of the thread rather than a button beside it, so the
+              // rail from the comment above runs down into it instead of
+              // stopping at a band of padding the strip never covers.
               if (foldedReplies)
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: ThreadGeometry.columnFor(row.depth) + 12,
-                  ),
-                  child: TextButton(
-                    onPressed: () => _notifier.toggleReplies(comment.id),
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: SpacingTokens.space8,
-                      ),
-                      visualDensity: VisualDensity.compact,
-                    ),
-                    child: Text(
-                      comment.replies == 1
-                          ? 'Show 1 reply'
-                          : 'Show ${formatCount(comment.replies)} replies',
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  ),
-                ),
+                Builder(builder: (context) {
+                  final marker = ThreadMoreReplies(
+                    faces: comment.replyFaces,
+                    count: comment.replies,
+                    onTap: () => _notifier.toggleReplies(comment.id),
+                  );
+                  return ThreadItem(
+                    depth: row.depth + 1,
+                    ancestorRails: [...row.ancestorRails, !row.isLastChild],
+                    hasChildrenBelow: false,
+                    isLastChild: true,
+                    avatarSize: ThreadMoreReplies.faceSize,
+                    avatarWidth:
+                        ThreadMoreReplies.widthFor(comment.replyFaces.length),
+                    avatar: marker.leading(context),
+                    child: marker,
+                  );
+                }),
               if (row.depth == 0 && row.isLastChild) const ThreadDivider(),
             ],
           );
@@ -341,12 +362,15 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   ///
   /// Nothing folds here: the list only ever holds what has been fetched, and
   /// the "show replies" button below a comment is what pulls the rest in.
+  ///
+  /// The assembly is [assembleThread]: a pure function, so the rule that a
+  /// run only enters once its parent has can be tested.
   ThreadLayout _thread(PostDetailState state) => buildThreadLayout(
-        [
-          ...state.comments,
-          for (final run in state.replies.entries)
-            if (state.expanded.contains(run.key)) ...run.value,
-        ],
+        assembleThread(
+          comments: state.comments,
+          replies: state.replies,
+          expanded: state.expanded,
+        ),
         collapseAfter: 1 << 30,
       );
 

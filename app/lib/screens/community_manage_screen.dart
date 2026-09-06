@@ -7,6 +7,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/community.dart';
 import '../providers/communities_provider.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/action_sheet.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/hairline.dart';
 import '../widgets/section_tabs.dart';
@@ -436,37 +437,48 @@ class _MemberRow extends StatelessWidget {
       ),
       trailing: !actionable
           ? null
-          : PopupMenuButton<String>(
+          : IconButton(
               tooltip: 'Manage',
               icon: Icon(
-                Iconsax.more,
+                Iconsax.more_copy,
                 size: 18,
                 color: scheme.onSurface.withValues(alpha: 0.5),
               ),
-              onSelected: (value) => switch (value) {
-                'promote' => onRole(CommunityRole.moderator),
-                'demote' => onRole(CommunityRole.member),
-                _ => onRemove(),
+              onPressed: () async {
+                final choice = await ActionSheet.show<String>(
+                  context,
+                  title: (member.displayName).toUpperCase(),
+                  actions: [
+                    if (canEdit && role == CommunityRole.member)
+                      const SheetAction(
+                        value: 'promote',
+                        label: 'Make a moderator',
+                        icon: Iconsax.shield_tick_copy,
+                        detail: 'They can remove posts and members',
+                      ),
+                    if (canEdit && role == CommunityRole.moderator)
+                      const SheetAction(
+                        value: 'demote',
+                        label: 'Remove as moderator',
+                        icon: Iconsax.shield_cross_copy,
+                      ),
+                    const SheetAction(
+                      value: 'remove',
+                      label: 'Remove from community',
+                      icon: Iconsax.user_minus_copy,
+                      destructive: true,
+                    ),
+                  ],
+                );
+                switch (choice) {
+                  case 'promote':
+                    onRole(CommunityRole.moderator);
+                  case 'demote':
+                    onRole(CommunityRole.member);
+                  case 'remove':
+                    onRemove();
+                }
               },
-              itemBuilder: (context) => [
-                if (canEdit && role == CommunityRole.member)
-                  const PopupMenuItem(
-                    value: 'promote',
-                    child: Text('Make a moderator'),
-                  ),
-                if (canEdit && role == CommunityRole.moderator)
-                  const PopupMenuItem(
-                    value: 'demote',
-                    child: Text('Remove as moderator'),
-                  ),
-                PopupMenuItem(
-                  value: 'remove',
-                  child: Text(
-                    'Remove from community',
-                    style: TextStyle(color: scheme.error),
-                  ),
-                ),
-              ],
             ),
     );
   }
