@@ -1,5 +1,6 @@
 import { Transform } from 'class-transformer';
 import {
+  IsIn,
   IsInt,
   IsOptional,
   IsString,
@@ -48,4 +49,43 @@ export class CreateCommunityDto {
   @IsString()
   @MaxLength(400, { message: 'A description cannot exceed 400 characters.' })
   description?: string;
+}
+
+/** What an owner may change about a community. */
+export class UpdateCommunityDto {
+  @IsOptional()
+  @IsString()
+  @MaxLength(60, { message: 'A name cannot exceed 60 characters.' })
+  name?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(400, { message: 'A description cannot exceed 400 characters.' })
+  description?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(2048)
+  avatarUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(2048)
+  bannerUrl?: string;
+}
+
+/** Promoting or demoting somebody. OWNER is refused by the service. */
+export class SetRoleDto {
+  @IsIn(['MODERATOR', 'MEMBER'], {
+    message: 'role must be MODERATOR or MEMBER.',
+  })
+  role!: 'MODERATOR' | 'MEMBER';
+}
+
+/** Removing somebody, with an optional note for the moderation log. */
+export class RemoveMemberDto {
+  @IsOptional()
+  @IsString()
+  @MaxLength(280)
+  reason?: string;
 }

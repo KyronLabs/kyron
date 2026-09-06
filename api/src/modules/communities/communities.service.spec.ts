@@ -56,6 +56,14 @@ function serviceWith(stub: Stub = {}) {
         return Promise.resolve({ count: 1 });
       }),
     },
+    // Joining checks this first: a removal that could be undone by tapping
+    // Join is not a removal.
+    communityBan: {
+      findUnique: jest.fn().mockResolvedValue(null),
+      deleteMany: jest.fn().mockResolvedValue({ count: 0 }),
+      upsert: jest.fn().mockResolvedValue({}),
+      findMany: jest.fn().mockResolvedValue([]),
+    },
   } as unknown as PrismaService;
 
   return {

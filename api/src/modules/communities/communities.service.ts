@@ -16,12 +16,24 @@ export interface CommunitySummary {
   name: string;
   description: string | null;
   avatarUrl: string | null;
+  bannerUrl: string | null;
   members: number;
   posts: number;
   /** Whether the reader is in it, and what they can do if so. */
   joined: boolean;
   role: CommunityRole | null;
   createdAt: Date;
+}
+
+/** One person in a community, as the member list shows them. */
+export interface CommunityMemberRow {
+  id: string;
+  name: string | null;
+  username: string | null;
+  avatarUrl: string | null;
+  /** Null on the banned list, where a role no longer means anything. */
+  role: CommunityRole | null;
+  joinedAt: Date;
 }
 
 const DEFAULT_LIMIT = 20;
@@ -48,6 +60,7 @@ export class CommunitiesService {
     name: true,
     description: true,
     avatarUrl: true,
+    bannerUrl: true,
     createdAt: true,
     _count: { select: { members: true, posts: true } },
   } as const;
@@ -227,6 +240,16 @@ export class CommunitiesService {
     }
 
     if (joined) {
+      // A removal that could be undone by tapping Join is not a removal.
+      const banned = await this.prisma.communityBan.findUnique({
+        where: {
+          communityId_userId: { communityId: community.id, userId: viewerId },
+        },
+        select: { userId: true },
+      });
+      if (banned) {
+        throw new ForbiddenException('You were removed from this community.');
+      }
       await this.prisma.communityMember.upsert({
         where: {
           communityId_userId: { communityId: community.id, userId: viewerId },
@@ -248,6 +271,319 @@ export class CommunitiesService {
     }
 
     return this.bySlug(viewerId, slug);
+  }
+
+  /** Everyone in a community, whoever runs it first. */
+  async members(
+    viewerId: string,
+    slug: string,
+    { limit = DEFAULT_LIMIT, cursor }: { limit?: number; cursor?: string } = {},
+  ): Promise<{ items: CommunityMemberRow[]; nextCursor: string | null }> {
+    const community = await this.find(slug);
+    // Membership is not public: a community's roll is who is in the room, and
+    // reading it from outside is not something a member agreed to.
+    await this.requireMember(viewerId, community.id);
+
+    const rows = await this.prisma.communityMember.findMany({
+      where: { communityId: community.id },
+      // Owner, then moderators, then members, each newest first. Prisma
+      // orders an enum by its declaration, and OWNER is declared first.
+      orderBy: [{ role: 'asc' }, { joinedAt: 'asc' }, { userId: 'asc' }],
+      take: limit + 1,
+      ...(cursor
+        ? {
+            cursor: {
+              communityId_userId: { communityId: community.id, userId: cursor },
+            },
+            skip: 1,
+          }
+        : {}),
+      select: {
+        role: true,
+        joinedAt: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+            username: true,
+            profile: { select: { avatarUrl: true } },
+          },
+        },
+      },
+    });
+
+    const hasMore = rows.length > limit;
+    const page = hasMore ? rows.slice(0, limit) : rows;
+    const items = page.map((row) => ({
+      id: row.user.id,
+      name: row.user.name,
+      username: row.user.username,
+      avatarUrl: row.user.profile?.avatarUrl ?? null,
+      role: row.role,
+      joinedAt: row.joinedAt,
+    }));
+    // The cursor is the membership's user id, which is what the compound
+    // primary key needs to resume from.
+    return {
+      items,
+      nextCursor: hasMore ? items[items.length - 1].id : null,
+    };
+  }
+
+  /** Changes a community's name, description or pictures. */
+  async update(
+    viewerId: string,
+    slug: string,
+    patch: {
+      name?: string;
+      description?: string | null;
+      avatarUrl?: string | null;
+      bannerUrl?: string | null;
+    },
+  ): Promise<CommunitySummary> {
+    const community = await this.find(slug);
+    await this.requireRole(viewerId, community.id, [CommunityRole.OWNER]);
+
+    const name = patch.name?.trim();
+    if (name !== undefined && name.length === 0) {
+      throw new BadRequestException('A community needs a name.');
+    }
+    if (name && name.length > CommunitiesService.maxName) {
+      throw new BadRequestException(
+        `A name cannot exceed ${CommunitiesService.maxName} characters.`,
+      );
+    }
+    const description = patch.description?.trim();
+    if (description && description.length > CommunitiesService.maxDescription) {
+      throw new BadRequestException(
+        `A description cannot exceed ${CommunitiesService.maxDescription} characters.`,
+      );
+    }
+
+    await this.prisma.community.update({
+      where: { id: community.id },
+      data: {
+        ...(name !== undefined ? { name } : {}),
+        ...(patch.description !== undefined
+          ? { description: description || null }
+          : {}),
+        ...(patch.avatarUrl !== undefined
+          ? { avatarUrl: patch.avatarUrl || null }
+          : {}),
+        ...(patch.bannerUrl !== undefined
+          ? { bannerUrl: patch.bannerUrl || null }
+          : {}),
+      },
+    });
+    return this.bySlug(viewerId, slug);
+  }
+
+  /**
+   * Promotes or demotes a member.
+   *
+   * Only the owner does this, and the owner's own role is not up for change:
+   * demoting yourself would leave the community with nobody who can undo it.
+   */
+  async setRole(
+    viewerId: string,
+    slug: string,
+    userId: string,
+    role: CommunityRole,
+  ): Promise<CommunityMemberRow> {
+    const community = await this.find(slug);
+    await this.requireRole(viewerId, community.id, [CommunityRole.OWNER]);
+
+    if (userId === viewerId) {
+      throw new ForbiddenException('You cannot change your own role.');
+    }
+    if (role === CommunityRole.OWNER) {
+      throw new BadRequestException(
+        'A community has one owner, and handing it over is not offered yet.',
+      );
+    }
+
+    const updated = await this.prisma.communityMember.updateMany({
+      where: { communityId: community.id, userId },
+      data: { role },
+    });
+    if (updated.count === 0) {
+      throw new NotFoundException('That person is not in this community.');
+    }
+
+    const rows = await this.members(viewerId, slug, { limit: 1000 });
+    const member = rows.items.find((row) => row.id === userId);
+    if (!member)
+      throw new NotFoundException('That person is not in this community.');
+    return member;
+  }
+
+  /**
+   * Removes somebody, and keeps them out.
+   *
+   * Removing deletes the membership, so without the ban row "you are out" and
+   * "join again" would be the same button and the decision would last until
+   * they tapped it.
+   */
+  async removeMember(
+    viewerId: string,
+    slug: string,
+    userId: string,
+    reason?: string,
+  ): Promise<{ ok: true }> {
+    const community = await this.find(slug);
+    await this.requireRole(viewerId, community.id, [
+      CommunityRole.OWNER,
+      CommunityRole.MODERATOR,
+    ]);
+
+    if (userId === viewerId) {
+      throw new ForbiddenException('Leave the community instead.');
+    }
+
+    const target = await this.prisma.communityMember.findUnique({
+      where: {
+        communityId_userId: { communityId: community.id, userId },
+      },
+      select: { role: true },
+    });
+    // A moderator cannot remove the owner or another moderator; only the
+    // owner outranks them.
+    const actor = await this.roleOf(viewerId, community.id);
+    if (
+      target &&
+      actor !== CommunityRole.OWNER &&
+      target.role !== CommunityRole.MEMBER
+    ) {
+      throw new ForbiddenException('Only the owner can remove a moderator.');
+    }
+
+    await this.prisma.$transaction([
+      this.prisma.communityMember.deleteMany({
+        where: { communityId: community.id, userId },
+      }),
+      this.prisma.communityBan.upsert({
+        where: {
+          communityId_userId: { communityId: community.id, userId },
+        },
+        create: {
+          communityId: community.id,
+          userId,
+          bannedById: viewerId,
+          reason: reason?.trim() || null,
+        },
+        update: { bannedById: viewerId, reason: reason?.trim() || null },
+      }),
+    ]);
+    return { ok: true };
+  }
+
+  /** Lets somebody removed come back. */
+  async unban(
+    viewerId: string,
+    slug: string,
+    userId: string,
+  ): Promise<{ ok: true }> {
+    const community = await this.find(slug);
+    await this.requireRole(viewerId, community.id, [
+      CommunityRole.OWNER,
+      CommunityRole.MODERATOR,
+    ]);
+    await this.prisma.communityBan.deleteMany({
+      where: { communityId: community.id, userId },
+    });
+    return { ok: true };
+  }
+
+  /** Who is currently kept out. */
+  async bans(viewerId: string, slug: string): Promise<CommunityMemberRow[]> {
+    const community = await this.find(slug);
+    await this.requireRole(viewerId, community.id, [
+      CommunityRole.OWNER,
+      CommunityRole.MODERATOR,
+    ]);
+
+    const rows = await this.prisma.communityBan.findMany({
+      where: { communityId: community.id },
+      orderBy: { createdAt: 'desc' },
+      select: {
+        createdAt: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+            username: true,
+            profile: { select: { avatarUrl: true } },
+          },
+        },
+      },
+    });
+
+    return rows.map((row) => ({
+      id: row.user.id,
+      name: row.user.name,
+      username: row.user.username,
+      avatarUrl: row.user.profile?.avatarUrl ?? null,
+      role: null,
+      joinedAt: row.createdAt,
+    }));
+  }
+
+  /**
+   * Closes a community.
+   *
+   * Soft, like a post's: the posts written into it still point at it, and a
+   * hard delete would leave them pointing at nothing.
+   */
+  async remove(viewerId: string, slug: string): Promise<{ ok: true }> {
+    const community = await this.find(slug);
+    await this.requireRole(viewerId, community.id, [CommunityRole.OWNER]);
+    await this.prisma.community.update({
+      where: { id: community.id },
+      data: { deletedAt: new Date() },
+    });
+    return { ok: true };
+  }
+
+  private async find(slug: string): Promise<{ id: string }> {
+    const community = await this.prisma.community.findFirst({
+      where: { slug: slug.trim().toLowerCase(), deletedAt: null },
+      select: { id: true },
+    });
+    if (!community) {
+      throw new NotFoundException('That community does not exist.');
+    }
+    return community;
+  }
+
+  private async roleOf(
+    userId: string,
+    communityId: string,
+  ): Promise<CommunityRole | null> {
+    const member = await this.prisma.communityMember.findUnique({
+      where: { communityId_userId: { communityId, userId } },
+      select: { role: true },
+    });
+    return member?.role ?? null;
+  }
+
+  private async requireMember(
+    userId: string,
+    communityId: string,
+  ): Promise<void> {
+    if ((await this.roleOf(userId, communityId)) === null) {
+      throw new ForbiddenException('Join this community to see this.');
+    }
+  }
+
+  private async requireRole(
+    userId: string,
+    communityId: string,
+    allowed: CommunityRole[],
+  ): Promise<void> {
+    const role = await this.roleOf(userId, communityId);
+    if (role === null || !allowed.includes(role)) {
+      throw new ForbiddenException('You do not run this community.');
+    }
   }
 
   /**
@@ -277,6 +613,7 @@ export class CommunitiesService {
       name: string;
       description: string | null;
       avatarUrl: string | null;
+      bannerUrl: string | null;
       createdAt: Date;
       _count: { members: number; posts: number };
     },
@@ -288,6 +625,7 @@ export class CommunitiesService {
       name: row.name,
       description: row.description,
       avatarUrl: row.avatarUrl,
+      bannerUrl: row.bannerUrl,
       members: row._count.members,
       posts: row._count.posts,
       joined: membership.joined,

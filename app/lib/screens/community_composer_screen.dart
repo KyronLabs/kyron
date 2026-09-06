@@ -9,7 +9,10 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/community.dart';
 import '../providers/communities_provider.dart';
+import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../utils/api_error_message.dart';
+import '../utils/media_basket.dart';
+import '../widgets/media_tray.dart';
 import '../widgets/toast.dart';
 
 /// Writes a post into one community.
@@ -32,7 +35,11 @@ class _CommunityComposerScreenState
     extends ConsumerState<CommunityComposerScreen> {
   final TextEditingController _box = TextEditingController();
   final FocusNode _focus = FocusNode();
+  late final MediaBasket _media = MediaBasket(ref.read(feedRepositoryProvider))
+    ..addListener(_onMedia);
   bool _posting = false;
+
+  void _onMedia() => setState(() {});
 
   /// The server's limit, named here so the counter and the check agree.
   static const int _maxCharacters = 3000;
@@ -46,6 +53,8 @@ class _CommunityComposerScreenState
 
   @override
   void dispose() {
+    _media.removeListener(_onMedia);
+    _media.dispose();
     _box.dispose();
     _focus.dispose();
     super.dispose();
@@ -54,16 +63,29 @@ class _CommunityComposerScreenState
   int get _count => _box.text.characters.length;
 
   bool get _canPost =>
-      _box.text.trim().isNotEmpty && _count <= _maxCharacters && !_posting;
+      // A picture with no words is a post; an empty box is not. Never while
+      // an upload is still going, or the server is sent a file it does not
+      // have yet.
+      (_box.text.trim().isNotEmpty || _media.ready.isNotEmpty) &&
+      _count <= _maxCharacters &&
+      !_posting &&
+      !_media.isUploading;
+
+  Future<void> _attach({required bool video}) async {
+    final message = await _media.attach(video: video);
+    if (message != null && mounted) Toast.show(context, message);
+  }
 
   Future<void> _post() async {
     if (!_canPost) return;
     setState(() => _posting = true);
     unawaited(HapticFeedback.mediumImpact());
     try {
-      await ref
-          .read(communitiesRepositoryProvider)
-          .post(widget.community.slug, _box.text.trim());
+      await ref.read(communitiesRepositoryProvider).post(
+            widget.community.slug,
+            _box.text.trim(),
+            media: _media.ready,
+          );
       if (!mounted) return;
       Navigator.pop(context, true);
     } catch (error) {
@@ -122,6 +144,43 @@ class _CommunityComposerScreenState
                     border: InputBorder.none,
                   ),
                 ),
+              ),
+            ),
+            if (_media.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: SpacingTokens.space16,
+                ),
+                child: MediaTray(
+                  media: _media.items,
+                  onRemove: _media.remove,
+                  onRetry: _media.retry,
+                  onDescribe: (item) =>
+                      _media.describe(item.path, item.alt ?? ''),
+                ),
+              ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                SpacingTokens.space8,
+                0,
+                SpacingTokens.space16,
+                0,
+              ),
+              child: Row(
+                children: [
+                  IconButton(
+                    tooltip: 'Add a photo',
+                    onPressed:
+                        _media.hasRoom ? () => _attach(video: false) : null,
+                    icon: const Icon(Iconsax.gallery_copy, size: 20),
+                  ),
+                  IconButton(
+                    tooltip: 'Add a clip',
+                    onPressed:
+                        _media.hasRoom ? () => _attach(video: true) : null,
+                    icon: const Icon(Iconsax.video_copy, size: 20),
+                  ),
+                ],
               ),
             ),
             Padding(
