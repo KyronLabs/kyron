@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 
 import '../services/gif_search.dart';
 import 'toast.dart';
+import 'empty_state.dart';
 
 /// Picking a GIF. Returns the path of the downloaded file, ready to attach.
 ///
@@ -124,8 +125,9 @@ class _SheetState extends State<_Sheet> {
     if (!GifSearch.isConfigured) {
       // Said plainly rather than shown as an empty grid, which reads as a
       // network fault the reader could do something about.
-      return _Notice(
-        icon: Iconsax.key_copy,
+      return const EmptyState(
+        compact: true,
+        art: EmptyArt.noMatch,
         title: 'GIFs are not set up',
         detail: 'This build has no TENOR_API_KEY, so the GIF library cannot '
             'be searched. Pass one at build time to turn this on.',
@@ -133,16 +135,17 @@ class _SheetState extends State<_Sheet> {
     }
     if (_loading) return const Center(child: CircularProgressIndicator());
     if (_error != null) {
-      return _Notice(
-        icon: Icons.cloud_off_outlined,
+      return EmptyState.failed(
+        compact: true,
         title: 'Could not load GIFs',
         detail: _error!,
-        onRetry: () => _load(_controller.text),
+        onAction: () => _load(_controller.text),
       );
     }
     if (_results.isEmpty) {
-      return const _Notice(
-        icon: Iconsax.emoji_normal_copy,
+      return const EmptyState(
+        compact: true,
+        art: EmptyArt.noMatch,
         title: 'Nothing found',
         detail: 'Try a different search.',
       );
@@ -210,49 +213,5 @@ class _SheetState extends State<_Sheet> {
       setState(() => _downloading = null);
       Toast.show(context, 'That GIF could not be downloaded.');
     }
-  }
-}
-
-class _Notice extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String detail;
-  final VoidCallback? onRetry;
-
-  const _Notice({
-    required this.icon,
-    required this.title,
-    required this.detail,
-    this.onRetry,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(SpacingTokens.space32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon,
-                size: 40, color: scheme.onSurface.withValues(alpha: .35)),
-            const SizedBox(height: SpacingTokens.space12),
-            Text(title, style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: SpacingTokens.space8),
-            Text(
-              detail,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: scheme.onSurface.withValues(alpha: .7)),
-            ),
-            if (onRetry != null) ...[
-              const SizedBox(height: SpacingTokens.space12),
-              TextButton(onPressed: onRetry, child: const Text('Try again')),
-            ],
-          ],
-        ),
-      ),
-    );
   }
 }

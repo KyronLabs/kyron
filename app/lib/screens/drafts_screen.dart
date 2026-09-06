@@ -7,6 +7,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/composer_model.dart';
 import '../providers/composer_provider.dart';
 import '../services/draft_service.dart';
+import '../widgets/empty_state.dart';
 
 /// Everything written and not sent.
 class DraftsScreen extends ConsumerStatefulWidget {
@@ -45,33 +46,12 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
 
             final drafts = snapshot.data!;
             if (drafts.isEmpty) {
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(SpacingTokens.space32),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Iconsax.note_text_copy,
-                        size: 44,
-                        color: scheme.onSurface.withValues(alpha: .35),
-                      ),
-                      const SizedBox(height: SpacingTokens.space16),
-                      Text(
-                        'No drafts',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(height: SpacingTokens.space8),
-                      Text(
-                        'Close the composer with something written and you '
-                        'will be offered a draft.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: scheme.onSurface.withValues(alpha: .7),
-                        ),
-                      ),
-                    ],
-                  ),
+              return const Center(
+                child: EmptyState(
+                  art: EmptyArt.drafts,
+                  title: 'No drafts',
+                  detail: 'Close the composer with something written and you '
+                      'will be offered a draft.',
                 ),
               );
             }

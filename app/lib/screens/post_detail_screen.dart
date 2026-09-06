@@ -26,6 +26,7 @@ import '../widgets/repost_sheet.dart';
 import '../widgets/share_post_sheet.dart';
 import '../widgets/voice_post_player.dart';
 import '../widgets/toast.dart';
+import '../widgets/empty_state.dart';
 
 /// One post, with its comments and their replies.
 ///
@@ -117,7 +118,12 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
         controller: _scroll,
         physics: const AlwaysScrollableScrollPhysics(),
         padding: const EdgeInsets.only(bottom: SpacingTokens.space16),
-        itemCount: state.comments.length + 2 + (state.hasMore ? 1 : 0),
+        // Post, heading, then either the comments or the one line saying
+        // there are none. The empty case used to render the heading and
+        // then nothing at all, which reads as a list still loading.
+        itemCount: state.comments.isEmpty
+            ? 3
+            : state.comments.length + 2 + (state.hasMore ? 1 : 0),
         itemBuilder: (context, index) {
           if (index == 0) {
             return _Post(
@@ -127,6 +133,14 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
             );
           }
           if (index == 1) return _ThreadHeading(count: post.comments);
+          if (state.comments.isEmpty) {
+            return const EmptyState(
+              compact: true,
+              art: EmptyArt.messages,
+              title: 'No replies yet',
+              detail: 'Be the first to say something.',
+            );
+          }
 
           final commentIndex = index - 2;
           if (commentIndex >= state.comments.length) {
@@ -811,21 +825,12 @@ class _Failed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(SpacingTokens.space32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.cloud_off_outlined,
-                size: 44, color: scheme.onSurface.withValues(alpha: .35)),
-            const SizedBox(height: SpacingTokens.space16),
-            Text(message, textAlign: TextAlign.center),
-            const SizedBox(height: SpacingTokens.space16),
-            TextButton(onPressed: onRetry, child: const Text('Try again')),
-          ],
+      child: SingleChildScrollView(
+        child: EmptyState.failed(
+          title: 'Could not load this post',
+          detail: message,
+          onAction: onRetry,
         ),
       ),
     );

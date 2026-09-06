@@ -5,6 +5,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../providers/feed_provider.dart';
 import '../widgets/post_list_view.dart';
+import '../widgets/empty_state.dart';
 
 /// Your saved posts, or your liked posts.
 ///
@@ -16,7 +17,7 @@ class PostCollectionScreen extends StatelessWidget {
   final String title;
   final String emptyTitle;
   final String emptyDetail;
-  final IconData emptyIcon;
+  final EmptyArt emptyArt;
 
   /// What to say when the list itself will not load.
   final String errorTitle;
@@ -27,7 +28,7 @@ class PostCollectionScreen extends StatelessWidget {
     required this.title,
     required this.emptyTitle,
     required this.emptyDetail,
-    required this.emptyIcon,
+    required this.emptyArt,
     required this.errorTitle,
   });
 
@@ -38,7 +39,7 @@ class PostCollectionScreen extends StatelessWidget {
         emptyDetail =
             'Tap the archive icon on any post to keep it here. Only you can '
                 'see what you save.',
-        emptyIcon = Iconsax.archive_add_copy,
+        emptyArt = EmptyArt.saved,
         errorTitle = 'Could not load your saved posts';
 
   const PostCollectionScreen.liked({super.key})
@@ -46,7 +47,7 @@ class PostCollectionScreen extends StatelessWidget {
         title = 'Liked posts',
         emptyTitle = 'No likes yet',
         emptyDetail = 'Posts you like show up here, most recent first.',
-        emptyIcon = Iconsax.heart_copy,
+        emptyArt = EmptyArt.likes,
         errorTitle = 'Could not load your liked posts';
 
   @override
@@ -66,7 +67,7 @@ class PostCollectionScreen extends StatelessWidget {
           errorTitle: errorTitle,
           emptyTitle: emptyTitle,
           emptyDetail: emptyDetail,
-          emptyIcon: emptyIcon,
+          emptyArt: emptyArt,
           padding: const EdgeInsets.only(
             top: SpacingTokens.space8,
             bottom: SpacingTokens.space40,

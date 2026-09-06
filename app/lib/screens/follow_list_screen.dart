@@ -10,7 +10,7 @@ import '../providers/api_client_provider.dart';
 import '../repositories/profile_repository.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
-import '../widgets/mascot.dart';
+import '../widgets/empty_state.dart';
 import '../widgets/person_tile.dart';
 import 'profile_screen.dart' show FollowListArgs;
 
@@ -221,6 +221,7 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
         ).scrollable;
       }
       return EmptyState(
+        art: EmptyArt.people,
         title: widget.args.followers
             ? 'No followers yet'
             : 'Not following anyone yet',

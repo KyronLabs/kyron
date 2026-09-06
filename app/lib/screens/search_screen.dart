@@ -7,8 +7,8 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/feed_provider.dart';
 import '../providers/search_provider.dart';
 import '../routes.dart';
-import '../widgets/action_button.dart';
 import '../widgets/person_tile.dart';
+import '../widgets/empty_state.dart';
 import '../widgets/post_card.dart';
 import '../widgets/search_filter_sheet.dart';
 
@@ -116,8 +116,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final notifier = ref.read(searchProvider.notifier);
 
     if (state.isIdle) {
-      return _Hint(
-        icon: Iconsax.search_normal_1_copy,
+      return EmptyState(
+        art: state.mode == SearchMode.people ? EmptyArt.people : EmptyArt.posts,
         title: state.mode == SearchMode.people
             ? 'Find people on Kyron'
             : 'Search everything posted',
@@ -128,18 +128,16 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       );
     }
     if (state.isTooShort) {
-      return const _Hint(
-        icon: Iconsax.keyboard_copy,
+      return const EmptyState(
+        art: EmptyArt.drafts,
         title: 'Keep typing',
         detail: 'Two characters or more.',
       );
     }
     if (state.error != null) {
-      return _Hint(
-        icon: Iconsax.cloud_cross_copy,
+      return EmptyState.failed(
         title: 'Search failed',
         detail: state.error!,
-        action: 'Try again',
         onAction: notifier.retry,
       );
     }
@@ -148,8 +146,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     }
     if (state.foundNothing) {
       final what = state.query.trim();
-      return _Hint(
-        icon: Iconsax.search_status_copy,
+      return EmptyState(
+        art: EmptyArt.noMatch,
         title: 'Nothing matched',
         detail: what.isEmpty
             ? 'No posts match those filters.'
@@ -395,56 +393,6 @@ class _Pill extends StatelessWidget {
               color: selected ? scheme.primary : scheme.onSurface,
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _Hint extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String detail;
-  final String? action;
-  final VoidCallback? onAction;
-
-  const _Hint({
-    required this.icon,
-    required this.title,
-    required this.detail,
-    this.action,
-    this.onAction,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(SpacingTokens.space32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 40, color: scheme.onSurface.withValues(alpha: .3)),
-            const SizedBox(height: SpacingTokens.space16),
-            Text(title, style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: SpacingTokens.space8),
-            Text(
-              detail,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: scheme.onSurface.withValues(alpha: .65)),
-            ),
-            if (action != null && onAction != null) ...[
-              const SizedBox(height: SpacingTokens.space16),
-              ActionButton(
-                label: action!,
-                icon: Iconsax.refresh_copy,
-                kind: ActionButtonKind.tonal,
-                onPressed: onAction,
-              ),
-            ],
-          ],
         ),
       ),
     );

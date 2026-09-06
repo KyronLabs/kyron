@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import 'empty_state.dart';
 import 'interest_tabs.dart';
 import 'post_list_view.dart';
 
@@ -24,6 +25,13 @@ class FeedCanvas extends ConsumerWidget {
         'Following' => 'Nothing from the people you follow',
         'Videos' => 'No videos yet',
         _ => 'Nothing here yet',
+      };
+
+  static EmptyArt _emptyArt(String tab) => switch (tab) {
+        'Following' => EmptyArt.people,
+        'Videos' => EmptyArt.videos,
+        'For You' => EmptyArt.posts,
+        _ => EmptyArt.tag,
       };
 
   static String _emptyDetail(String tab) => switch (tab) {
@@ -50,6 +58,7 @@ class FeedCanvas extends ConsumerWidget {
           asTiles: tab == 'Videos',
           scrollController: scrollController,
           errorTitle: 'Could not load your feed',
+          emptyArt: _emptyArt(tab),
           emptyTitle: _emptyTitle(tab),
           emptyDetail: _emptyDetail(tab),
           padding: EdgeInsets.only(

@@ -8,6 +8,7 @@ import '../models/app_language.dart';
 import '../providers/preferences_provider.dart';
 import '../services/app_preferences.dart';
 import '../widgets/settings_scaffold.dart';
+import '../widgets/empty_state.dart';
 
 /// Every screen in this file was `Center(child: Text('<name> Screen'))`.
 ///
@@ -392,8 +393,8 @@ class SettingsFeedbackScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SettingsScaffold(
       title: 'Send Feedback',
-      child: _Unavailable(
-        icon: Iconsax.message_question_copy,
+      child: EmptyState(
+        art: EmptyArt.messages,
         title: 'Feedback has nowhere to go yet',
         detail:
             'A form here would accept what you write and drop it -- there is '
@@ -435,37 +436,3 @@ class _Note extends StatelessWidget {
 }
 
 /// For a screen whose feature does not exist on the server yet.
-class _Unavailable extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String detail;
-
-  const _Unavailable({
-    required this.icon,
-    required this.title,
-    required this.detail,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const SizedBox(height: SpacingTokens.space40),
-        Icon(icon, size: 44, color: scheme.onSurface.withValues(alpha: .35)),
-        const SizedBox(height: SpacingTokens.space16),
-        Text(title, style: Theme.of(context).textTheme.titleMedium),
-        const SizedBox(height: SpacingTokens.space8),
-        Text(
-          detail,
-          textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: scheme.onSurface.withValues(alpha: .7)),
-        ),
-      ],
-    );
-  }
-}

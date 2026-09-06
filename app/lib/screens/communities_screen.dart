@@ -12,7 +12,7 @@ import '../utils/api_error_message.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/bottom_nav_v4.dart';
 import '../widgets/community_tile.dart';
-import '../widgets/mascot.dart';
+import '../widgets/empty_state.dart';
 import '../widgets/section_tabs.dart';
 import '../widgets/simple_app_bar.dart';
 import '../widgets/toast.dart';
@@ -187,6 +187,7 @@ class _MineTabState extends ConsumerState<_MineTab> {
                       onAction: notifier.refresh,
                     )
                   : EmptyState(
+                      art: EmptyArt.communities,
                       title: 'You are not in any communities',
                       detail: 'Find one on Discover, or start your own.',
                       action: 'Start a community',
@@ -309,6 +310,9 @@ class _DiscoverTabState extends ConsumerState<_DiscoverTab> {
                                   onAction: notifier.refresh,
                                 )
                               : EmptyState(
+                                  art: notifier.query.isEmpty
+                                      ? EmptyArt.communities
+                                      : EmptyArt.noMatch,
                                   title: notifier.query.isEmpty
                                       ? 'Nothing left to join'
                                       : 'No communities match that',

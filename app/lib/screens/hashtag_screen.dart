@@ -5,6 +5,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../providers/feed_provider.dart';
 import '../widgets/post_list_view.dart';
+import '../widgets/empty_state.dart';
 
 /// Every post carrying one hashtag.
 class HashtagScreen extends StatelessWidget {
@@ -35,7 +36,7 @@ class HashtagScreen extends StatelessWidget {
           errorTitle: 'Could not load #$normalised',
           emptyTitle: 'Nothing tagged #$normalised yet',
           emptyDetail: 'Posts using this tag will show up here.',
-          emptyIcon: Iconsax.hashtag_copy,
+          emptyArt: EmptyArt.tag,
           padding: const EdgeInsets.only(bottom: SpacingTokens.space40),
         ),
       ),

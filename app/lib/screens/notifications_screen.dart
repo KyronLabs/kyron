@@ -1,349 +1,256 @@
+// lib/screens/notifications_screen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../models/notification_model.dart';
+import '../providers/notifications_provider.dart';
+import '../routes.dart';
+import '../widgets/empty_state.dart';
+import '../widgets/hairline.dart';
 import '../widgets/notification_item.dart';
 import '../widgets/notification_skeleton.dart';
-import '../widgets/empty_notifications.dart';
+import '../widgets/section_tabs.dart';
 
-class NotificationsScreen extends StatefulWidget {
+/// What other people did to your posts and your account.
+///
+/// This used to generate twenty rows on a 300ms timer -- @user0 through
+/// @user19, half of them saying "Great post!" about snow leopards -- so the
+/// screen looked identical on a fresh account, a busy one and a dead API.
+class NotificationsScreen extends ConsumerStatefulWidget {
   const NotificationsScreen({super.key});
 
   @override
-  State<NotificationsScreen> createState() => _NotificationsScreenState();
+  ConsumerState<NotificationsScreen> createState() =>
+      _NotificationsScreenState();
 }
 
-class _NotificationsScreenState extends State<NotificationsScreen> {
-  String _activeFilter = 'All';
-  List<NotificationModel> _notifications = [];
-  bool _isLoading = true;
-  bool _isLoadingMore = false;
-  final ScrollController _scrollController = ScrollController();
-
-  // Filter tabs
-  final List<Map<String, dynamic>> _filters = [
-    {'label': 'All', 'icon': Iconsax.notification_copy, 'type': null},
-    {
-      'label': 'Likes',
-      'icon': Iconsax.heart_copy,
-      'type': NotificationType.like
-    },
-    {
-      'label': 'Comments',
-      'icon': Iconsax.message_copy,
-      'type': NotificationType.comment
-    },
-    {
-      'label': 'Follows',
-      'icon': Iconsax.user_add_copy,
-      'type': NotificationType.follow
-    },
+class _NotificationsScreenState extends ConsumerState<NotificationsScreen>
+    with SingleTickerProviderStateMixin {
+  /// Null is All. Reposts have no tab of their own and show up under it.
+  static const _tabKinds = <NotificationType?>[
+    null,
+    NotificationType.like,
+    NotificationType.comment,
+    NotificationType.follow,
   ];
+  static const _tabLabels = ['All', 'Likes', 'Replies', 'Follows'];
+
+  late final TabController _tabs =
+      TabController(length: _tabKinds.length, vsync: this);
 
   @override
   void initState() {
     super.initState();
-    _loadNotifications();
-    _scrollController.addListener(_onScroll);
+    // Opening the screen is what clears the badge. Fired once, not per tab.
+    _markSeen();
+  }
+
+  Future<void> _markSeen() async {
+    try {
+      await ref.read(notificationsRepositoryProvider).markSeen();
+    } catch (_) {
+      // The badge staying up is not worth interrupting the screen for; the
+      // list itself reports anything that actually failed to load.
+      return;
+    }
+    if (mounted) ref.invalidate(unreadNotificationsProvider);
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _tabs.dispose();
     super.dispose();
   }
 
-  void _loadNotifications({bool loadMore = false}) {
-    if (loadMore) {
-      setState(() => _isLoadingMore = true);
-    } else {
-      setState(() => _isLoading = true);
-    }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Iconsax.arrow_left_copy),
+          onPressed: () => Navigator.pop(context),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+        ),
+        title: const Text('Notifications'),
+      ),
+      body: Column(
+        children: [
+          SectionTabs(controller: _tabs, labels: _tabLabels),
+          Expanded(
+            child: TabBarView(
+              controller: _tabs,
+              children: [
+                for (final kind in _tabKinds) _NotificationList(kind: kind),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-    // Simulate API call (Doherty: first frame ≤ 400ms)
-    Future.delayed(const Duration(milliseconds: 300), () {
-      final newNotifications = _generateMockNotifications();
+class _NotificationList extends ConsumerStatefulWidget {
+  final NotificationType? kind;
 
-      setState(() {
-        if (loadMore) {
-          _notifications.addAll(newNotifications);
-          _isLoadingMore = false;
-        } else {
-          _notifications = newNotifications;
-          _isLoading = false;
-        }
-      });
-    });
+  const _NotificationList({required this.kind});
+
+  @override
+  ConsumerState<_NotificationList> createState() => _NotificationListState();
+}
+
+class _NotificationListState extends ConsumerState<_NotificationList> {
+  final ScrollController _scroll = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scroll.addListener(_onScroll);
   }
 
-  List<NotificationModel> _generateMockNotifications() {
-    return List.generate(20, (index) {
-      final types = NotificationType.values;
-      return NotificationModel(
-        id: 'notif_$index',
-        actorDid: 'did:plc:user$index',
-        actorHandle: '@user$index',
-        actorAvatarUrl: 'https://avatar.placeholder.png',
-        type: types[index % types.length],
-        content: index % 3 == 0 ? 'Great post!' : '',
-        postSnippet: index % 2 == 0 ? 'Snow leopard populations...' : null,
-        timestamp: DateTime.now().subtract(Duration(minutes: index * 30)),
-        isRead: index > 5,
-      );
-    });
+  @override
+  void dispose() {
+    _scroll.removeListener(_onScroll);
+    _scroll.dispose();
+    super.dispose();
   }
 
   void _onScroll() {
-    if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent * 0.7) {
-      _loadNotifications(loadMore: true);
+    if (!_scroll.hasClients) return;
+    final position = _scroll.position;
+    if (position.pixels >= position.maxScrollExtent - 400) {
+      ref.read(notificationListProvider(widget.kind).notifier).loadMore();
     }
   }
 
-  void _markAllAsRead() {
-    setState(() {
-      _notifications = _notifications
-          .map((n) => NotificationModel(
-                id: n.id,
-                actorDid: n.actorDid,
-                actorHandle: n.actorHandle,
-                actorAvatarUrl: n.actorAvatarUrl,
-                type: n.type,
-                content: n.content,
-                postSnippet: n.postSnippet,
-                timestamp: n.timestamp,
-                isRead: true,
-              ))
-          .toList();
-    });
-
-    // Batch API call (Peak-End: action > friction)
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('All notifications marked as read')),
+  void _open(NotificationModel row) {
+    final postId = row.postId;
+    if (postId != null && postId.isNotEmpty) {
+      Navigator.pushNamed(context, Routes.postDetail, arguments: postId);
+      return;
+    }
+    openProfile(
+      context,
+      username: row.actor.username,
+      userId: row.actor.id,
     );
   }
 
-  void _markAsRead(String id) {
-    setState(() {
-      final index = _notifications.indexWhere((n) => n.id == id);
-      if (index != -1) {
-        _notifications[index] = NotificationModel(
-          id: _notifications[index].id,
-          actorDid: _notifications[index].actorDid,
-          actorHandle: _notifications[index].actorHandle,
-          actorAvatarUrl: _notifications[index].actorAvatarUrl,
-          type: _notifications[index].type,
-          content: _notifications[index].content,
-          postSnippet: _notifications[index].postSnippet,
-          timestamp: _notifications[index].timestamp,
-          isRead: true,
-        );
-      }
-    });
-  }
+  EmptyState _empty() => switch (widget.kind) {
+        NotificationType.like => const EmptyState(
+            art: EmptyArt.likes,
+            title: 'No likes yet',
+            detail: 'When somebody likes one of your posts, it shows up here.',
+          ),
+        NotificationType.comment => const EmptyState(
+            art: EmptyArt.messages,
+            title: 'No replies yet',
+            detail: 'Replies to your posts land here.',
+          ),
+        NotificationType.follow => const EmptyState(
+            art: EmptyArt.people,
+            title: 'No new followers',
+            detail: 'People who follow you show up here.',
+          ),
+        NotificationType.repost => const EmptyState(
+            art: EmptyArt.posts,
+            title: 'No reposts yet',
+            detail: 'When somebody reposts you, it shows up here.',
+          ),
+        null => const EmptyState(
+            art: EmptyArt.caughtUp,
+            title: 'You are all caught up',
+            detail: 'Likes, replies and new followers land here as they '
+                'happen.',
+          ),
+      };
 
-  List<NotificationModel> _getFilteredNotifications() {
-    if (_activeFilter == 'All') return _notifications;
-
-    final filterType = _filters.firstWhere(
-      (f) => f['label'] == _activeFilter,
-    )['type'];
-
-    if (filterType == null) return _notifications;
-
-    return _notifications.where((n) => n.type == filterType).toList();
-  }
-
-  Map<String, List<NotificationModel>> _getGroupedNotifications() {
-    final filtered = _getFilteredNotifications();
+  /// Today, Yesterday, This week, Older -- in that order, skipping any that
+  /// hold nothing. Built from the list rather than from a fixed set of keys,
+  /// so a heading never appears above an empty group.
+  List<(String, List<NotificationModel>)> _grouped(
+    List<NotificationModel> rows,
+  ) {
     final groups = <String, List<NotificationModel>>{};
-
-    for (var notif in filtered) {
-      groups.putIfAbsent(notif.groupKey, () => []);
-      groups[notif.groupKey]!.add(notif);
+    for (final row in rows) {
+      groups.putIfAbsent(row.groupKey, () => []).add(row);
     }
-
-    return groups;
+    const order = ['Today', 'Yesterday', 'This week', 'Older'];
+    return [
+      for (final key in order)
+        if (groups[key] != null) (key, groups[key]!),
+    ];
   }
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final state = ref.watch(notificationListProvider(widget.kind));
+    final notifier = ref.read(notificationListProvider(widget.kind).notifier);
 
-    return Scaffold(
-      backgroundColor: scheme.background,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left_copy),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          'Notifications',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-        ),
-        actions: [
-          TextButton(
-            onPressed: _markAllAsRead,
-            child: const Text('Mark All Read'),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          // Filter Tabs (48px)
-          Container(
-            height: 48,
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                    color: scheme.onSurface.withOpacity(0.1), width: 0.33),
-              ),
-            ),
-            child: Row(
-              children: _filters.map((filter) {
-                final isActive = _activeFilter == filter['label'];
-                return Expanded(
-                  child: GestureDetector(
-                    onTap: () =>
-                        setState(() => _activeFilter = filter['label']),
-                    child: Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color:
-                                isActive ? scheme.primary : Colors.transparent,
-                            width: 2,
-                          ),
-                        ),
-                      ),
-                      child: AnimatedScale(
-                        scale: isActive ? 1.04 : 1.0,
-                        duration: const Duration(milliseconds: 120),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              filter['icon'],
-                              size: 20,
-                              color: isActive
-                                  ? scheme.primary
-                                  : scheme.onSurface.withOpacity(0.6),
-                            ),
-                            const SizedBox(width: 6),
-                            Text(
-                              filter['label'],
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: isActive
-                                    ? FontWeight.w600
-                                    : FontWeight.w500,
-                                color: isActive
-                                    ? scheme.primary
-                                    : scheme.onSurface.withOpacity(0.6),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+    if (state.loadingFirstPage) return const NotificationSkeleton();
+
+    if (state.items.isEmpty) {
+      return RefreshIndicator(
+        onRefresh: notifier.refresh,
+        child: (state.error != null
+                ? EmptyState.failed(
+                    title: 'Could not load notifications',
+                    detail: state.error!,
+                    onAction: notifier.refresh,
+                  )
+                : _empty())
+            .scrollable,
+      );
+    }
+
+    final groups = _grouped(state.items);
+
+    return RefreshIndicator(
+      onRefresh: notifier.refresh,
+      child: ListView.builder(
+        controller: _scroll,
+        physics: const AlwaysScrollableScrollPhysics(),
+        itemCount: groups.length + (state.loadingMore ? 1 : 0),
+        itemBuilder: (context, index) {
+          if (index >= groups.length) {
+            return const Padding(
+              padding: EdgeInsets.all(SpacingTokens.space16),
+              child: Center(child: CircularProgressIndicator()),
+            );
+          }
+
+          final (heading, rows) = groups[index];
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  SpacingTokens.space16,
+                  SpacingTokens.space16,
+                  SpacingTokens.space16,
+                  SpacingTokens.space8,
+                ),
+                child: Text(
+                  heading.toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.8,
+                    color: scheme.onSurface.withValues(alpha: 0.5),
                   ),
-                );
-              }).toList(),
-            ),
-          ),
-
-          // List
-          Expanded(
-            child: _isLoading
-                ? const NotificationSkeleton()
-                : _notifications.isEmpty
-                    ? const EmptyNotifications()
-                    : _buildGroupedList(),
-          ),
-
-          // Load more indicator
-          if (_isLoadingMore)
-            Container(
-              height: 60,
-              alignment: Alignment.center,
-              child: const CircularProgressIndicator(),
-            ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildGroupedList() {
-    final grouped = _getGroupedNotifications();
-
-    return ListView.builder(
-      controller: _scrollController,
-      padding: EdgeInsets.zero,
-      itemCount: grouped.length,
-      itemBuilder: (context, groupIndex) {
-        final groupKey = grouped.keys.elementAt(groupIndex);
-        final groupNotifications = grouped[groupKey]!;
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Group header
-            if (groupIndex > 0)
-              Divider(
-                  height: 1,
-                  thickness: 0.33,
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.1)),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              child: Text(
-                groupKey.toUpperCase(),
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
-                  letterSpacing: 0.5,
                 ),
               ),
-            ),
-
-            // Group items
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: groupNotifications.length,
-              separatorBuilder: (_, __) => Divider(
-                height: 1,
-                thickness: 0.33,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
-              ),
-              itemBuilder: (context, index) {
-                final notif = groupNotifications[index];
-                return NotificationItem(
-                  notification: notif,
-                  onTap: () {
-                    _markAsRead(notif.id);
-                    // TODO: Navigate to post/profile
-                  },
-                  onMarkAsRead: () => _markAsRead(notif.id),
-                  onMute: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Muted ${notif.actorHandle}')),
-                    );
-                  },
-                  onDelete: () {
-                    setState(() => _notifications.remove(notif));
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Notification deleted')),
-                    );
-                  },
-                );
-              },
-            ),
-          ],
-        );
-      },
+              for (final row in rows) ...[
+                NotificationItem(notification: row, onTap: () => _open(row)),
+                const Hairline(),
+              ],
+            ],
+          );
+        },
+      ),
     );
   }
 }
