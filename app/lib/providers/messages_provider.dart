@@ -171,6 +171,9 @@ class ThreadState {
   final bool loadingMore;
   final String? error;
 
+  /// Whether the reader has silenced this conversation.
+  final bool muted;
+
   const ThreadState({
     this.messages = const [],
     this.people = const [],
@@ -178,6 +181,7 @@ class ThreadState {
     this.loadingFirstPage = true,
     this.loadingMore = false,
     this.error,
+    this.muted = false,
   });
 
   bool get isEmpty => !loadingFirstPage && error == null && messages.isEmpty;
@@ -191,6 +195,7 @@ class ThreadState {
     bool? loadingMore,
     String? error,
     bool clearError = false,
+    bool? muted,
   }) =>
       ThreadState(
         messages: messages ?? this.messages,
@@ -199,6 +204,7 @@ class ThreadState {
         loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
         loadingMore: loadingMore ?? this.loadingMore,
         error: clearError ? null : (error ?? this.error),
+        muted: muted ?? this.muted,
       );
 }
 
@@ -226,6 +232,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
         people: page.people,
         cursor: page.nextCursor,
         loadingFirstPage: false,
+        muted: page.muted,
       );
       await _markRead();
     } catch (error) {
@@ -307,6 +314,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   Future<String?> setMuted(bool muted) async {
     try {
       await _repo.setMuted(_conversationId, muted);
+      state = state.copyWith(muted: muted);
       return null;
     } catch (error) {
       return describeApiError(error, sessionIsLive: true);

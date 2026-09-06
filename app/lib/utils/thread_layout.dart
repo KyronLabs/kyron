@@ -158,3 +158,41 @@ ThreadLayout buildThreadLayout(
   walk(null, 0, const []);
   return ThreadLayout(rows: rows, collapsed: collapsed);
 }
+
+/// The flat list a post's comment thread renders, from the comments loaded
+/// and whichever reply runs have been opened.
+///
+/// Runs are admitted outwards from the comments already in, never by walking
+/// [expanded] on its own. A run whose own parent is not in the list has
+/// nothing to hang under, and [buildThreadLayout] promotes a comment it cannot
+/// find a parent for to the top level -- so a reply to a reply surfaced as a
+/// top-level comment of its own, which is what made a reply look as though it
+/// had been posted against the wrong person.
+List<PostComment> assembleThread({
+  required List<PostComment> comments,
+  required Map<String, List<PostComment>> replies,
+  required Set<String> expanded,
+}) {
+  final flat = <PostComment>[...comments];
+  final present = {for (final c in flat) c.id};
+  final pending = {
+    for (final run in replies.entries)
+      if (expanded.contains(run.key)) run.key: run.value,
+  };
+
+  // Each pass admits the runs whose parent has just arrived. It ends when a
+  // pass admits nothing, which leaves a run orphaned by a collapse -- or by a
+  // parent that was never loaded -- out rather than at the top.
+  var admitted = true;
+  while (admitted) {
+    admitted = false;
+    for (final key in pending.keys.toList()) {
+      if (!present.contains(key)) continue;
+      final run = pending.remove(key)!;
+      flat.addAll(run);
+      present.addAll(run.map((c) => c.id));
+      admitted = true;
+    }
+  }
+  return flat;
+}

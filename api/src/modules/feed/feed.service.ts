@@ -103,8 +103,19 @@ export interface FeedComment {
   };
   /** Null on a top-level comment. */
   parentId: string | null;
-  /** How many replies hang off it. Always 0 on a reply. */
+  /** How many replies hang off it. */
   replies: number;
+  /**
+   * The first few people who answered it, for the marker that opens a folded
+   * run. Empty when nobody has, and never padded out: a face on that row is a
+   * claim that a particular person is in the conversation.
+   */
+  replyFaces: {
+    id: string;
+    name: string | null;
+    username: string | null;
+    avatarUrl: string | null;
+  }[];
   media: FeedMedia[];
   /** Whether the reader wrote it, and so may delete it. */
   mine: boolean;
@@ -1278,9 +1289,15 @@ export class FeedService {
   /**
    * Adds a comment, or a reply to one.
    *
-   * A reply to a reply is attached to the thread it is already in rather than
-   * nesting a third level: the screen renders two, and a deeper tree would be
-   * flattened on the way out anyway.
+   * The reply keeps the parent it was written under. It used to be re-hung on
+   * that parent's own parent -- two levels and no more -- which meant tapping
+   * reply under someone's answer filed the reply beside them, under the top
+   * comment, addressed to the wrong person. The reader is told which comment
+   * they are answering, so that is the comment it has to land under.
+   *
+   * Depth is bounded by [maxThreadDepth], the same limit the thread reader
+   * walks to: past it there is nothing left to draw the reply under, so it
+   * attaches to the deepest ancestor still inside the limit.
    */
   async addComment(
     postId: string,
@@ -1318,7 +1335,7 @@ export class FeedService {
       // Scoped to this post, so a comment id from another thread cannot be
       // grafted onto it.
       if (!parent) throw new NotFoundException('Comment not found.');
-      threadParentId = parent.parentId ?? parent.id;
+      threadParentId = await this.deepestAllowedParent(parent.id, postId);
     }
 
     const comment = await this.prisma.comment.create({
@@ -1436,11 +1453,56 @@ export class FeedService {
 
     const hasMore = rows.length > limit;
     const page = hasMore ? rows.slice(0, limit) : rows;
+    const faces = await this.replyFacesFor(page.map((row) => row.id));
 
     return {
-      items: page.map((row) => this.toFeedComment(row, viewerId)),
+      items: page.map((row) =>
+        this.toFeedComment(row, viewerId, faces.get(row.id)),
+      ),
       nextCursor: hasMore ? page[page.length - 1].id : null,
     };
+  }
+
+  /** How many faces the "show replies" marker carries. */
+  static readonly maxReplyFaces = 3;
+
+  /**
+   * The first few repliers under each of [parentIds].
+   *
+   * One query per parent, but issued as a single batch: `take` in a combined
+   * query is a budget over the whole result, so one comment with a hundred
+   * replies would swallow it and leave the rest of the page bare. Small,
+   * index-backed reads, at most a page's worth.
+   */
+  private async replyFacesFor(
+    parentIds: string[],
+  ): Promise<Map<string, FeedComment['replyFaces']>> {
+    const out = new Map<string, FeedComment['replyFaces']>();
+    if (parentIds.length === 0) return out;
+
+    const runs = await this.prisma.$transaction(
+      parentIds.map((parentId) =>
+        this.prisma.comment.findMany({
+          where: { parentId, deletedAt: null },
+          orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+          take: FeedService.maxReplyFaces,
+          select: { author: { select: this.authorShape } },
+        }),
+      ),
+    );
+
+    parentIds.forEach((parentId, index) => {
+      out.set(
+        parentId,
+        (runs[index] ?? []).map((row) => ({
+          id: row.author.id,
+          name: row.author.name,
+          username: row.author.username,
+          avatarUrl: row.author.profile?.avatarUrl ?? null,
+        })),
+      );
+    });
+    return out;
   }
 
   // A getter, not a field: class fields initialise in declaration order and
@@ -1474,7 +1536,11 @@ export class FeedService {
     } as const;
   }
 
-  private toFeedComment(row: CommentRow, viewerId: string): FeedComment {
+  private toFeedComment(
+    row: CommentRow,
+    viewerId: string,
+    replyFaces: FeedComment['replyFaces'] = [],
+  ): FeedComment {
     return {
       id: row.id,
       content: row.content,
@@ -1487,6 +1553,7 @@ export class FeedService {
         avatarUrl: row.author.profile?.avatarUrl ?? null,
       },
       replies: row._count.replies,
+      replyFaces,
       media: row.media,
       mine: row.authorId === viewerId,
       likes: row._count.likes ?? 0,
@@ -1529,6 +1596,47 @@ export class FeedService {
       root: this.toFeedComment(root, viewerId),
       replies: all,
     };
+  }
+
+  /**
+   * Where a reply to [parentId] may hang without pushing the thread past
+   * [maxThreadDepth].
+   *
+   * Normally that is [parentId] itself. Only a chain already at the limit
+   * walks back up, and then to the deepest ancestor a new child still fits
+   * under -- which keeps the reply as close to its intended parent as the
+   * limit allows rather than throwing it back to the top of the thread.
+   */
+  private async deepestAllowedParent(
+    parentId: string,
+    postId: string,
+  ): Promise<string> {
+    // Walk to the root, collecting the chain. Bounded by maxThreadDepth + 1
+    // steps: anything longer cannot exist, since this method is what puts
+    // comments there.
+    const chain: string[] = [parentId];
+    let cursor: string = parentId;
+    const seen = new Set<string>([parentId]);
+
+    for (let step = 0; step < FeedService.maxThreadDepth + 1; step++) {
+      const row: { parentId: string | null } | null =
+        await this.prisma.comment.findFirst({
+          where: { id: cursor, postId, deletedAt: null },
+          select: { parentId: true },
+        });
+      const next: string | null = row?.parentId ?? null;
+      // A cycle in stored data would otherwise loop until the step budget
+      // runs out and then return the wrong answer quietly.
+      if (next === null || seen.has(next)) break;
+      chain.push(next);
+      seen.add(next);
+      cursor = next;
+    }
+
+    // chain is [parent, grandparent, ... root]; its length is the parent's
+    // depth + 1, which is the depth the new reply would sit at.
+    if (chain.length < FeedService.maxThreadDepth) return parentId;
+    return chain[chain.length - FeedService.maxThreadDepth];
   }
 
   /** Likes a comment, or unlikes one already liked. Idempotent either way. */

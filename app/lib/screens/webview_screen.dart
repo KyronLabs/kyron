@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter/services.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+
+import '../widgets/action_sheet.dart';
+import '../widgets/toast.dart';
 
 class WebViewScreen extends StatefulWidget {
   final String url;
@@ -40,47 +47,58 @@ class _WebViewScreenState extends State<WebViewScreen> {
     return uri.host;
   }
 
-  void _shareUrl() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Share Link'),
-        content: Text(_currentUrl),
-        actions: [
-          TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel')),
-          TextButton(
-              onPressed: () {/* Copy logic */}, child: const Text('Copy')),
-        ],
-      ),
+  /// The address the reader is actually on, which is not the one they arrived
+  /// at once a page has navigated.
+  String get _url => _currentUrl.isEmpty ? widget.url : _currentUrl;
+
+  Future<void> _shareUrl() => Share.share(_url);
+
+  /// Hands the page to the real browser.
+  Future<void> _openExternally() async {
+    final opened = await launchUrl(
+      Uri.parse(_url),
+      mode: LaunchMode.externalApplication,
     );
+    // Says so rather than looking like it worked: this used to be a row that
+    // closed the sheet and did nothing at all.
+    if (!opened && mounted) {
+      Toast.show(context, 'No app on this device can open that link.');
+    }
   }
 
-  void _showBrowserMenu() {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListTile(
-            leading: const Icon(Icons.open_in_browser),
-            title: const Text('Open in Browser'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.refresh),
-            title: const Text('Refresh'),
-            onTap: () {
-              _controller.reload();
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
+  Future<void> _showBrowserMenu() async {
+    final choice = await ActionSheet.show<String>(
+      context,
+      title: _shortenUrl(_url).toUpperCase(),
+      actions: const [
+        SheetAction(
+          value: 'browser',
+          label: 'Open in browser',
+          icon: Iconsax.export_3_copy,
+        ),
+        SheetAction(
+          value: 'copy',
+          label: 'Copy link',
+          icon: Iconsax.copy_copy,
+        ),
+        SheetAction(
+          value: 'refresh',
+          label: 'Refresh',
+          icon: Iconsax.refresh_copy,
+        ),
+      ],
     );
+    if (choice == null || !mounted) return;
+
+    switch (choice) {
+      case 'browser':
+        await _openExternally();
+      case 'copy':
+        await Clipboard.setData(ClipboardData(text: _url));
+        if (mounted) Toast.show(context, 'Link copied');
+      case 'refresh':
+        await _controller.reload();
+    }
   }
 
   @override
@@ -107,9 +125,16 @@ class _WebViewScreenState extends State<WebViewScreen> {
           ],
         ),
         actions: [
-          IconButton(icon: const Icon(Icons.share), onPressed: _shareUrl),
           IconButton(
-              icon: const Icon(Icons.more_vert), onPressed: _showBrowserMenu),
+            icon: const Icon(Iconsax.send_2_copy, size: 20),
+            tooltip: 'Share',
+            onPressed: _shareUrl,
+          ),
+          IconButton(
+            icon: const Icon(Iconsax.more_copy, size: 20),
+            tooltip: 'More',
+            onPressed: _showBrowserMenu,
+          ),
         ],
       ),
       body: Stack(

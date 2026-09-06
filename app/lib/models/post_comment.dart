@@ -13,8 +13,13 @@ class PostComment {
   /// Null on a top-level comment.
   final String? parentId;
 
-  /// How many replies hang off it. Always 0 on a reply.
+  /// How many replies hang off it.
   final int replies;
+
+  /// The first few people who answered it, for the faces on the marker that
+  /// opens a folded run. Empty when nobody has: never padded out, because a
+  /// face there is a claim that this person is in the conversation.
+  final List<FeedAuthor> replyFaces;
 
   /// Whether you wrote it, and so may delete it.
   final bool mine;
@@ -33,6 +38,7 @@ class PostComment {
     required this.author,
     this.parentId,
     this.replies = 0,
+    this.replyFaces = const [],
     this.mine = false,
     this.media = const [],
     this.likes = 0,
@@ -52,6 +58,10 @@ class PostComment {
         ),
         parentId: json['parentId'] as String?,
         replies: (json['replies'] as num?)?.toInt() ?? 0,
+        replyFaces: ((json['replyFaces'] as List<dynamic>?) ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(FeedAuthor.fromJson)
+            .toList(),
         mine: json['mine'] == true,
         media: PostMedia.listFrom(json['media']),
         likes: (json['likes'] as num?)?.toInt() ?? 0,
@@ -65,6 +75,7 @@ class PostComment {
         author: author,
         parentId: parentId,
         replies: replies ?? this.replies,
+        replyFaces: replyFaces,
         mine: mine,
         media: media,
         likes: likes ?? this.likes,

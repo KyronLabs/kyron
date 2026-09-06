@@ -172,6 +172,10 @@ describe('FeedService', () => {
             user,
             userInterest,
             repost: relation(),
+            // The reply-face batch. The real client resolves the array of
+            // queries it is handed; the mock does the same so a page still
+            // comes back with one entry per row.
+            $transaction: (calls: Promise<unknown>[]) => Promise.all(calls),
             ...extra,
           },
         },
@@ -473,21 +477,56 @@ describe('FeedService', () => {
       );
     });
 
-    it('attaches a reply to a reply to the same thread, not a third level', async () => {
+    it('hangs a reply under the comment it was written under', async () => {
       post.findFirst.mockResolvedValue({
         authorId: 'u',
         replyPolicy: 'EVERYONE',
         content: '',
       });
-      // The comment being replied to is itself a reply, under 'top'.
-      comment.findFirst.mockResolvedValue({ id: 'c2', parentId: 'top' });
-      comment.create.mockResolvedValue(commentRow('c3', 'top'));
+      // The comment being replied to is itself a reply, under 'top'. The
+      // reply belongs to it, not beside it under 'top': re-hanging it there
+      // is what addressed replies to the wrong person.
+      comment.findFirst
+        .mockResolvedValueOnce({ id: 'c2', parentId: 'top' })
+        .mockResolvedValueOnce({ id: 'c2', parentId: 'top' })
+        .mockResolvedValueOnce({ id: 'top', parentId: null });
+      comment.create.mockResolvedValue(commentRow('c3', 'c2'));
 
       await (await service()).addComment('p1', 'u', 'nested', 'c2');
 
       expect(comment.create).toHaveBeenCalledWith(
         expect.objectContaining({
-          data: expect.objectContaining({ parentId: 'top' }) as unknown,
+          data: expect.objectContaining({ parentId: 'c2' }) as unknown,
+        }),
+      );
+    });
+
+    it('stops nesting at the depth the thread reader can walk', async () => {
+      post.findFirst.mockResolvedValue({
+        authorId: 'u',
+        replyPolicy: 'EVERYONE',
+        content: '',
+      });
+      // A chain past what the reader walks: d9 <- d8 <- ... <- d0, so a reply
+      // under d9 would sit at depth 10 and never be drawn.
+      const depth = FeedService.maxThreadDepth + 2;
+      const parentOf: Record<string, string | null> = { d0: null };
+      for (let i = 1; i < depth; i++) parentOf[`d${i}`] = `d${i - 1}`;
+
+      comment.findFirst.mockImplementation((args: unknown) => {
+        const id = (args as { where: { id: string } }).where.id;
+        return Promise.resolve({ id, parentId: parentOf[id] ?? null });
+      });
+      comment.create.mockResolvedValue(commentRow('new', 'd7'));
+
+      await (await service()).addComment('p1', 'u', 'deep', `d${depth - 1}`);
+
+      // Clamped to the deepest ancestor a new child still fits under, so the
+      // reply lands as close to where it was aimed as the walk allows rather
+      // than back at the top of the thread.
+      expect(comment.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({ parentId: 'd7' }) as unknown,
         }),
       );
     });

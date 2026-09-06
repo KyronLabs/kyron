@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:share_plus/share_plus.dart';
 
+import '../models/feed_post.dart' show FeedAuthor;
 import '../models/post_comment.dart';
+import 'action_sheet.dart';
 import '../utils/format_count.dart';
 import 'media_grid.dart';
 import 'post_card.dart' show PostAvatar, age, openAuthor;
 import 'post_text.dart';
 import 'toast.dart';
+import 'thread.dart' show ThreadGeometry;
 import 'voice_post_player.dart';
 
 /// What a comment offers besides reading it.
@@ -44,6 +48,10 @@ class CommentTile extends StatelessWidget {
     this.onOpen,
     this.isRoot = false,
   });
+
+  /// A link to this comment's own page, which is what sharing one means.
+  static String linkTo(PostComment comment) =>
+      'https://kyron.so/c/${comment.id}';
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +94,16 @@ class CommentTile extends StatelessWidget {
               label: 'Reply',
               count: comment.replies,
               onTap: onReply,
+            ),
+            const SizedBox(width: SpacingTokens.space20),
+            // No repost beside these. A comment cannot be reposted -- there is
+            // no endpoint and no model for it -- and a glyph that only ever
+            // does nothing is worse than a row of three.
+            _Action(
+              icon: Iconsax.send_2_copy,
+              label: 'Share',
+              count: 0,
+              onTap: () => Share.share(linkTo(comment)),
             ),
           ],
         ),
@@ -164,73 +182,63 @@ class _Overflow extends StatelessWidget {
 
   const _Overflow({required this.comment, required this.onAction});
 
+  Future<void> _open(BuildContext context) async {
+    final action = await ActionSheet.show<CommentAction>(
+      context,
+      actions: [
+        const SheetAction(
+          value: CommentAction.openThread,
+          label: 'Open reply',
+          icon: Iconsax.message_text_copy,
+        ),
+        const SheetAction(
+          value: CommentAction.copy,
+          label: 'Copy text',
+          icon: Iconsax.copy_copy,
+        ),
+        if (!comment.mine)
+          const SheetAction(
+            value: CommentAction.report,
+            label: 'Report',
+            icon: Iconsax.flag_copy,
+          ),
+        if (comment.mine)
+          const SheetAction(
+            value: CommentAction.delete,
+            label: 'Delete',
+            icon: Iconsax.trash_copy,
+            destructive: true,
+          ),
+      ],
+    );
+    if (action == null) return;
+
+    if (action == CommentAction.copy) {
+      await Clipboard.setData(ClipboardData(text: comment.content));
+      if (context.mounted) Toast.show(context, 'Copied');
+      return;
+    }
+    onAction(action);
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
 
-    return PopupMenuButton<CommentAction>(
+    return IconButton(
       tooltip: 'More',
       padding: EdgeInsets.zero,
-      position: PopupMenuPosition.under,
+      visualDensity: VisualDensity.compact,
+      constraints: const BoxConstraints(minWidth: 28, minHeight: 28),
+      iconSize: 16,
       icon: Icon(
-        Iconsax.more,
+        Iconsax.more_copy,
         size: 16,
         color: scheme.onSurface.withValues(alpha: 0.45),
       ),
-      constraints: const BoxConstraints(minWidth: 180),
-      iconSize: 16,
-      splashRadius: 16,
-      onSelected: (action) async {
-        if (action == CommentAction.copy) {
-          await Clipboard.setData(ClipboardData(text: comment.content));
-          if (context.mounted) Toast.show(context, 'Copied');
-          return;
-        }
-        onAction(action);
-      },
-      itemBuilder: (context) => [
-        const PopupMenuItem(
-          value: CommentAction.openThread,
-          child: _MenuRow(icon: Iconsax.message_text_copy, label: 'Open reply'),
-        ),
-        const PopupMenuItem(
-          value: CommentAction.copy,
-          child: _MenuRow(icon: Iconsax.copy_copy, label: 'Copy text'),
-        ),
-        if (!comment.mine)
-          const PopupMenuItem(
-            value: CommentAction.report,
-            child: _MenuRow(icon: Iconsax.flag_copy, label: 'Report'),
-          ),
-        if (comment.mine)
-          PopupMenuItem(
-            value: CommentAction.delete,
-            child: _MenuRow(
-              icon: Iconsax.trash_copy,
-              label: 'Delete',
-              tint: scheme.error,
-            ),
-          ),
-      ],
+      onPressed: () => _open(context),
     );
   }
-}
-
-class _MenuRow extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final Color? tint;
-
-  const _MenuRow({required this.icon, required this.label, this.tint});
-
-  @override
-  Widget build(BuildContext context) => Row(
-        children: [
-          Icon(icon, size: 17, color: tint),
-          const SizedBox(width: SpacingTokens.space12),
-          Text(label, style: TextStyle(fontSize: 14, color: tint)),
-        ],
-      );
 }
 
 /// One action under a comment: a glyph, and its count when there is one.
@@ -293,4 +301,104 @@ class CommentAvatar extends StatelessWidget {
         onTap: () => openAuthor(context, comment.author),
         child: PostAvatar(author: comment.author, radius: size / 2),
       );
+}
+
+/// The row that opens a folded run of replies.
+///
+/// The faces are the people who actually answered, sent with the comment.
+/// Where there are none the row is just its label -- a stack of blank circles
+/// would say somebody is there when nobody is.
+///
+/// Sized to sit in a [ThreadItem]'s leading slot, so its rail lands in the
+/// same column as the avatars above and below it rather than beside them.
+class ThreadMoreReplies extends StatelessWidget {
+  final List<FeedAuthor> faces;
+  final int count;
+  final bool busy;
+  final VoidCallback onTap;
+
+  /// Diameter of one face. Smaller than a comment's avatar: this row is a
+  /// signpost, not a voice in the conversation.
+  static const double faceSize = 20;
+
+  /// How far each face is tucked under the one before it.
+  static const double overlap = 7;
+
+  const ThreadMoreReplies({
+    super.key,
+    required this.faces,
+    required this.count,
+    required this.onTap,
+    this.busy = false,
+  });
+
+  /// The leading slot this needs, so the caller and the painter agree.
+  static double widthFor(int faceCount) => faceCount == 0
+      ? ThreadGeometry.avatar
+      : faceSize + (faceCount - 1) * (faceSize - overlap);
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return InkWell(
+      onTap: busy ? null : onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space4),
+        child: Row(
+          children: [
+            if (busy)
+              const SizedBox.square(
+                dimension: 14,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              )
+            else
+              Text(
+                count == 1
+                    ? 'Show 1 reply'
+                    : 'Show ${formatCount(count)} replies',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: scheme.onSurface.withValues(alpha: 0.6),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// The stack of faces, for the leading slot.
+  Widget leading(BuildContext context) {
+    final shown = faces.take(3).toList();
+    if (shown.isEmpty) return const SizedBox.shrink();
+
+    final scheme = Theme.of(context).colorScheme;
+
+    return SizedBox(
+      width: widthFor(shown.length),
+      height: faceSize,
+      child: Stack(
+        children: [
+          for (var i = 0; i < shown.length; i++)
+            Positioned(
+              left: i * (faceSize - overlap),
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  // A ring in the page colour, so overlapping faces read as
+                  // separate people rather than one smudge.
+                  border: Border.all(color: scheme.surface, width: 1.5),
+                ),
+                child: PostAvatar(
+                  author: shown[i],
+                  radius: (faceSize - 3) / 2,
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
 }

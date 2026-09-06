@@ -125,9 +125,17 @@ class CommentThreadNotifier extends StateNotifier<CommentThreadState> {
 
   /// Adds a freshly written reply without a round trip for the whole thread.
   void added(PostComment reply) {
+    final parentId = reply.parentId;
+    // The count goes on whichever comment was answered, not always the root.
+    // A reply keeps the parent it was written under, so the parent is often
+    // one of the replies already on the page.
     state = state.copyWith(
-      replies: [...state.replies, reply],
-      root: reply.parentId == state.root?.id
+      replies: [
+        for (final row in state.replies)
+          row.id == parentId ? row.copyWith(replies: row.replies + 1) : row,
+        reply,
+      ],
+      root: parentId == state.root?.id
           ? state.root?.copyWith(replies: (state.root?.replies ?? 0) + 1)
           : state.root,
     );

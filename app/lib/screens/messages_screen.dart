@@ -97,12 +97,21 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen>
         Expanded(
           child: NotificationListener<UserScrollNotification>(
             onNotification: _onScroll,
-            child: TabBarView(
-              controller: _tabs,
-              children: const [
-                _ConversationList(unreadOnly: false),
-                _ConversationList(unreadOnly: true),
-              ],
+            // The top chrome above already sits inside a SafeArea, and it is a
+            // sibling of this body rather than its parent -- so the status bar
+            // inset is still on the MediaQuery down here. A scroll view built
+            // without an explicit padding quietly adopts it, which is what put
+            // a band of empty screen between the tab strip and the first row.
+            child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: TabBarView(
+                controller: _tabs,
+                children: const [
+                  _ConversationList(unreadOnly: false),
+                  _ConversationList(unreadOnly: true),
+                ],
+              ),
             ),
           ),
         ),

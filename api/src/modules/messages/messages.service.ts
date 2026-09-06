@@ -328,6 +328,11 @@ export class MessagesService {
       people: conversation.members
         .filter((m) => m.userId !== viewerId)
         .map((m) => this.toPerson(m.user)),
+      // So the thread's menu can offer Mute or Unmute rather than both, which
+      // is a menu that cannot say which state the reader is already in.
+      muted:
+        conversation.members.find((m) => m.userId === viewerId)?.mutedAt !=
+        null,
     };
   }
 
@@ -499,6 +504,7 @@ export class MessagesService {
           select: {
             userId: true,
             lastReadAt: true,
+            mutedAt: true,
             user: { select: this.personShape },
           },
         },

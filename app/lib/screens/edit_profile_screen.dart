@@ -149,10 +149,38 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       maxLines: maxLines,
       keyboardType: keyboardType,
       validator: validator,
+      // A multiline field is written from its top line down, so the icon
+      // belongs beside that line. The decoration centres a prefix icon in the
+      // whole box, which on the four-line Bio left it floating halfway down
+      // the empty space, pointing at nothing.
+      textAlignVertical: TextAlignVertical.top,
       decoration: InputDecoration(
         labelText: label,
-        prefixIcon: Icon(icon, size: 18),
+        alignLabelWithHint: maxLines > 1,
+        prefixIcon: _prefix(context, icon, maxLines),
       ),
+    );
+  }
+
+  /// The prefix icon, raised to the first line on a multiline field.
+  ///
+  /// There is no alignment knob for a prefix icon -- the decoration always
+  /// centres it -- so the icon is given the lines below it as padding. A box
+  /// of icon plus (maxLines - 1) lines, centred in a box of maxLines plus the
+  /// content padding, puts the icon exactly on the first line, and stays there
+  /// at any text scale because the padding is measured in the same lines the
+  /// field is.
+  Widget _prefix(BuildContext context, IconData icon, int maxLines) {
+    const size = 18.0;
+    if (maxLines <= 1) return Icon(icon, size: size);
+
+    final style = Theme.of(context).textTheme.bodyLarge;
+    final line = MediaQuery.textScalerOf(context).scale(style?.fontSize ?? 16) *
+        (style?.height ?? 1.2);
+
+    return Padding(
+      padding: EdgeInsets.only(bottom: (maxLines - 1) * line),
+      child: Icon(icon, size: size),
     );
   }
 

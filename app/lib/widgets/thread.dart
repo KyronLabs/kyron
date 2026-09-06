@@ -8,7 +8,7 @@
 //   ┌────────┬──────────────────────────────────────────┬───────┐
 //   │ avatar │ name · time                              │  ···  │
 //   │   │    │ body                                     │       │
-//   │   │    │ ♡ n   💬 n                               │       │
+//   │   │    │ ♡ n   💬 n   ➤                           │       │
 //   │   ●    │ (rail continues to the next sibling)     │       │
 //   └────────┴──────────────────────────────────────────┴───────┘
 //
@@ -33,9 +33,11 @@ class ThreadGeometry {
   /// sideways, so the curve keeps its proportions at any depth.
   static const double indent = 28;
 
-  /// Rail thickness. Deliberately 2: a 1-pixel line is indistinguishable from
-  /// the hairlines between rows and stops reading as a connector at all.
-  static const double thickness = 2;
+  /// Rail thickness. A hair: at 2 the rails were the heaviest thing on the
+  /// page, competing with the text they are only there to organise. The rows
+  /// no longer carry hairlines between them, so there is nothing left for a
+  /// thin line to be confused with.
+  static const double thickness = 1;
 
   /// Radius of the elbow's corner, about half the indent, which is what makes
   /// the turn read as a quarter circle rather than a clipped corner.

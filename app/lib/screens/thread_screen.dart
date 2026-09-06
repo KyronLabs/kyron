@@ -11,7 +11,9 @@ import '../models/conversation.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
+import '../widgets/action_sheet.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/jump_to_end.dart';
 import '../widgets/post_card.dart' show age;
 import '../widgets/toast.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
@@ -91,6 +93,52 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
   }
 
   /// Mute, block, or leave. What a conversation offers besides reading it.
+  /// The conversation's actions, as a sheet.
+  ///
+  /// Mute and Unmute are one entry, not two: the reader is in one of those
+  /// states and a menu offering both cannot say which.
+  Future<void> _openMenu(bool muted, MessagePerson? other) async {
+    final choice = await ActionSheet.show<String>(
+      context,
+      title: other?.displayName.toUpperCase(),
+      actions: [
+        muted
+            ? const SheetAction(
+                value: 'unmute',
+                label: 'Unmute',
+                icon: Iconsax.volume_high_copy,
+                detail: 'Be notified about this conversation again',
+              )
+            : const SheetAction(
+                value: 'mute',
+                label: 'Mute',
+                icon: Iconsax.volume_slash_copy,
+                detail: 'Stop being notified about this conversation',
+              ),
+        const SheetAction(
+          value: 'report',
+          label: 'Report',
+          icon: Iconsax.flag_copy,
+        ),
+        const SheetAction(
+          value: 'block',
+          label: 'Block',
+          icon: Iconsax.slash_copy,
+          detail: 'They can no longer message you',
+          destructive: true,
+        ),
+        const SheetAction(
+          value: 'leave',
+          label: 'Remove this conversation',
+          icon: Iconsax.trash_copy,
+          destructive: true,
+        ),
+      ],
+    );
+    if (choice == null || !mounted) return;
+    await _conversationAction(choice);
+  }
+
   Future<void> _conversationAction(String action) async {
     final notifier =
         ref.read(threadProvider(widget.args.conversationId).notifier);
@@ -306,28 +354,34 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
           ),
         ),
         actions: [
-          PopupMenuButton<String>(
+          IconButton(
             tooltip: 'More',
-            position: PopupMenuPosition.under,
-            icon: const Icon(Iconsax.more, size: 20),
-            onSelected: _conversationAction,
-            itemBuilder: (context) => const [
-              PopupMenuItem(value: 'mute', child: Text('Mute')),
-              PopupMenuItem(value: 'unmute', child: Text('Unmute')),
-              PopupMenuItem(value: 'report', child: Text('Report')),
-              PopupMenuItem(value: 'block', child: Text('Block')),
-              PopupMenuItem(
-                value: 'leave',
-                child: Text('Remove this conversation'),
-              ),
-            ],
+            icon: const Icon(Iconsax.more_copy, size: 20),
+            onPressed: () => _openMenu(state.muted, other),
           ),
         ],
       ),
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(child: _body(state, notifier, me)),
+            Expanded(
+              child: Stack(
+                children: [
+                  Positioned.fill(child: _body(state, notifier, me)),
+                  // Above the composer, clear of the last bubble. A chat is
+                  // read from the bottom, so this brings the reader back to
+                  // the newest thing said.
+                  Positioned(
+                    right: SpacingTokens.space12,
+                    bottom: SpacingTokens.space12,
+                    child: JumpToEnd(
+                      controller: _scroll,
+                      direction: JumpDirection.bottom,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             _Composer(
               controller: _box,
               focus: _focus,
@@ -369,8 +423,10 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     // composer under most of a screen of nothing. It runs the normal way now
     // and is pinned to the end by hand, which does the same job and starts at
     // the top when there is not enough to fill the screen.
-    // The API sends newest first; reading order is the other way.
-    final ordered = state.messages.reversed.toList();
+    // Already oldest first: the provider reverses what the server sends and
+    // prepends older pages. Reversing again here put the newest message at the
+    // top, which is not what a chat does.
+    final ordered = state.messages;
 
     // The first page arrives after the first build, and a chat opens at its
     // newest message rather than its oldest.
