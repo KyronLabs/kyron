@@ -85,6 +85,12 @@ class MediaBasket extends ChangeNotifier {
     }
   }
 
+  /// Empties it, after whatever was holding it has been sent.
+  void clear() {
+    _items.clear();
+    notifyListeners();
+  }
+
   void remove(String path) {
     _items.removeWhere((m) => m.path == path);
     notifyListeners();

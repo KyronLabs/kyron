@@ -1,6 +1,7 @@
 // lib/repositories/messages_repository.dart
 import '../models/conversation.dart';
 import '../services/api_client.dart';
+import '../models/post_media.dart';
 
 class MessagesRepository {
   final ApiClient _api;
@@ -52,13 +53,32 @@ class MessagesRepository {
     return MessagePage.fromJson(res.data ?? const {});
   }
 
-  Future<DirectMessage> send(String conversationId, String body) async {
+  Future<DirectMessage> send(
+    String conversationId,
+    String body, {
+    List<PendingMedia> media = const [],
+  }) async {
     final res = await _api.dio.post<Map<String, dynamic>>(
       '/messages/$conversationId',
-      data: {'body': body},
+      data: {
+        'body': body,
+        if (media.isNotEmpty)
+          'media':
+              media.where((m) => m.isReady).map((m) => m.toJson()).toList(),
+      },
     );
     return DirectMessage.fromJson(res.data ?? const {});
   }
+
+  /// Silences a conversation for the reader. Their own setting, not the other
+  /// side's -- muting somebody is not something they get to see or undo.
+  Future<void> setMuted(String conversationId, bool muted) => muted
+      ? _api.dio.put<void>('/messages/$conversationId/mute')
+      : _api.dio.delete<void>('/messages/$conversationId/mute');
+
+  /// Blocks the other person and takes the thread out of the reader's list.
+  Future<void> blockOther(String conversationId) =>
+      _api.dio.put<void>('/messages/$conversationId/block');
 
   Future<void> markRead(String conversationId) =>
       _api.dio.put<void>('/messages/$conversationId/read');

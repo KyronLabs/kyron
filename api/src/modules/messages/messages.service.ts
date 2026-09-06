@@ -5,7 +5,7 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { MediaKind, Prisma } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
 /** The other person in a conversation, as a list row needs them. */
@@ -33,6 +33,19 @@ export interface ConversationSummary {
   lastMessageAt: Date;
 }
 
+/** One attachment on a message. The same shape a post's carries. */
+export interface MessageMedia {
+  id: string;
+  kind: MediaKind;
+  url: string;
+  width: number | null;
+  height: number | null;
+  alt: string | null;
+  durationMs: number | null;
+  waveform: number[];
+  thumbnailUrl: string | null;
+}
+
 export interface MessageItem {
   id: string;
   body: string;
@@ -40,6 +53,20 @@ export interface MessageItem {
   createdAt: Date;
   /** True once the other side has read past it. Drawn as a tick. */
   seen: boolean;
+  media: MessageMedia[];
+}
+
+/** One attachment as the client sends it, after uploading the file. */
+export interface MessageMediaInput {
+  /** Defaults to an image, which is what an unlabelled upload is. */
+  kind?: MediaKind;
+  url: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+  durationMs?: number;
+  waveform?: number[];
+  thumbnailUrl?: string;
 }
 
 const DEFAULT_LIMIT = 30;
@@ -59,6 +86,9 @@ export class MessagesService {
 
   /** The longest one message may be. */
   static readonly maxBody = 4000;
+
+  /** How many attachments one message may carry. Same as a post's. */
+  static readonly maxMedia = 4;
 
   private readonly personShape = {
     id: true,
@@ -279,6 +309,7 @@ export class MessagesService {
         body: true,
         senderId: true,
         createdAt: true,
+        media: { select: this.mediaShape, orderBy: { position: 'asc' } },
       },
     });
 
@@ -301,10 +332,22 @@ export class MessagesService {
   }
 
   /** Says something. */
-  async send(viewerId: string, conversationId: string, body: string) {
+  async send(
+    viewerId: string,
+    conversationId: string,
+    body: string,
+    media: MessageMediaInput[] = [],
+  ) {
     const text = body.trim();
-    if (!text)
+    // A picture with no words is a message; an empty box is not.
+    if (!text && media.length === 0) {
       throw new BadRequestException('A message needs something in it.');
+    }
+    if (media.length > MessagesService.maxMedia) {
+      throw new BadRequestException(
+        `A message can carry at most ${MessagesService.maxMedia} attachments.`,
+      );
+    }
     if (text.length > MessagesService.maxBody) {
       throw new BadRequestException(
         `A message cannot exceed ${MessagesService.maxBody} characters.`,
@@ -320,8 +363,35 @@ export class MessagesService {
 
     const [message] = await this.prisma.$transaction([
       this.prisma.message.create({
-        data: { conversationId, senderId: viewerId, body: text },
-        select: { id: true, body: true, senderId: true, createdAt: true },
+        data: {
+          conversationId,
+          senderId: viewerId,
+          body: text,
+          ...(media.length > 0
+            ? {
+                media: {
+                  create: media.map((item, index) => ({
+                    kind: item.kind ?? MediaKind.IMAGE,
+                    url: item.url,
+                    width: item.width ?? null,
+                    height: item.height ?? null,
+                    alt: item.alt ?? null,
+                    durationMs: item.durationMs ?? null,
+                    waveform: item.waveform ?? [],
+                    thumbnailUrl: item.thumbnailUrl ?? null,
+                    position: index,
+                  })),
+                },
+              }
+            : {}),
+        },
+        select: {
+          id: true,
+          body: true,
+          senderId: true,
+          createdAt: true,
+          media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+        },
       }),
       this.prisma.conversation.update({
         where: { id: conversationId },
@@ -341,6 +411,21 @@ export class MessagesService {
     ]);
 
     return { ...message, seen: false };
+  }
+
+  /** What a message's attachments look like on the wire. */
+  private get mediaShape() {
+    return {
+      id: true,
+      kind: true,
+      url: true,
+      width: true,
+      height: true,
+      alt: true,
+      durationMs: true,
+      waveform: true,
+      thumbnailUrl: true,
+    } as const;
   }
 
   /** Marks everything in a conversation as read. */
@@ -426,6 +511,62 @@ export class MessagesService {
   }
 
   /** Blocking closes a conversation in both directions. */
+  /**
+   * Silences a conversation, or unsilences it.
+   *
+   * The reader's own setting: muting somebody is not something they should be
+   * able to see or undo, so it lives on the membership rather than the thread.
+   */
+  async setMuted(
+    viewerId: string,
+    conversationId: string,
+    muted: boolean,
+  ): Promise<{ id: string; muted: boolean }> {
+    await this.requireMembership(viewerId, conversationId);
+    await this.prisma.conversationMember.updateMany({
+      where: { conversationId, userId: viewerId },
+      data: { mutedAt: muted ? new Date() : null },
+    });
+    return { id: conversationId, muted };
+  }
+
+  /**
+   * Blocks the other person in a conversation, and hides it.
+   *
+   * One call rather than two, because blocking somebody you are talking to and
+   * leaving the thread in your list is not a state anybody wants: the block
+   * stops the messages and this takes the thread out of the way with it.
+   */
+  async blockOther(
+    viewerId: string,
+    conversationId: string,
+  ): Promise<{ ok: true; blockedId: string }> {
+    const conversation = await this.requireMembership(viewerId, conversationId);
+    const other = conversation.members.find((m) => m.userId !== viewerId);
+    if (!other) {
+      throw new BadRequestException('There is nobody else in this thread.');
+    }
+
+    await this.prisma.$transaction([
+      this.prisma.block.upsert({
+        where: {
+          blockerId_blockedId: {
+            blockerId: viewerId,
+            blockedId: other.userId,
+          },
+        },
+        create: { blockerId: viewerId, blockedId: other.userId },
+        update: {},
+      }),
+      this.prisma.conversationMember.updateMany({
+        where: { conversationId, userId: viewerId },
+        data: { hiddenAt: new Date() },
+      }),
+    ]);
+
+    return { ok: true, blockedId: other.userId };
+  }
+
   private async requireNoBlock(viewerId: string, otherId: string) {
     const block = await this.prisma.block.findFirst({
       where: {

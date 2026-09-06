@@ -57,15 +57,15 @@ void main() {
     });
 
     test('an orphan is promoted rather than dropped', () {
-      final layout = buildThreadLayout([c('x', parent: 'gone')],
-          collapseAfter: all);
+      final layout =
+          buildThreadLayout([c('x', parent: 'gone')], collapseAfter: all);
 
       expect(layout.rows.single.depth, 0);
     });
 
     test('a comment claiming itself as its parent still appears', () {
-      final layout = buildThreadLayout([c('loop', parent: 'loop')],
-          collapseAfter: all);
+      final layout =
+          buildThreadLayout([c('loop', parent: 'loop')], collapseAfter: all);
 
       expect(layout.rows.single.comment.id, 'loop');
     });
@@ -126,8 +126,8 @@ void main() {
 
     test('a row draws its own rail only when replies follow it', () {
       expect(plan(depth: 0).ownRailX, isNull);
-      expect(plan(depth: 0, children: true).ownRailX,
-          ThreadGeometry.columnFor(0));
+      expect(
+          plan(depth: 0, children: true).ownRailX, ThreadGeometry.columnFor(0));
     });
 
     test('an ancestor rail sits one column left of the ancestor', () {

@@ -465,6 +465,7 @@ model Media {
   id        String    @id @default(uuid()) @db.Uuid
   postId    String?   @db.Uuid
   commentId String?   @db.Uuid
+  messageId String?   @db.Uuid
   kind      MediaKind @default(IMAGE)
   url       String
 
@@ -507,9 +508,11 @@ model Media {
 
   post    Post?    @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  message Message? @relation(fields: [messageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([postId, position])
   @@index([commentId, position])
+  @@index([messageId, position])
 }
 
 // ==========================================
@@ -863,6 +866,10 @@ model ConversationMember {
   // stay, because the other side's history is the same rows.
   hiddenAt DateTime? @db.Timestamptz()
 
+  // Set when this member wants it quiet. Their own setting: muting is not
+  // something the other side should be able to see or undo.
+  mutedAt DateTime? @db.Timestamptz()
+
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
@@ -884,6 +891,7 @@ model Message {
 
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  media        Media[]
 
   @@index([conversationId, createdAt(sort: Desc), id(sort: Desc)])
 }

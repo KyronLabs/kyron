@@ -1,3 +1,5 @@
+import 'post_media.dart';
+
 // lib/models/conversation.dart
 
 /// Somebody in a conversation, as a row needs them.
@@ -56,6 +58,9 @@ class DirectMessage {
   /// quietly vanishing.
   final bool failed;
 
+  /// Attachments, in the order they were picked.
+  final List<PostMedia> media;
+
   const DirectMessage({
     required this.id,
     required this.body,
@@ -64,7 +69,11 @@ class DirectMessage {
     this.seen = false,
     this.sending = false,
     this.failed = false,
+    this.media = const [],
   });
+
+  /// A message with nothing in it is not a message, but a picture is.
+  bool get isEmpty => body.trim().isEmpty && media.isEmpty;
 
   factory DirectMessage.fromJson(Map<String, dynamic> json) => DirectMessage(
         id: json['id'] as String? ?? '',
@@ -74,6 +83,7 @@ class DirectMessage {
             DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
                 DateTime.now(),
         seen: json['seen'] == true,
+        media: PostMedia.listFrom(json['media']),
       );
 
   DirectMessage copyWith({bool? sending, bool? failed, bool? seen}) =>
@@ -85,6 +95,7 @@ class DirectMessage {
         seen: seen ?? this.seen,
         sending: sending ?? this.sending,
         failed: failed ?? this.failed,
+        media: media,
       );
 }
 
