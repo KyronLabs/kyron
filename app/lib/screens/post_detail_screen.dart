@@ -27,6 +27,11 @@ import '../widgets/share_post_sheet.dart';
 import '../widgets/voice_post_player.dart';
 import '../widgets/toast.dart';
 import '../widgets/empty_state.dart';
+import '../utils/thread_layout.dart';
+import '../widgets/comment_tile.dart';
+import '../widgets/thread.dart';
+import '../repositories/moderation_repository.dart' show ReportTarget;
+import 'report_screen.dart';
 
 /// One post, with its comments and their replies.
 ///
@@ -123,7 +128,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
         // then nothing at all, which reads as a list still loading.
         itemCount: state.comments.isEmpty
             ? 3
-            : state.comments.length + 2 + (state.hasMore ? 1 : 0),
+            : _thread(state).rows.length + 2 + (state.hasMore ? 1 : 0),
         itemBuilder: (context, index) {
           if (index == 0) {
             return _Post(
@@ -142,22 +147,64 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
             );
           }
 
-          final commentIndex = index - 2;
-          if (commentIndex >= state.comments.length) {
+          final rows = _thread(state).rows;
+          final rowIndex = index - 2;
+          if (rowIndex >= rows.length) {
             return _MoreButton(onTap: _notifier.loadMore);
           }
 
-          final comment = state.comments[commentIndex];
-          return _Comment(
-            comment: comment,
-            replies: state.replies[comment.id] ?? const [],
-            expanded: state.expanded.contains(comment.id),
-            onToggleReplies: () => _notifier.toggleReplies(comment.id),
-            onReply: () => _replyTo(comment),
-            onDelete: (target) => report(
-              context,
-              _notifier.deleteComment(target),
-            ),
+          final row = rows[rowIndex];
+          final comment = row.comment;
+          final expanded = state.expanded.contains(comment.id);
+          // Replies are fetched only when asked for, so an unexpanded comment
+          // simply has no children in the flat list. The affordance is driven
+          // by the count the server sent, not by what happens to be loaded.
+          final foldedReplies =
+              comment.replies > 0 && !expanded && row.depth == 0;
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ThreadItem(
+                depth: row.depth,
+                ancestorRails: row.ancestorRails,
+                // The rail under a folded comment has to reach the button
+                // that opens it, or the two read as unrelated.
+                hasChildrenBelow: row.hasChildrenBelow || foldedReplies,
+                isLastChild: row.isLastChild,
+                topGap: SpacingTokens.space12,
+                avatar: CommentAvatar(comment: comment),
+                child: CommentTile(
+                  comment: comment,
+                  onOpen: () => _openComment(comment),
+                  onReply: () => _replyTo(comment),
+                  onLike: () => _likeComment(comment),
+                  onAction: (action) => _commentAction(action, comment),
+                ),
+              ),
+              if (foldedReplies)
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: ThreadGeometry.columnFor(row.depth) + 12,
+                  ),
+                  child: TextButton(
+                    onPressed: () => _notifier.toggleReplies(comment.id),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: SpacingTokens.space8,
+                      ),
+                      visualDensity: VisualDensity.compact,
+                    ),
+                    child: Text(
+                      comment.replies == 1
+                          ? 'Show 1 reply'
+                          : 'Show ${formatCount(comment.replies)} replies',
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                  ),
+                ),
+              if (row.depth == 0 && row.isLastChild) const ThreadDivider(),
+            ],
           );
         },
       ),
@@ -287,6 +334,50 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   Future<void> _attach({required bool video}) async {
     final message = await _notifier.attach(video: video);
     if (message != null && mounted) Toast.show(context, message);
+  }
+
+  /// The rows to draw, from the comments loaded plus whichever reply runs
+  /// have been opened.
+  ///
+  /// Nothing folds here: the list only ever holds what has been fetched, and
+  /// the "show replies" button below a comment is what pulls the rest in.
+  ThreadLayout _thread(PostDetailState state) => buildThreadLayout(
+        [
+          ...state.comments,
+          for (final run in state.replies.entries)
+            if (state.expanded.contains(run.key)) ...run.value,
+        ],
+        collapseAfter: 1 << 30,
+      );
+
+  void _openComment(PostComment comment) => Navigator.pushNamed(
+        context,
+        Routes.comment,
+        arguments: comment.id,
+      );
+
+  Future<void> _likeComment(PostComment comment) async {
+    final error = await _notifier.toggleCommentLike(comment);
+    if (error != null && mounted) Toast.show(context, error);
+  }
+
+  Future<void> _commentAction(CommentAction action, PostComment comment) async {
+    switch (action) {
+      case CommentAction.openThread:
+        _openComment(comment);
+      case CommentAction.report:
+        await ReportScreen.open(
+          context,
+          target: ReportTarget.comment,
+          targetId: comment.id,
+          subject: 'this comment',
+        );
+      case CommentAction.delete:
+        if (!mounted) return;
+        report(context, _notifier.deleteComment(comment));
+      case CommentAction.copy:
+        break; // The tile owns the clipboard.
+    }
   }
 
   /// Puts the cursor in the box. A null comment replies to the post itself,
@@ -598,209 +689,6 @@ class _ThreadHeading extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class _Comment extends StatelessWidget {
-  final PostComment comment;
-  final List<PostComment> replies;
-  final bool expanded;
-  final VoidCallback onToggleReplies;
-  final VoidCallback onReply;
-  final void Function(PostComment) onDelete;
-
-  const _Comment({
-    required this.comment,
-    required this.replies,
-    required this.expanded,
-    required this.onToggleReplies,
-    required this.onReply,
-    required this.onDelete,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _CommentRow(
-          comment: comment,
-          onReply: onReply,
-          onDelete: () => onDelete(comment),
-        ),
-        if (comment.replies > 0)
-          Padding(
-            padding: const EdgeInsets.only(left: 56),
-            child: TextButton(
-              onPressed: onToggleReplies,
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: SpacingTokens.space8,
-                ),
-                visualDensity: VisualDensity.compact,
-              ),
-              child: Text(
-                expanded
-                    ? 'Hide replies'
-                    : comment.replies == 1
-                        ? '1 reply'
-                        : '${formatCount(comment.replies)} replies',
-                style: const TextStyle(fontSize: 12),
-              ),
-            ),
-          ),
-        if (expanded)
-          for (final reply in replies)
-            Padding(
-              padding: const EdgeInsets.only(left: 40),
-              child: _CommentRow(
-                comment: reply,
-                // One level of replies. A reply to a reply lands in the same
-                // thread, so there is nothing deeper to open.
-                onReply: onReply,
-                onDelete: () => onDelete(reply),
-              ),
-            ),
-      ],
-    );
-  }
-}
-
-class _CommentRow extends StatelessWidget {
-  final PostComment comment;
-  final VoidCallback onReply;
-  final VoidCallback onDelete;
-
-  const _CommentRow({
-    required this.comment,
-    required this.onReply,
-    required this.onDelete,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        SpacingTokens.space16,
-        SpacingTokens.space8,
-        SpacingTokens.space8,
-        SpacingTokens.space4,
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: () => openAuthor(context, comment.author),
-            child: PostAvatar(author: comment.author, radius: 14),
-          ),
-          const SizedBox(width: SpacingTokens.space12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        comment.author.displayName,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: SpacingTokens.space4),
-                    Text(
-                      '· ${age(comment.createdAt)}',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: scheme.onSurface.withValues(alpha: 0.45),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: SpacingTokens.space2),
-                if (comment.content.trim().isNotEmpty)
-                  PostText(
-                    content: comment.content,
-                    style: const TextStyle(fontSize: 14, height: 1.35),
-                  ),
-                // Split the same way a post's are: a recording is a player,
-                // not a picture, and putting one through the grid draws a
-                // tile with nothing in it.
-                for (final voice in comment.media.where((m) => m.isVoice))
-                  VoicePostPlayer(media: voice),
-                if (comment.media.any((m) => m.isVisual)) ...[
-                  const SizedBox(height: SpacingTokens.space8),
-                  MediaGrid(
-                    media: comment.media.where((m) => m.isVisual).toList(),
-                    radius: RadiusTokens.radiusSm,
-                  ),
-                ],
-                Row(
-                  children: [
-                    TextButton(
-                      onPressed: onReply,
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: SpacingTokens.space8,
-                        ),
-                        visualDensity: VisualDensity.compact,
-                        foregroundColor:
-                            scheme.onSurface.withValues(alpha: 0.6),
-                      ),
-                      child:
-                          const Text('Reply', style: TextStyle(fontSize: 12)),
-                    ),
-                    if (comment.mine)
-                      TextButton(
-                        onPressed: () => _confirmDelete(context),
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: SpacingTokens.space8,
-                          ),
-                          visualDensity: VisualDensity.compact,
-                          foregroundColor: scheme.error,
-                        ),
-                        child: const Text('Delete',
-                            style: TextStyle(fontSize: 12)),
-                      ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Future<void> _confirmDelete(BuildContext context) async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (dialogContext) => AlertDialog(
-        title: const Text('Delete this comment?'),
-        content: const Text('It will be removed from the thread.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext, false),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext, true),
-            style: TextButton.styleFrom(
-              foregroundColor: Theme.of(dialogContext).colorScheme.error,
-            ),
-            child: const Text('Delete'),
-          ),
-        ],
-      ),
-    );
-    if (confirmed == true) onDelete();
   }
 }
 

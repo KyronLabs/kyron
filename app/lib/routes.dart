@@ -37,6 +37,7 @@ import 'screens/onboard_step1_screen.dart';
 import 'screens/onboard_step2_screen.dart';
 import 'screens/onboard_step3_screen.dart';
 import 'screens/follow_list_screen.dart';
+import 'screens/comment_screen.dart';
 
 class Routes {
   static const splash = '/';
@@ -58,6 +59,9 @@ class Routes {
   static const settings = '/settings';
   static const notifications = '/notifications';
   static const postDetail = '/post';
+
+  /// One comment and the conversation under it.
+  static const comment = '/comment';
   static const postAnalytics = '/post/analytics';
   static const hashtag = '/tag';
   static const topic = '/topic';
@@ -161,6 +165,14 @@ class Routes {
 
       case notifications:
         return _page(const NotificationsScreen());
+
+      case comment:
+        final id = settings.arguments;
+        return _page(
+          id is String && id.isNotEmpty
+              ? CommentScreen(commentId: id)
+              : const _UnknownRoute(name: comment),
+        );
 
       case postDetail:
         final id = settings.arguments;

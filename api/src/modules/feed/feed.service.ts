@@ -107,6 +107,10 @@ export interface FeedComment {
   media: FeedMedia[];
   /** Whether the reader wrote it, and so may delete it. */
   mine: boolean;
+  /** How many people liked it. */
+  likes: number;
+  /** Whether the reader is one of them. */
+  liked: boolean;
 }
 
 export interface CommentPage {
@@ -267,6 +271,13 @@ export class FeedService {
 
   /** How many topics one post may be filed under. */
   static readonly maxTopics = 3;
+
+  // How deep a comment page walks before it stops following replies.
+  static readonly maxThreadDepth = 8;
+
+  // And how many it reads at each level. A comment with ten thousand answers
+  // is a denial of service, not a conversation.
+  static readonly maxThreadNodes = 200;
 
   /**
    * Resolves topic slugs to rows to attach to a post.
@@ -1197,7 +1208,7 @@ export class FeedService {
           })),
         },
       },
-      select: this.commentShape,
+      select: this.commentShapeFor(authorId),
     });
     return this.toFeedComment(comment, authorId);
   }
@@ -1287,7 +1298,7 @@ export class FeedService {
       take: limit + 1,
       cursor: cursor ? { id: cursor } : undefined,
       skip: cursor ? 1 : 0,
-      select: this.commentShape,
+      select: this.commentShapeFor(viewerId),
     });
 
     const hasMore = rows.length > limit;
@@ -1310,8 +1321,23 @@ export class FeedService {
       parentId: true,
       authorId: true,
       author: { select: this.authorShape },
-      _count: { select: { replies: true } },
+      _count: { select: { replies: true, likes: true } },
       media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+    } as const;
+  }
+
+  /**
+   * The comment select, plus whether this reader has liked each row.
+   *
+   * A nested `where` on the reader rather than a second query: one row comes
+   * back per comment the reader liked, none otherwise, so `likes.length` is
+   * the boolean. Counting them all and checking membership in code would pull
+   * every like on a popular comment across the wire to answer a yes or no.
+   */
+  private commentShapeFor(viewerId: string) {
+    return {
+      ...this.commentShape,
+      likes: { where: { userId: viewerId }, select: { id: true }, take: 1 },
     } as const;
   }
 
@@ -1330,7 +1356,72 @@ export class FeedService {
       replies: row._count.replies,
       media: row.media,
       mine: row.authorId === viewerId,
+      likes: row._count.likes ?? 0,
+      liked: (row.likes?.length ?? 0) > 0,
     };
+  }
+
+  /**
+   * One comment and everything hanging off it, for the page that opens when a
+   * reply is tapped.
+   *
+   * Read as a whole rather than a level at a time: the screen draws connector
+   * lines from a parent to its children, and it cannot know where a line ends
+   * until it holds the branch. [maxThreadDepth] is what stops a pathological
+   * chain from turning one tap into an unbounded walk.
+   */
+  async commentThread(viewerId: string, commentId: string) {
+    const root = await this.prisma.comment.findFirst({
+      where: { id: commentId, deletedAt: null },
+      select: { ...this.commentShapeFor(viewerId), postId: true },
+    });
+    if (!root) throw new NotFoundException('That comment does not exist.');
+
+    const all: FeedComment[] = [];
+    let frontier = [root.id];
+    for (let depth = 0; depth < FeedService.maxThreadDepth; depth++) {
+      if (frontier.length === 0) break;
+      const rows = await this.prisma.comment.findMany({
+        where: { parentId: { in: frontier }, deletedAt: null },
+        orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+        take: FeedService.maxThreadNodes,
+        select: this.commentShapeFor(viewerId),
+      });
+      all.push(...rows.map((row) => this.toFeedComment(row, viewerId)));
+      frontier = rows.map((row) => row.id);
+    }
+
+    return {
+      postId: root.postId,
+      root: this.toFeedComment(root, viewerId),
+      replies: all,
+    };
+  }
+
+  /** Likes a comment, or unlikes one already liked. Idempotent either way. */
+  async setCommentLike(viewerId: string, commentId: string, liked: boolean) {
+    const comment = await this.prisma.comment.findFirst({
+      where: { id: commentId, deletedAt: null },
+      select: { id: true },
+    });
+    if (!comment) throw new NotFoundException('That comment does not exist.');
+
+    if (liked) {
+      // Nothing on a repeat: the unique index is what makes a double tap one
+      // like, and catching its violation here would be the same result with
+      // an exception in the middle.
+      await this.prisma.commentLike.createMany({
+        data: [{ userId: viewerId, commentId }],
+        skipDuplicates: true,
+      });
+    } else {
+      await this.prisma.commentLike.deleteMany({
+        where: { userId: viewerId, commentId },
+      });
+    }
+
+    const likes = await this.prisma.commentLike.count({ where: { commentId } });
+    return { id: commentId, likes, liked };
   }
 
   /**
@@ -1494,8 +1585,10 @@ interface CommentRow {
     username: string | null;
     profile: { avatarUrl: string | null } | null;
   };
-  _count: { replies: number };
+  _count: { replies: number; likes?: number };
   media: FeedMedia[];
+  /** Present only when the row was read through commentShapeFor. */
+  likes?: { id: string }[];
 }
 
 interface AuthorRow {
