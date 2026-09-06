@@ -56,7 +56,6 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       autofillHints: [
         widget.isNew ? AutofillHints.newPassword : AutofillHints.password,
       ],
-      style: const TextStyle(fontSize: 15),
       decoration: InputDecoration(
         labelText: widget.label,
         hintText: widget.hint,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../widgets/app_input_field.dart';
 import '../widgets/app_button.dart';
 
@@ -30,7 +31,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Forgot password')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Form(
           key: _formKey,
           child: Column(

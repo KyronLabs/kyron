@@ -83,7 +83,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Create your account')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Form(
           key: _formKey,
           child: Column(
@@ -94,10 +94,7 @@ class _SignupScreenState extends State<SignupScreen> {
               // USERNAME
               AppInputField(
                 hint: 'Username',
-                prefix: const Text(
-                  '@',
-                  style: TextStyle(color: Color(0xFF7E8A9A)),
-                ),
+                prefixText: '@',
                 controller: _username,
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(r'[a-z0-9_]')),

@@ -115,7 +115,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
     return GradientScaffold(
       appBar: AppBar(title: const Text("Verify Email")),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
