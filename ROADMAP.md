@@ -76,11 +76,12 @@ is shippable on its own.
    ceiling, so a small highly-compressible image cannot decode to hundreds of
    megabytes on every phone that opens the post.
 
-   **Still open: transcoding.** A clip is stored exactly as it arrived — no
-   normalisation to H.264, no bitrate cap, and no server-side poster if the
-   client's own fails to upload. That needs ffmpeg in the API image, which is a
-   deployment change worth making deliberately. This is what `media/` was meant
-   to be.
+   ~~**Still open: transcoding.**~~ Built. ffmpeg is in the API image; a clip
+   over 720p or 2.5 Mbps is re-encoded to H.264 with the index moved to the
+   front so playback starts before the file has finished arriving, a poster is
+   cut from one second in, and anything over five minutes is refused rather
+   than silently truncated. Without ffmpeg the clip is stored exactly as it
+   arrived and the service says so at boot.
 6. **Feed quality signals.** Ranking has no dwell time, no negative feedback,
    no "seen" decay beyond the view record. The engine is there; it is being fed
    almost nothing.

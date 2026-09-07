@@ -14,6 +14,11 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Clips are normalised on upload and get a poster cut from them. Anything over
+  720p or 2.5 Mbps is re-encoded to H.264 with the index moved to the front, so
+  playback starts before the file has finished arriving, and every list drawing
+  the post has a still to show before anybody presses play. A clip longer than
+  five minutes is refused rather than quietly truncated.
 - Direct messages are encrypted end to end. Every install makes an X25519
   keypair, keeps the secret half on the device and publishes the public half;
   the text is sealed with XChaCha20-Poly1305 under a key derived from both

@@ -190,13 +190,17 @@ class FeedRepository {
   /// list that later draws the post has a picture rather than having to open a
   /// decoder for it.
   Future<PendingMedia> uploadMedia(PendingMedia pending) async {
-    final url = await _upload(
+    final uploaded = await _uploadFile(
       pending.path,
       width: pending.width,
       height: pending.height,
     );
+    final url = uploaded.url;
 
-    var thumbnailUrl = pending.thumbnailUrl;
+    // The server cuts a poster from a clip when it has ffmpeg. Preferred over
+    // the client's own: it comes from the file that was actually stored, and
+    // it exists even when the device could not make one.
+    var thumbnailUrl = uploaded.thumbnailUrl ?? pending.thumbnailUrl;
     final still = pending.thumbnailPath;
     if (thumbnailUrl == null && still != null) {
       // Best effort, and deliberately not fatal: a clip whose still would not
@@ -204,7 +208,7 @@ class FeedRepository {
       // opening a player for it. Logged rather than swallowed so a run of
       // these is visible.
       try {
-        thumbnailUrl = await _upload(still);
+        thumbnailUrl = (await _uploadFile(still)).url;
       } catch (error) {
         AppLog.instance
             .error('media', 'A clip went up without its still: $error');
@@ -218,8 +222,12 @@ class FeedRepository {
     );
   }
 
-  /// Puts one file on the server and answers with the URL it was given.
-  Future<String> _upload(String path, {int? width, int? height}) async {
+  /// Puts one file on the server and answers with what came back.
+  Future<_Uploaded> _uploadFile(
+    String path, {
+    int? width,
+    int? height,
+  }) async {
     final form = FormData.fromMap({
       'file': await MultipartFile.fromFile(
         path,
@@ -237,7 +245,11 @@ class FeedRepository {
 
     final url = res.data?['url'] as String?;
     if (url == null) throw StateError('The upload returned no URL.');
-    return url;
+    return _Uploaded(
+      url: url,
+      thumbnailUrl: res.data?['thumbnailUrl'] as String?,
+      durationMs: (res.data?['durationMs'] as num?)?.toInt(),
+    );
   }
 
   /// Returns the post's recounted repost total.
@@ -373,4 +385,21 @@ class FeedRepository {
         .get<Map<String, dynamic>>('/feed/posts/$postId/analytics');
     return PostAnalytics.fromJson(res.data ?? const {});
   }
+}
+
+/// What an upload answered with.
+class _Uploaded {
+  final String url;
+
+  /// A poster the server cut from a clip, when it could.
+  final String? thumbnailUrl;
+
+  /// How long the clip runs, when the server could measure it.
+  final int? durationMs;
+
+  const _Uploaded({
+    required this.url,
+    this.thumbnailUrl,
+    this.durationMs,
+  });
 }
