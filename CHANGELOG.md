@@ -151,6 +151,16 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- A community's picture and banner asked for a URL. Nobody has a URL for a
+  photograph on their phone, so the only thing those two boxes could do was
+  paste a link to somebody else's image. They are the same gallery pickers the
+  profile uses -- one widget now, drawn by both.
+- Comments on a post began at the very edge of the screen while the post above
+  them was inset. They carry the same margin as everything else on the page.
+- The rule under a comment fell in the wrong place. It was drawn on whichever
+  row was the last top-level comment, so on a post with one comment it landed
+  between that comment and its own reply, and two comments got no rule between
+  them at all. It closes a comment and everything hanging off it now.
 - A reply went to the wrong person. Every reply to a reply was re-hung on that
   reply's own parent, so answering somebody halfway down a thread filed the
   answer beside them under the top comment, addressed to whoever wrote that. A

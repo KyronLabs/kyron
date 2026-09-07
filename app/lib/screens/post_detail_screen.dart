@@ -134,6 +134,10 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
       );
     }
 
+    // Once for the build, not once per row: this was rebuilding the whole
+    // thread for every comment drawn.
+    final rows = _thread(state).rows;
+
     return RefreshIndicator(
       onRefresh: _notifier.load,
       child: ListView.builder(
@@ -145,7 +149,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
         // then nothing at all, which reads as a list still loading.
         itemCount: state.comments.isEmpty
             ? 3
-            : _thread(state).rows.length + 2 + (state.hasMore ? 1 : 0),
+            : rows.length + 2 + (state.hasMore ? 1 : 0),
         itemBuilder: (context, index) {
           if (index == 0) {
             return _Post(
@@ -164,7 +168,6 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
             );
           }
 
-          final rows = _thread(state).rows;
           final rowIndex = index - 2;
           if (rowIndex >= rows.length) {
             return _MoreButton(onTap: _notifier.loadMore);
@@ -182,49 +185,74 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
           // gating this on depth 0 hid them behind nothing at all.
           final foldedReplies = comment.replies > 0 && !expanded;
 
+          // A hairline closes a top-level comment together with everything
+          // hanging off it. The rule is [endsBranch], so it can be tested.
+          final closesBranch = endsBranch(rows, rowIndex);
+
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ThreadItem(
-                depth: row.depth,
-                ancestorRails: row.ancestorRails,
-                // The rail under a folded comment has to reach the button
-                // that opens it, or the two read as unrelated.
-                hasChildrenBelow: row.hasChildrenBelow || foldedReplies,
-                isLastChild: row.isLastChild,
-                topGap: SpacingTokens.space12,
-                avatar: CommentAvatar(comment: comment),
-                child: CommentTile(
-                  comment: comment,
-                  onOpen: () => _openComment(comment),
-                  onReply: () => _replyTo(comment),
-                  onLike: () => _likeComment(comment),
-                  onAction: (action) => _commentAction(action, comment),
+              // The rows carry the same inset as the post and the heading
+              // above them. Without it a comment began at the very edge of
+              // the screen while everything else on the page was indented.
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: SpacingTokens.space16,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ThreadItem(
+                      depth: row.depth,
+                      ancestorRails: row.ancestorRails,
+                      // The rail under a folded comment has to reach the
+                      // button that opens it, or the two read as unrelated.
+                      hasChildrenBelow: row.hasChildrenBelow || foldedReplies,
+                      isLastChild: row.isLastChild,
+                      topGap: SpacingTokens.space12,
+                      avatar: CommentAvatar(comment: comment),
+                      child: CommentTile(
+                        comment: comment,
+                        onOpen: () => _openComment(comment),
+                        onReply: () => _replyTo(comment),
+                        onLike: () => _likeComment(comment),
+                        onAction: (action) => _commentAction(action, comment),
+                      ),
+                    ),
+                    // A row of the thread rather than a button beside it, so
+                    // the rail from the comment above runs down into it
+                    // instead of stopping at a band of padding the strip
+                    // never covers.
+                    if (foldedReplies)
+                      Builder(builder: (context) {
+                        final marker = ThreadMoreReplies(
+                          faces: comment.replyFaces,
+                          count: comment.replies,
+                          onTap: () => _notifier.toggleReplies(comment.id),
+                        );
+                        return ThreadItem(
+                          depth: row.depth + 1,
+                          ancestorRails: [
+                            ...row.ancestorRails,
+                            !row.isLastChild,
+                          ],
+                          hasChildrenBelow: false,
+                          isLastChild: true,
+                          avatarSize: ThreadMoreReplies.faceSize,
+                          avatarWidth: ThreadMoreReplies.widthFor(
+                            comment.replyFaces.length,
+                          ),
+                          avatar: marker.leading(context),
+                          child: marker,
+                        );
+                      }),
+                  ],
                 ),
               ),
-              // A row of the thread rather than a button beside it, so the
-              // rail from the comment above runs down into it instead of
-              // stopping at a band of padding the strip never covers.
-              if (foldedReplies)
-                Builder(builder: (context) {
-                  final marker = ThreadMoreReplies(
-                    faces: comment.replyFaces,
-                    count: comment.replies,
-                    onTap: () => _notifier.toggleReplies(comment.id),
-                  );
-                  return ThreadItem(
-                    depth: row.depth + 1,
-                    ancestorRails: [...row.ancestorRails, !row.isLastChild],
-                    hasChildrenBelow: false,
-                    isLastChild: true,
-                    avatarSize: ThreadMoreReplies.faceSize,
-                    avatarWidth:
-                        ThreadMoreReplies.widthFor(comment.replyFaces.length),
-                    avatar: marker.leading(context),
-                    child: marker,
-                  );
-                }),
-              if (row.depth == 0 && row.isLastChild) const ThreadDivider(),
+              // Outside the inset, because a rule that stops short of both
+              // edges reads as part of the comment above it rather than as
+              // the boundary between two conversations.
+              if (closesBranch) const ThreadDivider(),
             ],
           );
         },

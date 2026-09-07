@@ -196,3 +196,17 @@ List<PostComment> assembleThread({
   }
   return flat;
 }
+
+/// Whether the row at [index] is the last one of a top-level comment and
+/// everything hanging off it, so a rule belongs under it.
+///
+/// A branch ends where the next one begins. The screen used to ask a row
+/// whether it was `isLastChild` at depth 0, which is a different question --
+/// it picks out the *last* top-level comment, so the only rule on the page
+/// fell after the final branch, and on a post with a single comment it landed
+/// between that comment and its own reply.
+///
+/// False on the final row: the composer below it is its own edge, and a rule
+/// there would double up with it.
+bool endsBranch(List<ThreadRow> rows, int index) =>
+    index + 1 < rows.length && rows[index + 1].depth == 0;

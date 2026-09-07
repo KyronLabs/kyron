@@ -222,4 +222,50 @@ void main() {
       );
     });
   });
+
+  group('endsBranch', () {
+    // The tree from the screenshots: one branch three deep, then two
+    // comments of their own.
+    final rows = buildThreadLayout(
+      [
+        c('c1'),
+        c('c2', parent: 'c1'),
+        c('c3', parent: 'c2'),
+        c('c4'),
+        c('c5'),
+      ],
+      collapseAfter: all,
+    ).rows;
+
+    test('the rows come out in the order the screen draws them', () {
+      expect(rows.map((r) => r.comment.id), ['c1', 'c2', 'c3', 'c4', 'c5']);
+      expect(rows.map((r) => r.depth), [0, 1, 2, 0, 0]);
+    });
+
+    test('no rule inside a branch', () {
+      // Between a comment and its own reply is the one place a rule must not
+      // land: it reads as the end of the conversation it is in the middle of.
+      expect(endsBranch(rows, 0), isFalse);
+      expect(endsBranch(rows, 1), isFalse);
+    });
+
+    test('a rule where the next branch starts', () {
+      expect(endsBranch(rows, 2), isTrue);
+      expect(endsBranch(rows, 3), isTrue);
+    });
+
+    test('no rule after the last row', () {
+      // The composer below it is its own edge.
+      expect(endsBranch(rows, 4), isFalse);
+    });
+
+    test('a single comment with a reply gets no rule at all', () {
+      final one = buildThreadLayout(
+        [c('a'), c('b', parent: 'a')],
+        collapseAfter: all,
+      ).rows;
+
+      expect(one.every((r) => !endsBranch(one, one.indexOf(r))), isTrue);
+    });
+  });
 }

@@ -4,12 +4,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import 'package:image_picker/image_picker.dart';
+
 import '../models/community.dart';
+import '../models/post_media.dart';
+import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../providers/communities_provider.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/action_sheet.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/hairline.dart';
+import '../widgets/images_field.dart';
 import '../widgets/section_tabs.dart';
 import '../widgets/toast.dart';
 
@@ -106,19 +111,59 @@ class _DetailsState extends ConsumerState<_Details> {
   late final _name = TextEditingController(text: widget.community.name);
   late final _description =
       TextEditingController(text: widget.community.description ?? '');
-  late final _avatar =
-      TextEditingController(text: widget.community.avatarUrl ?? '');
-  late final _banner =
-      TextEditingController(text: widget.community.bannerUrl ?? '');
+  final _picker = ImagePicker();
+
+  /// Held here rather than in a text box. These are photographs, and nobody
+  /// has a URL for a photograph on their phone -- the two fields that asked
+  /// for one could only ever be filled by pasting a link to somebody else's
+  /// image.
+  late String? _avatarUrl = widget.community.avatarUrl;
+  late String? _bannerUrl = widget.community.bannerUrl;
+
+  ImageSlot? _uploading;
   bool _saving = false;
 
   @override
   void dispose() {
     _name.dispose();
     _description.dispose();
-    _avatar.dispose();
-    _banner.dispose();
     super.dispose();
+  }
+
+  /// Picks a photograph and puts it on the server, which answers with the URL
+  /// the form then saves. Shown as soon as it lands, saved when Save is
+  /// pressed -- the same commit point as the name and the description.
+  Future<void> _pick(ImageSlot slot) async {
+    final picked = await _picker.pickImage(
+      source: ImageSource.gallery,
+      maxWidth: slot == ImageSlot.cover ? 1600 : 800,
+    );
+    if (picked == null) return;
+
+    setState(() => _uploading = slot);
+    try {
+      final uploaded = await ref.read(feedRepositoryProvider).uploadMedia(
+            PendingMedia(path: picked.path, kind: MediaKind.image),
+          );
+      final url = uploaded.url;
+      // An upload that answered without a URL has not stored anything, and
+      // saving the old one silently would look like the pick did nothing.
+      if (url == null) throw StateError('The upload did not return a URL.');
+      if (!mounted) return;
+      setState(() {
+        if (slot == ImageSlot.avatar) {
+          _avatarUrl = url;
+        } else {
+          _bannerUrl = url;
+        }
+      });
+    } catch (error) {
+      if (mounted) {
+        Toast.show(context, describeApiError(error, sessionIsLive: true));
+      }
+    } finally {
+      if (mounted) setState(() => _uploading = null);
+    }
   }
 
   Future<void> _save() async {
@@ -129,8 +174,8 @@ class _DetailsState extends ConsumerState<_Details> {
             widget.community.slug,
             name: _name.text.trim(),
             description: _description.text.trim(),
-            avatarUrl: _avatar.text.trim(),
-            bannerUrl: _banner.text.trim(),
+            avatarUrl: _avatarUrl ?? '',
+            bannerUrl: _bannerUrl ?? '',
           );
       widget.onSaved(updated);
       if (mounted) Toast.show(context, 'Saved');
@@ -199,6 +244,15 @@ class _DetailsState extends ConsumerState<_Details> {
     return ListView(
       padding: const EdgeInsets.all(SpacingTokens.space20),
       children: [
+        ImagesField(
+          avatarUrl: _avatarUrl,
+          coverUrl: _bannerUrl,
+          uploading: _uploading,
+          onPickAvatar: () => _pick(ImageSlot.avatar),
+          onPickCover: () => _pick(ImageSlot.cover),
+          hint: 'Tap the banner or the picture to change it',
+        ),
+        const SizedBox(height: SpacingTokens.space24),
         TextField(
           controller: _name,
           maxLength: 60,
@@ -212,27 +266,9 @@ class _DetailsState extends ConsumerState<_Details> {
           minLines: 2,
           decoration: const InputDecoration(labelText: 'Description'),
         ),
-        const SizedBox(height: SpacingTokens.space16),
-        TextField(
-          controller: _avatar,
-          keyboardType: TextInputType.url,
-          decoration: const InputDecoration(
-            labelText: 'Picture',
-            hintText: 'https://…',
-          ),
-        ),
-        const SizedBox(height: SpacingTokens.space16),
-        TextField(
-          controller: _banner,
-          keyboardType: TextInputType.url,
-          decoration: const InputDecoration(
-            labelText: 'Banner',
-            hintText: 'https://…',
-          ),
-        ),
         const SizedBox(height: SpacingTokens.space24),
         FilledButton(
-          onPressed: _saving ? null : _save,
+          onPressed: _saving || _uploading != null ? null : _save,
           child: _saving
               ? const SizedBox.square(
                   dimension: 18,
