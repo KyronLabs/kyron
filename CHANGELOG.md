@@ -14,6 +14,25 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Clips are normalised on upload and get a poster cut from them. Anything over
+  720p or 2.5 Mbps is re-encoded to H.264 with the index moved to the front, so
+  playback starts before the file has finished arriving, and every list drawing
+  the post has a still to show before anybody presses play. A clip longer than
+  five minutes is refused rather than quietly truncated.
+- Direct messages are encrypted end to end. Every install makes an X25519
+  keypair, keeps the secret half on the device and publishes the public half;
+  the text is sealed with XChaCha20-Poly1305 under a key derived from both
+  sides, so the server carries ciphertext it has no key for. A bubble carries a
+  lock when the message was sealed, because a conversation is only encrypted
+  when both sides have a key and the reader should be told which they got.
+  `docs/E2EE.md` is mostly about what this does not cover -- one key per
+  install, no forward secrecy, no key verification, attachments still in the
+  clear -- because a half-understood encryption feature is worse than none.
+- Loading skeletons in the shape of what is coming, on the feed, a post, a
+  chat, the conversation list, the comment pages and Explore's people. A
+  centred spinner says something is happening and nothing else; a skeleton says
+  how much is coming and roughly what it looks like, so the page fills in
+  rather than rearranging itself the moment it lands.
 - Push notifications, server side and app side both. A like, a repost, a
   comment, a reply, a follow or a message reaches whoever it is about: over the
   socket if they have the app open, as a push to their phone if they do not,
@@ -97,6 +116,10 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- One loading language across the app. The notifications screen had its own
+  shimmer, from its own library, in hardcoded hex that ignored the theme; it
+  now uses the same skeletons as everything else, and the extra dependency is
+  gone.
 - No dropdown menus anywhere. The conversation menu, the comment overflow, the
   community member row and the language picker are bottomsheets now, off one
   shared sheet. A popup opens against the top of the screen on a row near the

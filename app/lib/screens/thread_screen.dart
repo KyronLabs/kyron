@@ -23,6 +23,7 @@ import '../widgets/media_tray.dart';
 import 'report_screen.dart';
 import '../widgets/media_grid.dart';
 import '../widgets/voice_post_player.dart';
+import '../widgets/skeleton.dart';
 
 /// Which conversation, and who is in it.
 ///
@@ -398,7 +399,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
 
   Widget _body(ThreadState state, ThreadNotifier notifier, String? me) {
     if (state.loadingFirstPage) {
-      return const Center(child: CircularProgressIndicator());
+      return SkeletonList.messages();
     }
     if (state.messages.isEmpty) {
       return (state.error != null
@@ -649,6 +650,17 @@ class _Status extends StatelessWidget {
             message.sending ? 'Sending…' : age(message.createdAt),
             style: TextStyle(fontSize: 11, color: muted),
           ),
+          // Shown rather than assumed. A conversation is encrypted only when
+          // both sides have published a key, and the reader is entitled to
+          // know which kind of message this actually was.
+          if (message.encrypted) ...[
+            const SizedBox(width: 4),
+            Icon(
+              message.unreadable ? Iconsax.lock_1_copy : Iconsax.lock_copy,
+              size: 11,
+              color: muted,
+            ),
+          ],
           if (mine && !message.sending) ...[
             const SizedBox(width: 3),
             Icon(

@@ -106,6 +106,7 @@ model User {
   pollVotes         PollVote[]
   kyronPointEvents  KyronPointEvent[] // 🔥 NEW
   devices           DeviceToken[]
+  messageKeys       MessageKey[]
 
   @@index([email])
   @@index([status])
@@ -988,5 +989,34 @@ model DeviceToken {
   /// Refreshed on every launch, so tokens nobody has used can be swept.
   updatedAt DateTime @updatedAt @db.Timestamptz()
 
+  @@index([userId])
+}
+
+/// Somebody's public half, so other people can write to them in private.
+///
+/// Public by design: this is the key anyone needs to seal a message only the
+/// holder of the matching secret can open. The secret half never reaches this
+/// server, which is the whole point -- what the Message table then carries is
+/// ciphertext nobody here has a key for.
+///
+/// One row per install. Two devices are two keys, and a message sealed for one
+/// cannot be opened by the other; that is a real limit, written down rather
+/// than papered over.
+model MessageKey {
+  id     String @id @default(uuid()) @db.Uuid
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// X25519, raw bytes, base64url. 32 bytes before encoding.
+  publicKey String @unique
+
+  /// Which install it belongs to, so a device can replace its own key
+  /// without disturbing the others.
+  deviceId String
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@unique([userId, deviceId])
   @@index([userId])
 }

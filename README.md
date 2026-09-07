@@ -41,7 +41,7 @@ does today. Where something is planned rather than built, it says so.
 | **Posts** | Text, photos, video, polls, voice recordings, link previews, quotes, reposts |
 | **Comments** | Real threading at any depth, connector rails, a page per comment, media in replies |
 | **Profiles** | Bio, links, avatar and cover, followers and following, editing |
-| **Messages** | One-to-one, attachments, read state, mute, block, report, delete |
+| **Messages** | One-to-one, attachments, read state, mute, block, report, delete. Text is encrypted end to end — [what that does and does not cover](docs/E2EE.md) |
 | **Communities** | Create, join, post, moderate, roles, bans, banner and picture |
 | **Explore** | Trending hashtags, topics, people you might follow |
 | **Moderation** | Report, block, mute people, threads and words |
@@ -56,7 +56,7 @@ Listed because they have been described as finished elsewhere and are not.
 | AR camera lenses | Not started. The menu entry opens a "coming soon" screen |
 | Live video | Not started. Same |
 | Portable identity (DID / AT Protocol) | Not started. The column exists; nothing writes to it |
-| End-to-end encrypted posts | Not started |
+| End-to-end encrypted *posts* | Not started. Direct messages are encrypted; posts are public by nature |
 | Creator equity pool | Not started |
 
 The plan, and the order, is in [`ROADMAP.md`](ROADMAP.md).

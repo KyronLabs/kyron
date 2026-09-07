@@ -4,6 +4,8 @@ import 'package:kyron_app/providers/messages_provider.dart';
 import 'package:kyron_app/repositories/messages_repository.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/models/post_media.dart';
+import 'package:kyron_app/repositories/keys_repository.dart';
+import 'package:kyron_app/services/message_vault.dart';
 
 class _Down implements Exception {}
 
@@ -74,6 +76,13 @@ class _FakeMessages extends MessagesRepository {
 DirectMessage _msg(String id, String body, String sender, DateTime at) =>
     DirectMessage(id: id, body: body, senderId: sender, createdAt: at);
 
+/// A vault that has never been unlocked.
+///
+/// With no keypair it seals nothing and opens nothing, so every message goes
+/// and arrives exactly as it was written -- which is what these tests are
+/// about, and what a conversation with somebody whose app has no key does.
+MessageVault _lockedVault() => MessageVault(KeysRepository(ApiClient()));
+
 void main() {
   group('a thread', () {
     test('is held oldest last, whichever order the server answers in',
@@ -85,7 +94,7 @@ void main() {
         _msg('b', 'second', 'them', DateTime(2026, 1, 2)),
         _msg('a', 'first', 'me', DateTime(2026, 1, 1)),
       ]);
-      final notifier = ThreadNotifier(repo, 'c1');
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
 
       expect(
@@ -96,7 +105,7 @@ void main() {
 
     test('marks itself read when it opens', () async {
       final repo = _FakeMessages();
-      ThreadNotifier(repo, 'c1');
+      ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
       expect(repo.readMarks, ['c1']);
     });
@@ -105,6 +114,7 @@ void main() {
       const ada = MessagePerson(id: 'ada', name: 'Ada', username: 'ada');
       final notifier = ThreadNotifier(
         _FakeMessages(people: const [ada]),
+        _lockedVault(),
         'c1',
       );
       await pumpEventQueue();
@@ -115,7 +125,7 @@ void main() {
       // A chat that sits still until a round trip completes feels broken on a
       // slow connection.
       final repo = _FakeMessages();
-      final notifier = ThreadNotifier(repo, 'c1');
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
 
       final sending = notifier.send('hello', senderId: 'me');
@@ -130,7 +140,7 @@ void main() {
     test('keeps a message that failed, and says so', () async {
       // Quietly dropping it loses what somebody wrote.
       final repo = _FakeMessages(sendFails: true);
-      final notifier = ThreadNotifier(repo, 'c1');
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
 
       await notifier.send('hello', senderId: 'me');
@@ -142,7 +152,7 @@ void main() {
 
     test('sends a failed one again without duplicating it', () async {
       final repo = _FakeMessages(sendFails: true);
-      final notifier = ThreadNotifier(repo, 'c1');
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
       await notifier.send('hello', senderId: 'me');
 
@@ -154,7 +164,7 @@ void main() {
 
     test('will not send nothing', () async {
       final repo = _FakeMessages();
-      final notifier = ThreadNotifier(repo, 'c1');
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
 
       await notifier.send('   ', senderId: 'me');
@@ -165,7 +175,7 @@ void main() {
 
     test('drops a failed message without asking the server', () async {
       final repo = _FakeMessages(sendFails: true);
-      final notifier = ThreadNotifier(repo, 'c1');
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
       await notifier.send('hello', senderId: 'me');
 
@@ -176,7 +186,11 @@ void main() {
     });
 
     test('says why it could not be read', () async {
-      final notifier = ThreadNotifier(_FakeMessages(listFails: true), 'c1');
+      final notifier = ThreadNotifier(
+        _FakeMessages(listFails: true),
+        _lockedVault(),
+        'c1',
+      );
       await pumpEventQueue();
       expect(notifier.state.error, isNotNull);
       expect(notifier.state.loadingFirstPage, isFalse);

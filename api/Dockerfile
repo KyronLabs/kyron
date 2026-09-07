@@ -40,7 +40,10 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y openssl && \
+    # ffmpeg normalises uploaded clips and cuts their posters. Without
+    # it the API still runs and clips are stored exactly as they
+    # arrive -- TranscodeService says so at boot rather than failing.
+    apt-get install --no-install-recommends -y openssl ffmpeg && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built application

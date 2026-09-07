@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { MediaKind } from '@prisma/client';
 import { randomUUID } from 'node:crypto';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
+import { TranscodeService } from './transcode.service';
 
 /** What an upload answers with, ready to attach to a post or a comment. */
 export interface UploadedMedia {
@@ -9,6 +10,12 @@ export interface UploadedMedia {
   kind: MediaKind;
   width: number | null;
   height: number | null;
+  /** A still cut from a clip, so every list drawing the post has something to
+   *  show before anybody presses play. Null for anything but video, and for a
+   *  clip no poster could be made from. */
+  thumbnailUrl?: string | null;
+  /** How long a clip runs. Null when it could not be measured. */
+  durationMs?: number | null;
 }
 
 /** The types accepted, and how each maps to a MediaKind. */
@@ -41,7 +48,10 @@ const EXTENSIONS: Record<string, string> = {
 export class MediaService {
   private readonly logger = new Logger(MediaService.name);
 
-  constructor(private readonly supabase: SupabaseService) {}
+  constructor(
+    private readonly supabase: SupabaseService,
+    private readonly transcode: TranscodeService,
+  ) {}
 
   /**
    * The outer ceiling, and what the multipart parser is configured with. A
@@ -89,6 +99,8 @@ export class MediaService {
     mimeType: string | undefined,
     dimensions: { width?: number; height?: number } = {},
   ): Promise<UploadedMedia> {
+    // Reassigned when a clip's real shape comes back from ffprobe.
+    // eslint-disable-next-line prefer-const
     if (!buffer || buffer.length === 0) {
       throw new BadRequestException('That file is empty.');
     }
@@ -126,6 +138,31 @@ export class MediaService {
       );
     }
 
+    // A clip is normalised and gets a poster cut from it. Without ffmpeg on
+    // the server this hands back exactly what arrived, which is what happened
+    // to every clip before this existed.
+    let poster: Buffer | null = null;
+    let durationMs: number | null = null;
+    let stored = buffer;
+
+    if (kind === MediaKind.VIDEO) {
+      const result = await this.transcode.process(buffer);
+      if (
+        result.durationMs !== null &&
+        result.durationMs > TranscodeService.maxDurationMs
+      ) {
+        const minutes = Math.round(TranscodeService.maxDurationMs / 60000);
+        throw new BadRequestException(
+          `A clip cannot run longer than ${minutes} minutes.`,
+        );
+      }
+      stored = result.video;
+      poster = result.poster;
+      durationMs = result.durationMs;
+      if (result.width) dimensions = { ...dimensions, width: result.width };
+      if (result.height) dimensions = { ...dimensions, height: result.height };
+    }
+
     // The name never comes from the client. An uploaded filename is attacker
     // input, and it ends up in a URL other people load.
     const filename = `${userId}_${Date.now()}_${randomUUID()}.${EXTENSIONS[sniffed]}`;
@@ -133,12 +170,29 @@ export class MediaService {
     const { publicUrl } = await this.supabase.uploadFile(
       MediaService.folder,
       filename,
-      buffer,
+      stored,
       sniffed,
     );
 
     if (!publicUrl) {
       throw new BadRequestException('That upload could not be stored.');
+    }
+
+    // Best effort, and deliberately not fatal: a clip whose poster would not
+    // store is still a clip worth posting.
+    let thumbnailUrl: string | null = null;
+    if (poster) {
+      try {
+        const still = await this.supabase.uploadFile(
+          MediaService.folder,
+          `${filename}.poster.jpg`,
+          poster,
+          'image/jpeg',
+        );
+        thumbnailUrl = still.publicUrl ?? null;
+      } catch (error) {
+        this.logger.warn(`A clip went up without its poster: ${String(error)}`);
+      }
     }
 
     this.logger.log(`media ${filename} uploaded by ${userId} (${kind})`);
@@ -149,6 +203,8 @@ export class MediaService {
       // formats this does not parse -- video, and HEIC.
       width: measured?.width ?? dimensions.width ?? null,
       height: measured?.height ?? dimensions.height ?? null,
+      thumbnailUrl,
+      durationMs,
     };
   }
 

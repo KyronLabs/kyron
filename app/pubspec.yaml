@@ -40,7 +40,6 @@ dependencies:
   html: ^0.15.6
   iconsax_flutter: ^1.0.1
   flutter_slidable: ^3.0.0
-  shimmer: ^3.0.0
   url_strategy: ^0.3.0
 
   # Attachments. video_player for a clip in the feed and the viewer,
@@ -61,6 +60,7 @@ dependencies:
   just_audio: ^0.10.6
   get_thumbnail_video: ^0.7.3
   web_socket_channel: ^3.0.3
+  cryptography: ^2.9.0
 
 dev_dependencies:
   flutter_test:

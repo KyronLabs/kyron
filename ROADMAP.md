@@ -76,18 +76,25 @@ is shippable on its own.
    ceiling, so a small highly-compressible image cannot decode to hundreds of
    megabytes on every phone that opens the post.
 
-   **Still open: transcoding.** A clip is stored exactly as it arrived — no
-   normalisation to H.264, no bitrate cap, and no server-side poster if the
-   client's own fails to upload. That needs ffmpeg in the API image, which is a
-   deployment change worth making deliberately. This is what `media/` was meant
-   to be.
+   ~~**Still open: transcoding.**~~ Built. ffmpeg is in the API image; a clip
+   over 720p or 2.5 Mbps is re-encoded to H.264 with the index moved to the
+   front so playback starts before the file has finished arriving, a poster is
+   cut from one second in, and anything over five minutes is refused rather
+   than silently truncated. Without ffmpeg the clip is stored exactly as it
+   arrived and the service says so at boot.
 6. **Feed quality signals.** Ranking has no dwell time, no negative feedback,
    no "seen" decay beyond the view record. The engine is there; it is being fed
    almost nothing.
 7. **Draft posts and failed-post recovery.** A composer that loses work on a
    dropped connection.
-8. **Empty and error states audit.** Several screens still show a spinner where
-   an explanation belongs.
+8. ~~**Empty and error states audit.**~~ Done, and the finding was not what
+   this line expected: empty and failed states were already covered almost
+   everywhere, through `EmptyState` and `EmptyState.failed`. The real gap was
+   the *loading* state, which was a centred spinner on eleven screens. Those
+   are skeletons now, shaped like the rows that replace them. A one-off
+   shimmer skeleton on the notifications screen -- its own library, its own
+   hardcoded hex colours -- was folded into the same system, and the `shimmer`
+   dependency dropped with it.
 
 ### Phase 3 — Decide the identity story (weeks, mostly design)
 

@@ -8,6 +8,7 @@ import '../screens/video_feed_screen.dart';
 import 'post_card.dart';
 import 'empty_state.dart';
 import 'media_tile_grid.dart';
+import 'skeleton.dart';
 
 /// A scrolling list of posts, with every state it can be in.
 ///
@@ -138,10 +139,10 @@ class _PostListViewState extends ConsumerState<PostListView> {
 
   Widget _content(FeedState state) {
     if (state.isLoadingFirstPage && state.posts.isEmpty) {
-      return const SliverFillRemaining(
-        hasScrollBody: false,
-        child: Center(child: CircularProgressIndicator()),
-      );
+      // The shape of what is coming, not a spinner in the middle of
+      // nothing: the page fills in rather than rearranging itself when
+      // it lands.
+      return SliverToBoxAdapter(child: SkeletonList.posts());
     }
     if (state.error != null && state.posts.isEmpty) {
       return EmptyState.failed(

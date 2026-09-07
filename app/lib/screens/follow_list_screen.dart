@@ -12,6 +12,7 @@ import '../routes.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/person_tile.dart';
+import '../widgets/skeleton.dart';
 import 'profile_screen.dart' show FollowListArgs;
 
 /// One page of a follow list, plus where the next one starts.
@@ -206,7 +207,7 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
 
   Widget _body(FollowListState state, FollowListNotifier notifier) {
     if (state.loadingFirstPage) {
-      return const Center(child: CircularProgressIndicator());
+      return SkeletonList.people();
     }
 
     if (state.people.isEmpty) {

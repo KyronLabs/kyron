@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user.dart';
 import '../repositories/auth_repository.dart';
 import 'current_user_provider.dart';
+import 'keys_provider.dart';
 
 enum AuthStatus { unknown, unauthenticated, authenticating, authenticated }
 
@@ -46,6 +48,11 @@ class AuthNotifier extends Notifier<AuthState> {
 
       // If we have a valid token AND user data, we're authenticated
       if (hasValidToken && user != null) {
+        // Makes this install's message keypair if it has none, and publishes
+        // the public half so other people can write to it in private.
+        // Awaited nowhere: a chat opened before it finishes sends in the
+        // clear, which is what happened before this existed.
+        unawaited(ref.read(messageVaultProvider).unlock());
         state = AuthState.authenticated(user);
 
         // Load full profile data
@@ -109,6 +116,11 @@ class AuthNotifier extends Notifier<AuthState> {
   }
 
   Future<void> logout() async {
+    // Before the session goes, because withdrawing the published key needs
+    // one. The secret half is deleted either way: it is this device's
+    // identity, and it leaves with the account that made it.
+    await ref.read(messageVaultProvider).lock();
+
     await _repo.logout();
 
     // Clear profile data

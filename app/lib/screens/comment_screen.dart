@@ -19,6 +19,7 @@ import '../widgets/jump_to_end.dart';
 import '../widgets/media_tray.dart';
 import '../widgets/thread.dart';
 import '../widgets/toast.dart';
+import '../widgets/skeleton.dart';
 
 /// One comment, and the conversation under it.
 ///
@@ -202,7 +203,7 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
 
   Widget _body(CommentThreadState state) {
     if (state.loading && state.root == null) {
-      return const Center(child: CircularProgressIndicator());
+      return SkeletonList.comments();
     }
     if (state.error != null && state.root == null) {
       return EmptyState.failed(
