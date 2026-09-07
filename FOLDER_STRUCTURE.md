@@ -1,52 +1,62 @@
 # Kyron Repository Folder Structure
 
+The tree below is what is in the repository. An earlier version of this file
+described a layout the code does not use — `app/lib/features/`, `api/src/feed/`
+and an `identity/` service with AT Protocol logic in it.
+
 ```
 kyron/                          # repository root
 │
-├── app/                        # Flutter cross-platform client
+├── app/                        # Flutter client (Android · iOS · Web)
 │   ├── lib/
-│   │   ├── core/               # DI, constants, utilities
-│   │   ├── features/           # feed, camera, auth, profile widgets
-│   │   └── l10n/               # localization (.arb files)
-│   ├── test/                   # unit & widget tests
-│   ├── integration_test/       # e2e flutter_driver tests
-│   └── pubspec.yaml            # Flutter dependencies
+│   │   ├── models/             # plain data classes, JSON in and out
+│   │   ├── providers/          # Riverpod state per feature
+│   │   ├── repositories/       # one per API area, over Dio
+│   │   ├── screens/            # 43 screens
+│   │   ├── services/           # ApiClient, auth, profile, logging
+│   │   ├── utils/              # pure helpers: thread layout, formatting
+│   │   ├── widgets/            # shared UI: post card, thread, sheets
+│   │   └── routes.dart         # every named route
+│   ├── test/                   # 32 test files, 388 tests
+│   └── pubspec.yaml
 │
-├── api/                        # NestJS backend monorepo
+├── api/                        # NestJS API (Fastify adapter)
+│   ├── prisma/
+│   │   ├── schema.prisma       # 40 models
+│   │   └── migrations/         # applied on every boot by scripts/start.sh
 │   ├── src/
-│   │   ├── gateway/            # GraphQL / WebSocket entry
-│   │   ├── feed/               # vector ranking service
-│   │   ├── media/              # upload & transcode endpoints
-│   │   ├── identity/           # DID / AT-Protocol logic
-│   │   └── common/             # shared DTOs, guards, filters
-│   ├── test/                   # Jest unit & integration tests
-│   └── package.json            # Node dependencies & scripts
+│   │   ├── modules/            # auth, feed, messages, communities,
+│   │   │                       # profile, moderation, notifications,
+│   │   │                       # media, links, users, identity, gateway
+│   │   ├── infrastructure/     # Prisma and Supabase clients
+│   │   ├── config/             # environment, validated at boot
+│   │   └── common/             # guards, filters, shared DTOs
+│   ├── fly.toml                # deploy target
+│   └── package.json            # npm, not pnpm
 │
-├── media/                      # stand-alone media micro-services
-│   ├── Dockerfile              # GStreamer + Rust caption pipeline
-│   └── src/                    # Rust or Go caption / thumbnail workers
+├── supabase/
+│   └── migrations/             # client-facing tables, RLS and grants
 │
-├── identity/                   # AT-Protocol node implementation
-│   ├── plc/                    # DID registry logic
-│   ├── repo/                   # repo signing & storage
-│   └── Dockerfile
+├── web/build/web/              # committed static marketing site
 │
-├── infra/                      # infrastructure-as-code
-│   ├── docker-compose.dev.yml  # local Postgres, Redis, Pinecone-mock
-│   ├── k8s/                    # staging / prod manifests (WIP)
-│   └── terraform/              # cloud resource definitions (WIP)
+├── docs/                       # images and assets used by the docs
 │
-├── docs/                       # extra documentation
-│   ├── architecture.png        # drawio / png diagram
-│   └── investor_one_pager.md   # 1-page pitch sheet
+├── identity/                   # a Dockerfile. Not a service yet
+├── media/                      # a Dockerfile. Not a service yet
+├── infra/                      # a placeholder
 │
-├── scripts/                    # dev & ops helper scripts
-│   ├── seed.js                 # populate local db
-│   ├── migrate.sh              # run DB migrations
-│   └── dev.sh                  # boot entire stack with one command
-│
-└── tests/                      # cross-service e2e tests
-├── playwright/             # web e2e specs
-└── postman_collections/    # API smoke tests
-
+├── ROADMAP.md                  # what is built, what is not, what is next
+├── ARCHITECTURE.md             # how the running system fits together
+└── CHANGELOG.md                # notable changes, newest first
 ```
+
+## Where things go
+
+| Adding | Put it in |
+|:--|:--|
+| A screen | `app/lib/screens/`, with a route in `routes.dart` |
+| Shared UI | `app/lib/widgets/` |
+| Logic worth testing on its own | `app/lib/utils/`, as a pure function |
+| An API area | `api/src/modules/<area>/` with a controller, service and spec |
+| A schema change | `api/prisma/schema.prisma` plus a migration |
+| Anything the client reads directly from Postgres | `supabase/migrations/` |

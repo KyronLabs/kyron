@@ -137,6 +137,6 @@ embellishment.
 ## Housekeeping
 
 - `web/build/` — 87 build artifacts tracked in git.
-- `MILESTONES.md` — describes a different project; fold into this file or delete.
-- `INITIAL_ISSUES.md`, `FOLDER_STRUCTURE.md` — stale.
+- `MILESTONES.md` — deleted; it described a different project.
+- `INITIAL_ISSUES.md` — deleted. `FOLDER_STRUCTURE.md` rewritten to match the tree.
 - `identity/` and `media/` — empty service shells. Start them or remove them.
