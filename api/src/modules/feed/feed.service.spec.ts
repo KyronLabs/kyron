@@ -5,6 +5,8 @@ import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { MediaService } from '../media/media.service';
 import { RankingService } from './ranking.service';
+import { RealtimeService } from '../realtime/realtime.service';
+import { RecordingRealtime } from '../realtime/realtime.test-double';
 
 /** One row in the shape the service selects. */
 const row = (id: string, createdAt = new Date()) => ({
@@ -180,6 +182,7 @@ describe('FeedService', () => {
           },
         },
         { provide: ModerationService, useValue: moderation },
+        { provide: RealtimeService, useClass: RecordingRealtime },
       ],
     }).compile();
     return moduleRef.get(FeedService);

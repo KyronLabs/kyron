@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
+import { RecordingRealtime } from '../realtime/realtime.test-double';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
 const ME = 'me';
@@ -73,7 +74,13 @@ function serviceWith(stub: Stub = {}) {
     $transaction: jest.fn((ops: Promise<unknown>[]) => Promise.all(ops)),
   } as unknown as PrismaService;
 
-  return { service: new MessagesService(prisma), prisma, calls };
+  const realtime = new RecordingRealtime();
+  return {
+    service: new MessagesService(prisma, realtime),
+    prisma,
+    calls,
+    realtime,
+  };
 }
 
 /** `expect.objectContaining`, typed, so the matchers are not `any`. */

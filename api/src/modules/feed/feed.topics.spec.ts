@@ -1,5 +1,6 @@
 import { BadRequestException } from '@nestjs/common';
 import { FeedService } from './feed.service';
+import { RecordingRealtime } from '../realtime/realtime.test-double';
 import { ModerationService } from '../moderation/moderation.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { RankingService } from './ranking.service';
@@ -55,7 +56,12 @@ function serviceWith() {
     },
   } as unknown as PrismaService;
   return {
-    service: new FeedService(prisma, noFilters, new RankingService()),
+    service: new FeedService(
+      prisma,
+      noFilters,
+      new RankingService(),
+      new RecordingRealtime(),
+    ),
     created,
     prisma,
   };

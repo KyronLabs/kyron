@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
+import { WsAdapter } from '@nestjs/platform-ws';
 import { AppModule } from './app.module';
 import {
   FastifyAdapter,
@@ -89,6 +90,11 @@ async function bootstrap() {
       transformOptions: { enableImplicitConversion: false },
     }),
   );
+
+  // The realtime gateway rides the same port and the same process. Registered
+  // before listen(), because the adapter has to be in place when the HTTP
+  // server that carries the upgrade is created.
+  app.useWebSocketAdapter(new WsAdapter(app));
 
   const port = config.get<number>('PORT', 3000);
 

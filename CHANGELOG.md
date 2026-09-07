@@ -14,6 +14,11 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Messages and notifications arrive as they happen. The app holds one
+  authenticated socket open and the server says what changed; the app then
+  fetches it through the same endpoints as before, so a dropped connection
+  costs freshness and never correctness. A chat that is open appends the new
+  message without the screen blinking.
 - A reply can carry pictures and a clip, over the same basket the post composer
   and the chat already use.
 - "Show N replies" carries the faces of the people who actually answered, sent

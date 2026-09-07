@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { MediaKind, Prisma, ReplyPolicy } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { RealtimeService } from '../realtime/realtime.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { RankingService } from './ranking.service';
 
@@ -169,6 +170,7 @@ export class FeedService {
     private readonly prisma: PrismaService,
     private readonly moderation: ModerationService,
     private readonly ranking: RankingService,
+    private readonly realtime: RealtimeService,
   ) {}
 
   /** How many attachments one post or comment may carry. */
@@ -573,13 +575,14 @@ export class FeedService {
 
   /** Plain reposts. A quote is a post and appears in the feed as one. */
   async setReposted(viewerId: string, postId: string, reposted: boolean) {
-    await this.requireVisiblePost(postId);
+    const post = await this.requireVisiblePost(postId);
     if (reposted) {
       await this.prisma.repost.upsert({
         where: { userId_postId: { userId: viewerId, postId } },
         create: { userId: viewerId, postId },
         update: {},
       });
+      this.tellAuthor(post.authorId, viewerId, 'repost');
     } else {
       await this.prisma.repost.deleteMany({
         where: { userId: viewerId, postId },
@@ -1103,13 +1106,14 @@ export class FeedService {
 
   /** Idempotent: liking an already-liked post is a no-op, not a duplicate. */
   async setLiked(viewerId: string, postId: string, liked: boolean) {
-    await this.requireVisiblePost(postId);
+    const post = await this.requireVisiblePost(postId);
     if (liked) {
       await this.prisma.postLike.upsert({
         where: { userId_postId: { userId: viewerId, postId } },
         create: { userId: viewerId, postId },
         update: {},
       });
+      this.tellAuthor(post.authorId, viewerId, 'like');
     } else {
       await this.prisma.postLike.deleteMany({
         where: { userId: viewerId, postId },
@@ -1144,7 +1148,10 @@ export class FeedService {
    * is decoration. NotFound rather than Forbidden for a blocked reader, so a
    * block does not confirm the post exists to someone shut out of it.
    */
-  private async requireReplyAllowed(postId: string, authorId: string) {
+  private async requireReplyAllowed(
+    postId: string,
+    authorId: string,
+  ): Promise<{ authorId: string }> {
     const post = await this.prisma.post.findFirst({
       where: { id: postId, deletedAt: null },
       select: { authorId: true, replyPolicy: true, content: true },
@@ -1152,7 +1159,7 @@ export class FeedService {
     if (!post) throw new NotFoundException('Post not found.');
 
     // Your own post is always open to you, whatever you set.
-    if (post.authorId === authorId) return;
+    if (post.authorId === authorId) return post;
 
     const blocked = await this.prisma.block.findFirst({
       where: {
@@ -1179,7 +1186,7 @@ export class FeedService {
             'Only people who follow the author can reply to this post.',
           );
         }
-        return;
+        return post;
       }
 
       case ReplyPolicy.MENTIONED: {
@@ -1196,20 +1203,39 @@ export class FeedService {
             'Only people mentioned in this post can reply to it.',
           );
         }
-        return;
+        return post;
       }
 
       case ReplyPolicy.EVERYONE:
-        return;
+        return post;
     }
   }
 
-  private async requireVisiblePost(postId: string) {
+  private async requireVisiblePost(postId: string): Promise<{
+    id: string;
+    authorId: string;
+  }> {
     const post = await this.prisma.post.findFirst({
       where: { id: postId, deletedAt: null },
-      select: { id: true },
+      select: { id: true, authorId: true },
     });
     if (!post) throw new NotFoundException('Post not found.');
+    return post;
+  }
+
+  /**
+   * Tells a post's author that somebody did something to it.
+   *
+   * Never to themselves: liking your own post is not news. Only on the way in
+   * -- unliking is not an event anyone wants to hear about.
+   */
+  private tellAuthor(authorId: string, actorId: string, kind: string): void {
+    if (authorId === actorId) return;
+    this.realtime.emitTo(authorId, {
+      type: 'notification.new',
+      kind,
+      actorId,
+    });
   }
 
   /** One post on its own, for the screen that shows it with its thread. */
@@ -1324,7 +1350,7 @@ export class FeedService {
       throw new BadRequestException('A comment needs text or an attachment.');
     }
 
-    await this.requireReplyAllowed(postId, authorId);
+    const post = await this.requireReplyAllowed(postId, authorId);
 
     let threadParentId: string | null = null;
     if (parentId) {
@@ -1360,6 +1386,19 @@ export class FeedService {
       },
       select: this.commentShapeFor(authorId),
     });
+    // The post's author hears about a comment; so does the person being
+    // answered, when the reply is under somebody else's comment.
+    this.tellAuthor(post.authorId, authorId, 'comment');
+    if (threadParentId) {
+      const parent = await this.prisma.comment.findUnique({
+        where: { id: threadParentId },
+        select: { authorId: true },
+      });
+      if (parent && parent.authorId !== post.authorId) {
+        this.tellAuthor(parent.authorId, authorId, 'comment');
+      }
+    }
+
     return this.toFeedComment(comment, authorId);
   }
 

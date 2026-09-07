@@ -1,5 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { ProfileService } from './profile.service';
+import { RecordingRealtime } from '../realtime/realtime.test-double';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 
@@ -71,7 +72,10 @@ describe('ProfileService.listSuggested', () => {
       user: { findMany: userFindMany },
     } as unknown as PrismaService;
 
-    return { service: new ProfileService(supabase, prisma), userFindMany };
+    return {
+      service: new ProfileService(supabase, prisma, new RecordingRealtime()),
+      userFindMany,
+    };
   }
 
   it('puts whoever shares the most topics first', async () => {
@@ -176,9 +180,11 @@ describe('ProfileService topics', () => {
       },
     } as unknown as PrismaService;
 
-    const { items } = await new ProfileService(supabase, prisma).listTopics(
-      'me',
-    );
+    const { items } = await new ProfileService(
+      supabase,
+      prisma,
+      new RecordingRealtime(),
+    ).listTopics('me');
     expect(items).toEqual([
       { slug: 'code', name: 'Code', people: 12, following: false },
       { slug: 'music', name: 'Music', people: 3, following: true },
@@ -199,11 +205,11 @@ describe('ProfileService topics', () => {
       },
     } as unknown as PrismaService;
 
-    const result = await new ProfileService(supabase, prisma).setTopic(
-      'me',
-      'Code',
-      true,
-    );
+    const result = await new ProfileService(
+      supabase,
+      prisma,
+      new RecordingRealtime(),
+    ).setTopic('me', 'Code', true);
 
     expect(upsert).toHaveBeenCalled();
     expect(deleteMany).not.toHaveBeenCalled();
@@ -221,11 +227,11 @@ describe('ProfileService topics', () => {
       },
     } as unknown as PrismaService;
 
-    const result = await new ProfileService(supabase, prisma).setTopic(
-      'me',
-      'code',
-      false,
-    );
+    const result = await new ProfileService(
+      supabase,
+      prisma,
+      new RecordingRealtime(),
+    ).setTopic('me', 'code', false);
     expect(deleteMany).toHaveBeenCalled();
     expect(result.following).toBe(false);
   });
@@ -236,7 +242,11 @@ describe('ProfileService topics', () => {
     } as unknown as PrismaService;
 
     await expect(
-      new ProfileService(supabase, prisma).setTopic('me', 'nonsense', true),
+      new ProfileService(supabase, prisma, new RecordingRealtime()).setTopic(
+        'me',
+        'nonsense',
+        true,
+      ),
     ).rejects.toBeInstanceOf(NotFoundException);
   });
 });

@@ -8,6 +8,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'routes.dart';
 import 'providers/auth_provider.dart';
 import 'providers/preferences_provider.dart';
+import 'providers/realtime_provider.dart';
 import 'screens/root_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -204,6 +205,12 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     // compounding it with the platform's own accessibility scale would take
     // the largest setting somewhere no layout has been checked against.
     final textScale = ref.watch(preferencesProvider).textScale;
+
+    // Opens the socket and folds whatever arrives into the state it affects.
+    // Watched here rather than on a screen: a message has to move the thread,
+    // the conversation list and the badge, and at most one of those is ever on
+    // screen.
+    ref.watch(realtimeBridgeProvider);
 
     return MaterialApp(
       title: 'Kyron',

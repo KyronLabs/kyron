@@ -1,6 +1,7 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { MediaKind } from '@prisma/client';
 import { MessagesService } from './messages.service';
+import { RecordingRealtime } from '../realtime/realtime.test-double';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
 const ME = 'me';
@@ -59,7 +60,10 @@ function serviceWith({ members = [{ userId: ME }, { userId: THEM }] } = {}) {
   };
 
   return {
-    svc: new MessagesService(prisma as unknown as PrismaService),
+    svc: new MessagesService(
+      prisma as unknown as PrismaService,
+      new RecordingRealtime(),
+    ),
     creates,
     writes,
   };

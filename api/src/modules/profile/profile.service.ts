@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { RealtimeService } from '../realtime/realtime.service';
 import { AccountStatus } from '@prisma/client';
 
 @Injectable()
@@ -31,6 +32,7 @@ export class ProfileService {
   constructor(
     private readonly supabase: SupabaseService,
     private readonly prisma: PrismaService,
+    private readonly realtime: RealtimeService,
   ) {}
 
   // ==========================================
@@ -181,6 +183,12 @@ export class ProfileService {
         followerId: userId,
         followingId: targetId,
       },
+    });
+
+    this.realtime.emitTo(targetId, {
+      type: 'notification.new',
+      kind: 'follow',
+      actorId: userId,
     });
 
     this.logger.log(`User ${userId} followed ${targetId}`);

@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { MediaKind, Prisma } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { RealtimeService } from '../realtime/realtime.service';
 
 /** The other person in a conversation, as a list row needs them. */
 export interface MessagePerson {
@@ -82,7 +83,10 @@ const DEFAULT_LIMIT = 30;
 export class MessagesService {
   private readonly logger = new Logger(MessagesService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly realtime: RealtimeService,
+  ) {}
 
   /** The longest one message may be. */
   static readonly maxBody = 4000;
@@ -414,6 +418,16 @@ export class MessagesService {
         data: { hiddenAt: null },
       }),
     ]);
+
+    // Told to everyone else in the thread, so a chat that is open updates
+    // without waiting for its next poll. The event carries ids only: the
+    // client fetches the message through the same endpoint it always has, so
+    // there is no second shape of a message to keep in step, and nothing
+    // readable leaks to a socket whose token has since been revoked.
+    this.realtime.emitToMany(
+      conversation.members.map((m) => m.userId).filter((id) => id !== viewerId),
+      { type: 'message.new', conversationId, messageId: message.id },
+    );
 
     return { ...message, seen: false };
   }

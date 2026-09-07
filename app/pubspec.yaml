@@ -60,6 +60,7 @@ dependencies:
   record: ^6.2.1
   just_audio: ^0.10.6
   get_thumbnail_video: ^0.7.3
+  web_socket_channel: ^3.0.3
 
 dev_dependencies:
   flutter_test:

@@ -243,6 +243,31 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     }
   }
 
+  /// Picks up whatever arrived while the screen was open.
+  ///
+  /// Not [refresh]: that empties the list and shows a spinner, which on a
+  /// thread somebody is reading is a screen that blinks every time the other
+  /// person types. This asks for the newest page and appends only what is not
+  /// already held, so the view does not move and nothing is duplicated.
+  Future<void> pullNewest() async {
+    if (state.loadingFirstPage) return;
+    try {
+      final page = await _repo.messages(_conversationId);
+      final known = {for (final m in state.messages) m.id};
+      final fresh = [
+        for (final message in page.items.reversed)
+          if (!known.contains(message.id)) message,
+      ];
+      if (fresh.isEmpty) return;
+
+      state = state.copyWith(messages: [...state.messages, ...fresh]);
+      await _markRead();
+    } catch (_) {
+      // Nothing to say. The message is still on the server and the next
+      // refresh or reopen will find it.
+    }
+  }
+
   /// Reads further back. In a thread that is upwards, not downwards.
   Future<void> loadMore() async {
     final cursor = state.cursor;
