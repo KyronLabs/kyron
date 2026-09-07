@@ -151,6 +151,10 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- A community's banner held the top of the screen however far down the
+  community you had read. The header sat above the posts rather than scrolling
+  with them, so the posts slid up behind it and stopped. It scrolls away now,
+  the way a profile's does.
 - A community's picture and banner asked for a URL. Nobody has a URL for a
   photograph on their phone, so the only thing those two boxes could do was
   paste a link to somebody else's image. They are the same gallery pickers the
