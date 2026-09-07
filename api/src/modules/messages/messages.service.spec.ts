@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
-import { RecordingRealtime } from '../realtime/realtime.test-double';
+import { RecordingDelivery } from '../push/delivery.test-double';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
 const ME = 'me';
@@ -74,7 +74,7 @@ function serviceWith(stub: Stub = {}) {
     $transaction: jest.fn((ops: Promise<unknown>[]) => Promise.all(ops)),
   } as unknown as PrismaService;
 
-  const realtime = new RecordingRealtime();
+  const realtime = new RecordingDelivery();
   return {
     service: new MessagesService(prisma, realtime),
     prisma,

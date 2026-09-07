@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { ProfileService } from './profile.service';
-import { RecordingRealtime } from '../realtime/realtime.test-double';
+import { RecordingDelivery } from '../push/delivery.test-double';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 
@@ -73,7 +73,7 @@ describe('ProfileService.listSuggested', () => {
     } as unknown as PrismaService;
 
     return {
-      service: new ProfileService(supabase, prisma, new RecordingRealtime()),
+      service: new ProfileService(supabase, prisma, new RecordingDelivery()),
       userFindMany,
     };
   }
@@ -183,7 +183,7 @@ describe('ProfileService topics', () => {
     const { items } = await new ProfileService(
       supabase,
       prisma,
-      new RecordingRealtime(),
+      new RecordingDelivery(),
     ).listTopics('me');
     expect(items).toEqual([
       { slug: 'code', name: 'Code', people: 12, following: false },
@@ -208,7 +208,7 @@ describe('ProfileService topics', () => {
     const result = await new ProfileService(
       supabase,
       prisma,
-      new RecordingRealtime(),
+      new RecordingDelivery(),
     ).setTopic('me', 'Code', true);
 
     expect(upsert).toHaveBeenCalled();
@@ -230,7 +230,7 @@ describe('ProfileService topics', () => {
     const result = await new ProfileService(
       supabase,
       prisma,
-      new RecordingRealtime(),
+      new RecordingDelivery(),
     ).setTopic('me', 'code', false);
     expect(deleteMany).toHaveBeenCalled();
     expect(result.following).toBe(false);
@@ -242,7 +242,7 @@ describe('ProfileService topics', () => {
     } as unknown as PrismaService;
 
     await expect(
-      new ProfileService(supabase, prisma, new RecordingRealtime()).setTopic(
+      new ProfileService(supabase, prisma, new RecordingDelivery()).setTopic(
         'me',
         'nonsense',
         true,

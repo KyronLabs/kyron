@@ -14,6 +14,12 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Push notifications, server side and app side both. A like, a repost, a
+  comment, a reply, a follow or a message reaches whoever it is about: over the
+  socket if they have the app open, as a push to their phone if they do not,
+  decided per person rather than per event. Turning it on needs a Firebase
+  project -- see `docs/PUSH.md`. Without one the API says so at boot and sends
+  nothing, rather than reporting a delivery it never made.
 - Messages and notifications arrive as they happen. The app holds one
   authenticated socket open and the server says what changed; the app then
   fetches it through the same endpoints as before, so a dropped connection

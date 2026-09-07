@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { MediaKind, Prisma, ReplyPolicy } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { RealtimeService } from '../realtime/realtime.service';
+import { DeliveryService } from '../push/delivery.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { RankingService } from './ranking.service';
 
@@ -160,6 +160,13 @@ export interface TrendingTag {
   recent: number;
 }
 
+/** What a push says for each kind of notification. */
+const PUSH_COPY: Record<string, string> = {
+  like: 'Somebody liked your post.',
+  comment: 'Somebody replied to you.',
+  repost: 'Somebody reposted you.',
+};
+
 const DEFAULT_LIMIT = 20;
 
 @Injectable()
@@ -170,7 +177,7 @@ export class FeedService {
     private readonly prisma: PrismaService,
     private readonly moderation: ModerationService,
     private readonly ranking: RankingService,
-    private readonly realtime: RealtimeService,
+    private readonly delivery: DeliveryService,
   ) {}
 
   /** How many attachments one post or comment may carry. */
@@ -1231,11 +1238,18 @@ export class FeedService {
    */
   private tellAuthor(authorId: string, actorId: string, kind: string): void {
     if (authorId === actorId) return;
-    this.realtime.emitTo(authorId, {
-      type: 'notification.new',
-      kind,
-      actorId,
-    });
+    this.delivery.tell(
+      authorId,
+      { type: 'notification.new', kind, actorId },
+      // Deliberately without a name. Resolving the actor would be a query per
+      // like on a post that is going well, and the app opens the
+      // notifications screen from here, which has the names already.
+      {
+        title: 'Kyron',
+        body: PUSH_COPY[kind] ?? 'Something happened on one of your posts.',
+        data: { type: 'notification', kind },
+      },
+    );
   }
 
   /** One post on its own, for the screen that shows it with its thread. */

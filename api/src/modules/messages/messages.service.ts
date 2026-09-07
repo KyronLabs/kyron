@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { MediaKind, Prisma } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { RealtimeService } from '../realtime/realtime.service';
+import { DeliveryService } from '../push/delivery.service';
 
 /** The other person in a conversation, as a list row needs them. */
 export interface MessagePerson {
@@ -85,7 +85,7 @@ export class MessagesService {
 
   constructor(
     private readonly prisma: PrismaService,
-    private readonly realtime: RealtimeService,
+    private readonly delivery: DeliveryService,
   ) {}
 
   /** The longest one message may be. */
@@ -424,9 +424,23 @@ export class MessagesService {
     // client fetches the message through the same endpoint it always has, so
     // there is no second shape of a message to keep in step, and nothing
     // readable leaks to a socket whose token has since been revoked.
-    this.realtime.emitToMany(
+    const sender = conversation.members.find((m) => m.userId === viewerId);
+    this.delivery.tellMany(
       conversation.members.map((m) => m.userId).filter((id) => id !== viewerId),
       { type: 'message.new', conversationId, messageId: message.id },
+      {
+        // Defensively: this is a notification title, and a shape that does
+        // not carry the sender should cost a generic push, never the message.
+        title:
+          sender?.user?.name?.trim() ||
+          sender?.user?.username?.trim() ||
+          'New message',
+        // The message itself, or what it was without words. A push saying
+        // "sent you a message" makes the reader open the app to find out
+        // whether it was worth opening the app.
+        body: text || 'Sent an attachment',
+        data: { type: 'message', conversationId },
+      },
     );
 
     return { ...message, seen: false };

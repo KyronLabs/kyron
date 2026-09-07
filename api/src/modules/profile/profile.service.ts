@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { RealtimeService } from '../realtime/realtime.service';
+import { DeliveryService } from '../push/delivery.service';
 import { AccountStatus } from '@prisma/client';
 
 @Injectable()
@@ -32,7 +32,7 @@ export class ProfileService {
   constructor(
     private readonly supabase: SupabaseService,
     private readonly prisma: PrismaService,
-    private readonly realtime: RealtimeService,
+    private readonly delivery: DeliveryService,
   ) {}
 
   // ==========================================
@@ -185,11 +185,15 @@ export class ProfileService {
       },
     });
 
-    this.realtime.emitTo(targetId, {
-      type: 'notification.new',
-      kind: 'follow',
-      actorId: userId,
-    });
+    this.delivery.tell(
+      targetId,
+      { type: 'notification.new', kind: 'follow', actorId: userId },
+      {
+        title: 'Kyron',
+        body: 'Somebody started following you.',
+        data: { type: 'notification', kind: 'follow' },
+      },
+    );
 
     this.logger.log(`User ${userId} followed ${targetId}`);
     return { success: true };

@@ -81,15 +81,15 @@ model User {
   conversations     ConversationMember[]
   messagesSent      Message[]
   communities       CommunityMember[]
-  communityBans     CommunityBan[]     @relation("CommunityBanned")
-  communityBansMade CommunityBan[]     @relation("CommunityBanner")
+  communityBans     CommunityBan[]       @relation("CommunityBanned")
+  communityBansMade CommunityBan[]       @relation("CommunityBanner")
   posts             Post[]
   // These two read backwards from their relation names, so they are spelled
   // out. `Follow.follower` holds followerId, so its back-reference is the set
   // of follows this account *made* -- the people it follows. Named the other
   // way round, `_count.followers` silently returned the following count.
-  following         Follow[]           @relation("follower")
-  followers         Follow[]           @relation("following")
+  following         Follow[]             @relation("follower")
+  followers         Follow[]             @relation("following")
   likes             PostLike[]
   commentLikes      CommentLike[]
   saves             PostSave[]
@@ -97,14 +97,15 @@ model User {
   views             PostView[]
   reposts           Repost[]
   hiddenPosts       HiddenPost[]
-  mutes             Mute[]             @relation("MuteOwner")
-  mutedBy           Mute[]             @relation("MuteTarget")
-  blocking          Block[]            @relation("Blocker")
-  blockedBy         Block[]            @relation("Blocked")
-  reportsMade       Report[]           @relation("Reporter")
+  mutes             Mute[]               @relation("MuteOwner")
+  mutedBy           Mute[]               @relation("MuteTarget")
+  blocking          Block[]              @relation("Blocker")
+  blockedBy         Block[]              @relation("Blocked")
+  reportsMade       Report[]             @relation("Reporter")
   interestSignals   InterestSignal[]
   pollVotes         PollVote[]
   kyronPointEvents  KyronPointEvent[] // 🔥 NEW
+  devices           DeviceToken[]
 
   @@index([email])
   @@index([status])
@@ -156,7 +157,7 @@ model Post {
   // row instead -- it has no content of its own to store.
   quotedPostId String? @db.Uuid
 
-  author   User             @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   likes    PostLike[]
   saves    PostSave[]
   comments Comment[]
@@ -168,12 +169,12 @@ model Post {
 
   // Set when the post was written into a community rather than the feed.
   // Nullable, because most posts are not.
-  communityId String?    @db.Uuid
-  community   Community? @relation(fields: [communityId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  hidden   HiddenPost[]
-  mutes    Mute[]
-  signals  InterestSignal[]
-  poll     Poll?
+  communityId String?          @db.Uuid
+  community   Community?       @relation(fields: [communityId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  hidden      HiddenPost[]
+  mutes       Mute[]
+  signals     InterestSignal[]
+  poll        Poll?
 
   // SetNull, not Cascade: deleting a quoted post should not delete everyone's
   // commentary on it. The client renders the gap.
@@ -961,5 +962,31 @@ model CommunityMember {
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@id([communityId, userId])
+  @@index([userId])
+}
+
+/// Where to push a notification for one person.
+///
+/// One row per install, not per account: the same phone signed into a second
+/// account gets a new token from the platform, and a token that outlives a
+/// sign-out would deliver somebody else's messages to whoever holds the
+/// handset now. Deleted on sign-out, and on the first send that the platform
+/// says the token is dead.
+model DeviceToken {
+  id     String @id @default(uuid()) @db.Uuid
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// The registration token the platform issued. Unique across everybody:
+  /// a handset that changes hands must not end up in two accounts at once.
+  token String @unique
+
+  /// ios, android or web. Kept so a send can be shaped per platform later.
+  platform String
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  /// Refreshed on every launch, so tokens nobody has used can be swept.
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
   @@index([userId])
 }

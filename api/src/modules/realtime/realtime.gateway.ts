@@ -72,7 +72,7 @@ export class RealtimeGateway
     this.realtime.register(claims.sub, socket);
 
     socket.on('pong', () => this.alive.add(socket));
-    this.startHeartbeat(socket);
+    this.startHeartbeat();
   }
 
   handleDisconnect(socket: WebSocket): void {
@@ -92,7 +92,8 @@ export class RealtimeGateway
     return token && token.length > 0 ? token : null;
   }
 
-  private startHeartbeat(socket: WebSocket): void {
+  /** One sweep for every socket, started by whichever connects first. */
+  private startHeartbeat(): void {
     this.heartbeat ??= setInterval(() => this.sweep(), HEARTBEAT_MS);
     // The interval is shared, so it must not hold the process open on its own.
     this.heartbeat.unref?.();
