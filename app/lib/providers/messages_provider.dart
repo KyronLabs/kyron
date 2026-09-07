@@ -7,6 +7,9 @@ import '../models/post_media.dart';
 import '../repositories/messages_repository.dart';
 import '../utils/api_error_message.dart';
 import 'api_client_provider.dart';
+import '../services/message_crypto.dart';
+import '../services/message_vault.dart';
+import 'keys_provider.dart';
 
 final messagesRepositoryProvider = Provider<MessagesRepository>(
   (ref) => MessagesRepository(ref.read(apiClientProvider)),
@@ -210,15 +213,40 @@ class ThreadState {
 
 class ThreadNotifier extends StateNotifier<ThreadState> {
   final MessagesRepository _repo;
+  final MessageVault _vault;
   final String _conversationId;
 
   /// Counts up so two messages sent in the same millisecond cannot share a
   /// placeholder id.
   int _pending = 0;
 
-  ThreadNotifier(this._repo, this._conversationId)
+  ThreadNotifier(this._repo, this._vault, this._conversationId)
       : super(const ThreadState()) {
     refresh();
+  }
+
+  /// Opens whatever in a page was sealed.
+  ///
+  /// Everything written before this existed, and everything from somebody
+  /// whose app has no key yet, is plain and passes through unchanged. A
+  /// message that is sealed and cannot be opened says so rather than showing
+  /// its ciphertext, which is unreadable either way but frightening on top.
+  Future<List<DirectMessage>> _open(List<DirectMessage> messages) async {
+    final opened = <DirectMessage>[];
+    for (final message in messages) {
+      final sealed = SealedMessage.tryDecode(message.body);
+      if (sealed == null) {
+        opened.add(message);
+        continue;
+      }
+      final plain = await _vault.open(message.body, _conversationId);
+      opened.add(message.copyWith(
+        body: plain ?? 'This message cannot be read on this device.',
+        encrypted: true,
+        unreadable: plain == null,
+      ));
+    }
+    return opened;
   }
 
   Future<void> refresh() async {
@@ -228,7 +256,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       state = ThreadState(
         // The server answers newest first, because that is what a cursor over
         // "most recent" has to do. The screen reads oldest first.
-        messages: page.items.reversed.toList(),
+        messages: await _open(page.items.reversed.toList()),
         people: page.people,
         cursor: page.nextCursor,
         loadingFirstPage: false,
@@ -254,10 +282,10 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     try {
       final page = await _repo.messages(_conversationId);
       final known = {for (final m in state.messages) m.id};
-      final fresh = [
+      final fresh = await _open([
         for (final message in page.items.reversed)
           if (!known.contains(message.id)) message,
-      ];
+      ]);
       if (fresh.isEmpty) return;
 
       state = state.copyWith(messages: [...state.messages, ...fresh]);
@@ -277,7 +305,10 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     try {
       final page = await _repo.messages(_conversationId, cursor: cursor);
       state = state.copyWith(
-        messages: [...page.items.reversed, ...state.messages],
+        messages: [
+          ...await _open(page.items.reversed.toList()),
+          ...state.messages,
+        ],
         cursor: page.nextCursor,
         clearCursor: page.nextCursor == null,
         loadingMore: false,
@@ -317,8 +348,20 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     state = state.copyWith(messages: [...state.messages, placeholder]);
 
     try {
-      final sent = await _repo.send(_conversationId, text, media: media);
-      _replace(placeholder.id, sent);
+      // Sealed if both sides have published a key, and sent as it was written
+      // if not. Never silently one when the reader was shown the other: the
+      // bubble carries which it was.
+      final sealed =
+          text.isEmpty ? null : await _vault.seal(text, _conversationId);
+      final sent = await _repo.send(
+        _conversationId,
+        sealed ?? text,
+        media: media,
+      );
+      _replace(
+        placeholder.id,
+        sent.copyWith(body: text, encrypted: sealed != null),
+      );
     } catch (_) {
       _replace(
           placeholder.id, placeholder.copyWith(sending: false, failed: true));
@@ -405,6 +448,7 @@ final threadProvider =
     StateNotifierProvider.family<ThreadNotifier, ThreadState, String>(
   (ref, conversationId) => ThreadNotifier(
     ref.read(messagesRepositoryProvider),
+    ref.read(messageVaultProvider),
     conversationId,
   ),
 );

@@ -650,6 +650,17 @@ class _Status extends StatelessWidget {
             message.sending ? 'Sending…' : age(message.createdAt),
             style: TextStyle(fontSize: 11, color: muted),
           ),
+          // Shown rather than assumed. A conversation is encrypted only when
+          // both sides have published a key, and the reader is entitled to
+          // know which kind of message this actually was.
+          if (message.encrypted) ...[
+            const SizedBox(width: 4),
+            Icon(
+              message.unreadable ? Iconsax.lock_1_copy : Iconsax.lock_copy,
+              size: 11,
+              color: muted,
+            ),
+          ],
           if (mine && !message.sending) ...[
             const SizedBox(width: 3),
             Icon(

@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { GatewayModule } from './modules/gateway/gateway.module';
 import { RealtimeModule } from './modules/realtime/realtime.module';
 import { PushModule } from './modules/push/push.module';
+import { KeysModule } from './modules/keys/keys.module';
 import { FeedModule } from './modules/feed/feed.module';
 import { MessagesModule } from './modules/messages/messages.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
@@ -32,6 +33,7 @@ import { LinksModule } from './modules/links/links.module';
     GatewayModule,
     RealtimeModule,
     PushModule,
+    KeysModule,
     UsersModule,
     AuthModule,
     ProfileModule,

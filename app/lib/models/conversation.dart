@@ -61,6 +61,16 @@ class DirectMessage {
   /// Attachments, in the order they were picked.
   final List<PostMedia> media;
 
+  /// Whether this arrived sealed, so the bubble can say the server could not
+  /// read it. Never inferred from the text: a plain message that happens to
+  /// look like ciphertext is still a plain message.
+  final bool encrypted;
+
+  /// Sealed, but not for any key this install holds -- a message written to
+  /// another of your devices, or to a key you have since replaced. The body
+  /// carries an explanation rather than the ciphertext.
+  final bool unreadable;
+
   const DirectMessage({
     required this.id,
     required this.body,
@@ -70,6 +80,8 @@ class DirectMessage {
     this.sending = false,
     this.failed = false,
     this.media = const [],
+    this.encrypted = false,
+    this.unreadable = false,
   });
 
   /// A message with nothing in it is not a message, but a picture is.
@@ -86,16 +98,25 @@ class DirectMessage {
         media: PostMedia.listFrom(json['media']),
       );
 
-  DirectMessage copyWith({bool? sending, bool? failed, bool? seen}) =>
+  DirectMessage copyWith({
+    String? body,
+    bool? sending,
+    bool? failed,
+    bool? seen,
+    bool? encrypted,
+    bool? unreadable,
+  }) =>
       DirectMessage(
         id: id,
-        body: body,
+        body: body ?? this.body,
         senderId: senderId,
         createdAt: createdAt,
         seen: seen ?? this.seen,
         sending: sending ?? this.sending,
         failed: failed ?? this.failed,
         media: media,
+        encrypted: encrypted ?? this.encrypted,
+        unreadable: unreadable ?? this.unreadable,
       );
 }
 

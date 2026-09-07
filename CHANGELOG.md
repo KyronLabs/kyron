@@ -14,6 +14,15 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Direct messages are encrypted end to end. Every install makes an X25519
+  keypair, keeps the secret half on the device and publishes the public half;
+  the text is sealed with XChaCha20-Poly1305 under a key derived from both
+  sides, so the server carries ciphertext it has no key for. A bubble carries a
+  lock when the message was sealed, because a conversation is only encrypted
+  when both sides have a key and the reader should be told which they got.
+  `docs/E2EE.md` is mostly about what this does not cover -- one key per
+  install, no forward secrecy, no key verification, attachments still in the
+  clear -- because a half-understood encryption feature is worse than none.
 - Loading skeletons in the shape of what is coming, on the feed, a post, a
   chat, the conversation list, the comment pages and Explore's people. A
   centred spinner says something is happening and nothing else; a skeleton says
