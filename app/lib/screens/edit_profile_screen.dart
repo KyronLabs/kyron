@@ -11,6 +11,7 @@ import '../providers/current_user_provider.dart';
 import '../providers/profile_provider.dart';
 import '../services/profile_service.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/images_field.dart';
 
 /// Editing your own profile: the name, bio, location, website and the two
 /// images. The "Edit profile" button used to lead nowhere.
@@ -33,7 +34,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
 
   bool _prefilled = false;
   bool _saving = false;
-  String? _uploading;
+  ImageSlot? _uploading;
 
   @override
   void dispose() {
@@ -91,12 +92,12 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
               child: ListView(
                 padding: const EdgeInsets.all(SpacingTokens.space20),
                 children: [
-                  _ImageRow(
+                  ImagesField(
                     avatarUrl: user.avatarUrl,
                     coverUrl: user.coverUrl,
                     uploading: _uploading,
-                    onPickAvatar: () => _upload('avatar'),
-                    onPickCover: () => _upload('cover'),
+                    onPickAvatar: () => _upload(ImageSlot.avatar),
+                    onPickCover: () => _upload(ImageSlot.cover),
                   ),
                   const SizedBox(height: SpacingTokens.space24),
                   _field(_name, 'Display name', Iconsax.user_copy,
@@ -184,17 +185,17 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     );
   }
 
-  Future<void> _upload(String kind) async {
+  Future<void> _upload(ImageSlot slot) async {
     final picked = await _picker.pickImage(
       source: ImageSource.gallery,
-      maxWidth: kind == 'cover' ? 1600 : 800,
+      maxWidth: slot == ImageSlot.cover ? 1600 : 800,
     );
     if (picked == null) return;
 
-    setState(() => _uploading = kind);
+    setState(() => _uploading = slot);
     try {
       final file = File(picked.path);
-      if (kind == 'avatar') {
+      if (slot == ImageSlot.avatar) {
         await _service.uploadAvatar(file);
       } else {
         await _service.uploadCover(file);
@@ -239,77 +240,6 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     if (!mounted) return;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
-  }
-}
-
-class _ImageRow extends StatelessWidget {
-  final String? avatarUrl;
-  final String? coverUrl;
-  final String? uploading;
-  final VoidCallback onPickAvatar;
-  final VoidCallback onPickCover;
-
-  const _ImageRow({
-    required this.avatarUrl,
-    required this.coverUrl,
-    required this.uploading,
-    required this.onPickAvatar,
-    required this.onPickCover,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
-    return Column(
-      children: [
-        InkWell(
-          onTap: uploading == null ? onPickCover : null,
-          borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
-          child: Container(
-            height: 120,
-            decoration: BoxDecoration(
-              color: scheme.surfaceContainerHighest,
-              borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
-              image: coverUrl == null
-                  ? null
-                  : DecorationImage(
-                      image: NetworkImage(coverUrl!),
-                      fit: BoxFit.cover,
-                    ),
-            ),
-            child: Center(
-              child: uploading == 'cover'
-                  ? const CircularProgressIndicator()
-                  : Icon(Iconsax.gallery_edit_copy,
-                      color: scheme.onSurface.withValues(alpha: 0.7)),
-            ),
-          ),
-        ),
-        const SizedBox(height: SpacingTokens.space12),
-        InkWell(
-          onTap: uploading == null ? onPickAvatar : null,
-          borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
-          child: CircleAvatar(
-            radius: 40,
-            backgroundColor: scheme.primary.withValues(alpha: 0.2),
-            foregroundImage:
-                avatarUrl == null ? null : NetworkImage(avatarUrl!),
-            child: uploading == 'avatar'
-                ? const CircularProgressIndicator()
-                : Icon(Iconsax.camera_copy, color: scheme.primary),
-          ),
-        ),
-        const SizedBox(height: SpacingTokens.space8),
-        Text(
-          'Tap to change',
-          style: TextStyle(
-            fontSize: 12,
-            color: scheme.onSurface.withValues(alpha: 0.6),
-          ),
-        ),
-      ],
-    );
   }
 }
 
