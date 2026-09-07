@@ -23,6 +23,7 @@ import '../widgets/media_tray.dart';
 import 'report_screen.dart';
 import '../widgets/media_grid.dart';
 import '../widgets/voice_post_player.dart';
+import '../widgets/skeleton.dart';
 
 /// Which conversation, and who is in it.
 ///
@@ -398,7 +399,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
 
   Widget _body(ThreadState state, ThreadNotifier notifier, String? me) {
     if (state.loadingFirstPage) {
-      return const Center(child: CircularProgressIndicator());
+      return SkeletonList.messages();
     }
     if (state.messages.isEmpty) {
       return (state.error != null

@@ -61,6 +61,7 @@ dependencies:
   just_audio: ^0.10.6
   get_thumbnail_video: ^0.7.3
   web_socket_channel: ^3.0.3
+  cryptography: ^2.9.0
 
 dev_dependencies:
   flutter_test:

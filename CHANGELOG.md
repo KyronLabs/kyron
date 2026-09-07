@@ -14,6 +14,11 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Loading skeletons in the shape of what is coming, on the feed, a post, a
+  chat, the conversation list, the comment pages and Explore's people. A
+  centred spinner says something is happening and nothing else; a skeleton says
+  how much is coming and roughly what it looks like, so the page fills in
+  rather than rearranging itself the moment it lands.
 - Push notifications, server side and app side both. A like, a repost, a
   comment, a reply, a follow or a message reaches whoever it is about: over the
   socket if they have the app open, as a push to their phone if they do not,

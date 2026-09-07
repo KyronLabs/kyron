@@ -33,6 +33,7 @@ import '../widgets/comment_tile.dart';
 import '../widgets/thread.dart';
 import '../repositories/moderation_repository.dart' show ReportTarget;
 import 'report_screen.dart';
+import '../widgets/skeleton.dart';
 
 /// One post, with its comments and their replies.
 ///
@@ -123,7 +124,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
 
   Widget _body(PostDetailState state, CurrentUser? me) {
     if (state.isLoading && state.post == null) {
-      return const Center(child: CircularProgressIndicator());
+      return SkeletonList.posts(count: 1);
     }
 
     final post = state.post;

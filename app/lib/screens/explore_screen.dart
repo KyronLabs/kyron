@@ -18,6 +18,7 @@ import '../widgets/section_tabs.dart';
 import '../widgets/simple_app_bar.dart';
 import '../widgets/toast.dart';
 import 'topic_screen.dart';
+import '../widgets/skeleton.dart';
 
 /// What is happening on Kyron that the reader is not already following.
 ///
@@ -398,7 +399,7 @@ class _PeopleTabState extends ConsumerState<_PeopleTab> {
     final notifier = ref.read(suggestedPeopleProvider.notifier);
 
     if (state.loadingFirstPage) {
-      return const Center(child: CircularProgressIndicator());
+      return SkeletonList.people();
     }
 
     return RefreshIndicator(
