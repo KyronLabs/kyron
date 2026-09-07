@@ -1,4 +1,5 @@
 import { FeedService } from './feed.service';
+import { RecordingDelivery } from '../push/delivery.test-double';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { NotFoundException } from '@nestjs/common';
 import { RankingService } from './ranking.service';
@@ -37,6 +38,7 @@ function serviceWith({
       prisma as unknown as PrismaService,
       {} as never,
       new RankingService(),
+      new RecordingDelivery(),
     ),
     prisma,
     created,

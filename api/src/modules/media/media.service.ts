@@ -43,8 +43,43 @@ export class MediaService {
 
   constructor(private readonly supabase: SupabaseService) {}
 
-  /** 25 MB. Large enough for a short clip, small enough to survive a phone's data plan. */
+  /**
+   * The outer ceiling, and what the multipart parser is configured with. A
+   * clip may reach it; nothing else should, which is what [maxBytesFor] is
+   * for.
+   */
   static readonly maxBytes = 25 * 1024 * 1024;
+
+  /**
+   * What each kind may weigh.
+   *
+   * One ceiling for everything meant a photograph could be twenty-five
+   * megabytes -- which no camera produces by accident, and which every reader
+   * of that post then downloads. A clip legitimately needs the room; a still
+   * does not.
+   */
+  static maxBytesFor(kind: MediaKind): number {
+    switch (kind) {
+      case MediaKind.VIDEO:
+        return MediaService.maxBytes;
+      case MediaKind.GIF:
+        return 12 * 1024 * 1024;
+      case MediaKind.VOICE:
+        return 12 * 1024 * 1024;
+      default:
+        return 8 * 1024 * 1024;
+    }
+  }
+
+  /**
+   * The most pixels an image may decode to, whatever it weighs on disk.
+   *
+   * A highly compressible picture -- a single flat colour, say -- can be a few
+   * kilobytes and still decode to hundreds of megabytes in memory. Every
+   * client that renders the post pays that, so it is refused here rather than
+   * on the weakest phone that opens the feed.
+   */
+  static readonly maxPixels = 50_000_000;
 
   static readonly folder = 'post-media';
 
@@ -71,6 +106,26 @@ export class MediaService {
       );
     }
 
+    const ceiling = MediaService.maxBytesFor(kind);
+    if (buffer.length > ceiling) {
+      const mb = Math.round(ceiling / (1024 * 1024));
+      throw new BadRequestException(
+        kind === MediaKind.IMAGE
+          ? `A picture cannot exceed ${mb} MB.`
+          : `That file is larger than ${mb} MB.`,
+      );
+    }
+
+    // Read from the file itself. The client sends these too, and the feed lays
+    // a post out from them before the image has loaded -- so a wrong pair,
+    // whether from a bug or from a client that lied, is a feed that jumps.
+    const measured = MediaService.measure(buffer, sniffed);
+    if (measured && measured.width * measured.height > MediaService.maxPixels) {
+      throw new BadRequestException(
+        'That picture is too large to display. Try one under 50 megapixels.',
+      );
+    }
+
     // The name never comes from the client. An uploaded filename is attacker
     // input, and it ends up in a URL other people load.
     const filename = `${userId}_${Date.now()}_${randomUUID()}.${EXTENSIONS[sniffed]}`;
@@ -90,9 +145,118 @@ export class MediaService {
     return {
       url: publicUrl,
       kind,
-      width: dimensions.width ?? null,
-      height: dimensions.height ?? null,
+      // What the bytes say, falling back to what the client said for the
+      // formats this does not parse -- video, and HEIC.
+      width: measured?.width ?? dimensions.width ?? null,
+      height: measured?.height ?? dimensions.height ?? null,
     };
+  }
+
+  /**
+   * An image's real dimensions, from its header.
+   *
+   * Undefined for anything not parsed here, which the caller takes as "trust
+   * what the client said". Deliberately header-only: decoding the image to
+   * measure it is exactly the work the pixel ceiling exists to avoid.
+   */
+  static measure(
+    buffer: Buffer,
+    mimeType: string,
+  ): { width: number; height: number } | undefined {
+    try {
+      switch (mimeType) {
+        case 'image/png':
+          // IHDR is always the first chunk: 8 bytes of signature, 8 of chunk
+          // header, then width and height as big-endian 32-bit.
+          if (buffer.length < 24) return undefined;
+          return {
+            width: buffer.readUInt32BE(16),
+            height: buffer.readUInt32BE(20),
+          };
+
+        case 'image/gif':
+          // The logical screen descriptor, little-endian, right after the
+          // six-byte signature.
+          if (buffer.length < 10) return undefined;
+          return {
+            width: buffer.readUInt16LE(6),
+            height: buffer.readUInt16LE(8),
+          };
+
+        case 'image/jpeg':
+          return MediaService.measureJpeg(buffer);
+
+        case 'image/webp':
+          return MediaService.measureWebp(buffer);
+
+        default:
+          return undefined;
+      }
+    } catch {
+      // A truncated or malformed header is not worth an exception: the upload
+      // is still a file, and the client's own numbers stand in.
+      return undefined;
+    }
+  }
+
+  /** Walks JPEG segments to the frame header, which carries the size. */
+  private static measureJpeg(
+    buffer: Buffer,
+  ): { width: number; height: number } | undefined {
+    let offset = 2; // past SOI
+    while (offset + 9 < buffer.length) {
+      if (buffer[offset] !== 0xff) return undefined;
+      const marker = buffer[offset + 1];
+      const length = buffer.readUInt16BE(offset + 2);
+
+      // SOF0 through SOF15, skipping the four that are not frame headers.
+      const isFrame =
+        marker >= 0xc0 &&
+        marker <= 0xcf &&
+        marker !== 0xc4 &&
+        marker !== 0xc8 &&
+        marker !== 0xcc;
+      if (isFrame) {
+        return {
+          height: buffer.readUInt16BE(offset + 5),
+          width: buffer.readUInt16BE(offset + 7),
+        };
+      }
+      offset += 2 + length;
+    }
+    return undefined;
+  }
+
+  /** The three WebP flavours each keep the size somewhere different. */
+  private static measureWebp(
+    buffer: Buffer,
+  ): { width: number; height: number } | undefined {
+    if (buffer.length < 30) return undefined;
+    const format = buffer.toString('ascii', 12, 16);
+
+    if (format === 'VP8 ') {
+      // Lossy: 14 bytes in, then two 14-bit values.
+      return {
+        width: buffer.readUInt16LE(26) & 0x3fff,
+        height: buffer.readUInt16LE(28) & 0x3fff,
+      };
+    }
+    if (format === 'VP8L') {
+      // Lossless: 14 bits each, packed across four bytes after the signature.
+      const bits = buffer.readUInt32LE(21);
+      return {
+        width: (bits & 0x3fff) + 1,
+        height: ((bits >> 14) & 0x3fff) + 1,
+      };
+    }
+    if (format === 'VP8X') {
+      // Extended: 24-bit values, minus one, little-endian.
+      return {
+        width: buffer.readUIntLE(24, 3) + 1,
+        height: buffer.readUIntLE(27, 3) + 1,
+      };
+    }
+    return undefined;
   }
 
   /**

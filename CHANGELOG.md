@@ -14,6 +14,17 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Push notifications, server side and app side both. A like, a repost, a
+  comment, a reply, a follow or a message reaches whoever it is about: over the
+  socket if they have the app open, as a push to their phone if they do not,
+  decided per person rather than per event. Turning it on needs a Firebase
+  project -- see `docs/PUSH.md`. Without one the API says so at boot and sends
+  nothing, rather than reporting a delivery it never made.
+- Messages and notifications arrive as they happen. The app holds one
+  authenticated socket open and the server says what changed; the app then
+  fetches it through the same endpoints as before, so a dropped connection
+  costs freshness and never correctness. A chat that is open appends the new
+  message without the screen blinking.
 - A reply can carry pictures and a clip, over the same basket the post composer
   and the chat already use.
 - "Show N replies" carries the faces of the people who actually answered, sent
@@ -151,6 +162,13 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- A photograph could be uploaded at twenty-five megabytes, which is the ceiling
+  a video needs. Each kind has its own now.
+- A post's dimensions were whatever the client said they were, and the feed
+  lays a post out from them before the picture has loaded. They are read from
+  the file's own header, so a wrong pair cannot make the feed jump.
+- A small, highly compressible image could decode to hundreds of megabytes on
+  every phone that opened the post. Refused above fifty megapixels.
 - A community's banner held the top of the screen however far down the
   community you had read. The header sat above the posts rather than scrolling
   with them, so the posts slid up behind it and stopped. It scrolls away now,

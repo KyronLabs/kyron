@@ -1,4 +1,5 @@
 import { FeedService } from './feed.service';
+import { RecordingDelivery } from '../push/delivery.test-double';
 import { ModerationService } from '../moderation/moderation.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { RankingService } from './ranking.service';
@@ -39,6 +40,7 @@ function serviceWith(options: {
       prisma,
       options.moderation ?? noFilters,
       new RankingService(),
+      new RecordingDelivery(),
     ),
     calls,
   };

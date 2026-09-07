@@ -5,6 +5,8 @@ import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { MediaService } from '../media/media.service';
 import { RankingService } from './ranking.service';
+import { DeliveryService } from '../push/delivery.service';
+import { RecordingDelivery } from '../push/delivery.test-double';
 
 /** One row in the shape the service selects. */
 const row = (id: string, createdAt = new Date()) => ({
@@ -180,6 +182,7 @@ describe('FeedService', () => {
           },
         },
         { provide: ModerationService, useValue: moderation },
+        { provide: DeliveryService, useValue: new RecordingDelivery() },
       ],
     }).compile();
     return moduleRef.get(FeedService);
