@@ -73,37 +73,46 @@ class CommunityScreen extends ConsumerWidget {
                     detail: state.error,
                     onAction: notifier.refresh,
                   ).scrollable
-                : Column(
-                    children: [
-                      _Header(
-                        community: community,
-                        busy: state.busy,
-                        onToggle: () async {
-                          final error = await notifier.toggleMembership();
-                          if (!context.mounted) return;
-                          if (error != null) {
-                            Toast.show(context, error);
-                          } else {
-                            // Both tabs of the Communities screen are now out
-                            // of date about this one.
-                            ref.invalidate(myCommunitiesProvider);
-                            ref.invalidate(discoverCommunitiesProvider);
-                          }
-                        },
-                      ),
-                      const Hairline(),
-                      Expanded(
-                        child: PostListView(
-                          source: PostListSource.community(community.slug),
-                          errorTitle: 'Could not load ${community.name}',
-                          emptyTitle: 'Nothing posted here yet',
-                          emptyDetail: community.joined
-                              ? 'Be the first to say something.'
-                              : 'Join to post in ${community.name}.',
-                          emptyArt: EmptyArt.communities,
-                          padding: const EdgeInsets.only(
-                            bottom: SpacingTokens.space40,
-                          ),
+                // The header scrolls with the posts rather than sitting above
+                // them. As a Column with the list in an Expanded it was
+                // pinned, so the posts slid up behind the banner and stopped
+                // -- the banner held a third of the screen no matter how far
+                // down the community you had read. PostListView already takes
+                // slivers to put above its posts, which is how the profile
+                // page does the same thing.
+                : PostListView(
+                    source: PostListSource.community(community.slug),
+                    errorTitle: 'Could not load ${community.name}',
+                    emptyTitle: 'Nothing posted here yet',
+                    emptyDetail: community.joined
+                        ? 'Be the first to say something.'
+                        : 'Join to post in ${community.name}.',
+                    emptyArt: EmptyArt.communities,
+                    padding: const EdgeInsets.only(
+                      bottom: SpacingTokens.space40,
+                    ),
+                    headerSlivers: [
+                      SliverToBoxAdapter(
+                        child: Column(
+                          children: [
+                            _Header(
+                              community: community,
+                              busy: state.busy,
+                              onToggle: () async {
+                                final error = await notifier.toggleMembership();
+                                if (!context.mounted) return;
+                                if (error != null) {
+                                  Toast.show(context, error);
+                                } else {
+                                  // Both tabs of the Communities screen are
+                                  // now out of date about this one.
+                                  ref.invalidate(myCommunitiesProvider);
+                                  ref.invalidate(discoverCommunitiesProvider);
+                                }
+                              },
+                            ),
+                            const Hairline(),
+                          ],
                         ),
                       ),
                     ],
