@@ -40,7 +40,6 @@ dependencies:
   html: ^0.15.6
   iconsax_flutter: ^1.0.1
   flutter_slidable: ^3.0.0
-  shimmer: ^3.0.0
   url_strategy: ^0.3.0
 
   # Attachments. video_player for a clip in the feed and the viewer,

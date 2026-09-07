@@ -179,6 +179,18 @@ class SkeletonList extends StatelessWidget {
             _CommentSkeleton(indent: index % 3 == 1 ? 28 : 0),
       );
 
+  /// Notifications: a small avatar, a line of what happened, a time.
+  factory SkeletonList.notifications({int count = 8}) => SkeletonList(
+        count: count,
+        itemBuilder: (context, index) => const _NotificationSkeleton(),
+      );
+
+  /// Communities: a square badge rather than a round avatar.
+  factory SkeletonList.communities({int count = 6}) => SkeletonList(
+        count: count,
+        itemBuilder: (context, index) => const _CommunitySkeleton(),
+      );
+
   /// Chat bubbles, alternating sides.
   factory SkeletonList.messages({int count = 7}) => SkeletonList(
         count: count,
@@ -391,6 +403,77 @@ class _BubbleSkeleton extends StatelessWidget {
               height: 40,
               radius: RadiusTokens.radiusLg,
             ),
+          ],
+        ),
+      );
+}
+
+class _NotificationSkeleton extends StatelessWidget {
+  const _NotificationSkeleton();
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space16,
+          vertical: SpacingTokens.space12,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SkeletonBox.circle(size: 38),
+            const SizedBox(width: SpacingTokens.space12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  SkeletonBox.line(),
+                  SizedBox(height: SpacingTokens.space8),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: SkeletonBox.line(width: 60, height: 10),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+}
+
+class _CommunitySkeleton extends StatelessWidget {
+  const _CommunitySkeleton();
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space16,
+          vertical: SpacingTokens.space12,
+        ),
+        child: Row(
+          children: [
+            const SkeletonBox(
+              width: 48,
+              height: 48,
+              radius: RadiusTokens.radiusMd,
+            ),
+            const SizedBox(width: SpacingTokens.space12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: SkeletonBox.line(width: 130, height: 13),
+                  ),
+                  SizedBox(height: SpacingTokens.space8),
+                  SkeletonBox.line(height: 11),
+                ],
+              ),
+            ),
+            const SizedBox(width: SpacingTokens.space8),
+            const SkeletonBox(width: 64, height: 30, radius: 15),
           ],
         ),
       );

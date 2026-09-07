@@ -16,6 +16,7 @@ import '../widgets/empty_state.dart';
 import '../widgets/section_tabs.dart';
 import '../widgets/simple_app_bar.dart';
 import '../widgets/toast.dart';
+import '../widgets/skeleton.dart';
 
 /// Communities the reader is in, and communities to join.
 ///
@@ -184,7 +185,7 @@ class _MineTabState extends ConsumerState<_MineTab> {
     final notifier = ref.read(myCommunitiesProvider.notifier);
 
     if (state.loadingFirstPage) {
-      return const Center(child: CircularProgressIndicator());
+      return SkeletonList.communities();
     }
 
     return RefreshIndicator(

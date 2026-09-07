@@ -9,6 +9,7 @@ import '../providers/moderation_provider.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/skeleton.dart';
 
 /// Words and tags that keep posts out of your feed.
 class MutedWordsScreen extends ConsumerStatefulWidget {
@@ -271,7 +272,7 @@ class _PeopleState extends State<_People> {
           );
         }
         if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
+          return SkeletonList.people(count: 5);
         }
 
         final people = snapshot.data!;

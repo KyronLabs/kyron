@@ -10,8 +10,8 @@ import '../routes.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/hairline.dart';
 import '../widgets/notification_item.dart';
-import '../widgets/notification_skeleton.dart';
 import '../widgets/section_tabs.dart';
+import '../widgets/skeleton.dart';
 
 /// What other people did to your posts and your account.
 ///
@@ -190,7 +190,7 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
     final state = ref.watch(notificationListProvider(widget.kind));
     final notifier = ref.read(notificationListProvider(widget.kind).notifier);
 
-    if (state.loadingFirstPage) return const NotificationSkeleton();
+    if (state.loadingFirstPage) return SkeletonList.notifications();
 
     if (state.items.isEmpty) {
       return RefreshIndicator(

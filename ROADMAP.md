@@ -87,8 +87,14 @@ is shippable on its own.
    almost nothing.
 7. **Draft posts and failed-post recovery.** A composer that loses work on a
    dropped connection.
-8. **Empty and error states audit.** Several screens still show a spinner where
-   an explanation belongs.
+8. ~~**Empty and error states audit.**~~ Done, and the finding was not what
+   this line expected: empty and failed states were already covered almost
+   everywhere, through `EmptyState` and `EmptyState.failed`. The real gap was
+   the *loading* state, which was a centred spinner on eleven screens. Those
+   are skeletons now, shaped like the rows that replace them. A one-off
+   shimmer skeleton on the notifications screen -- its own library, its own
+   hardcoded hex colours -- was folded into the same system, and the `shimmer`
+   dependency dropped with it.
 
 ### Phase 3 — Decide the identity story (weeks, mostly design)
 

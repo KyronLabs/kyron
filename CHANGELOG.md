@@ -116,6 +116,10 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- One loading language across the app. The notifications screen had its own
+  shimmer, from its own library, in hardcoded hex that ignored the theme; it
+  now uses the same skeletons as everything else, and the extra dependency is
+  gone.
 - No dropdown menus anywhere. The conversation menu, the comment overflow, the
   community member row and the language picker are bottomsheets now, off one
   shared sheet. A popup opens against the top of the screen on a row near the
