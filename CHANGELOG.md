@@ -162,6 +162,13 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- A photograph could be uploaded at twenty-five megabytes, which is the ceiling
+  a video needs. Each kind has its own now.
+- A post's dimensions were whatever the client said they were, and the feed
+  lays a post out from them before the picture has loaded. They are read from
+  the file's own header, so a wrong pair cannot make the feed jump.
+- A small, highly compressible image could decode to hundreds of megabytes on
+  every phone that opened the post. Refused above fifty megapixels.
 - A community's banner held the top of the screen however far down the
   community you had read. The header sat above the posts rather than scrolling
   with them, so the posts slid up behind it and stopped. It scrolls away now,

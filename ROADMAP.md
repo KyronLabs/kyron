@@ -53,26 +53,34 @@ tests, both wired to CI.
 Sequenced by what unblocks the most, not by what is most exciting. Each phase
 is shippable on its own.
 
-### Phase 1 — Make it a live app (highest value, weeks)
+### Phase 1 — Make it a live app ✅ done
 
-Everything here is invisible in a screenshot and decisive in use.
-
-1. **Push notifications.** There is no FCM, no APNs, no local notifications —
-   nothing. A social app nobody can be told about is one people open once. This
-   is the single biggest retention gap in the project.
-2. **Realtime messages.** Chat polls. A conversation that does not update until
-   you pull it is the most visible unfinished thing in the product. WebSocket or
-   SSE on the existing gateway; the notification badge rides the same channel.
-3. **Realtime notification badge.** Falls out of (2) once the channel exists.
-4. **Delivery and read receipts on the wire** rather than inferred from a
-   refresh.
+1. ~~**Push notifications.**~~ Built. `DeliveryService` picks the socket or a
+   push per person. Turning it on needs a Firebase project — `docs/PUSH.md`.
+   The app still needs one class to supply a token, which is the only step
+   that could not be verified without an Android SDK.
+2. ~~**Realtime messages.**~~ Built. One authenticated socket at `/realtime`,
+   carrying ids; the client fetches through the endpoints it already used.
+3. ~~**Realtime notification badge.**~~ Built, on the same channel.
+4. **Delivery and read receipts on the wire.** Still open. The events exist
+   (`message.read`); nothing emits them yet.
 
 ### Phase 2 — Close the loop on what exists (weeks)
 
-5. **Media pipeline.** Video is uploaded as-is: no transcode, no thumbnail
-   generation server-side, no size ceiling enforced beyond the client. One large
-   upload from one user degrades the feed for everyone. This is what `media/`
-   was meant to be.
+5. **Media pipeline.** Partly done. An earlier draft of this file said there
+   was no size ceiling past the client; that was wrong — the service sniffs the
+   type from the bytes and caps at 25 MB, and never trusts an uploaded
+   filename. What has since been added: a ceiling per kind, so a photograph
+   cannot be 25 MB; real dimensions parsed from the file's own header rather
+   than taken from the client, so the feed cannot be made to jump; and a pixel
+   ceiling, so a small highly-compressible image cannot decode to hundreds of
+   megabytes on every phone that opens the post.
+
+   **Still open: transcoding.** A clip is stored exactly as it arrived — no
+   normalisation to H.264, no bitrate cap, and no server-side poster if the
+   client's own fails to upload. That needs ffmpeg in the API image, which is a
+   deployment change worth making deliberately. This is what `media/` was meant
+   to be.
 6. **Feed quality signals.** Ranking has no dwell time, no negative feedback,
    no "seen" decay beyond the view record. The engine is there; it is being fed
    almost nothing.
