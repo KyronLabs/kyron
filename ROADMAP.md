@@ -38,7 +38,7 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 | Thing | Reality |
 |:--|:--|
-| AR camera lenses | A real camera with colour lenses, published from a catalogue rather than compiled in -- `docs/LENS_FORMAT.md`. No tracking, so "AR" is generous -- `docs/AR.md` |
+| AR camera lenses | A real camera with colour lenses, published from the kyron-lenses repository rather than compiled in. No tracking, so "AR" is generous -- `docs/AR.md` |
 | Live | `ComingSoonScreen.live()` |
 | DID / portable identity | Half built. A real `did:key`, proved by signature -- but nothing consumes it, so it is not portable. `docs/IDENTITY.md` |
 | End-to-end encryption | No encryption code anywhere in the repo |
@@ -245,9 +245,8 @@ The decision that remains is the same one, now narrower:
     cost and the client, and the managed options differ by more than price
     (Cloudflare charges per delivered minute regardless of resolution;
     LiveKit charges per gigabyte). Written up with worked numbers in
-    `docs/LIVE_DECISION.md`, which moves to the kyron-live repository when
-    that exists. The part needing the most thought is not cost -- it is that
-    live video cannot be pre-moderated.
+    the kyron-live repository's `docs/DECISION.md`. The part needing the most
+    thought is not cost -- it is that live video cannot be pre-moderated.
 15. **Creator equity pool.** Needs legal review before it needs code.
 
 ---

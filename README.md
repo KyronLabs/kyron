@@ -61,7 +61,7 @@ Listed because they have been described as finished elsewhere and are not.
 
 | Planned | State today |
 |:--|:--|
-| AR camera lenses | A camera with colour lenses, applied live and baked into the photo. Lenses are data, not code, so new ones ship without a release — [the format](docs/LENS_FORMAT.md). No face or plane tracking, so it is filters rather than AR — [where the line is](docs/AR.md) |
+| AR camera lenses | A camera with colour lenses, applied live and baked into the photo. Lenses are data, not code, so new ones ship from [their own repo](https://github.com/KyronLabs/kyron-lenses) without an app release — [how the app reads them](docs/LENS_FORMAT.md). No face or plane tracking, so it is filters rather than AR — [where the line is](docs/AR.md) |
 | Live video | Not started. Same |
 | Portable identity (DID / AT Protocol) | Half built. Every account gets a real `did:key` it proves it controls — but nothing consumes it, so nothing is portable yet. [What it does and does not do](docs/IDENTITY.md) |
 | End-to-end encrypted *posts* | Not started. Direct messages are encrypted; posts are public by nature |
