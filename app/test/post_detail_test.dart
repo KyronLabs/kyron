@@ -1,3 +1,9 @@
+import 'package:kyron_app/services/api_client.dart';
+import 'package:kyron_app/repositories/feed_repository.dart';
+import 'package:kyron_app/providers/feed_provider.dart';
+import 'package:kyron_app/models/feed_post.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/post_comment.dart';
 import 'package:kyron_app/providers/post_detail_provider.dart';
@@ -13,6 +19,8 @@ PostComment _comment(String id, {String? parentId, int replies = 0}) =>
     });
 
 void main() {
+  _openingReplies();
+
   group('PostComment.fromJson', () {
     test('reads a top-level comment', () {
       final comment = _comment('c1', replies: 3);
@@ -21,6 +29,19 @@ void main() {
       expect(comment.replies, 3);
       expect(comment.author.handle, '@ada');
       expect(comment.mine, isFalse);
+    });
+
+    test('marks a comment the post author wrote', () {
+      // Decided by the server: a comment page can be opened on its own and
+      // has no post in hand to compare against.
+      final byAuthor = PostComment.fromJson({
+        'id': 'c9',
+        'author': const {'id': 'u1'},
+        'byAuthor': true,
+      });
+
+      expect(byAuthor.byAuthor, isTrue);
+      expect(_comment('c1').byAuthor, isFalse);
     });
 
     test('reads a reply', () {
@@ -124,6 +145,106 @@ void main() {
       expect(empty.views, 0);
       expect(empty.timeline, isEmpty);
       expect(empty.engagementRate, isNull);
+    });
+  });
+}
+
+/// A feed that answers a thread page whenever the test says so.
+class _SlowFeed extends FeedRepository {
+  _SlowFeed() : super(ApiClient());
+
+  /// Held open, so a test can look at the state mid-fetch -- which is the
+  /// only moment the bug this covers was visible.
+  final _replies = Completer<CommentPage>();
+
+  @override
+  Future<FeedPost> byId(String id) async => FeedPost(
+        id: id,
+        content: 'a post',
+        createdAt: DateTime(2026),
+        author: const FeedAuthor(id: 'me', username: 'me'),
+      );
+
+  @override
+  Future<CommentPage> comments(String postId,
+          {String? cursor, int limit = 20}) async =>
+      CommentPage(items: [_comment('c1', replies: 2)]);
+
+  @override
+  Future<CommentPage> replies(String commentId,
+      {String? cursor, int limit = 20}) {
+    return _replies.future;
+  }
+
+  @override
+  Future<void> recordView(String postId) async {}
+
+  void answer() => _replies.complete(
+        CommentPage(items: [_comment('r1', parentId: 'c1')]),
+      );
+
+  void fail() => _replies.completeError(Exception('offline'));
+}
+
+void _openingReplies() {
+  group('opening a folded run of replies', () {
+    ProviderContainer containerFor(_SlowFeed feed) {
+      final container = ProviderContainer(
+        overrides: [feedRepositoryProvider.overrideWithValue(feed)],
+      );
+      addTearDown(container.dispose);
+      return container;
+    }
+
+    test('keeps the row while its replies are on their way', () async {
+      final feed = _SlowFeed();
+      final container = containerFor(feed);
+      final notifier = container.read(postDetailProvider('p1').notifier);
+      await pumpEventQueue();
+
+      unawaited(notifier.toggleReplies('c1'));
+      await pumpEventQueue();
+
+      // Marking it expanded here would take the "show replies" row away and
+      // put nothing in its place, so the branch reads as deleted.
+      final state = container.read(postDetailProvider('p1'));
+      expect(state.loadingReplies, contains('c1'));
+      expect(state.expanded, isNot(contains('c1')));
+    });
+
+    test('opens it once they arrive', () async {
+      final feed = _SlowFeed();
+      final container = containerFor(feed);
+      final notifier = container.read(postDetailProvider('p1').notifier);
+      await pumpEventQueue();
+
+      final opening = notifier.toggleReplies('c1');
+      await pumpEventQueue();
+      feed.answer();
+      await opening;
+
+      final state = container.read(postDetailProvider('p1'));
+      expect(state.expanded, contains('c1'));
+      expect(state.loadingReplies, isEmpty);
+      expect(state.replies['c1'], hasLength(1));
+    });
+
+    test('stops spinning when the replies cannot be fetched', () async {
+      final feed = _SlowFeed();
+      final container = containerFor(feed);
+      final notifier = container.read(postDetailProvider('p1').notifier);
+      await pumpEventQueue();
+
+      final opening = notifier.toggleReplies('c1');
+      await pumpEventQueue();
+      feed.fail();
+      await opening;
+
+      // A row that spins forever is worse than one that shows nothing.
+      final state = container.read(postDetailProvider('p1'));
+      expect(state.loadingReplies, isEmpty);
+      expect(state.expanded, contains('c1'));
+      expect(state.replies['c1'], isEmpty);
     });
   });
 }

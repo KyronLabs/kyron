@@ -21,6 +21,14 @@ class PostDetailState {
   /// Which threads the reader has opened.
   final Set<String> expanded;
 
+  /// Which are still fetching their replies.
+  ///
+  /// Held apart from [expanded] on purpose. Marking a comment expanded the
+  /// moment it was tapped took its "show replies" row away before the replies
+  /// existed, so the branch showed nothing at all for the length of the
+  /// request -- which reads as the thread having been deleted.
+  final Set<String> loadingReplies;
+
   final bool isLoading;
   final bool isSending;
 
@@ -34,6 +42,7 @@ class PostDetailState {
     this.comments = const [],
     this.replies = const {},
     this.expanded = const {},
+    this.loadingReplies = const {},
     this.isLoading = true,
     this.isSending = false,
     this.media = const [],
@@ -59,6 +68,7 @@ class PostDetailState {
     List<PostComment>? comments,
     Map<String, List<PostComment>>? replies,
     Set<String>? expanded,
+    Set<String>? loadingReplies,
     bool? isLoading,
     bool? isSending,
     List<PendingMedia>? media,
@@ -72,6 +82,7 @@ class PostDetailState {
       comments: comments ?? this.comments,
       replies: replies ?? this.replies,
       expanded: expanded ?? this.expanded,
+      loadingReplies: loadingReplies ?? this.loadingReplies,
       isLoading: isLoading ?? this.isLoading,
       isSending: isSending ?? this.isSending,
       media: media ?? this.media,
@@ -152,19 +163,35 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
       return;
     }
 
-    expanded.add(commentId);
-    state = state.copyWith(expanded: expanded);
-    if (state.replies.containsKey(commentId)) return;
+    // Already fetched once: open it without asking again.
+    if (state.replies.containsKey(commentId)) {
+      state = state.copyWith(expanded: {...expanded, commentId});
+      return;
+    }
+
+    // Expanded only once the replies are in hand. Setting it now would take
+    // the "show replies" row away and put nothing in its place, so the branch
+    // would be empty for the length of the request. The row stays, carrying a
+    // spinner beside its faces.
+    if (state.loadingReplies.contains(commentId)) return;
+    state = state.copyWith(
+      loadingReplies: {...state.loadingReplies, commentId},
+    );
 
     try {
       final page = await _repo.replies(commentId);
       state = state.copyWith(
         replies: {...state.replies, commentId: page.items},
+        expanded: {...state.expanded, commentId},
+        loadingReplies: {...state.loadingReplies}..remove(commentId),
       );
     } catch (_) {
-      // Leave it expanded and empty rather than collapsing under the reader.
+      // Opened and empty rather than left spinning: the reader asked, and a
+      // row that spins forever is worse than one that shows nothing.
       state = state.copyWith(
         replies: {...state.replies, commentId: const []},
+        expanded: {...state.expanded, commentId},
+        loadingReplies: {...state.loadingReplies}..remove(commentId),
       );
     }
   }

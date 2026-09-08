@@ -14,6 +14,8 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- A comment or reply written by the post's own author carries an Author badge.
+  In a long thread those are the answers people are looking for.
 - Clips are normalised on upload and get a poster cut from them. Anything over
   720p or 2.5 Mbps is re-encoded to H.264 with the index moved to the front, so
   playback starts before the file has finished arriving, and every list drawing
@@ -185,6 +187,10 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- Tapping "show replies" made the branch disappear for as long as the request
+  took. The comment was marked open the moment it was tapped, which took its
+  own row away before the replies existed. The row stays now, with a spinner
+  beside its faces.
 - A photograph could be uploaded at twenty-five megabytes, which is the ceiling
   a video needs. Each kind has its own now.
 - A post's dimensions were whatever the client said they were, and the feed
