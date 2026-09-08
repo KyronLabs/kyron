@@ -62,7 +62,7 @@ Listed because they have been described as finished elsewhere and are not.
 |:--|:--|
 | AR camera lenses | Not started. The menu entry opens a "coming soon" screen |
 | Live video | Not started. Same |
-| Portable identity (DID / AT Protocol) | Not started. The column exists; nothing writes to it |
+| Portable identity (DID / AT Protocol) | Half built. Every account gets a real `did:key` it proves it controls — but nothing consumes it, so nothing is portable yet. [What it does and does not do](docs/IDENTITY.md) |
 | End-to-end encrypted *posts* | Not started. Direct messages are encrypted; posts are public by nature |
 | Creator equity pool | Not started |
 

@@ -13,7 +13,7 @@ Last audited: 8 September 2026.
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 447 Flutter tests and 393 API
+(Supabase), a Flutter client, REST between them. 458 Flutter tests and 420 API
 tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 ### Built and working
@@ -40,10 +40,10 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 |:--|:--|
 | AR camera lenses | `ComingSoonScreen.arLens()`. No camera code exists |
 | Live | `ComingSoonScreen.live()` |
-| DID / portable identity | A nullable column. Generation is a commented-out TODO |
+| DID / portable identity | Half built. A real `did:key`, proved by signature -- but nothing consumes it, so it is not portable. `docs/IDENTITY.md` |
 | End-to-end encryption | No encryption code anywhere in the repo |
 | Creator equity pool | No contract, no chain, no testnet |
-| `identity/` service | A Dockerfile and three GitHub templates |
+| `identity/` service | A Dockerfile and three GitHub templates. The Nest module of the same name is real now |
 | `media/` service | A Dockerfile |
 | Redis | In config and docker-compose, never read by `api/src` |
 
@@ -129,18 +129,29 @@ is shippable on its own.
    hardcoded hex colours -- was folded into the same system, and the `shimmer`
    dependency dropped with it.
 
-### Phase 3 — Decide the identity story (weeks, mostly design)
+### Phase 3 — The identity story: started, not finished
 
-The README sells portable identity as the reason Kyron exists. It does not
-exist. There are two honest paths and the project has to pick one:
+The `did` column nobody wrote to is now a real `did:key` that the account
+proves it controls -- generated on the device, claimed by signing a
+server-issued challenge bound to the account, and verifiable by anyone without
+asking Kyron. Along the way it closed a hole: `POST /identity/users` created a
+`User` row for anybody on the internet, and `GET /identity/users/:id` answered
+with that user's email.
 
-- **Build it.** AT Protocol node, real DID generation, repo export. This is a
-  quarter of work minimum and changes the data model.
-- **Drop it.** Rewrite the positioning around what Kyron actually is: an
-  open-source, self-hostable social app with communities and a transparent
-  ranking engine. That is a real story and it is true today.
+**It is not portable yet, and the README should not say it is.** Nothing
+consumes the identifier: no export, no federation, no second server that would
+recognise it. It also cannot survive losing the device, which is the gap that
+matters most -- an identity you cannot carry to a new phone is not one you can
+carry to a new server. `docs/IDENTITY.md` has the full list.
 
-Half-shipping it — a `did` column nobody writes to — is the worst of both.
+The decision that remains is the same one, now narrower:
+
+- **Carry on.** A recovery phrase, then signed posts, then an export something
+  else can read. Each is a real step, and the first two are small.
+- **Stop here.** Keep the identifier as a verifiable account fingerprint and
+  rewrite the positioning around what Kyron is: an open-source, self-hostable
+  social app with communities and a transparent ranking engine. That is a real
+  story and it is true today.
 
 ### Phase 4 — Scale and operate (months)
 

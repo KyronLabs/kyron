@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../providers/auth_provider.dart';
+import '../providers/identity_provider.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/preferences_provider.dart';
 import '../utils/api_error_message.dart';
@@ -332,12 +333,18 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
               helpText: 'Your profile and contact information',
             ),
-            // The real one. This row showed "did:plc:abc…" and copied
+            // The real one, and now a real identifier rather than a column
+            // nobody wrote to. This row showed "did:plc:abc…" and copied
             // "did:plc:abcdef1234567890abcdef12" -- the same invented
-            // identifier for everyone, to anyone who tapped Copy.
+            // identifier for everyone, to anyone who tapped Copy -- and then
+            // showed "No DID yet" to everybody forever.
+            //
+            // Read from the vault rather than from the profile: the profile
+            // carries whatever the server last sent, and the identifier is
+            // established by this device after sign-in.
             Consumer(
               builder: (context, ref, _) {
-                final did = ref.watch(currentUserProvider).asData?.value.did;
+                final did = ref.watch(myDidProvider).asData?.value;
                 return _settingsRow(
                   icon: Iconsax.document_copy,
                   label: did == null ? 'No DID yet' : _shortDid(did),
