@@ -46,6 +46,7 @@ does today. Where something is planned rather than built, it says so.
 | **Explore** | Trending hashtags, topics, people you might follow |
 | **Moderation** | Report, block, mute people, threads and words |
 | **Search** | People, posts and hashtags, with filters |
+| **Operations** | A request id on every response, structured request logs, error aggregation, and a token-guarded `/metrics` — [what is measurable and what is not](docs/OBSERVABILITY.md) |
 
 ### Not built yet
 

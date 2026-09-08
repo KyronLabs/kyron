@@ -12,12 +12,34 @@ import multipart from '@fastify/multipart';
 import { MediaService } from './modules/media/media.service';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { randomUUID } from 'node:crypto';
+import { MetricsService } from './infrastructure/observability/metrics.service';
+import { installRequestLogging } from './infrastructure/observability/request-log';
+import { RealtimeService } from './modules/realtime/realtime.service';
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter({ logger: false }),
+    new FastifyAdapter({
+      logger: false,
+      // One id per request, echoed back on the response and carried on every
+      // log line it produces. A caller that already has one -- a proxy, the
+      // app, another service -- keeps it, so a single id spans the hop.
+      genReqId: (request: {
+        headers: Record<string, string | string[] | undefined>;
+      }) => {
+        const carried = request.headers['x-request-id'];
+        const given = Array.isArray(carried) ? carried[0] : carried;
+        // Bounded and stripped: this goes into a log line and a response
+        // header, and a client must not be able to write either.
+        if (typeof given === 'string') {
+          const clean = given.replace(/[^\w.:-]/g, '').slice(0, 64);
+          if (clean.length > 0) return clean;
+        }
+        return randomUUID();
+      },
+    }),
     // Not buffering. Provider initialisation -- notably PrismaService's connect
     // retry loop -- runs inside create(), and a failure there rejects before
     // useLogger() is ever reached, so buffered records are dropped and the boot
@@ -29,6 +51,22 @@ async function bootstrap() {
   app.useLogger(['error', 'warn', 'log', 'debug', 'verbose']);
 
   const config = app.get(ConfigService);
+
+  // Before the route plugins, so the hook is in place for the first request
+  // the process ever serves rather than from whenever registration finishes.
+  const metrics = app.get(MetricsService);
+  installRequestLogging(app.getHttpAdapter().getInstance(), metrics);
+  metrics.gauge(
+    'kyron_realtime_readers',
+    'Readers with at least one open socket on this instance.',
+    () => app.get(RealtimeService).connectedReaders,
+  );
+  metrics.gauge(
+    'process_resident_memory_bytes',
+    'Resident set size of this process.',
+    () => process.memoryUsage().rss,
+  );
+
   await app.register(helmet);
 
   // The plugin enforces this before a handler sees the request, so a limit

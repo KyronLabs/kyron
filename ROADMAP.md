@@ -13,7 +13,7 @@ Last audited: 8 September 2026.
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 447 Flutter tests and 342 API
+(Supabase), a Flutter client, REST between them. 447 Flutter tests and 376 API
 tests, both wired to CI.
 
 ### Built and working
@@ -32,6 +32,7 @@ tests, both wired to CI.
 | Search | People, posts, hashtags, with filters |
 | Settings | The whole suite, including every subscreen |
 | Security | Anon key shut out of all 40 API tables, RLS on, rate limiting on |
+| Operations | Request ids, structured request logs, a guarded `/metrics`, error aggregation |
 
 ### Stubs shipped as if finished
 
@@ -143,12 +144,36 @@ Half-shipping it — a `did` column nobody writes to — is the worst of both.
 
 ### Phase 4 — Scale and operate (months)
 
-9. **Use Redis or remove it.** Feed caching, trending counts, rate-limit state,
-   session revocation. Right now it is a dependency the project pays for in
-   setup complexity and gets nothing from.
-10. **Observability.** No metrics, no traces, no error aggregation. None of the
-    KPIs in the README can currently be measured, so none of them can be
-    claimed.
+9. **Use Redis or remove it.** Still open, and now written down rather than
+   left implicit -- see the one-instance section of `docs/OBSERVABILITY.md`.
+   The honest position: `fly.toml` runs a single machine that stops when idle,
+   so nothing needs Redis today, and three things break the moment there are
+   two machines -- the rate limiter counts per process, the realtime service
+   holds its sockets in a `Map`, and the metrics below describe whichever
+   machine was scraped. `ioredis` and `bullmq` stay installed against that day;
+   `REDIS_HOST` is the shape of the answer, not the answer.
+10. ~~**Observability.**~~ Built. Every request now carries an id -- generated,
+    or taken from an incoming `x-request-id` so it survives a proxy hop, and
+    stripped before it reaches a log line or a header -- and produces one
+    structured line on stdout, levelled so a 5xx, a 4xx and a slow success read
+    differently. `GET /metrics` serves request counts, a duration histogram (so
+    a P95 is computed rather than guessed), failures by exception class, and
+    the process itself; it is shut and answers 404 unless `METRICS_TOKEN` is
+    set. A global filter counts and logs failures without touching the response
+    body the client reads.
+
+    Two things worth knowing. The route label is the matched pattern, never the
+    URL, with a cardinality ceiling that is reported when it is hit: one series
+    per request is how a metrics endpoint takes down its own scraper. And it is
+    a Fastify hook rather than a Nest interceptor, because interceptors never
+    run for a request a guard rejected -- an interceptor counts the traffic
+    that worked and misses every 401.
+
+    Removed with it: a winston logger that rotated fourteen days of files into
+    a container destroyed on every deploy, which nothing imported, plus eight
+    other dependencies nothing imported at all -- `bcrypt`, `passport`,
+    `passport-jwt`, `@nestjs/passport`, `multer`, `@types/multer` and
+    `@nestjs/platform-express`, that last one sitting alongside Fastify.
 11. **Background jobs.** Trending recomputation, notification fan-out and media
     processing all run inline on request threads today.
 12. **Load testing** against the P95 targets before quoting them.
