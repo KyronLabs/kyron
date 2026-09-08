@@ -12,6 +12,7 @@ import multipart from '@fastify/multipart';
 import { MediaService } from './modules/media/media.service';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { readRateLimit } from './config/rate-limit';
 import { randomUUID } from 'node:crypto';
 import { MetricsService } from './infrastructure/observability/metrics.service';
 import { installRequestLogging } from './infrastructure/observability/request-log';
@@ -85,8 +86,32 @@ async function bootstrap() {
   });
 
   await app.register(rateLimit, {
-    max: config.get<number>('RATE_LIMIT_MAX') ?? 100,
+    // Read and validated in one place. Passing `config.get<number>(...)`
+    // straight through handed the plugin a string, which it ignored in favour
+    // of its own default of 1000 -- see src/config/rate-limit.ts.
+    max: readRateLimit(),
     timeWindow: 60 * 1000,
+    // Per account when there is one, per address otherwise.
+    //
+    // Keyed on the address alone, one limit covers everybody behind it: an
+    // office, a school, or a mobile carrier's NAT, where thousands of phones
+    // share a handful of addresses. The first few people through would spend
+    // the budget for everyone else on the network, which reads as the app
+    // being broken. The token is read here, not verified -- the guard does
+    // that -- so the worst a forged one buys is a private bucket of the same
+    // size, while anonymous traffic stays limited by address as before.
+    keyGenerator: (request: {
+      headers: Record<string, string | string[] | undefined>;
+      ip: string;
+    }) => {
+      const header = request.headers.authorization;
+      const bearer =
+        typeof header === 'string' && header.startsWith('Bearer ')
+          ? header.slice(7)
+          : null;
+      const subject = bearer ? subjectOf(bearer) : null;
+      return subject ? `user:${subject}` : `ip:${request.ip}`;
+    },
   });
 
   // CORS_ORIGIN is a comma-separated allow-list. Unset, we reflect whatever
@@ -161,3 +186,26 @@ void bootstrap().catch((error) => {
   process.exitCode = 1;
   setTimeout(() => process.exit(1), 250).unref();
 });
+
+/**
+ * The `sub` claim of a token, without verifying it.
+ *
+ * Only ever used to choose a rate-limit bucket, never to decide who somebody
+ * is -- AuthGuard does that, against a signature. A forged token therefore
+ * buys nothing but its own bucket of the same size as everyone else's.
+ */
+function subjectOf(token: string): string | null {
+  const body = token.split('.')[1];
+  if (!body) return null;
+  try {
+    const claims: unknown = JSON.parse(
+      Buffer.from(body, 'base64url').toString('utf8'),
+    );
+    const sub = (claims as { sub?: unknown })?.sub;
+    return typeof sub === 'string' && sub.length > 0 && sub.length <= 128
+      ? sub
+      : null;
+  } catch {
+    return null;
+  }
+}

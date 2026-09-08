@@ -379,10 +379,11 @@ describe('FeedService', () => {
     it('scopes the like and save relations to the reader', async () => {
       // Without the filter every post would come back carrying everyone's
       // likes, and the reader's own flag would be "did anybody like this".
-      post.findMany.mockResolvedValue([]);
+      post.findMany.mockResolvedValue([row('p1')]);
       await (await service()).listRecent(VIEWER, 20);
 
-      const args = post.findMany.mock.calls[0][0] as {
+      // The second query: the first ranks, this one loads what is shown.
+      const args = post.findMany.mock.calls[1][0] as {
         select: {
           likes: { where: { userId: string } };
           saves: { where: { userId: string } };
@@ -390,6 +391,58 @@ describe('FeedService', () => {
       };
       expect(args.select.likes.where).toEqual({ userId: VIEWER });
       expect(args.select.saves.where).toEqual({ userId: VIEWER });
+    });
+
+    it('ranks on a narrow projection and loads the post only for the page', async () => {
+      // Selecting the whole post shape for all four hundred candidates and
+      // throwing away three hundred and eighty of them made this the slowest
+      // thing the app does -- 69ms uncontended against 4ms for a profile, and
+      // 550ms at sixteen concurrent readers, on the screen that opens first.
+      post.findMany.mockResolvedValue([row('p1')]);
+      await (await service()).listRecent(VIEWER, 20);
+
+      const ranking = post.findMany.mock.calls[0][0] as {
+        take: number;
+        select: Record<string, unknown>;
+      };
+      expect(ranking.take).toBe(FeedService.candidatePool);
+      // What scoring needs.
+      expect(Object.keys(ranking.select).sort()).toEqual([
+        '_count',
+        'authorId',
+        'createdAt',
+        'id',
+        'topics',
+        'views',
+      ]);
+      // And nothing that only a rendered post needs.
+      for (const heavy of ['media', 'quotedPost', 'poll', 'author', 'likes']) {
+        expect(ranking.select[heavy]).toBeUndefined();
+      }
+    });
+
+    it('keeps the ranked order the second query does not preserve', async () => {
+      // `IN` answers in whatever order it likes, and the ordering is the
+      // entire point of this endpoint.
+      post.findMany
+        .mockResolvedValueOnce([row('a'), row('b'), row('c')])
+        .mockResolvedValueOnce([row('c'), row('a'), row('b')]);
+
+      const page = await (await service()).listRecent(VIEWER, 20);
+      const ranked = (
+        post.findMany.mock.calls[1][0] as { where: { id: { in: string[] } } }
+      ).where.id.in;
+
+      expect(page.items.map((item) => item.id)).toEqual(ranked);
+    });
+
+    it('does not ask for a page when nothing was ranked', async () => {
+      post.findMany.mockResolvedValue([]);
+
+      const page = await (await service()).listRecent(VIEWER, 20);
+
+      expect(page.items).toEqual([]);
+      expect(post.findMany).toHaveBeenCalledTimes(1);
     });
   });
 

@@ -1,4 +1,5 @@
 import { getJwtSecret } from './jwt-secret';
+import { readRateLimit } from './rate-limit';
 
 export default () => ({
   port: Number(process.env.PORT) || 3000,
@@ -13,6 +14,9 @@ export default () => ({
     port: Number(process.env.REDIS_PORT) || 6379,
   },
   rateLimit: {
-    max: Number(process.env.RATE_LIMIT_MAX) || 100,
+    // Through the shared reader, so the value here and the one the plugin is
+    // given cannot disagree -- and so an unparseable one is refused rather
+    // than turned into 100 by a `||`.
+    max: readRateLimit(),
   },
 });

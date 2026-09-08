@@ -47,6 +47,7 @@ does today. Where something is planned rather than built, it says so.
 | **Moderation** | Report, block, mute people, threads and words |
 | **Search** | People, posts and hashtags, with filters |
 | **Operations** | A request id on every response, structured request logs, error aggregation, and a token-guarded `/metrics` — [what is measurable and what is not](docs/OBSERVABILITY.md) |
+| **Performance** | Measured, not asserted — [what every endpoint actually costs](docs/PERFORMANCE.md), and the load test that produced it |
 
 ### Not built yet
 

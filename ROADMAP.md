@@ -13,8 +13,8 @@ Last audited: 8 September 2026.
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 447 Flutter tests and 376 API
-tests, both wired to CI.
+(Supabase), a Flutter client, REST between them. 447 Flutter tests and 387 API
+tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 ### Built and working
 
@@ -174,9 +174,33 @@ Half-shipping it — a `did` column nobody writes to — is the worst of both.
     other dependencies nothing imported at all -- `bcrypt`, `passport`,
     `passport-jwt`, `@nestjs/passport`, `multer`, `@types/multer` and
     `@nestjs/platform-express`, that last one sitting alongside Fastify.
-11. **Background jobs.** Trending recomputation, notification fan-out and media
-    processing all run inline on request threads today.
-12. **Load testing** against the P95 targets before quoting them.
+11. **Background jobs.** Partly stale, now that it has been read rather than
+    assumed. Notification fan-out is already off the request thread --
+    `DeliveryService` fires and does not await -- and the transcoder probes a
+    clip before re-encoding, so an over-long one is refused without paying for
+    it. What is genuinely inline is the re-encode of a *valid* clip, which
+    holds the upload request open for its duration. Moving that off needs
+    somewhere durable to put the job, and this deployment stops its machine
+    when idle, so it is the same decision as item 9.
+12. ~~**Load testing** against the P95 targets before quoting them.~~ Done, and
+    there are now real numbers to quote -- `docs/PERFORMANCE.md`. A
+    dependency-free driver lives at `api/scripts/loadtest.mjs`.
+
+    It found three things. The main feed selected the whole post shape for all
+    four hundred ranking candidates and returned twenty, making it by a wide
+    margin the slowest thing the app does on the screen that opens first; it
+    now ranks on six columns and hydrates the page, which took it from 31 to
+    55 rps at sixteen concurrent readers and its p95 from 615ms to 365ms. The
+    rate limit had never worked -- `ConfigService.get<number>` hands back a
+    string, the plugin ignores a non-numeric `max` and silently uses its own
+    default of 1000, so every deployment that set the variable got 1000 a
+    minute whatever it asked for. And a 429 was being logged as a 500 with a
+    full stack, because the limiter throws a plain `Error` rather than a Nest
+    `HttpException`.
+
+    Rate limiting is also keyed per account now, falling back to the address.
+    One bucket per address means a carrier's NAT shares one limit between
+    thousands of phones.
 
 ### Phase 5 — The advertised features (quarters)
 

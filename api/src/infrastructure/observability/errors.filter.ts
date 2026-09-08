@@ -32,8 +32,7 @@ export class ErrorsFilter extends BaseExceptionFilter {
 
     const request: unknown = host.switchToHttp().getRequest();
     const route = routeLabel(request);
-    const status =
-      exception instanceof HttpException ? exception.getStatus() : 500;
+    const status = statusOf(exception);
 
     this.metrics.error(route, kindOf(exception, status));
 
@@ -54,6 +53,28 @@ export class ErrorsFilter extends BaseExceptionFilter {
 
     super.catch(exception, host);
   }
+}
+
+/**
+ * The status a failure is really answering with.
+ *
+ * Not every failure is a Nest `HttpException`. A Fastify plugin throws a plain
+ * `Error` carrying `statusCode`, which is how every 429 from the rate limiter
+ * was being recorded as a 500 and logged with a full stack -- turning ordinary
+ * throttling into what looked like the server falling over, in the log a
+ * person reads to find out whether it had.
+ */
+export function statusOf(exception: unknown): number {
+  if (exception instanceof HttpException) return exception.getStatus();
+
+  const carried = (exception as { statusCode?: unknown })?.statusCode;
+  // A sane HTTP status and nothing else: this decides whether a stack is
+  // written, so a thrown object claiming `statusCode: 200` must not be able to
+  // hide a genuine failure.
+  if (typeof carried === 'number' && carried >= 400 && carried <= 599) {
+    return carried;
+  }
+  return 500;
 }
 
 /**
