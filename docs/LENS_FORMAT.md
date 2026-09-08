@@ -8,6 +8,17 @@ disagreeing.
 
 This is the half that is about *this* app.
 
+## Two kinds of lens
+
+A **colour lens** is twenty numbers applied to every pixel. A **face lens**
+hangs pictures on a tracked face, and declares `"schema": 2` so a build that
+cannot draw one drops it rather than showing a chip that does nothing. A lens
+may be both.
+
+`Lens.needsFace` is what the screen reads to decide whether to run the tracker
+at all -- inference on every frame for a lens that ignores the answer is
+somebody's battery spent on nothing.
+
 ## Where the lenses come from
 
 Seven are compiled in, in `Lens.builtIn`. The rest are fetched from the

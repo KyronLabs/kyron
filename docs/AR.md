@@ -29,15 +29,35 @@ it lets the camera go when the app is backgrounded, because a camera held in
 the background is one another app cannot open and a green dot on the status bar
 for a screen nobody is looking at.
 
-## What it is not
+## And there is tracking now
 
-**There is no tracking.** Nothing detects a face, a plane or a marker. Nothing
-is placed in the scene. Every lens is a function of colour, applied to the whole
-frame — so it will not put a hat on you, and calling it "AR" is generous.
+A lens can also hang a picture on a face. MediaPipe's face mesh runs on the
+device and returns 478 landmarks; a lens says *what* to hang, *where*, and
+*how big*, and the app works out the rest.
 
-The name is on the create menu already and the entry now does something rather
-than nothing, which is better than it was. But this is a camera with filters,
-and it should be described that way.
+Size is stated in pupil-gaps rather than pixels — `2.6` means 2.6 times the
+distance between the irises. That distance is the one measurement that keeps
+meaning the same thing as a head turns, so a lens written once is right at any
+distance from the camera, on any face, at any resolution.
+
+Tracking runs only while a lens actually needs it. Inference on every frame for
+a lens that ignores the answer is somebody's battery spent on nothing.
+
+## What it is still not
+
+**Flat pictures, not objects.** An attachment is a sprite placed and rotated in
+two dimensions. A head turning to the side is exactly where that stops being
+convincing, and where a real mesh becomes necessary.
+
+**No expression.** The tracker reports 52 blendshapes — `jawOpen`,
+`mouthSmileLeft` — and nothing consumes them yet.
+
+**No occlusion.** Glasses arms draw over the head rather than disappearing
+behind it, which is the single biggest difference between "stuck on" and
+"there".
+
+**No planes or markers.** Nothing is placed in the room. This is face tracking,
+not world tracking.
 
 **No video.** Stills only. The shutter takes a photograph; there is no record
 button.
@@ -67,9 +87,20 @@ camera and no phone attached to it.
   its colours from the app theme, so on a light-themed phone the message was
   dark grey on black.
 - That it compiles into an Android APK with the camera plugin in it.
+- The placement arithmetic, against a real detection: 478 landmarks from
+  MediaPipe's own test portrait, run through `FaceAnchor` and checked against a
+  separate implementation in Python to within a tenth of a pixel. Then
+  rendered, and looked at -- the glasses land on the eyes and stay there
+  through a 60-degree sweep of head roll.
 
 **Not checked, because it needs hardware:**
 
+- **Any of the tracking, live.** Frame rate, jitter, how far the overlay lags
+  the preview, and whether dropping frames while inference is busy keeps it in
+  step. All of it is written to fail safely -- no face means nothing drawn --
+  but none of it has been seen running.
+- **Yaw and pitch.** Rotating a photograph only produces roll.
+- More than one face, or one in bad light.
 - That the preview shows anything.
 - That the shutter produces a file.
 - Whether the permission prompt appears at the right moment and reads well.

@@ -79,15 +79,21 @@ void main() {
     await tester.pumpWidget(screen(const [], temp));
     await tester.pump();
 
-    await tester.tap(find.text('Mono'));
-    await tester.pump();
+    Color labelColour(String name) =>
+        tester.widget<Text>(find.text(name)).style!.color!;
 
-    // The chosen chip is the filled one; before the tap it was None.
-    final mono = tester.widget<Container>(
-      find
-          .ancestor(of: find.text('Mono'), matching: find.byType(Container))
-          .first,
-    );
-    expect((mono.decoration! as BoxDecoration).color, Colors.white);
+    // Before: None is chosen, so its label is the dark one on a filled chip.
+    expect(labelColour('None'), Colors.black);
+    expect(labelColour('Mono'), Colors.white);
+
+    await tester.tap(find.text('Mono'));
+    // Past the chip's 180ms transition. A single pump lands mid-animation and
+    // reads the colour it is on its way *from*.
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 250));
+
+    // After: the fill has moved, which is the whole visible signal.
+    expect(labelColour('Mono'), Colors.black);
+    expect(labelColour('None'), Colors.white);
   });
 }

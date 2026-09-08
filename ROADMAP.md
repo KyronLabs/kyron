@@ -38,7 +38,7 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 | Thing | Reality |
 |:--|:--|
-| AR camera lenses | A real camera with colour lenses, published from the kyron-lenses repository rather than compiled in. No tracking, so "AR" is generous -- `docs/AR.md` |
+| AR camera lenses | Colour lenses and face-tracked ones, published from the kyron-lenses repository rather than compiled in. Flat sprites on 478 landmarks; no 3D, expression or occlusion yet -- `docs/AR.md` |
 | Live | `ComingSoonScreen.live()` |
 | DID / portable identity | Half built. A real `did:key`, proved by signature -- but nothing consumes it, so it is not portable. `docs/IDENTITY.md` |
 | End-to-end encryption | No encryption code anywhere in the repo |

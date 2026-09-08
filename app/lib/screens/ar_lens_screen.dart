@@ -1,4 +1,5 @@
 // lib/screens/ar_lens_screen.dart
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
@@ -11,29 +12,40 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../models/face_anchor.dart';
 import '../models/lens.dart';
 import '../models/post_media.dart';
 import '../providers/composer_provider.dart';
 import '../services/app_log.dart';
+import '../services/attachment_images.dart';
+import '../services/face_tracker.dart';
 import '../services/lens_catalogue.dart';
 import '../services/lens_renderer.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/face_attachment_painter.dart';
+import '../widgets/face_reticle.dart';
 
 /// The camera, with a lens over it.
 ///
 /// This replaces `ComingSoonScreen.arLens()`, which said lenses were not built
 /// and kept the camera closed -- which was honest at the time.
 ///
-/// What a "lens" is here is a colour transform, applied to the live preview
-/// and baked into the file by the same matrix, so the picture taken is the
-/// picture seen. It is not face tracking and does not put a hat on anybody;
-/// see docs/AR.md for where the line is.
+/// A lens is one or both of two things: a colour transform over the whole
+/// frame, and pictures hung on a tracked face. Both are applied to the live
+/// preview and baked into the saved file by the same code, so the picture
+/// taken is the picture seen -- which is the one thing this screen must never
+/// get wrong.
+///
+/// See docs/LENS_FORMAT.md for what a lens may contain, and docs/AR.md for
+/// what the tracking does and does not do.
 class ArLensScreen extends ConsumerStatefulWidget {
   const ArLensScreen({
     super.key,
     this.cameras,
     this.renderer = const LensRenderer(),
     this.catalogue,
+    this.tracker,
+    this.pictures,
   });
 
   /// Injected by tests. Null means ask the platform, which is what the app
@@ -46,6 +58,12 @@ class ArLensScreen extends ConsumerStatefulWidget {
   /// Where the lens strip comes from. Injected by tests; the app makes one.
   final LensCatalogue? catalogue;
 
+  /// Face tracking. Injected by tests, which have no camera to track in.
+  final FaceTracker? tracker;
+
+  /// The pictures a lens hangs on a face.
+  final AttachmentImages? pictures;
+
   @override
   ConsumerState<ArLensScreen> createState() => _ArLensScreenState();
 }
@@ -57,6 +75,20 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   int _cameraIndex = 0;
 
   late final LensCatalogue _catalogue = widget.catalogue ?? LensCatalogue();
+  late final FaceTracker _tracker = widget.tracker ?? FaceTracker();
+  late final AttachmentImages _pictures = widget.pictures ?? AttachmentImages();
+
+  /// Where the face is right now, or null when there is not one.
+  FaceAnchor? _face;
+
+  /// The size of the frames the tracker is reading, which is what the
+  /// landmarks are normalised against.
+  Size _frame = Size.zero;
+
+  /// Whether frames are being fed to the tracker. Only true while a lens
+  /// actually needs a face: tracking a face for a colour filter is battery
+  /// spent on nothing.
+  bool _streaming = false;
 
   /// Built-ins until the catalogue answers, so the strip is never empty and
   /// never waits on a disk read.
@@ -136,6 +168,12 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         found[_cameraIndex % found.length],
         ResolutionPreset.high,
         enableAudio: false,
+        // What the face graph reads without a conversion pass. Asking the
+        // camera for the right arrangement is free; converting every frame is
+        // not.
+        imageFormatGroup: Platform.isAndroid
+            ? ImageFormatGroup.nv21
+            : ImageFormatGroup.bgra8888,
       );
       await controller.initialize();
       if (!mounted) {
@@ -168,6 +206,91 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         _problem = 'The camera would not open.';
       });
     }
+  }
+
+  /// Picks a lens, and starts or stops face tracking to match.
+  ///
+  /// Tracking runs only while something needs it. A colour filter does not,
+  /// and inference on every frame for a lens that ignores the answer is
+  /// somebody's battery spent on nothing.
+  Future<void> _choose(Lens lens) async {
+    setState(() => _lens = lens);
+
+    if (!lens.needsFace) {
+      await _stopTracking();
+      return;
+    }
+
+    // Fetch first: a lens whose pictures have not arrived would otherwise
+    // track a face and draw nothing on it.
+    if (await _pictures.load(lens) && mounted) setState(() {});
+    await _startTracking();
+  }
+
+  Future<void> _startTracking() async {
+    if (_streaming) return;
+    final controller = _controller;
+    if (controller == null || !controller.value.isInitialized) return;
+
+    if (!await _tracker.open()) {
+      if (!mounted) return;
+      // Said out loud rather than left as a lens that quietly does nothing.
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Face tracking is not available on this device.'),
+        ),
+      );
+      return;
+    }
+
+    try {
+      await controller.startImageStream(_onFrame);
+      _streaming = true;
+    } catch (error) {
+      AppLog.instance.error('ar', 'Could not read camera frames: $error');
+    }
+  }
+
+  Future<void> _stopTracking() async {
+    if (!_streaming) return;
+    _streaming = false;
+    try {
+      await _controller?.stopImageStream();
+    } catch (_) {
+      // Already stopped, or the camera went away underneath. Either way there
+      // is nothing left to stop.
+    }
+    if (mounted) setState(() => _face = null);
+  }
+
+  /// One camera frame.
+  ///
+  /// Deliberately cheap: the tracker drops frames it is too busy for, and this
+  /// only rebuilds when the answer actually changed from what is on screen.
+  void _onFrame(CameraImage frame) {
+    if (!_streaming || !mounted) return;
+
+    final points = _tracker.track(
+      frame,
+      rotationDegrees: _controller?.description.sensorOrientation ?? 0,
+    );
+    final size = Size(frame.width.toDouble(), frame.height.toDouble());
+
+    if (points == null) {
+      if (_face != null) setState(() => _face = null);
+      return;
+    }
+
+    final anchor =
+        FaceAnchor.resolve(_lens.attachments.first.anchor, points, size);
+    if (anchor == null) {
+      if (_face != null) setState(() => _face = null);
+      return;
+    }
+    setState(() {
+      _face = anchor;
+      _frame = size;
+    });
   }
 
   Future<void> _flip() async {
@@ -210,12 +333,16 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// the photograph would come back plain and the viewfinder would have been
   /// lying.
   Future<String> _bake(XFile shot) async {
-    if (_lens.filter == null) return shot.path;
+    final attachments = _pictures.ready(_lens);
+    if (_lens.filter == null && attachments.isEmpty) return shot.path;
 
     final bytes = await shot.readAsBytes();
     final decoded = await _decode(bytes);
     final filtered = await widget.renderer.apply(decoded, _lens);
-    final png = await widget.renderer.encode(filtered);
+    final drawn = attachments.isEmpty
+        ? filtered
+        : await _drawAttachments(filtered, attachments);
+    final png = await widget.renderer.encode(drawn);
 
     final directory = await getTemporaryDirectory();
     final path = p.join(
@@ -224,6 +351,42 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     );
     await File(path).writeAsBytes(png, flush: true);
     return path;
+  }
+
+  /// The attachments, drawn onto the captured still.
+  ///
+  /// The same painter the preview uses, against a face found in the photograph
+  /// itself rather than the last preview frame. That costs one more inference
+  /// per shutter press and is worth it: the preview's last frame is from
+  /// before the shutter, and a head that moved in between would leave the
+  /// glasses somewhere the eyes are not.
+  Future<ui.Image> _drawAttachments(
+    ui.Image photo,
+    List<ResolvedAttachment> attachments,
+  ) async {
+    final face = _face;
+    if (face == null) return photo;
+
+    final size = Size(photo.width.toDouble(), photo.height.toDouble());
+    final scale = Size(
+      _frame.width <= 0 ? 1 : size.width / _frame.width,
+      _frame.height <= 0 ? 1 : size.height / _frame.height,
+    );
+
+    final recorder = ui.PictureRecorder();
+    final canvas = ui.Canvas(recorder);
+    canvas.drawImage(photo, ui.Offset.zero, ui.Paint());
+    FaceAttachmentPainter(
+      attachments: attachments,
+      face: _scaled(face, scale),
+    ).paint(canvas, size);
+
+    final picture = recorder.endRecording();
+    try {
+      return await picture.toImage(photo.width, photo.height);
+    } finally {
+      picture.dispose();
+    }
   }
 
   Future<ui.Image> _decode(Uint8List bytes) async {
@@ -235,6 +398,9 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _streaming = false;
+    _tracker.dispose();
+    _pictures.dispose();
     _controller?.dispose();
     super.dispose();
   }
@@ -268,7 +434,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
             _LensStrip(
               lenses: _lenses,
               selected: _lens,
-              onChanged: (lens) => setState(() => _lens = lens),
+              onChanged: _choose,
             ),
             _shutter(),
           ],
@@ -307,16 +473,70 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     // The same filter the file gets. One definition, two places it is drawn.
     final preview = CameraPreview(controller);
     final filter = _lens.filter;
+    final tinted = filter == null
+        ? preview
+        : ColorFiltered(colorFilter: filter, child: preview);
+
+    final front =
+        controller.description.lensDirection == CameraLensDirection.front;
 
     return Center(
       child: AspectRatio(
         aspectRatio: 1 / controller.value.aspectRatio,
-        child: filter == null
-            ? preview
-            : ColorFiltered(colorFilter: filter, child: preview),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            tinted,
+            if (_lens.needsFace) _attachments(front),
+            if (_lens.needsFace && _face == null) const FaceReticle(),
+          ],
+        ),
       ),
     );
   }
+
+  /// The attachments, over the preview, at the size the preview is drawn.
+  ///
+  /// The landmarks are normalised to the camera frame, so they map onto
+  /// whatever box the preview occupies -- which is why the anchor is resolved
+  /// against [_frame] and then rescaled here rather than being computed in
+  /// screen pixels somewhere further up.
+  Widget _attachments(bool mirrored) {
+    final face = _face;
+    if (face == null || _frame.isEmpty) return const SizedBox.shrink();
+
+    final ready = _pictures.ready(_lens);
+    if (ready.isEmpty) return const SizedBox.shrink();
+
+    return LayoutBuilder(
+      builder: (context, box) {
+        final scale = Size(
+          box.maxWidth / _frame.width,
+          box.maxHeight / _frame.height,
+        );
+        return CustomPaint(
+          painter: FaceAttachmentPainter(
+            attachments: ready,
+            face: _scaled(face, scale),
+            mirrored: mirrored,
+          ),
+        );
+      },
+    );
+  }
+
+  /// The same face, in the coordinates of a box of a different size.
+  static FaceAnchor _scaled(FaceAnchor face, Size scale) => FaceAnchor(
+        centre: Offset(
+          face.centre.dx * scale.width,
+          face.centre.dy * scale.height,
+        ),
+        // One number for a measurement that has two axes: a preview stretched
+        // unevenly would make the choice matter, and the preview is drawn at
+        // the camera's own aspect ratio precisely so it is not.
+        interpupillary: face.interpupillary * scale.width,
+        rollDegrees: face.rollDegrees,
+      );
 
   Widget _shutter() {
     final ready = _controller != null && _problem == null && !_opening;
@@ -379,22 +599,51 @@ class _LensStrip extends StatelessWidget {
           final chosen = lens.id == selected.id;
 
           return Center(
-            child: GestureDetector(
-              onTap: () => onChanged(lens),
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: SpacingTokens.space16,
-                  vertical: SpacingTokens.space8,
-                ),
-                decoration: BoxDecoration(
-                  color: chosen ? Colors.white : Colors.white12,
-                  borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
-                ),
-                child: Text(
-                  lens.name,
-                  style: TextStyle(
-                    color: chosen ? Colors.black : Colors.white,
-                    fontWeight: chosen ? FontWeight.w600 : FontWeight.w400,
+            child: Semantics(
+              button: true,
+              selected: chosen,
+              label: lens.needsFace ? '${lens.name}, face lens' : lens.name,
+              child: GestureDetector(
+                onTap: () => onChanged(lens),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 180),
+                  curve: Curves.easeOut,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SpacingTokens.space16,
+                    vertical: SpacingTokens.space8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: chosen ? Colors.white : Colors.white12,
+                    borderRadius:
+                        BorderRadius.circular(RadiusTokens.radiusFull),
+                    // A lens that tracks a face behaves differently from one
+                    // that tints the picture -- it can be pointed at a wall
+                    // and do nothing. Worth being able to tell apart before
+                    // tapping it rather than after.
+                    border: lens.needsFace && !chosen
+                        ? Border.all(color: Colors.white38, width: 1)
+                        : null,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (lens.needsFace) ...[
+                        Icon(
+                          Iconsax.scan_copy,
+                          size: 14,
+                          color: chosen ? Colors.black : Colors.white70,
+                        ),
+                        const SizedBox(width: SpacingTokens.space4),
+                      ],
+                      Text(
+                        lens.name,
+                        style: TextStyle(
+                          color: chosen ? Colors.black : Colors.white,
+                          fontWeight:
+                              chosen ? FontWeight.w600 : FontWeight.w400,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
