@@ -12,6 +12,7 @@ import { ModerationModule } from './modules/moderation/moderation.module';
 import { IdentityModule } from './modules/identity/identity.module';
 import { CommonModule } from './modules/common/common.module';
 import { PrismaModule } from './infrastructure/prisma/prisma.module';
+import { ObservabilityModule } from './infrastructure/observability/observability.module';
 import { AppConfigModule } from './config/config.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -21,6 +22,7 @@ import { LinksModule } from './modules/links/links.module';
 @Module({
   imports: [
     AppConfigModule,
+    ObservabilityModule,
     PrismaModule,
     CommonModule,
     IdentityModule,

@@ -457,20 +457,29 @@ export class FeedService {
     const { seed, offset } = this.readRankCursor(cursor);
     const since = new Date(Date.now() - RankingService.windowHours * 3_600_000);
 
-    const [rows, viewer] = await Promise.all([
+    // Rank on what ranking needs, then load only what is being shown.
+    //
+    // This used to select the whole post shape for all four hundred
+    // candidates -- author, media, the quoted post and its author and media,
+    // the poll with its options and this reader's vote, and four
+    // relation-filtered lookups per row -- and then throw away three hundred
+    // and eighty of them. Measured against a seeded database it cost 69ms
+    // uncontended and 550ms at sixteen concurrent readers, against 4ms for
+    // the profile endpoints; it was far and away the slowest thing the app
+    // does, and it is the screen that opens first.
+    const [candidateRows, viewer] = await Promise.all([
       this.prisma.post.findMany({
         where: { ...where, createdAt: { gte: since } },
         orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
         // The pool, not the page. Wide enough that ranking has something to
         // choose between, bounded so one request cannot read the table.
         take: FeedService.candidatePool,
-        select: this.shapeFor(viewerId),
+        select: FeedService.rankingShapeFor(viewerId),
       }),
       this.rankingViewer(viewerId),
     ]);
 
-    const candidates = rows.map((row) => ({
-      row,
+    const candidates = candidateRows.map((row) => ({
       id: row.id,
       authorId: row.authorId,
       createdAt: row.createdAt,
@@ -488,12 +497,45 @@ export class FeedService {
       limit,
     });
 
+    const nextCursor =
+      ranked.nextOffset === null
+        ? null
+        : this.writeRankCursor(seed, ranked.nextOffset);
+
+    if (ranked.items.length === 0) return { items: [], nextCursor };
+
+    const order = ranked.items.map((entry) => entry.id);
+    const page = await this.prisma.post.findMany({
+      where: { id: { in: order } },
+      select: this.shapeFor(viewerId),
+    });
+
+    // `IN` answers in whatever order it likes, and the ranking is the whole
+    // point of this method.
+    const byId = new Map(page.map((row) => [row.id, row]));
     return {
-      items: ranked.items.map((entry) => this.toFeedPost(entry.row)),
-      nextCursor:
-        ranked.nextOffset === null
-          ? null
-          : this.writeRankCursor(seed, ranked.nextOffset),
+      items: order
+        .map((id) => byId.get(id))
+        .filter((row): row is (typeof page)[number] => row !== undefined)
+        .map((row) => this.toFeedPost(row)),
+      nextCursor,
+    };
+  }
+
+  /**
+   * The columns ranking scores on, and nothing else.
+   *
+   * Deliberately narrow. Everything absent here is loaded once, for the twenty
+   * posts that made the page, by [shapeFor].
+   */
+  private static rankingShapeFor(viewerId: string) {
+    return {
+      id: true,
+      authorId: true,
+      createdAt: true,
+      views: { where: { viewerId }, select: { count: true }, take: 1 },
+      topics: { select: { interestId: true } },
+      _count: { select: { likes: true, comments: true, reposts: true } },
     };
   }
 
