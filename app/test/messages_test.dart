@@ -185,6 +185,68 @@ void main() {
       expect(repo.removed, isEmpty);
     });
 
+    test('fills in the ticks when the other side reads, without refetching',
+        () async {
+      final repo = _FakeMessages(thread: [
+        _msg('a', 'mine', 'me', DateTime(2026, 1, 1)),
+        _msg('b', 'theirs', 'them', DateTime(2026, 1, 2)),
+      ]);
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
+      await pumpEventQueue();
+      final before = repo.readMarks.length;
+
+      notifier.markSeenByOther('me');
+
+      // Only the reader's own bubbles: "seen" is about whether the other
+      // person has looked, and their own messages were never unseen.
+      final byId = {for (final m in notifier.state.messages) m.id: m};
+      expect(byId['a']!.seen, isTrue);
+      expect(byId['b']!.seen, isFalse);
+      // And no round trip: refetching would blink a thread being read.
+      expect(repo.readMarks.length, before);
+    });
+
+    test('does nothing when there is nothing left to mark', () async {
+      final repo = _FakeMessages(thread: [
+        _msg('a', 'theirs', 'them', DateTime(2026, 1, 1)),
+      ]);
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
+      await pumpEventQueue();
+      final before = notifier.state.messages;
+
+      notifier.markSeenByOther('me');
+
+      expect(identical(notifier.state.messages, before), isTrue);
+    });
+
+    test('takes a withdrawn message off the screen', () async {
+      final repo = _FakeMessages(thread: [
+        _msg('a', 'one', 'them', DateTime(2026, 1, 1)),
+        _msg('b', 'two', 'them', DateTime(2026, 1, 2)),
+      ]);
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
+      await pumpEventQueue();
+
+      notifier.withdrawn('a');
+
+      // A message that stays put until the thread is reopened was not really
+      // deleted.
+      expect(notifier.state.messages.map((m) => m.id), ['b']);
+      expect(repo.removed, isEmpty);
+    });
+
+    test('ignores a withdrawal for something it never held', () async {
+      final repo = _FakeMessages(thread: [
+        _msg('a', 'one', 'them', DateTime(2026, 1, 1)),
+      ]);
+      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
+      await pumpEventQueue();
+
+      notifier.withdrawn('somewhere-else');
+
+      expect(notifier.state.messages, hasLength(1));
+    });
+
     test('says why it could not be read', () async {
       final notifier = ThreadNotifier(
         _FakeMessages(listFails: true),

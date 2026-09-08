@@ -6,6 +6,7 @@ import '../services/realtime_client.dart';
 import 'api_client_provider.dart';
 import 'messages_provider.dart';
 import 'notifications_provider.dart';
+import 'current_user_provider.dart';
 
 /// The socket, for the life of the app.
 final realtimeClientProvider = Provider<RealtimeClient>((ref) {
@@ -55,13 +56,26 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
       }
       _refreshConversationLists(ref);
 
-    case 'message.deleted':
     case 'message.read':
-      final conversationId = event.conversationId;
-      if (conversationId != null &&
-          ref.exists(threadProvider(conversationId))) {
-        ref.read(threadProvider(conversationId).notifier).refresh();
+      // Applied to what is already held rather than refetched. Refreshing
+      // empties the list and shows a spinner, so a thread somebody is reading
+      // would blink every time the other person opened it.
+      final readIn = event.conversationId;
+      final me = ref.read(currentUserProvider).asData?.value.id;
+      if (readIn != null && me != null && ref.exists(threadProvider(readIn))) {
+        ref.read(threadProvider(readIn).notifier).markSeenByOther(me);
       }
+
+    case 'message.deleted':
+      final deletedIn = event.conversationId;
+      final messageId = event.messageId;
+      if (deletedIn != null &&
+          messageId != null &&
+          ref.exists(threadProvider(deletedIn))) {
+        ref.read(threadProvider(deletedIn).notifier).withdrawn(messageId);
+      }
+      // The list shows the last message, which may have been that one.
+      _refreshConversationLists(ref);
 
     case 'notification.new':
       // The badge always; the list only where a tab is actually built, since

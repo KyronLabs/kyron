@@ -14,6 +14,11 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Read receipts arrive as they happen: opening a thread fills in the other
+  side's ticks without either of you refreshing, and a message somebody
+  withdraws leaves your screen rather than sitting there until you reopen the
+  conversation. Neither sends a push -- a phone that buzzes because somebody
+  read a message is a phone nobody wants.
 - A comment or reply written by the post's own author carries an Author badge.
   In a long thread those are the answers people are looking for.
 - Clips are normalised on upload and get a poster cut from them. Anything over

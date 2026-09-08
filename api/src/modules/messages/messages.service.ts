@@ -463,11 +463,21 @@ export class MessagesService {
 
   /** Marks everything in a conversation as read. */
   async markRead(viewerId: string, conversationId: string) {
-    await this.requireMembership(viewerId, conversationId);
+    const conversation = await this.requireMembership(viewerId, conversationId);
     await this.prisma.conversationMember.updateMany({
       where: { conversationId, userId: viewerId },
       data: { lastReadAt: new Date() },
     });
+
+    // The other side's own bubbles are now seen, and their ticks should fill
+    // in without waiting for them to pull the thread. No push with it: a
+    // phone that buzzes because somebody read a message is a phone nobody
+    // wants.
+    this.delivery.tellMany(
+      conversation.members.map((m) => m.userId).filter((id) => id !== viewerId),
+      { type: 'message.read', conversationId, readerId: viewerId },
+    );
+
     return { ok: true };
   }
 
@@ -500,6 +510,22 @@ export class MessagesService {
       where: { id: messageId },
       data: { deletedAt: new Date() },
     });
+
+    // Withdrawn on the other side too. A message that stays on somebody's
+    // screen until they happen to reopen the thread was not really deleted.
+    const members = await this.prisma.conversationMember.findMany({
+      where: { conversationId: message.conversationId },
+      select: { userId: true },
+    });
+    this.delivery.tellMany(
+      members.map((m) => m.userId).filter((id) => id !== viewerId),
+      {
+        type: 'message.deleted',
+        conversationId: message.conversationId,
+        messageId,
+      },
+    );
+
     return { ok: true };
   }
 
