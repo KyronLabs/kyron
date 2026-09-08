@@ -13,7 +13,7 @@ Last audited: 8 September 2026.
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 447 Flutter tests and 387 API
+(Supabase), a Flutter client, REST between them. 447 Flutter tests and 393 API
 tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 ### Built and working
@@ -186,11 +186,16 @@ Half-shipping it — a `did` column nobody writes to — is the worst of both.
     there are now real numbers to quote -- `docs/PERFORMANCE.md`. A
     dependency-free driver lives at `api/scripts/loadtest.mjs`.
 
-    It found three things. The main feed selected the whole post shape for all
+    It found four things. The main feed selected the whole post shape for all
     four hundred ranking candidates and returned twenty, making it by a wide
     margin the slowest thing the app does on the screen that opens first; it
-    now ranks on six columns and hydrates the page, which took it from 31 to
-    55 rps at sixteen concurrent readers and its p95 from 615ms to 365ms. The
+    now ranks on six columns and hydrates the page. And underneath that,
+    Prisma was compiling every relation `_count` into an aggregate over the
+    *entire* table -- so a page of twenty posts paid for every like on the
+    service, and splitting the query barely helped because both halves still
+    paid it. `Post` carries its own engagement counters now. Together: 31 to
+    107 rps at sixteen concurrent readers, p95 615ms to 188ms, and database
+    time per request from 29.8ms to 6.9ms. The
     rate limit had never worked -- `ConfigService.get<number>` hands back a
     string, the plugin ignores a non-numeric `max` and silently uses its own
     default of 1000, so every deployment that set the variable got 1000 a

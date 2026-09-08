@@ -158,6 +158,23 @@ model Post {
   // row instead -- it has no content of its own to store.
   quotedPostId String? @db.Uuid
 
+  /// Engagement, counted here rather than aggregated per read.
+  ///
+  /// Prisma compiles a relation `_count` into a LEFT JOIN over an *unfiltered*
+  /// `GROUP BY postId` across the whole table -- so the cost is the size of
+  /// PostLike, not the size of the page. Fetching twenty posts that way took
+  /// 13.5ms against 0.46ms for the same twenty reading columns, and it would
+  /// have grown with every like ever recorded. Maintained on the write paths
+  /// in FeedService, and recomputable with scripts/recount.sql.
+  ///
+  /// commentCount counts what the thread actually shows: a soft-deleted
+  /// comment is not in the list, so it is not in the number either. The
+  /// `_count` this replaces included them, which is why a post could say five
+  /// and show four.
+  likeCount    Int @default(0)
+  commentCount Int @default(0)
+  repostCount  Int @default(0)
+
   author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   likes    PostLike[]
   saves    PostSave[]
