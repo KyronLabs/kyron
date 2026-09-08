@@ -87,8 +87,7 @@ void main() {
     test('scales with the frame, because it is measured in faces', () {
       // The same face at twice the resolution is the same face: every number
       // doubles and the roll does not move.
-      final small =
-          FaceAnchor.resolve(FaceAnchorPoint.eyes, landmarks, frame)!;
+      final small = FaceAnchor.resolve(FaceAnchorPoint.eyes, landmarks, frame)!;
       final large = FaceAnchor.resolve(
         FaceAnchorPoint.eyes,
         landmarks,
