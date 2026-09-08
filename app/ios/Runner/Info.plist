@@ -47,5 +47,23 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<!-- The link in a Supabase confirmation or password-reset email. Without
+	     it the mail's redirect has nowhere on the device to land and Supabase
+	     falls back to the project's Site URL, which is a developer's
+	     localhost. Kept in step with SupabaseConfig.authRedirect and with the
+	     matching intent-filter in the Android manifest. -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>so.kyron.app</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>so.kyron.app</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

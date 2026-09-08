@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
+import '../config/supabase_config.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 
 import '../models/auth_tokens.dart';
@@ -77,6 +78,10 @@ class AuthRepository {
     final res = await _auth.signUp(
       email: email,
       password: password,
+      // Without this Supabase uses the project's Site URL, which is a
+      // developer's localhost: the confirmation mail opened a browser tab
+      // that could not connect to anything.
+      emailRedirectTo: SupabaseConfig.authRedirect,
       data: {
         if (username != null && username.isNotEmpty) 'username': username,
       },
@@ -131,8 +136,16 @@ class AuthRepository {
     return _storage.readUserData();
   }
 
-  Future<void> sendPasswordReset(String email) =>
-      _auth.resetPasswordForEmail(email);
+  /// Mails a reset link that opens this app rather than a web page.
+  ///
+  /// The link carries a recovery session; the app picks that up as a
+  /// `passwordRecovery` event and sends the reader to the screen where a new
+  /// password is set. Without the redirect the mail pointed at the project's
+  /// Site URL and the account stayed locked.
+  Future<void> sendPasswordReset(String email) => _auth.resetPasswordForEmail(
+        email,
+        redirectTo: SupabaseConfig.authRedirect,
+      );
 
   /// Confirms a sign-up with the 6-digit code Supabase mails out. Only reachable
   /// when email auto-confirm is disabled on the project; with it enabled,
