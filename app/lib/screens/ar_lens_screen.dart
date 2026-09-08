@@ -15,6 +15,7 @@ import '../models/lens.dart';
 import '../models/post_media.dart';
 import '../providers/composer_provider.dart';
 import '../services/app_log.dart';
+import '../services/lens_catalogue.dart';
 import '../services/lens_renderer.dart';
 import '../widgets/empty_state.dart';
 
@@ -28,8 +29,12 @@ import '../widgets/empty_state.dart';
 /// picture seen. It is not face tracking and does not put a hat on anybody;
 /// see docs/AR.md for where the line is.
 class ArLensScreen extends ConsumerStatefulWidget {
-  const ArLensScreen(
-      {super.key, this.cameras, this.renderer = const LensRenderer()});
+  const ArLensScreen({
+    super.key,
+    this.cameras,
+    this.renderer = const LensRenderer(),
+    this.catalogue,
+  });
 
   /// Injected by tests. Null means ask the platform, which is what the app
   /// does; an empty list is a device with no camera, which is a state this
@@ -37,6 +42,9 @@ class ArLensScreen extends ConsumerStatefulWidget {
   final List<CameraDescription>? cameras;
 
   final LensRenderer renderer;
+
+  /// Where the lens strip comes from. Injected by tests; the app makes one.
+  final LensCatalogue? catalogue;
 
   @override
   ConsumerState<ArLensScreen> createState() => _ArLensScreenState();
@@ -48,7 +56,12 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   List<CameraDescription> _cameras = const [];
   int _cameraIndex = 0;
 
-  Lens _lens = Lens.all.first;
+  late final LensCatalogue _catalogue = widget.catalogue ?? LensCatalogue();
+
+  /// Built-ins until the catalogue answers, so the strip is never empty and
+  /// never waits on a disk read.
+  List<Lens> _lenses = Lens.builtIn;
+  Lens _lens = Lens.builtIn.first;
   bool _opening = true;
   bool _capturing = false;
   String? _problem;
@@ -58,6 +71,29 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _open();
+    _loadLenses();
+  }
+
+  /// Draws the cached catalogue, then refreshes it in the background.
+  ///
+  /// Two steps rather than one so a lens published last week is on screen
+  /// immediately and a lens published this morning arrives a moment later.
+  /// Neither step can empty the strip: both merge onto the built-ins.
+  Future<void> _loadLenses() async {
+    final cached = await _catalogue.lenses();
+    if (!mounted) return;
+    setState(() => _lenses = cached);
+
+    final refreshed = await _catalogue.refresh();
+    if (!mounted || refreshed == null) return;
+    setState(() {
+      _lenses = refreshed;
+      // A lens that vanished from the catalogue between launches would
+      // otherwise stay selected while no chip is filled.
+      if (!refreshed.any((lens) => lens.id == _lens.id)) {
+        _lens = refreshed.first;
+      }
+    });
   }
 
   /// Frees the camera when the app goes away, and takes it back on return.
@@ -230,6 +266,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
           children: [
             Expanded(child: _viewfinder()),
             _LensStrip(
+              lenses: _lenses,
               selected: _lens,
               onChanged: (lens) => setState(() => _lens = lens),
             ),
@@ -317,10 +354,15 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
 /// The lenses, as a row you scroll.
 class _LensStrip extends StatelessWidget {
+  final List<Lens> lenses;
   final Lens selected;
   final ValueChanged<Lens> onChanged;
 
-  const _LensStrip({required this.selected, required this.onChanged});
+  const _LensStrip({
+    required this.lenses,
+    required this.selected,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -329,11 +371,11 @@ class _LensStrip extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
-        itemCount: Lens.all.length,
+        itemCount: lenses.length,
         separatorBuilder: (_, __) =>
             const SizedBox(width: SpacingTokens.space8),
         itemBuilder: (context, index) {
-          final lens = Lens.all[index];
+          final lens = lenses[index];
           final chosen = lens.id == selected.id;
 
           return Center(

@@ -27,15 +27,15 @@ void main() {
     test('opens on the lens that changes nothing', () {
       // "None" has to be selectable or there is no way back to the plain
       // picture once a lens is on.
-      expect(Lens.all.first.id, 'none');
-      expect(Lens.all.first.filter, isNull);
+      expect(Lens.builtIn.first.id, 'none');
+      expect(Lens.builtIn.first.filter, isNull);
     });
 
     test('every lens has a distinct id and a name worth reading', () {
-      final ids = Lens.all.map((lens) => lens.id).toSet();
+      final ids = Lens.builtIn.map((lens) => lens.id).toSet();
 
-      expect(ids, hasLength(Lens.all.length));
-      for (final lens in Lens.all) {
+      expect(ids, hasLength(Lens.builtIn.length));
+      for (final lens in Lens.builtIn) {
         expect(lens.name.trim(), isNotEmpty);
       }
     });
@@ -43,7 +43,7 @@ void main() {
     test('every matrix is the shape dart:ui takes', () {
       // A 4x5 matrix. One element out and the filter throws at draw time --
       // on the shutter press, on a device, with a picture already taken.
-      for (final lens in Lens.all.where((l) => l.matrix != null)) {
+      for (final lens in Lens.builtIn.where((l) => l.matrix != null)) {
         expect(lens.matrix, hasLength(20), reason: lens.id);
         expect(() => lens.filter, returnsNormally, reason: lens.id);
       }
