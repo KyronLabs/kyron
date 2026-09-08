@@ -1,6 +1,8 @@
 // lib/models/lens.dart
 import 'dart:ui';
 
+import 'lens_attachment.dart';
+
 /// One AR lens: a name, and what it does to the picture.
 ///
 /// A lens is a 4x5 colour matrix and nothing else. That constraint was
@@ -30,12 +32,22 @@ class Lens {
   /// built into the app.
   final String? author;
 
+  /// Things hung on the face: glasses, a hat, a moustache.
+  ///
+  /// Empty for a colour-only lens, which is every lens bundled with the app.
+  /// A lens may have both -- tint the picture *and* put glasses on.
+  final List<LensAttachment> attachments;
+
   const Lens({
     required this.id,
     required this.name,
     this.matrix,
     this.author,
+    this.attachments = const [],
   });
+
+  /// Whether this one needs a face before it can do anything.
+  bool get needsFace => attachments.isNotEmpty;
 
   /// What to wrap a preview or a still in. Null when the lens changes nothing.
   ColorFilter? get filter =>
@@ -47,6 +59,17 @@ class Lens {
   // -------------------------------------------------------------------------
   // The wire format
   // -------------------------------------------------------------------------
+
+  /// The newest lens shape this build understands.
+  ///
+  /// A lens declares the shape it needs; anything newer is dropped rather than
+  /// half-rendered. Without this an older app meets a lens made of
+  /// attachments, finds no matrix, and shows it as the do-nothing lens -- a
+  /// chip that is there and does not work, which is worse than a chip that is
+  /// not there.
+  ///
+  /// 1: a colour matrix. 2: attachments on a tracked face.
+  static const supportedSchema = 2;
 
   /// How many numbers a colour matrix has. Four rows of five.
   static const matrixLength = 20;
@@ -83,14 +106,38 @@ class Lens {
       return null;
     }
 
+    // Absent means 1: every lens published before attachments existed.
+    final schema = json['schema'] ?? 1;
+    if (schema is! int || schema < 1 || schema > supportedSchema) return null;
+
+    final attachments = <LensAttachment>[];
+    final raw = json['attachments'];
+    if (raw != null) {
+      if (raw is! List || raw.length > 8) return null;
+      for (final entry in raw) {
+        final attachment = LensAttachment.tryParse(entry);
+        // One unreadable attachment makes the whole lens wrong rather than
+        // partly there: half a pair of glasses is not a lens with a bit
+        // missing, it is a lens nobody meant to publish.
+        if (attachment == null) return null;
+        attachments.add(attachment);
+      }
+      if (attachments.isNotEmpty && schema < 2) return null;
+    }
+
     // The identity lens carries no matrix. Anything else must carry a whole
     // valid one -- a matrix with nineteen numbers is not a lens with a missing
     // number, it is a file that cannot be trusted about anything.
-    final raw = json['matrix'];
-    if (raw == null) {
-      return Lens(id: id, name: name, author: author as String?);
+    final rawMatrix = json['matrix'];
+    if (rawMatrix == null) {
+      return Lens(
+        id: id,
+        name: name,
+        author: author as String?,
+        attachments: attachments,
+      );
     }
-    final matrix = _readMatrix(raw);
+    final matrix = _readMatrix(rawMatrix);
     if (matrix == null) return null;
 
     return Lens(
@@ -98,6 +145,7 @@ class Lens {
       name: name,
       matrix: matrix,
       author: author as String?,
+      attachments: attachments,
     );
   }
 
@@ -133,8 +181,11 @@ class Lens {
   Map<String, Object?> toJson() => {
         'id': id,
         'name': name,
+        if (attachments.isNotEmpty) 'schema': 2,
         if (matrix != null) 'matrix': matrix,
         if (author != null) 'author': author,
+        if (attachments.isNotEmpty)
+          'attachments': [for (final a in attachments) a.toJson()],
       };
 
   // -------------------------------------------------------------------------
