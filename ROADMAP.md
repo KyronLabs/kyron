@@ -38,7 +38,7 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 | Thing | Reality |
 |:--|:--|
-| AR camera lenses | `ComingSoonScreen.arLens()`. No camera code exists |
+| AR camera lenses | A real camera with seven colour lenses. No tracking, so "AR" is generous -- `docs/AR.md` |
 | Live | `ComingSoonScreen.live()` |
 | DID / portable identity | Half built. A real `did:key`, proved by signature -- but nothing consumes it, so it is not portable. `docs/IDENTITY.md` |
 | End-to-end encryption | No encryption code anywhere in the repo |
@@ -220,8 +220,17 @@ The decision that remains is the same one, now narrower:
 
 ### Phase 5 — The advertised features (quarters)
 
-13. **AR camera.** A real camera pipeline with lenses. Large, and worth doing
-    only after Phases 1–2 make the app worth opening daily.
+13. ~~**AR camera.**~~ Built, for a narrow reading of AR. The create menu's
+    AR Lens entry opens a real camera with seven colour lenses, applied to the
+    preview and baked into the captured file by the same matrix so the picture
+    taken is the picture seen. There is no tracking of any kind: nothing
+    detects a face or a plane, and every lens is a function of colour over the
+    whole frame. It is a camera with filters and `docs/AR.md` says so.
+
+    The lens maths is exercised against known pixels; the camera itself has
+    been compiled into an APK but never run, because this was built with no
+    phone attached. What that leaves unverified is listed in the doc rather
+    than left for somebody to discover.
 14. **Live.** Streaming infrastructure is its own project.
 15. **Creator equity pool.** Needs legal review before it needs code.
 

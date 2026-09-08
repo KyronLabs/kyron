@@ -1,4 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The AR lens camera. Requested at the moment it is opened rather than
+         at launch, so somebody who never opens it is never asked. -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- Declared not-required so the app still installs on a device without
+         one; the screen renders "this device has no camera" rather than the
+         Play Store hiding Kyron from that device entirely. -->
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+
     <application
         android:label="Kyron"
         android:name="${applicationName}"
