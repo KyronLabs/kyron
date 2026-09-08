@@ -45,7 +45,7 @@ describe('IdentityService', () => {
   afterEach(() => jest.restoreAllMocks());
 
   /** Asks for a challenge and signs it as [who] would. */
-  const prove = async (
+  const prove = (
     svc: IdentityService,
     who: ReturnType<typeof identity>,
     account = ME,
@@ -58,7 +58,7 @@ describe('IdentityService', () => {
     const svc = await service();
     const me = identity();
 
-    await svc.claimDid(ME, me.did, await prove(svc, me));
+    await svc.claimDid(ME, me.did, prove(svc, me));
 
     expect(user.update).toHaveBeenCalledWith({
       where: { id: ME },
@@ -81,7 +81,7 @@ describe('IdentityService', () => {
     const svc = await service();
     const me = identity();
     const impostor = identity();
-    const signature = await prove(svc, impostor);
+    const signature = prove(svc, impostor);
 
     await expect(svc.claimDid(ME, me.did, signature)).rejects.toThrow(
       BadRequestException,
@@ -108,7 +108,7 @@ describe('IdentityService', () => {
   it('spends the challenge, so one cannot be used twice', async () => {
     const svc = await service();
     const me = identity();
-    const signature = await prove(svc, me);
+    const signature = prove(svc, me);
 
     await svc.claimDid(ME, me.did, signature);
 
@@ -183,9 +183,9 @@ describe('IdentityService', () => {
       }),
     );
 
-    await expect(
-      svc.claimDid(ME, me.did, await prove(svc, me)),
-    ).rejects.toThrow(ConflictException);
+    await expect(svc.claimDid(ME, me.did, prove(svc, me))).rejects.toThrow(
+      ConflictException,
+    );
   });
 
   it('gives a challenge that expires and is not guessable', async () => {

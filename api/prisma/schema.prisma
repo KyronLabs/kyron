@@ -1049,3 +1049,67 @@ model MessageKey {
   @@unique([userId, deviceId])
   @@index([userId])
 }
+
+// ==========================================
+// 21. MEDIA JOBS
+// ==========================================
+/// One clip waiting to be re-encoded, or the record of one that was.
+///
+/// Re-encoding a 4K clip is tens of seconds of ffmpeg, and it used to happen
+/// inside the upload request -- so the person who recorded it watched a
+/// spinner for the whole of it. The upload now stores the original and
+/// answers immediately, and this row is what remembers that better bytes are
+/// still owed.
+///
+/// A row rather than a promise in memory: a deploy in the middle of an encode
+/// would otherwise drop the work with nothing anywhere saying it had been
+/// dropped, and the clip would keep its upload bitrate forever.
+model MediaJob {
+  id String @id @default(uuid()) @db.Uuid
+
+  /// Where the original was stored, which is also where the re-encode is
+  /// written back. The URL never changes, so nothing that already links to
+  /// this clip needs updating -- only the bytes behind it get smaller.
+  path String @unique
+
+  /// Who uploaded it. For working out whose clip is stuck, not for access.
+  userId String @db.Uuid
+
+  status MediaJobStatus @default(PENDING)
+
+  /// How many times this has been picked up. A job that keeps failing is
+  /// given up on rather than retried forever.
+  attempts Int @default(0)
+
+  /// Why the last attempt failed, kept so a failure can be read rather than
+  /// guessed at. The clip still plays either way: what is lost is the
+  /// smaller file, not the upload.
+  lastError String?
+
+  /// Set when a worker takes the job. A process killed mid-encode leaves this
+  /// stale, which is how the job is found again and retried.
+  claimedAt DateTime? @db.Timestamptz()
+
+  /// What the original weighed, and what it weighs now. Both kept so the
+  /// saving is a measurement rather than a claim.
+  bytesIn  Int
+  bytesOut Int?
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@index([status, createdAt])
+}
+
+enum MediaJobStatus {
+  PENDING
+  RUNNING
+  DONE
+  /// Given up on after [MediaQueue.maxAttempts]. The original is still
+  /// stored and still plays.
+  FAILED
+  /// ffprobe says this clip does not need re-encoding after all. Recorded
+  /// rather than deleted, so "nothing happened" and "nothing was needed" are
+  /// different answers.
+  SKIPPED
+}

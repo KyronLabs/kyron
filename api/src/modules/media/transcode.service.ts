@@ -7,21 +7,24 @@ import {
 } from '@nestjs/common';
 import { spawn } from 'node:child_process';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
+import { cpus, tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-/** What came back from putting a clip through ffmpeg. */
-export interface Transcoded {
-  /** The normalised clip, or the original when nothing needed doing. */
-  video: Buffer;
+/**
+ * What the upload request needs, and can get quickly.
+ *
+ * Everything here is a probe or a single frame -- hundreds of milliseconds,
+ * not the tens of seconds a re-encode takes. The slow half is [needsReencode],
+ * which is an answer rather than the work: the caller queues that and replies.
+ */
+export interface Prepared {
   /** A still cut from it, for the poster. Null when one could not be made. */
   poster: Buffer | null;
   width: number | null;
   height: number | null;
   durationMs: number | null;
-  /** Whether the bytes actually changed. False means the original is being
-   *  kept, which the caller may want to log. */
-  reencoded: boolean;
+  /** Whether this clip is worth re-encoding at all. */
+  needsReencode: boolean;
 }
 
 /** Runs a command and answers with what it wrote. Injectable, so the rules
@@ -68,6 +71,9 @@ export class SpawnRunner implements CommandRunner {
  *  is worse than one that was rejected. */
 const MAX_DURATION_MS = 5 * 60 * 1000;
 
+/** How wide a poster may be. It is a still for a feed tile, not the frame. */
+const MAX_POSTER_WIDTH = 1280;
+
 /** Above this the clip is re-encoded rather than stored as it arrived. */
 const MAX_HEIGHT = 1280;
 const MAX_BITRATE = 2_500_000;
@@ -110,6 +116,16 @@ export class TranscodeService implements OnModuleInit {
 
   /** How long a clip may run. */
   static readonly maxDurationMs = MAX_DURATION_MS;
+
+  /**
+   * How many cores the encoder may use: all but one, and at least one.
+   *
+   * On a single-core machine this is 1 and the encode competes with the API,
+   * which is the honest answer -- there is nowhere else for it to run.
+   */
+  static encoderThreads(): number {
+    return Math.max(1, cpus().length - 1);
+  }
 
   /**
    * Reads a clip's shape without decoding it.
@@ -191,91 +207,110 @@ export class TranscodeService implements OnModuleInit {
   }
 
   /**
-   * Normalises a clip and cuts its poster.
+   * Everything the upload request needs, without the slow part.
    *
-   * Without ffmpeg, or on any failure, the original bytes come back untouched
-   * and the poster is null.
+   * Probe and poster only. Whether the clip should be re-encoded comes back as
+   * a flag rather than as a re-encoded clip, because that is the step that
+   * takes tens of seconds and the person who pressed post is waiting on this
+   * call. See [reencode], which the queue runs later.
+   *
+   * Without ffmpeg, or on any failure, this answers "nothing known, nothing
+   * needed" and the original bytes are stored exactly as they arrived.
    */
-  async process(video: Buffer): Promise<Transcoded> {
-    const untouched: Transcoded = {
-      video,
+  async prepare(video: Buffer): Promise<Prepared> {
+    const unknown: Prepared = {
       poster: null,
       width: null,
       height: null,
       durationMs: null,
-      reencoded: false,
+      needsReencode: false,
     };
-    if (!this.available) return untouched;
+    if (!this.available) return unknown;
 
     try {
       const shape = await this.probe(video);
-      if (!shape) return untouched;
+      if (!shape) return unknown;
 
       if (
         shape.durationMs !== null &&
         shape.durationMs > TranscodeService.maxDurationMs
       ) {
-        // Refused by the caller rather than cut here: a clip that comes back
-        // shorter than it went in is worse than one that was rejected.
-        return { ...untouched, ...shape, durationMs: shape.durationMs };
+        // Handed back for the caller to refuse, rather than cut here: a clip
+        // that comes back shorter than it went in is worse than one that was
+        // rejected. No poster either -- it is about to be thrown away.
+        return { ...unknown, durationMs: shape.durationMs };
       }
 
-      const poster = await this.poster(video);
-      if (!TranscodeService.shouldReencode(shape)) {
-        return { ...untouched, ...shape, poster };
-      }
-
-      const normalised = await this.reencode(video);
       return {
-        video: normalised ?? video,
-        poster,
+        poster: await this.poster(video),
         width: shape.width,
         height: shape.height,
         durationMs: shape.durationMs,
-        reencoded: normalised !== null,
+        needsReencode: TranscodeService.shouldReencode(shape),
       };
     } catch (error) {
       this.logger.warn(
         `Keeping a clip as it arrived; ffmpeg failed: ${String(error)}`,
       );
-      return untouched;
+      return unknown;
     }
   }
 
   /** A still from one second in, or the first frame for a shorter clip. */
   private async poster(video: Buffer): Promise<Buffer | null> {
+    // Seeking first, which is fast and picks a frame past any fade-in.
+    const sought = await this.frame(video, ['-ss', '00:00:01']);
+    if (sought) return sought;
+
+    // A clip shorter than the seek yields no frame at all -- and ffmpeg still
+    // exits 0, so nothing above notices. Checked against ffmpeg 6.1.1: a
+    // half-second clip wrote no file and reported success. Every clip under a
+    // second used to end up with no poster for this reason.
+    return this.frame(video, []);
+  }
+
+  /** One frame as a JPEG, or null when ffmpeg produced nothing. */
+  private async frame(video: Buffer, seek: string[]): Promise<Buffer | null> {
     return this.withTempFile(video, async (path, dir) => {
       const out = join(dir, 'poster.jpg');
       const { code } = await this.runner.run('ffmpeg', [
         '-v',
         'error',
         // Before -i, so it seeks rather than decoding up to the point.
-        '-ss',
-        '00:00:01',
+        ...seek,
         '-i',
         path,
         '-frames:v',
         '1',
         '-q:v',
         '4',
-        // A clip shorter than the seek yields nothing at all, so fall back to
-        // the very first frame rather than returning no poster.
+        // A poster is a thumbnail. Uncapped, a 4K clip produced a 3840-wide
+        // JPEG -- 287KB that every feed drawing this post downloads to fill a
+        // box a few hundred pixels across. Capped it is 42KB, and ffmpeg
+        // produces it faster because it is not encoding 8 megapixels.
         '-vf',
-        'thumbnail',
+        `scale='min(${MAX_POSTER_WIDTH},iw)':-2`,
         '-y',
         out,
       ]);
       if (code !== 0) return null;
       try {
-        return await readFile(out);
+        const written = await readFile(out);
+        // Zero bytes is the other way this comes back empty.
+        return written.length > 0 ? written : null;
       } catch {
         return null;
       }
     });
   }
 
-  /** H.264 at a capped height and bitrate, with the audio left alone. */
-  private async reencode(video: Buffer): Promise<Buffer | null> {
+  /**
+   * H.264 at a capped height and bitrate, with the audio left alone.
+   *
+   * The slow one, and the reason the queue exists. Null when ffmpeg refused,
+   * which the caller treats as "keep what is already stored".
+   */
+  async reencode(video: Buffer): Promise<Buffer | null> {
     return this.withTempFile(video, async (path, dir) => {
       const out = join(dir, 'out.mp4');
       const { code, stderr } = await this.runner.run('ffmpeg', [
@@ -283,6 +318,12 @@ export class TranscodeService implements OnModuleInit {
         'error',
         '-i',
         path,
+        // Left a core to serve requests with. The API and the encoder share
+        // one machine, and libx264 will otherwise take every core it can see
+        // -- which turns "the upload is quick now" into "everything else got
+        // slow instead".
+        '-threads',
+        String(TranscodeService.encoderThreads()),
         '-c:v',
         'libx264',
         '-preset',

@@ -19,7 +19,8 @@
   },
   "include": [
     "src/**/*",
-    "prisma/**/*.ts"          // <-- allows seed.ts to compile
+    "prisma/**/*.ts",         // <-- allows seed.ts to compile
+    "scripts/**/*.ts"         // <-- scripts import real services; catch drift
   ],
   "exclude": [
     "node_modules",

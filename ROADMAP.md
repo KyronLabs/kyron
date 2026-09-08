@@ -81,12 +81,16 @@ is shippable on its own.
    ceiling, so a small highly-compressible image cannot decode to hundreds of
    megabytes on every phone that opens the post.
 
-   ~~**Still open: transcoding.**~~ Built. ffmpeg is in the API image; a clip
-   over 720p or 2.5 Mbps is re-encoded to H.264 with the index moved to the
-   front so playback starts before the file has finished arriving, a poster is
-   cut from one second in, and anything over five minutes is refused rather
+   ~~**Still open: transcoding.**~~ Built, and now off the request thread. A
+   clip over 1280p or 2.5 Mbps is re-encoded to H.264 with the index moved to
+   the front so playback starts before the file has finished arriving, a poster
+   is cut from one second in, and anything over five minutes is refused rather
    than silently truncated. Without ffmpeg the clip is stored exactly as it
    arrived and the service says so at boot.
+
+   The re-encode itself is queued rather than waited for -- it was 93% of the
+   upload request -- and writes back over the same path, so the URL the client
+   already has keeps working. `docs/MEDIA_JOBS.md`.
 6. ~~**Feed quality signals.**~~ Built, and the worst of it was not the
    missing data but the data already being collected and read by nothing:
    every "show me less of this" tap wrote a row that changed no subsequent
@@ -185,14 +189,19 @@ The decision that remains is the same one, now narrower:
     other dependencies nothing imported at all -- `bcrypt`, `passport`,
     `passport-jwt`, `@nestjs/passport`, `multer`, `@types/multer` and
     `@nestjs/platform-express`, that last one sitting alongside Fastify.
-11. **Background jobs.** Partly stale, now that it has been read rather than
-    assumed. Notification fan-out is already off the request thread --
-    `DeliveryService` fires and does not await -- and the transcoder probes a
-    clip before re-encoding, so an over-long one is refused without paying for
-    it. What is genuinely inline is the re-encode of a *valid* clip, which
-    holds the upload request open for its duration. Moving that off needs
-    somewhere durable to put the job, and this deployment stops its machine
-    when idle, so it is the same decision as item 9.
+11. ~~**Background jobs.**~~ Done, for the one thing that was genuinely
+    inline. Notification fan-out was already off the request thread --
+    `DeliveryService` fires and does not await -- and the transcoder already
+    probed a clip before re-encoding, so an over-long one was refused without
+    paying for it. What held the upload request open was the re-encode of a
+    *valid* clip: 4771ms of it on a 4K test clip, against 388ms for everything
+    else the request has to do.
+
+    That is a `MediaJob` row now, claimed with `FOR UPDATE SKIP LOCKED` and
+    written back over the same storage path so the URL handed out at upload
+    keeps working. Postgres rather than Redis, which is what item 9 was really
+    asking: one machine does not need a broker, and a table survives the deploy
+    that lands mid-encode. `docs/MEDIA_JOBS.md`.
 12. ~~**Load testing** against the P95 targets before quoting them.~~ Done, and
     there are now real numbers to quote -- `docs/PERFORMANCE.md`. A
     dependency-free driver lives at `api/scripts/loadtest.mjs`.

@@ -43,6 +43,7 @@ does today. Where something is planned rather than built, it says so.
 | **Accounts** | Email and password over Supabase Auth, JWT verified against JWKS, onboarding gate |
 | **Feed** | Ranked by interests, who you follow, what you have liked, how long you read, what you have asked to see less of, and recency; cursor-paged |
 | **Posts** | Text, photos, video, polls, voice recordings, link previews, quotes, reposts |
+| **Video** | Normalised to H.264, capped, a poster cut from the clip, and re-encoded on a queue rather than while you wait — [why the upload answers before the encode finishes](docs/MEDIA_JOBS.md) |
 | **Comments** | Real threading at any depth, connector rails, a page per comment, media in replies |
 | **Profiles** | Bio, links, avatar and cover, followers and following, editing |
 | **Messages** | One-to-one, attachments, read state, mute, block, report, delete. Text is encrypted end to end — [what that does and does not cover](docs/E2EE.md) |
