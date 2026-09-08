@@ -1,3 +1,4 @@
+import { cpus } from 'node:os';
 import { TranscodeService, type CommandRunner } from './transcode.service';
 
 /** Answers whatever the test says ffmpeg would. */
@@ -97,22 +98,22 @@ describe('TranscodeService.shouldReencode', () => {
 });
 
 describe('TranscodeService without ffmpeg', () => {
-  it('keeps the clip exactly as it arrived', async () => {
+  it('answers "nothing known, nothing needed"', async () => {
     const service = new TranscodeService(new ScriptedRunner({}));
     await service.onModuleInit();
 
-    const original = Buffer.from('a clip');
-    const result = await service.process(original);
+    const prepared = await service.prepare(Buffer.from('a clip'));
 
-    // A missing binary must never cost somebody their upload.
+    // A missing binary must never cost somebody their upload: the caller
+    // stores exactly what arrived.
     expect(service.isAvailable).toBe(false);
-    expect(result.video).toBe(original);
-    expect(result.poster).toBeNull();
-    expect(result.reencoded).toBe(false);
+    expect(prepared.poster).toBeNull();
+    expect(prepared.needsReencode).toBe(false);
+    expect(prepared.durationMs).toBeNull();
   });
 });
 
-describe('TranscodeService with ffmpeg', () => {
+describe('TranscodeService.prepare', () => {
   it('reports a clip that runs too long rather than cutting it', async () => {
     const runner = new ScriptedRunner({
       ffmpeg: { code: 0 },
@@ -121,16 +122,17 @@ describe('TranscodeService with ffmpeg', () => {
     const service = new TranscodeService(runner);
     await service.onModuleInit();
 
-    const result = await service.process(Buffer.from('long'));
+    const prepared = await service.prepare(Buffer.from('long'));
 
     // A clip that comes back shorter than it went in is worse than one that
     // was refused, so the caller decides.
-    expect(result.durationMs).toBe(600_000);
-    expect(result.durationMs).toBeGreaterThan(TranscodeService.maxDurationMs);
-    expect(result.reencoded).toBe(false);
+    expect(prepared.durationMs).toBe(600_000);
+    expect(prepared.durationMs).toBeGreaterThan(TranscodeService.maxDurationMs);
+    // And nothing is queued for a clip that is about to be thrown away.
+    expect(prepared.needsReencode).toBe(false);
   });
 
-  it('keeps the original when ffmpeg cannot read it', async () => {
+  it('knows nothing about a clip ffmpeg cannot read', async () => {
     const runner = new ScriptedRunner({
       ffmpeg: { code: 0 },
       ffprobe: { code: 1, stderr: 'moov atom not found' },
@@ -138,7 +140,66 @@ describe('TranscodeService with ffmpeg', () => {
     const service = new TranscodeService(runner);
     await service.onModuleInit();
 
-    const original = Buffer.from('broken');
-    expect((await service.process(original)).video).toBe(original);
+    const prepared = await service.prepare(Buffer.from('broken'));
+
+    expect(prepared.width).toBeNull();
+    expect(prepared.needsReencode).toBe(false);
+  });
+
+  it('asks for a re-encode without doing one', async () => {
+    // The whole point of the split: the upload request finds out that a
+    // re-encode is needed, and does not pay for it.
+    const runner = new ScriptedRunner({
+      ffmpeg: { code: 0 },
+      ffprobe: { code: 0, stdout: probeJson(3840, 2160, 30, 20_000_000) },
+    });
+    const service = new TranscodeService(runner);
+    await service.onModuleInit();
+
+    const prepared = await service.prepare(Buffer.from('4k'));
+
+    expect(prepared.needsReencode).toBe(true);
+    expect(prepared.width).toBe(3840);
+    // libx264 is what a re-encode runs. Nothing here should have reached it.
+    const encoded = runner.calls.some((call) => call.args.includes('libx264'));
+    expect(encoded).toBe(false);
+  });
+});
+
+describe('TranscodeService poster', () => {
+  it('falls back to the first frame when the seek finds nothing', async () => {
+    // Checked against ffmpeg 6.1.1: seeking to one second in a half-second
+    // clip writes no file *and exits 0*, so a code check alone never notices.
+    // Every clip under a second used to end up with no poster at all.
+    //
+    // The scripted runner writes no file either, which is the same shape: the
+    // command succeeds and there is nothing to read.
+    const runner = new ScriptedRunner({
+      ffmpeg: { code: 0 },
+      ffprobe: { code: 0, stdout: probeJson(320, 240, 0.5, 500_000) },
+    });
+    const service = new TranscodeService(runner);
+    await service.onModuleInit();
+
+    const prepared = await service.prepare(Buffer.from('short'));
+
+    const attempts = runner.calls.filter((c) => c.args.includes('-frames:v'));
+    expect(attempts).toHaveLength(2);
+    expect(attempts[0].args).toContain('-ss');
+    expect(attempts[1].args).not.toContain('-ss');
+    // Both came back empty here, so there is genuinely no poster -- reported
+    // as null rather than as a zero-byte file the app would try to draw.
+    expect(prepared.poster).toBeNull();
+  });
+});
+
+describe('TranscodeService.encoderThreads', () => {
+  it('leaves a core for serving requests', () => {
+    // The encoder and the API share one machine. libx264 takes every core it
+    // can see unless told otherwise, which turns a fast upload into a slow
+    // everything-else.
+    const threads = TranscodeService.encoderThreads();
+    expect(threads).toBeGreaterThanOrEqual(1);
+    expect(threads).toBe(Math.max(1, cpus().length - 1));
   });
 });

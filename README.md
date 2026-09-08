@@ -15,6 +15,10 @@
 [![Stars](https://img.shields.io/github/stars/KyronLabs/kyron?style=social)](https://github.com/KyronLabs/kyron)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
+<br>
+
+**[See it running →](docs/SCREENSHOTS.md)**
+
 </div>
 
 ---
@@ -39,6 +43,7 @@ does today. Where something is planned rather than built, it says so.
 | **Accounts** | Email and password over Supabase Auth, JWT verified against JWKS, onboarding gate |
 | **Feed** | Ranked by interests, who you follow, what you have liked, how long you read, what you have asked to see less of, and recency; cursor-paged |
 | **Posts** | Text, photos, video, polls, voice recordings, link previews, quotes, reposts |
+| **Video** | Normalised to H.264, capped, a poster cut from the clip, and re-encoded on a queue rather than while you wait — [why the upload answers before the encode finishes](docs/MEDIA_JOBS.md) |
 | **Comments** | Real threading at any depth, connector rails, a page per comment, media in replies |
 | **Profiles** | Bio, links, avatar and cover, followers and following, editing |
 | **Messages** | One-to-one, attachments, read state, mute, block, report, delete. Text is encrypted end to end — [what that does and does not cover](docs/E2EE.md) |
@@ -48,6 +53,7 @@ does today. Where something is planned rather than built, it says so.
 | **Search** | People, posts and hashtags, with filters |
 | **Operations** | A request id on every response, structured request logs, error aggregation, and a token-guarded `/metrics` — [what is measurable and what is not](docs/OBSERVABILITY.md) |
 | **Performance** | Measured, not asserted — [what every endpoint actually costs](docs/PERFORMANCE.md), and the load test that produced it |
+| **All of it** | [Screenshots of every screen above](docs/SCREENSHOTS.md), from a build on a real handset |
 
 ### Not built yet
 
@@ -55,9 +61,9 @@ Listed because they have been described as finished elsewhere and are not.
 
 | Planned | State today |
 |:--|:--|
-| AR camera lenses | Not started. The menu entry opens a "coming soon" screen |
+| AR camera lenses | A camera with seven colour lenses, applied live and baked into the photo. No face or plane tracking, so it is filters rather than AR — [where the line is](docs/AR.md) |
 | Live video | Not started. Same |
-| Portable identity (DID / AT Protocol) | Not started. The column exists; nothing writes to it |
+| Portable identity (DID / AT Protocol) | Half built. Every account gets a real `did:key` it proves it controls — but nothing consumes it, so nothing is portable yet. [What it does and does not do](docs/IDENTITY.md) |
 | End-to-end encrypted *posts* | Not started. Direct messages are encrypted; posts are public by nature |
 | Creator equity pool | Not started |
 

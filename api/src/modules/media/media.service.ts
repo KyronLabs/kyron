@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { MediaKind } from '@prisma/client';
 import { randomUUID } from 'node:crypto';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
+import { MediaQueue } from './media-queue.service';
 import { TranscodeService } from './transcode.service';
 
 /** What an upload answers with, ready to attach to a post or a comment. */
@@ -51,6 +52,7 @@ export class MediaService {
   constructor(
     private readonly supabase: SupabaseService,
     private readonly transcode: TranscodeService,
+    private readonly jobs: MediaQueue,
   ) {}
 
   /**
@@ -99,8 +101,6 @@ export class MediaService {
     mimeType: string | undefined,
     dimensions: { width?: number; height?: number } = {},
   ): Promise<UploadedMedia> {
-    // Reassigned when a clip's real shape comes back from ffprobe.
-    // eslint-disable-next-line prefer-const
     if (!buffer || buffer.length === 0) {
       throw new BadRequestException('That file is empty.');
     }
@@ -138,44 +138,54 @@ export class MediaService {
       );
     }
 
-    // A clip is normalised and gets a poster cut from it. Without ffmpeg on
-    // the server this hands back exactly what arrived, which is what happened
-    // to every clip before this existed.
+    // A clip gets probed and a poster cut from it, both of which are quick.
+    // Re-encoding is not, so it is queued rather than waited for -- see
+    // docs/MEDIA_JOBS.md. Without ffmpeg on the server none of it happens and
+    // the clip is stored exactly as it arrived.
     let poster: Buffer | null = null;
     let durationMs: number | null = null;
-    let stored = buffer;
+    let reencodeLater = false;
 
     if (kind === MediaKind.VIDEO) {
-      const result = await this.transcode.process(buffer);
+      const prepared = await this.transcode.prepare(buffer);
       if (
-        result.durationMs !== null &&
-        result.durationMs > TranscodeService.maxDurationMs
+        prepared.durationMs !== null &&
+        prepared.durationMs > TranscodeService.maxDurationMs
       ) {
         const minutes = Math.round(TranscodeService.maxDurationMs / 60000);
         throw new BadRequestException(
           `A clip cannot run longer than ${minutes} minutes.`,
         );
       }
-      stored = result.video;
-      poster = result.poster;
-      durationMs = result.durationMs;
-      if (result.width) dimensions = { ...dimensions, width: result.width };
-      if (result.height) dimensions = { ...dimensions, height: result.height };
+      poster = prepared.poster;
+      durationMs = prepared.durationMs;
+      reencodeLater = prepared.needsReencode;
+      if (prepared.width) dimensions = { ...dimensions, width: prepared.width };
+      if (prepared.height) {
+        dimensions = { ...dimensions, height: prepared.height };
+      }
     }
 
     // The name never comes from the client. An uploaded filename is attacker
     // input, and it ends up in a URL other people load.
     const filename = `${userId}_${Date.now()}_${randomUUID()}.${EXTENSIONS[sniffed]}`;
 
-    const { publicUrl } = await this.supabase.uploadFile(
+    // The bytes exactly as they arrived. A queued re-encode writes a smaller
+    // version back over this same path later, which is why the URL can be
+    // handed out now.
+    const { publicUrl, path } = await this.supabase.uploadFile(
       MediaService.folder,
       filename,
-      stored,
+      buffer,
       sniffed,
     );
 
     if (!publicUrl) {
       throw new BadRequestException('That upload could not be stored.');
+    }
+
+    if (reencodeLater) {
+      await this.jobs.enqueue({ path, userId, bytesIn: buffer.length });
     }
 
     // Best effort, and deliberately not fatal: a clip whose poster would not

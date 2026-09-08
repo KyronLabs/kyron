@@ -5,6 +5,7 @@ import '../models/user.dart';
 import '../repositories/auth_repository.dart';
 import 'current_user_provider.dart';
 import 'keys_provider.dart';
+import 'identity_provider.dart';
 
 enum AuthStatus { unknown, unauthenticated, authenticating, authenticated }
 
@@ -53,6 +54,11 @@ class AuthNotifier extends Notifier<AuthState> {
         // Awaited nowhere: a chat opened before it finishes sends in the
         // clear, which is what happened before this existed.
         unawaited(ref.read(messageVaultProvider).unlock());
+        // And this account's portable identifier, on the same terms: made on
+        // the device if it has none, and claimed by proving it holds the key.
+        // Nothing waits on it -- an account without one works exactly as it
+        // did before identifiers existed.
+        unawaited(ref.read(identityVaultProvider).ensure());
         state = AuthState.authenticated(user);
 
         // Load full profile data
@@ -120,6 +126,9 @@ class AuthNotifier extends Notifier<AuthState> {
     // one. The secret half is deleted either way: it is this device's
     // identity, and it leaves with the account that made it.
     await ref.read(messageVaultProvider).lock();
+    // The identifier belongs to the account that made it, exactly like the
+    // message key.
+    await ref.read(identityVaultProvider).forget();
 
     await _repo.logout();
 

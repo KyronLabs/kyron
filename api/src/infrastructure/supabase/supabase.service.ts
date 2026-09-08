@@ -55,8 +55,17 @@ export class SupabaseService {
     fileBuf: Buffer,
     contentType?: string,
   ) {
-    const path = `${folder}/${filename}`;
+    return this.uploadToPath(`${folder}/${filename}`, fileBuf, contentType);
+  }
 
+  /**
+   * The same, addressed by the whole path.
+   *
+   * What the re-encode queue needs: it holds the path a clip was stored at and
+   * writes the smaller version back over it, rather than reassembling a folder
+   * and a filename it never split.
+   */
+  async uploadToPath(path: string, fileBuf: Buffer, contentType?: string) {
     const { error } = await this.client.storage
       .from(this.bucketName)
       .upload(path, fileBuf, {
@@ -77,6 +86,26 @@ export class SupabaseService {
       publicUrl: urlData?.publicUrl ?? null,
       path,
     };
+  }
+
+  /**
+   * Read a stored object back as a Buffer.
+   *
+   * The re-encode queue needs the clip it is working on, and it runs long
+   * after the request that uploaded it -- possibly in a process that started
+   * after it. Storage is the only place those bytes still are.
+   */
+  async downloadFile(path: string): Promise<Buffer> {
+    const { data, error } = await this.client.storage
+      .from(this.bucketName)
+      .download(path);
+
+    if (error || !data) {
+      throw new Error(
+        `Supabase download failed for ${path}: ${error?.message ?? 'no body'}`,
+      );
+    }
+    return Buffer.from(await data.arrayBuffer());
   }
 
   /** Generate a signed URL (useful if your bucket is private). Expires seconds default 3600 */

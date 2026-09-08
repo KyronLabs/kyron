@@ -6,7 +6,10 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['eslint.config.mjs'],
+    // Plain Node scripts, run with `node` and not part of the TypeScript
+    // project -- the type-checked linter cannot parse them and has nothing to
+    // say about them. The .ts scripts alongside them are checked normally.
+    ignores: ['eslint.config.mjs', 'scripts/**/*.mjs'],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,

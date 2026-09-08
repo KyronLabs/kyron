@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../providers/auth_provider.dart';
+import '../providers/identity_provider.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/preferences_provider.dart';
 import '../utils/api_error_message.dart';
@@ -109,51 +110,71 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       child: Semantics(
         label: label,
         value: subtitle,
-        child: Container(
-          height: 56,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            children: [
-              // Icon: 24px, left-aligned, 8px padding
-              Icon(
-                icon,
-                size: 24,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
-              ),
-              const SizedBox(width: 16),
-              // Label + Subtitle
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      label,
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontFamily: 'SF Pro Rounded',
-                      ),
-                    ),
-                    if (subtitle != null)
+        // A floor, not a ceiling. This was a fixed `height: 56`, which is
+        // enough for a label and a subtitle at one text size and not at
+        // others -- the account row, whose subtitle is a whole email address,
+        // shipped with Flutter's yellow-and-black "BOTTOM OVERFLOWED BY 4.0
+        // PIXELS" banner drawn across it in a release build. A row that
+        // cannot grow is wrong for every long value, not just that one.
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 56),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 8,
+            ),
+            child: Row(
+              children: [
+                // Icon: 24px, left-aligned, 8px padding
+                Icon(
+                  icon,
+                  size: 24,
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                ),
+                const SizedBox(width: 16),
+                // Label + Subtitle
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                       Text(
-                        subtitle,
+                        label,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 15,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSurface
-                              .withOpacity(0.6),
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.onSurface,
                           fontFamily: 'SF Pro Rounded',
                         ),
                       ),
-                  ],
+                      if (subtitle != null)
+                        Text(
+                          subtitle,
+                          // Cut with an ellipsis rather than mid-character.
+                          // The account row's subtitle is an email address, and
+                          // a long one was being sliced off at whatever pixel
+                          // the row ran out at.
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurface
+                                .withOpacity(0.6),
+                            fontFamily: 'SF Pro Rounded',
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
-              ),
-              // Trailing: right-aligned, 16px padding, 48×48 hit-box
-              if (trailing != null) trailing,
-            ],
+                // Trailing: right-aligned, 16px padding, 48×48 hit-box
+                if (trailing != null) trailing,
+              ],
+            ),
           ),
         ),
       ),
@@ -312,12 +333,18 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
               helpText: 'Your profile and contact information',
             ),
-            // The real one. This row showed "did:plc:abc…" and copied
+            // The real one, and now a real identifier rather than a column
+            // nobody wrote to. This row showed "did:plc:abc…" and copied
             // "did:plc:abcdef1234567890abcdef12" -- the same invented
-            // identifier for everyone, to anyone who tapped Copy.
+            // identifier for everyone, to anyone who tapped Copy -- and then
+            // showed "No DID yet" to everybody forever.
+            //
+            // Read from the vault rather than from the profile: the profile
+            // carries whatever the server last sent, and the identifier is
+            // established by this device after sign-in.
             Consumer(
               builder: (context, ref, _) {
-                final did = ref.watch(currentUserProvider).asData?.value.did;
+                final did = ref.watch(myDidProvider).asData?.value;
                 return _settingsRow(
                   icon: Iconsax.document_copy,
                   label: did == null ? 'No DID yet' : _shortDid(did),

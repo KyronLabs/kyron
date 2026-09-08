@@ -1,4 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The AR lens camera. Requested at the moment it is opened rather than
+         at launch, so somebody who never opens it is never asked. -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- Declared not-required so the app still installs on a device without
+         one; the screen renders "this device has no camera" rather than the
+         Play Store hiding Kyron from that device entirely. -->
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+
     <application
         android:label="Kyron"
         android:name="${applicationName}"
@@ -24,6 +33,18 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <!-- The link in a Supabase confirmation or password-reset email.
+                 Without this the mail's redirect has nowhere on the device to
+                 land, so Supabase falls back to the project's Site URL and
+                 opens a browser at a developer's localhost. The scheme is the
+                 application id, which cannot collide with another app.
+                 Kept in step with SupabaseConfig.authRedirect. -->
+            <intent-filter android:autoVerify="false">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="so.kyron.app" android:host="auth-callback"/>
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

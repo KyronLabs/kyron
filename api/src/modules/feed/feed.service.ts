@@ -483,9 +483,9 @@ export class FeedService {
       id: row.id,
       authorId: row.authorId,
       createdAt: row.createdAt,
-      likes: row._count?.likes ?? 0,
-      comments: row._count?.comments ?? 0,
-      reposts: row._count?.reposts ?? 0,
+      likes: row.likeCount,
+      comments: row.commentCount,
+      reposts: row.repostCount,
       seenCount: row.views?.[0]?.count ?? 0,
       followed: viewer.followedIds.has(row.authorId),
       topicIds: (row.topics ?? []).map((t) => t.interestId),
@@ -535,7 +535,9 @@ export class FeedService {
       createdAt: true,
       views: { where: { viewerId }, select: { count: true }, take: 1 },
       topics: { select: { interestId: true } },
-      _count: { select: { likes: true, comments: true, reposts: true } },
+      likeCount: true,
+      commentCount: true,
+      repostCount: true,
     };
   }
 
@@ -694,21 +696,24 @@ export class FeedService {
   async setReposted(viewerId: string, postId: string, reposted: boolean) {
     const post = await this.requireVisiblePost(postId);
     if (reposted) {
-      await this.prisma.repost.upsert({
-        where: { userId_postId: { userId: viewerId, postId } },
-        create: { userId: viewerId, postId },
-        update: {},
-      });
+      const reposts = await this.countedWrite(postId, 'repostCount', (tx) =>
+        tx.repost
+          .createMany({
+            data: { userId: viewerId, postId },
+            skipDuplicates: true,
+          })
+          .then((r) => r.count),
+      );
       this.tellAuthor(post.authorId, viewerId, 'repost');
-    } else {
-      await this.prisma.repost.deleteMany({
-        where: { userId: viewerId, postId },
-      });
+      return { reposted, reposts };
     }
-    return {
-      reposted,
-      reposts: await this.prisma.repost.count({ where: { postId } }),
-    };
+
+    const reposts = await this.countedWrite(postId, 'repostCount', (tx) =>
+      tx.repost
+        .deleteMany({ where: { userId: viewerId, postId } })
+        .then((r) => -r.count),
+    );
+    return { reposted, reposts };
   }
 
   /**
@@ -1224,22 +1229,53 @@ export class FeedService {
   /** Idempotent: liking an already-liked post is a no-op, not a duplicate. */
   async setLiked(viewerId: string, postId: string, liked: boolean) {
     const post = await this.requireVisiblePost(postId);
-    if (liked) {
-      await this.prisma.postLike.upsert({
-        where: { userId_postId: { userId: viewerId, postId } },
-        create: { userId: viewerId, postId },
-        update: {},
+    const likes = await this.countedWrite(postId, 'likeCount', (tx) =>
+      liked
+        ? tx.postLike
+            .createMany({
+              data: { userId: viewerId, postId },
+              skipDuplicates: true,
+            })
+            .then((r) => r.count)
+        : tx.postLike
+            .deleteMany({ where: { userId: viewerId, postId } })
+            .then((r) => -r.count),
+    );
+    if (liked) this.tellAuthor(post.authorId, viewerId, 'like');
+    return { liked, likes };
+  }
+
+  /**
+   * Applies a write and moves the post's counter by what it actually changed.
+   *
+   * The two have to agree, so they go in one transaction: a counter that is
+   * incremented beside a row that was not written is the drift this whole
+   * approach is judged on.
+   *
+   * The delta comes from the write itself rather than from the caller's
+   * intent, which is what makes liking twice a no-op here as well as in the
+   * table. `createMany({ skipDuplicates: true })` answers 0 when the row was
+   * already there; `deleteMany` answers 0 when there was nothing to remove.
+   * An `upsert` could not tell the two apart, and every double tap would have
+   * added one.
+   */
+  private async countedWrite(
+    postId: string,
+    column: 'likeCount' | 'commentCount' | 'repostCount',
+    write: (tx: Prisma.TransactionClient) => Promise<number>,
+  ): Promise<number> {
+    const post = await this.prisma.$transaction(async (tx) => {
+      const delta = await write(tx);
+      return tx.post.update({
+        where: { id: postId },
+        data: { [column]: { increment: delta } } as Prisma.PostUpdateInput,
+        select: { likeCount: true, commentCount: true, repostCount: true },
       });
-      this.tellAuthor(post.authorId, viewerId, 'like');
-    } else {
-      await this.prisma.postLike.deleteMany({
-        where: { userId: viewerId, postId },
-      });
-    }
-    return {
-      liked,
-      likes: await this.prisma.postLike.count({ where: { postId } }),
-    };
+    });
+    // Clamped on the way out only. A negative in the column would be a bug
+    // worth seeing in the database rather than one hidden behind a `max(0)`
+    // on every read; scripts/recount.sql puts it right.
+    return Math.max(0, post[column]);
   }
 
   async setSaved(viewerId: string, postId: string, saved: boolean) {
@@ -1522,6 +1558,13 @@ export class FeedService {
       threadParentId = await this.deepestAllowedParent(parent.id, postId);
     }
 
+    // The post's number and the thread's contents move together, or a badge
+    // ends up describing a thread that does not match it.
+    await this.prisma.post.update({
+      where: { id: postId },
+      data: { commentCount: { increment: 1 } },
+    });
+
     const comment = await this.prisma.comment.create({
       data: {
         postId,
@@ -1565,11 +1608,33 @@ export class FeedService {
 
   /** Soft delete, and only by the author of the comment. */
   async deleteComment(authorId: string, commentId: string): Promise<void> {
-    const { count } = await this.prisma.comment.updateMany({
+    // The post is read first because the counter has to move with the row,
+    // and a soft delete gives nothing back to say which post it was on.
+    const comment = await this.prisma.comment.findFirst({
       where: { id: commentId, authorId, deletedAt: null },
-      data: { deletedAt: new Date() },
+      select: { postId: true },
     });
-    if (count === 0) throw new NotFoundException('Comment not found.');
+    if (!comment) throw new NotFoundException('Comment not found.');
+
+    await this.prisma.$transaction(async (tx) => {
+      const { count } = await tx.comment.updateMany({
+        // `deletedAt: null` again, inside the transaction: two taps on delete
+        // would otherwise both find it undeleted above and each take one off
+        // the count, for one comment removed.
+        where: { id: commentId, authorId, deletedAt: null },
+        data: { deletedAt: new Date() },
+      });
+      if (count === 0) return;
+
+      // Taken off the number as well as out of the list. The `_count` this
+      // replaced counted soft-deleted rows, so a post could say five comments
+      // and show four -- the badge and the thread disagreeing about the same
+      // conversation.
+      await tx.post.update({
+        where: { id: comment.postId },
+        data: { commentCount: { decrement: count } },
+      });
+    });
   }
 
   /**
@@ -1931,7 +1996,13 @@ export class FeedService {
       views: { where: { viewerId }, select: { count: true }, take: 1 },
       topics: { select: { interestId: true } },
       author: { select: this.authorShape },
-      _count: { select: { likes: true, comments: true, reposts: true } },
+      // Columns, not a relation `_count`: Prisma compiles that into an
+      // unfiltered GROUP BY over the whole of PostLike and joins it, so a
+      // page of twenty cost 13.5ms against 0.46ms reading these -- and it
+      // grew with every like on the service rather than with the page.
+      likeCount: true,
+      commentCount: true,
+      repostCount: true,
       likes: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       saves: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       reposts: { where: { userId: viewerId }, select: { id: true }, take: 1 },
@@ -1999,9 +2070,9 @@ export class FeedService {
       content: row.content,
       createdAt: row.createdAt,
       author: this.toAuthor(row.author),
-      likes: row._count.likes,
-      comments: row._count.comments,
-      reposts: row._count.reposts,
+      likes: row.likeCount,
+      comments: row.commentCount,
+      reposts: row.repostCount,
       likedByViewer: row.likes.length > 0,
       savedByViewer: row.saves.length > 0,
       repostedByViewer: row.reposts.length > 0,
@@ -2075,7 +2146,9 @@ interface PostRow {
   replyPolicy: ReplyPolicy;
   poll: PollRow | null;
   author: AuthorRow;
-  _count: { likes: number; comments: number; reposts: number };
+  likeCount: number;
+  commentCount: number;
+  repostCount: number;
   likes: { id: string }[];
   saves: { id: string }[];
   reposts: { id: string }[];

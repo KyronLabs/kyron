@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart'; // Add this import
@@ -6,7 +8,9 @@ import 'services/app_log.dart';
 import 'services/draft_service.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'routes.dart';
-import 'providers/auth_provider.dart';
+// `hide AuthState`: this app and the Supabase SDK both define that name,
+// and only the SDK's is used here -- for the password-recovery event.
+import 'providers/auth_provider.dart' hide AuthState;
 import 'providers/preferences_provider.dart';
 import 'providers/realtime_provider.dart';
 import 'screens/root_screen.dart';
@@ -155,13 +159,46 @@ class KyronApp extends ConsumerStatefulWidget {
   ConsumerState<KyronApp> createState() => _KyronAppState();
 }
 
+/// The navigator, reachable from outside the tree.
+///
+/// Needed because a password-reset link arrives as an auth event rather than
+/// as a tap on something: there is no BuildContext at hand when it lands.
+final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
+
 class _KyronAppState extends ConsumerState<KyronApp> {
   bool _isInitialized = false;
+
+  StreamSubscription<AuthState>? _authEvents;
 
   @override
   void initState() {
     super.initState();
     _initializeApp();
+    _watchForPasswordRecovery();
+  }
+
+  /// Sends somebody who tapped a reset link to the screen that sets one.
+  ///
+  /// The link opens the app with a recovery session already established --
+  /// the SDK handles the deep link itself -- and then nothing happened,
+  /// because nothing was listening. Landing on the feed after asking to reset
+  /// a password reads as the link having failed.
+  void _watchForPasswordRecovery() {
+    _authEvents = Supabase.instance.client.auth.onAuthStateChange.listen(
+      (state) {
+        if (state.event != AuthChangeEvent.passwordRecovery) return;
+        AppLog.instance.info('auth', 'Opened from a password reset link.');
+        appNavigatorKey.currentState?.pushNamed(Routes.settingsPasswordLogin);
+      },
+      onError: (Object error) =>
+          AppLog.instance.error('auth', 'Auth event stream failed: $error'),
+    );
+  }
+
+  @override
+  void dispose() {
+    _authEvents?.cancel();
+    super.dispose();
   }
 
   Future<void> _initializeApp() async {
@@ -214,6 +251,7 @@ class _KyronAppState extends ConsumerState<KyronApp> {
 
     return MaterialApp(
       title: 'Kyron',
+      navigatorKey: appNavigatorKey,
       debugShowCheckedModeBanner: false,
       theme: _withStatusBar(KyronTheme.lightTheme),
       darkTheme: _withStatusBar(KyronTheme.darkTheme),

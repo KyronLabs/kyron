@@ -13,7 +13,7 @@ Last audited: 8 September 2026.
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 447 Flutter tests and 387 API
+(Supabase), a Flutter client, REST between them. 458 Flutter tests and 420 API
 tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 ### Built and working
@@ -38,12 +38,12 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 | Thing | Reality |
 |:--|:--|
-| AR camera lenses | `ComingSoonScreen.arLens()`. No camera code exists |
+| AR camera lenses | A real camera with seven colour lenses. No tracking, so "AR" is generous -- `docs/AR.md` |
 | Live | `ComingSoonScreen.live()` |
-| DID / portable identity | A nullable column. Generation is a commented-out TODO |
+| DID / portable identity | Half built. A real `did:key`, proved by signature -- but nothing consumes it, so it is not portable. `docs/IDENTITY.md` |
 | End-to-end encryption | No encryption code anywhere in the repo |
 | Creator equity pool | No contract, no chain, no testnet |
-| `identity/` service | A Dockerfile and three GitHub templates |
+| `identity/` service | A Dockerfile and three GitHub templates. The Nest module of the same name is real now |
 | `media/` service | A Dockerfile |
 | Redis | In config and docker-compose, never read by `api/src` |
 
@@ -81,12 +81,16 @@ is shippable on its own.
    ceiling, so a small highly-compressible image cannot decode to hundreds of
    megabytes on every phone that opens the post.
 
-   ~~**Still open: transcoding.**~~ Built. ffmpeg is in the API image; a clip
-   over 720p or 2.5 Mbps is re-encoded to H.264 with the index moved to the
-   front so playback starts before the file has finished arriving, a poster is
-   cut from one second in, and anything over five minutes is refused rather
+   ~~**Still open: transcoding.**~~ Built, and now off the request thread. A
+   clip over 1280p or 2.5 Mbps is re-encoded to H.264 with the index moved to
+   the front so playback starts before the file has finished arriving, a poster
+   is cut from one second in, and anything over five minutes is refused rather
    than silently truncated. Without ffmpeg the clip is stored exactly as it
    arrived and the service says so at boot.
+
+   The re-encode itself is queued rather than waited for -- it was 93% of the
+   upload request -- and writes back over the same path, so the URL the client
+   already has keeps working. `docs/MEDIA_JOBS.md`.
 6. ~~**Feed quality signals.**~~ Built, and the worst of it was not the
    missing data but the data already being collected and read by nothing:
    every "show me less of this" tap wrote a row that changed no subsequent
@@ -129,18 +133,29 @@ is shippable on its own.
    hardcoded hex colours -- was folded into the same system, and the `shimmer`
    dependency dropped with it.
 
-### Phase 3 — Decide the identity story (weeks, mostly design)
+### Phase 3 — The identity story: started, not finished
 
-The README sells portable identity as the reason Kyron exists. It does not
-exist. There are two honest paths and the project has to pick one:
+The `did` column nobody wrote to is now a real `did:key` that the account
+proves it controls -- generated on the device, claimed by signing a
+server-issued challenge bound to the account, and verifiable by anyone without
+asking Kyron. Along the way it closed a hole: `POST /identity/users` created a
+`User` row for anybody on the internet, and `GET /identity/users/:id` answered
+with that user's email.
 
-- **Build it.** AT Protocol node, real DID generation, repo export. This is a
-  quarter of work minimum and changes the data model.
-- **Drop it.** Rewrite the positioning around what Kyron actually is: an
-  open-source, self-hostable social app with communities and a transparent
-  ranking engine. That is a real story and it is true today.
+**It is not portable yet, and the README should not say it is.** Nothing
+consumes the identifier: no export, no federation, no second server that would
+recognise it. It also cannot survive losing the device, which is the gap that
+matters most -- an identity you cannot carry to a new phone is not one you can
+carry to a new server. `docs/IDENTITY.md` has the full list.
 
-Half-shipping it — a `did` column nobody writes to — is the worst of both.
+The decision that remains is the same one, now narrower:
+
+- **Carry on.** A recovery phrase, then signed posts, then an export something
+  else can read. Each is a real step, and the first two are small.
+- **Stop here.** Keep the identifier as a verifiable account fingerprint and
+  rewrite the positioning around what Kyron is: an open-source, self-hostable
+  social app with communities and a transparent ranking engine. That is a real
+  story and it is true today.
 
 ### Phase 4 — Scale and operate (months)
 
@@ -174,23 +189,33 @@ Half-shipping it — a `did` column nobody writes to — is the worst of both.
     other dependencies nothing imported at all -- `bcrypt`, `passport`,
     `passport-jwt`, `@nestjs/passport`, `multer`, `@types/multer` and
     `@nestjs/platform-express`, that last one sitting alongside Fastify.
-11. **Background jobs.** Partly stale, now that it has been read rather than
-    assumed. Notification fan-out is already off the request thread --
-    `DeliveryService` fires and does not await -- and the transcoder probes a
-    clip before re-encoding, so an over-long one is refused without paying for
-    it. What is genuinely inline is the re-encode of a *valid* clip, which
-    holds the upload request open for its duration. Moving that off needs
-    somewhere durable to put the job, and this deployment stops its machine
-    when idle, so it is the same decision as item 9.
+11. ~~**Background jobs.**~~ Done, for the one thing that was genuinely
+    inline. Notification fan-out was already off the request thread --
+    `DeliveryService` fires and does not await -- and the transcoder already
+    probed a clip before re-encoding, so an over-long one was refused without
+    paying for it. What held the upload request open was the re-encode of a
+    *valid* clip: 4771ms of it on a 4K test clip, against 388ms for everything
+    else the request has to do.
+
+    That is a `MediaJob` row now, claimed with `FOR UPDATE SKIP LOCKED` and
+    written back over the same storage path so the URL handed out at upload
+    keeps working. Postgres rather than Redis, which is what item 9 was really
+    asking: one machine does not need a broker, and a table survives the deploy
+    that lands mid-encode. `docs/MEDIA_JOBS.md`.
 12. ~~**Load testing** against the P95 targets before quoting them.~~ Done, and
     there are now real numbers to quote -- `docs/PERFORMANCE.md`. A
     dependency-free driver lives at `api/scripts/loadtest.mjs`.
 
-    It found three things. The main feed selected the whole post shape for all
+    It found four things. The main feed selected the whole post shape for all
     four hundred ranking candidates and returned twenty, making it by a wide
     margin the slowest thing the app does on the screen that opens first; it
-    now ranks on six columns and hydrates the page, which took it from 31 to
-    55 rps at sixteen concurrent readers and its p95 from 615ms to 365ms. The
+    now ranks on six columns and hydrates the page. And underneath that,
+    Prisma was compiling every relation `_count` into an aggregate over the
+    *entire* table -- so a page of twenty posts paid for every like on the
+    service, and splitting the query barely helped because both halves still
+    paid it. `Post` carries its own engagement counters now. Together: 31 to
+    107 rps at sixteen concurrent readers, p95 615ms to 188ms, and database
+    time per request from 29.8ms to 6.9ms. The
     rate limit had never worked -- `ConfigService.get<number>` hands back a
     string, the plugin ignores a non-numeric `max` and silently uses its own
     default of 1000, so every deployment that set the variable got 1000 a
@@ -204,8 +229,17 @@ Half-shipping it — a `did` column nobody writes to — is the worst of both.
 
 ### Phase 5 — The advertised features (quarters)
 
-13. **AR camera.** A real camera pipeline with lenses. Large, and worth doing
-    only after Phases 1–2 make the app worth opening daily.
+13. ~~**AR camera.**~~ Built, for a narrow reading of AR. The create menu's
+    AR Lens entry opens a real camera with seven colour lenses, applied to the
+    preview and baked into the captured file by the same matrix so the picture
+    taken is the picture seen. There is no tracking of any kind: nothing
+    detects a face or a plane, and every lens is a function of colour over the
+    whole frame. It is a camera with filters and `docs/AR.md` says so.
+
+    The lens maths is exercised against known pixels; the camera itself has
+    been compiled into an APK but never run, because this was built with no
+    phone attached. What that leaves unverified is listed in the doc rather
+    than left for somebody to discover.
 14. **Live.** Streaming infrastructure is its own project.
 15. **Creator equity pool.** Needs legal review before it needs code.
 

@@ -21,7 +21,9 @@ const row = (id: string, createdAt = new Date()) => ({
     profile: { avatarUrl: 'https://example.test/a.png' },
   },
   replyPolicy: 'EVERYONE' as const,
-  _count: { likes: 0, comments: 0, reposts: 0 },
+  likeCount: 0,
+  commentCount: 0,
+  repostCount: 0,
   // Empty means the reader has not liked or saved it: the relation is filtered
   // to their own row, so at most one ever comes back.
   likes: [] as { id: string }[],
@@ -48,6 +50,7 @@ describe('FeedService', () => {
     findFirst: jest.fn<Promise<Record<string, unknown> | null>, [unknown]>(),
     findUnique: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
     updateMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
+    update: jest.fn<Promise<Record<string, number>>, [unknown]>(),
   };
 
   /**
@@ -97,7 +100,13 @@ describe('FeedService', () => {
     create: jest.fn<Promise<CommentRow>, [unknown]>(),
     findMany: jest.fn<Promise<CommentRow[]>, [unknown]>(),
     findFirst: jest.fn<
-      Promise<{ id: string; parentId?: string | null } | null>,
+      Promise<{
+        id?: string;
+        parentId?: string | null;
+        // Read on the way to a soft delete, so the post's counter can move
+        // with the row: a soft delete gives nothing back to say which post.
+        postId?: string;
+      } | null>,
       [unknown]
     >(),
     findUnique: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
@@ -163,40 +172,51 @@ describe('FeedService', () => {
     findMany: jest.fn<Promise<{ id: string; post: Row }[]>, [unknown]>(),
     findUnique: jest.fn<Promise<{ id: string } | null>, [unknown]>(),
     upsert: jest.fn<Promise<unknown>, [unknown]>(),
-    deleteMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
+    // Answers how many rows it actually wrote, which is what the counters are
+    // moved by. Defaulted to one so a test that does not care need not say.
+    createMany: jest.fn<Promise<{ count: number }>, [unknown]>(() =>
+      Promise.resolve({ count: 1 }),
+    ),
+    deleteMany: jest.fn<Promise<{ count: number }>, [unknown]>(() =>
+      Promise.resolve({ count: 1 }),
+    ),
     count: jest.fn<Promise<number>, [unknown]>(),
   });
 
   let postLike = relation();
   let postSave = relation();
+  let repost = relation();
 
   const service = async (extra: Record<string, unknown> = {}) => {
+    const prisma: Record<string, unknown> = {
+      post,
+      postLike,
+      postSave,
+      comment,
+      postView,
+      interestSignal,
+      hashtag,
+      block,
+      follow,
+      user,
+      userInterest,
+      repost,
+      ...extra,
+    };
+    // The real client takes either an array of queries or a callback handed
+    // an interactive client. The reply-face batch uses the first; the
+    // engagement counters use the second, and both have to work or half the
+    // service is untestable. The callback gets this same double, so a write
+    // inside a transaction is recorded on the same spies as one outside.
+    prisma.$transaction = (
+      arg: Promise<unknown>[] | ((tx: unknown) => Promise<unknown>),
+    ) => (typeof arg === 'function' ? arg(prisma) : Promise.all(arg));
+
     const moduleRef = await Test.createTestingModule({
       providers: [
         FeedService,
         RankingService,
-        {
-          provide: PrismaService,
-          useValue: {
-            post,
-            postLike,
-            postSave,
-            comment,
-            postView,
-            interestSignal,
-            hashtag,
-            block,
-            follow,
-            user,
-            userInterest,
-            repost: relation(),
-            // The reply-face batch. The real client resolves the array of
-            // queries it is handed; the mock does the same so a page still
-            // comes back with one entry per row.
-            $transaction: (calls: Promise<unknown>[]) => Promise.all(calls),
-            ...extra,
-          },
-        },
+        { provide: PrismaService, useValue: prisma },
         { provide: ModerationService, useValue: moderation },
         { provide: DeliveryService, useValue: new RecordingDelivery() },
       ],
@@ -208,6 +228,7 @@ describe('FeedService', () => {
     jest.resetAllMocks();
     postLike = relation();
     postSave = relation();
+    repost = relation();
     // Ranking reads these on every feed request. Empty is the default: a
     // reader who follows nobody and has liked nothing still gets a feed.
     follow.findMany.mockResolvedValue([]);
@@ -363,7 +384,9 @@ describe('FeedService', () => {
       post.findMany.mockResolvedValue([
         {
           ...row('a'),
-          _count: { likes: 7, comments: 2, reposts: 1 },
+          likeCount: 7,
+          commentCount: 2,
+          repostCount: 1,
           likes: [{ id: 'like-1' }],
         },
       ]);
@@ -408,15 +431,26 @@ describe('FeedService', () => {
       expect(ranking.take).toBe(FeedService.candidatePool);
       // What scoring needs.
       expect(Object.keys(ranking.select).sort()).toEqual([
-        '_count',
         'authorId',
+        'commentCount',
         'createdAt',
         'id',
+        'likeCount',
+        'repostCount',
         'topics',
         'views',
       ]);
-      // And nothing that only a rendered post needs.
-      for (const heavy of ['media', 'quotedPost', 'poll', 'author', 'likes']) {
+      // And nothing that only a rendered post needs -- nor a relation
+      // `_count`, which Prisma compiles into an unfiltered GROUP BY over the
+      // whole of PostLike and joins to the page.
+      for (const heavy of [
+        'media',
+        'quotedPost',
+        'poll',
+        'author',
+        'likes',
+        '_count',
+      ]) {
         expect(ranking.select[heavy]).toBeUndefined();
       }
     });
@@ -460,26 +494,66 @@ describe('FeedService', () => {
   });
 
   describe('setLiked', () => {
-    it('upserts, so a double tap cannot like twice', async () => {
+    /** The `data` of the last post.update, which is where a counter moves. */
+    const counterMove = () =>
+      (post.update.mock.calls.at(-1)?.[0] as { data: Record<string, unknown> })
+        .data;
+
+    it('writes the row only when it is not already there', async () => {
+      // `createMany({ skipDuplicates: true })` rather than an upsert, because
+      // its answer says whether a row was written -- and that is what the
+      // counter moves by. An upsert cannot tell a first tap from a second.
       post.findFirst.mockResolvedValue({ id: 'p1' });
-      postLike.count.mockResolvedValue(1);
+      post.update.mockResolvedValue({ likeCount: 1 });
       await (await service()).setLiked(VIEWER, 'p1', true);
 
-      expect(postLike.upsert).toHaveBeenCalledWith(
+      expect(postLike.createMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { userId_postId: { userId: VIEWER, postId: 'p1' } },
-          update: {},
+          data: { userId: VIEWER, postId: 'p1' },
+          skipDuplicates: true,
         }),
       );
     });
 
-    it('returns the recounted total, not an incremented guess', async () => {
+    it('adds nothing on a double tap', async () => {
+      // The row was already there, so nothing was written and nothing counted.
       post.findFirst.mockResolvedValue({ id: 'p1' });
-      postLike.count.mockResolvedValue(4);
+      post.update.mockResolvedValue({ likeCount: 1 });
+      postLike.createMany.mockResolvedValue({ count: 0 });
+
+      await (await service()).setLiked(VIEWER, 'p1', true);
+
+      expect(counterMove()).toEqual({ likeCount: { increment: 0 } });
+    });
+
+    it('takes one off only when a row was actually removed', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      post.update.mockResolvedValue({ likeCount: 0 });
+      postLike.deleteMany.mockResolvedValue({ count: 0 });
+
+      await (await service()).setLiked(VIEWER, 'p1', false);
+
+      expect(counterMove()).toEqual({ likeCount: { increment: -0 } });
+    });
+
+    it('returns the count the post now carries', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      post.update.mockResolvedValue({ likeCount: 4 });
 
       await expect(
         (await service()).setLiked(VIEWER, 'p1', true),
       ).resolves.toEqual({ liked: true, likes: 4 });
+    });
+
+    it('never reports a negative, whatever the column says', async () => {
+      // A negative would be a real bug and belongs in the database where it
+      // can be seen and recounted -- but it is not a number to show anybody.
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      post.update.mockResolvedValue({ likeCount: -2 });
+
+      await expect(
+        (await service()).setLiked(VIEWER, 'p1', false),
+      ).resolves.toEqual({ liked: false, likes: 0 });
     });
 
     it('refuses to like a post that is deleted or missing', async () => {
@@ -488,7 +562,7 @@ describe('FeedService', () => {
       await expect(
         (await service()).setLiked(VIEWER, 'gone', true),
       ).rejects.toThrow(NotFoundException);
-      expect(postLike.upsert).not.toHaveBeenCalled();
+      expect(postLike.createMany).not.toHaveBeenCalled();
     });
   });
 
@@ -661,6 +735,7 @@ describe('FeedService', () => {
 
   describe('deleteComment', () => {
     it('soft deletes, scoped to the author', async () => {
+      comment.findFirst.mockResolvedValue({ postId: 'p1' });
       comment.updateMany.mockResolvedValue({ count: 1 });
       await (await service()).deleteComment('user-1', 'c1');
 
@@ -670,7 +745,34 @@ describe('FeedService', () => {
       });
     });
 
+    it('takes the comment off the number as well as out of the list', async () => {
+      // The `_count` this replaced counted soft-deleted rows, so a post could
+      // say five comments and show four.
+      comment.findFirst.mockResolvedValue({ postId: 'p1' });
+      comment.updateMany.mockResolvedValue({ count: 1 });
+
+      await (await service()).deleteComment('user-1', 'c1');
+
+      expect(post.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'p1' },
+          data: { commentCount: { decrement: 1 } },
+        }),
+      );
+    });
+
+    it('does not double count two taps on delete', async () => {
+      // The second finds nothing left to soft delete, so nothing comes off.
+      comment.findFirst.mockResolvedValue({ postId: 'p1' });
+      comment.updateMany.mockResolvedValue({ count: 0 });
+
+      await (await service()).deleteComment('user-1', 'c1');
+
+      expect(post.update).not.toHaveBeenCalled();
+    });
+
     it("reports not found for someone else's comment", async () => {
+      comment.findFirst.mockResolvedValue(null);
       comment.updateMany.mockResolvedValue({ count: 0 });
 
       await expect(
@@ -1399,17 +1501,30 @@ describe('FeedService', () => {
   });
 
   describe('setReposted', () => {
-    it('upserts, so a double tap cannot repost twice', async () => {
+    it('writes the row only when it is not already there', async () => {
       post.findFirst.mockResolvedValue({ id: 'p1' });
-      const repost = relation();
-      await (await service({ repost })).setReposted(VIEWER, 'p1', true);
+      post.update.mockResolvedValue({ repostCount: 1 });
 
-      expect(repost.upsert).toHaveBeenCalledWith(
+      await (await service()).setReposted(VIEWER, 'p1', true);
+
+      expect(repost.createMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { userId_postId: { userId: VIEWER, postId: 'p1' } },
-          update: {},
+          data: { userId: VIEWER, postId: 'p1' },
+          skipDuplicates: true,
         }),
       );
+    });
+
+    it('adds nothing on a double tap', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      post.update.mockResolvedValue({ repostCount: 1 });
+      repost.createMany.mockResolvedValue({ count: 0 });
+
+      await (await service()).setReposted(VIEWER, 'p1', true);
+
+      expect(
+        (post.update.mock.calls.at(-1)?.[0] as { data: unknown }).data,
+      ).toEqual({ repostCount: { increment: 0 } });
     });
   });
 

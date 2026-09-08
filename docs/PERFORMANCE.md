@@ -21,29 +21,29 @@ Milliseconds, whole round trip including reading the body.
 
 | Route | rps | p50 | p95 | p99 |
 |:--|--:|--:|--:|--:|
-| `GET /profile/interests` | 306 | 3.2 | 4.0 | 5.3 |
-| `GET /messages` | 270 | 3.5 | 4.8 | 5.9 |
-| `GET /profile/me` | 220 | 4.3 | 5.8 | 9.8 |
-| `GET /notifications` | 123 | 7.8 | 9.9 | 11.6 |
-| `GET /feed/trending/tags` | 97 | 10.1 | 11.8 | 15.5 |
-| `GET /feed/following` | 33 | 30.1 | 34.3 | 43.1 |
-| `GET /feed/search` | 29 | 34.5 | 39.2 | 41.2 |
-| `GET /feed/recent` | 18 | 55.8 | 67.3 | 98.7 |
-| `GET /health` | 34 | 28.8 | 34.5 | 36.0 |
+| `GET /profile/interests` | 418 | 2.3 | 2.8 | 3.6 |
+| `GET /messages` | 338 | 2.8 | 3.4 | 4.8 |
+| `GET /profile/me` | 322 | 3.0 | 3.8 | 4.8 |
+| `GET /notifications` | 157 | 6.2 | 7.7 | 9.2 |
+| `GET /feed/trending/tags` | 117 | 8.3 | 10.4 | 12.0 |
+| `GET /feed/search` | 113 | 8.5 | 11.1 | 14.3 |
+| `GET /feed/following` | 100 | 9.7 | 12.0 | 15.6 |
+| `GET /feed/recent` | 49 | 20.1 | 24.6 | 28.6 |
+| `GET /health` | 36 | 27.5 | 31.5 | 34.8 |
 
 ### Sixteen concurrent clients
 
 | Route | rps | p50 | p95 | p99 |
 |:--|--:|--:|--:|--:|
-| `GET /profile/interests` | 1048 | 14.8 | 21.4 | 25.3 |
-| `GET /messages` | 920 | 17.1 | 24.0 | 28.3 |
-| `GET /profile/me` | 607 | 26.0 | 34.7 | 41.5 |
-| `GET /health` | 375 | 40.3 | 61.5 | 96.8 |
-| `GET /feed/trending/tags` | 340 | 46.1 | 64.0 | 76.0 |
-| `GET /notifications` | 236 | 68.4 | 82.6 | 94.0 |
-| `GET /feed/following` | 127 | 126.6 | 155.8 | 175.8 |
-| `GET /feed/search` | 115 | 138.5 | 181.6 | 209.9 |
-| `GET /feed/recent` | 55 | 299.2 | 365.1 | 400.4 |
+| `GET /profile/interests` | 1294 | 12.0 | 17.5 | 21.0 |
+| `GET /messages` | 1119 | 14.0 | 20.3 | 24.1 |
+| `GET /profile/me` | 790 | 19.7 | 27.1 | 34.1 |
+| `GET /health` | 514 | 30.1 | 39.7 | 50.3 |
+| `GET /feed/trending/tags` | 434 | 36.6 | 47.2 | 53.3 |
+| `GET /feed/search` | 306 | 52.7 | 63.8 | 69.2 |
+| `GET /notifications` | 283 | 57.3 | 67.8 | 73.5 |
+| `GET /feed/following` | 258 | 61.4 | 78.5 | 101.5 |
+| `GET /feed/recent` | 107 | 150.0 | 188.2 | 202.2 |
 
 ## What measuring found
 
@@ -59,20 +59,60 @@ it threw three hundred and eighty of them away.
 It now ranks on the six columns scoring actually uses and loads the full shape
 once, for the twenty being shown.
 
+| `GET /feed/recent` | first measured | after the split | after the counters |
+|:--|--:|--:|--:|
+| 16 clients, rps | 31 | 55 | **107** |
+| 16 clients, p50 | 549.5 | 299.2 | **150.0** |
+| 16 clients, p95 | 615.1 | 365.1 | **188.2** |
+| 1 client, p50 | 69.0 | 55.8 | **20.1** |
+
+### `_count` was aggregating the whole table on every read
+
+The split above helped, but less than expected, and the reason was a wrong
+guess written down here: an earlier version of this document said the
+remaining cost was "not the database", on the strength of a hand-written
+`EXPLAIN ANALYZE` that ran in 3.1ms. **That was wrong.** The hand-written
+query was not the query Prisma sends. Asking Postgres to log every statement
+showed the real one taking 13.7ms, and showed why:
+
+```sql
+LEFT JOIN (SELECT "postId", COUNT(*) FROM "PostLike" WHERE 1=1
+           GROUP BY "postId") AS aggr_selection_0_PostLike ON …
+```
+
+Prisma compiles a relation `_count` into an aggregate over the **entire
+table**, unfiltered by the posts being fetched, and then joins it. The cost is
+therefore the size of `PostLike`, not the size of the page — which is why
+hydrating twenty posts cost 10.5ms, nearly as much as ranking four hundred,
+and why splitting one query into two barely moved it. Both halves were still
+paying for it. The same 20 posts, measured directly:
+
+| | Execution time |
+|:--|--:|
+| With the three aggregate joins | 13.5 ms |
+| Reading three columns instead | **0.46 ms** |
+
+`Post` now carries `likeCount`, `commentCount` and `repostCount`, maintained
+on the write paths inside the same transaction as the row they count, and
+recomputable with `scripts/recount.sql`. Total database time for one
+`/feed/recent`, counted from Postgres's own statement log:
+
 | | before | after |
 |:--|--:|--:|
-| 16 clients, rps | 31 | **55** |
-| 16 clients, p50 | 549.5 | **299.2** |
-| 16 clients, p95 | 615.1 | **365.1** |
-| 1 client, p50 | 69.0 | **55.8** |
+| Database time per request | 29.8 ms | **6.9 ms** |
+| The candidate query | 13.7 ms | **0.29 ms** |
+| The page hydration query | 10.5 ms | **< 0.5 ms** |
 
-Still the slowest route, and the remaining cost is **not** the database: the
-candidate query runs in 3.1ms in Postgres (`EXPLAIN ANALYZE`, including the
-three per-row engagement counts). What is left is Node-side — Prisma issuing
-and stitching the relation loads for four hundred rows. The next step is
-denormalised `likeCount`/`commentCount`/`repostCount` columns on `Post`,
-maintained on write, which would make the candidate query a single index scan
-with no relation loads at all. **That is not done.**
+Two details worth knowing. The counters move by what the write **actually
+did**, not by what the caller intended: `createMany({ skipDuplicates: true })`
+answers 0 when the row was already there and `deleteMany` answers 0 when there
+was nothing to remove, so a double tap adds nothing. An `upsert` cannot tell
+those apart, and every second tap would have added one.
+
+And `commentCount` counts what the thread shows. The `_count` it replaces
+included soft-deleted comments while the listing filtered them out, so a post
+could report five comments and display four — the badge and the thread
+disagreeing about the same conversation.
 
 ### The rate limit had never worked
 
@@ -117,6 +157,7 @@ over.
 
 ### `/health` is slow, and that is fine
 
+
 ~29ms uncontended, because it deliberately checks database reachability and
 whether the Supabase mirror tables exist. No user waits on it.
 
@@ -125,9 +166,12 @@ whether the Supabase mirror tables exist. No user waits on it.
 - **No network.** Client, API and database share a machine. Add real latency
   between the app and Fly, and between Fly and Supabase, for anything resembling
   a production number.
-- **Reads only.** Posting, uploading and transcoding are not exercised. Media
-  upload is the one request known to be long — a clip is re-encoded before the
-  response — and it is not in this table.
+- **Reads only.** Posting and uploading are not exercised, and media upload is
+  not in this table. It used to be the one request known to be long, because a
+  clip was re-encoded before the response: 5159ms on a 10-second 4K clip, of
+  which 4771ms was ffmpeg. The re-encode is queued now and the same upload
+  measures 388ms — see [MEDIA_JOBS.md](MEDIA_JOBS.md). Still not in this table,
+  because the load driver does not upload.
 - **One process.** Which is what `fly.toml` runs; see the one-instance section
   of [OBSERVABILITY.md](OBSERVABILITY.md).
 - **One reader.** Every request authenticates as the same account, so caches and
@@ -139,12 +183,41 @@ whether the Supabase mirror tables exist. No user waits on it.
 ## Running it
 
 ```sh
-# A database with data in it, and the API pointed at it.
+# 1. A database with the schema on it.
+createdb kyron && psql kyron -c 'CREATE ROLE anon; CREATE ROLE authenticated;'
+DATABASE_URL=... npx prisma migrate deploy
+
+# 2. The data these numbers were taken against. Takes about three seconds.
+psql "$DATABASE_URL" -f scripts/seed-loadtest.sql
+
+# 3. The API, pointed at it, with the limiter out of the way -- otherwise the
+#    run measures the rate limiter, which is exactly what happened the first
+#    time and is why every row came back 429.
+RATE_LIMIT_MAX=100000000 node dist/src/main.js
+
+# 4. The run.
 node scripts/loadtest.mjs \
   --base http://127.0.0.1:3999 \
   --token "$A_SUPABASE_ACCESS_TOKEN" \
   --concurrency 16 --seconds 8 --warmup 2
 ```
+
+The seed namespaces everything it writes, so it can be taken out again:
+
+```sh
+psql "$DATABASE_URL" -c 'DELETE FROM "User" WHERE email LIKE %@load.test%'
+```
+
+To see where the time goes rather than only how much there is, ask Postgres:
+
+```sh
+psql "$DATABASE_URL" -c 'ALTER SYSTEM SET log_min_duration_statement = 0'
+# then reload, make one request, and read the server log
+```
+
+That is how the `_count` aggregate above was found, after an `EXPLAIN ANALYZE`
+of a hand-written approximation had pointed the wrong way. Measure the query
+the ORM actually sends.
 
 It has no dependencies and prints the status codes it received alongside the
 percentiles — which is the column that matters. The first run of this test

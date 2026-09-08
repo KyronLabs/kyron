@@ -4,6 +4,7 @@ import 'config/legal_links.dart';
 import 'models/onboarding_model.dart';
 import 'models/profile_model.dart';
 import 'screens/about_screen.dart';
+import 'screens/ar_lens_screen.dart';
 import 'screens/about_subscreens.dart';
 import 'models/feed_post.dart';
 import 'screens/coming_soon_screen.dart';
@@ -316,7 +317,7 @@ class Routes {
         return _page(const MutedAccountsScreen());
 
       case createArLens:
-        return _page(const ComingSoonScreen.arLens());
+        return _page(const ArLensScreen());
 
       // A voice post is a normal post that opens with the recorder up.
       case createVoicePost:
