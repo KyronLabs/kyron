@@ -120,6 +120,13 @@ export interface FeedComment {
   media: FeedMedia[];
   /** Whether the reader wrote it, and so may delete it. */
   mine: boolean;
+  /**
+   * Whether the post's own author wrote it.
+   *
+   * Decided here rather than on the client, because a comment page can be
+   * opened on its own and has no post in hand to compare against.
+   */
+  byAuthor: boolean;
   /** How many people liked it. */
   likes: number;
   /** Whether the reader is one of them. */
@@ -1296,12 +1303,13 @@ export class FeedService {
     limit = DEFAULT_LIMIT,
     cursor?: string,
   ): Promise<CommentPage> {
-    await this.requireVisiblePost(postId);
+    const post = await this.requireVisiblePost(postId);
     return this.commentPage(
       { postId, parentId: null, deletedAt: null },
       viewerId,
       limit,
       cursor,
+      post.authorId,
     );
   }
 
@@ -1314,7 +1322,9 @@ export class FeedService {
   ): Promise<CommentPage> {
     const parent = await this.prisma.comment.findFirst({
       where: { id: commentId, deletedAt: null },
-      select: { id: true },
+      // The post's author comes back with it, so a reply can be marked
+      // without a second read.
+      select: { id: true, post: { select: { authorId: true } } },
     });
     if (!parent) throw new NotFoundException('Comment not found.');
 
@@ -1323,6 +1333,7 @@ export class FeedService {
       viewerId,
       limit,
       cursor,
+      parent.post?.authorId ?? null,
     );
   }
 
@@ -1413,7 +1424,10 @@ export class FeedService {
       }
     }
 
-    return this.toFeedComment(comment, authorId);
+    // The post's author is already in hand from the reply check, so a
+    // comment they just wrote carries its badge without waiting for a
+    // refresh to tell it.
+    return this.toFeedComment(comment, authorId, [], post.authorId);
   }
 
   /** Soft delete, and only by the author of the comment. */
@@ -1486,6 +1500,7 @@ export class FeedService {
     viewerId: string,
     limit: number,
     cursor?: string,
+    postAuthorId: string | null = null,
   ): Promise<CommentPage> {
     if (cursor) {
       const anchor = await this.prisma.comment.findUnique({
@@ -1510,7 +1525,7 @@ export class FeedService {
 
     return {
       items: page.map((row) =>
-        this.toFeedComment(row, viewerId, faces.get(row.id)),
+        this.toFeedComment(row, viewerId, faces.get(row.id), postAuthorId),
       ),
       nextCursor: hasMore ? page[page.length - 1].id : null,
     };
@@ -1593,6 +1608,7 @@ export class FeedService {
     row: CommentRow,
     viewerId: string,
     replyFaces: FeedComment['replyFaces'] = [],
+    postAuthorId: string | null = null,
   ): FeedComment {
     return {
       id: row.id,
@@ -1609,6 +1625,7 @@ export class FeedService {
       replyFaces,
       media: row.media,
       mine: row.authorId === viewerId,
+      byAuthor: postAuthorId !== null && row.authorId === postAuthorId,
       likes: row._count.likes ?? 0,
       liked: (row.likes?.length ?? 0) > 0,
     };
@@ -1626,9 +1643,17 @@ export class FeedService {
   async commentThread(viewerId: string, commentId: string) {
     const root = await this.prisma.comment.findFirst({
       where: { id: commentId, deletedAt: null },
-      select: { ...this.commentShapeFor(viewerId), postId: true },
+      select: {
+        ...this.commentShapeFor(viewerId),
+        postId: true,
+        // So every row on this page can be marked when the post's own author
+        // wrote it, the same as on the post itself.
+        post: { select: { authorId: true } },
+      },
     });
     if (!root) throw new NotFoundException('That comment does not exist.');
+
+    const postAuthorId = root.post?.authorId ?? null;
 
     const all: FeedComment[] = [];
     let frontier = [root.id];
@@ -1640,13 +1665,17 @@ export class FeedService {
         take: FeedService.maxThreadNodes,
         select: this.commentShapeFor(viewerId),
       });
-      all.push(...rows.map((row) => this.toFeedComment(row, viewerId)));
+      all.push(
+        ...rows.map((row) =>
+          this.toFeedComment(row, viewerId, [], postAuthorId),
+        ),
+      );
       frontier = rows.map((row) => row.id);
     }
 
     return {
       postId: root.postId,
-      root: this.toFeedComment(root, viewerId),
+      root: this.toFeedComment(root, viewerId, [], postAuthorId),
       replies: all,
     };
   }

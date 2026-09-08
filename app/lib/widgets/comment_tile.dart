@@ -123,6 +123,36 @@ class CommentTile extends StatelessWidget {
   }
 }
 
+/// Says a comment was written by whoever wrote the post.
+///
+/// Worth a badge rather than a colour: in a long thread the author's own
+/// answers are the ones people are looking for, and a tint alone does not
+/// survive being read quickly or being colour-blind.
+class AuthorBadge extends StatelessWidget {
+  const AuthorBadge({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+      decoration: BoxDecoration(
+        color: scheme.primary.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+      ),
+      child: Text(
+        'Author',
+        style: TextStyle(
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+          color: scheme.primary,
+        ),
+      ),
+    );
+  }
+}
+
 class _Header extends StatelessWidget {
   final PostComment comment;
   final void Function(CommentAction) onAction;
@@ -158,14 +188,18 @@ class _Header extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: SpacingTokens.space4),
+              const SizedBox(width: SpacingTokens.space8),
               Text(
-                '· ${age(comment.createdAt)}',
+                age(comment.createdAt),
                 style: TextStyle(
                   fontSize: 12,
                   color: scheme.onSurface.withValues(alpha: 0.45),
                 ),
               ),
+              if (comment.byAuthor) ...[
+                const SizedBox(width: SpacingTokens.space8),
+                const AuthorBadge(),
+              ],
             ],
           ),
         ),
@@ -332,10 +366,21 @@ class ThreadMoreReplies extends StatelessWidget {
     this.busy = false,
   });
 
+  /// How wide the spinner is, and the gap before it.
+  static const double spinnerSize = 14;
+  static const double spinnerGap = 6;
+
   /// The leading slot this needs, so the caller and the painter agree.
-  static double widthFor(int faceCount) => faceCount == 0
-      ? ThreadGeometry.avatar
-      : faceSize + (faceCount - 1) * (faceSize - overlap);
+  ///
+  /// Wider while loading, because the spinner sits beside the faces rather
+  /// than replacing them: a row whose leading element changes size mid-fetch
+  /// shifts the rail it is supposed to hang from.
+  static double widthFor(int faceCount, {bool busy = false}) {
+    final faces = faceCount == 0
+        ? ThreadGeometry.avatar
+        : faceSize + (faceCount - 1) * (faceSize - overlap);
+    return busy ? faces + spinnerGap + spinnerSize : faces;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -347,39 +392,38 @@ class ThreadMoreReplies extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space4),
         child: Row(
           children: [
-            if (busy)
-              const SizedBox.square(
-                dimension: 14,
-                child: CircularProgressIndicator(strokeWidth: 2),
-              )
-            else
-              Text(
-                count == 1
-                    ? 'Show 1 reply'
-                    : 'Show ${formatCount(count)} replies',
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: scheme.onSurface.withValues(alpha: 0.6),
-                ),
+            // The label stays while the replies are fetched. Swapping it for a
+            // spinner loses the one thing the row was saying, and a reader who
+            // tapped it already knows something is happening.
+            Text(
+              count == 1
+                  ? 'Show 1 reply'
+                  : 'Show ${formatCount(count)} replies',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: scheme.onSurface.withValues(alpha: busy ? 0.4 : 0.6),
               ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  /// The stack of faces, for the leading slot.
+  /// The stack of faces, and the spinner beside them, for the leading slot.
   Widget leading(BuildContext context) {
     final shown = faces.take(3).toList();
-    if (shown.isEmpty) return const SizedBox.shrink();
+    if (shown.isEmpty && !busy) return const SizedBox.shrink();
 
     final scheme = Theme.of(context).colorScheme;
+    final facesWidth = widthFor(shown.length);
 
     return SizedBox(
-      width: widthFor(shown.length),
+      width: widthFor(shown.length, busy: busy),
       height: faceSize,
       child: Stack(
+        alignment: Alignment.centerLeft,
         children: [
           for (var i = 0; i < shown.length; i++)
             Positioned(
@@ -394,6 +438,19 @@ class ThreadMoreReplies extends StatelessWidget {
                 child: PostAvatar(
                   author: shown[i],
                   radius: (faceSize - 3) / 2,
+                ),
+              ),
+            ),
+          // Beside the faces, not over them: the point is that these are the
+          // people whose replies are on their way.
+          if (busy)
+            Positioned(
+              left: facesWidth + spinnerGap,
+              child: SizedBox.square(
+                dimension: spinnerSize,
+                child: CircularProgressIndicator(
+                  strokeWidth: 1.6,
+                  color: scheme.primary,
                 ),
               ),
             ),

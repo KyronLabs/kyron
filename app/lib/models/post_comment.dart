@@ -24,6 +24,12 @@ class PostComment {
   /// Whether you wrote it, and so may delete it.
   final bool mine;
 
+  /// Whether the post's own author wrote it.
+  ///
+  /// Decided by the server, because a comment page can be opened on its own
+  /// and has no post in hand to compare against.
+  final bool byAuthor;
+
   /// Attachments, in the order they were added.
   final List<PostMedia> media;
 
@@ -40,6 +46,7 @@ class PostComment {
     this.replies = 0,
     this.replyFaces = const [],
     this.mine = false,
+    this.byAuthor = false,
     this.media = const [],
     this.likes = 0,
     this.liked = false,
@@ -63,6 +70,7 @@ class PostComment {
             .map(FeedAuthor.fromJson)
             .toList(),
         mine: json['mine'] == true,
+        byAuthor: json['byAuthor'] == true,
         media: PostMedia.listFrom(json['media']),
         likes: (json['likes'] as num?)?.toInt() ?? 0,
         liked: json['liked'] == true,
@@ -77,6 +85,7 @@ class PostComment {
         replies: replies ?? this.replies,
         replyFaces: replyFaces,
         mine: mine,
+        byAuthor: byAuthor,
         media: media,
         likes: likes ?? this.likes,
         liked: liked ?? this.liked,

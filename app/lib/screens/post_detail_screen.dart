@@ -184,6 +184,10 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
           // At every depth, not just the top: a reply now keeps the parent it
           // was written under, so a nested comment has answers of its own and
           // gating this on depth 0 hid them behind nothing at all.
+          // The row stays put while its replies are on their way, carrying a
+          // spinner beside its faces. Taking it away and putting nothing in
+          // its place reads as the branch having been deleted.
+          final fetching = state.loadingReplies.contains(comment.id);
           final foldedReplies = comment.replies > 0 && !expanded;
 
           // A hairline closes a top-level comment together with everything
@@ -229,6 +233,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                         final marker = ThreadMoreReplies(
                           faces: comment.replyFaces,
                           count: comment.replies,
+                          busy: fetching,
                           onTap: () => _notifier.toggleReplies(comment.id),
                         );
                         return ThreadItem(
@@ -242,6 +247,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                           avatarSize: ThreadMoreReplies.faceSize,
                           avatarWidth: ThreadMoreReplies.widthFor(
                             comment.replyFaces.length,
+                            busy: fetching,
                           ),
                           avatar: marker.leading(context),
                           child: marker,
