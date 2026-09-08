@@ -43,6 +43,28 @@ distance from the camera, on any face, at any resolution.
 Tracking runs only while a lens actually needs it. Inference on every frame for
 a lens that ignores the answer is somebody's battery spent on nothing.
 
+## And the face itself can change
+
+Schema 3 does something a sprite cannot: it changes what is already in the
+picture. Two effects, and they are the same mechanism underneath -- **a masked
+blur of what is there, with a colour over it**.
+
+`fill` covers a region with skin sampled off that same face, which is what
+takes somebody's nose and mouth out of a photograph. `frost` etches the whole
+frame and leaves one region sharp, which is glass with a slot at the eyes.
+
+The blur is the part that matters and it was arrived at the hard way: letting
+the sharp original through at partial opacity does *not* erase a nose. At the
+shading level that looked right it changed 31,927 pixels and still read as an
+unmodified face, nostrils and lips plainly visible. Blurring what shows through
+keeps the shape of a face without keeping its features.
+
+A fill has no colour in it. A skin tone written into a lens belongs to one
+person and is a sticker on everybody else, so `SkinSampler` measures it --
+forehead and cheekbones, in pupil-gaps from the anchor, middle half by
+brightness averaged so a fringe or a highlight does not drag it. No reading
+means the fill draws nothing, rather than guessing at somebody's skin.
+
 ## What it is still not
 
 **Flat pictures, not objects.** An attachment is a sprite placed and rotated in
@@ -62,9 +84,12 @@ not world tracking.
 **No video.** Stills only. The shutter takes a photograph; there is no record
 button.
 
-**No shader effects.** A colour matrix cannot blur, warp, or do anything that
-depends on neighbouring pixels. Those need a fragment shader, which Flutter
-supports and this does not use.
+**No warping.** Nothing moves a pixel to a different place -- no bulge, no
+stretch, no swapped faces. Schema 3 brought blur, but as two named effects over
+a region from a list of three, not as something a lens describes for itself. A
+lens that could describe its own would be a fragment shader, which is a
+stranger's program running on somebody's phone. See
+[LENS_FORMAT.md](LENS_FORMAT.md).
 
 ## What is checked, and what is not
 
@@ -92,6 +117,17 @@ camera and no phone attached to it.
   separate implementation in Python to within a tenth of a pixel. Then
   rendered, and looked at -- the glasses land on the eyes and stay there
   through a 60-degree sweep of head roll.
+- **The effects, measured rather than eyeballed.** Detail is the variance of
+  the Laplacian over a region; a fill takes the mouth from 2215 to 2 while
+  leaving the eyes above 2100, and frost takes the mouth to 2 while the eyes
+  stay at 2378 of 2383. In `test/lens_effect_test.dart`, against a drawn face
+  so no photograph is checked in. The published catalogue was then baked onto
+  the real portrait and looked at, which is how the two shipped lenses were
+  confirmed to be what was asked for.
+- **The skin sampler**, including that it ignores hair across the forehead and
+  a blown-out highlight on a cheekbone, follows a tilted head, and refuses
+  rather than guesses when the face is half out of frame. Both camera plane
+  layouts are decoded from hand-built buffers. In `test/skin_sampler_test.dart`.
 
 **Not checked, because it needs hardware:**
 
@@ -99,6 +135,10 @@ camera and no phone attached to it.
   the preview, and whether dropping frames while inference is busy keeps it in
   step. All of it is written to fail safely -- no face means nothing drawn --
   but none of it has been seen running.
+- **The live effects.** `LensEffectLayer` leans on `BackdropFilter` to read the
+  camera underneath it, and `RepaintBoundary.toImage` does not run one -- so
+  the preview path cannot be rendered here at all. Only the baker, which draws
+  the same effect from the same numbers into the saved file, is checked.
 - **Yaw and pitch.** Rotating a photograph only produces roll.
 - More than one face, or one in bad light.
 - That the preview shows anything.
