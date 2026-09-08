@@ -18,7 +18,9 @@ class DraftsScreen extends ConsumerStatefulWidget {
 }
 
 class _DraftsScreenState extends ConsumerState<DraftsScreen> {
-  final _service = DraftService();
+  // Through the provider rather than the singleton, so the store this reads
+  // is the one the composer writes to under an override.
+  DraftService get _service => ref.read(draftServiceProvider);
   late Future<List<ComposerDraft>> _drafts = _service.allDrafts();
 
   void _reload() => setState(() => _drafts = _service.allDrafts());
@@ -81,9 +83,15 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
                   },
                   child: ListTile(
                     title: Text(
-                      draft.content.trim(),
+                      _summary(draft),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
+                      style: draft.content.trim().isEmpty
+                          ? TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: scheme.onSurfaceVariant,
+                            )
+                          : null,
                     ),
                     subtitle: Text(_when(draft.updatedAt)),
                     onTap: () => _open(draft),
@@ -101,8 +109,20 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
     // Adopting the id, so saving updates this draft rather than adding a
     // second copy of it every time it is opened.
     _service.currentDraftId = draft.id;
-    ref.read(composerProvider.notifier).updateContent(draft.content);
+    ref.read(composerProvider.notifier).restore(draft);
     Navigator.pop(context, draft);
+  }
+
+  /// What to show for a draft with nothing typed in it yet.
+  ///
+  /// A poll can be filled in before its question is, and a row with an empty
+  /// title reads as a draft that lost its contents.
+  static String _summary(ComposerDraft draft) {
+    final text = draft.content.trim();
+    if (text.isNotEmpty) return text;
+    if (draft.poll != null) return 'A poll, with no question yet';
+    if (draft.quoting != null) return 'A quote, with nothing written yet';
+    return 'Nothing written yet';
   }
 
   static String _when(DateTime at) {

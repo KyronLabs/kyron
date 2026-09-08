@@ -13,7 +13,7 @@ Last audited: 8 September 2026.
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 431 Flutter tests and 342 API
+(Supabase), a Flutter client, REST between them. 447 Flutter tests and 342 API
 tests, both wired to CI.
 
 ### Built and working
@@ -101,8 +101,24 @@ is shippable on its own.
    when the app goes to the background -- otherwise every read that ends by
    switching apps is lost. Time spent counts towards the author below a like:
    reading something is not endorsing it.
-7. **Draft posts and failed-post recovery.** Still open. A composer that loses
-   work on a dropped connection.
+7. ~~**Draft posts and failed-post recovery.**~~ Built. Drafts existed, but
+   only on the way out through the "save this?" sheet, so the app being killed
+   with the composer open lost everything -- and a phone taking a call is not
+   a rare event. The composer writes a couple of seconds after a change, again
+   when the app goes to the background, and immediately when a post fails,
+   which is exactly when somebody force-quits. Not the three-second poll that
+   was removed before: nothing is written unless something was edited.
+
+   Saving also knew a list of fields the composer had outgrown, so a poll
+   somebody had filled in went into the draft sheet and came back a bare
+   sentence. The poll, topics, reply setting and quoted post are all kept now,
+   through one JSON column added to the table rather than one per field.
+
+   And the recovered draft reached the screen's state but never its text box:
+   the box is synced once, just after the first frame, and reading a draft off
+   the device takes longer than that. The counter under the box showed the
+   recovered characters while the box showed nothing, and the first thing
+   typed replaced what had been recovered.
 8. ~~**Empty and error states audit.**~~ Done, and the finding was not what
    this line expected: empty and failed states were already covered almost
    everywhere, through `EmptyState` and `EmptyState.failed`. The real gap was
