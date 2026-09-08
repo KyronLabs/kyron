@@ -15,6 +15,10 @@
 [![Stars](https://img.shields.io/github/stars/KyronLabs/kyron?style=social)](https://github.com/KyronLabs/kyron)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
+<br>
+
+**[See it running →](docs/SCREENSHOTS.md)**
+
 </div>
 
 ---
@@ -48,6 +52,7 @@ does today. Where something is planned rather than built, it says so.
 | **Search** | People, posts and hashtags, with filters |
 | **Operations** | A request id on every response, structured request logs, error aggregation, and a token-guarded `/metrics` — [what is measurable and what is not](docs/OBSERVABILITY.md) |
 | **Performance** | Measured, not asserted — [what every endpoint actually costs](docs/PERFORMANCE.md), and the load test that produced it |
+| **All of it** | [Screenshots of every screen above](docs/SCREENSHOTS.md), from a build on a real handset |
 
 ### Not built yet
 

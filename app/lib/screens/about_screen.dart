@@ -10,6 +10,7 @@ import '../routes.dart';
 import '../services/app_info.dart';
 import '../services/app_log.dart';
 import '../services/device_cache.dart';
+import '../widgets/app_logo.dart';
 
 /// Terms, privacy, service status, the system log, the running build -- and
 /// the two maintenance actions that used to sit in the middle of Settings.
@@ -190,6 +191,13 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
       );
 }
 
+/// The ground the launcher icon is drawn on, and this with it.
+///
+/// Declared in Android resources as well
+/// (`res/values/ic_launcher_background.xml`); the two are the same colour on
+/// purpose and there is no way to share one value across both.
+const Color _iconBackground = Color(0xFF353535);
+
 class _Wordmark extends StatelessWidget {
   final AppInfo? info;
 
@@ -201,15 +209,18 @@ class _Wordmark extends StatelessWidget {
 
     return Column(
       children: [
+        // The app's own mark, on the same dark ground its launcher icon
+        // uses, so the screen that tells you which app this is shows the
+        // thing you tapped to open it. It was a generic lightning bolt.
         Container(
           width: 64,
           height: 64,
           decoration: BoxDecoration(
-            color: scheme.primary.withValues(alpha: 0.12),
+            color: _iconBackground,
             borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
           ),
-          child:
-              Icon(Iconsax.flash_circle_copy, size: 32, color: scheme.primary),
+          alignment: Alignment.center,
+          child: const AppLogo(size: 40),
         ),
         const SizedBox(height: SpacingTokens.space12),
         Text('Kyron', style: Theme.of(context).textTheme.titleLarge),
