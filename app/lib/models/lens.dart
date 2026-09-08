@@ -3,11 +3,17 @@ import 'dart:ui';
 
 /// One AR lens: a name, and what it does to the picture.
 ///
-/// A colour matrix rather than a shader, because a matrix is a value -- it can
-/// be checked in a test, applied to a live preview and baked into the saved
-/// photograph by the same code, and the three cannot disagree. A lens that
-/// looks one way in the viewfinder and another in the file is the failure this
-/// design is chosen to avoid.
+/// A lens is a 4x5 colour matrix and nothing else. That constraint was
+/// originally about honesty -- a matrix is a value, so it can be checked in a
+/// test, applied to a live preview and baked into the saved photograph by the
+/// same code, and the three cannot disagree.
+///
+/// It turns out to be what makes lenses shippable as *data*. A lens is twenty
+/// numbers, so one can be downloaded and used without downloading any code:
+/// there is no shader to compile, nothing to execute, and the worst a hostile
+/// file can do is look ugly. Had lenses been fragment shaders -- which is what
+/// blur or warp would need -- serving them from a catalogue would mean running
+/// a stranger's program on somebody's phone.
 ///
 /// The matrix is the 4x5 form `dart:ui` takes: four rows of
 /// `[r, g, b, a, offset]`, where the offset is added after the multiply and is
@@ -20,14 +26,124 @@ class Lens {
   /// absence: "none" has to be selectable or there is no way back.
   final List<double>? matrix;
 
-  const Lens({required this.id, required this.name, this.matrix});
+  /// Who made it, for a lens that came from the catalogue. Null for the ones
+  /// built into the app.
+  final String? author;
+
+  const Lens({
+    required this.id,
+    required this.name,
+    this.matrix,
+    this.author,
+  });
 
   /// What to wrap a preview or a still in. Null when the lens changes nothing.
   ColorFilter? get filter =>
       matrix == null ? null : ColorFilter.matrix(matrix!);
 
-  /// Every lens the camera offers, in the order they appear.
-  static const all = <Lens>[
+  /// Whether this one came with the app rather than over the network.
+  bool get isBuiltIn => builtIn.any((lens) => lens.id == id);
+
+  // -------------------------------------------------------------------------
+  // The wire format
+  // -------------------------------------------------------------------------
+
+  /// How many numbers a colour matrix has. Four rows of five.
+  static const matrixLength = 20;
+
+  /// The widest a coefficient may be.
+  ///
+  /// Not a safety limit -- a colour matrix cannot do anything dangerous, and
+  /// the worst an absurd one produces is a solid white frame. It is a
+  /// nonsense limit: a value outside this is a bug, a truncated file or
+  /// somebody poking, and none of those should reach the renderer. Punch, the
+  /// most aggressive lens here, peaks at 1.47.
+  static const maxCoefficient = 8.0;
+
+  /// The widest an offset may be. Offsets are in 0-255, so a whole channel's
+  /// range in either direction is already more than any real lens needs.
+  static const maxOffset = 255.0;
+
+  /// A lens read from JSON, or null when the JSON is not one.
+  ///
+  /// Null rather than throwing, and never a partially-built lens: a catalogue
+  /// with one bad entry should lose that entry, not the catalogue. The caller
+  /// logs what it dropped -- silently ignoring a malformed lens is how you get
+  /// a lens that never appears and nobody can say why.
+  static Lens? tryParse(Object? json) {
+    if (json is! Map) return null;
+
+    final id = json['id'];
+    final name = json['name'];
+    if (id is! String || !_isSafeId(id)) return null;
+    if (name is! String || name.trim().isEmpty || name.length > 40) return null;
+
+    final author = json['author'];
+    if (author != null && (author is! String || author.length > 80)) {
+      return null;
+    }
+
+    // The identity lens carries no matrix. Anything else must carry a whole
+    // valid one -- a matrix with nineteen numbers is not a lens with a missing
+    // number, it is a file that cannot be trusted about anything.
+    final raw = json['matrix'];
+    if (raw == null) {
+      return Lens(id: id, name: name, author: author as String?);
+    }
+    final matrix = _readMatrix(raw);
+    if (matrix == null) return null;
+
+    return Lens(
+      id: id,
+      name: name,
+      matrix: matrix,
+      author: author as String?,
+    );
+  }
+
+  static List<double>? _readMatrix(Object? raw) {
+    if (raw is! List || raw.length != matrixLength) return null;
+
+    final values = <double>[];
+    for (var i = 0; i < raw.length; i++) {
+      final value = raw[i];
+      if (value is! num) return null;
+      final number = value.toDouble();
+      // NaN and infinity both survive JSON round-trips through some encoders
+      // and both poison every pixel they touch.
+      if (!number.isFinite) return null;
+
+      // The fifth of each row is the offset, in 0-255; the rest are
+      // coefficients.
+      final limit = i % 5 == 4 ? maxOffset : maxCoefficient;
+      if (number.abs() > limit) return null;
+
+      values.add(number);
+    }
+    return values;
+  }
+
+  /// Ids end up as cache keys and in log lines, so they are kept to something
+  /// that cannot be mistaken for a path or an escape.
+  static bool _isSafeId(String id) =>
+      id.isNotEmpty &&
+      id.length <= 40 &&
+      RegExp(r'^[a-z0-9][a-z0-9_-]*$').hasMatch(id);
+
+  Map<String, Object?> toJson() => {
+        'id': id,
+        'name': name,
+        if (matrix != null) 'matrix': matrix,
+        if (author != null) 'author': author,
+      };
+
+  // -------------------------------------------------------------------------
+  // The lenses that ship with the app
+  // -------------------------------------------------------------------------
+
+  /// Bundled, so the camera has lenses with no network and on first launch.
+  /// The catalogue adds to these; it never replaces them.
+  static const builtIn = <Lens>[
     Lens(id: 'none', name: 'None'),
     Lens(id: 'mono', name: 'Mono', matrix: _mono),
     Lens(id: 'warm', name: 'Warm', matrix: _warm),
@@ -38,7 +154,7 @@ class Lens {
   ];
 
   static Lens byId(String id) =>
-      all.firstWhere((lens) => lens.id == id, orElse: () => all.first);
+      builtIn.firstWhere((lens) => lens.id == id, orElse: () => builtIn.first);
 
   /// Luminance weights. Not a third each: the eye is far more sensitive to
   /// green than to blue, and an even split makes a grey that reads as muddy.

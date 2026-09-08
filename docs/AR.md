@@ -9,9 +9,15 @@ here, because the phrase promises more than what is built.
 
 ## What it is
 
-A lens is a **colour transform**. Seven of them: None, Mono, Warm, Cool, Faded,
-Punch, Noir. Each is a 4×5 colour matrix, applied to the live preview and baked
-into the file that gets attached to the post.
+A lens is a **colour transform**. Each is a 4×5 colour matrix, applied to the
+live preview and baked into the file that gets attached to the post.
+
+Seven ship with the app -- None, Mono, Warm, Cool, Faded, Punch, Noir -- and the
+camera adds whatever else the published catalogue carries. A lens is twenty
+numbers, so a new one is a line of JSON rather than a release:
+[LENS_FORMAT.md](LENS_FORMAT.md). The bundled seven cannot be replaced or
+removed by a published file, and every failure to load one ends with those
+seven still working.
 
 Both come from the same `Lens.matrix`. That is the point of the design rather
 than an implementation detail: a lens that looks one way in the viewfinder and
@@ -76,12 +82,19 @@ compiled, not seen.
 
 ## If a lens looks wrong
 
-`Lens.all` in `app/lib/models/lens.dart` is the whole catalogue, and each
+`Lens.builtIn` in `app/lib/models/lens.dart` is the bundled set, and each
 matrix has a comment saying what it is meant to do. Changing one changes the
 preview and the saved file together. `test/lens_test.dart` asserts the
 *intent* — that Warm goes warm — rather than exact pixel values, so a matrix
 can be tuned without rewriting the tests, and a matrix that stops doing what
 its name says will fail.
+
+To see a change rather than guess at it, put it through the authoring tool:
+
+    python3 lenses/tools/lens.py preview lenses/lenses.json photo.jpg -o sheet.png
+
+That renders identically to the app, which is checked rather than asserted --
+48 of 48 probe pixels, against output captured from Flutter itself.
 
 ## Permissions
 
