@@ -89,9 +89,10 @@ preview and the saved file together. `test/lens_test.dart` asserts the
 can be tuned without rewriting the tests, and a matrix that stops doing what
 its name says will fail.
 
-To see a change rather than guess at it, put it through the authoring tool:
+To see a change rather than guess at it, put it through the authoring tool
+in [kyron-lenses](https://github.com/KyronLabs/kyron-lenses):
 
-    python3 lenses/tools/lens.py preview lenses/lenses.json photo.jpg -o sheet.png
+    python3 tools/lens.py preview lenses.json sample.png -o sheet.png
 
 That renders identically to the app, which is checked rather than asserted --
 48 of 48 probe pixels, against output captured from Flutter itself.
