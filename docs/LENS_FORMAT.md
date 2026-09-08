@@ -44,11 +44,24 @@ validation. They have to agree: a lens that passes the tool, gets published,
 and is then dropped by the app leaves its explanation in a log line on a
 stranger's phone.
 
-Each side is tested against its own rules -- 23 tests here in
-`test/lens_catalogue_test.dart`, `lens.py check` in that repository's CI -- but
-nothing automatically compares the two across the repository boundary. **When
-you change one, change the other.** That is a discipline rather than a
-guarantee, and it is worth knowing which it is.
+`test/format-vectors.json` is what keeps them honest. Forty cases -- nine that
+must be accepted, thirty-one that must be refused -- run by **both**
+implementations. `test/lens_format_vectors_test.dart` runs them here;
+`lens.py vectors` runs the same file over there.
+
+It is canonical in kyron-lenses and vendored here, and CI compares this copy
+against the published one, failing if the spec moved on without us. So a rule
+added there breaks the build here until somebody confirms `Lens.tryParse`
+agrees -- which is the point.
+
+**Adding a rule means adding a case**, in the same commit.
+
+The spec was checked against a deliberately broken implementation before being
+trusted: dropping the matrix-length rule here alone failed three cases, naming
+exactly what disagreed. One thing it cannot cover is NaN, which JSON has no way
+to write -- that stays in `test/lens_catalogue_test.dart`. What JSON *can*
+carry is `1e400`, which overflows to infinity in both languages, and that is a
+case.
 
 ## Why a lens is safe to download at all
 
