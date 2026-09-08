@@ -619,54 +619,19 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     );
   }
 
-  /// The effects, over the preview, in the camera frame's own coordinates.
-  ///
-  /// [FaceRegion] works in frame pixels because that is what the landmarks
-  /// are normalised against, so rather than rescale every path this maps the
-  /// whole layer once. The same transform carries the front camera's mirror:
-  /// [CameraPreview] flips the front preview, and an effect built from raw
-  /// landmarks would otherwise sit on the wrong side of a face.
-  ///
-  /// A uniform-enough scale matters here in a way it does not for a sticker:
-  /// the blur is specified in frame pixels and the transform scales it, so an
-  /// uneven scale would smear it into an ellipse. The preview is drawn at the
-  /// camera's own aspect ratio precisely so the two factors agree.
+  /// The effects, over the preview.
   Widget _effects(bool mirrored) {
     final face = _eyes;
     final points = _landmarks;
-    if (face == null || points == null || _frame.isEmpty) {
-      return const SizedBox.shrink();
-    }
+    if (face == null || points == null) return const SizedBox.shrink();
 
-    return LayoutBuilder(
-      builder: (context, box) {
-        final scale = box.maxWidth / _frame.width;
-        final transform = Matrix4.identity()
-          ..translateByDouble(mirrored ? box.maxWidth : 0, 0, 0, 1)
-          ..scaleByDouble(
-            mirrored ? -scale : scale,
-            box.maxHeight / _frame.height,
-            1,
-            1,
-          );
-
-        return Transform(
-          transform: transform,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              for (final effect in _lens.effects)
-                LensEffectLayer(
-                  effect: effect,
-                  landmarks: points,
-                  face: face,
-                  frame: _frame,
-                  skin: _skin,
-                ),
-            ],
-          ),
-        );
-      },
+    return LensEffectOverlay(
+      effects: _lens.effects,
+      landmarks: points,
+      face: face,
+      frame: _frame,
+      skin: _skin,
+      mirrored: mirrored,
     );
   }
 

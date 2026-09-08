@@ -8,6 +8,112 @@ import '../models/face_anchor.dart';
 import '../models/face_region.dart';
 import '../models/lens_effect.dart';
 
+/// Every effect a lens has, mapped onto the box the preview is drawn in.
+///
+/// [FaceRegion] works in camera-frame pixels, because that is what the
+/// landmarks are normalised against, so rather than rescale each path this
+/// maps the whole layer once. The [OverflowBox] is the part that is easy to
+/// get wrong and was: without it the children are sized by the *box* while
+/// the paths are in *frame* coordinates, so a 720-wide frame drawn into a
+/// 360-wide preview covered only the top-left quarter of it -- the frost
+/// stopped a quarter of the way down the screen. Measured, then fixed.
+///
+/// The same transform carries the front camera's mirror. [CameraPreview]
+/// flips the front preview, and an effect built from raw landmarks would
+/// otherwise sit on the wrong side of a face.
+class LensEffectOverlay extends StatelessWidget {
+  final List<LensEffect> effects;
+  final List<FacePoint> landmarks;
+  final FaceAnchor face;
+
+  /// The camera frame's own size, which the landmarks are normalised to.
+  final Size frame;
+
+  /// The colour a [FillEffect] paints with, or null to skip it.
+  final Color? skin;
+
+  /// Whether the preview underneath is mirrored, as the front camera is.
+  final bool mirrored;
+
+  const LensEffectOverlay({
+    super.key,
+    required this.effects,
+    required this.landmarks,
+    required this.face,
+    required this.frame,
+    this.skin,
+    this.mirrored = false,
+  });
+
+  /// Camera-frame coordinates onto a preview box of [box], mirrored or not.
+  ///
+  /// Static and pure so it can be checked with arithmetic. Nothing else in
+  /// this file can be checked by rendering it: a [BackdropFilter] does not
+  /// run under `RepaintBoundary.toImage`, and pumping one wedges a headless
+  /// test run outright.
+  ///
+  /// One scale for both axes, taken from the width. A blur is specified in
+  /// frame pixels and this transform scales it, so an uneven scale would
+  /// smear it into an ellipse; the preview is drawn at the camera's own
+  /// aspect ratio precisely so the two factors agree.
+  static Matrix4 mapping({
+    required Size frame,
+    required Size box,
+    required bool mirrored,
+  }) {
+    final scale = box.width / frame.width;
+    return Matrix4.identity()
+      ..translateByDouble(mirrored ? box.width : 0, 0, 0, 1)
+      ..scaleByDouble(
+        mirrored ? -scale : scale,
+        box.height / frame.height,
+        1,
+        1,
+      );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (effects.isEmpty || frame.isEmpty) return const SizedBox.shrink();
+
+    return LayoutBuilder(
+      builder: (context, box) {
+        // One scale for both axes, taken from the width. A blur is specified
+        // in frame pixels and the transform scales it, so an uneven scale
+        // would smear it into an ellipse; the preview is drawn at the
+        // camera's own aspect ratio precisely so the two agree.
+        return Transform(
+          transform: mapping(
+            frame: frame,
+            box: Size(box.maxWidth, box.maxHeight),
+            mirrored: mirrored,
+          ),
+          child: OverflowBox(
+            alignment: Alignment.topLeft,
+            minWidth: frame.width,
+            maxWidth: frame.width,
+            minHeight: frame.height,
+            maxHeight: frame.height,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                for (final effect in effects)
+                  LensEffectLayer(
+                    effect: effect,
+                    landmarks: landmarks,
+                    face: face,
+                    frame: frame,
+                    skin: skin,
+                  ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
 /// One effect, over whatever is beneath it.
 ///
 /// Both kinds work the same way, which is the thing worth noticing: each is a
@@ -64,28 +170,34 @@ class LensEffectLayer extends StatelessWidget {
     if (path == null) return const SizedBox.shrink();
 
     return ClipPath(
-      clipper: invert ? _EverythingBut(path) : _Only(path),
+      clipper: invert ? EverythingBut(path, frame) : _Only(path),
       child: BackdropFilter(
         filter: ui.ImageFilter.blur(
           sigmaX: math.max(0.1, blur),
           sigmaY: math.max(0.1, blur),
         ),
-        child: switch (effect) {
-          // Skin over the blurred region. The blur removed the features; this
-          // gives back a colour that belongs to this face rather than a
-          // painted-on one.
-          FillEffect() => ColoredBox(
-              color: overlay!,
-              child: const SizedBox.expand(),
-            ),
-          // Etched glass washes the colour out and lifts everything towards
-          // white. Blur alone reads as a camera out of focus, not as glass.
-          FrostEffect(:final desaturate, :final lift) => ColorFiltered(
-              colorFilter:
-                  ColorFilter.matrix(_wash(desaturate: desaturate, lift: lift)),
-              child: const SizedBox.expand(),
-            ),
-        },
+        // Sized to the frame for the same reason: the path this is clipped
+        // by is in frame pixels, and a box-sized child stops short of it.
+        child: SizedBox.fromSize(
+          size: frame,
+          child: switch (effect) {
+            // Skin over the blurred region. The blur removed the features; this
+            // gives back a colour that belongs to this face rather than a
+            // painted-on one.
+            FillEffect() => ColoredBox(
+                color: overlay!,
+                child: const SizedBox.expand(),
+              ),
+            // Etched glass washes the colour out and lifts everything towards
+            // white. Blur alone reads as a camera out of focus, not as glass.
+            FrostEffect(:final desaturate, :final lift) => ColorFiltered(
+                colorFilter: ColorFilter.matrix(
+                  _wash(desaturate: desaturate, lift: lift),
+                ),
+                child: const SizedBox.expand(),
+              ),
+          },
+        ),
       ),
     );
   }
@@ -128,21 +240,31 @@ class _Only extends CustomClipper<Path> {
 }
 
 /// Everything except one region.
-class _EverythingBut extends CustomClipper<Path> {
+///
+/// The rectangle is the **camera frame**, never the size the widget happened
+/// to be laid out at. Those are different numbers -- a phone draws a 720-wide
+/// stream into a 360-wide preview -- and taking the layout size covered a
+/// quarter of the screen while the region paths carried on in frame pixels.
+/// Passed in rather than read from `getClip`, so it cannot go wrong that way
+/// again.
+@visibleForTesting
+class EverythingBut extends CustomClipper<Path> {
   final Path? hole;
+  final Size frame;
 
-  const _EverythingBut(this.hole);
+  const EverythingBut(this.hole, this.frame);
 
   @override
   Path getClip(Size size) {
-    final all = Path()..addRect(Offset.zero & size);
+    final all = Path()..addRect(Offset.zero & frame);
     final cut = hole;
     if (cut == null) return all;
     return Path.combine(PathOperation.difference, all, cut);
   }
 
   @override
-  bool shouldReclip(_EverythingBut old) => old.hole != hole;
+  bool shouldReclip(EverythingBut old) =>
+      old.hole != hole || old.frame != frame;
 }
 
 /// The same effects, drawn into a canvas over a photograph.
