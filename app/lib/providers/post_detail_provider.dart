@@ -101,9 +101,23 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
   final Ref _ref;
   final String _postId;
 
-  PostDetailNotifier(this._ref, this._postId) : super(const PostDetailState()) {
+  /// Injected so a test can advance time without waiting for it.
+  final DateTime Function() _now;
+
+  /// When the reader started on this post, or null if they are not on it.
+  DateTime? _readingSince;
+
+  PostDetailNotifier(
+    this._ref,
+    this._postId, {
+    DateTime Function() now = DateTime.now,
+  })  : _now = now,
+        super(const PostDetailState()) {
     load();
   }
+
+  /// Below this, a read is a back-tap and not worth a round trip.
+  static const minimumDwellMs = 1000;
 
   FeedRepository get _repo => _ref.read(feedRepositoryProvider);
 
@@ -127,16 +141,45 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
         nextCursor: page.nextCursor,
         isLoading: false,
       );
-
-      // Recorded after the post is on screen, and never awaited by the render:
-      // a reader should not wait on a counter.
-      unawaited(_repo.recordView(_postId));
     } catch (e) {
       state = PostDetailState(
         isLoading: false,
         error: describeApiError(e, sessionIsLive: true),
       );
     }
+  }
+
+  /// The reader has the post in front of them.
+  ///
+  /// Records the open and starts the clock. Called by the screen rather than
+  /// from [load], because this notifier outlives the screen: coming back to a
+  /// post reuses it, and a second visit is a second read. Never awaited by the
+  /// render -- a reader should not wait on a counter.
+  void enter() {
+    if (_readingSince != null) return;
+    _readingSince = _now();
+    unawaited(_repo.recordView(_postId));
+  }
+
+  /// The reader has moved on. Reports how long they stayed.
+  ///
+  /// Time spent is what separates a post somebody read from one they scrolled
+  /// past, and it is the half the server cannot observe for itself.
+  void leave() {
+    final since = _readingSince;
+    if (since == null) return;
+    _readingSince = null;
+
+    final spent = _now().difference(since).inMilliseconds;
+    if (spent < minimumDwellMs) return;
+    unawaited(_repo.recordView(_postId, dwellMs: spent));
+  }
+
+  @override
+  void dispose() {
+    // A read that ends with the screen going away is still a read.
+    leave();
+    super.dispose();
   }
 
   Future<void> loadMore() async {

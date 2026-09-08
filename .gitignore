@@ -43,6 +43,10 @@ key.properties
 .flutter-plugins-dependencies
 /app/build/
 /app/app/build/
+# Gradle's own output, which appears the first time an APK is built here.
+# Flutter's template android/.gitignore covers .gradle but not this.
+/app/android/build/
+/app/android/**/build/
 
 # JVM crash dumps from Gradle/Android builds
 hs_err_pid*.log

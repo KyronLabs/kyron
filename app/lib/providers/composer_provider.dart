@@ -11,6 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import '../models/feed_post.dart';
 import '../models/post_media.dart';
 import '../services/app_log.dart';
+import '../models/composer_model.dart';
 import '../services/draft_service.dart';
 import '../services/video_still.dart';
 import '../utils/api_error_message.dart';
@@ -162,8 +163,27 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   final ImagePicker _picker = ImagePicker();
   Timer? _placeholderTimer;
 
-  ComposerNotifier(this._ref, this._draftService)
-      : super(ComposerState(
+  /// A change waiting to be written, and the timer that will write it.
+  bool _dirty = false;
+  Timer? _saveTimer;
+
+  /// How long after a change the draft is written.
+  ///
+  /// Long enough that typing a sentence is one write and not forty, short
+  /// enough that a phone killed mid-sentence loses a couple of words rather
+  /// than the post. This is not the three-second poll that used to be here:
+  /// nothing is written unless something was edited.
+  static const defaultAutosaveDelay = Duration(seconds: 2);
+
+  /// Shortened by tests, which should not wait two seconds to watch a save.
+  final Duration _autosaveDelay;
+
+  ComposerNotifier(
+    this._ref,
+    this._draftService, {
+    Duration autosaveDelay = defaultAutosaveDelay,
+  })  : _autosaveDelay = autosaveDelay,
+        super(ComposerState(
           content: '',
           placeholderText: _randomPlaceholder(),
         )) {
@@ -180,6 +200,58 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
   static String _randomPlaceholder() => _placeholders[
       DateTime.now().millisecondsSinceEpoch % _placeholders.length];
+
+  /// Every edit, rather than a call at each of the ten places one can happen.
+  ///
+  /// Saving used to know a list of fields, and the composer grew several it
+  /// was never told about -- which is how a poll somebody had filled in came
+  /// back from a draft as a bare sentence. Hanging it off the state means a
+  /// field added later is kept without anyone remembering to add it here.
+  @override
+  set state(ComposerState value) {
+    super.state = value;
+    if (value.hasUnsavedChanges && !value.isPosting) {
+      _dirty = true;
+      _saveTimer?.cancel();
+      _saveTimer = Timer(_autosaveDelay, () => saveDraft());
+    }
+  }
+
+  /// Opens the composer on a draft chosen from the drafts screen.
+  ///
+  /// The whole draft, not only its words. Restoring the text alone dropped
+  /// the poll, the topics, the reply setting and the quote every time a draft
+  /// was opened -- silently, and after the composer had already offered to
+  /// save them.
+  void restore(ComposerDraft draft) {
+    state = ComposerState(
+      content: draft.content,
+      placeholderText: state.placeholderText,
+      replyPolicy: draft.replyPolicy,
+      poll: draft.poll,
+      topics: draft.topics,
+      quoting: draft.quoting,
+      hasUnsavedChanges: true,
+    );
+    // Opening a draft is not editing it, so it does not move to the top of
+    // the list for having been looked at.
+    _markSaved();
+  }
+
+  /// Writes anything pending now rather than in a moment.
+  ///
+  /// For the app going to the background, where the process can be killed
+  /// without warning and a timer that has not fired yet dies with it.
+  Future<void> flushDraft() async {
+    if (!_dirty) return;
+    await saveDraft();
+  }
+
+  void _markSaved() {
+    _dirty = false;
+    _saveTimer?.cancel();
+    _saveTimer = null;
+  }
 
   void rotatePlaceholder() {
     state = state.copyWith(placeholderText: _randomPlaceholder());
@@ -199,11 +271,19 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     // store should open an empty composer, not fail to open one.
     try {
       final draft = await _draftService.getLatestDraft();
-      if (draft != null && draft.content.trim().isNotEmpty) {
+      if (draft != null && draft.hasContent) {
         state = state.copyWith(
           content: draft.content,
+          replyPolicy: draft.replyPolicy,
+          poll: draft.poll,
+          topics: draft.topics,
+          quoting: draft.quoting,
           hasUnsavedChanges: true,
         );
+        // What was just read is not a change to write back. Without this the
+        // restore rewrites its own row and moves the draft to the top of the
+        // list for having been opened.
+        _markSaved();
       }
     } catch (error) {
       AppLog.instance.error('composer', 'Draft would not load: $error');
@@ -554,17 +634,40 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
       // The text stays put. Losing what someone wrote because the network
       // blinked is worse than the failure itself.
       state = state.copyWith(isPosting: false, error: message);
+      // And written to the device now rather than at the next debounce: a
+      // failed post is exactly when somebody force-quits the app, and until
+      // this the text existed only in memory.
+      await saveDraft();
       return false;
     }
   }
 
-  /// Keeps what is typed so it survives leaving the screen.
+  /// Keeps what has been written so it survives leaving the screen -- or the
+  /// app being killed with the composer still open.
   ///
   /// Attachments are not kept: they live in a cache directory the system may
   /// clear, so a restored draft would point at files that are no longer there.
+  /// Everything else the composer holds is.
   Future<void> saveDraft() async {
-    if (state.content.trim().isEmpty) return;
-    await _draftService.saveDraft(content: state.content);
+    _markSaved();
+    // A post that is only a photograph therefore has nothing to save, and a
+    // row written for it would come back empty.
+    if (state.content.trim().isEmpty && state.poll == null) return;
+
+    try {
+      await _draftService.saveDraft(
+        content: state.content,
+        replyPolicy: state.replyPolicy,
+        poll: state.poll,
+        topics: state.topics,
+        quoting: state.quoting,
+      );
+    } catch (error) {
+      // Logged rather than shown. The reader is writing a post, and a device
+      // whose draft store will not take a write is not something they can act
+      // on mid-sentence -- but it must not disappear either.
+      AppLog.instance.error('composer', 'Draft would not save: $error');
+    }
   }
 
   Future<void> discardDraft() async {
@@ -574,6 +677,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   }
 
   void clear() {
+    _markSaved();
     state = ComposerState(
       content: '',
       placeholderText: _randomPlaceholder(),
@@ -583,6 +687,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   @override
   void dispose() {
     _placeholderTimer?.cancel();
+    _saveTimer?.cancel();
     super.dispose();
   }
 }

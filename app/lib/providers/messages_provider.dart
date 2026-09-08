@@ -378,6 +378,33 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     await send(message.body, senderId: message.senderId);
   }
 
+  /// Fills in the ticks after the other side has read up to here.
+  ///
+  /// Local, and no fetch: the server already said what happened, and asking
+  /// it again would empty the list and blink a thread somebody is reading.
+  /// Only the reader's own bubbles change -- "seen" is about whether the
+  /// other person has looked, and their own messages were never unseen.
+  void markSeenByOther(String me) {
+    if (!state.messages.any((m) => m.senderId == me && !m.seen)) return;
+    state = state.copyWith(
+      messages: [
+        for (final message in state.messages)
+          message.senderId == me && !message.seen
+              ? message.copyWith(seen: true)
+              : message,
+      ],
+    );
+  }
+
+  /// Takes a message the other side withdrew off the screen.
+  ///
+  /// Also local. A message that stays put until the thread is reopened was
+  /// not really deleted.
+  void withdrawn(String messageId) {
+    if (!state.messages.any((m) => m.id == messageId)) return;
+    _drop(messageId);
+  }
+
   /// Silences this conversation, or unsilences it.
   Future<String?> setMuted(bool muted) async {
     try {

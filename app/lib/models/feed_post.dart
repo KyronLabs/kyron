@@ -157,6 +157,15 @@ class FeedAuthor {
     final u = username?.trim();
     return (u == null || u.isEmpty) ? null : '@$u';
   }
+
+  /// For writing an author back out to the device, so a saved draft still
+  /// knows whose post it was quoting.
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        if (name != null) 'name': name,
+        if (username != null) 'username': username,
+        if (avatarUrl != null) 'avatarUrl': avatarUrl,
+      };
 }
 
 /// A quoted post, without its own quote. One level, so a chain of quotes
@@ -187,6 +196,18 @@ class QuotedPost {
         ),
         media: PostMedia.listFrom(json['media']),
       );
+
+  /// Kept whole in a draft rather than by id alone: a draft restored without
+  /// its quote turns a reply into a bare post, and re-fetching it needs a
+  /// network the composer may not have.
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'content': content,
+        'createdAt': createdAt.toIso8601String(),
+        'author': author.toJson(),
+        if (media.isNotEmpty)
+          'media': [for (final item in media) item.toJson()],
+      };
 }
 
 /// One page of the feed.

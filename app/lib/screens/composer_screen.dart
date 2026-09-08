@@ -12,7 +12,6 @@ import '../models/post_media.dart';
 import '../providers/composer_provider.dart';
 import '../providers/current_user_provider.dart';
 import '../routes.dart';
-import '../services/draft_service.dart';
 import '../widgets/create_post/char_counter.dart';
 import '../widgets/create_post/poll_editor.dart';
 import '../widgets/create_post/voice_recorder_sheet.dart';
@@ -55,9 +54,14 @@ class ComposerScreen extends ConsumerStatefulWidget {
   ConsumerState<ComposerScreen> createState() => _ComposerScreenState();
 }
 
-class _ComposerScreenState extends ConsumerState<ComposerScreen> {
+class _ComposerScreenState extends ConsumerState<ComposerScreen>
+    with WidgetsBindingObserver {
   late final TextEditingController _textController;
   final FocusNode _focusNode = FocusNode();
+
+  /// Held rather than read from [ref] on demand, because [dispose] needs it
+  /// after this widget has already been taken off the tree.
+  late final ComposerNotifier _notifier;
 
   int _draftCount = 0;
 
@@ -65,6 +69,8 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
   void initState() {
     super.initState();
     _textController = TextEditingController();
+    _notifier = ref.read(composerProvider.notifier);
+    WidgetsBinding.instance.addObserver(this);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
@@ -105,16 +111,36 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
   }
 
   Future<void> _countDrafts() async {
-    final count = await DraftService().count();
+    // Through the provider, not the singleton. The seam is there so the store
+    // can be replaced -- by a test, or by a device with none -- and reaching
+    // past it made this the one place an override did not apply.
+    final count = await ref.read(draftServiceProvider).count();
     if (mounted) setState(() => _draftCount = count);
+  }
+
+  /// Writes the draft when the app goes away.
+  ///
+  /// The autosave debounce is a couple of seconds, and the process can be
+  /// killed in the background without warning: a timer that has not fired
+  /// yet dies with it, taking the last sentence somebody typed.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.detached) {
+      unawaited(_notifier.flushDraft());
+    }
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     // The provider outlives this screen -- it is where an unsent post is kept
     // -- so a timer started here has to be stopped here, or it goes on
     // rotating a placeholder nobody is looking at for the rest of the session.
-    ref.read(composerProvider.notifier).stopPlaceholderRotation();
+    _notifier.stopPlaceholderRotation();
+    // Leaving by any route other than the draft sheet -- a pop from code, a
+    // route swapped underneath -- still keeps what was written.
+    unawaited(_notifier.flushDraft());
     _textController.dispose();
     _focusNode.dispose();
     super.dispose();
@@ -124,6 +150,23 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen> {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final state = ref.watch(composerProvider);
+
+    // A draft restored after this screen was built.
+    //
+    // Reading one off the device takes longer than a frame, so the sync in
+    // initState almost always ran while the state was still empty and the
+    // draft never reached the box: the counter under it showed the restored
+    // characters while the box showed nothing, and the first thing typed
+    // replaced what had been recovered. Only ever fills an empty box, so it
+    // cannot overwrite what somebody is in the middle of writing.
+    ref.listen<ComposerState>(composerProvider, (previous, next) {
+      if (next.content.isNotEmpty && _textController.text.isEmpty) {
+        _textController.value = TextEditingValue(
+          text: next.content,
+          selection: TextSelection.collapsed(offset: next.content.length),
+        );
+      }
+    });
 
     return PopScope(
       canPop: false,

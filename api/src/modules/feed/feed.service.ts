@@ -4,7 +4,7 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { MediaKind, Prisma, ReplyPolicy } from '@prisma/client';
+import { InterestKind, MediaKind, Prisma, ReplyPolicy } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import { ModerationService } from '../moderation/moderation.service';
@@ -309,6 +309,22 @@ export class FeedService {
   static readonly affinityDays = 30;
   static readonly affinitySample = 200;
 
+  // What a like is worth against the other affinity signals. A "show me more
+  // of this" outweighs it because it was asked for in words; time spent
+  // reading counts for less, because reading something is not endorsing it --
+  // people read what infuriates them too.
+  static readonly likeAffinity = 1;
+  static readonly interestAffinity = 2;
+  static readonly dwellAffinity = 0.5;
+
+  // How long on a post counts as having read it rather than passed over it.
+  static readonly dwellReadMs = 8_000;
+
+  // And the most one report may add. Dwell arrives from the client, so it is
+  // a number a phone can invent; past a few minutes it says nothing anyway,
+  // because the phone was in somebody's pocket.
+  static readonly dwellCeilingMs = 5 * 60_000;
+
   // How deep a comment page walks before it stops following replies.
   static readonly maxThreadDepth = 8;
 
@@ -461,7 +477,7 @@ export class FeedService {
       likes: row._count?.likes ?? 0,
       comments: row._count?.comments ?? 0,
       reposts: row._count?.reposts ?? 0,
-      seen: (row.views?.length ?? 0) > 0,
+      seenCount: row.views?.[0]?.count ?? 0,
       followed: viewer.followedIds.has(row.authorId),
       topicIds: (row.topics ?? []).map((t) => t.interestId),
     }));
@@ -502,9 +518,19 @@ export class FeedService {
     return `r${seed}-${offset}`;
   }
 
-  /** What the reader brings to the ranking: who they follow and engage with. */
+  /**
+   * What the reader brings to the ranking.
+   *
+   * Four signals, gathered in one round trip: who they follow, whose posts
+   * they touch, what they have said about an author in words, and how long
+   * they stay. The last two were being written to the database and read by
+   * nothing -- a "show me less of this" button that recorded the tap and
+   * changed no subsequent feed is a button that does not work, whatever the
+   * table says.
+   */
   private async rankingViewer(viewerId: string) {
-    const [follows, likes, topics] = await Promise.all([
+    const since = new Date(Date.now() - FeedService.affinityDays * 86_400_000);
+    const [follows, likes, topics, interests, reads] = await Promise.all([
       this.prisma.follow.findMany({
         where: { followerId: viewerId },
         select: { followingId: true },
@@ -512,12 +538,7 @@ export class FeedService {
       // Recent likes stand in for affinity: whose posts does this reader
       // actually touch, as opposed to whom did they follow once and forget.
       this.prisma.postLike.findMany({
-        where: {
-          userId: viewerId,
-          createdAt: {
-            gte: new Date(Date.now() - FeedService.affinityDays * 86_400_000),
-          },
-        },
+        where: { userId: viewerId, createdAt: { gte: since } },
         orderBy: { createdAt: 'desc' },
         take: FeedService.affinitySample,
         select: { post: { select: { authorId: true } } },
@@ -526,16 +547,56 @@ export class FeedService {
         where: { userId: viewerId },
         select: { interestId: true },
       }),
+      // Not time-limited, unlike the rest. Asking to see less of somebody is
+      // a standing instruction, not a mood; expiring it after a month means
+      // quietly putting back what the reader asked to have removed.
+      this.prisma.interestSignal.findMany({
+        where: { userId: viewerId },
+        orderBy: { createdAt: 'desc' },
+        take: FeedService.affinitySample,
+        select: { kind: true, post: { select: { authorId: true } } },
+      }),
+      // Posts they stayed on. Dwell is the signal that separates a feed
+      // somebody reads from one they scroll past, and nothing was collecting
+      // it before this.
+      this.prisma.postView.findMany({
+        where: {
+          viewerId,
+          lastViewedAt: { gte: since },
+          dwellMs: { gte: FeedService.dwellReadMs },
+        },
+        orderBy: { lastViewedAt: 'desc' },
+        take: FeedService.affinitySample,
+        select: { post: { select: { authorId: true } } },
+      }),
     ]);
 
     const affinity = new Map<string, number>();
+    const damped = new Map<string, number>();
+    const add = (
+      target: Map<string, number>,
+      author: string | undefined,
+      weight: number,
+    ) => {
+      if (author) target.set(author, (target.get(author) ?? 0) + weight);
+    };
+
     for (const like of likes) {
-      const author = like.post?.authorId;
-      if (author) affinity.set(author, (affinity.get(author) ?? 0) + 1);
+      add(affinity, like.post?.authorId, FeedService.likeAffinity);
+    }
+    for (const read of reads) {
+      add(affinity, read.post?.authorId, FeedService.dwellAffinity);
+    }
+    for (const signal of interests) {
+      const target = signal.kind === InterestKind.LESS ? damped : affinity;
+      const weight =
+        signal.kind === InterestKind.LESS ? 1 : FeedService.interestAffinity;
+      add(target, signal.post?.authorId, weight);
     }
 
     return {
       affinity,
+      damped,
       followedIds: new Set(follows.map((f) => f.followingId)),
       topicIds: new Set(topics.map((t) => t.interestId)),
     };
@@ -1270,13 +1331,26 @@ export class FeedService {
   }
 
   /**
-   * Records that someone opened a post.
+   * Records that someone opened a post, or how long they stayed on it.
    *
    * One row per person per post: an impression count that rises every time the
-   * same reader refreshes tells the author nothing. The author's own opens are
-   * not counted -- checking your own post is not reach.
+   * same reader refreshes tells the author nothing, so reach is still the
+   * number of rows. The row itself now remembers more than that -- how many
+   * times, and how long in total -- because ranking has to tell a glance apart
+   * from a fourth read, and a post somebody sat with apart from one they
+   * scrolled by. The author's own opens are not counted: checking your own
+   * post is not reach.
+   *
+   * [dwellMs] is the reader leaving, reported when the post goes off screen.
+   * It adds time without adding an open, or a single read would count twice.
+   * Clamped, because it is a number the client supplies and a phone left face
+   * up in a pocket would otherwise claim an hour of rapt attention.
    */
-  async recordView(postId: string, viewerId: string): Promise<void> {
+  async recordView(
+    postId: string,
+    viewerId: string,
+    dwellMs?: number,
+  ): Promise<void> {
     const post = await this.prisma.post.findFirst({
       where: { id: postId, deletedAt: null },
       select: { authorId: true },
@@ -1284,10 +1358,27 @@ export class FeedService {
     if (!post) throw new NotFoundException('Post not found.');
     if (post.authorId === viewerId) return;
 
+    const now = new Date();
+    if (dwellMs === undefined) {
+      await this.prisma.postView.upsert({
+        where: { postId_viewerId: { postId, viewerId } },
+        create: { postId, viewerId, lastViewedAt: now },
+        update: { count: { increment: 1 }, lastViewedAt: now },
+      });
+      return;
+    }
+
+    const spent = Math.min(
+      Math.max(0, Math.round(dwellMs)),
+      FeedService.dwellCeilingMs,
+    );
     await this.prisma.postView.upsert({
       where: { postId_viewerId: { postId, viewerId } },
-      create: { postId, viewerId },
-      update: {},
+      // A dwell report with no open before it means the open never arrived --
+      // a dropped request, or a client that only reports on the way out. It
+      // is still one read, so the row is created as one.
+      create: { postId, viewerId, dwellMs: spent, lastViewedAt: now },
+      update: { dwellMs: { increment: spent }, lastViewedAt: now },
     });
   }
 
@@ -1795,7 +1886,7 @@ export class FeedService {
       // Ranking needs these three and the shape is read everywhere, so they
       // are here rather than in a second query per page.
       authorId: true,
-      views: { where: { viewerId }, select: { id: true }, take: 1 },
+      views: { where: { viewerId }, select: { count: true }, take: 1 },
       topics: { select: { interestId: true } },
       author: { select: this.authorShape },
       _count: { select: { likes: true, comments: true, reposts: true } },
