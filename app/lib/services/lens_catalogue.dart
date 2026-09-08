@@ -38,14 +38,19 @@ class LensCatalogue {
 
   /// Where the published catalogue lives.
   ///
+  /// GitHub Pages, published from the kyron-lenses repository by its own CI.
+  /// A stable public URL on a CDN needing no token, which is what fetching a
+  /// file at runtime requires -- and until Pages is switched on there it
+  /// answers 404, which this treats as "no catalogue" and falls back to the
+  /// built-ins. Nothing breaks; nothing new appears.
+  ///
   /// Overridable at build time so a staging build can point somewhere else:
   /// `--dart-define=KYRON_LENS_CATALOGUE=https://...`. Empty disables the
   /// fetch entirely and leaves the built-ins, which is what a build with no
   /// catalogue to talk to should do.
   static const catalogueUrl = String.fromEnvironment(
     'KYRON_LENS_CATALOGUE',
-    defaultValue:
-        'https://zgzvclssemsyctstwgod.supabase.co/storage/v1/object/public/kyron-media/lenses/lenses.json',
+    defaultValue: 'https://kyronlabs.github.io/kyron-lenses/lenses.json',
   );
 
   /// A ceiling on the published file, so a wrong URL cannot pull down

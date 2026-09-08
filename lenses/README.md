@@ -21,5 +21,10 @@ python3 tools/lens.py preview lenses.json photo.jpg -o sheet.png
 python3 tools/lens.py verify  tools/flutter-probe.json
 ```
 
-This directory is self-contained on purpose: it needs nothing from `app/` or
-`api/`, so it can move to its own repository whenever lenses are worth one.
+**This directory is moving to `KyronLabs/kyron-lenses`**, where its CI checks
+every lens, renders a contact sheet onto the pull request, and publishes the
+catalogue to GitHub Pages -- which is where the app now fetches it from.
+
+It is still here so nothing depends on a repository that does not exist yet.
+Once the move lands, this directory goes and only
+[`docs/LENS_FORMAT.md`](../docs/LENS_FORMAT.md) stays behind, pointing at it.
