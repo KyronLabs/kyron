@@ -40,14 +40,11 @@ sealed class LensEffect {
 ///
 /// The colour is sampled from the frame rather than written into the lens:
 /// a fixed skin tone is somebody else's skin tone on all but one face, and
-/// looks like a sticker on the rest.
+/// looks like a sticker on the rest. [SkinSampler] reads it from the
+/// forehead and cheeks of whoever is in front of the camera.
 class FillEffect extends LensEffect {
   /// What gets covered.
   final FaceRegionKind region;
-
-  /// Where the colour comes from. Only the forehead for now -- it is the
-  /// largest patch of a face with no features in it.
-  final FaceRegionKind sampleFrom;
 
   /// How far the edge is blurred, in pupil-gaps. Without it the region reads
   /// as a decal rather than as skin.
@@ -59,7 +56,6 @@ class FillEffect extends LensEffect {
 
   const FillEffect({
     required this.region,
-    this.sampleFrom = FaceRegionKind.face,
     this.feather = 0.14,
     this.keepShading = 0.35,
   });
