@@ -48,7 +48,8 @@ class PostDetailScreen extends ConsumerStatefulWidget {
   ConsumerState<PostDetailScreen> createState() => _PostDetailScreenState();
 }
 
-class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
+class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
+    with WidgetsBindingObserver {
   final _controller = TextEditingController();
   final _focus = FocusNode();
   final _scroll = ScrollController();
@@ -56,16 +57,42 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   /// The comment being replied to, or null to comment on the post itself.
   PostComment? _replyingTo;
 
+  /// Held rather than read from [ref] on demand, because [dispose] needs it
+  /// after this widget has already been taken off the tree.
+  late final PostDetailNotifier _notifier;
+
+  @override
+  void initState() {
+    super.initState();
+    _notifier = ref.read(postDetailProvider(widget.postId).notifier);
+    WidgetsBinding.instance.addObserver(this);
+    _notifier.enter();
+  }
+
+  /// Ends the read when the app goes away, and starts a new one when it
+  /// returns.
+  ///
+  /// Without this, every read that finishes by switching apps or locking the
+  /// phone is lost: the process can be killed while it is in the background,
+  /// and the time is never reported. That is a large share of all reads.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _notifier.enter();
+    } else if (state == AppLifecycleState.paused) {
+      _notifier.leave();
+    }
+  }
+
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _notifier.leave();
     _controller.dispose();
     _focus.dispose();
     _scroll.dispose();
     super.dispose();
   }
-
-  PostDetailNotifier get _notifier =>
-      ref.read(postDetailProvider(widget.postId).notifier);
 
   @override
   Widget build(BuildContext context) {

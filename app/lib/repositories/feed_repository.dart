@@ -374,10 +374,16 @@ class FeedRepository {
   Future<void> deleteComment(String commentId) =>
       _api.dio.delete<void>('/feed/comments/$commentId');
 
-  /// Records that this reader opened the post. Idempotent per reader, and the
-  /// author's own opens are not counted.
-  Future<void> recordView(String postId) =>
-      _api.dio.put<void>('/feed/posts/$postId/view');
+  /// Records that this reader opened the post, or how long they stayed on it.
+  ///
+  /// Called twice per read: once on the way in with no [dwellMs], and once on
+  /// the way out with it. Reach is one row per reader either way -- the row
+  /// counts the opens and totals the time, which is what lets ranking tell a
+  /// glance apart from a fourth read. The author's own opens are not counted.
+  Future<void> recordView(String postId, {int? dwellMs}) => _api.dio.put<void>(
+        '/feed/posts/$postId/view',
+        data: dwellMs == null ? null : {'dwellMs': dwellMs},
+      );
 
   /// How the post is doing. Answers 404 to anyone but its author.
   Future<PostAnalytics> analytics(String postId) async {

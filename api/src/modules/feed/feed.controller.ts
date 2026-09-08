@@ -19,6 +19,7 @@ import { ReplyPolicyDto } from './dto/reply-policy.dto';
 import { ListFeedDto } from './dto/list-feed.dto';
 import { SearchPostsDto } from './dto/search-posts.dto';
 import { VotePollDto } from './dto/vote-poll.dto';
+import { RecordViewDto } from './dto/record-view.dto';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 
@@ -201,10 +202,19 @@ export class FeedController {
     return { ok: true };
   }
 
-  /** Records that this reader opened the post. Idempotent per reader. */
+  /**
+   * Records that this reader opened the post, or how long they stayed.
+   *
+   * Called twice per read: once on the way in with no body, and once on the
+   * way out carrying `dwellMs`. Reach is still one row per reader either way.
+   */
   @Put('posts/:id/view')
-  async view(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
-    await this.svc.recordView(id, req.user.id);
+  async view(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() dto: RecordViewDto,
+  ) {
+    await this.svc.recordView(id, req.user.id, dto.dwellMs);
     return { ok: true };
   }
 

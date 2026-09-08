@@ -37,7 +37,7 @@ does today. Where something is planned rather than built, it says so.
 | Area | What it does |
 |:--|:--|
 | **Accounts** | Email and password over Supabase Auth, JWT verified against JWKS, onboarding gate |
-| **Feed** | Ranked by interests, who you follow, what you have liked, and recency; cursor-paged |
+| **Feed** | Ranked by interests, who you follow, what you have liked, how long you read, what you have asked to see less of, and recency; cursor-paged |
 | **Posts** | Text, photos, video, polls, voice recordings, link previews, quotes, reposts |
 | **Comments** | Real threading at any depth, connector rails, a page per comment, media in replies |
 | **Profiles** | Bio, links, avatar and cover, followers and following, editing |

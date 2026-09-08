@@ -6,14 +6,14 @@ This file is kept honest deliberately. Every "done" below was checked against
 the code, not against an older plan. Where the README claims something this
 file does not, the README is wrong — see [Correcting the README](#correcting-the-readme).
 
-Last audited: 7 September 2026.
+Last audited: 8 September 2026.
 
 ---
 
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 388 Flutter tests and 292 API
+(Supabase), a Flutter client, REST between them. 431 Flutter tests and 342 API
 tests, both wired to CI.
 
 ### Built and working
@@ -21,7 +21,7 @@ tests, both wired to CI.
 | Area | State |
 |:--|:--|
 | Accounts | Supabase JWT via JWKS, onboarding gate, logout that sticks |
-| Feed | Ranked (interests, follows, likes, recency), cursor-paged |
+| Feed | Ranked (interests, follows, likes, dwell, negative feedback, recency), cursor-paged |
 | Posts | Text, images, video, polls, voice, link previews, quotes, reposts |
 | Comments | Real threading at depth, connectors, per-comment pages, media in replies |
 | Profiles | Full profile, followers/following, editing, avatar and cover upload |
@@ -62,8 +62,12 @@ is shippable on its own.
 2. ~~**Realtime messages.**~~ Built. One authenticated socket at `/realtime`,
    carrying ids; the client fetches through the endpoints it already used.
 3. ~~**Realtime notification badge.**~~ Built, on the same channel.
-4. **Delivery and read receipts on the wire.** Still open. The events exist
-   (`message.read`); nothing emits them yet.
+4. ~~**Delivery and read receipts on the wire.**~~ Built. The events existed
+   and nothing emitted them; the server now sends `message.read` and
+   `message.deleted` to the other side, without a push -- a phone that buzzes
+   because somebody read a message is a phone nobody wants. The client applies
+   both in place rather than refetching, which would blink the thread being
+   read.
 
 ### Phase 2 — Close the loop on what exists (weeks)
 
@@ -82,11 +86,23 @@ is shippable on its own.
    cut from one second in, and anything over five minutes is refused rather
    than silently truncated. Without ffmpeg the clip is stored exactly as it
    arrived and the service says so at boot.
-6. **Feed quality signals.** Ranking has no dwell time, no negative feedback,
-   no "seen" decay beyond the view record. The engine is there; it is being fed
-   almost nothing.
-7. **Draft posts and failed-post recovery.** A composer that loses work on a
-   dropped connection.
+6. ~~**Feed quality signals.**~~ Built, and the worst of it was not the
+   missing data but the data already being collected and read by nothing:
+   every "show me less of this" tap wrote a row that changed no subsequent
+   feed. That is now a standing damper on the author, unexpiring, and strong
+   enough to outweigh following them -- asking for less of somebody you follow
+   is a correction, not a contradiction to split the difference on. "Show me
+   more" lifts them, above a like.
+
+   Alongside it: `seen` was one bit with a flat penalty, so a post read four
+   times ranked exactly where one glanced at once did. The view row counts the
+   opens now and the penalty compounds, floored so nothing is retired for
+   good. And it totals dwell, reported when the post leaves the screen and
+   when the app goes to the background -- otherwise every read that ends by
+   switching apps is lost. Time spent counts towards the author below a like:
+   reading something is not endorsing it.
+7. **Draft posts and failed-post recovery.** Still open. A composer that loses
+   work on a dropped connection.
 8. ~~**Empty and error states audit.**~~ Done, and the finding was not what
    this line expected: empty and failed states were already covered almost
    everywhere, through `EmptyState` and `EmptyState.failed`. The real gap was

@@ -1,4 +1,8 @@
-import { RankingService, RankingCandidate } from './ranking.service';
+import {
+  RankingService,
+  RankingCandidate,
+  RankingViewer,
+} from './ranking.service';
 
 const NOW = new Date('2026-09-06T12:00:00Z');
 
@@ -13,16 +17,27 @@ function post(
     likes: over.likes ?? 0,
     comments: over.comments ?? 0,
     reposts: over.reposts ?? 0,
-    seen: over.seen ?? false,
+    seenCount: over.seenCount ?? 0,
     followed: over.followed ?? false,
     topicIds: over.topicIds ?? [],
   };
 }
 
-const nobody = {
+/** A reader the ranking knows nothing about. */
+const nobody: RankingViewer = {
   affinity: new Map<string, number>(),
+  damped: new Map<string, number>(),
   topicIds: new Set<string>(),
 };
+
+/** A reader who differs from [nobody] in exactly one respect. */
+function reader(over: Partial<RankingViewer> = {}): RankingViewer {
+  return {
+    affinity: over.affinity ?? new Map<string, number>(),
+    damped: over.damped ?? new Map<string, number>(),
+    topicIds: over.topicIds ?? new Set<string>(),
+  };
+}
 
 describe('RankingService', () => {
   const svc = new RankingService();
@@ -73,19 +88,13 @@ describe('RankingService', () => {
     });
 
     it('lifts an author the reader actually engages with', () => {
-      const viewer = {
-        affinity: new Map([['author-a', 20]]),
-        topicIds: new Set<string>(),
-      };
+      const viewer = reader({ affinity: new Map([['author-a', 20]]) });
 
       expect(score(post('a'), viewer)).toBeGreaterThan(score(post('a')));
     });
 
     it('lifts a topic the reader follows', () => {
-      const viewer = {
-        affinity: new Map<string, number>(),
-        topicIds: new Set(['t1']),
-      };
+      const viewer = reader({ topicIds: new Set(['t1']) });
 
       expect(score(post('a', { topicIds: ['t1'] }), viewer)).toBeGreaterThan(
         score(post('a', { topicIds: ['t1'] })),
@@ -93,12 +102,65 @@ describe('RankingService', () => {
     });
 
     it('pushes down what has already been read, without burying it', () => {
-      const seen = score(post('a', { seen: true }));
+      const seen = score(post('a', { seenCount: 1 }));
 
       expect(seen).toBeLessThan(score(post('a')));
       // Not zero: re-reading a thread you are in is normal, and dropping seen
       // posts entirely makes a quiet feed look broken.
       expect(seen).toBeGreaterThan(0);
+    });
+
+    it('pushes it down further every time it is opened again', () => {
+      // The flat penalty this replaces put the post somebody had read four
+      // times exactly where the one they glanced at once went.
+      const once = score(post('a', { seenCount: 1 }));
+      const twice = score(post('a', { seenCount: 2 }));
+      const thrice = score(post('a', { seenCount: 3 }));
+
+      expect(twice).toBeLessThan(once);
+      expect(thrice).toBeLessThan(twice);
+    });
+
+    it('never retires a post entirely, however often it is opened', () => {
+      // A thread somebody is part of is opened over and over, and should
+      // still surface when it moves.
+      const worn = svc.seenDecay(50);
+
+      expect(worn).toBe(RankingService.seenFloor);
+      expect(score(post('a', { seenCount: 50 }))).toBeGreaterThan(0);
+    });
+
+    it('shows less of an author the reader asked to see less of', () => {
+      const quieted = reader({ damped: new Map([['bore', 1]]) });
+      const p = post('a', { authorId: 'bore' });
+
+      expect(score(p, quieted)).toBeLessThan(score(p, nobody));
+    });
+
+    it('shows less again each time they ask', () => {
+      const once = reader({ damped: new Map([['bore', 1]]) });
+      const twice = reader({ damped: new Map([['bore', 2]]) });
+      const p = post('a', { authorId: 'bore' });
+
+      expect(score(p, twice)).toBeLessThan(score(p, once));
+    });
+
+    it('lets asking for less outweigh following them', () => {
+      // Following somebody and then asking for less of them is a correction,
+      // not a contradiction to split the difference on.
+      const quieted = reader({ damped: new Map([['bore', 1]]) });
+      const followed = post('a', { authorId: 'bore', followed: true });
+
+      expect(score(followed, quieted)).toBeLessThan(score(post('a'), nobody));
+    });
+
+    it('does not silently block an author it was only asked to quieten', () => {
+      const shouted = reader({ damped: new Map([['bore', 40]]) });
+      const p = post('a', { authorId: 'bore' });
+
+      // Floored, so a good enough post still gets through. Hiding the account
+      // outright is a different button, and the reader did not press it.
+      expect(score(p, shouted)).toBeGreaterThan(0);
     });
   });
 

@@ -20,6 +20,7 @@ PostComment _comment(String id, {String? parentId, int replies = 0}) =>
 
 void main() {
   _openingReplies();
+  _reportingTheRead();
 
   group('PostComment.fromJson', () {
     test('reads a top-level comment', () {
@@ -177,7 +178,7 @@ class _SlowFeed extends FeedRepository {
   }
 
   @override
-  Future<void> recordView(String postId) async {}
+  Future<void> recordView(String postId, {int? dwellMs}) async {}
 
   void answer() => _replies.complete(
         CommentPage(items: [_comment('r1', parentId: 'c1')]),
@@ -245,6 +246,148 @@ void _openingReplies() {
       expect(state.loadingReplies, isEmpty);
       expect(state.expanded, contains('c1'));
       expect(state.replies['c1'], isEmpty);
+    });
+  });
+}
+
+/// A feed that remembers every view it was told about.
+class _CountingFeed extends FeedRepository {
+  _CountingFeed() : super(ApiClient());
+
+  /// One entry per call: null for an open, a duration for a dwell report.
+  final List<int?> views = [];
+
+  @override
+  Future<FeedPost> byId(String id) async => FeedPost(
+        id: id,
+        content: 'a post',
+        createdAt: DateTime(2026),
+        author: const FeedAuthor(id: 'me', username: 'me'),
+      );
+
+  @override
+  Future<CommentPage> comments(String postId,
+          {String? cursor, int limit = 20}) async =>
+      const CommentPage(items: []);
+
+  @override
+  Future<void> recordView(String postId, {int? dwellMs}) async {
+    views.add(dwellMs);
+  }
+}
+
+void _reportingTheRead() {
+  group('reporting the read', () {
+    /// A notifier on a clock the test moves by hand.
+    ({PostDetailNotifier notifier, _CountingFeed feed, void Function(int) pass})
+        reading() {
+      final feed = _CountingFeed();
+      var clock = DateTime(2026, 9, 8, 12);
+      final container = ProviderContainer(
+        overrides: [feedRepositoryProvider.overrideWithValue(feed)],
+      );
+      addTearDown(container.dispose);
+
+      final probe = Provider<PostDetailNotifier>(
+        (ref) => PostDetailNotifier(ref, 'p1', now: () => clock),
+      );
+      return (
+        notifier: container.read(probe),
+        feed: feed,
+        pass: (ms) => clock = clock.add(Duration(milliseconds: ms)),
+      );
+    }
+
+    test('records the open when the reader arrives', () async {
+      final r = reading();
+      await pumpEventQueue();
+
+      r.notifier.enter();
+
+      expect(r.feed.views, [null]);
+    });
+
+    test('does not record the open until the reader is on the post', () async {
+      // Loading the post is not reading it. Recording the view from the fetch
+      // counted a screen the reader may never have reached.
+      final r = reading();
+      await pumpEventQueue();
+
+      expect(r.feed.views, isEmpty);
+    });
+
+    test('reports how long they stayed when they leave', () async {
+      final r = reading();
+      await pumpEventQueue();
+      r.notifier.enter();
+
+      r.pass(9000);
+      r.notifier.leave();
+
+      expect(r.feed.views, [null, 9000]);
+    });
+
+    test('does not spend a round trip on a back-tap', () async {
+      final r = reading();
+      await pumpEventQueue();
+      r.notifier.enter();
+
+      r.pass(200);
+      r.notifier.leave();
+
+      expect(r.feed.views, [null]);
+    });
+
+    test('counts a second visit as a second read', () async {
+      // The provider outlives the screen, so coming back reuses this notifier.
+      // Recording the open from the one-time fetch missed every return visit,
+      // and a post read four times has to rank below one glanced at once.
+      final r = reading();
+      await pumpEventQueue();
+      r.notifier.enter();
+      r.pass(5000);
+      r.notifier.leave();
+
+      r.notifier.enter();
+      r.pass(5000);
+      r.notifier.leave();
+
+      expect(r.feed.views, [null, 5000, null, 5000]);
+    });
+
+    test('does not start a second clock while already reading', () async {
+      // The screen calls enter on arrival and again when the app returns to
+      // the foreground; the second one must not restart the count.
+      final r = reading();
+      await pumpEventQueue();
+      r.notifier.enter();
+      r.pass(4000);
+
+      r.notifier.enter();
+      r.pass(4000);
+      r.notifier.leave();
+
+      expect(r.feed.views, [null, 8000]);
+    });
+
+    test('reports nothing for a leave it never entered', () async {
+      final r = reading();
+      await pumpEventQueue();
+
+      r.notifier.leave();
+
+      expect(r.feed.views, isEmpty);
+    });
+
+    test('reports the read when the screen goes away mid-read', () async {
+      final r = reading();
+      await pumpEventQueue();
+      r.notifier.enter();
+      r.pass(30000);
+
+      r.notifier.dispose();
+
+      expect(r.feed.views, [null, 30000]);
     });
   });
 }

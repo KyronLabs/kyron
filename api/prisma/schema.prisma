@@ -433,13 +433,25 @@ model PostView {
   postId   String @db.Uuid
   viewerId String @db.Uuid
 
-  createdAt DateTime @default(now()) @db.Timestamptz()
+  /// How many times this reader has opened it. One row per person still --
+  /// the count is what tells a first look apart from a fourth, which is the
+  /// difference between "they have seen it" and "stop showing them this".
+  count Int @default(1)
+
+  /// How long they spent on it in total, in milliseconds. Reported by the
+  /// client when the post leaves the screen, and clamped server side: it is a
+  /// number a phone can make up.
+  dwellMs Int @default(0)
+
+  createdAt    DateTime @default(now()) @db.Timestamptz()
+  lastViewedAt DateTime @default(now()) @db.Timestamptz()
 
   post   Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   viewer User @relation(fields: [viewerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@unique([postId, viewerId])
   @@index([postId, createdAt])
+  @@index([viewerId, lastViewedAt])
 }
 
 // ==========================================

@@ -8,8 +8,8 @@ export interface RankingCandidate {
   likes: number;
   comments: number;
   reposts: number;
-  /** Whether the reader has already opened it. */
-  seen: boolean;
+  /** How many times the reader has already opened it. */
+  seenCount: number;
   /** Whether the reader follows the author. */
   followed: boolean;
   /** Topics this post is filed under. */
@@ -18,8 +18,17 @@ export interface RankingCandidate {
 
 /** What the reader brings to the ranking. */
 export interface RankingViewer {
-  /** Authors the reader has engaged with, and how often. */
+  /** Authors the reader has engaged with, and how strongly. */
   affinity: Map<string, number>;
+  /**
+   * Authors the reader has asked to see less of, and how many times.
+   *
+   * Separate from a negative affinity because it is a stated preference
+   * rather than an inferred one, and the two should not cancel out: somebody
+   * who reads an account closely and then asks for less of it has said
+   * something the reading does not contradict.
+   */
+  damped: Map<string, number>;
   /** Topics the reader follows. */
   topicIds: Set<string>;
 }
@@ -61,10 +70,26 @@ export class RankingService {
   static readonly commentWeight = 2.5;
   static readonly repostWeight = 4;
 
-  /** What is left of a post's score once the reader has already opened it.
-   * Not zero: re-reading a thread you are in is normal, and dropping seen
-   * posts entirely makes a quiet feed look broken. */
+  /** What is left of a post's score per time the reader has opened it.
+   * Compounding, so a second look costs more than the first and a fourth
+   * effectively retires the post. Not zero at one view: re-reading a thread
+   * you are in is normal, and dropping seen posts entirely makes a quiet feed
+   * look broken. */
   static readonly seenMultiplier = 0.25;
+
+  /** However often it has been seen, it keeps this much. A post that reaches
+   * exactly zero can never come back, and a thread somebody is part of should
+   * still surface when it moves. */
+  static readonly seenFloor = 0.02;
+
+  /** What is left of an author's score per time the reader has asked for less
+   * of them. Compounding for the same reason, and harder: this one was asked
+   * for out loud. */
+  static readonly dampedMultiplier = 0.2;
+
+  /** And the floor under that, so the answer is "much less of this" rather
+   * than a silent block the reader never chose. */
+  static readonly dampedFloor = 0.05;
 
   /** Multiplier for a post by somebody the reader follows. */
   static readonly followedBoost = 1.6;
@@ -154,12 +179,38 @@ export class RankingService {
     const onTopic = post.topicIds.some((id) => viewer.topicIds.has(id));
     if (onTopic) affinity *= RankingService.topicBoost;
 
+    // "Show me less of this" is the one thing in here the reader said in
+    // words, so it is applied last and it overrides the rest: following
+    // somebody and then asking for less of them is not a contradiction to
+    // split the difference on, it is a correction.
+    const damped = viewer.damped.get(post.authorId) ?? 0;
+    if (damped > 0) {
+      affinity *= Math.max(
+        RankingService.dampedFloor,
+        Math.pow(RankingService.dampedMultiplier, damped),
+      );
+    }
+
     const base = (0.6 + engagement) * freshness * affinity;
-    const seenAdjusted = post.seen
-      ? base * RankingService.seenMultiplier
-      : base;
+    const seenAdjusted = base * this.seenDecay(post.seenCount);
 
     return seenAdjusted * this.wobble(post.id, seed);
+  }
+
+  /**
+   * What is left of a score after the reader has opened the post this often.
+   *
+   * A flat penalty for "seen" put the post somebody had read four times
+   * exactly where the one they glanced at once went. This compounds instead,
+   * so a feed stops offering back what its reader has plainly finished with,
+   * and floors rather than reaching zero, so nothing is retired for good.
+   */
+  seenDecay(seenCount: number): number {
+    if (seenCount <= 0) return 1;
+    return Math.max(
+      RankingService.seenFloor,
+      Math.pow(RankingService.seenMultiplier, seenCount),
+    );
   }
 
   /**

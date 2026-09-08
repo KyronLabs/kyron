@@ -1,4 +1,5 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { InterestKind } from '@prisma/client';
 import { Test } from '@nestjs/testing';
 import { FeedService } from './feed.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
@@ -26,6 +27,10 @@ const row = (id: string, createdAt = new Date()) => ({
   likes: [] as { id: string }[],
   saves: [] as { id: string }[],
   reposts: [] as { id: string }[],
+  // Filtered to this reader too, and it carries the count rather than just
+  // existing: ranking needs a first look told apart from a fourth.
+  views: [] as { count: number }[],
+  topics: [] as { interestId: string }[],
   media: [] as never[],
   quotedPost: null,
 });
@@ -103,7 +108,17 @@ describe('FeedService', () => {
   const postView = {
     upsert: jest.fn<Promise<unknown>, [unknown]>(),
     count: jest.fn<Promise<number>, [unknown]>(),
-    findMany: jest.fn<Promise<{ createdAt: Date }[]>, [unknown]>(),
+    findMany: jest.fn<
+      Promise<{ createdAt?: Date; post?: { authorId: string } }[]>,
+      [unknown]
+    >(),
+  };
+
+  const interestSignal = {
+    findMany: jest.fn<
+      Promise<{ kind: InterestKind; post: { authorId: string } }[]>,
+      [unknown]
+    >(),
   };
 
   const hashtag = {
@@ -168,6 +183,7 @@ describe('FeedService', () => {
             postSave,
             comment,
             postView,
+            interestSignal,
             hashtag,
             block,
             follow,
@@ -197,6 +213,8 @@ describe('FeedService', () => {
     follow.findMany.mockResolvedValue([]);
     postLike.findMany.mockResolvedValue([]);
     userInterest.findMany.mockResolvedValue([]);
+    interestSignal.findMany.mockResolvedValue([]);
+    postView.findMany.mockResolvedValue([]);
     moderation.filtersFor.mockResolvedValue({
       blockedUserIds: [],
       mutedUserIds: [],
@@ -609,16 +627,32 @@ describe('FeedService', () => {
   });
 
   describe('recordView', () => {
+    /** The single argument the service passed to upsert. */
+    const upserted = () =>
+      postView.upsert.mock.calls[0][0] as {
+        where: unknown;
+        create: Record<string, unknown>;
+        update: Record<string, unknown>;
+      };
+
     it('counts a reader once, however many times they open it', async () => {
       post.findFirst.mockResolvedValue({ authorId: 'someone-else' });
       await (await service()).recordView('p1', VIEWER);
 
-      expect(postView.upsert).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: { postId_viewerId: { postId: 'p1', viewerId: VIEWER } },
-          update: {},
-        }),
-      );
+      // One row per person: reach is the number of rows, so an upsert on the
+      // pair is what keeps a reader who refreshes from counting twice.
+      expect(upserted().where).toEqual({
+        postId_viewerId: { postId: 'p1', viewerId: VIEWER },
+      });
+    });
+
+    it('counts the opens on the row it already had', async () => {
+      // Ranking has to tell a glance apart from a fourth read, and the update
+      // used to be `{}` -- every open after the first was thrown away.
+      post.findFirst.mockResolvedValue({ authorId: 'someone-else' });
+      await (await service()).recordView('p1', VIEWER);
+
+      expect(upserted().update).toMatchObject({ count: { increment: 1 } });
     });
 
     it("does not count the author's own opens as reach", async () => {
@@ -626,6 +660,169 @@ describe('FeedService', () => {
       await (await service()).recordView('p1', VIEWER);
 
       expect(postView.upsert).not.toHaveBeenCalled();
+    });
+
+    it('adds time to the row without adding an open', async () => {
+      // The dwell report is the second half of one read, not another one.
+      post.findFirst.mockResolvedValue({ authorId: 'someone-else' });
+      await (await service()).recordView('p1', VIEWER, 12_000);
+
+      expect(upserted().update).toMatchObject({
+        dwellMs: { increment: 12_000 },
+      });
+      expect(upserted().update).not.toHaveProperty('count');
+    });
+
+    it('clamps a dwell a phone in somebody pocket would claim', async () => {
+      post.findFirst.mockResolvedValue({ authorId: 'someone-else' });
+      await (await service()).recordView('p1', VIEWER, 9 * 60 * 60_000);
+
+      expect(upserted().update).toMatchObject({
+        dwellMs: { increment: FeedService.dwellCeilingMs },
+      });
+    });
+
+    it('refuses a negative dwell rather than crediting it', async () => {
+      post.findFirst.mockResolvedValue({ authorId: 'someone-else' });
+      await (await service()).recordView('p1', VIEWER, -5000);
+
+      expect(upserted().update).toMatchObject({ dwellMs: { increment: 0 } });
+    });
+
+    it('still records one read when only the dwell arrives', async () => {
+      // The open request can be dropped. The row it would have made is still
+      // one read, so the dwell creates it as one rather than as zero.
+      post.findFirst.mockResolvedValue({ authorId: 'someone-else' });
+      await (await service()).recordView('p1', VIEWER, 9_000);
+
+      expect(upserted().create).toMatchObject({ dwellMs: 9_000 });
+      expect(upserted().create).not.toHaveProperty('count');
+    });
+  });
+
+  describe('the signals ranking reads', () => {
+    /** Runs one feed request and hands back the candidates it scored. */
+    const rankedWith = async () => {
+      const ranker = new RankingService();
+      const seen = jest.spyOn(ranker, 'rank');
+      const moduleRef = await Test.createTestingModule({
+        providers: [
+          FeedService,
+          { provide: RankingService, useValue: ranker },
+          {
+            provide: PrismaService,
+            useValue: {
+              post,
+              postLike,
+              postSave,
+              comment,
+              postView,
+              interestSignal,
+              hashtag,
+              block,
+              follow,
+              user,
+              userInterest,
+              repost: relation(),
+              $transaction: (calls: Promise<unknown>[]) => Promise.all(calls),
+            },
+          },
+          { provide: ModerationService, useValue: moderation },
+          { provide: DeliveryService, useValue: new RecordingDelivery() },
+        ],
+      }).compile();
+
+      await moduleRef.get(FeedService).listRecent(VIEWER);
+      return seen.mock.calls[0];
+    };
+
+    it('carries how many times the reader opened each post', async () => {
+      post.findMany.mockResolvedValue([
+        { ...row('p1'), views: [{ count: 3 }] },
+      ]);
+
+      const [candidates] = await rankedWith();
+
+      // `seen` was a bit, so a post read three times ranked exactly where one
+      // glanced at once did.
+      expect(candidates[0].seenCount).toBe(3);
+    });
+
+    it('treats a post with no view row as unseen', async () => {
+      post.findMany.mockResolvedValue([{ ...row('p1'), views: [] }]);
+
+      const [candidates] = await rankedWith();
+
+      expect(candidates[0].seenCount).toBe(0);
+    });
+
+    it('damps an author the reader asked to see less of', async () => {
+      interestSignal.findMany.mockResolvedValue([
+        { kind: InterestKind.LESS, post: { authorId: 'bore' } },
+        { kind: InterestKind.LESS, post: { authorId: 'bore' } },
+      ]);
+      post.findMany.mockResolvedValue([row('p1')]);
+
+      const [, viewer] = await rankedWith();
+
+      // The tap was recorded and read by nothing before this: a button that
+      // writes a row and changes no later feed is a button that does not work.
+      expect(viewer.damped.get('bore')).toBe(2);
+      expect(viewer.affinity.has('bore')).toBe(false);
+    });
+
+    it('lifts an author the reader asked to see more of', async () => {
+      interestSignal.findMany.mockResolvedValue([
+        { kind: InterestKind.MORE, post: { authorId: 'good' } },
+      ]);
+      post.findMany.mockResolvedValue([row('p1')]);
+
+      const [, viewer] = await rankedWith();
+
+      expect(viewer.affinity.get('good')).toBe(FeedService.interestAffinity);
+      expect(viewer.damped.has('good')).toBe(false);
+    });
+
+    it('counts time spent towards the author, below a like', async () => {
+      // Reading something is not endorsing it -- people read what infuriates
+      // them too -- so it weighs less than the like it sits beside.
+      postView.findMany.mockResolvedValue([{ post: { authorId: 'read' } }]);
+      postLike.findMany.mockResolvedValue([
+        { id: 'l1', post: { authorId: 'liked' } as unknown as Row },
+      ]);
+      post.findMany.mockResolvedValue([row('p1')]);
+
+      const [, viewer] = await rankedWith();
+
+      expect(viewer.affinity.get('read')).toBeLessThan(
+        viewer.affinity.get('liked')!,
+      );
+    });
+
+    it('asks only for views the reader actually stayed on', async () => {
+      post.findMany.mockResolvedValue([row('p1')]);
+
+      await rankedWith();
+
+      expect(postView.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            dwellMs: { gte: FeedService.dwellReadMs },
+          }) as unknown,
+        }),
+      );
+    });
+
+    it('does not expire a standing request to see less of somebody', async () => {
+      // Unlike likes and dwell, which are read over a window. Expiring this
+      // one puts back what the reader asked to have removed.
+      post.findMany.mockResolvedValue([row('p1')]);
+
+      await rankedWith();
+
+      expect(interestSignal.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({ where: { userId: VIEWER } }),
+      );
     });
   });
 
