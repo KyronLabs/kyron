@@ -14,6 +14,12 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- Video posts no longer make the feed stutter as they arrive. A clip's player
+  was being started the moment the clip reached the middle of the screen --
+  which is while your thumb is still moving -- and starting one is not free.
+  It now waits for the list to stop, so a clip begins when you have stopped to
+  look at it rather than while you are on your way past.
+
 - The feed scrolls properly. Hiding the top bar was shrinking a spacer beside
   the list, which resized the list's own scroll area on every frame of a drag
   -- so the posts did not travel with your thumb, and the whole visible list

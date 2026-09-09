@@ -1,6 +1,7 @@
 // lib/widgets/inline_video.dart
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -87,6 +88,10 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
   /// looked at, and it is what makes a list of them stutter.
   Timer? _settle;
 
+  /// The enclosing list's own "am I moving" flag, while this tile is waiting
+  /// for it to go quiet before opening a decoder.
+  ValueListenable<bool>? _stillness;
+
   /// Set when every decoder was busy being opened and this tile has to ask
   /// again in a moment. Bounded, so a tile cannot sit in a retry loop.
   Timer? _retry;
@@ -111,6 +116,7 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
     // playing the previous one behind the new one's still.
     if (old.media.url != widget.media.url) {
       _cancelSettle();
+      _stopWaitingForStillness();
       _retry?.cancel();
       _controller = null;
       VideoStage.instance.withdraw(this);
@@ -126,6 +132,7 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
   void dispose() {
     _cancelSettle();
     _retry?.cancel();
+    _stopWaitingForStillness();
     VideoStage.instance.withdraw(this);
     // The pool owns the controller and disposes it. Releasing here rather than
     // disposing directly is what keeps its count of open decoders honest.
@@ -138,6 +145,47 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
   void _cancelSettle() {
     _settle?.cancel();
     _settle = null;
+    _stopWaitingForStillness();
+  }
+
+  /// Opens a decoder, or waits for the list to stop moving and opens then.
+  ///
+  /// Opening one is not free and not all of it is Dart: on Android it starts a
+  /// player and allocates a surface for it, which lands on the raster thread.
+  /// Doing that while a finger is dragging the list is felt directly -- the
+  /// feed hitches at the moment a clip reaches the middle of the screen, which
+  /// is precisely when this used to fire.
+  ///
+  /// The settle timer alone did not prevent it. It waits for a clip to hold
+  /// the stage, not for the list to be still, and a feed read at any ordinary
+  /// pace holds a clip there for far longer than 220ms with the finger still
+  /// down. So the wait is on the scroll itself.
+  void _openWhenStill() {
+    if (!mounted || !_onStage || _opening || _controller != null) return;
+
+    final scrolling = Scrollable.maybeOf(context)?.position.isScrollingNotifier;
+    // Nothing scrollable above it -- a clip on a post's own page, say -- so
+    // there is nothing to wait for.
+    if (scrolling == null || !scrolling.value) {
+      unawaited(_ensure());
+      return;
+    }
+
+    if (identical(_stillness, scrolling)) return;
+    _stopWaitingForStillness();
+    _stillness = scrolling..addListener(_onStillness);
+  }
+
+  /// The list stopped moving, so it is a good moment to start a decoder.
+  void _onStillness() {
+    if (_stillness?.value ?? true) return;
+    _stopWaitingForStillness();
+    if (mounted && _onStage && _controller == null) unawaited(_ensure());
+  }
+
+  void _stopWaitingForStillness() {
+    _stillness?.removeListener(_onStillness);
+    _stillness = null;
   }
 
   /// Whether this clip currently holds the stage.
@@ -168,7 +216,7 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
     // one for each of those is a burst of work for clips nobody looked at.
     _settle ??= Timer(_settleDelay, () {
       _settle = null;
-      if (mounted && _onStage) unawaited(_ensure());
+      if (mounted && _onStage) _openWhenStill();
     });
   }
 
@@ -210,7 +258,7 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
         _retriesLeft--;
         _retry?.cancel();
         _retry = Timer(const Duration(milliseconds: 450), () {
-          if (mounted && _onStage && _controller == null) unawaited(_ensure());
+          if (mounted && _onStage && _controller == null) _openWhenStill();
         });
       }
       return;
