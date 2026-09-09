@@ -16,10 +16,26 @@ import 'post_list_view.dart';
 class FeedCanvas extends ConsumerWidget {
   final ScrollController? scrollController;
 
-  const FeedCanvas({super.key, this.scrollController});
+  /// How far down the screen the first post starts, in logical pixels.
+  ///
+  /// The chrome overlays this list rather than pushing it down, so the space
+  /// under it is padding *inside* the scrollable. That is the whole reason it
+  /// arrives as a number rather than as a widget above: a sibling whose height
+  /// changed with the collapse resized this list's viewport on every frame of
+  /// a drag, and the content stopped tracking the finger.
+  final double topInset;
+
+  const FeedCanvas({
+    super.key,
+    this.scrollController,
+    this.topInset = 0,
+  });
 
   /// Height of the fade under the tab strip, in logical pixels.
-  static const double _topFadeHeight = 16;
+  ///
+  /// Drawn by whoever owns the chrome, since only they know where the strip
+  /// has currently slid to.
+  static const double topFadeHeight = 16;
 
   static String _emptyTitle(String tab) => switch (tab) {
         'Following' => 'Nothing from the people you follow',
@@ -46,49 +62,23 @@ class FeedCanvas extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final tab = ref.watch(selectedFeedTabProvider);
 
-    return Stack(
-      children: [
-        PostListView(
-          // Whatever the top bar's selected tab reads. It was pinned to the
-          // everyone-newest-first feed, so Following and Videos recoloured a
-          // pill and showed the same posts.
-          source: feedSourceForTab(tab),
-          // Videos are a wall of tiles: a column of full-width players is
-          // unreadable, and the point of the tab is seeing what is there.
-          asTiles: tab == 'Videos',
-          scrollController: scrollController,
-          errorTitle: 'Could not load your feed',
-          emptyArt: _emptyArt(tab),
-          emptyTitle: _emptyTitle(tab),
-          emptyDetail: _emptyDetail(tab),
-          padding: EdgeInsets.only(
-            top: SpacingTokens.space8,
-            bottom: MediaQuery.of(context).padding.bottom + 80,
-          ),
-        ),
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          height: _topFadeHeight,
-          child: IgnorePointer(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Theme.of(context).scaffoldBackgroundColor,
-                    Theme.of(context)
-                        .scaffoldBackgroundColor
-                        .withValues(alpha: 0),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
+    return PostListView(
+      // Whatever the top bar's selected tab reads. It was pinned to the
+      // everyone-newest-first feed, so Following and Videos recoloured a
+      // pill and showed the same posts.
+      source: feedSourceForTab(tab),
+      // Videos are a wall of tiles: a column of full-width players is
+      // unreadable, and the point of the tab is seeing what is there.
+      asTiles: tab == 'Videos',
+      scrollController: scrollController,
+      errorTitle: 'Could not load your feed',
+      emptyArt: _emptyArt(tab),
+      emptyTitle: _emptyTitle(tab),
+      emptyDetail: _emptyDetail(tab),
+      padding: EdgeInsets.only(
+        top: topInset + SpacingTokens.space8,
+        bottom: MediaQuery.of(context).padding.bottom + 80,
+      ),
     );
   }
 }

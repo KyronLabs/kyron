@@ -104,37 +104,59 @@ class _HomeScreenState extends State<HomeScreen>
     super.dispose();
   }
 
+  /// TopEdge content height, without the status bar.
+  static const double _topEdgeContentHeight = 56.0;
+
+  /// The tab strip below it.
+  static const double _tabsHeight = 44.0;
+
   @override
   Widget build(BuildContext context) {
     final statusBarHeight = MediaQuery.of(context).padding.top;
-    final topEdgeContentHeight =
-        56.0; // TopEdge content height (without status bar)
+    const topEdgeContentHeight = _topEdgeContentHeight;
+    final scheme = Theme.of(context).colorScheme;
 
     return Stack(
       children: [
-        // Feed Canvas - extends full screen
-        Column(
-          children: [
-            // Spacer for status bar + TopEdge + InterestTabs
-            AnimatedBuilder(
-              animation: _topEdgeAnimController,
-              builder: (context, child) {
-                // TopEdge visible height (decreases as it hides)
-                final topEdgeVisible =
-                    topEdgeContentHeight * (1.0 - _topEdgeAnimController.value);
-                final tabsHeight = 44.0;
-                return SizedBox(
-                    height: statusBarHeight + topEdgeVisible + tabsHeight);
-              },
-            ),
+        // The feed fills the whole screen and the chrome sits over it.
+        //
+        // It used to be the second child of a Column, beside a spacer whose
+        // height shrank as the top bar hid. That made the feed's scroll
+        // viewport resize on every frame of a drag -- measured over a 120px
+        // drag, twelve different viewport heights and twelve different
+        // maxScrollExtents, one per frame. Two things came of it: the whole
+        // visible list re-laid-out every frame, and, worse, the content did
+        // not track the finger, because the viewport was growing underneath
+        // it as it moved. That is what made the feed feel like hard work
+        // rather than merely slow.
+        //
+        // The padding below is constant for the same reason: it is inside
+        // the scrollable, so it costs nothing to keep at the open height.
+        // Once the bar has hidden, the reader has scrolled past that space
+        // anyway.
+        Positioned.fill(
+          child: FeedCanvas(
+            scrollController: _scrollController,
+            topInset: statusBarHeight + topEdgeContentHeight + _tabsHeight,
+          ),
+        ),
 
-            // Feed Canvas
-            Expanded(
-              child: FeedCanvas(
-                scrollController: _scrollController,
-              ),
+        // Something opaque behind the bar while it fades out. The tab strip
+        // and the status bar cover their own bands; this is the one between
+        // them, where a half-faded TopEdge would otherwise have the feed
+        // showing through it.
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          child: AnimatedBuilder(
+            animation: _topEdgeAnimController,
+            builder: (context, child) => SizedBox(
+              height: statusBarHeight +
+                  topEdgeContentHeight * (1.0 - _topEdgeAnimController.value),
+              child: ColoredBox(color: scheme.surface),
             ),
-          ],
+          ),
         ),
 
         // TopEdge - scrolls UNDER status bar
@@ -185,6 +207,46 @@ class _HomeScreenState extends State<HomeScreen>
             },
             child: InterestTabs(
               scrollController: _scrollController,
+            ),
+          ),
+        ),
+
+        // A soft edge under the tab strip, where posts now pass beneath it.
+        // It used to live inside FeedCanvas at its top, which worked when the
+        // list began below the chrome; with the list running full height that
+        // position is behind the bar and invisible, and a fixed one would come
+        // adrift from a strip that moves.
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          child: AnimatedBuilder(
+            animation: _topEdgeAnimController,
+            builder: (context, child) => Padding(
+              padding: EdgeInsets.only(
+                top: statusBarHeight +
+                    topEdgeContentHeight *
+                        (1.0 - _topEdgeAnimController.value) +
+                    _tabsHeight,
+              ),
+              child: child,
+            ),
+            child: IgnorePointer(
+              child: SizedBox(
+                height: FeedCanvas.topFadeHeight,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        scheme.surface,
+                        scheme.surface.withValues(alpha: 0),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ),
