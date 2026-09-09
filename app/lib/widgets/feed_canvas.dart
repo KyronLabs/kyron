@@ -75,8 +75,12 @@ class FeedCanvas extends ConsumerWidget {
       emptyArt: _emptyArt(tab),
       emptyTitle: _emptyTitle(tab),
       emptyDetail: _emptyDetail(tab),
+      // The chrome's height goes to topInset rather than into the padding:
+      // the refresh indicator needs the same number, and adding it here alone
+      // is what left the spinner drawing behind the top bar.
+      topInset: topInset,
       padding: EdgeInsets.only(
-        top: topInset + SpacingTokens.space8,
+        top: SpacingTokens.space8,
         bottom: MediaQuery.of(context).padding.bottom + 80,
       ),
     );

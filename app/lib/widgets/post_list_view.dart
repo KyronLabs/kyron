@@ -41,6 +41,17 @@ class PostListView extends ConsumerStatefulWidget {
 
   final EdgeInsets padding;
 
+  /// How much of this list's own box is covered by something opaque above it.
+  ///
+  /// The home feed runs full height with its top bar laid over it, so the
+  /// first [topInset] pixels of this box are behind that bar. Two things have
+  /// to know: the padding, so the first post starts below it, and the refresh
+  /// indicator, which otherwise drops its spinner at the top of the box --
+  /// which is to say behind the bar, where pulling to refresh looks like
+  /// nothing happening at all. It is one number for both so they cannot drift
+  /// apart, which is how the spinner got lost in the first place.
+  final double topInset;
+
   const PostListView({
     super.key,
     required this.source,
@@ -51,6 +62,7 @@ class PostListView extends ConsumerStatefulWidget {
     this.scrollController,
     this.headerSlivers = const [],
     this.padding = EdgeInsets.zero,
+    this.topInset = 0,
     this.asTiles = false,
     this.highlightTag,
   });
@@ -118,6 +130,9 @@ class _PostListViewState extends ConsumerState<PostListView> {
     _clampScroll();
 
     return RefreshIndicator(
+      // Measured: with a 124px bar over the list and no offset, the spinner
+      // settles at y=84 -- inside the bar, invisible. This puts it below.
+      edgeOffset: widget.topInset,
       onRefresh: _notifier.refresh,
       child: CustomScrollView(
         controller: _controller,
@@ -129,7 +144,9 @@ class _PostListViewState extends ConsumerState<PostListView> {
         slivers: [
           ...widget.headerSlivers,
           SliverPadding(
-            padding: widget.padding,
+            padding: widget.padding.copyWith(
+              top: widget.padding.top + widget.topInset,
+            ),
             sliver: _content(state),
           ),
         ],

@@ -14,6 +14,10 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- Pull to refresh is visible on the feed again. It never stopped working --
+  the spinner was landing behind the top bar, so pulling down looked like
+  nothing happening. It now comes down below the bar where you can see it.
+
 - Video posts no longer make the feed stutter as they arrive. A clip's player
   was being started the moment the clip reached the middle of the screen --
   which is while your thumb is still moving -- and starting one is not free.
