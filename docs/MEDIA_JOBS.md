@@ -119,3 +119,60 @@ reclaimed on its second attempt.
 There is one API process today, so `SKIP LOCKED` is not strictly needed. It is
 there because it is the difference between "correct on one machine" and
 "correct", and it costs a clause.
+
+## Clips that predate all of this
+
+The queue only ever received clips as they were uploaded. Everything posted
+before it existed kept whatever the phone recorded, because that is what this
+service does when it cannot help: **"a clip that ffmpeg cannot read, or a
+server with no ffmpeg on it, means the original bytes are stored exactly as
+they arrived — which is what happened to every clip before this existed."**
+
+So an old 4K clip is still 4K. The app cannot make decoding one cheap, and it
+is felt in a feed: a phone has a hard ceiling on concurrent decoders, and a
+clip well over the size ceiling eats a disproportionate share of one.
+
+`api/scripts/backfill-media.ts` queues them. It reports by default and only
+writes when told to:
+
+```
+npx ts-node scripts/backfill-media.ts              # count, change nothing
+npx ts-node scripts/backfill-media.ts --probe      # ...and read each file
+npx ts-node scripts/backfill-media.ts --commit     # queue the work
+npx ts-node scripts/backfill-media.ts --limit 20   # look at no more than 20
+```
+
+Three things worth knowing before running it with `--commit`:
+
+1. **It queues; it does not encode.** `MediaWorker` drains the rows one at a
+   time and probes each clip first, so anything already inside the ceiling is
+   recorded `SKIPPED`. Queueing a clip that turns out not to need it costs a
+   probe, not a file.
+2. **A re-encode replaces the original bytes.** The path does not change, so
+   no URL breaks and nothing linking to a clip needs updating — but the file
+   that was there is gone. There is no undo.
+3. **It is idempotent.** A clip with a `MediaJob` of any status is left alone,
+   so a second run queues nothing and a `DONE` clip is never re-encoded.
+
+The default report says what can be known from the database alone: how many
+video attachments there are, how many have a storage path the script can act
+on, how many were queued at some point already, and how many are taller than
+1280 by their stored height. That height is a **floor rather than the answer** —
+it cannot show a 720p clip at 8 Mbps, which is over the bitrate ceiling and
+every bit as expensive to decode. `--probe` downloads each clip and asks
+ffprobe, which is the only way to count those; it costs a whole download per
+clip, so pair it with `--limit` the first time.
+
+A URL the script does not recognise is counted with its reason rather than
+guessed at. `storedPathFromUrl` is strict on purpose: a path is where the
+smaller file gets written back, so a wrong one aims a write at the wrong
+object.
+
+Verified end to end against Postgres 16 with the schema and a spread of seeded
+rows — clips over and under the ceiling, one with no dimensions recorded, a
+percent-encoded name, one already queued, one on another host, and a picture.
+The dry run counted every group correctly, `--commit` wrote five `PENDING`
+rows and left the `DONE` one alone, and a second `--commit` queued nothing.
+The download itself was served by a local stand-in, so what has **not** been
+exercised here is a real Supabase fetch — that path is the same
+`storage.downloadFile` the worker already uses in production.

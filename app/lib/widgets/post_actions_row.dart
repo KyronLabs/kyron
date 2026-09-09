@@ -8,6 +8,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/feed_post.dart';
 import '../utils/format_count.dart';
+import 'like_burst.dart';
 import 'post_action_colors.dart';
 
 /// The engagement row under a post.
@@ -78,6 +79,7 @@ class PostActionsRow extends StatelessWidget {
           active: post.liked,
           activeColor: PostActionColors.like,
           tooltip: post.liked ? 'Unlike' : 'Like',
+          burst: true,
           onTap: onLike,
         ),
         const Spacer(),
@@ -100,13 +102,24 @@ class PostActionsRow extends StatelessWidget {
 }
 
 /// One button in the engagement row.
-class PostAction extends StatelessWidget {
+///
+/// Every one of them gives a little when pressed. The like also bursts, which
+/// is the one action people take for pleasure rather than for a purpose --
+/// see [LikeBurstPainter]. Taking a like back gets the give and nothing else:
+/// firing a celebration in both directions makes a button look like it is
+/// congratulating you for changing your mind.
+class PostAction extends StatefulWidget {
   final IconData icon;
   final String? label;
   final bool active;
   final Color? activeColor;
   final String tooltip;
   final VoidCallback onTap;
+
+  /// Throw a ring and sparks when this turns on. The like, and nothing else:
+  /// a row where every control celebrates has no way left to mark the one
+  /// that matters.
+  final bool burst;
 
   const PostAction({
     super.key,
@@ -116,35 +129,125 @@ class PostAction extends StatelessWidget {
     this.activeColor,
     required this.tooltip,
     required this.onTap,
+    this.burst = false,
   });
+
+  @override
+  State<PostAction> createState() => _PostActionState();
+}
+
+class _PostActionState extends State<PostAction>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _play = AnimationController(
+    vsync: this,
+    // Long enough for the sparks to travel and go, short enough that a second
+    // tap is never waiting on the first.
+    duration: const Duration(milliseconds: 620),
+  );
+
+  /// Whether the run in progress is a celebration or just a press.
+  bool _celebrating = false;
+
+  /// How far past the icon the burst is allowed to spill, each side.
+  static const double _reach = 15;
+
+  @override
+  void dispose() {
+    _play.dispose();
+    super.dispose();
+  }
+
+  void _tapped() {
+    // selectionClick is the lightest thing the platform offers -- the tick of
+    // a picker passing a notch, not the thud of a confirmation. Anything
+    // heavier on a control people press while reading is intrusive.
+    unawaited(HapticFeedback.selectionClick());
+
+    // Read from what it is about to become, not from what it is: the state
+    // arrives from the notifier a frame later, and waiting for it puts the
+    // animation behind the finger.
+    _celebrating = widget.burst && !widget.active;
+    _play.forward(from: 0);
+
+    widget.onTap();
+  }
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final color = active
-        ? (activeColor ?? scheme.primary)
+    final colour = widget.active
+        ? (widget.activeColor ?? scheme.primary)
         : scheme.onSurface.withValues(alpha: 0.55);
 
     return Tooltip(
-      message: tooltip,
+      message: widget.tooltip,
       child: InkWell(
-        // selectionClick is the lightest thing the platform offers -- the tick
-        // of a picker passing a notch, not the thud of a confirmation. Anything
-        // heavier on a control people press while reading is intrusive.
-        onTap: () {
-          unawaited(HapticFeedback.selectionClick());
-          onTap();
-        },
+        onTap: _tapped,
         borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
         child: Padding(
           padding: const EdgeInsets.all(SpacingTokens.space4),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, size: 17, color: color),
-              if (label != null) ...[
+              AnimatedBuilder(
+                animation: _play,
+                builder: (context, child) {
+                  final t = _play.value;
+                  final scale = t == 0
+                      ? 1.0
+                      : (_celebrating ? likePunch(t) : unlikePunch(t));
+
+                  return Stack(
+                    // So the burst can spill past a 17px icon. Nothing above
+                    // this clips either -- the row leaves it the room.
+                    clipBehavior: Clip.none,
+                    alignment: Alignment.center,
+                    children: [
+                      if (_celebrating && t > 0 && t < 1)
+                        Positioned(
+                          left: -_reach,
+                          right: -_reach,
+                          top: -_reach,
+                          bottom: -_reach,
+                          child: IgnorePointer(
+                            child: CustomPaint(
+                              painter: LikeBurstPainter(
+                                t: t,
+                                colour:
+                                    widget.activeColor ?? PostActionColors.like,
+                              ),
+                            ),
+                          ),
+                        ),
+                      Transform.scale(scale: scale, child: child),
+                    ],
+                  );
+                },
+                child: Icon(widget.icon, size: 17, color: colour),
+              ),
+              if (widget.label != null) ...[
                 const SizedBox(width: SpacingTokens.space4),
-                Text(label!, style: TextStyle(fontSize: 12, color: color)),
+                // The number changes under a finger, so it moves rather than
+                // swapping: up as it grows, down as it shrinks, which is the
+                // direction the count itself went.
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 220),
+                  switchInCurve: Curves.easeOutCubic,
+                  transitionBuilder: (child, animation) => ClipRect(
+                    child: SlideTransition(
+                      position: Tween(
+                        begin: Offset(0, widget.active ? 0.7 : -0.7),
+                        end: Offset.zero,
+                      ).animate(animation),
+                      child: FadeTransition(opacity: animation, child: child),
+                    ),
+                  ),
+                  child: Text(
+                    widget.label!,
+                    key: ValueKey(widget.label),
+                    style: TextStyle(fontSize: 12, color: colour),
+                  ),
+                ),
               ],
             ],
           ),
