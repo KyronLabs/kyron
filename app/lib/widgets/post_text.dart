@@ -40,6 +40,11 @@ class PostText extends StatefulWidget {
   /// The hashtag half matches the server's own extraction: a tag must start at
   /// a word boundary, so "#ffffff" written mid-sentence and "a#b" are not
   /// swept up, and the client highlights exactly what the server indexed.
+  /// A hashtag that is only digits is a number somebody wrote, not a tag.
+  /// Compiled once: this used to be built inside the loop, so a post with
+  /// twenty tags compiled twenty identical regular expressions.
+  static final RegExp _digitsOnly = RegExp(r'^\d+$');
+
   static final RegExp pattern = RegExp(
     r'(?<![\w#])#[\p{L}\p{N}_]{1,50}'
     r'|(?<![\w@])@[A-Za-z0-9_]{1,30}'
@@ -55,7 +60,7 @@ class PostText extends StatefulWidget {
       if (!token.startsWith('#')) continue;
       final tag = token.substring(1).toLowerCase();
       // "ranked #1" is not a topic, and the server does not index it either.
-      if (RegExp(r'^\d+$').hasMatch(tag)) continue;
+      if (_digitsOnly.hasMatch(tag)) continue;
       found.add(tag);
     }
     return found.toList();

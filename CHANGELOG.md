@@ -12,6 +12,15 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Fixed
+
+- The feed scrolls properly. Hiding the top bar was shrinking a spacer beside
+  the list, which resized the list's own scroll area on every frame of a drag
+  -- so the posts did not travel with your thumb, and the whole visible list
+  was laid out again for each frame. It read as a feed that took effort to
+  push around. The bar now slides over the posts instead of pushing them, and
+  nothing under it moves.
+
 ### Added
 
 - An AR lens camera, with lenses that follow a face. A face mesh runs on the
