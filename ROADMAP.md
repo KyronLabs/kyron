@@ -3,17 +3,24 @@
 What is built, what is not, and the order to do the rest in.
 
 This file is kept honest deliberately. Every "done" below was checked against
-the code, not against an older plan. Where the README claims something this
-file does not, the README is wrong — see [Correcting the README](#correcting-the-readme).
+the code, not against an older plan.
 
-Last audited: 8 September 2026.
+It used to say that where the README and this file disagreed, the README was
+wrong. That was true when it was written and stopped being true when the
+README was rewritten — after which this file went on claiming the README
+overclaimed for a day, and was believed. Neither document outranks the other.
+**The code settles it**, and anything here that has not been checked against
+the code recently should be treated as a guess.
+
+Last audited: 9 September 2026 — every claim below re-checked against the
+repository, and four found stale.
 
 ---
 
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 458 Flutter tests and 420 API
+(Supabase), a Flutter client, REST between them. 667 Flutter tests and 443 API
 tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 ### Built and working
@@ -260,22 +267,25 @@ The decision that remains is the same one, now narrower:
 
 ---
 
-## Correcting the README
+## ~~Correcting the README~~ — done
 
-The README's investor table and feature table state as **✅ Live** several
-things that do not exist: AR lenses, per-post E2EE, portable DID identity, and
-a creator equity pool described as "code complete · on testnet". The
-architecture diagram names GraphQL, gRPC, Pinecone and an AT Protocol node; the
-codebase has none of them — it is REST over Dio to 13 Nest controllers.
+The README used to state as **✅ Live**, under a heading reading *For
+Investors*, four things that did not exist, and to draw an architecture
+diagram naming GraphQL, gRPC, Pinecone and an AT Protocol node that the
+codebase has never contained.
 
-Smaller inaccuracies: the quickstart says `pnpm` (the API uses npm), and
-Flutter 3.19 (CI runs stable, currently 3.35).
+It was rewritten. It now has a *Not built yet* table that says of itself
+"listed because they have been described as finished elsewhere and are not",
+and it marks the DID half built and the equity pool not started. Checked
+line by line against the repository rather than taken on trust.
 
-This matters beyond tidiness. Those claims sit under a heading that says **For
-Investors**. Publishing false capability claims to investors is not a
-documentation bug. The README should be rewritten to describe the real system —
-which is a substantial, working piece of software that does not need the
-embellishment.
+**This section outlived its subject by long enough to mislead.** It was still
+here, still asserting the README overclaimed, after the rewrite had landed —
+and it was read and repeated as current. That is the failure mode a roadmap
+has: it is written once at the moment of an audit and then consulted forever,
+and nothing about reading it tells you how old the claim is. Hence the
+re-check that produced this pass, and hence the date at the top meaning
+something.
 
 ---
 

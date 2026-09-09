@@ -61,7 +61,7 @@ Listed because they have been described as finished elsewhere and are not.
 
 | Planned | State today |
 |:--|:--|
-| AR camera lenses | Colour lenses and face-tracked ones — glasses that stay on the eyes, sized in pupil-gaps so one lens is right on any face at any distance. Lenses are data, not code, so new ones ship from [their own repo](https://github.com/KyronLabs/kyron-lenses) without an app release — [how the app reads them](docs/LENS_FORMAT.md). Flat sprites, no 3D and no occlusion yet — [what is and is not there](docs/AR.md) |
+| AR camera lenses | Colour lenses, face-tracked ones — glasses that stay on the eyes, sized in pupil-gaps so one lens is right on any face at any distance — and effects that change the face itself: your nose and mouth taken out under skin sampled from your own cheeks, or everything frosted but the eyes. Lenses are data, not code, so new ones ship from [their own repo](https://github.com/KyronLabs/kyron-lenses) without an app release — [how the app reads them](docs/LENS_FORMAT.md). No 3D, no expression, no occlusion and no warping yet — [what is and is not there](docs/AR.md) |
 | Live video | Not started. Same |
 | Portable identity (DID / AT Protocol) | Half built. Every account gets a real `did:key` it proves it controls — but nothing consumes it, so nothing is portable yet. [What it does and does not do](docs/IDENTITY.md) |
 | End-to-end encrypted *posts* | Not started. Direct messages are encrypted; posts are public by nature |

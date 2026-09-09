@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/notification_model.dart';
+import 'package:kyron_app/widgets/empty_artwork.dart';
 import 'package:kyron_app/widgets/empty_state.dart';
 
 /// Every picture an empty state can ask for.
@@ -34,38 +33,56 @@ Widget _wrap(Widget child, {bool dark = false}) => MaterialApp(
 
 void main() {
   group('the artwork', () {
-    test('every piece is on disk at all three densities', () {
+    test('every state names a mark and a chip', () {
+      // The whole set is one drawing with two things swapped, so the only way
+      // to have a picture at all is to have both.
       for (final art in _art) {
-        final one = File(art.asset);
-        expect(one.existsSync(), isTrue, reason: '${art.asset} is missing');
-        // Declared as one path in pubspec.yaml; Flutter finds the rest by
-        // name, so a missing 3x silently serves a blurry 1x instead.
-        for (final density in ['2.0x', '3.0x']) {
-          final scaled = File(
-            art.asset.replaceFirst(
-              RegExp(r'([^/]+)$'),
-              '$density/${art.asset.split('/').last}',
-            ),
-          );
-          expect(scaled.existsSync(), isTrue,
-              reason: '${scaled.path} is missing');
-        }
+        expect(art.mark, isNotNull);
+        expect(art.chip, isNotNull);
       }
     });
 
-    test('no two states share a picture by accident', () {
-      // Reuse is deliberate where it happens -- a screen asks for a meaning,
-      // not a file -- but two names pointing at one file should be a choice
-      // somebody made, not a copy-paste.
-      final files = _art.map((art) => art.asset).toList();
-      expect(files.toSet().length, files.length);
+    testWidgets('draws in both themes without a fixed colour in it',
+        (tester) async {
+      // The point of drawing these rather than shipping them.
+      //
+      // The set this replaced was eighteen PNGs, each one a fixed colour, so
+      // a pale card stack would have been a white smear at night and a dark
+      // one a hole in the day. Nothing here is a literal: the cards, the
+      // pane, the marks and the chip all come off the scheme, and this fails
+      // if any of them stops doing that.
+      final shots = <bool, Color>{};
+
+      for (final dark in [false, true]) {
+        await tester.pumpWidget(_wrap(
+          const Center(
+            child: EmptyArtwork(mark: EmptyMark.lines, chip: Icons.circle),
+          ),
+          dark: dark,
+        ));
+        await tester.pumpAndSettle();
+
+        final card = tester
+            .widgetList<Container>(find.byType(Container))
+            .map((c) => c.decoration)
+            .whereType<BoxDecoration>()
+            .firstWhere((d) => d.color != null);
+        shots[dark] = card.color!;
+      }
+
+      expect(
+        shots[false],
+        isNot(shots[true]),
+        reason: 'a card that is the same colour in both themes is a literal, '
+            'which is the thing the images got wrong',
+      );
     });
 
-    test('every piece is declared under the folder pubspec ships', () {
-      final pubspec = File('pubspec.yaml').readAsStringSync();
-      expect(pubspec, contains('- lib/assets/empty/'));
+    testWidgets('every state in the set builds', (tester) async {
       for (final art in _art) {
-        expect(art.asset, startsWith('lib/assets/empty/'));
+        await tester.pumpWidget(_wrap(EmptyState(art: art, title: 'x')));
+        await tester.pumpAndSettle();
+        expect(tester.takeException(), isNull);
       }
     });
   });
@@ -130,29 +147,6 @@ void main() {
       }
     });
 
-    testWidgets('the light theme grounds the art, the dark one does not',
-        (tester) async {
-      // The pieces were rendered on black. On white the pale ones float off
-      // the page without a contact shadow under them; on a dark screen they
-      // have their own contrast and a second copy would only cost a draw.
-      await tester.pumpWidget(_wrap(const EmptyState(
-        art: EmptyArt.topics,
-        title: 'No topics yet',
-      )));
-      expect(find.byType(Image), findsNWidgets(2));
-      expect(find.byType(ImageFiltered), findsOneWidget);
-
-      await tester.pumpWidget(_wrap(
-        const EmptyState(art: EmptyArt.topics, title: 'No topics yet'),
-        dark: true,
-      ));
-      // MaterialApp lerps between themes, and brightness only flips at the
-      // halfway point -- one pumped frame is still the light one.
-      await tester.pumpAndSettle();
-      expect(find.byType(Image), findsOneWidget);
-      expect(find.byType(ImageFiltered), findsNothing);
-    });
-
     testWidgets('compact is smaller, not different', (tester) async {
       await tester.pumpWidget(_wrap(const Column(children: [
         EmptyState(art: EmptyArt.noMatch, title: 'Nothing found'),
@@ -161,9 +155,8 @@ void main() {
       ])));
 
       final sizes = tester
-          .widgetList<Image>(find.byType(Image))
-          .where((image) => image.color == null)
-          .map((image) => image.width!)
+          .widgetList<EmptyArtwork>(find.byType(EmptyArtwork))
+          .map((art) => art.size)
           .toList();
       expect(sizes, hasLength(2));
       expect(sizes.first, greaterThan(sizes.last));

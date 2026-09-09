@@ -1,79 +1,80 @@
 // lib/widgets/empty_state.dart
-import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+
+import 'empty_artwork.dart';
 
 /// The picture an empty state puts above its sentence.
 ///
 /// Named for what the screen means rather than what the picture is, so a
-/// screen asks for [EmptyArt.caughtUp] and does not care that today that is a
-/// party popper. Swapping the artwork is then one line here, not thirty across
-/// the app.
+/// screen asks for [EmptyArt.caughtUp] and does not care what that draws.
+/// Every call site was already written that way, which is why swapping the
+/// whole set is this file and nothing else.
 ///
-/// Cut from the source renders by tools/build_empty_art.py, which squares each
-/// one to a single box so every empty state draws the same shape whatever it
-/// is holding.
+/// It used to be eighteen rendered PNGs at three scales -- a doughnut, a UFO,
+/// crossed swords, a tin of salt -- sharing a purple gradient and nothing
+/// else, and fixed in colour whatever theme they were shown in. Each is now a
+/// mark on a card and a glyph on a chip, drawn by [EmptyArtwork] from the
+/// scheme, so the set is one thing and reads as one thing.
 class EmptyArt {
-  final String _file;
+  final EmptyMark mark;
+  final IconData chip;
 
-  const EmptyArt._(this._file);
+  const EmptyArt._(this.mark, this.chip);
 
-  String get asset => 'lib/assets/empty/$_file.png';
+  /// Nothing posted here.
+  static const posts = EmptyArt._(EmptyMark.lines, EmptyChips.post);
 
-  /// Nothing posted here. A melting slushie.
-  static const posts = EmptyArt._('slushie');
+  /// No clips or photos.
+  static const videos = EmptyArt._(EmptyMark.play, EmptyChips.video);
 
-  /// No clips or photos. A tub of popcorn.
-  static const videos = EmptyArt._('popcorn');
+  /// No messages, no replies, no comments.
+  static const messages = EmptyArt._(EmptyMark.lines, EmptyChips.message);
 
-  /// No messages, no replies, no comments. A speech bubble.
-  static const messages = EmptyArt._('bubble');
+  /// Read it all, nothing waiting.
+  static const caughtUp = EmptyArt._(EmptyMark.token, EmptyChips.done);
 
-  /// Read it all, nothing waiting. Party poppers.
-  static const caughtUp = EmptyArt._('poppers');
+  /// Nobody to show.
+  static const people = EmptyArt._(EmptyMark.person, EmptyChips.people);
 
-  /// Nobody to show. A pixel creature.
-  static const people = EmptyArt._('creature');
+  /// No communities.
+  static const communities = EmptyArt._(EmptyMark.group, EmptyChips.community);
 
-  /// No communities. A toadstool.
-  static const communities = EmptyArt._('mushroom');
+  /// No topics or interests.
+  static const topics = EmptyArt._(EmptyMark.group, EmptyChips.topic);
 
-  /// No topics or interests. A paint palette.
-  static const topics = EmptyArt._('palette');
+  /// Nothing trending.
+  static const trending = EmptyArt._(EmptyMark.lines, EmptyChips.trending);
 
-  /// Nothing trending. A trophy.
-  static const trending = EmptyArt._('trophy');
+  /// Nothing under this tag.
+  static const tag = EmptyArt._(EmptyMark.lines, EmptyChips.topic);
 
-  /// Nothing under this tag. A spiked ball.
-  static const tag = EmptyArt._('spikeball');
+  /// A search that matched nothing.
+  static const noMatch = EmptyArt._(EmptyMark.none, EmptyChips.search);
 
-  /// A search that matched nothing. A UFO.
-  static const noMatch = EmptyArt._('ufo');
+  /// Nothing saved.
+  static const saved = EmptyArt._(EmptyMark.token, EmptyChips.saved);
 
-  /// Nothing saved. A star lollipop.
-  static const saved = EmptyArt._('lollipop');
+  /// Nothing liked.
+  static const likes = EmptyArt._(EmptyMark.token, EmptyChips.like);
 
-  /// Nothing liked. A doughnut.
-  static const likes = EmptyArt._('donut');
+  /// Nothing written.
+  static const drafts = EmptyArt._(EmptyMark.lines, EmptyChips.draft);
 
-  /// Nothing written. A keyboard key.
-  static const drafts = EmptyArt._('fkey');
+  /// Nothing muted or blocked.
+  static const muted = EmptyArt._(EmptyMark.person, EmptyChips.muted);
 
-  /// Nothing muted or blocked. A spilled tin of salt.
-  static const muted = EmptyArt._('salt');
+  /// The camera features.
+  static const lens = EmptyArt._(EmptyMark.person, EmptyChips.lens);
 
-  /// The camera features. Pixel sunglasses.
-  static const lens = EmptyArt._('shades');
+  /// Broadcasting.
+  static const live = EmptyArt._(EmptyMark.play, EmptyChips.live);
 
-  /// Broadcasting. A LIVE badge.
-  static const live = EmptyArt._('live');
+  /// Polls.
+  static const polls = EmptyArt._(EmptyMark.group, EmptyChips.poll);
 
-  /// Polls. Crossed swords.
-  static const polls = EmptyArt._('swords');
-
-  /// A read that failed. A monitor showing nothing.
-  static const offline = EmptyArt._('monitor');
+  /// A read that failed.
+  static const offline = EmptyArt._(EmptyMark.none, EmptyChips.offline);
 }
 
 /// What a screen says when it has nothing to show.
@@ -223,50 +224,10 @@ class _Art extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final image = Image.asset(
-      art.asset,
-      width: size,
-      height: size,
-      fit: BoxFit.contain,
-      filterQuality: FilterQuality.medium,
-      // The title says what the state is; the picture repeating it would have
-      // a screen reader announce everything twice.
-      excludeFromSemantics: true,
-    );
-
-    if (Theme.of(context).brightness == Brightness.dark) {
-      return SizedBox(width: size, height: size, child: image);
-    }
-
-    return SizedBox(
-      width: size,
-      height: size,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          Transform.translate(
-            offset: Offset(0, size * 0.05),
-            child: ImageFiltered(
-              imageFilter: ui.ImageFilter.blur(
-                sigmaX: size * 0.055,
-                sigmaY: size * 0.055,
-              ),
-              child: Image.asset(
-                art.asset,
-                width: size,
-                height: size,
-                fit: BoxFit.contain,
-                // Flattens the drawing to its own silhouette, which is what
-                // gets blurred. Anything else would blur the artwork itself.
-                color: Colors.black.withValues(alpha: 0.30),
-                colorBlendMode: BlendMode.srcIn,
-                excludeFromSemantics: true,
-              ),
-            ),
-          ),
-          image,
-        ],
-      ),
+    // The title says what the state is; the picture repeating it would have a
+    // screen reader announce everything twice.
+    return ExcludeSemantics(
+      child: EmptyArtwork(mark: art.mark, chip: art.chip, size: size),
     );
   }
 }
