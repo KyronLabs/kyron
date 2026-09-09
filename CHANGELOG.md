@@ -12,6 +12,15 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Changed
+
+- New artwork on every empty screen. It used to be a set of rendered 3D
+  objects -- a doughnut, a UFO, crossed swords, a tin of salt -- sharing a
+  purple gradient and not much else. Each one is now the same small stack of
+  cards seen from the same angle, with a pane of glass across it, and it is
+  drawn rather than shipped as a picture: it takes its colours from whichever
+  theme you are in, so it is right at night instead of being a pale smear.
+
 ### Added
 
 - The like button celebrates. A ring goes out, six sparks follow it, and the

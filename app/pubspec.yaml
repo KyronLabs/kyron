@@ -79,7 +79,6 @@ flutter:
     - lib/assets/google.svg
     # Every empty state's picture. The 2.0x and 3.0x siblings are picked
     # up automatically; tools/build_empty_art.py writes all three.
-    - lib/assets/empty/
 
 fonts:
   - family: Inter
