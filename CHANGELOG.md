@@ -12,7 +12,22 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Added
+
+- The like button celebrates. A ring goes out, six sparks follow it, and the
+  heart gives before it swells -- the way something soft behaves when you
+  press it. Every button in the row gives a little; only the like bursts, and
+  only when a like goes on. Taking one back is quiet, because a button that
+  congratulates you for changing your mind is a strange thing to build. The
+  count slides rather than swapping, up as it grows and down as it shrinks.
+
 ### Fixed
+
+- The bottom navigation no longer needs an accurate thumb. On a phone with
+  gesture navigation the bar was giving its own height away to the system's
+  inset, leaving each tab answering over 29 pixels of the 64 it looked like it
+  owned -- and only responding where the icon and the label actually painted.
+  The whole of a tab is now the target.
 
 - Pull to refresh is visible on the feed again. It never stopped working --
   the spinner was landing behind the top bar, so pulling down looked like

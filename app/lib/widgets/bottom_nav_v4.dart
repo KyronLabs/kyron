@@ -21,40 +21,51 @@ class BottomNavV4 extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    // Whatever the phone reserves at the bottom for its gesture bar.
+    final inset = MediaQuery.paddingOf(context).bottom;
 
     return Theme(
       data: Theme.of(context).copyWith(
         splashFactory: NoSplash.splashFactory,
         highlightColor: Colors.transparent,
       ),
+      // The inset goes *under* the bar rather than out of it.
+      //
+      // This was a SafeArea inside a fixed 64, which took the gesture bar out
+      // of the row's own height. Measured against a 34px inset: the row got
+      // 30, the icon and label overflowed it by 11, and a tab answered over 29
+      // logical pixels of the 64 it looked like it owned -- against the 48
+      // Material asks for. That is the whole of "it takes too precise a tap",
+      // and it only ever appeared on a phone with gesture navigation, which is
+      // why the bar looked right everywhere it was checked.
       child: Container(
-        height: height,
+        height: height + inset,
+        padding: EdgeInsets.only(bottom: inset),
         decoration: BoxDecoration(
           border: Border(
               top: BorderSide(
                   color: scheme.outline.withValues(alpha: .15), width: .5)),
           color: isDark ? KyronTheme.darkSurface : KyronTheme.lightSurface,
         ),
-        child: SafeArea(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child:
-                    _item(context, Iconsax.home_copy, Iconsax.home, 'Home', 0),
-              ),
-              Expanded(
-                  child: _item(context, Iconsax.discover_copy, Iconsax.discover,
-                      'Explore', 1)),
-              Expanded(child: _RingFab()), // ← FAB with ring
-              Expanded(
-                  child: _item(context, Iconsax.people_copy, Iconsax.people,
-                      'Communities', 3)),
-              Expanded(
-                  child: _item(context, Iconsax.message_copy, Iconsax.message,
-                      'Messages', 4)),
-            ],
-          ),
+        // Stretch, so each tab's box is the full height of the bar and a
+        // thumb landing anywhere in it counts.
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: _item(context, Iconsax.home_copy, Iconsax.home, 'Home', 0),
+            ),
+            Expanded(
+                child: _item(context, Iconsax.discover_copy, Iconsax.discover,
+                    'Explore', 1)),
+            Expanded(child: _RingFab()), // ← FAB with ring
+            Expanded(
+                child: _item(context, Iconsax.people_copy, Iconsax.people,
+                    'Communities', 3)),
+            Expanded(
+                child: _item(context, Iconsax.message_copy, Iconsax.message,
+                    'Messages', 4)),
+          ],
         ),
       ),
     );
@@ -75,26 +86,36 @@ class BottomNavV4 extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final isActive = currentIndex == index;
 
-    return GestureDetector(
-      onTap: () => onTap(index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(isActive ? activeIcon : icon,
-              size: 22,
-              color: isActive
-                  ? scheme.primary
-                  : scheme.onSurface.withValues(alpha: .6)),
-          const SizedBox(height: 2),
-          Text(label,
+    final colour =
+        isActive ? scheme.primary : scheme.onSurface.withValues(alpha: .6);
+
+    return Semantics(
+      button: true,
+      selected: isActive,
+      label: label,
+      child: GestureDetector(
+        // Opaque, so the whole cell answers rather than only the pixels the
+        // icon and the label happen to paint. deferToChild -- the default --
+        // left the space around them swallowing taps.
+        behavior: HitTestBehavior.opaque,
+        onTap: () => onTap(index),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(isActive ? activeIcon : icon, size: 22, color: colour),
+            const SizedBox(height: 2),
+            Text(
+              label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: isActive
-                      ? scheme.primary
-                      : scheme.onSurface.withValues(alpha: .6))),
-        ],
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                color: colour,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

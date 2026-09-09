@@ -41,7 +41,7 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 | AR camera lenses | Colour lenses and face-tracked ones, published from the kyron-lenses repository rather than compiled in. Flat sprites on 478 landmarks; no 3D, expression or occlusion yet -- `docs/AR.md` |
 | Live | `ComingSoonScreen.live()` |
 | DID / portable identity | Half built. A real `did:key`, proved by signature -- but nothing consumes it, so it is not portable. `docs/IDENTITY.md` |
-| End-to-end encryption | No encryption code anywhere in the repo |
+| End-to-end encryption | Built for direct messages. X25519 per install, XChaCha20-Poly1305 on the wire, the server holding ciphertext it has no key for -- `docs/E2EE.md`. One device per install, no forward secrecy, no key verification, attachments still in the clear |
 | Creator equity pool | No contract, no chain, no testnet |
 | `identity/` service | A Dockerfile and three GitHub templates. The Nest module of the same name is real now |
 | `media/` service | A Dockerfile |
@@ -229,17 +229,26 @@ The decision that remains is the same one, now narrower:
 
 ### Phase 5 — The advertised features (quarters)
 
-13. ~~**AR camera.**~~ Built, for a narrow reading of AR. The create menu's
-    AR Lens entry opens a real camera with seven colour lenses, applied to the
-    preview and baked into the captured file by the same matrix so the picture
-    taken is the picture seen. There is no tracking of any kind: nothing
-    detects a face or a plane, and every lens is a function of colour over the
-    whole frame. It is a camera with filters and `docs/AR.md` says so.
+13. ~~**AR camera.**~~ Built, and it tracks faces now -- this entry used to
+    say "there is no tracking of any kind", which stopped being true two
+    schemas ago.
 
-    The lens maths is exercised against known pixels; the camera itself has
-    been compiled into an APK but never run, because this was built with no
-    phone attached. What that leaves unverified is listed in the doc rather
-    than left for somebody to discover.
+    MediaPipe's face mesh runs on the device and returns 478 landmarks. A lens
+    states its sizes in pupil-gaps rather than pixels, which is the one
+    measurement that keeps meaning the same thing as a head turns, so a lens
+    written once is right at any distance and on any face. Three kinds now: a
+    colour matrix, pictures hung on a tracked face (schema 2), and effects
+    that change the face itself (schema 3) -- a region filled with skin
+    sampled off that same face, or everything frosted but the eyes.
+
+    Lenses are published from the kyron-lenses repository rather than compiled
+    in, so a new one needs a merge and not a release. Nothing downloaded is
+    ever executed: a lens names things the app already knows how to do.
+
+    Still not done: no 3D, no expression (the tracker reports 52 blendshapes
+    and nothing reads them), no occlusion, no warping, and no video. And none
+    of the tracking has been seen running on a phone -- `docs/AR.md` keeps the
+    list of what is checked and what is not.
 14. **Live.** Streaming infrastructure is its own project, and the decision
     comes before the code: broadcast or interactive settles the vendor, the
     cost and the client, and the managed options differ by more than price
