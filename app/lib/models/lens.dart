@@ -2,6 +2,7 @@
 import 'dart:ui';
 
 import 'lens_attachment.dart';
+import 'lens_effect.dart';
 
 /// One AR lens: a name, and what it does to the picture.
 ///
@@ -38,16 +39,21 @@ class Lens {
   /// A lens may have both -- tint the picture *and* put glasses on.
   final List<LensAttachment> attachments;
 
+  /// Things done to the picture: covering part of a face with its own skin,
+  /// frosting everything but the eyes.
+  final List<LensEffect> effects;
+
   const Lens({
     required this.id,
     required this.name,
     this.matrix,
     this.author,
     this.attachments = const [],
+    this.effects = const [],
   });
 
   /// Whether this one needs a face before it can do anything.
-  bool get needsFace => attachments.isNotEmpty;
+  bool get needsFace => attachments.isNotEmpty || effects.isNotEmpty;
 
   /// What to wrap a preview or a still in. Null when the lens changes nothing.
   ColorFilter? get filter =>
@@ -68,8 +74,9 @@ class Lens {
   /// chip that is there and does not work, which is worse than a chip that is
   /// not there.
   ///
-  /// 1: a colour matrix. 2: attachments on a tracked face.
-  static const supportedSchema = 2;
+  /// 1: a colour matrix. 2: attachments on a tracked face. 3: effects that
+  /// change the picture itself rather than adding to it.
+  static const supportedSchema = 3;
 
   /// How many numbers a colour matrix has. Four rows of five.
   static const matrixLength = 20;
@@ -125,6 +132,20 @@ class Lens {
       if (attachments.isNotEmpty && schema < 2) return null;
     }
 
+    final effects = <LensEffect>[];
+    final rawEffects = json['effects'];
+    if (rawEffects != null) {
+      if (rawEffects is! List || rawEffects.length > 4) return null;
+      for (final entry in rawEffects) {
+        final effect = LensEffect.tryParse(entry);
+        // An effect the app cannot do makes the whole lens wrong. Drawing the
+        // rest would be a lens that half-works, which nobody published.
+        if (effect == null) return null;
+        effects.add(effect);
+      }
+      if (effects.isNotEmpty && schema < 3) return null;
+    }
+
     // The identity lens carries no matrix. Anything else must carry a whole
     // valid one -- a matrix with nineteen numbers is not a lens with a missing
     // number, it is a file that cannot be trusted about anything.
@@ -135,6 +156,7 @@ class Lens {
         name: name,
         author: author as String?,
         attachments: attachments,
+        effects: effects,
       );
     }
     final matrix = _readMatrix(rawMatrix);
@@ -146,6 +168,7 @@ class Lens {
       matrix: matrix,
       author: author as String?,
       attachments: attachments,
+      effects: effects,
     );
   }
 
@@ -181,11 +204,16 @@ class Lens {
   Map<String, Object?> toJson() => {
         'id': id,
         'name': name,
-        if (attachments.isNotEmpty) 'schema': 2,
+        if (effects.isNotEmpty)
+          'schema': 3
+        else if (attachments.isNotEmpty)
+          'schema': 2,
         if (matrix != null) 'matrix': matrix,
         if (author != null) 'author': author,
         if (attachments.isNotEmpty)
           'attachments': [for (final a in attachments) a.toJson()],
+        if (effects.isNotEmpty)
+          'effects': [for (final e in effects) e.toJson()],
       };
 
   // -------------------------------------------------------------------------

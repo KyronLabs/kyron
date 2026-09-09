@@ -14,6 +14,20 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- An AR lens camera, with lenses that follow a face. A face mesh runs on the
+  device, and a lens states its sizes as multiples of the distance between the
+  pupils rather than in pixels -- so one written once is right at any distance
+  from the camera, on any face, on any phone. Two lenses arrive with it: Blank
+  takes your nose and mouth out under skin the colour of the rest of your face,
+  and Frosted etches the whole picture and leaves only your eyes. Tracking runs
+  only while a lens actually needs it, and the picture you take is the picture
+  you saw -- the effects are drawn into the saved file, not just the preview.
+- New lenses no longer need an app release. The camera fetches its catalogue
+  from [kyron-lenses](https://github.com/KyronLabs/kyron-lenses); merging one
+  there publishes it. A lens is data rather than code and there is nothing in
+  it to execute, so it names things the app already knows how to do -- a
+  colour, an anchor, a region -- and one the app does not understand is
+  dropped rather than half-drawn.
 - Read receipts arrive as they happen: opening a thread fills in the other
   side's ticks without either of you refreshing, and a message somebody
   withdraws leaves your screen rather than sitting there until you reopen the

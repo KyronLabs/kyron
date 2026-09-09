@@ -14,6 +14,7 @@ import 'package:path_provider/path_provider.dart';
 
 import '../models/face_anchor.dart';
 import '../models/lens.dart';
+import '../models/lens_effect.dart';
 import '../models/post_media.dart';
 import '../providers/composer_provider.dart';
 import '../services/app_log.dart';
@@ -21,20 +22,22 @@ import '../services/attachment_images.dart';
 import '../services/face_tracker.dart';
 import '../services/lens_catalogue.dart';
 import '../services/lens_renderer.dart';
+import '../services/skin_sampler.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/face_attachment_painter.dart';
 import '../widgets/face_reticle.dart';
+import '../widgets/lens_effect_layer.dart';
 
 /// The camera, with a lens over it.
 ///
 /// This replaces `ComingSoonScreen.arLens()`, which said lenses were not built
 /// and kept the camera closed -- which was honest at the time.
 ///
-/// A lens is one or both of two things: a colour transform over the whole
-/// frame, and pictures hung on a tracked face. Both are applied to the live
-/// preview and baked into the saved file by the same code, so the picture
-/// taken is the picture seen -- which is the one thing this screen must never
-/// get wrong.
+/// A lens is any of three things: a colour transform over the whole frame,
+/// pictures hung on a tracked face, and effects that change the face itself.
+/// All three are applied to the live preview and baked into the saved file by
+/// the same code, so the picture taken is the picture seen -- which is the one
+/// thing this screen must never get wrong.
 ///
 /// See docs/LENS_FORMAT.md for what a lens may contain, and docs/AR.md for
 /// what the tracking does and does not do.
@@ -80,6 +83,14 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
   /// Where the face is right now, or null when there is not one.
   FaceAnchor? _face;
+
+  /// The whole mesh behind [_face]. Attachments only need an anchor, but an
+  /// effect is a region cut out of a face and a region needs the point cloud.
+  List<FacePoint>? _landmarks;
+
+  /// The skin colour read off this face, eased between frames. Null until a
+  /// face has been seen, and a fill draws nothing without it.
+  Color? _skin;
 
   /// The size of the frames the tracker is reading, which is what the
   /// landmarks are normalised against.
@@ -277,21 +288,62 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     final size = Size(frame.width.toDouble(), frame.height.toDouble());
 
     if (points == null) {
-      if (_face != null) setState(() => _face = null);
+      if (_face != null) setState(_lost);
       return;
     }
 
-    final anchor =
-        FaceAnchor.resolve(_lens.attachments.first.anchor, points, size);
+    // Attachments hang off whatever the lens asked for. An effects-only lens
+    // has nothing to ask, and the eyes are the right default: the gap between
+    // the pupils is the unit every region and every blur is stated in.
+    final anchor = FaceAnchor.resolve(
+      _lens.attachments.isEmpty
+          ? FaceAnchorPoint.eyes
+          : _lens.attachments.first.anchor,
+      points,
+      size,
+    );
     if (anchor == null) {
-      if (_face != null) setState(() => _face = null);
+      if (_face != null) setState(_lost);
       return;
     }
+
+    final skin = _lens.effects.any((effect) => effect is FillEffect)
+        ? _readSkin(frame, points, size)
+        : null;
+
     setState(() {
       _face = anchor;
+      _landmarks = points;
       _frame = size;
+      if (skin != null) _skin = _settle(_skin, skin);
     });
   }
+
+  void _lost() {
+    _face = null;
+    _landmarks = null;
+    // Dropped with the face rather than kept: the next face through the
+    // viewfinder is somebody else, and easing their fill out of the last
+    // person's skin tone would be visible.
+    _skin = null;
+  }
+
+  /// The skin colour in this frame, or null when it cannot be read.
+  Color? _readSkin(CameraImage frame, List<FacePoint> points, Size size) {
+    final read = SkinSampler.forCameraImage(frame);
+    if (read == null) return null;
+    final eyes = FaceAnchor.resolve(FaceAnchorPoint.eyes, points, size);
+    if (eyes == null) return null;
+    return SkinSampler.sample(read: read, face: eyes);
+  }
+
+  /// Eased towards the new reading rather than snapped to it.
+  ///
+  /// Auto-exposure moves between frames and the sampled colour moves with it.
+  /// Snapping makes the fill flicker; a quarter of the way per frame settles
+  /// within a few frames and still follows somebody walking into shade.
+  static Color _settle(Color? from, Color to) =>
+      from == null ? to : Color.lerp(from, to, 0.25)!;
 
   Future<void> _flip() async {
     if (_cameras.length < 2) return;
@@ -334,14 +386,21 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// lying.
   Future<String> _bake(XFile shot) async {
     final attachments = _pictures.ready(_lens);
-    if (_lens.filter == null && attachments.isEmpty) return shot.path;
+    final effects = _lens.effects;
+    if (_lens.filter == null && attachments.isEmpty && effects.isEmpty) {
+      return shot.path;
+    }
 
     final bytes = await shot.readAsBytes();
     final decoded = await _decode(bytes);
     final filtered = await widget.renderer.apply(decoded, _lens);
+    // Effects first, attachments over them -- the order the preview stacks
+    // them in, because it is the same picture.
+    final changed =
+        effects.isEmpty ? filtered : await _drawEffects(filtered, effects);
     final drawn = attachments.isEmpty
-        ? filtered
-        : await _drawAttachments(filtered, attachments);
+        ? changed
+        : await _drawAttachments(changed, attachments);
     final png = await widget.renderer.encode(drawn);
 
     final directory = await getTemporaryDirectory();
@@ -351,6 +410,68 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     );
     await File(path).writeAsBytes(png, flush: true);
     return path;
+  }
+
+  /// The effects, drawn into the captured still.
+  ///
+  /// No rescaling, unlike [_drawAttachments]: the landmarks are normalised,
+  /// so resolving them against the photograph's own size puts every region
+  /// straight into its coordinates. The still is several times the preview
+  /// stream and a region is the shape of a jaw -- a scale factor slightly
+  /// off would show as a seam along it.
+  Future<ui.Image> _drawEffects(
+    ui.Image photo,
+    List<LensEffect> effects,
+  ) async {
+    final points = _landmarks;
+    if (points == null) return photo;
+
+    final size = Size(photo.width.toDouble(), photo.height.toDouble());
+    final face = FaceAnchor.resolve(FaceAnchorPoint.eyes, points, size);
+    if (face == null) return photo;
+
+    // Read off the photograph rather than reused from the preview: this is
+    // the picture being kept, at its own exposure and with the lens's colour
+    // filter already in it, so a fill sampled anywhere else would be a patch
+    // of a slightly different photograph. Falls back to the preview's
+    // reading when the pixels cannot be had.
+    final skin = await _skinIn(photo, points, size) ?? _skin;
+
+    final recorder = ui.PictureRecorder();
+    final canvas = ui.Canvas(recorder);
+    canvas.drawImage(photo, ui.Offset.zero, ui.Paint());
+    const LensEffectBaker().paint(
+      canvas,
+      photo,
+      effects,
+      landmarks: points,
+      face: face,
+      frame: size,
+      skin: skin,
+    );
+
+    final picture = recorder.endRecording();
+    try {
+      return await picture.toImage(photo.width, photo.height);
+    } finally {
+      picture.dispose();
+    }
+  }
+
+  /// The skin colour in the photograph itself.
+  Future<Color?> _skinIn(
+    ui.Image photo,
+    List<FacePoint> points,
+    Size size,
+  ) async {
+    final face = FaceAnchor.resolve(FaceAnchorPoint.eyes, points, size);
+    if (face == null) return null;
+    final rgba = await photo.toByteData(format: ui.ImageByteFormat.rawRgba);
+    if (rgba == null) return null;
+    return SkinSampler.sample(
+      read: SkinSampler.forRgba(rgba, photo.width, photo.height),
+      face: face,
+    );
   }
 
   /// The attachments, drawn onto the captured still.
@@ -487,12 +608,40 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
           fit: StackFit.expand,
           children: [
             tinted,
+            // Under the attachments on purpose: glasses go on a frosted
+            // face, not behind the frost.
+            if (_lens.effects.isNotEmpty) _effects(front),
             if (_lens.needsFace) _attachments(front),
             if (_lens.needsFace && _face == null) const FaceReticle(),
           ],
         ),
       ),
     );
+  }
+
+  /// The effects, over the preview.
+  Widget _effects(bool mirrored) {
+    final face = _eyes;
+    final points = _landmarks;
+    if (face == null || points == null) return const SizedBox.shrink();
+
+    return LensEffectOverlay(
+      effects: _lens.effects,
+      landmarks: points,
+      face: face,
+      frame: _frame,
+      skin: _skin,
+      mirrored: mirrored,
+    );
+  }
+
+  /// The face measured from the eyes, which is what every effect is scaled
+  /// against. Cheap enough to work out on demand -- it is a subtraction, an
+  /// atan2 and a distance -- so it is not another field to keep in step.
+  FaceAnchor? get _eyes {
+    final points = _landmarks;
+    if (points == null || _frame.isEmpty) return null;
+    return FaceAnchor.resolve(FaceAnchorPoint.eyes, points, _frame);
   }
 
   /// The attachments, over the preview, at the size the preview is drawn.
