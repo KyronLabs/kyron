@@ -1,4 +1,4 @@
-name: Flutter Android Release
+name: Release
 
 on:
   push:
@@ -15,12 +15,72 @@ concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false
 
+# Set once, at the top, so the Android APKs and the Windows zip carry the same
+# build number. They used to be one job, so this was automatic; now that they
+# are two, a per-job default would let one platform ship as +41 and the other
+# as +42 out of the same tag.
 env:
   KYRON_BUILD_NUMBER: ${{ github.run_number }}
 
 jobs:
-  release:
-    name: Build and publish Android release
+  # Everything that does not need a platform toolchain, once, before either
+  # build starts. A tag can point at any commit -- including one that never saw
+  # CI -- so this is the gate, and failing it costs thirty seconds rather than
+  # two platform builds.
+  checks:
+    name: Check the tag and the code
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout release tag
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Validate tag matches pubspec version
+        id: version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          pubspec_version=$(sed -nE 's/^version: ([0-9]+\.[0-9]+\.[0-9]+).*/\1/p' pubspec.yaml)
+          tag_version="${RELEASE_TAG#v}"
+          test "$pubspec_version" = "$tag_version" || {
+            echo "Tag $RELEASE_TAG does not match pubspec version $pubspec_version"
+            exit 1
+          }
+          echo "version=$pubspec_version" >> "$GITHUB_OUTPUT"
+
+      # Read here rather than at publish time, so a release with no notes fails
+      # before anything is built rather than after both platforms have run.
+      - name: Require notes for this version
+        working-directory: .
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: python3 scripts/changelog.py show "$VERSION" > /dev/null
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed lib test
+
+      - name: Analyze
+        run: flutter analyze --no-fatal-warnings --no-fatal-infos
+
+      - name: Test
+        run: flutter test
+
+  android:
+    name: Build the Android release
+    needs: checks
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -47,44 +107,6 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-
-      - name: Validate tag matches pubspec version
-        id: version
-        env:
-          RELEASE_TAG: ${{ github.ref_name }}
-        run: |
-          pubspec_version=$(sed -nE 's/^version: ([0-9]+\.[0-9]+\.[0-9]+).*/\1/p' pubspec.yaml)
-          tag_version="${RELEASE_TAG#v}"
-          test "$pubspec_version" = "$tag_version" || {
-            echo "Tag $RELEASE_TAG does not match pubspec version $pubspec_version"
-            exit 1
-          }
-          echo "version=$pubspec_version" >> "$GITHUB_OUTPUT"
-
-      # A tag used to go straight to a published, signed, installable build
-      # without anything having been checked on the way. CI runs on branches,
-      # but a tag can point at any commit -- including one that never saw it.
-      - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed lib test
-
-      - name: Analyze
-        run: flutter analyze --no-fatal-warnings --no-fatal-infos
-
-      - name: Test
-        run: flutter test
-
-      # Read before anything is built, so a release with no notes fails in
-      # thirty seconds rather than after a full Android build.
-      - name: Read release notes from the changelog
-        working-directory: .
-        env:
-          VERSION: ${{ steps.version.outputs.version }}
-        run: |
-          {
-            echo 'notes<<KYRON_NOTES_EOF'
-            python3 scripts/changelog.py show "$VERSION"
-            echo 'KYRON_NOTES_EOF'
-          } >> "$GITHUB_ENV"
 
       - name: Decode Android signing key
         working-directory: .
@@ -126,12 +148,11 @@ jobs:
       - name: Collect per-architecture APKs
         working-directory: .
         env:
-          VERSION: ${{ steps.version.outputs.version }}
-          BUILD_NUMBER: ${{ env.KYRON_BUILD_NUMBER }}
+          VERSION: ${{ needs.checks.outputs.version }}
         run: |
           set -euo pipefail
           mkdir -p release-artifacts
-          stem="kyron-${VERSION}+${BUILD_NUMBER}"
+          stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}"
 
           for abi in arm64-v8a armeabi-v7a x86_64; do
             src="app/build/app/outputs/flutter-apk/app-${abi}-release.apk"
@@ -160,21 +181,134 @@ jobs:
       - name: Collect the universal APK and the bundle
         working-directory: .
         env:
-          VERSION: ${{ steps.version.outputs.version }}
-          BUILD_NUMBER: ${{ env.KYRON_BUILD_NUMBER }}
+          VERSION: ${{ needs.checks.outputs.version }}
         run: |
           set -euo pipefail
-          stem="kyron-${VERSION}+${BUILD_NUMBER}"
+          stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}"
           cp app/build/app/outputs/flutter-apk/app-release.apk \
             "release-artifacts/${stem}-universal.apk"
           cp app/build/app/outputs/bundle/release/app-release.aab \
             "release-artifacts/${stem}.aab"
           ls -lh release-artifacts
 
+      - name: Hand the Android build to the publish job
+        uses: actions/upload-artifact@v4
+        with:
+          name: android
+          path: release-artifacts/*
+          if-no-files-found: error
+          retention-days: 1
+
+  windows:
+    name: Build the Windows release
+    needs: checks
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout release tag
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build the Windows app
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          # A plain array passed to a native command, which PowerShell expands
+          # one element per argument. Not splatted with @: that is for cmdlets,
+          # and only recent PowerShell extends it to native commands. Not
+          # $args either -- that name is already PowerShell's.
+          $flags = @('--release', '--build-number', $env:KYRON_BUILD_NUMBER)
+          if ($env:SUPABASE_ANON_KEY) {
+            $flags += "--dart-define=SUPABASE_ANON_KEY=$env:SUPABASE_ANON_KEY"
+          }
+          flutter build windows $flags
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      # A Windows app is a folder, not a file: the executable needs
+      # flutter_windows.dll, every plugin's DLL and the whole data directory
+      # beside it, and none of that is inside the .exe. So the zip carries the
+      # folder, and it has a name inside it -- unzipping a bare pile of DLLs
+      # into Downloads is how that ends badly.
+      #
+      # The Release directory is located rather than spelled out: Flutter moved
+      # it from build/windows to build/windows/x64 once already, and a
+      # hard-coded path that stops matching would silently zip nothing.
+      - name: Package the Windows app
+        working-directory: .
+        shell: pwsh
+        env:
+          VERSION: ${{ needs.checks.outputs.version }}
+        run: |
+          & ./scripts/package-windows.ps1 `
+            -Stem "kyron-$env:VERSION+$env:KYRON_BUILD_NUMBER" `
+            -OutputDirectory release-artifacts
+
+      - name: Hand the Windows build to the publish job
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: release-artifacts/*
+          if-no-files-found: error
+          retention-days: 1
+
+  # One release, published once, with both platforms in it. Separate because
+  # the two builds run on different operating systems and a release that
+  # appeared after the first one finished would be missing the other.
+  publish:
+    name: Publish the release
+    needs: [checks, android, windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release tag
+        uses: actions/checkout@v4
+
+      - name: Collect both platforms
+        uses: actions/download-artifact@v4
+        with:
+          path: incoming
+
+      - name: Gather them into one directory
+        env:
+          VERSION: ${{ needs.checks.outputs.version }}
+        run: |
+          set -euo pipefail
+          mkdir -p release-artifacts
+          find incoming -type f -exec mv {} release-artifacts/ \;
+          ls -lh release-artifacts
+
+          # Both platforms, or it is not this release. A download-artifact that
+          # quietly returned nothing would otherwise publish an Android-only
+          # release under a version that promised both.
+          test -f "release-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}-windows-x64.zip"
+          test -f "release-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}-arm64-v8a.apk"
+          test -f "release-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
+
+      - name: Read release notes from the changelog
+        env:
+          VERSION: ${{ needs.checks.outputs.version }}
+        run: |
+          {
+            echo 'notes<<KYRON_NOTES_EOF'
+            python3 scripts/changelog.py show "$VERSION"
+            echo 'KYRON_NOTES_EOF'
+          } >> "$GITHUB_ENV"
+
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          name: Kyron ${{ steps.version.outputs.version }}
+          name: Kyron ${{ needs.checks.outputs.version }}
           # The changelog, not GitHub's generated notes. Generated notes cover
           # everything since the previous tag, and the previous tag is nearly
           # always a debug build -- so a versioned release described whatever
@@ -184,9 +318,21 @@ jobs:
 
             ---
 
-            **Which APK?** `arm64-v8a` for any phone from roughly 2015 onwards.
+            ### Windows
+
+            `kyron-*-windows-x64.zip`. Unzip it anywhere and run `Kyron.exe`
+            inside the `Kyron` folder — keep the folder together, the DLLs
+            beside the executable are the app. Windows will warn that the
+            publisher is unknown, because the build is not code-signed; More
+            info → Run anyway.
+
+            ### Android
+
+            `arm64-v8a` for any phone from roughly 2015 onwards.
             `armeabi-v7a` for older 32-bit devices, `x86_64` for emulators. The
-            `universal` build works everywhere and is about three times the size.
+            `universal` build works everywhere and is about three times the
+            size. The `.aab` is for the Play Store and is not installable by
+            hand.
           generate_release_notes: false
           make_latest: true
           files: release-artifacts/*

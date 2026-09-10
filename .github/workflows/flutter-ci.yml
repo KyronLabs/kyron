@@ -6,14 +6,20 @@ on:
     paths:
       - 'app/**'
       - 'CHANGELOG.md'
-      - 'scripts/changelog.py'
-      - '.github/workflows/flutter-ci.yml'
+      - 'scripts/**'
+      # Every workflow, not just this one: the release wiring is checked below,
+      # and a filter naming only this file meant a change to the release
+      # workflow ran nothing at all.
+      - '.github/workflows/**'
   pull_request:
     paths:
       - 'app/**'
       - 'CHANGELOG.md'
-      - 'scripts/changelog.py'
-      - '.github/workflows/flutter-ci.yml'
+      - 'scripts/**'
+      # Every workflow, not just this one: the release wiring is checked below,
+      # and a filter naming only this file meant a change to the release
+      # workflow ran nothing at all.
+      - '.github/workflows/**'
 
 permissions:
   contents: read
@@ -123,8 +129,14 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      # Release rather than debug, which costs a couple of minutes and buys
+      # two things: the zip below is one somebody can actually run -- a debug
+      # Windows build needs the Visual C++ debug runtime, which only machines
+      # with Visual Studio have -- and this is the same build the release
+      # workflow makes, so it is the release path being checked rather than a
+      # near neighbour of it.
       - name: Build
-        run: flutter build windows --debug
+        run: flutter build windows --release
 
       # The runner is configured in files no test can reach from Ubuntu, and a
       # wrong one of these fails nothing -- it just ships. So the build says
@@ -147,10 +159,31 @@ jobs:
             exit 1
           }
 
+      # The same script both release workflows package with. Run here so the
+      # packaging a release depends on has already worked on every pull
+      # request, rather than being first exercised by a release.
+      - name: Package the Windows app
+        working-directory: .
+        shell: pwsh
+        run: |
+          & ./scripts/package-windows.ps1 `
+            -Stem "kyron-ci-${{ github.run_number }}" `
+            -OutputDirectory ci-artifacts
+
+      # So a Windows build of any branch can be downloaded and tried without
+      # cutting a release or owning a Windows machine to build on.
+      - name: Upload the Windows app
+        uses: actions/upload-artifact@v4
+        with:
+          name: kyron-windows-${{ github.run_number }}
+          path: ci-artifacts/*.zip
+          if-no-files-found: error
+          retention-days: 14
+
   # A separate job, because it has nothing to do with Flutter and should not
   # wait behind an Android toolchain to tell you a heading is malformed.
   changelog:
-    name: Check the changelog parses
+    name: Check the changelog and the release wiring
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -162,3 +195,13 @@ jobs:
       # malformed, so it is checked on every change instead.
       - name: Parse CHANGELOG.md
         run: python3 scripts/changelog.py unreleased
+
+      # Same reasoning, one level up. A release is meant to carry Windows and
+      # Android together, which is two build jobs, one build number and a
+      # publish job that waits for both -- and none of those failing is
+      # something a workflow file failing to parse would catch. Checked here so
+      # it is found on the pull request rather than by half a release.
+      - name: Check the release wiring
+        run: |
+          python3 -m pip install --quiet pyyaml
+          python3 scripts/check-workflows.py

@@ -145,10 +145,26 @@ The Flutter client lives in `app/`. Its version is `MAJOR.MINOR.PATCH+BUILD` in
 `app/pubspec.yaml`; GitHub Actions supplies the build number from the run
 number, so every artifact has a unique Android version code.
 
-Every push to `main` produces a debug APK from the **Flutter Debug Build**
-workflow. To cut a release, run **Create Versioned Release** and choose `patch`,
-`minor` or `major`: it bumps the version, commits, and tags `vX.Y.Z`, which
-starts **Flutter Android Release** to publish a signed APK and App Bundle.
+Kyron is one app on several platforms. Windows and Android are the two being
+shipped now, and every build produces both:
+
+| | Windows | Android |
+|---|---|---|
+| **Development build**, on every push to `main` | `*-windows-x64.zip` | debug APKs, per architecture and universal |
+| **Release**, on a `vX.Y.Z` tag | `*-windows-x64.zip` | signed APKs, per architecture and universal, plus an `.aab` |
+
+To cut a release, run **Create Versioned Release** and choose `patch`, `minor`
+or `major`: it bumps the version, commits, and tags `vX.Y.Z`, which starts
+**Release**. Both platforms build in parallel from one set of checks and are
+published together — the publish job waits for both, so a release is never
+half of one. `scripts/check-workflows.py` checks that shape on every pull
+request, because a release workflow that has quietly lost a platform still
+parses and still runs.
+
+The Windows app is a folder, not a file: the zip carries `Kyron.exe` with
+`flutter_windows.dll`, the plugin DLLs and the `data` directory beside it. It
+is not code-signed, so Windows warns that the publisher is unknown. Not every
+feature is there yet — [what runs where](app/lib/services/platform_support.dart).
 
 Release signing needs `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`,
 `ANDROID_KEY_ALIAS` and `ANDROID_KEY_PASSWORD` as repository secrets. The
