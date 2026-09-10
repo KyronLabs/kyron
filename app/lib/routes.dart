@@ -1,6 +1,5 @@
 // lib/routes.dart
 import 'package:flutter/material.dart';
-import 'config/legal_links.dart';
 import 'models/onboarding_model.dart';
 import 'models/profile_model.dart';
 import 'screens/about_screen.dart';
@@ -32,7 +31,6 @@ import 'screens/root_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/video_feed_screen.dart';
 import 'screens/notifications_screen.dart';
-import 'screens/webview_screen.dart';
 import 'screens/composer_screen.dart';
 import 'screens/onboard_step1_screen.dart';
 import 'screens/onboard_step2_screen.dart';
@@ -56,7 +54,6 @@ class Routes {
   static const createArLens = '/create/ar-lens';
   static const createVoicePost = '/create/voice';
   static const goLive = '/create/live';
-  static const webview = '/webview';
   static const settings = '/settings';
   static const notifications = '/notifications';
   static const postDetail = '/post';
@@ -80,8 +77,6 @@ class Routes {
   static const savedPosts = '/saved';
   static const likedPosts = '/liked';
   static const help = '/help';
-  static const terms = '/terms';
-  static const privacy = '/privacy';
   static const about = '/about';
   static const aboutStatus = '/about/status';
   static const aboutSystemLog = '/about/system-log';
@@ -223,20 +218,6 @@ class Routes {
       case aboutErrorReport:
         return _page(const ErrorReportScreen());
 
-      // The drawer linked to these two by name. Nothing answered, so both
-      // fell through to the default and opened the splash screen.
-      case terms:
-        return _page(const WebViewScreen(
-          url: LegalLinks.terms,
-          title: LegalLinks.termsTitle,
-        ));
-
-      case privacy:
-        return _page(const WebViewScreen(
-          url: LegalLinks.privacy,
-          title: LegalLinks.privacyTitle,
-        ));
-
       case settingsChangeEmail:
         return _page(const SettingsChangeEmailScreen());
 
@@ -325,13 +306,6 @@ class Routes {
 
       case goLive:
         return _page(const ComingSoonScreen.live());
-
-      case webview:
-        final args = settings.arguments as Map<String, String>?;
-        return _page(WebViewScreen(
-          url: args?['url'] ?? '',
-          title: args?['title'],
-        ));
 
       // An unknown name is a bug in the caller, and sending it to the splash
       // screen hid that: the app appeared to hang on a logo. It now says which

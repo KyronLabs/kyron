@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../routes.dart';
 import 'post_action_colors.dart';
+import '../services/app_browser.dart';
 
 /// A post's text, with its hashtags, mentions and links picked out.
 ///
@@ -167,11 +167,9 @@ class _PostTextState extends State<PostText> {
       return;
     }
 
-    final uri =
-        Uri.tryParse(token.startsWith('http') ? token : 'https://$token');
-    if (uri == null) return;
-    // In the browser rather than the in-app view: a link in someone else's
-    // post should not look like part of Kyron.
-    await launchUrl(uri, mode: LaunchMode.externalApplication);
+    // Kyron's own browser, not the phone's. Where the link goes is shown
+    // across the top of it for as long as the page is open, which is the
+    // thing handing the reader to Chrome was ever really for.
+    await AppBrowser.open(context, token);
   }
 }

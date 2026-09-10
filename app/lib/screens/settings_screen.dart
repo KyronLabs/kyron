@@ -12,6 +12,8 @@ import '../services/app_preferences.dart';
 import '../widgets/kyron_toggle.dart';
 import '../routes.dart';
 import 'dart:async';
+import '../config/legal_links.dart';
+import '../services/app_browser.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -501,11 +503,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               icon: Iconsax.info_circle_copy,
               label: 'Help Centre',
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
-              onTap: () =>
-                  Navigator.pushNamed(context, Routes.webview, arguments: {
-                'url': 'https://help.kyron.so',
-                'title': 'Help Centre',
-              }),
+              onTap: () => AppBrowser.open(
+                context,
+                SupportLinks.helpCentre,
+                title: SupportLinks.helpCentreTitle,
+              ),
               helpText: 'Browse help articles',
             ),
             _settingsRow(

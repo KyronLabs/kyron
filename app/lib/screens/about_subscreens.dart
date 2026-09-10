@@ -4,13 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../providers/service_status_provider.dart';
 import '../services/app_info.dart';
 import '../services/app_log.dart';
 import '../widgets/settings_scaffold.dart';
 import '../widgets/empty_state.dart';
+import '../services/app_browser.dart';
 
 // ===========================================================================
 // SERVICE STATUS
@@ -463,12 +463,10 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
 
     // A mail app is not guaranteed to exist. Falling back to the clipboard is
     // better than a button that appears to do nothing.
-    var launched = false;
-    try {
-      launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } catch (_) {
-      launched = false;
-    }
+    // A mail app, not a browser: no web view sends mail. AppBrowser.leave is
+    // the only call in the app allowed to hand a link to another app, and it
+    // answers false rather than throwing when nothing takes it.
+    final launched = await AppBrowser.leave(uri);
 
     if (!mounted) return;
     if (!launched) {

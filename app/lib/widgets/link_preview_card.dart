@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../models/link_preview.dart';
 import '../providers/feed_provider.dart';
+import '../services/app_browser.dart';
 
 /// The card for one link, fetched once and shared by every widget showing it.
 ///
@@ -64,7 +64,7 @@ class _Card extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: SpacingTokens.space12),
       child: InkWell(
-        onTap: _open,
+        onTap: () => AppBrowser.open(context, preview.url),
         borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
         child: Container(
           decoration: BoxDecoration(
@@ -110,15 +110,6 @@ class _Card extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _open() async {
-    final uri = Uri.tryParse(preview.url);
-    if (uri == null) return;
-    // Externally, not in an in-app view: a link in somebody else's post should
-    // not look like part of Kyron, and the browser is where a reader can see
-    // where they have actually been sent.
-    await launchUrl(uri, mode: LaunchMode.externalApplication);
   }
 }
 

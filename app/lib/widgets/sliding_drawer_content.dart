@@ -11,6 +11,8 @@ import '../routes.dart';
 import '../services/app_info.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import '../config/legal_links.dart';
+import '../services/app_browser.dart';
 
 class SlidingDrawerContent extends ConsumerWidget {
   final VoidCallback onCloseDrawer;
@@ -419,7 +421,8 @@ class SlidingDrawerContent extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _textLink(context, 'Terms',
-                  onTap: () => _go(context, Routes.terms)),
+                  onTap: () =>
+                      _leave(context, LegalLinks.terms, LegalLinks.termsTitle)),
               const SizedBox(width: SpacingTokens.space16),
               Text('•',
                   style: TextStyle(
@@ -428,7 +431,8 @@ class SlidingDrawerContent extends ConsumerWidget {
                   )),
               const SizedBox(width: SpacingTokens.space16),
               _textLink(context, 'Privacy',
-                  onTap: () => _go(context, Routes.privacy)),
+                  onTap: () => _leave(
+                      context, LegalLinks.privacy, LegalLinks.privacyTitle)),
             ],
           ),
           const SizedBox(height: SpacingTokens.space12),
@@ -533,6 +537,12 @@ class SlidingDrawerContent extends ConsumerWidget {
   void _go(BuildContext context, String route) {
     onCloseDrawer();
     Navigator.pushNamed(context, route);
+  }
+
+  /// The same, for a published page. Same order, same reason.
+  void _leave(BuildContext context, String url, String title) {
+    onCloseDrawer();
+    AppBrowser.open(context, url, title: title);
   }
 
   // ============= DID MODAL =============

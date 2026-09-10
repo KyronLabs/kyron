@@ -12,6 +12,35 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Added
+
+- Kyron has a proper browser. It arrives as a card over the app rather than a
+  screen in front of it -- the feed stays visible along the top, dimmed --
+  with the page's own title across the bar and, underneath it, a padlock and
+  the host it is really on. Follow a redirect and the bar follows with you.
+  Land on something served over plain http and the line turns red and says
+  *Not private* before it says the host. Tap the bar for the address in full,
+  spelled out, with the connection explained in a sentence, because a host
+  alone cannot tell you that the login page you are looking at is on somebody
+  else's domain.
+
+  It has tabs, and they come from the pages themselves: a link asking to open
+  in a new window used to do nothing at all in an in-app browser -- no error,
+  no navigation, the page just ignored your finger -- and now opens a tab. The
+  strip along the top only appears once there is more than one, and each tab
+  carries a colour and a letter taken from its host, so three of them are
+  three different things at a glance.
+
+  Back, forward, reload and share sit along the bottom where a thumb is. The
+  system back gesture unwinds the page's history first, then the tab, then the
+  browser. A page that fails to load says which host failed and why, and
+  offers to try again -- instead of the blank white nothing a web view leaves
+  behind, which looks exactly like a page still coming.
+
+  Leaving is still there, once, as a choice you make: *Open in browser* on the
+  page sheet hands it to the phone. It is the only way out, and there is now
+  one place in the whole app that can take it.
+
 ### Changed
 
 - New artwork on every empty screen. It used to be a set of rendered 3D
@@ -31,6 +60,16 @@ section for that version, so what is written here is what people read.
   count slides rather than swapping, up as it grows and down as it shrinks.
 
 ### Fixed
+
+- Tapping a link in a post no longer throws you out of Kyron. A link in
+  somebody's post, and the website card under it, went straight to Chrome or
+  Safari: you left the app, lost your place in the feed, and came back through
+  the task switcher if you came back at all. It was deliberate, and the
+  reasoning was that a stranger's page should not read as part of Kyron and
+  that a real browser is where you can see where you have been sent. Both of
+  those are still true and neither one needed another app. Every web link in
+  Kyron now opens in Kyron's own browser, which frames the page as an obvious
+  guest and never stops showing whose it is.
 
 - The bottom navigation no longer needs an accurate thumb. On a phone with
   gesture navigation the bar was giving its own height away to the system's
