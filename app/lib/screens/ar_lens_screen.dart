@@ -27,6 +27,7 @@ import '../widgets/empty_state.dart';
 import '../widgets/face_attachment_painter.dart';
 import '../widgets/face_reticle.dart';
 import '../widgets/lens_effect_layer.dart';
+import '../services/platform_support.dart';
 
 /// The camera, with a lens over it.
 ///
@@ -159,6 +160,18 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   }
 
   Future<void> _open() async {
+    // camera ships android, ios and web. Everywhere else there is nothing to
+    // open, and the lens screen says so rather than failing as though a
+    // camera were present and refusing.
+    if (!PlatformSupport.current.camera) {
+      setState(() {
+        _opening = false;
+        _problem = 'The lens camera is not on '
+            '${PlatformSupport.current.name} yet.';
+      });
+      return;
+    }
+
     setState(() {
       _opening = true;
       _problem = null;

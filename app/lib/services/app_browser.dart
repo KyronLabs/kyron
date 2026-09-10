@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../screens/browser/browser_route.dart';
 import '../widgets/toast.dart';
+import 'platform_support.dart';
 
 /// What Kyron should do with a link somebody tapped.
 enum LinkDestination {
@@ -84,6 +85,18 @@ class AppBrowser {
 
     switch (destinationOf(uri)) {
       case LinkDestination.inApp:
+        // Kyron's browser is a web view, and `webview_flutter` ships android,
+        // ios and macos only. Where there is none, the page goes to the
+        // system browser -- which on a desktop is where a reader expects a
+        // link to open anyway, so this reads as the platform's manners rather
+        // than as a feature missing.
+        if (!PlatformSupport.current.webView) {
+          final gone = await leave(uri);
+          if (!gone && context.mounted) {
+            Toast.show(context, 'No browser on this device took that link.');
+          }
+          return;
+        }
         BrowserRoute.open(context, uri, title: title);
       case LinkDestination.handOff:
         final gone = await leave(uri);

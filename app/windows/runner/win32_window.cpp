@@ -187,6 +187,21 @@ Win32Window::MessageHandler(HWND hwnd,
       }
       return 0;
 
+    case WM_GETMINMAXINFO: {
+      // Kyron's narrow layout is a phone's, and a phone is about 360 points
+      // wide. Below that the composer's rows and the message bubbles have
+      // nowhere left to go and start overflowing their boxes. Windows will
+      // happily let a window be dragged to nothing, so this is the floor --
+      // scaled by the monitor's DPI, because these are logical points and
+      // WM_GETMINMAXINFO wants physical pixels.
+      auto* bounds = reinterpret_cast<MINMAXINFO*>(lparam);
+      HMONITOR monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+      const double scale = FlutterDesktopGetDpiForMonitor(monitor) / 96.0;
+      bounds->ptMinTrackSize.x = Scale(400, scale);
+      bounds->ptMinTrackSize.y = Scale(560, scale);
+      return 0;
+    }
+
     case WM_DPICHANGED: {
       auto newRectSize = reinterpret_cast<RECT*>(lparam);
       LONG newWidth = newRectSize->right - newRectSize->left;

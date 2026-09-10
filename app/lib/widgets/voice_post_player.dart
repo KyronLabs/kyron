@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:just_audio/just_audio.dart';
+import '../services/platform_support.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/post_media.dart';
@@ -54,6 +55,17 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
   Future<AudioPlayer?> _ensure() async {
     final existing = _player;
     if (existing != null) return existing;
+
+    // just_audio ships android, ios, macos and web. Said here rather than
+    // discovered as a missing plugin when the play button is pressed.
+    if (!PlatformSupport.current.audio) {
+      setState(() {
+        _loading = false;
+        _failure = 'Voice posts need an audio player Kyron does not have on '
+            '${PlatformSupport.current.name} yet.';
+      });
+      return null;
+    }
 
     setState(() {
       _loading = true;

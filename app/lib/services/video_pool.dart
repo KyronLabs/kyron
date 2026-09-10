@@ -3,6 +3,8 @@ import 'dart:async';
 
 import 'package:video_player/video_player.dart';
 
+import 'platform_support.dart';
+
 /// Called when a clip's decoder is taken away, so the tile can go back to
 /// showing its still.
 typedef VideoEviction = void Function();
@@ -35,6 +37,20 @@ class _Lease {
     required this.onEvicted,
     required this.stamp,
   });
+}
+
+/// Thrown when this build has no video player at all.
+///
+/// Distinct from a clip that will not open: nothing about the file is wrong
+/// and trying again will not help, so what a caller shows for it is a reason
+/// rather than an error.
+class NoVideoPlayer implements Exception {
+  final String reason;
+
+  const NoVideoPlayer(this.reason);
+
+  @override
+  String toString() => reason;
 }
 
 /// A bounded set of open video decoders.
@@ -81,6 +97,19 @@ class VideoPool {
     required Object owner,
     required VideoEviction onEvicted,
   }) async {
+    // Thrown rather than answered with null, because the two mean different
+    // things to a caller: null is "no decoder spare, stay on the still and ask
+    // again", and this is "there will never be one". Every caller already
+    // turns a throw here into a message on the tile, so saying it this way
+    // puts the reason in front of the reader instead of a still that never
+    // starts.
+    if (!PlatformSupport.current.video) {
+      throw NoVideoPlayer(
+        'Clips need a video player Kyron does not have on '
+        '${PlatformSupport.current.name} yet.',
+      );
+    }
+
     final existing = _leaseFor(owner);
     if (existing != null) {
       existing.stamp = ++_clock;

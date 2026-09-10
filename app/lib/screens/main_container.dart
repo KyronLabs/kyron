@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/notifications_provider.dart';
+import '../utils/layout.dart';
 import '../widgets/bottom_nav_v4.dart';
+import '../widgets/nav_destinations.dart';
+import '../widgets/side_rail.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/sliding_drawer_content.dart';
 import 'home_screen.dart';
@@ -64,7 +67,7 @@ class _MainContainerState extends ConsumerState<MainContainer>
   }
 
   void _onNavTap(int index) {
-    if (index == 2) return; // Skip FAB
+    if (index == NavDestinations.composeIndex) return; // Skip FAB
     setState(() => _currentIndex = index);
   }
 
@@ -98,11 +101,16 @@ class _MainContainerState extends ConsumerState<MainContainer>
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
+  /// The drawer, wrapped round whatever is being shown.
+  ///
+  /// Kept on both layouts. On a phone it is the whole navigation; in a window
+  /// the rail has taken the four destinations and this is what is left --
+  /// you, your saved posts, your settings -- which is what the avatar in the
+  /// top corner has always opened.
+  Widget _withDrawer({required Widget child, required bool gesture}) {
     return AppDrawer(
       key: _drawerKey,
-      enableGesture: _currentIndex == 0,
+      enableGesture: gesture,
       drawerContent: SlidingDrawerContent(
         onCloseDrawer: () {
           _drawerKey.currentState?.closeDrawer();
@@ -110,6 +118,46 @@ class _MainContainerState extends ConsumerState<MainContainer>
         // Communities is one of these tabs, not a route of its own.
         onSelectTab: _onNavTap,
       ),
+      child: child,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Measured off the window rather than asked of the platform: a Windows
+    // window dragged narrow is a phone-shaped space and gets the phone's
+    // layout, and a tablet held wide gets the rail. Which operating system
+    // this is was never the question.
+    if (Layout.hasRail(context)) return _wide();
+    return _tall();
+  }
+
+  /// A window: navigation down the side, nothing across the bottom.
+  Widget _wide() {
+    return Scaffold(
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SideRail(currentIndex: _currentIndex, onSelect: _onNavTap),
+          // The drawer slides over the page and not over the rail, so the
+          // rail stays reachable while it is open.
+          Expanded(
+            child: _withDrawer(
+              // No edge swipe: a pointer does not make one, and on a window
+              // the gesture only ever fired by accident.
+              gesture: false,
+              child: _getCurrentPage(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// A phone: the bar across the bottom, and the drawer on a swipe.
+  Widget _tall() {
+    return _withDrawer(
+      gesture: _currentIndex == 0,
       child: Scaffold(
         extendBody: true, // Allow body to extend behind bottom nav
         body: _getCurrentPage(),

@@ -92,6 +92,61 @@ jobs:
           fi
           echo "The vendored spec matches the published one."
 
+  # Nothing has ever compiled the Windows runner.
+  #
+  # analyze-and-test runs on Ubuntu and checks Dart, which is every platform at
+  # once and none of them: the runner is C++, its plugin registrant is
+  # generated per platform, and neither is Dart. So the window kept its
+  # template title, the executable kept com.example in its version block, and
+  # the taskbar kept the Flutter logo -- for months, through a CI that was
+  # green the whole time, because none of it is anything Dart can see.
+  #
+  # A debug build, not a release one: this is here to compile the C++ and
+  # resolve the Windows half of every plugin, and a release build spends
+  # several more minutes to prove the same thing.
+  windows:
+    name: Build the Windows app
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build
+        run: flutter build windows --debug
+
+      # The runner is configured in files no test can reach from Ubuntu, and a
+      # wrong one of these fails nothing -- it just ships. So the build says
+      # out loud what it produced.
+      - name: Report what was built
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem -Recurse -Filter kyron.exe build/windows |
+                 Select-Object -First 1
+          if (-not $exe) {
+            Write-Error "No kyron.exe was produced. BINARY_NAME in windows/CMakeLists.txt?"
+            exit 1
+          }
+          $info = $exe.VersionInfo
+          Write-Host "built      : $($exe.FullName)"
+          Write-Host "product    : $($info.ProductName)"
+          Write-Host "company    : $($info.CompanyName)"
+          if ($info.CompanyName -like "*com.example*") {
+            Write-Error "The executable still says com.example."
+            exit 1
+          }
+
   # A separate job, because it has nothing to do with Flutter and should not
   # wait behind an Android toolchain to tell you a heading is malformed.
   changelog:

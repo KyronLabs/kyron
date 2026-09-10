@@ -6,6 +6,8 @@ import '../models/composer_poll.dart';
 import '../models/feed_post.dart';
 import '../models/post_media.dart';
 
+import 'platform_support.dart';
+
 /// The unsent posts held on this device.
 ///
 /// The auto-save loop this used to run polled every three seconds through four
@@ -28,6 +30,14 @@ class DraftService {
   /// Which draft the composer is editing. Set when one is opened from the
   /// drafts screen, so saving updates it rather than adding a duplicate.
   set currentDraftId(String? id) => _currentDraftId = id;
+
+  /// Whether there is a store to write to at all.
+  ///
+  /// sqflite ships android, ios and macos. Everywhere else a draft has nowhere
+  /// to live, and every method below answers as though the table were empty
+  /// rather than throwing -- a composer that cannot keep drafts is a smaller
+  /// loss than a composer that crashes when you close it.
+  bool get isAvailable => PlatformSupport.current.localDatabase;
 
   Future<Database> get database async {
     return _database ??= await _initDB();
@@ -75,6 +85,7 @@ class DraftService {
     List<String> topics = const [],
     QuotedPost? quoting,
   }) async {
+    if (!isAvailable) return;
     final db = await database;
     final now = DateTime.now();
     final draft = ComposerDraft(
@@ -98,18 +109,21 @@ class DraftService {
 
   /// Every draft, most recently touched first.
   Future<List<ComposerDraft>> allDrafts() async {
+    if (!isAvailable) return const [];
     final db = await database;
     final rows = await db.query('drafts', orderBy: 'updatedAt DESC');
     return rows.map(ComposerDraft.fromMap).toList();
   }
 
   Future<int> count() async {
+    if (!isAvailable) return 0;
     final db = await database;
     final rows = await db.rawQuery('SELECT COUNT(*) AS n FROM drafts');
     return (rows.first['n'] as int?) ?? 0;
   }
 
   Future<ComposerDraft?> getLatestDraft() async {
+    if (!isAvailable) return null;
     final db = await database;
     final rows = await db.query('drafts', orderBy: 'updatedAt DESC', limit: 1);
     if (rows.isEmpty) return null;
@@ -120,12 +134,14 @@ class DraftService {
   }
 
   Future<void> deleteDraft(String id) async {
+    if (!isAvailable) return;
     final db = await database;
     await db.delete('drafts', where: 'id = ?', whereArgs: [id]);
     if (_currentDraftId == id) _currentDraftId = null;
   }
 
   Future<void> clearAllDrafts() async {
+    if (!isAvailable) return;
     final db = await database;
     await db.delete('drafts');
     _currentDraftId = null;
