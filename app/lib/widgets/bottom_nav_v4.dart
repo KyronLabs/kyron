@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_app/widgets/create_fab.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+
+import 'nav_destinations.dart';
 
 class BottomNavV4 extends StatelessWidget {
   /// The bar's own height, before the safe area under it.
@@ -52,19 +53,13 @@ class BottomNavV4 extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
-              child: _item(context, Iconsax.home_copy, Iconsax.home, 'Home', 0),
-            ),
-            Expanded(
-                child: _item(context, Iconsax.discover_copy, Iconsax.discover,
-                    'Explore', 1)),
+            // The same four the side rail draws, from the same list: two
+            // drawings of one set of destinations rather than two sets.
+            Expanded(child: _item(context, NavDestinations.home)),
+            Expanded(child: _item(context, NavDestinations.explore)),
             Expanded(child: _RingFab()), // ← FAB with ring
-            Expanded(
-                child: _item(context, Iconsax.people_copy, Iconsax.people,
-                    'Communities', 3)),
-            Expanded(
-                child: _item(context, Iconsax.message_copy, Iconsax.message,
-                    'Messages', 4)),
+            Expanded(child: _item(context, NavDestinations.communities)),
+            Expanded(child: _item(context, NavDestinations.messages)),
           ],
         ),
       ),
@@ -76,13 +71,12 @@ class BottomNavV4 extends StatelessWidget {
   /// Outlining every tab left colour as the only thing distinguishing the
   /// current one, which is a weak signal and no signal at all to anyone who
   /// cannot separate the two hues.
-  Widget _item(
-    BuildContext context,
-    IconData icon,
-    IconData activeIcon,
-    String label,
-    int index,
-  ) {
+  Widget _item(BuildContext context, NavDestination destination) {
+    final icon = destination.icon;
+    final activeIcon = destination.activeIcon;
+    final label = destination.label;
+    final index = destination.index;
+
     final scheme = Theme.of(context).colorScheme;
     final isActive = currentIndex == index;
 

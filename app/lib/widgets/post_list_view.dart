@@ -9,6 +9,7 @@ import 'post_card.dart';
 import 'empty_state.dart';
 import 'media_tile_grid.dart';
 import 'skeleton.dart';
+import '../utils/layout.dart';
 
 /// A scrolling list of posts, with every state it can be in.
 ///
@@ -124,10 +125,24 @@ class _PostListViewState extends ConsumerState<PostListView> {
     });
   }
 
+  /// The widest a grid of tiles gets. Higher than a reading column because
+  /// a picture is not a sentence: room means more of them per row rather
+  /// than a longer line to track back along.
+  static const double _tileWidth = 1100;
+
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(postListProvider(widget.source));
     _clampScroll();
+
+    // A column of posts as wide as a maximised window is harder to read, not
+    // easier: the eye loses the start of the next line coming back from the
+    // end of the last. So the list keeps its measure and the extra width
+    // becomes margin. Tiles are the exception -- a grid of pictures is better
+    // for having room -- so they get a wider ceiling rather than this one.
+    final width = MediaQuery.sizeOf(context).width;
+    final measure = widget.asTiles ? _tileWidth : Layout.readingWidth;
+    final gutter = Layout.gutter(width, measure);
 
     return RefreshIndicator(
       // Measured: with a 124px bar over the list and no offset, the spinner
@@ -144,8 +159,12 @@ class _PostListViewState extends ConsumerState<PostListView> {
         slivers: [
           ...widget.headerSlivers,
           SliverPadding(
+            // The gutter is added to whatever the screen already asked for,
+            // so a screen with its own margins keeps them.
             padding: widget.padding.copyWith(
               top: widget.padding.top + widget.topInset,
+              left: widget.padding.left + gutter,
+              right: widget.padding.right + gutter,
             ),
             sliver: _content(state),
           ),

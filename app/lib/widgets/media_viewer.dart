@@ -146,6 +146,16 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
         owner: this,
         onEvicted: _onEvicted,
       );
+    } on NoVideoPlayer catch (reason) {
+      // Not a fault, so not logged as one: the platform has no player and the
+      // viewer says which.
+      if (mounted) {
+        setState(() {
+          _opening = false;
+          _videoError = reason.reason;
+        });
+      }
+      return;
     } catch (error) {
       AppLog.instance.error('media', 'Clip would not open full screen: $error');
       if (mounted) {

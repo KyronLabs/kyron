@@ -43,6 +43,10 @@ class _FakeDrafts implements DraftService {
   /// platform channel and is never done within the first frame.
   Duration readDelay = Duration.zero;
 
+  /// In memory, so there is always somewhere to put a draft.
+  @override
+  bool get isAvailable => true;
+
   @override
   String? currentDraftId;
 

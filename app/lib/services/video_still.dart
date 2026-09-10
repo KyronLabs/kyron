@@ -7,6 +7,7 @@ import 'package:get_thumbnail_video/video_thumbnail.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'app_log.dart';
+import 'platform_support.dart';
 
 /// A still pulled out of a video, and the shape of the clip it came from.
 class VideoStill {
@@ -40,6 +41,12 @@ class VideoStill {
 /// will not give up a still is still a clip worth posting, and the reader
 /// falls back to opening a player for it.
 Future<VideoStill?> extractVideoStill(String videoPath) async {
+  // get_thumbnail_video ships android, ios and web. Everywhere else the clip
+  // is uploaded without a still and the server cuts one, which is where the
+  // poster for every clip already comes from -- so this is a slower first
+  // render rather than a missing picture.
+  if (!PlatformSupport.current.videoStills) return null;
+
   try {
     final directory = await getTemporaryDirectory();
 

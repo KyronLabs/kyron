@@ -239,6 +239,16 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen>
         owner: this,
         onEvicted: _onEvicted,
       );
+    } on NoVideoPlayer catch (reason) {
+      // Not a fault, so not logged as one: the platform has no player and the
+      // page says which.
+      if (mounted) {
+        setState(() {
+          _opening = false;
+          _failure = reason.reason;
+        });
+      }
+      return;
     } catch (error) {
       AppLog.instance.error('media', 'Clip would not open: $error');
       if (mounted) {

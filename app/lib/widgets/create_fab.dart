@@ -58,7 +58,7 @@ class CreateFab extends StatelessWidget {
           FloatingActionButton(
             heroTag: 'create',
             tooltip: 'Create',
-            onPressed: () => _showMenu(context),
+            onPressed: () => chooseWhatToPost(context),
             backgroundColor: isDark ? Colors.white : Colors.black,
             elevation: 2,
             shape: const CircleBorder(),
@@ -70,7 +70,13 @@ class CreateFab extends StatelessWidget {
     );
   }
 
-  Future<void> _showMenu(BuildContext context) async {
+  /// The menu of what you can create.
+  ///
+  /// Static and public because the round button on a phone's bottom bar
+  /// and the wide one down the side of a window are two ways into one
+  /// menu. It was private, so the rail's button would have needed its own
+  /// copy of the four options -- and a fifth added to one of them.
+  static Future<void> chooseWhatToPost(BuildContext context) async {
     HapticFeedback.lightImpact();
 
     final chosen = await showModalBottomSheet<String>(

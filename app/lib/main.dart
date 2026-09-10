@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart'; // Add this import
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'services/app_log.dart';
 import 'services/draft_service.dart';
+import 'services/platform_support.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'routes.dart';
 // `hide AuthState`: this app and the Supabase SDK both define that name,
@@ -201,25 +201,45 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     super.dispose();
   }
 
+  /// Warms up what can be warmed up, and then shows a screen whatever happened.
+  ///
+  /// Every step here is preparation. None of it is the app, so none of it is
+  /// allowed to stop the app appearing -- which is exactly what the draft
+  /// store used to do: it was awaited bare behind a `!kIsWeb` guard, and on
+  /// Windows, where sqflite has no implementation at all, the throw escaped
+  /// this method, `_isInitialized` was never set, and Kyron sat on its own
+  /// loading spinner for ever. The finally is the fix; the guards below only
+  /// stop it happening in the first place.
   Future<void> _initializeApp() async {
-    // Wait a bit for everything to initialize
-    await Future.delayed(const Duration(milliseconds: 100));
+    try {
+      // Wait a bit for everything to initialize
+      await Future.delayed(const Duration(milliseconds: 100));
 
-    // Whatever the last run recorded, so a crash report opened now still has
-    // the events that led to it.
-    await AppLog.instance.load();
+      // Whatever the last run recorded, so a crash report opened now still has
+      // the events that led to it.
+      await AppLog.instance.load();
 
-    // Run bootstrap
-    ref.read(authNotifierProvider.notifier).bootstrap();
+      // Run bootstrap
+      ref.read(authNotifierProvider.notifier).bootstrap();
 
-    // Pre-warm composer - ONLY on non-web platforms
-    if (!kIsWeb && widget.enableLocalDatabase) {
-      await DraftService().database; // Initialize DB in background
+      // Opening the store now rather than when the composer first asks, so the
+      // first draft does not wait on a file being created. Only where there is
+      // a store to open.
+      if (widget.enableLocalDatabase && PlatformSupport.current.localDatabase) {
+        try {
+          await DraftService().database;
+        } on Object catch (error) {
+          // A composer without drafts, said out loud, rather than a launch
+          // that fails over a warm-up.
+          AppLog.instance
+              .error('drafts', 'The draft store would not open: $error');
+        }
+      }
+    } on Object catch (error, stack) {
+      AppLog.instance.error('startup', 'Start-up step failed: $error\n$stack');
+    } finally {
+      if (mounted) setState(() => _isInitialized = true);
     }
-
-    setState(() {
-      _isInitialized = true;
-    });
   }
 
   @override

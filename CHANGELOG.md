@@ -14,6 +14,37 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Kyron runs on Windows. It did not, quite: the app opened, showed its loading
+  spinner and stayed there. Six of its features are native code somebody else
+  wrote, none of the six ships every platform Flutter builds for, and the app
+  asked for all of them regardless -- the draft database first, with an await
+  in front of it, during start-up. sqflite has no Windows implementation at
+  all, so that throw escaped, the flag saying "ready" was never set, and there
+  was nothing after the spinner. Nothing failed loudly. It just never arrived.
+
+  Now there is one list of what a platform can do, and everything reads it.
+  Where a feature is missing the surface says which and why instead of
+  crashing: a clip says it needs a player Kyron does not have on Windows yet,
+  a voice post says the same about audio, the lens screen says it about the
+  camera. A link opens your own browser rather than the in-app one, which on a
+  desktop is where you expected it to go anyway. Drafts are the one real loss
+  -- they need a database that is not there -- and the composer works without
+  them rather than falling over on the way out.
+
+- Navigation down the side, in a window. Above about nine hundred points wide
+  the bar across the bottom becomes a rail down the left: the same four places
+  with their names beside them, at a size a pointer aims at, and a Post button
+  that opens the menu the round one always did. Below that width nothing
+  changes, and it is measured off the window rather than the operating system
+  -- a Windows window dragged narrow gets the phone's layout, which is the
+  right one for that shape.
+
+- A feed that stops widening. A column of posts as wide as a maximised monitor
+  is harder to read, not easier: the eye loses the start of the next line
+  coming back from the end of the last. The column keeps its measure and the
+  rest of the window becomes margin. Grids of pictures are the exception and
+  get more room, because a picture is not a sentence.
+
 - Kyron has a proper browser. It arrives as a card over the app rather than a
   screen in front of it -- the feed stays visible along the top, dimmed --
   with the page's own title across the bar and, underneath it, a padlock and
@@ -60,6 +91,16 @@ section for that version, so what is written here is what people read.
   count slides rather than swapping, up as it grows and down as it shrinks.
 
 ### Fixed
+
+- The Windows build is Kyron's rather than the template's. The window was
+  titled "app", the executable said `com.example` in its version block and was
+  called `app.exe`, and the taskbar showed the Flutter logo -- since the day
+  the folder was created. None of that fails a build, which is why it lasted:
+  the app's own CI runs on Linux and checks Dart, and none of those three is
+  Dart. It now says Kyron, ships the leaf on the same grey the Android
+  launcher uses, and will not let you drag the window narrower than the layout
+  has anywhere to go. CI builds it on Windows on every change, so the next one
+  of these is caught the day it is written.
 
 - Tapping a link in a post no longer throws you out of Kyron. A link in
   somebody's post, and the website card under it, went straight to Chrome or

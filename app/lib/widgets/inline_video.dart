@@ -234,6 +234,15 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
         owner: this,
         onEvicted: _onEvicted,
       );
+    } on NoVideoPlayer catch (reason) {
+      // Not a fault, so not logged as one: the platform has no player and the
+      // tile says which.
+      if (!mounted) return;
+      setState(() {
+        _opening = false;
+        _failure = reason.reason;
+      });
+      return;
     } catch (error) {
       AppLog.instance.error('media', 'Clip would not open: $error');
       if (!mounted) return;
