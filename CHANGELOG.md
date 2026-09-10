@@ -14,6 +14,34 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Every build ships Windows and Android together. The release workflow built
+  Android and nothing else, so the Windows app existed but there was no way to
+  get one without a Windows machine and a toolchain. A tag now runs its checks
+  once, builds both platforms in parallel, and publishes a single release
+  carrying the zipped Windows app beside the APKs -- per architecture, the
+  universal one, and the Play Store bundle. Pushes to `main` do the same as a
+  development build.
+
+  The publish step waits for both and refuses to publish if either is missing,
+  because a download that returns nothing is not an error and would otherwise
+  have produced an Android-only release under a version that promised both.
+  The Windows half of a development build is compiled in release mode on
+  purpose: a debug Windows build links against the Visual C++ debug runtime,
+  which ships with Visual Studio rather than with Windows, so a debug zip does
+  not start on the machine of anyone it was built for.
+
+  Both platforms take their build number from the same place, so one tag
+  cannot ship Android as `+41` and Windows as `+42`. `scripts/check-workflows.py`
+  checks that, and the rest of the shape, on every pull request -- a release
+  workflow that has quietly lost a platform still parses and still runs, so
+  nothing else would have caught it.
+
+- A Windows build you can download from any pull request. CI already compiled
+  the Windows app; it now packages it with the same script the release uses and
+  attaches the zip to the run. Trying a branch on Windows no longer needs a
+  Windows machine, and the packaging a release depends on has already run on
+  every pull request by the time a release needs it.
+
 - Kyron runs on Windows. It did not, quite: the app opened, showed its loading
   spinner and stayed there. Six of its features are native code somebody else
   wrote, none of the six ships every platform Flutter builds for, and the app
