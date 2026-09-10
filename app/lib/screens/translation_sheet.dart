@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../services/app_browser.dart';
 
 /// Translating a post.
 ///
@@ -90,7 +90,7 @@ class _Sheet extends StatelessWidget {
                 const SizedBox(width: SpacingTokens.space12),
                 Expanded(
                   child: FilledButton.icon(
-                    onPressed: () async {
+                    onPressed: () {
                       final uri = Uri.https(
                         'translate.google.com',
                         '/',
@@ -101,10 +101,17 @@ class _Sheet extends StatelessWidget {
                           'op': 'translate'
                         },
                       );
-                      // Externally, so it is clear the text is leaving Kyron.
-                      await launchUrl(uri,
-                          mode: LaunchMode.externalApplication);
-                      if (context.mounted) Navigator.pop(context);
+                      // Kyron's browser, with translate.google.com named in
+                      // the bar: the reader can see the text has left Kyron
+                      // without Kyron having to leave with it.
+                      //
+                      // The sheet is left standing underneath rather than
+                      // popped. Both live on the same navigator, so popping
+                      // after the browser opens would close the browser, and
+                      // popping before means using a context on its way out.
+                      // Coming back to the text you were translating is also
+                      // the better of the two endings.
+                      AppBrowser.open(context, uri.toString());
                     },
                     icon: const Icon(Iconsax.language_square_copy, size: 18),
                     label: const Text('Translate'),

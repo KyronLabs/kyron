@@ -6,6 +6,8 @@ import '../widgets/app_button.dart';
 import '../widgets/app_language_selector.dart';
 import '../routes.dart';
 import '../widgets/gradient_scaffold.dart';
+import '../config/legal_links.dart';
+import '../services/app_browser.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -52,12 +54,8 @@ class WelcomeScreen extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, Routes.webview,
-                            arguments: {
-                              'url':
-                                  'https://kyron-terms-and-privacy.onrender.com/terms.html',
-                              'title': 'Terms of Service',
-                            });
+                        AppBrowser.open(context, LegalLinks.terms,
+                            title: LegalLinks.termsTitle);
                       },
                       child: Text(
                         'Terms of Service',
@@ -70,12 +68,8 @@ class WelcomeScreen extends StatelessWidget {
                     const SizedBox(width: 24),
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, Routes.webview,
-                            arguments: {
-                              'url':
-                                  'https://kyron-terms-and-privacy.onrender.com/privacy.html',
-                              'title': 'Privacy Policy',
-                            });
+                        AppBrowser.open(context, LegalLinks.privacy,
+                            title: LegalLinks.privacyTitle);
                       },
                       child: Text(
                         'Privacy Policy',

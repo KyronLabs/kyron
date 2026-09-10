@@ -10,6 +10,8 @@ import '../routes.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import '../repositories/auth_repository.dart';
 import '../utils/api_error_message.dart';
+import '../config/legal_links.dart';
+import '../services/app_browser.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -160,15 +162,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Navigator.pushNamed(
-                            context,
-                            Routes.webview,
-                            arguments: {
-                              "url":
-                                  "https://kyron-terms-and-privacy.onrender.com/terms.html",
-                              "title": "Terms of Service",
-                            },
-                          );
+                          AppBrowser.open(context, LegalLinks.terms,
+                              title: LegalLinks.termsTitle);
                         },
                     ),
                     TextSpan(
@@ -183,15 +178,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Navigator.pushNamed(
-                            context,
-                            Routes.webview,
-                            arguments: {
-                              "url":
-                                  "https://kyron-terms-and-privacy.onrender.com/privacy.html",
-                              "title": "Privacy Policy",
-                            },
-                          );
+                          AppBrowser.open(context, LegalLinks.privacy,
+                              title: LegalLinks.privacyTitle);
                         },
                     ),
                   ],

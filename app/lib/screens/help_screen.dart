@@ -5,6 +5,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../config/legal_links.dart';
 import '../routes.dart';
+import '../services/app_browser.dart';
 
 /// Where to go when something is wrong or unclear.
 ///
@@ -36,13 +37,10 @@ class HelpScreen extends StatelessWidget {
               title: const Text('Help Centre'),
               subtitle: const Text('Guides and answers to common questions'),
               trailing: const Icon(Iconsax.export_3_copy, size: 16),
-              onTap: () => Navigator.pushNamed(
+              onTap: () => AppBrowser.open(
                 context,
-                Routes.webview,
-                arguments: const {
-                  'url': 'https://help.kyron.so',
-                  'title': 'Help Centre',
-                },
+                SupportLinks.helpCentre,
+                title: SupportLinks.helpCentreTitle,
               ),
             ),
             ListTile(
@@ -92,13 +90,15 @@ class HelpScreen extends StatelessWidget {
               leading: const Icon(Iconsax.document_text_copy, size: 20),
               title: const Text(LegalLinks.termsTitle),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
-              onTap: () => Navigator.pushNamed(context, Routes.terms),
+              onTap: () => AppBrowser.open(context, LegalLinks.terms,
+                  title: LegalLinks.termsTitle),
             ),
             ListTile(
               leading: const Icon(Iconsax.shield_tick_copy, size: 20),
               title: const Text(LegalLinks.privacyTitle),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
-              onTap: () => Navigator.pushNamed(context, Routes.privacy),
+              onTap: () => AppBrowser.open(context, LegalLinks.privacy,
+                  title: LegalLinks.privacyTitle),
             ),
             const SizedBox(height: SpacingTokens.space40),
           ],

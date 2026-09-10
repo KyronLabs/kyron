@@ -11,6 +11,7 @@ import '../services/app_info.dart';
 import '../services/app_log.dart';
 import '../services/device_cache.dart';
 import '../widgets/app_logo.dart';
+import '../services/app_browser.dart';
 
 /// Terms, privacy, service status, the system log, the running build -- and
 /// the two maintenance actions that used to sit in the middle of Settings.
@@ -69,20 +70,14 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             _Row(
               icon: Iconsax.document_text_copy,
               label: LegalLinks.termsTitle,
-              onTap: () => Navigator.pushNamed(
-                context,
-                Routes.webview,
-                arguments: LegalLinks.termsArguments,
-              ),
+              onTap: () => AppBrowser.open(context, LegalLinks.terms,
+                  title: LegalLinks.termsTitle),
             ),
             _Row(
               icon: Iconsax.shield_tick_copy,
               label: LegalLinks.privacyTitle,
-              onTap: () => Navigator.pushNamed(
-                context,
-                Routes.webview,
-                arguments: LegalLinks.privacyArguments,
-              ),
+              onTap: () => AppBrowser.open(context, LegalLinks.privacy,
+                  title: LegalLinks.privacyTitle),
             ),
             _divider(scheme),
             _group('Diagnostics'),

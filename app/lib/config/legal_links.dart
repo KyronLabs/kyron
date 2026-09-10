@@ -16,8 +16,15 @@ class LegalLinks {
 
   static const termsTitle = 'Terms of Service';
   static const privacyTitle = 'Privacy Policy';
+}
 
-  /// Arguments for [Routes.webview].
-  static const termsArguments = {'url': terms, 'title': termsTitle};
-  static const privacyArguments = {'url': privacy, 'title': privacyTitle};
+/// Where the published help lives.
+///
+/// Same reason as [LegalLinks], same mistake: this address was written out by
+/// hand on the help screen and again in settings.
+class SupportLinks {
+  const SupportLinks._();
+
+  static const helpCentre = 'https://help.kyron.so';
+  static const helpCentreTitle = 'Help Centre';
 }

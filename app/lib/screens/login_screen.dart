@@ -7,6 +7,8 @@ import '../widgets/app_button.dart';
 import '../routes.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/auth_provider.dart';
+import '../config/legal_links.dart';
+import '../services/app_browser.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -158,15 +160,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Navigator.pushNamed(
-                            context,
-                            Routes.webview,
-                            arguments: {
-                              'url':
-                                  'https://kyron-terms-and-privacy.onrender.com/terms.html',
-                              'title': 'Terms of Service',
-                            },
-                          );
+                          AppBrowser.open(context, LegalLinks.terms,
+                              title: LegalLinks.termsTitle);
                         },
                     ),
                     TextSpan(
@@ -181,15 +176,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Navigator.pushNamed(
-                            context,
-                            Routes.webview,
-                            arguments: {
-                              'url':
-                                  'https://kyron-terms-and-privacy.onrender.com/privacy.html',
-                              'title': 'Privacy Policy',
-                            },
-                          );
+                          AppBrowser.open(context, LegalLinks.privacy,
+                              title: LegalLinks.privacyTitle);
                         },
                     ),
                     TextSpan(

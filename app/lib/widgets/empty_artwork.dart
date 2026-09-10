@@ -180,7 +180,6 @@ class EmptyArtwork extends StatelessWidget {
             borderRadius: BorderRadius.circular(size * 0.085),
             border: Border.all(color: edge, width: 0.7),
             boxShadow: [
-              // The long one, for depth.
               // The long one, thrown down and out.
               BoxShadow(
                 color: shade,
