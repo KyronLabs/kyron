@@ -12,3 +12,8 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# Except the development signing key. See dev-signing/README.md -- it is
+# committed so that development builds install over each other, its password
+# is in that file, and the release workflow refuses to use it.
+!dev-signing/kyron-dev.jks

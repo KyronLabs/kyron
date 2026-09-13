@@ -155,9 +155,10 @@ jobs:
       # than field by field -- half of one keystore and half of another is a
       # build failure with a confusing message.
       #
-      # With neither, the build carries on and says plainly what that costs.
-      # A contributor's own fork has no secrets, and an APK they cannot
-      # install over their last one is still better than no APK.
+      # With neither -- which is the state this repository is actually in --
+      # the key committed at app/android/dev-signing/. There is always a key.
+      # A build signed with one nobody has seen before is a build nobody can
+      # install, and "set a secret first" is not an answer a fork can use.
       - name: Write the signing key
         working-directory: .
         env:
@@ -184,20 +185,35 @@ jobs:
             key_password=$RELEASE_KEY_PASSWORD
             key_alias=$RELEASE_KEY_ALIAS
           else
-            echo "KYRON_SIGNED=no" >> "$GITHUB_ENV"
-            echo "::warning::No signing key. These APKs are signed with a key"\
-                 "generated during this build and will NOT install over a"\
-                 "previous Kyron build -- uninstall it first. Set"\
-                 "ANDROID_DEV_KEYSTORE_BASE64 (or the release key) to fix this."
-            exit 0
+            # The key in the repository. Not a fallback to nothing: there is
+            # always a key, because a build signed with a key nobody has seen
+            # before is a build nobody can install.
+            #
+            # app/android/dev-signing/README.md is the argument for committing
+            # it, including why it is safe and why that does not generalise.
+            which="committed development"
+            keystore=
+            store_password=kyron-development
+            key_password=kyron-development
+            key_alias=kyron-dev
           fi
 
-          printf '%s' "$keystore" | base64 --decode > app/android/dev-keystore.jks
+          if [ -n "$keystore" ]; then
+            printf '%s' "$keystore" | base64 --decode > app/android/dev-keystore.jks
+            store_file=../dev-keystore.jks
+            echo "KYRON_PINNED=no" >> "$GITHUB_ENV"
+          else
+            store_file=../dev-signing/kyron-dev.jks
+            # Only the committed key has a fingerprint this repository knows,
+            # so only then can the check below compare against it.
+            echo "KYRON_PINNED=yes" >> "$GITHUB_ENV"
+          fi
+
           cat > app/android/key.properties <<EOF
           storePassword=$store_password
           keyPassword=$key_password
           keyAlias=$key_alias
-          storeFile=../dev-keystore.jks
+          storeFile=$store_file
           EOF
           echo "KYRON_SIGNED=yes" >> "$GITHUB_ENV"
           echo "Signing with the $which key."
@@ -301,12 +317,32 @@ jobs:
             subject=$(sed -n 's/^Signer #1 certificate DN: //p' <<<"$certs")
             digest=$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' \
               <<<"$certs")
-            if [ "${KYRON_SIGNED:-no}" = yes ] \
-               && grep -q 'CN=Android Debug' <<<"$subject"; then
-              echo "$apk is signed with a debug key even though a signing"
-              echo "key was supplied. key.properties did not take."
+            if grep -q 'CN=Android Debug' <<<"$subject"; then
+              echo "$apk is signed with a debug key. key.properties did not"
+              echo "take, so this APK carries a certificate minted during"
+              echo "this build and will not install over any previous one."
               exit 1
             fi
+
+            # Against the fingerprint in the repository, when the key in the
+            # repository is the one in use. This is the check with teeth: the
+            # one above only knows a debug key when it sees one, and the
+            # failure being guarded against is *any* change of key between
+            # builds. A replaced keystore, or a signing config that silently
+            # stops taking effect, fails here by name.
+            if [ "${KYRON_PINNED:-no}" = yes ]; then
+              expected=$(tr -d ' \n' < app/android/dev-signing/fingerprint.txt)
+              if [ "$digest" != "$expected" ]; then
+                echo "$apk is not signed with the committed development key."
+                echo "  expected $expected"
+                echo "  got      $digest"
+                echo "If the keystore was replaced on purpose, update"
+                echo "app/android/dev-signing/fingerprint.txt -- and note that"
+                echo "everybody has to uninstall their build once."
+                exit 1
+              fi
+            fi
+
             printf '%-52s %s\n' "$(basename "$apk")" "$subject"
             printf '%-52s %s\n' '' "$digest"
             size=$(stat -c%s "$apk")
