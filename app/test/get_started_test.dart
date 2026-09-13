@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,6 +13,7 @@ import 'package:kyron_app/services/app_preferences.dart';
 import 'package:kyron_app/services/platform_support.dart';
 import 'package:kyron_app/utils/validators.dart';
 import 'package:kyron_app/widgets/app_logo.dart';
+import 'package:kyron_app/widgets/get_started_art.dart';
 import 'package:kyron_app/widgets/google_button.dart';
 import 'package:kyron_app/widgets/terms_gate.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -423,6 +426,82 @@ void main() {
       // And not pretending it worked.
       expect(find.textContaining('Check someone@kyron.so'), findsNothing);
       expect(find.text('Send the link'), findsOneWidget);
+    });
+  });
+
+  group('the picture', () {
+    /// The file a drawn specimen actually came from, through the resize
+    /// wrapper [Image.asset] puts around the provider when given cacheWidth.
+    String assetOf(Element element) {
+      final provider = (element.widget as Image).image;
+      final inner = provider is ResizeImage ? provider.imageProvider : provider;
+      return inner is AssetImage ? inner.assetName : '';
+    }
+
+    List<String> drawnIn(WidgetTester tester) => find
+        .byType(Image)
+        .evaluate()
+        .map(assetOf)
+        .where((name) => name.startsWith('lib/assets/nature/'))
+        .map((name) => name.split('/').last)
+        .toList();
+
+    Future<void> pumpAt(WidgetTester tester, Size size) async {
+      await tester.binding.setSurfaceSize(const Size(900, 900));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.pumpWidget(MaterialApp(
+        home: Scaffold(
+          body: Center(
+            child: SizedBox(
+              width: size.width,
+              height: size.height,
+              child: const GetStartedArt(),
+            ),
+          ),
+        ),
+      ));
+    }
+
+    testWidgets('draws every specimen, from a file that is really shipped',
+        (tester) async {
+      await pumpAt(tester, const Size(390, 380));
+
+      expect(
+        drawnIn(tester)..sort(),
+        [
+          'butterfly-green.webp',
+          'butterfly-red.webp',
+          'grass.webp',
+          'lavender.webp',
+          'palm.webp',
+          'tulip.webp',
+        ],
+      );
+
+      // pubspec has to carry the folder, or every one of these is an
+      // errorBuilder returning an empty box. That failure is silent, and it
+      // is exactly what the first version of this picture did: it laid out
+      // perfectly, analysed clean, and rendered an empty rectangle.
+      expect(File('pubspec.yaml').readAsStringSync(),
+          contains('lib/assets/nature/'));
+      for (final name in drawnIn(tester)) {
+        expect(File('lib/assets/nature/$name').existsSync(), isTrue,
+            reason: '$name is drawn but not in the repository');
+      }
+    });
+
+    testWidgets('keeps the meadow and drops the sky when the frame is a band',
+        (tester) async {
+      // What a resized desktop window leaves this widget: 160 pixels. The
+      // fronds and the high butterfly have nowhere to be in a band that
+      // short, and drawn anyway they lie across the flowers.
+      await pumpAt(tester, const Size(420, 160));
+
+      final drawn = drawnIn(tester);
+      expect(drawn, contains('grass.webp'));
+      expect(drawn, contains('lavender.webp'));
+      expect(drawn, isNot(contains('palm.webp')));
+      expect(drawn, isNot(contains('butterfly-red.webp')));
     });
   });
 }

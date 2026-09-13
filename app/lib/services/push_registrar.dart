@@ -50,6 +50,21 @@ class PushRegistrar {
   String? _registered;
   StreamSubscription<String>? _rotations;
 
+  /// The start that is already running, so a second caller joins it rather
+  /// than beginning another.
+  ///
+  /// Both the launch path and the sign-in path call [start], and a reader who
+  /// signs in on a cold launch takes both within a few hundred milliseconds.
+  /// Checking `_source` was not enough: it is only set *after* the await, so
+  /// both calls got past the check and both asked the platform for permission.
+  /// Firebase answers the second with
+  ///
+  ///     [firebase_messaging/unknown] A request for permissions is already
+  ///     running, please wait for it to finish before doing another request
+  ///
+  /// and that install then registered no token at all.
+  Future<void>? _starting;
+
   /// Which platform this install is, as the API records it.
   static String get platform {
     if (kIsWeb) return 'web';
@@ -66,7 +81,9 @@ class PushRegistrar {
   /// Safe to call again: a second call while a source is held does nothing,
   /// which matters because both the launch path and the sign-in path lead
   /// here and a returning reader takes both.
-  Future<void> start() async {
+  Future<void> start() => _starting ??= _start();
+
+  Future<void> _start() async {
     if (_source != null) return;
 
     final connect = _connect;
@@ -100,6 +117,11 @@ class PushRegistrar {
     await _rotations?.cancel();
     _rotations = null;
     _source = null;
+    // Cleared so signing back in asks again. Held across a failed start
+    // rather than retried: a reader who said no to notifications has said no,
+    // and asking twice in one session gets the same answer from the OS
+    // without it ever reaching them.
+    _starting = null;
 
     final token = _registered;
     _registered = null;

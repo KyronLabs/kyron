@@ -184,6 +184,13 @@ class _PostActionState extends State<PostAction>
       child: InkWell(
         onTap: _tapped,
         borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
+        // No ripple and no pressed highlight. These buttons already answer a
+        // tap -- the icon punches, and a like throws a burst -- and Material's
+        // grey rectangle arriving underneath that read as a shadow smeared
+        // behind the icon. Hover and focus are left alone: they are what a
+        // pointer on the Windows build has to go on.
+        splashFactory: NoSplash.splashFactory,
+        highlightColor: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.all(SpacingTokens.space4),
           child: Row(

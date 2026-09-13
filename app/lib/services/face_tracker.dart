@@ -40,6 +40,24 @@ class FaceTracker {
         enableRoiTracking: true,
         delegate: FaceMeshDelegate.xnnpack,
         allowDelegateFallback: true,
+        // All three of these default to 0.5, and this passed none of them.
+        //
+        // The detector scores how sure it is that a patch is a face, and that
+        // score falls with contrast. A face that is underexposed -- which is
+        // where a dark-skinned face lands when a phone meters for the whole
+        // scene, see ExposureMeter -- scores in the thirties and forties on
+        // frames where a well-lit one scores over 0.9. At 0.5 those frames are
+        // thrown away, and it reads as the tracker not seeing somebody's face.
+        //
+        // What is bought by keeping 0.5 is fewer false positives, and here a
+        // false positive means a pair of sunglasses briefly landing on a door
+        // handle. That is worth far less than the frames it costs.
+        minDetectionConfidence: 0.3,
+        // Once a face is held, the bar to keep holding it is lower again:
+        // losing a face that is still there makes the attachment blink, which
+        // is worse to look at than a moment of slight drift.
+        minTrackingConfidence: 0.25,
+        minFacePresenceConfidence: 0.3,
       );
       return true;
     } catch (error) {

@@ -65,6 +65,79 @@ forehead and cheekbones, in pupil-gaps from the anchor, middle half by
 brightness averaged so a fringe or a highlight does not drag it. No reading
 means the fill draws nothing, rather than guessing at somebody's skin.
 
+## Whether the detector is fair, and whether it is the best one
+
+Asked directly: *"is that face detection thingy really working or is it just
+outright racist? I'm a person of colour and it's not capturing my face well."*
+
+The honest answer has three parts.
+
+### The model is measurably worse on dark skin, and that is real
+
+MediaPipe's face detector (BlazeFace, which finds the face the mesh is then
+fitted to) does not perform equally across skin tones. Google's own model card
+says accuracy varies by skin tone and reports it as a known limitation. This is
+not unique to MediaPipe — it is the normal state of face detection, and it
+comes from training data that is not evenly distributed. Nothing in this
+repository fixes that, and pretending otherwise would be worse than saying it.
+
+### But on a phone, most of the gap arrives before the model does
+
+A phone's automatic exposure meters the whole scene and brings its average to
+mid grey. Put anything bright behind a face — a window, a lamp, a pale wall —
+and the meter brings the exposure down, and the face with it.
+
+On light skin the face still lands in the middle of the sensor's range with
+contrast to spare. On dark skin the same scene puts it in the bottom stop or
+two, where there is very little contrast left and a good part of what remains
+is sensor noise. The detector is then being asked to find a face in a
+near-black, noisy patch. It does worse — and it would do worse on *anybody's*
+face given that patch.
+
+So the experience of "it doesn't see my face" is the model's bias and the
+camera's metering compounding, and the metering part is the larger and the
+fixable one. `ExposureMeter` fixes it:
+
+- The exposure and focus points are set to the middle of the frame the moment
+  the camera opens, which is where a head is when somebody holds a phone up.
+- Every frame, the light **on the face** is measured — inside the face, not on
+  a box that takes in the wall behind it — and the camera is asked for the
+  exposure compensation that would put it where a face belongs.
+- Before a face has been found it meters the middle of the frame anyway,
+  because an underexposed face is the likeliest reason there is no face and
+  waiting for a detection first would wait forever.
+- Corrections are in stops, not fractions: a face at 0.12 is nearly two stops
+  under, and a linear correction would offer it a third of one.
+
+The three confidence thresholds were also left at their 0.5 defaults, and are
+now 0.3 / 0.25 / 0.3. A poorly-exposed face scores in the thirties and forties
+on frames where a well-lit one scores over 0.9, and at 0.5 every one of those
+frames was thrown away. What 0.5 bought was fewer false positives, and a false
+positive here is a pair of sunglasses briefly landing on a door handle.
+
+### Is it the best detector available?
+
+For what this app needs — 478 three-dimensional landmarks including irises, on
+device, in real time, on both platforms, with no per-user licence — MediaPipe
+Face Mesh is the standard choice and close to the best of them. The
+alternatives, and what each would actually buy:
+
+| | What it would give | What it would cost |
+|:--|:--|:--|
+| **ARKit `ARFaceAnchor`** | Genuinely better, and much better in poor light: it uses the TrueDepth projector rather than the image, so skin tone stops mattering almost entirely. | iOS only, and only on phones with TrueDepth. Nothing for Android. |
+| **Apple Vision** | Better detection on iOS than BlazeFace, helped by the ISP's own face metadata. | iOS only, 76 two-dimensional landmarks — fewer than this needs, and no irises. |
+| **ARCore Augmented Faces** | 468 points, essentially this same mesh. | Android only. Strictly less than what is here, on one platform. |
+| **ML Kit face detection** | The same BlazeFace detector. | 133 contour points, no irises. Strictly less. |
+| **Snap Camera Kit, Banuba, DeepAR** | Better. This is what Snapchat itself runs, and it is better in low light and at extreme angles. | Commercial licence, a signed developer agreement, and tens of megabytes in the binary. |
+
+The one that would genuinely beat it is ARKit's depth path on iPhones that have
+it — worth adding as a platform-specific route later, with MediaPipe as the
+fallback everywhere else. That is a real piece of work and it is not done.
+
+Until then: the model is what it is, the exposure is fixed, and the thresholds
+are set for recall rather than for a false-positive rate that does not matter
+in a camera toy.
+
 ## What it is still not
 
 **Flat pictures, not objects.** An attachment is a sprite placed and rotated in
