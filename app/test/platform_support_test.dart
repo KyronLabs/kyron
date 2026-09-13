@@ -63,6 +63,19 @@ void main() {
       expect(PlatformSupport.web.video, isTrue);
     });
 
+    test('only a phone answers the auth redirect', () {
+      // Android declares the intent filter for so.kyron.app://auth-callback
+      // and iOS the URL type. Nothing else in the repository does, and where
+      // it is false a Google sign-in opens a consent screen whose answer has
+      // nowhere on the machine to go -- which looks, to the reader, like a
+      // browser that simply never came back.
+      expect(PlatformSupport.mobile.authRedirect, isTrue);
+      expect(PlatformSupport.desktop.authRedirect, isFalse);
+      expect(PlatformSupport.linux.authRedirect, isFalse);
+      expect(PlatformSupport.macOS.authRedirect, isFalse);
+      expect(PlatformSupport.web.authRedirect, isFalse);
+    });
+
     test('the running platform is whatever the test is pretending to be', () {
       // Guards the override itself: every test below leans on it, and one
       // that silently did nothing would pass while testing the host.

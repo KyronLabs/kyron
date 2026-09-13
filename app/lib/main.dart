@@ -174,25 +174,60 @@ class _KyronAppState extends ConsumerState<KyronApp> {
   void initState() {
     super.initState();
     _initializeApp();
-    _watchForPasswordRecovery();
+    _watchForExternalSessions();
   }
 
-  /// Sends somebody who tapped a reset link to the screen that sets one.
+  /// Acts on the sessions that arrive from outside the app.
   ///
-  /// The link opens the app with a recovery session already established --
-  /// the SDK handles the deep link itself -- and then nothing happened,
-  /// because nothing was listening. Landing on the feed after asking to reset
-  /// a password reads as the link having failed.
-  void _watchForPasswordRecovery() {
+  /// Two of them do. A password-reset link opens the app with a recovery
+  /// session already established -- the SDK handles the deep link itself --
+  /// and nothing used to be listening, so it landed on the feed, which reads
+  /// as the link having failed. A Google sign-in is the same shape: the
+  /// browser has the consent screen, this process may have been killed behind
+  /// it, and the session comes back over `so.kyron.app://auth-callback` with
+  /// no screen left that asked for it.
+  ///
+  /// So it is handled here rather than on the screen that started it.
+  void _watchForExternalSessions() {
     _authEvents = Supabase.instance.client.auth.onAuthStateChange.listen(
       (state) {
-        if (state.event != AuthChangeEvent.passwordRecovery) return;
-        AppLog.instance.info('auth', 'Opened from a password reset link.');
-        appNavigatorKey.currentState?.pushNamed(Routes.settingsPasswordLogin);
+        switch (state.event) {
+          case AuthChangeEvent.passwordRecovery:
+            AppLog.instance.info('auth', 'Opened from a password reset link.');
+            appNavigatorKey.currentState
+                ?.pushNamed(Routes.settingsPasswordLogin);
+          case AuthChangeEvent.signedIn:
+            unawaited(_adoptSignIn());
+          default:
+            break;
+        }
       },
       onError: (Object error) =>
           AppLog.instance.error('auth', 'Auth event stream failed: $error'),
     );
+  }
+
+  /// Signs the app in behind a session the SDK acquired on its own.
+  ///
+  /// `signedIn` also fires for the password sign-in the login screen just
+  /// made, and for the restore at launch, so the already-authenticated case
+  /// returns without touching anything -- routing on it would throw the
+  /// reader back to the top of the app every time a session was restored.
+  Future<void> _adoptSignIn() async {
+    if (!mounted) return;
+    if (ref.read(authNotifierProvider).status == AuthStatus.authenticated) {
+      return;
+    }
+
+    final signedIn =
+        await ref.read(authNotifierProvider.notifier).adoptExternalSession();
+    if (!signedIn || !mounted) return;
+
+    AppLog.instance.info('auth', 'Signed in from a redirect.');
+    // RootScreen, not the feed: a brand-new Google account has no profile
+    // behind it and belongs in onboarding.
+    appNavigatorKey.currentState
+        ?.pushNamedAndRemoveUntil(Routes.home, (_) => false);
   }
 
   @override

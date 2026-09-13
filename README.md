@@ -40,7 +40,7 @@ does today. Where something is planned rather than built, it says so.
 
 | Area | What it does |
 |:--|:--|
-| **Accounts** | Email and password over Supabase Auth, JWT verified against JWKS, onboarding gate |
+| **Accounts** | Email and password or Google over Supabase Auth, JWT verified against JWKS, onboarding gate, a password reset that says what happens next — [turning Google on](docs/GOOGLE_SIGN_IN.md) |
 | **Feed** | Ranked by interests, who you follow, what you have liked, how long you read, what you have asked to see less of, and recency; cursor-paged |
 | **Posts** | Text, photos, video, polls, voice recordings, link previews, quotes, reposts |
 | **Video** | Normalised to H.264, capped, a poster cut from the clip, and re-encoded on a queue rather than while you wait — [why the upload answers before the encode finishes](docs/MEDIA_JOBS.md) |

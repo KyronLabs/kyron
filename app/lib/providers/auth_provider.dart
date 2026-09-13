@@ -109,16 +109,69 @@ class AuthNotifier extends Notifier<AuthState> {
     state = AuthState.authenticating();
     try {
       final resp = await _repo.loginWithUser(email: email, password: password);
-      state = AuthState.authenticated(resp.user);
-
-      // Load full profile data from /profile/me
-      await ref.read(currentUserProvider.notifier).load();
+      await _settle(resp.user);
       return true;
     } catch (e) {
       _log('sign-in failed', e);
       state = AuthState.unauth();
       return false;
     }
+  }
+
+  /// Hands a Google sign-in to the browser.
+  ///
+  /// Returns once the consent screen is open, which is not the same as
+  /// somebody having signed in: the session comes back over the redirect and
+  /// is taken up by [adoptExternalSession]. The state is deliberately left
+  /// alone here -- moving to `authenticating` would put RootScreen on the
+  /// splash behind a browser the reader may simply close, and nothing would
+  /// move it off again.
+  ///
+  /// Throws when the browser could not be opened at all, which the caller
+  /// shows: a sign-in button that does nothing is indistinguishable from a
+  /// broken one.
+  Future<bool> startGoogleSignIn() => _repo.startGoogleSignIn();
+
+  /// Takes up a session that arrived from outside -- a Google redirect, or a
+  /// link in an email -- and signs the app in behind it.
+  ///
+  /// False when there turned out to be no session, which is what closing the
+  /// browser without finishing looks like.
+  Future<bool> adoptExternalSession() async {
+    try {
+      final user = await _repo.adoptCurrentSession();
+      if (user == null) {
+        _log('external sign-in', StateError('the redirect carried no session'));
+        return false;
+      }
+      await _settle(user);
+      return true;
+    } catch (e) {
+      _log('external sign-in failed', e);
+      state = AuthState.unauth();
+      return false;
+    }
+  }
+
+  /// What every successful sign-in has to do, wherever it came from.
+  ///
+  /// The two key vaults used to be warmed only by [bootstrap], so they were
+  /// ready on the second launch and not the first. Survivable for an account
+  /// signing in with a password it already had; not at all for one created
+  /// seconds ago by tapping Google, whose first chat would have gone out in
+  /// the clear.
+  Future<void> _settle(User user) async {
+    state = AuthState.authenticated(user);
+
+    // Neither is awaited, on the same terms as bootstrap: a chat opened
+    // before the keypair exists sends in the clear, and an account without an
+    // identifier works exactly as it did before identifiers existed -- but
+    // neither is worth holding the app on a spinner for.
+    unawaited(ref.read(messageVaultProvider).unlock());
+    unawaited(ref.read(identityVaultProvider).ensure());
+
+    // Awaited: the app behind this draws the signed-in person.
+    await ref.read(currentUserProvider.notifier).load();
   }
 
   Future<void> logout() async {

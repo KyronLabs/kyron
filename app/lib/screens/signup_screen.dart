@@ -12,6 +12,7 @@ import '../repositories/auth_repository.dart';
 import '../utils/api_error_message.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
+import '../utils/validators.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -117,10 +118,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 hint: 'Email',
                 controller: _email,
                 keyboardType: TextInputType.emailAddress,
-                validator: (v) {
-                  if (v?.isEmpty ?? true) return 'Enter email';
-                  return null;
-                },
+                validator: Validators.email,
               ),
 
               const SizedBox(height: 12),

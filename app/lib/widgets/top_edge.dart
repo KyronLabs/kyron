@@ -2,13 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../providers/notifications_provider.dart';
 import 'account_avatar.dart';
+import 'app_logo.dart';
 
 class TopEdge extends StatelessWidget {
-  final String logoPath;
   final VoidCallback? onProfileTap;
   final VoidCallback? onLogoTap;
   final VoidCallback? onSearchTap;
@@ -16,7 +14,6 @@ class TopEdge extends StatelessWidget {
 
   const TopEdge({
     super.key,
-    required this.logoPath,
     this.onProfileTap,
     this.onLogoTap,
     this.onSearchTap,
@@ -48,15 +45,15 @@ class TopEdge extends StatelessWidget {
           GestureDetector(
             onTap: onLogoTap,
             behavior: HitTestBehavior.opaque,
-            child: SvgPicture.asset(
-              logoPath,
-              width: 32,
-              height: 32,
-              colorFilter: ColorFilter.mode(
-                scheme.primary,
-                BlendMode.srcIn,
-              ),
-            ),
+            // AppLogo, which draws the mark in its own colours. This used
+            // to be a bare SvgPicture under a `ColorFilter.mode(scheme
+            // .primary, srcIn)`, which flattened a leaf that runs teal into
+            // green down to one flat #4C8FFF -- so the mark at the top of the
+            // home screen was a solid blue shape with none of Kyron's colours
+            // left in it. The path was a parameter with exactly one caller
+            // passing exactly the file AppLogo already names, so it has gone
+            // with it.
+            child: const AppLogo(size: 32),
           ),
 
           /// RIGHT – SEARCH + NOTIFICATIONS

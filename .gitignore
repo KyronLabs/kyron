@@ -66,3 +66,18 @@ Thumbs.db
 !web/build/**/*.log
 npm-debug.log*
 yarn-error.log*
+
+# Firebase. google-services.json and GoogleService-Info.plist identify the
+# Firebase project and carry an API key that, on its own, is meant to be
+# shipped -- but together they name the project's sender id and app ids, and
+# a public repository is the wrong place to hand those out. firebase_options
+# is generated from them by flutterfire and says the same things again.
+#
+# Every build that needs push has to supply its own copy: locally by dropping
+# the file in, in CI from a secret. See docs/PUSH.md.
+/app/android/app/google-services.json
+/app/ios/Runner/GoogleService-Info.plist
+/app/macos/Runner/GoogleService-Info.plist
+/app/lib/firebase_options.dart
+**/firebase-adminsdk-*.json
+.firebase/

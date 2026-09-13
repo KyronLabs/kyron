@@ -136,6 +136,45 @@ class AuthRepository {
     return _storage.readUserData();
   }
 
+  /// Hands a Google sign-in to the browser, and answers once it has opened.
+  ///
+  /// True means Google's consent screen is up, not that anybody has signed
+  /// in. The session arrives later over the redirect, as a `signedIn` event
+  /// on [GoTrueClient.onAuthStateChange] -- which main.dart listens for,
+  /// because by then this screen may not exist and on Android the process may
+  /// have been killed and restarted.
+  ///
+  /// The system browser rather than Kyron's own, and this is the one place in
+  /// the app where leaving is right: Google refuses OAuth inside an embedded
+  /// web view -- `disallowed_useragent` -- precisely so that the host app
+  /// cannot read what is typed into it. A Custom Tab on Android and an
+  /// ASWebAuthenticationSession on iOS also carry whatever Google session the
+  /// device already holds, which is what makes this one tap instead of a
+  /// password.
+  ///
+  /// Needs Google enabled under Authentication -> Providers in the Supabase
+  /// dashboard. Without that the browser opens on Supabase's own
+  /// "Unsupported provider" page, which nothing here can intercept.
+  Future<bool> startGoogleSignIn() => _auth.signInWithOAuth(
+        OAuthProvider.google,
+        redirectTo: SupabaseConfig.authRedirect,
+        authScreenLaunchMode: LaunchMode.externalApplication,
+      );
+
+  /// Takes up a session established outside the app and caches the account
+  /// behind it.
+  ///
+  /// A Google redirect and a magic link both land the SDK in a signed-in
+  /// state with nothing in the app having asked for it. Null means there is
+  /// no session after all, which is what a cancelled sign-in looks like.
+  Future<User?> adoptCurrentSession() async {
+    final account = _auth.currentUser;
+    if (account == null) return null;
+    final user = _toUser(account);
+    await _storage.writeUserData(user);
+    return user;
+  }
+
   /// Mails a reset link that opens this app rather than a web page.
   ///
   /// The link carries a recovery session; the app picks that up as a

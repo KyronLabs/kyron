@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen>
       body: Center(
         child: FadeTransition(
           opacity: _ctrl.drive(CurveTween(curve: Curves.easeOut)),
-          child: const AppLogo(size: 84),
+          child: const AppLogo.silhouette(size: 84),
         ),
       ),
     );

@@ -4,10 +4,21 @@ class Validators {
     return null;
   }
 
+  /// Enough of an address to be worth sending to.
+  ///
+  /// Deliberately loose. The only address that is provably valid is one that
+  /// accepted a message, so the job here is to catch the typo -- a missing @,
+  /// a trailing comma, a space -- and then get out of the way. The last part
+  /// used to be `{2,4}`, which turned away every one of the hundreds of
+  /// top-level domains longer than four letters: nobody on a .online or a
+  /// .digital address could get past it.
   static String? email(String? v) {
-    if (v == null || v.trim().isEmpty) return 'Email required';
-    final r = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
-    if (!r.hasMatch(v.trim())) return 'Invalid email';
+    final value = v?.trim() ?? '';
+    if (value.isEmpty) return 'Enter your email address';
+    final pattern = RegExp(r'^[\w.+-]+@([\w-]+\.)+[A-Za-z]{2,}$');
+    if (!pattern.hasMatch(value)) {
+      return 'That does not look like an email address';
+    }
     return null;
   }
 

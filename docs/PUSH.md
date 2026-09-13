@@ -47,6 +47,15 @@ Put `google-services.json` in `app/android/app/` and, for iOS,
 Firebase. Add the Google services Gradle plugin per the FlutterFire
 instructions.
 
+Both files are in `.gitignore`, along with the `firebase_options.dart` that
+flutterfire generates from them. They are not secrets in the way a service
+account key is -- the API key in them is meant to ship inside the app -- but
+together they name the project, its sender id and its app ids, and this
+repository is public. Every machine that needs push supplies its own copy:
+locally by dropping the file in, in CI by writing it out of a secret before
+the build step, the same way the release workflow already handles the Android
+signing keystore.
+
 **3. Implement the source.** One class, against the interface that already
 exists in `lib/services/push_registrar.dart`:
 

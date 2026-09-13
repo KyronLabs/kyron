@@ -9,6 +9,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/auth_provider.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
+import '../utils/validators.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -79,8 +80,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 hint: 'Email',
                 controller: _email,
                 keyboardType: TextInputType.emailAddress,
-                validator: (v) =>
-                    (v?.isEmpty ?? true) ? 'Enter your email' : null,
+                validator: Validators.email,
               ),
 
               const SizedBox(height: 12),
