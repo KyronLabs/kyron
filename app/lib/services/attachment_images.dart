@@ -41,6 +41,13 @@ class AttachmentImages {
             ResolvedAttachment(attachment, image),
       ];
 
+  /// How many pictures are decoded right now.
+  ///
+  /// The strip warms itself from this: the cache evicts oldest-first, so
+  /// filling it with thumbnails would throw away the pictures the viewfinder
+  /// is drawing at that moment.
+  int get cached => _decoded.length;
+
   /// Whether everything this lens needs is decoded.
   bool isReady(Lens lens) =>
       lens.attachments.every((a) => _decoded.containsKey(a.asset));
