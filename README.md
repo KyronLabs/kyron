@@ -128,7 +128,7 @@ static on Render (`render.yaml`). More in [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
 | Suite | Count | Runs on |
 |:--|:--|:--|
-| Flutter widget and unit tests | 751 | Every push and PR touching `app/` |
+| Flutter widget and unit tests | 754 | Every push and PR touching `app/` |
 | API unit tests | 292 | Every push and PR touching `api/` |
 
 Locally:

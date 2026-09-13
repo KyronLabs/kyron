@@ -14,6 +14,25 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Kyron now requires iOS 15.** It was 13, and `firebase_core` and
+  `firebase_messaging` both require 15 -- CocoaPods refuses that combination
+  before a line is compiled, so push on iOS was not a matter of configuration
+  but of a build that could not start. Raised in all three Xcode
+  configurations and in the framework's `MinimumOSVersion`. **iOS 13 and 14
+  devices can no longer install Kyron**, which is the cost of it and was
+  chosen rather than discovered.
+
+  Nothing in CI builds iOS -- no runner, no signing identity -- so the number
+  is guarded from Linux instead. `test/ios_deployment_target_test.dart` reads
+  the same sources Xcode and CocoaPods do: every
+  `IPHONEOS_DEPLOYMENT_TARGET` in the project, `MinimumOSVersion` in
+  `AppFrameworkInfo.plist`, and the `ios.deployment_target` of every podspec
+  in the packages this app resolved. It fails when the configurations
+  disagree, when the framework minimum drifts from the project, or when a
+  plugin asks for more than the project offers -- naming the plugins that do,
+  so the next one to raise its floor in a routine upgrade is caught here
+  rather than on somebody's Mac.
+
 - Push notifications, end to end. The server half has been finished and
   shipped for two releases -- `PushService`, FCM HTTP v1, and a
   `DeliveryService` that picks the socket when the app is open and a push when

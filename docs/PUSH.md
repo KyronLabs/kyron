@@ -102,18 +102,31 @@ of downloading one.
 
 ## iOS
 
-Configured but not turned on, and it will not build as it stands.
+Configured and buildable; not yet switched on at Apple's end.
 
-`GoogleService-Info.plist` is in `ios/Runner` and `PlatformSupport.mobile.push`
-is true, so the Dart side is ready. Four things are not:
+`GoogleService-Info.plist` is in `ios/Runner`, `PlatformSupport.mobile.push` is
+true, and the deployment target is **iOS 15.0** — raised from 13.0, because
+`firebase_core` and `firebase_messaging` both require 15 and CocoaPods refuses
+the combination before a line is compiled. **That drops iOS 13 and 14
+devices**, which was a deliberate call rather than a build fix.
 
-1. **`IPHONEOS_DEPLOYMENT_TARGET` is 13.0**, and `firebase_messaging` 16.6
-   requires 15.0. `pod install` fails on that before anything is compiled.
-   Raising it drops iOS 13 and 14 devices, which is a product decision rather
-   than a build fix, so it has been left alone. Nothing catches it today —
-   there is no iOS job in CI.
-2. An **APNs key** uploaded to Firebase.
-3. The **Push Notifications capability** on the App ID.
-4. **Background Modes → Remote notifications** in the entitlements.
+Three things still need the Apple developer account, and none can be done from
+here:
 
-None of 2 to 4 can be done from here: they need the Apple developer account.
+1. An **APNs key** uploaded to Firebase.
+2. The **Push Notifications capability** on the App ID.
+3. **Background Modes → Remote notifications** in the entitlements.
+
+### Keeping the deployment target honest
+
+Nothing in CI builds iOS — no runner, no signing identity — so a wrong
+deployment target would otherwise surface at somebody's `pod install`.
+`test/ios_deployment_target_test.dart` runs on Linux with everything else and
+reads the same sources Xcode and CocoaPods do: every
+`IPHONEOS_DEPLOYMENT_TARGET` in the Xcode project, `MinimumOSVersion` in
+`AppFrameworkInfo.plist`, and the `ios.deployment_target` of every podspec in
+the packages this app actually resolved. It fails if the configurations
+disagree with each other, if the framework minimum drifts from the project, or
+if any plugin asks for more than the project offers — naming the plugins that
+do. A plugin that raises its floor in a routine upgrade shows up there rather
+than on a Mac.
