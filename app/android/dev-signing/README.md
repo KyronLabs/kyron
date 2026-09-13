@@ -70,17 +70,39 @@ Then delete this directory and the `!` lines in the two `.gitignore` files.
 has to uninstall it once.** A different key is a different app as far as
 Android is concerned. There is no way around that and no way to do it twice.
 
-## fingerprint.txt
+## fingerprint.txt and kyron-dev.crt
 
-The SHA-256 of the certificate in this keystore. The Development Build
-workflow's installability check compares every APK it produced against it and
-fails on a mismatch — so if this keystore is ever replaced without the
-fingerprint being updated, or the signing config silently stops taking effect,
-the build says so instead of publishing something nobody can install.
+`kyron-dev.crt` is the certificate inside the keystore — the public half, the
+one that is already in every APK this key has ever signed. `fingerprint.txt`
+is its SHA-256.
 
-Regenerate it with:
+`scripts/check-apks.sh` compares every APK the Development Build workflow
+produced against that fingerprint and fails on a mismatch, so a keystore
+replaced without the fingerprint being updated — or a signing config that
+silently stops taking effect — is a failed build rather than a published APK
+nobody can install. `scripts/test_apk_certificate.py` checks the two files
+against each other on every pull request, so they cannot drift apart quietly.
+
+Both are derived from the keystore, and regenerating them is:
 
 ```bash
-keytool -list -v -keystore kyron-dev.jks -storepass kyron-development \
-  -alias kyron-dev | sed -n 's/.*SHA256: *//p' | tr -d ': ' | tr 'A-F' 'a-f'
+keytool -exportcert -rfc -keystore kyron-dev.jks \
+  -storepass kyron-development -alias kyron-dev > kyron-dev.crt
+
+openssl x509 -in kyron-dev.crt -outform der \
+  | sha256sum | cut -d' ' -f1 > fingerprint.txt
 ```
+
+## Checking an APK yourself
+
+`scripts/check-apks.sh` runs anywhere, not only in CI. Point `ANDROID_HOME` at
+an Android SDK and give it the APKs — a downloaded release, or a build of your
+own:
+
+```bash
+ANDROID_HOME=~/Android/Sdk scripts/check-apks.sh \
+  --pin "$(cat app/android/dev-signing/fingerprint.txt)" ~/Downloads/*.apk
+```
+
+It answers the question the phone will not: whether this APK is debuggable,
+whether its signature still covers the file, and which key signed it.

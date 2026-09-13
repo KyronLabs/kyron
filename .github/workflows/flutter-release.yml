@@ -215,6 +215,18 @@ jobs:
             "release-artifacts/${stem}.aab"
           ls -lh release-artifacts
 
+      # The same check the development builds get, for the same reason: a
+      # release APK that is debuggable, truncated or signed with a key that
+      # is not the release key reports "App not installed as package appears
+      # to be invalid" and says nothing about which of the three it was.
+      #
+      # No --pin: the release key is a secret, so there is no fingerprint in
+      # the repository to pin it to. Everything else applies, including that
+      # all four APKs have to carry the same certificate as each other.
+      - name: Check the APKs are installable
+        working-directory: .
+        run: scripts/check-apks.sh release-artifacts/*.apk
+
       - name: Hand the Android build to the publish job
         uses: actions/upload-artifact@v4
         with:

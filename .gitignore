@@ -12,6 +12,10 @@ node_modules/
 .pnp
 .pnp.js
 
+# Python, from the scripts in scripts/
+__pycache__/
+*.pyc
+
 # Secrets — match every shape of env file, not just a bare `.env`.
 # (A stale `kyron-api_OLD.env` leaked past the old `.env`-only rule.)
 .env

@@ -288,79 +288,28 @@ jobs:
       # words, "package appears to be invalid", which point at the file rather
       # than at the cause.
       #
-      # aapt2 and apksigner come with the Android SDK that ubuntu-latest
-      # already has. Both are looked up rather than assumed, and a missing one
-      # fails the step: a guard that silently does not run is worse than no
-      # guard.
+      # The checking is in scripts/check-apks.sh, called by the release
+      # workflow too: a check that guards development builds and not releases
+      # is one that will be missing the day it matters. What it does and why
+      # each part of it is there is written at the top of that file.
       - name: Check the APKs are installable
         working-directory: .
         run: |
           set -euo pipefail
-          sdk="${ANDROID_HOME:-$ANDROID_SDK_ROOT}"
-          aapt2=$(ls -d "$sdk"/build-tools/*/aapt2 2>/dev/null | sort -V | tail -1)
-          apksigner=$(ls -d "$sdk"/build-tools/*/apksigner 2>/dev/null \
-            | sort -V | tail -1)
-          test -n "$aapt2" || { echo "No aapt2 in the Android SDK."; exit 1; }
-          test -n "$apksigner" || { echo "No apksigner in the SDK."; exit 1; }
-
-          for apk in debug-artifacts/*.apk; do
-            badging=$("$aapt2" dump badging "$apk")
-            if grep -q 'application-debuggable' <<<"$badging"; then
-              echo "$apk is debuggable. Android will refuse to install it."
+          # Pinned to the key committed at app/android/dev-signing, when that
+          # is the key in use: it is the only one whose fingerprint this
+          # repository knows. A secret keystore has nothing here to pin to,
+          # and everything else about the check still applies.
+          if [ "${KYRON_PINNED:-no}" = yes ]; then
+            pin=$(tr -d '[:space:]' < app/android/dev-signing/fingerprint.txt)
+            test -n "$pin" || {
+              echo "app/android/dev-signing/fingerprint.txt is empty."
               exit 1
-            fi
-
-            # The signature, which is the one that came back. A key minted
-            # during this build is a key no previously installed Kyron was
-            # signed with, so the install is refused as a mismatched update.
-            certs=$("$apksigner" verify --print-certs "$apk")
-            subject=$(sed -n 's/^Signer #1 certificate DN: //p' <<<"$certs")
-            digest=$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' \
-              <<<"$certs")
-            if grep -q 'CN=Android Debug' <<<"$subject"; then
-              echo "$apk is signed with a debug key. key.properties did not"
-              echo "take, so this APK carries a certificate minted during"
-              echo "this build and will not install over any previous one."
-              exit 1
-            fi
-
-            # Against the fingerprint in the repository, when the key in the
-            # repository is the one in use. This is the check with teeth: the
-            # one above only knows a debug key when it sees one, and the
-            # failure being guarded against is *any* change of key between
-            # builds. A replaced keystore, or a signing config that silently
-            # stops taking effect, fails here by name.
-            if [ "${KYRON_PINNED:-no}" = yes ]; then
-              expected=$(tr -d ' \n' < app/android/dev-signing/fingerprint.txt)
-              if [ "$digest" != "$expected" ]; then
-                echo "$apk is not signed with the committed development key."
-                echo "  expected $expected"
-                echo "  got      $digest"
-                echo "If the keystore was replaced on purpose, update"
-                echo "app/android/dev-signing/fingerprint.txt -- and note that"
-                echo "everybody has to uninstall their build once."
-                exit 1
-              fi
-            fi
-
-            printf '%-52s %s\n' "$(basename "$apk")" "$subject"
-            printf '%-52s %s\n' '' "$digest"
-            size=$(stat -c%s "$apk")
-            # A release APK for one architecture is 30-40 MB here; the debug
-            # one this replaced was 114 MB. Anything past 70 MB per split is
-            # either debug again or something very large has been added
-            # without anyone noticing.
-            case "$apk" in
-              *universal*) limit=$((160 * 1024 * 1024)) ;;
-              *)           limit=$(( 70 * 1024 * 1024)) ;;
-            esac
-            if [ "$size" -gt "$limit" ]; then
-              echo "$apk is $((size / 1024 / 1024)) MB, over its limit."
-              exit 1
-            fi
-            printf '%-52s %5s MB  ok\n' "$(basename "$apk")" \
-              "$((size / 1024 / 1024))"
-          done
+            }
+            scripts/check-apks.sh --pin "$pin" debug-artifacts/*.apk
+          else
+            scripts/check-apks.sh debug-artifacts/*.apk
+          fi
 
       - name: Hand the Android build to the publish job
         uses: actions/upload-artifact@v4

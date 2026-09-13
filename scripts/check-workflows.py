@@ -93,6 +93,56 @@ def check(name: str, publish_job: str) -> list[str]:
     return said
 
 
+# What stands between a build and an APK nobody can install.
+INSTALL_CHECK = "scripts/check-apks.sh"
+
+
+def check_install_guard(name: str) -> list[str]:
+    """That the Android job checks its APKs, before it uploads them.
+
+    Every part of this has already failed once. The check was missing while
+    four development builds shipped signed with a key minted during their own
+    build. The first version of it took the certificate out of
+    `apksigner verify --print-certs` with a sed pattern, which build-tools
+    37.0.0 renamed out from under it -- the digest came out empty and a
+    correctly signed APK failed with "got" followed by nothing. And it
+    guarded the development builds while the release workflow, which ships
+    the APK people actually keep, had no such check at all.
+    """
+    jobs = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))["jobs"]
+    steps = (jobs.get("android") or {}).get("steps") or []
+    said: list[str] = []
+
+    checks = [i for i, step in enumerate(steps) if INSTALL_CHECK in str(step.get("run", ""))]
+    if not checks:
+        return [
+            f"{name}: the 'android' job never runs {INSTALL_CHECK}, so an APK "
+            f"nobody can install would be published without anything looking"
+        ]
+
+    uploads = [
+        i
+        for i, step in enumerate(steps)
+        if str(step.get("uses", "")).startswith("actions/upload-artifact")
+    ]
+    if uploads and min(checks) > min(uploads):
+        said.append(
+            f"{name}: {INSTALL_CHECK} runs after the upload, which is after "
+            f"the point where it could stop anything"
+        )
+
+    for step in steps:
+        if "--print-certs" in str(step.get("run", "")):
+            said.append(
+                f"{name}: {step.get('name')!r} reads apksigner's printed "
+                f"certificates, whose wording changes between build-tools "
+                f"versions -- that is the bug scripts/apk-certificate.py "
+                f"exists to have fixed"
+            )
+
+    return said
+
+
 def check_wiring(name: str) -> list[str]:
     """Every needs., and every output read across jobs, points at something."""
     text = (WORKFLOWS / name).read_text(encoding="utf-8")
@@ -135,6 +185,9 @@ def main() -> int:
 
     for path in sorted(WORKFLOWS.glob("*.yml")):
         problems += check_wiring(path.name)
+
+    for name in PUBLISHING:
+        problems += check_install_guard(name)
 
     if problems:
         for problem in problems:
