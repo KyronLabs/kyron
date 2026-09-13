@@ -19,7 +19,7 @@ One client, one API, one database.
                         │  HTTPS / JSON
 ┌───────────────────────┴─────────────────────┐
 │   NestJS on Fastify                         │
-│   13 REST controllers  ·  rate limited      │
+│   17 REST controllers  ·  rate limited      │
 │   Supabase JWT verified against JWKS        │
 └───────┬─────────────────────────┬───────────┘
         │  Prisma                 │
