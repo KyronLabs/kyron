@@ -124,11 +124,26 @@ static on Render (`render.yaml`). More in [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
 ---
 
+## ◈ The other repositories
+
+This one holds the app, the API and the web build. Five more sit around it, and
+each is separate for a reason rather than for tidiness.
+
+| Repository | What it is | Why it is not in here |
+|:--|:--|:--|
+| [**kyron-lenses**](https://github.com/KyronLabs/kyron-lenses) | The published catalogue of AR lenses: `lenses.json`, the artwork they hang on a face, and `tools/lens.py`, which checks a lens against the format before it goes out. | A lens is data, not code. New lenses reach phones by being merged here, with no app release and nothing to wait for in a store queue. The format is in [`docs/LENS_FORMAT.md`](docs/LENS_FORMAT.md); the app's reader, the catalogue's checker and the studio's checker are all held to one shared file of test vectors. |
+| [**kyron-lens-studio**](https://github.com/KyronLabs/kyron-lens-studio) | A Windows desktop tool for authoring those lenses. Paint a sticker, place it on a 3D face, see it the way the camera will, and open a pull request against the catalogue without touching JSON. | Every measurement in a lens is in **pupil-gaps** — multiples of the distance between the two pupils, in a frame that rotates with the head. That is what makes a lens correct on any face at any distance, and it is nothing like how anybody draws. The conversion in both directions is what this tool is. It is Electron rather than Flutter for one reason: a 3D face mockup, and Flutter has no mature 3D. |
+| [**design-system**](https://github.com/KyronLabs/design-system) | The colours, spacing, radius and type scales, and the Flutter theme built from them. Pulled in as a git dependency by `app/pubspec.yaml`. | The app is not the only thing that has to look like Kyron. Keeping the tokens out here is what stops a screen inventing its own 14-pixel gap. |
+| [**Kyron_Terms_and_Privacy**](https://github.com/KyronLabs/Kyron_Terms_and_Privacy) | The Terms and the Privacy Policy, as static pages. The get-started screen will not let anybody past until they have been shown. | Legal text changes on its own schedule and must not need an app release. The app's links to it are in `app/lib/config/legal_links.dart`. |
+| [**kyron-live**](https://github.com/KyronLabs/kyron-live) | Live video. **No system yet, deliberately** — `docs/DECISION.md` costs the options against each other with worked numbers and names the questions that need a human first. | Live is the one part of Kyron where the wrong early choice costs money every month rather than a refactor, and where the hardest problem is not cost: live video cannot be pre-moderated. A finished stream is an ordinary video file, so it lands in the media pipeline this repo already has. |
+
+---
+
 ## ◈ Testing and CI
 
 | Suite | Count | Runs on |
 |:--|:--|:--|
-| Flutter widget and unit tests | 754 | Every push and PR touching `app/` |
+| Flutter widget and unit tests | 771 | Every push and PR touching `app/` |
 | API unit tests | 292 | Every push and PR touching `api/` |
 
 Locally:
