@@ -109,7 +109,7 @@ directories are placeholders for services that have not been written.
                         │  HTTPS / JSON
 ┌───────────────────────┴─────────────────────┐
 │   NestJS on Fastify                         │
-│   13 REST controllers  ·  rate limited      │
+│   17 REST controllers  ·  rate limited      │
 │   Supabase JWT verified against JWKS        │
 └───────┬─────────────────────────┬───────────┘
         │  Prisma                 │
@@ -144,7 +144,7 @@ each is separate for a reason rather than for tidiness.
 | Suite | Count | Runs on |
 |:--|:--|:--|
 | Flutter widget and unit tests | 771 | Every push and PR touching `app/` |
-| API unit tests | 292 | Every push and PR touching `api/` |
+| API unit tests | 443 | Every push and PR touching `api/` |
 
 Locally:
 
