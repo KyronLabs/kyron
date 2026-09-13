@@ -12,6 +12,41 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Fixed
+
+- The development APKs could not be installed. Android answered "App not
+  installed as package appears to be invalid", which sounds like a corrupt
+  download and was not: the file was a valid, correctly signed, correctly
+  aligned APK. Two things were wrong with it, and both came from its being a
+  **debug** build.
+
+  It carried `android:debuggable="true"`. ColorOS, MIUI, Funtouch and several
+  other OEM skins refuse a debuggable APK from an unknown source outright, and
+  the message they show points at the file rather than at the flag.
+
+  And it was enormous -- 114 MB for arm64, 190 MB universal -- because a
+  Flutter debug APK carries the Dart kernel for the JIT (87 MB of
+  `kernel_blob.bin`), the debug engine (39 MB of `libflutter.so`) and 15 MB of
+  Vulkan validation layers that exist only in debug. Over a phone connection
+  that is a download long enough to be interrupted, and a truncated APK fails
+  with the same message.
+
+  Both halves of the development build are release builds now, which is what
+  the Windows half had been all along and for the same reason: a development
+  build has to be one the people it is for can actually run. The comment next
+  to the Windows build used to end "Android has no equivalent problem, so its
+  APKs stay debug"; Android had exactly the equivalent problem. There is no
+  `key.properties` on this path, so the APKs are signed with the development
+  key rather than the store one -- which means a build from here and a store
+  build cannot sit side by side, and that is deliberate.
+
+  The APKs are renamed from `-debug-` to `-dev-` to stop the filename saying
+  something untrue.
+
+  A new step checks what it publishes: every APK is read back with `aapt2` and
+  the build fails if any is debuggable or past a size ceiling. Both halves of
+  it fire on the build this replaced.
+
 ### Added
 
 - **Kyron now requires iOS 15.** It was 13, and `firebase_core` and
