@@ -103,6 +103,29 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      # Release mode, like the Windows half below, and for the same reason
+      # stated differently: a development build has to be one the people it is
+      # for can actually run.
+      #
+      # `--debug` produced an APK that would not install. Two things were
+      # wrong with it and release mode fixes both. It carried
+      # `android:debuggable="true"`, which ColorOS, MIUI, Funtouch and several
+      # other OEM skins refuse outright from an unknown source -- the message
+      # they show is "App not installed as package appears to be invalid",
+      # which sounds like a corrupt file and is not. And it was enormous:
+      # 114 MB for arm64 and 190 MB universal, because a Flutter debug APK
+      # carries the Dart kernel for the JIT (87 MB of `kernel_blob.bin`), the
+      # debug engine (39 MB of `libflutter.so`) and 15 MB of Vulkan validation
+      # layers that exist only in debug. Over a phone connection that is a
+      # download long enough to truncate, and a truncated APK fails with that
+      # same message.
+      #
+      # There is no `key.properties` here, so `buildTypes.release` falls back
+      # to the debug signing config: release code, development signature.
+      # That is deliberate -- it means these can never be confused with a
+      # store build, and a real release has to be uninstalled before one of
+      # these goes on beside it.
+      #
       # Two builds, because --split-per-abi replaces the universal APK rather
       # than adding to it.
       # Optional here, unlike the release. A development APK without push is
@@ -120,7 +143,7 @@ jobs:
             echo "No GOOGLE_SERVICES_JSON secret, so this build has no push."
           fi
 
-      - name: Build per-architecture debug APKs
+      - name: Build per-architecture APKs
         env:
           # Optional. supabase_config.dart carries a committed default; this
           # lets a build override it without one being in the repository. The
@@ -129,7 +152,7 @@ jobs:
           # refuses to launch rather than reach a Supabase it was not meant to.
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          flutter build apk --debug --split-per-abi \
+          flutter build apk --release --split-per-abi \
             --build-number "$KYRON_BUILD_NUMBER" \
             ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
 
@@ -143,21 +166,21 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p debug-artifacts
-          stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-debug"
+          stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev"
 
           for abi in arm64-v8a armeabi-v7a x86_64; do
-            src="app/build/app/outputs/flutter-apk/app-${abi}-debug.apk"
+            src="app/build/app/outputs/flutter-apk/app-${abi}-release.apk"
             # Missing means the split build did not produce it, which is a
             # broken build rather than a smaller one.
             test -f "$src" || { echo "Missing $src"; exit 1; }
             cp "$src" "debug-artifacts/${stem}-${abi}.apk"
           done
 
-      - name: Build universal debug APK
+      - name: Build the universal APK
         env:
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          flutter build apk --debug \
+          flutter build apk --release \
             --build-number "$KYRON_BUILD_NUMBER" \
             ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
 
@@ -167,9 +190,50 @@ jobs:
           VERSION: ${{ needs.version.outputs.version }}
         run: |
           set -euo pipefail
-          cp app/build/app/outputs/flutter-apk/app-debug.apk \
-            "debug-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}-debug-universal.apk"
+          cp app/build/app/outputs/flutter-apk/app-release.apk \
+            "debug-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev-universal.apk"
           ls -lh debug-artifacts
+
+      # The check that would have caught this. A debuggable APK builds,
+      # uploads and publishes perfectly happily, and then will not install:
+      # ColorOS, MIUI and Funtouch all refuse one from an unknown source, and
+      # the message they show -- "package appears to be invalid" -- points at
+      # the file rather than at the flag, so it reads as a corrupt download.
+      # Nothing in the build says a word about it.
+      #
+      # aapt2 comes with the Android SDK that ubuntu-latest already has. It is
+      # looked up rather than assumed, and a missing one fails the step: a
+      # guard that silently does not run is worse than no guard.
+      - name: Check the APKs are installable
+        working-directory: .
+        run: |
+          set -euo pipefail
+          aapt2=$(ls -d "${ANDROID_HOME:-$ANDROID_SDK_ROOT}"/build-tools/*/aapt2 \
+            2>/dev/null | sort -V | tail -1)
+          test -n "$aapt2" || { echo "No aapt2 in the Android SDK."; exit 1; }
+
+          for apk in debug-artifacts/*.apk; do
+            badging=$("$aapt2" dump badging "$apk")
+            if grep -q 'application-debuggable' <<<"$badging"; then
+              echo "$apk is debuggable. Android will refuse to install it."
+              exit 1
+            fi
+            size=$(stat -c%s "$apk")
+            # A release APK for one architecture is 30-40 MB here; the debug
+            # one this replaced was 114 MB. Anything past 70 MB per split is
+            # either debug again or something very large has been added
+            # without anyone noticing.
+            case "$apk" in
+              *universal*) limit=$((160 * 1024 * 1024)) ;;
+              *)           limit=$(( 70 * 1024 * 1024)) ;;
+            esac
+            if [ "$size" -gt "$limit" ]; then
+              echo "$apk is $((size / 1024 / 1024)) MB, over its limit."
+              exit 1
+            fi
+            printf '%-52s %5s MB  ok\n' "$(basename "$apk")" \
+              "$((size / 1024 / 1024))"
+          done
 
       - name: Hand the Android build to the publish job
         uses: actions/upload-artifact@v4
@@ -199,13 +263,15 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # Release mode, on a workflow whose Android half is debug, and that is
-      # deliberate: `flutter build windows --debug` links against the Visual
-      # C++ *debug* runtime -- ucrtbased.dll, vcruntime140d.dll -- which ships
-      # with Visual Studio and not with Windows. A debug zip therefore fails to
-      # start on the machine of anyone who does not develop on it, which is
-      # everyone this build is for. Android has no equivalent problem, so its
-      # APKs stay debug.
+      # Release mode: `flutter build windows --debug` links against the
+      # Visual C++ *debug* runtime -- ucrtbased.dll, vcruntime140d.dll --
+      # which ships with Visual Studio and not with Windows. A debug zip
+      # therefore fails to start on the machine of anyone who does not develop
+      # on it, which is everyone this build is for.
+      #
+      # This comment used to end "Android has no equivalent problem, so its
+      # APKs stay debug." Android had exactly the equivalent problem, and the
+      # APKs would not install. Both halves are release builds now.
       - name: Build the Windows app
         env:
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
@@ -234,7 +300,7 @@ jobs:
           VERSION: ${{ needs.version.outputs.version }}
         run: |
           & ./scripts/package-windows.ps1 `
-            -Stem "kyron-$env:VERSION+$env:KYRON_BUILD_NUMBER-debug" `
+            -Stem "kyron-$env:VERSION+$env:KYRON_BUILD_NUMBER-dev" `
             -OutputDirectory debug-artifacts
 
       - name: Hand the Windows build to the publish job
@@ -265,7 +331,7 @@ jobs:
           ls -lh debug-artifacts
 
           # Both platforms, or it is not this build.
-          stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-debug"
+          stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev"
           test -f "debug-artifacts/${stem}-windows-x64.zip"
           test -f "debug-artifacts/${stem}-arm64-v8a.apk"
 
@@ -288,18 +354,25 @@ jobs:
 
             ---
 
-            A development build off `main`, not a release.
+            A development build off `main`, not a release. Both halves are
+            compiled in release mode; only the signature is a development one.
 
             **Windows** — `*-windows-x64.zip`. Unzip anywhere and run
             `Kyron.exe` inside the `Kyron` folder; keep the folder together.
             Windows will warn that the publisher is unknown, because the build
-            is not code-signed. This half is compiled in release mode: a debug
-            Windows build needs the Visual C++ debug runtime, which only
-            machines with Visual Studio have.
+            is not code-signed.
 
-            **Android** — debug APKs. `arm64-v8a` suits any phone from roughly
-            2015 onwards; the `universal` APK works everywhere and is about
-            three times the size.
+            **Android** — take `arm64-v8a` unless you know otherwise; it fits
+            essentially every phone sold since about 2015. `universal` works
+            anywhere and is roughly three times the size. `x86_64` is for
+            emulators.
+
+            These are signed with a development key, not the store key, so a
+            build from here and a build from the Play Store cannot sit side by
+            side: uninstall one before installing the other. If Android says
+            *"App not installed as package appears to be invalid"*, that is
+            almost always an interrupted download — check the file is the full
+            size shown here and try again on a stable connection.
           prerelease: false
           make_latest: true
           generate_release_notes: false
