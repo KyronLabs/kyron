@@ -46,6 +46,25 @@ class PlatformSupport {
   /// The on-device database the composer's drafts live in.
   final bool localDatabase;
 
+  /// Notifications while the app is closed.
+  ///
+  /// firebase_messaging ships android, ios and macos. firebase_core also
+  /// ships windows -- which is worth knowing, because it means a Windows
+  /// build compiles a Firebase plugin it can never use, and
+  /// `Firebase.initializeApp()` there fails somewhere inside a C++ SDK
+  /// rather than saying anything useful.
+  final bool push;
+
+  /// Whether `so.kyron.app://auth-callback` finds its way back into the app.
+  ///
+  /// Android declares the intent filter and iOS the URL type; nothing else
+  /// does. It matters for anything that leaves for a browser and expects to
+  /// be returned -- signing in with Google, and the links in Supabase's
+  /// confirmation and password-reset mail. Where this is false, sending
+  /// somebody to Google opens a browser that then has nowhere to put the
+  /// session, and they are stranded on a page that cannot say so.
+  final bool authRedirect;
+
   /// What to call this platform when telling somebody a feature is not on it.
   final String name;
 
@@ -56,6 +75,8 @@ class PlatformSupport {
     required this.camera,
     required this.videoStills,
     required this.localDatabase,
+    required this.push,
+    required this.authRedirect,
     required this.name,
   });
 
@@ -67,6 +88,8 @@ class PlatformSupport {
     camera: true,
     videoStills: true,
     localDatabase: true,
+    push: true,
+    authRedirect: true,
     name: 'this device',
   );
 
@@ -78,6 +101,11 @@ class PlatformSupport {
     camera: false,
     videoStills: false,
     localDatabase: true,
+    // firebase_messaging does ship macos, but nothing has configured it: no
+    // GoogleService-Info.plist in macos/Runner and no APNs entitlement.
+    push: false,
+    // The macOS Runner declares no CFBundleURLTypes entry.
+    authRedirect: false,
     name: 'macOS',
   );
 
@@ -91,6 +119,12 @@ class PlatformSupport {
     videoStills: true,
     // sqflite is native. Drafts on the web would need a different store.
     localDatabase: false,
+    // Web push needs a service worker and a VAPID key, neither of which
+    // exists here.
+    push: false,
+    // A browser cannot open a custom scheme. The web build would need an
+    // https redirect of its own.
+    authRedirect: false,
     name: 'the web',
   );
 
@@ -102,6 +136,8 @@ class PlatformSupport {
     camera: false,
     videoStills: false,
     localDatabase: false,
+    push: false,
+    authRedirect: false,
     name: 'Windows',
   );
 
@@ -112,6 +148,8 @@ class PlatformSupport {
     camera: false,
     videoStills: false,
     localDatabase: false,
+    push: false,
+    authRedirect: false,
     name: 'Linux',
   );
 

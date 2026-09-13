@@ -14,6 +14,126 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Kyron now requires iOS 15.** It was 13, and `firebase_core` and
+  `firebase_messaging` both require 15 -- CocoaPods refuses that combination
+  before a line is compiled, so push on iOS was not a matter of configuration
+  but of a build that could not start. Raised in all three Xcode
+  configurations and in the framework's `MinimumOSVersion`. **iOS 13 and 14
+  devices can no longer install Kyron**, which is the cost of it and was
+  chosen rather than discovered.
+
+  Nothing in CI builds iOS -- no runner, no signing identity -- so the number
+  is guarded from Linux instead. `test/ios_deployment_target_test.dart` reads
+  the same sources Xcode and CocoaPods do: every
+  `IPHONEOS_DEPLOYMENT_TARGET` in the project, `MinimumOSVersion` in
+  `AppFrameworkInfo.plist`, and the `ios.deployment_target` of every podspec
+  in the packages this app resolved. It fails when the configurations
+  disagree, when the framework minimum drifts from the project, or when a
+  plugin asks for more than the project offers -- naming the plugins that do,
+  so the next one to raise its floor in a routine upgrade is caught here
+  rather than on somebody's Mac.
+
+- Push notifications, end to end. The server half has been finished and
+  shipped for two releases -- `PushService`, FCM HTTP v1, and a
+  `DeliveryService` that picks the socket when the app is open and a push when
+  it is not -- behind a token source that deliberately answered `null`,
+  because a stub returning a made-up token would have looked exactly like push
+  working. The source is now real: `FirebasePushTokens`, over
+  `firebase_messaging`.
+
+  It registers on sign-in and on every launch with a session, because a token
+  can rotate while the app is closed and a server holding the old one pushes
+  into nothing. Permission is asked for at sign-in rather than at launch: the
+  question would otherwise land before anybody had seen a screen, and "no"
+  from a stranger is permanent on both platforms.
+
+  Every way this can come to nothing -- no Firebase on this platform, no
+  `google-services.json`, a reader who declined -- answers null rather than
+  throwing, and is said once in the log. None of them can stop the app
+  starting, and none of them makes it behave as though this install were
+  reachable when it is not.
+
+  The configuration files are gitignored, so CI writes `google-services.json`
+  out of a `GOOGLE_SERVICES_JSON` secret. A release **refuses to build without
+  it**: the Gradle plugin is skipped when the file is absent, the APK builds
+  perfectly cleanly, and every install from it is unreachable while the app is
+  closed -- with nothing in the build output saying so. A development build
+  tolerates the absence and says which it is.
+
+### Fixed
+
+- A push token stayed live after signing out. `PushRegistrar.stop()` withdrew
+  the registered token but never cancelled its subscription to the platform's
+  token-refresh stream, so the next rotation registered the handset again --
+  against an account nobody was signed in to. The person holding that handset
+  next would have received the previous account's notifications.
+
+- Signing in with Google. The button on the get-started screen had a comment
+  where the sign-in should have been -- it depressed, and nothing happened --
+  and the mark on it was not Google's: three greys out of a file whose own
+  metadata called it `search.svg`. There is now a real flow, over Supabase's
+  Google provider, drawn to Google's published specification down to the
+  border colour and the 18-pixel logo that is never recoloured. The session is
+  caught in `main.dart` rather than on the screen that started it, because
+  Android is free to kill the process while the consent screen is in front of
+  it. See [`docs/GOOGLE_SIGN_IN.md`](docs/GOOGLE_SIGN_IN.md) for the three
+  dashboard steps that switch it on.
+
+  Not offered where it cannot work. Only the Android and iOS builds register
+  `so.kyron.app://`, so on Windows the consent screen's answer would have
+  nowhere to go; there the button says so and points at the way through that
+  does work, rather than opening a browser on a journey with no end.
+
+- A get-started screen. The first thing anybody saw was "Welcome back." --
+  addressed to somebody who had never been here -- over a dead Google button
+  and two identical grey buttons. It is now a picture across the top with the
+  ways in on a sheet lifted over it. The picture is drawn rather than shipped:
+  glass discs holding the things Kyron is for, coloured from the theme, so it
+  is right in both and adds nothing to the download.
+
+- The terms, as a sheet, before the first sign-in. Two links under a button is
+  the usual way to do this, and it is the usual way because it works for the
+  company rather than the reader: nobody has ever read a document they had to
+  leave the screen to find. Kyron now asks once, before the first way in is
+  taken, and says the three things that actually matter in a sentence each,
+  with both documents a tap away. The decision is pinned to the bottom of the
+  sheet and the reading scrolls above it, so the Agree button can never end up
+  under the fold.
+
+### Fixed
+
+- Asking for a password reset did nothing. The screen validated the address
+  and then ran `// Your reset logic here`, silently, for ever -- while
+  `AuthRepository.sendPasswordReset` sat finished behind it, wired to nothing.
+  It now sends, and then says what happens next: which inbox, why it may be in
+  spam, that the link is good for an hour and one use, what to do if nothing
+  arrives, and -- on a desktop, where the link cannot open the app -- that the
+  mail has to be opened on the phone. Failures are shown in place, in
+  Supabase's own words, with a cooldown on Resend so the limiter is not the
+  thing saying no.
+
+- The mark at the top of the home screen was blue. It was drawn under a
+  `ColorFilter.mode(scheme.primary, srcIn)`, which flattened a leaf that runs
+  teal into green down to one flat `#4C8FFF`. The filter is gone and the app
+  bar draws `AppLogo`, so there is one place that knows what Kyron's mark
+  looks like.
+
+- The splash screen's mark is a silhouette: near-black in daylight, and at
+  night barely a shade off the background it sits on. A splash is a held
+  breath, not a billboard.
+
+- An email address on a top-level domain longer than four letters was refused
+  everywhere it was checked. The pattern ended `{2,4}`, so nobody on a
+  `.online`, `.digital` or `.photography` address could sign up, sign in or
+  ask for a password reset. Sign-in and sign-up were not checking at all --
+  both accepted any non-empty string, which is how a typo became a reset mail
+  sent into nothing.
+
+- Firebase's `google-services.json`, `GoogleService-Info.plist` and the
+  generated `firebase_options.dart` are in `.gitignore`. The API key inside
+  them is meant to ship inside an app, but together they name the project, its
+  sender id and its app ids, and this repository is public.
+
 - Every build ships Windows and Android together. The release workflow built
   Android and nothing else, so the Windows app existed but there was no way to
   get one without a Windows machine and a toolchain. A tag now runs its checks

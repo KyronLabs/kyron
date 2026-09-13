@@ -63,6 +63,12 @@ dependencies:
   cryptography: ^2.9.0
   camera: ^0.12.0+1
   mediapipe_face_mesh: ^2.9.0
+  # Push notifications. The server half has been finished since the
+  # notifications work; these are what finally supply a device token to send
+  # to. Android and iOS only -- see docs/PUSH.md, including the note about
+  # firebase_core shipping a Windows implementation the app never calls.
+  firebase_core: ^4.14.0
+  firebase_messaging: ^16.6.0
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +83,7 @@ flutter:
   assets:
     - lib/assets/logo.svg
     - lib/assets/google.svg
+    - lib/assets/google_g.svg
 
 fonts:
   - family: Inter

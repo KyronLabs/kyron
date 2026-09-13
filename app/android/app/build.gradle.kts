@@ -13,6 +13,30 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// Firebase, for push. The Google services plugin turns google-services.json
+// into the string resources the SDK reads at startup, which is why
+// Firebase.initializeApp() needs no options on Android.
+//
+// Applied only when the file is there, and the file is gitignored: it names
+// the Firebase project, its sender id and its app ids, and this repository is
+// public. Unconditional, this plugin fails the build outright, so every fresh
+// clone -- and every CI job that does not write the file out of a secret --
+// would stop here. Without it the app still builds and runs; it simply cannot
+// register for push, and says so in its log rather than pretending.
+//
+// A release must not ship that quietly, so the release workflow checks the
+// file was written before it builds. A contributor's checkout is where this
+// leniency belongs; a published APK is not.
+val googleServices = file("google-services.json")
+if (googleServices.exists()) {
+    apply(plugin = "com.google.gms.google-services")
+} else {
+    logger.lifecycle(
+        "google-services.json is not in android/app, so this build will have " +
+            "no push notifications. See docs/PUSH.md."
+    )
+}
+
 android {
     namespace = "so.kyron.app"
     compileSdk = flutter.compileSdkVersion

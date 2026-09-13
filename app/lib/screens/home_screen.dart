@@ -177,7 +177,6 @@ class _HomeScreenState extends State<HomeScreen>
               );
             },
             child: TopEdge(
-              logoPath: 'lib/assets/logo.svg',
               onProfileTap: () {
                 widget.drawerKey.currentState?.toggleDrawer();
               },

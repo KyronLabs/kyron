@@ -13,6 +13,7 @@ class AppPreferences {
   static const _kPushEnabled = 'pref_push_enabled';
   static const _kEmailEnabled = 'pref_email_enabled';
   static const _kVideoMuted = 'pref_video_muted';
+  static const _kTermsAcceptedAt = 'pref_terms_accepted_at';
 
   /// The scales the font-size screen offers, smallest first.
   static const textScales = <double>[0.85, 1.0, 1.15, 1.3];
@@ -38,6 +39,18 @@ class AppPreferences {
   /// clip, so watching a feed meant unmuting every post in it.
   ///
   /// Muted on a fresh install. A feed that starts talking is hostile.
+  /// When the terms were last agreed to, or null if they never have been.
+  ///
+  /// A date rather than a flag: the terms can change, and a stored `true`
+  /// says nothing about which version somebody read.
+  Future<DateTime?> readTermsAcceptedAt() async {
+    final stored = (await _prefs).getString(_kTermsAcceptedAt);
+    return stored == null ? null : DateTime.tryParse(stored);
+  }
+
+  Future<void> writeTermsAcceptedAt(DateTime when) async =>
+      (await _prefs).setString(_kTermsAcceptedAt, when.toIso8601String());
+
   Future<bool> readVideoMuted() async =>
       (await _prefs).getBool(_kVideoMuted) ?? true;
 

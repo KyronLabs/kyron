@@ -105,6 +105,21 @@ jobs:
 
       # Two builds, because --split-per-abi replaces the universal APK rather
       # than adding to it.
+      # Optional here, unlike the release. A development APK without push is
+      # still worth having, and this is what a contributor's own checkout
+      # looks like -- the Gradle plugin is skipped and the build says so.
+      - name: Write the Firebase configuration
+        working-directory: .
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: |
+          if [ -n "$GOOGLE_SERVICES_JSON" ]; then
+            printf '%s' "$GOOGLE_SERVICES_JSON" > app/android/app/google-services.json
+            echo "Firebase configured: this build can receive notifications."
+          else
+            echo "No GOOGLE_SERVICES_JSON secret, so this build has no push."
+          fi
+
       - name: Build per-architecture debug APKs
         env:
           # Optional. supabase_config.dart carries a committed default; this
