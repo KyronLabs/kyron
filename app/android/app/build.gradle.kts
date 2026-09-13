@@ -63,15 +63,26 @@ val kyronVersionCode = 100000 + flutter.versionCode
 // Which architectures the APK carries.
 //
 // `--target-platform` restricts Flutter's own libraries -- libapp.so and
-// libflutter.so -- and nothing else. With `--split-per-abi` gone, the Flutter
-// Gradle Plugin fills the build type's abiFilters with all of arm, arm64 and
-// x64 regardless of what was asked for, so an APK built `--target-platform
-// android-arm64` came out carrying libtensorflowlite_c.so for x86_64 too:
-// 6.6 MB of code that architecture will never run.
+// libflutter.so -- and nothing else. Every plugin's .so is built for all
+// three ABIs and packaged whatever was asked for, so with `--split-per-abi`
+// gone an arm64 APK came out carrying libtensorflowlite_c.so for x86_64 too.
 //
-// Flutter passes the platforms through as a Gradle property, so they are read
-// back here and applied in buildTypes below. With no --target-platform it
-// passes all of them, which is what makes the universal APK universal.
+// `ndk.abiFilters` looks like the answer and is not one to rely on: the
+// Flutter Gradle Plugin writes it itself, and where it writes it moved
+// between the version here and the one CI resolves from the stable channel.
+// Setting it on defaultConfig reported the right value at the end of
+// configuration and changed nothing; setting it on the build type worked on
+// Flutter 3.35.5 and did nothing on 3.47.4, which is how build 79 shipped
+// four APKs of the wrong size. Flutter is not pinned by this repository and
+// the plugin is entitled to own that field.
+//
+// The Android Gradle Plugin *is* pinned -- 8.11.1, in settings.gradle.kts --
+// so the filtering is stated in its terms instead, as a packaging exclusion
+// no Flutter version touches. What holds locally therefore holds in CI.
+//
+// Flutter passes the platforms through as a Gradle property; with no
+// --target-platform it passes all of them, which is what makes the universal
+// APK universal and leaves nothing excluded.
 val ABIS = mapOf(
     "android-arm" to "armeabi-v7a",
     "android-arm64" to "arm64-v8a",
@@ -81,6 +92,8 @@ val ABIS = mapOf(
 val kyronAbis = (project.findProperty("target-platform") as String? ?: "")
     .split(",")
     .mapNotNull { ABIS[it.trim()] }
+val kyronDroppedAbis =
+    if (kyronAbis.isEmpty()) emptyList() else ABIS.values.filterNot { it in kyronAbis }
 
 android {
     namespace = "so.kyron.app"
@@ -128,23 +141,13 @@ android {
             } else {
                 signingConfigs.getByName("debug")
             }
+        }
+    }
 
-            // On the build type, not defaultConfig, because that is where the
-            // Flutter Gradle Plugin puts its own -- it clears
-            // `buildType.ndk.abiFilters` and fills it with all of arm,
-            // arm64 and x64 whenever `--split-per-abi` is off -- and a build
-            // type's filters win over defaultConfig's. Setting this in
-            // defaultConfig looked right, reported `[arm64-v8a]` at the end of
-            // configuration, and changed nothing about the APK.
-            //
-            // This block runs after that one: the plugin configures during
-            // apply(), at the top of this file, and this is further down.
-            if (kyronAbis.isNotEmpty()) {
-                ndk {
-                    abiFilters.clear()
-                    abiFilters.addAll(kyronAbis)
-                }
-            }
+    packaging {
+        jniLibs {
+            // Empty for the universal APK, which drops nothing.
+            excludes += kyronDroppedAbis.map { "lib/$it/**" }
         }
     }
 }
