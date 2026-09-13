@@ -30,8 +30,24 @@ void main() {
 
     tester.view.devicePixelRatio = 1;
 
-    Future<void> shoot(String name) async {
+    /// Waits for every [Image] in the tree to actually decode.
+    ///
+    /// `pumpAndSettle` runs on a fake clock, and image decoding is real async
+    /// on the engine's task runner, so without this every asset renders as
+    /// nothing and the shot comes out empty -- which is exactly what happened
+    /// the first time this hero was photographed.
+    Future<void> settleImages() async {
       await tester.pumpAndSettle();
+      await tester.runAsync(() async {
+        for (final element in find.byType(Image).evaluate()) {
+          await precacheImage((element.widget as Image).image, element);
+        }
+      });
+      await tester.pumpAndSettle();
+    }
+
+    Future<void> shoot(String name) async {
+      await settleImages();
       final boundary = tester.renderObject<RenderRepaintBoundary>(
         find.byType(RepaintBoundary).first,
       );
