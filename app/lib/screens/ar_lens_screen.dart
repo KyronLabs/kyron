@@ -19,6 +19,7 @@ import '../models/post_media.dart';
 import '../providers/composer_provider.dart';
 import '../services/app_log.dart';
 import '../services/attachment_images.dart';
+import '../services/exposure_meter.dart';
 import '../services/face_tracker.dart';
 import '../services/lens_catalogue.dart';
 import '../services/lens_renderer.dart';
@@ -81,6 +82,14 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   late final LensCatalogue _catalogue = widget.catalogue ?? LensCatalogue();
   late final FaceTracker _tracker = widget.tracker ?? FaceTracker();
   late final AttachmentImages _pictures = widget.pictures ?? AttachmentImages();
+
+  /// Keeps the face lit well enough to be found. See [ExposureMeter].
+  final _exposure = ExposureMeter();
+
+  /// What this camera says it will accept, in stops. Both zero means it takes
+  /// no exposure compensation at all, and the meter stays out of the way.
+  (double, double) _exposureRange = (0, 0);
+  bool _adjustingExposure = false;
 
   /// Where the face is right now, or null when there is not one.
   FaceAnchor? _face;
@@ -208,6 +217,8 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         return;
       }
 
+      await _meterOnTheMiddle(controller);
+
       setState(() {
         _cameras = found;
         _controller = controller;
@@ -240,6 +251,70 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// Tracking runs only while something needs it. A colour filter does not,
   /// and inference on every frame for a lens that ignores the answer is
   /// somebody's battery spent on nothing.
+  /// Points the camera's exposure and focus at the middle of the frame.
+  ///
+  /// Somebody holding a phone at arm's length has their head there, and left
+  /// to itself the camera meters the whole scene -- so a bright window behind
+  /// them takes the exposure down and their face with it. On light skin the
+  /// face still lands mid-range; on dark skin it lands in the bottom stop,
+  /// which is where both the picture and the face detector fall apart.
+  ///
+  /// Not every device takes either instruction. A device that does not says
+  /// so, and there is nothing to do about it but carry on.
+  Future<void> _meterOnTheMiddle(CameraController controller) async {
+    const middle = Offset(0.5, 0.45);
+    try {
+      if (controller.value.exposurePointSupported) {
+        await controller.setExposurePoint(middle);
+      }
+      if (controller.value.focusPointSupported) {
+        await controller.setFocusPoint(middle);
+      }
+      _exposureRange = (
+        await controller.getMinExposureOffset(),
+        await controller.getMaxExposureOffset(),
+      );
+    } on CameraException catch (error) {
+      AppLog.instance.error('ar', 'Could not meter the camera: ${error.code}');
+      _exposureRange = (0, 0);
+    }
+  }
+
+  /// Opens the camera up until the face is exposed, frame by frame.
+  ///
+  /// [region] is where to look: the face when there is one, and the middle of
+  /// the frame before there is. The reading is taken from the frame the
+  /// tracker just saw rather than from a preview widget, so what is metered is
+  /// exactly what the detector was given.
+  void _meterOnTheFace(CameraImage frame, Rect region) {
+    final controller = _controller;
+    if (controller == null || _adjustingExposure) return;
+
+    final (min, max) = _exposureRange;
+    if (!(max > min)) return;
+
+    final read = SkinSampler.forCameraImage(frame);
+    if (read == null) return;
+    final luma = ExposureMeter.luma(read: read, region: region);
+    if (luma == null) return;
+
+    final wanted = _exposure.offsetFor(
+      luma: luma,
+      min: min,
+      max: max,
+      now: DateTime.now(),
+    );
+    if (wanted == null) return;
+
+    _adjustingExposure = true;
+    // Not awaited in a frame callback: the camera is on the platform thread
+    // and the next frame is already on its way.
+    controller.setExposureOffset(wanted).catchError((Object error) {
+      AppLog.instance.error('ar', 'Could not set the exposure: $error');
+      return 0.0;
+    }).whenComplete(() => _adjustingExposure = false);
+  }
+
   /// Fetches the artwork for the lenses in the strip, so each tile can show
   /// the picture it hangs rather than a placeholder.
   ///
@@ -323,6 +398,10 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     final size = Size(frame.width.toDouble(), frame.height.toDouble());
 
     if (points == null) {
+      // Metered on the middle of the frame *because* there is no face: an
+      // underexposed one is the likeliest reason there is no face, and waiting
+      // for a detection before fixing the exposure would wait forever.
+      _meterOnTheFace(frame, ExposureMeter.regionForSelfie(size));
       if (_face != null) setState(_lost);
       return;
     }
@@ -341,6 +420,11 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       if (_face != null) setState(_lost);
       return;
     }
+
+    _meterOnTheFace(
+      frame,
+      ExposureMeter.regionAround(anchor.centre, anchor.interpupillary),
+    );
 
     final skin = _lens.effects.any((effect) => effect is FillEffect)
         ? _readSkin(frame, points, size)
@@ -387,6 +471,10 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     setState(() => _opening = true);
     await controller?.dispose();
     _cameraIndex = (_cameraIndex + 1) % _cameras.length;
+    // The two cameras have their own exposure. Carrying the front camera's
+    // compensation over to the back one exposes for a scene that is no longer
+    // in front of the lens.
+    _exposure.reset();
     await _open();
   }
 
