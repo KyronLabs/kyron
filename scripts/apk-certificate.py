@@ -22,7 +22,8 @@ failed the check with "got" followed by nothing. Human-readable output is
 not an interface. The signing block is.
 
 What this reads is the APK Signing Block, which sits between the last file
-and the central directory and is specified by Android, not by a tool:
+and the central directory and is specified by Android, not by a tool, and
+the PKCS#7 block of a JAR signature where there is one:
 
     https://source.android.com/docs/security/features/apksigning/v2
     https://source.android.com/docs/security/features/apksigning/v3
@@ -243,8 +244,8 @@ def certificates_in(value: bytes) -> list[bytes]:
 
 
 def v1_certificates(path: Path) -> list[bytes]:
-    """The certificate in a JAR signature, for an APK signed no other way.
-    It sits in the PKCS#7 block beside the manifest."""
+    """The certificate in a JAR signature, which sits in the PKCS#7 block
+    beside the manifest."""
     out = []
     with zipfile.ZipFile(path) as archive:
         blocks = sorted(
@@ -284,8 +285,10 @@ def certificates(path: Path) -> list[tuple[str, bytes]]:
         if identifier in blocks:
             for certificate in certificates_in(blocks[identifier]):
                 out.append((label, certificate))
-    if not out:
-        out = [("v1", certificate) for certificate in v1_certificates(path)]
+    # As well as, not instead of. An APK can carry a JAR signature and a
+    # signing block at once, and a reader that stopped at the first scheme it
+    # found could not tell whether the two agree.
+    out += [("v1", certificate) for certificate in v1_certificates(path)]
     return out
 
 

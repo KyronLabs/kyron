@@ -14,6 +14,11 @@
 #                INSTALL_FAILED_UPDATE_INCOMPATIBLE, and it strikes on the
 #                second install rather than the first, which is why it reads
 #                as intermittent.
+#   a lower code  Android refuses a package whose versionCode is below the
+#                one installed. `--split-per-abi` gives each split a
+#                different code and leaves the universal APK on the lowest of
+#                them, so trying a second file after the first one failed is
+#                refused as a downgrade -- in the same six words.
 #
 # Four development builds shipped with the third of those before anything
 # looked. So both workflows call this before they upload anything, and it is
@@ -29,8 +34,10 @@
 # pin to, so it gets everything else.
 #
 # Whether or not it is pinned, every APK in one run has to carry the same
-# certificate as the others -- four APKs out of one build signed two
-# different ways is a signing config that stopped taking effect halfway.
+# certificate, the same package name and the same versionCode as the others.
+# Four APKs out of one build signed two different ways is a signing config
+# that stopped taking effect halfway; four carrying four version numbers is
+# a build whose files will not install over each other.
 #
 # Runs anywhere, not only in CI: point ANDROID_HOME at an SDK and give it a
 # directory of downloaded artifacts.
@@ -81,6 +88,8 @@ trap 'rm -f "$log"' EXIT
 
 agreed=
 agreed_on=
+identity=
+identity_on=
 
 for apk in "${apks[@]}"; do
   name=$(basename "$apk")
@@ -89,6 +98,29 @@ for apk in "${apks[@]}"; do
   badging=$("$aapt2" dump badging "$apk")
   if grep -q 'application-debuggable' <<<"$badging"; then
     echo "$name is debuggable. Android will refuse to install it."
+    exit 1
+  fi
+
+  # Which package, and which version of it. A phone decides whether to accept
+  # an install by comparing both against what it already has, so four files
+  # out of one build have to agree about them.
+  package=$(sed -n "s/^package: name='\([^']*\)'.*/\1/p" <<<"$badging")
+  version=$(sed -n "s/^package:.* versionCode='\([^']*\)'.*/\1/p" <<<"$badging")
+  test -n "$package" || { echo "$name: no package name in the manifest."; exit 1; }
+  test -n "$version" || { echo "$name: no versionCode in the manifest."; exit 1; }
+
+  if [ -z "$identity" ]; then
+    identity="$package $version"
+    identity_on=$name
+  elif [ "$package $version" != "$identity" ]; then
+    echo "$name does not match $identity_on."
+    echo "  $identity_on  $identity"
+    echo "  $name  $package $version"
+    echo "Every APK in one build has to carry the same package name and the"
+    echo "same versionCode. Android refuses a package whose versionCode is"
+    echo "below the one already installed, so a reader who tries a second"
+    echo "file after the first one fails is told the package appears to be"
+    echo "invalid -- which is not what went wrong."
     exit 1
   fi
 
@@ -168,4 +200,6 @@ for apk in "${apks[@]}"; do
 done
 
 echo
-echo "${#apks[@]} APKs, all installable, all signed with $agreed."
+echo "${#apks[@]} APKs, all installable."
+echo "  $identity"
+echo "  $agreed"

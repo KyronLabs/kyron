@@ -73,6 +73,43 @@ section for that version, so what is written here is what people read.
   anything other than the key it is pinned to, one where the four APKs out of
   a single build disagree with each other, and one past a size ceiling.
 
+  And a third cause, found by reading the four APKs of build 78 rather than
+  by guessing: they carried four different version numbers.
+
+      armeabi-v7a  1078
+      arm64-v8a    2078
+      x86_64       4078
+      universal      78
+
+  `--split-per-abi` makes the Flutter Gradle Plugin rewrite each split's
+  versionCode to `abi * 1000 + build`, and leaves the universal APK on the
+  plain build number -- the lowest of the four. Android refuses a package
+  whose versionCode is below the one already installed, so somebody who took
+  the arm64 APK, hit the signature problem above, and then tried the universal
+  one instead was refused a second time and told, again, that the package
+  appears to be invalid. The scheme is for uploading several APKs to the Play
+  Store, which this project does not do: it ships an `.aab` there and these
+  APKs are sideloaded.
+
+  Both workflows now build one `--target-platform` at a time, which produces
+  the same four APKs at the same sizes, all carrying one version number.
+  Keeping the sizes took a second fix: `--target-platform` restricts Flutter's
+  own `libapp.so` and `libflutter.so` and nothing else, and with splitting off
+  the Flutter Gradle Plugin fills the build type's `abiFilters` with every
+  architecture, so the first arm64 APK built this way came out 6.6 MB heavier
+  carrying `libtensorflowlite_c.so` for x86_64. The filter is set on the build
+  type now, which is where the plugin sets its own and what a build type's
+  value overrides -- setting it on `defaultConfig` reported the right thing at
+  the end of configuration and changed nothing about the APK.
+  Undoing the rewrite afterwards is not possible -- the Android Gradle Plugin
+  has finalised the property by then, and says so -- so
+  `app/android/app/build.gradle.kts` refuses `--split-per-abi` outright with
+  that explanation, `check-workflows.py` refuses it on the pull request, and
+  `check-apks.sh` reads the versionCode back out of every APK before anything
+  is published. The numbers are offset by 100000, so that the first uniform
+  build is still above the 4078 already on anybody's phone rather than being
+  a downgrade caused by the fix.
+
   It reads the signing certificate out of the APK Signing Block, which
   Android specifies, rather than out of `apksigner verify --print-certs`,
   which is prose. Reading the prose is how the first version of this check was

@@ -132,6 +132,19 @@ def check_install_guard(name: str) -> list[str]:
         )
 
     for step in steps:
+        # Each split gets versionCode `abi * 1000 + build` and the universal
+        # APK the plain build number, so one build ships four files the phone
+        # will not install over each other. The Gradle build refuses the flag
+        # too; this catches it on the pull request instead of eight minutes
+        # into a build.
+        if "--split-per-abi" in str(step.get("run", "")):
+            said.append(
+                f"{name}: {step.get('name')!r} builds with --split-per-abi, "
+                f"which gives every APK in the build a different versionCode "
+                f"-- the second file a reader tries is then refused as a "
+                f"downgrade. Build one --target-platform at a time"
+            )
+
         if "--print-certs" in str(step.get("run", "")):
             said.append(
                 f"{name}: {step.get('name')!r} reads apksigner's printed "
