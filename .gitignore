@@ -23,6 +23,12 @@ node_modules/
 # Signing material — must never be committed
 *.jks
 *.keystore
+
+# Except the development signing key, which is committed on purpose: without
+# one, every CI build mints its own and no development APK installs over the
+# one before it. app/android/dev-signing/README.md is the whole argument,
+# including why this is safe and this alone.
+!app/android/dev-signing/kyron-dev.jks
 *.p12
 *.pem
 *.mobileprovision
