@@ -205,3 +205,12 @@ jobs:
         run: |
           python3 -m pip install --quiet pyyaml
           python3 scripts/check-workflows.py
+
+      # The reader that check stands on. It takes the signing certificate out
+      # of the APK Signing Block, and it replaced a sed pattern over
+      # apksigner's output that a new build-tools version renamed out from
+      # under it -- so it is tested against APKs built here and signed all
+      # three of the ways Android defines. Standard library only: no SDK, no
+      # JDK, nothing from pip.
+      - name: Check the APK certificate reader
+        run: python3 scripts/test_apk_certificate.py

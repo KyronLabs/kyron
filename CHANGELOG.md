@@ -43,9 +43,45 @@ section for that version, so what is written here is what people read.
   The APKs are renamed from `-debug-` to `-dev-` to stop the filename saying
   something untrue.
 
-  A new step checks what it publishes: every APK is read back with `aapt2` and
-  the build fails if any is debuggable or past a size ceiling. Both halves of
-  it fire on the build this replaced.
+  Then the same six words came back, from a different cause. With no
+  `key.properties`, `buildTypes.release` falls back to `signingConfigs.debug`,
+  and a CI runner has no `~/.android/debug.keystore` -- so Gradle mints one.
+  Four development builds, four certificates, each created minutes before it
+  signed its own APK:
+
+      build 74   CN=Android Debug   c718ffd874…   notBefore 12:48:15
+      build 75   CN=Android Debug   d7c5155197…   notBefore 18:12:08
+      build 76   CN=Android Debug   e44a62f0f6…   notBefore 19:14:26
+
+  Android refuses an update whose signature is not the one already installed
+  -- `INSTALL_FAILED_UPDATE_INCOMPATIBLE` -- and the OEM installers report
+  that as "package appears to be invalid" too. It strikes on the *second*
+  install rather than the first, which is why it read as intermittent. The
+  workflow now takes a secret keystore when one exists and otherwise the key
+  committed at `app/android/dev-signing/`, which is the state this repository
+  is actually in. There is always a key: a build signed with one nobody has
+  seen before is a build nobody can install, and "set a secret first" is not
+  an answer a fork can use. `app/android/dev-signing/README.md` is the
+  argument for committing it, including why it is safe and why that does not
+  generalise.
+
+  Checking what gets published is `scripts/check-apks.sh`, and both the
+  development and the release workflow call it before they upload anything --
+  a check that guards development builds and not releases is one that will be
+  missing the day it matters. It fails a build that is debuggable, one whose
+  signature no longer covers the file, one signed with a debug key or with
+  anything other than the key it is pinned to, one where the four APKs out of
+  a single build disagree with each other, and one past a size ceiling.
+
+  It reads the signing certificate out of the APK Signing Block, which
+  Android specifies, rather than out of `apksigner verify --print-certs`,
+  which is prose. Reading the prose is how the first version of this check was
+  written and it lasted one build: the runner image gained build-tools 37.0.0,
+  which renamed `Signer #1 certificate SHA-256 digest:` to `V2 Signer:
+  certificate SHA-256 digest:`, the pattern stopped matching, and a correctly
+  signed APK failed with "got" followed by nothing. `scripts/apk-certificate.py`
+  is the reader, and `scripts/test_apk_certificate.py` holds it to APKs signed
+  all three of the ways Android defines.
 
 ### Added
 
