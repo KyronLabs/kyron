@@ -43,7 +43,8 @@ void main() {
   group('PushRegistrar', () {
     test('registers the token it is given', () async {
       final devices = FakeDevices();
-      await PushRegistrar(devices, source: FakeTokens('abc')).start();
+      await PushRegistrar(devices, connect: () async => FakeTokens('abc'))
+          .start();
 
       expect(devices.registered, ['abc']);
     });
@@ -51,7 +52,7 @@ void main() {
     test('registers again when the platform rotates the token', () async {
       final devices = FakeDevices();
       final tokens = FakeTokens('first');
-      await PushRegistrar(devices, source: tokens).start();
+      await PushRegistrar(devices, connect: () async => tokens).start();
 
       tokens.rotate('second');
       await Future<void>.delayed(Duration.zero);
@@ -63,7 +64,7 @@ void main() {
     test('does not send the same token twice', () async {
       final devices = FakeDevices();
       final tokens = FakeTokens('same');
-      await PushRegistrar(devices, source: tokens).start();
+      await PushRegistrar(devices, connect: () async => tokens).start();
 
       tokens.rotate('same');
       await Future<void>.delayed(Duration.zero);
@@ -85,7 +86,7 @@ void main() {
       final devices = FakeDevices()..fails = true;
 
       await expectLater(
-        PushRegistrar(devices, source: FakeTokens('abc')).start(),
+        PushRegistrar(devices, connect: () async => FakeTokens('abc')).start(),
         completes,
       );
       expect(devices.registered, isEmpty);
@@ -93,7 +94,8 @@ void main() {
 
     test('forgets the token on sign-out', () async {
       final devices = FakeDevices();
-      final registrar = PushRegistrar(devices, source: FakeTokens('abc'));
+      final registrar =
+          PushRegistrar(devices, connect: () async => FakeTokens('abc'));
       await registrar.start();
 
       await registrar.stop();
@@ -103,9 +105,71 @@ void main() {
       expect(devices.forgotten, ['abc']);
     });
 
+    test('asks for a source once, however many times it is started', () async {
+      // Both the launch path and the sign-in path lead here, and a returning
+      // reader takes both. Asking twice means two permission prompts.
+      final devices = FakeDevices();
+      var asked = 0;
+      final registrar = PushRegistrar(devices, connect: () async {
+        asked++;
+        return FakeTokens('abc');
+      });
+
+      await registrar.start();
+      await registrar.start();
+
+      expect(asked, 1);
+      expect(devices.registered, ['abc']);
+    });
+
+    test('sends nothing when the source comes back empty-handed', () async {
+      // Which is what no google-services.json, no Firebase on this platform,
+      // and a declined permission all look like from here.
+      final devices = FakeDevices();
+      final registrar = PushRegistrar(devices, connect: () async => null);
+
+      await registrar.start();
+
+      expect(registrar.isAvailable, isFalse);
+      expect(devices.registered, isEmpty);
+    });
+
+    test('stops listening for rotations on sign-out', () async {
+      // The subscription used to be left running, so a token rotation after
+      // sign-out registered the handset against an account nobody was signed
+      // in to -- and the next person to hold it got those notifications.
+      final devices = FakeDevices();
+      final tokens = FakeTokens('first');
+      final registrar = PushRegistrar(devices, connect: () async => tokens);
+      await registrar.start();
+      await registrar.stop();
+
+      tokens.rotate('second');
+      await Future<void>.delayed(Duration.zero);
+
+      expect(devices.registered, ['first']);
+      expect(devices.forgotten, ['first']);
+    });
+
+    test('registers again after signing back in', () async {
+      final devices = FakeDevices();
+      final registrar = PushRegistrar(
+        devices,
+        connect: () async => FakeTokens('abc'),
+      );
+
+      await registrar.start();
+      await registrar.stop();
+      await registrar.start();
+
+      expect(devices.registered, ['abc', 'abc']);
+      expect(registrar.isAvailable, isTrue);
+    });
+
     test('signing out twice does not unregister twice', () async {
       final devices = FakeDevices();
-      final registrar = PushRegistrar(devices, source: FakeTokens('abc'));
+      final registrar =
+          PushRegistrar(devices, connect: () async => FakeTokens('abc'));
       await registrar.start();
 
       await registrar.stop();

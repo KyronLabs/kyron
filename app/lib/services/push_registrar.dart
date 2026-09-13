@@ -1,4 +1,5 @@
 // lib/services/push_registrar.dart
+import 'dart:async';
 import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -8,11 +9,10 @@ import 'app_log.dart';
 
 /// Where a push token comes from.
 ///
-/// Separate from the registrar so the API side can be finished, tested and
-/// shipped without the app carrying a Firebase dependency it cannot yet be
-/// built against. Supply one of these and push works end to end; supply none
-/// and the app says so in its log rather than behaving as though it were
-/// registered.
+/// Separate from the registrar so the API side could be finished, tested and
+/// shipped before the app carried a Firebase dependency at all. The
+/// implementation is [FirebasePushTokens]; this interface is what the
+/// registrar and its tests see.
 abstract class PushTokenSource {
   /// The registration token for this install, or null when there is none.
   Future<String?> token();
@@ -22,17 +22,33 @@ abstract class PushTokenSource {
   Stream<String> get refreshes;
 }
 
+/// How a source is obtained, when there is one to obtain.
+///
+/// A function rather than a source, because obtaining one means starting
+/// Firebase and asking the reader whether they want notifications at all --
+/// and neither belongs at launch. The question would land before they had
+/// seen a single screen, and "no" from a stranger is permanent on both
+/// platforms. So it is called once, after sign-in.
+///
+/// Null from it means no push here, on any of its several honest grounds:
+/// the platform has no Firebase, the configuration file was never dropped in,
+/// or the reader said no.
+typedef PushTokenSourceFactory = Future<PushTokenSource?> Function();
+
 /// Keeps the server's idea of where to reach this install up to date.
 ///
 /// Registered on every launch rather than once: a token can rotate while the
 /// app is closed, and a server holding the old one pushes into nothing.
 class PushRegistrar {
   final DevicesRepository _devices;
-  final PushTokenSource? _source;
+  final PushTokenSourceFactory? _connect;
 
-  PushRegistrar(this._devices, {PushTokenSource? source}) : _source = source;
+  PushRegistrar(this._devices, {PushTokenSourceFactory? connect})
+      : _connect = connect;
 
+  PushTokenSource? _source;
   String? _registered;
+  StreamSubscription<String>? _rotations;
 
   /// Which platform this install is, as the API records it.
   static String get platform {
@@ -41,12 +57,20 @@ class PushRegistrar {
     return 'android';
   }
 
+  /// Whether a source was found. False until [start] has run, and false after
+  /// it has run and come back with nothing.
   bool get isAvailable => _source != null;
 
   /// Called once somebody is signed in.
+  ///
+  /// Safe to call again: a second call while a source is held does nothing,
+  /// which matters because both the launch path and the sign-in path lead
+  /// here and a returning reader takes both.
   Future<void> start() async {
-    final source = _source;
-    if (source == null) {
+    if (_source != null) return;
+
+    final connect = _connect;
+    if (connect == null) {
       // Said once, and only in the log: a reader cannot act on this, but
       // whoever is wondering why nothing is arriving can.
       AppLog.instance.info(
@@ -57,13 +81,26 @@ class PushRegistrar {
       return;
     }
 
+    // Whatever went wrong is already in the log, said by whoever knew what it
+    // was. Nothing here is worth failing a sign-in over.
+    final source = await connect();
+    if (source == null) return;
+
+    _source = source;
     await _send(await source.token());
-    source.refreshes.listen(_send);
+    _rotations = source.refreshes.listen(_send);
   }
 
   /// Called on sign-out. A token left behind delivers somebody else's
   /// messages to whoever holds the handset next.
   Future<void> stop() async {
+    // Cancelled first, and this is not tidying: the subscription used to be
+    // left running, so a token rotation after sign-out re-registered the
+    // handset against an account nobody was signed in to.
+    await _rotations?.cancel();
+    _rotations = null;
+    _source = null;
+
     final token = _registered;
     _registered = null;
     if (token == null) return;

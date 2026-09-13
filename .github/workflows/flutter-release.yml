@@ -108,6 +108,30 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      # Required, not optional. Without it the Google services Gradle plugin
+      # is skipped, the APK builds cleanly, and every install is unreachable
+      # while the app is closed -- with nothing in the build output saying so.
+      # A release is the wrong place to find that out.
+      - name: Write the Firebase configuration
+        working-directory: .
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: |
+          test -n "$GOOGLE_SERVICES_JSON" || {
+            echo "GOOGLE_SERVICES_JSON is required: without it this release"
+            echo "would ship with no push notifications. Add the contents of"
+            echo "app/android/app/google-services.json as a repository secret."
+            echo "See docs/PUSH.md."
+            exit 1
+          }
+          printf '%s' "$GOOGLE_SERVICES_JSON" > app/android/app/google-services.json
+          # Proves it is the file rather than an empty or truncated secret,
+          # before Gradle reaches it and says something less useful.
+          python3 -c "import json,sys; json.load(open('app/android/app/google-services.json'))" || {
+            echo "GOOGLE_SERVICES_JSON is not valid JSON."
+            exit 1
+          }
+
       - name: Decode Android signing key
         working-directory: .
         env:

@@ -14,6 +14,41 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- Push notifications, end to end. The server half has been finished and
+  shipped for two releases -- `PushService`, FCM HTTP v1, and a
+  `DeliveryService` that picks the socket when the app is open and a push when
+  it is not -- behind a token source that deliberately answered `null`,
+  because a stub returning a made-up token would have looked exactly like push
+  working. The source is now real: `FirebasePushTokens`, over
+  `firebase_messaging`.
+
+  It registers on sign-in and on every launch with a session, because a token
+  can rotate while the app is closed and a server holding the old one pushes
+  into nothing. Permission is asked for at sign-in rather than at launch: the
+  question would otherwise land before anybody had seen a screen, and "no"
+  from a stranger is permanent on both platforms.
+
+  Every way this can come to nothing -- no Firebase on this platform, no
+  `google-services.json`, a reader who declined -- answers null rather than
+  throwing, and is said once in the log. None of them can stop the app
+  starting, and none of them makes it behave as though this install were
+  reachable when it is not.
+
+  The configuration files are gitignored, so CI writes `google-services.json`
+  out of a `GOOGLE_SERVICES_JSON` secret. A release **refuses to build without
+  it**: the Gradle plugin is skipped when the file is absent, the APK builds
+  perfectly cleanly, and every install from it is unreachable while the app is
+  closed -- with nothing in the build output saying so. A development build
+  tolerates the absence and says which it is.
+
+### Fixed
+
+- A push token stayed live after signing out. `PushRegistrar.stop()` withdrew
+  the registered token but never cancelled its subscription to the platform's
+  token-refresh stream, so the next rotation registered the handset again --
+  against an account nobody was signed in to. The person holding that handset
+  next would have received the previous account's notifications.
+
 - Signing in with Google. The button on the get-started screen had a comment
   where the sign-in should have been -- it depressed, and nothing happened --
   and the mark on it was not Google's: three greys out of a file whose own

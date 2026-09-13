@@ -6,6 +6,7 @@ import '../repositories/auth_repository.dart';
 import 'current_user_provider.dart';
 import 'keys_provider.dart';
 import 'identity_provider.dart';
+import 'push_provider.dart';
 
 enum AuthStatus { unknown, unauthenticated, authenticating, authenticated }
 
@@ -59,6 +60,9 @@ class AuthNotifier extends Notifier<AuthState> {
         // Nothing waits on it -- an account without one works exactly as it
         // did before identifiers existed.
         unawaited(ref.read(identityVaultProvider).ensure());
+        // And the push token, which can have rotated while the app was
+        // closed -- a server holding the old one pushes into nothing.
+        unawaited(ref.read(pushRegistrarProvider).start());
         state = AuthState.authenticated(user);
 
         // Load full profile data
@@ -169,6 +173,10 @@ class AuthNotifier extends Notifier<AuthState> {
     // neither is worth holding the app on a spinner for.
     unawaited(ref.read(messageVaultProvider).unlock());
     unawaited(ref.read(identityVaultProvider).ensure());
+    // Here rather than at launch: this is the first moment asking about
+    // notifications is a question rather than an ambush, and a "no" from
+    // somebody who has not seen the app yet is permanent.
+    unawaited(ref.read(pushRegistrarProvider).start());
 
     // Awaited: the app behind this draws the signed-in person.
     await ref.read(currentUserProvider.notifier).load();
@@ -182,6 +190,10 @@ class AuthNotifier extends Notifier<AuthState> {
     // The identifier belongs to the account that made it, exactly like the
     // message key.
     await ref.read(identityVaultProvider).forget();
+    // And the push token, on the same terms and for a blunter reason: left
+    // registered, it delivers this account's notifications to whoever holds
+    // the handset next.
+    await ref.read(pushRegistrarProvider).stop();
 
     await _repo.logout();
 
