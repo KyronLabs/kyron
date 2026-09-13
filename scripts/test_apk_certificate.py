@@ -164,7 +164,7 @@ class Reading(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stdout, f"v3 {self.digest} {self.subject}\n")
 
-    def test_reads_a_jar_signature_when_there_is_no_signing_block(self):
+    def test_reads_a_jar_signature(self):
         signed = apk(certificate(), schemes=(), jar=True)
         result = read(self.write("v1.apk", signed))
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -179,7 +179,11 @@ class Reading(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(
             result.stdout.splitlines(),
-            [f"v3 {self.digest} {self.subject}", f"v2 {self.digest} {self.subject}"],
+            [
+                f"v3 {self.digest} {self.subject}",
+                f"v2 {self.digest} {self.subject}",
+                f"v1 {self.digest} {self.subject}",
+            ],
         )
 
     def test_an_unsigned_apk_is_a_failure_and_not_an_empty_answer(self):

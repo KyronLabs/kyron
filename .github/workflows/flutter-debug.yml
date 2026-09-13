@@ -141,8 +141,10 @@ jobs:
       # different cause, and it strikes on the *second* install rather than
       # the first, which is why it reads as intermittent.
       #
-      # Two builds, because --split-per-abi replaces the universal APK rather
-      # than adding to it.
+      # And a third cause, found the same way: `--split-per-abi` gave each APK
+      # in a build a different versionCode, so the second file anybody tried
+      # was refused as a downgrade -- again in those six words. The builds
+      # below are one architecture at a time for that reason.
       # Optional here, unlike the release. A development APK without push is
       # still worth having, and this is what a contributor's own checkout
       # looks like -- the Gradle plugin is skipped and the build says so.
@@ -230,7 +232,22 @@ jobs:
             echo "No GOOGLE_SERVICES_JSON secret, so this build has no push."
           fi
 
-      - name: Build per-architecture APKs
+      # One `flutter build` per architecture, rather than `--split-per-abi`.
+      #
+      # Splitting makes the Flutter Gradle Plugin rewrite each split's
+      # versionCode to `abi * 1000 + build`, so build 78 shipped four files
+      # numbered 1078, 2078, 4078 and -- the universal one -- 78. Android
+      # refuses a package whose versionCode is below the one already
+      # installed, so somebody who took the arm64 APK, hit a problem, and
+      # then tried the universal one was refused again and told the package
+      # appears to be invalid. Which it was not.
+      #
+      # The APKs are the same size built this way, and they all carry the one
+      # number app/android/app/build.gradle.kts asked for. That file refuses
+      # `--split-per-abi` outright now, and the check below reads the
+      # versionCode back out of every APK.
+      - name: Build every APK
+        working-directory: .
         env:
           # Optional. supabase_config.dart carries a committed default; this
           # lets a build override it without one being in the repository. The
@@ -238,47 +255,33 @@ jobs:
           # wrong project's key being committed, which is why the app now
           # refuses to launch rather than reach a Supabase it was not meant to.
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-        run: |
-          flutter build apk --release --split-per-abi \
-            --build-number "$KYRON_BUILD_NUMBER" \
-            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
-
-      # Collected before the universal build runs: both write into the same
-      # flutter-apk directory, and the second build is not obliged to leave the
-      # first one's output there.
-      - name: Collect per-architecture APKs
-        working-directory: .
-        env:
           VERSION: ${{ needs.version.outputs.version }}
         run: |
           set -euo pipefail
           mkdir -p debug-artifacts
           stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev"
+          out=app/build/app/outputs/flutter-apk/app-release.apk
 
-          for abi in arm64-v8a armeabi-v7a x86_64; do
-            src="app/build/app/outputs/flutter-apk/app-${abi}-release.apk"
-            # Missing means the split build did not produce it, which is a
-            # broken build rather than a smaller one.
-            test -f "$src" || { echo "Missing $src"; exit 1; }
-            cp "$src" "debug-artifacts/${stem}-${abi}.apk"
-          done
+          # Every build writes to the same path, so each one is collected and
+          # removed before the next starts. No --target-platform is what
+          # makes the last one universal.
+          build() {
+            local name=$1
+            shift
+            ( cd app && flutter build apk --release "$@" \
+                --build-number "$KYRON_BUILD_NUMBER" \
+                ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} )
+            # Missing means the build claimed success and produced nothing,
+            # which is a broken build rather than a smaller one.
+            test -f "$out" || { echo "Missing $out after the $name build."; exit 1; }
+            mv "$out" "debug-artifacts/${stem}-${name}.apk"
+          }
 
-      - name: Build the universal APK
-        env:
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-        run: |
-          flutter build apk --release \
-            --build-number "$KYRON_BUILD_NUMBER" \
-            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
+          build arm64-v8a   --target-platform android-arm64
+          build armeabi-v7a --target-platform android-arm
+          build x86_64      --target-platform android-x64
+          build universal
 
-      - name: Collect the universal APK
-        working-directory: .
-        env:
-          VERSION: ${{ needs.version.outputs.version }}
-        run: |
-          set -euo pipefail
-          cp app/build/app/outputs/flutter-apk/app-release.apk \
-            "debug-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev-universal.apk"
           ls -lh debug-artifacts
 
       # The checks that would have caught each of these. An APK that is
@@ -440,15 +443,26 @@ jobs:
 
             **Android** — take `arm64-v8a` unless you know otherwise; it fits
             essentially every phone sold since about 2015. `universal` works
-            anywhere and is roughly three times the size. `x86_64` is for
-            emulators.
+            anywhere and is roughly twice the size. `x86_64` is for emulators.
+            Every APK here is the same build and carries the same version, so
+            it does not matter which you try first.
 
-            These are signed with a development key, not the store key, so a
-            build from here and a build from the Play Store cannot sit side by
-            side: uninstall one before installing the other. If Android says
-            *"App not installed as package appears to be invalid"*, that is
-            almost always an interrupted download — check the file is the full
-            size shown here and try again on a stable connection.
+            **Coming from build 78 or earlier, uninstall Kyron first.** Those
+            builds were signed with a different key — a new one each time, for
+            74 to 77 — and Android will not accept an update whose signature
+            is not the one already on the phone. It refuses with *"App not
+            installed as package appears to be invalid"*, which sounds like a
+            corrupt file and is not. This is the last time: every build from
+            79 onwards carries the same key, so they install over each other
+            normally.
+
+            Also uninstall first if you have Kyron from the Play Store. These
+            are signed with a development key rather than the store one, and
+            the two cannot sit side by side.
+
+            If those six words still appear on a clean phone, the download was
+            interrupted — check the file is the full size shown here and try
+            again on a stable connection.
           prerelease: false
           make_latest: true
           generate_release_notes: false
