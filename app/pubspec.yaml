@@ -84,6 +84,7 @@ flutter:
     - lib/assets/logo.svg
     - lib/assets/google.svg
     - lib/assets/google_g.svg
+    - lib/assets/nature/
 
 fonts:
   - family: Inter
