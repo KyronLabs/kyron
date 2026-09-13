@@ -93,12 +93,26 @@ and `FirebasePushTokens.start` checks it before touching Firebase.
 
 One wrinkle worth knowing: `firebase_core` *does* ship a Windows
 implementation, so the Windows build compiles a Firebase plugin the app never
-calls, and its CMake downloads the ~1 GB Firebase C++ SDK to do it. Nothing in
-the app's control switches that off — Flutter includes every plugin in the
-dependency graph that declares a platform. If the Windows build time becomes a
-problem, the supported escape hatch is the `FIREBASE_CPP_SDK_DIR` environment
-variable, which points the plugin's CMake at an already-extracted SDK instead
-of downloading one.
+calls. Its CMake downloads the Firebase C++ SDK to do it — **962 MB**, on
+every build, with `FATAL_ERROR` if the download fails. Nothing in the app's
+control switches that off: Flutter includes every plugin in the dependency
+graph that declares a platform.
+
+What it actually costs, measured on the CI run that introduced it rather than
+estimated:
+
+| `flutter build windows --release` | Time |
+|:--|--:|
+| Before Firebase (`8cae18b`) | 2m 28s |
+| With Firebase (`8667239`) | 3m 34s |
+| | **+1m 06s** |
+
+A minute, because a GitHub runner's link to `dl.google.com` is fat. That is
+cheap enough to leave alone — cheaper, probably, than restoring a gigabyte
+from the Actions cache would be, which is why no caching was added. If it ever
+stops being cheap, the supported escape hatch is the `FIREBASE_CPP_SDK_DIR`
+environment variable: the plugin's CMake checks it first and skips both the
+download and the extraction when it points at a matching SDK.
 
 ## iOS
 
