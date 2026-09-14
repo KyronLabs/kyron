@@ -7,6 +7,7 @@ import {
   UnauthorizedException,
   ForbiddenException,
   ServiceUnavailableException,
+  InternalServerErrorException,
   Logger,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
@@ -98,26 +99,7 @@ export class AuthGuard implements CanActivate {
     const email = claims.email ?? `${claims.sub}@users.noreply.kyron.so`;
 
     try {
-      const created = await this.prisma.user.create({
-        data: {
-          id: claims.sub,
-          email,
-          name,
-          // Sign-up asks for a handle and Supabase keeps it in the token's
-          // metadata, but nothing here ever read it back out. Every account
-          // provisioned this way had a null username, which is why a
-          // finished profile still introduced itself as "Your account".
-          username: username ?? undefined,
-          password: null,
-          role: UserRole.USER,
-          // Supabase would not have issued this token if the account were not
-          // usable, so the mirrored row starts verified.
-          emailStatus: EmailStatus.VERIFIED,
-          emailVerifiedAt: new Date(),
-        },
-      });
-      this.logger.log(`Provisioned local user ${created.id} from Supabase`);
-      return created;
+      return await this.createMirror(claims.sub, email, name, username);
     } catch (error) {
       // Two concurrent first requests race here, and an address already present
       // from the pre-Supabase era collides on the unique email. Recover by
@@ -126,12 +108,76 @@ export class AuthGuard implements CanActivate {
         where: { OR: [{ id: claims.sub }, { email }] },
       });
       if (recovered) return this.backfill(recovered, { name, username });
+
+      // Nothing to read back, so the collision was on the handle: `username`
+      // is unique, and somebody else already holds the one this account asked
+      // for. That used to end here, as a 401 the client showed as "Kyron
+      // could not verify your sign-in" -- on the create-profile screen, to
+      // somebody who had just confirmed their email and could go no further.
+      // A handle is optional and can be chosen again from Edit profile; an
+      // account is not, and must not be unusable because a name was taken.
+      if (username) {
+        try {
+          const created = await this.createMirror(
+            claims.sub,
+            email,
+            name,
+            null,
+          );
+          this.logger.warn(
+            `Provisioned ${claims.sub} without the handle "${username}": ` +
+              'it is already taken. The account can choose another from ' +
+              'Edit profile.',
+          );
+          return created;
+        } catch (retry) {
+          this.logger.error(
+            `Could not provision ${claims.sub} even without a handle`,
+            retry instanceof Error ? retry.stack : String(retry),
+          );
+        }
+      }
+
+      // Whatever is left is this server failing to write a row, which is not
+      // something wrong with the caller's sign-in. Saying 401 here sent people
+      // back to a login screen that could not help them; the truth is a 500,
+      // and the message says which part broke.
       this.logger.error(
         `Could not provision a local user for Supabase subject ${claims.sub}`,
         error instanceof Error ? error.stack : String(error),
       );
-      throw new UnauthorizedException('Could not resolve account');
+      throw new InternalServerErrorException(
+        'Your sign-in is valid, but Kyron could not set up your account on ' +
+          'this server.',
+      );
     }
+  }
+
+  /** The row that mirrors a Supabase account. */
+  private createMirror(
+    id: string,
+    email: string,
+    name: string | null,
+    username: string | null,
+  ): Promise<User> {
+    return this.prisma.user.create({
+      data: {
+        id,
+        email,
+        name,
+        // Sign-up asks for a handle and Supabase keeps it in the token's
+        // metadata, but nothing here ever read it back out. Every account
+        // provisioned this way had a null username, which is why a
+        // finished profile still introduced itself as "Your account".
+        username: username ?? undefined,
+        password: null,
+        role: UserRole.USER,
+        // Supabase would not have issued this token if the account were not
+        // usable, so the mirrored row starts verified.
+        emailStatus: EmailStatus.VERIFIED,
+        emailVerifiedAt: new Date(),
+      },
+    });
   }
 
   /**

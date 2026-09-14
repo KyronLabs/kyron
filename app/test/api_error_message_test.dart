@@ -49,6 +49,45 @@ void main() {
       expect(message, contains('our end'));
     });
 
+    test('says what the server said, when the server said something', () {
+      // Three different faults reach the client as 401: no Authorization
+      // header, a signature that will not verify, and an account the server
+      // could not write. Dropping the message made them one indistinguishable
+      // sentence, which is what left a reader stuck on the create-profile
+      // screen with nothing to report but "error 401".
+      final message = describeApiError(
+        _response(401, data: {'message': 'Could not resolve account'}),
+        sessionIsLive: true,
+      );
+      expect(message, contains('401'));
+      expect(message, contains('Could not resolve account'));
+    });
+
+    test('still explains itself when the server said nothing', () {
+      final message = describeApiError(_response(401), sessionIsLive: true);
+      expect(message, contains('our end'));
+    });
+
+    test('carries a 500 the server explained', () {
+      expect(
+        describeApiError(
+          _response(500, data: {
+            'message': 'Your sign-in is valid, but Kyron could not set up your '
+                'account on this server.',
+          }),
+        ),
+        contains('could not set up your account'),
+      );
+    });
+
+    test('does not repeat Nest\'s placeholder for an unhandled throw', () {
+      final message = describeApiError(
+        _response(500, data: {'message': 'Internal server error'}),
+      );
+      expect(message, contains('trouble on its end'));
+      expect(message, isNot(contains('Internal server error')));
+    });
+
     test('applies the same rule to a 403', () {
       expect(
         describeApiError(_response(403), sessionIsLive: true),

@@ -207,6 +207,103 @@ describe('SupabaseTokenService', () => {
     });
   });
 
+  describe('checking its own JWT secret', () => {
+    // A wrong SUPABASE_JWT_SECRET leaves the issuer right, the algorithm
+    // accepted, the key set reachable -- and every sign-in refused with a 401
+    // that reads, on a phone, as the account being rejected. A Supabase
+    // project's own API keys are JWTs signed with that same secret, so the
+    // deployment can check its configuration against one it already holds.
+    const SECRET = 'the-projects-real-jwt-secret-at-least-32-bytes';
+    const PROJECT = 'https://abcproject.supabase.co';
+
+    const projectKey = (secret: string, ref = 'abcproject') =>
+      new SignJWT({ iss: 'supabase', ref, role: 'service_role' })
+        .setProtectedHeader({ alg: 'HS256' })
+        .setIssuedAt()
+        .setExpirationTime('10y')
+        .sign(new TextEncoder().encode(secret));
+
+    const saved = {
+      secret: process.env.SUPABASE_JWT_SECRET,
+      service: process.env.SUPABASE_SERVICE_ROLE_KEY,
+      anon: process.env.SUPABASE_ANON_KEY,
+    };
+
+    afterEach(() => {
+      process.env.SUPABASE_JWT_SECRET = saved.secret;
+      process.env.SUPABASE_SERVICE_ROLE_KEY = saved.service;
+      process.env.SUPABASE_ANON_KEY = saved.anon;
+      delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+      delete process.env.SUPABASE_ANON_KEY;
+    });
+
+    const serviceWith = async (
+      secret: string,
+      keySecret: string,
+      ref?: string,
+    ) => {
+      process.env.SUPABASE_URL = PROJECT;
+      process.env.SUPABASE_JWT_SECRET = secret;
+      process.env.SUPABASE_SERVICE_ROLE_KEY = await projectKey(keySecret, ref);
+      return new SupabaseTokenService();
+    };
+
+    it("says verified when the secret really is the project's", async () => {
+      const s = await serviceWith(SECRET, SECRET);
+      await expect(s.secretStatus()).resolves.toMatchObject({
+        state: 'verified',
+      });
+    });
+
+    it('says wrong when it is some other secret', async () => {
+      const s = await serviceWith(
+        'a-different-secret-entirely-32-bytes!',
+        SECRET,
+      );
+      const status = await s.secretStatus();
+      expect(status.state).toBe('wrong');
+      // And tells whoever is reading where to get the right one.
+      expect(status.detail).toContain('JWT Secret');
+    });
+
+    it('catches a key that belongs to another project', async () => {
+      const s = await serviceWith(SECRET, SECRET, 'someotherproject');
+      const status = await s.secretStatus();
+      expect(status.state).toBe('wrong project');
+      expect(status.detail).toContain('someotherproject');
+    });
+
+    it('checks nothing when there is no project key to check against', async () => {
+      process.env.SUPABASE_URL = PROJECT;
+      process.env.SUPABASE_JWT_SECRET = SECRET;
+      delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+      delete process.env.SUPABASE_ANON_KEY;
+      await expect(
+        new SupabaseTokenService().secretStatus(),
+      ).resolves.toMatchObject({ state: 'unchecked' });
+    });
+
+    it('checks nothing for a project on the new API keys', async () => {
+      process.env.SUPABASE_URL = PROJECT;
+      process.env.SUPABASE_JWT_SECRET = SECRET;
+      process.env.SUPABASE_SERVICE_ROLE_KEY = 'sb_secret_notajwt';
+      await expect(
+        new SupabaseTokenService().secretStatus(),
+      ).resolves.toMatchObject({ state: 'unchecked' });
+    });
+
+    it('never puts the secret or the key in what it reports', async () => {
+      const s = await serviceWith(
+        'a-different-secret-entirely-32-bytes!',
+        SECRET,
+      );
+      const status = await s.secretStatus();
+      expect(status.detail).not.toContain('a-different-secret');
+      expect(status.detail).not.toContain(SECRET);
+      expect(status.detail).not.toContain('eyJ');
+    });
+  });
+
   describe('missingConfigFor', () => {
     // Separates "this server cannot check the token" from "this token is bad",
     // which is what lets the guard answer 503 naming the setting instead of a

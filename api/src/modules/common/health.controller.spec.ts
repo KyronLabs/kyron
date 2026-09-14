@@ -1,3 +1,4 @@
+import { SignJWT } from 'jose';
 import { Test } from '@nestjs/testing';
 import { HealthController } from './health.controller';
 import { SupabaseTokenService } from '../auth/supabase-token.service';
@@ -59,11 +60,41 @@ describe('HealthController', () => {
     const body = await (await controller()).health();
 
     expect(body.status).toBe('ok');
-    expect(body.auth).toEqual({
+    expect(body.auth).toMatchObject({
       supabase: 'configured',
       issuer: 'https://project-ref.supabase.co/auth/v1',
       accepts: ['ES256 via JWKS', 'RS256 via JWKS'],
     });
+    // Nothing to check without a secret, and saying so beats saying nothing.
+    expect(body.auth.secret).toContain('unchecked');
+  });
+
+  it('says when the JWT secret is not the one the project signs with', async () => {
+    // The failure this exists for: the issuer is right, HS256 is accepted,
+    // and every sign-in is still refused with a 401 that reads, on a phone,
+    // as the account being rejected. A project's own API key is a JWT signed
+    // with that same secret, so the deployment can check itself.
+    process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
+    process.env.SUPABASE_JWT_SECRET = 'not-the-projects-secret-at-all-32bytes';
+    process.env.SUPABASE_SERVICE_ROLE_KEY = await new SignJWT({
+      iss: 'supabase',
+      ref: 'project-ref',
+      role: 'service_role',
+    })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt()
+      .setExpirationTime('10y')
+      .sign(new TextEncoder().encode('the-real-secret-of-this-project-32b!'));
+
+    const body = await (await controller()).health();
+
+    expect(body.auth.secret).toContain('wrong');
+    expect(body.auth.secret).toContain('JWT Secret');
+    // And never the secret itself, nor the key it checked.
+    expect(body.auth.secret).not.toContain('not-the-projects-secret');
+    expect(body.auth.secret).not.toContain('eyJ');
+
+    delete process.env.SUPABASE_SERVICE_ROLE_KEY;
   });
 
   it('reports HS256 once a shared secret is configured', async () => {
@@ -179,7 +210,7 @@ describe('HealthController', () => {
     // Reporting unhealthy here would take the machine out of the load
     // balancer and hide the very information this endpoint exists to give.
     expect(body.status).toBe('ok');
-    expect(body.auth).toEqual({
+    expect(body.auth).toMatchObject({
       supabase: 'not configured',
       issuer: null,
       accepts: [],

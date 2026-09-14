@@ -20,7 +20,14 @@ interface Row {
   username: string | null;
 }
 
-function guardWith(existing: Row | null, updateFails = false) {
+function guardWith(
+  existing: Row | null,
+  updateFails = false,
+  /** Handles somebody else already holds, so `create` rejects on them. */
+  taken: string[] = [],
+  /** Rejects every create, whatever it asks for. */
+  createAlwaysFails = false,
+) {
   const updates: unknown[] = [];
   const creates: unknown[] = [];
   const prisma = {
@@ -29,6 +36,12 @@ function guardWith(existing: Row | null, updateFails = false) {
       findFirst: jest.fn().mockResolvedValue(null),
       create: jest.fn((args: { data: Row }) => {
         creates.push(args.data);
+        if (createAlwaysFails) {
+          return Promise.reject(new Error('unique constraint: email'));
+        }
+        if (args.data.username && taken.includes(args.data.username)) {
+          return Promise.reject(new Error('unique constraint: username'));
+        }
         return Promise.resolve(args.data);
       }),
       update: jest.fn((args: { where: unknown; data: Partial<Row> }) => {
@@ -121,5 +134,40 @@ describe('AuthGuard account provisioning', () => {
     await expect(
       guard.resolveSupabaseUser(subject({ username: 'taken' })),
     ).resolves.toMatchObject({ id: 'u1' });
+  });
+});
+
+describe('AuthGuard when the handle is taken', () => {
+  it('provisions the account without it rather than refusing the sign-in', async () => {
+    const { guard, creates } = guardWith(null, false, ['taken']);
+
+    const user = await guard.resolveSupabaseUser(
+      subject({ username: 'taken' }),
+    );
+
+    // Two attempts: the handle it asked for, then none.
+    expect(creates).toHaveLength(2);
+    expect((creates[0] as Row).username).toBe('taken');
+    expect((creates[1] as Row).username).toBeUndefined();
+    expect(user.id).toBe('u1');
+  });
+
+  it('does not retry when there was no handle to drop', async () => {
+    const { guard, creates } = guardWith(null, false, [], true);
+
+    await expect(guard.resolveSupabaseUser(subject({}))).rejects.toMatchObject({
+      status: 500,
+    });
+    expect(creates).toHaveLength(1);
+  });
+
+  it('blames the server, not the sign-in, when the row cannot be written', async () => {
+    // The account holds a valid Supabase token; nothing about it is expired or
+    // forged. A 401 here sent people to a login screen that could not help.
+    const { guard } = guardWith(null, false, [], true);
+
+    await expect(
+      guard.resolveSupabaseUser(subject({ username: 'anything' })),
+    ).rejects.toMatchObject({ status: 500 });
   });
 });

@@ -29,6 +29,14 @@ export class HealthController {
       .then((present) => (present ? 'present' : 'missing'))
       .catch(() => 'unknown');
 
+    // Checked against the project's own API key, which is itself a JWT signed
+    // with the same secret, so this needs no token from any user.
+    const status = await this.supabaseToken.secretStatus();
+    const secret =
+      status.state === 'verified'
+        ? 'verified'
+        : `${status.state}: ${status.detail}`;
+
     return {
       // Deliberately still "ok" with the database down, and still HTTP 200.
       // The process is serving; reporting unhealthy would take the machine out
@@ -46,10 +54,17 @@ export class HealthController {
       //
       // Nothing here is secret: the issuer is the `iss` claim of every token
       // the client already holds, and the project URL ships inside the app.
+      //
+      // `secret` is the one that could not be seen from anywhere before. A
+      // wrong SUPABASE_JWT_SECRET leaves the issuer right, the algorithm
+      // accepted and every sign-in refused, and the only symptom is a 401 per
+      // request -- which the person holding the phone reads as their own
+      // account being rejected.
       auth: {
         supabase: this.supabaseToken.enabled ? 'configured' : 'not configured',
         issuer: this.supabaseToken.configuredIssuer,
         accepts: this.supabaseToken.accepts,
+        secret,
       },
     };
   }

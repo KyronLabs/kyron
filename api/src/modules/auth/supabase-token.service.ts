@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, type OnModuleInit } from '@nestjs/common';
 import {
   createRemoteJWKSet,
   decodeJwt,
@@ -32,16 +32,29 @@ export interface SupabaseClaims extends JWTPayload {
   };
 }
 
+/**
+ * What checking SUPABASE_JWT_SECRET against the project's own API key found.
+ *
+ * `wrong` is the one that matters: it is a deployment that will refuse every
+ * sign-in, with nothing to show for it but a 401 per request.
+ */
+export interface SecretStatus {
+  state: 'verified' | 'wrong' | 'wrong project' | 'unchecked';
+  detail: string;
+}
+
 /** Algorithms accepted on each path. Pinned, never taken from the token. */
 const ASYMMETRIC_ALGS = ['ES256', 'RS256'];
 const SYMMETRIC_ALGS = ['HS256'];
 
 @Injectable()
-export class SupabaseTokenService {
+export class SupabaseTokenService implements OnModuleInit {
   private readonly logger = new Logger(SupabaseTokenService.name);
   private readonly issuer: string | null;
   private readonly jwks: ReturnType<typeof createRemoteJWKSet> | null;
   private readonly sharedSecret: Uint8Array | null;
+  private projectRef: string | null = null;
+  private secretCheck: Promise<SecretStatus> | null = null;
 
   constructor() {
     const baseUrl = process.env.SUPABASE_URL?.replace(/\/+$/, '');
@@ -66,6 +79,7 @@ export class SupabaseTokenService {
     }
 
     this.issuer = `${baseUrl}/auth/v1`;
+    this.projectRef = new URL(baseUrl).hostname.split('.')[0] || null;
     // createRemoteJWKSet caches the key set and refetches only on an unknown
     // kid, so this is one network call per key rotation rather than per
     // request. It is built even for a project that publishes no keys: fetching
@@ -92,6 +106,20 @@ export class SupabaseTokenService {
           'legacy shared secret cannot be verified. Only needed for a project ' +
           'that has not moved to JWT signing keys.',
       );
+    }
+  }
+
+  /**
+   * Says at boot whether this deployment can verify anything, because the
+   * alternative is finding out one refused sign-in at a time.
+   */
+  async onModuleInit(): Promise<void> {
+    if (!this.issuer) return;
+    const status = await this.secretStatus();
+    if (status.state === 'wrong' || status.state === 'wrong project') {
+      this.logger.error(status.detail);
+    } else if (status.state === 'verified') {
+      this.logger.log(status.detail);
     }
   }
 
@@ -195,6 +223,96 @@ export class SupabaseTokenService {
         );
       }
       return null;
+    }
+  }
+
+  /**
+   * Whether SUPABASE_JWT_SECRET is the secret this project actually signs
+   * with -- answered without needing a token from any user.
+   *
+   * A legacy Supabase project's own API keys are themselves JWTs, signed
+   * HS256 with the project's JWT secret and carrying `iss: "supabase"` and
+   * `ref: <project ref>`. This deployment already holds one, so it can check
+   * its own configuration against it.
+   *
+   * That check is worth having because a wrong secret is invisible from
+   * everywhere else. The issuer can be right, the algorithm can be accepted,
+   * the key set can be reachable, and every single sign-in still fails -- as
+   * a 401 that reads, to the person holding the phone, like their own account
+   * being refused. /health reports this so the question takes one request
+   * instead of a deployment's log.
+   *
+   * Nothing secret is returned or logged: the verdict, and the project ref,
+   * which is the subdomain of a URL that ships inside the app.
+   */
+  secretStatus(): Promise<SecretStatus> {
+    this.secretCheck ??= this.checkSecret();
+    return this.secretCheck;
+  }
+
+  private async checkSecret(): Promise<SecretStatus> {
+    if (!this.sharedSecret) {
+      return {
+        state: 'unchecked',
+        detail:
+          'SUPABASE_JWT_SECRET is not set, so there is nothing to check. A ' +
+          'project that has moved to JWT signing keys does not need one.',
+      };
+    }
+
+    // Either will do; both are signed with the same secret. The service role
+    // key is what this API already uses for storage, so it is the one most
+    // likely to be present.
+    const key =
+      process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() ||
+      process.env.SUPABASE_ANON_KEY?.trim();
+    if (!key) {
+      return {
+        state: 'unchecked',
+        detail:
+          'Neither SUPABASE_SERVICE_ROLE_KEY nor SUPABASE_ANON_KEY is set, ' +
+          'so there is no project key to check the secret against.',
+      };
+    }
+
+    // A project on the new API keys has `sb_secret_...` rather than a JWT.
+    // Those are not signed with the JWT secret and say nothing about it.
+    if (!key.startsWith('ey')) {
+      return {
+        state: 'unchecked',
+        detail:
+          'The project key is not a JWT, so it cannot be used to check the ' +
+          'JWT secret.',
+      };
+    }
+
+    try {
+      const { payload } = await jwtVerify(key, this.sharedSecret, {
+        algorithms: SYMMETRIC_ALGS,
+      });
+      const ref = typeof payload.ref === 'string' ? payload.ref : null;
+      if (this.projectRef && ref && ref !== this.projectRef) {
+        return {
+          state: 'wrong project',
+          detail:
+            `SUPABASE_URL names project ${this.projectRef} and the project ` +
+            `key belongs to ${ref}. Tokens from one cannot be verified ` +
+            'against the other.',
+        };
+      }
+      return {
+        state: 'verified',
+        detail: `SUPABASE_JWT_SECRET signs project ${ref ?? this.projectRef}.`,
+      };
+    } catch {
+      return {
+        state: 'wrong',
+        detail:
+          "SUPABASE_JWT_SECRET does not verify this project's own API key, " +
+          'so it is not the secret the project signs with. Every sign-in ' +
+          'will be refused with 401 until it is corrected. Copy it from ' +
+          'Supabase: Project Settings -> API -> JWT Settings -> JWT Secret.',
+      };
     }
   }
 
