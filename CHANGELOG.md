@@ -14,6 +14,19 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **You can tag somebody in a post.** The composer's tag button inserted a
+  bare `@` and left the writer to remember a handle exactly, character for
+  character -- and a handle that does not match an account is not a tag, it is
+  grey text. It now opens a sheet that searches real accounts and writes the
+  handle in, replacing a half-typed `@ad` rather than appending to it. Only
+  accounts that have a handle are offered, because a mention is read back by
+  resolving one. The community composer has the same button, which it did not
+  have at all.
+
+- **The community composer's box is four lines, not the whole screen.**
+  `expands: true` inside an `Expanded` made the field the entire page, so the
+  tools and the counter sat at the bottom edge a long way from the words.
+
 - **A like turns red the moment it is pressed.** On a post's own page the
   animation played and then the heart sat grey for a second or two, until the
   server came back and the state was replaced wholesale -- so the one part of
