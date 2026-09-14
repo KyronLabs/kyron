@@ -14,6 +14,44 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **A new account could get stuck on the create-profile screen**, told only
+  that "Kyron could not verify your sign-in (error 401). That is a problem on
+  our end, not with your account." It was, and the message could not say which
+  problem, because three quite different faults reach the client as 401 and
+  the client threw the server's own explanation away.
+
+  The one that bricks an account: the API mirrors every Supabase account as a
+  local row so the rest of the schema has a `User` to relate to, and
+  `username` on that row is unique. Sign-up puts the handle somebody chose
+  into the token's metadata, so if another account already holds it the
+  `INSERT` fails, the recovery read finds nothing, and the guard answered 401.
+  There is no way forward from there: the handle is fixed in the token, so
+  every retry fails identically. A handle is optional and can be changed from
+  Edit profile; an account is not, so provisioning now drops the handle and
+  says so in the log rather than refusing the sign-in.
+
+  What is left after that is this server failing to write a row, which is not
+  something wrong with the caller's credentials. It answers 500 now, with a
+  sentence saying the sign-in is valid and the account setup is not -- rather
+  than a 401 that sends somebody back to a login screen that cannot help them.
+
+  And the client shows what the server said. "Missing or invalid token",
+  "Invalid or expired token" and "Could not resolve account" are three
+  different problems with three different fixes, and all three used to arrive
+  as the same sentence about error 401.
+
+- **`GET /health` now reports whether the API's JWT secret is the one the
+  project actually signs with.** A wrong `SUPABASE_JWT_SECRET` leaves the
+  issuer right, the algorithm accepted and the key set reachable, and refuses
+  every sign-in anyway -- one 401 per request, which on a phone reads as the
+  account being rejected. Nothing anywhere could see it.
+
+  A Supabase project's own API keys are themselves JWTs signed with that same
+  secret, and the API already holds one, so it can check its configuration
+  against a key it has rather than waiting for a token from a user. The
+  verdict is on `/health` and in the boot log, and names the setting and where
+  to copy it from. Neither the secret nor the key appears in either.
+
 - The development APKs could not be installed. Android answered "App not
   installed as package appears to be invalid", which sounds like a corrupt
   download and was not: the file was a valid, correctly signed, correctly

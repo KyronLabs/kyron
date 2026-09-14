@@ -38,15 +38,30 @@ String describeApiError(Object error, {bool sessionIsLive = false}) {
         // "Sign in again" is a loop when the session is already valid: the user
         // signs in, lands back on the same screen and gets the same error,
         // because nothing about their credentials was ever the problem.
-        return sessionIsLive
+        if (!sessionIsLive) {
+          return 'Your session has expired. Please sign in again.';
+        }
+        // And what the server actually said, when it said something. A
+        // missing Authorization header, a signature that will not verify and
+        // an account the server could not write are three different faults
+        // with three different fixes, and all three used to arrive here as
+        // the same sentence -- which is why a reader stuck on the
+        // create-profile screen had nothing to report but "error 401".
+        final said = _serverMessage(error.response?.data);
+        return said == null
             ? 'Kyron could not verify your sign-in (error $status). That is a '
                 'problem on our end, not with your account.'
-            : 'Your session has expired. Please sign in again.';
+            : 'Kyron could not verify your sign-in (error $status): $said';
       }
       if (status >= 500) {
         // Explicitly not the caller's connection.
-        return 'Kyron is having trouble on its end (error $status). Please try '
-            'again shortly.';
+        final said = _serverMessage(error.response?.data);
+        // NestJS answers an unhandled throw with a placeholder, which tells a
+        // reader nothing the status code has not already.
+        return said == null || said.toLowerCase() == 'internal server error'
+            ? 'Kyron is having trouble on its end (error $status). Please try '
+                'again shortly.'
+            : '$said (error $status)';
       }
       return _serverMessage(error.response?.data) ??
           'That request was rejected (error $status).';
