@@ -423,7 +423,9 @@ class _GlassButton extends StatelessWidget {
         child: InkWell(
           onTap: onPressed,
           child: SizedBox.square(
-            dimension: 40,
+            // 44, the floor for a touch target. These sit over a banner
+            // photograph where there is nothing else to hit.
+            dimension: 44,
             // The icon. It was declared on this widget and never drawn, so
             // both controls over the banner rendered as a black disc with
             // nothing in it -- pressable, correct, and invisible.

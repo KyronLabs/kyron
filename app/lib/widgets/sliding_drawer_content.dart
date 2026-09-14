@@ -46,7 +46,9 @@ class SlidingDrawerContent extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: MediaQuery.of(context).padding.top + 18),
+            SizedBox(
+                height:
+                    MediaQuery.of(context).padding.top + SpacingTokens.space16),
             userAsync.when(
               loading: () => _headerSkeleton(),
               error: (error, _) => _headerError(context, ref, scheme, error),
@@ -59,7 +61,9 @@ class SlidingDrawerContent extends ConsumerWidget {
             // and the last item was cut off halfway down.
             Expanded(child: _navigation(context)),
             _footer(context, scheme),
-            SizedBox(height: MediaQuery.of(context).padding.bottom + 6),
+            SizedBox(
+                height: MediaQuery.of(context).padding.bottom +
+                    SpacingTokens.space8),
           ],
         ),
       ),
@@ -219,7 +223,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             SizedBox(height: SpacingTokens.space12),
             // The display name, at the height its text occupies.
             SkeletonBox.line(width: 150, height: 17),
-            SizedBox(height: 6),
+            SizedBox(height: SpacingTokens.space8),
             // The handle.
             SkeletonBox.line(width: 96, height: 13),
             SizedBox(height: SpacingTokens.space12),
@@ -394,7 +398,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: SpacingTokens.space8,
-                      vertical: 3,
+                      vertical: SpacingTokens.space4,
                     ),
                     decoration: BoxDecoration(
                       color: scheme.secondary,
@@ -518,7 +522,7 @@ class SlidingDrawerContent extends ConsumerWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(
             horizontal: SpacingTokens.space12,
-            vertical: 6,
+            vertical: SpacingTokens.space8,
           ),
           decoration: BoxDecoration(
             color: scheme.primary.withValues(alpha: isDark ? 0.1 : 0.08),
@@ -528,7 +532,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(icon, size: 12, color: scheme.primary),
-              const SizedBox(width: 6),
+              const SizedBox(width: SpacingTokens.space4),
               Text(
                 label,
                 style: TextStyle(
