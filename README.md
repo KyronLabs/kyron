@@ -49,6 +49,7 @@ does today. Where something is planned rather than built, it says so.
 | **Profiles** | Bio, links, avatar and cover, followers and following, editing |
 | **Messages** | One-to-one, attachments, read state, mute, block, report, delete. Text is encrypted end to end — [what that does and does not cover](docs/E2EE.md) |
 | **Communities** | Create, join, post, moderate, roles, bans, banner and picture |
+| **AR camera** | Seven colour lenses in the app and more from the catalogue: face-tracked attachments that stay on the eyes, sized in pupil-gaps so one lens is right on any face at any distance, and effects that change the face itself — your nose and mouth taken out under skin sampled from your own cheeks, or everything frosted but the eyes. MediaPipe's mesh, 478 landmarks. Lenses are data, not code, so new ones ship from [their own repo](https://github.com/KyronLabs/kyron-lenses) without an app release — [how the app reads them](docs/LENS_FORMAT.md). No 3D, expression, occlusion or warping — [what is and is not there](docs/AR.md) |
 | **Explore** | Trending hashtags, topics, people you might follow |
 | **Moderation** | Report, block, mute people, threads and words |
 | **Search** | People, posts and hashtags, with filters |
@@ -62,8 +63,7 @@ Listed because they have been described as finished elsewhere and are not.
 
 | Planned | State today |
 |:--|:--|
-| AR camera lenses | Colour lenses, face-tracked ones — glasses that stay on the eyes, sized in pupil-gaps so one lens is right on any face at any distance — and effects that change the face itself: your nose and mouth taken out under skin sampled from your own cheeks, or everything frosted but the eyes. Lenses are data, not code, so new ones ship from [their own repo](https://github.com/KyronLabs/kyron-lenses) without an app release — [how the app reads them](docs/LENS_FORMAT.md). No 3D, no expression, no occlusion and no warping yet — [what is and is not there](docs/AR.md) |
-| Live video | Not started. Same |
+| Live video | Not started — the decision, costed, is in [kyron-live](https://github.com/KyronLabs/kyron-live) |
 | Portable identity (DID / AT Protocol) | Half built. Every account gets a real `did:key` it proves it controls — but nothing consumes it, so nothing is portable yet. [What it does and does not do](docs/IDENTITY.md) |
 | End-to-end encrypted *posts* | Not started. Direct messages are encrypted; posts are public by nature |
 | Creator equity pool | Not started |
@@ -119,8 +119,13 @@ directories are placeholders for services that have not been written.
 └───────────────────┘   └─────────────────────┘
 ```
 
-Deployed to Fly.io (`api/fly.toml`); the marketing site and web build are
-static on Render (`render.yaml`). More in [`ARCHITECTURE.md`](ARCHITECTURE.md).
+The API and the static web build both run on Render (`render.yaml`) — the API
+is what `app/lib/services/api_client.dart` points at, and `/health` on it is
+the quickest way to see which Supabase project a deployment is verifying
+against. `api/fly.toml` is left over from an earlier Fly.io deployment that no
+longer answers; it is what `docs/OBSERVABILITY.md` and `docs/PERFORMANCE.md`
+still reason about when they say "one process". More in
+[`ARCHITECTURE.md`](ARCHITECTURE.md).
 
 ---
 

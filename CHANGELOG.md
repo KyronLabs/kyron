@@ -14,6 +14,28 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **The README and the ROADMAP called the AR camera unbuilt.** It sat under
+  *Not built yet* in one and *Stubs shipped as if finished* in the other,
+  while the cell beside each heading described lenses that work: colour
+  lenses, attachments that follow a face, effects that change one. Seven ship
+  in the app, four more in the catalogue across all three schema versions, and
+  208 tests cover them. Both entries were written before the AR work landed
+  and nobody moved them.
+
+  That is the same staleness as an overclaim and harder to notice, because a
+  document that undersells itself does not read as a lie. The ROADMAP has a
+  section about the README once overclaiming; it now records this, pointing
+  the other way.
+
+- **The README said the API is deployed to Fly.io.** It runs on Render.
+  `api_client.dart` points every phone at `kyron-47r6.onrender.com`, that host
+  answers `/health`, and `kyron.fly.dev` does not resolve. `api/fly.toml` is
+  still in the tree and is what `docs/OBSERVABILITY.md` and
+  `docs/PERFORMANCE.md` reason about when they say "one process" — worth
+  knowing before trusting either.
+
+- **The ROADMAP's test counts were 667 and 443.** They are 851 and 458.
+
 - **The home feed carries posts from the communities you are in.** It filtered
   every community post out, so joining one meant remembering to go and look at
   it. Posts from communities you are *not* in are still left out -- pushing
