@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,6 +14,7 @@ import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/community_avatar.dart';
 import 'package:kyron_app/widgets/post_card.dart';
 import 'package:kyron_app/widgets/squircle.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _gardeners = PostCommunity(
@@ -259,6 +261,129 @@ void main() {
       final avatar = find.byType(CommunityAvatar);
       expect(avatar, findsOneWidget);
       expect(tester.getRect(avatar).top, greaterThan(0));
+    });
+  });
+
+  group('the community page, laid out', () {
+    /// A phone with a gesture bar, which is what makes the bottom inset
+    /// matter. The default test surface has none.
+    Future<void> pumpPhone(WidgetTester tester, Community community) async {
+      tester.view.physicalSize = const Size(390, 844);
+      tester.view.devicePixelRatio = 1;
+      tester.view.padding = const FakeViewPadding(top: 47, bottom: 34);
+      addTearDown(tester.view.reset);
+
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            communitiesRepositoryProvider
+                .overrideWithValue(_OneCommunity(community)),
+            feedRepositoryProvider.overrideWithValue(_Feed()),
+          ],
+          child: MaterialApp(
+            theme: KyronTheme.lightTheme,
+            home: const CommunityScreen(slug: 'gardeners'),
+          ),
+        ),
+      );
+      await tester.pump();
+      // The Scaffold scales its floating button in; measured mid-animation it
+      // is a rect of zero size around the resting centre.
+      await tester.pump(const Duration(seconds: 1));
+    }
+
+    const withBanner = Community(
+      id: 'c1',
+      slug: 'gardeners',
+      name: 'Gardeners',
+      bannerUrl: 'https://example.test/banner.png',
+      avatarUrl: 'https://example.test/avatar.png',
+      joined: true,
+      role: CommunityRole.member,
+    );
+
+    testWidgets('the picture sits exactly halfway across the banner edge',
+        (tester) async {
+      // It hung a third of itself below before, which reads as a picture that
+      // slipped rather than one that was placed.
+      await pumpPhone(tester, withBanner);
+
+      final banner = tester.getRect(find.byType(Image).first);
+      final avatar = tester.getRect(find.byType(CommunityAvatar));
+
+      expect(avatar.center.dy, closeTo(banner.bottom, 0.5));
+    });
+
+    testWidgets('the controls over the banner draw their icons',
+        (tester) async {
+      // `_GlassButton` took an icon and never drew it: an empty box inside a
+      // black disc. The button showed, the tap worked, and there was nothing
+      // in it -- reported as "the icons at the top aren't showing, only their
+      // backgrounds are, but they work just fine".
+      await pumpPhone(tester, withBanner);
+
+      final back = find.byTooltip(
+        const DefaultMaterialLocalizations().backButtonTooltip,
+      );
+      expect(back, findsOneWidget);
+      expect(
+        find.descendant(of: back, matching: find.byType(Icon)),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('the floating button clears the home indicator',
+        (tester) async {
+      // `endFloat` puts it 16 above the *body*, and this body runs to the
+      // bottom of the screen -- so on a 34-pixel gesture inset the button
+      // landed 32 up, two pixels inside the system's own strip.
+      await pumpPhone(tester, withBanner);
+
+      final screen = tester.getSize(find.byType(CommunityScreen));
+      final fab = tester.getRect(find.byType(FloatingActionButton));
+      const inset = 34.0;
+
+      expect(screen.height - fab.bottom, greaterThan(inset),
+          reason: 'the button is inside the gesture inset');
+      expect(screen.width - fab.right, closeTo(16, 0.5),
+          reason: 'Material puts a floating button 16 from the edge');
+    });
+
+    testWidgets('the floating button can be seen against the page',
+        (tester) async {
+      // It was #FFFFFF on #F7F7F7, at 1.06:1. The theme is the fix; this
+      // holds the app to a theme that has one.
+      await pumpPhone(tester, withBanner);
+
+      final material = tester.widget<Material>(
+        find
+            .descendant(
+              of: find.byType(FloatingActionButton),
+              matching: find.byType(Material),
+            )
+            .first,
+      );
+      expect(material.color, isNot(const Color(0xFFF7F7F7)));
+      expect(material.color, isNot(Colors.white));
+    });
+  });
+
+  group('the floating buttons are outlined', () {
+    /// Iconsax ships each glyph twice: the bare name is the filled weight and
+    /// the `_copy` suffix is the outline. Kyron's are outlined, and these two
+    /// were the filled ones -- on the Communities tab, directly above a
+    /// create button drawing the same plus in the other weight.
+    test('both community screens use the outline weight', () {
+      final community =
+          File('lib/screens/community_screen.dart').readAsStringSync();
+      final communities =
+          File('lib/screens/communities_screen.dart').readAsStringSync();
+
+      expect(community, contains('Iconsax.edit_2_copy'));
+      expect(community, isNot(contains('Icon(Iconsax.edit_2)')));
+
+      expect(communities, contains('Iconsax.add_copy'));
+      expect(communities, isNot(contains('Icon(Iconsax.add)')));
     });
   });
 }
