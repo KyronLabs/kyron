@@ -21,6 +21,7 @@ PostComment _comment(String id, {String? parentId, int replies = 0}) =>
 void main() {
   _openingReplies();
   _reportingTheRead();
+  _pressingLike();
 
   group('PostComment.fromJson', () {
     test('reads a top-level comment', () {
@@ -388,6 +389,110 @@ void _reportingTheRead() {
       r.notifier.dispose();
 
       expect(r.feed.views, [null, 30000]);
+    });
+  });
+}
+
+/// A repository whose like never answers until a test says so, which is the
+/// only way to see what the screen shows in between.
+class _HeldLike extends FeedRepository {
+  _HeldLike() : super(ApiClient());
+
+  final _liked = Completer<int>();
+  Object? failWith;
+
+  // The notifier loads as soon as it is built, so these have to answer
+  // something rather than reach for the network.
+  @override
+  Future<FeedPost> byId(String postId) async => FeedPost(
+        id: postId,
+        content: 'a post',
+        createdAt: DateTime(2026),
+        author: const FeedAuthor(id: 'u1', username: 'ada'),
+      );
+
+  @override
+  Future<CommentPage> comments(String postId,
+          {String? cursor, int limit = 20}) async =>
+      const CommentPage(items: []);
+
+  @override
+  Future<void> recordView(String postId, {int? dwellMs}) async {}
+
+  // A finished like refreshes the feed behind the page, so that the two do
+  // not disagree about the same post.
+  @override
+  Future<FeedPage> recent({String? cursor, int limit = 20}) async =>
+      const FeedPage(items: []);
+
+  @override
+  Future<int> setLiked(String postId, bool liked) {
+    if (failWith != null) return Future<int>.error(failWith!);
+    return _liked.future;
+  }
+
+  void answer(int likes) => _liked.complete(likes);
+}
+
+void _pressingLike() {
+  group('pressing like on a post page', () {
+    ({PostDetailNotifier notifier, _HeldLike feed}) pressing() {
+      final feed = _HeldLike();
+      final container = ProviderContainer(
+        overrides: [feedRepositoryProvider.overrideWithValue(feed)],
+      );
+      addTearDown(container.dispose);
+      final probe = Provider<PostDetailNotifier>(
+        (ref) => PostDetailNotifier(ref, 'p1'),
+      );
+      final notifier = container.read(probe);
+      notifier.replacePost(FeedPost.fromJson({
+        'id': 'p1',
+        'content': 'hello',
+        'author': const {'id': 'u1', 'username': 'ada'},
+        'likes': 4,
+        'liked': false,
+      }));
+      return (notifier: notifier, feed: feed);
+    }
+
+    test('fills the heart on the press, not when the server answers', () async {
+      // The bug: the page awaited the request before changing anything, so
+      // the heart played its animation and then sat grey for a second or two.
+      // Long enough to read as a missed tap, and long enough to press again.
+      final (:notifier, :feed) = pressing();
+
+      final pending = notifier.toggleLike();
+
+      expect(notifier.state.post!.liked, isTrue,
+          reason: 'the press is the answer');
+      expect(notifier.state.post!.likes, 5);
+
+      feed.answer(9);
+      await pending;
+    });
+
+    test("takes the server's count over its own arithmetic", () async {
+      // Somebody else may have liked it in the time that took.
+      final (:notifier, :feed) = pressing();
+
+      final pending = notifier.toggleLike();
+      feed.answer(12);
+      await pending;
+
+      expect(notifier.state.post!.likes, 12);
+      expect(notifier.state.post!.liked, isTrue);
+    });
+
+    test('puts it back when the request fails', () async {
+      final (:notifier, :feed) = pressing();
+      feed.failWith = StateError('offline');
+
+      final message = await notifier.toggleLike();
+
+      expect(notifier.state.post!.liked, isFalse);
+      expect(notifier.state.post!.likes, 4);
+      expect(message, isNotNull);
     });
   });
 }

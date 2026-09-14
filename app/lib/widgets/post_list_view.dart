@@ -177,8 +177,12 @@ class _PostListViewState extends ConsumerState<PostListView> {
     if (state.isLoadingFirstPage && state.posts.isEmpty) {
       // The shape of what is coming, not a spinner in the middle of
       // nothing: the page fills in rather than rearranging itself when
-      // it lands.
-      return SliverToBoxAdapter(child: SkeletonList.posts());
+      // it lands. Which shape depends on how this list renders -- the
+      // Videos tab is a wall of tiles, and it used to load behind a
+      // column of post rows it then threw away.
+      return SliverToBoxAdapter(
+        child: widget.asTiles ? const SkeletonTileWall() : SkeletonList.posts(),
+      );
     }
     if (state.error != null && state.posts.isEmpty) {
       return EmptyState.failed(

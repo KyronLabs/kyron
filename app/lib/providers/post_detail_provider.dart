@@ -446,42 +446,75 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
     }
   }
 
-  Future<String?> toggleLike() => _mutate((post) async {
-        final next = !post.liked;
-        final likes = await _repo.setLiked(post.id, next);
-        return post.copyWith(liked: next, likes: likes);
-      });
+  Future<String?> toggleLike() {
+    final post = state.post;
+    if (post == null) return Future<String?>.value();
+    final next = !post.liked;
+    return _mutate(
+      post.copyWith(
+        liked: next,
+        likes: (post.likes + (next ? 1 : -1)).clamp(0, 1 << 31),
+      ),
+      // The server's recount wins over the arithmetic above: somebody else
+      // may have liked it in the time this took.
+      (shown) async =>
+          shown.copyWith(likes: await _repo.setLiked(post.id, next)),
+    );
+  }
 
-  Future<String?> toggleSave() => _mutate((post) async {
-        final next = !post.saved;
-        await _repo.setSaved(post.id, next);
-        return post.copyWith(saved: next);
-      });
+  Future<String?> toggleSave() {
+    final post = state.post;
+    if (post == null) return Future<String?>.value();
+    final next = !post.saved;
+    return _mutate(post.copyWith(saved: next), (shown) async {
+      await _repo.setSaved(post.id, next);
+      return shown;
+    });
+  }
 
-  Future<String?> toggleRepost() => _mutate((post) async {
-        final next = !post.reposted;
-        final reposts = await _repo.setReposted(post.id, next);
-        return post.copyWith(reposted: next, reposts: reposts);
-      });
+  Future<String?> toggleRepost() {
+    final post = state.post;
+    if (post == null) return Future<String?>.value();
+    final next = !post.reposted;
+    return _mutate(
+      post.copyWith(
+        reposted: next,
+        reposts: (post.reposts + (next ? 1 : -1)).clamp(0, 1 << 31),
+      ),
+      (shown) async =>
+          shown.copyWith(reposts: await _repo.setReposted(post.id, next)),
+    );
+  }
 
   /// Takes the post as the server just returned it -- after a poll vote, say.
   void replacePost(FeedPost post) {
     state = state.copyWith(post: post);
   }
 
+  /// Shows [predicted] at once, then reconciles it with whatever the server
+  /// says, and puts the post back as it was if the request fails.
+  ///
+  /// The press is the answer. This used to await the request before changing
+  /// anything, so the heart filled its animation and then sat grey for a
+  /// second or two until the server replied -- long enough to read as the tap
+  /// having missed, and long enough to press again. The feed has always done
+  /// it this way round; the post page had not.
   Future<String?> _mutate(
-    Future<FeedPost> Function(FeedPost post) change,
+    FeedPost predicted,
+    Future<FeedPost> Function(FeedPost shown) confirm,
   ) async {
-    final post = state.post;
-    if (post == null) return null;
+    final before = state.post;
+    if (before == null) return null;
+
+    state = state.copyWith(post: predicted);
 
     try {
-      state = state.copyWith(post: await change(post));
+      state = state.copyWith(post: await confirm(predicted));
       // The feed is showing the same post; keep the two from disagreeing.
       _ref.read(postListProvider(PostListSource.recent).notifier).refresh();
       return null;
     } catch (e) {
-      state = state.copyWith(post: post);
+      state = state.copyWith(post: before);
       return describeApiError(e, sessionIsLive: true);
     }
   }

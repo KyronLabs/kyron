@@ -14,6 +14,37 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **A like turns red the moment it is pressed.** On a post's own page the
+  animation played and then the heart sat grey for a second or two, until the
+  server came back and the state was replaced wholesale -- so the one part of
+  the gesture that says it worked arrived last. The page now shows the
+  outcome immediately, reconciles it with the count the server returns, and
+  puts the post back exactly as it was if the request fails. Save and repost
+  worked the same way and were changed with it.
+
+- **Loading no longer says you have no avatar.** Every top bar with a picture
+  in it -- Home, Explore, Communities, Messages -- drew the fallback person
+  glyph while `/profile/me` was in flight. That glyph is what Kyron shows an
+  account with *no* picture, so on every launch it told everybody they had
+  none until the request landed. It shimmers instead.
+
+- **The sidebar's counts no longer pop in.** Its loading header was three
+  still grey blocks that stopped at the handle, so the followers row arrived
+  afterwards and shoved the navigation down. It is now the real header's own
+  shape -- avatar, name, handle and all three stats -- shimmering.
+
+- **The Videos wall loads behind tiles, not post rows.** The clips tab is a
+  staggered two-column wall, and it loaded behind a column of paragraphs with
+  avatars and engagement rows, then threw every bit of it away. New
+  `SkeletonTileWall` draws the same two columns, gutters and corner radius as
+  the grid that replaces it.
+
+- **The full-screen clip feed shows a clip while it loads.** It showed the
+  word "Loading" in the middle of a black screen, which is indistinguishable
+  from a clip that never arrives. New `SkeletonClip` puts the rail and the
+  caption where they are about to be, in tones that are visible on black in
+  either theme.
+
 - **The create-profile screen has the shape of Edit profile.** The two edit
   the same two pictures and the same two fields, and looked nothing alike:
   this one drew a 200-pixel banner with a 128-pixel avatar straddling it -- a

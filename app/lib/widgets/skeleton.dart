@@ -478,3 +478,183 @@ class _CommunitySkeleton extends StatelessWidget {
         ),
       );
 }
+
+/// The Videos wall's own shape: a staggered two-column stack of tiles.
+///
+/// The Videos tab loaded behind [SkeletonList.posts], so a wall of clips
+/// announced itself as a column of paragraphs with avatars and engagement rows
+/// and then replaced every bit of it. This is the shape that actually lands --
+/// the same two columns, the same gutters, the same corner radius as
+/// `MediaTileGrid`.
+class SkeletonTileWall extends StatelessWidget {
+  final int count;
+
+  const SkeletonTileWall({super.key, this.count = 8});
+
+  /// Aspect ratios, cycled. Uneven on purpose: a stagger whose tiles are all
+  /// the same height is a grid, and what replaces this is not one. Kept inside
+  /// the bounds `MediaTileGrid` clamps a real attachment to.
+  static const List<double> _ratios = [0.72, 1.0, 0.62, 0.86, 0.66, 1.12];
+
+  @override
+  Widget build(BuildContext context) {
+    // Laid out against the width it is given rather than by AspectRatio, so
+    // the two columns stay level with the real grid's spacing on any screen.
+    return SkeletonGroup(
+      child: Padding(
+        padding: const EdgeInsets.all(SpacingTokens.space8),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final column = (constraints.maxWidth - SpacingTokens.space8) / 2;
+            final columns = [<Widget>[], <Widget>[]];
+            for (var index = 0; index < count; index++) {
+              final side = columns[index % 2];
+              if (side.isNotEmpty) {
+                side.add(const SizedBox(height: SpacingTokens.space8));
+              }
+              side.add(
+                SkeletonBox(
+                  height: column / _ratios[index % _ratios.length],
+                  radius: RadiusTokens.radiusMd,
+                ),
+              );
+            }
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var side = 0; side < columns.length; side++) ...[
+                  if (side > 0) const SizedBox(width: SpacingTokens.space8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisSize: MainAxisSize.min,
+                      children: columns[side],
+                    ),
+                  ),
+                ],
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+/// One full-screen clip, while the first page of them is on its way.
+///
+/// The full-screen feed showed the word "Loading…" in the middle of a black
+/// screen, which is indistinguishable from a clip that will never arrive. This
+/// is where the caption and the rail are about to be.
+class SkeletonClip extends StatelessWidget {
+  const SkeletonClip({super.key});
+
+  /// The rail has seven buttons: like, reply, repost, save, share, sound,
+  /// more.
+  static const int _railButtons = 7;
+
+  @override
+  Widget build(BuildContext context) {
+    // Fixed tones rather than the scheme's: this screen is black whatever the
+    // theme is, so a skeleton drawn from `onSurface` is invisible on it in
+    // light mode.
+    return const SkeletonGroup(
+      child: _ClipBody(),
+    );
+  }
+}
+
+class _ClipBody extends StatelessWidget {
+  const _ClipBody();
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        const ColoredBox(color: Colors.black),
+        // The rail, down the right-hand edge.
+        Positioned(
+          right: SpacingTokens.space8,
+          bottom: 0,
+          child: SafeArea(
+            top: false,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: SpacingTokens.space32),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  for (var index = 0;
+                      index < SkeletonClip._railButtons;
+                      index++)
+                    const Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: SpacingTokens.space8),
+                      child: _OnBlack(child: SkeletonBox.circle(size: 36)),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        // The caption, bottom left, clear of the rail.
+        Positioned(
+          left: SpacingTokens.space16,
+          right: 88,
+          bottom: 0,
+          child: SafeArea(
+            top: false,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: SpacingTokens.space32),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  _OnBlack(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SkeletonBox.circle(size: 32),
+                        SizedBox(width: SpacingTokens.space8),
+                        SkeletonBox.line(width: 110, height: 15),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: SpacingTokens.space12),
+                  _OnBlack(child: SkeletonBox.line(width: 220, height: 13)),
+                  SizedBox(height: SpacingTokens.space8),
+                  _OnBlack(child: SkeletonBox.line(width: 150, height: 13)),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Lets [SkeletonBox] draw on black.
+///
+/// Its tones come from `onSurface`, which on a light theme is near-black --
+/// invisible on this screen, which is black in either theme. A local dark
+/// scheme gives the boxes something to be lighter than.
+class _OnBlack extends StatelessWidget {
+  final Widget child;
+
+  const _OnBlack({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Theme(
+      data: theme.copyWith(
+        colorScheme: theme.colorScheme.copyWith(
+          onSurface: Colors.white,
+          brightness: Brightness.dark,
+        ),
+      ),
+      child: child,
+    );
+  }
+}
