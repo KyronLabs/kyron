@@ -1,5 +1,7 @@
 // lib/screens/welcome_screen.dart
 import 'dart:math' as math;
+import '../services/google_sign_in_service.dart';
+import '../services/app_log.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -70,6 +72,35 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
 
     setState(() => _busy = _Path.google);
     try {
+      // The device's own account picker first. On Android that is Credential
+      // Manager: a sheet over Kyron listing the accounts already signed in on
+      // the phone, one tap, no browser and nothing typed. It hands back an ID
+      // token, which Supabase exchanges for a session on the spot -- so
+      // unlike the browser flow, nothing depends on a redirect coming back.
+      final google = GoogleSignInService();
+      final outcome = await google.signIn();
+
+      switch (outcome) {
+        case GoogleOutcome.signedIn:
+          // main.dart is listening; by the time it routes, this screen may be
+          // gone.
+          return;
+        case GoogleOutcome.cancelled:
+          // The sheet was dismissed. That is an answer, and saying anything
+          // about it would be nagging.
+          return;
+        case GoogleOutcome.useBrowser:
+          break;
+      }
+
+      // No sheet here, or the project is not registered for one. The browser
+      // still works when Google's side is configured, so it is the fallback
+      // rather than a dead end -- and the reason is in the log, because
+      // "nothing happened" is the worst thing this could report.
+      AppLog.instance.info(
+        'auth',
+        'Falling back to the browser for Google: ${google.reason}',
+      );
       await ref.read(authNotifierProvider.notifier).startGoogleSignIn();
       // The browser has it now. The session arrives over the redirect and
       // main.dart routes on it, because by then this screen may be gone.

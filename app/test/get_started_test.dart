@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_sign_in_platform_interface/google_sign_in_platform_interface.dart';
 import 'package:kyron_app/providers/auth_provider.dart';
 import 'package:kyron_app/repositories/auth_repository.dart';
 import 'package:kyron_app/routes.dart';
 import 'package:kyron_app/screens/forgot_password_screen.dart';
 import 'package:kyron_app/screens/welcome_screen.dart';
+import 'package:kyron_app/services/app_log.dart';
 import 'package:kyron_app/services/app_preferences.dart';
 import 'package:kyron_app/services/platform_support.dart';
 import 'package:kyron_app/utils/validators.dart';
@@ -19,6 +21,8 @@ import 'package:kyron_app/widgets/terms_gate.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' show AuthException;
+
+import 'support/fake_google_platform.dart';
 
 /// The way into Kyron, which until now greeted a first-time reader with
 /// "Welcome back." over a Google button wired to a comment.
@@ -164,6 +168,15 @@ void main() {
   });
 
   group('the get-started screen', () {
+    setUp(() {
+      // No account picker, so the screen takes the browser path these tests
+      // are about. Without this the default platform implementation answers
+      // over a method channel nothing is listening on, and the screen decides
+      // the sheet was dismissed -- which is a correct reading of a real
+      // dismissal and the wrong one here.
+      GoogleSignInPlatform.instance = FakeGooglePlatform(supports: false);
+    });
+
     testWidgets('never greets a first-timer as a returning one',
         (tester) async {
       await tester.pumpWidget(app(const WelcomeScreen()));
@@ -208,6 +221,10 @@ void main() {
       await tester.tap(find.text('Continue with Google'));
       await tester.pumpAndSettle();
       await agree(tester);
+      // The screen records why it used the browser, and the log coalesces
+      // writes behind a timer. Settled here rather than left for the binding
+      // to complain about after the tree is gone.
+      await AppLog.instance.flush();
 
       expect(auth.googleStarts, 1);
     });
@@ -240,6 +257,7 @@ void main() {
       await tester.tap(find.text('Continue with Google'));
       await tester.pumpAndSettle();
       await agree(tester);
+      await AppLog.instance.flush();
 
       expect(auth.googleStarts, 1);
       expect(

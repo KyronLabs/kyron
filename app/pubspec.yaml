@@ -69,6 +69,8 @@ dependencies:
   # firebase_core shipping a Windows implementation the app never calls.
   firebase_core: ^4.14.0
   firebase_messaging: ^16.6.0
+  google_sign_in: ^7.2.0
+  crypto: ^3.0.7
 
 dev_dependencies:
   flutter_test:
