@@ -93,14 +93,24 @@ section for that version, so what is written here is what people read.
 
   Both workflows now build one `--target-platform` at a time, which produces
   the same four APKs at the same sizes, all carrying one version number.
-  Keeping the sizes took a second fix: `--target-platform` restricts Flutter's
-  own `libapp.so` and `libflutter.so` and nothing else, and with splitting off
-  the Flutter Gradle Plugin fills the build type's `abiFilters` with every
-  architecture, so the first arm64 APK built this way came out 6.6 MB heavier
-  carrying `libtensorflowlite_c.so` for x86_64. The filter is set on the build
-  type now, which is where the plugin sets its own and what a build type's
-  value overrides -- setting it on `defaultConfig` reported the right thing at
-  the end of configuration and changed nothing about the APK.
+  Keeping the sizes took a second fix, and two attempts. `--target-platform`
+  restricts Flutter's own `libapp.so` and `libflutter.so` and nothing else, so
+  every plugin's `.so` arrived for all three architectures: an arm64 APK
+  carrying `libtensorflowlite_c.so` for x86_64. `ndk.abiFilters` is the
+  obvious answer and is the wrong one to reach for, because the Flutter Gradle
+  Plugin writes that field itself and where it writes it moved between
+  versions. On `defaultConfig` it reported the right value at the end of
+  configuration and changed nothing. On the build type it worked on Flutter
+  3.35.5 and did nothing on 3.47.4 -- which is what CI resolves from the
+  stable channel, so build 79 shipped four APKs 7 to 12 MB heavier than they
+  should have been. Flutter is not pinned by this repository; the Android
+  Gradle Plugin is, at 8.11.1, so the filtering is stated as a packaging
+  exclusion in its terms instead, which no Flutter version touches and which
+  therefore behaves the same locally and in CI.
+
+  `check-apks.sh` reads the architectures back out of every APK and fails when
+  a file does not carry what its name says. Against build 79's artifacts it
+  refuses them by name.
   Undoing the rewrite afterwards is not possible -- the Android Gradle Plugin
   has finalised the property by then, and says so -- so
   `app/android/app/build.gradle.kts` refuses `--split-per-abi` outright with

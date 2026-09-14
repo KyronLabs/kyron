@@ -20,6 +20,11 @@
 #                them, so trying a second file after the first one failed is
 #                refused as a downgrade -- in the same six words.
 #
+# And one that is not an install failure but ships megabytes of dead code: a
+# file named for one architecture carrying the libraries of three. Build 79
+# did, because the ABI filtering moved when the Flutter version moved. The
+# name of a file is a claim about its contents, and it is checked like one.
+#
 # Four development builds shipped with the third of those before anything
 # looked. So both workflows call this before they upload anything, and it is
 # the same script for both, because a check that exists on development builds
@@ -184,6 +189,29 @@ for apk in "${apks[@]}"; do
     printf '%-46s %-4s %s\n' '' '' "$digest"
   done <<<"$certificates"
 
+  # What the name claims about the architecture, against what is in it.
+  # `--target-platform` restricts only Flutter's own libraries; every
+  # plugin's .so comes in for all three unless something filters them, and
+  # what does that has moved between Flutter versions. So it is read back
+  # out rather than assumed.
+  abis=$(unzip -Z1 "$apk" 'lib/*' 2>/dev/null | cut -d/ -f2 | sort -u | tr '\n' ' ')
+  abis=${abis% }
+  case "$name" in
+    *-arm64-v8a.apk)   want="arm64-v8a" ;;
+    *-armeabi-v7a.apk) want="armeabi-v7a" ;;
+    *-x86_64.apk)      want="x86_64" ;;
+    *-x86.apk)         want="x86" ;;
+    *universal*)       want="arm64-v8a armeabi-v7a x86_64" ;;
+    *)                 want= ;;
+  esac
+  if [ -n "$want" ] && [ "$abis" != "$want" ]; then
+    echo "$name does not carry the architectures its name claims."
+    echo "  named for  $want"
+    echo "  carries    ${abis:-nothing}"
+    echo "See the packaging block in app/android/app/build.gradle.kts."
+    exit 1
+  fi
+
   # A release APK for one architecture is 30-45 MB here; the debug one this
   # replaced was 114 MB. Anything past 70 MB per split is either debug again
   # or something very large has been added without anyone noticing.
@@ -196,7 +224,7 @@ for apk in "${apks[@]}"; do
     echo "$name is $((size / 1024 / 1024)) MB, over its $((limit / 1024 / 1024)) MB limit."
     exit 1
   fi
-  printf '%-46s %5s MB  ok\n' "$name" "$((size / 1024 / 1024))"
+  printf '%-46s %5s MB  %s\n' "$name" "$((size / 1024 / 1024))" "$abis"
 done
 
 echo
