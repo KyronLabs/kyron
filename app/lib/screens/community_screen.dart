@@ -274,7 +274,7 @@ class _Header extends StatelessWidget {
                         Text(
                           community.name,
                           style: const TextStyle(
-                            fontSize: 22,
+                            fontSize: TypographyTokens.fontSize6,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -282,7 +282,7 @@ class _Header extends StatelessWidget {
                         Text(
                           'c/${community.slug}',
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: TypographyTokens.fontSize2,
                             color: scheme.onSurface.withValues(alpha: 0.55),
                           ),
                         ),
@@ -312,7 +312,7 @@ class _Header extends StatelessWidget {
                 Text(
                   description,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: TypographyTokens.fontSize2,
                     height: 1.4,
                     color: scheme.onSurface.withValues(alpha: 0.8),
                   ),
@@ -455,7 +455,7 @@ class _Stat extends StatelessWidget {
         const SizedBox(width: SpacingTokens.space4),
         Text(
           '${formatCount(value)} $noun${value == 1 ? '' : 's'}',
-          style: TextStyle(fontSize: 13, color: muted),
+          style: TextStyle(fontSize: TypographyTokens.fontSize2, color: muted),
         ),
       ],
     );

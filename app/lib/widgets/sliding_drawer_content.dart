@@ -103,7 +103,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              fontSize: 17,
+              fontSize: TypographyTokens.fontSize4,
               fontWeight: FontWeight.w600,
               color: scheme.onSurface,
             ),
@@ -114,7 +114,7 @@ class SlidingDrawerContent extends ConsumerWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: TypographyTokens.fontSize2,
                 color: scheme.onSurface.withValues(alpha: 0.6),
               ),
             ),
@@ -132,7 +132,7 @@ class SlidingDrawerContent extends ConsumerWidget {
               Text(
                 '${formatCount(user.kyronPoints)} KP',
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: TypographyTokens.fontSize2,
                   fontWeight: FontWeight.w600,
                   color: scheme.secondary,
                 ),
@@ -162,7 +162,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                     Text(
                       _truncateDID(user.did!),
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: TypographyTokens.fontSize1,
                         color: scheme.primary,
                         fontWeight: FontWeight.w500,
                       ),
@@ -186,7 +186,7 @@ class SlidingDrawerContent extends ConsumerWidget {
         Text(
           formatCount(value),
           style: TextStyle(
-            fontSize: 15,
+            fontSize: TypographyTokens.fontSize3,
             fontWeight: FontWeight.w700,
             color: scheme.onSurface,
           ),
@@ -195,7 +195,7 @@ class SlidingDrawerContent extends ConsumerWidget {
         Text(
           label,
           style: TextStyle(
-            fontSize: 14,
+            fontSize: TypographyTokens.fontSize2,
             color: scheme.onSurface.withValues(alpha: 0.7),
           ),
         ),
@@ -267,7 +267,7 @@ class SlidingDrawerContent extends ConsumerWidget {
           Text(
             'Could not load your profile',
             style: TextStyle(
-              fontSize: 15,
+              fontSize: TypographyTokens.fontSize3,
               fontWeight: FontWeight.w600,
               color: scheme.error,
             ),
@@ -276,7 +276,7 @@ class SlidingDrawerContent extends ConsumerWidget {
           Text(
             describeApiError(error, sessionIsLive: true),
             style: TextStyle(
-              fontSize: 12,
+              fontSize: TypographyTokens.fontSize1,
               color: scheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
@@ -384,7 +384,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                   child: Text(
                     label,
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: TypographyTokens.fontSize3,
                       fontWeight: FontWeight.w500,
                       color: scheme.onSurface,
                     ),
@@ -403,7 +403,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                     child: Text(
                       badge,
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: TypographyTokens.fontSize1,
                         color: scheme.onSecondary,
                         fontWeight: FontWeight.w600,
                       ),
@@ -439,7 +439,7 @@ class SlidingDrawerContent extends ConsumerWidget {
               Text('•',
                   style: TextStyle(
                     color: scheme.onSurface.withValues(alpha: 0.3),
-                    fontSize: 10,
+                    fontSize: TypographyTokens.fontSize0,
                   )),
               const SizedBox(width: SpacingTokens.space16),
               _textLink(context, 'Privacy',
@@ -472,7 +472,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                 child: Text(
                   version == null ? 'Kyron' : 'Kyron $version',
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: TypographyTokens.fontSize0,
                     color: scheme.onSurface.withValues(alpha: 0.4),
                     fontWeight: FontWeight.w500,
                   ),
@@ -493,7 +493,7 @@ class SlidingDrawerContent extends ConsumerWidget {
       child: Text(
         label,
         style: TextStyle(
-          fontSize: 11,
+          fontSize: TypographyTokens.fontSize1,
           color: scheme.primary,
           fontWeight: FontWeight.w500,
         ),
@@ -532,7 +532,7 @@ class SlidingDrawerContent extends ConsumerWidget {
               Text(
                 label,
                 style: TextStyle(
-                  fontSize: 11,
+                  fontSize: TypographyTokens.fontSize1,
                   color: scheme.primary,
                   fontWeight: FontWeight.w500,
                 ),
@@ -585,7 +585,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             Text(
               'Decentralized ID',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: TypographyTokens.fontSize5,
                 fontWeight: FontWeight.bold,
                 color: scheme.onSurface,
               ),
@@ -604,7 +604,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                 did,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: TypographyTokens.fontSize2,
                   fontFamily: 'monospace',
                   color: scheme.onSurface,
                   fontWeight: FontWeight.w500,
