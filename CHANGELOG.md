@@ -14,6 +14,52 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **The home feed carries posts from the communities you are in.** It filtered
+  every community post out, so joining one meant remembering to go and look at
+  it. Posts from communities you are *not* in are still left out -- pushing
+  them at everybody is what makes people stop posting in them.
+
+  A post from a community says so: the community's picture with the author's
+  avatar stacked in front of it, and its name above the author's, tappable
+  through to the community. Without that, a post from a place you joined
+  arriving in the home feed reads as somebody posting to everybody.
+
+- **A community is a squircle now, everywhere.** It was drawn three different
+  ways -- a rounded square in the list, a circle on its own page, nothing at
+  all in the feed -- so the same place looked like a different kind of thing
+  depending on which screen you met it on. One `CommunityAvatar`, one shape.
+
+  The shape is `ContinuousRectangleBorder`, which is a superellipse. A
+  hand-rolled one was written first and measured against it: sampling how far
+  each outline reaches along the diagonal, the two agree to within 0.4% at
+  every radius, so there was nothing to gain from carrying a second
+  implementation of the same curve. What is kept is the radius rule, which is
+  the part that was wrong -- `ContinuousRectangleBorder` rounds visibly less
+  than a `BorderRadius` of the same value, and passing the tokens straight
+  through is what made a "squircle" come out looking like a rounded rectangle
+  with the corners shaved.
+
+- **The community page has no top bar.** The banner is the top of the page
+  now, filling the status bar rather than starting below a bar that carried
+  the community's name a second time. The picture is stacked on the banner's
+  bottom edge instead of sitting in a row underneath it, back and Manage
+  float over the banner, and a community with no banner gets a gradient of
+  its own rather than nothing -- without it the picture had nothing to hang
+  off and the page jumped by eighty pixels between one community and the next.
+
+- **You can tag somebody in a post.** The composer's tag button inserted a
+  bare `@` and left the writer to remember a handle exactly, character for
+  character -- and a handle that does not match an account is not a tag, it is
+  grey text. It now opens a sheet that searches real accounts and writes the
+  handle in, replacing a half-typed `@ad` rather than appending to it. Only
+  accounts that have a handle are offered, because a mention is read back by
+  resolving one. The community composer has the same button, which it did not
+  have at all.
+
+- **The community composer's box is four lines, not the whole screen.**
+  `expands: true` inside an `Expanded` made the field the entire page, so the
+  tools and the counter sat at the bottom edge a long way from the words.
+
 - **A like turns red the moment it is pressed.** On a post's own page the
   animation played and then the heart sat grey for a second or two, until the
   server came back and the state was replaced wholesale -- so the one part of

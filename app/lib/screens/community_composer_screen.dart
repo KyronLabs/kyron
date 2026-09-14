@@ -12,7 +12,9 @@ import '../providers/communities_provider.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../utils/api_error_message.dart';
 import '../utils/media_basket.dart';
+import '../utils/mention_token.dart';
 import '../widgets/media_tray.dart';
+import '../widgets/mention_picker_sheet.dart';
 import '../widgets/toast.dart';
 
 /// Writes a post into one community.
@@ -76,6 +78,24 @@ class _CommunityComposerScreenState
     if (message != null && mounted) Toast.show(context, message);
   }
 
+  /// Finds somebody and writes their handle in, replacing the mention being
+  /// typed if the caret is in one.
+  Future<void> _tagSomeone() async {
+    final value = _box.value;
+    final caret =
+        value.selection.isValid ? value.selection.end : value.text.length;
+    final typing = mentionAt(value.text, caret);
+
+    final handle = await MentionPickerSheet.show(
+      context,
+      initialQuery: typing?.query ?? '',
+    );
+    if (handle == null || !mounted) return;
+
+    _box.value = insertMention(_box.value, handle);
+    _focus.requestFocus();
+  }
+
   Future<void> _post() async {
     if (!_canPost) return;
     setState(() => _posting = true);
@@ -128,15 +148,19 @@ class _CommunityComposerScreenState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Grows with what is written rather than filling the screen.
+            // `expands: true` inside an Expanded made the box the whole page,
+            // so the tools and the counter sat at the bottom edge a long way
+            // from the words, and three lines of text looked lost in it.
             Expanded(
-              child: Padding(
+              child: SingleChildScrollView(
                 padding: const EdgeInsets.all(SpacingTokens.space16),
                 child: TextField(
                   controller: _box,
                   focusNode: _focus,
                   maxLines: null,
-                  expands: true,
-                  textAlignVertical: TextAlignVertical.top,
+                  minLines: 4,
+                  keyboardType: TextInputType.multiline,
                   textCapitalization: TextCapitalization.sentences,
                   style: const TextStyle(fontSize: 16, height: 1.4),
                   decoration: InputDecoration(
@@ -179,6 +203,11 @@ class _CommunityComposerScreenState
                     onPressed:
                         _media.hasRoom ? () => _attach(video: true) : null,
                     icon: const Icon(Iconsax.video_copy, size: 20),
+                  ),
+                  IconButton(
+                    tooltip: 'Tag someone',
+                    onPressed: _tagSomeone,
+                    icon: const Icon(Iconsax.tag_user_copy, size: 20),
                   ),
                 ],
               ),

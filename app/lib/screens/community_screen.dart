@@ -9,9 +9,11 @@ import '../providers/communities_provider.dart';
 import '../providers/feed_provider.dart';
 import '../utils/format_count.dart';
 import '../widgets/action_button.dart';
+import '../widgets/community_avatar.dart';
 import '../widgets/hairline.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/post_list_view.dart';
+import '../widgets/squircle.dart';
 import '../widgets/toast.dart';
 import 'community_composer_screen.dart';
 import 'community_manage_screen.dart';
@@ -29,32 +31,10 @@ class CommunityScreen extends ConsumerWidget {
     final community = state.community;
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Iconsax.arrow_left_copy),
-          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(community?.name ?? 'Community'),
-        actions: [
-          // Only for somebody who can act on it. A menu whose every entry
-          // refuses is worse than no menu.
-          if (community != null && (community.role?.canModerate ?? false))
-            IconButton(
-              tooltip: 'Manage',
-              icon: const Icon(Iconsax.setting_2_copy, size: 20),
-              onPressed: () async {
-                await Navigator.push<Community>(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => CommunityManageScreen(community: community),
-                  ),
-                );
-                notifier.refresh();
-              },
-            ),
-        ],
-      ),
+      // No app bar. The banner is the top of this page: a bar above it left a
+      // strip of surface colour between the status bar and the picture, and
+      // the community's name in two places at once.
+      extendBodyBehindAppBar: true,
       // Only for members. A button that answers "join first" is a button that
       // should not have been there.
       floatingActionButton: community == null || !community.canPost
@@ -64,59 +44,109 @@ class CommunityScreen extends ConsumerWidget {
               tooltip: 'Post in ${community.name}',
               child: const Icon(Iconsax.edit_2),
             ),
-      body: SafeArea(
-        child: state.loading
-            ? const Center(child: CircularProgressIndicator())
-            : community == null
-                ? EmptyState.failed(
-                    title: 'Could not open this community',
-                    detail: state.error,
-                    onAction: notifier.refresh,
-                  ).scrollable
-                // The header scrolls with the posts rather than sitting above
-                // them. As a Column with the list in an Expanded it was
-                // pinned, so the posts slid up behind the banner and stopped
-                // -- the banner held a third of the screen no matter how far
-                // down the community you had read. PostListView already takes
-                // slivers to put above its posts, which is how the profile
-                // page does the same thing.
-                : PostListView(
-                    source: PostListSource.community(community.slug),
-                    errorTitle: 'Could not load ${community.name}',
-                    emptyTitle: 'Nothing posted here yet',
-                    emptyDetail: community.joined
-                        ? 'Be the first to say something.'
-                        : 'Join to post in ${community.name}.',
-                    emptyArt: EmptyArt.communities,
-                    padding: const EdgeInsets.only(
-                      bottom: SpacingTokens.space40,
-                    ),
-                    headerSlivers: [
-                      SliverToBoxAdapter(
-                        child: Column(
-                          children: [
-                            _Header(
-                              community: community,
-                              busy: state.busy,
-                              onToggle: () async {
-                                final error = await notifier.toggleMembership();
-                                if (!context.mounted) return;
-                                if (error != null) {
-                                  Toast.show(context, error);
-                                } else {
-                                  // Both tabs of the Communities screen are
-                                  // now out of date about this one.
-                                  ref.invalidate(myCommunitiesProvider);
-                                  ref.invalidate(discoverCommunitiesProvider);
-                                }
-                              },
-                            ),
-                            const Hairline(),
-                          ],
-                        ),
+      body: Stack(
+        children: [
+          if (state.loading)
+            const Center(child: CircularProgressIndicator())
+          else if (community == null)
+            SafeArea(
+              child: EmptyState.failed(
+                title: 'Could not open this community',
+                detail: state.error,
+                onAction: notifier.refresh,
+              ).scrollable,
+            )
+          else
+            // The header scrolls with the posts rather than sitting above
+            // them. As a Column with the list in an Expanded it was pinned,
+            // so the posts slid up behind the banner and stopped -- the
+            // banner held a third of the screen no matter how far down the
+            // community you had read. PostListView already takes slivers to
+            // put above its posts, which is how the profile page does the
+            // same thing.
+            PostListView(
+              source: PostListSource.community(community.slug),
+              errorTitle: 'Could not load ${community.name}',
+              emptyTitle: 'Nothing posted here yet',
+              emptyDetail: community.joined
+                  ? 'Be the first to say something.'
+                  : 'Join to post in ${community.name}.',
+              emptyArt: EmptyArt.communities,
+              padding: const EdgeInsets.only(bottom: SpacingTokens.space40),
+              headerSlivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      _Header(
+                        community: community,
+                        busy: state.busy,
+                        onToggle: () async {
+                          final error = await notifier.toggleMembership();
+                          if (!context.mounted) return;
+                          if (error != null) {
+                            Toast.show(context, error);
+                          } else {
+                            // Both tabs of the Communities screen are now out
+                            // of date about this one.
+                            ref.invalidate(myCommunitiesProvider);
+                            ref.invalidate(discoverCommunitiesProvider);
+                          }
+                        },
                       ),
+                      const Hairline(),
                     ],
                   ),
+                ),
+              ],
+            ),
+
+          // Over the banner rather than in a bar above it. Pinned, because a
+          // back button that scrolls away leaves a page with no way out of it
+          // on a phone with no back gesture.
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: SpacingTokens.space8,
+                  vertical: SpacingTokens.space4,
+                ),
+                child: Row(
+                  children: [
+                    _GlassButton(
+                      icon: Iconsax.arrow_left_copy,
+                      tooltip:
+                          MaterialLocalizations.of(context).backButtonTooltip,
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    const Spacer(),
+                    // Only for somebody who can act on it. A menu whose every
+                    // entry refuses is worse than no menu.
+                    if (community != null &&
+                        (community.role?.canModerate ?? false))
+                      _GlassButton(
+                        icon: Iconsax.setting_2_copy,
+                        tooltip: 'Manage',
+                        onPressed: () async {
+                          await Navigator.push<Community>(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  CommunityManageScreen(community: community),
+                            ),
+                          );
+                          notifier.refresh();
+                        },
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -152,46 +182,70 @@ class _Header extends StatelessWidget {
     required this.onToggle,
   });
 
+  /// How far the picture hangs below the banner.
+  static const double _overhang = 28;
+
+  /// The picture itself. Large enough to be the thing you look at first,
+  /// which is what a community's identity should be on its own page.
+  static const double _avatar = 80;
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final description = community.description?.trim();
-
     final banner = community.bannerUrl?.trim();
-    final avatar = community.avatarUrl?.trim();
+
+    // Under the status bar: this is the top of the screen now, so the banner
+    // has to fill the inset rather than start below it.
+    final topInset = MediaQuery.paddingOf(context).top;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (banner != null && banner.isNotEmpty)
-          AspectRatio(
-            // Wide and shallow: a banner is a strip behind the name, and a
-            // taller one pushes the posts off the first screen.
-            aspectRatio: 3 / 1,
-            child: Image.network(
-              banner,
-              fit: BoxFit.cover,
-              // Nothing rather than a broken-image glyph: a banner that will
-              // not load is not worth telling anybody about.
-              errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            _Banner(url: banner, topInset: topInset),
+            // Stacked on the banner, hanging over its bottom edge. Side by
+            // side under it, the two pictures read as two unrelated things.
+            Positioned(
+              left: SpacingTokens.space16,
+              bottom: -_overhang,
+              child: Container(
+                padding: const EdgeInsets.all(3),
+                decoration: ShapeDecoration(
+                  color: scheme.surface,
+                  // The ring is the page's own colour in the same shape, so
+                  // the picture reads as lifted off the banner rather than
+                  // punched through it.
+                  shape: SquircleShape.borderFor(_avatar + 6),
+                ),
+                child: CommunityAvatar(
+                  avatarUrl: community.avatarUrl,
+                  initial: community.name.trim().isEmpty
+                      ? '#'
+                      : community.name.trim()[0].toUpperCase(),
+                  size: _avatar,
+                ),
+              ),
             ),
-          ),
+          ],
+        ),
+        // Clear of the overhang.
+        const SizedBox(height: _overhang + SpacingTokens.space8),
         Padding(
-          padding: const EdgeInsets.all(SpacingTokens.space16),
+          padding: const EdgeInsets.fromLTRB(
+            SpacingTokens.space16,
+            0,
+            SpacingTokens.space16,
+            SpacingTokens.space16,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (avatar != null && avatar.isNotEmpty) ...[
-                    CircleAvatar(
-                      radius: 24,
-                      backgroundColor: scheme.primary.withValues(alpha: 0.15),
-                      foregroundImage: NetworkImage(avatar),
-                    ),
-                    const SizedBox(width: SpacingTokens.space12),
-                  ],
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -199,7 +253,7 @@ class _Header extends StatelessWidget {
                         Text(
                           community.name,
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 22,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -263,6 +317,93 @@ class _Header extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// The banner, filling the top of the screen including the status bar.
+///
+/// A community with no banner still gets the same block of height: without it
+/// the picture has nothing to hang off, and the page jumps by eighty pixels
+/// between one community and the next.
+class _Banner extends StatelessWidget {
+  final String? url;
+  final double topInset;
+
+  const _Banner({required this.url, required this.topInset});
+
+  /// Wide and shallow: a banner is a strip behind the name, and a taller one
+  /// pushes the posts off the first screen.
+  static const double _ratio = 3;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final width = MediaQuery.sizeOf(context).width;
+    final height = width / _ratio + topInset;
+
+    return SizedBox(
+      width: double.infinity,
+      height: height,
+      child: url == null || url!.isEmpty
+          ? DecoratedBox(
+              // The community's own colour rather than a grey block, so a
+              // community with no banner still looks deliberate.
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    scheme.primary.withValues(alpha: 0.35),
+                    scheme.tertiary.withValues(alpha: 0.25),
+                  ],
+                ),
+              ),
+            )
+          : Image.network(
+              url!,
+              fit: BoxFit.cover,
+              // The gradient shows through rather than a broken-image glyph:
+              // a banner that will not load is not worth telling anybody
+              // about, but the space still has to be filled.
+              errorBuilder: (_, __, ___) => DecoratedBox(
+                decoration: BoxDecoration(
+                  color: scheme.primary.withValues(alpha: 0.2),
+                ),
+              ),
+            ),
+    );
+  }
+}
+
+/// A control that reads over a photograph.
+///
+/// Filled with a dark scrim rather than left bare: a plain white glyph
+/// disappears against a pale banner, and a dark one against a dark banner.
+class _GlassButton extends StatelessWidget {
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onPressed;
+
+  const _GlassButton({
+    required this.icon,
+    required this.tooltip,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltip,
+      child: Material(
+        color: Colors.black.withValues(alpha: 0.45),
+        shape: const CircleBorder(),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onPressed,
+          child: const SizedBox.square(dimension: 40),
+        ),
+      ),
     );
   }
 }

@@ -12,6 +12,7 @@ import '../models/post_media.dart';
 import '../providers/composer_provider.dart';
 import '../providers/current_user_provider.dart';
 import '../routes.dart';
+import '../utils/mention_token.dart';
 import '../widgets/create_post/char_counter.dart';
 import '../widgets/create_post/poll_editor.dart';
 import '../widgets/create_post/voice_recorder_sheet.dart';
@@ -20,6 +21,7 @@ import '../widgets/draft_sheet.dart';
 import '../widgets/gif_picker_sheet.dart';
 import '../widgets/interaction_settings_sheet.dart';
 import '../widgets/media_tray.dart';
+import '../widgets/mention_picker_sheet.dart';
 import '../widgets/quoted_post_card.dart';
 import '../widgets/toast.dart';
 import '../widgets/topic_picker.dart';
@@ -341,8 +343,8 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
           ),
           _tool(
             icon: Iconsax.tag_user_copy,
-            tooltip: 'Mention someone',
-            onTap: () => _insert('@'),
+            tooltip: 'Tag someone',
+            onTap: _tagSomeone,
           ),
         ],
       ),
@@ -402,6 +404,30 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
       selection: TextSelection.collapsed(offset: content.length),
     );
     await _countDrafts();
+  }
+
+  /// Finds somebody and writes their handle in.
+  ///
+  /// This button used to insert a bare '@' and leave the writer to remember a
+  /// handle exactly, character for character -- and a handle that does not
+  /// match an account is not a tag, it is grey text. If the caret is already
+  /// in a half-typed mention the picker opens on it and replaces it.
+  Future<void> _tagSomeone() async {
+    final value = _textController.value;
+    final caret =
+        value.selection.isValid ? value.selection.end : value.text.length;
+    final typing = mentionAt(value.text, caret);
+
+    final handle = await MentionPickerSheet.show(
+      context,
+      initialQuery: typing?.query ?? '',
+    );
+    if (handle == null || !mounted) return;
+
+    final updated = insertMention(_textController.value, handle);
+    _textController.value = updated;
+    ref.read(composerProvider.notifier).updateContent(updated.text);
+    _focusNode.requestFocus();
   }
 
   /// Puts [text] where the cursor is and leaves the cursor after it, so typing

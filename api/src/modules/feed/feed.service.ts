@@ -38,6 +38,23 @@ export interface FeedPost {
   quotedPost: QuotedPost | null;
   /** The poll attached to it, with the reader's own vote. Null for most. */
   poll: FeedPoll | null;
+  /**
+   * The community it was posted in, or null for a post to the wall.
+   *
+   * Sent on every post rather than only in a community's own page: the home
+   * feed now carries posts from the reader's communities, and a post that
+   * shows up there without saying where it came from reads as somebody
+   * posting to everybody.
+   */
+  community: FeedCommunity | null;
+}
+
+/** Just enough of a community to name it and open it from a post. */
+export interface FeedCommunity {
+  id: string;
+  slug: string;
+  name: string;
+  avatarUrl: string | null;
 }
 
 /**
@@ -424,14 +441,39 @@ export class FeedService {
     // Filtered in the query, not in the client. Hiding a blocked account's
     // posts after they have been sent is not blocking: the content still
     // arrived, and anything reading the response can see it.
-    // Community posts are left out. They were written into a named place with
-    // its own members, and pushing them at everybody is what makes people stop
-    // posting in them.
+    //
+    // Community posts belong here when the reader is in the community and
+    // nowhere else. They were written into a named place with its own
+    // members: pushing them at everybody is what makes people stop posting in
+    // them, and hiding them from the members too is what made joining a
+    // community mean remembering to go and look at it.
+    const mine = await this.joinedCommunityIds(viewerId);
     const where = await this.withFilters(
-      { deletedAt: null, communityId: null },
+      {
+        deletedAt: null,
+        OR: [
+          { communityId: null },
+          ...(mine.length > 0 ? [{ communityId: { in: mine } }] : []),
+        ],
+      },
       viewerId,
     );
     return this.rankedPage(where, viewerId, limit, cursor);
+  }
+
+  /**
+   * The communities this reader is in.
+   *
+   * Read per request rather than joined into the feed query: the membership
+   * list is short, and `WHERE communityId IN (...)` against a literal list
+   * plans far better than a correlated subquery over the candidate pool.
+   */
+  private async joinedCommunityIds(viewerId: string): Promise<string[]> {
+    const rows = await this.prisma.communityMember.findMany({
+      where: { userId: viewerId },
+      select: { communityId: true },
+    });
+    return rows.map((row) => row.communityId);
   }
 
   /**
@@ -2007,6 +2049,7 @@ export class FeedService {
       saves: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       reposts: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+      community: { select: this.communityShape },
       // One level. A quote of a quote of a quote would otherwise walk the
       // chain into an unbounded response.
       quotedPost: {
@@ -2051,6 +2094,13 @@ export class FeedService {
     profile: { select: { avatarUrl: true } },
   } as const;
 
+  private readonly communityShape = {
+    id: true,
+    slug: true,
+    name: true,
+    avatarUrl: true,
+  } as const;
+
   private readonly mediaShape = {
     id: true,
     kind: true,
@@ -2091,6 +2141,7 @@ export class FeedService {
             }
           : null,
       poll: toFeedPoll(row.poll),
+      community: row.community,
     };
   }
 
@@ -2159,6 +2210,7 @@ interface PostRow {
         deletedAt: Date | null;
       })
     | null;
+  community: FeedCommunity | null;
 }
 
 /**

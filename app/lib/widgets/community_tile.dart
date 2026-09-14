@@ -1,4 +1,5 @@
 // lib/widgets/community_tile.dart
+import 'community_avatar.dart';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -147,39 +148,21 @@ class _CommunityTileState extends ConsumerState<CommunityTile> {
 }
 
 /// A community's picture, or the first letter of its name.
+///
+/// The shared one, so a community is the same shape here, on its own page and
+/// on a post in the feed. This drew its own rounded square, which is why the
+/// list and the page looked like two different kinds of thing.
 class _Avatar extends StatelessWidget {
   final Community community;
 
   const _Avatar({required this.community});
 
   @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final url = community.avatarUrl;
-    final initial =
-        community.name.trim().isEmpty ? '#' : community.name.trim()[0];
-
-    return Container(
-      width: 48,
-      height: 48,
-      decoration: BoxDecoration(
-        color: scheme.primary.withValues(alpha: 0.15),
-        borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
-        image: url == null
-            ? null
-            : DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
-      ),
-      alignment: Alignment.center,
-      child: url != null
-          ? null
-          : Text(
-              initial.toUpperCase(),
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                color: scheme.primary,
-              ),
-            ),
-    );
-  }
+  Widget build(BuildContext context) => CommunityAvatar(
+        avatarUrl: community.avatarUrl,
+        initial: community.name.trim().isEmpty
+            ? '#'
+            : community.name.trim()[0].toUpperCase(),
+        size: 48,
+      );
 }
