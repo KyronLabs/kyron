@@ -328,7 +328,7 @@ class _ConversationRow extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: TypographyTokens.fontSize3,
                               fontWeight:
                                   unread ? FontWeight.w700 : FontWeight.w600,
                             ),
@@ -338,7 +338,7 @@ class _ConversationRow extends StatelessWidget {
                         Text(
                           age(conversation.lastMessageAt),
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: TypographyTokens.fontSize1,
                             color: unread
                                 ? scheme.primary
                                 : scheme.onSurface.withValues(alpha: 0.5),
@@ -360,7 +360,7 @@ class _ConversationRow extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 13,
+                              fontSize: TypographyTokens.fontSize2,
                               height: 1.3,
                               color: unread
                                   ? scheme.onSurface
@@ -388,7 +388,7 @@ class _ConversationRow extends StatelessWidget {
                                   ? '99+'
                                   : '${conversation.unread}',
                               style: TextStyle(
-                                fontSize: 11,
+                                fontSize: TypographyTokens.fontSize1,
                                 fontWeight: FontWeight.w700,
                                 color: scheme.onPrimary,
                               ),

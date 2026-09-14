@@ -197,14 +197,15 @@ class _TrendingRow extends StatelessWidget {
         '#${tag.tag}',
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+        style: const TextStyle(
+            fontWeight: FontWeight.w600, fontSize: TypographyTokens.fontSize3),
       ),
       subtitle: Text(
         // Two numbers, because they answer different questions: how big this
         // tag is, and why it is on this list at all.
         '${formatCount(tag.posts)} ${tag.posts == 1 ? 'post' : 'posts'}'
         '${tag.recent > 0 ? ' · ${formatCount(tag.recent)} this week' : ''}',
-        style: TextStyle(fontSize: 13, color: muted),
+        style: TextStyle(fontSize: TypographyTokens.fontSize2, color: muted),
       ),
       onTap: () =>
           Navigator.pushNamed(context, Routes.hashtag, arguments: tag.tag),
@@ -318,7 +319,7 @@ class _TopicCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
-                        fontSize: 15,
+                        fontSize: TypographyTokens.fontSize3,
                       ),
                     ),
                   ),
@@ -349,7 +350,7 @@ class _TopicCard extends StatelessWidget {
                     ? '1 person'
                     : '${formatCount(topic.people)} people',
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: TypographyTokens.fontSize2,
                   color: scheme.onSurface.withValues(alpha: 0.6),
                 ),
               ),

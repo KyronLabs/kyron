@@ -76,7 +76,7 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                     'Matching ignores case, and a word matches inside longer '
                     'ones -- so "spoiler" also catches "spoilers".',
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: TypographyTokens.fontSize2,
                       color: scheme.onSurface.withValues(alpha: .7),
                     ),
                   ),
@@ -111,7 +111,9 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                 ),
                 child: Text(
                   _error!,
-                  style: TextStyle(color: scheme.error, fontSize: 13),
+                  style: TextStyle(
+                      color: scheme.error,
+                      fontSize: TypographyTokens.fontSize2),
                 ),
               ),
             Expanded(

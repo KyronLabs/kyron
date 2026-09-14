@@ -105,7 +105,9 @@ class NotificationItem extends StatelessWidget {
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 15, color: scheme.onSurface),
+                    style: TextStyle(
+                        fontSize: TypographyTokens.fontSize3,
+                        color: scheme.onSurface),
                   ),
                   if (snippet != null && snippet.isNotEmpty) ...[
                     const SizedBox(height: SpacingTokens.space4),
@@ -114,7 +116,7 @@ class NotificationItem extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: TypographyTokens.fontSize2,
                         color: scheme.onSurface.withValues(alpha: 0.6),
                       ),
                     ),
@@ -126,7 +128,7 @@ class NotificationItem extends StatelessWidget {
             Text(
               notification.displayTimestamp,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: TypographyTokens.fontSize1,
                 color: scheme.onSurface.withValues(alpha: 0.5),
               ),
             ),

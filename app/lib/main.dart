@@ -17,6 +17,7 @@ import 'screens/root_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'config/supabase_config.dart';
 import 'utils/route_watch.dart';
 
@@ -108,14 +109,14 @@ Widget _describeBuildFailure(FlutterErrorDetails details) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.error_outline,
+              Icon(Iconsax.warning_2_copy,
                   size: 40, color: scheme?.error ?? const Color(0xFFE5484D)),
               const SizedBox(height: 12),
               Text(
                 'This screen could not be drawn.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: TypographyTokens.fontSize3,
                   fontWeight: FontWeight.w600,
                   color: scheme?.onSurface ?? const Color(0xFFE5EBF5),
                 ),
@@ -127,7 +128,7 @@ Widget _describeBuildFailure(FlutterErrorDetails details) {
                 maxLines: 6,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: TypographyTokens.fontSize1,
                   color: (scheme?.onSurface ?? const Color(0xFFE5EBF5))
                       .withValues(alpha: 0.7),
                 ),
@@ -136,7 +137,7 @@ Widget _describeBuildFailure(FlutterErrorDetails details) {
               Text(
                 'It is in About \u203a System log.',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: TypographyTokens.fontSize1,
                   color: (scheme?.onSurface ?? const Color(0xFFE5EBF5))
                       .withValues(alpha: 0.5),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class PasswordRequirements extends StatelessWidget {
   final String password;
@@ -26,14 +27,15 @@ class PasswordRequirements extends StatelessWidget {
     return Row(
       children: [
         Icon(
-          ok ? Icons.check_circle : Icons.radio_button_unchecked,
+          ok ? Iconsax.tick_circle : Iconsax.record_copy,
           size: 16,
           color: ok ? successColor : inactiveColor,
         ),
         const SizedBox(width: 8),
         Text(
           text,
-          style: TextStyle(fontSize: 14, color: textColor),
+          style:
+              TextStyle(fontSize: TypographyTokens.fontSize2, color: textColor),
         ),
       ],
     );

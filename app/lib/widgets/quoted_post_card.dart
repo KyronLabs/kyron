@@ -49,7 +49,7 @@ class QuotedPostCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 13,
+                      fontSize: TypographyTokens.fontSize2,
                     ),
                   ),
                 ),
@@ -61,7 +61,7 @@ class QuotedPostCard extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: TypographyTokens.fontSize1,
                         color: scheme.onSurface.withValues(alpha: 0.55),
                       ),
                     ),
@@ -71,7 +71,7 @@ class QuotedPostCard extends StatelessWidget {
                 Text(
                   '· ${age(post.createdAt)}',
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: TypographyTokens.fontSize1,
                     color: scheme.onSurface.withValues(alpha: 0.45),
                   ),
                 ),
@@ -81,7 +81,8 @@ class QuotedPostCard extends StatelessWidget {
               const SizedBox(height: SpacingTokens.space4),
               PostText(
                 content: post.content,
-                style: const TextStyle(fontSize: 14, height: 1.3),
+                style: const TextStyle(
+                    fontSize: TypographyTokens.fontSize2, height: 1.3),
                 maxLines: 6,
               ),
             ],

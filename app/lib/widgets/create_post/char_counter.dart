@@ -44,7 +44,7 @@ class CharCounter extends ConsumerWidget {
           Text(
             '${state.charCount}/${ComposerState.maxCharacters}',
             style: TextStyle(
-              fontSize: 11,
+              fontSize: TypographyTokens.fontSize1,
               fontWeight: over ? FontWeight.w700 : FontWeight.w400,
               color:
                   over ? scheme.error : scheme.onSurface.withValues(alpha: .6),

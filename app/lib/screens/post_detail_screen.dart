@@ -329,7 +329,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: TypographyTokens.fontSize1,
                         color: scheme.primary,
                       ),
                     ),
@@ -540,7 +540,7 @@ class _Post extends ConsumerWidget {
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 15,
+                          fontSize: TypographyTokens.fontSize3,
                         ),
                       ),
                       if (handle != null)
@@ -549,7 +549,7 @@ class _Post extends ConsumerWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: TypographyTokens.fontSize2,
                             color: scheme.onSurface.withValues(alpha: 0.55),
                           ),
                         ),
@@ -567,7 +567,8 @@ class _Post extends ConsumerWidget {
           if (post.content.trim().isNotEmpty)
             PostText(
               content: post.content,
-              style: const TextStyle(fontSize: 17, height: 1.4),
+              style: const TextStyle(
+                  fontSize: TypographyTokens.fontSize4, height: 1.4),
             ),
 
           // Everything a card shows, in the order a card shows it. This screen
@@ -599,7 +600,7 @@ class _Post extends ConsumerWidget {
           Text(
             _stamp(post.createdAt),
             style: TextStyle(
-              fontSize: 13,
+              fontSize: TypographyTokens.fontSize2,
               color: scheme.onSurface.withValues(alpha: 0.5),
             ),
           ),
@@ -700,7 +701,7 @@ class _Tally extends StatelessWidget {
     return RichText(
       text: TextSpan(
         style: TextStyle(
-          fontSize: 13,
+          fontSize: TypographyTokens.fontSize2,
           color: scheme.onSurface.withValues(alpha: 0.6),
         ),
         children: [
@@ -768,7 +769,7 @@ class _ThreadHeading extends StatelessWidget {
                 ? '1 comment'
                 : '${formatCount(count)} comments',
         style: TextStyle(
-          fontSize: 12,
+          fontSize: TypographyTokens.fontSize1,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.6,
           color: scheme.onSurface.withValues(alpha: 0.5),

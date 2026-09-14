@@ -78,7 +78,7 @@ class _PersonTileState extends ConsumerState<PersonTile> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      fontSize: 15,
+                      fontSize: TypographyTokens.fontSize3,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -88,7 +88,7 @@ class _PersonTileState extends ConsumerState<PersonTile> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: TypographyTokens.fontSize2,
                         color: scheme.onSurface.withValues(alpha: 0.6),
                       ),
                     ),
@@ -98,7 +98,8 @@ class _PersonTileState extends ConsumerState<PersonTile> {
                       bio,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 13, height: 1.3),
+                      style: const TextStyle(
+                          fontSize: TypographyTokens.fontSize2, height: 1.3),
                     ),
                   ],
                   const SizedBox(height: SpacingTokens.space4),
@@ -190,7 +191,8 @@ class _Stat extends StatelessWidget {
             text,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 12, color: muted),
+            style:
+                TextStyle(fontSize: TypographyTokens.fontSize1, color: muted),
           ),
         ),
       ],

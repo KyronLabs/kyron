@@ -43,7 +43,7 @@ class RepostSheet {
                 post.reposted
                     ? 'Remove it from your profile'
                     : 'Share this with your followers as it is',
-                style: const TextStyle(fontSize: 12),
+                style: const TextStyle(fontSize: TypographyTokens.fontSize1),
               ),
               onTap: () async {
                 Navigator.pop(sheetContext);
@@ -58,7 +58,7 @@ class RepostSheet {
               title: const Text('Quote'),
               subtitle: const Text(
                 'Add your own words above it',
-                style: TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: TypographyTokens.fontSize1),
               ),
               onTap: () {
                 Navigator.pop(sheetContext);

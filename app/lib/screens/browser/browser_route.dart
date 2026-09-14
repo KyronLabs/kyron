@@ -1,5 +1,6 @@
 // lib/screens/browser/browser_route.dart
 import 'package:flutter/material.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 import 'browser_engine.dart';
 import 'browser_session.dart';
@@ -74,8 +75,8 @@ class _BrowserRoute extends PageRouteBuilder<void> {
           opaque: false,
           barrierColor: Colors.black.withValues(alpha: 0.45),
           barrierDismissible: false,
-          transitionDuration: const Duration(milliseconds: 320),
-          reverseTransitionDuration: const Duration(milliseconds: 240),
+          transitionDuration: MotionTokens.normal,
+          reverseTransitionDuration: MotionTokens.normal,
           pageBuilder: (context, animation, secondary) => BrowserSheet(
             url: url,
             title: title,

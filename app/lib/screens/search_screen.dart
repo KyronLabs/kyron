@@ -61,7 +61,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             focusNode: _focus,
             textInputAction: TextInputAction.search,
             onChanged: notifier.query,
-            style: const TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: TypographyTokens.fontSize4),
             decoration: InputDecoration(
               hintText: state.mode == SearchMode.people
                   ? 'Search people'
@@ -249,7 +249,7 @@ class _Trailing extends StatelessWidget {
                     child: Text(
                       '$filterCount',
                       style: TextStyle(
-                        fontSize: 9,
+                        fontSize: TypographyTokens.fontSize0,
                         fontWeight: FontWeight.w700,
                         color: scheme.onPrimary,
                       ),
@@ -388,7 +388,7 @@ class _Pill extends StatelessWidget {
           child: Text(
             label,
             style: TextStyle(
-              fontSize: 13,
+              fontSize: TypographyTokens.fontSize2,
               fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
               color: selected ? scheme.primary : scheme.onSurface,
             ),

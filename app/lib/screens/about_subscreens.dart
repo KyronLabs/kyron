@@ -63,7 +63,7 @@ class ServiceStatusScreen extends ConsumerWidget {
               Text(
                 'TOKEN VERIFICATION',
                 style: TextStyle(
-                  fontSize: 11,
+                  fontSize: TypographyTokens.fontSize1,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 0.8,
                   color: scheme.onSurface.withValues(alpha: .5),
@@ -307,7 +307,7 @@ class _Entry extends StatelessWidget {
                 stamp,
                 style: TextStyle(
                   fontFamily: 'monospace',
-                  fontSize: 12,
+                  fontSize: TypographyTokens.fontSize1,
                   color: scheme.onSurface.withValues(alpha: .5),
                 ),
               ),
@@ -315,7 +315,7 @@ class _Entry extends StatelessWidget {
               Text(
                 entry.source,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: TypographyTokens.fontSize1,
                   fontWeight: FontWeight.w600,
                   color: color,
                 ),
@@ -323,7 +323,8 @@ class _Entry extends StatelessWidget {
             ],
           ),
           const SizedBox(height: SpacingTokens.space2),
-          SelectableText(entry.message, style: const TextStyle(fontSize: 13)),
+          SelectableText(entry.message,
+              style: const TextStyle(fontSize: TypographyTokens.fontSize2)),
         ],
       ),
     );

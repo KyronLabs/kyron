@@ -120,7 +120,7 @@ class ImagesField extends StatelessWidget {
         Text(
           hint,
           style: TextStyle(
-            fontSize: 12,
+            fontSize: TypographyTokens.fontSize1,
             color: scheme.onSurface.withValues(alpha: 0.6),
           ),
         ),

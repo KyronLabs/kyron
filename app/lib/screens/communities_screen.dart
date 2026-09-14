@@ -293,7 +293,7 @@ class _DiscoverTabState extends ConsumerState<_DiscoverTab> {
               suffixIcon: _search.text.isEmpty
                   ? null
                   : IconButton(
-                      icon: const Icon(Icons.close, size: 18),
+                      icon: const Icon(Iconsax.close_circle_copy, size: 18),
                       tooltip: 'Clear',
                       onPressed: () {
                         _search.clear();
@@ -445,7 +445,9 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
         children: [
           const Text(
             'Start a community',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+            style: TextStyle(
+                fontSize: TypographyTokens.fontSize5,
+                fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: SpacingTokens.space16),
           TextField(
@@ -465,7 +467,7 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
                 ? 'Its address is made from the name.'
                 : 'People will find it at c/$_slug',
             style: TextStyle(
-              fontSize: 12,
+              fontSize: TypographyTokens.fontSize1,
               color: scheme.onSurface.withValues(alpha: 0.6),
             ),
           ),

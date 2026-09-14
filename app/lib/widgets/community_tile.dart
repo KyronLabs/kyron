@@ -93,7 +93,7 @@ class _CommunityTileState extends ConsumerState<CommunityTile> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      fontSize: 15,
+                      fontSize: TypographyTokens.fontSize3,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -103,7 +103,7 @@ class _CommunityTileState extends ConsumerState<CommunityTile> {
                     '${_count(community.members, 'member')} · '
                     '${_count(community.posts, 'post')}',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: TypographyTokens.fontSize1,
                       color: scheme.onSurface.withValues(alpha: 0.55),
                     ),
                   ),
@@ -114,7 +114,7 @@ class _CommunityTileState extends ConsumerState<CommunityTile> {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: TypographyTokens.fontSize2,
                         height: 1.35,
                         color: scheme.onSurface.withValues(alpha: 0.75),
                       ),

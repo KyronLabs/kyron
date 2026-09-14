@@ -148,7 +148,7 @@ class _RailItemState extends State<_RailItem> {
               vertical: SpacingTokens.space2,
             ),
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 120),
+              duration: MotionTokens.micro,
               height: 46,
               padding: const EdgeInsets.symmetric(
                 horizontal: SpacingTokens.space12,
@@ -226,7 +226,7 @@ class _PostButtonState extends State<_PostButton> {
               vertical: SpacingTokens.space8,
             ),
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 120),
+              duration: MotionTokens.micro,
               height: 46,
               decoration: BoxDecoration(
                 color: _hovered ? ground.withValues(alpha: 0.85) : ground,

@@ -1,5 +1,6 @@
 // lib/widgets/action_button.dart
 import 'package:flutter/material.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 /// How much visual weight an [ActionButton] carries.
 enum ActionButtonKind {
@@ -142,7 +143,7 @@ class ActionButton extends StatelessWidget {
             )
           : const WidgetStatePropertyAll(BorderSide.none),
       elevation: const WidgetStatePropertyAll(0),
-      animationDuration: const Duration(milliseconds: 120),
+      animationDuration: MotionTokens.micro,
     );
 
     // A fixed-size spinner in place of the label, rather than shrinking the

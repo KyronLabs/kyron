@@ -248,7 +248,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
       if (animate) {
         _scroll.animateTo(
           end,
-          duration: const Duration(milliseconds: 220),
+          duration: MotionTokens.fast,
           curve: Curves.easeOut,
         );
       } else {
@@ -331,7 +331,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        fontSize: 16,
+                        fontSize: TypographyTokens.fontSize4,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -341,7 +341,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: TypographyTokens.fontSize1,
                           color: Theme.of(context)
                               .colorScheme
                               .onSurface
@@ -564,7 +564,7 @@ class _Bubble extends StatelessWidget {
                           Text(
                             message.body,
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: TypographyTokens.fontSize3,
                               height: 1.35,
                               color: message.failed
                                   ? scheme.onSurface
@@ -637,7 +637,9 @@ class _Status extends StatelessWidget {
         ),
         icon: const Icon(Iconsax.refresh, size: 13),
         label: const Text('Not sent. Tap to try again',
-            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600)),
+            style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                fontWeight: FontWeight.w600)),
       );
     }
 
@@ -648,7 +650,8 @@ class _Status extends StatelessWidget {
         children: [
           Text(
             message.sending ? 'Sending…' : age(message.createdAt),
-            style: TextStyle(fontSize: 11, color: muted),
+            style:
+                TextStyle(fontSize: TypographyTokens.fontSize1, color: muted),
           ),
           // Shown rather than assumed. A conversation is encrypted only when
           // both sides have published a key, and the reader is entitled to

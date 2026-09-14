@@ -196,7 +196,7 @@ class _Badge extends StatelessWidget {
         label,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 10,
+          fontSize: TypographyTokens.fontSize0,
           fontWeight: FontWeight.w700,
         ),
       ),

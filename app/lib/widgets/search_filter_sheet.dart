@@ -182,7 +182,7 @@ class _SheetState extends State<_Sheet> {
                 'Filters apply to posts. Setting one switches to the Posts '
                 'tab.',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: TypographyTokens.fontSize1,
                   color: scheme.onSurface.withValues(alpha: 0.55),
                 ),
               ),
@@ -234,7 +234,7 @@ class _Label extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 12,
+          fontSize: TypographyTokens.fontSize1,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.3,
           color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
@@ -288,7 +288,7 @@ class _DateField extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: TypographyTokens.fontSize2,
                   fontWeight: set ? FontWeight.w600 : FontWeight.w400,
                   color: set
                       ? scheme.onSurface
@@ -375,7 +375,7 @@ class _Choice extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: TypographyTokens.fontSize2,
                 fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
                 color: selected ? scheme.primary : scheme.onSurface,
               ),

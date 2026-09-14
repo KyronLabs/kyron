@@ -170,7 +170,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
         child: Text(
           title.toUpperCase(),
           style: TextStyle(
-            fontSize: 11,
+            fontSize: TypographyTokens.fontSize1,
             fontWeight: FontWeight.w700,
             letterSpacing: 0.8,
             color:
@@ -223,7 +223,7 @@ class _Wordmark extends StatelessWidget {
         Text(
           info == null ? '' : 'Version ${info!.display}',
           style: TextStyle(
-            fontSize: 13,
+            fontSize: TypographyTokens.fontSize2,
             color: scheme.onSurface.withValues(alpha: .6),
           ),
         ),

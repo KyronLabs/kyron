@@ -23,7 +23,7 @@ import 'playback_bar.dart';
 import 'toast.dart';
 
 /// How long the chrome takes to get out of the way.
-const Duration _chromeDuration = Duration(milliseconds: 220);
+const Duration _chromeDuration = MotionTokens.fast;
 
 /// Full-screen media, opened from a post.
 ///
@@ -423,7 +423,8 @@ class _TopBar extends StatelessWidget {
           if (total > 1)
             Text(
               '${index + 1} of $total',
-              style: const TextStyle(color: Colors.white, fontSize: 14),
+              style: const TextStyle(
+                  color: Colors.white, fontSize: TypographyTokens.fontSize2),
             ),
           const Spacer(),
           IconButton(
@@ -461,7 +462,8 @@ class _AltText extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: const TextStyle(color: Colors.white, fontSize: 14),
+        style: const TextStyle(
+            color: Colors.white, fontSize: TypographyTokens.fontSize2),
       ),
     );
   }
@@ -606,7 +608,7 @@ class _VideoControls extends StatelessWidget {
 
   static const _timeStyle = TextStyle(
     color: Colors.white70,
-    fontSize: 12,
+    fontSize: TypographyTokens.fontSize1,
     fontWeight: FontWeight.w600,
     fontFeatures: [FontFeature.tabularFigures()],
   );

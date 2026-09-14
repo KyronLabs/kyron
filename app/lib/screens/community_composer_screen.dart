@@ -123,7 +123,7 @@ class _CommunityComposerScreenState
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.close),
+          icon: const Icon(Iconsax.close_circle_copy),
           tooltip: 'Close',
           onPressed: () => Navigator.pop(context, false),
         ),

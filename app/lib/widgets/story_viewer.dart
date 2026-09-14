@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../providers/stories_provider.dart';
 
 class StoryViewer extends StatefulWidget {
@@ -83,7 +85,7 @@ class _StoryViewerState extends State<StoryViewer> {
                         _pageController.previousPage(
                           duration: _isReducedMotion
                               ? Duration.zero
-                              : const Duration(milliseconds: 150),
+                              : MotionTokens.fast,
                           curve: Curves.easeOut,
                         );
                       }
@@ -97,7 +99,7 @@ class _StoryViewerState extends State<StoryViewer> {
                         _pageController.nextPage(
                           duration: _isReducedMotion
                               ? Duration.zero
-                              : const Duration(milliseconds: 150),
+                              : MotionTokens.fast,
                           curve: Curves.easeOut,
                         );
                       }
@@ -120,7 +122,7 @@ class _StoryViewerState extends State<StoryViewer> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              story.isYourStory ? Icons.person : Icons.people,
+              story.isYourStory ? Iconsax.user_copy : Iconsax.people_copy,
               size: 80,
               color: Colors.white,
             ),
@@ -129,7 +131,7 @@ class _StoryViewerState extends State<StoryViewer> {
               story.isYourStory ? 'Your Story' : '@${story.handle}',
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 24,
+                fontSize: TypographyTokens.fontSize7,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -138,7 +140,7 @@ class _StoryViewerState extends State<StoryViewer> {
               _getTimeLeft(story),
               style: const TextStyle(
                 color: Colors.white70,
-                fontSize: 14,
+                fontSize: TypographyTokens.fontSize2,
               ),
             ),
           ],
@@ -154,7 +156,7 @@ class _StoryViewerState extends State<StoryViewer> {
           radius: 20,
           backgroundColor: Colors.white24,
           child: story.isYourStory
-              ? const Icon(Icons.person, color: Colors.white)
+              ? const Icon(Iconsax.user_copy, color: Colors.white)
               : Text(story.handle[0].toUpperCase()),
         ),
         const SizedBox(width: 12),
@@ -166,7 +168,7 @@ class _StoryViewerState extends State<StoryViewer> {
                 story.isYourStory ? 'Your Story' : '@${story.handle}',
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 16,
+                  fontSize: TypographyTokens.fontSize4,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -174,14 +176,14 @@ class _StoryViewerState extends State<StoryViewer> {
                 _getTimeLeft(story),
                 style: const TextStyle(
                   color: Colors.white70,
-                  fontSize: 12,
+                  fontSize: TypographyTokens.fontSize1,
                 ),
               ),
             ],
           ),
         ),
         IconButton(
-          icon: const Icon(Icons.share, color: Colors.white),
+          icon: const Icon(Iconsax.export_1_copy, color: Colors.white),
           onPressed: () {
             // Copy story link
             debugPrint('Copy story link');

@@ -39,7 +39,7 @@ class Toast {
   static const Duration stay = Duration(milliseconds: 2600);
 
   /// How long it takes to arrive and to leave.
-  static const Duration motion = Duration(milliseconds: 220);
+  static const Duration motion = MotionTokens.fast;
 
   static OverlayEntry? _entry;
   static Timer? _timer;
@@ -178,7 +178,7 @@ class _ToastState extends State<_Toast> with SingleTickerProviderStateMixin {
                 child: Text(
                   widget.message,
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: TypographyTokens.fontSize3,
                     fontWeight: FontWeight.w600,
                     height: 1.25,
                     color: scheme.surface,

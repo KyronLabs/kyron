@@ -25,7 +25,7 @@ class DraftSheet {
               title: const Text('Save draft'),
               subtitle: const Text(
                 'Keep the text and come back to it',
-                style: TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: TypographyTokens.fontSize1),
               ),
               onTap: () => Navigator.pop(sheetContext, DraftChoice.save),
             ),
@@ -43,7 +43,7 @@ class DraftSheet {
               ),
               subtitle: const Text(
                 'Throw away what you have written',
-                style: TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: TypographyTokens.fontSize1),
               ),
               onTap: () => Navigator.pop(sheetContext, DraftChoice.discard),
             ),

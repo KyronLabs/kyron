@@ -116,7 +116,7 @@ class HelpScreen extends StatelessWidget {
         child: Text(
           title.toUpperCase(),
           style: TextStyle(
-            fontSize: 11,
+            fontSize: TypographyTokens.fontSize1,
             fontWeight: FontWeight.w700,
             letterSpacing: 0.8,
             color:

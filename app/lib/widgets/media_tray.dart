@@ -112,7 +112,9 @@ class _Tile extends StatelessWidget {
                       SizedBox(height: 2),
                       Text(
                         'Retry',
-                        style: TextStyle(color: Colors.white, fontSize: 11),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: TypographyTokens.fontSize1),
                       ),
                     ],
                   ),
@@ -147,7 +149,7 @@ class _Tile extends StatelessWidget {
                         : 'ALT',
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 10,
+                      fontSize: TypographyTokens.fontSize0,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -215,7 +217,7 @@ class _Tile extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(4),
                 child: Icon(
-                  Icons.play_arrow_rounded,
+                  Iconsax.play,
                   size: 18,
                   color: Colors.white,
                 ),
@@ -272,7 +274,7 @@ Future<String?> askForAltText(BuildContext context, String? current) {
           const Text(
             'Read out by a screen reader, and shown when the image cannot '
             'load.',
-            style: TextStyle(fontSize: 13),
+            style: TextStyle(fontSize: TypographyTokens.fontSize2),
           ),
           const SizedBox(height: SpacingTokens.space12),
           TextField(

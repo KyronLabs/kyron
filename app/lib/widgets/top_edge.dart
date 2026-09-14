@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/notifications_provider.dart';
 import 'account_avatar.dart';
 import 'app_logo.dart';
@@ -133,7 +134,7 @@ class _NotificationButton extends ConsumerWidget {
                 child: Text(
                   unread > 99 ? '99+' : '$unread',
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: TypographyTokens.fontSize0,
                     height: 1,
                     fontWeight: FontWeight.w700,
                     color: scheme.onError,

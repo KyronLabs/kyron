@@ -1,6 +1,7 @@
 // lib/widgets/action_sheet.dart
 import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'hairline.dart';
 
@@ -75,7 +76,7 @@ class ActionSheet {
                           child: Text(
                             title,
                             style: TextStyle(
-                              fontSize: 13,
+                              fontSize: TypographyTokens.fontSize2,
                               fontWeight: FontWeight.w700,
                               letterSpacing: 0.4,
                               color: scheme.onSurface.withValues(alpha: 0.55),
@@ -107,7 +108,7 @@ class ActionSheet {
                           title: Text(
                             action.label,
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: TypographyTokens.fontSize3,
                               fontWeight: FontWeight.w500,
                               color: action.destructive ? scheme.error : null,
                             ),
@@ -117,14 +118,14 @@ class ActionSheet {
                               : Text(
                                   action.detail!,
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: TypographyTokens.fontSize1,
                                     color:
                                         scheme.onSurface.withValues(alpha: 0.6),
                                   ),
                                 ),
                           trailing: action.selected
                               ? Icon(
-                                  Icons.check_rounded,
+                                  Iconsax.tick_circle_copy,
                                   size: 20,
                                   color: scheme.primary,
                                 )

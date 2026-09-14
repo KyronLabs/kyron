@@ -377,10 +377,12 @@ class _Item extends StatelessWidget {
 
     return ListTile(
       leading: Icon(icon, size: 20, color: color),
-      title: Text(label, style: TextStyle(color: color, fontSize: 15)),
+      title: Text(label,
+          style: TextStyle(color: color, fontSize: TypographyTokens.fontSize3)),
       subtitle: subtitle == null
           ? null
-          : Text(subtitle!, style: const TextStyle(fontSize: 12)),
+          : Text(subtitle!,
+              style: const TextStyle(fontSize: TypographyTokens.fontSize1)),
       dense: true,
       onTap: onTap,
     );

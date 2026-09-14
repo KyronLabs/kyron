@@ -81,7 +81,7 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                 Text(
                   'Poll',
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: TypographyTokens.fontSize2,
                     fontWeight: FontWeight.w700,
                     color: scheme.primary,
                   ),
@@ -123,7 +123,8 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                           counterText: '',
                           isDense: true,
                         ),
-                        style: const TextStyle(fontSize: 14),
+                        style: const TextStyle(
+                            fontSize: TypographyTokens.fontSize2),
                       ),
                     ),
                     if (poll.canRemoveOption) ...[
@@ -153,7 +154,8 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                   ),
                   minimumSize: const Size(0, 32),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textStyle: const TextStyle(fontSize: 13),
+                  textStyle:
+                      const TextStyle(fontSize: TypographyTokens.fontSize2),
                 ),
               ),
 
@@ -174,7 +176,7 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                 Text(
                   'Open for',
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: TypographyTokens.fontSize2,
                     color: scheme.onSurface.withValues(alpha: 0.6),
                   ),
                 ),
@@ -184,7 +186,7 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                   isDense: true,
                   underline: const SizedBox.shrink(),
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: TypographyTokens.fontSize2,
                     fontWeight: FontWeight.w600,
                     color: scheme.onSurface,
                   ),
@@ -215,7 +217,9 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                 padding: const EdgeInsets.only(top: SpacingTokens.space4),
                 child: Text(
                   poll.problem!,
-                  style: TextStyle(fontSize: 12, color: scheme.error),
+                  style: TextStyle(
+                      fontSize: TypographyTokens.fontSize1,
+                      color: scheme.error),
                 ),
               ),
           ],

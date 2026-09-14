@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../routes.dart';
 import 'post_action_colors.dart';
@@ -83,7 +84,8 @@ class _PostTextState extends State<PostText> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final base = widget.style ?? const TextStyle(fontSize: 15, height: 1.35);
+    final base = widget.style ??
+        const TextStyle(fontSize: TypographyTokens.fontSize3, height: 1.35);
 
     for (final recognizer in _recognizers) {
       recognizer.dispose();

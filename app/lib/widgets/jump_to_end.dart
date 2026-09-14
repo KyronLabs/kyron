@@ -1,6 +1,7 @@
 // lib/widgets/jump_to_end.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 /// Which way the button sends the reader.
 enum JumpDirection {
@@ -151,7 +152,7 @@ class _JumpToEndState extends State<JumpToEnd> {
                           child: Text(
                             widget.badge > 99 ? '99+' : '${widget.badge}',
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: TypographyTokens.fontSize0,
                               fontWeight: FontWeight.w700,
                               color: scheme.onPrimary,
                             ),

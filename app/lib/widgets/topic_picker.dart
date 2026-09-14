@@ -57,7 +57,7 @@ class TopicPicker extends ConsumerWidget {
                   : 'Filed under ${chosen.length} of '
                       '${ComposerState.maxTopics}',
               style: TextStyle(
-                fontSize: 13,
+                fontSize: TypographyTokens.fontSize2,
                 fontWeight: FontWeight.w600,
                 color: scheme.onSurface.withValues(alpha: 0.55),
               ),
@@ -146,7 +146,7 @@ class _TopicChip extends StatelessWidget {
                 Text(
                   label,
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: TypographyTokens.fontSize2,
                     fontWeight: FontWeight.w600,
                     color: selected ? scheme.primary : scheme.onSurface,
                   ),

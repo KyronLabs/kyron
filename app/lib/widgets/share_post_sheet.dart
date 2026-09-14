@@ -138,13 +138,14 @@ class _Item extends StatelessWidget {
 
     return ListTile(
       leading: Icon(icon, size: 20, color: scheme.onSurface),
-      title: Text(label, style: const TextStyle(fontSize: 15)),
+      title: Text(label,
+          style: const TextStyle(fontSize: TypographyTokens.fontSize3)),
       subtitle: subtitle == null
           ? null
           : Text(
               subtitle!,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: TypographyTokens.fontSize1,
                 color: scheme.onSurface.withValues(alpha: 0.6),
               ),
             ),

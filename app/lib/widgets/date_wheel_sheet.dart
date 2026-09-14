@@ -231,7 +231,9 @@ class _SheetState extends State<_Sheet> {
                 padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
                 child: Text(
                   'That date is outside the range this filter allows.',
-                  style: TextStyle(fontSize: 12, color: scheme.error),
+                  style: TextStyle(
+                      fontSize: TypographyTokens.fontSize1,
+                      color: scheme.error),
                 ),
               ),
 
@@ -301,7 +303,7 @@ class _Wheel extends StatelessWidget {
           child: Text(
             label(index),
             style: TextStyle(
-              fontSize: 17,
+              fontSize: TypographyTokens.fontSize4,
               fontWeight: FontWeight.w600,
               color: scheme.onSurface,
             ),
