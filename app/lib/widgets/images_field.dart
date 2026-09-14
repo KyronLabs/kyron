@@ -1,4 +1,6 @@
 // lib/widgets/images_field.dart
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -15,6 +17,13 @@ enum ImageSlot { avatar, cover }
 class ImagesField extends StatelessWidget {
   final String? avatarUrl;
   final String? coverUrl;
+
+  /// A picture chosen on this device and not uploaded yet, which is what
+  /// creating a profile looks like: there is no URL to show until the account
+  /// exists. Shown in preference to the URL when set, so the reader sees what
+  /// they just picked rather than what the server still has.
+  final File? avatarFile;
+  final File? coverFile;
 
   /// Set while one of them is going up, so the other cannot be started and the
   /// one in flight shows a spinner over whatever is already there.
@@ -36,11 +45,26 @@ class ImagesField extends StatelessWidget {
     required this.avatarUrl,
     required this.coverUrl,
     required this.uploading,
+    this.avatarFile,
+    this.coverFile,
     required this.onPickAvatar,
     required this.onPickCover,
     this.hint = 'Tap to change',
     this.coverHeight = 120,
   });
+
+  /// The file first, because it is the newer of the two: somebody who has
+  /// just picked a photograph should see that one, not the one still on the
+  /// server.
+  ImageProvider? get _avatar => _pick(avatarFile, avatarUrl);
+
+  ImageProvider? get _cover => _pick(coverFile, coverUrl);
+
+  static ImageProvider? _pick(File? file, String? url) {
+    if (file != null) return FileImage(file);
+    if (url != null) return NetworkImage(url);
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,20 +82,22 @@ class ImagesField extends StatelessWidget {
             decoration: BoxDecoration(
               color: scheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
-              image: coverUrl == null
+              image: _cover == null
                   ? null
-                  : DecorationImage(
-                      image: NetworkImage(coverUrl!),
-                      fit: BoxFit.cover,
-                    ),
+                  : DecorationImage(image: _cover!, fit: BoxFit.cover),
             ),
             child: Center(
               child: uploading == ImageSlot.cover
                   ? const CircularProgressIndicator()
-                  : Icon(
-                      Iconsax.gallery_edit_copy,
-                      color: scheme.onSurface.withValues(alpha: 0.7),
-                    ),
+                  // Hidden once there is a picture: an icon over somebody's
+                  // own photograph is in the way, and the line underneath
+                  // already says the pair can be tapped.
+                  : _cover != null
+                      ? const SizedBox.shrink()
+                      : Icon(
+                          Iconsax.gallery_edit_copy,
+                          color: scheme.onSurface.withValues(alpha: 0.7),
+                        ),
             ),
           ),
         ),
@@ -82,11 +108,12 @@ class ImagesField extends StatelessWidget {
           child: CircleAvatar(
             radius: 40,
             backgroundColor: scheme.primary.withValues(alpha: 0.2),
-            foregroundImage:
-                avatarUrl == null ? null : NetworkImage(avatarUrl!),
+            foregroundImage: _avatar,
             child: uploading == ImageSlot.avatar
                 ? const CircularProgressIndicator()
-                : Icon(Iconsax.camera_copy, color: scheme.primary),
+                : _avatar != null
+                    ? null
+                    : Icon(Iconsax.camera_copy, color: scheme.primary),
           ),
         ),
         const SizedBox(height: SpacingTokens.space8),

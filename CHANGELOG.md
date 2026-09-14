@@ -14,6 +14,26 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **The create-profile screen has the shape of Edit profile.** The two edit
+  the same two pictures and the same two fields, and looked nothing alike:
+  this one drew a 200-pixel banner with a 128-pixel avatar straddling it -- a
+  profile header, on a form, taking most of the screen before a word could be
+  typed -- over inputs whose only label was a hint that vanished the moment
+  anybody typed into them.
+
+  It uses the same `ImagesField` now, which grew an `avatarFile`/`coverFile`
+  so it can show a photograph picked on the device before there is anything
+  uploaded to point at, and the same labelled fields.
+
+  The cover has two sources, so it asks in a sheet -- *Choose from gallery* or
+  *Use one of ours* -- rather than the tooltip menu it had, which opened
+  wherever the button happened to be with rows too small to hit on a phone.
+  `widgets/camera_tooltip_menu.dart` is gone with it.
+
+  So is **Generate AI**, which sat beside the camera button and called
+  `debugPrint`. A control that does nothing is worse than no control: it is a
+  promise. There was never anything behind it.
+
 - **Google sign-in opened a browser instead of the account picker**, and then
   answered `Error 401: deleted_client`. One cause: the Firebase project
   `kyron-1` has no OAuth clients at all -- its `google-services.json` carries
