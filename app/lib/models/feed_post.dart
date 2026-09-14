@@ -42,6 +42,13 @@ class FeedPost {
   /// The poll attached to it, or null. Most posts have none.
   final Poll? poll;
 
+  /// The community it was posted in, or null for a post to the wall.
+  ///
+  /// The home feed carries posts from the communities you are in, so a post
+  /// has to be able to say where it came from -- without it, one reads as
+  /// somebody posting to everybody.
+  final PostCommunity? community;
+
   const FeedPost({
     required this.id,
     required this.content,
@@ -57,6 +64,7 @@ class FeedPost {
     this.saved = false,
     this.reposted = false,
     this.poll,
+    this.community,
   });
 
   factory FeedPost.fromJson(Map<String, dynamic> json) => FeedPost(
@@ -81,6 +89,9 @@ class FeedPost {
         reposted: json['repostedByViewer'] == true,
         poll: json['poll'] is Map<String, dynamic>
             ? Poll.fromJson(json['poll'] as Map<String, dynamic>)
+            : null,
+        community: json['community'] is Map<String, dynamic>
+            ? PostCommunity.fromJson(json['community'] as Map<String, dynamic>)
             : null,
       );
 
@@ -108,6 +119,7 @@ class FeedPost {
         saved: saved ?? this.saved,
         reposted: reposted ?? this.reposted,
         poll: poll ?? this.poll,
+        community: community,
       );
 
   /// The first link in the text, or null.
@@ -117,6 +129,34 @@ class FeedPost {
   /// exactly what two regexes drifting apart produces. Bare hosts count, so
   /// "m.facebook.com" gets a card without anyone typing a scheme.
   String? get firstLink => firstLinkIn(content);
+}
+
+/// Just enough of a community to name it and open it from a post.
+class PostCommunity {
+  final String id;
+  final String slug;
+  final String name;
+  final String? avatarUrl;
+
+  const PostCommunity({
+    required this.id,
+    required this.slug,
+    required this.name,
+    this.avatarUrl,
+  });
+
+  factory PostCommunity.fromJson(Map<String, dynamic> json) => PostCommunity(
+        id: json['id'] as String? ?? '',
+        slug: json['slug'] as String? ?? '',
+        name: json['name'] as String? ?? '',
+        avatarUrl: json['avatarUrl'] as String?,
+      );
+
+  /// What to show when the community has no picture.
+  String get initial {
+    final trimmed = name.trim();
+    return trimmed.isEmpty ? '#' : trimmed[0].toUpperCase();
+  }
 }
 
 class FeedAuthor {

@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/feed_post.dart';
 import '../providers/feed_provider.dart';
 import '../routes.dart';
+import 'community_avatar.dart';
 import 'link_preview_card.dart';
 import 'media_grid.dart';
 import 'poll_card.dart';
@@ -48,6 +49,7 @@ class PostCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
     final handle = post.author.handle;
+    final community = post.community;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -76,13 +78,22 @@ class PostCard extends ConsumerWidget {
             children: [
               GestureDetector(
                 onTap: () => openAuthor(context, post.author),
-                child: PostAvatar(author: post.author),
+                child: community == null
+                    ? PostAvatar(author: post.author)
+                    : StackedPostAvatar(
+                        community: community,
+                        author: PostAvatar(author: post.author, radius: 11),
+                      ),
               ),
               const SizedBox(width: SpacingTokens.space12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Which community, when it came from one. A post from a
+                    // place you joined arriving in the home feed with nothing
+                    // to say so reads as somebody posting to everybody.
+                    if (community != null) _CommunityLine(community: community),
                     Row(
                       children: [
                         Flexible(
@@ -179,6 +190,55 @@ class PostCard extends ConsumerWidget {
               _OverflowButton(post: post, source: source),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Which community a post came from, above the author's name.
+///
+/// Tappable, and it opens the community rather than the post -- a name that
+/// looks like a link and is not one is worse than plain text.
+class _CommunityLine extends StatelessWidget {
+  final PostCommunity community;
+
+  const _CommunityLine({required this.community});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(
+        context,
+        Routes.community,
+        arguments: community.slug,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: SpacingTokens.space2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Iconsax.people_copy,
+              size: 12,
+              color: scheme.primary.withValues(alpha: 0.9),
+            ),
+            const SizedBox(width: SpacingTokens.space4),
+            Flexible(
+              child: Text(
+                community.name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: scheme.primary.withValues(alpha: 0.9),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

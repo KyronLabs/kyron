@@ -35,6 +35,13 @@ const row = (id: string, createdAt = new Date()) => ({
   topics: [] as { interestId: string }[],
   media: [] as never[],
   quotedPost: null,
+  // Null unless a test puts the post in one: most posts go to the wall.
+  community: null as {
+    id: string;
+    slug: string;
+    name: string;
+    avatarUrl: string | null;
+  } | null,
 });
 
 const VIEWER = 'viewer-1';
@@ -187,6 +194,14 @@ describe('FeedService', () => {
   let postSave = relation();
   let repost = relation();
 
+  /// Which communities the reader is in. Empty unless a test says otherwise:
+  /// the home feed reads this to decide whose community posts belong in it.
+  const communityMember = {
+    findMany: jest.fn<Promise<{ communityId: string }[]>, [unknown]>(() =>
+      Promise.resolve([]),
+    ),
+  };
+
   const service = async (extra: Record<string, unknown> = {}) => {
     const prisma: Record<string, unknown> = {
       post,
@@ -201,6 +216,7 @@ describe('FeedService', () => {
       user,
       userInterest,
       repost,
+      communityMember,
       ...extra,
     };
     // The real client takes either an array of queries or a callback handed
@@ -236,6 +252,8 @@ describe('FeedService', () => {
     userInterest.findMany.mockResolvedValue([]);
     interestSignal.findMany.mockResolvedValue([]);
     postView.findMany.mockResolvedValue([]);
+    // In no communities unless a test joins one.
+    communityMember.findMany.mockResolvedValue([]);
     moderation.filtersFor.mockResolvedValue({
       blockedUserIds: [],
       mutedUserIds: [],
@@ -282,17 +300,73 @@ describe('FeedService', () => {
   });
 
   describe('listRecent', () => {
-    it('excludes soft-deleted posts and community posts', async () => {
-      // A community post was written into a named place with its own members.
-      // Pushing it at everybody is what makes people stop posting in them.
+    /** The `where` the ranking pool was read with. */
+    const listedWhere = async () => {
       post.findMany.mockResolvedValue([]);
       await (await service()).listRecent(VIEWER);
-
       const [args] = post.findMany.mock.calls[0] as [
         { where: Record<string, unknown> },
       ];
-      expect(args.where.deletedAt).toBeNull();
-      expect(args.where.communityId).toBeNull();
+      return args.where;
+    };
+
+    it('excludes soft-deleted posts', async () => {
+      expect((await listedWhere()).deletedAt).toBeNull();
+    });
+
+    it('shows only wall posts to a reader in no communities', async () => {
+      communityMember.findMany.mockResolvedValue([]);
+
+      // A community post was written into a named place with its own members.
+      // Pushing it at everybody is what makes people stop posting in them.
+      expect((await listedWhere()).OR).toEqual([{ communityId: null }]);
+    });
+
+    it("includes posts from the reader's own communities", async () => {
+      // And hiding them from the members too is what made joining a community
+      // mean remembering to go and look at it.
+      communityMember.findMany.mockResolvedValue([
+        { communityId: 'c1' },
+        { communityId: 'c2' },
+      ]);
+
+      expect((await listedWhere()).OR).toEqual([
+        { communityId: null },
+        { communityId: { in: ['c1', 'c2'] } },
+      ]);
+    });
+
+    it('asks only for the communities this reader is in', async () => {
+      communityMember.findMany.mockResolvedValue([{ communityId: 'c1' }]);
+      await listedWhere();
+
+      expect(communityMember.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({ where: { userId: VIEWER } }),
+      );
+    });
+
+    it('carries the community on every post it returns', async () => {
+      // Without it a community post in the home feed reads as somebody
+      // posting to everybody.
+      const community = {
+        id: 'c1',
+        slug: 'gardeners',
+        name: 'Gardeners',
+        avatarUrl: null,
+      };
+      post.findMany.mockResolvedValue([{ ...row('p1'), community }]);
+
+      const page = await (await service()).listRecent(VIEWER);
+
+      expect(page.items[0].community).toEqual(community);
+    });
+
+    it('leaves the community null on a post to the wall', async () => {
+      post.findMany.mockResolvedValue([{ ...row('p1'), community: null }]);
+
+      const page = await (await service()).listRecent(VIEWER);
+
+      expect(page.items[0].community).toBeNull();
     });
 
     it('reads a pool to rank, not a page to return', async () => {
@@ -879,6 +953,7 @@ describe('FeedService', () => {
               user,
               userInterest,
               repost: relation(),
+              communityMember,
               $transaction: (calls: Promise<unknown>[]) => Promise.all(calls),
             },
           },
