@@ -14,6 +14,53 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **The create-profile screen has the shape of Edit profile.** The two edit
+  the same two pictures and the same two fields, and looked nothing alike:
+  this one drew a 200-pixel banner with a 128-pixel avatar straddling it -- a
+  profile header, on a form, taking most of the screen before a word could be
+  typed -- over inputs whose only label was a hint that vanished the moment
+  anybody typed into them.
+
+  It uses the same `ImagesField` now, which grew an `avatarFile`/`coverFile`
+  so it can show a photograph picked on the device before there is anything
+  uploaded to point at, and the same labelled fields.
+
+  The cover has two sources, so it asks in a sheet -- *Choose from gallery* or
+  *Use one of ours* -- rather than the tooltip menu it had, which opened
+  wherever the button happened to be with rows too small to hit on a phone.
+  `widgets/camera_tooltip_menu.dart` is gone with it.
+
+  So is **Generate AI**, which sat beside the camera button and called
+  `debugPrint`. A control that does nothing is worse than no control: it is a
+  promise. There was never anything behind it.
+
+- **Google sign-in opened a browser instead of the account picker**, and then
+  answered `Error 401: deleted_client`. One cause: the Firebase project
+  `kyron-1` has no OAuth clients at all -- its `google-services.json` carries
+  no `oauth_client` entries, so there is no web client for an ID token's
+  audience and no Android client tying the signing certificate to the package
+  name. `deleted_client` is Google saying the client id Supabase hands it no
+  longer exists. Supabase's own end is fine; its settings endpoint reports
+  Google enabled.
+
+  Nothing in this repository can create those clients, so `docs/AUTH_GOOGLE.md`
+  says exactly what to do in which console, including the SHA-1 of the
+  committed development signing key and why a Play-signed build needs a
+  different one.
+
+  What this repository can do is stop reaching for a browser first.
+  `lib/services/google_sign_in_service.dart` uses the platform's own picker --
+  Credential Manager on Android, the sheet listing the accounts already on the
+  phone -- and exchanges the Google ID token it returns for a Supabase session
+  directly. No redirect, so nothing depends on `so.kyron.app://` being
+  registered. A nonce binds the token to the attempt: Google is given the
+  SHA-256 and Supabase the original, so the value never crosses the network.
+
+  Where there is no picker, or where Google refuses for a configuration
+  reason, it falls back to the browser flow and writes the reason to the log
+  that About → System log shows. The browser at least ends on Google's own
+  error page, which says something; a sheet that closes with nothing does not.
+
 - **A new account could get stuck on the create-profile screen**, told only
   that "Kyron could not verify your sign-in (error 401). That is a problem on
   our end, not with your account." It was, and the message could not say which

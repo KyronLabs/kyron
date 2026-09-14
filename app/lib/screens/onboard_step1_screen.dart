@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../services/profile_service.dart';
 
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../models/onboarding_model.dart';
@@ -13,8 +14,8 @@ import '../routes.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/app_button.dart';
-import '../widgets/app_input_field.dart';
-import '../widgets/camera_tooltip_menu.dart';
+import '../widgets/action_sheet.dart';
+import '../widgets/images_field.dart';
 import '../widgets/gradient_scaffold.dart';
 
 class OnboardStep1Screen extends StatefulWidget {
@@ -50,6 +51,39 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
     if (file != null) setState(() => widget.model.localAvatarPath = file.path);
   }
 
+  /// The cover has two sources, so it asks. A sheet rather than the tooltip
+  /// menu this replaced: a popup opens wherever the button happens to be and
+  /// its rows are too small to hit on a phone, and Kyron's menus are sheets
+  /// everywhere else.
+  Future<void> _chooseCover() async {
+    final choice = await ActionSheet.show<_CoverSource>(
+      context,
+      title: 'Cover photo',
+      actions: const [
+        SheetAction(
+          value: _CoverSource.gallery,
+          label: 'Choose from gallery',
+          icon: Iconsax.gallery_copy,
+        ),
+        SheetAction(
+          value: _CoverSource.random,
+          label: 'Use one of ours',
+          icon: Iconsax.shuffle_copy,
+          detail: 'A picture from Kyron, if you have not got one in mind',
+        ),
+      ],
+    );
+
+    switch (choice) {
+      case _CoverSource.gallery:
+        await _pickCover();
+      case _CoverSource.random:
+        await _randomiseCover();
+      case null:
+        break;
+    }
+  }
+
   Future<void> _pickCover() async {
     final file = await _picker.pickImage(source: ImageSource.gallery);
     if (file != null) {
@@ -57,8 +91,6 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
     }
   }
 
-  /* ---------- AI / random helpers ---------- */
-  void _generateAIAvatar() => debugPrint('TODO: AI avatar generation');
   Future<void> _randomiseCover() async {
     if (_isLoading) return;
     try {
@@ -164,172 +196,102 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final scheme = Theme.of(context).colorScheme;
+    final avatar = widget.model.localAvatarPath;
+    final cover = widget.model.localCoverPath;
 
     return GradientScaffold(
       appBar: AppBar(title: const Text('Create your profile')),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.only(bottom: 32),
-        child: Column(
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(SpacingTokens.space20),
           children: [
-            /* ---------- COVER + AVATAR ----------
-               One stack, explicitly sized to the cover plus the part of the
-               avatar that hangs below it. The avatar used to be a sibling
-               shifted up with Transform.translate, which moves paint but not
-               layout, so it reserved its full height and left a gap under it. */
-            SizedBox(
-              height: 200 + 64,
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  /* cover image or placeholder */
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: 200,
-                    child: Stack(
-                      children: [
-                        Positioned.fill(
-                          child: widget.model.localCoverPath != null
-                              ? Image.file(
-                                  File(widget.model.localCoverPath!),
-                                  fit: BoxFit.cover,
-                                )
-                              : widget.model.remoteCoverUrl != null
-                                  ? Image.network(
-                                      widget.model.remoteCoverUrl!,
-                                      fit: BoxFit.cover,
-                                      errorBuilder: (context, error, stack) =>
-                                          Container(
-                                        color: isDark
-                                            ? KyronTheme.darkSurface
-                                            : KyronTheme.lightSurface,
-                                        child: Center(
-                                          child: Icon(
-                                            Icons.broken_image_outlined,
-                                            size: 40,
-                                            color: scheme.onSurface.withValues(
-                                              alpha: .35,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  : Container(
-                                      color: isDark
-                                          ? KyronTheme.darkSurface
-                                          : KyronTheme.lightSurface,
-                                      child: Center(
-                                        child: Icon(
-                                          Icons.add_photo_alternate,
-                                          size: 56,
-                                          color: scheme.onSurface.withValues(
-                                            alpha: .35,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                        ),
-                        Positioned(
-                          right: 16,
-                          bottom: 16,
-                          child: CameraTooltipMenu(
-                            onGallery: _pickCover,
-                            onSecondary: _randomiseCover,
-                            secondaryLabel: 'Randomise',
-                            secondaryIcon: Icons.shuffle,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  /* avatar, straddling the bottom edge of the cover */
-                  Positioned(
-                    top: 200 - 64,
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: SizedBox(
-                        width: 128,
-                        height: 128,
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            CircleAvatar(
-                              radius: 64,
-                              backgroundColor: isDark
-                                  ? KyronTheme.darkSurface
-                                  : KyronTheme.lightSurface,
-                              backgroundImage:
-                                  widget.model.localAvatarPath != null
-                                      ? FileImage(
-                                          File(widget.model.localAvatarPath!),
-                                        )
-                                      : null,
-                              child: widget.model.localAvatarPath == null
-                                  ? Icon(
-                                      Icons.person,
-                                      size: 64,
-                                      color: scheme.onSurface.withValues(
-                                        alpha: .45,
-                                      ),
-                                    )
-                                  : null,
-                            ),
-                            Positioned(
-                              right: 0,
-                              bottom: 0,
-                              child: CameraTooltipMenu(
-                                onGallery: _pickAvatar,
-                                onSecondary: _generateAIAvatar,
-                                secondaryLabel: 'Generate AI',
-                                secondaryIcon: Icons.auto_awesome,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            // The same pair, in the same arrangement, as Edit profile. What
+            // this replaced was a 200-pixel banner with a 128-pixel avatar
+            // straddling it -- a header, drawn on a form, taking most of the
+            // screen before a word could be typed. The two screens edit the
+            // same two pictures and now look like it.
+            ImagesField(
+              avatarUrl: null,
+              coverUrl: widget.model.remoteCoverUrl,
+              avatarFile: avatar == null ? null : File(avatar),
+              coverFile: cover == null ? null : File(cover),
+              uploading: _isLoading ? ImageSlot.cover : null,
+              onPickAvatar: _pickAvatar,
+              onPickCover: _chooseCover,
+              hint: 'Tap to add a photo and a cover',
             ),
-            const SizedBox(height: 24),
-
-            /* ---------- TEXT FIELDS ---------- */
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  AppInputField(
-                    hint: 'Display name',
-                    controller: _nameCtrl,
-                    onChanged: (_) => setState(() {}),
-                  ),
-                  const SizedBox(height: 16),
-                  AppInputField(
-                    hint: 'Bio (optional)',
-                    controller: _bioCtrl,
-                    maxLines: 3,
-                    maxLength: 160,
-                  ),
-                  const SizedBox(height: 32),
-                  AppButton(
-                    label: 'Continue',
-                    isLoading: _isLoading,
-                    enabled: _canProceed,
-                    onTap: _next,
-                  ),
-                ],
-              ),
+            const SizedBox(height: SpacingTokens.space24),
+            _field(
+              _nameCtrl,
+              'Display name',
+              Iconsax.user_copy,
+              maxLength: 50,
+              onChanged: (_) => setState(() {}),
+            ),
+            const SizedBox(height: SpacingTokens.space16),
+            _field(
+              _bioCtrl,
+              'Bio',
+              Iconsax.note_text_copy,
+              maxLength: 160,
+              maxLines: 4,
+            ),
+            const SizedBox(height: SpacingTokens.space32),
+            AppButton(
+              label: 'Continue',
+              isLoading: _isLoading,
+              enabled: _canProceed,
+              onTap: _next,
             ),
           ],
         ),
       ),
     );
   }
+
+  /// Edit profile's field, so the two read the same: a label rather than a
+  /// hint that vanishes as soon as anybody types, and an icon that says what
+  /// the row is for.
+  Widget _field(
+    TextEditingController controller,
+    String label,
+    IconData icon, {
+    int? maxLength,
+    int maxLines = 1,
+    ValueChanged<String>? onChanged,
+  }) {
+    return TextFormField(
+      controller: controller,
+      maxLength: maxLength,
+      maxLines: maxLines,
+      onChanged: onChanged,
+      decoration: InputDecoration(
+        labelText: label,
+        // Pinned to the top of a field that grows, rather than floating in
+        // the middle of an empty bio box.
+        prefixIcon: _prefix(context, icon, maxLines),
+      ),
+    );
+  }
+
+  Widget _prefix(BuildContext context, IconData icon, int maxLines) {
+    final child = Icon(icon, size: 20);
+    if (maxLines == 1) return child;
+    return Align(
+      alignment: Alignment.topLeft,
+      widthFactor: 1,
+      heightFactor: 1,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: SpacingTokens.space12,
+          top: SpacingTokens.space16,
+          right: SpacingTokens.space8,
+        ),
+        child: child,
+      ),
+    );
+  }
 }
+
+/// Where a cover comes from.
+enum _CoverSource { gallery, random }
