@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import 'hairline.dart';
+import 'thread.dart';
 
 /// One grey block, breathing.
 ///
@@ -161,6 +162,12 @@ class SkeletonList extends StatelessWidget {
   factory SkeletonList.people({int count = 7}) => SkeletonList(
         count: count,
         itemBuilder: (context, index) => const _PersonSkeleton(),
+      );
+
+  /// Hashtag chips, for the interest picker.
+  factory SkeletonList.tags({int count = 6}) => SkeletonList(
+        count: count,
+        itemBuilder: (context, index) => const _TagSkeleton(),
       );
 
   /// Conversations, for the messages list.
@@ -361,7 +368,7 @@ class _CommentSkeleton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SkeletonBox.circle(size: 34),
-            const SizedBox(width: 10),
+            const SizedBox(width: ThreadGeometry.gutter),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -657,4 +664,17 @@ class _OnBlack extends StatelessWidget {
       child: child,
     );
   }
+}
+
+class _TagSkeleton extends StatelessWidget {
+  const _TagSkeleton();
+
+  @override
+  Widget build(BuildContext context) => const Padding(
+        padding: EdgeInsets.only(bottom: SpacingTokens.space8),
+        child: SkeletonBox(
+          height: 44,
+          radius: RadiusTokens.radius12,
+        ),
+      );
 }

@@ -81,7 +81,7 @@ class _FaceReticleState extends State<FaceReticle>
                     'Looking for a face',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 13,
+                      fontSize: TypographyTokens.fontSize2,
                       fontWeight: FontWeight.w500,
                       letterSpacing: 0.2,
                     ),

@@ -105,7 +105,7 @@ class PostCard extends ConsumerWidget {
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 15,
+                                fontSize: TypographyTokens.fontSize3,
                               ),
                             ),
                           ),
@@ -120,7 +120,7 @@ class PostCard extends ConsumerWidget {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                fontSize: 13,
+                                fontSize: TypographyTokens.fontSize2,
                                 color: scheme.onSurface.withValues(alpha: 0.55),
                               ),
                             ),
@@ -130,7 +130,7 @@ class PostCard extends ConsumerWidget {
                         Text(
                           '· ${age(post.createdAt)}',
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: TypographyTokens.fontSize2,
                             color: scheme.onSurface.withValues(alpha: 0.45),
                           ),
                         ),
@@ -232,7 +232,7 @@ class _CommunityLine extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: TypographyTokens.fontSize1,
                   fontWeight: FontWeight.w600,
                   color: scheme.primary.withValues(alpha: 0.9),
                 ),

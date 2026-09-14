@@ -1,6 +1,7 @@
 // lib/widgets/google_button.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 /// What the button may say.
 ///
@@ -106,7 +107,7 @@ class GoogleButton extends StatelessWidget {
                         // rather than inheriting Kyron's face is deliberate:
                         // this button belongs to Google's identity, not ours.
                         fontFamily: 'Roboto',
-                        fontSize: 14,
+                        fontSize: TypographyTokens.fontSize2,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.25,
                         color: ink,

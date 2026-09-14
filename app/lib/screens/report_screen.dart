@@ -110,7 +110,7 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
                 'Your report is not shared with them. We keep a copy of what '
                 'you reported, so it can still be reviewed if it is deleted.',
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: TypographyTokens.fontSize2,
                   color: scheme.onSurface.withValues(alpha: .7),
                 ),
               ),
@@ -157,7 +157,7 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
                     Text(
                       reason.detail,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: TypographyTokens.fontSize2,
                         color: scheme.onSurface.withValues(alpha: .7),
                       ),
                     ),
@@ -190,7 +190,9 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
         ),
         if (_error != null) ...[
           const SizedBox(height: SpacingTokens.space8),
-          Text(_error!, style: TextStyle(color: scheme.error, fontSize: 13)),
+          Text(_error!,
+              style: TextStyle(
+                  color: scheme.error, fontSize: TypographyTokens.fontSize2)),
         ],
         const SizedBox(height: SpacingTokens.space8),
         FilledButton(
@@ -207,7 +209,7 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
           'Reporting the same thing twice does not add weight to it -- we keep '
           'one report per person.',
           style: TextStyle(
-            fontSize: 12,
+            fontSize: TypographyTokens.fontSize1,
             color: scheme.onSurface.withValues(alpha: .6),
           ),
         ),
@@ -281,7 +283,7 @@ class _Sent extends StatelessWidget {
               'the same menu.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: TypographyTokens.fontSize1,
                 color: scheme.onSurface.withValues(alpha: .55),
               ),
             ),

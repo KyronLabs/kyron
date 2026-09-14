@@ -1,6 +1,7 @@
 // lib/widgets/stories_ribbon.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/stories_provider.dart';
 import 'story_pill.dart';
 import 'story_viewer.dart';
@@ -171,7 +172,7 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
               child: Text(
                 '+$count',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: TypographyTokens.fontSize2,
                   fontWeight: FontWeight.w600,
                   color: scheme.primary,
                 ),
@@ -182,7 +183,7 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
           Text(
             'More',
             style: TextStyle(
-              fontSize: 12,
+              fontSize: TypographyTokens.fontSize1,
               fontWeight: FontWeight.w500,
               color: scheme.onSurface.withOpacity(0.7),
             ),
@@ -205,7 +206,7 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
             initialStory: story,
             allStories: [story],
           ),
-          transitionDuration: const Duration(milliseconds: 80),
+          transitionDuration: MotionTokens.micro,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(opacity: animation, child: child);
           },

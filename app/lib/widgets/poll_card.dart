@@ -87,7 +87,7 @@ class _PollCardState extends ConsumerState<PollCard> {
             '${poll.totalVotes == 1 ? 'vote' : 'votes'}'
             '  \u00b7  ${poll.remaining}',
             style: TextStyle(
-              fontSize: 12,
+              fontSize: TypographyTokens.fontSize1,
               color: scheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
@@ -100,7 +100,7 @@ class _PollCardState extends ConsumerState<PollCard> {
               child: Text(
                 'Tap your answer again to take your vote back.',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: TypographyTokens.fontSize1,
                   color: scheme.onSurface.withValues(alpha: 0.45),
                 ),
               ),
@@ -218,7 +218,7 @@ class _Option extends StatelessWidget {
             Positioned.fill(
               child: TweenAnimationBuilder<double>(
                 tween: Tween<double>(end: share),
-                duration: const Duration(milliseconds: 320),
+                duration: MotionTokens.normal,
                 curve: Curves.easeOutCubic,
                 builder: (context, value, child) => ClipRect(
                   clipper: _FillClipper(value),
@@ -283,7 +283,7 @@ class _Row extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: TypographyTokens.fontSize3,
                   fontWeight: mine ? FontWeight.w700 : FontWeight.w500,
                   color: textColor,
                   height: 1.2,
@@ -303,7 +303,7 @@ class _Row extends StatelessWidget {
               Text(
                 '${(share * 100).round()}%',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: TypographyTokens.fontSize3,
                   fontWeight: FontWeight.w700,
                   color: mutedColor,
                 ),

@@ -382,7 +382,7 @@ class _TabStripState extends State<TabStrip> {
     Scrollable.ensureVisible(
       context,
       alignment: 0.5,
-      duration: const Duration(milliseconds: 220),
+      duration: MotionTokens.fast,
       curve: Curves.easeOut,
     );
   }

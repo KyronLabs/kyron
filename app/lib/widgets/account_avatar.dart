@@ -9,7 +9,7 @@ import 'skeleton.dart';
 ///
 /// Every screen that showed one drew its own, and most of them drew a grey
 /// person glyph instead: the explore, communities and messages headers all
-/// rendered `Icons.person` whether or not the account had a picture. One
+/// rendered `Iconsax.user_copy` whether or not the account had a picture. One
 /// widget, reading the profile the app has already loaded.
 class AccountAvatar extends ConsumerWidget {
   final double radius;

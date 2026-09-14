@@ -238,7 +238,7 @@ class _PostActionState extends State<PostAction>
                 // swapping: up as it grows, down as it shrinks, which is the
                 // direction the count itself went.
                 AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 220),
+                  duration: MotionTokens.fast,
                   switchInCurve: Curves.easeOutCubic,
                   transitionBuilder: (child, animation) => ClipRect(
                     child: SlideTransition(
@@ -252,7 +252,8 @@ class _PostActionState extends State<PostAction>
                   child: Text(
                     widget.label!,
                     key: ValueKey(widget.label),
-                    style: TextStyle(fontSize: 12, color: colour),
+                    style: TextStyle(
+                        fontSize: TypographyTokens.fontSize1, color: colour),
                   ),
                 ),
               ],

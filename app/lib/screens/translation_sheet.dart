@@ -51,7 +51,7 @@ class _Sheet extends StatelessWidget {
               'Kyron does not translate posts itself yet. Open this text in a '
               'translator, or copy it and use whichever you prefer.',
               style: TextStyle(
-                fontSize: 13,
+                fontSize: TypographyTokens.fontSize2,
                 color: scheme.onSurface.withValues(alpha: .7),
               ),
             ),
@@ -67,7 +67,7 @@ class _Sheet extends StatelessWidget {
                 content,
                 maxLines: 6,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 14),
+                style: const TextStyle(fontSize: TypographyTokens.fontSize2),
               ),
             ),
             const SizedBox(height: SpacingTokens.space16),

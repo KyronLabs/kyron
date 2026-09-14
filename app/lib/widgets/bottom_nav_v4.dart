@@ -103,7 +103,7 @@ class BottomNavV4 extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 11,
+                fontSize: TypographyTokens.fontSize1,
                 fontWeight: FontWeight.w600,
                 color: colour,
               ),

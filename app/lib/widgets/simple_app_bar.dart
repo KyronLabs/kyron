@@ -42,7 +42,7 @@ class SimpleAppBar extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: TypographyTokens.fontSize6,
                 fontWeight: FontWeight.w700,
                 color: scheme.onSurface,
               ),

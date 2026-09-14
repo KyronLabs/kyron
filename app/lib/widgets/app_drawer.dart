@@ -2,6 +2,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 // Moved enum to top-level (outside class)
 enum DrawerFeedbackType { open, close, drag, edge }
@@ -25,7 +26,7 @@ class AppDrawerState extends State<AppDrawer>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   static const double _drawerWidth = 320.0;
-  static const Duration _animationDuration = Duration(milliseconds: 300);
+  static const Duration _animationDuration = MotionTokens.normal;
 
   @override
   void initState() {

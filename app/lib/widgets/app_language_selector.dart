@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../models/app_language.dart';
 import '../providers/preferences_provider.dart';
@@ -29,7 +30,7 @@ class AppLanguageSelector extends ConsumerWidget {
               SheetAction(
                 value: language,
                 label: language.nativeName,
-                icon: Icons.language,
+                icon: Iconsax.global_copy,
                 selected: language == selected,
               ),
           ],
@@ -42,7 +43,7 @@ class AppLanguageSelector extends ConsumerWidget {
         selected.nativeName,
         style: Theme.of(context).textTheme.bodyMedium,
       ),
-      label: const Icon(Icons.language, size: 18),
+      label: const Icon(Iconsax.global_copy, size: 18),
     );
   }
 }

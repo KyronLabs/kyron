@@ -188,7 +188,7 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
                   Text(
                     'Tag someone',
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: TypographyTokens.fontSize4,
                       fontWeight: FontWeight.w700,
                       color: scheme.onSurface,
                     ),
@@ -314,7 +314,7 @@ class _PersonRow extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: TypographyTokens.fontSize3,
                       fontWeight: FontWeight.w600,
                       color: scheme.onSurface,
                     ),
@@ -327,7 +327,7 @@ class _PersonRow extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: TypographyTokens.fontSize1,
                       color: scheme.onSurface.withValues(alpha: 0.6),
                     ),
                   ),
@@ -372,7 +372,7 @@ class _Notice extends StatelessWidget {
               title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 15,
+                fontSize: TypographyTokens.fontSize3,
                 fontWeight: FontWeight.w600,
                 color: scheme.onSurface,
               ),
@@ -382,7 +382,7 @@ class _Notice extends StatelessWidget {
               detail,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: TypographyTokens.fontSize2,
                 color: scheme.onSurface.withValues(alpha: 0.65),
               ),
             ),

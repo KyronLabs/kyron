@@ -1,6 +1,7 @@
 // lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../widgets/top_edge.dart';
 import '../widgets/interest_tabs.dart';
 import '../widgets/feed_canvas.dart';
@@ -90,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen>
     if (_scrollController.hasClients) {
       _scrollController.animateTo(
         0,
-        duration: const Duration(milliseconds: 300),
+        duration: MotionTokens.normal,
         curve: Curves.easeOut,
       );
     }

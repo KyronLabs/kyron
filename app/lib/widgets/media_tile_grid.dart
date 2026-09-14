@@ -183,7 +183,7 @@ class _Tile extends StatelessWidget {
               const Positioned(
                 right: 8,
                 top: 8,
-                child: _Chip(icon: Icons.play_arrow_rounded, label: 'Video'),
+                child: _Chip(icon: Iconsax.play, label: 'Video'),
               ),
 
             Positioned(
@@ -211,7 +211,7 @@ class _Tile extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: TypographyTokens.fontSize1,
                             fontWeight: FontWeight.w600,
                             height: 1.25,
                           ),
@@ -226,7 +226,7 @@ class _Tile extends StatelessWidget {
                             formatCount(post.likes),
                             style: const TextStyle(
                               color: Colors.white70,
-                              fontSize: 11,
+                              fontSize: TypographyTokens.fontSize1,
                             ),
                           ),
                           const SizedBox(width: SpacingTokens.space8),
@@ -237,7 +237,7 @@ class _Tile extends StatelessWidget {
                             formatCount(post.comments),
                             style: const TextStyle(
                               color: Colors.white70,
-                              fontSize: 11,
+                              fontSize: TypographyTokens.fontSize1,
                             ),
                           ),
                         ],
@@ -277,7 +277,7 @@ class _Chip extends StatelessWidget {
             label,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 10,
+              fontSize: TypographyTokens.fontSize0,
               fontWeight: FontWeight.w700,
             ),
           ),

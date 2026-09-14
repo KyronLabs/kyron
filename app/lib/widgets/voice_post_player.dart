@@ -163,7 +163,9 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
               child: _failure != null
                   ? Text(
                       _failure!,
-                      style: TextStyle(fontSize: 12, color: scheme.error),
+                      style: TextStyle(
+                          fontSize: TypographyTokens.fontSize1,
+                          color: scheme.error),
                     )
                   : SizedBox(
                       height: 32,
@@ -190,7 +192,7 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
               // which is what tells you whether a post is worth starting.
               _clock(_playing ? total - _position : total),
               style: TextStyle(
-                fontSize: 12,
+                fontSize: TypographyTokens.fontSize1,
                 fontWeight: FontWeight.w600,
                 fontFeatures: const [FontFeature.tabularFigures()],
                 color: scheme.onSurface.withValues(alpha: 0.6),

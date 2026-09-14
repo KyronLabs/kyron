@@ -1,0 +1,60 @@
+import 'dart:io';
+
+import 'package:flutter_test/flutter_test.dart';
+
+/// Two rules the design system states plainly, checked against the source
+/// rather than against a rendered frame.
+///
+/// Both were swept to zero in one go, and both are the kind of thing that
+/// creeps back one widget at a time -- a 14 here, a Material icon there --
+/// because nothing fails when it does. A design system that is only ever
+/// audited is a design system that drifts between audits.
+///
+/// There is no allow-list. If a rule needs an exception, the rule is wrong
+/// and belongs in the design system's own repository, not in a list here.
+void main() {
+  final dart = Directory('lib')
+      .listSync(recursive: true)
+      .whereType<File>()
+      .where((f) => f.path.endsWith('.dart'))
+      .toList()
+    ..sort((a, b) => a.path.compareTo(b.path));
+
+  /// Every line matching [pattern], as `path:line  text`.
+  List<String> offences(RegExp pattern) => [
+        for (final file in dart)
+          ...() {
+            final lines = file.readAsLinesSync();
+            return [
+              for (var i = 0; i < lines.length; i++)
+                if (pattern.hasMatch(lines[i]))
+                  '${file.path}:${i + 1}  ${lines[i].trim()}',
+            ];
+          }(),
+      ];
+
+  test('there is a file to read', () {
+    // A glob that matches nothing passes every test below it.
+    expect(dart.length, greaterThan(100));
+  });
+
+  test('type is set from the scale, never a number', () {
+    // TypographyTokens is a 1.125 modular scale from a 15px base: 9.4, 11.3,
+    // 13.1, 15, 16.9, 18.8, 20.6, 24.3, 30, 37.5. Half the sizes written by
+    // hand here were not on it -- 10, 12, 14, 17, 18, 22 -- so text a point
+    // or two off matched nothing else on the screen. There were 175.
+    final found = offences(RegExp(r'fontSize:\s*\d'));
+    expect(found, isEmpty,
+        reason: 'a font size is set from a number rather than '
+            'TypographyTokens:\n${found.join('\n')}');
+  });
+
+  test('icons come from Iconsax, not Material', () {
+    // "Don't use Material Icons (use Iconsax)" -- philosophy.md. A Material
+    // glyph next to an Iconsax one is the most visible kind of drift: two
+    // different drawing styles in the same row.
+    final found = offences(RegExp(r'\bIcons\.[a-z_0-9]+'));
+    expect(found, isEmpty,
+        reason: 'a Material icon is still in use:\n${found.join('\n')}');
+  });
+}

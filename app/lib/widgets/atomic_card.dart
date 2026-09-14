@@ -115,7 +115,7 @@ class _AtomicCardState extends State<AtomicCard> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: TypographyTokens.fontSize2,
                     height: 1.25,
                     fontWeight: FontWeight.w700,
                     color: scheme.onSurface,
@@ -134,7 +134,7 @@ class _AtomicCardState extends State<AtomicCard> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: TypographyTokens.fontSize1,
                             height: 1.3,
                             color: scheme.onSurface.withValues(alpha: 0.65),
                           ),

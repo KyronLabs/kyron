@@ -258,7 +258,7 @@ class _SheetState extends State<_Sheet> {
             _clock(_elapsed),
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: TypographyTokens.fontSize3,
               fontWeight: FontWeight.w700,
               fontFeatures: const [FontFeature.tabularFigures()],
               color: _stage == _Stage.recording
@@ -271,7 +271,8 @@ class _SheetState extends State<_Sheet> {
             Text(
               _failure!,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 13, color: scheme.error),
+              style: TextStyle(
+                  fontSize: TypographyTokens.fontSize2, color: scheme.error),
             ),
           ],
           const SizedBox(height: SpacingTokens.space20),
@@ -284,7 +285,7 @@ class _SheetState extends State<_Sheet> {
               ),
             _Stage.recording => ActionButton(
                 label: 'Stop',
-                icon: Icons.stop_rounded,
+                icon: Iconsax.stop,
                 expand: true,
                 destructive: true,
                 onPressed: _stop,
@@ -327,7 +328,7 @@ class _SheetState extends State<_Sheet> {
       return Text(
         _stage == _Stage.idle ? 'Up to ten minutes.' : 'Listening…',
         style: TextStyle(
-          fontSize: 13,
+          fontSize: TypographyTokens.fontSize2,
           color: scheme.onSurface.withValues(alpha: 0.55),
         ),
       );

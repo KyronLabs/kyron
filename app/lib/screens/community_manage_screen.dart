@@ -282,7 +282,7 @@ class _DetailsState extends ConsumerState<_Details> {
         Text(
           'Closing it',
           style: TextStyle(
-            fontSize: 13,
+            fontSize: TypographyTokens.fontSize2,
             fontWeight: FontWeight.w700,
             color: scheme.onSurface.withValues(alpha: 0.6),
           ),
@@ -292,7 +292,7 @@ class _DetailsState extends ConsumerState<_Details> {
           'Nobody can post in it or join it again. What was written into it '
           'keeps working.',
           style: TextStyle(
-            fontSize: 13,
+            fontSize: TypographyTokens.fontSize2,
             color: scheme.onSurface.withValues(alpha: 0.6),
           ),
         ),
@@ -457,7 +457,8 @@ class _MemberRow extends StatelessWidget {
         member.displayName,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+        style: const TextStyle(
+            fontWeight: FontWeight.w600, fontSize: TypographyTokens.fontSize3),
       ),
       subtitle: Text(
         [
@@ -467,7 +468,7 @@ class _MemberRow extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          fontSize: 13,
+          fontSize: TypographyTokens.fontSize2,
           color: scheme.onSurface.withValues(alpha: 0.6),
         ),
       ),

@@ -157,7 +157,7 @@ class _Pending extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: TypographyTokens.fontSize2,
                 color: scheme.onSurface.withValues(alpha: 0.6),
               ),
             ),
@@ -193,7 +193,7 @@ class _None extends StatelessWidget {
               '${_host(url)} has no preview. Your post will show the link on '
               'its own.',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: TypographyTokens.fontSize1,
                 height: 1.3,
                 color: scheme.onSurface.withValues(alpha: 0.6),
               ),

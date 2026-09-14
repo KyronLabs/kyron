@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 class KyronToggle extends StatefulWidget {
   final bool value;
@@ -26,7 +27,7 @@ class _KyronToggleState extends State<KyronToggle>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 80),
+      duration: MotionTokens.micro,
       value: widget.value ? 1.0 : 0.0,
     );
     _animation = Tween<double>(begin: 0.0, end: 20.0).animate(

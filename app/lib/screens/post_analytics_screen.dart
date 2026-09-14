@@ -146,7 +146,7 @@ class _Report extends StatelessWidget {
         Text(
           'VIEWERS PER DAY',
           style: TextStyle(
-            fontSize: 11,
+            fontSize: TypographyTokens.fontSize1,
             fontWeight: FontWeight.w700,
             letterSpacing: 0.8,
             color: scheme.onSurface.withValues(alpha: .5),
@@ -206,7 +206,7 @@ class _Timeline extends StatelessWidget {
                   child: Text(
                     day.date,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: TypographyTokens.fontSize1,
                       color: scheme.onSurface.withValues(alpha: .6),
                     ),
                   ),
@@ -229,7 +229,7 @@ class _Timeline extends StatelessWidget {
                     formatCount(day.views),
                     textAlign: TextAlign.right,
                     style: const TextStyle(
-                      fontSize: 12,
+                      fontSize: TypographyTokens.fontSize1,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -272,12 +272,14 @@ class _Tile extends StatelessWidget {
           const SizedBox(height: SpacingTokens.space8),
           Text(
             value,
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+            style: const TextStyle(
+                fontSize: TypographyTokens.fontSize6,
+                fontWeight: FontWeight.w700),
           ),
           Text(
             label,
             style: TextStyle(
-              fontSize: 13,
+              fontSize: TypographyTokens.fontSize2,
               color: scheme.onSurface.withValues(alpha: .7),
             ),
           ),
@@ -286,7 +288,7 @@ class _Tile extends StatelessWidget {
             Text(
               note!,
               style: TextStyle(
-                fontSize: 11,
+                fontSize: TypographyTokens.fontSize1,
                 color: scheme.onSurface.withValues(alpha: .45),
               ),
             ),

@@ -187,7 +187,7 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: TypographyTokens.fontSize2,
                   color: Theme.of(context)
                       .colorScheme
                       .onSurface

@@ -183,7 +183,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
           leadingWidth: 40,
           titleSpacing: 0,
           leading: IconButton(
-            icon: const Icon(Icons.close),
+            icon: const Icon(Iconsax.close_circle_copy),
             tooltip: 'Close',
             onPressed: _close,
           ),
@@ -538,7 +538,7 @@ class _InteractionButton extends ConsumerWidget {
             Text(
               policy.label,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: TypographyTokens.fontSize2,
                 fontWeight: FontWeight.w600,
                 color: scheme.primary,
               ),
@@ -570,7 +570,8 @@ class _DraftsButton extends StatelessWidget {
       ),
       child: Text(
         count == 0 ? 'Drafts' : 'Drafts ($count)',
-        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+        style: const TextStyle(
+            fontSize: TypographyTokens.fontSize2, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -630,7 +631,9 @@ class _ErrorBanner extends StatelessWidget {
           Expanded(
             child: Text(
               message,
-              style: TextStyle(fontSize: 13, color: scheme.onErrorContainer),
+              style: TextStyle(
+                  fontSize: TypographyTokens.fontSize2,
+                  color: scheme.onErrorContainer),
             ),
           ),
           if (onRetry != null)

@@ -368,7 +368,8 @@ class _Message extends StatelessWidget {
             child: Text(
               text,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white70, fontSize: 15),
+              style: const TextStyle(
+                  color: Colors.white70, fontSize: TypographyTokens.fontSize3),
             ),
           ),
         ),
@@ -395,7 +396,7 @@ class _TopBar extends StatelessWidget {
             'Videos',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: TypographyTokens.fontSize4,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -565,7 +566,9 @@ class _PageState extends ConsumerState<_Page>
                 child: Text(
                   widget.failure!,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white70, fontSize: 15),
+                  style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: TypographyTokens.fontSize3),
                 ),
               ),
             ),
@@ -727,7 +730,7 @@ class _Caption extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 15,
+                          fontSize: TypographyTokens.fontSize3,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -744,7 +747,7 @@ class _Caption extends StatelessWidget {
                   maxLines: 3,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: TypographyTokens.fontSize2,
                     height: 1.3,
                   ),
                 ),
@@ -898,7 +901,7 @@ class _RailButton extends StatelessWidget {
                     label!,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 12,
+                      fontSize: TypographyTokens.fontSize1,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

@@ -42,7 +42,7 @@ class InteractionSettingsSheet {
                   Text(
                     'Anyone can still see, repost and quote this post.',
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: TypographyTokens.fontSize2,
                       color: Theme.of(sheetContext)
                           .colorScheme
                           .onSurface
@@ -61,7 +61,7 @@ class InteractionSettingsSheet {
                 title: Text(policy.label),
                 subtitle: Text(
                   policy.detail,
-                  style: const TextStyle(fontSize: 12),
+                  style: const TextStyle(fontSize: TypographyTokens.fontSize1),
                 ),
               ),
             const SizedBox(height: SpacingTokens.space8),

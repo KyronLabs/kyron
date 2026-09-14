@@ -5,6 +5,7 @@ import '../widgets/gradient_scaffold.dart';
 import '../widgets/app_button.dart';
 import '../routes.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../repositories/auth_repository.dart';
 import '../models/onboarding_model.dart';
 import '../utils/api_error_message.dart';
@@ -120,7 +121,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 40),
-            Icon(Icons.email_outlined, size: 64, color: KyronTheme.accent),
+            Icon(Iconsax.sms_copy, size: 64, color: KyronTheme.accent),
             const SizedBox(height: 24),
             Text(
               "Enter the 6-digit code",
@@ -153,7 +154,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge
-                        ?.copyWith(fontSize: 28),
+                        ?.copyWith(fontSize: TypographyTokens.fontSize8),
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: KyronTheme.lightSurface,

@@ -188,7 +188,7 @@ class _Text extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 11,
+            fontSize: TypographyTokens.fontSize1,
             fontWeight: FontWeight.w600,
             letterSpacing: 0.3,
             color: muted,
@@ -201,7 +201,7 @@ class _Text extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: TypographyTokens.fontSize2,
               fontWeight: FontWeight.w700,
               height: 1.25,
             ),
@@ -213,7 +213,10 @@ class _Text extends StatelessWidget {
             description!,
             maxLines: maxDescriptionLines,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 12, height: 1.3, color: muted),
+            style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                height: 1.3,
+                color: muted),
           ),
         ],
       ],

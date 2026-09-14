@@ -123,7 +123,7 @@ class _CommunityComposerScreenState
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.close),
+          icon: const Icon(Iconsax.close_circle_copy),
           tooltip: 'Close',
           onPressed: () => Navigator.pop(context, false),
         ),
@@ -162,7 +162,8 @@ class _CommunityComposerScreenState
                   minLines: 4,
                   keyboardType: TextInputType.multiline,
                   textCapitalization: TextCapitalization.sentences,
-                  style: const TextStyle(fontSize: 16, height: 1.4),
+                  style: const TextStyle(
+                      fontSize: TypographyTokens.fontSize4, height: 1.4),
                   decoration: InputDecoration(
                     hintText: 'Say something to ${widget.community.name}',
                     border: InputBorder.none,
@@ -231,7 +232,7 @@ class _CommunityComposerScreenState
                     child: Text(
                       'Only members of ${widget.community.name} see this.',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: TypographyTokens.fontSize1,
                         color: scheme.onSurface.withValues(alpha: 0.55),
                       ),
                     ),
@@ -242,7 +243,7 @@ class _CommunityComposerScreenState
                     Text(
                       '${_maxCharacters - _count}',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: TypographyTokens.fontSize1,
                         fontWeight: FontWeight.w700,
                         color: over ? scheme.error : scheme.onSurface,
                       ),

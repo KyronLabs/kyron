@@ -236,7 +236,7 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
                 child: Text(
                   heading.toUpperCase(),
                   style: TextStyle(
-                    fontSize: 11,
+                    fontSize: TypographyTokens.fontSize1,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 0.8,
                     color: scheme.onSurface.withValues(alpha: 0.5),

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/auth_provider.dart';
 import '../providers/identity_provider.dart';
 import '../providers/current_user_provider.dart';
@@ -82,7 +83,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       child: Text(
         title.toUpperCase(),
         style: TextStyle(
-          fontSize: 12,
+          fontSize: TypographyTokens.fontSize1,
           fontWeight: FontWeight.w600,
           color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
           letterSpacing: 0.5,
@@ -146,7 +147,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 17,
+                          fontSize: TypographyTokens.fontSize4,
                           fontWeight: FontWeight.w500,
                           color: Theme.of(context).colorScheme.onSurface,
                           fontFamily: 'SF Pro Rounded',
@@ -162,7 +163,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: TypographyTokens.fontSize3,
                             color: Theme.of(context)
                                 .colorScheme
                                 .onSurface
@@ -253,7 +254,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: TypographyTokens.fontSize4,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -270,7 +271,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             const SizedBox(height: 20),
             const Text('Log Out?',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                    fontSize: TypographyTokens.fontSize6,
+                    fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             const Text(
               "You will need to sign in again to get back to your account.",
@@ -314,7 +317,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         ),
         title: const Text(
           'Settings',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          style: TextStyle(
+              fontSize: TypographyTokens.fontSize5,
+              fontWeight: FontWeight.w600),
         ),
       ),
       body: FocusTraversalGroup(

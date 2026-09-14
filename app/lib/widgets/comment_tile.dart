@@ -144,7 +144,7 @@ class AuthorBadge extends StatelessWidget {
       child: Text(
         'Author',
         style: TextStyle(
-          fontSize: 11,
+          fontSize: TypographyTokens.fontSize1,
           fontWeight: FontWeight.w600,
           color: scheme.primary,
         ),
@@ -183,7 +183,7 @@ class _Header extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 14,
+                      fontSize: TypographyTokens.fontSize2,
                     ),
                   ),
                 ),
@@ -192,7 +192,7 @@ class _Header extends StatelessWidget {
               Text(
                 age(comment.createdAt),
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: TypographyTokens.fontSize1,
                   color: scheme.onSurface.withValues(alpha: 0.45),
                 ),
               ),
@@ -312,7 +312,8 @@ class _Action extends StatelessWidget {
                 const SizedBox(width: SpacingTokens.space4),
                 Text(
                   formatCount(count),
-                  style: TextStyle(fontSize: 12, color: colour),
+                  style: TextStyle(
+                      fontSize: TypographyTokens.fontSize1, color: colour),
                 ),
               ],
             ],
@@ -400,7 +401,7 @@ class ThreadMoreReplies extends StatelessWidget {
                   ? 'Show 1 reply'
                   : 'Show ${formatCount(count)} replies',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: TypographyTokens.fontSize1,
                 fontWeight: FontWeight.w600,
                 color: scheme.onSurface.withValues(alpha: busy ? 0.4 : 0.6),
               ),

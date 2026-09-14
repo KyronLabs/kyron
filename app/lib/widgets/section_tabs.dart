@@ -49,11 +49,11 @@ class SectionTabs extends StatelessWidget implements PreferredSizeWidget {
             unselectedLabelColor: scheme.onSurface.withValues(alpha: 0.6),
             labelStyle: const TextStyle(
               fontWeight: FontWeight.w700,
-              fontSize: 14,
+              fontSize: TypographyTokens.fontSize2,
             ),
             unselectedLabelStyle: const TextStyle(
               fontWeight: FontWeight.w600,
-              fontSize: 14,
+              fontSize: TypographyTokens.fontSize2,
             ),
             labelPadding: const EdgeInsets.symmetric(
               horizontal: SpacingTokens.space16,

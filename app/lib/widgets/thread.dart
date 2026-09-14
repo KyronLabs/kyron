@@ -21,6 +21,7 @@
 // and impossible to see in a smoke test.
 import 'package:flutter/foundation.dart' show listEquals;
 import 'package:flutter/material.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 import 'hairline.dart';
 
@@ -55,6 +56,14 @@ class ThreadGeometry {
   /// below it. Measuring from that row's own size drew them several points to
   /// the left: a line beside the thread rather than a continuation of it.
   static const double avatar = 34;
+
+  /// Between the avatar column and the body.
+  ///
+  /// Named because two files have to agree on it: the row below and the
+  /// skeleton that stands in for it while a thread loads. Both carried a
+  /// bare 10, which is not on the spacing scale and would have drifted apart
+  /// the first time either was touched.
+  static const double gutter = SpacingTokens.space12;
 
   static double indentFor(int depth) => indent * depth.clamp(0, maxIndent);
 
@@ -365,7 +374,7 @@ class ThreadItem extends StatelessWidget {
                   height: avatarSize,
                   child: avatar,
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: ThreadGeometry.gutter),
                 Expanded(child: child),
               ],
             ),

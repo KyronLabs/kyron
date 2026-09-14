@@ -1,5 +1,7 @@
 // lib/widgets/story_pill.dart
 import 'package:flutter/material.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../providers/stories_provider.dart';
 
 class StoryPill extends StatefulWidget {
@@ -173,7 +175,7 @@ class _StoryPillState extends State<StoryPill>
                     child: Text(
                       _getLabel(),
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: TypographyTokens.fontSize1,
                         color: _getLabelColor(context),
                         fontWeight: widget.status == StoryStatus.yourStory
                             ? FontWeight.w600
@@ -196,7 +198,7 @@ class _StoryPillState extends State<StoryPill>
   Widget _buildAvatarContent(BuildContext context) {
     switch (widget.status) {
       case StoryStatus.yourStory:
-        return const Icon(Icons.add, size: 22, color: Colors.white);
+        return const Icon(Iconsax.add, size: 22, color: Colors.white);
       case StoryStatus.uploading:
         return const SizedBox.shrink();
       default:
@@ -217,7 +219,7 @@ class _StoryPillState extends State<StoryPill>
 
   Widget _defaultAvatar() {
     return Icon(
-      Icons.person,
+      Iconsax.user_copy,
       size: 20,
       color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
     );

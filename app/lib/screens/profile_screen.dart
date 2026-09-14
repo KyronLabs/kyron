@@ -352,7 +352,7 @@ class _TabStrip extends SliverPersistentHeaderDelegate {
                             child: Text(
                               tab.label,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: TypographyTokens.fontSize2,
                                 fontWeight: tab == selected
                                     ? FontWeight.w700
                                     : FontWeight.w500,
@@ -646,7 +646,7 @@ class _Header extends ConsumerWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-              fontSize: 22,
+              fontSize: TypographyTokens.fontSize6,
               fontWeight: FontWeight.w800,
               height: 1.2,
             ),
@@ -659,14 +659,16 @@ class _Header extends ConsumerWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: TypographyTokens.fontSize3,
                   color: scheme.onSurface.withValues(alpha: 0.6),
                 ),
               ),
             ),
           if (bio != null && bio.isNotEmpty) ...[
             const SizedBox(height: SpacingTokens.space12),
-            Text(bio, style: const TextStyle(fontSize: 15, height: 1.4)),
+            Text(bio,
+                style: const TextStyle(
+                    fontSize: TypographyTokens.fontSize3, height: 1.4)),
           ],
           if ((location != null && location.isNotEmpty) ||
               (website != null && website.isNotEmpty)) ...[
@@ -773,13 +775,15 @@ class _Count extends StatelessWidget {
       children: [
         Text(
           formatCount(value),
-          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+          style: const TextStyle(
+              fontSize: TypographyTokens.fontSize3,
+              fontWeight: FontWeight.w700),
         ),
         const SizedBox(width: SpacingTokens.space4),
         Text(
           label,
           style: TextStyle(
-            fontSize: 14,
+            fontSize: TypographyTokens.fontSize2,
             color: scheme.onSurface.withValues(alpha: 0.65),
           ),
         ),
@@ -925,7 +929,9 @@ class _Meta extends StatelessWidget {
       children: [
         Icon(icon, size: 14, color: muted),
         const SizedBox(width: SpacingTokens.space4),
-        Text(text, style: TextStyle(fontSize: 13, color: muted)),
+        Text(text,
+            style:
+                TextStyle(fontSize: TypographyTokens.fontSize2, color: muted)),
       ],
     );
   }
@@ -974,7 +980,9 @@ class _DidChip extends StatelessWidget {
                 did,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 11, color: scheme.primary),
+                style: TextStyle(
+                    fontSize: TypographyTokens.fontSize1,
+                    color: scheme.primary),
               ),
             ),
           ],
