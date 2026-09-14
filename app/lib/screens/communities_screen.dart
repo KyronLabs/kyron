@@ -131,7 +131,10 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen>
           child: FloatingActionButton(
             onPressed: _create,
             tooltip: 'Start a community',
-            child: const Icon(Iconsax.add),
+            // Outlined, matching the create button in the bar right below
+            // it: the two sat one above the other showing the same plus in
+            // two different weights.
+            child: const Icon(Iconsax.add_copy),
           ),
         ),
       ],

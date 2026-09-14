@@ -39,10 +39,23 @@ class CommunityScreen extends ConsumerWidget {
       // should not have been there.
       floatingActionButton: community == null || !community.canPost
           ? null
-          : FloatingActionButton(
-              onPressed: () => _compose(context, ref, community),
-              tooltip: 'Post in ${community.name}',
-              child: const Icon(Iconsax.edit_2),
+          : Padding(
+              // Clear of the home indicator. `endFloat` places the button 16
+              // above the *body*, and this body runs to the bottom of the
+              // screen -- so the button landed 32 up on a phone with a 34-pixel
+              // gesture inset, two pixels inside the system's own strip.
+              // Adding the inset puts it 16 clear of it, which is where
+              // Material puts a floating button.
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.paddingOf(context).bottom,
+              ),
+              child: FloatingActionButton(
+                onPressed: () => _compose(context, ref, community),
+                tooltip: 'Post in ${community.name}',
+                // Outlined, like every other glyph in Kyron. `Iconsax.edit_2`
+                // is the filled weight; the `_copy` suffix is the outline.
+                child: const Icon(Iconsax.edit_2_copy),
+              ),
             ),
       body: Stack(
         children: [
@@ -182,12 +195,20 @@ class _Header extends StatelessWidget {
     required this.onToggle,
   });
 
-  /// How far the picture hangs below the banner.
-  static const double _overhang = 28;
-
   /// The picture itself. Large enough to be the thing you look at first,
   /// which is what a community's identity should be on its own page.
   static const double _avatar = 80;
+
+  /// The ring of page colour around it.
+  static const double _ring = 3;
+
+  /// The whole tile, ring included, which is what actually straddles the edge.
+  static const double _tile = _avatar + _ring * 2;
+
+  /// Exactly half of it hangs below the banner, so the banner's bottom edge
+  /// runs through the middle of the picture. It was 28 of 86 before -- a
+  /// third -- which reads as a picture that slipped rather than one placed.
+  static const double _overhang = _tile / 2;
 
   @override
   Widget build(BuildContext context) {
@@ -212,13 +233,13 @@ class _Header extends StatelessWidget {
               left: SpacingTokens.space16,
               bottom: -_overhang,
               child: Container(
-                padding: const EdgeInsets.all(3),
+                padding: const EdgeInsets.all(_ring),
                 decoration: ShapeDecoration(
                   color: scheme.surface,
                   // The ring is the page's own colour in the same shape, so
                   // the picture reads as lifted off the banner rather than
                   // punched through it.
-                  shape: SquircleShape.borderFor(_avatar + 6),
+                  shape: SquircleShape.borderFor(_tile),
                 ),
                 child: CommunityAvatar(
                   avatarUrl: community.avatarUrl,
@@ -401,7 +422,13 @@ class _GlassButton extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onPressed,
-          child: const SizedBox.square(dimension: 40),
+          child: SizedBox.square(
+            dimension: 40,
+            // The icon. It was declared on this widget and never drawn, so
+            // both controls over the banner rendered as a black disc with
+            // nothing in it -- pressable, correct, and invisible.
+            child: Icon(icon, size: 20, color: Colors.white),
+          ),
         ),
       ),
     );

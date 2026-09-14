@@ -14,6 +14,32 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **The floating action buttons were a white glyph on a white disc.** Measured
+  at **1.06:1** on the light theme. Material 3 draws a `FloatingActionButton`
+  in `primaryContainer` on `onPrimaryContainer`; the design system set the
+  first and left the second unset, and an unset `on*` is not derived from its
+  pair — it comes back pure white. Fixed at the source, with contrast tests
+  and the CI that repository had never had; the app now pins that commit.
+  Kyron's accent with a white glyph, 3.14:1.
+
+- **The icons on the community page's banner controls were never drawn.**
+  `_GlassButton` took an `icon` and rendered an empty 40-pixel box inside a
+  black disc — so back and Manage showed, worked, and were invisible.
+
+- **The community picture now sits exactly halfway across the banner's
+  bottom edge.** It hung 28 of its 86 pixels below — a third — which reads as
+  a picture that slipped rather than one that was placed.
+
+- **The community page's floating button was inside the home indicator.**
+  `endFloat` places it 16 above the *body*, and that body runs to the bottom
+  of the screen, so on a 34-pixel gesture inset it landed 32 up — two pixels
+  into the system's own strip. It is 16 clear of it now, and 16 from the right
+  rather than 24.
+
+- **Both community buttons drew filled glyphs.** Kyron's are outlined. On the
+  Communities tab the button sat directly above the bar's own create button,
+  the two showing the same plus in two different weights.
+
 - **The README and the ROADMAP called the AR camera unbuilt.** It sat under
   *Not built yet* in one and *Stubs shipped as if finished* in the other,
   while the cell beside each heading described lenses that work: colour
