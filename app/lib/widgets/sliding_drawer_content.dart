@@ -13,6 +13,7 @@ import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
+import 'skeleton.dart';
 
 class SlidingDrawerContent extends ConsumerWidget {
   final VoidCallback onCloseDrawer;
@@ -47,7 +48,7 @@ class SlidingDrawerContent extends ConsumerWidget {
           children: [
             SizedBox(height: MediaQuery.of(context).padding.top + 18),
             userAsync.when(
-              loading: () => _headerSkeleton(scheme),
+              loading: () => _headerSkeleton(),
               error: (error, _) => _headerError(context, ref, scheme, error),
               data: (user) => _header(context, scheme, user),
             ),
@@ -202,27 +203,38 @@ class SlidingDrawerContent extends ConsumerWidget {
     );
   }
 
-  Widget _headerSkeleton(ColorScheme scheme) {
-    Widget block(double width, double height, double radius) => Container(
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-            color: scheme.surfaceContainerHighest,
-            borderRadius: BorderRadius.circular(radius),
-          ),
-        );
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          block(56, 56, 28),
-          const SizedBox(height: SpacingTokens.space12),
-          block(140, 20, 4),
-          const SizedBox(height: SpacingTokens.space8),
-          block(180, 16, 4),
-        ],
+  /// The header's own shape while /profile/me is in flight.
+  ///
+  /// It used to be three still grey blocks and it stopped at the handle, so
+  /// the counts below it popped in and shoved the navigation down. These are
+  /// the real widget's sizes, shimmering, down to the followers row.
+  Widget _headerSkeleton() {
+    return const SkeletonGroup(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: SpacingTokens.space20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SkeletonBox.circle(size: 56),
+            SizedBox(height: SpacingTokens.space12),
+            // The display name, at the height its text occupies.
+            SkeletonBox.line(width: 150, height: 17),
+            SizedBox(height: 6),
+            // The handle.
+            SkeletonBox.line(width: 96, height: 13),
+            SizedBox(height: SpacingTokens.space12),
+            // Followers, following, KP -- the row that was missing entirely.
+            Row(
+              children: [
+                SkeletonBox.line(width: 72, height: 15),
+                SizedBox(width: SpacingTokens.space16),
+                SkeletonBox.line(width: 70, height: 15),
+                SizedBox(width: SpacingTokens.space16),
+                SkeletonBox.line(width: 44, height: 15),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

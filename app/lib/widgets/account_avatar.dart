@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../providers/current_user_provider.dart';
+import 'skeleton.dart';
 
 /// The signed-in account's picture.
 ///
@@ -32,9 +33,20 @@ class AccountAvatar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
+    final account = ref.watch(currentUserProvider);
     // asData rather than `when`: a failed profile load should still show the
     // fallback glyph, not an error state in the middle of an app bar.
-    final avatarUrl = ref.watch(currentUserProvider).asData?.value.avatarUrl;
+    final avatarUrl = account.asData?.value.avatarUrl;
+
+    // While the profile is still being read, a shimmer rather than the
+    // fallback glyph. The glyph is what Kyron shows an account that has no
+    // picture, so showing it here told everybody they had none until the
+    // request came back -- every launch, on every screen with a top bar.
+    if (account.isLoading && !account.hasValue) {
+      return SkeletonGroup(
+        child: SkeletonBox.circle(size: radius * 2),
+      );
+    }
 
     Widget avatar = CircleAvatar(
       radius: radius,

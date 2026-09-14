@@ -29,6 +29,7 @@ import '../widgets/post_options_sheet.dart';
 import '../widgets/post_text.dart';
 import '../widgets/repost_sheet.dart';
 import '../widgets/share_post_sheet.dart';
+import '../widgets/skeleton.dart';
 
 /// Which list to page through, and which post to start on.
 class VideoFeedArgs {
@@ -151,6 +152,14 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen>
     final clips = _clipsIn(state);
 
     if (clips.isEmpty) {
+      // A clip's own shape while the first page is on its way, rather than the
+      // word "Loading" in the middle of a black screen -- which is exactly
+      // what a clip that never arrives looks like.
+      if (state.isLoadingFirstPage) {
+        return const _Frame(
+          child: Stack(children: [SkeletonClip(), _TopBar()]),
+        );
+      }
       return _Frame(child: _Message(text: _emptyMessage(state)));
     }
 
@@ -200,10 +209,9 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen>
     );
   }
 
-  String _emptyMessage(FeedState state) {
-    if (state.isLoadingFirstPage) return 'Loading…';
-    return state.error ?? 'There are no clips here yet.';
-  }
+  /// Only reached once loading is done: the loading case is a skeleton.
+  String _emptyMessage(FeedState state) =>
+      state.error ?? 'There are no clips here yet.';
 
   void _onPage(int index) {
     setState(() => _index = index);

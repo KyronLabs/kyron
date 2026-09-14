@@ -16,6 +16,7 @@ import 'package:kyron_app/services/video_stage.dart';
 import 'package:video_player/video_player.dart';
 import 'package:kyron_app/utils/route_watch.dart';
 import 'package:kyron_app/widgets/media_tile_grid.dart';
+import 'package:kyron_app/widgets/skeleton.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
 import 'support/fake_video_platform.dart';
@@ -70,6 +71,16 @@ class _FakeFeed extends FeedRepository {
     final post = posts.firstWhere((p) => p.id == postId);
     return post.likes + (liked ? 1 : 0);
   }
+}
+
+/// A feed request that only answers when the test says so.
+class _SilentFeed extends FeedRepository {
+  final Completer<FeedPage> held;
+
+  _SilentFeed(this.held) : super(ApiClient());
+
+  @override
+  Future<FeedPage> videos({String? cursor, int limit = 20}) => held.future;
 }
 
 Future<_FakeFeed> _pump(
@@ -437,6 +448,67 @@ void main() {
       await tester.tap(find.byType(GestureDetector).first);
       await tester.pump();
       expect(opened?.id, 'a');
+    });
+  });
+
+  group('while the first page is loading', () {
+    testWidgets('shows a clip, not the word Loading on a black screen',
+        (tester) async {
+      // "Loading…" in the middle of black is indistinguishable from a clip
+      // that will never arrive.
+      final held = Completer<FeedPage>();
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            feedRepositoryProvider.overrideWithValue(_SilentFeed(held)),
+          ],
+          child: const MaterialApp(
+            home: VideoFeedScreen(
+              args: VideoFeedArgs(
+                source: PostListSource.videos,
+                postId: 'a',
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pump();
+
+      expect(find.byType(SkeletonClip), findsOneWidget);
+      expect(find.text('Loading…'), findsNothing);
+
+      // Still a way back out of it.
+      expect(find.byIcon(Iconsax.arrow_left_copy), findsOneWidget);
+
+      held.complete(const FeedPage(items: [], nextCursor: null));
+      await tester.pump();
+      await tester.pump();
+    });
+
+    testWidgets('says so plainly once the load finishes empty', (tester) async {
+      final held = Completer<FeedPage>();
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            feedRepositoryProvider.overrideWithValue(_SilentFeed(held)),
+          ],
+          child: const MaterialApp(
+            home: VideoFeedScreen(
+              args: VideoFeedArgs(
+                source: PostListSource.videos,
+                postId: 'a',
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pump();
+      held.complete(const FeedPage(items: [], nextCursor: null));
+      await tester.pump();
+      await tester.pump();
+
+      expect(find.byType(SkeletonClip), findsNothing);
+      expect(find.text('There are no clips here yet.'), findsOneWidget);
     });
   });
 }
