@@ -12,15 +12,24 @@ overclaimed for a day, and was believed. Neither document outranks the other.
 **The code settles it**, and anything here that has not been checked against
 the code recently should be treated as a guess.
 
-Last audited: 9 September 2026 — every claim below re-checked against the
-repository, and four found stale.
+Last audited: 14 September 2026 — every claim below re-checked against the
+repository.
+
+That pass found the failure this file was written to prevent, pointing the
+other way. **AR camera lenses sat under *Stubs shipped as if finished*, and in
+the README under *Not built yet*, while the cell beside the heading described
+lenses that work.** Seven ship in the app, four more in the catalogue across
+all three schema versions, and 208 tests cover them. The entry was written
+before the AR work landed and nobody moved it, so both documents went on
+calling built work a stub — the same staleness as an overclaim, and harder to
+notice, because a document that undersells itself does not read as a lie.
 
 ---
 
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 667 Flutter tests and 443 API
+(Supabase), a Flutter client, REST between them. 851 Flutter tests and 458 API
 tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 
 ### Built and working
@@ -40,12 +49,12 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 | Settings | The whole suite, including every subscreen |
 | Security | Anon key shut out of all 40 API tables, RLS on, rate limiting on |
 | Operations | Request ids, structured request logs, a guarded `/metrics`, error aggregation |
+| AR camera | Seven colour lenses bundled, more from the kyron-lenses catalogue without an app release. Face-tracked attachments and effects that change the face, on MediaPipe's 478 landmarks, measured in pupil-gaps. Flat sprites: no 3D, expression, occlusion or warping -- `docs/AR.md` |
 
 ### Stubs shipped as if finished
 
 | Thing | Reality |
 |:--|:--|
-| AR camera lenses | Colour lenses and face-tracked ones, published from the kyron-lenses repository rather than compiled in. Flat sprites on 478 landmarks; no 3D, expression or occlusion yet -- `docs/AR.md` |
 | Live | `ComingSoonScreen.live()` |
 | DID / portable identity | Half built. A real `did:key`, proved by signature -- but nothing consumes it, so it is not portable. `docs/IDENTITY.md` |
 | End-to-end encryption | Built for direct messages. X25519 per install, XChaCha20-Poly1305 on the wire, the server holding ciphertext it has no key for -- `docs/E2EE.md`. One device per install, no forward secrecy, no key verification, attachments still in the clear |
