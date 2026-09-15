@@ -169,6 +169,7 @@ jobs:
           # wrong project's key being committed, which is why the app now
           # refuses to launch rather than reach a Supabase it was not meant to.
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
           VERSION: ${{ needs.checks.outputs.version }}
         run: |
           set -euo pipefail
@@ -184,7 +185,8 @@ jobs:
             shift
             ( cd app && flutter build apk --release "$@" \
                 --build-number "$KYRON_BUILD_NUMBER" \
-                ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} )
+                ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
+                ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
             # Missing means the build claimed success and produced nothing,
             # which is a broken release rather than a smaller one.
             test -f "$out" || { echo "Missing $out after the $name build."; exit 1; }
@@ -199,10 +201,12 @@ jobs:
       - name: Build release App Bundle
         env:
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
         run: |
           flutter build appbundle --release \
             --build-number "$KYRON_BUILD_NUMBER" \
-            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"}
+            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
+                ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"}
 
       # The APKs are already collected; this is the bundle, which is what
       # goes to the Play Store and is not installable by hand.
@@ -260,6 +264,7 @@ jobs:
       - name: Build the Windows app
         env:
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
@@ -270,6 +275,9 @@ jobs:
           $flags = @('--release', '--build-number', $env:KYRON_BUILD_NUMBER)
           if ($env:SUPABASE_ANON_KEY) {
             $flags += "--dart-define=SUPABASE_ANON_KEY=$env:SUPABASE_ANON_KEY"
+          }
+          if ($env:GIPHY_API_KEY) {
+            $flags += "--dart-define=GIPHY_API_KEY=$env:GIPHY_API_KEY"
           }
           flutter build windows $flags
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

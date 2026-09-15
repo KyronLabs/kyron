@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/app_language.dart';
+import '../models/app_theme.dart';
 
 /// Device-level preferences: things that belong to this install rather than to
 /// the account.
@@ -14,6 +15,8 @@ class AppPreferences {
   static const _kEmailEnabled = 'pref_email_enabled';
   static const _kVideoMuted = 'pref_video_muted';
   static const _kTermsAcceptedAt = 'pref_terms_accepted_at';
+  static const _kTheme = 'pref_theme';
+  static const _kDataSaver = 'pref_data_saver';
 
   /// The scales the font-size screen offers, smallest first.
   static const textScales = <double>[0.85, 1.0, 1.15, 1.3];
@@ -87,4 +90,21 @@ class AppPreferences {
 
   Future<void> writeEmailEnabled(bool enabled) async =>
       (await _prefs).setBool(_kEmailEnabled, enabled);
+
+  Future<AppTheme> readTheme() async =>
+      AppTheme.fromCode((await _prefs).getString(_kTheme));
+
+  Future<void> writeTheme(AppTheme theme) async =>
+      (await _prefs).setString(_kTheme, theme.code);
+
+  /// Whether to hold back the traffic the reader did not ask for.
+  ///
+  /// Off by default: a feed where clips play as they scroll past is what the
+  /// app is for, and turning that off for everybody to save the few who are
+  /// metered is the wrong way round. The ones who are metered can say so.
+  Future<bool> readDataSaver() async =>
+      (await _prefs).getBool(_kDataSaver) ?? false;
+
+  Future<void> writeDataSaver(bool enabled) async =>
+      (await _prefs).setBool(_kDataSaver, enabled);
 }

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -7,6 +8,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/app_language.dart';
 import '../providers/preferences_provider.dart';
 import '../services/app_preferences.dart';
+import 'package:flutter/foundation.dart' show defaultTargetPlatform;
+import '../providers/feedback_provider.dart';
+import '../repositories/feedback_repository.dart';
+import '../utils/api_error_message.dart';
+import '../services/app_info.dart';
+import '../widgets/action_button.dart';
+import '../widgets/toast.dart';
 import '../widgets/settings_scaffold.dart';
 import '../widgets/empty_state.dart';
 
@@ -386,20 +394,214 @@ class SettingsContactSupportScreen extends StatelessWidget {
   }
 }
 
-class SettingsFeedbackScreen extends StatelessWidget {
+/// Reporting a bug or asking for something, from inside the app.
+///
+/// This screen used to say "Feedback has nowhere to go yet" and mean it: there
+/// was no endpoint, so a form would have accepted what somebody wrote and
+/// dropped it. There is one now, and it files an issue on the repository.
+///
+/// Two things it is careful about. It asks the server whether reports can be
+/// filed *before* offering the form, so nobody writes three paragraphs into a
+/// box that cannot send them. And it says plainly that what they write will be
+/// public, because it will be: an issue on a public repository is readable by
+/// anybody.
+class SettingsFeedbackScreen extends ConsumerStatefulWidget {
   const SettingsFeedbackScreen({super.key});
 
   @override
+  ConsumerState<SettingsFeedbackScreen> createState() =>
+      _SettingsFeedbackScreenState();
+}
+
+class _SettingsFeedbackScreenState
+    extends ConsumerState<SettingsFeedbackScreen> {
+  final _title = TextEditingController();
+  final _body = TextEditingController();
+
+  FeedbackKind _kind = FeedbackKind.bug;
+  bool _sending = false;
+  String? _error;
+
+  /// Null while the question is still out.
+  bool? _available;
+
+  /// Which build this is, for the issue. Null if it could not be read.
+  ///
+  /// Fetched while the form is being filled in rather than when Send is
+  /// pressed: it is a platform call, it is context rather than the report,
+  /// and nobody's three paragraphs should be waiting behind it.
+  String? _version;
+
+  @override
+  void initState() {
+    super.initState();
+    _askIfItCanBeSent();
+  }
+
+  @override
+  void dispose() {
+    _title.dispose();
+    _body.dispose();
+    super.dispose();
+  }
+
+  Future<void> _askIfItCanBeSent() async {
+    unawaited(_readVersion());
+    try {
+      final can = await ref.read(feedbackRepositoryProvider).isAvailable();
+      if (mounted) setState(() => _available = can);
+    } catch (_) {
+      // Treated as "not now" rather than as an error: the difference to
+      // somebody standing here is nothing, and a red screen over a status
+      // check reads as though their report failed.
+      if (mounted) setState(() => _available = false);
+    }
+  }
+
+  /// Best effort, and never in the way.
+  ///
+  /// A report filed without a version number is worth less to whoever reads
+  /// it; a report not filed at all because the version could not be read is
+  /// worth nothing to anybody.
+  Future<void> _readVersion() async {
+    try {
+      final info = await AppInfo.load();
+      if (mounted) _version = info.display;
+    } on Object {
+      // Left null. The issue still says which platform it came from.
+    }
+  }
+
+  bool get _canSend =>
+      !_sending &&
+      _title.text.trim().length >= 3 &&
+      _body.text.trim().length >= 10;
+
+  Future<void> _send() async {
+    setState(() {
+      _sending = true;
+      _error = null;
+    });
+
+    try {
+      final filed = await ref.read(feedbackRepositoryProvider).send(
+            kind: _kind,
+            title: _title.text.trim(),
+            body: _body.text.trim(),
+            appVersion: _version,
+            platform: defaultTargetPlatform.name,
+          );
+      if (!mounted) return;
+      setState(() => _sending = false);
+      Toast.show(context, 'Sent. It is report #${filed.number}.');
+      Navigator.pop(context);
+    } catch (error) {
+      if (!mounted) return;
+      setState(() {
+        _sending = false;
+        _error = describeApiError(error);
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const SettingsScaffold(
+    final scheme = Theme.of(context).colorScheme;
+
+    if (_available == null) {
+      return const SettingsScaffold(
+        title: 'Send Feedback',
+        child: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    if (_available == false) {
+      return const SettingsScaffold(
+        title: 'Send Feedback',
+        child: EmptyState(
+          art: EmptyArt.messages,
+          title: 'Feedback cannot be sent right now',
+          detail:
+              'This build cannot reach the place reports are filed. Said here '
+              'rather than in a form, so nothing you write is taken and lost.',
+        ),
+      );
+    }
+
+    return SettingsScaffold(
       title: 'Send Feedback',
-      child: EmptyState(
-        art: EmptyArt.messages,
-        title: 'Feedback has nowhere to go yet',
-        detail:
-            'A form here would accept what you write and drop it -- there is '
-            'no endpoint behind it. Rather than take feedback and lose it, '
-            'this screen waits until there is somewhere to put it.',
+      // A Column, not a ListView: SettingsScaffold already puts its child in a
+      // scroll view, and a second one inside it is a vertical viewport given
+      // unbounded height -- which does not lay out at all.
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Two, drawn rather than hidden behind a menu: there are only two.
+          Row(
+            children: [
+              for (final kind in FeedbackKind.values) ...[
+                Expanded(
+                  child: ActionButton(
+                    label: kind.label,
+                    compact: true,
+                    kind: _kind == kind
+                        ? ActionButtonKind.primary
+                        : ActionButtonKind.outlined,
+                    onPressed: () => setState(() => _kind = kind),
+                  ),
+                ),
+                if (kind != FeedbackKind.values.last)
+                  const SizedBox(width: SpacingTokens.space8),
+              ],
+            ],
+          ),
+          const SizedBox(height: SpacingTokens.space16),
+          TextField(
+            controller: _title,
+            maxLength: 120,
+            onChanged: (_) => setState(() {}),
+            decoration: const InputDecoration(
+              labelText: 'In one line',
+              hintText: 'The composer has no Post button',
+            ),
+          ),
+          const SizedBox(height: SpacingTokens.space8),
+          TextField(
+            controller: _body,
+            maxLines: 8,
+            maxLength: 4000,
+            onChanged: (_) => setState(() {}),
+            decoration: const InputDecoration(
+              labelText: 'What happened',
+              alignLabelWithHint: true,
+              hintText: 'What you did, what you expected, what happened '
+                  'instead.',
+            ),
+          ),
+          const _Note(
+            'This is filed as an issue on Kyron\'s public repository, so what '
+            'you write here can be read by anybody. Your name, handle and '
+            'email are not attached to it -- only the words above and which '
+            'version of the app you are running.',
+          ),
+          if (_error != null) ...[
+            const SizedBox(height: SpacingTokens.space12),
+            Text(
+              _error!,
+              style: TextStyle(
+                color: scheme.error,
+                fontSize: TypographyTokens.fontSize2,
+              ),
+            ),
+          ],
+          const SizedBox(height: SpacingTokens.space16),
+          ActionButton(
+            label: 'Send',
+            expand: true,
+            busy: _sending,
+            onPressed: _canSend ? _send : null,
+          ),
+        ],
       ),
     );
   }
