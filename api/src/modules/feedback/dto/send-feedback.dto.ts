@@ -1,4 +1,10 @@
-import { IsEnum, IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
+import {
+  IsEnum,
+  IsOptional,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 
 /** What somebody is telling us. Two kinds, because they are two labels. */
 export enum FeedbackKind {

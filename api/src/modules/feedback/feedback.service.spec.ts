@@ -27,12 +27,12 @@ describe('filing feedback', () => {
     calls = [];
     process.env.GITHUB_ISSUE_REPO = 'KyronLabs/kyron';
     process.env.GITHUB_ISSUE_TOKEN = 'a-secret-token';
-    global.fetch = jest.fn(async (url: string, init: RequestInit) => {
+    global.fetch = jest.fn((url: string, init: RequestInit) => {
       calls.push({ url: String(url), init });
       return {
         ok: true,
         status: 201,
-        json: async () => ({
+        json: () => ({
           number: 42,
           html_url: 'https://github.com/KyronLabs/kyron/issues/42',
         }),
@@ -46,7 +46,15 @@ describe('filing feedback', () => {
 
   /** The JSON body that went to GitHub. */
   function sent(): { title: string; body: string; labels: string[] } {
-    return JSON.parse(String(calls[0].init.body));
+    const body = calls[0]?.init.body;
+    if (typeof body !== 'string') {
+      throw new Error('Expected GitHub request body to be a string');
+    }
+    return JSON.parse(body) as {
+      title: string;
+      body: string;
+      labels: string[];
+    };
   }
 
   it('answers with where the report went', async () => {
@@ -84,7 +92,9 @@ describe('filing feedback', () => {
   it('never sends the token anywhere but GitHub', async () => {
     await new FeedbackService().file(report());
 
-    expect(calls[0].url).toBe('https://api.github.com/repos/KyronLabs/kyron/issues');
+    expect(calls[0].url).toBe(
+      'https://api.github.com/repos/KyronLabs/kyron/issues',
+    );
     expect(sent().body).not.toContain('a-secret-token');
     expect(sent().title).not.toContain('a-secret-token');
   });
@@ -127,10 +137,10 @@ describe('filing feedback', () => {
   });
 
   it('says nothing was sent when GitHub refuses', async () => {
-    global.fetch = jest.fn(async () => ({
+    global.fetch = jest.fn(() => ({
       ok: false,
       status: 403,
-      json: async () => ({}),
+      json: () => ({}),
     })) as unknown as typeof fetch;
 
     await expect(new FeedbackService().file(report())).rejects.toThrow(
@@ -180,9 +190,9 @@ describe('filing feedback', () => {
       for (let i = 0; i < cap; i++) await service.file(report(), 'ada');
 
       // Grace has filed nothing. One noisy account must not silence everyone.
-      await expect(
-        service.file(report(), 'grace'),
-      ).resolves.toMatchObject({ number: 42 });
+      await expect(service.file(report(), 'grace')).resolves.toMatchObject({
+        number: 42,
+      });
     });
 
     it('lets an account file again once the window has passed', async () => {

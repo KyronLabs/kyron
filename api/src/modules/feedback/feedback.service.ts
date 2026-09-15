@@ -88,24 +88,27 @@ export class FeedbackService {
     // malformed request is not counted and a refused one is not filed.
     if (accountId) this.countOrRefuse(accountId);
 
-    const response = await fetch(`https://api.github.com/repos/${repo}/issues`, {
-      method: 'POST',
-      headers: {
-        authorization: `Bearer ${token}`,
-        accept: 'application/vnd.github+json',
-        'content-type': 'application/json',
-        'user-agent': 'kyron-api',
+    const response = await fetch(
+      `https://api.github.com/repos/${repo}/issues`,
+      {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${token}`,
+          accept: 'application/vnd.github+json',
+          'content-type': 'application/json',
+          'user-agent': 'kyron-api',
+        },
+        body: JSON.stringify({
+          title,
+          body: this.compose(dto, body),
+          labels: [
+            'from-app',
+            dto.kind === FeedbackKind.Bug ? 'bug' : 'enhancement',
+          ],
+        }),
+        signal: AbortSignal.timeout(15000),
       },
-      body: JSON.stringify({
-        title,
-        body: this.compose(dto, body),
-        labels: [
-          'from-app',
-          dto.kind === FeedbackKind.Bug ? 'bug' : 'enhancement',
-        ],
-      }),
-      signal: AbortSignal.timeout(15000),
-    });
+    );
 
     if (!response.ok) {
       // The status, never the token or the response, which can echo the
