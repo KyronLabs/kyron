@@ -12,7 +12,53 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Changed
+
+- **The GIF picker is on GIPHY.** Tenor has stopped taking new sign-ups, so a
+  `TENOR_API_KEY` cannot be obtained any more and the picker would have been
+  permanently off in every build made from here on. Pass `GIPHY_API_KEY` at
+  build time instead. GIPHY's free tier requires its mark to be shown wherever
+  its results are, so the picker draws **Powered by GIPHY** under the grid.
+
+- **Leaving a community is behind a question.** "Joined" was a button whose
+  only action was to leave, in the header of a page somebody reads every day —
+  one stray tap dropped them out, with no warning, and the button then read
+  "Join", which looks like a failure rather than like it worked. It is in a
+  menu at the top of the banner now, with share, copy link and Manage, and it
+  asks first. Join is unchanged for anybody who has not joined.
+
+- **A community's compose button is the one from the page before it** — the
+  black disc the Communities page carries, centred, rather than a stock blue
+  Material button in the bottom-right corner over the last post in the list.
+
 ### Fixed
+
+- **Every top bar turned faintly blue when a list scrolled under it, and only
+  then.** `elevation: 0` does not cover it: Material 3 keeps a *second*
+  elevation for the scrolled-under state and washes the bar in `surfaceTint`
+  — the primary colour — at anything above zero. Both are off now, and a
+  hairline appears under the bar in the tint's place.
+
+- **The interest chips, the other person's chat bubbles and the post analytics
+  tiles had no colour of their own.** Measured at **1.00:1** against the page
+  behind them — identical, not close. Flutter falls all four Material 3
+  container roles back to `surface` when a ColorScheme is built without them,
+  and all three of Kyron's were, so *every* container in the app was drawing in
+  the background colour.
+
+- **The composer had no Post button, and Drafts sat on top of the close
+  button.** One cause for both: the design system's button themes set
+  `minimumSize: Size.fromHeight(40)`, which is Flutter's way of writing
+  *infinite width*. An app bar's actions row hands its children an unbounded
+  width, so the button asked for an infinite one, failed
+  `BoxConstraints.debugAssertIsValid`, and was never drawn — and the toolbar it
+  broke put everything else in the wrong place. The community composer's Post
+  button had the identical defect.
+
+- **The in-app browser's icons are outlines.** All eleven were the filled
+  weight, in an interface drawn entirely in outlines. The add-new-interest
+  button and the topic picker's tick follow. Icons that are filled to mean a
+  *state* — a liked post, the selected tab, a playing video — are left alone.
 
 - **The floating action buttons were a white glyph on a white disc.** Measured
   at **1.06:1** on the light theme. Material 3 draws a `FloatingActionButton`
