@@ -16,6 +16,8 @@ import '../utils/mention_token.dart';
 import '../widgets/media_tray.dart';
 import '../widgets/mention_picker_sheet.dart';
 import '../widgets/toast.dart';
+import '../widgets/kyron_app_bar.dart';
+import '../widgets/action_button.dart';
 
 /// Writes a post into one community.
 ///
@@ -121,7 +123,7 @@ class _CommunityComposerScreenState
     final over = _count > _maxCharacters;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.close_circle_copy),
           tooltip: 'Close',
@@ -132,14 +134,15 @@ class _CommunityComposerScreenState
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: SpacingTokens.space8),
-            child: FilledButton(
+            // The same fix as the main composer's, for the same reason: the
+            // design system's button themes carry an infinite-width minimum,
+            // which an app bar's actions row cannot satisfy, so this button
+            // was never drawn either.
+            child: ActionButton(
+              label: 'Post',
+              compact: true,
+              busy: _posting,
               onPressed: _canPost ? _post : null,
-              child: _posting
-                  ? const SizedBox.square(
-                      dimension: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : const Text('Post'),
             ),
           ),
         ],

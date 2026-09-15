@@ -71,6 +71,15 @@ class DirectMessage {
   /// carries an explanation rather than the ciphertext.
   final bool unreadable;
 
+  /// The message this one answers, if it answers one.
+  ///
+  /// An id, never a copy of the words. A direct message is sealed before it
+  /// leaves the phone and the server stores ciphertext it cannot read -- so a
+  /// reply that carried the quoted text would have written that text into the
+  /// database in the clear. This screen already holds the thread decrypted, so
+  /// it resolves the quote itself; see `ThreadState.answered`.
+  final String? replyToId;
+
   const DirectMessage({
     required this.id,
     required this.body,
@@ -82,6 +91,7 @@ class DirectMessage {
     this.media = const [],
     this.encrypted = false,
     this.unreadable = false,
+    this.replyToId,
   });
 
   /// A message with nothing in it is not a message, but a picture is.
@@ -96,6 +106,7 @@ class DirectMessage {
                 DateTime.now(),
         seen: json['seen'] == true,
         media: PostMedia.listFrom(json['media']),
+        replyToId: json['replyToId'] as String?,
       );
 
   DirectMessage copyWith({
@@ -105,6 +116,7 @@ class DirectMessage {
     bool? seen,
     bool? encrypted,
     bool? unreadable,
+    String? replyToId,
   }) =>
       DirectMessage(
         id: id,
@@ -117,6 +129,7 @@ class DirectMessage {
         media: media,
         encrypted: encrypted ?? this.encrypted,
         unreadable: unreadable ?? this.unreadable,
+        replyToId: replyToId ?? this.replyToId,
       );
 }
 

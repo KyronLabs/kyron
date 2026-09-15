@@ -24,6 +24,7 @@ import 'report_screen.dart';
 import '../widgets/media_grid.dart';
 import '../widgets/voice_post_player.dart';
 import '../widgets/skeleton.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Which conversation, and who is in it.
 ///
@@ -257,6 +258,10 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     });
   }
 
+  /// The message being answered, while one is. Cleared when it is sent, so a
+  /// reply does not silently attach itself to the message after it.
+  DirectMessage? _replyingTo;
+
   Future<void> _send() async {
     final me = ref.read(currentUserProvider).asData?.value.id;
     if (me == null) {
@@ -264,15 +269,28 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
       return;
     }
     final text = _box.text;
+    final answering = _replyingTo;
     _box.clear();
+    setState(() => _replyingTo = null);
     unawaited(HapticFeedback.selectionClick());
     await ref.read(threadProvider(widget.args.conversationId).notifier).send(
           text,
           senderId: me,
           media: _media.ready,
+          replyToId: answering?.id,
         );
     _media.clear();
     _toNewest(animate: true);
+  }
+
+  /// Who wrote [message], as the quote labels it.
+  String _authorOf(
+      DirectMessage message, String? me, List<MessagePerson> people) {
+    if (me != null && message.senderId == me) return 'You';
+    for (final person in people) {
+      if (person.id == message.senderId) return person.displayName;
+    }
+    return 'Them';
   }
 
   @override
@@ -288,7 +306,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     final other = people.isEmpty ? null : people.first;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         titleSpacing: 0,
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
@@ -390,6 +408,12 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
               onSend: _send,
               media: _media,
               onAttach: _attach,
+              replyingTo: _replyingTo,
+              replyingToAuthor: switch (_replyingTo) {
+                final answering? => _authorOf(answering, me, state.people),
+                _ => null,
+              },
+              onCancelReply: () => setState(() => _replyingTo = null),
             ),
           ],
         ),
@@ -465,6 +489,14 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
               previous.senderId == message.senderId &&
               message.createdAt.difference(previous.createdAt).inMinutes < 2,
           onRetry: () => notifier.retry(message),
+          onReply: () => setState(() => _replyingTo = message),
+          // Resolved here rather than sent by the server: it holds ciphertext
+          // and could not quote it. This list is decrypted.
+          answered: state.answered(message),
+          answeredAuthor: switch (state.answered(message)) {
+            final answered? => _authorOf(answered, me, state.people),
+            _ => null,
+          },
           onRemove: !mine
               ? null
               : () async {
@@ -485,13 +517,24 @@ class _Bubble extends StatelessWidget {
   final bool grouped;
   final VoidCallback onRetry;
   final VoidCallback? onRemove;
+  final VoidCallback onReply;
+
+  /// The message this one answers, already decrypted, or null when it answers
+  /// nothing -- or when the answer is older than the pages loaded so far.
+  final DirectMessage? answered;
+
+  /// Who wrote [answered], in words.
+  final String? answeredAuthor;
 
   const _Bubble({
     required this.message,
     required this.mine,
     required this.grouped,
     required this.onRetry,
+    required this.onReply,
     this.onRemove,
+    this.answered,
+    this.answeredAuthor,
   });
 
   @override
@@ -507,8 +550,7 @@ class _Bubble extends StatelessWidget {
         children: [
           Flexible(
             child: GestureDetector(
-              onLongPress:
-                  onRemove == null ? null : () => _confirmRemove(context),
+              onLongPress: () => _openOptions(context),
               child: Column(
                 crossAxisAlignment:
                     mine ? CrossAxisAlignment.end : CrossAxisAlignment.start,
@@ -526,8 +568,12 @@ class _Bubble extends StatelessWidget {
                           ? scheme.error.withValues(alpha: 0.12)
                           : mine
                               ? scheme.primary
-                              : scheme.surfaceContainerHighest
-                                  .withValues(alpha: 0.55),
+                              // At full strength. The alpha here was
+                              // compensating for a role that was the colour
+                              // of the page behind it, so the other person's
+                              // bubbles had no shape at all -- only their
+                              // text said where one ended.
+                              : scheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.only(
                         topLeft: radius,
                         topRight: radius,
@@ -541,6 +587,12 @@ class _Bubble extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        if (message.replyToId != null)
+                          _Quote(
+                            answered: answered,
+                            author: answeredAuthor,
+                            onTint: mine ? scheme.onPrimary : scheme.onSurface,
+                          ),
                         // A recording is a player, not a picture, so it is
                         // split out the same way a post's is.
                         for (final voice
@@ -585,6 +637,49 @@ class _Bubble extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  /// Reply, copy, and -- on your own -- delete.
+  ///
+  /// This used to be long-press-to-delete and nothing else, which meant a long
+  /// press on somebody else's message did nothing at all.
+  Future<void> _openOptions(BuildContext context) async {
+    final copyable = message.body.trim().isNotEmpty && !message.unreadable;
+
+    final chosen = await ActionSheet.show<String>(
+      context,
+      actions: [
+        const SheetAction(
+          value: 'reply',
+          label: 'Reply',
+          icon: Iconsax.undo_copy,
+        ),
+        if (copyable)
+          const SheetAction(
+            value: 'copy',
+            label: 'Copy text',
+            icon: Iconsax.copy_copy,
+          ),
+        if (onRemove != null)
+          const SheetAction(
+            value: 'delete',
+            label: 'Delete',
+            icon: Iconsax.trash_copy,
+            destructive: true,
+          ),
+      ],
+    );
+    if (chosen == null || !context.mounted) return;
+
+    switch (chosen) {
+      case 'reply':
+        onReply();
+      case 'copy':
+        await Clipboard.setData(ClipboardData(text: message.body));
+        if (context.mounted) Toast.show(context, 'Copied');
+      case 'delete':
+        await _confirmRemove(context);
+    }
   }
 
   Future<void> _confirmRemove(BuildContext context) async {
@@ -686,6 +781,11 @@ class _Composer extends StatelessWidget {
   final MediaBasket media;
   final Future<void> Function({required bool video}) onAttach;
 
+  /// The message being answered, while one is.
+  final DirectMessage? replyingTo;
+  final String? replyingToAuthor;
+  final VoidCallback onCancelReply;
+
   const _Composer({
     required this.controller,
     required this.focus,
@@ -693,6 +793,9 @@ class _Composer extends StatelessWidget {
     required this.onSend,
     required this.media,
     required this.onAttach,
+    required this.onCancelReply,
+    this.replyingTo,
+    this.replyingToAuthor,
   });
 
   @override
@@ -715,6 +818,30 @@ class _Composer extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // What is being answered, above the box, with a way out. Without
+          // this there is nothing on screen saying the next thing typed will
+          // be a reply rather than a remark.
+          if (replyingTo != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: _Quote(
+                      answered: replyingTo,
+                      author: replyingToAuthor,
+                      onTint: scheme.onSurface,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: onCancelReply,
+                    tooltip: 'Do not reply',
+                    icon: const Icon(Iconsax.close_circle_copy, size: 18),
+                    visualDensity: VisualDensity.compact,
+                  ),
+                ],
+              ),
+            ),
           if (media.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
@@ -783,6 +910,78 @@ class _Composer extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The message a reply answers, drawn inside the reply's own bubble.
+///
+/// The text comes from the copy this phone decrypted, never from the server:
+/// direct messages are sealed before they leave the device, so the only thing
+/// that crosses the wire is the id of what is being answered.
+class _Quote extends StatelessWidget {
+  const _Quote({
+    required this.answered,
+    required this.author,
+    required this.onTint,
+  });
+
+  /// Null when the answered message is older than the pages loaded so far.
+  final DirectMessage? answered;
+  final String? author;
+
+  /// The bubble's own foreground, so the quote reads as part of it rather
+  /// than as a card sitting on top.
+  final Color onTint;
+
+  @override
+  Widget build(BuildContext context) {
+    final message = answered;
+
+    // A quote that cannot be resolved is still drawn. A reply whose quote
+    // silently vanished reads as a remark that does not follow.
+    final text = message == null
+        ? 'Message'
+        : message.isEmpty
+            ? 'Attachment'
+            : message.body.trim();
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: SpacingTokens.space4),
+      padding: const EdgeInsets.only(left: SpacingTokens.space8),
+      decoration: BoxDecoration(
+        border: Border(
+          left: BorderSide(color: onTint.withValues(alpha: 0.5), width: 2),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (author != null)
+            Text(
+              author!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                fontWeight: FontWeight.w600,
+                color: onTint.withValues(alpha: 0.85),
+              ),
+            ),
+          Text(
+            text,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize1,
+              height: 1.3,
+              color: onTint.withValues(alpha: 0.7),
+              fontStyle: message == null ? FontStyle.italic : null,
+            ),
           ),
         ],
       ),

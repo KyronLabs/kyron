@@ -12,6 +12,7 @@ import '../providers/profile_provider.dart';
 import '../services/profile_service.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/images_field.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Editing your own profile: the name, bio, location, website and the two
 /// images. The "Edit profile" button used to lead nowhere.
@@ -50,7 +51,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     final state = ref.watch(currentUserProvider);
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

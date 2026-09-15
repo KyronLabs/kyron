@@ -4,6 +4,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../routes.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// A post type that is announced but not built.
 ///
@@ -53,7 +54,7 @@ class ComingSoonScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

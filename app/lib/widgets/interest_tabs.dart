@@ -232,8 +232,11 @@ class _AddButton extends StatelessWidget {
                   color: scheme.onSurface.withValues(alpha: 0.2),
                 ),
               ),
+              // Outlined, like every other glyph in this strip and the
+              // sheet it opens. Iconsax ships each one twice and the `_copy`
+              // suffix is the outline.
               child: Icon(
-                Iconsax.add,
+                Iconsax.add_copy,
                 size: 18,
                 color: scheme.onSurface.withValues(alpha: 0.6),
               ),

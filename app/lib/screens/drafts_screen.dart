@@ -8,6 +8,7 @@ import '../models/composer_model.dart';
 import '../providers/composer_provider.dart';
 import '../services/draft_service.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Everything written and not sent.
 class DraftsScreen extends ConsumerStatefulWidget {
@@ -30,7 +31,7 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

@@ -9,6 +9,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../repositories/auth_repository.dart';
 import '../models/onboarding_model.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/kyron_app_bar.dart';
 
 class SignupVerifyEmailScreen extends StatefulWidget {
   final String email;
@@ -114,7 +115,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
   @override
   Widget build(BuildContext context) {
     return GradientScaffold(
-      appBar: AppBar(title: const Text("Verify Email")),
+      appBar: KyronAppBar(title: const Text("Verify Email")),
       body: Padding(
         padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Column(

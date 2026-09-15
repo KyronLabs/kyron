@@ -34,6 +34,7 @@ import '../widgets/thread.dart';
 import '../repositories/moderation_repository.dart' show ReportTarget;
 import 'report_screen.dart';
 import '../widgets/skeleton.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// One post, with its comments and their replies.
 ///
@@ -102,7 +103,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
     final mine = post != null && me != null && post.author.id == me.id;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

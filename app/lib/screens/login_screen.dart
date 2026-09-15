@@ -10,6 +10,7 @@ import '../providers/auth_provider.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 import '../utils/validators.dart';
+import '../widgets/kyron_app_bar.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -66,7 +67,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign in to Kyron')),
+      appBar: KyronAppBar(title: const Text('Sign in to Kyron')),
       body: Padding(
         padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Form(

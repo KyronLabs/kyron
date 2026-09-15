@@ -25,6 +25,8 @@ import '../widgets/mention_picker_sheet.dart';
 import '../widgets/quoted_post_card.dart';
 import '../widgets/toast.dart';
 import '../widgets/topic_picker.dart';
+import '../widgets/kyron_app_bar.dart';
+import '../widgets/action_button.dart';
 
 /// Writing a post.
 ///
@@ -177,7 +179,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
         await _close();
       },
       child: Scaffold(
-        appBar: AppBar(
+        appBar: KyronAppBar(
           // Tight against the close button. The default leading width leaves a
           // gap wide enough to read as an indent.
           leadingWidth: 40,
@@ -193,14 +195,24 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
             const SizedBox(width: SpacingTokens.space4),
             Padding(
               padding: const EdgeInsets.only(right: SpacingTokens.space8),
-              child: FilledButton(
+              // ActionButton rather than a bare FilledButton, and the
+              // difference is not cosmetic: the design system's button themes
+              // set `minimumSize: Size.fromHeight(40)`, which is Flutter's way
+              // of writing *infinite width*. That is right for the full-width
+              // call to action at the foot of a form and fatal in an app bar,
+              // where the actions row hands its children an unbounded width --
+              // the button asked for an infinite one, failed
+              // `BoxConstraints.debugAssertIsValid`, and was not drawn at all.
+              // There was no Post button on this screen, and the toolbar it
+              // broke stacked Drafts on top of the close button.
+              //
+              // `busy` is the same spinner, swapped in without the button
+              // changing size.
+              child: ActionButton(
+                label: 'Post',
+                compact: true,
+                busy: state.isPosting,
                 onPressed: state.canPost ? _handlePost : null,
-                child: state.isPosting
-                    ? const SizedBox.square(
-                        dimension: 16,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    : const Text('Post'),
               ),
             ),
           ],

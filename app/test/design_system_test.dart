@@ -49,6 +49,47 @@ void main() {
             'TypographyTokens:\n${found.join('\n')}');
   });
 
+  test('the browser draws outlines', () {
+    // Iconsax ships every glyph twice, and the `_copy` suffix is the outline.
+    // A filled glyph in Kyron means a state -- a liked post, a saved one, the
+    // selected tab, a playing video -- so this is not a rule the whole app can
+    // follow. The browser has no such states: every one of its eleven icons
+    // was the filled variant, next to an interface drawn entirely in outlines.
+    final filled = [
+      for (final file in dart)
+        if (file.path.contains('screens/browser'))
+          ...() {
+            final lines = file.readAsLinesSync();
+            return [
+              for (var i = 0; i < lines.length; i++)
+                if (RegExp(r'Iconsax\.[a-z0-9_]+')
+                    .allMatches(lines[i])
+                    .any((m) => !m.group(0)!.endsWith('_copy')))
+                  '${file.path}:${i + 1}  ${lines[i].trim()}',
+            ];
+          }(),
+    ];
+    expect(filled, isEmpty,
+        reason: 'a filled Iconsax glyph is back in the browser:\n'
+            '${filled.join('\n')}');
+  });
+
+  test('top bars go through KyronAppBar', () {
+    // A bare Material AppBar turns faintly blue the moment a list scrolls
+    // under it: Material 3 raises it to `scrolledUnderElevation` and washes
+    // it in `surfaceTint`. The themes turn that off and KyronAppBar draws a
+    // hairline in its place, but only for the bars that go through it -- and
+    // a new screen reaching for AppBar directly is how the tint comes back
+    // one screen at a time.
+    //
+    // `SimpleAppBar` and `TopEdge` are not Material app bars at all; they are
+    // Containers, and never had the tint.
+    final found = offences(RegExp(r'appBar:\s*(const\s+)?AppBar\('));
+    expect(found, isEmpty,
+        reason: 'a screen builds a Material AppBar directly instead of '
+            'KyronAppBar:\n${found.join('\n')}');
+  });
+
   test('icons come from Iconsax, not Material', () {
     // "Don't use Material Icons (use Iconsax)" -- philosophy.md. A Material
     // glyph next to an Iconsax one is the most visible kind of drift: two

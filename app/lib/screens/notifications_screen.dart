@@ -12,6 +12,7 @@ import '../widgets/hairline.dart';
 import '../widgets/notification_item.dart';
 import '../widgets/section_tabs.dart';
 import '../widgets/skeleton.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// What other people did to your posts and your account.
 ///
@@ -67,7 +68,7 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

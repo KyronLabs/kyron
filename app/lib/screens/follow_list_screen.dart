@@ -14,6 +14,7 @@ import '../widgets/empty_state.dart';
 import '../widgets/person_tile.dart';
 import '../widgets/skeleton.dart';
 import 'profile_screen.dart' show FollowListArgs;
+import '../widgets/kyron_app_bar.dart';
 
 /// One page of a follow list, plus where the next one starts.
 class FollowListState {
@@ -166,7 +167,7 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
     final notifier = ref.read(followListProvider(widget.args).notifier);
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

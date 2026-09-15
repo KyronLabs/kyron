@@ -4,6 +4,7 @@ import {
   IsArray,
   IsOptional,
   IsString,
+  IsUUID,
   MaxLength,
   ValidateNested,
 } from 'class-validator';
@@ -17,6 +18,18 @@ export class SendMessageDto {
   @IsOptional()
   @MaxLength(4000, { message: 'A message cannot exceed 4000 characters.' })
   body?: string;
+
+  /**
+   * The message this one answers, if it answers one.
+   *
+   * The id only, never the quoted text. A direct message is sealed before it
+   * leaves the phone; a reply carrying the words would write them into the
+   * database in the clear. The client holds the thread decrypted and resolves
+   * the quote itself.
+   */
+  @IsOptional()
+  @IsUUID()
+  replyToId?: string;
 
   /** Attachments, already uploaded. The same shape a post's take. */
   @IsOptional()

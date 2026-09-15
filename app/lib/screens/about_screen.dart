@@ -12,6 +12,7 @@ import '../services/app_log.dart';
 import '../services/device_cache.dart';
 import '../widgets/app_logo.dart';
 import '../services/app_browser.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Terms, privacy, service status, the system log, the running build -- and
 /// the two maintenance actions that used to sit in the middle of Settings.
@@ -52,7 +53,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

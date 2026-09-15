@@ -11,6 +11,7 @@ import '../widgets/person_tile.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/post_card.dart';
 import '../widgets/search_filter_sheet.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Finding people and posts.
 class SearchScreen extends ConsumerStatefulWidget {
@@ -44,7 +45,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final notifier = ref.read(searchProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

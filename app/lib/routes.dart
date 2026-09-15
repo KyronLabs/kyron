@@ -37,6 +37,7 @@ import 'screens/onboard_step2_screen.dart';
 import 'screens/onboard_step3_screen.dart';
 import 'screens/follow_list_screen.dart';
 import 'screens/comment_screen.dart';
+import 'widgets/kyron_app_bar.dart';
 
 class Routes {
   static const splash = '/';
@@ -362,7 +363,7 @@ class _UnknownRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Page not found')),
+      appBar: KyronAppBar(title: const Text('Page not found')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(32),

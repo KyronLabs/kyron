@@ -57,11 +57,16 @@ class MessagesRepository {
     String conversationId,
     String body, {
     List<PendingMedia> media = const [],
+    String? replyToId,
   }) async {
     final res = await _api.dio.post<Map<String, dynamic>>(
       '/messages/$conversationId',
       data: {
         'body': body,
+        // The id of what is being answered, and nothing else about it. The
+        // server cannot read either message; the quote is drawn from the copy
+        // this phone already decrypted.
+        if (replyToId != null) 'replyToId': replyToId,
         if (media.isNotEmpty)
           'media':
               media.where((m) => m.isReady).map((m) => m.toJson()).toList(),

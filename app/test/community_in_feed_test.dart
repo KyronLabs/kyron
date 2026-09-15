@@ -332,11 +332,17 @@ void main() {
       );
     });
 
-    testWidgets('the floating button clears the home indicator',
+    testWidgets('the floating button is centred and clears the home indicator',
         (tester) async {
-      // `endFloat` puts it 16 above the *body*, and this body runs to the
-      // bottom of the screen -- so on a 34-pixel gesture inset the button
-      // landed 32 up, two pixels inside the system's own strip.
+      // Centred, because this is the same disc the bottom bar carries one
+      // screen back and it should not move between the two. It was in the
+      // bottom-right corner: a different shape, colour and place from the
+      // create button on the page this one is opened from.
+      //
+      // Vertically it still has to clear the gesture inset. A floating button
+      // is placed 16 above the *body*, and this body runs to the bottom of
+      // the screen -- so on a 34-pixel inset it landed 32 up, two pixels
+      // inside the system's own strip.
       await pumpPhone(tester, withBanner);
 
       final screen = tester.getSize(find.byType(CommunityScreen));
@@ -345,8 +351,8 @@ void main() {
 
       expect(screen.height - fab.bottom, greaterThan(inset),
           reason: 'the button is inside the gesture inset');
-      expect(screen.width - fab.right, closeTo(16, 0.5),
-          reason: 'Material puts a floating button 16 from the edge');
+      expect(fab.center.dx, closeTo(screen.width / 2, 1),
+          reason: 'the button is not centred: $fab on a $screen screen');
     });
 
     testWidgets('the floating button can be seen against the page',

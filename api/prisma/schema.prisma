@@ -915,6 +915,15 @@ model Message {
 
   body String @db.Text
 
+  /// The message this one answers, if it answers one.
+  ///
+  /// The id only. A direct message is sealed before it leaves the phone and
+  /// this server stores ciphertext it cannot read -- so a reply carrying the
+  /// quoted *text* would write that text into the database in the clear, and
+  /// undo the encryption for every message anybody ever replied to. The client
+  /// holds the thread decrypted already and resolves the quote itself.
+  replyToId String? @db.Uuid
+
   createdAt DateTime  @default(now()) @db.Timestamptz()
   // Soft delete, for the same reason posts have one: a removed message still
   // holds its place in a cursor.
@@ -924,7 +933,13 @@ model Message {
   sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   media        Media[]
 
+  /// SetNull, not Cascade: deleting the message somebody answered must not
+  /// delete their answer. The reply loses its quote and keeps its words.
+  replyTo Message?  @relation("MessageReplies", fields: [replyToId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  replies Message[] @relation("MessageReplies")
+
   @@index([conversationId, createdAt(sort: Desc), id(sort: Desc)])
+  @@index([replyToId])
 }
 
 // ==========================================

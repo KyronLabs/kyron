@@ -9,6 +9,7 @@ import '../models/post_comment.dart';
 import '../providers/feed_provider.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import '../widgets/kyron_app_bar.dart';
 
 final postAnalyticsProvider = StateNotifierProvider.family<
     PostAnalyticsNotifier, AsyncValue<PostAnalytics>, String>(
@@ -47,7 +48,7 @@ class PostAnalyticsScreen extends ConsumerWidget {
     final state = ref.watch(postAnalyticsProvider(postId));
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
@@ -262,7 +263,9 @@ class _Tile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(SpacingTokens.space16),
       decoration: BoxDecoration(
-        color: scheme.surfaceContainerHighest.withValues(alpha: 0.4),
+        // At full strength, so a tile is a tile rather than four numbers
+        // floating on the page.
+        color: scheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
       ),
       child: Column(

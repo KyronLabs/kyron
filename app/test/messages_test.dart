@@ -37,19 +37,25 @@ class _FakeMessages extends MessagesRepository {
     return MessagePage(items: thread, people: people);
   }
 
+  /// What each send said it was answering, in order. Null for a plain one.
+  final List<String?> repliedTo = [];
+
   @override
   Future<DirectMessage> send(
     String id,
     String body, {
     List<PendingMedia> media = const [],
+    String? replyToId,
   }) async {
     sent.add(body);
+    repliedTo.add(replyToId);
     if (sendFails) throw _Down();
     return DirectMessage(
       id: 'server-${_next++}',
       body: body,
       senderId: 'me',
       createdAt: DateTime(2026, 1, 2),
+      replyToId: replyToId,
     );
   }
 

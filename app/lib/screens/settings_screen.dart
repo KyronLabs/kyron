@@ -15,6 +15,7 @@ import '../routes.dart';
 import 'dart:async';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
+import '../widgets/kyron_app_bar.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -310,7 +311,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
     return Scaffold(
       backgroundColor: scheme.background,
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
