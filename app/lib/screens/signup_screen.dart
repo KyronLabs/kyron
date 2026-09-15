@@ -13,6 +13,7 @@ import '../utils/api_error_message.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 import '../utils/validators.dart';
+import '../widgets/kyron_app_bar.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -84,7 +85,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create your account')),
+      appBar: KyronAppBar(title: const Text('Create your account')),
       body: Padding(
         padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Form(

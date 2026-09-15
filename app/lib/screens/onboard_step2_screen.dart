@@ -10,6 +10,7 @@ import '../widgets/app_button.dart';
 import '../widgets/gradient_scaffold.dart';
 import '../services/profile_service.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// One row of the `interests` table. The screen shows [name] and sends [slug]:
 /// the API matches submitted values against slug, so sending the display label
@@ -162,7 +163,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
     final scheme = Theme.of(context).colorScheme;
 
     return GradientScaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         title: const Text('Pick your interests'),
         actions: [
           TextButton(

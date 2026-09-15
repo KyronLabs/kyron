@@ -118,7 +118,10 @@ class _TopicChip extends StatelessWidget {
       child: Material(
         color: selected
             ? scheme.primary.withValues(alpha: 0.14)
-            : scheme.surfaceContainerHighest.withValues(alpha: 0.4),
+            // At full strength: the alpha was hiding a role that already
+            // matched the sheet behind it, so an unselected interest was a
+            // border with nothing inside it.
+            : scheme.surfaceContainerHighest,
         borderRadius: radius,
         child: InkWell(
           borderRadius: radius,

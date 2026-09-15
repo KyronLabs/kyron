@@ -29,6 +29,7 @@ import '../widgets/face_attachment_painter.dart';
 import '../widgets/face_reticle.dart';
 import '../widgets/lens_effect_layer.dart';
 import '../services/platform_support.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// The camera, with a lens over it.
 ///
@@ -659,7 +660,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       data: KyronTheme.darkTheme,
       child: Scaffold(
         backgroundColor: Colors.black,
-        appBar: AppBar(
+        appBar: KyronAppBar(
           backgroundColor: Colors.black,
           // Spelled out rather than left to `foregroundColor`, which does not
           // win: the design system's AppBarTheme sets titleTextStyle and

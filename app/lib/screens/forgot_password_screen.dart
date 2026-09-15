@@ -12,6 +12,7 @@ import '../services/platform_support.dart';
 import '../utils/validators.dart';
 import '../widgets/app_button.dart';
 import '../widgets/app_input_field.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Asking for a password reset, and being told what to expect.
 ///
@@ -114,7 +115,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Reset your password')),
+      appBar: KyronAppBar(title: const Text('Reset your password')),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(SpacingTokens.space20),

@@ -20,6 +20,7 @@ import '../widgets/media_tray.dart';
 import '../widgets/thread.dart';
 import '../widgets/toast.dart';
 import '../widgets/skeleton.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// One comment, and the conversation under it.
 ///
@@ -165,7 +166,7 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
     final state = ref.watch(commentThreadProvider(widget.commentId));
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

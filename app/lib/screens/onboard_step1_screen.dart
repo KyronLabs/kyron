@@ -17,6 +17,7 @@ import '../widgets/app_button.dart';
 import '../widgets/action_sheet.dart';
 import '../widgets/images_field.dart';
 import '../widgets/gradient_scaffold.dart';
+import '../widgets/kyron_app_bar.dart';
 
 class OnboardStep1Screen extends StatefulWidget {
   final OnboardingModel model;
@@ -200,7 +201,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
     final cover = widget.model.localCoverPath;
 
     return GradientScaffold(
-      appBar: AppBar(title: const Text('Create your profile')),
+      appBar: KyronAppBar(title: const Text('Create your profile')),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(SpacingTokens.space20),

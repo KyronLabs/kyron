@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../config/legal_links.dart';
 import '../routes.dart';
 import '../services/app_browser.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Where to go when something is wrong or unclear.
 ///
@@ -20,7 +21,7 @@ class HelpScreen extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

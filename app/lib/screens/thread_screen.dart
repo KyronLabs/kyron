@@ -24,6 +24,7 @@ import 'report_screen.dart';
 import '../widgets/media_grid.dart';
 import '../widgets/voice_post_player.dart';
 import '../widgets/skeleton.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Which conversation, and who is in it.
 ///
@@ -288,7 +289,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     final other = people.isEmpty ? null : people.first;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         titleSpacing: 0,
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
@@ -526,8 +527,12 @@ class _Bubble extends StatelessWidget {
                           ? scheme.error.withValues(alpha: 0.12)
                           : mine
                               ? scheme.primary
-                              : scheme.surfaceContainerHighest
-                                  .withValues(alpha: 0.55),
+                              // At full strength. The alpha here was
+                              // compensating for a role that was the colour
+                              // of the page behind it, so the other person's
+                              // bubbles had no shape at all -- only their
+                              // text said where one ended.
+                              : scheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.only(
                         topLeft: radius,
                         topRight: radius,

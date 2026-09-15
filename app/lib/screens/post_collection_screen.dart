@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/feed_provider.dart';
 import '../widgets/post_list_view.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Your saved posts, or your liked posts.
 ///
@@ -53,7 +54,7 @@ class PostCollectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

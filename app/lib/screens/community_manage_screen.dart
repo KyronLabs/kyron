@@ -17,6 +17,7 @@ import '../widgets/hairline.dart';
 import '../widgets/images_field.dart';
 import '../widgets/section_tabs.dart';
 import '../widgets/toast.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Running a community: its details, who is in it, and who is not welcome.
 ///
@@ -53,7 +54,7 @@ class _CommunityManageScreenState extends ConsumerState<CommunityManageScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context, _community),

@@ -23,6 +23,7 @@ import '../widgets/media_viewer.dart';
 import '../widgets/toast.dart';
 import '../widgets/empty_state.dart';
 import 'thread_screen.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Which of the profile's tabs is showing.
 enum ProfileTab { posts, media, likes }
@@ -58,10 +59,8 @@ class ProfileScreen extends ConsumerWidget {
       // so the bar and its back button float over the image rather than
       // sitting on a white strip above it.
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
+      appBar: KyronAppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0,
-        scrolledUnderElevation: 0,
         systemOverlayStyle: SystemUiOverlayStyle.light,
         leading: const _GlassBack(),
         actions: [

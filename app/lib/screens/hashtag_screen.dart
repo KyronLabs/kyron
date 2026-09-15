@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/feed_provider.dart';
 import '../widgets/post_list_view.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Every post carrying one hashtag.
 class HashtagScreen extends StatelessWidget {
@@ -18,7 +19,7 @@ class HashtagScreen extends StatelessWidget {
     final normalised = tag.replaceFirst('#', '').toLowerCase();
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

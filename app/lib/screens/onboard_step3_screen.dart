@@ -9,6 +9,7 @@ import '../services/profile_service.dart';
 import '../widgets/atomic_card.dart';
 import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/kyron_app_bar.dart';
 
 class OnboardStep3Screen extends ConsumerStatefulWidget {
   final OnboardingModel model;
@@ -113,7 +114,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         title: const Text("Discover people"),
         actions: [TextButton(onPressed: _finish, child: const Text("Skip"))],
       ),

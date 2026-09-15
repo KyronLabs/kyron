@@ -11,6 +11,7 @@ import '../services/app_log.dart';
 import '../widgets/settings_scaffold.dart';
 import '../widgets/empty_state.dart';
 import '../services/app_browser.dart';
+import '../widgets/kyron_app_bar.dart';
 
 // ===========================================================================
 // SERVICE STATUS
@@ -26,7 +27,7 @@ class ServiceStatusScreen extends ConsumerWidget {
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
@@ -201,7 +202,7 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

@@ -8,6 +8,7 @@ import '../providers/moderation_provider.dart';
 import '../repositories/moderation_repository.dart';
 import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Reporting a post, a comment or an account.
 ///
@@ -67,7 +68,7 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),

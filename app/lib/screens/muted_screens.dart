@@ -10,6 +10,7 @@ import '../routes.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/skeleton.dart';
+import '../widgets/kyron_app_bar.dart';
 
 /// Words and tags that keep posts out of your feed.
 class MutedWordsScreen extends ConsumerStatefulWidget {
@@ -55,7 +56,7 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
     final words = _words;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: KyronAppBar(
         leading: IconButton(
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
@@ -193,7 +194,7 @@ class _MutedAccountsScreenState extends ConsumerState<MutedAccountsScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
+        appBar: KyronAppBar(
           leading: IconButton(
             icon: const Icon(Iconsax.arrow_left_copy),
             onPressed: () => Navigator.pop(context),
