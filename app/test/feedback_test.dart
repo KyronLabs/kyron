@@ -91,8 +91,7 @@ void main() {
     }
   });
 
-  testWidgets('will not send until there is something to read',
-      (tester) async {
+  testWidgets('will not send until there is something to read', (tester) async {
     final repo = _FakeFeedback();
     await pump(tester, repo);
 
