@@ -568,12 +568,15 @@ class _Bubble extends StatelessWidget {
                           ? scheme.error.withValues(alpha: 0.12)
                           : mine
                               ? scheme.primary
-                              // At full strength. The alpha here was
-                              // compensating for a role that was the colour
-                              // of the page behind it, so the other person's
-                              // bubbles had no shape at all -- only their
-                              // text said where one ended.
-                              : scheme.surfaceContainerHighest,
+                              // `surfaceContainer`, not the top of the
+                              // ramp. A bubble is the most repeated shape in
+                              // the app -- a hundred down one screen -- so
+                              // it takes the quietest step that still gives
+                              // it an edge: 2.47 L* off the page, which is
+                              // what the messaging apps this was measured
+                              // against use. `Highest` is for something
+                              // there is one of.
+                              : scheme.surfaceContainer,
                       borderRadius: BorderRadius.only(
                         topLeft: radius,
                         topRight: radius,
@@ -881,8 +884,9 @@ class _Composer extends StatelessWidget {
                     hintText: 'Message',
                     isDense: true,
                     filled: true,
-                    fillColor:
-                        scheme.surfaceContainerHighest.withValues(alpha: 0.45),
+                    // No alpha: the ramp itself is quiet now, and an alpha
+                    // over it was compensation for a step that was too big.
+                    fillColor: scheme.surfaceContainer,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: SpacingTokens.space16,
                       vertical: SpacingTokens.space12,
