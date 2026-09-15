@@ -218,7 +218,7 @@ class _Timeline extends StatelessWidget {
                     child: LinearProgressIndicator(
                       value: day.views / peak,
                       minHeight: 10,
-                      backgroundColor: scheme.surfaceContainerHighest,
+                      backgroundColor: scheme.surfaceContainerHigh,
                       valueColor: AlwaysStoppedAnimation<Color>(scheme.primary),
                     ),
                   ),
@@ -263,9 +263,9 @@ class _Tile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(SpacingTokens.space16),
       decoration: BoxDecoration(
-        // At full strength, so a tile is a tile rather than four numbers
-        // floating on the page.
-        color: scheme.surfaceContainerHighest,
+        // A tile is a tile rather than four numbers floating on the page,
+        // and one step off the page is enough to say so.
+        color: scheme.surfaceContainer,
         borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
       ),
       child: Column(

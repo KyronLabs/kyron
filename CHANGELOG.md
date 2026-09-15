@@ -12,6 +12,22 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Fixed
+
+- **The interest chips, the other person's chat bubbles and the post
+  analytics tiles were too loud.** The fix that made them visible at all
+  overshot: measured against a reference, a container sits about 2.4 L\* off
+  its page, and the top of the ramp that shipped was 8.24 L\* below white in
+  a blue-grey of its own. Two things were wrong with it — it got *bluer* as
+  it got darker, because the steps were a slate scale rather than equal
+  moves in lightness; and every step was roughly three times too big. The
+  ramp is rebuilt in the design system (KyronLabs/design-system#13), and the
+  three places named here now take `surfaceContainer` — the quietest step
+  that still gives a shape an edge — rather than the top of the ramp. A
+  chat bubble is the most repeated shape in the app; `Highest` is for
+  something there is one of.
+
+
 ### Added
 
 - **Send Feedback files a real issue.** The screen used to say "Feedback has
