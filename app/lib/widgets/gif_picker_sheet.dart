@@ -115,6 +115,24 @@ class _SheetState extends State<_Sheet> {
             ),
             const SizedBox(height: SpacingTokens.space12),
             Expanded(child: _body(scheme)),
+            // Required, not decorative. GIPHY's free tier is conditional on
+            // its mark being shown wherever its results are, and this picker
+            // is the only place they appear.
+            if (GifSearch.isConfigured)
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: SpacingTokens.space16,
+                  vertical: SpacingTokens.space8,
+                ),
+                child: Text(
+                  GifSearch.attribution,
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize1,
+                    letterSpacing: 0.4,
+                    color: scheme.onSurface.withValues(alpha: 0.5),
+                  ),
+                ),
+              ),
           ],
         ),
       ),
@@ -129,7 +147,7 @@ class _SheetState extends State<_Sheet> {
         compact: true,
         art: EmptyArt.noMatch,
         title: 'GIFs are not set up',
-        detail: 'This build has no TENOR_API_KEY, so the GIF library cannot '
+        detail: 'This build has no GIPHY_API_KEY, so the GIF library cannot '
             'be searched. Pass one at build time to turn this on.',
       );
     }
