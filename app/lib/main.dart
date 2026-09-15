@@ -7,6 +7,7 @@ import 'services/app_log.dart';
 import 'services/draft_service.dart';
 import 'services/platform_support.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'models/app_theme.dart';
 import 'routes.dart';
 // `hide AuthState`: this app and the Supabase SDK both define that name,
 // and only the SDK's is used here -- for the password-recovery event.
@@ -297,7 +298,9 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     // than only the one that sets it. Clamped to exactly the chosen value:
     // compounding it with the platform's own accessibility scale would take
     // the largest setting somewhere no layout has been checked against.
-    final textScale = ref.watch(preferencesProvider).textScale;
+    final preferences = ref.watch(preferencesProvider);
+    final textScale = preferences.textScale;
+    final theme = preferences.theme;
 
     // Opens the socket and folds whatever arrives into the state it affects.
     // Watched here rather than on a screen: a message has to move the thread,
@@ -310,8 +313,10 @@ class _KyronAppState extends ConsumerState<KyronApp> {
       navigatorKey: appNavigatorKey,
       debugShowCheckedModeBanner: false,
       theme: _withStatusBar(KyronTheme.lightTheme),
-      darkTheme: _withStatusBar(KyronTheme.darkTheme),
-      themeMode: ThemeMode.system,
+      // Which dark palette, and whether it is used at all, both come from the
+      // reader's choice.
+      darkTheme: _withStatusBar(theme.darkPalette),
+      themeMode: theme.mode,
       home: const RootScreen(),
       onGenerateRoute: Routes.onGenerateRoute,
       // Lets a screen know when another one covers it. A pushed route

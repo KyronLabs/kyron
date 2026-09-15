@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 import '../models/app_language.dart';
+import '../models/app_theme.dart';
 import '../services/app_preferences.dart';
 
 final appPreferencesProvider = Provider<AppPreferences>(
@@ -15,6 +16,8 @@ class PreferencesState {
   final double textScale;
   final bool pushEnabled;
   final bool emailEnabled;
+  final AppTheme theme;
+  final bool dataSaver;
 
   /// False until the stored values have been read once.
   final bool isLoaded;
@@ -24,6 +27,8 @@ class PreferencesState {
     this.textScale = AppPreferences.defaultTextScale,
     this.pushEnabled = true,
     this.emailEnabled = true,
+    this.theme = AppTheme.system,
+    this.dataSaver = false,
     this.isLoaded = false,
   });
 
@@ -32,6 +37,8 @@ class PreferencesState {
     double? textScale,
     bool? pushEnabled,
     bool? emailEnabled,
+    AppTheme? theme,
+    bool? dataSaver,
     bool? isLoaded,
   }) =>
       PreferencesState(
@@ -39,6 +46,8 @@ class PreferencesState {
         textScale: textScale ?? this.textScale,
         pushEnabled: pushEnabled ?? this.pushEnabled,
         emailEnabled: emailEnabled ?? this.emailEnabled,
+        theme: theme ?? this.theme,
+        dataSaver: dataSaver ?? this.dataSaver,
         isLoaded: isLoaded ?? this.isLoaded,
       );
 }
@@ -56,6 +65,8 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
       _store.readTextScale(),
       _store.readPushEnabled(),
       _store.readEmailEnabled(),
+      _store.readTheme(),
+      _store.readDataSaver(),
     ]);
     if (!mounted) return;
     state = PreferencesState(
@@ -63,6 +74,8 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
       textScale: results[1] as double,
       pushEnabled: results[2] as bool,
       emailEnabled: results[3] as bool,
+      theme: results[4] as AppTheme,
+      dataSaver: results[5] as bool,
       isLoaded: true,
     );
   }
@@ -88,6 +101,16 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
   Future<void> setEmailEnabled(bool enabled) async {
     state = state.copyWith(emailEnabled: enabled);
     await _store.writeEmailEnabled(enabled);
+  }
+
+  Future<void> setTheme(AppTheme theme) async {
+    state = state.copyWith(theme: theme);
+    await _store.writeTheme(theme);
+  }
+
+  Future<void> setDataSaver(bool enabled) async {
+    state = state.copyWith(dataSaver: enabled);
+    await _store.writeDataSaver(enabled);
   }
 }
 

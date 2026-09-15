@@ -12,6 +12,31 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Added
+
+- **Send Feedback files a real issue.** The screen used to say "Feedback has
+  nowhere to go yet", which was honest and useless. A bug or an idea written
+  in the app now opens an issue on the repository, and the reply gives the
+  issue number. The GitHub token lives on the API and never reaches the
+  phone — a token shipped inside an installed application is one anybody can
+  read out of it, and this one carries write access. The form says, above it,
+  that the issue is **public**; nothing identifying is added to what gets
+  written — no account id, no handle, no email. Set `GITHUB_ISSUE_REPO` and
+  `GITHUB_ISSUE_TOKEN` to turn it on; without them the app asks the API first
+  and says so on the screen, rather than taking a report and dropping it.
+
+- **An Appearance setting that works.** Light, Dark, Dim, or whatever the
+  phone is set to, in a sheet. It replaces a "Dark Mode" switch that sat next
+  to a `// TODO: Apply theme change immediately` while `main.dart` passed a
+  hard-coded `ThemeMode.system` — so the switch moved, remembered nothing, and
+  changed nothing. Dim is the design system's third palette, a blue-grey dark
+  rather than a black one, and had never been reachable from the app at all.
+
+- **Data Saver stops videos playing by themselves.** It is remembered across
+  launches and it takes effect on whatever is already on screen, not at the
+  next scroll. Tapping a clip still opens and plays it: the setting holds back
+  the traffic nobody asked for, not the traffic they did.
+
 ### Changed
 
 - **The GIF picker is on GIPHY.** Tenor has stopped taking new sign-ups, so a
@@ -31,7 +56,52 @@ section for that version, so what is written here is what people read.
   black disc the Communities page carries, centred, rather than a stock blue
   Material button in the bottom-right corner over the last post in the list.
 
+### Removed
+
+- **Three settings switches that could not have done anything.** Each was a
+  `bool` the settings screen kept to itself, described in its own code as
+  "local state for toggles (batch save on exit)" with no save on exit — so
+  every one of them reset on the way out, and nothing anywhere read any of
+  them.
+
+  - **Private Account** ("Only followers can see your posts") — there is no
+    such field on the account, in the schema or in the API, and no code path
+    that checks one. Every post stayed exactly as public as it had been. A
+    privacy promise the system cannot keep is worse than no promise, so it is
+    gone rather than left looking like protection.
+  - **Location** ("Allow location access") — there is no geolocation package
+    in the app and no location permission in the manifest. It granted nothing
+    and denied nothing.
+  - **Auto-Download** — the same concern as Data Saver under the opposite
+    name, with no answer at all for a phone that had both switched on. Data
+    Saver is the one that survives, and now does something.
+
+- **A hidden gesture that announced a reset and reset nothing.** Every
+  settings row answered a horizontal swipe with "Reset <row> to default" in a
+  snackbar — including the rows that only navigate, so it claimed to have
+  reset your login settings. It also swallowed the swipe that goes back.
+  (Its comment said "swipe left"; the condition it shipped was a swipe right.)
+
 ### Fixed
+
+- **A report could be lost to a version lookup.** Sending feedback waited on
+  `PackageInfo.fromPlatform()` before it sent anything, so a platform that was
+  slow to answer, or a plugin that was not registered, took somebody's three
+  paragraphs with it. The version is read while the form is being filled in
+  now, and is best-effort: a report filed without a version number is worth
+  less to whoever reads it, and one not filed at all is worth nothing.
+
+- **The GIPHY key was not passed to any build.** `GIPHY_API_KEY` is read with
+  `String.fromEnvironment`, which means it has to be given at build time, and
+  no workflow gave it — so the picker would have shipped switched off in every
+  release and debug build. Both workflows pass it now, on Android and Windows,
+  from a `GIPHY_API_KEY` secret.
+
+- **Sending feedback is capped at five reports an hour per account.** The
+  API's own limit is 100 requests a minute, which is the right order for
+  reading a feed and the wrong one for opening issues on a public repository.
+  Hitting the cap says so plainly and says nothing was sent, rather than
+  reading as a failure that invites writing the same report again.
 
 - **Every top bar turned faintly blue when a list scrolled under it, and only
   then.** `elevation: 0` does not cover it: Material 3 keeps a *second*

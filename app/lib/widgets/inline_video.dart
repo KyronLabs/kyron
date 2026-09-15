@@ -11,6 +11,7 @@ import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../models/post_media.dart';
+import '../providers/preferences_provider.dart';
 import '../providers/video_settings_provider.dart';
 import '../utils/decode_size.dart';
 import '../utils/deferred_rebuild.dart';
@@ -312,9 +313,29 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
     });
   }
 
+  /// The last fraction of this tile the reader could see.
+  ///
+  /// Kept so the decision can be taken again when something other than a
+  /// scroll changes the answer -- Data Saver being switched, above all.
+  double _visibleFraction = 0;
+
+  /// Whether this tile may start on its own.
+  ///
+  /// Data Saver holds back the traffic nobody asked for, and a clip that
+  /// starts because you scrolled past it is the clearest example of it in the
+  /// app. Tapping the tile is asking, so it still opens full screen and still
+  /// plays there: this gate is only on starting by itself.
+  bool get _autoplays =>
+      widget.autoplay && !ref.read(preferencesProvider).dataSaver;
+
   void _onVisibility(VisibilityInfo info) {
-    if (!mounted || !widget.autoplay) return;
-    final fraction = info.visibleFraction;
+    if (!mounted) return;
+    _visibleFraction = info.visibleFraction;
+    _applyVisibility();
+  }
+
+  void _applyVisibility() {
+    final fraction = _autoplays ? _visibleFraction : 0.0;
 
     if (fraction <= 0) {
       // Off screen entirely: out of the running, and give the decoder back.
@@ -362,6 +383,14 @@ class _InlineVideoState extends ConsumerState<InlineVideo> {
     ref.listen<bool>(videoMutedProvider, (_, next) {
       unawaited(_controller?.setVolume(next ? 0 : 1) ?? Future<void>.value());
     });
+
+    // Takes effect on the clip already on screen, rather than at the next
+    // scroll. Switching Data Saver on and watching the feed carry on playing
+    // is a setting that looks ignored.
+    ref.listen<bool>(
+      preferencesProvider.select((preferences) => preferences.dataSaver),
+      (_, __) => _applyVisibility(),
+    );
 
     final controller = _controller;
     final ready = controller != null && controller.value.isInitialized;

@@ -7,9 +7,11 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/auth_provider.dart';
 import '../providers/identity_provider.dart';
 import '../providers/current_user_provider.dart';
+import '../models/app_theme.dart';
 import '../providers/preferences_provider.dart';
 import '../utils/api_error_message.dart';
 import '../services/app_preferences.dart';
+import '../widgets/action_sheet.dart';
 import '../widgets/kyron_toggle.dart';
 import '../routes.dart';
 import 'dart:async';
@@ -50,21 +52,34 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   static String _shortDid(String did) =>
       did.length <= 24 ? did : '${did.substring(0, 21)}…';
 
-  // Local state for toggles (batch save on exit)
-  bool _privateAccount = false;
-  bool _darkMode = true;
-  bool _autoDownload = true;
-  bool _dataSaver = false;
-  bool _location = false;
-  void _resetToDefault(String setting) {
-    // Hidden gesture: swipe left resets (power-users)
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Reset $setting to default'),
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
-      ),
+  /// Offers the palettes and applies whichever is chosen.
+  ///
+  /// A sheet rather than a switch. A switch cannot say "whatever the phone is
+  /// set to", which is what most people want and what the app did before this
+  /// setting existed; and the design system defines three palettes, not two.
+  Future<void> _chooseTheme() async {
+    final current = ref.read(preferencesProvider).theme;
+    final chosen = await ActionSheet.show<AppTheme>(
+      context,
+      title: 'Appearance',
+      actions: [
+        for (final theme in AppTheme.values)
+          SheetAction(
+            value: theme,
+            label: theme.label,
+            detail: theme.detail,
+            selected: theme == current,
+            icon: switch (theme) {
+              AppTheme.system => Iconsax.mobile_copy,
+              AppTheme.light => Iconsax.sun_1_copy,
+              AppTheme.dark => Iconsax.moon_copy,
+              AppTheme.dim => Iconsax.lamp_on_copy,
+            },
+          ),
+      ],
     );
+    if (chosen == null) return;
+    await ref.read(preferencesProvider.notifier).setTheme(chosen);
   }
 
   void _showTooltip(String message) {
@@ -104,12 +119,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     return GestureDetector(
       onTap: onTap,
       onLongPress: helpText != null ? () => _showTooltip(helpText) : null,
-      onHorizontalDragEnd: (details) {
-        // Swipe left → Reset to Default (hidden gesture)
-        if (details.primaryVelocity != null && details.primaryVelocity! > 0) {
-          _resetToDefault(label);
-        }
-      },
+      // No horizontal drag handler here. There used to be one, announcing
+      // "Reset <row> to default" in a snackbar and resetting nothing -- on
+      // every row, including the ones that only navigate. It also swallowed
+      // the swipe that pops the screen.
       behavior: HitTestBehavior.opaque,
       child: Semantics(
         label: label,
@@ -379,18 +392,15 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 thickness: 0.33,
                 color: scheme.onSurface.withOpacity(0.1)),
 
-            // Privacy & Safety Group (3 items)
+            // Privacy & Safety.
+            //
+            // No "Private Account" row. It was a switch over a bool this
+            // screen kept to itself: there is no such field on the account,
+            // and nothing in the API asks about one, so every post stayed
+            // exactly as public as it had been. A privacy promise that the
+            // system cannot keep is worse than no promise, so it is gone
+            // rather than left looking like protection.
             _groupHeader('Privacy & Safety'),
-            _settingsRow(
-              icon: Iconsax.lock_copy,
-              label: 'Private Account',
-              trailing: KyronToggle(
-                value: _privateAccount,
-                onChanged: (value) => setState(() => _privateAccount = value),
-                semanticsLabel: 'Private Account',
-              ),
-              helpText: 'Only followers can see your posts',
-            ),
             _settingsRow(
               icon: Iconsax.key_copy,
               label: 'Password & Login',
@@ -399,25 +409,37 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   Navigator.pushNamed(context, Routes.settingsPasswordLogin),
               helpText: 'Security settings',
             ),
+            _settingsRow(
+              icon: Iconsax.text_block_copy,
+              label: 'Muted words and tags',
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+              onTap: () => Navigator.pushNamed(context, Routes.mutedWords),
+              helpText: 'Keep posts containing these out of your feed',
+            ),
+            _settingsRow(
+              icon: Iconsax.volume_slash_copy,
+              label: 'Muted and blocked accounts',
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+              onTap: () => Navigator.pushNamed(context, Routes.mutedAccounts),
+              helpText: 'Who you have muted or blocked',
+            ),
             Divider(
                 height: 1,
                 thickness: 0.33,
                 color: scheme.onSurface.withOpacity(0.1)),
 
-            // Content & Display Group (4 items)
-            _groupHeader('Content & Display'),
+            // Preferences: how the app behaves for this reader, on this
+            // device. Was "Content & Display" and "App & Device", which split
+            // font size from text scale's neighbours and put muting under
+            // "device".
+            _groupHeader('Preferences'),
             _settingsRow(
               icon: Iconsax.moon_copy,
-              label: 'Dark Mode',
-              trailing: KyronToggle(
-                value: _darkMode,
-                onChanged: (value) {
-                  setState(() => _darkMode = value);
-                  // TODO: Apply theme change immediately
-                },
-                semanticsLabel: 'Dark Mode',
-              ),
-              helpText: 'Use dark theme',
+              label: 'Appearance',
+              subtitle: ref.watch(preferencesProvider).theme.label,
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+              onTap: _chooseTheme,
+              helpText: 'Light, dark, or whatever the phone is set to',
             ),
             _settingsRow(
               icon: Iconsax.text_copy,
@@ -440,47 +462,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Choose your language',
             ),
             _settingsRow(
-              icon: Iconsax.direct_inbox_copy,
-              label: 'Auto-Download',
-              trailing: KyronToggle(
-                value: _autoDownload,
-                onChanged: (value) => setState(() => _autoDownload = value),
-                semanticsLabel: 'Auto-Download',
-              ),
-              helpText: 'Automatically download media',
-            ),
-            Divider(
-                height: 1,
-                thickness: 0.33,
-                color: scheme.onSurface.withOpacity(0.1)),
-
-            // App & Device Group (4 items)
-            _groupHeader('App & Device'),
-            _settingsRow(
-              icon: Iconsax.save_add_copy,
-              label: 'Data Saver',
-              trailing: KyronToggle(
-                value: _dataSaver,
-                onChanged: (value) => setState(() => _dataSaver = value),
-                semanticsLabel: 'Data Saver',
-              ),
-              helpText: 'Reduce data usage',
-            ),
-            _settingsRow(
-              icon: Iconsax.text_block_copy,
-              label: 'Muted words and tags',
-              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.mutedWords),
-              helpText: 'Keep posts containing these out of your feed',
-            ),
-            _settingsRow(
-              icon: Iconsax.volume_slash_copy,
-              label: 'Muted and blocked accounts',
-              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
-              onTap: () => Navigator.pushNamed(context, Routes.mutedAccounts),
-              helpText: 'Who you have muted or blocked',
-            ),
-            _settingsRow(
               icon: Iconsax.notification_copy,
               label: 'Push Notifications',
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
@@ -488,15 +469,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   Navigator.pushNamed(context, Routes.settingsNotifications),
               helpText: 'Notification preferences',
             ),
+            // One row where there were two. "Auto-Download" and "Data Saver"
+            // were opposite names for the same thing, neither of them read
+            // anywhere, and a phone with both switched on had no answer. The
+            // help text says what this one actually does rather than promising
+            // a general reduction nothing measures.
+            //
+            // No "Location" row either: there is no geolocation package in the
+            // app and no location permission in the manifest, so "Allow
+            // location access" granted nothing and denied nothing.
             _settingsRow(
-              icon: Iconsax.location_copy,
-              label: 'Location',
+              icon: Iconsax.save_add_copy,
+              label: 'Data Saver',
               trailing: KyronToggle(
-                value: _location,
-                onChanged: (value) => setState(() => _location = value),
-                semanticsLabel: 'Location',
+                value: ref.watch(preferencesProvider).dataSaver,
+                onChanged: (value) =>
+                    ref.read(preferencesProvider.notifier).setDataSaver(value),
+                semanticsLabel: 'Data Saver',
               ),
-              helpText: 'Allow location access',
+              helpText: 'Stop videos playing by themselves as you scroll',
             ),
             Divider(
                 height: 1,
