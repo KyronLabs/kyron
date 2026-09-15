@@ -6,8 +6,36 @@ import '../routes.dart';
 import 'long_press_sheet.dart';
 
 /// The create button, and the menu of what you can create.
+///
+/// The same disc is used for "post in this community", through [CreateFab.of]:
+/// a black circle with a gradient aura behind it, which is what the button on
+/// the bottom bar is. Before that, a community's compose button was a plain
+/// Material `FloatingActionButton` in the bottom-right corner -- a different
+/// shape, a different colour and a different place from the create button one
+/// screen back, for the same job.
 class CreateFab extends StatelessWidget {
-  const CreateFab({super.key});
+  const CreateFab({super.key})
+      : icon = Iconsax.add_copy,
+        tooltip = 'Create',
+        onPressed = null,
+        heroTag = 'create';
+
+  /// The same disc doing something other than opening the create menu.
+  const CreateFab.of({
+    super.key,
+    required this.icon,
+    required this.tooltip,
+    required VoidCallback this.onPressed,
+    this.heroTag,
+  });
+
+  final IconData icon;
+  final String tooltip;
+
+  /// Null opens the menu of what you can create.
+  final VoidCallback? onPressed;
+
+  final Object? heroTag;
 
   /// Each entry's icon and the route it opens.
   ///
@@ -56,13 +84,13 @@ class CreateFab extends StatelessWidget {
             ),
           ),
           FloatingActionButton(
-            heroTag: 'create',
-            tooltip: 'Create',
-            onPressed: () => chooseWhatToPost(context),
+            heroTag: heroTag,
+            tooltip: tooltip,
+            onPressed: onPressed ?? () => chooseWhatToPost(context),
             backgroundColor: isDark ? Colors.white : Colors.black,
             elevation: 2,
             shape: const CircleBorder(),
-            child: Icon(Iconsax.add_copy,
+            child: Icon(icon,
                 size: 24, color: isDark ? Colors.black : Colors.white),
           ),
         ],

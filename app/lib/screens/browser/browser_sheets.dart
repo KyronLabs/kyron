@@ -92,7 +92,9 @@ abstract final class PageSheet {
                       child: Row(
                         children: [
                           Icon(
-                            secure ? Iconsax.lock_1 : Iconsax.lock_slash,
+                            secure
+                                ? Iconsax.lock_1_copy
+                                : Iconsax.lock_slash_copy,
                             size: 16,
                             color: secure ? palette.accent : palette.alarm,
                           ),
@@ -118,17 +120,17 @@ abstract final class PageSheet {
                   ),
                   const SizedBox(height: SpacingTokens.space8),
                   _Row(
-                    icon: Iconsax.copy,
+                    icon: Iconsax.copy_copy,
                     label: 'Copy link',
                     onTap: () => Navigator.pop(context, PageChoice.copy),
                   ),
                   _Row(
-                    icon: Iconsax.export_3,
+                    icon: Iconsax.export_3_copy,
                     label: 'Share',
                     onTap: () => Navigator.pop(context, PageChoice.share),
                   ),
                   _Row(
-                    icon: Iconsax.global,
+                    icon: Iconsax.global_copy,
                     label: 'Open in browser',
                     detail: 'Leaves Kyron and hands the page to your phone',
                     onTap: () => Navigator.pop(context, PageChoice.leave),
@@ -242,7 +244,7 @@ abstract final class TabSheet {
                           ),
                         ),
                         trailing: IconButton(
-                          icon: const Icon(Iconsax.close_circle, size: 18),
+                          icon: const Icon(Iconsax.close_circle_copy, size: 18),
                           tooltip: 'Close ${tab.label}',
                           onPressed: () =>
                               Navigator.pop(context, ShutTab(index)),
@@ -253,7 +255,7 @@ abstract final class TabSheet {
                 ),
                 if (tabs.length > 1)
                   _Row(
-                    icon: Iconsax.close_square,
+                    icon: Iconsax.close_square_copy,
                     label: 'Close all pages',
                     destructive: true,
                     onTap: () => Navigator.pop(context, const ShutEveryTab()),

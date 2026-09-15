@@ -143,7 +143,8 @@ class _TopicChip extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (selected) ...[
-                  Icon(Iconsax.tick_circle, size: 15, color: scheme.primary),
+                  Icon(Iconsax.tick_circle_copy,
+                      size: 15, color: scheme.primary),
                   const SizedBox(width: SpacingTokens.space4),
                 ],
                 Text(

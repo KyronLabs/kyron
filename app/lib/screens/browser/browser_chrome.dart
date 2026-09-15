@@ -156,7 +156,9 @@ class AddressPill extends StatelessWidget {
                       Row(
                         children: [
                           Icon(
-                            secure ? Iconsax.lock_1 : Iconsax.lock_slash,
+                            secure
+                                ? Iconsax.lock_1_copy
+                                : Iconsax.lock_slash_copy,
                             size: titled ? 11 : 13,
                             color: originColour,
                           ),
@@ -186,7 +188,7 @@ class AddressPill extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: SpacingTokens.space8),
-                Icon(Iconsax.arrow_down_1, size: 12, color: palette.quiet),
+                Icon(Iconsax.arrow_down_1_copy, size: 12, color: palette.quiet),
               ],
             ),
           ),
@@ -322,7 +324,7 @@ class TabChip extends StatelessWidget {
                 width: 28,
                 height: height,
                 child: Icon(
-                  Iconsax.close_circle,
+                  Iconsax.close_circle_copy,
                   size: 13,
                   color: palette.quiet,
                 ),
@@ -583,25 +585,25 @@ class BrowserFoot extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           BrowserButton(
-            icon: Iconsax.arrow_left_2,
+            icon: Iconsax.arrow_left_2_copy,
             label: 'Back',
             size: rowHeight,
             onTap: onBack,
           ),
           BrowserButton(
-            icon: Iconsax.arrow_right_3,
+            icon: Iconsax.arrow_right_3_copy,
             label: 'Forward',
             size: rowHeight,
             onTap: onForward,
           ),
           BrowserButton(
-            icon: loading ? Iconsax.close_square : Iconsax.refresh,
+            icon: loading ? Iconsax.close_square_copy : Iconsax.refresh_copy,
             label: loading ? 'Stop loading' : 'Reload',
             size: rowHeight,
             onTap: onReloadOrStop,
           ),
           BrowserButton(
-            icon: Iconsax.export_3,
+            icon: Iconsax.export_3_copy,
             label: 'Share this page',
             size: rowHeight,
             onTap: onShare,

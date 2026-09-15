@@ -333,7 +333,7 @@ class _Chrome extends StatelessWidget {
             child: Row(
               children: [
                 BrowserButton(
-                  icon: Iconsax.close_square,
+                  icon: Iconsax.close_square_copy,
                   label: 'Close the browser',
                   onTap: onClose,
                 ),

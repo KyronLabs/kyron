@@ -17,6 +17,10 @@ import '../widgets/squircle.dart';
 import '../widgets/toast.dart';
 import 'community_composer_screen.dart';
 import 'community_manage_screen.dart';
+import '../widgets/create_fab.dart';
+import '../widgets/action_sheet.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:flutter/services.dart';
 
 /// One community: what it is, who is in it, and what has been posted into it.
 class CommunityScreen extends ConsumerWidget {
@@ -37,24 +41,31 @@ class CommunityScreen extends ConsumerWidget {
       extendBodyBehindAppBar: true,
       // Only for members. A button that answers "join first" is a button that
       // should not have been there.
+      // Centred, and the same disc the bottom bar carries one screen back.
+      // It was a stock Material FloatingActionButton in the bottom-right
+      // corner: a different shape, a different colour and a different place
+      // from the create button on the page this one is opened from, for the
+      // same job. Sitting in the corner also put it over the right-hand end
+      // of whatever post happened to be at the foot of the list.
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: community == null || !community.canPost
           ? null
           : Padding(
-              // Clear of the home indicator. `endFloat` places the button 16
+              // Clear of the home indicator. A floating button is placed 16
               // above the *body*, and this body runs to the bottom of the
-              // screen -- so the button landed 32 up on a phone with a 34-pixel
+              // screen -- so it landed 32 up on a phone with a 34-pixel
               // gesture inset, two pixels inside the system's own strip.
-              // Adding the inset puts it 16 clear of it, which is where
-              // Material puts a floating button.
               padding: EdgeInsets.only(
                 bottom: MediaQuery.paddingOf(context).bottom,
               ),
-              child: FloatingActionButton(
-                onPressed: () => _compose(context, ref, community),
-                tooltip: 'Post in ${community.name}',
-                // Outlined, like every other glyph in Kyron. `Iconsax.edit_2`
-                // is the filled weight; the `_copy` suffix is the outline.
-                child: const Icon(Iconsax.edit_2_copy),
+              child: SizedBox.square(
+                dimension: 56,
+                child: CreateFab.of(
+                  icon: Iconsax.edit_2_copy,
+                  tooltip: 'Post in ${community.name}',
+                  heroTag: 'compose-${community.slug}',
+                  onPressed: () => _compose(context, ref, community),
+                ),
               ),
             ),
       body: Stack(
@@ -136,23 +147,12 @@ class CommunityScreen extends ConsumerWidget {
                       onPressed: () => Navigator.pop(context),
                     ),
                     const Spacer(),
-                    // Only for somebody who can act on it. A menu whose every
-                    // entry refuses is worse than no menu.
-                    if (community != null &&
-                        (community.role?.canModerate ?? false))
+                    if (community != null)
                       _GlassButton(
-                        icon: Iconsax.setting_2_copy,
-                        tooltip: 'Manage',
-                        onPressed: () async {
-                          await Navigator.push<Community>(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) =>
-                                  CommunityManageScreen(community: community),
-                            ),
-                          );
-                          notifier.refresh();
-                        },
+                        icon: Iconsax.more_copy,
+                        tooltip: 'This community',
+                        onPressed: () =>
+                            _openMenu(context, ref, community, notifier),
                       ),
                   ],
                 ),
@@ -162,6 +162,110 @@ class CommunityScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  /// What a member of this community needs, in one place.
+  ///
+  /// The banner used to carry a Manage gear and nothing else, and only for
+  /// moderators -- so for everybody else the top right of the page was empty
+  /// and leaving was a one-tap button in the header. Both are here now.
+  ///
+  /// Only what works is offered. There is no "report this community": the
+  /// moderation API takes a post, a comment or a person, and an entry that
+  /// refuses is worse than no entry.
+  Future<void> _openMenu(
+    BuildContext context,
+    WidgetRef ref,
+    Community community,
+    CommunityNotifier notifier,
+  ) async {
+    final url = 'https://kyron.so/c/${community.slug}';
+    final moderator = community.role?.canModerate ?? false;
+
+    final chosen = await ActionSheet.show<String>(
+      context,
+      title: community.name,
+      actions: [
+        const SheetAction(
+          value: 'share',
+          label: 'Share this community',
+          icon: Iconsax.export_copy,
+        ),
+        const SheetAction(
+          value: 'copy',
+          label: 'Copy link',
+          icon: Iconsax.link_copy,
+        ),
+        if (moderator)
+          const SheetAction(
+            value: 'manage',
+            label: 'Manage',
+            icon: Iconsax.setting_2_copy,
+            detail: 'Members, bans, and what this community says about itself',
+          ),
+        if (community.joined)
+          const SheetAction(
+            value: 'leave',
+            label: 'Leave',
+            icon: Iconsax.logout_copy,
+            detail: 'You will stop seeing its posts in your feed',
+            destructive: true,
+          ),
+      ],
+    );
+    if (chosen == null || !context.mounted) return;
+
+    switch (chosen) {
+      case 'share':
+        await Share.share(url, subject: '${community.name} on Kyron');
+
+      case 'copy':
+        await Clipboard.setData(ClipboardData(text: url));
+        if (context.mounted) Toast.show(context, 'Link copied');
+
+      case 'manage':
+        await Navigator.push<Community>(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CommunityManageScreen(community: community),
+          ),
+        );
+        notifier.refresh();
+
+      case 'leave':
+        // Asked, not assumed. This is the step the old button skipped.
+        final sure = await showDialog<bool>(
+          context: context,
+          builder: (dialogContext) => AlertDialog(
+            title: Text('Leave ${community.name}?'),
+            content: const Text(
+              'Its posts will stop appearing in your feed. You can join '
+              'again at any time.',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(dialogContext, false),
+                child: const Text('Stay'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(dialogContext, true),
+                child: const Text('Leave'),
+              ),
+            ],
+          ),
+        );
+        if (sure != true || !context.mounted) return;
+
+        final error = await notifier.toggleMembership();
+        if (!context.mounted) return;
+        if (error != null) {
+          Toast.show(context, error);
+        } else {
+          Toast.show(context, 'You have left ${community.name}');
+          ref.invalidate(myCommunitiesProvider);
+          ref.invalidate(discoverCommunitiesProvider);
+        }
+    }
   }
 
   Future<void> _compose(
@@ -289,22 +393,28 @@ class _Header extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(width: SpacingTokens.space12),
-                  SizedBox(
-                    width: 112,
-                    child: ActionButton(
-                      compact: true,
-                      label: community.joined ? 'Joined' : 'Join',
-                      icon: community.joined
-                          ? Iconsax.tick_circle_copy
-                          : Iconsax.add,
-                      kind: community.joined
-                          ? ActionButtonKind.outlined
-                          : ActionButtonKind.primary,
-                      busy: busy,
-                      onPressed: onToggle,
+                  // Join, and nothing once you have.
+                  //
+                  // "Joined" was a button, and the only thing it did was leave.
+                  // One stray tap in the header of a community somebody reads
+                  // every day dropped them out of it, with no warning and
+                  // nothing to say it had happened -- and the button then read
+                  // "Join", which looks like it failed rather than like it
+                  // worked. Leaving is in the menu at the top of the banner
+                  // now, behind a question.
+                  if (!community.joined) ...[
+                    const SizedBox(width: SpacingTokens.space12),
+                    SizedBox(
+                      width: 112,
+                      child: ActionButton(
+                        compact: true,
+                        label: 'Join',
+                        icon: Iconsax.add_copy,
+                        busy: busy,
+                        onPressed: onToggle,
+                      ),
                     ),
-                  ),
+                  ],
                 ],
               ),
               if (description != null && description.isNotEmpty) ...[

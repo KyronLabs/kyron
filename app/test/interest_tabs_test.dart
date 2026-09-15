@@ -70,7 +70,8 @@ Future<void> _pump(
 }
 
 Future<void> _openPicker(WidgetTester tester) async {
-  await tester.tap(find.byIcon(Iconsax.add));
+  // The outline, like every other glyph in this strip.
+  await tester.tap(find.byIcon(Iconsax.add_copy));
   await tester.pumpAndSettle();
 }
 

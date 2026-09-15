@@ -49,6 +49,31 @@ void main() {
             'TypographyTokens:\n${found.join('\n')}');
   });
 
+  test('the browser draws outlines', () {
+    // Iconsax ships every glyph twice, and the `_copy` suffix is the outline.
+    // A filled glyph in Kyron means a state -- a liked post, a saved one, the
+    // selected tab, a playing video -- so this is not a rule the whole app can
+    // follow. The browser has no such states: every one of its eleven icons
+    // was the filled variant, next to an interface drawn entirely in outlines.
+    final filled = [
+      for (final file in dart)
+        if (file.path.contains('screens/browser'))
+          ...() {
+            final lines = file.readAsLinesSync();
+            return [
+              for (var i = 0; i < lines.length; i++)
+                if (RegExp(r'Iconsax\.[a-z0-9_]+')
+                    .allMatches(lines[i])
+                    .any((m) => !m.group(0)!.endsWith('_copy')))
+                  '${file.path}:${i + 1}  ${lines[i].trim()}',
+            ];
+          }(),
+    ];
+    expect(filled, isEmpty,
+        reason: 'a filled Iconsax glyph is back in the browser:\n'
+            '${filled.join('\n')}');
+  });
+
   test('top bars go through KyronAppBar', () {
     // A bare Material AppBar turns faintly blue the moment a list scrolls
     // under it: Material 3 raises it to `scrolledUnderElevation` and washes
