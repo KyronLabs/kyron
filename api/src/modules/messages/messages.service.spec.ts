@@ -223,6 +223,62 @@ describe('sending', () => {
     );
   });
 
+  it('stores the id of what a reply answers', async () => {
+    const { service, prisma, calls } = serviceWith({
+      conversation: membership(null),
+    });
+    // The message being answered is in this conversation.
+    (prisma.message.findFirst as jest.Mock).mockResolvedValue({ id: 'm0' });
+
+    await service.send(ME, 'c1', 'yes', [], 'm0');
+
+    expect(calls.messageCreates[0]).toEqual(
+      containing({ data: containing({ replyToId: 'm0' }) }),
+    );
+  });
+
+  it('stores the id and never the quoted words', async () => {
+    // The point of the whole design. A direct message is sealed before it
+    // leaves the phone and this server holds ciphertext it cannot read -- so a
+    // reply carrying the quoted *text* would write that text into the database
+    // in the clear, undoing the encryption for every message anybody ever
+    // replied to.
+    const { service, prisma, calls } = serviceWith({
+      conversation: membership(null),
+    });
+    (prisma.message.findFirst as jest.Mock).mockResolvedValue({ id: 'm0' });
+
+    await service.send(ME, 'c1', 'yes', [], 'm0');
+
+    const written = JSON.stringify(calls.messageCreates[0]);
+    expect(written).toContain('m0');
+    // Whatever shape it grows, nothing in it may be called a quote.
+    expect(written).not.toMatch(/replyToBody|quoted|replyBody|replyText/i);
+  });
+
+  it('refuses a reply to a message in another conversation', async () => {
+    // The body is ciphertext the caller cannot read, but accepting this would
+    // still tell them the message exists and when it was written.
+    const { service, prisma } = serviceWith({
+      conversation: membership(null),
+    });
+    (prisma.message.findFirst as jest.Mock).mockResolvedValue(null);
+
+    await expect(
+      service.send(ME, 'c1', 'yes', [], 'somewhere-else'),
+    ).rejects.toBeInstanceOf(BadRequestException);
+  });
+
+  it('a message that answers nothing carries no reply', async () => {
+    const { service, calls } = serviceWith({
+      conversation: membership(null),
+    });
+    await service.send(ME, 'c1', 'hello');
+    expect(calls.messageCreates[0]).toEqual(
+      containing({ data: containing({ replyToId: null }) }),
+    );
+  });
+
   it('counts as reading, and brings the thread back for both sides', async () => {
     // A reply landing in a thread the other side had removed would otherwise
     // go somewhere they cannot see.

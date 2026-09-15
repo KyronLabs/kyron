@@ -54,6 +54,13 @@ export interface MessageItem {
   createdAt: Date;
   /** True once the other side has read past it. Drawn as a tick. */
   seen: boolean;
+  /**
+   * The message this one answers, if it answers one.
+   *
+   * An id, never the quoted words. This server holds ciphertext it cannot
+   * read; the client has the thread decrypted and resolves the quote itself.
+   */
+  replyToId: string | null;
   media: MessageMedia[];
 }
 
@@ -313,6 +320,9 @@ export class MessagesService {
         body: true,
         senderId: true,
         createdAt: true,
+        // The id of what each one answers. The quoted text is not sent: this
+        // server holds ciphertext, and the client has the thread decrypted.
+        replyToId: true,
         media: { select: this.mediaShape, orderBy: { position: 'asc' } },
       },
     });
@@ -346,6 +356,7 @@ export class MessagesService {
     conversationId: string,
     body: string,
     media: MessageMediaInput[] = [],
+    replyToId?: string,
   ) {
     const text = body.trim();
     // A picture with no words is a message; an empty box is not.
@@ -370,12 +381,29 @@ export class MessagesService {
       }
     }
 
+    // A reply has to answer something in *this* conversation. Without the
+    // check, a caller could quote a message out of a thread they are not in --
+    // and although the body is ciphertext they cannot read, the reply would
+    // still tell them that message exists and when it was written.
+    if (replyToId) {
+      const answering = await this.prisma.message.findFirst({
+        where: { id: replyToId, conversationId, deletedAt: null },
+        select: { id: true },
+      });
+      if (!answering) {
+        throw new BadRequestException(
+          'That message is not in this conversation.',
+        );
+      }
+    }
+
     const [message] = await this.prisma.$transaction([
       this.prisma.message.create({
         data: {
           conversationId,
           senderId: viewerId,
           body: text,
+          replyToId: replyToId ?? null,
           ...(media.length > 0
             ? {
                 media: {
@@ -399,6 +427,7 @@ export class MessagesService {
           body: true,
           senderId: true,
           createdAt: true,
+          replyToId: true,
           media: { select: this.mediaShape, orderBy: { position: 'asc' } },
         },
       }),

@@ -189,6 +189,25 @@ class ThreadState {
 
   bool get isEmpty => !loadingFirstPage && error == null && messages.isEmpty;
 
+  /// The message [message] answers, or null.
+  ///
+  /// Resolved here rather than sent by the server, and that is the whole
+  /// design: a direct message is sealed before it leaves the phone, so the
+  /// server holds ciphertext and could not quote it even if it wanted to.
+  /// This list is already decrypted.
+  ///
+  /// Null also covers a message older than the pages loaded so far. A quote
+  /// this cannot resolve is drawn as a quiet placeholder rather than left
+  /// blank, because a reply to nothing reads as a bug.
+  DirectMessage? answered(DirectMessage message) {
+    final id = message.replyToId;
+    if (id == null) return null;
+    for (final other in messages) {
+      if (other.id == id) return other;
+    }
+    return null;
+  }
+
   ThreadState copyWith({
     List<DirectMessage>? messages,
     List<MessagePerson>? people,
@@ -330,6 +349,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     String body, {
     required String senderId,
     List<PendingMedia> media = const [],
+    String? replyToId,
   }) async {
     final text = body.trim();
     // A picture with no words is a message; an empty box is not.
@@ -341,6 +361,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       senderId: senderId,
       createdAt: DateTime.now(),
       sending: true,
+      replyToId: replyToId,
       // Shown from the local file while it goes up, so the bubble is not an
       // empty box for the length of the upload.
       media: media.map((item) => item.asPlaceholder).toList(),
@@ -357,6 +378,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
         _conversationId,
         sealed ?? text,
         media: media,
+        replyToId: replyToId,
       );
       _replace(
         placeholder.id,
@@ -375,7 +397,13 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   /// could silently drop them.
   Future<void> retry(DirectMessage message) async {
     _drop(message.id);
-    await send(message.body, senderId: message.senderId);
+    // Still an answer to the same message. Without this a failed reply came
+    // back as a loose remark, and the thread stopped making sense.
+    await send(
+      message.body,
+      senderId: message.senderId,
+      replyToId: message.replyToId,
+    );
   }
 
   /// Fills in the ticks after the other side has read up to here.

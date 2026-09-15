@@ -92,7 +92,13 @@ export class MessagesController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() dto: SendMessageDto,
   ) {
-    return this.svc.send(req.user.id, id, dto.body ?? '', dto.media ?? []);
+    return this.svc.send(
+      req.user.id,
+      id,
+      dto.body ?? '',
+      dto.media ?? [],
+      dto.replyToId,
+    );
   }
 
   @Put(':id/read')
