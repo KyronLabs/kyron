@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
+import 'generated/messages_all.dart';
 
 // ignore: non_constant_identifier_names
 final AppLocalizations app_localizations = AppLocalizations();
