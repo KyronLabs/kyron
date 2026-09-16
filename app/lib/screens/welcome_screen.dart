@@ -137,8 +137,9 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          AppLocalizations.of(context)
-              .couldNotOpenGoogleSignIn(error.toString()),
+          AppLocalizations.of(
+            context,
+          ).couldNotOpenGoogleSignIn(error.toString()),
         ),
         backgroundColor: KyronTheme.errorPink,
         duration: const Duration(seconds: 6),
@@ -182,8 +183,9 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          AppLocalizations.of(context)
-                              .googleSignInNeedsPhoneApp,
+                          AppLocalizations.of(
+                            context,
+                          ).googleSignInNeedsPhoneApp,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize5,
                             fontWeight: FontWeight.w700,
@@ -192,8 +194,9 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                         ),
                         const SizedBox(height: SpacingTokens.space12),
                         Text(
-                          AppLocalizations.of(context)
-                              .googleSignInDesktopExplanation(platform),
+                          AppLocalizations.of(
+                            context,
+                          ).googleSignInDesktopExplanation(platform),
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize2,
                             height: 1.5,
@@ -423,8 +426,9 @@ class _Sheet extends StatelessWidget {
                     child: TextButton(
                       onPressed: () => onTerms(),
                       child: Text(
-                        AppLocalizations.of(context)
-                            .byContinuingAgreeTermsPrivacy,
+                        AppLocalizations.of(
+                          context,
+                        ).byContinuingAgreeTermsPrivacy,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: TypographyTokens.fontSize1,
