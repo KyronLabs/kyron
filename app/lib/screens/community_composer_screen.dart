@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/community_composer_screen.dart
 import 'dart:async';
 
@@ -103,11 +105,9 @@ class _CommunityComposerScreenState
     setState(() => _posting = true);
     unawaited(HapticFeedback.mediumImpact());
     try {
-      await ref.read(communitiesRepositoryProvider).post(
-            widget.community.slug,
-            _box.text.trim(),
-            media: _media.ready,
-          );
+      await ref
+          .read(communitiesRepositoryProvider)
+          .post(widget.community.slug, _box.text.trim(), media: _media.ready);
       if (!mounted) return;
       Navigator.pop(context, true);
     } catch (error) {
@@ -139,7 +139,7 @@ class _CommunityComposerScreenState
             // which an app bar's actions row cannot satisfy, so this button
             // was never drawn either.
             child: ActionButton(
-              label: 'Post',
+              label: AppLocalizations.of(context).post,
               compact: true,
               busy: _posting,
               onPressed: _canPost ? _post : null,
@@ -166,7 +166,9 @@ class _CommunityComposerScreenState
                   keyboardType: TextInputType.multiline,
                   textCapitalization: TextCapitalization.sentences,
                   style: const TextStyle(
-                      fontSize: TypographyTokens.fontSize4, height: 1.4),
+                    fontSize: TypographyTokens.fontSize4,
+                    height: 1.4,
+                  ),
                   decoration: InputDecoration(
                     hintText: 'Say something to ${widget.community.name}',
                     border: InputBorder.none,
@@ -197,19 +199,19 @@ class _CommunityComposerScreenState
               child: Row(
                 children: [
                   IconButton(
-                    tooltip: 'Add a photo',
+                    tooltip: AppLocalizations.of(context).literaladdAPhoto,
                     onPressed:
                         _media.hasRoom ? () => _attach(video: false) : null,
                     icon: const Icon(Iconsax.gallery_copy, size: 20),
                   ),
                   IconButton(
-                    tooltip: 'Add a clip',
+                    tooltip: AppLocalizations.of(context).literaladdAClip,
                     onPressed:
                         _media.hasRoom ? () => _attach(video: true) : null,
                     icon: const Icon(Iconsax.video_copy, size: 20),
                   ),
                   IconButton(
-                    tooltip: 'Tag someone',
+                    tooltip: AppLocalizations.of(context).literaltagSomeone,
                     onPressed: _tagSomeone,
                     icon: const Icon(Iconsax.tag_user_copy, size: 20),
                   ),

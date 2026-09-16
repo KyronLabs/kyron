@@ -1,9 +1,12 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/search_filter_sheet.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../providers/search_provider.dart';
+
 import 'action_button.dart';
 import 'date_wheel_sheet.dart';
 
@@ -61,8 +64,9 @@ class _Sheet extends StatefulWidget {
 }
 
 class _SheetState extends State<_Sheet> {
-  late final TextEditingController _from =
-      TextEditingController(text: widget.initial.from ?? '');
+  late final TextEditingController _from = TextEditingController(
+    text: widget.initial.from ?? '',
+  );
 
   late DateTime? _after = widget.initial.after;
   late DateTime? _before = widget.initial.before;
@@ -81,9 +85,7 @@ class _SheetState extends State<_Sheet> {
     return Padding(
       // For the keyboard, so the handle field is not covered while it is
       // being typed into.
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.viewInsetsOf(context).bottom,
-      ),
+      padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(
@@ -106,7 +108,7 @@ class _SheetState extends State<_Sheet> {
                   ),
                   TextButton(
                     onPressed: _anythingSet ? _reset : null,
-                    child: const Text('Reset'),
+                    child: Text(AppLocalizations.of(context).reset),
                   ),
                 ],
               ),
@@ -116,8 +118,8 @@ class _SheetState extends State<_Sheet> {
                 controller: _from,
                 autocorrect: false,
                 textCapitalization: TextCapitalization.none,
-                decoration: const InputDecoration(
-                  hintText: 'handle',
+                decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context).handle,
                   prefixText: '@',
                 ),
               ),
@@ -172,7 +174,7 @@ class _SheetState extends State<_Sheet> {
               ),
               const SizedBox(height: SpacingTokens.space24),
               ActionButton(
-                label: 'Show results',
+                label: AppLocalizations.of(context).literalshowResults,
                 icon: Iconsax.search_normal_1_copy,
                 expand: true,
                 onPressed: _apply,

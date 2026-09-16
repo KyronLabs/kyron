@@ -17,11 +17,14 @@ void main() {
     Directory(out).createSync(recursive: true);
     for (final family in ['Inter', 'Roboto']) {
       final loader = FontLoader(family)
-        ..addFont(Future.value(
+        ..addFont(
+          Future.value(
             File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
                 .readAsBytesSync()
                 .buffer
-                .asByteData()));
+                .asByteData(),
+          ),
+        );
       await loader.load();
     }
 
@@ -62,16 +65,16 @@ void main() {
     for (final size in [const Size(390, 380), const Size(420, 160)]) {
       for (final dark in [false, true]) {
         tester.view.physicalSize = size;
-        await tester.pumpWidget(RepaintBoundary(
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: dark ? KyronTheme.darkTheme : KyronTheme.lightTheme,
-            home: const Scaffold(body: GetStartedArt()),
+        await tester.pumpWidget(
+          RepaintBoundary(
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: dark ? KyronTheme.darkTheme : KyronTheme.lightTheme,
+              home: const Scaffold(body: GetStartedArt()),
+            ),
           ),
-        ));
-        await shoot(
-          'hero-${size.height.toInt()}-${dark ? 'dark' : 'light'}',
         );
+        await shoot('hero-${size.height.toInt()}-${dark ? 'dark' : 'light'}');
       }
     }
     exit(0);

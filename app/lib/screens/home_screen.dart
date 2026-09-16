@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../widgets/top_edge.dart';
 import '../widgets/interest_tabs.dart';
 import '../widgets/feed_canvas.dart';
@@ -66,8 +67,10 @@ class _HomeScreenState extends State<HomeScreen>
       final delta = offset - _lastScrollOffset;
       if (delta > 0) {
         final newValue =
-            (_topEdgeAnimController.value + (delta / _liveScrollRangePx))
-                .clamp(0.0, 1.0);
+            (_topEdgeAnimController.value + (delta / _liveScrollRangePx)).clamp(
+          0.0,
+          1.0,
+        );
         _topEdgeAnimController.value = newValue;
         _lastScrollOffset = offset;
       }
@@ -76,8 +79,10 @@ class _HomeScreenState extends State<HomeScreen>
       final delta = _lastScrollOffset - offset;
       if (delta > 0) {
         final newValue =
-            (_topEdgeAnimController.value - (delta / _liveScrollRangePx))
-                .clamp(0.0, 1.0);
+            (_topEdgeAnimController.value - (delta / _liveScrollRangePx)).clamp(
+          0.0,
+          1.0,
+        );
         _topEdgeAnimController.value = newValue;
         _lastScrollOffset = offset;
       }
@@ -171,10 +176,7 @@ class _HomeScreenState extends State<HomeScreen>
               final hideProgress = _topEdgeAnimController.value;
               return Transform.translate(
                 offset: Offset(0, -topEdgeContentHeight * hideProgress),
-                child: Opacity(
-                  opacity: 1.0 - hideProgress,
-                  child: child,
-                ),
+                child: Opacity(opacity: 1.0 - hideProgress, child: child),
               );
             },
             child: TopEdge(
@@ -205,9 +207,7 @@ class _HomeScreenState extends State<HomeScreen>
                 child: child,
               );
             },
-            child: InterestTabs(
-              scrollController: _scrollController,
-            ),
+            child: InterestTabs(scrollController: _scrollController),
           ),
         ),
 

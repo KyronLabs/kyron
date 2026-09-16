@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/about_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -59,7 +61,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('About'),
+        title: Text(AppLocalizations.of(context).about),
       ),
       body: SafeArea(
         child: ListView(
@@ -71,33 +73,42 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             _Row(
               icon: Iconsax.document_text_copy,
               label: LegalLinks.termsTitle,
-              onTap: () => AppBrowser.open(context, LegalLinks.terms,
-                  title: LegalLinks.termsTitle),
+              onTap: () => AppBrowser.open(
+                context,
+                LegalLinks.terms,
+                title: LegalLinks.termsTitle,
+              ),
             ),
             _Row(
               icon: Iconsax.shield_tick_copy,
               label: LegalLinks.privacyTitle,
-              onTap: () => AppBrowser.open(context, LegalLinks.privacy,
-                  title: LegalLinks.privacyTitle),
+              onTap: () => AppBrowser.open(
+                context,
+                LegalLinks.privacy,
+                title: LegalLinks.privacyTitle,
+              ),
             ),
             _divider(scheme),
             _group('Diagnostics'),
             _Row(
               icon: Iconsax.status_up_copy,
-              label: 'Service status',
-              subtitle: 'Whether Kyron is reachable right now',
+              label: AppLocalizations.of(context).serviceStatus,
+              subtitle: AppLocalizations.of(context)
+                  .literalwhetherKyronIsReachableRightNow,
               onTap: () => Navigator.pushNamed(context, Routes.aboutStatus),
             ),
             _Row(
               icon: Iconsax.document_code_copy,
-              label: 'System log',
-              subtitle: 'What this app has been doing',
+              label: AppLocalizations.of(context).systemLog,
+              subtitle:
+                  AppLocalizations.of(context).literalwhatThisAppHasBeenDoing,
               onTap: () => Navigator.pushNamed(context, Routes.aboutSystemLog),
             ),
             _Row(
               icon: Iconsax.warning_2_copy,
-              label: 'Send error report',
-              subtitle: 'Share the log with support',
+              label: AppLocalizations.of(context).sendErrorReport,
+              subtitle:
+                  AppLocalizations.of(context).literalshareTheLogWithSupport,
               onTap: () =>
                   Navigator.pushNamed(context, Routes.aboutErrorReport),
             ),
@@ -105,7 +116,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             _group('Storage'),
             _Row(
               icon: Iconsax.trash_copy,
-              label: 'Clear cache',
+              label: AppLocalizations.of(context).literalclearCache,
               subtitle: _cacheBytes == null
                   ? 'Measuring…'
                   : '${formatBytes(_cacheBytes!)} of cached images and files',
@@ -121,8 +132,9 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             _group('Build'),
             _Row(
               icon: Iconsax.mobile_copy,
-              label: 'App version',
-              subtitle: _info?.display ?? 'Reading…',
+              label: AppLocalizations.of(context).literalappVersion,
+              subtitle:
+                  _info?.display ?? AppLocalizations.of(context).literalreading,
               trailing: const Icon(Iconsax.copy_copy, size: 18),
               onTap: _info == null ? null : () => _copyBuild(_info!),
             ),
@@ -158,7 +170,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
     );
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Build details copied')),
+      SnackBar(content: Text(AppLocalizations.of(context).buildDetailsCopied)),
     );
   }
 
@@ -219,7 +231,10 @@ class _Wordmark extends StatelessWidget {
           child: const AppLogo(size: 40),
         ),
         const SizedBox(height: SpacingTokens.space12),
-        Text('Kyron', style: Theme.of(context).textTheme.titleLarge),
+        Text(
+          AppLocalizations.of(context).kyron,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
         const SizedBox(height: SpacingTokens.space4),
         Text(
           info == null ? '' : 'Version ${info!.display}',

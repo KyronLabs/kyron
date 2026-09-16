@@ -1,9 +1,12 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/language_sheet.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/language.dart';
+
 import 'hairline.dart';
 
 /// Picking a language, or several.
@@ -143,7 +146,7 @@ class _LanguageSheetBodyState extends State<_LanguageSheetBody> {
                           context,
                           Languages.fromCodes(_chosen),
                         ),
-                        child: const Text('Done'),
+                        child: Text(AppLocalizations.of(context).done),
                       ),
                   ],
                 ),
@@ -158,14 +161,18 @@ class _LanguageSheetBodyState extends State<_LanguageSheetBody> {
                   onChanged: (_) => setState(() {}),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search languages',
-                    prefixIcon:
-                        const Icon(Iconsax.search_normal_1_copy, size: 18),
+                    hintText: AppLocalizations.of(context).searchLanguages,
+                    prefixIcon: const Icon(
+                      Iconsax.search_normal_1_copy,
+                      size: 18,
+                    ),
                     suffixIcon: _query.text.isEmpty
                         ? null
                         : IconButton(
-                            icon:
-                                const Icon(Iconsax.close_circle_copy, size: 18),
+                            icon: const Icon(
+                              Iconsax.close_circle_copy,
+                              size: 18,
+                            ),
                             tooltip: 'Clear',
                             onPressed: () => setState(_query.clear),
                           ),
@@ -210,8 +217,10 @@ class _LanguageSheetBodyState extends State<_LanguageSheetBody> {
                                     ? null
                                     : Text(language.englishName),
                             trailing: on
-                                ? Icon(Iconsax.tick_circle_copy,
-                                    color: scheme.primary)
+                                ? Icon(
+                                    Iconsax.tick_circle_copy,
+                                    color: scheme.primary,
+                                  )
                                 : null,
                             selected: on,
                           );

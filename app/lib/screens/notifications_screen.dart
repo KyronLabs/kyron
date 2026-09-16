@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/notifications_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -38,8 +40,10 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen>
   ];
   static const _tabLabels = ['All', 'Likes', 'Replies', 'Follows'];
 
-  late final TabController _tabs =
-      TabController(length: _tabKinds.length, vsync: this);
+  late final TabController _tabs = TabController(
+    length: _tabKinds.length,
+    vsync: this,
+  );
 
   @override
   void initState() {
@@ -74,7 +78,7 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen>
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Notifications'),
+        title: Text(AppLocalizations.of(context).notifications),
       ),
       body: Column(
         children: [
@@ -132,37 +136,33 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
       Navigator.pushNamed(context, Routes.postDetail, arguments: postId);
       return;
     }
-    openProfile(
-      context,
-      username: row.actor.username,
-      userId: row.actor.id,
-    );
+    openProfile(context, username: row.actor.username, userId: row.actor.id);
   }
 
   EmptyState _empty() => switch (widget.kind) {
-        NotificationType.like => const EmptyState(
+        NotificationType.like => EmptyState(
             art: EmptyArt.likes,
-            title: 'No likes yet',
+            title: AppLocalizations.of(context).literalnoLikesYet,
             detail: 'When somebody likes one of your posts, it shows up here.',
           ),
-        NotificationType.comment => const EmptyState(
+        NotificationType.comment => EmptyState(
             art: EmptyArt.messages,
-            title: 'No replies yet',
+            title: AppLocalizations.of(context).literalnoRepliesYet,
             detail: 'Replies to your posts land here.',
           ),
-        NotificationType.follow => const EmptyState(
+        NotificationType.follow => EmptyState(
             art: EmptyArt.people,
-            title: 'No new followers',
+            title: AppLocalizations.of(context).literalnoNewFollowers,
             detail: 'People who follow you show up here.',
           ),
-        NotificationType.repost => const EmptyState(
+        NotificationType.repost => EmptyState(
             art: EmptyArt.posts,
-            title: 'No reposts yet',
+            title: AppLocalizations.of(context).literalnoRepostsYet,
             detail: 'When somebody reposts you, it shows up here.',
           ),
-        null => const EmptyState(
+        null => EmptyState(
             art: EmptyArt.caughtUp,
-            title: 'You are all caught up',
+            title: AppLocalizations.of(context).literalyouAreAllCaughtUp,
             detail: 'Likes, replies and new followers land here as they '
                 'happen.',
           ),
@@ -198,7 +198,8 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
         onRefresh: notifier.refresh,
         child: (state.error != null
                 ? EmptyState.failed(
-                    title: 'Could not load notifications',
+                    title: AppLocalizations.of(context)
+                        .literalcouldNotLoadNotifications,
                     detail: state.error!,
                     onAction: notifier.refresh,
                   )

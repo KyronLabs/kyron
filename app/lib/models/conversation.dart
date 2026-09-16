@@ -167,9 +167,8 @@ class Conversation {
       lastMessage:
           last is Map<String, dynamic> ? DirectMessage.fromJson(last) : null,
       unread: (json['unread'] as num?)?.toInt() ?? 0,
-      lastMessageAt: DateTime.tryParse(
-            json['lastMessageAt'] as String? ?? '',
-          )?.toLocal() ??
+      lastMessageAt: DateTime.tryParse(json['lastMessageAt'] as String? ?? '')
+              ?.toLocal() ??
           DateTime.now(),
     );
   }

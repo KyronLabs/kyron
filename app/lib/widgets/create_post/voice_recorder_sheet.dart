@@ -1,3 +1,5 @@
+import '../../l10n/app_localizations.dart';
+
 // lib/widgets/create_post/voice_recorder_sheet.dart
 import 'dart:async';
 import 'dart:io';
@@ -91,9 +93,11 @@ class _SheetState extends State<_Sheet> {
     setState(() => _failure = null);
 
     if (!await _recorder.hasPermission()) {
-      setState(() => _failure =
-          'Kyron needs permission to use the microphone to record a voice '
-              'post. You can grant it in your device settings.');
+      setState(
+        () => _failure =
+            'Kyron needs permission to use the microphone to record a voice '
+                'post. You can grant it in your device settings.',
+      );
       return;
     }
 
@@ -226,18 +230,17 @@ class _SheetState extends State<_Sheet> {
             children: [
               Expanded(
                 child: Text(
-                  switch (_stage) {
-                    _Stage.idle => 'Record a voice post',
-                    _Stage.recording => 'Recording…',
-                    _Stage.recorded => 'Ready to attach',
-                  },
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                    switch (_stage) {
+                      _Stage.idle => 'Record a voice post',
+                      _Stage.recording => 'Recording…',
+                      _Stage.recorded => 'Ready to attach',
+                    },
+                    style: Theme.of(context).textTheme.titleMedium),
               ),
               if (_stage != _Stage.recording)
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Cancel'),
+                  child: Text(AppLocalizations.of(context).cancel),
                 ),
             ],
           ),
@@ -272,13 +275,15 @@ class _SheetState extends State<_Sheet> {
               _failure!,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: TypographyTokens.fontSize2, color: scheme.error),
+                fontSize: TypographyTokens.fontSize2,
+                color: scheme.error,
+              ),
             ),
           ],
           const SizedBox(height: SpacingTokens.space20),
           switch (_stage) {
             _Stage.idle => ActionButton(
-                label: 'Start recording',
+                label: AppLocalizations.of(context).literalstartRecording,
                 icon: Iconsax.microphone_copy,
                 expand: true,
                 onPressed: _start,
@@ -294,7 +299,7 @@ class _SheetState extends State<_Sheet> {
                 children: [
                   Expanded(
                     child: ActionButton(
-                      label: 'Record again',
+                      label: AppLocalizations.of(context).literalrecordAgain,
                       icon: Iconsax.refresh_copy,
                       kind: ActionButtonKind.outlined,
                       expand: true,

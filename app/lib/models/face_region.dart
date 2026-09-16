@@ -52,12 +52,10 @@ class FaceRegion {
     return switch (kind) {
       FaceRegionKind.eyes => _slot(face),
       FaceRegionKind.lowerFace => _hullBelow(landmarks, frame, face),
-      FaceRegionKind.face => _hullOf(
-          [
-            for (final p in landmarks)
-              Offset(p.x * frame.width, p.y * frame.height),
-          ],
-        ),
+      FaceRegionKind.face => _hullOf([
+          for (final p in landmarks)
+            Offset(p.x * frame.width, p.y * frame.height),
+        ]),
     };
   }
 
@@ -141,7 +139,8 @@ class FaceRegion {
 
     final points = List.of(input)
       ..sort(
-          (a, b) => a.dx == b.dx ? a.dy.compareTo(b.dy) : a.dx.compareTo(b.dx));
+        (a, b) => a.dx == b.dx ? a.dy.compareTo(b.dy) : a.dx.compareTo(b.dx),
+      );
 
     double cross(Offset o, Offset a, Offset b) =>
         (a.dx - o.dx) * (b.dy - o.dy) - (a.dy - o.dy) * (b.dx - o.dx);

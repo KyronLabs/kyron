@@ -9,8 +9,9 @@ void main() {
     expect(ran, isTrue);
   });
 
-  testWidgets('waits for the frame when called from inside a build',
-      (tester) async {
+  testWidgets('waits for the frame when called from inside a build', (
+    tester,
+  ) async {
     // The case this exists for: opening a clip full screen takes a decoder off
     // one in the feed, and tells that tile so from inside the viewer's
     // initState. Calling setState there throws.

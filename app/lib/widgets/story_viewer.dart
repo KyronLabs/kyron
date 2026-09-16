@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+
 import '../providers/stories_provider.dart';
+import '../l10n/app_localizations.dart';
 
 class StoryViewer extends StatefulWidget {
   final Story initialStory;
@@ -25,8 +27,9 @@ class _StoryViewerState extends State<StoryViewer> {
   @override
   void initState() {
     super.initState();
-    _currentIndex =
-        widget.allStories.indexWhere((s) => s.id == widget.initialStory.id);
+    _currentIndex = widget.allStories.indexWhere(
+      (s) => s.id == widget.initialStory.id,
+    );
     _pageController = PageController(initialPage: _currentIndex);
     _checkReducedMotion();
   }

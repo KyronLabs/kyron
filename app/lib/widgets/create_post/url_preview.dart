@@ -106,16 +106,7 @@ final _bare = RegExp(
 );
 
 /// Abbreviations that look like hosts and are not.
-const _notALink = {
-  'e.g',
-  'i.e',
-  'etc',
-  'vs',
-  'a.m',
-  'p.m',
-  'u.s',
-  'u.k',
-};
+const _notALink = {'e.g', 'i.e', 'etc', 'vs', 'a.m', 'p.m', 'u.s', 'u.k'};
 
 /// Trailing punctuation belongs to the sentence, not the address.
 String _trimTrailing(String url) {

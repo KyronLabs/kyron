@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/terms_gate.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -105,25 +107,26 @@ class _Sheet extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const _Point(
+                    _Point(
                       icon: Iconsax.profile_tick,
-                      title: 'What you post is yours',
+                      title: AppLocalizations.of(context)
+                          .literalwhatYouPostIsYours,
                       detail: 'Kyron does not claim ownership of anything you '
                           'write, record or upload. You can delete it, and '
                           'export your account.',
                     ),
-                    const _Point(
+                    _Point(
                       icon: Iconsax.shield_tick,
-                      title: 'What Kyron keeps',
+                      title: AppLocalizations.of(context).literalwhatKyronKeeps,
                       detail:
                           'Your account, your posts, and what you tap on so '
                           'the feed can be ordered. Direct messages are '
                           'encrypted between devices and cannot be read on '
                           'the server.',
                     ),
-                    const _Point(
+                    _Point(
                       icon: Iconsax.people,
-                      title: 'How to behave',
+                      title: AppLocalizations.of(context).literalhowToBehave,
                       detail: 'No harassment, no content involving minors, '
                           'nothing illegal. Accounts that do those things are '
                           'removed.',
@@ -160,12 +163,12 @@ class _Sheet extends StatelessWidget {
                 children: [
                   FilledButton(
                     onPressed: () => Navigator.pop(context, true),
-                    child: const Text('Agree and continue'),
+                    child: Text(AppLocalizations.of(context).agreeAndContinue),
                   ),
                   const SizedBox(height: SpacingTokens.space8),
                   TextButton(
                     onPressed: () => Navigator.pop(context, false),
-                    child: const Text('Not now'),
+                    child: Text(AppLocalizations.of(context).notNow),
                   ),
                 ],
               ),
@@ -182,11 +185,7 @@ class _Point extends StatelessWidget {
   final String title;
   final String detail;
 
-  const _Point({
-    required this.icon,
-    required this.title,
-    required this.detail,
-  });
+  _Point({required this.icon, required this.title, required this.detail});
 
   @override
   Widget build(BuildContext context) {
@@ -244,7 +243,7 @@ class _DocButton extends StatelessWidget {
   final String label;
   final String url;
 
-  const _DocButton({required this.label, required this.url});
+  _DocButton({required this.label, required this.url});
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/date_wheel_sheet.dart
 import 'dart:async';
 
@@ -153,10 +155,7 @@ class _SheetState extends State<_Sheet> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              widget.title,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
+            Text(widget.title, style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: SpacingTokens.space12),
 
             SizedBox(
@@ -169,8 +168,9 @@ class _SheetState extends State<_Sheet> {
                       height: _itemExtent,
                       decoration: BoxDecoration(
                         color: scheme.onSurface.withValues(alpha: 0.06),
-                        borderRadius:
-                            BorderRadius.circular(RadiusTokens.radius12),
+                        borderRadius: BorderRadius.circular(
+                          RadiusTokens.radius12,
+                        ),
                       ),
                     ),
                   ),
@@ -232,8 +232,9 @@ class _SheetState extends State<_Sheet> {
                 child: Text(
                   'That date is outside the range this filter allows.',
                   style: TextStyle(
-                      fontSize: TypographyTokens.fontSize1,
-                      color: scheme.error),
+                    fontSize: TypographyTokens.fontSize1,
+                    color: scheme.error,
+                  ),
                 ),
               ),
 
@@ -241,7 +242,7 @@ class _SheetState extends State<_Sheet> {
               children: [
                 Expanded(
                   child: ActionButton(
-                    label: 'Cancel',
+                    label: AppLocalizations.of(context).cancel,
                     kind: ActionButtonKind.outlined,
                     expand: true,
                     onPressed: () => Navigator.pop(context),
@@ -250,7 +251,7 @@ class _SheetState extends State<_Sheet> {
                 const SizedBox(width: SpacingTokens.space12),
                 Expanded(
                   child: ActionButton(
-                    label: 'Done',
+                    label: AppLocalizations.of(context).done,
                     expand: true,
                     onPressed: _value.isBefore(widget.first) ||
                             _value.isAfter(widget.last)

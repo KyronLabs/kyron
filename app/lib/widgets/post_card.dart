@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/feed_post.dart';
 import '../providers/feed_provider.dart';
 import '../routes.dart';
+import '../l10n/app_localizations.dart';
 import 'community_avatar.dart';
 import 'link_preview_card.dart';
 import 'media_grid.dart';
@@ -63,11 +64,8 @@ class PostCard extends ConsumerWidget {
       child: InkWell(
         // The whole post opens the post, not its author. Tapping a post to
         // land on somebody's profile is not what anyone means by it.
-        onTap: () => Navigator.pushNamed(
-          context,
-          Routes.postDetail,
-          arguments: post.id,
-        ),
+        onTap: () =>
+            Navigator.pushNamed(context, Routes.postDetail, arguments: post.id),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: SpacingTokens.space16,
@@ -279,11 +277,8 @@ class _Actions extends ConsumerWidget {
 
     return PostActionsRow(
       post: post,
-      onReply: () => Navigator.pushNamed(
-        context,
-        Routes.postDetail,
-        arguments: post.id,
-      ),
+      onReply: () =>
+          Navigator.pushNamed(context, Routes.postDetail, arguments: post.id),
       onRepost: () => RepostSheet.show(
         context,
         post: post,

@@ -70,10 +70,8 @@ class ComingSoonScreen extends StatelessWidget {
               title: heading,
               detail: detail,
               action: 'Write a text post instead',
-              onAction: () => Navigator.pushReplacementNamed(
-                context,
-                Routes.composer,
-              ),
+              onAction: () =>
+                  Navigator.pushReplacementNamed(context, Routes.composer),
             ),
           ),
         ),

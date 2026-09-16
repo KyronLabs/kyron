@@ -106,8 +106,9 @@ class NotificationItem extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: TypographyTokens.fontSize3,
-                        color: scheme.onSurface),
+                      fontSize: TypographyTokens.fontSize3,
+                      color: scheme.onSurface,
+                    ),
                   ),
                   if (snippet != null && snippet.isNotEmpty) ...[
                     const SizedBox(height: SpacingTokens.space4),

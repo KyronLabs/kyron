@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/search_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -129,27 +131,27 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       );
     }
     if (state.isTooShort) {
-      return const EmptyState(
+      return EmptyState(
         art: EmptyArt.drafts,
-        title: 'Keep typing',
+        title: AppLocalizations.of(context).literalkeepTyping,
         detail: 'Two characters or more.',
       );
     }
     if (state.error != null) {
       return EmptyState.failed(
-        title: 'Search failed',
+        title: AppLocalizations.of(context).literalsearchFailed,
         detail: state.error!,
         onAction: notifier.retry,
       );
     }
     if (state.isSearching && state.results.isEmpty && state.posts.isEmpty) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(child: CircularProgressIndicator());
     }
     if (state.foundNothing) {
       final what = state.query.trim();
       return EmptyState(
         art: EmptyArt.noMatch,
-        title: 'Nothing matched',
+        title: AppLocalizations.of(context).literalnothingMatched,
         detail: what.isEmpty
             ? 'No posts match those filters.'
             : 'Nothing on Kyron matches "$what".',
@@ -159,10 +161,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     if (state.mode == SearchMode.posts) {
       return ListView.builder(
         itemCount: state.posts.length,
-        itemBuilder: (context, index) => PostCard(
-          post: state.posts[index],
-          source: PostListSource.recent,
-        ),
+        itemBuilder: (context, index) =>
+            PostCard(post: state.posts[index], source: PostListSource.recent),
       );
     }
 
@@ -271,11 +271,7 @@ class _Tap extends StatelessWidget {
   final VoidCallback onTap;
   final Widget child;
 
-  const _Tap({
-    required this.tooltip,
-    required this.onTap,
-    required this.child,
-  });
+  const _Tap({required this.tooltip, required this.onTap, required this.child});
 
   @override
   Widget build(BuildContext context) {

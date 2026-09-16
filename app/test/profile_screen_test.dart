@@ -48,10 +48,12 @@ FeedPost _post(String id) => FeedPost(
 
 Widget _app(FeedState seed) => ProviderScope(
       overrides: [
-        profileProvider
-            .overrideWith((ref, username) => _StubProfile(ref, username)),
-        postListProvider
-            .overrideWith((ref, source) => _StubPosts(ref, source, seed)),
+        profileProvider.overrideWith(
+          (ref, username) => _StubProfile(ref, username),
+        ),
+        postListProvider.overrideWith(
+          (ref, source) => _StubPosts(ref, source, seed),
+        ),
       ],
       child: const MaterialApp(home: ProfileScreen()),
     );
@@ -61,10 +63,12 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
-          profileProvider
-              .overrideWith((ref, username) => _StubProfile(ref, username)),
+          profileProvider.overrideWith(
+            (ref, username) => _StubProfile(ref, username),
+          ),
           postListProvider.overrideWith(
-              (ref, source) => _StubPosts(ref, source, const FeedState())),
+            (ref, source) => _StubPosts(ref, source, const FeedState()),
+          ),
         ],
         child: const MaterialApp(home: ProfileScreen()),
       ),

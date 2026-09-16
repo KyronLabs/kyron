@@ -30,9 +30,7 @@ void main() {
     final list = ListView.builder(
       // Constant padding when the chrome overlays: the space is inside the
       // scrollable, so keeping it at the open height costs nothing.
-      padding: EdgeInsets.only(
-        top: asSibling ? 0 : statusBar + topEdge + tabs,
-      ),
+      padding: EdgeInsets.only(top: asSibling ? 0 : statusBar + topEdge + tabs),
       itemCount: 200,
       itemBuilder: (_, i) => SizedBox(height: 220, child: Text('post $i')),
     );

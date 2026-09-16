@@ -1,4 +1,5 @@
-// lib/screens/browser/browser_route.dart
+import '../../l10n/app_localizations.dart';
+
 import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
@@ -85,10 +86,9 @@ class _BrowserRoute extends PageRouteBuilder<void> {
           ),
           transitionsBuilder: (context, animation, secondary, child) {
             return SlideTransition(
-              position: Tween<Offset>(
-                begin: const Offset(0, 1),
-                end: Offset.zero,
-              ).animate(
+              position:
+                  Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+                      .animate(
                 CurvedAnimation(
                   parent: animation,
                   curve: Curves.easeOutCubic,

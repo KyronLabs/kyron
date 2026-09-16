@@ -67,8 +67,9 @@ void main() {
     });
 
     test('keeps the topics it was filed under', () {
-      final back =
-          ComposerDraft.fromMap(stored(_draft(topics: ['tech', 'design'])));
+      final back = ComposerDraft.fromMap(
+        stored(_draft(topics: ['tech', 'design'])),
+      );
 
       expect(back.topics, ['tech', 'design']);
     });
@@ -220,13 +221,15 @@ void main() {
       final c = composer();
       await pumpEventQueue();
 
-      c.notifier.restore(_draft(
-        content: 'half a thought',
-        poll: ComposerPoll.blank(),
-        topics: ['design'],
-        replyPolicy: ReplyPolicy.mentioned,
-        quoting: _quoted,
-      ));
+      c.notifier.restore(
+        _draft(
+          content: 'half a thought',
+          poll: ComposerPoll.blank(),
+          topics: ['design'],
+          replyPolicy: ReplyPolicy.mentioned,
+          quoting: _quoted,
+        ),
+      );
 
       expect(c.notifier.state.content, 'half a thought');
       expect(c.notifier.state.poll, isNotNull);

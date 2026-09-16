@@ -14,16 +14,18 @@ DioException _response(int status, {Object? data}) => DioException(
 
 void main() {
   group('describeApiError', () {
-    test('reports an unreachable server as unreachable, not a bad connection',
-        () {
-      final message = describeApiError(
-        DioException(
-          requestOptions: RequestOptions(path: '/profile'),
-          type: DioExceptionType.connectionError,
-        ),
-      );
-      expect(message, contains('service may be'));
-    });
+    test(
+      'reports an unreachable server as unreachable, not a bad connection',
+      () {
+        final message = describeApiError(
+          DioException(
+            requestOptions: RequestOptions(path: '/profile'),
+            type: DioExceptionType.connectionError,
+          ),
+        );
+        expect(message, contains('service may be'));
+      },
+    );
 
     test('blames the server, not the connection, on a 5xx', () {
       final message = describeApiError(_response(503));
@@ -71,10 +73,14 @@ void main() {
     test('carries a 500 the server explained', () {
       expect(
         describeApiError(
-          _response(500, data: {
-            'message': 'Your sign-in is valid, but Kyron could not set up your '
-                'account on this server.',
-          }),
+          _response(
+            500,
+            data: {
+              'message':
+                  'Your sign-in is valid, but Kyron could not set up your '
+                      'account on this server.',
+            },
+          ),
         ),
         contains('could not set up your account'),
       );
@@ -108,9 +114,12 @@ void main() {
 
     test('takes the first entry of a validation message list', () {
       final message = describeApiError(
-        _response(422, data: {
-          'message': ['name should not be empty', 'bio too long'],
-        }),
+        _response(
+          422,
+          data: {
+            'message': ['name should not be empty', 'bio too long'],
+          },
+        ),
       );
       expect(message, 'name should not be empty');
     });

@@ -31,8 +31,11 @@ class _FakeMessages extends MessagesRepository {
   int _next = 0;
 
   @override
-  Future<MessagePage> messages(String id,
-      {String? cursor, int limit = 40}) async {
+  Future<MessagePage> messages(
+    String id, {
+    String? cursor,
+    int limit = 40,
+  }) async {
     if (listFails) throw _Down();
     return MessagePage(items: thread, people: people);
   }
@@ -91,23 +94,28 @@ MessageVault _lockedVault() => MessageVault(KeysRepository(ApiClient()));
 
 void main() {
   group('a thread', () {
-    test('is held oldest last, whichever order the server answers in',
-        () async {
-      // The server pages newest first, because that is what a cursor over
-      // "most recent" has to do. A chat is read the other way round.
-      final repo = _FakeMessages(thread: [
-        _msg('c', 'third', 'me', DateTime(2026, 1, 3)),
-        _msg('b', 'second', 'them', DateTime(2026, 1, 2)),
-        _msg('a', 'first', 'me', DateTime(2026, 1, 1)),
-      ]);
-      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
-      await pumpEventQueue();
+    test(
+      'is held oldest last, whichever order the server answers in',
+      () async {
+        // The server pages newest first, because that is what a cursor over
+        // "most recent" has to do. A chat is read the other way round.
+        final repo = _FakeMessages(
+          thread: [
+            _msg('c', 'third', 'me', DateTime(2026, 1, 3)),
+            _msg('b', 'second', 'them', DateTime(2026, 1, 2)),
+            _msg('a', 'first', 'me', DateTime(2026, 1, 1)),
+          ],
+        );
+        final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
+        await pumpEventQueue();
 
-      expect(
-        notifier.state.messages.map((m) => m.body),
-        ['first', 'second', 'third'],
-      );
-    });
+        expect(notifier.state.messages.map((m) => m.body), [
+          'first',
+          'second',
+          'third',
+        ]);
+      },
+    );
 
     test('marks itself read when it opens', () async {
       final repo = _FakeMessages();
@@ -191,31 +199,35 @@ void main() {
       expect(repo.removed, isEmpty);
     });
 
-    test('fills in the ticks when the other side reads, without refetching',
-        () async {
-      final repo = _FakeMessages(thread: [
-        _msg('a', 'mine', 'me', DateTime(2026, 1, 1)),
-        _msg('b', 'theirs', 'them', DateTime(2026, 1, 2)),
-      ]);
-      final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
-      await pumpEventQueue();
-      final before = repo.readMarks.length;
+    test(
+      'fills in the ticks when the other side reads, without refetching',
+      () async {
+        final repo = _FakeMessages(
+          thread: [
+            _msg('a', 'mine', 'me', DateTime(2026, 1, 1)),
+            _msg('b', 'theirs', 'them', DateTime(2026, 1, 2)),
+          ],
+        );
+        final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
+        await pumpEventQueue();
+        final before = repo.readMarks.length;
 
-      notifier.markSeenByOther('me');
+        notifier.markSeenByOther('me');
 
-      // Only the reader's own bubbles: "seen" is about whether the other
-      // person has looked, and their own messages were never unseen.
-      final byId = {for (final m in notifier.state.messages) m.id: m};
-      expect(byId['a']!.seen, isTrue);
-      expect(byId['b']!.seen, isFalse);
-      // And no round trip: refetching would blink a thread being read.
-      expect(repo.readMarks.length, before);
-    });
+        // Only the reader's own bubbles: "seen" is about whether the other
+        // person has looked, and their own messages were never unseen.
+        final byId = {for (final m in notifier.state.messages) m.id: m};
+        expect(byId['a']!.seen, isTrue);
+        expect(byId['b']!.seen, isFalse);
+        // And no round trip: refetching would blink a thread being read.
+        expect(repo.readMarks.length, before);
+      },
+    );
 
     test('does nothing when there is nothing left to mark', () async {
-      final repo = _FakeMessages(thread: [
-        _msg('a', 'theirs', 'them', DateTime(2026, 1, 1)),
-      ]);
+      final repo = _FakeMessages(
+        thread: [_msg('a', 'theirs', 'them', DateTime(2026, 1, 1))],
+      );
       final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
       final before = notifier.state.messages;
@@ -226,10 +238,12 @@ void main() {
     });
 
     test('takes a withdrawn message off the screen', () async {
-      final repo = _FakeMessages(thread: [
-        _msg('a', 'one', 'them', DateTime(2026, 1, 1)),
-        _msg('b', 'two', 'them', DateTime(2026, 1, 2)),
-      ]);
+      final repo = _FakeMessages(
+        thread: [
+          _msg('a', 'one', 'them', DateTime(2026, 1, 1)),
+          _msg('b', 'two', 'them', DateTime(2026, 1, 2)),
+        ],
+      );
       final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
 
@@ -242,9 +256,9 @@ void main() {
     });
 
     test('ignores a withdrawal for something it never held', () async {
-      final repo = _FakeMessages(thread: [
-        _msg('a', 'one', 'them', DateTime(2026, 1, 1)),
-      ]);
+      final repo = _FakeMessages(
+        thread: [_msg('a', 'one', 'them', DateTime(2026, 1, 1))],
+      );
       final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
       await pumpEventQueue();
 
@@ -294,16 +308,18 @@ void main() {
       expect(repo.hidden, ['a']);
     });
 
-    test('asks the server for the unread tab rather than filtering a page',
-        () async {
-      // Filtering after paging gives short pages and a tab that looks empty
-      // while there is more behind the cursor.
-      var askedUnread = false;
-      final repo = _UnreadSpy(() => askedUnread = true);
-      ConversationListNotifier(repo, unreadOnly: true);
-      await pumpEventQueue();
-      expect(askedUnread, isTrue);
-    });
+    test(
+      'asks the server for the unread tab rather than filtering a page',
+      () async {
+        // Filtering after paging gives short pages and a tab that looks empty
+        // while there is more behind the cursor.
+        var askedUnread = false;
+        final repo = _UnreadSpy(() => askedUnread = true);
+        ConversationListNotifier(repo, unreadOnly: true);
+        await pumpEventQueue();
+        expect(askedUnread, isTrue);
+      },
+    );
   });
 }
 

@@ -51,10 +51,7 @@ class ServiceStatus {
     return null;
   }
 
-  factory ServiceStatus.fromJson(
-    Map<String, dynamic> json,
-    Duration latency,
-  ) {
+  factory ServiceStatus.fromJson(Map<String, dynamic> json, Duration latency) {
     return ServiceStatus(
       status: json['status'] as String? ?? 'unknown',
       database: json['database'] as String? ?? 'unknown',
@@ -89,10 +86,12 @@ class ServiceStatusNotifier extends StateNotifier<AsyncValue<ServiceStatus>> {
                 // so it reports rather than waits out a full cold start.
                 options: Options(receiveTimeout: const Duration(seconds: 30)),
               );
-      state = AsyncData(ServiceStatus.fromJson(
-        res.data ?? const {},
-        DateTime.now().difference(started),
-      ));
+      state = AsyncData(
+        ServiceStatus.fromJson(
+          res.data ?? const {},
+          DateTime.now().difference(started),
+        ),
+      );
     } catch (e, st) {
       state = AsyncError(describeApiError(e), st);
     }

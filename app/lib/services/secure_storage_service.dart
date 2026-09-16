@@ -1,5 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import 'dart:convert';
+
 import '../models/user.dart';
 
 class SecureStorageService {
@@ -19,7 +21,9 @@ class SecureStorageService {
   Future<void> writeAccessToken(String token, DateTime expiresAt) async {
     await _storage.write(key: _kAccessTokenKey, value: token);
     await _storage.write(
-        key: _kAccessExpKey, value: expiresAt.toIso8601String());
+      key: _kAccessExpKey,
+      value: expiresAt.toIso8601String(),
+    );
   }
 
   Future<void> writeRefreshToken(String token) async {

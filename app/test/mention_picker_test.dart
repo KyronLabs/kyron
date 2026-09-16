@@ -129,12 +129,16 @@ void main() {
     expect(find.text('Who do you want to tag?'), findsOneWidget);
   });
 
-  testWidgets('finds people and writes the one that is tapped back',
-      (tester) async {
-    final opened = await _open(tester, people: [
-      _person('u1', name: 'Ada Lovelace', username: 'ada', followers: 1200),
-      _person('u2', name: 'Alan Turing', username: 'alan'),
-    ]);
+  testWidgets('finds people and writes the one that is tapped back', (
+    tester,
+  ) async {
+    final opened = await _open(
+      tester,
+      people: [
+        _person('u1', name: 'Ada Lovelace', username: 'ada', followers: 1200),
+        _person('u2', name: 'Alan Turing', username: 'alan'),
+      ],
+    );
 
     await tester.enterText(find.byType(TextField), 'a l');
     await tester.pump(const Duration(seconds: 1));
@@ -164,8 +168,9 @@ void main() {
     expect(find.text('Ada'), findsOneWidget);
   });
 
-  testWidgets('debounces rather than firing a request per keystroke',
-      (tester) async {
+  testWidgets('debounces rather than firing a request per keystroke', (
+    tester,
+  ) async {
     final opened = await _open(tester, people: []);
 
     for (final text in ['ad', 'ada', 'adal']) {
@@ -181,10 +186,13 @@ void main() {
   testWidgets('offers nobody who has no handle', (tester) async {
     // A mention is written as @handle. Somebody with none would be inserted
     // as text that resolves to nobody.
-    final opened = await _open(tester, people: [
-      _person('u1', name: 'No Handle'),
-      _person('u2', name: 'Ada', username: 'ada'),
-    ]);
+    final opened = await _open(
+      tester,
+      people: [
+        _person('u1', name: 'No Handle'),
+        _person('u2', name: 'Ada', username: 'ada'),
+      ],
+    );
 
     await tester.enterText(find.byType(TextField), 'a');
     await tester.enterText(find.byType(TextField), 'ad');

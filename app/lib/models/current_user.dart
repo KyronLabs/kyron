@@ -96,11 +96,7 @@ class CurrentUser {
         'location': location,
         'website': website,
       },
-      'stats': {
-        'followers': followers,
-        'following': following,
-        'posts': posts,
-      },
+      'stats': {'followers': followers, 'following': following, 'posts': posts},
     };
   }
 }

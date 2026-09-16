@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/messages_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -155,8 +157,9 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
   }
 
   Future<void> _open(Conversation conversation) async {
-    final notifier =
-        ref.read(conversationListProvider(widget.unreadOnly).notifier);
+    final notifier = ref.read(
+      conversationListProvider(widget.unreadOnly).notifier,
+    );
     notifier.markRead(conversation.id);
     await Navigator.pushNamed(
       context,
@@ -174,8 +177,9 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(conversationListProvider(widget.unreadOnly));
-    final notifier =
-        ref.read(conversationListProvider(widget.unreadOnly).notifier);
+    final notifier = ref.read(
+      conversationListProvider(widget.unreadOnly).notifier,
+    );
 
     if (state.loadingFirstPage) {
       return SkeletonList.conversations();
@@ -186,19 +190,22 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
       child: state.items.isEmpty
           ? (state.error != null
                   ? EmptyState.failed(
-                      title: 'Could not load your messages',
+                      title: AppLocalizations.of(context)
+                          .literalcouldNotLoadYourMessages,
                       detail: state.error,
                       onAction: notifier.refresh,
                     )
                   : widget.unreadOnly
-                      ? const EmptyState(
+                      ? EmptyState(
                           art: EmptyArt.caughtUp,
-                          title: 'Nothing unread',
+                          title:
+                              AppLocalizations.of(context).literalnothingUnread,
                           detail: 'Every conversation is caught up.',
                         )
-                      : const EmptyState(
+                      : EmptyState(
                           art: EmptyArt.messages,
-                          title: 'No messages yet',
+                          title:
+                              AppLocalizations.of(context).literalnoMessagesYet,
                           detail: 'Open somebody\'s profile and tap Message to '
                               'start a conversation.',
                         ))
@@ -278,19 +285,19 @@ class _ConversationRow extends StatelessWidget {
           await showDialog<bool>(
             context: context,
             builder: (context) => AlertDialog(
-              title: const Text('Remove this conversation?'),
-              content: const Text(
+              title: Text(AppLocalizations.of(context).removeConversation),
+              content: Text(
                 'It disappears from your list. The other person keeps theirs, '
                 'and it comes back if either of you writes again.',
               ),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context, false),
-                  child: const Text('Cancel'),
+                  child: Text(AppLocalizations.of(context).cancel),
                 ),
                 TextButton(
                   onPressed: () => Navigator.pop(context, true),
-                  child: const Text('Remove'),
+                  child: Text(AppLocalizations.of(context).remove),
                 ),
               ],
             ),

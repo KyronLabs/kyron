@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/services/gif_search.dart';
@@ -62,10 +63,8 @@ void main() {
   /// returns an empty list before it asks anything, and a test of the
   /// response shape passes by doing nothing -- which is what the first draft
   /// of this file did in CI, where no key is defined.
-  GifSearch searchWith(_Giphy adapter) => GifSearch(
-        client: Dio()..httpClientAdapter = adapter,
-        key: 'test-key',
-      );
+  GifSearch searchWith(_Giphy adapter) =>
+      GifSearch(client: Dio()..httpClientAdapter = adapter, key: 'test-key');
 
   test('reads a GIPHY result', () async {
     final adapter = _Giphy({

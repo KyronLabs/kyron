@@ -24,11 +24,7 @@ class LensRenderer {
 
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
-    canvas.drawImage(
-      source,
-      ui.Offset.zero,
-      ui.Paint()..colorFilter = filter,
-    );
+    canvas.drawImage(source, ui.Offset.zero, ui.Paint()..colorFilter = filter);
 
     final picture = recorder.endRecording();
     try {

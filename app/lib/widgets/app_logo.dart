@@ -41,9 +41,7 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tint = silhouette
-        ? silhouetteColor(
-            dark: Theme.of(context).brightness == Brightness.dark,
-          )
+        ? silhouetteColor(dark: Theme.of(context).brightness == Brightness.dark)
         : color;
 
     return SvgPicture.asset(

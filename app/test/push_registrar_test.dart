@@ -43,8 +43,10 @@ void main() {
   group('PushRegistrar', () {
     test('registers the token it is given', () async {
       final devices = FakeDevices();
-      await PushRegistrar(devices, connect: () async => FakeTokens('abc'))
-          .start();
+      await PushRegistrar(
+        devices,
+        connect: () async => FakeTokens('abc'),
+      ).start();
 
       expect(devices.registered, ['abc']);
     });
@@ -94,8 +96,10 @@ void main() {
 
     test('forgets the token on sign-out', () async {
       final devices = FakeDevices();
-      final registrar =
-          PushRegistrar(devices, connect: () async => FakeTokens('abc'));
+      final registrar = PushRegistrar(
+        devices,
+        connect: () async => FakeTokens('abc'),
+      );
       await registrar.start();
 
       await registrar.stop();
@@ -110,10 +114,13 @@ void main() {
       // reader takes both. Asking twice means two permission prompts.
       final devices = FakeDevices();
       var asked = 0;
-      final registrar = PushRegistrar(devices, connect: () async {
-        asked++;
-        return FakeTokens('abc');
-      });
+      final registrar = PushRegistrar(
+        devices,
+        connect: () async {
+          asked++;
+          return FakeTokens('abc');
+        },
+      );
 
       await registrar.start();
       await registrar.start();
@@ -168,8 +175,10 @@ void main() {
 
     test('signing out twice does not unregister twice', () async {
       final devices = FakeDevices();
-      final registrar =
-          PushRegistrar(devices, connect: () async => FakeTokens('abc'));
+      final registrar = PushRegistrar(
+        devices,
+        connect: () async => FakeTokens('abc'),
+      );
       await registrar.start();
 
       await registrar.stop();

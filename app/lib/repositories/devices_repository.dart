@@ -15,8 +15,6 @@ class DevicesRepository {
       );
 
   /// Forgets it, on sign-out.
-  Future<void> forget(String token) => _api.dio.delete<void>(
-        '/devices',
-        data: {'token': token},
-      );
+  Future<void> forget(String token) =>
+      _api.dio.delete<void>('/devices', data: {'token': token});
 }

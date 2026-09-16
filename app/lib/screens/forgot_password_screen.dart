@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/forgot_password_screen.dart
 import 'dart:async';
 
@@ -115,7 +117,9 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KyronAppBar(title: const Text('Reset your password')),
+      appBar: KyronAppBar(
+        title: Text(AppLocalizations.of(context).resetPassword),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(SpacingTokens.space20),
@@ -145,8 +149,8 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
           ),
           const SizedBox(height: SpacingTokens.space20),
           AppInputField(
-            label: 'Email',
-            hint: 'you@example.com',
+            label: AppLocalizations.of(context).email,
+            hint: AppLocalizations.of(context).literalyouExampleCom,
             controller: _email,
             keyboardType: TextInputType.emailAddress,
             autocorrect: false,
@@ -163,7 +167,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
           ],
           const SizedBox(height: SpacingTokens.space20),
           AppButton(
-            label: 'Send the link',
+            label: AppLocalizations.of(context).literalsendTheLink,
             onTap: _send,
             isLoading: _sending,
           ),
@@ -199,8 +203,11 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
             color: KyronTheme.successAqua.withValues(alpha: 0.14),
             borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
           ),
-          child: const Icon(Iconsax.sms_tracking,
-              size: 26, color: KyronTheme.successAqua),
+          child: const Icon(
+            Iconsax.sms_tracking,
+            size: 26,
+            color: KyronTheme.successAqua,
+          ),
         ),
         const SizedBox(height: SpacingTokens.space16),
         Text(
@@ -222,16 +229,16 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
           ),
         ),
         const SizedBox(height: SpacingTokens.space24),
-        const _Step(
+        _Step(
           number: '1',
-          title: 'Open the mail from Kyron',
+          title: AppLocalizations.of(context).literalopenTheMailFromKyron,
           detail: 'It arrives within a minute or so. If it is not there, look '
               'in spam or promotions — a first message from a new sender '
               'often lands in one of them.',
         ),
         _Step(
           number: '2',
-          title: 'Tap the link inside it',
+          title: AppLocalizations.of(context).literaltapTheLinkInsideIt,
           detail: PlatformSupport.current.authRedirect
               ? 'It opens Kyron straight at the screen where you set the new '
                   'password. It is good for one hour and one use, so tap it '
@@ -241,9 +248,9 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                   'phone with Kyron installed. It is good for one hour and '
                   'one use.',
         ),
-        const _Step(
+        _Step(
           number: '3',
-          title: 'Set a password and carry on',
+          title: AppLocalizations.of(context).literalsetAPasswordAndCarryOn,
           detail: 'You stay signed in on that device. Nothing else about your '
               'account changes, and anyone who had the old password no longer '
               'has anything.',
@@ -251,7 +258,9 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
         ),
         const SizedBox(height: SpacingTokens.space8),
         AppButton(
-          label: _cooldown > 0 ? 'Send again in ${_cooldown}s' : 'Send again',
+          label: _cooldown > 0
+              ? 'Send again in ${_cooldown}s'
+              : AppLocalizations.of(context).literalsendAgain,
           onTap: _send,
           isOutlined: true,
           isLoading: _sending,
@@ -271,7 +280,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
             _sentTo = null;
             _failure = null;
           }),
-          child: const Text('Use a different address'),
+          child: Text(AppLocalizations.of(context).useDifferentAddress),
         ),
         const SizedBox(height: SpacingTokens.space16),
         const _Aside(
@@ -295,7 +304,7 @@ class _Step extends StatelessWidget {
   final String detail;
   final bool last;
 
-  const _Step({
+  _Step({
     required this.number,
     required this.title,
     required this.detail,
@@ -419,7 +428,7 @@ class _Notice extends StatelessWidget {
   final Color tone;
   final String text;
 
-  const _Notice({required this.icon, required this.tone, required this.text});
+  _Notice({required this.icon, required this.tone, required this.text});
 
   @override
   Widget build(BuildContext context) {

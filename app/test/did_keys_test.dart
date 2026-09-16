@@ -67,8 +67,9 @@ void main() {
       const keys = DidKeys();
       final pair = await keys.newKeyPair();
 
-      final restored =
-          await DidKeys.tryDecodeSecret(await DidKeys.encodeSecret(pair));
+      final restored = await DidKeys.tryDecodeSecret(
+        await DidKeys.encodeSecret(pair),
+      );
 
       // The same identity, which is what matters: the same DID, and a
       // signature the same key made.
@@ -79,7 +80,7 @@ void main() {
       for (final bad in [
         '',
         'not base64!!',
-        base64Url.encode([1, 2, 3])
+        base64Url.encode([1, 2, 3]),
       ]) {
         expect(await DidKeys.tryDecodeSecret(bad), isNull);
       }
@@ -106,8 +107,10 @@ void main() {
 
     test('is base64url without padding, which is what the API takes', () async {
       const keys = DidKeys();
-      final signature =
-          await keys.sign(await keys.newKeyPair(), 'anything at all');
+      final signature = await keys.sign(
+        await keys.newKeyPair(),
+        'anything at all',
+      );
 
       expect(signature.contains('='), isFalse);
       expect(RegExp(r'^[A-Za-z0-9_-]+$').hasMatch(signature), isTrue);

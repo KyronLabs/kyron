@@ -79,12 +79,16 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('the interest picker', () {
-    testWidgets('offers what is trending, not a list written into the file',
-        (tester) async {
-      await _pump(tester, tags: const [
-        TrendingTag(tag: 'Lagos', posts: 90, recent: 12),
-        TrendingTag(tag: 'Harmattan', posts: 40, recent: 8),
-      ]);
+    testWidgets('offers what is trending, not a list written into the file', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        tags: const [
+          TrendingTag(tag: 'Lagos', posts: 90, recent: 12),
+          TrendingTag(tag: 'Harmattan', posts: 40, recent: 8),
+        ],
+      );
       await _openPicker(tester);
 
       expect(find.text('#Lagos'), findsOneWidget);
@@ -102,8 +106,9 @@ void main() {
       }
     });
 
-    testWidgets('says so when the read fails, and offers a retry',
-        (tester) async {
+    testWidgets('says so when the read fails, and offers a retry', (
+      tester,
+    ) async {
       await _pump(tester, fails: true);
       await _openPicker(tester);
 
@@ -118,8 +123,9 @@ void main() {
       expect(find.text('Nothing is trending yet'), findsOneWidget);
     });
 
-    testWidgets('adding one makes a tab that reads that hashtag',
-        (tester) async {
+    testWidgets('adding one makes a tab that reads that hashtag', (
+      tester,
+    ) async {
       await _pump(tester, tags: const [TrendingTag(tag: 'Lagos')]);
       await _openPicker(tester);
 
@@ -136,7 +142,10 @@ void main() {
     testWidgets('the fifth tab is the last, and it says why', (tester) async {
       await _pump(
         tester,
-        tags: const [TrendingTag(tag: 'Lagos'), TrendingTag(tag: 'Kano')],
+        tags: const [
+          TrendingTag(tag: 'Lagos'),
+          TrendingTag(tag: 'Kano'),
+        ],
         tabs: const ['For You', 'Following', 'Videos', '#Abuja'],
       );
       await _openPicker(tester);
@@ -156,8 +165,11 @@ void main() {
 
       // For You is selected by default.
       final active = tester.widget<Text>(find.text('For You'));
-      expect(active.style?.color, _loudPrimary,
-          reason: 'the active tab is not drawing the theme accent');
+      expect(
+        active.style?.color,
+        _loudPrimary,
+        reason: 'the active tab is not drawing the theme accent',
+      );
 
       // Every colour in here used to be #4C8FFF written out by hand, which is
       // neither the documented accent nor anything the theme can change.
@@ -169,10 +181,16 @@ void main() {
       await _pump(tester);
 
       final add = tester.getSize(find.bySemanticsLabel('Add an interest'));
-      expect(add.height, greaterThanOrEqualTo(44),
-          reason: 'the add button is ${add.height} high');
-      expect(add.width, greaterThanOrEqualTo(44),
-          reason: 'the add button is ${add.width} wide');
+      expect(
+        add.height,
+        greaterThanOrEqualTo(44),
+        reason: 'the add button is ${add.height} high',
+      );
+      expect(
+        add.width,
+        greaterThanOrEqualTo(44),
+        reason: 'the add button is ${add.width} wide',
+      );
 
       // The pill is drawn shorter than the strip; the target is not.
       final pill = tester.getSize(
@@ -183,8 +201,11 @@ void main() {
             )
             .first,
       );
-      expect(pill.height, greaterThanOrEqualTo(44),
-          reason: 'a tab is ${pill.height} high');
+      expect(
+        pill.height,
+        greaterThanOrEqualTo(44),
+        reason: 'a tab is ${pill.height} high',
+      );
     });
   });
 }

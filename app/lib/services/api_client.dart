@@ -41,8 +41,9 @@ class ApiClient {
     RequestInterceptorHandler handler,
   ) async {
     // 🔥 CRITICAL FIX: Skip auth header for public routes
-    final isPublicRoute =
-        _publicRoutes.any((route) => options.path.endsWith(route));
+    final isPublicRoute = _publicRoutes.any(
+      (route) => options.path.endsWith(route),
+    );
 
     if (!isPublicRoute) {
       // Read the token off the live session rather than a stored copy: the

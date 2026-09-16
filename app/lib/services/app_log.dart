@@ -125,12 +125,14 @@ class AppLog {
       add(LogLevel.error, source, message);
 
   void add(LogLevel level, String source, String message) {
-    _entries.addLast(LogEntry(
-      at: DateTime.now(),
-      level: level,
-      source: source,
-      message: message,
-    ));
+    _entries.addLast(
+      LogEntry(
+        at: DateTime.now(),
+        level: level,
+        source: source,
+        message: message,
+      ),
+    );
     while (_entries.length > maxEntries) {
       _entries.removeFirst();
     }

@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/atomic_card.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -88,9 +90,7 @@ class _AtomicCardState extends State<AtomicCard> {
           child: Ink(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
-              border: Border.all(
-                color: scheme.outline.withValues(alpha: 0.22),
-              ),
+              border: Border.all(color: scheme.outline.withValues(alpha: 0.22)),
             ),
             padding: const EdgeInsets.all(AtomicCard._padding),
             child: Column(
@@ -144,7 +144,9 @@ class _AtomicCardState extends State<AtomicCard> {
                 ActionButton(
                   compact: true,
                   expand: false,
-                  label: _following ? 'Following' : 'Follow',
+                  label: _following
+                      ? AppLocalizations.of(context).following
+                      : 'Follow',
                   kind: _following
                       ? ActionButtonKind.outlined
                       : ActionButtonKind.primary,

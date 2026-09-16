@@ -36,11 +36,7 @@ void main() {
     });
 
     test('lands where the Python tool put it', () {
-      final anchor = FaceAnchor.resolve(
-        FaceAnchorPoint.eyes,
-        landmarks,
-        frame,
-      );
+      final anchor = FaceAnchor.resolve(FaceAnchorPoint.eyes, landmarks, frame);
 
       expect(anchor, isNotNull);
       // Within a tenth of a pixel of an implementation written separately, in
@@ -54,8 +50,11 @@ void main() {
     test('this portrait is very nearly level', () {
       // Sanity on the fixture itself: a roll of 30 degrees here would mean the
       // landmarks are not the ones this test thinks they are.
-      final anchor =
-          FaceAnchor.resolve(FaceAnchorPoint.eyes, landmarks, frame)!;
+      final anchor = FaceAnchor.resolve(
+        FaceAnchorPoint.eyes,
+        landmarks,
+        frame,
+      )!;
       expect(anchor.rollDegrees.abs(), lessThan(2));
     });
 
@@ -65,10 +64,16 @@ void main() {
       for (final point in FaceAnchorPoint.values) {
         final anchor = FaceAnchor.resolve(point, landmarks, frame);
         expect(anchor, isNotNull, reason: point.name);
-        expect(anchor!.centre.dx, inInclusiveRange(0, frame.width),
-            reason: point.name);
-        expect(anchor.centre.dy, inInclusiveRange(0, frame.height),
-            reason: point.name);
+        expect(
+          anchor!.centre.dx,
+          inInclusiveRange(0, frame.width),
+          reason: point.name,
+        );
+        expect(
+          anchor.centre.dy,
+          inInclusiveRange(0, frame.height),
+          reason: point.name,
+        );
       }
     });
 
@@ -114,10 +119,7 @@ void main() {
     });
 
     test('no landmarks at all', () {
-      expect(
-        FaceAnchor.resolve(FaceAnchorPoint.eyes, const [], frame),
-        isNull,
-      );
+      expect(FaceAnchor.resolve(FaceAnchorPoint.eyes, const [], frame), isNull);
     });
 
     test('a frame with no size', () {

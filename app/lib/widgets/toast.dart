@@ -84,12 +84,8 @@ class Toast {
     dismiss();
 
     final entry = OverlayEntry(
-      builder: (context) => _Toast(
-        message: message,
-        spot: spot,
-        icon: icon,
-        onTap: dismiss,
-      ),
+      builder: (context) =>
+          _Toast(message: message, spot: spot, icon: icon, onTap: dismiss),
     );
     _entry = entry;
     overlay.insert(entry);
@@ -223,10 +219,12 @@ class _ToastState extends State<_Toast> with SingleTickerProviderStateMixin {
                 // screen reads as it having come from somewhere.
                 begin: bottom ? const Offset(0, 0.4) : Offset.zero,
                 end: Offset.zero,
-              ).animate(CurvedAnimation(
-                parent: _controller,
-                curve: Curves.easeOutCubic,
-              )),
+              ).animate(
+                CurvedAnimation(
+                  parent: _controller,
+                  curve: Curves.easeOutCubic,
+                ),
+              ),
               child: card,
             ),
           ),

@@ -83,10 +83,12 @@ class ComposerPoll {
       canAddOption ? copyWith(options: [...options, '']) : this;
 
   ComposerPoll removeOption(int index) => canRemoveOption
-      ? copyWith(options: [
-          for (var i = 0; i < options.length; i++)
-            if (i != index) options[i],
-        ])
+      ? copyWith(
+          options: [
+            for (var i = 0; i < options.length; i++)
+              if (i != index) options[i],
+          ],
+        )
       : this;
 
   Map<String, dynamic> toJson() => {

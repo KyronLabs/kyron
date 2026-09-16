@@ -31,8 +31,9 @@ class CommunitiesRepository {
   }
 
   Future<Community> bySlug(String slug) async {
-    final res = await _api.dio
-        .get<Map<String, dynamic>>('/communities/${Uri.encodeComponent(slug)}');
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/communities/${Uri.encodeComponent(slug)}',
+    );
     return Community.fromJson(res.data ?? const {});
   }
 

@@ -183,10 +183,9 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     this._draftService, {
     Duration autosaveDelay = defaultAutosaveDelay,
   })  : _autosaveDelay = autosaveDelay,
-        super(ComposerState(
-          content: '',
-          placeholderText: _randomPlaceholder(),
-        )) {
+        super(
+          ComposerState(content: '', placeholderText: _randomPlaceholder()),
+        ) {
     _loadDraft();
   }
 
@@ -259,8 +258,10 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
   void startPlaceholderRotation() {
     _placeholderTimer?.cancel();
-    _placeholderTimer =
-        Timer.periodic(const Duration(seconds: 10), (_) => rotatePlaceholder());
+    _placeholderTimer = Timer.periodic(
+      const Duration(seconds: 10),
+      (_) => rotatePlaceholder(),
+    );
   }
 
   void stopPlaceholderRotation() => _placeholderTimer?.cancel();
@@ -375,8 +376,11 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   /// than after uploading it and being told 413.
   static const maxAttachmentBytes = 25 * 1024 * 1024;
 
-  Future<void> _attach(XFile file,
-      {required bool video, MediaKind? kind}) async {
+  Future<void> _attach(
+    XFile file, {
+    required bool video,
+    MediaKind? kind,
+  }) async {
     final resolved = kind ?? (video ? MediaKind.video : MediaKind.image);
 
     final bytes = await file.length();
@@ -502,9 +506,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
   void _replaceMedia(String path, PendingMedia updated) {
     state = state.copyWith(
-      media: [
-        for (final m in state.media) m.path == path ? updated : m,
-      ],
+      media: [for (final m in state.media) m.path == path ? updated : m],
     );
   }
 
@@ -678,10 +680,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
   void clear() {
     _markSaved();
-    state = ComposerState(
-      content: '',
-      placeholderText: _randomPlaceholder(),
-    );
+    state = ComposerState(content: '', placeholderText: _randomPlaceholder());
   }
 
   @override

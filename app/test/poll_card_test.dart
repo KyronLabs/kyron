@@ -4,12 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/poll.dart';
 import 'package:kyron_app/widgets/poll_card.dart';
 
-Poll _poll({
-  String? voted,
-  bool closed = false,
-  int yes = 3,
-  int no = 1,
-}) =>
+Poll _poll({String? voted, bool closed = false, int yes = 3, int no = 1}) =>
     Poll(
       id: 'poll-1',
       closesAt: DateTime.now().add(const Duration(hours: 12)),
@@ -51,8 +46,9 @@ double _rowHeight(WidgetTester tester, String label) {
 }
 
 void main() {
-  testWidgets('draws each answer twice, once per colour scheme',
-      (tester) async {
+  testWidgets('draws each answer twice, once per colour scheme', (
+    tester,
+  ) async {
     // The bar is one layer on the track and one on the fill, clipped to the
     // share. A label straddling the boundary is legible on both sides only
     // because both layers exist.
@@ -83,8 +79,9 @@ void main() {
     expect(_rowHeight(tester, 'Yes'), greaterThanOrEqualTo(48));
   });
 
-  testWidgets('a row grows with the text rather than cropping it',
-      (tester) async {
+  testWidgets('a row grows with the text rather than cropping it', (
+    tester,
+  ) async {
     // A fixed height crops the answer at a larger text size, which is what
     // the old 38-pixel row did.
     await _pump(tester, _poll(), scale: 1.6);
@@ -93,8 +90,9 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('says how to take a vote back, once there is one to take',
-      (tester) async {
+  testWidgets('says how to take a vote back, once there is one to take', (
+    tester,
+  ) async {
     await _pump(tester, _poll(voted: 'o1'));
     expect(
       find.text('Tap your answer again to take your vote back.'),
@@ -102,8 +100,9 @@ void main() {
     );
   });
 
-  testWidgets('says nothing about taking a vote back before you have voted',
-      (tester) async {
+  testWidgets('says nothing about taking a vote back before you have voted', (
+    tester,
+  ) async {
     await _pump(tester, _poll());
     expect(
       find.text('Tap your answer again to take your vote back.'),
@@ -128,8 +127,9 @@ void main() {
     expect(find.textContaining('2 votes  \u00b7'), findsOneWidget);
   });
 
-  testWidgets('the footer wraps rather than running off the edge',
-      (tester) async {
+  testWidgets('the footer wraps rather than running off the edge', (
+    tester,
+  ) async {
     // Three texts in a row had nothing to give way, so at a larger text size
     // the time remaining ran past the right edge of the card.
     await _pump(tester, _poll(), scale: 1.6);

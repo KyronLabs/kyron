@@ -107,13 +107,9 @@ void main() {
         'Has Spaces',
         'CAPS',
         '-leading',
-        'a' * 60
+        'a' * 60,
       ]) {
-        expect(
-          Lens.tryParse({'id': id, 'name': 'X'}),
-          isNull,
-          reason: id,
-        );
+        expect(Lens.tryParse({'id': id, 'name': 'X'}), isNull, reason: id);
       }
     });
 
@@ -127,7 +123,7 @@ void main() {
         null,
         'a string',
         42,
-        <int>[1, 2, 3]
+        <int>[1, 2, 3],
       ]) {
         expect(Lens.tryParse(junk), isNull, reason: '$junk');
       }
@@ -156,7 +152,7 @@ void main() {
           {
             'id': 'bad',
             'name': 'Bad',
-            'matrix': <double>[1, 2]
+            'matrix': <double>[1, 2],
           },
           published('alsogood'),
         ]),
@@ -267,10 +263,12 @@ void main() {
           .writeAsStringSync(catalogue([published('cached')]));
 
       var called = false;
-      final subject = build(MockClient((_) async {
-        called = true;
-        return http.Response('', 500);
-      }));
+      final subject = build(
+        MockClient((_) async {
+          called = true;
+          return http.Response('', 500);
+        }),
+      );
 
       final lenses = await subject.lenses();
 

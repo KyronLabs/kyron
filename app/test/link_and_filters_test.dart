@@ -122,8 +122,11 @@ void main() {
       const empty = LinkPreview(url: 'https://e.com', host: 'e.com');
       expect(empty.isRenderable, isFalse);
 
-      const titled =
-          LinkPreview(url: 'https://e.com', host: 'e.com', title: 'A');
+      const titled = LinkPreview(
+        url: 'https://e.com',
+        host: 'e.com',
+        title: 'A',
+      );
       expect(titled.isRenderable, isTrue);
 
       const pictured = LinkPreview(
@@ -185,17 +188,19 @@ void main() {
       expect(filters.copyWith(clearFrom: true).after, isNotNull);
     });
 
-    test('compares by value, so an unchanged set does not look like a change',
-        () {
-      expect(
-        SearchFilters(from: 'a', after: DateTime(2026, 1, 1)),
-        SearchFilters(from: 'a', after: DateTime(2026, 1, 1)),
-      );
-      expect(
-        const SearchFilters(from: 'a'),
-        isNot(const SearchFilters(from: 'b')),
-      );
-    });
+    test(
+      'compares by value, so an unchanged set does not look like a change',
+      () {
+        expect(
+          SearchFilters(from: 'a', after: DateTime(2026, 1, 1)),
+          SearchFilters(from: 'a', after: DateTime(2026, 1, 1)),
+        );
+        expect(
+          const SearchFilters(from: 'a'),
+          isNot(const SearchFilters(from: 'b')),
+        );
+      },
+    );
   });
 
   group('SearchState', () {

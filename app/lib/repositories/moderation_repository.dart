@@ -8,27 +8,57 @@ import '../services/api_client.dart';
 /// on.
 enum ReportReason {
   spam('SPAM', 'Spam', 'Repetitive, misleading, or unwanted promotion.'),
-  harassment('HARASSMENT', 'Harassment or bullying',
-      'Targeted abuse, threats, or unwanted contact.'),
+  harassment(
+    'HARASSMENT',
+    'Harassment or bullying',
+    'Targeted abuse, threats, or unwanted contact.',
+  ),
   hate('HATE', 'Hate speech', 'Attacks on people for who they are.'),
-  violence('VIOLENCE', 'Violence or threats',
-      'Threatening, glorifying, or inciting harm.'),
-  selfHarm('SELF_HARM', 'Suicide or self-harm',
-      'Encouraging or depicting self-harm.'),
-  sexualContent('SEXUAL_CONTENT', 'Adult content',
-      'Sexual content shown without warning.'),
-  childSafety('CHILD_SAFETY', 'Child safety',
-      'Anything endangering or sexualising a minor.'),
-  misinformation('MISINFORMATION', 'False information',
-      'Misleading claims about health, elections, or events.'),
+  violence(
+    'VIOLENCE',
+    'Violence or threats',
+    'Threatening, glorifying, or inciting harm.',
+  ),
+  selfHarm(
+    'SELF_HARM',
+    'Suicide or self-harm',
+    'Encouraging or depicting self-harm.',
+  ),
+  sexualContent(
+    'SEXUAL_CONTENT',
+    'Adult content',
+    'Sexual content shown without warning.',
+  ),
+  childSafety(
+    'CHILD_SAFETY',
+    'Child safety',
+    'Anything endangering or sexualising a minor.',
+  ),
+  misinformation(
+    'MISINFORMATION',
+    'False information',
+    'Misleading claims about health, elections, or events.',
+  ),
   impersonation(
-      'IMPERSONATION', 'Impersonation', 'Pretending to be someone else.'),
-  intellectualProperty('INTELLECTUAL_PROPERTY', 'Intellectual property',
-      'Uses your work or trademark without permission.'),
-  illegalGoods('ILLEGAL_GOODS', 'Illegal goods or services',
-      'Selling or promoting something unlawful.'),
-  somethingElse('SOMETHING_ELSE', 'Something else',
-      'None of the above. Tell us what is wrong.');
+    'IMPERSONATION',
+    'Impersonation',
+    'Pretending to be someone else.',
+  ),
+  intellectualProperty(
+    'INTELLECTUAL_PROPERTY',
+    'Intellectual property',
+    'Uses your work or trademark without permission.',
+  ),
+  illegalGoods(
+    'ILLEGAL_GOODS',
+    'Illegal goods or services',
+    'Selling or promoting something unlawful.',
+  ),
+  somethingElse(
+    'SOMETHING_ELSE',
+    'Something else',
+    'None of the above. Tell us what is wrong.',
+  );
 
   const ReportReason(this.wire, this.label, this.detail);
 
@@ -115,10 +145,14 @@ class ModerationRepository {
     required ReportReason reason,
     String? detail,
   }) =>
-      _api.dio.post<void>('/reports', data: {
-        'target': target.wire,
-        'targetId': targetId,
-        'reason': reason.wire,
-        if (detail != null && detail.trim().isNotEmpty) 'detail': detail.trim(),
-      });
+      _api.dio.post<void>(
+        '/reports',
+        data: {
+          'target': target.wire,
+          'targetId': targetId,
+          'reason': reason.wire,
+          if (detail != null && detail.trim().isNotEmpty)
+            'detail': detail.trim(),
+        },
+      );
 }

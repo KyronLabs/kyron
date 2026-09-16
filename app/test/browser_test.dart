@@ -115,10 +115,8 @@ void main() {
 
   /// Text inside the address bar, rather than anywhere on the screen: the app
   /// is still built behind the sheet and its link labels contain hosts too.
-  Finder inTheBar(String text) => find.descendant(
-        of: find.byType(AddressPill),
-        matching: find.text(text),
-      );
+  Finder inTheBar(String text) =>
+      find.descendant(of: find.byType(AddressPill), matching: find.text(text));
 
   Finder barContaining(String text) => find.descendant(
         of: find.byType(AddressPill),
@@ -137,8 +135,9 @@ void main() {
       expect(engines.single.loaded, Uri.parse('https://example.com/a'));
     });
 
-    testWidgets('the host is named on the bar for as long as it is open',
-        (tester) async {
+    testWidgets('the host is named on the bar for as long as it is open', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://example.com/a']));
       await tapLink(tester, 'https://example.com/a');
@@ -158,8 +157,9 @@ void main() {
       expect(inTheBar('example.com'), findsNothing);
     });
 
-    testWidgets('the host is not printed twice before a page names itself',
-        (tester) async {
+    testWidgets('the host is not printed twice before a page names itself', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://example.com/a']));
       await tapLink(tester, 'https://example.com/a');
@@ -168,8 +168,10 @@ void main() {
       // over the host looks like a fault rather than two facts.
       expect(inTheBar('example.com'), findsOneWidget);
 
-      engines.single.tab
-          .finished(Uri.parse('https://example.com/a'), title: 'Example');
+      engines.single.tab.finished(
+        Uri.parse('https://example.com/a'),
+        title: 'Example',
+      );
       await tester.pumpAndSettle();
       expect(inTheBar('Example'), findsOneWidget);
       expect(inTheBar('example.com'), findsOneWidget);
@@ -184,8 +186,9 @@ void main() {
       expect(inTheBar('www.example.com'), findsNothing);
     });
 
-    testWidgets('the app shows behind it, so the page reads as a guest',
-        (tester) async {
+    testWidgets('the app shows behind it, so the page reads as a guest', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://example.com/a']));
       await tapLink(tester, 'https://example.com/a');
@@ -206,14 +209,17 @@ void main() {
       expect(foot.bottom, tester.getSize(find.byType(MaterialApp)).height);
       expect(foot.height, BrowserFoot.rowHeight + BrowserFoot.hairline + 34);
       for (final label in ['Back', 'Forward', 'Reload', 'Share this page']) {
-        expect(tester.getSize(find.bySemanticsLabel(label)).height,
-            BrowserFoot.rowHeight,
-            reason: '$label must not shrink to fit the gesture bar');
+        expect(
+          tester.getSize(find.bySemanticsLabel(label)).height,
+          BrowserFoot.rowHeight,
+          reason: '$label must not shrink to fit the gesture bar',
+        );
       }
     });
 
-    testWidgets('a post link preview opens it too -- the reported bug',
-        (tester) async {
+    testWidgets('a post link preview opens it too -- the reported bug', (
+      tester,
+    ) async {
       const url = 'https://news.example.org/story';
       const preview = LinkPreview(
         url: url,
@@ -243,18 +249,25 @@ void main() {
   });
 
   group('tabs', () {
-    testWidgets('a page asking for a window of its own gets a tab',
-        (tester) async {
+    testWidgets('a page asking for a window of its own gets a tab', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://example.com/a']));
       await tapLink(tester, 'https://example.com/a');
-      expect(find.byType(TabStrip), findsNothing,
-          reason: 'one page needs no strip');
+      expect(
+        find.byType(TabStrip),
+        findsNothing,
+        reason: 'one page needs no strip',
+      );
 
       await pageAsksForATab(tester, 'https://other.example/b');
 
-      expect(find.byType(BrowserSheet), findsOneWidget,
-          reason: 'a tab, not a second browser stacked on the first');
+      expect(
+        find.byType(BrowserSheet),
+        findsOneWidget,
+        reason: 'a tab, not a second browser stacked on the first',
+      );
       expect(find.byType(TabStrip), findsOneWidget);
       expect(engines.length, 2);
       expect(find.byType(TabChip), findsNWidgets(2));
@@ -278,8 +291,9 @@ void main() {
       expect(find.byType(TabChip), findsNWidgets(2));
     });
 
-    testWidgets('the same page twice comes back to the tab it already has',
-        (tester) async {
+    testWidgets('the same page twice comes back to the tab it already has', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://example.com/a']));
       await tapLink(tester, 'https://example.com/a');
@@ -288,8 +302,11 @@ void main() {
 
       expect(engines.length, 2, reason: 'no third engine for a page it holds');
       expect(find.byType(TabChip), findsNWidgets(2));
-      expect(inTheBar('example.com'), findsOneWidget,
-          reason: 'and it went back to the one it already had');
+      expect(
+        inTheBar('example.com'),
+        findsOneWidget,
+        reason: 'and it went back to the one it already had',
+      );
     });
 
     testWidgets('closing the last tab closes the browser', (tester) async {
@@ -308,8 +325,9 @@ void main() {
       expect(find.byType(BrowserSheet), findsNothing);
     });
 
-    testWidgets('a browser that has gone does not take the next link',
-        (tester) async {
+    testWidgets('a browser that has gone does not take the next link', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://example.com/a']));
       await tapLink(tester, 'https://example.com/a');
@@ -321,8 +339,11 @@ void main() {
 
       await tapLink(tester, 'https://example.com/a');
       expect(find.byType(BrowserSheet), findsOneWidget);
-      expect(find.byType(TabStrip), findsNothing,
-          reason: 'a fresh browser, not the closed one\'s two tabs');
+      expect(
+        find.byType(TabStrip),
+        findsNothing,
+        reason: 'a fresh browser, not the closed one\'s two tabs',
+      );
     });
 
     testWidgets('the counter says how many are open', (tester) async {
@@ -355,24 +376,29 @@ void main() {
       expect(inTheBar('safe.example'), findsOneWidget);
     });
 
-    testWidgets('progress is the real number, and goes when it is done',
-        (tester) async {
+    testWidgets('progress is the real number, and goes when it is done', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://example.com/a']));
       await tapLink(tester, 'https://example.com/a');
 
       double barWidth() => tester
-          .widget<FractionallySizedBox>(find.descendant(
-            of: find.byType(LoadBar),
-            matching: find.byType(FractionallySizedBox),
-          ))
+          .widget<FractionallySizedBox>(
+            find.descendant(
+              of: find.byType(LoadBar),
+              matching: find.byType(FractionallySizedBox),
+            ),
+          )
           .widthFactor!;
 
       double opacity() => tester
-          .widget<AnimatedOpacity>(find.descendant(
-            of: find.byType(LoadBar),
-            matching: find.byType(AnimatedOpacity),
-          ))
+          .widget<AnimatedOpacity>(
+            find.descendant(
+              of: find.byType(LoadBar),
+              matching: find.byType(AnimatedOpacity),
+            ),
+          )
           .opacity;
 
       engines.single.tab.progressed(40);
@@ -391,8 +417,9 @@ void main() {
   });
 
   group('a page that does not load', () {
-    testWidgets('says which host failed and why, and can retry',
-        (tester) async {
+    testWidgets('says which host failed and why, and can retry', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://gone.example/x']));
       await tapLink(tester, 'https://gone.example/x');
@@ -410,29 +437,38 @@ void main() {
         ),
         findsOneWidget,
       );
-      expect(find.text('That address does not resolve to a server.'),
-          findsOneWidget);
+      expect(
+        find.text('That address does not resolve to a server.'),
+        findsOneWidget,
+      );
 
       await tester.tap(find.text('Try again'));
       await tester.pumpAndSettle();
 
       expect(engines.single.did, contains('reload'));
-      expect(find.byType(PageFailure), findsNothing,
-          reason: 'a retry in progress is not still a failure');
+      expect(
+        find.byType(PageFailure),
+        findsNothing,
+        reason: 'a retry in progress is not still a failure',
+      );
     });
   });
 
   group('navigation', () {
-    testWidgets('back and forward answer only when there is history',
-        (tester) async {
+    testWidgets('back and forward answer only when there is history', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://example.com/a']));
       await tapLink(tester, 'https://example.com/a');
 
       await tester.tap(find.bySemanticsLabel('Back'));
       await tester.pumpAndSettle();
-      expect(engines.single.did, isNot(contains('back')),
-          reason: 'nothing to go back to');
+      expect(
+        engines.single.did,
+        isNot(contains('back')),
+        reason: 'nothing to go back to',
+      );
 
       engines.single.tab.historyChanged(back: true, forward: false);
       await tester.pumpAndSettle();
@@ -446,8 +482,9 @@ void main() {
       expect(engines.single.did, isNot(contains('forward')));
     });
 
-    testWidgets('the system back gesture unwinds the page before the browser',
-        (tester) async {
+    testWidgets('the system back gesture unwinds the page before the browser', (
+      tester,
+    ) async {
       useAPhone(tester);
       await tester.pumpWidget(screen(['https://example.com/a']));
       await tapLink(tester, 'https://example.com/a');
@@ -458,8 +495,11 @@ void main() {
       await tester.binding.handlePopRoute();
       await tester.pumpAndSettle();
       expect(engines.single.did, contains('back'));
-      expect(find.byType(BrowserSheet), findsOneWidget,
-          reason: 'back in the page, not out of the browser');
+      expect(
+        find.byType(BrowserSheet),
+        findsOneWidget,
+        reason: 'back in the page, not out of the browser',
+      );
 
       engines.single.tab.historyChanged(back: false, forward: false);
       await tester.pumpAndSettle();

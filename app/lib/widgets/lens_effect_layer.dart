@@ -302,13 +302,13 @@ class LensEffectBaker {
             region,
             gap * math.max(0.10, feather),
             gap * feather,
-            false
+            false,
           ),
         FrostEffect(:final reveal, :final blur, :final feather) => (
             reveal,
             gap * blur,
             gap * feather,
-            true
+            true,
           ),
       };
       if (effect is FillEffect && skin == null) continue;
@@ -359,7 +359,10 @@ class LensEffectBaker {
       final cutout = invert
           ? path
           : Path.combine(
-              PathOperation.difference, Path()..addRect(whole), path);
+              PathOperation.difference,
+              Path()..addRect(whole),
+              path,
+            );
 
       canvas.drawPath(
         cutout,

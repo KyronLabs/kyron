@@ -53,10 +53,7 @@ class MediaGrid extends StatelessWidget {
         ? SizedInlineVideo.ratioFor(item)
         : (item.aspectRatio ?? 4 / 3).clamp(0.6, 2.0);
 
-    return AspectRatio(
-      aspectRatio: ratio,
-      child: _tile(context, 0),
-    );
+    return AspectRatio(aspectRatio: ratio, child: _tile(context, 0));
   }
 
   Widget _row(BuildContext context, List<int> indices) {
@@ -159,19 +156,11 @@ class MediaGrid extends StatelessWidget {
                     : ColoredBox(color: scheme.surfaceContainerHighest),
               ),
             if (item.kind == MediaKind.gif)
-              Positioned(
-                left: 6,
-                bottom: 6,
-                child: _Badge(label: 'GIF'),
-              ),
+              Positioned(left: 6, bottom: 6, child: _Badge(label: 'GIF')),
             // Marked, so someone who relies on descriptions can see which
             // attachments carry one.
             if (item.alt != null && item.alt!.trim().isNotEmpty)
-              const Positioned(
-                right: 6,
-                bottom: 6,
-                child: _Badge(label: 'ALT'),
-              ),
+              Positioned(right: 6, bottom: 6, child: _Badge(label: 'ALT')),
           ],
         ),
       ),

@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/profile_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -69,14 +71,14 @@ class ProfileScreen extends ConsumerWidget {
               padding: const EdgeInsets.only(right: SpacingTokens.space8),
               child: _GlassAction(
                 icon: Iconsax.export_1_copy,
-                tooltip: 'Share this profile',
+                tooltip: AppLocalizations.of(context).literalshareThisProfile,
                 onPressed: () => shareProfile(state.value!),
               ),
             ),
         ],
       ),
       body: state.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => Center(child: CircularProgressIndicator()),
         error: (error, _) => _Failed(username: username, error: error),
         data: (profile) => _Loaded(profile: profile, username: username),
       ),
@@ -197,10 +199,7 @@ class _LoadedState extends ConsumerState<_Loaded> {
         ),
         slivers: [
           SliverToBoxAdapter(
-            child: _CoverAndHeader(
-              profile: profile,
-              username: widget.username,
-            ),
+            child: _CoverAndHeader(profile: profile, username: widget.username),
           ),
           SliverPersistentHeader(
             pinned: true,
@@ -275,7 +274,7 @@ class _LoadedState extends ConsumerState<_Loaded> {
   Widget _empty(ProfileModel profile, String? failed) {
     if (failed != null) {
       return EmptyState.failed(
-        title: 'Could not load these posts',
+        title: AppLocalizations.of(context).literalcouldNotLoadThesePosts,
         detail: failed,
         onAction: ref.read(postListProvider(_source).notifier).refresh,
       );
@@ -288,19 +287,21 @@ class _LoadedState extends ConsumerState<_Loaded> {
     return switch (_tab) {
       ProfileTab.posts => EmptyState(
           art: EmptyArt.posts,
-          title: mine ? 'You have not posted yet' : 'No posts yet',
+          title: mine
+              ? AppLocalizations.of(context).literalyouHaveNotPostedYet
+              : AppLocalizations.of(context).literalnoPostsYet,
           detail: mine
               ? 'Anything you post shows up here.'
               : '$who not posted anything yet.',
         ),
       ProfileTab.media => EmptyState(
           art: EmptyArt.videos,
-          title: 'Nothing to look at yet',
+          title: AppLocalizations.of(context).literalnothingToLookAtYet,
           detail: '$who not posted any photos or clips.',
         ),
-      ProfileTab.likes => const EmptyState(
+      ProfileTab.likes => EmptyState(
           art: EmptyArt.likes,
-          title: 'No likes yet',
+          title: AppLocalizations.of(context).literalnoLikesYet,
           detail: 'Posts you like are kept here, just for you.',
         ),
     };
@@ -665,9 +666,13 @@ class _Header extends ConsumerWidget {
             ),
           if (bio != null && bio.isNotEmpty) ...[
             const SizedBox(height: SpacingTokens.space12),
-            Text(bio,
-                style: const TextStyle(
-                    fontSize: TypographyTokens.fontSize3, height: 1.4)),
+            Text(
+              bio,
+              style: const TextStyle(
+                fontSize: TypographyTokens.fontSize3,
+                height: 1.4,
+              ),
+            ),
           ],
           if ((location != null && location.isNotEmpty) ||
               (website != null && website.isNotEmpty)) ...[
@@ -713,7 +718,7 @@ class _Counts extends StatelessWidget {
       children: [
         _Count(
           value: profile.followers,
-          label: 'Followers',
+          label: AppLocalizations.of(context).followers,
           onTap: () => Navigator.pushNamed(
             context,
             Routes.followers,
@@ -726,7 +731,7 @@ class _Counts extends StatelessWidget {
         ),
         _Count(
           value: profile.following,
-          label: 'Following',
+          label: AppLocalizations.of(context).following,
           onTap: () => Navigator.pushNamed(
             context,
             Routes.following,
@@ -775,8 +780,9 @@ class _Count extends StatelessWidget {
         Text(
           formatCount(value),
           style: const TextStyle(
-              fontSize: TypographyTokens.fontSize3,
-              fontWeight: FontWeight.w700),
+            fontSize: TypographyTokens.fontSize3,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         const SizedBox(width: SpacingTokens.space4),
         Text(
@@ -827,7 +833,7 @@ class _ActionsState extends ConsumerState<_Actions> {
       children: [
         ActionIconButton(
           icon: Iconsax.export_1_copy,
-          tooltip: 'Share this profile',
+          tooltip: AppLocalizations.of(context).literalshareThisProfile,
           onPressed: () => shareProfile(profile),
         ),
         const SizedBox(width: SpacingTokens.space8),
@@ -837,7 +843,7 @@ class _ActionsState extends ConsumerState<_Actions> {
         if (!profile.isOwnProfile) ...[
           ActionIconButton(
             icon: Iconsax.message_text_copy,
-            tooltip: 'Message',
+            tooltip: AppLocalizations.of(context).message,
             busy: _opening,
             onPressed: _message,
           ),
@@ -846,7 +852,7 @@ class _ActionsState extends ConsumerState<_Actions> {
         Flexible(
           child: profile.isOwnProfile
               ? ActionButton(
-                  label: 'Edit profile',
+                  label: AppLocalizations.of(context).editProfile,
                   icon: Iconsax.edit_2_copy,
                   kind: ActionButtonKind.outlined,
                   onPressed: () =>
@@ -854,7 +860,9 @@ class _ActionsState extends ConsumerState<_Actions> {
                 )
               : ActionButton(
                   compact: true,
-                  label: profile.isFollowing ? 'Following' : 'Follow',
+                  label: profile.isFollowing
+                      ? AppLocalizations.of(context).following
+                      : 'Follow',
                   icon: profile.isFollowing
                       ? Iconsax.tick_circle_copy
                       : Iconsax.add,
@@ -928,9 +936,10 @@ class _Meta extends StatelessWidget {
       children: [
         Icon(icon, size: 14, color: muted),
         const SizedBox(width: SpacingTokens.space4),
-        Text(text,
-            style:
-                TextStyle(fontSize: TypographyTokens.fontSize2, color: muted)),
+        Text(
+          text,
+          style: TextStyle(fontSize: TypographyTokens.fontSize2, color: muted),
+        ),
       ],
     );
   }
@@ -980,8 +989,9 @@ class _DidChip extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                    fontSize: TypographyTokens.fontSize1,
-                    color: scheme.primary),
+                  fontSize: TypographyTokens.fontSize1,
+                  color: scheme.primary,
+                ),
               ),
             ),
           ],

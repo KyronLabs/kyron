@@ -70,11 +70,7 @@ class FillEffect extends LensEffect {
     final shading = LensEffect.number(json['keepShading'] ?? 0.35);
     if (feather == null || shading == null) return null;
 
-    return FillEffect(
-      region: region,
-      feather: feather,
-      keepShading: shading,
-    );
+    return FillEffect(region: region, feather: feather, keepShading: shading);
   }
 
   @override

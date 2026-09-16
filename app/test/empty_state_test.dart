@@ -42,8 +42,9 @@ void main() {
       }
     });
 
-    testWidgets('draws in both themes without a fixed colour in it',
-        (tester) async {
+    testWidgets('draws in both themes without a fixed colour in it', (
+      tester,
+    ) async {
       // The point of drawing these rather than shipping them.
       //
       // The set this replaced was eighteen PNGs, each one a fixed colour, so
@@ -54,12 +55,14 @@ void main() {
       final shots = <bool, Color>{};
 
       for (final dark in [false, true]) {
-        await tester.pumpWidget(_wrap(
-          const Center(
-            child: EmptyArtwork(mark: EmptyMark.lines, chip: Icons.circle),
+        await tester.pumpWidget(
+          _wrap(
+            const Center(
+              child: EmptyArtwork(mark: EmptyMark.lines, chip: Icons.circle),
+            ),
+            dark: dark,
           ),
-          dark: dark,
-        ));
+        );
         await tester.pumpAndSettle();
 
         final card = tester
@@ -90,30 +93,41 @@ void main() {
   group('EmptyState', () {
     testWidgets('says what is missing and offers the way out', (tester) async {
       var tapped = 0;
-      await tester.pumpWidget(_wrap(EmptyState(
-        art: EmptyArt.communities,
-        title: 'You are not in any communities',
-        detail: 'Find one on Discover, or start your own.',
-        action: 'Start a community',
-        onAction: () => tapped++,
-      )));
+      await tester.pumpWidget(
+        _wrap(
+          EmptyState(
+            art: EmptyArt.communities,
+            title: 'You are not in any communities',
+            detail: 'Find one on Discover, or start your own.',
+            action: 'Start a community',
+            onAction: () => tapped++,
+          ),
+        ),
+      );
 
       expect(find.text('You are not in any communities'), findsOneWidget);
-      expect(find.text('Find one on Discover, or start your own.'),
-          findsOneWidget);
+      expect(
+        find.text('Find one on Discover, or start your own.'),
+        findsOneWidget,
+      );
 
       await tester.tap(find.text('Start a community'));
       expect(tapped, 1);
     });
 
-    testWidgets('leaves the button out when it would do nothing',
-        (tester) async {
+    testWidgets('leaves the button out when it would do nothing', (
+      tester,
+    ) async {
       // A label with no callback used to render a dead button.
-      await tester.pumpWidget(_wrap(const EmptyState(
-        art: EmptyArt.topics,
-        title: 'No topics yet',
-        action: 'Refresh',
-      )));
+      await tester.pumpWidget(
+        _wrap(
+          EmptyState(
+            art: EmptyArt.topics,
+            title: 'No topics yet',
+            action: 'Refresh',
+          ),
+        ),
+      );
 
       expect(find.byType(FilledButton), findsNothing);
       expect(find.text('Refresh'), findsNothing);
@@ -121,11 +135,15 @@ void main() {
 
     testWidgets('a failure keeps its own picture and a retry', (tester) async {
       var retried = 0;
-      await tester.pumpWidget(_wrap(EmptyState.failed(
-        title: 'Could not load these posts',
-        detail: 'The server is not answering.',
-        onAction: () => retried++,
-      )));
+      await tester.pumpWidget(
+        _wrap(
+          EmptyState.failed(
+            title: 'Could not load these posts',
+            detail: 'The server is not answering.',
+            onAction: () => retried++,
+          ),
+        ),
+      );
 
       final state = tester.widget<EmptyState>(find.byType(EmptyState));
       expect(state.art, EmptyArt.offline);
@@ -134,12 +152,14 @@ void main() {
       expect(retried, 1);
     });
 
-    testWidgets('the picture is not read out on top of the title',
-        (tester) async {
-      await tester.pumpWidget(_wrap(const EmptyState(
-        art: EmptyArt.messages,
-        title: 'No messages yet',
-      )));
+    testWidgets('the picture is not read out on top of the title', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          EmptyState(art: EmptyArt.messages, title: 'No messages yet'),
+        ),
+      );
 
       for (final image in tester.widgetList<Image>(find.byType(Image))) {
         expect(image.excludeFromSemantics, isTrue);
@@ -148,11 +168,20 @@ void main() {
     });
 
     testWidgets('compact is smaller, not different', (tester) async {
-      await tester.pumpWidget(_wrap(const Column(children: [
-        EmptyState(art: EmptyArt.noMatch, title: 'Nothing found'),
-        EmptyState(
-            art: EmptyArt.noMatch, title: 'Nothing found', compact: true),
-      ])));
+      await tester.pumpWidget(
+        _wrap(
+          Column(
+            children: [
+              EmptyState(art: EmptyArt.noMatch, title: 'Nothing found'),
+              EmptyState(
+                art: EmptyArt.noMatch,
+                title: 'Nothing found',
+                compact: true,
+              ),
+            ],
+          ),
+        ),
+      );
 
       final sizes = tester
           .widgetList<EmptyArtwork>(find.byType(EmptyArtwork))
@@ -162,13 +191,18 @@ void main() {
       expect(sizes.first, greaterThan(sizes.last));
     });
 
-    testWidgets('scrollable still scrolls when there is nothing in it',
-        (tester) async {
+    testWidgets('scrollable still scrolls when there is nothing in it', (
+      tester,
+    ) async {
       // Pull-to-refresh needs something that moves; a Column would not.
-      await tester.pumpWidget(_wrap(
-        const EmptyState(art: EmptyArt.caughtUp, title: 'All caught up')
-            .scrollable,
-      ));
+      await tester.pumpWidget(
+        _wrap(
+          EmptyState(
+            art: EmptyArt.caughtUp,
+            title: 'All caught up',
+          ).scrollable,
+        ),
+      );
 
       final view = tester.widget<ListView>(find.byType(ListView));
       expect(view.physics, isA<AlwaysScrollableScrollPhysics>());
@@ -201,7 +235,7 @@ void main() {
     test('falls back through the name to the handle', () {
       expect(
         parse({
-          'actor': {'id': 'u1', 'username': 'ada'}
+          'actor': {'id': 'u1', 'username': 'ada'},
         }).actor.label,
         '@ada',
       );

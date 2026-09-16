@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/mention_picker_sheet.dart
 import 'dart:async';
 
@@ -13,6 +15,7 @@ import '../providers/api_client_provider.dart';
 import '../providers/search_provider.dart' show SearchState;
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+
 import 'skeleton.dart';
 
 /// Picks somebody to tag, and answers with their handle.
@@ -61,8 +64,9 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
   /// typing" rather than firing a request the API answers with a 400.
   static const _minimum = SearchState.minimumQueryLength;
 
-  late final TextEditingController _query =
-      TextEditingController(text: widget.initialQuery);
+  late final TextEditingController _query = TextEditingController(
+    text: widget.initialQuery,
+  );
   final _focus = FocusNode();
 
   Timer? _pending;
@@ -168,9 +172,7 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
 
     return Padding(
       // Above the keyboard, which is up the whole time this is open.
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.viewInsetsOf(context).bottom,
-      ),
+      padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
       child: SizedBox(
         height: MediaQuery.sizeOf(context).height * 0.7,
         child: Column(
@@ -202,15 +204,20 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
                     onChanged: (_) => _run(),
                     onSubmitted: (_) => _run(immediate: true),
                     decoration: InputDecoration(
-                      hintText: 'Search by name or handle',
-                      prefixIcon:
-                          const Icon(Iconsax.search_normal_1_copy, size: 18),
+                      hintText:
+                          AppLocalizations.of(context).searchByNameOrHandle,
+                      prefixIcon: const Icon(
+                        Iconsax.search_normal_1_copy,
+                        size: 18,
+                      ),
                       filled: true,
-                      fillColor:
-                          scheme.surfaceContainerHighest.withValues(alpha: 0.5),
+                      fillColor: scheme.surfaceContainerHighest.withValues(
+                        alpha: 0.5,
+                      ),
                       border: OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(RadiusTokens.radiusMd),
+                        borderRadius: BorderRadius.circular(
+                          RadiusTokens.radiusMd,
+                        ),
                         borderSide: BorderSide.none,
                       ),
                       contentPadding: const EdgeInsets.symmetric(
@@ -233,7 +240,7 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
     if (_error != null) {
       return _Notice(
         icon: Iconsax.warning_2_copy,
-        title: 'Could not search',
+        title: AppLocalizations.of(context).literalcouldNotSearch,
         detail: _error!,
         action: 'Try again',
         onAction: () => _run(immediate: true),
@@ -247,9 +254,9 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
     }
 
     if (_query.text.trim().length < _minimum) {
-      return const _Notice(
+      return _Notice(
         icon: Iconsax.tag_user_copy,
-        title: 'Who do you want to tag?',
+        title: AppLocalizations.of(context).literalwhoDoYouWantToTag,
         detail: 'Type at least two characters of a name or a handle.',
       );
     }
@@ -257,7 +264,7 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
     if (_results.isEmpty) {
       return _Notice(
         icon: Iconsax.search_normal_1_copy,
-        title: 'Nobody found',
+        title: AppLocalizations.of(context).literalnobodyFound,
         detail: 'No account matches "$_answered".',
       );
     }
@@ -348,7 +355,7 @@ class _Notice extends StatelessWidget {
   final String? action;
   final VoidCallback? onAction;
 
-  const _Notice({
+  _Notice({
     required this.icon,
     required this.title,
     required this.detail,

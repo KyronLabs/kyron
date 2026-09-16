@@ -22,10 +22,7 @@ class FeedRepository {
   Future<FeedPage> recent({String? cursor, int limit = 20}) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/feed/recent',
-      queryParameters: {
-        'limit': limit,
-        if (cursor != null) 'cursor': cursor,
-      },
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
     );
     return FeedPage.fromJson(res.data ?? const {});
   }
@@ -128,10 +125,7 @@ class FeedRepository {
   Future<FeedPage> _page(String path, String? cursor, int limit) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       path,
-      queryParameters: {
-        'limit': limit,
-        if (cursor != null) 'cursor': cursor,
-      },
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
     );
     return FeedPage.fromJson(res.data ?? const {});
   }
@@ -210,8 +204,10 @@ class FeedRepository {
       try {
         thumbnailUrl = (await _uploadFile(still)).url;
       } catch (error) {
-        AppLog.instance
-            .error('media', 'A clip went up without its still: $error');
+        AppLog.instance.error(
+          'media',
+          'A clip went up without its still: $error',
+        );
       }
     }
 
@@ -223,11 +219,7 @@ class FeedRepository {
   }
 
   /// Puts one file on the server and answers with what came back.
-  Future<_Uploaded> _uploadFile(
-    String path, {
-    int? width,
-    int? height,
-  }) async {
+  Future<_Uploaded> _uploadFile(String path, {int? width, int? height}) async {
     final form = FormData.fromMap({
       'file': await MultipartFile.fromFile(
         path,
@@ -270,16 +262,8 @@ class FeedRepository {
       _page('/feed/topics/${Uri.encodeComponent(slug)}', cursor, limit);
 
   /// What has been posted into one community.
-  Future<FeedPage> byCommunity(
-    String slug, {
-    String? cursor,
-    int limit = 20,
-  }) =>
-      _page(
-        '/communities/${Uri.encodeComponent(slug)}/posts',
-        cursor,
-        limit,
-      );
+  Future<FeedPage> byCommunity(String slug, {String? cursor, int limit = 20}) =>
+      _page('/communities/${Uri.encodeComponent(slug)}/posts', cursor, limit);
 
   /// The hashtags being used right now, most used first.
   Future<List<TrendingTag>> trendingTags({int limit = 25}) async {
@@ -308,26 +292,26 @@ class FeedRepository {
     return FeedPost.fromJson(res.data ?? const {});
   }
 
-  Future<CommentPage> comments(String postId,
-      {String? cursor, int limit = 20}) async {
+  Future<CommentPage> comments(
+    String postId, {
+    String? cursor,
+    int limit = 20,
+  }) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/feed/posts/$postId/comments',
-      queryParameters: {
-        'limit': limit,
-        if (cursor != null) 'cursor': cursor,
-      },
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
     );
     return CommentPage.fromJson(res.data ?? const {});
   }
 
-  Future<CommentPage> replies(String commentId,
-      {String? cursor, int limit = 20}) async {
+  Future<CommentPage> replies(
+    String commentId, {
+    String? cursor,
+    int limit = 20,
+  }) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/feed/comments/$commentId/replies',
-      queryParameters: {
-        'limit': limit,
-        if (cursor != null) 'cursor': cursor,
-      },
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
     );
     return CommentPage.fromJson(res.data ?? const {});
   }
@@ -387,8 +371,9 @@ class FeedRepository {
 
   /// How the post is doing. Answers 404 to anyone but its author.
   Future<PostAnalytics> analytics(String postId) async {
-    final res = await _api.dio
-        .get<Map<String, dynamic>>('/feed/posts/$postId/analytics');
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/feed/posts/$postId/analytics',
+    );
     return PostAnalytics.fromJson(res.data ?? const {});
   }
 }
@@ -403,9 +388,5 @@ class _Uploaded {
   /// How long the clip runs, when the server could measure it.
   final int? durationMs;
 
-  const _Uploaded({
-    required this.url,
-    this.thumbnailUrl,
-    this.durationMs,
-  });
+  const _Uploaded({required this.url, this.thumbnailUrl, this.durationMs});
 }

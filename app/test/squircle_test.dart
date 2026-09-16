@@ -98,8 +98,9 @@ void main() {
     });
   });
 
-  testWidgets('Squircle clips what it is given, at the size it was told',
-      (tester) async {
+  testWidgets('Squircle clips what it is given, at the size it was told', (
+    tester,
+  ) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
@@ -114,10 +115,7 @@ void main() {
 
     final clipper = tester.widget<ClipPath>(find.byType(ClipPath)).clipper;
     expect(clipper, isA<ShapeBorderClipper>());
-    expect(
-      (clipper! as ShapeBorderClipper).shape,
-      SquircleShape.borderFor(40),
-    );
+    expect((clipper! as ShapeBorderClipper).shape, SquircleShape.borderFor(40));
   });
 }
 

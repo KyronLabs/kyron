@@ -34,8 +34,10 @@ class PasswordRequirements extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           text,
-          style:
-              TextStyle(fontSize: TypographyTokens.fontSize2, color: textColor),
+          style: TextStyle(
+            fontSize: TypographyTokens.fontSize2,
+            color: textColor,
+          ),
         ),
       ],
     );

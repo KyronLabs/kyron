@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/communities_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -130,7 +132,7 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen>
               SpacingTokens.space16,
           child: FloatingActionButton(
             onPressed: _create,
-            tooltip: 'Start a community',
+            tooltip: AppLocalizations.of(context).literalstartACommunity,
             // Outlined, matching the create button in the bar right below
             // it: the two sat one above the other showing the same plus in
             // two different weights.
@@ -196,13 +198,15 @@ class _MineTabState extends ConsumerState<_MineTab> {
       child: state.items.isEmpty
           ? (state.error != null
                   ? EmptyState.failed(
-                      title: 'Could not load your communities',
+                      title: AppLocalizations.of(context)
+                          .literalcouldNotLoadYourCommunities,
                       detail: state.error,
                       onAction: notifier.refresh,
                     )
                   : EmptyState(
                       art: EmptyArt.communities,
-                      title: 'You are not in any communities',
+                      title: AppLocalizations.of(context)
+                          .literalyouAreNotInAnyCommunities,
                       detail: 'Find one on Discover, or start your own.',
                       action: 'Start a community',
                       onAction: widget.onCreate,
@@ -285,7 +289,7 @@ class _DiscoverTabState extends ConsumerState<_DiscoverTab> {
             textInputAction: TextInputAction.search,
             onSubmitted: notifier.search,
             decoration: InputDecoration(
-              hintText: 'Search communities',
+              hintText: AppLocalizations.of(context).searchCommunities,
               isDense: true,
               filled: true,
               fillColor: scheme.surfaceContainerHighest.withValues(alpha: .45),
@@ -313,13 +317,14 @@ class _DiscoverTabState extends ConsumerState<_DiscoverTab> {
         ),
         Expanded(
           child: state.loadingFirstPage
-              ? const Center(child: CircularProgressIndicator())
+              ? Center(child: CircularProgressIndicator())
               : RefreshIndicator(
                   onRefresh: notifier.refresh,
                   child: state.items.isEmpty
                       ? (state.error != null
                               ? EmptyState.failed(
-                                  title: 'Could not load communities',
+                                  title: AppLocalizations.of(context)
+                                      .literalcouldNotLoadCommunities,
                                   detail: state.error,
                                   onAction: notifier.refresh,
                                 )
@@ -443,11 +448,12 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Start a community',
             style: TextStyle(
-                fontSize: TypographyTokens.fontSize5,
-                fontWeight: FontWeight.w700),
+              fontSize: TypographyTokens.fontSize5,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           const SizedBox(height: SpacingTokens.space16),
           TextField(
@@ -455,9 +461,9 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
             autofocus: true,
             maxLength: 60,
             textCapitalization: TextCapitalization.words,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Name',
-              hintText: 'Lagos Design',
+              hintText: AppLocalizations.of(context).lagosDesign,
               counterText: '',
             ),
           ),
@@ -478,7 +484,7 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
             maxLines: 3,
             minLines: 2,
             textCapitalization: TextCapitalization.sentences,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'What is it for? (optional)',
               alignLabelWithHint: true,
             ),
@@ -493,7 +499,7 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
                       dimension: 16,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : const Text('Create'),
+                  : Text(AppLocalizations.of(context).create),
             ),
           ),
         ],

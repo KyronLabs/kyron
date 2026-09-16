@@ -254,7 +254,8 @@ class SearchNotifier extends StateNotifier<SearchState> {
   }
 }
 
-final searchProvider =
-    StateNotifierProvider<SearchNotifier, SearchState>((ref) {
+final searchProvider = StateNotifierProvider<SearchNotifier, SearchState>((
+  ref,
+) {
   return SearchNotifier(ref);
 });

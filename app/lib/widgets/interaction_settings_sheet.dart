@@ -12,10 +12,7 @@ import '../models/post_media.dart';
 class InteractionSettingsSheet {
   const InteractionSettingsSheet._();
 
-  static Future<ReplyPolicy?> show(
-    BuildContext context,
-    ReplyPolicy current,
-  ) {
+  static Future<ReplyPolicy?> show(BuildContext context, ReplyPolicy current) {
     return showModalBottomSheet<ReplyPolicy>(
       context: context,
       showDragHandle: true,

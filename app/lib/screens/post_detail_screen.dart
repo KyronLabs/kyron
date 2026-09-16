@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/post_detail_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -109,12 +111,12 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Post'),
+        title: Text(AppLocalizations.of(context).post),
         actions: [
           if (mine)
             IconButton(
               icon: const Icon(Iconsax.chart_2_copy, size: 20),
-              tooltip: 'Post analytics',
+              tooltip: AppLocalizations.of(context).postAnalytics,
               onPressed: () => Navigator.pushNamed(
                 context,
                 Routes.postAnalytics,
@@ -189,10 +191,10 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
           }
           if (index == 1) return _ThreadHeading(count: post.comments);
           if (state.comments.isEmpty) {
-            return const EmptyState(
+            return EmptyState(
               compact: true,
               art: EmptyArt.messages,
-              title: 'No replies yet',
+              title: AppLocalizations.of(context).literalnoRepliesYet,
               detail: 'Be the first to say something.',
             );
           }
@@ -257,30 +259,32 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                     // instead of stopping at a band of padding the strip
                     // never covers.
                     if (foldedReplies)
-                      Builder(builder: (context) {
-                        final marker = ThreadMoreReplies(
-                          faces: comment.replyFaces,
-                          count: comment.replies,
-                          busy: fetching,
-                          onTap: () => _notifier.toggleReplies(comment.id),
-                        );
-                        return ThreadItem(
-                          depth: row.depth + 1,
-                          ancestorRails: [
-                            ...row.ancestorRails,
-                            !row.isLastChild,
-                          ],
-                          hasChildrenBelow: false,
-                          isLastChild: true,
-                          avatarSize: ThreadMoreReplies.faceSize,
-                          avatarWidth: ThreadMoreReplies.widthFor(
-                            comment.replyFaces.length,
+                      Builder(
+                        builder: (context) {
+                          final marker = ThreadMoreReplies(
+                            faces: comment.replyFaces,
+                            count: comment.replies,
                             busy: fetching,
-                          ),
-                          avatar: marker.leading(context),
-                          child: marker,
-                        );
-                      }),
+                            onTap: () => _notifier.toggleReplies(comment.id),
+                          );
+                          return ThreadItem(
+                            depth: row.depth + 1,
+                            ancestorRails: [
+                              ...row.ancestorRails,
+                              !row.isLastChild,
+                            ],
+                            hasChildrenBelow: false,
+                            isLastChild: true,
+                            avatarSize: ThreadMoreReplies.faceSize,
+                            avatarWidth: ThreadMoreReplies.widthFor(
+                              comment.replyFaces.length,
+                              busy: fetching,
+                            ),
+                            avatar: marker.leading(context),
+                            child: marker,
+                          );
+                        },
+                      ),
                   ],
                 ),
               ),
@@ -337,7 +341,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                   ),
                   IconButton(
                     icon: const Icon(Iconsax.close_circle_copy, size: 16),
-                    tooltip: 'Cancel reply',
+                    tooltip: AppLocalizations.of(context).literalcancelReply,
                     visualDensity: VisualDensity.compact,
                     onPressed: () => setState(() => _replyingTo = null),
                   ),
@@ -361,12 +365,12 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
             children: [
               IconButton(
                 icon: const Icon(Iconsax.gallery_copy, size: 20),
-                tooltip: 'Add a photo',
+                tooltip: AppLocalizations.of(context).literaladdAPhoto,
                 onPressed: state.canAttach ? () => _attach(video: false) : null,
               ),
               IconButton(
                 icon: const Icon(Iconsax.video_copy, size: 20),
-                tooltip: 'Add a video',
+                tooltip: AppLocalizations.of(context).literaladdAVideo,
                 onPressed: state.canAttach ? () => _attach(video: true) : null,
               ),
               Expanded(
@@ -437,11 +441,8 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
         collapseAfter: 1 << 30,
       );
 
-  void _openComment(PostComment comment) => Navigator.pushNamed(
-        context,
-        Routes.comment,
-        arguments: comment.id,
-      );
+  void _openComment(PostComment comment) =>
+      Navigator.pushNamed(context, Routes.comment, arguments: comment.id);
 
   Future<void> _likeComment(PostComment comment) async {
     final error = await _notifier.toggleCommentLike(comment);
@@ -569,7 +570,9 @@ class _Post extends ConsumerWidget {
             PostText(
               content: post.content,
               style: const TextStyle(
-                  fontSize: TypographyTokens.fontSize4, height: 1.4),
+                fontSize: TypographyTokens.fontSize4,
+                height: 1.4,
+              ),
             ),
 
           // Everything a card shows, in the order a card shows it. This screen
@@ -788,7 +791,10 @@ class _MoreButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: TextButton(onPressed: onTap, child: const Text('Load more')),
+      child: TextButton(
+        onPressed: onTap,
+        child: Text(AppLocalizations.of(context).loadMore),
+      ),
     );
   }
 }
@@ -804,7 +810,7 @@ class _Failed extends StatelessWidget {
     return Center(
       child: SingleChildScrollView(
         child: EmptyState.failed(
-          title: 'Could not load this post',
+          title: AppLocalizations.of(context).literalcouldNotLoadThisPost,
           detail: message,
           onAction: onRetry,
         ),

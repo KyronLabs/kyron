@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/media_viewer.dart
 import 'dart:async';
 
@@ -18,6 +20,7 @@ import '../services/video_pool.dart';
 import '../services/video_stage.dart';
 import '../utils/decode_size.dart';
 import '../utils/deferred_rebuild.dart';
+
 import 'inline_video.dart';
 import 'playback_bar.dart';
 import 'toast.dart';
@@ -35,11 +38,7 @@ class MediaViewer extends ConsumerStatefulWidget {
   final List<PostMedia> media;
   final int initialIndex;
 
-  const MediaViewer({
-    super.key,
-    required this.media,
-    this.initialIndex = 0,
-  });
+  const MediaViewer({super.key, required this.media, this.initialIndex = 0});
 
   /// Opens the viewer over whatever is on screen, on an opaque black route so
   /// the page behind does not show through while it is being dragged away.
@@ -66,8 +65,9 @@ class MediaViewer extends ConsumerStatefulWidget {
 }
 
 class _MediaViewerState extends ConsumerState<MediaViewer> {
-  late final PageController _pages =
-      PageController(initialPage: widget.initialIndex);
+  late final PageController _pages = PageController(
+    initialPage: widget.initialIndex,
+  );
   late int _index = widget.initialIndex;
 
   /// How far the sheet has been dragged down, for the swipe-to-dismiss.
@@ -200,7 +200,8 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
     whenNotBuilding(() {
       if (mounted) {
         setState(
-            () => _videoError = 'This clip stopped to make room for another.');
+          () => _videoError = 'This clip stopped to make room for another.',
+        );
       }
     });
   }
@@ -244,8 +245,9 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
                 // opening its own.
                 unawaited(_syncVideo());
               },
-              backgroundDecoration:
-                  const BoxDecoration(color: Colors.transparent),
+              backgroundDecoration: const BoxDecoration(
+                color: Colors.transparent,
+              ),
               // Dragging vertically dismisses; the gallery keeps the
               // horizontal axis for moving between attachments.
               scrollDirection: Axis.horizontal,
@@ -273,9 +275,8 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
                   errorBuilder: (_, __, ___) => const _Unavailable(),
                 );
               },
-              loadingBuilder: (_, __) => const Center(
-                child: CircularProgressIndicator(color: Colors.white),
-              ),
+              loadingBuilder: (_, __) =>
+                  Center(child: CircularProgressIndicator(color: Colors.white)),
             ),
           ),
 
@@ -365,9 +366,7 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
           ),
 
           if (_opening)
-            const Center(
-              child: CircularProgressIndicator(color: Colors.white),
-            ),
+            Center(child: CircularProgressIndicator(color: Colors.white)),
         ],
       ),
     );
@@ -424,12 +423,14 @@ class _TopBar extends StatelessWidget {
             Text(
               '${index + 1} of $total',
               style: const TextStyle(
-                  color: Colors.white, fontSize: TypographyTokens.fontSize2),
+                color: Colors.white,
+                fontSize: TypographyTokens.fontSize2,
+              ),
             ),
           const Spacer(),
           IconButton(
             icon: const Icon(Iconsax.copy_copy, color: Colors.white),
-            tooltip: 'Copy link',
+            tooltip: AppLocalizations.of(context).literalcopyLink,
             onPressed: onCopyLink,
           ),
           IconButton(
@@ -463,7 +464,9 @@ class _AltText extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
-            color: Colors.white, fontSize: TypographyTokens.fontSize2),
+          color: Colors.white,
+          fontSize: TypographyTokens.fontSize2,
+        ),
       ),
     );
   }
@@ -518,9 +521,7 @@ class _VideoStandIn extends StatelessWidget {
                 cacheWidth: decodeWidth(context),
                 errorBuilder: (_, __, ___) => const SizedBox.shrink(),
               ),
-            const Center(
-              child: Icon(Iconsax.play, size: 44, color: Colors.white54),
-            ),
+            Center(child: Icon(Iconsax.play, size: 44, color: Colors.white54)),
           ],
         ),
       ),
@@ -581,7 +582,9 @@ class _VideoControls extends StatelessWidget {
                   const SizedBox(width: SpacingTokens.space12),
                   _RoundButton(
                     icon: muted ? Iconsax.volume_slash : Iconsax.volume_high,
-                    tooltip: muted ? 'Turn sound on' : 'Turn sound off',
+                    tooltip: muted
+                        ? AppLocalizations.of(context).literalturnSoundOn
+                        : AppLocalizations.of(context).literalturnSoundOff,
                     onPressed: onToggleSound,
                   ),
                 ],
@@ -670,7 +673,7 @@ class _Unavailable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

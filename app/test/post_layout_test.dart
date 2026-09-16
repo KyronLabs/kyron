@@ -63,9 +63,7 @@ void main() {
     });
 
     test('every id in the result is unique', () {
-      final posts = [
-        for (var i = 0; i < 40; i++) _post('p${i % 7}'),
-      ];
+      final posts = [for (var i = 0; i < 40; i++) _post('p${i % 7}')];
       final ids = dedupePosts(posts).map((p) => p.id).toList();
       expect(ids.toSet().length, ids.length);
       expect(ids.length, 7);

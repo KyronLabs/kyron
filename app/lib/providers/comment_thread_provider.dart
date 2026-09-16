@@ -89,10 +89,12 @@ class CommentThreadNotifier extends StateNotifier<CommentThreadState> {
   /// worse than one that flickers.
   Future<String?> toggleLike(PostComment comment) async {
     final wanted = !comment.liked;
-    _replace(comment.copyWith(
-      liked: wanted,
-      likes: (comment.likes + (wanted ? 1 : -1)).clamp(0, 1 << 31),
-    ));
+    _replace(
+      comment.copyWith(
+        liked: wanted,
+        likes: (comment.likes + (wanted ? 1 : -1)).clamp(0, 1 << 31),
+      ),
+    );
     try {
       final likes = await _repo.setCommentLike(comment.id, wanted);
       _replace(comment.copyWith(liked: wanted, likes: likes));

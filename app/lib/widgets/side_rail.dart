@@ -1,9 +1,12 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/side_rail.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../utils/layout.dart';
+
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'create_fab.dart';
@@ -208,7 +211,7 @@ class _PostButtonState extends State<_PostButton> {
 
     return Semantics(
       button: true,
-      label: 'Post',
+      label: AppLocalizations.of(context).post,
       excludeSemantics: true,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
@@ -235,11 +238,7 @@ class _PostButtonState extends State<_PostButton> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Iconsax.add_copy,
-                    size: 19,
-                    color: scheme.surface,
-                  ),
+                  Icon(Iconsax.add_copy, size: 19, color: scheme.surface),
                   const SizedBox(width: SpacingTokens.space8),
                   Text(
                     'Post',

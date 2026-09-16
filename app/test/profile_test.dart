@@ -50,13 +50,13 @@ void main() {
     test('display name prefers the name, then the handle', () {
       expect(
         CurrentUser.fromJson(const {
-          'user': {'name': 'Ada', 'username': 'ada'}
+          'user': {'name': 'Ada', 'username': 'ada'},
         }).displayName,
         'Ada',
       );
       expect(
         CurrentUser.fromJson(const {
-          'user': {'username': 'ada'}
+          'user': {'username': 'ada'},
         }).displayName,
         'ada',
       );
@@ -66,7 +66,7 @@ void main() {
       expect(CurrentUser.fromJson(const {}).handle, isNull);
       expect(
         CurrentUser.fromJson(const {
-          'user': {'username': '  '}
+          'user': {'username': '  '},
         }).handle,
         isNull,
       );
@@ -94,10 +94,12 @@ void main() {
     });
 
     test('your own profile is never marked as followed', () {
-      final me = ProfileModel.fromCurrentUser(CurrentUser.fromJson(const {
-        'user': {'id': 'me'},
-        'stats': {'followers': 1, 'following': 2, 'posts': 3},
-      }));
+      final me = ProfileModel.fromCurrentUser(
+        CurrentUser.fromJson(const {
+          'user': {'id': 'me'},
+          'stats': {'followers': 1, 'following': 2, 'posts': 3},
+        }),
+      );
 
       expect(me.isOwnProfile, isTrue);
       expect(me.isFollowing, isFalse);

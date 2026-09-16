@@ -91,18 +91,13 @@ Future<_FakeFeed> _pump(
   final feed = _FakeFeed(posts);
   await tester.pumpWidget(
     ProviderScope(
-      overrides: [
-        feedRepositoryProvider.overrideWithValue(feed),
-      ],
+      overrides: [feedRepositoryProvider.overrideWithValue(feed)],
       child: MaterialApp(
         // The same observer the app registers: without it nothing tells this
         // screen it has been covered.
         navigatorObservers: [routeObserver],
         home: VideoFeedScreen(
-          args: VideoFeedArgs(
-            source: PostListSource.videos,
-            postId: startOn,
-          ),
+          args: VideoFeedArgs(source: PostListSource.videos, postId: startOn),
         ),
       ),
     ),
@@ -164,20 +159,18 @@ void main() {
     VideoStage.instance.reset();
   });
 
-  testWidgets('opens on the clip that was tapped, not the first',
-      (tester) async {
-    await _pump(
-      tester,
-      [_clip('a'), _clip('b'), _clip('c')],
-      startOn: 'c',
-    );
+  testWidgets('opens on the clip that was tapped, not the first', (
+    tester,
+  ) async {
+    await _pump(tester, [_clip('a'), _clip('b'), _clip('c')], startOn: 'c');
 
     expect(find.text('caption c'), findsOneWidget);
     expect(find.text('caption a'), findsNothing);
   });
 
-  testWidgets('starts at the top when that post is no longer in the list',
-      (tester) async {
+  testWidgets('starts at the top when that post is no longer in the list', (
+    tester,
+  ) async {
     // The list can be refreshed between the tap and this screen reading it.
     await _pump(tester, [_clip('a'), _clip('b')], startOn: 'gone');
     expect(find.text('caption a'), findsOneWidget);
@@ -185,11 +178,7 @@ void main() {
 
   testWidgets('pages through only the posts carrying a clip', (tester) async {
     // The list it reads is the feed's, which is not only videos.
-    await _pump(
-      tester,
-      [_clip('a'), _photo('p'), _clip('b')],
-      startOn: 'a',
-    );
+    await _pump(tester, [_clip('a'), _photo('p'), _clip('b')], startOn: 'a');
 
     await tester.fling(find.byType(PageView), const Offset(0, -600), 1000);
     await tester.pumpAndSettle();
@@ -198,15 +187,20 @@ void main() {
     expect(find.text('a picture'), findsNothing);
   });
 
-  testWidgets('only one clip has a player, however far it is paged',
-      (tester) async {
+  testWidgets('only one clip has a player, however far it is paged', (
+    tester,
+  ) async {
     // A player per page would leave the clip above holding a decoder, and a
     // decoder taken back stops whoever has gone longest without one.
     await _pump(
-      tester,
-      [_clip('a'), _clip('b'), _clip('c'), _clip('d')],
-      startOn: 'a',
-    );
+        tester,
+        [
+          _clip('a'),
+          _clip('b'),
+          _clip('c'),
+          _clip('d'),
+        ],
+        startOn: 'a');
 
     for (var i = 0; i < 3; i++) {
       await tester.fling(find.byType(PageView), const Offset(0, -600), 1000);
@@ -283,8 +277,9 @@ void main() {
   });
 
   group('tapping', () {
-    testWidgets('stops it on the tap, not once the double-tap window is out',
-        (tester) async {
+    testWidgets('stops it on the tap, not once the double-tap window is out', (
+      tester,
+    ) async {
       await _pump(tester, [_clip('a')], startOn: 'a');
 
       await tester.tap(find.byType(PageView));
@@ -295,8 +290,9 @@ void main() {
       expect(_isPaused(), isTrue);
     });
 
-    testWidgets('twice likes it, and leaves playback where it was',
-        (tester) async {
+    testWidgets('twice likes it, and leaves playback where it was', (
+      tester,
+    ) async {
       final feed = await _pump(tester, [_clip('a', likes: 4)], startOn: 'a');
 
       await tester.tap(find.byType(PageView));
@@ -309,13 +305,15 @@ void main() {
       expect(_isPaused(), isFalse, reason: 'the pause was undone by the like');
     });
 
-    testWidgets('twice on something already liked does not take it back',
-        (tester) async {
+    testWidgets('twice on something already liked does not take it back', (
+      tester,
+    ) async {
       final feed = await _pump(
-        tester,
-        [_clip('a', likes: 4, liked: true)],
-        startOn: 'a',
-      );
+          tester,
+          [
+            _clip('a', likes: 4, liked: true),
+          ],
+          startOn: 'a');
 
       await tester.tap(find.byType(PageView));
       await tester.pump(const Duration(milliseconds: 40));
@@ -356,8 +354,9 @@ void main() {
       expect(fitOfClip(tester), BoxFit.contain);
     });
 
-    testWidgets('a tap on the black beside a letterboxed clip still counts',
-        (tester) async {
+    testWidgets('a tap on the black beside a letterboxed clip still counts', (
+      tester,
+    ) async {
       _portrait(tester);
       (VideoPlayerPlatform.instance as FakeVideoPlatform).reportedSize =
           const Size(1920, 1080);
@@ -409,7 +408,7 @@ void main() {
           home: Scaffold(
             body: CustomScrollView(
               slivers: [
-                MediaTileGrid(posts: [_clip('a')])
+                MediaTileGrid(posts: [_clip('a')]),
               ],
             ),
           ),
@@ -452,8 +451,9 @@ void main() {
   });
 
   group('while the first page is loading', () {
-    testWidgets('shows a clip, not the word Loading on a black screen',
-        (tester) async {
+    testWidgets('shows a clip, not the word Loading on a black screen', (
+      tester,
+    ) async {
       // "Loading…" in the middle of black is indistinguishable from a clip
       // that will never arrive.
       final held = Completer<FeedPage>();
@@ -464,10 +464,7 @@ void main() {
           ],
           child: const MaterialApp(
             home: VideoFeedScreen(
-              args: VideoFeedArgs(
-                source: PostListSource.videos,
-                postId: 'a',
-              ),
+              args: VideoFeedArgs(source: PostListSource.videos, postId: 'a'),
             ),
           ),
         ),
@@ -494,10 +491,7 @@ void main() {
           ],
           child: const MaterialApp(
             home: VideoFeedScreen(
-              args: VideoFeedArgs(
-                source: PostListSource.videos,
-                postId: 'a',
-              ),
+              args: VideoFeedArgs(source: PostListSource.videos, postId: 'a'),
             ),
           ),
         ),

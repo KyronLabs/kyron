@@ -3,7 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/widgets/skeleton.dart';
 
 Future<void> show(WidgetTester tester, Widget child) => tester.pumpWidget(
-      MaterialApp(home: Scaffold(body: SingleChildScrollView(child: child))),
+      MaterialApp(
+        home: Scaffold(body: SingleChildScrollView(child: child)),
+      ),
     );
 
 void main() {
@@ -20,14 +22,17 @@ void main() {
       expect(SkeletonList.communities(), isA<SkeletonList>());
     });
 
-    testWidgets('takes up real height rather than laying out as nothing',
-        (tester) async {
+    testWidgets('takes up real height rather than laying out as nothing', (
+      tester,
+    ) async {
       // The first version nested a ListView inside another scroll view, which
       // is not an error: it lays out at no height and renders nothing at all.
       await show(tester, SkeletonList.posts(count: 2));
 
       expect(
-          tester.getSize(find.byType(SkeletonList)).height, greaterThan(200));
+        tester.getSize(find.byType(SkeletonList)).height,
+        greaterThan(200),
+      );
     });
 
     testWidgets('draws as many rows as it was asked for', (tester) async {

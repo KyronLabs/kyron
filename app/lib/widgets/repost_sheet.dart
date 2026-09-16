@@ -5,7 +5,10 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/feed_post.dart';
 import '../routes.dart';
+
 import 'toast.dart';
+
+import '../l10n/app_localizations.dart';
 
 /// The choice behind the repost button: pass it on as-is, or say something.
 class RepostSheet {
@@ -38,7 +41,11 @@ class RepostSheet {
                     : Iconsax.repeat_copy,
                 size: 20,
               ),
-              title: Text(post.reposted ? 'Undo repost' : 'Repost'),
+              title: Text(
+                post.reposted
+                    ? AppLocalizations.of(context).undoRepost
+                    : AppLocalizations.of(context).repost,
+              ),
               subtitle: Text(
                 post.reposted
                     ? 'Remove it from your profile'
@@ -55,8 +62,8 @@ class RepostSheet {
             ),
             ListTile(
               leading: const Icon(Iconsax.edit_2_copy, size: 20),
-              title: const Text('Quote'),
-              subtitle: const Text(
+              title: Text(AppLocalizations.of(context).quote),
+              subtitle: Text(
                 'Add your own words above it',
                 style: TextStyle(fontSize: TypographyTokens.fontSize1),
               ),

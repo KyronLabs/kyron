@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/sliding_drawer_content.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +15,7 @@ import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
+
 import 'skeleton.dart';
 
 class SlidingDrawerContent extends ConsumerWidget {
@@ -47,8 +50,9 @@ class SlidingDrawerContent extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-                height:
-                    MediaQuery.of(context).padding.top + SpacingTokens.space16),
+              height:
+                  MediaQuery.of(context).padding.top + SpacingTokens.space16,
+            ),
             userAsync.when(
               loading: () => _headerSkeleton(),
               error: (error, _) => _headerError(context, ref, scheme, error),
@@ -62,8 +66,9 @@ class SlidingDrawerContent extends ConsumerWidget {
             Expanded(child: _navigation(context)),
             _footer(context, scheme),
             SizedBox(
-                height: MediaQuery.of(context).padding.bottom +
-                    SpacingTokens.space8),
+              height:
+                  MediaQuery.of(context).padding.bottom + SpacingTokens.space8,
+            ),
           ],
         ),
       ),
@@ -95,8 +100,11 @@ class SlidingDrawerContent extends ConsumerWidget {
                   foregroundImage: user.avatarUrl == null
                       ? null
                       : NetworkImage(user.avatarUrl!),
-                  child: Icon(Iconsax.user_copy,
-                      size: 24, color: scheme.onTertiaryContainer),
+                  child: Icon(
+                    Iconsax.user_copy,
+                    size: 24,
+                    color: scheme.onTertiaryContainer,
+                  ),
                 ),
               ),
             ),
@@ -160,8 +168,11 @@ class SlidingDrawerContent extends ConsumerWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Iconsax.document_copy,
-                        size: 12, color: scheme.primary),
+                    Icon(
+                      Iconsax.document_copy,
+                      size: 12,
+                      color: scheme.primary,
+                    ),
                     const SizedBox(width: SpacingTokens.space4),
                     Text(
                       _truncateDID(user.did!),
@@ -264,8 +275,11 @@ class SlidingDrawerContent extends ConsumerWidget {
               color: scheme.errorContainer,
               border: Border.all(color: scheme.error, width: 2),
             ),
-            child: Icon(Iconsax.user_copy,
-                size: 24, color: scheme.onErrorContainer),
+            child: Icon(
+              Iconsax.user_copy,
+              size: 24,
+              color: scheme.onErrorContainer,
+            ),
           ),
           const SizedBox(height: SpacingTokens.space12),
           Text(
@@ -288,7 +302,7 @@ class SlidingDrawerContent extends ConsumerWidget {
           TextButton(
             onPressed: () => ref.read(currentUserProvider.notifier).refresh(),
             style: TextButton.styleFrom(padding: EdgeInsets.zero),
-            child: const Text('Try again'),
+            child: Text(AppLocalizations.of(context).tryAgain),
           ),
         ],
       ),
@@ -324,13 +338,13 @@ class SlidingDrawerContent extends ConsumerWidget {
         _pillButton(
           context,
           icon: Iconsax.archive_add_copy,
-          label: 'Saved posts',
+          label: AppLocalizations.of(context).literalsavedPosts,
           onTap: () => _go(context, Routes.savedPosts),
         ),
         _pillButton(
           context,
           icon: Iconsax.heart_copy,
-          label: 'Liked posts',
+          label: AppLocalizations.of(context).literallikedPosts,
           onTap: () => _go(context, Routes.likedPosts),
         ),
         _pillButton(
@@ -342,7 +356,7 @@ class SlidingDrawerContent extends ConsumerWidget {
         _pillButton(
           context,
           icon: Iconsax.info_circle_copy,
-          label: 'Help & Support',
+          label: AppLocalizations.of(context).helpAndSupport,
           onTap: () => _go(context, Routes.help),
         ),
       ],
@@ -370,8 +384,9 @@ class SlidingDrawerContent extends ConsumerWidget {
           borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
           child: Container(
             height: 48,
-            padding:
-                const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space16,
+            ),
             decoration: BoxDecoration(
               color: scheme.surfaceContainerHighest.withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
@@ -381,8 +396,11 @@ class SlidingDrawerContent extends ConsumerWidget {
             ),
             child: Row(
               children: [
-                Icon(icon,
-                    size: 20, color: scheme.onSurface.withValues(alpha: 0.8)),
+                Icon(
+                  icon,
+                  size: 20,
+                  color: scheme.onSurface.withValues(alpha: 0.8),
+                ),
                 const SizedBox(width: SpacingTokens.space12),
                 Expanded(
                   child: Text(
@@ -436,30 +454,49 @@ class SlidingDrawerContent extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _textLink(context, 'Terms',
-                  onTap: () =>
-                      _leave(context, LegalLinks.terms, LegalLinks.termsTitle)),
+              _textLink(
+                context,
+                'Terms',
+                onTap: () =>
+                    _leave(context, LegalLinks.terms, LegalLinks.termsTitle),
+              ),
               const SizedBox(width: SpacingTokens.space16),
-              Text('•',
-                  style: TextStyle(
-                    color: scheme.onSurface.withValues(alpha: 0.3),
-                    fontSize: TypographyTokens.fontSize0,
-                  )),
+              Text(
+                '•',
+                style: TextStyle(
+                  color: scheme.onSurface.withValues(alpha: 0.3),
+                  fontSize: TypographyTokens.fontSize0,
+                ),
+              ),
               const SizedBox(width: SpacingTokens.space16),
-              _textLink(context, 'Privacy',
-                  onTap: () => _leave(
-                      context, LegalLinks.privacy, LegalLinks.privacyTitle)),
+              _textLink(
+                context,
+                'Privacy',
+                onTap: () => _leave(
+                  context,
+                  LegalLinks.privacy,
+                  LegalLinks.privacyTitle,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: SpacingTokens.space12),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _chipButton(context, 'Help', Iconsax.info_circle_copy,
-                  onTap: () => _go(context, Routes.help)),
+              _chipButton(
+                context,
+                'Help',
+                Iconsax.info_circle_copy,
+                onTap: () => _go(context, Routes.help),
+              ),
               const SizedBox(width: SpacingTokens.space12),
-              _chipButton(context, 'Feedback', Iconsax.message_edit_copy,
-                  onTap: () => _go(context, Routes.settingsFeedback)),
+              _chipButton(
+                context,
+                'Feedback',
+                Iconsax.message_edit_copy,
+                onTap: () => _go(context, Routes.settingsFeedback),
+              ),
             ],
           ),
           const SizedBox(height: SpacingTokens.space16),
@@ -569,8 +606,9 @@ class SlidingDrawerContent extends ConsumerWidget {
     showModalBottomSheet<void>(
       context: context,
       shape: const RoundedRectangleBorder(
-        borderRadius:
-            BorderRadius.vertical(top: Radius.circular(RadiusTokens.radius20)),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(RadiusTokens.radius20),
+        ),
       ),
       builder: (sheetContext) => Padding(
         padding: const EdgeInsets.all(SpacingTokens.space24),
@@ -622,11 +660,13 @@ class SlidingDrawerContent extends ConsumerWidget {
                 if (!sheetContext.mounted) return;
                 Navigator.pop(sheetContext);
                 ScaffoldMessenger.of(sheetContext).showSnackBar(
-                  const SnackBar(content: Text('DID copied to clipboard')),
+                  SnackBar(
+                    content: Text(AppLocalizations.of(context).didCopied),
+                  ),
                 );
               },
               icon: const Icon(Iconsax.copy_copy, size: 18),
-              label: const Text('Copy'),
+              label: Text(AppLocalizations.of(context).copy),
               style: FilledButton.styleFrom(
                 minimumSize: const Size.fromHeight(48),
               ),

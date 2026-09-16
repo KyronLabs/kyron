@@ -90,8 +90,11 @@ class CreateFab extends StatelessWidget {
             backgroundColor: isDark ? Colors.white : Colors.black,
             elevation: 2,
             shape: const CircleBorder(),
-            child: Icon(icon,
-                size: 24, color: isDark ? Colors.black : Colors.white),
+            child: Icon(
+              icon,
+              size: 24,
+              color: isDark ? Colors.black : Colors.white,
+            ),
           ),
         ],
       ),

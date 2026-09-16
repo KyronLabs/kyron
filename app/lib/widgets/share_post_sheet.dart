@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/share_post_sheet.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +8,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../models/feed_post.dart';
+
 import 'toast.dart';
 
 /// Sharing one post.
@@ -60,8 +63,8 @@ class _Sheet extends StatelessWidget {
           ),
           _Item(
             icon: Iconsax.export_1_copy,
-            label: 'Share via…',
-            subtitle: 'Hand it to another app',
+            label: AppLocalizations.of(context).literalshareVia,
+            subtitle: AppLocalizations.of(context).literalhandItToAnotherApp,
             onTap: () async {
               Navigator.pop(context);
               // The link, not the text: the post may be edited or deleted, and
@@ -71,19 +74,20 @@ class _Sheet extends StatelessWidget {
           ),
           _Item(
             icon: Iconsax.link_copy,
-            label: 'Copy link',
+            label: AppLocalizations.of(context).literalcopyLink,
             onTap: () => _copy(context, link, 'Link copied'),
           ),
           if (text.isNotEmpty)
             _Item(
               icon: Iconsax.copy_copy,
-              label: 'Copy text',
+              label: AppLocalizations.of(context).literalcopyText,
               onTap: () => _copy(context, text, 'Post text copied'),
             ),
           _Item(
             icon: Iconsax.message_2_copy,
-            label: 'Share with a quote',
-            subtitle: 'Post it with your own words above it',
+            label: AppLocalizations.of(context).literalshareWithAQuote,
+            subtitle: AppLocalizations.of(context)
+                .literalpostItWithYourOwnWordsAboveIt,
             onTap: () {
               Navigator.pop(context);
               Navigator.pushNamed(context, '/composer', arguments: post);
@@ -138,8 +142,10 @@ class _Item extends StatelessWidget {
 
     return ListTile(
       leading: Icon(icon, size: 20, color: scheme.onSurface),
-      title: Text(label,
-          style: const TextStyle(fontSize: TypographyTokens.fontSize3)),
+      title: Text(
+        label,
+        style: const TextStyle(fontSize: TypographyTokens.fontSize3),
+      ),
       subtitle: subtitle == null
           ? null
           : Text(

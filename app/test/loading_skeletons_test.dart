@@ -57,8 +57,9 @@ Future<void> _pump(
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
-        currentUserRepositoryProvider
-            .overrideWithValue(repository ?? _NeverAnswers()),
+        currentUserRepositoryProvider.overrideWithValue(
+          repository ?? _NeverAnswers(),
+        ),
       ],
       child: MaterialApp(home: Scaffold(body: child)),
     ),
@@ -78,8 +79,9 @@ const _me = CurrentUser(
 
 void main() {
   group('the top-bar avatar', () {
-    testWidgets('shimmers rather than claiming the account has no picture',
-        (tester) async {
+    testWidgets('shimmers rather than claiming the account has no picture', (
+      tester,
+    ) async {
       // The fallback glyph is what Kyron shows an account with no picture, so
       // drawing it while the profile is still being read told everyone they
       // had none -- on every launch, on every screen with a top bar.
@@ -89,8 +91,9 @@ void main() {
       expect(find.byType(CircleAvatar), findsNothing);
     });
 
-    testWidgets('gives way to the real avatar once the profile lands',
-        (tester) async {
+    testWidgets('gives way to the real avatar once the profile lands', (
+      tester,
+    ) async {
       await _pump(tester, const AccountAvatar(), repository: _Answers(_me));
       await tester.pump();
 
@@ -107,10 +110,7 @@ void main() {
 
   group('the sidebar header', () {
     testWidgets('shimmers, down to the follower counts', (tester) async {
-      await _pump(
-        tester,
-        SlidingDrawerContent(onCloseDrawer: () {}),
-      );
+      await _pump(tester, SlidingDrawerContent(onCloseDrawer: () {}));
 
       // Avatar, name, handle, and the three stats -- the row that used to pop
       // in after the rest and shove the navigation down.
@@ -118,12 +118,10 @@ void main() {
       expect(find.byType(SkeletonGroup), findsOneWidget);
     });
 
-    testWidgets('is a shimmer, not the three still blocks it replaced',
-        (tester) async {
-      await _pump(
-        tester,
-        SlidingDrawerContent(onCloseDrawer: () {}),
-      );
+    testWidgets('is a shimmer, not the three still blocks it replaced', (
+      tester,
+    ) async {
+      await _pump(tester, SlidingDrawerContent(onCloseDrawer: () {}));
       await tester.pump(const Duration(milliseconds: 200));
 
       // SkeletonBox paints a gradient only when a group is driving it; with no
@@ -132,8 +130,9 @@ void main() {
       expect(SkeletonGroup.of(box), isNotNull);
     });
 
-    testWidgets('gives way to the real header once the profile lands',
-        (tester) async {
+    testWidgets('gives way to the real header once the profile lands', (
+      tester,
+    ) async {
       await _pump(
         tester,
         SlidingDrawerContent(onCloseDrawer: () {}),
@@ -148,8 +147,9 @@ void main() {
   });
 
   group('the Videos wall', () {
-    testWidgets('loads behind tiles, not behind a column of post rows',
-        (tester) async {
+    testWidgets('loads behind tiles, not behind a column of post rows', (
+      tester,
+    ) async {
       // It used to load behind SkeletonList.posts: avatars, paragraphs and an
       // engagement row, none of which is what a wall of clips looks like.
       await tester.pumpWidget(
@@ -173,8 +173,9 @@ void main() {
       expect(find.byType(SkeletonList), findsNothing);
     });
 
-    testWidgets('a column of posts still loads behind post rows',
-        (tester) async {
+    testWidgets('a column of posts still loads behind post rows', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [feedRepositoryProvider.overrideWithValue(_SilentFeed())],
@@ -202,9 +203,8 @@ void main() {
     Future<void> show(WidgetTester tester, Widget child) => tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: CustomScrollView(
-                slivers: [SliverToBoxAdapter(child: child)],
-              ),
+              body:
+                  CustomScrollView(slivers: [SliverToBoxAdapter(child: child)]),
             ),
           ),
         );
@@ -235,8 +235,9 @@ void main() {
       expect(heights.length, greaterThan(1));
     });
 
-    testWidgets('takes real height rather than laying out as nothing',
-        (tester) async {
+    testWidgets('takes real height rather than laying out as nothing', (
+      tester,
+    ) async {
       await show(tester, const SkeletonTileWall(count: 4));
 
       expect(
@@ -247,8 +248,9 @@ void main() {
   });
 
   group('SkeletonClip', () {
-    testWidgets('draws the rail and the caption, visibly on black',
-        (tester) async {
+    testWidgets('draws the rail and the caption, visibly on black', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           // Light theme on purpose: this screen is black in either one, and a

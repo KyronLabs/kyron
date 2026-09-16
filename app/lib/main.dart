@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Add this import
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'services/app_log.dart';
 import 'services/draft_service.dart';
 import 'services/platform_support.dart';
+
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -19,10 +21,12 @@ import 'providers/auth_provider.dart' hide AuthState;
 import 'providers/preferences_provider.dart';
 import 'providers/realtime_provider.dart';
 import 'screens/root_screen.dart';
+
 import 'package:url_strategy/url_strategy.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+
 import 'config/supabase_config.dart';
 import 'utils/route_watch.dart';
 
@@ -40,8 +44,9 @@ void main() async {
   // is long enough that scrolling past two clips hands the second one the
   // stage after the reader has already gone by it. Short enough to keep up,
   // long enough not to be per-frame work on every clip on screen.
-  VisibilityDetectorController.instance.updateInterval =
-      const Duration(milliseconds: 180);
+  VisibilityDetectorController.instance.updateInterval = const Duration(
+    milliseconds: 180,
+  );
 
   // Fails here, with the name of the missing value, rather than as an opaque
   // authorization error on the first request.
@@ -55,11 +60,7 @@ void main() async {
     anonKey: SupabaseConfig.anonKey,
   );
 
-  runApp(
-    const ProviderScope(
-      child: KyronApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: KyronApp()));
 }
 
 /// The theme, with the status bar told which way round to draw itself.
@@ -68,8 +69,9 @@ void main() async {
 /// rather than a colour: the bar belongs to the system, and what has to be
 /// said about it is which brightness its icons should be.
 ThemeData _withStatusBar(ThemeData theme) => theme.copyWith(
-      appBarTheme:
-          theme.appBarTheme.copyWith(systemOverlayStyle: _statusBarFor(theme)),
+      appBarTheme: theme.appBarTheme.copyWith(
+        systemOverlayStyle: _statusBarFor(theme),
+      ),
     );
 
 /// Icons that can be seen against a surface of this brightness.
@@ -114,8 +116,11 @@ Widget _describeBuildFailure(FlutterErrorDetails details) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Iconsax.warning_2_copy,
-                  size: 40, color: scheme?.error ?? const Color(0xFFE5484D)),
+              Icon(
+                Iconsax.warning_2_copy,
+                size: 40,
+                color: scheme?.error ?? const Color(0xFFE5484D),
+              ),
               const SizedBox(height: 12),
               Text(
                 'This screen could not be drawn.',
@@ -200,8 +205,9 @@ class _KyronAppState extends ConsumerState<KyronApp> {
         switch (state.event) {
           case AuthChangeEvent.passwordRecovery:
             AppLog.instance.info('auth', 'Opened from a password reset link.');
-            appNavigatorKey.currentState
-                ?.pushNamed(Routes.settingsPasswordLogin);
+            appNavigatorKey.currentState?.pushNamed(
+              Routes.settingsPasswordLogin,
+            );
           case AuthChangeEvent.signedIn:
             unawaited(_adoptSignIn());
           default:
@@ -232,8 +238,10 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     AppLog.instance.info('auth', 'Signed in from a redirect.');
     // RootScreen, not the feed: a brand-new Google account has no profile
     // behind it and belongs in onboarding.
-    appNavigatorKey.currentState
-        ?.pushNamedAndRemoveUntil(Routes.home, (_) => false);
+    appNavigatorKey.currentState?.pushNamedAndRemoveUntil(
+      Routes.home,
+      (_) => false,
+    );
   }
 
   @override
@@ -272,8 +280,10 @@ class _KyronAppState extends ConsumerState<KyronApp> {
         } on Object catch (error) {
           // A composer without drafts, said out loud, rather than a launch
           // that fails over a warm-up.
-          AppLog.instance
-              .error('drafts', 'The draft store would not open: $error');
+          AppLog.instance.error(
+            'drafts',
+            'The draft store would not open: $error',
+          );
         }
       }
     } on Object catch (error, stack) {
@@ -290,9 +300,7 @@ class _KyronAppState extends ConsumerState<KyronApp> {
         home: Scaffold(
           backgroundColor: KyronTheme.darkBackground,
           body: Center(
-            child: CircularProgressIndicator(
-              color: KyronTheme.accent,
-            ),
+            child: CircularProgressIndicator(color: KyronTheme.accent),
           ),
         ),
       );

@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -184,13 +185,12 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
-            communitiesRepositoryProvider
-                .overrideWithValue(_OneCommunity(community)),
+            communitiesRepositoryProvider.overrideWithValue(
+              _OneCommunity(community),
+            ),
             feedRepositoryProvider.overrideWithValue(_Feed()),
           ],
-          child: const MaterialApp(
-            home: CommunityScreen(slug: 'gardeners'),
-          ),
+          child: const MaterialApp(home: CommunityScreen(slug: 'gardeners')),
         ),
       );
       await tester.pump();
@@ -216,8 +216,9 @@ void main() {
       expect(find.text('Gardeners'), findsOneWidget);
     });
 
-    testWidgets('puts the banner at the very top of the screen',
-        (tester) async {
+    testWidgets('puts the banner at the very top of the screen', (
+      tester,
+    ) async {
       await pump(tester, community);
 
       final banner = find.byType(Image).first;
@@ -242,15 +243,14 @@ void main() {
 
       expect(find.byType(BackButton), findsNothing);
       expect(
-        find.byTooltip(
-          const DefaultMaterialLocalizations().backButtonTooltip,
-        ),
+        find.byTooltip(const DefaultMaterialLocalizations().backButtonTooltip),
         findsOneWidget,
       );
     });
 
-    testWidgets('a community with no banner still has one to hang off',
-        (tester) async {
+    testWidgets('a community with no banner still has one to hang off', (
+      tester,
+    ) async {
       // Otherwise the picture has nothing behind it and the page jumps by
       // eighty pixels between one community and the next.
       await pump(
@@ -276,8 +276,9 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
-            communitiesRepositoryProvider
-                .overrideWithValue(_OneCommunity(community)),
+            communitiesRepositoryProvider.overrideWithValue(
+              _OneCommunity(community),
+            ),
             feedRepositoryProvider.overrideWithValue(_Feed()),
           ],
           child: MaterialApp(
@@ -302,8 +303,9 @@ void main() {
       role: CommunityRole.member,
     );
 
-    testWidgets('the picture sits exactly halfway across the banner edge',
-        (tester) async {
+    testWidgets('the picture sits exactly halfway across the banner edge', (
+      tester,
+    ) async {
       // It hung a third of itself below before, which reads as a picture that
       // slipped rather than one that was placed.
       await pumpPhone(tester, withBanner);
@@ -314,8 +316,9 @@ void main() {
       expect(avatar.center.dy, closeTo(banner.bottom, 0.5));
     });
 
-    testWidgets('the controls over the banner draw their icons',
-        (tester) async {
+    testWidgets('the controls over the banner draw their icons', (
+      tester,
+    ) async {
       // `_GlassButton` took an icon and never drew it: an empty box inside a
       // black disc. The button showed, the tap worked, and there was nothing
       // in it -- reported as "the icons at the top aren't showing, only their
@@ -332,31 +335,40 @@ void main() {
       );
     });
 
-    testWidgets('the floating button is centred and clears the home indicator',
-        (tester) async {
-      // Centred, because this is the same disc the bottom bar carries one
-      // screen back and it should not move between the two. It was in the
-      // bottom-right corner: a different shape, colour and place from the
-      // create button on the page this one is opened from.
-      //
-      // Vertically it still has to clear the gesture inset. A floating button
-      // is placed 16 above the *body*, and this body runs to the bottom of
-      // the screen -- so on a 34-pixel inset it landed 32 up, two pixels
-      // inside the system's own strip.
-      await pumpPhone(tester, withBanner);
+    testWidgets(
+      'the floating button is centred and clears the home indicator',
+      (tester) async {
+        // Centred, because this is the same disc the bottom bar carries one
+        // screen back and it should not move between the two. It was in the
+        // bottom-right corner: a different shape, colour and place from the
+        // create button on the page this one is opened from.
+        //
+        // Vertically it still has to clear the gesture inset. A floating button
+        // is placed 16 above the *body*, and this body runs to the bottom of
+        // the screen -- so on a 34-pixel inset it landed 32 up, two pixels
+        // inside the system's own strip.
+        await pumpPhone(tester, withBanner);
 
-      final screen = tester.getSize(find.byType(CommunityScreen));
-      final fab = tester.getRect(find.byType(FloatingActionButton));
-      const inset = 34.0;
+        final screen = tester.getSize(find.byType(CommunityScreen));
+        final fab = tester.getRect(find.byType(FloatingActionButton));
+        const inset = 34.0;
 
-      expect(screen.height - fab.bottom, greaterThan(inset),
-          reason: 'the button is inside the gesture inset');
-      expect(fab.center.dx, closeTo(screen.width / 2, 1),
-          reason: 'the button is not centred: $fab on a $screen screen');
-    });
+        expect(
+          screen.height - fab.bottom,
+          greaterThan(inset),
+          reason: 'the button is inside the gesture inset',
+        );
+        expect(
+          fab.center.dx,
+          closeTo(screen.width / 2, 1),
+          reason: 'the button is not centred: $fab on a $screen screen',
+        );
+      },
+    );
 
-    testWidgets('the floating button can be seen against the page',
-        (tester) async {
+    testWidgets('the floating button can be seen against the page', (
+      tester,
+    ) async {
       // It was #FFFFFF on #F7F7F7, at 1.06:1. The theme is the fix; this
       // holds the app to a theme that has one.
       await pumpPhone(tester, withBanner);

@@ -72,11 +72,7 @@ MentionToken? mentionAt(String text, int caret) {
   }
   if (end - start > _maxHandle) return null;
 
-  return MentionToken(
-    start: at,
-    end: end,
-    query: text.substring(start, end),
-  );
+  return MentionToken(start: at, end: end, query: text.substring(start, end));
 }
 
 /// [value] with [handle] written in as a mention.

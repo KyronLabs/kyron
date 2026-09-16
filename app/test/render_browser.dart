@@ -20,48 +20,50 @@ class _PaperEngine implements BrowserEngine {
   _PaperEngine(this.tab, this.host);
 
   @override
-  Widget view() => Builder(builder: (context) {
-        final dark = Theme.of(context).brightness == Brightness.dark;
-        final ink = dark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
-        Widget bar(double w, double h, double o) => Container(
-              width: w,
-              height: h,
-              margin: const EdgeInsets.only(bottom: 11),
-              decoration: BoxDecoration(
-                color: ink.withValues(alpha: o),
-                borderRadius: BorderRadius.circular(3),
-              ),
-            );
-        return ColoredBox(
-          color: dark ? const Color(0xFF15161A) : Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(22),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                bar(210, 22, 0.85),
-                const SizedBox(height: 8),
-                bar(300, 9, 0.30),
-                bar(288, 9, 0.30),
-                bar(196, 9, 0.30),
-                const SizedBox(height: 10),
-                Container(
-                  height: 132,
-                  decoration: BoxDecoration(
-                    color: ink.withValues(alpha: 0.09),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+  Widget view() => Builder(
+        builder: (context) {
+          final dark = Theme.of(context).brightness == Brightness.dark;
+          final ink = dark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
+          Widget bar(double w, double h, double o) => Container(
+                width: w,
+                height: h,
+                margin: const EdgeInsets.only(bottom: 11),
+                decoration: BoxDecoration(
+                  color: ink.withValues(alpha: o),
+                  borderRadius: BorderRadius.circular(3),
                 ),
-                const SizedBox(height: 16),
-                bar(300, 9, 0.30),
-                bar(272, 9, 0.30),
-                bar(296, 9, 0.30),
-                bar(150, 9, 0.30),
-              ],
+              );
+          return ColoredBox(
+            color: dark ? const Color(0xFF15161A) : Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(22),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  bar(210, 22, 0.85),
+                  const SizedBox(height: 8),
+                  bar(300, 9, 0.30),
+                  bar(288, 9, 0.30),
+                  bar(196, 9, 0.30),
+                  const SizedBox(height: 10),
+                  Container(
+                    height: 132,
+                    decoration: BoxDecoration(
+                      color: ink.withValues(alpha: 0.09),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  bar(300, 9, 0.30),
+                  bar(272, 9, 0.30),
+                  bar(296, 9, 0.30),
+                  bar(150, 9, 0.30),
+                ],
+              ),
             ),
-          ),
-        );
-      });
+          );
+        },
+      );
 
   @override
   Future<void> load(Uri url) async {}
@@ -85,12 +87,14 @@ void main() {
     // makes the layout judgeable.
     for (final family in ['Inter', 'Roboto']) {
       final loader = FontLoader(family)
-        ..addFont(Future.value(
-          File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
-              .readAsBytesSync()
-              .buffer
-              .asByteData(),
-        ));
+        ..addFont(
+          Future.value(
+            File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+                .readAsBytesSync()
+                .buffer
+                .asByteData(),
+          ),
+        );
       await loader.load();
     }
     tester.view.devicePixelRatio = 2;
@@ -137,8 +141,10 @@ void main() {
                       const SizedBox(height: 70),
                       Padding(
                         padding: const EdgeInsets.all(20),
-                        child: Text('Kyron behind it',
-                            style: Theme.of(context).textTheme.titleLarge),
+                        child: Text(
+                          'Kyron behind it',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                       ),
                     ],
                   ),
@@ -151,8 +157,9 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      final navigator =
-          tester.state<NavigatorState>(find.byType(Navigator).first);
+      final navigator = tester.state<NavigatorState>(
+        find.byType(Navigator).first,
+      );
       navigator.push(
         BrowserRoute.route(Uri.parse('https://thegreenhouse.press/almanac')),
       );
@@ -173,8 +180,10 @@ void main() {
       // Three tabs, the strip earning its place.
       made.last.host.openTab(Uri.parse('https://slowradio.fm/nightshift'));
       await tester.pumpAndSettle();
-      made.last.tab.finished(Uri.parse('https://slowradio.fm/nightshift'),
-          title: 'Night Shift');
+      made.last.tab.finished(
+        Uri.parse('https://slowradio.fm/nightshift'),
+        title: 'Night Shift',
+      );
       made.last.host.openTab(Uri.parse('http://ledger.example/txn/88120'));
       await tester.pumpAndSettle();
       made.last.tab.finished(Uri.parse('http://ledger.example/txn/88120'));

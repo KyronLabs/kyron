@@ -20,7 +20,7 @@ class SheetAction<T> {
   /// Ticked. For a sheet that picks one of a set rather than does something.
   final bool selected;
 
-  const SheetAction({
+  SheetAction({
     required this.value,
     required this.label,
     required this.icon,
@@ -119,8 +119,9 @@ class ActionSheet {
                                   action.detail!,
                                   style: TextStyle(
                                     fontSize: TypographyTokens.fontSize1,
-                                    color:
-                                        scheme.onSurface.withValues(alpha: 0.6),
+                                    color: scheme.onSurface.withValues(
+                                      alpha: 0.6,
+                                    ),
                                   ),
                                 ),
                           trailing: action.selected

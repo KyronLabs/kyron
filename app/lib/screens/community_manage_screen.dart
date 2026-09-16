@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/community_manage_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -66,11 +68,7 @@ class _CommunityManageScreenState extends ConsumerState<CommunityManageScreen>
         children: [
           SectionTabs(
             controller: _tabs,
-            labels: [
-              'Details',
-              'Members',
-              if (_canModerate) 'Removed',
-            ],
+            labels: ['Details', 'Members', if (_canModerate) 'Removed'],
           ),
           Expanded(
             child: TabBarView(
@@ -110,8 +108,9 @@ class _Details extends ConsumerStatefulWidget {
 
 class _DetailsState extends ConsumerState<_Details> {
   late final _name = TextEditingController(text: widget.community.name);
-  late final _description =
-      TextEditingController(text: widget.community.description ?? '');
+  late final _description = TextEditingController(
+    text: widget.community.description ?? '',
+  );
   final _picker = ImagePicker();
 
   /// Held here rather than in a text box. These are photographs, and nobody
@@ -143,9 +142,9 @@ class _DetailsState extends ConsumerState<_Details> {
 
     setState(() => _uploading = slot);
     try {
-      final uploaded = await ref.read(feedRepositoryProvider).uploadMedia(
-            PendingMedia(path: picked.path, kind: MediaKind.image),
-          );
+      final uploaded = await ref
+          .read(feedRepositoryProvider)
+          .uploadMedia(PendingMedia(path: picked.path, kind: MediaKind.image));
       final url = uploaded.url;
       // An upload that answered without a URL has not stored anything, and
       // saving the old one silently would look like the pick did nothing.
@@ -194,18 +193,18 @@ class _DetailsState extends ConsumerState<_Details> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Close ${widget.community.name}?'),
-        content: const Text(
+        content: Text(
           'Nobody can post in it or join it again. Posts already written into '
           'it keep working, so nothing anybody wrote disappears.',
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Close it'),
+            child: Text(AppLocalizations.of(context).closeIt),
           ),
         ],
       ),
@@ -234,10 +233,10 @@ class _DetailsState extends ConsumerState<_Details> {
     final scheme = Theme.of(context).colorScheme;
 
     if (!widget.editable) {
-      return const EmptyState(
+      return EmptyState(
         compact: true,
         art: EmptyArt.communities,
-        title: 'Only the owner can change this',
+        title: AppLocalizations.of(context).literalonlyTheOwnerCanChangeThis,
         detail: 'You can still see who is in it and remove people.',
       ).scrollable;
     }
@@ -251,13 +250,14 @@ class _DetailsState extends ConsumerState<_Details> {
           uploading: _uploading,
           onPickAvatar: () => _pick(ImageSlot.avatar),
           onPickCover: () => _pick(ImageSlot.cover),
-          hint: 'Tap the banner or the picture to change it',
+          hint: AppLocalizations.of(context)
+              .literaltapTheBannerOrThePictureToChangeIt,
         ),
         const SizedBox(height: SpacingTokens.space24),
         TextField(
           controller: _name,
           maxLength: 60,
-          decoration: const InputDecoration(labelText: 'Name'),
+          decoration: InputDecoration(labelText: 'Name'),
         ),
         const SizedBox(height: SpacingTokens.space16),
         TextField(
@@ -265,7 +265,7 @@ class _DetailsState extends ConsumerState<_Details> {
           maxLength: 400,
           maxLines: 4,
           minLines: 2,
-          decoration: const InputDecoration(labelText: 'Description'),
+          decoration: InputDecoration(labelText: 'Description'),
         ),
         const SizedBox(height: SpacingTokens.space24),
         FilledButton(
@@ -275,7 +275,7 @@ class _DetailsState extends ConsumerState<_Details> {
                   dimension: 18,
                   child: CircularProgressIndicator(strokeWidth: 2),
                 )
-              : const Text('Save'),
+              : Text(AppLocalizations.of(context).save),
         ),
         const SizedBox(height: SpacingTokens.space32),
         const Hairline(),
@@ -301,7 +301,7 @@ class _DetailsState extends ConsumerState<_Details> {
         OutlinedButton(
           onPressed: _close,
           style: OutlinedButton.styleFrom(foregroundColor: scheme.error),
-          child: const Text('Close this community'),
+          child: Text(AppLocalizations.of(context).closeThisCommunity),
         ),
       ],
     );
@@ -334,18 +334,18 @@ class _MembersState extends ConsumerState<_Members> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Remove ${member.displayName}?'),
-        content: const Text(
+        content: Text(
           'They leave the community and cannot rejoin until you let them '
           'back in.',
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Remove'),
+            child: Text(AppLocalizations.of(context).remove),
           ),
         ],
       ),
@@ -384,19 +384,19 @@ class _MembersState extends ConsumerState<_Members> {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return EmptyState.failed(
-            title: 'Could not load the members',
+            title: AppLocalizations.of(context).literalcouldNotLoadTheMembers,
             detail: describeApiError(snapshot.error!, sessionIsLive: true),
             onAction: _reload,
           ).scrollable;
         }
         if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
+          return Center(child: CircularProgressIndicator());
         }
         final members = snapshot.data!.items;
         if (members.isEmpty) {
-          return const EmptyState(
+          return EmptyState(
             art: EmptyArt.people,
-            title: 'Nobody here yet',
+            title: AppLocalizations.of(context).literalnobodyHereYet,
             detail: 'People who join show up on this list.',
           ).scrollable;
         }
@@ -459,7 +459,9 @@ class _MemberRow extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: const TextStyle(
-            fontWeight: FontWeight.w600, fontSize: TypographyTokens.fontSize3),
+          fontWeight: FontWeight.w600,
+          fontSize: TypographyTokens.fontSize3,
+        ),
       ),
       subtitle: Text(
         [
@@ -488,21 +490,24 @@ class _MemberRow extends StatelessWidget {
                   title: (member.displayName).toUpperCase(),
                   actions: [
                     if (canEdit && role == CommunityRole.member)
-                      const SheetAction(
+                      SheetAction(
                         value: 'promote',
-                        label: 'Make a moderator',
+                        label:
+                            AppLocalizations.of(context).literalmakeAModerator,
                         icon: Iconsax.shield_tick_copy,
                         detail: 'They can remove posts and members',
                       ),
                     if (canEdit && role == CommunityRole.moderator)
-                      const SheetAction(
+                      SheetAction(
                         value: 'demote',
-                        label: 'Remove as moderator',
+                        label: AppLocalizations.of(context)
+                            .literalremoveAsModerator,
                         icon: Iconsax.shield_cross_copy,
                       ),
-                    const SheetAction(
+                    SheetAction(
                       value: 'remove',
-                      label: 'Remove from community',
+                      label: AppLocalizations.of(context)
+                          .literalremoveFromCommunity,
                       icon: Iconsax.user_minus_copy,
                       destructive: true,
                     ),
@@ -562,19 +567,19 @@ class _RemovedState extends ConsumerState<_Removed> {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return EmptyState.failed(
-            title: 'Could not load this list',
+            title: AppLocalizations.of(context).literalcouldNotLoadThisList,
             detail: describeApiError(snapshot.error!, sessionIsLive: true),
             onAction: _reload,
           ).scrollable;
         }
         if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
+          return Center(child: CircularProgressIndicator());
         }
         final removed = snapshot.data!;
         if (removed.isEmpty) {
-          return const EmptyState(
+          return EmptyState(
             art: EmptyArt.muted,
-            title: 'Nobody has been removed',
+            title: AppLocalizations.of(context).literalnobodyHasBeenRemoved,
             detail: 'People you remove show up here, and you can let them '
                 'back in from this list.',
           ).scrollable;
@@ -602,7 +607,7 @@ class _RemovedState extends ConsumerState<_Removed> {
               subtitle: member.handle == null ? null : Text(member.handle!),
               trailing: TextButton(
                 onPressed: () => _unban(member),
-                child: const Text('Let back in'),
+                child: Text(AppLocalizations.of(context).letBackIn),
               ),
             );
           },

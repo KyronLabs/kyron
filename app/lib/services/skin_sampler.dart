@@ -43,10 +43,7 @@ class SkinSampler {
   ///
   /// Null is a real answer and the caller must respect it: a fill with no
   /// colour draws nothing at all, which is better than a guessed tone.
-  static Color? sample({
-    required ReadPixel read,
-    required FaceAnchor face,
-  }) {
+  static Color? sample({required ReadPixel read, required FaceAnchor face}) {
     final cos = math.cos(face.rollRadians);
     final sin = math.sin(face.rollRadians);
     final gap = face.interpupillary;
@@ -124,8 +121,11 @@ class SkinSampler {
           if (x < 0 || y < 0 || x >= width || y >= height) return null;
           final chroma = uv + (y >> 1) * stride + (x >> 1) * 2;
           if (chroma + 1 >= bytes.length) return null;
-          return _fromYuv(bytes[y * stride + x], bytes[chroma + 1],
-              bytes[chroma]); // NV21 is V then U
+          return _fromYuv(
+            bytes[y * stride + x],
+            bytes[chroma + 1],
+            bytes[chroma],
+          ); // NV21 is V then U
         };
 
       case ImageFormatGroup.bgra8888:

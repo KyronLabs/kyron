@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/comment_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -106,27 +108,24 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
       await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Delete this comment?'),
-          content: const Text('It will be removed from the thread.'),
+          title: Text(AppLocalizations.of(context).deleteThisComment),
+          content: Text(AppLocalizations.of(context).itWillBeRemoved),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Cancel'),
+              child: Text(AppLocalizations.of(context).cancel),
             ),
             TextButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Delete'),
+              child: Text(AppLocalizations.of(context).delete),
             ),
           ],
         ),
       ) ??
       false;
 
-  void _open(PostComment comment) => Navigator.pushNamed(
-        context,
-        Routes.comment,
-        arguments: comment.id,
-      );
+  void _open(PostComment comment) =>
+      Navigator.pushNamed(context, Routes.comment, arguments: comment.id);
 
   /// Whether there is something to send. A picture on its own is a reply;
   /// an empty box is not, and neither is one whose upload is still running.
@@ -144,18 +143,19 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
 
     setState(() => _sending = true);
     try {
-      final reply = await ref.read(feedRepositoryProvider).addComment(
-            postId,
-            text,
-            parentId: parent.id,
-            media: _media.ready,
-          );
+      final reply = await ref
+          .read(feedRepositoryProvider)
+          .addComment(postId, text, parentId: parent.id, media: _media.ready);
       _box.clear();
       _media.clear();
       setState(() => _replyingTo = null);
       _notifier.added(reply);
     } catch (error) {
-      if (mounted) Toast.show(context, 'Could not post that reply.');
+      if (mounted)
+        Toast.show(
+          context,
+          AppLocalizations.of(context).literalcouldNotPostThatReply,
+        );
     } finally {
       if (mounted) setState(() => _sending = false);
     }
@@ -172,7 +172,7 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Reply'),
+        title: Text(AppLocalizations.of(context).reply),
       ),
       body: SafeArea(
         child: Column(
@@ -208,16 +208,16 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
     }
     if (state.error != null && state.root == null) {
       return EmptyState.failed(
-        title: 'Could not load this reply',
+        title: AppLocalizations.of(context).literalcouldNotLoadThisReply,
         detail: state.error,
         onAction: _notifier.load,
       ).scrollable;
     }
     final root = state.root;
     if (root == null) {
-      return const EmptyState(
+      return EmptyState(
         art: EmptyArt.messages,
-        title: 'This reply is gone',
+        title: AppLocalizations.of(context).literalthisReplyIsGone,
         detail: 'It was deleted, or the post it was on was.',
       ).scrollable;
     }
@@ -312,12 +312,12 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               IconButton(
-                tooltip: 'Add a photo',
+                tooltip: AppLocalizations.of(context).literaladdAPhoto,
                 onPressed: _media.hasRoom ? () => _attach(video: false) : null,
                 icon: const Icon(Iconsax.gallery_copy, size: 20),
               ),
               IconButton(
-                tooltip: 'Add a clip',
+                tooltip: AppLocalizations.of(context).literaladdAClip,
                 onPressed: _media.hasRoom ? () => _attach(video: true) : null,
                 icon: const Icon(Iconsax.video_copy, size: 20),
               ),
@@ -348,8 +348,11 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
                         dimension: 18,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : Icon(Iconsax.send_1_copy,
-                        size: 20, color: scheme.primary),
+                    : Icon(
+                        Iconsax.send_1_copy,
+                        size: 20,
+                        color: scheme.primary,
+                      ),
                 onPressed: _canSend ? _send : null,
               ),
             ],

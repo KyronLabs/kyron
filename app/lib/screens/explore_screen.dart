@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/explore_screen.dart
 import 'dart:math' as math;
 
@@ -124,7 +126,7 @@ class _TrendingTab extends ConsumerWidget {
     final notifier = ref.read(trendingProvider.notifier);
 
     if (state.loading) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(child: CircularProgressIndicator());
     }
 
     return RefreshIndicator(
@@ -132,13 +134,15 @@ class _TrendingTab extends ConsumerWidget {
       child: state.items.isEmpty
           ? (state.error != null
                   ? EmptyState.failed(
-                      title: 'Could not load trending',
+                      title: AppLocalizations.of(context)
+                          .literalcouldNotLoadTrending,
                       detail: state.error,
                       onAction: notifier.refresh,
                     )
-                  : const EmptyState(
+                  : EmptyState(
                       art: EmptyArt.trending,
-                      title: 'Nothing is trending yet',
+                      title: AppLocalizations.of(context)
+                          .literalnothingIsTrendingYet,
                       detail: 'Hashtags turn up here as people start using '
                           'them. Post one and it could be this list.',
                     ))
@@ -158,10 +162,8 @@ class _TrendingTab extends ConsumerWidget {
                     .outline
                     .withValues(alpha: 0.15),
               ),
-              itemBuilder: (context, index) => _TrendingRow(
-                rank: index + 1,
-                tag: state.items[index],
-              ),
+              itemBuilder: (context, index) =>
+                  _TrendingRow(rank: index + 1, tag: state.items[index]),
             ),
     );
   }
@@ -198,7 +200,9 @@ class _TrendingRow extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: const TextStyle(
-            fontWeight: FontWeight.w600, fontSize: TypographyTokens.fontSize3),
+          fontWeight: FontWeight.w600,
+          fontSize: TypographyTokens.fontSize3,
+        ),
       ),
       subtitle: Text(
         // Two numbers, because they answer different questions: how big this
@@ -223,7 +227,7 @@ class _TopicsTab extends ConsumerWidget {
     final notifier = ref.read(topicsProvider.notifier);
 
     if (state.loading) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(child: CircularProgressIndicator());
     }
 
     return RefreshIndicator(
@@ -231,13 +235,14 @@ class _TopicsTab extends ConsumerWidget {
       child: state.items.isEmpty
           ? (state.error != null
                   ? EmptyState.failed(
-                      title: 'Could not load topics',
+                      title: AppLocalizations.of(context)
+                          .literalcouldNotLoadTopics,
                       detail: state.error,
                       onAction: notifier.refresh,
                     )
-                  : const EmptyState(
+                  : EmptyState(
                       art: EmptyArt.topics,
-                      title: 'No topics yet',
+                      title: AppLocalizations.of(context).literalnoTopicsYet,
                       detail: 'Topics are set up by Kyron, and there are none '
                           'right now. Check back soon.',
                     ))
@@ -408,13 +413,15 @@ class _PeopleTabState extends ConsumerState<_PeopleTab> {
       child: state.people.isEmpty
           ? (state.error != null
                   ? EmptyState.failed(
-                      title: 'Could not load suggestions',
+                      title: AppLocalizations.of(context)
+                          .literalcouldNotLoadSuggestions,
                       detail: state.error,
                       onAction: notifier.refresh,
                     )
                   : EmptyState(
                       art: EmptyArt.people,
-                      title: 'Nobody left to suggest',
+                      title: AppLocalizations.of(context)
+                          .literalnobodyLeftToSuggest,
                       detail: 'You already follow everyone Kyron would put '
                           'here. Follow a topic and this list fills up again.',
                       action: 'Refresh',

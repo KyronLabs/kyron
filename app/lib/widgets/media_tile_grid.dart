@@ -150,7 +150,10 @@ class _Tile extends StatelessWidget {
                   // posted before the composer started sending a still falls
                   // back to a decoder, which the pool holds to a handful.
                   ? (media.thumbnailUrl != null
-                      ? VideoPoster(media: media, badge: VideoPosterBadge.none)
+                      ? VideoPoster(
+                          media: media,
+                          badge: VideoPosterBadge.none,
+                        )
                       : InlineVideo(
                           media: media,
                           autoplay: false,
@@ -169,18 +172,16 @@ class _Tile extends StatelessWidget {
                           color: scheme.onSurface.withValues(alpha: 0.35),
                         ),
                       ),
-                      loadingBuilder: (context, child, progress) =>
-                          progress == null
-                              ? child
-                              : ColoredBox(
-                                  color: scheme.surfaceContainerHighest,
-                                ),
+                      loadingBuilder: (context, child, progress) => progress ==
+                              null
+                          ? child
+                          : ColoredBox(color: scheme.surfaceContainerHighest),
                     ),
             ),
 
             // Marks a clip on a wall that also carries stills.
             if (media.isVideo)
-              const Positioned(
+              Positioned(
                 right: 8,
                 top: 8,
                 child: _Chip(icon: Iconsax.play, label: 'Video'),
@@ -219,8 +220,11 @@ class _Tile extends StatelessWidget {
                       const SizedBox(height: 2),
                       Row(
                         children: [
-                          const Icon(Iconsax.heart_copy,
-                              size: 12, color: Colors.white70),
+                          const Icon(
+                            Iconsax.heart_copy,
+                            size: 12,
+                            color: Colors.white70,
+                          ),
                           const SizedBox(width: 3),
                           Text(
                             formatCount(post.likes),
@@ -230,8 +234,11 @@ class _Tile extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: SpacingTokens.space8),
-                          const Icon(Iconsax.message_copy,
-                              size: 12, color: Colors.white70),
+                          const Icon(
+                            Iconsax.message_copy,
+                            size: 12,
+                            color: Colors.white70,
+                          ),
                           const SizedBox(width: 3),
                           Text(
                             formatCount(post.comments),
@@ -258,7 +265,7 @@ class _Chip extends StatelessWidget {
   final IconData icon;
   final String label;
 
-  const _Chip({required this.icon, required this.label});
+  _Chip({required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {

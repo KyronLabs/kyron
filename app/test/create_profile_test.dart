@@ -12,8 +12,9 @@ Widget app() => MaterialApp(
 
 void main() {
   group('creating a profile', () {
-    testWidgets('shows the same pair of pictures as Edit profile',
-        (tester) async {
+    testWidgets('shows the same pair of pictures as Edit profile', (
+      tester,
+    ) async {
       // The two screens edit the same two pictures. This one used to draw a
       // 200-pixel banner with a 128-pixel avatar straddling it -- a header, on
       // a form, taking most of the screen before a word could be typed.
@@ -23,8 +24,9 @@ void main() {
       expect(find.byType(ImagesField), findsOneWidget);
     });
 
-    testWidgets('labels its fields rather than hinting at them',
-        (tester) async {
+    testWidgets('labels its fields rather than hinting at them', (
+      tester,
+    ) async {
       await tester.pumpWidget(app());
       await tester.pumpAndSettle();
 
@@ -34,8 +36,9 @@ void main() {
       expect(find.text('Bio'), findsOneWidget);
     });
 
-    testWidgets('sends the avatar straight to the gallery, with no menu',
-        (tester) async {
+    testWidgets('sends the avatar straight to the gallery, with no menu', (
+      tester,
+    ) async {
       // "Generate AI" sat beside the camera button and called debugPrint. A
       // control that does nothing is worse than no control: it is a promise.
       // With it gone there is only one place an avatar can come from, so

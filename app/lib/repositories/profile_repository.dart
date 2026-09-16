@@ -35,10 +35,7 @@ class ProfileRepository {
   }) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/profile/users/$userId/${followers ? 'followers' : 'following'}',
-      queryParameters: {
-        'limit': limit,
-        if (cursor != null) 'cursor': cursor,
-      },
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
     );
     return FollowPage.fromJson(res.data ?? const {});
   }
@@ -51,10 +48,7 @@ class ProfileRepository {
   Future<SuggestionPage> suggested({int? cursor, int limit = 20}) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/profile/suggested',
-      queryParameters: {
-        'limit': limit,
-        if (cursor != null) 'cursor': cursor,
-      },
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
     );
     return SuggestionPage.fromJson(res.data ?? const {});
   }

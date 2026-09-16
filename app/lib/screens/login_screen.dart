@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../widgets/app_input_field.dart';
 import '../widgets/password_input_field.dart';
 import '../widgets/app_button.dart';
 import '../routes.dart';
+
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../providers/auth_provider.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 import '../utils/validators.dart';
 import '../widgets/kyron_app_bar.dart';
+
+import '../l10n/app_localizations.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -54,9 +59,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: const Text(
-            "Login failed. Please check your credentials.",
-            style: TextStyle(color: Colors.white),
+          content: Text(
+            AppLocalizations.of(context).loginFailed,
+            style: const TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.red,
         ),
@@ -67,7 +72,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KyronAppBar(title: const Text('Sign in to Kyron')),
+      appBar: KyronAppBar(
+        title: Text(AppLocalizations.of(context).signInToKyron),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Form(
@@ -78,7 +85,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               const SizedBox(height: 8),
 
               AppInputField(
-                hint: 'Email',
+                hint: AppLocalizations.of(context).email,
                 controller: _email,
                 keyboardType: TextInputType.emailAddress,
                 validator: Validators.email,
@@ -88,8 +95,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
               PasswordInputField(
                 controller: _password,
-                validator: (v) =>
-                    (v?.length ?? 0) < 6 ? 'Password too short' : null,
+                validator: (v) => (v?.length ?? 0) < 6
+                    ? AppLocalizations.of(context).passwordTooShort
+                    : null,
               ),
 
               const SizedBox(height: 12),
@@ -99,49 +107,51 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: TextButton(
                   onPressed: () =>
                       Navigator.of(context).pushNamed(Routes.forgot),
-                  child: const Text('Forgot password?'),
+                  child: Text(AppLocalizations.of(context).forgotPassword),
                 ),
               ),
 
               const SizedBox(height: 12),
 
               AppButton(
-                label: 'Login',
+                label: AppLocalizations.of(context).login,
                 onTap: _submit,
                 isLoading: _isLoading,
               ),
 
               const SizedBox(height: 12),
 
-              Row(children: [
-                Expanded(
-                  child: Divider(
-                    thickness: 0.5,
-                    color: KyronTheme.darkTextSecondary.withOpacity(0.3),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Text(
-                    'or',
-                    style: TextStyle(
-                      color: KyronTheme.darkTextSecondary.withOpacity(0.6),
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      thickness: 0.5,
+                      color: KyronTheme.darkTextSecondary.withOpacity(0.3),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Divider(
-                    thickness: 0.5,
-                    color: KyronTheme.darkTextSecondary.withOpacity(0.3),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Text(
+                      AppLocalizations.of(context).or,
+                      style: TextStyle(
+                        color: KyronTheme.darkTextSecondary.withOpacity(0.6),
+                      ),
+                    ),
                   ),
-                ),
-              ]),
+                  Expanded(
+                    child: Divider(
+                      thickness: 0.5,
+                      color: KyronTheme.darkTextSecondary.withOpacity(0.3),
+                    ),
+                  ),
+                ],
+              ),
 
               const SizedBox(height: 12),
 
               TextButton(
                 onPressed: () => Navigator.of(context).pushNamed(Routes.signup),
-                child: const Text('Create account'),
+                child: Text(AppLocalizations.of(context).createAccount),
               ),
 
               const Spacer(),
@@ -150,35 +160,42 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: 'By continuing you agree to our ',
+                  text:
+                      '${AppLocalizations.of(context).byContinuingAgreeTerms} ',
                   style: Theme.of(context).textTheme.bodyMedium,
                   children: [
                     TextSpan(
-                      text: 'Terms',
+                      text: AppLocalizations.of(context).terms,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: KyronTheme.accent,
                             decoration: TextDecoration.underline,
                           ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          AppBrowser.open(context, LegalLinks.terms,
-                              title: LegalLinks.termsTitle);
+                          AppBrowser.open(
+                            context,
+                            LegalLinks.terms,
+                            title: LegalLinks.termsTitle,
+                          );
                         },
                     ),
                     TextSpan(
-                      text: ' and ',
+                      text: ' ${AppLocalizations.of(context).and} ',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     TextSpan(
-                      text: 'Privacy Policy',
+                      text: AppLocalizations.of(context).privacyPolicy,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: KyronTheme.accent,
                             decoration: TextDecoration.underline,
                           ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          AppBrowser.open(context, LegalLinks.privacy,
-                              title: LegalLinks.privacyTitle);
+                          AppBrowser.open(
+                            context,
+                            LegalLinks.privacy,
+                            title: LegalLinks.privacyTitle,
+                          );
                         },
                     ),
                     TextSpan(

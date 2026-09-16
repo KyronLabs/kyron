@@ -75,8 +75,10 @@ class FirebasePushTokens implements PushTokenSource {
         return null;
       }
     } catch (error) {
-      AppLog.instance
-          .error('push', 'Could not ask about notifications: $error');
+      AppLog.instance.error(
+        'push',
+        'Could not ask about notifications: $error',
+      );
       return null;
     }
 

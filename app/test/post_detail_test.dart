@@ -3,7 +3,9 @@ import 'package:kyron_app/repositories/feed_repository.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/post_comment.dart';
 import 'package:kyron_app/providers/post_detail_provider.dart';
@@ -125,17 +127,23 @@ void main() {
     });
 
     test('engagement counts every action over the viewers', () {
-      final rate =
-          report(views: 10, likes: 2, saves: 1, comments: 2).engagementRate;
+      final rate = report(
+        views: 10,
+        likes: 2,
+        saves: 1,
+        comments: 2,
+      ).engagementRate;
 
       expect(rate, closeTo(0.5, 1e-9));
     });
 
     test('reads the daily breakdown', () {
-      final r = report(timeline: [
-        {'date': '2026-08-30', 'views': 2},
-        {'date': '2026-08-31', 'views': 1},
-      ]);
+      final r = report(
+        timeline: [
+          {'date': '2026-08-30', 'views': 2},
+          {'date': '2026-08-31', 'views': 1},
+        ],
+      );
 
       expect(r.timeline.map((d) => d.date), ['2026-08-30', '2026-08-31']);
       expect(r.timeline.first.views, 2);
@@ -168,22 +176,27 @@ class _SlowFeed extends FeedRepository {
       );
 
   @override
-  Future<CommentPage> comments(String postId,
-          {String? cursor, int limit = 20}) async =>
+  Future<CommentPage> comments(
+    String postId, {
+    String? cursor,
+    int limit = 20,
+  }) async =>
       CommentPage(items: [_comment('c1', replies: 2)]);
 
   @override
-  Future<CommentPage> replies(String commentId,
-      {String? cursor, int limit = 20}) {
+  Future<CommentPage> replies(
+    String commentId, {
+    String? cursor,
+    int limit = 20,
+  }) {
     return _replies.future;
   }
 
   @override
   Future<void> recordView(String postId, {int? dwellMs}) async {}
 
-  void answer() => _replies.complete(
-        CommentPage(items: [_comment('r1', parentId: 'c1')]),
-      );
+  void answer() =>
+      _replies.complete(CommentPage(items: [_comment('r1', parentId: 'c1')]));
 
   void fail() => _replies.completeError(Exception('offline'));
 }
@@ -267,8 +280,11 @@ class _CountingFeed extends FeedRepository {
       );
 
   @override
-  Future<CommentPage> comments(String postId,
-          {String? cursor, int limit = 20}) async =>
+  Future<CommentPage> comments(
+    String postId, {
+    String? cursor,
+    int limit = 20,
+  }) async =>
       const CommentPage(items: []);
 
   @override
@@ -412,8 +428,11 @@ class _HeldLike extends FeedRepository {
       );
 
   @override
-  Future<CommentPage> comments(String postId,
-          {String? cursor, int limit = 20}) async =>
+  Future<CommentPage> comments(
+    String postId, {
+    String? cursor,
+    int limit = 20,
+  }) async =>
       const CommentPage(items: []);
 
   @override
@@ -446,13 +465,15 @@ void _pressingLike() {
         (ref) => PostDetailNotifier(ref, 'p1'),
       );
       final notifier = container.read(probe);
-      notifier.replacePost(FeedPost.fromJson({
-        'id': 'p1',
-        'content': 'hello',
-        'author': const {'id': 'u1', 'username': 'ada'},
-        'likes': 4,
-        'liked': false,
-      }));
+      notifier.replacePost(
+        FeedPost.fromJson({
+          'id': 'p1',
+          'content': 'hello',
+          'author': const {'id': 'u1', 'username': 'ada'},
+          'likes': 4,
+          'liked': false,
+        }),
+      );
       return (notifier: notifier, feed: feed);
     }
 
@@ -464,8 +485,11 @@ void _pressingLike() {
 
       final pending = notifier.toggleLike();
 
-      expect(notifier.state.post!.liked, isTrue,
-          reason: 'the press is the answer');
+      expect(
+        notifier.state.post!.liked,
+        isTrue,
+        reason: 'the press is the answer',
+      );
       expect(notifier.state.post!.likes, 5);
 
       feed.answer(9);

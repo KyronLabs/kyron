@@ -157,12 +157,12 @@ abstract final class Languages {
     final wanted = codes.toSet();
     return [
       for (final l in all)
-        if (wanted.contains(l.code)) l
+        if (wanted.contains(l.code)) l,
     ];
   }
 
   static List<Language> search(String query) => [
         for (final l in all)
-          if (l.matches(query)) l
+          if (l.matches(query)) l,
       ];
 }

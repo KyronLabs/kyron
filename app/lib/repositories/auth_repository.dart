@@ -1,5 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
+
 import '../config/supabase_config.dart';
+
 import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 
 import '../models/auth_tokens.dart';
@@ -53,8 +55,10 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
-    final res =
-        await _auth.signInWithPassword(email: email, password: password);
+    final res = await _auth.signInWithPassword(
+      email: email,
+      password: password,
+    );
     final session = res.session;
     final account = res.user;
     if (session == null || account == null) {
@@ -82,9 +86,7 @@ class AuthRepository {
       // developer's localhost: the confirmation mail opened a browser tab
       // that could not connect to anything.
       emailRedirectTo: SupabaseConfig.authRedirect,
-      data: {
-        if (username != null && username.isNotEmpty) 'username': username,
-      },
+      data: {if (username != null && username.isNotEmpty) 'username': username},
     );
     final session = res.session;
     final account = res.user;

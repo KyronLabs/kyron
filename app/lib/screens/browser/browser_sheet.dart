@@ -1,3 +1,5 @@
+import '../../l10n/app_localizations.dart';
+
 // lib/screens/browser/browser_sheet.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +9,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../services/app_browser.dart';
 import '../../widgets/toast.dart';
+
 import 'browser_chrome.dart';
 import 'browser_engine.dart';
 import 'browser_palette.dart';
@@ -105,7 +108,8 @@ class _BrowserSheetState extends State<BrowserSheet> {
     switch (choice) {
       case PageChoice.copy:
         await Clipboard.setData(ClipboardData(text: tab.url.toString()));
-        if (mounted) Toast.show(context, 'Link copied');
+        if (mounted)
+          Toast.show(context, AppLocalizations.of(context).literallinkCopied);
       case PageChoice.share:
         await Share.share(tab.url.toString());
       case PageChoice.leave:
@@ -118,7 +122,10 @@ class _BrowserSheetState extends State<BrowserSheet> {
   Future<void> _leave(BrowserTab tab) async {
     final gone = await AppBrowser.leave(tab.url);
     if (!gone && mounted) {
-      Toast.show(context, 'No browser on this device took that link.');
+      Toast.show(
+        context,
+        AppLocalizations.of(context).literalnoBrowserOnThisDeviceTookThatLink,
+      );
     }
   }
 
@@ -334,10 +341,12 @@ class _Chrome extends StatelessWidget {
               children: [
                 BrowserButton(
                   icon: Iconsax.close_square_copy,
-                  label: 'Close the browser',
+                  label: AppLocalizations.of(context).literalcloseTheBrowser,
                   onTap: onClose,
                 ),
-                Expanded(child: AddressPill(tab: tab, onTap: onAddress)),
+                Expanded(
+                  child: AddressPill(tab: tab, onTap: onAddress),
+                ),
                 TabCountButton(count: tabs.length, onTap: onTabs),
               ],
             ),
@@ -383,11 +392,7 @@ class _Page extends StatelessWidget {
           Positioned.fill(
             child: ColoredBox(
               color: BrowserPalette.of(context).paper,
-              child: PageFailure(
-                tab: tab,
-                onRetry: onRetry,
-                onLeave: onLeave,
-              ),
+              child: PageFailure(tab: tab, onRetry: onRetry, onLeave: onLeave),
             ),
           ),
       ],

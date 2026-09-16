@@ -128,13 +128,15 @@ ThreadLayout buildThreadLayout(
       // parent's rail has to carry on to reach it.
       final moreAfterThis = !isLast || (shouldCollapse && isLast);
 
-      rows.add(ThreadRow(
-        comment: child,
-        depth: depth,
-        ancestorRails: List.unmodifiable(ancestorRails),
-        hasChildrenBelow: grandChildren.isNotEmpty,
-        isLastChild: !moreAfterThis,
-      ));
+      rows.add(
+        ThreadRow(
+          comment: child,
+          depth: depth,
+          ancestorRails: List.unmodifiable(ancestorRails),
+          hasChildrenBelow: grandChildren.isNotEmpty,
+          isLastChild: !moreAfterThis,
+        ),
+      );
 
       // Top-level comments are separate conversations, not siblings in one
       // thread. Passing `moreAfterThis` down at depth 0 draws a rail beside

@@ -74,11 +74,7 @@ class PollOption {
   final String text;
   final int votes;
 
-  const PollOption({
-    required this.id,
-    required this.text,
-    required this.votes,
-  });
+  const PollOption({required this.id, required this.text, required this.votes});
 
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
         id: json['id'] as String? ?? '',

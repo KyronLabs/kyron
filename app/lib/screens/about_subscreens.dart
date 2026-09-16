@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/about_subscreens.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,18 +35,18 @@ class ServiceStatusScreen extends ConsumerWidget {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Service status'),
+        title: Text(AppLocalizations.of(context).serviceStatus),
         actions: [
           IconButton(
             icon: const Icon(Iconsax.refresh_copy, size: 20),
-            tooltip: 'Check again',
+            tooltip: AppLocalizations.of(context).literalcheckAgain,
             onPressed: ref.read(serviceStatusProvider.notifier).check,
           ),
         ],
       ),
       body: SafeArea(
         child: state.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => Center(child: CircularProgressIndicator()),
           error: (error, _) => _Unreachable(
             message: error.toString(),
             onRetry: ref.read(serviceStatusProvider.notifier).check,
@@ -103,8 +105,10 @@ class _Banner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(healthy ? Iconsax.tick_circle_copy : Iconsax.warning_2_copy,
-              color: color),
+          Icon(
+            healthy ? Iconsax.tick_circle_copy : Iconsax.warning_2_copy,
+            color: color,
+          ),
           const SizedBox(width: SpacingTokens.space12),
           Expanded(
             child: Text(
@@ -134,7 +138,7 @@ class _Unreachable extends StatelessWidget {
     return Center(
       child: SingleChildScrollView(
         child: EmptyState.failed(
-          title: 'Kyron did not answer',
+          title: AppLocalizations.of(context).literalkyronDidNotAnswer,
           detail: message,
           action: 'Check again',
           onAction: onRetry,
@@ -208,11 +212,11 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('System log'),
+        title: Text(AppLocalizations.of(context).systemLog),
         actions: [
           IconButton(
             icon: const Icon(Iconsax.copy_copy, size: 20),
-            tooltip: 'Copy',
+            tooltip: AppLocalizations.of(context).copy,
             onPressed: _copy,
           ),
           IconButton(
@@ -230,11 +234,11 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
             // thing you opened this to read.
             final entries = AppLog.instance.entries.reversed.toList();
             if (entries.isEmpty) {
-              return const Center(
+              return Center(
                 child: EmptyState(
                   compact: true,
                   art: EmptyArt.drafts,
-                  title: 'Nothing logged yet',
+                  title: AppLocalizations.of(context).literalnothingLoggedYet,
                   detail: 'Failed requests and other notable events show up '
                       'here.',
                 ),
@@ -264,7 +268,11 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(text.isEmpty ? 'Nothing to copy' : 'Log copied'),
+        content: Text(
+          text.isEmpty
+              ? AppLocalizations.of(context).nothingToCopy
+              : AppLocalizations.of(context).logCopied,
+        ),
       ),
     );
   }
@@ -272,8 +280,9 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
   Future<void> _clear() async {
     await AppLog.instance.clear();
     if (!mounted) return;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text('Log cleared')));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(AppLocalizations.of(context).logCleared)),
+    );
   }
 }
 
@@ -324,8 +333,10 @@ class _Entry extends StatelessWidget {
             ],
           ),
           const SizedBox(height: SpacingTokens.space2),
-          SelectableText(entry.message,
-              style: const TextStyle(fontSize: TypographyTokens.fontSize2)),
+          SelectableText(
+            entry.message,
+            style: const TextStyle(fontSize: TypographyTokens.fontSize2),
+          ),
         ],
       ),
     );
@@ -377,7 +388,7 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
     final entries = AppLog.instance.entries.length;
 
     return SettingsScaffold(
-      title: 'Send error report',
+      title: AppLocalizations.of(context).sendErrorReport,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -390,8 +401,8 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
             controller: _notes,
             maxLines: 5,
             maxLength: 1000,
-            decoration: const InputDecoration(
-              hintText: 'What you were doing when it happened.',
+            decoration: InputDecoration(
+              hintText: AppLocalizations.of(context).whatYouWereDoing,
             ),
           ),
           const SizedBox(height: SpacingTokens.space8),
@@ -399,7 +410,7 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
             contentPadding: EdgeInsets.zero,
             value: _includeLog,
             onChanged: (value) => setState(() => _includeLog = value),
-            title: const Text('Attach the system log'),
+            title: Text(AppLocalizations.of(context).attachSystemLog),
             subtitle: Text(
               entries == 0
                   ? 'Nothing logged yet'
@@ -411,13 +422,13 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
           FilledButton.icon(
             onPressed: _send,
             icon: const Icon(Iconsax.send_1_copy, size: 18),
-            label: const Text('Send to support'),
+            label: Text(AppLocalizations.of(context).sendToSupport),
           ),
           const SizedBox(height: SpacingTokens.space8),
           OutlinedButton.icon(
             onPressed: _copy,
             icon: const Icon(Iconsax.copy_copy, size: 18),
-            label: const Text('Copy report instead'),
+            label: Text(AppLocalizations.of(context).copyReportInstead),
           ),
           const SizedBox(height: SpacingTokens.space16),
           Text(
@@ -432,9 +443,11 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
 
   String _compose() {
     final buffer = StringBuffer()
-      ..writeln(_notes.text.trim().isEmpty
-          ? '(no description given)'
-          : _notes.text.trim())
+      ..writeln(
+        _notes.text.trim().isEmpty
+            ? '(no description given)'
+            : _notes.text.trim(),
+      )
       ..writeln()
       ..writeln('---')
       ..writeln('App: ${_info?.display ?? 'unknown'}')
@@ -492,9 +505,7 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
     await Clipboard.setData(ClipboardData(text: _compose()));
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Report copied. Paste it into an email to support.'),
-      ),
+      SnackBar(content: Text(AppLocalizations.of(context).reportCopied)),
     );
   }
 }

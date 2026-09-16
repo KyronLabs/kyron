@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/widgets/google_button.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,13 +10,22 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 /// Google's branding guidelines allow these three and no others: not "Log in
 /// with Google", not "Google", not a bare G on a coloured pill.
 enum GoogleAction {
-  signIn('Sign in with Google'),
-  signUp('Sign up with Google'),
-  continueWith('Continue with Google');
+  signIn,
+  signUp,
+  continueWith;
 
-  const GoogleAction(this.label);
+  String get label => switch (this) {
+        GoogleAction.signIn => 'Sign in with Google',
+        GoogleAction.signUp => 'Sign up with Google',
+        GoogleAction.continueWith => 'Continue with Google',
+      };
 
-  final String label;
+  String localizedLabel(BuildContext context) => switch (this) {
+        GoogleAction.signIn => AppLocalizations.of(context).googleSignIn,
+        GoogleAction.signUp => AppLocalizations.of(context).googleSignUp,
+        GoogleAction.continueWith =>
+          AppLocalizations.of(context).googleContinue,
+      };
 }
 
 /// Sign in with Google, drawn the way Google requires.
@@ -63,7 +74,7 @@ class GoogleButton extends StatelessWidget {
     return Semantics(
       button: true,
       enabled: onTap != null && !isLoading,
-      label: action.label,
+      label: action.localizedLabel(context),
       excludeSemantics: true,
       child: Material(
         color: ground,
@@ -101,7 +112,7 @@ class GoogleButton extends StatelessWidget {
                     )
                   else
                     Text(
-                      action.label,
+                      action.localizedLabel(context),
                       style: TextStyle(
                         // Roboto is Google's requirement. Naming it here
                         // rather than inheriting Kyron's face is deliberate:

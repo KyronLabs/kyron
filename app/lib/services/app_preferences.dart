@@ -89,10 +89,9 @@ class AppPreferences {
       );
 
   Future<void> writeContentLanguages(List<Language> languages) async =>
-      (await _prefs).setStringList(
-        _kContentLanguages,
-        [for (final l in languages) l.code],
-      );
+      (await _prefs).setStringList(_kContentLanguages, [
+        for (final l in languages) l.code,
+      ]);
 
   /// Clamped to an offered value: a scale stored by a build with a different
   /// set would otherwise render at a size no screen was checked against.

@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+
 // lib/screens/community_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,6 +21,7 @@ import 'community_composer_screen.dart';
 import 'community_manage_screen.dart';
 import '../widgets/create_fab.dart';
 import '../widgets/action_sheet.dart';
+
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter/services.dart';
 
@@ -71,11 +74,12 @@ class CommunityScreen extends ConsumerWidget {
       body: Stack(
         children: [
           if (state.loading)
-            const Center(child: CircularProgressIndicator())
+            Center(child: CircularProgressIndicator())
           else if (community == null)
             SafeArea(
               child: EmptyState.failed(
-                title: 'Could not open this community',
+                title: AppLocalizations.of(context)
+                    .literalcouldNotOpenThisCommunity,
                 detail: state.error,
                 onAction: notifier.refresh,
               ).scrollable,
@@ -150,7 +154,8 @@ class CommunityScreen extends ConsumerWidget {
                     if (community != null)
                       _GlassButton(
                         icon: Iconsax.more_copy,
-                        tooltip: 'This community',
+                        tooltip:
+                            AppLocalizations.of(context).literalthisCommunity,
                         onPressed: () =>
                             _openMenu(context, ref, community, notifier),
                       ),
@@ -186,27 +191,27 @@ class CommunityScreen extends ConsumerWidget {
       context,
       title: community.name,
       actions: [
-        const SheetAction(
+        SheetAction(
           value: 'share',
-          label: 'Share this community',
+          label: AppLocalizations.of(context).literalshareThisCommunity,
           icon: Iconsax.export_copy,
         ),
-        const SheetAction(
+        SheetAction(
           value: 'copy',
-          label: 'Copy link',
+          label: AppLocalizations.of(context).literalcopyLink,
           icon: Iconsax.link_copy,
         ),
         if (moderator)
-          const SheetAction(
+          SheetAction(
             value: 'manage',
             label: 'Manage',
             icon: Iconsax.setting_2_copy,
             detail: 'Members, bans, and what this community says about itself',
           ),
         if (community.joined)
-          const SheetAction(
+          SheetAction(
             value: 'leave',
-            label: 'Leave',
+            label: AppLocalizations.of(context).leave,
             icon: Iconsax.logout_copy,
             detail: 'You will stop seeing its posts in your feed',
             destructive: true,
@@ -221,7 +226,8 @@ class CommunityScreen extends ConsumerWidget {
 
       case 'copy':
         await Clipboard.setData(ClipboardData(text: url));
-        if (context.mounted) Toast.show(context, 'Link copied');
+        if (context.mounted)
+          Toast.show(context, AppLocalizations.of(context).literallinkCopied);
 
       case 'manage':
         await Navigator.push<Community>(
@@ -238,18 +244,18 @@ class CommunityScreen extends ConsumerWidget {
           context: context,
           builder: (dialogContext) => AlertDialog(
             title: Text('Leave ${community.name}?'),
-            content: const Text(
+            content: Text(
               'Its posts will stop appearing in your feed. You can join '
               'again at any time.',
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(dialogContext, false),
-                child: const Text('Stay'),
+                child: Text(AppLocalizations.of(context).stay),
               ),
               TextButton(
                 onPressed: () => Navigator.pop(dialogContext, true),
-                child: const Text('Leave'),
+                child: Text(AppLocalizations.of(context).leave),
               ),
             ],
           ),
@@ -281,8 +287,9 @@ class CommunityScreen extends ConsumerWidget {
     );
     if (posted == true) {
       ref
-          .read(postListProvider(PostListSource.community(community.slug))
-              .notifier)
+          .read(
+            postListProvider(PostListSource.community(community.slug)).notifier,
+          )
           .refresh();
     }
   }
@@ -556,9 +563,8 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final muted = Theme.of(context).colorScheme.onSurface.withValues(
-          alpha: 0.6,
-        );
+    final muted =
+        Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6);
 
     return Row(
       mainAxisSize: MainAxisSize.min,

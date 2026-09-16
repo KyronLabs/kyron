@@ -15,32 +15,26 @@ void main() {
   group('the capability table', () {
     test('a phone has all of it', () {
       const it = PlatformSupport.mobile;
-      expect(
-        [
-          it.webView,
-          it.video,
-          it.audio,
-          it.camera,
-          it.videoStills,
-          it.localDatabase
-        ],
-        everyElement(isTrue),
-      );
+      expect([
+        it.webView,
+        it.video,
+        it.audio,
+        it.camera,
+        it.videoStills,
+        it.localDatabase,
+      ], everyElement(isTrue));
     });
 
     test('Windows has none of it, and says which platform it is', () {
       const it = PlatformSupport.desktop;
-      expect(
-        [
-          it.webView,
-          it.video,
-          it.audio,
-          it.camera,
-          it.videoStills,
-          it.localDatabase
-        ],
-        everyElement(isFalse),
-      );
+      expect([
+        it.webView,
+        it.video,
+        it.audio,
+        it.camera,
+        it.videoStills,
+        it.localDatabase,
+      ], everyElement(isFalse));
       expect(it.name, 'Windows');
     });
 
@@ -84,40 +78,45 @@ void main() {
       PlatformSupport.current = PlatformSupport.mobile;
       expect(PlatformSupport.current.video, isTrue);
       PlatformSupport.current = null;
-      expect(PlatformSupport.current.name, isNot('Windows'),
-          reason: 'a test host is not Windows');
+      expect(
+        PlatformSupport.current.name,
+        isNot('Windows'),
+        reason: 'a test host is not Windows',
+      );
     });
   });
 
   group('video', () {
-    test('the pool refuses with a reason rather than opening nothing',
-        () async {
-      PlatformSupport.current = PlatformSupport.desktop;
+    test(
+      'the pool refuses with a reason rather than opening nothing',
+      () async {
+        PlatformSupport.current = PlatformSupport.desktop;
 
-      await expectLater(
-        VideoPool.instance.open(
-          'https://example.com/clip.mp4',
-          owner: Object(),
-          onEvicted: () {},
-        ),
-        throwsA(isA<NoVideoPlayer>()),
-      );
-
-      // The reason is shown to a reader, so it has to read as a sentence and
-      // name the platform rather than a package.
-      try {
-        await VideoPool.instance.open(
-          'https://example.com/clip.mp4',
-          owner: Object(),
-          onEvicted: () {},
+        await expectLater(
+          VideoPool.instance.open(
+            'https://example.com/clip.mp4',
+            owner: Object(),
+            onEvicted: () {},
+          ),
+          throwsA(isA<NoVideoPlayer>()),
         );
-        fail('expected NoVideoPlayer');
-      } on NoVideoPlayer catch (error) {
-        expect(error.reason, contains('Windows'));
-        expect(error.reason, isNot(contains('video_player')));
-        expect(error.toString(), error.reason);
-      }
-    });
+
+        // The reason is shown to a reader, so it has to read as a sentence and
+        // name the platform rather than a package.
+        try {
+          await VideoPool.instance.open(
+            'https://example.com/clip.mp4',
+            owner: Object(),
+            onEvicted: () {},
+          );
+          fail('expected NoVideoPlayer');
+        } on NoVideoPlayer catch (error) {
+          expect(error.reason, contains('Windows'));
+          expect(error.reason, isNot(contains('video_player')));
+          expect(error.toString(), error.reason);
+        }
+      },
+    );
 
     test('and holds no lease for the clip it refused', () {
       // A lease taken and not released is a decoder slot gone for the run.

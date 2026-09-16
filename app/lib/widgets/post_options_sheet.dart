@@ -13,8 +13,11 @@ import '../routes.dart';
 import '../screens/report_screen.dart';
 import '../screens/translation_sheet.dart';
 import '../services/app_log.dart';
+
 import 'interaction_settings_sheet.dart';
 import 'toast.dart';
+
+import '../l10n/app_localizations.dart';
 
 /// The menu behind a post's overflow button.
 ///
@@ -72,21 +75,20 @@ class _OptionsState extends ConsumerState<_Options> {
           children: [
             _Item(
               icon: Iconsax.language_square_copy,
-              label: 'Translate post',
-              onTap: () => _replace(
-                () => TranslationSheet.show(context, _post.content),
-              ),
+              label: AppLocalizations.of(context).literaltranslatePost,
+              onTap: () =>
+                  _replace(() => TranslationSheet.show(context, _post.content)),
             ),
             _Item(
               icon: Iconsax.copy_copy,
-              label: 'Copy post text',
+              label: AppLocalizations.of(context).literalcopyPostText,
               onTap: () => _run(() async {
                 await Clipboard.setData(ClipboardData(text: _post.content));
               }, 'Post text copied'),
             ),
             _Item(
               icon: Iconsax.link_copy,
-              label: 'Copy link to post',
+              label: AppLocalizations.of(context).literalcopyLinkToPost,
               onTap: () => _run(() async {
                 await Clipboard.setData(
                   ClipboardData(text: 'https://kyron.so/post/${_post.id}'),
@@ -100,7 +102,7 @@ class _OptionsState extends ConsumerState<_Options> {
             // effect on the server rather than only in this session.
             _Item(
               icon: Iconsax.like_1_copy,
-              label: 'Show more posts like this',
+              label: AppLocalizations.of(context).literalshowMorePostsLikeThis,
               onTap: () => _run(
                 () => _moderation.setInterest(_post.id, more: true),
                 'Noted. This helps shape what you are shown.',
@@ -108,8 +110,9 @@ class _OptionsState extends ConsumerState<_Options> {
             ),
             _Item(
               icon: Iconsax.dislike_copy,
-              label: 'Not interested in this',
-              subtitle: 'Hides it, and tells us to show fewer like it',
+              label: AppLocalizations.of(context).literalnotInterestedInThis,
+              subtitle: AppLocalizations.of(context)
+                  .literalhidesItAndTellsUsToShowFewerLikeIt,
               onTap: () => _run(
                 () => _moderation.setInterest(_post.id, more: false),
                 'Hidden. We will show you fewer like it.',
@@ -118,7 +121,7 @@ class _OptionsState extends ConsumerState<_Options> {
             ),
             _Item(
               icon: Iconsax.eye_slash_copy,
-              label: 'Hide this post',
+              label: AppLocalizations.of(context).literalhideThisPost,
               onTap: () => _run(
                 () => _moderation.setHidden(_post.id, true),
                 'Post hidden',
@@ -127,8 +130,9 @@ class _OptionsState extends ConsumerState<_Options> {
             ),
             _Item(
               icon: Iconsax.notification_bing_copy,
-              label: 'Mute this thread',
-              subtitle: 'Stop seeing this post and replies to it',
+              label: AppLocalizations.of(context).literalmuteThisThread,
+              subtitle: AppLocalizations.of(context)
+                  .literalstopSeeingThisPostAndRepliesToIt,
               onTap: () => _run(
                 () => _moderation.setThreadMuted(_post.id, true),
                 'Thread muted',
@@ -137,7 +141,7 @@ class _OptionsState extends ConsumerState<_Options> {
             ),
             _Item(
               icon: Iconsax.text_block_copy,
-              label: 'Mute words or tags',
+              label: AppLocalizations.of(context).literalmuteWordsOrTags,
               onTap: () => _replace(
                 () => Navigator.pushNamed(context, '/settings/muted-words'),
               ),
@@ -150,8 +154,9 @@ class _OptionsState extends ConsumerState<_Options> {
               _divider(scheme),
               _Item(
                 icon: Iconsax.chart_2_copy,
-                label: 'Post analytics',
-                subtitle: 'Viewers, likes, saves and comments',
+                label: AppLocalizations.of(context).postAnalytics,
+                subtitle: AppLocalizations.of(context)
+                    .literalviewersLikesSavesAndComments,
                 onTap: () => _replace(
                   () => Navigator.pushNamed(
                     context,
@@ -162,13 +167,13 @@ class _OptionsState extends ConsumerState<_Options> {
               ),
               _Item(
                 icon: Iconsax.global_copy,
-                label: 'Who can reply',
+                label: AppLocalizations.of(context).literalwhoCanReply,
                 subtitle: _post.replyPolicy.label,
                 onTap: _changeReplyPolicy,
               ),
               _Item(
                 icon: Iconsax.trash_copy,
-                label: 'Delete post',
+                label: AppLocalizations.of(context).literaldeletePost,
                 destructive: true,
                 onTap: _confirmDelete,
               ),
@@ -197,7 +202,7 @@ class _OptionsState extends ConsumerState<_Options> {
               ),
               _Item(
                 icon: Iconsax.flag_copy,
-                label: 'Report post',
+                label: AppLocalizations.of(context).literalreportPost,
                 destructive: true,
                 onTap: () => _replace(
                   () => ReportScreen.open(
@@ -270,15 +275,20 @@ class _OptionsState extends ConsumerState<_Options> {
     } catch (e) {
       AppLog.instance.error('moderation', 'Action failed: $e');
       navigator.pop();
-      Toast.showOn(overlay, 'That did not go through. Try again.');
+      Toast.showOn(
+        overlay,
+        AppLocalizations.of(context).literalthatDidNotGoThroughTryAgain,
+      );
     }
   }
 
   /// Changing the reply setting after the fact. The composer offers it before
   /// posting; a post that turns out to need it later had no way to get it.
   Future<void> _changeReplyPolicy() async {
-    final chosen =
-        await InteractionSettingsSheet.show(context, _post.replyPolicy);
+    final chosen = await InteractionSettingsSheet.show(
+      context,
+      _post.replyPolicy,
+    );
     if (chosen == null || !mounted) return;
 
     await _run(
@@ -291,22 +301,22 @@ class _OptionsState extends ConsumerState<_Options> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Delete this post?'),
-        content: const Text(
+        title: Text(AppLocalizations.of(context).deleteThisPost),
+        content: Text(
           'It is removed from your profile and from everyone else\'s feed. '
           'Replies to it go with it.',
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(dialogContext, true),
             style: TextButton.styleFrom(
               foregroundColor: Theme.of(dialogContext).colorScheme.error,
             ),
-            child: const Text('Delete'),
+            child: Text(AppLocalizations.of(context).delete),
           ),
         ],
       ),
@@ -326,21 +336,21 @@ class _OptionsState extends ConsumerState<_Options> {
       context: context,
       builder: (dialogContext) => AlertDialog(
         title: Text('Block $author?'),
-        content: const Text(
+        content: Text(
           'Neither of you will see the other on Kyron, and any follow between '
           'you is removed. They are not told.',
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(dialogContext, true),
             style: TextButton.styleFrom(
               foregroundColor: Theme.of(dialogContext).colorScheme.error,
             ),
-            child: const Text('Block'),
+            child: Text(AppLocalizations.of(context).block),
           ),
         ],
       ),
@@ -377,12 +387,16 @@ class _Item extends StatelessWidget {
 
     return ListTile(
       leading: Icon(icon, size: 20, color: color),
-      title: Text(label,
-          style: TextStyle(color: color, fontSize: TypographyTokens.fontSize3)),
+      title: Text(
+        label,
+        style: TextStyle(color: color, fontSize: TypographyTokens.fontSize3),
+      ),
       subtitle: subtitle == null
           ? null
-          : Text(subtitle!,
-              style: const TextStyle(fontSize: TypographyTokens.fontSize1)),
+          : Text(
+              subtitle!,
+              style: const TextStyle(fontSize: TypographyTokens.fontSize1),
+            ),
       dense: true,
       onTap: onTap,
     );

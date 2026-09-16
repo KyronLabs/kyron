@@ -67,13 +67,12 @@ void main() {
   }
 
   /// The Send button, whatever else is on the screen.
-  Finder sendButton() => find.ancestor(
-        of: find.text('Send'),
-        matching: find.byType(ActionButton),
-      );
+  Finder sendButton() =>
+      find.ancestor(of: find.text('Send'), matching: find.byType(ActionButton));
 
-  testWidgets('says so before anything is typed, when it cannot be sent',
-      (tester) async {
+  testWidgets('says so before anything is typed, when it cannot be sent', (
+    tester,
+  ) async {
     // The whole point of asking first. Being told after writing three
     // paragraphs that they went nowhere is the version worth avoiding.
     await pump(tester, _FakeFeedback(available: false));
@@ -114,8 +113,9 @@ void main() {
     expect(button().onPressed, isNotNull);
   });
 
-  testWidgets('files what was written, trimmed, under the chosen kind',
-      (tester) async {
+  testWidgets('files what was written, trimmed, under the chosen kind', (
+    tester,
+  ) async {
     final repo = _FakeFeedback();
     await pump(tester, repo);
 
@@ -177,8 +177,9 @@ void main() {
     expect(tester.widget<ActionButton>(sendButton()).onPressed, isNotNull);
   });
 
-  testWidgets('warns that the report will be public, and unattributed',
-      (tester) async {
+  testWidgets('warns that the report will be public, and unattributed', (
+    tester,
+  ) async {
     // Somebody about to paste a screenshot of their inbox into "what
     // happened" should know where it is going before they do.
     await pump(tester, _FakeFeedback());

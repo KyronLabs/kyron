@@ -51,11 +51,7 @@ class _OnePerson implements HttpClientAdapter {
   void close({bool force = false}) {}
 }
 
-const _community = Community(
-  id: 'c1',
-  slug: 'gardeners',
-  name: 'Gardeners',
-);
+const _community = Community(id: 'c1', slug: 'gardeners', name: 'Gardeners');
 
 Future<void> _pump(WidgetTester tester) async {
   final api = ApiClient();
@@ -76,8 +72,9 @@ Future<void> _pump(WidgetTester tester) async {
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
-  testWidgets('the tag button opens the picker and writes the handle in',
-      (tester) async {
+  testWidgets('the tag button opens the picker and writes the handle in', (
+    tester,
+  ) async {
     // This button used to insert a bare '@' and leave the writer to remember
     // somebody's handle exactly -- which is why nobody could tag anyone.
     await _pump(tester);

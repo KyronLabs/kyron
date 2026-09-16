@@ -33,10 +33,8 @@ class KeysRepository {
       );
 
   /// Withdraws it, on sign-out.
-  Future<void> withdraw(String deviceId) => _api.dio.delete<void>(
-        '/keys',
-        queryParameters: {'deviceId': deviceId},
-      );
+  Future<void> withdraw(String deviceId) =>
+      _api.dio.delete<void>('/keys', queryParameters: {'deviceId': deviceId});
 
   /// Everybody's keys in one conversation.
   Future<List<PublishedKey>> forConversation(String conversationId) async {

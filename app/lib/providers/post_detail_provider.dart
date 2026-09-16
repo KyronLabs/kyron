@@ -246,10 +246,12 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
   /// flickers.
   Future<String?> toggleCommentLike(PostComment comment) async {
     final wanted = !comment.liked;
-    _replaceComment(comment.copyWith(
-      liked: wanted,
-      likes: (comment.likes + (wanted ? 1 : -1)).clamp(0, 1 << 31),
-    ));
+    _replaceComment(
+      comment.copyWith(
+        liked: wanted,
+        likes: (comment.likes + (wanted ? 1 : -1)).clamp(0, 1 << 31),
+      ),
+    );
     try {
       final likes = await _repo.setCommentLike(comment.id, wanted);
       _replaceComment(comment.copyWith(liked: wanted, likes: likes));
@@ -368,9 +370,7 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
 
   void _replaceMedia(String path, PendingMedia updated) {
     state = state.copyWith(
-      media: [
-        for (final m in state.media) m.path == path ? updated : m,
-      ],
+      media: [for (final m in state.media) m.path == path ? updated : m],
     );
   }
 

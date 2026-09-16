@@ -32,10 +32,16 @@ void main() {
 
   test('asking twice for the same tile does not open a second', () async {
     final a = Object();
-    final first = await VideoPool.instance
-        .open('https://example.com/a.mp4', owner: a, onEvicted: () {});
-    final second = await VideoPool.instance
-        .open('https://example.com/a.mp4', owner: a, onEvicted: () {});
+    final first = await VideoPool.instance.open(
+      'https://example.com/a.mp4',
+      owner: a,
+      onEvicted: () {},
+    );
+    final second = await VideoPool.instance.open(
+      'https://example.com/a.mp4',
+      owner: a,
+      onEvicted: () {},
+    );
 
     expect(identical(first, second), isTrue);
     expect(platform.live, 1);
@@ -107,8 +113,11 @@ void main() {
     platform.failOnCreate = true;
 
     await expectLater(
-      VideoPool.instance.open('https://example.com/bad.mp4',
-          owner: Object(), onEvicted: () {}),
+      VideoPool.instance.open(
+        'https://example.com/bad.mp4',
+        owner: Object(),
+        onEvicted: () {},
+      ),
       throwsA(isA<Object>()),
     );
 
@@ -147,8 +156,11 @@ void main() {
     // leaves initialize() waiting on an event it will never get -- so the
     // lease is marked and cleaned up when it settles.
     final a = Object();
-    final opening = VideoPool.instance
-        .open('https://example.com/a.mp4', owner: a, onEvicted: () {});
+    final opening = VideoPool.instance.open(
+      'https://example.com/a.mp4',
+      owner: a,
+      onEvicted: () {},
+    );
     VideoPool.instance.release(a);
 
     expect(await opening, isNull);
@@ -200,15 +212,17 @@ void main() {
       );
     });
 
-    test('holds is false for a controller that was never this owner\'s',
-        () async {
-      final a = Object();
-      final b = Object();
-      final theirs = await openFor(b, 'https://example.com/b.mp4');
-      await openFor(a, 'https://example.com/a.mp4');
+    test(
+      'holds is false for a controller that was never this owner\'s',
+      () async {
+        final a = Object();
+        final b = Object();
+        final theirs = await openFor(b, 'https://example.com/b.mp4');
+        await openFor(a, 'https://example.com/a.mp4');
 
-      expect(VideoPool.instance.holds(a, theirs!), isFalse);
-    });
+        expect(VideoPool.instance.holds(a, theirs!), isFalse);
+      },
+    );
   });
 
   test('releaseAll drops everything', () async {

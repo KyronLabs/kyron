@@ -18,10 +18,11 @@ const all = 1 << 30;
 void main() {
   group('buildThreadLayout', () {
     test('depth follows the parent chain', () {
-      final layout = buildThreadLayout(
-        [c('a'), c('b', parent: 'a'), c('c', parent: 'b')],
-        collapseAfter: all,
-      );
+      final layout = buildThreadLayout([
+        c('a'),
+        c('b', parent: 'a'),
+        c('c', parent: 'b'),
+      ], collapseAfter: all);
 
       expect(layout.rows.map((r) => r.comment.id), ['a', 'b', 'c']);
       expect(layout.rows.map((r) => r.depth), [0, 1, 2]);
@@ -36,10 +37,11 @@ void main() {
     });
 
     test('a parent rail stops at its last child', () {
-      final layout = buildThreadLayout(
-        [c('a'), c('b', parent: 'a'), c('d', parent: 'a')],
-        collapseAfter: all,
-      );
+      final layout = buildThreadLayout([
+        c('a'),
+        c('b', parent: 'a'),
+        c('d', parent: 'a'),
+      ], collapseAfter: all);
 
       expect(layout.rows[1].isLastChild, isFalse);
       expect(layout.rows[2].isLastChild, isTrue);
@@ -48,34 +50,33 @@ void main() {
     test('top-level comments are separate conversations', () {
       // Passing the sibling flag down at depth 0 drew a rail beside every
       // nested reply running on to the next top-level comment.
-      final layout = buildThreadLayout(
-        [c('a'), c('b', parent: 'a'), c('second')],
-        collapseAfter: all,
-      );
+      final layout = buildThreadLayout([
+        c('a'),
+        c('b', parent: 'a'),
+        c('second'),
+      ], collapseAfter: all);
 
       expect(layout.rows[1].ancestorRails, [false]);
     });
 
     test('an orphan is promoted rather than dropped', () {
-      final layout =
-          buildThreadLayout([c('x', parent: 'gone')], collapseAfter: all);
+      final layout = buildThreadLayout([
+        c('x', parent: 'gone'),
+      ], collapseAfter: all);
 
       expect(layout.rows.single.depth, 0);
     });
 
     test('a comment claiming itself as its parent still appears', () {
-      final layout =
-          buildThreadLayout([c('loop', parent: 'loop')], collapseAfter: all);
+      final layout = buildThreadLayout([
+        c('loop', parent: 'loop'),
+      ], collapseAfter: all);
 
       expect(layout.rows.single.comment.id, 'loop');
     });
 
     test('nested runs fold, top-level ones never do', () {
-      final layout = buildThreadLayout([
-        c('a'),
-        c('b'),
-        c('a1', parent: 'a'),
-      ]);
+      final layout = buildThreadLayout([c('a'), c('b'), c('a1', parent: 'a')]);
 
       expect(layout.rows.map((r) => r.comment.id), ['a', 'b']);
       expect(layout.collapsed.values.single.hidden.single.id, 'a1');
@@ -119,15 +120,19 @@ void main() {
     });
 
     test('the parent rail carries on past a middle child only', () {
-      expect(plan(depth: 1, last: false).parentRailBelowX,
-          ThreadGeometry.columnFor(0));
+      expect(
+        plan(depth: 1, last: false).parentRailBelowX,
+        ThreadGeometry.columnFor(0),
+      );
       expect(plan(depth: 1).parentRailBelowX, isNull);
     });
 
     test('a row draws its own rail only when replies follow it', () {
       expect(plan(depth: 0).ownRailX, isNull);
       expect(
-          plan(depth: 0, children: true).ownRailX, ThreadGeometry.columnFor(0));
+        plan(depth: 0, children: true).ownRailX,
+        ThreadGeometry.columnFor(0),
+      );
     });
 
     test('an ancestor rail sits one column left of the ancestor', () {
@@ -226,16 +231,14 @@ void main() {
   group('endsBranch', () {
     // The tree from the screenshots: one branch three deep, then two
     // comments of their own.
-    final rows = buildThreadLayout(
-      [
-        c('c1'),
-        c('c2', parent: 'c1'),
-        c('c3', parent: 'c2'),
-        c('c4'),
-        c('c5'),
-      ],
-      collapseAfter: all,
-    ).rows;
+    final rows = buildThreadLayout([
+      c('c1'),
+      c('c2', parent: 'c1'),
+      c('c3', parent: 'c2'),
+      c('c4'),
+      c('c5'),
+    ], collapseAfter: all)
+        .rows;
 
     test('the rows come out in the order the screen draws them', () {
       expect(rows.map((r) => r.comment.id), ['c1', 'c2', 'c3', 'c4', 'c5']);
@@ -260,10 +263,11 @@ void main() {
     });
 
     test('a single comment with a reply gets no rule at all', () {
-      final one = buildThreadLayout(
-        [c('a'), c('b', parent: 'a')],
-        collapseAfter: all,
-      ).rows;
+      final one = buildThreadLayout([
+        c('a'),
+        c('b', parent: 'a'),
+      ], collapseAfter: all)
+          .rows;
 
       expect(one.every((r) => !endsBranch(one, one.indexOf(r))), isTrue);
     });

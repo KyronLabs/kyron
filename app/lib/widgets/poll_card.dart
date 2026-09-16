@@ -13,6 +13,7 @@ import '../providers/feed_provider.dart';
 import '../repositories/feed_repository.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import '../l10n/app_localizations.dart';
 import 'answer_shape.dart';
 import 'toast.dart';
 
@@ -119,15 +120,11 @@ class _PollCardState extends ConsumerState<PollCard> {
     );
   }
 
-  Future<void> _vote(String optionId) => _run(
-        optionId,
-        (repo) => repo.voteOnPoll(widget.postId, optionId),
-      );
+  Future<void> _vote(String optionId) =>
+      _run(optionId, (repo) => repo.voteOnPoll(widget.postId, optionId));
 
-  Future<void> _retract(String optionId) => _run(
-        optionId,
-        (repo) => repo.retractVote(widget.postId),
-      );
+  Future<void> _retract(String optionId) =>
+      _run(optionId, (repo) => repo.retractVote(widget.postId));
 
   Future<void> _run(
     String optionId,
@@ -220,10 +217,8 @@ class _Option extends StatelessWidget {
                 tween: Tween<double>(end: share),
                 duration: MotionTokens.normal,
                 curve: Curves.easeOutCubic,
-                builder: (context, value, child) => ClipRect(
-                  clipper: _FillClipper(value),
-                  child: child,
-                ),
+                builder: (context, value, child) =>
+                    ClipRect(clipper: _FillClipper(value), child: child),
                 child: ColoredBox(
                   color: scheme.onSurface,
                   child: _Row(

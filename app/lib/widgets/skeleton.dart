@@ -119,10 +119,8 @@ class _SkeletonGroupState extends State<SkeletonGroup>
   }
 
   @override
-  Widget build(BuildContext context) => _SkeletonTicker(
-        animation: _controller,
-        child: widget.child,
-      );
+  Widget build(BuildContext context) =>
+      _SkeletonTicker(animation: _controller, child: widget.child);
 }
 
 class _SkeletonTicker extends InheritedWidget {
@@ -460,10 +458,7 @@ class _CommunitySkeleton extends StatelessWidget {
         child: Row(
           children: [
             const SkeletonBox(
-              width: 48,
-              height: 48,
-              radius: RadiusTokens.radiusMd,
-            ),
+                width: 48, height: 48, radius: RadiusTokens.radiusMd),
             const SizedBox(width: SpacingTokens.space12),
             Expanded(
               child: Column(
@@ -565,9 +560,7 @@ class SkeletonClip extends StatelessWidget {
     // Fixed tones rather than the scheme's: this screen is black whatever the
     // theme is, so a skeleton drawn from `onSurface` is invisible on it in
     // light mode.
-    return const SkeletonGroup(
-      child: _ClipBody(),
-    );
+    return const SkeletonGroup(child: _ClipBody());
   }
 }
 
@@ -595,8 +588,9 @@ class _ClipBody extends StatelessWidget {
                       index < SkeletonClip._railButtons;
                       index++)
                     const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: SpacingTokens.space8),
+                      padding: EdgeInsets.symmetric(
+                        vertical: SpacingTokens.space8,
+                      ),
                       child: _OnBlack(child: SkeletonBox.circle(size: 36)),
                     ),
                 ],
@@ -672,9 +666,6 @@ class _TagSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Padding(
         padding: EdgeInsets.only(bottom: SpacingTokens.space8),
-        child: SkeletonBox(
-          height: 44,
-          radius: RadiusTokens.radius12,
-        ),
+        child: SkeletonBox(height: 44, radius: RadiusTokens.radius12),
       );
 }

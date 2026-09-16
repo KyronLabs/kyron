@@ -114,7 +114,7 @@ void main() {
       final repo = _FakeCommunities(
         mineRows: [
           _community('a', joined: true),
-          _community('b', joined: true)
+          _community('b', joined: true),
         ],
       );
       final notifier = MyCommunitiesNotifier(repo);

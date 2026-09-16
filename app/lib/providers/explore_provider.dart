@@ -19,11 +19,7 @@ class ExploreList<T> {
   final bool loading;
   final String? error;
 
-  const ExploreList({
-    this.items = const [],
-    this.loading = true,
-    this.error,
-  });
+  const ExploreList({this.items = const [], this.loading = true, this.error});
 
   bool get isEmpty => !loading && error == null && items.isEmpty;
 }
@@ -225,5 +221,6 @@ class SuggestedPeopleNotifier extends StateNotifier<SuggestedPeopleState> {
 final suggestedPeopleProvider =
     StateNotifierProvider<SuggestedPeopleNotifier, SuggestedPeopleState>((ref) {
   return SuggestedPeopleNotifier(
-      ProfileRepository(ref.read(apiClientProvider)));
+    ProfileRepository(ref.read(apiClientProvider)),
+  );
 });

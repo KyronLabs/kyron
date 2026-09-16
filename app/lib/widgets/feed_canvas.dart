@@ -25,11 +25,7 @@ class FeedCanvas extends ConsumerWidget {
   /// a drag, and the content stopped tracking the finger.
   final double topInset;
 
-  const FeedCanvas({
-    super.key,
-    this.scrollController,
-    this.topInset = 0,
-  });
+  const FeedCanvas({super.key, this.scrollController, this.topInset = 0});
 
   /// Height of the fade under the tab strip, in logical pixels.
   ///

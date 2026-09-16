@@ -87,8 +87,10 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
 
     state = state.copyWith(loadingMore: true);
     try {
-      final page =
-          await _repo.conversations(cursor: cursor, unreadOnly: unreadOnly);
+      final page = await _repo.conversations(
+        cursor: cursor,
+        unreadOnly: unreadOnly,
+      );
       state = state.copyWith(
         items: [...state.items, ...page.items],
         cursor: page.nextCursor,
@@ -259,11 +261,13 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
         continue;
       }
       final plain = await _vault.open(message.body, _conversationId);
-      opened.add(message.copyWith(
-        body: plain ?? 'This message cannot be read on this device.',
-        encrypted: true,
-        unreadable: plain == null,
-      ));
+      opened.add(
+        message.copyWith(
+          body: plain ?? 'This message cannot be read on this device.',
+          encrypted: true,
+          unreadable: plain == null,
+        ),
+      );
     }
     return opened;
   }
@@ -386,7 +390,9 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       );
     } catch (_) {
       _replace(
-          placeholder.id, placeholder.copyWith(sending: false, failed: true));
+        placeholder.id,
+        placeholder.copyWith(sending: false, failed: true),
+      );
     }
   }
 
@@ -483,9 +489,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
 
   void _replace(String id, DirectMessage next) {
     state = state.copyWith(
-      messages: [
-        for (final m in state.messages) m.id == id ? next : m,
-      ],
+      messages: [for (final m in state.messages) m.id == id ? next : m],
     );
   }
 

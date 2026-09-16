@@ -44,9 +44,12 @@ void main() {
     // hand here were not on it -- 10, 12, 14, 17, 18, 22 -- so text a point
     // or two off matched nothing else on the screen. There were 175.
     final found = offences(RegExp(r'fontSize:\s*\d'));
-    expect(found, isEmpty,
-        reason: 'a font size is set from a number rather than '
-            'TypographyTokens:\n${found.join('\n')}');
+    expect(
+      found,
+      isEmpty,
+      reason: 'a font size is set from a number rather than '
+          'TypographyTokens:\n${found.join('\n')}',
+    );
   });
 
   test('the browser draws outlines', () {
@@ -69,9 +72,12 @@ void main() {
             ];
           }(),
     ];
-    expect(filled, isEmpty,
-        reason: 'a filled Iconsax glyph is back in the browser:\n'
-            '${filled.join('\n')}');
+    expect(
+      filled,
+      isEmpty,
+      reason: 'a filled Iconsax glyph is back in the browser:\n'
+          '${filled.join('\n')}',
+    );
   });
 
   test('top bars go through KyronAppBar', () {
@@ -85,9 +91,12 @@ void main() {
     // `SimpleAppBar` and `TopEdge` are not Material app bars at all; they are
     // Containers, and never had the tint.
     final found = offences(RegExp(r'appBar:\s*(const\s+)?AppBar\('));
-    expect(found, isEmpty,
-        reason: 'a screen builds a Material AppBar directly instead of '
-            'KyronAppBar:\n${found.join('\n')}');
+    expect(
+      found,
+      isEmpty,
+      reason: 'a screen builds a Material AppBar directly instead of '
+          'KyronAppBar:\n${found.join('\n')}',
+    );
   });
 
   test('icons come from Iconsax, not Material', () {
@@ -95,7 +104,10 @@ void main() {
     // glyph next to an Iconsax one is the most visible kind of drift: two
     // different drawing styles in the same row.
     final found = offences(RegExp(r'\bIcons\.[a-z_0-9]+'));
-    expect(found, isEmpty,
-        reason: 'a Material icon is still in use:\n${found.join('\n')}');
+    expect(
+      found,
+      isEmpty,
+      reason: 'a Material icon is still in use:\n${found.join('\n')}',
+    );
   });
 }

@@ -11,11 +11,7 @@ class TrendingTag {
   /// How many of those are from the last few days. What ranked it.
   final int recent;
 
-  const TrendingTag({
-    required this.tag,
-    this.posts = 0,
-    this.recent = 0,
-  });
+  const TrendingTag({required this.tag, this.posts = 0, this.recent = 0});
 
   factory TrendingTag.fromJson(Map<String, dynamic> json) => TrendingTag(
         tag: json['tag'] as String? ?? '',

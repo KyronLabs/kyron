@@ -50,18 +50,20 @@ class _Page extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(children: [
-                Container(
-                  width: 34,
-                  height: 34,
-                  decoration: BoxDecoration(
-                    color: ink.withValues(alpha: 0.12),
-                    shape: BoxShape.circle,
+              Row(
+                children: [
+                  Container(
+                    width: 34,
+                    height: 34,
+                    decoration: BoxDecoration(
+                      color: ink.withValues(alpha: 0.12),
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                bar(120, 10, 0.55),
-              ]),
+                  const SizedBox(width: 10),
+                  bar(120, 10, 0.55),
+                ],
+              ),
               const SizedBox(height: 12),
               bar(double.infinity, 9, 0.28),
               bar(520, 9, 0.28),
@@ -92,12 +94,14 @@ void main() {
     Directory(out).createSync(recursive: true);
     for (final family in ['Inter', 'Roboto']) {
       final loader = FontLoader(family)
-        ..addFont(Future.value(
-          File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
-              .readAsBytesSync()
-              .buffer
-              .asByteData(),
-        ));
+        ..addFont(
+          Future.value(
+            File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+                .readAsBytesSync()
+                .buffer
+                .asByteData(),
+          ),
+        );
       await loader.load();
     }
 
@@ -122,7 +126,7 @@ void main() {
     for (final dark in [false, true]) {
       for (final index in [
         NavDestinations.home.index,
-        NavDestinations.messages.index
+        NavDestinations.messages.index,
       ]) {
         await tester.pumpWidget(
           RepaintBoundary(

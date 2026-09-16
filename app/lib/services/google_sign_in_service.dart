@@ -72,8 +72,9 @@ class GoogleSignInService {
   /// truth -- the id of the *web* OAuth client, which is what the ID token is
   /// minted for. Empty on Android with a complete `google-services.json`,
   /// which is the intended shape.
-  static const String serverClientId =
-      String.fromEnvironment('GOOGLE_SERVER_CLIENT_ID');
+  static const String serverClientId = String.fromEnvironment(
+    'GOOGLE_SERVER_CLIENT_ID',
+  );
 
   /// Why the browser is being used, when it is. Null while nothing has been
   /// tried, and cleared on a successful native sign-in.

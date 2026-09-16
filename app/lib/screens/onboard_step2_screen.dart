@@ -4,13 +4,17 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/onboarding_model.dart';
 import '../repositories/auth_repository.dart';
 import '../routes.dart';
+
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../utils/api_error_message.dart';
 import '../widgets/app_button.dart';
 import '../widgets/gradient_scaffold.dart';
 import '../services/profile_service.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/kyron_app_bar.dart';
+
+import '../l10n/app_localizations.dart';
 
 /// One row of the `interests` table. The screen shows [name] and sends [slug]:
 /// the API matches submitted values against slug, so sending the display label
@@ -164,14 +168,11 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
 
     return GradientScaffold(
       appBar: KyronAppBar(
-        title: const Text('Pick your interests'),
+        title: Text(AppLocalizations.of(context).pickYourInterests),
         actions: [
           TextButton(
             onPressed: _isLoading ? null : _skip,
-            child: const Text(
-              'Skip',
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
+            child: Text('Skip', style: TextStyle(fontWeight: FontWeight.w500)),
           ),
           const SizedBox(width: 8),
         ],
@@ -209,7 +210,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
 
   Widget _buildOptions(ColorScheme scheme, bool isDark) {
     if (_isLoadingOptions) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(child: CircularProgressIndicator());
     }
 
     if (_loadError != null) {
@@ -219,18 +220,21 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
           children: [
             Text(_loadError!, textAlign: TextAlign.center),
             const SizedBox(height: 16),
-            TextButton(onPressed: _loadInterests, child: const Text('Retry')),
+            TextButton(
+              onPressed: _loadInterests,
+              child: Text(AppLocalizations.of(context).retry),
+            ),
           ],
         ),
       );
     }
 
     if (_options.isEmpty) {
-      return const Center(
+      return Center(
         child: EmptyState(
           compact: true,
           art: EmptyArt.topics,
-          title: 'No interests yet',
+          title: AppLocalizations.of(context).literalnoInterestsYet,
           detail: 'Kyron has not published any to pick from. Skip this step '
               'and set them later from your profile.',
         ),

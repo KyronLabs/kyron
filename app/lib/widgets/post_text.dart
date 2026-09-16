@@ -5,6 +5,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../routes.dart';
 import 'post_action_colors.dart';
 import '../services/app_browser.dart';
+import '../l10n/app_localizations.dart';
 
 /// A post's text, with its hashtags, mentions and links picked out.
 ///
@@ -93,9 +94,7 @@ class _PostTextState extends State<PostText> {
     _recognizers.clear();
 
     return Text.rich(
-      TextSpan(
-        children: _spans(context, base, scheme),
-      ),
+      TextSpan(children: _spans(context, base, scheme)),
       maxLines: widget.maxLines,
       overflow:
           widget.maxLines == null ? TextOverflow.clip : TextOverflow.ellipsis,
@@ -120,7 +119,9 @@ class _PostTextState extends State<PostText> {
       if (match.start > last) {
         spans.add(
           TextSpan(
-              text: widget.content.substring(last, match.start), style: base),
+            text: widget.content.substring(last, match.start),
+            style: base,
+          ),
         );
       }
 
@@ -159,13 +160,19 @@ class _PostTextState extends State<PostText> {
 
   Future<void> _open(BuildContext context, String token) async {
     if (token.startsWith('#')) {
-      Navigator.pushNamed(context, Routes.hashtag,
-          arguments: token.substring(1));
+      Navigator.pushNamed(
+        context,
+        Routes.hashtag,
+        arguments: token.substring(1),
+      );
       return;
     }
     if (token.startsWith('@')) {
-      Navigator.pushNamed(context, Routes.profile,
-          arguments: token.substring(1));
+      Navigator.pushNamed(
+        context,
+        Routes.profile,
+        arguments: token.substring(1),
+      );
       return;
     }
 

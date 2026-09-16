@@ -1,5 +1,6 @@
 // lib/widgets/community_tile.dart
 import 'community_avatar.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import '../models/community.dart';
 import '../providers/communities_provider.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import '../l10n/app_localizations.dart';
 import 'action_button.dart';
 import 'toast.dart';
 

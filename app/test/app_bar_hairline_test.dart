@@ -38,8 +38,11 @@ void main() {
   testWidgets('no line at the top of the page', (tester) async {
     await tester.pumpWidget(host());
     await tester.pumpAndSettle();
-    expect(lineOpacity(tester), 0,
-        reason: 'a bar over the top of a page needs no edge');
+    expect(
+      lineOpacity(tester),
+      0,
+      reason: 'a bar over the top of a page needs no edge',
+    );
   });
 
   testWidgets('a line once the page has scrolled under it', (tester) async {
@@ -49,8 +52,11 @@ void main() {
     await tester.drag(find.byType(ListView), const Offset(0, -300));
     await tester.pumpAndSettle();
 
-    expect(lineOpacity(tester), 1,
-        reason: 'nothing separates the bar from the rows running under it');
+    expect(
+      lineOpacity(tester),
+      1,
+      reason: 'nothing separates the bar from the rows running under it',
+    );
   });
 
   testWidgets('and it goes again when the page comes back', (tester) async {
@@ -82,8 +88,9 @@ void main() {
     expect(tester.getSize(find.byType(AppBar)), before);
   });
 
-  testWidgets('the line sits under the screen\'s own bottom, not in it',
-      (tester) async {
+  testWidgets('the line sits under the screen\'s own bottom, not in it', (
+    tester,
+  ) async {
     await tester.pumpWidget(
       host(
         bottom: const PreferredSize(
@@ -108,9 +115,15 @@ void main() {
     final line = tester.getRect(find.byType(Hairline));
     final pager = tester.getRect(find.text('pager'));
 
-    expect(line.bottom, closeTo(header.bottom, 0.01),
-        reason: 'the line is not on the header\'s bottom edge');
-    expect(line.top, greaterThanOrEqualTo(pager.top),
-        reason: 'the line is above the pager, splitting the header in two');
+    expect(
+      line.bottom,
+      closeTo(header.bottom, 0.01),
+      reason: 'the line is not on the header\'s bottom edge',
+    );
+    expect(
+      line.top,
+      greaterThanOrEqualTo(pager.top),
+      reason: 'the line is above the pager, splitting the header in two',
+    );
   });
 }

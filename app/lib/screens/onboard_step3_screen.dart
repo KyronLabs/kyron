@@ -11,6 +11,8 @@ import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/kyron_app_bar.dart';
 
+import '../l10n/app_localizations.dart';
+
 class OnboardStep3Screen extends ConsumerStatefulWidget {
   final OnboardingModel model;
   const OnboardStep3Screen({super.key, required this.model});
@@ -115,8 +117,8 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KyronAppBar(
-        title: const Text("Discover people"),
-        actions: [TextButton(onPressed: _finish, child: const Text("Skip"))],
+        title: Text(AppLocalizations.of(context).literaldiscoverPeople),
+        actions: [TextButton(onPressed: _finish, child: Text("Skip"))],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -134,8 +136,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
             const SizedBox(height: 20),
 
             /* ---------- Loading State ---------- */
-            if (_loadingSuggestions)
-              const Center(child: CircularProgressIndicator()),
+            if (_loadingSuggestions) Center(child: CircularProgressIndicator()),
 
             /* ---------- Suggestions Grid ---------- */
             if (!_loadingSuggestions)
@@ -178,7 +179,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
                 onPressed: _finish,
                 child: _finishing
                     ? const CircularProgressIndicator()
-                    : const Text("Finish"),
+                    : Text("Finish"),
               ),
             ),
           ],

@@ -36,8 +36,9 @@ Future<ProviderContainer> _pump(
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
-        topicsProvider
-            .overrideWith((ref) => TopicsNotifier(_FakeProfile(catalogue))),
+        topicsProvider.overrideWith(
+          (ref) => TopicsNotifier(_FakeProfile(catalogue)),
+        ),
       ],
       child: const MaterialApp(
         home: Scaffold(body: Center(child: TopicPicker())),
@@ -49,9 +50,7 @@ Future<ProviderContainer> _pump(
   // it could not read one -- and the log's flush is a two-second timer the
   // test framework will otherwise report as still pending.
   await tester.pump(const Duration(seconds: 3));
-  return ProviderScope.containerOf(
-    tester.element(find.byType(TopicPicker)),
-  );
+  return ProviderScope.containerOf(tester.element(find.byType(TopicPicker)));
 }
 
 void main() {

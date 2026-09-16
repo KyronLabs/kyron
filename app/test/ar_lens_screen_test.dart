@@ -34,8 +34,9 @@ void main() {
   setUp(() => temp = Directory.systemTemp.createTempSync('ar'));
   tearDown(() => temp.deleteSync(recursive: true));
 
-  testWidgets('says so on a device with no camera, rather than spinning',
-      (tester) async {
+  testWidgets('says so on a device with no camera, rather than spinning', (
+    tester,
+  ) async {
     // The state a tablet without one lands in. A viewfinder that never
     // arrives reads as the app having hung.
     await tester.pumpWidget(screen(const [], temp));
@@ -60,8 +61,9 @@ void main() {
     expect(find.text(Lens.builtIn.first.name), findsOneWidget);
   });
 
-  testWidgets('keeps the shutter inert while there is no camera',
-      (tester) async {
+  testWidgets('keeps the shutter inert while there is no camera', (
+    tester,
+  ) async {
     // Tapping it would take a picture with nothing to take it from.
     await tester.pumpWidget(screen(const [], temp));
     await tester.pump();
@@ -73,8 +75,9 @@ void main() {
     expect(find.text('The camera is closed'), findsOneWidget);
   });
 
-  testWidgets('does not offer to switch when there is only one camera',
-      (tester) async {
+  testWidgets('does not offer to switch when there is only one camera', (
+    tester,
+  ) async {
     await tester.pumpWidget(screen(const [], temp));
     await tester.pump();
 
@@ -114,20 +117,23 @@ void main() {
     expect(find.text('None'), findsNothing);
   });
 
-  testWidgets('writes the top bar in white, under either theme',
-      (tester) async {
+  testWidgets('writes the top bar in white, under either theme', (
+    tester,
+  ) async {
     // The bar sits on black. The design system's AppBarTheme sets
     // titleTextStyle and iconTheme, and a theme's colours beat the widget's
     // foregroundColor -- so under the light theme this screen drew near-black
     // text and a near-black back arrow on a black bar, and the top of the
     // screen was blank.
     for (final theme in [KyronTheme.lightTheme, KyronTheme.darkTheme]) {
-      await tester.pumpWidget(ProviderScope(
-        child: MaterialApp(
-          theme: theme,
-          home: ArLensScreen(cameras: const [], catalogue: offline(temp)),
+      await tester.pumpWidget(
+        ProviderScope(
+          child: MaterialApp(
+            theme: theme,
+            home: ArLensScreen(cameras: const [], catalogue: offline(temp)),
+          ),
         ),
-      ));
+      );
       await tester.pump();
 
       // What actually gets painted, first: an AppBar that sets only
@@ -135,9 +141,9 @@ void main() {
       // wins, which is the bug and is invisible to any check of the widget's
       // own fields.
       final title = tester.widget<Text>(find.text('AR Lens'));
-      final painted = DefaultTextStyle.of(
-        tester.element(find.text('AR Lens')),
-      ).style.merge(title.style);
+      final painted = DefaultTextStyle.of(tester.element(find.text('AR Lens')))
+          .style
+          .merge(title.style);
       expect(painted.color, Colors.white, reason: '$theme');
 
       final bar = tester.widget<AppBar>(find.byType(AppBar));

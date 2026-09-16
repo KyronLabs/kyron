@@ -13,8 +13,10 @@ import '../services/app_browser.dart';
 /// A `.family` keyed on the URL, so the same link in the feed, in the post
 /// screen and in the composer is one request rather than three -- and so
 /// scrolling a post off screen and back does not fetch it again.
-final linkPreviewProvider =
-    FutureProvider.family<LinkPreview?, String>((ref, url) async {
+final linkPreviewProvider = FutureProvider.family<LinkPreview?, String>((
+  ref,
+  url,
+) async {
   // Held after the last listener goes, so returning to a post does not refetch
   // a card that has not changed.
   ref.keepAlive();
@@ -93,8 +95,7 @@ class _Card extends StatelessWidget {
                             progress == null
                                 ? child
                                 : ColoredBox(
-                                    color: scheme.surfaceContainerHighest,
-                                  ),
+                                    color: scheme.surfaceContainerHighest),
                       ),
                     ),
                     Padding(
@@ -214,9 +215,10 @@ class _Text extends StatelessWidget {
             maxLines: maxDescriptionLines,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-                fontSize: TypographyTokens.fontSize1,
-                height: 1.3,
-                color: muted),
+              fontSize: TypographyTokens.fontSize1,
+              height: 1.3,
+              color: muted,
+            ),
           ),
         ],
       ],

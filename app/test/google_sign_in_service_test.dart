@@ -94,7 +94,9 @@ void main() {
     GoogleSignInPlatform.instance = second;
     await service().signIn();
 
-    expect(first.initialisedWith?.nonce,
-        isNot(equals(second.initialisedWith?.nonce)));
+    expect(
+      first.initialisedWith?.nonce,
+      isNot(equals(second.initialisedWith?.nonce)),
+    );
   });
 }

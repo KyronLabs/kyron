@@ -132,8 +132,12 @@ abstract final class OriginMark {
     final hue = (hash % 360).toDouble();
     // Held away from both ends of lightness so the letter on top stays legible
     // in either theme.
-    return HSLColor.fromAHSL(1, hue, dark ? 0.42 : 0.52, dark ? 0.52 : 0.46)
-        .toColor();
+    return HSLColor.fromAHSL(
+      1,
+      hue,
+      dark ? 0.42 : 0.52,
+      dark ? 0.52 : 0.46,
+    ).toColor();
   }
 
   /// The letter to draw in it.
