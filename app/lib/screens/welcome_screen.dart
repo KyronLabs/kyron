@@ -17,6 +17,7 @@ import '../widgets/app_language_selector.dart';
 import '../widgets/get_started_art.dart';
 import '../widgets/google_button.dart';
 import '../widgets/terms_gate.dart';
+import '../l10n/app_localizations.dart';
 
 /// The first screen anybody sees, and for most people the only one they will
 /// ever judge Kyron by.
@@ -136,7 +137,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
   void _sayFailed(Object error) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Could not open Google sign-in. $error'),
+        content: Text(AppLocalizations.of(context).couldNotOpenGoogleSignIn(error.toString())),
         backgroundColor: KyronTheme.errorPink,
         duration: const Duration(seconds: 6),
       ),
@@ -179,7 +180,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Google sign-in needs the phone app',
+                          AppLocalizations.of(context).googleSignInNeedsPhoneApp,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize5,
                             fontWeight: FontWeight.w700,
@@ -188,14 +189,8 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                         ),
                         const SizedBox(height: SpacingTokens.space12),
                         Text(
-                          'Google hands the finished sign-in back to Kyron '
-                          'over a link only Android and iOS answer, so on '
-                          '$platform the browser would have nowhere to return '
-                          'it to.\n\n'
-                          'If you already have a Kyron account through Google, '
-                          'use Continue with email with that same address and '
-                          'tap Forgot password — it will mail you a link to '
-                          'set one.',
+                          AppLocalizations.of(context)
+                              .googleSignInDesktopExplanation(platform),
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize2,
                             height: 1.5,
@@ -216,7 +211,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                       Navigator.pop(context);
                       Navigator.of(context).pushNamed(Routes.signup);
                     },
-                    child: const Text('Continue with email'),
+                    child: Text(AppLocalizations.of(context).continueWithEmail),
                   ),
                 ),
               ],
@@ -358,7 +353,7 @@ class _Sheet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    'Post it, say it, show it.',
+                    AppLocalizations.of(context).postItSayItShowIt,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: TypographyTokens.fontSize7,
@@ -370,8 +365,7 @@ class _Sheet extends StatelessWidget {
                   ),
                   const SizedBox(height: SpacingTokens.space12),
                   Text(
-                    'Text, voice and video, the people who make them, and the '
-                    'rooms they talk in.',
+                    AppLocalizations.of(context).textVoiceVideoPeopleRooms,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: TypographyTokens.fontSize3,
@@ -386,7 +380,7 @@ class _Sheet extends StatelessWidget {
                   ),
                   const SizedBox(height: SpacingTokens.space12),
                   AppButton(
-                    label: 'Continue with email',
+                    label: AppLocalizations.of(context).continueWithEmail,
                     icon: Iconsax.sms,
                     onTap: onEmail,
                     enabled: busy == null,
@@ -396,7 +390,7 @@ class _Sheet extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Already on Kyron?',
+                        AppLocalizations.of(context).alreadyOnKyron,
                         style: TextStyle(
                           fontSize: TypographyTokens.fontSize2,
                           color: quiet,
@@ -411,7 +405,7 @@ class _Sheet extends StatelessWidget {
                             horizontal: SpacingTokens.space8,
                           ),
                         ),
-                        child: const Text('Log in'),
+                        child: Text(AppLocalizations.of(context).logIn),
                       ),
                     ],
                   ),
@@ -425,7 +419,7 @@ class _Sheet extends StatelessWidget {
                     child: TextButton(
                       onPressed: () => onTerms(),
                       child: Text(
-                        'By continuing you agree to our Terms and Privacy Policy',
+                        AppLocalizations.of(context).byContinuingAgreeTermsPrivacy,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: TypographyTokens.fontSize1,

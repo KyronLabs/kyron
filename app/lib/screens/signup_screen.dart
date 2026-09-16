@@ -14,6 +14,7 @@ import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 import '../utils/validators.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../l10n/app_localizations.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -61,7 +62,7 @@ class _SignupScreenState extends State<SignupScreen> {
       if (res == null) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Check your email to confirm your account.'),
+            content: Text(AppLocalizations.of(context).checkEmailConfirm),
           ),
         );
         Navigator.pushNamedAndRemoveUntil(
@@ -75,7 +76,7 @@ class _SignupScreenState extends State<SignupScreen> {
       Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
     } catch (err) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Signup failed: ${describeApiError(err)}')),
+        SnackBar(content: Text('${AppLocalizations.of(context).signupFailed(describeApiError(err))}')),
       );
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -85,7 +86,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KyronAppBar(title: const Text('Create your account')),
+      appBar: KyronAppBar(title: Text(AppLocalizations.of(context).createYourAccount)),
       body: Padding(
         padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Form(
@@ -97,7 +98,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
               // USERNAME
               AppInputField(
-                hint: 'Username',
+                hint: AppLocalizations.of(context).username,
                 prefixText: '@',
                 controller: _username,
                 inputFormatters: [
@@ -106,7 +107,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 validator: (v) {
                   if (v?.isEmpty ?? true) return null; // allow empty username
                   if (!RegExp(r'^[a-z0-9_]+$').hasMatch(v!)) {
-                    return 'Username must be lowercase (a-z, 0-9, _)';
+                    return AppLocalizations.of(context).usernameRule;
                   }
                   return null;
                 },
@@ -116,7 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
               // EMAIL
               AppInputField(
-                hint: 'Email',
+                hint: AppLocalizations.of(context).email,
                 controller: _email,
                 keyboardType: TextInputType.emailAddress,
                 validator: Validators.email,
@@ -128,7 +129,7 @@ class _SignupScreenState extends State<SignupScreen> {
               PasswordInputField(
                 controller: _password,
                 validator: (v) =>
-                    (v?.length ?? 0) < 8 ? 'Password too short' : null,
+                    (v?.length ?? 0) < 8 ? AppLocalizations.of(context).passwordTooShort : null,
                 onChanged: (_) => setState(() {}),
               ),
 
@@ -139,7 +140,7 @@ class _SignupScreenState extends State<SignupScreen> {
               const SizedBox(height: 16),
 
               AppButton(
-                label: 'Continue',
+                label: AppLocalizations.of(context).continueAction,
                 onTap: _submit,
                 isLoading: _isLoading,
               ),
@@ -150,11 +151,11 @@ class _SignupScreenState extends State<SignupScreen> {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: "By signing up you agree to our ",
+                  text: AppLocalizations.of(context).bySigningUpAgreeTerms + ' ',,
                   style: Theme.of(context).textTheme.bodyMedium,
                   children: [
                     TextSpan(
-                      text: "Terms",
+                      text: AppLocalizations.of(context).terms,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: KyronTheme.accent,
                             decoration: TextDecoration.underline,
@@ -166,11 +167,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         },
                     ),
                     TextSpan(
-                      text: " and ",
+                      text: ' ${AppLocalizations.of(context).and} ',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     TextSpan(
-                      text: "Privacy Policy",
+                      text: AppLocalizations.of(context).privacyPolicy,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: KyronTheme.accent,
                             decoration: TextDecoration.underline,
