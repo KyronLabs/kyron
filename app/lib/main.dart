@@ -9,6 +9,7 @@ import 'services/platform_support.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'l10n/app_localizations.dart';
 import 'models/app_theme.dart';
 import 'models/language.dart';
 import 'routes.dart';
@@ -328,6 +329,7 @@ class _KyronAppState extends ConsumerState<KyronApp> {
       locale: language.locale,
       supportedLocales: [for (final l in Languages.all) l.locale],
       localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
