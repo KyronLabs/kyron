@@ -113,8 +113,9 @@ class _Tile extends StatelessWidget {
                       Text(
                         'Retry',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: TypographyTokens.fontSize1),
+                          color: Colors.white,
+                          fontSize: TypographyTokens.fontSize1,
+                        ),
                       ),
                     ],
                   ),
@@ -137,8 +138,10 @@ class _Tile extends StatelessWidget {
               child: GestureDetector(
                 onTap: onDescribe,
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.black.withValues(alpha: 0.65),
                     borderRadius: BorderRadius.circular(RadiusTokens.radius4),
@@ -216,11 +219,7 @@ class _Tile extends StatelessWidget {
               ),
               child: Padding(
                 padding: EdgeInsets.all(4),
-                child: Icon(
-                  Iconsax.play,
-                  size: 18,
-                  color: Colors.white,
-                ),
+                child: Icon(Iconsax.play, size: 18, color: Colors.white),
               ),
             ),
           ),
@@ -234,11 +233,7 @@ class _Chip extends StatelessWidget {
   final String tooltip;
   final VoidCallback onTap;
 
-  const _Chip({
-    required this.icon,
-    required this.tooltip,
-    required this.onTap,
-  });
+  const _Chip({required this.icon, required this.tooltip, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

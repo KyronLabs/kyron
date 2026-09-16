@@ -4,11 +4,8 @@ import 'package:kyron_app/providers/composer_provider.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/services/device_cache.dart';
 
-ComposerState state(String content, {bool isPosting = false}) => ComposerState(
-      content: content,
-      isPosting: isPosting,
-      placeholderText: '',
-    );
+ComposerState state(String content, {bool isPosting = false}) =>
+    ComposerState(content: content, isPosting: isPosting, placeholderText: '');
 
 void main() {
   group('ComposerState', () {
@@ -55,10 +52,7 @@ void main() {
     test('two sources for the same author are the same provider key', () {
       // Riverpod families key on equality; without it every rebuild would
       // create a fresh, empty provider for the same profile.
-      expect(
-        PostListSource.author('u1'),
-        equals(PostListSource.author('u1')),
-      );
+      expect(PostListSource.author('u1'), equals(PostListSource.author('u1')));
       expect(
         PostListSource.author('u1').hashCode,
         PostListSource.author('u1').hashCode,
@@ -67,7 +61,9 @@ void main() {
 
     test('different authors and different lists stay apart', () {
       expect(
-          PostListSource.author('u1') == PostListSource.author('u2'), isFalse);
+        PostListSource.author('u1') == PostListSource.author('u2'),
+        isFalse,
+      );
       expect(PostListSource.liked == PostListSource.saved, isFalse);
       expect(PostListSource.recent == PostListSource.liked, isFalse);
     });

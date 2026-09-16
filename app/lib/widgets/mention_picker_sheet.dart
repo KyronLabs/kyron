@@ -61,8 +61,9 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
   /// typing" rather than firing a request the API answers with a 400.
   static const _minimum = SearchState.minimumQueryLength;
 
-  late final TextEditingController _query =
-      TextEditingController(text: widget.initialQuery);
+  late final TextEditingController _query = TextEditingController(
+    text: widget.initialQuery,
+  );
   final _focus = FocusNode();
 
   Timer? _pending;
@@ -168,9 +169,7 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
 
     return Padding(
       // Above the keyboard, which is up the whole time this is open.
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.viewInsetsOf(context).bottom,
-      ),
+      padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
       child: SizedBox(
         height: MediaQuery.sizeOf(context).height * 0.7,
         child: Column(
@@ -203,14 +202,18 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
                     onSubmitted: (_) => _run(immediate: true),
                     decoration: InputDecoration(
                       hintText: 'Search by name or handle',
-                      prefixIcon:
-                          const Icon(Iconsax.search_normal_1_copy, size: 18),
+                      prefixIcon: const Icon(
+                        Iconsax.search_normal_1_copy,
+                        size: 18,
+                      ),
                       filled: true,
-                      fillColor:
-                          scheme.surfaceContainerHighest.withValues(alpha: 0.5),
+                      fillColor: scheme.surfaceContainerHighest.withValues(
+                        alpha: 0.5,
+                      ),
                       border: OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(RadiusTokens.radiusMd),
+                        borderRadius: BorderRadius.circular(
+                          RadiusTokens.radiusMd,
+                        ),
                         borderSide: BorderSide.none,
                       ),
                       contentPadding: const EdgeInsets.symmetric(

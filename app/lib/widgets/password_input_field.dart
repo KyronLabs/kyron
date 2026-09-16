@@ -59,10 +59,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       decoration: InputDecoration(
         labelText: widget.label,
         hintText: widget.hint,
-        suffixIconConstraints: const BoxConstraints(
-          minWidth: 40,
-          minHeight: 0,
-        ),
+        suffixIconConstraints: const BoxConstraints(minWidth: 40, minHeight: 0),
         suffixIcon: Padding(
           padding: const EdgeInsets.only(right: 6),
           child: IconButton(

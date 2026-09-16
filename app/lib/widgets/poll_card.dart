@@ -71,13 +71,13 @@ class _PollCardState extends ConsumerState<PollCard> {
                 onVote: _voting != null || poll.closed
                     ? null
                     : poll.votedOptionId == option.id
-                        ? () => _retract(option.id)
-                        : poll.hasVoted
-                            // Not inert, and not a second vote either: a row
-                            // that does nothing when tapped is worse than one
-                            // that says why it will not.
-                            ? _explainSwitch
-                            : () => _vote(option.id),
+                    ? () => _retract(option.id)
+                    : poll.hasVoted
+                    // Not inert, and not a second vote either: a row
+                    // that does nothing when tapped is worse than one
+                    // that says why it will not.
+                    ? _explainSwitch
+                    : () => _vote(option.id),
               ),
             ),
           // One line of text rather than three in a row: three of them ran off
@@ -119,15 +119,11 @@ class _PollCardState extends ConsumerState<PollCard> {
     );
   }
 
-  Future<void> _vote(String optionId) => _run(
-        optionId,
-        (repo) => repo.voteOnPoll(widget.postId, optionId),
-      );
+  Future<void> _vote(String optionId) =>
+      _run(optionId, (repo) => repo.voteOnPoll(widget.postId, optionId));
 
-  Future<void> _retract(String optionId) => _run(
-        optionId,
-        (repo) => repo.retractVote(widget.postId),
-      );
+  Future<void> _retract(String optionId) =>
+      _run(optionId, (repo) => repo.retractVote(widget.postId));
 
   Future<void> _run(
     String optionId,
@@ -220,10 +216,8 @@ class _Option extends StatelessWidget {
                 tween: Tween<double>(end: share),
                 duration: MotionTokens.normal,
                 curve: Curves.easeOutCubic,
-                builder: (context, value, child) => ClipRect(
-                  clipper: _FillClipper(value),
-                  child: child,
-                ),
+                builder: (context, value, child) =>
+                    ClipRect(clipper: _FillClipper(value), child: child),
                 child: ColoredBox(
                   color: scheme.onSurface,
                   child: _Row(

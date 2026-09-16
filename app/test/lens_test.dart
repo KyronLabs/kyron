@@ -69,8 +69,10 @@ void main() {
     test('Mono makes grey, weighted the way the eye sees', () async {
       // Not a third each: green carries most of the brightness, and an even
       // split makes a grey that reads as muddy.
-      final out =
-          await renderer.apply(await pixel(255, 0, 0), Lens.byId('mono'));
+      final out = await renderer.apply(
+        await pixel(255, 0, 0),
+        Lens.byId('mono'),
+      );
 
       final rgba = await readPixel(out);
       expect(rgba[0], rgba[1]);

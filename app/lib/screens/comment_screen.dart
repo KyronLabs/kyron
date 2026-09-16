@@ -122,11 +122,8 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
       ) ??
       false;
 
-  void _open(PostComment comment) => Navigator.pushNamed(
-        context,
-        Routes.comment,
-        arguments: comment.id,
-      );
+  void _open(PostComment comment) =>
+      Navigator.pushNamed(context, Routes.comment, arguments: comment.id);
 
   /// Whether there is something to send. A picture on its own is a reply;
   /// an empty box is not, and neither is one whose upload is still running.
@@ -144,12 +141,9 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
 
     setState(() => _sending = true);
     try {
-      final reply = await ref.read(feedRepositoryProvider).addComment(
-            postId,
-            text,
-            parentId: parent.id,
-            media: _media.ready,
-          );
+      final reply = await ref
+          .read(feedRepositoryProvider)
+          .addComment(postId, text, parentId: parent.id, media: _media.ready);
       _box.clear();
       _media.clear();
       setState(() => _replyingTo = null);
@@ -348,8 +342,11 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
                         dimension: 18,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : Icon(Iconsax.send_1_copy,
-                        size: 20, color: scheme.primary),
+                    : Icon(
+                        Iconsax.send_1_copy,
+                        size: 20,
+                        color: scheme.primary,
+                      ),
                 onPressed: _canSend ? _send : null,
               ),
             ],

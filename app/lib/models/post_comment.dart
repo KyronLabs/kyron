@@ -55,41 +55,41 @@ class PostComment {
   bool get isReply => parentId != null;
 
   factory PostComment.fromJson(Map<String, dynamic> json) => PostComment(
-        id: json['id'] as String? ?? '',
-        content: json['content'] as String? ?? '',
-        createdAt:
-            DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
-                DateTime.now(),
-        author: FeedAuthor.fromJson(
-          (json['author'] as Map<String, dynamic>?) ?? const {},
-        ),
-        parentId: json['parentId'] as String?,
-        replies: (json['replies'] as num?)?.toInt() ?? 0,
-        replyFaces: ((json['replyFaces'] as List<dynamic>?) ?? const [])
-            .whereType<Map<String, dynamic>>()
-            .map(FeedAuthor.fromJson)
-            .toList(),
-        mine: json['mine'] == true,
-        byAuthor: json['byAuthor'] == true,
-        media: PostMedia.listFrom(json['media']),
-        likes: (json['likes'] as num?)?.toInt() ?? 0,
-        liked: json['liked'] == true,
-      );
+    id: json['id'] as String? ?? '',
+    content: json['content'] as String? ?? '',
+    createdAt:
+        DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
+        DateTime.now(),
+    author: FeedAuthor.fromJson(
+      (json['author'] as Map<String, dynamic>?) ?? const {},
+    ),
+    parentId: json['parentId'] as String?,
+    replies: (json['replies'] as num?)?.toInt() ?? 0,
+    replyFaces: ((json['replyFaces'] as List<dynamic>?) ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(FeedAuthor.fromJson)
+        .toList(),
+    mine: json['mine'] == true,
+    byAuthor: json['byAuthor'] == true,
+    media: PostMedia.listFrom(json['media']),
+    likes: (json['likes'] as num?)?.toInt() ?? 0,
+    liked: json['liked'] == true,
+  );
 
   PostComment copyWith({int? replies, int? likes, bool? liked}) => PostComment(
-        id: id,
-        content: content,
-        createdAt: createdAt,
-        author: author,
-        parentId: parentId,
-        replies: replies ?? this.replies,
-        replyFaces: replyFaces,
-        mine: mine,
-        byAuthor: byAuthor,
-        media: media,
-        likes: likes ?? this.likes,
-        liked: liked ?? this.liked,
-      );
+    id: id,
+    content: content,
+    createdAt: createdAt,
+    author: author,
+    parentId: parentId,
+    replies: replies ?? this.replies,
+    replyFaces: replyFaces,
+    mine: mine,
+    byAuthor: byAuthor,
+    media: media,
+    likes: likes ?? this.likes,
+    liked: liked ?? this.liked,
+  );
 }
 
 /// One comment, everything under it, and which post it belongs to.
@@ -105,15 +105,15 @@ class CommentThread {
   });
 
   factory CommentThread.fromJson(Map<String, dynamic> json) => CommentThread(
-        postId: json['postId'] as String? ?? '',
-        root: PostComment.fromJson(
-          (json['root'] as Map<String, dynamic>?) ?? const {},
-        ),
-        replies: ((json['replies'] as List<dynamic>?) ?? const [])
-            .whereType<Map<String, dynamic>>()
-            .map(PostComment.fromJson)
-            .toList(),
-      );
+    postId: json['postId'] as String? ?? '',
+    root: PostComment.fromJson(
+      (json['root'] as Map<String, dynamic>?) ?? const {},
+    ),
+    replies: ((json['replies'] as List<dynamic>?) ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(PostComment.fromJson)
+        .toList(),
+  );
 }
 
 /// One page of a thread.
@@ -124,11 +124,11 @@ class CommentPage {
   const CommentPage({required this.items, this.nextCursor});
 
   factory CommentPage.fromJson(Map<String, dynamic> json) => CommentPage(
-        items: ((json['items'] as List<dynamic>?) ?? const [])
-            .map((e) => PostComment.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        nextCursor: json['nextCursor'] as String?,
-      );
+    items: ((json['items'] as List<dynamic>?) ?? const [])
+        .map((e) => PostComment.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    nextCursor: json['nextCursor'] as String?,
+  );
 }
 
 /// How a post is doing, as its author sees it.
@@ -163,17 +163,17 @@ class PostAnalytics {
   }
 
   factory PostAnalytics.fromJson(Map<String, dynamic> json) => PostAnalytics(
-        views: (json['views'] as num?)?.toInt() ?? 0,
-        likes: (json['likes'] as num?)?.toInt() ?? 0,
-        saves: (json['saves'] as num?)?.toInt() ?? 0,
-        comments: (json['comments'] as num?)?.toInt() ?? 0,
-        createdAt:
-            DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
-                DateTime.now(),
-        timeline: ((json['timeline'] as List<dynamic>?) ?? const [])
-            .map((e) => DailyViews.fromJson(e as Map<String, dynamic>))
-            .toList(),
-      );
+    views: (json['views'] as num?)?.toInt() ?? 0,
+    likes: (json['likes'] as num?)?.toInt() ?? 0,
+    saves: (json['saves'] as num?)?.toInt() ?? 0,
+    comments: (json['comments'] as num?)?.toInt() ?? 0,
+    createdAt:
+        DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
+        DateTime.now(),
+    timeline: ((json['timeline'] as List<dynamic>?) ?? const [])
+        .map((e) => DailyViews.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
 }
 
 class DailyViews {
@@ -183,7 +183,7 @@ class DailyViews {
   const DailyViews({required this.date, required this.views});
 
   factory DailyViews.fromJson(Map<String, dynamic> json) => DailyViews(
-        date: json['date'] as String? ?? '',
-        views: (json['views'] as num?)?.toInt() ?? 0,
-      );
+    date: json['date'] as String? ?? '',
+    views: (json['views'] as num?)?.toInt() ?? 0,
+  );
 }

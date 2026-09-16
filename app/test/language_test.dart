@@ -68,11 +68,13 @@ void main() {
       expect(Languages.fromCode(''), Languages.fallback);
     });
 
-    test('drops stored codes it no longer knows, rather than blanking a row',
-        () {
-      final kept = Languages.fromCodes(['sw', 'not-a-language', 'de']);
-      expect([for (final l in kept) l.code], ['de', 'sw']);
-    });
+    test(
+      'drops stored codes it no longer knows, rather than blanking a row',
+      () {
+        final kept = Languages.fromCodes(['sw', 'not-a-language', 'de']);
+        expect([for (final l in kept) l.code], ['de', 'sw']);
+      },
+    );
 
     test('searches the endonym, the English name and the code alike', () {
       // Three ways of asking the same question -- "German", "Deutsch", "de".
@@ -143,21 +145,19 @@ void main() {
     // The whole point. A stored code that no widget reads is the bug this
     // replaced, so these assert on what is rendered, not on what is stored.
     Widget app(Language language) => MaterialApp(
-          locale: language.locale,
-          supportedLocales: [for (final l in Languages.all) l.locale],
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          home: Builder(
-            builder: (context) => Scaffold(
-              body: Text(
-                MaterialLocalizations.of(context).backButtonTooltip,
-              ),
-            ),
-          ),
-        );
+      locale: language.locale,
+      supportedLocales: [for (final l in Languages.all) l.locale],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      home: Builder(
+        builder: (context) => Scaffold(
+          body: Text(MaterialLocalizations.of(context).backButtonTooltip),
+        ),
+      ),
+    );
 
     testWidgets('Flutter\'s own strings follow the choice', (tester) async {
       await tester.pumpWidget(app(Languages.fromCode('en')));
@@ -172,8 +172,9 @@ void main() {
       );
     });
 
-    testWidgets('an RTL language lays the whole app out the other way round',
-        (tester) async {
+    testWidgets('an RTL language lays the whole app out the other way round', (
+      tester,
+    ) async {
       await tester.pumpWidget(app(Languages.fromCode('en')));
       final ltr = Directionality.of(tester.element(find.byType(Scaffold)));
       expect(ltr, TextDirection.ltr);
@@ -199,17 +200,25 @@ void main() {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(500, 6000);
       return tester.pumpWidget(
-        ProviderScope(child: MaterialApp(home: Scaffold(body: child))),
+        ProviderScope(
+          child: MaterialApp(home: Scaffold(body: child)),
+        ),
       );
     }
 
-    testWidgets('searching narrows the list to what was asked for',
-        (tester) async {
+    testWidgets('searching narrows the list to what was asked for', (
+      tester,
+    ) async {
       late BuildContext ctx;
-      await pump(tester, Builder(builder: (c) {
-        ctx = c;
-        return const SizedBox();
-      }));
+      await pump(
+        tester,
+        Builder(
+          builder: (c) {
+            ctx = c;
+            return const SizedBox();
+          },
+        ),
+      );
 
       LanguageSheet.pickOne(
         ctx,
@@ -232,10 +241,15 @@ void main() {
     testWidgets('says so when a search finds nothing', (tester) async {
       // Rather than an empty sheet, which reads as a list that failed to load.
       late BuildContext ctx;
-      await pump(tester, Builder(builder: (c) {
-        ctx = c;
-        return const SizedBox();
-      }));
+      await pump(
+        tester,
+        Builder(
+          builder: (c) {
+            ctx = c;
+            return const SizedBox();
+          },
+        ),
+      );
 
       LanguageSheet.pickOne(
         ctx,
@@ -251,10 +265,15 @@ void main() {
 
     testWidgets('picking one answers with it and closes', (tester) async {
       late BuildContext ctx;
-      await pump(tester, Builder(builder: (c) {
-        ctx = c;
-        return const SizedBox();
-      }));
+      await pump(
+        tester,
+        Builder(
+          builder: (c) {
+            ctx = c;
+            return const SizedBox();
+          },
+        ),
+      );
 
       final picking = LanguageSheet.pickOne(
         ctx,
@@ -272,10 +291,15 @@ void main() {
 
     testWidgets('a multi-select keeps taking taps until Done', (tester) async {
       late BuildContext ctx;
-      await pump(tester, Builder(builder: (c) {
-        ctx = c;
-        return const SizedBox();
-      }));
+      await pump(
+        tester,
+        Builder(
+          builder: (c) {
+            ctx = c;
+            return const SizedBox();
+          },
+        ),
+      );
 
       final picking = LanguageSheet.pickMany(
         ctx,
@@ -306,10 +330,15 @@ void main() {
       // The caller has to be able to tell "I want no filter" from "I changed
       // my mind", or backing out of the sheet wipes the setting.
       late BuildContext ctx;
-      await pump(tester, Builder(builder: (c) {
-        ctx = c;
-        return const SizedBox();
-      }));
+      await pump(
+        tester,
+        Builder(
+          builder: (c) {
+            ctx = c;
+            return const SizedBox();
+          },
+        ),
+      );
 
       final picking = LanguageSheet.pickMany(
         ctx,
@@ -330,9 +359,7 @@ void main() {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(420, 2400);
       await tester.pumpWidget(
-        const ProviderScope(
-          child: MaterialApp(home: SettingsLanguageScreen()),
-        ),
+        const ProviderScope(child: MaterialApp(home: SettingsLanguageScreen())),
       );
       await tester.pump();
     }
@@ -348,8 +375,9 @@ void main() {
       expect(find.textContaining('Add more languages'), findsOneWidget);
     });
 
-    testWidgets('says what does not work yet rather than implying it does',
-        (tester) async {
+    testWidgets('says what does not work yet rather than implying it does', (
+      tester,
+    ) async {
       // The translation feature is not built, posts carry no language, and
       // Kyron's own words are not translated. Three settings that quietly do
       // nothing is what the settings audit just finished removing; these say
@@ -361,7 +389,8 @@ void main() {
       expect(
         find.textContaining('Translation is not built yet'),
         findsOneWidget,
-        reason: 'a row offering to translate and then not is worse than one '
+        reason:
+            'a row offering to translate and then not is worse than one '
             'that says it cannot yet',
       );
       expect(
@@ -371,8 +400,9 @@ void main() {
       expect(find.textContaining('still being translated'), findsOneWidget);
     });
 
-    testWidgets('shows the languages already chosen for content',
-        (tester) async {
+    testWidgets('shows the languages already chosen for content', (
+      tester,
+    ) async {
       SharedPreferences.setMockInitialValues({
         'pref_content_languages': ['sw', 'ar'],
       });
@@ -381,8 +411,10 @@ void main() {
       await tester.pump();
 
       expect(find.text('Kiswahili'), findsOneWidget);
-      expect(find.text('\u0627\u0644\u0639\u0631\u0628\u064A\u0629'),
-          findsOneWidget);
+      expect(
+        find.text('\u0627\u0644\u0639\u0631\u0628\u064A\u0629'),
+        findsOneWidget,
+      );
     });
   });
 }

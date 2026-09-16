@@ -13,12 +13,11 @@ import 'package:kyron_app/services/exposure_meter.dart';
 
 /// A frame of one flat colour, as the sampler reads it.
 int? Function(int, int) flat(int value, {Rect? inside}) => (x, y) {
-      if (inside != null &&
-          !inside.contains(Offset(x.toDouble(), y.toDouble()))) {
-        return 0xFFFFFFFF;
-      }
-      return 0xFF000000 | (value << 16) | (value << 8) | value;
-    };
+  if (inside != null && !inside.contains(Offset(x.toDouble(), y.toDouble()))) {
+    return 0xFFFFFFFF;
+  }
+  return 0xFF000000 | (value << 16) | (value << 8) | value;
+};
 
 void main() {
   final at = DateTime(2026, 9, 13, 12);
@@ -56,25 +55,24 @@ void main() {
   group('deciding what to ask for', () {
     test('leaves a well-exposed face alone', () {
       final meter = ExposureMeter();
-      expect(
-        meter.offsetFor(luma: 0.46, min: -4, max: 4, now: at),
-        isNull,
-      );
+      expect(meter.offsetFor(luma: 0.46, min: -4, max: 4, now: at), isNull);
       expect(meter.applied, 0);
     });
 
-    test('opens up for a face in the dark, by stops rather than by fractions',
-        () {
-      // A face at 0.12 is nearly two stops under. A linear correction would
-      // ask for +0.34 and leave it nearly as dark; this is the case the whole
-      // thing exists for, so it has to ask for a real amount of light.
-      final meter = ExposureMeter();
-      final wanted = meter.offsetFor(luma: 0.12, min: -4, max: 4, now: at);
+    test(
+      'opens up for a face in the dark, by stops rather than by fractions',
+      () {
+        // A face at 0.12 is nearly two stops under. A linear correction would
+        // ask for +0.34 and leave it nearly as dark; this is the case the whole
+        // thing exists for, so it has to ask for a real amount of light.
+        final meter = ExposureMeter();
+        final wanted = meter.offsetFor(luma: 0.12, min: -4, max: 4, now: at);
 
-      expect(wanted, isNotNull);
-      expect(wanted, greaterThan(0.5));
-      expect(wanted, meter.maxStep);
-    });
+        expect(wanted, isNotNull);
+        expect(wanted, greaterThan(0.5));
+        expect(wanted, meter.maxStep);
+      },
+    );
 
     test('closes down for a face that is blown out', () {
       final meter = ExposureMeter();
@@ -97,7 +95,9 @@ void main() {
       expect(asked, isNotEmpty);
       for (var i = 1; i < asked.length; i++) {
         expect(
-            asked[i] - asked[i - 1], lessThanOrEqualTo(meter.maxStep + 1e-9));
+          asked[i] - asked[i - 1],
+          lessThanOrEqualTo(meter.maxStep + 1e-9),
+        );
       }
       // And it arrives somewhere useful rather than oscillating.
       expect(asked.last, greaterThan(1.0));

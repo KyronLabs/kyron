@@ -39,13 +39,12 @@ class LanguageSheet {
     BuildContext context, {
     required String title,
     required List<Language> current,
-  }) =>
-      _show(
-        context,
-        title: title,
-        selected: {for (final l in current) l.code},
-        multiple: true,
-      );
+  }) => _show(
+    context,
+    title: title,
+    selected: {for (final l in current) l.code},
+    multiple: true,
+  );
 
   static Future<List<Language>?> _show(
     BuildContext context, {
@@ -159,13 +158,17 @@ class _LanguageSheetBodyState extends State<_LanguageSheetBody> {
                   decoration: InputDecoration(
                     isDense: true,
                     hintText: 'Search languages',
-                    prefixIcon:
-                        const Icon(Iconsax.search_normal_1_copy, size: 18),
+                    prefixIcon: const Icon(
+                      Iconsax.search_normal_1_copy,
+                      size: 18,
+                    ),
                     suffixIcon: _query.text.isEmpty
                         ? null
                         : IconButton(
-                            icon:
-                                const Icon(Iconsax.close_circle_copy, size: 18),
+                            icon: const Icon(
+                              Iconsax.close_circle_copy,
+                              size: 18,
+                            ),
                             tooltip: 'Clear',
                             onPressed: () => setState(_query.clear),
                           ),
@@ -202,16 +205,19 @@ class _LanguageSheetBodyState extends State<_LanguageSheetBody> {
                             // it in, not for ours.
                             title: Text(
                               language.nativeName,
-                              textDirection:
-                                  language.rtl ? TextDirection.rtl : null,
+                              textDirection: language.rtl
+                                  ? TextDirection.rtl
+                                  : null,
                             ),
                             subtitle:
                                 language.nativeName == language.englishName
-                                    ? null
-                                    : Text(language.englishName),
+                                ? null
+                                : Text(language.englishName),
                             trailing: on
-                                ? Icon(Iconsax.tick_circle_copy,
-                                    color: scheme.primary)
+                                ? Icon(
+                                    Iconsax.tick_circle_copy,
+                                    color: scheme.primary,
+                                  )
                                 : null,
                             selected: on,
                           );

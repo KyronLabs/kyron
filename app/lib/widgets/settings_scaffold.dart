@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import 'kyron_app_bar.dart';
 
 /// The frame every settings subscreen sits in.
@@ -12,11 +13,7 @@ class SettingsScaffold extends StatelessWidget {
   final String title;
   final Widget child;
 
-  const SettingsScaffold({
-    super.key,
-    required this.title,
-    required this.child,
-  });
+  const SettingsScaffold({super.key, required this.title, required this.child});
 
   @override
   Widget build(BuildContext context) {

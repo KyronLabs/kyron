@@ -165,10 +165,7 @@ class _MainContainerState extends ConsumerState<MainContainer>
           valueListenable: _navHideProgress,
           // The nav itself is built once and passed through, so a scroll frame
           // moves an existing subtree instead of rebuilding one.
-          child: BottomNavV4(
-            currentIndex: _currentIndex,
-            onTap: _onNavTap,
-          ),
+          child: BottomNavV4(currentIndex: _currentIndex, onTap: _onNavTap),
           builder: (context, progress, child) => Transform.translate(
             // Slide down by the nav height plus safe area.
             offset: Offset(0, 80 * progress),

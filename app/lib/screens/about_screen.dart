@@ -71,14 +71,20 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             _Row(
               icon: Iconsax.document_text_copy,
               label: LegalLinks.termsTitle,
-              onTap: () => AppBrowser.open(context, LegalLinks.terms,
-                  title: LegalLinks.termsTitle),
+              onTap: () => AppBrowser.open(
+                context,
+                LegalLinks.terms,
+                title: LegalLinks.termsTitle,
+              ),
             ),
             _Row(
               icon: Iconsax.shield_tick_copy,
               label: LegalLinks.privacyTitle,
-              onTap: () => AppBrowser.open(context, LegalLinks.privacy,
-                  title: LegalLinks.privacyTitle),
+              onTap: () => AppBrowser.open(
+                context,
+                LegalLinks.privacy,
+                title: LegalLinks.privacyTitle,
+              ),
             ),
             _divider(scheme),
             _group('Diagnostics'),
@@ -157,34 +163,32 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
       ClipboardData(text: '${info.packageName} ${info.display}'),
     );
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Build details copied')),
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text('Build details copied')));
   }
 
   Widget _group(String title) => Padding(
-        padding: const EdgeInsets.only(
-          left: SpacingTokens.space20,
-          top: SpacingTokens.space24,
-          bottom: SpacingTokens.space8,
-        ),
-        child: Text(
-          title.toUpperCase(),
-          style: TextStyle(
-            fontSize: TypographyTokens.fontSize1,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.8,
-            color:
-                Theme.of(context).colorScheme.onSurface.withValues(alpha: .5),
-          ),
-        ),
-      );
+    padding: const EdgeInsets.only(
+      left: SpacingTokens.space20,
+      top: SpacingTokens.space24,
+      bottom: SpacingTokens.space8,
+    ),
+    child: Text(
+      title.toUpperCase(),
+      style: TextStyle(
+        fontSize: TypographyTokens.fontSize1,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0.8,
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .5),
+      ),
+    ),
+  );
 
   Widget _divider(ColorScheme scheme) => Divider(
-        height: 1,
-        thickness: 0.33,
-        color: scheme.onSurface.withValues(alpha: 0.1),
-      );
+    height: 1,
+    thickness: 0.33,
+    color: scheme.onSurface.withValues(alpha: 0.1),
+  );
 }
 
 /// The ground the launcher icon is drawn on, and this with it.

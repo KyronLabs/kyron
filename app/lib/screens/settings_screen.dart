@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../providers/auth_provider.dart';
 import '../providers/identity_provider.dart';
 import '../providers/current_user_provider.dart';
@@ -14,7 +15,9 @@ import '../services/app_preferences.dart';
 import '../widgets/action_sheet.dart';
 import '../widgets/kyron_toggle.dart';
 import '../routes.dart';
+
 import 'dart:async';
+
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 import '../widgets/kyron_app_bar.dart';
@@ -136,18 +139,15 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: 56),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 8,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             child: Row(
               children: [
                 // Icon: 24px, left-aligned, 8px padding
                 Icon(
                   icon,
                   size: 24,
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                  color: Theme.of(context).colorScheme.onSurface
+                      .withOpacity(0.8),
                 ),
                 const SizedBox(width: 16),
                 // Label + Subtitle
@@ -178,9 +178,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize3,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurface
+                            color: Theme.of(context).colorScheme.onSurface
                                 .withOpacity(0.6),
                             fontFamily: 'SF Pro Rounded',
                           ),
@@ -244,16 +242,16 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               children: [
                 CircleAvatar(
                   radius: 22,
-                  backgroundColor:
-                      Theme.of(context).colorScheme.surfaceContainerHighest,
-                  foregroundImage:
-                      avatarUrl == null ? null : NetworkImage(avatarUrl),
+                  backgroundColor: Theme.of(context)
+                      .colorScheme
+                      .surfaceContainerHighest,
+                  foregroundImage: avatarUrl == null
+                      ? null
+                      : NetworkImage(avatarUrl),
                   child: Icon(
                     Iconsax.user_copy,
                     size: 20,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
+                    color: Theme.of(context).colorScheme.onSurface
                         .withValues(alpha: .5),
                   ),
                 ),
@@ -284,10 +282,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ],
             ),
             const SizedBox(height: 20),
-            const Text('Log Out?',
-                style: TextStyle(
-                    fontSize: TypographyTokens.fontSize6,
-                    fontWeight: FontWeight.bold)),
+            const Text(
+              'Log Out?',
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize6,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 8),
             const Text(
               "You will need to sign in again to get back to your account.",
@@ -304,8 +305,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
                     onPressed: _performLogout,
                     child: const Text('Log Out'),
                   ),
@@ -332,8 +334,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         title: const Text(
           'Settings',
           style: TextStyle(
-              fontSize: TypographyTokens.fontSize5,
-              fontWeight: FontWeight.w600),
+            fontSize: TypographyTokens.fontSize5,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       body: FocusTraversalGroup(
@@ -388,9 +391,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               },
             ),
             Divider(
-                height: 1,
-                thickness: 0.33,
-                color: scheme.onSurface.withOpacity(0.1)),
+              height: 1,
+              thickness: 0.33,
+              color: scheme.onSurface.withOpacity(0.1),
+            ),
 
             // Privacy & Safety.
             //
@@ -424,9 +428,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Who you have muted or blocked',
             ),
             Divider(
-                height: 1,
-                thickness: 0.33,
-                color: scheme.onSurface.withOpacity(0.1)),
+              height: 1,
+              thickness: 0.33,
+              color: scheme.onSurface.withOpacity(0.1),
+            ),
 
             // Preferences: how the app behaves for this reader, on this
             // device. Was "Content & Display" and "App & Device", which split
@@ -490,9 +495,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Stop videos playing by themselves as you scroll',
             ),
             Divider(
-                height: 1,
-                thickness: 0.33,
-                color: scheme.onSurface.withOpacity(0.1)),
+              height: 1,
+              thickness: 0.33,
+              color: scheme.onSurface.withOpacity(0.1),
+            ),
 
             // Help & Support Group (3 items)
             _groupHeader('Help & Support'),
@@ -531,9 +537,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Version, policies, status and the system log',
             ),
             Divider(
-                height: 1,
-                thickness: 0.33,
-                color: scheme.onSurface.withOpacity(0.1)),
+              height: 1,
+              thickness: 0.33,
+              color: scheme.onSurface.withOpacity(0.1),
+            ),
 
             // Danger Zone (1 item)
             const SizedBox(height: 20),
@@ -541,7 +548,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                      color: scheme.error.withValues(alpha: 0.3), width: 1),
+                    color: scheme.error.withValues(alpha: 0.3),
+                    width: 1,
+                  ),
                 ),
               ),
               child: _settingsRow(
@@ -553,8 +562,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         dimension: 20,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : const Icon(Iconsax.arrow_right_3_copy,
-                        size: 20, color: Colors.red),
+                    : const Icon(
+                        Iconsax.arrow_right_3_copy,
+                        size: 20,
+                        color: Colors.red,
+                      ),
                 // Null while signing out, so a second tap cannot start another
                 // sign-out over the top of the first.
                 onTap: _loggingOut ? null : _showLogoutConfirmation,

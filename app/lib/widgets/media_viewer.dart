@@ -35,11 +35,7 @@ class MediaViewer extends ConsumerStatefulWidget {
   final List<PostMedia> media;
   final int initialIndex;
 
-  const MediaViewer({
-    super.key,
-    required this.media,
-    this.initialIndex = 0,
-  });
+  const MediaViewer({super.key, required this.media, this.initialIndex = 0});
 
   /// Opens the viewer over whatever is on screen, on an opaque black route so
   /// the page behind does not show through while it is being dragged away.
@@ -66,8 +62,9 @@ class MediaViewer extends ConsumerStatefulWidget {
 }
 
 class _MediaViewerState extends ConsumerState<MediaViewer> {
-  late final PageController _pages =
-      PageController(initialPage: widget.initialIndex);
+  late final PageController _pages = PageController(
+    initialPage: widget.initialIndex,
+  );
   late int _index = widget.initialIndex;
 
   /// How far the sheet has been dragged down, for the swipe-to-dismiss.
@@ -200,7 +197,8 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
     whenNotBuilding(() {
       if (mounted) {
         setState(
-            () => _videoError = 'This clip stopped to make room for another.');
+          () => _videoError = 'This clip stopped to make room for another.',
+        );
       }
     });
   }
@@ -244,8 +242,9 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
                 // opening its own.
                 unawaited(_syncVideo());
               },
-              backgroundDecoration:
-                  const BoxDecoration(color: Colors.transparent),
+              backgroundDecoration: const BoxDecoration(
+                color: Colors.transparent,
+              ),
               // Dragging vertically dismisses; the gallery keeps the
               // horizontal axis for moving between attachments.
               scrollDirection: Axis.horizontal,
@@ -258,8 +257,8 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
                     child: _videoError != null && index == _index
                         ? const _Unavailable()
                         : live
-                            ? _ViewerVideo(controller: controller)
-                            : _VideoStandIn(media: item),
+                        ? _ViewerVideo(controller: controller)
+                        : _VideoStandIn(media: item),
                     heroAttributes: PhotoViewHeroAttributes(tag: item.id),
                     minScale: PhotoViewComputedScale.contained,
                     maxScale: PhotoViewComputedScale.contained,
@@ -353,8 +352,9 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
                             controller: _controller!,
                             muted: ref.watch(videoMutedProvider),
                             onPlayPause: _togglePlay,
-                            onToggleSound:
-                                ref.read(videoMutedProvider.notifier).toggle,
+                            onToggleSound: ref
+                                .read(videoMutedProvider.notifier)
+                                .toggle,
                           ),
                       ],
                     ),
@@ -365,9 +365,7 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
           ),
 
           if (_opening)
-            const Center(
-              child: CircularProgressIndicator(color: Colors.white),
-            ),
+            const Center(child: CircularProgressIndicator(color: Colors.white)),
         ],
       ),
     );
@@ -424,7 +422,9 @@ class _TopBar extends StatelessWidget {
             Text(
               '${index + 1} of $total',
               style: const TextStyle(
-                  color: Colors.white, fontSize: TypographyTokens.fontSize2),
+                color: Colors.white,
+                fontSize: TypographyTokens.fontSize2,
+              ),
             ),
           const Spacer(),
           IconButton(
@@ -463,7 +463,9 @@ class _AltText extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
-            color: Colors.white, fontSize: TypographyTokens.fontSize2),
+          color: Colors.white,
+          fontSize: TypographyTokens.fontSize2,
+        ),
       ),
     );
   }

@@ -1,6 +1,8 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/user.dart';
 import '../repositories/auth_repository.dart';
 import 'current_user_provider.dart';
@@ -24,8 +26,9 @@ class AuthState {
       AuthState._(status: AuthStatus.authenticated, user: user);
 }
 
-final authRepositoryProvider =
-    Provider<AuthRepository>((ref) => AuthRepository());
+final authRepositoryProvider = Provider<AuthRepository>(
+  (ref) => AuthRepository(),
+);
 
 class AuthNotifier extends Notifier<AuthState> {
   late final AuthRepository _repo;
@@ -230,8 +233,9 @@ class AuthNotifier extends Notifier<AuthState> {
   }
 }
 
-final authNotifierProvider =
-    NotifierProvider<AuthNotifier, AuthState>(() => AuthNotifier());
+final authNotifierProvider = NotifierProvider<AuthNotifier, AuthState>(
+  () => AuthNotifier(),
+);
 
 // Helper providers
 final currentAuthUserProvider = Provider<User?>((ref) {

@@ -64,10 +64,10 @@ class Squircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox.square(
-        dimension: size,
-        child: ClipPath(
-          clipper: ShapeBorderClipper(shape: SquircleShape.borderFor(size)),
-          child: child,
-        ),
-      );
+    dimension: size,
+    child: ClipPath(
+      clipper: ShapeBorderClipper(shape: SquircleShape.borderFor(size)),
+      child: child,
+    ),
+  );
 }

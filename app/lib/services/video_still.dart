@@ -69,8 +69,10 @@ Future<VideoStill?> extractVideoStill(String videoPath) async {
 
     return VideoStill(path: file.path, width: size.$1, height: size.$2);
   } catch (error) {
-    AppLog.instance
-        .error('media', 'Could not read a still from a clip: $error');
+    AppLog.instance.error(
+      'media',
+      'Could not read a still from a clip: $error',
+    );
     return null;
   }
 }

@@ -15,8 +15,11 @@ class BottomNavV4 extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
 
-  const BottomNavV4(
-      {super.key, required this.currentIndex, required this.onTap});
+  const BottomNavV4({
+    super.key,
+    required this.currentIndex,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +47,11 @@ class BottomNavV4 extends StatelessWidget {
         padding: EdgeInsets.only(bottom: inset),
         decoration: BoxDecoration(
           border: Border(
-              top: BorderSide(
-                  color: scheme.outline.withValues(alpha: .15), width: .5)),
+            top: BorderSide(
+              color: scheme.outline.withValues(alpha: .15),
+              width: .5,
+            ),
+          ),
           color: isDark ? KyronTheme.darkSurface : KyronTheme.lightSurface,
         ),
         // Stretch, so each tab's box is the full height of the bar and a
@@ -80,8 +86,9 @@ class BottomNavV4 extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final isActive = currentIndex == index;
 
-    final colour =
-        isActive ? scheme.primary : scheme.onSurface.withValues(alpha: .6);
+    final colour = isActive
+        ? scheme.primary
+        : scheme.onSurface.withValues(alpha: .6);
 
     return Semantics(
       button: true,
@@ -145,11 +152,7 @@ class _RingFab extends StatelessWidget {
             ),
           ),
           // Smaller FAB
-          SizedBox(
-            width: fabSize,
-            height: fabSize,
-            child: CreateFab(),
-          ),
+          SizedBox(width: fabSize, height: fabSize, child: CreateFab()),
         ],
       ),
     );
@@ -161,10 +164,7 @@ class _RingPainter extends CustomPainter {
   final Color color;
   final double ringThickness;
 
-  _RingPainter({
-    required this.color,
-    required this.ringThickness,
-  });
+  _RingPainter({required this.color, required this.ringThickness});
 
   @override
   void paint(Canvas canvas, Size size) {

@@ -84,8 +84,9 @@ class _CommunityComposerScreenState
   /// typed if the caret is in one.
   Future<void> _tagSomeone() async {
     final value = _box.value;
-    final caret =
-        value.selection.isValid ? value.selection.end : value.text.length;
+    final caret = value.selection.isValid
+        ? value.selection.end
+        : value.text.length;
     final typing = mentionAt(value.text, caret);
 
     final handle = await MentionPickerSheet.show(
@@ -103,11 +104,9 @@ class _CommunityComposerScreenState
     setState(() => _posting = true);
     unawaited(HapticFeedback.mediumImpact());
     try {
-      await ref.read(communitiesRepositoryProvider).post(
-            widget.community.slug,
-            _box.text.trim(),
-            media: _media.ready,
-          );
+      await ref
+          .read(communitiesRepositoryProvider)
+          .post(widget.community.slug, _box.text.trim(), media: _media.ready);
       if (!mounted) return;
       Navigator.pop(context, true);
     } catch (error) {
@@ -166,7 +165,9 @@ class _CommunityComposerScreenState
                   keyboardType: TextInputType.multiline,
                   textCapitalization: TextCapitalization.sentences,
                   style: const TextStyle(
-                      fontSize: TypographyTokens.fontSize4, height: 1.4),
+                    fontSize: TypographyTokens.fontSize4,
+                    height: 1.4,
+                  ),
                   decoration: InputDecoration(
                     hintText: 'Say something to ${widget.community.name}',
                     border: InputBorder.none,
@@ -198,14 +199,16 @@ class _CommunityComposerScreenState
                 children: [
                   IconButton(
                     tooltip: 'Add a photo',
-                    onPressed:
-                        _media.hasRoom ? () => _attach(video: false) : null,
+                    onPressed: _media.hasRoom
+                        ? () => _attach(video: false)
+                        : null,
                     icon: const Icon(Iconsax.gallery_copy, size: 20),
                   ),
                   IconButton(
                     tooltip: 'Add a clip',
-                    onPressed:
-                        _media.hasRoom ? () => _attach(video: true) : null,
+                    onPressed: _media.hasRoom
+                        ? () => _attach(video: true)
+                        : null,
                     icon: const Icon(Iconsax.video_copy, size: 20),
                   ),
                   IconButton(

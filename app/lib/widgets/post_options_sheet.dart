@@ -73,9 +73,8 @@ class _OptionsState extends ConsumerState<_Options> {
             _Item(
               icon: Iconsax.language_square_copy,
               label: 'Translate post',
-              onTap: () => _replace(
-                () => TranslationSheet.show(context, _post.content),
-              ),
+              onTap: () =>
+                  _replace(() => TranslationSheet.show(context, _post.content)),
             ),
             _Item(
               icon: Iconsax.copy_copy,
@@ -231,10 +230,10 @@ class _OptionsState extends ConsumerState<_Options> {
   }
 
   Widget _divider(ColorScheme scheme) => Divider(
-        height: SpacingTokens.space16,
-        thickness: 0.5,
-        color: scheme.outline.withValues(alpha: 0.2),
-      );
+    height: SpacingTokens.space16,
+    thickness: 0.5,
+    color: scheme.outline.withValues(alpha: 0.2),
+  );
 
   /// Closes the sheet, then opens something else. Done in this order so the
   /// sheet is not still animating shut underneath the next screen.
@@ -277,8 +276,10 @@ class _OptionsState extends ConsumerState<_Options> {
   /// Changing the reply setting after the fact. The composer offers it before
   /// posting; a post that turns out to need it later had no way to get it.
   Future<void> _changeReplyPolicy() async {
-    final chosen =
-        await InteractionSettingsSheet.show(context, _post.replyPolicy);
+    final chosen = await InteractionSettingsSheet.show(
+      context,
+      _post.replyPolicy,
+    );
     if (chosen == null || !mounted) return;
 
     await _run(
@@ -377,12 +378,16 @@ class _Item extends StatelessWidget {
 
     return ListTile(
       leading: Icon(icon, size: 20, color: color),
-      title: Text(label,
-          style: TextStyle(color: color, fontSize: TypographyTokens.fontSize3)),
+      title: Text(
+        label,
+        style: TextStyle(color: color, fontSize: TypographyTokens.fontSize3),
+      ),
       subtitle: subtitle == null
           ? null
-          : Text(subtitle!,
-              style: const TextStyle(fontSize: TypographyTokens.fontSize1)),
+          : Text(
+              subtitle!,
+              style: const TextStyle(fontSize: TypographyTokens.fontSize1),
+            ),
       dense: true,
       onTap: onTap,
     );

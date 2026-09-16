@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../services/app_browser.dart';
 
 /// Translating a post.
@@ -91,16 +92,12 @@ class _Sheet extends StatelessWidget {
                 Expanded(
                   child: FilledButton.icon(
                     onPressed: () {
-                      final uri = Uri.https(
-                        'translate.google.com',
-                        '/',
-                        {
-                          'sl': 'auto',
-                          'tl': 'en',
-                          'text': content,
-                          'op': 'translate'
-                        },
-                      );
+                      final uri = Uri.https('translate.google.com', '/', {
+                        'sl': 'auto',
+                        'tl': 'en',
+                        'text': content,
+                        'op': 'translate',
+                      });
                       // Kyron's browser, with translate.google.com named in
                       // the bar: the reader can see the text has left Kyron
                       // without Kyron having to leave with it.

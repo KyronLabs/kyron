@@ -106,11 +106,11 @@ class NotificationModel {
   }
 
   String get actionText => switch (type) {
-        NotificationType.like => 'liked your post',
-        NotificationType.comment => 'replied to your post',
-        NotificationType.follow => 'followed you',
-        NotificationType.repost => 'reposted your post',
-      };
+    NotificationType.like => 'liked your post',
+    NotificationType.comment => 'replied to your post',
+    NotificationType.follow => 'followed you',
+    NotificationType.repost => 'reposted your post',
+  };
 }
 
 /// One page of them.

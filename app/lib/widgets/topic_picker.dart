@@ -55,7 +55,7 @@ class TopicPicker extends ConsumerWidget {
               chosen.isEmpty
                   ? 'Add a topic'
                   : 'Filed under ${chosen.length} of '
-                      '${ComposerState.maxTopics}',
+                        '${ComposerState.maxTopics}',
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize2,
                 fontWeight: FontWeight.w600,
@@ -143,8 +143,11 @@ class _TopicChip extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (selected) ...[
-                  Icon(Iconsax.tick_circle_copy,
-                      size: 15, color: scheme.primary),
+                  Icon(
+                    Iconsax.tick_circle_copy,
+                    size: 15,
+                    color: scheme.primary,
+                  ),
                   const SizedBox(width: SpacingTokens.space4),
                 ],
                 Text(

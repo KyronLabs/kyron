@@ -40,8 +40,8 @@ class GifSearch {
   /// without one every call returns an empty list before it asks anything, so
   /// a test of the response shape would pass by doing nothing.
   GifSearch({Dio? client, String? key})
-      : _dio = client ?? Dio(),
-        _key = key ?? apiKey;
+    : _dio = client ?? Dio(),
+      _key = key ?? apiKey;
 
   final Dio _dio;
   final String _key;
@@ -100,7 +100,8 @@ class GifSearch {
     // this is a picture going into a post, not a wallpaper. The preview is
     // the small still-sized rendition, which is what a grid cell needs.
     final full = images['downsized'] ?? images['original'];
-    final preview = images['fixed_width_small'] ??
+    final preview =
+        images['fixed_width_small'] ??
         images['fixed_width_downsampled'] ??
         full;
     if (full is! Map || preview is! Map) return null;
@@ -122,8 +123,8 @@ class GifSearch {
 
   /// Sizes arrive as strings -- "480" rather than 480.
   static int _side(Object? value) => switch (value) {
-        final num n => n.toInt(),
-        final String s => int.tryParse(s) ?? 0,
-        _ => 0,
-      };
+    final num n => n.toInt(),
+    final String s => int.tryParse(s) ?? 0,
+    _ => 0,
+  };
 }

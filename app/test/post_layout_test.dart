@@ -4,11 +4,11 @@ import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/widgets/post_actions_row.dart';
 
 FeedPost _post(String id) => FeedPost(
-      id: id,
-      content: 'post $id',
-      createdAt: DateTime(2026, 1, 1),
-      author: const FeedAuthor(id: 'a1'),
-    );
+  id: id,
+  content: 'post $id',
+  createdAt: DateTime(2026, 1, 1),
+  author: const FeedAuthor(id: 'a1'),
+);
 
 void main() {
   group('countLabel', () {
@@ -63,9 +63,7 @@ void main() {
     });
 
     test('every id in the result is unique', () {
-      final posts = [
-        for (var i = 0; i < 40; i++) _post('p${i % 7}'),
-      ];
+      final posts = [for (var i = 0; i < 40; i++) _post('p${i % 7}')];
       final ids = dedupePosts(posts).map((p) => p.id).toList();
       expect(ids.toSet().length, ids.length);
       expect(ids.length, 7);

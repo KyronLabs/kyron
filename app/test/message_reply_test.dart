@@ -17,7 +17,7 @@ import 'package:kyron_app/services/message_vault.dart';
 /// the quote is resolved here.
 class _Repo extends MessagesRepository {
   _Repo({this.thread = const [], this.sendFails = false})
-      : super(ApiClient()..dio.interceptors.clear());
+    : super(ApiClient()..dio.interceptors.clear());
 
   final List<DirectMessage> thread;
   final bool sendFails;
@@ -28,9 +28,11 @@ class _Repo extends MessagesRepository {
   int _next = 0;
 
   @override
-  Future<MessagePage> messages(String id,
-          {String? cursor, int limit = 40}) async =>
-      MessagePage(items: thread, people: const []);
+  Future<MessagePage> messages(
+    String id, {
+    String? cursor,
+    int limit = 40,
+  }) async => MessagePage(items: thread, people: const []);
 
   @override
   Future<DirectMessage> send(
@@ -55,23 +57,27 @@ class _Repo extends MessagesRepository {
   Future<void> markRead(String id) async {}
 }
 
-DirectMessage _msg(String id, String body, String sender, DateTime at,
-        {String? replyToId}) =>
-    DirectMessage(
-      id: id,
-      body: body,
-      senderId: sender,
-      createdAt: at,
-      replyToId: replyToId,
-    );
+DirectMessage _msg(
+  String id,
+  String body,
+  String sender,
+  DateTime at, {
+  String? replyToId,
+}) => DirectMessage(
+  id: id,
+  body: body,
+  senderId: sender,
+  createdAt: at,
+  replyToId: replyToId,
+);
 
 MessageVault _lockedVault() => MessageVault(KeysRepository(ApiClient()));
 
 void main() {
   test('a reply sends the id of what it answers', () async {
-    final repo = _Repo(thread: [
-      _msg('m0', 'is it raining?', 'them', DateTime(2026, 1, 1)),
-    ]);
+    final repo = _Repo(
+      thread: [_msg('m0', 'is it raining?', 'them', DateTime(2026, 1, 1))],
+    );
     final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
     await pumpEventQueue();
 
@@ -81,9 +87,9 @@ void main() {
   });
 
   test('and never the quoted words', () async {
-    final repo = _Repo(thread: [
-      _msg('m0', 'is it raining?', 'them', DateTime(2026, 1, 1)),
-    ]);
+    final repo = _Repo(
+      thread: [_msg('m0', 'is it raining?', 'them', DateTime(2026, 1, 1))],
+    );
     final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
     await pumpEventQueue();
 
@@ -107,10 +113,12 @@ void main() {
   });
 
   test('the quote is resolved from the thread, not from the server', () async {
-    final repo = _Repo(thread: [
-      _msg('m1', 'yes', 'me', DateTime(2026, 1, 2), replyToId: 'm0'),
-      _msg('m0', 'is it raining?', 'them', DateTime(2026, 1, 1)),
-    ]);
+    final repo = _Repo(
+      thread: [
+        _msg('m1', 'yes', 'me', DateTime(2026, 1, 2), replyToId: 'm0'),
+        _msg('m0', 'is it raining?', 'them', DateTime(2026, 1, 1)),
+      ],
+    );
     final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
     await pumpEventQueue();
 
@@ -121,9 +129,11 @@ void main() {
   test('a quote older than the loaded pages resolves to nothing', () async {
     // Drawn as a placeholder rather than left blank: a reply whose quote
     // silently vanished reads as a remark that does not follow.
-    final repo = _Repo(thread: [
-      _msg('m1', 'yes', 'me', DateTime(2026, 1, 2), replyToId: 'long-ago'),
-    ]);
+    final repo = _Repo(
+      thread: [
+        _msg('m1', 'yes', 'me', DateTime(2026, 1, 2), replyToId: 'long-ago'),
+      ],
+    );
     final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
     await pumpEventQueue();
 
@@ -133,9 +143,9 @@ void main() {
   });
 
   test('a message that answers nothing has nothing to resolve', () async {
-    final repo = _Repo(thread: [
-      _msg('m0', 'hello', 'them', DateTime(2026, 1, 1)),
-    ]);
+    final repo = _Repo(
+      thread: [_msg('m0', 'hello', 'them', DateTime(2026, 1, 1))],
+    );
     final notifier = ThreadNotifier(repo, _lockedVault(), 'c1');
     await pumpEventQueue();
 

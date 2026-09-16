@@ -125,7 +125,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         detail: state.mode == SearchMode.people
             ? 'Search by handle or display name.'
             : 'Words, or a filter — an account, a date range, or what a '
-                'post carries.',
+                  'post carries.',
       );
     }
     if (state.isTooShort) {
@@ -159,10 +159,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     if (state.mode == SearchMode.posts) {
       return ListView.builder(
         itemCount: state.posts.length,
-        itemBuilder: (context, index) => PostCard(
-          post: state.posts[index],
-          source: PostListSource.recent,
-        ),
+        itemBuilder: (context, index) =>
+            PostCard(post: state.posts[index], source: PostListSource.recent),
       );
     }
 
@@ -271,11 +269,7 @@ class _Tap extends StatelessWidget {
   final VoidCallback onTap;
   final Widget child;
 
-  const _Tap({
-    required this.tooltip,
-    required this.onTap,
-    required this.child,
-  });
+  const _Tap({required this.tooltip, required this.onTap, required this.child});
 
   @override
   Widget build(BuildContext context) {

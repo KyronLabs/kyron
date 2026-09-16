@@ -43,9 +43,7 @@ class AccountAvatar extends ConsumerWidget {
     // picture, so showing it here told everybody they had none until the
     // request came back -- every launch, on every screen with a top bar.
     if (account.isLoading && !account.hasValue) {
-      return SkeletonGroup(
-        child: SkeletonBox.circle(size: radius * 2),
-      );
+      return SkeletonGroup(child: SkeletonBox.circle(size: radius * 2));
     }
 
     Widget avatar = CircleAvatar(

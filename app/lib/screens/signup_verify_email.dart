@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import '../widgets/gradient_scaffold.dart';
 import '../widgets/app_button.dart';
 import '../routes.dart';
+
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+
 import '../repositories/auth_repository.dart';
 import '../models/onboarding_model.dart';
 import '../utils/api_error_message.dart';
@@ -152,9 +154,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                     onChanged: (value) => _onDigitChanged(i, value),
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge
+                    style: Theme.of(context).textTheme.displayLarge
                         ?.copyWith(fontSize: TypographyTokens.fontSize8),
                     decoration: InputDecoration(
                       filled: true,
@@ -193,9 +193,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                     )
                   : Text(
                       "Resend code in $_countdown seconds",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
+                      style: Theme.of(context).textTheme.bodyMedium
                           ?.copyWith(color: KyronTheme.lightTextSecondary),
                     ),
             ),

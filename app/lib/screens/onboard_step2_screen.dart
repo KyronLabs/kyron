@@ -4,7 +4,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/onboarding_model.dart';
 import '../repositories/auth_repository.dart';
 import '../routes.dart';
+
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../utils/api_error_message.dart';
 import '../widgets/app_button.dart';
 import '../widgets/gradient_scaffold.dart';
@@ -231,7 +233,8 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
           compact: true,
           art: EmptyArt.topics,
           title: 'No interests yet',
-          detail: 'Kyron has not published any to pick from. Skip this step '
+          detail:
+              'Kyron has not published any to pick from. Skip this step '
               'and set them later from your profile.',
         ),
       );
@@ -271,8 +274,8 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
             color: selected
                 ? scheme.primary.withValues(alpha: .35)
                 : (isDark
-                    ? Colors.transparent
-                    : scheme.onSurface.withValues(alpha: .12)),
+                      ? Colors.transparent
+                      : scheme.onSurface.withValues(alpha: .12)),
             width: 1,
           ),
         ),

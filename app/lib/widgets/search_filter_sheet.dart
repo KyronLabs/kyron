@@ -13,11 +13,11 @@ String formatFilterDate(DateTime value) =>
 
 /// Human-readable chips for whatever filters are set.
 List<String> describeFilters(SearchFilters filters) => [
-      if (filters.from != null) 'from @${filters.from}',
-      if (filters.after != null) 'after ${formatFilterDate(filters.after!)}',
-      if (filters.before != null) 'before ${formatFilterDate(filters.before!)}',
-      if (filters.has != null) 'has ${filters.has}',
-    ];
+  if (filters.from != null) 'from @${filters.from}',
+  if (filters.after != null) 'after ${formatFilterDate(filters.after!)}',
+  if (filters.before != null) 'before ${formatFilterDate(filters.before!)}',
+  if (filters.has != null) 'has ${filters.has}',
+];
 
 const _months = [
   'Jan',
@@ -61,8 +61,9 @@ class _Sheet extends StatefulWidget {
 }
 
 class _SheetState extends State<_Sheet> {
-  late final TextEditingController _from =
-      TextEditingController(text: widget.initial.from ?? '');
+  late final TextEditingController _from = TextEditingController(
+    text: widget.initial.from ?? '',
+  );
 
   late DateTime? _after = widget.initial.after;
   late DateTime? _before = widget.initial.before;
@@ -81,9 +82,7 @@ class _SheetState extends State<_Sheet> {
     return Padding(
       // For the keyboard, so the handle field is not covered while it is
       // being typed into.
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.viewInsetsOf(context).bottom,
-      ),
+      padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(

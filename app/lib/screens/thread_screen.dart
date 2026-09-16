@@ -85,7 +85,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
   void _recalculate() {
     // A picture with no words is a message; an empty box is not. Never while
     // an upload is in flight, or the server is sent a file it does not have.
-    _canSend = (_box.text.trim().isNotEmpty || _media.ready.isNotEmpty) &&
+    _canSend =
+        (_box.text.trim().isNotEmpty || _media.ready.isNotEmpty) &&
         !_media.isUploading;
   }
 
@@ -142,8 +143,9 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
   }
 
   Future<void> _conversationAction(String action) async {
-    final notifier =
-        ref.read(threadProvider(widget.args.conversationId).notifier);
+    final notifier = ref.read(
+      threadProvider(widget.args.conversationId).notifier,
+    );
 
     switch (action) {
       case 'mute':
@@ -157,7 +159,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
       case 'block':
         final sure = await _confirm(
           title: 'Block this account?',
-          detail: 'They cannot message you, and this conversation leaves your '
+          detail:
+              'They cannot message you, and this conversation leaves your '
               'list. You can undo it from Settings.',
           confirm: 'Block',
         );
@@ -184,7 +187,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
       case 'leave':
         final sure = await _confirm(
           title: 'Remove this conversation?',
-          detail: 'It disappears from your list. The other person keeps '
+          detail:
+              'It disappears from your list. The other person keeps '
               'theirs, and it comes back if either of you writes again.',
           confirm: 'Remove',
         );
@@ -273,7 +277,9 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     _box.clear();
     setState(() => _replyingTo = null);
     unawaited(HapticFeedback.selectionClick());
-    await ref.read(threadProvider(widget.args.conversationId).notifier).send(
+    await ref
+        .read(threadProvider(widget.args.conversationId).notifier)
+        .send(
           text,
           senderId: me,
           media: _media.ready,
@@ -285,7 +291,10 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
 
   /// Who wrote [message], as the quote labels it.
   String _authorOf(
-      DirectMessage message, String? me, List<MessagePerson> people) {
+    DirectMessage message,
+    String? me,
+    List<MessagePerson> people,
+  ) {
     if (me != null && message.senderId == me) return 'You';
     for (final person in people) {
       if (person.id == message.senderId) return person.displayName;
@@ -296,8 +305,9 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(threadProvider(widget.args.conversationId));
-    final notifier =
-        ref.read(threadProvider(widget.args.conversationId).notifier);
+    final notifier = ref.read(
+      threadProvider(widget.args.conversationId).notifier,
+    );
     final me = ref.watch(currentUserProvider).asData?.value.id;
 
     // The list is the truth once it has landed; the arguments are what the
@@ -317,17 +327,15 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
           onTap: other == null
               ? null
               : () => openProfile(
-                    context,
-                    username: other.username,
-                    userId: other.id,
-                  ),
+                  context,
+                  username: other.username,
+                  userId: other.id,
+                ),
           child: Row(
             children: [
               CircleAvatar(
                 radius: 16,
-                backgroundColor: Theme.of(context)
-                    .colorScheme
-                    .primary
+                backgroundColor: Theme.of(context).colorScheme.primary
                     .withValues(alpha: .15),
                 foregroundImage: other?.avatarUrl == null
                     ? null
@@ -360,9 +368,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: TypographyTokens.fontSize1,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSurface
+                          color: Theme.of(context).colorScheme.onSurface
                               .withValues(alpha: 0.6),
                         ),
                       ),
@@ -485,7 +491,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
           mine: mine,
           // Grouped: consecutive messages from the same person on the same
           // minute do not each need their own timestamp.
-          grouped: previous != null &&
+          grouped:
+              previous != null &&
               previous.senderId == message.senderId &&
               message.createdAt.difference(previous.createdAt).inMinutes < 2,
           onRetry: () => notifier.retry(message),
@@ -545,15 +552,17 @@ class _Bubble extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: grouped ? 2 : SpacingTokens.space8),
       child: Row(
-        mainAxisAlignment:
-            mine ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment: mine
+            ? MainAxisAlignment.end
+            : MainAxisAlignment.start,
         children: [
           Flexible(
             child: GestureDetector(
               onLongPress: () => _openOptions(context),
               child: Column(
-                crossAxisAlignment:
-                    mine ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                crossAxisAlignment: mine
+                    ? CrossAxisAlignment.end
+                    : CrossAxisAlignment.start,
                 children: [
                   Container(
                     constraints: BoxConstraints(
@@ -567,16 +576,16 @@ class _Bubble extends StatelessWidget {
                       color: message.failed
                           ? scheme.error.withValues(alpha: 0.12)
                           : mine
-                              ? scheme.primary
-                              // `surfaceContainer`, not the top of the
-                              // ramp. A bubble is the most repeated shape in
-                              // the app -- a hundred down one screen -- so
-                              // it takes the quietest step that still gives
-                              // it an edge: 2.47 L* off the page, which is
-                              // what the messaging apps this was measured
-                              // against use. `Highest` is for something
-                              // there is one of.
-                              : scheme.surfaceContainer,
+                          ? scheme.primary
+                          // `surfaceContainer`, not the top of the
+                          // ramp. A bubble is the most repeated shape in
+                          // the app -- a hundred down one screen -- so
+                          // it takes the quietest step that still gives
+                          // it an edge: 2.47 L* off the page, which is
+                          // what the messaging apps this was measured
+                          // against use. `Highest` is for something
+                          // there is one of.
+                          : scheme.surfaceContainer,
                       borderRadius: BorderRadius.only(
                         topLeft: radius,
                         topRight: radius,
@@ -598,13 +607,15 @@ class _Bubble extends StatelessWidget {
                           ),
                         // A recording is a player, not a picture, so it is
                         // split out the same way a post's is.
-                        for (final voice
-                            in message.media.where((m) => m.isVoice))
+                        for (final voice in message.media.where(
+                          (m) => m.isVoice,
+                        ))
                           VoicePostPlayer(media: voice),
                         if (message.media.any((m) => m.isVisual)) ...[
                           ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(RadiusTokens.radiusSm),
+                            borderRadius: BorderRadius.circular(
+                              RadiusTokens.radiusSm,
+                            ),
                             child: MediaGrid(
                               media: message.media
                                   .where((m) => m.isVisual)
@@ -624,8 +635,8 @@ class _Bubble extends StatelessWidget {
                               color: message.failed
                                   ? scheme.onSurface
                                   : mine
-                                      ? scheme.onPrimary
-                                      : scheme.onSurface,
+                                  ? scheme.onPrimary
+                                  : scheme.onSurface,
                             ),
                           ),
                       ],
@@ -734,10 +745,13 @@ class _Status extends StatelessWidget {
           foregroundColor: scheme.error,
         ),
         icon: const Icon(Iconsax.refresh, size: 13),
-        label: const Text('Not sent. Tap to try again',
-            style: TextStyle(
-                fontSize: TypographyTokens.fontSize1,
-                fontWeight: FontWeight.w600)),
+        label: const Text(
+          'Not sent. Tap to try again',
+          style: TextStyle(
+            fontSize: TypographyTokens.fontSize1,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       );
     }
 
@@ -748,8 +762,10 @@ class _Status extends StatelessWidget {
         children: [
           Text(
             message.sending ? 'Sending…' : age(message.createdAt),
-            style:
-                TextStyle(fontSize: TypographyTokens.fontSize1, color: muted),
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize1,
+              color: muted,
+            ),
           ),
           // Shown rather than assumed. A conversation is encrypted only when
           // both sides have published a key, and the reader is entitled to
@@ -892,8 +908,9 @@ class _Composer extends StatelessWidget {
                       vertical: SpacingTokens.space12,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.circular(RadiusTokens.radiusFull),
+                      borderRadius: BorderRadius.circular(
+                        RadiusTokens.radiusFull,
+                      ),
                       borderSide: BorderSide.none,
                     ),
                   ),
@@ -950,8 +967,8 @@ class _Quote extends StatelessWidget {
     final text = message == null
         ? 'Message'
         : message.isEmpty
-            ? 'Attachment'
-            : message.body.trim();
+        ? 'Attachment'
+        : message.body.trim();
 
     return Container(
       margin: const EdgeInsets.only(bottom: SpacingTokens.space4),

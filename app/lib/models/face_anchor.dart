@@ -88,9 +88,9 @@ class FaceAnchor {
     if (frame.width <= 0 || frame.height <= 0) return null;
 
     Offset at(int index) => Offset(
-          landmarks[index].x * frame.width,
-          landmarks[index].y * frame.height,
-        );
+      landmarks[index].x * frame.width,
+      landmarks[index].y * frame.height,
+    );
 
     final left = at(leftIris);
     final right = at(rightIris);
@@ -122,7 +122,8 @@ class FaceAnchor {
   double get rollRadians => rollDegrees * math.pi / 180;
 
   @override
-  String toString() => 'FaceAnchor(centre: $centre, ipd: '
+  String toString() =>
+      'FaceAnchor(centre: $centre, ipd: '
       '${interpupillary.toStringAsFixed(1)}, roll: '
       '${rollDegrees.toStringAsFixed(2)}deg)';
 }

@@ -2,11 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/post_media.dart';
 import 'package:kyron_app/widgets/inline_video.dart';
 
-PostMedia _media({
-  MediaKind kind = MediaKind.video,
-  int? width,
-  int? height,
-}) =>
+PostMedia _media({MediaKind kind = MediaKind.video, int? width, int? height}) =>
     PostMedia(
       id: 'm1',
       kind: kind,
@@ -28,10 +24,7 @@ void main() {
         SizedInlineVideo.ratioFor(_media(width: 1920, height: 1080)),
         closeTo(1.7778, 0.0001),
       );
-      expect(
-        SizedInlineVideo.ratioFor(_media(width: 1000, height: 1000)),
-        1.0,
-      );
+      expect(SizedInlineVideo.ratioFor(_media(width: 1000, height: 1000)), 1.0);
     });
 
     test('assumes portrait when the upload recorded no dimensions', () {

@@ -337,7 +337,9 @@ class _Chrome extends StatelessWidget {
                   label: 'Close the browser',
                   onTap: onClose,
                 ),
-                Expanded(child: AddressPill(tab: tab, onTap: onAddress)),
+                Expanded(
+                  child: AddressPill(tab: tab, onTap: onAddress),
+                ),
                 TabCountButton(count: tabs.length, onTap: onTabs),
               ],
             ),
@@ -383,11 +385,7 @@ class _Page extends StatelessWidget {
           Positioned.fill(
             child: ColoredBox(
               color: BrowserPalette.of(context).paper,
-              child: PageFailure(
-                tab: tab,
-                onRetry: onRetry,
-                onLeave: onLeave,
-              ),
+              child: PageFailure(tab: tab, onRetry: onRetry, onLeave: onLeave),
             ),
           ),
       ],

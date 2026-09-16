@@ -88,9 +88,7 @@ class _AtomicCardState extends State<AtomicCard> {
           child: Ink(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
-              border: Border.all(
-                color: scheme.outline.withValues(alpha: 0.22),
-              ),
+              border: Border.all(color: scheme.outline.withValues(alpha: 0.22)),
             ),
             padding: const EdgeInsets.all(AtomicCard._padding),
             child: Column(

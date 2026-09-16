@@ -14,11 +14,11 @@ class _Clip {
   bool get playing => changes.isEmpty ? false : changes.last;
 
   void report(double fraction, double distance) => VideoStage.instance.report(
-        this,
-        visibleFraction: fraction,
-        distance: distance,
-        onChanged: changes.add,
-      );
+    this,
+    visibleFraction: fraction,
+    distance: distance,
+    onChanged: changes.add,
+  );
 
   void withdraw() => VideoStage.instance.withdraw(this);
 }
@@ -184,21 +184,23 @@ void main() {
       expect(VideoStage.instance.active, same(viewer));
     });
 
-    test('beats a clip dead centre, which centrality alone would not',
-        () async {
-      // The margin protects whoever holds the stage. A viewer is not a
-      // contender on centrality -- it is the screen -- so it does not go
-      // through that comparison at all.
-      final feed = _Clip('feed');
-      feed.report(1, 0);
-      await _settle();
+    test(
+      'beats a clip dead centre, which centrality alone would not',
+      () async {
+        // The margin protects whoever holds the stage. A viewer is not a
+        // contender on centrality -- it is the screen -- so it does not go
+        // through that comparison at all.
+        final feed = _Clip('feed');
+        feed.report(1, 0);
+        await _settle();
 
-      final viewer = Object();
-      VideoStage.instance.claim(viewer, (_) {});
-      await _settle();
+        final viewer = Object();
+        VideoStage.instance.claim(viewer, (_) {});
+        await _settle();
 
-      expect(VideoStage.instance.active, same(viewer));
-    });
+        expect(VideoStage.instance.active, same(viewer));
+      },
+    );
 
     test('nothing in the feed can take it back while it is open', () async {
       final viewer = Object();

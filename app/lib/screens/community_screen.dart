@@ -19,6 +19,7 @@ import 'community_composer_screen.dart';
 import 'community_manage_screen.dart';
 import '../widgets/create_fab.dart';
 import '../widgets/action_sheet.dart';
+
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter/services.dart';
 
@@ -142,8 +143,8 @@ class CommunityScreen extends ConsumerWidget {
                   children: [
                     _GlassButton(
                       icon: Iconsax.arrow_left_copy,
-                      tooltip:
-                          MaterialLocalizations.of(context).backButtonTooltip,
+                      tooltip: MaterialLocalizations.of(context)
+                          .backButtonTooltip,
                       onPressed: () => Navigator.pop(context),
                     ),
                     const Spacer(),
@@ -281,8 +282,9 @@ class CommunityScreen extends ConsumerWidget {
     );
     if (posted == true) {
       ref
-          .read(postListProvider(PostListSource.community(community.slug))
-              .notifier)
+          .read(
+            postListProvider(PostListSource.community(community.slug)).notifier,
+          )
           .refresh();
     }
   }
@@ -556,9 +558,8 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final muted = Theme.of(context).colorScheme.onSurface.withValues(
-          alpha: 0.6,
-        );
+    final muted = Theme.of(context).colorScheme.onSurface
+        .withValues(alpha: 0.6);
 
     return Row(
       mainAxisSize: MainAxisSize.min,

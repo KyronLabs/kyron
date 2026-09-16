@@ -275,11 +275,7 @@ class _Pane extends StatelessWidget {
                 color: scheme.onSurface,
                 shape: BoxShape.circle,
               ),
-              child: Icon(
-                chip,
-                size: size * 0.10,
-                color: scheme.surface,
-              ),
+              child: Icon(chip, size: size * 0.10, color: scheme.surface),
             ),
           ],
         ),
@@ -287,8 +283,11 @@ class _Pane extends StatelessWidget {
     );
   }
 
-  Widget _rule(ColorScheme scheme,
-      {required double width, required double alpha}) {
+  Widget _rule(
+    ColorScheme scheme, {
+    required double width,
+    required double alpha,
+  }) {
     return Container(
       width: width,
       height: size * 0.035,
@@ -312,7 +311,9 @@ class _Mark extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(size * 0.06),
-      child: CustomPaint(painter: _MarkPainter(mark: mark, ink: ink)),
+      child: CustomPaint(
+        painter: _MarkPainter(mark: mark, ink: ink),
+      ),
     );
   }
 }

@@ -14,7 +14,7 @@ class AppSectionTitle extends StatelessWidget {
         if (subtitle != null) ...[
           const SizedBox(height: 4),
           Text(subtitle!, style: Theme.of(context).textTheme.bodyMedium),
-        ]
+        ],
       ],
     );
   }

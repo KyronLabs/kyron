@@ -56,10 +56,7 @@ void main() {
         openers.add(file.path.replaceAll(r'\', '/'));
       }
 
-      expect(
-        openers..sort(),
-        ['lib/screens/browser/browser_route.dart', door],
-      );
+      expect(openers..sort(), ['lib/screens/browser/browser_route.dart', door]);
     });
 
     test('and that file really does hold the call, so this can fail', () {
@@ -75,9 +72,13 @@ void main() {
   group('AppBrowser.parse', () {
     test('reads a bare domain as a link, the way a post means it', () {
       expect(
-          AppBrowser.parse('example.com')?.toString(), 'https://example.com');
-      expect(AppBrowser.parse('sub.example.co.uk/a/b')?.toString(),
-          'https://sub.example.co.uk/a/b');
+        AppBrowser.parse('example.com')?.toString(),
+        'https://example.com',
+      );
+      expect(
+        AppBrowser.parse('sub.example.co.uk/a/b')?.toString(),
+        'https://sub.example.co.uk/a/b',
+      );
     });
 
     test('leaves a URL that names its own scheme alone', () {
@@ -99,10 +100,14 @@ void main() {
 
   group('AppBrowser.destinationOf', () {
     test('http and https stay inside Kyron', () {
-      expect(AppBrowser.destinationOf(Uri.parse('https://example.com')),
-          LinkDestination.inApp);
-      expect(AppBrowser.destinationOf(Uri.parse('http://example.com')),
-          LinkDestination.inApp);
+      expect(
+        AppBrowser.destinationOf(Uri.parse('https://example.com')),
+        LinkDestination.inApp,
+      );
+      expect(
+        AppBrowser.destinationOf(Uri.parse('http://example.com')),
+        LinkDestination.inApp,
+      );
     });
 
     test('a scheme no web view renders is handed to the device', () {
@@ -113,16 +118,20 @@ void main() {
         'geo:51.5,-0.12',
       ]) {
         expect(
-            AppBrowser.destinationOf(Uri.parse(raw)), LinkDestination.handOff,
-            reason: raw);
+          AppBrowser.destinationOf(Uri.parse(raw)),
+          LinkDestination.handOff,
+          reason: raw,
+        );
       }
     });
 
     test('a web URL with no host is refused rather than opened', () {
       // Uri.parse('https:///x') has scheme and no host. Loading it shows an
       // error page for something that was never a page.
-      expect(AppBrowser.destinationOf(Uri.parse('https:///x')),
-          LinkDestination.refused);
+      expect(
+        AppBrowser.destinationOf(Uri.parse('https:///x')),
+        LinkDestination.refused,
+      );
     });
   });
 }

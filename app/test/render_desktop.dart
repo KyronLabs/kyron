@@ -30,45 +30,47 @@ class _Page extends StatelessWidget {
     final ink = scheme.onSurface;
 
     Widget bar(double w, double h, double o) => Container(
-          width: w,
-          height: h,
-          margin: const EdgeInsets.only(bottom: 10),
-          decoration: BoxDecoration(
-            color: ink.withValues(alpha: o),
-            borderRadius: BorderRadius.circular(4),
-          ),
-        );
+      width: w,
+      height: h,
+      margin: const EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+        color: ink.withValues(alpha: o),
+        borderRadius: BorderRadius.circular(4),
+      ),
+    );
 
     Widget post() => Container(
-          margin: const EdgeInsets.only(bottom: 14),
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: scheme.surface,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: ink.withValues(alpha: 0.08)),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      margin: const EdgeInsets.only(bottom: 14),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: scheme.surface,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: ink.withValues(alpha: 0.08)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             children: [
-              Row(children: [
-                Container(
-                  width: 34,
-                  height: 34,
-                  decoration: BoxDecoration(
-                    color: ink.withValues(alpha: 0.12),
-                    shape: BoxShape.circle,
-                  ),
+              Container(
+                width: 34,
+                height: 34,
+                decoration: BoxDecoration(
+                  color: ink.withValues(alpha: 0.12),
+                  shape: BoxShape.circle,
                 ),
-                const SizedBox(width: 10),
-                bar(120, 10, 0.55),
-              ]),
-              const SizedBox(height: 12),
-              bar(double.infinity, 9, 0.28),
-              bar(520, 9, 0.28),
-              bar(400, 9, 0.28),
+              ),
+              const SizedBox(width: 10),
+              bar(120, 10, 0.55),
             ],
           ),
-        );
+          const SizedBox(height: 12),
+          bar(double.infinity, 9, 0.28),
+          bar(520, 9, 0.28),
+          bar(400, 9, 0.28),
+        ],
+      ),
+    );
 
     return ColoredBox(
       color: Theme.of(context).brightness == Brightness.dark
@@ -92,12 +94,14 @@ void main() {
     Directory(out).createSync(recursive: true);
     for (final family in ['Inter', 'Roboto']) {
       final loader = FontLoader(family)
-        ..addFont(Future.value(
-          File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
-              .readAsBytesSync()
-              .buffer
-              .asByteData(),
-        ));
+        ..addFont(
+          Future.value(
+            File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+                .readAsBytesSync()
+                .buffer
+                .asByteData(),
+          ),
+        );
       await loader.load();
     }
 
@@ -122,7 +126,7 @@ void main() {
     for (final dark in [false, true]) {
       for (final index in [
         NavDestinations.home.index,
-        NavDestinations.messages.index
+        NavDestinations.messages.index,
       ]) {
         await tester.pumpWidget(
           RepaintBoundary(

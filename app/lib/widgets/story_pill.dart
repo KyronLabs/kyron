@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+
 import '../providers/stories_provider.dart';
 
 class StoryPill extends StatefulWidget {
@@ -114,7 +115,8 @@ class _StoryPillState extends State<StoryPill>
                                 const Color(0xFF14B8A6),
                               ],
                               transform: GradientRotation(
-                                  _pulseController.value * 2 * 3.14159),
+                                _pulseController.value * 2 * 3.14159,
+                              ),
                             ),
                           ),
                         ),
@@ -153,9 +155,7 @@ class _StoryPillState extends State<StoryPill>
                           ),
                           color: _getAvatarBackground(context),
                         ),
-                        child: Center(
-                          child: _buildAvatarContent(context),
-                        ),
+                        child: Center(child: _buildAvatarContent(context)),
                       ),
                       if (widget.status == StoryStatus.uploading)
                         const SizedBox(
@@ -163,8 +163,9 @@ class _StoryPillState extends State<StoryPill>
                           height: 16,
                           child: CircularProgressIndicator(
                             strokeWidth: 2,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white,
+                            ),
                           ),
                         ),
                     ],

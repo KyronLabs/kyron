@@ -21,12 +21,14 @@ void main() {
     Directory(out).createSync(recursive: true);
     for (final family in ['Inter', 'Roboto']) {
       final loader = FontLoader(family)
-        ..addFont(Future.value(
-          File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
-              .readAsBytesSync()
-              .buffer
-              .asByteData(),
-        ));
+        ..addFont(
+          Future.value(
+            File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+                .readAsBytesSync()
+                .buffer
+                .asByteData(),
+          ),
+        );
       await loader.load();
     }
 
@@ -70,7 +72,8 @@ void main() {
           }
         }
         await shoot(
-            'composer-${dark ? 'dark' : 'light'}-${typed ? 'typed' : 'empty'}');
+          'composer-${dark ? 'dark' : 'light'}-${typed ? 'typed' : 'empty'}',
+        );
       }
     }
 

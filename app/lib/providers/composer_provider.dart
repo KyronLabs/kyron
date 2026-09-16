@@ -182,11 +182,10 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     this._ref,
     this._draftService, {
     Duration autosaveDelay = defaultAutosaveDelay,
-  })  : _autosaveDelay = autosaveDelay,
-        super(ComposerState(
-          content: '',
-          placeholderText: _randomPlaceholder(),
-        )) {
+  }) : _autosaveDelay = autosaveDelay,
+       super(
+         ComposerState(content: '', placeholderText: _randomPlaceholder()),
+       ) {
     _loadDraft();
   }
 
@@ -198,8 +197,9 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     'Type, speak, or think-out-loud',
   ];
 
-  static String _randomPlaceholder() => _placeholders[
-      DateTime.now().millisecondsSinceEpoch % _placeholders.length];
+  static String _randomPlaceholder() =>
+      _placeholders[DateTime.now().millisecondsSinceEpoch %
+          _placeholders.length];
 
   /// Every edit, rather than a call at each of the ten places one can happen.
   ///
@@ -259,8 +259,10 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
   void startPlaceholderRotation() {
     _placeholderTimer?.cancel();
-    _placeholderTimer =
-        Timer.periodic(const Duration(seconds: 10), (_) => rotatePlaceholder());
+    _placeholderTimer = Timer.periodic(
+      const Duration(seconds: 10),
+      (_) => rotatePlaceholder(),
+    );
   }
 
   void stopPlaceholderRotation() => _placeholderTimer?.cancel();
@@ -375,8 +377,11 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
   /// than after uploading it and being told 413.
   static const maxAttachmentBytes = 25 * 1024 * 1024;
 
-  Future<void> _attach(XFile file,
-      {required bool video, MediaKind? kind}) async {
+  Future<void> _attach(
+    XFile file, {
+    required bool video,
+    MediaKind? kind,
+  }) async {
     final resolved = kind ?? (video ? MediaKind.video : MediaKind.image);
 
     final bytes = await file.length();
@@ -387,7 +392,8 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
           PendingMedia(
             path: file.path,
             kind: resolved,
-            error: 'That file is larger than '
+            error:
+                'That file is larger than '
                 '${maxAttachmentBytes ~/ (1024 * 1024)} MB.',
           ),
         ],
@@ -440,8 +446,9 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     }
 
     try {
-      final uploaded =
-          await _ref.read(feedRepositoryProvider).uploadMedia(pending);
+      final uploaded = await _ref
+          .read(feedRepositoryProvider)
+          .uploadMedia(pending);
       _replaceMedia(pending.path, uploaded);
     } catch (e) {
       _replaceMedia(
@@ -489,8 +496,9 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
     _replaceMedia(path, failed.copyWith(clearError: true));
     try {
-      final uploaded =
-          await _ref.read(feedRepositoryProvider).uploadMedia(failed);
+      final uploaded = await _ref
+          .read(feedRepositoryProvider)
+          .uploadMedia(failed);
       _replaceMedia(path, uploaded);
     } catch (e) {
       _replaceMedia(
@@ -502,9 +510,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
   void _replaceMedia(String path, PendingMedia updated) {
     state = state.copyWith(
-      media: [
-        for (final m in state.media) m.path == path ? updated : m,
-      ],
+      media: [for (final m in state.media) m.path == path ? updated : m],
     );
   }
 
@@ -551,8 +557,9 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     );
 
     try {
-      final uploaded =
-          await _ref.read(feedRepositoryProvider).uploadMedia(recording);
+      final uploaded = await _ref
+          .read(feedRepositoryProvider)
+          .uploadMedia(recording);
       _replaceMedia(recording.path, uploaded);
     } catch (e) {
       _replaceMedia(
@@ -587,7 +594,9 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     _warning = null;
 
     try {
-      final FeedPost created = await _ref.read(feedRepositoryProvider).create(
+      final FeedPost created = await _ref
+          .read(feedRepositoryProvider)
+          .create(
             state.content.trim(),
             media: state.media,
             quotedPostId: state.quoting?.id,
@@ -601,7 +610,8 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
       // comes back missing means the server did not store it, and saying so
       // is the difference between a bug and a mystery.
       if (attachedPoll != null && created.poll == null) {
-        _warning = 'Your post went out, but its poll was not saved. '
+        _warning =
+            'Your post went out, but its poll was not saved. '
             'The server did not return one.';
         AppLog.instance.error(
           'composer',
@@ -678,10 +688,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
 
   void clear() {
     _markSaved();
-    state = ComposerState(
-      content: '',
-      placeholderText: _randomPlaceholder(),
-    );
+    state = ComposerState(content: '', placeholderText: _randomPlaceholder());
   }
 
   @override

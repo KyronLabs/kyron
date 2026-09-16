@@ -99,7 +99,9 @@ class _PersonTileState extends ConsumerState<PersonTile> {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                          fontSize: TypographyTokens.fontSize2, height: 1.3),
+                        fontSize: TypographyTokens.fontSize2,
+                        height: 1.3,
+                      ),
                     ),
                   ],
                   const SizedBox(height: SpacingTokens.space4),
@@ -154,8 +156,10 @@ class _PersonTileState extends ConsumerState<PersonTile> {
       widget.onChanged?.call(
         _person.copyWith(
           isFollowing: !wasFollowing,
-          followers:
-              (_person.followers + (wasFollowing ? -1 : 1)).clamp(0, 1 << 31),
+          followers: (_person.followers + (wasFollowing ? -1 : 1)).clamp(
+            0,
+            1 << 31,
+          ),
         ),
       );
     } catch (error) {
@@ -175,8 +179,8 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final muted =
-        Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55);
+    final muted = Theme.of(context).colorScheme.onSurface
+        .withValues(alpha: 0.55);
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -191,8 +195,10 @@ class _Stat extends StatelessWidget {
             text,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style:
-                TextStyle(fontSize: TypographyTokens.fontSize1, color: muted),
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize1,
+              color: muted,
+            ),
           ),
         ),
       ],

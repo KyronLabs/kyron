@@ -63,10 +63,12 @@ class PostActionsRow extends StatelessWidget {
         PostAction(
           // Outline until you act on it, filled once you have -- so the state
           // reads at a glance instead of only by colour.
-          icon:
-              post.reposted ? Iconsax.repeat_circle_copy : Iconsax.repeat_copy,
-          label:
-              showCounts && post.reposts > 0 ? formatCount(post.reposts) : null,
+          icon: post.reposted
+              ? Iconsax.repeat_circle_copy
+              : Iconsax.repeat_copy,
+          label: showCounts && post.reposts > 0
+              ? formatCount(post.reposts)
+              : null,
           active: post.reposted,
           activeColor: PostActionColors.repost,
           tooltip: 'Repost',
@@ -253,7 +255,9 @@ class _PostActionState extends State<PostAction>
                     widget.label!,
                     key: ValueKey(widget.label),
                     style: TextStyle(
-                        fontSize: TypographyTokens.fontSize1, color: colour),
+                      fontSize: TypographyTokens.fontSize1,
+                      color: colour,
+                    ),
                   ),
                 ),
               ],

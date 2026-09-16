@@ -25,11 +25,7 @@ class FeedCanvas extends ConsumerWidget {
   /// a drag, and the content stopped tracking the finger.
   final double topInset;
 
-  const FeedCanvas({
-    super.key,
-    this.scrollController,
-    this.topInset = 0,
-  });
+  const FeedCanvas({super.key, this.scrollController, this.topInset = 0});
 
   /// Height of the fade under the tab strip, in logical pixels.
   ///
@@ -38,25 +34,24 @@ class FeedCanvas extends ConsumerWidget {
   static const double topFadeHeight = 16;
 
   static String _emptyTitle(String tab) => switch (tab) {
-        'Following' => 'Nothing from the people you follow',
-        'Videos' => 'No videos yet',
-        _ => 'Nothing here yet',
-      };
+    'Following' => 'Nothing from the people you follow',
+    'Videos' => 'No videos yet',
+    _ => 'Nothing here yet',
+  };
 
   static EmptyArt _emptyArt(String tab) => switch (tab) {
-        'Following' => EmptyArt.people,
-        'Videos' => EmptyArt.videos,
-        'For You' => EmptyArt.posts,
-        _ => EmptyArt.tag,
-      };
+    'Following' => EmptyArt.people,
+    'Videos' => EmptyArt.videos,
+    'For You' => EmptyArt.posts,
+    _ => EmptyArt.tag,
+  };
 
   static String _emptyDetail(String tab) => switch (tab) {
-        'Following' =>
-          'Follow a few accounts and their posts will show up here.',
-        'Videos' => 'Posts carrying a clip will show up here.',
-        'For You' => 'Posts will show up here as people write them.',
-        _ => 'Nothing has been posted under #$tab yet.',
-      };
+    'Following' => 'Follow a few accounts and their posts will show up here.',
+    'Videos' => 'Posts carrying a clip will show up here.',
+    'For You' => 'Posts will show up here as people write them.',
+    _ => 'Nothing has been posted under #$tab yet.',
+  };
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -26,11 +26,14 @@ void main() {
     final temp = Directory.systemTemp.createTempSync('ar-shot');
     for (final family in ['Inter', 'Roboto']) {
       final loader = FontLoader(family)
-        ..addFont(Future.value(
+        ..addFont(
+          Future.value(
             File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
                 .readAsBytesSync()
                 .buffer
-                .asByteData()));
+                .asByteData(),
+          ),
+        );
       await loader.load();
     }
 
@@ -38,21 +41,23 @@ void main() {
     tester.view.physicalSize = const Size(390, 844);
 
     for (final dark in [false, true]) {
-      await tester.pumpWidget(RepaintBoundary(
-        child: ProviderScope(
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: dark ? KyronTheme.darkTheme : KyronTheme.lightTheme,
-            home: ArLensScreen(
-              cameras: const [],
-              catalogue: LensCatalogue(
-                client: MockClient((_) async => http.Response('', 503)),
-                directory: () async => temp,
+      await tester.pumpWidget(
+        RepaintBoundary(
+          child: ProviderScope(
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: dark ? KyronTheme.darkTheme : KyronTheme.lightTheme,
+              home: ArLensScreen(
+                cameras: const [],
+                catalogue: LensCatalogue(
+                  client: MockClient((_) async => http.Response('', 503)),
+                  directory: () async => temp,
+                ),
               ),
             ),
           ),
         ),
-      ));
+      );
       await tester.pumpAndSettle();
 
       final boundary = tester.renderObject<RenderRepaintBoundary>(

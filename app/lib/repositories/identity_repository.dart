@@ -20,8 +20,9 @@ class IdentityRepository {
   /// would produce a signature that verifies against nothing, on every device,
   /// with nothing saying why.
   Future<String> challenge() async {
-    final res =
-        await _api.dio.get<Map<String, dynamic>>('/identity/did/challenge');
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/identity/did/challenge',
+    );
     final message = res.data?['message'] as String?;
     if (message == null || message.isEmpty) {
       throw StateError('The server did not answer with a challenge.');
@@ -30,9 +31,7 @@ class IdentityRepository {
   }
 
   /// Claims [did], proving it with a signature over the challenge.
-  Future<void> claim({required String did, required String signature}) =>
-      _api.dio.put<void>(
-        '/identity/did',
-        data: {'did': did, 'signature': signature},
-      );
+  Future<void> claim({required String did, required String signature}) => _api
+      .dio
+      .put<void>('/identity/did', data: {'did': did, 'signature': signature});
 }

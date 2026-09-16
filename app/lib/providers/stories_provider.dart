@@ -2,13 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 // StoryStatus is DEFINED HERE ONLY - the source of truth
-enum StoryStatus {
-  yourStory,
-  unseen,
-  seen,
-  expired,
-  uploading,
-}
+enum StoryStatus { yourStory, unseen, seen, expired, uploading }
 
 class Story {
   final String id;
@@ -92,5 +86,5 @@ class StoriesNotifier extends StateNotifier<AsyncValue<List<Story>>> {
 // ✅ ADDED: The missing provider declaration
 final storiesProvider =
     StateNotifierProvider<StoriesNotifier, AsyncValue<List<Story>>>((ref) {
-  return StoriesNotifier();
-});
+      return StoriesNotifier();
+    });

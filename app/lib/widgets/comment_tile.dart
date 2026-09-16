@@ -313,7 +313,9 @@ class _Action extends StatelessWidget {
                 Text(
                   formatCount(count),
                   style: TextStyle(
-                      fontSize: TypographyTokens.fontSize1, color: colour),
+                    fontSize: TypographyTokens.fontSize1,
+                    color: colour,
+                  ),
                 ),
               ],
             ],
@@ -333,9 +335,9 @@ class CommentAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: () => openAuthor(context, comment.author),
-        child: PostAvatar(author: comment.author, radius: size / 2),
-      );
+    onTap: () => openAuthor(context, comment.author),
+    child: PostAvatar(author: comment.author, radius: size / 2),
+  );
 }
 
 /// The row that opens a folded run of replies.
@@ -436,10 +438,7 @@ class ThreadMoreReplies extends StatelessWidget {
                   // separate people rather than one smudge.
                   border: Border.all(color: scheme.surface, width: 1.5),
                 ),
-                child: PostAvatar(
-                  author: shown[i],
-                  radius: (faceSize - 3) / 2,
-                ),
+                child: PostAvatar(author: shown[i], radius: (faceSize - 3) / 2),
               ),
             ),
           // Beside the faces, not over them: the point is that these are the

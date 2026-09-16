@@ -38,7 +38,8 @@ void main() {
       expect(
         projectRefOfUrl(SupabaseConfig.url),
         isNotNull,
-        reason: 'SUPABASE_URL should be https://<project-ref>.supabase.co, '
+        reason:
+            'SUPABASE_URL should be https://<project-ref>.supabase.co, '
             'got "${SupabaseConfig.url}"',
       );
     });
@@ -58,7 +59,8 @@ void main() {
       expect(
         keyRef,
         projectRefOfUrl(SupabaseConfig.url),
-        reason: 'SUPABASE_ANON_KEY was issued for project "$keyRef" but '
+        reason:
+            'SUPABASE_ANON_KEY was issued for project "$keyRef" but '
             'SUPABASE_URL points at "${projectRefOfUrl(SupabaseConfig.url)}". '
             'They must be the same project.',
       );
@@ -92,7 +94,8 @@ void main() {
     test('reads the ref out of a legacy anon key', () {
       String seg(Object o) =>
           base64Url.encode(utf8.encode(jsonEncode(o))).replaceAll('=', '');
-      final token = '${seg({'alg': 'HS256'})}'
+      final token =
+          '${seg({'alg': 'HS256'})}'
           '.${seg({'ref': 'abcdefghijklmnop', 'role': 'anon'})}.sig';
       expect(projectRefOf(token), 'abcdefghijklmnop');
     });

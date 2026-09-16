@@ -38,9 +38,9 @@ class _PollEditorState extends ConsumerState<PollEditor> {
 
   void _sync(ComposerPoll poll) {
     while (_controllers.length < poll.options.length) {
-      _controllers.add(TextEditingController(
-        text: poll.options[_controllers.length],
-      ));
+      _controllers.add(
+        TextEditingController(text: poll.options[_controllers.length]),
+      );
     }
     while (_controllers.length > poll.options.length) {
       _controllers.removeLast().dispose();
@@ -124,7 +124,8 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                           isDense: true,
                         ),
                         style: const TextStyle(
-                            fontSize: TypographyTokens.fontSize2),
+                          fontSize: TypographyTokens.fontSize2,
+                        ),
                       ),
                     ),
                     if (poll.canRemoveOption) ...[
@@ -154,8 +155,9 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                   ),
                   minimumSize: const Size(0, 32),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textStyle:
-                      const TextStyle(fontSize: TypographyTokens.fontSize2),
+                  textStyle: const TextStyle(
+                    fontSize: TypographyTokens.fontSize2,
+                  ),
                 ),
               ),
 
@@ -196,16 +198,15 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                         value: minutes,
                         child: Text(
                           ComposerPoll(
-                                  options: const [], durationMinutes: minutes)
-                              .durationLabel,
+                            options: const [],
+                            durationMinutes: minutes,
+                          ).durationLabel,
                         ),
                       ),
                   ],
                   onChanged: (value) => value == null
                       ? null
-                      : notifier.setPoll(
-                          poll.copyWith(durationMinutes: value),
-                        ),
+                      : notifier.setPoll(poll.copyWith(durationMinutes: value)),
                 ),
               ],
             ),
@@ -218,8 +219,9 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                 child: Text(
                   poll.problem!,
                   style: TextStyle(
-                      fontSize: TypographyTokens.fontSize1,
-                      color: scheme.error),
+                    fontSize: TypographyTokens.fontSize1,
+                    color: scheme.error,
+                  ),
                 ),
               ),
           ],
@@ -234,11 +236,7 @@ class _Tap extends StatelessWidget {
   final VoidCallback onTap;
   final Widget child;
 
-  const _Tap({
-    required this.tooltip,
-    required this.onTap,
-    required this.child,
-  });
+  const _Tap({required this.tooltip, required this.onTap, required this.child});
 
   @override
   Widget build(BuildContext context) {

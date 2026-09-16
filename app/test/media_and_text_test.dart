@@ -8,8 +8,10 @@ import 'package:kyron_app/widgets/post_text.dart';
 void main() {
   group('PostText.hashtagsIn', () {
     test('finds tags and lower-cases them, matching the server', () {
-      expect(PostText.hashtagsIn('Hello #Kyron and #running'),
-          ['kyron', 'running']);
+      expect(PostText.hashtagsIn('Hello #Kyron and #running'), [
+        'kyron',
+        'running',
+      ]);
     });
 
     test('counts a tag once however often it appears', () {
@@ -32,10 +34,11 @@ void main() {
         PostText.pattern.allMatches(text).map((m) => m.group(0)!).toList();
 
     test('picks out hashtags, mentions and links', () {
-      expect(
-        matches('hey @ada see #kyron at https://kyron.so/x'),
-        ['@ada', '#kyron', 'https://kyron.so/x'],
-      );
+      expect(matches('hey @ada see #kyron at https://kyron.so/x'), [
+        '@ada',
+        '#kyron',
+        'https://kyron.so/x',
+      ]);
     });
 
     test('leaves an email address alone', () {
@@ -132,8 +135,7 @@ void main() {
     ComposerState state({
       String content = '',
       List<PendingMedia> media = const [],
-    }) =>
-        ComposerState(content: content, media: media, placeholderText: '');
+    }) => ComposerState(content: content, media: media, placeholderText: '');
 
     test('a post carrying only an attachment can be sent', () {
       const ready = PendingMedia(
@@ -163,9 +165,11 @@ void main() {
       expect(state(content: '  ').hasContent, isFalse);
       expect(state(content: 'hi').hasContent, isTrue);
       expect(
-        state(media: const [
-          PendingMedia(path: '/tmp/a.jpg', kind: MediaKind.image)
-        ]).hasContent,
+        state(
+          media: const [
+            PendingMedia(path: '/tmp/a.jpg', kind: MediaKind.image),
+          ],
+        ).hasContent,
         isTrue,
       );
     });

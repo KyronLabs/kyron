@@ -21,17 +21,16 @@ ComposerDraft _draft({
   ComposerPoll? poll,
   List<String> topics = const [],
   QuotedPost? quoting,
-}) =>
-    ComposerDraft(
-      id: 'd1',
-      content: content,
-      replyPolicy: replyPolicy,
-      poll: poll,
-      topics: topics,
-      quoting: quoting,
-      createdAt: DateTime(2026, 9, 8),
-      updatedAt: DateTime(2026, 9, 8),
-    );
+}) => ComposerDraft(
+  id: 'd1',
+  content: content,
+  replyPolicy: replyPolicy,
+  poll: poll,
+  topics: topics,
+  quoting: quoting,
+  createdAt: DateTime(2026, 9, 8),
+  updatedAt: DateTime(2026, 9, 8),
+);
 
 void main() {
   // The reply-setting and poll buttons buzz the handset, which needs the
@@ -67,8 +66,9 @@ void main() {
     });
 
     test('keeps the topics it was filed under', () {
-      final back =
-          ComposerDraft.fromMap(stored(_draft(topics: ['tech', 'design'])));
+      final back = ComposerDraft.fromMap(
+        stored(_draft(topics: ['tech', 'design'])),
+      );
 
       expect(back.topics, ['tech', 'design']);
     });
@@ -220,13 +220,15 @@ void main() {
       final c = composer();
       await pumpEventQueue();
 
-      c.notifier.restore(_draft(
-        content: 'half a thought',
-        poll: ComposerPoll.blank(),
-        topics: ['design'],
-        replyPolicy: ReplyPolicy.mentioned,
-        quoting: _quoted,
-      ));
+      c.notifier.restore(
+        _draft(
+          content: 'half a thought',
+          poll: ComposerPoll.blank(),
+          topics: ['design'],
+          replyPolicy: ReplyPolicy.mentioned,
+          quoting: _quoted,
+        ),
+      );
 
       expect(c.notifier.state.content, 'half a thought');
       expect(c.notifier.state.poll, isNotNull);

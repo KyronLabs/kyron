@@ -113,36 +113,37 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                 child: Text(
                   _error!,
                   style: TextStyle(
-                      color: scheme.error,
-                      fontSize: TypographyTokens.fontSize2),
+                    color: scheme.error,
+                    fontSize: TypographyTokens.fontSize2,
+                  ),
                 ),
               ),
             Expanded(
               child: words == null
                   ? const Center(child: CircularProgressIndicator())
                   : words.isEmpty
-                      ? const EmptyState(
-                          art: EmptyArt.muted,
-                          title: 'Nothing muted',
-                          detail: 'Add a word or a tag above. Posts carrying '
-                              'it stay out of your feed.',
-                        )
-                      : ListView.separated(
-                          itemCount: words.length,
-                          separatorBuilder: (_, __) => Divider(
-                            height: 1,
-                            color: scheme.outline.withValues(alpha: 0.15),
-                          ),
-                          itemBuilder: (context, index) => ListTile(
-                            title: Text(words[index]),
-                            trailing: IconButton(
-                              icon: const Icon(Iconsax.close_circle_copy,
-                                  size: 18),
-                              tooltip: 'Unmute',
-                              onPressed: () => _remove(words[index]),
-                            ),
-                          ),
+                  ? const EmptyState(
+                      art: EmptyArt.muted,
+                      title: 'Nothing muted',
+                      detail:
+                          'Add a word or a tag above. Posts carrying '
+                          'it stay out of your feed.',
+                    )
+                  : ListView.separated(
+                      itemCount: words.length,
+                      separatorBuilder: (_, __) => Divider(
+                        height: 1,
+                        color: scheme.outline.withValues(alpha: 0.15),
+                      ),
+                      itemBuilder: (context, index) => ListTile(
+                        title: Text(words[index]),
+                        trailing: IconButton(
+                          icon: const Icon(Iconsax.close_circle_copy, size: 18),
+                          tooltip: 'Unmute',
+                          onPressed: () => _remove(words[index]),
                         ),
+                      ),
+                    ),
             ),
           ],
         ),
@@ -202,7 +203,10 @@ class _MutedAccountsScreenState extends ConsumerState<MutedAccountsScreen> {
           ),
           title: const Text('Muted and blocked'),
           bottom: const TabBar(
-            tabs: [Tab(text: 'Muted'), Tab(text: 'Blocked')],
+            tabs: [
+              Tab(text: 'Muted'),
+              Tab(text: 'Blocked'),
+            ],
           ),
         ),
         body: SafeArea(
@@ -289,10 +293,8 @@ class _PeopleState extends State<_People> {
 
         return ListView.separated(
           itemCount: people.length,
-          separatorBuilder: (_, __) => Divider(
-            height: 1,
-            color: scheme.outline.withValues(alpha: 0.15),
-          ),
+          separatorBuilder: (_, __) =>
+              Divider(height: 1, color: scheme.outline.withValues(alpha: 0.15)),
           itemBuilder: (context, index) {
             final person = people[index];
             return ListTile(

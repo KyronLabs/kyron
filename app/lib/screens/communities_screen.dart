@@ -125,7 +125,8 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen>
         // so a button at the bottom of the screen is a button behind the nav.
         Positioned(
           right: SpacingTokens.space16,
-          bottom: BottomNavV4.height +
+          bottom:
+              BottomNavV4.height +
               MediaQuery.paddingOf(context).bottom +
               SpacingTokens.space16,
           child: FloatingActionButton(
@@ -195,19 +196,19 @@ class _MineTabState extends ConsumerState<_MineTab> {
       onRefresh: notifier.refresh,
       child: state.items.isEmpty
           ? (state.error != null
-                  ? EmptyState.failed(
-                      title: 'Could not load your communities',
-                      detail: state.error,
-                      onAction: notifier.refresh,
-                    )
-                  : EmptyState(
-                      art: EmptyArt.communities,
-                      title: 'You are not in any communities',
-                      detail: 'Find one on Discover, or start your own.',
-                      action: 'Start a community',
-                      onAction: widget.onCreate,
-                    ))
-              .scrollable
+                    ? EmptyState.failed(
+                        title: 'Could not load your communities',
+                        detail: state.error,
+                        onAction: notifier.refresh,
+                      )
+                    : EmptyState(
+                        art: EmptyArt.communities,
+                        title: 'You are not in any communities',
+                        detail: 'Find one on Discover, or start your own.',
+                        action: 'Start a community',
+                        onAction: widget.onCreate,
+                      ))
+                .scrollable
           : ListView.separated(
               controller: _scroll,
               physics: const AlwaysScrollableScrollPhysics(),
@@ -217,9 +218,7 @@ class _MineTabState extends ConsumerState<_MineTab> {
                 height: 1,
                 thickness: 0.5,
                 indent: 76,
-                color: Theme.of(context)
-                    .colorScheme
-                    .outline
+                color: Theme.of(context).colorScheme.outline
                     .withValues(alpha: 0.15),
               ),
               itemBuilder: (context, index) {
@@ -318,25 +317,25 @@ class _DiscoverTabState extends ConsumerState<_DiscoverTab> {
                   onRefresh: notifier.refresh,
                   child: state.items.isEmpty
                       ? (state.error != null
-                              ? EmptyState.failed(
-                                  title: 'Could not load communities',
-                                  detail: state.error,
-                                  onAction: notifier.refresh,
-                                )
-                              : EmptyState(
-                                  art: notifier.query.isEmpty
-                                      ? EmptyArt.communities
-                                      : EmptyArt.noMatch,
-                                  title: notifier.query.isEmpty
-                                      ? 'Nothing left to join'
-                                      : 'No communities match that',
-                                  detail: notifier.query.isEmpty
-                                      ? 'You are already in every community '
-                                          'on Kyron. Start another one.'
-                                      : 'Try a different word, or start a '
-                                          'community by that name.',
-                                ))
-                          .scrollable
+                                ? EmptyState.failed(
+                                    title: 'Could not load communities',
+                                    detail: state.error,
+                                    onAction: notifier.refresh,
+                                  )
+                                : EmptyState(
+                                    art: notifier.query.isEmpty
+                                        ? EmptyArt.communities
+                                        : EmptyArt.noMatch,
+                                    title: notifier.query.isEmpty
+                                        ? 'Nothing left to join'
+                                        : 'No communities match that',
+                                    detail: notifier.query.isEmpty
+                                        ? 'You are already in every community '
+                                              'on Kyron. Start another one.'
+                                        : 'Try a different word, or start a '
+                                              'community by that name.',
+                                  ))
+                            .scrollable
                       : ListView.separated(
                           physics: const AlwaysScrollableScrollPhysics(),
                           padding: EdgeInsets.only(
@@ -446,8 +445,9 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
           const Text(
             'Start a community',
             style: TextStyle(
-                fontSize: TypographyTokens.fontSize5,
-                fontWeight: FontWeight.w700),
+              fontSize: TypographyTokens.fontSize5,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           const SizedBox(height: SpacingTokens.space16),
           TextField(

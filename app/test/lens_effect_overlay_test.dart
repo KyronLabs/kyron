@@ -87,17 +87,25 @@ void main() {
       final hole = Path()..addOval(const Rect.fromLTWH(300, 500, 120, 60));
       final clip = EverythingBut(hole, frame).getClip(box);
 
-      expect(clip.contains(const Offset(360, 530)), isFalse,
-          reason: 'the middle of the slot is what stays sharp');
-      expect(clip.contains(const Offset(700, 1200)), isTrue,
-          reason: 'and everything else is still frosted');
+      expect(
+        clip.contains(const Offset(360, 530)),
+        isFalse,
+        reason: 'the middle of the slot is what stays sharp',
+      );
+      expect(
+        clip.contains(const Offset(700, 1200)),
+        isTrue,
+        reason: 'and everything else is still frosted',
+      );
     });
 
     test('reclips when the frame changes, not only the region', () {
       final hole = Path()..addOval(const Rect.fromLTWH(0, 0, 10, 10));
       expect(
-        const EverythingBut(null, frame)
-            .shouldReclip(const EverythingBut(null, Size(640, 480))),
+        const EverythingBut(
+          null,
+          frame,
+        ).shouldReclip(const EverythingBut(null, Size(640, 480))),
         isTrue,
         reason: 'a camera switched to another resolution moves everything',
       );

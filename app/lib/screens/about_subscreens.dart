@@ -103,8 +103,10 @@ class _Banner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(healthy ? Iconsax.tick_circle_copy : Iconsax.warning_2_copy,
-              color: color),
+          Icon(
+            healthy ? Iconsax.tick_circle_copy : Iconsax.warning_2_copy,
+            color: color,
+          ),
           const SizedBox(width: SpacingTokens.space12),
           Expanded(
             child: Text(
@@ -235,7 +237,8 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
                   compact: true,
                   art: EmptyArt.drafts,
                   title: 'Nothing logged yet',
-                  detail: 'Failed requests and other notable events show up '
+                  detail:
+                      'Failed requests and other notable events show up '
                       'here.',
                 ),
               );
@@ -263,9 +266,7 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
     await Clipboard.setData(ClipboardData(text: text));
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(text.isEmpty ? 'Nothing to copy' : 'Log copied'),
-      ),
+      SnackBar(content: Text(text.isEmpty ? 'Nothing to copy' : 'Log copied')),
     );
   }
 
@@ -324,8 +325,10 @@ class _Entry extends StatelessWidget {
             ],
           ),
           const SizedBox(height: SpacingTokens.space2),
-          SelectableText(entry.message,
-              style: const TextStyle(fontSize: TypographyTokens.fontSize2)),
+          SelectableText(
+            entry.message,
+            style: const TextStyle(fontSize: TypographyTokens.fontSize2),
+          ),
         ],
       ),
     );
@@ -404,7 +407,7 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
               entries == 0
                   ? 'Nothing logged yet'
                   : '$entries recent entries. Review them under About › '
-                      'System log before sending.',
+                        'System log before sending.',
             ),
           ),
           const SizedBox(height: SpacingTokens.space16),
@@ -432,9 +435,11 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
 
   String _compose() {
     final buffer = StringBuffer()
-      ..writeln(_notes.text.trim().isEmpty
-          ? '(no description given)'
-          : _notes.text.trim())
+      ..writeln(
+        _notes.text.trim().isEmpty
+            ? '(no description given)'
+            : _notes.text.trim(),
+      )
       ..writeln()
       ..writeln('---')
       ..writeln('App: ${_info?.display ?? 'unknown'}')

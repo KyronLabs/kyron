@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../widgets/app_logo.dart';
 import '../widgets/gradient_scaffold.dart';
 
@@ -17,7 +18,9 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _ctrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 700));
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+    );
     _ctrl.forward();
 
     // NO automatic navigation - RootScreen handles navigation

@@ -38,11 +38,8 @@ class ReportScreen extends ConsumerStatefulWidget {
   }) {
     return Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
-        builder: (_) => ReportScreen(
-          target: target,
-          targetId: targetId,
-          subject: subject,
-        ),
+        builder: (_) =>
+            ReportScreen(target: target, targetId: targetId, subject: subject),
       ),
     );
   }
@@ -80,8 +77,8 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
         child: _sent
             ? _Sent(subject: widget.subject)
             : _reason == null
-                ? _reasons()
-                : _details(_reason!),
+            ? _reasons()
+            : _details(_reason!),
       ),
     );
   }
@@ -166,8 +163,9 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
                 ),
               ),
               TextButton(
-                onPressed:
-                    _sending ? null : () => setState(() => _reason = null),
+                onPressed: _sending
+                    ? null
+                    : () => setState(() => _reason = null),
                 child: const Text('Change'),
               ),
             ],
@@ -191,9 +189,13 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
         ),
         if (_error != null) ...[
           const SizedBox(height: SpacingTokens.space8),
-          Text(_error!,
-              style: TextStyle(
-                  color: scheme.error, fontSize: TypographyTokens.fontSize2)),
+          Text(
+            _error!,
+            style: TextStyle(
+              color: scheme.error,
+              fontSize: TypographyTokens.fontSize2,
+            ),
+          ),
         ],
         const SizedBox(height: SpacingTokens.space8),
         FilledButton(
@@ -225,7 +227,9 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
     });
 
     try {
-      await ref.read(moderationRepositoryProvider).report(
+      await ref
+          .read(moderationRepositoryProvider)
+          .report(
             target: widget.target,
             targetId: widget.targetId,
             reason: _reason!,

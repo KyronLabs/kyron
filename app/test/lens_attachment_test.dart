@@ -10,15 +10,14 @@ Map<String, Object?> attachment({
   Object? offsetX,
   Object? offsetY,
   Object? rotation,
-}) =>
-    {
-      'asset': asset,
-      'anchor': anchor,
-      'width': width,
-      if (offsetX != null) 'offsetX': offsetX,
-      if (offsetY != null) 'offsetY': offsetY,
-      if (rotation != null) 'rotation': rotation,
-    };
+}) => {
+  'asset': asset,
+  'anchor': anchor,
+  'width': width,
+  if (offsetX != null) 'offsetX': offsetX,
+  if (offsetY != null) 'offsetY': offsetY,
+  if (rotation != null) 'rotation': rotation,
+};
 
 void main() {
   group('LensAttachment.tryParse', () {
@@ -61,9 +60,7 @@ void main() {
       expect(LensAttachment.tryParse(attachment(width: 1e9)), isNull);
       expect(LensAttachment.tryParse(attachment(width: 'big')), isNull);
       expect(
-        LensAttachment.tryParse(
-          attachment(width: LensAttachment.maxWidth),
-        ),
+        LensAttachment.tryParse(attachment(width: LensAttachment.maxWidth)),
         isNotNull,
       );
     });
@@ -194,10 +191,7 @@ void main() {
     test('a schema from the future is dropped, not half-drawn', () {
       // Better a lens that is not there than a chip that is there and does
       // nothing.
-      expect(
-        Lens.tryParse({'id': 'x', 'name': 'X', 'schema': 99}),
-        isNull,
-      );
+      expect(Lens.tryParse({'id': 'x', 'name': 'X', 'schema': 99}), isNull);
     });
 
     test('one bad attachment makes the whole lens wrong', () {

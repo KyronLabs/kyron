@@ -72,11 +72,7 @@ MentionToken? mentionAt(String text, int caret) {
   }
   if (end - start > _maxHandle) return null;
 
-  return MentionToken(
-    start: at,
-    end: end,
-    query: text.substring(start, end),
-  );
+  return MentionToken(start: at, end: end, query: text.substring(start, end));
 }
 
 /// [value] with [handle] written in as a mention.
@@ -106,12 +102,13 @@ TextEditingValue insertMention(TextEditingValue value, String handle) {
   // Nothing before it, or whitespace already: no separator needed.
   final before =
       start > 0 && !_isSpace(text.codeUnitAt(start - 1)) && token == null
-          ? ' '
-          : '';
+      ? ' '
+      : '';
   // And none after it when the text already carries one -- tagging somebody
   // in the middle of a sentence otherwise leaves a double space behind.
-  final after =
-      stop < text.length && _isSpace(text.codeUnitAt(stop)) ? '' : ' ';
+  final after = stop < text.length && _isSpace(text.codeUnitAt(stop))
+      ? ''
+      : ' ';
   final insert = '$before$tag$after';
 
   final updated = text.replaceRange(start, stop, insert);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../providers/notifications_provider.dart';
 import 'account_avatar.dart';
 import 'app_logo.dart';
@@ -109,8 +110,9 @@ class _NotificationButton extends ConsumerWidget {
         IconButton(
           onPressed: onPressed,
           icon: const Icon(Iconsax.notification_copy, size: 22),
-          tooltip:
-              unread == 0 ? 'Notifications' : 'Notifications, $unread unread',
+          tooltip: unread == 0
+              ? 'Notifications'
+              : 'Notifications, $unread unread',
           constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
           padding: EdgeInsets.zero,
         ),

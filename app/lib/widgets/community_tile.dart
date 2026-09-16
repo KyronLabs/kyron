@@ -1,5 +1,6 @@
 // lib/widgets/community_tile.dart
 import 'community_avatar.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -159,10 +160,10 @@ class _Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CommunityAvatar(
-        avatarUrl: community.avatarUrl,
-        initial: community.name.trim().isEmpty
-            ? '#'
-            : community.name.trim()[0].toUpperCase(),
-        size: 48,
-      );
+    avatarUrl: community.avatarUrl,
+    initial: community.name.trim().isEmpty
+        ? '#'
+        : community.name.trim()[0].toUpperCase(),
+    size: 48,
+  );
 }

@@ -131,18 +131,19 @@ class _TrendingTab extends ConsumerWidget {
       onRefresh: notifier.refresh,
       child: state.items.isEmpty
           ? (state.error != null
-                  ? EmptyState.failed(
-                      title: 'Could not load trending',
-                      detail: state.error,
-                      onAction: notifier.refresh,
-                    )
-                  : const EmptyState(
-                      art: EmptyArt.trending,
-                      title: 'Nothing is trending yet',
-                      detail: 'Hashtags turn up here as people start using '
-                          'them. Post one and it could be this list.',
-                    ))
-              .scrollable
+                    ? EmptyState.failed(
+                        title: 'Could not load trending',
+                        detail: state.error,
+                        onAction: notifier.refresh,
+                      )
+                    : const EmptyState(
+                        art: EmptyArt.trending,
+                        title: 'Nothing is trending yet',
+                        detail:
+                            'Hashtags turn up here as people start using '
+                            'them. Post one and it could be this list.',
+                      ))
+                .scrollable
           : ListView.separated(
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.symmetric(
@@ -153,15 +154,11 @@ class _TrendingTab extends ConsumerWidget {
                 height: 1,
                 thickness: 0.5,
                 indent: SpacingTokens.space16,
-                color: Theme.of(context)
-                    .colorScheme
-                    .outline
+                color: Theme.of(context).colorScheme.outline
                     .withValues(alpha: 0.15),
               ),
-              itemBuilder: (context, index) => _TrendingRow(
-                rank: index + 1,
-                tag: state.items[index],
-              ),
+              itemBuilder: (context, index) =>
+                  _TrendingRow(rank: index + 1, tag: state.items[index]),
             ),
     );
   }
@@ -198,7 +195,9 @@ class _TrendingRow extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: const TextStyle(
-            fontWeight: FontWeight.w600, fontSize: TypographyTokens.fontSize3),
+          fontWeight: FontWeight.w600,
+          fontSize: TypographyTokens.fontSize3,
+        ),
       ),
       subtitle: Text(
         // Two numbers, because they answer different questions: how big this
@@ -230,18 +229,19 @@ class _TopicsTab extends ConsumerWidget {
       onRefresh: notifier.refresh,
       child: state.items.isEmpty
           ? (state.error != null
-                  ? EmptyState.failed(
-                      title: 'Could not load topics',
-                      detail: state.error,
-                      onAction: notifier.refresh,
-                    )
-                  : const EmptyState(
-                      art: EmptyArt.topics,
-                      title: 'No topics yet',
-                      detail: 'Topics are set up by Kyron, and there are none '
-                          'right now. Check back soon.',
-                    ))
-              .scrollable
+                    ? EmptyState.failed(
+                        title: 'Could not load topics',
+                        detail: state.error,
+                        onAction: notifier.refresh,
+                      )
+                    : const EmptyState(
+                        art: EmptyArt.topics,
+                        title: 'No topics yet',
+                        detail:
+                            'Topics are set up by Kyron, and there are none '
+                            'right now. Check back soon.',
+                      ))
+                .scrollable
           : GridView.builder(
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.all(SpacingTokens.space16),
@@ -407,20 +407,21 @@ class _PeopleTabState extends ConsumerState<_PeopleTab> {
       onRefresh: notifier.refresh,
       child: state.people.isEmpty
           ? (state.error != null
-                  ? EmptyState.failed(
-                      title: 'Could not load suggestions',
-                      detail: state.error,
-                      onAction: notifier.refresh,
-                    )
-                  : EmptyState(
-                      art: EmptyArt.people,
-                      title: 'Nobody left to suggest',
-                      detail: 'You already follow everyone Kyron would put '
-                          'here. Follow a topic and this list fills up again.',
-                      action: 'Refresh',
-                      onAction: notifier.refresh,
-                    ))
-              .scrollable
+                    ? EmptyState.failed(
+                        title: 'Could not load suggestions',
+                        detail: state.error,
+                        onAction: notifier.refresh,
+                      )
+                    : EmptyState(
+                        art: EmptyArt.people,
+                        title: 'Nobody left to suggest',
+                        detail:
+                            'You already follow everyone Kyron would put '
+                            'here. Follow a topic and this list fills up again.',
+                        action: 'Refresh',
+                        onAction: notifier.refresh,
+                      ))
+                .scrollable
           : ListView.separated(
               controller: _scroll,
               physics: const AlwaysScrollableScrollPhysics(),
@@ -429,9 +430,7 @@ class _PeopleTabState extends ConsumerState<_PeopleTab> {
                 height: 1,
                 thickness: 0.5,
                 indent: 72,
-                color: Theme.of(context)
-                    .colorScheme
-                    .outline
+                color: Theme.of(context).colorScheme.outline
                     .withValues(alpha: 0.15),
               ),
               itemBuilder: (context, index) {

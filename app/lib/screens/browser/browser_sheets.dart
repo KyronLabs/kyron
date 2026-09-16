@@ -86,8 +86,9 @@ abstract final class PageSheet {
                       decoration: BoxDecoration(
                         color: (secure ? palette.accent : palette.alarm)
                             .withValues(alpha: 0.10),
-                        borderRadius:
-                            BorderRadius.circular(RadiusTokens.radiusMd),
+                        borderRadius: BorderRadius.circular(
+                          RadiusTokens.radiusMd,
+                        ),
                       ),
                       child: Row(
                         children: [
@@ -103,10 +104,10 @@ abstract final class PageSheet {
                             child: Text(
                               secure
                                   ? 'Encrypted between this device and '
-                                      '${tab.host}.'
+                                        '${tab.host}.'
                                   : 'Sent in the clear. Anyone on the network '
-                                      'between you and ${tab.host} can read '
-                                      'it.',
+                                        'between you and ${tab.host} can read '
+                                        'it.',
                               style: TextStyle(
                                 fontSize: TypographyTokens.fontSize1,
                                 height: 1.4,
@@ -229,8 +230,9 @@ abstract final class TabSheet {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize3,
-                            fontWeight:
-                                reading ? FontWeight.w600 : FontWeight.w400,
+                            fontWeight: reading
+                                ? FontWeight.w600
+                                : FontWeight.w400,
                             color: palette.ink,
                           ),
                         ),
@@ -296,10 +298,7 @@ class _Row extends StatelessWidget {
       leading: Icon(icon, size: 20, color: colour),
       title: Text(
         label,
-        style: TextStyle(
-          fontSize: TypographyTokens.fontSize3,
-          color: colour,
-        ),
+        style: TextStyle(fontSize: TypographyTokens.fontSize3, color: colour),
       ),
       subtitle: detail == null
           ? null

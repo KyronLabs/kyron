@@ -36,14 +36,13 @@ class CommunityListState {
     bool? loadingMore,
     String? error,
     bool clearError = false,
-  }) =>
-      CommunityListState(
-        items: items ?? this.items,
-        cursor: clearCursor ? null : (cursor ?? this.cursor),
-        loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
-        loadingMore: loadingMore ?? this.loadingMore,
-        error: clearError ? null : (error ?? this.error),
-      );
+  }) => CommunityListState(
+    items: items ?? this.items,
+    cursor: clearCursor ? null : (cursor ?? this.cursor),
+    loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
+    loadingMore: loadingMore ?? this.loadingMore,
+    error: clearError ? null : (error ?? this.error),
+  );
 }
 
 /// The communities the reader is in.
@@ -111,8 +110,8 @@ class MyCommunitiesNotifier extends StateNotifier<CommunityListState> {
 
 final myCommunitiesProvider =
     StateNotifierProvider<MyCommunitiesNotifier, CommunityListState>(
-  (ref) => MyCommunitiesNotifier(ref.read(communitiesRepositoryProvider)),
-);
+      (ref) => MyCommunitiesNotifier(ref.read(communitiesRepositoryProvider)),
+    );
 
 /// Communities the reader is not in, busiest first, optionally searched.
 class DiscoverCommunitiesNotifier extends StateNotifier<CommunityListState> {
@@ -159,8 +158,9 @@ class DiscoverCommunitiesNotifier extends StateNotifier<CommunityListState> {
 
 final discoverCommunitiesProvider =
     StateNotifierProvider<DiscoverCommunitiesNotifier, CommunityListState>(
-  (ref) => DiscoverCommunitiesNotifier(ref.read(communitiesRepositoryProvider)),
-);
+      (ref) =>
+          DiscoverCommunitiesNotifier(ref.read(communitiesRepositoryProvider)),
+    );
 
 /// One community, for its own screen.
 class CommunityState {
@@ -222,6 +222,6 @@ class CommunityNotifier extends StateNotifier<CommunityState> {
 
 final communityProvider =
     StateNotifierProvider.family<CommunityNotifier, CommunityState, String>(
-  (ref, slug) =>
-      CommunityNotifier(ref.read(communitiesRepositoryProvider), slug),
-);
+      (ref, slug) =>
+          CommunityNotifier(ref.read(communitiesRepositoryProvider), slug),
+    );

@@ -103,7 +103,9 @@ class ActionButton extends StatelessWidget {
         compact
             ? EdgeInsetsDirectional.only(start: icon == null ? 14 : 10, end: 14)
             : EdgeInsetsDirectional.only(
-                start: icon == null ? 20 : 16, end: 20),
+                start: icon == null ? 20 : 16,
+                end: 20,
+              ),
       ),
       shape: const WidgetStatePropertyAll(StadiumBorder()),
       textStyle: WidgetStatePropertyAll(
@@ -111,8 +113,8 @@ class ActionButton extends StatelessWidget {
           fontSize: expand
               ? 16
               : compact
-                  ? 13
-                  : 14,
+              ? 13
+              : 14,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -137,8 +139,9 @@ class ActionButton extends StatelessWidget {
       side: kind == ActionButtonKind.outlined
           ? WidgetStatePropertyAll(
               BorderSide(
-                color: (destructive ? scheme.error : scheme.outline)
-                    .withValues(alpha: 0.4),
+                color: (destructive ? scheme.error : scheme.outline).withValues(
+                  alpha: 0.4,
+                ),
               ),
             )
           : const WidgetStatePropertyAll(BorderSide.none),

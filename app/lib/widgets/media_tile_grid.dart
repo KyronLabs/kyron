@@ -150,12 +150,15 @@ class _Tile extends StatelessWidget {
                   // posted before the composer started sending a still falls
                   // back to a decoder, which the pool holds to a handful.
                   ? (media.thumbnailUrl != null
-                      ? VideoPoster(media: media, badge: VideoPosterBadge.none)
-                      : InlineVideo(
-                          media: media,
-                          autoplay: false,
-                          chrome: false,
-                        ))
+                        ? VideoPoster(
+                            media: media,
+                            badge: VideoPosterBadge.none,
+                          )
+                        : InlineVideo(
+                            media: media,
+                            autoplay: false,
+                            chrome: false,
+                          ))
                   : Image.network(
                       media.url,
                       fit: BoxFit.cover,
@@ -171,10 +174,8 @@ class _Tile extends StatelessWidget {
                       ),
                       loadingBuilder: (context, child, progress) =>
                           progress == null
-                              ? child
-                              : ColoredBox(
-                                  color: scheme.surfaceContainerHighest,
-                                ),
+                          ? child
+                          : ColoredBox(color: scheme.surfaceContainerHighest),
                     ),
             ),
 
@@ -219,8 +220,11 @@ class _Tile extends StatelessWidget {
                       const SizedBox(height: 2),
                       Row(
                         children: [
-                          const Icon(Iconsax.heart_copy,
-                              size: 12, color: Colors.white70),
+                          const Icon(
+                            Iconsax.heart_copy,
+                            size: 12,
+                            color: Colors.white70,
+                          ),
                           const SizedBox(width: 3),
                           Text(
                             formatCount(post.likes),
@@ -230,8 +234,11 @@ class _Tile extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: SpacingTokens.space8),
-                          const Icon(Iconsax.message_copy,
-                              size: 12, color: Colors.white70),
+                          const Icon(
+                            Iconsax.message_copy,
+                            size: 12,
+                            color: Colors.white70,
+                          ),
                           const SizedBox(width: 3),
                           Text(
                             formatCount(post.comments),

@@ -119,8 +119,9 @@ class ActionSheet {
                                   action.detail!,
                                   style: TextStyle(
                                     fontSize: TypographyTokens.fontSize1,
-                                    color:
-                                        scheme.onSurface.withValues(alpha: 0.6),
+                                    color: scheme.onSurface.withValues(
+                                      alpha: 0.6,
+                                    ),
                                   ),
                                 ),
                           trailing: action.selected

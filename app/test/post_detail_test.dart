@@ -3,7 +3,9 @@ import 'package:kyron_app/repositories/feed_repository.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/post_comment.dart';
 import 'package:kyron_app/providers/post_detail_provider.dart';
@@ -109,15 +111,14 @@ void main() {
       int saves = 0,
       int comments = 0,
       List<Map<String, dynamic>> timeline = const [],
-    }) =>
-        PostAnalytics.fromJson({
-          'views': views,
-          'likes': likes,
-          'saves': saves,
-          'comments': comments,
-          'createdAt': '2026-08-30T00:00:00.000Z',
-          'timeline': timeline,
-        });
+    }) => PostAnalytics.fromJson({
+      'views': views,
+      'likes': likes,
+      'saves': saves,
+      'comments': comments,
+      'createdAt': '2026-08-30T00:00:00.000Z',
+      'timeline': timeline,
+    });
 
     test('engagement is unknown, not zero, with no viewers', () {
       // 0% reads as "nobody engaged"; the truth is that nobody looked.
@@ -125,17 +126,23 @@ void main() {
     });
 
     test('engagement counts every action over the viewers', () {
-      final rate =
-          report(views: 10, likes: 2, saves: 1, comments: 2).engagementRate;
+      final rate = report(
+        views: 10,
+        likes: 2,
+        saves: 1,
+        comments: 2,
+      ).engagementRate;
 
       expect(rate, closeTo(0.5, 1e-9));
     });
 
     test('reads the daily breakdown', () {
-      final r = report(timeline: [
-        {'date': '2026-08-30', 'views': 2},
-        {'date': '2026-08-31', 'views': 1},
-      ]);
+      final r = report(
+        timeline: [
+          {'date': '2026-08-30', 'views': 2},
+          {'date': '2026-08-31', 'views': 1},
+        ],
+      );
 
       expect(r.timeline.map((d) => d.date), ['2026-08-30', '2026-08-31']);
       expect(r.timeline.first.views, 2);
@@ -161,29 +168,33 @@ class _SlowFeed extends FeedRepository {
 
   @override
   Future<FeedPost> byId(String id) async => FeedPost(
-        id: id,
-        content: 'a post',
-        createdAt: DateTime(2026),
-        author: const FeedAuthor(id: 'me', username: 'me'),
-      );
+    id: id,
+    content: 'a post',
+    createdAt: DateTime(2026),
+    author: const FeedAuthor(id: 'me', username: 'me'),
+  );
 
   @override
-  Future<CommentPage> comments(String postId,
-          {String? cursor, int limit = 20}) async =>
-      CommentPage(items: [_comment('c1', replies: 2)]);
+  Future<CommentPage> comments(
+    String postId, {
+    String? cursor,
+    int limit = 20,
+  }) async => CommentPage(items: [_comment('c1', replies: 2)]);
 
   @override
-  Future<CommentPage> replies(String commentId,
-      {String? cursor, int limit = 20}) {
+  Future<CommentPage> replies(
+    String commentId, {
+    String? cursor,
+    int limit = 20,
+  }) {
     return _replies.future;
   }
 
   @override
   Future<void> recordView(String postId, {int? dwellMs}) async {}
 
-  void answer() => _replies.complete(
-        CommentPage(items: [_comment('r1', parentId: 'c1')]),
-      );
+  void answer() =>
+      _replies.complete(CommentPage(items: [_comment('r1', parentId: 'c1')]));
 
   void fail() => _replies.completeError(Exception('offline'));
 }
@@ -260,16 +271,18 @@ class _CountingFeed extends FeedRepository {
 
   @override
   Future<FeedPost> byId(String id) async => FeedPost(
-        id: id,
-        content: 'a post',
-        createdAt: DateTime(2026),
-        author: const FeedAuthor(id: 'me', username: 'me'),
-      );
+    id: id,
+    content: 'a post',
+    createdAt: DateTime(2026),
+    author: const FeedAuthor(id: 'me', username: 'me'),
+  );
 
   @override
-  Future<CommentPage> comments(String postId,
-          {String? cursor, int limit = 20}) async =>
-      const CommentPage(items: []);
+  Future<CommentPage> comments(
+    String postId, {
+    String? cursor,
+    int limit = 20,
+  }) async => const CommentPage(items: []);
 
   @override
   Future<void> recordView(String postId, {int? dwellMs}) async {
@@ -281,7 +294,7 @@ void _reportingTheRead() {
   group('reporting the read', () {
     /// A notifier on a clock the test moves by hand.
     ({PostDetailNotifier notifier, _CountingFeed feed, void Function(int) pass})
-        reading() {
+    reading() {
       final feed = _CountingFeed();
       var clock = DateTime(2026, 9, 8, 12);
       final container = ProviderContainer(
@@ -405,16 +418,18 @@ class _HeldLike extends FeedRepository {
   // something rather than reach for the network.
   @override
   Future<FeedPost> byId(String postId) async => FeedPost(
-        id: postId,
-        content: 'a post',
-        createdAt: DateTime(2026),
-        author: const FeedAuthor(id: 'u1', username: 'ada'),
-      );
+    id: postId,
+    content: 'a post',
+    createdAt: DateTime(2026),
+    author: const FeedAuthor(id: 'u1', username: 'ada'),
+  );
 
   @override
-  Future<CommentPage> comments(String postId,
-          {String? cursor, int limit = 20}) async =>
-      const CommentPage(items: []);
+  Future<CommentPage> comments(
+    String postId, {
+    String? cursor,
+    int limit = 20,
+  }) async => const CommentPage(items: []);
 
   @override
   Future<void> recordView(String postId, {int? dwellMs}) async {}
@@ -446,13 +461,15 @@ void _pressingLike() {
         (ref) => PostDetailNotifier(ref, 'p1'),
       );
       final notifier = container.read(probe);
-      notifier.replacePost(FeedPost.fromJson({
-        'id': 'p1',
-        'content': 'hello',
-        'author': const {'id': 'u1', 'username': 'ada'},
-        'likes': 4,
-        'liked': false,
-      }));
+      notifier.replacePost(
+        FeedPost.fromJson({
+          'id': 'p1',
+          'content': 'hello',
+          'author': const {'id': 'u1', 'username': 'ada'},
+          'likes': 4,
+          'liked': false,
+        }),
+      );
       return (notifier: notifier, feed: feed);
     }
 
@@ -464,8 +481,11 @@ void _pressingLike() {
 
       final pending = notifier.toggleLike();
 
-      expect(notifier.state.post!.liked, isTrue,
-          reason: 'the press is the answer');
+      expect(
+        notifier.state.post!.liked,
+        isTrue,
+        reason: 'the press is the answer',
+      );
       expect(notifier.state.post!.likes, 5);
 
       feed.answer(9);

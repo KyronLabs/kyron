@@ -108,7 +108,8 @@ class _Sheet extends StatelessWidget {
                     const _Point(
                       icon: Iconsax.profile_tick,
                       title: 'What you post is yours',
-                      detail: 'Kyron does not claim ownership of anything you '
+                      detail:
+                          'Kyron does not claim ownership of anything you '
                           'write, record or upload. You can delete it, and '
                           'export your account.',
                     ),
@@ -124,7 +125,8 @@ class _Sheet extends StatelessWidget {
                     const _Point(
                       icon: Iconsax.people,
                       title: 'How to behave',
-                      detail: 'No harassment, no content involving minors, '
+                      detail:
+                          'No harassment, no content involving minors, '
                           'nothing illegal. Accounts that do those things are '
                           'removed.',
                     ),
@@ -182,11 +184,7 @@ class _Point extends StatelessWidget {
   final String title;
   final String detail;
 
-  const _Point({
-    required this.icon,
-    required this.title,
-    required this.detail,
-  });
+  const _Point({required this.icon, required this.title, required this.detail});
 
   @override
   Widget build(BuildContext context) {

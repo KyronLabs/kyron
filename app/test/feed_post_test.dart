@@ -80,8 +80,10 @@ void main() {
     });
 
     test('reads an empty last page', () {
-      final page =
-          FeedPage.fromJson({'items': <dynamic>[], 'nextCursor': null});
+      final page = FeedPage.fromJson({
+        'items': <dynamic>[],
+        'nextCursor': null,
+      });
       expect(page.items, isEmpty);
       expect(page.nextCursor, isNull);
     });

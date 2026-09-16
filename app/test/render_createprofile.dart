@@ -22,11 +22,14 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     for (final family in ['Inter', 'Roboto']) {
       final loader = FontLoader(family)
-        ..addFont(Future.value(
+        ..addFont(
+          Future.value(
             File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
                 .readAsBytesSync()
                 .buffer
-                .asByteData()));
+                .asByteData(),
+          ),
+        );
       await loader.load();
     }
 
@@ -66,15 +69,17 @@ void main() {
     for (final size in [const Size(390, 844), const Size(420, 560)]) {
       for (final dark in [false, true]) {
         tester.view.physicalSize = size;
-        await tester.pumpWidget(RepaintBoundary(
-          child: ProviderScope(
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: dark ? KyronTheme.darkTheme : KyronTheme.lightTheme,
-              home: OnboardStep1Screen(model: OnboardingModel()),
+        await tester.pumpWidget(
+          RepaintBoundary(
+            child: ProviderScope(
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: dark ? KyronTheme.darkTheme : KyronTheme.lightTheme,
+                home: OnboardStep1Screen(model: OnboardingModel()),
+              ),
             ),
           ),
-        ));
+        );
         await shoot(
           'createprofile-${size.height.toInt()}-${dark ? 'dark' : 'light'}',
         );

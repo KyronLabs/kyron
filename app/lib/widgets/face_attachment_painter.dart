@@ -73,10 +73,10 @@ class FaceAttachmentPainter extends CustomPainter {
 
   /// The same face, seen in a flipped image.
   static FaceAnchor _mirror(FaceAnchor face, Size size) => FaceAnchor(
-        centre: Offset(size.width - face.centre.dx, face.centre.dy),
-        interpupillary: face.interpupillary,
-        rollDegrees: -face.rollDegrees,
-      );
+    centre: Offset(size.width - face.centre.dx, face.centre.dy),
+    interpupillary: face.interpupillary,
+    rollDegrees: -face.rollDegrees,
+  );
 
   @override
   bool shouldRepaint(FaceAttachmentPainter old) =>

@@ -58,8 +58,7 @@ class Toast {
     ToastSpot spot = ToastSpot.bottom,
     IconData? icon,
     Duration? stay,
-  }) =>
-      showOn(anchor(context), message, spot: spot, icon: icon, stay: stay);
+  }) => showOn(anchor(context), message, spot: spot, icon: icon, stay: stay);
 
   /// Where a message would be drawn, captured now.
   ///
@@ -84,12 +83,8 @@ class Toast {
     dismiss();
 
     final entry = OverlayEntry(
-      builder: (context) => _Toast(
-        message: message,
-        spot: spot,
-        icon: icon,
-        onTap: dismiss,
-      ),
+      builder: (context) =>
+          _Toast(message: message, spot: spot, icon: icon, onTap: dismiss),
     );
     _entry = entry;
     overlay.insert(entry);
@@ -217,16 +212,19 @@ class _ToastState extends State<_Toast> with SingleTickerProviderStateMixin {
               curve: Curves.easeOut,
             ),
             child: SlideTransition(
-              position: Tween<Offset>(
-                // Rises into place along the bottom; the middle one only
-                // fades, because sliding something into the centre of the
-                // screen reads as it having come from somewhere.
-                begin: bottom ? const Offset(0, 0.4) : Offset.zero,
-                end: Offset.zero,
-              ).animate(CurvedAnimation(
-                parent: _controller,
-                curve: Curves.easeOutCubic,
-              )),
+              position:
+                  Tween<Offset>(
+                    // Rises into place along the bottom; the middle one only
+                    // fades, because sliding something into the centre of the
+                    // screen reads as it having come from somewhere.
+                    begin: bottom ? const Offset(0, 0.4) : Offset.zero,
+                    end: Offset.zero,
+                  ).animate(
+                    CurvedAnimation(
+                      parent: _controller,
+                      curve: Curves.easeOutCubic,
+                    ),
+                  ),
               child: card,
             ),
           ),

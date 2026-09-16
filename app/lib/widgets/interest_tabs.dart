@@ -13,8 +13,8 @@ import 'skeleton.dart';
 // State management
 final interestTabsProvider =
     StateNotifierProvider<InterestTabsNotifier, List<String>>((ref) {
-  return InterestTabsNotifier();
-});
+      return InterestTabsNotifier();
+    });
 
 /// Which tab the feed is showing.
 ///
@@ -355,9 +355,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
         ),
         decoration: InputDecoration(
           hintText: 'Search trending tags',
-          hintStyle: TextStyle(
-            color: scheme.onSurface.withValues(alpha: 0.5),
-          ),
+          hintStyle: TextStyle(color: scheme.onSurface.withValues(alpha: 0.5)),
           prefixIcon: Icon(
             Iconsax.search_normal_1_copy,
             size: 18,
@@ -383,9 +381,11 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
     // strips it again on the way to the hashtag feed.
     final offered = trending.items
         .map((tag) => '#${tag.tag}')
-        .where((label) =>
-            !tabs.contains(label) &&
-            (query.isEmpty || label.toLowerCase().contains(query)))
+        .where(
+          (label) =>
+              !tabs.contains(label) &&
+              (query.isEmpty || label.toLowerCase().contains(query)),
+        )
         .toList();
 
     return ListView(
@@ -399,7 +399,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
           'Trending now',
           tabs.length >= InterestTabsNotifier.maximum
               ? 'Five tabs is the most the strip holds. Remove one to add '
-                  'another.'
+                    'another.'
               : null,
           scheme,
         ),
@@ -617,11 +617,7 @@ class _ToggleChip extends ConsumerWidget {
                     ),
                   ),
                 ),
-                Icon(
-                  Iconsax.add_circle_copy,
-                  size: 20,
-                  color: scheme.primary,
-                ),
+                Icon(Iconsax.add_circle_copy, size: 20, color: scheme.primary),
               ],
             ),
           ),

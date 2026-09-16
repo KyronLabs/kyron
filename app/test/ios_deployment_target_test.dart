@@ -40,16 +40,18 @@ void main() {
       final highest = required.values.reduce(
         (a, b) => _isAtLeast(a, b) ? a : b,
       );
-      final highestNames = required.entries
-          .where((e) => e.value == highest)
-          .map((e) => e.key)
-          .toList()
-        ..sort();
+      final highestNames =
+          required.entries
+              .where((e) => e.value == highest)
+              .map((e) => e.key)
+              .toList()
+            ..sort();
 
       expect(
         _isAtLeast(_projectTargets().first, highest),
         isTrue,
-        reason: 'the project is on ${_projectTargets().first} and '
+        reason:
+            'the project is on ${_projectTargets().first} and '
             '${highestNames.join(', ')} require $highest. CocoaPods refuses '
             'this before anything is compiled.',
       );
@@ -60,8 +62,11 @@ void main() {
 /// Every `IPHONEOS_DEPLOYMENT_TARGET` in the Xcode project.
 List<String> _projectTargets() {
   final project = File('ios/Runner.xcodeproj/project.pbxproj');
-  expect(project.existsSync(), isTrue,
-      reason: 'no Xcode project at ${project.path}');
+  expect(
+    project.existsSync(),
+    isTrue,
+    reason: 'no Xcode project at ${project.path}',
+  );
 
   return RegExp(r'IPHONEOS_DEPLOYMENT_TARGET\s*=\s*([0-9.]+)\s*;')
       .allMatches(project.readAsStringSync())
@@ -90,11 +95,16 @@ String _frameworkMinimum() {
 /// up here rather than at somebody's next `pod install`.
 Map<String, String> _pluginRequirements() {
   final config = File('.dart_tool/package_config.json');
-  expect(config.existsSync(), isTrue,
-      reason: 'run flutter pub get before this test');
+  expect(
+    config.existsSync(),
+    isTrue,
+    reason: 'run flutter pub get before this test',
+  );
 
-  final packages = (jsonDecode(config.readAsStringSync())
-      as Map<String, dynamic>)['packages'] as List<dynamic>;
+  final packages =
+      (jsonDecode(config.readAsStringSync())
+              as Map<String, dynamic>)['packages']
+          as List<dynamic>;
 
   final found = <String, String>{};
   for (final entry in packages.cast<Map<String, dynamic>>()) {

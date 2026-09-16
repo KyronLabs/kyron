@@ -257,30 +257,32 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                     // instead of stopping at a band of padding the strip
                     // never covers.
                     if (foldedReplies)
-                      Builder(builder: (context) {
-                        final marker = ThreadMoreReplies(
-                          faces: comment.replyFaces,
-                          count: comment.replies,
-                          busy: fetching,
-                          onTap: () => _notifier.toggleReplies(comment.id),
-                        );
-                        return ThreadItem(
-                          depth: row.depth + 1,
-                          ancestorRails: [
-                            ...row.ancestorRails,
-                            !row.isLastChild,
-                          ],
-                          hasChildrenBelow: false,
-                          isLastChild: true,
-                          avatarSize: ThreadMoreReplies.faceSize,
-                          avatarWidth: ThreadMoreReplies.widthFor(
-                            comment.replyFaces.length,
+                      Builder(
+                        builder: (context) {
+                          final marker = ThreadMoreReplies(
+                            faces: comment.replyFaces,
+                            count: comment.replies,
                             busy: fetching,
-                          ),
-                          avatar: marker.leading(context),
-                          child: marker,
-                        );
-                      }),
+                            onTap: () => _notifier.toggleReplies(comment.id),
+                          );
+                          return ThreadItem(
+                            depth: row.depth + 1,
+                            ancestorRails: [
+                              ...row.ancestorRails,
+                              !row.isLastChild,
+                            ],
+                            hasChildrenBelow: false,
+                            isLastChild: true,
+                            avatarSize: ThreadMoreReplies.faceSize,
+                            avatarWidth: ThreadMoreReplies.widthFor(
+                              comment.replyFaces.length,
+                              busy: fetching,
+                            ),
+                            avatar: marker.leading(context),
+                            child: marker,
+                          );
+                        },
+                      ),
                   ],
                 ),
               ),
@@ -379,8 +381,9 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                   textCapitalization: TextCapitalization.sentences,
                   onChanged: (_) => setState(() {}),
                   decoration: InputDecoration(
-                    hintText:
-                        replyingTo == null ? 'Add a comment' : 'Write a reply',
+                    hintText: replyingTo == null
+                        ? 'Add a comment'
+                        : 'Write a reply',
                     border: InputBorder.none,
                     counterText: '',
                     isDense: true,
@@ -403,10 +406,10 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                 // A picture with no words is a reply; an empty box is not.
                 onPressed:
                     (_controller.text.trim().isEmpty && state.media.isEmpty) ||
-                            state.isSending ||
-                            state.isUploading
-                        ? null
-                        : _send,
+                        state.isSending ||
+                        state.isUploading
+                    ? null
+                    : _send,
               ),
             ],
           ),
@@ -429,19 +432,16 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
   /// The assembly is [assembleThread]: a pure function, so the rule that a
   /// run only enters once its parent has can be tested.
   ThreadLayout _thread(PostDetailState state) => buildThreadLayout(
-        assembleThread(
-          comments: state.comments,
-          replies: state.replies,
-          expanded: state.expanded,
-        ),
-        collapseAfter: 1 << 30,
-      );
+    assembleThread(
+      comments: state.comments,
+      replies: state.replies,
+      expanded: state.expanded,
+    ),
+    collapseAfter: 1 << 30,
+  );
 
-  void _openComment(PostComment comment) => Navigator.pushNamed(
-        context,
-        Routes.comment,
-        arguments: comment.id,
-      );
+  void _openComment(PostComment comment) =>
+      Navigator.pushNamed(context, Routes.comment, arguments: comment.id);
 
   Future<void> _likeComment(PostComment comment) async {
     final error = await _notifier.toggleCommentLike(comment);
@@ -569,7 +569,9 @@ class _Post extends ConsumerWidget {
             PostText(
               content: post.content,
               style: const TextStyle(
-                  fontSize: TypographyTokens.fontSize4, height: 1.4),
+                fontSize: TypographyTokens.fontSize4,
+                height: 1.4,
+              ),
             ),
 
           // Everything a card shows, in the order a card shows it. This screen
@@ -767,8 +769,8 @@ class _ThreadHeading extends StatelessWidget {
         count == 0
             ? 'No comments yet'
             : count == 1
-                ? '1 comment'
-                : '${formatCount(count)} comments',
+            ? '1 comment'
+            : '${formatCount(count)} comments',
         style: TextStyle(
           fontSize: TypographyTokens.fontSize1,
           fontWeight: FontWeight.w700,

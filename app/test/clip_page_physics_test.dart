@@ -4,13 +4,13 @@ import 'package:kyron_app/utils/clip_page_physics.dart';
 
 /// A screen-sized page, four pages long.
 ScrollMetrics _at(double pixels) => FixedScrollMetrics(
-      minScrollExtent: 0,
-      maxScrollExtent: 800 * 3,
-      pixels: pixels,
-      viewportDimension: 800,
-      axisDirection: AxisDirection.down,
-      devicePixelRatio: 3,
-    );
+  minScrollExtent: 0,
+  maxScrollExtent: 800 * 3,
+  pixels: pixels,
+  viewportDimension: 800,
+  axisDirection: AxisDirection.down,
+  devicePixelRatio: 3,
+);
 
 void main() {
   const physics = ClipPageScrollPhysics();

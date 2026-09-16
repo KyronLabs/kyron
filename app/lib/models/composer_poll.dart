@@ -73,26 +73,27 @@ class ComposerPoll {
       );
 
   ComposerPoll withOption(int index, String text) => copyWith(
-        options: [
-          for (var i = 0; i < options.length; i++)
-            i == index ? text : options[i],
-        ],
-      );
+    options: [
+      for (var i = 0; i < options.length; i++) i == index ? text : options[i],
+    ],
+  );
 
   ComposerPoll addOption() =>
       canAddOption ? copyWith(options: [...options, '']) : this;
 
   ComposerPoll removeOption(int index) => canRemoveOption
-      ? copyWith(options: [
-          for (var i = 0; i < options.length; i++)
-            if (i != index) options[i],
-        ])
+      ? copyWith(
+          options: [
+            for (var i = 0; i < options.length; i++)
+              if (i != index) options[i],
+          ],
+        )
       : this;
 
   Map<String, dynamic> toJson() => {
-        'options': filled,
-        'durationMinutes': durationMinutes,
-      };
+    'options': filled,
+    'durationMinutes': durationMinutes,
+  };
 
   /// How long it runs, as a person would say it.
   String get durationLabel {

@@ -37,15 +37,14 @@ class CommentThreadState {
     String? error,
     bool clearError = false,
     Set<String>? expanded,
-  }) =>
-      CommentThreadState(
-        root: root ?? this.root,
-        replies: replies ?? this.replies,
-        postId: postId ?? this.postId,
-        loading: loading ?? this.loading,
-        error: clearError ? null : (error ?? this.error),
-        expanded: expanded ?? this.expanded,
-      );
+  }) => CommentThreadState(
+    root: root ?? this.root,
+    replies: replies ?? this.replies,
+    postId: postId ?? this.postId,
+    loading: loading ?? this.loading,
+    error: clearError ? null : (error ?? this.error),
+    expanded: expanded ?? this.expanded,
+  );
 }
 
 class CommentThreadNotifier extends StateNotifier<CommentThreadState> {
@@ -53,7 +52,7 @@ class CommentThreadNotifier extends StateNotifier<CommentThreadState> {
   final String _commentId;
 
   CommentThreadNotifier(this._repo, this._commentId)
-      : super(const CommentThreadState()) {
+    : super(const CommentThreadState()) {
     load();
   }
 
@@ -89,10 +88,12 @@ class CommentThreadNotifier extends StateNotifier<CommentThreadState> {
   /// worse than one that flickers.
   Future<String?> toggleLike(PostComment comment) async {
     final wanted = !comment.liked;
-    _replace(comment.copyWith(
-      liked: wanted,
-      likes: (comment.likes + (wanted ? 1 : -1)).clamp(0, 1 << 31),
-    ));
+    _replace(
+      comment.copyWith(
+        liked: wanted,
+        likes: (comment.likes + (wanted ? 1 : -1)).clamp(0, 1 << 31),
+      ),
+    );
     try {
       final likes = await _repo.setCommentLike(comment.id, wanted);
       _replace(comment.copyWith(liked: wanted, likes: likes));
@@ -152,8 +153,12 @@ class CommentThreadNotifier extends StateNotifier<CommentThreadState> {
   }
 }
 
-final commentThreadProvider = StateNotifierProvider.family<
-    CommentThreadNotifier, CommentThreadState, String>(
-  (ref, commentId) =>
-      CommentThreadNotifier(ref.read(feedRepositoryProvider), commentId),
-);
+final commentThreadProvider =
+    StateNotifierProvider.family<
+      CommentThreadNotifier,
+      CommentThreadState,
+      String
+    >(
+      (ref, commentId) =>
+          CommentThreadNotifier(ref.read(feedRepositoryProvider), commentId),
+    );

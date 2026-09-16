@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -7,7 +8,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../providers/preferences_provider.dart';
 import '../services/app_preferences.dart';
+
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
+
 import '../providers/feedback_provider.dart';
 import '../repositories/feedback_repository.dart';
 import '../utils/api_error_message.dart';
@@ -69,8 +72,9 @@ class _SettingsChangeEmailScreenState
     }
   }
 
-  void _tell(String message) => ScaffoldMessenger.of(context)
-      .showSnackBar(SnackBar(content: Text(message)));
+  void _tell(String message) =>
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +88,10 @@ class _SettingsChangeEmailScreenState
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (current != null) ...[
-              Text('Signed in as',
-                  style: Theme.of(context).textTheme.bodySmall),
+              Text(
+                'Signed in as',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
               const SizedBox(height: SpacingTokens.space4),
               Text(current, style: Theme.of(context).textTheme.bodyLarge),
               const SizedBox(height: SpacingTokens.space24),
@@ -94,9 +100,7 @@ class _SettingsChangeEmailScreenState
               controller: _controller,
               keyboardType: TextInputType.emailAddress,
               autocorrect: false,
-              decoration: const InputDecoration(
-                labelText: 'New email address',
-              ),
+              decoration: const InputDecoration(labelText: 'New email address'),
               validator: (value) {
                 final v = value?.trim() ?? '';
                 if (v.isEmpty) return 'Enter an email address.';
@@ -171,8 +175,9 @@ class _SettingsPasswordLoginScreenState
     }
   }
 
-  void _tell(String message) => ScaffoldMessenger.of(context)
-      .showSnackBar(SnackBar(content: Text(message)));
+  void _tell(String message) =>
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +195,8 @@ class _SettingsPasswordLoginScreenState
                 labelText: 'New password',
                 suffixIcon: IconButton(
                   icon: Icon(
-                      _obscure ? Iconsax.eye_slash_copy : Iconsax.eye_copy),
+                    _obscure ? Iconsax.eye_slash_copy : Iconsax.eye_copy,
+                  ),
                   onPressed: () => setState(() => _obscure = !_obscure),
                 ),
               ),
@@ -251,9 +257,7 @@ class SettingsFontSizeScreen extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(SpacingTokens.space16),
             decoration: BoxDecoration(
-              color: Theme.of(context)
-                  .colorScheme
-                  .surfaceContainerHighest
+              color: Theme.of(context).colorScheme.surfaceContainerHighest
                   .withValues(alpha: .4),
               borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
             ),
@@ -298,7 +302,8 @@ class SettingsLanguageScreen extends ConsumerWidget {
         children: [
           _LanguageSection(
             title: 'App language',
-            detail: "Select which language to use for the app's user "
+            detail:
+                "Select which language to use for the app's user "
                 'interface.',
             value: prefs.language.nativeName,
             onTap: () async {
@@ -328,7 +333,8 @@ class SettingsLanguageScreen extends ConsumerWidget {
           const SizedBox(height: SpacingTokens.space24),
           _LanguageSection(
             title: 'Primary language',
-            detail: 'Select your preferred language for translations in your '
+            detail:
+                'Select your preferred language for translations in your '
                 'feed.',
             value: prefs.primaryLanguage.nativeName,
             onTap: () async {
@@ -354,7 +360,8 @@ class SettingsLanguageScreen extends ConsumerWidget {
           const SizedBox(height: SpacingTokens.space24),
           _SectionHeader(
             title: 'Content languages',
-            detail: 'Select which languages you want your subscribed feeds to '
+            detail:
+                'Select which languages you want your subscribed feeds to '
                 'include. If none are selected, all languages will be shown.',
           ),
           const SizedBox(height: SpacingTokens.space12),
@@ -432,8 +439,11 @@ class _LanguageSection extends StatelessWidget {
                   ),
                   // Points both ways: this opens a list of alternatives
                   // rather than going somewhere.
-                  Icon(Iconsax.arrow_3,
-                      size: 18, color: scheme.onSurface.withValues(alpha: 0.6)),
+                  Icon(
+                    Iconsax.arrow_3,
+                    size: 18,
+                    color: scheme.onSurface.withValues(alpha: 0.6),
+                  ),
                 ],
               ),
             ),
@@ -546,8 +556,11 @@ class _AddLanguagesRow extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(Iconsax.add,
-                  size: 20, color: scheme.onSurface.withValues(alpha: 0.7)),
+              Icon(
+                Iconsax.add,
+                size: 20,
+                color: scheme.onSurface.withValues(alpha: 0.7),
+              ),
               const SizedBox(width: SpacingTokens.space12),
               Text(
                 'Add more languages\u2026',
@@ -616,10 +629,7 @@ class SettingsContactSupportScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            'Getting help',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
+          Text('Getting help', style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: SpacingTokens.space8),
           Text(
             'Kyron is early, and the fastest way to reach someone who can '
@@ -729,7 +739,9 @@ class _SettingsFeedbackScreenState
     });
 
     try {
-      final filed = await ref.read(feedbackRepositoryProvider).send(
+      final filed = await ref
+          .read(feedbackRepositoryProvider)
+          .send(
             kind: _kind,
             title: _title.text.trim(),
             body: _body.text.trim(),
@@ -819,7 +831,8 @@ class _SettingsFeedbackScreenState
             decoration: const InputDecoration(
               labelText: 'What happened',
               alignLabelWithHint: true,
-              hintText: 'What you did, what you expected, what happened '
+              hintText:
+                  'What you did, what you expected, what happened '
                   'instead.',
             ),
           ),
@@ -870,8 +883,11 @@ class _Note extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Iconsax.info_circle_copy,
-              size: 18, color: scheme.onSurface.withValues(alpha: .6)),
+          Icon(
+            Iconsax.info_circle_copy,
+            size: 18,
+            color: scheme.onSurface.withValues(alpha: .6),
+          ),
           const SizedBox(width: SpacingTokens.space8),
           Expanded(
             child: Text(text, style: Theme.of(context).textTheme.bodySmall),

@@ -36,9 +36,11 @@ class _Repo extends CommunitiesRepository {
 class _Feed extends FeedRepository {
   _Feed() : super(ApiClient()..dio.interceptors.clear());
   @override
-  Future<FeedPage> byCommunity(String slug,
-          {String? cursor, int limit = 20}) async =>
-      const FeedPage(items: [], nextCursor: null);
+  Future<FeedPage> byCommunity(
+    String slug, {
+    String? cursor,
+    int limit = 20,
+  }) async => const FeedPage(items: [], nextCursor: null);
 }
 
 const _joined = Community(
@@ -78,10 +80,16 @@ void main() {
 
   testWidgets('a member is offered no one-tap way out', (tester) async {
     await open(tester);
-    expect(find.text('Joined'), findsNothing,
-        reason: 'the button whose only action was to leave is back');
-    expect(find.text('Join'), findsNothing,
-        reason: 'a member is being offered Join');
+    expect(
+      find.text('Joined'),
+      findsNothing,
+      reason: 'the button whose only action was to leave is back',
+    );
+    expect(
+      find.text('Join'),
+      findsNothing,
+      reason: 'a member is being offered Join',
+    );
   });
 
   testWidgets('somebody who is not a member can still join', (tester) async {
@@ -138,8 +146,9 @@ void main() {
     await tester.pumpAndSettle();
   });
 
-  testWidgets('the menu is there for somebody who has not joined',
-      (tester) async {
+  testWidgets('the menu is there for somebody who has not joined', (
+    tester,
+  ) async {
     // Share and Copy link are useful to anybody; only Leave is for members.
     await open(tester, joined: false);
 

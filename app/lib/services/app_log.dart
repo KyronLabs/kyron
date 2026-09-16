@@ -24,11 +24,11 @@ class LogEntry {
   });
 
   Map<String, dynamic> toJson() => {
-        'at': at.toIso8601String(),
-        'level': level.name,
-        'source': source,
-        'message': message,
-      };
+    'at': at.toIso8601String(),
+    'level': level.name,
+    'source': source,
+    'message': message,
+  };
 
   static LogEntry? fromJson(Object? value) {
     if (value is! Map) return null;
@@ -125,12 +125,14 @@ class AppLog {
       add(LogLevel.error, source, message);
 
   void add(LogLevel level, String source, String message) {
-    _entries.addLast(LogEntry(
-      at: DateTime.now(),
-      level: level,
-      source: source,
-      message: message,
-    ));
+    _entries.addLast(
+      LogEntry(
+        at: DateTime.now(),
+        level: level,
+        source: source,
+        message: message,
+      ),
+    );
     while (_entries.length > maxEntries) {
       _entries.removeFirst();
     }
