@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/muted_screens.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -91,9 +92,8 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                           enabled: !_busy,
                           onSubmitted: (_) => _add(),
                           decoration: const InputDecoration(
-                            hintText: AppLocalizations.of(
-                              context,
-                            ).aWordPhraseOrTag,
+                            hintText: AppLocalizations.of(context)
+                                .aWordPhraseOrTag,
                             isDense: true,
                           ),
                         ),

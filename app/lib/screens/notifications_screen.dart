@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/notifications_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -199,9 +200,8 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
         child:
             (state.error != null
                     ? EmptyState.failed(
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalcouldNotLoadNotifications,
+                        title: AppLocalizations.of(context)
+                            .literalcouldNotLoadNotifications,
                         detail: state.error!,
                         onAction: notifier.refresh,
                       )

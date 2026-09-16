@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/widgets/interest_tabs.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -450,9 +451,8 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
       }
       return const EmptyState(
         art: EmptyArt.caughtUp,
-        title: AppLocalizations.of(
-          context,
-        ).literalyouAlreadyFollowEveryTrendingTag,
+        title: AppLocalizations.of(context)
+            .literalyouAlreadyFollowEveryTrendingTag,
         compact: true,
       );
     }

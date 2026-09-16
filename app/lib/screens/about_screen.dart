@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/about_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -92,25 +93,22 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             _Row(
               icon: Iconsax.status_up_copy,
               label: AppLocalizations.of(context).serviceStatus,
-              subtitle: AppLocalizations.of(
-                context,
-              ).literalwhetherKyronIsReachableRightNow,
+              subtitle: AppLocalizations.of(context)
+                  .literalwhetherKyronIsReachableRightNow,
               onTap: () => Navigator.pushNamed(context, Routes.aboutStatus),
             ),
             _Row(
               icon: Iconsax.document_code_copy,
               label: AppLocalizations.of(context).systemLog,
-              subtitle: AppLocalizations.of(
-                context,
-              ).literalwhatThisAppHasBeenDoing,
+              subtitle: AppLocalizations.of(context)
+                  .literalwhatThisAppHasBeenDoing,
               onTap: () => Navigator.pushNamed(context, Routes.aboutSystemLog),
             ),
             _Row(
               icon: Iconsax.warning_2_copy,
               label: AppLocalizations.of(context).sendErrorReport,
-              subtitle: AppLocalizations.of(
-                context,
-              ).literalshareTheLogWithSupport,
+              subtitle: AppLocalizations.of(context)
+                  .literalshareTheLogWithSupport,
               onTap: () =>
                   Navigator.pushNamed(context, Routes.aboutErrorReport),
             ),

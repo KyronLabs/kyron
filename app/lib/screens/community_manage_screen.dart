@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/community_manage_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -251,9 +252,8 @@ class _DetailsState extends ConsumerState<_Details> {
           uploading: _uploading,
           onPickAvatar: () => _pick(ImageSlot.avatar),
           onPickCover: () => _pick(ImageSlot.cover),
-          hint: AppLocalizations.of(
-            context,
-          ).literaltapTheBannerOrThePictureToChangeIt,
+          hint: AppLocalizations.of(context)
+              .literaltapTheBannerOrThePictureToChangeIt,
         ),
         const SizedBox(height: SpacingTokens.space24),
         TextField(
@@ -496,25 +496,22 @@ class _MemberRow extends StatelessWidget {
                     if (canEdit && role == CommunityRole.member)
                       const SheetAction(
                         value: 'promote',
-                        label: AppLocalizations.of(
-                          context,
-                        ).literalmakeAModerator,
+                        label: AppLocalizations.of(context)
+                            .literalmakeAModerator,
                         icon: Iconsax.shield_tick_copy,
                         detail: 'They can remove posts and members',
                       ),
                     if (canEdit && role == CommunityRole.moderator)
                       const SheetAction(
                         value: 'demote',
-                        label: AppLocalizations.of(
-                          context,
-                        ).literalremoveAsModerator,
+                        label: AppLocalizations.of(context)
+                            .literalremoveAsModerator,
                         icon: Iconsax.shield_cross_copy,
                       ),
                     const SheetAction(
                       value: 'remove',
-                      label: AppLocalizations.of(
-                        context,
-                      ).literalremoveFromCommunity,
+                      label: AppLocalizations.of(context)
+                          .literalremoveFromCommunity,
                       icon: Iconsax.user_minus_copy,
                       destructive: true,
                     ),

@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/follow_list_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -197,9 +198,8 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: TypographyTokens.fontSize2,
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.onSurface.withValues(alpha: 0.6),
+                  color: Theme.of(context).colorScheme.onSurface
+                      .withValues(alpha: 0.6),
                 ),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -7,7 +8,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../providers/preferences_provider.dart';
 import '../services/app_preferences.dart';
+
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
+
 import '../providers/feedback_provider.dart';
 import '../repositories/feedback_repository.dart';
 import '../utils/api_error_message.dart';
@@ -71,9 +74,9 @@ class _SettingsChangeEmailScreenState
     }
   }
 
-  void _tell(String message) => ScaffoldMessenger.of(
-    context,
-  ).showSnackBar(SnackBar(content: Text(message)));
+  void _tell(String message) =>
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
 
   @override
   Widget build(BuildContext context) {
@@ -174,9 +177,9 @@ class _SettingsPasswordLoginScreenState
     }
   }
 
-  void _tell(String message) => ScaffoldMessenger.of(
-    context,
-  ).showSnackBar(SnackBar(content: Text(message)));
+  void _tell(String message) =>
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
 
   @override
   Widget build(BuildContext context) {
@@ -256,9 +259,8 @@ class SettingsFontSizeScreen extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(SpacingTokens.space16),
             decoration: BoxDecoration(
-              color: Theme.of(
-                context,
-              ).colorScheme.surfaceContainerHighest.withValues(alpha: .4),
+              color: Theme.of(context).colorScheme.surfaceContainerHighest
+                  .withValues(alpha: .4),
               borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
             ),
             child: MediaQuery.withClampedTextScaling(
@@ -777,9 +779,8 @@ class _SettingsFeedbackScreenState
         title: AppLocalizations.of(context).literalsendFeedback,
         child: EmptyState(
           art: EmptyArt.messages,
-          title: AppLocalizations.of(
-            context,
-          ).literalfeedbackCannotBeSentRightNow,
+          title: AppLocalizations.of(context)
+              .literalfeedbackCannotBeSentRightNow,
           detail:
               'This build cannot reach the place reports are filed. Said here '
               'rather than in a form, so nothing you write is taken and lost.',

@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/messages_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -189,25 +190,22 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
       child: state.items.isEmpty
           ? (state.error != null
                     ? EmptyState.failed(
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalcouldNotLoadYourMessages,
+                        title: AppLocalizations.of(context)
+                            .literalcouldNotLoadYourMessages,
                         detail: state.error,
                         onAction: notifier.refresh,
                       )
                     : widget.unreadOnly
                     ? const EmptyState(
                         art: EmptyArt.caughtUp,
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalnothingUnread,
+                        title: AppLocalizations.of(context)
+                            .literalnothingUnread,
                         detail: 'Every conversation is caught up.',
                       )
                     : const EmptyState(
                         art: EmptyArt.messages,
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalnoMessagesYet,
+                        title: AppLocalizations.of(context)
+                            .literalnoMessagesYet,
                         detail:
                             'Open somebody\'s profile and tap Message to '
                             'start a conversation.',
@@ -221,9 +219,8 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                 height: 1,
                 thickness: 0.5,
                 indent: 76,
-                color: Theme.of(
-                  context,
-                ).colorScheme.outline.withValues(alpha: 0.15),
+                color: Theme.of(context).colorScheme.outline
+                    .withValues(alpha: 0.15),
               ),
               itemBuilder: (context, index) {
                 if (index >= state.items.length) {

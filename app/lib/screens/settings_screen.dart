@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../providers/auth_provider.dart';
 import '../providers/identity_provider.dart';
 import '../providers/current_user_provider.dart';
@@ -14,7 +15,9 @@ import '../services/app_preferences.dart';
 import '../widgets/action_sheet.dart';
 import '../widgets/kyron_toggle.dart';
 import '../routes.dart';
+
 import 'dart:async';
+
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 import '../widgets/kyron_app_bar.dart';
@@ -145,9 +148,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 Icon(
                   icon,
                   size: 24,
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.onSurface.withOpacity(0.8),
+                  color: Theme.of(context).colorScheme.onSurface
+                      .withOpacity(0.8),
                 ),
                 const SizedBox(width: 16),
                 // Label + Subtitle
@@ -178,9 +180,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize3,
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withOpacity(0.6),
+                            color: Theme.of(context).colorScheme.onSurface
+                                .withOpacity(0.6),
                             fontFamily: 'SF Pro Rounded',
                           ),
                         ),
@@ -243,18 +244,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               children: [
                 CircleAvatar(
                   radius: 22,
-                  backgroundColor: Theme.of(
-                    context,
-                  ).colorScheme.surfaceContainerHighest,
+                  backgroundColor: Theme.of(context)
+                      .colorScheme
+                      .surfaceContainerHighest,
                   foregroundImage: avatarUrl == null
                       ? null
                       : NetworkImage(avatarUrl),
                   child: Icon(
                     Iconsax.user_copy,
                     size: 20,
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onSurface.withValues(alpha: .5),
+                    color: Theme.of(context).colorScheme.onSurface
+                        .withValues(alpha: .5),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -428,9 +428,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.volume_slash_copy,
-              label: AppLocalizations.of(
-                context,
-              ).literalmutedAndBlockedAccounts,
+              label: AppLocalizations.of(context)
+                  .literalmutedAndBlockedAccounts,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.mutedAccounts),
               helpText: 'Who you have muted or blocked',

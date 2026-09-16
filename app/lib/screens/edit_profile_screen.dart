@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/edit_profile_screen.dart
 import 'dart:io';
 
@@ -256,9 +257,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
 
   void _report(String message) {
     if (!mounted) return;
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 }
 

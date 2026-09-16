@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/widgets/terms_gate.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -108,9 +109,8 @@ class _Sheet extends StatelessWidget {
                   children: [
                     const _Point(
                       icon: Iconsax.profile_tick,
-                      title: AppLocalizations.of(
-                        context,
-                      ).literalwhatYouPostIsYours,
+                      title: AppLocalizations.of(context)
+                          .literalwhatYouPostIsYours,
                       detail:
                           'Kyron does not claim ownership of anything you '
                           'write, record or upload. You can delete it, and '

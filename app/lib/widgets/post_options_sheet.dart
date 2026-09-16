@@ -111,9 +111,8 @@ class _OptionsState extends ConsumerState<_Options> {
             _Item(
               icon: Iconsax.dislike_copy,
               label: AppLocalizations.of(context).literalnotInterestedInThis,
-              subtitle: AppLocalizations.of(
-                context,
-              ).literalhidesItAndTellsUsToShowFewerLikeIt,
+              subtitle: AppLocalizations.of(context)
+                  .literalhidesItAndTellsUsToShowFewerLikeIt,
               onTap: () => _run(
                 () => _moderation.setInterest(_post.id, more: false),
                 'Hidden. We will show you fewer like it.',
@@ -132,9 +131,8 @@ class _OptionsState extends ConsumerState<_Options> {
             _Item(
               icon: Iconsax.notification_bing_copy,
               label: AppLocalizations.of(context).literalmuteThisThread,
-              subtitle: AppLocalizations.of(
-                context,
-              ).literalstopSeeingThisPostAndRepliesToIt,
+              subtitle: AppLocalizations.of(context)
+                  .literalstopSeeingThisPostAndRepliesToIt,
               onTap: () => _run(
                 () => _moderation.setThreadMuted(_post.id, true),
                 'Thread muted',
@@ -157,9 +155,8 @@ class _OptionsState extends ConsumerState<_Options> {
               _Item(
                 icon: Iconsax.chart_2_copy,
                 label: AppLocalizations.of(context).postAnalytics,
-                subtitle: AppLocalizations.of(
-                  context,
-                ).literalviewersLikesSavesAndComments,
+                subtitle: AppLocalizations.of(context)
+                    .literalviewersLikesSavesAndComments,
                 onTap: () => _replace(
                   () => Navigator.pushNamed(
                     context,

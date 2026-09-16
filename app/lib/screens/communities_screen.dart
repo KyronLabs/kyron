@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/communities_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -198,17 +199,15 @@ class _MineTabState extends ConsumerState<_MineTab> {
       child: state.items.isEmpty
           ? (state.error != null
                     ? EmptyState.failed(
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalcouldNotLoadYourCommunities,
+                        title: AppLocalizations.of(context)
+                            .literalcouldNotLoadYourCommunities,
                         detail: state.error,
                         onAction: notifier.refresh,
                       )
                     : EmptyState(
                         art: EmptyArt.communities,
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalyouAreNotInAnyCommunities,
+                        title: AppLocalizations.of(context)
+                            .literalyouAreNotInAnyCommunities,
                         detail: 'Find one on Discover, or start your own.',
                         action: 'Start a community',
                         onAction: widget.onCreate,
@@ -223,9 +222,8 @@ class _MineTabState extends ConsumerState<_MineTab> {
                 height: 1,
                 thickness: 0.5,
                 indent: 76,
-                color: Theme.of(
-                  context,
-                ).colorScheme.outline.withValues(alpha: 0.15),
+                color: Theme.of(context).colorScheme.outline
+                    .withValues(alpha: 0.15),
               ),
               itemBuilder: (context, index) {
                 if (index >= state.items.length) {
@@ -324,9 +322,8 @@ class _DiscoverTabState extends ConsumerState<_DiscoverTab> {
                   child: state.items.isEmpty
                       ? (state.error != null
                                 ? EmptyState.failed(
-                                    title: AppLocalizations.of(
-                                      context,
-                                    ).literalcouldNotLoadCommunities,
+                                    title: AppLocalizations.of(context)
+                                        .literalcouldNotLoadCommunities,
                                     detail: state.error,
                                     onAction: notifier.refresh,
                                   )

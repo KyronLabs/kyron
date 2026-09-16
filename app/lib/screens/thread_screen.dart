@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/thread_screen.dart
 import 'dart:async';
 
@@ -340,9 +341,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
             children: [
               CircleAvatar(
                 radius: 16,
-                backgroundColor: Theme.of(
-                  context,
-                ).colorScheme.primary.withValues(alpha: .15),
+                backgroundColor: Theme.of(context).colorScheme.primary
+                    .withValues(alpha: .15),
                 foregroundImage: other?.avatarUrl == null
                     ? null
                     : NetworkImage(other!.avatarUrl!),
@@ -374,9 +374,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: TypographyTokens.fontSize1,
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onSurface.withValues(alpha: 0.6),
+                          color: Theme.of(context).colorScheme.onSurface
+                              .withValues(alpha: 0.6),
                         ),
                       ),
                   ],
@@ -441,9 +440,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     if (state.messages.isEmpty) {
       return (state.error != null
               ? EmptyState.failed(
-                  title: AppLocalizations.of(
-                    context,
-                  ).literalcouldNotLoadThisConversation,
+                  title: AppLocalizations.of(context)
+                      .literalcouldNotLoadThisConversation,
                   detail: state.error,
                   onAction: notifier.refresh,
                 )

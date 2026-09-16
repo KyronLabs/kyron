@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/explore_screen.dart
 import 'dart:math' as math;
 
@@ -133,17 +134,15 @@ class _TrendingTab extends ConsumerWidget {
       child: state.items.isEmpty
           ? (state.error != null
                     ? EmptyState.failed(
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalcouldNotLoadTrending,
+                        title: AppLocalizations.of(context)
+                            .literalcouldNotLoadTrending,
                         detail: state.error,
                         onAction: notifier.refresh,
                       )
                     : const EmptyState(
                         art: EmptyArt.trending,
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalnothingIsTrendingYet,
+                        title: AppLocalizations.of(context)
+                            .literalnothingIsTrendingYet,
                         detail:
                             'Hashtags turn up here as people start using '
                             'them. Post one and it could be this list.',
@@ -159,9 +158,8 @@ class _TrendingTab extends ConsumerWidget {
                 height: 1,
                 thickness: 0.5,
                 indent: SpacingTokens.space16,
-                color: Theme.of(
-                  context,
-                ).colorScheme.outline.withValues(alpha: 0.15),
+                color: Theme.of(context).colorScheme.outline
+                    .withValues(alpha: 0.15),
               ),
               itemBuilder: (context, index) =>
                   _TrendingRow(rank: index + 1, tag: state.items[index]),
@@ -236,9 +234,8 @@ class _TopicsTab extends ConsumerWidget {
       child: state.items.isEmpty
           ? (state.error != null
                     ? EmptyState.failed(
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalcouldNotLoadTopics,
+                        title: AppLocalizations.of(context)
+                            .literalcouldNotLoadTopics,
                         detail: state.error,
                         onAction: notifier.refresh,
                       )
@@ -416,17 +413,15 @@ class _PeopleTabState extends ConsumerState<_PeopleTab> {
       child: state.people.isEmpty
           ? (state.error != null
                     ? EmptyState.failed(
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalcouldNotLoadSuggestions,
+                        title: AppLocalizations.of(context)
+                            .literalcouldNotLoadSuggestions,
                         detail: state.error,
                         onAction: notifier.refresh,
                       )
                     : EmptyState(
                         art: EmptyArt.people,
-                        title: AppLocalizations.of(
-                          context,
-                        ).literalnobodyLeftToSuggest,
+                        title: AppLocalizations.of(context)
+                            .literalnobodyLeftToSuggest,
                         detail:
                             'You already follow everyone Kyron would put '
                             'here. Follow a topic and this list fills up again.',
@@ -442,9 +437,8 @@ class _PeopleTabState extends ConsumerState<_PeopleTab> {
                 height: 1,
                 thickness: 0.5,
                 indent: 72,
-                color: Theme.of(
-                  context,
-                ).colorScheme.outline.withValues(alpha: 0.15),
+                color: Theme.of(context).colorScheme.outline
+                    .withValues(alpha: 0.15),
               ),
               itemBuilder: (context, index) {
                 if (index >= state.people.length) {
