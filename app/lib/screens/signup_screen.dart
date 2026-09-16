@@ -7,7 +7,9 @@ import '../widgets/password_input_field.dart';
 import '../widgets/app_button.dart';
 import '../widgets/password_requirements.dart';
 import '../routes.dart';
+
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../repositories/auth_repository.dart';
 import '../utils/api_error_message.dart';
 import '../config/legal_links.dart';
@@ -76,7 +78,11 @@ class _SignupScreenState extends State<SignupScreen> {
       Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
     } catch (err) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${AppLocalizations.of(context).signupFailed(describeApiError(err))}')),
+        SnackBar(
+          content: Text(
+            '${AppLocalizations.of(context).signupFailed(describeApiError(err))}',
+          ),
+        ),
       );
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -86,7 +92,9 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KyronAppBar(title: Text(AppLocalizations.of(context).createYourAccount)),
+      appBar: KyronAppBar(
+        title: Text(AppLocalizations.of(context).createYourAccount),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Form(
@@ -128,8 +136,9 @@ class _SignupScreenState extends State<SignupScreen> {
               // PASSWORD
               PasswordInputField(
                 controller: _password,
-                validator: (v) =>
-                    (v?.length ?? 0) < 8 ? AppLocalizations.of(context).passwordTooShort : null,
+                validator: (v) => (v?.length ?? 0) < 8
+                    ? AppLocalizations.of(context).passwordTooShort
+                    : null,
                 onChanged: (_) => setState(() {}),
               ),
 
@@ -151,19 +160,23 @@ class _SignupScreenState extends State<SignupScreen> {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: '${AppLocalizations.of(context).bySigningUpAgreeTerms} ',
+                  text:
+                      '${AppLocalizations.of(context).bySigningUpAgreeTerms} ',
                   style: Theme.of(context).textTheme.bodyMedium,
                   children: [
                     TextSpan(
                       text: AppLocalizations.of(context).terms,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: KyronTheme.accent,
-                            decoration: TextDecoration.underline,
-                          ),
+                        color: KyronTheme.accent,
+                        decoration: TextDecoration.underline,
+                      ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          AppBrowser.open(context, LegalLinks.terms,
-                              title: LegalLinks.termsTitle);
+                          AppBrowser.open(
+                            context,
+                            LegalLinks.terms,
+                            title: LegalLinks.termsTitle,
+                          );
                         },
                     ),
                     TextSpan(
@@ -173,13 +186,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextSpan(
                       text: AppLocalizations.of(context).privacyPolicy,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: KyronTheme.accent,
-                            decoration: TextDecoration.underline,
-                          ),
+                        color: KyronTheme.accent,
+                        decoration: TextDecoration.underline,
+                      ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          AppBrowser.open(context, LegalLinks.privacy,
-                              title: LegalLinks.privacyTitle);
+                          AppBrowser.open(
+                            context,
+                            LegalLinks.privacy,
+                            title: LegalLinks.privacyTitle,
+                          );
                         },
                     ),
                   ],

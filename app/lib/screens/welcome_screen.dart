@@ -1,5 +1,6 @@
 // lib/screens/welcome_screen.dart
 import 'dart:math' as math;
+
 import '../services/google_sign_in_service.dart';
 import '../services/app_log.dart';
 
@@ -49,10 +50,8 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
   ///
   /// False means they were not agreed to, and the caller stops -- which is
   /// the difference between a gate and a notice.
-  Future<bool> _agreed() => TermsGate.require(
-        context,
-        preferences: ref.read(appPreferencesProvider),
-      );
+  Future<bool> _agreed() =>
+      TermsGate.require(context, preferences: ref.read(appPreferencesProvider));
 
   Future<void> _continueWithGoogle() async {
     if (_busy != null) return;
@@ -137,7 +136,10 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
   void _sayFailed(Object error) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(AppLocalizations.of(context).couldNotOpenGoogleSignIn(error.toString())),
+        content: Text(
+          AppLocalizations.of(context)
+              .couldNotOpenGoogleSignIn(error.toString()),
+        ),
         backgroundColor: KyronTheme.errorPink,
         duration: const Duration(seconds: 6),
       ),
@@ -180,7 +182,8 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          AppLocalizations.of(context).googleSignInNeedsPhoneApp,
+                          AppLocalizations.of(context)
+                              .googleSignInNeedsPhoneApp,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize5,
                             fontWeight: FontWeight.w700,
@@ -311,8 +314,9 @@ class _Sheet extends StatelessWidget {
     final dark = Theme.of(context).brightness == Brightness.dark;
     final ground = dark ? KyronTheme.darkBackground : Colors.white;
     final ink = dark ? KyronTheme.darkTextPrimary : KyronTheme.lightTextPrimary;
-    final quiet =
-        dark ? KyronTheme.darkTextSecondary : KyronTheme.lightTextSecondary;
+    final quiet = dark
+        ? KyronTheme.darkTextSecondary
+        : KyronTheme.lightTextSecondary;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -419,7 +423,8 @@ class _Sheet extends StatelessWidget {
                     child: TextButton(
                       onPressed: () => onTerms(),
                       child: Text(
-                        AppLocalizations.of(context).byContinuingAgreeTermsPrivacy,
+                        AppLocalizations.of(context)
+                            .byContinuingAgreeTermsPrivacy,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: TypographyTokens.fontSize1,

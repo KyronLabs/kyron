@@ -17,8 +17,8 @@ class AppLocalizations {
   static Future<AppLocalizations> load(Locale locale) {
     final String name =
         locale.countryCode == null || locale.countryCode!.isEmpty
-            ? locale.languageCode
-            : '${locale.languageCode}_${locale.countryCode}';
+        ? locale.languageCode
+        : '${locale.languageCode}_${locale.countryCode}';
     final String localeName = Intl.canonicalizedLocale(name);
 
     return initializeMessages(localeName).then((bool _) {
@@ -59,10 +59,10 @@ class AppLocalizations {
   String get checkEmailConfirm =>
       Intl.message('checkEmailConfirm', name: 'checkEmailConfirm');
   String closeCommunity(String communityName) => Intl.message(
-        'closeCommunity',
-        name: 'closeCommunity',
-        args: [communityName],
-      );
+    'closeCommunity',
+    name: 'closeCommunity',
+    args: [communityName],
+  );
   String get closeIt => Intl.message('closeIt', name: 'closeIt');
   String get closeThisCommunity =>
       Intl.message('closeThisCommunity', name: 'closeThisCommunity');
@@ -76,10 +76,10 @@ class AppLocalizations {
   String get copyReportInstead =>
       Intl.message('copyReportInstead', name: 'copyReportInstead');
   String couldNotOpenGoogleSignIn(String error) => Intl.message(
-        'couldNotOpenGoogleSignIn',
-        name: 'couldNotOpenGoogleSignIn',
-        args: [error],
-      );
+    'couldNotOpenGoogleSignIn',
+    name: 'couldNotOpenGoogleSignIn',
+    args: [error],
+  );
   String couldNotSignOut(String error) =>
       Intl.message('couldNotSignOut', name: 'couldNotSignOut', args: [error]);
   String get couldNotTakePicture =>
@@ -127,10 +127,10 @@ class AppLocalizations {
   String get lagosDesign => Intl.message('lagosDesign', name: 'lagosDesign');
   String get leave => Intl.message('leave', name: 'leave');
   String leaveCommunity(String communityName) => Intl.message(
-        'leaveCommunity',
-        name: 'leaveCommunity',
-        args: [communityName],
-      );
+    'leaveCommunity',
+    name: 'leaveCommunity',
+    args: [communityName],
+  );
   String get letBackIn => Intl.message('letBackIn', name: 'letBackIn');
   String get loadMore => Intl.message('loadMore', name: 'loadMore');
   String get logCleared => Intl.message('logCleared', name: 'logCleared');
@@ -167,10 +167,10 @@ class AppLocalizations {
   String get postAnalytics =>
       Intl.message('postAnalytics', name: 'postAnalytics');
   String postInCommunity(String communityName) => Intl.message(
-        'postInCommunity',
-        name: 'postInCommunity',
-        args: [communityName],
-      );
+    'postInCommunity',
+    name: 'postInCommunity',
+    args: [communityName],
+  );
   String get postTextCopied =>
       Intl.message('postTextCopied', name: 'postTextCopied');
   String get profileUpdated =>
@@ -253,13 +253,29 @@ class AppLocalizations {
       Intl.message('whatYouWereDoing', name: 'whatYouWereDoing');
   String get normalised => Intl.message('normalised', name: 'normalised');
 
-  String get postItSayItShowIt => Intl.message('postItSayItShowIt', name: 'postItSayItShowIt');
-  String get textVoiceVideoPeopleRooms => Intl.message('textVoiceVideoPeopleRooms', name: 'textVoiceVideoPeopleRooms');
-  String get alreadyOnKyron => Intl.message('alreadyOnKyron', name: 'alreadyOnKyron');
-  String get byContinuingAgreeTermsPrivacy => Intl.message('byContinuingAgreeTermsPrivacy', name: 'byContinuingAgreeTermsPrivacy');
-  String get byContinuingAgreeTerms => Intl.message('byContinuingAgreeTerms', name: 'byContinuingAgreeTerms');
-  String get googleSignInNeedsPhoneApp => Intl.message('googleSignInNeedsPhoneApp', name: 'googleSignInNeedsPhoneApp');
-  String googleSignInDesktopExplanation(String platform) => Intl.message('googleSignInDesktopExplanation', name: 'googleSignInDesktopExplanation', args: [platform]);
+  String get postItSayItShowIt =>
+      Intl.message('postItSayItShowIt', name: 'postItSayItShowIt');
+  String get textVoiceVideoPeopleRooms => Intl.message(
+    'textVoiceVideoPeopleRooms',
+    name: 'textVoiceVideoPeopleRooms',
+  );
+  String get alreadyOnKyron =>
+      Intl.message('alreadyOnKyron', name: 'alreadyOnKyron');
+  String get byContinuingAgreeTermsPrivacy => Intl.message(
+    'byContinuingAgreeTermsPrivacy',
+    name: 'byContinuingAgreeTermsPrivacy',
+  );
+  String get byContinuingAgreeTerms =>
+      Intl.message('byContinuingAgreeTerms', name: 'byContinuingAgreeTerms');
+  String get googleSignInNeedsPhoneApp => Intl.message(
+    'googleSignInNeedsPhoneApp',
+    name: 'googleSignInNeedsPhoneApp',
+  );
+  String googleSignInDesktopExplanation(String platform) => Intl.message(
+    'googleSignInDesktopExplanation',
+    name: 'googleSignInDesktopExplanation',
+    args: [platform],
+  );
   String get loginFailed => Intl.message('loginFailed', name: 'loginFailed');
   String get email => Intl.message('email', name: 'email');
   String get password => Intl.message('password', name: 'password');
@@ -267,15 +283,20 @@ class AppLocalizations {
   String get or => Intl.message('or', name: 'or');
   String get username => Intl.message('username', name: 'username');
   String get usernameRule => Intl.message('usernameRule', name: 'usernameRule');
-  String get passwordTooShort => Intl.message('passwordTooShort', name: 'passwordTooShort');
-  String get continueAction => Intl.message('continueAction', name: 'continueAction');
-  String get bySigningUpAgreeTerms => Intl.message('bySigningUpAgreeTerms', name: 'bySigningUpAgreeTerms');
+  String get passwordTooShort =>
+      Intl.message('passwordTooShort', name: 'passwordTooShort');
+  String get continueAction =>
+      Intl.message('continueAction', name: 'continueAction');
+  String get bySigningUpAgreeTerms =>
+      Intl.message('bySigningUpAgreeTerms', name: 'bySigningUpAgreeTerms');
   String get terms => Intl.message('terms', name: 'terms');
   String get and => Intl.message('and', name: 'and');
-  String get privacyPolicy => Intl.message('privacyPolicy', name: 'privacyPolicy');
+  String get privacyPolicy =>
+      Intl.message('privacyPolicy', name: 'privacyPolicy');
   String get googleSignIn => Intl.message('googleSignIn', name: 'googleSignIn');
   String get googleSignUp => Intl.message('googleSignUp', name: 'googleSignUp');
-  String get googleContinue => Intl.message('googleContinue', name: 'googleContinue');
+  String get googleContinue =>
+      Intl.message('googleContinue', name: 'googleContinue');
 }
 
 class _AppLocalizationsDelegate
