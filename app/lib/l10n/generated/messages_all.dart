@@ -14,6 +14,7 @@ Future<bool> initializeMessages(String localeName) async {
   final lookup = availableLocale == 'es'
       ? messages_es.messageLookup
       : messages_en.messageLookup;
+  helpers.initializeInternalMessageLookup(() => CompositeMessageLookup());
   helpers.messageLookup.addLocale(availableLocale, (_) => lookup);
   return true;
 }
