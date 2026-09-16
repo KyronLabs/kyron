@@ -109,7 +109,7 @@ class _SheetState extends State<_Sheet> {
                 autofocus: GifSearch.isConfigured,
                 enabled: GifSearch.isConfigured,
                 onChanged: _query,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: AppLocalizations.of(context).searchGIFs,
                   prefixIcon: Icon(Iconsax.search_normal_1_copy, size: 18),
                   isDense: true,
@@ -146,7 +146,7 @@ class _SheetState extends State<_Sheet> {
     if (!GifSearch.isConfigured) {
       // Said plainly rather than shown as an empty grid, which reads as a
       // network fault the reader could do something about.
-      return const EmptyState(
+      return EmptyState(
         compact: true,
         art: EmptyArt.noMatch,
         title: AppLocalizations.of(context).literalgifsAreNotSetUp,
@@ -165,7 +165,7 @@ class _SheetState extends State<_Sheet> {
       );
     }
     if (_results.isEmpty) {
-      return const EmptyState(
+      return EmptyState(
         compact: true,
         art: EmptyArt.noMatch,
         title: AppLocalizations.of(context).literalnothingFound,

@@ -191,25 +191,25 @@ class CommunityScreen extends ConsumerWidget {
       context,
       title: community.name,
       actions: [
-        const SheetAction(
+        SheetAction(
           value: 'share',
           label: AppLocalizations.of(context).literalshareThisCommunity,
           icon: Iconsax.export_copy,
         ),
-        const SheetAction(
+        SheetAction(
           value: 'copy',
           label: AppLocalizations.of(context).literalcopyLink,
           icon: Iconsax.link_copy,
         ),
         if (moderator)
-          const SheetAction(
+          SheetAction(
             value: 'manage',
             label: 'Manage',
             icon: Iconsax.setting_2_copy,
             detail: 'Members, bans, and what this community says about itself',
           ),
         if (community.joined)
-          const SheetAction(
+          SheetAction(
             value: 'leave',
             label: AppLocalizations.of(context).leave,
             icon: Iconsax.logout_copy,

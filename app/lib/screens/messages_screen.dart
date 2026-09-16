@@ -196,13 +196,13 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                         onAction: notifier.refresh,
                       )
                     : widget.unreadOnly
-                    ? const EmptyState(
+                    ? EmptyState(
                         art: EmptyArt.caughtUp,
                         title: AppLocalizations.of(context)
                             .literalnothingUnread,
                         detail: 'Every conversation is caught up.',
                       )
-                    : const EmptyState(
+                    : EmptyState(
                         art: EmptyArt.messages,
                         title: AppLocalizations.of(context)
                             .literalnoMessagesYet,

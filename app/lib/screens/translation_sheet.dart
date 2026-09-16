@@ -86,7 +86,7 @@ class _Sheet extends StatelessWidget {
                       if (!context.mounted) return;
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
+                        SnackBar(
                           content: Text(
                             AppLocalizations.of(context).postTextCopied,
                           ),

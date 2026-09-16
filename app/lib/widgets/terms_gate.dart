@@ -107,7 +107,7 @@ class _Sheet extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const _Point(
+                    _Point(
                       icon: Iconsax.profile_tick,
                       title: AppLocalizations.of(context)
                           .literalwhatYouPostIsYours,
@@ -116,7 +116,7 @@ class _Sheet extends StatelessWidget {
                           'write, record or upload. You can delete it, and '
                           'export your account.',
                     ),
-                    const _Point(
+                    _Point(
                       icon: Iconsax.shield_tick,
                       title: AppLocalizations.of(context).literalwhatKyronKeeps,
                       detail:
@@ -125,7 +125,7 @@ class _Sheet extends StatelessWidget {
                           'encrypted between devices and cannot be read on '
                           'the server.',
                     ),
-                    const _Point(
+                    _Point(
                       icon: Iconsax.people,
                       title: AppLocalizations.of(context).literalhowToBehave,
                       detail:
@@ -187,7 +187,7 @@ class _Point extends StatelessWidget {
   final String title;
   final String detail;
 
-  const _Point({required this.icon, required this.title, required this.detail});
+  _Point({required this.icon, required this.title, required this.detail});
 
   @override
   Widget build(BuildContext context) {
@@ -245,7 +245,7 @@ class _DocButton extends StatelessWidget {
   final String label;
   final String url;
 
-  const _DocButton({required this.label, required this.url});
+  _DocButton({required this.label, required this.url});
 
   @override
   Widget build(BuildContext context) {

@@ -139,7 +139,7 @@ class _TrendingTab extends ConsumerWidget {
                         detail: state.error,
                         onAction: notifier.refresh,
                       )
-                    : const EmptyState(
+                    : EmptyState(
                         art: EmptyArt.trending,
                         title: AppLocalizations.of(context)
                             .literalnothingIsTrendingYet,
@@ -239,7 +239,7 @@ class _TopicsTab extends ConsumerWidget {
                         detail: state.error,
                         onAction: notifier.refresh,
                       )
-                    : const EmptyState(
+                    : EmptyState(
                         art: EmptyArt.topics,
                         title: AppLocalizations.of(context).literalnoTopicsYet,
                         detail:

@@ -475,7 +475,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
     'Nothing matched',
   ),
   'literalcouldNotSignOutDescribeapierrorE': (Object describeApiError) =>
-      'Could not sign out: ${describeApiError(e)}',
+      'Could not sign out: $describeApiError',
   'literalnoDidYet': MessageLookupByLibrary.simpleMessage('No DID yet'),
   'literalpasswordLogin': MessageLookupByLibrary.simpleMessage(
     'Password & Login',
@@ -511,7 +511,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         'What you did, what you expected, what happened ',
       ),
   'literalverificationFailedDescribeapierrorE': (Object describeApiError) =>
-      'Verification failed: ${describeApiError(e)}',
+      'Verification failed: $describeApiError',
   'literalverificationCodeResent': MessageLookupByLibrary.simpleMessage(
     'Verification code resent.',
   ),
@@ -550,7 +550,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
   'literalopenReply': MessageLookupByLibrary.simpleMessage('Open reply'),
   'literallabelCount': (Object label, Object count) => '$label, $count',
   'literalindex1': (Object index) => '${index + 1}',
-  'literalfirstyearIndex': (Object _firstYear) => '${_firstYear + index}',
+  'literalfirstyearIndex': (Object _firstYear) => '$_firstYear',
   'literalgifsAreNotSetUp': MessageLookupByLibrary.simpleMessage(
     'GIFs are not set up',
   ),

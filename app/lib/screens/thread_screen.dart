@@ -108,31 +108,31 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
       title: other?.displayName.toUpperCase(),
       actions: [
         muted
-            ? const SheetAction(
+            ? SheetAction(
                 value: 'unmute',
                 label: 'Unmute',
                 icon: Iconsax.volume_high_copy,
                 detail: 'Be notified about this conversation again',
               )
-            : const SheetAction(
+            : SheetAction(
                 value: 'mute',
                 label: AppLocalizations.of(context).mute,
                 icon: Iconsax.volume_slash_copy,
                 detail: 'Stop being notified about this conversation',
               ),
-        const SheetAction(
+        SheetAction(
           value: 'report',
           label: AppLocalizations.of(context).report,
           icon: Iconsax.flag_copy,
         ),
-        const SheetAction(
+        SheetAction(
           value: 'block',
           label: AppLocalizations.of(context).block,
           icon: Iconsax.slash_copy,
           detail: 'They can no longer message you',
           destructive: true,
         ),
-        const SheetAction(
+        SheetAction(
           value: 'leave',
           label: AppLocalizations.of(context).literalremoveThisConversation,
           icon: Iconsax.trash_copy,
@@ -445,7 +445,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
                   detail: state.error,
                   onAction: notifier.refresh,
                 )
-              : const EmptyState(
+              : EmptyState(
                   art: EmptyArt.messages,
                   title: AppLocalizations.of(context).literalsaySomething,
                   detail: 'This is the beginning of the conversation.',
@@ -670,19 +670,19 @@ class _Bubble extends StatelessWidget {
     final chosen = await ActionSheet.show<String>(
       context,
       actions: [
-        const SheetAction(
+        SheetAction(
           value: 'reply',
           label: AppLocalizations.of(context).reply,
           icon: Iconsax.undo_copy,
         ),
         if (copyable)
-          const SheetAction(
+          SheetAction(
             value: 'copy',
             label: AppLocalizations.of(context).literalcopyText,
             icon: Iconsax.copy_copy,
           ),
         if (onRemove != null)
-          const SheetAction(
+          SheetAction(
             value: 'delete',
             label: AppLocalizations.of(context).delete,
             icon: Iconsax.trash_copy,

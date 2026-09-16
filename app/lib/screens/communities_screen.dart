@@ -460,7 +460,7 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
             autofocus: true,
             maxLength: 60,
             textCapitalization: TextCapitalization.words,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Name',
               hintText: AppLocalizations.of(context).lagosDesign,
               counterText: '',
@@ -483,7 +483,7 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
             maxLines: 3,
             minLines: 2,
             textCapitalization: TextCapitalization.sentences,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'What is it for? (optional)',
               alignLabelWithHint: true,
             ),

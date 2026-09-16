@@ -91,7 +91,7 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                           controller: _controller,
                           enabled: !_busy,
                           onSubmitted: (_) => _add(),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             hintText: AppLocalizations.of(context)
                                 .aWordPhraseOrTag,
                             isDense: true,
@@ -125,7 +125,7 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
               child: words == null
                   ? const Center(child: CircularProgressIndicator())
                   : words.isEmpty
-                  ? const EmptyState(
+                  ? EmptyState(
                       art: EmptyArt.muted,
                       title: AppLocalizations.of(context).literalnothingMuted,
                       detail:

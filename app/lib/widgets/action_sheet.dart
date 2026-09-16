@@ -20,7 +20,7 @@ class SheetAction<T> {
   /// Ticked. For a sheet that picks one of a set rather than does something.
   final bool selected;
 
-  const SheetAction({
+  SheetAction({
     required this.value,
     required this.label,
     required this.icon,

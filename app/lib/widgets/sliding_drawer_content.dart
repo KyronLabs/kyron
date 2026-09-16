@@ -660,7 +660,7 @@ class SlidingDrawerContent extends ConsumerWidget {
                 if (!sheetContext.mounted) return;
                 Navigator.pop(sheetContext);
                 ScaffoldMessenger.of(sheetContext).showSnackBar(
-                  const SnackBar(
+                  SnackBar(
                     content: Text(AppLocalizations.of(context).didCopied),
                   ),
                 );

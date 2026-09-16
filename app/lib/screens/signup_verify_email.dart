@@ -112,7 +112,7 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
   void _resendCode() {
     _startCountdown();
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+      SnackBar(
         content: Text(
           AppLocalizations.of(context).literalverificationCodeResent,
         ),

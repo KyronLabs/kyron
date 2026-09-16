@@ -235,7 +235,7 @@ class _DetailsState extends ConsumerState<_Details> {
     final scheme = Theme.of(context).colorScheme;
 
     if (!widget.editable) {
-      return const EmptyState(
+      return EmptyState(
         compact: true,
         art: EmptyArt.communities,
         title: AppLocalizations.of(context).literalonlyTheOwnerCanChangeThis,
@@ -259,7 +259,7 @@ class _DetailsState extends ConsumerState<_Details> {
         TextField(
           controller: _name,
           maxLength: 60,
-          decoration: const InputDecoration(labelText: 'Name'),
+          decoration: InputDecoration(labelText: 'Name'),
         ),
         const SizedBox(height: SpacingTokens.space16),
         TextField(
@@ -267,7 +267,7 @@ class _DetailsState extends ConsumerState<_Details> {
           maxLength: 400,
           maxLines: 4,
           minLines: 2,
-          decoration: const InputDecoration(labelText: 'Description'),
+          decoration: InputDecoration(labelText: 'Description'),
         ),
         const SizedBox(height: SpacingTokens.space24),
         FilledButton(
@@ -396,7 +396,7 @@ class _MembersState extends ConsumerState<_Members> {
         }
         final members = snapshot.data!.items;
         if (members.isEmpty) {
-          return const EmptyState(
+          return EmptyState(
             art: EmptyArt.people,
             title: AppLocalizations.of(context).literalnobodyHereYet,
             detail: 'People who join show up on this list.',
@@ -494,7 +494,7 @@ class _MemberRow extends StatelessWidget {
                   title: (member.displayName).toUpperCase(),
                   actions: [
                     if (canEdit && role == CommunityRole.member)
-                      const SheetAction(
+                      SheetAction(
                         value: 'promote',
                         label: AppLocalizations.of(context)
                             .literalmakeAModerator,
@@ -502,13 +502,13 @@ class _MemberRow extends StatelessWidget {
                         detail: 'They can remove posts and members',
                       ),
                     if (canEdit && role == CommunityRole.moderator)
-                      const SheetAction(
+                      SheetAction(
                         value: 'demote',
                         label: AppLocalizations.of(context)
                             .literalremoveAsModerator,
                         icon: Iconsax.shield_cross_copy,
                       ),
-                    const SheetAction(
+                    SheetAction(
                       value: 'remove',
                       label: AppLocalizations.of(context)
                           .literalremoveFromCommunity,
@@ -581,7 +581,7 @@ class _RemovedState extends ConsumerState<_Removed> {
         }
         final removed = snapshot.data!;
         if (removed.isEmpty) {
-          return const EmptyState(
+          return EmptyState(
             art: EmptyArt.muted,
             title: AppLocalizations.of(context).literalnobodyHasBeenRemoved,
             detail:

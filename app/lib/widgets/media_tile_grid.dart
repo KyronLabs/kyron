@@ -265,7 +265,7 @@ class _Chip extends StatelessWidget {
   final IconData icon;
   final String label;
 
-  const _Chip({required this.icon, required this.label});
+  _Chip({required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {

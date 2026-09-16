@@ -131,7 +131,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       );
     }
     if (state.isTooShort) {
-      return const EmptyState(
+      return EmptyState(
         art: EmptyArt.drafts,
         title: AppLocalizations.of(context).literalkeepTyping,
         detail: 'Two characters or more.',

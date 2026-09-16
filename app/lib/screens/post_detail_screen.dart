@@ -191,7 +191,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
           }
           if (index == 1) return _ThreadHeading(count: post.comments);
           if (state.comments.isEmpty) {
-            return const EmptyState(
+            return EmptyState(
               compact: true,
               art: EmptyArt.messages,
               title: AppLocalizations.of(context).literalnoRepliesYet,

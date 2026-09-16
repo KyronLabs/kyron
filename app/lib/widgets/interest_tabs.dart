@@ -435,7 +435,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
 
     if (offered.isEmpty) {
       if (trending.items.isEmpty) {
-        return const EmptyState(
+        return EmptyState(
           art: EmptyArt.trending,
           title: AppLocalizations.of(context).literalnothingIsTrendingYet,
           detail: 'Hashtags turn up here as people start using them.',
@@ -443,13 +443,13 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
         );
       }
       if (_searchQuery.trim().isNotEmpty) {
-        return const EmptyState(
+        return EmptyState(
           art: EmptyArt.noMatch,
           title: AppLocalizations.of(context).literalnoTrendingTagMatchesThat,
           compact: true,
         );
       }
-      return const EmptyState(
+      return EmptyState(
         art: EmptyArt.caughtUp,
         title: AppLocalizations.of(context)
             .literalyouAlreadyFollowEveryTrendingTag,
@@ -579,7 +579,7 @@ class _DraggableChip extends StatelessWidget {
 class _ToggleChip extends ConsumerWidget {
   final String label;
 
-  const _ToggleChip({required this.label});
+  _ToggleChip({required this.label});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

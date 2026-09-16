@@ -102,7 +102,7 @@ class _SettingsChangeEmailScreenState
               controller: _controller,
               keyboardType: TextInputType.emailAddress,
               autocorrect: false,
-              decoration: const InputDecoration(labelText: 'New email address'),
+              decoration: InputDecoration(labelText: 'New email address'),
               validator: (value) {
                 final v = value?.trim() ?? '';
                 if (v.isEmpty) return 'Enter an email address.';
@@ -216,7 +216,7 @@ class _SettingsPasswordLoginScreenState
             TextFormField(
               controller: _confirm,
               obscureText: _obscure,
-              decoration: const InputDecoration(labelText: 'Confirm password'),
+              decoration: InputDecoration(labelText: 'Confirm password'),
               validator: (value) =>
                   value == _password.text ? null : 'These do not match.',
             ),
@@ -458,7 +458,7 @@ class _LanguageSection extends StatelessWidget {
 }
 
 class _SectionHeader extends StatelessWidget {
-  const _SectionHeader({required this.title, required this.detail});
+  _SectionHeader({required this.title, required this.detail});
 
   final String title;
   final String detail;
@@ -820,7 +820,7 @@ class _SettingsFeedbackScreenState
             controller: _title,
             maxLength: 120,
             onChanged: (_) => setState(() {}),
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'In one line',
               hintText: AppLocalizations.of(context).theComposerNoPostButton,
             ),

@@ -118,7 +118,7 @@ class _SheetState extends State<_Sheet> {
                 controller: _from,
                 autocorrect: false,
                 textCapitalization: TextCapitalization.none,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: AppLocalizations.of(context).handle,
                   prefixText: '@',
                 ),

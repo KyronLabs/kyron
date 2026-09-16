@@ -282,7 +282,7 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
     await AppLog.instance.clear();
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text(AppLocalizations.of(context).logCleared)),
+      SnackBar(content: Text(AppLocalizations.of(context).logCleared)),
     );
   }
 }
@@ -402,7 +402,7 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
             controller: _notes,
             maxLines: 5,
             maxLength: 1000,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               hintText: AppLocalizations.of(context).whatYouWereDoing,
             ),
           ),
@@ -506,7 +506,7 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
     await Clipboard.setData(ClipboardData(text: _compose()));
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text(AppLocalizations.of(context).reportCopied)),
+      SnackBar(content: Text(AppLocalizations.of(context).reportCopied)),
     );
   }
 }

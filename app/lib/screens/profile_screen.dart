@@ -300,7 +300,7 @@ class _LoadedState extends ConsumerState<_Loaded> {
         title: AppLocalizations.of(context).literalnothingToLookAtYet,
         detail: '$who not posted any photos or clips.',
       ),
-      ProfileTab.likes => const EmptyState(
+      ProfileTab.likes => EmptyState(
         art: EmptyArt.likes,
         title: AppLocalizations.of(context).literalnoLikesYet,
         detail: 'Posts you like are kept here, just for you.',

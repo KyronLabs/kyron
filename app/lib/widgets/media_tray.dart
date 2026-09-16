@@ -235,7 +235,7 @@ class _Chip extends StatelessWidget {
   final String tooltip;
   final VoidCallback onTap;
 
-  const _Chip({required this.icon, required this.tooltip, required this.onTap});
+  _Chip({required this.icon, required this.tooltip, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -279,7 +279,7 @@ Future<String?> askForAltText(BuildContext context, String? current) {
             maxLines: 3,
             maxLength: 400,
             autofocus: true,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               hintText: AppLocalizations.of(context).whatInPicture,
             ),
           ),

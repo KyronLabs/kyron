@@ -105,7 +105,7 @@ class EmptyState extends StatelessWidget {
   static const double _artSize = 108;
   static const double _compactArtSize = 76;
 
-  const EmptyState({
+  EmptyState({
     super.key,
     required this.art,
     required this.title,

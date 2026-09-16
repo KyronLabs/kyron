@@ -140,27 +140,27 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
   }
 
   EmptyState _empty() => switch (widget.kind) {
-    NotificationType.like => const EmptyState(
+    NotificationType.like => EmptyState(
       art: EmptyArt.likes,
       title: AppLocalizations.of(context).literalnoLikesYet,
       detail: 'When somebody likes one of your posts, it shows up here.',
     ),
-    NotificationType.comment => const EmptyState(
+    NotificationType.comment => EmptyState(
       art: EmptyArt.messages,
       title: AppLocalizations.of(context).literalnoRepliesYet,
       detail: 'Replies to your posts land here.',
     ),
-    NotificationType.follow => const EmptyState(
+    NotificationType.follow => EmptyState(
       art: EmptyArt.people,
       title: AppLocalizations.of(context).literalnoNewFollowers,
       detail: 'People who follow you show up here.',
     ),
-    NotificationType.repost => const EmptyState(
+    NotificationType.repost => EmptyState(
       art: EmptyArt.posts,
       title: AppLocalizations.of(context).literalnoRepostsYet,
       detail: 'When somebody reposts you, it shows up here.',
     ),
-    null => const EmptyState(
+    null => EmptyState(
       art: EmptyArt.caughtUp,
       title: AppLocalizations.of(context).literalyouAreAllCaughtUp,
       detail:

@@ -223,24 +223,24 @@ class _Overflow extends StatelessWidget {
     final action = await ActionSheet.show<CommentAction>(
       context,
       actions: [
-        const SheetAction(
+        SheetAction(
           value: CommentAction.openThread,
           label: AppLocalizations.of(context).literalopenReply,
           icon: Iconsax.message_text_copy,
         ),
-        const SheetAction(
+        SheetAction(
           value: CommentAction.copy,
           label: AppLocalizations.of(context).literalcopyText,
           icon: Iconsax.copy_copy,
         ),
         if (!comment.mine)
-          const SheetAction(
+          SheetAction(
             value: CommentAction.report,
             label: AppLocalizations.of(context).report,
             icon: Iconsax.flag_copy,
           ),
         if (comment.mine)
-          const SheetAction(
+          SheetAction(
             value: CommentAction.delete,
             label: AppLocalizations.of(context).delete,
             icon: Iconsax.trash_copy,

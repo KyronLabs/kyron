@@ -364,7 +364,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       if (!mounted) return;
       // Said out loud rather than left as a lens that quietly does nothing.
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text(AppLocalizations.of(context).faceTrackingUnavailable),
         ),
       );
@@ -502,7 +502,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       AppLog.instance.error('ar', 'Could not take the picture: $error');
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text(AppLocalizations.of(context).couldNotTakePicture),
         ),
       );

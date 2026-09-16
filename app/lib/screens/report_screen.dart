@@ -189,7 +189,7 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
           maxLength: 1000,
           enabled: !_sending,
           onChanged: (_) => setState(() {}),
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             hintText: AppLocalizations.of(context).whatHappenedAndLookAt,
           ),
         ),

@@ -215,7 +215,7 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
     }
     final root = state.root;
     if (root == null) {
-      return const EmptyState(
+      return EmptyState(
         art: EmptyArt.messages,
         title: AppLocalizations.of(context).literalthisReplyIsGone,
         detail: 'It was deleted, or the post it was on was.',
