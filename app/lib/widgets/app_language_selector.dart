@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-import '../models/app_language.dart';
 import '../providers/preferences_provider.dart';
-import 'action_sheet.dart';
+import 'language_sheet.dart';
 
 /// The language picker on the get-started screen.
 ///
@@ -22,18 +21,13 @@ class AppLanguageSelector extends ConsumerWidget {
 
     return TextButton.icon(
       onPressed: () async {
-        final chosen = await ActionSheet.show<AppLanguage>(
+        // The same sheet the settings screen opens, over the same list.
+        // Two pickers drifting apart is how the get-started screen ended up
+        // with three languages of its own and no way to save any of them.
+        final chosen = await LanguageSheet.pickOne(
           context,
-          title: 'LANGUAGE',
-          actions: [
-            for (final language in AppLanguage.values)
-              SheetAction(
-                value: language,
-                label: language.nativeName,
-                icon: Iconsax.global_copy,
-                selected: language == selected,
-              ),
-          ],
+          title: 'App language',
+          current: selected,
         );
         if (chosen != null) {
           ref.read(preferencesProvider.notifier).setLanguage(chosen);

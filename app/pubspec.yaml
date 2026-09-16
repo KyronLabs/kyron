@@ -28,6 +28,11 @@ dependencies:
   validators: ^3.0.0
   flutter_staggered_grid_view: ^0.7.0
   intl: ^0.20.2
+  # Material's own strings, and text direction, in every locale Flutter
+  # ships. Without this the App language setting had nothing to change:
+  # the UI was hard-coded English and the picker only remembered a code.
+  flutter_localizations:
+    sdk: flutter
   webview_flutter: ^4.8.0
   url_launcher: ^6.3.0
   image_picker: ^1.2.1
