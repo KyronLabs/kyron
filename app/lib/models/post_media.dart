@@ -65,32 +65,32 @@ class PostMedia {
   }
 
   factory PostMedia.fromJson(Map<String, dynamic> json) => PostMedia(
-        id: json['id'] as String? ?? '',
-        kind: _kindOf(json['kind']),
-        url: json['url'] as String? ?? '',
-        width: (json['width'] as num?)?.toInt(),
-        height: (json['height'] as num?)?.toInt(),
-        alt: json['alt'] as String?,
-        thumbnailUrl: _text(json['thumbnailUrl']),
-        duration: json['durationMs'] is num
-            ? Duration(milliseconds: (json['durationMs'] as num).toInt())
-            : null,
-        waveform: (json['waveform'] as List<dynamic>? ?? const [])
-            .whereType<num>()
-            .map((value) => value.toInt().clamp(0, 100))
-            .toList(),
-      );
+    id: json['id'] as String? ?? '',
+    kind: _kindOf(json['kind']),
+    url: json['url'] as String? ?? '',
+    width: (json['width'] as num?)?.toInt(),
+    height: (json['height'] as num?)?.toInt(),
+    alt: json['alt'] as String?,
+    thumbnailUrl: _text(json['thumbnailUrl']),
+    duration: json['durationMs'] is num
+        ? Duration(milliseconds: (json['durationMs'] as num).toInt())
+        : null,
+    waveform: (json['waveform'] as List<dynamic>? ?? const [])
+        .whereType<num>()
+        .map((value) => value.toInt().clamp(0, 100))
+        .toList(),
+  );
 
   Map<String, dynamic> toJson() => {
-        'url': url,
-        'kind': kind.name.toUpperCase(),
-        if (width != null) 'width': width,
-        if (height != null) 'height': height,
-        if (alt != null && alt!.trim().isNotEmpty) 'alt': alt!.trim(),
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
-        if (duration != null) 'durationMs': duration!.inMilliseconds,
-        if (waveform.isNotEmpty) 'waveform': waveform,
-      };
+    'url': url,
+    'kind': kind.name.toUpperCase(),
+    if (width != null) 'width': width,
+    if (height != null) 'height': height,
+    if (alt != null && alt!.trim().isNotEmpty) 'alt': alt!.trim(),
+    if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
+    if (duration != null) 'durationMs': duration!.inMilliseconds,
+    if (waveform.isNotEmpty) 'waveform': waveform,
+  };
 
   /// A string field, with blank treated as absent. The server stores an empty
   /// string as easily as a null, and an empty URL is not a picture.
@@ -179,16 +179,16 @@ class PendingMedia {
   /// The local file, so an attachment is visible from the moment it is picked
   /// rather than being an empty box for the length of the upload.
   PostMedia get asPlaceholder => PostMedia(
-        id: path,
-        kind: kind,
-        url: url ?? path,
-        width: width,
-        height: height,
-        alt: alt,
-        duration: duration,
-        waveform: waveform,
-        thumbnailUrl: thumbnailUrl ?? thumbnailPath,
-      );
+    id: path,
+    kind: kind,
+    url: url ?? path,
+    width: width,
+    height: height,
+    alt: alt,
+    duration: duration,
+    waveform: waveform,
+    thumbnailUrl: thumbnailUrl ?? thumbnailPath,
+  );
 
   PendingMedia copyWith({
     String? url,
@@ -200,34 +200,33 @@ class PendingMedia {
     String? thumbnailUrl,
     Duration? duration,
     bool clearError = false,
-  }) =>
-      PendingMedia(
-        path: path,
-        kind: kind,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        url: url ?? this.url,
-        error: clearError ? null : (error ?? this.error),
-        alt: alt ?? this.alt,
-        thumbnailPath: thumbnailPath ?? this.thumbnailPath,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        duration: duration ?? this.duration,
-        waveform: waveform,
-      );
+  }) => PendingMedia(
+    path: path,
+    kind: kind,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    url: url ?? this.url,
+    error: clearError ? null : (error ?? this.error),
+    alt: alt ?? this.alt,
+    thumbnailPath: thumbnailPath ?? this.thumbnailPath,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    duration: duration ?? this.duration,
+    waveform: waveform,
+  );
 
   /// What the create-post request carries. Only ever called once uploaded.
   Map<String, dynamic> toJson() => {
-        'url': url,
-        'kind': kind.name.toUpperCase(),
-        if (width != null) 'width': width,
-        if (height != null) 'height': height,
-        if (alt != null && alt!.trim().isNotEmpty) 'alt': alt!.trim(),
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
-        // Only a recording carries these. A clip's own duration is read off
-        // the file by whatever plays it.
-        if (isVoice && duration != null) 'durationMs': duration!.inMilliseconds,
-        if (waveform.isNotEmpty) 'waveform': waveform,
-      };
+    'url': url,
+    'kind': kind.name.toUpperCase(),
+    if (width != null) 'width': width,
+    if (height != null) 'height': height,
+    if (alt != null && alt!.trim().isNotEmpty) 'alt': alt!.trim(),
+    if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
+    // Only a recording carries these. A clip's own duration is read off
+    // the file by whatever plays it.
+    if (isVoice && duration != null) 'durationMs': duration!.inMilliseconds,
+    if (waveform.isNotEmpty) 'waveform': waveform,
+  };
 }
 
 /// Who may reply to a post.
@@ -254,18 +253,18 @@ enum ReplyPolicy {
 
   /// What the composer's button says.
   String get label => switch (this) {
-        ReplyPolicy.everyone => 'Anyone can interact',
-        ReplyPolicy.followers => 'People who follow you',
-        ReplyPolicy.mentioned => 'People you mention',
-        ReplyPolicy.nobody => 'Nobody can reply',
-      };
+    ReplyPolicy.everyone => 'Anyone can interact',
+    ReplyPolicy.followers => 'People who follow you',
+    ReplyPolicy.mentioned => 'People you mention',
+    ReplyPolicy.nobody => 'Nobody can reply',
+  };
 
   String get detail => switch (this) {
-        ReplyPolicy.everyone => 'Anyone on Kyron can reply to this post.',
-        ReplyPolicy.followers =>
-          'Only people who follow you can reply to this post.',
-        ReplyPolicy.mentioned =>
-          'Only the people you @mention in this post can reply.',
-        ReplyPolicy.nobody => 'Replies are turned off. You can still reply.',
-      };
+    ReplyPolicy.everyone => 'Anyone on Kyron can reply to this post.',
+    ReplyPolicy.followers =>
+      'Only people who follow you can reply to this post.',
+    ReplyPolicy.mentioned =>
+      'Only the people you @mention in this post can reply.',
+    ReplyPolicy.nobody => 'Replies are turned off. You can still reply.',
+  };
 }

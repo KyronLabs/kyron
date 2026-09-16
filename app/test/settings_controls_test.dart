@@ -199,7 +199,8 @@ void main() {
       expect(
         VideoPool.instance.liveCount,
         1,
-        reason: 'the feed autoplaying is what the app is for; this guard is '
+        reason:
+            'the feed autoplaying is what the app is for; this guard is '
             'what proves the one below is measuring something',
       );
     });
@@ -211,13 +212,15 @@ void main() {
       expect(
         VideoPool.instance.liveCount,
         0,
-        reason: 'a clip that downloads and plays anyway is the switch doing '
+        reason:
+            'a clip that downloads and plays anyway is the switch doing '
             'nothing, which is what it did before',
       );
     });
 
-    testWidgets('switching it on stops the clip already playing',
-        (tester) async {
+    testWidgets('switching it on stops the clip already playing', (
+      tester,
+    ) async {
       // Settings is a pushed route over the feed. A reader who turns this on
       // and comes back to a feed still playing has been ignored.
       SharedPreferences.setMockInitialValues({'pref_data_saver': false});
@@ -277,9 +280,7 @@ void main() {
       tester.view.physicalSize = const Size(400, 4000);
 
       await tester.pumpWidget(
-        const ProviderScope(
-          child: MaterialApp(home: SettingsScreen()),
-        ),
+        const ProviderScope(child: MaterialApp(home: SettingsScreen())),
       );
       await tester.pump();
     }
@@ -303,8 +304,9 @@ void main() {
       expect(find.text('Log Out'), findsOneWidget);
     });
 
-    testWidgets('shows the palette in use and offers the rest in a sheet',
-        (tester) async {
+    testWidgets('shows the palette in use and offers the rest in a sheet', (
+      tester,
+    ) async {
       SharedPreferences.setMockInitialValues({'pref_theme': 'dim'});
       await pumpSettings(tester);
       await tester.pump();
@@ -327,8 +329,9 @@ void main() {
       expect(await AppPreferences().readTheme(), AppTheme.light);
     });
 
-    testWidgets('writes Data Saver down where the feed will read it',
-        (tester) async {
+    testWidgets('writes Data Saver down where the feed will read it', (
+      tester,
+    ) async {
       SharedPreferences.setMockInitialValues(<String, Object>{});
       await pumpSettings(tester);
       await tester.pump();

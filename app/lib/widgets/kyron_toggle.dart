@@ -30,9 +30,10 @@ class _KyronToggleState extends State<KyronToggle>
       duration: MotionTokens.micro,
       value: widget.value ? 1.0 : 0.0,
     );
-    _animation = Tween<double>(begin: 0.0, end: 20.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _animation = Tween<double>(
+      begin: 0.0,
+      end: 20.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
   }
 
   @override
@@ -72,15 +73,15 @@ class _KyronToggleState extends State<KyronToggle>
                         end: Alignment.centerRight,
                         colors: [
                           Color(0xFF8A2BE2),
-                          Color(0xFF20B2AA)
+                          Color(0xFF20B2AA),
                         ], // violet → teal
                       )
                     : null,
                 color: widget.value
                     ? null
                     : (isDark
-                        ? const Color(0xFF333333)
-                        : const Color(0xFFD1D5DB)),
+                          ? const Color(0xFF333333)
+                          : const Color(0xFFD1D5DB)),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Padding(

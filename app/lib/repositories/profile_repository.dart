@@ -35,10 +35,7 @@ class ProfileRepository {
   }) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/profile/users/$userId/${followers ? 'followers' : 'following'}',
-      queryParameters: {
-        'limit': limit,
-        if (cursor != null) 'cursor': cursor,
-      },
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
     );
     return FollowPage.fromJson(res.data ?? const {});
   }
@@ -51,10 +48,7 @@ class ProfileRepository {
   Future<SuggestionPage> suggested({int? cursor, int limit = 20}) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/profile/suggested',
-      queryParameters: {
-        'limit': limit,
-        if (cursor != null) 'cursor': cursor,
-      },
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
     );
     return SuggestionPage.fromJson(res.data ?? const {});
   }
@@ -89,12 +83,12 @@ class SuggestionPage {
   const SuggestionPage({required this.items, this.nextCursor});
 
   factory SuggestionPage.fromJson(Map<String, dynamic> json) => SuggestionPage(
-        items: (json['items'] as List<dynamic>? ?? const [])
-            .whereType<Map<String, dynamic>>()
-            .map(ProfileSummary.fromJson)
-            .toList(),
-        nextCursor: (json['nextCursor'] as num?)?.toInt(),
-      );
+    items: (json['items'] as List<dynamic>? ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(ProfileSummary.fromJson)
+        .toList(),
+    nextCursor: (json['nextCursor'] as num?)?.toInt(),
+  );
 }
 
 /// One page of people, with where the next one starts.
@@ -105,12 +99,12 @@ class FollowPage {
   const FollowPage({required this.items, this.cursor});
 
   factory FollowPage.fromJson(Map<String, dynamic> json) => FollowPage(
-        items: (json['items'] as List<dynamic>? ?? const [])
-            .whereType<Map<String, dynamic>>()
-            .map(ProfileSummary.fromJson)
-            .toList(),
-        cursor: json['nextCursor'] as String?,
-      );
+    items: (json['items'] as List<dynamic>? ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(ProfileSummary.fromJson)
+        .toList(),
+    cursor: json['nextCursor'] as String?,
+  );
 
   String? get nextCursor => cursor;
 }

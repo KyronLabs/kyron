@@ -31,8 +31,9 @@ class CommunitiesRepository {
   }
 
   Future<Community> bySlug(String slug) async {
-    final res = await _api.dio
-        .get<Map<String, dynamic>>('/communities/${Uri.encodeComponent(slug)}');
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/communities/${Uri.encodeComponent(slug)}',
+    );
     return Community.fromJson(res.data ?? const {});
   }
 
@@ -72,8 +73,10 @@ class CommunitiesRepository {
       data: {
         'content': content,
         if (media.isNotEmpty)
-          'media':
-              media.where((m) => m.isReady).map((m) => m.toJson()).toList(),
+          'media': media
+              .where((m) => m.isReady)
+              .map((m) => m.toJson())
+              .toList(),
       },
     );
     return FeedPost.fromJson(res.data ?? const {});
@@ -151,6 +154,6 @@ class CommunitiesRepository {
 
   /// Closes a community. Soft, so its posts still resolve.
   Future<void> remove(String slug) => _api.dio.delete<Map<String, dynamic>>(
-        '/communities/${Uri.encodeComponent(slug)}',
-      );
+    '/communities/${Uri.encodeComponent(slug)}',
+  );
 }

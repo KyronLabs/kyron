@@ -24,27 +24,31 @@ void main() {
 
   group('the rail', () {
     Widget rail(int current, void Function(int) onSelect) => ProviderScope(
-          child: MaterialApp(
-            theme: KyronTheme.lightTheme,
-            home: Scaffold(
-              body: Row(
-                children: [
-                  SideRail(currentIndex: current, onSelect: onSelect),
-                  const Expanded(child: SizedBox()),
-                ],
-              ),
-            ),
+      child: MaterialApp(
+        theme: KyronTheme.lightTheme,
+        home: Scaffold(
+          body: Row(
+            children: [
+              SideRail(currentIndex: current, onSelect: onSelect),
+              const Expanded(child: SizedBox()),
+            ],
           ),
-        );
+        ),
+      ),
+    );
 
-    testWidgets('draws the same four places the bottom bar does',
-        (tester) async {
+    testWidgets('draws the same four places the bottom bar does', (
+      tester,
+    ) async {
       await tester.pumpWidget(rail(0, (_) {}));
       await tester.pumpAndSettle();
 
       for (final destination in NavDestinations.all) {
-        expect(find.text(destination.label), findsOneWidget,
-            reason: '${destination.label} is missing from the rail');
+        expect(
+          find.text(destination.label),
+          findsOneWidget,
+          reason: '${destination.label} is missing from the rail',
+        );
       }
       // Four destinations, and compose is not one of them: it opens a sheet
       // and leaves you where you were.
@@ -55,22 +59,23 @@ void main() {
       );
     });
 
-    testWidgets('says which one you are on, and answers a click',
-        (tester) async {
+    testWidgets('says which one you are on, and answers a click', (
+      tester,
+    ) async {
       var chosen = -1;
       await tester.pumpWidget(rail(0, (index) => chosen = index));
       await tester.pumpAndSettle();
 
       expect(
-        tester.getSemantics(find.bySemanticsLabel('Home')).hasFlag(
-              SemanticsFlag.isSelected,
-            ),
+        tester
+            .getSemantics(find.bySemanticsLabel('Home'))
+            .hasFlag(SemanticsFlag.isSelected),
         isTrue,
       );
       expect(
-        tester.getSemantics(find.bySemanticsLabel('Messages')).hasFlag(
-              SemanticsFlag.isSelected,
-            ),
+        tester
+            .getSemantics(find.bySemanticsLabel('Messages'))
+            .hasFlag(SemanticsFlag.isSelected),
         isFalse,
       );
 
@@ -89,13 +94,14 @@ void main() {
     testWidgets('a window gets the rail and a phone does not', (tester) async {
       late bool wide;
       Widget probe() => MediaQuery(
-            data:
-                MediaQueryData(size: Size(tester.view.physicalSize.width, 800)),
-            child: Builder(builder: (context) {
-              wide = Layout.hasRail(context);
-              return const SizedBox();
-            }),
-          );
+        data: MediaQueryData(size: Size(tester.view.physicalSize.width, 800)),
+        child: Builder(
+          builder: (context) {
+            wide = Layout.hasRail(context);
+            return const SizedBox();
+          },
+        ),
+      );
 
       tester.view.devicePixelRatio = 1;
 
@@ -105,8 +111,11 @@ void main() {
 
       tester.view.physicalSize = const Size(390, 800);
       await tester.pumpWidget(probe());
-      expect(wide, isFalse,
-          reason: 'a phone-shaped space keeps the bottom bar');
+      expect(
+        wide,
+        isFalse,
+        reason: 'a phone-shaped space keeps the bottom bar',
+      );
 
       // The boundary itself, so the constant and the comparison agree.
       tester.view.physicalSize = Size(Layout.railAt, 800);
@@ -135,8 +144,11 @@ void main() {
       expect(Layout.gutter(390, Layout.readingWidth), 0);
       expect(Layout.gutter(Layout.readingWidth, Layout.readingWidth), 0);
       expect(Layout.gutter(0, Layout.readingWidth), 0);
-      expect(Layout.gutter(double.infinity, Layout.readingWidth), 0,
-          reason: 'an unbounded width is not a margin of infinity');
+      expect(
+        Layout.gutter(double.infinity, Layout.readingWidth),
+        0,
+        reason: 'an unbounded width is not a margin of infinity',
+      );
     });
   });
 
@@ -145,19 +157,19 @@ void main() {
     /// at all: a real WebViewController asserts without a platform behind it,
     /// which is the very crash this group is about.
     Widget linkScreen() => MaterialApp(
-          theme: KyronTheme.lightTheme,
-          home: Builder(
-            builder: (context) => Scaffold(
-              body: Center(
-                child: TextButton(
-                  onPressed: () =>
-                      AppBrowser.open(context, 'https://example.com/a'),
-                  child: const Text('go'),
-                ),
-              ),
+      theme: KyronTheme.lightTheme,
+      home: Builder(
+        builder: (context) => Scaffold(
+          body: Center(
+            child: TextButton(
+              onPressed: () =>
+                  AppBrowser.open(context, 'https://example.com/a'),
+              child: const Text('go'),
             ),
           ),
-        );
+        ),
+      ),
+    );
 
     setUp(() {
       BrowserRoute.engineFactory = (tab, host) => _NoEngine();
@@ -179,8 +191,9 @@ void main() {
       expect(find.byType(BrowserSheet), findsOneWidget);
     });
 
-    testWidgets('Windows does not, because the sheet cannot build there',
-        (tester) async {
+    testWidgets('Windows does not, because the sheet cannot build there', (
+      tester,
+    ) async {
       PlatformSupport.current = PlatformSupport.desktop;
       await tester.pumpWidget(linkScreen());
       await tester.tap(find.text('go'));
@@ -202,7 +215,9 @@ void main() {
 
     test('names the window Kyron', () {
       expect(
-          read('windows/runner/main.cpp'), contains('window.Create(L"Kyron"'));
+        read('windows/runner/main.cpp'),
+        contains('window.Create(L"Kyron"'),
+      );
       expect(read('windows/runner/main.cpp'), isNot(contains('L"app"')));
     });
 
@@ -215,14 +230,20 @@ void main() {
 
     test('builds an executable called kyron', () {
       expect(
-          read('windows/CMakeLists.txt'), contains('set(BINARY_NAME "kyron")'));
+        read('windows/CMakeLists.txt'),
+        contains('set(BINARY_NAME "kyron")'),
+      );
     });
 
     test('will not let the window be dragged narrower than the layout', () {
-      expect(read('windows/runner/win32_window.cpp'),
-          contains('WM_GETMINMAXINFO'));
       expect(
-          read('windows/runner/win32_window.cpp'), contains('ptMinTrackSize'));
+        read('windows/runner/win32_window.cpp'),
+        contains('WM_GETMINMAXINFO'),
+      );
+      expect(
+        read('windows/runner/win32_window.cpp'),
+        contains('ptMinTrackSize'),
+      );
     });
 
     test('ships Kyron\'s icon rather than Flutter\'s', () {

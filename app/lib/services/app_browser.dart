@@ -102,7 +102,9 @@ class AppBrowser {
         final gone = await leave(uri);
         if (!gone && context.mounted) {
           Toast.show(
-              context, 'No app on this device opens ${uri.scheme} links.');
+            context,
+            'No app on this device opens ${uri.scheme} links.',
+          );
         }
       case LinkDestination.refused:
         Toast.show(context, 'That link is not one this can open.');

@@ -44,13 +44,12 @@ class SearchFilters {
     bool clearAfter = false,
     bool clearBefore = false,
     bool clearHas = false,
-  }) =>
-      SearchFilters(
-        from: clearFrom ? null : (from ?? this.from),
-        after: clearAfter ? null : (after ?? this.after),
-        before: clearBefore ? null : (before ?? this.before),
-        has: clearHas ? null : (has ?? this.has),
-      );
+  }) => SearchFilters(
+    from: clearFrom ? null : (from ?? this.from),
+    after: clearAfter ? null : (after ?? this.after),
+    before: clearBefore ? null : (before ?? this.before),
+    has: clearHas ? null : (has ?? this.has),
+  );
 
   @override
   bool operator ==(Object other) =>
@@ -116,16 +115,15 @@ class SearchState {
     bool? isSearching,
     String? error,
     bool clearError = false,
-  }) =>
-      SearchState(
-        query: query ?? this.query,
-        mode: mode ?? this.mode,
-        filters: filters ?? this.filters,
-        results: results ?? this.results,
-        posts: posts ?? this.posts,
-        isSearching: isSearching ?? this.isSearching,
-        error: clearError ? null : (error ?? this.error),
-      );
+  }) => SearchState(
+    query: query ?? this.query,
+    mode: mode ?? this.mode,
+    filters: filters ?? this.filters,
+    results: results ?? this.results,
+    posts: posts ?? this.posts,
+    isSearching: isSearching ?? this.isSearching,
+    error: clearError ? null : (error ?? this.error),
+  );
 }
 
 class SearchNotifier extends StateNotifier<SearchState> {
@@ -208,7 +206,9 @@ class SearchNotifier extends StateNotifier<SearchState> {
             .toList();
         state = state.copyWith(results: items, isSearching: false);
       } else {
-        final page = await _ref.read(feedRepositoryProvider).search(
+        final page = await _ref
+            .read(feedRepositoryProvider)
+            .search(
               query: snapshot.query.trim(),
               from: snapshot.filters.from,
               after: snapshot.filters.after,
@@ -254,7 +254,8 @@ class SearchNotifier extends StateNotifier<SearchState> {
   }
 }
 
-final searchProvider =
-    StateNotifierProvider<SearchNotifier, SearchState>((ref) {
+final searchProvider = StateNotifierProvider<SearchNotifier, SearchState>((
+  ref,
+) {
   return SearchNotifier(ref);
 });

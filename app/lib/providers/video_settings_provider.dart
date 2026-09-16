@@ -12,8 +12,9 @@ import 'preferences_provider.dart';
 /// however loudly it had just been playing.
 ///
 /// Muted on a fresh install: a feed that starts talking is hostile.
-final videoMutedProvider =
-    StateNotifierProvider<VideoMutedNotifier, bool>((ref) {
+final videoMutedProvider = StateNotifierProvider<VideoMutedNotifier, bool>((
+  ref,
+) {
   return VideoMutedNotifier(ref.read(appPreferencesProvider));
 });
 

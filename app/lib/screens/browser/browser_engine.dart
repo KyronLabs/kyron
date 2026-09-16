@@ -65,7 +65,8 @@ class WebViewEngine implements BrowserEngine {
   ///
   /// Re-injected after every page, because the flag lives on a document that
   /// navigating away throws out.
-  static const _catchNewWindows = '''
+  static const _catchNewWindows =
+      '''
 (function () {
   if (window.__kyronTabs) return;
   window.__kyronTabs = true;

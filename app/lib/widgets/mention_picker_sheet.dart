@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/widgets/mention_picker_sheet.dart
 import 'dart:async';
 
@@ -203,9 +204,8 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
                     onChanged: (_) => _run(),
                     onSubmitted: (_) => _run(immediate: true),
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(
-                        context,
-                      ).searchByNameOrHandle,
+                      hintText: AppLocalizations.of(context)
+                          .searchByNameOrHandle,
                       prefixIcon: const Icon(
                         Iconsax.search_normal_1_copy,
                         size: 18,

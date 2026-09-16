@@ -10,14 +10,8 @@ void main() {
     final ada = await crypto.newKeyPair();
     final bo = await crypto.newKeyPair();
     return (
-      await crypto.sharedSecret(
-        mine: ada,
-        theirs: await bo.extractPublicKey(),
-      ),
-      await crypto.sharedSecret(
-        mine: bo,
-        theirs: await ada.extractPublicKey(),
-      ),
+      await crypto.sharedSecret(mine: ada, theirs: await bo.extractPublicKey()),
+      await crypto.sharedSecret(mine: bo, theirs: await ada.extractPublicKey()),
     );
   }
 
@@ -25,10 +19,7 @@ void main() {
     test('both sides derive the same key', () async {
       final (mine, theirs) = await pair();
 
-      expect(
-        await mine.extractBytes(),
-        equals(await theirs.extractBytes()),
-      );
+      expect(await mine.extractBytes(), equals(await theirs.extractBytes()));
     });
 
     test('what one seals the other opens', () async {
@@ -115,20 +106,21 @@ void main() {
       final bo = await crypto.newKeyPair();
 
       final restored = await MessageCrypto.tryDecodeSecret(
-          await MessageCrypto.encodeSecret(ada));
+        await MessageCrypto.encodeSecret(ada),
+      );
 
       expect(restored, isNotNull);
       expect(
         await (await crypto.sharedSecret(
           mine: restored!,
           theirs: await bo.extractPublicKey(),
-        ))
-            .extractBytes(),
-        equals(await (await crypto.sharedSecret(
-          mine: ada,
-          theirs: await bo.extractPublicKey(),
-        ))
-            .extractBytes()),
+        )).extractBytes(),
+        equals(
+          await (await crypto.sharedSecret(
+            mine: ada,
+            theirs: await bo.extractPublicKey(),
+          )).extractBytes(),
+        ),
       );
     });
   });

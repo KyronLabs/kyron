@@ -44,7 +44,7 @@ class PushRegistrar {
   final PushTokenSourceFactory? _connect;
 
   PushRegistrar(this._devices, {PushTokenSourceFactory? connect})
-      : _connect = connect;
+    : _connect = connect;
 
   PushTokenSource? _source;
   String? _registered;

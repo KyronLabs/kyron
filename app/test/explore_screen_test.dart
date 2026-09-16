@@ -101,8 +101,9 @@ Future<void> _pump(
         currentUserRepositoryProvider.overrideWithValue(_FakeUser()),
         trendingProvider.overrideWith((ref) => TrendingNotifier(feedRepo)),
         topicsProvider.overrideWith((ref) => TopicsNotifier(profileRepo)),
-        suggestedPeopleProvider
-            .overrideWith((ref) => SuggestedPeopleNotifier(profileRepo)),
+        suggestedPeopleProvider.overrideWith(
+          (ref) => SuggestedPeopleNotifier(profileRepo),
+        ),
       ],
       child: MaterialApp(
         onGenerateRoute: (settings) {
@@ -134,13 +135,14 @@ void main() {
 
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
-  testWidgets('hides the bottom bar on the way down, not on a tab swipe',
-      (tester) async {
+  testWidgets('hides the bottom bar on the way down, not on a tab swipe', (
+    tester,
+  ) async {
     final progress = <double>[];
     lastPush = null;
-    final feed = _FakeFeed(tags: [
-      for (var i = 0; i < 30; i++) TrendingTag(tag: 'tag$i', posts: i),
-    ]);
+    final feed = _FakeFeed(
+      tags: [for (var i = 0; i < 30; i++) TrendingTag(tag: 'tag$i', posts: i)],
+    );
 
     tester.view.physicalSize = const Size(1080, 2340);
     tester.view.devicePixelRatio = 3;
@@ -152,8 +154,9 @@ void main() {
           currentUserRepositoryProvider.overrideWithValue(_FakeUser()),
           trendingProvider.overrideWith((ref) => TrendingNotifier(feed)),
           topicsProvider.overrideWith((ref) => TopicsNotifier(_FakeProfile())),
-          suggestedPeopleProvider
-              .overrideWith((ref) => SuggestedPeopleNotifier(_FakeProfile())),
+          suggestedPeopleProvider.overrideWith(
+            (ref) => SuggestedPeopleNotifier(_FakeProfile()),
+          ),
         ],
         child: MaterialApp(
           home: Scaffold(
@@ -183,14 +186,17 @@ void main() {
   });
 
   group('Trending', () {
-    testWidgets('shows the tags the server ranked, in that order',
-        (tester) async {
+    testWidgets('shows the tags the server ranked, in that order', (
+      tester,
+    ) async {
       await _pump(
         tester,
-        feed: _FakeFeed(tags: const [
-          TrendingTag(tag: 'kyron', posts: 1284, recent: 96),
-          TrendingTag(tag: 'lagos', posts: 3, recent: 3),
-        ]),
+        feed: _FakeFeed(
+          tags: const [
+            TrendingTag(tag: 'kyron', posts: 1284, recent: 96),
+            TrendingTag(tag: 'lagos', posts: 3, recent: 3),
+          ],
+        ),
       );
 
       expect(find.text('#kyron'), findsOneWidget);
@@ -224,8 +230,9 @@ void main() {
       expect(lastPush?.arguments, 'kyron');
     });
 
-    testWidgets('says nothing is trending rather than showing filler',
-        (tester) async {
+    testWidgets('says nothing is trending rather than showing filler', (
+      tester,
+    ) async {
       // The page this replaces showed twenty numbered rows whatever the
       // network held, so an empty one and a busy one looked the same.
       await _pump(tester);
@@ -233,22 +240,25 @@ void main() {
       expect(find.textContaining('#'), findsNothing);
     });
 
-    testWidgets('says so when it could not be read, and offers a retry',
-        (tester) async {
+    testWidgets('says so when it could not be read, and offers a retry', (
+      tester,
+    ) async {
       await _pump(tester, feed: _FakeFeed(fails: true));
       expect(find.text('Try again'), findsOneWidget);
     });
   });
 
   group('Topics', () {
-    _FakeProfile withTopics() => _FakeProfile(topicList: const [
-          Topic(
-              slug: 'art', name: 'Art & Design', people: 1200, following: true),
-          Topic(slug: 'code', name: 'Software', people: 1),
-        ]);
+    _FakeProfile withTopics() => _FakeProfile(
+      topicList: const [
+        Topic(slug: 'art', name: 'Art & Design', people: 1200, following: true),
+        Topic(slug: 'code', name: 'Software', people: 1),
+      ],
+    );
 
-    testWidgets('shows real names and how many people are into each',
-        (tester) async {
+    testWidgets('shows real names and how many people are into each', (
+      tester,
+    ) async {
       await _pump(tester, profile: withTopics());
       await _openTab(tester, 'Topics');
 
@@ -299,8 +309,9 @@ void main() {
       expect((lastPush?.arguments as TopicArgs).slug, 'code');
     });
 
-    testWidgets('says there are none rather than inventing twenty',
-        (tester) async {
+    testWidgets('says there are none rather than inventing twenty', (
+      tester,
+    ) async {
       await _pump(tester);
       await _openTab(tester, 'Topics');
       expect(find.text('No topics yet'), findsOneWidget);
@@ -345,9 +356,11 @@ void main() {
     testWidgets('shows the accounts the server ranked', (tester) async {
       await _pump(
         tester,
-        profile: _FakeProfile(people: const [
-          ProfileSummary(id: 'a', name: 'Ada Bello', username: 'ada'),
-        ]),
+        profile: _FakeProfile(
+          people: const [
+            ProfileSummary(id: 'a', name: 'Ada Bello', username: 'ada'),
+          ],
+        ),
       );
       await _openTab(tester, 'People');
 
@@ -374,7 +387,10 @@ void main() {
       const ada = ProfileSummary(id: 'a', name: 'Ada');
       final notifier = SuggestedPeopleNotifier(
         _FakeProfile(
-          people: const [ada, ProfileSummary(id: 'b', name: 'Tunde')],
+          people: const [
+            ada,
+            ProfileSummary(id: 'b', name: 'Tunde'),
+          ],
         ),
       );
       await pumpEventQueue();

@@ -1,4 +1,5 @@
 import '../../l10n/app_localizations.dart';
+
 // lib/widgets/create_post/poll_editor.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -132,9 +133,8 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                     if (poll.canRemoveOption) ...[
                       const SizedBox(width: SpacingTokens.space4),
                       _Tap(
-                        tooltip: AppLocalizations.of(
-                          context,
-                        ).literalremoveThisAnswer,
+                        tooltip: AppLocalizations.of(context)
+                            .literalremoveThisAnswer,
                         onTap: () => notifier.setPoll(poll.removeOption(i)),
                         child: Icon(
                           Iconsax.minus_cirlce_copy,

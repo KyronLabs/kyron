@@ -70,20 +70,16 @@ class FillEffect extends LensEffect {
     final shading = LensEffect.number(json['keepShading'] ?? 0.35);
     if (feather == null || shading == null) return null;
 
-    return FillEffect(
-      region: region,
-      feather: feather,
-      keepShading: shading,
-    );
+    return FillEffect(region: region, feather: feather, keepShading: shading);
   }
 
   @override
   Map<String, Object?> toJson() => {
-        'kind': 'fill',
-        'region': region.name,
-        'feather': feather,
-        'keepShading': keepShading,
-      };
+    'kind': 'fill',
+    'region': region.name,
+    'feather': feather,
+    'keepShading': keepShading,
+  };
 }
 
 /// Frosts the whole frame, and reveals one region of it.
@@ -145,11 +141,11 @@ class FrostEffect extends LensEffect {
 
   @override
   Map<String, Object?> toJson() => {
-        'kind': 'frost',
-        'blur': blur,
-        'desaturate': desaturate,
-        'lift': lift,
-        'reveal': reveal.name,
-        'feather': feather,
-      };
+    'kind': 'frost',
+    'blur': blur,
+    'desaturate': desaturate,
+    'lift': lift,
+    'reveal': reveal.name,
+    'feather': feather,
+  };
 }

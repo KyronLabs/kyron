@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/widgets/share_post_sheet.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -85,9 +86,8 @@ class _Sheet extends StatelessWidget {
           _Item(
             icon: Iconsax.message_2_copy,
             label: AppLocalizations.of(context).literalshareWithAQuote,
-            subtitle: AppLocalizations.of(
-              context,
-            ).literalpostItWithYourOwnWordsAboveIt,
+            subtitle: AppLocalizations.of(context)
+                .literalpostItWithYourOwnWordsAboveIt,
             onTap: () {
               Navigator.pop(context);
               Navigator.pushNamed(context, '/composer', arguments: post);

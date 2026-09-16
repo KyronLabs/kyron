@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/onboard_step1_screen.dart
 import 'dart:io';
 
@@ -12,7 +13,9 @@ import 'package:image_picker/image_picker.dart';
 import '../models/onboarding_model.dart';
 import '../repositories/auth_repository.dart';
 import '../routes.dart';
+
 import 'package:kyron_design_system/kyron_design_system.dart';
+
 import '../utils/api_error_message.dart';
 import '../widgets/app_button.dart';
 import '../widgets/action_sheet.dart';
@@ -117,9 +120,8 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
   /* ---------- navigation ---------- */
   void _report(String message) {
     if (!mounted) return;
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   Future<void> _next() async {

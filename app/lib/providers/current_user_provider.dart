@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
+
 import '../repositories/current_user_repository.dart';
 import '../models/current_user.dart';
 import 'api_client_provider.dart';
@@ -11,8 +12,8 @@ final currentUserRepositoryProvider = Provider<CurrentUserRepository>((ref) {
 
 final currentUserProvider =
     StateNotifierProvider<CurrentUserNotifier, AsyncValue<CurrentUser>>(
-  (ref) => CurrentUserNotifier(ref),
-);
+      (ref) => CurrentUserNotifier(ref),
+    );
 
 class CurrentUserNotifier extends StateNotifier<AsyncValue<CurrentUser>> {
   final Ref ref;

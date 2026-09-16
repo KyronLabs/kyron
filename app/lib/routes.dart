@@ -1,5 +1,6 @@
 // lib/routes.dart
 import 'package:flutter/material.dart';
+
 import 'models/onboarding_model.dart';
 import 'models/profile_model.dart';
 import 'screens/about_screen.dart';
@@ -111,9 +112,11 @@ class Routes {
 
       case onboardStep1:
         final args = settings.arguments;
-        return _page(OnboardStep1Screen(
-          model: args is OnboardingModel ? args : OnboardingModel(),
-        ));
+        return _page(
+          OnboardStep1Screen(
+            model: args is OnboardingModel ? args : OnboardingModel(),
+          ),
+        );
 
       case onboardStep2:
         return _page(
@@ -143,7 +146,8 @@ class Routes {
       // account called "@current" with the DID "did:plc:currentuser".
       case profile:
         return _page(
-            ProfileScreen(username: usernameFromArguments(settings.arguments)));
+          ProfileScreen(username: usernameFromArguments(settings.arguments)),
+        );
 
       case editProfile:
         return _page(const EditProfileScreen());
@@ -243,19 +247,21 @@ class Routes {
       // A QuotedPost argument opens the composer to quote it.
       case composer:
         final quoting = settings.arguments;
-        return _page(ComposerScreen(
-          quoting: switch (quoting) {
-            QuotedPost q => q,
-            FeedPost p => QuotedPost(
+        return _page(
+          ComposerScreen(
+            quoting: switch (quoting) {
+              QuotedPost q => q,
+              FeedPost p => QuotedPost(
                 id: p.id,
                 content: p.content,
                 createdAt: p.createdAt,
                 author: p.author,
                 media: p.media,
               ),
-            _ => null,
-          },
-        ));
+              _ => null,
+            },
+          ),
+        );
 
       case drafts:
         return _page(const DraftsScreen());

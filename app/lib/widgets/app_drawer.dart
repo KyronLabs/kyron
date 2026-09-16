@@ -1,5 +1,6 @@
 // lib/widgets/app_drawer.dart
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -61,15 +62,19 @@ class AppDrawerState extends State<AppDrawer>
         case DrawerFeedbackType.open:
           await Future.wait([
             HapticFeedback.lightImpact(),
-            Future.delayed(const Duration(milliseconds: 10),
-                () => HapticFeedback.lightImpact()),
+            Future.delayed(
+              const Duration(milliseconds: 10),
+              () => HapticFeedback.lightImpact(),
+            ),
           ]);
           break;
         case DrawerFeedbackType.close:
           await Future.wait([
             HapticFeedback.lightImpact(),
-            Future.delayed(const Duration(milliseconds: 10),
-                () => HapticFeedback.selectionClick()),
+            Future.delayed(
+              const Duration(milliseconds: 10),
+              () => HapticFeedback.selectionClick(),
+            ),
           ]);
           break;
         case DrawerFeedbackType.drag:
@@ -136,7 +141,8 @@ class AppDrawerState extends State<AppDrawer>
     }
 
     if (details.velocity.pixelsPerSecond.dx.abs() >= 365.0) {
-      double visualVelocity = details.velocity.pixelsPerSecond.dx /
+      double visualVelocity =
+          details.velocity.pixelsPerSecond.dx /
           MediaQuery.of(context).size.width;
       _controller.fling(velocity: visualVelocity);
     } else if (_controller.value < 0.5) {
@@ -202,8 +208,9 @@ class AppDrawerState extends State<AppDrawer>
                                 sigmaY: 10.0 * _controller.value,
                               ),
                               child: Container(
-                                color: Colors.black
-                                    .withOpacity(0.6 * _controller.value),
+                                color: Colors.black.withOpacity(
+                                  0.6 * _controller.value,
+                                ),
                               ),
                             ),
                           ),

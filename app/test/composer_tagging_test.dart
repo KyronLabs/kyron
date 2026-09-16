@@ -26,36 +26,31 @@ class _OnePerson implements HttpClientAdapter {
     RequestOptions options,
     Stream<Uint8List>? requestStream,
     Future<void>? cancelFuture,
-  ) async =>
-      ResponseBody.fromString(
-        jsonEncode({
-          'items': options.path == '/profile/search'
-              ? [
-                  {
-                    'id': 'u1',
-                    'name': 'Ada Lovelace',
-                    'username': 'ada',
-                    'followers': 3,
-                    'kyronPoints': 0,
-                  },
-                ]
-              : const <Object>[],
-        }),
-        200,
-        headers: {
-          Headers.contentTypeHeader: [Headers.jsonContentType],
-        },
-      );
+  ) async => ResponseBody.fromString(
+    jsonEncode({
+      'items': options.path == '/profile/search'
+          ? [
+              {
+                'id': 'u1',
+                'name': 'Ada Lovelace',
+                'username': 'ada',
+                'followers': 3,
+                'kyronPoints': 0,
+              },
+            ]
+          : const <Object>[],
+    }),
+    200,
+    headers: {
+      Headers.contentTypeHeader: [Headers.jsonContentType],
+    },
+  );
 
   @override
   void close({bool force = false}) {}
 }
 
-const _community = Community(
-  id: 'c1',
-  slug: 'gardeners',
-  name: 'Gardeners',
-);
+const _community = Community(id: 'c1', slug: 'gardeners', name: 'Gardeners');
 
 Future<void> _pump(WidgetTester tester) async {
   final api = ApiClient();
@@ -76,8 +71,9 @@ Future<void> _pump(WidgetTester tester) async {
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
-  testWidgets('the tag button opens the picker and writes the handle in',
-      (tester) async {
+  testWidgets('the tag button opens the picker and writes the handle in', (
+    tester,
+  ) async {
     // This button used to insert a bare '@' and leave the writer to remember
     // somebody's handle exactly -- which is why nobody could tag anyone.
     await _pump(tester);

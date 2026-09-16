@@ -15,25 +15,27 @@ class ApiClient {
   ];
 
   ApiClient() {
-    dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://kyron-47r6.onrender.com',
-        // Long enough to survive a cold start. The API is on a Render plan
-        // that sleeps after a spell of inactivity, and the first request
-        // afterwards waits for the container to come up rather than for the
-        // server to think. At 20 s that request timed out and the app said it
-        // could not reach Kyron, on a service that was merely asleep and
-        // about to answer.
-        connectTimeout: const Duration(seconds: 60),
-        receiveTimeout: const Duration(seconds: 60),
-      ),
-    )..interceptors.add(
-        InterceptorsWrapper(
-          onRequest: _onRequest,
-          onResponse: _onResponse,
-          onError: _onError,
-        ),
-      );
+    dio =
+        Dio(
+            BaseOptions(
+              baseUrl: 'https://kyron-47r6.onrender.com',
+              // Long enough to survive a cold start. The API is on a Render plan
+              // that sleeps after a spell of inactivity, and the first request
+              // afterwards waits for the container to come up rather than for the
+              // server to think. At 20 s that request timed out and the app said it
+              // could not reach Kyron, on a service that was merely asleep and
+              // about to answer.
+              connectTimeout: const Duration(seconds: 60),
+              receiveTimeout: const Duration(seconds: 60),
+            ),
+          )
+          ..interceptors.add(
+            InterceptorsWrapper(
+              onRequest: _onRequest,
+              onResponse: _onResponse,
+              onError: _onError,
+            ),
+          );
   }
 
   Future<void> _onRequest(
@@ -41,8 +43,9 @@ class ApiClient {
     RequestInterceptorHandler handler,
   ) async {
     // 🔥 CRITICAL FIX: Skip auth header for public routes
-    final isPublicRoute =
-        _publicRoutes.any((route) => options.path.endsWith(route));
+    final isPublicRoute = _publicRoutes.any(
+      (route) => options.path.endsWith(route),
+    );
 
     if (!isPublicRoute) {
       // Read the token off the live session rather than a stored copy: the

@@ -30,9 +30,7 @@ void main() {
     final list = ListView.builder(
       // Constant padding when the chrome overlays: the space is inside the
       // scrollable, so keeping it at the open height costs nothing.
-      padding: EdgeInsets.only(
-        top: asSibling ? 0 : statusBar + topEdge + tabs,
-      ),
+      padding: EdgeInsets.only(top: asSibling ? 0 : statusBar + topEdge + tabs),
       itemCount: 200,
       itemBuilder: (_, i) => SizedBox(height: 220, child: Text('post $i')),
     );
@@ -88,8 +86,9 @@ void main() {
       underTest(asSibling: asSibling, collapse: collapse),
     );
 
-    final position =
-        tester.state<ScrollableState>(find.byType(Scrollable)).position;
+    final position = tester
+        .state<ScrollableState>(find.byType(Scrollable))
+        .position;
     final viewports = <double>{};
     final extents = <double>{};
 
@@ -112,7 +111,8 @@ void main() {
     expect(
       viewports,
       hasLength(1),
-      reason: 'a viewport that resizes mid-drag stops the content tracking '
+      reason:
+          'a viewport that resizes mid-drag stops the content tracking '
           'the finger, and re-lays-out the whole visible list every frame',
     );
     expect(extents, hasLength(1), reason: 'so the scroll extent holds too');

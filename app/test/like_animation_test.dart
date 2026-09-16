@@ -8,20 +8,20 @@ import 'package:kyron_app/widgets/post_actions_row.dart';
 /// What the like does when pressed, and what it deliberately does not.
 void main() {
   Widget button({required bool active, required bool burst}) => MaterialApp(
-        home: Scaffold(
-          body: Center(
-            child: PostAction(
-              icon: Icons.favorite_border,
-              label: '12',
-              active: active,
-              activeColor: PostActionColors.like,
-              tooltip: 'Like',
-              burst: burst,
-              onTap: () {},
-            ),
-          ),
+    home: Scaffold(
+      body: Center(
+        child: PostAction(
+          icon: Icons.favorite_border,
+          label: '12',
+          active: active,
+          activeColor: PostActionColors.like,
+          tooltip: 'Like',
+          burst: burst,
+          onTap: () {},
         ),
-      );
+      ),
+    ),
+  );
 
   bool bursting(WidgetTester tester) =>
       find.byType(CustomPaint).evaluate().any((element) {
@@ -57,15 +57,17 @@ void main() {
         expect(
           bursting(tester),
           isFalse,
-          reason: 'celebrating a removal reads as congratulating a change of '
+          reason:
+              'celebrating a removal reads as congratulating a change of '
               'mind',
         );
       }
       await tester.pumpAndSettle();
     });
 
-    testWidgets('stays away on the buttons that did not ask for it',
-        (tester) async {
+    testWidgets('stays away on the buttons that did not ask for it', (
+      tester,
+    ) async {
       await tester.pumpWidget(button(active: false, burst: false));
 
       await tester.tap(find.byType(PostAction));
@@ -87,9 +89,8 @@ void main() {
       // skipping the give makes a scale-up read as a pop-up.
       expect(likePunch(0.1), lessThan(0.95));
 
-      final peak = [
-        for (var i = 0; i <= 100; i++) likePunch(i / 100),
-      ].reduce((a, b) => a > b ? a : b);
+      final peak = [for (var i = 0; i <= 100; i++) likePunch(i / 100)]
+          .reduce((a, b) => a > b ? a : b);
       expect(peak, greaterThan(1.15), reason: 'it has to be seen');
       expect(peak, lessThan(1.45), reason: 'but it is a like, not a cartoon');
     });
@@ -107,13 +108,17 @@ void main() {
     test('draws nothing before it starts or after it is over', () {
       const colour = PostActionColors.like;
       expect(
-        const LikeBurstPainter(t: 0, colour: colour)
-            .shouldRepaint(const LikeBurstPainter(t: 0, colour: colour)),
+        const LikeBurstPainter(
+          t: 0,
+          colour: colour,
+        ).shouldRepaint(const LikeBurstPainter(t: 0, colour: colour)),
         isFalse,
       );
       expect(
-        const LikeBurstPainter(t: 0.3, colour: colour)
-            .shouldRepaint(const LikeBurstPainter(t: 0.4, colour: colour)),
+        const LikeBurstPainter(
+          t: 0.3,
+          colour: colour,
+        ).shouldRepaint(const LikeBurstPainter(t: 0.4, colour: colour)),
         isTrue,
       );
     });

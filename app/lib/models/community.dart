@@ -7,25 +7,25 @@ enum CommunityRole {
   member;
 
   static CommunityRole? fromWire(String? value) => switch (value) {
-        'OWNER' => CommunityRole.owner,
-        'MODERATOR' => CommunityRole.moderator,
-        'MEMBER' => CommunityRole.member,
-        _ => null,
-      };
+    'OWNER' => CommunityRole.owner,
+    'MODERATOR' => CommunityRole.moderator,
+    'MEMBER' => CommunityRole.member,
+    _ => null,
+  };
 
   /// What the API calls it.
   String get wire => switch (this) {
-        CommunityRole.owner => 'OWNER',
-        CommunityRole.moderator => 'MODERATOR',
-        CommunityRole.member => 'MEMBER',
-      };
+    CommunityRole.owner => 'OWNER',
+    CommunityRole.moderator => 'MODERATOR',
+    CommunityRole.member => 'MEMBER',
+  };
 
   /// What a member list calls it.
   String get label => switch (this) {
-        CommunityRole.owner => 'Owner',
-        CommunityRole.moderator => 'Moderator',
-        CommunityRole.member => 'Member',
-      };
+    CommunityRole.owner => 'Owner',
+    CommunityRole.moderator => 'Moderator',
+    CommunityRole.member => 'Member',
+  };
 
   /// Whether this role may change the community itself.
   bool get canEdit => this == CommunityRole.owner;
@@ -74,17 +74,17 @@ class Community {
   });
 
   factory Community.fromJson(Map<String, dynamic> json) => Community(
-        id: json['id'] as String? ?? '',
-        slug: json['slug'] as String? ?? '',
-        name: json['name'] as String? ?? '',
-        description: json['description'] as String?,
-        avatarUrl: json['avatarUrl'] as String?,
-        bannerUrl: json['bannerUrl'] as String?,
-        members: (json['members'] as num?)?.toInt() ?? 0,
-        posts: (json['posts'] as num?)?.toInt() ?? 0,
-        joined: json['joined'] == true,
-        role: CommunityRole.fromWire(json['role'] as String?),
-      );
+    id: json['id'] as String? ?? '',
+    slug: json['slug'] as String? ?? '',
+    name: json['name'] as String? ?? '',
+    description: json['description'] as String?,
+    avatarUrl: json['avatarUrl'] as String?,
+    bannerUrl: json['bannerUrl'] as String?,
+    members: (json['members'] as num?)?.toInt() ?? 0,
+    posts: (json['posts'] as num?)?.toInt() ?? 0,
+    joined: json['joined'] == true,
+    role: CommunityRole.fromWire(json['role'] as String?),
+  );
 
   Community copyWith({bool? joined, int? members, CommunityRole? role}) =>
       Community(
@@ -113,12 +113,12 @@ class CommunityPage {
   const CommunityPage({this.items = const [], this.nextCursor});
 
   factory CommunityPage.fromJson(Map<String, dynamic> json) => CommunityPage(
-        items: (json['items'] as List<dynamic>? ?? const [])
-            .whereType<Map<String, dynamic>>()
-            .map(Community.fromJson)
-            .toList(),
-        nextCursor: json['nextCursor'] as String?,
-      );
+    items: (json['items'] as List<dynamic>? ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(Community.fromJson)
+        .toList(),
+    nextCursor: json['nextCursor'] as String?,
+  );
 }
 
 /// One person in a community, as the member list shows them.
@@ -150,7 +150,7 @@ class CommunityMember {
         role: CommunityRole.fromWire(json['role'] as String?),
         joinedAt:
             DateTime.tryParse(json['joinedAt'] as String? ?? '')?.toLocal() ??
-                DateTime.now(),
+            DateTime.now(),
       );
 
   /// What the row calls them, falling through the name to the handle rather
@@ -169,13 +169,13 @@ class CommunityMember {
   }
 
   CommunityMember copyWith({CommunityRole? role}) => CommunityMember(
-        id: id,
-        name: name,
-        username: username,
-        avatarUrl: avatarUrl,
-        role: role ?? this.role,
-        joinedAt: joinedAt,
-      );
+    id: id,
+    name: name,
+    username: username,
+    avatarUrl: avatarUrl,
+    role: role ?? this.role,
+    joinedAt: joinedAt,
+  );
 }
 
 /// One page of a community's roll.

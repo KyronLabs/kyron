@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/screens/community_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -77,9 +78,8 @@ class CommunityScreen extends ConsumerWidget {
           else if (community == null)
             SafeArea(
               child: EmptyState.failed(
-                title: AppLocalizations.of(
-                  context,
-                ).literalcouldNotOpenThisCommunity,
+                title: AppLocalizations.of(context)
+                    .literalcouldNotOpenThisCommunity,
                 detail: state.error,
                 onAction: notifier.refresh,
               ).scrollable,
@@ -146,18 +146,16 @@ class CommunityScreen extends ConsumerWidget {
                   children: [
                     _GlassButton(
                       icon: Iconsax.arrow_left_copy,
-                      tooltip: MaterialLocalizations.of(
-                        context,
-                      ).backButtonTooltip,
+                      tooltip: MaterialLocalizations.of(context)
+                          .backButtonTooltip,
                       onPressed: () => Navigator.pop(context),
                     ),
                     const Spacer(),
                     if (community != null)
                       _GlassButton(
                         icon: Iconsax.more_copy,
-                        tooltip: AppLocalizations.of(
-                          context,
-                        ).literalthisCommunity,
+                        tooltip: AppLocalizations.of(context)
+                            .literalthisCommunity,
                         onPressed: () =>
                             _openMenu(context, ref, community, notifier),
                       ),
@@ -565,9 +563,8 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final muted = Theme.of(
-      context,
-    ).colorScheme.onSurface.withValues(alpha: 0.6);
+    final muted = Theme.of(context).colorScheme.onSurface
+        .withValues(alpha: 0.6);
 
     return Row(
       mainAxisSize: MainAxisSize.min,

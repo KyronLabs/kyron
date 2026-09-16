@@ -17,10 +17,12 @@ final profileRepositoryProvider = Provider<ProfileRepository>(
 /// A null username means "mine", which reads the cached /profile/me the drawer
 /// and top bar already hold rather than issuing a second request for the same
 /// row.
-final profileProvider = StateNotifierProvider.family<ProfileNotifier,
-    AsyncValue<ProfileModel>, String?>(
-  (ref, username) => ProfileNotifier(ref, username),
-);
+final profileProvider =
+    StateNotifierProvider.family<
+      ProfileNotifier,
+      AsyncValue<ProfileModel>,
+      String?
+    >((ref, username) => ProfileNotifier(ref, username));
 
 class ProfileNotifier extends StateNotifier<AsyncValue<ProfileModel>> {
   final Ref _ref;

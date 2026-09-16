@@ -144,8 +144,9 @@ void main() {
     await clear(tester);
   });
 
-  testWidgets('a message asked for from a dead context is simply not shown',
-      (tester) async {
+  testWidgets('a message asked for from a dead context is simply not shown', (
+    tester,
+  ) async {
     // Sheets report what they did after they have popped. Nothing here is
     // worth throwing over.
     final ctx = await _pump(tester);

@@ -73,13 +73,13 @@ void main() {
   tearDown(() => PlatformSupport.current = null);
 
   Widget app(Widget home) => ProviderScope(
-        overrides: [authRepositoryProvider.overrideWithValue(auth)],
-        child: MaterialApp(
-          theme: KyronTheme.lightTheme,
-          home: home,
-          onGenerateRoute: Routes.onGenerateRoute,
-        ),
-      );
+    overrides: [authRepositoryProvider.overrideWithValue(auth)],
+    child: MaterialApp(
+      theme: KyronTheme.lightTheme,
+      home: home,
+      onGenerateRoute: Routes.onGenerateRoute,
+    ),
+  );
 
   /// Taps through the terms sheet, which stands in front of every way in.
   Future<void> agree(WidgetTester tester) async {
@@ -88,19 +88,24 @@ void main() {
   }
 
   group('the terms gate', () {
-    testWidgets('asks before the first way in, and takes no for an answer',
-        (tester) async {
+    testWidgets('asks before the first way in, and takes no for an answer', (
+      tester,
+    ) async {
       final prefs = AppPreferences();
       bool? answer;
 
-      await tester.pumpWidget(app(Builder(
-        builder: (context) => TextButton(
-          onPressed: () async {
-            answer = await TermsGate.require(context, preferences: prefs);
-          },
-          child: const Text('go'),
+      await tester.pumpWidget(
+        app(
+          Builder(
+            builder: (context) => TextButton(
+              onPressed: () async {
+                answer = await TermsGate.require(context, preferences: prefs);
+              },
+              child: const Text('go'),
+            ),
+          ),
         ),
-      )));
+      );
 
       await tester.tap(find.text('go'));
       await tester.pumpAndSettle();
@@ -113,19 +118,26 @@ void main() {
       expect(await prefs.readTermsAcceptedAt(), isNull);
     });
 
-    testWidgets('records when, and never asks that reader again',
-        (tester) async {
+    testWidgets('records when, and never asks that reader again', (
+      tester,
+    ) async {
       final prefs = AppPreferences();
       final answers = <bool>[];
 
-      await tester.pumpWidget(app(Builder(
-        builder: (context) => TextButton(
-          onPressed: () async {
-            answers.add(await TermsGate.require(context, preferences: prefs));
-          },
-          child: const Text('go'),
+      await tester.pumpWidget(
+        app(
+          Builder(
+            builder: (context) => TextButton(
+              onPressed: () async {
+                answers.add(
+                  await TermsGate.require(context, preferences: prefs),
+                );
+              },
+              child: const Text('go'),
+            ),
+          ),
         ),
-      )));
+      );
 
       await tester.tap(find.text('go'));
       await tester.pumpAndSettle();
@@ -136,10 +148,7 @@ void main() {
       // nothing about which version anybody read.
       final accepted = await prefs.readTermsAcceptedAt();
       expect(accepted, isNotNull);
-      expect(
-        DateTime.now().difference(accepted!).inMinutes,
-        lessThan(1),
-      );
+      expect(DateTime.now().difference(accepted!).inMinutes, lessThan(1));
 
       await tester.tap(find.text('go'));
       await tester.pumpAndSettle();
@@ -147,15 +156,20 @@ void main() {
       expect(answers, [true, true]);
     });
 
-    testWidgets('says the three things that matter and links the documents',
-        (tester) async {
-      await tester.pumpWidget(app(Builder(
-        builder: (context) => TextButton(
-          onPressed: () =>
-              TermsGate.require(context, preferences: AppPreferences()),
-          child: const Text('go'),
+    testWidgets('says the three things that matter and links the documents', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        app(
+          Builder(
+            builder: (context) => TextButton(
+              onPressed: () =>
+                  TermsGate.require(context, preferences: AppPreferences()),
+              child: const Text('go'),
+            ),
+          ),
         ),
-      )));
+      );
       await tester.tap(find.text('go'));
       await tester.pumpAndSettle();
 
@@ -177,8 +191,9 @@ void main() {
       GoogleSignInPlatform.instance = FakeGooglePlatform(supports: false);
     });
 
-    testWidgets('never greets a first-timer as a returning one',
-        (tester) async {
+    testWidgets('never greets a first-timer as a returning one', (
+      tester,
+    ) async {
       await tester.pumpWidget(app(const WelcomeScreen()));
       await tester.pumpAndSettle();
 
@@ -195,8 +210,9 @@ void main() {
       expect(find.text('Log in'), findsOneWidget);
     });
 
-    testWidgets('starts no sign-in until the terms are agreed to',
-        (tester) async {
+    testWidgets('starts no sign-in until the terms are agreed to', (
+      tester,
+    ) async {
       PlatformSupport.current = PlatformSupport.mobile;
       await tester.pumpWidget(app(const WelcomeScreen()));
       await tester.pumpAndSettle();
@@ -209,8 +225,11 @@ void main() {
 
       await tester.tap(find.text('Not now'));
       await tester.pumpAndSettle();
-      expect(auth.googleStarts, 0,
-          reason: 'declining the terms has to stop the sign-in');
+      expect(
+        auth.googleStarts,
+        0,
+        reason: 'declining the terms has to stop the sign-in',
+      );
     });
 
     testWidgets('and starts one once they are', (tester) async {
@@ -229,8 +248,9 @@ void main() {
       expect(auth.googleStarts, 1);
     });
 
-    testWidgets('says so rather than opening a browser that cannot come back',
-        (tester) async {
+    testWidgets('says so rather than opening a browser that cannot come back', (
+      tester,
+    ) async {
       // Windows registers nothing for so.kyron.app://, so Google would hand
       // the finished sign-in to a scheme nothing on the machine answers.
       PlatformSupport.current = PlatformSupport.desktop;
@@ -247,8 +267,9 @@ void main() {
       expect(find.textContaining('Forgot password'), findsOneWidget);
     });
 
-    testWidgets('shows the failure when the browser will not open',
-        (tester) async {
+    testWidgets('shows the failure when the browser will not open', (
+      tester,
+    ) async {
       PlatformSupport.current = PlatformSupport.mobile;
       auth.nextFailure = StateError('no browser');
 
@@ -261,7 +282,9 @@ void main() {
 
       expect(auth.googleStarts, 1);
       expect(
-          find.textContaining('Could not open Google sign-in'), findsOneWidget);
+        find.textContaining('Could not open Google sign-in'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('gates the email path the same way', (tester) async {
@@ -278,8 +301,9 @@ void main() {
       expect(find.text('Continue with Google'), findsOneWidget);
     });
 
-    testWidgets('the legal line opens the summary rather than a wall of text',
-        (tester) async {
+    testWidgets('the legal line opens the summary rather than a wall of text', (
+      tester,
+    ) async {
       await tester.pumpWidget(app(const WelcomeScreen()));
       await tester.pumpAndSettle();
 
@@ -293,19 +317,20 @@ void main() {
 
   group('the Google button', () {
     test('says one of the three things Google allows, and nothing else', () {
-      expect(
-        GoogleAction.values.map((a) => a.label),
-        ['Sign in with Google', 'Sign up with Google', 'Continue with Google'],
-      );
+      expect(GoogleAction.values.map((a) => a.label), [
+        'Sign in with Google',
+        'Sign up with Google',
+        'Continue with Google',
+      ]);
     });
 
     testWidgets('never recolours the mark', (tester) async {
       // Recolouring it is the single thing Google's guidelines are most
       // explicit about, and the asset this replaced was three greys out of a
       // file whose own metadata called it search.svg.
-      await tester.pumpWidget(app(
-        const Scaffold(body: Center(child: GoogleButton(onTap: null))),
-      ));
+      await tester.pumpWidget(
+        app(const Scaffold(body: Center(child: GoogleButton(onTap: null)))),
+      );
       await tester.pumpAndSettle();
 
       final logo = tester.widget<SvgPicture>(
@@ -324,8 +349,11 @@ void main() {
       await tester.pumpAndSettle();
 
       final svg = tester.widget<SvgPicture>(find.byType(SvgPicture));
-      expect(svg.colorFilter, isNull,
-          reason: 'the home app bar flattened it to the accent blue');
+      expect(
+        svg.colorFilter,
+        isNull,
+        reason: 'the home app bar flattened it to the accent blue',
+      );
     });
 
     test('and as a silhouette is near-black by day, barely lit by night', () {
@@ -369,8 +397,10 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(auth.resetsSentTo, isEmpty);
-      expect(find.text('That does not look like an email address'),
-          findsOneWidget);
+      expect(
+        find.text('That does not look like an email address'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('sends, and then says what happens next', (tester) async {
@@ -394,11 +424,14 @@ void main() {
       // Careful about what it claims: Supabase answers the same way whether
       // or not an account exists, so "we sent it" would be a lie.
       expect(
-          find.textContaining('If there is a Kyron account'), findsOneWidget);
+        find.textContaining('If there is a Kyron account'),
+        findsOneWidget,
+      );
     });
 
-    testWidgets('warns a desktop reader that the link opens on the phone',
-        (tester) async {
+    testWidgets('warns a desktop reader that the link opens on the phone', (
+      tester,
+    ) async {
       PlatformSupport.current = PlatformSupport.desktop;
       await tester.pumpWidget(app(const ForgotPasswordScreen()));
       await tester.enterText(find.byType(TextFormField), 'someone@kyron.so');
@@ -408,8 +441,9 @@ void main() {
       expect(find.textContaining('not on Windows'), findsOneWidget);
     });
 
-    testWidgets('holds the resend button down while the limiter is counting',
-        (tester) async {
+    testWidgets('holds the resend button down while the limiter is counting', (
+      tester,
+    ) async {
       await tester.pumpWidget(app(const ForgotPasswordScreen()));
       await tester.enterText(find.byType(TextFormField), 'someone@kyron.so');
       await tester.tap(find.text('Send the link'));
@@ -428,8 +462,9 @@ void main() {
       expect(auth.resetsSentTo, hasLength(1));
     });
 
-    testWidgets('shows a refusal in place, and stays on the form',
-        (tester) async {
+    testWidgets('shows a refusal in place, and stays on the form', (
+      tester,
+    ) async {
       auth.nextFailure = const AuthException(
         'For security purposes, you can only request this after 41 seconds.',
       );
@@ -467,49 +502,55 @@ void main() {
     Future<void> pumpAt(WidgetTester tester, Size size) async {
       await tester.binding.setSurfaceSize(const Size(900, 900));
       addTearDown(() => tester.binding.setSurfaceSize(null));
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: Center(
-            child: SizedBox(
-              width: size.width,
-              height: size.height,
-              child: const GetStartedArt(),
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: Center(
+              child: SizedBox(
+                width: size.width,
+                height: size.height,
+                child: const GetStartedArt(),
+              ),
             ),
           ),
         ),
-      ));
+      );
     }
 
-    testWidgets('draws every specimen, from a file that is really shipped',
-        (tester) async {
+    testWidgets('draws every specimen, from a file that is really shipped', (
+      tester,
+    ) async {
       await pumpAt(tester, const Size(390, 380));
 
-      expect(
-        drawnIn(tester)..sort(),
-        [
-          'butterfly-green.webp',
-          'butterfly-red.webp',
-          'grass.webp',
-          'lavender.webp',
-          'palm.webp',
-          'tulip.webp',
-        ],
-      );
+      expect(drawnIn(tester)..sort(), [
+        'butterfly-green.webp',
+        'butterfly-red.webp',
+        'grass.webp',
+        'lavender.webp',
+        'palm.webp',
+        'tulip.webp',
+      ]);
 
       // pubspec has to carry the folder, or every one of these is an
       // errorBuilder returning an empty box. That failure is silent, and it
       // is exactly what the first version of this picture did: it laid out
       // perfectly, analysed clean, and rendered an empty rectangle.
-      expect(File('pubspec.yaml').readAsStringSync(),
-          contains('lib/assets/nature/'));
+      expect(
+        File('pubspec.yaml').readAsStringSync(),
+        contains('lib/assets/nature/'),
+      );
       for (final name in drawnIn(tester)) {
-        expect(File('lib/assets/nature/$name').existsSync(), isTrue,
-            reason: '$name is drawn but not in the repository');
+        expect(
+          File('lib/assets/nature/$name').existsSync(),
+          isTrue,
+          reason: '$name is drawn but not in the repository',
+        );
       }
     });
 
-    testWidgets('keeps the meadow and drops the sky when the frame is a band',
-        (tester) async {
+    testWidgets('keeps the meadow and drops the sky when the frame is a band', (
+      tester,
+    ) async {
       // What a resized desktop window leaves this widget: 160 pixels. The
       // fronds and the high butterfly have nowhere to be in a band that
       // short, and drawn anyway they lie across the flowers.

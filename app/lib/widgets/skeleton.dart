@@ -33,9 +33,9 @@ class SkeletonBox extends StatelessWidget {
 
   /// A circle, for an avatar.
   const SkeletonBox.circle({super.key, required double size})
-      : width = size,
-        height = size,
-        radius = size;
+    : width = size,
+      height = size,
+      radius = size;
 
   /// A line of text.
   ///
@@ -43,7 +43,7 @@ class SkeletonBox extends StatelessWidget {
   /// to stretch -- in a column aligned to the start it has no width to take
   /// and comes out as nothing at all. Short lines carry an explicit width.
   const SkeletonBox.line({super.key, this.width, this.height = 12})
-      : radius = 4;
+    : radius = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -119,10 +119,8 @@ class _SkeletonGroupState extends State<SkeletonGroup>
   }
 
   @override
-  Widget build(BuildContext context) => _SkeletonTicker(
-        animation: _controller,
-        child: widget.child,
-      );
+  Widget build(BuildContext context) =>
+      _SkeletonTicker(animation: _controller, child: widget.child);
 }
 
 class _SkeletonTicker extends InheritedWidget {
@@ -154,79 +152,79 @@ class SkeletonList extends StatelessWidget {
 
   /// Posts, for the feed and any list of them.
   factory SkeletonList.posts({int count = 4}) => SkeletonList(
-        count: count,
-        itemBuilder: (context, index) => const _PostSkeleton(),
-      );
+    count: count,
+    itemBuilder: (context, index) => const _PostSkeleton(),
+  );
 
   /// People, for followers, search results and Explore.
   factory SkeletonList.people({int count = 7}) => SkeletonList(
-        count: count,
-        itemBuilder: (context, index) => const _PersonSkeleton(),
-      );
+    count: count,
+    itemBuilder: (context, index) => const _PersonSkeleton(),
+  );
 
   /// Hashtag chips, for the interest picker.
   factory SkeletonList.tags({int count = 6}) => SkeletonList(
-        count: count,
-        itemBuilder: (context, index) => const _TagSkeleton(),
-      );
+    count: count,
+    itemBuilder: (context, index) => const _TagSkeleton(),
+  );
 
   /// Conversations, for the messages list.
   factory SkeletonList.conversations({int count = 8}) => SkeletonList(
-        count: count,
-        itemBuilder: (context, index) => const _ConversationSkeleton(),
-      );
+    count: count,
+    itemBuilder: (context, index) => const _ConversationSkeleton(),
+  );
 
   /// Comments, indented the way a thread is.
   factory SkeletonList.comments({int count = 5}) => SkeletonList(
-        count: count,
-        padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
-        // Every third one a reply, so the run reads as a conversation rather
-        // than a list.
-        itemBuilder: (context, index) =>
-            _CommentSkeleton(indent: index % 3 == 1 ? 28 : 0),
-      );
+    count: count,
+    padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
+    // Every third one a reply, so the run reads as a conversation rather
+    // than a list.
+    itemBuilder: (context, index) =>
+        _CommentSkeleton(indent: index % 3 == 1 ? 28 : 0),
+  );
 
   /// Notifications: a small avatar, a line of what happened, a time.
   factory SkeletonList.notifications({int count = 8}) => SkeletonList(
-        count: count,
-        itemBuilder: (context, index) => const _NotificationSkeleton(),
-      );
+    count: count,
+    itemBuilder: (context, index) => const _NotificationSkeleton(),
+  );
 
   /// Communities: a square badge rather than a round avatar.
   factory SkeletonList.communities({int count = 6}) => SkeletonList(
-        count: count,
-        itemBuilder: (context, index) => const _CommunitySkeleton(),
-      );
+    count: count,
+    itemBuilder: (context, index) => const _CommunitySkeleton(),
+  );
 
   /// Chat bubbles, alternating sides.
   factory SkeletonList.messages({int count = 7}) => SkeletonList(
-        count: count,
-        padding: const EdgeInsets.symmetric(
-          horizontal: SpacingTokens.space12,
-          vertical: SpacingTokens.space12,
-        ),
-        itemBuilder: (context, index) => _BubbleSkeleton(mine: index.isOdd),
-      );
+    count: count,
+    padding: const EdgeInsets.symmetric(
+      horizontal: SpacingTokens.space12,
+      vertical: SpacingTokens.space12,
+    ),
+    itemBuilder: (context, index) => _BubbleSkeleton(mine: index.isOdd),
+  );
 
   @override
   Widget build(BuildContext context) => SkeletonGroup(
-        // A Column, not a ListView. There is nothing here to scroll to, and a
-        // list nested inside another scroll view has no height to lay out in
-        // -- which is not an error, it simply comes out as nothing at all.
-        child: Padding(
-          padding: padding,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              for (var index = 0; index < count; index++) ...[
-                if (index > 0 && separator != null) separator!,
-                itemBuilder(context, index),
-              ],
-            ],
-          ),
-        ),
-      );
+    // A Column, not a ListView. There is nothing here to scroll to, and a
+    // list nested inside another scroll view has no height to lay out in
+    // -- which is not an error, it simply comes out as nothing at all.
+    child: Padding(
+      padding: padding,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (var index = 0; index < count; index++) ...[
+            if (index > 0 && separator != null) separator!,
+            itemBuilder(context, index),
+          ],
+        ],
+      ),
+    ),
+  );
 }
 
 class _PostSkeleton extends StatelessWidget {
@@ -234,57 +232,57 @@ class _PostSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.fromLTRB(
-          SpacingTokens.space16,
-          SpacingTokens.space16,
-          SpacingTokens.space16,
-          SpacingTokens.space8,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+    padding: const EdgeInsets.fromLTRB(
+      SpacingTokens.space16,
+      SpacingTokens.space16,
+      SpacingTokens.space16,
+      SpacingTokens.space8,
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
           children: [
-            Row(
-              children: [
-                const SkeletonBox.circle(size: 40),
-                const SizedBox(width: SpacingTokens.space12),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    SkeletonBox.line(width: 120, height: 13),
-                    SizedBox(height: SpacingTokens.space8),
-                    SkeletonBox.line(width: 80, height: 11),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: SpacingTokens.space12),
-            const SkeletonBox.line(),
-            const SizedBox(height: SpacingTokens.space8),
-            const SkeletonBox.line(),
-            const SizedBox(height: SpacingTokens.space8),
-            const FractionallySizedBox(
-              // Short, so a block of lines reads as a paragraph rather than
-              // as a table.
-              alignment: Alignment.centerLeft,
-              widthFactor: 0.55,
-              child: SkeletonBox.line(),
-            ),
-            const SizedBox(height: SpacingTokens.space16),
-            Row(
+            const SkeletonBox.circle(size: 40),
+            const SizedBox(width: SpacingTokens.space12),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                SkeletonBox(width: 44, height: 14),
-                SizedBox(width: SpacingTokens.space20),
-                SkeletonBox(width: 44, height: 14),
-                SizedBox(width: SpacingTokens.space20),
-                SkeletonBox(width: 44, height: 14),
+                SkeletonBox.line(width: 120, height: 13),
+                SizedBox(height: SpacingTokens.space8),
+                SkeletonBox.line(width: 80, height: 11),
               ],
             ),
-            const SizedBox(height: SpacingTokens.space16),
-            const Hairline(),
           ],
         ),
-      );
+        const SizedBox(height: SpacingTokens.space12),
+        const SkeletonBox.line(),
+        const SizedBox(height: SpacingTokens.space8),
+        const SkeletonBox.line(),
+        const SizedBox(height: SpacingTokens.space8),
+        const FractionallySizedBox(
+          // Short, so a block of lines reads as a paragraph rather than
+          // as a table.
+          alignment: Alignment.centerLeft,
+          widthFactor: 0.55,
+          child: SkeletonBox.line(),
+        ),
+        const SizedBox(height: SpacingTokens.space16),
+        Row(
+          children: const [
+            SkeletonBox(width: 44, height: 14),
+            SizedBox(width: SpacingTokens.space20),
+            SkeletonBox(width: 44, height: 14),
+            SizedBox(width: SpacingTokens.space20),
+            SkeletonBox(width: 44, height: 14),
+          ],
+        ),
+        const SizedBox(height: SpacingTokens.space16),
+        const Hairline(),
+      ],
+    ),
+  );
 }
 
 class _PersonSkeleton extends StatelessWidget {
@@ -292,30 +290,30 @@ class _PersonSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: SpacingTokens.space16,
-          vertical: SpacingTokens.space12,
+    padding: const EdgeInsets.symmetric(
+      horizontal: SpacingTokens.space16,
+      vertical: SpacingTokens.space12,
+    ),
+    child: Row(
+      children: [
+        const SkeletonBox.circle(size: 48),
+        const SizedBox(width: SpacingTokens.space12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              SkeletonBox.line(width: 140, height: 13),
+              SizedBox(height: SpacingTokens.space8),
+              SkeletonBox.line(width: 90, height: 11),
+            ],
+          ),
         ),
-        child: Row(
-          children: [
-            const SkeletonBox.circle(size: 48),
-            const SizedBox(width: SpacingTokens.space12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  SkeletonBox.line(width: 140, height: 13),
-                  SizedBox(height: SpacingTokens.space8),
-                  SkeletonBox.line(width: 90, height: 11),
-                ],
-              ),
-            ),
-            const SizedBox(width: SpacingTokens.space8),
-            const SkeletonBox(width: 84, height: 32, radius: 16),
-          ],
-        ),
-      );
+        const SizedBox(width: SpacingTokens.space8),
+        const SkeletonBox(width: 84, height: 32, radius: 16),
+      ],
+    ),
+  );
 }
 
 class _ConversationSkeleton extends StatelessWidget {
@@ -323,33 +321,33 @@ class _ConversationSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: SpacingTokens.space16,
-          vertical: SpacingTokens.space12,
-        ),
-        child: Row(
-          children: [
-            const SkeletonBox.circle(size: 52),
-            const SizedBox(width: SpacingTokens.space12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: SkeletonBox.line(width: 110, height: 13),
-                  ),
-                  SizedBox(height: SpacingTokens.space8),
-                  SkeletonBox.line(height: 11),
-                ],
+    padding: const EdgeInsets.symmetric(
+      horizontal: SpacingTokens.space16,
+      vertical: SpacingTokens.space12,
+    ),
+    child: Row(
+      children: [
+        const SkeletonBox.circle(size: 52),
+        const SizedBox(width: SpacingTokens.space12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: SkeletonBox.line(width: 110, height: 13),
               ),
-            ),
-            const SizedBox(width: SpacingTokens.space12),
-            const SkeletonBox.line(width: 28, height: 10),
-          ],
+              SizedBox(height: SpacingTokens.space8),
+              SkeletonBox.line(height: 11),
+            ],
+          ),
         ),
-      );
+        const SizedBox(width: SpacingTokens.space12),
+        const SkeletonBox.line(width: 28, height: 10),
+      ],
+    ),
+  );
 }
 
 class _CommentSkeleton extends StatelessWidget {
@@ -359,38 +357,38 @@ class _CommentSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: EdgeInsets.only(
-          left: indent,
-          top: SpacingTokens.space12,
-          bottom: SpacingTokens.space4,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SkeletonBox.circle(size: 34),
-            const SizedBox(width: ThreadGeometry.gutter),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: const [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: SkeletonBox.line(width: 100, height: 12),
-                  ),
-                  SizedBox(height: SpacingTokens.space8),
-                  SkeletonBox.line(),
-                  SizedBox(height: SpacingTokens.space4),
-                  FractionallySizedBox(
-                    alignment: Alignment.centerLeft,
-                    widthFactor: 0.7,
-                    child: SkeletonBox.line(),
-                  ),
-                ],
+    padding: EdgeInsets.only(
+      left: indent,
+      top: SpacingTokens.space12,
+      bottom: SpacingTokens.space4,
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SkeletonBox.circle(size: 34),
+        const SizedBox(width: ThreadGeometry.gutter),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: const [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: SkeletonBox.line(width: 100, height: 12),
               ),
-            ),
-          ],
+              SizedBox(height: SpacingTokens.space8),
+              SkeletonBox.line(),
+              SizedBox(height: SpacingTokens.space4),
+              FractionallySizedBox(
+                alignment: Alignment.centerLeft,
+                widthFactor: 0.7,
+                child: SkeletonBox.line(),
+              ),
+            ],
+          ),
         ),
-      );
+      ],
+    ),
+  );
 }
 
 class _BubbleSkeleton extends StatelessWidget {
@@ -400,19 +398,18 @@ class _BubbleSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
-        child: Row(
-          mainAxisAlignment:
-              mine ? MainAxisAlignment.end : MainAxisAlignment.start,
-          children: [
-            SkeletonBox(
-              width: mine ? 160 : 210,
-              height: 40,
-              radius: RadiusTokens.radiusLg,
-            ),
-          ],
+    padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
+    child: Row(
+      mainAxisAlignment: mine ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        SkeletonBox(
+          width: mine ? 160 : 210,
+          height: 40,
+          radius: RadiusTokens.radiusLg,
         ),
-      );
+      ],
+    ),
+  );
 }
 
 class _NotificationSkeleton extends StatelessWidget {
@@ -420,32 +417,32 @@ class _NotificationSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: SpacingTokens.space16,
-          vertical: SpacingTokens.space12,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SkeletonBox.circle(size: 38),
-            const SizedBox(width: SpacingTokens.space12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  SkeletonBox.line(),
-                  SizedBox(height: SpacingTokens.space8),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: SkeletonBox.line(width: 60, height: 10),
-                  ),
-                ],
+    padding: const EdgeInsets.symmetric(
+      horizontal: SpacingTokens.space16,
+      vertical: SpacingTokens.space12,
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SkeletonBox.circle(size: 38),
+        const SizedBox(width: SpacingTokens.space12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              SkeletonBox.line(),
+              SizedBox(height: SpacingTokens.space8),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: SkeletonBox.line(width: 60, height: 10),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      );
+      ],
+    ),
+  );
 }
 
 class _CommunitySkeleton extends StatelessWidget {
@@ -453,37 +450,33 @@ class _CommunitySkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: SpacingTokens.space16,
-          vertical: SpacingTokens.space12,
-        ),
-        child: Row(
-          children: [
-            const SkeletonBox(
-              width: 48,
-              height: 48,
-              radius: RadiusTokens.radiusMd,
-            ),
-            const SizedBox(width: SpacingTokens.space12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: SkeletonBox.line(width: 130, height: 13),
-                  ),
-                  SizedBox(height: SpacingTokens.space8),
-                  SkeletonBox.line(height: 11),
-                ],
+    padding: const EdgeInsets.symmetric(
+      horizontal: SpacingTokens.space16,
+      vertical: SpacingTokens.space12,
+    ),
+    child: Row(
+      children: [
+        const SkeletonBox(width: 48, height: 48, radius: RadiusTokens.radiusMd),
+        const SizedBox(width: SpacingTokens.space12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: SkeletonBox.line(width: 130, height: 13),
               ),
-            ),
-            const SizedBox(width: SpacingTokens.space8),
-            const SkeletonBox(width: 64, height: 30, radius: 15),
-          ],
+              SizedBox(height: SpacingTokens.space8),
+              SkeletonBox.line(height: 11),
+            ],
+          ),
         ),
-      );
+        const SizedBox(width: SpacingTokens.space8),
+        const SkeletonBox(width: 64, height: 30, radius: 15),
+      ],
+    ),
+  );
 }
 
 /// The Videos wall's own shape: a staggered two-column stack of tiles.
@@ -565,9 +558,7 @@ class SkeletonClip extends StatelessWidget {
     // Fixed tones rather than the scheme's: this screen is black whatever the
     // theme is, so a skeleton drawn from `onSurface` is invisible on it in
     // light mode.
-    return const SkeletonGroup(
-      child: _ClipBody(),
-    );
+    return const SkeletonGroup(child: _ClipBody());
   }
 }
 
@@ -591,12 +582,15 @@ class _ClipBody extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  for (var index = 0;
-                      index < SkeletonClip._railButtons;
-                      index++)
+                  for (
+                    var index = 0;
+                    index < SkeletonClip._railButtons;
+                    index++
+                  )
                     const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: SpacingTokens.space8),
+                      padding: EdgeInsets.symmetric(
+                        vertical: SpacingTokens.space8,
+                      ),
                       child: _OnBlack(child: SkeletonBox.circle(size: 36)),
                     ),
                 ],
@@ -671,10 +665,7 @@ class _TagSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Padding(
-        padding: EdgeInsets.only(bottom: SpacingTokens.space8),
-        child: SkeletonBox(
-          height: 44,
-          radius: RadiusTokens.radius12,
-        ),
-      );
+    padding: EdgeInsets.only(bottom: SpacingTokens.space8),
+    child: SkeletonBox(height: 44, radius: RadiusTokens.radius12),
+  );
 }

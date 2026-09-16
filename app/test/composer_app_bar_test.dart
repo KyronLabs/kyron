@@ -49,8 +49,11 @@ void main() {
 
   testWidgets('the bar lays out without an infinite width', (tester) async {
     await open(tester);
-    expect(tester.takeException(), isNull,
-        reason: 'the toolbar threw while laying itself out');
+    expect(
+      tester.takeException(),
+      isNull,
+      reason: 'the toolbar threw while laying itself out',
+    );
   });
 
   testWidgets('Post is on the bar and can be seen', (tester) async {
@@ -62,22 +65,32 @@ void main() {
     final rect = tester.getRect(find.text('Post'));
     final bar = tester.getRect(find.byType(AppBar));
     expect(rect.width, greaterThan(0));
-    expect(bar.contains(rect.topLeft) && bar.contains(rect.bottomRight), isTrue,
-        reason: 'Post is not inside the bar: $rect against $bar');
+    expect(
+      bar.contains(rect.topLeft) && bar.contains(rect.bottomRight),
+      isTrue,
+      reason: 'Post is not inside the bar: $rect against $bar',
+    );
   });
 
-  testWidgets('Drafts and close do not sit on top of each other',
-      (tester) async {
+  testWidgets('Drafts and close do not sit on top of each other', (
+    tester,
+  ) async {
     await open(tester);
 
     final drafts = tester.getRect(find.text('Drafts'));
     final close = tester.getRect(find.byTooltip('Close'));
     final post = tester.getRect(find.text('Post'));
 
-    expect(drafts.overlaps(close), isFalse,
-        reason: 'Drafts is drawn over the close button: $drafts and $close');
-    expect(drafts.overlaps(post), isFalse,
-        reason: 'Drafts is drawn over the Post button: $drafts and $post');
+    expect(
+      drafts.overlaps(close),
+      isFalse,
+      reason: 'Drafts is drawn over the close button: $drafts and $close',
+    );
+    expect(
+      drafts.overlaps(post),
+      isFalse,
+      reason: 'Drafts is drawn over the Post button: $drafts and $post',
+    );
 
     // Close on the left, Drafts then Post on the right, in that order.
     expect(close.right, lessThan(drafts.left));
@@ -88,10 +101,7 @@ void main() {
     await open(tester);
 
     final button = tester.widget<TextButton>(
-      find.ancestor(
-        of: find.text('Post'),
-        matching: find.byType(TextButton),
-      ),
+      find.ancestor(of: find.text('Post'), matching: find.byType(TextButton)),
     );
     expect(button.onPressed, isNull, reason: 'an empty composer can post');
 
@@ -99,10 +109,7 @@ void main() {
     await tester.pump(const Duration(milliseconds: 200));
 
     final live = tester.widget<TextButton>(
-      find.ancestor(
-        of: find.text('Post'),
-        matching: find.byType(TextButton),
-      ),
+      find.ancestor(of: find.text('Post'), matching: find.byType(TextButton)),
     );
     expect(live.onPressed, isNotNull, reason: 'a written post cannot be sent');
   });

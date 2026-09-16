@@ -20,7 +20,7 @@ class _Frame {
   final Uint8List rgba;
 
   _Frame(this.width, this.height, Color background)
-      : rgba = Uint8List(width * height * 4) {
+    : rgba = Uint8List(width * height * 4) {
     for (var i = 0; i < width * height; i++) {
       _write(i, background);
     }
@@ -53,11 +53,8 @@ class _Frame {
     }
   }
 
-  ReadPixel get read => SkinSampler.forRgba(
-        ByteData.sublistView(rgba),
-        width,
-        height,
-      );
+  ReadPixel get read =>
+      SkinSampler.forRgba(ByteData.sublistView(rgba), width, height);
 }
 
 const _skin = Color(0xFFC68B62);
@@ -65,15 +62,16 @@ const _wall = Color(0xFF1040F0);
 
 /// Eyes at (100, 100), a pupil-gap of 40, level.
 FaceAnchor _face({double roll = 0}) => FaceAnchor(
-      centre: const Offset(100, 100),
-      interpupillary: 40,
-      rollDegrees: roll,
-    );
+  centre: const Offset(100, 100),
+  interpupillary: 40,
+  rollDegrees: roll,
+);
 
 /// A frame with a face in it: the head fills a good part of the picture and
 /// the eyes sit where [_face] says they do.
-_Frame _portrait() => _Frame(200, 200, _wall)
-  ..ellipse(const Offset(100, 120), const Size(55, 75), _skin);
+_Frame _portrait() =>
+    _Frame(200, 200, _wall)
+      ..ellipse(const Offset(100, 120), const Size(55, 75), _skin);
 
 void main() {
   test('reads the skin off a face and not the wall behind it', () {
@@ -114,7 +112,12 @@ void main() {
     }
 
     expect(
-        SkinSampler.sample(read: frame.read, face: _face(roll: roll)), _skin);
+      SkinSampler.sample(
+        read: frame.read,
+        face: _face(roll: roll),
+      ),
+      _skin,
+    );
   });
 
   test('still reads a face pushed against the edge of the picture', () {
@@ -192,7 +195,8 @@ void main() {
       // One pixel: blue 0x10, green 0x20, red 0x30.
       final bytes = Uint8List.fromList([0x10, 0x20, 0x30, 0xFF]);
       final read = SkinSampler.forCameraImage(
-          build(ImageFormatGroup.bgra8888, bytes, 1, 1, 4));
+        build(ImageFormatGroup.bgra8888, bytes, 1, 1, 4),
+      );
 
       expect(read, isNotNull);
       expect(read!(0, 0), 0xFF302010);
@@ -206,7 +210,8 @@ void main() {
       const y = 180, u = 100, v = 170;
       final bytes = Uint8List.fromList([y, y, y, y, v, u]);
       final read = SkinSampler.forCameraImage(
-          build(ImageFormatGroup.nv21, bytes, 2, 2, 2));
+        build(ImageFormatGroup.nv21, bytes, 2, 2, 2),
+      );
 
       expect(read, isNotNull);
       final pixel = read!(0, 0);
@@ -231,12 +236,14 @@ void main() {
       final bytes = Uint8List(64);
       expect(
         SkinSampler.forCameraImage(
-            build(ImageFormatGroup.yuv420, bytes, 4, 4, 4)),
+          build(ImageFormatGroup.yuv420, bytes, 4, 4, 4),
+        ),
         isNull,
       );
       expect(
         SkinSampler.forCameraImage(
-            build(ImageFormatGroup.jpeg, bytes, 4, 4, 4)),
+          build(ImageFormatGroup.jpeg, bytes, 4, 4, 4),
+        ),
         isNull,
       );
     });
@@ -244,12 +251,14 @@ void main() {
     test('refuses a buffer too short for the size it claims', () {
       expect(
         SkinSampler.forCameraImage(
-            build(ImageFormatGroup.nv21, Uint8List(4), 8, 8, 8)),
+          build(ImageFormatGroup.nv21, Uint8List(4), 8, 8, 8),
+        ),
         isNull,
       );
       expect(
         SkinSampler.forCameraImage(
-            build(ImageFormatGroup.bgra8888, Uint8List(4), 8, 8, 32)),
+          build(ImageFormatGroup.bgra8888, Uint8List(4), 8, 8, 32),
+        ),
         isNull,
       );
     });

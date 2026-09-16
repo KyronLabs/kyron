@@ -100,8 +100,9 @@ void main() {
     expect(seeks.single, _total);
   });
 
-  testWidgets('a clip with no duration yet does not divide by zero',
-      (tester) async {
+  testWidgets('a clip with no duration yet does not divide by zero', (
+    tester,
+  ) async {
     final seeks = await _pump(tester, total: Duration.zero);
 
     final centre = tester.getCenter(find.byType(PlaybackBar));
@@ -112,8 +113,9 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('is tall enough for a thumb, whatever the bar looks like',
-      (tester) async {
+  testWidgets('is tall enough for a thumb, whatever the bar looks like', (
+    tester,
+  ) async {
     // The bar it draws is four pixels; what you have to hit is not.
     await _pump(tester);
     expect(
@@ -122,8 +124,9 @@ void main() {
     );
   });
 
-  testWidgets('draws without complaint at every stage of a clip',
-      (tester) async {
+  testWidgets('draws without complaint at every stage of a clip', (
+    tester,
+  ) async {
     for (final at in [0, 1, 50, 99, 100]) {
       await _pump(
         tester,

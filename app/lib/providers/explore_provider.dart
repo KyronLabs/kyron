@@ -19,11 +19,7 @@ class ExploreList<T> {
   final bool loading;
   final String? error;
 
-  const ExploreList({
-    this.items = const [],
-    this.loading = true,
-    this.error,
-  });
+  const ExploreList({this.items = const [], this.loading = true, this.error});
 
   bool get isEmpty => !loading && error == null && items.isEmpty;
 }
@@ -51,8 +47,8 @@ class TrendingNotifier extends StateNotifier<ExploreList<TrendingTag>> {
 
 final trendingProvider =
     StateNotifierProvider<TrendingNotifier, ExploreList<TrendingTag>>((ref) {
-  return TrendingNotifier(ref.read(feedRepositoryProvider));
-});
+      return TrendingNotifier(ref.read(feedRepositoryProvider));
+    });
 
 /// The topic catalogue, and which of them the reader is into.
 class TopicsNotifier extends StateNotifier<ExploreList<Topic>> {
@@ -121,8 +117,8 @@ class TopicsNotifier extends StateNotifier<ExploreList<Topic>> {
 
 final topicsProvider =
     StateNotifierProvider<TopicsNotifier, ExploreList<Topic>>((ref) {
-  return TopicsNotifier(ProfileRepository(ref.read(apiClientProvider)));
-});
+      return TopicsNotifier(ProfileRepository(ref.read(apiClientProvider)));
+    });
 
 /// Accounts worth following, best match first.
 class SuggestedPeopleState {
@@ -150,14 +146,13 @@ class SuggestedPeopleState {
     bool? loadingMore,
     String? error,
     bool clearError = false,
-  }) =>
-      SuggestedPeopleState(
-        people: people ?? this.people,
-        cursor: clearCursor ? null : (cursor ?? this.cursor),
-        loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
-        loadingMore: loadingMore ?? this.loadingMore,
-        error: clearError ? null : (error ?? this.error),
-      );
+  }) => SuggestedPeopleState(
+    people: people ?? this.people,
+    cursor: clearCursor ? null : (cursor ?? this.cursor),
+    loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
+    loadingMore: loadingMore ?? this.loadingMore,
+    error: clearError ? null : (error ?? this.error),
+  );
 }
 
 class SuggestedPeopleNotifier extends StateNotifier<SuggestedPeopleState> {
@@ -224,6 +219,7 @@ class SuggestedPeopleNotifier extends StateNotifier<SuggestedPeopleState> {
 
 final suggestedPeopleProvider =
     StateNotifierProvider<SuggestedPeopleNotifier, SuggestedPeopleState>((ref) {
-  return SuggestedPeopleNotifier(
-      ProfileRepository(ref.read(apiClientProvider)));
-});
+      return SuggestedPeopleNotifier(
+        ProfileRepository(ref.read(apiClientProvider)),
+      );
+    });

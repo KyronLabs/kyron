@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+
 // lib/widgets/person_tile.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -183,9 +184,8 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final muted = Theme.of(
-      context,
-    ).colorScheme.onSurface.withValues(alpha: 0.55);
+    final muted = Theme.of(context).colorScheme.onSurface
+        .withValues(alpha: 0.55);
 
     return Row(
       mainAxisSize: MainAxisSize.min,

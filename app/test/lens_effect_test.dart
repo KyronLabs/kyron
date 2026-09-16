@@ -20,11 +20,13 @@ double detail(Uint8List rgba, int width, Rect box) {
   final values = <double>[];
   for (var y = box.top.round() + 1; y < box.bottom - 1; y++) {
     for (var x = box.left.round() + 1; x < box.right - 1; x++) {
-      values.add(at(x, y - 1) +
-          at(x, y + 1) +
-          at(x - 1, y) +
-          at(x + 1, y) -
-          4 * at(x, y));
+      values.add(
+        at(x, y - 1) +
+            at(x, y + 1) +
+            at(x - 1, y) +
+            at(x + 1, y) -
+            4 * at(x, y),
+      );
     }
   }
   if (values.isEmpty) return 0;
@@ -43,28 +45,41 @@ void main() {
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
     canvas.drawRect(
-        Offset.zero & size, Paint()..color = const Color(0xFF202030));
+      Offset.zero & size,
+      Paint()..color = const Color(0xFF202030),
+    );
     canvas.drawOval(
       Rect.fromCenter(
-          center: size.center(Offset.zero), width: 300, height: 400),
+        center: size.center(Offset.zero),
+        width: 300,
+        height: 400,
+      ),
       Paint()..color = const Color(0xFFE8C0A0),
     );
     // Eyes and mouth as hard stripes, so any blur over them is unmistakable.
     for (final dx in [-55.0, 55.0]) {
       canvas.drawOval(
         Rect.fromCenter(
-            center: size.center(Offset(dx, -60)), width: 46, height: 20),
+          center: size.center(Offset(dx, -60)),
+          width: 46,
+          height: 20,
+        ),
         Paint()..color = const Color(0xFF101010),
       );
     }
     canvas.drawRect(
       Rect.fromCenter(
-          center: size.center(const Offset(0, 90)), width: 120, height: 26),
+        center: size.center(const Offset(0, 90)),
+        width: 120,
+        height: 26,
+      ),
       Paint()..color = const Color(0xFF401010),
     );
     final picture = recorder.endRecording();
-    final image =
-        await picture.toImage(size.width.round(), size.height.round());
+    final image = await picture.toImage(
+      size.width.round(),
+      size.height.round(),
+    );
     picture.dispose();
     return image;
   }
@@ -76,9 +91,9 @@ void main() {
       const FacePoint(0.5, 0.5),
     );
     FacePoint at(double dx, double dy) => FacePoint(
-          (size.width / 2 + dx) / size.width,
-          (size.height / 2 + dy) / size.height,
-        );
+      (size.width / 2 + dx) / size.width,
+      (size.height / 2 + dy) / size.height,
+    );
     points[FaceAnchor.leftIris] = at(-55, -60);
     points[FaceAnchor.rightIris] = at(55, -60);
     points[FaceAnchor.foreheadPoint] = at(0, -170);
@@ -120,10 +135,16 @@ void main() {
   }
 
   const size = Size(500, 600);
-  final eyes =
-      Rect.fromCenter(center: const Offset(250, 240), width: 180, height: 44);
-  final mouth =
-      Rect.fromCenter(center: const Offset(250, 390), width: 150, height: 44);
+  final eyes = Rect.fromCenter(
+    center: const Offset(250, 240),
+    width: 180,
+    height: 44,
+  );
+  final mouth = Rect.fromCenter(
+    center: const Offset(250, 390),
+    width: 150,
+    height: 44,
+  );
 
   test('fill erases the mouth and leaves the eyes', () async {
     final before = await drawnFace(size);
@@ -157,10 +178,14 @@ void main() {
 
     final after = await bake(const FrostEffect(), size);
 
-    expect(detail(after, 500, eyes),
-        greaterThan(detail(original, 500, eyes) * 0.8));
-    expect(detail(after, 500, mouth),
-        lessThan(detail(original, 500, mouth) * 0.05));
+    expect(
+      detail(after, 500, eyes),
+      greaterThan(detail(original, 500, eyes) * 0.8),
+    );
+    expect(
+      detail(after, 500, mouth),
+      lessThan(detail(original, 500, mouth) * 0.05),
+    );
   });
 
   test('a fill with no sampled skin draws nothing', () async {

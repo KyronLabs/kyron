@@ -33,10 +33,7 @@ void main() {
         ),
         child: MaterialApp(
           home: Scaffold(
-            bottomNavigationBar: BottomNavV4(
-              currentIndex: 0,
-              onTap: taps.add,
-            ),
+            bottomNavigationBar: BottomNavV4(currentIndex: 0, onTap: taps.add),
           ),
         ),
       ),
@@ -69,11 +66,13 @@ void main() {
       Offset(left + cell / 2, bar + 3),
     ]);
 
-    expect(
-      taps,
-      [3, 3, 3, 3, 3],
-      reason: 'every one of those is inside the tab a thumb was aiming for',
-    );
+    expect(taps, [
+      3,
+      3,
+      3,
+      3,
+      3,
+    ], reason: 'every one of those is inside the tab a thumb was aiming for');
   });
 
   testWidgets('and each tab answers for itself alone', (tester) async {
@@ -111,15 +110,11 @@ void main() {
     // The bar is now height + inset tall, and the row sits above the inset.
     final rowTop = 800.0 - BottomNavV4.height - inset;
 
-    final taps = await tapsAt(
-      tester,
-      [
-        Offset(cell * 3 + 4, rowTop + 2),
-        Offset(cell * 3 + cell - 4, rowTop + BottomNavV4.height - 2),
-        Offset(cell * 3 + cell / 2, rowTop + BottomNavV4.height / 2),
-      ],
-      inset: inset,
-    );
+    final taps = await tapsAt(tester, [
+      Offset(cell * 3 + 4, rowTop + 2),
+      Offset(cell * 3 + cell - 4, rowTop + BottomNavV4.height - 2),
+      Offset(cell * 3 + cell / 2, rowTop + BottomNavV4.height / 2),
+    ], inset: inset);
 
     expect(taps, [3, 3, 3]);
   });

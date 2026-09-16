@@ -221,10 +221,12 @@ class PostListNotifier extends StateNotifier<FeedState> {
     if (post == null) return null;
 
     final next = !post.reposted;
-    _replace(post.copyWith(
-      reposted: next,
-      reposts: (post.reposts + (next ? 1 : -1)).clamp(0, 1 << 31),
-    ));
+    _replace(
+      post.copyWith(
+        reposted: next,
+        reposts: (post.reposts + (next ? 1 : -1)).clamp(0, 1 << 31),
+      ),
+    );
 
     try {
       final reposts = await _repo.setReposted(postId, next);
@@ -244,10 +246,12 @@ class PostListNotifier extends StateNotifier<FeedState> {
     if (post == null) return null;
 
     final next = !post.liked;
-    _replace(post.copyWith(
-      liked: next,
-      likes: (post.likes + (next ? 1 : -1)).clamp(0, 1 << 31),
-    ));
+    _replace(
+      post.copyWith(
+        liked: next,
+        likes: (post.likes + (next ? 1 : -1)).clamp(0, 1 << 31),
+      ),
+    );
 
     try {
       final likes = await _repo.setLiked(postId, next);
@@ -306,9 +310,7 @@ class PostListNotifier extends StateNotifier<FeedState> {
 
   void _replace(FeedPost post) {
     state = state.copyWith(
-      posts: [
-        for (final p in state.posts) p.id == post.id ? post : p,
-      ],
+      posts: [for (final p in state.posts) p.id == post.id ? post : p],
     );
   }
 }
@@ -329,5 +331,5 @@ List<FeedPost> dedupePosts(List<FeedPost> posts) {
 
 final postListProvider =
     StateNotifierProvider.family<PostListNotifier, FeedState, PostListSource>(
-  (ref, source) => PostListNotifier(ref, source),
-);
+      (ref, source) => PostListNotifier(ref, source),
+    );

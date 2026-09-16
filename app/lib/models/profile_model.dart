@@ -79,21 +79,21 @@ class ProfileModel {
   /// Saves a second round trip when you open your profile from the app shell:
   /// /profile/me has been read by then, and it carries the same fields.
   factory ProfileModel.fromCurrentUser(CurrentUser user) => ProfileModel(
-        id: user.id,
-        name: user.name,
-        username: user.username,
-        did: user.did,
-        kyronPoints: user.kyronPoints,
-        avatarUrl: user.avatarUrl,
-        coverUrl: user.coverUrl,
-        bio: user.bio,
-        location: user.location,
-        website: user.website,
-        followers: user.followers,
-        following: user.following,
-        posts: user.posts,
-        isOwnProfile: true,
-      );
+    id: user.id,
+    name: user.name,
+    username: user.username,
+    did: user.did,
+    kyronPoints: user.kyronPoints,
+    avatarUrl: user.avatarUrl,
+    coverUrl: user.coverUrl,
+    bio: user.bio,
+    location: user.location,
+    website: user.website,
+    followers: user.followers,
+    following: user.following,
+    posts: user.posts,
+    isOwnProfile: true,
+  );
 
   ProfileModel copyWith({
     int? followers,

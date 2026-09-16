@@ -33,8 +33,8 @@ class LensCatalogue {
   final Future<Directory> Function() _directory;
 
   LensCatalogue({http.Client? client, Future<Directory> Function()? directory})
-      : _http = client ?? http.Client(),
-        _directory = directory ?? getApplicationSupportDirectory;
+    : _http = client ?? http.Client(),
+      _directory = directory ?? getApplicationSupportDirectory;
 
   /// Where the published catalogue lives.
   ///

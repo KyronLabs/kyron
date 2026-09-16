@@ -14,10 +14,10 @@ class PublishedKey {
   });
 
   factory PublishedKey.fromJson(Map<String, dynamic> json) => PublishedKey(
-        userId: json['userId'] as String? ?? '',
-        deviceId: json['deviceId'] as String? ?? '',
-        publicKey: json['publicKey'] as String? ?? '',
-      );
+    userId: json['userId'] as String? ?? '',
+    deviceId: json['deviceId'] as String? ?? '',
+    publicKey: json['publicKey'] as String? ?? '',
+  );
 }
 
 /// The public halves people need to write to each other in private.
@@ -28,15 +28,13 @@ class KeysRepository {
 
   /// Publishes this install's key, or replaces it.
   Future<void> publish(String publicKey, String deviceId) => _api.dio.put<void>(
-        '/keys',
-        data: {'publicKey': publicKey, 'deviceId': deviceId},
-      );
+    '/keys',
+    data: {'publicKey': publicKey, 'deviceId': deviceId},
+  );
 
   /// Withdraws it, on sign-out.
-  Future<void> withdraw(String deviceId) => _api.dio.delete<void>(
-        '/keys',
-        queryParameters: {'deviceId': deviceId},
-      );
+  Future<void> withdraw(String deviceId) =>
+      _api.dio.delete<void>('/keys', queryParameters: {'deviceId': deviceId});
 
   /// Everybody's keys in one conversation.
   Future<List<PublishedKey>> forConversation(String conversationId) async {

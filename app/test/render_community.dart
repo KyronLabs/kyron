@@ -42,9 +42,11 @@ class _Repo extends CommunitiesRepository {
 class _Feed extends FeedRepository {
   _Feed() : super(ApiClient());
   @override
-  Future<FeedPage> byCommunity(String slug,
-          {String? cursor, int limit = 20}) async =>
-      const FeedPage(items: [], nextCursor: null);
+  Future<FeedPage> byCommunity(
+    String slug, {
+    String? cursor,
+    int limit = 20,
+  }) async => const FeedPage(items: [], nextCursor: null);
 }
 
 void main() {
@@ -53,12 +55,14 @@ void main() {
     Directory(out).createSync(recursive: true);
     for (final family in ['Inter', 'Roboto']) {
       final loader = FontLoader(family)
-        ..addFont(Future.value(
-          File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
-              .readAsBytesSync()
-              .buffer
-              .asByteData(),
-        ));
+        ..addFont(
+          Future.value(
+            File('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+                .readAsBytesSync()
+                .buffer
+                .asByteData(),
+          ),
+        );
       await loader.load();
     }
 

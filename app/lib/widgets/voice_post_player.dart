@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:just_audio/just_audio.dart';
+
 import '../services/platform_support.dart';
+
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/post_media.dart';
@@ -61,7 +63,8 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
     if (!PlatformSupport.current.audio) {
       setState(() {
         _loading = false;
-        _failure = 'Voice posts need an audio player Kyron does not have on '
+        _failure =
+            'Voice posts need an audio player Kyron does not have on '
             '${PlatformSupport.current.name} yet.';
       });
       return null;
@@ -164,8 +167,9 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
                   ? Text(
                       _failure!,
                       style: TextStyle(
-                          fontSize: TypographyTokens.fontSize1,
-                          color: scheme.error),
+                        fontSize: TypographyTokens.fontSize1,
+                        color: scheme.error,
+                      ),
                     )
                   : SizedBox(
                       height: 32,
@@ -179,8 +183,9 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
                             levels: widget.media.waveform,
                             progress: progress,
                             color: scheme.primary,
-                            trackColor:
-                                scheme.onSurface.withValues(alpha: 0.25),
+                            trackColor: scheme.onSurface.withValues(
+                              alpha: 0.25,
+                            ),
                           ),
                         ),
                       ),
