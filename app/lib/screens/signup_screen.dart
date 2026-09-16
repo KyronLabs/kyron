@@ -61,7 +61,7 @@ class _SignupScreenState extends State<SignupScreen> {
       // case the user has mail waiting and must not be dropped into the app.
       if (res == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
+          SnackBar(
             content: Text(AppLocalizations.of(context).checkEmailConfirm),
           ),
         );
@@ -151,7 +151,7 @@ class _SignupScreenState extends State<SignupScreen> {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: AppLocalizations.of(context).bySigningUpAgreeTerms + ' ',,
+                  text: '${AppLocalizations.of(context).bySigningUpAgreeTerms} ',
                   style: Theme.of(context).textTheme.bodyMedium,
                   children: [
                     TextSpan(
