@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../models/app_language.dart';
 import '../models/app_theme.dart';
+import '../models/language.dart';
 
 /// Device-level preferences: things that belong to this install rather than to
 /// the account.
@@ -17,6 +17,8 @@ class AppPreferences {
   static const _kTermsAcceptedAt = 'pref_terms_accepted_at';
   static const _kTheme = 'pref_theme';
   static const _kDataSaver = 'pref_data_saver';
+  static const _kPrimaryLanguage = 'pref_primary_language';
+  static const _kContentLanguages = 'pref_content_languages';
 
   /// The scales the font-size screen offers, smallest first.
   static const textScales = <double>[0.85, 1.0, 1.15, 1.3];
@@ -60,11 +62,37 @@ class AppPreferences {
   Future<void> writeVideoMuted(bool muted) async =>
       (await _prefs).setBool(_kVideoMuted, muted);
 
-  Future<AppLanguage> readLanguage() async =>
-      AppLanguage.fromCode((await _prefs).getString(_kLanguage));
+  /// The language the app draws itself in.
+  Future<Language> readLanguage() async =>
+      Languages.fromCode((await _prefs).getString(_kLanguage));
 
-  Future<void> writeLanguage(AppLanguage language) async =>
+  Future<void> writeLanguage(Language language) async =>
       (await _prefs).setString(_kLanguage, language.code);
+
+  /// The language somebody would rather read a post in.
+  ///
+  /// Kept apart from the app language on purpose: plenty of people run their
+  /// phone in English and would still rather read Kiswahili.
+  Future<Language> readPrimaryLanguage() async =>
+      Languages.fromCode((await _prefs).getString(_kPrimaryLanguage));
+
+  Future<void> writePrimaryLanguage(Language language) async =>
+      (await _prefs).setString(_kPrimaryLanguage, language.code);
+
+  /// Which languages a feed may include.
+  ///
+  /// Empty means every language, which is what a fresh install gets: an empty
+  /// list is "I have not said", and answering that with silence would leave a
+  /// new account looking at an empty feed.
+  Future<List<Language>> readContentLanguages() async => Languages.fromCodes(
+        (await _prefs).getStringList(_kContentLanguages) ?? const [],
+      );
+
+  Future<void> writeContentLanguages(List<Language> languages) async =>
+      (await _prefs).setStringList(
+        _kContentLanguages,
+        [for (final l in languages) l.code],
+      );
 
   /// Clamped to an offered value: a scale stored by a build with a different
   /// set would otherwise render at a size no screen was checked against.

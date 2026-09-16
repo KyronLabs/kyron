@@ -5,7 +5,6 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../models/app_language.dart';
 import '../providers/preferences_provider.dart';
 import '../services/app_preferences.dart';
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
@@ -13,6 +12,9 @@ import '../providers/feedback_provider.dart';
 import '../repositories/feedback_repository.dart';
 import '../utils/api_error_message.dart';
 import '../services/app_info.dart';
+import '../models/language.dart';
+import '../widgets/hairline.dart';
+import '../widgets/language_sheet.dart';
 import '../widgets/action_button.dart';
 import '../widgets/toast.dart';
 import '../widgets/settings_scaffold.dart';
@@ -286,34 +288,277 @@ class SettingsLanguageScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selected = ref.watch(preferencesProvider).language;
+    final prefs = ref.watch(preferencesProvider);
+    final notifier = ref.read(preferencesProvider.notifier);
 
     return SettingsScaffold(
-      title: 'Language',
+      title: 'Languages',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          for (final language in AppLanguage.values)
-            RadioListTile<AppLanguage>(
-              value: language,
-              groupValue: selected,
-              onChanged: (value) => value == null
-                  ? null
-                  : ref.read(preferencesProvider.notifier).setLanguage(value),
-              title: Text(language.nativeName),
-              subtitle: language.nativeName == language.englishName
-                  ? null
-                  : Text(language.englishName),
-              contentPadding: EdgeInsets.zero,
+          _LanguageSection(
+            title: 'App language',
+            detail: "Select which language to use for the app's user "
+                'interface.',
+            value: prefs.language.nativeName,
+            onTap: () async {
+              final chosen = await LanguageSheet.pickOne(
+                context,
+                title: 'App language',
+                current: prefs.language,
+              );
+              if (chosen != null) await notifier.setLanguage(chosen);
+            },
+          ),
+          // What this setting does today, said plainly. Flutter ships its own
+          // translations for the parts of the interface it draws -- the back
+          // button's tooltip, the text-selection menu, date pickers -- and
+          // right-to-left languages lay the whole app out the other way round.
+          // Kyron's own words are not translated yet. Saying so is the
+          // difference between a setting that under-delivers and one that
+          // lies.
+          _Note(
+            'Kyron\'s own words are still being translated, so most screens '
+            'stay in English for now. What this changes today: the parts of '
+            'the interface Flutter draws itself, dates and numbers, and the '
+            'direction the app lays out in for right-to-left languages.',
+          ),
+          const SizedBox(height: SpacingTokens.space24),
+          const Hairline(),
+          const SizedBox(height: SpacingTokens.space24),
+          _LanguageSection(
+            title: 'Primary language',
+            detail: 'Select your preferred language for translations in your '
+                'feed.',
+            value: prefs.primaryLanguage.nativeName,
+            onTap: () async {
+              final chosen = await LanguageSheet.pickOne(
+                context,
+                title: 'Primary language',
+                current: prefs.primaryLanguage,
+              );
+              if (chosen != null) await notifier.setPrimaryLanguage(chosen);
+            },
+          ),
+          // Kept rather than hidden, and labelled rather than left to imply.
+          // There is no translation in Kyron yet -- no service, no endpoint,
+          // nothing on a post that says what it is written in. A row that
+          // offers to translate into Kiswahili and then does not is worse
+          // than one that says it cannot yet.
+          const _Note(
+            'Translation is not built yet. Nothing in your feed is translated '
+            'today; this is remembered for when it is.',
+          ),
+          const SizedBox(height: SpacingTokens.space24),
+          const Hairline(),
+          const SizedBox(height: SpacingTokens.space24),
+          _SectionHeader(
+            title: 'Content languages',
+            detail: 'Select which languages you want your subscribed feeds to '
+                'include. If none are selected, all languages will be shown.',
+          ),
+          const SizedBox(height: SpacingTokens.space12),
+          for (final language in prefs.contentLanguages)
+            _ContentLanguageRow(
+              language: language,
+              onRemove: () => notifier.setContentLanguages([
+                for (final l in prefs.contentLanguages)
+                  if (l != language) l,
+              ]),
             ),
-          const SizedBox(height: SpacingTokens.space16),
-          Text(
-            'Your choice is remembered on this device and used on the sign-in '
-            'screen too. Translations are still being written, so most of '
-            'Kyron stays in English for now.',
-            style: Theme.of(context).textTheme.bodySmall,
+          _AddLanguagesRow(
+            onTap: () async {
+              final chosen = await LanguageSheet.pickMany(
+                context,
+                title: 'Content languages',
+                current: prefs.contentLanguages,
+              );
+              if (chosen != null) await notifier.setContentLanguages(chosen);
+            },
+          ),
+          const _Note(
+            'Posts do not carry a language yet, so this does not filter your '
+            'feed today. Your choice is kept for when they do.',
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// A titled section whose value opens a sheet.
+class _LanguageSection extends StatelessWidget {
+  const _LanguageSection({
+    required this.title,
+    required this.detail,
+    required this.value,
+    required this.onTap,
+  });
+
+  final String title;
+  final String detail;
+  final String value;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _SectionHeader(title: title, detail: detail),
+        const SizedBox(height: SpacingTokens.space12),
+        Material(
+          color: scheme.surfaceContainer,
+          borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: SpacingTokens.space16,
+                vertical: SpacingTokens.space16,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      value,
+                      style: TextStyle(
+                        fontSize: TypographyTokens.fontSize3,
+                        color: scheme.onSurface,
+                      ),
+                    ),
+                  ),
+                  // Points both ways: this opens a list of alternatives
+                  // rather than going somewhere.
+                  Icon(Iconsax.arrow_3,
+                      size: 18, color: scheme.onSurface.withValues(alpha: 0.6)),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: SpacingTokens.space8),
+      ],
+    );
+  }
+}
+
+class _SectionHeader extends StatelessWidget {
+  const _SectionHeader({required this.title, required this.detail});
+
+  final String title;
+  final String detail;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: TypographyTokens.fontSize4,
+            fontWeight: FontWeight.w600,
+            color: scheme.onSurface,
+          ),
+        ),
+        const SizedBox(height: SpacingTokens.space4),
+        Text(
+          detail,
+          style: TextStyle(
+            fontSize: TypographyTokens.fontSize2,
+            color: scheme.onSurface.withValues(alpha: 0.7),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// One chosen content language, with the way back out.
+class _ContentLanguageRow extends StatelessWidget {
+  const _ContentLanguageRow({required this.language, required this.onRemove});
+
+  final Language language;
+  final VoidCallback onRemove;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space16,
+          vertical: SpacingTokens.space12,
+        ),
+        decoration: BoxDecoration(
+          color: scheme.primary.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+        ),
+        child: Row(
+          children: [
+            Icon(Iconsax.tick_square, size: 20, color: scheme.primary),
+            const SizedBox(width: SpacingTokens.space12),
+            Expanded(
+              child: Text(
+                language.nativeName,
+                textDirection: language.rtl ? TextDirection.rtl : null,
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize3,
+                  color: scheme.onSurface,
+                ),
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Iconsax.close_circle_copy, size: 18),
+              tooltip: 'Remove ${language.englishName}',
+              onPressed: onRemove,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _AddLanguagesRow extends StatelessWidget {
+  const _AddLanguagesRow({required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Material(
+      color: scheme.surfaceContainer,
+      borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingTokens.space16,
+            vertical: SpacingTokens.space16,
+          ),
+          child: Row(
+            children: [
+              Icon(Iconsax.add,
+                  size: 20, color: scheme.onSurface.withValues(alpha: 0.7)),
+              const SizedBox(width: SpacingTokens.space12),
+              Text(
+                'Add more languages\u2026',
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize3,
+                  color: scheme.onSurface.withValues(alpha: 0.7),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
