@@ -20,7 +20,9 @@ import '../widgets/toast.dart';
 import '../widgets/settings_scaffold.dart';
 import '../widgets/empty_state.dart';
 
-/// Every screen in this file was `Center(child: Text('<name> Screen'))`.
+import '../l10n/app_localizations.dart';
+
+/// Every screen in this file was `Center(child: Text(AppLocalizations.of(context).nameScreen))`.
 ///
 /// Each is now either backed by something real -- Supabase for credentials,
 /// stored preferences for the rest -- or says plainly that the feature does
@@ -69,23 +71,26 @@ class _SettingsChangeEmailScreenState
     }
   }
 
-  void _tell(String message) => ScaffoldMessenger.of(context)
-      .showSnackBar(SnackBar(content: Text(message)));
+  void _tell(String message) => ScaffoldMessenger.of(
+    context,
+  ).showSnackBar(SnackBar(content: Text(message)));
 
   @override
   Widget build(BuildContext context) {
     final current = Supabase.instance.client.auth.currentUser?.email;
 
     return SettingsScaffold(
-      title: 'Change Email',
+      title: AppLocalizations.of(context).changeEmail,
       child: Form(
         key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (current != null) ...[
-              Text('Signed in as',
-                  style: Theme.of(context).textTheme.bodySmall),
+              Text(
+                AppLocalizations.of(context).signedInAs,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
               const SizedBox(height: SpacingTokens.space4),
               Text(current, style: Theme.of(context).textTheme.bodyLarge),
               const SizedBox(height: SpacingTokens.space24),
@@ -94,9 +99,7 @@ class _SettingsChangeEmailScreenState
               controller: _controller,
               keyboardType: TextInputType.emailAddress,
               autocorrect: false,
-              decoration: const InputDecoration(
-                labelText: 'New email address',
-              ),
+              decoration: const InputDecoration(labelText: 'New email address'),
               validator: (value) {
                 final v = value?.trim() ?? '';
                 if (v.isEmpty) return 'Enter an email address.';
@@ -115,7 +118,7 @@ class _SettingsChangeEmailScreenState
                       dimension: 18,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : const Text('Send confirmation'),
+                  : Text(AppLocalizations.of(context).sendConfirmation),
             ),
             const SizedBox(height: SpacingTokens.space12),
             Text(
@@ -171,13 +174,14 @@ class _SettingsPasswordLoginScreenState
     }
   }
 
-  void _tell(String message) => ScaffoldMessenger.of(context)
-      .showSnackBar(SnackBar(content: Text(message)));
+  void _tell(String message) => ScaffoldMessenger.of(
+    context,
+  ).showSnackBar(SnackBar(content: Text(message)));
 
   @override
   Widget build(BuildContext context) {
     return SettingsScaffold(
-      title: 'Password & Login',
+      title: AppLocalizations.of(context).literalpasswordLogin,
       child: Form(
         key: _formKey,
         child: Column(
@@ -190,7 +194,8 @@ class _SettingsPasswordLoginScreenState
                 labelText: 'New password',
                 suffixIcon: IconButton(
                   icon: Icon(
-                      _obscure ? Iconsax.eye_slash_copy : Iconsax.eye_copy),
+                    _obscure ? Iconsax.eye_slash_copy : Iconsax.eye_copy,
+                  ),
                   onPressed: () => setState(() => _obscure = !_obscure),
                 ),
               ),
@@ -220,7 +225,7 @@ class _SettingsPasswordLoginScreenState
                       dimension: 18,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : const Text('Update password'),
+                  : Text(AppLocalizations.of(context).updatePassword),
             ),
             const SizedBox(height: SpacingTokens.space12),
             Text(
@@ -242,7 +247,7 @@ class SettingsFontSizeScreen extends ConsumerWidget {
     final prefs = ref.watch(preferencesProvider);
 
     return SettingsScaffold(
-      title: 'Font Size',
+      title: AppLocalizations.of(context).literalfontSize,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -251,10 +256,9 @@ class SettingsFontSizeScreen extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(SpacingTokens.space16),
             decoration: BoxDecoration(
-              color: Theme.of(context)
-                  .colorScheme
-                  .surfaceContainerHighest
-                  .withValues(alpha: .4),
+              color: Theme.of(
+                context,
+              ).colorScheme.surfaceContainerHighest.withValues(alpha: .4),
               borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
             ),
             child: MediaQuery.withClampedTextScaling(
@@ -297,14 +301,15 @@ class SettingsLanguageScreen extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _LanguageSection(
-            title: 'App language',
-            detail: "Select which language to use for the app's user "
+            title: AppLocalizations.of(context).literalappLanguage,
+            detail:
+                "Select which language to use for the app's user "
                 'interface.',
             value: prefs.language.nativeName,
             onTap: () async {
               final chosen = await LanguageSheet.pickOne(
                 context,
-                title: 'App language',
+                title: AppLocalizations.of(context).literalappLanguage,
                 current: prefs.language,
               );
               if (chosen != null) await notifier.setLanguage(chosen);
@@ -327,14 +332,15 @@ class SettingsLanguageScreen extends ConsumerWidget {
           const Hairline(),
           const SizedBox(height: SpacingTokens.space24),
           _LanguageSection(
-            title: 'Primary language',
-            detail: 'Select your preferred language for translations in your '
+            title: AppLocalizations.of(context).literalprimaryLanguage,
+            detail:
+                'Select your preferred language for translations in your '
                 'feed.',
             value: prefs.primaryLanguage.nativeName,
             onTap: () async {
               final chosen = await LanguageSheet.pickOne(
                 context,
-                title: 'Primary language',
+                title: AppLocalizations.of(context).literalprimaryLanguage,
                 current: prefs.primaryLanguage,
               );
               if (chosen != null) await notifier.setPrimaryLanguage(chosen);
@@ -353,8 +359,9 @@ class SettingsLanguageScreen extends ConsumerWidget {
           const Hairline(),
           const SizedBox(height: SpacingTokens.space24),
           _SectionHeader(
-            title: 'Content languages',
-            detail: 'Select which languages you want your subscribed feeds to '
+            title: AppLocalizations.of(context).literalcontentLanguages,
+            detail:
+                'Select which languages you want your subscribed feeds to '
                 'include. If none are selected, all languages will be shown.',
           ),
           const SizedBox(height: SpacingTokens.space12),
@@ -370,7 +377,7 @@ class SettingsLanguageScreen extends ConsumerWidget {
             onTap: () async {
               final chosen = await LanguageSheet.pickMany(
                 context,
-                title: 'Content languages',
+                title: AppLocalizations.of(context).literalcontentLanguages,
                 current: prefs.contentLanguages,
               );
               if (chosen != null) await notifier.setContentLanguages(chosen);
@@ -432,8 +439,11 @@ class _LanguageSection extends StatelessWidget {
                   ),
                   // Points both ways: this opens a list of alternatives
                   // rather than going somewhere.
-                  Icon(Iconsax.arrow_3,
-                      size: 18, color: scheme.onSurface.withValues(alpha: 0.6)),
+                  Icon(
+                    Iconsax.arrow_3,
+                    size: 18,
+                    color: scheme.onSurface.withValues(alpha: 0.6),
+                  ),
                 ],
               ),
             ),
@@ -546,8 +556,11 @@ class _AddLanguagesRow extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(Iconsax.add,
-                  size: 20, color: scheme.onSurface.withValues(alpha: 0.7)),
+              Icon(
+                Iconsax.add,
+                size: 20,
+                color: scheme.onSurface.withValues(alpha: 0.7),
+              ),
               const SizedBox(width: SpacingTokens.space12),
               Text(
                 'Add more languages\u2026',
@@ -573,22 +586,22 @@ class SettingsNotificationsScreen extends ConsumerWidget {
     final notifier = ref.read(preferencesProvider.notifier);
 
     return SettingsScaffold(
-      title: 'Notifications',
+      title: AppLocalizations.of(context).notifications,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SwitchListTile(
             value: prefs.pushEnabled,
             onChanged: notifier.setPushEnabled,
-            title: const Text('Push notifications'),
-            subtitle: const Text('Replies, follows and mentions'),
+            title: Text(AppLocalizations.of(context).pushNotifications),
+            subtitle: Text(AppLocalizations.of(context).repliesFollowsMentions),
             contentPadding: EdgeInsets.zero,
           ),
           SwitchListTile(
             value: prefs.emailEnabled,
             onChanged: notifier.setEmailEnabled,
-            title: const Text('Email notifications'),
-            subtitle: const Text('Security alerts and account changes'),
+            title: Text(AppLocalizations.of(context).emailNotifications),
+            subtitle: Text(AppLocalizations.of(context).securityAlerts),
             contentPadding: EdgeInsets.zero,
           ),
           const SizedBox(height: SpacingTokens.space16),
@@ -612,14 +625,11 @@ class SettingsContactSupportScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SettingsScaffold(
-      title: 'Help & Support',
+      title: AppLocalizations.of(context).helpAndSupport,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            'Getting help',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
+          Text('Getting help', style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: SpacingTokens.space8),
           Text(
             'Kyron is early, and the fastest way to reach someone who can '
@@ -729,7 +739,9 @@ class _SettingsFeedbackScreenState
     });
 
     try {
-      final filed = await ref.read(feedbackRepositoryProvider).send(
+      final filed = await ref
+          .read(feedbackRepositoryProvider)
+          .send(
             kind: _kind,
             title: _title.text.trim(),
             body: _body.text.trim(),
@@ -755,17 +767,19 @@ class _SettingsFeedbackScreenState
 
     if (_available == null) {
       return const SettingsScaffold(
-        title: 'Send Feedback',
+        title: AppLocalizations.of(context).literalsendFeedback,
         child: Center(child: CircularProgressIndicator()),
       );
     }
 
     if (_available == false) {
       return const SettingsScaffold(
-        title: 'Send Feedback',
+        title: AppLocalizations.of(context).literalsendFeedback,
         child: EmptyState(
           art: EmptyArt.messages,
-          title: 'Feedback cannot be sent right now',
+          title: AppLocalizations.of(
+            context,
+          ).literalfeedbackCannotBeSentRightNow,
           detail:
               'This build cannot reach the place reports are filed. Said here '
               'rather than in a form, so nothing you write is taken and lost.',
@@ -774,7 +788,7 @@ class _SettingsFeedbackScreenState
     }
 
     return SettingsScaffold(
-      title: 'Send Feedback',
+      title: AppLocalizations.of(context).literalsendFeedback,
       // A Column, not a ListView: SettingsScaffold already puts its child in a
       // scroll view, and a second one inside it is a vertical viewport given
       // unbounded height -- which does not lay out at all.
@@ -807,7 +821,7 @@ class _SettingsFeedbackScreenState
             onChanged: (_) => setState(() {}),
             decoration: const InputDecoration(
               labelText: 'In one line',
-              hintText: 'The composer has no Post button',
+              hintText: AppLocalizations.of(context).theComposerNoPostButton,
             ),
           ),
           const SizedBox(height: SpacingTokens.space8),
@@ -816,11 +830,11 @@ class _SettingsFeedbackScreenState
             maxLines: 8,
             maxLength: 4000,
             onChanged: (_) => setState(() {}),
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'What happened',
               alignLabelWithHint: true,
-              hintText: 'What you did, what you expected, what happened '
-                  'instead.',
+              hintText:
+                  '${AppLocalizations.of(context).literalwhatYouDidWhatYouExpectedWhatHappened}instead.',
             ),
           ),
           const _Note(
@@ -870,8 +884,11 @@ class _Note extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Iconsax.info_circle_copy,
-              size: 18, color: scheme.onSurface.withValues(alpha: .6)),
+          Icon(
+            Iconsax.info_circle_copy,
+            size: 18,
+            color: scheme.onSurface.withValues(alpha: .6),
+          ),
           const SizedBox(width: SpacingTokens.space8),
           Expanded(
             child: Text(text, style: Theme.of(context).textTheme.bodySmall),

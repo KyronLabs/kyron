@@ -12,6 +12,8 @@ import '../services/profile_service.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/kyron_app_bar.dart';
 
+import '../l10n/app_localizations.dart';
+
 /// One row of the `interests` table. The screen shows [name] and sends [slug]:
 /// the API matches submitted values against slug, so sending the display label
 /// silently dropped any tag whose label did not happen to equal its slug --
@@ -164,7 +166,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
 
     return GradientScaffold(
       appBar: KyronAppBar(
-        title: const Text('Pick your interests'),
+        title: Text(AppLocalizations.of(context).pickYourInterests),
         actions: [
           TextButton(
             onPressed: _isLoading ? null : _skip,
@@ -219,7 +221,10 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
           children: [
             Text(_loadError!, textAlign: TextAlign.center),
             const SizedBox(height: 16),
-            TextButton(onPressed: _loadInterests, child: const Text('Retry')),
+            TextButton(
+              onPressed: _loadInterests,
+              child: Text(AppLocalizations.of(context).retry),
+            ),
           ],
         ),
       );
@@ -230,8 +235,9 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
         child: EmptyState(
           compact: true,
           art: EmptyArt.topics,
-          title: 'No interests yet',
-          detail: 'Kyron has not published any to pick from. Skip this step '
+          title: AppLocalizations.of(context).literalnoInterestsYet,
+          detail:
+              'Kyron has not published any to pick from. Skip this step '
               'and set them later from your profile.',
         ),
       );
@@ -271,8 +277,8 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
             color: selected
                 ? scheme.primary.withValues(alpha: .35)
                 : (isDark
-                    ? Colors.transparent
-                    : scheme.onSurface.withValues(alpha: .12)),
+                      ? Colors.transparent
+                      : scheme.onSurface.withValues(alpha: .12)),
             width: 1,
           ),
         ),

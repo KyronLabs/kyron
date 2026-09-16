@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/widgets/interest_tabs.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,14 +8,15 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../providers/explore_provider.dart';
 import '../providers/feed_provider.dart';
+
 import 'empty_state.dart';
 import 'skeleton.dart';
 
 // State management
 final interestTabsProvider =
     StateNotifierProvider<InterestTabsNotifier, List<String>>((ref) {
-  return InterestTabsNotifier();
-});
+      return InterestTabsNotifier();
+    });
 
 /// Which tab the feed is showing.
 ///
@@ -215,7 +217,7 @@ class _AddButton extends StatelessWidget {
 
     return Semantics(
       button: true,
-      label: 'Add an interest',
+      label: AppLocalizations.of(context).literaladdAnInterest,
       child: GestureDetector(
         onTap: onTap,
         behavior: HitTestBehavior.opaque,
@@ -330,7 +332,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
             ),
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Done'),
+              child: Text(AppLocalizations.of(context).done),
             ),
           ],
         ),
@@ -354,10 +356,8 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
           color: scheme.onSurface,
         ),
         decoration: InputDecoration(
-          hintText: 'Search trending tags',
-          hintStyle: TextStyle(
-            color: scheme.onSurface.withValues(alpha: 0.5),
-          ),
+          hintText: AppLocalizations.of(context).searchTrendingTags,
+          hintStyle: TextStyle(color: scheme.onSurface.withValues(alpha: 0.5)),
           prefixIcon: Icon(
             Iconsax.search_normal_1_copy,
             size: 18,
@@ -383,9 +383,11 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
     // strips it again on the way to the hashtag feed.
     final offered = trending.items
         .map((tag) => '#${tag.tag}')
-        .where((label) =>
-            !tabs.contains(label) &&
-            (query.isEmpty || label.toLowerCase().contains(query)))
+        .where(
+          (label) =>
+              !tabs.contains(label) &&
+              (query.isEmpty || label.toLowerCase().contains(query)),
+        )
         .toList();
 
     return ListView(
@@ -399,7 +401,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
           'Trending now',
           tabs.length >= InterestTabsNotifier.maximum
               ? 'Five tabs is the most the strip holds. Remove one to add '
-                  'another.'
+                    'another.'
               : null,
           scheme,
         ),
@@ -423,7 +425,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
     final error = trending.error;
     if (error != null) {
       return EmptyState.failed(
-        title: 'Could not load trending tags',
+        title: AppLocalizations.of(context).literalcouldNotLoadTrendingTags,
         detail: error,
         compact: true,
         onAction: ref.read(trendingProvider.notifier).refresh,
@@ -434,7 +436,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
       if (trending.items.isEmpty) {
         return const EmptyState(
           art: EmptyArt.trending,
-          title: 'Nothing is trending yet',
+          title: AppLocalizations.of(context).literalnothingIsTrendingYet,
           detail: 'Hashtags turn up here as people start using them.',
           compact: true,
         );
@@ -442,13 +444,15 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
       if (_searchQuery.trim().isNotEmpty) {
         return const EmptyState(
           art: EmptyArt.noMatch,
-          title: 'No trending tag matches that',
+          title: AppLocalizations.of(context).literalnoTrendingTagMatchesThat,
           compact: true,
         );
       }
       return const EmptyState(
         art: EmptyArt.caughtUp,
-        title: 'You already follow every trending tag',
+        title: AppLocalizations.of(
+          context,
+        ).literalyouAlreadyFollowEveryTrendingTag,
         compact: true,
       );
     }
@@ -617,11 +621,7 @@ class _ToggleChip extends ConsumerWidget {
                     ),
                   ),
                 ),
-                Icon(
-                  Iconsax.add_circle_copy,
-                  size: 20,
-                  color: scheme.primary,
-                ),
+                Icon(Iconsax.add_circle_copy, size: 20, color: scheme.primary),
               ],
             ),
           ),

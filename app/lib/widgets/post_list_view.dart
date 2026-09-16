@@ -10,6 +10,7 @@ import 'empty_state.dart';
 import 'media_tile_grid.dart';
 import 'skeleton.dart';
 import '../utils/layout.dart';
+import '../l10n/app_localizations.dart';
 
 /// A scrolling list of posts, with every state it can be in.
 ///

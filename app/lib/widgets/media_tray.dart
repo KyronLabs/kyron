@@ -7,6 +7,8 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/post_media.dart';
 
+import '../l10n/app_localizations.dart';
+
 /// The attachments on something being written, before it is sent.
 ///
 /// Each tile shows its own upload state: a spinner while it is going up, a
@@ -113,8 +115,9 @@ class _Tile extends StatelessWidget {
                       Text(
                         'Retry',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: TypographyTokens.fontSize1),
+                          color: Colors.white,
+                          fontSize: TypographyTokens.fontSize1,
+                        ),
                       ),
                     ],
                   ),
@@ -126,7 +129,7 @@ class _Tile extends StatelessWidget {
             right: 2,
             child: _Chip(
               icon: Iconsax.close_circle_copy,
-              tooltip: 'Remove',
+              tooltip: AppLocalizations.of(context).remove,
               onTap: onRemove,
             ),
           ),
@@ -137,8 +140,10 @@ class _Tile extends StatelessWidget {
               child: GestureDetector(
                 onTap: onDescribe,
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.black.withValues(alpha: 0.65),
                     borderRadius: BorderRadius.circular(RadiusTokens.radius4),
@@ -216,11 +221,7 @@ class _Tile extends StatelessWidget {
               ),
               child: Padding(
                 padding: EdgeInsets.all(4),
-                child: Icon(
-                  Iconsax.play,
-                  size: 18,
-                  color: Colors.white,
-                ),
+                child: Icon(Iconsax.play, size: 18, color: Colors.white),
               ),
             ),
           ),
@@ -234,11 +235,7 @@ class _Chip extends StatelessWidget {
   final String tooltip;
   final VoidCallback onTap;
 
-  const _Chip({
-    required this.icon,
-    required this.tooltip,
-    required this.onTap,
-  });
+  const _Chip({required this.icon, required this.tooltip, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +263,7 @@ Future<String?> askForAltText(BuildContext context, String? current) {
   return showDialog<String>(
     context: context,
     builder: (dialogContext) => AlertDialog(
-      title: const Text('Describe this attachment'),
+      title: Text(AppLocalizations.of(context).describeAttachment),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,7 +280,7 @@ Future<String?> askForAltText(BuildContext context, String? current) {
             maxLength: 400,
             autofocus: true,
             decoration: const InputDecoration(
-              hintText: 'What is in this picture?',
+              hintText: AppLocalizations.of(context).whatInPicture,
             ),
           ),
         ],
@@ -291,11 +288,11 @@ Future<String?> askForAltText(BuildContext context, String? current) {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(dialogContext),
-          child: const Text('Cancel'),
+          child: Text(AppLocalizations.of(context).cancel),
         ),
         FilledButton(
           onPressed: () => Navigator.pop(dialogContext, controller.text.trim()),
-          child: const Text('Save'),
+          child: Text(AppLocalizations.of(context).save),
         ),
       ],
     ),

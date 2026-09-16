@@ -4,6 +4,8 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import '../services/app_browser.dart';
 
+import '../l10n/app_localizations.dart';
+
 /// Translating a post.
 ///
 /// Kyron does not run a translation service, and pretending otherwise -- a
@@ -45,7 +47,10 @@ class _Sheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Translate', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              AppLocalizations.of(context).translate,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: SpacingTokens.space8),
             Text(
               'Kyron does not translate posts itself yet. Open this text in a '
@@ -80,27 +85,27 @@ class _Sheet extends StatelessWidget {
                       if (!context.mounted) return;
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Post text copied')),
+                        const SnackBar(
+                          content: Text(
+                            AppLocalizations.of(context).postTextCopied,
+                          ),
+                        ),
                       );
                     },
                     icon: const Icon(Iconsax.copy_copy, size: 18),
-                    label: const Text('Copy'),
+                    label: Text(AppLocalizations.of(context).copy),
                   ),
                 ),
                 const SizedBox(width: SpacingTokens.space12),
                 Expanded(
                   child: FilledButton.icon(
                     onPressed: () {
-                      final uri = Uri.https(
-                        'translate.google.com',
-                        '/',
-                        {
-                          'sl': 'auto',
-                          'tl': 'en',
-                          'text': content,
-                          'op': 'translate'
-                        },
-                      );
+                      final uri = Uri.https('translate.google.com', '/', {
+                        'sl': 'auto',
+                        'tl': 'en',
+                        'text': content,
+                        'op': 'translate',
+                      });
                       // Kyron's browser, with translate.google.com named in
                       // the bar: the reader can see the text has left Kyron
                       // without Kyron having to leave with it.
@@ -114,7 +119,7 @@ class _Sheet extends StatelessWidget {
                       AppBrowser.open(context, uri.toString());
                     },
                     icon: const Icon(Iconsax.language_square_copy, size: 18),
-                    label: const Text('Translate'),
+                    label: Text(AppLocalizations.of(context).translate),
                   ),
                 ),
               ],

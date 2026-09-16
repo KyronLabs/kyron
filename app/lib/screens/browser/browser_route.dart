@@ -1,4 +1,4 @@
-// lib/screens/browser/browser_route.dart
+import '../l10n/app_localizations.dart'; // lib/screens/browser/browser_route.dart
 import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
@@ -71,32 +71,30 @@ abstract final class BrowserRoute {
 /// than a screen of Kyron's.
 class _BrowserRoute extends PageRouteBuilder<void> {
   _BrowserRoute({required Uri url, String? title})
-      : super(
-          opaque: false,
-          barrierColor: Colors.black.withValues(alpha: 0.45),
-          barrierDismissible: false,
-          transitionDuration: MotionTokens.normal,
-          reverseTransitionDuration: MotionTokens.normal,
-          pageBuilder: (context, animation, secondary) => BrowserSheet(
-            url: url,
-            title: title,
-            engineFactory: BrowserRoute.engineFactory,
-            onLifecycle: BrowserRoute._track,
-          ),
-          transitionsBuilder: (context, animation, secondary, child) {
-            return SlideTransition(
-              position: Tween<Offset>(
-                begin: const Offset(0, 1),
-                end: Offset.zero,
-              ).animate(
-                CurvedAnimation(
-                  parent: animation,
-                  curve: Curves.easeOutCubic,
-                  reverseCurve: Curves.easeInCubic,
+    : super(
+        opaque: false,
+        barrierColor: Colors.black.withValues(alpha: 0.45),
+        barrierDismissible: false,
+        transitionDuration: MotionTokens.normal,
+        reverseTransitionDuration: MotionTokens.normal,
+        pageBuilder: (context, animation, secondary) => BrowserSheet(
+          url: url,
+          title: title,
+          engineFactory: BrowserRoute.engineFactory,
+          onLifecycle: BrowserRoute._track,
+        ),
+        transitionsBuilder: (context, animation, secondary, child) {
+          return SlideTransition(
+            position: Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+                .animate(
+                  CurvedAnimation(
+                    parent: animation,
+                    curve: Curves.easeOutCubic,
+                    reverseCurve: Curves.easeInCubic,
+                  ),
                 ),
-              ),
-              child: child,
-            );
-          },
-        );
+            child: child,
+          );
+        },
+      );
 }

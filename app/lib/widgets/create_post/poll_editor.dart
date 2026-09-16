@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 // lib/widgets/create_post/poll_editor.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,9 +39,9 @@ class _PollEditorState extends ConsumerState<PollEditor> {
 
   void _sync(ComposerPoll poll) {
     while (_controllers.length < poll.options.length) {
-      _controllers.add(TextEditingController(
-        text: poll.options[_controllers.length],
-      ));
+      _controllers.add(
+        TextEditingController(text: poll.options[_controllers.length]),
+      );
     }
     while (_controllers.length > poll.options.length) {
       _controllers.removeLast().dispose();
@@ -88,7 +89,7 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                 ),
                 const Spacer(),
                 _Tap(
-                  tooltip: 'Remove this poll',
+                  tooltip: AppLocalizations.of(context).literalremoveThisPoll,
                   onTap: notifier.togglePoll,
                   child: Icon(
                     Iconsax.trash_copy,
@@ -124,13 +125,16 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                           isDense: true,
                         ),
                         style: const TextStyle(
-                            fontSize: TypographyTokens.fontSize2),
+                          fontSize: TypographyTokens.fontSize2,
+                        ),
                       ),
                     ),
                     if (poll.canRemoveOption) ...[
                       const SizedBox(width: SpacingTokens.space4),
                       _Tap(
-                        tooltip: 'Remove this answer',
+                        tooltip: AppLocalizations.of(
+                          context,
+                        ).literalremoveThisAnswer,
                         onTap: () => notifier.setPoll(poll.removeOption(i)),
                         child: Icon(
                           Iconsax.minus_cirlce_copy,
@@ -147,15 +151,16 @@ class _PollEditorState extends ConsumerState<PollEditor> {
               TextButton.icon(
                 onPressed: () => notifier.setPoll(poll.addOption()),
                 icon: const Icon(Iconsax.add, size: 16),
-                label: const Text('Add an answer'),
+                label: Text(AppLocalizations.of(context).addAnAnswer),
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                     horizontal: SpacingTokens.space8,
                   ),
                   minimumSize: const Size(0, 32),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textStyle:
-                      const TextStyle(fontSize: TypographyTokens.fontSize2),
+                  textStyle: const TextStyle(
+                    fontSize: TypographyTokens.fontSize2,
+                  ),
                 ),
               ),
 
@@ -196,16 +201,15 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                         value: minutes,
                         child: Text(
                           ComposerPoll(
-                                  options: const [], durationMinutes: minutes)
-                              .durationLabel,
+                            options: const [],
+                            durationMinutes: minutes,
+                          ).durationLabel,
                         ),
                       ),
                   ],
                   onChanged: (value) => value == null
                       ? null
-                      : notifier.setPoll(
-                          poll.copyWith(durationMinutes: value),
-                        ),
+                      : notifier.setPoll(poll.copyWith(durationMinutes: value)),
                 ),
               ],
             ),
@@ -218,8 +222,9 @@ class _PollEditorState extends ConsumerState<PollEditor> {
                 child: Text(
                   poll.problem!,
                   style: TextStyle(
-                      fontSize: TypographyTokens.fontSize1,
-                      color: scheme.error),
+                    fontSize: TypographyTokens.fontSize1,
+                    color: scheme.error,
+                  ),
                 ),
               ),
           ],
@@ -234,11 +239,7 @@ class _Tap extends StatelessWidget {
   final VoidCallback onTap;
   final Widget child;
 
-  const _Tap({
-    required this.tooltip,
-    required this.onTap,
-    required this.child,
-  });
+  const _Tap({required this.tooltip, required this.onTap, required this.child});
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 // lib/screens/browser/browser_chrome.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -105,8 +106,9 @@ class AddressPill extends StatelessWidget {
 
     // Quiet under a title it is subordinate to; full strength when it is the
     // only line the pill has. Never quiet when it is a warning.
-    final originColour =
-        !secure ? palette.alarm : (titled ? palette.quiet : palette.ink);
+    final originColour = !secure
+        ? palette.alarm
+        : (titled ? palette.quiet : palette.ink);
 
     return Semantics(
       button: true,
@@ -176,8 +178,8 @@ class AddressPill extends StatelessWidget {
                                 color: originColour,
                                 fontWeight: secure
                                     ? (titled
-                                        ? FontWeight.w400
-                                        : FontWeight.w500)
+                                          ? FontWeight.w400
+                                          : FontWeight.w500)
                                     : FontWeight.w600,
                               ),
                             ),
@@ -299,8 +301,9 @@ class TabChip extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize1,
-                            fontWeight:
-                                active ? FontWeight.w600 : FontWeight.w400,
+                            fontWeight: active
+                                ? FontWeight.w600
+                                : FontWeight.w400,
                             color: active ? palette.ink : palette.quiet,
                           ),
                         ),
@@ -501,7 +504,9 @@ class TabCountButton extends StatelessWidget {
       // Without this a reader hears the bare number inside the square, which
       // is the one thing about it that does not explain itself.
       excludeSemantics: true,
-      label: count == 1 ? '1 page open' : '$count pages open',
+      label: count == 1
+          ? AppLocalizations.of(context).literal1PageOpen
+          : '$count pages open',
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: onTap,
@@ -598,13 +603,15 @@ class BrowserFoot extends StatelessWidget {
           ),
           BrowserButton(
             icon: loading ? Iconsax.close_square_copy : Iconsax.refresh_copy,
-            label: loading ? 'Stop loading' : 'Reload',
+            label: loading
+                ? AppLocalizations.of(context).literalstopLoading
+                : 'Reload',
             size: rowHeight,
             onTap: onReloadOrStop,
           ),
           BrowserButton(
             icon: Iconsax.export_3_copy,
-            label: 'Share this page',
+            label: AppLocalizations.of(context).literalshareThisPage,
             size: rowHeight,
             onTap: onShare,
           ),
@@ -676,7 +683,7 @@ class PageFailure extends StatelessWidget {
                 width: double.infinity,
                 child: FilledButton(
                   onPressed: onRetry,
-                  child: const Text('Try again'),
+                  child: Text(AppLocalizations.of(context).tryAgain),
                 ),
               ),
               const SizedBox(height: SpacingTokens.space8),
@@ -684,7 +691,7 @@ class PageFailure extends StatelessWidget {
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: onLeave,
-                  child: const Text('Open in browser'),
+                  child: Text(AppLocalizations.of(context).openInBrowser),
                 ),
               ),
             ],

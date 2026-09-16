@@ -3,6 +3,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/feed_post.dart';
 import '../routes.dart';
+import '../l10n/app_localizations.dart';
 import 'media_grid.dart';
 import 'post_card.dart';
 import 'post_text.dart';
@@ -23,11 +24,8 @@ class QuotedPostCard extends StatelessWidget {
     final handle = post.author.handle;
 
     return InkWell(
-      onTap: () => Navigator.pushNamed(
-        context,
-        Routes.postDetail,
-        arguments: post.id,
-      ),
+      onTap: () =>
+          Navigator.pushNamed(context, Routes.postDetail, arguments: post.id),
       borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
       child: Container(
         padding: const EdgeInsets.all(SpacingTokens.space12),
@@ -82,7 +80,9 @@ class QuotedPostCard extends StatelessWidget {
               PostText(
                 content: post.content,
                 style: const TextStyle(
-                    fontSize: TypographyTokens.fontSize2, height: 1.3),
+                  fontSize: TypographyTokens.fontSize2,
+                  height: 1.3,
+                ),
                 maxLines: 6,
               ),
             ],

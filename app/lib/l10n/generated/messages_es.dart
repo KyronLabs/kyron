@@ -303,6 +303,476 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
   'googleContinue': MessageLookupByLibrary.simpleMessage(
     'Continuar con Google',
   ),
+  'literalwhetherKyronIsReachableRightNow':
+      MessageLookupByLibrary.simpleMessage('Si Kyron está disponible ahora'),
+  'literalwhatThisAppHasBeenDoing': MessageLookupByLibrary.simpleMessage(
+    'Qué ha estado haciendo esta app',
+  ),
+  'literalshareTheLogWithSupport': MessageLookupByLibrary.simpleMessage(
+    'Compartir el registro con soporte',
+  ),
+  'literalclearCache': MessageLookupByLibrary.simpleMessage('Borrar caché'),
+  'literalappVersion': MessageLookupByLibrary.simpleMessage(
+    'Versión de la app',
+  ),
+  'literalreading': MessageLookupByLibrary.simpleMessage('Leyendo…'),
+  'literalcheckAgain': MessageLookupByLibrary.simpleMessage(
+    'Comprobar de nuevo',
+  ),
+  'literalkyronDidNotAnswer': MessageLookupByLibrary.simpleMessage(
+    'Kyron no respondió',
+  ),
+  'literalnothingLoggedYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay registros',
+  ),
+  'literalswitchCamera': MessageLookupByLibrary.simpleMessage('Cambiar cámara'),
+  'literaltheCameraIsClosed': MessageLookupByLibrary.simpleMessage(
+    'La cámara está cerrada',
+  ),
+  'literaltakeAPicture': MessageLookupByLibrary.simpleMessage('Tomar una foto'),
+  'literallensNameFaceLens': (Object lens) => '${lens.name}, lente facial',
+  'literalcouldNotPostThatReply': MessageLookupByLibrary.simpleMessage(
+    'No se pudo publicar esa respuesta.',
+  ),
+  'literalcouldNotLoadThisReply': MessageLookupByLibrary.simpleMessage(
+    'No se pudo cargar esta respuesta',
+  ),
+  'literalthisReplyIsGone': MessageLookupByLibrary.simpleMessage(
+    'Esta respuesta ya no existe',
+  ),
+  'literaladdAPhoto': MessageLookupByLibrary.simpleMessage('Agregar una foto'),
+  'literaladdAClip': MessageLookupByLibrary.simpleMessage('Agregar un clip'),
+  'literalstartACommunity': MessageLookupByLibrary.simpleMessage(
+    'Crear una comunidad',
+  ),
+  'literalcouldNotLoadYourCommunities': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar tus comunidades',
+  ),
+  'literalyouAreNotInAnyCommunities': MessageLookupByLibrary.simpleMessage(
+    'No estás en ninguna comunidad',
+  ),
+  'literalcouldNotLoadCommunities': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar las comunidades',
+  ),
+  'literalpostInWidgetCommunityName': (Object widget) =>
+      'Publicar en ${widget.community.name}',
+  'literalsaySomethingToWidgetCommunityName': (Object widget) =>
+      'Escribe algo para ${widget.community.name}',
+  'literaltagSomeone': MessageLookupByLibrary.simpleMessage(
+    'Etiquetar a alguien',
+  ),
+  'literalcloseWidgetCommunityName': (Object widget) =>
+      '¿Cerrar ${widget.community.name}?',
+  'literalonlyTheOwnerCanChangeThis': MessageLookupByLibrary.simpleMessage(
+    'Solo el propietario puede cambiar esto',
+  ),
+  'literaltapTheBannerOrThePictureToChangeIt':
+      MessageLookupByLibrary.simpleMessage(
+        'Toca el banner o la imagen para cambiarla',
+      ),
+  'literalremoveMemberDisplayname': (Object member) =>
+      '¿Eliminar a ${member.displayName}?',
+  'literalcouldNotLoadTheMembers': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar los miembros',
+  ),
+  'literalnobodyHereYet': MessageLookupByLibrary.simpleMessage(
+    'Todavía no hay nadie aquí',
+  ),
+  'literalmakeAModerator': MessageLookupByLibrary.simpleMessage(
+    'Convertir en moderador',
+  ),
+  'literalremoveAsModerator': MessageLookupByLibrary.simpleMessage(
+    'Quitar como moderador',
+  ),
+  'literalremoveFromCommunity': MessageLookupByLibrary.simpleMessage(
+    'Eliminar de la comunidad',
+  ),
+  'literalcouldNotLoadThisList': MessageLookupByLibrary.simpleMessage(
+    'No se pudo cargar esta lista',
+  ),
+  'literalnobodyHasBeenRemoved': MessageLookupByLibrary.simpleMessage(
+    'Nadie ha sido eliminado',
+  ),
+  'literalpostInCommunityName': (Object community) =>
+      'Publicar en ${community.name}',
+  'literalcouldNotOpenThisCommunity': MessageLookupByLibrary.simpleMessage(
+    'No se pudo abrir esta comunidad',
+  ),
+  'literalthisCommunity': MessageLookupByLibrary.simpleMessage(
+    'Esta comunidad',
+  ),
+  'literalshareThisCommunity': MessageLookupByLibrary.simpleMessage(
+    'Compartir esta comunidad',
+  ),
+  'literalcopyLink': MessageLookupByLibrary.simpleMessage('Copiar enlace'),
+  'literallinkCopied': MessageLookupByLibrary.simpleMessage('Enlace copiado'),
+  'literalleaveCommunityName': (Object community) =>
+      '¿Salir de ${community.name}?',
+  'literalyouHaveLeftCommunityName': (Object community) =>
+      'Has salido de ${community.name}',
+  'literaladdAVideo': MessageLookupByLibrary.simpleMessage('Agregar un video'),
+  'literaladdAGif': MessageLookupByLibrary.simpleMessage('Agregar un GIF'),
+  'literalrecordAVoicePost': MessageLookupByLibrary.simpleMessage(
+    'Grabar una publicación de voz',
+  ),
+  'literalremoveThePoll': MessageLookupByLibrary.simpleMessage(
+    'Eliminar la encuesta',
+  ),
+  'literaladdAPoll': MessageLookupByLibrary.simpleMessage(
+    'Agregar una encuesta',
+  ),
+  'literaladdAHashtag': MessageLookupByLibrary.simpleMessage(
+    'Agregar un hashtag',
+  ),
+  'literaldraftSaved': MessageLookupByLibrary.simpleMessage(
+    'Borrador guardado',
+  ),
+  'literalnoDrafts': MessageLookupByLibrary.simpleMessage('Sin borradores'),
+  'literalcouldNotLoadTrending': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar las tendencias',
+  ),
+  'literalnothingIsTrendingYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay tendencias',
+  ),
+  'literalcouldNotLoadTopics': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar los temas',
+  ),
+  'literalnoTopicsYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay temas',
+  ),
+  'literalcouldNotLoadSuggestions': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar las sugerencias',
+  ),
+  'literalnobodyLeftToSuggest': MessageLookupByLibrary.simpleMessage(
+    'No hay nadie más para sugerir',
+  ),
+  'literalyouExampleCom': MessageLookupByLibrary.simpleMessage(
+    'you@example.com',
+  ),
+  'literalsendTheLink': MessageLookupByLibrary.simpleMessage(
+    'Enviar el enlace',
+  ),
+  'literalopenTheMailFromKyron': MessageLookupByLibrary.simpleMessage(
+    'Abre el correo de Kyron',
+  ),
+  'literaltapTheLinkInsideIt': MessageLookupByLibrary.simpleMessage(
+    'Toca el enlace dentro',
+  ),
+  'literalsetAPasswordAndCarryOn': MessageLookupByLibrary.simpleMessage(
+    'Establece una contraseña y continúa',
+  ),
+  'literalsendAgainInCooldownS': (Object _cooldown) =>
+      'Reenviar en ${_cooldown}s',
+  'literalsendAgain': MessageLookupByLibrary.simpleMessage('Reenviar'),
+  'literalnormalised': (Object normalised) => '#$normalised',
+  'literalcouldNotLoadYourMessages': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar tus mensajes',
+  ),
+  'literalnothingUnread': MessageLookupByLibrary.simpleMessage('Nada por leer'),
+  'literalnoMessagesYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay mensajes',
+  ),
+  'literalnothingMuted': MessageLookupByLibrary.simpleMessage(
+    'Nada silenciado',
+  ),
+  'literalnoLikesYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay me gusta',
+  ),
+  'literalnoRepliesYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay respuestas',
+  ),
+  'literalnoNewFollowers': MessageLookupByLibrary.simpleMessage(
+    'No hay nuevos seguidores',
+  ),
+  'literalnoRepostsYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay reenvíos',
+  ),
+  'literalyouAreAllCaughtUp': MessageLookupByLibrary.simpleMessage(
+    'Ya estás al día',
+  ),
+  'literalcouldNotLoadNotifications': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar las notificaciones',
+  ),
+  'literalcoverPhoto': MessageLookupByLibrary.simpleMessage('Foto de portada'),
+  'literalchooseFromGallery': MessageLookupByLibrary.simpleMessage(
+    'Elegir de la galería',
+  ),
+  'literaluseOneOfOurs': MessageLookupByLibrary.simpleMessage(
+    'Usa una de las nuestras',
+  ),
+  'literaltapToAddAPhotoAndACover': MessageLookupByLibrary.simpleMessage(
+    'Toca para añadir una foto y una portada',
+  ),
+  'literalnoInterestsYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay intereses',
+  ),
+  'literaldiscoverPeople': MessageLookupByLibrary.simpleMessage(
+    'Descubrir personas',
+  ),
+  'literalcancelReply': MessageLookupByLibrary.simpleMessage(
+    'Cancelar respuesta',
+  ),
+  'literalcouldNotLoadThisPost': MessageLookupByLibrary.simpleMessage(
+    'No se pudo cargar esta publicación',
+  ),
+  'literalshareThisProfile': MessageLookupByLibrary.simpleMessage(
+    'Compartir este perfil',
+  ),
+  'literalcouldNotLoadThesePosts': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar estas publicaciones',
+  ),
+  'literalyouHaveNotPostedYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no has publicado',
+  ),
+  'literalnoPostsYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay publicaciones',
+  ),
+  'literalnothingToLookAtYet': MessageLookupByLibrary.simpleMessage(
+    'Aún no hay nada que ver',
+  ),
+  'literalkeepTyping': MessageLookupByLibrary.simpleMessage(
+    'Sigue escribiendo',
+  ),
+  'literalsearchFailed': MessageLookupByLibrary.simpleMessage(
+    'Búsqueda fallida',
+  ),
+  'literalnothingMatched': MessageLookupByLibrary.simpleMessage(
+    'No hay coincidencias',
+  ),
+  'literalcouldNotSignOutDescribeapierrorE': (Object describeApiError) =>
+      'No se pudo cerrar sesión: ${describeApiError(e)}',
+  'literalnoDidYet': MessageLookupByLibrary.simpleMessage('Aún no hay DID'),
+  'literalpasswordLogin': MessageLookupByLibrary.simpleMessage(
+    'Contraseña y acceso',
+  ),
+  'literalmutedAndBlockedAccounts': MessageLookupByLibrary.simpleMessage(
+    'Cuentas silenciadas y bloqueadas',
+  ),
+  'literalfontSize': MessageLookupByLibrary.simpleMessage('Tamaño de fuente'),
+  'literalpushNotifications': MessageLookupByLibrary.simpleMessage(
+    'Notificaciones push',
+  ),
+  'literaldataSaver': MessageLookupByLibrary.simpleMessage('Ahorro de datos'),
+  'literalcontactSupport': MessageLookupByLibrary.simpleMessage(
+    'Contactar con soporte',
+  ),
+  'literalsendFeedback': MessageLookupByLibrary.simpleMessage(
+    'Enviar comentarios',
+  ),
+  'literalappLanguage': MessageLookupByLibrary.simpleMessage(
+    'Idioma de la app',
+  ),
+  'literalprimaryLanguage': MessageLookupByLibrary.simpleMessage(
+    'Idioma principal',
+  ),
+  'literalcontentLanguages': MessageLookupByLibrary.simpleMessage(
+    'Idiomas del contenido',
+  ),
+  'literalremoveLanguageEnglishname': (Object language) =>
+      'Eliminar ${language.englishName}',
+  'literalsentItIsReportFiledNumber': (Object filed) =>
+      'Enviado. Es el informe #${filed.number}.',
+  'literalfeedbackCannotBeSentRightNow': MessageLookupByLibrary.simpleMessage(
+    'No se puede enviar comentarios ahora mismo',
+  ),
+  'literalwhatYouDidWhatYouExpectedWhatHappened':
+      MessageLookupByLibrary.simpleMessage(
+        'Qué hiciste, qué esperabas, qué pasó ',
+      ),
+  'literalverificationFailedDescribeapierrorE': (Object describeApiError) =>
+      'Verificación fallida: ${describeApiError(e)}',
+  'literalverificationCodeResent': MessageLookupByLibrary.simpleMessage(
+    'Código de verificación reenviado.',
+  ),
+  'literalverifyEmail': MessageLookupByLibrary.simpleMessage(
+    'Verificar correo electrónico',
+  ),
+  'literalresendCode': MessageLookupByLibrary.simpleMessage('Reenviar código'),
+  'literalremoveThisConversation': MessageLookupByLibrary.simpleMessage(
+    'Eliminar esta conversación',
+  ),
+  'literalmutedYouWillNotBeNotified': MessageLookupByLibrary.simpleMessage(
+    'Silenciado. No recibirás notificaciones.',
+  ),
+  'literalblockThisAccount': MessageLookupByLibrary.simpleMessage(
+    '¿Bloquear esta cuenta?',
+  ),
+  'literalyouAreSignedOut': MessageLookupByLibrary.simpleMessage(
+    'Has cerrado sesión.',
+  ),
+  'literalcouldNotLoadThisConversation': MessageLookupByLibrary.simpleMessage(
+    'No se pudo cargar esta conversación',
+  ),
+  'literalsaySomething': MessageLookupByLibrary.simpleMessage('Di algo'),
+  'literalcopyText': MessageLookupByLibrary.simpleMessage('Copiar texto'),
+  'literaldoNotReply': MessageLookupByLibrary.simpleMessage('No responder'),
+  'literalremoveFromSaved': MessageLookupByLibrary.simpleMessage(
+    'Quitar de guardados',
+  ),
+  'literalturnSoundOn': MessageLookupByLibrary.simpleMessage('Activar sonido'),
+  'literalturnSoundOff': MessageLookupByLibrary.simpleMessage(
+    'Desactivar sonido',
+  ),
+  'literalthatLinkIsNotOneThisCanOpen': MessageLookupByLibrary.simpleMessage(
+    'Ese enlace no se puede abrir aquí.',
+  ),
+  'literalnoBrowserOnThisDeviceTookThatLink':
+      MessageLookupByLibrary.simpleMessage(
+        'Ningún navegador en este dispositivo pudo abrir ese enlace.',
+      ),
+  'literalopenReply': MessageLookupByLibrary.simpleMessage('Abrir respuesta'),
+  'literallabelCount': (Object label, Object count) => '$label, $count',
+  'literalindex1': (Object index) => '${index + 1}',
+  'literalfirstyearIndex': (Object _firstYear) => '${_firstYear + index}',
+  'literalgifsAreNotSetUp': MessageLookupByLibrary.simpleMessage(
+    'Los GIF no están configurados',
+  ),
+  'literalcouldNotLoadGifs': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar los GIF',
+  ),
+  'literalnothingFound': MessageLookupByLibrary.simpleMessage(
+    'No se encontró nada',
+  ),
+  'literalthatGifCouldNotBeDownloaded': MessageLookupByLibrary.simpleMessage(
+    'Ese GIF no se pudo descargar.',
+  ),
+  'literaladdAnInterest': MessageLookupByLibrary.simpleMessage(
+    'Agregar un interés',
+  ),
+  'literalcouldNotLoadTrendingTags': MessageLookupByLibrary.simpleMessage(
+    'No se pudieron cargar las etiquetas de tendencia',
+  ),
+  'literalnoTrendingTagMatchesThat': MessageLookupByLibrary.simpleMessage(
+    'Ninguna etiqueta de tendencia coincide con eso',
+  ),
+  'literalyouAlreadyFollowEveryTrendingTag':
+      MessageLookupByLibrary.simpleMessage(
+        'Ya sigues todas las etiquetas de tendencia',
+      ),
+  'literalremoveLabel': (Object label) => 'Eliminar $label',
+  'literaladdLabelAsATab': (Object label) => 'Agregar $label como pestaña',
+  'literalcouldNotSearch': MessageLookupByLibrary.simpleMessage(
+    'No se pudo buscar',
+  ),
+  'literalwhoDoYouWantToTag': MessageLookupByLibrary.simpleMessage(
+    '¿A quién quieres etiquetar?',
+  ),
+  'literalnobodyFound': MessageLookupByLibrary.simpleMessage(
+    'No se encontró a nadie',
+  ),
+  'literalshowPassword': MessageLookupByLibrary.simpleMessage(
+    'Mostrar contraseña',
+  ),
+  'literalhidePassword': MessageLookupByLibrary.simpleMessage(
+    'Ocultar contraseña',
+  ),
+  'literaltranslatePost': MessageLookupByLibrary.simpleMessage(
+    'Traducir publicación',
+  ),
+  'literalcopyPostText': MessageLookupByLibrary.simpleMessage(
+    'Copiar texto de la publicación',
+  ),
+  'literalcopyLinkToPost': MessageLookupByLibrary.simpleMessage(
+    'Copiar enlace de la publicación',
+  ),
+  'literalshowMorePostsLikeThis': MessageLookupByLibrary.simpleMessage(
+    'Mostrar más publicaciones como esta',
+  ),
+  'literalnotInterestedInThis': MessageLookupByLibrary.simpleMessage(
+    'No me interesa esto',
+  ),
+  'literalhidesItAndTellsUsToShowFewerLikeIt':
+      MessageLookupByLibrary.simpleMessage(
+        'La oculta y nos indica mostrar menos contenido similar',
+      ),
+  'literalhideThisPost': MessageLookupByLibrary.simpleMessage(
+    'Ocultar esta publicación',
+  ),
+  'literalmuteThisThread': MessageLookupByLibrary.simpleMessage(
+    'Silenciar este hilo',
+  ),
+  'literalstopSeeingThisPostAndRepliesToIt':
+      MessageLookupByLibrary.simpleMessage(
+        'Dejar de ver esta publicación y sus respuestas',
+      ),
+  'literalmuteWordsOrTags': MessageLookupByLibrary.simpleMessage(
+    'Silenciar palabras o etiquetas',
+  ),
+  'literalviewersLikesSavesAndComments': MessageLookupByLibrary.simpleMessage(
+    'Vistas, me gusta, guardados y comentarios',
+  ),
+  'literalwhoCanReply': MessageLookupByLibrary.simpleMessage(
+    'Quién puede responder',
+  ),
+  'literaldeletePost': MessageLookupByLibrary.simpleMessage(
+    'Eliminar publicación',
+  ),
+  'literalmuteAuthor': (Object author) => 'Silenciar a $author',
+  'literalblockAuthor': (Object author) => 'Bloquear a $author',
+  'literalreportPost': MessageLookupByLibrary.simpleMessage(
+    'Denunciar publicación',
+  ),
+  'literalreportAuthor': (Object author) => 'Denunciar a $author',
+  'literalthatDidNotGoThroughTryAgain': MessageLookupByLibrary.simpleMessage(
+    'No se pudo enviar. Inténtalo de nuevo.',
+  ),
+  'literalblockAuthor2': (Object author) => '¿Bloquear a $author?',
+  'literalshowResults': MessageLookupByLibrary.simpleMessage(
+    'Mostrar resultados',
+  ),
+  'literallabelDate': (Object label) => '\\$label fecha',
+  'literalshareVia': MessageLookupByLibrary.simpleMessage('Compartir vía…'),
+  'literalhandItToAnotherApp': MessageLookupByLibrary.simpleMessage(
+    'Abrir con otra app',
+  ),
+  'literalshareWithAQuote': MessageLookupByLibrary.simpleMessage(
+    'Compartir con cita',
+  ),
+  'literalpostItWithYourOwnWordsAboveIt': MessageLookupByLibrary.simpleMessage(
+    'Publicarlo con tus propias palabras arriba',
+  ),
+  'literalsavedPosts': MessageLookupByLibrary.simpleMessage(
+    'Publicaciones guardadas',
+  ),
+  'literallikedPosts': MessageLookupByLibrary.simpleMessage(
+    'Publicaciones que te gustaron',
+  ),
+  'literalstoriesRibbonStoriesLengthItems': (Object stories) =>
+      'Historias, ${stories.length} elementos',
+  'literalwhatYouPostIsYours': MessageLookupByLibrary.simpleMessage(
+    'Lo que publicas es tuyo',
+  ),
+  'literalwhatKyronKeeps': MessageLookupByLibrary.simpleMessage(
+    'Lo que Kyron conserva',
+  ),
+  'literalhowToBehave': MessageLookupByLibrary.simpleMessage(
+    'Cómo comportarse',
+  ),
+  'literalcloseTabLabel': (Object tab) => 'Cerrar ${tab.label}',
+  'literal1PageOpen': MessageLookupByLibrary.simpleMessage('1 página abierta'),
+  'literalcountPagesOpen': (Object count) => '$count páginas abiertas',
+  'literalstopLoading': MessageLookupByLibrary.simpleMessage('Detener carga'),
+  'literalshareThisPage': MessageLookupByLibrary.simpleMessage(
+    'Compartir esta página',
+  ),
+  'literalnoAppOnThisDeviceOpensUriSchemeLinks': (Object uri) =>
+      'Ninguna aplicación en este dispositivo abre enlaces ${uri.scheme}.',
+  'literalcloseTheBrowser': MessageLookupByLibrary.simpleMessage(
+    'Cerrar el navegador',
+  ),
+  'literalcloseAllPages': MessageLookupByLibrary.simpleMessage(
+    'Cerrar todas las páginas',
+  ),
+  'literalremoveThisPoll': MessageLookupByLibrary.simpleMessage(
+    'Eliminar esta encuesta',
+  ),
+  'literalremoveThisAnswer': MessageLookupByLibrary.simpleMessage(
+    'Eliminar esta respuesta',
+  ),
+  'literalstartRecording': MessageLookupByLibrary.simpleMessage(
+    'Iniciar grabación',
+  ),
+  'literalrecordAgain': MessageLookupByLibrary.simpleMessage('Volver a grabar'),
 };
 
 final messageLookup = MessageLookup();

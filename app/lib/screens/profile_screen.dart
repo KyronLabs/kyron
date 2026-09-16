@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/profile_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,10 +31,10 @@ enum ProfileTab { posts, media, likes }
 
 extension on ProfileTab {
   String get label => switch (this) {
-        ProfileTab.posts => 'Posts',
-        ProfileTab.media => 'Media',
-        ProfileTab.likes => 'Likes',
-      };
+    ProfileTab.posts => 'Posts',
+    ProfileTab.media => 'Media',
+    ProfileTab.likes => 'Likes',
+  };
 }
 
 /// One account: yours, or somebody else's.
@@ -69,7 +70,7 @@ class ProfileScreen extends ConsumerWidget {
               padding: const EdgeInsets.only(right: SpacingTokens.space8),
               child: _GlassAction(
                 icon: Iconsax.export_1_copy,
-                tooltip: 'Share this profile',
+                tooltip: AppLocalizations.of(context).literalshareThisProfile,
                 onPressed: () => shareProfile(state.value!),
               ),
             ),
@@ -111,10 +112,10 @@ class _LoadedState extends ConsumerState<_Loaded> {
   ProfileTab _tab = ProfileTab.posts;
 
   PostListSource get _source => switch (_tab) {
-        ProfileTab.posts => PostListSource.author(widget.profile.id),
-        ProfileTab.media => PostListSource.authorMedia(widget.profile.id),
-        ProfileTab.likes => PostListSource.liked,
-      };
+    ProfileTab.posts => PostListSource.author(widget.profile.id),
+    ProfileTab.media => PostListSource.authorMedia(widget.profile.id),
+    ProfileTab.likes => PostListSource.liked,
+  };
 
   @override
   void initState() {
@@ -168,10 +169,10 @@ class _LoadedState extends ConsumerState<_Loaded> {
 
   /// The tabs on offer. Likes are private, so only your own profile has one.
   List<ProfileTab> get _tabs => [
-        ProfileTab.posts,
-        ProfileTab.media,
-        if (widget.profile.isOwnProfile) ProfileTab.likes,
-      ];
+    ProfileTab.posts,
+    ProfileTab.media,
+    if (widget.profile.isOwnProfile) ProfileTab.likes,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -197,10 +198,7 @@ class _LoadedState extends ConsumerState<_Loaded> {
         ),
         slivers: [
           SliverToBoxAdapter(
-            child: _CoverAndHeader(
-              profile: profile,
-              username: widget.username,
-            ),
+            child: _CoverAndHeader(profile: profile, username: widget.username),
           ),
           SliverPersistentHeader(
             pinned: true,
@@ -275,34 +273,37 @@ class _LoadedState extends ConsumerState<_Loaded> {
   Widget _empty(ProfileModel profile, String? failed) {
     if (failed != null) {
       return EmptyState.failed(
-        title: 'Could not load these posts',
+        title: AppLocalizations.of(context).literalcouldNotLoadThesePosts,
         detail: failed,
         onAction: ref.read(postListProvider(_source).notifier).refresh,
       );
     }
 
-    final who =
-        profile.isOwnProfile ? 'You have' : '${profile.displayName} has';
+    final who = profile.isOwnProfile
+        ? 'You have'
+        : '${profile.displayName} has';
     final mine = profile.isOwnProfile;
 
     return switch (_tab) {
       ProfileTab.posts => EmptyState(
-          art: EmptyArt.posts,
-          title: mine ? 'You have not posted yet' : 'No posts yet',
-          detail: mine
-              ? 'Anything you post shows up here.'
-              : '$who not posted anything yet.',
-        ),
+        art: EmptyArt.posts,
+        title: mine
+            ? AppLocalizations.of(context).literalyouHaveNotPostedYet
+            : AppLocalizations.of(context).literalnoPostsYet,
+        detail: mine
+            ? 'Anything you post shows up here.'
+            : '$who not posted anything yet.',
+      ),
       ProfileTab.media => EmptyState(
-          art: EmptyArt.videos,
-          title: 'Nothing to look at yet',
-          detail: '$who not posted any photos or clips.',
-        ),
+        art: EmptyArt.videos,
+        title: AppLocalizations.of(context).literalnothingToLookAtYet,
+        detail: '$who not posted any photos or clips.',
+      ),
       ProfileTab.likes => const EmptyState(
-          art: EmptyArt.likes,
-          title: 'No likes yet',
-          detail: 'Posts you like are kept here, just for you.',
-        ),
+        art: EmptyArt.likes,
+        title: AppLocalizations.of(context).literalnoLikesYet,
+        detail: 'Posts you like are kept here, just for you.',
+      ),
     };
   }
 }
@@ -459,13 +460,13 @@ class _CoverAndHeader extends StatelessWidget {
             onTap: profile.avatarUrl == null
                 ? null
                 : () => MediaViewer.open(context, [
-                      PostMedia(
-                        id: 'avatar-${profile.id}',
-                        kind: MediaKind.image,
-                        url: profile.avatarUrl!,
-                        alt: '${profile.displayName}\u2019s profile picture',
-                      ),
-                    ]),
+                    PostMedia(
+                      id: 'avatar-${profile.id}',
+                      kind: MediaKind.image,
+                      url: profile.avatarUrl!,
+                      alt: '${profile.displayName}\u2019s profile picture',
+                    ),
+                  ]),
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -665,9 +666,13 @@ class _Header extends ConsumerWidget {
             ),
           if (bio != null && bio.isNotEmpty) ...[
             const SizedBox(height: SpacingTokens.space12),
-            Text(bio,
-                style: const TextStyle(
-                    fontSize: TypographyTokens.fontSize3, height: 1.4)),
+            Text(
+              bio,
+              style: const TextStyle(
+                fontSize: TypographyTokens.fontSize3,
+                height: 1.4,
+              ),
+            ),
           ],
           if ((location != null && location.isNotEmpty) ||
               (website != null && website.isNotEmpty)) ...[
@@ -713,7 +718,7 @@ class _Counts extends StatelessWidget {
       children: [
         _Count(
           value: profile.followers,
-          label: 'Followers',
+          label: AppLocalizations.of(context).followers,
           onTap: () => Navigator.pushNamed(
             context,
             Routes.followers,
@@ -726,7 +731,7 @@ class _Counts extends StatelessWidget {
         ),
         _Count(
           value: profile.following,
-          label: 'Following',
+          label: AppLocalizations.of(context).following,
           onTap: () => Navigator.pushNamed(
             context,
             Routes.following,
@@ -775,8 +780,9 @@ class _Count extends StatelessWidget {
         Text(
           formatCount(value),
           style: const TextStyle(
-              fontSize: TypographyTokens.fontSize3,
-              fontWeight: FontWeight.w700),
+            fontSize: TypographyTokens.fontSize3,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         const SizedBox(width: SpacingTokens.space4),
         Text(
@@ -827,7 +833,7 @@ class _ActionsState extends ConsumerState<_Actions> {
       children: [
         ActionIconButton(
           icon: Iconsax.export_1_copy,
-          tooltip: 'Share this profile',
+          tooltip: AppLocalizations.of(context).literalshareThisProfile,
           onPressed: () => shareProfile(profile),
         ),
         const SizedBox(width: SpacingTokens.space8),
@@ -837,7 +843,7 @@ class _ActionsState extends ConsumerState<_Actions> {
         if (!profile.isOwnProfile) ...[
           ActionIconButton(
             icon: Iconsax.message_text_copy,
-            tooltip: 'Message',
+            tooltip: AppLocalizations.of(context).message,
             busy: _opening,
             onPressed: _message,
           ),
@@ -846,7 +852,7 @@ class _ActionsState extends ConsumerState<_Actions> {
         Flexible(
           child: profile.isOwnProfile
               ? ActionButton(
-                  label: 'Edit profile',
+                  label: AppLocalizations.of(context).editProfile,
                   icon: Iconsax.edit_2_copy,
                   kind: ActionButtonKind.outlined,
                   onPressed: () =>
@@ -854,7 +860,9 @@ class _ActionsState extends ConsumerState<_Actions> {
                 )
               : ActionButton(
                   compact: true,
-                  label: profile.isFollowing ? 'Following' : 'Follow',
+                  label: profile.isFollowing
+                      ? AppLocalizations.of(context).following
+                      : 'Follow',
                   icon: profile.isFollowing
                       ? Iconsax.tick_circle_copy
                       : Iconsax.add,
@@ -928,9 +936,10 @@ class _Meta extends StatelessWidget {
       children: [
         Icon(icon, size: 14, color: muted),
         const SizedBox(width: SpacingTokens.space4),
-        Text(text,
-            style:
-                TextStyle(fontSize: TypographyTokens.fontSize2, color: muted)),
+        Text(
+          text,
+          style: TextStyle(fontSize: TypographyTokens.fontSize2, color: muted),
+        ),
       ],
     );
   }
@@ -980,8 +989,9 @@ class _DidChip extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                    fontSize: TypographyTokens.fontSize1,
-                    color: scheme.primary),
+                  fontSize: TypographyTokens.fontSize1,
+                  color: scheme.primary,
+                ),
               ),
             ),
           ],

@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/post_analytics_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,10 +12,12 @@ import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import '../widgets/kyron_app_bar.dart';
 
-final postAnalyticsProvider = StateNotifierProvider.family<
-    PostAnalyticsNotifier, AsyncValue<PostAnalytics>, String>(
-  (ref, postId) => PostAnalyticsNotifier(ref, postId),
-);
+final postAnalyticsProvider =
+    StateNotifierProvider.family<
+      PostAnalyticsNotifier,
+      AsyncValue<PostAnalytics>,
+      String
+    >((ref, postId) => PostAnalyticsNotifier(ref, postId));
 
 class PostAnalyticsNotifier extends StateNotifier<AsyncValue<PostAnalytics>> {
   final Ref _ref;
@@ -54,7 +57,7 @@ class PostAnalyticsScreen extends ConsumerWidget {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Post analytics'),
+        title: Text(AppLocalizations.of(context).postAnalytics),
         actions: [
           IconButton(
             icon: const Icon(Iconsax.refresh_copy, size: 20),
@@ -276,8 +279,9 @@ class _Tile extends StatelessWidget {
           Text(
             value,
             style: const TextStyle(
-                fontSize: TypographyTokens.fontSize6,
-                fontWeight: FontWeight.w700),
+              fontSize: TypographyTokens.fontSize6,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           Text(
             label,
@@ -344,7 +348,10 @@ class _Failed extends StatelessWidget {
           children: [
             Text(message, textAlign: TextAlign.center),
             const SizedBox(height: SpacingTokens.space16),
-            TextButton(onPressed: onRetry, child: const Text('Try again')),
+            TextButton(
+              onPressed: onRetry,
+              child: Text(AppLocalizations.of(context).tryAgain),
+            ),
           ],
         ),
       ),

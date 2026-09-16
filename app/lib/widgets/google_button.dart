@@ -1,9 +1,8 @@
+import '../l10n/app_localizations.dart';
 // lib/widgets/google_button.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
-
-import '../l10n/app_localizations.dart';
 
 /// What the button may say.
 ///

@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 // lib/screens/browser/browser_sheets.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -86,8 +87,9 @@ abstract final class PageSheet {
                       decoration: BoxDecoration(
                         color: (secure ? palette.accent : palette.alarm)
                             .withValues(alpha: 0.10),
-                        borderRadius:
-                            BorderRadius.circular(RadiusTokens.radiusMd),
+                        borderRadius: BorderRadius.circular(
+                          RadiusTokens.radiusMd,
+                        ),
                       ),
                       child: Row(
                         children: [
@@ -103,10 +105,10 @@ abstract final class PageSheet {
                             child: Text(
                               secure
                                   ? 'Encrypted between this device and '
-                                      '${tab.host}.'
+                                        '${tab.host}.'
                                   : 'Sent in the clear. Anyone on the network '
-                                      'between you and ${tab.host} can read '
-                                      'it.',
+                                        'between you and ${tab.host} can read '
+                                        'it.',
                               style: TextStyle(
                                 fontSize: TypographyTokens.fontSize1,
                                 height: 1.4,
@@ -121,7 +123,7 @@ abstract final class PageSheet {
                   const SizedBox(height: SpacingTokens.space8),
                   _Row(
                     icon: Iconsax.copy_copy,
-                    label: 'Copy link',
+                    label: AppLocalizations.of(context).literalcopyLink,
                     onTap: () => Navigator.pop(context, PageChoice.copy),
                   ),
                   _Row(
@@ -131,7 +133,7 @@ abstract final class PageSheet {
                   ),
                   _Row(
                     icon: Iconsax.global_copy,
-                    label: 'Open in browser',
+                    label: AppLocalizations.of(context).openInBrowser,
                     detail: 'Leaves Kyron and hands the page to your phone',
                     onTap: () => Navigator.pop(context, PageChoice.leave),
                   ),
@@ -229,8 +231,9 @@ abstract final class TabSheet {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize3,
-                            fontWeight:
-                                reading ? FontWeight.w600 : FontWeight.w400,
+                            fontWeight: reading
+                                ? FontWeight.w600
+                                : FontWeight.w400,
                             color: palette.ink,
                           ),
                         ),
@@ -256,7 +259,7 @@ abstract final class TabSheet {
                 if (tabs.length > 1)
                   _Row(
                     icon: Iconsax.close_square_copy,
-                    label: 'Close all pages',
+                    label: AppLocalizations.of(context).literalcloseAllPages,
                     destructive: true,
                     onTap: () => Navigator.pop(context, const ShutEveryTab()),
                   ),
@@ -296,10 +299,7 @@ class _Row extends StatelessWidget {
       leading: Icon(icon, size: 20, color: colour),
       title: Text(
         label,
-        style: TextStyle(
-          fontSize: TypographyTokens.fontSize3,
-          color: colour,
-        ),
+        style: TextStyle(fontSize: TypographyTokens.fontSize3, color: colour),
       ),
       subtitle: detail == null
           ? null

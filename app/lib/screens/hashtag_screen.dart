@@ -7,6 +7,7 @@ import '../providers/feed_provider.dart';
 import '../widgets/post_list_view.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../l10n/app_localizations.dart';
 
 /// Every post carrying one hashtag.
 class HashtagScreen extends StatelessWidget {

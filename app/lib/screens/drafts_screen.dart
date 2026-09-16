@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/drafts_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,7 +38,7 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Drafts'),
+        title: Text(AppLocalizations.of(context).drafts),
       ),
       body: SafeArea(
         child: FutureBuilder<List<ComposerDraft>>(
@@ -52,8 +53,9 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
               return const Center(
                 child: EmptyState(
                   art: EmptyArt.drafts,
-                  title: 'No drafts',
-                  detail: 'Close the composer with something written and you '
+                  title: AppLocalizations.of(context).literalnoDrafts,
+                  detail:
+                      'Close the composer with something written and you '
                       'will be offered a draft.',
                 ),
               );

@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/welcome_screen.dart
 import 'dart:math' as math;
 
@@ -18,7 +19,6 @@ import '../widgets/app_language_selector.dart';
 import '../widgets/get_started_art.dart';
 import '../widgets/google_button.dart';
 import '../widgets/terms_gate.dart';
-import '../l10n/app_localizations.dart';
 
 /// The first screen anybody sees, and for most people the only one they will
 /// ever judge Kyron by.

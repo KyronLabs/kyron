@@ -19,6 +19,8 @@ import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 import '../widgets/kyron_app_bar.dart';
 
+import '../l10n/app_localizations.dart';
+
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 
@@ -136,18 +138,16 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: 56),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 8,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             child: Row(
               children: [
                 // Icon: 24px, left-aligned, 8px padding
                 Icon(
                   icon,
                   size: 24,
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withOpacity(0.8),
                 ),
                 const SizedBox(width: 16),
                 // Label + Subtitle
@@ -178,10 +178,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize3,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurface
-                                .withOpacity(0.6),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withOpacity(0.6),
                             fontFamily: 'SF Pro Rounded',
                           ),
                         ),
@@ -244,17 +243,18 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               children: [
                 CircleAvatar(
                   radius: 22,
-                  backgroundColor:
-                      Theme.of(context).colorScheme.surfaceContainerHighest,
-                  foregroundImage:
-                      avatarUrl == null ? null : NetworkImage(avatarUrl),
+                  backgroundColor: Theme.of(
+                    context,
+                  ).colorScheme.surfaceContainerHighest,
+                  foregroundImage: avatarUrl == null
+                      ? null
+                      : NetworkImage(avatarUrl),
                   child: Icon(
                     Iconsax.user_copy,
                     size: 20,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: .5),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: .5),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -284,10 +284,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ],
             ),
             const SizedBox(height: 20),
-            const Text('Log Out?',
-                style: TextStyle(
-                    fontSize: TypographyTokens.fontSize6,
-                    fontWeight: FontWeight.bold)),
+            const Text(
+              AppLocalizations.of(context).logOutQuestion,
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize6,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 8),
             const Text(
               "You will need to sign in again to get back to your account.",
@@ -298,16 +301,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Cancel'),
+                    child: Text(AppLocalizations.of(context).cancel),
                   ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
                     onPressed: _performLogout,
-                    child: const Text('Log Out'),
+                    child: Text(AppLocalizations.of(context).logOut),
                   ),
                 ),
               ],
@@ -332,8 +336,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         title: const Text(
           'Settings',
           style: TextStyle(
-              fontSize: TypographyTokens.fontSize5,
-              fontWeight: FontWeight.w600),
+            fontSize: TypographyTokens.fontSize5,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       body: FocusTraversalGroup(
@@ -350,7 +355,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               trailing: TextButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, Routes.settingsChangeEmail),
-                child: const Text('Change Email'),
+                child: Text(AppLocalizations.of(context).changeEmail),
               ),
               helpText: 'Your profile and contact information',
             ),
@@ -368,7 +373,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 final did = ref.watch(myDidProvider).asData?.value;
                 return _settingsRow(
                   icon: Iconsax.document_copy,
-                  label: did == null ? 'No DID yet' : _shortDid(did),
+                  label: did == null
+                      ? AppLocalizations.of(context).literalnoDidYet
+                      : _shortDid(did),
                   trailing: did == null
                       ? null
                       : TextButton(
@@ -377,20 +384,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                             if (!context.mounted) return;
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('DID copied to clipboard'),
+                                content: Text(
+                                  AppLocalizations.of(context).didCopied,
+                                ),
                               ),
                             );
                           },
-                          child: const Text('Copy'),
+                          child: Text(AppLocalizations.of(context).copy),
                         ),
                   helpText: 'Your Decentralized Identifier',
                 );
               },
             ),
             Divider(
-                height: 1,
-                thickness: 0.33,
-                color: scheme.onSurface.withOpacity(0.1)),
+              height: 1,
+              thickness: 0.33,
+              color: scheme.onSurface.withOpacity(0.1),
+            ),
 
             // Privacy & Safety.
             //
@@ -403,7 +413,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             _groupHeader('Privacy & Safety'),
             _settingsRow(
               icon: Iconsax.key_copy,
-              label: 'Password & Login',
+              label: AppLocalizations.of(context).literalpasswordLogin,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsPasswordLogin),
@@ -411,22 +421,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.text_block_copy,
-              label: 'Muted words and tags',
+              label: AppLocalizations.of(context).mutedWordsAndTags,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.mutedWords),
               helpText: 'Keep posts containing these out of your feed',
             ),
             _settingsRow(
               icon: Iconsax.volume_slash_copy,
-              label: 'Muted and blocked accounts',
+              label: AppLocalizations.of(
+                context,
+              ).literalmutedAndBlockedAccounts,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.mutedAccounts),
               helpText: 'Who you have muted or blocked',
             ),
             Divider(
-                height: 1,
-                thickness: 0.33,
-                color: scheme.onSurface.withOpacity(0.1)),
+              height: 1,
+              thickness: 0.33,
+              color: scheme.onSurface.withOpacity(0.1),
+            ),
 
             // Preferences: how the app behaves for this reader, on this
             // device. Was "Content & Display" and "App & Device", which split
@@ -443,7 +456,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.text_copy,
-              label: 'Font Size',
+              label: AppLocalizations.of(context).literalfontSize,
               subtitle: AppPreferences.labelForScale(
                 ref.watch(preferencesProvider).textScale,
               ),
@@ -463,7 +476,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.notification_copy,
-              label: 'Push Notifications',
+              label: AppLocalizations.of(context).literalpushNotifications,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsNotifications),
@@ -480,7 +493,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // location access" granted nothing and denied nothing.
             _settingsRow(
               icon: Iconsax.save_add_copy,
-              label: 'Data Saver',
+              label: AppLocalizations.of(context).literaldataSaver,
               trailing: KyronToggle(
                 value: ref.watch(preferencesProvider).dataSaver,
                 onChanged: (value) =>
@@ -490,15 +503,16 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Stop videos playing by themselves as you scroll',
             ),
             Divider(
-                height: 1,
-                thickness: 0.33,
-                color: scheme.onSurface.withOpacity(0.1)),
+              height: 1,
+              thickness: 0.33,
+              color: scheme.onSurface.withOpacity(0.1),
+            ),
 
             // Help & Support Group (3 items)
             _groupHeader('Help & Support'),
             _settingsRow(
               icon: Iconsax.info_circle_copy,
-              label: 'Help Centre',
+              label: AppLocalizations.of(context).helpCentre,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => AppBrowser.open(
                 context,
@@ -509,7 +523,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.call_copy,
-              label: 'Contact Support',
+              label: AppLocalizations.of(context).literalcontactSupport,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsContactSupport),
@@ -517,7 +531,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.message_edit_copy,
-              label: 'Send Feedback',
+              label: AppLocalizations.of(context).literalsendFeedback,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsFeedback),
@@ -525,15 +539,16 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.info_circle_copy,
-              label: 'About',
+              label: AppLocalizations.of(context).about,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.about),
               helpText: 'Version, policies, status and the system log',
             ),
             Divider(
-                height: 1,
-                thickness: 0.33,
-                color: scheme.onSurface.withOpacity(0.1)),
+              height: 1,
+              thickness: 0.33,
+              color: scheme.onSurface.withOpacity(0.1),
+            ),
 
             // Danger Zone (1 item)
             const SizedBox(height: 20),
@@ -541,20 +556,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                      color: scheme.error.withValues(alpha: 0.3), width: 1),
+                    color: scheme.error.withValues(alpha: 0.3),
+                    width: 1,
+                  ),
                 ),
               ),
               child: _settingsRow(
                 icon: Iconsax.logout_copy,
-                label: 'Log Out',
+                label: AppLocalizations.of(context).logOut,
                 subtitle: _handle,
                 trailing: _loggingOut
                     ? const SizedBox.square(
                         dimension: 20,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : const Icon(Iconsax.arrow_right_3_copy,
-                        size: 20, color: Colors.red),
+                    : const Icon(
+                        Iconsax.arrow_right_3_copy,
+                        size: 20,
+                        color: Colors.red,
+                      ),
                 // Null while signing out, so a second tap cannot start another
                 // sign-out over the top of the first.
                 onTap: _loggingOut ? null : _showLogoutConfirmation,

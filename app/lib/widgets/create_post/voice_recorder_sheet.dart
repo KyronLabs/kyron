@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 // lib/widgets/create_post/voice_recorder_sheet.dart
 import 'dart:async';
 import 'dart:io';
@@ -91,9 +92,11 @@ class _SheetState extends State<_Sheet> {
     setState(() => _failure = null);
 
     if (!await _recorder.hasPermission()) {
-      setState(() => _failure =
-          'Kyron needs permission to use the microphone to record a voice '
-              'post. You can grant it in your device settings.');
+      setState(
+        () => _failure =
+            'Kyron needs permission to use the microphone to record a voice '
+            'post. You can grant it in your device settings.',
+      );
       return;
     }
 
@@ -125,8 +128,9 @@ class _SheetState extends State<_Sheet> {
       ..reset()
       ..start();
 
-    _amplitudes =
-        _recorder.onAmplitudeChanged(_sampleEvery).listen(_onAmplitude);
+    _amplitudes = _recorder
+        .onAmplitudeChanged(_sampleEvery)
+        .listen(_onAmplitude);
     _ticker = Timer.periodic(const Duration(milliseconds: 200), (_) {
       if (!mounted) return;
       setState(() => _elapsed = _clockRun.elapsed);
@@ -225,19 +229,16 @@ class _SheetState extends State<_Sheet> {
           Row(
             children: [
               Expanded(
-                child: Text(
-                  switch (_stage) {
-                    _Stage.idle => 'Record a voice post',
-                    _Stage.recording => 'Recording…',
-                    _Stage.recorded => 'Ready to attach',
-                  },
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                child: Text(switch (_stage) {
+                  _Stage.idle => 'Record a voice post',
+                  _Stage.recording => 'Recording…',
+                  _Stage.recorded => 'Ready to attach',
+                }, style: Theme.of(context).textTheme.titleMedium),
               ),
               if (_stage != _Stage.recording)
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Cancel'),
+                  child: Text(AppLocalizations.of(context).cancel),
                 ),
             ],
           ),
@@ -272,46 +273,48 @@ class _SheetState extends State<_Sheet> {
               _failure!,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: TypographyTokens.fontSize2, color: scheme.error),
+                fontSize: TypographyTokens.fontSize2,
+                color: scheme.error,
+              ),
             ),
           ],
           const SizedBox(height: SpacingTokens.space20),
           switch (_stage) {
             _Stage.idle => ActionButton(
-                label: 'Start recording',
-                icon: Iconsax.microphone_copy,
-                expand: true,
-                onPressed: _start,
-              ),
+              label: AppLocalizations.of(context).literalstartRecording,
+              icon: Iconsax.microphone_copy,
+              expand: true,
+              onPressed: _start,
+            ),
             _Stage.recording => ActionButton(
-                label: 'Stop',
-                icon: Iconsax.stop,
-                expand: true,
-                destructive: true,
-                onPressed: _stop,
-              ),
+              label: 'Stop',
+              icon: Iconsax.stop,
+              expand: true,
+              destructive: true,
+              onPressed: _stop,
+            ),
             _Stage.recorded => Row(
-                children: [
-                  Expanded(
-                    child: ActionButton(
-                      label: 'Record again',
-                      icon: Iconsax.refresh_copy,
-                      kind: ActionButtonKind.outlined,
-                      expand: true,
-                      onPressed: _discard,
-                    ),
+              children: [
+                Expanded(
+                  child: ActionButton(
+                    label: AppLocalizations.of(context).literalrecordAgain,
+                    icon: Iconsax.refresh_copy,
+                    kind: ActionButtonKind.outlined,
+                    expand: true,
+                    onPressed: _discard,
                   ),
-                  const SizedBox(width: SpacingTokens.space12),
-                  Expanded(
-                    child: ActionButton(
-                      label: 'Attach',
-                      icon: Iconsax.tick_circle_copy,
-                      expand: true,
-                      onPressed: _use,
-                    ),
+                ),
+                const SizedBox(width: SpacingTokens.space12),
+                Expanded(
+                  child: ActionButton(
+                    label: 'Attach',
+                    icon: Iconsax.tick_circle_copy,
+                    expand: true,
+                    onPressed: _use,
                   ),
-                ],
-              ),
+                ),
+              ],
+            ),
           },
         ],
       ),

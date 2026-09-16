@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/edit_profile_screen.dart
 import 'dart:io';
 
@@ -57,7 +58,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Edit profile'),
+        title: Text(AppLocalizations.of(context).editProfile),
         actions: [
           TextButton(
             onPressed: _saving || !state.hasValue ? null : _save,
@@ -66,7 +67,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     dimension: 18,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                : const Text('Save'),
+                : Text(AppLocalizations.of(context).save),
           ),
         ],
       ),
@@ -101,14 +102,27 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     onPickCover: () => _upload(ImageSlot.cover),
                   ),
                   const SizedBox(height: SpacingTokens.space24),
-                  _field(_name, 'Display name', Iconsax.user_copy,
-                      maxLength: 50),
+                  _field(
+                    _name,
+                    'Display name',
+                    Iconsax.user_copy,
+                    maxLength: 50,
+                  ),
                   const SizedBox(height: SpacingTokens.space16),
-                  _field(_bio, 'Bio', Iconsax.note_text_copy,
-                      maxLength: 300, maxLines: 4),
+                  _field(
+                    _bio,
+                    'Bio',
+                    Iconsax.note_text_copy,
+                    maxLength: 300,
+                    maxLines: 4,
+                  ),
                   const SizedBox(height: SpacingTokens.space16),
-                  _field(_location, 'Location', Iconsax.location_copy,
-                      maxLength: 80),
+                  _field(
+                    _location,
+                    'Location',
+                    Iconsax.location_copy,
+                    maxLength: 80,
+                  ),
                   const SizedBox(height: SpacingTokens.space16),
                   _field(
                     _website,
@@ -177,7 +191,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     if (maxLines <= 1) return Icon(icon, size: size);
 
     final style = Theme.of(context).textTheme.bodyLarge;
-    final line = MediaQuery.textScalerOf(context).scale(style?.fontSize ?? 16) *
+    final line =
+        MediaQuery.textScalerOf(context).scale(style?.fontSize ?? 16) *
         (style?.height ?? 1.2);
 
     return Padding(
@@ -228,7 +243,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       if (!mounted) return;
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Profile updated')),
+        const SnackBar(
+          content: Text(AppLocalizations.of(context).profileUpdated),
+        ),
       );
     } catch (e) {
       _report(describeApiError(e, sessionIsLive: true));
@@ -239,8 +256,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
 
   void _report(String message) {
     if (!mounted) return;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 }
 
@@ -260,7 +278,10 @@ class _Failed extends StatelessWidget {
           children: [
             Text(message, textAlign: TextAlign.center),
             const SizedBox(height: SpacingTokens.space16),
-            TextButton(onPressed: onRetry, child: const Text('Try again')),
+            TextButton(
+              onPressed: onRetry,
+              child: Text(AppLocalizations.of(context).tryAgain),
+            ),
           ],
         ),
       ),

@@ -8,8 +8,11 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../services/gif_search.dart';
+
 import 'toast.dart';
 import 'empty_state.dart';
+
+import '../l10n/app_localizations.dart';
 
 /// Picking a GIF. Returns the path of the downloaded file, ready to attach.
 ///
@@ -107,7 +110,7 @@ class _SheetState extends State<_Sheet> {
                 enabled: GifSearch.isConfigured,
                 onChanged: _query,
                 decoration: const InputDecoration(
-                  hintText: 'Search GIFs',
+                  hintText: AppLocalizations.of(context).searchGIFs,
                   prefixIcon: Icon(Iconsax.search_normal_1_copy, size: 18),
                   isDense: true,
                 ),
@@ -146,8 +149,9 @@ class _SheetState extends State<_Sheet> {
       return const EmptyState(
         compact: true,
         art: EmptyArt.noMatch,
-        title: 'GIFs are not set up',
-        detail: 'This build has no GIPHY_API_KEY, so the GIF library cannot '
+        title: AppLocalizations.of(context).literalgifsAreNotSetUp,
+        detail:
+            'This build has no GIPHY_API_KEY, so the GIF library cannot '
             'be searched. Pass one at build time to turn this on.',
       );
     }
@@ -155,7 +159,7 @@ class _SheetState extends State<_Sheet> {
     if (_error != null) {
       return EmptyState.failed(
         compact: true,
-        title: 'Could not load GIFs',
+        title: AppLocalizations.of(context).literalcouldNotLoadGifs,
         detail: _error!,
         onAction: () => _load(_controller.text),
       );
@@ -164,7 +168,7 @@ class _SheetState extends State<_Sheet> {
       return const EmptyState(
         compact: true,
         art: EmptyArt.noMatch,
-        title: 'Nothing found',
+        title: AppLocalizations.of(context).literalnothingFound,
         detail: 'Try a different search.',
       );
     }
@@ -229,7 +233,10 @@ class _SheetState extends State<_Sheet> {
     } catch (_) {
       if (!mounted) return;
       setState(() => _downloading = null);
-      Toast.show(context, 'That GIF could not be downloaded.');
+      Toast.show(
+        context,
+        AppLocalizations.of(context).literalthatGifCouldNotBeDownloaded,
+      );
     }
   }
 }

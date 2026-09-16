@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/onboard_step1_screen.dart
 import 'dart:io';
 
@@ -59,16 +60,16 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
   Future<void> _chooseCover() async {
     final choice = await ActionSheet.show<_CoverSource>(
       context,
-      title: 'Cover photo',
+      title: AppLocalizations.of(context).literalcoverPhoto,
       actions: const [
         SheetAction(
           value: _CoverSource.gallery,
-          label: 'Choose from gallery',
+          label: AppLocalizations.of(context).literalchooseFromGallery,
           icon: Iconsax.gallery_copy,
         ),
         SheetAction(
           value: _CoverSource.random,
-          label: 'Use one of ours',
+          label: AppLocalizations.of(context).literaluseOneOfOurs,
           icon: Iconsax.shuffle_copy,
           detail: 'A picture from Kyron, if you have not got one in mind',
         ),
@@ -116,8 +117,9 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
   /* ---------- navigation ---------- */
   void _report(String message) {
     if (!mounted) return;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   Future<void> _next() async {
@@ -201,7 +203,9 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
     final cover = widget.model.localCoverPath;
 
     return GradientScaffold(
-      appBar: KyronAppBar(title: const Text('Create your profile')),
+      appBar: KyronAppBar(
+        title: Text(AppLocalizations.of(context).createYourProfile),
+      ),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(SpacingTokens.space20),
@@ -219,7 +223,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
               uploading: _isLoading ? ImageSlot.cover : null,
               onPickAvatar: _pickAvatar,
               onPickCover: _chooseCover,
-              hint: 'Tap to add a photo and a cover',
+              hint: AppLocalizations.of(context).literaltapToAddAPhotoAndACover,
             ),
             const SizedBox(height: SpacingTokens.space24),
             _field(
@@ -239,7 +243,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
             ),
             const SizedBox(height: SpacingTokens.space32),
             AppButton(
-              label: 'Continue',
+              label: AppLocalizations.of(context).continueAction,
               isLoading: _isLoading,
               enabled: _canProceed,
               onTap: _next,

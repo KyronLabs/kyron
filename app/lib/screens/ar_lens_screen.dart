@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/ar_lens_screen.dart
 import 'dart:async';
 import 'dart:io';
@@ -179,7 +180,8 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     if (!PlatformSupport.current.camera) {
       setState(() {
         _opening = false;
-        _problem = 'The lens camera is not on '
+        _problem =
+            'The lens camera is not on '
             '${PlatformSupport.current.name} yet.';
       });
       return;
@@ -234,7 +236,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         // system settings and one not at all.
         _problem = error.code == 'CameraAccessDenied'
             ? 'Kyron does not have permission to use the camera. You can '
-                'grant it in your device settings.'
+                  'grant it in your device settings.'
             : 'The camera would not open.';
       });
     } catch (error) {
@@ -310,10 +312,13 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     _adjustingExposure = true;
     // Not awaited in a frame callback: the camera is on the platform thread
     // and the next frame is already on its way.
-    controller.setExposureOffset(wanted).catchError((Object error) {
-      AppLog.instance.error('ar', 'Could not set the exposure: $error');
-      return 0.0;
-    }).whenComplete(() => _adjustingExposure = false);
+    controller
+        .setExposureOffset(wanted)
+        .catchError((Object error) {
+          AppLog.instance.error('ar', 'Could not set the exposure: $error');
+          return 0.0;
+        })
+        .whenComplete(() => _adjustingExposure = false);
   }
 
   /// Fetches the artwork for the lenses in the strip, so each tile can show
@@ -359,7 +364,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       // Said out loud rather than left as a lens that quietly does nothing.
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Face tracking is not available on this device.'),
+          content: Text(AppLocalizations.of(context).faceTrackingUnavailable),
         ),
       );
       return;
@@ -496,7 +501,9 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       AppLog.instance.error('ar', 'Could not take the picture: $error');
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Could not take that picture.')),
+        const SnackBar(
+          content: Text(AppLocalizations.of(context).couldNotTakePicture),
+        ),
       );
     } finally {
       if (mounted) setState(() => _capturing = false);
@@ -520,8 +527,9 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     final filtered = await widget.renderer.apply(decoded, _lens);
     // Effects first, attachments over them -- the order the preview stacks
     // them in, because it is the same picture.
-    final changed =
-        effects.isEmpty ? filtered : await _drawEffects(filtered, effects);
+    final changed = effects.isEmpty
+        ? filtered
+        : await _drawEffects(filtered, effects);
     final drawn = attachments.isEmpty
         ? changed
         : await _drawAttachments(changed, attachments);
@@ -683,13 +691,13 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
             onPressed: () => Navigator.pop(context),
             tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           ),
-          title: const Text('AR Lens'),
+          title: Text(AppLocalizations.of(context).arLens),
           actions: [
             if (_cameras.length > 1)
               IconButton(
                 icon: const Icon(Iconsax.refresh_copy),
                 onPressed: _opening ? null : _flip,
-                tooltip: 'Switch camera',
+                tooltip: AppLocalizations.of(context).literalswitchCamera,
               ),
           ],
         ),
@@ -717,7 +725,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       return Center(
         child: EmptyState(
           art: EmptyArt.lens,
-          title: 'The camera is closed',
+          title: AppLocalizations.of(context).literaltheCameraIsClosed,
           detail: _problem!,
           action: 'Try again',
           onAction: _open,
@@ -817,16 +825,13 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
   /// The same face, in the coordinates of a box of a different size.
   static FaceAnchor _scaled(FaceAnchor face, Size scale) => FaceAnchor(
-        centre: Offset(
-          face.centre.dx * scale.width,
-          face.centre.dy * scale.height,
-        ),
-        // One number for a measurement that has two axes: a preview stretched
-        // unevenly would make the choice matter, and the preview is drawn at
-        // the camera's own aspect ratio precisely so it is not.
-        interpupillary: face.interpupillary * scale.width,
-        rollDegrees: face.rollDegrees,
-      );
+    centre: Offset(face.centre.dx * scale.width, face.centre.dy * scale.height),
+    // One number for a measurement that has two axes: a preview stretched
+    // unevenly would make the choice matter, and the preview is drawn at
+    // the camera's own aspect ratio precisely so it is not.
+    interpupillary: face.interpupillary * scale.width,
+    rollDegrees: face.rollDegrees,
+  );
 
   Widget _shutter() {
     final ready = _controller != null && _problem == null && !_opening;
@@ -835,7 +840,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space20),
       child: Semantics(
         button: true,
-        label: 'Take a picture',
+        label: AppLocalizations.of(context).literaltakeAPicture,
         child: GestureDetector(
           onTap: ready && !_capturing ? _capture : null,
           child: Container(
@@ -926,8 +931,9 @@ class _LensStrip extends StatelessWidget {
           height: _tile + SpacingTokens.space8,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            padding:
-                const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space16,
+            ),
             itemCount: lenses.length,
             separatorBuilder: (_, __) =>
                 const SizedBox(width: SpacingTokens.space8),
@@ -1052,8 +1058,10 @@ class _LensTile extends StatelessWidget {
             child: FractionalTranslation(
               translation: const Offset(0, 0.1),
               child: SizedBox(
-                width: (size * 0.22 * artwork.first.attachment.width)
-                    .clamp(size * 0.2, size * 0.9),
+                width: (size * 0.22 * artwork.first.attachment.width).clamp(
+                  size * 0.2,
+                  size * 0.9,
+                ),
                 child: RawImage(
                   image: artwork.first.image,
                   fit: BoxFit.contain,

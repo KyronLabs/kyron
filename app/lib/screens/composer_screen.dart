@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/composer_screen.dart
 import 'dart:async';
 
@@ -189,7 +190,11 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
             tooltip: 'Close',
             onPressed: _close,
           ),
-          title: Text(state.quoting == null ? 'New post' : 'Quote post'),
+          title: Text(
+            state.quoting == null
+                ? AppLocalizations.of(context).newPost
+                : AppLocalizations.of(context).quotePost,
+          ),
           actions: [
             _DraftsButton(count: _draftCount, onTap: _openDrafts),
             const SizedBox(width: SpacingTokens.space4),
@@ -209,7 +214,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
               // `busy` is the same spinner, swapped in without the button
               // changing size.
               child: ActionButton(
-                label: 'Post',
+                label: AppLocalizations.of(context).post,
                 compact: true,
                 busy: state.isPosting,
                 onPressed: state.canPost ? _handlePost : null,
@@ -227,7 +232,8 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
                 )
               else if (state.onlyFailedMedia)
                 const _ErrorBanner(
-                  message: 'Those attachments did not upload. Tap one to try '
+                  message:
+                      'Those attachments did not upload. Tap one to try '
                       'again, or remove it.',
                 ),
               Expanded(
@@ -243,8 +249,9 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
                       _composerField(scheme),
                       MediaTray(
                         media: state.media,
-                        onRemove:
-                            ref.read(composerProvider.notifier).removeMedia,
+                        onRemove: ref
+                            .read(composerProvider.notifier)
+                            .removeMedia,
                         onRetry: ref.read(composerProvider.notifier).retryMedia,
                         onDescribe: _describe,
                       ),
@@ -286,9 +293,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
       onChanged: ref.read(composerProvider.notifier).updateContent,
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.4),
       decoration: InputDecoration(
-        hintText: ref.watch(
-          composerProvider.select((s) => s.placeholderText),
-        ),
+        hintText: ref.watch(composerProvider.select((s) => s.placeholderText)),
         hintStyle: TextStyle(color: scheme.onSurface.withValues(alpha: .5)),
         border: InputBorder.none,
         focusedBorder: InputBorder.none,
@@ -316,31 +321,33 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
           const SizedBox(width: SpacingTokens.space8),
           _tool(
             icon: Iconsax.gallery_copy,
-            tooltip: 'Add a photo',
+            tooltip: AppLocalizations.of(context).literaladdAPhoto,
             enabled: state.canAddMedia,
             onTap: () => _addMedia(video: false),
           ),
           _tool(
             icon: Iconsax.video_copy,
-            tooltip: 'Add a video',
+            tooltip: AppLocalizations.of(context).literaladdAVideo,
             enabled: state.canAddMedia,
             onTap: () => _addMedia(video: true),
           ),
           _tool(
             icon: Iconsax.emoji_happy_copy,
-            tooltip: 'Add a GIF',
+            tooltip: AppLocalizations.of(context).literaladdAGif,
             enabled: state.canAddMedia,
             onTap: _addGif,
           ),
           _tool(
             icon: Iconsax.microphone_copy,
-            tooltip: 'Record a voice post',
+            tooltip: AppLocalizations.of(context).literalrecordAVoicePost,
             enabled: !state.hasVoice,
             onTap: _recordVoice,
           ),
           _tool(
             icon: Iconsax.chart_2_copy,
-            tooltip: state.hasPoll ? 'Remove the poll' : 'Add a poll',
+            tooltip: state.hasPoll
+                ? AppLocalizations.of(context).literalremoveThePoll
+                : AppLocalizations.of(context).literaladdAPoll,
             // Not disabled with attachments present -- it swaps to a poll and
             // clears them, which the notifier does deliberately. Greying it
             // out would leave no way to change your mind.
@@ -350,12 +357,12 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
           const VerticalDivider(indent: 14, endIndent: 14, width: 8),
           _tool(
             icon: Iconsax.hashtag_copy,
-            tooltip: 'Add a hashtag',
+            tooltip: AppLocalizations.of(context).literaladdAHashtag,
             onTap: () => _insert('#'),
           ),
           _tool(
             icon: Iconsax.tag_user_copy,
-            tooltip: 'Tag someone',
+            tooltip: AppLocalizations.of(context).literaltagSomeone,
             onTap: _tagSomeone,
           ),
         ],
@@ -386,8 +393,9 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
   }
 
   Future<void> _addMedia({required bool video}) async {
-    final message =
-        await ref.read(composerProvider.notifier).addMedia(video: video);
+    final message = await ref
+        .read(composerProvider.notifier)
+        .addMedia(video: video);
     if (message != null && mounted) {
       Toast.show(context, message);
     }
@@ -426,8 +434,9 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
   /// in a half-typed mention the picker opens on it and replaces it.
   Future<void> _tagSomeone() async {
     final value = _textController.value;
-    final caret =
-        value.selection.isValid ? value.selection.end : value.text.length;
+    final caret = value.selection.isValid
+        ? value.selection.end
+        : value.text.length;
     final typing = mentionAt(value.text, caret);
 
     final handle = await MentionPickerSheet.show(
@@ -507,7 +516,11 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
         notifier.clear();
         if (!mounted) return;
         Navigator.pop(context);
-        Toast.show(context, 'Draft saved', icon: Iconsax.archive_tick);
+        Toast.show(
+          context,
+          AppLocalizations.of(context).literaldraftSaved,
+          icon: Iconsax.archive_tick,
+        );
       case DraftChoice.discard:
         await notifier.discardDraft();
         if (mounted) Navigator.pop(context);
@@ -583,7 +596,9 @@ class _DraftsButton extends StatelessWidget {
       child: Text(
         count == 0 ? 'Drafts' : 'Drafts ($count)',
         style: const TextStyle(
-            fontSize: TypographyTokens.fontSize2, fontWeight: FontWeight.w600),
+          fontSize: TypographyTokens.fontSize2,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
@@ -600,8 +615,9 @@ class _AuthorLine extends ConsumerWidget {
         CircleAvatar(
           radius: 18,
           backgroundColor: scheme.primary.withValues(alpha: 0.2),
-          foregroundImage:
-              user?.avatarUrl == null ? null : NetworkImage(user!.avatarUrl!),
+          foregroundImage: user?.avatarUrl == null
+              ? null
+              : NetworkImage(user!.avatarUrl!),
           child: Icon(Iconsax.user_copy, size: 18, color: scheme.primary),
         ),
         const SizedBox(width: SpacingTokens.space12),
@@ -637,19 +653,26 @@ class _ErrorBanner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(Iconsax.warning_2_copy,
-              size: 18, color: scheme.onErrorContainer),
+          Icon(
+            Iconsax.warning_2_copy,
+            size: 18,
+            color: scheme.onErrorContainer,
+          ),
           const SizedBox(width: SpacingTokens.space8),
           Expanded(
             child: Text(
               message,
               style: TextStyle(
-                  fontSize: TypographyTokens.fontSize2,
-                  color: scheme.onErrorContainer),
+                fontSize: TypographyTokens.fontSize2,
+                color: scheme.onErrorContainer,
+              ),
             ),
           ),
           if (onRetry != null)
-            TextButton(onPressed: onRetry, child: const Text('Retry')),
+            TextButton(
+              onPressed: onRetry,
+              child: Text(AppLocalizations.of(context).retry),
+            ),
         ],
       ),
     );

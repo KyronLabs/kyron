@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/widgets/password_input_field.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -59,10 +60,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       decoration: InputDecoration(
         labelText: widget.label,
         hintText: widget.hint,
-        suffixIconConstraints: const BoxConstraints(
-          minWidth: 40,
-          minHeight: 0,
-        ),
+        suffixIconConstraints: const BoxConstraints(minWidth: 40, minHeight: 0),
         suffixIcon: Padding(
           padding: const EdgeInsets.only(right: 6),
           child: IconButton(
@@ -71,7 +69,9 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
             visualDensity: VisualDensity.compact,
-            tooltip: _obscure ? 'Show password' : 'Hide password',
+            tooltip: _obscure
+                ? AppLocalizations.of(context).literalshowPassword
+                : AppLocalizations.of(context).literalhidePassword,
             icon: Icon(
               _obscure ? Iconsax.eye_slash_copy : Iconsax.eye_copy,
               color: scheme.onSurface.withValues(alpha: 0.55),

@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/help_screen.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -27,7 +28,7 @@ class HelpScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Help & Support'),
+        title: Text(AppLocalizations.of(context).helpAndSupport),
       ),
       body: SafeArea(
         child: ListView(
@@ -35,8 +36,8 @@ class HelpScreen extends StatelessWidget {
             _group(context, 'Get help'),
             ListTile(
               leading: const Icon(Iconsax.book_copy, size: 20),
-              title: const Text('Help Centre'),
-              subtitle: const Text('Guides and answers to common questions'),
+              title: Text(AppLocalizations.of(context).helpCentre),
+              subtitle: Text(AppLocalizations.of(context).guidesAndAnswers),
               trailing: const Icon(Iconsax.export_3_copy, size: 16),
               onTap: () => AppBrowser.open(
                 context,
@@ -46,16 +47,16 @@ class HelpScreen extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Iconsax.call_copy, size: 20),
-              title: const Text('Contact support'),
-              subtitle: const Text('Reach a person'),
+              title: Text(AppLocalizations.of(context).contactSupport),
+              subtitle: Text(AppLocalizations.of(context).reachAPerson),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsContactSupport),
             ),
             ListTile(
               leading: const Icon(Iconsax.message_edit_copy, size: 20),
-              title: const Text('Send feedback'),
-              subtitle: const Text('Tell us what is missing or broken'),
+              title: Text(AppLocalizations.of(context).sendFeedback),
+              subtitle: Text(AppLocalizations.of(context).tellMissingBroken),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsFeedback),
@@ -68,15 +69,15 @@ class HelpScreen extends StatelessWidget {
             _group(context, 'Something is broken'),
             ListTile(
               leading: const Icon(Iconsax.status_up_copy, size: 20),
-              title: const Text('Service status'),
-              subtitle: const Text('Check whether Kyron is reachable'),
+              title: Text(AppLocalizations.of(context).serviceStatus),
+              subtitle: Text(AppLocalizations.of(context).checkKyronReachable),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () => Navigator.pushNamed(context, Routes.aboutStatus),
             ),
             ListTile(
               leading: const Icon(Iconsax.warning_2_copy, size: 20),
-              title: const Text('Send error report'),
-              subtitle: const Text('Share the app log with support'),
+              title: Text(AppLocalizations.of(context).sendErrorReport),
+              subtitle: Text(AppLocalizations.of(context).shareAppLog),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.aboutErrorReport),
@@ -91,15 +92,21 @@ class HelpScreen extends StatelessWidget {
               leading: const Icon(Iconsax.document_text_copy, size: 20),
               title: const Text(LegalLinks.termsTitle),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
-              onTap: () => AppBrowser.open(context, LegalLinks.terms,
-                  title: LegalLinks.termsTitle),
+              onTap: () => AppBrowser.open(
+                context,
+                LegalLinks.terms,
+                title: LegalLinks.termsTitle,
+              ),
             ),
             ListTile(
               leading: const Icon(Iconsax.shield_tick_copy, size: 20),
               title: const Text(LegalLinks.privacyTitle),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
-              onTap: () => AppBrowser.open(context, LegalLinks.privacy,
-                  title: LegalLinks.privacyTitle),
+              onTap: () => AppBrowser.open(
+                context,
+                LegalLinks.privacy,
+                title: LegalLinks.privacyTitle,
+              ),
             ),
             const SizedBox(height: SpacingTokens.space40),
           ],
@@ -109,20 +116,19 @@ class HelpScreen extends StatelessWidget {
   }
 
   Widget _group(BuildContext context, String title) => Padding(
-        padding: const EdgeInsets.only(
-          left: SpacingTokens.space20,
-          top: SpacingTokens.space24,
-          bottom: SpacingTokens.space8,
-        ),
-        child: Text(
-          title.toUpperCase(),
-          style: TextStyle(
-            fontSize: TypographyTokens.fontSize1,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.8,
-            color:
-                Theme.of(context).colorScheme.onSurface.withValues(alpha: .5),
-          ),
-        ),
-      );
+    padding: const EdgeInsets.only(
+      left: SpacingTokens.space20,
+      top: SpacingTokens.space24,
+      bottom: SpacingTokens.space8,
+    ),
+    child: Text(
+      title.toUpperCase(),
+      style: TextStyle(
+        fontSize: TypographyTokens.fontSize1,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0.8,
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .5),
+      ),
+    ),
+  );
 }

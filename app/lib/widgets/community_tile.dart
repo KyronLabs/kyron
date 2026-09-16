@@ -12,6 +12,7 @@ import '../models/community.dart';
 import '../providers/communities_provider.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import '../l10n/app_localizations.dart';
 import 'action_button.dart';
 import 'toast.dart';
 
@@ -159,10 +160,10 @@ class _Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CommunityAvatar(
-        avatarUrl: community.avatarUrl,
-        initial: community.name.trim().isEmpty
-            ? '#'
-            : community.name.trim()[0].toUpperCase(),
-        size: 48,
-      );
+    avatarUrl: community.avatarUrl,
+    initial: community.name.trim().isEmpty
+        ? '#'
+        : community.name.trim()[0].toUpperCase(),
+    size: 48,
+  );
 }

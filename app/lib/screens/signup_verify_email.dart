@@ -11,6 +11,8 @@ import '../models/onboarding_model.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/kyron_app_bar.dart';
 
+import '../l10n/app_localizations.dart';
+
 class SignupVerifyEmailScreen extends StatefulWidget {
   final String email;
 
@@ -107,15 +109,21 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
 
   void _resendCode() {
     _startCountdown();
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("Verification code resent.")));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          AppLocalizations.of(context).literalverificationCodeResent,
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return GradientScaffold(
-      appBar: KyronAppBar(title: const Text("Verify Email")),
+      appBar: KyronAppBar(
+        title: Text(AppLocalizations.of(context).literalverifyEmail),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(SpacingTokens.space20),
         child: Column(
@@ -152,10 +160,9 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                     onChanged: (value) => _onDigitChanged(i, value),
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge
-                        ?.copyWith(fontSize: TypographyTokens.fontSize8),
+                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                      fontSize: TypographyTokens.fontSize8,
+                    ),
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: KyronTheme.lightSurface,
@@ -189,14 +196,15 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
               child: _canResend
                   ? TextButton(
                       onPressed: _resendCode,
-                      child: const Text("Resend code"),
+                      child: Text(
+                        AppLocalizations.of(context).literalresendCode,
+                      ),
                     )
                   : Text(
                       "Resend code in $_countdown seconds",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: KyronTheme.lightTextSecondary),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: KyronTheme.lightTextSecondary,
+                      ),
                     ),
             ),
           ],

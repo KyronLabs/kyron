@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/widgets/post_actions_row.dart
 import 'dart:async';
 
@@ -8,6 +9,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/feed_post.dart';
 import '../utils/format_count.dart';
+
 import 'like_burst.dart';
 import 'post_action_colors.dart';
 
@@ -56,20 +58,22 @@ class PostActionsRow extends StatelessWidget {
           label: showCounts && post.comments > 0
               ? formatCount(post.comments)
               : null,
-          tooltip: 'Reply',
+          tooltip: AppLocalizations.of(context).reply,
           onTap: onReply,
         ),
         const SizedBox(width: SpacingTokens.space20),
         PostAction(
           // Outline until you act on it, filled once you have -- so the state
           // reads at a glance instead of only by colour.
-          icon:
-              post.reposted ? Iconsax.repeat_circle_copy : Iconsax.repeat_copy,
-          label:
-              showCounts && post.reposts > 0 ? formatCount(post.reposts) : null,
+          icon: post.reposted
+              ? Iconsax.repeat_circle_copy
+              : Iconsax.repeat_copy,
+          label: showCounts && post.reposts > 0
+              ? formatCount(post.reposts)
+              : null,
           active: post.reposted,
           activeColor: PostActionColors.repost,
-          tooltip: 'Repost',
+          tooltip: AppLocalizations.of(context).repost,
           onTap: onRepost,
         ),
         const SizedBox(width: SpacingTokens.space20),
@@ -87,7 +91,9 @@ class PostActionsRow extends StatelessWidget {
           icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,
           active: post.saved,
           activeColor: PostActionColors.save,
-          tooltip: post.saved ? 'Remove from saved' : 'Save',
+          tooltip: post.saved
+              ? AppLocalizations.of(context).literalremoveFromSaved
+              : AppLocalizations.of(context).save,
           onTap: onSave,
         ),
         const SizedBox(width: SpacingTokens.space12),
@@ -253,7 +259,9 @@ class _PostActionState extends State<PostAction>
                     widget.label!,
                     key: ValueKey(widget.label),
                     style: TextStyle(
-                        fontSize: TypographyTokens.fontSize1, color: colour),
+                      fontSize: TypographyTokens.fontSize1,
+                      color: colour,
+                    ),
                   ),
                 ),
               ],

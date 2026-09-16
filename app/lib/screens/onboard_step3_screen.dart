@@ -11,6 +11,8 @@ import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/kyron_app_bar.dart';
 
+import '../l10n/app_localizations.dart';
+
 class OnboardStep3Screen extends ConsumerStatefulWidget {
   final OnboardingModel model;
   const OnboardStep3Screen({super.key, required this.model});
@@ -115,7 +117,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KyronAppBar(
-        title: const Text("Discover people"),
+        title: Text(AppLocalizations.of(context).literaldiscoverPeople),
         actions: [TextButton(onPressed: _finish, child: const Text("Skip"))],
       ),
       body: Padding(

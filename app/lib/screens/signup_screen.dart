@@ -16,6 +16,7 @@ import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 import '../utils/validators.dart';
 import '../widgets/kyron_app_bar.dart';
+
 import '../l10n/app_localizations.dart';
 
 class SignupScreen extends StatefulWidget {

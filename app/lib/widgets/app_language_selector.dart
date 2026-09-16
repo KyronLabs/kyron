@@ -3,7 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../providers/preferences_provider.dart';
+
 import 'language_sheet.dart';
+
+import '../l10n/app_localizations.dart';
 
 /// The language picker on the get-started screen.
 ///
@@ -26,7 +29,7 @@ class AppLanguageSelector extends ConsumerWidget {
         // with three languages of its own and no way to save any of them.
         final chosen = await LanguageSheet.pickOne(
           context,
-          title: 'App language',
+          title: AppLocalizations.of(context).literalappLanguage,
           current: selected,
         );
         if (chosen != null) {

@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/widgets/comment_tile.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +10,7 @@ import '../models/feed_post.dart' show FeedAuthor;
 import '../models/post_comment.dart';
 import 'action_sheet.dart';
 import '../utils/format_count.dart';
+
 import 'media_grid.dart';
 import 'post_card.dart' show PostAvatar, age, openAuthor;
 import 'post_text.dart';
@@ -91,7 +93,7 @@ class CommentTile extends StatelessWidget {
             const SizedBox(width: SpacingTokens.space20),
             _Action(
               icon: Iconsax.message_copy,
-              label: 'Reply',
+              label: AppLocalizations.of(context).reply,
               count: comment.replies,
               onTap: onReply,
             ),
@@ -222,24 +224,24 @@ class _Overflow extends StatelessWidget {
       actions: [
         const SheetAction(
           value: CommentAction.openThread,
-          label: 'Open reply',
+          label: AppLocalizations.of(context).literalopenReply,
           icon: Iconsax.message_text_copy,
         ),
         const SheetAction(
           value: CommentAction.copy,
-          label: 'Copy text',
+          label: AppLocalizations.of(context).literalcopyText,
           icon: Iconsax.copy_copy,
         ),
         if (!comment.mine)
           const SheetAction(
             value: CommentAction.report,
-            label: 'Report',
+            label: AppLocalizations.of(context).report,
             icon: Iconsax.flag_copy,
           ),
         if (comment.mine)
           const SheetAction(
             value: CommentAction.delete,
-            label: 'Delete',
+            label: AppLocalizations.of(context).delete,
             icon: Iconsax.trash_copy,
             destructive: true,
           ),
@@ -313,7 +315,9 @@ class _Action extends StatelessWidget {
                 Text(
                   formatCount(count),
                   style: TextStyle(
-                      fontSize: TypographyTokens.fontSize1, color: colour),
+                    fontSize: TypographyTokens.fontSize1,
+                    color: colour,
+                  ),
                 ),
               ],
             ],
@@ -333,9 +337,9 @@ class CommentAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: () => openAuthor(context, comment.author),
-        child: PostAvatar(author: comment.author, radius: size / 2),
-      );
+    onTap: () => openAuthor(context, comment.author),
+    child: PostAvatar(author: comment.author, radius: size / 2),
+  );
 }
 
 /// The row that opens a folded run of replies.
@@ -436,10 +440,7 @@ class ThreadMoreReplies extends StatelessWidget {
                   // separate people rather than one smudge.
                   border: Border.all(color: scheme.surface, width: 1.5),
                 ),
-                child: PostAvatar(
-                  author: shown[i],
-                  radius: (faceSize - 3) / 2,
-                ),
+                child: PostAvatar(author: shown[i], radius: (faceSize - 3) / 2),
               ),
             ),
           // Beside the faces, not over them: the point is that these are the

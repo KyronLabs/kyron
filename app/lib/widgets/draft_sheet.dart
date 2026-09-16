@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../l10n/app_localizations.dart';
+
 /// What to do with a post that is being abandoned.
 enum DraftChoice { save, discard, keepEditing }
 
@@ -22,7 +24,7 @@ class DraftSheet {
           children: [
             ListTile(
               leading: const Icon(Iconsax.archive_add_copy, size: 20),
-              title: const Text('Save draft'),
+              title: Text(AppLocalizations.of(context).saveDraft),
               subtitle: const Text(
                 'Keep the text and come back to it',
                 style: TextStyle(fontSize: TypographyTokens.fontSize1),
@@ -49,7 +51,7 @@ class DraftSheet {
             ),
             ListTile(
               leading: const Icon(Iconsax.edit_2_copy, size: 20),
-              title: const Text('Keep editing'),
+              title: Text(AppLocalizations.of(context).keepEditing),
               onTap: () => Navigator.pop(sheetContext, DraftChoice.keepEditing),
             ),
             const SizedBox(height: SpacingTokens.space8),

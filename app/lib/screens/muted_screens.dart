@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/muted_screens.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -62,7 +63,7 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Muted words and tags'),
+        title: Text(AppLocalizations.of(context).mutedWordsAndTags),
       ),
       body: SafeArea(
         child: Column(
@@ -90,7 +91,9 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                           enabled: !_busy,
                           onSubmitted: (_) => _add(),
                           decoration: const InputDecoration(
-                            hintText: 'A word, phrase or #tag',
+                            hintText: AppLocalizations.of(
+                              context,
+                            ).aWordPhraseOrTag,
                             isDense: true,
                           ),
                         ),
@@ -98,7 +101,7 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                       const SizedBox(width: SpacingTokens.space8),
                       FilledButton(
                         onPressed: _busy ? null : _add,
-                        child: const Text('Mute'),
+                        child: Text(AppLocalizations.of(context).mute),
                       ),
                     ],
                   ),
@@ -113,36 +116,37 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                 child: Text(
                   _error!,
                   style: TextStyle(
-                      color: scheme.error,
-                      fontSize: TypographyTokens.fontSize2),
+                    color: scheme.error,
+                    fontSize: TypographyTokens.fontSize2,
+                  ),
                 ),
               ),
             Expanded(
               child: words == null
                   ? const Center(child: CircularProgressIndicator())
                   : words.isEmpty
-                      ? const EmptyState(
-                          art: EmptyArt.muted,
-                          title: 'Nothing muted',
-                          detail: 'Add a word or a tag above. Posts carrying '
-                              'it stay out of your feed.',
-                        )
-                      : ListView.separated(
-                          itemCount: words.length,
-                          separatorBuilder: (_, __) => Divider(
-                            height: 1,
-                            color: scheme.outline.withValues(alpha: 0.15),
-                          ),
-                          itemBuilder: (context, index) => ListTile(
-                            title: Text(words[index]),
-                            trailing: IconButton(
-                              icon: const Icon(Iconsax.close_circle_copy,
-                                  size: 18),
-                              tooltip: 'Unmute',
-                              onPressed: () => _remove(words[index]),
-                            ),
-                          ),
+                  ? const EmptyState(
+                      art: EmptyArt.muted,
+                      title: AppLocalizations.of(context).literalnothingMuted,
+                      detail:
+                          'Add a word or a tag above. Posts carrying '
+                          'it stay out of your feed.',
+                    )
+                  : ListView.separated(
+                      itemCount: words.length,
+                      separatorBuilder: (_, __) => Divider(
+                        height: 1,
+                        color: scheme.outline.withValues(alpha: 0.15),
+                      ),
+                      itemBuilder: (context, index) => ListTile(
+                        title: Text(words[index]),
+                        trailing: IconButton(
+                          icon: const Icon(Iconsax.close_circle_copy, size: 18),
+                          tooltip: 'Unmute',
+                          onPressed: () => _remove(words[index]),
                         ),
+                      ),
+                    ),
             ),
           ],
         ),
@@ -200,9 +204,12 @@ class _MutedAccountsScreenState extends ConsumerState<MutedAccountsScreen> {
             onPressed: () => Navigator.pop(context),
             tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           ),
-          title: const Text('Muted and blocked'),
+          title: Text(AppLocalizations.of(context).mutedAndBlocked),
           bottom: const TabBar(
-            tabs: [Tab(text: 'Muted'), Tab(text: 'Blocked')],
+            tabs: [
+              Tab(text: 'Muted'),
+              Tab(text: 'Blocked'),
+            ],
           ),
         ),
         body: SafeArea(
@@ -269,7 +276,7 @@ class _PeopleState extends State<_People> {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return EmptyState.failed(
-            title: 'Could not load this list',
+            title: AppLocalizations.of(context).literalcouldNotLoadThisList,
             detail: describeApiError(snapshot.error!, sessionIsLive: true),
             onAction: _reload,
           );
@@ -289,10 +296,8 @@ class _PeopleState extends State<_People> {
 
         return ListView.separated(
           itemCount: people.length,
-          separatorBuilder: (_, __) => Divider(
-            height: 1,
-            color: scheme.outline.withValues(alpha: 0.15),
-          ),
+          separatorBuilder: (_, __) =>
+              Divider(height: 1, color: scheme.outline.withValues(alpha: 0.15)),
           itemBuilder: (context, index) {
             final person = people[index];
             return ListTile(

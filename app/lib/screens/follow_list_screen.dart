@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/follow_list_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -43,14 +44,13 @@ class FollowListState {
     String? error,
     bool clearError = false,
     bool clearCursor = false,
-  }) =>
-      FollowListState(
-        people: people ?? this.people,
-        cursor: clearCursor ? null : (cursor ?? this.cursor),
-        loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
-        loadingMore: loadingMore ?? this.loadingMore,
-        error: clearError ? null : (error ?? this.error),
-      );
+  }) => FollowListState(
+    people: people ?? this.people,
+    cursor: clearCursor ? null : (cursor ?? this.cursor),
+    loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
+    loadingMore: loadingMore ?? this.loadingMore,
+    error: clearError ? null : (error ?? this.error),
+  );
 }
 
 class FollowListNotifier extends StateNotifier<FollowListState> {
@@ -120,13 +120,17 @@ class FollowListNotifier extends StateNotifier<FollowListState> {
   }
 }
 
-final followListProvider = StateNotifierProvider.family<FollowListNotifier,
-    FollowListState, FollowListArgs>((ref, args) {
-  return FollowListNotifier(
-    ProfileRepository(ref.read(apiClientProvider)),
-    args,
-  );
-});
+final followListProvider =
+    StateNotifierProvider.family<
+      FollowListNotifier,
+      FollowListState,
+      FollowListArgs
+    >((ref, args) {
+      return FollowListNotifier(
+        ProfileRepository(ref.read(apiClientProvider)),
+        args,
+      );
+    });
 
 /// Who follows an account, or who it follows.
 class FollowListScreen extends ConsumerStatefulWidget {
@@ -173,7 +177,11 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: Text(widget.args.followers ? 'Followers' : 'Following'),
+        title: Text(
+          widget.args.followers
+              ? AppLocalizations.of(context).followers
+              : AppLocalizations.of(context).following,
+        ),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(20),
           child: Padding(
@@ -189,10 +197,9 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: TypographyTokens.fontSize2,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.6),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.6),
                 ),
               ),
             ),
@@ -217,7 +224,7 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
       // scrollable under it, and a centred column is not.
       if (failed) {
         return EmptyState.failed(
-          title: 'Could not load this list',
+          title: AppLocalizations.of(context).literalcouldNotLoadThisList,
           detail: state.error,
           onAction: notifier.refresh,
         ).scrollable;

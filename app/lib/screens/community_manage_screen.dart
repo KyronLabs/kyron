@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/community_manage_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -66,11 +67,7 @@ class _CommunityManageScreenState extends ConsumerState<CommunityManageScreen>
         children: [
           SectionTabs(
             controller: _tabs,
-            labels: [
-              'Details',
-              'Members',
-              if (_canModerate) 'Removed',
-            ],
+            labels: ['Details', 'Members', if (_canModerate) 'Removed'],
           ),
           Expanded(
             child: TabBarView(
@@ -110,8 +107,9 @@ class _Details extends ConsumerStatefulWidget {
 
 class _DetailsState extends ConsumerState<_Details> {
   late final _name = TextEditingController(text: widget.community.name);
-  late final _description =
-      TextEditingController(text: widget.community.description ?? '');
+  late final _description = TextEditingController(
+    text: widget.community.description ?? '',
+  );
   final _picker = ImagePicker();
 
   /// Held here rather than in a text box. These are photographs, and nobody
@@ -143,9 +141,9 @@ class _DetailsState extends ConsumerState<_Details> {
 
     setState(() => _uploading = slot);
     try {
-      final uploaded = await ref.read(feedRepositoryProvider).uploadMedia(
-            PendingMedia(path: picked.path, kind: MediaKind.image),
-          );
+      final uploaded = await ref
+          .read(feedRepositoryProvider)
+          .uploadMedia(PendingMedia(path: picked.path, kind: MediaKind.image));
       final url = uploaded.url;
       // An upload that answered without a URL has not stored anything, and
       // saving the old one silently would look like the pick did nothing.
@@ -171,7 +169,9 @@ class _DetailsState extends ConsumerState<_Details> {
     if (_saving) return;
     setState(() => _saving = true);
     try {
-      final updated = await ref.read(communitiesRepositoryProvider).update(
+      final updated = await ref
+          .read(communitiesRepositoryProvider)
+          .update(
             widget.community.slug,
             name: _name.text.trim(),
             description: _description.text.trim(),
@@ -201,11 +201,11 @@ class _DetailsState extends ConsumerState<_Details> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Close it'),
+            child: Text(AppLocalizations.of(context).closeIt),
           ),
         ],
       ),
@@ -237,7 +237,7 @@ class _DetailsState extends ConsumerState<_Details> {
       return const EmptyState(
         compact: true,
         art: EmptyArt.communities,
-        title: 'Only the owner can change this',
+        title: AppLocalizations.of(context).literalonlyTheOwnerCanChangeThis,
         detail: 'You can still see who is in it and remove people.',
       ).scrollable;
     }
@@ -251,7 +251,9 @@ class _DetailsState extends ConsumerState<_Details> {
           uploading: _uploading,
           onPickAvatar: () => _pick(ImageSlot.avatar),
           onPickCover: () => _pick(ImageSlot.cover),
-          hint: 'Tap the banner or the picture to change it',
+          hint: AppLocalizations.of(
+            context,
+          ).literaltapTheBannerOrThePictureToChangeIt,
         ),
         const SizedBox(height: SpacingTokens.space24),
         TextField(
@@ -275,7 +277,7 @@ class _DetailsState extends ConsumerState<_Details> {
                   dimension: 18,
                   child: CircularProgressIndicator(strokeWidth: 2),
                 )
-              : const Text('Save'),
+              : Text(AppLocalizations.of(context).save),
         ),
         const SizedBox(height: SpacingTokens.space32),
         const Hairline(),
@@ -301,7 +303,7 @@ class _DetailsState extends ConsumerState<_Details> {
         OutlinedButton(
           onPressed: _close,
           style: OutlinedButton.styleFrom(foregroundColor: scheme.error),
-          child: const Text('Close this community'),
+          child: Text(AppLocalizations.of(context).closeThisCommunity),
         ),
       ],
     );
@@ -341,11 +343,11 @@ class _MembersState extends ConsumerState<_Members> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Remove'),
+            child: Text(AppLocalizations.of(context).remove),
           ),
         ],
       ),
@@ -384,7 +386,7 @@ class _MembersState extends ConsumerState<_Members> {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return EmptyState.failed(
-            title: 'Could not load the members',
+            title: AppLocalizations.of(context).literalcouldNotLoadTheMembers,
             detail: describeApiError(snapshot.error!, sessionIsLive: true),
             onAction: _reload,
           ).scrollable;
@@ -396,7 +398,7 @@ class _MembersState extends ConsumerState<_Members> {
         if (members.isEmpty) {
           return const EmptyState(
             art: EmptyArt.people,
-            title: 'Nobody here yet',
+            title: AppLocalizations.of(context).literalnobodyHereYet,
             detail: 'People who join show up on this list.',
           ).scrollable;
         }
@@ -438,7 +440,8 @@ class _MemberRow extends StatelessWidget {
     final role = member.role;
     // The owner is nobody's to act on, and neither is a moderator unless you
     // are the owner. Showing a menu that only refuses is worse than none.
-    final actionable = canModerate &&
+    final actionable =
+        canModerate &&
         role != CommunityRole.owner &&
         (canEdit || role == CommunityRole.member);
 
@@ -450,8 +453,9 @@ class _MemberRow extends StatelessWidget {
       leading: CircleAvatar(
         radius: 20,
         backgroundColor: scheme.primary.withValues(alpha: 0.15),
-        foregroundImage:
-            member.avatarUrl == null ? null : NetworkImage(member.avatarUrl!),
+        foregroundImage: member.avatarUrl == null
+            ? null
+            : NetworkImage(member.avatarUrl!),
         child: Icon(Iconsax.user_copy, size: 18, color: scheme.primary),
       ),
       title: Text(
@@ -459,7 +463,9 @@ class _MemberRow extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: const TextStyle(
-            fontWeight: FontWeight.w600, fontSize: TypographyTokens.fontSize3),
+          fontWeight: FontWeight.w600,
+          fontSize: TypographyTokens.fontSize3,
+        ),
       ),
       subtitle: Text(
         [
@@ -490,19 +496,25 @@ class _MemberRow extends StatelessWidget {
                     if (canEdit && role == CommunityRole.member)
                       const SheetAction(
                         value: 'promote',
-                        label: 'Make a moderator',
+                        label: AppLocalizations.of(
+                          context,
+                        ).literalmakeAModerator,
                         icon: Iconsax.shield_tick_copy,
                         detail: 'They can remove posts and members',
                       ),
                     if (canEdit && role == CommunityRole.moderator)
                       const SheetAction(
                         value: 'demote',
-                        label: 'Remove as moderator',
+                        label: AppLocalizations.of(
+                          context,
+                        ).literalremoveAsModerator,
                         icon: Iconsax.shield_cross_copy,
                       ),
                     const SheetAction(
                       value: 'remove',
-                      label: 'Remove from community',
+                      label: AppLocalizations.of(
+                        context,
+                      ).literalremoveFromCommunity,
                       icon: Iconsax.user_minus_copy,
                       destructive: true,
                     ),
@@ -562,7 +574,7 @@ class _RemovedState extends ConsumerState<_Removed> {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return EmptyState.failed(
-            title: 'Could not load this list',
+            title: AppLocalizations.of(context).literalcouldNotLoadThisList,
             detail: describeApiError(snapshot.error!, sessionIsLive: true),
             onAction: _reload,
           ).scrollable;
@@ -574,8 +586,9 @@ class _RemovedState extends ConsumerState<_Removed> {
         if (removed.isEmpty) {
           return const EmptyState(
             art: EmptyArt.muted,
-            title: 'Nobody has been removed',
-            detail: 'People you remove show up here, and you can let them '
+            title: AppLocalizations.of(context).literalnobodyHasBeenRemoved,
+            detail:
+                'People you remove show up here, and you can let them '
                 'back in from this list.',
           ).scrollable;
         }
@@ -602,7 +615,7 @@ class _RemovedState extends ConsumerState<_Removed> {
               subtitle: member.handle == null ? null : Text(member.handle!),
               trailing: TextButton(
                 onPressed: () => _unban(member),
-                child: const Text('Let back in'),
+                child: Text(AppLocalizations.of(context).letBackIn),
               ),
             );
           },

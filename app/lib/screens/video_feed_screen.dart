@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/screens/video_feed_screen.dart
 import 'dart:async';
 
@@ -135,9 +136,9 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen>
 
   /// The posts in this list that carry a clip, in order.
   List<FeedPost> _clipsIn(FeedState state) => [
-        for (final post in state.posts)
-          if (post.media.any((m) => m.isVideo)) post,
-      ];
+    for (final post in state.posts)
+      if (post.media.any((m) => m.isVideo)) post,
+  ];
 
   /// The clip a page shows: the first video on that post.
   PostMedia _clipOf(FeedPost post) => post.media.firstWhere((m) => m.isVideo);
@@ -369,7 +370,9 @@ class _Message extends StatelessWidget {
               text,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                  color: Colors.white70, fontSize: TypographyTokens.fontSize3),
+                color: Colors.white70,
+                fontSize: TypographyTokens.fontSize3,
+              ),
             ),
           ),
         ),
@@ -555,9 +558,7 @@ class _PageState extends ConsumerState<_Page>
             _Still(media: widget.media),
 
           if (widget.opening)
-            const Center(
-              child: CircularProgressIndicator(color: Colors.white),
-            ),
+            const Center(child: CircularProgressIndicator(color: Colors.white)),
 
           if (widget.failure != null)
             Center(
@@ -567,8 +568,9 @@ class _PageState extends ConsumerState<_Page>
                   widget.failure!,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                      color: Colors.white70,
-                      fontSize: TypographyTokens.fontSize3),
+                    color: Colors.white70,
+                    fontSize: TypographyTokens.fontSize3,
+                  ),
                 ),
               ),
             ),
@@ -646,8 +648,8 @@ class _HeartBurst extends StatelessWidget {
             final opacity = t < 0.1
                 ? t * 10
                 : t > 0.7
-                    ? (1 - t) / 0.3
-                    : 1.0;
+                ? (1 - t) / 0.3
+                : 1.0;
             return Opacity(
               opacity: opacity.clamp(0.0, 1.0),
               child: Transform.scale(scale: scale, child: child),
@@ -783,18 +785,15 @@ class _Rail extends ConsumerWidget {
       _RailButton(
         icon: Iconsax.message_text_copy,
         label: post.comments > 0 ? formatCount(post.comments) : null,
-        tooltip: 'Reply',
-        onTap: () => Navigator.pushNamed(
-          context,
-          Routes.postDetail,
-          arguments: post.id,
-        ),
+        tooltip: AppLocalizations.of(context).reply,
+        onTap: () =>
+            Navigator.pushNamed(context, Routes.postDetail, arguments: post.id),
       ),
       _RailButton(
         icon: post.reposted ? Iconsax.repeat_circle_copy : Iconsax.repeat_copy,
         label: post.reposts > 0 ? formatCount(post.reposts) : null,
         colour: post.reposted ? PostActionColors.repost : Colors.white,
-        tooltip: 'Repost',
+        tooltip: AppLocalizations.of(context).repost,
         onTap: () => RepostSheet.show(
           context,
           post: post,
@@ -804,7 +803,9 @@ class _Rail extends ConsumerWidget {
       _RailButton(
         icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,
         colour: post.saved ? PostActionColors.save : Colors.white,
-        tooltip: post.saved ? 'Remove from saved' : 'Save',
+        tooltip: post.saved
+            ? AppLocalizations.of(context).literalremoveFromSaved
+            : AppLocalizations.of(context).save,
         onTap: () => report(context, notifier.toggleSave(post.id)),
       ),
       _RailButton(
@@ -814,18 +815,16 @@ class _Rail extends ConsumerWidget {
       ),
       _RailButton(
         icon: muted ? Iconsax.volume_slash : Iconsax.volume_high,
-        tooltip: muted ? 'Turn sound on' : 'Turn sound off',
+        tooltip: muted
+            ? AppLocalizations.of(context).literalturnSoundOn
+            : AppLocalizations.of(context).literalturnSoundOff,
         onTap: ref.read(videoMutedProvider.notifier).toggle,
       ),
       _RailButton(
         icon: Iconsax.more_copy,
         tooltip: 'More',
-        onTap: () => PostOptionsSheet.show(
-          context,
-          ref,
-          post: post,
-          source: source,
-        ),
+        onTap: () =>
+            PostOptionsSheet.show(context, ref, post: post, source: source),
       ),
     ];
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/stories_provider.dart';
+import '../l10n/app_localizations.dart';
 import 'story_pill.dart';
 import 'story_viewer.dart';
 
@@ -57,8 +58,10 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
                 ),
                 child: Container(
                   height: 110,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   child: ListView.builder(
                     controller: _ribbonController,
                     scrollDirection: Axis.horizontal,
@@ -76,7 +79,8 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
                         status: story.status,
                         onTap: () => _handleTap(context, story),
                         onLongPress: () => _showProfilePreview(context, story),
-                        onSwipeLeft: story.isYourStory &&
+                        onSwipeLeft:
+                            story.isYourStory &&
                                 story.status == StoryStatus.uploading
                             ? () => _cancelUpload(context, story)
                             : () => _hideStory(context, story),
@@ -202,10 +206,8 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
       Navigator.push(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => StoryViewer(
-            initialStory: story,
-            allStories: [story],
-          ),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              StoryViewer(initialStory: story, allStories: [story]),
           transitionDuration: MotionTokens.micro,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(opacity: animation, child: child);
@@ -246,18 +248,16 @@ class _SnapScrollPhysics extends ScrollPhysics {
 
   @override
   Simulation? createBallisticSimulation(
-      ScrollMetrics position, double velocity) {
+    ScrollMetrics position,
+    double velocity,
+  ) {
     const tolerance = Tolerance.defaultTolerance;
     final target = _getTargetPixel(position);
 
     if ((target - position.pixels).abs() < tolerance.distance) return null;
 
     return ScrollSpringSimulation(
-      const SpringDescription(
-        mass: 0.5,
-        stiffness: 100.0,
-        damping: 10.0,
-      ),
+      const SpringDescription(mass: 0.5, stiffness: 100.0, damping: 10.0),
       position.pixels,
       target,
       velocity,
@@ -287,16 +287,10 @@ class _ProfilePreviewSheet extends StatelessWidget {
       decoration: BoxDecoration(
         color: scheme.surface,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: scheme.outline.withOpacity(0.2),
-          width: 1,
-        ),
+        border: Border.all(color: scheme.outline.withOpacity(0.2), width: 1),
       ),
       child: Center(
-        child: Text(
-          '@$handle',
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
+        child: Text('@$handle', style: Theme.of(context).textTheme.titleLarge),
       ),
     );
   }
