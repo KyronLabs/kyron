@@ -369,7 +369,7 @@ class _UnknownRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KyronAppBar(title: const Text('Page not found')),
+      appBar: KyronAppBar(title: Text('Page not found')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(32),

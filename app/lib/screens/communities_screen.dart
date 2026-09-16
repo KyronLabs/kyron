@@ -316,7 +316,7 @@ class _DiscoverTabState extends ConsumerState<_DiscoverTab> {
         ),
         Expanded(
           child: state.loadingFirstPage
-              ? const Center(child: CircularProgressIndicator())
+              ? Center(child: CircularProgressIndicator())
               : RefreshIndicator(
                   onRefresh: notifier.refresh,
                   child: state.items.isEmpty
@@ -447,7 +447,7 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Start a community',
             style: TextStyle(
               fontSize: TypographyTokens.fontSize5,

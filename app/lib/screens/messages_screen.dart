@@ -285,7 +285,7 @@ class _ConversationRow extends StatelessWidget {
             context: context,
             builder: (context) => AlertDialog(
               title: Text(AppLocalizations.of(context).removeConversation),
-              content: const Text(
+              content: Text(
                 'It disappears from your list. The other person keeps theirs, '
                 'and it comes back if either of you writes again.',
               ),

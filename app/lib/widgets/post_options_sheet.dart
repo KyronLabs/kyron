@@ -302,7 +302,7 @@ class _OptionsState extends ConsumerState<_Options> {
       context: context,
       builder: (dialogContext) => AlertDialog(
         title: Text(AppLocalizations.of(context).deleteThisPost),
-        content: const Text(
+        content: Text(
           'It is removed from your profile and from everyone else\'s feed. '
           'Replies to it go with it.',
         ),
@@ -336,7 +336,7 @@ class _OptionsState extends ConsumerState<_Options> {
       context: context,
       builder: (dialogContext) => AlertDialog(
         title: Text('Block $author?'),
-        content: const Text(
+        content: Text(
           'Neither of you will see the other on Kyron, and any follow between '
           'you is removed. They are not told.',
         ),

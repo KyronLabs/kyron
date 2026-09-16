@@ -126,7 +126,7 @@ class _TrendingTab extends ConsumerWidget {
     final notifier = ref.read(trendingProvider.notifier);
 
     if (state.loading) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(child: CircularProgressIndicator());
     }
 
     return RefreshIndicator(
@@ -226,7 +226,7 @@ class _TopicsTab extends ConsumerWidget {
     final notifier = ref.read(topicsProvider.notifier);
 
     if (state.loading) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(child: CircularProgressIndicator());
     }
 
     return RefreshIndicator(

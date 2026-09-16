@@ -73,7 +73,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         ],
       ),
       body: state.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => Center(child: CircularProgressIndicator()),
         error: (e, _) => _Failed(
           message: describeApiError(e, sessionIsLive: true),
           onRetry: () => ref.read(currentUserProvider.notifier).refresh(),

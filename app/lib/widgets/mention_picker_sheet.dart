@@ -254,7 +254,7 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
     }
 
     if (_query.text.trim().length < _minimum) {
-      return const _Notice(
+      return _Notice(
         icon: Iconsax.tag_user_copy,
         title: AppLocalizations.of(context).literalwhoDoYouWantToTag,
         detail: 'Type at least two characters of a name or a handle.',
@@ -355,7 +355,7 @@ class _Notice extends StatelessWidget {
   final String? action;
   final VoidCallback? onAction;
 
-  const _Notice({
+  _Notice({
     required this.icon,
     required this.title,
     required this.detail,

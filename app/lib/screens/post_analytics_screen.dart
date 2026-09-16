@@ -69,7 +69,7 @@ class PostAnalyticsScreen extends ConsumerWidget {
       ),
       body: SafeArea(
         child: state.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => Center(child: CircularProgressIndicator()),
           error: (error, _) => _Failed(
             message: '$error',
             onRetry: ref.read(postAnalyticsProvider(postId).notifier).load,

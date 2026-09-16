@@ -736,7 +736,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
     final controller = _controller;
     if (_opening || controller == null || !controller.value.isInitialized) {
-      return const Center(
+      return Center(
         child: CircularProgressIndicator(color: Colors.white),
       );
     }
@@ -1079,7 +1079,7 @@ class _LensTile extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           base,
-          const Center(
+          Center(
             child: Icon(Iconsax.gallery, size: 18, color: Colors.white70),
           ),
         ],

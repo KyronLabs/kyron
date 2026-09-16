@@ -74,7 +74,7 @@ class CommunityScreen extends ConsumerWidget {
       body: Stack(
         children: [
           if (state.loading)
-            const Center(child: CircularProgressIndicator())
+            Center(child: CircularProgressIndicator())
           else if (community == null)
             SafeArea(
               child: EmptyState.failed(
@@ -244,7 +244,7 @@ class CommunityScreen extends ConsumerWidget {
           context: context,
           builder: (dialogContext) => AlertDialog(
             title: Text('Leave ${community.name}?'),
-            content: const Text(
+            content: Text(
               'Its posts will stop appearing in your feed. You can join '
               'again at any time.',
             ),

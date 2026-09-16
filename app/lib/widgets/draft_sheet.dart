@@ -25,7 +25,7 @@ class DraftSheet {
             ListTile(
               leading: const Icon(Iconsax.archive_add_copy, size: 20),
               title: Text(AppLocalizations.of(context).saveDraft),
-              subtitle: const Text(
+              subtitle: Text(
                 'Keep the text and come back to it',
                 style: TextStyle(fontSize: TypographyTokens.fontSize1),
               ),
@@ -43,7 +43,7 @@ class DraftSheet {
                   color: Theme.of(sheetContext).colorScheme.error,
                 ),
               ),
-              subtitle: const Text(
+              subtitle: Text(
                 'Throw away what you have written',
                 style: TextStyle(fontSize: TypographyTokens.fontSize1),
               ),

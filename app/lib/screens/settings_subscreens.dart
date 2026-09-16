@@ -768,14 +768,14 @@ class _SettingsFeedbackScreenState
     final scheme = Theme.of(context).colorScheme;
 
     if (_available == null) {
-      return const SettingsScaffold(
+      return SettingsScaffold(
         title: AppLocalizations.of(context).literalsendFeedback,
         child: Center(child: CircularProgressIndicator()),
       );
     }
 
     if (_available == false) {
-      return const SettingsScaffold(
+      return SettingsScaffold(
         title: AppLocalizations.of(context).literalsendFeedback,
         child: EmptyState(
           art: EmptyArt.messages,

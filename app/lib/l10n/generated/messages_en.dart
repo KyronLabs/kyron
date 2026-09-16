@@ -292,7 +292,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
     'The camera is closed',
   ),
   'literaltakeAPicture': MessageLookupByLibrary.simpleMessage('Take a picture'),
-  'literallensNameFaceLens': (Object lens) => '${lens.name}, face lens',
+  'literallensNameFaceLens': (dynamic lens) => '${lens.name}, face lens',
   'literalcouldNotPostThatReply': MessageLookupByLibrary.simpleMessage(
     'Could not post that reply.',
   ),
@@ -316,12 +316,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
   'literalcouldNotLoadCommunities': MessageLookupByLibrary.simpleMessage(
     'Could not load communities',
   ),
-  'literalpostInWidgetCommunityName': (Object widget) =>
+  'literalpostInWidgetCommunityName': (dynamic widget) =>
       'Post in ${widget.community.name}',
-  'literalsaySomethingToWidgetCommunityName': (Object widget) =>
+  'literalsaySomethingToWidgetCommunityName': (dynamic widget) =>
       'Say something to ${widget.community.name}',
   'literaltagSomeone': MessageLookupByLibrary.simpleMessage('Tag someone'),
-  'literalcloseWidgetCommunityName': (Object widget) =>
+  'literalcloseWidgetCommunityName': (dynamic widget) =>
       'Close ${widget.community.name}?',
   'literalonlyTheOwnerCanChangeThis': MessageLookupByLibrary.simpleMessage(
     'Only the owner can change this',
@@ -330,7 +330,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       MessageLookupByLibrary.simpleMessage(
         'Tap the banner or the picture to change it',
       ),
-  'literalremoveMemberDisplayname': (Object member) =>
+  'literalremoveMemberDisplayname': (dynamic member) =>
       'Remove ${member.displayName}?',
   'literalcouldNotLoadTheMembers': MessageLookupByLibrary.simpleMessage(
     'Could not load the members',
@@ -353,7 +353,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
   'literalnobodyHasBeenRemoved': MessageLookupByLibrary.simpleMessage(
     'Nobody has been removed',
   ),
-  'literalpostInCommunityName': (Object community) =>
+  'literalpostInCommunityName': (dynamic community) =>
       'Post in ${community.name}',
   'literalcouldNotOpenThisCommunity': MessageLookupByLibrary.simpleMessage(
     'Could not open this community',
@@ -366,8 +366,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
   ),
   'literalcopyLink': MessageLookupByLibrary.simpleMessage('Copy link'),
   'literallinkCopied': MessageLookupByLibrary.simpleMessage('Link copied'),
-  'literalleaveCommunityName': (Object community) => 'Leave ${community.name}?',
-  'literalyouHaveLeftCommunityName': (Object community) =>
+  'literalleaveCommunityName': (dynamic community) => 'Leave ${community.name}?',
+  'literalyouHaveLeftCommunityName': (dynamic community) =>
       'You have left ${community.name}',
   'literaladdAVideo': MessageLookupByLibrary.simpleMessage('Add a video'),
   'literaladdAGif': MessageLookupByLibrary.simpleMessage('Add a GIF'),
@@ -499,9 +499,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
   'literalcontentLanguages': MessageLookupByLibrary.simpleMessage(
     'Content languages',
   ),
-  'literalremoveLanguageEnglishname': (Object language) =>
+  'literalremoveLanguageEnglishname': (dynamic language) =>
       'Remove ${language.englishName}',
-  'literalsentItIsReportFiledNumber': (Object filed) =>
+  'literalsentItIsReportFiledNumber': (dynamic filed) =>
       'Sent. It is report #${filed.number}.',
   'literalfeedbackCannotBeSentRightNow': MessageLookupByLibrary.simpleMessage(
     'Feedback cannot be sent right now',
@@ -549,8 +549,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
   'literalopenReply': MessageLookupByLibrary.simpleMessage('Open reply'),
   'literallabelCount': (Object label, Object count) => '$label, $count',
-  'literalindex1': (Object index) => '${index + 1}',
-  'literalfirstyearIndex': (Object _firstYear) => '$_firstYear',
+  'literalindex1': (dynamic index) => '${index + 1}',
+  'literalfirstyearIndex': (dynamic _firstYear) => '$_firstYear',
   'literalgifsAreNotSetUp': MessageLookupByLibrary.simpleMessage(
     'GIFs are not set up',
   ),
@@ -640,7 +640,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
   ),
   'literalsavedPosts': MessageLookupByLibrary.simpleMessage('Saved posts'),
   'literallikedPosts': MessageLookupByLibrary.simpleMessage('Liked posts'),
-  'literalstoriesRibbonStoriesLengthItems': (Object stories) =>
+  'literalstoriesRibbonStoriesLengthItems': (dynamic stories) =>
       'Stories ribbon, ${stories.length} items',
   'literalwhatYouPostIsYours': MessageLookupByLibrary.simpleMessage(
     'What you post is yours',
@@ -649,14 +649,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
     'What Kyron keeps',
   ),
   'literalhowToBehave': MessageLookupByLibrary.simpleMessage('How to behave'),
-  'literalcloseTabLabel': (Object tab) => 'Close ${tab.label}',
+  'literalcloseTabLabel': (dynamic tab) => 'Close ${tab.label}',
   'literal1PageOpen': MessageLookupByLibrary.simpleMessage('1 page open'),
   'literalcountPagesOpen': (Object count) => '$count pages open',
   'literalstopLoading': MessageLookupByLibrary.simpleMessage('Stop loading'),
   'literalshareThisPage': MessageLookupByLibrary.simpleMessage(
     'Share this page',
   ),
-  'literalnoAppOnThisDeviceOpensUriSchemeLinks': (Object uri) =>
+  'literalnoAppOnThisDeviceOpensUriSchemeLinks': (dynamic uri) =>
       'No app on this device opens ${uri.scheme} links.',
   'literalcloseTheBrowser': MessageLookupByLibrary.simpleMessage(
     'Close the browser',

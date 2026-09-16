@@ -160,7 +160,7 @@ class MediaGrid extends StatelessWidget {
             // Marked, so someone who relies on descriptions can see which
             // attachments carry one.
             if (item.alt != null && item.alt!.trim().isNotEmpty)
-              const Positioned(
+              Positioned(
                 right: 6,
                 bottom: 6,
                 child: _Badge(label: 'ALT'),

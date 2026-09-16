@@ -752,7 +752,7 @@ class _Status extends StatelessWidget {
           foregroundColor: scheme.error,
         ),
         icon: const Icon(Iconsax.refresh, size: 13),
-        label: const Text(
+        label: Text(
           AppLocalizations.of(context).notSentTapRetry,
           style: TextStyle(
             fontSize: TypographyTokens.fontSize1,

@@ -230,7 +230,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
           ),
         ),
         const SizedBox(height: SpacingTokens.space24),
-        const _Step(
+        _Step(
           number: '1',
           title: AppLocalizations.of(context).literalopenTheMailFromKyron,
           detail:
@@ -250,7 +250,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                     'phone with Kyron installed. It is good for one hour and '
                     'one use.',
         ),
-        const _Step(
+        _Step(
           number: '3',
           title: AppLocalizations.of(context).literalsetAPasswordAndCarryOn,
           detail:
@@ -308,7 +308,7 @@ class _Step extends StatelessWidget {
   final String detail;
   final bool last;
 
-  const _Step({
+  _Step({
     required this.number,
     required this.title,
     required this.detail,
@@ -432,7 +432,7 @@ class _Notice extends StatelessWidget {
   final Color tone;
   final String text;
 
-  const _Notice({required this.icon, required this.tone, required this.text});
+  _Notice({required this.icon, required this.tone, required this.text});
 
   @override
   Widget build(BuildContext context) {

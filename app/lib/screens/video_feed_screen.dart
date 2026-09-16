@@ -396,7 +396,7 @@ class _TopBar extends StatelessWidget {
             tooltip: MaterialLocalizations.of(context).backButtonTooltip,
             onPressed: () => Navigator.pop(context),
           ),
-          const Text(
+          Text(
             'Videos',
             style: TextStyle(
               color: Colors.white,
@@ -559,7 +559,7 @@ class _PageState extends ConsumerState<_Page>
             _Still(media: widget.media),
 
           if (widget.opening)
-            const Center(child: CircularProgressIndicator(color: Colors.white)),
+            Center(child: CircularProgressIndicator(color: Colors.white)),
 
           if (widget.failure != null)
             Center(
@@ -579,7 +579,7 @@ class _PageState extends ConsumerState<_Page>
           // Only while stopped, and never while it is still opening -- a play
           // glyph over a spinner says two different things at once.
           if (live && !playing)
-            const Center(
+            Center(
               child: Icon(Iconsax.play, size: 56, color: Colors.white70),
             ),
 

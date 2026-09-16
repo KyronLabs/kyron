@@ -46,12 +46,12 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
           future: _drafts,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator());
             }
 
             final drafts = snapshot.data!;
             if (drafts.isEmpty) {
-              return const Center(
+              return Center(
                 child: EmptyState(
                   art: EmptyArt.drafts,
                   title: AppLocalizations.of(context).literalnoDrafts,

@@ -284,7 +284,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ],
             ),
             const SizedBox(height: 20),
-            const Text(
+            Text(
               AppLocalizations.of(context).logOutQuestion,
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize6,
@@ -292,7 +292,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               "You will need to sign in again to get back to your account.",
             ),
             const SizedBox(height: 24),
@@ -333,7 +333,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           icon: const Icon(Iconsax.arrow_left_copy),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title: Text(
           'Settings',
           style: TextStyle(
             fontSize: TypographyTokens.fontSize5,

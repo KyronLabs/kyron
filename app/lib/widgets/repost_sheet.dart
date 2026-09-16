@@ -63,7 +63,7 @@ class RepostSheet {
             ListTile(
               leading: const Icon(Iconsax.edit_2_copy, size: 20),
               title: Text(AppLocalizations.of(context).quote),
-              subtitle: const Text(
+              subtitle: Text(
                 'Add your own words above it',
                 style: TextStyle(fontSize: TypographyTokens.fontSize1),
               ),

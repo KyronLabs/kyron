@@ -91,7 +91,7 @@ class HelpScreen extends StatelessWidget {
             _group(context, 'Policies'),
             ListTile(
               leading: const Icon(Iconsax.document_text_copy, size: 20),
-              title: const Text(LegalLinks.termsTitle),
+              title: Text(LegalLinks.termsTitle),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () => AppBrowser.open(
                 context,
@@ -101,7 +101,7 @@ class HelpScreen extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Iconsax.shield_tick_copy, size: 20),
-              title: const Text(LegalLinks.privacyTitle),
+              title: Text(LegalLinks.privacyTitle),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
               onTap: () => AppBrowser.open(
                 context,

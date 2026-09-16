@@ -155,7 +155,7 @@ class _SheetState extends State<_Sheet> {
             'be searched. Pass one at build time to turn this on.',
       );
     }
-    if (_loading) return const Center(child: CircularProgressIndicator());
+    if (_loading) return Center(child: CircularProgressIndicator());
     if (_error != null) {
       return EmptyState.failed(
         compact: true,
@@ -205,7 +205,7 @@ class _SheetState extends State<_Sheet> {
                     color: Colors.black.withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: SizedBox.square(
                       dimension: 20,
                       child: CircularProgressIndicator(

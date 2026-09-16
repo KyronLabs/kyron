@@ -88,7 +88,7 @@ class _Tile extends StatelessWidget {
                 color: Colors.black.withValues(alpha: 0.45),
                 borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
               ),
-              child: const Center(
+              child: Center(
                 child: SizedBox.square(
                   dimension: 20,
                   child: CircularProgressIndicator(
@@ -106,7 +106,7 @@ class _Tile extends StatelessWidget {
                   color: scheme.error.withValues(alpha: 0.75),
                   borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
                 ),
-                child: const Center(
+                child: Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -213,7 +213,7 @@ class _Tile extends StatelessWidget {
               ColoredBox(color: scheme.surfaceContainerHighest),
         ),
         if (item.isVideo)
-          const Center(
+          Center(
             child: DecoratedBox(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -268,7 +268,7 @@ Future<String?> askForAltText(BuildContext context, String? current) {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Read out by a screen reader, and shown when the image cannot '
             'load.',
             style: TextStyle(fontSize: TypographyTokens.fontSize2),

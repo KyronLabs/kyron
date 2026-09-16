@@ -172,7 +172,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
         actions: [
           TextButton(
             onPressed: _isLoading ? null : _skip,
-            child: const Text(
+            child: Text(
               'Skip',
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
@@ -213,7 +213,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
 
   Widget _buildOptions(ColorScheme scheme, bool isDark) {
     if (_isLoadingOptions) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(child: CircularProgressIndicator());
     }
 
     if (_loadError != null) {
@@ -233,7 +233,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
     }
 
     if (_options.isEmpty) {
-      return const Center(
+      return Center(
         child: EmptyState(
           compact: true,
           art: EmptyArt.topics,

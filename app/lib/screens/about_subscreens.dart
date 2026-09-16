@@ -46,7 +46,7 @@ class ServiceStatusScreen extends ConsumerWidget {
       ),
       body: SafeArea(
         child: state.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => Center(child: CircularProgressIndicator()),
           error: (error, _) => _Unreachable(
             message: error.toString(),
             onRetry: ref.read(serviceStatusProvider.notifier).check,
@@ -234,7 +234,7 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
             // thing you opened this to read.
             final entries = AppLog.instance.entries.reversed.toList();
             if (entries.isEmpty) {
-              return const Center(
+              return Center(
                 child: EmptyState(
                   compact: true,
                   art: EmptyArt.drafts,

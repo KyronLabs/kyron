@@ -145,7 +145,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       );
     }
     if (state.isSearching && state.results.isEmpty && state.posts.isEmpty) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(child: CircularProgressIndicator());
     }
     if (state.foundNothing) {
       final what = state.query.trim();

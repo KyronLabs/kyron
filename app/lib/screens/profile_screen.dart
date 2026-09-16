@@ -78,7 +78,7 @@ class ProfileScreen extends ConsumerWidget {
         ],
       ),
       body: state.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => Center(child: CircularProgressIndicator()),
         error: (error, _) => _Failed(username: username, error: error),
         data: (profile) => _Loaded(profile: profile, username: username),
       ),

@@ -13,7 +13,7 @@ class SettingsScaffold extends StatelessWidget {
   final String title;
   final Widget child;
 
-  const SettingsScaffold({super.key, required this.title, required this.child});
+  SettingsScaffold({super.key, required this.title, required this.child});
 
   @override
   Widget build(BuildContext context) {

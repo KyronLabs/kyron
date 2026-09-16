@@ -123,7 +123,7 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
               ),
             Expanded(
               child: words == null
-                  ? const Center(child: CircularProgressIndicator())
+                  ? Center(child: CircularProgressIndicator())
                   : words.isEmpty
                   ? EmptyState(
                       art: EmptyArt.muted,

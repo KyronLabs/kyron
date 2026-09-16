@@ -195,7 +195,7 @@ class _DetailsState extends ConsumerState<_Details> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Close ${widget.community.name}?'),
-        content: const Text(
+        content: Text(
           'Nobody can post in it or join it again. Posts already written into '
           'it keep working, so nothing anybody wrote disappears.',
         ),
@@ -336,7 +336,7 @@ class _MembersState extends ConsumerState<_Members> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Remove ${member.displayName}?'),
-        content: const Text(
+        content: Text(
           'They leave the community and cannot rejoin until you let them '
           'back in.',
         ),
@@ -392,7 +392,7 @@ class _MembersState extends ConsumerState<_Members> {
           ).scrollable;
         }
         if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
+          return Center(child: CircularProgressIndicator());
         }
         final members = snapshot.data!.items;
         if (members.isEmpty) {
@@ -577,7 +577,7 @@ class _RemovedState extends ConsumerState<_Removed> {
           ).scrollable;
         }
         if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
+          return Center(child: CircularProgressIndicator());
         }
         final removed = snapshot.data!;
         if (removed.isEmpty) {

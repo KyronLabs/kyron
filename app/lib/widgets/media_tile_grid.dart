@@ -181,7 +181,7 @@ class _Tile extends StatelessWidget {
 
             // Marks a clip on a wall that also carries stills.
             if (media.isVideo)
-              const Positioned(
+              Positioned(
                 right: 8,
                 top: 8,
                 child: _Chip(icon: Iconsax.play, label: 'Video'),
