@@ -121,7 +121,7 @@ void main() {
       // A label with no callback used to render a dead button.
       await tester.pumpWidget(
         _wrap(
-          const EmptyState(
+          EmptyState(
             art: EmptyArt.topics,
             title: 'No topics yet',
             action: 'Refresh',
@@ -157,7 +157,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _wrap(
-          const EmptyState(art: EmptyArt.messages, title: 'No messages yet'),
+          EmptyState(art: EmptyArt.messages, title: 'No messages yet'),
         ),
       );
 
@@ -170,7 +170,7 @@ void main() {
     testWidgets('compact is smaller, not different', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          const Column(
+          Column(
             children: [
               EmptyState(art: EmptyArt.noMatch, title: 'Nothing found'),
               EmptyState(
@@ -197,7 +197,7 @@ void main() {
       // Pull-to-refresh needs something that moves; a Column would not.
       await tester.pumpWidget(
         _wrap(
-          const EmptyState(
+          EmptyState(
             art: EmptyArt.caughtUp,
             title: 'All caught up',
           ).scrollable,

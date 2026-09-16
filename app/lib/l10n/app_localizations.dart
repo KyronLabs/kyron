@@ -28,7 +28,20 @@ class AppLocalizations {
   }
 
   static AppLocalizations of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
+    // Keep lightweight widget trees (including tests and embedded surfaces)
+    // usable when they do not install the app's full localization delegates.
+    final localized = Localizations.of<AppLocalizations>(
+      context,
+      AppLocalizations,
+    );
+    if (localized != null) return localized;
+
+    // The generated message lookup is registered synchronously before the
+    // returned future completes, which makes the English fallback available
+    // during the same build that first asks for it.
+    Intl.defaultLocale ??= 'en';
+    initializeMessages('en');
+    return app_localizations;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =

@@ -14,7 +14,13 @@ enum GoogleAction {
   signUp,
   continueWith;
 
-  String label(BuildContext context) => switch (this) {
+  String get label => switch (this) {
+        GoogleAction.signIn => 'Sign in with Google',
+        GoogleAction.signUp => 'Sign up with Google',
+        GoogleAction.continueWith => 'Continue with Google',
+      };
+
+  String localizedLabel(BuildContext context) => switch (this) {
         GoogleAction.signIn => AppLocalizations.of(context).googleSignIn,
         GoogleAction.signUp => AppLocalizations.of(context).googleSignUp,
         GoogleAction.continueWith =>
@@ -68,7 +74,7 @@ class GoogleButton extends StatelessWidget {
     return Semantics(
       button: true,
       enabled: onTap != null && !isLoading,
-      label: action.label(context),
+      label: action.localizedLabel(context),
       excludeSemantics: true,
       child: Material(
         color: ground,
@@ -106,7 +112,7 @@ class GoogleButton extends StatelessWidget {
                     )
                   else
                     Text(
-                      action.label(context),
+                      action.localizedLabel(context),
                       style: TextStyle(
                         // Roboto is Google's requirement. Naming it here
                         // rather than inheriting Kyron's face is deliberate:
