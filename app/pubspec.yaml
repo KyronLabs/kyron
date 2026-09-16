@@ -92,6 +92,8 @@ flutter:
     - lib/assets/google.svg
     - lib/assets/google_g.svg
     - lib/assets/nature/
+    - lib/l10n/app_en.arb
+    - lib/l10n/app_es.arb
 
 fonts:
   - family: Inter
