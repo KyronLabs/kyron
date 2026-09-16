@@ -192,8 +192,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     if (maxLines <= 1) return Icon(icon, size: size);
 
     final style = Theme.of(context).textTheme.bodyLarge;
-    final line =
-        MediaQuery.textScalerOf(context).scale(style?.fontSize ?? 16) *
+    final line = MediaQuery.textScalerOf(context).scale(style?.fontSize ?? 16) *
         (style?.height ?? 1.2);
 
     return Padding(

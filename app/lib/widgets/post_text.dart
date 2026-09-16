@@ -85,8 +85,7 @@ class _PostTextState extends State<PostText> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final base =
-        widget.style ??
+    final base = widget.style ??
         const TextStyle(fontSize: TypographyTokens.fontSize3, height: 1.35);
 
     for (final recognizer in _recognizers) {
@@ -97,9 +96,8 @@ class _PostTextState extends State<PostText> {
     return Text.rich(
       TextSpan(children: _spans(context, base, scheme)),
       maxLines: widget.maxLines,
-      overflow: widget.maxLines == null
-          ? TextOverflow.clip
-          : TextOverflow.ellipsis,
+      overflow:
+          widget.maxLines == null ? TextOverflow.clip : TextOverflow.ellipsis,
     );
   }
 
@@ -132,8 +130,7 @@ class _PostTextState extends State<PostText> {
         ..onTap = () => _open(context, text);
       _recognizers.add(recognizer);
 
-      final highlighted =
-          widget.highlightTag != null &&
+      final highlighted = widget.highlightTag != null &&
           text.startsWith('#') &&
           text.substring(1).toLowerCase() == widget.highlightTag!.toLowerCase();
 

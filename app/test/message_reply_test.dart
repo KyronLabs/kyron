@@ -17,7 +17,7 @@ import 'package:kyron_app/services/message_vault.dart';
 /// the quote is resolved here.
 class _Repo extends MessagesRepository {
   _Repo({this.thread = const [], this.sendFails = false})
-    : super(ApiClient()..dio.interceptors.clear());
+      : super(ApiClient()..dio.interceptors.clear());
 
   final List<DirectMessage> thread;
   final bool sendFails;
@@ -32,7 +32,8 @@ class _Repo extends MessagesRepository {
     String id, {
     String? cursor,
     int limit = 40,
-  }) async => MessagePage(items: thread, people: const []);
+  }) async =>
+      MessagePage(items: thread, people: const []);
 
   @override
   Future<DirectMessage> send(
@@ -63,13 +64,14 @@ DirectMessage _msg(
   String sender,
   DateTime at, {
   String? replyToId,
-}) => DirectMessage(
-  id: id,
-  body: body,
-  senderId: sender,
-  createdAt: at,
-  replyToId: replyToId,
-);
+}) =>
+    DirectMessage(
+      id: id,
+      body: body,
+      senderId: sender,
+      createdAt: at,
+      replyToId: replyToId,
+    );
 
 MessageVault _lockedVault() => MessageVault(KeysRepository(ApiClient()));
 

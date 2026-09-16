@@ -57,9 +57,8 @@ void main() {
     await tester.pump(const Duration(milliseconds: 100));
 
     final spinner = find.byType(RefreshProgressIndicator);
-    final top = spinner.evaluate().isEmpty
-        ? double.nan
-        : tester.getTopLeft(spinner).dy;
+    final top =
+        spinner.evaluate().isEmpty ? double.nan : tester.getTopLeft(spinner).dy;
 
     await drag.up();
     await tester.pumpAndSettle();
@@ -73,8 +72,7 @@ void main() {
     expect(
       top,
       greaterThanOrEqualTo(chrome),
-      reason:
-          'a spinner inside the bar is one nobody can see, which is what '
+      reason: 'a spinner inside the bar is one nobody can see, which is what '
           'made pulling to refresh look like it had been removed',
     );
   });

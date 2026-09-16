@@ -19,12 +19,10 @@ class PasswordRequirements extends StatelessWidget {
 
     // Dynamic colors
     final successColor = const Color(0xFF4CD4B0);
-    final inactiveColor = isDark
-        ? const Color(0xFF7E8A9A)
-        : KyronTheme.lightTextSecondary;
-    final textColor = ok
-        ? (isDark ? Colors.white : scheme.onSurface)
-        : inactiveColor;
+    final inactiveColor =
+        isDark ? const Color(0xFF7E8A9A) : KyronTheme.lightTextSecondary;
+    final textColor =
+        ok ? (isDark ? Colors.white : scheme.onSurface) : inactiveColor;
 
     return Row(
       children: [

@@ -7,21 +7,20 @@ Map<String, dynamic> _json({
   int totalVotes = 0,
   List<Map<String, dynamic>>? options,
   String? closesAt,
-}) => {
-  'id': 'poll-1',
-  'closesAt':
-      closesAt ??
-      DateTime.now().add(const Duration(hours: 2)).toIso8601String(),
-  'closed': closed,
-  'totalVotes': totalVotes,
-  'votedOptionId': votedOptionId,
-  'options':
-      options ??
-      [
-        {'id': 'a', 'text': 'Yes', 'votes': 0},
-        {'id': 'b', 'text': 'No', 'votes': 0},
-      ],
-};
+}) =>
+    {
+      'id': 'poll-1',
+      'closesAt': closesAt ??
+          DateTime.now().add(const Duration(hours: 2)).toIso8601String(),
+      'closed': closed,
+      'totalVotes': totalVotes,
+      'votedOptionId': votedOptionId,
+      'options': options ??
+          [
+            {'id': 'a', 'text': 'Yes', 'votes': 0},
+            {'id': 'b', 'text': 'No', 'votes': 0},
+          ],
+    };
 
 void main() {
   group('Poll', () {
@@ -58,9 +57,8 @@ void main() {
       final poll = Poll.fromJson(
         _json(
           closed: true,
-          closesAt: DateTime.now()
-              .add(const Duration(days: 1))
-              .toIso8601String(),
+          closesAt:
+              DateTime.now().add(const Duration(days: 1)).toIso8601String(),
         ),
       );
       expect(poll.closed, isTrue);
@@ -89,8 +87,8 @@ void main() {
 
     test('phrases the time left the way a person would', () {
       String remaining(Duration left) => Poll.fromJson(
-        _json(closesAt: DateTime.now().add(left).toIso8601String()),
-      ).remaining;
+            _json(closesAt: DateTime.now().add(left).toIso8601String()),
+          ).remaining;
 
       // Each is a little past the boundary it is testing. The getter
       // truncates -- 2 days 23 hours is "2 days left" -- so a duration sitting

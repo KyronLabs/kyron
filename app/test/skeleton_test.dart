@@ -3,10 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/widgets/skeleton.dart';
 
 Future<void> show(WidgetTester tester, Widget child) => tester.pumpWidget(
-  MaterialApp(
-    home: Scaffold(body: SingleChildScrollView(child: child)),
-  ),
-);
+      MaterialApp(
+        home: Scaffold(body: SingleChildScrollView(child: child)),
+      ),
+    );
 
 void main() {
   group('SkeletonList', () {

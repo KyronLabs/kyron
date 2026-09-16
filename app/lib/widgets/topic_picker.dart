@@ -55,7 +55,7 @@ class TopicPicker extends ConsumerWidget {
               chosen.isEmpty
                   ? 'Add a topic'
                   : 'Filed under ${chosen.length} of '
-                        '${ComposerState.maxTopics}',
+                      '${ComposerState.maxTopics}',
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize2,
                 fontWeight: FontWeight.w600,

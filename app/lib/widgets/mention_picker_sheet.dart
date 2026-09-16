@@ -204,8 +204,8 @@ class _MentionPickerState extends ConsumerState<_MentionPicker> {
                     onChanged: (_) => _run(),
                     onSubmitted: (_) => _run(immediate: true),
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)
-                          .searchByNameOrHandle,
+                      hintText:
+                          AppLocalizations.of(context).searchByNameOrHandle,
                       prefixIcon: const Icon(
                         Iconsax.search_normal_1_copy,
                         size: 18,

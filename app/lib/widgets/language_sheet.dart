@@ -42,12 +42,13 @@ class LanguageSheet {
     BuildContext context, {
     required String title,
     required List<Language> current,
-  }) => _show(
-    context,
-    title: title,
-    selected: {for (final l in current) l.code},
-    multiple: true,
-  );
+  }) =>
+      _show(
+        context,
+        title: title,
+        selected: {for (final l in current) l.code},
+        multiple: true,
+      );
 
   static Future<List<Language>?> _show(
     BuildContext context, {
@@ -208,14 +209,13 @@ class _LanguageSheetBodyState extends State<_LanguageSheetBody> {
                             // it in, not for ours.
                             title: Text(
                               language.nativeName,
-                              textDirection: language.rtl
-                                  ? TextDirection.rtl
-                                  : null,
+                              textDirection:
+                                  language.rtl ? TextDirection.rtl : null,
                             ),
                             subtitle:
                                 language.nativeName == language.englishName
-                                ? null
-                                : Text(language.englishName),
+                                    ? null
+                                    : Text(language.englishName),
                             trailing: on
                                 ? Icon(
                                     Iconsax.tick_circle_copy,

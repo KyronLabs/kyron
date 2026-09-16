@@ -93,8 +93,9 @@ class _Card extends StatelessWidget {
                         ),
                         loadingBuilder: (context, child, progress) =>
                             progress == null
-                            ? child
-                            : ColoredBox(color: scheme.surfaceContainerHighest),
+                                ? child
+                                : ColoredBox(
+                                    color: scheme.surfaceContainerHighest),
                       ),
                     ),
                     Padding(

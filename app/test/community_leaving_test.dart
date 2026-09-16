@@ -40,7 +40,8 @@ class _Feed extends FeedRepository {
     String slug, {
     String? cursor,
     int limit = 20,
-  }) async => const FeedPage(items: [], nextCursor: null);
+  }) async =>
+      const FeedPage(items: [], nextCursor: null);
 }
 
 const _joined = Community(

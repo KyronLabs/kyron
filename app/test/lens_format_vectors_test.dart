@@ -43,8 +43,7 @@ void main() {
       expect(
         parsed != null,
         shouldAccept,
-        reason:
-            '${one['why']}\n'
+        reason: '${one['why']}\n'
             'This implementation ${parsed == null ? 'refused' : 'accepted'} it; '
             'the spec says it should be '
             '${shouldAccept ? 'accepted' : 'refused'}.\n'

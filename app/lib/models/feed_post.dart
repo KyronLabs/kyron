@@ -68,32 +68,32 @@ class FeedPost {
   });
 
   factory FeedPost.fromJson(Map<String, dynamic> json) => FeedPost(
-    id: json['id'] as String,
-    content: json['content'] as String? ?? '',
-    createdAt:
-        DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
-        DateTime.now(),
-    author: FeedAuthor.fromJson(
-      (json['author'] as Map<String, dynamic>?) ?? const {},
-    ),
-    likes: (json['likes'] as num?)?.toInt() ?? 0,
-    comments: (json['comments'] as num?)?.toInt() ?? 0,
-    reposts: (json['reposts'] as num?)?.toInt() ?? 0,
-    media: PostMedia.listFrom(json['media']),
-    quotedPost: json['quotedPost'] is Map<String, dynamic>
-        ? QuotedPost.fromJson(json['quotedPost'] as Map<String, dynamic>)
-        : null,
-    replyPolicy: ReplyPolicy.fromJson(json['replyPolicy']),
-    liked: json['likedByViewer'] == true,
-    saved: json['savedByViewer'] == true,
-    reposted: json['repostedByViewer'] == true,
-    poll: json['poll'] is Map<String, dynamic>
-        ? Poll.fromJson(json['poll'] as Map<String, dynamic>)
-        : null,
-    community: json['community'] is Map<String, dynamic>
-        ? PostCommunity.fromJson(json['community'] as Map<String, dynamic>)
-        : null,
-  );
+        id: json['id'] as String,
+        content: json['content'] as String? ?? '',
+        createdAt:
+            DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
+                DateTime.now(),
+        author: FeedAuthor.fromJson(
+          (json['author'] as Map<String, dynamic>?) ?? const {},
+        ),
+        likes: (json['likes'] as num?)?.toInt() ?? 0,
+        comments: (json['comments'] as num?)?.toInt() ?? 0,
+        reposts: (json['reposts'] as num?)?.toInt() ?? 0,
+        media: PostMedia.listFrom(json['media']),
+        quotedPost: json['quotedPost'] is Map<String, dynamic>
+            ? QuotedPost.fromJson(json['quotedPost'] as Map<String, dynamic>)
+            : null,
+        replyPolicy: ReplyPolicy.fromJson(json['replyPolicy']),
+        liked: json['likedByViewer'] == true,
+        saved: json['savedByViewer'] == true,
+        reposted: json['repostedByViewer'] == true,
+        poll: json['poll'] is Map<String, dynamic>
+            ? Poll.fromJson(json['poll'] as Map<String, dynamic>)
+            : null,
+        community: json['community'] is Map<String, dynamic>
+            ? PostCommunity.fromJson(json['community'] as Map<String, dynamic>)
+            : null,
+      );
 
   FeedPost copyWith({
     int? likes,
@@ -103,23 +103,24 @@ class FeedPost {
     bool? saved,
     bool? reposted,
     Poll? poll,
-  }) => FeedPost(
-    id: id,
-    content: content,
-    createdAt: createdAt,
-    author: author,
-    likes: likes ?? this.likes,
-    comments: comments ?? this.comments,
-    reposts: reposts ?? this.reposts,
-    media: media,
-    quotedPost: quotedPost,
-    replyPolicy: replyPolicy,
-    liked: liked ?? this.liked,
-    saved: saved ?? this.saved,
-    reposted: reposted ?? this.reposted,
-    poll: poll ?? this.poll,
-    community: community,
-  );
+  }) =>
+      FeedPost(
+        id: id,
+        content: content,
+        createdAt: createdAt,
+        author: author,
+        likes: likes ?? this.likes,
+        comments: comments ?? this.comments,
+        reposts: reposts ?? this.reposts,
+        media: media,
+        quotedPost: quotedPost,
+        replyPolicy: replyPolicy,
+        liked: liked ?? this.liked,
+        saved: saved ?? this.saved,
+        reposted: reposted ?? this.reposted,
+        poll: poll ?? this.poll,
+        community: community,
+      );
 
   /// The first link in the text, or null.
   ///
@@ -145,11 +146,11 @@ class PostCommunity {
   });
 
   factory PostCommunity.fromJson(Map<String, dynamic> json) => PostCommunity(
-    id: json['id'] as String? ?? '',
-    slug: json['slug'] as String? ?? '',
-    name: json['name'] as String? ?? '',
-    avatarUrl: json['avatarUrl'] as String?,
-  );
+        id: json['id'] as String? ?? '',
+        slug: json['slug'] as String? ?? '',
+        name: json['name'] as String? ?? '',
+        avatarUrl: json['avatarUrl'] as String?,
+      );
 
   /// What to show when the community has no picture.
   String get initial {
@@ -172,11 +173,11 @@ class FeedAuthor {
   });
 
   factory FeedAuthor.fromJson(Map<String, dynamic> json) => FeedAuthor(
-    id: json['id'] as String? ?? '',
-    name: json['name'] as String?,
-    username: json['username'] as String?,
-    avatarUrl: json['avatarUrl'] as String?,
-  );
+        id: json['id'] as String? ?? '',
+        name: json['name'] as String?,
+        username: json['username'] as String?,
+        avatarUrl: json['avatarUrl'] as String?,
+      );
 
   /// What to show above a post.
   ///
@@ -200,11 +201,11 @@ class FeedAuthor {
   /// For writing an author back out to the device, so a saved draft still
   /// knows whose post it was quoting.
   Map<String, dynamic> toJson() => {
-    'id': id,
-    if (name != null) 'name': name,
-    if (username != null) 'username': username,
-    if (avatarUrl != null) 'avatarUrl': avatarUrl,
-  };
+        'id': id,
+        if (name != null) 'name': name,
+        if (username != null) 'username': username,
+        if (avatarUrl != null) 'avatarUrl': avatarUrl,
+      };
 }
 
 /// A quoted post, without its own quote. One level, so a chain of quotes
@@ -225,27 +226,28 @@ class QuotedPost {
   });
 
   factory QuotedPost.fromJson(Map<String, dynamic> json) => QuotedPost(
-    id: json['id'] as String? ?? '',
-    content: json['content'] as String? ?? '',
-    createdAt:
-        DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
-        DateTime.now(),
-    author: FeedAuthor.fromJson(
-      (json['author'] as Map<String, dynamic>?) ?? const {},
-    ),
-    media: PostMedia.listFrom(json['media']),
-  );
+        id: json['id'] as String? ?? '',
+        content: json['content'] as String? ?? '',
+        createdAt:
+            DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
+                DateTime.now(),
+        author: FeedAuthor.fromJson(
+          (json['author'] as Map<String, dynamic>?) ?? const {},
+        ),
+        media: PostMedia.listFrom(json['media']),
+      );
 
   /// Kept whole in a draft rather than by id alone: a draft restored without
   /// its quote turns a reply into a bare post, and re-fetching it needs a
   /// network the composer may not have.
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'content': content,
-    'createdAt': createdAt.toIso8601String(),
-    'author': author.toJson(),
-    if (media.isNotEmpty) 'media': [for (final item in media) item.toJson()],
-  };
+        'id': id,
+        'content': content,
+        'createdAt': createdAt.toIso8601String(),
+        'author': author.toJson(),
+        if (media.isNotEmpty)
+          'media': [for (final item in media) item.toJson()],
+      };
 }
 
 /// One page of the feed.
@@ -258,9 +260,9 @@ class FeedPage {
   const FeedPage({required this.items, this.nextCursor});
 
   factory FeedPage.fromJson(Map<String, dynamic> json) => FeedPage(
-    items: ((json['items'] as List<dynamic>?) ?? const [])
-        .map((e) => FeedPost.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    nextCursor: json['nextCursor'] as String?,
-  );
+        items: ((json['items'] as List<dynamic>?) ?? const [])
+            .map((e) => FeedPost.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        nextCursor: json['nextCursor'] as String?,
+      );
 }

@@ -13,26 +13,25 @@ import 'package:flutter_test/flutter_test.dart';
 /// There is no allow-list. If a rule needs an exception, the rule is wrong
 /// and belongs in the design system's own repository, not in a list here.
 void main() {
-  final dart =
-      Directory('lib')
-          .listSync(recursive: true)
-          .whereType<File>()
-          .where((f) => f.path.endsWith('.dart'))
-          .toList()
-        ..sort((a, b) => a.path.compareTo(b.path));
+  final dart = Directory('lib')
+      .listSync(recursive: true)
+      .whereType<File>()
+      .where((f) => f.path.endsWith('.dart'))
+      .toList()
+    ..sort((a, b) => a.path.compareTo(b.path));
 
   /// Every line matching [pattern], as `path:line  text`.
   List<String> offences(RegExp pattern) => [
-    for (final file in dart)
-      ...() {
-        final lines = file.readAsLinesSync();
-        return [
-          for (var i = 0; i < lines.length; i++)
-            if (pattern.hasMatch(lines[i]))
-              '${file.path}:${i + 1}  ${lines[i].trim()}',
-        ];
-      }(),
-  ];
+        for (final file in dart)
+          ...() {
+            final lines = file.readAsLinesSync();
+            return [
+              for (var i = 0; i < lines.length; i++)
+                if (pattern.hasMatch(lines[i]))
+                  '${file.path}:${i + 1}  ${lines[i].trim()}',
+            ];
+          }(),
+      ];
 
   test('there is a file to read', () {
     // A glob that matches nothing passes every test below it.
@@ -48,8 +47,7 @@ void main() {
     expect(
       found,
       isEmpty,
-      reason:
-          'a font size is set from a number rather than '
+      reason: 'a font size is set from a number rather than '
           'TypographyTokens:\n${found.join('\n')}',
     );
   });
@@ -77,8 +75,7 @@ void main() {
     expect(
       filled,
       isEmpty,
-      reason:
-          'a filled Iconsax glyph is back in the browser:\n'
+      reason: 'a filled Iconsax glyph is back in the browser:\n'
           '${filled.join('\n')}',
     );
   });
@@ -97,8 +94,7 @@ void main() {
     expect(
       found,
       isEmpty,
-      reason:
-          'a screen builds a Material AppBar directly instead of '
+      reason: 'a screen builds a Material AppBar directly instead of '
           'KyronAppBar:\n${found.join('\n')}',
     );
   });

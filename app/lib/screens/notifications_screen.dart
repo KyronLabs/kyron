@@ -140,34 +140,33 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
   }
 
   EmptyState _empty() => switch (widget.kind) {
-    NotificationType.like => EmptyState(
-      art: EmptyArt.likes,
-      title: AppLocalizations.of(context).literalnoLikesYet,
-      detail: 'When somebody likes one of your posts, it shows up here.',
-    ),
-    NotificationType.comment => EmptyState(
-      art: EmptyArt.messages,
-      title: AppLocalizations.of(context).literalnoRepliesYet,
-      detail: 'Replies to your posts land here.',
-    ),
-    NotificationType.follow => EmptyState(
-      art: EmptyArt.people,
-      title: AppLocalizations.of(context).literalnoNewFollowers,
-      detail: 'People who follow you show up here.',
-    ),
-    NotificationType.repost => EmptyState(
-      art: EmptyArt.posts,
-      title: AppLocalizations.of(context).literalnoRepostsYet,
-      detail: 'When somebody reposts you, it shows up here.',
-    ),
-    null => EmptyState(
-      art: EmptyArt.caughtUp,
-      title: AppLocalizations.of(context).literalyouAreAllCaughtUp,
-      detail:
-          'Likes, replies and new followers land here as they '
-          'happen.',
-    ),
-  };
+        NotificationType.like => EmptyState(
+            art: EmptyArt.likes,
+            title: AppLocalizations.of(context).literalnoLikesYet,
+            detail: 'When somebody likes one of your posts, it shows up here.',
+          ),
+        NotificationType.comment => EmptyState(
+            art: EmptyArt.messages,
+            title: AppLocalizations.of(context).literalnoRepliesYet,
+            detail: 'Replies to your posts land here.',
+          ),
+        NotificationType.follow => EmptyState(
+            art: EmptyArt.people,
+            title: AppLocalizations.of(context).literalnoNewFollowers,
+            detail: 'People who follow you show up here.',
+          ),
+        NotificationType.repost => EmptyState(
+            art: EmptyArt.posts,
+            title: AppLocalizations.of(context).literalnoRepostsYet,
+            detail: 'When somebody reposts you, it shows up here.',
+          ),
+        null => EmptyState(
+            art: EmptyArt.caughtUp,
+            title: AppLocalizations.of(context).literalyouAreAllCaughtUp,
+            detail: 'Likes, replies and new followers land here as they '
+                'happen.',
+          ),
+      };
 
   /// Today, Yesterday, This week, Older -- in that order, skipping any that
   /// hold nothing. Built from the list rather than from a fixed set of keys,
@@ -197,16 +196,15 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
     if (state.items.isEmpty) {
       return RefreshIndicator(
         onRefresh: notifier.refresh,
-        child:
-            (state.error != null
-                    ? EmptyState.failed(
-                        title: AppLocalizations.of(context)
-                            .literalcouldNotLoadNotifications,
-                        detail: state.error!,
-                        onAction: notifier.refresh,
-                      )
-                    : _empty())
-                .scrollable,
+        child: (state.error != null
+                ? EmptyState.failed(
+                    title: AppLocalizations.of(context)
+                        .literalcouldNotLoadNotifications,
+                    detail: state.error!,
+                    onAction: notifier.refresh,
+                  )
+                : _empty())
+            .scrollable,
       );
     }
 

@@ -111,8 +111,7 @@ class _Sheet extends StatelessWidget {
                       icon: Iconsax.profile_tick,
                       title: AppLocalizations.of(context)
                           .literalwhatYouPostIsYours,
-                      detail:
-                          'Kyron does not claim ownership of anything you '
+                      detail: 'Kyron does not claim ownership of anything you '
                           'write, record or upload. You can delete it, and '
                           'export your account.',
                     ),
@@ -128,8 +127,7 @@ class _Sheet extends StatelessWidget {
                     _Point(
                       icon: Iconsax.people,
                       title: AppLocalizations.of(context).literalhowToBehave,
-                      detail:
-                          'No harassment, no content involving minors, '
+                      detail: 'No harassment, no content involving minors, '
                           'nothing illegal. Accounts that do those things are '
                           'removed.',
                     ),

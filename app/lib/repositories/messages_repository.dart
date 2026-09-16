@@ -68,10 +68,8 @@ class MessagesRepository {
         // this phone already decrypted.
         if (replyToId != null) 'replyToId': replyToId,
         if (media.isNotEmpty)
-          'media': media
-              .where((m) => m.isReady)
-              .map((m) => m.toJson())
-              .toList(),
+          'media':
+              media.where((m) => m.isReady).map((m) => m.toJson()).toList(),
       },
     );
     return DirectMessage.fromJson(res.data ?? const {});

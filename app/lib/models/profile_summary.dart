@@ -36,17 +36,17 @@ class ProfileSummary {
   });
 
   factory ProfileSummary.fromJson(Map<String, dynamic> json) => ProfileSummary(
-    id: json['id'] as String? ?? '',
-    name: json['name'] as String?,
-    username: json['username'] as String?,
-    did: json['did'] as String?,
-    avatarUrl: json['avatarUrl'] as String?,
-    bio: json['bio'] as String?,
-    followers: (json['followers'] as num?)?.toInt() ?? 0,
-    kyronPoints: (json['kyronPoints'] as num?)?.toInt() ?? 0,
-    isFollowing: json['isFollowing'] == true,
-    isSelf: json['isSelf'] == true,
-  );
+        id: json['id'] as String? ?? '',
+        name: json['name'] as String?,
+        username: json['username'] as String?,
+        did: json['did'] as String?,
+        avatarUrl: json['avatarUrl'] as String?,
+        bio: json['bio'] as String?,
+        followers: (json['followers'] as num?)?.toInt() ?? 0,
+        kyronPoints: (json['kyronPoints'] as num?)?.toInt() ?? 0,
+        isFollowing: json['isFollowing'] == true,
+        isSelf: json['isSelf'] == true,
+      );
 
   ProfileSummary copyWith({bool? isFollowing, int? followers}) =>
       ProfileSummary(

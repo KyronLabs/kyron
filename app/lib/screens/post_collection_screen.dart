@@ -34,22 +34,22 @@ class PostCollectionScreen extends StatelessWidget {
   });
 
   const PostCollectionScreen.saved({super.key})
-    : source = PostListSource.saved,
-      title = 'Saved posts',
-      emptyTitle = 'Nothing saved yet',
-      emptyDetail =
-          'Tap the archive icon on any post to keep it here. Only you can '
-          'see what you save.',
-      emptyArt = EmptyArt.saved,
-      errorTitle = 'Could not load your saved posts';
+      : source = PostListSource.saved,
+        title = 'Saved posts',
+        emptyTitle = 'Nothing saved yet',
+        emptyDetail =
+            'Tap the archive icon on any post to keep it here. Only you can '
+                'see what you save.',
+        emptyArt = EmptyArt.saved,
+        errorTitle = 'Could not load your saved posts';
 
   const PostCollectionScreen.liked({super.key})
-    : source = PostListSource.liked,
-      title = 'Liked posts',
-      emptyTitle = 'No likes yet',
-      emptyDetail = 'Posts you like show up here, most recent first.',
-      emptyArt = EmptyArt.likes,
-      errorTitle = 'Could not load your liked posts';
+      : source = PostListSource.liked,
+        title = 'Liked posts',
+        emptyTitle = 'No likes yet',
+        emptyDetail = 'Posts you like show up here, most recent first.',
+        emptyArt = EmptyArt.likes,
+        errorTitle = 'Could not load your liked posts';
 
   @override
   Widget build(BuildContext context) {

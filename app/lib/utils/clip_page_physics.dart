@@ -121,6 +121,6 @@ class ClipPageScrollPhysics extends ScrollPhysics {
   /// the end of a drag is the live [ScrollPosition], which does.
   static ScrollDirection _direction(ScrollMetrics position) =>
       position is ScrollPosition
-      ? position.userScrollDirection
-      : ScrollDirection.idle;
+          ? position.userScrollDirection
+          : ScrollDirection.idle;
 }

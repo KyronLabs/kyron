@@ -258,9 +258,8 @@ class PostAvatar extends StatelessWidget {
     return CircleAvatar(
       radius: radius,
       backgroundColor: scheme.primary.withValues(alpha: 0.15),
-      foregroundImage: author.avatarUrl == null
-          ? null
-          : NetworkImage(author.avatarUrl!),
+      foregroundImage:
+          author.avatarUrl == null ? null : NetworkImage(author.avatarUrl!),
       child: Icon(Iconsax.user_copy, color: scheme.primary, size: radius),
     );
   }

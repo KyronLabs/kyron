@@ -22,35 +22,35 @@ import 'package:video_player_platform_interface/video_player_platform_interface.
 import 'support/fake_video_platform.dart';
 
 FeedPost _clip(String id, {int likes = 0, bool liked = false}) => FeedPost(
-  id: id,
-  content: 'caption $id',
-  createdAt: DateTime(2026, 1, 1),
-  author: const FeedAuthor(id: 'a1', username: 'epigone'),
-  likes: likes,
-  liked: liked,
-  media: [
-    PostMedia(
-      id: 'm-$id',
-      kind: MediaKind.video,
-      url: 'https://example.com/$id.mp4',
-      thumbnailUrl: 'https://example.com/$id.jpg',
-    ),
-  ],
-);
+      id: id,
+      content: 'caption $id',
+      createdAt: DateTime(2026, 1, 1),
+      author: const FeedAuthor(id: 'a1', username: 'epigone'),
+      likes: likes,
+      liked: liked,
+      media: [
+        PostMedia(
+          id: 'm-$id',
+          kind: MediaKind.video,
+          url: 'https://example.com/$id.mp4',
+          thumbnailUrl: 'https://example.com/$id.jpg',
+        ),
+      ],
+    );
 
 FeedPost _photo(String id) => FeedPost(
-  id: id,
-  content: 'a picture',
-  createdAt: DateTime(2026, 1, 1),
-  author: const FeedAuthor(id: 'a1'),
-  media: [
-    PostMedia(
-      id: 'm-$id',
-      kind: MediaKind.image,
-      url: 'https://example.com/$id.png',
-    ),
-  ],
-);
+      id: id,
+      content: 'a picture',
+      createdAt: DateTime(2026, 1, 1),
+      author: const FeedAuthor(id: 'a1'),
+      media: [
+        PostMedia(
+          id: 'm-$id',
+          kind: MediaKind.image,
+          url: 'https://example.com/$id.png',
+        ),
+      ],
+    );
 
 /// A repository that answers with a fixed page and never touches a network.
 class _FakeFeed extends FeedRepository {
@@ -192,12 +192,15 @@ void main() {
   ) async {
     // A player per page would leave the clip above holding a decoder, and a
     // decoder taken back stops whoever has gone longest without one.
-    await _pump(tester, [
-      _clip('a'),
-      _clip('b'),
-      _clip('c'),
-      _clip('d'),
-    ], startOn: 'a');
+    await _pump(
+        tester,
+        [
+          _clip('a'),
+          _clip('b'),
+          _clip('c'),
+          _clip('d'),
+        ],
+        startOn: 'a');
 
     for (var i = 0; i < 3; i++) {
       await tester.fling(find.byType(PageView), const Offset(0, -600), 1000);
@@ -305,9 +308,12 @@ void main() {
     testWidgets('twice on something already liked does not take it back', (
       tester,
     ) async {
-      final feed = await _pump(tester, [
-        _clip('a', likes: 4, liked: true),
-      ], startOn: 'a');
+      final feed = await _pump(
+          tester,
+          [
+            _clip('a', likes: 4, liked: true),
+          ],
+          startOn: 'a');
 
       await tester.tap(find.byType(PageView));
       await tester.pump(const Duration(milliseconds: 40));

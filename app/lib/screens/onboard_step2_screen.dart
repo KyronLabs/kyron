@@ -235,8 +235,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
           compact: true,
           art: EmptyArt.topics,
           title: AppLocalizations.of(context).literalnoInterestsYet,
-          detail:
-              'Kyron has not published any to pick from. Skip this step '
+          detail: 'Kyron has not published any to pick from. Skip this step '
               'and set them later from your profile.',
         ),
       );
@@ -276,8 +275,8 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
             color: selected
                 ? scheme.primary.withValues(alpha: .35)
                 : (isDark
-                      ? Colors.transparent
-                      : scheme.onSurface.withValues(alpha: .12)),
+                    ? Colors.transparent
+                    : scheme.onSurface.withValues(alpha: .12)),
             width: 1,
           ),
         ),

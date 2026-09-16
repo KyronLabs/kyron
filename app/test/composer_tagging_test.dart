@@ -26,25 +26,26 @@ class _OnePerson implements HttpClientAdapter {
     RequestOptions options,
     Stream<Uint8List>? requestStream,
     Future<void>? cancelFuture,
-  ) async => ResponseBody.fromString(
-    jsonEncode({
-      'items': options.path == '/profile/search'
-          ? [
-              {
-                'id': 'u1',
-                'name': 'Ada Lovelace',
-                'username': 'ada',
-                'followers': 3,
-                'kyronPoints': 0,
-              },
-            ]
-          : const <Object>[],
-    }),
-    200,
-    headers: {
-      Headers.contentTypeHeader: [Headers.jsonContentType],
-    },
-  );
+  ) async =>
+      ResponseBody.fromString(
+        jsonEncode({
+          'items': options.path == '/profile/search'
+              ? [
+                  {
+                    'id': 'u1',
+                    'name': 'Ada Lovelace',
+                    'username': 'ada',
+                    'followers': 3,
+                    'kyronPoints': 0,
+                  },
+                ]
+              : const <Object>[],
+        }),
+        200,
+        headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType],
+        },
+      );
 
   @override
   void close({bool force = false}) {}

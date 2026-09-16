@@ -46,17 +46,18 @@ class PreferencesState {
     AppTheme? theme,
     bool? dataSaver,
     bool? isLoaded,
-  }) => PreferencesState(
-    language: language ?? this.language,
-    primaryLanguage: primaryLanguage ?? this.primaryLanguage,
-    contentLanguages: contentLanguages ?? this.contentLanguages,
-    textScale: textScale ?? this.textScale,
-    pushEnabled: pushEnabled ?? this.pushEnabled,
-    emailEnabled: emailEnabled ?? this.emailEnabled,
-    theme: theme ?? this.theme,
-    dataSaver: dataSaver ?? this.dataSaver,
-    isLoaded: isLoaded ?? this.isLoaded,
-  );
+  }) =>
+      PreferencesState(
+        language: language ?? this.language,
+        primaryLanguage: primaryLanguage ?? this.primaryLanguage,
+        contentLanguages: contentLanguages ?? this.contentLanguages,
+        textScale: textScale ?? this.textScale,
+        pushEnabled: pushEnabled ?? this.pushEnabled,
+        emailEnabled: emailEnabled ?? this.emailEnabled,
+        theme: theme ?? this.theme,
+        dataSaver: dataSaver ?? this.dataSaver,
+        isLoaded: isLoaded ?? this.isLoaded,
+      );
 }
 
 class PreferencesNotifier extends StateNotifier<PreferencesState> {
@@ -137,5 +138,5 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
 
 final preferencesProvider =
     StateNotifierProvider<PreferencesNotifier, PreferencesState>(
-      (ref) => PreferencesNotifier(ref.read(appPreferencesProvider)),
-    );
+  (ref) => PreferencesNotifier(ref.read(appPreferencesProvider)),
+);

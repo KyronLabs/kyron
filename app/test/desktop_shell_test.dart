@@ -24,18 +24,18 @@ void main() {
 
   group('the rail', () {
     Widget rail(int current, void Function(int) onSelect) => ProviderScope(
-      child: MaterialApp(
-        theme: KyronTheme.lightTheme,
-        home: Scaffold(
-          body: Row(
-            children: [
-              SideRail(currentIndex: current, onSelect: onSelect),
-              const Expanded(child: SizedBox()),
-            ],
+          child: MaterialApp(
+            theme: KyronTheme.lightTheme,
+            home: Scaffold(
+              body: Row(
+                children: [
+                  SideRail(currentIndex: current, onSelect: onSelect),
+                  const Expanded(child: SizedBox()),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        );
 
     testWidgets('draws the same four places the bottom bar does', (
       tester,
@@ -94,14 +94,15 @@ void main() {
     testWidgets('a window gets the rail and a phone does not', (tester) async {
       late bool wide;
       Widget probe() => MediaQuery(
-        data: MediaQueryData(size: Size(tester.view.physicalSize.width, 800)),
-        child: Builder(
-          builder: (context) {
-            wide = Layout.hasRail(context);
-            return const SizedBox();
-          },
-        ),
-      );
+            data:
+                MediaQueryData(size: Size(tester.view.physicalSize.width, 800)),
+            child: Builder(
+              builder: (context) {
+                wide = Layout.hasRail(context);
+                return const SizedBox();
+              },
+            ),
+          );
 
       tester.view.devicePixelRatio = 1;
 
@@ -157,19 +158,19 @@ void main() {
     /// at all: a real WebViewController asserts without a platform behind it,
     /// which is the very crash this group is about.
     Widget linkScreen() => MaterialApp(
-      theme: KyronTheme.lightTheme,
-      home: Builder(
-        builder: (context) => Scaffold(
-          body: Center(
-            child: TextButton(
-              onPressed: () =>
-                  AppBrowser.open(context, 'https://example.com/a'),
-              child: const Text('go'),
+          theme: KyronTheme.lightTheme,
+          home: Builder(
+            builder: (context) => Scaffold(
+              body: Center(
+                child: TextButton(
+                  onPressed: () =>
+                      AppBrowser.open(context, 'https://example.com/a'),
+                  child: const Text('go'),
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        );
 
     setUp(() {
       BrowserRoute.engineFactory = (tab, host) => _NoEngine();

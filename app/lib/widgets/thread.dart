@@ -241,13 +241,13 @@ class ThreadConnectorPainter extends CustomPainter {
   });
 
   ThreadConnectorPlan get plan => ThreadConnectorPlan.forRow(
-    depth: depth,
-    ancestorRails: ancestorRails,
-    hasChildrenBelow: hasChildrenBelow,
-    isLastChild: isLastChild,
-    avatarSize: avatarSize,
-    topGap: topGap,
-  );
+        depth: depth,
+        ancestorRails: ancestorRails,
+        hasChildrenBelow: hasChildrenBelow,
+        isLastChild: isLastChild,
+        avatarSize: avatarSize,
+        topGap: topGap,
+      );
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -394,7 +394,7 @@ class ThreadDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Padding(
-    padding: EdgeInsets.symmetric(vertical: 4),
-    child: Hairline(),
-  );
+        padding: EdgeInsets.symmetric(vertical: 4),
+        child: Hairline(),
+      );
 }

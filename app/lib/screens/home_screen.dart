@@ -68,9 +68,9 @@ class _HomeScreenState extends State<HomeScreen>
       if (delta > 0) {
         final newValue =
             (_topEdgeAnimController.value + (delta / _liveScrollRangePx)).clamp(
-              0.0,
-              1.0,
-            );
+          0.0,
+          1.0,
+        );
         _topEdgeAnimController.value = newValue;
         _lastScrollOffset = offset;
       }
@@ -80,9 +80,9 @@ class _HomeScreenState extends State<HomeScreen>
       if (delta > 0) {
         final newValue =
             (_topEdgeAnimController.value - (delta / _liveScrollRangePx)).clamp(
-              0.0,
-              1.0,
-            );
+          0.0,
+          1.0,
+        );
         _topEdgeAnimController.value = newValue;
         _lastScrollOffset = offset;
       }
@@ -158,8 +158,7 @@ class _HomeScreenState extends State<HomeScreen>
           child: AnimatedBuilder(
             animation: _topEdgeAnimController,
             builder: (context, child) => SizedBox(
-              height:
-                  statusBarHeight +
+              height: statusBarHeight +
                   topEdgeContentHeight * (1.0 - _topEdgeAnimController.value),
               child: ColoredBox(color: scheme.surface),
             ),
@@ -225,8 +224,7 @@ class _HomeScreenState extends State<HomeScreen>
             animation: _topEdgeAnimController,
             builder: (context, child) => Padding(
               padding: EdgeInsets.only(
-                top:
-                    statusBarHeight +
+                top: statusBarHeight +
                     topEdgeContentHeight *
                         (1.0 - _topEdgeAnimController.value) +
                     _tabsHeight,

@@ -72,13 +72,13 @@ class _PollCardState extends ConsumerState<PollCard> {
                 onVote: _voting != null || poll.closed
                     ? null
                     : poll.votedOptionId == option.id
-                    ? () => _retract(option.id)
-                    : poll.hasVoted
-                    // Not inert, and not a second vote either: a row
-                    // that does nothing when tapped is worse than one
-                    // that says why it will not.
-                    ? _explainSwitch
-                    : () => _vote(option.id),
+                        ? () => _retract(option.id)
+                        : poll.hasVoted
+                            // Not inert, and not a second vote either: a row
+                            // that does nothing when tapped is worse than one
+                            // that says why it will not.
+                            ? _explainSwitch
+                            : () => _vote(option.id),
               ),
             ),
           // One line of text rather than three in a row: three of them ran off

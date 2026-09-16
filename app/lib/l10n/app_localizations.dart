@@ -17,8 +17,8 @@ class AppLocalizations {
   static Future<AppLocalizations> load(Locale locale) {
     final String name =
         locale.countryCode == null || locale.countryCode!.isEmpty
-        ? locale.languageCode
-        : '${locale.languageCode}_${locale.countryCode}';
+            ? locale.languageCode
+            : '${locale.languageCode}_${locale.countryCode}';
     final String localeName = Intl.canonicalizedLocale(name);
 
     return initializeMessages(localeName).then((bool _) {
@@ -59,10 +59,10 @@ class AppLocalizations {
   String get checkEmailConfirm =>
       Intl.message('checkEmailConfirm', name: 'checkEmailConfirm');
   String closeCommunity(String communityName) => Intl.message(
-    'closeCommunity',
-    name: 'closeCommunity',
-    args: [communityName],
-  );
+        'closeCommunity',
+        name: 'closeCommunity',
+        args: [communityName],
+      );
   String get closeIt => Intl.message('closeIt', name: 'closeIt');
   String get closeThisCommunity =>
       Intl.message('closeThisCommunity', name: 'closeThisCommunity');
@@ -76,10 +76,10 @@ class AppLocalizations {
   String get copyReportInstead =>
       Intl.message('copyReportInstead', name: 'copyReportInstead');
   String couldNotOpenGoogleSignIn(String error) => Intl.message(
-    'couldNotOpenGoogleSignIn',
-    name: 'couldNotOpenGoogleSignIn',
-    args: [error],
-  );
+        'couldNotOpenGoogleSignIn',
+        name: 'couldNotOpenGoogleSignIn',
+        args: [error],
+      );
   String couldNotSignOut(String error) =>
       Intl.message('couldNotSignOut', name: 'couldNotSignOut', args: [error]);
   String get couldNotTakePicture =>
@@ -127,10 +127,10 @@ class AppLocalizations {
   String get lagosDesign => Intl.message('lagosDesign', name: 'lagosDesign');
   String get leave => Intl.message('leave', name: 'leave');
   String leaveCommunity(String communityName) => Intl.message(
-    'leaveCommunity',
-    name: 'leaveCommunity',
-    args: [communityName],
-  );
+        'leaveCommunity',
+        name: 'leaveCommunity',
+        args: [communityName],
+      );
   String get letBackIn => Intl.message('letBackIn', name: 'letBackIn');
   String get loadMore => Intl.message('loadMore', name: 'loadMore');
   String get logCleared => Intl.message('logCleared', name: 'logCleared');
@@ -167,10 +167,10 @@ class AppLocalizations {
   String get postAnalytics =>
       Intl.message('postAnalytics', name: 'postAnalytics');
   String postInCommunity(String communityName) => Intl.message(
-    'postInCommunity',
-    name: 'postInCommunity',
-    args: [communityName],
-  );
+        'postInCommunity',
+        name: 'postInCommunity',
+        args: [communityName],
+      );
   String get postTextCopied =>
       Intl.message('postTextCopied', name: 'postTextCopied');
   String get profileUpdated =>
@@ -256,26 +256,26 @@ class AppLocalizations {
   String get postItSayItShowIt =>
       Intl.message('postItSayItShowIt', name: 'postItSayItShowIt');
   String get textVoiceVideoPeopleRooms => Intl.message(
-    'textVoiceVideoPeopleRooms',
-    name: 'textVoiceVideoPeopleRooms',
-  );
+        'textVoiceVideoPeopleRooms',
+        name: 'textVoiceVideoPeopleRooms',
+      );
   String get alreadyOnKyron =>
       Intl.message('alreadyOnKyron', name: 'alreadyOnKyron');
   String get byContinuingAgreeTermsPrivacy => Intl.message(
-    'byContinuingAgreeTermsPrivacy',
-    name: 'byContinuingAgreeTermsPrivacy',
-  );
+        'byContinuingAgreeTermsPrivacy',
+        name: 'byContinuingAgreeTermsPrivacy',
+      );
   String get byContinuingAgreeTerms =>
       Intl.message('byContinuingAgreeTerms', name: 'byContinuingAgreeTerms');
   String get googleSignInNeedsPhoneApp => Intl.message(
-    'googleSignInNeedsPhoneApp',
-    name: 'googleSignInNeedsPhoneApp',
-  );
+        'googleSignInNeedsPhoneApp',
+        name: 'googleSignInNeedsPhoneApp',
+      );
   String googleSignInDesktopExplanation(String platform) => Intl.message(
-    'googleSignInDesktopExplanation',
-    name: 'googleSignInDesktopExplanation',
-    args: [platform],
-  );
+        'googleSignInDesktopExplanation',
+        name: 'googleSignInDesktopExplanation',
+        args: [platform],
+      );
   String get loginFailed => Intl.message('loginFailed', name: 'loginFailed');
   String get email => Intl.message('email', name: 'email');
   String get password => Intl.message('password', name: 'password');
@@ -298,17 +298,17 @@ class AppLocalizations {
   String get googleContinue =>
       Intl.message('googleContinue', name: 'googleContinue');
   String get literalwhetherKyronIsReachableRightNow => Intl.message(
-    'literalwhetherKyronIsReachableRightNow',
-    name: 'literalwhetherKyronIsReachableRightNow',
-  );
+        'literalwhetherKyronIsReachableRightNow',
+        name: 'literalwhetherKyronIsReachableRightNow',
+      );
   String get literalwhatThisAppHasBeenDoing => Intl.message(
-    'literalwhatThisAppHasBeenDoing',
-    name: 'literalwhatThisAppHasBeenDoing',
-  );
+        'literalwhatThisAppHasBeenDoing',
+        name: 'literalwhatThisAppHasBeenDoing',
+      );
   String get literalshareTheLogWithSupport => Intl.message(
-    'literalshareTheLogWithSupport',
-    name: 'literalshareTheLogWithSupport',
-  );
+        'literalshareTheLogWithSupport',
+        name: 'literalshareTheLogWithSupport',
+      );
   String get literalclearCache =>
       Intl.message('literalclearCache', name: 'literalclearCache');
   String get literalappVersion =>
@@ -318,32 +318,32 @@ class AppLocalizations {
   String get literalcheckAgain =>
       Intl.message('literalcheckAgain', name: 'literalcheckAgain');
   String get literalkyronDidNotAnswer => Intl.message(
-    'literalkyronDidNotAnswer',
-    name: 'literalkyronDidNotAnswer',
-  );
+        'literalkyronDidNotAnswer',
+        name: 'literalkyronDidNotAnswer',
+      );
   String get literalnothingLoggedYet =>
       Intl.message('literalnothingLoggedYet', name: 'literalnothingLoggedYet');
   String get literalswitchCamera =>
       Intl.message('literalswitchCamera', name: 'literalswitchCamera');
   String get literaltheCameraIsClosed => Intl.message(
-    'literaltheCameraIsClosed',
-    name: 'literaltheCameraIsClosed',
-  );
+        'literaltheCameraIsClosed',
+        name: 'literaltheCameraIsClosed',
+      );
   String get literaltakeAPicture =>
       Intl.message('literaltakeAPicture', name: 'literaltakeAPicture');
   String literallensNameFaceLens(Object lens) => Intl.message(
-    'literallensNameFaceLens',
-    name: 'literallensNameFaceLens',
-    args: [lens],
-  );
+        'literallensNameFaceLens',
+        name: 'literallensNameFaceLens',
+        args: [lens],
+      );
   String get literalcouldNotPostThatReply => Intl.message(
-    'literalcouldNotPostThatReply',
-    name: 'literalcouldNotPostThatReply',
-  );
+        'literalcouldNotPostThatReply',
+        name: 'literalcouldNotPostThatReply',
+      );
   String get literalcouldNotLoadThisReply => Intl.message(
-    'literalcouldNotLoadThisReply',
-    name: 'literalcouldNotLoadThisReply',
-  );
+        'literalcouldNotLoadThisReply',
+        name: 'literalcouldNotLoadThisReply',
+      );
   String get literalthisReplyIsGone =>
       Intl.message('literalthisReplyIsGone', name: 'literalthisReplyIsGone');
   String get literaladdAPhoto =>
@@ -353,22 +353,22 @@ class AppLocalizations {
   String get literalstartACommunity =>
       Intl.message('literalstartACommunity', name: 'literalstartACommunity');
   String get literalcouldNotLoadYourCommunities => Intl.message(
-    'literalcouldNotLoadYourCommunities',
-    name: 'literalcouldNotLoadYourCommunities',
-  );
+        'literalcouldNotLoadYourCommunities',
+        name: 'literalcouldNotLoadYourCommunities',
+      );
   String get literalyouAreNotInAnyCommunities => Intl.message(
-    'literalyouAreNotInAnyCommunities',
-    name: 'literalyouAreNotInAnyCommunities',
-  );
+        'literalyouAreNotInAnyCommunities',
+        name: 'literalyouAreNotInAnyCommunities',
+      );
   String get literalcouldNotLoadCommunities => Intl.message(
-    'literalcouldNotLoadCommunities',
-    name: 'literalcouldNotLoadCommunities',
-  );
+        'literalcouldNotLoadCommunities',
+        name: 'literalcouldNotLoadCommunities',
+      );
   String literalpostInWidgetCommunityName(Object widget) => Intl.message(
-    'literalpostInWidgetCommunityName',
-    name: 'literalpostInWidgetCommunityName',
-    args: [widget],
-  );
+        'literalpostInWidgetCommunityName',
+        name: 'literalpostInWidgetCommunityName',
+        args: [widget],
+      );
   String literalsaySomethingToWidgetCommunityName(Object widget) =>
       Intl.message(
         'literalsaySomethingToWidgetCommunityName',
@@ -378,76 +378,76 @@ class AppLocalizations {
   String get literaltagSomeone =>
       Intl.message('literaltagSomeone', name: 'literaltagSomeone');
   String literalcloseWidgetCommunityName(Object widget) => Intl.message(
-    'literalcloseWidgetCommunityName',
-    name: 'literalcloseWidgetCommunityName',
-    args: [widget],
-  );
+        'literalcloseWidgetCommunityName',
+        name: 'literalcloseWidgetCommunityName',
+        args: [widget],
+      );
   String get literalonlyTheOwnerCanChangeThis => Intl.message(
-    'literalonlyTheOwnerCanChangeThis',
-    name: 'literalonlyTheOwnerCanChangeThis',
-  );
+        'literalonlyTheOwnerCanChangeThis',
+        name: 'literalonlyTheOwnerCanChangeThis',
+      );
   String get literaltapTheBannerOrThePictureToChangeIt => Intl.message(
-    'literaltapTheBannerOrThePictureToChangeIt',
-    name: 'literaltapTheBannerOrThePictureToChangeIt',
-  );
+        'literaltapTheBannerOrThePictureToChangeIt',
+        name: 'literaltapTheBannerOrThePictureToChangeIt',
+      );
   String literalremoveMemberDisplayname(Object member) => Intl.message(
-    'literalremoveMemberDisplayname',
-    name: 'literalremoveMemberDisplayname',
-    args: [member],
-  );
+        'literalremoveMemberDisplayname',
+        name: 'literalremoveMemberDisplayname',
+        args: [member],
+      );
   String get literalcouldNotLoadTheMembers => Intl.message(
-    'literalcouldNotLoadTheMembers',
-    name: 'literalcouldNotLoadTheMembers',
-  );
+        'literalcouldNotLoadTheMembers',
+        name: 'literalcouldNotLoadTheMembers',
+      );
   String get literalnobodyHereYet =>
       Intl.message('literalnobodyHereYet', name: 'literalnobodyHereYet');
   String get literalmakeAModerator =>
       Intl.message('literalmakeAModerator', name: 'literalmakeAModerator');
   String get literalremoveAsModerator => Intl.message(
-    'literalremoveAsModerator',
-    name: 'literalremoveAsModerator',
-  );
+        'literalremoveAsModerator',
+        name: 'literalremoveAsModerator',
+      );
   String get literalremoveFromCommunity => Intl.message(
-    'literalremoveFromCommunity',
-    name: 'literalremoveFromCommunity',
-  );
+        'literalremoveFromCommunity',
+        name: 'literalremoveFromCommunity',
+      );
   String get literalcouldNotLoadThisList => Intl.message(
-    'literalcouldNotLoadThisList',
-    name: 'literalcouldNotLoadThisList',
-  );
+        'literalcouldNotLoadThisList',
+        name: 'literalcouldNotLoadThisList',
+      );
   String get literalnobodyHasBeenRemoved => Intl.message(
-    'literalnobodyHasBeenRemoved',
-    name: 'literalnobodyHasBeenRemoved',
-  );
+        'literalnobodyHasBeenRemoved',
+        name: 'literalnobodyHasBeenRemoved',
+      );
   String literalpostInCommunityName(Object community) => Intl.message(
-    'literalpostInCommunityName',
-    name: 'literalpostInCommunityName',
-    args: [community],
-  );
+        'literalpostInCommunityName',
+        name: 'literalpostInCommunityName',
+        args: [community],
+      );
   String get literalcouldNotOpenThisCommunity => Intl.message(
-    'literalcouldNotOpenThisCommunity',
-    name: 'literalcouldNotOpenThisCommunity',
-  );
+        'literalcouldNotOpenThisCommunity',
+        name: 'literalcouldNotOpenThisCommunity',
+      );
   String get literalthisCommunity =>
       Intl.message('literalthisCommunity', name: 'literalthisCommunity');
   String get literalshareThisCommunity => Intl.message(
-    'literalshareThisCommunity',
-    name: 'literalshareThisCommunity',
-  );
+        'literalshareThisCommunity',
+        name: 'literalshareThisCommunity',
+      );
   String get literalcopyLink =>
       Intl.message('literalcopyLink', name: 'literalcopyLink');
   String get literallinkCopied =>
       Intl.message('literallinkCopied', name: 'literallinkCopied');
   String literalleaveCommunityName(Object community) => Intl.message(
-    'literalleaveCommunityName',
-    name: 'literalleaveCommunityName',
-    args: [community],
-  );
+        'literalleaveCommunityName',
+        name: 'literalleaveCommunityName',
+        args: [community],
+      );
   String literalyouHaveLeftCommunityName(Object community) => Intl.message(
-    'literalyouHaveLeftCommunityName',
-    name: 'literalyouHaveLeftCommunityName',
-    args: [community],
-  );
+        'literalyouHaveLeftCommunityName',
+        name: 'literalyouHaveLeftCommunityName',
+        args: [community],
+      );
   String get literaladdAVideo =>
       Intl.message('literaladdAVideo', name: 'literaladdAVideo');
   String get literaladdAGif =>
@@ -465,59 +465,59 @@ class AppLocalizations {
   String get literalnoDrafts =>
       Intl.message('literalnoDrafts', name: 'literalnoDrafts');
   String get literalcouldNotLoadTrending => Intl.message(
-    'literalcouldNotLoadTrending',
-    name: 'literalcouldNotLoadTrending',
-  );
+        'literalcouldNotLoadTrending',
+        name: 'literalcouldNotLoadTrending',
+      );
   String get literalnothingIsTrendingYet => Intl.message(
-    'literalnothingIsTrendingYet',
-    name: 'literalnothingIsTrendingYet',
-  );
+        'literalnothingIsTrendingYet',
+        name: 'literalnothingIsTrendingYet',
+      );
   String get literalcouldNotLoadTopics => Intl.message(
-    'literalcouldNotLoadTopics',
-    name: 'literalcouldNotLoadTopics',
-  );
+        'literalcouldNotLoadTopics',
+        name: 'literalcouldNotLoadTopics',
+      );
   String get literalnoTopicsYet =>
       Intl.message('literalnoTopicsYet', name: 'literalnoTopicsYet');
   String get literalcouldNotLoadSuggestions => Intl.message(
-    'literalcouldNotLoadSuggestions',
-    name: 'literalcouldNotLoadSuggestions',
-  );
+        'literalcouldNotLoadSuggestions',
+        name: 'literalcouldNotLoadSuggestions',
+      );
   String get literalnobodyLeftToSuggest => Intl.message(
-    'literalnobodyLeftToSuggest',
-    name: 'literalnobodyLeftToSuggest',
-  );
+        'literalnobodyLeftToSuggest',
+        name: 'literalnobodyLeftToSuggest',
+      );
   String get literalyouExampleCom =>
       Intl.message('literalyouExampleCom', name: 'literalyouExampleCom');
   String get literalsendTheLink =>
       Intl.message('literalsendTheLink', name: 'literalsendTheLink');
   String get literalopenTheMailFromKyron => Intl.message(
-    'literalopenTheMailFromKyron',
-    name: 'literalopenTheMailFromKyron',
-  );
+        'literalopenTheMailFromKyron',
+        name: 'literalopenTheMailFromKyron',
+      );
   String get literaltapTheLinkInsideIt => Intl.message(
-    'literaltapTheLinkInsideIt',
-    name: 'literaltapTheLinkInsideIt',
-  );
+        'literaltapTheLinkInsideIt',
+        name: 'literaltapTheLinkInsideIt',
+      );
   String get literalsetAPasswordAndCarryOn => Intl.message(
-    'literalsetAPasswordAndCarryOn',
-    name: 'literalsetAPasswordAndCarryOn',
-  );
+        'literalsetAPasswordAndCarryOn',
+        name: 'literalsetAPasswordAndCarryOn',
+      );
   String literalsendAgainInCooldownS(Object _cooldown) => Intl.message(
-    'literalsendAgainInCooldownS',
-    name: 'literalsendAgainInCooldownS',
-    args: [_cooldown],
-  );
+        'literalsendAgainInCooldownS',
+        name: 'literalsendAgainInCooldownS',
+        args: [_cooldown],
+      );
   String get literalsendAgain =>
       Intl.message('literalsendAgain', name: 'literalsendAgain');
   String literalnormalised(Object normalised) => Intl.message(
-    'literalnormalised',
-    name: 'literalnormalised',
-    args: [normalised],
-  );
+        'literalnormalised',
+        name: 'literalnormalised',
+        args: [normalised],
+      );
   String get literalcouldNotLoadYourMessages => Intl.message(
-    'literalcouldNotLoadYourMessages',
-    name: 'literalcouldNotLoadYourMessages',
-  );
+        'literalcouldNotLoadYourMessages',
+        name: 'literalcouldNotLoadYourMessages',
+      );
   String get literalnothingUnread =>
       Intl.message('literalnothingUnread', name: 'literalnothingUnread');
   String get literalnoMessagesYet =>
@@ -533,25 +533,25 @@ class AppLocalizations {
   String get literalnoRepostsYet =>
       Intl.message('literalnoRepostsYet', name: 'literalnoRepostsYet');
   String get literalyouAreAllCaughtUp => Intl.message(
-    'literalyouAreAllCaughtUp',
-    name: 'literalyouAreAllCaughtUp',
-  );
+        'literalyouAreAllCaughtUp',
+        name: 'literalyouAreAllCaughtUp',
+      );
   String get literalcouldNotLoadNotifications => Intl.message(
-    'literalcouldNotLoadNotifications',
-    name: 'literalcouldNotLoadNotifications',
-  );
+        'literalcouldNotLoadNotifications',
+        name: 'literalcouldNotLoadNotifications',
+      );
   String get literalcoverPhoto =>
       Intl.message('literalcoverPhoto', name: 'literalcoverPhoto');
   String get literalchooseFromGallery => Intl.message(
-    'literalchooseFromGallery',
-    name: 'literalchooseFromGallery',
-  );
+        'literalchooseFromGallery',
+        name: 'literalchooseFromGallery',
+      );
   String get literaluseOneOfOurs =>
       Intl.message('literaluseOneOfOurs', name: 'literaluseOneOfOurs');
   String get literaltapToAddAPhotoAndACover => Intl.message(
-    'literaltapToAddAPhotoAndACover',
-    name: 'literaltapToAddAPhotoAndACover',
-  );
+        'literaltapToAddAPhotoAndACover',
+        name: 'literaltapToAddAPhotoAndACover',
+      );
   String get literalnoInterestsYet =>
       Intl.message('literalnoInterestsYet', name: 'literalnoInterestsYet');
   String get literaldiscoverPeople =>
@@ -559,25 +559,25 @@ class AppLocalizations {
   String get literalcancelReply =>
       Intl.message('literalcancelReply', name: 'literalcancelReply');
   String get literalcouldNotLoadThisPost => Intl.message(
-    'literalcouldNotLoadThisPost',
-    name: 'literalcouldNotLoadThisPost',
-  );
+        'literalcouldNotLoadThisPost',
+        name: 'literalcouldNotLoadThisPost',
+      );
   String get literalshareThisProfile =>
       Intl.message('literalshareThisProfile', name: 'literalshareThisProfile');
   String get literalcouldNotLoadThesePosts => Intl.message(
-    'literalcouldNotLoadThesePosts',
-    name: 'literalcouldNotLoadThesePosts',
-  );
+        'literalcouldNotLoadThesePosts',
+        name: 'literalcouldNotLoadThesePosts',
+      );
   String get literalyouHaveNotPostedYet => Intl.message(
-    'literalyouHaveNotPostedYet',
-    name: 'literalyouHaveNotPostedYet',
-  );
+        'literalyouHaveNotPostedYet',
+        name: 'literalyouHaveNotPostedYet',
+      );
   String get literalnoPostsYet =>
       Intl.message('literalnoPostsYet', name: 'literalnoPostsYet');
   String get literalnothingToLookAtYet => Intl.message(
-    'literalnothingToLookAtYet',
-    name: 'literalnothingToLookAtYet',
-  );
+        'literalnothingToLookAtYet',
+        name: 'literalnothingToLookAtYet',
+      );
   String get literalkeepTyping =>
       Intl.message('literalkeepTyping', name: 'literalkeepTyping');
   String get literalsearchFailed =>
@@ -595,15 +595,15 @@ class AppLocalizations {
   String get literalpasswordLogin =>
       Intl.message('literalpasswordLogin', name: 'literalpasswordLogin');
   String get literalmutedAndBlockedAccounts => Intl.message(
-    'literalmutedAndBlockedAccounts',
-    name: 'literalmutedAndBlockedAccounts',
-  );
+        'literalmutedAndBlockedAccounts',
+        name: 'literalmutedAndBlockedAccounts',
+      );
   String get literalfontSize =>
       Intl.message('literalfontSize', name: 'literalfontSize');
   String get literalpushNotifications => Intl.message(
-    'literalpushNotifications',
-    name: 'literalpushNotifications',
-  );
+        'literalpushNotifications',
+        name: 'literalpushNotifications',
+      );
   String get literaldataSaver =>
       Intl.message('literaldataSaver', name: 'literaldataSaver');
   String get literalcontactSupport =>
@@ -617,23 +617,23 @@ class AppLocalizations {
   String get literalcontentLanguages =>
       Intl.message('literalcontentLanguages', name: 'literalcontentLanguages');
   String literalremoveLanguageEnglishname(Object language) => Intl.message(
-    'literalremoveLanguageEnglishname',
-    name: 'literalremoveLanguageEnglishname',
-    args: [language],
-  );
+        'literalremoveLanguageEnglishname',
+        name: 'literalremoveLanguageEnglishname',
+        args: [language],
+      );
   String literalsentItIsReportFiledNumber(Object filed) => Intl.message(
-    'literalsentItIsReportFiledNumber',
-    name: 'literalsentItIsReportFiledNumber',
-    args: [filed],
-  );
+        'literalsentItIsReportFiledNumber',
+        name: 'literalsentItIsReportFiledNumber',
+        args: [filed],
+      );
   String get literalfeedbackCannotBeSentRightNow => Intl.message(
-    'literalfeedbackCannotBeSentRightNow',
-    name: 'literalfeedbackCannotBeSentRightNow',
-  );
+        'literalfeedbackCannotBeSentRightNow',
+        name: 'literalfeedbackCannotBeSentRightNow',
+      );
   String get literalwhatYouDidWhatYouExpectedWhatHappened => Intl.message(
-    'literalwhatYouDidWhatYouExpectedWhatHappened',
-    name: 'literalwhatYouDidWhatYouExpectedWhatHappened',
-  );
+        'literalwhatYouDidWhatYouExpectedWhatHappened',
+        name: 'literalwhatYouDidWhatYouExpectedWhatHappened',
+      );
   String literalverificationFailedDescribeapierrorE(Object describeApiError) =>
       Intl.message(
         'literalverificationFailedDescribeapierrorE',
@@ -641,29 +641,29 @@ class AppLocalizations {
         args: [describeApiError],
       );
   String get literalverificationCodeResent => Intl.message(
-    'literalverificationCodeResent',
-    name: 'literalverificationCodeResent',
-  );
+        'literalverificationCodeResent',
+        name: 'literalverificationCodeResent',
+      );
   String get literalverifyEmail =>
       Intl.message('literalverifyEmail', name: 'literalverifyEmail');
   String get literalresendCode =>
       Intl.message('literalresendCode', name: 'literalresendCode');
   String get literalremoveThisConversation => Intl.message(
-    'literalremoveThisConversation',
-    name: 'literalremoveThisConversation',
-  );
+        'literalremoveThisConversation',
+        name: 'literalremoveThisConversation',
+      );
   String get literalmutedYouWillNotBeNotified => Intl.message(
-    'literalmutedYouWillNotBeNotified',
-    name: 'literalmutedYouWillNotBeNotified',
-  );
+        'literalmutedYouWillNotBeNotified',
+        name: 'literalmutedYouWillNotBeNotified',
+      );
   String get literalblockThisAccount =>
       Intl.message('literalblockThisAccount', name: 'literalblockThisAccount');
   String get literalyouAreSignedOut =>
       Intl.message('literalyouAreSignedOut', name: 'literalyouAreSignedOut');
   String get literalcouldNotLoadThisConversation => Intl.message(
-    'literalcouldNotLoadThisConversation',
-    name: 'literalcouldNotLoadThisConversation',
-  );
+        'literalcouldNotLoadThisConversation',
+        name: 'literalcouldNotLoadThisConversation',
+      );
   String get literalsaySomething =>
       Intl.message('literalsaySomething', name: 'literalsaySomething');
   String get literalcopyText =>
@@ -677,22 +677,22 @@ class AppLocalizations {
   String get literalturnSoundOff =>
       Intl.message('literalturnSoundOff', name: 'literalturnSoundOff');
   String get literalthatLinkIsNotOneThisCanOpen => Intl.message(
-    'literalthatLinkIsNotOneThisCanOpen',
-    name: 'literalthatLinkIsNotOneThisCanOpen',
-  );
+        'literalthatLinkIsNotOneThisCanOpen',
+        name: 'literalthatLinkIsNotOneThisCanOpen',
+      );
   String get literalnoBrowserOnThisDeviceTookThatLink => Intl.message(
-    'literalnoBrowserOnThisDeviceTookThatLink',
-    name: 'literalnoBrowserOnThisDeviceTookThatLink',
-  );
+        'literalnoBrowserOnThisDeviceTookThatLink',
+        name: 'literalnoBrowserOnThisDeviceTookThatLink',
+      );
   String get literalopenReply =>
       Intl.message('literalopenReply', name: 'literalopenReply');
   String literalindex1(Object index) =>
       Intl.message('literalindex1', name: 'literalindex1', args: [index]);
   String literalfirstyearIndex(Object _firstYear) => Intl.message(
-    'literalfirstyearIndex',
-    name: 'literalfirstyearIndex',
-    args: [_firstYear],
-  );
+        'literalfirstyearIndex',
+        name: 'literalfirstyearIndex',
+        args: [_firstYear],
+      );
   String get literalgifsAreNotSetUp =>
       Intl.message('literalgifsAreNotSetUp', name: 'literalgifsAreNotSetUp');
   String get literalcouldNotLoadGifs =>
@@ -700,39 +700,39 @@ class AppLocalizations {
   String get literalnothingFound =>
       Intl.message('literalnothingFound', name: 'literalnothingFound');
   String get literalthatGifCouldNotBeDownloaded => Intl.message(
-    'literalthatGifCouldNotBeDownloaded',
-    name: 'literalthatGifCouldNotBeDownloaded',
-  );
+        'literalthatGifCouldNotBeDownloaded',
+        name: 'literalthatGifCouldNotBeDownloaded',
+      );
   String get literaladdAnInterest =>
       Intl.message('literaladdAnInterest', name: 'literaladdAnInterest');
   String get literalcouldNotLoadTrendingTags => Intl.message(
-    'literalcouldNotLoadTrendingTags',
-    name: 'literalcouldNotLoadTrendingTags',
-  );
+        'literalcouldNotLoadTrendingTags',
+        name: 'literalcouldNotLoadTrendingTags',
+      );
   String get literalnoTrendingTagMatchesThat => Intl.message(
-    'literalnoTrendingTagMatchesThat',
-    name: 'literalnoTrendingTagMatchesThat',
-  );
+        'literalnoTrendingTagMatchesThat',
+        name: 'literalnoTrendingTagMatchesThat',
+      );
   String get literalyouAlreadyFollowEveryTrendingTag => Intl.message(
-    'literalyouAlreadyFollowEveryTrendingTag',
-    name: 'literalyouAlreadyFollowEveryTrendingTag',
-  );
+        'literalyouAlreadyFollowEveryTrendingTag',
+        name: 'literalyouAlreadyFollowEveryTrendingTag',
+      );
   String literalremoveLabel(Object label) => Intl.message(
-    'literalremoveLabel',
-    name: 'literalremoveLabel',
-    args: [label],
-  );
+        'literalremoveLabel',
+        name: 'literalremoveLabel',
+        args: [label],
+      );
   String literaladdLabelAsATab(Object label) => Intl.message(
-    'literaladdLabelAsATab',
-    name: 'literaladdLabelAsATab',
-    args: [label],
-  );
+        'literaladdLabelAsATab',
+        name: 'literaladdLabelAsATab',
+        args: [label],
+      );
   String get literalcouldNotSearch =>
       Intl.message('literalcouldNotSearch', name: 'literalcouldNotSearch');
   String get literalwhoDoYouWantToTag => Intl.message(
-    'literalwhoDoYouWantToTag',
-    name: 'literalwhoDoYouWantToTag',
-  );
+        'literalwhoDoYouWantToTag',
+        name: 'literalwhoDoYouWantToTag',
+      );
   String get literalnobodyFound =>
       Intl.message('literalnobodyFound', name: 'literalnobodyFound');
   String get literalshowPassword =>
@@ -746,61 +746,61 @@ class AppLocalizations {
   String get literalcopyLinkToPost =>
       Intl.message('literalcopyLinkToPost', name: 'literalcopyLinkToPost');
   String get literalshowMorePostsLikeThis => Intl.message(
-    'literalshowMorePostsLikeThis',
-    name: 'literalshowMorePostsLikeThis',
-  );
+        'literalshowMorePostsLikeThis',
+        name: 'literalshowMorePostsLikeThis',
+      );
   String get literalnotInterestedInThis => Intl.message(
-    'literalnotInterestedInThis',
-    name: 'literalnotInterestedInThis',
-  );
+        'literalnotInterestedInThis',
+        name: 'literalnotInterestedInThis',
+      );
   String get literalhidesItAndTellsUsToShowFewerLikeIt => Intl.message(
-    'literalhidesItAndTellsUsToShowFewerLikeIt',
-    name: 'literalhidesItAndTellsUsToShowFewerLikeIt',
-  );
+        'literalhidesItAndTellsUsToShowFewerLikeIt',
+        name: 'literalhidesItAndTellsUsToShowFewerLikeIt',
+      );
   String get literalhideThisPost =>
       Intl.message('literalhideThisPost', name: 'literalhideThisPost');
   String get literalmuteThisThread =>
       Intl.message('literalmuteThisThread', name: 'literalmuteThisThread');
   String get literalstopSeeingThisPostAndRepliesToIt => Intl.message(
-    'literalstopSeeingThisPostAndRepliesToIt',
-    name: 'literalstopSeeingThisPostAndRepliesToIt',
-  );
+        'literalstopSeeingThisPostAndRepliesToIt',
+        name: 'literalstopSeeingThisPostAndRepliesToIt',
+      );
   String get literalmuteWordsOrTags =>
       Intl.message('literalmuteWordsOrTags', name: 'literalmuteWordsOrTags');
   String get literalviewersLikesSavesAndComments => Intl.message(
-    'literalviewersLikesSavesAndComments',
-    name: 'literalviewersLikesSavesAndComments',
-  );
+        'literalviewersLikesSavesAndComments',
+        name: 'literalviewersLikesSavesAndComments',
+      );
   String get literalwhoCanReply =>
       Intl.message('literalwhoCanReply', name: 'literalwhoCanReply');
   String get literaldeletePost =>
       Intl.message('literaldeletePost', name: 'literaldeletePost');
   String literalmuteAuthor(Object author) => Intl.message(
-    'literalmuteAuthor',
-    name: 'literalmuteAuthor',
-    args: [author],
-  );
+        'literalmuteAuthor',
+        name: 'literalmuteAuthor',
+        args: [author],
+      );
   String literalblockAuthor(Object author) => Intl.message(
-    'literalblockAuthor',
-    name: 'literalblockAuthor',
-    args: [author],
-  );
+        'literalblockAuthor',
+        name: 'literalblockAuthor',
+        args: [author],
+      );
   String get literalreportPost =>
       Intl.message('literalreportPost', name: 'literalreportPost');
   String literalreportAuthor(Object author) => Intl.message(
-    'literalreportAuthor',
-    name: 'literalreportAuthor',
-    args: [author],
-  );
+        'literalreportAuthor',
+        name: 'literalreportAuthor',
+        args: [author],
+      );
   String get literalthatDidNotGoThroughTryAgain => Intl.message(
-    'literalthatDidNotGoThroughTryAgain',
-    name: 'literalthatDidNotGoThroughTryAgain',
-  );
+        'literalthatDidNotGoThroughTryAgain',
+        name: 'literalthatDidNotGoThroughTryAgain',
+      );
   String literalblockAuthor2(Object author) => Intl.message(
-    'literalblockAuthor2',
-    name: 'literalblockAuthor2',
-    args: [author],
-  );
+        'literalblockAuthor2',
+        name: 'literalblockAuthor2',
+        args: [author],
+      );
   String get literalshowResults =>
       Intl.message('literalshowResults', name: 'literalshowResults');
   String literallabelDate(Object label) =>
@@ -808,44 +808,44 @@ class AppLocalizations {
   String get literalshareVia =>
       Intl.message('literalshareVia', name: 'literalshareVia');
   String get literalhandItToAnotherApp => Intl.message(
-    'literalhandItToAnotherApp',
-    name: 'literalhandItToAnotherApp',
-  );
+        'literalhandItToAnotherApp',
+        name: 'literalhandItToAnotherApp',
+      );
   String get literalshareWithAQuote =>
       Intl.message('literalshareWithAQuote', name: 'literalshareWithAQuote');
   String get literalpostItWithYourOwnWordsAboveIt => Intl.message(
-    'literalpostItWithYourOwnWordsAboveIt',
-    name: 'literalpostItWithYourOwnWordsAboveIt',
-  );
+        'literalpostItWithYourOwnWordsAboveIt',
+        name: 'literalpostItWithYourOwnWordsAboveIt',
+      );
   String get literalsavedPosts =>
       Intl.message('literalsavedPosts', name: 'literalsavedPosts');
   String get literallikedPosts =>
       Intl.message('literallikedPosts', name: 'literallikedPosts');
   String literalstoriesRibbonStoriesLengthItems(Object stories) => Intl.message(
-    'literalstoriesRibbonStoriesLengthItems',
-    name: 'literalstoriesRibbonStoriesLengthItems',
-    args: [stories],
-  );
+        'literalstoriesRibbonStoriesLengthItems',
+        name: 'literalstoriesRibbonStoriesLengthItems',
+        args: [stories],
+      );
   String get literalwhatYouPostIsYours => Intl.message(
-    'literalwhatYouPostIsYours',
-    name: 'literalwhatYouPostIsYours',
-  );
+        'literalwhatYouPostIsYours',
+        name: 'literalwhatYouPostIsYours',
+      );
   String get literalwhatKyronKeeps =>
       Intl.message('literalwhatKyronKeeps', name: 'literalwhatKyronKeeps');
   String get literalhowToBehave =>
       Intl.message('literalhowToBehave', name: 'literalhowToBehave');
   String literalcloseTabLabel(Object tab) => Intl.message(
-    'literalcloseTabLabel',
-    name: 'literalcloseTabLabel',
-    args: [tab],
-  );
+        'literalcloseTabLabel',
+        name: 'literalcloseTabLabel',
+        args: [tab],
+      );
   String get literal1PageOpen =>
       Intl.message('literal1PageOpen', name: 'literal1PageOpen');
   String literalcountPagesOpen(Object count) => Intl.message(
-    'literalcountPagesOpen',
-    name: 'literalcountPagesOpen',
-    args: [count],
-  );
+        'literalcountPagesOpen',
+        name: 'literalcountPagesOpen',
+        args: [count],
+      );
   String get literalstopLoading =>
       Intl.message('literalstopLoading', name: 'literalstopLoading');
   String get literalshareThisPage =>
@@ -869,10 +869,10 @@ class AppLocalizations {
   String get literalrecordAgain =>
       Intl.message('literalrecordAgain', name: 'literalrecordAgain');
   String literallabelCount(Object label, Object count) => Intl.message(
-    'literallabelCount',
-    name: 'literallabelCount',
-    args: [label, count],
-  );
+        'literallabelCount',
+        name: 'literallabelCount',
+        args: [label, count],
+      );
 }
 
 class _AppLocalizationsDelegate

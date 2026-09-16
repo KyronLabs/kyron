@@ -36,8 +36,7 @@ class AuthRepository {
     return User(
       id: account.id,
       email: account.email ?? '',
-      username:
-          meta['username'] as String? ??
+      username: meta['username'] as String? ??
           meta['user_name'] as String? ??
           meta['preferred_username'] as String?,
       name: meta['full_name'] as String? ?? meta['name'] as String?,
@@ -45,12 +44,12 @@ class AuthRepository {
   }
 
   AuthTokens _toTokens(Session session) => AuthTokens(
-    accessToken: session.accessToken,
-    refreshToken: session.refreshToken ?? '',
-    expiresAt: session.expiresAt != null
-        ? DateTime.fromMillisecondsSinceEpoch(session.expiresAt! * 1000)
-        : DateTime.now().add(const Duration(hours: 1)),
-  );
+        accessToken: session.accessToken,
+        refreshToken: session.refreshToken ?? '',
+        expiresAt: session.expiresAt != null
+            ? DateTime.fromMillisecondsSinceEpoch(session.expiresAt! * 1000)
+            : DateTime.now().add(const Duration(hours: 1)),
+      );
 
   Future<LoginResponse> loginWithUser({
     required String email,
@@ -159,10 +158,10 @@ class AuthRepository {
   /// dashboard. Without that the browser opens on Supabase's own
   /// "Unsupported provider" page, which nothing here can intercept.
   Future<bool> startGoogleSignIn() => _auth.signInWithOAuth(
-    OAuthProvider.google,
-    redirectTo: SupabaseConfig.authRedirect,
-    authScreenLaunchMode: LaunchMode.externalApplication,
-  );
+        OAuthProvider.google,
+        redirectTo: SupabaseConfig.authRedirect,
+        authScreenLaunchMode: LaunchMode.externalApplication,
+      );
 
   /// Takes up a session established outside the app and caches the account
   /// behind it.
@@ -185,9 +184,9 @@ class AuthRepository {
   /// password is set. Without the redirect the mail pointed at the project's
   /// Site URL and the account stayed locked.
   Future<void> sendPasswordReset(String email) => _auth.resetPasswordForEmail(
-    email,
-    redirectTo: SupabaseConfig.authRedirect,
-  );
+        email,
+        redirectTo: SupabaseConfig.authRedirect,
+      );
 
   /// Confirms a sign-up with the 6-digit code Supabase mails out. Only reachable
   /// when email auto-confirm is disabled on the project; with it enabled,

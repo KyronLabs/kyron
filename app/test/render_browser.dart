@@ -21,49 +21,49 @@ class _PaperEngine implements BrowserEngine {
 
   @override
   Widget view() => Builder(
-    builder: (context) {
-      final dark = Theme.of(context).brightness == Brightness.dark;
-      final ink = dark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
-      Widget bar(double w, double h, double o) => Container(
-        width: w,
-        height: h,
-        margin: const EdgeInsets.only(bottom: 11),
-        decoration: BoxDecoration(
-          color: ink.withValues(alpha: o),
-          borderRadius: BorderRadius.circular(3),
-        ),
-      );
-      return ColoredBox(
-        color: dark ? const Color(0xFF15161A) : Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(22),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              bar(210, 22, 0.85),
-              const SizedBox(height: 8),
-              bar(300, 9, 0.30),
-              bar(288, 9, 0.30),
-              bar(196, 9, 0.30),
-              const SizedBox(height: 10),
-              Container(
-                height: 132,
+        builder: (context) {
+          final dark = Theme.of(context).brightness == Brightness.dark;
+          final ink = dark ? const Color(0xFFE5EBF5) : const Color(0xFF1A202C);
+          Widget bar(double w, double h, double o) => Container(
+                width: w,
+                height: h,
+                margin: const EdgeInsets.only(bottom: 11),
                 decoration: BoxDecoration(
-                  color: ink.withValues(alpha: 0.09),
-                  borderRadius: BorderRadius.circular(10),
+                  color: ink.withValues(alpha: o),
+                  borderRadius: BorderRadius.circular(3),
                 ),
+              );
+          return ColoredBox(
+            color: dark ? const Color(0xFF15161A) : Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(22),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  bar(210, 22, 0.85),
+                  const SizedBox(height: 8),
+                  bar(300, 9, 0.30),
+                  bar(288, 9, 0.30),
+                  bar(196, 9, 0.30),
+                  const SizedBox(height: 10),
+                  Container(
+                    height: 132,
+                    decoration: BoxDecoration(
+                      color: ink.withValues(alpha: 0.09),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  bar(300, 9, 0.30),
+                  bar(272, 9, 0.30),
+                  bar(296, 9, 0.30),
+                  bar(150, 9, 0.30),
+                ],
               ),
-              const SizedBox(height: 16),
-              bar(300, 9, 0.30),
-              bar(272, 9, 0.30),
-              bar(296, 9, 0.30),
-              bar(150, 9, 0.30),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       );
-    },
-  );
 
   @override
   Future<void> load(Uri url) async {}
@@ -133,9 +133,8 @@ void main() {
             home: Builder(
               builder: (context) => Scaffold(
                 body: Container(
-                  color: dark
-                      ? const Color(0xFF0D0D0F)
-                      : const Color(0xFFF0F4F8),
+                  color:
+                      dark ? const Color(0xFF0D0D0F) : const Color(0xFFF0F4F8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

@@ -86,9 +86,8 @@ class _CommunityComposerScreenState
   /// typed if the caret is in one.
   Future<void> _tagSomeone() async {
     final value = _box.value;
-    final caret = value.selection.isValid
-        ? value.selection.end
-        : value.text.length;
+    final caret =
+        value.selection.isValid ? value.selection.end : value.text.length;
     final typing = mentionAt(value.text, caret);
 
     final handle = await MentionPickerSheet.show(
@@ -201,16 +200,14 @@ class _CommunityComposerScreenState
                 children: [
                   IconButton(
                     tooltip: AppLocalizations.of(context).literaladdAPhoto,
-                    onPressed: _media.hasRoom
-                        ? () => _attach(video: false)
-                        : null,
+                    onPressed:
+                        _media.hasRoom ? () => _attach(video: false) : null,
                     icon: const Icon(Iconsax.gallery_copy, size: 20),
                   ),
                   IconButton(
                     tooltip: AppLocalizations.of(context).literaladdAClip,
-                    onPressed: _media.hasRoom
-                        ? () => _attach(video: true)
-                        : null,
+                    onPressed:
+                        _media.hasRoom ? () => _attach(video: true) : null,
                     icon: const Icon(Iconsax.video_copy, size: 20),
                   ),
                   IconButton(

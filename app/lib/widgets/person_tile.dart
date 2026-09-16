@@ -184,8 +184,8 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final muted = Theme.of(context).colorScheme.onSurface
-        .withValues(alpha: 0.55);
+    final muted =
+        Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55);
 
     return Row(
       mainAxisSize: MainAxisSize.min,

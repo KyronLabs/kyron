@@ -50,7 +50,7 @@ String describeApiError(Object error, {bool sessionIsLive = false}) {
         final said = _serverMessage(error.response?.data);
         return said == null
             ? 'Kyron could not verify your sign-in (error $status). That is a '
-                  'problem on our end, not with your account.'
+                'problem on our end, not with your account.'
             : 'Kyron could not verify your sign-in (error $status): $said';
       }
       if (status >= 500) {
@@ -60,7 +60,7 @@ String describeApiError(Object error, {bool sessionIsLive = false}) {
         // reader nothing the status code has not already.
         return said == null || said.toLowerCase() == 'internal server error'
             ? 'Kyron is having trouble on its end (error $status). Please try '
-                  'again shortly.'
+                'again shortly.'
             : '$said (error $status)';
       }
       return _serverMessage(error.response?.data) ??

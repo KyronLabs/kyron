@@ -44,11 +44,11 @@ class SealedMessage {
   /// Prefixed with a version, because a scheme that cannot be changed is one
   /// that has to be right first time.
   String encode() => [
-    'k1',
-    base64Url.encode(nonce),
-    base64Url.encode(body),
-    base64Url.encode(mac),
-  ].join('.');
+        'k1',
+        base64Url.encode(nonce),
+        base64Url.encode(body),
+        base64Url.encode(mac),
+      ].join('.');
 
   /// Reads one back, or null if this is not a sealed message at all -- which
   /// is what every message written before this existed looks like.
@@ -70,8 +70,8 @@ class SealedMessage {
 /// Sealing and opening, and the keys both need.
 class MessageCrypto {
   MessageCrypto({Xchacha20? cipher, X25519? exchange})
-    : _cipher = cipher ?? Xchacha20.poly1305Aead(),
-      _exchange = exchange ?? X25519();
+      : _cipher = cipher ?? Xchacha20.poly1305Aead(),
+        _exchange = exchange ?? X25519();
 
   final Xchacha20 _cipher;
   final X25519 _exchange;

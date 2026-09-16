@@ -36,10 +36,10 @@ class AttachmentImages {
   /// rather than waited for: a lens that is half loaded draws the half it has
   /// and completes on a later frame.
   List<ResolvedAttachment> ready(Lens lens) => [
-    for (final attachment in lens.attachments)
-      if (_decoded[attachment.asset] case final image?)
-        ResolvedAttachment(attachment, image),
-  ];
+        for (final attachment in lens.attachments)
+          if (_decoded[attachment.asset] case final image?)
+            ResolvedAttachment(attachment, image),
+      ];
 
   /// How many pictures are decoded right now.
   ///
@@ -69,9 +69,8 @@ class AttachmentImages {
 
   Future<bool> _fetch(String url) async {
     try {
-      final response = await _http
-          .get(Uri.parse(url))
-          .timeout(const Duration(seconds: 10));
+      final response =
+          await _http.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
 
       if (response.statusCode != 200) {
         _failed.add(url);

@@ -11,8 +11,7 @@ import 'package:flutter/scheduler.dart';
 /// open rather than as what it was.
 void whenNotBuilding(VoidCallback action) {
   final phase = SchedulerBinding.instance.schedulerPhase;
-  final building =
-      phase == SchedulerPhase.persistentCallbacks ||
+  final building = phase == SchedulerPhase.persistentCallbacks ||
       phase == SchedulerPhase.midFrameMicrotasks;
 
   if (building) {

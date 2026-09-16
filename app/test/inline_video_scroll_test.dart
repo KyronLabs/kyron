@@ -41,12 +41,12 @@ void main() {
   });
 
   PostMedia clip(String id) => PostMedia(
-    id: id,
-    url: 'https://example.com/$id.mp4',
-    kind: MediaKind.video,
-    width: 720,
-    height: 1280,
-  );
+        id: id,
+        url: 'https://example.com/$id.mp4',
+        kind: MediaKind.video,
+        width: 720,
+        height: 1280,
+      );
 
   /// A clip in the middle of a list long enough to scroll.
   Future<void> pumpFeed(WidgetTester tester) async {
@@ -99,8 +99,7 @@ void main() {
     expect(
       VideoPool.instance.liveCount,
       1,
-      reason:
-          'and it must still open once the list is still, or the clip '
+      reason: 'and it must still open once the list is still, or the clip '
           'never plays at all',
     );
   });

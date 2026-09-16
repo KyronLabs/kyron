@@ -86,5 +86,5 @@ class StoriesNotifier extends StateNotifier<AsyncValue<List<Story>>> {
 // ✅ ADDED: The missing provider declaration
 final storiesProvider =
     StateNotifierProvider<StoriesNotifier, AsyncValue<List<Story>>>((ref) {
-      return StoriesNotifier();
-    });
+  return StoriesNotifier();
+});

@@ -10,14 +10,15 @@ Map<String, Object?> attachment({
   Object? offsetX,
   Object? offsetY,
   Object? rotation,
-}) => {
-  'asset': asset,
-  'anchor': anchor,
-  'width': width,
-  if (offsetX != null) 'offsetX': offsetX,
-  if (offsetY != null) 'offsetY': offsetY,
-  if (rotation != null) 'rotation': rotation,
-};
+}) =>
+    {
+      'asset': asset,
+      'anchor': anchor,
+      'width': width,
+      if (offsetX != null) 'offsetX': offsetX,
+      if (offsetY != null) 'offsetY': offsetY,
+      if (rotation != null) 'rotation': rotation,
+    };
 
 void main() {
   group('LensAttachment.tryParse', () {

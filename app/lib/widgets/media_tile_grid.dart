@@ -150,15 +150,15 @@ class _Tile extends StatelessWidget {
                   // posted before the composer started sending a still falls
                   // back to a decoder, which the pool holds to a handful.
                   ? (media.thumbnailUrl != null
-                        ? VideoPoster(
-                            media: media,
-                            badge: VideoPosterBadge.none,
-                          )
-                        : InlineVideo(
-                            media: media,
-                            autoplay: false,
-                            chrome: false,
-                          ))
+                      ? VideoPoster(
+                          media: media,
+                          badge: VideoPosterBadge.none,
+                        )
+                      : InlineVideo(
+                          media: media,
+                          autoplay: false,
+                          chrome: false,
+                        ))
                   : Image.network(
                       media.url,
                       fit: BoxFit.cover,
@@ -172,8 +172,8 @@ class _Tile extends StatelessWidget {
                           color: scheme.onSurface.withValues(alpha: 0.35),
                         ),
                       ),
-                      loadingBuilder: (context, child, progress) =>
-                          progress == null
+                      loadingBuilder: (context, child, progress) => progress ==
+                              null
                           ? child
                           : ColoredBox(color: scheme.surfaceContainerHighest),
                     ),

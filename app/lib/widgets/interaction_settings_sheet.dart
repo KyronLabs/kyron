@@ -40,7 +40,9 @@ class InteractionSettingsSheet {
                     'Anyone can still see, repost and quote this post.',
                     style: TextStyle(
                       fontSize: TypographyTokens.fontSize2,
-                      color: Theme.of(sheetContext).colorScheme.onSurface
+                      color: Theme.of(sheetContext)
+                          .colorScheme
+                          .onSurface
                           .withValues(alpha: .7),
                     ),
                   ),
@@ -67,9 +69,9 @@ class InteractionSettingsSheet {
   }
 
   static IconData _iconFor(ReplyPolicy policy) => switch (policy) {
-    ReplyPolicy.everyone => Iconsax.global_copy,
-    ReplyPolicy.followers => Iconsax.profile_2user_copy,
-    ReplyPolicy.mentioned => Iconsax.tag_user_copy,
-    ReplyPolicy.nobody => Iconsax.lock_copy,
-  };
+        ReplyPolicy.everyone => Iconsax.global_copy,
+        ReplyPolicy.followers => Iconsax.profile_2user_copy,
+        ReplyPolicy.mentioned => Iconsax.tag_user_copy,
+        ReplyPolicy.nobody => Iconsax.lock_copy,
+      };
 }

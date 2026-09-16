@@ -37,13 +37,14 @@ class NotificationListState {
     bool? loadingMore,
     String? error,
     bool clearError = false,
-  }) => NotificationListState(
-    items: items ?? this.items,
-    cursor: clearCursor ? null : (cursor ?? this.cursor),
-    loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
-    loadingMore: loadingMore ?? this.loadingMore,
-    error: clearError ? null : (error ?? this.error),
-  );
+  }) =>
+      NotificationListState(
+        items: items ?? this.items,
+        cursor: clearCursor ? null : (cursor ?? this.cursor),
+        loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
+        loadingMore: loadingMore ?? this.loadingMore,
+        error: clearError ? null : (error ?? this.error),
+      );
 }
 
 class NotificationListNotifier extends StateNotifier<NotificationListState> {
@@ -54,7 +55,7 @@ class NotificationListNotifier extends StateNotifier<NotificationListState> {
   final NotificationType? kind;
 
   NotificationListNotifier(this._repo, {required this.kind})
-    : super(const NotificationListState()) {
+      : super(const NotificationListState()) {
     refresh();
   }
 
@@ -104,17 +105,13 @@ class NotificationListNotifier extends StateNotifier<NotificationListState> {
 }
 
 /// One per tab, so switching back to a tab does not reload it.
-final notificationListProvider =
-    StateNotifierProvider.family<
-      NotificationListNotifier,
-      NotificationListState,
-      NotificationType?
-    >(
-      (ref, kind) => NotificationListNotifier(
-        ref.read(notificationsRepositoryProvider),
-        kind: kind,
-      ),
-    );
+final notificationListProvider = StateNotifierProvider.family<
+    NotificationListNotifier, NotificationListState, NotificationType?>(
+  (ref, kind) => NotificationListNotifier(
+    ref.read(notificationsRepositoryProvider),
+    kind: kind,
+  ),
+);
 
 /// How many have arrived since the screen was last opened.
 final unreadNotificationsProvider = FutureProvider<int>(

@@ -383,9 +383,8 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                   textCapitalization: TextCapitalization.sentences,
                   onChanged: (_) => setState(() {}),
                   decoration: InputDecoration(
-                    hintText: replyingTo == null
-                        ? 'Add a comment'
-                        : 'Write a reply',
+                    hintText:
+                        replyingTo == null ? 'Add a comment' : 'Write a reply',
                     border: InputBorder.none,
                     counterText: '',
                     isDense: true,
@@ -408,10 +407,10 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                 // A picture with no words is a reply; an empty box is not.
                 onPressed:
                     (_controller.text.trim().isEmpty && state.media.isEmpty) ||
-                        state.isSending ||
-                        state.isUploading
-                    ? null
-                    : _send,
+                            state.isSending ||
+                            state.isUploading
+                        ? null
+                        : _send,
               ),
             ],
           ),
@@ -434,13 +433,13 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
   /// The assembly is [assembleThread]: a pure function, so the rule that a
   /// run only enters once its parent has can be tested.
   ThreadLayout _thread(PostDetailState state) => buildThreadLayout(
-    assembleThread(
-      comments: state.comments,
-      replies: state.replies,
-      expanded: state.expanded,
-    ),
-    collapseAfter: 1 << 30,
-  );
+        assembleThread(
+          comments: state.comments,
+          replies: state.replies,
+          expanded: state.expanded,
+        ),
+        collapseAfter: 1 << 30,
+      );
 
   void _openComment(PostComment comment) =>
       Navigator.pushNamed(context, Routes.comment, arguments: comment.id);
@@ -771,8 +770,8 @@ class _ThreadHeading extends StatelessWidget {
         count == 0
             ? 'No comments yet'
             : count == 1
-            ? '1 comment'
-            : '${formatCount(count)} comments',
+                ? '1 comment'
+                : '${formatCount(count)} comments',
         style: TextStyle(
           fontSize: TypographyTokens.fontSize1,
           fontWeight: FontWeight.w700,

@@ -331,5 +331,5 @@ List<FeedPost> dedupePosts(List<FeedPost> posts) {
 
 final postListProvider =
     StateNotifierProvider.family<PostListNotifier, FeedState, PostListSource>(
-      (ref, source) => PostListNotifier(ref, source),
-    );
+  (ref, source) => PostListNotifier(ref, source),
+);

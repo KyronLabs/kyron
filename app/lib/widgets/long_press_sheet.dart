@@ -49,10 +49,10 @@ class LongPressSheet extends StatelessWidget {
                               top: Radius.circular(20),
                             )
                           : i == items.length - 1
-                          ? const BorderRadius.vertical(
-                              bottom: Radius.circular(20),
-                            )
-                          : BorderRadius.zero,
+                              ? const BorderRadius.vertical(
+                                  bottom: Radius.circular(20),
+                                )
+                              : BorderRadius.zero,
                     ),
                   ),
                   if (i < items.length - 1)

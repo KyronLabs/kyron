@@ -117,19 +117,20 @@ class HelpScreen extends StatelessWidget {
   }
 
   Widget _group(BuildContext context, String title) => Padding(
-    padding: const EdgeInsets.only(
-      left: SpacingTokens.space20,
-      top: SpacingTokens.space24,
-      bottom: SpacingTokens.space8,
-    ),
-    child: Text(
-      title.toUpperCase(),
-      style: TextStyle(
-        fontSize: TypographyTokens.fontSize1,
-        fontWeight: FontWeight.w700,
-        letterSpacing: 0.8,
-        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .5),
-      ),
-    ),
-  );
+        padding: const EdgeInsets.only(
+          left: SpacingTokens.space20,
+          top: SpacingTokens.space24,
+          bottom: SpacingTokens.space8,
+        ),
+        child: Text(
+          title.toUpperCase(),
+          style: TextStyle(
+            fontSize: TypographyTokens.fontSize1,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.8,
+            color:
+                Theme.of(context).colorScheme.onSurface.withValues(alpha: .5),
+          ),
+        ),
+      );
 }

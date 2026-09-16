@@ -73,10 +73,8 @@ class CommunitiesRepository {
       data: {
         'content': content,
         if (media.isNotEmpty)
-          'media': media
-              .where((m) => m.isReady)
-              .map((m) => m.toJson())
-              .toList(),
+          'media':
+              media.where((m) => m.isReady).map((m) => m.toJson()).toList(),
       },
     );
     return FeedPost.fromJson(res.data ?? const {});
@@ -154,6 +152,6 @@ class CommunitiesRepository {
 
   /// Closes a community. Soft, so its posts still resolve.
   Future<void> remove(String slug) => _api.dio.delete<Map<String, dynamic>>(
-    '/communities/${Uri.encodeComponent(slug)}',
-  );
+        '/communities/${Uri.encodeComponent(slug)}',
+      );
 }

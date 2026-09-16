@@ -127,7 +127,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         detail: state.mode == SearchMode.people
             ? 'Search by handle or display name.'
             : 'Words, or a filter — an account, a date range, or what a '
-                  'post carries.',
+                'post carries.',
       );
     }
     if (state.isTooShort) {

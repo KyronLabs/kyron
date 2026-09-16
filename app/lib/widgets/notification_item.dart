@@ -24,17 +24,17 @@ class NotificationItem extends StatelessWidget {
   });
 
   IconData get _badge => switch (notification.type) {
-    NotificationType.like => Iconsax.heart_copy,
-    NotificationType.comment => Iconsax.message_copy,
-    NotificationType.follow => Iconsax.user_add_copy,
-    NotificationType.repost => Iconsax.repeat_copy,
-  };
+        NotificationType.like => Iconsax.heart_copy,
+        NotificationType.comment => Iconsax.message_copy,
+        NotificationType.follow => Iconsax.user_add_copy,
+        NotificationType.repost => Iconsax.repeat_copy,
+      };
 
   Color _badgeColor(ColorScheme scheme) => switch (notification.type) {
-    NotificationType.like => const Color(0xFFE0245E),
-    NotificationType.repost => const Color(0xFF17BF63),
-    _ => scheme.primary,
-  };
+        NotificationType.like => const Color(0xFFE0245E),
+        NotificationType.repost => const Color(0xFF17BF63),
+        _ => scheme.primary,
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +47,8 @@ class NotificationItem extends StatelessWidget {
       child: Container(
         // Unread rows are tinted rather than dotted: the whole row reads at a
         // glance, where a dot has to be looked for.
-        color: notification.isRead
-            ? null
-            : scheme.primary.withValues(alpha: 0.06),
+        color:
+            notification.isRead ? null : scheme.primary.withValues(alpha: 0.06),
         padding: const EdgeInsets.symmetric(
           horizontal: SpacingTokens.space16,
           vertical: SpacingTokens.space12,

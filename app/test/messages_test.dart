@@ -281,11 +281,11 @@ void main() {
 
   group('the conversation list', () {
     Conversation row(String id, {int unread = 0}) => Conversation(
-      id: id,
-      people: [MessagePerson(id: 'p-$id', name: 'Person $id')],
-      unread: unread,
-      lastMessageAt: DateTime(2026, 1, 1),
-    );
+          id: id,
+          people: [MessagePerson(id: 'p-$id', name: 'Person $id')],
+          unread: unread,
+          lastMessageAt: DateTime(2026, 1, 1),
+        );
 
     test('clears a badge once the thread has been opened', () async {
       final repo = _FakeMessages(rows: [row('a', unread: 3)]);

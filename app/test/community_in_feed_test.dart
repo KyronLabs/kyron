@@ -25,12 +25,12 @@ const _gardeners = PostCommunity(
 );
 
 FeedPost _post({PostCommunity? community}) => FeedPost(
-  id: 'p1',
-  content: 'the tomatoes are in',
-  createdAt: DateTime(2026, 1, 1),
-  author: const FeedAuthor(id: 'u1', username: 'ada', name: 'Ada'),
-  community: community,
-);
+      id: 'p1',
+      content: 'the tomatoes are in',
+      createdAt: DateTime(2026, 1, 1),
+      author: const FeedAuthor(id: 'u1', username: 'ada', name: 'Ada'),
+      community: community,
+    );
 
 /// Answers with nothing, so no screen here reaches a network. The post card
 /// reads the feed provider for its action row, and the community page pages
@@ -47,7 +47,8 @@ class _Feed extends FeedRepository {
     String slug, {
     String? cursor,
     int limit = 20,
-  }) async => const FeedPage(items: [], nextCursor: null);
+  }) async =>
+      const FeedPage(items: [], nextCursor: null);
 }
 
 Future<void> _card(WidgetTester tester, FeedPost post) async {
@@ -391,10 +392,10 @@ void main() {
     /// were the filled ones -- on the Communities tab, directly above a
     /// create button drawing the same plus in the other weight.
     test('both community screens use the outline weight', () {
-      final community = File('lib/screens/community_screen.dart')
-          .readAsStringSync();
-      final communities = File('lib/screens/communities_screen.dart')
-          .readAsStringSync();
+      final community =
+          File('lib/screens/community_screen.dart').readAsStringSync();
+      final communities =
+          File('lib/screens/communities_screen.dart').readAsStringSync();
 
       expect(community, contains('Iconsax.edit_2_copy'));
       expect(community, isNot(contains('Icon(Iconsax.edit_2)')));

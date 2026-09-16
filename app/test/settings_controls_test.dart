@@ -199,8 +199,7 @@ void main() {
       expect(
         VideoPool.instance.liveCount,
         1,
-        reason:
-            'the feed autoplaying is what the app is for; this guard is '
+        reason: 'the feed autoplaying is what the app is for; this guard is '
             'what proves the one below is measuring something',
       );
     });
@@ -212,8 +211,7 @@ void main() {
       expect(
         VideoPool.instance.liveCount,
         0,
-        reason:
-            'a clip that downloads and plays anyway is the switch doing '
+        reason: 'a clip that downloads and plays anyway is the switch doing '
             'nothing, which is what it did before',
       );
     });

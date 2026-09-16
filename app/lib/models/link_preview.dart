@@ -28,13 +28,13 @@ class LinkPreview {
   });
 
   factory LinkPreview.fromJson(Map<String, dynamic> json) => LinkPreview(
-    url: json['url'] as String? ?? '',
-    host: json['host'] as String? ?? '',
-    title: _text(json['title']),
-    description: _text(json['description']),
-    imageUrl: _text(json['imageUrl']),
-    siteName: _text(json['siteName']),
-  );
+        url: json['url'] as String? ?? '',
+        host: json['host'] as String? ?? '',
+        title: _text(json['title']),
+        description: _text(json['description']),
+        imageUrl: _text(json['imageUrl']),
+        siteName: _text(json['siteName']),
+      );
 
   /// What to print under the title: the site's own name if it gave one, else
   /// the host. `www.` is dropped because nobody reads it.

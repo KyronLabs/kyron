@@ -17,11 +17,11 @@ class MessagePerson {
   });
 
   factory MessagePerson.fromJson(Map<String, dynamic> json) => MessagePerson(
-    id: json['id'] as String? ?? '',
-    name: json['name'] as String?,
-    username: json['username'] as String?,
-    avatarUrl: json['avatarUrl'] as String?,
-  );
+        id: json['id'] as String? ?? '',
+        name: json['name'] as String?,
+        username: json['username'] as String?,
+        avatarUrl: json['avatarUrl'] as String?,
+      );
 
   String get displayName {
     final n = name?.trim();
@@ -98,16 +98,16 @@ class DirectMessage {
   bool get isEmpty => body.trim().isEmpty && media.isEmpty;
 
   factory DirectMessage.fromJson(Map<String, dynamic> json) => DirectMessage(
-    id: json['id'] as String? ?? '',
-    body: json['body'] as String? ?? '',
-    senderId: json['senderId'] as String? ?? '',
-    createdAt:
-        DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
-        DateTime.now(),
-    seen: json['seen'] == true,
-    media: PostMedia.listFrom(json['media']),
-    replyToId: json['replyToId'] as String?,
-  );
+        id: json['id'] as String? ?? '',
+        body: json['body'] as String? ?? '',
+        senderId: json['senderId'] as String? ?? '',
+        createdAt:
+            DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
+                DateTime.now(),
+        seen: json['seen'] == true,
+        media: PostMedia.listFrom(json['media']),
+        replyToId: json['replyToId'] as String?,
+      );
 
   DirectMessage copyWith({
     String? body,
@@ -117,19 +117,20 @@ class DirectMessage {
     bool? encrypted,
     bool? unreadable,
     String? replyToId,
-  }) => DirectMessage(
-    id: id,
-    body: body ?? this.body,
-    senderId: senderId,
-    createdAt: createdAt,
-    seen: seen ?? this.seen,
-    sending: sending ?? this.sending,
-    failed: failed ?? this.failed,
-    media: media,
-    encrypted: encrypted ?? this.encrypted,
-    unreadable: unreadable ?? this.unreadable,
-    replyToId: replyToId ?? this.replyToId,
-  );
+  }) =>
+      DirectMessage(
+        id: id,
+        body: body ?? this.body,
+        senderId: senderId,
+        createdAt: createdAt,
+        seen: seen ?? this.seen,
+        sending: sending ?? this.sending,
+        failed: failed ?? this.failed,
+        media: media,
+        encrypted: encrypted ?? this.encrypted,
+        unreadable: unreadable ?? this.unreadable,
+        replyToId: replyToId ?? this.replyToId,
+      );
 }
 
 /// One conversation, as the list shows it.
@@ -163,12 +164,10 @@ class Conversation {
           .whereType<Map<String, dynamic>>()
           .map(MessagePerson.fromJson)
           .toList(),
-      lastMessage: last is Map<String, dynamic>
-          ? DirectMessage.fromJson(last)
-          : null,
+      lastMessage:
+          last is Map<String, dynamic> ? DirectMessage.fromJson(last) : null,
       unread: (json['unread'] as num?)?.toInt() ?? 0,
-      lastMessageAt:
-          DateTime.tryParse(json['lastMessageAt'] as String? ?? '')
+      lastMessageAt: DateTime.tryParse(json['lastMessageAt'] as String? ?? '')
               ?.toLocal() ??
           DateTime.now(),
     );
@@ -210,17 +209,17 @@ class MessagePage {
   });
 
   factory MessagePage.fromJson(Map<String, dynamic> json) => MessagePage(
-    items: (json['items'] as List<dynamic>? ?? const [])
-        .whereType<Map<String, dynamic>>()
-        .map(DirectMessage.fromJson)
-        .toList(),
-    nextCursor: json['nextCursor'] as String?,
-    people: (json['people'] as List<dynamic>? ?? const [])
-        .whereType<Map<String, dynamic>>()
-        .map(MessagePerson.fromJson)
-        .toList(),
-    muted: json['muted'] as bool? ?? false,
-  );
+        items: (json['items'] as List<dynamic>? ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(DirectMessage.fromJson)
+            .toList(),
+        nextCursor: json['nextCursor'] as String?,
+        people: (json['people'] as List<dynamic>? ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(MessagePerson.fromJson)
+            .toList(),
+        muted: json['muted'] as bool? ?? false,
+      );
 }
 
 /// One page of conversations.

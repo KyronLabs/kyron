@@ -16,8 +16,8 @@ import 'skeleton.dart';
 // State management
 final interestTabsProvider =
     StateNotifierProvider<InterestTabsNotifier, List<String>>((ref) {
-      return InterestTabsNotifier();
-    });
+  return InterestTabsNotifier();
+});
 
 /// Which tab the feed is showing.
 ///
@@ -402,7 +402,7 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
           'Trending now',
           tabs.length >= InterestTabsNotifier.maximum
               ? 'Five tabs is the most the strip holds. Remove one to add '
-                    'another.'
+                  'another.'
               : null,
           scheme,
         ),

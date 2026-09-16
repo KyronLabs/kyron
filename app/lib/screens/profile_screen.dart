@@ -32,10 +32,10 @@ enum ProfileTab { posts, media, likes }
 
 extension on ProfileTab {
   String get label => switch (this) {
-    ProfileTab.posts => 'Posts',
-    ProfileTab.media => 'Media',
-    ProfileTab.likes => 'Likes',
-  };
+        ProfileTab.posts => 'Posts',
+        ProfileTab.media => 'Media',
+        ProfileTab.likes => 'Likes',
+      };
 }
 
 /// One account: yours, or somebody else's.
@@ -113,10 +113,10 @@ class _LoadedState extends ConsumerState<_Loaded> {
   ProfileTab _tab = ProfileTab.posts;
 
   PostListSource get _source => switch (_tab) {
-    ProfileTab.posts => PostListSource.author(widget.profile.id),
-    ProfileTab.media => PostListSource.authorMedia(widget.profile.id),
-    ProfileTab.likes => PostListSource.liked,
-  };
+        ProfileTab.posts => PostListSource.author(widget.profile.id),
+        ProfileTab.media => PostListSource.authorMedia(widget.profile.id),
+        ProfileTab.likes => PostListSource.liked,
+      };
 
   @override
   void initState() {
@@ -170,10 +170,10 @@ class _LoadedState extends ConsumerState<_Loaded> {
 
   /// The tabs on offer. Likes are private, so only your own profile has one.
   List<ProfileTab> get _tabs => [
-    ProfileTab.posts,
-    ProfileTab.media,
-    if (widget.profile.isOwnProfile) ProfileTab.likes,
-  ];
+        ProfileTab.posts,
+        ProfileTab.media,
+        if (widget.profile.isOwnProfile) ProfileTab.likes,
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -280,31 +280,30 @@ class _LoadedState extends ConsumerState<_Loaded> {
       );
     }
 
-    final who = profile.isOwnProfile
-        ? 'You have'
-        : '${profile.displayName} has';
+    final who =
+        profile.isOwnProfile ? 'You have' : '${profile.displayName} has';
     final mine = profile.isOwnProfile;
 
     return switch (_tab) {
       ProfileTab.posts => EmptyState(
-        art: EmptyArt.posts,
-        title: mine
-            ? AppLocalizations.of(context).literalyouHaveNotPostedYet
-            : AppLocalizations.of(context).literalnoPostsYet,
-        detail: mine
-            ? 'Anything you post shows up here.'
-            : '$who not posted anything yet.',
-      ),
+          art: EmptyArt.posts,
+          title: mine
+              ? AppLocalizations.of(context).literalyouHaveNotPostedYet
+              : AppLocalizations.of(context).literalnoPostsYet,
+          detail: mine
+              ? 'Anything you post shows up here.'
+              : '$who not posted anything yet.',
+        ),
       ProfileTab.media => EmptyState(
-        art: EmptyArt.videos,
-        title: AppLocalizations.of(context).literalnothingToLookAtYet,
-        detail: '$who not posted any photos or clips.',
-      ),
+          art: EmptyArt.videos,
+          title: AppLocalizations.of(context).literalnothingToLookAtYet,
+          detail: '$who not posted any photos or clips.',
+        ),
       ProfileTab.likes => EmptyState(
-        art: EmptyArt.likes,
-        title: AppLocalizations.of(context).literalnoLikesYet,
-        detail: 'Posts you like are kept here, just for you.',
-      ),
+          art: EmptyArt.likes,
+          title: AppLocalizations.of(context).literalnoLikesYet,
+          detail: 'Posts you like are kept here, just for you.',
+        ),
     };
   }
 }
@@ -461,13 +460,13 @@ class _CoverAndHeader extends StatelessWidget {
             onTap: profile.avatarUrl == null
                 ? null
                 : () => MediaViewer.open(context, [
-                    PostMedia(
-                      id: 'avatar-${profile.id}',
-                      kind: MediaKind.image,
-                      url: profile.avatarUrl!,
-                      alt: '${profile.displayName}\u2019s profile picture',
-                    ),
-                  ]),
+                      PostMedia(
+                        id: 'avatar-${profile.id}',
+                        kind: MediaKind.image,
+                        url: profile.avatarUrl!,
+                        alt: '${profile.displayName}\u2019s profile picture',
+                      ),
+                    ]),
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,

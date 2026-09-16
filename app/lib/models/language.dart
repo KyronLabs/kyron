@@ -162,7 +162,7 @@ abstract final class Languages {
   }
 
   static List<Language> search(String query) => [
-    for (final l in all)
-      if (l.matches(query)) l,
-  ];
+        for (final l in all)
+          if (l.matches(query)) l,
+      ];
 }

@@ -121,9 +121,9 @@ class GetStartedArt extends StatelessWidget {
                           // size it was authored, so the grass is not held
                           // in memory at 900 pixels to be shown at 520.
                           cacheWidth: (it.width * scale * ratio).round().clamp(
-                            1,
-                            2048,
-                          ),
+                                1,
+                                2048,
+                              ),
                           filterQuality: FilterQuality.medium,
                           // A missing asset is a build mistake, not
                           // something a reader should meet as a grey box
@@ -187,9 +187,9 @@ class _Specimen {
     this.opacity = 1,
     this.needsHeight = 0,
   }) : assert(
-         (fromTop == null) != (fromBottom == null),
-         'a specimen is anchored to exactly one edge',
-       );
+          (fromTop == null) != (fromBottom == null),
+          'a specimen is anchored to exactly one edge',
+        );
 }
 
 /// What the meadow sits on: paper, in both themes.

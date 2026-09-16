@@ -566,25 +566,25 @@ class VideoPoster extends StatelessWidget {
             children: [
               switch (badge) {
                 VideoPosterBadge.play => Container(
-                  width: 52,
-                  height: 52,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0x66000000),
+                    width: 52,
+                    height: 52,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0x66000000),
+                    ),
+                    child: const Icon(
+                      Iconsax.play,
+                      size: 24,
+                      color: Colors.white,
+                    ),
                   ),
-                  child: const Icon(
-                    Iconsax.play,
-                    size: 24,
-                    color: Colors.white,
-                  ),
-                ),
                 VideoPosterBadge.busy => const SizedBox.square(
-                  dimension: 26,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2.4,
-                    color: Colors.white,
+                    dimension: 26,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2.4,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
                 VideoPosterBadge.none => const SizedBox.shrink(),
               },
               if (label != null) ...[
@@ -613,14 +613,14 @@ class VideoPoster extends StatelessWidget {
   /// What stands behind a clip with no still: clips posted before the composer
   /// started sending one, and stills that fail to load.
   Widget _ground(ColorScheme scheme) => ColoredBox(
-    color: scheme.surfaceContainerHighest,
-    child: Center(
-      child: Icon(
-        Iconsax.video_copy,
-        color: scheme.onSurface.withValues(alpha: 0.28),
-      ),
-    ),
-  );
+        color: scheme.surfaceContainerHighest,
+        child: Center(
+          child: Icon(
+            Iconsax.video_copy,
+            color: scheme.onSurface.withValues(alpha: 0.28),
+          ),
+        ),
+      );
 }
 
 /// A clip at its own shape, ready to drop straight into a post.

@@ -74,9 +74,8 @@ class _SettingsChangeEmailScreenState
     }
   }
 
-  void _tell(String message) =>
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(message)));
+  void _tell(String message) => ScaffoldMessenger.of(context)
+      .showSnackBar(SnackBar(content: Text(message)));
 
   @override
   Widget build(BuildContext context) {
@@ -177,9 +176,8 @@ class _SettingsPasswordLoginScreenState
     }
   }
 
-  void _tell(String message) =>
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(message)));
+  void _tell(String message) => ScaffoldMessenger.of(context)
+      .showSnackBar(SnackBar(content: Text(message)));
 
   @override
   Widget build(BuildContext context) {
@@ -259,7 +257,9 @@ class SettingsFontSizeScreen extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(SpacingTokens.space16),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surfaceContainerHighest
+              color: Theme.of(context)
+                  .colorScheme
+                  .surfaceContainerHighest
                   .withValues(alpha: .4),
               borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
             ),
@@ -304,8 +304,7 @@ class SettingsLanguageScreen extends ConsumerWidget {
         children: [
           _LanguageSection(
             title: AppLocalizations.of(context).literalappLanguage,
-            detail:
-                "Select which language to use for the app's user "
+            detail: "Select which language to use for the app's user "
                 'interface.',
             value: prefs.language.nativeName,
             onTap: () async {
@@ -335,8 +334,7 @@ class SettingsLanguageScreen extends ConsumerWidget {
           const SizedBox(height: SpacingTokens.space24),
           _LanguageSection(
             title: AppLocalizations.of(context).literalprimaryLanguage,
-            detail:
-                'Select your preferred language for translations in your '
+            detail: 'Select your preferred language for translations in your '
                 'feed.',
             value: prefs.primaryLanguage.nativeName,
             onTap: () async {
@@ -362,8 +360,7 @@ class SettingsLanguageScreen extends ConsumerWidget {
           const SizedBox(height: SpacingTokens.space24),
           _SectionHeader(
             title: AppLocalizations.of(context).literalcontentLanguages,
-            detail:
-                'Select which languages you want your subscribed feeds to '
+            detail: 'Select which languages you want your subscribed feeds to '
                 'include. If none are selected, all languages will be shown.',
           ),
           const SizedBox(height: SpacingTokens.space12),
@@ -741,9 +738,7 @@ class _SettingsFeedbackScreenState
     });
 
     try {
-      final filed = await ref
-          .read(feedbackRepositoryProvider)
-          .send(
+      final filed = await ref.read(feedbackRepositoryProvider).send(
             kind: _kind,
             title: _title.text.trim(),
             body: _body.text.trim(),
@@ -779,8 +774,8 @@ class _SettingsFeedbackScreenState
         title: AppLocalizations.of(context).literalsendFeedback,
         child: EmptyState(
           art: EmptyArt.messages,
-          title: AppLocalizations.of(context)
-              .literalfeedbackCannotBeSentRightNow,
+          title:
+              AppLocalizations.of(context).literalfeedbackCannotBeSentRightNow,
           detail:
               'This build cannot reach the place reports are filed. Said here '
               'rather than in a form, so nothing you write is taken and lost.',

@@ -137,9 +137,9 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen>
 
   /// The posts in this list that carry a clip, in order.
   List<FeedPost> _clipsIn(FeedState state) => [
-    for (final post in state.posts)
-      if (post.media.any((m) => m.isVideo)) post,
-  ];
+        for (final post in state.posts)
+          if (post.media.any((m) => m.isVideo)) post,
+      ];
 
   /// The clip a page shows: the first video on that post.
   PostMedia _clipOf(FeedPost post) => post.media.firstWhere((m) => m.isVideo);
@@ -647,8 +647,8 @@ class _HeartBurst extends StatelessWidget {
             final opacity = t < 0.1
                 ? t * 10
                 : t > 0.7
-                ? (1 - t) / 0.3
-                : 1.0;
+                    ? (1 - t) / 0.3
+                    : 1.0;
             return Opacity(
               opacity: opacity.clamp(0.0, 1.0),
               child: Transform.scale(scale: scale, child: child),

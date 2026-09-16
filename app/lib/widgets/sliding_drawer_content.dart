@@ -315,10 +315,10 @@ class SlidingDrawerContent extends ConsumerWidget {
   // ============= NAVIGATION SECTION =============
 
   Widget _sectionDivider(ColorScheme scheme) => Divider(
-    height: 1,
-    thickness: 1,
-    color: scheme.onSurface.withValues(alpha: 0.1),
-  );
+        height: 1,
+        thickness: 1,
+        color: scheme.onSurface.withValues(alpha: 0.1),
+      );
 
   Widget _navigation(BuildContext context) {
     return ListView(

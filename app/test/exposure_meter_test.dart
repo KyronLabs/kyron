@@ -13,11 +13,12 @@ import 'package:kyron_app/services/exposure_meter.dart';
 
 /// A frame of one flat colour, as the sampler reads it.
 int? Function(int, int) flat(int value, {Rect? inside}) => (x, y) {
-  if (inside != null && !inside.contains(Offset(x.toDouble(), y.toDouble()))) {
-    return 0xFFFFFFFF;
-  }
-  return 0xFF000000 | (value << 16) | (value << 8) | value;
-};
+      if (inside != null &&
+          !inside.contains(Offset(x.toDouble(), y.toDouble()))) {
+        return 0xFFFFFFFF;
+      }
+      return 0xFF000000 | (value << 16) | (value << 8) | value;
+    };
 
 void main() {
   final at = DateTime(2026, 9, 13, 12);

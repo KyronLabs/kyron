@@ -56,29 +56,29 @@ class ComposerDraft {
   /// reason: one nullable column added to the table, rather than one per
   /// field and a migration each time the composer grows.
   Map<String, Object?> toMap() => {
-    'id': id,
-    'content': content,
-    'privacy': '',
-    'scheduledAt': null,
-    'mediaPaths': '[]',
-    'payload': jsonEncode(_payload),
-    'createdAt': createdAt.toIso8601String(),
-    'updatedAt': updatedAt.toIso8601String(),
-  };
+        'id': id,
+        'content': content,
+        'privacy': '',
+        'scheduledAt': null,
+        'mediaPaths': '[]',
+        'payload': jsonEncode(_payload),
+        'createdAt': createdAt.toIso8601String(),
+        'updatedAt': updatedAt.toIso8601String(),
+      };
 
   Map<String, Object?> get _payload => {
-    'replyPolicy': replyPolicy.wire,
-    if (poll != null)
-      'poll': {
-        // The options as typed, not [ComposerPoll.filled]: a draft is
-        // saved mid-edit, and dropping the blank third answer would take
-        // away the box somebody was about to type in.
-        'options': poll!.options,
-        'durationMinutes': poll!.durationMinutes,
-      },
-    if (topics.isNotEmpty) 'topics': topics,
-    if (quoting != null) 'quoting': quoting!.toJson(),
-  };
+        'replyPolicy': replyPolicy.wire,
+        if (poll != null)
+          'poll': {
+            // The options as typed, not [ComposerPoll.filled]: a draft is
+            // saved mid-edit, and dropping the blank third answer would take
+            // away the box somebody was about to type in.
+            'options': poll!.options,
+            'durationMinutes': poll!.durationMinutes,
+          },
+        if (topics.isNotEmpty) 'topics': topics,
+        if (quoting != null) 'quoting': quoting!.toJson(),
+      };
 
   factory ComposerDraft.fromMap(Map<String, Object?> map) {
     final now = DateTime.now();
@@ -110,30 +110,28 @@ class ComposerDraft {
                 for (final option in (poll['options'] as List<dynamic>? ?? []))
                   option as String? ?? '',
               ],
-              durationMinutes:
-                  (poll['durationMinutes'] as num?)?.toInt() ??
+              durationMinutes: (poll['durationMinutes'] as num?)?.toInt() ??
                   ComposerPoll.defaultDuration,
             )
           : null,
       topics: [
         for (final slug in (topics as List<dynamic>? ?? [])) slug as String,
       ],
-      quoting: quoting is Map<String, dynamic>
-          ? QuotedPost.fromJson(quoting)
-          : null,
+      quoting:
+          quoting is Map<String, dynamic> ? QuotedPost.fromJson(quoting) : null,
       createdAt: DateTime.tryParse(map['createdAt'] as String? ?? '') ?? now,
       updatedAt: DateTime.tryParse(map['updatedAt'] as String? ?? '') ?? now,
     );
   }
 
   ComposerDraft copyWith({String? id, String? content}) => ComposerDraft(
-    id: id ?? this.id,
-    content: content ?? this.content,
-    replyPolicy: replyPolicy,
-    poll: poll,
-    topics: topics,
-    quoting: quoting,
-    createdAt: createdAt,
-    updatedAt: DateTime.now(),
-  );
+        id: id ?? this.id,
+        content: content ?? this.content,
+        replyPolicy: replyPolicy,
+        poll: poll,
+        topics: topics,
+        quoting: quoting,
+        createdAt: createdAt,
+        updatedAt: DateTime.now(),
+      );
 }

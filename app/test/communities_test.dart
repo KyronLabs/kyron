@@ -57,7 +57,8 @@ class _FakeCommunities extends CommunitiesRepository {
     String slug,
     String content, {
     List<PendingMedia> media = const [],
-  }) async => throw UnimplementedError();
+  }) async =>
+      throw UnimplementedError();
 }
 
 Community _community(
@@ -65,14 +66,15 @@ Community _community(
   bool joined = false,
   int members = 1,
   CommunityRole? role,
-}) => Community(
-  id: 'id-$slug',
-  slug: slug,
-  name: slug,
-  members: members,
-  joined: joined,
-  role: role,
-);
+}) =>
+    Community(
+      id: 'id-$slug',
+      slug: slug,
+      name: slug,
+      members: members,
+      joined: joined,
+      role: role,
+    );
 
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));

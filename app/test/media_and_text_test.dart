@@ -135,7 +135,8 @@ void main() {
     ComposerState state({
       String content = '',
       List<PendingMedia> media = const [],
-    }) => ComposerState(content: content, media: media, placeholderText: '');
+    }) =>
+        ComposerState(content: content, media: media, placeholderText: '');
 
     test('a post carrying only an attachment can be sent', () {
       const ready = PendingMedia(

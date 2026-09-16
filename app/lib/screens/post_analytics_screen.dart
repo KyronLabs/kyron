@@ -13,12 +13,10 @@ import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import '../widgets/kyron_app_bar.dart';
 
-final postAnalyticsProvider =
-    StateNotifierProvider.family<
-      PostAnalyticsNotifier,
-      AsyncValue<PostAnalytics>,
-      String
-    >((ref, postId) => PostAnalyticsNotifier(ref, postId));
+final postAnalyticsProvider = StateNotifierProvider.family<
+    PostAnalyticsNotifier,
+    AsyncValue<PostAnalytics>,
+    String>((ref, postId) => PostAnalyticsNotifier(ref, postId));
 
 class PostAnalyticsNotifier extends StateNotifier<AsyncValue<PostAnalytics>> {
   final Ref _ref;

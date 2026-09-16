@@ -338,9 +338,9 @@ class CommentAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-    onTap: () => openAuthor(context, comment.author),
-    child: PostAvatar(author: comment.author, radius: size / 2),
-  );
+        onTap: () => openAuthor(context, comment.author),
+        child: PostAvatar(author: comment.author, radius: size / 2),
+      );
 }
 
 /// The row that opens a folded run of replies.

@@ -6,15 +6,15 @@ import 'package:kyron_app/widgets/inline_video.dart';
 import 'package:kyron_app/widgets/media_tray.dart';
 
 Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(body: SizedBox(height: 200, child: child)),
-);
+      home: Scaffold(body: SizedBox(height: 200, child: child)),
+    );
 
 MediaTray _tray(List<PendingMedia> media) => MediaTray(
-  media: media,
-  onRemove: (_) {},
-  onRetry: (_) {},
-  onDescribe: (_) {},
-);
+      media: media,
+      onRemove: (_) {},
+      onRetry: (_) {},
+      onDescribe: (_) {},
+    );
 
 /// The image a widget is drawing, past the resizing wrapper that `cacheWidth`
 /// puts around it.

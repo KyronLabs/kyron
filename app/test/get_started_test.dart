@@ -73,13 +73,13 @@ void main() {
   tearDown(() => PlatformSupport.current = null);
 
   Widget app(Widget home) => ProviderScope(
-    overrides: [authRepositoryProvider.overrideWithValue(auth)],
-    child: MaterialApp(
-      theme: KyronTheme.lightTheme,
-      home: home,
-      onGenerateRoute: Routes.onGenerateRoute,
-    ),
-  );
+        overrides: [authRepositoryProvider.overrideWithValue(auth)],
+        child: MaterialApp(
+          theme: KyronTheme.lightTheme,
+          home: home,
+          onGenerateRoute: Routes.onGenerateRoute,
+        ),
+      );
 
   /// Taps through the terms sheet, which stands in front of every way in.
   Future<void> agree(WidgetTester tester) async {

@@ -239,8 +239,7 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
                   compact: true,
                   art: EmptyArt.drafts,
                   title: AppLocalizations.of(context).literalnothingLoggedYet,
-                  detail:
-                      'Failed requests and other notable events show up '
+                  detail: 'Failed requests and other notable events show up '
                       'here.',
                 ),
               );
@@ -416,7 +415,7 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
               entries == 0
                   ? 'Nothing logged yet'
                   : '$entries recent entries. Review them under About › '
-                        'System log before sending.',
+                      'System log before sending.',
             ),
           ),
           const SizedBox(height: SpacingTokens.space16),

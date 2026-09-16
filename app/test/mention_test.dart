@@ -67,10 +67,8 @@ void main() {
       // is grey text that looked like a tag while it was being written.
       const text = 'hey @ada';
       final token = mentionAt(text, text.length)!;
-      final rendered = PostText.pattern
-          .allMatches(text)
-          .map((m) => m.group(0))
-          .toList();
+      final rendered =
+          PostText.pattern.allMatches(text).map((m) => m.group(0)).toList();
 
       expect(rendered, contains(text.substring(token.start, token.end)));
     });
@@ -117,9 +115,8 @@ void main() {
 
     test('what it writes is what the renderer highlights', () {
       final result = _insert('hey', 3, 'ada');
-      final rendered = PostText.pattern
-          .allMatches(result.text)
-          .map((m) => m.group(0));
+      final rendered =
+          PostText.pattern.allMatches(result.text).map((m) => m.group(0));
 
       expect(rendered, contains('@ada'));
     });

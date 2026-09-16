@@ -32,18 +32,18 @@ class Poll {
   });
 
   factory Poll.fromJson(Map<String, dynamic> json) => Poll(
-    id: json['id'] as String? ?? '',
-    closesAt:
-        DateTime.tryParse(json['closesAt'] as String? ?? '')?.toLocal() ??
-        DateTime.now(),
-    closed: json['closed'] == true,
-    totalVotes: (json['totalVotes'] as num?)?.toInt() ?? 0,
-    votedOptionId: json['votedOptionId'] as String?,
-    options: (json['options'] as List<dynamic>? ?? const [])
-        .whereType<Map<String, dynamic>>()
-        .map(PollOption.fromJson)
-        .toList(),
-  );
+        id: json['id'] as String? ?? '',
+        closesAt:
+            DateTime.tryParse(json['closesAt'] as String? ?? '')?.toLocal() ??
+                DateTime.now(),
+        closed: json['closed'] == true,
+        totalVotes: (json['totalVotes'] as num?)?.toInt() ?? 0,
+        votedOptionId: json['votedOptionId'] as String?,
+        options: (json['options'] as List<dynamic>? ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(PollOption.fromJson)
+            .toList(),
+      );
 
   bool get hasVoted => votedOptionId != null;
 
@@ -77,10 +77,10 @@ class PollOption {
   const PollOption({required this.id, required this.text, required this.votes});
 
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
-    id: json['id'] as String? ?? '',
-    text: json['text'] as String? ?? '',
-    votes: (json['votes'] as num?)?.toInt() ?? 0,
-  );
+        id: json['id'] as String? ?? '',
+        text: json['text'] as String? ?? '',
+        votes: (json['votes'] as num?)?.toInt() ?? 0,
+      );
 
   /// This option's share, 0 to 1. Zero total votes gives zero rather than a
   /// division by zero -- a fresh poll draws four empty bars, not four NaNs.

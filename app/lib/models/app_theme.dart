@@ -28,11 +28,11 @@ enum AppTheme {
 
   /// A line under the label saying what the choice actually does.
   String get detail => switch (this) {
-    AppTheme.system => 'Follow the phone’s own light or dark setting',
-    AppTheme.light => 'Always light',
-    AppTheme.dark => 'Always dark',
-    AppTheme.dim => 'A softer dark, blue-grey rather than black',
-  };
+        AppTheme.system => 'Follow the phone’s own light or dark setting',
+        AppTheme.light => 'Always light',
+        AppTheme.dark => 'Always dark',
+        AppTheme.dim => 'A softer dark, blue-grey rather than black',
+      };
 
   /// Falls back to [system] rather than throwing, so a code written by a build
   /// that offered a palette this one does not cannot stop start-up.
@@ -52,12 +52,12 @@ enum AppTheme {
 extension AppThemePalette on AppTheme {
   /// What [MaterialApp.themeMode] is given.
   ThemeMode get mode => switch (this) {
-    AppTheme.system => ThemeMode.system,
-    AppTheme.light => ThemeMode.light,
-    // Dim is dark, painted differently. Asking for it must not leave the
-    // app following the phone.
-    AppTheme.dark || AppTheme.dim => ThemeMode.dark,
-  };
+        AppTheme.system => ThemeMode.system,
+        AppTheme.light => ThemeMode.light,
+        // Dim is dark, painted differently. Asking for it must not leave the
+        // app following the phone.
+        AppTheme.dark || AppTheme.dim => ThemeMode.dark,
+      };
 
   /// What [MaterialApp.darkTheme] is given.
   ///

@@ -202,18 +202,19 @@ class Lens {
       RegExp(r'^[a-z0-9][a-z0-9_-]*$').hasMatch(id);
 
   Map<String, Object?> toJson() => {
-    'id': id,
-    'name': name,
-    if (effects.isNotEmpty)
-      'schema': 3
-    else if (attachments.isNotEmpty)
-      'schema': 2,
-    if (matrix != null) 'matrix': matrix,
-    if (author != null) 'author': author,
-    if (attachments.isNotEmpty)
-      'attachments': [for (final a in attachments) a.toJson()],
-    if (effects.isNotEmpty) 'effects': [for (final e in effects) e.toJson()],
-  };
+        'id': id,
+        'name': name,
+        if (effects.isNotEmpty)
+          'schema': 3
+        else if (attachments.isNotEmpty)
+          'schema': 2,
+        if (matrix != null) 'matrix': matrix,
+        if (author != null) 'author': author,
+        if (attachments.isNotEmpty)
+          'attachments': [for (final a in attachments) a.toJson()],
+        if (effects.isNotEmpty)
+          'effects': [for (final e in effects) e.toJson()],
+      };
 
   // -------------------------------------------------------------------------
   // The lenses that ship with the app

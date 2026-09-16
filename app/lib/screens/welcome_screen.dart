@@ -315,9 +315,8 @@ class _Sheet extends StatelessWidget {
     final dark = Theme.of(context).brightness == Brightness.dark;
     final ground = dark ? KyronTheme.darkBackground : Colors.white;
     final ink = dark ? KyronTheme.darkTextPrimary : KyronTheme.lightTextPrimary;
-    final quiet = dark
-        ? KyronTheme.darkTextSecondary
-        : KyronTheme.lightTextSecondary;
+    final quiet =
+        dark ? KyronTheme.darkTextSecondary : KyronTheme.lightTextSecondary;
 
     return DecoratedBox(
       decoration: BoxDecoration(

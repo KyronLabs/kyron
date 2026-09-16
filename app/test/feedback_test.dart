@@ -20,7 +20,7 @@ class _Refused implements Exception {
 
 class _FakeFeedback extends FeedbackRepository {
   _FakeFeedback({this.available = true, this.sendFails = false})
-    : super(ApiClient());
+      : super(ApiClient());
 
   final bool available;
   final bool sendFails;

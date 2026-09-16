@@ -21,16 +21,17 @@ ComposerDraft _draft({
   ComposerPoll? poll,
   List<String> topics = const [],
   QuotedPost? quoting,
-}) => ComposerDraft(
-  id: 'd1',
-  content: content,
-  replyPolicy: replyPolicy,
-  poll: poll,
-  topics: topics,
-  quoting: quoting,
-  createdAt: DateTime(2026, 9, 8),
-  updatedAt: DateTime(2026, 9, 8),
-);
+}) =>
+    ComposerDraft(
+      id: 'd1',
+      content: content,
+      replyPolicy: replyPolicy,
+      poll: poll,
+      topics: topics,
+      quoting: quoting,
+      createdAt: DateTime(2026, 9, 8),
+      updatedAt: DateTime(2026, 9, 8),
+    );
 
 void main() {
   // The reply-setting and poll buttons buzz the handset, which needs the

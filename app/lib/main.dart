@@ -69,10 +69,10 @@ void main() async {
 /// rather than a colour: the bar belongs to the system, and what has to be
 /// said about it is which brightness its icons should be.
 ThemeData _withStatusBar(ThemeData theme) => theme.copyWith(
-  appBarTheme: theme.appBarTheme.copyWith(
-    systemOverlayStyle: _statusBarFor(theme),
-  ),
-);
+      appBarTheme: theme.appBarTheme.copyWith(
+        systemOverlayStyle: _statusBarFor(theme),
+      ),
+    );
 
 /// Icons that can be seen against a surface of this brightness.
 ///
@@ -107,8 +107,8 @@ Widget _describeBuildFailure(FlutterErrorDetails details) {
       // is no theme to ask.
       final scheme =
           context.findAncestorWidgetOfExactType<MaterialApp>() == null
-          ? null
-          : Theme.of(context).colorScheme;
+              ? null
+              : Theme.of(context).colorScheme;
       return Material(
         color: scheme?.surface ?? const Color(0xFF141414),
         child: Padding(
@@ -231,9 +231,8 @@ class _KyronAppState extends ConsumerState<KyronApp> {
       return;
     }
 
-    final signedIn = await ref
-        .read(authNotifierProvider.notifier)
-        .adoptExternalSession();
+    final signedIn =
+        await ref.read(authNotifierProvider.notifier).adoptExternalSession();
     if (!signedIn || !mounted) return;
 
     AppLog.instance.info('auth', 'Signed in from a redirect.');

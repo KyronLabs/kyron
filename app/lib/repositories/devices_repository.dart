@@ -10,9 +10,9 @@ class DevicesRepository {
   /// Records the token, moving it if it belonged to another account. Called
   /// on every launch, because a token can rotate while the app is closed.
   Future<void> register(String token, String platform) => _api.dio.put<void>(
-    '/devices',
-    data: {'token': token, 'platform': platform},
-  );
+        '/devices',
+        data: {'token': token, 'platform': platform},
+      );
 
   /// Forgets it, on sign-out.
   Future<void> forget(String token) =>

@@ -16,11 +16,11 @@ String formatFilterDate(DateTime value) =>
 
 /// Human-readable chips for whatever filters are set.
 List<String> describeFilters(SearchFilters filters) => [
-  if (filters.from != null) 'from @${filters.from}',
-  if (filters.after != null) 'after ${formatFilterDate(filters.after!)}',
-  if (filters.before != null) 'before ${formatFilterDate(filters.before!)}',
-  if (filters.has != null) 'has ${filters.has}',
-];
+      if (filters.from != null) 'from @${filters.from}',
+      if (filters.after != null) 'after ${formatFilterDate(filters.after!)}',
+      if (filters.before != null) 'before ${formatFilterDate(filters.before!)}',
+      if (filters.has != null) 'has ${filters.has}',
+    ];
 
 const _months = [
   'Jan',

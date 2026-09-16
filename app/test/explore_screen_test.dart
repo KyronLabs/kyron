@@ -250,11 +250,15 @@ void main() {
 
   group('Topics', () {
     _FakeProfile withTopics() => _FakeProfile(
-      topicList: const [
-        Topic(slug: 'art', name: 'Art & Design', people: 1200, following: true),
-        Topic(slug: 'code', name: 'Software', people: 1),
-      ],
-    );
+          topicList: const [
+            Topic(
+                slug: 'art',
+                name: 'Art & Design',
+                people: 1200,
+                following: true),
+            Topic(slug: 'code', name: 'Software', people: 1),
+          ],
+        );
 
     testWidgets('shows real names and how many people are into each', (
       tester,

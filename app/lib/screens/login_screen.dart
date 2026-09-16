@@ -167,9 +167,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     TextSpan(
                       text: AppLocalizations.of(context).terms,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: KyronTheme.accent,
-                        decoration: TextDecoration.underline,
-                      ),
+                            color: KyronTheme.accent,
+                            decoration: TextDecoration.underline,
+                          ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           AppBrowser.open(
@@ -186,9 +186,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     TextSpan(
                       text: AppLocalizations.of(context).privacyPolicy,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: KyronTheme.accent,
-                        decoration: TextDecoration.underline,
-                      ),
+                            color: KyronTheme.accent,
+                            decoration: TextDecoration.underline,
+                          ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           AppBrowser.open(

@@ -5,12 +5,12 @@ import 'package:kyron_app/utils/thread_layout.dart';
 import 'package:kyron_app/widgets/thread.dart';
 
 PostComment c(String id, {String? parent}) => PostComment(
-  id: id,
-  content: id,
-  createdAt: DateTime(2026),
-  author: const FeedAuthor(id: 'a', name: 'A', username: 'a'),
-  parentId: parent,
-);
+      id: id,
+      content: id,
+      createdAt: DateTime(2026),
+      author: const FeedAuthor(id: 'a', name: 'A', username: 'a'),
+      parentId: parent,
+    );
 
 /// Everything, so the layout reflects the tree rather than the fold rule.
 const all = 1 << 30;
@@ -98,13 +98,14 @@ void main() {
       List<bool> rails = const [],
       bool children = false,
       bool last = true,
-    }) => ThreadConnectorPlan.forRow(
-      depth: depth,
-      ancestorRails: rails,
-      hasChildrenBelow: children,
-      isLastChild: last,
-      avatarSize: ThreadGeometry.avatar,
-    );
+    }) =>
+        ThreadConnectorPlan.forRow(
+          depth: depth,
+          ancestorRails: rails,
+          hasChildrenBelow: children,
+          isLastChild: last,
+          avatarSize: ThreadGeometry.avatar,
+        );
 
     test('a top-level row has no elbow', () {
       expect(plan(depth: 0).elbow, isNull);
@@ -236,7 +237,8 @@ void main() {
       c('c3', parent: 'c2'),
       c('c4'),
       c('c5'),
-    ], collapseAfter: all).rows;
+    ], collapseAfter: all)
+        .rows;
 
     test('the rows come out in the order the screen draws them', () {
       expect(rows.map((r) => r.comment.id), ['c1', 'c2', 'c3', 'c4', 'c5']);
@@ -264,7 +266,8 @@ void main() {
       final one = buildThreadLayout([
         c('a'),
         c('b', parent: 'a'),
-      ], collapseAfter: all).rows;
+      ], collapseAfter: all)
+          .rows;
 
       expect(one.every((r) => !endsBranch(one, one.indexOf(r))), isTrue);
     });

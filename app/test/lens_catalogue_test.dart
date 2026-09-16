@@ -12,11 +12,12 @@ Map<String, Object?> published(
   String id, {
   String? name,
   List<double>? matrix,
-}) => {
-  'id': id,
-  'name': name ?? id,
-  'matrix': matrix ?? List<double>.filled(Lens.matrixLength, 0.5),
-};
+}) =>
+    {
+      'id': id,
+      'name': name ?? id,
+      'matrix': matrix ?? List<double>.filled(Lens.matrixLength, 0.5),
+    };
 
 String catalogue(List<Object?> lenses) => jsonEncode({'lenses': lenses});
 

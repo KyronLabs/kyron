@@ -110,9 +110,8 @@ class _NotificationButton extends ConsumerWidget {
         IconButton(
           onPressed: onPressed,
           icon: const Icon(Iconsax.notification_copy, size: 22),
-          tooltip: unread == 0
-              ? 'Notifications'
-              : 'Notifications, $unread unread',
+          tooltip:
+              unread == 0 ? 'Notifications' : 'Notifications, $unread unread',
           constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
           padding: EdgeInsets.zero,
         ),

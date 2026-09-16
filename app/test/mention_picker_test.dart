@@ -58,13 +58,14 @@ Map<String, Object?> _person(
   String? name,
   String? username,
   int followers = 0,
-}) => {
-  'id': id,
-  'name': name,
-  'username': username,
-  'followers': followers,
-  'kyronPoints': 0,
-};
+}) =>
+    {
+      'id': id,
+      'name': name,
+      'username': username,
+      'followers': followers,
+      'kyronPoints': 0,
+    };
 
 /// Opens the picker and hands back both the adapter behind it and a place the
 /// chosen handle lands.

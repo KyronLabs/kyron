@@ -4,11 +4,11 @@ import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/widgets/post_actions_row.dart';
 
 FeedPost _post(String id) => FeedPost(
-  id: id,
-  content: 'post $id',
-  createdAt: DateTime(2026, 1, 1),
-  author: const FeedAuthor(id: 'a1'),
-);
+      id: id,
+      content: 'post $id',
+      createdAt: DateTime(2026, 1, 1),
+      author: const FeedAuthor(id: 'a1'),
+    );
 
 void main() {
   group('countLabel', () {

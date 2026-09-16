@@ -189,28 +189,27 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
       onRefresh: notifier.refresh,
       child: state.items.isEmpty
           ? (state.error != null
-                    ? EmptyState.failed(
-                        title: AppLocalizations.of(context)
-                            .literalcouldNotLoadYourMessages,
-                        detail: state.error,
-                        onAction: notifier.refresh,
-                      )
-                    : widget.unreadOnly
-                    ? EmptyState(
-                        art: EmptyArt.caughtUp,
-                        title: AppLocalizations.of(context)
-                            .literalnothingUnread,
-                        detail: 'Every conversation is caught up.',
-                      )
-                    : EmptyState(
-                        art: EmptyArt.messages,
-                        title: AppLocalizations.of(context)
-                            .literalnoMessagesYet,
-                        detail:
-                            'Open somebody\'s profile and tap Message to '
-                            'start a conversation.',
-                      ))
-                .scrollable
+                  ? EmptyState.failed(
+                      title: AppLocalizations.of(context)
+                          .literalcouldNotLoadYourMessages,
+                      detail: state.error,
+                      onAction: notifier.refresh,
+                    )
+                  : widget.unreadOnly
+                      ? EmptyState(
+                          art: EmptyArt.caughtUp,
+                          title:
+                              AppLocalizations.of(context).literalnothingUnread,
+                          detail: 'Every conversation is caught up.',
+                        )
+                      : EmptyState(
+                          art: EmptyArt.messages,
+                          title:
+                              AppLocalizations.of(context).literalnoMessagesYet,
+                          detail: 'Open somebody\'s profile and tap Message to '
+                              'start a conversation.',
+                        ))
+              .scrollable
           : ListView.separated(
               controller: _scroll,
               physics: const AlwaysScrollableScrollPhysics(),
@@ -219,7 +218,9 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                 height: 1,
                 thickness: 0.5,
                 indent: 76,
-                color: Theme.of(context).colorScheme.outline
+                color: Theme.of(context)
+                    .colorScheme
+                    .outline
                     .withValues(alpha: 0.15),
               ),
               itemBuilder: (context, index) {
@@ -335,9 +336,8 @@ class _ConversationRow extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: TypographyTokens.fontSize3,
-                              fontWeight: unread
-                                  ? FontWeight.w700
-                                  : FontWeight.w600,
+                              fontWeight:
+                                  unread ? FontWeight.w700 : FontWeight.w600,
                             ),
                           ),
                         ),
@@ -349,9 +349,8 @@ class _ConversationRow extends StatelessWidget {
                             color: unread
                                 ? scheme.primary
                                 : scheme.onSurface.withValues(alpha: 0.5),
-                            fontWeight: unread
-                                ? FontWeight.w700
-                                : FontWeight.w500,
+                            fontWeight:
+                                unread ? FontWeight.w700 : FontWeight.w500,
                           ),
                         ),
                       ],
@@ -364,7 +363,7 @@ class _ConversationRow extends StatelessWidget {
                             last == null
                                 ? 'No messages yet'
                                 : '${last.senderId == other?.id ? '' : 'You: '}'
-                                      '${last.body}',
+                                    '${last.body}',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -373,9 +372,8 @@ class _ConversationRow extends StatelessWidget {
                               color: unread
                                   ? scheme.onSurface
                                   : scheme.onSurface.withValues(alpha: 0.6),
-                              fontWeight: unread
-                                  ? FontWeight.w600
-                                  : FontWeight.normal,
+                              fontWeight:
+                                  unread ? FontWeight.w600 : FontWeight.normal,
                             ),
                           ),
                         ),

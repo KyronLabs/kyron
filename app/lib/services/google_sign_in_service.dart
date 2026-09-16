@@ -134,8 +134,7 @@ class GoogleSignInService {
         // a sheet closes immediately and nothing happens.
         return GoogleOutcome.cancelled;
       }
-      reason =
-          'Google refused the request (${error.code.name}): '
+      reason = 'Google refused the request (${error.code.name}): '
           '${error.description ?? 'no detail'}';
       AppLog.instance.error('auth', reason!);
       return GoogleOutcome.useBrowser;
@@ -151,8 +150,7 @@ class GoogleSignInService {
     if (idToken == null || idToken.isEmpty) {
       // The sheet completed without minting a token for our audience, which
       // is what a missing web OAuth client looks like from here.
-      reason =
-          'Google returned no ID token, which usually means the project '
+      reason = 'Google returned no ID token, which usually means the project '
           'has no web OAuth client for this app';
       AppLog.instance.error('auth', reason!);
       return GoogleOutcome.useBrowser;

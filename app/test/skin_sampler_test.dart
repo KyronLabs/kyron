@@ -20,7 +20,7 @@ class _Frame {
   final Uint8List rgba;
 
   _Frame(this.width, this.height, Color background)
-    : rgba = Uint8List(width * height * 4) {
+      : rgba = Uint8List(width * height * 4) {
     for (var i = 0; i < width * height; i++) {
       _write(i, background);
     }
@@ -62,16 +62,15 @@ const _wall = Color(0xFF1040F0);
 
 /// Eyes at (100, 100), a pupil-gap of 40, level.
 FaceAnchor _face({double roll = 0}) => FaceAnchor(
-  centre: const Offset(100, 100),
-  interpupillary: 40,
-  rollDegrees: roll,
-);
+      centre: const Offset(100, 100),
+      interpupillary: 40,
+      rollDegrees: roll,
+    );
 
 /// A frame with a face in it: the head fills a good part of the picture and
 /// the eyes sit where [_face] says they do.
-_Frame _portrait() =>
-    _Frame(200, 200, _wall)
-      ..ellipse(const Offset(100, 120), const Size(55, 75), _skin);
+_Frame _portrait() => _Frame(200, 200, _wall)
+  ..ellipse(const Offset(100, 120), const Size(55, 75), _skin);
 
 void main() {
   test('reads the skin off a face and not the wall behind it', () {

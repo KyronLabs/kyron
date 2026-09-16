@@ -55,8 +55,7 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
                 child: EmptyState(
                   art: EmptyArt.drafts,
                   title: AppLocalizations.of(context).literalnoDrafts,
-                  detail:
-                      'Close the composer with something written and you '
+                  detail: 'Close the composer with something written and you '
                       'will be offered a draft.',
                 ),
               );

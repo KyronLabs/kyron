@@ -15,10 +15,11 @@ enum GoogleAction {
   continueWith;
 
   String label(BuildContext context) => switch (this) {
-    GoogleAction.signIn => AppLocalizations.of(context).googleSignIn,
-    GoogleAction.signUp => AppLocalizations.of(context).googleSignUp,
-    GoogleAction.continueWith => AppLocalizations.of(context).googleContinue,
-  };
+        GoogleAction.signIn => AppLocalizations.of(context).googleSignIn,
+        GoogleAction.signUp => AppLocalizations.of(context).googleSignUp,
+        GoogleAction.continueWith =>
+          AppLocalizations.of(context).googleContinue,
+      };
 }
 
 /// Sign in with Google, drawn the way Google requires.

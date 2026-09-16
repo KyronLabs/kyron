@@ -85,8 +85,8 @@ class AppPreferences {
   /// list is "I have not said", and answering that with silence would leave a
   /// new account looking at an empty feed.
   Future<List<Language>> readContentLanguages() async => Languages.fromCodes(
-    (await _prefs).getStringList(_kContentLanguages) ?? const [],
-  );
+        (await _prefs).getStringList(_kContentLanguages) ?? const [],
+      );
 
   Future<void> writeContentLanguages(List<Language> languages) async =>
       (await _prefs).setStringList(_kContentLanguages, [

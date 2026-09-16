@@ -86,9 +86,8 @@ class BottomNavV4 extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final isActive = currentIndex == index;
 
-    final colour = isActive
-        ? scheme.primary
-        : scheme.onSurface.withValues(alpha: .6);
+    final colour =
+        isActive ? scheme.primary : scheme.onSurface.withValues(alpha: .6);
 
     return Semantics(
       button: true,

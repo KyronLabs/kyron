@@ -253,8 +253,7 @@ class _SheetState extends State<_Sheet> {
                   child: ActionButton(
                     label: AppLocalizations.of(context).done,
                     expand: true,
-                    onPressed:
-                        _value.isBefore(widget.first) ||
+                    onPressed: _value.isBefore(widget.first) ||
                             _value.isAfter(widget.last)
                         ? null
                         : () => Navigator.pop(context, _value),

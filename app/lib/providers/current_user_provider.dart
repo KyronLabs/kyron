@@ -12,8 +12,8 @@ final currentUserRepositoryProvider = Provider<CurrentUserRepository>((ref) {
 
 final currentUserProvider =
     StateNotifierProvider<CurrentUserNotifier, AsyncValue<CurrentUser>>(
-      (ref) => CurrentUserNotifier(ref),
-    );
+  (ref) => CurrentUserNotifier(ref),
+);
 
 class CurrentUserNotifier extends StateNotifier<AsyncValue<CurrentUser>> {
   final Ref ref;

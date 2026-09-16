@@ -150,8 +150,7 @@ class _SheetState extends State<_Sheet> {
         compact: true,
         art: EmptyArt.noMatch,
         title: AppLocalizations.of(context).literalgifsAreNotSetUp,
-        detail:
-            'This build has no GIPHY_API_KEY, so the GIF library cannot '
+        detail: 'This build has no GIPHY_API_KEY, so the GIF library cannot '
             'be searched. Pass one at build time to turn this on.',
       );
     }

@@ -86,9 +86,8 @@ void main() {
       underTest(asSibling: asSibling, collapse: collapse),
     );
 
-    final position = tester
-        .state<ScrollableState>(find.byType(Scrollable))
-        .position;
+    final position =
+        tester.state<ScrollableState>(find.byType(Scrollable)).position;
     final viewports = <double>{};
     final extents = <double>{};
 
@@ -111,8 +110,7 @@ void main() {
     expect(
       viewports,
       hasLength(1),
-      reason:
-          'a viewport that resizes mid-drag stops the content tracking '
+      reason: 'a viewport that resizes mid-drag stops the content tracking '
           'the finger, and re-lays-out the whole visible list every frame',
     );
     expect(extents, hasLength(1), reason: 'so the scroll extent holds too');

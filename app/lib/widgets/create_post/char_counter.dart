@@ -19,8 +19,8 @@ class CharCounter extends ConsumerWidget {
     final color = over
         ? scheme.error
         : near
-        ? scheme.tertiary
-        : scheme.primary;
+            ? scheme.tertiary
+            : scheme.primary;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -46,9 +46,8 @@ class CharCounter extends ConsumerWidget {
             style: TextStyle(
               fontSize: TypographyTokens.fontSize1,
               fontWeight: over ? FontWeight.w700 : FontWeight.w400,
-              color: over
-                  ? scheme.error
-                  : scheme.onSurface.withValues(alpha: .6),
+              color:
+                  over ? scheme.error : scheme.onSurface.withValues(alpha: .6),
             ),
           ),
         ],

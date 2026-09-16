@@ -27,8 +27,8 @@ class AppLogo extends StatelessWidget {
   const AppLogo({super.key, this.size = 84, this.color}) : silhouette = false;
 
   const AppLogo.silhouette({super.key, this.size = 84})
-    : color = null,
-      silhouette = true;
+      : color = null,
+        silhouette = true;
 
   /// The silhouette colour for a given theme, named so a test can assert on
   /// it without rendering.
@@ -48,9 +48,8 @@ class AppLogo extends StatelessWidget {
       'lib/assets/logo.svg',
       width: size,
       height: size,
-      colorFilter: tint == null
-          ? null
-          : ColorFilter.mode(tint, BlendMode.srcIn),
+      colorFilter:
+          tint == null ? null : ColorFilter.mode(tint, BlendMode.srcIn),
     );
   }
 }

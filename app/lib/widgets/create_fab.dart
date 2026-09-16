@@ -15,10 +15,10 @@ import 'long_press_sheet.dart';
 /// screen back, for the same job.
 class CreateFab extends StatelessWidget {
   const CreateFab({super.key})
-    : icon = Iconsax.add_copy,
-      tooltip = 'Create',
-      onPressed = null,
-      heroTag = 'create';
+      : icon = Iconsax.add_copy,
+        tooltip = 'Create',
+        onPressed = null,
+        heroTag = 'create';
 
   /// The same disc doing something other than opening the create menu.
   const CreateFab.of({

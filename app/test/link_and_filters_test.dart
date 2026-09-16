@@ -6,11 +6,11 @@ import 'package:kyron_app/widgets/create_post/url_preview.dart';
 import 'package:kyron_app/widgets/search_filter_sheet.dart';
 
 FeedPost _post(String content) => FeedPost(
-  id: 'p1',
-  content: content,
-  createdAt: DateTime(2026, 1, 1),
-  author: const FeedAuthor(id: 'a1'),
-);
+      id: 'p1',
+      content: content,
+      createdAt: DateTime(2026, 1, 1),
+      author: const FeedAuthor(id: 'a1'),
+    );
 
 void main() {
   group('firstLinkIn', () {

@@ -119,9 +119,9 @@ void main() {
       find.descendant(of: find.byType(AddressPill), matching: find.text(text));
 
   Finder barContaining(String text) => find.descendant(
-    of: find.byType(AddressPill),
-    matching: find.textContaining(text),
-  );
+        of: find.byType(AddressPill),
+        matching: find.textContaining(text),
+      );
 
   group('a tapped link stays inside Kyron', () {
     testWidgets('it opens the app browser, not another app', (tester) async {

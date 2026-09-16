@@ -53,9 +53,9 @@ class FaceRegion {
       FaceRegionKind.eyes => _slot(face),
       FaceRegionKind.lowerFace => _hullBelow(landmarks, frame, face),
       FaceRegionKind.face => _hullOf([
-        for (final p in landmarks)
-          Offset(p.x * frame.width, p.y * frame.height),
-      ]),
+          for (final p in landmarks)
+            Offset(p.x * frame.width, p.y * frame.height),
+        ]),
     };
   }
 

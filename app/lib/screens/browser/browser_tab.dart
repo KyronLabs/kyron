@@ -9,9 +9,9 @@ import 'package:flutter/foundation.dart';
 /// it. Nothing here knows what a web view is; see [BrowserEngine].
 class BrowserTab extends ChangeNotifier {
   BrowserTab({required Uri url, String? title})
-    : _url = url,
-      _title = title,
-      _opened = url;
+      : _url = url,
+        _title = title,
+        _opened = url;
 
   /// Where the tab was told to go. Kept so a tab that failed on its first
   /// page still knows what it was trying to show.

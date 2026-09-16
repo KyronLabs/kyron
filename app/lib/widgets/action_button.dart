@@ -113,8 +113,8 @@ class ActionButton extends StatelessWidget {
           fontSize: expand
               ? 16
               : compact
-              ? 13
-              : 14,
+                  ? 13
+                  : 14,
           fontWeight: FontWeight.w600,
         ),
       ),

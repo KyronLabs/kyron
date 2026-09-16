@@ -41,13 +41,14 @@ class ConversationListState {
     bool? loadingMore,
     String? error,
     bool clearError = false,
-  }) => ConversationListState(
-    items: items ?? this.items,
-    cursor: clearCursor ? null : (cursor ?? this.cursor),
-    loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
-    loadingMore: loadingMore ?? this.loadingMore,
-    error: clearError ? null : (error ?? this.error),
-  );
+  }) =>
+      ConversationListState(
+        items: items ?? this.items,
+        cursor: clearCursor ? null : (cursor ?? this.cursor),
+        loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
+        loadingMore: loadingMore ?? this.loadingMore,
+        error: clearError ? null : (error ?? this.error),
+      );
 }
 
 class ConversationListNotifier extends StateNotifier<ConversationListState> {
@@ -59,7 +60,7 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
   final bool unreadOnly;
 
   ConversationListNotifier(this._repo, {required this.unreadOnly})
-    : super(const ConversationListState()) {
+      : super(const ConversationListState()) {
     refresh();
   }
 
@@ -136,17 +137,13 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
 }
 
 /// One per tab, so All and Unread each keep their own page and cursor.
-final conversationListProvider =
-    StateNotifierProvider.family<
-      ConversationListNotifier,
-      ConversationListState,
-      bool
-    >((ref, unreadOnly) {
-      return ConversationListNotifier(
-        ref.read(messagesRepositoryProvider),
-        unreadOnly: unreadOnly,
-      );
-    });
+final conversationListProvider = StateNotifierProvider.family<
+    ConversationListNotifier, ConversationListState, bool>((ref, unreadOnly) {
+  return ConversationListNotifier(
+    ref.read(messagesRepositoryProvider),
+    unreadOnly: unreadOnly,
+  );
+});
 
 /// Reloads both tabs, and the badge with them.
 ///
@@ -223,15 +220,16 @@ class ThreadState {
     String? error,
     bool clearError = false,
     bool? muted,
-  }) => ThreadState(
-    messages: messages ?? this.messages,
-    people: people ?? this.people,
-    cursor: clearCursor ? null : (cursor ?? this.cursor),
-    loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
-    loadingMore: loadingMore ?? this.loadingMore,
-    error: clearError ? null : (error ?? this.error),
-    muted: muted ?? this.muted,
-  );
+  }) =>
+      ThreadState(
+        messages: messages ?? this.messages,
+        people: people ?? this.people,
+        cursor: clearCursor ? null : (cursor ?? this.cursor),
+        loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
+        loadingMore: loadingMore ?? this.loadingMore,
+        error: clearError ? null : (error ?? this.error),
+        muted: muted ?? this.muted,
+      );
 }
 
 class ThreadNotifier extends StateNotifier<ThreadState> {
@@ -244,7 +242,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   int _pending = 0;
 
   ThreadNotifier(this._repo, this._vault, this._conversationId)
-    : super(const ThreadState()) {
+      : super(const ThreadState()) {
     refresh();
   }
 
@@ -378,9 +376,8 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       // Sealed if both sides have published a key, and sent as it was written
       // if not. Never silently one when the reader was shown the other: the
       // bubble carries which it was.
-      final sealed = text.isEmpty
-          ? null
-          : await _vault.seal(text, _conversationId);
+      final sealed =
+          text.isEmpty ? null : await _vault.seal(text, _conversationId);
       final sent = await _repo.send(
         _conversationId,
         sealed ?? text,
@@ -508,9 +505,9 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
 
 final threadProvider =
     StateNotifierProvider.family<ThreadNotifier, ThreadState, String>(
-      (ref, conversationId) => ThreadNotifier(
-        ref.read(messagesRepositoryProvider),
-        ref.read(messageVaultProvider),
-        conversationId,
-      ),
-    );
+  (ref, conversationId) => ThreadNotifier(
+    ref.read(messagesRepositoryProvider),
+    ref.read(messageVaultProvider),
+    conversationId,
+  ),
+);

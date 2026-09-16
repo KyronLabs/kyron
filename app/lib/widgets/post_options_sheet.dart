@@ -236,10 +236,10 @@ class _OptionsState extends ConsumerState<_Options> {
   }
 
   Widget _divider(ColorScheme scheme) => Divider(
-    height: SpacingTokens.space16,
-    thickness: 0.5,
-    color: scheme.outline.withValues(alpha: 0.2),
-  );
+        height: SpacingTokens.space16,
+        thickness: 0.5,
+        color: scheme.outline.withValues(alpha: 0.2),
+      );
 
   /// Closes the sheet, then opens something else. Done in this order so the
   /// sheet is not still animating shut underneath the next screen.

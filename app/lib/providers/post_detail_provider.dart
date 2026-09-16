@@ -94,8 +94,8 @@ class PostDetailState {
 
 final postDetailProvider =
     StateNotifierProvider.family<PostDetailNotifier, PostDetailState, String>(
-      (ref, postId) => PostDetailNotifier(ref, postId),
-    );
+  (ref, postId) => PostDetailNotifier(ref, postId),
+);
 
 class PostDetailNotifier extends StateNotifier<PostDetailState> {
   final Ref _ref;
@@ -111,8 +111,8 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
     this._ref,
     this._postId, {
     DateTime Function() now = DateTime.now,
-  }) : _now = now,
-       super(const PostDetailState()) {
+  })  : _now = now,
+        super(const PostDetailState()) {
     load();
   }
 

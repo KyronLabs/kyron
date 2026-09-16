@@ -80,8 +80,8 @@ class _KyronToggleState extends State<KyronToggle>
                 color: widget.value
                     ? null
                     : (isDark
-                          ? const Color(0xFF333333)
-                          : const Color(0xFFD1D5DB)),
+                        ? const Color(0xFF333333)
+                        : const Color(0xFFD1D5DB)),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Padding(

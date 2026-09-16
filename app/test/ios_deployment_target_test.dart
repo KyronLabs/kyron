@@ -40,18 +40,16 @@ void main() {
       final highest = required.values.reduce(
         (a, b) => _isAtLeast(a, b) ? a : b,
       );
-      final highestNames =
-          required.entries
-              .where((e) => e.value == highest)
-              .map((e) => e.key)
-              .toList()
-            ..sort();
+      final highestNames = required.entries
+          .where((e) => e.value == highest)
+          .map((e) => e.key)
+          .toList()
+        ..sort();
 
       expect(
         _isAtLeast(_projectTargets().first, highest),
         isTrue,
-        reason:
-            'the project is on ${_projectTargets().first} and '
+        reason: 'the project is on ${_projectTargets().first} and '
             '${highestNames.join(', ')} require $highest. CocoaPods refuses '
             'this before anything is compiled.',
       );
@@ -101,10 +99,8 @@ Map<String, String> _pluginRequirements() {
     reason: 'run flutter pub get before this test',
   );
 
-  final packages =
-      (jsonDecode(config.readAsStringSync())
-              as Map<String, dynamic>)['packages']
-          as List<dynamic>;
+  final packages = (jsonDecode(config.readAsStringSync())
+      as Map<String, dynamic>)['packages'] as List<dynamic>;
 
   final found = <String, String>{};
   for (final entry in packages.cast<Map<String, dynamic>>()) {

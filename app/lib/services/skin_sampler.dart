@@ -175,8 +175,8 @@ class SkinSampler {
     int clamp(double value) => value < 0
         ? 0
         : value > 255
-        ? 255
-        : value.round();
+            ? 255
+            : value.round();
     return (0xFF << 24) |
         (clamp(y + 1.402 * cv) << 16) |
         (clamp(y - 0.344136 * cu - 0.714136 * cv) << 8) |

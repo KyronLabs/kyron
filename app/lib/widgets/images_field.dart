@@ -93,11 +93,11 @@ class ImagesField extends StatelessWidget {
                   // own photograph is in the way, and the line underneath
                   // already says the pair can be tapped.
                   : _cover != null
-                  ? const SizedBox.shrink()
-                  : Icon(
-                      Iconsax.gallery_edit_copy,
-                      color: scheme.onSurface.withValues(alpha: 0.7),
-                    ),
+                      ? const SizedBox.shrink()
+                      : Icon(
+                          Iconsax.gallery_edit_copy,
+                          color: scheme.onSurface.withValues(alpha: 0.7),
+                        ),
             ),
           ),
         ),
@@ -112,8 +112,8 @@ class ImagesField extends StatelessWidget {
             child: uploading == ImageSlot.avatar
                 ? const CircularProgressIndicator()
                 : _avatar != null
-                ? null
-                : Icon(Iconsax.camera_copy, color: scheme.primary),
+                    ? null
+                    : Icon(Iconsax.camera_copy, color: scheme.primary),
           ),
         ),
         const SizedBox(height: SpacingTokens.space8),

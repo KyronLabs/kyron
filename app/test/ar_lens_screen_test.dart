@@ -18,15 +18,15 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 /// whether those fail rather than what the screen does, and would drift the
 /// day a catalogue is actually reachable from CI.
 LensCatalogue offline(Directory temp) => LensCatalogue(
-  client: MockClient((_) async => http.Response('', 503)),
-  directory: () async => temp,
-);
+      client: MockClient((_) async => http.Response('', 503)),
+      directory: () async => temp,
+    );
 
 Widget screen(List<CameraDescription> cameras, Directory temp) => ProviderScope(
-  child: MaterialApp(
-    home: ArLensScreen(cameras: cameras, catalogue: offline(temp)),
-  ),
-);
+      child: MaterialApp(
+        home: ArLensScreen(cameras: cameras, catalogue: offline(temp)),
+      ),
+    );
 
 void main() {
   late Directory temp;
@@ -96,9 +96,8 @@ void main() {
           matching: find.byType(AnimatedContainer),
         ),
       );
-      final shape =
-          (box.decoration! as ShapeDecoration).shape
-              as ContinuousRectangleBorder;
+      final shape = (box.decoration! as ShapeDecoration).shape
+          as ContinuousRectangleBorder;
       return shape.side;
     }
 

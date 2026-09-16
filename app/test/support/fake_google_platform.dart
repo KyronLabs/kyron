@@ -40,7 +40,8 @@ class FakeGooglePlatform extends GoogleSignInPlatform
   @override
   Future<AuthenticationResults?>? attemptLightweightAuthentication(
     AttemptLightweightAuthenticationParameters params,
-  ) => throw UnimplementedError('Kyron does not sign in silently');
+  ) =>
+      throw UnimplementedError('Kyron does not sign in silently');
 
   @override
   bool authorizationRequiresUserInteraction() =>
@@ -49,12 +50,14 @@ class FakeGooglePlatform extends GoogleSignInPlatform
   @override
   Future<ClientAuthorizationTokenData?> clientAuthorizationTokensForScopes(
     ClientAuthorizationTokensForScopesParameters params,
-  ) => throw UnimplementedError('Kyron asks for no scopes');
+  ) =>
+      throw UnimplementedError('Kyron asks for no scopes');
 
   @override
   Future<ServerAuthorizationTokenData?> serverAuthorizationTokensForScopes(
     ServerAuthorizationTokensForScopesParameters params,
-  ) => throw UnimplementedError('Kyron asks for no scopes');
+  ) =>
+      throw UnimplementedError('Kyron asks for no scopes');
 
   @override
   Future<void> disconnect(DisconnectParams params) =>
@@ -66,6 +69,6 @@ class FakeGooglePlatform extends GoogleSignInPlatform
 }
 
 AuthenticationResults googleResults({String? idToken}) => AuthenticationResults(
-  user: const GoogleSignInUserData(id: 'g1', email: 'a@b.c'),
-  authenticationTokens: AuthenticationTokenData(idToken: idToken),
-);
+      user: const GoogleSignInUserData(id: 'g1', email: 'a@b.c'),
+      authenticationTokens: AuthenticationTokenData(idToken: idToken),
+    );

@@ -136,8 +136,7 @@ class ExposureMeter {
         final pixel = read(x.round(), y.round());
         if (pixel == null) continue;
         // Rec. 709, which is what the sensor's output is encoded against.
-        total +=
-            (0.2126 * ((pixel >> 16) & 0xFF) +
+        total += (0.2126 * ((pixel >> 16) & 0xFF) +
                 0.7152 * ((pixel >> 8) & 0xFF) +
                 0.0722 * (pixel & 0xFF)) /
             255.0;
@@ -164,10 +163,10 @@ class ExposureMeter {
   /// Where to meter before a face has been found: the middle of the frame,
   /// which is where somebody holding a phone at arm's length puts their head.
   static Rect regionForSelfie(Size frame) => Rect.fromCenter(
-    center: Offset(frame.width / 2, frame.height * 0.45),
-    width: frame.width * 0.42,
-    height: frame.height * 0.34,
-  );
+        center: Offset(frame.width / 2, frame.height * 0.45),
+        width: frame.width * 0.42,
+        height: frame.height * 0.34,
+      );
 
   static double _log2(double value) => math.log(value) / math.ln2;
 }

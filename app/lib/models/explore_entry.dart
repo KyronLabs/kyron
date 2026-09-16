@@ -14,10 +14,10 @@ class TrendingTag {
   const TrendingTag({required this.tag, this.posts = 0, this.recent = 0});
 
   factory TrendingTag.fromJson(Map<String, dynamic> json) => TrendingTag(
-    tag: json['tag'] as String? ?? '',
-    posts: (json['posts'] as num?)?.toInt() ?? 0,
-    recent: (json['recent'] as num?)?.toInt() ?? 0,
-  );
+        tag: json['tag'] as String? ?? '',
+        posts: (json['posts'] as num?)?.toInt() ?? 0,
+        recent: (json['recent'] as num?)?.toInt() ?? 0,
+      );
 }
 
 /// One row of the topic catalogue: what a reader can say they are into.
@@ -42,16 +42,16 @@ class Topic {
   });
 
   factory Topic.fromJson(Map<String, dynamic> json) => Topic(
-    slug: json['slug'] as String? ?? '',
-    name: json['name'] as String? ?? '',
-    people: (json['people'] as num?)?.toInt() ?? 0,
-    following: json['following'] == true,
-  );
+        slug: json['slug'] as String? ?? '',
+        name: json['name'] as String? ?? '',
+        people: (json['people'] as num?)?.toInt() ?? 0,
+        following: json['following'] == true,
+      );
 
   Topic copyWith({int? people, bool? following}) => Topic(
-    slug: slug,
-    name: name,
-    people: people ?? this.people,
-    following: following ?? this.following,
-  );
+        slug: slug,
+        name: name,
+        people: people ?? this.people,
+        following: following ?? this.following,
+      );
 }

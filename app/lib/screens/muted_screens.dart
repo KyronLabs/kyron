@@ -92,8 +92,8 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                           enabled: !_busy,
                           onSubmitted: (_) => _add(),
                           decoration: InputDecoration(
-                            hintText: AppLocalizations.of(context)
-                                .aWordPhraseOrTag,
+                            hintText:
+                                AppLocalizations.of(context).aWordPhraseOrTag,
                             isDense: true,
                           ),
                         ),
@@ -125,28 +125,29 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
               child: words == null
                   ? Center(child: CircularProgressIndicator())
                   : words.isEmpty
-                  ? EmptyState(
-                      art: EmptyArt.muted,
-                      title: AppLocalizations.of(context).literalnothingMuted,
-                      detail:
-                          'Add a word or a tag above. Posts carrying '
-                          'it stay out of your feed.',
-                    )
-                  : ListView.separated(
-                      itemCount: words.length,
-                      separatorBuilder: (_, __) => Divider(
-                        height: 1,
-                        color: scheme.outline.withValues(alpha: 0.15),
-                      ),
-                      itemBuilder: (context, index) => ListTile(
-                        title: Text(words[index]),
-                        trailing: IconButton(
-                          icon: const Icon(Iconsax.close_circle_copy, size: 18),
-                          tooltip: 'Unmute',
-                          onPressed: () => _remove(words[index]),
+                      ? EmptyState(
+                          art: EmptyArt.muted,
+                          title:
+                              AppLocalizations.of(context).literalnothingMuted,
+                          detail: 'Add a word or a tag above. Posts carrying '
+                              'it stay out of your feed.',
+                        )
+                      : ListView.separated(
+                          itemCount: words.length,
+                          separatorBuilder: (_, __) => Divider(
+                            height: 1,
+                            color: scheme.outline.withValues(alpha: 0.15),
+                          ),
+                          itemBuilder: (context, index) => ListTile(
+                            title: Text(words[index]),
+                            trailing: IconButton(
+                              icon: const Icon(Iconsax.close_circle_copy,
+                                  size: 18),
+                              tooltip: 'Unmute',
+                              onPressed: () => _remove(words[index]),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
             ),
           ],
         ),

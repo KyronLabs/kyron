@@ -80,8 +80,7 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
                         status: story.status,
                         onTap: () => _handleTap(context, story),
                         onLongPress: () => _showProfilePreview(context, story),
-                        onSwipeLeft:
-                            story.isYourStory &&
+                        onSwipeLeft: story.isYourStory &&
                                 story.status == StoryStatus.uploading
                             ? () => _cancelUpload(context, story)
                             : () => _hideStory(context, story),

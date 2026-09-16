@@ -141,8 +141,7 @@ class AppDrawerState extends State<AppDrawer>
     }
 
     if (details.velocity.pixelsPerSecond.dx.abs() >= 365.0) {
-      double visualVelocity =
-          details.velocity.pixelsPerSecond.dx /
+      double visualVelocity = details.velocity.pixelsPerSecond.dx /
           MediaQuery.of(context).size.width;
       _controller.fling(velocity: visualVelocity);
     } else if (_controller.value < 0.5) {

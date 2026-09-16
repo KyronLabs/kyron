@@ -65,8 +65,8 @@ class ServiceStatus {
 
 final serviceStatusProvider =
     StateNotifierProvider<ServiceStatusNotifier, AsyncValue<ServiceStatus>>(
-      (ref) => ServiceStatusNotifier(ref),
-    );
+  (ref) => ServiceStatusNotifier(ref),
+);
 
 class ServiceStatusNotifier extends StateNotifier<AsyncValue<ServiceStatus>> {
   final Ref _ref;
@@ -79,15 +79,13 @@ class ServiceStatusNotifier extends StateNotifier<AsyncValue<ServiceStatus>> {
     state = const AsyncLoading();
     final started = DateTime.now();
     try {
-      final res = await _ref
-          .read(apiClientProvider)
-          .dio
-          .get<Map<String, dynamic>>(
-            '/health',
-            // The status screen is the one place a slow answer is the point,
-            // so it reports rather than waits out a full cold start.
-            options: Options(receiveTimeout: const Duration(seconds: 30)),
-          );
+      final res =
+          await _ref.read(apiClientProvider).dio.get<Map<String, dynamic>>(
+                '/health',
+                // The status screen is the one place a slow answer is the point,
+                // so it reports rather than waits out a full cold start.
+                options: Options(receiveTimeout: const Duration(seconds: 30)),
+              );
       state = AsyncData(
         ServiceStatus.fromJson(
           res.data ?? const {},

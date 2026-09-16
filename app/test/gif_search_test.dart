@@ -35,27 +35,28 @@ String _encode(Object? value) => const JsonCodec().encode(value);
 Map<String, dynamic> _gif({
   String id = 'g1',
   String title = 'a cat, falling over',
-}) => {
-  'id': id,
-  'title': title,
-  'images': {
-    'original': {
-      'url': 'https://media.giphy.com/$id/giphy.gif',
-      'width': '480',
-      'height': '270',
-    },
-    'downsized': {
-      'url': 'https://media.giphy.com/$id/downsized.gif',
-      'width': '320',
-      'height': '180',
-    },
-    'fixed_width_small': {
-      'url': 'https://media.giphy.com/$id/200w_s.gif',
-      'width': '100',
-      'height': '56',
-    },
-  },
-};
+}) =>
+    {
+      'id': id,
+      'title': title,
+      'images': {
+        'original': {
+          'url': 'https://media.giphy.com/$id/giphy.gif',
+          'width': '480',
+          'height': '270',
+        },
+        'downsized': {
+          'url': 'https://media.giphy.com/$id/downsized.gif',
+          'width': '320',
+          'height': '180',
+        },
+        'fixed_width_small': {
+          'url': 'https://media.giphy.com/$id/200w_s.gif',
+          'width': '100',
+          'height': '56',
+        },
+      },
+    };
 
 void main() {
   /// A key, so the parsing is actually reached. Without one every call

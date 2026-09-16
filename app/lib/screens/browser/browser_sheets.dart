@@ -106,10 +106,10 @@ abstract final class PageSheet {
                             child: Text(
                               secure
                                   ? 'Encrypted between this device and '
-                                        '${tab.host}.'
+                                      '${tab.host}.'
                                   : 'Sent in the clear. Anyone on the network '
-                                        'between you and ${tab.host} can read '
-                                        'it.',
+                                      'between you and ${tab.host} can read '
+                                      'it.',
                               style: TextStyle(
                                 fontSize: TypographyTokens.fontSize1,
                                 height: 1.4,
@@ -232,9 +232,8 @@ abstract final class TabSheet {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize3,
-                            fontWeight: reading
-                                ? FontWeight.w600
-                                : FontWeight.w400,
+                            fontWeight:
+                                reading ? FontWeight.w600 : FontWeight.w400,
                             color: palette.ink,
                           ),
                         ),

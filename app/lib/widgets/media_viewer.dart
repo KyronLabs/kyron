@@ -260,8 +260,8 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
                     child: _videoError != null && index == _index
                         ? const _Unavailable()
                         : live
-                        ? _ViewerVideo(controller: controller)
-                        : _VideoStandIn(media: item),
+                            ? _ViewerVideo(controller: controller)
+                            : _VideoStandIn(media: item),
                     heroAttributes: PhotoViewHeroAttributes(tag: item.id),
                     minScale: PhotoViewComputedScale.contained,
                     maxScale: PhotoViewComputedScale.contained,
@@ -354,9 +354,8 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
                             controller: _controller!,
                             muted: ref.watch(videoMutedProvider),
                             onPlayPause: _togglePlay,
-                            onToggleSound: ref
-                                .read(videoMutedProvider.notifier)
-                                .toggle,
+                            onToggleSound:
+                                ref.read(videoMutedProvider.notifier).toggle,
                           ),
                       ],
                     ),

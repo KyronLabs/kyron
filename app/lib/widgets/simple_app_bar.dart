@@ -61,8 +61,7 @@ class SimpleAppBar extends StatelessWidget {
           _Action(
             icon: Iconsax.setting_2_copy,
             tooltip: 'Settings',
-            onPressed:
-                onSettingsTap ??
+            onPressed: onSettingsTap ??
                 () => Navigator.pushNamed(context, Routes.settings),
           ),
         ],

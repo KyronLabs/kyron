@@ -45,13 +45,14 @@ class FollowListState {
     String? error,
     bool clearError = false,
     bool clearCursor = false,
-  }) => FollowListState(
-    people: people ?? this.people,
-    cursor: clearCursor ? null : (cursor ?? this.cursor),
-    loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
-    loadingMore: loadingMore ?? this.loadingMore,
-    error: clearError ? null : (error ?? this.error),
-  );
+  }) =>
+      FollowListState(
+        people: people ?? this.people,
+        cursor: clearCursor ? null : (cursor ?? this.cursor),
+        loadingFirstPage: loadingFirstPage ?? this.loadingFirstPage,
+        loadingMore: loadingMore ?? this.loadingMore,
+        error: clearError ? null : (error ?? this.error),
+      );
 }
 
 class FollowListNotifier extends StateNotifier<FollowListState> {
@@ -121,17 +122,13 @@ class FollowListNotifier extends StateNotifier<FollowListState> {
   }
 }
 
-final followListProvider =
-    StateNotifierProvider.family<
-      FollowListNotifier,
-      FollowListState,
-      FollowListArgs
-    >((ref, args) {
-      return FollowListNotifier(
-        ProfileRepository(ref.read(apiClientProvider)),
-        args,
-      );
-    });
+final followListProvider = StateNotifierProvider.family<FollowListNotifier,
+    FollowListState, FollowListArgs>((ref, args) {
+  return FollowListNotifier(
+    ProfileRepository(ref.read(apiClientProvider)),
+    args,
+  );
+});
 
 /// Who follows an account, or who it follows.
 class FollowListScreen extends ConsumerStatefulWidget {
@@ -198,7 +195,9 @@ class _FollowListScreenState extends ConsumerState<FollowListScreen> {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: TypographyTokens.fontSize2,
-                  color: Theme.of(context).colorScheme.onSurface
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onSurface
                       .withValues(alpha: 0.6),
                 ),
               ),

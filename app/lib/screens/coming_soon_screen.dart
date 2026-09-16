@@ -27,30 +27,29 @@ class ComingSoonScreen extends StatelessWidget {
   });
 
   const ComingSoonScreen.arLens({super.key})
-    : title = 'AR Lens',
-      art = EmptyArt.lens,
-      heading = 'Lenses are not ready yet',
-      detail =
-          'Recording and publishing AR lenses is still being built. Nothing '
-          'you capture would be saved yet, so the camera stays closed.';
+      : title = 'AR Lens',
+        art = EmptyArt.lens,
+        heading = 'Lenses are not ready yet',
+        detail =
+            'Recording and publishing AR lenses is still being built. Nothing '
+                'you capture would be saved yet, so the camera stays closed.';
 
   const ComingSoonScreen.poll({super.key})
-    : title = 'Poll',
-      art = EmptyArt.polls,
-      heading = 'Polls are not ready yet',
-      detail =
-          'Polls need somewhere to keep the options and count the votes. '
-          'That is not in place yet, so a poll posted today would lose '
-          'every answer.';
+      : title = 'Poll',
+        art = EmptyArt.polls,
+        heading = 'Polls are not ready yet',
+        detail =
+            'Polls need somewhere to keep the options and count the votes. '
+                'That is not in place yet, so a poll posted today would lose '
+                'every answer.';
 
   const ComingSoonScreen.live({super.key})
-    : title = 'Go live',
-      art = EmptyArt.live,
-      heading = 'Going live is not ready yet',
-      detail =
-          'Going live needs a media server Kyron does not run yet. '
-          'Starting a broadcast now would put you in a room nobody could '
-          'join. Recording a voice post works today.';
+      : title = 'Go live',
+        art = EmptyArt.live,
+        heading = 'Going live is not ready yet',
+        detail = 'Going live needs a media server Kyron does not run yet. '
+            'Starting a broadcast now would put you in a room nobody could '
+            'join. Recording a voice post works today.';
 
   @override
   Widget build(BuildContext context) {

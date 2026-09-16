@@ -111,14 +111,15 @@ void main() {
       int saves = 0,
       int comments = 0,
       List<Map<String, dynamic>> timeline = const [],
-    }) => PostAnalytics.fromJson({
-      'views': views,
-      'likes': likes,
-      'saves': saves,
-      'comments': comments,
-      'createdAt': '2026-08-30T00:00:00.000Z',
-      'timeline': timeline,
-    });
+    }) =>
+        PostAnalytics.fromJson({
+          'views': views,
+          'likes': likes,
+          'saves': saves,
+          'comments': comments,
+          'createdAt': '2026-08-30T00:00:00.000Z',
+          'timeline': timeline,
+        });
 
     test('engagement is unknown, not zero, with no viewers', () {
       // 0% reads as "nobody engaged"; the truth is that nobody looked.
@@ -168,18 +169,19 @@ class _SlowFeed extends FeedRepository {
 
   @override
   Future<FeedPost> byId(String id) async => FeedPost(
-    id: id,
-    content: 'a post',
-    createdAt: DateTime(2026),
-    author: const FeedAuthor(id: 'me', username: 'me'),
-  );
+        id: id,
+        content: 'a post',
+        createdAt: DateTime(2026),
+        author: const FeedAuthor(id: 'me', username: 'me'),
+      );
 
   @override
   Future<CommentPage> comments(
     String postId, {
     String? cursor,
     int limit = 20,
-  }) async => CommentPage(items: [_comment('c1', replies: 2)]);
+  }) async =>
+      CommentPage(items: [_comment('c1', replies: 2)]);
 
   @override
   Future<CommentPage> replies(
@@ -271,18 +273,19 @@ class _CountingFeed extends FeedRepository {
 
   @override
   Future<FeedPost> byId(String id) async => FeedPost(
-    id: id,
-    content: 'a post',
-    createdAt: DateTime(2026),
-    author: const FeedAuthor(id: 'me', username: 'me'),
-  );
+        id: id,
+        content: 'a post',
+        createdAt: DateTime(2026),
+        author: const FeedAuthor(id: 'me', username: 'me'),
+      );
 
   @override
   Future<CommentPage> comments(
     String postId, {
     String? cursor,
     int limit = 20,
-  }) async => const CommentPage(items: []);
+  }) async =>
+      const CommentPage(items: []);
 
   @override
   Future<void> recordView(String postId, {int? dwellMs}) async {
@@ -294,7 +297,7 @@ void _reportingTheRead() {
   group('reporting the read', () {
     /// A notifier on a clock the test moves by hand.
     ({PostDetailNotifier notifier, _CountingFeed feed, void Function(int) pass})
-    reading() {
+        reading() {
       final feed = _CountingFeed();
       var clock = DateTime(2026, 9, 8, 12);
       final container = ProviderContainer(
@@ -418,18 +421,19 @@ class _HeldLike extends FeedRepository {
   // something rather than reach for the network.
   @override
   Future<FeedPost> byId(String postId) async => FeedPost(
-    id: postId,
-    content: 'a post',
-    createdAt: DateTime(2026),
-    author: const FeedAuthor(id: 'u1', username: 'ada'),
-  );
+        id: postId,
+        content: 'a post',
+        createdAt: DateTime(2026),
+        author: const FeedAuthor(id: 'u1', username: 'ada'),
+      );
 
   @override
   Future<CommentPage> comments(
     String postId, {
     String? cursor,
     int limit = 20,
-  }) async => const CommentPage(items: []);
+  }) async =>
+      const CommentPage(items: []);
 
   @override
   Future<void> recordView(String postId, {int? dwellMs}) async {}

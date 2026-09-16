@@ -201,12 +201,13 @@ void main() {
     /// The sliver it actually loads in, so the height it is given here is the
     /// unbounded one the real screen gives it.
     Future<void> show(WidgetTester tester, Widget child) => tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: CustomScrollView(slivers: [SliverToBoxAdapter(child: child)]),
-        ),
-      ),
-    );
+          MaterialApp(
+            home: Scaffold(
+              body:
+                  CustomScrollView(slivers: [SliverToBoxAdapter(child: child)]),
+            ),
+          ),
+        );
 
     testWidgets('lays out two columns, not a run of rows', (tester) async {
       await show(tester, const SkeletonTileWall(count: 6));

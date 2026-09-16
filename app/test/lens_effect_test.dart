@@ -91,9 +91,9 @@ void main() {
       const FacePoint(0.5, 0.5),
     );
     FacePoint at(double dx, double dy) => FacePoint(
-      (size.width / 2 + dx) / size.width,
-      (size.height / 2 + dy) / size.height,
-    );
+          (size.width / 2 + dx) / size.width,
+          (size.height / 2 + dy) / size.height,
+        );
     points[FaceAnchor.leftIris] = at(-55, -60);
     points[FaceAnchor.rightIris] = at(55, -60);
     points[FaceAnchor.foreheadPoint] = at(0, -170);

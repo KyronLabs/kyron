@@ -24,11 +24,11 @@ class LogEntry {
   });
 
   Map<String, dynamic> toJson() => {
-    'at': at.toIso8601String(),
-    'level': level.name,
-    'source': source,
-    'message': message,
-  };
+        'at': at.toIso8601String(),
+        'level': level.name,
+        'source': source,
+        'message': message,
+      };
 
   static LogEntry? fromJson(Object? value) {
     if (value is! Map) return null;

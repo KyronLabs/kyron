@@ -198,16 +198,16 @@ class EmptyState extends StatelessWidget {
   /// The same thing in a list of its own, so pull-to-refresh still works when
   /// there is nothing to scroll.
   Widget get scrollable => LayoutBuilder(
-    builder: (context, constraints) => ListView(
-      physics: const AlwaysScrollableScrollPhysics(),
-      children: [
-        ConstrainedBox(
-          constraints: BoxConstraints(minHeight: constraints.maxHeight),
-          child: this,
+        builder: (context, constraints) => ListView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          children: [
+            ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: this,
+            ),
+          ],
         ),
-      ],
-    ),
-  );
+      );
 }
 
 /// The picture, and on a light background the shadow that holds it down.

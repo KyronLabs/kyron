@@ -148,8 +148,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 Icon(
                   icon,
                   size: 24,
-                  color: Theme.of(context).colorScheme.onSurface
-                      .withOpacity(0.8),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
                 ),
                 const SizedBox(width: 16),
                 // Label + Subtitle
@@ -180,7 +180,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize3,
-                            color: Theme.of(context).colorScheme.onSurface
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurface
                                 .withOpacity(0.6),
                             fontFamily: 'SF Pro Rounded',
                           ),
@@ -244,16 +246,16 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               children: [
                 CircleAvatar(
                   radius: 22,
-                  backgroundColor: Theme.of(context)
-                      .colorScheme
-                      .surfaceContainerHighest,
-                  foregroundImage: avatarUrl == null
-                      ? null
-                      : NetworkImage(avatarUrl),
+                  backgroundColor:
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
+                  foregroundImage:
+                      avatarUrl == null ? null : NetworkImage(avatarUrl),
                   child: Icon(
                     Iconsax.user_copy,
                     size: 20,
-                    color: Theme.of(context).colorScheme.onSurface
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface
                         .withValues(alpha: .5),
                   ),
                 ),
@@ -426,8 +428,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.volume_slash_copy,
-              label: AppLocalizations.of(context)
-                  .literalmutedAndBlockedAccounts,
+              label:
+                  AppLocalizations.of(context).literalmutedAndBlockedAccounts,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.mutedAccounts),
               helpText: 'Who you have muted or blocked',

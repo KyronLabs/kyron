@@ -164,10 +164,8 @@ class FeedRepository {
       data: {
         'content': content,
         if (media.isNotEmpty)
-          'media': media
-              .where((m) => m.isReady)
-              .map((m) => m.toJson())
-              .toList(),
+          'media':
+              media.where((m) => m.isReady).map((m) => m.toJson()).toList(),
         if (quotedPostId != null) 'quotedPostId': quotedPostId,
         if (poll != null) 'poll': poll.toJson(),
         if (topics.isNotEmpty) 'topics': topics,
@@ -350,10 +348,8 @@ class FeedRepository {
         'content': content,
         if (parentId != null) 'parentId': parentId,
         if (media.isNotEmpty)
-          'media': media
-              .where((m) => m.isReady)
-              .map((m) => m.toJson())
-              .toList(),
+          'media':
+              media.where((m) => m.isReady).map((m) => m.toJson()).toList(),
       },
     );
     return PostComment.fromJson(res.data ?? const {});
@@ -369,9 +365,9 @@ class FeedRepository {
   /// counts the opens and totals the time, which is what lets ranking tell a
   /// glance apart from a fourth read. The author's own opens are not counted.
   Future<void> recordView(String postId, {int? dwellMs}) => _api.dio.put<void>(
-    '/feed/posts/$postId/view',
-    data: dwellMs == null ? null : {'dwellMs': dwellMs},
-  );
+        '/feed/posts/$postId/view',
+        data: dwellMs == null ? null : {'dwellMs': dwellMs},
+      );
 
   /// How the post is doing. Answers 404 to anyone but its author.
   Future<PostAnalytics> analytics(String postId) async {

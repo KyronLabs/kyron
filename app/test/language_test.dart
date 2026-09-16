@@ -145,19 +145,19 @@ void main() {
     // The whole point. A stored code that no widget reads is the bug this
     // replaced, so these assert on what is rendered, not on what is stored.
     Widget app(Language language) => MaterialApp(
-      locale: language.locale,
-      supportedLocales: [for (final l in Languages.all) l.locale],
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      home: Builder(
-        builder: (context) => Scaffold(
-          body: Text(MaterialLocalizations.of(context).backButtonTooltip),
-        ),
-      ),
-    );
+          locale: language.locale,
+          supportedLocales: [for (final l in Languages.all) l.locale],
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          home: Builder(
+            builder: (context) => Scaffold(
+              body: Text(MaterialLocalizations.of(context).backButtonTooltip),
+            ),
+          ),
+        );
 
     testWidgets('Flutter\'s own strings follow the choice', (tester) async {
       await tester.pumpWidget(app(Languages.fromCode('en')));
@@ -389,8 +389,7 @@ void main() {
       expect(
         find.textContaining('Translation is not built yet'),
         findsOneWidget,
-        reason:
-            'a row offering to translate and then not is worse than one '
+        reason: 'a row offering to translate and then not is worse than one '
             'that says it cannot yet',
       );
       expect(

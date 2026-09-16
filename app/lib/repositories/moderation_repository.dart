@@ -123,9 +123,9 @@ class ModerationRepository {
   // A query parameter, not a path segment: a muted phrase can contain slashes,
   // spaces and '#', none of which survive a path intact.
   Future<void> unmuteWord(String phrase) => _api.dio.delete<void>(
-    '/mutes/words',
-    queryParameters: {'phrase': phrase},
-  );
+        '/mutes/words',
+        queryParameters: {'phrase': phrase},
+      );
 
   Future<List<ProfileSummary>> mutedUsers() => _people('/mutes/users');
 
@@ -144,13 +144,15 @@ class ModerationRepository {
     required String targetId,
     required ReportReason reason,
     String? detail,
-  }) => _api.dio.post<void>(
-    '/reports',
-    data: {
-      'target': target.wire,
-      'targetId': targetId,
-      'reason': reason.wire,
-      if (detail != null && detail.trim().isNotEmpty) 'detail': detail.trim(),
-    },
-  );
+  }) =>
+      _api.dio.post<void>(
+        '/reports',
+        data: {
+          'target': target.wire,
+          'targetId': targetId,
+          'reason': reason.wire,
+          if (detail != null && detail.trim().isNotEmpty)
+            'detail': detail.trim(),
+        },
+      );
 }

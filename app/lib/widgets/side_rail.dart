@@ -127,9 +127,8 @@ class _RailItemState extends State<_RailItem> {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final active = widget.active;
-    final colour = active
-        ? scheme.primary
-        : scheme.onSurface.withValues(alpha: 0.7);
+    final colour =
+        active ? scheme.primary : scheme.onSurface.withValues(alpha: 0.7);
 
     return Semantics(
       button: true,
@@ -161,8 +160,8 @@ class _RailItemState extends State<_RailItem> {
                 color: active
                     ? scheme.primary.withValues(alpha: 0.10)
                     : (_hovered
-                          ? scheme.onSurface.withValues(alpha: 0.05)
-                          : Colors.transparent),
+                        ? scheme.onSurface.withValues(alpha: 0.05)
+                        : Colors.transparent),
                 borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
               ),
               child: Row(

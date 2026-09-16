@@ -6,9 +6,9 @@ import 'package:kyron_app/widgets/images_field.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 Widget app() => MaterialApp(
-  theme: KyronTheme.lightTheme,
-  home: OnboardStep1Screen(model: OnboardingModel()),
-);
+      theme: KyronTheme.lightTheme,
+      home: OnboardStep1Screen(model: OnboardingModel()),
+    );
 
 void main() {
   group('creating a profile', () {

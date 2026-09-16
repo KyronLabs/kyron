@@ -91,13 +91,13 @@ class LensAttachment {
   }
 
   Map<String, Object?> toJson() => {
-    'asset': asset,
-    'anchor': anchor.name,
-    'width': width,
-    if (offset.dx != 0) 'offsetX': offset.dx,
-    if (offset.dy != 0) 'offsetY': offset.dy,
-    if (rotation != 0) 'rotation': rotation,
-  };
+        'asset': asset,
+        'anchor': anchor.name,
+        'width': width,
+        if (offset.dx != 0) 'offsetX': offset.dx,
+        if (offset.dy != 0) 'offsetY': offset.dy,
+        if (rotation != 0) 'rotation': rotation,
+      };
 
   /// Where this lands on a face, in frame pixels.
   ///

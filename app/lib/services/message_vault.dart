@@ -23,8 +23,8 @@ class MessageVault {
     this._keys, {
     FlutterSecureStorage storage = const FlutterSecureStorage(),
     MessageCrypto? crypto,
-  }) : _storage = storage,
-       _crypto = crypto ?? MessageCrypto();
+  })  : _storage = storage,
+        _crypto = crypto ?? MessageCrypto();
 
   static const _secretKeyName = 'dm_secret_key_v1';
   static const _deviceIdName = 'dm_device_id_v1';
@@ -46,9 +46,8 @@ class MessageVault {
   /// why.
   Future<void> unlock() async {
     final stored = await _storage.read(key: _secretKeyName);
-    var pair = stored == null
-        ? null
-        : await MessageCrypto.tryDecodeSecret(stored);
+    var pair =
+        stored == null ? null : await MessageCrypto.tryDecodeSecret(stored);
 
     if (pair == null) {
       pair = await _crypto.newKeyPair();

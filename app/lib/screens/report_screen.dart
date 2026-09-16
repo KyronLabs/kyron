@@ -83,8 +83,8 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
         child: _sent
             ? _Sent(subject: widget.subject)
             : _reason == null
-            ? _reasons()
-            : _details(_reason!),
+                ? _reasons()
+                : _details(_reason!),
       ),
     );
   }
@@ -169,9 +169,8 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
                 ),
               ),
               TextButton(
-                onPressed: _sending
-                    ? null
-                    : () => setState(() => _reason = null),
+                onPressed:
+                    _sending ? null : () => setState(() => _reason = null),
                 child: Text(AppLocalizations.of(context).change),
               ),
             ],
@@ -233,9 +232,7 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
     });
 
     try {
-      await ref
-          .read(moderationRepositoryProvider)
-          .report(
+      await ref.read(moderationRepositoryProvider).report(
             target: widget.target,
             targetId: widget.targetId,
             reason: _reason!,

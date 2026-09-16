@@ -233,8 +233,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
                 )
               else if (state.onlyFailedMedia)
                 const _ErrorBanner(
-                  message:
-                      'Those attachments did not upload. Tap one to try '
+                  message: 'Those attachments did not upload. Tap one to try '
                       'again, or remove it.',
                 ),
               Expanded(
@@ -250,9 +249,8 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
                       _composerField(scheme),
                       MediaTray(
                         media: state.media,
-                        onRemove: ref
-                            .read(composerProvider.notifier)
-                            .removeMedia,
+                        onRemove:
+                            ref.read(composerProvider.notifier).removeMedia,
                         onRetry: ref.read(composerProvider.notifier).retryMedia,
                         onDescribe: _describe,
                       ),
@@ -394,9 +392,8 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
   }
 
   Future<void> _addMedia({required bool video}) async {
-    final message = await ref
-        .read(composerProvider.notifier)
-        .addMedia(video: video);
+    final message =
+        await ref.read(composerProvider.notifier).addMedia(video: video);
     if (message != null && mounted) {
       Toast.show(context, message);
     }
@@ -435,9 +432,8 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
   /// in a half-typed mention the picker opens on it and replaces it.
   Future<void> _tagSomeone() async {
     final value = _textController.value;
-    final caret = value.selection.isValid
-        ? value.selection.end
-        : value.text.length;
+    final caret =
+        value.selection.isValid ? value.selection.end : value.text.length;
     final typing = mentionAt(value.text, caret);
 
     final handle = await MentionPickerSheet.show(
@@ -616,9 +612,8 @@ class _AuthorLine extends ConsumerWidget {
         CircleAvatar(
           radius: 18,
           backgroundColor: scheme.primary.withValues(alpha: 0.2),
-          foregroundImage: user?.avatarUrl == null
-              ? null
-              : NetworkImage(user!.avatarUrl!),
+          foregroundImage:
+              user?.avatarUrl == null ? null : NetworkImage(user!.avatarUrl!),
           child: Icon(Iconsax.user_copy, size: 18, color: scheme.primary),
         ),
         const SizedBox(width: SpacingTokens.space12),

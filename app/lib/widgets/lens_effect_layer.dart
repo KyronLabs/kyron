@@ -151,13 +151,13 @@ class LensEffectLayer extends StatelessWidget {
 
     final (region, blur, overlay, invert) = switch (effect) {
       FillEffect(:final region, :final feather, :final keepShading) => (
-        region,
-        // Enough to take a nose out. Tied to the feather so one number in
-        // the lens controls how soft the whole thing is.
-        gap * math.max(0.10, feather),
-        skin?.withValues(alpha: 1 - keepShading),
-        false,
-      ),
+          region,
+          // Enough to take a nose out. Tied to the feather so one number in
+          // the lens controls how soft the whole thing is.
+          gap * math.max(0.10, feather),
+          skin?.withValues(alpha: 1 - keepShading),
+          false,
+        ),
       FrostEffect(:final reveal, :final blur, :final desaturate, :final lift) =>
         (reveal, gap * blur, null, true),
     };
@@ -185,17 +185,17 @@ class LensEffectLayer extends StatelessWidget {
             // gives back a colour that belongs to this face rather than a
             // painted-on one.
             FillEffect() => ColoredBox(
-              color: overlay!,
-              child: const SizedBox.expand(),
-            ),
+                color: overlay!,
+                child: const SizedBox.expand(),
+              ),
             // Etched glass washes the colour out and lifts everything towards
             // white. Blur alone reads as a camera out of focus, not as glass.
             FrostEffect(:final desaturate, :final lift) => ColorFiltered(
-              colorFilter: ColorFilter.matrix(
-                _wash(desaturate: desaturate, lift: lift),
+                colorFilter: ColorFilter.matrix(
+                  _wash(desaturate: desaturate, lift: lift),
+                ),
+                child: const SizedBox.expand(),
               ),
-              child: const SizedBox.expand(),
-            ),
           },
         ),
       ),
@@ -299,17 +299,17 @@ class LensEffectBaker {
     for (final effect in effects) {
       final (region, blur, feather, invert) = switch (effect) {
         FillEffect(:final region, :final feather) => (
-          region,
-          gap * math.max(0.10, feather),
-          gap * feather,
-          false,
-        ),
+            region,
+            gap * math.max(0.10, feather),
+            gap * feather,
+            false,
+          ),
         FrostEffect(:final reveal, :final blur, :final feather) => (
-          reveal,
-          gap * blur,
-          gap * feather,
-          true,
-        ),
+            reveal,
+            gap * blur,
+            gap * feather,
+            true,
+          ),
       };
       if (effect is FillEffect && skin == null) continue;
 
@@ -369,9 +369,8 @@ class LensEffectBaker {
         Paint()
           ..blendMode = BlendMode.dstOut
           ..color = const Color(0xFF000000)
-          ..maskFilter = feather > 0.5
-              ? MaskFilter.blur(BlurStyle.normal, feather)
-              : null,
+          ..maskFilter =
+              feather > 0.5 ? MaskFilter.blur(BlurStyle.normal, feather) : null,
       );
 
       canvas.restore();

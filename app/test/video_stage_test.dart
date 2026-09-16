@@ -14,11 +14,11 @@ class _Clip {
   bool get playing => changes.isEmpty ? false : changes.last;
 
   void report(double fraction, double distance) => VideoStage.instance.report(
-    this,
-    visibleFraction: fraction,
-    distance: distance,
-    onChanged: changes.add,
-  );
+        this,
+        visibleFraction: fraction,
+        distance: distance,
+        onChanged: changes.add,
+      );
 
   void withdraw() => VideoStage.instance.withdraw(this);
 }

@@ -252,12 +252,12 @@ class Routes {
             quoting: switch (quoting) {
               QuotedPost q => q,
               FeedPost p => QuotedPost(
-                id: p.id,
-                content: p.content,
-                createdAt: p.createdAt,
-                author: p.author,
-                media: p.media,
-              ),
+                  id: p.id,
+                  content: p.content,
+                  createdAt: p.createdAt,
+                  author: p.author,
+                  media: p.media,
+                ),
               _ => null,
             },
           ),

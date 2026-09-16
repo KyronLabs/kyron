@@ -73,10 +73,11 @@ class ComposerPoll {
       );
 
   ComposerPoll withOption(int index, String text) => copyWith(
-    options: [
-      for (var i = 0; i < options.length; i++) i == index ? text : options[i],
-    ],
-  );
+        options: [
+          for (var i = 0; i < options.length; i++)
+            i == index ? text : options[i],
+        ],
+      );
 
   ComposerPoll addOption() =>
       canAddOption ? copyWith(options: [...options, '']) : this;
@@ -91,9 +92,9 @@ class ComposerPoll {
       : this;
 
   Map<String, dynamic> toJson() => {
-    'options': filled,
-    'durationMinutes': durationMinutes,
-  };
+        'options': filled,
+        'durationMinutes': durationMinutes,
+      };
 
   /// How long it runs, as a person would say it.
   String get durationLabel {

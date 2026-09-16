@@ -107,9 +107,8 @@ class AddressPill extends StatelessWidget {
 
     // Quiet under a title it is subordinate to; full strength when it is the
     // only line the pill has. Never quiet when it is a warning.
-    final originColour = !secure
-        ? palette.alarm
-        : (titled ? palette.quiet : palette.ink);
+    final originColour =
+        !secure ? palette.alarm : (titled ? palette.quiet : palette.ink);
 
     return Semantics(
       button: true,
@@ -179,8 +178,8 @@ class AddressPill extends StatelessWidget {
                                 color: originColour,
                                 fontWeight: secure
                                     ? (titled
-                                          ? FontWeight.w400
-                                          : FontWeight.w500)
+                                        ? FontWeight.w400
+                                        : FontWeight.w500)
                                     : FontWeight.w600,
                               ),
                             ),
@@ -302,9 +301,8 @@ class TabChip extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize1,
-                            fontWeight: active
-                                ? FontWeight.w600
-                                : FontWeight.w400,
+                            fontWeight:
+                                active ? FontWeight.w600 : FontWeight.w400,
                             color: active ? palette.ink : palette.quiet,
                           ),
                         ),

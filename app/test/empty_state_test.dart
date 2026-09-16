@@ -27,9 +27,9 @@ const _art = <EmptyArt>[
 ];
 
 Widget _wrap(Widget child, {bool dark = false}) => MaterialApp(
-  theme: ThemeData(brightness: dark ? Brightness.dark : Brightness.light),
-  home: Scaffold(body: child),
-);
+      theme: ThemeData(brightness: dark ? Brightness.dark : Brightness.light),
+      home: Scaffold(body: child),
+    );
 
 void main() {
   group('the artwork', () {
@@ -76,8 +76,7 @@ void main() {
       expect(
         shots[false],
         isNot(shots[true]),
-        reason:
-            'a card that is the same colour in both themes is a literal, '
+        reason: 'a card that is the same colour in both themes is a literal, '
             'which is the thing the images got wrong',
       );
     });
@@ -250,12 +249,12 @@ void main() {
 
     test('groups by how long ago it was', () {
       NotificationModel aged(Duration ago) => NotificationModel(
-        id: 'x',
-        type: NotificationType.like,
-        actor: const NotificationActor(id: 'u'),
-        timestamp: DateTime.now().subtract(ago),
-        isRead: true,
-      );
+            id: 'x',
+            type: NotificationType.like,
+            actor: const NotificationActor(id: 'u'),
+            timestamp: DateTime.now().subtract(ago),
+            isRead: true,
+          );
 
       expect(aged(const Duration(minutes: 5)).groupKey, 'Today');
       expect(aged(const Duration(days: 1)).groupKey, 'Yesterday');

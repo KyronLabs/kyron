@@ -114,12 +114,14 @@ void main() {
         await (await crypto.sharedSecret(
           mine: restored!,
           theirs: await bo.extractPublicKey(),
-        )).extractBytes(),
+        ))
+            .extractBytes(),
         equals(
           await (await crypto.sharedSecret(
             mine: ada,
             theirs: await bo.extractPublicKey(),
-          )).extractBytes(),
+          ))
+              .extractBytes(),
         ),
       );
     });

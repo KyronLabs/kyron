@@ -95,8 +95,8 @@ ThreadLayout buildThreadLayout(
     final parentId = comment.parentId;
     final parent =
         (parentId != null && parentId != comment.id && ids.contains(parentId))
-        ? parentId
-        : null;
+            ? parentId
+            : null;
     byParent.putIfAbsent(parent, () => []).add(comment);
   }
 
@@ -112,14 +112,12 @@ ThreadLayout buildThreadLayout(
     final children = byParent[parentId] ?? const <PostComment>[];
     // Only nested runs fold. Top-level comments are the conversation itself,
     // and hiding them behind a tap would hide the whole thread.
-    final shouldCollapse =
-        depth > 0 &&
+    final shouldCollapse = depth > 0 &&
         parentId != null &&
         children.length > collapseAfter &&
         !expanded.contains(parentId);
-    final shown = shouldCollapse
-        ? children.take(collapseAfter).toList()
-        : children;
+    final shown =
+        shouldCollapse ? children.take(collapseAfter).toList() : children;
 
     for (var i = 0; i < shown.length; i++) {
       final child = shown[i];

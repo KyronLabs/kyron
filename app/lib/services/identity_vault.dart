@@ -31,8 +31,8 @@ class IdentityVault {
     this._identity, {
     FlutterSecureStorage storage = const FlutterSecureStorage(),
     DidKeys keys = const DidKeys(),
-  }) : _storage = storage,
-       _keys = keys;
+  })  : _storage = storage,
+        _keys = keys;
 
   static const _secretName = 'did_secret_key_v1';
 
@@ -84,9 +84,8 @@ class IdentityVault {
 
   Future<SimpleKeyPair> _load() async {
     final stored = await _storage.read(key: _secretName);
-    final existing = stored == null
-        ? null
-        : await DidKeys.tryDecodeSecret(stored);
+    final existing =
+        stored == null ? null : await DidKeys.tryDecodeSecret(stored);
     if (existing != null) return existing;
 
     final made = await _keys.newKeyPair();

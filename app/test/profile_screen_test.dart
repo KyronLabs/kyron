@@ -40,23 +40,23 @@ class _StubPosts extends PostListNotifier {
 }
 
 FeedPost _post(String id) => FeedPost(
-  id: id,
-  content: 'post $id',
-  createdAt: DateTime.now(),
-  author: const FeedAuthor(id: 'u1', name: 'Epigone', username: 'epigone'),
-);
+      id: id,
+      content: 'post $id',
+      createdAt: DateTime.now(),
+      author: const FeedAuthor(id: 'u1', name: 'Epigone', username: 'epigone'),
+    );
 
 Widget _app(FeedState seed) => ProviderScope(
-  overrides: [
-    profileProvider.overrideWith(
-      (ref, username) => _StubProfile(ref, username),
-    ),
-    postListProvider.overrideWith(
-      (ref, source) => _StubPosts(ref, source, seed),
-    ),
-  ],
-  child: const MaterialApp(home: ProfileScreen()),
-);
+      overrides: [
+        profileProvider.overrideWith(
+          (ref, username) => _StubProfile(ref, username),
+        ),
+        postListProvider.overrideWith(
+          (ref, source) => _StubPosts(ref, source, seed),
+        ),
+      ],
+      child: const MaterialApp(home: ProfileScreen()),
+    );
 
 void main() {
   testWidgets('the profile screen renders its header', (tester) async {

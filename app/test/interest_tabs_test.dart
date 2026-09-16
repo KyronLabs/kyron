@@ -30,12 +30,12 @@ class _FakeFeed extends FeedRepository {
 const _loudPrimary = Color(0xFFFF00FF);
 
 ThemeData _theme() => ThemeData(
-  colorScheme: const ColorScheme.light(
-    primary: _loudPrimary,
-    primaryContainer: Color(0xFFEFEFEF),
-    onPrimaryContainer: Color(0xFF111111),
-  ),
-);
+      colorScheme: const ColorScheme.light(
+        primary: _loudPrimary,
+        primaryContainer: Color(0xFFEFEFEF),
+        onPrimaryContainer: Color(0xFF111111),
+      ),
+    );
 
 Future<void> _pump(
   WidgetTester tester, {

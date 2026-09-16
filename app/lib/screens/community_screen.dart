@@ -146,16 +146,16 @@ class CommunityScreen extends ConsumerWidget {
                   children: [
                     _GlassButton(
                       icon: Iconsax.arrow_left_copy,
-                      tooltip: MaterialLocalizations.of(context)
-                          .backButtonTooltip,
+                      tooltip:
+                          MaterialLocalizations.of(context).backButtonTooltip,
                       onPressed: () => Navigator.pop(context),
                     ),
                     const Spacer(),
                     if (community != null)
                       _GlassButton(
                         icon: Iconsax.more_copy,
-                        tooltip: AppLocalizations.of(context)
-                            .literalthisCommunity,
+                        tooltip:
+                            AppLocalizations.of(context).literalthisCommunity,
                         onPressed: () =>
                             _openMenu(context, ref, community, notifier),
                       ),
@@ -563,8 +563,8 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final muted = Theme.of(context).colorScheme.onSurface
-        .withValues(alpha: 0.6);
+    final muted =
+        Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6);
 
     return Row(
       mainAxisSize: MainAxisSize.min,

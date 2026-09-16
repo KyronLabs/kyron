@@ -170,9 +170,7 @@ class _DetailsState extends ConsumerState<_Details> {
     if (_saving) return;
     setState(() => _saving = true);
     try {
-      final updated = await ref
-          .read(communitiesRepositoryProvider)
-          .update(
+      final updated = await ref.read(communitiesRepositoryProvider).update(
             widget.community.slug,
             name: _name.text.trim(),
             description: _description.text.trim(),
@@ -440,8 +438,7 @@ class _MemberRow extends StatelessWidget {
     final role = member.role;
     // The owner is nobody's to act on, and neither is a moderator unless you
     // are the owner. Showing a menu that only refuses is worse than none.
-    final actionable =
-        canModerate &&
+    final actionable = canModerate &&
         role != CommunityRole.owner &&
         (canEdit || role == CommunityRole.member);
 
@@ -453,9 +450,8 @@ class _MemberRow extends StatelessWidget {
       leading: CircleAvatar(
         radius: 20,
         backgroundColor: scheme.primary.withValues(alpha: 0.15),
-        foregroundImage: member.avatarUrl == null
-            ? null
-            : NetworkImage(member.avatarUrl!),
+        foregroundImage:
+            member.avatarUrl == null ? null : NetworkImage(member.avatarUrl!),
         child: Icon(Iconsax.user_copy, size: 18, color: scheme.primary),
       ),
       title: Text(
@@ -496,8 +492,8 @@ class _MemberRow extends StatelessWidget {
                     if (canEdit && role == CommunityRole.member)
                       SheetAction(
                         value: 'promote',
-                        label: AppLocalizations.of(context)
-                            .literalmakeAModerator,
+                        label:
+                            AppLocalizations.of(context).literalmakeAModerator,
                         icon: Iconsax.shield_tick_copy,
                         detail: 'They can remove posts and members',
                       ),
@@ -584,8 +580,7 @@ class _RemovedState extends ConsumerState<_Removed> {
           return EmptyState(
             art: EmptyArt.muted,
             title: AppLocalizations.of(context).literalnobodyHasBeenRemoved,
-            detail:
-                'People you remove show up here, and you can let them '
+            detail: 'People you remove show up here, and you can let them '
                 'back in from this list.',
           ).scrollable;
         }

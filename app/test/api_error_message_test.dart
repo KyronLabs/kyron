@@ -3,14 +3,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/utils/api_error_message.dart';
 
 DioException _response(int status, {Object? data}) => DioException(
-  requestOptions: RequestOptions(path: '/profile'),
-  type: DioExceptionType.badResponse,
-  response: Response(
-    requestOptions: RequestOptions(path: '/profile'),
-    statusCode: status,
-    data: data,
-  ),
-);
+      requestOptions: RequestOptions(path: '/profile'),
+      type: DioExceptionType.badResponse,
+      response: Response(
+        requestOptions: RequestOptions(path: '/profile'),
+        statusCode: status,
+        data: data,
+      ),
+    );
 
 void main() {
   group('describeApiError', () {
@@ -78,7 +78,7 @@ void main() {
             data: {
               'message':
                   'Your sign-in is valid, but Kyron could not set up your '
-                  'account on this server.',
+                      'account on this server.',
             },
           ),
         ),

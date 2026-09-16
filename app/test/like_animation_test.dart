@@ -8,20 +8,20 @@ import 'package:kyron_app/widgets/post_actions_row.dart';
 /// What the like does when pressed, and what it deliberately does not.
 void main() {
   Widget button({required bool active, required bool burst}) => MaterialApp(
-    home: Scaffold(
-      body: Center(
-        child: PostAction(
-          icon: Icons.favorite_border,
-          label: '12',
-          active: active,
-          activeColor: PostActionColors.like,
-          tooltip: 'Like',
-          burst: burst,
-          onTap: () {},
+        home: Scaffold(
+          body: Center(
+            child: PostAction(
+              icon: Icons.favorite_border,
+              label: '12',
+              active: active,
+              activeColor: PostActionColors.like,
+              tooltip: 'Like',
+              burst: burst,
+              onTap: () {},
+            ),
+          ),
         ),
-      ),
-    ),
-  );
+      );
 
   bool bursting(WidgetTester tester) =>
       find.byType(CustomPaint).evaluate().any((element) {
@@ -57,8 +57,7 @@ void main() {
         expect(
           bursting(tester),
           isFalse,
-          reason:
-              'celebrating a removal reads as congratulating a change of '
+          reason: 'celebrating a removal reads as congratulating a change of '
               'mind',
         );
       }

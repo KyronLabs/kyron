@@ -27,8 +27,8 @@ class CommunityAvatar extends StatelessWidget {
 
   /// From a post's community.
   CommunityAvatar.of(PostCommunity community, {super.key, this.size = 40})
-    : avatarUrl = community.avatarUrl,
-      initial = community.initial;
+      : avatarUrl = community.avatarUrl,
+        initial = community.initial;
 
   @override
   Widget build(BuildContext context) {
