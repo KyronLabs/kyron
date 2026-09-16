@@ -136,8 +136,7 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
             const SizedBox(height: 20),
 
             /* ---------- Loading State ---------- */
-            if (_loadingSuggestions)
-              Center(child: CircularProgressIndicator()),
+            if (_loadingSuggestions) Center(child: CircularProgressIndicator()),
 
             /* ---------- Suggestions Grid ---------- */
             if (!_loadingSuggestions)

@@ -244,9 +244,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       if (!mounted) return;
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context).profileUpdated),
-        ),
+        SnackBar(content: Text(AppLocalizations.of(context).profileUpdated)),
       );
     } catch (e) {
       _report(describeApiError(e, sessionIsLive: true));

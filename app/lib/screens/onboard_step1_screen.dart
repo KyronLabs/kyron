@@ -64,7 +64,7 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
     final choice = await ActionSheet.show<_CoverSource>(
       context,
       title: AppLocalizations.of(context).literalcoverPhoto,
-      actions: const [
+      actions: [
         SheetAction(
           value: _CoverSource.gallery,
           label: AppLocalizations.of(context).literalchooseFromGallery,

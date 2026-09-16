@@ -736,9 +736,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
     final controller = _controller;
     if (_opening || controller == null || !controller.value.isInitialized) {
-      return Center(
-        child: CircularProgressIndicator(color: Colors.white),
-      );
+      return Center(child: CircularProgressIndicator(color: Colors.white));
     }
 
     // The same filter the file gets. One definition, two places it is drawn.
@@ -1079,9 +1077,7 @@ class _LensTile extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           base,
-          Center(
-            child: Icon(Iconsax.gallery, size: 18, color: Colors.white70),
-          ),
+          Center(child: Icon(Iconsax.gallery, size: 18, color: Colors.white70)),
         ],
       );
     }

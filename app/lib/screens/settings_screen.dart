@@ -292,9 +292,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
-              "You will need to sign in again to get back to your account.",
-            ),
+            Text("You will need to sign in again to get back to your account."),
             const SizedBox(height: 24),
             Row(
               children: [

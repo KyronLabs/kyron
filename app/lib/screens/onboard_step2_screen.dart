@@ -172,10 +172,7 @@ class _OnboardStep2ScreenState extends State<OnboardStep2Screen> {
         actions: [
           TextButton(
             onPressed: _isLoading ? null : _skip,
-            child: Text(
-              'Skip',
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
+            child: Text('Skip', style: TextStyle(fontWeight: FontWeight.w500)),
           ),
           const SizedBox(width: 8),
         ],

@@ -366,7 +366,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
   ),
   'literalcopyLink': MessageLookupByLibrary.simpleMessage('Copy link'),
   'literallinkCopied': MessageLookupByLibrary.simpleMessage('Link copied'),
-  'literalleaveCommunityName': (dynamic community) => 'Leave ${community.name}?',
+  'literalleaveCommunityName': (dynamic community) =>
+      'Leave ${community.name}?',
   'literalyouHaveLeftCommunityName': (dynamic community) =>
       'You have left ${community.name}',
   'literaladdAVideo': MessageLookupByLibrary.simpleMessage('Add a video'),

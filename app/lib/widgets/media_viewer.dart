@@ -275,9 +275,8 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
                   errorBuilder: (_, __, ___) => const _Unavailable(),
                 );
               },
-              loadingBuilder: (_, __) => Center(
-                child: CircularProgressIndicator(color: Colors.white),
-              ),
+              loadingBuilder: (_, __) =>
+                  Center(child: CircularProgressIndicator(color: Colors.white)),
             ),
           ),
 
@@ -523,9 +522,7 @@ class _VideoStandIn extends StatelessWidget {
                 cacheWidth: decodeWidth(context),
                 errorBuilder: (_, __, ___) => const SizedBox.shrink(),
               ),
-            Center(
-              child: Icon(Iconsax.play, size: 44, color: Colors.white54),
-            ),
+            Center(child: Icon(Iconsax.play, size: 44, color: Colors.white54)),
           ],
         ),
       ),

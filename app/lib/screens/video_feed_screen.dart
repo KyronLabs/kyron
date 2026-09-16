@@ -579,9 +579,7 @@ class _PageState extends ConsumerState<_Page>
           // Only while stopped, and never while it is still opening -- a play
           // glyph over a spinner says two different things at once.
           if (live && !playing)
-            Center(
-              child: Icon(Iconsax.play, size: 56, color: Colors.white70),
-            ),
+            Center(child: Icon(Iconsax.play, size: 56, color: Colors.white70)),
 
           // Reads over a bright frame.
           const IgnorePointer(

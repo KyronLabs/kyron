@@ -170,9 +170,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
     );
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(AppLocalizations.of(context).buildDetailsCopied),
-      ),
+      SnackBar(content: Text(AppLocalizations.of(context).buildDetailsCopied)),
     );
   }
 
