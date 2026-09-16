@@ -12,6 +12,37 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Added
+
+- **A language system: App language, Primary language and Content
+  languages.** One searchable sheet serves all three and the get-started
+  screen, over a catalogue of 69 languages that each carry their own endonym
+  — Kiswahili, Yorùbá, isiZulu, 日本語 — and know whether they are read
+  right to left. Search matches the endonym, the English name and the code
+  alike, so "German", "Deutsch" and "de" all find the same row. **The list is
+  a starter set, not a finished one:** adding a language is one line, and
+  nothing depends on its length or order.
+
+- **The App language setting now changes something.** It was a stored code
+  and nothing else — no localization delegates, no `supportedLocales`, no
+  `locale`, and not one `.arb` file in the tree — so the picker moved and the
+  app stayed in English whatever it said. Flutter's own strings now follow
+  the choice in every locale it ships, dates and numbers are formatted for
+  it, and the whole layout mirrors for Arabic, Hebrew, Persian and Urdu.
+  Kyron's own words still need a translator; the screen says so rather than
+  implying otherwise.
+
+### Removed
+
+- **`bullmq`, which nothing imported.** It appeared once in `package.json`
+  and nowhere else in the repository. The media queue is a Postgres table
+  claimed with `FOR UPDATE SKIP LOCKED`, deliberately: an encode runs for
+  tens of seconds, a deploy lands in the middle of one regularly, and work
+  held in memory would vanish with nothing recording that it had. A
+  dependency that implies infrastructure the project does not run is worse
+  than a missing one.
+
+
 ### Fixed
 
 - **The interest chips, the other person's chat bubbles and the post

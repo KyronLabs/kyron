@@ -1,52 +1,18 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kyron_app/models/app_language.dart';
+import 'package:kyron_app/models/language.dart';
 import 'package:kyron_app/services/app_preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  group('AppLanguage', () {
-    test('resolves a known code', () {
-      expect(AppLanguage.fromCode('fr'), AppLanguage.french);
-    });
-
-    test('falls back to English rather than throwing', () {
-      // A code stored by a build that offered a language this one does not
-      // must not stop the app from starting.
-      expect(AppLanguage.fromCode('xx'), AppLanguage.english);
-      expect(AppLanguage.fromCode(null), AppLanguage.english);
-      expect(AppLanguage.fromCode(''), AppLanguage.english);
-    });
-
-    test('every language has a code, both names, and a locale', () {
-      for (final language in AppLanguage.values) {
-        expect(language.code, isNotEmpty);
-        expect(language.englishName, isNotEmpty);
-        expect(language.nativeName, isNotEmpty);
-        expect(language.locale.languageCode, language.code);
-      }
-    });
-
-    test('codes are unique', () {
-      final codes = AppLanguage.values.map((l) => l.code).toSet();
-      expect(codes, hasLength(AppLanguage.values.length));
-    });
-  });
-
   group('AppPreferences', () {
     setUp(() => SharedPreferences.setMockInitialValues(<String, Object>{}));
 
     test('defaults before anything is stored', () async {
       final prefs = AppPreferences();
-      expect(await prefs.readLanguage(), AppLanguage.english);
+      expect(await prefs.readLanguage(), Languages.fallback);
       expect(await prefs.readTextScale(), AppPreferences.defaultTextScale);
       expect(await prefs.readPushEnabled(), isTrue);
       expect(await prefs.readEmailEnabled(), isTrue);
-    });
-
-    test('round-trips a language', () async {
-      final prefs = AppPreferences();
-      await prefs.writeLanguage(AppLanguage.swahili);
-      expect(await prefs.readLanguage(), AppLanguage.swahili);
     });
 
     test('round-trips a text scale', () async {

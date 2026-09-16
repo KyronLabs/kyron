@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
-import '../models/app_language.dart';
 import '../models/app_theme.dart';
+import '../models/language.dart';
 import '../services/app_preferences.dart';
 
 final appPreferencesProvider = Provider<AppPreferences>(
@@ -12,7 +12,9 @@ final appPreferencesProvider = Provider<AppPreferences>(
 /// The preferences the whole app reads, held in memory so a screen can render
 /// the current value synchronously instead of waiting on a disk read.
 class PreferencesState {
-  final AppLanguage language;
+  final Language language;
+  final Language primaryLanguage;
+  final List<Language> contentLanguages;
   final double textScale;
   final bool pushEnabled;
   final bool emailEnabled;
@@ -23,7 +25,9 @@ class PreferencesState {
   final bool isLoaded;
 
   const PreferencesState({
-    this.language = AppLanguage.english,
+    this.language = Languages.fallback,
+    this.primaryLanguage = Languages.fallback,
+    this.contentLanguages = const [],
     this.textScale = AppPreferences.defaultTextScale,
     this.pushEnabled = true,
     this.emailEnabled = true,
@@ -33,7 +37,9 @@ class PreferencesState {
   });
 
   PreferencesState copyWith({
-    AppLanguage? language,
+    Language? language,
+    Language? primaryLanguage,
+    List<Language>? contentLanguages,
     double? textScale,
     bool? pushEnabled,
     bool? emailEnabled,
@@ -43,6 +49,8 @@ class PreferencesState {
   }) =>
       PreferencesState(
         language: language ?? this.language,
+        primaryLanguage: primaryLanguage ?? this.primaryLanguage,
+        contentLanguages: contentLanguages ?? this.contentLanguages,
         textScale: textScale ?? this.textScale,
         pushEnabled: pushEnabled ?? this.pushEnabled,
         emailEnabled: emailEnabled ?? this.emailEnabled,
@@ -67,15 +75,19 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
       _store.readEmailEnabled(),
       _store.readTheme(),
       _store.readDataSaver(),
+      _store.readPrimaryLanguage(),
+      _store.readContentLanguages(),
     ]);
     if (!mounted) return;
     state = PreferencesState(
-      language: results[0] as AppLanguage,
+      language: results[0] as Language,
       textScale: results[1] as double,
       pushEnabled: results[2] as bool,
       emailEnabled: results[3] as bool,
       theme: results[4] as AppTheme,
       dataSaver: results[5] as bool,
+      primaryLanguage: results[6] as Language,
+      contentLanguages: results[7] as List<Language>,
       isLoaded: true,
     );
   }
@@ -83,9 +95,19 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
   // Each setter updates state first so the UI reflects the tap immediately,
   // then persists. A failed write loses the preference on next launch rather
   // than making the control feel broken now.
-  Future<void> setLanguage(AppLanguage language) async {
+  Future<void> setLanguage(Language language) async {
     state = state.copyWith(language: language);
     await _store.writeLanguage(language);
+  }
+
+  Future<void> setPrimaryLanguage(Language language) async {
+    state = state.copyWith(primaryLanguage: language);
+    await _store.writePrimaryLanguage(language);
+  }
+
+  Future<void> setContentLanguages(List<Language> languages) async {
+    state = state.copyWith(contentLanguages: languages);
+    await _store.writeContentLanguages(languages);
   }
 
   Future<void> setTextScale(double scale) async {
