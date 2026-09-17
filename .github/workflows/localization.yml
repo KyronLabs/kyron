@@ -1,0 +1,33 @@
+name: Localization
+
+on:
+  push:
+    paths:
+      - "app/lib/l10n/**"
+      - "scripts/check-localization.py"
+      - ".github/workflows/localization.yml"
+  pull_request:
+    paths:
+      - "app/lib/l10n/**"
+      - "scripts/check-localization.py"
+      - ".github/workflows/localization.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: localization-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check localization catalogs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate ARB catalogs
+        run: python3 scripts/check-localization.py

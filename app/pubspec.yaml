@@ -94,6 +94,7 @@ flutter:
     - lib/assets/nature/
     - lib/l10n/app_en.arb
     - lib/l10n/app_es.arb
+    - lib/l10n/app_zh.arb
 
 fonts:
   - family: Inter
