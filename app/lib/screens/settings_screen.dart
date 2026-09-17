@@ -294,7 +294,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
             ),
             const SizedBox(height: 8),
-            Text("You will need to sign in again to get back to your account."),
+            Text(AppLocalizations.of(context).ui(
+                'ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001',
+                'You will need to sign in again to get back to your account.')),
             const SizedBox(height: 24),
             Row(
               children: [

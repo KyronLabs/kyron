@@ -118,7 +118,12 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
     return Scaffold(
       appBar: KyronAppBar(
         title: Text(AppLocalizations.of(context).literaldiscoverPeople),
-        actions: [TextButton(onPressed: _finish, child: Text("Skip"))],
+        actions: [
+          TextButton(
+              onPressed: _finish,
+              child: Text(AppLocalizations.of(context)
+                  .ui('ui_onboard_step3_screen_skip_7b13d8', 'Skip')))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -179,7 +184,8 @@ class _OnboardStep3ScreenState extends ConsumerState<OnboardStep3Screen> {
                 onPressed: _finish,
                 child: _finishing
                     ? const CircularProgressIndicator()
-                    : Text("Finish"),
+                    : Text(AppLocalizations.of(context)
+                        .ui('ui_onboard_step3_screen_finish_5c0ad8', 'Finish')),
               ),
             ),
           ],
