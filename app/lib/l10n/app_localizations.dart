@@ -47,6 +47,11 @@ class AppLocalizations {
     return app_localizations;
   }
 
+  /// Looks up UI copy added to the ARB catalogs without requiring a generated
+  /// Dart accessor for every short label. The fallback is also the English
+  /// source value, so older generated catalogs remain safe until regenerated.
+  String ui(String key, String fallback) => Intl.message(fallback, name: key);
+
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
 

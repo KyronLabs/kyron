@@ -486,7 +486,9 @@ class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
             minLines: 2,
             textCapitalization: TextCapitalization.sentences,
             decoration: InputDecoration(
-              labelText: 'What is it for? (optional)',
+              labelText: AppLocalizations.of(context).ui(
+                  'ui_communities_screen_what_is_it_for_optional_39b687',
+                  'What is it for? (optional)'),
               alignLabelWithHint: true,
             ),
           ),

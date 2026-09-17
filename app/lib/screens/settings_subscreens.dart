@@ -101,7 +101,10 @@ class _SettingsChangeEmailScreenState
               controller: _controller,
               keyboardType: TextInputType.emailAddress,
               autocorrect: false,
-              decoration: InputDecoration(labelText: 'New email address'),
+              decoration: InputDecoration(
+                  labelText: AppLocalizations.of(context).ui(
+                      'ui_settings_subscreens_new_email_address_dab96e',
+                      'New email address')),
               validator: (value) {
                 final v = value?.trim() ?? '';
                 if (v.isEmpty) return 'Enter an email address.';
@@ -192,7 +195,9 @@ class _SettingsPasswordLoginScreenState
               controller: _password,
               obscureText: _obscure,
               decoration: InputDecoration(
-                labelText: 'New password',
+                labelText: AppLocalizations.of(context).ui(
+                    'ui_settings_subscreens_new_password_88c1bf',
+                    'New password'),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _obscure ? Iconsax.eye_slash_copy : Iconsax.eye_copy,
@@ -214,7 +219,10 @@ class _SettingsPasswordLoginScreenState
             TextFormField(
               controller: _confirm,
               obscureText: _obscure,
-              decoration: InputDecoration(labelText: 'Confirm password'),
+              decoration: InputDecoration(
+                  labelText: AppLocalizations.of(context).ui(
+                      'ui_settings_subscreens_confirm_password_41d040',
+                      'Confirm password')),
               validator: (value) =>
                   value == _password.text ? null : 'These do not match.',
             ),
@@ -803,7 +811,8 @@ class _SettingsFeedbackScreenState
             maxLength: 120,
             onChanged: (_) => setState(() {}),
             decoration: InputDecoration(
-              labelText: 'In one line',
+              labelText: AppLocalizations.of(context).ui(
+                  'ui_settings_subscreens_in_one_line_06bdaf', 'In one line'),
               hintText: AppLocalizations.of(context).theComposerNoPostButton,
             ),
           ),
@@ -814,7 +823,9 @@ class _SettingsFeedbackScreenState
             maxLength: 4000,
             onChanged: (_) => setState(() {}),
             decoration: InputDecoration(
-              labelText: 'What happened',
+              labelText: AppLocalizations.of(context).ui(
+                  'ui_settings_subscreens_what_happened_977dd8',
+                  'What happened'),
               alignLabelWithHint: true,
               hintText:
                   '${AppLocalizations.of(context).literalwhatYouDidWhatYouExpectedWhatHappened}instead.',
