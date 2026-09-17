@@ -133,7 +133,7 @@ class _RailItemState extends State<_RailItem> {
     return Semantics(
       button: true,
       selected: active,
-      label: widget.destination.label,
+      label: widget.destination.localizedLabel(context),
       excludeSemantics: true,
       child: MouseRegion(
         // A pointer has a hover state and a phone does not. Without it nothing
@@ -175,7 +175,7 @@ class _RailItemState extends State<_RailItem> {
                   ),
                   const SizedBox(width: SpacingTokens.space16),
                   Text(
-                    widget.destination.label,
+                    widget.destination.localizedLabel(context),
                     style: TextStyle(
                       fontSize: TypographyTokens.fontSize3,
                       fontWeight: active ? FontWeight.w600 : FontWeight.w500,

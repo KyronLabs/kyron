@@ -39,7 +39,10 @@ class AppLocalizations {
     // The generated message lookup is registered synchronously before the
     // returned future completes, which makes the English fallback available
     // during the same build that first asks for it.
-    Intl.defaultLocale ??= 'en';
+    // A tree without a delegate is an English-only lightweight tree. Do not
+    // let a previous localized test or an unrelated widget change the global
+    // Intl locale underneath it.
+    Intl.defaultLocale = 'en';
     initializeMessages('en');
     return app_localizations;
   }
@@ -886,6 +889,68 @@ class AppLocalizations {
         name: 'literallabelCount',
         args: [label, count],
       );
+
+  String get home => Intl.message('home', name: 'home');
+  String get explore => Intl.message('explore', name: 'explore');
+  String get communities => Intl.message('communities', name: 'communities');
+  String get messages => Intl.message('messages', name: 'messages');
+  String get languages => Intl.message('languages', name: 'languages');
+  String get selectAppLanguage =>
+      Intl.message('selectAppLanguage', name: 'selectAppLanguage');
+  String get selectPrimaryLanguage =>
+      Intl.message('selectPrimaryLanguage', name: 'selectPrimaryLanguage');
+  String get selectContentLanguages =>
+      Intl.message('selectContentLanguages', name: 'selectContentLanguages');
+  String get kyronWordsStillBeingTranslated =>
+      Intl.message('kyronWordsStillBeingTranslated',
+          name: 'kyronWordsStillBeingTranslated');
+  String get hashtagsEmptyDetail =>
+      Intl.message('hashtagsEmptyDetail', name: 'hashtagsEmptyDetail');
+  String get topicsEmptyDetail =>
+      Intl.message('topicsEmptyDetail', name: 'topicsEmptyDetail');
+  String get peopleEmptyDetail =>
+      Intl.message('peopleEmptyDetail', name: 'peopleEmptyDetail');
+  String get communitiesEmptyDetail =>
+      Intl.message('communitiesEmptyDetail', name: 'communitiesEmptyDetail');
+  String get messagesCaughtUp =>
+      Intl.message('messagesCaughtUp', name: 'messagesCaughtUp');
+  String get messagesNoMessages =>
+      Intl.message('messagesNoMessages', name: 'messagesNoMessages');
+  String get notificationLikesDetail =>
+      Intl.message('notificationLikesDetail', name: 'notificationLikesDetail');
+  String get notificationRepliesDetail =>
+      Intl.message('notificationRepliesDetail',
+          name: 'notificationRepliesDetail');
+  String get notificationFollowersDetail =>
+      Intl.message('notificationFollowersDetail',
+          name: 'notificationFollowersDetail');
+  String get notificationRepostsDetail =>
+      Intl.message('notificationRepostsDetail',
+          name: 'notificationRepostsDetail');
+  String get notificationEmptyDetail =>
+      Intl.message('notificationEmptyDetail', name: 'notificationEmptyDetail');
+  String get gettingHelp => Intl.message('gettingHelp', name: 'gettingHelp');
+  String get send => Intl.message('send', name: 'send');
+  String get close => Intl.message('close', name: 'close');
+  String get search => Intl.message('search', name: 'search');
+  String get settings => Intl.message('settings', name: 'settings');
+  String get menu => Intl.message('menu', name: 'menu');
+  String get clear => Intl.message('clear', name: 'clear');
+  String get manage => Intl.message('manage', name: 'manage');
+  String get join => Intl.message('join', name: 'join');
+  String get video => Intl.message('video', name: 'video');
+
+  String get contentLanguagesNotFilteringYet =>
+      Intl.message('contentLanguagesNotFilteringYet',
+          name: 'contentLanguagesNotFilteringYet');
+  String get addMoreLanguages =>
+      Intl.message('addMoreLanguages', name: 'addMoreLanguages');
+  String get translationNotBuiltYet =>
+      Intl.message('translationNotBuiltYet', name: 'translationNotBuiltYet');
+  String get supportEarlyExplanation =>
+      Intl.message('supportEarlyExplanation', name: 'supportEarlyExplanation');
+  String get supportInboxNotYet =>
+      Intl.message('supportInboxNotYet', name: 'supportInboxNotYet');
 }
 
 class _AppLocalizationsDelegate

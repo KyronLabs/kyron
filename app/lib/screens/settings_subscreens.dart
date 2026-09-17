@@ -298,14 +298,13 @@ class SettingsLanguageScreen extends ConsumerWidget {
     final notifier = ref.read(preferencesProvider.notifier);
 
     return SettingsScaffold(
-      title: 'Languages',
+      title: AppLocalizations.of(context).languages,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _LanguageSection(
             title: AppLocalizations.of(context).literalappLanguage,
-            detail: "Select which language to use for the app's user "
-                'interface.',
+            detail: AppLocalizations.of(context).selectAppLanguage,
             value: prefs.language.nativeName,
             onTap: () async {
               final chosen = await LanguageSheet.pickOne(
@@ -334,8 +333,7 @@ class SettingsLanguageScreen extends ConsumerWidget {
           const SizedBox(height: SpacingTokens.space24),
           _LanguageSection(
             title: AppLocalizations.of(context).literalprimaryLanguage,
-            detail: 'Select your preferred language for translations in your '
-                'feed.',
+            detail: AppLocalizations.of(context).selectPrimaryLanguage,
             value: prefs.primaryLanguage.nativeName,
             onTap: () async {
               final chosen = await LanguageSheet.pickOne(
@@ -351,17 +349,13 @@ class SettingsLanguageScreen extends ConsumerWidget {
           // nothing on a post that says what it is written in. A row that
           // offers to translate into Kiswahili and then does not is worse
           // than one that says it cannot yet.
-          const _Note(
-            'Translation is not built yet. Nothing in your feed is translated '
-            'today; this is remembered for when it is.',
-          ),
+          _Note(AppLocalizations.of(context).translationNotBuiltYet),
           const SizedBox(height: SpacingTokens.space24),
           const Hairline(),
           const SizedBox(height: SpacingTokens.space24),
           _SectionHeader(
             title: AppLocalizations.of(context).literalcontentLanguages,
-            detail: 'Select which languages you want your subscribed feeds to '
-                'include. If none are selected, all languages will be shown.',
+            detail: AppLocalizations.of(context).selectContentLanguages,
           ),
           const SizedBox(height: SpacingTokens.space12),
           for (final language in prefs.contentLanguages)
@@ -382,10 +376,7 @@ class SettingsLanguageScreen extends ConsumerWidget {
               if (chosen != null) await notifier.setContentLanguages(chosen);
             },
           ),
-          const _Note(
-            'Posts do not carry a language yet, so this does not filter your '
-            'feed today. Your choice is kept for when they do.',
-          ),
+          _Note(AppLocalizations.of(context).contentLanguagesNotFilteringYet),
         ],
       ),
     );
@@ -524,7 +515,8 @@ class _ContentLanguageRow extends StatelessWidget {
             ),
             IconButton(
               icon: const Icon(Iconsax.close_circle_copy, size: 18),
-              tooltip: 'Remove ${language.englishName}',
+              tooltip: AppLocalizations.of(context)
+                  .literalremoveLanguageEnglishname(language),
               onPressed: onRemove,
             ),
           ],
@@ -562,7 +554,7 @@ class _AddLanguagesRow extends StatelessWidget {
               ),
               const SizedBox(width: SpacingTokens.space12),
               Text(
-                'Add more languages\u2026',
+                AppLocalizations.of(context).addMoreLanguages,
                 style: TextStyle(
                   fontSize: TypographyTokens.fontSize3,
                   color: scheme.onSurface.withValues(alpha: 0.7),
@@ -628,20 +620,15 @@ class SettingsContactSupportScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('Getting help', style: Theme.of(context).textTheme.titleMedium),
+          Text(AppLocalizations.of(context).gettingHelp,
+              style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: SpacingTokens.space8),
           Text(
-            'Kyron is early, and the fastest way to reach someone who can '
-            'actually fix a problem is to open an issue. Include what you '
-            'were doing and what happened instead.',
+            AppLocalizations.of(context).supportEarlyExplanation,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: SpacingTokens.space20),
-          const _Note(
-            'There is no in-app support inbox yet, so this screen points at '
-            'the place that is actually monitored rather than at a form that '
-            'goes nowhere.',
-          ),
+          _Note(AppLocalizations.of(context).supportInboxNotYet),
         ],
       ),
     );
@@ -851,7 +838,7 @@ class _SettingsFeedbackScreenState
           ],
           const SizedBox(height: SpacingTokens.space16),
           ActionButton(
-            label: 'Send',
+            label: AppLocalizations.of(context).send,
             expand: true,
             busy: _sending,
             onPressed: _canSend ? _send : null,

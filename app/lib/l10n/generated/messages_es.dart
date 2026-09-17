@@ -810,6 +810,61 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       'literalrecordAgain':
           MessageLookupByLibrary.simpleMessage('Volver a grabar'),
+      'home': MessageLookupByLibrary.simpleMessage("Inicio"),
+      'explore': MessageLookupByLibrary.simpleMessage("Explorar"),
+      'communities': MessageLookupByLibrary.simpleMessage("Comunidades"),
+      'messages': MessageLookupByLibrary.simpleMessage("Mensajes"),
+      'languages': MessageLookupByLibrary.simpleMessage("Idiomas"),
+      'selectAppLanguage': MessageLookupByLibrary.simpleMessage(
+          "Selecciona el idioma de la interfaz de la aplicación."),
+      'selectPrimaryLanguage': MessageLookupByLibrary.simpleMessage(
+          "Selecciona tu idioma preferido para las traducciones de tu feed."),
+      'selectContentLanguages': MessageLookupByLibrary.simpleMessage(
+          "Selecciona los idiomas que quieres incluir en tus feeds. Si no eliges ninguno, se mostrarán todos los idiomas."),
+      'kyronWordsStillBeingTranslated': MessageLookupByLibrary.simpleMessage(
+          "Las palabras de Kyron todavía se están traduciendo, por lo que la mayoría de las pantallas seguirán en inglés por ahora."),
+      'hashtagsEmptyDetail': MessageLookupByLibrary.simpleMessage(
+          "Los hashtags aparecerán aquí cuando la gente empiece a usarlos."),
+      'topicsEmptyDetail': MessageLookupByLibrary.simpleMessage(
+          "Kyron configura los temas y ahora no hay ninguno. Vuelve a comprobarlo pronto."),
+      'peopleEmptyDetail': MessageLookupByLibrary.simpleMessage(
+          "Ya sigues a todas las personas que Kyron mostraría aquí."),
+      'communitiesEmptyDetail': MessageLookupByLibrary.simpleMessage(
+          "Encuentra una en Descubrir o crea la tuya."),
+      'messagesCaughtUp': MessageLookupByLibrary.simpleMessage(
+          "Todas las conversaciones están al día."),
+      'messagesNoMessages': MessageLookupByLibrary.simpleMessage(
+          "Abre el perfil de alguien y toca Mensaje para iniciar una conversación."),
+      'notificationLikesDetail': MessageLookupByLibrary.simpleMessage(
+          "Cuando a alguien le gusta una de tus publicaciones, aparecerá aquí."),
+      'notificationRepliesDetail': MessageLookupByLibrary.simpleMessage(
+          "Las respuestas a tus publicaciones aparecerán aquí."),
+      'notificationFollowersDetail': MessageLookupByLibrary.simpleMessage(
+          "Las personas que te siguen aparecerán aquí."),
+      'notificationRepostsDetail': MessageLookupByLibrary.simpleMessage(
+          "Cuando alguien comparte de nuevo una publicación tuya, aparecerá aquí."),
+      'notificationEmptyDetail': MessageLookupByLibrary.simpleMessage(
+          "Los Me gusta, las respuestas y los nuevos seguidores aparecerán aquí cuando lleguen."),
+      'gettingHelp': MessageLookupByLibrary.simpleMessage("Obtener ayuda"),
+      'send': MessageLookupByLibrary.simpleMessage("Enviar"),
+      'close': MessageLookupByLibrary.simpleMessage("Cerrar"),
+      'search': MessageLookupByLibrary.simpleMessage("Buscar"),
+      'settings': MessageLookupByLibrary.simpleMessage("Ajustes"),
+      'menu': MessageLookupByLibrary.simpleMessage("Menú"),
+      'clear': MessageLookupByLibrary.simpleMessage("Borrar"),
+      'manage': MessageLookupByLibrary.simpleMessage("Administrar"),
+      'join': MessageLookupByLibrary.simpleMessage("Unirse"),
+      'video': MessageLookupByLibrary.simpleMessage("Vídeo"),
+      'contentLanguagesNotFilteringYet': MessageLookupByLibrary.simpleMessage(
+          "Las publicaciones todavía no incluyen un idioma, por lo que esto aún no filtra tu feed. Tu elección se conservará para cuando lo incluyan."),
+      'addMoreLanguages':
+          MessageLookupByLibrary.simpleMessage("Añadir más idiomas…"),
+      'translationNotBuiltYet': MessageLookupByLibrary.simpleMessage(
+          "La traducción todavía no está disponible. Hoy nada de tu feed se traduce; esta elección se conservará para cuando lo esté."),
+      'supportEarlyExplanation': MessageLookupByLibrary.simpleMessage(
+          "Kyron todavía está empezando. La forma más rápida de contactar con alguien que pueda resolver un problema es abrir una incidencia. Incluye qué estabas haciendo y qué ocurrió."),
+      'supportInboxNotYet': MessageLookupByLibrary.simpleMessage(
+          "Todavía no hay una bandeja de soporte en la aplicación, así que esta pantalla te dirige al lugar que realmente se supervisa en vez de a un formulario que no llega a ninguna parte."),
     };
 
 final messageLookup = MessageLookup();

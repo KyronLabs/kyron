@@ -80,7 +80,7 @@ class BottomNavV4 extends StatelessWidget {
   Widget _item(BuildContext context, NavDestination destination) {
     final icon = destination.icon;
     final activeIcon = destination.activeIcon;
-    final label = destination.label;
+    final label = destination.localizedLabel(context);
     final index = destination.index;
 
     final scheme = Theme.of(context).colorScheme;

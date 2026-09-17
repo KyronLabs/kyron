@@ -85,7 +85,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen>
         SafeArea(
           bottom: false,
           child: SimpleAppBar(
-            title: 'Explore',
+            title: AppLocalizations.of(context).explore,
             onAvatarTap: () => widget.drawerKey.currentState?.toggleDrawer(),
           ),
         ),
@@ -143,8 +143,7 @@ class _TrendingTab extends ConsumerWidget {
                       art: EmptyArt.trending,
                       title: AppLocalizations.of(context)
                           .literalnothingIsTrendingYet,
-                      detail: 'Hashtags turn up here as people start using '
-                          'them. Post one and it could be this list.',
+                      detail: AppLocalizations.of(context).hashtagsEmptyDetail,
                     ))
               .scrollable
           : ListView.separated(
@@ -243,8 +242,7 @@ class _TopicsTab extends ConsumerWidget {
                   : EmptyState(
                       art: EmptyArt.topics,
                       title: AppLocalizations.of(context).literalnoTopicsYet,
-                      detail: 'Topics are set up by Kyron, and there are none '
-                          'right now. Check back soon.',
+                      detail: AppLocalizations.of(context).topicsEmptyDetail,
                     ))
               .scrollable
           : GridView.builder(
@@ -422,8 +420,7 @@ class _PeopleTabState extends ConsumerState<_PeopleTab> {
                       art: EmptyArt.people,
                       title: AppLocalizations.of(context)
                           .literalnobodyLeftToSuggest,
-                      detail: 'You already follow everyone Kyron would put '
-                          'here. Follow a topic and this list fills up again.',
+                      detail: AppLocalizations.of(context).peopleEmptyDetail,
                       action: 'Refresh',
                       onAction: notifier.refresh,
                     ))

@@ -143,28 +143,27 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
         NotificationType.like => EmptyState(
             art: EmptyArt.likes,
             title: AppLocalizations.of(context).literalnoLikesYet,
-            detail: 'When somebody likes one of your posts, it shows up here.',
+            detail: AppLocalizations.of(context).notificationLikesDetail,
           ),
         NotificationType.comment => EmptyState(
             art: EmptyArt.messages,
             title: AppLocalizations.of(context).literalnoRepliesYet,
-            detail: 'Replies to your posts land here.',
+            detail: AppLocalizations.of(context).notificationRepliesDetail,
           ),
         NotificationType.follow => EmptyState(
             art: EmptyArt.people,
             title: AppLocalizations.of(context).literalnoNewFollowers,
-            detail: 'People who follow you show up here.',
+            detail: AppLocalizations.of(context).notificationFollowersDetail,
           ),
         NotificationType.repost => EmptyState(
             art: EmptyArt.posts,
             title: AppLocalizations.of(context).literalnoRepostsYet,
-            detail: 'When somebody reposts you, it shows up here.',
+            detail: AppLocalizations.of(context).notificationRepostsDetail,
           ),
         null => EmptyState(
             art: EmptyArt.caughtUp,
             title: AppLocalizations.of(context).literalyouAreAllCaughtUp,
-            detail: 'Likes, replies and new followers land here as they '
-                'happen.',
+            detail: AppLocalizations.of(context).notificationEmptyDetail,
           ),
       };
 

@@ -1,6 +1,5 @@
-import '../l10n/app_localizations.dart'; // lib/widgets/nav_destinations.dart
-
 import 'package:flutter/widgets.dart';
+import '../l10n/app_localizations.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 /// One of the four places the app can be.
@@ -17,6 +16,14 @@ class NavDestination {
   /// Which page [MainContainer] shows for it. Two and only two things know
   /// these numbers -- this list and the switch that reads it.
   final int index;
+
+  String localizedLabel(BuildContext context) => switch (index) {
+        0 => AppLocalizations.of(context).home,
+        1 => AppLocalizations.of(context).explore,
+        3 => AppLocalizations.of(context).communities,
+        4 => AppLocalizations.of(context).messages,
+        _ => label,
+      };
 
   const NavDestination({
     required this.icon,

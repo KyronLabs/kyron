@@ -88,7 +88,7 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen>
             SafeArea(
               bottom: false,
               child: SimpleAppBar(
-                title: 'Communities',
+                title: AppLocalizations.of(context).communities,
                 onAvatarTap: () =>
                     widget.drawerKey.currentState?.toggleDrawer(),
               ),
@@ -207,7 +207,8 @@ class _MineTabState extends ConsumerState<_MineTab> {
                       art: EmptyArt.communities,
                       title: AppLocalizations.of(context)
                           .literalyouAreNotInAnyCommunities,
-                      detail: 'Find one on Discover, or start your own.',
+                      detail:
+                          AppLocalizations.of(context).communitiesEmptyDetail,
                       action: 'Start a community',
                       onAction: widget.onCreate,
                     ))
@@ -298,7 +299,7 @@ class _DiscoverTabState extends ConsumerState<_DiscoverTab> {
                   ? null
                   : IconButton(
                       icon: const Icon(Iconsax.close_circle_copy, size: 18),
-                      tooltip: 'Clear',
+                      tooltip: AppLocalizations.of(context).clear,
                       onPressed: () {
                         _search.clear();
                         notifier.search('');

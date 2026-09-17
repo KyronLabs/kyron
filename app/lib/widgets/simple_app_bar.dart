@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 // lib/widgets/simple_app_bar.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -34,7 +35,10 @@ class SimpleAppBar extends StatelessWidget {
           // The same size as the home page's, which is the one people see
           // most: 32 across, no ring. This was 36 across inside a 3px ring,
           // so moving between tabs resized the reader's own face.
-          AccountAvatar(radius: 16, onTap: onAvatarTap, tooltip: 'Menu'),
+          AccountAvatar(
+              radius: 16,
+              onTap: onAvatarTap,
+              tooltip: AppLocalizations.of(context).menu),
           const SizedBox(width: SpacingTokens.space12),
           Expanded(
             child: Text(
@@ -54,13 +58,13 @@ class SimpleAppBar extends StatelessWidget {
           // apart as the ones on the page next door.
           _Action(
             icon: Iconsax.search_normal_1_copy,
-            tooltip: 'Search',
+            tooltip: AppLocalizations.of(context).search,
             onPressed: () => Navigator.pushNamed(context, Routes.search),
           ),
           const SizedBox(width: 2),
           _Action(
             icon: Iconsax.setting_2_copy,
-            tooltip: 'Settings',
+            tooltip: AppLocalizations.of(context).settings,
             onPressed: onSettingsTap ??
                 () => Navigator.pushNamed(context, Routes.settings),
           ),

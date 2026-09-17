@@ -87,7 +87,7 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen>
         SafeArea(
           bottom: false,
           child: SimpleAppBar(
-            title: 'Messages',
+            title: AppLocalizations.of(context).messages,
             onAvatarTap: () => widget.drawerKey.currentState?.toggleDrawer(),
           ),
         ),
@@ -200,14 +200,14 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                           art: EmptyArt.caughtUp,
                           title:
                               AppLocalizations.of(context).literalnothingUnread,
-                          detail: 'Every conversation is caught up.',
+                          detail: AppLocalizations.of(context).messagesCaughtUp,
                         )
                       : EmptyState(
                           art: EmptyArt.messages,
                           title:
                               AppLocalizations.of(context).literalnoMessagesYet,
-                          detail: 'Open somebody\'s profile and tap Message to '
-                              'start a conversation.',
+                          detail:
+                              AppLocalizations.of(context).messagesNoMessages,
                         ))
               .scrollable
           : ListView.separated(
