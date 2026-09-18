@@ -51,7 +51,31 @@ class AppLocalizations {
   /// Dart accessor for every short label. The fallback is also the English
   /// source value, so older generated catalogs remain safe until regenerated.
   String ui(String key, String fallback) => Intl.message(fallback, name: key);
-
+  String authorPostsHidden(String author) => Intl.message(
+        'You will not see posts from $author',
+        name: 'authorPostsHidden',
+        args: [author],
+      );
+  String authorBlocked(String author) => Intl.message(
+        '$author blocked',
+        name: 'authorBlocked',
+        args: [author],
+      );
+  String nothingMatchesQuery(String what) => Intl.message(
+        'Nothing on Kyron matches "$what"',
+        name: 'nothingMatchesQuery',
+        args: [what],
+      );
+  String repliesPolicy(String policy) => Intl.message(
+        'Replies: $policy',
+        name: 'repliesPolicy',
+        args: [policy],
+      );
+  String feedTagDetail(String tab) => Intl.message(
+        'Nothing has been posted under #$tab yet.',
+        name: 'feedTagDetail',
+        args: [tab],
+      );
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
 
@@ -962,10 +986,12 @@ class _AppLocalizationsDelegate
     extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
-  List<Locale> get supportedLocales => const [Locale('en'), Locale('es')];
+  List<Locale> get supportedLocales =>
+      const [Locale('en'), Locale('es'), Locale('zh')];
 
   @override
-  bool isSupported(Locale locale) => ['en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      ['en', 'es', 'zh'].contains(locale.languageCode);
 
   @override
   Future<AppLocalizations> load(Locale locale) => AppLocalizations.load(locale);

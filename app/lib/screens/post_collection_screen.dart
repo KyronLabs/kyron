@@ -7,6 +7,7 @@ import '../providers/feed_provider.dart';
 import '../widgets/post_list_view.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../l10n/app_localizations.dart';
 
 /// Your saved posts, or your liked posts.
 ///
@@ -53,6 +54,27 @@ class PostCollectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final localizedTitle = source == PostListSource.saved
+        ? l10n.ui('ui_saved_posts', 'Saved posts')
+        : l10n.ui('ui_liked_posts', 'Liked posts');
+    final localizedEmptyTitle = source == PostListSource.saved
+        ? l10n.ui('ui_nothing_saved_yet', 'Nothing saved yet')
+        : l10n.ui('ui_no_likes_yet', 'No likes yet');
+    final localizedEmptyDetail = source == PostListSource.saved
+        ? l10n.ui(
+            'ui_saved_posts_detail',
+            'Tap the archive icon on any post to keep it here. Only you can see what you save.',
+          )
+        : l10n.ui(
+            'ui_liked_posts_detail',
+            'Posts you like show up here, most recent first.',
+          );
+    final localizedError = source == PostListSource.saved
+        ? l10n.ui(
+            'ui_could_not_load_saved_posts', 'Could not load your saved posts')
+        : l10n.ui(
+            'ui_could_not_load_liked_posts', 'Could not load your liked posts');
     return Scaffold(
       appBar: KyronAppBar(
         leading: IconButton(
@@ -60,14 +82,14 @@ class PostCollectionScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: Text(title),
+        title: Text(localizedTitle),
       ),
       body: SafeArea(
         child: PostListView(
           source: source,
-          errorTitle: errorTitle,
-          emptyTitle: emptyTitle,
-          emptyDetail: emptyDetail,
+          errorTitle: localizedError,
+          emptyTitle: localizedEmptyTitle,
+          emptyDetail: localizedEmptyDetail,
           emptyArt: emptyArt,
           padding: const EdgeInsets.only(
             top: SpacingTokens.space8,

@@ -69,27 +69,32 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
             const SizedBox(height: SpacingTokens.space16),
             _Wordmark(info: _info),
             const SizedBox(height: SpacingTokens.space16),
-            _group('Legal'),
+            _group(AppLocalizations.of(context).ui('ui_legal', 'Legal')),
             _Row(
               icon: Iconsax.document_text_copy,
-              label: LegalLinks.termsTitle,
+              label: AppLocalizations.of(context)
+                  .ui('ui_about_terms_of_service', 'Terms of Service'),
               onTap: () => AppBrowser.open(
                 context,
                 LegalLinks.terms,
-                title: LegalLinks.termsTitle,
+                title: AppLocalizations.of(context)
+                    .ui('ui_about_terms_of_service', 'Terms of Service'),
               ),
             ),
             _Row(
               icon: Iconsax.shield_tick_copy,
-              label: LegalLinks.privacyTitle,
+              label: AppLocalizations.of(context)
+                  .ui('ui_about_privacy_policy', 'Privacy Policy'),
               onTap: () => AppBrowser.open(
                 context,
                 LegalLinks.privacy,
-                title: LegalLinks.privacyTitle,
+                title: AppLocalizations.of(context)
+                    .ui('ui_about_privacy_policy', 'Privacy Policy'),
               ),
             ),
             _divider(scheme),
-            _group('Diagnostics'),
+            _group(AppLocalizations.of(context)
+                .ui('ui_diagnostics', 'Diagnostics')),
             _Row(
               icon: Iconsax.status_up_copy,
               label: AppLocalizations.of(context).serviceStatus,

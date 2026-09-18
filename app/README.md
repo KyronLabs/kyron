@@ -28,6 +28,8 @@ flutter test --no-pub
 
 The localization checker fails on missing or extra keys and placeholder drift. Values that remain equal to English are reported for translator review; brand names, technical labels, and symbols may legitimately remain unchanged.
 
+The app currently supports English, Spanish, and Simplified Chinese catalogs. When adding a locale, update both the `AppLocalizations` delegate and the generated lookup dispatcher, then add a widget regression test proving that the locale loads the intended catalog.
+
 ## Getting started
 
 Install the Flutter stable channel, run `flutter pub get` from this directory, and provide the required Supabase values through the project’s documented `--dart-define` configuration. Do not commit secrets or local environment files.

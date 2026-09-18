@@ -379,7 +379,7 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
     // bottom to tie a message to, and the eye is already in the middle of it.
     Toast.show(
       context,
-      'Link copied',
+      AppLocalizations.of(context).literallinkCopied,
       spot: ToastSpot.middle,
       icon: Iconsax.copy_copy,
     );

@@ -10,12 +10,25 @@ for locale in ('en', 'es', 'zh'):
     text = path.read_text()
     additions = []
     for key, value in arb.items():
-        if not (key.startswith('ui_') or key.startswith('audit_')):
+        if not (key.startswith('ui_') or key.startswith('audit_') or key in {
+            'authorPostsHidden', 'authorBlocked', 'nothingMatchesQuery', 'repliesPolicy', 'feedTagDetail',
+        }):
             continue
         if f"'{key}':" in text:
             continue
         encoded = json.dumps(value, ensure_ascii=False)
-        additions.append(f"      '{key}': MessageLookupByLibrary.simpleMessage({encoded}),")
+        if key == 'authorPostsHidden':
+            additions.append("      'authorPostsHidden': (Object author) => 'You will not see posts from $author',")
+        elif key == 'authorBlocked':
+            additions.append("      'authorBlocked': (Object author) => '$author blocked',")
+        elif key == 'nothingMatchesQuery':
+            additions.append("      'nothingMatchesQuery': (Object what) => 'Nothing on Kyron matches \"$what\"',")
+        elif key == 'repliesPolicy':
+            additions.append("      'repliesPolicy': (Object policy) => 'Replies: $policy',")
+        elif key == 'feedTagDetail':
+            additions.append("      'feedTagDetail': (Object tab) => 'Nothing has been posted under #$tab yet.',")
+        else:
+            additions.append(f"      '{key}': MessageLookupByLibrary.simpleMessage({encoded}),")
     if additions:
         marker = '\n    };' if '\n    };' in text else '\n  };'
         if marker not in text:

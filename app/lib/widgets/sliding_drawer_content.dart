@@ -137,9 +137,11 @@ class SlidingDrawerContent extends ConsumerWidget {
           // follower count and drop the other.
           Row(
             children: [
-              _stat(context, user.followers, 'Followers'),
+              _stat(context, user.followers,
+                  AppLocalizations.of(context).followers),
               const SizedBox(width: SpacingTokens.space16),
-              _stat(context, user.following, 'Following'),
+              _stat(context, user.following,
+                  AppLocalizations.of(context).following),
               const SizedBox(width: SpacingTokens.space16),
               Text(
                 '${formatCount(user.kyronPoints)} KP',
@@ -283,7 +285,8 @@ class SlidingDrawerContent extends ConsumerWidget {
           ),
           const SizedBox(height: SpacingTokens.space12),
           Text(
-            'Could not load your profile',
+            AppLocalizations.of(context)
+                .ui('ui_could_not_load_profile', 'Could not load your profile'),
             style: TextStyle(
               fontSize: TypographyTokens.fontSize3,
               fontWeight: FontWeight.w600,
@@ -329,7 +332,7 @@ class SlidingDrawerContent extends ConsumerWidget {
         _pillButton(
           context,
           icon: Iconsax.people_copy,
-          label: 'Communities',
+          label: AppLocalizations.of(context).communities,
           onTap: () {
             onCloseDrawer();
             onSelectTab?.call(communitiesTab);
@@ -350,7 +353,7 @@ class SlidingDrawerContent extends ConsumerWidget {
         _pillButton(
           context,
           icon: Iconsax.setting_copy,
-          label: 'Settings',
+          label: AppLocalizations.of(context).settings,
           onTap: () => _go(context, Routes.settings),
         ),
         _pillButton(
@@ -456,7 +459,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             children: [
               _textLink(
                 context,
-                'Terms',
+                AppLocalizations.of(context).ui('ui_terms', 'Terms'),
                 onTap: () =>
                     _leave(context, LegalLinks.terms, LegalLinks.termsTitle),
               ),
@@ -471,7 +474,7 @@ class SlidingDrawerContent extends ConsumerWidget {
               const SizedBox(width: SpacingTokens.space16),
               _textLink(
                 context,
-                'Privacy',
+                AppLocalizations.of(context).ui('ui_privacy', 'Privacy'),
                 onTap: () => _leave(
                   context,
                   LegalLinks.privacy,
@@ -486,14 +489,14 @@ class SlidingDrawerContent extends ConsumerWidget {
             children: [
               _chipButton(
                 context,
-                'Help',
+                AppLocalizations.of(context).ui('ui_help', 'Help'),
                 Iconsax.info_circle_copy,
                 onTap: () => _go(context, Routes.help),
               ),
               const SizedBox(width: SpacingTokens.space12),
               _chipButton(
                 context,
-                'Feedback',
+                AppLocalizations.of(context).ui('ui_feedback', 'Feedback'),
                 Iconsax.message_edit_copy,
                 onTap: () => _go(context, Routes.settingsFeedback),
               ),
@@ -625,7 +628,8 @@ class SlidingDrawerContent extends ConsumerWidget {
               ),
             ),
             Text(
-              'Decentralized ID',
+              AppLocalizations.of(context)
+                  .ui('ui_decentralized_id', 'Decentralized ID'),
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize5,
                 fontWeight: FontWeight.bold,

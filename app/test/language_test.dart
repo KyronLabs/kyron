@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/language.dart';
 import 'package:kyron_app/providers/preferences_provider.dart';
 import 'package:kyron_app/screens/settings_subscreens.dart';
@@ -170,6 +171,28 @@ void main() {
         findsNothing,
         reason: 'the app stayed in English, which is the bug this replaced',
       );
+    });
+
+    testWidgets('Simplified Chinese loads Kyron\'s catalog', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('zh'),
+          supportedLocales: const [Locale('en'), Locale('zh')],
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          home: Builder(
+            builder: (context) => Text(
+              AppLocalizations.of(context).literalappLanguage,
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('应用语言'), findsOneWidget);
     });
 
     testWidgets('an RTL language lays the whole app out the other way round', (
