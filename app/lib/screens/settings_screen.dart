@@ -66,7 +66,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final current = ref.read(preferencesProvider).theme;
     final chosen = await ActionSheet.show<AppTheme>(
       context,
-      title: 'Appearance',
+      title: AppLocalizations.of(context).ui('ui_appearance', 'Appearance'),
       actions: [
         for (final theme in AppTheme.values)
           SheetAction(
@@ -336,7 +336,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          'Settings',
+          AppLocalizations.of(context).settings,
           style: TextStyle(
             fontSize: TypographyTokens.fontSize5,
             fontWeight: FontWeight.w600,
@@ -349,7 +349,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           padding: EdgeInsets.zero,
           children: [
             // Account Group (3 items)
-            _groupHeader('Account'),
+            _groupHeader(
+                AppLocalizations.of(context).ui('ui_account', 'Account')),
             _settingsRow(
               icon: Iconsax.user_copy,
               label: _handle,
@@ -359,7 +360,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     Navigator.pushNamed(context, Routes.settingsChangeEmail),
                 child: Text(AppLocalizations.of(context).changeEmail),
               ),
-              helpText: 'Your profile and contact information',
+              helpText: AppLocalizations.of(context).ui(
+                  'ui_settings_profile_contact',
+                  'Your profile and contact information'),
             ),
             // The real one, and now a real identifier rather than a column
             // nobody wrote to. This row showed "did:plc:abc…" and copied
@@ -419,7 +422,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsPasswordLogin),
-              helpText: 'Security settings',
+              helpText: AppLocalizations.of(context)
+                  .ui('ui_settings_security', 'Security settings'),
             ),
             _settingsRow(
               icon: Iconsax.text_block_copy,
@@ -434,7 +438,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   AppLocalizations.of(context).literalmutedAndBlockedAccounts,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.mutedAccounts),
-              helpText: 'Who you have muted or blocked',
+              helpText: AppLocalizations.of(context).ui(
+                  'ui_settings_muted_blocked', 'Who you have muted or blocked'),
             ),
             Divider(
               height: 1,
@@ -446,14 +451,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // device. Was "Content & Display" and "App & Device", which split
             // font size from text scale's neighbours and put muting under
             // "device".
-            _groupHeader('Preferences'),
+            _groupHeader(AppLocalizations.of(context)
+                .ui('ui_preferences', 'Preferences')),
             _settingsRow(
               icon: Iconsax.moon_copy,
-              label: 'Appearance',
+              label: AppLocalizations.of(context)
+                  .ui('ui_appearance', 'Appearance'),
               subtitle: ref.watch(preferencesProvider).theme.label,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: _chooseTheme,
-              helpText: 'Light, dark, or whatever the phone is set to',
+              helpText: AppLocalizations.of(context).ui('ui_appearance_detail',
+                  'Light, dark, or whatever the phone is set to'),
             ),
             _settingsRow(
               icon: Iconsax.text_copy,
@@ -468,12 +476,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.global_copy,
-              label: 'Language',
+              label: AppLocalizations.of(context).ui('ui_language', 'Language'),
               subtitle: ref.watch(preferencesProvider).language.nativeName,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsLanguage),
-              helpText: 'Choose your language',
+              helpText: AppLocalizations.of(context)
+                  .ui('ui_language_detail', 'Choose your language'),
             ),
             _settingsRow(
               icon: Iconsax.notification_copy,
@@ -499,7 +508,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 value: ref.watch(preferencesProvider).dataSaver,
                 onChanged: (value) =>
                     ref.read(preferencesProvider.notifier).setDataSaver(value),
-                semanticsLabel: 'Data Saver',
+                semanticsLabel: AppLocalizations.of(context)
+                    .ui('ui_settings_data_saver', 'Data Saver'),
               ),
               helpText: 'Stop videos playing by themselves as you scroll',
             ),
@@ -510,7 +520,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
 
             // Help & Support Group (3 items)
-            _groupHeader('Help & Support'),
+            _groupHeader(AppLocalizations.of(context).helpAndSupport),
             _settingsRow(
               icon: Iconsax.info_circle_copy,
               label: AppLocalizations.of(context).helpCentre,
@@ -520,7 +530,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 SupportLinks.helpCentre,
                 title: SupportLinks.helpCentreTitle,
               ),
-              helpText: 'Browse help articles',
+              helpText: AppLocalizations.of(context)
+                  .ui('ui_settings_help_articles', 'Browse help articles'),
             ),
             _settingsRow(
               icon: Iconsax.call_copy,
@@ -528,7 +539,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsContactSupport),
-              helpText: 'Get help from our team',
+              helpText: AppLocalizations.of(context)
+                  .ui('ui_settings_team_help', 'Get help from our team'),
             ),
             _settingsRow(
               icon: Iconsax.message_edit_copy,
@@ -536,7 +548,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsFeedback),
-              helpText: 'Tell us what you think',
+              helpText: AppLocalizations.of(context)
+                  .ui('ui_settings_feedback_detail', 'Tell us what you think'),
             ),
             _settingsRow(
               icon: Iconsax.info_circle_copy,

@@ -84,7 +84,9 @@ class _OptionsState extends ConsumerState<_Options> {
               label: AppLocalizations.of(context).literalcopyPostText,
               onTap: () => _run(() async {
                 await Clipboard.setData(ClipboardData(text: _post.content));
-              }, 'Post text copied'),
+              },
+                  AppLocalizations.of(context)
+                      .ui('ui_post_text_copied', 'Post text copied')),
             ),
             _Item(
               icon: Iconsax.link_copy,
@@ -93,7 +95,9 @@ class _OptionsState extends ConsumerState<_Options> {
                 await Clipboard.setData(
                   ClipboardData(text: 'https://kyron.so/post/${_post.id}'),
                 );
-              }, 'Link copied'),
+              },
+                  AppLocalizations.of(context)
+                      .ui('ui_link_copied', 'Link copied')),
             ),
 
             _divider(scheme),
@@ -105,7 +109,8 @@ class _OptionsState extends ConsumerState<_Options> {
               label: AppLocalizations.of(context).literalshowMorePostsLikeThis,
               onTap: () => _run(
                 () => _moderation.setInterest(_post.id, more: true),
-                'Noted. This helps shape what you are shown.',
+                AppLocalizations.of(context).ui('ui_interest_noted',
+                    'Noted. This helps shape what you are shown.'),
               ),
             ),
             _Item(
@@ -115,7 +120,8 @@ class _OptionsState extends ConsumerState<_Options> {
                   .literalhidesItAndTellsUsToShowFewerLikeIt,
               onTap: () => _run(
                 () => _moderation.setInterest(_post.id, more: false),
-                'Hidden. We will show you fewer like it.',
+                AppLocalizations.of(context).ui('ui_posts_hidden',
+                    'Hidden. We will show you fewer like it.'),
                 removesPost: true,
               ),
             ),
@@ -124,7 +130,8 @@ class _OptionsState extends ConsumerState<_Options> {
               label: AppLocalizations.of(context).literalhideThisPost,
               onTap: () => _run(
                 () => _moderation.setHidden(_post.id, true),
-                'Post hidden',
+                AppLocalizations.of(context)
+                    .ui('ui_post_hidden', 'Post hidden'),
                 removesPost: true,
               ),
             ),
@@ -135,7 +142,8 @@ class _OptionsState extends ConsumerState<_Options> {
                   .literalstopSeeingThisPostAndRepliesToIt,
               onTap: () => _run(
                 () => _moderation.setThreadMuted(_post.id, true),
-                'Thread muted',
+                AppLocalizations.of(context)
+                    .ui('ui_thread_muted', 'Thread muted'),
                 removesPost: true,
               ),
             ),
@@ -183,20 +191,20 @@ class _OptionsState extends ConsumerState<_Options> {
               _divider(scheme),
               _Item(
                 icon: Iconsax.volume_slash_copy,
-                label: 'Mute $author',
-                subtitle:
-                    'You will stop seeing their posts. They are not told.',
+                label: AppLocalizations.of(context).literalmuteAuthor(author),
+                subtitle: AppLocalizations.of(context).ui('ui_mute_detail',
+                    'You will stop seeing their posts. They are not told.'),
                 onTap: () => _run(
                   () => _moderation.setUserMuted(_post.author.id, true),
-                  'You will not see posts from $author',
+                  AppLocalizations.of(context).authorPostsHidden(author),
                   removesPost: true,
                 ),
               ),
               _Item(
                 icon: Iconsax.profile_delete_copy,
-                label: 'Block $author',
-                subtitle:
-                    'Neither of you will see the other, or be able to follow.',
+                label: AppLocalizations.of(context).literalblockAuthor(author),
+                subtitle: AppLocalizations.of(context).ui('ui_block_detail',
+                    'Neither of you will see the other, or be able to follow.'),
                 destructive: true,
                 onTap: _confirmBlock,
               ),
@@ -209,13 +217,14 @@ class _OptionsState extends ConsumerState<_Options> {
                     context,
                     target: ReportTarget.post,
                     targetId: _post.id,
-                    subject: 'this post',
+                    subject: AppLocalizations.of(context)
+                        .ui('ui_this_post', 'this post'),
                   ),
                 ),
               ),
               _Item(
                 icon: Iconsax.user_remove_copy,
-                label: 'Report $author',
+                label: AppLocalizations.of(context).literalreportAuthor(author),
                 destructive: true,
                 onTap: () => _replace(
                   () => ReportScreen.open(
@@ -293,7 +302,7 @@ class _OptionsState extends ConsumerState<_Options> {
 
     await _run(
       () => ref.read(feedRepositoryProvider).setReplyPolicy(_post.id, chosen),
-      'Replies: ${chosen.label.toLowerCase()}',
+      AppLocalizations.of(context).repliesPolicy(chosen.label.toLowerCase()),
     );
   }
 
@@ -303,8 +312,8 @@ class _OptionsState extends ConsumerState<_Options> {
       builder: (dialogContext) => AlertDialog(
         title: Text(AppLocalizations.of(context).deleteThisPost),
         content: Text(
-          'It is removed from your profile and from everyone else\'s feed. '
-          'Replies to it go with it.',
+          AppLocalizations.of(context).ui('ui_post_delete_detail',
+              'It is removed from your profile and from everyone else\'s feed. Replies to it go with it.'),
         ),
         actions: [
           TextButton(
@@ -325,7 +334,7 @@ class _OptionsState extends ConsumerState<_Options> {
     if (confirmed != true || !mounted) return;
     await _run(
       () => ref.read(feedRepositoryProvider).delete(_post.id),
-      'Post deleted',
+      AppLocalizations.of(context).ui('ui_post_deleted', 'Post deleted'),
       removesPost: true,
     );
   }
@@ -335,10 +344,10 @@ class _OptionsState extends ConsumerState<_Options> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: Text('Block $author?'),
+        title: Text(AppLocalizations.of(context).literalblockAuthor2(author)),
         content: Text(
-          'Neither of you will see the other on Kyron, and any follow between '
-          'you is removed. They are not told.',
+          AppLocalizations.of(context).ui('ui_block_detail',
+              'Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.'),
         ),
         actions: [
           TextButton(
@@ -359,7 +368,7 @@ class _OptionsState extends ConsumerState<_Options> {
     if (confirmed != true || !mounted) return;
     await _run(
       () => _moderation.setBlocked(_post.author.id, true),
-      '$author blocked',
+      AppLocalizations.of(context).authorBlocked(author),
       removesPost: true,
     );
   }

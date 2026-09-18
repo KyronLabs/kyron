@@ -994,6 +994,123 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "Your account, your posts, and what you tap on so"),
       'audit_topic_picker_add_a_topic_25baaf8a':
           MessageLookupByLibrary.simpleMessage("Add a topic"),
+      'ui_communities': MessageLookupByLibrary.simpleMessage("Communities"),
+      'ui_settings': MessageLookupByLibrary.simpleMessage("Settings"),
+      'ui_appearance': MessageLookupByLibrary.simpleMessage("Appearance"),
+      'ui_language': MessageLookupByLibrary.simpleMessage("Language"),
+      'ui_account': MessageLookupByLibrary.simpleMessage("Account"),
+      'ui_content_display':
+          MessageLookupByLibrary.simpleMessage("Content & Display"),
+      'ui_app_device': MessageLookupByLibrary.simpleMessage("App & Device"),
+      'ui_terms': MessageLookupByLibrary.simpleMessage("Terms"),
+      'ui_privacy': MessageLookupByLibrary.simpleMessage("Privacy"),
+      'ui_help': MessageLookupByLibrary.simpleMessage("Help"),
+      'ui_feedback': MessageLookupByLibrary.simpleMessage("Feedback"),
+      'ui_decentralized_id':
+          MessageLookupByLibrary.simpleMessage("Decentralized ID"),
+      'ui_find_people_on_kyron':
+          MessageLookupByLibrary.simpleMessage("Find people on Kyron"),
+      'ui_search_everything_posted':
+          MessageLookupByLibrary.simpleMessage("Search everything posted"),
+      'ui_search_by_handle_or_display_name':
+          MessageLookupByLibrary.simpleMessage(
+              "Search by handle or display name."),
+      'ui_words_or_filter': MessageLookupByLibrary.simpleMessage(
+          "Words, or a filter — an account, a date range, or what a post carries."),
+      'ui_two_characters_or_more':
+          MessageLookupByLibrary.simpleMessage("Two characters or more."),
+      'ui_no_posts_match_filters':
+          MessageLookupByLibrary.simpleMessage("No posts match those filters."),
+      'ui_search_clear': MessageLookupByLibrary.simpleMessage("Clear"),
+      'ui_search_filters': MessageLookupByLibrary.simpleMessage("Filters"),
+      'ui_post_text_copied':
+          MessageLookupByLibrary.simpleMessage("Post text copied"),
+      'ui_link_copied': MessageLookupByLibrary.simpleMessage("Link copied"),
+      'ui_interest_noted': MessageLookupByLibrary.simpleMessage(
+          "Noted. This helps shape what you are shown."),
+      'ui_posts_hidden': MessageLookupByLibrary.simpleMessage(
+          "Hidden. We will show you fewer like it."),
+      'ui_post_hidden': MessageLookupByLibrary.simpleMessage("Post hidden"),
+      'ui_thread_muted': MessageLookupByLibrary.simpleMessage("Thread muted"),
+      'ui_post_deleted': MessageLookupByLibrary.simpleMessage("Post deleted"),
+      'ui_post_delete_detail': MessageLookupByLibrary.simpleMessage(
+          "It is removed from your profile and from everyone else's feed. Replies to it go with it."),
+      'ui_block_detail': MessageLookupByLibrary.simpleMessage(
+          "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told."),
+      'ui_mute_detail': MessageLookupByLibrary.simpleMessage(
+          "You will stop seeing their posts. They are not told."),
+      'ui_about_terms_of_service':
+          MessageLookupByLibrary.simpleMessage("Terms of Service"),
+      'ui_about_privacy_policy':
+          MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+      'ui_settings_profile_contact': MessageLookupByLibrary.simpleMessage(
+          "Your profile and contact information"),
+      'ui_settings_security':
+          MessageLookupByLibrary.simpleMessage("Security settings"),
+      'ui_settings_muted_blocked':
+          MessageLookupByLibrary.simpleMessage("Who you have muted or blocked"),
+      'ui_settings_content_display':
+          MessageLookupByLibrary.simpleMessage("Content & Display"),
+      'ui_settings_app_device':
+          MessageLookupByLibrary.simpleMessage("App & Device"),
+      'ui_settings_data_saver':
+          MessageLookupByLibrary.simpleMessage("Data Saver"),
+      'ui_settings_language_detail':
+          MessageLookupByLibrary.simpleMessage("Choose your language"),
+      'ui_settings_notifications_detail':
+          MessageLookupByLibrary.simpleMessage("Notification preferences"),
+      'ui_settings_help_articles':
+          MessageLookupByLibrary.simpleMessage("Browse help articles"),
+      'ui_settings_team_help':
+          MessageLookupByLibrary.simpleMessage("Get help from our team"),
+      'ui_settings_feedback_detail':
+          MessageLookupByLibrary.simpleMessage("Tell us what you think"),
+      'ui_could_not_load_profile':
+          MessageLookupByLibrary.simpleMessage("Could not load your profile"),
+      'ui_search_people': MessageLookupByLibrary.simpleMessage("Search people"),
+      'ui_search_posts': MessageLookupByLibrary.simpleMessage("Search posts"),
+      'ui_this_post': MessageLookupByLibrary.simpleMessage("this post"),
+      'authorPostsHidden': (Object author) =>
+          'You will not see posts from $author',
+      'authorBlocked': (Object author) => '$author blocked',
+      'nothingMatchesQuery': (Object what) =>
+          'Nothing on Kyron matches "$what"',
+      'repliesPolicy': (Object policy) => 'Replies: $policy',
+      'ui_preferences': MessageLookupByLibrary.simpleMessage("Preferences"),
+      'ui_appearance_detail': MessageLookupByLibrary.simpleMessage(
+          "Light, dark, or whatever the phone is set to"),
+      'ui_legal': MessageLookupByLibrary.simpleMessage("Legal"),
+      'ui_diagnostics': MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      'ui_saved_posts': MessageLookupByLibrary.simpleMessage("Saved posts"),
+      'ui_liked_posts': MessageLookupByLibrary.simpleMessage("Liked posts"),
+      'ui_nothing_saved_yet':
+          MessageLookupByLibrary.simpleMessage("Nothing saved yet"),
+      'ui_no_likes_yet': MessageLookupByLibrary.simpleMessage("No likes yet"),
+      'ui_saved_posts_detail': MessageLookupByLibrary.simpleMessage(
+          "Tap the archive icon on any post to keep it here. Only you can see what you save."),
+      'ui_liked_posts_detail': MessageLookupByLibrary.simpleMessage(
+          "Posts you like show up here, most recent first."),
+      'ui_could_not_load_saved_posts': MessageLookupByLibrary.simpleMessage(
+          "Could not load your saved posts"),
+      'ui_could_not_load_liked_posts': MessageLookupByLibrary.simpleMessage(
+          "Could not load your liked posts"),
+      'feedTagDetail': (Object tab) =>
+          'Nothing has been posted under #$tab yet.',
+      'ui_feed_following_empty': MessageLookupByLibrary.simpleMessage(
+          "Nothing from the people you follow"),
+      'ui_feed_videos_empty':
+          MessageLookupByLibrary.simpleMessage("No videos yet"),
+      'ui_feed_empty': MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      'ui_feed_following_detail': MessageLookupByLibrary.simpleMessage(
+          "Follow a few accounts and their posts will show up here."),
+      'ui_feed_videos_detail': MessageLookupByLibrary.simpleMessage(
+          "Posts carrying a clip will show up here."),
+      'ui_feed_for_you_detail': MessageLookupByLibrary.simpleMessage(
+          "Posts will show up here as people write them."),
+      'ui_could_not_load_feed':
+          MessageLookupByLibrary.simpleMessage("Could not load your feed"),
+      'ui_share_this_post':
+          MessageLookupByLibrary.simpleMessage("Share this post"),
     };
 
 final messageLookup = MessageLookup();

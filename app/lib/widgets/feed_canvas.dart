@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'empty_state.dart';
 import 'interest_tabs.dart';
 import 'post_list_view.dart';
+import '../l10n/app_localizations.dart';
 
 /// The home feed.
 ///
@@ -33,10 +34,11 @@ class FeedCanvas extends ConsumerWidget {
   /// has currently slid to.
   static const double topFadeHeight = 16;
 
-  static String _emptyTitle(String tab) => switch (tab) {
-        'Following' => 'Nothing from the people you follow',
-        'Videos' => 'No videos yet',
-        _ => 'Nothing here yet',
+  static String _emptyTitle(AppLocalizations l10n, String tab) => switch (tab) {
+        'Following' => l10n.ui(
+            'ui_feed_following_empty', 'Nothing from the people you follow'),
+        'Videos' => l10n.ui('ui_feed_videos_empty', 'No videos yet'),
+        _ => l10n.ui('ui_feed_empty', 'Nothing here yet'),
       };
 
   static EmptyArt _emptyArt(String tab) => switch (tab) {
@@ -46,17 +48,22 @@ class FeedCanvas extends ConsumerWidget {
         _ => EmptyArt.tag,
       };
 
-  static String _emptyDetail(String tab) => switch (tab) {
-        'Following' =>
-          'Follow a few accounts and their posts will show up here.',
-        'Videos' => 'Posts carrying a clip will show up here.',
-        'For You' => 'Posts will show up here as people write them.',
-        _ => 'Nothing has been posted under #$tab yet.',
+  static String _emptyDetail(AppLocalizations l10n, String tab) =>
+      switch (tab) {
+        'Following' => l10n.ui('ui_feed_following_detail',
+            'Follow a few accounts and their posts will show up here.'),
+        'Videos' => l10n.ui('ui_feed_videos_detail',
+            'Posts carrying a clip will show up here.'),
+        'For You' => l10n.ui('ui_feed_for_you_detail',
+            'Posts will show up here as people write them.'),
+        _ => l10n.ui(
+            'ui_feed_tag_detail', 'Nothing has been posted under #$tab yet.'),
       };
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tab = ref.watch(selectedFeedTabProvider);
+    final l10n = AppLocalizations.of(context);
 
     return PostListView(
       // Whatever the top bar's selected tab reads. It was pinned to the
@@ -67,10 +74,10 @@ class FeedCanvas extends ConsumerWidget {
       // unreadable, and the point of the tab is seeing what is there.
       asTiles: tab == 'Videos',
       scrollController: scrollController,
-      errorTitle: 'Could not load your feed',
+      errorTitle: l10n.ui('ui_could_not_load_feed', 'Could not load your feed'),
       emptyArt: _emptyArt(tab),
-      emptyTitle: _emptyTitle(tab),
-      emptyDetail: _emptyDetail(tab),
+      emptyTitle: _emptyTitle(l10n, tab),
+      emptyDetail: _emptyDetail(l10n, tab),
       // The chrome's height goes to topInset rather than into the padding:
       // the refresh indicator needs the same number, and adding it here alone
       // is what left the spinner drawing behind the top bar.

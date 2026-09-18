@@ -56,7 +56,8 @@ class _Sheet extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Share this post',
+                AppLocalizations.of(context)
+                    .ui('ui_share_this_post', 'Share this post'),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
@@ -75,13 +76,18 @@ class _Sheet extends StatelessWidget {
           _Item(
             icon: Iconsax.link_copy,
             label: AppLocalizations.of(context).literalcopyLink,
-            onTap: () => _copy(context, link, 'Link copied'),
+            onTap: () => _copy(
+              context,
+              link,
+              AppLocalizations.of(context).literallinkCopied,
+            ),
           ),
           if (text.isNotEmpty)
             _Item(
               icon: Iconsax.copy_copy,
               label: AppLocalizations.of(context).literalcopyText,
-              onTap: () => _copy(context, text, 'Post text copied'),
+              onTap: () => _copy(
+                  context, text, AppLocalizations.of(context).postTextCopied),
             ),
           _Item(
             icon: Iconsax.message_2_copy,

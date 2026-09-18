@@ -67,8 +67,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             style: const TextStyle(fontSize: TypographyTokens.fontSize4),
             decoration: InputDecoration(
               hintText: state.mode == SearchMode.people
-                  ? 'Search people'
-                  : 'Search posts',
+                  ? AppLocalizations.of(context)
+                      .ui('ui_search_people', 'Search people')
+                  : AppLocalizations.of(context)
+                      .ui('ui_search_posts', 'Search posts'),
               // No padding of its own any more. This field was the one that
               // looked right, so its height became the theme's -- and a field
               // that restates it is a field that drifts away from it again.
@@ -122,19 +124,24 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       return EmptyState(
         art: state.mode == SearchMode.people ? EmptyArt.people : EmptyArt.posts,
         title: state.mode == SearchMode.people
-            ? 'Find people on Kyron'
-            : 'Search everything posted',
+            ? AppLocalizations.of(context)
+                .ui('ui_find_people_on_kyron', 'Find people on Kyron')
+            : AppLocalizations.of(context)
+                .ui('ui_search_everything_posted', 'Search everything posted'),
         detail: state.mode == SearchMode.people
-            ? 'Search by handle or display name.'
-            : 'Words, or a filter — an account, a date range, or what a '
-                'post carries.',
+            ? AppLocalizations.of(context).ui(
+                'ui_search_by_handle_or_display_name',
+                'Search by handle or display name.')
+            : AppLocalizations.of(context).ui('ui_words_or_filter',
+                'Words, or a filter — an account, a date range, or what a post carries.'),
       );
     }
     if (state.isTooShort) {
       return EmptyState(
         art: EmptyArt.drafts,
         title: AppLocalizations.of(context).literalkeepTyping,
-        detail: 'Two characters or more.',
+        detail: AppLocalizations.of(context)
+            .ui('ui_two_characters_or_more', 'Two characters or more.'),
       );
     }
     if (state.error != null) {
@@ -153,8 +160,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         art: EmptyArt.noMatch,
         title: AppLocalizations.of(context).literalnothingMatched,
         detail: what.isEmpty
-            ? 'No posts match those filters.'
-            : 'Nothing on Kyron matches "$what".',
+            ? AppLocalizations.of(context).ui(
+                'ui_no_posts_match_filters', 'No posts match those filters.')
+            : AppLocalizations.of(context).nothingMatchesQuery(what),
       );
     }
 
@@ -212,7 +220,8 @@ class _Trailing extends StatelessWidget {
       children: [
         if (showClear)
           _Tap(
-            tooltip: 'Clear',
+            tooltip:
+                AppLocalizations.of(context).ui('ui_search_clear', 'Clear'),
             onTap: onClear,
             child: Icon(
               Iconsax.close_circle_copy,
@@ -221,7 +230,8 @@ class _Trailing extends StatelessWidget {
             ),
           ),
         _Tap(
-          tooltip: 'Filters',
+          tooltip:
+              AppLocalizations.of(context).ui('ui_search_filters', 'Filters'),
           onTap: onFilter,
           child: Stack(
             clipBehavior: Clip.none,
