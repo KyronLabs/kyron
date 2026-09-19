@@ -130,7 +130,9 @@ class _CommunityTileState extends ConsumerState<CommunityTile> {
               width: 96,
               child: ActionButton(
                 compact: true,
-                label: community.joined ? 'Joined' : 'Join',
+                label: community.joined
+                    ? AppLocalizations.of(context).ui('ui_joined', 'Joined')
+                    : AppLocalizations.of(context).ui('ui_join', 'Join'),
                 icon: community.joined ? Iconsax.tick_circle_copy : Iconsax.add,
                 kind: community.joined
                     ? ActionButtonKind.outlined

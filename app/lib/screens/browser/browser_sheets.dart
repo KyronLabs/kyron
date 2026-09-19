@@ -129,7 +129,7 @@ abstract final class PageSheet {
                   ),
                   _Row(
                     icon: Iconsax.export_3_copy,
-                    label: 'Share',
+                    label: AppLocalizations.of(context).ui('ui_share', 'Share'),
                     onTap: () => Navigator.pop(context, PageChoice.share),
                   ),
                   _Row(

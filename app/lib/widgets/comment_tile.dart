@@ -83,7 +83,7 @@ class CommentTile extends StatelessWidget {
           children: [
             _Action(
               icon: comment.liked ? Iconsax.heart : Iconsax.heart_copy,
-              label: 'Like',
+              label: AppLocalizations.of(context).ui('ui_like', 'Like'),
               count: comment.likes,
               tint: comment.liked ? const Color(0xFFE0245E) : null,
               onTap: () {
@@ -104,7 +104,7 @@ class CommentTile extends StatelessWidget {
             // does nothing is worse than a row of three.
             _Action(
               icon: Iconsax.send_2_copy,
-              label: 'Share',
+              label: AppLocalizations.of(context).ui('ui_share', 'Share'),
               count: 0,
               onTap: () => Share.share(linkTo(comment)),
             ),

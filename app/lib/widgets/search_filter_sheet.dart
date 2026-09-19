@@ -113,7 +113,7 @@ class _SheetState extends State<_Sheet> {
                 ],
               ),
               const SizedBox(height: SpacingTokens.space12),
-              _Label(text: 'From an account'),
+              _Label(text: AppLocalizations.of(context).ui('ui_from_account', 'From an account')),
               TextField(
                 controller: _from,
                 autocorrect: false,
@@ -124,12 +124,12 @@ class _SheetState extends State<_Sheet> {
                 ),
               ),
               const SizedBox(height: SpacingTokens.space16),
-              _Label(text: 'Posted between'),
+              _Label(text: AppLocalizations.of(context).ui('ui_posted_between', 'Posted between')),
               Row(
                 children: [
                   Expanded(
                     child: _DateField(
-                      label: 'After',
+                      label: AppLocalizations.of(context).ui('ui_after', 'After'),
                       value: _after,
                       // Cannot be later than the other end of the range, so
                       // an empty range cannot be picked at all.
@@ -140,7 +140,7 @@ class _SheetState extends State<_Sheet> {
                   const SizedBox(width: SpacingTokens.space12),
                   Expanded(
                     child: _DateField(
-                      label: 'Before',
+                      label: AppLocalizations.of(context).ui('ui_before', 'Before'),
                       value: _before,
                       firstDate: _after,
                       onPick: (value) => setState(() => _before = value),
@@ -149,7 +149,7 @@ class _SheetState extends State<_Sheet> {
                 ],
               ),
               const SizedBox(height: SpacingTokens.space16),
-              _Label(text: 'Carrying'),
+              _Label(text: AppLocalizations.of(context).ui('ui_carrying', 'Carrying')),
               Wrap(
                 spacing: SpacingTokens.space8,
                 runSpacing: SpacingTokens.space8,

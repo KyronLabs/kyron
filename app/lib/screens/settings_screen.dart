@@ -220,7 +220,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       if (!mounted) return;
       setState(() => _loggingOut = false);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Could not sign out: ${describeApiError(e)}')),
+        SnackBar(content: Text(AppLocalizations.of(context).couldNotSignOut(describeApiError(e)))),
       );
     }
   }

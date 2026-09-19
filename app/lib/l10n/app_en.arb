@@ -565,5 +565,18 @@
   "theme_system": "System",
   "theme_light": "Light",
   "theme_dark": "Dark",
-  "theme_dim": "Dim"
+  "theme_dim": "Dim",
+  "ui_like": "Like",
+  "ui_share": "Share",
+  "ui_joined": "Joined",
+  "ui_join": "Join",
+  "ui_turn_sound_on": "Turn sound on",
+  "ui_turn_sound_off": "Turn sound off",
+  "ui_pause": "Pause",
+  "ui_play": "Play",
+  "ui_from_account": "From an account",
+  "ui_posted_between": "Posted between",
+  "ui_after": "After",
+  "ui_before": "Before",
+  "ui_carrying": "Carrying"
 }
