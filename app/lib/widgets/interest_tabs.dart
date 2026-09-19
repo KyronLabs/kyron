@@ -585,7 +585,7 @@ class _DraggableChip extends StatelessWidget {
                 size: 18,
                 color: scheme.onSurface.withValues(alpha: 0.6),
               ),
-              tooltip: 'Remove $label',
+              tooltip: AppLocalizations.of(context).literalremoveLabel(label),
               onPressed: onRemove,
             )
           else
@@ -612,7 +612,7 @@ class _ToggleChip extends ConsumerWidget {
     return Semantics(
       button: !isFull,
       enabled: !isFull,
-      label: 'Add $label as a tab',
+      label: AppLocalizations.of(context).literaladdLabelAsATab(label),
       child: GestureDetector(
         onTap: isFull ? null : () => notifier.addTab(label),
         behavior: HitTestBehavior.opaque,

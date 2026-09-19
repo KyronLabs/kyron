@@ -12,6 +12,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/post_media.dart';
 import 'voice_waveform.dart';
+import '../l10n/app_localizations.dart';
 
 /// A voice post: play, the waveform, and how long is left.
 ///
@@ -230,7 +231,9 @@ class _PlayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final label = playing ? 'Pause' : 'Play';
+    final l10n = AppLocalizations.of(context);
+    final label =
+        playing ? l10n.ui('ui_pause', 'Pause') : l10n.ui('ui_play', 'Play');
 
     return Tooltip(
       message: label,
