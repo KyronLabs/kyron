@@ -102,7 +102,13 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Verification failed: ${describeApiError(e)}")),
+        SnackBar(
+          content: Text(
+            AppLocalizations.of(context).literalverificationFailedDescribeapierrorE(
+              describeApiError(e),
+            ),
+          ),
+        ),
       );
     } finally {
       if (mounted) setState(() => _isLoading = false);

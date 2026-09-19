@@ -16,6 +16,7 @@ import '../providers/video_settings_provider.dart';
 import '../utils/decode_size.dart';
 import '../utils/deferred_rebuild.dart';
 import '../services/app_log.dart';
+import '../l10n/app_localizations.dart';
 import '../services/video_pool.dart';
 import '../services/video_stage.dart';
 
@@ -470,7 +471,10 @@ class _SoundButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final label = muted ? 'Turn sound on' : 'Turn sound off';
+    final l10n = AppLocalizations.of(context);
+    final label = muted
+        ? l10n.ui('ui_turn_sound_on', 'Turn sound on')
+        : l10n.ui('ui_turn_sound_off', 'Turn sound off');
 
     return Tooltip(
       message: label,
