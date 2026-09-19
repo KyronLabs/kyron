@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2026-09-18T00:40:00Z",
+  "@@last_modified": "2026-09-19T21:00:00Z",
   "about": "About",
   "addAnAnswer": "Add an answer",
   "agreeAndContinue": "Agree and continue",
@@ -578,5 +578,22 @@
   "ui_posted_between": "Posted between",
   "ui_after": "After",
   "ui_before": "Before",
-  "ui_carrying": "Carrying"
+  "ui_carrying": "Carrying",
+  "create_text_post": "Text post",
+  "create_voice_post": "Voice post",
+  "create_ar_lens": "AR Lens",
+  "create_go_live": "Go live",
+  "voice_record_post": "Record a voice post",
+  "voice_recording": "Recording…",
+  "voice_ready_attach": "Ready to attach",
+  "voice_stop": "Stop",
+  "voice_attach": "Attach",
+  "draft_close_composer_detail": "Close the composer with something written and you will be offered a draft.",
+  "draft_poll_empty": "A poll, with no question yet",
+  "draft_quote_empty": "A quote, with nothing written yet",
+  "draft_nothing_empty": "Nothing written yet",
+  "draft_just_now": "Just now",
+  "draft_minutes_ago": "{minutes} minutes ago",
+  "draft_hours_ago": "{hours} hours ago",
+  "draft_days_ago": "{days} days ago"
 }

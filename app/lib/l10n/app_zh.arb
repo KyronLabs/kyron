@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-09-17T23:10:00Z",
+  "@@last_modified": "2026-09-19T21:00:00Z",
   "about": "关于",
   "addAnAnswer": "添加答案",
   "agreeAndContinue": "同意并继续",
@@ -578,5 +578,22 @@
   "ui_posted_between": "发布于",
   "ui_after": "之后",
   "ui_before": "之前",
-  "ui_carrying": "包含"
+  "ui_carrying": "包含",
+  "create_text_post": "文字帖",
+  "create_voice_post": "语音帖",
+  "create_ar_lens": "AR 镜头",
+  "create_go_live": "开始直播",
+  "voice_record_post": "录制语音帖",
+  "voice_recording": "录音中…",
+  "voice_ready_attach": "准备附加",
+  "voice_stop": "停止",
+  "voice_attach": "附加",
+  "draft_close_composer_detail": "在编辑器中写下内容后关闭，就会为你提供草稿。",
+  "draft_poll_empty": "尚未填写问题的投票",
+  "draft_quote_empty": "尚未填写内容的引用",
+  "draft_nothing_empty": "还没有内容",
+  "draft_just_now": "刚刚",
+  "draft_minutes_ago": "{minutes} 分钟前",
+  "draft_hours_ago": "{hours} 小时前",
+  "draft_days_ago": "{days} 天前"
 }
