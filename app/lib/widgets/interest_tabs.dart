@@ -86,6 +86,16 @@ class InterestTabs extends ConsumerStatefulWidget {
   ConsumerState<InterestTabs> createState() => _InterestTabsState();
 }
 
+String _localizedTabLabel(BuildContext context, String tab) => switch (tab) {
+      'For You' =>
+        AppLocalizations.of(context).ui('interest_for_you', 'For You'),
+      'Following' => AppLocalizations.of(
+          context,
+        ).ui('interest_following', 'Following'),
+      'Videos' => AppLocalizations.of(context).ui('interest_videos', 'Videos'),
+      _ => tab,
+    };
+
 class _InterestTabsState extends ConsumerState<InterestTabs> {
   /// The strip's height, and the height of every target in it. The
   /// guidelines put the floor for a touch target at 44; the pills used to sit
@@ -115,7 +125,7 @@ class _InterestTabsState extends ConsumerState<InterestTabs> {
               itemBuilder: (context, index) {
                 final tab = tabs[index];
                 return _TabPill(
-                  label: tab,
+                  label: _localizedTabLabel(context, tab),
                   isActive: tab == selected,
                   onTap: () =>
                       ref.read(selectedFeedTabProvider.notifier).state = tab,
@@ -321,7 +331,8 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
             // pushes Done off the edge of the sheet.
             Expanded(
               child: Text(
-                'Add an interest',
+                AppLocalizations.of(context)
+                    .ui('interest_add', 'Add an interest'),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
@@ -399,7 +410,8 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
         // above it, which put the list you came to pick from below the fold
         // of a half-height sheet.
         _sectionTitle(
-          'Trending now',
+          AppLocalizations.of(context)
+              .ui('interest_trending_now', 'Trending now'),
           tabs.length >= InterestTabsNotifier.maximum
               ? 'Five tabs is the most the strip holds. Remove one to add '
                   'another.'
@@ -408,7 +420,12 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
         ),
         _offered(trending, offered, scheme),
         const SizedBox(height: SpacingTokens.space24),
-        _sectionTitle('Your tabs', 'Drag to reorder', scheme),
+        _sectionTitle(
+          AppLocalizations.of(context).ui('interest_your_tabs', 'Your tabs'),
+          AppLocalizations.of(context)
+              .ui('interest_drag_to_reorder', 'Drag to reorder'),
+          scheme,
+        ),
         _yourTabs(tabs, scheme),
       ],
     );
@@ -438,7 +455,10 @@ class _AddInterestSheetState extends ConsumerState<AddInterestSheet> {
         return EmptyState(
           art: EmptyArt.trending,
           title: AppLocalizations.of(context).literalnothingIsTrendingYet,
-          detail: 'Hashtags turn up here as people start using them.',
+          detail: AppLocalizations.of(context).ui(
+            'interest_hashtags_detail',
+            'Hashtags turn up here as people start using them.',
+          ),
           compact: true,
         );
       }

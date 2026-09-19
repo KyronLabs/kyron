@@ -82,22 +82,26 @@ class _OptionsState extends ConsumerState<_Options> {
             _Item(
               icon: Iconsax.copy_copy,
               label: AppLocalizations.of(context).literalcopyPostText,
-              onTap: () => _run(() async {
-                await Clipboard.setData(ClipboardData(text: _post.content));
-              },
-                  AppLocalizations.of(context)
-                      .ui('ui_post_text_copied', 'Post text copied')),
+              onTap: () => _run(
+                () async {
+                  await Clipboard.setData(ClipboardData(text: _post.content));
+                },
+                AppLocalizations.of(context)
+                    .ui('ui_post_text_copied', 'Post text copied'),
+              ),
             ),
             _Item(
               icon: Iconsax.link_copy,
               label: AppLocalizations.of(context).literalcopyLinkToPost,
-              onTap: () => _run(() async {
-                await Clipboard.setData(
-                  ClipboardData(text: 'https://kyron.so/post/${_post.id}'),
-                );
-              },
-                  AppLocalizations.of(context)
-                      .ui('ui_link_copied', 'Link copied')),
+              onTap: () => _run(
+                () async {
+                  await Clipboard.setData(
+                    ClipboardData(text: 'https://kyron.so/post/${_post.id}'),
+                  );
+                },
+                AppLocalizations.of(context)
+                    .ui('ui_link_copied', 'Link copied'),
+              ),
             ),
 
             _divider(scheme),
@@ -109,8 +113,10 @@ class _OptionsState extends ConsumerState<_Options> {
               label: AppLocalizations.of(context).literalshowMorePostsLikeThis,
               onTap: () => _run(
                 () => _moderation.setInterest(_post.id, more: true),
-                AppLocalizations.of(context).ui('ui_interest_noted',
-                    'Noted. This helps shape what you are shown.'),
+                AppLocalizations.of(context).ui(
+                  'ui_interest_noted',
+                  'Noted. This helps shape what you are shown.',
+                ),
               ),
             ),
             _Item(
@@ -120,8 +126,10 @@ class _OptionsState extends ConsumerState<_Options> {
                   .literalhidesItAndTellsUsToShowFewerLikeIt,
               onTap: () => _run(
                 () => _moderation.setInterest(_post.id, more: false),
-                AppLocalizations.of(context).ui('ui_posts_hidden',
-                    'Hidden. We will show you fewer like it.'),
+                AppLocalizations.of(context).ui(
+                  'ui_posts_hidden',
+                  'Hidden. We will show you fewer like it.',
+                ),
                 removesPost: true,
               ),
             ),
@@ -192,8 +200,10 @@ class _OptionsState extends ConsumerState<_Options> {
               _Item(
                 icon: Iconsax.volume_slash_copy,
                 label: AppLocalizations.of(context).literalmuteAuthor(author),
-                subtitle: AppLocalizations.of(context).ui('ui_mute_detail',
-                    'You will stop seeing their posts. They are not told.'),
+                subtitle: AppLocalizations.of(context).ui(
+                  'ui_mute_detail',
+                  'You will stop seeing their posts. They are not told.',
+                ),
                 onTap: () => _run(
                   () => _moderation.setUserMuted(_post.author.id, true),
                   AppLocalizations.of(context).authorPostsHidden(author),
@@ -203,8 +213,10 @@ class _OptionsState extends ConsumerState<_Options> {
               _Item(
                 icon: Iconsax.profile_delete_copy,
                 label: AppLocalizations.of(context).literalblockAuthor(author),
-                subtitle: AppLocalizations.of(context).ui('ui_block_detail',
-                    'Neither of you will see the other, or be able to follow.'),
+                subtitle: AppLocalizations.of(context).ui(
+                  'ui_block_detail',
+                  'Neither of you will see the other, or be able to follow.',
+                ),
                 destructive: true,
                 onTap: _confirmBlock,
               ),
@@ -312,8 +324,10 @@ class _OptionsState extends ConsumerState<_Options> {
       builder: (dialogContext) => AlertDialog(
         title: Text(AppLocalizations.of(context).deleteThisPost),
         content: Text(
-          AppLocalizations.of(context).ui('ui_post_delete_detail',
-              'It is removed from your profile and from everyone else\'s feed. Replies to it go with it.'),
+          AppLocalizations.of(context).ui(
+            'ui_post_delete_detail',
+            'It is removed from your profile and from everyone else\'s feed. Replies to it go with it.',
+          ),
         ),
         actions: [
           TextButton(
@@ -346,8 +360,10 @@ class _OptionsState extends ConsumerState<_Options> {
       builder: (dialogContext) => AlertDialog(
         title: Text(AppLocalizations.of(context).literalblockAuthor2(author)),
         content: Text(
-          AppLocalizations.of(context).ui('ui_block_detail',
-              'Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.'),
+          AppLocalizations.of(context).ui(
+            'ui_block_detail',
+            'Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.',
+          ),
         ),
         actions: [
           TextButton(

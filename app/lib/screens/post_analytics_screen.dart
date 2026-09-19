@@ -1,5 +1,3 @@
-import '../l10n/app_localizations.dart';
-
 // lib/screens/post_analytics_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,6 +10,7 @@ import '../providers/feed_provider.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../l10n/app_localizations.dart';
 
 final postAnalyticsProvider = StateNotifierProvider.family<
     PostAnalyticsNotifier,
@@ -98,10 +97,14 @@ class _Report extends StatelessWidget {
               child: _Tile(
                 icon: Iconsax.eye_copy,
                 value: formatCount(report.views),
-                label: 'Viewers',
+                label: AppLocalizations.of(context)
+                    .ui('analytics_viewers', 'Viewers'),
                 // Said plainly, because "views" usually means opens and this
                 // does not: the same person refreshing is still one viewer.
-                note: 'Distinct people, not opens',
+                note: AppLocalizations.of(context).ui(
+                  'analytics_distinct_people_not_opens',
+                  'Distinct people, not opens',
+                ),
               ),
             ),
             const SizedBox(width: SpacingTokens.space12),
@@ -109,7 +112,8 @@ class _Report extends StatelessWidget {
               child: _Tile(
                 icon: Iconsax.heart_copy,
                 value: formatCount(report.likes),
-                label: 'Likes',
+                label:
+                    AppLocalizations.of(context).ui('analytics_likes', 'Likes'),
               ),
             ),
           ],
@@ -121,7 +125,8 @@ class _Report extends StatelessWidget {
               child: _Tile(
                 icon: Iconsax.message_text_copy,
                 value: formatCount(report.comments),
-                label: 'Comments',
+                label: AppLocalizations.of(context)
+                    .ui('analytics_comments', 'Comments'),
               ),
             ),
             const SizedBox(width: SpacingTokens.space12),
@@ -129,25 +134,32 @@ class _Report extends StatelessWidget {
               child: _Tile(
                 icon: Iconsax.archive_add_copy,
                 value: formatCount(report.saves),
-                label: 'Saves',
+                label:
+                    AppLocalizations.of(context).ui('analytics_saves', 'Saves'),
               ),
             ),
           ],
         ),
         const SizedBox(height: SpacingTokens.space20),
         _Row(
-          label: 'Engagement',
+          label: AppLocalizations.of(context)
+              .ui('analytics_engagement', 'Engagement'),
           // Null, not 0%, when nobody has seen it: a rate over zero viewers is
           // unknown, and "0%" reads as "nobody engaged" rather than "nobody
           // looked".
           value: rate == null
-              ? 'No viewers yet'
+              ? AppLocalizations.of(context)
+                  .ui('analytics_no_viewers_yet', 'No viewers yet')
               : '${(rate * 100).toStringAsFixed(rate >= 0.1 ? 0 : 1)}%',
         ),
-        _Row(label: 'Posted', value: _stamp(report.createdAt)),
+        _Row(
+          label: AppLocalizations.of(context).ui('analytics_posted', 'Posted'),
+          value: _stamp(report.createdAt),
+        ),
         const SizedBox(height: SpacingTokens.space24),
         Text(
-          'VIEWERS PER DAY',
+          AppLocalizations.of(context)
+              .ui('analytics_viewers_per_day', 'VIEWERS PER DAY'),
           style: TextStyle(
             fontSize: TypographyTokens.fontSize1,
             fontWeight: FontWeight.w700,
@@ -158,7 +170,10 @@ class _Report extends StatelessWidget {
         const SizedBox(height: SpacingTokens.space12),
         if (report.timeline.isEmpty)
           Text(
-            'Nobody has opened this post yet.',
+            AppLocalizations.of(context).ui(
+              'analytics_nobody_opened_post',
+              'Nobody has opened this post yet.',
+            ),
             style: TextStyle(color: scheme.onSurface.withValues(alpha: .6)),
           )
         else

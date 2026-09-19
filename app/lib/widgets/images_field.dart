@@ -2,6 +2,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+
+import '../l10n/app_localizations.dart';
+
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
@@ -34,7 +37,7 @@ class ImagesField extends StatelessWidget {
 
   /// The line under the pair. Says what tapping does, since neither picture
   /// looks like a button once it has an image in it.
-  final String hint;
+  final String? hint;
 
   /// Height of the banner. A community's is wider than it is tall by more than
   /// a profile's, because it is drawn behind a header rather than above one.
@@ -49,7 +52,7 @@ class ImagesField extends StatelessWidget {
     this.coverFile,
     required this.onPickAvatar,
     required this.onPickCover,
-    this.hint = 'Tap to change',
+    this.hint,
     this.coverHeight = 120,
   });
 
@@ -118,7 +121,9 @@ class ImagesField extends StatelessWidget {
         ),
         const SizedBox(height: SpacingTokens.space8),
         Text(
-          hint,
+          hint ??
+              AppLocalizations.of(context)
+                  .ui('profile_tap_to_change', 'Tap to change'),
           style: TextStyle(
             fontSize: TypographyTokens.fontSize1,
             color: scheme.onSurface.withValues(alpha: 0.6),

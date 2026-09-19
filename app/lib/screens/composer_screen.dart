@@ -292,7 +292,10 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
       onChanged: ref.read(composerProvider.notifier).updateContent,
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.4),
       decoration: InputDecoration(
-        hintText: ref.watch(composerProvider.select((s) => s.placeholderText)),
+        hintText: _localizedPlaceholder(
+          context,
+          ref.watch(composerProvider.select((s) => s.placeholderText)),
+        ),
         hintStyle: TextStyle(color: scheme.onSurface.withValues(alpha: .5)),
         border: InputBorder.none,
         focusedBorder: InputBorder.none,
@@ -525,6 +528,43 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
   }
 }
 
+String _localizedPlaceholder(BuildContext context, String value) =>
+    switch (value) {
+      "What's rattling around your head?" => AppLocalizations.of(context).ui(
+          'composer_placeholder_rattling',
+          "What's rattling around your head?",
+        ),
+      'Say something only you can say…' => AppLocalizations.of(
+          context,
+        ).ui('composer_placeholder_say', 'Say something only you can say…'),
+      'Drop a hot take (or a warm one)' => AppLocalizations.of(
+          context,
+        ).ui(
+            'composer_placeholder_hot_take', 'Drop a hot take (or a warm one)'),
+      'This is your signal — send it' => AppLocalizations.of(
+          context,
+        ).ui('composer_placeholder_signal', 'This is your signal — send it'),
+      'Type, speak, or think-out-loud' => AppLocalizations.of(
+          context,
+        ).ui('composer_placeholder_think', 'Type, speak, or think-out-loud'),
+      _ => value,
+    };
+String _localizedReplyLabel(BuildContext context, ReplyPolicy policy) =>
+    switch (policy) {
+      ReplyPolicy.everyone => AppLocalizations.of(
+          context,
+        ).ui('reply_anyone', 'Anyone can interact'),
+      ReplyPolicy.followers => AppLocalizations.of(
+          context,
+        ).ui('reply_followers', 'People who follow you'),
+      ReplyPolicy.mentioned => AppLocalizations.of(
+          context,
+        ).ui('reply_mentioned', 'People you mention'),
+      ReplyPolicy.nobody => AppLocalizations.of(
+          context,
+        ).ui('reply_nobody', 'Nobody can reply'),
+    };
+
 /// The reply setting, as a chip under the author line.
 class _InteractionButton extends ConsumerWidget {
   final ReplyPolicy policy;
@@ -558,7 +598,7 @@ class _InteractionButton extends ConsumerWidget {
             Icon(Iconsax.global_copy, size: 14, color: scheme.primary),
             const SizedBox(width: SpacingTokens.space4),
             Text(
-              policy.label,
+              _localizedReplyLabel(context, policy),
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize2,
                 fontWeight: FontWeight.w600,
