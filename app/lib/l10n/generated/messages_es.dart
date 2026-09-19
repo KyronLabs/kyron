@@ -1112,82 +1112,86 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       'ui_share_this_post':
           MessageLookupByLibrary.simpleMessage("Share this post"),
       'analytics_distinct_people_not_opens':
-          MessageLookupByLibrary.simpleMessage('Distinct people, not opens'),
+          MessageLookupByLibrary.simpleMessage(
+              "Personas distintas, no aperturas"),
       'analytics_engagement':
-          MessageLookupByLibrary.simpleMessage('Engagement'),
-      'analytics_posted': MessageLookupByLibrary.simpleMessage('Posted'),
-      'analytics_viewers': MessageLookupByLibrary.simpleMessage('Viewers'),
-      'analytics_likes': MessageLookupByLibrary.simpleMessage('Likes'),
-      'analytics_comments': MessageLookupByLibrary.simpleMessage('Comments'),
-      'analytics_saves': MessageLookupByLibrary.simpleMessage('Saves'),
+          MessageLookupByLibrary.simpleMessage("Interacción"),
+      'analytics_posted': MessageLookupByLibrary.simpleMessage("Publicada"),
+      'analytics_viewers': MessageLookupByLibrary.simpleMessage("Espectadores"),
+      'analytics_likes': MessageLookupByLibrary.simpleMessage("Me gusta"),
+      'analytics_comments': MessageLookupByLibrary.simpleMessage("Comentarios"),
+      'analytics_saves': MessageLookupByLibrary.simpleMessage("Guardados"),
       'analytics_no_viewers_yet':
-          MessageLookupByLibrary.simpleMessage('No viewers yet'),
+          MessageLookupByLibrary.simpleMessage("Todavía no hay espectadores"),
       'analytics_viewers_per_day':
-          MessageLookupByLibrary.simpleMessage('VIEWERS PER DAY'),
+          MessageLookupByLibrary.simpleMessage("ESPECTADORES POR DÍA"),
       'analytics_nobody_opened_post': MessageLookupByLibrary.simpleMessage(
-          'Nobody has opened this post yet.'),
+          "Nadie ha abierto esta publicación todavía."),
       'reply_who_can_reply':
-          MessageLookupByLibrary.simpleMessage('Who can reply?'),
+          MessageLookupByLibrary.simpleMessage("¿Quién puede responder?"),
       'reply_anyone_can_see': MessageLookupByLibrary.simpleMessage(
-          'Anyone can still see, repost and quote this post.'),
+          "Cualquiera puede verla, republicarla y citarla."),
       'reply_anyone':
-          MessageLookupByLibrary.simpleMessage('Anyone can interact'),
+          MessageLookupByLibrary.simpleMessage("Cualquiera puede interactuar"),
       'reply_anyone_detail': MessageLookupByLibrary.simpleMessage(
-          'Anyone on Kyron can reply to this post.'),
+          "Cualquiera en Kyron puede responder a esta publicación."),
       'reply_followers':
-          MessageLookupByLibrary.simpleMessage('People who follow you'),
+          MessageLookupByLibrary.simpleMessage("Personas que te siguen"),
       'reply_followers_detail': MessageLookupByLibrary.simpleMessage(
-          'Only people who follow you can reply to this post.'),
+          "Solo las personas que te siguen pueden responder a esta publicación."),
       'reply_mentioned':
-          MessageLookupByLibrary.simpleMessage('People you mention'),
+          MessageLookupByLibrary.simpleMessage("Personas que mencionas"),
       'reply_mentioned_detail': MessageLookupByLibrary.simpleMessage(
-          'Only the people you @mention in this post can reply.'),
-      'reply_nobody': MessageLookupByLibrary.simpleMessage('Nobody can reply'),
+          "Solo las personas que @mencionas en esta publicación pueden responder."),
+      'reply_nobody':
+          MessageLookupByLibrary.simpleMessage("Nadie puede responder"),
       'reply_nobody_detail': MessageLookupByLibrary.simpleMessage(
-          'Replies are turned off. You can still reply.'),
-      'interest_for_you': MessageLookupByLibrary.simpleMessage('For You'),
-      'interest_following': MessageLookupByLibrary.simpleMessage('Following'),
-      'interest_videos': MessageLookupByLibrary.simpleMessage('Videos'),
-      'interest_your_tabs': MessageLookupByLibrary.simpleMessage('Your tabs'),
+          "Las respuestas están desactivadas. Tú todavía puedes responder."),
+      'interest_for_you': MessageLookupByLibrary.simpleMessage("Para ti"),
+      'interest_following': MessageLookupByLibrary.simpleMessage("Siguiendo"),
+      'interest_videos': MessageLookupByLibrary.simpleMessage("Vídeos"),
+      'interest_your_tabs':
+          MessageLookupByLibrary.simpleMessage("Tus pestañas"),
       'interest_drag_to_reorder':
-          MessageLookupByLibrary.simpleMessage('Drag to reorder'),
-      'interest_add': MessageLookupByLibrary.simpleMessage('Add an interest'),
+          MessageLookupByLibrary.simpleMessage("Arrastra para reordenar"),
+      'interest_add': MessageLookupByLibrary.simpleMessage("Añadir un interés"),
       'interest_trending_now':
-          MessageLookupByLibrary.simpleMessage('Trending now'),
+          MessageLookupByLibrary.simpleMessage("Tendencias actuales"),
       'interest_five_tabs_limit': MessageLookupByLibrary.simpleMessage(
-          'Five tabs is the most the strip holds. Remove one to add another.'),
+          "La barra admite como máximo cinco pestañas. Quita una para añadir otra."),
       'interest_hashtags_detail': MessageLookupByLibrary.simpleMessage(
-          'Hashtags turn up here as people start using them.'),
-      'composer_placeholder_rattling': MessageLookupByLibrary.simpleMessage(
-          'What\'s rattling around your head?'),
+          "Los hashtags aparecerán aquí cuando la gente empiece a usarlos."),
+      'composer_placeholder_rattling':
+          MessageLookupByLibrary.simpleMessage("¿Qué te ronda por la cabeza?"),
       'composer_placeholder_say': MessageLookupByLibrary.simpleMessage(
-          'Say something only you can say…'),
+          "Di algo que solo tú puedas decir…"),
       'composer_placeholder_hot_take': MessageLookupByLibrary.simpleMessage(
-          'Drop a hot take (or a warm one)'),
+          "Comparte una opinión fuerte (o una suave)"),
       'composer_placeholder_signal':
-          MessageLookupByLibrary.simpleMessage('This is your signal — send it'),
+          MessageLookupByLibrary.simpleMessage("Esta es tu señal: envíala"),
       'composer_placeholder_think': MessageLookupByLibrary.simpleMessage(
-          'Type, speak, or think-out-loud'),
+          "Escribe, habla o piensa en voz alta"),
       'profile_tap_to_change':
-          MessageLookupByLibrary.simpleMessage('Tap to change'),
+          MessageLookupByLibrary.simpleMessage("Toca para cambiar"),
       'profile_display_name':
-          MessageLookupByLibrary.simpleMessage('Display name'),
-      'profile_bio': MessageLookupByLibrary.simpleMessage('Bio'),
-      'profile_location': MessageLookupByLibrary.simpleMessage('Location'),
-      'profile_website': MessageLookupByLibrary.simpleMessage('Website'),
+          MessageLookupByLibrary.simpleMessage("Nombre visible"),
+      'profile_bio': MessageLookupByLibrary.simpleMessage("Biografía"),
+      'profile_location': MessageLookupByLibrary.simpleMessage("Ubicación"),
+      'profile_website': MessageLookupByLibrary.simpleMessage("Sitio web"),
       'translation_description': MessageLookupByLibrary.simpleMessage(
-          'Kyron\'s own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.'),
+          "Las palabras propias de Kyron todavía se están traduciendo, así que la mayoría de las pantallas siguen en inglés. Por ahora se traducen las partes de la interfaz que dibuja Flutter, las fechas y los números, y la dirección de diseño para idiomas de derecha a izquierda."),
       'theme_system_detail': MessageLookupByLibrary.simpleMessage(
-          'Follow the phone’s own light or dark setting'),
+          "Usar el modo claro u oscuro del teléfono"),
       'theme_light_detail':
-          MessageLookupByLibrary.simpleMessage('Always light'),
-      'theme_dark_detail': MessageLookupByLibrary.simpleMessage('Always dark'),
+          MessageLookupByLibrary.simpleMessage("Siempre claro"),
+      'theme_dark_detail':
+          MessageLookupByLibrary.simpleMessage("Siempre oscuro"),
       'theme_dim_detail': MessageLookupByLibrary.simpleMessage(
-          'A softer dark, blue-grey rather than black'),
-      'theme_system': MessageLookupByLibrary.simpleMessage('System'),
-      'theme_light': MessageLookupByLibrary.simpleMessage('Light'),
-      'theme_dark': MessageLookupByLibrary.simpleMessage('Dark'),
-      'theme_dim': MessageLookupByLibrary.simpleMessage('Dim'),
+          "Un modo oscuro más suave, azul grisáceo en lugar de negro"),
+      'theme_system': MessageLookupByLibrary.simpleMessage("Sistema"),
+      'theme_light': MessageLookupByLibrary.simpleMessage("Claro"),
+      'theme_dark': MessageLookupByLibrary.simpleMessage("Oscuro"),
+      'theme_dim': MessageLookupByLibrary.simpleMessage("Atenuado"),
     };
 
 final messageLookup = MessageLookup();
