@@ -3,6 +3,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/post_media.dart';
+import '../l10n/app_localizations.dart';
 
 /// Who can reply to the post being written.
 ///
@@ -32,12 +33,16 @@ class InteractionSettingsSheet {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Who can reply?',
+                    AppLocalizations.of(sheetContext)
+                        .ui('reply_who_can_reply', 'Who can reply?'),
                     style: Theme.of(sheetContext).textTheme.titleMedium,
                   ),
                   const SizedBox(height: SpacingTokens.space4),
                   Text(
-                    'Anyone can still see, repost and quote this post.',
+                    AppLocalizations.of(sheetContext).ui(
+                      'reply_anyone_can_see',
+                      'Anyone can still see, repost and quote this post.',
+                    ),
                     style: TextStyle(
                       fontSize: TypographyTokens.fontSize2,
                       color: Theme.of(sheetContext)
@@ -55,9 +60,9 @@ class InteractionSettingsSheet {
                 groupValue: current,
                 onChanged: (chosen) => Navigator.pop(sheetContext, chosen),
                 secondary: Icon(_iconFor(policy), size: 20),
-                title: Text(policy.label),
+                title: Text(_label(sheetContext, policy)),
                 subtitle: Text(
-                  policy.detail,
+                  _detail(sheetContext, policy),
                   style: const TextStyle(fontSize: TypographyTokens.fontSize1),
                 ),
               ),
@@ -68,6 +73,40 @@ class InteractionSettingsSheet {
     );
   }
 
+  static String _label(BuildContext context, ReplyPolicy policy) =>
+      switch (policy) {
+        ReplyPolicy.everyone => AppLocalizations.of(
+            context,
+          ).ui('reply_anyone', 'Anyone can interact'),
+        ReplyPolicy.followers => AppLocalizations.of(
+            context,
+          ).ui('reply_followers', 'People who follow you'),
+        ReplyPolicy.mentioned => AppLocalizations.of(
+            context,
+          ).ui('reply_mentioned', 'People you mention'),
+        ReplyPolicy.nobody => AppLocalizations.of(
+            context,
+          ).ui('reply_nobody', 'Nobody can reply'),
+      };
+  static String _detail(BuildContext context, ReplyPolicy policy) =>
+      switch (policy) {
+        ReplyPolicy.everyone => AppLocalizations.of(
+            context,
+          ).ui(
+              'reply_anyone_detail', 'Anyone on Kyron can reply to this post.'),
+        ReplyPolicy.followers => AppLocalizations.of(context).ui(
+            'reply_followers_detail',
+            'Only people who follow you can reply to this post.',
+          ),
+        ReplyPolicy.mentioned => AppLocalizations.of(context).ui(
+            'reply_mentioned_detail',
+            'Only the people you @mention in this post can reply.',
+          ),
+        ReplyPolicy.nobody => AppLocalizations.of(context).ui(
+            'reply_nobody_detail',
+            'Replies are turned off. You can still reply.',
+          ),
+      };
   static IconData _iconFor(ReplyPolicy policy) => switch (policy) {
         ReplyPolicy.everyone => Iconsax.global_copy,
         ReplyPolicy.followers => Iconsax.profile_2user_copy,

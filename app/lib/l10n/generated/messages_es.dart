@@ -1111,6 +1111,83 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Could not load your feed"),
       'ui_share_this_post':
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      'analytics_distinct_people_not_opens':
+          MessageLookupByLibrary.simpleMessage('Distinct people, not opens'),
+      'analytics_engagement':
+          MessageLookupByLibrary.simpleMessage('Engagement'),
+      'analytics_posted': MessageLookupByLibrary.simpleMessage('Posted'),
+      'analytics_viewers': MessageLookupByLibrary.simpleMessage('Viewers'),
+      'analytics_likes': MessageLookupByLibrary.simpleMessage('Likes'),
+      'analytics_comments': MessageLookupByLibrary.simpleMessage('Comments'),
+      'analytics_saves': MessageLookupByLibrary.simpleMessage('Saves'),
+      'analytics_no_viewers_yet':
+          MessageLookupByLibrary.simpleMessage('No viewers yet'),
+      'analytics_viewers_per_day':
+          MessageLookupByLibrary.simpleMessage('VIEWERS PER DAY'),
+      'analytics_nobody_opened_post': MessageLookupByLibrary.simpleMessage(
+          'Nobody has opened this post yet.'),
+      'reply_who_can_reply':
+          MessageLookupByLibrary.simpleMessage('Who can reply?'),
+      'reply_anyone_can_see': MessageLookupByLibrary.simpleMessage(
+          'Anyone can still see, repost and quote this post.'),
+      'reply_anyone':
+          MessageLookupByLibrary.simpleMessage('Anyone can interact'),
+      'reply_anyone_detail': MessageLookupByLibrary.simpleMessage(
+          'Anyone on Kyron can reply to this post.'),
+      'reply_followers':
+          MessageLookupByLibrary.simpleMessage('People who follow you'),
+      'reply_followers_detail': MessageLookupByLibrary.simpleMessage(
+          'Only people who follow you can reply to this post.'),
+      'reply_mentioned':
+          MessageLookupByLibrary.simpleMessage('People you mention'),
+      'reply_mentioned_detail': MessageLookupByLibrary.simpleMessage(
+          'Only the people you @mention in this post can reply.'),
+      'reply_nobody': MessageLookupByLibrary.simpleMessage('Nobody can reply'),
+      'reply_nobody_detail': MessageLookupByLibrary.simpleMessage(
+          'Replies are turned off. You can still reply.'),
+      'interest_for_you': MessageLookupByLibrary.simpleMessage('For You'),
+      'interest_following': MessageLookupByLibrary.simpleMessage('Following'),
+      'interest_videos': MessageLookupByLibrary.simpleMessage('Videos'),
+      'interest_your_tabs': MessageLookupByLibrary.simpleMessage('Your tabs'),
+      'interest_drag_to_reorder':
+          MessageLookupByLibrary.simpleMessage('Drag to reorder'),
+      'interest_add': MessageLookupByLibrary.simpleMessage('Add an interest'),
+      'interest_trending_now':
+          MessageLookupByLibrary.simpleMessage('Trending now'),
+      'interest_five_tabs_limit': MessageLookupByLibrary.simpleMessage(
+          'Five tabs is the most the strip holds. Remove one to add another.'),
+      'interest_hashtags_detail': MessageLookupByLibrary.simpleMessage(
+          'Hashtags turn up here as people start using them.'),
+      'composer_placeholder_rattling': MessageLookupByLibrary.simpleMessage(
+          'What\'s rattling around your head?'),
+      'composer_placeholder_say': MessageLookupByLibrary.simpleMessage(
+          'Say something only you can say…'),
+      'composer_placeholder_hot_take': MessageLookupByLibrary.simpleMessage(
+          'Drop a hot take (or a warm one)'),
+      'composer_placeholder_signal':
+          MessageLookupByLibrary.simpleMessage('This is your signal — send it'),
+      'composer_placeholder_think': MessageLookupByLibrary.simpleMessage(
+          'Type, speak, or think-out-loud'),
+      'profile_tap_to_change':
+          MessageLookupByLibrary.simpleMessage('Tap to change'),
+      'profile_display_name':
+          MessageLookupByLibrary.simpleMessage('Display name'),
+      'profile_bio': MessageLookupByLibrary.simpleMessage('Bio'),
+      'profile_location': MessageLookupByLibrary.simpleMessage('Location'),
+      'profile_website': MessageLookupByLibrary.simpleMessage('Website'),
+      'translation_description': MessageLookupByLibrary.simpleMessage(
+          'Kyron\'s own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.'),
+      'theme_system_detail': MessageLookupByLibrary.simpleMessage(
+          'Follow the phone’s own light or dark setting'),
+      'theme_light_detail':
+          MessageLookupByLibrary.simpleMessage('Always light'),
+      'theme_dark_detail': MessageLookupByLibrary.simpleMessage('Always dark'),
+      'theme_dim_detail': MessageLookupByLibrary.simpleMessage(
+          'A softer dark, blue-grey rather than black'),
+      'theme_system': MessageLookupByLibrary.simpleMessage('System'),
+      'theme_light': MessageLookupByLibrary.simpleMessage('Light'),
+      'theme_dark': MessageLookupByLibrary.simpleMessage('Dark'),
+      'theme_dim': MessageLookupByLibrary.simpleMessage('Dim'),
     };
 
 final messageLookup = MessageLookup();

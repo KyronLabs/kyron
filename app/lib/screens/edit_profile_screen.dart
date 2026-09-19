@@ -105,14 +105,15 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                   const SizedBox(height: SpacingTokens.space24),
                   _field(
                     _name,
-                    'Display name',
+                    AppLocalizations.of(context)
+                        .ui('profile_display_name', 'Display name'),
                     Iconsax.user_copy,
                     maxLength: 50,
                   ),
                   const SizedBox(height: SpacingTokens.space16),
                   _field(
                     _bio,
-                    'Bio',
+                    AppLocalizations.of(context).ui('profile_bio', 'Bio'),
                     Iconsax.note_text_copy,
                     maxLength: 300,
                     maxLines: 4,
@@ -120,14 +121,16 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                   const SizedBox(height: SpacingTokens.space16),
                   _field(
                     _location,
-                    'Location',
+                    AppLocalizations.of(context)
+                        .ui('profile_location', 'Location'),
                     Iconsax.location_copy,
                     maxLength: 80,
                   ),
                   const SizedBox(height: SpacingTokens.space16),
                   _field(
                     _website,
-                    'Website',
+                    AppLocalizations.of(context)
+                        .ui('profile_website', 'Website'),
                     Iconsax.link_copy,
                     maxLength: 200,
                     keyboardType: TextInputType.url,
