@@ -64,7 +64,8 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
     if (!PlatformSupport.current.audio) {
       setState(() {
         _loading = false;
-        _failure = 'Voice posts need an audio player Kyron does not have on '
+        _failure =
+            'Voice posts need an audio player Kyron does not have on '
             '${PlatformSupport.current.name} yet.';
       });
       return null;

@@ -148,8 +148,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 Icon(
                   icon,
                   size: 24,
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                  color: Theme.of(context).colorScheme.onSurface
+                      .withOpacity(0.8),
                 ),
                 const SizedBox(width: 16),
                 // Label + Subtitle
@@ -180,9 +180,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: TypographyTokens.fontSize3,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurface
+                            color: Theme.of(context).colorScheme.onSurface
                                 .withOpacity(0.6),
                             fontFamily: 'SF Pro Rounded',
                           ),
@@ -220,7 +218,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       if (!mounted) return;
       setState(() => _loggingOut = false);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context).couldNotSignOut(describeApiError(e)))),
+        SnackBar(
+          content: Text(
+            AppLocalizations.of(context).couldNotSignOut(describeApiError(e)),
+          ),
+        ),
       );
     }
   }
@@ -246,16 +248,16 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               children: [
                 CircleAvatar(
                   radius: 22,
-                  backgroundColor:
-                      Theme.of(context).colorScheme.surfaceContainerHighest,
-                  foregroundImage:
-                      avatarUrl == null ? null : NetworkImage(avatarUrl),
+                  backgroundColor: Theme.of(context)
+                      .colorScheme
+                      .surfaceContainerHighest,
+                  foregroundImage: avatarUrl == null
+                      ? null
+                      : NetworkImage(avatarUrl),
                   child: Icon(
                     Iconsax.user_copy,
                     size: 20,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
+                    color: Theme.of(context).colorScheme.onSurface
                         .withValues(alpha: .5),
                   ),
                 ),
@@ -294,9 +296,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
             ),
             const SizedBox(height: 8),
-            Text(AppLocalizations.of(context).ui(
+            Text(
+              AppLocalizations.of(context).ui(
                 'ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001',
-                'You will need to sign in again to get back to your account.')),
+                'You will need to sign in again to get back to your account.',
+              ),
+            ),
             const SizedBox(height: 24),
             Row(
               children: [
@@ -350,7 +355,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           children: [
             // Account Group (3 items)
             _groupHeader(
-                AppLocalizations.of(context).ui('ui_account', 'Account')),
+              AppLocalizations.of(context).ui('ui_account', 'Account'),
+            ),
             _settingsRow(
               icon: Iconsax.user_copy,
               label: _handle,
@@ -361,8 +367,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 child: Text(AppLocalizations.of(context).changeEmail),
               ),
               helpText: AppLocalizations.of(context).ui(
-                  'ui_settings_profile_contact',
-                  'Your profile and contact information'),
+                'ui_settings_profile_contact',
+                'Your profile and contact information',
+              ),
             ),
             // The real one, and now a real identifier rather than a column
             // nobody wrote to. This row showed "did:plc:abc…" and copied
@@ -434,12 +441,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.volume_slash_copy,
-              label:
-                  AppLocalizations.of(context).literalmutedAndBlockedAccounts,
+              label: AppLocalizations.of(context)
+                  .literalmutedAndBlockedAccounts,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.mutedAccounts),
               helpText: AppLocalizations.of(context).ui(
-                  'ui_settings_muted_blocked', 'Who you have muted or blocked'),
+                'ui_settings_muted_blocked',
+                'Who you have muted or blocked',
+              ),
             ),
             Divider(
               height: 1,
@@ -451,8 +460,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // device. Was "Content & Display" and "App & Device", which split
             // font size from text scale's neighbours and put muting under
             // "device".
-            _groupHeader(AppLocalizations.of(context)
-                .ui('ui_preferences', 'Preferences')),
+            _groupHeader(
+              AppLocalizations.of(context).ui('ui_preferences', 'Preferences'),
+            ),
             _settingsRow(
               icon: Iconsax.moon_copy,
               label: AppLocalizations.of(context)
@@ -460,8 +470,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               subtitle: ref.watch(preferencesProvider).theme.label,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: _chooseTheme,
-              helpText: AppLocalizations.of(context).ui('ui_appearance_detail',
-                  'Light, dark, or whatever the phone is set to'),
+              helpText: AppLocalizations.of(context).ui(
+                'ui_appearance_detail',
+                'Light, dark, or whatever the phone is set to',
+              ),
             ),
             _settingsRow(
               icon: Iconsax.text_copy,
