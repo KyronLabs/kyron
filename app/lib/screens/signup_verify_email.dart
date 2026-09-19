@@ -168,7 +168,9 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                     onChanged: (value) => _onDigitChanged(i, value),
-                    style: Theme.of(context).textTheme.displayLarge
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayLarge
                         ?.copyWith(fontSize: TypographyTokens.fontSize8),
                     decoration: InputDecoration(
                       filled: true,
@@ -209,7 +211,9 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                     )
                   : Text(
                       "Resend code in $_countdown seconds",
-                      style: Theme.of(context).textTheme.bodyMedium
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
                           ?.copyWith(color: KyronTheme.lightTextSecondary),
                     ),
             ),

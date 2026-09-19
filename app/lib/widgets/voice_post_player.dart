@@ -64,8 +64,7 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
     if (!PlatformSupport.current.audio) {
       setState(() {
         _loading = false;
-        _failure =
-            'Voice posts need an audio player Kyron does not have on '
+        _failure = 'Voice posts need an audio player Kyron does not have on '
             '${PlatformSupport.current.name} yet.';
       });
       return null;
@@ -233,9 +232,8 @@ class _PlayButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context);
-    final label = playing
-        ? l10n.ui('ui_pause', 'Pause')
-        : l10n.ui('ui_play', 'Play');
+    final label =
+        playing ? l10n.ui('ui_pause', 'Pause') : l10n.ui('ui_play', 'Play');
 
     return Tooltip(
       message: label,
