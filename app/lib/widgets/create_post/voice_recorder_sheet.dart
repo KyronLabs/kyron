@@ -231,9 +231,15 @@ class _SheetState extends State<_Sheet> {
               Expanded(
                 child: Text(
                     switch (_stage) {
-                      _Stage.idle => 'Record a voice post',
-                      _Stage.recording => 'Recording…',
-                      _Stage.recorded => 'Ready to attach',
+                      _Stage.idle => AppLocalizations.of(
+                          context,
+                        ).ui('voice_record_post', 'Record a voice post'),
+                      _Stage.recording => AppLocalizations.of(
+                          context,
+                        ).ui('voice_recording', 'Recording…'),
+                      _Stage.recorded => AppLocalizations.of(
+                          context,
+                        ).ui('voice_ready_attach', 'Ready to attach'),
                     },
                     style: Theme.of(context).textTheme.titleMedium),
               ),
@@ -289,7 +295,7 @@ class _SheetState extends State<_Sheet> {
                 onPressed: _start,
               ),
             _Stage.recording => ActionButton(
-                label: 'Stop',
+                label: AppLocalizations.of(context).ui('voice_stop', 'Stop'),
                 icon: Iconsax.stop,
                 expand: true,
                 destructive: true,
@@ -309,7 +315,8 @@ class _SheetState extends State<_Sheet> {
                   const SizedBox(width: SpacingTokens.space12),
                   Expanded(
                     child: ActionButton(
-                      label: 'Attach',
+                      label: AppLocalizations.of(context)
+                          .ui('voice_attach', 'Attach'),
                       icon: Iconsax.tick_circle_copy,
                       expand: true,
                       onPressed: _use,

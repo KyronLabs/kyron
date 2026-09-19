@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../l10n/app_localizations.dart';
 import '../routes.dart';
 import 'long_press_sheet.dart';
 
@@ -110,17 +111,28 @@ class CreateFab extends StatelessWidget {
   static Future<void> chooseWhatToPost(BuildContext context) async {
     HapticFeedback.lightImpact();
 
+    final l10n = AppLocalizations.of(context);
+    final labels = <String, String>{
+      'Text post': l10n.ui('create_text_post', 'Text post'),
+      'Voice post': l10n.ui('create_voice_post', 'Voice post'),
+      'AR Lens': l10n.ui('create_ar_lens', 'AR Lens'),
+      'Go live': l10n.ui('create_go_live', 'Go live'),
+    };
     final chosen = await showModalBottomSheet<String>(
       context: context,
       backgroundColor: Colors.transparent,
       builder: (_) => LongPressSheet(
         items: {
-          for (final entry in _options.entries) entry.key: entry.value.icon,
+          for (final entry in _options.entries)
+            labels[entry.key]!: entry.value.icon,
         },
       ),
     );
 
-    final route = _options[chosen]?.route;
+    final route = _options.entries
+        .where((entry) => labels[entry.key] == chosen)
+        .map((entry) => entry.value.route)
+        .firstOrNull;
     if (route == null || !context.mounted) return;
     await Navigator.pushNamed(context, route);
   }

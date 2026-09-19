@@ -55,8 +55,10 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
                 child: EmptyState(
                   art: EmptyArt.drafts,
                   title: AppLocalizations.of(context).literalnoDrafts,
-                  detail: 'Close the composer with something written and you '
-                      'will be offered a draft.',
+                  detail: AppLocalizations.of(context).ui(
+                    'draft_close_composer_detail',
+                    'Close the composer with something written and you will be offered a draft.',
+                  ),
                 ),
               );
             }
@@ -120,20 +122,40 @@ class _DraftsScreenState extends ConsumerState<DraftsScreen> {
   ///
   /// A poll can be filled in before its question is, and a row with an empty
   /// title reads as a draft that lost its contents.
-  static String _summary(ComposerDraft draft) {
+  String _summary(ComposerDraft draft) {
     final text = draft.content.trim();
     if (text.isNotEmpty) return text;
-    if (draft.poll != null) return 'A poll, with no question yet';
-    if (draft.quoting != null) return 'A quote, with nothing written yet';
-    return 'Nothing written yet';
+    if (draft.poll != null) {
+      return AppLocalizations.of(context)
+          .ui('draft_poll_empty', 'A poll, with no question yet');
+    }
+    if (draft.quoting != null) {
+      return AppLocalizations.of(context)
+          .ui('draft_quote_empty', 'A quote, with nothing written yet');
+    }
+    return AppLocalizations.of(context)
+        .ui('draft_nothing_empty', 'Nothing written yet');
   }
 
-  static String _when(DateTime at) {
+  String _when(DateTime at) {
     final d = DateTime.now().difference(at);
-    if (d.inMinutes < 1) return 'Just now';
-    if (d.inHours < 1) return '${d.inMinutes} minutes ago';
-    if (d.inDays < 1) return '${d.inHours} hours ago';
-    if (d.inDays < 7) return '${d.inDays} days ago';
+    final l10n = AppLocalizations.of(context);
+    if (d.inMinutes < 1) return l10n.ui('draft_just_now', 'Just now');
+    if (d.inHours < 1) {
+      return l10n
+          .ui('draft_minutes_ago', '{minutes} minutes ago')
+          .replaceFirst('{minutes}', '${d.inMinutes}');
+    }
+    if (d.inDays < 1) {
+      return l10n
+          .ui('draft_hours_ago', '{hours} hours ago')
+          .replaceFirst('{hours}', '${d.inHours}');
+    }
+    if (d.inDays < 7) {
+      return l10n
+          .ui('draft_days_ago', '{days} days ago')
+          .replaceFirst('{days}', '${d.inDays}');
+    }
     return '${at.day}/${at.month}/${at.year}';
   }
 }

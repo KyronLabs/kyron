@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-09-17T23:10:00Z",
+  "@@last_modified": "2026-09-19T21:00:00Z",
   "about": "Acerca de",
   "addAnAnswer": "Añadir una respuesta",
   "agreeAndContinue": "Aceptar y continuar",
@@ -578,5 +578,22 @@
   "ui_posted_between": "Publicado entre",
   "ui_after": "Después",
   "ui_before": "Antes",
-  "ui_carrying": "Con"
+  "ui_carrying": "Con",
+  "create_text_post": "Publicación de texto",
+  "create_voice_post": "Publicación de voz",
+  "create_ar_lens": "Lente de RA",
+  "create_go_live": "Transmitir en vivo",
+  "voice_record_post": "Grabar una publicación de voz",
+  "voice_recording": "Grabando…",
+  "voice_ready_attach": "Listo para adjuntar",
+  "voice_stop": "Detener",
+  "voice_attach": "Adjuntar",
+  "draft_close_composer_detail": "Cierra el editor con algo escrito y se te ofrecerá un borrador.",
+  "draft_poll_empty": "Una encuesta sin pregunta todavía",
+  "draft_quote_empty": "Una cita sin texto todavía",
+  "draft_nothing_empty": "Todavía no hay nada escrito",
+  "draft_just_now": "Ahora mismo",
+  "draft_minutes_ago": "Hace {minutes} minutos",
+  "draft_hours_ago": "Hace {hours} horas",
+  "draft_days_ago": "Hace {days} días"
 }
