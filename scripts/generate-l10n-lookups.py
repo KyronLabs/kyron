@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json
+import os
 import re
 from pathlib import Path
 
@@ -42,7 +43,39 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
 final messageLookup = MessageLookup();
 """ % (locale, '\n'.join(rows))
 
-for locale in ('ko', 'ja'):
-    catalog = json.loads((ROOT / f'app_{locale}.arb').read_text())
-    (ROOT / 'generated' / f'messages_{locale}.dart').write_text(make_lookup(locale, catalog))
-    print(f'generated {locale}: {len([k for k in catalog if not k.startswith("@")] )} messages')
+# Get all locales from the l10n directory
+l10n_dir = ROOT
+arb_files = [f for f in os.listdir(l10n_dir) if f.startswith('app_') and f.endswith('.arb')]
+locales = []
+for f in arb_files:
+    # Extract locale from filename app_XX.arb
+    locale = f[4:-4]  # Remove 'app_' and '.arb'
+    locales.append(locale)
+
+print(f"Found {len(locales)} ARB catalogs")
+
+# Generate lookup files for all locales
+for locale in sorted(locales):
+    if locale == 'en':
+        continue  # Skip English, it's handled separately
+    
+    catalog_path = ROOT / f'app_{locale}.arb'
+    if not catalog_path.exists():
+        print(f"  WARNING: {catalog_path} not found, skipping")
+        continue
+    
+    catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
+    
+    # Create generated directory if it doesn't exist
+    gen_dir = ROOT / 'generated'
+    if not gen_dir.exists():
+        gen_dir.mkdir(parents=True, exist_ok=True)
+    
+    lookup_content = make_lookup(locale, catalog)
+    output_path = gen_dir / f'messages_{locale}.dart'
+    output_path.write_text(lookup_content, encoding='utf-8')
+    
+    num_messages = len([k for k in catalog if not k.startswith('@')])
+    print(f'  Generated messages_{locale}.dart: {num_messages} messages')
+
+print(f"\nDone! Generated lookup files for {len(locales) - 1} locales (excluding en)")
