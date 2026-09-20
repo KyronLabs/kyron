@@ -325,7 +325,7 @@
   "literalthatDidNotGoThroughTryAgain": "전송되지 않았습니다. 다시 시도하세요.",
   "literalblockAuthor2": "$author 차단하시겠습니까?",
   "literalshowResults": "결과 보기",
-  "literallabelDate": "$label 날짜",
+  "literallabelDate": "\\$label 날짜",
   "literalshareVia": "공유하기…",
   "literalhandItToAnotherApp": "다른 앱으로 전달",
   "literalshareWithAQuote": "인용과 함께 공유",

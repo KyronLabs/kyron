@@ -450,7 +450,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("전송되지 않았습니다. 다시 시도하세요."),
       "literalblockAuthor2": (Object a0) => "${a0} 차단하시겠습니까?",
       "literalshowResults": MessageLookupByLibrary.simpleMessage("결과 보기"),
-      "literallabelDate": (Object a0) => "${a0} 날짜",
+      "literallabelDate": (Object a0) => "\\${a0} 날짜",
       "literalshareVia": MessageLookupByLibrary.simpleMessage("공유하기…"),
       "literalhandItToAnotherApp":
           MessageLookupByLibrary.simpleMessage("다른 앱으로 전달"),
