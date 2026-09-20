@@ -195,6 +195,33 @@ void main() {
       expect(find.text('应用语言'), findsOneWidget);
     });
 
+    for (final entry in const [
+      (locale: 'ko', value: '앱 언어'),
+      (locale: 'ja', value: 'アプリの言語'),
+    ]) {
+      testWidgets('${entry.locale} loads Kyron\'s catalog', (tester) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            locale: Locale(entry.locale),
+            supportedLocales: [Locale(entry.locale)],
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            home: Builder(
+              builder: (context) => Text(
+                AppLocalizations.of(context).literalappLanguage,
+              ),
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(find.text(entry.value), findsOneWidget);
+      });
+    }
+
     testWidgets('an RTL language lays the whole app out the other way round', (
       tester,
     ) async {

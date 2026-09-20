@@ -986,12 +986,17 @@ class _AppLocalizationsDelegate
     extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
-  List<Locale> get supportedLocales =>
-      const [Locale('en'), Locale('es'), Locale('zh')];
+  List<Locale> get supportedLocales => const [
+        Locale('en'),
+        Locale('es'),
+        Locale('ja'),
+        Locale('ko'),
+        Locale('zh')
+      ];
 
   @override
   bool isSupported(Locale locale) =>
-      ['en', 'es', 'zh'].contains(locale.languageCode);
+      ['en', 'es', 'ja', 'ko', 'zh'].contains(locale.languageCode);
 
   @override
   Future<AppLocalizations> load(Locale locale) => AppLocalizations.load(locale);
