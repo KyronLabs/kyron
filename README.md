@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="./docs/kyron-readme-banner.png" alt="Kyron — Social × AT Protocol" width="100%" />
+
 <img src="./docs/favicon.svg" width="88" height="88" alt="Kyron" />
 
 # KYRON
