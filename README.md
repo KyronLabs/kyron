@@ -2,7 +2,7 @@
 
 <img src="./docs/kyron-readme-banner.png" alt="Kyron — Social × AT Protocol" width="100%" />
 
-# KYRON
+# Kyron
 
 ### An open social app you can run yourself
 
