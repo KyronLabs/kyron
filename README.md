@@ -2,8 +2,6 @@
 
 <img src="./docs/kyron-readme-banner.png" alt="Kyron — Social × AT Protocol" width="100%" />
 
-# Kyron
-
 ### An open social app you can run yourself
 
 *Flutter client · NestJS API · Postgres. One codebase → Android · iOS · Web.*
