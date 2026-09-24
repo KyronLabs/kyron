@@ -56,21 +56,15 @@ class AppLocalizations {
         name: 'authorPostsHidden',
         args: [author],
       );
-  String authorBlocked(String author) => Intl.message(
-        '$author blocked',
-        name: 'authorBlocked',
-        args: [author],
-      );
+  String authorBlocked(String author) =>
+      Intl.message('$author blocked', name: 'authorBlocked', args: [author]);
   String nothingMatchesQuery(String what) => Intl.message(
         'Nothing on Kyron matches "$what"',
         name: 'nothingMatchesQuery',
         args: [what],
       );
-  String repliesPolicy(String policy) => Intl.message(
-        'Replies: $policy',
-        name: 'repliesPolicy',
-        args: [policy],
-      );
+  String repliesPolicy(String policy) =>
+      Intl.message('Replies: $policy', name: 'repliesPolicy', args: [policy]);
   String feedTagDetail(String tab) => Intl.message(
         'Nothing has been posted under #$tab yet.',
         name: 'feedTagDetail',
@@ -80,8 +74,7 @@ class AppLocalizations {
       _AppLocalizationsDelegate();
 
   String get about => Intl.message('about', name: 'about');
-  String get addAnAnswer =>
-      Intl.message('addAnAnswer', name: 'addAnAnswer');
+  String get addAnAnswer => Intl.message('addAnAnswer', name: 'addAnAnswer');
   String answerNumber(int i) =>
       Intl.message('answerNumber', name: 'answerNumber', args: [i + 1]);
   String get arLens => Intl.message('arLens', name: 'arLens');
@@ -929,9 +922,10 @@ class AppLocalizations {
       Intl.message('selectPrimaryLanguage', name: 'selectPrimaryLanguage');
   String get selectContentLanguages =>
       Intl.message('selectContentLanguages', name: 'selectContentLanguages');
-  String get kyronWordsStillBeingTranslated =>
-      Intl.message('kyronWordsStillBeingTranslated',
-          name: 'kyronWordsStillBeingTranslated');
+  String get kyronWordsStillBeingTranslated => Intl.message(
+        'kyronWordsStillBeingTranslated',
+        name: 'kyronWordsStillBeingTranslated',
+      );
   String get hashtagsEmptyDetail =>
       Intl.message('hashtagsEmptyDetail', name: 'hashtagsEmptyDetail');
   String get topicsEmptyDetail =>
@@ -946,15 +940,18 @@ class AppLocalizations {
       Intl.message('messagesNoMessages', name: 'messagesNoMessages');
   String get notificationLikesDetail =>
       Intl.message('notificationLikesDetail', name: 'notificationLikesDetail');
-  String get notificationRepliesDetail =>
-      Intl.message('notificationRepliesDetail',
-          name: 'notificationRepliesDetail');
-  String get notificationFollowersDetail =>
-      Intl.message('notificationFollowersDetail',
-          name: 'notificationFollowersDetail');
-  String get notificationRepostsDetail =>
-      Intl.message('notificationRepostsDetail',
-          name: 'notificationRepostsDetail');
+  String get notificationRepliesDetail => Intl.message(
+        'notificationRepliesDetail',
+        name: 'notificationRepliesDetail',
+      );
+  String get notificationFollowersDetail => Intl.message(
+        'notificationFollowersDetail',
+        name: 'notificationFollowersDetail',
+      );
+  String get notificationRepostsDetail => Intl.message(
+        'notificationRepostsDetail',
+        name: 'notificationRepostsDetail',
+      );
   String get notificationEmptyDetail =>
       Intl.message('notificationEmptyDetail', name: 'notificationEmptyDetail');
   String get gettingHelp => Intl.message('gettingHelp', name: 'gettingHelp');
@@ -968,9 +965,10 @@ class AppLocalizations {
   String get join => Intl.message('join', name: 'join');
   String get video => Intl.message('video', name: 'video');
 
-  String get contentLanguagesNotFilteringYet =>
-      Intl.message('contentLanguagesNotFilteringYet',
-          name: 'contentLanguagesNotFilteringYet');
+  String get contentLanguagesNotFilteringYet => Intl.message(
+        'contentLanguagesNotFilteringYet',
+        name: 'contentLanguagesNotFilteringYet',
+      );
   String get addMoreLanguages =>
       Intl.message('addMoreLanguages', name: 'addMoreLanguages');
   String get translationNotBuiltYet =>
@@ -1058,14 +1056,77 @@ class _AppLocalizationsDelegate
       ];
 
   @override
-  bool isSupported(Locale locale) =>
-      ['af', 'am', 'ar', 'az', 'bg', 'bn', 'ca', 'cs', 'da', 'de', 'el',
-       'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gl', 'gu', 'ha', 'he',
-       'hi', 'hr', 'hu', 'hy', 'id', 'ig', 'it', 'ja', 'ka', 'kk', 'km',
-       'kn', 'ko', 'lv', 'lt', 'ml', 'mr', 'ms', 'my', 'nb', 'ne', 'nl',
-       'pa', 'pl', 'pt', 'ro', 'ru', 'si', 'sk', 'sl', 'so', 'sr', 'sv',
-       'sw', 'ta', 'te', 'th', 'tl', 'tr', 'uk', 'ur', 'uz', 'vi', 'xh',
-       'yo', 'zu', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => [
+        'af',
+        'am',
+        'ar',
+        'az',
+        'bg',
+        'bn',
+        'ca',
+        'cs',
+        'da',
+        'de',
+        'el',
+        'en',
+        'es',
+        'et',
+        'eu',
+        'fa',
+        'fi',
+        'fr',
+        'gl',
+        'gu',
+        'ha',
+        'he',
+        'hi',
+        'hr',
+        'hu',
+        'hy',
+        'id',
+        'ig',
+        'it',
+        'ja',
+        'ka',
+        'kk',
+        'km',
+        'kn',
+        'ko',
+        'lv',
+        'lt',
+        'ml',
+        'mr',
+        'ms',
+        'my',
+        'nb',
+        'ne',
+        'nl',
+        'pa',
+        'pl',
+        'pt',
+        'ro',
+        'ru',
+        'si',
+        'sk',
+        'sl',
+        'so',
+        'sr',
+        'sv',
+        'sw',
+        'ta',
+        'te',
+        'th',
+        'tl',
+        'tr',
+        'uk',
+        'ur',
+        'uz',
+        'vi',
+        'xh',
+        'yo',
+        'zu',
+        'zh',
+      ].contains(locale.languageCode);
 
   @override
   Future<AppLocalizations> load(Locale locale) => AppLocalizations.load(locale);

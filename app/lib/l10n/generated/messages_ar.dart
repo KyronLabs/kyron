@@ -7,369 +7,804 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage("كلمة، عبارة أو #وسم"),
+      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
+        "كلمة، عبارة أو #وسم",
+      ),
       "about": MessageLookupByLibrary.simpleMessage("حول"),
       "addAnAnswer": MessageLookupByLibrary.simpleMessage("أضف إجابة"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("أضف المزيد من اللغات…"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
+        "أضف المزيد من اللغات…",
+      ),
       "agreeAndContinue": MessageLookupByLibrary.simpleMessage("أوافق وأواصل"),
-      "alreadyOnKyron": MessageLookupByLibrary.simpleMessage("هل أنت بالفعل على Kyron؟"),
+      "alreadyOnKyron": MessageLookupByLibrary.simpleMessage(
+        "هل أنت بالفعل على Kyron؟",
+      ),
       "analytics_comments": MessageLookupByLibrary.simpleMessage("التعليقات"),
-      "analytics_distinct_people_not_opens": MessageLookupByLibrary.simpleMessage("أشخاص مميزون، ليس الافتتاحات"),
+      "analytics_distinct_people_not_opens":
+          MessageLookupByLibrary.simpleMessage(
+        "أشخاص مميزون، ليس الافتتاحات",
+      ),
       "analytics_engagement": MessageLookupByLibrary.simpleMessage("التفاعل"),
       "analytics_likes": MessageLookupByLibrary.simpleMessage("الإعجابات"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage("لا مشاهدين بعد"),
-      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage("لم يفتح أحد هذه المشاركة بعد."),
+      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
+        "لا مشاهدين بعد",
+      ),
+      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
+        "لم يفتح أحد هذه المشاركة بعد.",
+      ),
       "analytics_posted": MessageLookupByLibrary.simpleMessage("نُشر"),
       "analytics_saves": MessageLookupByLibrary.simpleMessage("الحفظ"),
       "analytics_viewers": MessageLookupByLibrary.simpleMessage("المشاهدون"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage("المشاهدون في اليوم"),
+      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
+        "المشاهدون في اليوم",
+      ),
       "and": MessageLookupByLibrary.simpleMessage("و"),
       "answerNumber": (Object a0) => "الإجابة ${a0}",
       "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage("إرفاق سجل النظام"),
-      "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage("12 MB"),
-      "audit_about_subscreens_round_trip_64776b4c": MessageLookupByLibrary.simpleMessage("رحلة ذهاب وإياب"),
-      "audit_about_subscreens_support_kyron_so_a3a84d0f": MessageLookupByLibrary.simpleMessage("support@kyron.so"),
-      "audit_about_subscreens_token_verification_7934e1f2": MessageLookupByLibrary.simpleMessage("التحقق من الرمز"),
-      "audit_ar_lens_screen_try_again_cdec8872": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
-      "audit_browser_engine_window_stop_39c04883": MessageLookupByLibrary.simpleMessage("window.stop();"),
-      "audit_browser_sheet_try_again_44bc94ba": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
-      "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b": MessageLookupByLibrary.simpleMessage("بدء بث الآن سيضعك في غرفة لا يستطيع أحد"),
-      "audit_communities_screen_start_a_community_06c8ec4f": MessageLookupByLibrary.simpleMessage("ابدأ مجتمعًا"),
-      "audit_communities_screen_what_is_it_for_optional_e7e82092": MessageLookupByLibrary.simpleMessage("ما الغرض؟ (اختياري)"),
-      "audit_community_manage_screen_back_in_e495a750": MessageLookupByLibrary.simpleMessage("العودة بعد."),
-      "audit_community_manage_screen_back_in_from_this_list_9496a4fd": MessageLookupByLibrary.simpleMessage("العودة من هذه القائمة."),
-      "audit_community_manage_screen_closing_it_f490fb09": MessageLookupByLibrary.simpleMessage("إغلاقه"),
-      "audit_community_screen_join_first_7798cafc": MessageLookupByLibrary.simpleMessage("انضم أولًا"),
-      "audit_composer_screen_coming_soon_431fd23d": MessageLookupByLibrary.simpleMessage("قريبًا"),
-      "audit_composer_screen_posting_as_you_45d69932": MessageLookupByLibrary.simpleMessage("النشر باسمك"),
-      "audit_create_fab_post_in_this_community_0a42daf2": MessageLookupByLibrary.simpleMessage("انشر في هذا المجتمع"),
-      "audit_drafts_screen_just_now_17a8d48a": MessageLookupByLibrary.simpleMessage("الآن للتو"),
-      "audit_empty_state_try_again_80ef48cd": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
-      "audit_explore_screen_topic_1_83830b41": MessageLookupByLibrary.simpleMessage("الموضوع 1"),
-      "audit_feed_canvas_for_you_aa3c510d": MessageLookupByLibrary.simpleMessage("من أجلك"),
-      "audit_forgot_password_screen_has_anything_65044193": MessageLookupByLibrary.simpleMessage("هل هناك شيء."),
-      "audit_forgot_password_screen_its_way_to_it_now_271a6cea": MessageLookupByLibrary.simpleMessage("في طريقه إليه الآن."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(", ليس"),
-      "audit_inline_video_am_i_moving_4618f78c": MessageLookupByLibrary.simpleMessage("هل أنا أتحرك"),
-      "audit_inline_video_turn_sound_off_97714bbc": MessageLookupByLibrary.simpleMessage("إيقاف الصوت"),
-      "audit_inline_video_turn_sound_on_83671c54": MessageLookupByLibrary.simpleMessage("تشغيل الصوت"),
-      "audit_interest_tabs_for_you_7ef9e823": MessageLookupByLibrary.simpleMessage("من أجلك"),
-      "audit_interest_tabs_your_tabs_c3ba148f": MessageLookupByLibrary.simpleMessage("علاماتك"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage("+ ALT"),
-      "audit_mention_picker_sheet_try_again_fd5d5dd7": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
-      "audit_password_requirements_symbol_322aed1e": MessageLookupByLibrary.simpleMessage("رمز (!@#…)"),
-      "audit_post_analytics_screen_viewers_per_day_5d881f10": MessageLookupByLibrary.simpleMessage("المشاهدون في اليوم"),
-      "audit_post_detail_screen_sublist_1_join_b0a5d508": MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
-      "audit_post_list_view_could_not_load_4dd86c79": MessageLookupByLibrary.simpleMessage("تعذّر التحميل"),
-      "audit_post_options_sheet_this_post_99bfa981": MessageLookupByLibrary.simpleMessage("هذه المشاركة"),
-      "audit_post_text_a_b_780da9a1": MessageLookupByLibrary.simpleMessage("a#b"),
-      "audit_report_screen_anything_to_add_optional_f0051fa4": MessageLookupByLibrary.simpleMessage("هل تريد إضافة شيء؟ (اختياري)"),
-      "audit_report_screen_this_post_820d9740": MessageLookupByLibrary.simpleMessage("هذه المشاركة"),
-      "audit_search_filter_sheet_from_an_account_f6a22687": MessageLookupByLibrary.simpleMessage("من حساب"),
-      "audit_settings_screen_did_plc_abc_825b4f49": MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
-      "audit_settings_screen_log_out_0b39bfb2": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
-      "audit_settings_screen_your_account_bcdf27af": MessageLookupByLibrary.simpleMessage("حسابك"),
-      "audit_settings_subscreens_confirm_password_f0e1f449": MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
-      "audit_settings_subscreens_not_now_e1657fa9": MessageLookupByLibrary.simpleMessage("ليس الآن"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage("جارٍ التحميل…"),
-      "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a": MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage("جارٍ النشر…"),
-      "audit_story_viewer_3h_ago_174dc80d": MessageLookupByLibrary.simpleMessage("منذ 3 ساعات"),
-      "audit_story_viewer_copy_story_link_2bd1546c": MessageLookupByLibrary.simpleMessage("نسخ رابط القصة"),
-      "audit_story_viewer_your_story_b706ecb4": MessageLookupByLibrary.simpleMessage("قِصتك"),
-      "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef": MessageLookupByLibrary.simpleMessage("حسابك، مشاركاتك، وما تضغط عليه بحيث"),
-      "audit_topic_picker_add_a_topic_25baaf8a": MessageLookupByLibrary.simpleMessage("أضف موضوعًا"),
-      "audit_url_preview_its_own_8b362f95": MessageLookupByLibrary.simpleMessage("خاصته."),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("إرفاق سجل النظام"),
+      "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
+        "12 MB",
+      ),
+      "audit_about_subscreens_round_trip_64776b4c":
+          MessageLookupByLibrary.simpleMessage("رحلة ذهاب وإياب"),
+      "audit_about_subscreens_support_kyron_so_a3a84d0f":
+          MessageLookupByLibrary.simpleMessage("support@kyron.so"),
+      "audit_about_subscreens_token_verification_7934e1f2":
+          MessageLookupByLibrary.simpleMessage("التحقق من الرمز"),
+      "audit_ar_lens_screen_try_again_cdec8872":
+          MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
+      "audit_browser_engine_window_stop_39c04883":
+          MessageLookupByLibrary.simpleMessage("window.stop();"),
+      "audit_browser_sheet_try_again_44bc94ba":
+          MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
+      "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
+          MessageLookupByLibrary.simpleMessage(
+        "بدء بث الآن سيضعك في غرفة لا يستطيع أحد",
+      ),
+      "audit_communities_screen_start_a_community_06c8ec4f":
+          MessageLookupByLibrary.simpleMessage("ابدأ مجتمعًا"),
+      "audit_communities_screen_what_is_it_for_optional_e7e82092":
+          MessageLookupByLibrary.simpleMessage("ما الغرض؟ (اختياري)"),
+      "audit_community_manage_screen_back_in_e495a750":
+          MessageLookupByLibrary.simpleMessage("العودة بعد."),
+      "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
+          MessageLookupByLibrary.simpleMessage("العودة من هذه القائمة."),
+      "audit_community_manage_screen_closing_it_f490fb09":
+          MessageLookupByLibrary.simpleMessage("إغلاقه"),
+      "audit_community_screen_join_first_7798cafc":
+          MessageLookupByLibrary.simpleMessage("انضم أولًا"),
+      "audit_composer_screen_coming_soon_431fd23d":
+          MessageLookupByLibrary.simpleMessage("قريبًا"),
+      "audit_composer_screen_posting_as_you_45d69932":
+          MessageLookupByLibrary.simpleMessage("النشر باسمك"),
+      "audit_create_fab_post_in_this_community_0a42daf2":
+          MessageLookupByLibrary.simpleMessage("انشر في هذا المجتمع"),
+      "audit_drafts_screen_just_now_17a8d48a":
+          MessageLookupByLibrary.simpleMessage(
+        "الآن للتو",
+      ),
+      "audit_empty_state_try_again_80ef48cd":
+          MessageLookupByLibrary.simpleMessage(
+        "حاول مرة أخرى",
+      ),
+      "audit_explore_screen_topic_1_83830b41":
+          MessageLookupByLibrary.simpleMessage(
+        "الموضوع 1",
+      ),
+      "audit_feed_canvas_for_you_aa3c510d":
+          MessageLookupByLibrary.simpleMessage(
+        "من أجلك",
+      ),
+      "audit_forgot_password_screen_has_anything_65044193":
+          MessageLookupByLibrary.simpleMessage("هل هناك شيء."),
+      "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
+          MessageLookupByLibrary.simpleMessage("في طريقه إليه الآن."),
+      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
+        ", ليس",
+      ),
+      "audit_inline_video_am_i_moving_4618f78c":
+          MessageLookupByLibrary.simpleMessage("هل أنا أتحرك"),
+      "audit_inline_video_turn_sound_off_97714bbc":
+          MessageLookupByLibrary.simpleMessage("إيقاف الصوت"),
+      "audit_inline_video_turn_sound_on_83671c54":
+          MessageLookupByLibrary.simpleMessage("تشغيل الصوت"),
+      "audit_interest_tabs_for_you_7ef9e823":
+          MessageLookupByLibrary.simpleMessage(
+        "من أجلك",
+      ),
+      "audit_interest_tabs_your_tabs_c3ba148f":
+          MessageLookupByLibrary.simpleMessage("علاماتك"),
+      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
+        "+ ALT",
+      ),
+      "audit_mention_picker_sheet_try_again_fd5d5dd7":
+          MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
+      "audit_password_requirements_symbol_322aed1e":
+          MessageLookupByLibrary.simpleMessage("رمز (!@#…)"),
+      "audit_post_analytics_screen_viewers_per_day_5d881f10":
+          MessageLookupByLibrary.simpleMessage("المشاهدون في اليوم"),
+      "audit_post_detail_screen_sublist_1_join_b0a5d508":
+          MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
+      "audit_post_list_view_could_not_load_4dd86c79":
+          MessageLookupByLibrary.simpleMessage("تعذّر التحميل"),
+      "audit_post_options_sheet_this_post_99bfa981":
+          MessageLookupByLibrary.simpleMessage("هذه المشاركة"),
+      "audit_post_text_a_b_780da9a1":
+          MessageLookupByLibrary.simpleMessage("a#b"),
+      "audit_report_screen_anything_to_add_optional_f0051fa4":
+          MessageLookupByLibrary.simpleMessage("هل تريد إضافة شيء؟ (اختياري)"),
+      "audit_report_screen_this_post_820d9740":
+          MessageLookupByLibrary.simpleMessage("هذه المشاركة"),
+      "audit_search_filter_sheet_from_an_account_f6a22687":
+          MessageLookupByLibrary.simpleMessage("من حساب"),
+      "audit_settings_screen_did_plc_abc_825b4f49":
+          MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
+      "audit_settings_screen_log_out_0b39bfb2":
+          MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+      "audit_settings_screen_your_account_bcdf27af":
+          MessageLookupByLibrary.simpleMessage("حسابك"),
+      "audit_settings_subscreens_confirm_password_f0e1f449":
+          MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+      "audit_settings_subscreens_not_now_e1657fa9":
+          MessageLookupByLibrary.simpleMessage("ليس الآن"),
+      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
+        "جارٍ التحميل…",
+      ),
+      "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
+          MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
+      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
+        "جارٍ النشر…",
+      ),
+      "audit_story_viewer_3h_ago_174dc80d":
+          MessageLookupByLibrary.simpleMessage(
+        "منذ 3 ساعات",
+      ),
+      "audit_story_viewer_copy_story_link_2bd1546c":
+          MessageLookupByLibrary.simpleMessage("نسخ رابط القصة"),
+      "audit_story_viewer_your_story_b706ecb4":
+          MessageLookupByLibrary.simpleMessage("قِصتك"),
+      "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
+          MessageLookupByLibrary.simpleMessage(
+        "حسابك، مشاركاتك، وما تضغط عليه بحيث",
+      ),
+      "audit_topic_picker_add_a_topic_25baaf8a":
+          MessageLookupByLibrary.simpleMessage("أضف موضوعًا"),
+      "audit_url_preview_its_own_8b362f95":
+          MessageLookupByLibrary.simpleMessage(
+        "خاصته.",
+      ),
       "authorBlocked": (Object a0) => "${a0} محظور",
       "authorPostsHidden": (Object a0) => "لن ترى مشاركات من ${a0}",
       "block": MessageLookupByLibrary.simpleMessage("حظر"),
       "blockAuthor": (Object a0) => "حظر ${a0}؟",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage("تم نسخ تفاصيل البنية"),
+      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
+        "تم نسخ تفاصيل البنية",
+      ),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage("بالمتابعة أنت توافق على"),
-      "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage("بالمتابعة أنت توافق على الشروط وسياسة الخصوصية الخاصة بنا"),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage("بالتسجيل أنت توافق على"),
+      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "بالمتابعة أنت توافق على",
+      ),
+      "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
+        "بالمتابعة أنت توافق على الشروط وسياسة الخصوصية الخاصة بنا",
+      ),
+      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "بالتسجيل أنت توافق على",
+      ),
       "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
       "change": MessageLookupByLibrary.simpleMessage("تغيير"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("تغيير البريد الإلكتروني"),
-      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage("تحقق من بريدك الإلكتروني لتأكيد حسابك."),
-      "checkKyronReachable": MessageLookupByLibrary.simpleMessage("تحقق مما إذا كان Kyron متاحًا"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage(
+        "تغيير البريد الإلكتروني",
+      ),
+      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
+        "تحقق من بريدك الإلكتروني لتأكيد حسابك.",
+      ),
+      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
+        "تحقق مما إذا كان Kyron متاحًا",
+      ),
       "clear": MessageLookupByLibrary.simpleMessage("مسح"),
       "close": MessageLookupByLibrary.simpleMessage("إغلاق"),
       "closeCommunity": (Object a0) => "إغلاق ${a0}؟",
       "closeIt": MessageLookupByLibrary.simpleMessage("إغلاقه"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage("إغلاق هذه المجتمع"),
+      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "إغلاق هذه المجتمع",
+      ),
       "communities": MessageLookupByLibrary.simpleMessage("المجتمعات"),
-      "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage("ابحث عن واحد في الاستكشاف، أو ابدأ مجتمعك الخاص."),
-      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage("انشر رأيًا جريئًا (أو دافئًا)"),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage("ما الذي يدور في رأسك؟"),
-      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage("قل شيئًا لا يستطيع أحد سواك قوله…"),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage("هذا هو SIGNAL الخاص بك — أرسله"),
-      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage("اكتب، تكلّم، أو فكّر بصوت عالٍ"),
-      "confirmPassword": MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+      "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "ابحث عن واحد في الاستكشاف، أو ابدأ مجتمعك الخاص.",
+      ),
+      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
+        "انشر رأيًا جريئًا (أو دافئًا)",
+      ),
+      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
+        "ما الذي يدور في رأسك؟",
+      ),
+      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
+        "قل شيئًا لا يستطيع أحد سواك قوله…",
+      ),
+      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
+        "هذا هو SIGNAL الخاص بك — أرسله",
+      ),
+      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
+        "اكتب، تكلّم، أو فكّر بصوت عالٍ",
+      ),
+      "confirmPassword":
+          MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
       "contactSupport": MessageLookupByLibrary.simpleMessage("اتصل بالدعم"),
-      "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage("المشاركات لا تحمل لغة بعد، لذا هذا لن يفلتر موجزك اليوم. سيُحتفظ بخيارك لوقت حدوث ذلك."),
+      "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
+        "المشاركات لا تحمل لغة بعد، لذا هذا لن يفلتر موجزك اليوم. سيُحتفظ بخيارك لوقت حدوث ذلك.",
+      ),
       "continueAction": MessageLookupByLibrary.simpleMessage("استمرار"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage("المتابعة بالبريد الإلكتروني"),
+      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
+        "المتابعة بالبريد الإلكتروني",
+      ),
       "copy": MessageLookupByLibrary.simpleMessage("نسخ"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage("انسخ التقرير بدلاً من ذلك"),
-      "couldNotOpenGoogleSignIn": (Object a0) => "تعذر فتح تسجيل الدخول عبر Google. ${a0}",
+      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
+        "انسخ التقرير بدلاً من ذلك",
+      ),
+      "couldNotOpenGoogleSignIn": (Object a0) =>
+          "تعذر فتح تسجيل الدخول عبر Google. ${a0}",
       "couldNotSignOut": (Object a0) => "تعذر تسجيل الخروج: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage("تعذّر التقاط تلك الصورة."),
+      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
+        "تعذّر التقاط تلك الصورة.",
+      ),
       "create": MessageLookupByLibrary.simpleMessage("إنشاء"),
       "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage("أنشئ ملفك الشخصي"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("أنشئ ملفك الشخصي"),
       "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
       "create_go_live": MessageLookupByLibrary.simpleMessage("اذهب مباشرة"),
       "create_text_post": MessageLookupByLibrary.simpleMessage("مشاركة نصية"),
       "create_voice_post": MessageLookupByLibrary.simpleMessage("مشاركة صوتية"),
       "delete": MessageLookupByLibrary.simpleMessage("حذف"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage("حذف هذا التعليق؟"),
-      "deleteThisPost": MessageLookupByLibrary.simpleMessage("حذف هذه المشاركة؟"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage("وصف هذا المرفق"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("حذف هذا التعليق؟"),
+      "deleteThisPost":
+          MessageLookupByLibrary.simpleMessage("حذف هذه المشاركة؟"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("وصف هذا المرفق"),
       "description": MessageLookupByLibrary.simpleMessage("الوصف"),
-      "didCopied": MessageLookupByLibrary.simpleMessage("DID تم نسخه إلى الحافظة"),
+      "didCopied":
+          MessageLookupByLibrary.simpleMessage("DID تم نسخه إلى الحافظة"),
       "done": MessageLookupByLibrary.simpleMessage("تم"),
-      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage("أغلق المؤلف مع وجود شيء مكتوب وسيُعرض عليك حفظ مسودة."),
+      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
+        "أغلق المؤلف مع وجود شيء مكتوب وسيُعرض عليك حفظ مسودة.",
+      ),
       "draft_days_ago": MessageLookupByLibrary.simpleMessage("منذ {days} أيام"),
-      "draft_hours_ago": MessageLookupByLibrary.simpleMessage("منذ {hours} ساعات"),
+      "draft_hours_ago":
+          MessageLookupByLibrary.simpleMessage("منذ {hours} ساعات"),
       "draft_just_now": MessageLookupByLibrary.simpleMessage("الآن للتو"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage("منذ {minutes} دقائق"),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage("لا شيء مكتوب بعد"),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage("استطلاع، بدون سؤال بعد"),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage("اقتباس، بلا نص بعد"),
+      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
+        "منذ {minutes} دقائق",
+      ),
+      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
+        "لا شيء مكتوب بعد",
+      ),
+      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
+        "استطلاع، بدون سؤال بعد",
+      ),
+      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
+        "اقتباس، بلا نص بعد",
+      ),
       "drafts": MessageLookupByLibrary.simpleMessage("المسودات"),
       "editProfile": MessageLookupByLibrary.simpleMessage("تحرير الملف الشخصي"),
       "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage("إشعارات البريد الإلكتروني"),
+      "emailNotifications": MessageLookupByLibrary.simpleMessage(
+        "إشعارات البريد الإلكتروني",
+      ),
       "explore": MessageLookupByLibrary.simpleMessage("استكشاف"),
-      "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage("تتبُّع الوجه غير متاح على هذا الجهاز."),
+      "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
+        "تتبُّع الوجه غير متاح على هذا الجهاز.",
+      ),
       "feedTagDetail": (Object a0) => "لم تُنشر أي مشاركة تحت #${a0} بعد.",
       "followers": MessageLookupByLibrary.simpleMessage("المتابِعون"),
       "following": MessageLookupByLibrary.simpleMessage("المتابَعون"),
-      "forgotPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("الحصول على المساعدة"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage("المتابعة بواسطة Google"),
-      "googleSignIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول بواسطة Google"),
-      "googleSignInDesktopExplanation": (Object a0) => "تقوم Google بإرجاع تسجيل الدخول المكتمل إلى Kyron عبر رابط لا تستجيب له سوى أجهزة Android وiOS، لذا على ${a0} لن يكون هناك مكان لإرجاعه إليه.\\n\\nإذا كان لديك حساب Kyron عبر Google بالفعل، استخدم المتابعة بالبريد الإلكتروني مع نفس العنوان واضغط على نسيت كلمة المرور — سيرسل لك رابطًا عبر البريد لتعيين كلمة.",
-      "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage("تسجيل الدخول عبر Google يحتاج تطبيق الهاتف"),
-      "googleSignUp": MessageLookupByLibrary.simpleMessage("التسجيل بواسطة Google"),
-      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage("أدلة وإجابات على الأسئلة الشائعة"),
+      "forgotPassword":
+          MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+      "gettingHelp":
+          MessageLookupByLibrary.simpleMessage("الحصول على المساعدة"),
+      "googleContinue": MessageLookupByLibrary.simpleMessage(
+        "المتابعة بواسطة Google",
+      ),
+      "googleSignIn": MessageLookupByLibrary.simpleMessage(
+        "تسجيل الدخول بواسطة Google",
+      ),
+      "googleSignInDesktopExplanation": (Object a0) =>
+          "تقوم Google بإرجاع تسجيل الدخول المكتمل إلى Kyron عبر رابط لا تستجيب له سوى أجهزة Android وiOS، لذا على ${a0} لن يكون هناك مكان لإرجاعه إليه.\\n\\nإذا كان لديك حساب Kyron عبر Google بالفعل، استخدم المتابعة بالبريد الإلكتروني مع نفس العنوان واضغط على نسيت كلمة المرور — سيرسل لك رابطًا عبر البريد لتعيين كلمة.",
+      "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
+        "تسجيل الدخول عبر Google يحتاج تطبيق الهاتف",
+      ),
+      "googleSignUp":
+          MessageLookupByLibrary.simpleMessage("التسجيل بواسطة Google"),
+      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
+        "أدلة وإجابات على الأسئلة الشائعة",
+      ),
       "handle": MessageLookupByLibrary.simpleMessage("المعرّف"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage("تظهر الوسوم هنا عندما يبدأ الناس باستخدامها."),
+      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "تظهر الوسوم هنا عندما يبدأ الناس باستخدامها.",
+      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("مساعدة ودعم"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("مركز المساعدة"),
       "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("في سطر واحد"),
       "interest_add": MessageLookupByLibrary.simpleMessage("أضف اهتمامًا"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage("اسحب لإعادة الترتيب"),
-      "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage("خمس علامات تبويب هي الحد الأقصى للشريط. أزل واحدة لإضافة أخرى."),
+      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
+        "اسحب لإعادة الترتيب",
+      ),
+      "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
+        "خمس علامات تبويب هي الحد الأقصى للشريط. أزل واحدة لإضافة أخرى.",
+      ),
       "interest_following": MessageLookupByLibrary.simpleMessage("المتابَعة"),
       "interest_for_you": MessageLookupByLibrary.simpleMessage("من أجلك"),
-      "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage("تظهر الوسوم هنا عندما يبدأ الناس باستخدامها."),
-      "interest_trending_now": MessageLookupByLibrary.simpleMessage("الرائج الآن"),
+      "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
+        "تظهر الوسوم هنا عندما يبدأ الناس باستخدامها.",
+      ),
+      "interest_trending_now":
+          MessageLookupByLibrary.simpleMessage("الرائج الآن"),
       "interest_videos": MessageLookupByLibrary.simpleMessage("فيديوهات"),
       "interest_your_tabs": MessageLookupByLibrary.simpleMessage("علاماتك"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage("يختفي عن كليكما."),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage("سيتم إزالته من المحادثة."),
+      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
+        "يختفي عن كليكما.",
+      ),
+      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
+        "سيتم إزالته من المحادثة.",
+      ),
       "join": MessageLookupByLibrary.simpleMessage("انضمام"),
       "keepEditing": MessageLookupByLibrary.simpleMessage("تابع التحرير"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
-      "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage("كلمات Kyron ما زالت تُترجم، لذلك تبقى معظم الشاشات باللغة الإنجليزية الآن."),
+      "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
+        "كلمات Kyron ما زالت تُترجم، لذلك تبقى معظم الشاشات باللغة الإنجليزية الآن.",
+      ),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("اللغات"),
       "leave": MessageLookupByLibrary.simpleMessage("مغادرة"),
       "leaveCommunity": (Object a0) => "مغادرة ${a0}؟",
       "letBackIn": MessageLookupByLibrary.simpleMessage("إعادة السماح بالدخول"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("صفحة واحدة مفتوحة"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("صفحة واحدة مفتوحة"),
       "literaladdAClip": MessageLookupByLibrary.simpleMessage("أضف مقطعًا"),
       "literaladdAGif": MessageLookupByLibrary.simpleMessage("أضف GIF"),
       "literaladdAHashtag": MessageLookupByLibrary.simpleMessage("أضف هاشتاغ"),
       "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("أضف صورة"),
       "literaladdAPoll": MessageLookupByLibrary.simpleMessage("أضف استفتاء"),
       "literaladdAVideo": MessageLookupByLibrary.simpleMessage("أضف فيديو"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage("أضف اهتمامًا"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("أضف اهتمامًا"),
       "literaladdLabelAsATab": (Object a0) => "أضف ${a0} كعلامة تبويب",
       "literalappLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("إصدار التطبيق"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("إصدار التطبيق"),
       "literalblockAuthor": (Object a0) => "حظر ${a0}",
       "literalblockAuthor2": (Object a0) => "حظر ${a0}؟",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage("حظر هذا الحساب؟"),
+      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
+        "حظر هذا الحساب؟",
+      ),
       "literalcancelReply": MessageLookupByLibrary.simpleMessage("إلغاء الرد"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("تحقق مرة أخرى"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage("اختر من المعرض"),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("مسح التخزين المؤقت"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage("إغلاق كل الصفحات"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("تحقق مرة أخرى"),
+      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
+        "اختر من المعرض",
+      ),
+      "literalclearCache": MessageLookupByLibrary.simpleMessage(
+        "مسح التخزين المؤقت",
+      ),
+      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
+        "إغلاق كل الصفحات",
+      ),
       "literalcloseTabLabel": (Object a0) => "إغلاق ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage("إغلاق المتصفح"),
+      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
+        "إغلاق المتصفح",
+      ),
       "literalcloseWidgetCommunityName": (Object a0) => "إغلاق ${a0}؟",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage("اتصل بالدعم"),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage("لغات المحتوى"),
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("اتصل بالدعم"),
+      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
+        "لغات المحتوى",
+      ),
       "literalcopyLink": MessageLookupByLibrary.simpleMessage("نسخ الرابط"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage("نسخ رابط المشاركة"),
-      "literalcopyPostText": MessageLookupByLibrary.simpleMessage("نسخ نص المشاركة"),
+      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
+        "نسخ رابط المشاركة",
+      ),
+      "literalcopyPostText": MessageLookupByLibrary.simpleMessage(
+        "نسخ نص المشاركة",
+      ),
       "literalcopyText": MessageLookupByLibrary.simpleMessage("نسخ النص"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage("تعذّر تحميل المجتمعات"),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage("تعذّر تحميل GIFs"),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage("تعذّر تحميل الإشعارات"),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage("تعذّر تحميل الاقتراحات"),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage("تعذّر تحميل الأعضاء"),
-      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage("تعذّر تحميل هذه المشاركات"),
-      "literalcouldNotLoadThisConversation": MessageLookupByLibrary.simpleMessage("تعذّر تحميل هذه المحادثة"),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage("تعذّر تحميل هذه القائمة"),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage("تعذّر تحميل هذه المشاركة"),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage("تعذّر تحميل هذا الرد"),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage("تعذّر تحميل المواضيع"),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage("تعذّر تحميل الرائج"),
-      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage("تعذّر تحميل الوسوم الرائجة"),
-      "literalcouldNotLoadYourCommunities": MessageLookupByLibrary.simpleMessage("تعذّر تحميل مجتمعاتك"),
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage("تعذّر تحميل رسائلك"),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage("تعذّر فتح هذا المجتمع"),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage("تعذّر نشر ذلك الرد."),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage("تعذّر البحث"),
-      "literalcouldNotSignOutDescribeapierrorE": (Object a0) => "تعذّر تسجيل الخروج: ${a0}",
+      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل المجتمعات",
+      ),
+      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل GIFs",
+      ),
+      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل الإشعارات",
+      ),
+      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل الاقتراحات",
+      ),
+      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل الأعضاء",
+      ),
+      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل هذه المشاركات",
+      ),
+      "literalcouldNotLoadThisConversation":
+          MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل هذه المحادثة",
+      ),
+      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل هذه القائمة",
+      ),
+      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل هذه المشاركة",
+      ),
+      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل هذا الرد",
+      ),
+      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل المواضيع",
+      ),
+      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل الرائج",
+      ),
+      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل الوسوم الرائجة",
+      ),
+      "literalcouldNotLoadYourCommunities":
+          MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل مجتمعاتك",
+      ),
+      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل رسائلك",
+      ),
+      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "تعذّر فتح هذا المجتمع",
+      ),
+      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
+        "تعذّر نشر ذلك الرد.",
+      ),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("تعذّر البحث"),
+      "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
+          "تعذّر تسجيل الخروج: ${a0}",
       "literalcountPagesOpen": (Object a0) => "${a0} صفحات مفتوحة",
       "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("صورة الغلاف"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("توفير البيانات"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("توفير البيانات"),
       "literaldeletePost": MessageLookupByLibrary.simpleMessage("حذف المشاركة"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage("اكتشف الأشخاص"),
+      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
+        "اكتشف الأشخاص",
+      ),
       "literaldoNotReply": MessageLookupByLibrary.simpleMessage("لا ترد"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("تم حفظ المسودة"),
-      "literalfeedbackCannotBeSentRightNow": MessageLookupByLibrary.simpleMessage("لا يمكن إرسال الملاحظات الآن"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("تم حفظ المسودة"),
+      "literalfeedbackCannotBeSentRightNow":
+          MessageLookupByLibrary.simpleMessage(
+        "لا يمكن إرسال الملاحظات الآن",
+      ),
       "literalfirstyearIndex": (Object a0) => "${a0}",
       "literalfontSize": MessageLookupByLibrary.simpleMessage("حجم الخط"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage("لم يتم إعداد GIFs"),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage("مرّره إلى تطبيق آخر"),
-      "literalhidePassword": MessageLookupByLibrary.simpleMessage("إخفاء كلمة المرور"),
-      "literalhideThisPost": MessageLookupByLibrary.simpleMessage("إخفاء هذه المشاركة"),
-      "literalhidesItAndTellsUsToShowFewerLikeIt": MessageLookupByLibrary.simpleMessage("ـيُخفِيها، ويخبرنا أن نعرض عددًا أقل مثلها"),
-      "literalhowToBehave": MessageLookupByLibrary.simpleMessage("كيفية التصرف"),
+      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
+        "لم يتم إعداد GIFs",
+      ),
+      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
+        "مرّره إلى تطبيق آخر",
+      ),
+      "literalhidePassword": MessageLookupByLibrary.simpleMessage(
+        "إخفاء كلمة المرور",
+      ),
+      "literalhideThisPost": MessageLookupByLibrary.simpleMessage(
+        "إخفاء هذه المشاركة",
+      ),
+      "literalhidesItAndTellsUsToShowFewerLikeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "ـيُخفِيها، ويخبرنا أن نعرض عددًا أقل مثلها",
+      ),
+      "literalhowToBehave":
+          MessageLookupByLibrary.simpleMessage("كيفية التصرف"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("استمر في الكتابة"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage("لم يستجب Kyron"),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("استمر في الكتابة"),
+      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
+        "لم يستجب Kyron",
+      ),
       "literallabelCount": (Object a0, Object a1) => "${a0}، ${a1}",
       "literallabelDate": (Object a0) => "\\${a0} التاريخ",
       "literalleaveCommunityName": (Object a0) => "مغادرة ${a0}؟",
       "literallensNameFaceLens": (Object a0) => "${a0}, عدسة وجه",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("المشاركات المعجبة"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("تم نسخ الرابط"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage("تعيين مشرف"),
+      "literallikedPosts": MessageLookupByLibrary.simpleMessage(
+        "المشاركات المعجبة",
+      ),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("تم نسخ الرابط"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("تعيين مشرف"),
       "literalmuteAuthor": (Object a0) => "كتم ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage("كتم هذا الموضوع"),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage("كتم كلمات أو وسوم"),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage("الحسابات المكتمة والمحظورة"),
-      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage("مكتوم. لن تتلقى إشعارات."),
-      "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) => "لا تطبيق على هذا الجهاز يفتح روابط ${a0}.",
-      "literalnoBrowserOnThisDeviceTookThatLink": MessageLookupByLibrary.simpleMessage("لا يوجد متصفح على هذا الجهاز استلم ذلك الرابط."),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("لا يوجد DID بعد"),
+      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
+        "كتم هذا الموضوع",
+      ),
+      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
+        "كتم كلمات أو وسوم",
+      ),
+      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
+        "الحسابات المكتمة والمحظورة",
+      ),
+      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
+        "مكتوم. لن تتلقى إشعارات.",
+      ),
+      "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
+          "لا تطبيق على هذا الجهاز يفتح روابط ${a0}.",
+      "literalnoBrowserOnThisDeviceTookThatLink":
+          MessageLookupByLibrary.simpleMessage(
+        "لا يوجد متصفح على هذا الجهاز استلم ذلك الرابط.",
+      ),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("لا يوجد DID بعد"),
       "literalnoDrafts": MessageLookupByLibrary.simpleMessage("لا توجد مسودات"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage("لا اهتمامات بعد"),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("لا إعجابات بعد"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage("لا توجد رسائل بعد"),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage("لا متابعين جدد"),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("لا مشاركات بعد"),
-      "literalnoRepliesYet": MessageLookupByLibrary.simpleMessage("لا ردود بعد"),
-      "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage("لا إعادة نشر بعد"),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage("لا توجد مواضيع بعد"),
-      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage("لا وسم رائج يطابق ذلك"),
-      "literalnobodyFound": MessageLookupByLibrary.simpleMessage("لم يتم العثور على أحد"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage("لم يتم إزالة أحد"),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage("لا أحد هنا بعد"),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage("لا أحد متبقٍ للاقتراح"),
+      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
+        "لا اهتمامات بعد",
+      ),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("لا إعجابات بعد"),
+      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
+        "لا توجد رسائل بعد",
+      ),
+      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
+        "لا متابعين جدد",
+      ),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("لا مشاركات بعد"),
+      "literalnoRepliesYet":
+          MessageLookupByLibrary.simpleMessage("لا ردود بعد"),
+      "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
+        "لا إعادة نشر بعد",
+      ),
+      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
+        "لا توجد مواضيع بعد",
+      ),
+      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
+        "لا وسم رائج يطابق ذلك",
+      ),
+      "literalnobodyFound": MessageLookupByLibrary.simpleMessage(
+        "لم يتم العثور على أحد",
+      ),
+      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
+        "لم يتم إزالة أحد",
+      ),
+      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
+        "لا أحد هنا بعد",
+      ),
+      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
+        "لا أحد متبقٍ للاقتراح",
+      ),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage("غير مهتم بهذا"),
-      "literalnothingFound": MessageLookupByLibrary.simpleMessage("لم يتم العثور على شيء"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage("لا شيء رائج بعد"),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage("لا شيء مسجل بعد"),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage("لا شيء مطابق"),
-      "literalnothingMuted": MessageLookupByLibrary.simpleMessage("لا شيء مكتوم"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage("لا شيء لإلقاء نظرة عليه بعد"),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage("لا شيء غير مقروء"),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage("فقط المالك يمكنه تغيير هذا"),
+      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
+        "غير مهتم بهذا",
+      ),
+      "literalnothingFound": MessageLookupByLibrary.simpleMessage(
+        "لم يتم العثور على شيء",
+      ),
+      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
+        "لا شيء رائج بعد",
+      ),
+      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
+        "لا شيء مسجل بعد",
+      ),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("لا شيء مطابق"),
+      "literalnothingMuted":
+          MessageLookupByLibrary.simpleMessage("لا شيء مكتوم"),
+      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
+        "لا شيء لإلقاء نظرة عليه بعد",
+      ),
+      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
+        "لا شيء غير مقروء",
+      ),
+      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
+        "فقط المالك يمكنه تغيير هذا",
+      ),
       "literalopenReply": MessageLookupByLibrary.simpleMessage("فتح الرد"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage("افتح البريد من Kyron"),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage("كلمة المرور وتسجيل الدخول"),
+      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
+        "افتح البريد من Kyron",
+      ),
+      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
+        "كلمة المرور وتسجيل الدخول",
+      ),
       "literalpostInCommunityName": (Object a0) => "انشر في ${a0}",
       "literalpostInWidgetCommunityName": (Object a0) => "انشر في ${a0}",
-      "literalpostItWithYourOwnWordsAboveIt": MessageLookupByLibrary.simpleMessage("انشره بكلماتك الخاصة أعلاه"),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage("اللغة الأساسية"),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage("إشعارات الدفع"),
+      "literalpostItWithYourOwnWordsAboveIt":
+          MessageLookupByLibrary.simpleMessage(
+        "انشره بكلماتك الخاصة أعلاه",
+      ),
+      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "اللغة الأساسية",
+      ),
+      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
+        "إشعارات الدفع",
+      ),
       "literalreading": MessageLookupByLibrary.simpleMessage("جارٍ القراءة…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage("تسجيل مشاركة صوتية"),
-      "literalrecordAgain": MessageLookupByLibrary.simpleMessage("سجل مرة أخرى"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage("إزالة كمشرف"),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage("إزالته من المجتمع"),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage("إزالة من المحفوظات"),
+      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
+        "تسجيل مشاركة صوتية",
+      ),
+      "literalrecordAgain":
+          MessageLookupByLibrary.simpleMessage("سجل مرة أخرى"),
+      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
+        "إزالة كمشرف",
+      ),
+      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
+        "إزالته من المجتمع",
+      ),
+      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
+        "إزالة من المحفوظات",
+      ),
       "literalremoveLabel": (Object a0) => "إزالة ${a0}",
       "literalremoveLanguageEnglishname": (Object a0) => "إزالة ${a0}",
       "literalremoveMemberDisplayname": (Object a0) => "إزالة ${a0}؟",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage("إزالة الاستفتاء"),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage("إزالة هذه الإجابة"),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage("إزالة هذه المحادثة"),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage("إزالة هذا الاستفتاء"),
+      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
+        "إزالة الاستفتاء",
+      ),
+      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
+        "إزالة هذه الإجابة",
+      ),
+      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
+        "إزالة هذه المحادثة",
+      ),
+      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
+        "إزالة هذا الاستفتاء",
+      ),
       "literalreportAuthor": (Object a0) => "الإبلاغ عن ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("الإبلاغ عن المشاركة"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("إعادة إرسال الرمز"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("المشاركات المحفوظة"),
+      "literalreportPost": MessageLookupByLibrary.simpleMessage(
+        "الإبلاغ عن المشاركة",
+      ),
+      "literalresendCode": MessageLookupByLibrary.simpleMessage(
+        "إعادة إرسال الرمز",
+      ),
+      "literalsavedPosts": MessageLookupByLibrary.simpleMessage(
+        "المشاركات المحفوظة",
+      ),
       "literalsaySomething": MessageLookupByLibrary.simpleMessage("قل شيئًا"),
-      "literalsaySomethingToWidgetCommunityName": (Object a0) => "قُل شيئًا إلى ${a0}",
+      "literalsaySomethingToWidgetCommunityName": (Object a0) =>
+          "قُل شيئًا إلى ${a0}",
       "literalsearchFailed": MessageLookupByLibrary.simpleMessage("فشل البحث"),
       "literalsendAgain": MessageLookupByLibrary.simpleMessage("أعد الإرسال"),
       "literalsendAgainInCooldownS": (Object a0) => "أعد الإرسال خلال ${a0}s",
-      "literalsendFeedback": MessageLookupByLibrary.simpleMessage("إرسال ملاحظات"),
+      "literalsendFeedback":
+          MessageLookupByLibrary.simpleMessage("إرسال ملاحظات"),
       "literalsendTheLink": MessageLookupByLibrary.simpleMessage("أرسل الرابط"),
-      "literalsentItIsReportFiledNumber": (Object a0) => "تم الإرسال. هذا هو التقرير رقم ${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage("عيّن كلمة مرور وواصل"),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage("مشاركة السجل مع الدعم"),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage("مشاركة هذا المجتمع"),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage("مشاركة هذه الصفحة"),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage("مشاركة هذا الملف الشخصي"),
+      "literalsentItIsReportFiledNumber": (Object a0) =>
+          "تم الإرسال. هذا هو التقرير رقم ${a0}.",
+      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
+        "عيّن كلمة مرور وواصل",
+      ),
+      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
+        "مشاركة السجل مع الدعم",
+      ),
+      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "مشاركة هذا المجتمع",
+      ),
+      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
+        "مشاركة هذه الصفحة",
+      ),
+      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
+        "مشاركة هذا الملف الشخصي",
+      ),
       "literalshareVia": MessageLookupByLibrary.simpleMessage("المشاركة عبر…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage("شارك مع اقتباس"),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage("عرض المزيد من المشاركات مثل هذه"),
-      "literalshowPassword": MessageLookupByLibrary.simpleMessage("إظهار كلمة المرور"),
+      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
+        "شارك مع اقتباس",
+      ),
+      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
+        "عرض المزيد من المشاركات مثل هذه",
+      ),
+      "literalshowPassword": MessageLookupByLibrary.simpleMessage(
+        "إظهار كلمة المرور",
+      ),
       "literalshowResults": MessageLookupByLibrary.simpleMessage("عرض النتائج"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage("ابدأ مجتمعًا"),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage("ابدأ التسجيل"),
-      "literalstopLoading": MessageLookupByLibrary.simpleMessage("إيقاف التحميل"),
-      "literalstopSeeingThisPostAndRepliesToIt": MessageLookupByLibrary.simpleMessage("توقف عن رؤية هذه المشاركة والردود عليها"),
-      "literalstoriesRibbonStoriesLengthItems": (Object a0) => "شريط القصص، ${a0} عناصر",
-      "literalswitchCamera": MessageLookupByLibrary.simpleMessage("تبديل الكاميرا"),
+      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
+        "ابدأ مجتمعًا",
+      ),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("ابدأ التسجيل"),
+      "literalstopLoading":
+          MessageLookupByLibrary.simpleMessage("إيقاف التحميل"),
+      "literalstopSeeingThisPostAndRepliesToIt":
+          MessageLookupByLibrary.simpleMessage(
+        "توقف عن رؤية هذه المشاركة والردود عليها",
+      ),
+      "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
+          "شريط القصص، ${a0} عناصر",
+      "literalswitchCamera":
+          MessageLookupByLibrary.simpleMessage("تبديل الكاميرا"),
       "literaltagSomeone": MessageLookupByLibrary.simpleMessage("اشِر إلى شخص"),
       "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("التقط صورة"),
-      "literaltapTheBannerOrThePictureToChangeIt": MessageLookupByLibrary.simpleMessage("انقر الشعار أو الصورة لتغييرها"),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage("اضغط على الرابط داخله"),
-      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage("اضغط لإضافة صورة وغلاف"),
-      "literalthatDidNotGoThroughTryAgain": MessageLookupByLibrary.simpleMessage("لم يتم الإرسال. حاول مرة أخرى."),
-      "literalthatGifCouldNotBeDownloaded": MessageLookupByLibrary.simpleMessage("تعذّر تنزيل ذلك الـ GIF."),
-      "literalthatLinkIsNotOneThisCanOpen": MessageLookupByLibrary.simpleMessage("هذا الرابط ليس من الروابط التي يمكن لهذا فتحها."),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage("الكاميرا مغلقة"),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage("هذا المجتمع"),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage("هذا الرد اختفى"),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage("ترجمة المشاركة"),
-      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage("إيقاف الصوت"),
+      "literaltapTheBannerOrThePictureToChangeIt":
+          MessageLookupByLibrary.simpleMessage(
+              "انقر الشعار أو الصورة لتغييرها"),
+      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
+        "اضغط على الرابط داخله",
+      ),
+      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
+        "اضغط لإضافة صورة وغلاف",
+      ),
+      "literalthatDidNotGoThroughTryAgain":
+          MessageLookupByLibrary.simpleMessage(
+        "لم يتم الإرسال. حاول مرة أخرى.",
+      ),
+      "literalthatGifCouldNotBeDownloaded":
+          MessageLookupByLibrary.simpleMessage(
+        "تعذّر تنزيل ذلك الـ GIF.",
+      ),
+      "literalthatLinkIsNotOneThisCanOpen":
+          MessageLookupByLibrary.simpleMessage(
+        "هذا الرابط ليس من الروابط التي يمكن لهذا فتحها.",
+      ),
+      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
+        "الكاميرا مغلقة",
+      ),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("هذا المجتمع"),
+      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
+        "هذا الرد اختفى",
+      ),
+      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
+        "ترجمة المشاركة",
+      ),
+      "literalturnSoundOff":
+          MessageLookupByLibrary.simpleMessage("إيقاف الصوت"),
       "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("تشغيل الصوت"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage("استخدم أحد صورنا"),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage("أُعيد إرسال رمز التحقق."),
-      "literalverificationFailedDescribeapierrorE": (Object a0) => "فشلت عملية التحقق: ${a0}",
-      "literalverifyEmail": MessageLookupByLibrary.simpleMessage("تحقق من البريد الإلكتروني"),
-      "literalviewersLikesSavesAndComments": MessageLookupByLibrary.simpleMessage("المشاهدون والإعجابات والحفظ والتعليقات"),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage("ما يحتفظ به Kyron"),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage("ما الذي يفعله هذا التطبيق"),
-      "literalwhatYouDidWhatYouExpectedWhatHappened": MessageLookupByLibrary.simpleMessage("ما فعلته، ما كنت تتوقعه، ما حدث "),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage("ما تنشره هو ملكك"),
-      "literalwhetherKyronIsReachableRightNow": MessageLookupByLibrary.simpleMessage("ما إذا كان Kyron متاحًا الآن"),
-      "literalwhoCanReply": MessageLookupByLibrary.simpleMessage("من يمكنه الرد"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage("من تريد أن تشير إليه؟"),
-      "literalyouAlreadyFollowEveryTrendingTag": MessageLookupByLibrary.simpleMessage("أنت بالفعل تتابع كل الوسوم الرائجة"),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage("أنت مُتابع حتى آخر شيء"),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage("أنت لست عضوًا في أي مجتمعات"),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage("أنت خارج الدخول."),
-      "literalyouExampleCom": MessageLookupByLibrary.simpleMessage("you@example.com"),
+      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
+        "استخدم أحد صورنا",
+      ),
+      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
+        "أُعيد إرسال رمز التحقق.",
+      ),
+      "literalverificationFailedDescribeapierrorE": (Object a0) =>
+          "فشلت عملية التحقق: ${a0}",
+      "literalverifyEmail": MessageLookupByLibrary.simpleMessage(
+        "تحقق من البريد الإلكتروني",
+      ),
+      "literalviewersLikesSavesAndComments":
+          MessageLookupByLibrary.simpleMessage(
+        "المشاهدون والإعجابات والحفظ والتعليقات",
+      ),
+      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
+        "ما يحتفظ به Kyron",
+      ),
+      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
+        "ما الذي يفعله هذا التطبيق",
+      ),
+      "literalwhatYouDidWhatYouExpectedWhatHappened":
+          MessageLookupByLibrary.simpleMessage(
+              "ما فعلته، ما كنت تتوقعه، ما حدث "),
+      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
+        "ما تنشره هو ملكك",
+      ),
+      "literalwhetherKyronIsReachableRightNow":
+          MessageLookupByLibrary.simpleMessage("ما إذا كان Kyron متاحًا الآن"),
+      "literalwhoCanReply":
+          MessageLookupByLibrary.simpleMessage("من يمكنه الرد"),
+      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
+        "من تريد أن تشير إليه؟",
+      ),
+      "literalyouAlreadyFollowEveryTrendingTag":
+          MessageLookupByLibrary.simpleMessage(
+        "أنت بالفعل تتابع كل الوسوم الرائجة",
+      ),
+      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "أنت مُتابع حتى آخر شيء",
+      ),
+      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
+        "أنت لست عضوًا في أي مجتمعات",
+      ),
+      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
+        "أنت خارج الدخول.",
+      ),
+      "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
+        "you@example.com",
+      ),
       "literalyouHaveLeftCommunityName": (Object a0) => "لقد غادرت ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage("لم تنشر بعد"),
+      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
+        "لم تنشر بعد",
+      ),
       "loadMore": MessageLookupByLibrary.simpleMessage("تحميل المزيد"),
       "logCleared": MessageLookupByLibrary.simpleMessage("تم مسح السجل"),
       "logCopied": MessageLookupByLibrary.simpleMessage("تم نسخ السجل"),
@@ -377,231 +812,449 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
       "logOutQuestion": MessageLookupByLibrary.simpleMessage("تسجيل الخروج؟"),
       "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
-      "loginFailed": MessageLookupByLibrary.simpleMessage("فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد الخاصة بك."),
+      "loginFailed": MessageLookupByLibrary.simpleMessage(
+        "فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد الخاصة بك.",
+      ),
       "manage": MessageLookupByLibrary.simpleMessage("إدارة"),
       "menu": MessageLookupByLibrary.simpleMessage("القائمة"),
       "message": MessageLookupByLibrary.simpleMessage("رسالة"),
       "messages": MessageLookupByLibrary.simpleMessage("الرسائل"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage("كل المحادثات محدَّثة."),
-      "messagesNoMessages": MessageLookupByLibrary.simpleMessage("افتح ملف شخص واضغط رسالة لبدء محادثة."),
+      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "كل المحادثات محدَّثة.",
+      ),
+      "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
+        "افتح ملف شخص واضغط رسالة لبدء محادثة.",
+      ),
       "mute": MessageLookupByLibrary.simpleMessage("كتم"),
       "mutedAndBlocked": MessageLookupByLibrary.simpleMessage("مكتوم ومُحظور"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage("كلمات ووسوم مكتومة"),
+      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
+        "كلمات ووسوم مكتومة",
+      ),
       "name": MessageLookupByLibrary.simpleMessage("الاسم"),
       "nameScreen": MessageLookupByLibrary.simpleMessage("شاشة <name>"),
-      "newEmailAddress": MessageLookupByLibrary.simpleMessage("عنوان بريد إلكتروني جديد"),
+      "newEmailAddress": MessageLookupByLibrary.simpleMessage(
+        "عنوان بريد إلكتروني جديد",
+      ),
       "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
       "newPost": MessageLookupByLibrary.simpleMessage("مشاركة جديدة"),
       "normalised": (Object a0) => "#\\${a0}",
       "notNow": MessageLookupByLibrary.simpleMessage("ليس الآن"),
-      "notSentTapRetry": MessageLookupByLibrary.simpleMessage("لم تُرسل. اضغط للمحاولة مرة أخرى"),
+      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
+        "لم تُرسل. اضغط للمحاولة مرة أخرى",
+      ),
       "nothingMatchesQuery": (Object a0) => "لا شيء على Kyron يطابق \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("لا يوجد شيء لنسخه"),
-      "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage("الإعجابات والردود والمتابعون الجدد يصلون هنا عند ورودهم."),
-      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage("الأشخاص الذين يتابعونك يظهرون هنا."),
-      "notificationLikesDetail": MessageLookupByLibrary.simpleMessage("عندما يعجب شخص بمشاركتك، يظهر هنا."),
-      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage("الردود على مشاركاتك تصل هنا."),
-      "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage("عندما يعيد شخص نشر مشاركتك، يظهر هنا."),
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("لا يوجد شيء لنسخه"),
+      "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "الإعجابات والردود والمتابعون الجدد يصلون هنا عند ورودهم.",
+      ),
+      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
+        "الأشخاص الذين يتابعونك يظهرون هنا.",
+      ),
+      "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
+        "عندما يعجب شخص بمشاركتك، يظهر هنا.",
+      ),
+      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
+        "الردود على مشاركاتك تصل هنا.",
+      ),
+      "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
+        "عندما يعيد شخص نشر مشاركتك، يظهر هنا.",
+      ),
       "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
       "openInBrowser": MessageLookupByLibrary.simpleMessage("افتح في المتصفح"),
       "or": MessageLookupByLibrary.simpleMessage("أو"),
       "pageNotFound": MessageLookupByLibrary.simpleMessage("الصفحة غير موجودة"),
       "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage("كلمة المرور قصيرة جدًا"),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage("أنت بالفعل تتابع كل من كان Kyron سيضعه هنا."),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage("اختر اهتماماتك"),
+      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+        "كلمة المرور قصيرة جدًا",
+      ),
+      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "أنت بالفعل تتابع كل من كان Kyron سيضعه هنا.",
+      ),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("اختر اهتماماتك"),
       "post": MessageLookupByLibrary.simpleMessage("نشر"),
       "postAnalytics": MessageLookupByLibrary.simpleMessage("إحصاءات المشاركة"),
       "postInCommunity": (Object a0) => "انشر في ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage("انشره، قُلْه، أظهره."),
-      "postTextCopied": MessageLookupByLibrary.simpleMessage("تم نسخ نص المشاركة"),
+      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
+        "انشره، قُلْه، أظهره.",
+      ),
+      "postTextCopied":
+          MessageLookupByLibrary.simpleMessage("تم نسخ نص المشاركة"),
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("تم تحديث الملف الشخصي"),
+      "profileUpdated": MessageLookupByLibrary.simpleMessage(
+        "تم تحديث الملف الشخصي",
+      ),
       "profile_bio": MessageLookupByLibrary.simpleMessage("نبذة"),
       "profile_display_name": MessageLookupByLibrary.simpleMessage("اسم العرض"),
       "profile_location": MessageLookupByLibrary.simpleMessage("الموقع"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage("اضغط للتغيير"),
-      "profile_website": MessageLookupByLibrary.simpleMessage("الموقع الإلكتروني"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage("إشعارات الدفع"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("اضغط للتغيير"),
+      "profile_website":
+          MessageLookupByLibrary.simpleMessage("الموقع الإلكتروني"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("إشعارات الدفع"),
       "quote": MessageLookupByLibrary.simpleMessage("اقتباس"),
       "quotePost": MessageLookupByLibrary.simpleMessage("اقتباس مشاركة"),
       "reachAPerson": MessageLookupByLibrary.simpleMessage("التواصل مع شخص"),
       "remove": MessageLookupByLibrary.simpleMessage("إزالة"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage("إزالة هذه المحادثة؟"),
+      "removeConversation": MessageLookupByLibrary.simpleMessage(
+        "إزالة هذه المحادثة؟",
+      ),
       "removeMember": (Object a0) => "إزالة ${a0}؟",
-      "removeMessage": MessageLookupByLibrary.simpleMessage("إزالة هذه الرسالة؟"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage("الردود والمتابعات والاشارات"),
+      "removeMessage":
+          MessageLookupByLibrary.simpleMessage("إزالة هذه الرسالة؟"),
+      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
+        "الردود والمتابعات والاشارات",
+      ),
       "repliesPolicy": (Object a0) => "الردود: ${a0}",
       "reply": MessageLookupByLibrary.simpleMessage("رد"),
-      "reply_anyone": MessageLookupByLibrary.simpleMessage("يمكن لأي شخص التفاعل"),
-      "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage("لا يزال بإمكان أي شخص رؤية وإعادة نشر واقتباس هذه المشاركة."),
-      "reply_anyone_detail": MessageLookupByLibrary.simpleMessage("أي شخص على Kyron يمكنه الرد على هذه المشاركة."),
-      "reply_followers": MessageLookupByLibrary.simpleMessage("الأشخاص الذين يتابعونك"),
-      "reply_followers_detail": MessageLookupByLibrary.simpleMessage("فقط الأشخاص الذين يتابعونك يمكنهم الرد على هذه المشاركة."),
-      "reply_mentioned": MessageLookupByLibrary.simpleMessage("الأشخاص الذين تذكرهم"),
-      "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage("فقط الأشخاص الذين تذكرهم @في هذه المشاركة يمكنهم الرد."),
+      "reply_anyone":
+          MessageLookupByLibrary.simpleMessage("يمكن لأي شخص التفاعل"),
+      "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
+        "لا يزال بإمكان أي شخص رؤية وإعادة نشر واقتباس هذه المشاركة.",
+      ),
+      "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
+        "أي شخص على Kyron يمكنه الرد على هذه المشاركة.",
+      ),
+      "reply_followers": MessageLookupByLibrary.simpleMessage(
+        "الأشخاص الذين يتابعونك",
+      ),
+      "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
+        "فقط الأشخاص الذين يتابعونك يمكنهم الرد على هذه المشاركة.",
+      ),
+      "reply_mentioned": MessageLookupByLibrary.simpleMessage(
+        "الأشخاص الذين تذكرهم",
+      ),
+      "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
+        "فقط الأشخاص الذين تذكرهم @في هذه المشاركة يمكنهم الرد.",
+      ),
       "reply_nobody": MessageLookupByLibrary.simpleMessage("لا أحد يمكنه الرد"),
-      "reply_nobody_detail": MessageLookupByLibrary.simpleMessage("تم إيقاف الردود. لا تزال قادرًا على الرد."),
-      "reply_who_can_reply": MessageLookupByLibrary.simpleMessage("من يمكنه الرد؟"),
+      "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
+        "تم إيقاف الردود. لا تزال قادرًا على الرد.",
+      ),
+      "reply_who_can_reply":
+          MessageLookupByLibrary.simpleMessage("من يمكنه الرد؟"),
       "report": MessageLookupByLibrary.simpleMessage("الإبلاغ"),
-      "reportCopied": MessageLookupByLibrary.simpleMessage("تم نسخ التقرير. ألصقه في بريد إلكتروني إلى الدعم."),
+      "reportCopied": MessageLookupByLibrary.simpleMessage(
+        "تم نسخ التقرير. ألصقه في بريد إلكتروني إلى الدعم.",
+      ),
       "reportSent": MessageLookupByLibrary.simpleMessage("تم إرسال التقرير"),
       "repost": MessageLookupByLibrary.simpleMessage("إعادة نشر"),
       "reset": MessageLookupByLibrary.simpleMessage("إعادة تعيين"),
-      "resetPassword": MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage(
+        "إعادة تعيين كلمة المرور",
+      ),
       "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
       "save": MessageLookupByLibrary.simpleMessage("حفظ"),
       "saveDraft": MessageLookupByLibrary.simpleMessage("حفظ المسودة"),
       "saySomething": (Object a0) => "قُل شيئًا إلى ${a0}",
       "search": MessageLookupByLibrary.simpleMessage("بحث"),
-      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage("البحث بالاسم أو المعرّف"),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage("ابحث في المجتمعات"),
+      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
+        "البحث بالاسم أو المعرّف",
+      ),
+      "searchCommunities": MessageLookupByLibrary.simpleMessage(
+        "ابحث في المجتمعات",
+      ),
       "searchGIFs": MessageLookupByLibrary.simpleMessage("ابحث عن صور GIF"),
       "searchLanguages": MessageLookupByLibrary.simpleMessage("ابحث عن لغات"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage("ابحث في الوسوم الرائجة"),
-      "securityAlerts": MessageLookupByLibrary.simpleMessage("تنبيهات الأمان وتغييرات الحساب"),
-      "selectAppLanguage": MessageLookupByLibrary.simpleMessage("اختر أي لغة تريد استخدامها لواجهة التطبيق."),
-      "selectContentLanguages": MessageLookupByLibrary.simpleMessage("اختر اللغات التي تريد أن تتضمّنها المصادر التي تشترك بها. إذا لم تختر أيًا، سيُعرض كل اللغات."),
-      "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage("اختر لغتك المفضلة للترجمات في موجزك."),
+      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "ابحث في الوسوم الرائجة",
+      ),
+      "securityAlerts": MessageLookupByLibrary.simpleMessage(
+        "تنبيهات الأمان وتغييرات الحساب",
+      ),
+      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
+        "اختر أي لغة تريد استخدامها لواجهة التطبيق.",
+      ),
+      "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
+        "اختر اللغات التي تريد أن تتضمّنها المصادر التي تشترك بها. إذا لم تختر أيًا، سيُعرض كل اللغات.",
+      ),
+      "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "اختر لغتك المفضلة للترجمات في موجزك.",
+      ),
       "send": MessageLookupByLibrary.simpleMessage("إرسال"),
       "sendConfirmation": MessageLookupByLibrary.simpleMessage("إرسال التأكيد"),
-      "sendErrorReport": MessageLookupByLibrary.simpleMessage("إرسال تقرير الخطأ"),
+      "sendErrorReport":
+          MessageLookupByLibrary.simpleMessage("إرسال تقرير الخطأ"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("إرسال ملاحظات"),
       "sendReport": MessageLookupByLibrary.simpleMessage("إرسال تقرير"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("أرسل إلى الدعم"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("حالة الخدمة"),
       "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
-      "shareAppLog": MessageLookupByLibrary.simpleMessage("مشاركة سجل التطبيق مع الدعم"),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("تسجيل الدخول إلى Kyron"),
+      "shareAppLog": MessageLookupByLibrary.simpleMessage(
+        "مشاركة سجل التطبيق مع الدعم",
+      ),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage(
+        "تسجيل الدخول إلى Kyron",
+      ),
       "signedInAs": MessageLookupByLibrary.simpleMessage("مسجل الدخول باسم"),
       "signupFailed": (Object a0) => "فشل التسجيل: ${a0}",
       "stay": MessageLookupByLibrary.simpleMessage("البقاء"),
-      "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage("Kyron لا يزال في مرحلة مبكرة، وأسرع طريقة للوصول إلى شخص يمكنه إصلاح مشكلة هي فتح تذكرة. أدرج ما كنت تفعله وما حدث بدلًا من ذلك."),
-      "supportInboxNotYet": MessageLookupByLibrary.simpleMessage("لا يوجد صندوق دعم داخل التطبيق بعد، لذا تشير هذه الشاشة إلى المكان الذي يُراقب فعليًا بدلًا من نموذج لا يؤدي إلى أي مكان."),
+      "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
+        "Kyron لا يزال في مرحلة مبكرة، وأسرع طريقة للوصول إلى شخص يمكنه إصلاح مشكلة هي فتح تذكرة. أدرج ما كنت تفعله وما حدث بدلًا من ذلك.",
+      ),
+      "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
+        "لا يوجد صندوق دعم داخل التطبيق بعد، لذا تشير هذه الشاشة إلى المكان الذي يُراقب فعليًا بدلًا من نموذج لا يؤدي إلى أي مكان.",
+      ),
       "systemLog": MessageLookupByLibrary.simpleMessage("سجل النظام"),
-      "tellMissingBroken": MessageLookupByLibrary.simpleMessage("أخبرنا ما الناقص أو المعطّل"),
+      "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
+        "أخبرنا ما الناقص أو المعطّل",
+      ),
       "terms": MessageLookupByLibrary.simpleMessage("الشروط"),
-      "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage("نص، وصوت وفيديو، والأشخاص الذين يصنعونها، والغرف التي يتحدثون فيها."),
-      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage("المؤلف لا يحتوي على زر نشر"),
+      "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
+        "نص، وصوت وفيديو، والأشخاص الذين يصنعونها، والغرف التي يتحدثون فيها.",
+      ),
+      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
+        "المؤلف لا يحتوي على زر نشر",
+      ),
       "theme_dark": MessageLookupByLibrary.simpleMessage("داكن"),
       "theme_dark_detail": MessageLookupByLibrary.simpleMessage("داكن دائمًا"),
       "theme_dim": MessageLookupByLibrary.simpleMessage("خفيف السواد"),
-      "theme_dim_detail": MessageLookupByLibrary.simpleMessage("داكن أقل حدة، أزرق-رمادي بدلًا من الأسود"),
+      "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+        "داكن أقل حدة، أزرق-رمادي بدلًا من الأسود",
+      ),
       "theme_light": MessageLookupByLibrary.simpleMessage("فاتح"),
       "theme_light_detail": MessageLookupByLibrary.simpleMessage("فاتح دائمًا"),
       "theme_system": MessageLookupByLibrary.simpleMessage("النظام"),
-      "theme_system_detail": MessageLookupByLibrary.simpleMessage("اتباع إعدادات الضوء أو الظلام الخاصة بالهاتف"),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage("يتم إعداد المواضيع بواسطة Kyron، ولا توجد أي الآن. عُد لاحقًا."),
+      "theme_system_detail": MessageLookupByLibrary.simpleMessage(
+        "اتباع إعدادات الضوء أو الظلام الخاصة بالهاتف",
+      ),
+      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "يتم إعداد المواضيع بواسطة Kyron، ولا توجد أي الآن. عُد لاحقًا.",
+      ),
       "translate": MessageLookupByLibrary.simpleMessage("ترجمة"),
-      "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage("الترجمة لم تُنشأ بعد. لا شيء في موجزك يُترجم اليوم؛ سيُتذكّر هذا لوقت حدوثه."),
-      "translation_description": MessageLookupByLibrary.simpleMessage("كلمات Kyron نفسها ما زالت تُترجم، لذلك تبقى معظم الشاشات باللغة الإنجليزية الآن. ما الذي يغيّره هذا اليوم: أجزاء واجهة Flutter نفسها، التواريخ والأرقام، واتجاه تخطيط التطبيق للغات من اليمين إلى اليسار."),
+      "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
+        "الترجمة لم تُنشأ بعد. لا شيء في موجزك يُترجم اليوم؛ سيُتذكّر هذا لوقت حدوثه.",
+      ),
+      "translation_description": MessageLookupByLibrary.simpleMessage(
+        "كلمات Kyron نفسها ما زالت تُترجم، لذلك تبقى معظم الشاشات باللغة الإنجليزية الآن. ما الذي يغيّره هذا اليوم: أجزاء واجهة Flutter نفسها، التواريخ والأرقام، واتجاه تخطيط التطبيق للغات من اليمين إلى اليسار.",
+      ),
       "tryAgain": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
+      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
+        "سياسة الخصوصية",
+      ),
+      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
+        "شروط الخدمة",
+      ),
       "ui_account": MessageLookupByLibrary.simpleMessage("الحساب"),
       "ui_after": MessageLookupByLibrary.simpleMessage("بعد"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("التطبيق والجهاز"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
-      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage("فاتح، داكن، أو كما هو مُعين على الهاتف"),
+      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
+        "فاتح، داكن، أو كما هو مُعين على الهاتف",
+      ),
       "ui_before": MessageLookupByLibrary.simpleMessage("قبل"),
-      "ui_block_detail": MessageLookupByLibrary.simpleMessage("لن يرى كل منكما الآخر على Kyron، وأي متابعة بينكما تُزال. لن يتم إبلاغهم."),
+      "ui_block_detail": MessageLookupByLibrary.simpleMessage(
+        "لن يرى كل منكما الآخر على Kyron، وأي متابعة بينكما تُزال. لن يتم إبلاغهم.",
+      ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("يحمل"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("المجتمعات"),
-      "ui_communities_screen_what_is_it_for_optional_39b687": MessageLookupByLibrary.simpleMessage("ما الغرض؟ (اختياري)"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage("المحتوى والعرض"),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage("تعذّر تحميل موجزك"),
-      "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage("تعذّر تحميل مشاركاتك المعجبة"),
-      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage("تعذّر تحميل ملفك الشخصي"),
-      "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage("تعذّر تحميل مشاركاتك المحفوظة"),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage("المعرف اللامركزي"),
+      "ui_communities_screen_what_is_it_for_optional_39b687":
+          MessageLookupByLibrary.simpleMessage("ما الغرض؟ (اختياري)"),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("المحتوى والعرض"),
+      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل موجزك",
+      ),
+      "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل مشاركاتك المعجبة",
+      ),
+      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل ملفك الشخصي",
+      ),
+      "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
+        "تعذّر تحميل مشاركاتك المحفوظة",
+      ),
+      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
+        "المعرف اللامركزي",
+      ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("التشخيص"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("لا شيء هنا بعد"),
-      "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage("تابع بعض الحسابات وستظهر مشاركاتهم هنا."),
-      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage("لا شيء من الأشخاص الذين تتابعهم"),
-      "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage("ستظهر المشاركات هنا بينما يكتبها الناس."),
-      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage("المشاركات التي تحمل مقطعًا ستظهر هنا."),
-      "ui_feed_videos_empty": MessageLookupByLibrary.simpleMessage("لا فيديوهات بعد"),
+      "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
+        "تابع بعض الحسابات وستظهر مشاركاتهم هنا.",
+      ),
+      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
+        "لا شيء من الأشخاص الذين تتابعهم",
+      ),
+      "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
+        "ستظهر المشاركات هنا بينما يكتبها الناس.",
+      ),
+      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
+        "المشاركات التي تحمل مقطعًا ستظهر هنا.",
+      ),
+      "ui_feed_videos_empty": MessageLookupByLibrary.simpleMessage(
+        "لا فيديوهات بعد",
+      ),
       "ui_feedback": MessageLookupByLibrary.simpleMessage("ملاحظات"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage("ابحث عن أشخاص على Kyron"),
+      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
+        "ابحث عن أشخاص على Kyron",
+      ),
       "ui_from_account": MessageLookupByLibrary.simpleMessage("من حساب"),
       "ui_help": MessageLookupByLibrary.simpleMessage("مساعدة"),
-      "ui_interest_noted": MessageLookupByLibrary.simpleMessage("تمت الملاحظة. هذا يساعد في تشكيل ما يُعرض عليك."),
+      "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
+        "تمت الملاحظة. هذا يساعد في تشكيل ما يُعرض عليك.",
+      ),
       "ui_join": MessageLookupByLibrary.simpleMessage("انضم"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("منضم"),
       "ui_language": MessageLookupByLibrary.simpleMessage("اللغة"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("قانوني"),
       "ui_like": MessageLookupByLibrary.simpleMessage("إعجاب"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("المشاركات المعجبة"),
-      "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage("المشاركات التي تُعجبك تظهر هنا، الأحدث أولًا."),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("المشاركات المعجبة"),
+      "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "المشاركات التي تُعجبك تظهر هنا، الأحدث أولًا.",
+      ),
       "ui_link_copied": MessageLookupByLibrary.simpleMessage("تم نسخ الرابط"),
-      "ui_mute_detail": MessageLookupByLibrary.simpleMessage("ستتوقف عن رؤية منشوراتهم. لن يتم إبلاغهم."),
+      "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
+        "ستتوقف عن رؤية منشوراتهم. لن يتم إبلاغهم.",
+      ),
       "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("لا إعجابات بعد"),
-      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage("لا مشاركات تطابق تلك المرشحات."),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage("لا شيء محفوظ بعد"),
-      "ui_onboard_step3_screen_finish_5c0ad8": MessageLookupByLibrary.simpleMessage("إنهاء"),
-      "ui_onboard_step3_screen_skip_7b13d8": MessageLookupByLibrary.simpleMessage("تخطي"),
+      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
+        "لا مشاركات تطابق تلك المرشحات.",
+      ),
+      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
+        "لا شيء محفوظ بعد",
+      ),
+      "ui_onboard_step3_screen_finish_5c0ad8":
+          MessageLookupByLibrary.simpleMessage(
+        "إنهاء",
+      ),
+      "ui_onboard_step3_screen_skip_7b13d8":
+          MessageLookupByLibrary.simpleMessage(
+        "تخطي",
+      ),
       "ui_pause": MessageLookupByLibrary.simpleMessage("إيقاف مؤقت"),
       "ui_play": MessageLookupByLibrary.simpleMessage("تشغيل"),
-      "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage("تمت إزالته من ملفك الشخصي ومن موجز الجميع. الردود عليه تُزال معه."),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("تم حذف المشاركة"),
+      "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
+        "تمت إزالته من ملفك الشخصي ومن موجز الجميع. الردود عليه تُزال معه.",
+      ),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("تم حذف المشاركة"),
       "ui_post_hidden": MessageLookupByLibrary.simpleMessage("المشاركة مخفية"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage("تم نسخ نص المشاركة"),
+      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
+        "تم نسخ نص المشاركة",
+      ),
       "ui_posted_between": MessageLookupByLibrary.simpleMessage("نشر بين"),
-      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage("مخفي. سنعرض لك عددًا أقل من المشاركات المشابهة."),
+      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
+        "مخفي. سنعرض لك عددًا أقل من المشاركات المشابهة.",
+      ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("التفضيلات"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("الخصوصية"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("المشاركات المحفوظة"),
-      "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage("اضغط أيقونة الأرشيف على أي مشاركة للحفاظ عليها هنا. فقط أنت يمكنك رؤية ما تحفظه."),
-      "ui_search_by_handle_or_display_name": MessageLookupByLibrary.simpleMessage("البحث بالمعرّف أو اسم العرض."),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("المشاركات المحفوظة"),
+      "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "اضغط أيقونة الأرشيف على أي مشاركة للحفاظ عليها هنا. فقط أنت يمكنك رؤية ما تحفظه.",
+      ),
+      "ui_search_by_handle_or_display_name":
+          MessageLookupByLibrary.simpleMessage(
+        "البحث بالمعرّف أو اسم العرض.",
+      ),
       "ui_search_clear": MessageLookupByLibrary.simpleMessage("مسح"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage("ابحث في كل ما نُشر"),
+      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
+        "ابحث في كل ما نُشر",
+      ),
       "ui_search_filters": MessageLookupByLibrary.simpleMessage("المرشحات"),
       "ui_search_people": MessageLookupByLibrary.simpleMessage("ابحث عن أشخاص"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("ابحث في المشاركات"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("ابحث في المشاركات"),
       "ui_settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage("التطبيق والجهاز"),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage("المحتوى والعرض"),
-      "ui_settings_data_saver": MessageLookupByLibrary.simpleMessage("توفير البيانات"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage("أخبرنا برأيك"),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage("تصفح مقالات المساعدة"),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage("اختر لغتك"),
-      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage("من الذي كتمته أو حظرته"),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage("تفضيلات الإشعارات"),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage("معلومات ملفك الشخصي وطرق الاتصال"),
-      "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001": MessageLookupByLibrary.simpleMessage("سيتعين عليك تسجيل الدخول مرة أخرى للعودة إلى حسابك."),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage("إعدادات الأمان"),
-      "ui_settings_subscreens_confirm_password_41d040": MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
-      "ui_settings_subscreens_in_one_line_06bdaf": MessageLookupByLibrary.simpleMessage("في سطر واحد"),
-      "ui_settings_subscreens_new_email_address_dab96e": MessageLookupByLibrary.simpleMessage("عنوان بريد إلكتروني جديد"),
-      "ui_settings_subscreens_new_password_88c1bf": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
-      "ui_settings_subscreens_what_happened_977dd8": MessageLookupByLibrary.simpleMessage("ماذا حدث"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage("احصل على مساعدة من فريقنا"),
+      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
+        "التطبيق والجهاز",
+      ),
+      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
+        "المحتوى والعرض",
+      ),
+      "ui_settings_data_saver": MessageLookupByLibrary.simpleMessage(
+        "توفير البيانات",
+      ),
+      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
+        "أخبرنا برأيك",
+      ),
+      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
+        "تصفح مقالات المساعدة",
+      ),
+      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
+        "اختر لغتك",
+      ),
+      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
+        "من الذي كتمته أو حظرته",
+      ),
+      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
+        "تفضيلات الإشعارات",
+      ),
+      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
+        "معلومات ملفك الشخصي وطرق الاتصال",
+      ),
+      "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
+          MessageLookupByLibrary.simpleMessage(
+        "سيتعين عليك تسجيل الدخول مرة أخرى للعودة إلى حسابك.",
+      ),
+      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
+        "إعدادات الأمان",
+      ),
+      "ui_settings_subscreens_confirm_password_41d040":
+          MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+      "ui_settings_subscreens_in_one_line_06bdaf":
+          MessageLookupByLibrary.simpleMessage("في سطر واحد"),
+      "ui_settings_subscreens_new_email_address_dab96e":
+          MessageLookupByLibrary.simpleMessage("عنوان بريد إلكتروني جديد"),
+      "ui_settings_subscreens_new_password_88c1bf":
+          MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
+      "ui_settings_subscreens_what_happened_977dd8":
+          MessageLookupByLibrary.simpleMessage("ماذا حدث"),
+      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
+        "احصل على مساعدة من فريقنا",
+      ),
       "ui_share": MessageLookupByLibrary.simpleMessage("مشاركة"),
-      "ui_share_this_post": MessageLookupByLibrary.simpleMessage("مشاركة هذه المشاركة"),
+      "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
+        "مشاركة هذه المشاركة",
+      ),
       "ui_terms": MessageLookupByLibrary.simpleMessage("الشروط"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("هذه المشاركة"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("الموضوع مكتوم"),
       "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("إيقاف الصوت"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("تشغيل الصوت"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage("حرفان أو أكثر."),
-      "ui_words_or_filter": MessageLookupByLibrary.simpleMessage("كلمات، أو مرشح — حساب، نطاق زمني، أو ما تحمله المشاركة."),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("تراجع عن إعادة النشر"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("تحديث كلمة المرور"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage("استخدم عنوانًا مختلفًا"),
+      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
+        "حرفان أو أكثر.",
+      ),
+      "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
+        "كلمات، أو مرشح — حساب، نطاق زمني، أو ما تحمله المشاركة.",
+      ),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("تراجع عن إعادة النشر"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("تحديث كلمة المرور"),
+      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
+        "استخدم عنوانًا مختلفًا",
+      ),
       "username": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
-      "usernameRule": MessageLookupByLibrary.simpleMessage("يجب أن يكون اسم المستخدم بأحرف صغيرة (a-z, 0-9, _)"),
+      "usernameRule": MessageLookupByLibrary.simpleMessage(
+        "يجب أن يكون اسم المستخدم بأحرف صغيرة (a-z, 0-9, _)",
+      ),
       "video": MessageLookupByLibrary.simpleMessage("فيديو"),
       "voice_attach": MessageLookupByLibrary.simpleMessage("إرفاق"),
-      "voice_ready_attach": MessageLookupByLibrary.simpleMessage("جاهز للإرفاق"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage("سجل مشاركة صوتية"),
+      "voice_ready_attach":
+          MessageLookupByLibrary.simpleMessage("جاهز للإرفاق"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("سجل مشاركة صوتية"),
       "voice_recording": MessageLookupByLibrary.simpleMessage("جارٍ التسجيل…"),
       "voice_stop": MessageLookupByLibrary.simpleMessage("إيقاف"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("ماذا حدث"),
-      "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage("ماذا حدث، وماذا يجب أن نراجع؟"),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage("ما الموجود في هذه الصورة؟"),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage("ما الغرض؟ (اختياري)"),
-      "whatYouDid": MessageLookupByLibrary.simpleMessage("ما فعلته، ما كنت تتوقعه، ما حدث"),
-      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage("ما الذي كنت تفعله عندما حدث ذلك."),
-};
+      "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
+        "ماذا حدث، وماذا يجب أن نراجع؟",
+      ),
+      "whatInPicture": MessageLookupByLibrary.simpleMessage(
+        "ما الموجود في هذه الصورة؟",
+      ),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("ما الغرض؟ (اختياري)"),
+      "whatYouDid": MessageLookupByLibrary.simpleMessage(
+        "ما فعلته، ما كنت تتوقعه، ما حدث",
+      ),
+      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
+        "ما الذي كنت تفعله عندما حدث ذلك.",
+      ),
+    };
 
 final messageLookup = MessageLookup();

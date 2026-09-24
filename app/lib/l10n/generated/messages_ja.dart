@@ -13,19 +13,26 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "answerNumber": (Object a0) => "回答 ${a0}",
       "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage("システムログを添付"),
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage("単語、フレーズ、または #tag"),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("単語、フレーズ、または #tag"),
       "block": MessageLookupByLibrary.simpleMessage("ブロック"),
       "blockAuthor": (Object a0) => "${a0}をブロックしますか？",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage("ビルドの詳細をコピーしました"),
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("ビルドの詳細をコピーしました"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "cancel": MessageLookupByLibrary.simpleMessage("キャンセル"),
       "change": MessageLookupByLibrary.simpleMessage("変更"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("メールアドレスを変更"),
-      "checkKyronReachable": MessageLookupByLibrary.simpleMessage("Kyronに接続できるか確認する"),
-      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage("アカウントの確認のためにメールを確認してください。"),
+      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
+        "Kyronに接続できるか確認する",
+      ),
+      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
+        "アカウントの確認のためにメールを確認してください。",
+      ),
       "closeCommunity": (Object a0) => "${a0}を閉じますか？",
       "closeIt": MessageLookupByLibrary.simpleMessage("閉じる"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage("このコミュニティを閉じる"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("このコミュニティを閉じる"),
       "confirmPassword": MessageLookupByLibrary.simpleMessage("パスワードの確認"),
       "contactSupport": MessageLookupByLibrary.simpleMessage("サポートに連絡"),
       "continueWithEmail": MessageLookupByLibrary.simpleMessage("メールで続行"),
@@ -33,31 +40,41 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "copyReportInstead": MessageLookupByLibrary.simpleMessage("代わりにレポートをコピー"),
       "couldNotOpenGoogleSignIn": (Object a0) => "Googleのサインインを開けませんでした。${a0}",
       "couldNotSignOut": (Object a0) => "サインアウトできませんでした: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage("写真を撮影できませんでした。"),
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("写真を撮影できませんでした。"),
       "create": MessageLookupByLibrary.simpleMessage("作成"),
       "createAccount": MessageLookupByLibrary.simpleMessage("アカウントを作成"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage("アカウントを作成してください"),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage("プロフィールを作成してください"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("アカウントを作成してください"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("プロフィールを作成してください"),
       "delete": MessageLookupByLibrary.simpleMessage("削除"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage("このコメントを削除しますか？"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("このコメントを削除しますか？"),
       "deleteThisPost": MessageLookupByLibrary.simpleMessage("この投稿を削除しますか？"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage("この添付ファイルを説明してください"),
+      "describeAttachment": MessageLookupByLibrary.simpleMessage(
+        "この添付ファイルを説明してください",
+      ),
       "description": MessageLookupByLibrary.simpleMessage("説明"),
       "didCopied": MessageLookupByLibrary.simpleMessage("DIDをクリップボードにコピーしました"),
       "done": MessageLookupByLibrary.simpleMessage("完了"),
       "drafts": MessageLookupByLibrary.simpleMessage("下書き"),
       "editProfile": MessageLookupByLibrary.simpleMessage("プロフィールを編集"),
       "emailNotifications": MessageLookupByLibrary.simpleMessage("メール通知"),
-      "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage("このデバイスでは顔追跡機能は利用できません。"),
+      "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
+        "このデバイスでは顔追跡機能は利用できません。",
+      ),
       "followers": MessageLookupByLibrary.simpleMessage("フォロワー"),
       "following": MessageLookupByLibrary.simpleMessage("フォロー中"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage("パスワードをお忘れですか？"),
-      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage("よくある質問へのガイドと回答"),
+      "guidesAndAnswers":
+          MessageLookupByLibrary.simpleMessage("よくある質問へのガイドと回答"),
       "handle": MessageLookupByLibrary.simpleMessage("ハンドル名"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("ヘルプセンター"),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("ヘルプ＆サポート"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("一行で"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage("両者の画面から消えます。"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("両者の画面から消えます。"),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage("スレッドから削除されます。"),
       "keepEditing": MessageLookupByLibrary.simpleMessage("編集を続ける"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
@@ -83,7 +100,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "nothingToCopy": MessageLookupByLibrary.simpleMessage("コピーするものがありません"),
       "notifications": MessageLookupByLibrary.simpleMessage("通知"),
       "notNow": MessageLookupByLibrary.simpleMessage("今はしない"),
-      "notSentTapRetry": MessageLookupByLibrary.simpleMessage("送信されませんでした。タップして再試行してください"),
+      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
+        "送信されませんでした。タップして再試行してください",
+      ),
       "openInBrowser": MessageLookupByLibrary.simpleMessage("ブラウザで開く"),
       "pageNotFound": MessageLookupByLibrary.simpleMessage("ページが見つかりません"),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage("興味のある分野を選択"),
@@ -98,12 +117,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "reachAPerson": MessageLookupByLibrary.simpleMessage("個人に連絡する"),
       "remove": MessageLookupByLibrary.simpleMessage("削除"),
       "removeMember": (Object a0) => "「${a0}」を削除しますか？",
-      "removeConversation": MessageLookupByLibrary.simpleMessage("この会話を削除しますか？"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("この会話を削除しますか？"),
       "removeMessage": MessageLookupByLibrary.simpleMessage("このメッセージを削除しますか？"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage("返信、フォロー、メンション"),
+      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
+        "返信、フォロー、メンション",
+      ),
       "reply": MessageLookupByLibrary.simpleMessage("返信"),
       "report": MessageLookupByLibrary.simpleMessage("通報"),
-      "reportCopied": MessageLookupByLibrary.simpleMessage("通報内容がコピーされました。サポート宛てのメールに貼り付けてください。"),
+      "reportCopied": MessageLookupByLibrary.simpleMessage(
+        "通報内容がコピーされました。サポート宛てのメールに貼り付けてください。",
+      ),
       "reportSent": MessageLookupByLibrary.simpleMessage("通報を送信しました"),
       "repost": MessageLookupByLibrary.simpleMessage("再投稿"),
       "reset": MessageLookupByLibrary.simpleMessage("リセット"),
@@ -112,12 +136,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "save": MessageLookupByLibrary.simpleMessage("保存"),
       "saveDraft": MessageLookupByLibrary.simpleMessage("下書きを保存"),
       "saySomething": (Object a0) => "「${a0}」に何か書き込んでください",
-      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage("名前またはハンドルで検索"),
+      "searchByNameOrHandle":
+          MessageLookupByLibrary.simpleMessage("名前またはハンドルで検索"),
       "searchCommunities": MessageLookupByLibrary.simpleMessage("コミュニティを検索"),
       "searchGIFs": MessageLookupByLibrary.simpleMessage("GIFを検索"),
       "searchLanguages": MessageLookupByLibrary.simpleMessage("言語を検索"),
       "searchTrendingTags": MessageLookupByLibrary.simpleMessage("注目のタグを検索"),
-      "securityAlerts": MessageLookupByLibrary.simpleMessage("セキュリティアラートとアカウントの変更"),
+      "securityAlerts":
+          MessageLookupByLibrary.simpleMessage("セキュリティアラートとアカウントの変更"),
       "sendConfirmation": MessageLookupByLibrary.simpleMessage("確認を送信"),
       "sendErrorReport": MessageLookupByLibrary.simpleMessage("エラー報告を送信"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("フィードバックを送信"),
@@ -130,228 +156,415 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "signupFailed": (Object a0) => "登録に失敗しました: ${a0}",
       "stay": MessageLookupByLibrary.simpleMessage("そのままにする"),
       "systemLog": MessageLookupByLibrary.simpleMessage("システムログ"),
-      "tellMissingBroken": MessageLookupByLibrary.simpleMessage("不足している点や不具合を教えてください"),
-      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage("作成画面に投稿ボタンがありません"),
+      "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
+        "不足している点や不具合を教えてください",
+      ),
+      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
+        "作成画面に投稿ボタンがありません",
+      ),
       "translate": MessageLookupByLibrary.simpleMessage("翻訳"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("再試行"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("リポストを取り消す"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("パスワードを更新"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage("別のアドレスを使用する"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("別のアドレスを使用する"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("何が起きましたか"),
-      "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage("何が起きたのか、どこを確認すればよいか教えてください"),
+      "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
+        "何が起きたのか、どこを確認すればよいか教えてください",
+      ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage("この画像には何が写っていますか？"),
       "whatIsItFor": MessageLookupByLibrary.simpleMessage("何のためのものですか？（任意）"),
-      "whatYouDid": MessageLookupByLibrary.simpleMessage("あなたが行ったこと、期待したこと、起きたこと"),
-      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage("問題が発生したときに何をしていたか"),
+      "whatYouDid":
+          MessageLookupByLibrary.simpleMessage("あなたが行ったこと、期待したこと、起きたこと"),
+      "whatYouWereDoing":
+          MessageLookupByLibrary.simpleMessage("問題が発生したときに何をしていたか"),
       "normalised": (Object a0) => "#\\${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage("投稿しよう、話そう、見せよう。"),
-      "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage("テキスト、音声、動画、それらを作る人々、そして彼らが話すルーム。"),
-      "alreadyOnKyron": MessageLookupByLibrary.simpleMessage("既にKyronを利用していますか？"),
-      "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage("続行することで、利用規約およびプライバシーポリシーに同意したことになります"),
-      "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage("Googleでのサインインには電話アプリが必要です"),
-      "googleSignInDesktopExplanation": (Object a0) => "Googleは完了したサインイン情報を、AndroidとiOSだけが応答するリンク経由でKyronに返します。したがって${a0}上のブラウザでは戻す先がありません。\\n\\n既にGoogle経由でKyronアカウントをお持ちの場合は、同じアドレスで「メールで続行」を使い、「パスワードをお忘れですか」をタップしてください — パスワード設定用のリンクがメールで送信されます。",
-      "loginFailed": MessageLookupByLibrary.simpleMessage("ログインに失敗しました。認証情報を確認してください。"),
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("投稿しよう、話そう、見せよう。"),
+      "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
+        "テキスト、音声、動画、それらを作る人々、そして彼らが話すルーム。",
+      ),
+      "alreadyOnKyron":
+          MessageLookupByLibrary.simpleMessage("既にKyronを利用していますか？"),
+      "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
+        "続行することで、利用規約およびプライバシーポリシーに同意したことになります",
+      ),
+      "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
+        "Googleでのサインインには電話アプリが必要です",
+      ),
+      "googleSignInDesktopExplanation": (Object a0) =>
+          "Googleは完了したサインイン情報を、AndroidとiOSだけが応答するリンク経由でKyronに返します。したがって${a0}上のブラウザでは戻す先がありません。\\n\\n既にGoogle経由でKyronアカウントをお持ちの場合は、同じアドレスで「メールで続行」を使い、「パスワードをお忘れですか」をタップしてください — パスワード設定用のリンクがメールで送信されます。",
+      "loginFailed": MessageLookupByLibrary.simpleMessage(
+        "ログインに失敗しました。認証情報を確認してください。",
+      ),
       "email": MessageLookupByLibrary.simpleMessage("メールアドレス"),
       "password": MessageLookupByLibrary.simpleMessage("パスワード"),
       "login": MessageLookupByLibrary.simpleMessage("ログイン"),
       "or": MessageLookupByLibrary.simpleMessage("または"),
       "username": MessageLookupByLibrary.simpleMessage("ユーザー名"),
-      "usernameRule": MessageLookupByLibrary.simpleMessage("ユーザー名は小文字（a-z）、数字（0-9）、アンダースコア（_）のみ使用できます"),
+      "usernameRule": MessageLookupByLibrary.simpleMessage(
+        "ユーザー名は小文字（a-z）、数字（0-9）、アンダースコア（_）のみ使用できます",
+      ),
       "passwordTooShort": MessageLookupByLibrary.simpleMessage("パスワードが短すぎます"),
       "continueAction": MessageLookupByLibrary.simpleMessage("続行"),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage("サインアップを行うことで、当社の"),
+      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "サインアップを行うことで、当社の",
+      ),
       "terms": MessageLookupByLibrary.simpleMessage("利用規約"),
       "and": MessageLookupByLibrary.simpleMessage("と"),
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("プライバシーポリシー"),
       "googleSignIn": MessageLookupByLibrary.simpleMessage("Googleでサインイン"),
       "googleSignUp": MessageLookupByLibrary.simpleMessage("Googleでサインアップ"),
       "googleContinue": MessageLookupByLibrary.simpleMessage("Googleで続行"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage("続行することで、当社の"),
-      "literalwhetherKyronIsReachableRightNow": MessageLookupByLibrary.simpleMessage("Kyronに現在接続できるかどうか"),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage("このアプリが行ってきたこと"),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage("ログをサポートと共有する"),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("続行することで、当社の"),
+      "literalwhetherKyronIsReachableRightNow":
+          MessageLookupByLibrary.simpleMessage("Kyronに現在接続できるかどうか"),
+      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
+        "このアプリが行ってきたこと",
+      ),
+      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
+        "ログをサポートと共有する",
+      ),
       "literalclearCache": MessageLookupByLibrary.simpleMessage("キャッシュをクリア"),
       "literalappVersion": MessageLookupByLibrary.simpleMessage("アプリのバージョン"),
       "literalreading": MessageLookupByLibrary.simpleMessage("読み込み中…"),
       "literalcheckAgain": MessageLookupByLibrary.simpleMessage("もう一度確認"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage("Kyronが応答しませんでした"),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage("まだ何も記録されていません"),
+      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
+        "Kyronが応答しませんでした",
+      ),
+      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
+        "まだ何も記録されていません",
+      ),
       "literalswitchCamera": MessageLookupByLibrary.simpleMessage("カメラを切り替える"),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage("カメラはオフです"),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("カメラはオフです"),
       "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("写真を撮る"),
       "literallensNameFaceLens": (Object a0) => "${a0}、フェイスレンズ",
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage("その返信を投稿できませんでした。"),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage("この返信を読み込めませんでした"),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage("この返信は削除されました"),
+      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
+        "その返信を投稿できませんでした。",
+      ),
+      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
+        "この返信を読み込めませんでした",
+      ),
+      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
+        "この返信は削除されました",
+      ),
       "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("写真を追加"),
       "literaladdAClip": MessageLookupByLibrary.simpleMessage("クリップを追加"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage("コミュニティを作成"),
-      "literalcouldNotLoadYourCommunities": MessageLookupByLibrary.simpleMessage("あなたのコミュニティを読み込めませんでした"),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage("どのコミュニティにも参加していません"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage("コミュニティを読み込めませんでした"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("コミュニティを作成"),
+      "literalcouldNotLoadYourCommunities":
+          MessageLookupByLibrary.simpleMessage(
+        "あなたのコミュニティを読み込めませんでした",
+      ),
+      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
+        "どのコミュニティにも参加していません",
+      ),
+      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
+        "コミュニティを読み込めませんでした",
+      ),
       "literalpostInWidgetCommunityName": (Object a0) => "${a0}に投稿する",
       "literalsaySomethingToWidgetCommunityName": (Object a0) => "${a0}に何か投稿する",
       "literaltagSomeone": MessageLookupByLibrary.simpleMessage("誰かをタグ付け"),
       "literalcloseWidgetCommunityName": (Object a0) => "${a0}を閉じますか？",
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage("これを変更できるのはオーナーのみです"),
-      "literaltapTheBannerOrThePictureToChangeIt": MessageLookupByLibrary.simpleMessage("変更するにはバナーまたは画像をタップしてください"),
+      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
+        "これを変更できるのはオーナーのみです",
+      ),
+      "literaltapTheBannerOrThePictureToChangeIt":
+          MessageLookupByLibrary.simpleMessage("変更するにはバナーまたは画像をタップしてください"),
       "literalremoveMemberDisplayname": (Object a0) => "${a0}を削除しますか？",
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage("メンバーを読み込めませんでした"),
+      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
+        "メンバーを読み込めませんでした",
+      ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage("まだ誰もいません"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage("モデレーターにする"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage("モデレーターから外す"),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage("コミュニティから削除"),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage("このリストを読み込めませんでした"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage("誰も削除されていません"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("モデレーターにする"),
+      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
+        "モデレーターから外す",
+      ),
+      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
+        "コミュニティから削除",
+      ),
+      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
+        "このリストを読み込めませんでした",
+      ),
+      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
+        "誰も削除されていません",
+      ),
       "literalpostInCommunityName": (Object a0) => "${a0}に投稿する",
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage("このコミュニティを開けませんでした"),
+      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "このコミュニティを開けませんでした",
+      ),
       "literalthisCommunity": MessageLookupByLibrary.simpleMessage("このコミュニティ"),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage("このコミュニティを共有"),
+      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "このコミュニティを共有",
+      ),
       "literalcopyLink": MessageLookupByLibrary.simpleMessage("リンクをコピー"),
       "literallinkCopied": MessageLookupByLibrary.simpleMessage("リンクをコピーしました"),
       "literalleaveCommunityName": (Object a0) => "${a0}を退会しますか？",
       "literalyouHaveLeftCommunityName": (Object a0) => "${a0}を退会しました",
       "literaladdAVideo": MessageLookupByLibrary.simpleMessage("動画を追加"),
       "literaladdAGif": MessageLookupByLibrary.simpleMessage("GIFを追加"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage("音声投稿を録音する"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("音声投稿を録音する"),
       "literalremoveThePoll": MessageLookupByLibrary.simpleMessage("投票を削除"),
       "literaladdAPoll": MessageLookupByLibrary.simpleMessage("投票を追加"),
       "literaladdAHashtag": MessageLookupByLibrary.simpleMessage("ハッシュタグを追加"),
       "literaldraftSaved": MessageLookupByLibrary.simpleMessage("下書きを保存しました"),
       "literalnoDrafts": MessageLookupByLibrary.simpleMessage("下書きはありません"),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage("トレンドを読み込めませんでした"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage("まだトレンドがありません"),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage("トピックを読み込めませんでした"),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage("まだトピックがありません"),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage("おすすめを読み込めませんでした"),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage("これ以上提案する人はいません"),
-      "literalyouExampleCom": MessageLookupByLibrary.simpleMessage("you@example.com"),
+      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
+        "トレンドを読み込めませんでした",
+      ),
+      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
+        "まだトレンドがありません",
+      ),
+      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
+        "トピックを読み込めませんでした",
+      ),
+      "literalnoTopicsYet":
+          MessageLookupByLibrary.simpleMessage("まだトピックがありません"),
+      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
+        "おすすめを読み込めませんでした",
+      ),
+      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
+        "これ以上提案する人はいません",
+      ),
+      "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
+        "you@example.com",
+      ),
       "literalsendTheLink": MessageLookupByLibrary.simpleMessage("リンクを送信"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage("Kyronからのメールを開く"),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage("その中のリンクをタップする"),
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage("パスワードを設定して続行する"),
+      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
+        "Kyronからのメールを開く",
+      ),
+      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
+        "その中のリンクをタップする",
+      ),
+      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
+        "パスワードを設定して続行する",
+      ),
       "literalsendAgainInCooldownS": (Object a0) => "あと${a0}sで再送信",
       "literalsendAgain": MessageLookupByLibrary.simpleMessage("再送信"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage("メッセージを読み込めませんでした"),
+      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
+        "メッセージを読み込めませんでした",
+      ),
       "literalnothingUnread": MessageLookupByLibrary.simpleMessage("未読はありません"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage("メッセージはまだありません"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("メッセージはまだありません"),
       "literalnothingMuted": MessageLookupByLibrary.simpleMessage("ミュートはありません"),
       "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("いいねはまだありません"),
       "literalnoRepliesYet": MessageLookupByLibrary.simpleMessage("返信はまだありません"),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage("新しいフォロワーはありません"),
-      "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage("リポストはまだありません"),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage("すべて確認済みです"),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage("通知を読み込めませんでした"),
+      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
+        "新しいフォロワーはありません",
+      ),
+      "literalnoRepostsYet":
+          MessageLookupByLibrary.simpleMessage("リポストはまだありません"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("すべて確認済みです"),
+      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
+        "通知を読み込めませんでした",
+      ),
       "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("カバー写真"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage("ギャラリーから選ぶ"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage("こちらの画像を使用する"),
-      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage("写真とカバーを追加するにはタップしてください"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage("興味はまだありません"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage("ユーザーを見つける"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("ギャラリーから選ぶ"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("こちらの画像を使用する"),
+      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
+        "写真とカバーを追加するにはタップしてください",
+      ),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("興味はまだありません"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("ユーザーを見つける"),
       "literalcancelReply": MessageLookupByLibrary.simpleMessage("返信をキャンセル"),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage("この投稿を読み込めませんでした"),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage("このプロフィールを共有"),
-      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage("これらの投稿を読み込めませんでした"),
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage("まだ投稿していません"),
+      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
+        "この投稿を読み込めませんでした",
+      ),
+      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
+        "このプロフィールを共有",
+      ),
+      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
+        "これらの投稿を読み込めませんでした",
+      ),
+      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
+        "まだ投稿していません",
+      ),
       "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("投稿はまだありません"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage("まだ見るものがありません"),
+      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
+        "まだ見るものがありません",
+      ),
       "literalkeepTyping": MessageLookupByLibrary.simpleMessage("入力を続けてください"),
       "literalsearchFailed": MessageLookupByLibrary.simpleMessage("検索に失敗しました"),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage("一致するものはありませんでした"),
-      "literalcouldNotSignOutDescribeapierrorE": (Object a0) => "サインアウトできませんでした: ${a0}",
+      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
+        "一致するものはありませんでした",
+      ),
+      "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
+          "サインアウトできませんでした: ${a0}",
       "literalnoDidYet": MessageLookupByLibrary.simpleMessage("DIDはまだありません"),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage("パスワードとログイン"),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage("ミュートおよびブロックされたアカウント"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("パスワードとログイン"),
+      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
+        "ミュートおよびブロックされたアカウント",
+      ),
       "literalfontSize": MessageLookupByLibrary.simpleMessage("フォントサイズ"),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage("プッシュ通知"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("プッシュ通知"),
       "literaldataSaver": MessageLookupByLibrary.simpleMessage("データセーバー"),
       "literalcontactSupport": MessageLookupByLibrary.simpleMessage("サポートに連絡"),
-      "literalsendFeedback": MessageLookupByLibrary.simpleMessage("フィードバックを送信する"),
+      "literalsendFeedback":
+          MessageLookupByLibrary.simpleMessage("フィードバックを送信する"),
       "literalappLanguage": MessageLookupByLibrary.simpleMessage("アプリの言語"),
       "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage("主要言語"),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage("コンテンツの言語"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("コンテンツの言語"),
       "literalremoveLanguageEnglishname": (Object a0) => "「${a0}」を削除",
-      "literalsentItIsReportFiledNumber": (Object a0) => "送信しました。報告は #${a0} です。",
-      "literalfeedbackCannotBeSentRightNow": MessageLookupByLibrary.simpleMessage("フィードバックは現在送信できません"),
-      "literalwhatYouDidWhatYouExpectedWhatHappened": MessageLookupByLibrary.simpleMessage("行ったこと、期待したこと、実際に起きたこと "),
-      "literalverificationFailedDescribeapierrorE": (Object a0) => "認証に失敗しました: ${a0}",
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage("確認コードを再送しました。"),
+      "literalsentItIsReportFiledNumber": (Object a0) =>
+          "送信しました。報告は #${a0} です。",
+      "literalfeedbackCannotBeSentRightNow":
+          MessageLookupByLibrary.simpleMessage(
+        "フィードバックは現在送信できません",
+      ),
+      "literalwhatYouDidWhatYouExpectedWhatHappened":
+          MessageLookupByLibrary.simpleMessage("行ったこと、期待したこと、実際に起きたこと "),
+      "literalverificationFailedDescribeapierrorE": (Object a0) =>
+          "認証に失敗しました: ${a0}",
+      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
+        "確認コードを再送しました。",
+      ),
       "literalverifyEmail": MessageLookupByLibrary.simpleMessage("メールを確認する"),
       "literalresendCode": MessageLookupByLibrary.simpleMessage("コードを再送信する"),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage("この会話を削除する"),
-      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage("ミュート中。通知は届きません。"),
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage("このアカウントをブロックしますか？"),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage("サインアウトしました。"),
-      "literalcouldNotLoadThisConversation": MessageLookupByLibrary.simpleMessage("この会話を読み込めませんでした"),
+      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
+        "この会話を削除する",
+      ),
+      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
+        "ミュート中。通知は届きません。",
+      ),
+      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
+        "このアカウントをブロックしますか？",
+      ),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("サインアウトしました。"),
+      "literalcouldNotLoadThisConversation":
+          MessageLookupByLibrary.simpleMessage(
+        "この会話を読み込めませんでした",
+      ),
       "literalsaySomething": MessageLookupByLibrary.simpleMessage("何か入力してください"),
       "literalcopyText": MessageLookupByLibrary.simpleMessage("テキストをコピー"),
       "literaldoNotReply": MessageLookupByLibrary.simpleMessage("返信しない"),
       "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage("保存から削除"),
       "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("サウンドをオンにする"),
       "literalturnSoundOff": MessageLookupByLibrary.simpleMessage("サウンドをオフにする"),
-      "literalthatLinkIsNotOneThisCanOpen": MessageLookupByLibrary.simpleMessage("そのリンクはこのアプリで開けません。"),
-      "literalnoBrowserOnThisDeviceTookThatLink": MessageLookupByLibrary.simpleMessage("このデバイスにはそのリンクを処理するブラウザがありません。"),
+      "literalthatLinkIsNotOneThisCanOpen":
+          MessageLookupByLibrary.simpleMessage(
+        "そのリンクはこのアプリで開けません。",
+      ),
+      "literalnoBrowserOnThisDeviceTookThatLink":
+          MessageLookupByLibrary.simpleMessage("このデバイスにはそのリンクを処理するブラウザがありません。"),
       "literalopenReply": MessageLookupByLibrary.simpleMessage("返信を開く"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
       "literalindex1": (Object a0) => "${a0}",
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage("GIFは設定されていません"),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage("GIFを読み込めませんでした"),
+      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
+        "GIFは設定されていません",
+      ),
+      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
+        "GIFを読み込めませんでした",
+      ),
       "literalnothingFound": MessageLookupByLibrary.simpleMessage("何も見つかりません"),
-      "literalthatGifCouldNotBeDownloaded": MessageLookupByLibrary.simpleMessage("そのGIFをダウンロードできませんでした。"),
+      "literalthatGifCouldNotBeDownloaded":
+          MessageLookupByLibrary.simpleMessage(
+        "そのGIFをダウンロードできませんでした。",
+      ),
       "literaladdAnInterest": MessageLookupByLibrary.simpleMessage("興味を追加"),
-      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage("トレンドタグを読み込めませんでした"),
-      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage("該当するトレンドタグがありません"),
-      "literalyouAlreadyFollowEveryTrendingTag": MessageLookupByLibrary.simpleMessage("すでにすべてのトレンドタグをフォローしています"),
+      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "トレンドタグを読み込めませんでした",
+      ),
+      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
+        "該当するトレンドタグがありません",
+      ),
+      "literalyouAlreadyFollowEveryTrendingTag":
+          MessageLookupByLibrary.simpleMessage("すでにすべてのトレンドタグをフォローしています"),
       "literalremoveLabel": (Object a0) => "${a0}を削除",
       "literaladdLabelAsATab": (Object a0) => "${a0}をタブに追加",
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage("検索できませんでした"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage("誰をタグ付けしますか？"),
-      "literalnobodyFound": MessageLookupByLibrary.simpleMessage("誰も見つかりませんでした"),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("検索できませんでした"),
+      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
+        "誰をタグ付けしますか？",
+      ),
+      "literalnobodyFound":
+          MessageLookupByLibrary.simpleMessage("誰も見つかりませんでした"),
       "literalshowPassword": MessageLookupByLibrary.simpleMessage("パスワードを表示"),
       "literalhidePassword": MessageLookupByLibrary.simpleMessage("パスワードを非表示"),
       "literaltranslatePost": MessageLookupByLibrary.simpleMessage("投稿を翻訳"),
       "literalcopyPostText": MessageLookupByLibrary.simpleMessage("投稿テキストをコピー"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage("投稿へのリンクをコピー"),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage("これに似た投稿をさらに表示"),
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage("興味がありません"),
-      "literalhidesItAndTellsUsToShowFewerLikeIt": MessageLookupByLibrary.simpleMessage("それを非表示にし、類似の投稿を減らすよう伝えます"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("投稿へのリンクをコピー"),
+      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
+        "これに似た投稿をさらに表示",
+      ),
+      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
+        "興味がありません",
+      ),
+      "literalhidesItAndTellsUsToShowFewerLikeIt":
+          MessageLookupByLibrary.simpleMessage("それを非表示にし、類似の投稿を減らすよう伝えます"),
       "literalhideThisPost": MessageLookupByLibrary.simpleMessage("この投稿を非表示"),
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage("このスレッドをミュート"),
-      "literalstopSeeingThisPostAndRepliesToIt": MessageLookupByLibrary.simpleMessage("この投稿とその返信を表示しないようにする"),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage("単語またはタグをミュート"),
-      "literalviewersLikesSavesAndComments": MessageLookupByLibrary.simpleMessage("閲覧、いいね、保存、コメント"),
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("このスレッドをミュート"),
+      "literalstopSeeingThisPostAndRepliesToIt":
+          MessageLookupByLibrary.simpleMessage("この投稿とその返信を表示しないようにする"),
+      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
+        "単語またはタグをミュート",
+      ),
+      "literalviewersLikesSavesAndComments":
+          MessageLookupByLibrary.simpleMessage(
+        "閲覧、いいね、保存、コメント",
+      ),
       "literalwhoCanReply": MessageLookupByLibrary.simpleMessage("返信できる相手"),
       "literaldeletePost": MessageLookupByLibrary.simpleMessage("投稿を削除"),
       "literalmuteAuthor": (Object a0) => "${a0}をミュート",
       "literalblockAuthor": (Object a0) => "${a0}をブロック",
       "literalreportPost": MessageLookupByLibrary.simpleMessage("投稿を報告"),
       "literalreportAuthor": (Object a0) => "${a0}を報告",
-      "literalthatDidNotGoThroughTryAgain": MessageLookupByLibrary.simpleMessage("送信されませんでした。もう一度お試しください。"),
+      "literalthatDidNotGoThroughTryAgain":
+          MessageLookupByLibrary.simpleMessage(
+        "送信されませんでした。もう一度お試しください。",
+      ),
       "literalblockAuthor2": (Object a0) => "${a0}をブロックしますか？",
       "literalshowResults": MessageLookupByLibrary.simpleMessage("結果を表示"),
       "literallabelDate": (Object a0) => "\\${a0} 日付",
       "literalshareVia": MessageLookupByLibrary.simpleMessage("共有…"),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage("他のアプリに渡す"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("他のアプリに渡す"),
       "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage("引用付きで共有"),
-      "literalpostItWithYourOwnWordsAboveIt": MessageLookupByLibrary.simpleMessage("上に自分の言葉を添えて投稿する"),
+      "literalpostItWithYourOwnWordsAboveIt":
+          MessageLookupByLibrary.simpleMessage(
+        "上に自分の言葉を添えて投稿する",
+      ),
       "literalsavedPosts": MessageLookupByLibrary.simpleMessage("保存した投稿"),
       "literallikedPosts": MessageLookupByLibrary.simpleMessage("いいねした投稿"),
-      "literalstoriesRibbonStoriesLengthItems": (Object a0) => "ストーリーリボン、${a0}件",
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage("あなたが投稿したものはあなたのものです。"),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage("Kyronが保持するもの"),
+      "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
+          "ストーリーリボン、${a0}件",
+      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
+        "あなたが投稿したものはあなたのものです。",
+      ),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Kyronが保持するもの"),
       "literalhowToBehave": MessageLookupByLibrary.simpleMessage("行動規範"),
       "literalcloseTabLabel": (Object a0) => "「${a0}」を閉じる",
       "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1ページが開いています"),
       "literalcountPagesOpen": (Object a0) => "${a0} ページが開いています",
       "literalstopLoading": MessageLookupByLibrary.simpleMessage("読み込みを停止"),
       "literalshareThisPage": MessageLookupByLibrary.simpleMessage("このページを共有"),
-      "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) => "このデバイスのアプリで${a0}リンクを開くものがありません。",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage("ブラウザを閉じる"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage("すべてのページを閉じる"),
+      "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
+          "このデバイスのアプリで${a0}リンクを開くものがありません。",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("ブラウザを閉じる"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("すべてのページを閉じる"),
       "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage("この投票を削除"),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage("この回答を削除"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("この回答を削除"),
       "literalstartRecording": MessageLookupByLibrary.simpleMessage("録音を開始"),
       "literalrecordAgain": MessageLookupByLibrary.simpleMessage("再録音"),
       "home": MessageLookupByLibrary.simpleMessage("ホーム"),
@@ -359,21 +572,49 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "communities": MessageLookupByLibrary.simpleMessage("コミュニティ"),
       "messages": MessageLookupByLibrary.simpleMessage("メッセージ"),
       "languages": MessageLookupByLibrary.simpleMessage("言語"),
-      "selectAppLanguage": MessageLookupByLibrary.simpleMessage("アプリのユーザーインターフェースに使用する言語を選択してください。"),
-      "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage("フィード内の翻訳に使用する優先言語を選択してください。"),
-      "selectContentLanguages": MessageLookupByLibrary.simpleMessage("購読しているフィードに含めたい言語を選択してください。何も選択しない場合は、すべての言語が表示されます。"),
-      "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage("Kyronの文言はまだ翻訳中のため、現時点ではほとんどの画面が英語のままになっています。"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage("人々が使い始めると、ここにハッシュタグが表示されます。"),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage("トピックはKyronが設定しますが、現在はありません。後で確認してください。"),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage("ここに表示されるであろうユーザーは、既にすべてフォローしています。"),
-      "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage("「Discover」で見つけるか、自分で作成してください。"),
+      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
+        "アプリのユーザーインターフェースに使用する言語を選択してください。",
+      ),
+      "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "フィード内の翻訳に使用する優先言語を選択してください。",
+      ),
+      "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
+        "購読しているフィードに含めたい言語を選択してください。何も選択しない場合は、すべての言語が表示されます。",
+      ),
+      "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
+        "Kyronの文言はまだ翻訳中のため、現時点ではほとんどの画面が英語のままになっています。",
+      ),
+      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "人々が使い始めると、ここにハッシュタグが表示されます。",
+      ),
+      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "トピックはKyronが設定しますが、現在はありません。後で確認してください。",
+      ),
+      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "ここに表示されるであろうユーザーは、既にすべてフォローしています。",
+      ),
+      "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "「Discover」で見つけるか、自分で作成してください。",
+      ),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage("すべての会話は最新です。"),
-      "messagesNoMessages": MessageLookupByLibrary.simpleMessage("誰かのプロフィールを開き、メッセージをタップして会話を始めてください。"),
-      "notificationLikesDetail": MessageLookupByLibrary.simpleMessage("誰かがあなたの投稿に「いいね」すると、ここに表示されます。"),
-      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage("あなたの投稿への返信はここに届きます。"),
-      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage("あなたをフォローした人はここに表示されます。"),
-      "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage("誰かがあなたの投稿をリポストすると、ここに表示されます。"),
-      "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage("いいね、返信、新しいフォロワーは到着次第ここに表示されます。"),
+      "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
+        "誰かのプロフィールを開き、メッセージをタップして会話を始めてください。",
+      ),
+      "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
+        "誰かがあなたの投稿に「いいね」すると、ここに表示されます。",
+      ),
+      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
+        "あなたの投稿への返信はここに届きます。",
+      ),
+      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
+        "あなたをフォローした人はここに表示されます。",
+      ),
+      "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
+        "誰かがあなたの投稿をリポストすると、ここに表示されます。",
+      ),
+      "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "いいね、返信、新しいフォロワーは到着次第ここに表示されます。",
+      ),
       "gettingHelp": MessageLookupByLibrary.simpleMessage("ヘルプ"),
       "send": MessageLookupByLibrary.simpleMessage("送信"),
       "close": MessageLookupByLibrary.simpleMessage("閉じる"),
@@ -384,74 +625,170 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "manage": MessageLookupByLibrary.simpleMessage("管理"),
       "join": MessageLookupByLibrary.simpleMessage("参加"),
       "video": MessageLookupByLibrary.simpleMessage("ビデオ"),
-      "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage("投稿にはまだ言語情報が付いていないため、現時点ではフィードのフィルタにはなりません。言語選択は、付与されたときに有効になるよう保存されます。"),
+      "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
+        "投稿にはまだ言語情報が付いていないため、現時点ではフィードのフィルタにはなりません。言語選択は、付与されたときに有効になるよう保存されます。",
+      ),
       "addMoreLanguages": MessageLookupByLibrary.simpleMessage("他の言語を追加…"),
-      "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage("翻訳機能はまだ構築されていません。現時点ではフィード内に翻訳されたものはありませんが、将来翻訳が可能になったときのために設定は保存されます。"),
-      "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage("Kyronはまだ初期段階です。問題を実際に修正できる人に最速で連絡する方法は、issueを作成することです。何をしていて何が起きたのかを含めてください。"),
-      "supportInboxNotYet": MessageLookupByLibrary.simpleMessage("アプリ内のサポート受信箱はまだないため、この画面は実際に監視されている場所を示しており、どこにも届かないフォームを指してはいません。"),
-      "ui_communities_screen_what_is_it_for_optional_39b687": MessageLookupByLibrary.simpleMessage("何のためのものですか？（任意）"),
-      "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001": MessageLookupByLibrary.simpleMessage("アカウントに戻るには再度サインインする必要があります。"),
-      "ui_settings_subscreens_new_email_address_dab96e": MessageLookupByLibrary.simpleMessage("新しいメールアドレス"),
-      "ui_settings_subscreens_new_password_88c1bf": MessageLookupByLibrary.simpleMessage("新しいパスワード"),
-      "ui_settings_subscreens_confirm_password_41d040": MessageLookupByLibrary.simpleMessage("パスワードを確認"),
-      "ui_settings_subscreens_in_one_line_06bdaf": MessageLookupByLibrary.simpleMessage("1行で"),
-      "ui_settings_subscreens_what_happened_977dd8": MessageLookupByLibrary.simpleMessage("どうしましたか"),
-      "ui_onboard_step3_screen_skip_7b13d8": MessageLookupByLibrary.simpleMessage("スキップ"),
-      "ui_onboard_step3_screen_finish_5c0ad8": MessageLookupByLibrary.simpleMessage("完了"),
-      "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage("12 MB"),
-      "audit_about_subscreens_round_trip_64776b4c": MessageLookupByLibrary.simpleMessage("往復"),
-      "audit_about_subscreens_token_verification_7934e1f2": MessageLookupByLibrary.simpleMessage("トークン検証"),
-      "audit_about_subscreens_support_kyron_so_a3a84d0f": MessageLookupByLibrary.simpleMessage("support@kyron.so"),
-      "audit_ar_lens_screen_try_again_cdec8872": MessageLookupByLibrary.simpleMessage("もう一度試す"),
-      "audit_browser_engine_window_stop_39c04883": MessageLookupByLibrary.simpleMessage("window.stop();"),
-      "audit_browser_sheet_try_again_44bc94ba": MessageLookupByLibrary.simpleMessage("もう一度試す"),
-      "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b": MessageLookupByLibrary.simpleMessage("今ブロードキャストを開始すると、誰も参加できないルームに入ることになります"),
-      "audit_communities_screen_start_a_community_06c8ec4f": MessageLookupByLibrary.simpleMessage("コミュニティを作成する"),
-      "audit_communities_screen_what_is_it_for_optional_e7e82092": MessageLookupByLibrary.simpleMessage("何のためですか？ (任意)"),
-      "audit_community_manage_screen_closing_it_f490fb09": MessageLookupByLibrary.simpleMessage("閉鎖する"),
-      "audit_community_manage_screen_back_in_e495a750": MessageLookupByLibrary.simpleMessage("戻ります。"),
-      "audit_community_manage_screen_back_in_from_this_list_9496a4fd": MessageLookupByLibrary.simpleMessage("このリストから戻る。"),
-      "audit_community_screen_join_first_7798cafc": MessageLookupByLibrary.simpleMessage("先に参加する"),
-      "audit_composer_screen_coming_soon_431fd23d": MessageLookupByLibrary.simpleMessage("近日公開"),
-      "audit_composer_screen_posting_as_you_45d69932": MessageLookupByLibrary.simpleMessage("あなたとして投稿"),
-      "audit_drafts_screen_just_now_17a8d48a": MessageLookupByLibrary.simpleMessage("たった今"),
-      "audit_explore_screen_topic_1_83830b41": MessageLookupByLibrary.simpleMessage("トピック1"),
-      "audit_forgot_password_screen_its_way_to_it_now_271a6cea": MessageLookupByLibrary.simpleMessage("ただ今送信されています。"),
-      "audit_forgot_password_screen_has_anything_65044193": MessageLookupByLibrary.simpleMessage("何かありますか。"),
-      "audit_post_analytics_screen_viewers_per_day_5d881f10": MessageLookupByLibrary.simpleMessage("1日あたりの視聴者"),
-      "audit_post_detail_screen_sublist_1_join_b0a5d508": MessageLookupByLibrary.simpleMessage("\").sublist(1).join(\", \""),
-      "audit_report_screen_this_post_820d9740": MessageLookupByLibrary.simpleMessage("この投稿"),
-      "audit_report_screen_anything_to_add_optional_f0051fa4": MessageLookupByLibrary.simpleMessage("何か追加しますか？ (任意)"),
-      "audit_settings_screen_log_out_0b39bfb2": MessageLookupByLibrary.simpleMessage("ログアウト"),
-      "audit_settings_screen_your_account_bcdf27af": MessageLookupByLibrary.simpleMessage("あなたのアカウント"),
-      "audit_settings_screen_did_plc_abc_825b4f49": MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
-      "audit_settings_subscreens_confirm_password_f0e1f449": MessageLookupByLibrary.simpleMessage("パスワードを確認"),
-      "audit_settings_subscreens_not_now_e1657fa9": MessageLookupByLibrary.simpleMessage("今はしない"),
-      "audit_create_fab_post_in_this_community_0a42daf2": MessageLookupByLibrary.simpleMessage("このコミュニティに投稿する"),
-      "audit_url_preview_its_own_8b362f95": MessageLookupByLibrary.simpleMessage("独自のもの。"),
-      "audit_empty_state_try_again_80ef48cd": MessageLookupByLibrary.simpleMessage("もう一度試す"),
-      "audit_feed_canvas_for_you_aa3c510d": MessageLookupByLibrary.simpleMessage("おすすめ"),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage("、ではない"),
-      "audit_inline_video_am_i_moving_4618f78c": MessageLookupByLibrary.simpleMessage("動いている？"),
-      "audit_inline_video_turn_sound_on_83671c54": MessageLookupByLibrary.simpleMessage("音をオンにする"),
-      "audit_inline_video_turn_sound_off_97714bbc": MessageLookupByLibrary.simpleMessage("音をオフにする"),
-      "audit_interest_tabs_for_you_7ef9e823": MessageLookupByLibrary.simpleMessage("おすすめ"),
-      "audit_interest_tabs_your_tabs_c3ba148f": MessageLookupByLibrary.simpleMessage("あなたのタブ"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage("+ ALT"),
-      "audit_mention_picker_sheet_try_again_fd5d5dd7": MessageLookupByLibrary.simpleMessage("もう一度試す"),
-      "audit_password_requirements_symbol_322aed1e": MessageLookupByLibrary.simpleMessage("記号 (!@#…)"),
-      "audit_post_list_view_could_not_load_4dd86c79": MessageLookupByLibrary.simpleMessage("読み込めませんでした"),
-      "audit_post_options_sheet_this_post_99bfa981": MessageLookupByLibrary.simpleMessage("この投稿"),
-      "audit_post_text_a_b_780da9a1": MessageLookupByLibrary.simpleMessage("a#b"),
-      "audit_search_filter_sheet_from_an_account_f6a22687": MessageLookupByLibrary.simpleMessage("アカウントから"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage("読み込み中…"),
-      "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a": MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage("投稿中…"),
-      "audit_story_viewer_your_story_b706ecb4": MessageLookupByLibrary.simpleMessage("あなたのストーリー"),
-      "audit_story_viewer_copy_story_link_2bd1546c": MessageLookupByLibrary.simpleMessage("ストーリーのリンクをコピー"),
-      "audit_story_viewer_3h_ago_174dc80d": MessageLookupByLibrary.simpleMessage("3時間前"),
-      "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef": MessageLookupByLibrary.simpleMessage("あなたのアカウント、投稿、そしてあなたがタップしたものなど"),
-      "audit_topic_picker_add_a_topic_25baaf8a": MessageLookupByLibrary.simpleMessage("トピックを追加"),
+      "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
+        "翻訳機能はまだ構築されていません。現時点ではフィード内に翻訳されたものはありませんが、将来翻訳が可能になったときのために設定は保存されます。",
+      ),
+      "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
+        "Kyronはまだ初期段階です。問題を実際に修正できる人に最速で連絡する方法は、issueを作成することです。何をしていて何が起きたのかを含めてください。",
+      ),
+      "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
+        "アプリ内のサポート受信箱はまだないため、この画面は実際に監視されている場所を示しており、どこにも届かないフォームを指してはいません。",
+      ),
+      "ui_communities_screen_what_is_it_for_optional_39b687":
+          MessageLookupByLibrary.simpleMessage("何のためのものですか？（任意）"),
+      "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
+          MessageLookupByLibrary.simpleMessage("アカウントに戻るには再度サインインする必要があります。"),
+      "ui_settings_subscreens_new_email_address_dab96e":
+          MessageLookupByLibrary.simpleMessage("新しいメールアドレス"),
+      "ui_settings_subscreens_new_password_88c1bf":
+          MessageLookupByLibrary.simpleMessage("新しいパスワード"),
+      "ui_settings_subscreens_confirm_password_41d040":
+          MessageLookupByLibrary.simpleMessage("パスワードを確認"),
+      "ui_settings_subscreens_in_one_line_06bdaf":
+          MessageLookupByLibrary.simpleMessage("1行で"),
+      "ui_settings_subscreens_what_happened_977dd8":
+          MessageLookupByLibrary.simpleMessage("どうしましたか"),
+      "ui_onboard_step3_screen_skip_7b13d8":
+          MessageLookupByLibrary.simpleMessage(
+        "スキップ",
+      ),
+      "ui_onboard_step3_screen_finish_5c0ad8":
+          MessageLookupByLibrary.simpleMessage(
+        "完了",
+      ),
+      "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
+        "12 MB",
+      ),
+      "audit_about_subscreens_round_trip_64776b4c":
+          MessageLookupByLibrary.simpleMessage("往復"),
+      "audit_about_subscreens_token_verification_7934e1f2":
+          MessageLookupByLibrary.simpleMessage("トークン検証"),
+      "audit_about_subscreens_support_kyron_so_a3a84d0f":
+          MessageLookupByLibrary.simpleMessage("support@kyron.so"),
+      "audit_ar_lens_screen_try_again_cdec8872":
+          MessageLookupByLibrary.simpleMessage("もう一度試す"),
+      "audit_browser_engine_window_stop_39c04883":
+          MessageLookupByLibrary.simpleMessage("window.stop();"),
+      "audit_browser_sheet_try_again_44bc94ba":
+          MessageLookupByLibrary.simpleMessage("もう一度試す"),
+      "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
+          MessageLookupByLibrary.simpleMessage(
+        "今ブロードキャストを開始すると、誰も参加できないルームに入ることになります",
+      ),
+      "audit_communities_screen_start_a_community_06c8ec4f":
+          MessageLookupByLibrary.simpleMessage("コミュニティを作成する"),
+      "audit_communities_screen_what_is_it_for_optional_e7e82092":
+          MessageLookupByLibrary.simpleMessage("何のためですか？ (任意)"),
+      "audit_community_manage_screen_closing_it_f490fb09":
+          MessageLookupByLibrary.simpleMessage("閉鎖する"),
+      "audit_community_manage_screen_back_in_e495a750":
+          MessageLookupByLibrary.simpleMessage("戻ります。"),
+      "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
+          MessageLookupByLibrary.simpleMessage("このリストから戻る。"),
+      "audit_community_screen_join_first_7798cafc":
+          MessageLookupByLibrary.simpleMessage("先に参加する"),
+      "audit_composer_screen_coming_soon_431fd23d":
+          MessageLookupByLibrary.simpleMessage("近日公開"),
+      "audit_composer_screen_posting_as_you_45d69932":
+          MessageLookupByLibrary.simpleMessage("あなたとして投稿"),
+      "audit_drafts_screen_just_now_17a8d48a":
+          MessageLookupByLibrary.simpleMessage(
+        "たった今",
+      ),
+      "audit_explore_screen_topic_1_83830b41":
+          MessageLookupByLibrary.simpleMessage(
+        "トピック1",
+      ),
+      "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
+          MessageLookupByLibrary.simpleMessage("ただ今送信されています。"),
+      "audit_forgot_password_screen_has_anything_65044193":
+          MessageLookupByLibrary.simpleMessage("何かありますか。"),
+      "audit_post_analytics_screen_viewers_per_day_5d881f10":
+          MessageLookupByLibrary.simpleMessage("1日あたりの視聴者"),
+      "audit_post_detail_screen_sublist_1_join_b0a5d508":
+          MessageLookupByLibrary.simpleMessage("\").sublist(1).join(\", \""),
+      "audit_report_screen_this_post_820d9740":
+          MessageLookupByLibrary.simpleMessage("この投稿"),
+      "audit_report_screen_anything_to_add_optional_f0051fa4":
+          MessageLookupByLibrary.simpleMessage("何か追加しますか？ (任意)"),
+      "audit_settings_screen_log_out_0b39bfb2":
+          MessageLookupByLibrary.simpleMessage("ログアウト"),
+      "audit_settings_screen_your_account_bcdf27af":
+          MessageLookupByLibrary.simpleMessage("あなたのアカウント"),
+      "audit_settings_screen_did_plc_abc_825b4f49":
+          MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
+      "audit_settings_subscreens_confirm_password_f0e1f449":
+          MessageLookupByLibrary.simpleMessage("パスワードを確認"),
+      "audit_settings_subscreens_not_now_e1657fa9":
+          MessageLookupByLibrary.simpleMessage("今はしない"),
+      "audit_create_fab_post_in_this_community_0a42daf2":
+          MessageLookupByLibrary.simpleMessage("このコミュニティに投稿する"),
+      "audit_url_preview_its_own_8b362f95":
+          MessageLookupByLibrary.simpleMessage(
+        "独自のもの。",
+      ),
+      "audit_empty_state_try_again_80ef48cd":
+          MessageLookupByLibrary.simpleMessage(
+        "もう一度試す",
+      ),
+      "audit_feed_canvas_for_you_aa3c510d":
+          MessageLookupByLibrary.simpleMessage(
+        "おすすめ",
+      ),
+      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
+        "、ではない",
+      ),
+      "audit_inline_video_am_i_moving_4618f78c":
+          MessageLookupByLibrary.simpleMessage("動いている？"),
+      "audit_inline_video_turn_sound_on_83671c54":
+          MessageLookupByLibrary.simpleMessage("音をオンにする"),
+      "audit_inline_video_turn_sound_off_97714bbc":
+          MessageLookupByLibrary.simpleMessage("音をオフにする"),
+      "audit_interest_tabs_for_you_7ef9e823":
+          MessageLookupByLibrary.simpleMessage(
+        "おすすめ",
+      ),
+      "audit_interest_tabs_your_tabs_c3ba148f":
+          MessageLookupByLibrary.simpleMessage("あなたのタブ"),
+      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
+        "+ ALT",
+      ),
+      "audit_mention_picker_sheet_try_again_fd5d5dd7":
+          MessageLookupByLibrary.simpleMessage("もう一度試す"),
+      "audit_password_requirements_symbol_322aed1e":
+          MessageLookupByLibrary.simpleMessage("記号 (!@#…)"),
+      "audit_post_list_view_could_not_load_4dd86c79":
+          MessageLookupByLibrary.simpleMessage("読み込めませんでした"),
+      "audit_post_options_sheet_this_post_99bfa981":
+          MessageLookupByLibrary.simpleMessage("この投稿"),
+      "audit_post_text_a_b_780da9a1":
+          MessageLookupByLibrary.simpleMessage("a#b"),
+      "audit_search_filter_sheet_from_an_account_f6a22687":
+          MessageLookupByLibrary.simpleMessage("アカウントから"),
+      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
+        "読み込み中…",
+      ),
+      "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
+          MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
+      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
+        "投稿中…",
+      ),
+      "audit_story_viewer_your_story_b706ecb4":
+          MessageLookupByLibrary.simpleMessage("あなたのストーリー"),
+      "audit_story_viewer_copy_story_link_2bd1546c":
+          MessageLookupByLibrary.simpleMessage("ストーリーのリンクをコピー"),
+      "audit_story_viewer_3h_ago_174dc80d":
+          MessageLookupByLibrary.simpleMessage(
+        "3時間前",
+      ),
+      "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
+          MessageLookupByLibrary.simpleMessage("あなたのアカウント、投稿、そしてあなたがタップしたものなど"),
+      "audit_topic_picker_add_a_topic_25baaf8a":
+          MessageLookupByLibrary.simpleMessage("トピックを追加"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("コミュニティ"),
       "ui_settings": MessageLookupByLibrary.simpleMessage("設定"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("外観"),
@@ -464,38 +801,80 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_help": MessageLookupByLibrary.simpleMessage("ヘルプ"),
       "ui_feedback": MessageLookupByLibrary.simpleMessage("フィードバック"),
       "ui_decentralized_id": MessageLookupByLibrary.simpleMessage("分散型ID"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage("Kyronで人を探す"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage("投稿をすべて検索"),
-      "ui_search_by_handle_or_display_name": MessageLookupByLibrary.simpleMessage("ハンドルまたは表示名で検索する。"),
-      "ui_words_or_filter": MessageLookupByLibrary.simpleMessage("単語、またはフィルター — アカウント、日付範囲、投稿に含まれるものなど。"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage("2文字以上"),
-      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage("その条件に一致する投稿はありません。"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Kyronで人を探す"),
+      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
+        "投稿をすべて検索",
+      ),
+      "ui_search_by_handle_or_display_name":
+          MessageLookupByLibrary.simpleMessage(
+        "ハンドルまたは表示名で検索する。",
+      ),
+      "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
+        "単語、またはフィルター — アカウント、日付範囲、投稿に含まれるものなど。",
+      ),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("2文字以上"),
+      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
+        "その条件に一致する投稿はありません。",
+      ),
       "ui_search_clear": MessageLookupByLibrary.simpleMessage("クリア"),
       "ui_search_filters": MessageLookupByLibrary.simpleMessage("フィルター"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage("投稿のテキストをコピーしました"),
+      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
+        "投稿のテキストをコピーしました",
+      ),
       "ui_link_copied": MessageLookupByLibrary.simpleMessage("リンクをコピーしました"),
-      "ui_interest_noted": MessageLookupByLibrary.simpleMessage("承知しました。これは表示内容のカスタマイズに役立ちます。"),
-      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage("非表示にしました。類似の投稿は少なく表示されます。"),
+      "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
+        "承知しました。これは表示内容のカスタマイズに役立ちます。",
+      ),
+      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
+        "非表示にしました。類似の投稿は少なく表示されます。",
+      ),
       "ui_post_hidden": MessageLookupByLibrary.simpleMessage("投稿を非表示にしました"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("スレッドをミュートしました"),
       "ui_post_deleted": MessageLookupByLibrary.simpleMessage("投稿を削除しました"),
-      "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage("あなたのプロフィールと他の全員のフィードから削除されます。返信も一緒に削除されます。"),
-      "ui_block_detail": MessageLookupByLibrary.simpleMessage("お互いにKyron上で相手を見ることはできなくなり、相互のフォローは解除されます。相手に通知はされません。"),
-      "ui_mute_detail": MessageLookupByLibrary.simpleMessage("相手の投稿が表示されなくなります。相手に通知はされません。"),
+      "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
+        "あなたのプロフィールと他の全員のフィードから削除されます。返信も一緒に削除されます。",
+      ),
+      "ui_block_detail": MessageLookupByLibrary.simpleMessage(
+        "お互いにKyron上で相手を見ることはできなくなり、相互のフォローは解除されます。相手に通知はされません。",
+      ),
+      "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
+        "相手の投稿が表示されなくなります。相手に通知はされません。",
+      ),
       "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage("利用規約"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage("プライバシーポリシー"),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage("あなたのプロフィールと連絡先情報"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("プライバシーポリシー"),
+      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
+        "あなたのプロフィールと連絡先情報",
+      ),
       "ui_settings_security": MessageLookupByLibrary.simpleMessage("セキュリティ設定"),
-      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage("あなたがミュートまたはブロックした相手"),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage("コンテンツと表示"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage("アプリとデバイス"),
+      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
+        "あなたがミュートまたはブロックした相手",
+      ),
+      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
+        "コンテンツと表示",
+      ),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("アプリとデバイス"),
       "ui_settings_data_saver": MessageLookupByLibrary.simpleMessage("データセーバー"),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage("言語を選択"),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage("通知の設定"),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage("ヘルプ記事を閲覧する"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage("チームからサポートを受ける"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage("ご意見をお聞かせください"),
-      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage("プロフィールを読み込めませんでした"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("言語を選択"),
+      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
+        "通知の設定",
+      ),
+      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
+        "ヘルプ記事を閲覧する",
+      ),
+      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
+        "チームからサポートを受ける",
+      ),
+      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
+        "ご意見をお聞かせください",
+      ),
+      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
+        "プロフィールを読み込めませんでした",
+      ),
       "ui_search_people": MessageLookupByLibrary.simpleMessage("人を検索"),
       "ui_search_posts": MessageLookupByLibrary.simpleMessage("投稿を検索"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("この投稿"),
@@ -504,70 +883,134 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "nothingMatchesQuery": (Object a0) => "Kyron上で \"${a0}\" に一致するものはありません。",
       "repliesPolicy": (Object a0) => "返信: ${a0}",
       "ui_preferences": MessageLookupByLibrary.simpleMessage("設定"),
-      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage("ライト、ダーク、または端末の設定に合わせる"),
+      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
+        "ライト、ダーク、または端末の設定に合わせる",
+      ),
       "ui_legal": MessageLookupByLibrary.simpleMessage("法的情報"),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("診断"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("保存した投稿"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("いいねした投稿"),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage("まだ保存された投稿はありません"),
+      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
+        "まだ保存された投稿はありません",
+      ),
       "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("まだいいねはありません"),
-      "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage("投稿のアーカイブアイコンをタップするとここに保存されます。保存した内容はあなただけが見られます。"),
-      "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage("いいねした投稿はここに表示されます。新しい順に表示されます。"),
-      "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage("保存した投稿を読み込めませんでした"),
-      "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage("いいねした投稿を読み込めませんでした"),
+      "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "投稿のアーカイブアイコンをタップするとここに保存されます。保存した内容はあなただけが見られます。",
+      ),
+      "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "いいねした投稿はここに表示されます。新しい順に表示されます。",
+      ),
+      "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
+        "保存した投稿を読み込めませんでした",
+      ),
+      "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "いいねした投稿を読み込めませんでした",
+      ),
       "feedTagDetail": (Object a0) => "#${a0} の投稿はまだありません。",
-      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage("フォローしている人の投稿はありません"),
-      "ui_feed_videos_empty": MessageLookupByLibrary.simpleMessage("まだ動画はありません"),
+      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
+        "フォローしている人の投稿はありません",
+      ),
+      "ui_feed_videos_empty":
+          MessageLookupByLibrary.simpleMessage("まだ動画はありません"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("ここにはまだ何もありません"),
-      "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage("いくつかのアカウントをフォローすると、その投稿がここに表示されます。"),
-      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage("クリップ付きの投稿がここに表示されます。"),
-      "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage("投稿があるとここに表示されます。"),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage("フィードを読み込めませんでした"),
+      "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
+        "いくつかのアカウントをフォローすると、その投稿がここに表示されます。",
+      ),
+      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
+        "クリップ付きの投稿がここに表示されます。",
+      ),
+      "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
+        "投稿があるとここに表示されます。",
+      ),
+      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
+        "フィードを読み込めませんでした",
+      ),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage("この投稿を共有"),
-      "analytics_distinct_people_not_opens": MessageLookupByLibrary.simpleMessage("開いた回数ではなく、個別の人数"),
+      "analytics_distinct_people_not_opens":
+          MessageLookupByLibrary.simpleMessage(
+        "開いた回数ではなく、個別の人数",
+      ),
       "analytics_engagement": MessageLookupByLibrary.simpleMessage("エンゲージメント"),
       "analytics_posted": MessageLookupByLibrary.simpleMessage("投稿"),
       "analytics_viewers": MessageLookupByLibrary.simpleMessage("閲覧者"),
       "analytics_likes": MessageLookupByLibrary.simpleMessage("いいね数"),
       "analytics_comments": MessageLookupByLibrary.simpleMessage("コメント"),
       "analytics_saves": MessageLookupByLibrary.simpleMessage("保存数"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage("まだ閲覧者はいません"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage("1日あたりの閲覧者数"),
-      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage("まだ誰もこの投稿を開いていません。"),
+      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
+        "まだ閲覧者はいません",
+      ),
+      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
+        "1日あたりの閲覧者数",
+      ),
+      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
+        "まだ誰もこの投稿を開いていません。",
+      ),
       "reply_who_can_reply": MessageLookupByLibrary.simpleMessage("誰が返信できますか？"),
-      "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage("誰でもこの投稿を見たり、リポストしたり、引用したりできます。"),
+      "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
+        "誰でもこの投稿を見たり、リポストしたり、引用したりできます。",
+      ),
       "reply_anyone": MessageLookupByLibrary.simpleMessage("誰でもやり取りできます"),
-      "reply_anyone_detail": MessageLookupByLibrary.simpleMessage("Kyron上の誰でもこの投稿に返信できます。"),
+      "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
+        "Kyron上の誰でもこの投稿に返信できます。",
+      ),
       "reply_followers": MessageLookupByLibrary.simpleMessage("あなたをフォローしている人"),
-      "reply_followers_detail": MessageLookupByLibrary.simpleMessage("あなたをフォローしている人だけがこの投稿に返信できます。"),
+      "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
+        "あなたをフォローしている人だけがこの投稿に返信できます。",
+      ),
       "reply_mentioned": MessageLookupByLibrary.simpleMessage("あなたがメンションした人"),
-      "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage("この投稿であなたが@mentionした人だけが返信できます。"),
+      "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
+        "この投稿であなたが@mentionした人だけが返信できます。",
+      ),
       "reply_nobody": MessageLookupByLibrary.simpleMessage("誰も返信できません"),
-      "reply_nobody_detail": MessageLookupByLibrary.simpleMessage("返信はオフになっていますが、あなたは返信できます。"),
+      "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
+        "返信はオフになっていますが、あなたは返信できます。",
+      ),
       "interest_for_you": MessageLookupByLibrary.simpleMessage("あなた向け"),
       "interest_following": MessageLookupByLibrary.simpleMessage("フォロー中"),
       "interest_videos": MessageLookupByLibrary.simpleMessage("動画"),
       "interest_your_tabs": MessageLookupByLibrary.simpleMessage("あなたのタブ"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage("ドラッグして並べ替え"),
+      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
+        "ドラッグして並べ替え",
+      ),
       "interest_add": MessageLookupByLibrary.simpleMessage("興味を追加"),
       "interest_trending_now": MessageLookupByLibrary.simpleMessage("現在のトレンド"),
-      "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage("タブは最大5つまでです。追加するには1つ削除してください。"),
-      "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage("人々が使い始めるとハッシュタグがここに表示されます。"),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage("頭の中で何が渦巻いていますか？"),
-      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage("あなただけが言えることを言って…"),
-      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage("辛口の意見をどうぞ（ぬるめでも可）"),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage("これがあなたのシグナルです — 発信しよう"),
-      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage("入力、話す、または声に出して考える"),
+      "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
+        "タブは最大5つまでです。追加するには1つ削除してください。",
+      ),
+      "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
+        "人々が使い始めるとハッシュタグがここに表示されます。",
+      ),
+      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
+        "頭の中で何が渦巻いていますか？",
+      ),
+      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
+        "あなただけが言えることを言って…",
+      ),
+      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
+        "辛口の意見をどうぞ（ぬるめでも可）",
+      ),
+      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
+        "これがあなたのシグナルです — 発信しよう",
+      ),
+      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
+        "入力、話す、または声に出して考える",
+      ),
       "profile_tap_to_change": MessageLookupByLibrary.simpleMessage("タップして変更"),
       "profile_display_name": MessageLookupByLibrary.simpleMessage("表示名"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("自己紹介"),
       "profile_location": MessageLookupByLibrary.simpleMessage("場所"),
       "profile_website": MessageLookupByLibrary.simpleMessage("ウェブサイト"),
-      "translation_description": MessageLookupByLibrary.simpleMessage("Kyron自身のテキストはまだ翻訳作業中のため、当面ほとんどの画面は英語のままです。本日変わる点：Flutterが描画するインターフェイスの一部、日付と数値、そして右から左への言語に対するアプリのレイアウト方向です。"),
-      "theme_system_detail": MessageLookupByLibrary.simpleMessage("端末のライト/ダーク設定に従う"),
+      "translation_description": MessageLookupByLibrary.simpleMessage(
+        "Kyron自身のテキストはまだ翻訳作業中のため、当面ほとんどの画面は英語のままです。本日変わる点：Flutterが描画するインターフェイスの一部、日付と数値、そして右から左への言語に対するアプリのレイアウト方向です。",
+      ),
+      "theme_system_detail": MessageLookupByLibrary.simpleMessage(
+        "端末のライト/ダーク設定に従う",
+      ),
       "theme_light_detail": MessageLookupByLibrary.simpleMessage("常にライトモード"),
       "theme_dark_detail": MessageLookupByLibrary.simpleMessage("常にダークモード"),
-      "theme_dim_detail": MessageLookupByLibrary.simpleMessage("黒ではなく青灰色の、より柔らかいダーク"),
+      "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+        "黒ではなく青灰色の、より柔らかいダーク",
+      ),
       "theme_system": MessageLookupByLibrary.simpleMessage("システム"),
       "theme_light": MessageLookupByLibrary.simpleMessage("ライト"),
       "theme_dark": MessageLookupByLibrary.simpleMessage("ダーク"),
@@ -594,14 +1037,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_ready_attach": MessageLookupByLibrary.simpleMessage("添付準備完了"),
       "voice_stop": MessageLookupByLibrary.simpleMessage("停止"),
       "voice_attach": MessageLookupByLibrary.simpleMessage("添付"),
-      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage("作成画面を何か書いた状態で閉じると、下書きとして保存するか提案されます。"),
+      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
+        "作成画面を何か書いた状態で閉じると、下書きとして保存するか提案されます。",
+      ),
       "draft_poll_empty": MessageLookupByLibrary.simpleMessage("質問未設定の投票"),
       "draft_quote_empty": MessageLookupByLibrary.simpleMessage("本文未入力の引用"),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage("まだ何も書かれていません"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("まだ何も書かれていません"),
       "draft_just_now": MessageLookupByLibrary.simpleMessage("たった今"),
       "draft_minutes_ago": MessageLookupByLibrary.simpleMessage("{minutes}分前"),
       "draft_hours_ago": MessageLookupByLibrary.simpleMessage("{hours}時間前"),
       "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days}日前"),
-};
+    };
 
 final messageLookup = MessageLookup();
