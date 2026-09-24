@@ -1,0 +1,1339 @@
+import 'package:intl/message_lookup_by_library.dart';
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'bn';
+
+  Map<String, dynamic> get messages => _notInlinedMessages(_notInlinedMessages);
+}
+
+Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
+      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
+        "একটি শব্দ, বাক্যাংশ বা #ট্যাগ",
+      ),
+      "about": MessageLookupByLibrary.simpleMessage("সম্বন্ধে"),
+      "addAnAnswer":
+          MessageLookupByLibrary.simpleMessage("একটি উত্তর যোগ করুন"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
+        "আরও ভাষা যোগ করুন…",
+      ),
+      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
+        "সম্মত হন এবং চালিয়ে যান",
+      ),
+      "alreadyOnKyron":
+          MessageLookupByLibrary.simpleMessage("ইতিমধ্যেই Kyron-এ?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("মন্তব্য"),
+      "analytics_distinct_people_not_opens":
+          MessageLookupByLibrary.simpleMessage(
+        "ভিন্ন মানুষ, ওপেন নয়",
+      ),
+      "analytics_engagement":
+          MessageLookupByLibrary.simpleMessage("ইনগেইজমেন্ট"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("লাইক"),
+      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কোনো দর্শক নেই",
+      ),
+      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
+        "কেউ এই পোস্টটি এখনও খুলেনি।",
+      ),
+      "analytics_posted":
+          MessageLookupByLibrary.simpleMessage("পোস্ট করা হয়েছে"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("সংরক্ষণ"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("দর্শক"),
+      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
+        "VIEWERS PER DAY",
+      ),
+      "and": MessageLookupByLibrary.simpleMessage("এবং"),
+      "answerNumber": (Object a0) => "উত্তর ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
+        "সিস্টেম লগ সংযুক্ত করুন",
+      ),
+      "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
+        "12 MB",
+      ),
+      "audit_about_subscreens_round_trip_64776b4c":
+          MessageLookupByLibrary.simpleMessage("Round trip"),
+      "audit_about_subscreens_support_kyron_so_a3a84d0f":
+          MessageLookupByLibrary.simpleMessage("support@kyron.so"),
+      "audit_about_subscreens_token_verification_7934e1f2":
+          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+      "audit_ar_lens_screen_try_again_cdec8872":
+          MessageLookupByLibrary.simpleMessage("আবার চেষ্টা করুন"),
+      "audit_browser_engine_window_stop_39c04883":
+          MessageLookupByLibrary.simpleMessage("window.stop();"),
+      "audit_browser_sheet_try_again_44bc94ba":
+          MessageLookupByLibrary.simpleMessage("আবার চেষ্টা করুন"),
+      "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
+          MessageLookupByLibrary.simpleMessage(
+        "Starting a broadcast now would put you in a room nobody could",
+      ),
+      "audit_communities_screen_start_a_community_06c8ec4f":
+          MessageLookupByLibrary.simpleMessage("Start a community"),
+      "audit_communities_screen_what_is_it_for_optional_e7e82092":
+          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+      "audit_community_manage_screen_back_in_e495a750":
+          MessageLookupByLibrary.simpleMessage("back in."),
+      "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
+          MessageLookupByLibrary.simpleMessage("back in from this list."),
+      "audit_community_manage_screen_closing_it_f490fb09":
+          MessageLookupByLibrary.simpleMessage("Closing it"),
+      "audit_community_screen_join_first_7798cafc":
+          MessageLookupByLibrary.simpleMessage("join first"),
+      "audit_composer_screen_coming_soon_431fd23d":
+          MessageLookupByLibrary.simpleMessage("coming soon"),
+      "audit_composer_screen_posting_as_you_45d69932":
+          MessageLookupByLibrary.simpleMessage("Posting as you"),
+      "audit_create_fab_post_in_this_community_0a42daf2":
+          MessageLookupByLibrary.simpleMessage("post in this community"),
+      "audit_drafts_screen_just_now_17a8d48a":
+          MessageLookupByLibrary.simpleMessage(
+        "Just now",
+      ),
+      "audit_empty_state_try_again_80ef48cd":
+          MessageLookupByLibrary.simpleMessage(
+        "আবার চেষ্টা করুন",
+      ),
+      "audit_explore_screen_topic_1_83830b41":
+          MessageLookupByLibrary.simpleMessage(
+        "Topic 1",
+      ),
+      "audit_feed_canvas_for_you_aa3c510d":
+          MessageLookupByLibrary.simpleMessage(
+        "For You",
+      ),
+      "audit_forgot_password_screen_has_anything_65044193":
+          MessageLookupByLibrary.simpleMessage("has anything."),
+      "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
+          MessageLookupByLibrary.simpleMessage("its way to it now."),
+      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
+        ", না",
+      ),
+      "audit_inline_video_am_i_moving_4618f78c":
+          MessageLookupByLibrary.simpleMessage("আমি কি কাঁপছি"),
+      "audit_inline_video_turn_sound_off_97714bbc":
+          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+      "audit_inline_video_turn_sound_on_83671c54":
+          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+      "audit_interest_tabs_for_you_7ef9e823":
+          MessageLookupByLibrary.simpleMessage(
+        "For You",
+      ),
+      "audit_interest_tabs_your_tabs_c3ba148f":
+          MessageLookupByLibrary.simpleMessage("Your tabs"),
+      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
+        "+ ALT",
+      ),
+      "audit_mention_picker_sheet_try_again_fd5d5dd7":
+          MessageLookupByLibrary.simpleMessage("আবার চেষ্টা করুন"),
+      "audit_password_requirements_symbol_322aed1e":
+          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+      "audit_post_analytics_screen_viewers_per_day_5d881f10":
+          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+      "audit_post_detail_screen_sublist_1_join_b0a5d508":
+          MessageLookupByLibrary.simpleMessage(").sublist(1).join(\", \")"),
+      "audit_post_list_view_could_not_load_4dd86c79":
+          MessageLookupByLibrary.simpleMessage("could not load"),
+      "audit_post_options_sheet_this_post_99bfa981":
+          MessageLookupByLibrary.simpleMessage("this post"),
+      "audit_post_text_a_b_780da9a1":
+          MessageLookupByLibrary.simpleMessage("a#b"),
+      "audit_report_screen_anything_to_add_optional_f0051fa4":
+          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+      "audit_report_screen_this_post_820d9740":
+          MessageLookupByLibrary.simpleMessage("this post"),
+      "audit_search_filter_sheet_from_an_account_f6a22687":
+          MessageLookupByLibrary.simpleMessage("From an account"),
+      "audit_settings_screen_did_plc_abc_825b4f49":
+          MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
+      "audit_settings_screen_log_out_0b39bfb2":
+          MessageLookupByLibrary.simpleMessage("Log Out"),
+      "audit_settings_screen_your_account_bcdf27af":
+          MessageLookupByLibrary.simpleMessage("Your account"),
+      "audit_settings_subscreens_confirm_password_f0e1f449":
+          MessageLookupByLibrary.simpleMessage("Confirm password"),
+      "audit_settings_subscreens_not_now_e1657fa9":
+          MessageLookupByLibrary.simpleMessage("not now"),
+      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
+        "Loading…",
+      ),
+      "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
+          MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
+      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
+        "Posting…",
+      ),
+      "audit_story_viewer_3h_ago_174dc80d":
+          MessageLookupByLibrary.simpleMessage(
+        "3h ago",
+      ),
+      "audit_story_viewer_copy_story_link_2bd1546c":
+          MessageLookupByLibrary.simpleMessage("Copy story link"),
+      "audit_story_viewer_your_story_b706ecb4":
+          MessageLookupByLibrary.simpleMessage("Your Story"),
+      "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
+          MessageLookupByLibrary.simpleMessage(
+        "Your account, your posts, and what you tap on so",
+      ),
+      "audit_topic_picker_add_a_topic_25baaf8a":
+          MessageLookupByLibrary.simpleMessage("Add a topic"),
+      "audit_url_preview_its_own_8b362f95":
+          MessageLookupByLibrary.simpleMessage(
+        "its own.",
+      ),
+      "authorBlocked": (Object a0) => "${a0} ব্লক করা হয়েছে",
+      "authorPostsHidden": (Object a0) => "আপনি ${a0}-এর পোস্ট দেখবেন না",
+      "block": MessageLookupByLibrary.simpleMessage("ব্লক করুন"),
+      "blockAuthor": (Object a0) => "${a0} ব্লক করবেন?",
+      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
+        "বিল্ড বিবরণ কপি করা হয়েছে",
+      ),
+      "bullet": MessageLookupByLibrary.simpleMessage("•"),
+      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "চালিয়ে গেলে আপনি আমাদের",
+      ),
+      "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
+        "চালিয়ে গেলে আপনি আমাদের শর্তাবলী এবং গোপনীয়তা নীতির সাথে সম্মত হন",
+      ),
+      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "সাইন আপ করলে আপনি আমাদের",
+      ),
+      "cancel": MessageLookupByLibrary.simpleMessage("বাতিল"),
+      "change": MessageLookupByLibrary.simpleMessage("পরিবর্তন"),
+      "changeEmail":
+          MessageLookupByLibrary.simpleMessage("ইমেইল পরিবর্তন করুন"),
+      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
+        "আপনার ইমেইল চেক করে আপনার অ্যাকাউন্ট নিশ্চিত করুন।",
+      ),
+      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
+        "চেক করুন Kyron পৌঁছনীয় কি না",
+      ),
+      "clear": MessageLookupByLibrary.simpleMessage("পরিষ্কার"),
+      "close": MessageLookupByLibrary.simpleMessage("বন্ধ করুন"),
+      "closeCommunity": (Object a0) => "${a0} বন্ধ করবেন?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("বন্ধ করুন"),
+      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "এই কমিউনিটি বন্ধ করুন",
+      ),
+      "communities": MessageLookupByLibrary.simpleMessage("কমিউনিটি"),
+      "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Discover-এ একটি খুঁজুন, অথবা আপনার নিজস্ব শুরু করুন।",
+      ),
+      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
+        "একটি তীব্র মতামত দিন (বা একটি নরম)",
+      ),
+      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
+        "আপনার মাথায় কি কিচ্ছু ঘোরাঘুরি করছে?",
+      ),
+      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
+        "কিছু বলুন যা শুধু আপনি বলতে পারেন…",
+      ),
+      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
+        "এটি আপনার সিগন্যাল — এটি পাঠান",
+      ),
+      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
+        "টাইপ করুন, বলুন, বা উন্মুক্তভাবে ভাবুন",
+      ),
+      "confirmPassword": MessageLookupByLibrary.simpleMessage(
+        "পাসওয়ার্ড নিশ্চিত করুন",
+      ),
+      "contactSupport": MessageLookupByLibrary.simpleMessage(
+        "সাপোর্টে যোগাযোগ করুন",
+      ),
+      "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
+        "পোস্টগুলিতে এখনও ভাষা নেই, তাই এটি আজ আপনার ফিড ফিল্টার করবে না। আপনার পছন্দ সংরক্ষণ থাকবে যখন পোস্টগুলো ভাষা বহন করবে।",
+      ),
+      "continueAction": MessageLookupByLibrary.simpleMessage("চালিয়ে যান"),
+      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
+        "ইমেইলের মাধ্যমে চালিয়ে যান",
+      ),
+      "copy": MessageLookupByLibrary.simpleMessage("কপি"),
+      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
+        "তার পরিবর্তে রিপোর্ট কপি করুন",
+      ),
+      "couldNotOpenGoogleSignIn": (Object a0) =>
+          "Google সাইন-ইন খুলতে পারিনি। ${a0}",
+      "couldNotSignOut": (Object a0) => "সাইন আউট করা যায়নি: ${a0}",
+      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
+        "এই ছবি তুলা যায়নি।",
+      ),
+      "create": MessageLookupByLibrary.simpleMessage("তৈরি করুন"),
+      "createAccount":
+          MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট তৈরি করুন"),
+      "createYourAccount": MessageLookupByLibrary.simpleMessage(
+        "আপনার অ্যাকাউন্ট তৈরি করুন",
+      ),
+      "createYourProfile": MessageLookupByLibrary.simpleMessage(
+        "আপনার প্রোফাইল তৈরি করুন",
+      ),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("লাইভ শুরু করুন"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("টেক্সট পোস্ট"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("ভয়েস পোস্ট"),
+      "delete": MessageLookupByLibrary.simpleMessage("মুছুন"),
+      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
+        "এই মন্তব্যটি মুছে ফেলবেন?",
+      ),
+      "deleteThisPost": MessageLookupByLibrary.simpleMessage(
+        "এই পোস্টটি মুছে ফেলবেন?",
+      ),
+      "describeAttachment": MessageLookupByLibrary.simpleMessage(
+        "এই সংযুক্তিটি বর্ণনা করুন",
+      ),
+      "description": MessageLookupByLibrary.simpleMessage("বিবরণ"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+        "DID ক্লিপবোর্ডে কপি করা হয়েছে",
+      ),
+      "done": MessageLookupByLibrary.simpleMessage("সমাপ্ত"),
+      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
+        "কোম্পোজার বন্ধ করলে কিছু লিখে রাখলে আপনাকে একটি খসড়া অফার করা হবে।",
+      ),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} দিন আগে"),
+      "draft_hours_ago":
+          MessageLookupByLibrary.simpleMessage("{hours} ঘন্টা আগে"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("এখনই"),
+      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
+        "{minutes} মিনিট আগে",
+      ),
+      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
+        "এখনও কিছু লেখা নেই",
+      ),
+      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
+        "একটি পোল, কিন্তু এখনও প্রশ্ন নেই",
+      ),
+      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
+        "একটি উদ্ধৃতি, কিন্তু এখনও কিছু লেখা নেই",
+      ),
+      "drafts": MessageLookupByLibrary.simpleMessage("খসড়া"),
+      "editProfile":
+          MessageLookupByLibrary.simpleMessage("প্রোফাইল সম্পাদনা করুন"),
+      "email": MessageLookupByLibrary.simpleMessage("ইমেইল"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("ইমেইল বিজ্ঞপ্তি"),
+      "explore": MessageLookupByLibrary.simpleMessage("অন্বেষণ"),
+      "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
+        "এই ডিভাইসে ফেস ট্র্যাকিং উপলব্ধ নেই।",
+      ),
+      "feedTagDetail": (Object a0) =>
+          "#${a0} এর অধীনে এখনো কিছু পোস্ট করা হয়নি।",
+      "followers": MessageLookupByLibrary.simpleMessage("অনুসারী"),
+      "following": MessageLookupByLibrary.simpleMessage("অনুসরণ"),
+      "forgotPassword": MessageLookupByLibrary.simpleMessage(
+        "পাসওয়ার্ড ভুলে গেছেন?",
+      ),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("সাহায্য পাওয়া"),
+      "googleContinue": MessageLookupByLibrary.simpleMessage(
+        "Google দিয়ে চালিয়ে যান",
+      ),
+      "googleSignIn": MessageLookupByLibrary.simpleMessage(
+        "Google দিয়ে সাইন ইন করুন",
+      ),
+      "googleSignInDesktopExplanation": (Object a0) =>
+          "Google সম্পন্ন সাইন-ইনটি এমন একটি লিঙ্কের মাধ্যমে Kyron-কে ফেরত দেয় যা শুধুমাত্র Android এবং iOS উত্তরে দেয়, তাই ${a0}-এ ব্রাউজারের কোথাও এটি ফেরত দেওয়ার জায়গা থাকবে না।\\n\\nআপনার যদি ইতিমধ্যেই Google দিয়ে Kyron অ্যাকাউন্ট থাকে, একই ঠিকানায় ইমেইলের মাধ্যমে চালিয়ে যান ব্যবহার করুন এবং পাসওয়ার্ড ভুলে গেছেন ট্যাপে করুন — এটি আপনাকে একটি লিঙ্ক ইমেইল করবে যাতে আপনি একটি পাসওয়ার্ড সেট করতে পারবেন।",
+      "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
+        "Google সাইন-ইনের জন্য ফোন অ্যাপ প্রয়োজন",
+      ),
+      "googleSignUp": MessageLookupByLibrary.simpleMessage(
+        "Google দিয়ে সাইন আপ করুন",
+      ),
+      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
+        "গাইড ও সাধারণ প্রশ্নের উত্তর",
+      ),
+      "handle": MessageLookupByLibrary.simpleMessage("handle"),
+      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "হ্যাশট্যাগ এখানে দেখা যাবে যখন মানুষ এগুলো ব্যবহার করতে শুরু করবে।",
+      ),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("সহায়তা ও সাপোর্ট"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("সহায়তা কেন্দ্র"),
+      "home": MessageLookupByLibrary.simpleMessage("হোম"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("এক লাইনে"),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("একটি আগ্রহ যোগ করুন"),
+      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
+        "ক্রমানুসারে ঘোরান",
+      ),
+      "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
+        "স্ট্রিপে সর্বোচ্চ পাঁচটি ট্যাব রাখা যায়। একটি অপসারণ করে আরেকটি যোগ করুন।",
+      ),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+      "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
+        "হ্যাশট্যাগ এখানে দেখা দেয় যখন মানুষ এগুলি ব্যবহার শুরু করে।",
+      ),
+      "interest_trending_now": MessageLookupByLibrary.simpleMessage(
+        "এখন ট্রেন্ডিং",
+      ),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
+        "এটি আপনাদের উভয়ের জন্য অদৃশ্য হবে।",
+      ),
+      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
+        "এটি থ্রেড থেকে সরিয়ে ফেলা হবে।",
+      ),
+      "join": MessageLookupByLibrary.simpleMessage("যোগ দিন"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("সম্পাদনা চালিয়ে যান"),
+      "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
+      "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
+        "Kyron-এর শব্দগুলি এখনও অনুবাদ হচ্ছে, তাই অধিকাংশ স্ক্রীন এখনও ইংরেজিতেই থাকবে।",
+      ),
+      "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
+      "languages": MessageLookupByLibrary.simpleMessage("ভাষা"),
+      "leave": MessageLookupByLibrary.simpleMessage("ছেড়ে যান"),
+      "leaveCommunity": (Object a0) => "${a0} ছেড়ে যাবেন?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("আবার ঢুকতে দিন"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage(
+        "একটি ক্লিপ যোগ করুন",
+      ),
+      "literaladdAGif":
+          MessageLookupByLibrary.simpleMessage("একটি GIF যোগ করুন"),
+      "literaladdAHashtag": MessageLookupByLibrary.simpleMessage(
+        "একটি হ্যাশট্যাগ যোগ করুন",
+      ),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("একটি ছবি যোগ করুন"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("একটি পোল যোগ করুন"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage(
+        "একটি ভিডিও যোগ করুন",
+      ),
+      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
+        "একটি আগ্রহ যোগ করুন",
+      ),
+      "literaladdLabelAsATab": (Object a0) => "${a0}-কে ট্যাব হিসেবে যোগ করুন",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage("অ্যাপ ভাষা"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("অ্যাপ সংস্করণ"),
+      "literalblockAuthor": (Object a0) => "${a0} ব্লক করুন",
+      "literalblockAuthor2": (Object a0) => "${a0} ব্লক করবেন?",
+      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
+        "এই অ্যাকাউন্ট ব্লক করবেন?",
+      ),
+      "literalcancelReply": MessageLookupByLibrary.simpleMessage(
+        "উত্তর বাতিল করুন",
+      ),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage(
+        "আবার পরীক্ষা করুন",
+      ),
+      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
+        "গ্যালারি থেকে নির্বাচন করুন",
+      ),
+      "literalclearCache": MessageLookupByLibrary.simpleMessage(
+        "ক্যাশ পরিষ্কার করুন",
+      ),
+      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
+        "সব পৃষ্ঠা বন্ধ করুন",
+      ),
+      "literalcloseTabLabel": (Object a0) => "${a0} বন্ধ করুন",
+      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
+        "ব্রাউজার বন্ধ করুন",
+      ),
+      "literalcloseWidgetCommunityName": (Object a0) => "${a0} বন্ধ করবেন?",
+      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
+        "সাপোর্টে যোগাযোগ করুন",
+      ),
+      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
+        "কনটেন্ট ভাষা",
+      ),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("লিংক কপি করুন"),
+      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
+        "পোস্টের লিংক কপি করুন",
+      ),
+      "literalcopyPostText": MessageLookupByLibrary.simpleMessage(
+        "পোস্টের টেক্সট কপি করুন",
+      ),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("টেক্সট কপি করুন"),
+      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
+        "কমিউনিটি লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
+        "GIF লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
+        "বিজ্ঞপ্তি লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
+        "সাজেশন লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
+        "সদস্যরা লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
+        "এই পোস্টগুলো লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadThisConversation":
+          MessageLookupByLibrary.simpleMessage(
+        "এই কথোপকথন লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
+        "এই তালিকা লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
+        "এই পোস্ট লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
+        "এই উত্তর লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
+        "টপিক লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
+        "ট্রেন্ডিং লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "ট্রেন্ডিং ট্যাগ লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadYourCommunities":
+          MessageLookupByLibrary.simpleMessage(
+        "আপনার কমিউনিটি লোড করা যায়নি",
+      ),
+      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
+        "আপনার বার্তাগুলি লোড করা যায়নি",
+      ),
+      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "এই কমিউনিটি খোলা যায়নি",
+      ),
+      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
+        "উত্তরটি পোস্ট করা যায়নি।",
+      ),
+      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
+        "সার্চ করা যায়নি",
+      ),
+      "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
+          "সাইন আউট করা যায়নি: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("কভার ফটো"),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage("ডাটা সেভার"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("পোস্ট মুছুন"),
+      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
+        "লোকজন আবিষ্কার করুন",
+      ),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("উত্তর দেবেন না"),
+      "literaldraftSaved": MessageLookupByLibrary.simpleMessage(
+        "খসড়া সংরক্ষণ করা হয়েছে",
+      ),
+      "literalfeedbackCannotBeSentRightNow":
+          MessageLookupByLibrary.simpleMessage(
+        "এখনই প্রতিক্রিয়া পাঠানো যায় না",
+      ),
+      "literalfirstyearIndex": (Object a0) => "${a0}",
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("ফন্ট সাইজ"),
+      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
+        "GIF সেট আপ করা হয়নি",
+      ),
+      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
+        "অন্য অ্যাপকে হস্তান্তর করুন",
+      ),
+      "literalhidePassword": MessageLookupByLibrary.simpleMessage(
+        "পাসওয়ার্ড লুকান",
+      ),
+      "literalhideThisPost":
+          MessageLookupByLibrary.simpleMessage("এই পোস্ট লুকান"),
+      "literalhidesItAndTellsUsToShowFewerLikeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "এটি লুকায় এবং আমাদেরকে এর মতো কম দেখাতে বলে",
+      ),
+      "literalhowToBehave": MessageLookupByLibrary.simpleMessage(
+        "কিভাবে আচরণ করবেন",
+      ),
+      "literalindex1": (Object a0) => "${a0}",
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("টাইপ করতে থাকুন"),
+      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
+        "Kyron উত্তর দেয়নি",
+      ),
+      "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
+      "literallabelDate": (Object a0) => "\\${a0} তারিখ",
+      "literalleaveCommunityName": (Object a0) => "${a0} ছাড়বেন?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, ফেস লেন্স",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("পছন্দ করা পোস্ট"),
+      "literallinkCopied": MessageLookupByLibrary.simpleMessage(
+        "লিংক কপি করা হয়েছে",
+      ),
+      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
+        "মডারেটর নিযুক্ত করুন",
+      ),
+      "literalmuteAuthor": (Object a0) => "${a0} নীরব করুন",
+      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
+        "এই থ্রেড নীরব করুন",
+      ),
+      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
+        "শব্দ বা ট্যাগ নীরব করুন",
+      ),
+      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
+        "নীরব ও ব্লক করা অ্যাকাউন্ট",
+      ),
+      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
+        "নীরব করা হয়েছে। আপনাকে জানানো হবে না।",
+      ),
+      "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
+          "এই ডিভাইসে কোনো অ্যাপ ${a0} লিংক খুলে না।",
+      "literalnoBrowserOnThisDeviceTookThatLink":
+          MessageLookupByLibrary.simpleMessage(
+        "এই ডিভাইসে কোনো ব্রাউজার সেই লিংকটি গ্রহণ করে না।",
+      ),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("এখনও কোনো DID নেই"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("কোনো খসড়া নেই"),
+      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কোনো আগ্রহ নেই",
+      ),
+      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কোনো লাইক নেই",
+      ),
+      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কোনো বার্তা নেই",
+      ),
+      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
+        "কোনো নতুন অনুসারী নেই",
+      ),
+      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কোনো পোস্ট নেই",
+      ),
+      "literalnoRepliesYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কোনো উত্তর নেই",
+      ),
+      "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কোনো রিপোস্ট নেই",
+      ),
+      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কোনো টপিক নেই",
+      ),
+      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
+        "কোনো ট্রেন্ডিং ট্যাগ মিলছে না",
+      ),
+      "literalnobodyFound": MessageLookupByLibrary.simpleMessage(
+        "কেউ পাওয়া যায়নি",
+      ),
+      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
+        "কেউ অপসারণ করা হয়নি",
+      ),
+      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
+        "এখানে এখনও কেউ নেই",
+      ),
+      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
+        "কোনো সুপারিশ করার লোক নেই",
+      ),
+      "literalnormalised": (Object a0) => "#${a0}",
+      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
+        "এতে আগ্রহ নেই",
+      ),
+      "literalnothingFound": MessageLookupByLibrary.simpleMessage(
+        "কিছুই পাওয়া যায়নি",
+      ),
+      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কিছু ট্রেন্ডিং হচ্ছে না",
+      ),
+      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কিছু লগ হয়নি",
+      ),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("কিছুই মিলেনি"),
+      "literalnothingMuted": MessageLookupByLibrary.simpleMessage(
+        "কিছুই নীরব করা হয়নি",
+      ),
+      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
+        "এখনও দেখবার মতো কিছু নেই",
+      ),
+      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
+        "কিছুই অনপঠিত নেই",
+      ),
+      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
+        "এটি কেবল মালিক পরিবর্তন করতে পারবেন",
+      ),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("উত্তর খুলুন"),
+      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
+        "Kyron থেকে ইমেইল খুলুন",
+      ),
+      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
+        "পাসওয়ার্ড ও লগইন",
+      ),
+      "literalpostInCommunityName": (Object a0) => "${a0} এ পোস্ট করুন",
+      "literalpostInWidgetCommunityName": (Object a0) => "${a0} এ পোস্ট করুন",
+      "literalpostItWithYourOwnWordsAboveIt":
+          MessageLookupByLibrary.simpleMessage(
+        "আপনার নিজস্ব শব্দ উক্তির উপরে রেখে পোস্ট করুন",
+      ),
+      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "প্রাথমিক ভাষা",
+      ),
+      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
+        "পুশ বিজ্ঞপ্তি",
+      ),
+      "literalreading": MessageLookupByLibrary.simpleMessage("পড়া হচ্ছে…"),
+      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
+        "ভয়েস পোস্ট রেকর্ড করুন",
+      ),
+      "literalrecordAgain": MessageLookupByLibrary.simpleMessage(
+        "আবার রেকর্ড করুন",
+      ),
+      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
+        "মডারেটর হিসেবে অপসারণ করুন",
+      ),
+      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
+        "কমিউনিটি থেকে অপসারণ করুন",
+      ),
+      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
+        "সংরক্ষিত থেকে অপসারণ করুন",
+      ),
+      "literalremoveLabel": (Object a0) => "${a0} অপসারণ করুন",
+      "literalremoveLanguageEnglishname": (Object a0) => "${a0} অপসারণ করুন",
+      "literalremoveMemberDisplayname": (Object a0) => "${a0} অপসারণ করবেন?",
+      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
+        "পোল অপসারণ করুন",
+      ),
+      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
+        "এই উত্তর অপসারণ করুন",
+      ),
+      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
+        "এই কথোপকথনটি অপসারণ করুন",
+      ),
+      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
+        "এই পোল অপসারণ করুন",
+      ),
+      "literalreportAuthor": (Object a0) => "${a0} রিপোর্ট করুন",
+      "literalreportPost": MessageLookupByLibrary.simpleMessage(
+        "পোস্ট রিপোর্ট করুন",
+      ),
+      "literalresendCode": MessageLookupByLibrary.simpleMessage(
+        "কোড পুনরায় পাঠান",
+      ),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("সংরক্ষিত পোস্ট"),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("কিছু বলুন"),
+      "literalsaySomethingToWidgetCommunityName": (Object a0) =>
+          "${a0} এ কিছু বলুন",
+      "literalsearchFailed": MessageLookupByLibrary.simpleMessage(
+        "সার্চ ব্যর্থ হয়েছে",
+      ),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("আবার পাঠান"),
+      "literalsendAgainInCooldownS": (Object a0) => "${a0} সেকেন্ডে আবার পাঠান",
+      "literalsendFeedback": MessageLookupByLibrary.simpleMessage(
+        "প্রতিক্রিয়া পাঠান",
+      ),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("লিংক পাঠান"),
+      "literalsentItIsReportFiledNumber": (Object a0) =>
+          "পাঠানো হয়েছে। এটি রিপোর্ট #${a0}।",
+      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
+        "একটি পাসওয়ার্ড সেট করুন এবং চালিয়ে যান",
+      ),
+      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
+        "লগটি সাপোর্টের সাথে শেয়ার করুন",
+      ),
+      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "এই কমিউনিটি শেয়ার করুন",
+      ),
+      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
+        "এই পৃষ্ঠা শেয়ার করুন",
+      ),
+      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
+        "এই প্রোফাইল শেয়ার করুন",
+      ),
+      "literalshareVia":
+          MessageLookupByLibrary.simpleMessage("জরিয়তে শেয়ার করুন…"),
+      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
+        "উদ্ধৃতি সহ শেয়ার করুন",
+      ),
+      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
+        "এ ধরনের আরও পোস্ট দেখান",
+      ),
+      "literalshowPassword": MessageLookupByLibrary.simpleMessage(
+        "পাসওয়ার্ড দেখান",
+      ),
+      "literalshowResults": MessageLookupByLibrary.simpleMessage("ফলাফল দেখান"),
+      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
+        "একটি কমিউনিটি শুরু করুন",
+      ),
+      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
+        "রেকর্ডিং শুরু করুন",
+      ),
+      "literalstopLoading":
+          MessageLookupByLibrary.simpleMessage("লোড বন্ধ করুন"),
+      "literalstopSeeingThisPostAndRepliesToIt":
+          MessageLookupByLibrary.simpleMessage(
+        "এই পোস্ট এবং এর উত্তর দেখতে বন্ধ করুন",
+      ),
+      "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
+          "Stories ribbon, ${a0} items",
+      "literalswitchCamera": MessageLookupByLibrary.simpleMessage(
+        "ক্যামেরা পরিবর্তন করুন",
+      ),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("কাউকে ট্যাগ করুন"),
+      "literaltakeAPicture":
+          MessageLookupByLibrary.simpleMessage("একটি ছবি তুলুন"),
+      "literaltapTheBannerOrThePictureToChangeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "পরিবর্তন করতে ব্যানার বা ছবিতে ট্যাপ করুন",
+      ),
+      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
+        "এর ভেতরের লিঙ্কটিতে ট্যাপ করুন",
+      ),
+      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
+        "একটি ছবি এবং কভার যোগ করতে ট্যাপ করুন",
+      ),
+      "literalthatDidNotGoThroughTryAgain":
+          MessageLookupByLibrary.simpleMessage(
+        "এটি সফল হয়নি। আবার চেষ্টা করুন।",
+      ),
+      "literalthatGifCouldNotBeDownloaded":
+          MessageLookupByLibrary.simpleMessage(
+        "সেই GIF ডাউনলোড করা যায়নি।",
+      ),
+      "literalthatLinkIsNotOneThisCanOpen":
+          MessageLookupByLibrary.simpleMessage(
+        "সেই লিংকটি এই অ্যাপ খুলতে পারবে না।",
+      ),
+      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
+        "ক্যামেরা বন্ধ আছে",
+      ),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("এই কমিউনিটি"),
+      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
+        "এই উত্তর আর নেই",
+      ),
+      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
+        "পোস্ট অনুবাদ করুন",
+      ),
+      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage(
+        "সাউন্ড বন্ধ করুন",
+      ),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage(
+        "সাউন্ড চালু করুন",
+      ),
+      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
+        "আমাদের একটি ব্যবহার করুন",
+      ),
+      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
+        "ভেরিফিকেশন কোড পুনরায় পাঠানো হয়েছে।",
+      ),
+      "literalverificationFailedDescribeapierrorE": (Object a0) =>
+          "ভেরিফিকেশন ব্যর্থ: ${a0}",
+      "literalverifyEmail": MessageLookupByLibrary.simpleMessage(
+        "ইমেইল যাচাই করুন",
+      ),
+      "literalviewersLikesSavesAndComments":
+          MessageLookupByLibrary.simpleMessage(
+        "দর্শক, লাইক, সংরক্ষণ এবং মন্তব্য",
+      ),
+      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
+        "Kyron যা রাখে",
+      ),
+      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
+        "এই অ্যাপটি কী করছিল",
+      ),
+      "literalwhatYouDidWhatYouExpectedWhatHappened":
+          MessageLookupByLibrary.simpleMessage(
+        "আপনি কী করেছিলেন, আপনি কী আশা করেছিলেন, কী হয়েছিল ",
+      ),
+      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
+        "আপনি যা পোস্ট করেন তা আপনারই",
+      ),
+      "literalwhetherKyronIsReachableRightNow":
+          MessageLookupByLibrary.simpleMessage("Kyron বর্তমানে পৌঁছনীয় কি না"),
+      "literalwhoCanReply": MessageLookupByLibrary.simpleMessage(
+        "কে উত্তর দিতে পারে",
+      ),
+      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
+        "আপনি কাকে ট্যাগ করতে চান?",
+      ),
+      "literalyouAlreadyFollowEveryTrendingTag":
+          MessageLookupByLibrary.simpleMessage(
+        "আপনি ইতিমধ্যেই সব ট্রেন্ডিং ট্যাগ অনুসরণ করছেন",
+      ),
+      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "আপনি সব দেখেছেন",
+      ),
+      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
+        "আপনি কোনো কমিউনিটিতেই নেই",
+      ),
+      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
+        "আপনি সাইন আউট করেছেন।",
+      ),
+      "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
+        "you@example.com",
+      ),
+      "literalyouHaveLeftCommunityName": (Object a0) => "আপনি ${a0} ছেড়েছেন",
+      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
+        "আপনি এখনও পোস্ট করেননি",
+      ),
+      "loadMore": MessageLookupByLibrary.simpleMessage("আরও লোড করুন"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("লগ পরিষ্কৃত"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("লগ কপি করা হয়েছে"),
+      "logIn": MessageLookupByLibrary.simpleMessage("লগ ইন"),
+      "logOut": MessageLookupByLibrary.simpleMessage("লগ আউট"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("লগ আউট?"),
+      "login": MessageLookupByLibrary.simpleMessage("লগইন"),
+      "loginFailed": MessageLookupByLibrary.simpleMessage(
+        "লগইন ব্যর্থ হয়েছে। অনুগ্রহ করে আপনার শংসাপত্র পরীক্ষা করুন।",
+      ),
+      "manage": MessageLookupByLibrary.simpleMessage("পরিচালনা"),
+      "menu": MessageLookupByLibrary.simpleMessage("মেনু"),
+      "message": MessageLookupByLibrary.simpleMessage("বার্তা"),
+      "messages": MessageLookupByLibrary.simpleMessage("বার্তা"),
+      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "প্রতিটি কথোপকথন আপডেট হয়েছে।",
+      ),
+      "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
+        "কারো প্রোফাইল খুলুন এবং কথোপকথন শুরু করতে বার্তা ট্যাপ করুন।",
+      ),
+      "mute": MessageLookupByLibrary.simpleMessage("নীরব করুন"),
+      "mutedAndBlocked":
+          MessageLookupByLibrary.simpleMessage("নীরব ও ব্লক করা"),
+      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
+        "নীরব করা শব্দ ও ট্যাগ",
+      ),
+      "name": MessageLookupByLibrary.simpleMessage("নাম"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> স্ক্রিন"),
+      "newEmailAddress":
+          MessageLookupByLibrary.simpleMessage("নতুন ইমেইল ঠিকানা"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("নতুন পাসওয়ার্ড"),
+      "newPost": MessageLookupByLibrary.simpleMessage("নতুন পোস্ট"),
+      "normalised": (Object a0) => "#\\${a0}",
+      "notNow": MessageLookupByLibrary.simpleMessage("এখন নয়"),
+      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
+        "পাঠানো হয়নি। আবার চেষ্টা করতে চাপুন",
+      ),
+      "nothingMatchesQuery": (Object a0) => "Kyron-এ \"${a0}\" মিলছে না",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("কপির জন্য কিছু নেই"),
+      "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "লাইক, রিপ্লাই এবং নতুন অনুসারীরা এলে এখানে জমা হবে।",
+      ),
+      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
+        "যারা আপনাকে ফলো করে তারা এখানে দেখায়।",
+      ),
+      "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
+        "কেউ আপনার পোস্টে লাইক দিলে, এটি এখানে প্রদর্শিত হবে।",
+      ),
+      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
+        "আপনার পোস্টের উত্তরগুলো এখানে দেখা যাবে।",
+      ),
+      "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
+        "কেউ আপনাকে রিপোস্ট করলে, এটি এখানে দেখা যাবে।",
+      ),
+      "notifications": MessageLookupByLibrary.simpleMessage("বিজ্ঞপ্তি"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage("ব্রাউজারে খুলুন"),
+      "or": MessageLookupByLibrary.simpleMessage("অথবা"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("পৃষ্ঠা পাওয়া যায়নি"),
+      "password": MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড"),
+      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+        "পাসওয়ার্ড খুব সংক্ষিপ্ত",
+      ),
+      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "আপনি ইতিমধ্যেই Kyron এখানে যাদের দেখাবে তাদের সকলকেই অনুসরণ করছেন।",
+      ),
+      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
+        "আপনার আগ্রহ নির্বাচন করুন",
+      ),
+      "post": MessageLookupByLibrary.simpleMessage("পোস্ট"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage("পোস্ট বিশ্লেষণ"),
+      "postInCommunity": (Object a0) => "${a0} এ পোস্ট করুন",
+      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
+        "পোস্ট করুন, বলুন, দেখান।",
+      ),
+      "postTextCopied": MessageLookupByLibrary.simpleMessage(
+        "পোস্টের লেখা কপি করা হয়েছে",
+      ),
+      "privacyPolicy": MessageLookupByLibrary.simpleMessage("গোপনীয়তা নীতি"),
+      "profileUpdated": MessageLookupByLibrary.simpleMessage(
+        "প্রোফাইল আপডেট হয়েছে",
+      ),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("বায়ো"),
+      "profile_display_name":
+          MessageLookupByLibrary.simpleMessage("ডিসপ্লে নাম"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("অবস্থান"),
+      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
+        "পরিবর্তন করতে ট্যাপ করুন",
+      ),
+      "profile_website": MessageLookupByLibrary.simpleMessage("ওয়েবসাইট"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("পুশ বিজ্ঞপ্তি"),
+      "quote": MessageLookupByLibrary.simpleMessage("উদ্ধৃতি"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("পোস্ট উদ্ধৃত করুন"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("কেউকে পৌঁছান"),
+      "remove": MessageLookupByLibrary.simpleMessage("সরান"),
+      "removeConversation": MessageLookupByLibrary.simpleMessage(
+        "এই কথোপকথনটি অপসারণ করবেন?",
+      ),
+      "removeMember": (Object a0) => "${a0} অপসারণ করবেন?",
+      "removeMessage": MessageLookupByLibrary.simpleMessage(
+        "এই বার্তাটি অপসারণ করবেন?",
+      ),
+      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
+        "উত্তর, অনুসরণ ও উল্লেখ",
+      ),
+      "repliesPolicy": (Object a0) => "উত্তর: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("উত্তর"),
+      "reply_anyone": MessageLookupByLibrary.simpleMessage(
+        "হামেশাই সবাই ইন্টার‍্যাক্ট করতে পারে",
+      ),
+      "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
+        "যে কেউ এখনও দেখতে, রিপোস্ট ও উদ্ধৃত করতে পারে এই পোস্টটি।",
+      ),
+      "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
+        "Kyron-এ যে কেউ এই পোস্টে উত্তর দিতে পারে।",
+      ),
+      "reply_followers": MessageLookupByLibrary.simpleMessage(
+        "আপনাকে যারা অনুসরণ করে",
+      ),
+      "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
+        "শুধুমাত্র যারা আপনাকে অনুসরণ করে তারা এই পোস্টে উত্তর দিতে পারবে।",
+      ),
+      "reply_mentioned": MessageLookupByLibrary.simpleMessage(
+        "যাদের আপনি উল্লেখ করেছেন",
+      ),
+      "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
+        "শুধুমাত্র যাদের আপনি @উল্লেখ করেছেন তাঁরা উত্তর দিতে পারবেন।",
+      ),
+      "reply_nobody": MessageLookupByLibrary.simpleMessage(
+        "কেউই উত্তর দিতে পারবে না",
+      ),
+      "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
+        "উত্তর বন্ধ করা হয়েছে। আপনি এখনও উত্তর দিতে পারবেন।",
+      ),
+      "reply_who_can_reply": MessageLookupByLibrary.simpleMessage(
+        "কে উত্তর দিতে পারবে?",
+      ),
+      "report": MessageLookupByLibrary.simpleMessage("রিপোর্ট"),
+      "reportCopied": MessageLookupByLibrary.simpleMessage(
+        "রিপোর্ট কপি করা হয়েছে। এটি সাপোর্টে ইমেইলে পেস্ট করুন।",
+      ),
+      "reportSent":
+          MessageLookupByLibrary.simpleMessage("রিপোর্ট পাঠানো হয়েছে"),
+      "repost": MessageLookupByLibrary.simpleMessage("রিপোস্ট"),
+      "reset": MessageLookupByLibrary.simpleMessage("রিসেট করুন"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage(
+        "আপনার পাসওয়ার্ড রিসেট করুন",
+      ),
+      "retry": MessageLookupByLibrary.simpleMessage("পুনরায় চেষ্টা করুন"),
+      "save": MessageLookupByLibrary.simpleMessage("সংরক্ষণ"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("খসড়া সংরক্ষণ করুন"),
+      "saySomething": (Object a0) => "${a0} এ কিছু বলুন",
+      "search": MessageLookupByLibrary.simpleMessage("অনুসন্ধান"),
+      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
+        "নাম বা হ্যান্ডেল দিয়ে খুঁজুন",
+      ),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("কমিউনিটি খুঁজুন"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("GIF খুঁজুন"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("ভাষা খুঁজুন"),
+      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "ট্রেন্ডিং ট্যাগ খুঁজুন",
+      ),
+      "securityAlerts": MessageLookupByLibrary.simpleMessage(
+        "নিরাপত্তা সতর্কতা ও অ্যাকাউন্ট পরিবর্তন",
+      ),
+      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
+        "অ্যাপের ইউজার ইন্টারফেসের জন্য কোন ভাষা ব্যবহৃত হবে তা নির্বাচন করুন।",
+      ),
+      "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
+        "আপনি আপনার সাবস্ক্রাইব করা ফিডগুলিতে কোন কোন ভাষা দেখতে চান তা নির্বাচন করুন। কিছু নির্বাচিত না থাকলে সব ভাষা দেখানো হবে।",
+      ),
+      "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "ফিডে অনুবাদের জন্য আপনার পছন্দের ভাষা নির্বাচন করুন।",
+      ),
+      "send": MessageLookupByLibrary.simpleMessage("পাঠান"),
+      "sendConfirmation":
+          MessageLookupByLibrary.simpleMessage("নিশ্চিতকরণ পাঠান"),
+      "sendErrorReport":
+          MessageLookupByLibrary.simpleMessage("এরর রিপোর্ট পাঠান"),
+      "sendFeedback":
+          MessageLookupByLibrary.simpleMessage("প্রতিক্রিয়া পাঠান"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("রিপোর্ট পাঠান"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("সাপোর্টে পাঠান"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("সেবার অবস্থা"),
+      "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
+      "shareAppLog": MessageLookupByLibrary.simpleMessage(
+        "অ্যাপ লগ সাপোর্টের সাথে শেয়ার করুন",
+      ),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Kyron-এ সাইন ইন করুন"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("সাইন-ইন করা হয়েছে"),
+      "signupFailed": (Object a0) => "সাইনআপ ব্যর্থ: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("থাকুন"),
+      "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
+        "Kyron এখনও প্রাথমিক অবস্থায় আছে, এবং যিনি প্রকৃতপক্ষে সমস্যা ঠিক করতে পারবেন তাকে দ্রুত পৌঁছানোর দ্রুততম উপায় হল একটি ইস্যু খুলা। আপনি কী করছিলেন এবং কী ঘটেছিল তা অন্তর্ভুক্ত করুন।",
+      ),
+      "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
+        "অ্যাপে এখনও কোনো সাপোর্ট ইনবক্স নেই, তাই এই স্ক্রিনটি এমন জায়গাটিকে নির্দেশ করে যা প্রকৃতপক্ষে মনিটর করা হয়, এমন একটি ফর্মকে নয় যা কোথাও যায় না।",
+      ),
+      "systemLog": MessageLookupByLibrary.simpleMessage("সিস্টেম লগ"),
+      "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
+        "কী অনুপস্থিত বা ভাঙা আছে তা জানান",
+      ),
+      "terms": MessageLookupByLibrary.simpleMessage("শর্তাবলী"),
+      "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
+        "টেক্সট, ভয়েস এবং ভিডিও, যারা এগুলো তৈরি করে তারা এবং তারা যে রুমগুলোতে কথা বলে।",
+      ),
+      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
+        "কম্পোজারে পোস্ট বাটন নেই",
+      ),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("সবসময় ডার্ক"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+      "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+        "একটি নরম ডার্ক, কালো নয় বরং নীল-ধূসর",
+      ),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("সবসময় লাইট"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+      "theme_system_detail": MessageLookupByLibrary.simpleMessage(
+        "ফোনের নিজস্ব লাইট বা ডার্ক সেটিং অনুসরণ করুন",
+      ),
+      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "টপিকগুলি Kyron দ্বারা সেট করা হয় এবং এখন কোনও টপিক নেই। পরে আবার দেখুন।",
+      ),
+      "translate": MessageLookupByLibrary.simpleMessage("অনুবাদ করুন"),
+      "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
+        "অনুবাদ এখনও গঠিত হয়নি। আজ আপনার ফিডে কিছুই অনূদিত হচ্ছে না; এটি পরে জন্য মনে রাখা হবে।",
+      ),
+      "translation_description": MessageLookupByLibrary.simpleMessage(
+        "Kyron-এর নিজস্ব শব্দগুলো এখনও অনুবাদ হচ্ছে, তাই অধিকাংশ স্ক্রীন আপাতত ইংরেজিতেই থাকবে। আজ যা বদলেছে: Flutter যে অংশগুলো আঁকে সেগুলো, তারিখ ও সংখ্যা, এবং রাইট-টু-লেফট ভাষাগুলোর জন্য অ্যাপ কিভাবে প্রস্ফুটিত হবে।",
+      ),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("আবার চেষ্টা করুন"),
+      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
+        "Privacy Policy",
+      ),
+      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
+        "Terms of Service",
+      ),
+      "ui_account": MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("পরে"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("অ্যাপ ও ডিভাইস"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("অবয়ব"),
+      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
+        "লাইট, ডার্ক, অথবা ফোনের সেটিং অনুসরণ",
+      ),
+      "ui_before": MessageLookupByLibrary.simpleMessage("আগে"),
+      "ui_block_detail": MessageLookupByLibrary.simpleMessage(
+        "আপনাদের কেউই Kyron-এ একে অপরকে দেখতে পাবেন না, এবং আপনার মধ্যে কোনো ফলো থাকলে তা অপসারণ করা হবে। তাদের জানানো হবে না।",
+      ),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("বহন"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("কমিউনিটি"),
+      "ui_communities_screen_what_is_it_for_optional_39b687":
+          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+      "ui_content_display": MessageLookupByLibrary.simpleMessage(
+        "কনটেন্ট ও প্রদর্শন",
+      ),
+      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
+        "আপনার ফিড লোড করা যায়নি",
+      ),
+      "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "আপনার পছন্দ করা পোস্টগুলো লোড করা যায়নি",
+      ),
+      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
+        "আপনার প্রোফাইল লোড করা যায়নি",
+      ),
+      "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
+        "আপনার সংরক্ষিত পোস্ট লোড করা যায়নি",
+      ),
+      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
+        "Decentralized ID",
+      ),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("ডায়াগনস্টিক্স"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("এখানে এখনও কিছু নেই"),
+      "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
+        "কিছু অ্যাকাউন্ট অনুসরণ করুন এবং তাদের পোস্ট এখানে দেখাবে।",
+      ),
+      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
+        "আপনি যে লোকজনকে অনুসরণ করেন তাদের কিছু নেই",
+      ),
+      "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
+        "মানুষ যখন পোস্ট করে, পোস্টগুলো এখানে দেখাবে।",
+      ),
+      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
+        "ক্লিপ বহন করে এমন পোস্ট এখানে দেখাবে।",
+      ),
+      "ui_feed_videos_empty": MessageLookupByLibrary.simpleMessage(
+        "এখনও কোনো ভিডিও নেই",
+      ),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("প্রতিক্রিয়া"),
+      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
+        "Kyron-এ মানুষ খুঁজুন",
+      ),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage(
+        "একটি অ্যাকাউন্ট থেকে",
+      ),
+      "ui_help": MessageLookupByLibrary.simpleMessage("সহায়তা"),
+      "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
+        "নোট করা হয়েছে। এটি আপনাকে যে দেখা হবে তা নির্ধারণে সাহায্য করে।",
+      ),
+      "ui_join": MessageLookupByLibrary.simpleMessage("যোগ দিন"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("ইনজয়েনড"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("ভাষা"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("আইনগত"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("পছন্দ"),
+      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("পছন্দ করা পোস্ট"),
+      "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "আপনি যেগুলো পছন্দ করেছেন সেই পোস্টগুলো এখানে প্রদর্শিত হবে, সর্বশেষটি প্রথমে।",
+      ),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("লিংক কপি করা হয়েছে"),
+      "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
+        "আপনি তাদের পোস্ট দেখতে বন্ধ করে দেবেন। তাদের জানানো হবে না।",
+      ),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("এখনও কোনো লাইক নেই"),
+      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
+        "কোনো পোস্ট ঐ ফিল্টারগুলোর সাথে মেলে না।",
+      ),
+      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
+        "এখনও কিছু সংরক্ষণ করা হয়নি",
+      ),
+      "ui_onboard_step3_screen_finish_5c0ad8":
+          MessageLookupByLibrary.simpleMessage(
+        "শেষ করুন",
+      ),
+      "ui_onboard_step3_screen_skip_7b13d8":
+          MessageLookupByLibrary.simpleMessage(
+        "বাতিল",
+      ),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("বিরতি"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("চালান"),
+      "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
+        "এটি আপনার প্রোফাইল এবং অন্যদের ফিড থেকে সরিয়ে ফেলা হয়েছে। এটির উত্তরগুলোও সঙ্গে নেওয়া হয়েছে।",
+      ),
+      "ui_post_deleted": MessageLookupByLibrary.simpleMessage(
+        "পোস্ট মুছে ফেলা হয়েছে",
+      ),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("পোস্ট লুকানো হয়েছে"),
+      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
+        "পোস্টের লেখা কপি করা হয়েছে",
+      ),
+      "ui_posted_between": MessageLookupByLibrary.simpleMessage(
+        "এর মাঝে পোস্ট করা",
+      ),
+      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
+        "লুকানো হয়েছে। আমরা আপনাকে এর মতো কম দেখাব।",
+      ),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("রুচি"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("গোপনীয়তা"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("সংরক্ষিত পোস্ট"),
+      "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "কোনো পোস্টের আর্কাইভ আইকনে ট্যাপ করে এটিকে এখানে রাখুন। শুধুই আপনি যা সংরক্ষণ করেন সেটাই দেখতে পারেন।",
+      ),
+      "ui_search_by_handle_or_display_name":
+          MessageLookupByLibrary.simpleMessage(
+        "হ্যান্ডেল বা ডিসপ্লে নাম দিয়ে অনুসন্ধান করুন।",
+      ),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("পরিষ্কার"),
+      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
+        "পোস্ট করা সবকিছু খুঁজুন",
+      ),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("ফিল্টার"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("ব্যক্তি অনুসন্ধান"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("পোস্ট অনুসন্ধান"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
+      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
+        "অ্যাপ ও ডিভাইস",
+      ),
+      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
+        "কনটেন্ট ও প্রদর্শন",
+      ),
+      "ui_settings_data_saver":
+          MessageLookupByLibrary.simpleMessage("ডাটা সেভার"),
+      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
+        "আপনি কী ভাবেন তা জানান",
+      ),
+      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
+        "সহায়তা আর্টিকেল ব্রাউজ করুন",
+      ),
+      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
+        "আপনার ভাষা বেছে নিন",
+      ),
+      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
+        "যাদের আপনি নীরব বা ব্লক করেছেন",
+      ),
+      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
+        "বিজ্ঞপ্তি পছন্দসমূহ",
+      ),
+      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
+        "আপনার প্রোফাইল ও যোগাযোগের তথ্য",
+      ),
+      "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
+          MessageLookupByLibrary.simpleMessage(
+        "You will need to sign in again to get back to your account.",
+      ),
+      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
+        "সুরক্ষা সেটিংস",
+      ),
+      "ui_settings_subscreens_confirm_password_41d040":
+          MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড নিশ্চিত করুন"),
+      "ui_settings_subscreens_in_one_line_06bdaf":
+          MessageLookupByLibrary.simpleMessage("এক লাইনে"),
+      "ui_settings_subscreens_new_email_address_dab96e":
+          MessageLookupByLibrary.simpleMessage("নতুন ইমেইল ঠিকানা"),
+      "ui_settings_subscreens_new_password_88c1bf":
+          MessageLookupByLibrary.simpleMessage("নতুন পাসওয়ার্ড"),
+      "ui_settings_subscreens_what_happened_977dd8":
+          MessageLookupByLibrary.simpleMessage("কি ঘটেছিল"),
+      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
+        "আমাদের টিম থেকে সাহায্য নিন",
+      ),
+      "ui_share": MessageLookupByLibrary.simpleMessage("শেয়ার"),
+      "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
+        "এই পোস্ট শেয়ার করুন",
+      ),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("শর্তাবলী"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("এই পোস্ট"),
+      "ui_thread_muted": MessageLookupByLibrary.simpleMessage(
+        "থ্রেড নীরব করা হয়েছে",
+      ),
+      "ui_turn_sound_off":
+          MessageLookupByLibrary.simpleMessage("সাউন্ড বন্ধ করুন"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("সাউন্ড চালু করুন"),
+      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
+        "দুই বা তার বেশি অক্ষর।",
+      ),
+      "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
+        "শব্দ, বা একটি ফিল্টার — একটি অ্যাকাউন্ট, তারিখ সীমা, বা একটি পোস্টে কী আছে।",
+      ),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("রিপোস্ট বাতিল করুন"),
+      "updatePassword": MessageLookupByLibrary.simpleMessage(
+        "পাসওয়ার্ড আপডেট করুন",
+      ),
+      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
+        "ভিন্ন ঠিকানা ব্যবহার করুন",
+      ),
+      "username": MessageLookupByLibrary.simpleMessage("ব্যবহারকারীর নাম"),
+      "usernameRule": MessageLookupByLibrary.simpleMessage(
+        "ইউজারনেম ছোট হাতের অক্ষরে হতে হবে (a-z, 0-9, _)",
+      ),
+      "video": MessageLookupByLibrary.simpleMessage("ভিডিও"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("সংযুক্ত করুন"),
+      "voice_ready_attach": MessageLookupByLibrary.simpleMessage(
+        "সংযুক্ত করতে প্রস্তুত",
+      ),
+      "voice_record_post": MessageLookupByLibrary.simpleMessage(
+        "ভয়েস পোস্ট রেকর্ড করুন",
+      ),
+      "voice_recording":
+          MessageLookupByLibrary.simpleMessage("রেকর্ড করা হচ্ছে…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("বন্ধ করুন"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("কি ঘটেছিল"),
+      "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
+        "কি ঘটেছিল, এবং আমরা কী দেখতে হবে?",
+      ),
+      "whatInPicture": MessageLookupByLibrary.simpleMessage("এই ছবিতে কী আছে?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("এটা কী জন্য? (ঐচ্ছিক)"),
+      "whatYouDid": MessageLookupByLibrary.simpleMessage(
+        "আপনি যা করেছিলেন, আপনি কী আশা করেছিলেন, কী ঘটেছে",
+      ),
+      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
+        "ঘটনার সময় আপনি কী করছিলেন।",
+      ),
+    };
+
+final messageLookup = MessageLookup();

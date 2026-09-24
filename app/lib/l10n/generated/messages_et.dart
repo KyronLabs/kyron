@@ -1,0 +1,1316 @@
+import 'package:intl/message_lookup_by_library.dart';
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'et';
+
+  Map<String, dynamic> get messages => _notInlinedMessages(_notInlinedMessages);
+}
+
+Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
+      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
+        "Sõna, fraas või #silt",
+      ),
+      "about": MessageLookupByLibrary.simpleMessage("Teave"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Lisa vastus"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("Lisa veel keeli…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Nõustu ja jätka"),
+      "alreadyOnKyron":
+          MessageLookupByLibrary.simpleMessage("Oled juba Kyronis?"),
+      "analytics_comments":
+          MessageLookupByLibrary.simpleMessage("Kommentaarid"),
+      "analytics_distinct_people_not_opens":
+          MessageLookupByLibrary.simpleMessage(
+        "Eraldiseisvad inimesed, mitte avamised",
+      ),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("Kaasatus"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Meeldimised"),
+      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
+        "Vaatajaid veel pole",
+      ),
+      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
+        "Keegi ei ole seda postitust veel avanud.",
+      ),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Postitatud"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Salvestused"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Vaatajad"),
+      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
+        "VAATAJAD PÄEVAS",
+      ),
+      "and": MessageLookupByLibrary.simpleMessage("ja"),
+      "answerNumber": (Object a0) => "Vastus ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Lisa süsteemilog"),
+      "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
+        "12 MB",
+      ),
+      "audit_about_subscreens_round_trip_64776b4c":
+          MessageLookupByLibrary.simpleMessage("Edasi-tagasi"),
+      "audit_about_subscreens_support_kyron_so_a3a84d0f":
+          MessageLookupByLibrary.simpleMessage("support@kyron.so"),
+      "audit_about_subscreens_token_verification_7934e1f2":
+          MessageLookupByLibrary.simpleMessage("TOKENI KINNITUS"),
+      "audit_ar_lens_screen_try_again_cdec8872":
+          MessageLookupByLibrary.simpleMessage("Proovi uuesti"),
+      "audit_browser_engine_window_stop_39c04883":
+          MessageLookupByLibrary.simpleMessage("window.stop();"),
+      "audit_browser_sheet_try_again_44bc94ba":
+          MessageLookupByLibrary.simpleMessage("Proovi uuesti"),
+      "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
+          MessageLookupByLibrary.simpleMessage(
+        "Levituse alustamine nüüd viiks sind ruumi, kuhu keegi ei saaks",
+      ),
+      "audit_communities_screen_start_a_community_06c8ec4f":
+          MessageLookupByLibrary.simpleMessage("Alusta kogukonda"),
+      "audit_communities_screen_what_is_it_for_optional_e7e82092":
+          MessageLookupByLibrary.simpleMessage("Milleks see on? (valikuline)"),
+      "audit_community_manage_screen_back_in_e495a750":
+          MessageLookupByLibrary.simpleMessage("tagasi."),
+      "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
+          MessageLookupByLibrary.simpleMessage("tagasi sellest nimekirjast."),
+      "audit_community_manage_screen_closing_it_f490fb09":
+          MessageLookupByLibrary.simpleMessage("Sulgemine"),
+      "audit_community_screen_join_first_7798cafc":
+          MessageLookupByLibrary.simpleMessage("Esmalt liitu"),
+      "audit_composer_screen_coming_soon_431fd23d":
+          MessageLookupByLibrary.simpleMessage("Peagi"),
+      "audit_composer_screen_posting_as_you_45d69932":
+          MessageLookupByLibrary.simpleMessage("Postitatakse sinu nime alt"),
+      "audit_create_fab_post_in_this_community_0a42daf2":
+          MessageLookupByLibrary.simpleMessage("postita selles kogukonnas"),
+      "audit_drafts_screen_just_now_17a8d48a":
+          MessageLookupByLibrary.simpleMessage(
+        "Äsja",
+      ),
+      "audit_empty_state_try_again_80ef48cd":
+          MessageLookupByLibrary.simpleMessage(
+        "Proovi uuesti",
+      ),
+      "audit_explore_screen_topic_1_83830b41":
+          MessageLookupByLibrary.simpleMessage(
+        "Teema 1",
+      ),
+      "audit_feed_canvas_for_you_aa3c510d":
+          MessageLookupByLibrary.simpleMessage(
+        "Sulle",
+      ),
+      "audit_forgot_password_screen_has_anything_65044193":
+          MessageLookupByLibrary.simpleMessage("kas seal on midagi."),
+      "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
+          MessageLookupByLibrary.simpleMessage("see on selle teel nüüd."),
+      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
+        ", mitte",
+      ),
+      "audit_inline_video_am_i_moving_4618f78c":
+          MessageLookupByLibrary.simpleMessage("kas ma liigun"),
+      "audit_inline_video_turn_sound_off_97714bbc":
+          MessageLookupByLibrary.simpleMessage("Lülita heli välja"),
+      "audit_inline_video_turn_sound_on_83671c54":
+          MessageLookupByLibrary.simpleMessage("Lülita heli sisse"),
+      "audit_interest_tabs_for_you_7ef9e823":
+          MessageLookupByLibrary.simpleMessage(
+        "Sulle",
+      ),
+      "audit_interest_tabs_your_tabs_c3ba148f":
+          MessageLookupByLibrary.simpleMessage("Sinu vahekaardid"),
+      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
+        "+ ALT",
+      ),
+      "audit_mention_picker_sheet_try_again_fd5d5dd7":
+          MessageLookupByLibrary.simpleMessage("Proovi uuesti"),
+      "audit_password_requirements_symbol_322aed1e":
+          MessageLookupByLibrary.simpleMessage("Sümbol (!@#…)"),
+      "audit_post_analytics_screen_viewers_per_day_5d881f10":
+          MessageLookupByLibrary.simpleMessage("VAATAJAD PÄEVAS"),
+      "audit_post_detail_screen_sublist_1_join_b0a5d508":
+          MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
+      "audit_post_list_view_could_not_load_4dd86c79":
+          MessageLookupByLibrary.simpleMessage("ei saanud laadida"),
+      "audit_post_options_sheet_this_post_99bfa981":
+          MessageLookupByLibrary.simpleMessage("see postitus"),
+      "audit_post_text_a_b_780da9a1":
+          MessageLookupByLibrary.simpleMessage("a#b"),
+      "audit_report_screen_anything_to_add_optional_f0051fa4":
+          MessageLookupByLibrary.simpleMessage(
+              "Kas midagi lisada? (valikuline)"),
+      "audit_report_screen_this_post_820d9740":
+          MessageLookupByLibrary.simpleMessage("see postitus"),
+      "audit_search_filter_sheet_from_an_account_f6a22687":
+          MessageLookupByLibrary.simpleMessage("Kasutajakontolt"),
+      "audit_settings_screen_did_plc_abc_825b4f49":
+          MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
+      "audit_settings_screen_log_out_0b39bfb2":
+          MessageLookupByLibrary.simpleMessage("Logi välja"),
+      "audit_settings_screen_your_account_bcdf27af":
+          MessageLookupByLibrary.simpleMessage("Sinu konto"),
+      "audit_settings_subscreens_confirm_password_f0e1f449":
+          MessageLookupByLibrary.simpleMessage("Kinnita parool"),
+      "audit_settings_subscreens_not_now_e1657fa9":
+          MessageLookupByLibrary.simpleMessage("mitte praegu"),
+      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
+        "Laadimine…",
+      ),
+      "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
+          MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
+      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
+        "Postitatakse…",
+      ),
+      "audit_story_viewer_3h_ago_174dc80d":
+          MessageLookupByLibrary.simpleMessage(
+        "3h tagasi",
+      ),
+      "audit_story_viewer_copy_story_link_2bd1546c":
+          MessageLookupByLibrary.simpleMessage("Kopeeri loo link"),
+      "audit_story_viewer_your_story_b706ecb4":
+          MessageLookupByLibrary.simpleMessage("Sinu lugu"),
+      "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
+          MessageLookupByLibrary.simpleMessage(
+        "Sinu konto, sinu postitused ja see, mida sa puudutad, nii et",
+      ),
+      "audit_topic_picker_add_a_topic_25baaf8a":
+          MessageLookupByLibrary.simpleMessage("Lisa teema"),
+      "audit_url_preview_its_own_8b362f95":
+          MessageLookupByLibrary.simpleMessage(
+        "oma.",
+      ),
+      "authorBlocked": (Object a0) => "${a0} blokeeritud",
+      "authorPostsHidden": (Object a0) =>
+          "Sa ei näe postitusi kasutajalt ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Blokeeri"),
+      "blockAuthor": (Object a0) => "Blokeeri ${a0}?",
+      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
+        "Koosteteave kopeeritud",
+      ),
+      "bullet": MessageLookupByLibrary.simpleMessage("•"),
+      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "Jätkates nõustute meie",
+      ),
+      "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
+        "Jätkates nõustute meie kasutustingimuste ja privaatsuspoliitikaga",
+      ),
+      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "Registreerudes nõustute meie",
+      ),
+      "cancel": MessageLookupByLibrary.simpleMessage("Tühista"),
+      "change": MessageLookupByLibrary.simpleMessage("Muuda"),
+      "changeEmail":
+          MessageLookupByLibrary.simpleMessage("Muuda e-posti aadressi"),
+      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
+        "Kontrolli oma e-posti, et konto kinnitada.",
+      ),
+      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
+        "Kontrolli, kas Kyron on kättesaadav",
+      ),
+      "clear": MessageLookupByLibrary.simpleMessage("Tühjenda"),
+      "close": MessageLookupByLibrary.simpleMessage("Sulge"),
+      "closeCommunity": (Object a0) => "Sulge ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Sulge see"),
+      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Sulge see kogukond",
+      ),
+      "communities": MessageLookupByLibrary.simpleMessage("Kogukonnad"),
+      "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Leia üks 'Avasta' alt või alusta enda oma.",
+      ),
+      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
+        "Esita tuline arvamus (või leebe)",
+      ),
+      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
+        "Mis sul peas mõlgub?",
+      ),
+      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
+        "Ütle midagi, mida ainult sina oskad öelda…",
+      ),
+      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
+        "See on sinu signaal — saada see",
+      ),
+      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
+        "Tippige, rääkige või mõtle valjult",
+      ),
+      "confirmPassword": MessageLookupByLibrary.simpleMessage("Kinnita parool"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Võta ühendust toega"),
+      "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
+        "Postitustel ei ole veel märgitud keelt, seega see praegu sinu voogu ei filtreeri. Sinu valik salvestatakse tulevikuks, kui need keeltekanded olemas on.",
+      ),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Jätka"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Jätka e-postiga"),
+      "copy": MessageLookupByLibrary.simpleMessage("Kopeeri"),
+      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
+        "Kopeeri selle asemel raport",
+      ),
+      "couldNotOpenGoogleSignIn": (Object a0) =>
+          "Google'i sisselogimist ei saanud avada. ${a0}",
+      "couldNotSignOut": (Object a0) => "Ei saanud välja logida: ${a0}",
+      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
+        "Seda pilti ei saanud teha.",
+      ),
+      "create": MessageLookupByLibrary.simpleMessage("Loo"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Loo konto"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Loo oma konto"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Loo oma profiil"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage(
+        "Alusta otseülekannet",
+      ),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Tekstipostitus"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("Helipostitus"),
+      "delete": MessageLookupByLibrary.simpleMessage("Kustuta"),
+      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
+        "Kustuta see kommentaar?",
+      ),
+      "deleteThisPost": MessageLookupByLibrary.simpleMessage(
+        "Kustuta see postitus?",
+      ),
+      "describeAttachment": MessageLookupByLibrary.simpleMessage(
+        "Kirjelda seda manust",
+      ),
+      "description": MessageLookupByLibrary.simpleMessage("Kirjeldus"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+        "DID kopeeritud lõikelauale",
+      ),
+      "done": MessageLookupByLibrary.simpleMessage("Valmis"),
+      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
+        "Sulge kirjutaja, kui midagi on kirjutatud, ja sulle pakutakse mustandit.",
+      ),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} päeva tagasi"),
+      "draft_hours_ago": MessageLookupByLibrary.simpleMessage(
+        "{hours} tundi tagasi",
+      ),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Äsja"),
+      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
+        "{minutes} minutit tagasi",
+      ),
+      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
+        "Midagi pole veel kirjutatud",
+      ),
+      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
+        "Küsitlus, küsimus puudub veel",
+      ),
+      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
+        "Tsitaat, midagi pole veel kirjutatud",
+      ),
+      "drafts": MessageLookupByLibrary.simpleMessage("Mustandid"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Muuda profiili"),
+      "email": MessageLookupByLibrary.simpleMessage("E-post"),
+      "emailNotifications": MessageLookupByLibrary.simpleMessage(
+        "E-posti teavitused",
+      ),
+      "explore": MessageLookupByLibrary.simpleMessage("Avasta"),
+      "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
+        "Näojälgimine ei ole sellel seadmel saadaval.",
+      ),
+      "feedTagDetail": (Object a0) => "Veel ei ole postitusi #${a0} all.",
+      "followers": MessageLookupByLibrary.simpleMessage("Jälgijad"),
+      "following": MessageLookupByLibrary.simpleMessage("Järgitud"),
+      "forgotPassword":
+          MessageLookupByLibrary.simpleMessage("Unustasid parooli?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Abi saamine"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Jätka Google'iga"),
+      "googleSignIn":
+          MessageLookupByLibrary.simpleMessage("Logi sisse Google'iga"),
+      "googleSignInDesktopExplanation": (Object a0) =>
+          "Google edastab lõpetatud sisselogimise Kyronile lingi kaudu, millele vastavad ainult Android ja iOS, nii et ${a0} brauseril ei oleks kohta, kuhu see tagasi saata.\\n\\nKui sul on juba Kyroni konto Google'i kaudu, kasuta Jätka e-postiga sama aadressi ja puuduta Unustasid parooli — see saadab sulle e-kirja lingiga, mille kaudu saad parooli määrata.",
+      "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
+        "Google'i sisselogimiseks on vaja telefonirakendust.",
+      ),
+      "googleSignUp": MessageLookupByLibrary.simpleMessage(
+        "Registreeru Google'iga",
+      ),
+      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
+        "Juhendid ja vastused sagedastele küsimustele",
+      ),
+      "handle": MessageLookupByLibrary.simpleMessage("käepide"),
+      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Hashtagid ilmuvad siia, kui inimesed hakkavad neid kasutama.",
+      ),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Abi ja tugi"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Abikeskus"),
+      "home": MessageLookupByLibrary.simpleMessage("Avaleht"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Ühes reas"),
+      "interest_add": MessageLookupByLibrary.simpleMessage("Lisa huvi"),
+      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
+        "Lohista ümberjärjestamiseks",
+      ),
+      "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
+        "Ribal mahub maksimaalselt viis vahekaarti. Eemalda üks, et lisada teine.",
+      ),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Järgitud"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Sulle"),
+      "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
+        "Hashtagid ilmuvad siia, kui inimesed hakkavad neid kasutama.",
+      ),
+      "interest_trending_now": MessageLookupByLibrary.simpleMessage(
+        "Hetkel trendis",
+      ),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Videod"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage(
+        "Sinu vahekaardid",
+      ),
+      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
+        "See kaob mõlemalt.",
+      ),
+      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
+        "See eemaldatakse vestlusest.",
+      ),
+      "join": MessageLookupByLibrary.simpleMessage("Liitu"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("Jätka redigeerimist"),
+      "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
+      "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
+        "Kyroni sõnad on veel tõlkimisel, seetõttu on enamik ekraane praegu inglise keeles.",
+      ),
+      "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
+      "languages": MessageLookupByLibrary.simpleMessage("Keeled"),
+      "leave": MessageLookupByLibrary.simpleMessage("Lahku"),
+      "leaveCommunity": (Object a0) => "Lahku ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Lase uuesti sisse"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 leht avatud"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Lisa klipp"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Lisa GIF"),
+      "literaladdAHashtag":
+          MessageLookupByLibrary.simpleMessage("Lisa hashtagi"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Lisa foto"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Lisa küsitlus"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Lisa video"),
+      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage("Lisa huvi"),
+      "literaladdLabelAsATab": (Object a0) => "Lisa ${a0} vahekaardina",
+      "literalappLanguage":
+          MessageLookupByLibrary.simpleMessage("Rakenduse keel"),
+      "literalappVersion": MessageLookupByLibrary.simpleMessage(
+        "Rakenduse versioon",
+      ),
+      "literalblockAuthor": (Object a0) => "Blokeeri ${a0}",
+      "literalblockAuthor2": (Object a0) => "Blokeeri ${a0}?",
+      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
+        "Blokeeri see konto?",
+      ),
+      "literalcancelReply":
+          MessageLookupByLibrary.simpleMessage("Tühista vastus"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Kontrolli uuesti"),
+      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
+        "Vali galeriist",
+      ),
+      "literalclearCache": MessageLookupByLibrary.simpleMessage(
+        "Tühjenda vahemälu",
+      ),
+      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
+        "Sulge kõik lehed",
+      ),
+      "literalcloseTabLabel": (Object a0) => "Sulge ${a0}",
+      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
+        "Sulge brauser",
+      ),
+      "literalcloseWidgetCommunityName": (Object a0) => "Sulge ${a0}?",
+      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
+        "Võta ühendust toega",
+      ),
+      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
+        "Sisu keeled",
+      ),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Kopeeri link"),
+      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
+        "Kopeeri link postitusele",
+      ),
+      "literalcopyPostText": MessageLookupByLibrary.simpleMessage(
+        "Kopeeri postituse tekst",
+      ),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Kopeeri tekst"),
+      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
+        "Kogukondi ei saanud laadida",
+      ),
+      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
+        "GIF-e ei saanud laadida",
+      ),
+      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
+        "Teavitusi ei saanud laadida",
+      ),
+      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
+        "Soovitusi ei saanud laadida",
+      ),
+      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
+        "Liikmeid ei saanud laadida",
+      ),
+      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
+        "Neid postitusi ei saanud laadida",
+      ),
+      "literalcouldNotLoadThisConversation":
+          MessageLookupByLibrary.simpleMessage(
+        "Seda vestlust ei saanud laadida",
+      ),
+      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
+        "Seda loendit ei saanud laadida",
+      ),
+      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
+        "Seda postitust ei saanud laadida",
+      ),
+      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
+        "Vastust ei saanud laadida",
+      ),
+      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
+        "Teemasid ei saanud laadida",
+      ),
+      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
+        "Populaarseid teemasid ei saanud laadida",
+      ),
+      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "Trendikaid silte ei saanud laadida",
+      ),
+      "literalcouldNotLoadYourCommunities":
+          MessageLookupByLibrary.simpleMessage(
+        "Sinu kogukondi ei saanud laadida",
+      ),
+      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
+        "Sinu sõnumeid ei saanud laadida",
+      ),
+      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Seda kogukonda ei saanud avada",
+      ),
+      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
+        "Vastuse postitamine ebaõnnestus.",
+      ),
+      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
+        "Ei saanud otsida",
+      ),
+      "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
+          "Väljalogimine ebaõnnestus: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} lehte avatud",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Kaanefoto"),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Andmesäästja"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Kustuta postitus"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Leia inimesi"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Ära vasta"),
+      "literaldraftSaved": MessageLookupByLibrary.simpleMessage(
+        "Mustand salvestatud",
+      ),
+      "literalfeedbackCannotBeSentRightNow":
+          MessageLookupByLibrary.simpleMessage(
+        "Tagasisidet ei saa praegu saata",
+      ),
+      "literalfirstyearIndex": (Object a0) => "${a0}",
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Fondi suurus"),
+      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
+        "GIF-e pole seadistatud",
+      ),
+      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
+        "Anna see üle teisele rakendusele",
+      ),
+      "literalhidePassword":
+          MessageLookupByLibrary.simpleMessage("Peida parool"),
+      "literalhideThisPost": MessageLookupByLibrary.simpleMessage(
+        "Peida see postitus",
+      ),
+      "literalhidesItAndTellsUsToShowFewerLikeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Peidab selle ja ütleb, et näitaksime vähem sarnaseid postitusi",
+      ),
+      "literalhowToBehave":
+          MessageLookupByLibrary.simpleMessage("Kuidas käituda"),
+      "literalindex1": (Object a0) => "${a0}",
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Jätka tippimist"),
+      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
+        "Kyron ei vastanud",
+      ),
+      "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
+      "literallabelDate": (Object a0) => "\\${a0} kuupäev",
+      "literalleaveCommunityName": (Object a0) => "Lahku ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, näolääts",
+      "literallikedPosts": MessageLookupByLibrary.simpleMessage(
+        "Meeldinud postitused",
+      ),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Link kopeeritud"),
+      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
+        "Määra moderaatoriks",
+      ),
+      "literalmuteAuthor": (Object a0) => "Vaigista ${a0}",
+      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
+        "Vaigista see lõim",
+      ),
+      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
+        "Vaigista sõnad või sildid",
+      ),
+      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
+        "Vaigistatud ja blokeeritud kontod",
+      ),
+      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
+        "Vaigistatud. Sind ei teavitata.",
+      ),
+      "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
+          "Sellel seadmel ei ava ükski rakendus ${a0}-linke.",
+      "literalnoBrowserOnThisDeviceTookThatLink":
+          MessageLookupByLibrary.simpleMessage(
+        "Sellel seadmel puudub brauser, mis selle lingi avaks.",
+      ),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("DID puudub"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("Ei ole mustandeid"),
+      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
+        "Huvisid veel pole",
+      ),
+      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage(
+        "Veel pole meeldimisi",
+      ),
+      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
+        "Sõnumeid veel pole",
+      ),
+      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
+        "Uusi jälgijaid pole",
+      ),
+      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage(
+        "Postitusi veel pole",
+      ),
+      "literalnoRepliesYet": MessageLookupByLibrary.simpleMessage(
+        "Vastuseid veel pole",
+      ),
+      "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
+        "Uuestijagamisi veel pole",
+      ),
+      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
+        "Teemasid veel pole",
+      ),
+      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
+        "Ükski trendikas silt ei vasta sellele",
+      ),
+      "literalnobodyFound":
+          MessageLookupByLibrary.simpleMessage("Keegi ei leitud"),
+      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
+        "Kedagi ei ole eemaldatud",
+      ),
+      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
+        "Siin pole veel kedagi",
+      ),
+      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
+        "Enam pole kedagi soovitada",
+      ),
+      "literalnormalised": (Object a0) => "#${a0}",
+      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
+        "Ei huvita",
+      ),
+      "literalnothingFound": MessageLookupByLibrary.simpleMessage(
+        "Midagi ei leitud",
+      ),
+      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
+        "Veel midagi ei ole trendikas",
+      ),
+      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
+        "Midagi pole veel logitud",
+      ),
+      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
+        "Midagi ei vastanud",
+      ),
+      "literalnothingMuted": MessageLookupByLibrary.simpleMessage(
+        "Midagi ei ole vaigistatud",
+      ),
+      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
+        "Veel pole midagi vaatamiseks",
+      ),
+      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
+        "Lugemata pole midagi",
+      ),
+      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
+        "Ainult omanik saab seda muuta",
+      ),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("Ava vastus"),
+      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
+        "Ava Kyronilt saadetud e-kiri",
+      ),
+      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
+        "Parool ja sisselogimine",
+      ),
+      "literalpostInCommunityName": (Object a0) => "Postita ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Postita ${a0}",
+      "literalpostItWithYourOwnWordsAboveIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Postita see, lisades enda sõnad eespool",
+      ),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Põhikeel"),
+      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
+        "Push-teavitused",
+      ),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Lugemine…"),
+      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
+        "Salvesta helipostitus",
+      ),
+      "literalrecordAgain":
+          MessageLookupByLibrary.simpleMessage("Salvesta uuesti"),
+      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
+        "Eemalda moderaatorilt",
+      ),
+      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
+        "Eemalda kogukonnast",
+      ),
+      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
+        "Eemalda salvestatutest",
+      ),
+      "literalremoveLabel": (Object a0) => "Eemalda ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Eemalda ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Eemalda ${a0}?",
+      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
+        "Eemalda küsitlus",
+      ),
+      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
+        "Eemalda see vastus",
+      ),
+      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
+        "Eemalda see vestlus",
+      ),
+      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
+        "Eemalda see küsitlus",
+      ),
+      "literalreportAuthor": (Object a0) => "Teata ${a0}",
+      "literalreportPost": MessageLookupByLibrary.simpleMessage(
+        "Teata postitusest",
+      ),
+      "literalresendCode": MessageLookupByLibrary.simpleMessage(
+        "Saada kood uuesti",
+      ),
+      "literalsavedPosts": MessageLookupByLibrary.simpleMessage(
+        "Salvestatud postitused",
+      ),
+      "literalsaySomething":
+          MessageLookupByLibrary.simpleMessage("Ütle midagi"),
+      "literalsaySomethingToWidgetCommunityName": (Object a0) =>
+          "Ütle midagi ${a0}-le",
+      "literalsearchFailed": MessageLookupByLibrary.simpleMessage(
+        "Otsing ebaõnnestus",
+      ),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Saada uuesti"),
+      "literalsendAgainInCooldownS": (Object a0) => "Saada uuesti ${a0}s",
+      "literalsendFeedback": MessageLookupByLibrary.simpleMessage(
+        "Saada tagasisidet",
+      ),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("Saada link"),
+      "literalsentItIsReportFiledNumber": (Object a0) =>
+          "Saadetud. See on raport #${a0}.",
+      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
+        "Sea parool ja jätka",
+      ),
+      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
+        "Jaga logi toega",
+      ),
+      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Jaga seda kogukonda",
+      ),
+      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
+        "Jaga seda lehte",
+      ),
+      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
+        "Jaga seda profiili",
+      ),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Jaga kaudu…"),
+      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
+        "Jaga koos tsitaadiga",
+      ),
+      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
+        "Näita rohkem sarnaseid postitusi",
+      ),
+      "literalshowPassword":
+          MessageLookupByLibrary.simpleMessage("Näita parooli"),
+      "literalshowResults":
+          MessageLookupByLibrary.simpleMessage("Näita tulemusi"),
+      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
+        "Alusta kogukonda",
+      ),
+      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
+        "Alusta salvestamist",
+      ),
+      "literalstopLoading":
+          MessageLookupByLibrary.simpleMessage("Peata laadimine"),
+      "literalstopSeeingThisPostAndRepliesToIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Lõpeta selle postituse ja selle vastuste nägemine",
+      ),
+      "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
+          "Lugude riba, ${a0} elementi",
+      "literalswitchCamera": MessageLookupByLibrary.simpleMessage(
+        "Vaheta kaamerat",
+      ),
+      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Märgi keegi"),
+      "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("Tee pilt"),
+      "literaltapTheBannerOrThePictureToChangeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Puuduta bännerit või pilti, et seda muuta",
+      ),
+      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
+        "Puuduta selles olevat linki",
+      ),
+      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
+        "Puuduta, et lisada foto ja kaanefoto",
+      ),
+      "literalthatDidNotGoThroughTryAgain":
+          MessageLookupByLibrary.simpleMessage(
+        "See ei läinud läbi. Proovi uuesti.",
+      ),
+      "literalthatGifCouldNotBeDownloaded":
+          MessageLookupByLibrary.simpleMessage(
+        "Seda GIF-i ei saanud alla laadida.",
+      ),
+      "literalthatLinkIsNotOneThisCanOpen":
+          MessageLookupByLibrary.simpleMessage(
+        "See link pole selline, mida see rakendus saab avada.",
+      ),
+      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
+        "Kaamera on suletud",
+      ),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("See kogukond"),
+      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
+        "See vastus on kadunud",
+      ),
+      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
+        "Tõlgi postitus",
+      ),
+      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage(
+        "Lülita heli välja",
+      ),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage(
+        "Lülita heli sisse",
+      ),
+      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
+        "Kasuta mõnda meie enda",
+      ),
+      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
+        "Kinnituskood saadeti uuesti.",
+      ),
+      "literalverificationFailedDescribeapierrorE": (Object a0) =>
+          "Kinnitamine ebaõnnestus: ${a0}",
+      "literalverifyEmail":
+          MessageLookupByLibrary.simpleMessage("Kinnita e-post"),
+      "literalviewersLikesSavesAndComments":
+          MessageLookupByLibrary.simpleMessage(
+        "Vaatajad, meeldimised, salvestused ja kommentaarid",
+      ),
+      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
+        "Mida Kyron säilitab",
+      ),
+      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
+        "Mida see rakendus on teinud",
+      ),
+      "literalwhatYouDidWhatYouExpectedWhatHappened":
+          MessageLookupByLibrary.simpleMessage(
+        "Mida tegite, mida ootasite, mis juhtus ",
+      ),
+      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
+        "See, mida sa postitad, on sinu",
+      ),
+      "literalwhetherKyronIsReachableRightNow":
+          MessageLookupByLibrary.simpleMessage(
+              "Kas Kyron on praegu kättesaadav"),
+      "literalwhoCanReply": MessageLookupByLibrary.simpleMessage(
+        "Kes saab vastata",
+      ),
+      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
+        "Keda soovid märgistada?",
+      ),
+      "literalyouAlreadyFollowEveryTrendingTag":
+          MessageLookupByLibrary.simpleMessage(
+        "Sa juba jälgid kõiki trendikaid silte",
+      ),
+      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "Oled kõigega kursis",
+      ),
+      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
+        "Sa ei kuulu ühegi kogukonna liikmeks",
+      ),
+      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
+        "Oled välja logitud.",
+      ),
+      "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
+        "you@example.com",
+      ),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Sa lahkusid ${a0}",
+      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
+        "Sa pole veel postitanud",
+      ),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Laadi rohkem"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Log tühjendatud"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Log kopeeritud"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Logi sisse"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Logi välja"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Logi välja?"),
+      "login": MessageLookupByLibrary.simpleMessage("Logi sisse"),
+      "loginFailed": MessageLookupByLibrary.simpleMessage(
+        "Sisselogimine ebaõnnestus. Kontrolli oma kasutajanime ja parooli.",
+      ),
+      "manage": MessageLookupByLibrary.simpleMessage("Halda"),
+      "menu": MessageLookupByLibrary.simpleMessage("Menüü"),
+      "message": MessageLookupByLibrary.simpleMessage("Sõnum"),
+      "messages": MessageLookupByLibrary.simpleMessage("Sõnumid"),
+      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "Kõik vestlused on ajakohased.",
+      ),
+      "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
+        "Ava kellegi profiil ja puuduta 'Sõnum', et alustada vestlust.",
+      ),
+      "mute": MessageLookupByLibrary.simpleMessage("Vaigista"),
+      "mutedAndBlocked": MessageLookupByLibrary.simpleMessage(
+        "Vaigistatud ja blokeeritud",
+      ),
+      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
+        "Vaigistatud sõnad ja sildid",
+      ),
+      "name": MessageLookupByLibrary.simpleMessage("Nimi"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> ekraan"),
+      "newEmailAddress": MessageLookupByLibrary.simpleMessage(
+        "Uus e-posti aadress",
+      ),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Uus parool"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Uus postitus"),
+      "normalised": (Object a0) => "#\\${a0}",
+      "notNow": MessageLookupByLibrary.simpleMessage("Mitte praegu"),
+      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
+        "Ei saadetud. Puuduta, et proovida uuesti",
+      ),
+      "nothingMatchesQuery": (Object a0) => "Midagi Kyronis ei vasta \"${a0}\"",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage(
+        "Midagi ei ole kopeerimiseks",
+      ),
+      "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Meeldimised, vastused ja uued jälgijad ilmuvad siia, kui need saabuvad.",
+      ),
+      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
+        "Inimesed, kes sind jälgivad, ilmuvad siia.",
+      ),
+      "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
+        "Kui kellelegi meeldib üks sinu postitustest, see ilmub siia.",
+      ),
+      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
+        "Sinu postitustele vastused jõuavad siia.",
+      ),
+      "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
+        "Kui keegi jagab sind uuesti, see ilmub siia.",
+      ),
+      "notifications": MessageLookupByLibrary.simpleMessage("Teavitused"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage("Ava brauseris"),
+      "or": MessageLookupByLibrary.simpleMessage("või"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Lehekülge ei leitud"),
+      "password": MessageLookupByLibrary.simpleMessage("Parool"),
+      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+        "Parool on liiga lühike",
+      ),
+      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Sa juba jälgid kõiki inimesi, keda Kyron siia paneks.",
+      ),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Vali oma huvid"),
+      "post": MessageLookupByLibrary.simpleMessage("Postitus"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Postituse analüütika"),
+      "postInCommunity": (Object a0) => "Postita ${a0}",
+      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
+        "Postita, ütle, näita.",
+      ),
+      "postTextCopied": MessageLookupByLibrary.simpleMessage(
+        "Postituse tekst kopeeritud",
+      ),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Privaatsuspoliitika"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profiil uuendatud"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Tutvustus"),
+      "profile_display_name":
+          MessageLookupByLibrary.simpleMessage("Kuvatav nimi"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Asukoht"),
+      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
+        "Puuduta, et muuta",
+      ),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Veebisait"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push-teavitused"),
+      "quote": MessageLookupByLibrary.simpleMessage("Tsitaat"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Tsitaadi lisamine"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage(
+        "Võta ühendust inimesega",
+      ),
+      "remove": MessageLookupByLibrary.simpleMessage("Eemalda"),
+      "removeConversation": MessageLookupByLibrary.simpleMessage(
+        "Eemalda see vestlus?",
+      ),
+      "removeMember": (Object a0) => "Eemalda ${a0}?",
+      "removeMessage":
+          MessageLookupByLibrary.simpleMessage("Eemalda see sõnum?"),
+      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
+        "Vastused, jälgimised ja mainimised",
+      ),
+      "repliesPolicy": (Object a0) => "Vastused: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Vasta"),
+      "reply_anyone":
+          MessageLookupByLibrary.simpleMessage("Igaüks saab suhelda"),
+      "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
+        "Keegi võib ikka seda postitust näha, uuesti jagada ja tsiteerida.",
+      ),
+      "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
+        "Kõik Kyroni kasutajad saavad sellele postitusele vastata.",
+      ),
+      "reply_followers": MessageLookupByLibrary.simpleMessage(
+        "Inimesed, kes sind jälgivad",
+      ),
+      "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
+        "Vaid inimesed, kes sind jälgivad, saavad sellele postitusele vastata.",
+      ),
+      "reply_mentioned": MessageLookupByLibrary.simpleMessage(
+        "Inimesed, keda mainid",
+      ),
+      "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
+        "Vaid inimesed, keda sa selles postituses @mainid, saavad vastata.",
+      ),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Keegi ei saa vastata"),
+      "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
+        "Vastused on välja lülitatud. Sina saad siiski vastata.",
+      ),
+      "reply_who_can_reply": MessageLookupByLibrary.simpleMessage(
+        "Kes saab vastata?",
+      ),
+      "report": MessageLookupByLibrary.simpleMessage("Teata"),
+      "reportCopied": MessageLookupByLibrary.simpleMessage(
+        "Raport kopeeritud. Kleebi see e-kirja toele.",
+      ),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Raport saadetud"),
+      "repost": MessageLookupByLibrary.simpleMessage("Jaga uuesti"),
+      "reset": MessageLookupByLibrary.simpleMessage("Lähtesta"),
+      "resetPassword":
+          MessageLookupByLibrary.simpleMessage("Lähtesta oma parool"),
+      "retry": MessageLookupByLibrary.simpleMessage("Proovi uuesti"),
+      "save": MessageLookupByLibrary.simpleMessage("Salvesta"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Salvesta mustand"),
+      "saySomething": (Object a0) => "Ütle midagi ${a0}-le",
+      "search": MessageLookupByLibrary.simpleMessage("Otsi"),
+      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
+        "Otsi nime või käepideme järgi",
+      ),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Otsi kogukondi"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Otsi GIF-e"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Otsi keeli"),
+      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "Otsi trendikaid silte",
+      ),
+      "securityAlerts": MessageLookupByLibrary.simpleMessage(
+        "Turbeteated ja konto muudatused",
+      ),
+      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
+        "Vali, millist keelt kasutada rakenduse kasutajaliideses.",
+      ),
+      "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
+        "Vali, milliseid keeli soovid oma tellitud voogudes näha. Kui ükski ei ole valitud, kuvatakse kõik keeled.",
+      ),
+      "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "Vali oma eelistatud keel tõlgeteks sinu voos.",
+      ),
+      "send": MessageLookupByLibrary.simpleMessage("Saada"),
+      "sendConfirmation":
+          MessageLookupByLibrary.simpleMessage("Saada kinnitus"),
+      "sendErrorReport":
+          MessageLookupByLibrary.simpleMessage("Saada veaaruanne"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Saada tagasisidet"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Saada raport"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("Saada toele"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Teenuse olek"),
+      "settings": MessageLookupByLibrary.simpleMessage("Seaded"),
+      "shareAppLog": MessageLookupByLibrary.simpleMessage(
+        "Jaga rakenduse logi toega",
+      ),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Logi sisse Kyroni"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Sisselogitud kui"),
+      "signupFailed": (Object a0) => "Registreerimine ebaõnnestus: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Jää"),
+      "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
+        "Kyron on veel varases staadiumis ja kiireim viis jõuda kellegini, kes saab probleemi parandada, on avada probleem. Lisa, mida sa tegid ja mis juhtus.",
+      ),
+      "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
+        "Rakendusesiseset tugikasti veel pole, seega see ekraan viitab tegelikult jälgitavale kohale, mitte vormile, mis ei vii kusagile.",
+      ),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Süsteemilog"),
+      "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
+        "Ütle meile, mis puudub või ei tööta.",
+      ),
+      "terms": MessageLookupByLibrary.simpleMessage("Kasutustingimused"),
+      "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
+        "Tekst, hääl ja video, inimesed, kes neid loovad, ja ruumid, kus nad räägivad.",
+      ),
+      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
+        "Kirjutusaknal puudub Post-nupp",
+      ),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Tume"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Alati tume"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Sume"),
+      "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+        "Pehmem tume toon, sinakashall, mitte must",
+      ),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Hele"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("Alati hele"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Süsteem"),
+      "theme_system_detail": MessageLookupByLibrary.simpleMessage(
+        "Kasuta telefoni enda hele/tume seadistust",
+      ),
+      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Teemad seadistatakse Kyroni poolt ja praegu pole ühtegi. Tule peagi tagasi.",
+      ),
+      "translate": MessageLookupByLibrary.simpleMessage("Tõlgi"),
+      "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
+        "Tõlget ei ole veel loodud. Täna ei ole sinu voos midagi tõlgitud; see mäletatakse ja rakendub siis, kui tõlked olemas on.",
+      ),
+      "translation_description": MessageLookupByLibrary.simpleMessage(
+        "Kyroni enda tekstid on veel tõlkimisel, seega jääb enamik ekraane praegu inglise keelde. See muudab täna: Flutteri joonistatud liidese osad, kuupäevad ja numbrid ning rakenduse paigutuse suuna parematelt-vasakule kirjutavate keelte jaoks.",
+      ),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Proovi uuesti"),
+      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
+        "Privaatsuspoliitika",
+      ),
+      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
+        "Teenuse kasutustingimused",
+      ),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Konto"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Pärast"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Rakendus ja seade"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Välimus"),
+      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
+        "Hele, tume või vastavalt telefoni seadetele",
+      ),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Enne"),
+      "ui_block_detail": MessageLookupByLibrary.simpleMessage(
+        "Mõlemad te ei näe teineteist Kyronis ning kõik jälgimised teie vahel eemaldatakse. Neid sellest ei teavitata.",
+      ),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Sisaldab"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Kogukonnad"),
+      "ui_communities_screen_what_is_it_for_optional_39b687":
+          MessageLookupByLibrary.simpleMessage("Milleks see on? (valikuline)"),
+      "ui_content_display": MessageLookupByLibrary.simpleMessage(
+        "Sisu ja kuvamine",
+      ),
+      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
+        "Sinu voogu ei õnnestunud laadida",
+      ),
+      "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "Sinu meeldivaks märgitud postitusi ei õnnestunud laadida",
+      ),
+      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
+        "Sinu profiili ei õnnestunud laadida",
+      ),
+      "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
+        "Sinu salvestatud postitusi ei õnnestunud laadida",
+      ),
+      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
+        "Detsentraliseeritud ID",
+      ),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostika"),
+      "ui_feed_empty": MessageLookupByLibrary.simpleMessage(
+        "Siin veel midagi pole",
+      ),
+      "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
+        "Jälgi mõnda kontot ja nende postitused ilmuvad siia.",
+      ),
+      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
+        "Pole midagi inimestelt, keda sa jälgid.",
+      ),
+      "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
+        "Postitused ilmuvad siia, kui inimesed neid kirjutavad.",
+      ),
+      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
+        "Postitused, mis sisaldavad klippi, ilmuvad siia.",
+      ),
+      "ui_feed_videos_empty": MessageLookupByLibrary.simpleMessage(
+        "Veel pole videoid",
+      ),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Tagasiside"),
+      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
+        "Leia inimesi Kyronis",
+      ),
+      "ui_from_account":
+          MessageLookupByLibrary.simpleMessage("Kasutajakontolt"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Abi"),
+      "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
+        "Võetud arvesse. See aitab kujundada, mida sulle näidatakse.",
+      ),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Liitu"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Liitus"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Keel"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Õiguslik"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Meeldi"),
+      "ui_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "Meeldinud postitused",
+      ),
+      "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "Postitused, mis sulle meeldivad, ilmuvad siia, kõige uuemad ees.",
+      ),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link kopeeritud"),
+      "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
+        "Sa lõpetad nende postituste nägemise. Neid ei teavitata.",
+      ),
+      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage(
+        "Veel pole meeldimisi",
+      ),
+      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
+        "Ükski postitus ei vasta neile filtritele.",
+      ),
+      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
+        "Veel ei ole midagi salvestatud",
+      ),
+      "ui_onboard_step3_screen_finish_5c0ad8":
+          MessageLookupByLibrary.simpleMessage(
+        "Lõpeta",
+      ),
+      "ui_onboard_step3_screen_skip_7b13d8":
+          MessageLookupByLibrary.simpleMessage(
+        "Jäta vahele",
+      ),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Peata"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Esita"),
+      "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
+        "See eemaldatakse sinu profiilist ja kõigi teiste voost. Ka vastused sellele eemaldatakse.",
+      ),
+      "ui_post_deleted": MessageLookupByLibrary.simpleMessage(
+        "Postitus kustutatud",
+      ),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("Postitus peidetud"),
+      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
+        "Postituse tekst kopeeritud",
+      ),
+      "ui_posted_between":
+          MessageLookupByLibrary.simpleMessage("Postitatud vahel"),
+      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
+        "Peidetud. Näitame sulle vähem sarnaseid postitusi.",
+      ),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Eelistused"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privaatsus"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage(
+        "Salvestatud postitused",
+      ),
+      "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "Puuduta arhiveerimise ikooni mis tahes postitusel, et hoida see siin. Ainult sina näed, mida salvestad.",
+      ),
+      "ui_search_by_handle_or_display_name":
+          MessageLookupByLibrary.simpleMessage(
+        "Otsi käepideme või kuvatava nime järgi.",
+      ),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Tühjenda"),
+      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
+        "Otsi kõike postitatud",
+      ),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filtrid"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("Otsi inimesi"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Otsi postitusi"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Seaded"),
+      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
+        "Rakendus ja seade",
+      ),
+      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
+        "Sisu ja kuvamine",
+      ),
+      "ui_settings_data_saver": MessageLookupByLibrary.simpleMessage(
+        "Andmesäästja",
+      ),
+      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
+        "Räägi, mida arvad",
+      ),
+      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
+        "Sirvi abiartikleid",
+      ),
+      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
+        "Vali oma keel",
+      ),
+      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
+        "Keda oled vaigistanud või blokeerinud",
+      ),
+      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
+        "Teavituse eelistused",
+      ),
+      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
+        "Sinu profiil ja kontaktinfo",
+      ),
+      "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
+          MessageLookupByLibrary.simpleMessage(
+        "Pead uuesti sisse logima, et pääseda oma kontole.",
+      ),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Turvaseaded"),
+      "ui_settings_subscreens_confirm_password_41d040":
+          MessageLookupByLibrary.simpleMessage("Kinnita parool"),
+      "ui_settings_subscreens_in_one_line_06bdaf":
+          MessageLookupByLibrary.simpleMessage("Ühes reas"),
+      "ui_settings_subscreens_new_email_address_dab96e":
+          MessageLookupByLibrary.simpleMessage("Uus e-posti aadress"),
+      "ui_settings_subscreens_new_password_88c1bf":
+          MessageLookupByLibrary.simpleMessage("Uus parool"),
+      "ui_settings_subscreens_what_happened_977dd8":
+          MessageLookupByLibrary.simpleMessage("Mis juhtus"),
+      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
+        "Saate abi meie meeskonnalt.",
+      ),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Jaga"),
+      "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
+        "Jaga seda postitust",
+      ),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Kasutustingimused"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("see postitus"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Lõim vaigistatud"),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage(
+        "Lülita heli välja",
+      ),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("Lülita heli sisse"),
+      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
+        "Kaks või enam sümbolit.",
+      ),
+      "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
+        "Sõnad või filter — konto, ajavahemik või see, mida postitus kannab.",
+      ),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("Tühista uuestijagamine"),
+      "updatePassword": MessageLookupByLibrary.simpleMessage("Uuenda parooli"),
+      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
+        "Kasuta teist aadressi",
+      ),
+      "username": MessageLookupByLibrary.simpleMessage("Kasutajanimi"),
+      "usernameRule": MessageLookupByLibrary.simpleMessage(
+        "Kasutajanimi peab olema väiketähtedega (a-z, 0-9, _)",
+      ),
+      "video": MessageLookupByLibrary.simpleMessage("Video"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Lisa"),
+      "voice_ready_attach": MessageLookupByLibrary.simpleMessage(
+        "Valmis lisamiseks",
+      ),
+      "voice_record_post": MessageLookupByLibrary.simpleMessage(
+        "Salvesta helipostitus",
+      ),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Salvestamine…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Peata"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Mis juhtus"),
+      "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
+        "Mis juhtus ja mida peaksime vaatama?",
+      ),
+      "whatInPicture": MessageLookupByLibrary.simpleMessage(
+        "Mis on sellel pildil?",
+      ),
+      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
+        "Milleks see on? (valikuline)",
+      ),
+      "whatYouDid": MessageLookupByLibrary.simpleMessage(
+        "Mida tegite, mida ootasite ja mis juhtus",
+      ),
+      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
+        "Mida te tegite, kui see juhtus.",
+      ),
+    };
+
+final messageLookup = MessageLookup();

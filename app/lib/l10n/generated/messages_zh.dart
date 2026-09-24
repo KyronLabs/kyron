@@ -2,6 +2,7 @@ import 'package:intl/message_lookup_by_library.dart';
 
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'zh';
+
   Map<String, dynamic> get messages => _notInlinedMessages(_notInlinedMessages);
 }
 
@@ -9,12 +10,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "about": MessageLookupByLibrary.simpleMessage("关于"),
       "addAnAnswer": MessageLookupByLibrary.simpleMessage("添加答案"),
       "agreeAndContinue": MessageLookupByLibrary.simpleMessage("同意并继续"),
-      "answerNumber": (Object a0) => "第 $a0 个答案",
+      "answerNumber": (Object a0) => "第 ${a0} 个答案",
       "arLens": MessageLookupByLibrary.simpleMessage("AR 镜头"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage("附加系统日志"),
       "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage("一个词、短语或 #tag"),
       "block": MessageLookupByLibrary.simpleMessage("拉黑"),
-      "blockAuthor": (Object a0) => "要拉黑 $a0 吗？",
+      "blockAuthor": (Object a0) => "要拉黑 ${a0} 吗？",
       "buildDetailsCopied": MessageLookupByLibrary.simpleMessage("构建详情已复制"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "cancel": MessageLookupByLibrary.simpleMessage("取消"),
@@ -24,7 +25,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("检查 Kyron 是否可访问"),
       "checkEmailConfirm":
           MessageLookupByLibrary.simpleMessage("请查收邮件以确认你的账户。"),
-      "closeCommunity": (Object a0) => "要关闭 $a0 吗？",
+      "closeCommunity": (Object a0) => "要关闭 ${a0} 吗？",
       "closeIt": MessageLookupByLibrary.simpleMessage("关闭"),
       "closeThisCommunity": MessageLookupByLibrary.simpleMessage("关闭此社区"),
       "confirmPassword": MessageLookupByLibrary.simpleMessage("确认密码"),
@@ -32,8 +33,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "continueWithEmail": MessageLookupByLibrary.simpleMessage("使用邮箱继续"),
       "copy": MessageLookupByLibrary.simpleMessage("复制"),
       "copyReportInstead": MessageLookupByLibrary.simpleMessage("改为复制报告"),
-      "couldNotOpenGoogleSignIn": (Object a0) => "无法打开 Google 登录。$a0",
-      "couldNotSignOut": (Object a0) => "无法退出：$a0",
+      "couldNotOpenGoogleSignIn": (Object a0) => "无法打开 Google 登录。${a0}",
+      "couldNotSignOut": (Object a0) => "无法退出：${a0}",
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage("无法拍摄该照片。"),
       "create": MessageLookupByLibrary.simpleMessage("创建"),
       "createAccount": MessageLookupByLibrary.simpleMessage("创建账户"),
@@ -66,7 +67,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "leave": MessageLookupByLibrary.simpleMessage("离开"),
-      "leaveCommunity": (Object a0) => "要退出 $a0 吗？",
+      "leaveCommunity": (Object a0) => "要退出 ${a0} 吗？",
       "letBackIn": MessageLookupByLibrary.simpleMessage("允许重新加入"),
       "loadMore": MessageLookupByLibrary.simpleMessage("加载更多"),
       "logCleared": MessageLookupByLibrary.simpleMessage("日志已清空"),
@@ -92,7 +93,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "pickYourInterests": MessageLookupByLibrary.simpleMessage("选择你的兴趣"),
       "post": MessageLookupByLibrary.simpleMessage("发布"),
       "postAnalytics": MessageLookupByLibrary.simpleMessage("帖子数据"),
-      "postInCommunity": (Object a0) => "在 $a0 中发帖",
+      "postInCommunity": (Object a0) => "在 ${a0} 中发帖",
       "postTextCopied": MessageLookupByLibrary.simpleMessage("帖子文本已复制"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("个人资料已更新"),
       "pushNotifications": MessageLookupByLibrary.simpleMessage("推送通知"),
@@ -100,7 +101,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "quotePost": MessageLookupByLibrary.simpleMessage("引用帖子"),
       "reachAPerson": MessageLookupByLibrary.simpleMessage("联系真人"),
       "remove": MessageLookupByLibrary.simpleMessage("移除"),
-      "removeMember": (Object a0) => "移除 $a0？",
+      "removeMember": (Object a0) => "移除 ${a0}？",
       "removeConversation": MessageLookupByLibrary.simpleMessage("移除此对话？"),
       "removeMessage": MessageLookupByLibrary.simpleMessage("移除此消息？"),
       "repliesFollowsMentions":
@@ -116,7 +117,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "retry": MessageLookupByLibrary.simpleMessage("重试"),
       "save": MessageLookupByLibrary.simpleMessage("保存"),
       "saveDraft": MessageLookupByLibrary.simpleMessage("保存草稿"),
-      "saySomething": (Object a0) => "对 $a0 说点什么",
+      "saySomething": (Object a0) => "对 ${a0} 说点什么",
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage("按姓名或用户名搜索"),
       "searchCommunities": MessageLookupByLibrary.simpleMessage("搜索社区"),
       "searchGIFs": MessageLookupByLibrary.simpleMessage("搜索 GIF"),
@@ -132,7 +133,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "shareAppLog": MessageLookupByLibrary.simpleMessage("将应用日志分享给支持"),
       "signedInAs": MessageLookupByLibrary.simpleMessage("登录身份："),
       "signInToKyron": MessageLookupByLibrary.simpleMessage("登录 Kyron"),
-      "signupFailed": (Object a0) => "注册失败：$a0",
+      "signupFailed": (Object a0) => "注册失败：${a0}",
       "stay": MessageLookupByLibrary.simpleMessage("留下"),
       "systemLog": MessageLookupByLibrary.simpleMessage("系统日志"),
       "tellMissingBroken":
@@ -153,7 +154,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatIsItFor": MessageLookupByLibrary.simpleMessage("用途是什么？（可选）"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage("你做了什么、期望什么、实际发生了什么"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage("发生时你在做什么。"),
-      "normalised": MessageLookupByLibrary.simpleMessage(r"#\$normalised"),
+      "normalised": (Object a0) => "#\\${a0}",
       "postItSayItShowIt": MessageLookupByLibrary.simpleMessage("发出来，说出来，秀出来。"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
         "文字、语音与视频，创作它们的人，以及他们交流的房间。",
@@ -166,7 +167,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Google 登录需要手机应用",
       ),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google 通过仅 Android 和 iOS 能响应的链接把完成的登录交回 Kyron，因此在 $a0 上，浏览器将无处可返回。\\n\\n如果你已经用 Google 在 Kyron 上有账户，请用相同地址选择“使用邮箱继续”，然后点“忘记密码”——我们会给你发一封设置密码的链接。",
+          "Google 通过仅 Android 和 iOS 能响应的链接把完成的登录交回 Kyron，因此在 ${a0} 上，浏览器将无处可返回。\\n\\n如果你已经用 Google 在 Kyron 上有账户，请用相同地址选择“使用邮箱继续”，然后点“忘记密码”——我们会给你发一封设置密码的链接。",
       "loginFailed": MessageLookupByLibrary.simpleMessage("登录失败。请检查你的凭据。"),
       "email": MessageLookupByLibrary.simpleMessage("邮箱"),
       "password": MessageLookupByLibrary.simpleMessage("密码"),
@@ -206,7 +207,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literaltheCameraIsClosed":
           MessageLookupByLibrary.simpleMessage("摄像头已关闭"),
       "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("拍照"),
-      "literallensNameFaceLens": (Object a0) => "$a0，人脸镜头",
+      "literallensNameFaceLens": (Object a0) => "${a0}，人脸镜头",
       "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
         "无法发布该回复。",
       ),
@@ -227,16 +228,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
         "无法加载社区",
       ),
-      "literalpostInWidgetCommunityName": (Object a0) => "在 $a0 中发帖",
-      "literalsaySomethingToWidgetCommunityName": (Object a0) => "对 $a0 说点什么",
+      "literalpostInWidgetCommunityName": (Object a0) => "在 ${a0} 中发帖",
+      "literalsaySomethingToWidgetCommunityName": (Object a0) => "对 ${a0} 说点什么",
       "literaltagSomeone": MessageLookupByLibrary.simpleMessage("提及某人"),
-      "literalcloseWidgetCommunityName": (Object a0) => "要关闭 $a0 吗？",
+      "literalcloseWidgetCommunityName": (Object a0) => "要关闭 ${a0} 吗？",
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
         "只有所有者可以更改此项",
       ),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage("点按横幅或图片以更换"),
-      "literalremoveMemberDisplayname": (Object a0) => "移除 $a0？",
+      "literalremoveMemberDisplayname": (Object a0) => "移除 ${a0}？",
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "无法加载成员列表",
       ),
@@ -251,7 +252,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
         "尚未移除任何人",
       ),
-      "literalpostInCommunityName": (Object a0) => "在 $a0 中发帖",
+      "literalpostInCommunityName": (Object a0) => "在 ${a0} 中发帖",
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
         "无法打开此社区",
       ),
@@ -260,8 +261,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("分享此社区"),
       "literalcopyLink": MessageLookupByLibrary.simpleMessage("复制链接"),
       "literallinkCopied": MessageLookupByLibrary.simpleMessage("链接已复制"),
-      "literalleaveCommunityName": (Object a0) => "要退出 $a0 吗？",
-      "literalyouHaveLeftCommunityName": (Object a0) => "你已退出 $a0",
+      "literalleaveCommunityName": (Object a0) => "要退出 ${a0} 吗？",
+      "literalyouHaveLeftCommunityName": (Object a0) => "你已退出 ${a0}",
       "literaladdAVideo": MessageLookupByLibrary.simpleMessage("添加视频"),
       "literaladdAGif": MessageLookupByLibrary.simpleMessage("添加 GIF"),
       "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage("录制语音帖"),
@@ -297,7 +298,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalsendAgainInCooldownS": (Object a0) => "在 ${a0}s 后可重发",
       "literalsendAgain": MessageLookupByLibrary.simpleMessage("再次发送"),
-      "literalnormalised": (Object a0) => "#$a0",
+      "literalnormalised": (Object a0) => "#${a0}",
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
         "无法加载你的消息",
       ),
@@ -339,7 +340,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalkeepTyping": MessageLookupByLibrary.simpleMessage("继续输入"),
       "literalsearchFailed": MessageLookupByLibrary.simpleMessage("搜索失败"),
       "literalnothingMatched": MessageLookupByLibrary.simpleMessage("没有匹配项"),
-      "literalcouldNotSignOutDescribeapierrorE": (Object a0) => "无法退出：$a0",
+      "literalcouldNotSignOutDescribeapierrorE": (Object a0) => "无法退出：${a0}",
       "literalnoDidYet": MessageLookupByLibrary.simpleMessage("尚无 DID"),
       "literalpasswordLogin": MessageLookupByLibrary.simpleMessage("密码与登录"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
@@ -353,15 +354,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalappLanguage": MessageLookupByLibrary.simpleMessage("应用语言"),
       "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage("首选语言"),
       "literalcontentLanguages": MessageLookupByLibrary.simpleMessage("内容语言"),
-      "literalremoveLanguageEnglishname": (Object a0) => "移除 $a0",
-      "literalsentItIsReportFiledNumber": (Object a0) => "已发送。这是报告 #$a0。",
+      "literalremoveLanguageEnglishname": (Object a0) => "移除 ${a0}",
+      "literalsentItIsReportFiledNumber": (Object a0) => "已发送。这是报告 #${a0}。",
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
         "当前无法发送反馈",
       ),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage("你做了什么、期望什么、发生了什么 "),
-      "literalverificationFailedDescribeapierrorE": (Object a0) => "验证失败：$a0",
+      "literalverificationFailedDescribeapierrorE": (Object a0) => "验证失败：${a0}",
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
         "已重新发送验证码。",
       ),
@@ -392,9 +393,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage("此设备上没有浏览器能处理该链接。"),
       "literalopenReply": MessageLookupByLibrary.simpleMessage("打开回复"),
-      "literallabelCount": (Object a0, Object a1) => "$a0，$a1",
-      "literalindex1": (Object a0) => "$a0",
-      "literalfirstyearIndex": (Object a0) => "$a0",
+      "literallabelCount": (Object a0, Object a1) => "${a0}，${a1}",
+      "literalindex1": (Object a0) => "${a0}",
+      "literalfirstyearIndex": (Object a0) => "${a0}",
       "literalgifsAreNotSetUp":
           MessageLookupByLibrary.simpleMessage("GIF 功能尚未设置"),
       "literalcouldNotLoadGifs":
@@ -413,8 +414,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage("你已关注所有热门标签"),
-      "literalremoveLabel": (Object a0) => "移除 $a0",
-      "literaladdLabelAsATab": (Object a0) => "将 $a0 添加为标签页",
+      "literalremoveLabel": (Object a0) => "移除 ${a0}",
+      "literaladdLabelAsATab": (Object a0) => "将 ${a0} 添加为标签页",
       "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage("无法搜索"),
       "literalwhoDoYouWantToTag":
           MessageLookupByLibrary.simpleMessage("你想提及谁？"),
@@ -443,17 +444,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalwhoCanReply": MessageLookupByLibrary.simpleMessage("谁可以回复"),
       "literaldeletePost": MessageLookupByLibrary.simpleMessage("删除帖子"),
-      "literalmuteAuthor": (Object a0) => "静音 $a0",
-      "literalblockAuthor": (Object a0) => "拉黑 $a0",
+      "literalmuteAuthor": (Object a0) => "静音 ${a0}",
+      "literalblockAuthor": (Object a0) => "拉黑 ${a0}",
       "literalreportPost": MessageLookupByLibrary.simpleMessage("举报帖子"),
-      "literalreportAuthor": (Object a0) => "举报 $a0",
+      "literalreportAuthor": (Object a0) => "举报 ${a0}",
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
         "未成功发送。请重试。",
       ),
-      "literalblockAuthor2": (Object a0) => "要拉黑 $a0 吗？",
+      "literalblockAuthor2": (Object a0) => "要拉黑 ${a0} 吗？",
       "literalshowResults": MessageLookupByLibrary.simpleMessage("显示结果"),
-      "literallabelDate": MessageLookupByLibrary.simpleMessage(r"\$label 日期"),
+      "literallabelDate": (Object a0) => "\\${a0} 日期",
       "literalshareVia": MessageLookupByLibrary.simpleMessage("通过…分享"),
       "literalhandItToAnotherApp":
           MessageLookupByLibrary.simpleMessage("交给其他应用处理"),
@@ -464,20 +465,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalsavedPosts": MessageLookupByLibrary.simpleMessage("已保存的帖子"),
       "literallikedPosts": MessageLookupByLibrary.simpleMessage("点赞的帖子"),
-      "literalstoriesRibbonStoriesLengthItems": (Object a0) => "故事栏，共 $a0 项",
+      "literalstoriesRibbonStoriesLengthItems": (Object a0) => "故事栏，共 ${a0} 项",
       "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
         "你发布的内容归你所有",
       ),
       "literalwhatKyronKeeps":
           MessageLookupByLibrary.simpleMessage("Kyron 保留哪些内容"),
       "literalhowToBehave": MessageLookupByLibrary.simpleMessage("行为规范"),
-      "literalcloseTabLabel": (Object a0) => "关闭 $a0",
+      "literalcloseTabLabel": (Object a0) => "关闭 ${a0}",
       "literal1PageOpen": MessageLookupByLibrary.simpleMessage("已打开 1 个页面"),
-      "literalcountPagesOpen": (Object a0) => "已打开 $a0 个页面",
+      "literalcountPagesOpen": (Object a0) => "已打开 ${a0} 个页面",
       "literalstopLoading": MessageLookupByLibrary.simpleMessage("停止加载"),
       "literalshareThisPage": MessageLookupByLibrary.simpleMessage("分享此页面"),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "此设备上没有应用可打开 $a0 链接。",
+          "此设备上没有应用可打开 ${a0} 链接。",
       "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage("关闭浏览器"),
       "literalcloseAllPages": MessageLookupByLibrary.simpleMessage("关闭所有页面"),
       "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage("移除此投票"),
@@ -784,10 +785,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_search_people": MessageLookupByLibrary.simpleMessage("搜索用户"),
       "ui_search_posts": MessageLookupByLibrary.simpleMessage("搜索帖子"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("这条帖子"),
-      "authorPostsHidden": (Object a0) => "你将看不到来自 $a0 的帖子",
-      "authorBlocked": (Object a0) => "$a0 已被屏蔽",
-      "nothingMatchesQuery": (Object a0) => "Kyron 上没有匹配 \"$a0\" 的内容",
-      "repliesPolicy": (Object a0) => "回复：$a0",
+      "authorPostsHidden": (Object a0) => "你将看不到来自 ${a0} 的帖子",
+      "authorBlocked": (Object a0) => "${a0} 已被屏蔽",
+      "nothingMatchesQuery": (Object a0) => "Kyron 上没有匹配 \"${a0}\" 的内容",
+      "repliesPolicy": (Object a0) => "回复：${a0}",
       "ui_preferences": MessageLookupByLibrary.simpleMessage("偏好设置"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "浅色、深色，或与手机设置相同",
@@ -810,7 +811,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
         "无法加载你点赞的帖子",
       ),
-      "feedTagDetail": (Object a0) => "还没有人在 #$a0 下发布内容。",
+      "feedTagDetail": (Object a0) => "还没有人在 #${a0} 下发布内容。",
       "ui_feed_following_empty":
           MessageLookupByLibrary.simpleMessage("你关注的人暂无内容"),
       "ui_feed_videos_empty": MessageLookupByLibrary.simpleMessage("还没有视频"),
@@ -924,296 +925,26 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_after": MessageLookupByLibrary.simpleMessage("之后"),
       "ui_before": MessageLookupByLibrary.simpleMessage("之前"),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("包含"),
-      'ui_communities_screen_what_is_it_for_optional_39b687':
-          MessageLookupByLibrary.simpleMessage("它是做什么的？（可选）"),
-      'ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001':
-          MessageLookupByLibrary.simpleMessage("你需要重新登录才能回到你的帐户。"),
-      'ui_settings_subscreens_new_email_address_dab96e':
-          MessageLookupByLibrary.simpleMessage("新电子邮箱地址"),
-      'ui_settings_subscreens_new_password_88c1bf':
-          MessageLookupByLibrary.simpleMessage("新密码"),
-      'ui_settings_subscreens_confirm_password_41d040':
-          MessageLookupByLibrary.simpleMessage("确认密码"),
-      'ui_settings_subscreens_in_one_line_06bdaf':
-          MessageLookupByLibrary.simpleMessage("一行内"),
-      'ui_settings_subscreens_what_happened_977dd8':
-          MessageLookupByLibrary.simpleMessage("发生了什么"),
-      'ui_onboard_step3_screen_skip_7b13d8':
-          MessageLookupByLibrary.simpleMessage(
-        "跳过",
+      "create_text_post": MessageLookupByLibrary.simpleMessage("文字帖"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("语音帖"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR 镜头"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("开始直播"),
+      "voice_record_post": MessageLookupByLibrary.simpleMessage("录制语音帖"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("录音中…"),
+      "voice_ready_attach": MessageLookupByLibrary.simpleMessage("准备附加"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("停止"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("附加"),
+      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
+        "在编辑器中写下内容后关闭，就会为你提供草稿。",
       ),
-      'ui_onboard_step3_screen_finish_5c0ad8':
-          MessageLookupByLibrary.simpleMessage(
-        "完成",
-      ),
-      'audit_about_screen_12_mb_e39721d6': MessageLookupByLibrary.simpleMessage(
-        "12 MB",
-      ),
-      'audit_about_subscreens_round_trip_64776b4c':
-          MessageLookupByLibrary.simpleMessage("往返"),
-      'audit_about_subscreens_token_verification_7934e1f2':
-          MessageLookupByLibrary.simpleMessage("令牌验证"),
-      'audit_about_subscreens_support_kyron_so_a3a84d0f':
-          MessageLookupByLibrary.simpleMessage("support@kyron.so"),
-      'audit_ar_lens_screen_try_again_cdec8872':
-          MessageLookupByLibrary.simpleMessage("再试一次"),
-      'audit_browser_engine_window_stop_39c04883':
-          MessageLookupByLibrary.simpleMessage("window.stop();"),
-      'audit_browser_sheet_try_again_44bc94ba':
-          MessageLookupByLibrary.simpleMessage("再试一次"),
-      'audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b':
-          MessageLookupByLibrary.simpleMessage("现在开始广播会把你放到一个没人能"),
-      'audit_communities_screen_start_a_community_06c8ec4f':
-          MessageLookupByLibrary.simpleMessage("创建社区"),
-      'audit_communities_screen_what_is_it_for_optional_e7e82092':
-          MessageLookupByLibrary.simpleMessage("它是做什么的？（可选）"),
-      'audit_community_manage_screen_closing_it_f490fb09':
-          MessageLookupByLibrary.simpleMessage("关闭它"),
-      'audit_community_manage_screen_back_in_e495a750':
-          MessageLookupByLibrary.simpleMessage("回来。"),
-      'audit_community_manage_screen_back_in_from_this_list_9496a4fd':
-          MessageLookupByLibrary.simpleMessage("从此列表返回。"),
-      'audit_community_screen_join_first_7798cafc':
-          MessageLookupByLibrary.simpleMessage("先加入"),
-      'audit_composer_screen_coming_soon_431fd23d':
-          MessageLookupByLibrary.simpleMessage("即将推出"),
-      'audit_composer_screen_posting_as_you_45d69932':
-          MessageLookupByLibrary.simpleMessage("以你的身份发布"),
-      'audit_drafts_screen_just_now_17a8d48a':
-          MessageLookupByLibrary.simpleMessage(
-        "刚刚",
-      ),
-      'audit_explore_screen_topic_1_83830b41':
-          MessageLookupByLibrary.simpleMessage(
-        "话题 1",
-      ),
-      'audit_forgot_password_screen_its_way_to_it_now_271a6cea':
-          MessageLookupByLibrary.simpleMessage("现在已在路上。"),
-      'audit_forgot_password_screen_has_anything_65044193':
-          MessageLookupByLibrary.simpleMessage("有任何东西。"),
-      'audit_post_analytics_screen_viewers_per_day_5d881f10':
-          MessageLookupByLibrary.simpleMessage("每天观看人数"),
-      'audit_post_detail_screen_sublist_1_join_b0a5d508':
-          MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
-      'audit_report_screen_this_post_820d9740':
-          MessageLookupByLibrary.simpleMessage("这条帖子"),
-      'audit_report_screen_anything_to_add_optional_f0051fa4':
-          MessageLookupByLibrary.simpleMessage("还有什么要补充吗？（可选）"),
-      'audit_settings_screen_log_out_0b39bfb2':
-          MessageLookupByLibrary.simpleMessage("退出登录"),
-      'audit_settings_screen_your_account_bcdf27af':
-          MessageLookupByLibrary.simpleMessage("你的账户"),
-      'audit_settings_screen_did_plc_abc_825b4f49':
-          MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
-      'audit_settings_subscreens_confirm_password_f0e1f449':
-          MessageLookupByLibrary.simpleMessage("确认密码"),
-      'audit_settings_subscreens_not_now_e1657fa9':
-          MessageLookupByLibrary.simpleMessage("现在不要"),
-      'audit_create_fab_post_in_this_community_0a42daf2':
-          MessageLookupByLibrary.simpleMessage("在此社区发布"),
-      'audit_url_preview_its_own_8b362f95':
-          MessageLookupByLibrary.simpleMessage(
-        "它自己的。",
-      ),
-      'audit_empty_state_try_again_80ef48cd':
-          MessageLookupByLibrary.simpleMessage(
-        "再试一次",
-      ),
-      'audit_feed_canvas_for_you_aa3c510d':
-          MessageLookupByLibrary.simpleMessage(
-        "为你",
-      ),
-      'audit_google_button_not_bbd76526': MessageLookupByLibrary.simpleMessage(
-        "，不是",
-      ),
-      'audit_inline_video_am_i_moving_4618f78c':
-          MessageLookupByLibrary.simpleMessage("我在动吗？"),
-      'audit_inline_video_turn_sound_on_83671c54':
-          MessageLookupByLibrary.simpleMessage("打开声音"),
-      'audit_inline_video_turn_sound_off_97714bbc':
-          MessageLookupByLibrary.simpleMessage("关闭声音"),
-      'audit_interest_tabs_for_you_7ef9e823':
-          MessageLookupByLibrary.simpleMessage(
-        "为你",
-      ),
-      'audit_interest_tabs_your_tabs_c3ba148f':
-          MessageLookupByLibrary.simpleMessage("你的标签页"),
-      'audit_media_tray_alt_784030d4': MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
-      'audit_mention_picker_sheet_try_again_fd5d5dd7':
-          MessageLookupByLibrary.simpleMessage("再试一次"),
-      'audit_password_requirements_symbol_322aed1e':
-          MessageLookupByLibrary.simpleMessage("符号 (!@#…)"),
-      'audit_post_list_view_could_not_load_4dd86c79':
-          MessageLookupByLibrary.simpleMessage("无法加载"),
-      'audit_post_options_sheet_this_post_99bfa981':
-          MessageLookupByLibrary.simpleMessage("此帖子"),
-      'audit_post_text_a_b_780da9a1':
-          MessageLookupByLibrary.simpleMessage("a#b"),
-      'audit_search_filter_sheet_from_an_account_f6a22687':
-          MessageLookupByLibrary.simpleMessage("来自某个账号"),
-      'audit_skeleton_loading_18e82bcc': MessageLookupByLibrary.simpleMessage(
-        "加载中…",
-      ),
-      'audit_sliding_drawer_content_kyron_v1_0_0_d696e73a':
-          MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      'audit_story_pill_posting_bb613f87': MessageLookupByLibrary.simpleMessage(
-        "发布中…",
-      ),
-      'audit_story_viewer_your_story_b706ecb4':
-          MessageLookupByLibrary.simpleMessage("你的故事"),
-      'audit_story_viewer_copy_story_link_2bd1546c':
-          MessageLookupByLibrary.simpleMessage("复制故事链接"),
-      'audit_story_viewer_3h_ago_174dc80d':
-          MessageLookupByLibrary.simpleMessage(
-        "3小时前",
-      ),
-      'audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef':
-          MessageLookupByLibrary.simpleMessage("你的帐户、你的帖子，以及你点击的内容，因此"),
-      'audit_topic_picker_add_a_topic_25baaf8a':
-          MessageLookupByLibrary.simpleMessage("添加话题"),
-      'ui_communities': MessageLookupByLibrary.simpleMessage("社区"),
-      'ui_settings': MessageLookupByLibrary.simpleMessage("设置"),
-      'ui_appearance': MessageLookupByLibrary.simpleMessage("外观"),
-      'ui_language': MessageLookupByLibrary.simpleMessage("语言"),
-      'ui_account': MessageLookupByLibrary.simpleMessage("账户"),
-      'ui_content_display': MessageLookupByLibrary.simpleMessage("内容与显示"),
-      'ui_app_device': MessageLookupByLibrary.simpleMessage("应用与设备"),
-      'ui_terms': MessageLookupByLibrary.simpleMessage("条款"),
-      'ui_privacy': MessageLookupByLibrary.simpleMessage("隐私"),
-      'ui_help': MessageLookupByLibrary.simpleMessage("帮助"),
-      'ui_feedback': MessageLookupByLibrary.simpleMessage("反馈"),
-      'ui_decentralized_id': MessageLookupByLibrary.simpleMessage("去中心化 ID"),
-      'ui_find_people_on_kyron': MessageLookupByLibrary.simpleMessage(
-        "在 Kyron 上查找用户",
-      ),
-      'ui_search_everything_posted': MessageLookupByLibrary.simpleMessage(
-        "搜索所有已发布内容",
-      ),
-      'ui_search_by_handle_or_display_name':
-          MessageLookupByLibrary.simpleMessage(
-        "按账号或显示名称搜索。",
-      ),
-      'ui_words_or_filter': MessageLookupByLibrary.simpleMessage(
-        "关键词，或按筛选条件—账号、日期范围，或帖子的附带内容。",
-      ),
-      'ui_two_characters_or_more':
-          MessageLookupByLibrary.simpleMessage("两个字符或更多。"),
-      'ui_no_posts_match_filters': MessageLookupByLibrary.simpleMessage(
-        "没有帖子符合这些筛选条件。",
-      ),
-      'ui_search_clear': MessageLookupByLibrary.simpleMessage("清除"),
-      'ui_search_filters': MessageLookupByLibrary.simpleMessage("筛选"),
-      'ui_post_text_copied': MessageLookupByLibrary.simpleMessage("帖子文本已复制"),
-      'ui_link_copied': MessageLookupByLibrary.simpleMessage("链接已复制"),
-      'ui_interest_noted': MessageLookupByLibrary.simpleMessage(
-        "已记录。这有助于决定向你展示的内容。",
-      ),
-      'ui_posts_hidden':
-          MessageLookupByLibrary.simpleMessage("已隐藏。我们会减少类似内容的展示。"),
-      'ui_post_hidden': MessageLookupByLibrary.simpleMessage("帖子已隐藏"),
-      'ui_thread_muted': MessageLookupByLibrary.simpleMessage("线程已静音"),
-      'ui_post_deleted': MessageLookupByLibrary.simpleMessage("帖子已删除"),
-      'ui_post_delete_detail': MessageLookupByLibrary.simpleMessage(
-        "它会从你的个人资料和其他所有人的动态中移除。对它的回复也会随之移除。",
-      ),
-      'ui_block_detail': MessageLookupByLibrary.simpleMessage(
-        "你们双方都不会在 Kyron 上看到对方，双方之间的关注会被取消。对方不会收到通知。",
-      ),
-      'ui_mute_detail': MessageLookupByLibrary.simpleMessage(
-        "你将不再看到他们的帖子。对方不会收到通知。",
-      ),
-      'ui_about_terms_of_service': MessageLookupByLibrary.simpleMessage("服务条款"),
-      'ui_about_privacy_policy': MessageLookupByLibrary.simpleMessage("隐私政策"),
-      'ui_settings_profile_contact': MessageLookupByLibrary.simpleMessage(
-        "你的个人资料和联系信息",
-      ),
-      'ui_settings_security': MessageLookupByLibrary.simpleMessage("安全设置"),
-      'ui_settings_muted_blocked': MessageLookupByLibrary.simpleMessage(
-        "你已静音或屏蔽的人",
-      ),
-      'ui_settings_content_display':
-          MessageLookupByLibrary.simpleMessage("内容与显示"),
-      'ui_settings_app_device': MessageLookupByLibrary.simpleMessage("应用与设备"),
-      'ui_settings_data_saver': MessageLookupByLibrary.simpleMessage("省流量"),
-      'ui_settings_language_detail':
-          MessageLookupByLibrary.simpleMessage("选择你的语言"),
-      'ui_settings_notifications_detail': MessageLookupByLibrary.simpleMessage(
-        "通知偏好",
-      ),
-      'ui_settings_help_articles':
-          MessageLookupByLibrary.simpleMessage("浏览帮助文章"),
-      'ui_settings_team_help':
-          MessageLookupByLibrary.simpleMessage("向我们的团队寻求帮助"),
-      'ui_settings_feedback_detail': MessageLookupByLibrary.simpleMessage(
-        "告诉我们你的想法",
-      ),
-      'ui_could_not_load_profile': MessageLookupByLibrary.simpleMessage(
-        "无法加载你的个人资料",
-      ),
-      'ui_search_people': MessageLookupByLibrary.simpleMessage("搜索用户"),
-      'ui_search_posts': MessageLookupByLibrary.simpleMessage("搜索帖子"),
-      'ui_this_post': MessageLookupByLibrary.simpleMessage("这条帖子"),
-      'authorPostsHidden': (Object author) =>
-          'You will not see posts from $author',
-      'authorBlocked': (Object author) => '$author blocked',
-      'nothingMatchesQuery': (Object what) =>
-          'Nothing on Kyron matches "$what"',
-      'repliesPolicy': (Object policy) => 'Replies: $policy',
-      'ui_preferences': MessageLookupByLibrary.simpleMessage("偏好设置"),
-      'ui_appearance_detail': MessageLookupByLibrary.simpleMessage(
-        "浅色、深色，或与手机设置相同",
-      ),
-      'ui_legal': MessageLookupByLibrary.simpleMessage("法律"),
-      'ui_diagnostics': MessageLookupByLibrary.simpleMessage("诊断"),
-      'ui_saved_posts': MessageLookupByLibrary.simpleMessage("已保存的帖子"),
-      'ui_liked_posts': MessageLookupByLibrary.simpleMessage("已点赞的帖子"),
-      'ui_nothing_saved_yet': MessageLookupByLibrary.simpleMessage("还没有保存任何内容"),
-      'ui_no_likes_yet': MessageLookupByLibrary.simpleMessage("还没有点赞"),
-      'ui_saved_posts_detail': MessageLookupByLibrary.simpleMessage(
-        "点击任何帖子的存档图标即可将其保存在这里。只有你能看到你保存的内容。",
-      ),
-      'ui_liked_posts_detail': MessageLookupByLibrary.simpleMessage(
-        "你点赞的帖子会显示在这里，按时间倒序排列。",
-      ),
-      'ui_could_not_load_saved_posts': MessageLookupByLibrary.simpleMessage(
-        "无法加载你保存的帖子",
-      ),
-      'ui_could_not_load_liked_posts': MessageLookupByLibrary.simpleMessage(
-        "无法加载你点赞的帖子",
-      ),
-      'feedTagDetail': (Object tab) =>
-          'Nothing has been posted under #$tab yet.',
-      'ui_feed_following_empty':
-          MessageLookupByLibrary.simpleMessage("你关注的人暂无内容"),
-      'ui_feed_videos_empty': MessageLookupByLibrary.simpleMessage("还没有视频"),
-      'ui_feed_empty': MessageLookupByLibrary.simpleMessage("这里还没有内容"),
-      'ui_feed_following_detail': MessageLookupByLibrary.simpleMessage(
-        "关注一些账号，他们的帖子会在这里显示。",
-      ),
-      'ui_feed_videos_detail': MessageLookupByLibrary.simpleMessage(
-        "带有视频片段的帖子会显示在这里。",
-      ),
-      'ui_feed_for_you_detail': MessageLookupByLibrary.simpleMessage(
-        "人们发布时，帖子会出现在这里。",
-      ),
-      'ui_could_not_load_feed':
-          MessageLookupByLibrary.simpleMessage("无法加载你的动态"),
-      'ui_share_this_post': MessageLookupByLibrary.simpleMessage("分享此帖子"),
-      'ui_like': MessageLookupByLibrary.simpleMessage("赞"),
-      'ui_share': MessageLookupByLibrary.simpleMessage("分享"),
-      'ui_joined': MessageLookupByLibrary.simpleMessage("已加入"),
-      'ui_join': MessageLookupByLibrary.simpleMessage("加入"),
-      'ui_turn_sound_on': MessageLookupByLibrary.simpleMessage("打开声音"),
-      'ui_turn_sound_off': MessageLookupByLibrary.simpleMessage("关闭声音"),
-      'ui_pause': MessageLookupByLibrary.simpleMessage("暂停"),
-      'ui_play': MessageLookupByLibrary.simpleMessage("播放"),
-      'ui_from_account': MessageLookupByLibrary.simpleMessage("来自账户"),
-      'ui_posted_between': MessageLookupByLibrary.simpleMessage("发布于"),
-      'ui_after': MessageLookupByLibrary.simpleMessage("之后"),
-      'ui_before': MessageLookupByLibrary.simpleMessage("之前"),
-      'ui_carrying': MessageLookupByLibrary.simpleMessage("包含"),
+      "draft_poll_empty": MessageLookupByLibrary.simpleMessage("尚未填写问题的投票"),
+      "draft_quote_empty": MessageLookupByLibrary.simpleMessage("尚未填写内容的引用"),
+      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage("还没有内容"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("刚刚"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} 分钟前"),
+      "draft_hours_ago": MessageLookupByLibrary.simpleMessage("{hours} 小时前"),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} 天前"),
     };
 
 final messageLookup = MessageLookup();

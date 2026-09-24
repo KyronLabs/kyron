@@ -1,0 +1,1291 @@
+import 'package:intl/message_lookup_by_library.dart';
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'da';
+
+  Map<String, dynamic> get messages => _notInlinedMessages(_notInlinedMessages);
+}
+
+Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
+      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
+        "Et ord, en sætning eller #tag",
+      ),
+      "about": MessageLookupByLibrary.simpleMessage("Om"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Tilføj et svar"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
+        "Tilføj flere sprog…",
+      ),
+      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
+        "Accepter og fortsæt",
+      ),
+      "alreadyOnKyron":
+          MessageLookupByLibrary.simpleMessage("Allerede på Kyron?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Kommentarer"),
+      "analytics_distinct_people_not_opens":
+          MessageLookupByLibrary.simpleMessage(
+        "Unikke personer, ikke åbninger",
+      ),
+      "analytics_engagement":
+          MessageLookupByLibrary.simpleMessage("Engagement"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
+      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
+        "Ingen seere endnu",
+      ),
+      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
+        "Ingen har åbnet dette opslag endnu.",
+      ),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Opslået"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Gemte"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Seere"),
+      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
+        "SEERE PR. DAG",
+      ),
+      "and": MessageLookupByLibrary.simpleMessage("og"),
+      "answerNumber": (Object a0) => "Svar ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
+        "Vedhæft systemloggen",
+      ),
+      "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
+        "12 MB",
+      ),
+      "audit_about_subscreens_round_trip_64776b4c":
+          MessageLookupByLibrary.simpleMessage("Tur-retur"),
+      "audit_about_subscreens_support_kyron_so_a3a84d0f":
+          MessageLookupByLibrary.simpleMessage("support@kyron.so"),
+      "audit_about_subscreens_token_verification_7934e1f2":
+          MessageLookupByLibrary.simpleMessage("TOKENVERIFIKATION"),
+      "audit_ar_lens_screen_try_again_cdec8872":
+          MessageLookupByLibrary.simpleMessage("Prøv igen"),
+      "audit_browser_engine_window_stop_39c04883":
+          MessageLookupByLibrary.simpleMessage("window.stop();"),
+      "audit_browser_sheet_try_again_44bc94ba":
+          MessageLookupByLibrary.simpleMessage("Prøv igen"),
+      "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
+          MessageLookupByLibrary.simpleMessage(
+        "At starte en udsendelse nu ville placere dig i et rum, som ingen kunne",
+      ),
+      "audit_communities_screen_start_a_community_06c8ec4f":
+          MessageLookupByLibrary.simpleMessage("Start et fællesskab"),
+      "audit_communities_screen_what_is_it_for_optional_e7e82092":
+          MessageLookupByLibrary.simpleMessage("Hvad er det til? (valgfrit)"),
+      "audit_community_manage_screen_back_in_e495a750":
+          MessageLookupByLibrary.simpleMessage("tilbage igen."),
+      "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
+          MessageLookupByLibrary.simpleMessage("tilbage fra denne liste."),
+      "audit_community_manage_screen_closing_it_f490fb09":
+          MessageLookupByLibrary.simpleMessage("Lukker det"),
+      "audit_community_screen_join_first_7798cafc":
+          MessageLookupByLibrary.simpleMessage("bliv medlem først"),
+      "audit_composer_screen_coming_soon_431fd23d":
+          MessageLookupByLibrary.simpleMessage("kommer snart"),
+      "audit_composer_screen_posting_as_you_45d69932":
+          MessageLookupByLibrary.simpleMessage("Poster som dig"),
+      "audit_create_fab_post_in_this_community_0a42daf2":
+          MessageLookupByLibrary.simpleMessage("opslag i dette fællesskab"),
+      "audit_drafts_screen_just_now_17a8d48a":
+          MessageLookupByLibrary.simpleMessage(
+        "Lige nu",
+      ),
+      "audit_empty_state_try_again_80ef48cd":
+          MessageLookupByLibrary.simpleMessage(
+        "Prøv igen",
+      ),
+      "audit_explore_screen_topic_1_83830b41":
+          MessageLookupByLibrary.simpleMessage(
+        "Emne 1",
+      ),
+      "audit_feed_canvas_for_you_aa3c510d":
+          MessageLookupByLibrary.simpleMessage(
+        "Til dig",
+      ),
+      "audit_forgot_password_screen_has_anything_65044193":
+          MessageLookupByLibrary.simpleMessage("har noget."),
+      "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
+          MessageLookupByLibrary.simpleMessage("er på vej nu."),
+      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
+        ", ikke",
+      ),
+      "audit_inline_video_am_i_moving_4618f78c":
+          MessageLookupByLibrary.simpleMessage("bevægede jeg mig"),
+      "audit_inline_video_turn_sound_off_97714bbc":
+          MessageLookupByLibrary.simpleMessage("Slå lyden fra"),
+      "audit_inline_video_turn_sound_on_83671c54":
+          MessageLookupByLibrary.simpleMessage("Tænd for lyden"),
+      "audit_interest_tabs_for_you_7ef9e823":
+          MessageLookupByLibrary.simpleMessage(
+        "Til dig",
+      ),
+      "audit_interest_tabs_your_tabs_c3ba148f":
+          MessageLookupByLibrary.simpleMessage("Dine faner"),
+      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
+        "+ ALT",
+      ),
+      "audit_mention_picker_sheet_try_again_fd5d5dd7":
+          MessageLookupByLibrary.simpleMessage("Prøv igen"),
+      "audit_password_requirements_symbol_322aed1e":
+          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+      "audit_post_analytics_screen_viewers_per_day_5d881f10":
+          MessageLookupByLibrary.simpleMessage("SEERE PR. DAG"),
+      "audit_post_detail_screen_sublist_1_join_b0a5d508":
+          MessageLookupByLibrary.simpleMessage(").sublist(1).join(\", "),
+      "audit_post_list_view_could_not_load_4dd86c79":
+          MessageLookupByLibrary.simpleMessage("kunne ikke indlæse"),
+      "audit_post_options_sheet_this_post_99bfa981":
+          MessageLookupByLibrary.simpleMessage("dette opslag"),
+      "audit_post_text_a_b_780da9a1":
+          MessageLookupByLibrary.simpleMessage("a#b"),
+      "audit_report_screen_anything_to_add_optional_f0051fa4":
+          MessageLookupByLibrary.simpleMessage("Noget at tilføje? (valgfrit)"),
+      "audit_report_screen_this_post_820d9740":
+          MessageLookupByLibrary.simpleMessage("dette opslag"),
+      "audit_search_filter_sheet_from_an_account_f6a22687":
+          MessageLookupByLibrary.simpleMessage("Fra en konto"),
+      "audit_settings_screen_did_plc_abc_825b4f49":
+          MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
+      "audit_settings_screen_log_out_0b39bfb2":
+          MessageLookupByLibrary.simpleMessage("Log ud"),
+      "audit_settings_screen_your_account_bcdf27af":
+          MessageLookupByLibrary.simpleMessage("Din konto"),
+      "audit_settings_subscreens_confirm_password_f0e1f449":
+          MessageLookupByLibrary.simpleMessage("Bekræft adgangskode"),
+      "audit_settings_subscreens_not_now_e1657fa9":
+          MessageLookupByLibrary.simpleMessage("ikke nu"),
+      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
+        "Indlæser…",
+      ),
+      "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
+          MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
+      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
+        "Poster…",
+      ),
+      "audit_story_viewer_3h_ago_174dc80d":
+          MessageLookupByLibrary.simpleMessage(
+        "3 t. siden",
+      ),
+      "audit_story_viewer_copy_story_link_2bd1546c":
+          MessageLookupByLibrary.simpleMessage("Kopiér historielink"),
+      "audit_story_viewer_your_story_b706ecb4":
+          MessageLookupByLibrary.simpleMessage("Din historie"),
+      "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
+          MessageLookupByLibrary.simpleMessage(
+        "Din konto, dine opslag og hvad du trykker på, så",
+      ),
+      "audit_topic_picker_add_a_topic_25baaf8a":
+          MessageLookupByLibrary.simpleMessage("Tilføj et emne"),
+      "audit_url_preview_its_own_8b362f95":
+          MessageLookupByLibrary.simpleMessage(
+        "sin egen.",
+      ),
+      "authorBlocked": (Object a0) => "${a0} blokeret",
+      "authorPostsHidden": (Object a0) => "Du vil ikke se opslag fra ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Bloker"),
+      "blockAuthor": (Object a0) => "Bloker ${a0}?",
+      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
+        "Byggeoplysninger kopieret",
+      ),
+      "bullet": MessageLookupByLibrary.simpleMessage("•"),
+      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "Ved at fortsætte accepterer du vores",
+      ),
+      "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
+        "Ved at fortsætte accepterer du vores vilkår og privatlivspolitik",
+      ),
+      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "Ved at tilmelde dig accepterer du vores",
+      ),
+      "cancel": MessageLookupByLibrary.simpleMessage("Annuller"),
+      "change": MessageLookupByLibrary.simpleMessage("Skift"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Ændr e-mail"),
+      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
+        "Tjek din e-mail for at bekræfte din konto.",
+      ),
+      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
+        "Kontroller, om Kyron er tilgængelig",
+      ),
+      "clear": MessageLookupByLibrary.simpleMessage("Ryd"),
+      "close": MessageLookupByLibrary.simpleMessage("Luk"),
+      "closeCommunity": (Object a0) => "Luk ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Luk den"),
+      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Luk dette fællesskab",
+      ),
+      "communities": MessageLookupByLibrary.simpleMessage("Fællesskaber"),
+      "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Find et på Opdag, eller start dit eget.",
+      ),
+      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
+        "Kom med en skarp holdning (eller en lun)",
+      ),
+      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
+        "Hvad rumler rundt i dit hoved?",
+      ),
+      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
+        "Sig noget kun du kan sige…",
+      ),
+      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
+        "Det her er dit signal — send det",
+      ),
+      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
+        "Skriv, tal eller tænk højt",
+      ),
+      "confirmPassword": MessageLookupByLibrary.simpleMessage(
+        "Bekræft adgangskode",
+      ),
+      "contactSupport": MessageLookupByLibrary.simpleMessage("Kontakt support"),
+      "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
+        "Opslag bærer endnu ikke et sprog, så dette filtrerer ikke dit feed i dag. Dit valg gemmes til, når de gør.",
+      ),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Fortsæt"),
+      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
+        "Fortsæt med e-mail",
+      ),
+      "copy": MessageLookupByLibrary.simpleMessage("Kopier"),
+      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
+        "Kopier rapporten i stedet",
+      ),
+      "couldNotOpenGoogleSignIn": (Object a0) =>
+          "Kunne ikke åbne Google-login. ${a0}",
+      "couldNotSignOut": (Object a0) => "Kunne ikke logge ud: ${a0}",
+      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke tage billedet.",
+      ),
+      "create": MessageLookupByLibrary.simpleMessage("Opret"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Opret konto"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Opret din konto"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Opret din profil"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Gå live"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("Tekstopslag"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("Stemmeopslag"),
+      "delete": MessageLookupByLibrary.simpleMessage("Slet"),
+      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
+        "Slet denne kommentar?",
+      ),
+      "deleteThisPost":
+          MessageLookupByLibrary.simpleMessage("Slet dette opslag?"),
+      "describeAttachment": MessageLookupByLibrary.simpleMessage(
+        "Beskriv denne vedhæftning",
+      ),
+      "description": MessageLookupByLibrary.simpleMessage("Beskrivelse"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+        "DID kopieret til udklipsholder",
+      ),
+      "done": MessageLookupByLibrary.simpleMessage("Færdig"),
+      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
+        "Luk skrivefeltet med noget skrevet, og du vil få tilbudt et udkast.",
+      ),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} dage siden"),
+      "draft_hours_ago": MessageLookupByLibrary.simpleMessage(
+        "{hours} timer siden",
+      ),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Lige nu"),
+      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
+        "{minutes} minutter siden",
+      ),
+      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
+        "Intet skrevet endnu",
+      ),
+      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
+        "En afstemning uden spørgsmål endnu",
+      ),
+      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
+        "Et citat uden tekst endnu",
+      ),
+      "drafts": MessageLookupByLibrary.simpleMessage("Udkast"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Rediger profil"),
+      "email": MessageLookupByLibrary.simpleMessage("E-mail"),
+      "emailNotifications": MessageLookupByLibrary.simpleMessage(
+        "E-mail-notifikationer",
+      ),
+      "explore": MessageLookupByLibrary.simpleMessage("Udforsk"),
+      "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
+        "Ansigtssporing er ikke tilgængelig på denne enhed.",
+      ),
+      "feedTagDetail": (Object a0) =>
+          "Der er endnu ikke blevet postet under #${a0}.",
+      "followers": MessageLookupByLibrary.simpleMessage("Følgere"),
+      "following": MessageLookupByLibrary.simpleMessage("Følger"),
+      "forgotPassword":
+          MessageLookupByLibrary.simpleMessage("Glemt adgangskode?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Får hjælp"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Fortsæt med Google"),
+      "googleSignIn":
+          MessageLookupByLibrary.simpleMessage("Log ind med Google"),
+      "googleSignInDesktopExplanation": (Object a0) =>
+          "Google afleverer det færdige login til Kyron via et link, som kun Android og iOS kan svare på, så på ${a0} ville browseren ikke have noget sted at returnere det til.\\n\\nHvis du allerede har en Kyron-konto via Google, brug Fortsæt med e-mail med den samme adresse og tryk på Glemt adgangskode — det vil sende dig et link til at oprette en adgangskode.",
+      "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
+        "Google-login kræver telefonappen",
+      ),
+      "googleSignUp": MessageLookupByLibrary.simpleMessage(
+        "Tilmeld dig med Google",
+      ),
+      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
+        "Vejledninger og svar på almindelige spørgsmål",
+      ),
+      "handle": MessageLookupByLibrary.simpleMessage("brugernavn"),
+      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Hashtags dukker op her, når folk begynder at bruge dem.",
+      ),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Hjælp & support"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Hjælpecenter"),
+      "home": MessageLookupByLibrary.simpleMessage("Hjem"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("På én linje"),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Tilføj en interesse"),
+      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
+        "Træk for at ændre rækkefølge",
+      ),
+      "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
+        "Fem faner er det meste, striben kan indeholde. Fjern en for at tilføje en anden.",
+      ),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Følger"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Til dig"),
+      "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
+        "Hashtags dukker op her, når folk begynder at bruge dem.",
+      ),
+      "interest_trending_now": MessageLookupByLibrary.simpleMessage(
+        "Populært lige nu",
+      ),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Videoer"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Dine faner"),
+      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
+        "Det forsvinder for jer begge.",
+      ),
+      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
+        "Det fjernes fra tråden.",
+      ),
+      "join": MessageLookupByLibrary.simpleMessage("Deltag"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Fortsæt redigering"),
+      "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
+      "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
+        "Kyrons egne ord bliver stadig oversat, så de fleste skærme forbliver på engelsk indtil videre.",
+      ),
+      "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
+      "languages": MessageLookupByLibrary.simpleMessage("Sprog"),
+      "leave": MessageLookupByLibrary.simpleMessage("Forlad"),
+      "leaveCommunity": (Object a0) => "Forlad ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Lad ind igen"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 side åben"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Tilføj et klip"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Tilføj en GIF"),
+      "literaladdAHashtag": MessageLookupByLibrary.simpleMessage(
+        "Tilføj et hashtag",
+      ),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("Tilføj et foto"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage(
+        "Tilføj en afstemning",
+      ),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("Tilføj en video"),
+      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
+        "Tilføj en interesse",
+      ),
+      "literaladdLabelAsATab": (Object a0) => "Tilføj ${a0} som en fane",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage("App-sprog"),
+      "literalappVersion": MessageLookupByLibrary.simpleMessage("App-version"),
+      "literalblockAuthor": (Object a0) => "Bloker ${a0}",
+      "literalblockAuthor2": (Object a0) => "Bloker ${a0}?",
+      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
+        "Bloker denne konto?",
+      ),
+      "literalcancelReply":
+          MessageLookupByLibrary.simpleMessage("Annuller svar"),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Tjek igen"),
+      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
+        "Vælg fra galleri",
+      ),
+      "literalclearCache": MessageLookupByLibrary.simpleMessage("Ryd cache"),
+      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
+        "Luk alle sider",
+      ),
+      "literalcloseTabLabel": (Object a0) => "Luk ${a0}",
+      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
+        "Luk browseren",
+      ),
+      "literalcloseWidgetCommunityName": (Object a0) => "Luk ${a0}?",
+      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
+        "Kontakt support",
+      ),
+      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
+        "Indholdssprog",
+      ),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Kopier link"),
+      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
+        "Kopiér link til opslag",
+      ),
+      "literalcopyPostText": MessageLookupByLibrary.simpleMessage(
+        "Kopiér opslagstekst",
+      ),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Kopiér tekst"),
+      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse fællesskaber",
+      ),
+      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse GIF'er",
+      ),
+      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse notifikationer",
+      ),
+      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse forslag",
+      ),
+      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse medlemmerne",
+      ),
+      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse disse opslag",
+      ),
+      "literalcouldNotLoadThisConversation":
+          MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse denne samtale",
+      ),
+      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse denne liste",
+      ),
+      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse dette opslag",
+      ),
+      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse dette svar",
+      ),
+      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse emner",
+      ),
+      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse populære emner",
+      ),
+      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse populære tags",
+      ),
+      "literalcouldNotLoadYourCommunities":
+          MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse dine fællesskaber",
+      ),
+      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse dine beskeder",
+      ),
+      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke åbne dette fællesskab",
+      ),
+      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke poste det svar.",
+      ),
+      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke søge",
+      ),
+      "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
+          "Kunne ikke logge ud: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} sider åbne",
+      "literalcoverPhoto":
+          MessageLookupByLibrary.simpleMessage("Forsidebillede"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Databesparelse"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Slet opslag"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Opdag folk"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Svar ikke"),
+      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Udkast gemt"),
+      "literalfeedbackCannotBeSentRightNow":
+          MessageLookupByLibrary.simpleMessage(
+        "Feedback kan ikke sendes lige nu",
+      ),
+      "literalfirstyearIndex": (Object a0) => "${a0}",
+      "literalfontSize":
+          MessageLookupByLibrary.simpleMessage("Skriftstørrelse"),
+      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
+        "GIF'er er ikke sat op",
+      ),
+      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
+        "Overgiv det til en anden app",
+      ),
+      "literalhidePassword": MessageLookupByLibrary.simpleMessage(
+        "Skjul adgangskode",
+      ),
+      "literalhideThisPost": MessageLookupByLibrary.simpleMessage(
+        "Skjul dette opslag",
+      ),
+      "literalhidesItAndTellsUsToShowFewerLikeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Skjuler det og fortæller os at vise færre lignende",
+      ),
+      "literalhowToBehave": MessageLookupByLibrary.simpleMessage(
+        "Hvordan man opfører sig",
+      ),
+      "literalindex1": (Object a0) => "${a0}",
+      "literalkeepTyping": MessageLookupByLibrary.simpleMessage(
+        "Bliv ved med at skrive",
+      ),
+      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
+        "Kyron svarede ikke",
+      ),
+      "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
+      "literallabelDate": (Object a0) => "\\${a0} dato",
+      "literalleaveCommunityName": (Object a0) => "Forlad ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, ansigtslinse",
+      "literallikedPosts": MessageLookupByLibrary.simpleMessage(
+        "Opslag du synes godt om",
+      ),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Link kopieret"),
+      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
+        "Gør til moderator",
+      ),
+      "literalmuteAuthor": (Object a0) => "Dæmp ${a0}",
+      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
+        "Dæmp denne tråd",
+      ),
+      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
+        "Dæmp ord eller tags",
+      ),
+      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
+        "Dæmpede og blokerede konti",
+      ),
+      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
+        "Dæmpet. Du vil ikke blive underrettet.",
+      ),
+      "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
+          "Ingen app på denne enhed åbner ${a0}-links.",
+      "literalnoBrowserOnThisDeviceTookThatLink":
+          MessageLookupByLibrary.simpleMessage(
+        "Ingen browser på denne enhed tog det link.",
+      ),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("Ingen DID endnu"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Ingen udkast"),
+      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
+        "Ingen interesser endnu",
+      ),
+      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage(
+        "Ingen likes endnu",
+      ),
+      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
+        "Ingen beskeder endnu",
+      ),
+      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
+        "Ingen nye følgere",
+      ),
+      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage(
+        "Ingen opslag endnu",
+      ),
+      "literalnoRepliesYet": MessageLookupByLibrary.simpleMessage(
+        "Ingen svar endnu",
+      ),
+      "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
+        "Ingen delinger endnu",
+      ),
+      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
+        "Ingen emner endnu",
+      ),
+      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
+        "Ingen populære tags matcher det",
+      ),
+      "literalnobodyFound":
+          MessageLookupByLibrary.simpleMessage("Ingen fundet"),
+      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
+        "Ingen er blevet fjernet",
+      ),
+      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
+        "Ingen her endnu",
+      ),
+      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
+        "Ingen tilbage at foreslå",
+      ),
+      "literalnormalised": (Object a0) => "#${a0}",
+      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
+        "Ikke interesseret i dette",
+      ),
+      "literalnothingFound":
+          MessageLookupByLibrary.simpleMessage("Intet fundet"),
+      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
+        "Intet er populært endnu",
+      ),
+      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
+        "Intet logget endnu",
+      ),
+      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
+        "Intet matchede",
+      ),
+      "literalnothingMuted":
+          MessageLookupByLibrary.simpleMessage("Intet dæmpet"),
+      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
+        "Intet at kigge på endnu",
+      ),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Intet ulæst"),
+      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
+        "Kun ejeren kan ændre dette",
+      ),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("Åbn svar"),
+      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
+        "Åbn mailen fra Kyron",
+      ),
+      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
+        "Adgangskode & login",
+      ),
+      "literalpostInCommunityName": (Object a0) => "Opslå i ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Opslå i ${a0}",
+      "literalpostItWithYourOwnWordsAboveIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Opslå det med dine egne ord over det",
+      ),
+      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "Primært sprog",
+      ),
+      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
+        "Push-notifikationer",
+      ),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Læser…"),
+      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
+        "Optag et stemmeopslag",
+      ),
+      "literalrecordAgain": MessageLookupByLibrary.simpleMessage("Optag igen"),
+      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
+        "Fjern som moderator",
+      ),
+      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
+        "Fjern fra fællesskabet",
+      ),
+      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
+        "Fjern fra gemte",
+      ),
+      "literalremoveLabel": (Object a0) => "Fjern ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Fjern ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Fjern ${a0}?",
+      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
+        "Fjern afstemningen",
+      ),
+      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
+        "Fjern dette svar",
+      ),
+      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
+        "Fjern denne samtale",
+      ),
+      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
+        "Fjern denne afstemning",
+      ),
+      "literalreportAuthor": (Object a0) => "Indberet ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Indberet opslag"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Send koden igen"),
+      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Gemte opslag"),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("Sig noget"),
+      "literalsaySomethingToWidgetCommunityName": (Object a0) =>
+          "Sig noget til ${a0}",
+      "literalsearchFailed": MessageLookupByLibrary.simpleMessage(
+        "Søgning mislykkedes",
+      ),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send igen"),
+      "literalsendAgainInCooldownS": (Object a0) => "Send igen om ${a0}s",
+      "literalsendFeedback":
+          MessageLookupByLibrary.simpleMessage("Giv feedback"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("Send linket"),
+      "literalsentItIsReportFiledNumber": (Object a0) =>
+          "Sendt. Det er rapport #${a0}.",
+      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
+        "Vælg en adgangskode og fortsæt",
+      ),
+      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
+        "Del loggen med support",
+      ),
+      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Del dette fællesskab",
+      ),
+      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
+        "Del denne side",
+      ),
+      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
+        "Del denne profil",
+      ),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Del via…"),
+      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
+        "Del med et citat",
+      ),
+      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
+        "Vis flere opslag som dette",
+      ),
+      "literalshowPassword": MessageLookupByLibrary.simpleMessage(
+        "Vis adgangskode",
+      ),
+      "literalshowResults":
+          MessageLookupByLibrary.simpleMessage("Vis resultater"),
+      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
+        "Start et fællesskab",
+      ),
+      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
+        "Start optagelse",
+      ),
+      "literalstopLoading":
+          MessageLookupByLibrary.simpleMessage("Stop indlæsning"),
+      "literalstopSeeingThisPostAndRepliesToIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Stop med at se dette opslag og svarene på det",
+      ),
+      "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
+          "Stories-bånd, ${a0} elementer",
+      "literalswitchCamera":
+          MessageLookupByLibrary.simpleMessage("Skift kamera"),
+      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag nogen"),
+      "literaltakeAPicture":
+          MessageLookupByLibrary.simpleMessage("Tag et billede"),
+      "literaltapTheBannerOrThePictureToChangeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Tryk på banneret eller billedet for at ændre det",
+      ),
+      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
+        "Tryk på linket indeni",
+      ),
+      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
+        "Tryk for at tilføje et foto og et cover",
+      ),
+      "literalthatDidNotGoThroughTryAgain":
+          MessageLookupByLibrary.simpleMessage(
+        "Det gik ikke igennem. Prøv igen.",
+      ),
+      "literalthatGifCouldNotBeDownloaded":
+          MessageLookupByLibrary.simpleMessage(
+        "Den GIF kunne ikke downloades.",
+      ),
+      "literalthatLinkIsNotOneThisCanOpen":
+          MessageLookupByLibrary.simpleMessage(
+        "Det link er ikke et, som denne kan åbne.",
+      ),
+      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
+        "Kameraet er lukket",
+      ),
+      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Dette fællesskab",
+      ),
+      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
+        "Dette svar er væk",
+      ),
+      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
+        "Oversæt opslag",
+      ),
+      "literalturnSoundOff":
+          MessageLookupByLibrary.simpleMessage("Slå lyden fra"),
+      "literalturnSoundOn":
+          MessageLookupByLibrary.simpleMessage("Tænd for lyden"),
+      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
+        "Brug et af vores",
+      ),
+      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
+        "Bekræftelseskode sendt igen.",
+      ),
+      "literalverificationFailedDescribeapierrorE": (Object a0) =>
+          "Verificering mislykkedes: ${a0}",
+      "literalverifyEmail":
+          MessageLookupByLibrary.simpleMessage("Bekræft e-mail"),
+      "literalviewersLikesSavesAndComments":
+          MessageLookupByLibrary.simpleMessage(
+        "Seere, likes, gemte og kommentarer",
+      ),
+      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
+        "Hvad Kyron beholder",
+      ),
+      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
+        "Hvad denne app har lavet",
+      ),
+      "literalwhatYouDidWhatYouExpectedWhatHappened":
+          MessageLookupByLibrary.simpleMessage(
+        "Hvad du gjorde, hvad du forventede, hvad der skete ",
+      ),
+      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
+        "Det, du poster, er dit",
+      ),
+      "literalwhetherKyronIsReachableRightNow":
+          MessageLookupByLibrary.simpleMessage(
+              "Om Kyron er tilgængelig lige nu"),
+      "literalwhoCanReply":
+          MessageLookupByLibrary.simpleMessage("Hvem kan svare"),
+      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
+        "Hvem vil du tagge?",
+      ),
+      "literalyouAlreadyFollowEveryTrendingTag":
+          MessageLookupByLibrary.simpleMessage(
+        "Du følger allerede alle populære tags",
+      ),
+      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "Du er helt ajour",
+      ),
+      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
+        "Du er ikke medlem af nogen fællesskaber",
+      ),
+      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
+        "Du er logget ud.",
+      ),
+      "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
+        "you@example.com",
+      ),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Du har forladt ${a0}",
+      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
+        "Du har ikke postet endnu",
+      ),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Indlæs mere"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Log ryddet"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Log kopieret"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Log ind"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Log ud"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log ud?"),
+      "login": MessageLookupByLibrary.simpleMessage("Log ind"),
+      "loginFailed": MessageLookupByLibrary.simpleMessage(
+        "Login mislykkedes. Tjek dine oplysninger.",
+      ),
+      "manage": MessageLookupByLibrary.simpleMessage("Administrer"),
+      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
+      "message": MessageLookupByLibrary.simpleMessage("Besked"),
+      "messages": MessageLookupByLibrary.simpleMessage("Beskeder"),
+      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "Hver samtale er opdateret.",
+      ),
+      "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
+        "Åbn nogens profil og tryk 'Besked' for at starte en samtale.",
+      ),
+      "mute": MessageLookupByLibrary.simpleMessage("Dæmp"),
+      "mutedAndBlocked":
+          MessageLookupByLibrary.simpleMessage("Dæmpet og blokeret"),
+      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
+        "Dæmpede ord og tags",
+      ),
+      "name": MessageLookupByLibrary.simpleMessage("Navn"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Skærm"),
+      "newEmailAddress":
+          MessageLookupByLibrary.simpleMessage("Ny e-mailadresse"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Ny adgangskode"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Nyt opslag"),
+      "normalised": (Object a0) => "#\\${a0}",
+      "notNow": MessageLookupByLibrary.simpleMessage("Ikke nu"),
+      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
+        "Ikke sendt. Tryk for at prøve igen",
+      ),
+      "nothingMatchesQuery": (Object a0) => "Intet på Kyron matcher \"${a0}\"",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Intet at kopiere"),
+      "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Likes, svar og nye følgere lander her, efterhånden som de kommer.",
+      ),
+      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
+        "Folk der følger dig vises her.",
+      ),
+      "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
+        "Når nogen synes om et af dine opslag, vises det her.",
+      ),
+      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
+        "Svar på dine opslag lander her.",
+      ),
+      "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
+        "Når nogen deler dit opslag, vises det her.",
+      ),
+      "notifications": MessageLookupByLibrary.simpleMessage("Notifikationer"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage("Åbn i browser"),
+      "or": MessageLookupByLibrary.simpleMessage("eller"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage(
+        "Siden blev ikke fundet",
+      ),
+      "password": MessageLookupByLibrary.simpleMessage("Adgangskode"),
+      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+        "Adgangskode for kort",
+      ),
+      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Du følger allerede alle, som Kyron ville sætte her.",
+      ),
+      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
+        "Vælg dine interesser",
+      ),
+      "post": MessageLookupByLibrary.simpleMessage("Opslag"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage("Opslagsanalyse"),
+      "postInCommunity": (Object a0) => "Opslå i ${a0}",
+      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
+        "Opslå det, sig det, vis det.",
+      ),
+      "postTextCopied": MessageLookupByLibrary.simpleMessage(
+        "Opslagstekst kopieret",
+      ),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Privatlivspolitik"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profil opdateret"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_display_name":
+          MessageLookupByLibrary.simpleMessage("Visningsnavn"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Beliggenhed"),
+      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
+        "Tryk for at ændre",
+      ),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Hjemmeside"),
+      "pushNotifications": MessageLookupByLibrary.simpleMessage(
+        "Push-notifikationer",
+      ),
+      "quote": MessageLookupByLibrary.simpleMessage("Citer"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Citer opslag"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("Kontakt en person"),
+      "remove": MessageLookupByLibrary.simpleMessage("Fjern"),
+      "removeConversation": MessageLookupByLibrary.simpleMessage(
+        "Fjern denne samtale?",
+      ),
+      "removeMember": (Object a0) => "Fjern ${a0}?",
+      "removeMessage":
+          MessageLookupByLibrary.simpleMessage("Fjern denne besked?"),
+      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
+        "Svar, følgere og omtaler",
+      ),
+      "repliesPolicy": (Object a0) => "Svar: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Svar"),
+      "reply_anyone":
+          MessageLookupByLibrary.simpleMessage("Alle kan interagere"),
+      "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
+        "Alle kan stadig se, dele og citere dette opslag.",
+      ),
+      "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
+        "Alle på Kyron kan svare på dette opslag.",
+      ),
+      "reply_followers": MessageLookupByLibrary.simpleMessage(
+        "Folk, der følger dig",
+      ),
+      "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
+        "Kun folk, der følger dig, kan svare på dette opslag.",
+      ),
+      "reply_mentioned":
+          MessageLookupByLibrary.simpleMessage("Personer du nævner"),
+      "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
+        "Kun de personer, du nævner med @ i dette opslag, kan svare.",
+      ),
+      "reply_nobody": MessageLookupByLibrary.simpleMessage("Ingen kan svare"),
+      "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
+        "Svar er slået fra. Du kan stadig svare.",
+      ),
+      "reply_who_can_reply": MessageLookupByLibrary.simpleMessage(
+        "Hvem kan svare?",
+      ),
+      "report": MessageLookupByLibrary.simpleMessage("Indberet"),
+      "reportCopied": MessageLookupByLibrary.simpleMessage(
+        "Rapport kopieret. Indsæt den i en e-mail til support.",
+      ),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Rapport sendt"),
+      "repost": MessageLookupByLibrary.simpleMessage("Del igen"),
+      "reset": MessageLookupByLibrary.simpleMessage("Nulstil"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage(
+        "Nulstil din adgangskode",
+      ),
+      "retry": MessageLookupByLibrary.simpleMessage("Prøv igen"),
+      "save": MessageLookupByLibrary.simpleMessage("Gem"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Gem udkast"),
+      "saySomething": (Object a0) => "Sig noget til ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Søg"),
+      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
+        "Søg efter navn eller handle",
+      ),
+      "searchCommunities": MessageLookupByLibrary.simpleMessage(
+        "Søg i fællesskaber",
+      ),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Søg GIF'er"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Søg sprog"),
+      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "Søg populære tags",
+      ),
+      "securityAlerts": MessageLookupByLibrary.simpleMessage(
+        "Sikkerhedsadvarsler og kontoforandringer",
+      ),
+      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
+        "Vælg hvilket sprog der skal bruges til appens brugergrænseflade.",
+      ),
+      "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
+        "Vælg hvilke sprog du ønsker, at dine abonnerede feeds skal indeholde. Hvis ingen vælges, vises alle sprog.",
+      ),
+      "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "Vælg dit foretrukne sprog til oversættelser i dit feed.",
+      ),
+      "send": MessageLookupByLibrary.simpleMessage("Send"),
+      "sendConfirmation":
+          MessageLookupByLibrary.simpleMessage("Send bekræftelse"),
+      "sendErrorReport":
+          MessageLookupByLibrary.simpleMessage("Send fejlrapport"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Giv feedback"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Send rapport"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send til support"),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("Tjenestens status"),
+      "settings": MessageLookupByLibrary.simpleMessage("Indstillinger"),
+      "shareAppLog": MessageLookupByLibrary.simpleMessage(
+        "Del app-loggen med support",
+      ),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("Log ind på Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Logget ind som"),
+      "signupFailed": (Object a0) => "Tilmelding mislykkedes: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Bliv"),
+      "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
+        "Kyron er tidligt i udviklingen, og den hurtigste måde at komme i kontakt med nogen, der faktisk kan løse et problem, er at oprette en issue. Angiv, hvad du lavede, og hvad der skete i stedet.",
+      ),
+      "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
+        "Der er endnu ingen supportindbakke i appen, så denne skærm peger på det sted, der faktisk overvåges, i stedet for en formular, der fører ingen vegne.",
+      ),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Systemlog"),
+      "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
+        "Fortæl os, hvad der mangler eller er ødelagt",
+      ),
+      "terms": MessageLookupByLibrary.simpleMessage("Vilkår"),
+      "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
+        "Tekst, tale og video, menneskene der laver dem, og de rum, hvor de taler.",
+      ),
+      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
+        "Skrivefeltet har ingen 'Post'-knap",
+      ),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Mørkt"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Altid mørkt"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Dæmpet"),
+      "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+        "Et blødere mørkt tema, blågrå i stedet for sort",
+      ),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Lyst"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("Altid lyst"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+      "theme_system_detail": MessageLookupByLibrary.simpleMessage(
+        "Følg telefonens eget lys- eller mørkeindstilling",
+      ),
+      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Emner oprettes af Kyron, og der er ingen lige nu. Kig forbi igen snart.",
+      ),
+      "translate": MessageLookupByLibrary.simpleMessage("Oversæt"),
+      "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
+        "Oversættelse er ikke opbygget endnu. Intet i dit feed er oversat i dag; dette huskes til, når det er.",
+      ),
+      "translation_description": MessageLookupByLibrary.simpleMessage(
+        "Kyrons egne ord bliver stadig oversat, så de fleste skærme forbliver på engelsk lige nu. Hvad dette ændrer i dag: de dele af grænsefladen, som Flutter selv tegner, datoer og tal, og layoutretningen i appen for højre-til-venstre-sprog.",
+      ),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Prøv igen"),
+      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
+        "Privatlivspolitik",
+      ),
+      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
+        "Brugsbetingelser",
+      ),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Konto"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Efter"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & enhed"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Udseende"),
+      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
+        "Lys, mørk eller hvad end telefonen er sat til",
+      ),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Før"),
+      "ui_block_detail": MessageLookupByLibrary.simpleMessage(
+        "Ingen af jer vil se den anden på Kyron, og ethvert follow mellem jer fjernes. De får ikke besked.",
+      ),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Bærer"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Fællesskaber"),
+      "ui_communities_screen_what_is_it_for_optional_39b687":
+          MessageLookupByLibrary.simpleMessage("Hvad er det til? (valgfrit)"),
+      "ui_content_display": MessageLookupByLibrary.simpleMessage(
+        "Indhold & visning",
+      ),
+      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse dit feed",
+      ),
+      "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse dine likede opslag",
+      ),
+      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse din profil",
+      ),
+      "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
+        "Kunne ikke indlæse dine gemte opslag",
+      ),
+      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
+        "Decentraliseret ID",
+      ),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostik"),
+      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Intet her endnu"),
+      "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
+        "Følg nogle få konti, så vises deres opslag her.",
+      ),
+      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
+        "Intet fra de personer, du følger",
+      ),
+      "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
+        "Opslag vises her, efterhånden som folk skriver dem.",
+      ),
+      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
+        "Opslag med et klip vises her.",
+      ),
+      "ui_feed_videos_empty": MessageLookupByLibrary.simpleMessage(
+        "Ingen videoer endnu",
+      ),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
+      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
+        "Find folk på Kyron",
+      ),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Fra en konto"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Hjælp"),
+      "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
+        "Noteret. Dette hjælper med at forme, hvad du bliver vist.",
+      ),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Deltag"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Deltog"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Sprog"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Juridisk"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Synes godt om"),
+      "ui_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "Opslag du synes godt om",
+      ),
+      "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "Opslag, du synes godt om, vises her, nyeste først.",
+      ),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link kopieret"),
+      "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
+        "Du vil stoppe med at se deres opslag. De får ikke besked.",
+      ),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Ingen likes endnu"),
+      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
+        "Ingen opslag matcher disse filtre.",
+      ),
+      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
+        "Intet gemt endnu",
+      ),
+      "ui_onboard_step3_screen_finish_5c0ad8":
+          MessageLookupByLibrary.simpleMessage(
+        "Afslut",
+      ),
+      "ui_onboard_step3_screen_skip_7b13d8":
+          MessageLookupByLibrary.simpleMessage(
+        "Spring over",
+      ),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Afspil"),
+      "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
+        "Det fjernes fra din profil og fra alle andres feed. Svar på det fjernes også.",
+      ),
+      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Opslag slettet"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Opslag skjult"),
+      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
+        "Opslagstekst kopieret",
+      ),
+      "ui_posted_between":
+          MessageLookupByLibrary.simpleMessage("Opslået mellem"),
+      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
+        "Skjult. Vi viser dig færre lignende.",
+      ),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Præferencer"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privatliv"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Gemte opslag"),
+      "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "Tryk på arkivikonet på et opslag for at gemme det her. Kun du kan se, hvad du gemmer.",
+      ),
+      "ui_search_by_handle_or_display_name":
+          MessageLookupByLibrary.simpleMessage(
+        "Søg efter handle eller visningsnavn.",
+      ),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Ryd"),
+      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
+        "Søg alt, der er postet",
+      ),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filtre"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("Søg personer"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Søg opslag"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Indstillinger"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("App & enhed"),
+      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
+        "Indhold & visning",
+      ),
+      "ui_settings_data_saver": MessageLookupByLibrary.simpleMessage(
+        "Databesparelse",
+      ),
+      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
+        "Fortæl os, hvad du synes",
+      ),
+      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
+        "Gennemse hjælpeartikler",
+      ),
+      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
+        "Vælg dit sprog",
+      ),
+      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
+        "Hvem du har dæmpet eller blokeret",
+      ),
+      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
+        "Notifikationsindstillinger",
+      ),
+      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
+        "Din profil og kontaktoplysninger",
+      ),
+      "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
+          MessageLookupByLibrary.simpleMessage(
+        "Du bliver nødt til at logge ind igen for at få adgang til din konto.",
+      ),
+      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
+        "Sikkerhedsindstillinger",
+      ),
+      "ui_settings_subscreens_confirm_password_41d040":
+          MessageLookupByLibrary.simpleMessage("Bekræft adgangskode"),
+      "ui_settings_subscreens_in_one_line_06bdaf":
+          MessageLookupByLibrary.simpleMessage("På én linje"),
+      "ui_settings_subscreens_new_email_address_dab96e":
+          MessageLookupByLibrary.simpleMessage("Ny e-mailadresse"),
+      "ui_settings_subscreens_new_password_88c1bf":
+          MessageLookupByLibrary.simpleMessage("Ny adgangskode"),
+      "ui_settings_subscreens_what_happened_977dd8":
+          MessageLookupByLibrary.simpleMessage("Hvad skete der"),
+      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
+        "Få hjælp fra vores team",
+      ),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Del"),
+      "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
+        "Del dette opslag",
+      ),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Vilkår"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("dette opslag"),
+      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Tråd dæmpet"),
+      "ui_turn_sound_off":
+          MessageLookupByLibrary.simpleMessage("Slå lyden fra"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("Tænd for lyden"),
+      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
+        "To tegn eller flere.",
+      ),
+      "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
+        "Ord, eller et filter — en konto, et datointerval eller hvad et opslag bærer.",
+      ),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("Fortryd deling"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Opdater adgangskode"),
+      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
+        "Brug en anden adresse",
+      ),
+      "username": MessageLookupByLibrary.simpleMessage("Brugernavn"),
+      "usernameRule": MessageLookupByLibrary.simpleMessage(
+        "Brugernavn skal være små bogstaver (a-z, 0-9, _)",
+      ),
+      "video": MessageLookupByLibrary.simpleMessage("Video"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Vedhæft"),
+      "voice_ready_attach": MessageLookupByLibrary.simpleMessage(
+        "Klar til at vedhæfte",
+      ),
+      "voice_record_post": MessageLookupByLibrary.simpleMessage(
+        "Optag et stemmeopslag",
+      ),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Optager…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Hvad skete der"),
+      "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
+        "Hvad skete der, og hvad skal vi kigge på?",
+      ),
+      "whatInPicture": MessageLookupByLibrary.simpleMessage(
+        "Hvad er på dette billede?",
+      ),
+      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
+        "Hvad er det til? (valgfrit)",
+      ),
+      "whatYouDid": MessageLookupByLibrary.simpleMessage(
+        "Hvad du gjorde, hvad du forventede, hvad der skete",
+      ),
+      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
+        "Hvad du lavede, da det skete.",
+      ),
+    };
+
+final messageLookup = MessageLookup();

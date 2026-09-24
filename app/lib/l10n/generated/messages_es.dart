@@ -2,6 +2,7 @@ import 'package:intl/message_lookup_by_library.dart';
 
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'es';
+
   Map<String, dynamic> get messages => _notInlinedMessages(_notInlinedMessages);
 }
 
@@ -12,7 +13,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
         "Aceptar y continuar",
       ),
-      "answerNumber": (Object a0) => "Respuesta $a0",
+      "answerNumber": (Object a0) => "Respuesta ${a0}",
       "arLens": MessageLookupByLibrary.simpleMessage("Lente de RA"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "Adjuntar el registro del sistema",
@@ -21,7 +22,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Una palabra, frase o #etiqueta",
       ),
       "block": MessageLookupByLibrary.simpleMessage("Bloquear"),
-      "blockAuthor": (Object a0) => "¿Bloquear a $a0?",
+      "blockAuthor": (Object a0) => "¿Bloquear a ${a0}?",
       "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
         "Detalles de la compilación copiados",
       ),
@@ -35,7 +36,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Revisa tu correo para confirmar tu cuenta.",
       ),
-      "closeCommunity": (Object a0) => "¿Cerrar $a0?",
+      "closeCommunity": (Object a0) => "¿Cerrar ${a0}?",
       "closeIt": MessageLookupByLibrary.simpleMessage("Cerrar"),
       "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
         "Cerrar esta comunidad",
@@ -54,8 +55,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Copiar informe en su lugar",
       ),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "No se pudo abrir el inicio de sesión con Google. $a0",
-      "couldNotSignOut": (Object a0) => "No se pudo cerrar la sesión: $a0",
+          "No se pudo abrir el inicio de sesión con Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "No se pudo cerrar la sesión: ${a0}",
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "No se pudo tomar esa foto.",
       ),
@@ -110,7 +111,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Diseño Lagos"),
       "leave": MessageLookupByLibrary.simpleMessage("Salir"),
-      "leaveCommunity": (Object a0) => "¿Salir de $a0?",
+      "leaveCommunity": (Object a0) => "¿Salir de ${a0}?",
       "letBackIn": MessageLookupByLibrary.simpleMessage("Permitir volver"),
       "loadMore": MessageLookupByLibrary.simpleMessage("Cargar más"),
       "logCleared": MessageLookupByLibrary.simpleMessage("Registro borrado"),
@@ -151,7 +152,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "postAnalytics": MessageLookupByLibrary.simpleMessage(
         "Estadísticas de la publicación",
       ),
-      "postInCommunity": (Object a0) => "Publicar en $a0",
+      "postInCommunity": (Object a0) => "Publicar en ${a0}",
       "postTextCopied": MessageLookupByLibrary.simpleMessage(
         "Texto de la publicación copiado",
       ),
@@ -166,7 +167,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Contactar a una persona",
       ),
       "remove": MessageLookupByLibrary.simpleMessage("Eliminar"),
-      "removeMember": (Object a0) => "¿Eliminar a $a0?",
+      "removeMember": (Object a0) => "¿Eliminar a ${a0}?",
       "removeConversation": MessageLookupByLibrary.simpleMessage(
         "¿Eliminar esta conversación?",
       ),
@@ -190,7 +191,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "retry": MessageLookupByLibrary.simpleMessage("Reintentar"),
       "save": MessageLookupByLibrary.simpleMessage("Guardar"),
       "saveDraft": MessageLookupByLibrary.simpleMessage("Guardar borrador"),
-      "saySomething": (Object a0) => "Di algo a $a0",
+      "saySomething": (Object a0) => "Di algo a ${a0}",
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
         "Buscar por nombre o usuario",
       ),
@@ -226,7 +227,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "signInToKyron": MessageLookupByLibrary.simpleMessage(
         "Iniciar sesión en Kyron",
       ),
-      "signupFailed": (Object a0) => "Error al registrarse: $a0",
+      "signupFailed": (Object a0) => "Error al registrarse: ${a0}",
       "stay": MessageLookupByLibrary.simpleMessage("Permanecer"),
       "systemLog": MessageLookupByLibrary.simpleMessage("Registro del sistema"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
@@ -261,7 +262,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "Lo que estabas haciendo cuando pasó.",
       ),
-      "normalised": MessageLookupByLibrary.simpleMessage(r"#\$normalised"),
+      "normalised": (Object a0) => "#\\${a0}",
       "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
         "Publícalo, dilo, muéstralo.",
       ),
@@ -277,7 +278,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "El inicio de sesión con Google necesita la aplicación móvil",
       ),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google devuelve el inicio de sesión completado a Kyron mediante un enlace que solo Android e iOS pueden abrir. Por eso, en $a0, el navegador no tendría adónde volver.\\n\\nSi ya tienes una cuenta de Kyron mediante Google, usa Continuar con correo con esa misma dirección y toca ¿Olvidaste tu contraseña?; te enviaremos un enlace para establecer una.",
+          "Google devuelve el inicio de sesión completado a Kyron mediante un enlace que solo Android e iOS pueden abrir. Por eso, en ${a0}, el navegador no tendría adónde volver.\\n\\nSi ya tienes una cuenta de Kyron mediante Google, usa Continuar con correo con esa misma dirección y toca ¿Olvidaste tu contraseña?; te enviaremos un enlace para establecer una.",
       "loginFailed": MessageLookupByLibrary.simpleMessage(
         "No se pudo iniciar sesión. Comprueba tus credenciales.",
       ),
@@ -343,7 +344,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literaltakeAPicture":
           MessageLookupByLibrary.simpleMessage("Tomar una foto"),
-      "literallensNameFaceLens": (Object a0) => "$a0, lente facial",
+      "literallensNameFaceLens": (Object a0) => "${a0}, lente facial",
       "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
         "No se pudo publicar esa respuesta.",
       ),
@@ -370,13 +371,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
         "No se pudieron cargar las comunidades",
       ),
-      "literalpostInWidgetCommunityName": (Object a0) => "Publicar en $a0",
+      "literalpostInWidgetCommunityName": (Object a0) => "Publicar en ${a0}",
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Escribe algo para $a0",
+          "Escribe algo para ${a0}",
       "literaltagSomeone": MessageLookupByLibrary.simpleMessage(
         "Etiquetar a alguien",
       ),
-      "literalcloseWidgetCommunityName": (Object a0) => "¿Cerrar $a0?",
+      "literalcloseWidgetCommunityName": (Object a0) => "¿Cerrar ${a0}?",
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
         "Solo el propietario puede cambiar esto",
       ),
@@ -384,7 +385,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Toca el banner o la imagen para cambiarla",
       ),
-      "literalremoveMemberDisplayname": (Object a0) => "¿Eliminar a $a0?",
+      "literalremoveMemberDisplayname": (Object a0) => "¿Eliminar a ${a0}?",
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "No se pudieron cargar los miembros",
       ),
@@ -406,7 +407,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
         "Nadie ha sido eliminado",
       ),
-      "literalpostInCommunityName": (Object a0) => "Publicar en $a0",
+      "literalpostInCommunityName": (Object a0) => "Publicar en ${a0}",
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
         "No se pudo abrir esta comunidad",
       ),
@@ -419,8 +420,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copiar enlace"),
       "literallinkCopied":
           MessageLookupByLibrary.simpleMessage("Enlace copiado"),
-      "literalleaveCommunityName": (Object a0) => "¿Salir de $a0?",
-      "literalyouHaveLeftCommunityName": (Object a0) => "Has salido de $a0",
+      "literalleaveCommunityName": (Object a0) => "¿Salir de ${a0}?",
+      "literalyouHaveLeftCommunityName": (Object a0) => "Has salido de ${a0}",
       "literaladdAVideo":
           MessageLookupByLibrary.simpleMessage("Agregar un video"),
       "literaladdAGif": MessageLookupByLibrary.simpleMessage("Agregar un GIF"),
@@ -475,7 +476,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalsendAgainInCooldownS": (Object a0) => "Reenviar en ${a0}s",
       "literalsendAgain": MessageLookupByLibrary.simpleMessage("Reenviar"),
-      "literalnormalised": (Object a0) => "#$a0",
+      "literalnormalised": (Object a0) => "#${a0}",
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
         "No se pudieron cargar tus mensajes",
       ),
@@ -553,7 +554,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "No hay coincidencias",
       ),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "No se pudo cerrar sesión: $a0",
+          "No se pudo cerrar sesión: ${a0}",
       "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Aún no hay DID"),
       "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
         "Contraseña y acceso",
@@ -583,9 +584,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
         "Idiomas del contenido",
       ),
-      "literalremoveLanguageEnglishname": (Object a0) => "Eliminar $a0",
+      "literalremoveLanguageEnglishname": (Object a0) => "Eliminar ${a0}",
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Enviado. Es el informe #$a0.",
+          "Enviado. Es el informe #${a0}.",
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
         "No se puede enviar comentarios ahora mismo",
@@ -595,7 +596,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Qué hiciste, qué esperabas, qué pasó ",
       ),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verificación fallida: $a0",
+          "Verificación fallida: ${a0}",
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
         "Código de verificación reenviado.",
       ),
@@ -641,9 +642,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalopenReply":
           MessageLookupByLibrary.simpleMessage("Abrir respuesta"),
-      "literallabelCount": (Object a0, Object a1) => "$a0, $a1",
-      "literalindex1": (Object a0) => "$a0",
-      "literalfirstyearIndex": (Object a0) => "$a0",
+      "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
+      "literalindex1": (Object a0) => "${a0}",
+      "literalfirstyearIndex": (Object a0) => "${a0}",
       "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
         "Los GIF no están configurados",
       ),
@@ -670,8 +671,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Ya sigues todas las etiquetas de tendencia",
       ),
-      "literalremoveLabel": (Object a0) => "Eliminar $a0",
-      "literaladdLabelAsATab": (Object a0) => "Agregar $a0 como pestaña",
+      "literalremoveLabel": (Object a0) => "Eliminar ${a0}",
+      "literaladdLabelAsATab": (Object a0) => "Agregar ${a0} como pestaña",
       "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
         "No se pudo buscar",
       ),
@@ -729,22 +730,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literaldeletePost": MessageLookupByLibrary.simpleMessage(
         "Eliminar publicación",
       ),
-      "literalmuteAuthor": (Object a0) => "Silenciar a $a0",
-      "literalblockAuthor": (Object a0) => "Bloquear a $a0",
+      "literalmuteAuthor": (Object a0) => "Silenciar a ${a0}",
+      "literalblockAuthor": (Object a0) => "Bloquear a ${a0}",
       "literalreportPost": MessageLookupByLibrary.simpleMessage(
         "Denunciar publicación",
       ),
-      "literalreportAuthor": (Object a0) => "Denunciar a $a0",
+      "literalreportAuthor": (Object a0) => "Denunciar a ${a0}",
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
         "No se pudo enviar. Inténtalo de nuevo.",
       ),
-      "literalblockAuthor2": (Object a0) => "¿Bloquear a $a0?",
+      "literalblockAuthor2": (Object a0) => "¿Bloquear a ${a0}?",
       "literalshowResults": MessageLookupByLibrary.simpleMessage(
         "Mostrar resultados",
       ),
-      "literallabelDate":
-          MessageLookupByLibrary.simpleMessage(r"\$label fecha"),
+      "literallabelDate": (Object a0) => "\\${a0} fecha",
       "literalshareVia": MessageLookupByLibrary.simpleMessage("Compartir vía…"),
       "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
         "Abrir con otra app",
@@ -763,7 +763,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Publicaciones que te gustaron",
       ),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Historias, $a0 elementos",
+          "Historias, ${a0} elementos",
       "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
         "Lo que publicas es tuyo",
       ),
@@ -773,17 +773,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalhowToBehave": MessageLookupByLibrary.simpleMessage(
         "Cómo comportarse",
       ),
-      "literalcloseTabLabel": (Object a0) => "Cerrar $a0",
+      "literalcloseTabLabel": (Object a0) => "Cerrar ${a0}",
       "literal1PageOpen":
           MessageLookupByLibrary.simpleMessage("1 página abierta"),
-      "literalcountPagesOpen": (Object a0) => "$a0 páginas abiertas",
+      "literalcountPagesOpen": (Object a0) => "${a0} páginas abiertas",
       "literalstopLoading":
           MessageLookupByLibrary.simpleMessage("Detener carga"),
       "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
         "Compartir esta página",
       ),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "Ninguna aplicación en este dispositivo abre enlaces $a0.",
+          "Ninguna aplicación en este dispositivo abre enlaces ${a0}.",
       "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
         "Cerrar el navegador",
       ),
@@ -1146,11 +1146,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Buscar publicaciones",
       ),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("esta publicación"),
-      "authorPostsHidden": (Object a0) => "No verás publicaciones de $a0",
-      "authorBlocked": (Object a0) => "$a0 bloqueado",
+      "authorPostsHidden": (Object a0) => "No verás publicaciones de ${a0}",
+      "authorBlocked": (Object a0) => "${a0} bloqueado",
       "nothingMatchesQuery": (Object a0) =>
-          "Nada en Kyron coincide con \"$a0\"",
-      "repliesPolicy": (Object a0) => "Respuestas: $a0",
+          "Nada en Kyron coincide con \"${a0}\"",
+      "repliesPolicy": (Object a0) => "Respuestas: ${a0}",
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferencias"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Claro, oscuro, o lo que tenga configurado el teléfono",
@@ -1181,7 +1181,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
         "No se pudieron cargar tus publicaciones marcadas con 'me gusta'",
       ),
-      "feedTagDetail": (Object a0) => "Aún no se ha publicado nada bajo #$a0.",
+      "feedTagDetail": (Object a0) =>
+          "Aún no se ha publicado nada bajo #${a0}.",
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
         "Nada de las personas que sigues",
       ),
@@ -1330,354 +1331,44 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_after": MessageLookupByLibrary.simpleMessage("Después"),
       "ui_before": MessageLookupByLibrary.simpleMessage("Antes"),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Con"),
-      'ui_communities_screen_what_is_it_for_optional_39b687':
-          MessageLookupByLibrary.simpleMessage("¿Para qué sirve? (opcional)"),
-      'ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001':
-          MessageLookupByLibrary.simpleMessage(
-        "Deberás iniciar sesión de nuevo para volver a tu cuenta.",
-      ),
-      'ui_settings_subscreens_new_email_address_dab96e':
-          MessageLookupByLibrary.simpleMessage(
-        "Nueva dirección de correo electrónico",
-      ),
-      'ui_settings_subscreens_new_password_88c1bf':
-          MessageLookupByLibrary.simpleMessage("Nueva contraseña"),
-      'ui_settings_subscreens_confirm_password_41d040':
-          MessageLookupByLibrary.simpleMessage("Confirmar contraseña"),
-      'ui_settings_subscreens_in_one_line_06bdaf':
-          MessageLookupByLibrary.simpleMessage("En una línea"),
-      'ui_settings_subscreens_what_happened_977dd8':
-          MessageLookupByLibrary.simpleMessage("Qué pasó"),
-      'ui_onboard_step3_screen_skip_7b13d8':
-          MessageLookupByLibrary.simpleMessage(
-        "Omitir",
-      ),
-      'ui_onboard_step3_screen_finish_5c0ad8':
-          MessageLookupByLibrary.simpleMessage(
-        "Finalizar",
-      ),
-      'audit_about_screen_12_mb_e39721d6': MessageLookupByLibrary.simpleMessage(
-        "12 MB",
-      ),
-      'audit_about_subscreens_round_trip_64776b4c':
-          MessageLookupByLibrary.simpleMessage("Ida y vuelta"),
-      'audit_about_subscreens_token_verification_7934e1f2':
-          MessageLookupByLibrary.simpleMessage("VERIFICACIÓN DE TOKEN"),
-      'audit_about_subscreens_support_kyron_so_a3a84d0f':
-          MessageLookupByLibrary.simpleMessage("support@kyron.so"),
-      'audit_ar_lens_screen_try_again_cdec8872':
-          MessageLookupByLibrary.simpleMessage("Intentar de nuevo"),
-      'audit_browser_engine_window_stop_39c04883':
-          MessageLookupByLibrary.simpleMessage("window.stop();"),
-      'audit_browser_sheet_try_again_44bc94ba':
-          MessageLookupByLibrary.simpleMessage("Intentar de nuevo"),
-      'audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b':
-          MessageLookupByLibrary.simpleMessage(
-        "Comenzar una transmisión ahora te pondría en una sala que nadie podría",
-      ),
-      'audit_communities_screen_start_a_community_06c8ec4f':
-          MessageLookupByLibrary.simpleMessage("Crear una comunidad"),
-      'audit_communities_screen_what_is_it_for_optional_e7e82092':
-          MessageLookupByLibrary.simpleMessage("¿Para qué sirve? (opcional)"),
-      'audit_community_manage_screen_closing_it_f490fb09':
-          MessageLookupByLibrary.simpleMessage("Cerrándola"),
-      'audit_community_manage_screen_back_in_e495a750':
-          MessageLookupByLibrary.simpleMessage("de vuelta."),
-      'audit_community_manage_screen_back_in_from_this_list_9496a4fd':
-          MessageLookupByLibrary.simpleMessage("de vuelta desde esta lista."),
-      'audit_community_screen_join_first_7798cafc':
-          MessageLookupByLibrary.simpleMessage("únete primero"),
-      'audit_composer_screen_coming_soon_431fd23d':
-          MessageLookupByLibrary.simpleMessage("Próximamente"),
-      'audit_composer_screen_posting_as_you_45d69932':
-          MessageLookupByLibrary.simpleMessage("Publicando como tú"),
-      'audit_drafts_screen_just_now_17a8d48a':
-          MessageLookupByLibrary.simpleMessage(
-        "Ahora mismo",
-      ),
-      'audit_explore_screen_topic_1_83830b41':
-          MessageLookupByLibrary.simpleMessage(
-        "Tema 1",
-      ),
-      'audit_forgot_password_screen_its_way_to_it_now_271a6cea':
-          MessageLookupByLibrary.simpleMessage("ya está en camino."),
-      'audit_forgot_password_screen_has_anything_65044193':
-          MessageLookupByLibrary.simpleMessage("tenga algo."),
-      'audit_post_analytics_screen_viewers_per_day_5d881f10':
-          MessageLookupByLibrary.simpleMessage("ESPECTADORES POR DÍA"),
-      'audit_post_detail_screen_sublist_1_join_b0a5d508':
-          MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
-      'audit_report_screen_this_post_820d9740':
-          MessageLookupByLibrary.simpleMessage("esta publicación"),
-      'audit_report_screen_anything_to_add_optional_f0051fa4':
-          MessageLookupByLibrary.simpleMessage("¿Algo que añadir? (opcional)"),
-      'audit_settings_screen_log_out_0b39bfb2':
-          MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
-      'audit_settings_screen_your_account_bcdf27af':
-          MessageLookupByLibrary.simpleMessage("Tu cuenta"),
-      'audit_settings_screen_did_plc_abc_825b4f49':
-          MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
-      'audit_settings_subscreens_confirm_password_f0e1f449':
-          MessageLookupByLibrary.simpleMessage("Confirmar contraseña"),
-      'audit_settings_subscreens_not_now_e1657fa9':
-          MessageLookupByLibrary.simpleMessage("Ahora no"),
-      'audit_create_fab_post_in_this_community_0a42daf2':
-          MessageLookupByLibrary.simpleMessage("publicar en esta comunidad"),
-      'audit_url_preview_its_own_8b362f95':
-          MessageLookupByLibrary.simpleMessage(
-        "propio.",
-      ),
-      'audit_empty_state_try_again_80ef48cd':
-          MessageLookupByLibrary.simpleMessage(
-        "Intentar de nuevo",
-      ),
-      'audit_feed_canvas_for_you_aa3c510d':
-          MessageLookupByLibrary.simpleMessage(
-        "Para ti",
-      ),
-      'audit_google_button_not_bbd76526': MessageLookupByLibrary.simpleMessage(
-        ", no",
-      ),
-      'audit_inline_video_am_i_moving_4618f78c':
-          MessageLookupByLibrary.simpleMessage("¿Me estoy moviendo?"),
-      'audit_inline_video_turn_sound_on_83671c54':
-          MessageLookupByLibrary.simpleMessage("Activar sonido"),
-      'audit_inline_video_turn_sound_off_97714bbc':
-          MessageLookupByLibrary.simpleMessage("Desactivar sonido"),
-      'audit_interest_tabs_for_you_7ef9e823':
-          MessageLookupByLibrary.simpleMessage(
-        "Para ti",
-      ),
-      'audit_interest_tabs_your_tabs_c3ba148f':
-          MessageLookupByLibrary.simpleMessage("Tus pestañas"),
-      'audit_media_tray_alt_784030d4': MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
-      'audit_mention_picker_sheet_try_again_fd5d5dd7':
-          MessageLookupByLibrary.simpleMessage("Intentar de nuevo"),
-      'audit_password_requirements_symbol_322aed1e':
-          MessageLookupByLibrary.simpleMessage("Símbolo (!@#…)"),
-      'audit_post_list_view_could_not_load_4dd86c79':
-          MessageLookupByLibrary.simpleMessage("no se pudo cargar"),
-      'audit_post_options_sheet_this_post_99bfa981':
-          MessageLookupByLibrary.simpleMessage("esta publicación"),
-      'audit_post_text_a_b_780da9a1':
-          MessageLookupByLibrary.simpleMessage("a#b"),
-      'audit_search_filter_sheet_from_an_account_f6a22687':
-          MessageLookupByLibrary.simpleMessage("De una cuenta"),
-      'audit_skeleton_loading_18e82bcc': MessageLookupByLibrary.simpleMessage(
-        "Cargando…",
-      ),
-      'audit_sliding_drawer_content_kyron_v1_0_0_d696e73a':
-          MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      'audit_story_pill_posting_bb613f87': MessageLookupByLibrary.simpleMessage(
-        "Publicando…",
-      ),
-      'audit_story_viewer_your_story_b706ecb4':
-          MessageLookupByLibrary.simpleMessage("Tu historia"),
-      'audit_story_viewer_copy_story_link_2bd1546c':
-          MessageLookupByLibrary.simpleMessage("Copiar enlace de la historia"),
-      'audit_story_viewer_3h_ago_174dc80d':
-          MessageLookupByLibrary.simpleMessage(
-        "hace 3 h",
-      ),
-      'audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef':
-          MessageLookupByLibrary.simpleMessage(
-        "Tu cuenta, tus publicaciones y lo que pulsas, así que",
-      ),
-      'audit_topic_picker_add_a_topic_25baaf8a':
-          MessageLookupByLibrary.simpleMessage("Añadir un tema"),
-      'ui_communities': MessageLookupByLibrary.simpleMessage("Comunidades"),
-      'ui_settings': MessageLookupByLibrary.simpleMessage("Configuración"),
-      'ui_appearance': MessageLookupByLibrary.simpleMessage("Apariencia"),
-      'ui_language': MessageLookupByLibrary.simpleMessage("Idioma"),
-      'ui_account': MessageLookupByLibrary.simpleMessage("Cuenta"),
-      'ui_content_display': MessageLookupByLibrary.simpleMessage(
-        "Contenido y visualización",
-      ),
-      'ui_app_device': MessageLookupByLibrary.simpleMessage(
-        "Aplicación y dispositivo",
-      ),
-      'ui_terms': MessageLookupByLibrary.simpleMessage("Términos"),
-      'ui_privacy': MessageLookupByLibrary.simpleMessage("Privacidad"),
-      'ui_help': MessageLookupByLibrary.simpleMessage("Ayuda"),
-      'ui_feedback': MessageLookupByLibrary.simpleMessage("Comentarios"),
-      'ui_decentralized_id': MessageLookupByLibrary.simpleMessage(
-        "ID descentralizado",
-      ),
-      'ui_find_people_on_kyron': MessageLookupByLibrary.simpleMessage(
-        "Encuentra personas en Kyron",
-      ),
-      'ui_search_everything_posted': MessageLookupByLibrary.simpleMessage(
-        "Buscar todo lo publicado",
-      ),
-      'ui_search_by_handle_or_display_name':
-          MessageLookupByLibrary.simpleMessage(
-        "Buscar por usuario o nombre visible.",
-      ),
-      'ui_words_or_filter': MessageLookupByLibrary.simpleMessage(
-        "Palabras, o un filtro: una cuenta, un rango de fechas o lo que lleva una publicación.",
-      ),
-      'ui_two_characters_or_more': MessageLookupByLibrary.simpleMessage(
-        "Dos caracteres o más.",
-      ),
-      'ui_no_posts_match_filters': MessageLookupByLibrary.simpleMessage(
-        "Ninguna publicación coincide con esos filtros.",
-      ),
-      'ui_search_clear': MessageLookupByLibrary.simpleMessage("Borrar"),
-      'ui_search_filters': MessageLookupByLibrary.simpleMessage("Filtros"),
-      'ui_post_text_copied': MessageLookupByLibrary.simpleMessage(
-        "Texto de la publicación copiado",
-      ),
-      'ui_link_copied': MessageLookupByLibrary.simpleMessage("Enlace copiado"),
-      'ui_interest_noted': MessageLookupByLibrary.simpleMessage(
-        "Anotado. Esto ayuda a determinar lo que se te muestra.",
-      ),
-      'ui_posts_hidden': MessageLookupByLibrary.simpleMessage(
-        "Oculto. Te mostraremos menos cosas así.",
-      ),
-      'ui_post_hidden':
-          MessageLookupByLibrary.simpleMessage("Publicación oculta"),
-      'ui_thread_muted':
-          MessageLookupByLibrary.simpleMessage("Hilo silenciado"),
-      'ui_post_deleted': MessageLookupByLibrary.simpleMessage(
-        "Publicación eliminada",
-      ),
-      'ui_post_delete_detail': MessageLookupByLibrary.simpleMessage(
-        "Se elimina de tu perfil y del feed de todos los demás. Las respuestas a esta también se eliminan.",
-      ),
-      'ui_block_detail': MessageLookupByLibrary.simpleMessage(
-        "Ninguno de los dos verá al otro en Kyron, y cualquier seguimiento entre ustedes se elimina. No se les notifica.",
-      ),
-      'ui_mute_detail': MessageLookupByLibrary.simpleMessage(
-        "Dejarás de ver sus publicaciones. No se les notifica.",
-      ),
-      'ui_about_terms_of_service': MessageLookupByLibrary.simpleMessage(
-        "Términos de servicio",
-      ),
-      'ui_about_privacy_policy': MessageLookupByLibrary.simpleMessage(
-        "Política de privacidad",
-      ),
-      'ui_settings_profile_contact': MessageLookupByLibrary.simpleMessage(
-        "Tu perfil e información de contacto",
-      ),
-      'ui_settings_security': MessageLookupByLibrary.simpleMessage(
-        "Ajustes de seguridad",
-      ),
-      'ui_settings_muted_blocked': MessageLookupByLibrary.simpleMessage(
-        "A quién has silenciado o bloqueado",
-      ),
-      'ui_settings_content_display': MessageLookupByLibrary.simpleMessage(
-        "Contenido y visualización",
-      ),
-      'ui_settings_app_device': MessageLookupByLibrary.simpleMessage(
-        "Aplicación y dispositivo",
-      ),
-      'ui_settings_data_saver': MessageLookupByLibrary.simpleMessage(
-        "Ahorro de datos",
-      ),
-      'ui_settings_language_detail': MessageLookupByLibrary.simpleMessage(
-        "Elige tu idioma",
-      ),
-      'ui_settings_notifications_detail': MessageLookupByLibrary.simpleMessage(
-        "Preferencias de notificación",
-      ),
-      'ui_settings_help_articles': MessageLookupByLibrary.simpleMessage(
-        "Explorar artículos de ayuda",
-      ),
-      'ui_settings_team_help': MessageLookupByLibrary.simpleMessage(
-        "Recibe ayuda de nuestro equipo",
-      ),
-      'ui_settings_feedback_detail': MessageLookupByLibrary.simpleMessage(
-        "Dinos qué piensas",
-      ),
-      'ui_could_not_load_profile': MessageLookupByLibrary.simpleMessage(
-        "No se pudo cargar tu perfil",
-      ),
-      'ui_search_people':
-          MessageLookupByLibrary.simpleMessage("Buscar personas"),
-      'ui_search_posts': MessageLookupByLibrary.simpleMessage(
-        "Buscar publicaciones",
-      ),
-      'ui_this_post': MessageLookupByLibrary.simpleMessage("esta publicación"),
-      'authorPostsHidden': (Object author) =>
-          'You will not see posts from $author',
-      'authorBlocked': (Object author) => '$author blocked',
-      'nothingMatchesQuery': (Object what) =>
-          'Nothing on Kyron matches "$what"',
-      'repliesPolicy': (Object policy) => 'Replies: $policy',
-      'ui_preferences': MessageLookupByLibrary.simpleMessage("Preferencias"),
-      'ui_appearance_detail': MessageLookupByLibrary.simpleMessage(
-        "Claro, oscuro, o lo que tenga configurado el teléfono",
-      ),
-      'ui_legal': MessageLookupByLibrary.simpleMessage("Legal"),
-      'ui_diagnostics': MessageLookupByLibrary.simpleMessage("Diagnósticos"),
-      'ui_saved_posts': MessageLookupByLibrary.simpleMessage(
-        "Publicaciones guardadas",
-      ),
-      'ui_liked_posts': MessageLookupByLibrary.simpleMessage(
-        "Publicaciones que te gustaron",
-      ),
-      'ui_nothing_saved_yet': MessageLookupByLibrary.simpleMessage(
-        "Nada guardado todavía",
-      ),
-      'ui_no_likes_yet': MessageLookupByLibrary.simpleMessage(
-        "Aún no hay 'me gusta'",
-      ),
-      'ui_saved_posts_detail': MessageLookupByLibrary.simpleMessage(
-        "Toca el icono de archivo en cualquier publicación para guardarla aquí. Solo tú puedes ver lo que guardas.",
-      ),
-      'ui_liked_posts_detail': MessageLookupByLibrary.simpleMessage(
-        "Las publicaciones que te gustan aparecen aquí, las más recientes primero.",
-      ),
-      'ui_could_not_load_saved_posts': MessageLookupByLibrary.simpleMessage(
-        "No se pudieron cargar tus publicaciones guardadas",
-      ),
-      'ui_could_not_load_liked_posts': MessageLookupByLibrary.simpleMessage(
-        "No se pudieron cargar tus publicaciones marcadas con 'me gusta'",
-      ),
-      'feedTagDetail': (Object tab) =>
-          'Nothing has been posted under #$tab yet.',
-      'ui_feed_following_empty': MessageLookupByLibrary.simpleMessage(
-        "Nada de las personas que sigues",
-      ),
-      'ui_feed_videos_empty': MessageLookupByLibrary.simpleMessage(
-        "Aún no hay videos",
-      ),
-      'ui_feed_empty':
-          MessageLookupByLibrary.simpleMessage("Nada aquí todavía"),
-      'ui_feed_following_detail': MessageLookupByLibrary.simpleMessage(
-        "Sigue a algunas cuentas y sus publicaciones aparecerán aquí.",
-      ),
-      'ui_feed_videos_detail': MessageLookupByLibrary.simpleMessage(
-        "Las publicaciones que incluyan un clip aparecerán aquí.",
-      ),
-      'ui_feed_for_you_detail': MessageLookupByLibrary.simpleMessage(
-        "Las publicaciones aparecerán aquí a medida que las personas las publiquen.",
-      ),
-      'ui_could_not_load_feed': MessageLookupByLibrary.simpleMessage(
-        "No se pudo cargar tu feed",
-      ),
-      'ui_share_this_post': MessageLookupByLibrary.simpleMessage(
-        "Compartir esta publicación",
-      ),
-      'ui_like': MessageLookupByLibrary.simpleMessage("Me gusta"),
-      'ui_share': MessageLookupByLibrary.simpleMessage("Compartir"),
-      'ui_joined': MessageLookupByLibrary.simpleMessage("Unido"),
-      'ui_join': MessageLookupByLibrary.simpleMessage("Unirse"),
-      'ui_turn_sound_on':
-          MessageLookupByLibrary.simpleMessage("Activar sonido"),
-      'ui_turn_sound_off': MessageLookupByLibrary.simpleMessage(
-        "Desactivar sonido",
-      ),
-      'ui_pause': MessageLookupByLibrary.simpleMessage("Pausar"),
-      'ui_play': MessageLookupByLibrary.simpleMessage("Reproducir"),
-      'ui_from_account': MessageLookupByLibrary.simpleMessage("De una cuenta"),
-      'ui_posted_between':
-          MessageLookupByLibrary.simpleMessage("Publicado entre"),
-      'ui_after': MessageLookupByLibrary.simpleMessage("Después"),
-      'ui_before': MessageLookupByLibrary.simpleMessage("Antes"),
-      'ui_carrying': MessageLookupByLibrary.simpleMessage("Con"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage(
+        "Publicación de texto",
+      ),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage(
+        "Publicación de voz",
+      ),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("Lente de RA"),
+      "create_go_live":
+          MessageLookupByLibrary.simpleMessage("Transmitir en vivo"),
+      "voice_record_post": MessageLookupByLibrary.simpleMessage(
+        "Grabar una publicación de voz",
+      ),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Grabando…"),
+      "voice_ready_attach": MessageLookupByLibrary.simpleMessage(
+        "Listo para adjuntar",
+      ),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Detener"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Adjuntar"),
+      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
+        "Cierra el editor con algo escrito y se te ofrecerá un borrador.",
+      ),
+      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
+        "Una encuesta sin pregunta todavía",
+      ),
+      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
+        "Una cita sin texto todavía",
+      ),
+      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
+        "Todavía no hay nada escrito",
+      ),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Ahora mismo"),
+      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
+        "Hace {minutes} minutos",
+      ),
+      "draft_hours_ago":
+          MessageLookupByLibrary.simpleMessage("Hace {hours} horas"),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("Hace {days} días"),
     };
 
 final messageLookup = MessageLookup();

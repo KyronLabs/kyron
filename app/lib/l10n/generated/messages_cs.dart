@@ -1,0 +1,1325 @@
+import 'package:intl/message_lookup_by_library.dart';
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'cs';
+
+  Map<String, dynamic> get messages => _notInlinedMessages(_notInlinedMessages);
+}
+
+Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
+      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
+        "Slovo, fráze nebo #tag",
+      ),
+      "about": MessageLookupByLibrary.simpleMessage("O aplikaci"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Přidat odpověď"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
+        "Přidat další jazyky…",
+      ),
+      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
+        "Souhlasím a pokračovat",
+      ),
+      "alreadyOnKyron":
+          MessageLookupByLibrary.simpleMessage("Už jste na Kyronu?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Komentáře"),
+      "analytics_distinct_people_not_opens":
+          MessageLookupByLibrary.simpleMessage(
+        "Jedineční lidé, ne otevření",
+      ),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("Zapojení"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Lajky"),
+      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
+        "Zatím žádní diváci",
+      ),
+      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
+        "Nikdo tento příspěvek zatím neotevřel.",
+      ),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Zveřejněno"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Uložení"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Diváci"),
+      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
+        "DIVÁCI ZA DEN",
+      ),
+      "and": MessageLookupByLibrary.simpleMessage("a"),
+      "answerNumber": (Object a0) => "Odpověď ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
+        "Připojit systémový log",
+      ),
+      "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
+        "12 MB",
+      ),
+      "audit_about_subscreens_round_trip_64776b4c":
+          MessageLookupByLibrary.simpleMessage("Kola zpět"),
+      "audit_about_subscreens_support_kyron_so_a3a84d0f":
+          MessageLookupByLibrary.simpleMessage("support@kyron.so"),
+      "audit_about_subscreens_token_verification_7934e1f2":
+          MessageLookupByLibrary.simpleMessage("OVĚŘENÍ TOKENU"),
+      "audit_ar_lens_screen_try_again_cdec8872":
+          MessageLookupByLibrary.simpleMessage("Zkusit znovu"),
+      "audit_browser_engine_window_stop_39c04883":
+          MessageLookupByLibrary.simpleMessage("window.stop();"),
+      "audit_browser_sheet_try_again_44bc94ba":
+          MessageLookupByLibrary.simpleMessage("Zkusit znovu"),
+      "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
+          MessageLookupByLibrary.simpleMessage(
+        "Startování vysílání teď by vás dostalo do místnosti, kde by nikdo nemohl",
+      ),
+      "audit_communities_screen_start_a_community_06c8ec4f":
+          MessageLookupByLibrary.simpleMessage("Založit komunitu"),
+      "audit_communities_screen_what_is_it_for_optional_e7e82092":
+          MessageLookupByLibrary.simpleMessage("K čemu to je? (volitelné)"),
+      "audit_community_manage_screen_back_in_e495a750":
+          MessageLookupByLibrary.simpleMessage("zpět."),
+      "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
+          MessageLookupByLibrary.simpleMessage("zpět z tohoto seznamu."),
+      "audit_community_manage_screen_closing_it_f490fb09":
+          MessageLookupByLibrary.simpleMessage("Je uzavíráno"),
+      "audit_community_screen_join_first_7798cafc":
+          MessageLookupByLibrary.simpleMessage("nejprve se připojte"),
+      "audit_composer_screen_coming_soon_431fd23d":
+          MessageLookupByLibrary.simpleMessage("brzy k dispozici"),
+      "audit_composer_screen_posting_as_you_45d69932":
+          MessageLookupByLibrary.simpleMessage("Přidává se jako vy"),
+      "audit_create_fab_post_in_this_community_0a42daf2":
+          MessageLookupByLibrary.simpleMessage("přidat do této komunity"),
+      "audit_drafts_screen_just_now_17a8d48a":
+          MessageLookupByLibrary.simpleMessage(
+        "Právě teď",
+      ),
+      "audit_empty_state_try_again_80ef48cd":
+          MessageLookupByLibrary.simpleMessage(
+        "Zkusit znovu",
+      ),
+      "audit_explore_screen_topic_1_83830b41":
+          MessageLookupByLibrary.simpleMessage(
+        "Téma 1",
+      ),
+      "audit_feed_canvas_for_you_aa3c510d":
+          MessageLookupByLibrary.simpleMessage(
+        "Pro vás",
+      ),
+      "audit_forgot_password_screen_has_anything_65044193":
+          MessageLookupByLibrary.simpleMessage("má něco."),
+      "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
+          MessageLookupByLibrary.simpleMessage("je na cestě."),
+      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
+        ", ne",
+      ),
+      "audit_inline_video_am_i_moving_4618f78c":
+          MessageLookupByLibrary.simpleMessage("hýbu se"),
+      "audit_inline_video_turn_sound_off_97714bbc":
+          MessageLookupByLibrary.simpleMessage("Vypnout zvuk"),
+      "audit_inline_video_turn_sound_on_83671c54":
+          MessageLookupByLibrary.simpleMessage("Zapnout zvuk"),
+      "audit_interest_tabs_for_you_7ef9e823":
+          MessageLookupByLibrary.simpleMessage(
+        "Pro vás",
+      ),
+      "audit_interest_tabs_your_tabs_c3ba148f":
+          MessageLookupByLibrary.simpleMessage("Vaše karty"),
+      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
+        "+ ALT",
+      ),
+      "audit_mention_picker_sheet_try_again_fd5d5dd7":
+          MessageLookupByLibrary.simpleMessage("Zkusit znovu"),
+      "audit_password_requirements_symbol_322aed1e":
+          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+      "audit_post_analytics_screen_viewers_per_day_5d881f10":
+          MessageLookupByLibrary.simpleMessage("DIVÁCI ZA DEN"),
+      "audit_post_detail_screen_sublist_1_join_b0a5d508":
+          MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
+      "audit_post_list_view_could_not_load_4dd86c79":
+          MessageLookupByLibrary.simpleMessage("nebylo možné načíst"),
+      "audit_post_options_sheet_this_post_99bfa981":
+          MessageLookupByLibrary.simpleMessage("tento příspěvek"),
+      "audit_post_text_a_b_780da9a1":
+          MessageLookupByLibrary.simpleMessage("a#b"),
+      "audit_report_screen_anything_to_add_optional_f0051fa4":
+          MessageLookupByLibrary.simpleMessage(
+              "Máte něco k přidání? (volitelné)"),
+      "audit_report_screen_this_post_820d9740":
+          MessageLookupByLibrary.simpleMessage("tento příspěvek"),
+      "audit_search_filter_sheet_from_an_account_f6a22687":
+          MessageLookupByLibrary.simpleMessage("Z účtu"),
+      "audit_settings_screen_did_plc_abc_825b4f49":
+          MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
+      "audit_settings_screen_log_out_0b39bfb2":
+          MessageLookupByLibrary.simpleMessage("Odhlásit se"),
+      "audit_settings_screen_your_account_bcdf27af":
+          MessageLookupByLibrary.simpleMessage("Váš účet"),
+      "audit_settings_subscreens_confirm_password_f0e1f449":
+          MessageLookupByLibrary.simpleMessage("Potvrdit heslo"),
+      "audit_settings_subscreens_not_now_e1657fa9":
+          MessageLookupByLibrary.simpleMessage("teď ne"),
+      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
+        "Načítání…",
+      ),
+      "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
+          MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
+      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
+        "Odesílání…",
+      ),
+      "audit_story_viewer_3h_ago_174dc80d":
+          MessageLookupByLibrary.simpleMessage(
+        "před 3 h",
+      ),
+      "audit_story_viewer_copy_story_link_2bd1546c":
+          MessageLookupByLibrary.simpleMessage("Kopírovat odkaz na příběh"),
+      "audit_story_viewer_your_story_b706ecb4":
+          MessageLookupByLibrary.simpleMessage("Váš příběh"),
+      "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
+          MessageLookupByLibrary.simpleMessage(
+        "Váš účet, vaše příspěvky a co klepnete, takže",
+      ),
+      "audit_topic_picker_add_a_topic_25baaf8a":
+          MessageLookupByLibrary.simpleMessage("Přidat téma"),
+      "audit_url_preview_its_own_8b362f95":
+          MessageLookupByLibrary.simpleMessage(
+        "své vlastní.",
+      ),
+      "authorBlocked": (Object a0) => "${a0} zablokován",
+      "authorPostsHidden": (Object a0) => "Nebudete vidět příspěvky od ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Zablokovat"),
+      "blockAuthor": (Object a0) => "Zablokovat ${a0}?",
+      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
+        "Detaily sestavení zkopírovány",
+      ),
+      "bullet": MessageLookupByLibrary.simpleMessage("•"),
+      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "Pokračováním souhlasíte s našimi",
+      ),
+      "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
+        "Pokračováním souhlasíte s našimi Podmínkami a Zásadami ochrany osobních údajů",
+      ),
+      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "Registrací souhlasíte s našimi",
+      ),
+      "cancel": MessageLookupByLibrary.simpleMessage("Zrušit"),
+      "change": MessageLookupByLibrary.simpleMessage("Změnit"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Změnit e-mail"),
+      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
+        "Zkontrolujte svou e-mailovou schránku a potvrďte účet.",
+      ),
+      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
+        "Zkontrolovat, zda je Kyron dostupný",
+      ),
+      "clear": MessageLookupByLibrary.simpleMessage("Vymazat"),
+      "close": MessageLookupByLibrary.simpleMessage("Zavřít"),
+      "closeCommunity": (Object a0) => "Uzavřít ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Uzavřít"),
+      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Uzavřít tuto komunitu",
+      ),
+      "communities": MessageLookupByLibrary.simpleMessage("Komunity"),
+      "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Najděte jednu v Objevování nebo založte vlastní.",
+      ),
+      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
+        "Přidejte ostrý názor (nebo teplý)",
+      ),
+      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
+        "Co vám běhá hlavou?",
+      ),
+      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
+        "Řekněte něco, co můžete říct jen vy…",
+      ),
+      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
+        "Tohle je váš signál — pošlete ho",
+      ),
+      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
+        "Pište, mluvte, nebo přemýšlejte nahlas",
+      ),
+      "confirmPassword": MessageLookupByLibrary.simpleMessage("Potvrďte heslo"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Kontaktovat podporu"),
+      "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
+        "Příspěvky ještě nemají přiřazen jazyk, takže to dnes nefiltruje váš feed. Vaše volba se uloží pro dobu, kdy budou.",
+      ),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Pokračovat"),
+      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
+        "Pokračovat e-mailem",
+      ),
+      "copy": MessageLookupByLibrary.simpleMessage("Kopírovat"),
+      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
+        "Místo toho zkopírovat zprávu",
+      ),
+      "couldNotOpenGoogleSignIn": (Object a0) =>
+          "Nepodařilo se otevřít přihlášení přes Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "Nepodařilo se odhlásit: ${a0}",
+      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se pořídit tento snímek.",
+      ),
+      "create": MessageLookupByLibrary.simpleMessage("Vytvořit"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Vytvořit účet"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Vytvořte si účet"),
+      "createYourProfile": MessageLookupByLibrary.simpleMessage(
+        "Vytvořte si profil",
+      ),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Vysílat živě"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Textový příspěvek"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage(
+        "Hlasový příspěvek",
+      ),
+      "delete": MessageLookupByLibrary.simpleMessage("Smazat"),
+      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
+        "Smazat tento komentář?",
+      ),
+      "deleteThisPost": MessageLookupByLibrary.simpleMessage(
+        "Smazat tento příspěvek?",
+      ),
+      "describeAttachment": MessageLookupByLibrary.simpleMessage(
+        "Popište tuto přílohu",
+      ),
+      "description": MessageLookupByLibrary.simpleMessage("Popis"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+        "DID zkopírován do schránky",
+      ),
+      "done": MessageLookupByLibrary.simpleMessage("Hotovo"),
+      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
+        "Zavřete editor s něčím napsaným a nabídneme vám koncept.",
+      ),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} dní zpět"),
+      "draft_hours_ago": MessageLookupByLibrary.simpleMessage(
+        "{hours} hodin(y) zpět",
+      ),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Právě teď"),
+      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
+        "{minutes} minut(y) zpět",
+      ),
+      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
+        "Zatím nic nenapsáno",
+      ),
+      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
+        "Anketa, bez otázky",
+      ),
+      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
+        "Citace, bez textu",
+      ),
+      "drafts": MessageLookupByLibrary.simpleMessage("Koncepty"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Upravit profil"),
+      "email": MessageLookupByLibrary.simpleMessage("E-mail"),
+      "emailNotifications": MessageLookupByLibrary.simpleMessage(
+        "E-mailová oznámení",
+      ),
+      "explore": MessageLookupByLibrary.simpleMessage("Prozkoumat"),
+      "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
+        "Sledování tváře na tomto zařízení není dostupné.",
+      ),
+      "feedTagDetail": (Object a0) => "Pod #${a0} zatím nebylo nic zveřejněno.",
+      "followers": MessageLookupByLibrary.simpleMessage("Sledující"),
+      "following": MessageLookupByLibrary.simpleMessage("Sleduje"),
+      "forgotPassword": MessageLookupByLibrary.simpleMessage(
+        "Zapomněli jste heslo?",
+      ),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Získání pomoci"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Pokračovat s Google"),
+      "googleSignIn": MessageLookupByLibrary.simpleMessage(
+        "Přihlásit se přes Google",
+      ),
+      "googleSignInDesktopExplanation": (Object a0) =>
+          "Google předá dokončené přihlášení Kyronu přes odkaz, na který dokážou odpovědět pouze Android a iOS, takže na ${a0} by v prohlížeči nebylo kam se vrátit.\\n\\nPokud už máte účet Kyron přes Google, použijte Pokračovat e-mailem s tou samou adresou a klepněte na Zapomněli jste heslo — pošleme vám odkaz pro jeho nastavení.",
+      "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
+        "Přihlášení přes Google vyžaduje mobilní aplikaci",
+      ),
+      "googleSignUp": MessageLookupByLibrary.simpleMessage(
+        "Registrovat se přes Google",
+      ),
+      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
+        "Průvodci a odpovědi na časté otázky",
+      ),
+      "handle": MessageLookupByLibrary.simpleMessage("uživatelské jméno"),
+      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Hashtagy se tu objeví, jakmile je lidé začnou používat.",
+      ),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Nápověda a podpora"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Centrum nápovědy"),
+      "home": MessageLookupByLibrary.simpleMessage("Domů"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("V jedné větě"),
+      "interest_add": MessageLookupByLibrary.simpleMessage("Přidat zájem"),
+      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
+        "Táhněte pro přeuspořádání",
+      ),
+      "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
+        "Pět karet je maximum. Odeberte jednu pro přidání další.",
+      ),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Sleduji"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Pro vás"),
+      "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
+        "Hashtagy se tu objeví, jak je lidé začnou používat.",
+      ),
+      "interest_trending_now": MessageLookupByLibrary.simpleMessage(
+        "Právě teď v trendech",
+      ),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Videa"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Vaše karty"),
+      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
+        "Zmizí to pro vás oba.",
+      ),
+      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
+        "Bude to odstraněno ze série příspěvků.",
+      ),
+      "join": MessageLookupByLibrary.simpleMessage("Připojit se"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("Pokračovat v úpravách"),
+      "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
+      "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
+        "Kyronovy texty se stále překládají, takže většina obrazovek zatím zůstává v angličtině.",
+      ),
+      "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
+      "languages": MessageLookupByLibrary.simpleMessage("Jazyky"),
+      "leave": MessageLookupByLibrary.simpleMessage("Opustit"),
+      "leaveCommunity": (Object a0) => "Opustit ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Pustit zpět"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage(
+        "1 stránka otevřená",
+      ),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Přidat klip"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Přidat GIF"),
+      "literaladdAHashtag":
+          MessageLookupByLibrary.simpleMessage("Přidat hashtag"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Přidat fotku"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Přidat anketu"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Přidat video"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Přidat zájem"),
+      "literaladdLabelAsATab": (Object a0) => "Přidat ${a0} jako kartu",
+      "literalappLanguage":
+          MessageLookupByLibrary.simpleMessage("Jazyk aplikace"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Verze aplikace"),
+      "literalblockAuthor": (Object a0) => "Zablokovat ${a0}",
+      "literalblockAuthor2": (Object a0) => "Zablokovat ${a0}?",
+      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
+        "Zablokovat tento účet?",
+      ),
+      "literalcancelReply":
+          MessageLookupByLibrary.simpleMessage("Zrušit odpověď"),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage(
+        "Zkontrolovat znovu",
+      ),
+      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
+        "Vybrat z galerie",
+      ),
+      "literalclearCache": MessageLookupByLibrary.simpleMessage(
+        "Vymazat mezipaměť",
+      ),
+      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
+        "Zavřít všechny stránky",
+      ),
+      "literalcloseTabLabel": (Object a0) => "Zavřít ${a0}",
+      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
+        "Zavřít prohlížeč",
+      ),
+      "literalcloseWidgetCommunityName": (Object a0) => "Uzavřít ${a0}?",
+      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
+        "Kontaktovat podporu",
+      ),
+      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
+        "Jazyky obsahu",
+      ),
+      "literalcopyLink":
+          MessageLookupByLibrary.simpleMessage("Zkopírovat odkaz"),
+      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
+        "Kopírovat odkaz na příspěvek",
+      ),
+      "literalcopyPostText": MessageLookupByLibrary.simpleMessage(
+        "Kopírovat text příspěvku",
+      ),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Kopírovat text"),
+      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst komunity",
+      ),
+      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst GIFy",
+      ),
+      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst oznámení",
+      ),
+      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst návrhy",
+      ),
+      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst členy",
+      ),
+      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst tyto příspěvky",
+      ),
+      "literalcouldNotLoadThisConversation":
+          MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst tento rozhovor",
+      ),
+      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst tento seznam",
+      ),
+      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst tento příspěvek",
+      ),
+      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst tuto odpověď",
+      ),
+      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst témata",
+      ),
+      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst trendy",
+      ),
+      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst populární tagy",
+      ),
+      "literalcouldNotLoadYourCommunities":
+          MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst vaše komunity",
+      ),
+      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst vaše zprávy",
+      ),
+      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se otevřít tuto komunitu",
+      ),
+      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se odeslat tuto odpověď.",
+      ),
+      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se vyhledat",
+      ),
+      "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
+          "Nepodařilo se odhlásit: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} stránek otevřených",
+      "literalcoverPhoto":
+          MessageLookupByLibrary.simpleMessage("Obálková fotka"),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Úspora dat"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Smazat příspěvek"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Objevte lidi"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("Neodpovídejte"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Koncept uložen"),
+      "literalfeedbackCannotBeSentRightNow":
+          MessageLookupByLibrary.simpleMessage(
+        "Zpětnou vazbu nelze právě nyní odeslat",
+      ),
+      "literalfirstyearIndex": (Object a0) => "${a0}",
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Velikost písma"),
+      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
+        "GIFy nejsou nastaveny",
+      ),
+      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
+        "Předat jiné aplikaci",
+      ),
+      "literalhidePassword":
+          MessageLookupByLibrary.simpleMessage("Skrýt heslo"),
+      "literalhideThisPost": MessageLookupByLibrary.simpleMessage(
+        "Skrýt tento příspěvek",
+      ),
+      "literalhidesItAndTellsUsToShowFewerLikeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Skrývá to a říká nám, abychom ukazovali méně podobných",
+      ),
+      "literalhowToBehave":
+          MessageLookupByLibrary.simpleMessage("Jak se chovat"),
+      "literalindex1": (Object a0) => "${a0}",
+      "literalkeepTyping": MessageLookupByLibrary.simpleMessage(
+        "Pokračujte v psaní",
+      ),
+      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
+        "Kyron neodpověděl",
+      ),
+      "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
+      "literallabelDate": (Object a0) => "\\${a0} datum",
+      "literalleaveCommunityName": (Object a0) => "Opustit ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
+      "literallikedPosts": MessageLookupByLibrary.simpleMessage(
+        "Oblíbené příspěvky",
+      ),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Odkaz zkopírován"),
+      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
+        "Jmenovat moderátora",
+      ),
+      "literalmuteAuthor": (Object a0) => "Ztlumit ${a0}",
+      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
+        "Ztlumit tuto diskusi",
+      ),
+      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
+        "Ztlumit slova nebo tagy",
+      ),
+      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
+        "Ztlumené a zablokované účty",
+      ),
+      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
+        "Ztlumeno. Nebudete upozorněni.",
+      ),
+      "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
+          "Žádná aplikace na tomto zařízení neotevírá odkazy ${a0}.",
+      "literalnoBrowserOnThisDeviceTookThatLink":
+          MessageLookupByLibrary.simpleMessage(
+        "Žádná aplikace na tomto zařízení nepřevzala tento odkaz.",
+      ),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("Ještě žádné DID"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Žádné koncepty"),
+      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím žádné zájmy",
+      ),
+      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím žádná lajkování",
+      ),
+      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím žádné zprávy",
+      ),
+      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
+        "Žádní noví sledující",
+      ),
+      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím žádné příspěvky",
+      ),
+      "literalnoRepliesYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím žádné odpovědi",
+      ),
+      "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím žádná sdílení",
+      ),
+      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím žádná témata",
+      ),
+      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
+        "Žádný populární tag neodpovídá",
+      ),
+      "literalnobodyFound":
+          MessageLookupByLibrary.simpleMessage("Nic nenalezeno"),
+      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
+        "Nikdo nebyl odstraněn",
+      ),
+      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím tu nikdo není",
+      ),
+      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
+        "Někdo už nezbyl k navržení",
+      ),
+      "literalnormalised": (Object a0) => "#${a0}",
+      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
+        "Nezajímá mě to",
+      ),
+      "literalnothingFound":
+          MessageLookupByLibrary.simpleMessage("Nic nenalezeno"),
+      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím nic není v trendech",
+      ),
+      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím nic nezaznamenáno",
+      ),
+      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
+        "Nic neodpovídá",
+      ),
+      "literalnothingMuted":
+          MessageLookupByLibrary.simpleMessage("Žádné ztlumené"),
+      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím není co prohlížet",
+      ),
+      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
+        "Žádné nepřečtené",
+      ),
+      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
+        "Pouze vlastník to může změnit",
+      ),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Otevřít odpověď"),
+      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
+        "Otevřete e-mail od Kyron",
+      ),
+      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
+        "Heslo a přihlášení",
+      ),
+      "literalpostInCommunityName": (Object a0) => "Přidat do ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Přidat do ${a0}",
+      "literalpostItWithYourOwnWordsAboveIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Přidat to s vlastním komentářem nahoře",
+      ),
+      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "Primární jazyk",
+      ),
+      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
+        "Push oznámení",
+      ),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Čtení…"),
+      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
+        "Nahrát hlasový příspěvek",
+      ),
+      "literalrecordAgain":
+          MessageLookupByLibrary.simpleMessage("Nahrát znovu"),
+      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
+        "Odebrat moderátora",
+      ),
+      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
+        "Odstranit z komunity",
+      ),
+      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
+        "Odebrat ze uložených",
+      ),
+      "literalremoveLabel": (Object a0) => "Odebrat ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Odebrat ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Odstranit ${a0}?",
+      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
+        "Odstranit anketu",
+      ),
+      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
+        "Odstranit tuto odpověď",
+      ),
+      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
+        "Odstranit tento rozhovor",
+      ),
+      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
+        "Odstranit tuto anketu",
+      ),
+      "literalreportAuthor": (Object a0) => "Nahlásit ${a0}",
+      "literalreportPost": MessageLookupByLibrary.simpleMessage(
+        "Nahlásit příspěvek",
+      ),
+      "literalresendCode": MessageLookupByLibrary.simpleMessage(
+        "Znovu odeslat kód",
+      ),
+      "literalsavedPosts": MessageLookupByLibrary.simpleMessage(
+        "Uložené příspěvky",
+      ),
+      "literalsaySomething":
+          MessageLookupByLibrary.simpleMessage("Napište něco"),
+      "literalsaySomethingToWidgetCommunityName": (Object a0) =>
+          "Napište něco do ${a0}",
+      "literalsearchFailed": MessageLookupByLibrary.simpleMessage(
+        "Hledání selhalo",
+      ),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Odeslat znovu"),
+      "literalsendAgainInCooldownS": (Object a0) => "Odeslat znovu za ${a0}s",
+      "literalsendFeedback": MessageLookupByLibrary.simpleMessage(
+        "Odeslat zpětnou vazbu",
+      ),
+      "literalsendTheLink":
+          MessageLookupByLibrary.simpleMessage("Odeslat odkaz"),
+      "literalsentItIsReportFiledNumber": (Object a0) =>
+          "Odesláno. Je to hlášení #${a0}.",
+      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
+        "Nastavte heslo a pokračujte",
+      ),
+      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
+        "Sdílet záznam s podporou",
+      ),
+      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Sdílet tuto komunitu",
+      ),
+      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
+        "Sdílet tuto stránku",
+      ),
+      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
+        "Sdílet tento profil",
+      ),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Sdílet přes…"),
+      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
+        "Sdílet s citací",
+      ),
+      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
+        "Ukázat více podobných příspěvků",
+      ),
+      "literalshowPassword":
+          MessageLookupByLibrary.simpleMessage("Zobrazit heslo"),
+      "literalshowResults": MessageLookupByLibrary.simpleMessage(
+        "Zobrazit výsledky",
+      ),
+      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
+        "Založit komunitu",
+      ),
+      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
+        "Začít nahrávat",
+      ),
+      "literalstopLoading": MessageLookupByLibrary.simpleMessage(
+        "Zastavit načítání",
+      ),
+      "literalstopSeeingThisPostAndRepliesToIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Přestat vidět tento příspěvek a jeho odpovědi",
+      ),
+      "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
+          "Stuha příběhů, ${a0} položek",
+      "literalswitchCamera": MessageLookupByLibrary.simpleMessage(
+        "Přepnout fotoaparát",
+      ),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Označit někoho"),
+      "literaltakeAPicture":
+          MessageLookupByLibrary.simpleMessage("Pořídit snímek"),
+      "literaltapTheBannerOrThePictureToChangeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Klepněte na banner nebo obrázek pro změnu",
+      ),
+      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
+        "Klepněte na odkaz v něm",
+      ),
+      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
+        "Klepněte pro přidání fotky a obálky",
+      ),
+      "literalthatDidNotGoThroughTryAgain":
+          MessageLookupByLibrary.simpleMessage(
+        "To neprošlo. Zkuste to znovu.",
+      ),
+      "literalthatGifCouldNotBeDownloaded":
+          MessageLookupByLibrary.simpleMessage(
+        "Tento GIF se nepodařilo stáhnout.",
+      ),
+      "literalthatLinkIsNotOneThisCanOpen":
+          MessageLookupByLibrary.simpleMessage(
+        "Ten odkaz toto zařízení neumí otevřít.",
+      ),
+      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
+        "Fotoaparát je vypnutý",
+      ),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Tato komunita"),
+      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
+        "Tato odpověď zmizela",
+      ),
+      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
+        "Přeložit příspěvek",
+      ),
+      "literalturnSoundOff":
+          MessageLookupByLibrary.simpleMessage("Zvuk vypnout"),
+      "literalturnSoundOn":
+          MessageLookupByLibrary.simpleMessage("Zvuk zapnout"),
+      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
+        "Použít jednu z našich",
+      ),
+      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
+        "Ověřovací kód znovu odeslán.",
+      ),
+      "literalverificationFailedDescribeapierrorE": (Object a0) =>
+          "Ověření selhalo: ${a0}",
+      "literalverifyEmail":
+          MessageLookupByLibrary.simpleMessage("Ověřit e-mail"),
+      "literalviewersLikesSavesAndComments":
+          MessageLookupByLibrary.simpleMessage(
+        "Sledující, lajky, uložené a komentáře",
+      ),
+      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
+        "Co Kyron uchovává",
+      ),
+      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
+        "Co tato aplikace dělala",
+      ),
+      "literalwhatYouDidWhatYouExpectedWhatHappened":
+          MessageLookupByLibrary.simpleMessage(
+        "Co jste udělali, co jste očekávali, co se stalo ",
+      ),
+      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
+        "Co zveřejníte, patří vám",
+      ),
+      "literalwhetherKyronIsReachableRightNow":
+          MessageLookupByLibrary.simpleMessage("Zda je Kyron právě dostupný"),
+      "literalwhoCanReply": MessageLookupByLibrary.simpleMessage(
+        "Kdo může odpovědět",
+      ),
+      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
+        "Koho chcete označit?",
+      ),
+      "literalyouAlreadyFollowEveryTrendingTag":
+          MessageLookupByLibrary.simpleMessage(
+        "Už sledujete všechny populární tagy",
+      ),
+      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "Vše máte dohnané",
+      ),
+      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
+        "Nejste v žádné komunitě",
+      ),
+      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
+        "Jste odhlášeni.",
+      ),
+      "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
+        "you@example.com",
+      ),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Opustili jste ${a0}",
+      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
+        "Ještě jste nic nezveřejnili",
+      ),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Načíst další"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Záznam vymazán"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Záznam zkopírován"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Přihlásit se"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Odhlásit se"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Odhlásit se?"),
+      "login": MessageLookupByLibrary.simpleMessage("Přihlášení"),
+      "loginFailed": MessageLookupByLibrary.simpleMessage(
+        "Přihlášení selhalo. Zkontrolujte prosím své přihlašovací údaje.",
+      ),
+      "manage": MessageLookupByLibrary.simpleMessage("Spravovat"),
+      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
+      "message": MessageLookupByLibrary.simpleMessage("Zpráva"),
+      "messages": MessageLookupByLibrary.simpleMessage("Zprávy"),
+      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "Každý rozhovor je aktuální.",
+      ),
+      "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
+        "Otevřete profil někoho a klepněte na Zpráva pro zahájení konverzace.",
+      ),
+      "mute": MessageLookupByLibrary.simpleMessage("Ztlumit"),
+      "mutedAndBlocked": MessageLookupByLibrary.simpleMessage(
+        "Ztlumeno a zablokováno",
+      ),
+      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
+        "Ztlumená slova a tagy",
+      ),
+      "name": MessageLookupByLibrary.simpleMessage("Jméno"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Obrazovka"),
+      "newEmailAddress": MessageLookupByLibrary.simpleMessage(
+        "Nová e-mailová adresa",
+      ),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Nové heslo"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Nový příspěvek"),
+      "normalised": (Object a0) => "#\\${a0}",
+      "notNow": MessageLookupByLibrary.simpleMessage("Ne teď"),
+      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
+        "Odeslání selhalo. Klepněte pro opakování",
+      ),
+      "nothingMatchesQuery": (Object a0) =>
+          "Na Kyronu nic neodpovídá \"${a0}\"",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("Není co kopírovat"),
+      "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Lajky, odpovědi a noví sledující se tu objeví, jak přijdou.",
+      ),
+      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
+        "Lidé, kteří vás sledují, se zde ukážou.",
+      ),
+      "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
+        "Když někdo označí váš příspěvek jako líbí se, objeví se to zde.",
+      ),
+      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
+        "Odpovědi na vaše příspěvky se objeví zde.",
+      ),
+      "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
+        "Když vás někdo sdílí, objeví se to zde.",
+      ),
+      "notifications": MessageLookupByLibrary.simpleMessage("Oznámení"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Otevřít v prohlížeči"),
+      "or": MessageLookupByLibrary.simpleMessage("nebo"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Stránka nenalezena"),
+      "password": MessageLookupByLibrary.simpleMessage("Heslo"),
+      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+        "Heslo je příliš krátké",
+      ),
+      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Už sledujete všechny lidi, které by Kyron sem dal.",
+      ),
+      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
+        "Vyberte své zájmy",
+      ),
+      "post": MessageLookupByLibrary.simpleMessage("Přidat"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Analytika příspěvku"),
+      "postInCommunity": (Object a0) => "Přidat do ${a0}",
+      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
+        "Napište to, řekněte to, ukažte to.",
+      ),
+      "postTextCopied": MessageLookupByLibrary.simpleMessage(
+        "Text příspěvku zkopírován",
+      ),
+      "privacyPolicy": MessageLookupByLibrary.simpleMessage(
+        "Zásadami ochrany osobních údajů",
+      ),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profil aktualizován"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_display_name": MessageLookupByLibrary.simpleMessage(
+        "Zobrazované jméno",
+      ),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Lokalita"),
+      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
+        "Klepněte pro změnu",
+      ),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Webová stránka"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push oznámení"),
+      "quote": MessageLookupByLibrary.simpleMessage("Citovat"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Citovat příspěvek"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("Dostat se ke člověku"),
+      "remove": MessageLookupByLibrary.simpleMessage("Odstranit"),
+      "removeConversation": MessageLookupByLibrary.simpleMessage(
+        "Odstranit tento rozhovor?",
+      ),
+      "removeMember": (Object a0) => "Odstranit ${a0}?",
+      "removeMessage": MessageLookupByLibrary.simpleMessage(
+        "Odstranit tuto zprávu?",
+      ),
+      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
+        "Odpovědi, sledování a zmínky",
+      ),
+      "repliesPolicy": (Object a0) => "Odpovědi: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Odpovědět"),
+      "reply_anyone": MessageLookupByLibrary.simpleMessage(
+        "Kdokoliv může interagovat",
+      ),
+      "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
+        "Kdokoliv to může vidět, sdílet a citovat.",
+      ),
+      "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
+        "Kdokoli na Kyronu může odpovědět na tento příspěvek.",
+      ),
+      "reply_followers": MessageLookupByLibrary.simpleMessage(
+        "Lidé, kteří vás sledují",
+      ),
+      "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
+        "Pouze lidé, kteří vás sledují, mohou odpovědět na tento příspěvek.",
+      ),
+      "reply_mentioned": MessageLookupByLibrary.simpleMessage(
+        "Lidé, které zmíníte",
+      ),
+      "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
+        "Pouze lidé, které v tomto příspěvku @zmíníte, mohou odpovědět.",
+      ),
+      "reply_nobody": MessageLookupByLibrary.simpleMessage(
+        "Nikdo nemůže odpovědět",
+      ),
+      "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
+        "Odpovědi jsou vypnuté. Vy stále můžete odpovědět.",
+      ),
+      "reply_who_can_reply": MessageLookupByLibrary.simpleMessage(
+        "Kdo může odpovědět?",
+      ),
+      "report": MessageLookupByLibrary.simpleMessage("Nahlásit"),
+      "reportCopied": MessageLookupByLibrary.simpleMessage(
+        "Zpráva zkopírována. Vložte ji do e-mailu podpoře.",
+      ),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Zpráva odeslána"),
+      "repost": MessageLookupByLibrary.simpleMessage("Sdílet znovu"),
+      "reset": MessageLookupByLibrary.simpleMessage("Resetovat"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage("Resetovat heslo"),
+      "retry": MessageLookupByLibrary.simpleMessage("Opakovat"),
+      "save": MessageLookupByLibrary.simpleMessage("Uložit"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Uložit koncept"),
+      "saySomething": (Object a0) => "Napište něco do ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Hledat"),
+      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
+        "Vyhledat podle jména nebo uživatelského jména",
+      ),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Hledat komunity"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Vyhledat GIFy"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Hledat jazyky"),
+      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "Vyhledat aktuálně populární tagy",
+      ),
+      "securityAlerts": MessageLookupByLibrary.simpleMessage(
+        "Bezpečnostní upozornění a změny účtu",
+      ),
+      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
+        "Vyberte jazyk, který se má použít v uživatelském rozhraní aplikace.",
+      ),
+      "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
+        "Vyberte jazyky, které chcete, aby vaše odběry obsahovaly. Pokud žádné nevyberete, budou zobrazeny všechny jazyky.",
+      ),
+      "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "Vyberte preferovaný jazyk pro překlady ve svém feedu.",
+      ),
+      "send": MessageLookupByLibrary.simpleMessage("Odeslat"),
+      "sendConfirmation":
+          MessageLookupByLibrary.simpleMessage("Odeslat potvrzení"),
+      "sendErrorReport": MessageLookupByLibrary.simpleMessage(
+        "Odeslat hlášení o chybě",
+      ),
+      "sendFeedback":
+          MessageLookupByLibrary.simpleMessage("Odeslat zpětnou vazbu"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Odeslat zprávu"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("Odeslat podpoře"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Stav služby"),
+      "settings": MessageLookupByLibrary.simpleMessage("Nastavení"),
+      "shareAppLog": MessageLookupByLibrary.simpleMessage(
+        "Sdílet log aplikace s podporou",
+      ),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage(
+        "Přihlásit se do Kyron",
+      ),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Přihlášeno jako"),
+      "signupFailed": (Object a0) => "Registrace selhala: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Zůstat"),
+      "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
+        "Kyron je v rané fázi a nejrychlejší cesta, jak dostat někoho, kdo může problém opravit, je otevřít hlášení. Včetně toho, co jste dělali a co se stalo místo toho.",
+      ),
+      "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
+        "Zatím neexistuje interní podpora v aplikaci, takže tato obrazovka ukazuje na místo, které je skutečně monitorované, místo na formulář, který nic neudělá.",
+      ),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Systémový log"),
+      "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
+        "Řekněte nám, co chybí nebo nefunguje",
+      ),
+      "terms": MessageLookupByLibrary.simpleMessage("Podmínkami"),
+      "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
+        "Text, hlas a video, lidé, kteří je vytvářejí, a místnosti, ve kterých spolu mluví.",
+      ),
+      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
+        "V editoru chybí tlačítko Přidat",
+      ),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Tmavé"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Vždy tmavé"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Ztlumené"),
+      "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+        "Měkčí tma, modrošedá místo černé",
+      ),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Světlé"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("Vždy světlé"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Systém"),
+      "theme_system_detail": MessageLookupByLibrary.simpleMessage(
+        "Řídit podle nastavení telefonu pro světlý nebo tmavý režim",
+      ),
+      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Témata nastavuje Kyron a momentálně žádná nejsou. Zkontrolujte to brzy znovu.",
+      ),
+      "translate": MessageLookupByLibrary.simpleMessage("Přeložit"),
+      "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
+        "Překlad ještě není připraven. Dnes se v běhu nic nepřekládá; toto se zapamatuje pro pozdější použití.",
+      ),
+      "translation_description": MessageLookupByLibrary.simpleMessage(
+        "Kyronovy vlastní texty se stále překládají, takže většina obrazovek zatím zůstává v angličtině. Co se tím dnes mění: části rozhraní, které vykresluje Flutter, data a čísla a směr uspořádání aplikace pro jazyky zprava doleva.",
+      ),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Zkusit znovu"),
+      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
+        "Zásady ochrany osobních údajů",
+      ),
+      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
+        "Podmínky služby",
+      ),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Účet"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Po"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Aplikace a zařízení"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Vzhled"),
+      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
+        "Světlé, tmavé, nebo podle nastavení telefonu",
+      ),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Před"),
+      "ui_block_detail": MessageLookupByLibrary.simpleMessage(
+        "Ani jeden z vás neuvidí druhého na Kyronu a jakékoliv sledování mezi vámi je odstraněno. Osoba není informována.",
+      ),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Nese"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Komunity"),
+      "ui_communities_screen_what_is_it_for_optional_39b687":
+          MessageLookupByLibrary.simpleMessage("K čemu to je? (volitelné)"),
+      "ui_content_display": MessageLookupByLibrary.simpleMessage(
+        "Obsah a zobrazení",
+      ),
+      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst váš feed",
+      ),
+      "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst vaše oblíbené příspěvky",
+      ),
+      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst váš profil",
+      ),
+      "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
+        "Nepodařilo se načíst vaše uložené příspěvky",
+      ),
+      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
+        "Decentralizované ID",
+      ),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostika"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Zatím tu nic není"),
+      "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
+        "Sledujte několik účtů a jejich příspěvky se tu objeví.",
+      ),
+      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
+        "Žádné příspěvky od lidí, které sledujete",
+      ),
+      "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
+        "Příspěvky se tu objeví, jak je lidé píší.",
+      ),
+      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
+        "Příspěvky s klipem se zde budou zobrazovat.",
+      ),
+      "ui_feed_videos_empty": MessageLookupByLibrary.simpleMessage(
+        "Zatím žádná videa",
+      ),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Zpětná vazba"),
+      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
+        "Najít lidi na Kyronu",
+      ),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Z účtu"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Nápověda"),
+      "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
+        "Poznamenáno. To pomáhá formovat, co vám bude ukazováno.",
+      ),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Připojit se"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Připojeno"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Jazyk"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Právní"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("To se mi líbí"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Oblíbené příspěvky"),
+      "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "Příspěvky, které se vám líbí, se tu zobrazují, nejnovější první.",
+      ),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("Odkaz zkopírován"),
+      "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
+        "Přestanete vidět jejich příspěvky. Osoba o tom není informována.",
+      ),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Zatím žádné lajky"),
+      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
+        "Žádné příspěvky neodpovídají těmto filtrům.",
+      ),
+      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
+        "Zatím nic uloženo",
+      ),
+      "ui_onboard_step3_screen_finish_5c0ad8":
+          MessageLookupByLibrary.simpleMessage(
+        "Dokončit",
+      ),
+      "ui_onboard_step3_screen_skip_7b13d8":
+          MessageLookupByLibrary.simpleMessage(
+        "Přeskočit",
+      ),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Pozastavit"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Přehrát"),
+      "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
+        "Je odstraněn z vašeho profilu a z feedů ostatních. Odpovědi s ním zmizí.",
+      ),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Příspěvek smazán"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Příspěvek skryt"),
+      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
+        "Text příspěvku zkopírován",
+      ),
+      "ui_posted_between":
+          MessageLookupByLibrary.simpleMessage("Zveřejněno mezi"),
+      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
+        "Skryto. Ukážeme vám jich méně.",
+      ),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Předvolby"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Soukromí"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Uložené příspěvky"),
+      "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "Klepněte na ikonu archivu u libovolného příspěvku, abyste ho zde uložili. Vidíte to pouze vy.",
+      ),
+      "ui_search_by_handle_or_display_name":
+          MessageLookupByLibrary.simpleMessage(
+        "Hledat podle uživatelského jména nebo zobrazovaného jména.",
+      ),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Vymazat"),
+      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
+        "Vyhledat vše zveřejněné",
+      ),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filtry"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("Hledat lidi"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Hledat příspěvky"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Nastavení"),
+      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
+        "Aplikace a zařízení",
+      ),
+      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
+        "Obsah a zobrazení",
+      ),
+      "ui_settings_data_saver":
+          MessageLookupByLibrary.simpleMessage("Úspora dat"),
+      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
+        "Řekněte nám, co si myslíte",
+      ),
+      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
+        "Procházet články nápovědy",
+      ),
+      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
+        "Vyberte svůj jazyk",
+      ),
+      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
+        "Koho máte ztlumeného nebo zablokovaného",
+      ),
+      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
+        "Nastavení oznámení",
+      ),
+      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
+        "Váš profil a kontaktní informace",
+      ),
+      "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
+          MessageLookupByLibrary.simpleMessage(
+        "Budete se muset znovu přihlásit, abyste se vrátili ke svému účtu.",
+      ),
+      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
+        "Nastavení zabezpečení",
+      ),
+      "ui_settings_subscreens_confirm_password_41d040":
+          MessageLookupByLibrary.simpleMessage("Potvrďte heslo"),
+      "ui_settings_subscreens_in_one_line_06bdaf":
+          MessageLookupByLibrary.simpleMessage("V jedné větě"),
+      "ui_settings_subscreens_new_email_address_dab96e":
+          MessageLookupByLibrary.simpleMessage("Nová e-mailová adresa"),
+      "ui_settings_subscreens_new_password_88c1bf":
+          MessageLookupByLibrary.simpleMessage("Nové heslo"),
+      "ui_settings_subscreens_what_happened_977dd8":
+          MessageLookupByLibrary.simpleMessage("Co se stalo"),
+      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
+        "Získat pomoc od našeho týmu",
+      ),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Sdílet"),
+      "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
+        "Sdílet tento příspěvek",
+      ),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Podmínky"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("tento příspěvek"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Vlákno ztlumeno"),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("Vypnout zvuk"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Zapnout zvuk"),
+      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
+        "Dva nebo více znaků.",
+      ),
+      "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
+        "Slova nebo filtr — účet, rozsah dat nebo co příspěvek nese.",
+      ),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("Vrátit sdílení"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Aktualizovat heslo"),
+      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
+        "Použít jinou adresu",
+      ),
+      "username": MessageLookupByLibrary.simpleMessage("Uživatelské jméno"),
+      "usernameRule": MessageLookupByLibrary.simpleMessage(
+        "Uživatelské jméno musí být malými písmeny (a-z, 0-9, _)",
+      ),
+      "video": MessageLookupByLibrary.simpleMessage("Video"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Připojit"),
+      "voice_ready_attach": MessageLookupByLibrary.simpleMessage(
+        "Připraveno k přiložení",
+      ),
+      "voice_record_post": MessageLookupByLibrary.simpleMessage(
+        "Nahrát hlasový příspěvek",
+      ),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Nahrávání…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Zastavit"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Co se stalo"),
+      "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
+        "Co se stalo a na co se máme podívat?",
+      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Co je na této fotce?"),
+      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
+        "K čemu to je? (volitelné)",
+      ),
+      "whatYouDid": MessageLookupByLibrary.simpleMessage(
+        "Co jste udělali, co jste očekávali, co se stalo",
+      ),
+      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
+        "Co jste dělal, když se to stalo.",
+      ),
+    };
+
+final messageLookup = MessageLookup();

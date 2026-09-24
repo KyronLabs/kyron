@@ -1,0 +1,1415 @@
+import 'package:intl/message_lookup_by_library.dart';
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'el';
+
+  Map<String, dynamic> get messages => _notInlinedMessages(_notInlinedMessages);
+}
+
+Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
+      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
+        "Μια λέξη, φράση ή #tag",
+      ),
+      "about": MessageLookupByLibrary.simpleMessage("Σχετικά"),
+      "addAnAnswer":
+          MessageLookupByLibrary.simpleMessage("Προσθέστε μια απάντηση"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
+        "Προσθέστε περισσότερες γλώσσες…",
+      ),
+      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
+        "Συμφωνώ και συνεχίζω",
+      ),
+      "alreadyOnKyron": MessageLookupByLibrary.simpleMessage(
+        "Έχετε ήδη λογαριασμό στο Kyron;",
+      ),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Σχόλια"),
+      "analytics_distinct_people_not_opens":
+          MessageLookupByLibrary.simpleMessage(
+        "Διαφορετικά άτομα, όχι ανοίγματα",
+      ),
+      "analytics_engagement":
+          MessageLookupByLibrary.simpleMessage("Αλληλεπίδραση"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Μου αρέσουν"),
+      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν θεατές ακόμη",
+      ),
+      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
+        "Κανείς δεν έχει ανοίξει αυτή τη δημοσίευση ακόμα.",
+      ),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Δημοσιεύτηκε"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Αποθηκεύσεις"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Θεατές"),
+      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
+        "ΘΕΑΤΕΣ ΑΝΑ ΗΜΕΡΑ",
+      ),
+      "and": MessageLookupByLibrary.simpleMessage("και"),
+      "answerNumber": (Object a0) => "Απάντηση ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
+        "Επισύναψη αρχείου καταγραφής συστήματος",
+      ),
+      "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
+        "12 MB",
+      ),
+      "audit_about_subscreens_round_trip_64776b4c":
+          MessageLookupByLibrary.simpleMessage("Διαδρομή με επιστροφή"),
+      "audit_about_subscreens_support_kyron_so_a3a84d0f":
+          MessageLookupByLibrary.simpleMessage("support@kyron.so"),
+      "audit_about_subscreens_token_verification_7934e1f2":
+          MessageLookupByLibrary.simpleMessage("ΕΠΑΛΗΘΕΥΣΗ TOKEN"),
+      "audit_ar_lens_screen_try_again_cdec8872":
+          MessageLookupByLibrary.simpleMessage("Δοκιμάστε ξανά"),
+      "audit_browser_engine_window_stop_39c04883":
+          MessageLookupByLibrary.simpleMessage("window.stop();"),
+      "audit_browser_sheet_try_again_44bc94ba":
+          MessageLookupByLibrary.simpleMessage("Δοκιμάστε ξανά"),
+      "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
+          MessageLookupByLibrary.simpleMessage(
+        "Το να ξεκινήσετε τώρα μια μετάδοση θα σας έβαζε σε ένα δωμάτιο που κανείς δεν θα μπορούσε",
+      ),
+      "audit_communities_screen_start_a_community_06c8ec4f":
+          MessageLookupByLibrary.simpleMessage("Δημιουργήστε μια κοινότητα"),
+      "audit_communities_screen_what_is_it_for_optional_e7e82092":
+          MessageLookupByLibrary.simpleMessage(
+              "Για τι προορίζεται; (προαιρετικό)"),
+      "audit_community_manage_screen_back_in_e495a750":
+          MessageLookupByLibrary.simpleMessage("πίσω."),
+      "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
+          MessageLookupByLibrary.simpleMessage("πίσω από αυτή τη λίστα."),
+      "audit_community_manage_screen_closing_it_f490fb09":
+          MessageLookupByLibrary.simpleMessage("Κλείνοντάς την"),
+      "audit_community_screen_join_first_7798cafc":
+          MessageLookupByLibrary.simpleMessage("συμμετάσχετε πρώτα"),
+      "audit_composer_screen_coming_soon_431fd23d":
+          MessageLookupByLibrary.simpleMessage("έρχεται σύντομα"),
+      "audit_composer_screen_posting_as_you_45d69932":
+          MessageLookupByLibrary.simpleMessage("Δημοσίευση ως εσάς"),
+      "audit_create_fab_post_in_this_community_0a42daf2":
+          MessageLookupByLibrary.simpleMessage(
+              "Δημοσιεύστε σε αυτή την κοινότητα"),
+      "audit_drafts_screen_just_now_17a8d48a":
+          MessageLookupByLibrary.simpleMessage(
+        "Μόλις τώρα",
+      ),
+      "audit_empty_state_try_again_80ef48cd":
+          MessageLookupByLibrary.simpleMessage(
+        "Δοκιμάστε ξανά",
+      ),
+      "audit_explore_screen_topic_1_83830b41":
+          MessageLookupByLibrary.simpleMessage(
+        "Θέμα 1",
+      ),
+      "audit_feed_canvas_for_you_aa3c510d":
+          MessageLookupByLibrary.simpleMessage(
+        "Για εσάς",
+      ),
+      "audit_forgot_password_screen_has_anything_65044193":
+          MessageLookupByLibrary.simpleMessage("έχει οτιδήποτε."),
+      "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
+          MessageLookupByLibrary.simpleMessage(
+              "είναι καθ' οδόν προς αυτό τώρα."),
+      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
+        ", όχι",
+      ),
+      "audit_inline_video_am_i_moving_4618f78c":
+          MessageLookupByLibrary.simpleMessage("Κουνιέμαι;"),
+      "audit_inline_video_turn_sound_off_97714bbc":
+          MessageLookupByLibrary.simpleMessage("Απενεργοποίηση ήχου"),
+      "audit_inline_video_turn_sound_on_83671c54":
+          MessageLookupByLibrary.simpleMessage("Ενεργοποίηση ήχου"),
+      "audit_interest_tabs_for_you_7ef9e823":
+          MessageLookupByLibrary.simpleMessage(
+        "Για εσάς",
+      ),
+      "audit_interest_tabs_your_tabs_c3ba148f":
+          MessageLookupByLibrary.simpleMessage("Οι καρτέλες σας"),
+      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
+        "+ ALT",
+      ),
+      "audit_mention_picker_sheet_try_again_fd5d5dd7":
+          MessageLookupByLibrary.simpleMessage("Δοκιμάστε ξανά"),
+      "audit_password_requirements_symbol_322aed1e":
+          MessageLookupByLibrary.simpleMessage("Σύμβολο (!@#…)"),
+      "audit_post_analytics_screen_viewers_per_day_5d881f10":
+          MessageLookupByLibrary.simpleMessage("ΘΕΑΤΕΣ ΑΝΑ ΗΜΕΡΑ"),
+      "audit_post_detail_screen_sublist_1_join_b0a5d508":
+          MessageLookupByLibrary.simpleMessage(").sublist(1).join(\", "),
+      "audit_post_list_view_could_not_load_4dd86c79":
+          MessageLookupByLibrary.simpleMessage("δεν ήταν δυνατή η φόρτωση"),
+      "audit_post_options_sheet_this_post_99bfa981":
+          MessageLookupByLibrary.simpleMessage("αυτή η δημοσίευση"),
+      "audit_post_text_a_b_780da9a1":
+          MessageLookupByLibrary.simpleMessage("a#b"),
+      "audit_report_screen_anything_to_add_optional_f0051fa4":
+          MessageLookupByLibrary.simpleMessage(
+              "Κάτι να προσθέσετε; (προαιρετικό)"),
+      "audit_report_screen_this_post_820d9740":
+          MessageLookupByLibrary.simpleMessage("αυτή τη δημοσίευση"),
+      "audit_search_filter_sheet_from_an_account_f6a22687":
+          MessageLookupByLibrary.simpleMessage("Από έναν λογαριασμό"),
+      "audit_settings_screen_did_plc_abc_825b4f49":
+          MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
+      "audit_settings_screen_log_out_0b39bfb2":
+          MessageLookupByLibrary.simpleMessage("Αποσύνδεση"),
+      "audit_settings_screen_your_account_bcdf27af":
+          MessageLookupByLibrary.simpleMessage("Ο λογαριασμός σας"),
+      "audit_settings_subscreens_confirm_password_f0e1f449":
+          MessageLookupByLibrary.simpleMessage("Επιβεβαίωση κωδικού"),
+      "audit_settings_subscreens_not_now_e1657fa9":
+          MessageLookupByLibrary.simpleMessage("όχι τώρα"),
+      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
+        "Φόρτωση…",
+      ),
+      "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
+          MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
+      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
+        "Δημοσιεύεται…",
+      ),
+      "audit_story_viewer_3h_ago_174dc80d":
+          MessageLookupByLibrary.simpleMessage(
+        "πριν 3 ώρες",
+      ),
+      "audit_story_viewer_copy_story_link_2bd1546c":
+          MessageLookupByLibrary.simpleMessage("Αντιγραφή συνδέσμου ιστορίας"),
+      "audit_story_viewer_your_story_b706ecb4":
+          MessageLookupByLibrary.simpleMessage("Η Ιστορία σας"),
+      "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
+          MessageLookupByLibrary.simpleMessage(
+        "Ο λογαριασμός σας, οι αναρτήσεις σας και ό,τι πατάτε ώστε",
+      ),
+      "audit_topic_picker_add_a_topic_25baaf8a":
+          MessageLookupByLibrary.simpleMessage("Προσθέστε ένα θέμα"),
+      "audit_url_preview_its_own_8b362f95":
+          MessageLookupByLibrary.simpleMessage(
+        "το δικό του.",
+      ),
+      "authorBlocked": (Object a0) => "${a0} αποκλείστηκε",
+      "authorPostsHidden": (Object a0) =>
+          "Δεν θα βλέπετε δημοσιεύσεις από ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Αποκλεισμός"),
+      "blockAuthor": (Object a0) => "Να αποκλειστεί ο/η ${a0}?",
+      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
+        "Λεπτομέρειες build αντιγράφηκαν",
+      ),
+      "bullet": MessageLookupByLibrary.simpleMessage("•"),
+      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "Συνεχίζοντας, συμφωνείτε με τους",
+      ),
+      "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
+        "Συνεχίζοντας, συμφωνείτε με τους Όρους και την Πολιτική Απορρήτου μας",
+      ),
+      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
+        "Με την εγγραφή συμφωνείτε με τους",
+      ),
+      "cancel": MessageLookupByLibrary.simpleMessage("Ακύρωση"),
+      "change": MessageLookupByLibrary.simpleMessage("Αλλαγή"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Αλλαγή email"),
+      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
+        "Ελέγξτε το email σας για να επιβεβαιώσετε το λογαριασμό σας.",
+      ),
+      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
+        "Ελέγξτε αν το Kyron είναι προσβάσιμο",
+      ),
+      "clear": MessageLookupByLibrary.simpleMessage("Καθαρισμός"),
+      "close": MessageLookupByLibrary.simpleMessage("Κλείσιμο"),
+      "closeCommunity": (Object a0) => "Κλείσιμο της κοινότητας ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Κλείστε το"),
+      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Κλείστε αυτήν την κοινότητα",
+      ),
+      "communities": MessageLookupByLibrary.simpleMessage("Κοινότητες"),
+      "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Βρείτε μία στην Ανακάλυψη ή ξεκινήστε τη δική σας.",
+      ),
+      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
+        "Γράψτε μια καυτή άποψη (ή μια χλιαρή)",
+      ),
+      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
+        "Τι στροβιλίζει στο κεφάλι σας;",
+      ),
+      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
+        "Πείτε κάτι που μόνο εσείς μπορείτε να πείτε…",
+      ),
+      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
+        "Αυτό είναι το σήμα σας — στείλτε το",
+      ),
+      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
+        "Πληκτρολογήστε, μιλήστε ή σκεφτείτε δυνατά",
+      ),
+      "confirmPassword": MessageLookupByLibrary.simpleMessage(
+        "Επιβεβαίωση κωδικού",
+      ),
+      "contactSupport": MessageLookupByLibrary.simpleMessage(
+        "Επικοινωνία με υποστήριξη",
+      ),
+      "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
+        "Οι αναρτήσεις δεν χαρακτηρίζονται ακόμη με γλώσσα, οπότε αυτό δεν φιλτράρει σήμερα το feed σας. Η επιλογή σας θα διατηρηθεί για όταν συμβεί.",
+      ),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Συνέχεια"),
+      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
+        "Συνέχεια με email",
+      ),
+      "copy": MessageLookupByLibrary.simpleMessage("Αντιγραφή"),
+      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
+        "Αντ' αυτού, αντιγράψτε την αναφορά",
+      ),
+      "couldNotOpenGoogleSignIn": (Object a0) =>
+          "Δεν ήταν δυνατό το άνοιγμα της σύνδεσης Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "Δεν ήταν δυνατή η αποσύνδεση: ${a0}",
+      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η λήψη αυτής της φωτογραφίας.",
+      ),
+      "create": MessageLookupByLibrary.simpleMessage("Δημιουργία"),
+      "createAccount": MessageLookupByLibrary.simpleMessage(
+        "Δημιουργία λογαριασμού",
+      ),
+      "createYourAccount": MessageLookupByLibrary.simpleMessage(
+        "Δημιουργήστε το λογαριασμό σας",
+      ),
+      "createYourProfile": MessageLookupByLibrary.simpleMessage(
+        "Δημιουργήστε το προφίλ σας",
+      ),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_go_live":
+          MessageLookupByLibrary.simpleMessage("Μετάδοση ζωντανά"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage(
+        "Δημοσίευση κειμένου",
+      ),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage(
+        "Φωνητική δημοσίευση",
+      ),
+      "delete": MessageLookupByLibrary.simpleMessage("Διαγραφή"),
+      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
+        "Να διαγραφεί αυτό το σχόλιο;",
+      ),
+      "deleteThisPost": MessageLookupByLibrary.simpleMessage(
+        "Να διαγραφεί αυτή η δημοσίευση;",
+      ),
+      "describeAttachment": MessageLookupByLibrary.simpleMessage(
+        "Περιγράψτε αυτό το συνημμένο",
+      ),
+      "description": MessageLookupByLibrary.simpleMessage("Περιγραφή"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+        "Το DID αντιγράφηκε στο πρόχειρο",
+      ),
+      "done": MessageLookupByLibrary.simpleMessage("Ολοκληρώθηκε"),
+      "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
+        "Κλείστε τον συντάκτη με κάτι γραμμένο και θα σας προταθεί ένα πρόχειρο.",
+      ),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} ημέρες πριν"),
+      "draft_hours_ago":
+          MessageLookupByLibrary.simpleMessage("{hours} ώρες πριν"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Μόλις τώρα"),
+      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
+        "{minutes} λεπτά πριν",
+      ),
+      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
+        "Δεν έχει γραφτεί τίποτα ακόμα",
+      ),
+      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
+        "Δημοσκόπηση χωρίς ακόμα ερώτηση",
+      ),
+      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
+        "Παράθεση χωρίς τίποτα γραμμένο ακόμα",
+      ),
+      "drafts": MessageLookupByLibrary.simpleMessage("Πρόχειρα"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Επεξεργασία προφίλ"),
+      "email": MessageLookupByLibrary.simpleMessage("Ηλεκτρονική διεύθυνση"),
+      "emailNotifications": MessageLookupByLibrary.simpleMessage(
+        "Ειδοποιήσεις email",
+      ),
+      "explore": MessageLookupByLibrary.simpleMessage("Εξερεύνηση"),
+      "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
+        "Η παρακολούθηση προσώπου δεν είναι διαθέσιμη σε αυτή τη συσκευή.",
+      ),
+      "feedTagDetail": (Object a0) =>
+          "Δεν έχει αναρτηθεί τίποτα με #${a0} ακόμα.",
+      "followers": MessageLookupByLibrary.simpleMessage("Ακόλουθοι"),
+      "following": MessageLookupByLibrary.simpleMessage("Ακολουθούμενοι"),
+      "forgotPassword": MessageLookupByLibrary.simpleMessage(
+        "Ξεχάσατε τον κωδικό;",
+      ),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Βοήθεια"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Συνέχεια με Google"),
+      "googleSignIn": MessageLookupByLibrary.simpleMessage("Σύνδεση με Google"),
+      "googleSignInDesktopExplanation": (Object a0) =>
+          "Το Google επιστρέφει τη συμπληρωμένη σύνδεση στο Kyron μέσω ενός συνδέσμου που απαντούν μόνο Android και iOS, οπότε στο ${a0} ο περιηγητής δεν θα είχε πού να τον επιστρέψει.\\n\\nΑν έχετε ήδη λογαριασμό Kyron μέσω Google, χρησιμοποιήστε το Συνέχεια με email με την ίδια διεύθυνση και πατήστε Ξεχάσατε τον κωδικό — θα σας στείλει έναν σύνδεσμο με email για να τον ορίσετε.",
+      "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
+        "Η σύνδεση με Google απαιτεί την εφαρμογή στο τηλέφωνο",
+      ),
+      "googleSignUp": MessageLookupByLibrary.simpleMessage("Εγγραφή με Google"),
+      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
+        "Οδηγοί και απαντήσεις σε συχνές ερωτήσεις",
+      ),
+      "handle": MessageLookupByLibrary.simpleMessage("Όνομα χρήστη"),
+      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Εδώ θα εμφανίζονται τα hashtags μόλις οι χρήστες αρχίσουν να τα χρησιμοποιούν.",
+      ),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage(
+        "Βοήθεια & Υποστήριξη",
+      ),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Κέντρο βοήθειας"),
+      "home": MessageLookupByLibrary.simpleMessage("Αρχική"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Σε μία γραμμή"),
+      "interest_add": MessageLookupByLibrary.simpleMessage(
+        "Προσθέστε ένα ενδιαφέρον",
+      ),
+      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
+        "Σύρετε για αναδιάταξη",
+      ),
+      "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
+        "Πέντε καρτέλες είναι το μέγιστο που χωρά η γραμμή. Αφαιρέστε μία για να προσθέσετε άλλη.",
+      ),
+      "interest_following":
+          MessageLookupByLibrary.simpleMessage("Ακολουθούμενοι"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Για εσάς"),
+      "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
+        "Τα hashtags εμφανίζονται εδώ καθώς οι χρήστες αρχίζουν να τα χρησιμοποιούν.",
+      ),
+      "interest_trending_now": MessageLookupByLibrary.simpleMessage(
+        "Δημοφιλή τώρα",
+      ),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Βίντεο"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("Οι καρτέλες σας"),
+      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
+        "Θα εξαφανιστεί και για τους δύο.",
+      ),
+      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
+        "Θα αφαιρεθεί από τη συζήτηση.",
+      ),
+      "join": MessageLookupByLibrary.simpleMessage("Συμμετοχή"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage(
+        "Συνέχισε την επεξεργασία",
+      ),
+      "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
+      "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
+        "Τα κείμενα του Kyron μεταφράζονται ακόμα, οπότε οι περισσότερες οθόνες παραμένουν προς το παρόν στα Αγγλικά.",
+      ),
+      "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
+      "languages": MessageLookupByLibrary.simpleMessage("Γλώσσες"),
+      "leave": MessageLookupByLibrary.simpleMessage("Αποχώρηση"),
+      "leaveCommunity": (Object a0) => "Να φύγετε από την κοινότητα ${a0}?",
+      "letBackIn":
+          MessageLookupByLibrary.simpleMessage("Επιτρέψτε την επανείσοδο"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("1 σελίδα ανοιχτή"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Προσθήκη κλιπ"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Προσθήκη GIF"),
+      "literaladdAHashtag": MessageLookupByLibrary.simpleMessage(
+        "Προσθήκη hashtag",
+      ),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage(
+        "Προσθήκη φωτογραφίας",
+      ),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage(
+        "Προσθήκη ψηφοφορίας",
+      ),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("Προσθήκη βίντεο"),
+      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
+        "Προσθήκη ενδιαφέροντος",
+      ),
+      "literaladdLabelAsATab": (Object a0) => "Προσθήκη ${a0} ως καρτέλας",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage(
+        "Γλώσσα εφαρμογής",
+      ),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Έκδοση εφαρμογής"),
+      "literalblockAuthor": (Object a0) => "Αποκλεισμός ${a0}",
+      "literalblockAuthor2": (Object a0) => "Να αποκλείσετε τον/την ${a0};",
+      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
+        "Να αποκλειστεί αυτός ο λογαριασμός;",
+      ),
+      "literalcancelReply": MessageLookupByLibrary.simpleMessage(
+        "Ακύρωση απάντησης",
+      ),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Έλεγχος ξανά"),
+      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
+        "Επιλογή από τη συλλογή",
+      ),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Εκκαθάριση cache"),
+      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
+        "Κλείσιμο όλων των σελίδων",
+      ),
+      "literalcloseTabLabel": (Object a0) => "Κλείσιμο ${a0}",
+      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
+        "Κλείσιμο του προγράμματος περιήγησης",
+      ),
+      "literalcloseWidgetCommunityName": (Object a0) => "Να κλείσει το ${a0}?",
+      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
+        "Επικοινωνία με Υποστήριξη",
+      ),
+      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
+        "Γλώσσες περιεχομένου",
+      ),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage(
+        "Αντιγραφή συνδέσμου",
+      ),
+      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
+        "Αντιγραφή συνδέσμου δημοσίευσης",
+      ),
+      "literalcopyPostText": MessageLookupByLibrary.simpleMessage(
+        "Αντιγραφή κειμένου δημοσίευσης",
+      ),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("Αντιγραφή κειμένου"),
+      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των κοινοτήτων",
+      ),
+      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των GIF",
+      ),
+      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των ειδοποιήσεων",
+      ),
+      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση προτάσεων",
+      ),
+      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των μελών",
+      ),
+      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση αυτών των αναρτήσεων",
+      ),
+      "literalcouldNotLoadThisConversation":
+          MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση αυτής της συνομιλίας",
+      ),
+      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση αυτής της λίστας",
+      ),
+      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση αυτής της ανάρτησης",
+      ),
+      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση αυτής της απάντησης",
+      ),
+      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των θεμάτων",
+      ),
+      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των τάσεων",
+      ),
+      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των δημοφιλών ετικετών",
+      ),
+      "literalcouldNotLoadYourCommunities":
+          MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των κοινοτήτων σας",
+      ),
+      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των μηνυμάτων σας",
+      ),
+      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η πρόσβαση σε αυτή την κοινότητα",
+      ),
+      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η δημοσίευση αυτής της απάντησης.",
+      ),
+      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η αναζήτηση",
+      ),
+      "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
+          "Δεν ήταν δυνατή η αποσύνδεση: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} σελίδες ανοιχτές",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage(
+        "Φωτογραφία εξωφύλλου",
+      ),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage(
+        "Εξοικονόμηση δεδομένων",
+      ),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage(
+        "Διαγραφή δημοσίευσης",
+      ),
+      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
+        "Ανακαλύψτε άτομα",
+      ),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Μην απαντάτε"),
+      "literaldraftSaved": MessageLookupByLibrary.simpleMessage(
+        "Πρόχειρο αποθηκεύτηκε",
+      ),
+      "literalfeedbackCannotBeSentRightNow":
+          MessageLookupByLibrary.simpleMessage(
+        "Η ανατροφοδότηση δεν μπορεί να σταλεί αυτή τη στιγμή",
+      ),
+      "literalfirstyearIndex": (Object a0) => "${a0}",
+      "literalfontSize": MessageLookupByLibrary.simpleMessage(
+        "Μέγεθος γραμματοσειράς",
+      ),
+      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
+        "Τα GIF δεν έχουν ρυθμιστεί",
+      ),
+      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
+        "Αποστολή σε άλλη εφαρμογή",
+      ),
+      "literalhidePassword": MessageLookupByLibrary.simpleMessage(
+        "Απόκρυψη κωδικού",
+      ),
+      "literalhideThisPost": MessageLookupByLibrary.simpleMessage(
+        "Απόκρυψη αυτής της δημοσίευσης",
+      ),
+      "literalhidesItAndTellsUsToShowFewerLikeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Το αποκρύπτει και μας ζητά να δείχνουμε λιγότερα παρόμοια",
+      ),
+      "literalhowToBehave": MessageLookupByLibrary.simpleMessage(
+        "Πώς να συμπεριφέρεστε",
+      ),
+      "literalindex1": (Object a0) => "${a0}",
+      "literalkeepTyping": MessageLookupByLibrary.simpleMessage(
+        "Συνέχισε να πληκτρολογείς",
+      ),
+      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
+        "Το Kyron δεν απάντησε",
+      ),
+      "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
+      "literallabelDate": (Object a0) => "\\${a0} ημερομηνία",
+      "literalleaveCommunityName": (Object a0) => "Να φύγετε από το ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, φακός προσώπου",
+      "literallikedPosts": MessageLookupByLibrary.simpleMessage(
+        "Δημοσιεύσεις που σας άρεσαν",
+      ),
+      "literallinkCopied": MessageLookupByLibrary.simpleMessage(
+        "Σύνδεσμος αντιγράφηκε",
+      ),
+      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
+        "Ορισμός ως συντονιστής",
+      ),
+      "literalmuteAuthor": (Object a0) => "Σίγαση ${a0}",
+      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
+        "Σίγαση αυτού του νήματος",
+      ),
+      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
+        "Σίγαση λέξεων ή ετικετών",
+      ),
+      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
+        "Λογαριασμοί σε σίγαση και αποκλεισμένοι",
+      ),
+      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
+        "Σε σίγαση. Δεν θα ειδοποιηθείτε.",
+      ),
+      "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
+          "Καμία εφαρμογή σε αυτή τη συσκευή δεν ανοίγει τους συνδέσμους ${a0}.",
+      "literalnoBrowserOnThisDeviceTookThatLink":
+          MessageLookupByLibrary.simpleMessage(
+        "Κανένα πρόγραμμα περιήγησης σε αυτή τη συσκευή δεν άνοιξε αυτόν τον σύνδεσμο.",
+      ),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχει DID ακόμα",
+      ),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν πρόχειρα",
+      ),
+      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν ενδιαφέροντα ακόμα",
+      ),
+      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν likes ακόμα",
+      ),
+      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν μηνύματα ακόμα",
+      ),
+      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν νέοι ακόλουθοι",
+      ),
+      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν αναρτήσεις ακόμα",
+      ),
+      "literalnoRepliesYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν απαντήσεις ακόμα",
+      ),
+      "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν αναδημοσιεύσεις ακόμα",
+      ),
+      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν θέματα ακόμα",
+      ),
+      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
+        "Καμία δημοφιλής ετικέτα δεν ταιριάζει με αυτό",
+      ),
+      "literalnobodyFound": MessageLookupByLibrary.simpleMessage(
+        "Κανένας δεν βρέθηκε",
+      ),
+      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
+        "Κανείς δεν έχει αφαιρεθεί",
+      ),
+      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
+        "Κανείς εδώ ακόμα",
+      ),
+      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
+        "Δεν έμεινε κανείς για πρόταση",
+      ),
+      "literalnormalised": (Object a0) => "#${a0}",
+      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
+        "Δεν ενδιαφέρομαι για αυτό",
+      ),
+      "literalnothingFound": MessageLookupByLibrary.simpleMessage(
+        "Δεν βρέθηκε τίποτα",
+      ),
+      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχει τίποτα δημοφιλές ακόμα",
+      ),
+      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν έχει καταγραφεί τίποτα ακόμα",
+      ),
+      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
+        "Κανένα αποτέλεσμα",
+      ),
+      "literalnothingMuted": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχει τίποτα σε σίγαση",
+      ),
+      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχει τίποτα να δείτε ακόμα",
+      ),
+      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν μη αναγνωσμένα",
+      ),
+      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
+        "Μόνο ο ιδιοκτήτης μπορεί να το αλλάξει",
+      ),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Άνοιγμα απάντησης"),
+      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
+        "Άνοιξε το μήνυμα από τον Kyron",
+      ),
+      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
+        "Κωδικός & Σύνδεση",
+      ),
+      "literalpostInCommunityName": (Object a0) => "Δημοσίευση στο ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Δημοσίευση στο ${a0}",
+      "literalpostItWithYourOwnWordsAboveIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Δημοσιεύστε το με τα δικά σας λόγια από πάνω",
+      ),
+      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "Κύρια γλώσσα",
+      ),
+      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
+        "Ειδοποιήσεις push",
+      ),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Ανάγνωση…"),
+      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
+        "Καταγραφή φωνητικής δημοσίευσης",
+      ),
+      "literalrecordAgain":
+          MessageLookupByLibrary.simpleMessage("Εγγραφή ξανά"),
+      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
+        "Αφαίρεση ως συντονιστής",
+      ),
+      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
+        "Αφαίρεση από την κοινότητα",
+      ),
+      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
+        "Αφαίρεση από τα αποθηκευμένα",
+      ),
+      "literalremoveLabel": (Object a0) => "Κατάργηση ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Κατάργηση ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) =>
+          "Να αφαιρεθεί ο/η ${a0}?",
+      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
+        "Αφαίρεση της ψηφοφορίας",
+      ),
+      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
+        "Κατάργηση αυτής της απάντησης",
+      ),
+      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
+        "Κατάργηση αυτής της συνομιλίας",
+      ),
+      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
+        "Αφαίρεση αυτής της ψηφοφορίας",
+      ),
+      "literalreportAuthor": (Object a0) => "Αναφορά ${a0}",
+      "literalreportPost": MessageLookupByLibrary.simpleMessage(
+        "Αναφορά δημοσίευσης",
+      ),
+      "literalresendCode": MessageLookupByLibrary.simpleMessage(
+        "Αποστολή κωδικού ξανά",
+      ),
+      "literalsavedPosts": MessageLookupByLibrary.simpleMessage(
+        "Αποθηκευμένες δημοσιεύσεις",
+      ),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("Πείτε κάτι"),
+      "literalsaySomethingToWidgetCommunityName": (Object a0) =>
+          "Πείτε κάτι στο ${a0}",
+      "literalsearchFailed": MessageLookupByLibrary.simpleMessage(
+        "Η αναζήτηση απέτυχε",
+      ),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Αποστολή ξανά"),
+      "literalsendAgainInCooldownS": (Object a0) => "Αποστολή ξανά σε ${a0}s",
+      "literalsendFeedback": MessageLookupByLibrary.simpleMessage(
+        "Αποστολή ανατροφοδότησης",
+      ),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage(
+        "Αποστολή του συνδέσμου",
+      ),
+      "literalsentItIsReportFiledNumber": (Object a0) =>
+          "Απεστάλη. Είναι η αναφορά #${a0}.",
+      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
+        "Ορίστε έναν κωδικό και συνεχίστε",
+      ),
+      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
+        "Μοιραστείτε το αρχείο καταγραφής με την υποστήριξη",
+      ),
+      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Μοιραστείτε αυτή την κοινότητα",
+      ),
+      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
+        "Κοινοποίηση αυτής της σελίδας",
+      ),
+      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
+        "Μοιραστείτε αυτό το προφίλ",
+      ),
+      "literalshareVia":
+          MessageLookupByLibrary.simpleMessage("Κοινοποίηση μέσω…"),
+      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
+        "Κοινοποίηση με παράθεση",
+      ),
+      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
+        "Εμφάνιση περισσότερων δημοσιεύσεων όπως αυτή",
+      ),
+      "literalshowPassword": MessageLookupByLibrary.simpleMessage(
+        "Εμφάνιση κωδικού",
+      ),
+      "literalshowResults": MessageLookupByLibrary.simpleMessage(
+        "Εμφάνιση αποτελεσμάτων",
+      ),
+      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
+        "Ξεκινήστε μια κοινότητα",
+      ),
+      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
+        "Έναρξη εγγραφής",
+      ),
+      "literalstopLoading": MessageLookupByLibrary.simpleMessage(
+        "Διακοπή φόρτωσης",
+      ),
+      "literalstopSeeingThisPostAndRepliesToIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Σταματήστε να βλέπετε αυτή τη δημοσίευση και τις απαντήσεις της",
+      ),
+      "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
+          "Κορδέλα ιστοριών, ${a0} στοιχεία",
+      "literalswitchCamera":
+          MessageLookupByLibrary.simpleMessage("Αλλαγή κάμερας"),
+      "literaltagSomeone": MessageLookupByLibrary.simpleMessage(
+        "Επισήμανση κάποιου",
+      ),
+      "literaltakeAPicture": MessageLookupByLibrary.simpleMessage(
+        "Τραβήξτε φωτογραφία",
+      ),
+      "literaltapTheBannerOrThePictureToChangeIt":
+          MessageLookupByLibrary.simpleMessage(
+        "Πατήστε το πανό ή την εικόνα για να το αλλάξετε",
+      ),
+      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
+        "Πατήστε τον σύνδεσμο μέσα στο μήνυμα",
+      ),
+      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
+        "Πατήστε για να προσθέσετε μια φωτογραφία και εξώφυλλο",
+      ),
+      "literalthatDidNotGoThroughTryAgain":
+          MessageLookupByLibrary.simpleMessage(
+        "Αυτό δεν ολοκληρώθηκε. Προσπαθήστε ξανά.",
+      ),
+      "literalthatGifCouldNotBeDownloaded":
+          MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η λήψη αυτού του GIF.",
+      ),
+      "literalthatLinkIsNotOneThisCanOpen":
+          MessageLookupByLibrary.simpleMessage(
+        "Αυτός ο σύνδεσμος δεν μπορεί να ανοίξει εδώ.",
+      ),
+      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
+        "Η κάμερα είναι κλειστή",
+      ),
+      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
+        "Αυτή η κοινότητα",
+      ),
+      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
+        "Αυτή η απάντηση δεν υπάρχει πλέον",
+      ),
+      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
+        "Μετάφραση δημοσίευσης",
+      ),
+      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage(
+        "Απενεργοποίηση ήχου",
+      ),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage(
+        "Ενεργοποίηση ήχου",
+      ),
+      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
+        "Χρησιμοποιήστε ένα από τα δικά μας",
+      ),
+      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
+        "Ο κωδικός επαλήθευσης στάλθηκε ξανά.",
+      ),
+      "literalverificationFailedDescribeapierrorE": (Object a0) =>
+          "Η επαλήθευση απέτυχε: ${a0}",
+      "literalverifyEmail": MessageLookupByLibrary.simpleMessage(
+        "Επαλήθευση ηλεκτρονικού ταχυδρομείου",
+      ),
+      "literalviewersLikesSavesAndComments":
+          MessageLookupByLibrary.simpleMessage(
+        "Προβολές, επισημάνσεις «Μου αρέσει», αποθηκεύσεις και σχόλια",
+      ),
+      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
+        "Τι διατηρεί ο Kyron",
+      ),
+      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
+        "Τι έχει κάνει αυτή η εφαρμογή",
+      ),
+      "literalwhatYouDidWhatYouExpectedWhatHappened":
+          MessageLookupByLibrary.simpleMessage(
+        "Τι κάνατε, τι περιμένατε, τι συνέβη",
+      ),
+      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
+        "Ό,τι δημοσιεύετε είναι δικό σας",
+      ),
+      "literalwhetherKyronIsReachableRightNow":
+          MessageLookupByLibrary.simpleMessage(
+        "Αν το Kyron είναι προσβάσιμο αυτή τη στιγμή",
+      ),
+      "literalwhoCanReply": MessageLookupByLibrary.simpleMessage(
+        "Ποιος μπορεί να απαντήσει",
+      ),
+      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
+        "Ποιον θέλετε να επισημάνετε;",
+      ),
+      "literalyouAlreadyFollowEveryTrendingTag":
+          MessageLookupByLibrary.simpleMessage(
+        "Ακολουθείτε ήδη όλες τις δημοφιλείς ετικέτες",
+      ),
+      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "Είστε ενημερωμένοι",
+      ),
+      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
+        "Δεν είστε σε καμία κοινότητα",
+      ),
+      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
+        "Έχετε αποσυνδεθεί.",
+      ),
+      "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
+        "you@example.com",
+      ),
+      "literalyouHaveLeftCommunityName": (Object a0) =>
+          "Έχετε φύγει από το ${a0}",
+      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν έχετε δημοσιεύσει ακόμα",
+      ),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Φόρτωση περισσότερων"),
+      "logCleared": MessageLookupByLibrary.simpleMessage(
+        "Το αρχείο καταγραφής διαγράφηκε",
+      ),
+      "logCopied": MessageLookupByLibrary.simpleMessage(
+        "Το αρχείο καταγραφής αντιγράφηκε",
+      ),
+      "logIn": MessageLookupByLibrary.simpleMessage("Σύνδεση"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Αποσύνδεση"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Αποσύνδεση;"),
+      "login": MessageLookupByLibrary.simpleMessage("Σύνδεση"),
+      "loginFailed": MessageLookupByLibrary.simpleMessage(
+        "Η σύνδεση απέτυχε. Ελέγξτε τα στοιχεία σας.",
+      ),
+      "manage": MessageLookupByLibrary.simpleMessage("Διαχείριση"),
+      "menu": MessageLookupByLibrary.simpleMessage("Μενού"),
+      "message": MessageLookupByLibrary.simpleMessage("Μήνυμα"),
+      "messages": MessageLookupByLibrary.simpleMessage("Μηνύματα"),
+      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
+        "Όλες οι συνομιλίες είναι ενημερωμένες.",
+      ),
+      "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
+        "Ανοίξτε το προφίλ κάποιου και πατήστε Μήνυμα για να ξεκινήσετε μια συνομιλία.",
+      ),
+      "mute": MessageLookupByLibrary.simpleMessage("Σίγαση"),
+      "mutedAndBlocked": MessageLookupByLibrary.simpleMessage(
+        "Σιωπημένο και αποκλεισμένο",
+      ),
+      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
+        "Σιωπημένες λέξεις και ετικέτες",
+      ),
+      "name": MessageLookupByLibrary.simpleMessage("Όνομα"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Οθόνη"),
+      "newEmailAddress": MessageLookupByLibrary.simpleMessage(
+        "Νέα διεύθυνση email",
+      ),
+      "newPassword":
+          MessageLookupByLibrary.simpleMessage("Νέος κωδικός πρόσβασης"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Νέα δημοσίευση"),
+      "normalised": (Object a0) => "#\\${a0}",
+      "notNow": MessageLookupByLibrary.simpleMessage("Όχι τώρα"),
+      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
+        "Δεν στάλθηκε. Πατήστε για να δοκιμάσετε ξανά",
+      ),
+      "nothingMatchesQuery": (Object a0) =>
+          "Τίποτα στο Kyron δεν ταιριάζει με \"${a0}\"",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχει τίποτα για αντιγραφή",
+      ),
+      "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Τα likes, οι απαντήσεις και οι νέοι ακόλουθοι εμφανίζονται εδώ καθώς έρχονται.",
+      ),
+      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
+        "Οι χρήστες που σας ακολουθούν εμφανίζονται εδώ.",
+      ),
+      "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
+        "Όταν κάποιος κάνει like σε μία από τις δημοσιεύσεις σας, εμφανίζεται εδώ.",
+      ),
+      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
+        "Οι απαντήσεις στις δημοσιεύσεις σας εμφανίζονται εδώ.",
+      ),
+      "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
+        "Όταν κάποιος αναδημοσιεύει κάτι δικό σας, εμφανίζεται εδώ.",
+      ),
+      "notifications": MessageLookupByLibrary.simpleMessage("Ειδοποιήσεις"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage(
+        "Άνοιγμα στο πρόγραμμα περιήγησης",
+      ),
+      "or": MessageLookupByLibrary.simpleMessage("ή"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Η σελίδα δεν βρέθηκε"),
+      "password": MessageLookupByLibrary.simpleMessage("Κωδικός πρόσβασης"),
+      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+        "Ο κωδικός πρόσβασης είναι πολύ σύντομος",
+      ),
+      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Ακολουθείτε ήδη όλους όσους θα έβαζε εδώ ο Kyron.",
+      ),
+      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
+        "Επιλέξτε τα ενδιαφέροντά σας",
+      ),
+      "post": MessageLookupByLibrary.simpleMessage("Δημοσίευση"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage(
+        "Αναλύσεις δημοσίευσης",
+      ),
+      "postInCommunity": (Object a0) => "Δημοσίευση στην ${a0}",
+      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
+        "Δημοσίευσέ το, πες το, δείξ' το.",
+      ),
+      "postTextCopied": MessageLookupByLibrary.simpleMessage(
+        "Το κείμενο της δημοσίευσης αντιγράφηκε",
+      ),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Πολιτική Απορρήτου"),
+      "profileUpdated": MessageLookupByLibrary.simpleMessage(
+        "Το προφίλ ενημερώθηκε",
+      ),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Βιογραφικό"),
+      "profile_display_name": MessageLookupByLibrary.simpleMessage(
+        "Εμφανιζόμενο όνομα",
+      ),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Τοποθεσία"),
+      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
+        "Πατήστε για να αλλάξετε",
+      ),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Ιστοσελίδα"),
+      "pushNotifications": MessageLookupByLibrary.simpleMessage(
+        "Ειδοποιήσεις push",
+      ),
+      "quote": MessageLookupByLibrary.simpleMessage("Παράθεση"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Παράθεση δημοσίευσης"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage(
+        "Επικοινωνήστε με κάποιον",
+      ),
+      "remove": MessageLookupByLibrary.simpleMessage("Αφαίρεση"),
+      "removeConversation": MessageLookupByLibrary.simpleMessage(
+        "Να αφαιρεθεί αυτή η συνομιλία?",
+      ),
+      "removeMember": (Object a0) => "Να αφαιρεθεί ο/η ${a0}?",
+      "removeMessage": MessageLookupByLibrary.simpleMessage(
+        "Να διαγραφεί αυτό το μήνυμα?",
+      ),
+      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
+        "Απαντήσεις, ακολουθήσεις και αναφορές",
+      ),
+      "repliesPolicy": (Object a0) => "Απαντήσεις: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Απάντηση"),
+      "reply_anyone": MessageLookupByLibrary.simpleMessage(
+        "Οποιοσδήποτε μπορεί να αλληλεπιδράσει",
+      ),
+      "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
+        "Ο καθένας μπορεί ακόμα να δει, να αναδημοσιεύσει και να παραθέσει αυτή τη δημοσίευση.",
+      ),
+      "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
+        "Οποιοσδήποτε στο Kyron μπορεί να απαντήσει σε αυτή τη δημοσίευση.",
+      ),
+      "reply_followers": MessageLookupByLibrary.simpleMessage(
+        "Άτομα που σας ακολουθούν",
+      ),
+      "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
+        "Μόνο τα άτομα που σας ακολουθούν μπορούν να απαντήσουν σε αυτή τη δημοσίευση.",
+      ),
+      "reply_mentioned": MessageLookupByLibrary.simpleMessage(
+        "Άτομα που αναφέρετε",
+      ),
+      "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
+        "Μόνο τα άτομα που αναφέρετε με @ σε αυτή τη δημοσίευση μπορούν να απαντήσουν.",
+      ),
+      "reply_nobody": MessageLookupByLibrary.simpleMessage(
+        "Κανείς δεν μπορεί να απαντήσει",
+      ),
+      "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
+        "Οι απαντήσεις έχουν απενεργοποιηθεί. Εσείς μπορείτε ακόμα να απαντήσετε.",
+      ),
+      "reply_who_can_reply": MessageLookupByLibrary.simpleMessage(
+        "Ποιος μπορεί να απαντήσει;",
+      ),
+      "report": MessageLookupByLibrary.simpleMessage("Αναφορά"),
+      "reportCopied": MessageLookupByLibrary.simpleMessage(
+        "Η αναφορά αντιγράφηκε. Επικολλήστε την σε ένα email προς την υποστήριξη.",
+      ),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Η αναφορά εστάλη"),
+      "repost": MessageLookupByLibrary.simpleMessage("Επαναδημοσίευση"),
+      "reset": MessageLookupByLibrary.simpleMessage("Επαναφορά"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage(
+        "Επαναφορά κωδικού πρόσβασης",
+      ),
+      "retry": MessageLookupByLibrary.simpleMessage("Επανάληψη"),
+      "save": MessageLookupByLibrary.simpleMessage("Αποθήκευση"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Αποθήκευση πρόχειρου"),
+      "saySomething": (Object a0) => "Πες κάτι στην ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Αναζήτηση"),
+      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
+        "Αναζήτηση με όνομα ή όνομα χρήστη",
+      ),
+      "searchCommunities": MessageLookupByLibrary.simpleMessage(
+        "Αναζήτηση κοινοτήτων",
+      ),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Αναζήτηση GIFs"),
+      "searchLanguages":
+          MessageLookupByLibrary.simpleMessage("Αναζήτηση γλωσσών"),
+      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
+        "Αναζήτηση δημοφιλών ετικετών",
+      ),
+      "securityAlerts": MessageLookupByLibrary.simpleMessage(
+        "Συναγερμοί ασφάλειας και αλλαγές λογαριασμού",
+      ),
+      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
+        "Επιλέξτε ποια γλώσσα θα χρησιμοποιηθεί για το περιβάλλον χρήστη της εφαρμογής.",
+      ),
+      "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
+        "Επιλέξτε ποιες γλώσσες θέλετε να περιλαμβάνουν τα συνδρομημένα σας feeds. Αν δεν επιλεγεί καμία, θα εμφανιστούν όλες οι γλώσσες.",
+      ),
+      "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
+        "Επιλέξτε την προτιμώμενη γλώσσα για τις μεταφράσεις στο feed σας.",
+      ),
+      "send": MessageLookupByLibrary.simpleMessage("Αποστολή"),
+      "sendConfirmation": MessageLookupByLibrary.simpleMessage(
+        "Αποστολή επιβεβαίωσης",
+      ),
+      "sendErrorReport": MessageLookupByLibrary.simpleMessage(
+        "Αποστολή αναφοράς σφάλματος",
+      ),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Αποστολή σχολίων"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Αποστολή αναφοράς"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage(
+        "Αποστολή στην υποστήριξη",
+      ),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("Κατάσταση υπηρεσίας"),
+      "settings": MessageLookupByLibrary.simpleMessage("Ρυθμίσεις"),
+      "shareAppLog": MessageLookupByLibrary.simpleMessage(
+        "Μοιραστείτε το αρχείο καταγραφής της εφαρμογής με την υποστήριξη",
+      ),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Σύνδεση στο Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Συνδεδεμένος ως"),
+      "signupFailed": (Object a0) => "Η εγγραφή απέτυχε: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Παραμείνετε"),
+      "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
+        "Ο Kyron είναι σε πρώιμο στάδιο, και ο ταχύτερος τρόπος να φτάσετε σε κάποιον που μπορεί να διορθώσει το πρόβλημα είναι να ανοίξετε ένα issue. Συμπεριλάβετε τι κάνατε και τι συνέβη αντί γι' αυτό.",
+      ),
+      "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχει ακόμη inbox υποστήριξης μέσα στην εφαρμογή, οπότε αυτή η οθόνη δείχνει στο μέρος που παρακολουθείται πραγματικά αντί για μια φόρμα που δεν οδηγεί κάπου.",
+      ),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Καταγραφή συστήματος"),
+      "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
+        "Πείτε μας τι λείπει ή τι δεν λειτουργεί",
+      ),
+      "terms": MessageLookupByLibrary.simpleMessage("Όροι"),
+      "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
+        "Κείμενο, φωνή και βίντεο, οι άνθρωποι που τα δημιουργούν, και τα δωμάτια στα οποία μιλούν.",
+      ),
+      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
+        "Ο συντάκτης δεν έχει κουμπί 'Δημοσίευση'",
+      ),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Σκούρο"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Πάντα σκοτεινό"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Αμυδρό"),
+      "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+        "Πιο απαλό σκούρο, μπλε-γκρι αντί για μαύρο",
+      ),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Φωτεινό"),
+      "theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Πάντα φωτεινό"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Σύστημα"),
+      "theme_system_detail": MessageLookupByLibrary.simpleMessage(
+        "Ακολουθεί την ρύθμιση φωτεινού/σκοτεινού του τηλεφώνου",
+      ),
+      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
+        "Τα θέματα διαμορφώνονται από τον Kyron και αυτήν τη στιγμή δεν υπάρχουν. Επιστρέψτε σύντομα.",
+      ),
+      "translate": MessageLookupByLibrary.simpleMessage("Μετάφραση"),
+      "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
+        "Η μετάφραση δεν έχει ακόμα υλοποιηθεί. Τίποτα στο feed σας δεν μεταφράζεται σήμερα· αυτό θα θυμάται όταν λειτουργήσει.",
+      ),
+      "translation_description": MessageLookupByLibrary.simpleMessage(
+        "Τα ίδια τα λόγια του Kyron μεταφράζονται ακόμα, οπότε οι περισσότερες οθόνες παραμένουν στα Αγγλικά προς το παρόν. Τι αλλάζει σήμερα: τα μέρη της διεπαφής που σχεδιάζει το Flutter, οι ημερομηνίες και οι αριθμοί, και η κατεύθυνση διάταξης της εφαρμογής για γλώσσες που γράφονται από δεξιά προς τα αριστερά.",
+      ),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Δοκιμάστε ξανά"),
+      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
+        "Πολιτική Απορρήτου",
+      ),
+      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
+        "Όροι Παροχής Υπηρεσιών",
+      ),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Λογαριασμός"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Μετά"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Εφαρμογή & Συσκευή"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Εμφάνιση"),
+      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
+        "Φωτεινό, σκοτεινό, ή ό,τι έχει ρυθμιστεί στο τηλέφωνο",
+      ),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Πριν"),
+      "ui_block_detail": MessageLookupByLibrary.simpleMessage(
+        "Κανείς από τους δύο δεν θα βλέπει τον άλλον στο Kyron, και οποιαδήποτε ακολουθία μεταξύ σας αφαιρείται. Δεν ειδοποιούνται.",
+      ),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Κουβαλώντας"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Κοινότητες"),
+      "ui_communities_screen_what_is_it_for_optional_39b687":
+          MessageLookupByLibrary.simpleMessage(
+              "Για τι προορίζεται; (προαιρετικό)"),
+      "ui_content_display": MessageLookupByLibrary.simpleMessage(
+        "Περιεχόμενο & Εμφάνιση",
+      ),
+      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση της ροής σας",
+      ),
+      "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των δημοσιεύσεων που σας άρεσαν",
+      ),
+      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση του προφίλ σας",
+      ),
+      "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
+        "Δεν ήταν δυνατή η φόρτωση των αποθηκευμένων σας δημοσιεύσεων",
+      ),
+      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
+        "Decentralized ID",
+      ),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Διαγνωστικά"),
+      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Τίποτα εδώ ακόμα"),
+      "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
+        "Ακολουθήστε μερικούς λογαριασμούς και οι δημοσιεύσεις τους θα εμφανιστούν εδώ.",
+      ),
+      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
+        "Τίποτα από τους ανθρώπους που ακολουθείτε",
+      ),
+      "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
+        "Οι δημοσιεύσεις θα εμφανίζονται εδώ καθώς οι άνθρωποι τις γράφουν.",
+      ),
+      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
+        "Οι δημοσιεύσεις που περιέχουν κλιπ θα εμφανιστούν εδώ.",
+      ),
+      "ui_feed_videos_empty": MessageLookupByLibrary.simpleMessage(
+        "Δεν υπάρχουν βίντεο ακόμη",
+      ),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Σχόλια"),
+      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
+        "Βρείτε άτομα στο Kyron",
+      ),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage(
+        "Από έναν λογαριασμό",
+      ),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Βοήθεια"),
+      "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
+        "Σημειώθηκε. Αυτό βοηθάει στο να καθοριστεί τι σας εμφανίζεται.",
+      ),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Γίνε μέλος"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Εγγράφηκε"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Γλώσσα"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Νομικά"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Μου αρέσει"),
+      "ui_liked_posts": MessageLookupByLibrary.simpleMessage(
+        "Δημοσιεύσεις που σας άρεσαν",
+      ),
+      "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "Οι δημοσιεύσεις που σας αρέσουν εμφανίζονται εδώ, από τις πιο πρόσφατες πρώτες.",
+      ),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage(
+        "Ο σύνδεσμος αντιγράφηκε",
+      ),
+      "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
+        "Θα σταματήσετε να βλέπετε τις δημοσιεύσεις τους. Δεν ειδοποιούνται.",
+      ),
+      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage(
+        "Κανένα 'μου αρέσει' ακόμη",
+      ),
+      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
+        "Καμία ανάρτηση δεν ταιριάζει με αυτά τα φίλτρα.",
+      ),
+      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
+        "Δεν έχετε αποθηκεύσει τίποτα ακόμη",
+      ),
+      "ui_onboard_step3_screen_finish_5c0ad8":
+          MessageLookupByLibrary.simpleMessage(
+        "Ολοκλήρωση",
+      ),
+      "ui_onboard_step3_screen_skip_7b13d8":
+          MessageLookupByLibrary.simpleMessage(
+        "Παράλειψη",
+      ),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Παύση"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Αναπαραγωγή"),
+      "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
+        "Αφαιρείται από το προφίλ σας και από τη ροή όλων των άλλων. Οι απαντήσεις σε αυτήν αφαιρούνται μαζί της.",
+      ),
+      "ui_post_deleted": MessageLookupByLibrary.simpleMessage(
+        "Δημοσίευση διαγράφηκε",
+      ),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage(
+        "Δημοσίευση αποκρύφθηκε",
+      ),
+      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
+        "Το κείμενο της δημοσίευσης αντιγράφηκε",
+      ),
+      "ui_posted_between": MessageLookupByLibrary.simpleMessage(
+        "Δημοσιεύτηκε μεταξύ",
+      ),
+      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
+        "Αποκρύφθηκε. Θα σας δείχνουμε λιγότερα παρόμοια.",
+      ),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Προτιμήσεις"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Απόρρητο"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage(
+        "Αποθηκευμένες δημοσιεύσεις",
+      ),
+      "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
+        "Πατήστε το εικονίδιο αρχειοθέτησης σε οποιαδήποτε δημοσίευση για να την κρατήσετε εδώ. Μόνο εσείς μπορείτε να δείτε ό,τι αποθηκεύετε.",
+      ),
+      "ui_search_by_handle_or_display_name":
+          MessageLookupByLibrary.simpleMessage(
+        "Αναζήτηση με όνομα χρήστη ή εμφανιζόμενο όνομα.",
+      ),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Εκκαθάριση"),
+      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
+        "Αναζήτηση σε όλες τις δημοσιεύσεις",
+      ),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Φίλτρα"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Αναζήτηση ατόμων"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage(
+        "Αναζήτηση δημοσιεύσεων",
+      ),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Ρυθμίσεις"),
+      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
+        "Εφαρμογή & Συσκευή",
+      ),
+      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
+        "Περιεχόμενο & Εμφάνιση",
+      ),
+      "ui_settings_data_saver": MessageLookupByLibrary.simpleMessage(
+        "Εξοικονόμηση Δεδομένων",
+      ),
+      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
+        "Πείτε μας τη γνώμη σας",
+      ),
+      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
+        "Περιηγηθείτε σε άρθρα βοήθειας",
+      ),
+      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
+        "Επιλέξτε τη γλώσσα σας",
+      ),
+      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
+        "Άτομα που έχετε θέσει σε σίγαση ή έχετε αποκλείσει",
+      ),
+      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
+        "Προτιμήσεις ειδοποιήσεων",
+      ),
+      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
+        "Το προφίλ και τα στοιχεία επικοινωνίας σας",
+      ),
+      "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
+          MessageLookupByLibrary.simpleMessage(
+        "Θα χρειαστεί να συνδεθείτε ξανά για να επανέλθετε στο λογαριασμό σας.",
+      ),
+      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
+        "Ρυθμίσεις ασφαλείας",
+      ),
+      "ui_settings_subscreens_confirm_password_41d040":
+          MessageLookupByLibrary.simpleMessage("Επιβεβαίωση κωδικού"),
+      "ui_settings_subscreens_in_one_line_06bdaf":
+          MessageLookupByLibrary.simpleMessage("Σε μία γραμμή"),
+      "ui_settings_subscreens_new_email_address_dab96e":
+          MessageLookupByLibrary.simpleMessage("Νέα διεύθυνση email"),
+      "ui_settings_subscreens_new_password_88c1bf":
+          MessageLookupByLibrary.simpleMessage("Νέος κωδικός"),
+      "ui_settings_subscreens_what_happened_977dd8":
+          MessageLookupByLibrary.simpleMessage("Τι συνέβη"),
+      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
+        "Λάβετε βοήθεια από την ομάδα μας",
+      ),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Κοινοποίηση"),
+      "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
+        "Μοιραστείτε αυτή τη δημοσίευση",
+      ),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Όροι"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("αυτή η δημοσίευση"),
+      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Νήμα σε σίγαση"),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage(
+        "Απενεργοποίηση ήχου",
+      ),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("Ενεργοποίηση ήχου"),
+      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
+        "Δύο χαρακτήρες ή περισσότεροι.",
+      ),
+      "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
+        "Λέξεις, ή ένα φίλτρο — ένας λογαριασμός, εύρος ημερομηνιών ή τι περιέχει μια δημοσίευση.",
+      ),
+      "undoRepost": MessageLookupByLibrary.simpleMessage(
+        "Αναίρεση επαναδημοσίευσης",
+      ),
+      "updatePassword": MessageLookupByLibrary.simpleMessage(
+        "Ενημέρωση κωδικού πρόσβασης",
+      ),
+      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
+        "Χρησιμοποιήστε διαφορετική διεύθυνση",
+      ),
+      "username": MessageLookupByLibrary.simpleMessage("Όνομα χρήστη"),
+      "usernameRule": MessageLookupByLibrary.simpleMessage(
+        "Το όνομα χρήστη πρέπει να είναι με πεζά (a-z, 0-9, _)",
+      ),
+      "video": MessageLookupByLibrary.simpleMessage("Βίντεο"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Επισύναψη"),
+      "voice_ready_attach": MessageLookupByLibrary.simpleMessage(
+        "Έτοιμο για επισύναψη",
+      ),
+      "voice_record_post": MessageLookupByLibrary.simpleMessage(
+        "Καταγράψτε μια φωνητική δημοσίευση",
+      ),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Ηχογράφηση…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Διακοπή"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Τι συνέβη"),
+      "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
+        "Τι συνέβη, και τι να ελέγξουμε?",
+      ),
+      "whatInPicture": MessageLookupByLibrary.simpleMessage(
+        "Τι υπάρχει σε αυτή την εικόνα?",
+      ),
+      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
+        "Για τι είναι; (προαιρετικό)",
+      ),
+      "whatYouDid": MessageLookupByLibrary.simpleMessage(
+        "Τι κάνατε, τι περιμένατε, τι συνέβη",
+      ),
+      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
+        "Τι κάνατε όταν συνέβη.",
+      ),
+    };
+
+final messageLookup = MessageLookup();
