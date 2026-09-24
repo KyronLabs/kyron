@@ -82,6 +82,8 @@ class AppLocalizations {
       Intl.message('attachSystemLog', name: 'attachSystemLog');
   String get aWordPhraseOrTag =>
       Intl.message('aWordPhraseOrTag', name: 'aWordPhraseOrTag');
+  String get agreeAndContinue =>
+      Intl.message('agreeAndContinue', name: 'agreeAndContinue');
   String get block => Intl.message('block', name: 'block');
   String blockAuthor(String author) =>
       Intl.message('blockAuthor', name: 'blockAuthor', args: [author]);
