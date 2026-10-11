@@ -12,6 +12,33 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Messages arrived as "This message cannot be read on this device."** Each
+  message was sealed under whichever single key the server listed first, and
+  the list included the sender's own key and had no order. When the sender's
+  came first, the message was sealed with a secret only the sender could
+  compute: they read everything they sent, and the person they sent it to read
+  none of it. Messages are now sealed once and the key wrapped for every
+  device in the conversation — the other person's and your own — in a new
+  `k2` format that also opens without a network request. Messages already
+  sealed the wrong way stay unreadable to their recipient; the key that would
+  open them exists only on the sender's phone. `docs/E2EE.md` has the detail.
+
+- **No notification while the app was in the background.** A push was sent
+  only to people with no socket open, but Android keeps a backgrounded app's
+  socket alive for minutes, so a message that arrived with the screen off went
+  to a socket nobody was looking at. Every push is sent now, and the phone —
+  which hands a notification to an app that is in front instead of showing it
+  — decides. `GET /health` also says whether push is configured at all, since
+  without `FCM_SERVICE_ACCOUNT_JSON` nothing is delivered and the only symptom
+  is silence.
+
+- **Long messages in Japanese, Hindi, Arabic and other scripts would not
+  send.** The 4,000-character limit was applied to the sealed body, which is
+  several times longer than what was typed when a character takes three bytes.
+  The limit is now on what is typed, and sealed bodies have their own ceiling.
+
 ### Added
 
 - **Reactions, "is typing", and "New messages" in chats.** Double-tap a

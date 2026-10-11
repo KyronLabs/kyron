@@ -4,12 +4,21 @@ import { RealtimeEvent, RealtimeService } from '../realtime/realtime.service';
 import { PushMessage, PushService } from './push.service';
 
 /**
- * Tells somebody something, by whichever route will reach them.
+ * Tells somebody something, by every route that might reach them.
  *
- * The socket if they have the app open, a push if they do not. Both would be
- * a phone that buzzes for a message already on screen, so the socket wins
- * where it can -- and the check is per person, not per event, because two
- * people in the same conversation are rarely in the same place.
+ * Over the socket, so an open app updates at once, and as a push, so a phone
+ * in a pocket hears about it.
+ *
+ * This used to send the push only to people with no socket open, on the
+ * reasoning that an open socket meant the app was on screen. It does not.
+ * Android keeps a backgrounded app's process -- and its socket -- alive for
+ * minutes, so a message that arrived with the screen off or another app in
+ * front went to a socket nobody was looking at, and nothing buzzed. The
+ * socket cannot tell an app on screen from one in the background; the phone
+ * can, and it already does the right thing with the push: a notification
+ * that arrives while the app is in front is handed to the app rather than
+ * shown, and this app shows nothing for one. So both, always, and the phone
+ * decides.
  */
 @Injectable()
 export class DeliveryService {
@@ -18,15 +27,14 @@ export class DeliveryService {
     private readonly push: PushService,
   ) {}
 
-  /** One person. [push] is what their phone shows if they are not connected. */
+  /** One person. [push] is what their phone shows when the app is not in
+   * front. */
   tell(userId: string, event: RealtimeEvent, push?: PushMessage): void {
     this.realtime.emitTo(userId, event);
-    if (push && !this.realtime.isConnected(userId)) {
-      this.pushLater(userId, push);
-    }
+    if (push) this.pushLater(userId, push);
   }
 
-  /** The same to several people, each by whichever route reaches them. */
+  /** The same to several people. */
   tellMany(
     userIds: readonly string[],
     event: RealtimeEvent,
@@ -34,9 +42,7 @@ export class DeliveryService {
   ): void {
     this.realtime.emitToMany(userIds, event);
     if (!push) return;
-    for (const userId of new Set(userIds)) {
-      if (!this.realtime.isConnected(userId)) this.pushLater(userId, push);
-    }
+    for (const userId of new Set(userIds)) this.pushLater(userId, push);
   }
 
   /**
