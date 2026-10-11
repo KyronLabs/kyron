@@ -1277,6 +1277,41 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Просмотрено"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Отправка…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Сделать фото"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Другие действия"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Сохранить на устройство"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Поделиться"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Сохранение…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Сохранено в фото"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Не удалось сохранить. Попробуйте ещё раз."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Разрешите Kyron добавлять в ваши фото, чтобы сохранить это."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Все системы работают"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Доступность"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Последние 60 дней"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 дней назад"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Сегодня"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("База данных"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Вход"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Недавние инциденты"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "За последние 60 дней инцидентов не было."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Продолжается"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Нет данных"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Подробности"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron проверяет себя каждые 5 минут, пока работает. В серый день проверок не было."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "История доступности пока недоступна."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "В некоторых системах есть проблемы"),
     };
 
 final messageLookup = MessageLookup();

@@ -1278,6 +1278,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Դիտված է"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Ուղարկվում է…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Լուսանկարել"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Այլ տարբերակներ"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Պահել սարքում"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Կիսվել"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Պահվում է…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Պահվեց ձեր լուսանկարներում"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց պահել։ Կրկին փորձեք։"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Թույլ տվեք Kyron-ին ավելացնել ձեր լուսանկարներին՝ սա պահելու համար։"),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Բոլոր համակարգերն աշխատում են"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Աշխատաժամանակ"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Վերջին 60 օրը"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 օր առաջ"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Այսօր"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Տվյալների բազա"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Մուտք"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Վերջին միջադեպեր"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Վերջին 60 օրում միջադեպեր չեն եղել։"),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Ընթացքի մեջ"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Տվյալներ չկան"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Մանրամասներ"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ն աշխատելիս ամեն 5 րոպեն մեկ ստուգում է իրեն։ Մոխրագույն օրը ստուգումներ չեն եղել։"),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Աշխատաժամանակի պատմությունը դեռ հասանելի չէ։"),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Որոշ համակարգերում խնդիրներ կան"),
     };
 
 final messageLookup = MessageLookup();

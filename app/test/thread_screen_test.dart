@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -162,6 +163,12 @@ double? _fontSizeOf(WidgetTester tester, String text) =>
     tester.widget<Text>(find.text(text)).style?.fontSize;
 
 void main() {
+  // The vault reads this device's key from secure storage when nothing has
+  // unlocked it. An empty store is a phone with no key yet -- which is what
+  // these screens are drawn against -- and without one the read goes to a
+  // platform channel no test has.
+  setUp(() => FlutterSecureStorage.setMockInitialValues({}));
+
   testWidgets('a message of only emoji is drawn large; with words it is not',
       (tester) async {
     await _open(tester, [
@@ -433,8 +440,6 @@ void main() {
       ),
     ]);
 
-    final grid = tester.widget<MediaGrid>(find.byType(MediaGrid));
-    expect(grid.maxTiles, 3);
     expect(find.text('+1'), findsOneWidget);
     // Not inside the coloured bubble: that drew a frame of it round every
     // photo. The words still have their bubble, under the pictures.

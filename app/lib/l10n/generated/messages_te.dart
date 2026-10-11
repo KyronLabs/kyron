@@ -1278,6 +1278,41 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("చూడబడింది"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("పంపుతోంది…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("ఫోటో తీయండి"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("మరిన్ని ఎంపికలు"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("పరికరంలో సేవ్ చేయండి"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("షేర్ చేయండి"),
+      "ui_media_saving":
+          MessageLookupByLibrary.simpleMessage("సేవ్ చేస్తోంది…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("మీ ఫోటోలలో సేవ్ చేయబడింది"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "సేవ్ చేయడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "దీన్ని సేవ్ చేయడానికి మీ ఫోటోలకు జోడించేందుకు Kyron ను అనుమతించండి."),
+      "ui_status_all_ok": MessageLookupByLibrary.simpleMessage(
+          "అన్ని సిస్టమ్‌లు పనిచేస్తున్నాయి"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("అప్‌టైమ్"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("గత 60 రోజులు"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 రోజుల క్రితం"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("ఈ రోజు"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("డేటాబేస్"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("సైన్ ఇన్"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("ఇటీవలి సంఘటనలు"),
+      "ui_status_no_incidents":
+          MessageLookupByLibrary.simpleMessage("గత 60 రోజుల్లో సంఘటనలు లేవు."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("కొనసాగుతోంది"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("డేటా లేదు"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("వివరాలు"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron నడుస్తున్నప్పుడు ప్రతి 5 నిమిషాలకు తనను తాను తనిఖీ చేసుకుంటుంది. బూడిద రంగు రోజున తనిఖీలు జరగలేదు."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "అప్‌టైమ్ చరిత్ర ఇంకా అందుబాటులో లేదు."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "కొన్ని సిస్టమ్‌లలో సమస్యలు ఉన్నాయి"),
     };
 
 final messageLookup = MessageLookup();

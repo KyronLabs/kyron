@@ -1276,6 +1276,44 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Enviando…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Sacar unha foto"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Máis opcións"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Gardar no dispositivo"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Compartir"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Gardando…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Gardado nas túas fotos"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Non se puido gardar. Téntao de novo."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Permite que Kyron engada ás túas fotos para gardar isto."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Todos os sistemas funcionan"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Dispoñibilidade"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Últimos 60 días"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Hai 60 días"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Hoxe"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Base de datos"),
+      "ui_status_auth":
+          MessageLookupByLibrary.simpleMessage("Inicio de sesión"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Incidencias recentes"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Ningunha incidencia nos últimos 60 días."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("En curso"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Sen datos"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Detalles"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron compróbase cada 5 minutos mentres está en marcha. Un día gris non tivo comprobacións."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "O historial de dispoñibilidade aínda non está dispoñible."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Algúns sistemas teñen problemas"),
     };
 
 final messageLookup = MessageLookup();

@@ -1275,6 +1275,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Nähty"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Lähetetään…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Ota kuva"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("Lisää vaihtoehtoja"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Tallenna laitteelle"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Jaa"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Tallennetaan…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Tallennettu kuviisi"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Tallennus epäonnistui. Yritä uudelleen."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Anna Kyronin lisätä kuviisi, jotta voit tallentaa tämän."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Kaikki järjestelmät toimivat"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Käytettävyys"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Viimeiset 60 päivää"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 päivää sitten"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Tänään"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Tietokanta"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Kirjautuminen"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Viimeaikaiset häiriöt"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Ei häiriöitä viimeisten 60 päivän aikana."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Käynnissä"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Ei tietoja"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Tiedot"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron tarkistaa itsensä 5 minuutin välein ollessaan käynnissä. Harmaana päivänä tarkistuksia ei tehty."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Käytettävyyshistoria ei ole vielä saatavilla."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Joissakin järjestelmissä on ongelmia"),
     };
 
 final messageLookup = MessageLookup();

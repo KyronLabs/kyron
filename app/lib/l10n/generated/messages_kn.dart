@@ -1277,6 +1277,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending":
           MessageLookupByLibrary.simpleMessage("ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("ಫೋಟೋ ತೆಗೆಯಿರಿ"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳು"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("ಸಾಧನದಲ್ಲಿ ಉಳಿಸಿ"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("ಹಂಚಿಕೊಳ್ಳಿ"),
+      "ui_media_saving":
+          MessageLookupByLibrary.simpleMessage("ಉಳಿಸಲಾಗುತ್ತಿದೆ…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮ ಫೋಟೋಗಳಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "ಉಳಿಸಲಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "ಇದನ್ನು ಉಳಿಸಲು ನಿಮ್ಮ ಫೋಟೋಗಳಿಗೆ ಸೇರಿಸಲು Kyron ಗೆ ಅನುಮತಿಸಿ."),
+      "ui_status_all_ok": MessageLookupByLibrary.simpleMessage(
+          "ಎಲ್ಲಾ ವ್ಯವಸ್ಥೆಗಳು ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿವೆ"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("ಅಪ್‌ಟೈಮ್"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("ಕಳೆದ 60 ದಿನಗಳು"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 ದಿನಗಳ ಹಿಂದೆ"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("ಇಂದು"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("ಡೇಟಾಬೇಸ್"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("ಸೈನ್-ಇನ್"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("ಇತ್ತೀಚಿನ ಘಟನೆಗಳು"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "ಕಳೆದ 60 ದಿನಗಳಲ್ಲಿ ಯಾವುದೇ ಘಟನೆಗಳಿಲ್ಲ."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("ನಡೆಯುತ್ತಿದೆ"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("ಡೇಟಾ ಇಲ್ಲ"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("ವಿವರಗಳು"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron ಚಾಲನೆಯಲ್ಲಿರುವಾಗ ಪ್ರತಿ 5 ನಿಮಿಷಕ್ಕೊಮ್ಮೆ ತನ್ನನ್ನು ಪರಿಶೀಲಿಸುತ್ತದೆ. ಬೂದು ದಿನದಲ್ಲಿ ಯಾವುದೇ ಪರಿಶೀಲನೆ ನಡೆದಿಲ್ಲ."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "ಅಪ್‌ಟೈಮ್ ಇತಿಹಾಸ ಇನ್ನೂ ಲಭ್ಯವಿಲ್ಲ."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "ಕೆಲವು ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ ಸಮಸ್ಯೆ ಇದೆ"),
     };
 
 final messageLookup = MessageLookup();

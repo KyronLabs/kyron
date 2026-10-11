@@ -1276,6 +1276,41 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Sett"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Sender…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Ta et bilde"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("Flere alternativer"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Lagre på enheten"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Del"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Lagrer…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Lagret i bildene dine"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("Kunne ikke lagre. Prøv igjen."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "La Kyron legge til i bildene dine for å lagre dette."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Alle systemer i drift"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Oppetid"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Siste 60 dager"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("For 60 dager siden"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("I dag"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Database"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Innlogging"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Nylige hendelser"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Ingen hendelser de siste 60 dagene."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Pågår"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Ingen data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Detaljer"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron sjekker seg selv hvert 5. minutt mens den kjører. En grå dag hadde ingen sjekker."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Oppetidshistorikk er ikke tilgjengelig ennå."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Noen systemer har problemer"),
     };
 
 final messageLookup = MessageLookup();

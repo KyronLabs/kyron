@@ -5,6 +5,7 @@ import { SupabaseTokenService } from '../auth/supabase-token.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PushService } from '../push/push.service';
+import { StatusHistoryService } from './status-history.service';
 
 /**
  * /health is the only way to see, from outside the machine, which identity
@@ -44,6 +45,10 @@ describe('HealthController', () => {
         },
         { provide: PushService, useValue: { isConfigured: pushConfigured } },
         {
+          provide: StatusHistoryService,
+          useValue: { history: (days: number) => Promise.resolve({ days }) },
+        },
+        {
           provide: SupabaseService,
           useValue: {
             mirrorTablesPresent: () =>
@@ -56,6 +61,16 @@ describe('HealthController', () => {
     }).compile();
     return moduleRef.get(HealthController);
   };
+
+  it('serves sixty days of history unless asked for a window up to ninety', async () => {
+    const c = await controller();
+
+    await expect(c.history()).resolves.toMatchObject({ days: 60 });
+    await expect(c.history('30')).resolves.toMatchObject({ days: 30 });
+    await expect(c.history('365')).resolves.toMatchObject({ days: 90 });
+    await expect(c.history('0')).resolves.toMatchObject({ days: 1 });
+    await expect(c.history('soon')).resolves.toMatchObject({ days: 60 });
+  });
 
   it('stays ok and names the issuer when Supabase is configured', async () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';

@@ -1277,6 +1277,44 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Ko‘rildi"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Yuborilmoqda…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Suratga olish"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Boshqa amallar"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Qurilmaga saqlash"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Ulashish"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Saqlanmoqda…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Rasmlaringizga saqlandi"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Saqlab bo‘lmadi. Qayta urinib ko‘ring."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Buni saqlash uchun Kyron’ga rasmlaringizga qo‘shishga ruxsat bering."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Barcha tizimlar ishlamoqda"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Ishlash vaqti"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("So‘nggi 60 kun"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 kun oldin"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Bugun"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Ma’lumotlar bazasi"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Kirish"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("So‘nggi hodisalar"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "So‘nggi 60 kunda hodisa bo‘lmadi."),
+      "ui_status_ongoing":
+          MessageLookupByLibrary.simpleMessage("Davom etmoqda"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Ma’lumot yo‘q"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Tafsilotlar"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron ishlayotganda har 5 daqiqada o‘zini tekshiradi. Kulrang kunda tekshiruv bo‘lmagan."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Ishlash vaqti tarixi hali mavjud emas."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Ba’zi tizimlarda muammo bor"),
     };
 
 final messageLookup = MessageLookup();

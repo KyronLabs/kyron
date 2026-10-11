@@ -1,8 +1,9 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { SupabaseTokenService } from '../auth/supabase-token.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PushService } from '../push/push.service';
+import { StatusHistory, StatusHistoryService } from './status-history.service';
 
 @Controller('health')
 export class HealthController {
@@ -11,7 +12,22 @@ export class HealthController {
     private readonly prisma: PrismaService,
     private readonly supabase: SupabaseService,
     private readonly push: PushService,
+    private readonly statusHistory: StatusHistoryService,
   ) {}
+
+  /**
+   * Uptime per component over the last `days` days (default 60, at most 90),
+   * and the incidents in that window, for the status screen. Public, like
+   * the rest of this controller: it is about the service, not anybody in it.
+   */
+  @Get('history')
+  history(@Query('days') days?: string): Promise<StatusHistory> {
+    const asked = Number.parseInt(days ?? '', 10);
+    const window = Number.isFinite(asked)
+      ? Math.min(90, Math.max(1, asked))
+      : 60;
+    return this.statusHistory.history(window);
+  }
 
   @Get()
   async health() {

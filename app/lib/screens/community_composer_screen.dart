@@ -13,6 +13,7 @@ import '../models/community.dart';
 import '../providers/communities_provider.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../utils/api_error_message.dart';
+import '../providers/composer_provider.dart' show ComposerState;
 import '../utils/media_basket.dart';
 import '../utils/mention_token.dart';
 import '../widgets/media_tray.dart';
@@ -41,8 +42,11 @@ class _CommunityComposerScreenState
     extends ConsumerState<CommunityComposerScreen> {
   final TextEditingController _box = TextEditingController();
   final FocusNode _focus = FocusNode();
-  late final MediaBasket _media = MediaBasket(ref.read(feedRepositoryProvider))
-    ..addListener(_onMedia);
+  // A community post is a post, and carries as many.
+  late final MediaBasket _media = MediaBasket(
+    ref.read(feedRepositoryProvider),
+    limit: ComposerState.maxMedia,
+  )..addListener(_onMedia);
   bool _posting = false;
 
   void _onMedia() => setState(() {});

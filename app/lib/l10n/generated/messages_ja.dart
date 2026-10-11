@@ -1074,6 +1074,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("既読"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("送信中…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("写真を撮る"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("その他のオプション"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("端末に保存"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("共有"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("保存中…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage("写真に保存しました"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("保存できませんでした。もう一度お試しください。"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "保存するには、Kyron に写真への追加を許可してください。"),
+      "ui_status_all_ok": MessageLookupByLibrary.simpleMessage("すべてのシステムが稼働中"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("稼働率"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("過去60日間"),
+      "ui_status_60_days_ago": MessageLookupByLibrary.simpleMessage("60日前"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("今日"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("データベース"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("サインイン"),
+      "ui_status_incidents": MessageLookupByLibrary.simpleMessage("最近のインシデント"),
+      "ui_status_no_incidents":
+          MessageLookupByLibrary.simpleMessage("過去60日間にインシデントはありません。"),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("継続中"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("データなし"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("詳細"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyronは稼働中、5分ごとに自己チェックを行います。灰色の日はチェックがありませんでした。"),
+      "ui_status_unavailable":
+          MessageLookupByLibrary.simpleMessage("稼働履歴はまだありません。"),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("一部のシステムで問題が発生しています"),
     };
 
 final messageLookup = MessageLookup();

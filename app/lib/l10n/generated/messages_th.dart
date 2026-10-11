@@ -1275,6 +1275,43 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("เห็นแล้ว"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("กำลังส่ง…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("ถ่ายรูป"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("ตัวเลือกเพิ่มเติม"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("บันทึกลงอุปกรณ์"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("แชร์"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("กำลังบันทึก…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("บันทึกลงในรูปภาพของคุณแล้ว"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("บันทึกไม่ได้ ลองอีกครั้ง"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "อนุญาตให้ Kyron เพิ่มลงในรูปภาพของคุณเพื่อบันทึกสิ่งนี้"),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("ทุกระบบทำงานปกติ"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("เวลาทำงาน"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("60 วันที่ผ่านมา"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 วันก่อน"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("วันนี้"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("ฐานข้อมูล"),
+      "ui_status_auth":
+          MessageLookupByLibrary.simpleMessage("การลงชื่อเข้าใช้"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("เหตุขัดข้องล่าสุด"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "ไม่มีเหตุขัดข้องใน 60 วันที่ผ่านมา"),
+      "ui_status_ongoing":
+          MessageLookupByLibrary.simpleMessage("กำลังเกิดขึ้น"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("ไม่มีข้อมูล"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("รายละเอียด"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron ตรวจสอบตัวเองทุก 5 นาทีขณะทำงาน วันที่เป็นสีเทาไม่มีการตรวจสอบ"),
+      "ui_status_unavailable":
+          MessageLookupByLibrary.simpleMessage("ยังไม่มีประวัติเวลาทำงาน"),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("บางระบบมีปัญหา"),
     };
 
 final messageLookup = MessageLookup();

@@ -14,6 +14,35 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **"Nothing matched" sat a third of the way across the screen.** Every empty
+  state was placed at the left edge, as wide as its widest line, so one whose
+  detail wrapped looked centred and a short one did not. They are centred
+  across their width now, wherever they appear.
+
+- **Photos under a post were narrower than the post, off-centre, with square
+  corners.** The four-photo square reused the two-across row, which keeps its
+  own 16:9 shape, so inside the square each row shrank and centred itself.
+  Every grid -- posts, the post page, quotes, comments, messages -- now shows
+  at most three tiles, the third darkened with "+n" for the rest, and fills
+  its width. A post or a message can carry ten attachments (was four); a
+  comment stays at four.
+
+- **The composer said attachments had failed the moment one was added.**
+  "Those attachments did not upload" was shown whenever nothing had finished
+  uploading, which includes a photo still on its way. It now waits until
+  every attachment has actually failed.
+
+- **After an update every message read "This message cannot be read on this
+  device", and new ones went out unencrypted.** Opening the app more than an
+  hour after last using it -- which an update does -- finds the access token
+  expired; the launch refreshes the session and was marked signed in without
+  reading the message key, so nothing could be opened and nothing sealed.
+  The key had been in storage the whole time. Every way into a signed-in app
+  now starts the same things (the message key, the identifier, the push
+  token, which that path also skipped), and the vault reads the stored key
+  itself if nothing has unlocked it -- reading only, never making one.
+  Messages already sent in the clear on that path stay as they were.
+
 - **Photos in a chat came framed in the bubble's colour, four to a square.**
   A message's pictures are now their own rounded block, above any words, with
   at most three tiles; past three, the third is darkened with "+n" for how
@@ -63,6 +92,25 @@ section for that version, so what is written here is what people read.
   The limit is now on what is typed, and sealed bodies have their own ceiling.
 
 ### Added
+
+- **Uptime history on the service status screen.** The API checks itself
+  every five minutes while it runs -- that it is up, that the database
+  answers, that Supabase Auth answers -- and keeps a count per component per
+  day, with an incident for each run of failures (`GET /health/history`).
+  The screen opens with one line on whether everything works (amber, naming
+  what is failing, when an incident is open even though /health is fine),
+  then a bar a day for the last sixty days per component with its uptime,
+  the recent incidents, and the details it showed before. A day with no
+  checks -- the service asleep or down, which it cannot tell apart -- is
+  grey, never green. In all 68 catalogs.
+
+- **Save to device, from the media viewer.** A ⋯ button in the viewer's top
+  bar opens a sheet with Save to device, Share and Copy link. Saving
+  downloads the photo, GIF or clip and adds it to the phone's photos (`gal`;
+  no permission on Android 10 and later, storage on 9 and below, add-only
+  library access on iOS). The count -- now "2 / 4" -- sits at the exact
+  centre of the bar; it was pushed to one side by one button on the left
+  and two on the right. In all 68 catalogs.
 
 - **A camera in a chat's attachments.** "Take a photo" opens the camera and
   sends what it takes, scaled to 2048 px at 85% quality rather than the

@@ -1279,6 +1279,41 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("ပို့နေသည်…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံရိုက်ရန်"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("နောက်ထပ် ရွေးချယ်စရာများ"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("စက်ထဲ သိမ်းရန်"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("မျှဝေရန်"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("သိမ်းနေသည်…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("သင့်ဓာတ်ပုံများထဲ သိမ်းပြီး"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "မသိမ်းနိုင်ပါ။ ထပ်စမ်းကြည့်ပါ။"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "၎င်းကို သိမ်းရန် Kyron ကို သင့်ဓာတ်ပုံများထဲ ထည့်ခွင့်ပြုပါ။"),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("စနစ်အားလုံး လည်ပတ်နေသည်"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("လည်ပတ်ချိန်"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("နောက်ဆုံး ရက် 60"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("ရက် 60 ကြာခဲ့ပြီ"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("ယနေ့"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("ဒေတာဘေ့စ်"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("အကောင့်ဝင်ခြင်း"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("မကြာသေးမီ ဖြစ်ရပ်များ"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "နောက်ဆုံး ရက် 60 အတွင်း ဖြစ်ရပ်မရှိပါ။"),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("ဆက်ဖြစ်နေသည်"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("ဒေတာမရှိ"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("အသေးစိတ်"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron သည် လည်ပတ်နေစဉ် 5 မိနစ်တိုင်း မိမိကိုယ်ကို စစ်ဆေးသည်။ မီးခိုးရောင်နေ့တွင် စစ်ဆေးမှု မရှိခဲ့ပါ။"),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "လည်ပတ်ချိန်မှတ်တမ်း မရရှိနိုင်သေးပါ။"),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("စနစ်အချို့တွင် ပြဿနာရှိနေသည်"),
     };
 
 final messageLookup = MessageLookup();

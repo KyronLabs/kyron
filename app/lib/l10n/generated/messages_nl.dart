@@ -1277,6 +1277,43 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Gezien"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Verzenden…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Foto maken"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Meer opties"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Opslaan op apparaat"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Delen"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Opslaan…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Opgeslagen in je foto's"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Kon het niet opslaan. Probeer het opnieuw."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Sta Kyron toe iets aan je foto's toe te voegen om dit op te slaan."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Alle systemen operationeel"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Beschikbaarheid"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Afgelopen 60 dagen"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 dagen geleden"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Vandaag"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Database"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Inloggen"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Recente incidenten"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Geen incidenten in de afgelopen 60 dagen."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Bezig"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Geen gegevens"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Details"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron controleert zichzelf elke 5 minuten zolang het draait. Op een grijze dag waren er geen controles."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "De beschikbaarheidsgeschiedenis is nog niet beschikbaar."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Sommige systemen hebben problemen"),
     };
 
 final messageLookup = MessageLookup();

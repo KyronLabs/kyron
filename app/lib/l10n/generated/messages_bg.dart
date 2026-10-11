@@ -1375,6 +1375,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Изпраща се…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Направете снимка"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Още опции"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Запази на устройството"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Сподели"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Запазване…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Запазено в снимките ви"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Не можа да се запази. Опитайте отново."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Разрешете на Kyron да добавя към снимките ви, за да запазите това."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Всички системи работят"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Време на работа"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Последните 60 дни"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Преди 60 дни"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Днес"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("База данни"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Вход"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Скорошни инциденти"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Няма инциденти през последните 60 дни."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("В ход"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Няма данни"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Подробности"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron се проверява на всеки 5 минути, докато работи. Сив ден означава, че не е имало проверки."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Историята на работата още не е налична."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Някои системи имат проблеми"),
     };
 
 final messageLookup = MessageLookup();

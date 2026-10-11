@@ -1276,6 +1276,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Umeonekana"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Inatuma…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Piga picha"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Chaguo zaidi"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Hifadhi kwenye kifaa"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Shiriki"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Inahifadhi…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage(
+          "Imehifadhiwa kwenye picha zako"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kuhifadhi. Jaribu tena."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Ruhusu Kyron iongeze kwenye picha zako ili kuhifadhi hii."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Mifumo yote inafanya kazi"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Muda wa kufanya kazi"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Siku 60 zilizopita"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Siku 60 zilizopita"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Leo"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Hifadhidata"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Kuingia"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Matukio ya hivi karibuni"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Hakuna matukio katika siku 60 zilizopita."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Inaendelea"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Hakuna data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Maelezo"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron hujikagua kila dakika 5 inapofanya kazi. Siku ya kijivu haikuwa na ukaguzi."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Historia ya muda wa kufanya kazi bado haipatikani."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Baadhi ya mifumo ina matatizo"),
     };
 
 final messageLookup = MessageLookup();

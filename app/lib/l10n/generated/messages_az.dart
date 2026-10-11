@@ -1365,6 +1365,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Baxıldı"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Göndərilir…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Şəkil çək"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Digər seçimlər"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Cihaza saxla"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Paylaş"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Saxlanılır…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Şəkillərinizə saxlanıldı"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Saxlamaq alınmadı. Yenidən cəhd edin."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Bunu saxlamaq üçün Kyron-a şəkillərinizə əlavə etməyə icazə verin."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Bütün sistemlər işləyir"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("İşləmə müddəti"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("Son 60 gün"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 gün əvvəl"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Bu gün"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Verilənlər bazası"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Daxil olma"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Son insidentlər"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Son 60 gündə insident olmayıb."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Davam edir"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Məlumat yoxdur"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Təfərrüatlar"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron işlədiyi müddətdə hər 5 dəqiqədən bir özünü yoxlayır. Boz gündə yoxlama olmayıb."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "İşləmə tarixçəsi hələ mövcud deyil."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Bəzi sistemlərdə problemlər var"),
     };
 
 final messageLookup = MessageLookup();

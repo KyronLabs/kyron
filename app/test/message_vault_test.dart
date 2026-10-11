@@ -152,6 +152,44 @@ void main() {
     await unlocking;
   });
 
+  test('opens with the stored key even when nothing unlocked the vault',
+      () async {
+    // A launch whose session had expired was refreshed without unlocking the
+    // vault. Every sealed message then read "cannot be read", with the key
+    // in storage the whole time.
+    final ada = await _device('ada');
+    final bo = await _device('bo');
+    final keys = _Keys([await ada.published(), await bo.published()]);
+    final sealed = (await ada.vault(keys).seal('still here', 'c1'))!;
+    FlutterSecureStorage.setMockInitialValues({
+      'dm_secret_key_v1': await MessageCrypto.encodeSecret(bo.pair),
+    });
+
+    final reader = MessageVault(keys);
+
+    expect(await reader.open(sealed, 'c1'), 'still here');
+    // And can seal again, rather than sending the next message in the clear.
+    expect(await reader.seal('and back', 'c1'), startsWith('k2.'));
+  });
+
+  test('never makes a key of its own without being unlocked', () async {
+    // Reading is all it does unprompted. A vault locked on sign-out must not
+    // mint and use a new identity behind anybody's back.
+    FlutterSecureStorage.setMockInitialValues({});
+    final ada = await _device('ada');
+    final bo = await _device('bo');
+    final keys = _Keys([await ada.published(), await bo.published()]);
+
+    final vault = MessageVault(keys);
+
+    expect(await vault.seal('hello', 'c1'), isNull);
+    expect(vault.isReady, isFalse);
+    expect(
+      await const FlutterSecureStorage().read(key: 'dm_secret_key_v1'),
+      isNull,
+    );
+  });
+
   test('still opens a message in the old single-key form', () async {
     final ada = await _device('ada');
     final bo = await _device('bo');

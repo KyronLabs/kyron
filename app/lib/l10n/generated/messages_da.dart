@@ -1315,6 +1315,40 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Sender…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Tag et billede"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Flere muligheder"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Gem på enheden"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Del"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Gemmer…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Gemt i dine billeder"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke gemme det. Prøv igen."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Giv Kyron lov til at tilføje til dine billeder for at gemme dette."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Alle systemer kører"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Oppetid"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Seneste 60 dage"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("For 60 dage siden"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("I dag"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Database"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Log ind"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Seneste hændelser"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Ingen hændelser de seneste 60 dage."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("I gang"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Ingen data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Detaljer"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron tjekker sig selv hvert 5. minut, mens den kører. En grå dag havde ingen tjek."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Oppetidshistorik er ikke tilgængelig endnu."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Nogle systemer har problemer"),
     };
 
 final messageLookup = MessageLookup();

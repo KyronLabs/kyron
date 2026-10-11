@@ -1278,6 +1278,41 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Bidaltzen…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Atera argazki bat"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Aukera gehiago"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Gorde gailuan"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Partekatu"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Gordetzen…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Zure argazkietan gorde da"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da gorde. Saiatu berriro."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Utzi Kyron-i zure argazkietara gehitzen hau gordetzeko."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Sistema guztiak martxan"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Erabilgarritasuna"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Azken 60 egunak"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Duela 60 egun"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Gaur"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Datu-basea"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Saio-hasiera"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Azken gorabeherak"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Ez dago gorabeherarik azken 60 egunetan."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Martxan"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Daturik ez"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Xehetasunak"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyronek bere burua egiaztatzen du 5 minuturo martxan dagoen bitartean. Egun gris batek ez zuen egiaztapenik izan."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Erabilgarritasunaren historia ez dago oraindik erabilgarri."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Sistema batzuek arazoak dituzte"),
     };
 
 final messageLookup = MessageLookup();

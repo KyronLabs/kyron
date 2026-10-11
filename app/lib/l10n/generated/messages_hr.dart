@@ -1276,6 +1276,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Slanje…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Snimi fotografiju"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Više opcija"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Spremi na uređaj"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Podijeli"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Spremanje…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Spremljeno u vaše fotografije"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Spremanje nije uspjelo. Pokušajte ponovno."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Dopustite Kyronu dodavanje u vaše fotografije kako biste ovo spremili."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Svi sustavi rade"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Dostupnost"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Zadnjih 60 dana"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Prije 60 dana"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Danas"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Baza podataka"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Prijava"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Nedavni incidenti"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Nema incidenata u zadnjih 60 dana."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("U tijeku"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Nema podataka"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Pojedinosti"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron provjerava sam sebe svakih 5 minuta dok radi. Sivi dan nije imao provjera."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Povijest dostupnosti još nije dostupna."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Neki sustavi imaju problema"),
     };
 
 final messageLookup = MessageLookup();

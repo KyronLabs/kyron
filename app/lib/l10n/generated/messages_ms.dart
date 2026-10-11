@@ -1277,6 +1277,43 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Dilihat"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Menghantar…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Ambil foto"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Lagi pilihan"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Simpan ke peranti"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Kongsi"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Menyimpan…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Disimpan ke foto anda"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat menyimpan. Cuba lagi."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Benarkan Kyron menambah pada foto anda untuk menyimpan ini."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Semua sistem beroperasi"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Masa operasi"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("60 hari lepas"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 hari lalu"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Hari ini"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Pangkalan data"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Log masuk"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Insiden terkini"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Tiada insiden dalam 60 hari lepas."),
+      "ui_status_ongoing":
+          MessageLookupByLibrary.simpleMessage("Sedang berlaku"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Tiada data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Butiran"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron memeriksa dirinya setiap 5 minit semasa berjalan. Hari kelabu tidak mempunyai pemeriksaan."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Sejarah masa operasi belum tersedia."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Sesetengah sistem menghadapi masalah"),
     };
 
 final messageLookup = MessageLookup();

@@ -7,31 +7,35 @@ import '../utils/decode_size.dart';
 import 'inline_video.dart';
 import 'media_viewer.dart';
 
-/// The attachments under a post, laid out by how many there are.
+/// Attachments -- under a post, in a comment, in a message -- laid out by how
+/// many there are.
 ///
 /// One fills the width at its own aspect ratio; two sit side by side; three
-/// put the first beside a stacked pair; four make a square. Every tile opens
-/// the viewer at the one that was tapped.
+/// or more put the first beside a stacked pair, and anything past three is
+/// folded into the third tile: darkened, with "+n" for how many more there
+/// are, and a tap there opens the viewer where all of them can be swiped
+/// through. Every tile opens the viewer at the one that was tapped.
 ///
-/// With [maxTiles] at 3 -- a chat, where a bubble is narrow and a square of
-/// four reads as a wall -- anything past three is folded into the third tile:
-/// darkened, with "+n" for how many more there are, and a tap there opens the
-/// viewer where all of them can be swiped through.
+/// There used to be a square of four. It reused the two-across row, which
+/// carries its own 16:9 shape, so inside the square each row shrank to 16:9
+/// and centred itself: the photos came out narrower than the post and short
+/// of the rounded clip, which is why their corners looked square. Three and
+/// a count also means the number a post can carry is no longer the number of
+/// tiles that fit.
 class MediaGrid extends StatelessWidget {
   final List<PostMedia> media;
 
   /// Corner rounding. Smaller inside a quoted card than under a post.
   final double radius;
 
-  /// The most tiles drawn: 4, or 3 to fold the rest into the third.
-  final int maxTiles;
-
   const MediaGrid({
     super.key,
     required this.media,
     this.radius = RadiusTokens.radiusMd,
-    this.maxTiles = 4,
-  }) : assert(maxTiles == 3 || maxTiles == 4);
+  });
+
+  /// The most tiles drawn.
+  static const maxTiles = 3;
 
   /// How many are not drawn, and are counted on the last tile instead.
   int get hidden => media.length > maxTiles ? media.length - maxTiles : 0;
@@ -45,9 +49,7 @@ class MediaGrid extends StatelessWidget {
       child: switch (media.length) {
         1 => _single(context),
         2 => _row(context, [0, 1]),
-        3 => _threeUp(context),
-        _ when maxTiles == 3 => _threeUp(context),
-        _ => _fourUp(context),
+        _ => _threeUp(context),
       },
     );
   }
@@ -104,19 +106,6 @@ class MediaGrid extends StatelessWidget {
     );
   }
 
-  Widget _fourUp(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1,
-      child: Column(
-        children: [
-          Expanded(child: _row(context, [0, 1])),
-          const SizedBox(height: 2),
-          Expanded(child: _row(context, [2, 3])),
-        ],
-      ),
-    );
-  }
-
   /// One attachment. [more], on the last tile drawn, is how many there are
   /// past it.
   Widget _tile(BuildContext context, int index, {int more = 0}) {
@@ -153,8 +142,8 @@ class MediaGrid extends StatelessWidget {
               Image.network(
                 item.url,
                 fit: BoxFit.cover,
-                // A grid of four is drawn at half the width; one on its own
-                // fills it.
+                // A tile of the grid is drawn at half the width or less; one
+                // on its own fills it.
                 cacheWidth: decodeWidth(
                   context,
                   fraction: media.length == 1 ? 1.0 : 0.5,

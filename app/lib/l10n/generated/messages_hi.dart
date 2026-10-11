@@ -1276,6 +1276,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("देखा गया"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("भेजा जा रहा है…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("फ़ोटो लें"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("अधिक विकल्प"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("डिवाइस में सहेजें"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("शेयर करें"),
+      "ui_media_saving":
+          MessageLookupByLibrary.simpleMessage("सहेजा जा रहा है…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("आपकी फ़ोटो में सहेजा गया"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "सहेजा नहीं जा सका। फिर से कोशिश करें।"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "इसे सहेजने के लिए Kyron को अपनी फ़ोटो में जोड़ने दें।"),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("सभी सिस्टम चालू हैं"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("अपटाइम"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("पिछले 60 दिन"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 दिन पहले"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("आज"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("डेटाबेस"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("साइन-इन"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("हाल की घटनाएँ"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "पिछले 60 दिनों में कोई घटना नहीं।"),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("जारी है"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("कोई डेटा नहीं"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("विवरण"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron चलते समय हर 5 मिनट में खुद की जाँच करता है। धूसर दिन में कोई जाँच नहीं हुई।"),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "अपटाइम का इतिहास अभी उपलब्ध नहीं है।"),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("कुछ सिस्टम में समस्या है"),
     };
 
 final messageLookup = MessageLookup();

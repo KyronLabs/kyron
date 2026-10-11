@@ -1276,6 +1276,45 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Matyta"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Siunčiama…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Fotografuoti"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("Daugiau parinkčių"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Išsaugoti įrenginyje"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Bendrinti"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Išsaugoma…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Išsaugota jūsų nuotraukose"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko išsaugoti. Bandykite dar kartą."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Leiskite Kyron pridėti prie jūsų nuotraukų, kad tai išsaugotumėte."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Visos sistemos veikia"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Veikimo laikas"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Paskutinės 60 dienų"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Prieš 60 dienų"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Šiandien"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Duomenų bazė"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Prisijungimas"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Naujausi incidentai"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Per paskutines 60 dienų incidentų nebuvo."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Vyksta"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Duomenų nėra"),
+      "ui_status_details":
+          MessageLookupByLibrary.simpleMessage("Išsami informacija"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron veikdamas tikrina save kas 5 minutes. Pilką dieną patikrinimų nebuvo."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Veikimo istorija dar nepasiekiama."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Kai kuriose sistemose kilo problemų"),
     };
 
 final messageLookup = MessageLookup();

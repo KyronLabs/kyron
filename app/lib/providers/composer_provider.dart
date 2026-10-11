@@ -74,8 +74,10 @@ class ComposerState {
   /// below cannot disagree about it.
   static const maxCharacters = 1000;
 
-  /// How many attachments one post may carry, matching the server.
-  static const maxMedia = 4;
+  /// How many attachments one post may carry, matching the server. Ten: the
+  /// grid shows three and counts the rest, so this is no longer the number of
+  /// tiles that fit.
+  static const maxMedia = 10;
 
   /// How many topics one post may be filed under, matching the server.
   static const maxTopics = 3;
@@ -134,9 +136,15 @@ class ComposerState {
   /// Attachments that actually uploaded. Only these are sent.
   bool get hasReadyMedia => media.any((m) => m.isReady);
 
-  /// True when an attachment failed and nothing else would go with it.
+  /// True when every attachment failed and nothing else would go with it.
+  ///
+  /// Failed, not merely not ready: this used to be "nothing has uploaded",
+  /// which is also what an attachment still uploading looks like, so the
+  /// banner saying they had failed came up the moment one was added.
   bool get onlyFailedMedia =>
-      content.trim().isEmpty && media.isNotEmpty && !hasReadyMedia;
+      content.trim().isEmpty &&
+      media.isNotEmpty &&
+      media.every((m) => m.error != null);
 
   /// A post carrying only an attachment is a post; one that is empty and
   /// unattached is not, which is what the server enforces too.

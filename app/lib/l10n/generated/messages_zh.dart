@@ -966,6 +966,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("已读"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("正在发送…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("拍照"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("更多选项"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("保存到设备"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("分享"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("正在保存…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage("已保存到你的照片"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage("无法保存，请重试。"),
+      "ui_media_save_denied":
+          MessageLookupByLibrary.simpleMessage("请允许 Kyron 添加到你的照片以保存此内容。"),
+      "ui_status_all_ok": MessageLookupByLibrary.simpleMessage("所有系统运行正常"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("正常运行时间"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("过去 60 天"),
+      "ui_status_60_days_ago": MessageLookupByLibrary.simpleMessage("60 天前"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("今天"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("数据库"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("登录"),
+      "ui_status_incidents": MessageLookupByLibrary.simpleMessage("近期事件"),
+      "ui_status_no_incidents":
+          MessageLookupByLibrary.simpleMessage("过去 60 天内没有事件。"),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("进行中"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("无数据"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("详细信息"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron 运行期间每 5 分钟自检一次。灰色的日子没有检查记录。"),
+      "ui_status_unavailable":
+          MessageLookupByLibrary.simpleMessage("暂无正常运行时间记录。"),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage("部分系统出现问题"),
     };
 
 final messageLookup = MessageLookup();

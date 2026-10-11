@@ -38,8 +38,8 @@ export class SendMessageDto {
   /** Attachments, already uploaded. The same shape a post's take. */
   @IsOptional()
   @IsArray()
-  @ArrayMaxSize(4, {
-    message: 'A message can carry at most 4 attachments.',
+  @ArrayMaxSize(10, {
+    message: 'A message can carry at most 10 attachments.',
   })
   @ValidateNested({ each: true })
   @Type(() => PostMediaDto)

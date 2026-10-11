@@ -1276,6 +1276,44 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("La arkay"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Waa la dirayaa…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Sawir qaad"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("Doorashooyin kale"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Ku kaydi qalabka"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("La wadaag"),
+      "ui_media_saving":
+          MessageLookupByLibrary.simpleMessage("Waa la kaydinayaa…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage(
+          "Waxaa lagu kaydiyay sawiradaada"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama kaydin karin. Isku day mar kale."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "U oggolow Kyron inuu ku daro sawiradaada si aad tan u kaydiso."),
+      "ui_status_all_ok": MessageLookupByLibrary.simpleMessage(
+          "Dhammaan nidaamyadu way shaqaynayaan"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Waqtiga shaqada"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage(
+          "60-kii maalmood ee la soo dhaafay"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 maalmood ka hor"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Maanta"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Kaydka xogta"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Gelitaanka"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Dhacdooyinkii dhowaa"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Ma jirin dhacdo 60-kii maalmood ee la soo dhaafay."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Way socotaa"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Xog ma jirto"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Faahfaahin"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron wuxuu is hubiyaa 5-tii daqiiqoba mar inta uu shaqaynayo. Maalin cawl ah ma lahayn hubin."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Taariikhda waqtiga shaqada weli lama heli karo."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Nidaamyada qaar ayaa dhibaato qaba"),
     };
 
 final messageLookup = MessageLookup();

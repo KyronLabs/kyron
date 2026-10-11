@@ -1075,6 +1075,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("읽음"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("보내는 중…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("사진 찍기"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("옵션 더보기"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("기기에 저장"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("공유"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("저장 중…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage("사진에 저장됨"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("저장하지 못했습니다. 다시 시도하세요."),
+      "ui_media_save_denied":
+          MessageLookupByLibrary.simpleMessage("저장하려면 Kyron이 사진에 추가하도록 허용하세요."),
+      "ui_status_all_ok": MessageLookupByLibrary.simpleMessage("모든 시스템 정상 작동"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("가동률"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("최근 60일"),
+      "ui_status_60_days_ago": MessageLookupByLibrary.simpleMessage("60일 전"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("오늘"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("데이터베이스"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("로그인"),
+      "ui_status_incidents": MessageLookupByLibrary.simpleMessage("최근 장애"),
+      "ui_status_no_incidents":
+          MessageLookupByLibrary.simpleMessage("최근 60일 동안 장애가 없습니다."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("진행 중"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("데이터 없음"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("세부 정보"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron은 실행 중일 때 5분마다 스스로를 점검합니다. 회색으로 표시된 날에는 점검이 없었습니다."),
+      "ui_status_unavailable":
+          MessageLookupByLibrary.simpleMessage("가동 기록을 아직 사용할 수 없습니다."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("일부 시스템에 문제가 있습니다"),
     };
 
 final messageLookup = MessageLookup();

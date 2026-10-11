@@ -1277,6 +1277,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending":
           MessageLookupByLibrary.simpleMessage("ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("ਫ਼ੋਟੋ ਖਿੱਚੋ"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("ਹੋਰ ਵਿਕਲਪ"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("ਡਿਵਾਈਸ 'ਤੇ ਸੰਭਾਲੋ"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("ਸਾਂਝਾ ਕਰੋ"),
+      "ui_media_saving":
+          MessageLookupByLibrary.simpleMessage("ਸੰਭਾਲਿਆ ਜਾ ਰਿਹਾ ਹੈ…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੀਆਂ ਫ਼ੋਟੋਆਂ ਵਿੱਚ ਸੰਭਾਲਿਆ ਗਿਆ"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "ਇਸਨੂੰ ਸੰਭਾਲਣ ਲਈ Kyron ਨੂੰ ਤੁਹਾਡੀਆਂ ਫ਼ੋਟੋਆਂ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਨ ਦਿਓ।"),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("ਸਾਰੇ ਸਿਸਟਮ ਚਾਲੂ ਹਨ"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("ਅਪਟਾਈਮ"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("ਪਿਛਲੇ 60 ਦਿਨ"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 ਦਿਨ ਪਹਿਲਾਂ"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("ਅੱਜ"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("ਡਾਟਾਬੇਸ"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("ਸਾਈਨ-ਇਨ"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("ਹਾਲੀਆ ਘਟਨਾਵਾਂ"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "ਪਿਛਲੇ 60 ਦਿਨਾਂ ਵਿੱਚ ਕੋਈ ਘਟਨਾ ਨਹੀਂ।"),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("ਜਾਰੀ ਹੈ"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("ਕੋਈ ਡਾਟਾ ਨਹੀਂ"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("ਵੇਰਵੇ"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron ਚੱਲਦੇ ਸਮੇਂ ਹਰ 5 ਮਿੰਟ ਬਾਅਦ ਆਪਣੀ ਜਾਂਚ ਕਰਦਾ ਹੈ। ਸਲੇਟੀ ਦਿਨ ਕੋਈ ਜਾਂਚ ਨਹੀਂ ਹੋਈ।"),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "ਅਪਟਾਈਮ ਦਾ ਇਤਿਹਾਸ ਅਜੇ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।"),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("ਕੁਝ ਸਿਸਟਮਾਂ ਵਿੱਚ ਸਮੱਸਿਆ ਹੈ"),
     };
 
 final messageLookup = MessageLookup();
