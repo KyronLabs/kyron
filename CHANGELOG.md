@@ -58,6 +58,14 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **Encrypted messages arrived on the lock screen as ciphertext.** The push
+  for a new message carried the message body, and the phone's notification
+  system shows a push without asking the app — so every sealed message was
+  announced as `k1.Zx9f…`, and every unsealed one went through Google's
+  servers in the clear. `docs/E2EE.md` had described only the second half.
+  A message push now says who it is from and "Sent you a message" or "Sent
+  an attachment", and nothing else.
+
 - **A fresh install could not get through its own quickstart.** Two
   separate faults, the second hidden behind the first, and neither visible
   on the deployed database because that one is Supabase's and was created

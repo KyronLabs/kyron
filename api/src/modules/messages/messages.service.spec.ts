@@ -312,6 +312,47 @@ describe('sending', () => {
   });
 });
 
+describe('the push a message sends', () => {
+  // The push is drawn by the phone's notification system while the app is in
+  // the background, so whatever is in it is what the lock screen shows -- and
+  // it travels through Google to get there.
+  function pushFor(body: string, media: { url: string }[] = []) {
+    const { service, realtime } = serviceWith({
+      conversation: membership(null),
+    });
+    return service.send(ME, 'c1', body, media).then(() => {
+      const told = realtime.told.find((t) => t.event.type === 'message.new');
+      return told?.push;
+    });
+  }
+
+  it('never carries a sealed message, which would read as ciphertext', async () => {
+    const sealed = 'k1.bm9uY2U.Y2lwaGVydGV4dA.bWFj';
+    const push = await pushFor(sealed);
+    expect(JSON.stringify(push)).not.toContain('k1.');
+    expect(push?.body).toBe('Sent you a message');
+  });
+
+  it('never carries an unsealed one through Google either', async () => {
+    const push = await pushFor('meet me at the station at six');
+    expect(JSON.stringify(push)).not.toContain('station');
+    expect(push?.body).toBe('Sent you a message');
+  });
+
+  it('says an attachment arrived, without the words beside it', async () => {
+    const push = await pushFor('look at this', [
+      { url: 'https://example.test/a.jpg' },
+    ]);
+    expect(JSON.stringify(push)).not.toContain('look at this');
+    expect(push?.body).toBe('Sent an attachment');
+  });
+
+  it('still names who it is from', async () => {
+    const push = await pushFor('hello');
+    expect(push?.title).toBe(ME);
+  });
+});
+
 describe('removing', () => {
   it("will not remove somebody else's message", async () => {
     const { service, prisma } = serviceWith();

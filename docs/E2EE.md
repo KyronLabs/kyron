@@ -71,9 +71,16 @@ database leak, not against an actively malicious server.**
 - **Metadata is not, and cannot be.** The server knows who is talking to whom,
   how often, at what times, and how long each message is. That is what it needs
   to route and page conversations at all.
-- **Push notification text is not.** A push carrying the message body goes
-  through Google's servers as plaintext. When both sides have keys the push
-  should say only that a message arrived; that is not wired yet.
+- **Push notifications say only that something arrived.** They used to carry
+  the message body, and this section used to say that body went through
+  Google as plaintext. That was half of it. A push is drawn by the phone's own
+  notification system, with no chance for the app to open it first, so a
+  *sealed* message arrived on the lock screen as its ciphertext — `k1.Zx9f…`
+  — and only an unsealed one went through in the clear. Now every message
+  push reads "Sent you a message" or "Sent an attachment", under the
+  sender's name. Getting the words back means a push the app handles itself:
+  it wakes, fetches the message, opens it on the device and draws the
+  notification. Not built.
 - **Nothing is sealed unless both sides have published a key.** A conversation
   with somebody on an older build sends as it always did. The bubble carries a
   lock when the message was sealed, so the reader is told which they got rather
@@ -87,7 +94,7 @@ database leak, not against an actively malicious server.**
 | No forward secrecy | A double ratchet. Large, and the right eventual answer |
 | No verification | Fingerprint comparison in the UI, and a warning when a key changes |
 | Attachments in the clear | Encrypt the file before upload; the key travels in the sealed message |
-| Push carries plaintext | Send only "a message arrived" once keys are present |
+| Push shows no preview | A data-only push the app opens on the device and draws itself |
 | No backup | A recovery phrase the user writes down, encrypting the secret half |
 
 ## Honestly

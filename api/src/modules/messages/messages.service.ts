@@ -464,10 +464,17 @@ export class MessagesService {
           sender?.user?.name?.trim() ||
           sender?.user?.username?.trim() ||
           'New message',
-        // The message itself, or what it was without words. A push saying
-        // "sent you a message" makes the reader open the app to find out
-        // whether it was worth opening the app.
-        body: text || 'Sent an attachment',
+        // Never the message. This used to be the stored body, and the body of
+        // a sealed message is ciphertext: the push is shown by the phone's
+        // own notification system, with no chance for the app to open it
+        // first, so every encrypted message arrived on the lock screen as
+        // `k1.Zx9f…`. A body that was not sealed was worse -- the words went
+        // through Google's servers in the clear, from a feature the README
+        // calls end-to-end encrypted. The server cannot read a sealed message
+        // and must not repeat an unsealed one, so the push says only that
+        // something arrived. Showing the words again means opening them on
+        // the device, in a push the app handles itself -- docs/E2EE.md.
+        body: media.length > 0 ? 'Sent an attachment' : 'Sent you a message',
         data: { type: 'message', conversationId },
       },
     );
