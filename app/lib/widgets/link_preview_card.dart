@@ -7,6 +7,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/link_preview.dart';
 import '../providers/feed_provider.dart';
 import '../services/app_browser.dart';
+import 'hairline.dart';
 
 /// The card for one link, fetched once and shared by every widget showing it.
 ///
@@ -71,7 +72,7 @@ class _Card extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
-            border: Border.all(color: scheme.outline.withValues(alpha: 0.25)),
+            border: Border.fromBorderSide(postRule(scheme)),
           ),
           clipBehavior: Clip.antiAlias,
           child: compact || image == null

@@ -4,13 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/community.dart';
+import 'package:kyron_app/models/current_user.dart';
 import 'package:kyron_app/models/feed_post.dart';
+import 'package:kyron_app/models/post_comment.dart';
 import 'package:kyron_app/providers/communities_provider.dart';
+import 'package:kyron_app/providers/current_user_provider.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/repositories/communities_repository.dart';
+import 'package:kyron_app/repositories/current_user_repository.dart';
 import 'package:kyron_app/repositories/feed_repository.dart';
 import 'package:kyron_app/routes.dart';
 import 'package:kyron_app/screens/community_screen.dart';
+import 'package:kyron_app/screens/post_detail_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/community_avatar.dart';
 import 'package:kyron_app/widgets/post_card.dart';
@@ -51,7 +56,25 @@ class _Feed extends FeedRepository {
       const FeedPage(items: [], nextCursor: null);
 }
 
-Future<void> _card(WidgetTester tester, FeedPost post) async {
+/// Stands in for the app's routes and remembers where each tap went, so a
+/// test can say where it led without building the screen at the other end.
+class _Pushes {
+  final List<String?> names = [];
+
+  Route<dynamic> route(RouteSettings settings) {
+    names.add(settings.name);
+    return MaterialPageRoute<void>(
+      settings: settings,
+      builder: (_) => const SizedBox.shrink(),
+    );
+  }
+}
+
+Future<void> _card(
+  WidgetTester tester,
+  FeedPost post, {
+  _Pushes? pushes,
+}) async {
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
@@ -64,7 +87,7 @@ Future<void> _card(WidgetTester tester, FeedPost post) async {
         ),
       ],
       child: MaterialApp(
-        onGenerateRoute: Routes.onGenerateRoute,
+        onGenerateRoute: pushes?.route ?? Routes.onGenerateRoute,
         home: Scaffold(
           body: SingleChildScrollView(
             child: PostCard(post: post, source: PostListSource.recent),
@@ -74,6 +97,33 @@ Future<void> _card(WidgetTester tester, FeedPost post) async {
     ),
   );
   await tester.pump();
+}
+
+/// One community post, with nobody yet replying to it.
+class _OnePost extends _Feed {
+  @override
+  Future<FeedPost> byId(String postId) async => _post(community: _gardeners);
+
+  @override
+  Future<CommentPage> comments(
+    String postId, {
+    String? cursor,
+    int limit = 20,
+  }) async =>
+      const CommentPage(items: []);
+
+  @override
+  Future<void> recordView(String postId, {int? dwellMs}) async {}
+}
+
+/// Somebody signed in, without asking a server who.
+class _Me implements CurrentUserRepository {
+  @override
+  Future<CurrentUser> fetchMe({bool force = false}) async =>
+      CurrentUser.fromJson(const {'id': 'me', 'username': 'me'});
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => null;
 }
 
 class _OneCommunity extends CommunitiesRepository {
@@ -120,6 +170,90 @@ void main() {
 
       // The community's own page, not the post.
       expect(find.byType(CommunityScreen), findsOneWidget);
+    });
+
+    testWidgets('opens the community when its picture is tapped', (
+      tester,
+    ) async {
+      // The larger shape in the stack is the place. It used to open the
+      // author, which left nothing on the post big enough to hit that led to
+      // the community.
+      final pushes = _Pushes();
+      await _card(tester, _post(community: _gardeners), pushes: pushes);
+
+      // The corner the author's face does not cover.
+      final picture = find.byKey(const ValueKey('stacked-avatar-community'));
+      await tester.tapAt(tester.getTopLeft(picture) + const Offset(5, 5));
+      await tester.pump();
+
+      expect(pushes.names, [Routes.community]);
+    });
+
+    testWidgets("opens the author when the author's face is tapped", (
+      tester,
+    ) async {
+      final pushes = _Pushes();
+      await _card(tester, _post(community: _gardeners), pushes: pushes);
+
+      await tester.tap(find.byKey(const ValueKey('stacked-avatar-author')));
+      await tester.pump();
+
+      expect(pushes.names, [Routes.profile]);
+    });
+
+    testWidgets('the whole community line is the target, not just its name', (
+      tester,
+    ) async {
+      // At this size the letters alone are a sliver, and a miss lands on the
+      // post behind them and opens the post instead.
+      final pushes = _Pushes();
+      await _card(tester, _post(community: _gardeners), pushes: pushes);
+
+      final line = find.byType(PostCommunityLine);
+      final box = tester.getRect(line);
+      await tester.tapAt(Offset(box.right - 8, box.center.dy));
+      await tester.pump();
+
+      expect(pushes.names, [Routes.community]);
+    });
+  });
+
+  group("a community post's own page", () {
+    Future<_Pushes> page(WidgetTester tester) async {
+      final pushes = _Pushes();
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            feedRepositoryProvider.overrideWithValue(_OnePost()),
+            currentUserRepositoryProvider.overrideWithValue(_Me()),
+          ],
+          child: MaterialApp(
+            onGenerateRoute: pushes.route,
+            home: const PostDetailScreen(postId: 'p1'),
+          ),
+        ),
+      );
+      await tester.pump();
+      await tester.pump();
+      return pushes;
+    }
+
+    testWidgets('says which community it was posted in', (tester) async {
+      // It said nothing, so the post's own page was a dead end on the way to
+      // the place it came from.
+      await page(tester);
+
+      expect(find.byType(PostCommunityLine), findsOneWidget);
+      expect(find.byType(StackedPostAvatar), findsOneWidget);
+    });
+
+    testWidgets('opens the community from its name', (tester) async {
+      final pushes = await page(tester);
+
+      await tester.tap(find.text('Gardeners'));
+      await tester.pump();
+
+      expect(pushes.names, [Routes.community]);
     });
   });
 

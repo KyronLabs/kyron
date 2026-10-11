@@ -1101,8 +1101,18 @@ class _Bubble extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (final voice in message.media.where((m) => m.isVoice))
-            VoicePostPlayer(media: voice),
+          // Unframed: the bubble is the frame. In the sender's own bubble,
+          // which is filled with the accent, it is drawn in the bubble's ink
+          // -- in the accent it would be a waveform the colour of its page.
+          for (final voice in message.media.where((m) => m.isVoice)) ...[
+            VoicePostPlayer(
+              media: voice,
+              framed: false,
+              ink: mine && !message.failed ? scheme.onPrimary : null,
+              onInk: mine && !message.failed ? scheme.primary : null,
+            ),
+            if (hasText) const SizedBox(height: SpacingTokens.space8),
+          ],
           if (hasText)
             Text(
               // Said, not shown as ciphertext, and set apart from anything

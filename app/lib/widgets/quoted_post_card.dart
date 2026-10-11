@@ -7,6 +7,7 @@ import '../l10n/app_localizations.dart';
 import 'media_grid.dart';
 import 'post_card.dart';
 import 'post_text.dart';
+import 'hairline.dart';
 
 /// The post a quote is quoting, drawn inside the quoting post.
 ///
@@ -31,7 +32,7 @@ class QuotedPostCard extends StatelessWidget {
         padding: const EdgeInsets.all(SpacingTokens.space12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
-          border: Border.all(color: scheme.outline.withValues(alpha: 0.25)),
+          border: Border.fromBorderSide(postRule(scheme)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

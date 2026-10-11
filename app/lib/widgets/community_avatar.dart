@@ -70,6 +70,11 @@ class CommunityAvatar extends StatelessWidget {
 /// in front of it, in the round, because a person is not a place. The ring
 /// around the author is the page's own colour, so the two read as stacked
 /// rather than overlapping.
+///
+/// Two targets, because it is two things: the community opens the community
+/// and the author opens the author. It used to be one target that opened the
+/// author, so the larger shape -- the place -- led to a person, and nothing on
+/// a community post in the feed big enough to hit led to the community.
 class StackedPostAvatar extends StatelessWidget {
   final PostCommunity community;
   final Widget author;
@@ -77,11 +82,16 @@ class StackedPostAvatar extends StatelessWidget {
   /// The whole stack's footprint, which is what the row lays out against.
   final double size;
 
+  final VoidCallback? onCommunityTap;
+  final VoidCallback? onAuthorTap;
+
   const StackedPostAvatar({
     super.key,
     required this.community,
     required this.author,
     this.size = 40,
+    this.onCommunityTap,
+    this.onAuthorTap,
   });
 
   /// How much of the box the community's own tile takes, leaving the rest for
@@ -103,21 +113,37 @@ class StackedPostAvatar extends StatelessWidget {
           Positioned(
             top: 0,
             left: 0,
-            child: CommunityAvatar.of(
-              community,
-              size: size * _communityFraction,
+            child: Semantics(
+              button: onCommunityTap != null,
+              label: community.name,
+              child: GestureDetector(
+                key: const ValueKey('stacked-avatar-community'),
+                behavior: HitTestBehavior.opaque,
+                onTap: onCommunityTap,
+                child: CommunityAvatar.of(
+                  community,
+                  size: size * _communityFraction,
+                ),
+              ),
             ),
           ),
+          // Last, so it is on top: where the two overlap, the author is what
+          // is drawn there and so what a tap there means.
           Positioned(
             right: 0,
             bottom: 0,
-            child: Container(
-              padding: const EdgeInsets.all(_ring),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: scheme.surface,
+            child: GestureDetector(
+              key: const ValueKey('stacked-avatar-author'),
+              behavior: HitTestBehavior.opaque,
+              onTap: onAuthorTap,
+              child: Container(
+                padding: const EdgeInsets.all(_ring),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: scheme.surface,
+                ),
+                child: author,
               ),
-              child: author,
             ),
           ),
         ],

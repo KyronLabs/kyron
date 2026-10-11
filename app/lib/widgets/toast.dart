@@ -136,52 +136,61 @@ class _ToastState extends State<_Toast> with SingleTickerProviderStateMixin {
     final scheme = Theme.of(context).colorScheme;
     final bottom = widget.spot == ToastSpot.bottom;
 
-    final card = Semantics(
-      liveRegion: true,
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: Container(
-          constraints: const BoxConstraints(
-            minHeight: Toast.minHeight,
-            maxWidth: 420,
-          ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: SpacingTokens.space16,
-            vertical: SpacingTokens.space12,
-          ),
-          decoration: BoxDecoration(
-            color: scheme.onSurface,
-            borderRadius: BorderRadius.circular(Toast.radius),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.22),
-                blurRadius: 24,
-                offset: const Offset(0, 6),
-              ),
-            ],
-          ),
-          child: Row(
-            // Wide enough for the words and no wider, in the middle of the
-            // screen; the full width along the bottom, where a stretched pill
-            // is what everything else down there looks like.
-            mainAxisSize: bottom ? MainAxisSize.max : MainAxisSize.min,
-            children: [
-              if (widget.icon != null) ...[
-                Icon(widget.icon, size: 18, color: scheme.surface),
-                const SizedBox(width: SpacingTokens.space12),
+    // A Material under the words, and it is not decoration. The root overlay
+    // sits above every screen's Scaffold, so nothing up here provides a text
+    // style: Flutter falls back to its debug one, which underlines every
+    // character with a double yellow rule and swaps the typeface. That is
+    // what every toast in the app looked like. Transparent, so the card below
+    // is still the only thing drawn.
+    final card = Material(
+      type: MaterialType.transparency,
+      child: Semantics(
+        liveRegion: true,
+        child: GestureDetector(
+          onTap: widget.onTap,
+          child: Container(
+            constraints: const BoxConstraints(
+              minHeight: Toast.minHeight,
+              maxWidth: 420,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space16,
+              vertical: SpacingTokens.space12,
+            ),
+            decoration: BoxDecoration(
+              color: scheme.onSurface,
+              borderRadius: BorderRadius.circular(Toast.radius),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.22),
+                  blurRadius: 24,
+                  offset: const Offset(0, 6),
+                ),
               ],
-              Flexible(
-                child: Text(
-                  widget.message,
-                  style: TextStyle(
-                    fontSize: TypographyTokens.fontSize3,
-                    fontWeight: FontWeight.w600,
-                    height: 1.25,
-                    color: scheme.surface,
+            ),
+            child: Row(
+              // Wide enough for the words and no wider, in the middle of the
+              // screen; the full width along the bottom, where a stretched pill
+              // is what everything else down there looks like.
+              mainAxisSize: bottom ? MainAxisSize.max : MainAxisSize.min,
+              children: [
+                if (widget.icon != null) ...[
+                  Icon(widget.icon, size: 18, color: scheme.surface),
+                  const SizedBox(width: SpacingTokens.space12),
+                ],
+                Flexible(
+                  child: Text(
+                    widget.message,
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize3,
+                      fontWeight: FontWeight.w600,
+                      height: 1.25,
+                      color: scheme.surface,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

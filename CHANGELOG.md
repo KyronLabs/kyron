@@ -14,6 +14,30 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **Every toast underlined its words in double yellow, in the wrong font.**
+  Toasts are drawn on the root overlay, above every screen's Scaffold, where
+  nothing supplies a text style, so Flutter fell back to its debug one. The
+  toast now carries its own (transparent) Material. A test reads the style
+  the words are drawn in.
+- **A community post in the feed only led to its author.** The community's
+  picture in the stacked avatar opened the author's profile, and the
+  community line above the name was a target the size of its letters. The
+  picture now opens the community and the author's face opens the author;
+  the whole community line is the target, with a chevron saying it goes
+  somewhere. The post's own page now shows the same header, which it never
+  did, so it is no longer a dead end on the way to the community.
+- **The community composer was a form with a screen of nothing in it.** The
+  field took the theme's filled box and blue focus ring at four lines tall,
+  and attachments were pinned to the foot of the screen, far from the words.
+  It is writing on the page now: who will see it at the top, the words, the
+  pictures right under them, and the tools on a toolbar behind a hairline. A
+  tap anywhere on the blank page puts the caret in the box.
+- **The reply boxes under a post and a comment were twice the size of what
+  they hold.** Two full-size icon buttons stood in front of a form field
+  with a 44-point floor and a focus ring. Both screens now share one reply
+  bar built like the chat composer: a one-line pill, the picture and clip
+  buttons inside it until something is typed, and Send at the end.
+
 - **The Android release build still failed, on a manifest it could not
   parse.** The comment explaining the SDK 28 cap contained a double hyphen,
   which XML forbids inside a comment, so the manifest merger rejected the
@@ -133,6 +157,18 @@ section for that version, so what is written here is what people read.
   4–12 MB a phone's sensor produces. In all 68 catalogs.
 
 ### Changed
+
+- **Outlines inside a post are hairlines.** A quoted post, a link card and a
+  voice post were outlined a full logical pixel at a darker tone -- heavier
+  than the rule between whole posts. They now share that rule, from one
+  definition (`postRule`), so a card can never outweigh the line between
+  posts again.
+- **A voice post is a card, not a pill.** The same corner as a post's
+  pictures and the same hairline as its quotes, a solid play button the
+  size of the other small controls, and a waveform as tall as the button. In
+  a message bubble it draws no card of its own, since the bubble is the
+  frame, and in your own accent-filled bubble it is drawn in the bubble's
+  ink rather than in the accent it sits on.
 
 - **The chat screen is laid out the way Threads and Instagram lay one out.**
   Bubbles are pills; one person's messages with no pause between them stack
