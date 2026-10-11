@@ -204,8 +204,15 @@ export class FeedService {
     private readonly delivery: DeliveryService,
   ) {}
 
-  /** How many attachments one post or comment may carry. */
-  static readonly maxMedia = 4;
+  /**
+   * How many attachments one post may carry. Ten: the grid shows three and
+   * counts the rest on the third, so the number is no longer limited by how
+   * many tiles fit -- it was four because four was a square.
+   */
+  static readonly maxMedia = 10;
+
+  /** And one comment: a reply, so kept at four. */
+  static readonly maxCommentMedia = 4;
 
   /**
    * How far back trending looks.
@@ -1577,9 +1584,9 @@ export class FeedService {
       waveform?: number[];
     }[] = [],
   ): Promise<FeedComment> {
-    if (media.length > FeedService.maxMedia) {
+    if (media.length > FeedService.maxCommentMedia) {
       throw new BadRequestException(
-        `A comment can carry at most ${FeedService.maxMedia} attachments.`,
+        `A comment can carry at most ${FeedService.maxCommentMedia} attachments.`,
       );
     }
     if (!content.trim() && media.length === 0) {

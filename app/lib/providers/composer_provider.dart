@@ -74,8 +74,10 @@ class ComposerState {
   /// below cannot disagree about it.
   static const maxCharacters = 1000;
 
-  /// How many attachments one post may carry, matching the server.
-  static const maxMedia = 4;
+  /// How many attachments one post may carry, matching the server. Ten: the
+  /// grid shows three and counts the rest, so this is no longer the number of
+  /// tiles that fit.
+  static const maxMedia = 10;
 
   /// How many topics one post may be filed under, matching the server.
   static const maxTopics = 3;

@@ -14,6 +14,14 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **Photos under a post were narrower than the post, off-centre, with square
+  corners.** The four-photo square reused the two-across row, which keeps its
+  own 16:9 shape, so inside the square each row shrank and centred itself.
+  Every grid -- posts, the post page, quotes, comments, messages -- now shows
+  at most three tiles, the third darkened with "+n" for the rest, and fills
+  its width. A post or a message can carry ten attachments (was four); a
+  comment stays at four.
+
 - **The composer said attachments had failed the moment one was added.**
   "Those attachments did not upload" was shown whenever nothing had finished
   uploading, which includes a photo still on its way. It now waits until

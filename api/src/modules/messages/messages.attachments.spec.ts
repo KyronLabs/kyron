@@ -110,8 +110,26 @@ describe('message attachments', () => {
     const { svc } = serviceWith();
 
     await expect(
-      svc.send(ME, 'c1', '', Array(5).fill(picture)),
+      svc.send(
+        ME,
+        'c1',
+        '',
+        Array.from({ length: MessagesService.maxMedia + 1 }, () => picture),
+      ),
     ).rejects.toThrow(BadRequestException);
+  });
+
+  it('takes ten pictures in one message', async () => {
+    const { svc, creates } = serviceWith();
+
+    await svc.send(
+      ME,
+      'c1',
+      '',
+      Array.from({ length: 10 }, () => picture),
+    );
+
+    expect(creates).toHaveLength(1);
   });
 
   it('takes an unlabelled upload for a picture', async () => {

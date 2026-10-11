@@ -20,6 +20,7 @@ import '../widgets/jump_to_end.dart';
 import '../widgets/toast.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../repositories/moderation_repository.dart' show ReportTarget;
+import '../providers/composer_provider.dart' show ComposerState;
 import '../utils/media_basket.dart';
 import '../widgets/media_tray.dart';
 import 'report_screen.dart';
@@ -80,8 +81,11 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     super.dispose();
   }
 
-  late final MediaBasket _media = MediaBasket(ref.read(feedRepositoryProvider))
-    ..addListener(_onMedia);
+  // As many as a post: the server holds a message to the same number.
+  late final MediaBasket _media = MediaBasket(
+    ref.read(feedRepositoryProvider),
+    limit: ComposerState.maxMedia,
+  )..addListener(_onMedia);
 
   void _onMedia() => setState(_recalculate);
 
@@ -1032,11 +1036,7 @@ class _Bubble extends StatelessWidget {
   }) {
     Widget grid = SizedBox(
       width: MediaQuery.sizeOf(context).width * 0.66,
-      child: MediaGrid(
-        media: visual,
-        radius: RadiusTokens.radius16,
-        maxTiles: 3,
-      ),
+      child: MediaGrid(media: visual, radius: RadiusTokens.radius16),
     );
     if (message.failed) grid = Opacity(opacity: 0.5, child: grid);
     if (!overlapping) return grid;

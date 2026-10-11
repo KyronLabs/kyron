@@ -111,7 +111,7 @@ export class CreatePostDto {
 
   @IsOptional()
   @IsArray()
-  @ArrayMaxSize(4, { message: 'A post can carry at most 4 attachments.' })
+  @ArrayMaxSize(10, { message: 'A post can carry at most 10 attachments.' })
   @ValidateNested({ each: true })
   @Type(() => PostMediaDto)
   media?: PostMediaDto[];

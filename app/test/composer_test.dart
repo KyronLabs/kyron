@@ -50,12 +50,8 @@ void main() {
   });
 
   group('the upload-failed banner', () {
-    ComposerState withMedia(List<PendingMedia> media) => ComposerState(
-          content: '',
-          isPosting: false,
-          placeholderText: '',
-          media: media,
-        );
+    ComposerState withMedia(List<PendingMedia> media) =>
+        ComposerState(content: '', placeholderText: '', media: media);
     const uploading = PendingMedia(path: '/a.jpg', kind: MediaKind.image);
     final failed = uploading.copyWith(error: 'Upload failed');
     const uploaded = PendingMedia(

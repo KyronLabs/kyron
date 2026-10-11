@@ -678,6 +678,21 @@ describe('FeedService', () => {
   });
 
   describe('addComment', () => {
+    it('keeps a comment to four attachments while a post takes ten', async () => {
+      await expect(
+        (await service()).addComment(
+          'p1',
+          'u',
+          'look',
+          undefined,
+          Array.from({ length: FeedService.maxCommentMedia + 1 }, () => ({
+            url: 'https://example.test/a.jpg',
+          })),
+        ),
+      ).rejects.toThrow(BadRequestException);
+      expect(FeedService.maxCommentMedia).toBeLessThan(FeedService.maxMedia);
+    });
+
     it('takes the author from its argument and trims the content', async () => {
       post.findFirst.mockResolvedValue({
         authorId: 'user-9',
@@ -1156,11 +1171,27 @@ describe('FeedService', () => {
       await expect(
         (await service()).createPost('u', {
           content: 'hi',
-          media: Array.from({ length: 5 }, () => ({
+          media: Array.from({ length: FeedService.maxMedia + 1 }, () => ({
             url: 'https://example.test/a.jpg',
           })),
         }),
       ).rejects.toThrow(BadRequestException);
+    });
+
+    it('takes ten, now that the grid counts what it cannot show', async () => {
+      hashtag.upsert.mockResolvedValue({ id: 'h1' });
+      post.create.mockResolvedValue(row('p1'));
+
+      await (
+        await service()
+      ).createPost('u', {
+        content: 'a walk',
+        media: Array.from({ length: 10 }, (_, i) => ({
+          url: `https://example.test/${i}.jpg`,
+        })),
+      });
+
+      expect(post.create).toHaveBeenCalled();
     });
 
     it('indexes the tags the text actually contains', async () => {

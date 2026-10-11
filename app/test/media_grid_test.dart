@@ -6,9 +6,9 @@ import 'package:kyron_app/widgets/media_grid.dart';
 
 /// How many tiles a grid draws, and what it says about the rest.
 ///
-/// A chat asks for at most three: four photos in a narrow bubble made a wall,
-/// and more were simply not shown. The rest are folded into the third tile,
-/// darkened, with "+n" -- and that tile opens all of them.
+/// At most three, everywhere: four photos made a wall in a narrow bubble and
+/// came out narrower than the text under a post. The rest are folded into
+/// the third tile, darkened, with "+n" -- and that tile opens all of them.
 List<PostMedia> _photos(int count) => [
       for (var i = 0; i < count; i++)
         PostMedia(
@@ -45,7 +45,7 @@ int _tiles(WidgetTester tester) => find.byType(Image).evaluate().length;
 void main() {
   testWidgets('three at most, with the rest counted on the third',
       (tester) async {
-    await _draw(tester, MediaGrid(media: _photos(5), maxTiles: 3));
+    await _draw(tester, MediaGrid(media: _photos(5)));
 
     expect(_tiles(tester), 3);
     expect(find.text('+2'), findsOneWidget);
@@ -57,30 +57,48 @@ void main() {
   });
 
   testWidgets('four in a chat is three and "+1"', (tester) async {
-    await _draw(tester, MediaGrid(media: _photos(4), maxTiles: 3));
+    await _draw(tester, MediaGrid(media: _photos(4)));
 
     expect(_tiles(tester), 3);
     expect(find.text('+1'), findsOneWidget);
   });
 
   testWidgets('three that fit say nothing about more', (tester) async {
-    await _draw(tester, MediaGrid(media: _photos(3), maxTiles: 3));
+    await _draw(tester, MediaGrid(media: _photos(3)));
 
     expect(_tiles(tester), 3);
     expect(find.textContaining('+'), findsNothing);
   });
 
-  testWidgets('a post still shows four', (tester) async {
-    await _draw(tester, MediaGrid(media: _photos(4)));
+  testWidgets('ten, the most a post carries, is three and "+7"',
+      (tester) async {
+    await _draw(tester, MediaGrid(media: _photos(10)));
 
-    expect(_tiles(tester), 4);
-    expect(find.textContaining('+'), findsNothing);
+    expect(_tiles(tester), 3);
+    expect(find.text('+7'), findsOneWidget);
+  });
+
+  testWidgets('the tiles fill the width they are given', (tester) async {
+    // The old square of four reused the 16:9 row inside it, so each row
+    // shrank and centred itself: narrower than the post, short of the
+    // rounded corners.
+    for (final count in [2, 3, 4, 7]) {
+      await _draw(tester, MediaGrid(media: _photos(count)));
+      final grid = tester.getRect(find.byType(MediaGrid));
+      final images = find.byType(Image).evaluate().map(
+            (e) => tester.getRect(find.byWidget(e.widget)),
+          );
+      final left = images.map((r) => r.left).reduce((a, b) => a < b ? a : b);
+      final right = images.map((r) => r.right).reduce((a, b) => a > b ? a : b);
+      expect(left, closeTo(grid.left, 0.5), reason: '$count: left edge');
+      expect(right, closeTo(grid.right, 0.5), reason: '$count: right edge');
+    }
   });
 
   testWidgets('the counted tile opens the rest', (tester) async {
     final pushes = await _draw(
       tester,
-      MediaGrid(media: _photos(6), maxTiles: 3),
+      MediaGrid(media: _photos(6)),
     );
 
     // The count itself lets taps through to the tile under it, which is what

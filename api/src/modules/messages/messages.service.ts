@@ -140,7 +140,7 @@ export class MessagesService {
   }
 
   /** How many attachments one message may carry. Same as a post's. */
-  static readonly maxMedia = 4;
+  static readonly maxMedia = 10;
 
   /**
    * Whether [value] can be a reaction: exactly one emoji, and nothing else.
