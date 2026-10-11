@@ -14,6 +14,15 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **A deploy could hang at boot with nothing in the log.** On 11 October the
+  API deploy printed nothing after `start.sh` began and was killed by Render
+  eighteen minutes later; the database logs show the new instance never
+  connected. `start.sh` promised the server would start whatever happened, but
+  nothing bounded the migration step. Migrations now get `MIGRATE_TIMEOUT`
+  seconds (default 180) before the server starts without them, Prisma runs
+  from `node_modules` instead of through `npx`, and each step says it is
+  starting, so the next hang names its step.
+
 - **Messages arrived as "This message cannot be read on this device."** Each
   message was sealed under whichever single key the server listed first, and
   the list included the sender's own key and had no order. When the sender's
