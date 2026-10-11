@@ -1150,3 +1150,32 @@ model MessageReaction {
   @@id([messageId, userId])
   @@index([userId])
 }
+
+/// One component's self-checks on one day, counted rather than kept one by
+/// one. The service checks itself every few minutes while it is running; a
+/// day's uptime is the share of those checks that passed. A day with no row
+/// had no checks -- the service was asleep or down, and could not say which
+/// -- and is shown as "no data", never as up.
+model ServiceDay {
+  day       DateTime @db.Date
+  component String
+  checks    Int      @default(0)
+  failures  Int      @default(0)
+
+  @@id([day, component])
+}
+
+/// A stretch of time one component was failing its checks: opened by the
+/// first failure, closed by the first pass after it.
+model ServiceIncident {
+  id        String    @id @default(uuid()) @db.Uuid
+  component String
+  startedAt DateTime  @db.Timestamptz()
+  endedAt   DateTime? @db.Timestamptz()
+
+  /// What the failing check said, when it said anything.
+  detail String?
+
+  @@index([startedAt])
+  @@index([component, endedAt])
+}
