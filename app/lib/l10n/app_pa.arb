@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "ਤੁਸੀਂ ਜਵਾਬ ਦਿੱਤਾ",
   "dmReplied": "${name} ਨੇ ਜਵਾਬ ਦਿੱਤਾ",
   "ui_dm_attach": "ਸੁਨੇਹੇ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ",
-  "ui_dm_send_heart": "ਦਿਲ ਭੇਜੋ",
   "ui_dm_new": "ਨਵਾਂ ਸੁਨੇਹਾ",
   "ui_dm_starter": "ਹਾਲੇ ਕੁਝ ਨਹੀਂ ਕਿਹਾ ਗਿਆ। ਹੱਥ ਹਿਲਾਉਣਾ ਇੱਕ ਵਧੀਆ ਸ਼ੁਰੂਆਤ ਹੈ।",
   "ui_dm_wave": "👋  ਹੱਥ ਹਿਲਾਓ",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "ਆਪਣੀ ਪ੍ਰਤੀਕਿਰਿਆ ਹਟਾਓ",
   "ui_dm_someone": "ਕੋਈ",
   "ui_dm_quote_message": "ਸੁਨੇਹਾ",
-  "ui_dm_quote_attachment": "ਨੱਥੀ"
+  "ui_dm_quote_attachment": "ਨੱਥੀ",
+  "ui_dm_unreadable": "ਇਹ ਸੁਨੇਹਾ ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਪੜ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।",
+  "ui_dm_preview_sealed": "ਇਨਕ੍ਰਿਪਟ ਕੀਤਾ ਸੁਨੇਹਾ",
+  "ui_dm_e2ee_notice": "ਸੁਨੇਹੇ ਸਿਰੇ-ਤੋਂ-ਸਿਰੇ ਤੱਕ ਇਨਕ੍ਰਿਪਟ ਕੀਤੇ ਗਏ ਹਨ",
+  "ui_dm_not_encrypted": "ਸਿਰੇ-ਤੋਂ-ਸਿਰੇ ਤੱਕ ਇਨਕ੍ਰਿਪਟ ਨਹੀਂ ਕੀਤਾ ਗਿਆ",
+  "ui_dm_sent": "ਭੇਜਿਆ ਗਿਆ",
+  "ui_dm_seen": "ਦੇਖਿਆ ਗਿਆ",
+  "ui_dm_sending": "ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
 }

@@ -119,9 +119,14 @@ database leak, not against an actively malicious server.**
   it wakes, fetches the message, opens it on the device and draws the
   notification. Not built.
 - **Nothing is sealed unless both sides have published a key.** A conversation
-  with somebody on an older build sends as it always did. The bubble carries a
-  lock when the message was sealed, so the reader is told which they got rather
-  than left to assume.
+  with somebody on an older build sends as it always did. The thread says
+  "Messages are end-to-end encrypted" once, above the first sealed message,
+  and any message after that point that went as written carries an open lock
+  beside it — so the reader is told which they got rather than left to
+  assume. History from before that point is plain throughout and is not
+  marked message by message. (This used to be a lock under every run of
+  messages: the same thing said a hundred times down a screen, with the
+  exception, which is what matters, no easier to spot.)
 
 ## What would close each gap
 

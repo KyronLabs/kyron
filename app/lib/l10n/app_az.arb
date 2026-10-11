@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Siz cavab verdiniz",
   "dmReplied": "${name} cavab verdi",
   "ui_dm_attach": "Mesaja əlavə et",
-  "ui_dm_send_heart": "Ürək göndər",
   "ui_dm_new": "Yeni mesaj",
   "ui_dm_starter": "Hələ heç nə deyilməyib. Əl yelləmək yaxşı başlanğıcdır.",
   "ui_dm_wave": "👋  Əl yellə",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Reaksiyanı sil",
   "ui_dm_someone": "Kimsə",
   "ui_dm_quote_message": "Mesaj",
-  "ui_dm_quote_attachment": "Əlavə fayl"
+  "ui_dm_quote_attachment": "Əlavə fayl",
+  "ui_dm_unreadable": "Bu mesaj bu cihazda oxuna bilməz.",
+  "ui_dm_preview_sealed": "Şifrələnmiş mesaj",
+  "ui_dm_e2ee_notice": "Mesajlar ucdan-uca şifrələnib",
+  "ui_dm_not_encrypted": "Ucdan-uca şifrələnməyib",
+  "ui_dm_sent": "Göndərildi",
+  "ui_dm_seen": "Baxıldı",
+  "ui_dm_sending": "Göndərilir…"
 }

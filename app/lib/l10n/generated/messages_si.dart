@@ -1253,7 +1253,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 පිළිතුරු දුන්නා",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("පණිවිඩයට එක් කරන්න"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("හදවතක් යවන්න"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("නව පණිවිඩය"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "තවම කිසිවක් කියා නැත. අත වැනීම හොඳ ආරම්භයකි."),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("කවුරුහරි"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("පණිවිඩය"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("ඇමුණුම"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "මෙම පණිවිඩය මෙම උපාංගයේ කියවිය නොහැක."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("සංකේතනය කළ පණිවිඩය"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "පණිවිඩ අන්ත සිට අන්තය දක්වා සංකේතනය කර ඇත"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "අන්ත සිට අන්තය දක්වා සංකේතනය කර නැත"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("යැව්වා"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("දුටුවා"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("යවමින්…"),
     };
 
 final messageLookup = MessageLookup();

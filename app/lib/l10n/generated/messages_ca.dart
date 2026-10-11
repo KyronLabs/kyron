@@ -1370,7 +1370,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 ha respost",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Afegeix al missatge"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Envia un cor"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Missatge nou"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Encara no s'ha dit res. Una salutació és un bon començament."),
@@ -1384,6 +1383,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Missatge"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Fitxer adjunt"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Aquest missatge no es pot llegir en aquest dispositiu."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Missatge xifrat"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Els missatges estan xifrats d'extrem a extrem"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("No xifrat d'extrem a extrem"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Enviat"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Vist"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("S'està enviant…"),
     };
 
 final messageLookup = MessageLookup();

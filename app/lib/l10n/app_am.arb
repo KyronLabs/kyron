@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "እርስዎ መለሱ",
   "dmReplied": "${name} መለሱ",
   "ui_dm_attach": "ወደ መልእክት ያክሉ",
-  "ui_dm_send_heart": "ልብ ይላኩ",
   "ui_dm_new": "አዲስ መልእክት",
   "ui_dm_starter": "እስካሁን ምንም አልተባለም። ሰላምታ ጥሩ ጅምር ነው።",
   "ui_dm_wave": "👋  ሰላም በሉ",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "ምላሽዎን ያስወግዱ",
   "ui_dm_someone": "አንድ ሰው",
   "ui_dm_quote_message": "መልእክት",
-  "ui_dm_quote_attachment": "አባሪ"
+  "ui_dm_quote_attachment": "አባሪ",
+  "ui_dm_unreadable": "ይህ መልእክት በዚህ መሣሪያ ላይ ሊነበብ አይችልም።",
+  "ui_dm_preview_sealed": "የተመሰጠረ መልእክት",
+  "ui_dm_e2ee_notice": "መልእክቶች ከጫፍ እስከ ጫፍ የተመሰጠሩ ናቸው",
+  "ui_dm_not_encrypted": "ከጫፍ እስከ ጫፍ አልተመሰጠረም",
+  "ui_dm_sent": "ተልኳል",
+  "ui_dm_seen": "ታይቷል",
+  "ui_dm_sending": "በመላክ ላይ…"
 }

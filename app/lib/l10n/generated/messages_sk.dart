@@ -1251,7 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Vaša odpoveď"),
       "dmReplied": (Object a0) => "Odpoveď od $a0",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Pridať do správy"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Poslať srdce"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Nová správa"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Zatiaľ nič. Zamávanie je dobrý začiatok."),
@@ -1263,6 +1262,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Niekto"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Správa"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Príloha"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Túto správu nemožno na tomto zariadení prečítať."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Šifrovaná správa"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Správy sú šifrované od začiatku do konca"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Bez šifrovania od začiatku do konca"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Odoslané"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Zobrazené"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Odosiela sa…"),
     };
 
 final messageLookup = MessageLookup();

@@ -1051,7 +1051,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("あなたが返信しました"),
       "dmReplied": (Object a0) => "$a0さんが返信しました",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("メッセージに追加"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ハートを送る"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("新しいメッセージ"),
       "ui_dm_starter":
           MessageLookupByLibrary.simpleMessage("まだ何も話していません。まずは手を振ってみましょう。"),
@@ -1063,6 +1062,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("誰か"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("メッセージ"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("添付ファイル"),
+      "ui_dm_unreadable":
+          MessageLookupByLibrary.simpleMessage("このメッセージはこの端末では読めません。"),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("暗号化されたメッセージ"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("メッセージはエンドツーエンドで暗号化されています"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("エンドツーエンドで暗号化されていません"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("送信済み"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("既読"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("送信中…"),
     };
 
 final messageLookup = MessageLookup();

@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "התשובה שלך",
   "dmReplied": "תשובה מאת ${name}",
   "ui_dm_attach": "הוספה להודעה",
-  "ui_dm_send_heart": "שליחת לב",
   "ui_dm_new": "הודעה חדשה",
   "ui_dm_starter": "עדיין לא נאמר דבר. נפנוף הוא התחלה טובה.",
   "ui_dm_wave": "👋  נפנוף",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "הסרת התגובה שלך",
   "ui_dm_someone": "מישהו",
   "ui_dm_quote_message": "הודעה",
-  "ui_dm_quote_attachment": "קובץ מצורף"
+  "ui_dm_quote_attachment": "קובץ מצורף",
+  "ui_dm_unreadable": "לא ניתן לקרוא את ההודעה הזו במכשיר הזה.",
+  "ui_dm_preview_sealed": "הודעה מוצפנת",
+  "ui_dm_e2ee_notice": "ההודעות מוצפנות מקצה לקצה",
+  "ui_dm_not_encrypted": "לא מוצפנת מקצה לקצה",
+  "ui_dm_sent": "נשלחה",
+  "ui_dm_seen": "נצפתה",
+  "ui_dm_sending": "בשליחה…"
 }

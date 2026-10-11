@@ -1253,8 +1253,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 უპასუხა",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("შეტყობინებაში დამატება"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("გულის გაგზავნა"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("ახალი შეტყობინება"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "ჯერ არაფერი თქმულა. ხელის დაქნევა კარგი დასაწყისია."),
@@ -1268,6 +1266,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message":
           MessageLookupByLibrary.simpleMessage("შეტყობინება"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("დანართი"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "ამ შეტყობინების წაკითხვა ამ მოწყობილობაზე შეუძლებელია."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("დაშიფრული შეტყობინება"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "შეტყობინებები დაშიფრულია ბოლოდან ბოლომდე"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "არ არის დაშიფრული ბოლოდან ბოლომდე"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("გაგზავნილია"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("ნანახია"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("იგზავნება…"),
     };
 
 final messageLookup = MessageLookup();

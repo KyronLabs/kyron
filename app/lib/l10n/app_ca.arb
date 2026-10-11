@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Has respost",
   "dmReplied": "${name} ha respost",
   "ui_dm_attach": "Afegeix al missatge",
-  "ui_dm_send_heart": "Envia un cor",
   "ui_dm_new": "Missatge nou",
   "ui_dm_starter": "Encara no s'ha dit res. Una salutació és un bon començament.",
   "ui_dm_wave": "👋  Saluda",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Elimina la teva reacció",
   "ui_dm_someone": "Algú",
   "ui_dm_quote_message": "Missatge",
-  "ui_dm_quote_attachment": "Fitxer adjunt"
+  "ui_dm_quote_attachment": "Fitxer adjunt",
+  "ui_dm_unreadable": "Aquest missatge no es pot llegir en aquest dispositiu.",
+  "ui_dm_preview_sealed": "Missatge xifrat",
+  "ui_dm_e2ee_notice": "Els missatges estan xifrats d'extrem a extrem",
+  "ui_dm_not_encrypted": "No xifrat d'extrem a extrem",
+  "ui_dm_sent": "Enviat",
+  "ui_dm_seen": "Vist",
+  "ui_dm_sending": "S'està enviant…"
 }

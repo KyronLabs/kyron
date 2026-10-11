@@ -331,8 +331,8 @@ void main() {
       Conversation rowWith(String id, String body) => Conversation(
             id: id,
             people: const [MessagePerson(id: 'ada', name: 'Ada')],
-            lastMessage: _msg('m-$id', body, 'ada', DateTime(2026, 1, 1)),
-            lastMessageAt: DateTime(2026, 1, 1),
+            lastMessage: _msg('m-$id', body, 'ada', DateTime(2026, 3, 4)),
+            lastMessageAt: DateTime(2026, 3, 4),
           );
 
       final repo = _FakeMessages(

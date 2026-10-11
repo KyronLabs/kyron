@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("நீங்கள் பதிலளித்தீர்கள்"),
       "dmReplied": (Object a0) => "$a0 பதிலளித்தார்",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("செய்தியில் சேர்"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("இதயத்தை அனுப்பு"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("புதிய செய்தி"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "இன்னும் எதுவும் சொல்லப்படவில்லை. கையசைப்பு ஒரு நல்ல தொடக்கம்."),
@@ -1266,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("யாரோ"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("செய்தி"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("இணைப்பு"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "இந்தச் செய்தியை இந்தச் சாதனத்தில் படிக்க முடியாது."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("மறைகுறியாக்கப்பட்ட செய்தி"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "செய்திகள் முழுமையாக மறைகுறியாக்கப்பட்டுள்ளன"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "முழுமையாக மறைகுறியாக்கப்படவில்லை"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("அனுப்பப்பட்டது"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("பார்க்கப்பட்டது"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("அனுப்புகிறது…"),
     };
 
 final messageLookup = MessageLookup();

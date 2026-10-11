@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Jy het geantwoord",
   "dmReplied": "${name} het geantwoord",
   "ui_dm_attach": "Voeg by boodskap",
-  "ui_dm_send_heart": "Stuur 'n hartjie",
   "ui_dm_new": "Nuwe boodskap",
   "ui_dm_starter": "Nog niks gesê nie. 'n Waai is 'n goeie begin.",
   "ui_dm_wave": "👋  Waai",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Verwyder jou reaksie",
   "ui_dm_someone": "Iemand",
   "ui_dm_quote_message": "Boodskap",
-  "ui_dm_quote_attachment": "Aanhangsel"
+  "ui_dm_quote_attachment": "Aanhangsel",
+  "ui_dm_unreadable": "Hierdie boodskap kan nie op hierdie toestel gelees word nie.",
+  "ui_dm_preview_sealed": "Geënkripteerde boodskap",
+  "ui_dm_e2ee_notice": "Boodskappe is end-tot-end-geënkripteer",
+  "ui_dm_not_encrypted": "Nie end-tot-end-geënkripteer nie",
+  "ui_dm_sent": "Gestuur",
+  "ui_dm_seen": "Gesien",
+  "ui_dm_sending": "Stuur tans…"
 }

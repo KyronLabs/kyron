@@ -1253,7 +1253,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 ప్రత్యుత్తరం ఇచ్చారు",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("సందేశానికి జోడించండి"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("హృదయం పంపండి"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("కొత్త సందేశం"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "ఇంకా ఏమీ చెప్పలేదు. చేయి ఊపడం మంచి ప్రారంభం."),
@@ -1267,6 +1266,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("సందేశం"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("అటాచ్‌మెంట్"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "ఈ సందేశాన్ని ఈ పరికరంలో చదవలేరు."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("ఎన్‌క్రిప్ట్ చేసిన సందేశం"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "సందేశాలు ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడ్డాయి"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడలేదు"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("పంపబడింది"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("చూడబడింది"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("పంపుతోంది…"),
     };
 
 final messageLookup = MessageLookup();

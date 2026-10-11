@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Respondiches",
   "dmReplied": "${name} respondeu",
   "ui_dm_attach": "Engadir á mensaxe",
-  "ui_dm_send_heart": "Enviar un corazón",
   "ui_dm_new": "Mensaxe nova",
   "ui_dm_starter": "Aínda non se dixo nada. Un saúdo é un bo comezo.",
   "ui_dm_wave": "👋  Saudar",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Quitar a túa reacción",
   "ui_dm_someone": "Alguén",
   "ui_dm_quote_message": "Mensaxe",
-  "ui_dm_quote_attachment": "Anexo"
+  "ui_dm_quote_attachment": "Anexo",
+  "ui_dm_unreadable": "Esta mensaxe non se pode ler neste dispositivo.",
+  "ui_dm_preview_sealed": "Mensaxe cifrada",
+  "ui_dm_e2ee_notice": "As mensaxes están cifradas de extremo a extremo",
+  "ui_dm_not_encrypted": "Sen cifrado de extremo a extremo",
+  "ui_dm_sent": "Enviada",
+  "ui_dm_seen": "Vista",
+  "ui_dm_sending": "Enviando…"
 }

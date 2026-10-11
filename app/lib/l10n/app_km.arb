@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "អ្នកបានឆ្លើយតប",
   "dmReplied": "${name} បានឆ្លើយតប",
   "ui_dm_attach": "បន្ថែមទៅសារ",
-  "ui_dm_send_heart": "ផ្ញើបេះដូង",
   "ui_dm_new": "សារថ្មី",
   "ui_dm_starter": "មិនទាន់មានអ្វីនិយាយនៅឡើយទេ។ ការគ្រវីដៃគឺជាការចាប់ផ្ដើមដ៏ល្អ។",
   "ui_dm_wave": "👋  គ្រវីដៃ",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "ដកប្រតិកម្មរបស់អ្នកចេញ",
   "ui_dm_someone": "នរណាម្នាក់",
   "ui_dm_quote_message": "សារ",
-  "ui_dm_quote_attachment": "ឯកសារភ្ជាប់"
+  "ui_dm_quote_attachment": "ឯកសារភ្ជាប់",
+  "ui_dm_unreadable": "មិនអាចអានសារនេះនៅលើឧបករណ៍នេះបានទេ។",
+  "ui_dm_preview_sealed": "សារដែលបានអ៊ិនគ្រីប",
+  "ui_dm_e2ee_notice": "សារត្រូវបានអ៊ិនគ្រីបពីចុងម្ខាងទៅចុងម្ខាង",
+  "ui_dm_not_encrypted": "មិនបានអ៊ិនគ្រីបពីចុងម្ខាងទៅចុងម្ខាងទេ",
+  "ui_dm_sent": "បានផ្ញើ",
+  "ui_dm_seen": "បានឃើញ",
+  "ui_dm_sending": "កំពុងផ្ញើ…"
 }

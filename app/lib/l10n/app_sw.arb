@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Ulijibu",
   "dmReplied": "${name} alijibu",
   "ui_dm_attach": "Ongeza kwenye ujumbe",
-  "ui_dm_send_heart": "Tuma moyo",
   "ui_dm_new": "Ujumbe mpya",
   "ui_dm_starter": "Hakuna kilichosemwa bado. Kupunga mkono ni mwanzo mzuri.",
   "ui_dm_wave": "👋  Punga mkono",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Ondoa itikio lako",
   "ui_dm_someone": "Mtu",
   "ui_dm_quote_message": "Ujumbe",
-  "ui_dm_quote_attachment": "Kiambatisho"
+  "ui_dm_quote_attachment": "Kiambatisho",
+  "ui_dm_unreadable": "Ujumbe huu hauwezi kusomwa kwenye kifaa hiki.",
+  "ui_dm_preview_sealed": "Ujumbe uliosimbwa",
+  "ui_dm_e2ee_notice": "Ujumbe umesimbwa kwa njia fiche kutoka mwanzo hadi mwisho",
+  "ui_dm_not_encrypted": "Haujasimbwa kwa njia fiche kutoka mwanzo hadi mwisho",
+  "ui_dm_sent": "Umetumwa",
+  "ui_dm_seen": "Umeonekana",
+  "ui_dm_sending": "Inatuma…"
 }

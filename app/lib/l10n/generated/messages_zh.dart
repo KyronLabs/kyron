@@ -948,7 +948,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("你回复了"),
       "dmReplied": (Object a0) => "$a0 回复了",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("添加到消息"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("发送爱心"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("新消息"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage("还没有说过话。挥个手是个好开始。"),
       "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  挥手"),
@@ -958,6 +957,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("某人"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("消息"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("附件"),
+      "ui_dm_unreadable":
+          MessageLookupByLibrary.simpleMessage("无法在此设备上阅读这条消息。"),
+      "ui_dm_preview_sealed": MessageLookupByLibrary.simpleMessage("加密消息"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage("消息已端到端加密"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage("未端到端加密"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("已发送"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("已读"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("正在发送…"),
     };
 
 final messageLookup = MessageLookup();

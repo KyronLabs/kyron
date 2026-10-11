@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Du svarade",
   "dmReplied": "${name} svarade",
   "ui_dm_attach": "Lägg till i meddelandet",
-  "ui_dm_send_heart": "Skicka ett hjärta",
   "ui_dm_new": "Nytt meddelande",
   "ui_dm_starter": "Inget har sagts än. En vinkning är en bra början.",
   "ui_dm_wave": "👋  Vinka",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Ta bort din reaktion",
   "ui_dm_someone": "Någon",
   "ui_dm_quote_message": "Meddelande",
-  "ui_dm_quote_attachment": "Bilaga"
+  "ui_dm_quote_attachment": "Bilaga",
+  "ui_dm_unreadable": "Det här meddelandet kan inte läsas på den här enheten.",
+  "ui_dm_preview_sealed": "Krypterat meddelande",
+  "ui_dm_e2ee_notice": "Meddelanden är end-to-end-krypterade",
+  "ui_dm_not_encrypted": "Inte end-to-end-krypterat",
+  "ui_dm_sent": "Skickat",
+  "ui_dm_seen": "Sett",
+  "ui_dm_sending": "Skickar…"
 }

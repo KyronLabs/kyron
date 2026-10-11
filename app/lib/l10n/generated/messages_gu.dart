@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("તમે જવાબ આપ્યો"),
       "dmReplied": (Object a0) => "$a0 એ જવાબ આપ્યો",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("સંદેશમાં ઉમેરો"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("હૃદય મોકલો"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("નવો સંદેશ"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "હજી કંઈ કહેવાયું નથી. હાથ હલાવવો એ સારી શરૂઆત છે."),
@@ -1264,6 +1263,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("કોઈક"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("સંદેશ"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("જોડાણ"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "આ સંદેશ આ ઉપકરણ પર વાંચી શકાતો નથી."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("એન્ક્રિપ્ટેડ સંદેશ"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "સંદેશા એન્ડ-ટુ-એન્ડ એન્ક્રિપ્ટેડ છે"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("એન્ડ-ટુ-એન્ડ એન્ક્રિપ્ટેડ નથી"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("મોકલ્યો"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("જોયો"),
+      "ui_dm_sending":
+          MessageLookupByLibrary.simpleMessage("મોકલી રહ્યાં છીએ…"),
     };
 
 final messageLookup = MessageLookup();

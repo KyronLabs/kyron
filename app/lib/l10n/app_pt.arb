@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Você respondeu",
   "dmReplied": "${name} respondeu",
   "ui_dm_attach": "Adicionar à mensagem",
-  "ui_dm_send_heart": "Enviar um coração",
   "ui_dm_new": "Nova mensagem",
   "ui_dm_starter": "Nada foi dito ainda. Um aceno é um bom começo.",
   "ui_dm_wave": "👋  Acenar",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Remover sua reação",
   "ui_dm_someone": "Alguém",
   "ui_dm_quote_message": "Mensagem",
-  "ui_dm_quote_attachment": "Anexo"
+  "ui_dm_quote_attachment": "Anexo",
+  "ui_dm_unreadable": "Esta mensagem não pode ser lida neste dispositivo.",
+  "ui_dm_preview_sealed": "Mensagem criptografada",
+  "ui_dm_e2ee_notice": "As mensagens são criptografadas de ponta a ponta",
+  "ui_dm_not_encrypted": "Sem criptografia de ponta a ponta",
+  "ui_dm_sent": "Enviada",
+  "ui_dm_seen": "Vista",
+  "ui_dm_sending": "Enviando…"
 }

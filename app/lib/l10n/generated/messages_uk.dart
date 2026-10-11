@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "Відповідь від $a0",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Додати до повідомлення"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Надіслати серце"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Нове повідомлення"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Ще нічого не сказано. Помахати рукою — гарний початок."),
@@ -1268,6 +1266,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Повідомлення"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Вкладення"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Це повідомлення неможливо прочитати на цьому пристрої."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Зашифроване повідомлення"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Повідомлення захищені наскрізним шифруванням"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Без наскрізного шифрування"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Надіслано"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Переглянуто"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Надсилання…"),
     };
 
 final messageLookup = MessageLookup();

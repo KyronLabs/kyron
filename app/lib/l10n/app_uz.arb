@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Siz javob berdingiz",
   "dmReplied": "${name} javob berdi",
   "ui_dm_attach": "Xabarga qo‘shish",
-  "ui_dm_send_heart": "Yurak yuborish",
   "ui_dm_new": "Yangi xabar",
   "ui_dm_starter": "Hali hech narsa aytilmadi. Qo‘l silkitish — yaxshi boshlanish.",
   "ui_dm_wave": "👋  Qo‘l silkitish",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Reaksiyangizni olib tashlash",
   "ui_dm_someone": "Kimdir",
   "ui_dm_quote_message": "Xabar",
-  "ui_dm_quote_attachment": "Biriktirma"
+  "ui_dm_quote_attachment": "Biriktirma",
+  "ui_dm_unreadable": "Bu xabarni ushbu qurilmada o‘qib bo‘lmaydi.",
+  "ui_dm_preview_sealed": "Shifrlangan xabar",
+  "ui_dm_e2ee_notice": "Xabarlar uchdan-uchgacha shifrlangan",
+  "ui_dm_not_encrypted": "Uchdan-uchgacha shifrlanmagan",
+  "ui_dm_sent": "Yuborildi",
+  "ui_dm_seen": "Ko‘rildi",
+  "ui_dm_sending": "Yuborilmoqda…"
 }

@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("คุณตอบกลับแล้ว"),
       "dmReplied": (Object a0) => "$a0 ตอบกลับแล้ว",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("เพิ่มลงในข้อความ"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ส่งหัวใจ"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("ข้อความใหม่"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "ยังไม่มีใครพูดอะไร โบกมือทักทายเป็นการเริ่มต้นที่ดี"),
@@ -1264,6 +1263,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("ใครบางคน"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("ข้อความ"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("ไฟล์แนบ"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "ไม่สามารถอ่านข้อความนี้บนอุปกรณ์นี้ได้"),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("ข้อความที่เข้ารหัส"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "ข้อความได้รับการเข้ารหัสตั้งแต่ต้นทางถึงปลายทาง"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "ไม่ได้เข้ารหัสตั้งแต่ต้นทางถึงปลายทาง"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("ส่งแล้ว"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("เห็นแล้ว"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("กำลังส่ง…"),
     };
 
 final messageLookup = MessageLookup();

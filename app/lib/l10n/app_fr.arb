@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Vous avez répondu",
   "dmReplied": "${name} a répondu",
   "ui_dm_attach": "Ajouter au message",
-  "ui_dm_send_heart": "Envoyer un cœur",
   "ui_dm_new": "Nouveau message",
   "ui_dm_starter": "Rien n'a encore été dit. Un petit coucou est un bon début.",
   "ui_dm_wave": "👋  Saluer",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Retirer votre réaction",
   "ui_dm_someone": "Quelqu'un",
   "ui_dm_quote_message": "Message",
-  "ui_dm_quote_attachment": "Pièce jointe"
+  "ui_dm_quote_attachment": "Pièce jointe",
+  "ui_dm_unreadable": "Ce message ne peut pas être lu sur cet appareil.",
+  "ui_dm_preview_sealed": "Message chiffré",
+  "ui_dm_e2ee_notice": "Les messages sont chiffrés de bout en bout",
+  "ui_dm_not_encrypted": "Non chiffré de bout en bout",
+  "ui_dm_sent": "Envoyé",
+  "ui_dm_seen": "Vu",
+  "ui_dm_sending": "Envoi…"
 }

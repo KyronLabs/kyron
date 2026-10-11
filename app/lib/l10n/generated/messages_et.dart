@@ -1314,7 +1314,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Sa vastasid"),
       "dmReplied": (Object a0) => "$a0 vastas",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Lisa sõnumile"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Saada süda"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Uus sõnum"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Veel pole midagi öeldud. Lehvitus on hea algus."),
@@ -1327,6 +1326,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Keegi"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Sõnum"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Manus"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Seda sõnumit ei saa selles seadmes lugeda."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Krüpteeritud sõnum"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Sõnumid on otspunktkrüpteeritud"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Pole otspunktkrüpteeritud"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Saadetud"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Nähtud"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Saatmine…"),
     };
 
 final messageLookup = MessageLookup();

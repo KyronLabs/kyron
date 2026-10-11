@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "आपने जवाब दिया",
   "dmReplied": "${name} ने जवाब दिया",
   "ui_dm_attach": "संदेश में जोड़ें",
-  "ui_dm_send_heart": "दिल भेजें",
   "ui_dm_new": "नया संदेश",
   "ui_dm_starter": "अभी तक कुछ नहीं कहा गया। हाथ हिलाना एक अच्छी शुरुआत है।",
   "ui_dm_wave": "👋  हाथ हिलाएं",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "अपनी प्रतिक्रिया हटाएं",
   "ui_dm_someone": "कोई",
   "ui_dm_quote_message": "संदेश",
-  "ui_dm_quote_attachment": "अटैचमेंट"
+  "ui_dm_quote_attachment": "अटैचमेंट",
+  "ui_dm_unreadable": "यह संदेश इस डिवाइस पर नहीं पढ़ा जा सकता।",
+  "ui_dm_preview_sealed": "एन्क्रिप्ट किया गया संदेश",
+  "ui_dm_e2ee_notice": "संदेश एंड-टू-एंड एन्क्रिप्टेड हैं",
+  "ui_dm_not_encrypted": "एंड-टू-एंड एन्क्रिप्टेड नहीं",
+  "ui_dm_sent": "भेजा गया",
+  "ui_dm_seen": "देखा गया",
+  "ui_dm_sending": "भेजा जा रहा है…"
 }

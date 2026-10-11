@@ -1361,8 +1361,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 hat geantwortet",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Zur Nachricht hinzufügen"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Ein Herz senden"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Neue Nachricht"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Noch nichts gesagt. Ein Winken ist ein guter Anfang."),
@@ -1375,6 +1373,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Jemand"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Nachricht"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Anhang"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Diese Nachricht kann auf diesem Gerät nicht gelesen werden."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Verschlüsselte Nachricht"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Nachrichten sind Ende-zu-Ende-verschlüsselt"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Nicht Ende-zu-Ende-verschlüsselt"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Gesendet"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Gesehen"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Wird gesendet…"),
     };
 
 final messageLookup = MessageLookup();

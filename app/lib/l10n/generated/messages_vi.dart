@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Bạn đã trả lời"),
       "dmReplied": (Object a0) => "$a0 đã trả lời",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Thêm vào tin nhắn"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Gửi một trái tim"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Tin nhắn mới"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Chưa có gì được nói. Một cái vẫy tay là khởi đầu tốt."),
@@ -1267,6 +1265,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Tin nhắn"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Tệp đính kèm"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Không thể đọc tin nhắn này trên thiết bị này."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Tin nhắn được mã hóa"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("Tin nhắn được mã hóa đầu cuối"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Không được mã hóa đầu cuối"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Đã gửi"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Đã xem"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Đang gửi…"),
     };
 
 final messageLookup = MessageLookup();

@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "답장했습니다",
   "dmReplied": "${name}님이 답장했습니다",
   "ui_dm_attach": "메시지에 추가",
-  "ui_dm_send_heart": "하트 보내기",
   "ui_dm_new": "새 메시지",
   "ui_dm_starter": "아직 아무 말도 없어요. 손을 흔들며 시작해 보세요.",
   "ui_dm_wave": "👋  손 흔들기",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "내 반응 삭제",
   "ui_dm_someone": "누군가",
   "ui_dm_quote_message": "메시지",
-  "ui_dm_quote_attachment": "첨부 파일"
+  "ui_dm_quote_attachment": "첨부 파일",
+  "ui_dm_unreadable": "이 기기에서는 이 메시지를 읽을 수 없습니다.",
+  "ui_dm_preview_sealed": "암호화된 메시지",
+  "ui_dm_e2ee_notice": "메시지는 종단 간 암호화됩니다",
+  "ui_dm_not_encrypted": "종단 간 암호화되지 않음",
+  "ui_dm_sent": "전송됨",
+  "ui_dm_seen": "읽음",
+  "ui_dm_sending": "보내는 중…"
 }

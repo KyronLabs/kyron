@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "நீங்கள் பதிலளித்தீர்கள்",
   "dmReplied": "${name} பதிலளித்தார்",
   "ui_dm_attach": "செய்தியில் சேர்",
-  "ui_dm_send_heart": "இதயத்தை அனுப்பு",
   "ui_dm_new": "புதிய செய்தி",
   "ui_dm_starter": "இன்னும் எதுவும் சொல்லப்படவில்லை. கையசைப்பு ஒரு நல்ல தொடக்கம்.",
   "ui_dm_wave": "👋  கையசை",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "உங்கள் எதிர்வினையை அகற்று",
   "ui_dm_someone": "யாரோ",
   "ui_dm_quote_message": "செய்தி",
-  "ui_dm_quote_attachment": "இணைப்பு"
+  "ui_dm_quote_attachment": "இணைப்பு",
+  "ui_dm_unreadable": "இந்தச் செய்தியை இந்தச் சாதனத்தில் படிக்க முடியாது.",
+  "ui_dm_preview_sealed": "மறைகுறியாக்கப்பட்ட செய்தி",
+  "ui_dm_e2ee_notice": "செய்திகள் முழுமையாக மறைகுறியாக்கப்பட்டுள்ளன",
+  "ui_dm_not_encrypted": "முழுமையாக மறைகுறியாக்கப்படவில்லை",
+  "ui_dm_sent": "அனுப்பப்பட்டது",
+  "ui_dm_seen": "பார்க்கப்பட்டது",
+  "ui_dm_sending": "அனுப்புகிறது…"
 }

@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "آپ نے جواب دیا",
   "dmReplied": "${name} نے جواب دیا",
   "ui_dm_attach": "پیغام میں شامل کریں",
-  "ui_dm_send_heart": "دل بھیجیں",
   "ui_dm_new": "نیا پیغام",
   "ui_dm_starter": "ابھی تک کچھ نہیں کہا گیا۔ ہاتھ ہلانا ایک اچھی شروعات ہے۔",
   "ui_dm_wave": "👋  ہاتھ ہلائیں",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "اپنا ردعمل ہٹائیں",
   "ui_dm_someone": "کوئی",
   "ui_dm_quote_message": "پیغام",
-  "ui_dm_quote_attachment": "منسلکہ"
+  "ui_dm_quote_attachment": "منسلکہ",
+  "ui_dm_unreadable": "یہ پیغام اس آلے پر نہیں پڑھا جا سکتا۔",
+  "ui_dm_preview_sealed": "مرموز کردہ پیغام",
+  "ui_dm_e2ee_notice": "پیغامات اینڈ ٹو اینڈ مرموز ہیں",
+  "ui_dm_not_encrypted": "اینڈ ٹو اینڈ مرموز نہیں",
+  "ui_dm_sent": "بھیج دیا گیا",
+  "ui_dm_seen": "دیکھ لیا گیا",
+  "ui_dm_sending": "بھیجا جا رہا ہے…"
 }

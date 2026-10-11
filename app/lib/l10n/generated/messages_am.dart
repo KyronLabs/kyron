@@ -1152,7 +1152,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("እርስዎ መለሱ"),
       "dmReplied": (Object a0) => "$a0 መለሱ",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("ወደ መልእክት ያክሉ"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ልብ ይላኩ"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("አዲስ መልእክት"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "እስካሁን ምንም አልተባለም። ሰላምታ ጥሩ ጅምር ነው።"),
@@ -1164,6 +1163,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("አንድ ሰው"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("መልእክት"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("አባሪ"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "ይህ መልእክት በዚህ መሣሪያ ላይ ሊነበብ አይችልም።"),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("የተመሰጠረ መልእክት"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("መልእክቶች ከጫፍ እስከ ጫፍ የተመሰጠሩ ናቸው"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("ከጫፍ እስከ ጫፍ አልተመሰጠረም"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("ተልኳል"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("ታይቷል"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("በመላክ ላይ…"),
     };
 
 final messageLookup = MessageLookup();

@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "شما پاسخ دادید",
   "dmReplied": "${name} پاسخ داد",
   "ui_dm_attach": "افزودن به پیام",
-  "ui_dm_send_heart": "ارسال قلب",
   "ui_dm_new": "پیام جدید",
   "ui_dm_starter": "هنوز چیزی گفته نشده. یک دست تکان دادن شروع خوبی است.",
   "ui_dm_wave": "👋  دست تکان بده",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "حذف واکنش شما",
   "ui_dm_someone": "کسی",
   "ui_dm_quote_message": "پیام",
-  "ui_dm_quote_attachment": "پیوست"
+  "ui_dm_quote_attachment": "پیوست",
+  "ui_dm_unreadable": "این پیام در این دستگاه قابل خواندن نیست.",
+  "ui_dm_preview_sealed": "پیام رمزگذاری‌شده",
+  "ui_dm_e2ee_notice": "پیام‌ها رمزگذاری سرتاسری شده‌اند",
+  "ui_dm_not_encrypted": "بدون رمزگذاری سرتاسری",
+  "ui_dm_sent": "ارسال شد",
+  "ui_dm_seen": "دیده شد",
+  "ui_dm_sending": "در حال ارسال…"
 }

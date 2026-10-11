@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Siz javob berdingiz"),
       "dmReplied": (Object a0) => "$a0 javob berdi",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Xabarga qo‘shish"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Yurak yuborish"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Yangi xabar"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Hali hech narsa aytilmadi. Qo‘l silkitish — yaxshi boshlanish."),
@@ -1267,6 +1265,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Xabar"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Biriktirma"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Bu xabarni ushbu qurilmada o‘qib bo‘lmaydi."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Shifrlangan xabar"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Xabarlar uchdan-uchgacha shifrlangan"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Uchdan-uchgacha shifrlanmagan"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Yuborildi"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Ko‘rildi"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Yuborilmoqda…"),
     };
 
 final messageLookup = MessageLookup();

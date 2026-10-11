@@ -1253,7 +1253,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 պատասխանեց",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Ավելացնել հաղորդագրությանը"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Ուղարկել սիրտ"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Նոր հաղորդագրություն"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Դեռ ոչինչ չի ասվել։ Ձեռքով ողջույնը լավ սկիզբ է։"),
@@ -1267,6 +1266,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message":
           MessageLookupByLibrary.simpleMessage("Հաղորդագրություն"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Կցորդ"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Այս հաղորդագրությունը հնարավոր չէ կարդալ այս սարքում։"),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Գաղտնագրված հաղորդագրություն"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Հաղորդագրությունները ծայրից ծայր գաղտնագրված են"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Ծայրից ծայր գաղտնագրված չէ"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Ուղարկված է"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Դիտված է"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Ուղարկվում է…"),
     };
 
 final messageLookup = MessageLookup();

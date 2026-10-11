@@ -1251,7 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Vaš odgovor"),
       "dmReplied": (Object a0) => "Odgovor od $a0",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Dodaj v sporočilo"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Pošlji srce"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Novo sporočilo"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Nič še ni bilo rečeno. Pomahanje je dober začetek."),
@@ -1264,6 +1263,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Nekdo"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Sporočilo"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Priloga"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Tega sporočila ni mogoče prebrati v tej napravi."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Šifrirano sporočilo"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Sporočila so šifrirana od konca do konca"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Ni šifrirano od konca do konca"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Poslano"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Videno"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Pošiljanje…"),
     };
 
 final messageLookup = MessageLookup();

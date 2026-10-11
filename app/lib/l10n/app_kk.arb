@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Сіз жауап бердіңіз",
   "dmReplied": "${name} жауап берді",
   "ui_dm_attach": "Хабарламаға қосу",
-  "ui_dm_send_heart": "Жүрек жіберу",
   "ui_dm_new": "Жаңа хабарлама",
   "ui_dm_starter": "Әлі ештеңе айтылмады. Қол бұлғау — жақсы бастама.",
   "ui_dm_wave": "👋  Қол бұлғау",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Реакцияңызды алып тастау",
   "ui_dm_someone": "Біреу",
   "ui_dm_quote_message": "Хабарлама",
-  "ui_dm_quote_attachment": "Тіркеме"
+  "ui_dm_quote_attachment": "Тіркеме",
+  "ui_dm_unreadable": "Бұл хабарды осы құрылғыда оқу мүмкін емес.",
+  "ui_dm_preview_sealed": "Шифрланған хабар",
+  "ui_dm_e2ee_notice": "Хабарлар өтпелі шифрланған",
+  "ui_dm_not_encrypted": "Өтпелі шифрланбаған",
+  "ui_dm_sent": "Жіберілді",
+  "ui_dm_seen": "Көрілді",
+  "ui_dm_sending": "Жіберілуде…"
 }

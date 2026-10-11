@@ -34,10 +34,33 @@ section for that version, so what is written here is what people read.
   without `FCM_SERVICE_ACCOUNT_JSON` nothing is delivered and the only symptom
   is silence.
 
+- **The conversation list showed sealed messages as ciphertext** — `k2.` and
+  a few hundred characters of base64 under the person's name. Each preview is
+  now opened on the device, without fetching anybody's keys; one that cannot
+  be opened reads "Encrypted message". The key is also waited for while it
+  loads after sign-in, where previews and messages opened in that moment used
+  to be drawn as unreadable.
+
 - **Long messages in Japanese, Hindi, Arabic and other scripts would not
   send.** The 4,000-character limit was applied to the sealed body, which is
   several times longer than what was typed when a character takes three bytes.
   The limit is now on what is typed, and sealed bodies have their own ceiling.
+
+### Changed
+
+- **The chat screen is laid out the way Threads and Instagram lay one out.**
+  Bubbles are pills; one person's messages with no pause between them stack
+  tight and tuck their corners in where they meet, so a run reads as one
+  column; the time is a centred line above a turn after a pause of fifteen
+  minutes or a change of day, instead of under every run; "Sent", "Seen" or
+  "Sending…" appears once, under your newest message. The box is one line of
+  text tall, with no focus outline and no heart beside it — Send is always
+  there, dimmed until there is something to send — and stops at the 4,000
+  characters the server takes. A message that cannot be opened says so in
+  italics. A message of emoji alone is drawn larger: one is four times body
+  text. The lock under every run is gone; the thread says once, where
+  encryption starts, that messages are end-to-end encrypted, and marks any
+  later message that was not. New strings are in all 68 catalogs.
 
 ### Added
 

@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "మీరు ప్రత్యుత్తరం ఇచ్చారు",
   "dmReplied": "${name} ప్రత్యుత్తరం ఇచ్చారు",
   "ui_dm_attach": "సందేశానికి జోడించండి",
-  "ui_dm_send_heart": "హృదయం పంపండి",
   "ui_dm_new": "కొత్త సందేశం",
   "ui_dm_starter": "ఇంకా ఏమీ చెప్పలేదు. చేయి ఊపడం మంచి ప్రారంభం.",
   "ui_dm_wave": "👋  చేయి ఊపండి",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "మీ ప్రతిస్పందనను తీసివేయండి",
   "ui_dm_someone": "ఎవరో",
   "ui_dm_quote_message": "సందేశం",
-  "ui_dm_quote_attachment": "అటాచ్‌మెంట్"
+  "ui_dm_quote_attachment": "అటాచ్‌మెంట్",
+  "ui_dm_unreadable": "ఈ సందేశాన్ని ఈ పరికరంలో చదవలేరు.",
+  "ui_dm_preview_sealed": "ఎన్‌క్రిప్ట్ చేసిన సందేశం",
+  "ui_dm_e2ee_notice": "సందేశాలు ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడ్డాయి",
+  "ui_dm_not_encrypted": "ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడలేదు",
+  "ui_dm_sent": "పంపబడింది",
+  "ui_dm_seen": "చూడబడింది",
+  "ui_dm_sending": "పంపుతోంది…"
 }

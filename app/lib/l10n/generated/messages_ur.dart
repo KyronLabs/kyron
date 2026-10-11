@@ -1253,7 +1253,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 نے جواب دیا",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("پیغام میں شامل کریں"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("دل بھیجیں"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("نیا پیغام"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "ابھی تک کچھ نہیں کہا گیا۔ ہاتھ ہلانا ایک اچھی شروعات ہے۔"),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("کوئی"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("پیغام"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("منسلکہ"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "یہ پیغام اس آلے پر نہیں پڑھا جا سکتا۔"),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("مرموز کردہ پیغام"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "پیغامات اینڈ ٹو اینڈ مرموز ہیں"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("اینڈ ٹو اینڈ مرموز نہیں"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("بھیج دیا گیا"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("دیکھ لیا گیا"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("بھیجا جا رہا ہے…"),
     };
 
 final messageLookup = MessageLookup();

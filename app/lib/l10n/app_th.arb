@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "คุณตอบกลับแล้ว",
   "dmReplied": "${name} ตอบกลับแล้ว",
   "ui_dm_attach": "เพิ่มลงในข้อความ",
-  "ui_dm_send_heart": "ส่งหัวใจ",
   "ui_dm_new": "ข้อความใหม่",
   "ui_dm_starter": "ยังไม่มีใครพูดอะไร โบกมือทักทายเป็นการเริ่มต้นที่ดี",
   "ui_dm_wave": "👋  โบกมือ",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "ลบการแสดงความรู้สึกของคุณ",
   "ui_dm_someone": "ใครบางคน",
   "ui_dm_quote_message": "ข้อความ",
-  "ui_dm_quote_attachment": "ไฟล์แนบ"
+  "ui_dm_quote_attachment": "ไฟล์แนบ",
+  "ui_dm_unreadable": "ไม่สามารถอ่านข้อความนี้บนอุปกรณ์นี้ได้",
+  "ui_dm_preview_sealed": "ข้อความที่เข้ารหัส",
+  "ui_dm_e2ee_notice": "ข้อความได้รับการเข้ารหัสตั้งแต่ต้นทางถึงปลายทาง",
+  "ui_dm_not_encrypted": "ไม่ได้เข้ารหัสตั้งแต่ต้นทางถึงปลายทาง",
+  "ui_dm_sent": "ส่งแล้ว",
+  "ui_dm_seen": "เห็นแล้ว",
+  "ui_dm_sending": "กำลังส่ง…"
 }

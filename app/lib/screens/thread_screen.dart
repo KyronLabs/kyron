@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/conversation.dart';
@@ -16,7 +17,6 @@ import '../routes.dart';
 import '../widgets/action_sheet.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/jump_to_end.dart';
-import '../widgets/post_card.dart' show age;
 import '../widgets/toast.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../repositories/moderation_repository.dart' show ReportTarget;
@@ -340,9 +340,9 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
   /// reply does not silently attach itself to the message after it.
   DirectMessage? _replyingTo;
 
-  /// Sends what is in the box -- or, given [quick], just that: the heart
-  /// beside an empty box, the wave that opens a new conversation. A quick one
-  /// leaves whatever is half-written, and any attachments, where they were.
+  /// Sends what is in the box -- or, given [quick], just that: the wave that
+  /// opens a new conversation. A quick one leaves whatever is half-written,
+  /// and any attachments, where they were.
   Future<void> _send({String? quick}) async {
     final me = ref.read(currentUserProvider).asData?.value.id;
     if (me == null) {
@@ -364,10 +364,39 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     _toNewest(animate: true);
   }
 
-  /// Whether [later] carries on the turn [earlier] started.
-  static bool _sameRun(DirectMessage earlier, DirectMessage later) =>
+  /// How long a pause has to be before the thread says what time it is
+  /// again. The time is a centred line between turns, the way Threads,
+  /// Instagram and iMessage draw it, rather than a stamp under every run.
+  static const _pause = Duration(minutes: 15);
+
+  /// Whether the time goes above [message], given the one before it: at the
+  /// start, after a pause, and whenever the day changes.
+  static bool _timeAbove(DirectMessage? previous, DirectMessage message) {
+    if (previous == null) return true;
+    final a = previous.createdAt;
+    final b = message.createdAt;
+    return b.difference(a) >= _pause ||
+        a.year != b.year ||
+        a.month != b.month ||
+        a.day != b.day;
+  }
+
+  /// Whether [later] carries on [earlier]'s turn with nothing drawn between
+  /// them: the same person, no pause long enough for a time, and not where
+  /// "New messages" goes.
+  static bool _continues(
+    DirectMessage earlier,
+    DirectMessage later,
+    String? firstUnread,
+  ) =>
       earlier.senderId == later.senderId &&
-      later.createdAt.difference(earlier.createdAt).inMinutes < 2;
+      !_timeAbove(earlier, later) &&
+      later.id != firstUnread;
+
+  /// Whether [message] is drawn in a bubble. A few emoji alone are drawn
+  /// large and bare, and a bare emoji has no corners to join.
+  static bool _inBubble(DirectMessage message) =>
+      _Bubble.jumboCountOf(message) == null;
 
   /// Who wrote [message], as the quote labels it.
   String _authorOf(
@@ -510,7 +539,6 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
               focus: _focus,
               canSend: _canSend,
               onSend: _send,
-              onHeart: () => _send(quick: '❤️'),
               media: _media,
               onAttach: _attach,
               onAttachments: _openAttachments,
@@ -579,17 +607,25 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
         ? null
         : people.where((p) => p.id == state.typing).firstOrNull;
 
+    // Where encryption starts: the first sealed message. The notice goes
+    // there, once -- the point a conversation from before encryption, or
+    // with somebody whose app had no key, changed over -- and a message after
+    // it that went as written is the exception worth marking. Everything
+    // before it is plain, and saying so on each one would be noise.
+    final sealedFrom = ordered.indexWhere((m) => m.encrypted);
+    final lead = state.loadingMore ? 1 : 0;
+
     return ListView.builder(
       controller: _scroll,
-      padding: const EdgeInsets.symmetric(
-        horizontal: SpacingTokens.space12,
-        vertical: SpacingTokens.space12,
+      padding: const EdgeInsets.fromLTRB(
+        SpacingTokens.space12,
+        SpacingTokens.space8,
+        SpacingTokens.space12,
+        SpacingTokens.space12,
       ),
-      // The spinner for older messages goes at the top now, which is where
-      // they are; "is typing" goes at the bottom, where the next message will.
-      itemCount: ordered.length +
-          (state.loadingMore ? 1 : 0) +
-          (state.typing != null ? 1 : 0),
+      // The spinner for older messages goes at the top, which is where they
+      // are; "is typing" goes at the bottom, where the next message will.
+      itemCount: lead + ordered.length + (state.typing != null ? 1 : 0),
       itemBuilder: (context, index) {
         if (state.loadingMore && index == 0) {
           return const Padding(
@@ -597,7 +633,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
             child: Center(child: CircularProgressIndicator()),
           );
         }
-        final at = state.loadingMore ? index - 1 : index;
+        final at = index - lead;
         if (at == ordered.length) {
           return _TypingBubble(person: typer);
         }
@@ -605,10 +641,46 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
         final mine = me != null && message.senderId == me;
         final previous = at > 0 ? ordered[at - 1] : null;
         final next = at + 1 < ordered.length ? ordered[at + 1] : null;
+
+        final timeAbove = _timeAbove(previous, message);
+        final dividerAbove = message.id == firstUnread;
+        // A turn: one person's messages with nothing drawn between them. They
+        // stack tight, share one avatar at the bottom, and their corners on
+        // the sender's side tuck in where they meet -- so one message is a
+        // pill, two are a pair, and a run reads as a single column.
+        final continues =
+            previous != null && _continues(previous, message, firstUnread);
+        final continuesBelow =
+            next != null && _continues(message, next, firstUnread);
+        // A reply starts its own shape: the quote above it is in the way.
+        final joinsAbove = previous != null &&
+            continues &&
+            message.replyToId == null &&
+            _inBubble(previous) &&
+            _inBubble(message);
+        final joinsBelow = next != null &&
+            continuesBelow &&
+            next.replyToId == null &&
+            _inBubble(message) &&
+            _inBubble(next);
+
         final bubble = _Bubble(
           message: message,
           mine: mine,
           me: me,
+          joinsAbove: joinsAbove,
+          joinsBelow: joinsBelow,
+          showAvatar: !continuesBelow,
+          topGap: timeAbove || dividerAbove
+              ? 0
+              : continues
+                  ? (message.replyToId == null ? 2 : SpacingTokens.space8)
+                  : SpacingTokens.space12,
+          unsealed: sealedFrom >= 0 &&
+              at > sealedFrom &&
+              !message.encrypted &&
+              !message.sending &&
+              !message.failed,
           onToggleHeart: me == null
               ? null
               : () => _afterReaction(
@@ -622,15 +694,9 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
           onRemoveReaction: me == null
               ? null
               : () => _afterReaction(notifier.unreact(message, me: me)),
-          // A run: consecutive messages from the same person within a couple
-          // of minutes read as one turn, so they sit close together and share
-          // one avatar and one time, at the end of the run.
-          grouped: previous != null && _sameRun(previous, message),
-          endsGroup: next == null || !_sameRun(message, next),
           sender: mine
               ? null
               : people.where((p) => p.id == message.senderId).firstOrNull,
-          onRetry: () => notifier.retry(message),
           onReply: () => _startReply(message),
           // Resolved here rather than sent by the server: it holds ciphertext
           // and could not quote it. This list is decrypted.
@@ -648,15 +714,29 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
                   }
                 },
         );
-        // Above the first message the reader had not seen when they opened
-        // the thread -- where they left off, marked.
-        if (message.id == firstUnread) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [const _NewMessagesDivider(), bubble],
-          );
-        }
-        return bubble;
+
+        return Column(
+          crossAxisAlignment:
+              mine ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          children: [
+            if (at == sealedFrom) const _EncryptionNotice(),
+            if (timeAbove) _TimeHeader(at: message.createdAt),
+            // Above the first message the reader had not seen when they
+            // opened the thread -- where they left off, marked.
+            if (dividerAbove) const _NewMessagesDivider(),
+            bubble,
+            // Whether it went, said once: under your newest message, the way
+            // a chat says "Seen", rather than a line under every run. One
+            // that failed says so wherever it is, with a way to try again.
+            if (message.failed)
+              Padding(
+                padding: EdgeInsets.only(left: mine ? 0 : _Bubble.gutter),
+                child: _NotSent(onRetry: () => notifier.retry(message)),
+              )
+            else if (mine && next == null)
+              _Receipt(message: message),
+          ],
+        );
       },
     );
   }
@@ -673,14 +753,26 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
 class _Bubble extends StatelessWidget {
   final DirectMessage message;
   final bool mine;
-  final bool grouped;
 
-  /// Whether this is the last message of a run from one person. That is where
-  /// the run's avatar and its time go -- once, rather than a timestamp under
-  /// every line somebody sent in the same breath.
-  final bool endsGroup;
+  /// Whether it carries on from the message above, or into the one below,
+  /// without a break. The corners where they meet tuck in on the sender's
+  /// side, so a run of messages reads as one column rather than a stack of
+  /// separate pills.
+  final bool joinsAbove;
+  final bool joinsBelow;
 
-  /// Who sent it, for the avatar beside their runs. Null for your own.
+  /// Whether this is the last of a turn from the other person, which is where
+  /// their avatar goes -- once per turn, not beside every line.
+  final bool showAvatar;
+
+  /// The space above it: almost none inside a turn, more between turns.
+  final double topGap;
+
+  /// Sent as written, in a conversation where messages are otherwise sealed.
+  /// Marked, so nobody assumes it was private.
+  final bool unsealed;
+
+  /// Who sent it, for the avatar beside their turns. Null for your own.
   final MessagePerson? sender;
 
   /// The reader's id, to tell their own reaction from the other person's.
@@ -695,7 +787,6 @@ class _Bubble extends StatelessWidget {
   /// Takes the reader's reaction off, from a tap on it.
   final VoidCallback? onRemoveReaction;
 
-  final VoidCallback onRetry;
   final VoidCallback? onRemove;
   final VoidCallback onReply;
 
@@ -709,10 +800,12 @@ class _Bubble extends StatelessWidget {
   const _Bubble({
     required this.message,
     required this.mine,
-    required this.grouped,
-    required this.endsGroup,
-    required this.onRetry,
+    required this.joinsAbove,
+    required this.joinsBelow,
+    required this.showAvatar,
+    required this.topGap,
     required this.onReply,
+    this.unsealed = false,
     this.sender,
     this.me,
     this.onToggleHeart,
@@ -724,20 +817,27 @@ class _Bubble extends StatelessWidget {
   });
 
   /// The avatar's width plus the gap after it, which every bubble from the
-  /// other person is indented by, avatar or not, so a run stays in a column.
-  static const double _gutter = 28 + SpacingTokens.space8;
+  /// other person is indented by, avatar or not, so a turn stays in a column.
+  static const double gutter = 28 + SpacingTokens.space8;
+
+  /// The corner of a bubble, and of where two in a turn meet.
+  static const _round = Radius.circular(RadiusTokens.radius20);
+  static const _tucked = Radius.circular(RadiusTokens.radius4);
+
+  /// How many emoji to draw large, or null to draw a bubble.
+  ///
+  /// Never for one that could not be opened: what it holds is not known, so
+  /// it cannot be known to be emoji.
+  static int? jumboCountOf(DirectMessage message) =>
+      message.media.isEmpty && !message.unreadable
+          ? jumboEmojiCount(message.body)
+          : null;
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
 
-    // Just a few emoji, and nothing else, is drawn large and without a
-    // bubble. Never for one that could not be opened: what it holds is not
-    // known, so it cannot be known to be emoji.
-    final jumbo = message.media.isEmpty && !message.unreadable
-        ? jumboEmojiCount(message.body)
-        : null;
-
+    final jumbo = jumboCountOf(message);
     Widget content = jumbo != null
         ? _Jumbo(text: message.body.trim(), count: jumbo, faded: message.failed)
         : _box(context, scheme, overlapping: message.replyToId != null);
@@ -802,48 +902,58 @@ class _Bubble extends StatelessWidget {
       );
     }
 
-    final showStatus = endsGroup || message.failed || message.sending;
+    // Beside the bubble, on the side away from the sender, rather than in
+    // it: it is about the message, not part of what was said.
+    final marker = !unsealed
+        ? null
+        : Padding(
+            padding: const EdgeInsets.only(
+              left: SpacingTokens.space4,
+              right: SpacingTokens.space4,
+              bottom: SpacingTokens.space12,
+            ),
+            child: Semantics(
+              label: AppLocalizations.of(context)
+                  .ui('ui_dm_not_encrypted', 'Not end-to-end encrypted'),
+              child: Icon(
+                Iconsax.unlock_copy,
+                size: 13,
+                color: scheme.onSurface.withValues(alpha: 0.45),
+              ),
+            ),
+          );
 
     return Padding(
-      padding: EdgeInsets.only(top: grouped ? 2 : SpacingTokens.space8),
-      child: Column(
-        crossAxisAlignment:
-            mine ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+      padding: EdgeInsets.only(top: topGap),
+      child: Row(
+        mainAxisAlignment:
+            mine ? MainAxisAlignment.end : MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Row(
-            mainAxisAlignment:
-                mine ? MainAxisAlignment.end : MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              if (!mine) ...[
-                SizedBox(
-                  width: 28,
-                  child: endsGroup ? _Avatar(person: sender, radius: 14) : null,
-                ),
-                const SizedBox(width: SpacingTokens.space8),
-              ],
-              Flexible(
-                child: SwipeToReply(
-                  // A message still on its way, or one that never arrived,
-                  // has no id the server knows -- there is nothing to answer.
-                  enabled: !message.sending && !message.failed,
-                  onReply: onReply,
-                  child: GestureDetector(
-                    onLongPress: () => _openOptions(context),
-                    // A heart on a double tap. Not on a message the server
-                    // does not have yet: there is nothing for it to attach to.
-                    onDoubleTap: _canReact ? onToggleHeart : null,
-                    child: content,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          if (showStatus)
-            Padding(
-              padding: EdgeInsets.only(top: 2, left: mine ? 0 : _gutter),
-              child: _Status(message: message, mine: mine, onRetry: onRetry),
+          if (!mine) ...[
+            SizedBox(
+              width: 28,
+              child: showAvatar ? _Avatar(person: sender, radius: 14) : null,
             ),
+            const SizedBox(width: SpacingTokens.space8),
+          ],
+          if (mine && marker != null) marker,
+          Flexible(
+            child: SwipeToReply(
+              // A message still on its way, or one that never arrived, has no
+              // id the server knows -- there is nothing to answer.
+              enabled: !message.sending && !message.failed,
+              onReply: onReply,
+              child: GestureDetector(
+                onLongPress: () => _openOptions(context),
+                // A heart on a double tap. Not on a message the server does
+                // not have yet: there is nothing for it to attach to.
+                onDoubleTap: _canReact ? onToggleHeart : null,
+                child: content,
+              ),
+            ),
+          ),
+          if (!mine && marker != null) marker,
         ],
       ),
     );
@@ -859,15 +969,25 @@ class _Bubble extends StatelessWidget {
     ColorScheme scheme, {
     required bool overlapping,
   }) {
-    final radius = Radius.circular(RadiusTokens.radiusLg);
+    final above = joinsAbove ? _tucked : _round;
+    final below = joinsBelow ? _tucked : _round;
+    final hasText = message.unreadable || message.body.trim().isNotEmpty;
+    final ink = message.failed
+        ? scheme.onSurface
+        : mine
+            ? scheme.onPrimary
+            : scheme.onSurface;
+
     return Container(
       constraints: BoxConstraints(
-        maxWidth: MediaQuery.sizeOf(context).width * 0.72,
+        maxWidth: MediaQuery.sizeOf(context).width * 0.75,
       ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: SpacingTokens.space12,
-        vertical: SpacingTokens.space8,
-      ),
+      // A picture fills the bubble nearly to its edge; words get room. At
+      // this padding one line of body text makes a bubble exactly as tall as
+      // its corners are round, which is what draws it as a pill.
+      padding: message.media.isNotEmpty
+          ? const EdgeInsets.all(SpacingTokens.space4)
+          : const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: message.failed
             ? scheme.error.withValues(alpha: 0.12)
@@ -882,13 +1002,14 @@ class _Bubble extends StatelessWidget {
                 : scheme.surfaceContainer,
         border:
             overlapping ? Border.all(color: scheme.surface, width: 2) : null,
+        // Round all round, except where it meets the message above or below
+        // from the same person: there, on the sender's side, the corners
+        // tuck in.
         borderRadius: BorderRadius.only(
-          topLeft: radius,
-          topRight: radius,
-          // The corner nearest the sender is squared off, which is what makes
-          // a run of bubbles read as one voice.
-          bottomLeft: mine ? radius : const Radius.circular(4),
-          bottomRight: mine ? const Radius.circular(4) : radius,
+          topLeft: mine ? _round : above,
+          bottomLeft: mine ? _round : below,
+          topRight: mine ? above : _round,
+          bottomRight: mine ? below : _round,
         ),
       ),
       child: Column(
@@ -899,28 +1020,35 @@ class _Bubble extends StatelessWidget {
           // same way a post's is.
           for (final voice in message.media.where((m) => m.isVoice))
             VoicePostPlayer(media: voice),
-          if (message.media.any((m) => m.isVisual)) ...[
+          if (message.media.any((m) => m.isVisual))
             ClipRRect(
-              borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
+              borderRadius: BorderRadius.circular(RadiusTokens.radius16),
               child: MediaGrid(
                 media: message.media.where((m) => m.isVisual).toList(),
-                radius: RadiusTokens.radiusSm,
+                radius: RadiusTokens.radius16,
               ),
             ),
-            if (message.body.trim().isNotEmpty)
-              const SizedBox(height: SpacingTokens.space8),
-          ],
-          if (message.body.trim().isNotEmpty)
-            Text(
-              message.body,
-              style: TextStyle(
-                fontSize: TypographyTokens.fontSize3,
-                height: 1.35,
-                color: message.failed
-                    ? scheme.onSurface
-                    : mine
-                        ? scheme.onPrimary
-                        : scheme.onSurface,
+          if (hasText)
+            Padding(
+              // Words under a picture get the room the bubble gave up for it.
+              padding: message.media.isNotEmpty
+                  ? const EdgeInsets.fromLTRB(10, SpacingTokens.space8, 10, 6)
+                  : EdgeInsets.zero,
+              child: Text(
+                // Said, not shown as ciphertext, and set apart from anything
+                // somebody actually wrote: in italics, a step quieter.
+                message.unreadable
+                    ? AppLocalizations.of(context).ui(
+                        'ui_dm_unreadable',
+                        'This message cannot be read on this device.',
+                      )
+                    : message.body,
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize3,
+                  height: 1.3,
+                  fontStyle: message.unreadable ? FontStyle.italic : null,
+                  color: message.unreadable ? ink.withValues(alpha: 0.7) : ink,
+                ),
               ),
             ),
         ],
@@ -1012,89 +1140,81 @@ class _Bubble extends StatelessWidget {
   }
 }
 
-/// The line under a bubble: when, whether it went, whether it was read.
-class _Status extends StatelessWidget {
-  final DirectMessage message;
-  final bool mine;
-  final VoidCallback onRetry;
+/// Under your newest message: whether it is on its way, arrived, or has been
+/// read. Said once, the way a chat says "Seen", rather than under every run.
+class _Receipt extends StatelessWidget {
+  const _Receipt({required this.message});
 
-  const _Status({
-    required this.message,
-    required this.mine,
-    required this.onRetry,
-  });
+  final DirectMessage message;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
-    final muted = scheme.onSurface.withValues(alpha: 0.5);
-
-    if (message.failed) {
-      return TextButton.icon(
-        onPressed: onRetry,
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space4),
-          minimumSize: Size.zero,
-          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          foregroundColor: scheme.error,
-        ),
-        icon: const Icon(Iconsax.refresh, size: 13),
-        label: Text(
-          AppLocalizations.of(context).notSentTapRetry,
-          style: TextStyle(
-            fontSize: TypographyTokens.fontSize1,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      );
-    }
-
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space4),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            message.sending ? 'Sending…' : age(message.createdAt),
-            style: TextStyle(
-              fontSize: TypographyTokens.fontSize1,
-              color: muted,
-            ),
-          ),
-          // Shown rather than assumed. A conversation is encrypted only when
-          // both sides have published a key, and the reader is entitled to
-          // know which kind of message this actually was.
-          if (message.encrypted) ...[
-            const SizedBox(width: 4),
-            Icon(
-              message.unreadable ? Iconsax.lock_1_copy : Iconsax.lock_copy,
-              size: 11,
-              color: muted,
-            ),
-          ],
-          if (mine && !message.sending) ...[
-            const SizedBox(width: 3),
-            Icon(
-              message.seen ? Iconsax.tick_circle : Iconsax.tick_circle_copy,
-              size: 12,
-              color: message.seen ? scheme.primary : muted,
-            ),
-          ],
-        ],
+      padding: const EdgeInsets.only(
+        top: SpacingTokens.space4,
+        right: SpacingTokens.space4,
+      ),
+      child: Text(
+        message.sending
+            ? l10n.ui('ui_dm_sending', 'Sending…')
+            : message.seen
+                ? l10n.ui('ui_dm_seen', 'Seen')
+                : l10n.ui('ui_dm_sent', 'Sent'),
+        style: TextStyle(
+          fontSize: TypographyTokens.fontSize1,
+          fontWeight: FontWeight.w500,
+          color: scheme.onSurface.withValues(alpha: 0.5),
+        ),
       ),
     );
   }
 }
 
+/// Under a message that did not go, wherever it is, with a way to send it
+/// again.
+class _NotSent extends StatelessWidget {
+  const _NotSent({required this.onRetry});
+
+  final VoidCallback onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return TextButton.icon(
+      onPressed: onRetry,
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space4),
+        minimumSize: Size.zero,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        foregroundColor: scheme.error,
+      ),
+      icon: const Icon(Iconsax.refresh, size: 13),
+      label: Text(
+        AppLocalizations.of(context).notSentTapRetry,
+        style: const TextStyle(
+          fontSize: TypographyTokens.fontSize1,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+}
+
+/// The box a message is written in.
+///
+/// Built the way the reply box under a post is: a hairline above, the field
+/// itself as tall as one line of text, and Send at the end, dimmed until
+/// there is something to send. It used to be a filled field a full control
+/// high with a heart beside it, inside a bar of its own -- most of the bottom
+/// of the screen for a box that usually holds a few words -- and it picked up
+/// the theme's focus outline, a blue ring that belongs to forms.
 class _Composer extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focus;
   final bool canSend;
   final VoidCallback onSend;
-
-  /// Sends a heart on its own, from the button that stands where Send does
-  /// while there is nothing to send.
-  final VoidCallback onHeart;
   final MediaBasket media;
   final Future<void> Function({required bool video}) onAttach;
 
@@ -1107,12 +1227,15 @@ class _Composer extends StatelessWidget {
   final String? replyingToAuthor;
   final VoidCallback onCancelReply;
 
+  /// The longest message, in what is typed. The server holds the same line;
+  /// stopping here is better than a message that is refused once sent.
+  static const maxLength = 4000;
+
   const _Composer({
     required this.controller,
     required this.focus,
     required this.canSend,
     required this.onSend,
-    required this.onHeart,
     required this.media,
     required this.onAttach,
     required this.onAttachments,
@@ -1125,20 +1248,44 @@ class _Composer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
     final typing = controller.text.trim().isNotEmpty;
+    final keyboardUp = MediaQuery.viewInsetsOf(context).bottom > 0;
+
+    // A small, tight button: the field is one line of text tall, and a
+    // standard 48-point button beside it would set the height of the bar.
+    Widget button({
+      required IconData icon,
+      required String tooltip,
+      required VoidCallback? onPressed,
+      double size = 22,
+      Color? color,
+    }) =>
+        IconButton(
+          onPressed: onPressed,
+          tooltip: tooltip,
+          icon: Icon(icon, size: size),
+          color: color,
+          visualDensity: VisualDensity.compact,
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints.tightFor(width: 36, height: 40),
+        );
 
     return Container(
-      padding: const EdgeInsets.fromLTRB(
-        SpacingTokens.space8,
-        SpacingTokens.space8,
-        SpacingTokens.space8,
-        SpacingTokens.space8,
-      ),
       decoration: BoxDecoration(
         color: scheme.surface,
         border: Border(
-          top: BorderSide(color: scheme.outline.withValues(alpha: 0.15)),
+          top: BorderSide(
+            color: scheme.outline.withValues(alpha: 0.15),
+            width: 0.5,
+          ),
         ),
+      ),
+      padding: EdgeInsets.only(
+        left: SpacingTokens.space8,
+        right: SpacingTokens.space8,
+        top: SpacingTokens.space8,
+        bottom: keyboardUp ? SpacingTokens.space8 : SpacingTokens.space12,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -1163,7 +1310,7 @@ class _Composer extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: onCancelReply,
-                    tooltip: AppLocalizations.of(context).literaldoNotReply,
+                    tooltip: l10n.literaldoNotReply,
                     icon: const Icon(Iconsax.close_circle_copy, size: 18),
                     visualDensity: VisualDensity.compact,
                   ),
@@ -1182,105 +1329,100 @@ class _Composer extends StatelessWidget {
               ),
             ),
           Row(
+            // The buttons stay on the last line as the field grows.
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              IconButton(
-                tooltip: AppLocalizations.of(context)
-                    .ui('ui_dm_attach', 'Add to message'),
+              button(
+                icon: Iconsax.add_circle_copy,
+                tooltip: l10n.ui('ui_dm_attach', 'Add to message'),
                 onPressed: media.hasRoom ? onAttachments : null,
-                icon: const Icon(Iconsax.add, size: 22),
-                style: IconButton.styleFrom(
-                  shape: CircleBorder(
-                    side: BorderSide(
-                      color: scheme.outline.withValues(alpha: 0.25),
-                    ),
-                  ),
-                ),
+                size: 24,
               ),
               const SizedBox(width: SpacingTokens.space4),
               Expanded(
-                child: TextField(
-                  controller: controller,
-                  focusNode: focus,
-                  // Grows with what is being written, up to a point: a long
-                  // message should not be typed through a one-line slot.
-                  minLines: 1,
-                  maxLines: 5,
-                  textInputAction: TextInputAction.newline,
-                  keyboardType: TextInputType.multiline,
-                  textCapitalization: TextCapitalization.sentences,
-                  decoration: InputDecoration(
-                    hintText: AppLocalizations.of(context).message,
-                    isDense: true,
-                    filled: true,
-                    // No alpha: the ramp itself is quiet now, and an alpha
-                    // over it was compensation for a step that was too big.
-                    fillColor: scheme.surfaceContainer,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: SpacingTokens.space16,
-                      vertical: SpacingTokens.space12,
-                    ),
-                    // A photo and a GIF are a tap away inside the box while
-                    // it is empty, and step aside once something is being
-                    // written, which is when the room matters more.
-                    suffixIcon: typing
-                        ? null
-                        : Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                tooltip: AppLocalizations.of(context)
-                                    .literaladdAPhoto,
-                                onPressed: media.hasRoom
-                                    ? () => onAttach(video: false)
-                                    : null,
-                                icon: const Icon(
-                                  Iconsax.gallery_copy,
-                                  size: 20,
-                                ),
-                                visualDensity: VisualDensity.compact,
-                              ),
-                              IconButton(
-                                tooltip:
-                                    AppLocalizations.of(context).literaladdAGif,
-                                onPressed: media.hasRoom ? onGif : null,
-                                icon: const Icon(
-                                  Iconsax.emoji_happy_copy,
-                                  size: 20,
-                                ),
-                                visualDensity: VisualDensity.compact,
-                              ),
-                              const SizedBox(width: SpacingTokens.space4),
-                            ],
+                child: Container(
+                  constraints: const BoxConstraints(minHeight: 40),
+                  padding: EdgeInsets.only(
+                    left: SpacingTokens.space16,
+                    right:
+                        typing ? SpacingTokens.space16 : SpacingTokens.space4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: scheme.surfaceContainer,
+                    borderRadius: BorderRadius.circular(RadiusTokens.radius20),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: controller,
+                          focusNode: focus,
+                          // Grows with what is being written, up to a point:
+                          // a long message should not be typed through a
+                          // one-line slot, nor push the thread off screen.
+                          minLines: 1,
+                          maxLines: 5,
+                          maxLength: maxLength,
+                          textInputAction: TextInputAction.newline,
+                          keyboardType: TextInputType.multiline,
+                          textCapitalization: TextCapitalization.sentences,
+                          style: const TextStyle(
+                            fontSize: TypographyTokens.fontSize3,
+                            height: 1.3,
                           ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        RadiusTokens.radiusFull,
+                          decoration: InputDecoration(
+                            hintText: l10n.message,
+                            counterText: '',
+                            isDense: true,
+                            // The pill around it is the shape. Every border
+                            // is named because the theme's focused border is
+                            // an accent outline, and naming only `border`
+                            // leaves that one in place.
+                            filled: false,
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10,
+                            ),
+                            // No floor: the theme's minimum height is what
+                            // made an empty box taller than the line in it.
+                            constraints: const BoxConstraints(),
+                          ),
+                        ),
                       ),
-                      borderSide: BorderSide.none,
-                    ),
+                      // A photo and a GIF a tap away while the box is empty;
+                      // they step aside once something is being written,
+                      // which is when the room matters more.
+                      if (!typing) ...[
+                        button(
+                          icon: Iconsax.gallery_copy,
+                          tooltip: l10n.literaladdAPhoto,
+                          onPressed: media.hasRoom
+                              ? () => onAttach(video: false)
+                              : null,
+                          size: 20,
+                        ),
+                        button(
+                          icon: Iconsax.emoji_happy_copy,
+                          tooltip: l10n.literaladdAGif,
+                          onPressed: media.hasRoom ? onGif : null,
+                          size: 20,
+                        ),
+                      ],
+                    ],
                   ),
                 ),
               ),
               const SizedBox(width: SpacingTokens.space4),
-              // Send when there is something to send. Until then a heart,
-              // which is the reply most messages actually get, in one tap.
-              canSend
-                  ? IconButton(
-                      onPressed: onSend,
-                      tooltip: 'Send',
-                      icon: const Icon(Iconsax.send_1, size: 20),
-                      style: IconButton.styleFrom(
-                        backgroundColor: scheme.primary,
-                        foregroundColor: scheme.onPrimary,
-                      ),
-                    )
-                  : IconButton(
-                      onPressed: media.isUploading ? null : onHeart,
-                      tooltip: AppLocalizations.of(context)
-                          .ui('ui_dm_send_heart', 'Send a heart'),
-                      icon: const Icon(Iconsax.heart, size: 22),
-                    ),
+              button(
+                icon: Iconsax.send_1,
+                tooltip: l10n.send,
+                onPressed: canSend ? onSend : null,
+                color: scheme.primary,
+              ),
             ],
           ),
         ],
@@ -1318,9 +1460,15 @@ class _Quote extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final text = message == null
         ? l10n.ui('ui_dm_quote_message', 'Message')
-        : message.isEmpty
-            ? l10n.ui('ui_dm_quote_attachment', 'Attachment')
-            : message.body.trim();
+        : message.unreadable
+            ? l10n.ui(
+                'ui_dm_unreadable',
+                'This message cannot be read on this device.',
+              )
+            : message.isEmpty
+                ? l10n.ui('ui_dm_quote_attachment', 'Attachment')
+                : message.body.trim();
+    final aside = message == null || message.unreadable;
 
     return Container(
       margin: const EdgeInsets.only(bottom: SpacingTokens.space4),
@@ -1353,7 +1501,7 @@ class _Quote extends StatelessWidget {
               fontSize: TypographyTokens.fontSize1,
               height: 1.3,
               color: onTint.withValues(alpha: 0.7),
-              fontStyle: message == null ? FontStyle.italic : null,
+              fontStyle: aside ? FontStyle.italic : null,
             ),
           ),
         ],
@@ -1407,9 +1555,15 @@ class _QuotedMessage extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final text = message == null
         ? l10n.ui('ui_dm_quote_message', 'Message')
-        : message.isEmpty || message.body.trim().isEmpty
-            ? l10n.ui('ui_dm_quote_attachment', 'Attachment')
-            : message.body.trim();
+        : message.unreadable
+            ? l10n.ui(
+                'ui_dm_unreadable',
+                'This message cannot be read on this device.',
+              )
+            : message.isEmpty || message.body.trim().isEmpty
+                ? l10n.ui('ui_dm_quote_attachment', 'Attachment')
+                : message.body.trim();
+    final aside = message == null || message.unreadable;
 
     return Container(
       constraints: BoxConstraints(
@@ -1425,7 +1579,7 @@ class _QuotedMessage extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: scheme.onSurface.withValues(alpha: 0.10),
-        borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
+        borderRadius: BorderRadius.circular(RadiusTokens.radius20),
       ),
       child: Text(
         text,
@@ -1435,7 +1589,7 @@ class _QuotedMessage extends StatelessWidget {
           fontSize: TypographyTokens.fontSize2,
           height: 1.3,
           color: scheme.onSurface.withValues(alpha: 0.65),
-          fontStyle: message == null ? FontStyle.italic : null,
+          fontStyle: aside ? FontStyle.italic : null,
         ),
       ),
     );
@@ -1779,7 +1933,7 @@ class _TypingBubbleState extends State<_TypingBubble>
               ),
               decoration: BoxDecoration(
                 color: scheme.surfaceContainer,
-                borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
+                borderRadius: BorderRadius.circular(RadiusTokens.radius20),
               ),
               child: AnimatedBuilder(
                 animation: _wave,
@@ -1846,6 +2000,106 @@ class _NewMessagesDivider extends StatelessWidget {
             ),
           ),
           Expanded(child: Divider(color: muted.withValues(alpha: 0.25))),
+        ],
+      ),
+    );
+  }
+}
+
+/// When a turn started, as a line across the thread: the time today, the
+/// weekday and time this week, the date further back.
+///
+/// In the reader's own language and clock, from the platform's date data.
+/// A locale with none falls back to English rather than throwing.
+String _stamp(BuildContext context, DateTime at) {
+  final now = DateTime.now();
+  // Whole days between the two calendar dates. In UTC, so a day that is 23
+  // hours long because the clocks went forward still counts as a day.
+  final daysAgo = DateTime.utc(now.year, now.month, now.day)
+      .difference(DateTime.utc(at.year, at.month, at.day))
+      .inDays;
+
+  DateFormat format(String? locale) {
+    if (daysAgo == 0) return DateFormat.jm(locale);
+    if (daysAgo > 0 && daysAgo < 7) return DateFormat.E(locale).add_jm();
+    if (at.year == now.year) return DateFormat.MMMd(locale).add_jm();
+    return DateFormat.yMMMd(locale).add_jm();
+  }
+
+  try {
+    return format(Localizations.maybeLocaleOf(context)?.toLanguageTag())
+        .format(at);
+  } catch (_) {
+    return format('en_US').format(at);
+  }
+}
+
+/// The time, centred, above the first message after a pause.
+class _TimeHeader extends StatelessWidget {
+  const _TimeHeader({required this.at});
+
+  final DateTime at;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(
+          top: SpacingTokens.space20,
+          bottom: SpacingTokens.space8,
+        ),
+        child: Center(
+          child: Text(
+            _stamp(context, at),
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize1,
+              fontWeight: FontWeight.w500,
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.5),
+            ),
+          ),
+        ),
+      );
+}
+
+/// Above the first sealed message in a conversation, once: from here on,
+/// messages are end-to-end encrypted.
+///
+/// This replaced a lock under every run of messages. It said the same thing
+/// a hundred times down a screen; what is worth saying per message is the
+/// exception -- one sent as written after this point -- and that is marked
+/// where it is.
+class _EncryptionNotice extends StatelessWidget {
+  const _EncryptionNotice();
+
+  @override
+  Widget build(BuildContext context) {
+    final muted = Theme.of(context).colorScheme.onSurface.withValues(
+          alpha: 0.5,
+        );
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: SpacingTokens.space24,
+        vertical: SpacingTokens.space16,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Iconsax.lock_copy, size: 13, color: muted),
+          const SizedBox(width: SpacingTokens.space4),
+          Flexible(
+            child: Text(
+              AppLocalizations.of(context).ui(
+                'ui_dm_e2ee_notice',
+                'Messages are end-to-end encrypted',
+              ),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                color: muted,
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -1326,8 +1326,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Jy het geantwoord"),
       "dmReplied": (Object a0) => "$a0 het geantwoord",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Voeg by boodskap"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Stuur 'n hartjie"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Nuwe boodskap"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Nog niks gesê nie. 'n Waai is 'n goeie begin."),
@@ -1341,6 +1339,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Boodskap"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Aanhangsel"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Hierdie boodskap kan nie op hierdie toestel gelees word nie."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Geënkripteerde boodskap"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Boodskappe is end-tot-end-geënkripteer"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Nie end-tot-end-geënkripteer nie"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Gestuur"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Gesien"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Stuur tans…"),
     };
 
 final messageLookup = MessageLookup();

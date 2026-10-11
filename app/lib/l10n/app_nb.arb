@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Du svarte",
   "dmReplied": "${name} svarte",
   "ui_dm_attach": "Legg til i melding",
-  "ui_dm_send_heart": "Send et hjerte",
   "ui_dm_new": "Ny melding",
   "ui_dm_starter": "Ingenting er sagt ennå. Et vink er en god start.",
   "ui_dm_wave": "👋  Vink",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Fjern reaksjonen din",
   "ui_dm_someone": "Noen",
   "ui_dm_quote_message": "Melding",
-  "ui_dm_quote_attachment": "Vedlegg"
+  "ui_dm_quote_attachment": "Vedlegg",
+  "ui_dm_unreadable": "Denne meldingen kan ikke leses på denne enheten.",
+  "ui_dm_preview_sealed": "Kryptert melding",
+  "ui_dm_e2ee_notice": "Meldinger er ende-til-ende-krypterte",
+  "ui_dm_not_encrypted": "Ikke ende-til-ende-kryptert",
+  "ui_dm_sent": "Sendt",
+  "ui_dm_seen": "Sett",
+  "ui_dm_sending": "Sender…"
 }
