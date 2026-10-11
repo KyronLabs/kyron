@@ -131,63 +131,71 @@ class EmptyState extends StatelessWidget {
     final detail = this.detail;
     final action = this.action;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: SpacingTokens.space32,
-        vertical: compact ? SpacingTokens.space24 : SpacingTokens.space40,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _Art(art: art, size: compact ? _compactArtSize : _artSize),
-          SizedBox(
-            height: compact ? SpacingTokens.space16 : SpacingTokens.space20,
-          ),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            // Was titleMedium, which is 16 and reads as a caption under a
-            // picture this size. This is the sentence on the screen.
-            style: TextStyle(
-              fontSize: compact ? 17 : 20,
-              fontWeight: FontWeight.w700,
-              height: 1.25,
-              color: scheme.onSurface,
+    // Centred across whatever width it is given, and no taller than it is.
+    // Without this it sat at the left edge, as wide as its widest line: a
+    // detail long enough to wrap filled the width and looked centred, and a
+    // short one -- "Nothing on Kyron matches "turrr"" -- did not.
+    return Center(
+      heightFactor: 1,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space32,
+          vertical: compact ? SpacingTokens.space24 : SpacingTokens.space40,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _Art(art: art, size: compact ? _compactArtSize : _artSize),
+            SizedBox(
+              height: compact ? SpacingTokens.space16 : SpacingTokens.space20,
             ),
-          ),
-          if (detail != null) ...[
-            const SizedBox(height: SpacingTokens.space8),
             Text(
-              detail,
+              title,
               textAlign: TextAlign.center,
+              // Was titleMedium, which is 16 and reads as a caption under a
+              // picture this size. This is the sentence on the screen.
               style: TextStyle(
-                fontSize: compact ? 14 : 15,
-                height: 1.4,
-                color: scheme.onSurface.withValues(alpha: 0.65),
+                fontSize: compact ? 17 : 20,
+                fontWeight: FontWeight.w700,
+                height: 1.25,
+                color: scheme.onSurface,
               ),
             ),
-          ],
-          if (action != null && onAction != null) ...[
-            const SizedBox(height: SpacingTokens.space20),
-            FilledButton.tonal(
-              onPressed: onAction,
-              style: FilledButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: SpacingTokens.space24,
-                  vertical: SpacingTokens.space12,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+            if (detail != null) ...[
+              const SizedBox(height: SpacingTokens.space8),
+              Text(
+                detail,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: compact ? 14 : 15,
+                  height: 1.4,
+                  color: scheme.onSurface.withValues(alpha: 0.65),
                 ),
               ),
-              child: Text(
-                action,
-                style: const TextStyle(fontWeight: FontWeight.w600),
+            ],
+            if (action != null && onAction != null) ...[
+              const SizedBox(height: SpacingTokens.space20),
+              FilledButton.tonal(
+                onPressed: onAction,
+                style: FilledButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SpacingTokens.space24,
+                    vertical: SpacingTokens.space12,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(RadiusTokens.radiusFull),
+                  ),
+                ),
+                child: Text(
+                  action,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
               ),
-            ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

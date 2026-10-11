@@ -14,6 +14,11 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **"Nothing matched" sat a third of the way across the screen.** Every empty
+  state was placed at the left edge, as wide as its widest line, so one whose
+  detail wrapped looked centred and a short one did not. They are centred
+  across their width now, wherever they appear.
+
 - **Photos under a post were narrower than the post, off-centre, with square
   corners.** The four-photo square reused the two-across row, which keeps its
   own 16:9 shape, so inside the square each row shrank and centred itself.
