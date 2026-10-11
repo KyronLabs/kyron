@@ -98,14 +98,19 @@ void main() {
     expect(box.controller!.text, 'morning @ada ');
   });
 
-  testWidgets('the box is four lines, not the whole screen', (tester) async {
+  testWidgets('the box grows with its words, not the whole screen', (
+    tester,
+  ) async {
     // `expands: true` inside an Expanded made the field the entire page, so
     // the tools and the counter sat at the bottom edge, far from the words.
+    // A four-line floor after that put the same gap between the words and
+    // the pictures under them; the blank page below the box is what takes a
+    // tap now.
     await _pump(tester);
 
     final field = tester.widget<TextField>(find.byType(TextField).first);
     expect(field.expands, isFalse);
-    expect(field.minLines, 4);
+    expect(field.minLines, anyOf(isNull, 1));
 
     final height = tester.getSize(find.byType(TextField).first).height;
     final screen = tester.getSize(find.byType(CommunityComposerScreen)).height;

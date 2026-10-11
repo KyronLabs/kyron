@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../../providers/composer_provider.dart';
 import '../link_preview_card.dart';
+import '../hairline.dart';
 
 /// The card for the first link in whatever is being written.
 ///
@@ -211,7 +212,7 @@ class _Frame extends StatelessWidget {
         padding: const EdgeInsets.all(SpacingTokens.space12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
-          border: Border.all(color: scheme.outline.withValues(alpha: 0.25)),
+          border: Border.fromBorderSide(postRule(scheme)),
         ),
         child: child,
       ),

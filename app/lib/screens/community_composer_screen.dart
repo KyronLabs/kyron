@@ -16,6 +16,7 @@ import '../utils/api_error_message.dart';
 import '../providers/composer_provider.dart' show ComposerState;
 import '../utils/media_basket.dart';
 import '../utils/mention_token.dart';
+import '../widgets/hairline.dart';
 import '../widgets/media_tray.dart';
 import '../widgets/mention_picker_sheet.dart';
 import '../widgets/toast.dart';
@@ -155,50 +156,103 @@ class _CommunityComposerScreenState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Grows with what is written rather than filling the screen.
-            // `expands: true` inside an Expanded made the box the whole page,
-            // so the tools and the counter sat at the bottom edge a long way
-            // from the words, and three lines of text looked lost in it.
+            // Words, then whatever is attached to them, then nothing. The
+            // pictures used to be pinned to the foot of the screen under a
+            // box the height of four lines, so a post with one photo was a
+            // short line at the top, a photo at the bottom and a screen of
+            // nothing between them.
             Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(SpacingTokens.space16),
-                child: TextField(
-                  controller: _box,
-                  focusNode: _focus,
-                  maxLines: null,
-                  minLines: 4,
-                  keyboardType: TextInputType.multiline,
-                  textCapitalization: TextCapitalization.sentences,
-                  style: const TextStyle(
-                    fontSize: TypographyTokens.fontSize4,
-                    height: 1.4,
+              child: GestureDetector(
+                // Anywhere in the blank space below puts the caret in the box,
+                // which is what tapping a page you are writing on means.
+                behavior: HitTestBehavior.translucent,
+                onTap: _focus.requestFocus,
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(
+                    SpacingTokens.space16,
+                    SpacingTokens.space8,
+                    SpacingTokens.space16,
+                    SpacingTokens.space16,
                   ),
-                  decoration: InputDecoration(
-                    hintText: 'Say something to ${widget.community.name}',
-                    border: InputBorder.none,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Who will see it, before it is written rather than
+                      // under the toolbar after.
+                      Row(
+                        children: [
+                          Icon(
+                            Iconsax.people_copy,
+                            size: 14,
+                            color: scheme.onSurface.withValues(alpha: 0.55),
+                          ),
+                          const SizedBox(width: SpacingTokens.space4),
+                          Expanded(
+                            child: Text(
+                              'Only members of ${widget.community.name} see '
+                              'this.',
+                              style: TextStyle(
+                                fontSize: TypographyTokens.fontSize1,
+                                color: scheme.onSurface.withValues(alpha: 0.55),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: SpacingTokens.space12),
+                      TextField(
+                        controller: _box,
+                        focusNode: _focus,
+                        maxLines: null,
+                        keyboardType: TextInputType.multiline,
+                        textCapitalization: TextCapitalization.sentences,
+                        style: const TextStyle(
+                          fontSize: TypographyTokens.fontSize4,
+                          height: 1.4,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: 'Say something to ${widget.community.name}',
+                          hintStyle: TextStyle(
+                            fontSize: TypographyTokens.fontSize4,
+                            color: scheme.onSurface.withValues(alpha: 0.5),
+                          ),
+                          // Writing on the page, not filling in a form: no
+                          // fill, and every border named, because naming only
+                          // `border` leaves the theme's blue focus ring.
+                          filled: false,
+                          border: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          isCollapsed: true,
+                          contentPadding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                        ),
+                      ),
+                      if (_media.isNotEmpty) ...[
+                        const SizedBox(height: SpacingTokens.space12),
+                        MediaTray(
+                          media: _media.items,
+                          onRemove: _media.remove,
+                          onRetry: _media.retry,
+                          onDescribe: (item) =>
+                              _media.describe(item.path, item.alt ?? ''),
+                        ),
+                      ],
+                    ],
                   ),
                 ),
               ),
             ),
-            if (_media.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: SpacingTokens.space16,
-                ),
-                child: MediaTray(
-                  media: _media.items,
-                  onRemove: _media.remove,
-                  onRetry: _media.retry,
-                  onDescribe: (item) =>
-                      _media.describe(item.path, item.alt ?? ''),
-                ),
+            // The main composer's toolbar: on the keyboard, behind a hairline.
+            Container(
+              height: 52,
+              decoration: BoxDecoration(
+                border: Border(top: postRule(scheme)),
               ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                SpacingTokens.space8,
-                0,
-                SpacingTokens.space16,
-                0,
+              padding: const EdgeInsets.only(
+                left: SpacingTokens.space8,
+                right: SpacingTokens.space16,
               ),
               child: Row(
                 children: [
@@ -219,33 +273,7 @@ class _CommunityComposerScreenState
                     onPressed: _tagSomeone,
                     icon: const Icon(Iconsax.tag_user_copy, size: 20),
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                SpacingTokens.space16,
-                0,
-                SpacingTokens.space16,
-                SpacingTokens.space12,
-              ),
-              child: Row(
-                children: [
-                  Icon(
-                    Iconsax.people_copy,
-                    size: 14,
-                    color: scheme.onSurface.withValues(alpha: 0.55),
-                  ),
-                  const SizedBox(width: SpacingTokens.space4),
-                  Expanded(
-                    child: Text(
-                      'Only members of ${widget.community.name} see this.',
-                      style: TextStyle(
-                        fontSize: TypographyTokens.fontSize1,
-                        color: scheme.onSurface.withValues(alpha: 0.55),
-                      ),
-                    ),
-                  ),
+                  const Spacer(),
                   // Only once it is worth watching. A counter from character
                   // one is noise.
                   if (_count > _maxCharacters - 300)

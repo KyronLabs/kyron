@@ -26,3 +26,13 @@ class Hairline extends StatelessWidget {
     );
   }
 }
+
+/// The rule between two posts, and the outline of every card drawn inside
+/// one: a quoted post, a link, a voice post.
+///
+/// One value for both, so a card's edge can never be heavier than the line
+/// that separates whole posts. They were a full logical pixel at a darker
+/// alpha -- two to three device pixels on a phone -- and a quote inside a
+/// post read as a heavier frame than the feed's own dividers.
+BorderSide postRule(ColorScheme scheme) =>
+    BorderSide(color: scheme.outline.withValues(alpha: 0.15), width: 0.5);

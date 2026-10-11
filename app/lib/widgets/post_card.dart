@@ -19,6 +19,7 @@ import 'quoted_post_card.dart';
 import 'repost_sheet.dart';
 import 'share_post_sheet.dart';
 import 'toast.dart';
+import 'hairline.dart';
 
 /// One post, wherever it appears.
 ///
@@ -54,12 +55,7 @@ class PostCard extends ConsumerWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: scheme.outline.withValues(alpha: 0.15),
-            width: 0.5,
-          ),
-        ),
+        border: Border(bottom: postRule(scheme)),
       ),
       child: InkWell(
         // The whole post opens the post, not its author. Tapping a post to
@@ -74,15 +70,17 @@ class PostCard extends ConsumerWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                onTap: () => openAuthor(context, post.author),
-                child: community == null
-                    ? PostAvatar(author: post.author)
-                    : StackedPostAvatar(
-                        community: community,
-                        author: PostAvatar(author: post.author, radius: 11),
-                      ),
-              ),
+              community == null
+                  ? GestureDetector(
+                      onTap: () => openAuthor(context, post.author),
+                      child: PostAvatar(author: post.author),
+                    )
+                  : StackedPostAvatar(
+                      community: community,
+                      author: PostAvatar(author: post.author, radius: 11),
+                      onCommunityTap: () => openCommunity(context, community),
+                      onAuthorTap: () => openAuthor(context, post.author),
+                    ),
               const SizedBox(width: SpacingTokens.space12),
               Expanded(
                 child: Column(
@@ -91,7 +89,8 @@ class PostCard extends ConsumerWidget {
                     // Which community, when it came from one. A post from a
                     // place you joined arriving in the home feed with nothing
                     // to say so reads as somebody posting to everybody.
-                    if (community != null) _CommunityLine(community: community),
+                    if (community != null)
+                      PostCommunityLine(community: community),
                     Row(
                       children: [
                         Flexible(
@@ -197,50 +196,57 @@ class PostCard extends ConsumerWidget {
 /// Which community a post came from, above the author's name.
 ///
 /// Tappable, and it opens the community rather than the post -- a name that
-/// looks like a link and is not one is worse than plain text.
-class _CommunityLine extends StatelessWidget {
+/// looks like a link and is not one is worse than plain text. The target is
+/// the whole line, not just the letters: at this size the words alone are a
+/// sliver a thumb misses, and the miss lands on the post behind it.
+class PostCommunityLine extends StatelessWidget {
   final PostCommunity community;
 
-  const _CommunityLine({required this.community});
+  const PostCommunityLine({super.key, required this.community});
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final ink = scheme.primary.withValues(alpha: 0.9);
 
-    return GestureDetector(
-      onTap: () => Navigator.pushNamed(
-        context,
-        Routes.community,
-        arguments: community.slug,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: SpacingTokens.space2),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Iconsax.people_copy,
-              size: 12,
-              color: scheme.primary.withValues(alpha: 0.9),
-            ),
-            const SizedBox(width: SpacingTokens.space4),
-            Flexible(
-              child: Text(
-                community.name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: TypographyTokens.fontSize1,
-                  fontWeight: FontWeight.w600,
-                  color: scheme.primary.withValues(alpha: 0.9),
+    return Semantics(
+      button: true,
+      label: community.name,
+      excludeSemantics: true,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => openCommunity(context, community),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: SpacingTokens.space2),
+          child: Row(
+            children: [
+              Icon(Iconsax.people_copy, size: 12, color: ink),
+              const SizedBox(width: SpacingTokens.space4),
+              Flexible(
+                child: Text(
+                  community.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize1,
+                    fontWeight: FontWeight.w600,
+                    color: ink,
+                  ),
                 ),
               ),
-            ),
-          ],
+              // Says it goes somewhere, which a coloured name alone does not.
+              Icon(Iconsax.arrow_right_3_copy, size: 12, color: ink),
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+/// Opens the community a post was posted in.
+void openCommunity(BuildContext context, PostCommunity community) {
+  Navigator.pushNamed(context, Routes.community, arguments: community.slug);
 }
 
 /// The author's picture beside a post. Small: at radius 20 it was competing

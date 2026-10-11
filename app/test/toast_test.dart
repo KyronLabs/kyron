@@ -144,6 +144,32 @@ void main() {
     await clear(tester);
   });
 
+  testWidgets('is not drawn in the debug text style', (tester) async {
+    // The root overlay sits above every Scaffold, so a Text there with
+    // nothing providing a style gets Flutter's fallback: a double yellow
+    // underline under every word, in the wrong typeface. Every toast in the
+    // app shipped like that.
+    final ctx = await _pump(tester);
+    Toast.show(ctx, 'Saved to your photos');
+    await tester.pumpAndSettle();
+
+    final text = tester.widget<RichText>(
+      find.descendant(
+        of: find.text('Saved to your photos'),
+        matching: find.byType(RichText),
+      ),
+    );
+    final style = text.text.style!;
+    expect(style.decoration, isNot(TextDecoration.underline));
+    expect(style.decorationStyle, isNot(TextDecorationStyle.double));
+    expect(
+      style.fontFamily,
+      Theme.of(ctx).textTheme.bodyMedium!.fontFamily,
+      reason: 'the app typeface, not the fallback',
+    );
+    await clear(tester);
+  });
+
   testWidgets('a message asked for from a dead context is simply not shown', (
     tester,
   ) async {

@@ -21,7 +21,9 @@ import '../widgets/media_grid.dart';
 import '../widgets/media_tray.dart';
 import '../widgets/poll_card.dart';
 import '../widgets/post_actions_row.dart';
+import '../widgets/community_avatar.dart';
 import '../widgets/post_card.dart';
+import '../widgets/reply_bar.dart';
 import '../widgets/post_options_sheet.dart';
 import '../widgets/post_text.dart';
 import '../widgets/quoted_post_card.dart';
@@ -300,122 +302,33 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
   }
 
   Widget _composer(PostDetailState state) {
-    final scheme = Theme.of(context).colorScheme;
     final replyingTo = _replyingTo;
 
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(
-            color: scheme.outline.withValues(alpha: 0.15),
-            width: 0.5,
-          ),
-        ),
-      ),
-      padding: EdgeInsets.only(
-        left: SpacingTokens.space12,
-        right: SpacingTokens.space8,
-        top: SpacingTokens.space8,
-        bottom: MediaQuery.of(context).viewInsets.bottom > 0
-            ? SpacingTokens.space8
-            : SpacingTokens.space12,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (replyingTo != null)
-            Padding(
-              padding: const EdgeInsets.only(bottom: SpacingTokens.space4),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Replying to ${replyingTo.author.displayName}',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: TypographyTokens.fontSize1,
-                        color: scheme.primary,
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Iconsax.close_circle_copy, size: 16),
-                    tooltip: AppLocalizations.of(context).literalcancelReply,
-                    visualDensity: VisualDensity.compact,
-                    onPressed: () => setState(() => _replyingTo = null),
-                  ),
-                ],
-              ),
-            ),
-          MediaTray(
-            media: state.media,
-            height: 84,
-            onRemove: _notifier.detach,
-            onRetry: _notifier.retryAttachment,
-            onDescribe: (item) async {
-              final alt = await askForAltText(context, item.alt);
-              if (alt != null && mounted) {
-                _notifier.describeAttachment(item.path, alt);
-              }
-            },
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              IconButton(
-                icon: const Icon(Iconsax.gallery_copy, size: 20),
-                tooltip: AppLocalizations.of(context).literaladdAPhoto,
-                onPressed: state.canAttach ? () => _attach(video: false) : null,
-              ),
-              IconButton(
-                icon: const Icon(Iconsax.video_copy, size: 20),
-                tooltip: AppLocalizations.of(context).literaladdAVideo,
-                onPressed: state.canAttach ? () => _attach(video: true) : null,
-              ),
-              Expanded(
-                child: TextField(
-                  controller: _controller,
-                  focusNode: _focus,
-                  minLines: 1,
-                  maxLines: 4,
-                  maxLength: 500,
-                  textCapitalization: TextCapitalization.sentences,
-                  onChanged: (_) => setState(() {}),
-                  decoration: InputDecoration(
-                    hintText:
-                        replyingTo == null ? 'Add a comment' : 'Write a reply',
-                    border: InputBorder.none,
-                    counterText: '',
-                    isDense: true,
-                    // The one field that is not the standard height. It sits
-                    // in a bar with two icon buttons and grows as you type;
-                    // a floor under it makes an empty reply bar taller than
-                    // the row it lives in.
-                    constraints: const BoxConstraints(),
-                  ),
-                ),
-              ),
-              IconButton(
-                icon: state.isSending
-                    ? const SizedBox.square(
-                        dimension: 18,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    : const Icon(Iconsax.send_1_copy, size: 20),
-                tooltip: 'Send',
-                // A picture with no words is a reply; an empty box is not.
-                onPressed:
-                    (_controller.text.trim().isEmpty && state.media.isEmpty) ||
-                            state.isSending ||
-                            state.isUploading
-                        ? null
-                        : _send,
-              ),
-            ],
-          ),
-        ],
-      ),
+    return ReplyBar(
+      controller: _controller,
+      focus: _focus,
+      hintText: replyingTo == null ? 'Add a comment' : 'Write a reply',
+      replyingTo: replyingTo?.author.displayName,
+      onCancelReply: () => setState(() => _replyingTo = null),
+      onChanged: (_) => setState(() {}),
+      // A picture with no words is a reply; an empty box is not.
+      canSend: !(_controller.text.trim().isEmpty && state.media.isEmpty) &&
+          !state.isSending &&
+          !state.isUploading,
+      sending: state.isSending,
+      onSend: _send,
+      canAttach: state.canAttach,
+      onAddPhoto: () => _attach(video: false),
+      onAddClip: () => _attach(video: true),
+      media: state.media,
+      onRemoveMedia: _notifier.detach,
+      onRetryMedia: _notifier.retryAttachment,
+      onDescribeMedia: (item) async {
+        final alt = await askForAltText(context, item.alt);
+        if (alt != null && mounted) {
+          _notifier.describeAttachment(item.path, alt);
+        }
+      },
     );
   }
 
@@ -511,6 +424,7 @@ class _Post extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
     final handle = post.author.handle;
+    final community = post.community;
     final visual = post.media.where((m) => m.isVisual).toList();
 
     return Padding(
@@ -525,10 +439,21 @@ class _Post extends ConsumerWidget {
         children: [
           Row(
             children: [
-              GestureDetector(
-                onTap: () => openAuthor(context, post.author),
-                child: PostAvatar(author: post.author, radius: 20),
-              ),
+              // The same header a community post has in the feed, so the
+              // post's own page is not the one place it forgets where it was
+              // posted -- and not a dead end on the way to that community.
+              community == null
+                  ? GestureDetector(
+                      onTap: () => openAuthor(context, post.author),
+                      child: PostAvatar(author: post.author, radius: 20),
+                    )
+                  : StackedPostAvatar(
+                      community: community,
+                      size: 48,
+                      author: PostAvatar(author: post.author, radius: 13),
+                      onCommunityTap: () => openCommunity(context, community),
+                      onAuthorTap: () => openAuthor(context, post.author),
+                    ),
               const SizedBox(width: SpacingTokens.space12),
               Expanded(
                 child: GestureDetector(
@@ -536,6 +461,8 @@ class _Post extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      if (community != null)
+                        PostCommunityLine(community: community),
                       Text(
                         post.author.displayName,
                         maxLines: 1,

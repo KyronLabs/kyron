@@ -16,9 +16,8 @@ import '../utils/thread_layout.dart';
 import '../utils/media_basket.dart';
 import '../widgets/comment_tile.dart';
 import '../widgets/empty_state.dart';
-import '../widgets/hairline.dart';
 import '../widgets/jump_to_end.dart';
-import '../widgets/media_tray.dart';
+import '../widgets/reply_bar.dart';
 import '../widgets/thread.dart';
 import '../widgets/toast.dart';
 import '../widgets/skeleton.dart';
@@ -194,7 +193,6 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
                 ],
               ),
             ),
-            const Hairline(),
             _composer(state),
           ],
         ),
@@ -280,85 +278,28 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
   }
 
   Widget _composer(CommentThreadState state) {
-    final scheme = Theme.of(context).colorScheme;
     final to = _replyingTo ?? state.root;
 
-    return Padding(
-      padding: EdgeInsets.only(
-        left: SpacingTokens.space8,
-        right: SpacingTokens.space8,
-        top: SpacingTokens.space8,
-        bottom: MediaQuery.viewInsetsOf(context).bottom + SpacingTokens.space8,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (_media.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(
-                left: SpacingTokens.space8,
-                bottom: SpacingTokens.space8,
-              ),
-              child: MediaTray(
-                media: _media.items,
-                height: 84,
-                onRemove: _media.remove,
-                onRetry: _media.retry,
-                onDescribe: (item) =>
-                    _media.describe(item.path, item.alt ?? ''),
-              ),
-            ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              IconButton(
-                tooltip: AppLocalizations.of(context).literaladdAPhoto,
-                onPressed: _media.hasRoom ? () => _attach(video: false) : null,
-                icon: const Icon(Iconsax.gallery_copy, size: 20),
-              ),
-              IconButton(
-                tooltip: AppLocalizations.of(context).literaladdAClip,
-                onPressed: _media.hasRoom ? () => _attach(video: true) : null,
-                icon: const Icon(Iconsax.video_copy, size: 20),
-              ),
-              Expanded(
-                child: TextField(
-                  controller: _box,
-                  focusNode: _focus,
-                  minLines: 1,
-                  maxLines: 4,
-                  maxLength: 500,
-                  textCapitalization: TextCapitalization.sentences,
-                  onChanged: (_) => setState(() {}),
-                  decoration: InputDecoration(
-                    hintText: to == null
-                        ? 'Write a reply'
-                        : 'Reply to ${to.author.displayName}',
-                    border: InputBorder.none,
-                    counterText: '',
-                    isDense: true,
-                    constraints: const BoxConstraints(),
-                  ),
-                ),
-              ),
-              IconButton(
-                tooltip: 'Send',
-                icon: _sending
-                    ? const SizedBox.square(
-                        dimension: 18,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    : Icon(
-                        Iconsax.send_1_copy,
-                        size: 20,
-                        color: scheme.primary,
-                      ),
-                onPressed: _canSend ? _send : null,
-              ),
-            ],
-          ),
-        ],
-      ),
+    return ReplyBar(
+      controller: _box,
+      focus: _focus,
+      hintText:
+          to == null ? 'Write a reply' : 'Reply to ${to.author.displayName}',
+      // Only when it is not the comment the page is about: the hint already
+      // names that one.
+      replyingTo: _replyingTo?.author.displayName,
+      onCancelReply: () => setState(() => _replyingTo = null),
+      onChanged: (_) => setState(() {}),
+      canSend: _canSend,
+      sending: _sending,
+      onSend: _send,
+      canAttach: _media.hasRoom,
+      onAddPhoto: () => _attach(video: false),
+      onAddClip: () => _attach(video: true),
+      media: _media.items,
+      onRemoveMedia: _media.remove,
+      onRetryMedia: _media.retry,
+      onDescribeMedia: (item) => _media.describe(item.path, item.alt ?? ''),
     );
   }
 }
