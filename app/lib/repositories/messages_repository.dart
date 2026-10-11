@@ -94,4 +94,33 @@ class MessagesRepository {
 
   Future<void> remove(String messageId) =>
       _api.dio.delete<void>('/messages/items/$messageId');
+
+  /// Reacts to a message, replacing the reader's previous reaction to it.
+  Future<void> react(String conversationId, String messageId, String emoji) =>
+      _api.dio.put<void>(
+        '/messages/$conversationId/items/$messageId/reaction',
+        data: {'emoji': emoji},
+      );
+
+  Future<void> unreact(String conversationId, String messageId) =>
+      _api.dio.delete<void>(
+        '/messages/$conversationId/items/$messageId/reaction',
+      );
+
+  /// One message's reactions, after the socket said they changed. The event
+  /// carries only ids; the emoji are read here, behind the same membership
+  /// check as the thread.
+  Future<List<MessageReaction>> reactions(
+    String conversationId,
+    String messageId,
+  ) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/messages/$conversationId/items/$messageId/reactions',
+    );
+    return MessageReaction.listFrom(res.data?['reactions']);
+  }
+
+  /// "I'm writing" -- sent at most every few seconds while the box changes.
+  Future<void> typing(String conversationId) =>
+      _api.dio.post<void>('/messages/$conversationId/typing');
 }

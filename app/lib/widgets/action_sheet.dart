@@ -41,10 +41,15 @@ class ActionSheet {
   const ActionSheet._();
 
   /// Shows [actions] and answers with whichever was chosen, or null.
+  ///
+  /// [header], when given, is drawn above the actions with the sheet's own
+  /// context, so it can close the sheet with a value of its own -- a row of
+  /// reactions above a message's actions, say.
   static Future<T?> show<T>(
     BuildContext context, {
     required List<SheetAction<T>> actions,
     String? title,
+    Widget Function(BuildContext sheet)? header,
   }) {
     return showModalBottomSheet<T>(
       context: context,
@@ -88,6 +93,7 @@ class ActionSheet {
                   ),
                   const Hairline(),
                 ],
+                if (header != null) header(context),
                 Flexible(
                   child: ListView(
                     shrinkWrap: true,

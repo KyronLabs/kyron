@@ -13,19 +13,24 @@ import 'package:kyron_app/screens/thread_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/services/message_vault.dart';
 import 'package:kyron_app/utils/emoji_only.dart';
-import 'package:kyron_app/widgets/quote_stack.dart';
+import 'package:kyron_app/widgets/overlap_stack.dart';
 
 /// The chat screen, driven the way somebody uses it: big emoji, pulling a
 /// message across to answer it, the wave that opens an empty conversation,
 /// and the heart beside an empty box.
 class _Repo extends MessagesRepository {
-  _Repo(this.thread) : super(ApiClient()..dio.interceptors.clear());
+  _Repo(this.thread, {this.lastReadAt})
+      : super(ApiClient()..dio.interceptors.clear());
 
   /// Newest first, the way the server sends a page.
   final List<DirectMessage> thread;
+  final DateTime? lastReadAt;
 
   final List<String> bodies = [];
   final List<String?> repliedTo = [];
+  final List<(String, String)> reacted = [];
+  final List<String> unreacted = [];
+  int typingSent = 0;
 
   @override
   Future<MessagePage> messages(
@@ -36,7 +41,22 @@ class _Repo extends MessagesRepository {
       MessagePage(
         items: thread,
         people: const [MessagePerson(id: 'them', name: 'Ada')],
+        lastReadAt: lastReadAt,
       );
+
+  @override
+  Future<void> react(String c, String messageId, String emoji) async =>
+      reacted.add((messageId, emoji));
+
+  @override
+  Future<void> unreact(String c, String messageId) async =>
+      unreacted.add(messageId);
+
+  @override
+  Future<List<MessageReaction>> reactions(String c, String m) async => const [];
+
+  @override
+  Future<void> typing(String c) async => typingSent++;
 
   @override
   Future<DirectMessage> send(
@@ -77,6 +97,7 @@ DirectMessage _msg(
   String sender,
   DateTime at, {
   String? replyToId,
+  List<MessageReaction> reactions = const [],
 }) =>
     DirectMessage(
       id: id,
@@ -84,10 +105,15 @@ DirectMessage _msg(
       senderId: sender,
       createdAt: at,
       replyToId: replyToId,
+      reactions: reactions,
     );
 
-Future<_Repo> _open(WidgetTester tester, List<DirectMessage> thread) async {
-  final repo = _Repo(thread);
+Future<_Repo> _open(
+  WidgetTester tester,
+  List<DirectMessage> thread, {
+  DateTime? lastReadAt,
+}) async {
+  final repo = _Repo(thread, lastReadAt: lastReadAt);
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
@@ -159,11 +185,11 @@ void main() {
       _msg('m0', 'is it raining?', 'me', DateTime(2026, 1, 1, 9)),
     ]);
 
-    expect(find.byType(QuoteStack), findsOneWidget);
+    expect(find.byType(OverlapStack), findsOneWidget);
     expect(find.text('Ada replied'), findsOneWidget);
     expect(
       find.descendant(
-        of: find.byType(QuoteStack),
+        of: find.byType(OverlapStack),
         matching: find.text('is it raining?'),
       ),
       findsOneWidget,
@@ -207,5 +233,139 @@ void main() {
       ),
       findsOneWidget,
     );
+  });
+
+  testWidgets('a double tap hearts a message', (tester) async {
+    final repo = await _open(tester, [
+      _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+    ]);
+
+    await tester.tap(find.text('made it home'));
+    await tester.pump(const Duration(milliseconds: 60));
+    await tester.tap(find.text('made it home'));
+    await tester.pumpAndSettle();
+
+    expect(repo.reacted, [('m1', '❤️')]);
+    expect(find.text('❤️'), findsOneWidget);
+  });
+
+  testWidgets('a long press offers the quick reactions above the rest',
+      (tester) async {
+    final repo = await _open(tester, [
+      _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+    ]);
+
+    await tester.longPress(find.text('made it home'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('😂').last);
+    await tester.pumpAndSettle();
+
+    expect(repo.reacted, [('m1', '😂')]);
+  });
+
+  testWidgets('a tap on your own reaction takes it back', (tester) async {
+    final repo = await _open(tester, [
+      _msg(
+        'm1',
+        'made it home',
+        'them',
+        DateTime(2026, 1, 1, 9),
+        reactions: const [MessageReaction(userId: 'me', emoji: '😮')],
+      ),
+    ]);
+
+    await tester.tap(find.text('😮'));
+    await tester.pumpAndSettle();
+
+    expect(repo.unreacted, ['m1']);
+    expect(find.text('😮'), findsNothing);
+  });
+
+  testWidgets('the other person’s reaction is shown and is not yours to take',
+      (tester) async {
+    final repo = await _open(tester, [
+      _msg(
+        'm1',
+        'made it home',
+        'me',
+        DateTime(2026, 1, 1, 9),
+        reactions: const [MessageReaction(userId: 'them', emoji: '❤️')],
+      ),
+    ]);
+
+    await tester.tap(find.text('❤️'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('❤️'), findsOneWidget);
+    expect(repo.unreacted, isEmpty);
+  });
+
+  testWidgets('"New messages" sits above where the reader left off',
+      (tester) async {
+    await _open(
+      tester,
+      [
+        _msg('m3', 'are you there?', 'them', DateTime(2026, 1, 1, 9, 30)),
+        _msg('m2', 'hello?', 'them', DateTime(2026, 1, 1, 9, 20)),
+        _msg('m1', 'see you at six', 'me', DateTime(2026, 1, 1, 9)),
+      ],
+      lastReadAt: DateTime(2026, 1, 1, 9, 10),
+    );
+
+    expect(find.text('New messages'), findsOneWidget);
+    expect(
+      tester.getTopLeft(find.text('New messages')).dy,
+      lessThan(tester.getTopLeft(find.text('hello?')).dy),
+    );
+    expect(
+      tester.getTopLeft(find.text('New messages')).dy,
+      greaterThan(tester.getTopLeft(find.text('see you at six')).dy),
+    );
+  });
+
+  testWidgets('and is not there when everything had been read', (tester) async {
+    await _open(
+      tester,
+      [
+        _msg('m2', 'hello?', 'them', DateTime(2026, 1, 1, 9, 20)),
+        _msg('m1', 'see you at six', 'me', DateTime(2026, 1, 1, 9)),
+      ],
+      lastReadAt: DateTime(2026, 1, 1, 10),
+    );
+    expect(find.text('New messages'), findsNothing);
+  });
+
+  testWidgets('"is typing" shows at the foot of the thread', (tester) async {
+    await _open(tester, [
+      _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+    ]);
+    final container = ProviderScope.containerOf(
+      tester.element(find.byType(ThreadScreen)),
+    );
+
+    container.read(threadProvider('c1').notifier).otherTyping('them');
+    await tester.pump();
+    expect(find.bySemanticsLabel('Ada is typing'), findsOneWidget);
+
+    // And goes on its own once they pause.
+    await tester.pump(ThreadNotifier.typingLapse);
+    await tester.pump();
+    expect(find.bySemanticsLabel('Ada is typing'), findsNothing);
+  });
+
+  testWidgets('typing tells the other side, but not on every keystroke',
+      (tester) async {
+    final repo = await _open(tester, [
+      _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+    ]);
+
+    await tester.enterText(find.byType(TextField), 'h');
+    await tester.pump();
+    await tester.enterText(find.byType(TextField), 'he');
+    await tester.pump();
+    await tester.enterText(find.byType(TextField), 'hey');
+    await tester.pump();
+
+    expect(repo.typingSent, 1);
   });
 }

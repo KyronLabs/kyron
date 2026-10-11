@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kyron_app/widgets/quote_stack.dart';
+import 'package:kyron_app/widgets/overlap_stack.dart';
 
 /// The quoted message sits behind; the reply overlaps its lower edge; the
 /// pair is exactly as tall as what is drawn.
 void main() {
-  Widget host(QuoteStack stack, {TextDirection? direction}) => Directionality(
+  Widget host(OverlapStack stack, {TextDirection? direction}) => Directionality(
         textDirection: direction ?? TextDirection.ltr,
         child: Align(alignment: Alignment.topLeft, child: stack),
       );
@@ -17,10 +17,10 @@ void main() {
       (tester) async {
     await tester.pumpWidget(
       // The default overlap, 14: the reply starts 14 above the quote's foot.
-      host(QuoteStack(quote: quote, reply: reply)),
+      host(OverlapStack(back: quote, front: reply)),
     );
 
-    expect(tester.getSize(find.byType(QuoteStack)), const Size(150, 76));
+    expect(tester.getSize(find.byType(OverlapStack)), const Size(150, 76));
     expect(tester.getTopLeft(find.byKey(const Key('quote'))), Offset.zero);
     expect(
       tester.getTopLeft(find.byKey(const Key('reply'))),
@@ -31,7 +31,7 @@ void main() {
   testWidgets('lines both up on the right for your own messages',
       (tester) async {
     await tester.pumpWidget(
-      host(QuoteStack(quote: quote, reply: reply, alignEnd: true)),
+      host(OverlapStack(back: quote, front: reply, alignEnd: true)),
     );
     expect(
       tester.getTopRight(find.byKey(const Key('quote'))).dx,
@@ -44,7 +44,7 @@ void main() {
       (tester) async {
     await tester.pumpWidget(
       host(
-        QuoteStack(quote: quote, reply: reply, alignEnd: true),
+        OverlapStack(back: quote, front: reply, alignEnd: true),
         direction: TextDirection.rtl,
       ),
     );
@@ -54,15 +54,15 @@ void main() {
   testWidgets('never overlaps more than the quote is tall', (tester) async {
     await tester.pumpWidget(
       host(
-        QuoteStack(
-          quote: const SizedBox(key: Key('quote'), width: 80, height: 10),
-          reply: reply,
+        OverlapStack(
+          back: const SizedBox(key: Key('quote'), width: 80, height: 10),
+          front: reply,
           overlap: 30,
         ),
       ),
     );
     // Swallowed whole would be 40 tall with the reply at y = -20.
-    expect(tester.getSize(find.byType(QuoteStack)).height, 40);
+    expect(tester.getSize(find.byType(OverlapStack)).height, 40);
     expect(tester.getTopLeft(find.byKey(const Key('reply'))).dy, 0);
   });
 
@@ -71,13 +71,13 @@ void main() {
     final taps = <String>[];
     await tester.pumpWidget(
       host(
-        QuoteStack(
-          quote: GestureDetector(
+        OverlapStack(
+          back: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () => taps.add('quote'),
             child: const SizedBox(width: 150, height: 50),
           ),
-          reply: GestureDetector(
+          front: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () => taps.add('reply'),
             child: const SizedBox(width: 100, height: 40),

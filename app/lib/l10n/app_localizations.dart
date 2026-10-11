@@ -58,6 +58,8 @@ class AppLocalizations {
       );
   String dmReplied(String name) =>
       Intl.message('$name replied', name: 'dmReplied', args: [name]);
+  String dmTyping(String name) =>
+      Intl.message('$name is typing', name: 'dmTyping', args: [name]);
   String authorBlocked(String author) =>
       Intl.message('$author blocked', name: 'authorBlocked', args: [author]);
   String nothingMatchesQuery(String what) => Intl.message(

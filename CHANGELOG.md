@@ -14,6 +14,25 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Reactions, "is typing", and "New messages" in chats.** Double-tap a
+  message to heart it, double-tap again to take it back; long-press for six
+  quick reactions above the usual actions, where choosing your current one
+  again removes it. Reactions sit on the bubble's lower corner as one small
+  pill — "😂 2" when you both chose the same one — and a tap on your own
+  takes it back. One reaction each per message, replaced rather than stacked.
+  They are on screen at once and put back with a message if the server
+  refuses. Reactions are stored readable on the server, unlike the messages
+  they sit on — a decided trade, in `docs/E2EE.md`.
+
+  While the other person writes, three dots appear at the foot of the
+  thread. They go when the message arrives or a few seconds after the typing
+  stops, with no "stopped typing" signal to lose, and hold still for anyone
+  who has asked their phone for less motion. Your own typing is sent at most
+  every three seconds. Neither reactions nor typing ever cause a push.
+
+  Opening a thread with unread messages draws "New messages" above the
+  first one, and it stays where it was after the thread is marked read.
+
 - **Chats that work the way people already chat.** Pull a message sideways
   to answer it: it follows the finger, the phone ticks at the point where
   letting go replies, and short of that nothing happens. A reply is drawn the

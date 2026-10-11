@@ -31,7 +31,7 @@ import '../models/current_user.dart';
 import '../models/post_media.dart' show MediaKind;
 import '../utils/emoji_only.dart';
 import '../widgets/gif_picker_sheet.dart';
-import '../widgets/quote_stack.dart';
+import '../widgets/overlap_stack.dart';
 import '../widgets/swipe_to_reply.dart';
 
 /// Which conversation, and who is in it.
@@ -88,7 +88,24 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
   /// Whether the list has been put at its newest message once.
   bool _settled = false;
 
-  void _onTyping() => setState(_recalculate);
+  void _onTyping() {
+    setState(_recalculate);
+    // Throttled by the notifier, so this can be called on every keystroke.
+    if (_box.text.trim().isNotEmpty) {
+      unawaited(
+        ref
+            .read(threadProvider(widget.args.conversationId).notifier)
+            .sendTyping(),
+      );
+    }
+  }
+
+  /// Whether the list is at, or near, its newest message -- the only time
+  /// something arriving at the bottom should pull the view down to it. A
+  /// reader scrolled up into last week is not dragged back for "is typing".
+  bool get _nearNewest =>
+      !_scroll.hasClients ||
+      _scroll.position.maxScrollExtent - _scroll.position.pixels < 120;
 
   void _recalculate() {
     // A picture with no words is a message; an empty box is not. Never while
@@ -374,6 +391,17 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     final self = ref.watch(currentUserProvider).asData?.value;
     final me = self?.id;
 
+    // The dots appear at the foot of the list; bring them into view if the
+    // reader was already reading the newest messages.
+    ref.listen(
+      threadProvider(widget.args.conversationId).select((s) => s.typing),
+      (previous, next) {
+        if (next != null && previous == null && _nearNewest) {
+          _toNewest(animate: true);
+        }
+      },
+    );
+
     // The list is the truth once it has landed; the arguments are what the
     // header shows before that.
     final people = state.people.isNotEmpty ? state.people : widget.args.people;
@@ -546,6 +574,11 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
       _toNewest();
     }
 
+    final firstUnread = me == null ? null : state.firstUnreadFor(me);
+    final typer = state.typing == null
+        ? null
+        : people.where((p) => p.id == state.typing).firstOrNull;
+
     return ListView.builder(
       controller: _scroll,
       padding: const EdgeInsets.symmetric(
@@ -553,8 +586,10 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
         vertical: SpacingTokens.space12,
       ),
       // The spinner for older messages goes at the top now, which is where
-      // they are.
-      itemCount: ordered.length + (state.loadingMore ? 1 : 0),
+      // they are; "is typing" goes at the bottom, where the next message will.
+      itemCount: ordered.length +
+          (state.loadingMore ? 1 : 0) +
+          (state.typing != null ? 1 : 0),
       itemBuilder: (context, index) {
         if (state.loadingMore && index == 0) {
           return const Padding(
@@ -563,13 +598,30 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
           );
         }
         final at = state.loadingMore ? index - 1 : index;
+        if (at == ordered.length) {
+          return _TypingBubble(person: typer);
+        }
         final message = ordered[at];
         final mine = me != null && message.senderId == me;
         final previous = at > 0 ? ordered[at - 1] : null;
         final next = at + 1 < ordered.length ? ordered[at + 1] : null;
-        return _Bubble(
+        final bubble = _Bubble(
           message: message,
           mine: mine,
+          me: me,
+          onToggleHeart: me == null
+              ? null
+              : () => _afterReaction(
+                    notifier.toggleHeart(message, me: me),
+                  ),
+          onReact: me == null
+              ? null
+              : (emoji) => _afterReaction(
+                    notifier.react(message, emoji, me: me),
+                  ),
+          onRemoveReaction: me == null
+              ? null
+              : () => _afterReaction(notifier.unreact(message, me: me)),
           // A run: consecutive messages from the same person within a couple
           // of minutes read as one turn, so they sit close together and share
           // one avatar and one time, at the end of the run.
@@ -596,8 +648,25 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
                   }
                 },
         );
+        // Above the first message the reader had not seen when they opened
+        // the thread -- where they left off, marked.
+        if (message.id == firstUnread) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [const _NewMessagesDivider(), bubble],
+          );
+        }
+        return bubble;
       },
     );
+  }
+
+  /// Says so if a reaction did not stick. The notifier has already put the
+  /// bubble back the way it was.
+  Future<void> _afterReaction(Future<String?> attempt) async {
+    unawaited(HapticFeedback.lightImpact());
+    final error = await attempt;
+    if (error != null && mounted) Toast.show(context, error);
   }
 }
 
@@ -613,6 +682,18 @@ class _Bubble extends StatelessWidget {
 
   /// Who sent it, for the avatar beside their runs. Null for your own.
   final MessagePerson? sender;
+
+  /// The reader's id, to tell their own reaction from the other person's.
+  final String? me;
+
+  /// A double tap: a heart, or the heart taken back.
+  final VoidCallback? onToggleHeart;
+
+  /// One of the quick reactions, from the long-press sheet.
+  final void Function(String emoji)? onReact;
+
+  /// Takes the reader's reaction off, from a tap on it.
+  final VoidCallback? onRemoveReaction;
 
   final VoidCallback onRetry;
   final VoidCallback? onRemove;
@@ -633,6 +714,10 @@ class _Bubble extends StatelessWidget {
     required this.onRetry,
     required this.onReply,
     this.sender,
+    this.me,
+    this.onToggleHeart,
+    this.onReact,
+    this.onRemoveReaction,
     this.onRemove,
     this.answered,
     this.answeredAuthor,
@@ -656,6 +741,26 @@ class _Bubble extends StatelessWidget {
     Widget content = jumbo != null
         ? _Jumbo(text: message.body.trim(), count: jumbo, faded: message.failed)
         : _box(context, scheme, overlapping: message.replyToId != null);
+
+    // Reactions sit on the bubble's lower corner -- the side it hangs from --
+    // overlapping its edge, as one small pill.
+    if (message.reactions.isNotEmpty) {
+      content = OverlapStack(
+        alignEnd: mine,
+        overlap: 8,
+        back: content,
+        front: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingTokens.space8,
+          ),
+          child: _ReactionPill(
+            reactions: message.reactions,
+            me: me,
+            onRemove: onRemoveReaction,
+          ),
+        ),
+      );
+    }
 
     if (message.replyToId != null) {
       content = Column(
@@ -685,10 +790,10 @@ class _Bubble extends StatelessWidget {
           ),
           // The answered message behind, muted; the answer over its lower
           // edge. One exchange, read as one.
-          QuoteStack(
+          OverlapStack(
             alignEnd: mine,
-            quote: _QuotedMessage(answered: answered),
-            reply: content,
+            back: _QuotedMessage(answered: answered),
+            front: content,
           ),
         ],
       );
@@ -722,6 +827,9 @@ class _Bubble extends StatelessWidget {
                   onReply: onReply,
                   child: GestureDetector(
                     onLongPress: () => _openOptions(context),
+                    // A heart on a double tap. Not on a message the server
+                    // does not have yet: there is nothing for it to attach to.
+                    onDoubleTap: _canReact ? onToggleHeart : null,
                     child: content,
                   ),
                 ),
@@ -817,6 +925,8 @@ class _Bubble extends StatelessWidget {
     );
   }
 
+  bool get _canReact => !message.sending && !message.failed;
+
   /// Reply, copy, and -- on your own -- delete.
   ///
   /// This used to be long-press-to-delete and nothing else, which meant a long
@@ -824,8 +934,17 @@ class _Bubble extends StatelessWidget {
   Future<void> _openOptions(BuildContext context) async {
     final copyable = message.body.trim().isNotEmpty && !message.unreadable;
 
+    final mineReaction = me == null ? null : message.reactionOf(me!);
     final chosen = await ActionSheet.show<String>(
       context,
+      // The quick reactions first, above everything else: reacting is the
+      // thing most often done to a message somebody else sent.
+      header: !_canReact || onReact == null
+          ? null
+          : (sheet) => _ReactionRow(
+                selected: mineReaction,
+                onPick: (emoji) => Navigator.pop(sheet, 'react:$emoji'),
+              ),
       actions: [
         SheetAction(
           value: 'reply',
@@ -850,6 +969,14 @@ class _Bubble extends StatelessWidget {
     if (chosen == null || !context.mounted) return;
 
     switch (chosen) {
+      // The one already chosen, chosen again, takes it back.
+      case final String pick when pick.startsWith('react:'):
+        final emoji = pick.substring('react:'.length);
+        if (emoji == mineReaction) {
+          onRemoveReaction?.call();
+        } else {
+          onReact?.call(emoji);
+        }
       case 'reply':
         onReply();
       case 'copy':
@@ -1284,7 +1411,7 @@ class _QuotedMessage extends StatelessWidget {
         maxWidth: MediaQuery.sizeOf(context).width * 0.62,
       ),
       // Room at the bottom for the reply to ride over without covering the
-      // words: QuoteStack overlaps by 14.
+      // words: OverlapStack overlaps by 14.
       padding: const EdgeInsets.fromLTRB(
         SpacingTokens.space12,
         SpacingTokens.space8,
@@ -1463,6 +1590,258 @@ class _ChatStarter extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// The reactions most messages get, a tap away above a message's actions.
+const List<String> _quickReactions = ['❤️', '😂', '😮', '😢', '😡', '👍'];
+
+class _ReactionRow extends StatelessWidget {
+  const _ReactionRow({required this.selected, required this.onPick});
+
+  /// The reader's current reaction, drawn picked so choosing it again reads
+  /// as taking it back.
+  final String? selected;
+  final void Function(String emoji) onPick;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        SpacingTokens.space12,
+        0,
+        SpacingTokens.space12,
+        SpacingTokens.space8,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          for (final emoji in _quickReactions)
+            InkResponse(
+              onTap: () => onPick(emoji),
+              radius: 26,
+              child: Container(
+                padding: const EdgeInsets.all(SpacingTokens.space8),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: emoji == selected
+                      ? scheme.primary.withValues(alpha: 0.15)
+                      : null,
+                ),
+                child: Text(
+                  emoji,
+                  style: const TextStyle(fontSize: TypographyTokens.fontSize7),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The pill on a bubble's corner saying who reacted with what.
+///
+/// Each emoji once, with a count beside it when both people chose the same
+/// one. A tap takes the reader's own reaction back; the other person's is
+/// theirs to take back.
+class _ReactionPill extends StatelessWidget {
+  const _ReactionPill({
+    required this.reactions,
+    required this.me,
+    required this.onRemove,
+  });
+
+  final List<MessageReaction> reactions;
+  final String? me;
+  final VoidCallback? onRemove;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final counts = <String, int>{};
+    for (final reaction in reactions) {
+      counts[reaction.emoji] = (counts[reaction.emoji] ?? 0) + 1;
+    }
+    final label = [
+      for (final entry in counts.entries)
+        entry.value > 1 ? '${entry.key} ${entry.value}' : entry.key,
+    ].join(' ');
+    final mine = me != null && reactions.any((r) => r.userId == me);
+
+    // Pops in rather than appearing, so a double tap visibly did something.
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.6, end: 1),
+      duration: MotionTokens.fast,
+      curve: Curves.easeOutBack,
+      builder: (context, scale, child) =>
+          Transform.scale(scale: scale, child: child),
+      child: Semantics(
+        button: mine,
+        label: mine
+            ? AppLocalizations.of(context)
+                .ui('ui_dm_reaction_remove', 'Remove your reaction')
+            : null,
+        child: GestureDetector(
+          onTap: mine ? onRemove : null,
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space8,
+              vertical: 2,
+            ),
+            decoration: BoxDecoration(
+              color: scheme.surface,
+              borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+              border: Border.all(
+                color: scheme.outline.withValues(alpha: 0.2),
+              ),
+            ),
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize2,
+                color: scheme.onSurface,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// "Ada is typing": three dots in a bubble, at the foot of the thread.
+class _TypingBubble extends StatefulWidget {
+  const _TypingBubble({required this.person});
+
+  final MessagePerson? person;
+
+  @override
+  State<_TypingBubble> createState() => _TypingBubbleState();
+}
+
+class _TypingBubbleState extends State<_TypingBubble>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _wave = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1200),
+  );
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Still dots, not moving ones, for somebody who has asked the phone for
+    // less motion.
+    if (MediaQuery.of(context).disableAnimations) {
+      _wave.stop();
+    } else if (!_wave.isAnimating) {
+      _wave.repeat();
+    }
+  }
+
+  @override
+  void dispose() {
+    _wave.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final name = widget.person?.displayName ??
+        AppLocalizations.of(context).ui('ui_dm_someone', 'Someone');
+
+    return Padding(
+      padding: const EdgeInsets.only(top: SpacingTokens.space8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          SizedBox(
+            width: 28,
+            child: _Avatar(person: widget.person, radius: 14),
+          ),
+          const SizedBox(width: SpacingTokens.space8),
+          Semantics(
+            liveRegion: true,
+            label: AppLocalizations.of(context).dmTyping(name),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: SpacingTokens.space12,
+                vertical: SpacingTokens.space12,
+              ),
+              decoration: BoxDecoration(
+                color: scheme.surfaceContainer,
+                borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
+              ),
+              child: AnimatedBuilder(
+                animation: _wave,
+                builder: (context, _) => Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    for (var i = 0; i < 3; i++) ...[
+                      if (i > 0) const SizedBox(width: SpacingTokens.space4),
+                      Container(
+                        width: 7,
+                        height: 7,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: scheme.onSurface.withValues(
+                            alpha: _alphaFor(i),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Each dot brightens in turn, a third of a cycle after the one before.
+  double _alphaFor(int dot) {
+    final phase = (_wave.value - dot / 3) % 1.0;
+    final lift = phase < 0.5 ? phase * 2 : (1 - phase) * 2;
+    return 0.25 + 0.45 * lift;
+  }
+}
+
+/// "New messages", across the thread above the first one the reader had not
+/// seen when they opened it.
+class _NewMessagesDivider extends StatelessWidget {
+  const _NewMessagesDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    final muted = Theme.of(context).colorScheme.onSurface.withValues(
+          alpha: 0.5,
+        );
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
+      child: Row(
+        children: [
+          Expanded(child: Divider(color: muted.withValues(alpha: 0.25))),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space12,
+            ),
+            child: Text(
+              AppLocalizations.of(context)
+                  .ui('ui_dm_new_messages', 'New messages'),
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                color: muted,
+              ),
+            ),
+          ),
+          Expanded(child: Divider(color: muted.withValues(alpha: 0.25))),
+        ],
       ),
     );
   }
