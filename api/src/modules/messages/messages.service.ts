@@ -121,6 +121,24 @@ export class MessagesService {
   /** The longest one message may be. */
   static readonly maxBody = 4000;
 
+  /**
+   * The longest a sealed body may be.
+   *
+   * [maxBody] is a limit on what somebody writes, and the server cannot see
+   * that once it is sealed: the stored body is ciphertext, base64, plus the
+   * message key wrapped once per device. A 4,000-character message in a
+   * script that takes three bytes a character seals to about 16,000. Held to
+   * [maxBody], every long message in Japanese, Hindi or Arabic failed to send;
+   * the app now enforces 4,000 on what is typed, and this is the ceiling on
+   * what that can seal to.
+   */
+  static readonly maxSealedBody = 24000;
+
+  /** Whether a stored body is a sealed message, in any version. */
+  static isSealed(body: string): boolean {
+    return /^k[12]\./.test(body);
+  }
+
   /** How many attachments one message may carry. Same as a post's. */
   static readonly maxMedia = 4;
 
@@ -417,7 +435,10 @@ export class MessagesService {
         `A message can carry at most ${MessagesService.maxMedia} attachments.`,
       );
     }
-    if (text.length > MessagesService.maxBody) {
+    const limit = MessagesService.isSealed(text)
+      ? MessagesService.maxSealedBody
+      : MessagesService.maxBody;
+    if (text.length > limit) {
       throw new BadRequestException(
         `A message cannot exceed ${MessagesService.maxBody} characters.`,
       );

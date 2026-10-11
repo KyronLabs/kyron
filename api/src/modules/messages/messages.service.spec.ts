@@ -213,6 +213,36 @@ describe('sending', () => {
     ).rejects.toBeInstanceOf(BadRequestException);
   });
 
+  it('takes a sealed body longer than the limit on what is typed', async () => {
+    // A long message in a three-byte script seals to several times its
+    // length. Held to the typed limit, it could never be sent.
+    const { service, calls } = serviceWith({ conversation: membership(null) });
+    const sealed = `k2.${'x'.repeat(MessagesService.maxBody * 3)}`;
+
+    await service.send(ME, 'c1', sealed);
+
+    expect(calls.messageCreates).toHaveLength(1);
+  });
+
+  it('still refuses a sealed body past the sealed ceiling', async () => {
+    const { service } = serviceWith({ conversation: membership(null) });
+    const sealed = `k2.${'x'.repeat(MessagesService.maxSealedBody)}`;
+
+    await expect(service.send(ME, 'c1', sealed)).rejects.toBeInstanceOf(
+      BadRequestException,
+    );
+  });
+
+  it('holds a plain body to the limit on what is typed', async () => {
+    const { service } = serviceWith({ conversation: membership(null) });
+    // Not sealed: does not start with a version prefix.
+    const plain = 'y'.repeat(MessagesService.maxBody + 1);
+
+    await expect(service.send(ME, 'c1', plain)).rejects.toBeInstanceOf(
+      BadRequestException,
+    );
+  });
+
   it('trims what it stores', async () => {
     const { service, calls } = serviceWith({
       conversation: membership(null),

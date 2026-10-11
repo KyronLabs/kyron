@@ -14,9 +14,13 @@ export class SendMessageDto {
   // Not IsNotEmpty: whitespace-only is also empty, and a message carrying only
   // a picture is a message. The service decides, so the rule lives in one
   // place.
+  //
+  // The ceiling here is the sealed one: a sealed body is ciphertext plus the
+  // message key wrapped for every device, longer than what was typed. The
+  // service holds a plain body to 4000 itself.
   @IsString()
   @IsOptional()
-  @MaxLength(4000, { message: 'A message cannot exceed 4000 characters.' })
+  @MaxLength(24000, { message: 'A message cannot exceed 4000 characters.' })
   body?: string;
 
   /**

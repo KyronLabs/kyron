@@ -82,8 +82,14 @@ export class KeysService {
       throw new BadRequestException('That conversation does not exist.');
     }
 
+    // Freshest first. The app seals for at most a fixed number of devices,
+    // and when that bites it should drop the install that has not been
+    // opened in months, not the phone in somebody's hand. A key is
+    // republished on every sign-in, so updatedAt is when the device last
+    // showed up.
     const rows = await this.prisma.messageKey.findMany({
       where: { userId: { in: members.map((m) => m.userId) } },
+      orderBy: { updatedAt: 'desc' },
       select: { userId: true, deviceId: true, publicKey: true },
     });
     return rows;

@@ -292,8 +292,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   Future<List<DirectMessage>> _open(List<DirectMessage> messages) async {
     final opened = <DirectMessage>[];
     for (final message in messages) {
-      final sealed = SealedMessage.tryDecode(message.body);
-      if (sealed == null) {
+      if (!SealedEnvelope.looksSealed(message.body)) {
         opened.add(message);
         continue;
       }
