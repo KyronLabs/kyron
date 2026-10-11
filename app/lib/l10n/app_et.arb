@@ -595,5 +595,18 @@
   "whatInPicture": "Mis on sellel pildil?",
   "whatIsItFor": "Milleks see on? (valikuline)",
   "whatYouDid": "Mida tegite, mida ootasite ja mis juhtus",
-  "whatYouWereDoing": "Mida te tegite, kui see juhtus."
+  "whatYouWereDoing": "Mida te tegite, kui see juhtus.",
+  "ui_dm_you_replied": "Sa vastasid",
+  "dmReplied": "${name} vastas",
+  "ui_dm_attach": "Lisa sõnumile",
+  "ui_dm_send_heart": "Saada süda",
+  "ui_dm_new": "Uus sõnum",
+  "ui_dm_starter": "Veel pole midagi öeldud. Lehvitus on hea algus.",
+  "ui_dm_wave": "👋  Lehvita",
+  "ui_dm_new_messages": "Uued sõnumid",
+  "dmTyping": "${name} kirjutab",
+  "ui_dm_reaction_remove": "Eemalda oma reaktsioon",
+  "ui_dm_someone": "Keegi",
+  "ui_dm_quote_message": "Sõnum",
+  "ui_dm_quote_attachment": "Manus"
 }

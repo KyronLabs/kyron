@@ -1248,6 +1248,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Du svarade"),
+      "dmReplied": (Object a0) => "$a0 svarade",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("Lägg till i meddelandet"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("Skicka ett hjärta"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Nytt meddelande"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Inget har sagts än. En vinkning är en bra början."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Vinka"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Nya meddelanden"),
+      "dmTyping": (Object a0) => "$a0 skriver",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Ta bort din reaktion"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Någon"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Meddelande"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Bilaga"),
     };
 
 final messageLookup = MessageLookup();

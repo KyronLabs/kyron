@@ -595,5 +595,18 @@
   "whatInPicture": "Hvad er på dette billede?",
   "whatIsItFor": "Hvad er det til? (valgfrit)",
   "whatYouDid": "Hvad du gjorde, hvad du forventede, hvad der skete",
-  "whatYouWereDoing": "Hvad du lavede, da det skete."
+  "whatYouWereDoing": "Hvad du lavede, da det skete.",
+  "ui_dm_you_replied": "Du svarede",
+  "dmReplied": "${name} svarede",
+  "ui_dm_attach": "Føj til besked",
+  "ui_dm_send_heart": "Send et hjerte",
+  "ui_dm_new": "Ny besked",
+  "ui_dm_starter": "Intet sagt endnu. Et vink er en god start.",
+  "ui_dm_wave": "👋  Vink",
+  "ui_dm_new_messages": "Nye beskeder",
+  "dmTyping": "${name} skriver",
+  "ui_dm_reaction_remove": "Fjern din reaktion",
+  "ui_dm_someone": "Nogen",
+  "ui_dm_quote_message": "Besked",
+  "ui_dm_quote_attachment": "Vedhæftet fil"
 }

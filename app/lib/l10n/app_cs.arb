@@ -595,5 +595,18 @@
   "whatInPicture": "Co je na této fotce?",
   "whatIsItFor": "K čemu to je? (volitelné)",
   "whatYouDid": "Co jste udělali, co jste očekávali, co se stalo",
-  "whatYouWereDoing": "Co jste dělal, když se to stalo."
+  "whatYouWereDoing": "Co jste dělal, když se to stalo.",
+  "ui_dm_you_replied": "Vaše odpověď",
+  "dmReplied": "Odpověď od ${name}",
+  "ui_dm_attach": "Přidat do zprávy",
+  "ui_dm_send_heart": "Poslat srdce",
+  "ui_dm_new": "Nová zpráva",
+  "ui_dm_starter": "Zatím nic. Zamávání je dobrý začátek.",
+  "ui_dm_wave": "👋  Zamávat",
+  "ui_dm_new_messages": "Nové zprávy",
+  "dmTyping": "${name} píše",
+  "ui_dm_reaction_remove": "Odebrat vaši reakci",
+  "ui_dm_someone": "Někdo",
+  "ui_dm_quote_message": "Zpráva",
+  "ui_dm_quote_attachment": "Příloha"
 }

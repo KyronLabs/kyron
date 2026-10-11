@@ -48,8 +48,8 @@ section for that version, so what is written here is what people read.
   The composer puts every attachment behind one button, keeps a photo and a
   GIF a tap away inside the box while it is empty, and stands a heart where
   Send goes until there is something to send. GIFs can be sent in messages
-  for the first time, through the same picker posts use. New labels read in
-  English until the catalogs are regenerated.
+  for the first time, through the same picker posts use. Every new label in
+  the chat is translated into all 68 languages the app ships a catalog for.
 
 - **A language system: App language, Primary language and Content
   languages.** One searchable sheet serves all three and the get-started

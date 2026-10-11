@@ -780,7 +780,10 @@ class _Bubble extends StatelessWidget {
                   ? AppLocalizations.of(context)
                       .ui('ui_dm_you_replied', 'You replied')
                   : AppLocalizations.of(context).dmReplied(
-                      sender?.displayName ?? answeredAuthor ?? 'Them',
+                      sender?.displayName ??
+                          answeredAuthor ??
+                          AppLocalizations.of(context)
+                              .ui('ui_dm_someone', 'Someone'),
                     ),
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize1,
@@ -1312,10 +1315,11 @@ class _Quote extends StatelessWidget {
 
     // A quote that cannot be resolved is still drawn. A reply whose quote
     // silently vanished reads as a remark that does not follow.
+    final l10n = AppLocalizations.of(context);
     final text = message == null
-        ? 'Message'
+        ? l10n.ui('ui_dm_quote_message', 'Message')
         : message.isEmpty
-            ? 'Attachment'
+            ? l10n.ui('ui_dm_quote_attachment', 'Attachment')
             : message.body.trim();
 
     return Container(
@@ -1400,10 +1404,11 @@ class _QuotedMessage extends StatelessWidget {
 
     // A quote that cannot be resolved is still drawn. A reply whose quote
     // silently vanished reads as a remark that does not follow.
+    final l10n = AppLocalizations.of(context);
     final text = message == null
-        ? 'Message'
+        ? l10n.ui('ui_dm_quote_message', 'Message')
         : message.isEmpty || message.body.trim().isEmpty
-            ? 'Attachment'
+            ? l10n.ui('ui_dm_quote_attachment', 'Attachment')
             : message.body.trim();
 
     return Container(

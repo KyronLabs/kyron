@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "អ្នកបានឆ្លើយតប",
+  "dmReplied": "${name} បានឆ្លើយតប",
+  "ui_dm_attach": "បន្ថែមទៅសារ",
+  "ui_dm_send_heart": "ផ្ញើបេះដូង",
+  "ui_dm_new": "សារថ្មី",
+  "ui_dm_starter": "មិនទាន់មានអ្វីនិយាយនៅឡើយទេ។ ការគ្រវីដៃគឺជាការចាប់ផ្ដើមដ៏ល្អ។",
+  "ui_dm_wave": "👋  គ្រវីដៃ",
+  "ui_dm_new_messages": "សារថ្មីៗ",
+  "dmTyping": "${name} កំពុងវាយ",
+  "ui_dm_reaction_remove": "ដកប្រតិកម្មរបស់អ្នកចេញ",
+  "ui_dm_someone": "នរណាម្នាក់",
+  "ui_dm_quote_message": "សារ",
+  "ui_dm_quote_attachment": "ឯកសារភ្ជាប់"
 }

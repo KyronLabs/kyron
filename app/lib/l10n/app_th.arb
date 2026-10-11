@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "คุณตอบกลับแล้ว",
+  "dmReplied": "${name} ตอบกลับแล้ว",
+  "ui_dm_attach": "เพิ่มลงในข้อความ",
+  "ui_dm_send_heart": "ส่งหัวใจ",
+  "ui_dm_new": "ข้อความใหม่",
+  "ui_dm_starter": "ยังไม่มีใครพูดอะไร โบกมือทักทายเป็นการเริ่มต้นที่ดี",
+  "ui_dm_wave": "👋  โบกมือ",
+  "ui_dm_new_messages": "ข้อความใหม่",
+  "dmTyping": "${name} กำลังพิมพ์",
+  "ui_dm_reaction_remove": "ลบการแสดงความรู้สึกของคุณ",
+  "ui_dm_someone": "ใครบางคน",
+  "ui_dm_quote_message": "ข้อความ",
+  "ui_dm_quote_attachment": "ไฟล์แนบ"
 }

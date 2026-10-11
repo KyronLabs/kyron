@@ -595,5 +595,18 @@
   "whatInPicture": "Was ist auf diesem Bild zu sehen?",
   "whatIsItFor": "Wofür ist das? (optional)",
   "whatYouDid": "Was du gemacht hast, was du erwartet hast, was passiert ist",
-  "whatYouWereDoing": "Was du getan hast, als es passiert ist."
+  "whatYouWereDoing": "Was du getan hast, als es passiert ist.",
+  "ui_dm_you_replied": "Du hast geantwortet",
+  "dmReplied": "${name} hat geantwortet",
+  "ui_dm_attach": "Zur Nachricht hinzufügen",
+  "ui_dm_send_heart": "Ein Herz senden",
+  "ui_dm_new": "Neue Nachricht",
+  "ui_dm_starter": "Noch nichts gesagt. Ein Winken ist ein guter Anfang.",
+  "ui_dm_wave": "👋  Winken",
+  "ui_dm_new_messages": "Neue Nachrichten",
+  "dmTyping": "${name} schreibt",
+  "ui_dm_reaction_remove": "Deine Reaktion entfernen",
+  "ui_dm_someone": "Jemand",
+  "ui_dm_quote_message": "Nachricht",
+  "ui_dm_quote_attachment": "Anhang"
 }

@@ -595,5 +595,18 @@
   "whatInPicture": "Bu şəkildə nə var?",
   "whatIsItFor": "Bu nə üçündür? (istəyə bağlı)",
   "whatYouDid": "Siz nə etdiniz, nə gözləyirdiniz, nə oldu",
-  "whatYouWereDoing": "Bu baş verən zaman nə edirdiniz."
+  "whatYouWereDoing": "Bu baş verən zaman nə edirdiniz.",
+  "ui_dm_you_replied": "Siz cavab verdiniz",
+  "dmReplied": "${name} cavab verdi",
+  "ui_dm_attach": "Mesaja əlavə et",
+  "ui_dm_send_heart": "Ürək göndər",
+  "ui_dm_new": "Yeni mesaj",
+  "ui_dm_starter": "Hələ heç nə deyilməyib. Əl yelləmək yaxşı başlanğıcdır.",
+  "ui_dm_wave": "👋  Əl yellə",
+  "ui_dm_new_messages": "Yeni mesajlar",
+  "dmTyping": "${name} yazır",
+  "ui_dm_reaction_remove": "Reaksiyanı sil",
+  "ui_dm_someone": "Kimsə",
+  "ui_dm_quote_message": "Mesaj",
+  "ui_dm_quote_attachment": "Əlavə fayl"
 }

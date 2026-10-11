@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "நீங்கள் பதிலளித்தீர்கள்",
+  "dmReplied": "${name} பதிலளித்தார்",
+  "ui_dm_attach": "செய்தியில் சேர்",
+  "ui_dm_send_heart": "இதயத்தை அனுப்பு",
+  "ui_dm_new": "புதிய செய்தி",
+  "ui_dm_starter": "இன்னும் எதுவும் சொல்லப்படவில்லை. கையசைப்பு ஒரு நல்ல தொடக்கம்.",
+  "ui_dm_wave": "👋  கையசை",
+  "ui_dm_new_messages": "புதிய செய்திகள்",
+  "dmTyping": "${name} தட்டச்சு செய்கிறார்",
+  "ui_dm_reaction_remove": "உங்கள் எதிர்வினையை அகற்று",
+  "ui_dm_someone": "யாரோ",
+  "ui_dm_quote_message": "செய்தி",
+  "ui_dm_quote_attachment": "இணைப்பு"
 }

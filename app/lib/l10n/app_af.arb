@@ -595,5 +595,18 @@
   "whatInPicture": "Wat is in hierdie prent?",
   "whatIsItFor": "Waarvoor is dit? (opsioneel)",
   "whatYouDid": "Wat jy gedoen het, wat jy verwag het, wat gebeur het",
-  "whatYouWereDoing": "Wat jy gedoen het toe dit gebeur het."
+  "whatYouWereDoing": "Wat jy gedoen het toe dit gebeur het.",
+  "ui_dm_you_replied": "Jy het geantwoord",
+  "dmReplied": "${name} het geantwoord",
+  "ui_dm_attach": "Voeg by boodskap",
+  "ui_dm_send_heart": "Stuur 'n hartjie",
+  "ui_dm_new": "Nuwe boodskap",
+  "ui_dm_starter": "Nog niks gesê nie. 'n Waai is 'n goeie begin.",
+  "ui_dm_wave": "👋  Waai",
+  "ui_dm_new_messages": "Nuwe boodskappe",
+  "dmTyping": "${name} tik",
+  "ui_dm_reaction_remove": "Verwyder jou reaksie",
+  "ui_dm_someone": "Iemand",
+  "ui_dm_quote_message": "Boodskap",
+  "ui_dm_quote_attachment": "Aanhangsel"
 }

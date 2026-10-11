@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "ನೀವು ಉತ್ತರಿಸಿದ್ದೀರಿ",
+  "dmReplied": "${name} ಉತ್ತರಿಸಿದ್ದಾರೆ",
+  "ui_dm_attach": "ಸಂದೇಶಕ್ಕೆ ಸೇರಿಸಿ",
+  "ui_dm_send_heart": "ಹೃದಯ ಕಳುಹಿಸಿ",
+  "ui_dm_new": "ಹೊಸ ಸಂದೇಶ",
+  "ui_dm_starter": "ಇನ್ನೂ ಏನೂ ಹೇಳಿಲ್ಲ. ಕೈ ಬೀಸುವುದು ಒಳ್ಳೆಯ ಆರಂಭ.",
+  "ui_dm_wave": "👋  ಕೈ ಬೀಸಿ",
+  "ui_dm_new_messages": "ಹೊಸ ಸಂದೇಶಗಳು",
+  "dmTyping": "${name} ಟೈಪ್ ಮಾಡುತ್ತಿದ್ದಾರೆ",
+  "ui_dm_reaction_remove": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತೆಗೆದುಹಾಕಿ",
+  "ui_dm_someone": "ಯಾರೋ",
+  "ui_dm_quote_message": "ಸಂದೇಶ",
+  "ui_dm_quote_attachment": "ಲಗತ್ತು"
 }

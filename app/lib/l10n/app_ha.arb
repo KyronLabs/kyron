@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Kun amsa",
+  "dmReplied": "Amsa daga ${name}",
+  "ui_dm_attach": "Ƙara cikin saƙo",
+  "ui_dm_send_heart": "Aika zuciya",
+  "ui_dm_new": "Sabon saƙo",
+  "ui_dm_starter": "Ba a faɗi komai ba tukuna. Gaisuwa farawa ce mai kyau.",
+  "ui_dm_wave": "👋  Gaisuwa",
+  "ui_dm_new_messages": "Sababbin saƙonni",
+  "dmTyping": "${name} na rubutu",
+  "ui_dm_reaction_remove": "Cire martaninku",
+  "ui_dm_someone": "Wani",
+  "ui_dm_quote_message": "Saƙo",
+  "ui_dm_quote_attachment": "Abin haɗe"
 }

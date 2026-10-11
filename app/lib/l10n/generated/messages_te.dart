@@ -1248,6 +1248,25 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("మీరు ప్రత్యుత్తరం ఇచ్చారు"),
+      "dmReplied": (Object a0) => "$a0 ప్రత్యుత్తరం ఇచ్చారు",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("సందేశానికి జోడించండి"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("హృదయం పంపండి"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("కొత్త సందేశం"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "ఇంకా ఏమీ చెప్పలేదు. చేయి ఊపడం మంచి ప్రారంభం."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  చేయి ఊపండి"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("కొత్త సందేశాలు"),
+      "dmTyping": (Object a0) => "$a0 టైప్ చేస్తున్నారు",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("మీ ప్రతిస్పందనను తీసివేయండి"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("ఎవరో"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("సందేశం"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("అటాచ్‌మెంట్"),
     };
 
 final messageLookup = MessageLookup();

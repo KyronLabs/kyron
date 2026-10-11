@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Vastasit",
+  "dmReplied": "${name} vastasi",
+  "ui_dm_attach": "Lisää viestiin",
+  "ui_dm_send_heart": "Lähetä sydän",
+  "ui_dm_new": "Uusi viesti",
+  "ui_dm_starter": "Mitään ei ole vielä sanottu. Vilkutus on hyvä alku.",
+  "ui_dm_wave": "👋  Vilkuta",
+  "ui_dm_new_messages": "Uudet viestit",
+  "dmTyping": "${name} kirjoittaa",
+  "ui_dm_reaction_remove": "Poista reaktiosi",
+  "ui_dm_someone": "Joku",
+  "ui_dm_quote_message": "Viesti",
+  "ui_dm_quote_attachment": "Liite"
 }

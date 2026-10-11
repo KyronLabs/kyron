@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Du svarte",
+  "dmReplied": "${name} svarte",
+  "ui_dm_attach": "Legg til i melding",
+  "ui_dm_send_heart": "Send et hjerte",
+  "ui_dm_new": "Ny melding",
+  "ui_dm_starter": "Ingenting er sagt ennå. Et vink er en god start.",
+  "ui_dm_wave": "👋  Vink",
+  "ui_dm_new_messages": "Nye meldinger",
+  "dmTyping": "${name} skriver",
+  "ui_dm_reaction_remove": "Fjern reaksjonen din",
+  "ui_dm_someone": "Noen",
+  "ui_dm_quote_message": "Melding",
+  "ui_dm_quote_attachment": "Vedlegg"
 }

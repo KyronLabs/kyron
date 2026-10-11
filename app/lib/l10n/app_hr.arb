@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Vaš odgovor",
+  "dmReplied": "Odgovor od ${name}",
+  "ui_dm_attach": "Dodaj u poruku",
+  "ui_dm_send_heart": "Pošalji srce",
+  "ui_dm_new": "Nova poruka",
+  "ui_dm_starter": "Još ništa nije rečeno. Mahanje je dobar početak.",
+  "ui_dm_wave": "👋  Mahni",
+  "ui_dm_new_messages": "Nove poruke",
+  "dmTyping": "${name} piše",
+  "ui_dm_reaction_remove": "Ukloni svoju reakciju",
+  "ui_dm_someone": "Netko",
+  "ui_dm_quote_message": "Poruka",
+  "ui_dm_quote_attachment": "Privitak"
 }

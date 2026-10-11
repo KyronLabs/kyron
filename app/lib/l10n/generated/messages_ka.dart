@@ -1248,6 +1248,26 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("თქვენ უპასუხეთ"),
+      "dmReplied": (Object a0) => "$a0 უპასუხა",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("შეტყობინებაში დამატება"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("გულის გაგზავნა"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("ახალი შეტყობინება"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "ჯერ არაფერი თქმულა. ხელის დაქნევა კარგი დასაწყისია."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  ხელის დაქნევა"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("ახალი შეტყობინებები"),
+      "dmTyping": (Object a0) => "$a0 წერს",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("თქვენი რეაქციის წაშლა"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("ვიღაც"),
+      "ui_dm_quote_message":
+          MessageLookupByLibrary.simpleMessage("შეტყობინება"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("დანართი"),
     };
 
 final messageLookup = MessageLookup();

@@ -1410,6 +1410,25 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "Τι κάνατε όταν συνέβη.",
       ),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Απαντήσατε"),
+      "dmReplied": (Object a0) => "$a0 απάντησε",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("Προσθήκη στο μήνυμα"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("Στείλτε μια καρδιά"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Νέο μήνυμα"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Τίποτα ακόμη. Ένας χαιρετισμός είναι καλή αρχή."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Χαιρετισμός"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Νέα μηνύματα"),
+      "dmTyping": (Object a0) => "$a0 πληκτρολογεί",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Αφαίρεση της αντίδρασής σας"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Κάποιος"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Μήνυμα"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Συνημμένο"),
     };
 
 final messageLookup = MessageLookup();

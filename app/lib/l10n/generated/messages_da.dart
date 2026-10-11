@@ -1286,6 +1286,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "Hvad du lavede, da det skete.",
       ),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Du svarede"),
+      "dmReplied": (Object a0) => "$a0 svarede",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Føj til besked"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("Send et hjerte"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Ny besked"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Intet sagt endnu. Et vink er en god start."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Vink"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Nye beskeder"),
+      "dmTyping": (Object a0) => "$a0 skriver",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Fjern din reaktion"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Nogen"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Besked"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Vedhæftet fil"),
     };
 
 final messageLookup = MessageLookup();

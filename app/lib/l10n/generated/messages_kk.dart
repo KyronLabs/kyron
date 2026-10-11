@@ -1248,6 +1248,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("Сіз жауап бердіңіз"),
+      "dmReplied": (Object a0) => "$a0 жауап берді",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Хабарламаға қосу"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Жүрек жіберу"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Жаңа хабарлама"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Әлі ештеңе айтылмады. Қол бұлғау — жақсы бастама."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Қол бұлғау"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Жаңа хабарламалар"),
+      "dmTyping": (Object a0) => "$a0 жазып жатыр",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Реакцияңызды алып тастау"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Біреу"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Хабарлама"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Тіркеме"),
     };
 
 final messageLookup = MessageLookup();

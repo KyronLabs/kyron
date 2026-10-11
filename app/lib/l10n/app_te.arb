@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "మీరు ప్రత్యుత్తరం ఇచ్చారు",
+  "dmReplied": "${name} ప్రత్యుత్తరం ఇచ్చారు",
+  "ui_dm_attach": "సందేశానికి జోడించండి",
+  "ui_dm_send_heart": "హృదయం పంపండి",
+  "ui_dm_new": "కొత్త సందేశం",
+  "ui_dm_starter": "ఇంకా ఏమీ చెప్పలేదు. చేయి ఊపడం మంచి ప్రారంభం.",
+  "ui_dm_wave": "👋  చేయి ఊపండి",
+  "ui_dm_new_messages": "కొత్త సందేశాలు",
+  "dmTyping": "${name} టైప్ చేస్తున్నారు",
+  "ui_dm_reaction_remove": "మీ ప్రతిస్పందనను తీసివేయండి",
+  "ui_dm_someone": "ఎవరో",
+  "ui_dm_quote_message": "సందేశం",
+  "ui_dm_quote_attachment": "అటాచ్‌మెంట్"
 }

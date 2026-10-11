@@ -1540,6 +1540,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       'ui_after': MessageLookupByLibrary.simpleMessage("After"),
       'ui_before': MessageLookupByLibrary.simpleMessage("Before"),
       'ui_carrying': MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("You replied"),
+      "dmReplied": (Object a0) => "$a0 replied",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Add to message"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Send a heart"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("New message"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Nothing said yet. A wave is a good start."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Wave"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("New messages"),
+      "dmTyping": (Object a0) => "$a0 is typing",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Remove your reaction"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Someone"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Message"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Attachment"),
     };
 
 final messageLookup = MessageLookup();

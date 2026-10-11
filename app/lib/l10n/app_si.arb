@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "ඔබ පිළිතුරු දුන්නා",
+  "dmReplied": "${name} පිළිතුරු දුන්නා",
+  "ui_dm_attach": "පණිවිඩයට එක් කරන්න",
+  "ui_dm_send_heart": "හදවතක් යවන්න",
+  "ui_dm_new": "නව පණිවිඩය",
+  "ui_dm_starter": "තවම කිසිවක් කියා නැත. අත වැනීම හොඳ ආරම්භයකි.",
+  "ui_dm_wave": "👋  අත වනන්න",
+  "ui_dm_new_messages": "නව පණිවිඩ",
+  "dmTyping": "${name} ටයිප් කරමින්",
+  "ui_dm_reaction_remove": "ඔබගේ ප්‍රතික්‍රියාව ඉවත් කරන්න",
+  "ui_dm_someone": "කවුරුහරි",
+  "ui_dm_quote_message": "පණිවිඩය",
+  "ui_dm_quote_attachment": "ඇමුණුම"
 }

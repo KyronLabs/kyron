@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Uphendulile",
+  "dmReplied": "U-${name} uphendulile",
+  "ui_dm_attach": "Yongeza kumyalezo",
+  "ui_dm_send_heart": "Thumela intliziyo",
+  "ui_dm_new": "Umyalezo omtsha",
+  "ui_dm_starter": "Akukho nto ithethiweyo okwangoku. Ukuwangawangisa isandla kusisiqalo esihle.",
+  "ui_dm_wave": "👋  Wangawangisa",
+  "ui_dm_new_messages": "Imiyalezo emitsha",
+  "dmTyping": "U-${name} uyabhala",
+  "ui_dm_reaction_remove": "Susa impendulo yakho",
+  "ui_dm_someone": "Umntu",
+  "ui_dm_quote_message": "Umyalezo",
+  "ui_dm_quote_attachment": "Isincamathelisi"
 }

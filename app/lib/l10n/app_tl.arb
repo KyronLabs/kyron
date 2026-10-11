@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Sumagot ka",
+  "dmReplied": "Sumagot si ${name}",
+  "ui_dm_attach": "Idagdag sa mensahe",
+  "ui_dm_send_heart": "Magpadala ng puso",
+  "ui_dm_new": "Bagong mensahe",
+  "ui_dm_starter": "Wala pang nasasabi. Magandang simula ang pagkaway.",
+  "ui_dm_wave": "👋  Kumaway",
+  "ui_dm_new_messages": "Mga bagong mensahe",
+  "dmTyping": "Nagta-type si ${name}",
+  "ui_dm_reaction_remove": "Alisin ang iyong reaksyon",
+  "ui_dm_someone": "Isang tao",
+  "ui_dm_quote_message": "Mensahe",
+  "ui_dm_quote_attachment": "Kalakip"
 }

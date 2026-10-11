@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Вы ответили",
+  "dmReplied": "Ответ от ${name}",
+  "ui_dm_attach": "Добавить в сообщение",
+  "ui_dm_send_heart": "Отправить сердечко",
+  "ui_dm_new": "Новое сообщение",
+  "ui_dm_starter": "Пока ничего не сказано. Помахать рукой — хорошее начало.",
+  "ui_dm_wave": "👋  Помахать",
+  "ui_dm_new_messages": "Новые сообщения",
+  "dmTyping": "${name} печатает",
+  "ui_dm_reaction_remove": "Убрать вашу реакцию",
+  "ui_dm_someone": "Кто-то",
+  "ui_dm_quote_message": "Сообщение",
+  "ui_dm_quote_attachment": "Вложение"
 }
