@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./docs/kyron-readme-banner.png" alt="Kyron — Social × AT Protocol" width="100%" />
+<img src="./docs/kyron-readme-banner.png" alt="Kyron" width="100%" />
 
 ### An open social app you can run yourself
 
@@ -62,7 +62,7 @@ Listed because they have been described as finished elsewhere and are not.
 | Planned | State today |
 |:--|:--|
 | Live video | Not started — the decision, costed, is in [kyron-live](https://github.com/KyronLabs/kyron-live) |
-| Portable identity (DID / AT Protocol) | Half built. Every account gets a real `did:key` it proves it controls — but nothing consumes it, so nothing is portable yet. [What it does and does not do](docs/IDENTITY.md) |
+| Portable identity (DID / AT Protocol) | **Not being built — decided, not deferred.** Every account gets a real `did:key` it proves it controls, kept as a fingerprint anybody can verify. Nothing carries an account to another server, and nothing is planned to — [why, and what would change that](docs/IDENTITY.md) |
 | End-to-end encrypted *posts* | Not started. Direct messages are encrypted; posts are public by nature |
 | Creator equity pool | Not started |
 
@@ -92,12 +92,18 @@ The API needs `DATABASE_URL` and `SUPABASE_URL` set; it refuses to boot without
 them rather than starting in a state that fails later. See
 [`api/.env.example`](api/.env.example).
 
+The migrations revoke table access from two roles that only Supabase's Postgres
+has. The Docker database creates them on first start; on any other plain
+Postgres, run [`infra/postgres/init/01-supabase-roles.sql`](infra/postgres/init/01-supabase-roles.sql)
+once before migrating. A Docker volume from an attempt that stopped at
+`role "anon" does not exist` needs `docker compose down -v` to start clean.
+
 ---
 
 ## ◈ Architecture
 
-One API, one database. Not microservices — the `identity/` and `media/`
-directories are placeholders for services that have not been written.
+One API, one database. Not microservices — the `media/` directory is a
+placeholder for a service that has not been written.
 
 ```
 ┌─────────────────────────────────────────────┐

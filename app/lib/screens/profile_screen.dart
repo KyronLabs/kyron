@@ -742,7 +742,6 @@ class _Counts extends StatelessWidget {
             ),
           ),
         ),
-        _Count(value: profile.kyronPoints, label: 'KP'),
       ],
     );
   }

@@ -1,11 +1,47 @@
-# Portable identity
+# The account identifier
 
 Every account can hold a `did:key` — a decentralised identifier that it has
 proved, cryptographically, that it controls.
 
-This document is mostly about what that does **not** yet give you, because the
-README has sold portable identity as the reason Kyron exists and the honest
-position is narrower than that.
+This file used to be called *Portable identity*, and was mostly about what the
+identifier did **not** yet give you, because the README had sold portable
+identity as the reason Kyron exists. That question is now settled.
+
+## The decision: stop here
+
+**Decided on 11 October 2026. Kyron keeps the identifier as a verifiable
+account fingerprint and is not building portable identity.** No recovery
+phrase, no signed posts, no export, no federation. What is described under
+*What is built* stays, works, and is all there is.
+
+The roadmap had laid out two paths — carry on, or stop — and this is why it
+is the second:
+
+- **Portability needs somebody on the other end.** An export is only
+  portable if another server reads it. No such server exists, and building one
+  is designing a federation protocol. The protocol people mean when they say
+  this, AT Protocol, has its own identity method (`did:plc`), so a Kyron
+  `did:key` would not have been recognised there either without adopting its
+  whole stack.
+- **Every step towards it is a cost now and a benefit later.** A recovery
+  phrase is real work and a real support burden — a phrase somebody loses is
+  an account nobody can prove they own. Signed posts mean a key on every
+  device that composes. None of it is visible to a person using the app today.
+- **The app has not shipped.** Every week spent on the identity layer is a
+  week the thing people would actually use stays in debug builds.
+
+What Kyron *is* is true today without any of it: an open-source social app you
+can run yourself, with a ranking engine anybody can read. That is the
+positioning, in the README and everywhere else.
+
+### What would reopen it
+
+A concrete consumer, not an aspiration. The most likely one is the
+positioning itself: somebody running their own Kyron who needs to move an
+account between two instances. That is a real reason to build a signed export
+and the recovery that has to come before it — and it would come with a reader
+on the other end, which is exactly what is missing now. Anything that would
+only make portability possible *in principle* is not a reason.
 
 ## What is built
 
@@ -49,13 +85,13 @@ in Dart was verified by the TypeScript verifier before this shipped.
 
 ## What it does not do
 
-### It is not portable yet
+### It is not portable, and is not going to be
 
-This is the honest headline. The identifier is yours and provable, and that is
-the foundation — but nothing consumes it. There is no export, no federation, no
-second server that would recognise it, and no protocol that would carry your
-posts to one. **Today it identifies you to Kyron and to anybody you show it
-to, and that is all.**
+The identifier is yours and provable — but nothing consumes it. There is no
+export, no federation, no second server that would recognise it, and no
+protocol that would carry your posts to one. **It identifies you to Kyron and
+to anybody you show it to, and that is all** — which, after the decision
+above, is what it is for.
 
 ### It is per install, and there is no recovery
 
@@ -69,17 +105,19 @@ the device and never leaves it. Consequences:
 - **Losing the device loses the identifier.** There is no backup and no way to
   prove you were the person who held it.
 
-That last one is the gap that matters most for anything calling itself
+That last one is the gap that would matter most for anything calling itself
 portable: an identity you cannot carry to a new device is not one you can carry
 to a new server either. The fix is a recovery phrase the holder writes down,
-which is the same fix the encryption chapter needs and is not built in either.
+which is the same fix the encryption chapter needs. It is not built, and with
+portability off the table it is the encryption chapter's to justify, not this
+one's.
 
 ### Nothing signs anything else
 
 The key proves the identifier and then goes back in the drawer. Posts are not
 signed, so nothing about your content is verifiable away from Kyron's database.
-A signed export is the obvious next step and would be the first thing that made
-"portable" literally true.
+A signed export would be the first thing that made "portable" literally true,
+and is the first thing to build if this is ever reopened.
 
 ### No key rotation
 
@@ -88,7 +126,10 @@ records that the two were ever the same person. A real method handles this —
 `did:plc` keeps a signed history of key changes precisely so an identity can
 survive one.
 
-## What would close each gap
+## If it is ever reopened
+
+Kept because the analysis is right even though the work is not planned. Each
+gap, and what closing it would take:
 
 | Gap | What it needs |
 |:--|:--|
@@ -115,9 +156,10 @@ What exists is a genuine decentralised identifier with a genuine proof of
 control, replacing a nullable column and a hardcoded `did:plc:abc…` that Settings
 copied to the clipboard — the same invented string for every account.
 
-It is **not** portable identity, and the README should not say it is until
-something can actually carry an account somewhere else. It is the first piece
-of that, and the smallest piece that is honestly true.
+It is **not** portable identity, and nothing should say it is. It was built
+as the first piece of that; it is kept as what it turned out to be — a
+fingerprint anybody can verify without asking Kyron, which is useful in its own
+right and makes no promise it cannot keep.
 
 ## Also fixed here
 

@@ -36,7 +36,6 @@ class _OnePerson implements HttpClientAdapter {
                     'name': 'Ada Lovelace',
                     'username': 'ada',
                     'followers': 3,
-                    'kyronPoints': 0,
                   },
                 ]
               : const <Object>[],

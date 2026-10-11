@@ -9,7 +9,7 @@ final identityRepositoryProvider = Provider<IdentityRepository>(
   (ref) => IdentityRepository(ref.read(apiClientProvider)),
 );
 
-/// This account's portable identifier, for the life of the app.
+/// This account's verifiable identifier, for the life of the app.
 final identityVaultProvider = Provider<IdentityVault>(
   (ref) => IdentityVault(ref.read(identityRepositoryProvider)),
 );

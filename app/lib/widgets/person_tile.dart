@@ -115,11 +115,6 @@ class _PersonTileState extends ConsumerState<PersonTile> {
                         icon: Iconsax.profile_2user_copy,
                         text: '${formatCount(_person.followers)} followers',
                       ),
-                      if (_person.kyronPoints > 0)
-                        _Stat(
-                          icon: Iconsax.flash_1_copy,
-                          text: '${formatCount(_person.kyronPoints)} KP',
-                        ),
                     ],
                   ),
                 ],

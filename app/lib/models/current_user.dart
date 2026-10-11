@@ -11,7 +11,6 @@ class CurrentUser {
   final String? name;
   final String? username;
   final String? did;
-  final int kyronPoints;
   final String? avatarUrl;
   final String? coverUrl;
   final String? bio;
@@ -26,7 +25,6 @@ class CurrentUser {
     this.name,
     this.username,
     this.did,
-    required this.kyronPoints,
     this.avatarUrl,
     this.coverUrl,
     this.bio,
@@ -47,7 +45,6 @@ class CurrentUser {
       name: user['name'] as String?,
       username: user['username'] as String?,
       did: user['did'] as String?,
-      kyronPoints: _int(user['kyronPoints']),
       avatarUrl: profile['avatarUrl'] as String?,
       coverUrl: profile['coverUrl'] as String?,
       bio: profile['bio'] as String?,
@@ -87,7 +84,6 @@ class CurrentUser {
         'name': name,
         'username': username,
         'did': did,
-        'kyronPoints': kyronPoints,
       },
       'profile': {
         'avatarUrl': avatarUrl,

@@ -22,5 +22,11 @@ See root [README.md](README.md#quickstart).
 - TypeScript: ESLint + Prettier (auto-run on commit via husky)
 - Dart: `dart format .` + `flutter analyze`
 
-## Contributor Equity
-Merged PRs earn Kyron Points tracked in `CONTRIBUTORS.md`. Points convert to token warrants at v1.0 DAO snapshot.
+## Rewards
+There are none. This section used to say that merged PRs earn Kyron Points,
+tracked in a `CONTRIBUTORS.md`, which would convert to token warrants at a v1.0
+DAO snapshot. No such points, file, token, warrants or DAO exist. The points
+that were in the API could be awarded by any signed-in account to any account,
+and were removed on 11 October 2026.
+
+Contribute because the project is useful to you.

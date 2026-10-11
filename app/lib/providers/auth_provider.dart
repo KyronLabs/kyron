@@ -58,7 +58,7 @@ class AuthNotifier extends Notifier<AuthState> {
         // Awaited nowhere: a chat opened before it finishes sends in the
         // clear, which is what happened before this existed.
         unawaited(ref.read(messageVaultProvider).unlock());
-        // And this account's portable identifier, on the same terms: made on
+        // And this account's verifiable identifier, on the same terms: made on
         // the device if it has none, and claimed by proving it holds the key.
         // Nothing waits on it -- an account without one works exactly as it
         // did before identifiers existed.

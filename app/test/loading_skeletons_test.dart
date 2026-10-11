@@ -71,7 +71,6 @@ const _me = CurrentUser(
   id: 'u1',
   name: 'Ada Lovelace',
   username: 'ada',
-  kyronPoints: 40,
   followers: 12,
   following: 3,
   posts: 7,

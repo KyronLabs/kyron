@@ -34,6 +34,19 @@ section for that version, so what is written here is what people read.
 
 ### Removed
 
+- **Kyron Points.** `POST /profile/kp/award` took an account id and an amount
+  from the request body and checked only that the caller was signed in, so
+  any account could give any account — itself included — any number of
+  points. That would have been a curiosity if the number did nothing, but
+  people search ranked by it, so the top of every search was for sale at no
+  price. The programme behind it had already been withdrawn in public. The
+  award route, the history and the unauthenticated leaderboard are gone; no
+  profile, list or search response carries a count any more; and the app no
+  longer shows one on profiles, in the drawer or beside people in lists.
+  The `kyronPoints` column and the `KyronPointEvent` table are still in the
+  schema, unread and unwritten: dropping them is a migration, and migrations
+  run against production on boot.
+
 - **`bullmq`, which nothing imported.** It appeared once in `package.json`
   and nowhere else in the repository. The media queue is a Postgres table
   claimed with `FOR UPDATE SKIP LOCKED`, deliberately: an encode runs for
@@ -44,6 +57,31 @@ section for that version, so what is written here is what people read.
 
 
 ### Fixed
+
+- **A fresh install could not get through its own quickstart.** Two
+  separate faults, the second hidden behind the first, and neither visible
+  on the deployed database because that one is Supabase's and was created
+  from the schema rather than from the migrations. First, two migrations
+  revoke access from Supabase's `anon` and `authenticated` roles, which a
+  plain Postgres does not have, so `prisma migrate deploy` stopped at
+  `20260907200000_device_tokens`; the quickstart's Docker database now
+  creates both, empty and unable to log in, from
+  `infra/postgres/init/01-supabase-roles.sql`. Second, the migrations had
+  only ever created `User.password` as NOT NULL while the schema and the
+  auth guard both treat it as optional, so on such a database every sign-up
+  failed with "Your sign-in is valid, but Kyron could not set up your
+  account on this server." A migration relaxes it — a no-op on the deployed
+  database. Both reproduced on a Postgres with no Supabase roles, and both
+  checked fixed there by provisioning an account through the guard's own
+  code.
+
+- **People search did not do what it said.** The comment above the query
+  promised an exact handle first and then the most-followed matches; the
+  query sorted by Kyron Points and nothing else. Type a whole handle now and
+  that account comes first, even when better-followed near-misses would have
+  filled the page without it; everyone after it is in order of followers.
+  Checked against a real Postgres, where an account with no followers and a
+  million self-awarded points had been coming first.
 
 - **The interest chips, the other person's chat bubbles and the post
   analytics tiles were too loud.** The fix that made them visible at all

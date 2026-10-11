@@ -17,7 +17,6 @@ void main() {
           'name': 'Ada',
           'username': 'ada',
           'did': 'did:kyron:1',
-          'kyronPoints': 42,
         },
         'profile': {
           'avatarUrl': 'https://example.test/a.png',
@@ -76,7 +75,7 @@ void main() {
   group('ProfileModel', () {
     test('reads a public profile, follow state included', () {
       final profile = ProfileModel.fromJson(const {
-        'user': {'id': 'u2', 'username': 'grace', 'kyronPoints': 7},
+        'user': {'id': 'u2', 'username': 'grace'},
         'profile': {'bio': 'Compilers'},
         'stats': {
           'followers': 900,
@@ -109,7 +108,6 @@ void main() {
     test('copyWith moves the follow state and count together', () {
       const before = ProfileModel(
         id: 'u3',
-        kyronPoints: 0,
         followers: 10,
         following: 0,
         posts: 0,
@@ -165,7 +163,6 @@ void main() {
       const profile = ProfileModel(
         id: 'u6',
         username: 'ada',
-        kyronPoints: 0,
         followers: 0,
         following: 0,
         posts: 0,

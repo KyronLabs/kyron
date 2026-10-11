@@ -41,9 +41,8 @@ kyron/                          # repository root
 │
 ├── docs/                       # images and assets used by the docs
 │
-├── identity/                   # a Dockerfile. Not a service yet
-├── media/                      # a Dockerfile. Not a service yet
-├── infra/                      # a placeholder
+├── media/                      # an empty Dockerfile. Not a service yet
+├── infra/postgres/init/        # the roles the quickstart database needs
 │
 ├── ROADMAP.md                  # what is built, what is not, what is next
 ├── ARCHITECTURE.md             # how the running system fits together

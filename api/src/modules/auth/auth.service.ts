@@ -154,7 +154,6 @@ export class AuthService {
           role: UserRole.USER,
           status: AccountStatus.ACTIVE,
           emailStatus: EmailStatus.PENDING,
-          kyronPoints: 0,
           // did: await this.generateDID(), // TODO: Implement DID generation
         },
       });

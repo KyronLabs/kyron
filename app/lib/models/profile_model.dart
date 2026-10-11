@@ -14,7 +14,6 @@ class ProfileModel {
   final String? name;
   final String? username;
   final String? did;
-  final int kyronPoints;
   final String? avatarUrl;
   final String? coverUrl;
   final String? bio;
@@ -34,7 +33,6 @@ class ProfileModel {
     this.name,
     this.username,
     this.did,
-    required this.kyronPoints,
     this.avatarUrl,
     this.coverUrl,
     this.bio,
@@ -60,7 +58,6 @@ class ProfileModel {
       name: user['name'] as String?,
       username: user['username'] as String?,
       did: user['did'] as String?,
-      kyronPoints: _int(user['kyronPoints']),
       avatarUrl: profile['avatarUrl'] as String?,
       coverUrl: profile['coverUrl'] as String?,
       bio: profile['bio'] as String?,
@@ -83,7 +80,6 @@ class ProfileModel {
         name: user.name,
         username: user.username,
         did: user.did,
-        kyronPoints: user.kyronPoints,
         avatarUrl: user.avatarUrl,
         coverUrl: user.coverUrl,
         bio: user.bio,
@@ -105,7 +101,6 @@ class ProfileModel {
       name: name,
       username: username,
       did: did,
-      kyronPoints: kyronPoints,
       avatarUrl: avatarUrl,
       coverUrl: coverUrl,
       bio: bio,

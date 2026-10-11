@@ -84,32 +84,6 @@ export class ProfileController {
   }
 
   // ==========================================
-  // PHASE 3: KYRON POINTS
-  // ==========================================
-  @UseGuards(AuthGuard)
-  @Post('kp/award')
-  async awardKP(
-    @Req() req: AuthRequest,
-    @Body() body: { userId: string; amount: number; reason: string },
-  ) {
-    // TODO: Add admin guard or internal-only guard
-    return this.svc.awardKP(body.userId, body.amount, body.reason);
-  }
-
-  @UseGuards(AuthGuard)
-  @Get('kp/history')
-  async getKPHistory(@Req() req: AuthRequest, @Query('limit') limit?: string) {
-    const limitNum = limit ? parseInt(limit, 10) : 50;
-    return this.svc.getKPHistory(req.user.id, limitNum);
-  }
-
-  @Get('kp/leaderboard')
-  async getKPLeaderboard(@Query('limit') limit?: string) {
-    const limitNum = limit ? parseInt(limit, 10) : 100;
-    return this.svc.getKPLeaderboard(limitNum);
-  }
-
-  // ==========================================
   // PHASE 4: FINDING PEOPLE
   // ==========================================
   @UseGuards(AuthGuard)
