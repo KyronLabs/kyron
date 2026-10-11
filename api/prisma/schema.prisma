@@ -107,6 +107,7 @@ model User {
   kyronPointEvents  KyronPointEvent[] // 🔥 NEW
   devices           DeviceToken[]
   messageKeys       MessageKey[]
+  messageReactions  MessageReaction[]
 
   @@index([email])
   @@index([status])
@@ -938,6 +939,8 @@ model Message {
   replyTo Message?  @relation("MessageReplies", fields: [replyToId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   replies Message[] @relation("MessageReplies")
 
+  reactions MessageReaction[]
+
   @@index([conversationId, createdAt(sort: Desc), id(sort: Desc)])
   @@index([replyToId])
 }
@@ -1127,4 +1130,23 @@ enum MediaJobStatus {
   /// rather than deleted, so "nothing happened" and "nothing was needed" are
   /// different answers.
   SKIPPED
+}
+
+/// One person's reaction to one message: a single emoji.
+///
+/// One per person per message, keyed that way, so reacting again replaces
+/// the reaction rather than stacking a second -- the way every messaging app
+/// people know behaves. Stored readable, unlike the message it is attached
+/// to: a deliberate trade, written down in docs/E2EE.md.
+model MessageReaction {
+  messageId String   @db.Uuid
+  userId    String   @db.Uuid
+  emoji     String
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  message Message @relation(fields: [messageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([messageId, userId])
+  @@index([userId])
 }

@@ -14,6 +14,7 @@ import {
 import { MessagesService } from './messages.service';
 import { ListConversationsDto, ListMessagesDto } from './dto/list-messages.dto';
 import { SendMessageDto } from './dto/send-message.dto';
+import { ReactDto } from './dto/react.dto';
 import { OpenConversationDto } from './dto/open-conversation.dto';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
@@ -104,6 +105,42 @@ export class MessagesController {
   @Put(':id/read')
   markRead(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
     return this.svc.markRead(req.user.id, id);
+  }
+
+  /** "I'm writing" -- told to the other side over the socket, never pushed. */
+  @Post(':id/typing')
+  typing(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.typing(req.user.id, id);
+  }
+
+  /** Reacts to a message, replacing the reader's previous reaction to it. */
+  @Put(':id/items/:messageId/reaction')
+  react(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Param('messageId', ParseUUIDPipe) messageId: string,
+    @Body() dto: ReactDto,
+  ) {
+    return this.svc.react(req.user.id, id, messageId, dto.emoji);
+  }
+
+  @Delete(':id/items/:messageId/reaction')
+  unreact(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Param('messageId', ParseUUIDPipe) messageId: string,
+  ) {
+    return this.svc.unreact(req.user.id, id, messageId);
+  }
+
+  /** One message's reactions, for a client told they changed. */
+  @Get(':id/items/:messageId/reactions')
+  reactions(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Param('messageId', ParseUUIDPipe) messageId: string,
+  ) {
+    return this.svc.reactionsFor(req.user.id, id, messageId);
   }
 
   /** Takes the conversation out of the reader's list, not out of existence. */

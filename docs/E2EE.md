@@ -68,6 +68,12 @@ database leak, not against an actively malicious server.**
 
 - **Attachments are not.** Photos, video and voice go to storage in the clear.
   Only the text of a message is encrypted.
+- **Reactions are not, by decision.** The emoji somebody reacts with is stored
+  readable beside the sealed message it reacts to, so the server knows that
+  Ada answered a message with 😂 without knowing what the message said. That
+  was chosen over sealing them, for now, as the same trade attachments make;
+  the two should be sealed together. The realtime event for a reaction still
+  carries only ids, and the emoji is fetched over an authenticated request.
 - **Metadata is not, and cannot be.** The server knows who is talking to whom,
   how often, at what times, and how long each message is. That is what it needs
   to route and page conversations at all.
@@ -94,6 +100,7 @@ database leak, not against an actively malicious server.**
 | No forward secrecy | A double ratchet. Large, and the right eventual answer |
 | No verification | Fingerprint comparison in the UI, and a warning when a key changes |
 | Attachments in the clear | Encrypt the file before upload; the key travels in the sealed message |
+| Reactions readable | Send a reaction as a small sealed message that names the one it reacts to |
 | Push shows no preview | A data-only push the app opens on the device and draws itself |
 | No backup | A recovery phrase the user writes down, encrypting the secret half |
 

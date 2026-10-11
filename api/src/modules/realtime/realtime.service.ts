@@ -8,6 +8,14 @@ export type RealtimeEvent =
   | { type: 'message.read'; conversationId: string; readerId: string }
   /** A message was withdrawn. */
   | { type: 'message.deleted'; conversationId: string; messageId: string }
+  /**
+   * Somebody reacted to a message, or took a reaction back. Ids only, like
+   * every event here: the client asks for the reactions over HTTP, so nothing
+   * readable reaches a socket whose token has since been revoked.
+   */
+  | { type: 'message.reaction'; conversationId: string; messageId: string }
+  /** Somebody is writing in a conversation the reader is in. */
+  | { type: 'message.typing'; conversationId: string; userId: string }
   /** Something happened that the notifications screen would show. */
   | { type: 'notification.new'; kind: string; actorId: string };
 
