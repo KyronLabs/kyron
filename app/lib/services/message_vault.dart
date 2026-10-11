@@ -88,13 +88,10 @@ class MessageVault {
   /// awaited by sign-in, so the conversation list can ask to open a message
   /// before the key is in memory; it waits for this rather than answering
   /// that nothing can be opened.
-  Future<SimpleKeyPair>? _loading;
+  Future<SimpleKeyPair?>? _loading;
 
   Future<SimpleKeyPair> _load() async {
-    final stored = await _storage.read(key: _secretKeyName);
-    var pair =
-        stored == null ? null : await MessageCrypto.tryDecodeSecret(stored);
-
+    var pair = await _readStored();
     if (pair == null) {
       pair = await _crypto.newKeyPair();
       await _storage.write(
@@ -105,13 +102,28 @@ class MessageVault {
     return _mine = pair;
   }
 
+  /// The key this install already has, or null -- never a new one.
+  Future<SimpleKeyPair?> _readStored() async {
+    final stored = await _storage.read(key: _secretKeyName);
+    final pair =
+        stored == null ? null : await MessageCrypto.tryDecodeSecret(stored);
+    if (pair != null) _mine = pair;
+    return pair;
+  }
+
   /// This install's key, waiting for [unlock] if it is still reading it.
   /// Null when there is none: signed out, or the keychain failed.
+  ///
+  /// When nothing has unlocked the vault at all, the key on the device is
+  /// read rather than taken to be absent. A sign-in path that forgot to
+  /// unlock used to leave every sealed message unreadable and every new one
+  /// sent in the clear, with the key sitting in storage the whole time. Only
+  /// read: making and publishing a key stays [unlock]'s job, so a vault
+  /// that was locked on sign-out does not mint one behind anybody's back.
   Future<SimpleKeyPair?> _key() async {
     final mine = _mine;
     if (mine != null) return mine;
-    final loading = _loading;
-    if (loading == null) return null;
+    final loading = _loading ??= _readStored();
     try {
       return await loading;
     } catch (_) {

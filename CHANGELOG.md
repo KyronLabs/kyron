@@ -14,6 +14,17 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **After an update every message read "This message cannot be read on this
+  device", and new ones went out unencrypted.** Opening the app more than an
+  hour after last using it -- which an update does -- finds the access token
+  expired; the launch refreshes the session and was marked signed in without
+  reading the message key, so nothing could be opened and nothing sealed.
+  The key had been in storage the whole time. Every way into a signed-in app
+  now starts the same things (the message key, the identifier, the push
+  token, which that path also skipped), and the vault reads the stored key
+  itself if nothing has unlocked it -- reading only, never making one.
+  Messages already sent in the clear on that path stay as they were.
+
 - **Photos in a chat came framed in the bubble's colour, four to a square.**
   A message's pictures are now their own rounded block, above any words, with
   at most three tiles; past three, the third is darkened with "+n" for how

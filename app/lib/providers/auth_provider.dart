@@ -53,19 +53,7 @@ class AuthNotifier extends Notifier<AuthState> {
 
       // If we have a valid token AND user data, we're authenticated
       if (hasValidToken && user != null) {
-        // Makes this install's message keypair if it has none, and publishes
-        // the public half so other people can write to it in private.
-        // Awaited nowhere: a chat opened before it finishes sends in the
-        // clear, which is what happened before this existed.
-        unawaited(ref.read(messageVaultProvider).unlock());
-        // And this account's verifiable identifier, on the same terms: made on
-        // the device if it has none, and claimed by proving it holds the key.
-        // Nothing waits on it -- an account without one works exactly as it
-        // did before identifiers existed.
-        unawaited(ref.read(identityVaultProvider).ensure());
-        // And the push token, which can have rotated while the app was
-        // closed -- a server holding the old one pushes into nothing.
-        unawaited(ref.read(pushRegistrarProvider).start());
+        _startSession();
         state = AuthState.authenticated(user);
 
         // Load full profile data
@@ -83,6 +71,7 @@ class AuthNotifier extends Notifier<AuthState> {
           if (refreshed) {
             final refreshedUser = await _repo.getStoredUserData();
             if (refreshedUser != null) {
+              _startSession();
               state = AuthState.authenticated(refreshedUser);
 
               // Load full profile data
@@ -169,20 +158,39 @@ class AuthNotifier extends Notifier<AuthState> {
   /// the clear.
   Future<void> _settle(User user) async {
     state = AuthState.authenticated(user);
-
-    // Neither is awaited, on the same terms as bootstrap: a chat opened
-    // before the keypair exists sends in the clear, and an account without an
-    // identifier works exactly as it did before identifiers existed -- but
-    // neither is worth holding the app on a spinner for.
-    unawaited(ref.read(messageVaultProvider).unlock());
-    unawaited(ref.read(identityVaultProvider).ensure());
-    // Here rather than at launch: this is the first moment asking about
-    // notifications is a question rather than an ambush, and a "no" from
-    // somebody who has not seen the app yet is permanent.
-    unawaited(ref.read(pushRegistrarProvider).start());
+    _startSession();
 
     // Awaited: the app behind this draws the signed-in person.
     await ref.read(currentUserProvider.notifier).load();
+  }
+
+  /// What every way into a signed-in app has to start: a launch with a live
+  /// token, a launch whose token had expired and was refreshed, and a fresh
+  /// sign-in.
+  ///
+  /// The refreshed launch used to set the state and skip all three. A
+  /// Supabase access token lasts an hour, so opening the app more than an
+  /// hour after last using it -- which is what an update does -- left the
+  /// message key unread: every sealed message showed as "cannot be read",
+  /// and every message sent went out in the clear. The push token was not
+  /// refreshed on that path either.
+  ///
+  /// Nothing here is awaited: a chat opened before the key is read waits
+  /// for it (MessageVault does), an account without an identifier works
+  /// exactly as it did before identifiers existed, and none of it is worth
+  /// holding the app on a spinner for.
+  void _startSession() {
+    // Makes this install's message keypair if it has none, and publishes the
+    // public half so other people can write to it in private.
+    unawaited(ref.read(messageVaultProvider).unlock());
+    // This account's verifiable identifier: made on the device if it has
+    // none, and claimed by proving it holds the key.
+    unawaited(ref.read(identityVaultProvider).ensure());
+    // The push token, which can have rotated while the app was closed -- a
+    // server holding the old one pushes into nothing. Asked for after
+    // sign-in rather than before it: that is when asking about
+    // notifications is a question rather than an ambush.
+    unawaited(ref.read(pushRegistrarProvider).start());
   }
 
   Future<void> logout() async {
