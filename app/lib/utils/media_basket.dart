@@ -70,6 +70,24 @@ class MediaBasket extends ChangeNotifier {
     }
   }
 
+  /// The server's limit, mirrored so an oversized file is refused here rather
+  /// than after uploading it and being told 413.
+  static const maxAttachmentBytes = 25 * 1024 * 1024;
+
+  /// Adds a file that is already on the device -- a GIF the picker has just
+  /// downloaded -- and starts its upload. Returns a message to show the
+  /// reader, or null when it went fine.
+  Future<String?> attachFile(String path, MediaKind kind) async {
+    if (!hasRoom) return 'A post can carry at most $limit attachments.';
+    final bytes = await XFile(path).length();
+    if (bytes > maxAttachmentBytes) {
+      return 'That file is larger than '
+          '${maxAttachmentBytes ~/ (1024 * 1024)} MB.';
+    }
+    await _upload(PendingMedia(path: path, kind: kind));
+    return null;
+  }
+
   Future<void> _upload(PendingMedia pending) async {
     _items.add(pending);
     notifyListeners();

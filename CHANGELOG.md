@@ -14,6 +14,24 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Chats that work the way people already chat.** Pull a message sideways
+  to answer it: it follows the finger, the phone ticks at the point where
+  letting go replies, and short of that nothing happens. A reply is drawn the
+  way the messaging apps people use draw it — "Ada replied" above, the message
+  being answered muted behind, and the answer over its lower edge — through
+  a small render object, because no stock layout can overlap two things and
+  be the height of both. A message of one to three emoji and nothing else is
+  drawn large and without a bubble, counted in grapheme clusters so 👩🏽‍💻 and
+  🇳🇬 are one each and © is not one at all; emoji among words stay the size of
+  the words. A run of messages from one person shares one avatar and one time,
+  instead of a timestamp under every line. An empty conversation shows the two
+  of you and offers a one-tap wave instead of the app's generic empty state.
+  The composer puts every attachment behind one button, keeps a photo and a
+  GIF a tap away inside the box while it is empty, and stands a heart where
+  Send goes until there is something to send. GIFs can be sent in messages
+  for the first time, through the same picker posts use. New labels read in
+  English until the catalogs are regenerated.
+
 - **A language system: App language, Primary language and Content
   languages.** One searchable sheet serves all three and the get-started
   screen, over a catalogue of 69 languages that each carry their own endonym

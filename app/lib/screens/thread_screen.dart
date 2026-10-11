@@ -27,6 +27,12 @@ import '../widgets/media_grid.dart';
 import '../widgets/voice_post_player.dart';
 import '../widgets/skeleton.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../models/current_user.dart';
+import '../models/post_media.dart' show MediaKind;
+import '../utils/emoji_only.dart';
+import '../widgets/gif_picker_sheet.dart';
+import '../widgets/quote_stack.dart';
+import '../widgets/swipe_to_reply.dart';
 
 /// Which conversation, and who is in it.
 ///
@@ -94,6 +100,54 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
   Future<void> _attach({required bool video}) async {
     final message = await _media.attach(video: video);
     if (message != null && mounted) Toast.show(context, message);
+  }
+
+  Future<void> _attachGif() async {
+    final path = await GifPickerSheet.show(context);
+    if (path == null || !mounted) return;
+    final message = await _media.attachFile(path, MediaKind.gif);
+    if (message != null && mounted) Toast.show(context, message);
+  }
+
+  /// Everything that can go in a message besides words, behind one button,
+  /// so the box itself has the room.
+  Future<void> _openAttachments() async {
+    final choice = await ActionSheet.show<String>(
+      context,
+      actions: [
+        SheetAction(
+          value: 'photo',
+          label: AppLocalizations.of(context).literaladdAPhoto,
+          icon: Iconsax.gallery_copy,
+        ),
+        SheetAction(
+          value: 'video',
+          label: AppLocalizations.of(context).literaladdAClip,
+          icon: Iconsax.video_copy,
+        ),
+        SheetAction(
+          value: 'gif',
+          label: AppLocalizations.of(context).literaladdAGif,
+          icon: Iconsax.emoji_happy_copy,
+        ),
+      ],
+    );
+    if (choice == null || !mounted) return;
+    switch (choice) {
+      case 'photo':
+        await _attach(video: false);
+      case 'video':
+        await _attach(video: true);
+      case 'gif':
+        await _attachGif();
+    }
+  }
+
+  /// Starts answering [message], with the keyboard up: whoever pulled a
+  /// message across to answer it is about to type.
+  void _startReply(DirectMessage message) {
+    setState(() => _replyingTo = message);
+    _focus.requestFocus();
   }
 
   /// Mute, block, or leave. What a conversation offers besides reading it.
@@ -269,26 +323,34 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
   /// reply does not silently attach itself to the message after it.
   DirectMessage? _replyingTo;
 
-  Future<void> _send() async {
+  /// Sends what is in the box -- or, given [quick], just that: the heart
+  /// beside an empty box, the wave that opens a new conversation. A quick one
+  /// leaves whatever is half-written, and any attachments, where they were.
+  Future<void> _send({String? quick}) async {
     final me = ref.read(currentUserProvider).asData?.value.id;
     if (me == null) {
       Toast.show(context, AppLocalizations.of(context).literalyouAreSignedOut);
       return;
     }
-    final text = _box.text;
+    final text = quick ?? _box.text;
     final answering = _replyingTo;
-    _box.clear();
+    if (quick == null) _box.clear();
     setState(() => _replyingTo = null);
     unawaited(HapticFeedback.selectionClick());
     await ref.read(threadProvider(widget.args.conversationId).notifier).send(
           text,
           senderId: me,
-          media: _media.ready,
+          media: quick == null ? _media.ready : const [],
           replyToId: answering?.id,
         );
-    _media.clear();
+    if (quick == null) _media.clear();
     _toNewest(animate: true);
   }
+
+  /// Whether [later] carries on the turn [earlier] started.
+  static bool _sameRun(DirectMessage earlier, DirectMessage later) =>
+      earlier.senderId == later.senderId &&
+      later.createdAt.difference(earlier.createdAt).inMinutes < 2;
 
   /// Who wrote [message], as the quote labels it.
   String _authorOf(
@@ -309,7 +371,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     final notifier = ref.read(
       threadProvider(widget.args.conversationId).notifier,
     );
-    final me = ref.watch(currentUserProvider).asData?.value.id;
+    final self = ref.watch(currentUserProvider).asData?.value;
+    final me = self?.id;
 
     // The list is the truth once it has landed; the arguments are what the
     // header shows before that.
@@ -397,7 +460,9 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
             Expanded(
               child: Stack(
                 children: [
-                  Positioned.fill(child: _body(state, notifier, me)),
+                  Positioned.fill(
+                    child: _body(state, notifier, me, people, self),
+                  ),
                   // Above the composer, clear of the last bubble. A chat is
                   // read from the bottom, so this brings the reader back to
                   // the newest thing said.
@@ -417,8 +482,11 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
               focus: _focus,
               canSend: _canSend,
               onSend: _send,
+              onHeart: () => _send(quick: '❤️'),
               media: _media,
               onAttach: _attach,
+              onAttachments: _openAttachments,
+              onGif: _attachGif,
               replyingTo: _replyingTo,
               replyingToAuthor: switch (_replyingTo) {
                 final answering? => _authorOf(answering, me, state.people),
@@ -432,24 +500,30 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     );
   }
 
-  Widget _body(ThreadState state, ThreadNotifier notifier, String? me) {
+  Widget _body(
+    ThreadState state,
+    ThreadNotifier notifier,
+    String? me,
+    List<MessagePerson> people,
+    CurrentUser? self,
+  ) {
     if (state.loadingFirstPage) {
       return SkeletonList.messages();
     }
     if (state.messages.isEmpty) {
-      return (state.error != null
-              ? EmptyState.failed(
-                  title: AppLocalizations.of(context)
-                      .literalcouldNotLoadThisConversation,
-                  detail: state.error,
-                  onAction: notifier.refresh,
-                )
-              : EmptyState(
-                  art: EmptyArt.messages,
-                  title: AppLocalizations.of(context).literalsaySomething,
-                  detail: 'This is the beginning of the conversation.',
-                ))
-          .scrollable;
+      if (state.error != null) {
+        return EmptyState.failed(
+          title:
+              AppLocalizations.of(context).literalcouldNotLoadThisConversation,
+          detail: state.error,
+          onAction: notifier.refresh,
+        ).scrollable;
+      }
+      return _ChatStarter(
+        other: people.firstOrNull,
+        self: self,
+        onWave: () => _send(quick: '👋'),
+      );
     }
 
     // Oldest first, which is reading order.
@@ -492,16 +566,20 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
         final message = ordered[at];
         final mine = me != null && message.senderId == me;
         final previous = at > 0 ? ordered[at - 1] : null;
+        final next = at + 1 < ordered.length ? ordered[at + 1] : null;
         return _Bubble(
           message: message,
           mine: mine,
-          // Grouped: consecutive messages from the same person on the same
-          // minute do not each need their own timestamp.
-          grouped: previous != null &&
-              previous.senderId == message.senderId &&
-              message.createdAt.difference(previous.createdAt).inMinutes < 2,
+          // A run: consecutive messages from the same person within a couple
+          // of minutes read as one turn, so they sit close together and share
+          // one avatar and one time, at the end of the run.
+          grouped: previous != null && _sameRun(previous, message),
+          endsGroup: next == null || !_sameRun(message, next),
+          sender: mine
+              ? null
+              : people.where((p) => p.id == message.senderId).firstOrNull,
           onRetry: () => notifier.retry(message),
-          onReply: () => setState(() => _replyingTo = message),
+          onReply: () => _startReply(message),
           // Resolved here rather than sent by the server: it holds ciphertext
           // and could not quote it. This list is decrypted.
           answered: state.answered(message),
@@ -527,6 +605,15 @@ class _Bubble extends StatelessWidget {
   final DirectMessage message;
   final bool mine;
   final bool grouped;
+
+  /// Whether this is the last message of a run from one person. That is where
+  /// the run's avatar and its time go -- once, rather than a timestamp under
+  /// every line somebody sent in the same breath.
+  final bool endsGroup;
+
+  /// Who sent it, for the avatar beside their runs. Null for your own.
+  final MessagePerson? sender;
+
   final VoidCallback onRetry;
   final VoidCallback? onRemove;
   final VoidCallback onReply;
@@ -542,115 +629,189 @@ class _Bubble extends StatelessWidget {
     required this.message,
     required this.mine,
     required this.grouped,
+    required this.endsGroup,
     required this.onRetry,
     required this.onReply,
+    this.sender,
     this.onRemove,
     this.answered,
     this.answeredAuthor,
   });
 
+  /// The avatar's width plus the gap after it, which every bubble from the
+  /// other person is indented by, avatar or not, so a run stays in a column.
+  static const double _gutter = 28 + SpacingTokens.space8;
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final radius = Radius.circular(RadiusTokens.radiusLg);
 
-    return Padding(
-      padding: EdgeInsets.only(top: grouped ? 2 : SpacingTokens.space8),
-      child: Row(
-        mainAxisAlignment:
-            mine ? MainAxisAlignment.end : MainAxisAlignment.start,
+    // Just a few emoji, and nothing else, is drawn large and without a
+    // bubble. Never for one that could not be opened: what it holds is not
+    // known, so it cannot be known to be emoji.
+    final jumbo = message.media.isEmpty && !message.unreadable
+        ? jumboEmojiCount(message.body)
+        : null;
+
+    Widget content = jumbo != null
+        ? _Jumbo(text: message.body.trim(), count: jumbo, faded: message.failed)
+        : _box(context, scheme, overlapping: message.replyToId != null);
+
+    if (message.replyToId != null) {
+      content = Column(
+        crossAxisAlignment:
+            mine ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Flexible(
-            child: GestureDetector(
-              onLongPress: () => _openOptions(context),
-              child: Column(
-                crossAxisAlignment:
-                    mine ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    constraints: BoxConstraints(
-                      maxWidth: MediaQuery.sizeOf(context).width * 0.76,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              SpacingTokens.space4,
+              SpacingTokens.space4,
+              SpacingTokens.space4,
+              SpacingTokens.space4,
+            ),
+            child: Text(
+              mine
+                  ? AppLocalizations.of(context)
+                      .ui('ui_dm_you_replied', 'You replied')
+                  : AppLocalizations.of(context).dmReplied(
+                      sender?.displayName ?? answeredAuthor ?? 'Them',
                     ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: SpacingTokens.space12,
-                      vertical: SpacingTokens.space8,
-                    ),
-                    decoration: BoxDecoration(
-                      color: message.failed
-                          ? scheme.error.withValues(alpha: 0.12)
-                          : mine
-                              ? scheme.primary
-                              // `surfaceContainer`, not the top of the
-                              // ramp. A bubble is the most repeated shape in
-                              // the app -- a hundred down one screen -- so
-                              // it takes the quietest step that still gives
-                              // it an edge: 2.47 L* off the page, which is
-                              // what the messaging apps this was measured
-                              // against use. `Highest` is for something
-                              // there is one of.
-                              : scheme.surfaceContainer,
-                      borderRadius: BorderRadius.only(
-                        topLeft: radius,
-                        topRight: radius,
-                        // The corner nearest the sender is squared off, which
-                        // is what makes a run of bubbles read as one voice.
-                        bottomLeft: mine ? radius : const Radius.circular(4),
-                        bottomRight: mine ? const Radius.circular(4) : radius,
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (message.replyToId != null)
-                          _Quote(
-                            answered: answered,
-                            author: answeredAuthor,
-                            onTint: mine ? scheme.onPrimary : scheme.onSurface,
-                          ),
-                        // A recording is a player, not a picture, so it is
-                        // split out the same way a post's is.
-                        for (final voice in message.media.where(
-                          (m) => m.isVoice,
-                        ))
-                          VoicePostPlayer(media: voice),
-                        if (message.media.any((m) => m.isVisual)) ...[
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(
-                              RadiusTokens.radiusSm,
-                            ),
-                            child: MediaGrid(
-                              media: message.media
-                                  .where((m) => m.isVisual)
-                                  .toList(),
-                              radius: RadiusTokens.radiusSm,
-                            ),
-                          ),
-                          if (message.body.trim().isNotEmpty)
-                            const SizedBox(height: SpacingTokens.space8),
-                        ],
-                        if (message.body.trim().isNotEmpty)
-                          Text(
-                            message.body,
-                            style: TextStyle(
-                              fontSize: TypographyTokens.fontSize3,
-                              height: 1.35,
-                              color: message.failed
-                                  ? scheme.onSurface
-                                  : mine
-                                      ? scheme.onPrimary
-                                      : scheme.onSurface,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  _Status(message: message, mine: mine, onRetry: onRetry),
-                ],
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                color: scheme.onSurface.withValues(alpha: 0.55),
               ),
             ),
           ),
+          // The answered message behind, muted; the answer over its lower
+          // edge. One exchange, read as one.
+          QuoteStack(
+            alignEnd: mine,
+            quote: _QuotedMessage(answered: answered),
+            reply: content,
+          ),
+        ],
+      );
+    }
+
+    final showStatus = endsGroup || message.failed || message.sending;
+
+    return Padding(
+      padding: EdgeInsets.only(top: grouped ? 2 : SpacingTokens.space8),
+      child: Column(
+        crossAxisAlignment:
+            mine ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment:
+                mine ? MainAxisAlignment.end : MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              if (!mine) ...[
+                SizedBox(
+                  width: 28,
+                  child: endsGroup ? _Avatar(person: sender, radius: 14) : null,
+                ),
+                const SizedBox(width: SpacingTokens.space8),
+              ],
+              Flexible(
+                child: SwipeToReply(
+                  // A message still on its way, or one that never arrived,
+                  // has no id the server knows -- there is nothing to answer.
+                  enabled: !message.sending && !message.failed,
+                  onReply: onReply,
+                  child: GestureDetector(
+                    onLongPress: () => _openOptions(context),
+                    child: content,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          if (showStatus)
+            Padding(
+              padding: EdgeInsets.only(top: 2, left: mine ? 0 : _gutter),
+              child: _Status(message: message, mine: mine, onRetry: onRetry),
+            ),
+        ],
+      ),
+    );
+  }
+
+  /// The bubble: colour, shape, and what is in it.
+  ///
+  /// [overlapping] when it rides over a quoted message. It then takes a rim in
+  /// the page colour, so where the two meet reads as one shape in front of
+  /// another rather than as two shapes run together.
+  Widget _box(
+    BuildContext context,
+    ColorScheme scheme, {
+    required bool overlapping,
+  }) {
+    final radius = Radius.circular(RadiusTokens.radiusLg);
+    return Container(
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.sizeOf(context).width * 0.72,
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: SpacingTokens.space12,
+        vertical: SpacingTokens.space8,
+      ),
+      decoration: BoxDecoration(
+        color: message.failed
+            ? scheme.error.withValues(alpha: 0.12)
+            : mine
+                ? scheme.primary
+                // `surfaceContainer`, not the top of the ramp. A bubble is
+                // the most repeated shape in the app -- a hundred down one
+                // screen -- so it takes the quietest step that still gives it
+                // an edge: 2.47 L* off the page, which is what the messaging
+                // apps this was measured against use. `Highest` is for
+                // something there is one of.
+                : scheme.surfaceContainer,
+        border:
+            overlapping ? Border.all(color: scheme.surface, width: 2) : null,
+        borderRadius: BorderRadius.only(
+          topLeft: radius,
+          topRight: radius,
+          // The corner nearest the sender is squared off, which is what makes
+          // a run of bubbles read as one voice.
+          bottomLeft: mine ? radius : const Radius.circular(4),
+          bottomRight: mine ? const Radius.circular(4) : radius,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // A recording is a player, not a picture, so it is split out the
+          // same way a post's is.
+          for (final voice in message.media.where((m) => m.isVoice))
+            VoicePostPlayer(media: voice),
+          if (message.media.any((m) => m.isVisual)) ...[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
+              child: MediaGrid(
+                media: message.media.where((m) => m.isVisual).toList(),
+                radius: RadiusTokens.radiusSm,
+              ),
+            ),
+            if (message.body.trim().isNotEmpty)
+              const SizedBox(height: SpacingTokens.space8),
+          ],
+          if (message.body.trim().isNotEmpty)
+            Text(
+              message.body,
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize3,
+                height: 1.35,
+                color: message.failed
+                    ? scheme.onSurface
+                    : mine
+                        ? scheme.onPrimary
+                        : scheme.onSurface,
+              ),
+            ),
         ],
       ),
     );
@@ -800,8 +961,16 @@ class _Composer extends StatelessWidget {
   final FocusNode focus;
   final bool canSend;
   final VoidCallback onSend;
+
+  /// Sends a heart on its own, from the button that stands where Send does
+  /// while there is nothing to send.
+  final VoidCallback onHeart;
   final MediaBasket media;
   final Future<void> Function({required bool video}) onAttach;
+
+  /// Every kind of attachment, as a sheet.
+  final VoidCallback onAttachments;
+  final VoidCallback onGif;
 
   /// The message being answered, while one is.
   final DirectMessage? replyingTo;
@@ -813,8 +982,11 @@ class _Composer extends StatelessWidget {
     required this.focus,
     required this.canSend,
     required this.onSend,
+    required this.onHeart,
     required this.media,
     required this.onAttach,
+    required this.onAttachments,
+    required this.onGif,
     required this.onCancelReply,
     this.replyingTo,
     this.replyingToAuthor,
@@ -823,10 +995,11 @@ class _Composer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final typing = controller.text.trim().isNotEmpty;
 
     return Container(
       padding: const EdgeInsets.fromLTRB(
-        SpacingTokens.space12,
+        SpacingTokens.space8,
         SpacingTokens.space8,
         SpacingTokens.space8,
         SpacingTokens.space8,
@@ -845,7 +1018,10 @@ class _Composer extends StatelessWidget {
           // be a reply rather than a remark.
           if (replyingTo != null)
             Padding(
-              padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
+              padding: const EdgeInsets.only(
+                left: SpacingTokens.space8,
+                bottom: SpacingTokens.space8,
+              ),
               child: Row(
                 children: [
                   Expanded(
@@ -879,15 +1055,19 @@ class _Composer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               IconButton(
-                tooltip: AppLocalizations.of(context).literaladdAPhoto,
-                onPressed: media.hasRoom ? () => onAttach(video: false) : null,
-                icon: const Icon(Iconsax.gallery_copy, size: 20),
+                tooltip: AppLocalizations.of(context)
+                    .ui('ui_dm_attach', 'Add to message'),
+                onPressed: media.hasRoom ? onAttachments : null,
+                icon: const Icon(Iconsax.add, size: 22),
+                style: IconButton.styleFrom(
+                  shape: CircleBorder(
+                    side: BorderSide(
+                      color: scheme.outline.withValues(alpha: 0.25),
+                    ),
+                  ),
+                ),
               ),
-              IconButton(
-                tooltip: AppLocalizations.of(context).literaladdAClip,
-                onPressed: media.hasRoom ? () => onAttach(video: true) : null,
-                icon: const Icon(Iconsax.video_copy, size: 20),
-              ),
+              const SizedBox(width: SpacingTokens.space4),
               Expanded(
                 child: TextField(
                   controller: controller,
@@ -910,6 +1090,39 @@ class _Composer extends StatelessWidget {
                       horizontal: SpacingTokens.space16,
                       vertical: SpacingTokens.space12,
                     ),
+                    // A photo and a GIF are a tap away inside the box while
+                    // it is empty, and step aside once something is being
+                    // written, which is when the room matters more.
+                    suffixIcon: typing
+                        ? null
+                        : Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                tooltip: AppLocalizations.of(context)
+                                    .literaladdAPhoto,
+                                onPressed: media.hasRoom
+                                    ? () => onAttach(video: false)
+                                    : null,
+                                icon: const Icon(
+                                  Iconsax.gallery_copy,
+                                  size: 20,
+                                ),
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              IconButton(
+                                tooltip:
+                                    AppLocalizations.of(context).literaladdAGif,
+                                onPressed: media.hasRoom ? onGif : null,
+                                icon: const Icon(
+                                  Iconsax.emoji_happy_copy,
+                                  size: 20,
+                                ),
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              const SizedBox(width: SpacingTokens.space4),
+                            ],
+                          ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                         RadiusTokens.radiusFull,
@@ -920,19 +1133,24 @@ class _Composer extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: SpacingTokens.space4),
-              IconButton(
-                onPressed: canSend ? onSend : null,
-                tooltip: 'Send',
-                icon: const Icon(Iconsax.send_1, size: 20),
-                style: IconButton.styleFrom(
-                  backgroundColor: canSend
-                      ? scheme.primary
-                      : scheme.onSurface.withValues(alpha: 0.08),
-                  foregroundColor: canSend
-                      ? scheme.onPrimary
-                      : scheme.onSurface.withValues(alpha: 0.35),
-                ),
-              ),
+              // Send when there is something to send. Until then a heart,
+              // which is the reply most messages actually get, in one tap.
+              canSend
+                  ? IconButton(
+                      onPressed: onSend,
+                      tooltip: 'Send',
+                      icon: const Icon(Iconsax.send_1, size: 20),
+                      style: IconButton.styleFrom(
+                        backgroundColor: scheme.primary,
+                        foregroundColor: scheme.onPrimary,
+                      ),
+                    )
+                  : IconButton(
+                      onPressed: media.isUploading ? null : onHeart,
+                      tooltip: AppLocalizations.of(context)
+                          .ui('ui_dm_send_heart', 'Send a heart'),
+                      icon: const Icon(Iconsax.heart, size: 22),
+                    ),
             ],
           ),
         ],
@@ -941,7 +1159,7 @@ class _Composer extends StatelessWidget {
   }
 }
 
-/// The message a reply answers, drawn inside the reply's own bubble.
+/// The message about to be answered, above the composer.
 ///
 /// The text comes from the copy this phone decrypted, never from the server:
 /// direct messages are sealed before they leave the device, so the only thing
@@ -1008,6 +1226,243 @@ class _Quote extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// A message that is only a few emoji, drawn large and without a bubble.
+class _Jumbo extends StatelessWidget {
+  const _Jumbo({required this.text, required this.count, this.faded = false});
+
+  final String text;
+  final int count;
+
+  /// One that failed to send stays readable, but plainly not delivered.
+  final bool faded;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: Opacity(
+          opacity: faded ? 0.5 : 1,
+          child: Text(
+            text,
+            style: TextStyle(fontSize: jumboEmojiSize(count), height: 1.15),
+          ),
+        ),
+      );
+}
+
+/// The message a reply answers, behind the reply and muted, its lower edge
+/// under the reply's bubble.
+///
+/// The text comes from the copy this phone decrypted, never from the server:
+/// direct messages are sealed before they leave the device, so the only thing
+/// that crosses the wire is the id of what is being answered.
+class _QuotedMessage extends StatelessWidget {
+  const _QuotedMessage({required this.answered});
+
+  /// Null when the answered message is older than the pages loaded so far.
+  final DirectMessage? answered;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final message = answered;
+
+    // A quote that cannot be resolved is still drawn. A reply whose quote
+    // silently vanished reads as a remark that does not follow.
+    final text = message == null
+        ? 'Message'
+        : message.isEmpty || message.body.trim().isEmpty
+            ? 'Attachment'
+            : message.body.trim();
+
+    return Container(
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.sizeOf(context).width * 0.62,
+      ),
+      // Room at the bottom for the reply to ride over without covering the
+      // words: QuoteStack overlaps by 14.
+      padding: const EdgeInsets.fromLTRB(
+        SpacingTokens.space12,
+        SpacingTokens.space8,
+        SpacingTokens.space12,
+        SpacingTokens.space8 + 14,
+      ),
+      decoration: BoxDecoration(
+        color: scheme.onSurface.withValues(alpha: 0.10),
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
+      ),
+      child: Text(
+        text,
+        maxLines: 3,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(
+          fontSize: TypographyTokens.fontSize2,
+          height: 1.3,
+          color: scheme.onSurface.withValues(alpha: 0.65),
+          fontStyle: message == null ? FontStyle.italic : null,
+        ),
+      ),
+    );
+  }
+}
+
+/// Somebody's picture, or a placeholder in the same circle.
+class _Avatar extends StatelessWidget {
+  const _Avatar({required this.person, required this.radius, this.url});
+
+  final MessagePerson? person;
+  final double radius;
+
+  /// Used when there is no [person] -- the reader's own picture.
+  final String? url;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final src = person?.avatarUrl ?? url;
+    return CircleAvatar(
+      radius: radius,
+      backgroundColor: scheme.primary.withValues(alpha: .15),
+      foregroundImage: src == null ? null : NetworkImage(src),
+      child: Icon(Iconsax.user_copy, size: radius, color: scheme.primary),
+    );
+  }
+}
+
+/// What a conversation looks like before anybody has said anything.
+///
+/// It used to be the app's generic empty state -- an illustration and "Say
+/// something" -- which is what an empty search looks like too. A new
+/// conversation is two particular people, so it shows them, and offers the
+/// easiest possible first message: a wave, one tap, sent as itself.
+class _ChatStarter extends StatelessWidget {
+  const _ChatStarter({
+    required this.other,
+    required this.self,
+    required this.onWave,
+  });
+
+  final MessagePerson? other;
+  final CurrentUser? self;
+  final VoidCallback onWave;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+
+    return LayoutBuilder(
+      builder: (context, constraints) => SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: constraints.maxHeight),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(SpacingTokens.space24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Narrower than the two avatars side by side, so they
+                  // overlap: two people, one conversation.
+                  SizedBox(
+                    width: 128,
+                    height: 92,
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Positioned(
+                          left: 0,
+                          bottom: 0,
+                          child: _Avatar(person: other, radius: 38),
+                        ),
+                        Positioned(
+                          right: 0,
+                          bottom: 0,
+                          child: Container(
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: scheme.surface,
+                            ),
+                            child: _Avatar(
+                              person: null,
+                              url: self?.avatarUrl,
+                              radius: 35,
+                            ),
+                          ),
+                        ),
+                        // The wave, mid-air between the two of them.
+                        Positioned(
+                          right: 38,
+                          top: -10,
+                          child: Container(
+                            padding: const EdgeInsets.all(SpacingTokens.space8),
+                            decoration: BoxDecoration(
+                              color: scheme.surfaceContainer,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Text(
+                              '👋',
+                              style: TextStyle(
+                                fontSize: TypographyTokens.fontSize5,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: SpacingTokens.space16),
+                  Text(
+                    other?.displayName ?? l10n.ui('ui_dm_new', 'New message'),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: TypographyTokens.fontSize4,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  if (other?.handle != null)
+                    Text(
+                      other!.handle!,
+                      style: TextStyle(
+                        fontSize: TypographyTokens.fontSize2,
+                        color: scheme.onSurface.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  const SizedBox(height: SpacingTokens.space8),
+                  Text(
+                    l10n.ui(
+                      'ui_dm_starter',
+                      'Nothing said yet. A wave is a good start.',
+                    ),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize3,
+                      color: scheme.onSurface.withValues(alpha: 0.6),
+                    ),
+                  ),
+                  const SizedBox(height: SpacingTokens.space16),
+                  // A small pill, not a full-width call to action: it is a
+                  // wave, and the box below is right there for anything more.
+                  OutlinedButton(
+                    onPressed: onWave,
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: const Size(0, 40),
+                      shape: const StadiumBorder(),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: SpacingTokens.space20,
+                      ),
+                    ),
+                    child: Text(l10n.ui('ui_dm_wave', '👋  Wave')),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

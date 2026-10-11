@@ -56,6 +56,8 @@ class AppLocalizations {
         name: 'authorPostsHidden',
         args: [author],
       );
+  String dmReplied(String name) =>
+      Intl.message('$name replied', name: 'dmReplied', args: [name]);
   String authorBlocked(String author) =>
       Intl.message('$author blocked', name: 'authorBlocked', args: [author]);
   String nothingMatchesQuery(String what) => Intl.message(
