@@ -43,8 +43,10 @@ One client, one API, one database.
 
 ### Directories that are not services
 
-`identity/` and `media/` each hold a Dockerfile and nothing else. They were
-placeholders for services that have not been started. `web/` holds a committed
+`media/` holds an empty Dockerfile and nothing else, a placeholder for a
+service that has not been started. `identity/` was the same until the
+decision to stop at a verifiable identifier (`docs/IDENTITY.md`) meant it never
+would be, and it was removed. `web/` holds a committed
 static build of the marketing site.
 
 ---

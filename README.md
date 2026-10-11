@@ -102,8 +102,8 @@ once before migrating. A Docker volume from an attempt that stopped at
 
 ## ◈ Architecture
 
-One API, one database. Not microservices — the `identity/` and `media/`
-directories are placeholders for services that have not been written.
+One API, one database. Not microservices — the `media/` directory is a
+placeholder for a service that has not been written.
 
 ```
 ┌─────────────────────────────────────────────┐

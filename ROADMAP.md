@@ -59,7 +59,6 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 | Live | `ComingSoonScreen.live()` |
 | End-to-end encryption | Built for direct messages. X25519 per install, XChaCha20-Poly1305 on the wire, the server holding ciphertext it has no key for -- `docs/E2EE.md`. One device per install, no forward secrecy, no key verification, attachments still in the clear |
 | Creator equity pool | No contract, no chain, no testnet |
-| `identity/` service | A Dockerfile and three GitHub templates. The Nest module of the same name is real now |
 | `media/` service | A Dockerfile |
 | Redis | In config and docker-compose, never read by `api/src` |
 
@@ -312,7 +311,10 @@ something.
 - `web/build/` — 87 build artifacts tracked in git.
 - `MILESTONES.md` — deleted; it described a different project.
 - `INITIAL_ISSUES.md` — deleted. `FOLDER_STRUCTURE.md` rewritten to match the tree.
-- `identity/` and `media/` — empty service shells. Start them or remove them.
+- `identity/` — removed. An empty Dockerfile and three templates in a nested
+  `.github/` that GitHub never read, for a service the identity decision means
+  will not be written. The Nest module of the same name is real and stays.
+- `media/` — an empty service shell. Start it or remove it.
 - `User.kyronPoints` and the `KyronPointEvent` table — nothing reads or writes
   either since 11 October 2026. Points were awarded by `POST /profile/kp/award`,
   which let any signed-in account give any account any number of them, and
