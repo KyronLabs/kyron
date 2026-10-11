@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/models/post_media.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/providers/composer_provider.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
@@ -45,6 +46,37 @@ void main() {
       expect(failed.error, 'nope');
       expect(failed.copyWith(content: 'hi there').error, 'nope');
       expect(failed.copyWith(clearError: true).error, isNull);
+    });
+  });
+
+  group('the upload-failed banner', () {
+    ComposerState withMedia(List<PendingMedia> media) => ComposerState(
+          content: '',
+          isPosting: false,
+          placeholderText: '',
+          media: media,
+        );
+    const uploading = PendingMedia(path: '/a.jpg', kind: MediaKind.image);
+    final failed = uploading.copyWith(error: 'Upload failed');
+    const uploaded = PendingMedia(
+      path: '/b.jpg',
+      kind: MediaKind.image,
+      url: 'https://example.invalid/b.jpg',
+    );
+
+    test('is not up while an attachment is still uploading', () {
+      // It came up the moment a photo was added: "nothing has uploaded" was
+      // taken to mean "everything failed".
+      expect(withMedia([uploading]).onlyFailedMedia, isFalse);
+      expect(withMedia([uploading, failed]).onlyFailedMedia, isFalse);
+    });
+
+    test('is up once every attachment has failed', () {
+      expect(withMedia([failed]).onlyFailedMedia, isTrue);
+    });
+
+    test('is not up when one made it', () {
+      expect(withMedia([failed, uploaded]).onlyFailedMedia, isFalse);
     });
   });
 

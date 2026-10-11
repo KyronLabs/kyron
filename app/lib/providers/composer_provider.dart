@@ -134,9 +134,15 @@ class ComposerState {
   /// Attachments that actually uploaded. Only these are sent.
   bool get hasReadyMedia => media.any((m) => m.isReady);
 
-  /// True when an attachment failed and nothing else would go with it.
+  /// True when every attachment failed and nothing else would go with it.
+  ///
+  /// Failed, not merely not ready: this used to be "nothing has uploaded",
+  /// which is also what an attachment still uploading looks like, so the
+  /// banner saying they had failed came up the moment one was added.
   bool get onlyFailedMedia =>
-      content.trim().isEmpty && media.isNotEmpty && !hasReadyMedia;
+      content.trim().isEmpty &&
+      media.isNotEmpty &&
+      media.every((m) => m.error != null);
 
   /// A post carrying only an attachment is a post; one that is empty and
   /// unattached is not, which is what the server enforces too.

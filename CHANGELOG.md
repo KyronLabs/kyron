@@ -14,6 +14,11 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **The composer said attachments had failed the moment one was added.**
+  "Those attachments did not upload" was shown whenever nothing had finished
+  uploading, which includes a photo still on its way. It now waits until
+  every attachment has actually failed.
+
 - **After an update every message read "This message cannot be read on this
   device", and new ones went out unencrypted.** Opening the app more than an
   hour after last using it -- which an update does -- finds the access token
