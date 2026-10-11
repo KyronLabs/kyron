@@ -14,6 +14,15 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **The Android release build failed after "Save to device" was added.**
+  The app declared WRITE_EXTERNAL_STORAGE up to SDK 29 and
+  camera_android_camerax declares it up to 28; the manifest merger refuses
+  two values. 28 is all saving needs: gal asks for no permission on Android
+  10 and later unless it is saving into an album, and the app names none.
+  The legacy-storage flag, likewise only for albums, is gone. A test now
+  holds the app's permission caps to every plugin's, so this fails in
+  `flutter test` instead of only in the APK build.
+
 - **"Nothing matched" sat a third of the way across the screen.** Every empty
   state was placed at the left edge, as wide as its widest line, so one whose
   detail wrapped looked centred and a short one did not. They are centred
