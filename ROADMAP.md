@@ -49,6 +49,7 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 | Settings | The whole suite, including every subscreen |
 | Security | Anon key shut out of all 40 API tables, RLS on, rate limiting on |
 | Operations | Request ids, structured request logs, a guarded `/metrics`, error aggregation |
+| Account identifier | A real `did:key` per account, made on the device and claimed by signing a server challenge. A fingerprint anybody can verify without asking Kyron -- deliberately not portable, see Phase 3 -- `docs/IDENTITY.md` |
 | AR camera | Seven colour lenses bundled, more from the kyron-lenses catalogue without an app release. Face-tracked attachments and effects that change the face, on MediaPipe's 478 landmarks, measured in pupil-gaps. Flat sprites: no 3D, expression, occlusion or warping -- `docs/AR.md` |
 
 ### Stubs shipped as if finished
@@ -56,7 +57,6 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 | Thing | Reality |
 |:--|:--|
 | Live | `ComingSoonScreen.live()` |
-| DID / portable identity | Half built. A real `did:key`, proved by signature -- but nothing consumes it, so it is not portable. `docs/IDENTITY.md` |
 | End-to-end encryption | Built for direct messages. X25519 per install, XChaCha20-Poly1305 on the wire, the server holding ciphertext it has no key for -- `docs/E2EE.md`. One device per install, no forward secrecy, no key verification, attachments still in the clear |
 | Creator equity pool | No contract, no chain, no testnet |
 | `identity/` service | A Dockerfile and three GitHub templates. The Nest module of the same name is real now |
@@ -149,7 +149,7 @@ is shippable on its own.
    hardcoded hex colours -- was folded into the same system, and the `shimmer`
    dependency dropped with it.
 
-### Phase 3 — The identity story: started, not finished
+### Phase 3 — The identity story: stopped here, deliberately
 
 The `did` column nobody wrote to is now a real `did:key` that the account
 proves it controls -- generated on the device, claimed by signing a
@@ -164,14 +164,22 @@ recognise it. It also cannot survive losing the device, which is the gap that
 matters most -- an identity you cannot carry to a new phone is not one you can
 carry to a new server. `docs/IDENTITY.md` has the full list.
 
-The decision that remains is the same one, now narrower:
+This section used to end on a decision nobody had made: carry on (a
+recovery phrase, then signed posts, then an export something else can read),
+or stop here. It sat open for a month while the work that did not depend on it
+-- translations, mostly -- got done instead.
 
-- **Carry on.** A recovery phrase, then signed posts, then an export something
-  else can read. Each is a real step, and the first two are small.
-- **Stop here.** Keep the identifier as a verifiable account fingerprint and
-  rewrite the positioning around what Kyron is: an open-source, self-hostable
-  social app with communities and a transparent ranking engine. That is a real
-  story and it is true today.
+**Decided on 11 October 2026: stop here.** The identifier stays as a
+verifiable account fingerprint, and nothing further is built towards
+portability. Kyron is an open-source, self-hostable social app with
+communities and a ranking engine anybody can read; that story is true today
+and needs nothing more from this layer.
+
+The short version of why: an export is only portable if another server reads
+it, and none exists; every step towards one costs now and pays later; and the
+app has not shipped. The long version, and what would reopen it -- somebody
+running their own Kyron who needs to move an account between instances -- is
+in `docs/IDENTITY.md`.
 
 ### Phase 4 — Scale and operate (months)
 
@@ -285,8 +293,9 @@ codebase has never contained.
 
 It was rewritten. It now has a *Not built yet* table that says of itself
 "listed because they have been described as finished elsewhere and are not",
-and it marks the DID half built and the equity pool not started. Checked
-line by line against the repository rather than taken on trust.
+and it marks portable identity as decided against and the equity pool not
+started. Checked line by line against the repository rather than taken on
+trust.
 
 **This section outlived its subject by long enough to mislead.** It was still
 here, still asserting the README overclaimed, after the rewrite had landed —
@@ -304,3 +313,11 @@ something.
 - `MILESTONES.md` — deleted; it described a different project.
 - `INITIAL_ISSUES.md` — deleted. `FOLDER_STRUCTURE.md` rewritten to match the tree.
 - `identity/` and `media/` — empty service shells. Start them or remove them.
+- `User.kyronPoints` and the `KyronPointEvent` table — nothing reads or writes
+  either since 11 October 2026. Points were awarded by `POST /profile/kp/award`,
+  which let any signed-in account give any account any number of them, and
+  people search ranked by the result; the route, the ranking and every place
+  the app showed a count are gone. The schema is not, because dropping it is a
+  migration and `api/scripts/start.sh` applies every migration on boot -- so it
+  is a decision about production data, to be taken on purpose rather than
+  ridden in on a code change.

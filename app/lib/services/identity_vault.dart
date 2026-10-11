@@ -6,7 +6,7 @@ import '../repositories/identity_repository.dart';
 import 'app_log.dart';
 import 'did_keys.dart';
 
-/// This account's portable identifier, and the key that proves it.
+/// This account's verifiable identifier, and the key that proves it.
 ///
 /// The `did` column existed from the beginning with nothing ever writing to
 /// it, and Settings showed "No DID yet" to everyone forever. Before that it

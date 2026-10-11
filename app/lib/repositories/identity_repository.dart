@@ -1,7 +1,7 @@
 // lib/repositories/identity_repository.dart
 import '../services/api_client.dart';
 
-/// The account's portable identifier.
+/// The account's verifiable identifier.
 class IdentityRepository {
   final ApiClient _api;
 
