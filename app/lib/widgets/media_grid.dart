@@ -12,17 +12,29 @@ import 'media_viewer.dart';
 /// One fills the width at its own aspect ratio; two sit side by side; three
 /// put the first beside a stacked pair; four make a square. Every tile opens
 /// the viewer at the one that was tapped.
+///
+/// With [maxTiles] at 3 -- a chat, where a bubble is narrow and a square of
+/// four reads as a wall -- anything past three is folded into the third tile:
+/// darkened, with "+n" for how many more there are, and a tap there opens the
+/// viewer where all of them can be swiped through.
 class MediaGrid extends StatelessWidget {
   final List<PostMedia> media;
 
   /// Corner rounding. Smaller inside a quoted card than under a post.
   final double radius;
 
+  /// The most tiles drawn: 4, or 3 to fold the rest into the third.
+  final int maxTiles;
+
   const MediaGrid({
     super.key,
     required this.media,
     this.radius = RadiusTokens.radiusMd,
-  });
+    this.maxTiles = 4,
+  }) : assert(maxTiles == 3 || maxTiles == 4);
+
+  /// How many are not drawn, and are counted on the last tile instead.
+  int get hidden => media.length > maxTiles ? media.length - maxTiles : 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +46,7 @@ class MediaGrid extends StatelessWidget {
         1 => _single(context),
         2 => _row(context, [0, 1]),
         3 => _threeUp(context),
+        _ when maxTiles == 3 => _threeUp(context),
         _ => _fourUp(context),
       },
     );
@@ -82,7 +95,7 @@ class MediaGrid extends StatelessWidget {
               children: [
                 Expanded(child: _tile(context, 1)),
                 const SizedBox(height: 2),
-                Expanded(child: _tile(context, 2)),
+                Expanded(child: _tile(context, 2, more: hidden)),
               ],
             ),
           ),
@@ -104,14 +117,17 @@ class MediaGrid extends StatelessWidget {
     );
   }
 
-  Widget _tile(BuildContext context, int index) {
+  /// One attachment. [more], on the last tile drawn, is how many there are
+  /// past it.
+  Widget _tile(BuildContext context, int index, {int more = 0}) {
     final item = media[index];
     final scheme = Theme.of(context).colorScheme;
 
     // Both open the viewer; a clip does it through its own tap handler, which
     // sits above this one so the sound button can take its own taps first.
     return GestureDetector(
-      onTap: item.isVideo
+      // With more behind it the tile is a way into all of them, clip or not.
+      onTap: item.isVideo && more == 0
           ? null
           : () => MediaViewer.open(context, media, initialIndex: index),
       child: Hero(
@@ -161,11 +177,39 @@ class MediaGrid extends StatelessWidget {
             // attachments carry one.
             if (item.alt != null && item.alt!.trim().isNotEmpty)
               Positioned(right: 6, bottom: 6, child: _Badge(label: 'ALT')),
+            if (more > 0) _More(count: more),
           ],
         ),
       ),
     );
   }
+}
+
+/// The scrim and count over the last tile when there are more than fit.
+///
+/// Over everything, a clip's controls included: the tile is now a way into
+/// the rest, and the whole of it answers the tap.
+class _More extends StatelessWidget {
+  const _More({required this.count});
+
+  final int count;
+
+  @override
+  Widget build(BuildContext context) => IgnorePointer(
+        child: ColoredBox(
+          color: Colors.black.withValues(alpha: 0.55),
+          child: Center(
+            child: Text(
+              '+$count',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: TypographyTokens.fontSize7,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ),
+      );
 }
 
 class _Badge extends StatelessWidget {

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Bez šifrovania od začiatku do konca",
   "ui_dm_sent": "Odoslané",
   "ui_dm_seen": "Zobrazené",
-  "ui_dm_sending": "Odosiela sa…"
+  "ui_dm_sending": "Odosiela sa…",
+  "ui_dm_take_photo": "Odfotiť"
 }

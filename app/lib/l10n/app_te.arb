@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడలేదు",
   "ui_dm_sent": "పంపబడింది",
   "ui_dm_seen": "చూడబడింది",
-  "ui_dm_sending": "పంపుతోంది…"
+  "ui_dm_sending": "పంపుతోంది…",
+  "ui_dm_take_photo": "ఫోటో తీయండి"
 }

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Nie end-tot-end-geënkripteer nie",
   "ui_dm_sent": "Gestuur",
   "ui_dm_seen": "Gesien",
-  "ui_dm_sending": "Stuur tans…"
+  "ui_dm_sending": "Stuur tans…",
+  "ui_dm_take_photo": "Neem 'n foto"
 }

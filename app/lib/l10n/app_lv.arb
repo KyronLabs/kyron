@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Nav pilnībā šifrēts",
   "ui_dm_sent": "Nosūtīts",
   "ui_dm_seen": "Redzēts",
-  "ui_dm_sending": "Sūta…"
+  "ui_dm_sending": "Sūta…",
+  "ui_dm_take_photo": "Uzņemt fotoattēlu"
 }

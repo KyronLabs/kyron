@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Ikke end-to-end-krypteret",
   "ui_dm_sent": "Sendt",
   "ui_dm_seen": "Set",
-  "ui_dm_sending": "Sender…"
+  "ui_dm_sending": "Sender…",
+  "ui_dm_take_photo": "Tag et billede"
 }

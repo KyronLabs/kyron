@@ -33,6 +33,7 @@ const _keys = [
   'ui_dm_sent',
   'ui_dm_seen',
   'ui_dm_sending',
+  'ui_dm_take_photo',
 ];
 
 void main() {

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Није шифровано с краја на крај",
   "ui_dm_sent": "Послато",
   "ui_dm_seen": "Виђено",
-  "ui_dm_sending": "Слање…"
+  "ui_dm_sending": "Слање…",
+  "ui_dm_take_photo": "Сликај"
 }

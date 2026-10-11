@@ -1277,6 +1277,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sent": MessageLookupByLibrary.simpleMessage("გაგზავნილია"),
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("ნანახია"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("იგზავნება…"),
+      "ui_dm_take_photo":
+          MessageLookupByLibrary.simpleMessage("ფოტოს გადაღება"),
     };
 
 final messageLookup = MessageLookup();

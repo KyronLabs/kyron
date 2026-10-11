@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Не е шифровано от край до край",
   "ui_dm_sent": "Изпратено",
   "ui_dm_seen": "Видяно",
-  "ui_dm_sending": "Изпраща се…"
+  "ui_dm_sending": "Изпраща се…",
+  "ui_dm_take_photo": "Направете снимка"
 }

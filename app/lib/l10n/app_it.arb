@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Non crittografato end-to-end",
   "ui_dm_sent": "Inviato",
   "ui_dm_seen": "Visualizzato",
-  "ui_dm_sending": "Invio in corso…"
+  "ui_dm_sending": "Invio in corso…",
+  "ui_dm_take_photo": "Scatta una foto"
 }

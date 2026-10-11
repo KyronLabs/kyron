@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Ez dago muturretik muturrera enkriptatuta",
   "ui_dm_sent": "Bidalita",
   "ui_dm_seen": "Ikusita",
-  "ui_dm_sending": "Bidaltzen…"
+  "ui_dm_sending": "Bidaltzen…",
+  "ui_dm_take_photo": "Atera argazki bat"
 }

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "අන්ත සිට අන්තය දක්වා සංකේතනය කර නැත",
   "ui_dm_sent": "යැව්වා",
   "ui_dm_seen": "දුටුවා",
-  "ui_dm_sending": "යවමින්…"
+  "ui_dm_sending": "යවමින්…",
+  "ui_dm_take_photo": "ඡායාරූපයක් ගන්න"
 }

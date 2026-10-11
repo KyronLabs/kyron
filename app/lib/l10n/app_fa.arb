@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "بدون رمزگذاری سرتاسری",
   "ui_dm_sent": "ارسال شد",
   "ui_dm_seen": "دیده شد",
-  "ui_dm_sending": "در حال ارسال…"
+  "ui_dm_sending": "در حال ارسال…",
+  "ui_dm_take_photo": "عکس بگیرید"
 }

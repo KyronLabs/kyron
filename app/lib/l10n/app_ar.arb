@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "غير مشفّرة تشفيرًا تامًا بين الطرفين",
   "ui_dm_sent": "أُرسلت",
   "ui_dm_seen": "شوهدت",
-  "ui_dm_sending": "جارٍ الإرسال…"
+  "ui_dm_sending": "جارٍ الإرسال…",
+  "ui_dm_take_photo": "التقط صورة"
 }

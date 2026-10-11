@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Awufihlwanga ukusuka esiphelweni ukuya esiphelweni",
   "ui_dm_sent": "Uthunyelwe",
   "ui_dm_seen": "Ubonwe",
-  "ui_dm_sending": "Iyathumela…"
+  "ui_dm_sending": "Iyathumela…",
+  "ui_dm_take_photo": "Thatha umfanekiso"
 }

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Không được mã hóa đầu cuối",
   "ui_dm_sent": "Đã gửi",
   "ui_dm_seen": "Đã xem",
-  "ui_dm_sending": "Đang gửi…"
+  "ui_dm_sending": "Đang gửi…",
+  "ui_dm_take_photo": "Chụp ảnh"
 }

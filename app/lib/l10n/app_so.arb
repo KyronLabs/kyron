@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Lama sirin dhammaad ilaa dhammaad",
   "ui_dm_sent": "La diray",
   "ui_dm_seen": "La arkay",
-  "ui_dm_sending": "Waa la dirayaa…"
+  "ui_dm_sending": "Waa la dirayaa…",
+  "ui_dm_take_photo": "Sawir qaad"
 }

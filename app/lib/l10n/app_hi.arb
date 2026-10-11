@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "एंड-टू-एंड एन्क्रिप्टेड नहीं",
   "ui_dm_sent": "भेजा गया",
   "ui_dm_seen": "देखा गया",
-  "ui_dm_sending": "भेजा जा रहा है…"
+  "ui_dm_sending": "भेजा जा रहा है…",
+  "ui_dm_take_photo": "फ़ोटो लें"
 }

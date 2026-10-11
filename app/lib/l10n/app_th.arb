@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "ไม่ได้เข้ารหัสตั้งแต่ต้นทางถึงปลายทาง",
   "ui_dm_sent": "ส่งแล้ว",
   "ui_dm_seen": "เห็นแล้ว",
-  "ui_dm_sending": "กำลังส่ง…"
+  "ui_dm_sending": "กำลังส่ง…",
+  "ui_dm_take_photo": "ถ่ายรูป"
 }

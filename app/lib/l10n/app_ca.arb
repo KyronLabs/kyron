@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "No xifrat d'extrem a extrem",
   "ui_dm_sent": "Enviat",
   "ui_dm_seen": "Vist",
-  "ui_dm_sending": "S'està enviant…"
+  "ui_dm_sending": "S'està enviant…",
+  "ui_dm_take_photo": "Fes una foto"
 }

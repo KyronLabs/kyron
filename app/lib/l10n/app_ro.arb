@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Nu este criptat integral",
   "ui_dm_sent": "Trimis",
   "ui_dm_seen": "Văzut",
-  "ui_dm_sending": "Se trimite…"
+  "ui_dm_sending": "Se trimite…",
+  "ui_dm_take_photo": "Fă o fotografie"
 }

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Niet end-to-end versleuteld",
   "ui_dm_sent": "Verzonden",
   "ui_dm_seen": "Gezien",
-  "ui_dm_sending": "Verzenden…"
+  "ui_dm_sending": "Verzenden…",
+  "ui_dm_take_photo": "Foto maken"
 }

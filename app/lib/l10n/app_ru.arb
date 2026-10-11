@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Без сквозного шифрования",
   "ui_dm_sent": "Отправлено",
   "ui_dm_seen": "Просмотрено",
-  "ui_dm_sending": "Отправка…"
+  "ui_dm_sending": "Отправка…",
+  "ui_dm_take_photo": "Сделать фото"
 }

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "এন্ড-টু-এন্ড এনক্রিপ্ট করা নয়",
   "ui_dm_sent": "পাঠানো হয়েছে",
   "ui_dm_seen": "দেখা হয়েছে",
-  "ui_dm_sending": "পাঠানো হচ্ছে…"
+  "ui_dm_sending": "পাঠানো হচ্ছে…",
+  "ui_dm_take_photo": "ছবি তুলুন"
 }

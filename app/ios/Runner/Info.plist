@@ -47,10 +47,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-	<!-- Shown in the system prompt the first time the AR lens screen opens.
-	     iOS rejects a build that uses the camera without one. -->
+	<!-- Shown in the system prompt the first time the camera opens: from a
+	     chat's attachments or the AR lens screen. iOS rejects a build that
+	     uses the camera without one. -->
 	<key>NSCameraUsageDescription</key>
-	<string>Kyron uses the camera for AR lens photos you choose to take.</string>
+	<string>Kyron uses the camera for photos you choose to take, to send in a message or with an AR lens.</string>
 	<!-- The link in a Supabase confirmation or password-reset email. Without
 	     it the mail's redirect has nowhere on the device to land and Supabase
 	     falls back to the project's Site URL, which is a developer's

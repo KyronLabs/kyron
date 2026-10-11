@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "အစမှအဆုံး ကုဒ်ဝှက်မထားပါ",
   "ui_dm_sent": "ပို့ပြီး",
   "ui_dm_seen": "မြင်ပြီး",
-  "ui_dm_sending": "ပို့နေသည်…"
+  "ui_dm_sending": "ပို့နေသည်…",
+  "ui_dm_take_photo": "ဓာတ်ပုံရိုက်ရန်"
 }

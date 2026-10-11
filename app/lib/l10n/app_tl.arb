@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Hindi naka-end-to-end encrypt",
   "ui_dm_sent": "Naipadala",
   "ui_dm_seen": "Nakita",
-  "ui_dm_sending": "Ipinapadala…"
+  "ui_dm_sending": "Ipinapadala…",
+  "ui_dm_take_photo": "Kumuha ng litrato"
 }
