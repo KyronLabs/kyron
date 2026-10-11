@@ -12,7 +12,6 @@ class ProfileSummary {
   final String? avatarUrl;
   final String? bio;
   final int followers;
-  final int kyronPoints;
 
   /// Whether the reader already follows this person. Filled by the endpoints
   /// that return a list of people, so a row can carry a working Follow button
@@ -30,7 +29,6 @@ class ProfileSummary {
     this.avatarUrl,
     this.bio,
     this.followers = 0,
-    this.kyronPoints = 0,
     this.isFollowing = false,
     this.isSelf = false,
   });
@@ -43,7 +41,6 @@ class ProfileSummary {
         avatarUrl: json['avatarUrl'] as String?,
         bio: json['bio'] as String?,
         followers: (json['followers'] as num?)?.toInt() ?? 0,
-        kyronPoints: (json['kyronPoints'] as num?)?.toInt() ?? 0,
         isFollowing: json['isFollowing'] == true,
         isSelf: json['isSelf'] == true,
       );
@@ -57,7 +54,6 @@ class ProfileSummary {
         avatarUrl: avatarUrl,
         bio: bio,
         followers: followers ?? this.followers,
-        kyronPoints: kyronPoints,
         isFollowing: isFollowing ?? this.isFollowing,
         isSelf: isSelf,
       );

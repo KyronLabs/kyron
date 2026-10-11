@@ -142,15 +142,6 @@ class SlidingDrawerContent extends ConsumerWidget {
               const SizedBox(width: SpacingTokens.space16),
               _stat(context, user.following,
                   AppLocalizations.of(context).following),
-              const SizedBox(width: SpacingTokens.space16),
-              Text(
-                '${formatCount(user.kyronPoints)} KP',
-                style: TextStyle(
-                  fontSize: TypographyTokens.fontSize2,
-                  fontWeight: FontWeight.w600,
-                  color: scheme.secondary,
-                ),
-              ),
             ],
           ),
 

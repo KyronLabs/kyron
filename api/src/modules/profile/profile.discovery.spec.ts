@@ -11,7 +11,6 @@ interface Person {
   name: string | null;
   username: string | null;
   did: string | null;
-  kyronPoints: number;
   profile: { avatarUrl: string | null; bio: string | null } | null;
   _count: { followers: number };
   createdAt: Date;
@@ -23,7 +22,6 @@ function person(id: string, followers: number, joined: string): Person {
     name: id,
     username: id,
     did: null,
-    kyronPoints: 0,
     profile: { avatarUrl: null, bio: null },
     _count: { followers },
     createdAt: new Date(joined),
@@ -145,6 +143,17 @@ describe('ProfileService.listSuggested', () => {
     const { items } = await service.listSuggested('me');
     expect(items[0].isFollowing).toBe(false);
     expect(items[0].isSelf).toBe(false);
+  });
+
+  it('carries no Kyron Points, and does not ask for them', async () => {
+    const { service, userFindMany } = serviceWith({
+      people: [person('a', 0, '2026-01-01')],
+    });
+    const { items } = await service.listSuggested('me');
+    expect(JSON.stringify(userFindMany.mock.calls)).not.toContain(
+      'kyronPoints',
+    );
+    expect(items[0]).not.toHaveProperty('kyronPoints');
   });
 
   it('pages, and stops offering one when the list runs out', async () => {

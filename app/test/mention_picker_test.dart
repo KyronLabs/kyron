@@ -64,7 +64,6 @@ Map<String, Object?> _person(
       'name': name,
       'username': username,
       'followers': followers,
-      'kyronPoints': 0,
     };
 
 /// Opens the picker and hands back both the adapter behind it and a place the

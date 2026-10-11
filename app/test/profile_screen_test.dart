@@ -12,7 +12,6 @@ const _me = ProfileModel(
   name: 'Epigone',
   username: 'epigone',
   did: 'did:kyron:8f2c19a4b7e34d05',
-  kyronPoints: 12,
   bio: 'heh',
   location: 'Lagos',
   website: 'kyron.so',
@@ -81,6 +80,11 @@ void main() {
     expect(find.text('Epigone'), findsWidgets);
     expect(find.text('Followers'), findsOneWidget);
     expect(find.text('Following'), findsOneWidget);
+    // Kyron Points sat beside these. Anybody could award any account any
+    // number of them, and the programme they belonged to had been withdrawn,
+    // so the count was a figure nobody could trust about a thing that did not
+    // exist.
+    expect(find.text('KP'), findsNothing);
   });
 
   for (final entry in <String, FeedState>{

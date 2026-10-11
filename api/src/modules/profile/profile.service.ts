@@ -52,7 +52,6 @@ export class ProfileService {
             name: true,
             username: true,
             did: true,
-            kyronPoints: true,
           },
         }),
 
@@ -212,52 +211,6 @@ export class ProfileService {
   }
 
   // ==========================================
-  // PHASE 3: KYRON POINTS ENGINE (Prisma only)
-  // ==========================================
-  async awardKP(userId: string, amount: number, reason: string) {
-    const [event, updatedUser] = await this.prisma.$transaction([
-      this.prisma.kyronPointEvent.create({
-        data: { userId, amount, reason },
-      }),
-      this.prisma.user.update({
-        where: { id: userId },
-        data: {
-          kyronPoints: { increment: amount },
-        },
-      }),
-    ]);
-
-    this.logger.log(`Awarded ${amount} KP to ${userId} for: ${reason}`);
-    return { event, newTotal: updatedUser.kyronPoints };
-  }
-
-  async getKPHistory(userId: string, limit = 50) {
-    return this.prisma.kyronPointEvent.findMany({
-      where: { userId },
-      orderBy: { createdAt: 'desc' },
-      take: limit,
-    });
-  }
-
-  async getKPLeaderboard(limit = 100) {
-    return this.prisma.user.findMany({
-      where: { status: 'ACTIVE' },
-      select: {
-        id: true,
-        username: true,
-        kyronPoints: true,
-        profile: {
-          select: {
-            avatarUrl: true,
-          },
-        },
-      },
-      orderBy: { kyronPoints: 'desc' },
-      take: limit,
-    });
-  }
-
-  // ==========================================
   // PHASE 4: PUBLIC PROFILE (Read from Prisma)
   // ==========================================
   async getPublicProfile(handleOrId: string, viewerId?: string) {
@@ -276,7 +229,6 @@ export class ProfileService {
         name: true,
         username: true,
         did: true,
-        kyronPoints: true,
         profile: { select: this.profileShape },
       },
     });
@@ -317,7 +269,6 @@ export class ProfileService {
         name: user.name,
         username: user.username,
         did: user.did,
-        kyronPoints: user.kyronPoints,
       },
       profile: user.profile ?? this.emptyProfile,
       stats: {
@@ -335,34 +286,52 @@ export class ProfileService {
    * Case-insensitive contains rather than a prefix: someone searching for
    * "kyron" should find "teamkyron", which a prefix match would miss. The
    * caller is excluded -- your own account is not a search result.
+   *
+   * An exact handle sorts first: somebody who typed a whole handle has said
+   * who they want. It is asked for on its own rather than picked out of the
+   * page, because a page is only `limit` long and enough better-followed
+   * near-misses would push it off the end. Beyond that, the most-followed
+   * people are the ones a short query most likely meant.
+   *
+   * This comment said that for a long time while the query sorted by Kyron
+   * Points -- a number any signed-in account could raise for itself, without
+   * limit, through `POST /profile/kp/award`. The top of every search was for
+   * sale at no price. Both are gone.
    */
   async searchProfiles(query: string, viewerId: string, limit = 20) {
     const q = query.trim();
     if (q.length < 2) return { items: [] };
 
-    const users = await this.prisma.user.findMany({
-      where: {
-        id: { not: viewerId },
-        deletedAt: null,
-        OR: [
-          { username: { contains: q, mode: 'insensitive' } },
-          { name: { contains: q, mode: 'insensitive' } },
-        ],
-      },
-      // An exact handle sorts first; beyond that, the most-followed people are
-      // the ones a short query most likely meant.
-      orderBy: [{ kyronPoints: 'desc' }, { username: 'asc' }],
-      take: limit,
-      select: {
-        id: true,
-        name: true,
-        username: true,
-        did: true,
-        kyronPoints: true,
-        profile: { select: { avatarUrl: true, bio: true } },
-        _count: { select: { followers: true } },
-      },
-    });
+    const eligible = { id: { not: viewerId }, deletedAt: null };
+
+    const [exact, ranked] = await Promise.all([
+      this.prisma.user.findFirst({
+        where: {
+          ...eligible,
+          username: { equals: q, mode: 'insensitive' },
+        },
+        select: this.summaryShape,
+      }),
+      this.prisma.user.findMany({
+        where: {
+          ...eligible,
+          OR: [
+            { username: { contains: q, mode: 'insensitive' } },
+            { name: { contains: q, mode: 'insensitive' } },
+          ],
+        },
+        orderBy: [{ followers: { _count: 'desc' } }, { username: 'asc' }],
+        take: limit,
+        select: this.summaryShape,
+      }),
+    ]);
+
+    const users = exact
+      ? [exact, ...ranked.filter((user) => user.id !== exact.id)].slice(
+          0,
+          limit,
+        )
+      : ranked;
 
     return {
       items: users.map((user) => ({
@@ -370,7 +339,6 @@ export class ProfileService {
         name: user.name,
         username: user.username,
         did: user.did,
-        kyronPoints: user.kyronPoints,
         avatarUrl: user.profile?.avatarUrl ?? null,
         bio: user.profile?.bio ?? null,
         followers: user._count.followers,
@@ -439,7 +407,6 @@ export class ProfileService {
         name: person.name,
         username: person.username,
         did: person.did,
-        kyronPoints: person.kyronPoints,
         avatarUrl: person.profile?.avatarUrl ?? null,
         bio: person.profile?.bio ?? null,
         followers: person._count.followers,
@@ -456,7 +423,6 @@ export class ProfileService {
     name: true,
     username: true,
     did: true,
-    kyronPoints: true,
     profile: { select: { avatarUrl: true, bio: true } },
     _count: { select: { followers: true } },
   } as const;
@@ -919,7 +885,6 @@ export class ProfileService {
         name: person.name,
         username: person.username,
         did: person.did,
-        kyronPoints: person.kyronPoints,
         avatarUrl: person.profile?.avatarUrl ?? null,
         bio: person.profile?.bio ?? null,
         followers: person._count.followers,
