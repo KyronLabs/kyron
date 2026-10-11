@@ -595,5 +595,18 @@
   "draft_just_now": "Ahora mismo",
   "draft_minutes_ago": "Hace {minutes} minutos",
   "draft_hours_ago": "Hace {hours} horas",
-  "draft_days_ago": "Hace {days} días"
+  "draft_days_ago": "Hace {days} días",
+  "ui_dm_you_replied": "Respondiste",
+  "dmReplied": "${name} respondió",
+  "ui_dm_attach": "Añadir al mensaje",
+  "ui_dm_send_heart": "Enviar un corazón",
+  "ui_dm_new": "Mensaje nuevo",
+  "ui_dm_starter": "Aún no se ha dicho nada. Un saludo es un buen comienzo.",
+  "ui_dm_wave": "👋  Saludar",
+  "ui_dm_new_messages": "Mensajes nuevos",
+  "dmTyping": "${name} está escribiendo",
+  "ui_dm_reaction_remove": "Quitar tu reacción",
+  "ui_dm_someone": "Alguien",
+  "ui_dm_quote_message": "Mensaje",
+  "ui_dm_quote_attachment": "Archivo adjunto"
 }

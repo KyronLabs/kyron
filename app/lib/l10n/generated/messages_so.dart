@@ -1248,6 +1248,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("Waad ka jawaabtay"),
+      "dmReplied": (Object a0) => "$a0 ayaa ka jawaabay",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Ku dar fariinta"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Dir qalbi"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Fariin cusub"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Weli waxba lama odhan. Gacan ruxid waa bilow wanaagsan."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Gacan ruxo"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Fariimo cusub"),
+      "dmTyping": (Object a0) => "$a0 ayaa qoraya",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Ka saar falcelintaada"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Qof"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Fariin"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Lifaaq"),
     };
 
 final messageLookup = MessageLookup();

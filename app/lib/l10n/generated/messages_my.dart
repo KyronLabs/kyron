@@ -1248,6 +1248,26 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("သင် ပြန်စာပို့ခဲ့သည်"),
+      "dmReplied": (Object a0) => "$a0 ပြန်စာပို့ခဲ့သည်",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်ထဲ ထည့်ရန်"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("နှလုံးသား ပို့ရန်"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်အသစ်"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "ဘာမှ မပြောရသေးပါ။ လက်ပြခြင်းသည် ကောင်းမွန်သော အစတစ်ခုဖြစ်သည်။"),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  လက်ပြရန်"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်အသစ်များ"),
+      "dmTyping": (Object a0) => "$a0 စာရိုက်နေသည်",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("သင့်တုံ့ပြန်မှုကို ဖယ်ရှားရန်"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("တစ်စုံတစ်ယောက်"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("ပူးတွဲဖိုင်"),
     };
 
 final messageLookup = MessageLookup();

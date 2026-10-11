@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "شما پاسخ دادید",
+  "dmReplied": "${name} پاسخ داد",
+  "ui_dm_attach": "افزودن به پیام",
+  "ui_dm_send_heart": "ارسال قلب",
+  "ui_dm_new": "پیام جدید",
+  "ui_dm_starter": "هنوز چیزی گفته نشده. یک دست تکان دادن شروع خوبی است.",
+  "ui_dm_wave": "👋  دست تکان بده",
+  "ui_dm_new_messages": "پیام‌های جدید",
+  "dmTyping": "${name} در حال نوشتن است",
+  "ui_dm_reaction_remove": "حذف واکنش شما",
+  "ui_dm_someone": "کسی",
+  "ui_dm_quote_message": "پیام",
+  "ui_dm_quote_attachment": "پیوست"
 }

@@ -1248,6 +1248,25 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("Jūs atbildējāt"),
+      "dmReplied": (Object a0) => "$a0 atbildēja",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Pievienot ziņai"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("Sūtīt sirsniņu"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Jauna ziņa"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Vēl nekas nav teikts. Pamāšana ir labs sākums."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Pamāt"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Jaunas ziņas"),
+      "dmTyping": (Object a0) => "$a0 raksta",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Noņemt savu reakciju"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Kāds"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Ziņa"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Pielikums"),
     };
 
 final messageLookup = MessageLookup();

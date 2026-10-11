@@ -595,5 +595,18 @@
   "draft_just_now": "たった今",
   "draft_minutes_ago": "{minutes}分前",
   "draft_hours_ago": "{hours}時間前",
-  "draft_days_ago": "{days}日前"
+  "draft_days_ago": "{days}日前",
+  "ui_dm_you_replied": "あなたが返信しました",
+  "dmReplied": "${name}さんが返信しました",
+  "ui_dm_attach": "メッセージに追加",
+  "ui_dm_send_heart": "ハートを送る",
+  "ui_dm_new": "新しいメッセージ",
+  "ui_dm_starter": "まだ何も話していません。まずは手を振ってみましょう。",
+  "ui_dm_wave": "👋  手を振る",
+  "ui_dm_new_messages": "新着メッセージ",
+  "dmTyping": "${name}さんが入力中",
+  "ui_dm_reaction_remove": "リアクションを取り消す",
+  "ui_dm_someone": "誰か",
+  "ui_dm_quote_message": "メッセージ",
+  "ui_dm_quote_attachment": "添付ファイル"
 }

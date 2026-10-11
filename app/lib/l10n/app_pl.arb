@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Twoja odpowiedź",
+  "dmReplied": "Odpowiedź od ${name}",
+  "ui_dm_attach": "Dodaj do wiadomości",
+  "ui_dm_send_heart": "Wyślij serce",
+  "ui_dm_new": "Nowa wiadomość",
+  "ui_dm_starter": "Jeszcze nic nie zostało powiedziane. Pomachanie to dobry początek.",
+  "ui_dm_wave": "👋  Pomachaj",
+  "ui_dm_new_messages": "Nowe wiadomości",
+  "dmTyping": "${name} pisze",
+  "ui_dm_reaction_remove": "Usuń swoją reakcję",
+  "ui_dm_someone": "Ktoś",
+  "ui_dm_quote_message": "Wiadomość",
+  "ui_dm_quote_attachment": "Załącznik"
 }

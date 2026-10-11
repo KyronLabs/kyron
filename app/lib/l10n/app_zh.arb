@@ -595,5 +595,18 @@
   "draft_just_now": "刚刚",
   "draft_minutes_ago": "{minutes} 分钟前",
   "draft_hours_ago": "{hours} 小时前",
-  "draft_days_ago": "{days} 天前"
+  "draft_days_ago": "{days} 天前",
+  "ui_dm_you_replied": "你回复了",
+  "dmReplied": "${name} 回复了",
+  "ui_dm_attach": "添加到消息",
+  "ui_dm_send_heart": "发送爱心",
+  "ui_dm_new": "新消息",
+  "ui_dm_starter": "还没有说过话。挥个手是个好开始。",
+  "ui_dm_wave": "👋  挥手",
+  "ui_dm_new_messages": "新消息",
+  "dmTyping": "${name} 正在输入",
+  "ui_dm_reaction_remove": "移除你的回应",
+  "ui_dm_someone": "某人",
+  "ui_dm_quote_message": "消息",
+  "ui_dm_quote_attachment": "附件"
 }

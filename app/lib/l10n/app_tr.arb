@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Yanıtladın",
+  "dmReplied": "${name} yanıtladı",
+  "ui_dm_attach": "Mesaja ekle",
+  "ui_dm_send_heart": "Kalp gönder",
+  "ui_dm_new": "Yeni mesaj",
+  "ui_dm_starter": "Henüz bir şey söylenmedi. El sallamak iyi bir başlangıç.",
+  "ui_dm_wave": "👋  El salla",
+  "ui_dm_new_messages": "Yeni mesajlar",
+  "dmTyping": "${name} yazıyor",
+  "ui_dm_reaction_remove": "Tepkini kaldır",
+  "ui_dm_someone": "Biri",
+  "ui_dm_quote_message": "Mesaj",
+  "ui_dm_quote_attachment": "Ek"
 }

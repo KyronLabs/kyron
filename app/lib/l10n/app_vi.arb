@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Bạn đã trả lời",
+  "dmReplied": "${name} đã trả lời",
+  "ui_dm_attach": "Thêm vào tin nhắn",
+  "ui_dm_send_heart": "Gửi một trái tim",
+  "ui_dm_new": "Tin nhắn mới",
+  "ui_dm_starter": "Chưa có gì được nói. Một cái vẫy tay là khởi đầu tốt.",
+  "ui_dm_wave": "👋  Vẫy tay",
+  "ui_dm_new_messages": "Tin nhắn mới",
+  "dmTyping": "${name} đang nhập",
+  "ui_dm_reaction_remove": "Gỡ cảm xúc của bạn",
+  "ui_dm_someone": "Ai đó",
+  "ui_dm_quote_message": "Tin nhắn",
+  "ui_dm_quote_attachment": "Tệp đính kèm"
 }

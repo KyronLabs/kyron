@@ -1344,6 +1344,25 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "Какво правехте когато се случи.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("Вие отговорихте"),
+      "dmReplied": (Object a0) => "$a0 отговори",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("Добавяне към съобщението"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Изпрати сърце"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Ново съобщение"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Още нищо не е казано. Едно махване е добро начало."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Махни"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Нови съобщения"),
+      "dmTyping": (Object a0) => "$a0 пише",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Премахни реакцията си"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Някой"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Съобщение"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Прикачен файл"),
     };
 
 final messageLookup = MessageLookup();

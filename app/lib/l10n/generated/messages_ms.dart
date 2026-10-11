@@ -1248,6 +1248,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("Anda membalas"),
+      "dmReplied": (Object a0) => "$a0 membalas",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Tambah pada mesej"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Hantar hati"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Mesej baharu"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Belum ada apa-apa yang dikatakan. Lambaian ialah permulaan yang baik."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Lambai"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Mesej baharu"),
+      "dmTyping": (Object a0) => "$a0 sedang menaip",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Alih keluar reaksi anda"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Seseorang"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Mesej"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Lampiran"),
     };
 
 final messageLookup = MessageLookup();

@@ -1248,6 +1248,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Atsakėte"),
+      "dmReplied": (Object a0) => "$a0 atsakė",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("Pridėti prie žinutės"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("Siųsti širdelę"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Nauja žinutė"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Dar nieko nepasakyta. Pamojavimas – gera pradžia."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Pamojuoti"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Naujos žinutės"),
+      "dmTyping": (Object a0) => "$a0 rašo",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Pašalinti savo reakciją"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Kažkas"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Žinutė"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Priedas"),
     };
 
 final messageLookup = MessageLookup();

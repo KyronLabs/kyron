@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Atsakėte",
+  "dmReplied": "${name} atsakė",
+  "ui_dm_attach": "Pridėti prie žinutės",
+  "ui_dm_send_heart": "Siųsti širdelę",
+  "ui_dm_new": "Nauja žinutė",
+  "ui_dm_starter": "Dar nieko nepasakyta. Pamojavimas – gera pradžia.",
+  "ui_dm_wave": "👋  Pamojuoti",
+  "ui_dm_new_messages": "Naujos žinutės",
+  "dmTyping": "${name} rašo",
+  "ui_dm_reaction_remove": "Pašalinti savo reakciją",
+  "ui_dm_someone": "Kažkas",
+  "ui_dm_quote_message": "Žinutė",
+  "ui_dm_quote_attachment": "Priedas"
 }

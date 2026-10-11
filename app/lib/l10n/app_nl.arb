@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Je antwoordde",
+  "dmReplied": "${name} antwoordde",
+  "ui_dm_attach": "Toevoegen aan bericht",
+  "ui_dm_send_heart": "Stuur een hartje",
+  "ui_dm_new": "Nieuw bericht",
+  "ui_dm_starter": "Nog niets gezegd. Een zwaai is een goed begin.",
+  "ui_dm_wave": "👋  Zwaaien",
+  "ui_dm_new_messages": "Nieuwe berichten",
+  "dmTyping": "${name} is aan het typen",
+  "ui_dm_reaction_remove": "Je reactie verwijderen",
+  "ui_dm_someone": "Iemand",
+  "ui_dm_quote_message": "Bericht",
+  "ui_dm_quote_attachment": "Bijlage"
 }

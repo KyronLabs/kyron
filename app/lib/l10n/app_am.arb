@@ -595,5 +595,18 @@
   "whatInPicture": "በዚህ ፎቶ ምን አለ?",
   "whatIsItFor": "ይህ ስለምን ነው? (አማራጭ)",
   "whatYouDid": "ያደረጉት፣ ያሰባሉት፣ የተከሰተው",
-  "whatYouWereDoing": "የምታደርጉት በሚሆንበት ጊዜ ምን እንደነበር።"
+  "whatYouWereDoing": "የምታደርጉት በሚሆንበት ጊዜ ምን እንደነበር።",
+  "ui_dm_you_replied": "እርስዎ መለሱ",
+  "dmReplied": "${name} መለሱ",
+  "ui_dm_attach": "ወደ መልእክት ያክሉ",
+  "ui_dm_send_heart": "ልብ ይላኩ",
+  "ui_dm_new": "አዲስ መልእክት",
+  "ui_dm_starter": "እስካሁን ምንም አልተባለም። ሰላምታ ጥሩ ጅምር ነው።",
+  "ui_dm_wave": "👋  ሰላም በሉ",
+  "ui_dm_new_messages": "አዲስ መልእክቶች",
+  "dmTyping": "${name} እየጻፉ ነው",
+  "ui_dm_reaction_remove": "ምላሽዎን ያስወግዱ",
+  "ui_dm_someone": "አንድ ሰው",
+  "ui_dm_quote_message": "መልእክት",
+  "ui_dm_quote_attachment": "አባሪ"
 }

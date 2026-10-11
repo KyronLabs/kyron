@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Vous avez répondu",
+  "dmReplied": "${name} a répondu",
+  "ui_dm_attach": "Ajouter au message",
+  "ui_dm_send_heart": "Envoyer un cœur",
+  "ui_dm_new": "Nouveau message",
+  "ui_dm_starter": "Rien n'a encore été dit. Un petit coucou est un bon début.",
+  "ui_dm_wave": "👋  Saluer",
+  "ui_dm_new_messages": "Nouveaux messages",
+  "dmTyping": "${name} est en train d'écrire",
+  "ui_dm_reaction_remove": "Retirer votre réaction",
+  "ui_dm_someone": "Quelqu'un",
+  "ui_dm_quote_message": "Message",
+  "ui_dm_quote_attachment": "Pièce jointe"
 }

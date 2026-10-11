@@ -38,6 +38,41 @@ class MessagePerson {
 }
 
 /// One message in a thread.
+/// One person's reaction to a message: a single emoji.
+///
+/// Stored readable on the server, unlike the message itself -- a decided
+/// trade, written down in docs/E2EE.md.
+class MessageReaction {
+  final String userId;
+  final String emoji;
+
+  const MessageReaction({required this.userId, required this.emoji});
+
+  factory MessageReaction.fromJson(Map<String, dynamic> json) =>
+      MessageReaction(
+        userId: json['userId'] as String? ?? '',
+        emoji: json['emoji'] as String? ?? '',
+      );
+
+  /// Whatever the server sent, skipping anything malformed rather than
+  /// failing the whole thread over one bad reaction.
+  static List<MessageReaction> listFrom(Object? json) => [
+        if (json is List)
+          for (final item in json.whereType<Map<String, dynamic>>())
+            if ((item['emoji'] as String? ?? '').isNotEmpty)
+              MessageReaction.fromJson(item),
+      ];
+
+  @override
+  bool operator ==(Object other) =>
+      other is MessageReaction &&
+      other.userId == userId &&
+      other.emoji == emoji;
+
+  @override
+  int get hashCode => Object.hash(userId, emoji);
+}
+
 class DirectMessage {
   final String id;
   final String body;
@@ -80,6 +115,9 @@ class DirectMessage {
   /// it resolves the quote itself; see `ThreadState.answered`.
   final String? replyToId;
 
+  /// Who reacted, and with what. One each at most.
+  final List<MessageReaction> reactions;
+
   const DirectMessage({
     required this.id,
     required this.body,
@@ -92,7 +130,16 @@ class DirectMessage {
     this.encrypted = false,
     this.unreadable = false,
     this.replyToId,
+    this.reactions = const [],
   });
+
+  /// The emoji [userId] reacted with, or null.
+  String? reactionOf(String userId) {
+    for (final reaction in reactions) {
+      if (reaction.userId == userId) return reaction.emoji;
+    }
+    return null;
+  }
 
   /// A message with nothing in it is not a message, but a picture is.
   bool get isEmpty => body.trim().isEmpty && media.isEmpty;
@@ -107,6 +154,7 @@ class DirectMessage {
         seen: json['seen'] == true,
         media: PostMedia.listFrom(json['media']),
         replyToId: json['replyToId'] as String?,
+        reactions: MessageReaction.listFrom(json['reactions']),
       );
 
   DirectMessage copyWith({
@@ -117,6 +165,7 @@ class DirectMessage {
     bool? encrypted,
     bool? unreadable,
     String? replyToId,
+    List<MessageReaction>? reactions,
   }) =>
       DirectMessage(
         id: id,
@@ -130,6 +179,7 @@ class DirectMessage {
         encrypted: encrypted ?? this.encrypted,
         unreadable: unreadable ?? this.unreadable,
         replyToId: replyToId ?? this.replyToId,
+        reactions: reactions ?? this.reactions,
       );
 }
 
@@ -201,11 +251,16 @@ class MessagePage {
   /// rather than guessed, so the menu offers Mute or Unmute and not both.
   final bool muted;
 
+  /// How far the reader had read before opening this, or null for a thread
+  /// they have never opened. What "New messages" is drawn above.
+  final DateTime? lastReadAt;
+
   const MessagePage({
     this.items = const [],
     this.nextCursor,
     this.people = const [],
     this.muted = false,
+    this.lastReadAt,
   });
 
   factory MessagePage.fromJson(Map<String, dynamic> json) => MessagePage(
@@ -219,6 +274,9 @@ class MessagePage {
             .map(MessagePerson.fromJson)
             .toList(),
         muted: json['muted'] as bool? ?? false,
+        lastReadAt: DateTime.tryParse(
+          json['lastReadAt'] as String? ?? '',
+        )?.toLocal(),
       );
 }
 

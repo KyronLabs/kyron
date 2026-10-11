@@ -1248,6 +1248,25 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("Bạn đã trả lời"),
+      "dmReplied": (Object a0) => "$a0 đã trả lời",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Thêm vào tin nhắn"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("Gửi một trái tim"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Tin nhắn mới"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Chưa có gì được nói. Một cái vẫy tay là khởi đầu tốt."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Vẫy tay"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Tin nhắn mới"),
+      "dmTyping": (Object a0) => "$a0 đang nhập",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Gỡ cảm xúc của bạn"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Ai đó"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Tin nhắn"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Tệp đính kèm"),
     };
 
 final messageLookup = MessageLookup();

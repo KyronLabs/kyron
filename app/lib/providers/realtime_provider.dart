@@ -77,6 +77,28 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
       // The list shows the last message, which may have been that one.
       _refreshConversationLists(ref);
 
+    case 'message.reaction':
+      final reactedIn = event.conversationId;
+      final reactedTo = event.messageId;
+      if (reactedIn != null &&
+          reactedTo != null &&
+          ref.exists(threadProvider(reactedIn))) {
+        ref
+            .read(threadProvider(reactedIn).notifier)
+            .reactionsChanged(reactedTo);
+      }
+
+    case 'message.typing':
+      // Only for a thread that is open: "is typing" about a conversation
+      // nobody is looking at is nothing, and is gone in seconds anyway.
+      final typingIn = event.conversationId;
+      final who = event.data['userId'] as String?;
+      if (typingIn != null &&
+          who != null &&
+          ref.exists(threadProvider(typingIn))) {
+        ref.read(threadProvider(typingIn).notifier).otherTyping(who);
+      }
+
     case 'notification.new':
       // The badge always; the list only where a tab is actually built, since
       // invalidating a family key nobody holds would construct it.

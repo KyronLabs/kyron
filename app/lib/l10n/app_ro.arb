@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Ai răspuns",
+  "dmReplied": "${name} a răspuns",
+  "ui_dm_attach": "Adaugă la mesaj",
+  "ui_dm_send_heart": "Trimite o inimă",
+  "ui_dm_new": "Mesaj nou",
+  "ui_dm_starter": "Încă nu s-a spus nimic. Un salut cu mâna e un început bun.",
+  "ui_dm_wave": "👋  Salută",
+  "ui_dm_new_messages": "Mesaje noi",
+  "dmTyping": "${name} scrie",
+  "ui_dm_reaction_remove": "Elimină reacția ta",
+  "ui_dm_someone": "Cineva",
+  "ui_dm_quote_message": "Mesaj",
+  "ui_dm_quote_attachment": "Atașament"
 }

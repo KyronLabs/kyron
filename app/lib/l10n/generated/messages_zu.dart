@@ -1248,6 +1248,26 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Uphendulile"),
+      "dmReplied": (Object a0) => "U-$a0 uphendulile",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("Engeza emlayezweni"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("Thumela inhliziyo"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Umlayezo omusha"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Akukho okushiwoyo okwamanje. Ukuphakamisa isandla kuyisiqalo esihle."),
+      "ui_dm_wave":
+          MessageLookupByLibrary.simpleMessage("👋  Phakamisa isandla"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Imilayezo emisha"),
+      "dmTyping": (Object a0) => "U-$a0 uyabhala",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Susa ukusabela kwakho"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Othile"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Umlayezo"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Okunamathiselwe"),
     };
 
 final messageLookup = MessageLookup();

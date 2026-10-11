@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Դուք պատասխանեցիք",
+  "dmReplied": "${name} պատասխանեց",
+  "ui_dm_attach": "Ավելացնել հաղորդագրությանը",
+  "ui_dm_send_heart": "Ուղարկել սիրտ",
+  "ui_dm_new": "Նոր հաղորդագրություն",
+  "ui_dm_starter": "Դեռ ոչինչ չի ասվել։ Ձեռքով ողջույնը լավ սկիզբ է։",
+  "ui_dm_wave": "👋  Ողջունել",
+  "ui_dm_new_messages": "Նոր հաղորդագրություններ",
+  "dmTyping": "${name} գրում է",
+  "ui_dm_reaction_remove": "Հեռացնել ձեր արձագանքը",
+  "ui_dm_someone": "Ինչ-որ մեկը",
+  "ui_dm_quote_message": "Հաղորդագրություն",
+  "ui_dm_quote_attachment": "Կցորդ"
 }

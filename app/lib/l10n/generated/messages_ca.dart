@@ -1366,6 +1366,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "Què estaves fent quan va passar.",
       ),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Has respost"),
+      "dmReplied": (Object a0) => "$a0 ha respost",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("Afegeix al missatge"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Envia un cor"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Missatge nou"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Encara no s'ha dit res. Una salutació és un bon començament."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Saluda"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Missatges nous"),
+      "dmTyping": (Object a0) => "$a0 està escrivint",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Elimina la teva reacció"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Algú"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Missatge"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Fitxer adjunt"),
     };
 
 final messageLookup = MessageLookup();

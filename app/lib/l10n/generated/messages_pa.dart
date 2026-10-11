@@ -1248,6 +1248,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("ਤੁਸੀਂ ਜਵਾਬ ਦਿੱਤਾ"),
+      "dmReplied": (Object a0) => "$a0 ਨੇ ਜਵਾਬ ਦਿੱਤਾ",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("ਸੁਨੇਹੇ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ਦਿਲ ਭੇਜੋ"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("ਨਵਾਂ ਸੁਨੇਹਾ"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "ਹਾਲੇ ਕੁਝ ਨਹੀਂ ਕਿਹਾ ਗਿਆ। ਹੱਥ ਹਿਲਾਉਣਾ ਇੱਕ ਵਧੀਆ ਸ਼ੁਰੂਆਤ ਹੈ।"),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  ਹੱਥ ਹਿਲਾਓ"),
+      "ui_dm_new_messages": MessageLookupByLibrary.simpleMessage("ਨਵੇਂ ਸੁਨੇਹੇ"),
+      "dmTyping": (Object a0) => "$a0 ਟਾਈਪ ਕਰ ਰਹੇ ਹਨ",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("ਆਪਣੀ ਪ੍ਰਤੀਕਿਰਿਆ ਹਟਾਓ"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("ਕੋਈ"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("ਸੁਨੇਹਾ"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("ਨੱਥੀ"),
     };
 
 final messageLookup = MessageLookup();

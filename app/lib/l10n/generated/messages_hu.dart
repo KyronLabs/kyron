@@ -1248,6 +1248,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Válaszoltál"),
+      "dmReplied": (Object a0) => "$a0 válaszolt",
+      "ui_dm_attach":
+          MessageLookupByLibrary.simpleMessage("Hozzáadás az üzenethez"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Szív küldése"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Új üzenet"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Még semmi sem hangzott el. Egy integetés jó kezdet."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Integetés"),
+      "ui_dm_new_messages": MessageLookupByLibrary.simpleMessage("Új üzenetek"),
+      "dmTyping": (Object a0) => "$a0 éppen ír",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Reakciód eltávolítása"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Valaki"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Üzenet"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Melléklet"),
     };
 
 final messageLookup = MessageLookup();

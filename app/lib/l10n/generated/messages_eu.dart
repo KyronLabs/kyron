@@ -1248,6 +1248,25 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("Erantzun duzu"),
+      "dmReplied": (Object a0) => "$a0(e)k erantzun du",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Gehitu mezuari"),
+      "ui_dm_send_heart":
+          MessageLookupByLibrary.simpleMessage("Bidali bihotz bat"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("Mezu berria"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "Oraindik ez da ezer esan. Agur bat hasiera ona da."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  Agurtu"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("Mezu berriak"),
+      "dmTyping": (Object a0) => "$a0 idazten ari da",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("Kendu zure erreakzioa"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Norbait"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Mezua"),
+      "ui_dm_quote_attachment":
+          MessageLookupByLibrary.simpleMessage("Eranskina"),
     };
 
 final messageLookup = MessageLookup();

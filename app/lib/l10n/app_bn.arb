@@ -595,5 +595,18 @@
   "whatInPicture": "এই ছবিতে কী আছে?",
   "whatIsItFor": "এটা কী জন্য? (ঐচ্ছিক)",
   "whatYouDid": "আপনি যা করেছিলেন, আপনি কী আশা করেছিলেন, কী ঘটেছে",
-  "whatYouWereDoing": "ঘটনার সময় আপনি কী করছিলেন।"
+  "whatYouWereDoing": "ঘটনার সময় আপনি কী করছিলেন।",
+  "ui_dm_you_replied": "আপনি উত্তর দিয়েছেন",
+  "dmReplied": "${name} উত্তর দিয়েছেন",
+  "ui_dm_attach": "বার্তায় যোগ করুন",
+  "ui_dm_send_heart": "একটি হার্ট পাঠান",
+  "ui_dm_new": "নতুন বার্তা",
+  "ui_dm_starter": "এখনও কিছু বলা হয়নি। হাত নাড়ানো একটি ভালো শুরু।",
+  "ui_dm_wave": "👋  হাত নাড়ুন",
+  "ui_dm_new_messages": "নতুন বার্তাগুলো",
+  "dmTyping": "${name} টাইপ করছেন",
+  "ui_dm_reaction_remove": "আপনার প্রতিক্রিয়া সরান",
+  "ui_dm_someone": "কেউ একজন",
+  "ui_dm_quote_message": "বার্তা",
+  "ui_dm_quote_attachment": "সংযুক্তি"
 }

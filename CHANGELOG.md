@@ -14,6 +14,43 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Reactions, "is typing", and "New messages" in chats.** Double-tap a
+  message to heart it, double-tap again to take it back; long-press for six
+  quick reactions above the usual actions, where choosing your current one
+  again removes it. Reactions sit on the bubble's lower corner as one small
+  pill — "😂 2" when you both chose the same one — and a tap on your own
+  takes it back. One reaction each per message, replaced rather than stacked.
+  They are on screen at once and put back with a message if the server
+  refuses. Reactions are stored readable on the server, unlike the messages
+  they sit on — a decided trade, in `docs/E2EE.md`.
+
+  While the other person writes, three dots appear at the foot of the
+  thread. They go when the message arrives or a few seconds after the typing
+  stops, with no "stopped typing" signal to lose, and hold still for anyone
+  who has asked their phone for less motion. Your own typing is sent at most
+  every three seconds. Neither reactions nor typing ever cause a push.
+
+  Opening a thread with unread messages draws "New messages" above the
+  first one, and it stays where it was after the thread is marked read.
+
+- **Chats that work the way people already chat.** Pull a message sideways
+  to answer it: it follows the finger, the phone ticks at the point where
+  letting go replies, and short of that nothing happens. A reply is drawn the
+  way the messaging apps people use draw it — "Ada replied" above, the message
+  being answered muted behind, and the answer over its lower edge — through
+  a small render object, because no stock layout can overlap two things and
+  be the height of both. A message of one to three emoji and nothing else is
+  drawn large and without a bubble, counted in grapheme clusters so 👩🏽‍💻 and
+  🇳🇬 are one each and © is not one at all; emoji among words stay the size of
+  the words. A run of messages from one person shares one avatar and one time,
+  instead of a timestamp under every line. An empty conversation shows the two
+  of you and offers a one-tap wave instead of the app's generic empty state.
+  The composer puts every attachment behind one button, keeps a photo and a
+  GIF a tap away inside the box while it is empty, and stands a heart where
+  Send goes until there is something to send. GIFs can be sent in messages
+  for the first time, through the same picker posts use. Every new label in
+  the chat is translated into all 68 languages the app ships a catalog for.
+
 - **A language system: App language, Primary language and Content
   languages.** One searchable sheet serves all three and the get-started
   screen, over a catalogue of 69 languages that each carry their own endonym
@@ -57,6 +94,14 @@ section for that version, so what is written here is what people read.
 
 
 ### Fixed
+
+- **Encrypted messages arrived on the lock screen as ciphertext.** The push
+  for a new message carried the message body, and the phone's notification
+  system shows a push without asking the app — so every sealed message was
+  announced as `k1.Zx9f…`, and every unsealed one went through Google's
+  servers in the clear. `docs/E2EE.md` had described only the second half.
+  A message push now says who it is from and "Sent you a message" or "Sent
+  an attachment", and nothing else.
 
 - **A fresh install could not get through its own quickstart.** Two
   separate faults, the second hidden behind the first, and neither visible

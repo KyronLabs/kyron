@@ -595,5 +595,18 @@
   "whatInPicture": "Какво има на тази снимка?",
   "whatIsItFor": "За какво е? (по избор)",
   "whatYouDid": "Какво направихте, какво очаквахте, какво се случи",
-  "whatYouWereDoing": "Какво правехте когато се случи."
+  "whatYouWereDoing": "Какво правехте когато се случи.",
+  "ui_dm_you_replied": "Вие отговорихте",
+  "dmReplied": "${name} отговори",
+  "ui_dm_attach": "Добавяне към съобщението",
+  "ui_dm_send_heart": "Изпрати сърце",
+  "ui_dm_new": "Ново съобщение",
+  "ui_dm_starter": "Още нищо не е казано. Едно махване е добро начало.",
+  "ui_dm_wave": "👋  Махни",
+  "ui_dm_new_messages": "Нови съобщения",
+  "dmTyping": "${name} пише",
+  "ui_dm_reaction_remove": "Премахни реакцията си",
+  "ui_dm_someone": "Някой",
+  "ui_dm_quote_message": "Съобщение",
+  "ui_dm_quote_attachment": "Прикачен файл"
 }

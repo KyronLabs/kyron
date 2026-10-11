@@ -1048,6 +1048,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "draft_minutes_ago": MessageLookupByLibrary.simpleMessage("{minutes}分前"),
       "draft_hours_ago": MessageLookupByLibrary.simpleMessage("{hours}時間前"),
       "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days}日前"),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("あなたが返信しました"),
+      "dmReplied": (Object a0) => "$a0さんが返信しました",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("メッセージに追加"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ハートを送る"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("新しいメッセージ"),
+      "ui_dm_starter":
+          MessageLookupByLibrary.simpleMessage("まだ何も話していません。まずは手を振ってみましょう。"),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  手を振る"),
+      "ui_dm_new_messages": MessageLookupByLibrary.simpleMessage("新着メッセージ"),
+      "dmTyping": (Object a0) => "$a0さんが入力中",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("リアクションを取り消す"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("誰か"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("メッセージ"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("添付ファイル"),
     };
 
 final messageLookup = MessageLookup();

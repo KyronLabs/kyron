@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Você respondeu",
+  "dmReplied": "${name} respondeu",
+  "ui_dm_attach": "Adicionar à mensagem",
+  "ui_dm_send_heart": "Enviar um coração",
+  "ui_dm_new": "Nova mensagem",
+  "ui_dm_starter": "Nada foi dito ainda. Um aceno é um bom começo.",
+  "ui_dm_wave": "👋  Acenar",
+  "ui_dm_new_messages": "Novas mensagens",
+  "dmTyping": "${name} está digitando",
+  "ui_dm_reaction_remove": "Remover sua reação",
+  "ui_dm_someone": "Alguém",
+  "ui_dm_quote_message": "Mensagem",
+  "ui_dm_quote_attachment": "Anexo"
 }

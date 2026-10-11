@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "तुम्ही उत्तर दिले",
+  "dmReplied": "${name} यांनी उत्तर दिले",
+  "ui_dm_attach": "संदेशात जोडा",
+  "ui_dm_send_heart": "हृदय पाठवा",
+  "ui_dm_new": "नवीन संदेश",
+  "ui_dm_starter": "अजून काहीही बोलले गेले नाही. हात हलवणे ही चांगली सुरुवात आहे.",
+  "ui_dm_wave": "👋  हात हलवा",
+  "ui_dm_new_messages": "नवीन संदेश",
+  "dmTyping": "${name} टाइप करत आहेत",
+  "ui_dm_reaction_remove": "तुमची प्रतिक्रिया काढा",
+  "ui_dm_someone": "कोणीतरी",
+  "ui_dm_quote_message": "संदेश",
+  "ui_dm_quote_attachment": "जोडणी"
 }

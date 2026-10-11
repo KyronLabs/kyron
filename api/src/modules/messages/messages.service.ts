@@ -47,11 +47,22 @@ export interface MessageMedia {
   thumbnailUrl: string | null;
 }
 
+/** One person's reaction to a message. */
+export interface MessageReactionItem {
+  userId: string;
+  emoji: string;
+}
+
 export interface MessageItem {
   id: string;
   body: string;
   senderId: string;
   createdAt: Date;
+  /**
+   * Who reacted, and with what. Readable, unlike the body: a decided trade,
+   * written down in docs/E2EE.md.
+   */
+  reactions: MessageReactionItem[];
   /** True once the other side has read past it. Drawn as a tick. */
   seen: boolean;
   /**
@@ -86,6 +97,18 @@ const DEFAULT_LIMIT = 30;
  * a conversation id is a UUID somebody could guess at, and "you are in it" is
  * the only thing that should decide whether it opens.
  */
+/**
+ * Exactly one emoji: a flag, a keycap, or a pictograph carrying any variation
+ * selector, skin tone or tag characters, joined to more of the same by
+ * zero-width joiners.
+ */
+const PICTOGRAPH =
+  '\\p{Extended_Pictographic}[\\uFE0F\\p{Emoji_Modifier}\\u{E0020}-\\u{E007F}]*';
+const SINGLE_EMOJI = new RegExp(
+  `^(?:\\p{Regional_Indicator}{2}|[#*0-9]\\uFE0F?\\u20E3|${PICTOGRAPH}(?:\\u200D${PICTOGRAPH})*)$`,
+  'u',
+);
+
 @Injectable()
 export class MessagesService {
   private readonly logger = new Logger(MessagesService.name);
@@ -100,6 +123,21 @@ export class MessagesService {
 
   /** How many attachments one message may carry. Same as a post's. */
   static readonly maxMedia = 4;
+
+  /**
+   * Whether [value] can be a reaction: exactly one emoji, and nothing else.
+   *
+   * One emoji as a reader sees it, which can be many code points: a skin
+   * tone (👍🏾), a joined sequence (👩🏽‍💻, 🏳️‍🌈), a flag (🇳🇬, and the tag
+   * sequences of 🏴󠁧󠁢󠁳󠁣󠁴󠁿), a keycap (1️⃣). Two emoji, a letter, or a word
+   * with an emoji in it is not one. The length cap is generous for the longest
+   * of those and stops a reaction being a place to store an essay on somebody
+   * else's message.
+   */
+  static isReactionEmoji(value: string): boolean {
+    if (value.length === 0 || value.length > 32) return false;
+    return SINGLE_EMOJI.test(value);
+  }
 
   private readonly personShape = {
     id: true,
@@ -324,6 +362,10 @@ export class MessagesService {
         // server holds ciphertext, and the client has the thread decrypted.
         replyToId: true,
         media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+        reactions: {
+          select: this.reactionShape,
+          orderBy: { createdAt: 'asc' },
+        },
       },
     });
 
@@ -346,6 +388,13 @@ export class MessagesService {
       // is a menu that cannot say which state the reader is already in.
       muted:
         conversation.members.find((m) => m.userId === viewerId)?.mutedAt !=
+        null,
+      // How far the reader had read before opening this. Reading a thread
+      // does not mark it read -- PUT :id/read does, after -- so this is still
+      // the old mark, which is exactly what drawing "New messages" above the
+      // first unread one needs. Null when they have never opened it.
+      lastReadAt:
+        conversation.members.find((m) => m.userId === viewerId)?.lastReadAt ??
         null,
     };
   }
@@ -464,18 +513,143 @@ export class MessagesService {
           sender?.user?.name?.trim() ||
           sender?.user?.username?.trim() ||
           'New message',
-        // The message itself, or what it was without words. A push saying
-        // "sent you a message" makes the reader open the app to find out
-        // whether it was worth opening the app.
-        body: text || 'Sent an attachment',
+        // Never the message. This used to be the stored body, and the body of
+        // a sealed message is ciphertext: the push is shown by the phone's
+        // own notification system, with no chance for the app to open it
+        // first, so every encrypted message arrived on the lock screen as
+        // `k1.Zx9f…`. A body that was not sealed was worse -- the words went
+        // through Google's servers in the clear, from a feature the README
+        // calls end-to-end encrypted. The server cannot read a sealed message
+        // and must not repeat an unsealed one, so the push says only that
+        // something arrived. Showing the words again means opening them on
+        // the device, in a push the app handles itself -- docs/E2EE.md.
+        body: media.length > 0 ? 'Sent an attachment' : 'Sent you a message',
         data: { type: 'message', conversationId },
       },
     );
 
-    return { ...message, seen: false };
+    // The same shape as a message read from the thread, so the client parses
+    // one kind of thing. Nobody has reacted to a message a moment old.
+    return { ...message, seen: false, reactions: [] };
   }
 
   /** What a message's attachments look like on the wire. */
+  private get reactionShape() {
+    return { userId: true, emoji: true } as const;
+  }
+
+  /**
+   * Reacts to a message, replacing any reaction the reader already had on it.
+   *
+   * Anyone in the conversation can react to anything in it, their own
+   * messages included -- but not across a block, the same rule sending
+   * follows, and not to a message that is gone.
+   */
+  async react(
+    viewerId: string,
+    conversationId: string,
+    messageId: string,
+    emoji: string,
+  ) {
+    const value = emoji.trim();
+    if (!MessagesService.isReactionEmoji(value)) {
+      throw new BadRequestException('A reaction is one emoji.');
+    }
+    const conversation = await this.requireMembership(viewerId, conversationId);
+    for (const member of conversation.members) {
+      if (member.userId !== viewerId) {
+        await this.requireNoBlock(viewerId, member.userId);
+      }
+    }
+    await this.requireMessage(conversationId, messageId);
+
+    await this.prisma.messageReaction.upsert({
+      where: { messageId_userId: { messageId, userId: viewerId } },
+      create: { messageId, userId: viewerId, emoji: value },
+      update: { emoji: value, createdAt: new Date() },
+    });
+
+    this.tellReaction(viewerId, conversation, messageId);
+    return { messageId, userId: viewerId, emoji: value };
+  }
+
+  /** Takes the reader's reaction off a message. Nothing there is not an
+   * error: the end state is the one asked for. */
+  async unreact(viewerId: string, conversationId: string, messageId: string) {
+    const conversation = await this.requireMembership(viewerId, conversationId);
+    const { count } = await this.prisma.messageReaction.deleteMany({
+      where: { messageId, userId: viewerId, message: { conversationId } },
+    });
+    if (count > 0) this.tellReaction(viewerId, conversation, messageId);
+    return { ok: true };
+  }
+
+  /**
+   * One message's reactions, for a client told over the socket that they
+   * changed. The event carries only ids; this is where the emoji are read,
+   * behind the same membership check as the thread itself.
+   */
+  async reactionsFor(
+    viewerId: string,
+    conversationId: string,
+    messageId: string,
+  ) {
+    await this.requireMembership(viewerId, conversationId);
+    await this.requireMessage(conversationId, messageId);
+    const reactions = await this.prisma.messageReaction.findMany({
+      where: { messageId },
+      orderBy: { createdAt: 'asc' },
+      select: this.reactionShape,
+    });
+    return { messageId, reactions };
+  }
+
+  /**
+   * Tells everyone else in the conversation that the reader is writing.
+   *
+   * Over the socket only, never a push: "Ada is typing" is worth something
+   * while the thread is open and nothing at all as a buzz in a pocket. The
+   * client sends this at most every few seconds while the box is changing,
+   * and the other side lets it lapse on its own, so there is no "stopped
+   * typing" to forget to send.
+   */
+  async typing(viewerId: string, conversationId: string) {
+    const conversation = await this.requireMembership(viewerId, conversationId);
+    for (const member of conversation.members) {
+      if (member.userId !== viewerId) {
+        await this.requireNoBlock(viewerId, member.userId);
+      }
+    }
+    this.delivery.tellMany(
+      conversation.members.map((m) => m.userId).filter((id) => id !== viewerId),
+      { type: 'message.typing', conversationId, userId: viewerId },
+    );
+    return { ok: true };
+  }
+
+  private tellReaction(
+    viewerId: string,
+    conversation: { id: string; members: { userId: string }[] },
+    messageId: string,
+  ) {
+    // No push. A reaction is a small thing, and a phone that buzzes for every
+    // heart is a phone that gets its notifications turned off.
+    this.delivery.tellMany(
+      conversation.members.map((m) => m.userId).filter((id) => id !== viewerId),
+      { type: 'message.reaction', conversationId: conversation.id, messageId },
+    );
+  }
+
+  /** The message, if it is in this conversation and not withdrawn. */
+  private async requireMessage(conversationId: string, messageId: string) {
+    const message = await this.prisma.message.findFirst({
+      where: { id: messageId, conversationId, deletedAt: null },
+      select: { id: true },
+    });
+    if (!message) throw new NotFoundException('That message is gone.');
+    return message;
+  }
+
   private get mediaShape() {
     return {
       id: true,

@@ -1248,6 +1248,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("คุณตอบกลับแล้ว"),
+      "dmReplied": (Object a0) => "$a0 ตอบกลับแล้ว",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("เพิ่มลงในข้อความ"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ส่งหัวใจ"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("ข้อความใหม่"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "ยังไม่มีใครพูดอะไร โบกมือทักทายเป็นการเริ่มต้นที่ดี"),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  โบกมือ"),
+      "ui_dm_new_messages": MessageLookupByLibrary.simpleMessage("ข้อความใหม่"),
+      "dmTyping": (Object a0) => "$a0 กำลังพิมพ์",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("ลบการแสดงความรู้สึกของคุณ"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("ใครบางคน"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("ข้อความ"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("ไฟล์แนบ"),
     };
 
 final messageLookup = MessageLookup();

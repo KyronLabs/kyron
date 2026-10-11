@@ -1,4 +1,6 @@
 // lib/providers/messages_provider.dart
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
@@ -179,6 +181,17 @@ class ThreadState {
   /// Whether the reader has silenced this conversation.
   final bool muted;
 
+  /// How far the reader had read when the thread was opened.
+  ///
+  /// Captured once, from the first page, and never moved while the screen is
+  /// open: opening a thread marks it read, and a divider that chased the read
+  /// mark would vanish the moment it appeared.
+  final DateTime? readUpTo;
+
+  /// Who is writing right now, if anyone. Lapses on its own -- see
+  /// [ThreadNotifier.otherTyping].
+  final String? typing;
+
   const ThreadState({
     this.messages = const [],
     this.people = const [],
@@ -187,7 +200,27 @@ class ThreadState {
     this.loadingMore = false,
     this.error,
     this.muted = false,
+    this.readUpTo,
+    this.typing,
   });
+
+  /// The first message the reader had not seen when they opened the thread,
+  /// which is where "New messages" goes; null when there is nowhere useful to
+  /// put it.
+  ///
+  /// Only somebody else's messages count -- your own were never unread. And
+  /// never the very first message loaded: a divider above everything says
+  /// nothing that the thread being new does not already say.
+  String? firstUnreadFor(String me) {
+    for (var i = 0; i < messages.length; i++) {
+      final message = messages[i];
+      if (message.senderId == me) continue;
+      final unread = readUpTo == null || message.createdAt.isAfter(readUpTo!);
+      if (!unread) continue;
+      return i == 0 ? null : message.id;
+    }
+    return null;
+  }
 
   bool get isEmpty => !loadingFirstPage && error == null && messages.isEmpty;
 
@@ -220,6 +253,8 @@ class ThreadState {
     String? error,
     bool clearError = false,
     bool? muted,
+    String? typing,
+    bool clearTyping = false,
   }) =>
       ThreadState(
         messages: messages ?? this.messages,
@@ -229,6 +264,8 @@ class ThreadState {
         loadingMore: loadingMore ?? this.loadingMore,
         error: clearError ? null : (error ?? this.error),
         muted: muted ?? this.muted,
+        readUpTo: readUpTo,
+        typing: clearTyping ? null : (typing ?? this.typing),
       );
 }
 
@@ -284,6 +321,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
         cursor: page.nextCursor,
         loadingFirstPage: false,
         muted: page.muted,
+        readUpTo: page.lastReadAt,
       );
       await _markRead();
     } catch (error) {
@@ -311,7 +349,15 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       ]);
       if (fresh.isEmpty) return;
 
-      state = state.copyWith(messages: [...state.messages, ...fresh]);
+      // Whoever was typing has sent it. The dots go now rather than lapsing a
+      // few seconds after their message is already on screen.
+      final typer = state.typing;
+      final sent = typer != null && fresh.any((m) => m.senderId == typer);
+      if (sent) _typingLapse?.cancel();
+      state = state.copyWith(
+        messages: [...state.messages, ...fresh],
+        clearTyping: sent,
+      );
       await _markRead();
     } catch (_) {
       // Nothing to say. The message is still on the server and the next
@@ -476,6 +522,123 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       state = state.copyWith(messages: kept);
       return describeApiError(error, sessionIsLive: true);
     }
+  }
+
+  /// How long "is typing" lasts after the last sign of it. The other side
+  /// sends one every [typingEvery] while their box changes, so this outlives
+  /// one gap and lapses after a pause, with no "stopped" message to lose.
+  static const typingLapse = Duration(seconds: 6);
+
+  /// The most often this reader tells the other side they are typing.
+  static const typingEvery = Duration(seconds: 3);
+
+  Timer? _typingLapse;
+  DateTime? _lastTypingSent;
+
+  /// The socket said [userId] is writing in this thread.
+  void otherTyping(String userId) {
+    _typingLapse?.cancel();
+    state = state.copyWith(typing: userId);
+    _typingLapse = Timer(typingLapse, () {
+      if (mounted) state = state.copyWith(clearTyping: true);
+    });
+  }
+
+  /// Tells the other side the reader is writing -- at most every
+  /// [typingEvery], however fast they type. Fire and forget: a lost "is
+  /// typing" is not worth a word to anybody.
+  Future<void> sendTyping({DateTime? now}) async {
+    final at = now ?? DateTime.now();
+    final last = _lastTypingSent;
+    if (last != null && at.difference(last) < typingEvery) return;
+    _lastTypingSent = at;
+    try {
+      await _repo.typing(_conversationId);
+    } catch (_) {}
+  }
+
+  /// Reacts to [message] with [emoji], replacing the reader's previous
+  /// reaction to it. On screen at once and put back if the server refuses;
+  /// returns what to tell the reader then, or null.
+  Future<String?> react(
+    DirectMessage message,
+    String emoji, {
+    required String me,
+  }) async {
+    if (message.sending || message.failed) return null;
+    final before = _reactionsOf(message.id);
+    if (before == null) return null;
+    _setReactions(message.id, [
+      for (final r in before)
+        if (r.userId != me) r,
+      MessageReaction(userId: me, emoji: emoji),
+    ]);
+    try {
+      await _repo.react(_conversationId, message.id, emoji);
+      return null;
+    } catch (error) {
+      _setReactions(message.id, before);
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  /// Takes the reader's reaction off [message].
+  Future<String?> unreact(DirectMessage message, {required String me}) async {
+    final before = _reactionsOf(message.id);
+    if (before == null || !before.any((r) => r.userId == me)) return null;
+    _setReactions(message.id, [
+      for (final r in before)
+        if (r.userId != me) r,
+    ]);
+    try {
+      await _repo.unreact(_conversationId, message.id);
+      return null;
+    } catch (error) {
+      _setReactions(message.id, before);
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  /// A heart, or no heart: what a double tap on a message does.
+  Future<String?> toggleHeart(DirectMessage message, {required String me}) {
+    final current = _reactionsOf(message.id);
+    final hearted = current != null &&
+        current.any((r) => r.userId == me && r.emoji == '❤️');
+    return hearted ? unreact(message, me: me) : react(message, '❤️', me: me);
+  }
+
+  /// The socket said a message's reactions changed. Reads them and applies
+  /// them in place -- no page refetch, so the thread does not blink.
+  Future<void> reactionsChanged(String messageId) async {
+    if (_reactionsOf(messageId) == null) return;
+    try {
+      final reactions = await _repo.reactions(_conversationId, messageId);
+      _setReactions(messageId, reactions);
+    } catch (_) {
+      // Stale until the thread is next read; not worth a word.
+    }
+  }
+
+  List<MessageReaction>? _reactionsOf(String id) {
+    for (final m in state.messages) {
+      if (m.id == id) return m.reactions;
+    }
+    return null;
+  }
+
+  void _setReactions(String id, List<MessageReaction> reactions) {
+    state = state.copyWith(
+      messages: [
+        for (final m in state.messages)
+          m.id == id ? m.copyWith(reactions: reactions) : m,
+      ],
+    );
+  }
+
+  @override
+  void dispose() {
+    _typingLapse?.cancel();
+    super.dispose();
   }
 
   Future<void> _markRead() async {

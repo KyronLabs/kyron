@@ -1149,6 +1149,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "የምታደርጉት በሚሆንበት ጊዜ ምን እንደነበር።",
       ),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("እርስዎ መለሱ"),
+      "dmReplied": (Object a0) => "$a0 መለሱ",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("ወደ መልእክት ያክሉ"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ልብ ይላኩ"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("አዲስ መልእክት"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "እስካሁን ምንም አልተባለም። ሰላምታ ጥሩ ጅምር ነው።"),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  ሰላም በሉ"),
+      "ui_dm_new_messages": MessageLookupByLibrary.simpleMessage("አዲስ መልእክቶች"),
+      "dmTyping": (Object a0) => "$a0 እየጻፉ ነው",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("ምላሽዎን ያስወግዱ"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("አንድ ሰው"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("መልእክት"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("አባሪ"),
     };
 
 final messageLookup = MessageLookup();

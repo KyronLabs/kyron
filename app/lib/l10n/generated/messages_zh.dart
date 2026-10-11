@@ -945,6 +945,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("{minutes} 分钟前"),
       "draft_hours_ago": MessageLookupByLibrary.simpleMessage("{hours} 小时前"),
       "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} 天前"),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("你回复了"),
+      "dmReplied": (Object a0) => "$a0 回复了",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("添加到消息"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("发送爱心"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("新消息"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage("还没有说过话。挥个手是个好开始。"),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  挥手"),
+      "ui_dm_new_messages": MessageLookupByLibrary.simpleMessage("新消息"),
+      "dmTyping": (Object a0) => "$a0 正在输入",
+      "ui_dm_reaction_remove": MessageLookupByLibrary.simpleMessage("移除你的回应"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("某人"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("消息"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("附件"),
     };
 
 final messageLookup = MessageLookup();

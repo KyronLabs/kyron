@@ -315,6 +315,15 @@ something.
   `.github/` that GitHub never read, for a service the identity decision means
   will not be written. The Nest module of the same name is real and stays.
 - `media/` — an empty service shell. Start it or remove it.
+- **Translations: 52 of the 68 non-English catalogs are English.** Found on
+  11 October 2026. Sixteen are translated -- af, am, ar, az, bg, bn, ca, cs,
+  da, de, el, es, et, ja, ko, zh -- and the rest, French, Portuguese, Russian,
+  Hindi, Italian and Turkish among them, are `app_en.arb` copied by
+  `scripts/generate_all_catalogs.py` and never translated: all 595 strings
+  identical. The work stopped, alphabetically, at Estonian. CI's localization
+  check only *reports* strings identical to English, so it passes, and
+  choosing French in the app today shows it in English. The chat strings
+  added in October are translated in all 68; the other 595 are not.
 - `User.kyronPoints` and the `KyronPointEvent` table — nothing reads or writes
   either since 11 October 2026. Points were awarded by `POST /profile/kp/award`,
   which let any signed-in account give any account any number of them, and

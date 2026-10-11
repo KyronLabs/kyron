@@ -595,5 +595,18 @@
   "draft_just_now": "Just now",
   "draft_minutes_ago": "{minutes} minutes ago",
   "draft_hours_ago": "{hours} hours ago",
-  "draft_days_ago": "{days} days ago"
+  "draft_days_ago": "{days} days ago",
+  "ui_dm_you_replied": "You replied",
+  "dmReplied": "${name} replied",
+  "ui_dm_attach": "Add to message",
+  "ui_dm_send_heart": "Send a heart",
+  "ui_dm_new": "New message",
+  "ui_dm_starter": "Nothing said yet. A wave is a good start.",
+  "ui_dm_wave": "👋  Wave",
+  "ui_dm_new_messages": "New messages",
+  "dmTyping": "${name} is typing",
+  "ui_dm_reaction_remove": "Remove your reaction",
+  "ui_dm_someone": "Someone",
+  "ui_dm_quote_message": "Message",
+  "ui_dm_quote_attachment": "Attachment"
 }

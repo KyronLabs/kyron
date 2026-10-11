@@ -1051,6 +1051,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "draft_minutes_ago": MessageLookupByLibrary.simpleMessage("{minutes}분 전"),
       "draft_hours_ago": MessageLookupByLibrary.simpleMessage("{hours}시간 전"),
       "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days}일 전"),
+      "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("답장했습니다"),
+      "dmReplied": (Object a0) => "$a0님이 답장했습니다",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("메시지에 추가"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("하트 보내기"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("새 메시지"),
+      "ui_dm_starter":
+          MessageLookupByLibrary.simpleMessage("아직 아무 말도 없어요. 손을 흔들며 시작해 보세요."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  손 흔들기"),
+      "ui_dm_new_messages": MessageLookupByLibrary.simpleMessage("새 메시지"),
+      "dmTyping": (Object a0) => "$a0님이 입력 중",
+      "ui_dm_reaction_remove": MessageLookupByLibrary.simpleMessage("내 반응 삭제"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("누군가"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("메시지"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("첨부 파일"),
     };
 
 final messageLookup = MessageLookup();

@@ -595,5 +595,18 @@
   "whatInPicture": "What is in this picture?",
   "whatIsItFor": "What is it for? (optional)",
   "whatYouDid": "What you did, what you expected, what happened",
-  "whatYouWereDoing": "What you were doing when it happened."
+  "whatYouWereDoing": "What you were doing when it happened.",
+  "ui_dm_you_replied": "Ви відповіли",
+  "dmReplied": "Відповідь від ${name}",
+  "ui_dm_attach": "Додати до повідомлення",
+  "ui_dm_send_heart": "Надіслати серце",
+  "ui_dm_new": "Нове повідомлення",
+  "ui_dm_starter": "Ще нічого не сказано. Помахати рукою — гарний початок.",
+  "ui_dm_wave": "👋  Помахати",
+  "ui_dm_new_messages": "Нові повідомлення",
+  "dmTyping": "${name} друкує",
+  "ui_dm_reaction_remove": "Прибрати вашу реакцію",
+  "ui_dm_someone": "Хтось",
+  "ui_dm_quote_message": "Повідомлення",
+  "ui_dm_quote_attachment": "Вкладення"
 }

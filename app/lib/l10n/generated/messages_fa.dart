@@ -1248,6 +1248,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
         "What you were doing when it happened.",
       ),
+      "ui_dm_you_replied":
+          MessageLookupByLibrary.simpleMessage("شما پاسخ دادید"),
+      "dmReplied": (Object a0) => "$a0 پاسخ داد",
+      "ui_dm_attach": MessageLookupByLibrary.simpleMessage("افزودن به پیام"),
+      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ارسال قلب"),
+      "ui_dm_new": MessageLookupByLibrary.simpleMessage("پیام جدید"),
+      "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
+          "هنوز چیزی گفته نشده. یک دست تکان دادن شروع خوبی است."),
+      "ui_dm_wave": MessageLookupByLibrary.simpleMessage("👋  دست تکان بده"),
+      "ui_dm_new_messages":
+          MessageLookupByLibrary.simpleMessage("پیام‌های جدید"),
+      "dmTyping": (Object a0) => "$a0 در حال نوشتن است",
+      "ui_dm_reaction_remove":
+          MessageLookupByLibrary.simpleMessage("حذف واکنش شما"),
+      "ui_dm_someone": MessageLookupByLibrary.simpleMessage("کسی"),
+      "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("پیام"),
+      "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("پیوست"),
     };
 
 final messageLookup = MessageLookup();
