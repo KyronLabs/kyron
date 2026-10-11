@@ -1,4 +1,6 @@
+import 'package:cryptography/cryptography.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/services/message_crypto.dart';
 import 'package:kyron_app/models/conversation.dart';
 import 'package:kyron_app/providers/messages_provider.dart';
 import 'package:kyron_app/repositories/messages_repository.dart';
@@ -306,6 +308,57 @@ void main() {
 
       expect(notifier.state.items.map((c) => c.id), ['b']);
       expect(repo.hidden, ['a']);
+    });
+
+    test('shows the last message opened, never its ciphertext', () async {
+      // The list printed the body as the server held it: `k2.` and a few
+      // hundred characters of base64, under the person's name.
+      final crypto = MessageCrypto();
+      final ada = await crypto.newKeyPair();
+      final bo = await crypto.newKeyPair();
+      final eve = await crypto.newKeyPair();
+      Future<String> sealFor(String text, SimpleKeyPair reader) async =>
+          (await crypto.sealForDevices(
+            text,
+            mine: ada,
+            devices: [
+              await ada.extractPublicKey(),
+              await reader.extractPublicKey(),
+            ],
+          ))
+              .encode();
+
+      Conversation rowWith(String id, String body) => Conversation(
+            id: id,
+            people: const [MessagePerson(id: 'ada', name: 'Ada')],
+            lastMessage: _msg('m-$id', body, 'ada', DateTime(2026, 1, 1)),
+            lastMessageAt: DateTime(2026, 1, 1),
+          );
+
+      final repo = _FakeMessages(
+        rows: [
+          rowWith('sealed', await sealFor('see you at six', bo)),
+          rowWith('not-for-me', await sealFor('a secret', eve)),
+          rowWith('plain', 'written before keys'),
+        ],
+      );
+      final notifier = ConversationListNotifier(
+        repo,
+        unreadOnly: false,
+        vault: MessageVault(KeysRepository(ApiClient()))..adopt(bo),
+      );
+      await notifier.refresh();
+
+      final last = {
+        for (final row in notifier.state.items) row.id: row.lastMessage!,
+      };
+      expect(last['sealed']!.body, 'see you at six');
+      expect(last['sealed']!.unreadable, isFalse);
+      // One this phone cannot open is marked, and carries no ciphertext for
+      // anything to print by mistake.
+      expect(last['not-for-me']!.unreadable, isTrue);
+      expect(last['not-for-me']!.body, isEmpty);
+      expect(last['plain']!.body, 'written before keys');
     });
 
     test(

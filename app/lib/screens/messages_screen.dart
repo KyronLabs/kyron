@@ -259,6 +259,25 @@ class _ConversationRow extends StatelessWidget {
     required this.onHide,
   });
 
+  /// The last message as one line.
+  ///
+  /// Already opened by the list's notifier. One that could not be opened says
+  /// it is encrypted rather than printing what the server holds, and a
+  /// picture with no words says it is an attachment rather than nothing.
+  static String _preview(BuildContext context, DirectMessage last) {
+    final l10n = AppLocalizations.of(context);
+    if (last.unreadable) {
+      return l10n.ui('ui_dm_preview_sealed', 'Encrypted message');
+    }
+    final body = last.body.trim();
+    if (body.isEmpty && last.media.isNotEmpty) {
+      return l10n.ui('ui_dm_quote_attachment', 'Attachment');
+    }
+    // One line: a message written over several shows its first words, not a
+    // blank where the line break fell.
+    return body.replaceAll(RegExp(r'\s+'), ' ');
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
@@ -363,7 +382,7 @@ class _ConversationRow extends StatelessWidget {
                             last == null
                                 ? 'No messages yet'
                                 : '${last.senderId == other?.id ? '' : 'You: '}'
-                                    '${last.body}',
+                                    '${_preview(context, last)}',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -374,6 +393,9 @@ class _ConversationRow extends StatelessWidget {
                                   : scheme.onSurface.withValues(alpha: 0.6),
                               fontWeight:
                                   unread ? FontWeight.w600 : FontWeight.normal,
+                              fontStyle: last?.unreadable == true
+                                  ? FontStyle.italic
+                                  : null,
                             ),
                           ),
                         ),

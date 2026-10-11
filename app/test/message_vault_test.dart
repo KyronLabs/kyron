@@ -1,4 +1,5 @@
 import 'package:cryptography/cryptography.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/repositories/keys_repository.dart';
 import 'package:kyron_app/services/api_client.dart';
@@ -24,6 +25,9 @@ class _Keys extends KeysRepository {
     fetches++;
     return published;
   }
+
+  @override
+  Future<void> publish(String publicKey, String deviceId) async {}
 }
 
 final _crypto = MessageCrypto();
@@ -128,6 +132,24 @@ void main() {
     keys.fetches = 0;
     expect(await reader.openOffline(sealed, 'c1'), 'hello');
     expect(keys.fetches, 0);
+  });
+
+  test('waits for a key still being read rather than giving up', () async {
+    // Sign-in does not wait for the key to load, so the conversation list
+    // can ask to open its previews first. It used to be told nothing could be
+    // opened, and drew every one as unreadable.
+    final ada = await _device('ada');
+    final bo = await _device('bo');
+    final keys = _Keys([await ada.published(), await bo.published()]);
+    final sealed = (await ada.vault(keys).seal('hello', 'c1'))!;
+    FlutterSecureStorage.setMockInitialValues({
+      'dm_secret_key_v1': await MessageCrypto.encodeSecret(bo.pair),
+    });
+
+    final reader = MessageVault(keys);
+    final unlocking = reader.unlock();
+    expect(await reader.openOffline(sealed, 'c1'), 'hello');
+    await unlocking;
   });
 
   test('still opens a message in the old single-key form', () async {

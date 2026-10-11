@@ -67,18 +67,9 @@ class MessageVault {
   /// install, otherwise leaves this device unwritable-to with nothing saying
   /// why.
   Future<void> unlock() async {
-    final stored = await _storage.read(key: _secretKeyName);
-    var pair =
-        stored == null ? null : await MessageCrypto.tryDecodeSecret(stored);
-
-    if (pair == null) {
-      pair = await _crypto.newKeyPair();
-      await _storage.write(
-        key: _secretKeyName,
-        value: await MessageCrypto.encodeSecret(pair),
-      );
-    }
-    _mine = pair;
+    final loading = _load();
+    _loading = loading;
+    final pair = await loading;
 
     try {
       await _keys.publish(
@@ -93,6 +84,41 @@ class MessageVault {
     }
   }
 
+  /// The keypair being read from storage, while it is. [unlock] is not
+  /// awaited by sign-in, so the conversation list can ask to open a message
+  /// before the key is in memory; it waits for this rather than answering
+  /// that nothing can be opened.
+  Future<SimpleKeyPair>? _loading;
+
+  Future<SimpleKeyPair> _load() async {
+    final stored = await _storage.read(key: _secretKeyName);
+    var pair =
+        stored == null ? null : await MessageCrypto.tryDecodeSecret(stored);
+
+    if (pair == null) {
+      pair = await _crypto.newKeyPair();
+      await _storage.write(
+        key: _secretKeyName,
+        value: await MessageCrypto.encodeSecret(pair),
+      );
+    }
+    return _mine = pair;
+  }
+
+  /// This install's key, waiting for [unlock] if it is still reading it.
+  /// Null when there is none: signed out, or the keychain failed.
+  Future<SimpleKeyPair?> _key() async {
+    final mine = _mine;
+    if (mine != null) return mine;
+    final loading = _loading;
+    if (loading == null) return null;
+    try {
+      return await loading;
+    } catch (_) {
+      return null;
+    }
+  }
+
   /// Forgets everything, on sign-out.
   ///
   /// The secret goes with the session. Anything sealed to it becomes
@@ -101,6 +127,7 @@ class MessageVault {
   Future<void> lock() async {
     final deviceId = await _storage.read(key: _deviceIdName);
     _mine = null;
+    _loading = null;
     _sharedByConversation.clear();
     _devicesByConversation.clear();
     _unwrapKeys.clear();
@@ -123,7 +150,7 @@ class MessageVault {
     final cached = _sharedByConversation[conversationId];
     if (cached != null) return cached;
 
-    final mine = _mine;
+    final mine = await _key();
     if (mine == null) return const [];
 
     try {
@@ -166,7 +193,7 @@ class MessageVault {
   /// Null rather than throwing, and never a fallback that silently sends in
   /// the clear: the caller decides, and the reader is told which they got.
   Future<String?> seal(String plain, String conversationId) async {
-    final mine = _mine;
+    final mine = await _key();
     if (mine == null) return null;
     final ownKey = MessageCrypto.encodePublicKey(await mine.extractPublicKey());
 
@@ -220,7 +247,7 @@ class MessageVault {
   Future<String?> open(String body, String conversationId) async {
     final envelope = SealedEnvelope.tryDecode(body);
     if (envelope != null) {
-      final mine = _mine;
+      final mine = await _key();
       if (mine == null) return null;
       return _crypto.openEnvelope(envelope, mine: mine);
     }
@@ -245,8 +272,8 @@ class MessageVault {
   /// for this device; a `k1` message only if its keys were already fetched.
   Future<String?> openOffline(String body, String conversationId) async {
     final envelope = SealedEnvelope.tryDecode(body);
-    final mine = _mine;
     if (envelope != null) {
+      final mine = await _key();
       return mine == null ? null : _crypto.openEnvelope(envelope, mine: mine);
     }
     final sealed = SealedMessage.tryDecode(body);
