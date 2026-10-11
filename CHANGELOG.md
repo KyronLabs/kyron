@@ -58,6 +58,23 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **A fresh install could not get through its own quickstart.** Two
+  separate faults, the second hidden behind the first, and neither visible
+  on the deployed database because that one is Supabase's and was created
+  from the schema rather than from the migrations. First, two migrations
+  revoke access from Supabase's `anon` and `authenticated` roles, which a
+  plain Postgres does not have, so `prisma migrate deploy` stopped at
+  `20260907200000_device_tokens`; the quickstart's Docker database now
+  creates both, empty and unable to log in, from
+  `infra/postgres/init/01-supabase-roles.sql`. Second, the migrations had
+  only ever created `User.password` as NOT NULL while the schema and the
+  auth guard both treat it as optional, so on such a database every sign-up
+  failed with "Your sign-in is valid, but Kyron could not set up your
+  account on this server." A migration relaxes it — a no-op on the deployed
+  database. Both reproduced on a Postgres with no Supabase roles, and both
+  checked fixed there by provisioning an account through the guard's own
+  code.
+
 - **People search did not do what it said.** The comment above the query
   promised an exact handle first and then the most-followed matches; the
   query sorted by Kyron Points and nothing else. Type a whole handle now and

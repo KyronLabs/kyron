@@ -92,6 +92,12 @@ The API needs `DATABASE_URL` and `SUPABASE_URL` set; it refuses to boot without
 them rather than starting in a state that fails later. See
 [`api/.env.example`](api/.env.example).
 
+The migrations revoke table access from two roles that only Supabase's Postgres
+has. The Docker database creates them on first start; on any other plain
+Postgres, run [`infra/postgres/init/01-supabase-roles.sql`](infra/postgres/init/01-supabase-roles.sql)
+once before migrating. A Docker volume from an attempt that stopped at
+`role "anon" does not exist` needs `docker compose down -v` to start clean.
+
 ---
 
 ## ◈ Architecture
