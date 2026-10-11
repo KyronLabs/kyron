@@ -8,18 +8,21 @@
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
 
-    <!-- "Save to device" in the media viewer. Android 10 and later add to the
-         gallery through MediaStore with no permission at all; 9 and below
-         need this, and nothing newer is asked for it. -->
+    <!-- "Save to device" in the media viewer. Android 9 and below need this
+         to add to the gallery; 10 and later add through MediaStore with no
+         permission (gal asks for none there when no album is named, and the
+         app names none). 28, not the 29 gal's README gives: 29 is for saving
+         into an album, and camera_android_camerax declares this same
+         permission with 28 -- the manifest merger refuses two different
+         values, which is what broke the release build. -->
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="29"/>
+        android:maxSdkVersion="28"/>
 
     <application
         android:label="Kyron"
         android:name="${applicationName}"
         android:usesCleartextTraffic="true"
-        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
