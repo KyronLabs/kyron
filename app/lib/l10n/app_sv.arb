@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Inte end-to-end-krypterat",
   "ui_dm_sent": "Skickat",
   "ui_dm_seen": "Sett",
-  "ui_dm_sending": "Skickar…"
+  "ui_dm_sending": "Skickar…",
+  "ui_dm_take_photo": "Ta ett foto"
 }

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Nincs végpontok közötti titkosítás",
   "ui_dm_sent": "Elküldve",
   "ui_dm_seen": "Látta",
-  "ui_dm_sending": "Küldés…"
+  "ui_dm_sending": "Küldés…",
+  "ui_dm_take_photo": "Fénykép készítése"
 }

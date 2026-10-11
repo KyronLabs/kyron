@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Uchdan-uchgacha shifrlanmagan",
   "ui_dm_sent": "Yuborildi",
   "ui_dm_seen": "Ko‘rildi",
-  "ui_dm_sending": "Yuborilmoqda…"
+  "ui_dm_sending": "Yuborilmoqda…",
+  "ui_dm_take_photo": "Suratga olish"
 }

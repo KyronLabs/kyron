@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "एन्ड-टु-एन्ड इन्क्रिप्ट गरिएको छैन",
   "ui_dm_sent": "पठाइयो",
   "ui_dm_seen": "देखियो",
-  "ui_dm_sending": "पठाउँदै…"
+  "ui_dm_sending": "पठाउँदै…",
+  "ui_dm_take_photo": "फोटो खिच्नुहोस्"
 }

@@ -14,6 +14,13 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **Photos in a chat came framed in the bubble's colour, four to a square.**
+  A message's pictures are now their own rounded block, above any words, with
+  at most three tiles; past three, the third is darkened with "+n" for how
+  many more there are, and opens all of them. Posts keep their grid of four.
+  A message of photos alone no longer carries the open lock: there is nothing
+  in it to seal.
+
 - **A deploy could hang at boot with nothing in the log.** On 11 October the
   API deploy printed nothing after `start.sh` began and was killed by Render
   eighteen minutes later; the database logs show the new instance never
@@ -54,6 +61,12 @@ section for that version, so what is written here is what people read.
   send.** The 4,000-character limit was applied to the sealed body, which is
   several times longer than what was typed when a character takes three bytes.
   The limit is now on what is typed, and sealed bodies have their own ceiling.
+
+### Added
+
+- **A camera in a chat's attachments.** "Take a photo" opens the camera and
+  sends what it takes, scaled to 2048 px at 85% quality rather than the
+  4–12 MB a phone's sensor produces. In all 68 catalogs.
 
 ### Changed
 

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Uçtan uca şifreli değil",
   "ui_dm_sent": "Gönderildi",
   "ui_dm_seen": "Görüldü",
-  "ui_dm_sending": "Gönderiliyor…"
+  "ui_dm_sending": "Gönderiliyor…",
+  "ui_dm_take_photo": "Fotoğraf çek"
 }

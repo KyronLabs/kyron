@@ -15,6 +15,7 @@ import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/services/message_crypto.dart';
 import 'package:kyron_app/services/message_vault.dart';
 import 'package:kyron_app/utils/emoji_only.dart';
+import 'package:kyron_app/widgets/media_grid.dart';
 import 'package:kyron_app/widgets/overlap_stack.dart';
 
 /// The chat screen, driven the way somebody uses it: big emoji, pulling a
@@ -145,6 +146,17 @@ final _sealedForSomebodyElse = SealedMessage(
   body: const [1, 2, 3],
   mac: List.filled(16, 2),
 ).encode();
+
+List<PostMedia> _photos(int count) => [
+      for (var i = 0; i < count; i++)
+        PostMedia(
+          id: 'p$i',
+          kind: MediaKind.image,
+          url: 'https://example.invalid/$i.jpg',
+          width: 800,
+          height: 600,
+        ),
+    ];
 
 double? _fontSizeOf(WidgetTester tester, String text) =>
     tester.widget<Text>(find.text(text)).style?.fontSize;
@@ -407,6 +419,70 @@ void main() {
       tester.getCenter(find.byIcon(Iconsax.unlock_copy)).dy,
       greaterThan(tester.getTopLeft(find.text('sent as written')).dy),
     );
+  });
+
+  testWidgets('photos sit outside the bubble, three at most with a count',
+      (tester) async {
+    await _open(tester, [
+      DirectMessage(
+        id: 'm1',
+        body: 'from last night',
+        senderId: 'me',
+        createdAt: DateTime(2026, 1, 1, 9),
+        media: _photos(4),
+      ),
+    ]);
+
+    final grid = tester.widget<MediaGrid>(find.byType(MediaGrid));
+    expect(grid.maxTiles, 3);
+    expect(find.text('+1'), findsOneWidget);
+    // Not inside the coloured bubble: that drew a frame of it round every
+    // photo. The words still have their bubble, under the pictures.
+    final scheme = Theme.of(tester.element(find.byType(MediaGrid))).colorScheme;
+    final frames = find.ancestor(
+      of: find.byType(MediaGrid),
+      matching: find.byWidgetPredicate(
+        (w) =>
+            w is Container &&
+            w.decoration is BoxDecoration &&
+            (w.decoration! as BoxDecoration).color == scheme.primary,
+      ),
+    );
+    expect(frames, findsNothing);
+    expect(
+      tester.getTopLeft(find.text('from last night')).dy,
+      greaterThan(tester.getBottomLeft(find.byType(MediaGrid)).dy),
+    );
+  });
+
+  testWidgets('a photo with no words is not marked as a lapse', (tester) async {
+    // There is nothing in it to seal. Marking it put a lock beside every
+    // photo in an otherwise sealed conversation.
+    await _open(tester, [
+      DirectMessage(
+        id: 'm2',
+        body: '',
+        senderId: 'them',
+        createdAt: DateTime(2026, 1, 1, 9, 1),
+        media: _photos(1),
+      ),
+      _msg('m1', _sealedForSomebodyElse, 'them', DateTime(2026, 1, 1, 9)),
+    ]);
+
+    expect(find.text('Messages are end-to-end encrypted'), findsOneWidget);
+    expect(find.byIcon(Iconsax.unlock_copy), findsNothing);
+  });
+
+  testWidgets('the + sheet offers the camera', (tester) async {
+    await _open(tester, [
+      _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+    ]);
+
+    await tester.tap(find.byIcon(Iconsax.add_circle_copy));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Take a photo'), findsOneWidget);
+    expect(find.byIcon(Iconsax.camera_copy), findsOneWidget);
   });
 
   testWidgets('and says nothing about it in a conversation that never was',

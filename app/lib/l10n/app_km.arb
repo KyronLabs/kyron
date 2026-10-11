@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "មិនបានអ៊ិនគ្រីបពីចុងម្ខាងទៅចុងម្ខាងទេ",
   "ui_dm_sent": "បានផ្ញើ",
   "ui_dm_seen": "បានឃើញ",
-  "ui_dm_sending": "កំពុងផ្ញើ…"
+  "ui_dm_sending": "កំពុងផ្ញើ…",
+  "ui_dm_take_photo": "ថតរូប"
 }

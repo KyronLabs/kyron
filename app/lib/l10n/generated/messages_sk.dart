@@ -1273,6 +1273,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Odoslané"),
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Zobrazené"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Odosiela sa…"),
+      "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Odfotiť"),
     };
 
 final messageLookup = MessageLookup();

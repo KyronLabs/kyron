@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "არ არის დაშიფრული ბოლოდან ბოლომდე",
   "ui_dm_sent": "გაგზავნილია",
   "ui_dm_seen": "ნანახია",
-  "ui_dm_sending": "იგზავნება…"
+  "ui_dm_sending": "იგზავნება…",
+  "ui_dm_take_photo": "ფოტოს გადაღება"
 }

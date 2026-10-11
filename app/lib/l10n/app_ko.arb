@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "종단 간 암호화되지 않음",
   "ui_dm_sent": "전송됨",
   "ui_dm_seen": "읽음",
-  "ui_dm_sending": "보내는 중…"
+  "ui_dm_sending": "보내는 중…",
+  "ui_dm_take_photo": "사진 찍기"
 }

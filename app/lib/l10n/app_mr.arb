@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "एंड-टू-एंड एन्क्रिप्ट केलेला नाही",
   "ui_dm_sent": "पाठवला",
   "ui_dm_seen": "पाहिला",
-  "ui_dm_sending": "पाठवत आहे…"
+  "ui_dm_sending": "पाठवत आहे…",
+  "ui_dm_take_photo": "फोटो काढा"
 }

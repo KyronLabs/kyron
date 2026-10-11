@@ -1275,6 +1275,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("જોયો"),
       "ui_dm_sending":
           MessageLookupByLibrary.simpleMessage("મોકલી રહ્યાં છીએ…"),
+      "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("ફોટો લો"),
     };
 
 final messageLookup = MessageLookup();

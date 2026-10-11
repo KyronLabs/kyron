@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Haujasimbwa kwa njia fiche kutoka mwanzo hadi mwisho",
   "ui_dm_sent": "Umetumwa",
   "ui_dm_seen": "Umeonekana",
-  "ui_dm_sending": "Inatuma…"
+  "ui_dm_sending": "Inatuma…",
+  "ui_dm_take_photo": "Piga picha"
 }

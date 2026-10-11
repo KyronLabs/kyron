@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Ծայրից ծայր գաղտնագրված չէ",
   "ui_dm_sent": "Ուղարկված է",
   "ui_dm_seen": "Դիտված է",
-  "ui_dm_sending": "Ուղարկվում է…"
+  "ui_dm_sending": "Ուղարկվում է…",
+  "ui_dm_take_photo": "Լուսանկարել"
 }

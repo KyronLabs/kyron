@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Tidak terenkripsi end-to-end",
   "ui_dm_sent": "Terkirim",
   "ui_dm_seen": "Dilihat",
-  "ui_dm_sending": "Mengirim…"
+  "ui_dm_sending": "Mengirim…",
+  "ui_dm_take_photo": "Ambil foto"
 }

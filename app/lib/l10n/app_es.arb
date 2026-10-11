@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Sin cifrado de extremo a extremo",
   "ui_dm_sent": "Enviado",
   "ui_dm_seen": "Visto",
-  "ui_dm_sending": "Enviando…"
+  "ui_dm_sending": "Enviando…",
+  "ui_dm_take_photo": "Hacer una foto"
 }

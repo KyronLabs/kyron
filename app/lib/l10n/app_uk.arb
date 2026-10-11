@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Без наскрізного шифрування",
   "ui_dm_sent": "Надіслано",
   "ui_dm_seen": "Переглянуто",
-  "ui_dm_sending": "Надсилання…"
+  "ui_dm_sending": "Надсилання…",
+  "ui_dm_take_photo": "Зробити фото"
 }

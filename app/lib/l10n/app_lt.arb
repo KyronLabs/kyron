@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Neužšifruota visapusiškai",
   "ui_dm_sent": "Išsiųsta",
   "ui_dm_seen": "Matyta",
-  "ui_dm_sending": "Siunčiama…"
+  "ui_dm_sending": "Siunčiama…",
+  "ui_dm_take_photo": "Fotografuoti"
 }

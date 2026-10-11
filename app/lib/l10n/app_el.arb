@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Χωρίς κρυπτογράφηση από άκρο σε άκρο",
   "ui_dm_sent": "Στάλθηκε",
   "ui_dm_seen": "Προβλήθηκε",
-  "ui_dm_sending": "Αποστολή…"
+  "ui_dm_sending": "Αποστολή…",
+  "ui_dm_take_photo": "Λήψη φωτογραφίας"
 }

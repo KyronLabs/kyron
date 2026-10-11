@@ -28,7 +28,7 @@ import '../widgets/voice_post_player.dart';
 import '../widgets/skeleton.dart';
 import '../widgets/kyron_app_bar.dart';
 import '../models/current_user.dart';
-import '../models/post_media.dart' show MediaKind;
+import '../models/post_media.dart' show MediaKind, PostMedia;
 import '../utils/emoji_only.dart';
 import '../widgets/gif_picker_sheet.dart';
 import '../widgets/overlap_stack.dart';
@@ -119,6 +119,11 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     if (message != null && mounted) Toast.show(context, message);
   }
 
+  Future<void> _capture() async {
+    final message = await _media.capture();
+    if (message != null && mounted) Toast.show(context, message);
+  }
+
   Future<void> _attachGif() async {
     final path = await GifPickerSheet.show(context);
     if (path == null || !mounted) return;
@@ -138,6 +143,12 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
           icon: Iconsax.gallery_copy,
         ),
         SheetAction(
+          value: 'camera',
+          label: AppLocalizations.of(context)
+              .ui('ui_dm_take_photo', 'Take a photo'),
+          icon: Iconsax.camera_copy,
+        ),
+        SheetAction(
           value: 'video',
           label: AppLocalizations.of(context).literaladdAClip,
           icon: Iconsax.video_copy,
@@ -153,6 +164,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     switch (choice) {
       case 'photo':
         await _attach(video: false);
+      case 'camera':
+        await _capture();
       case 'video':
         await _attach(video: true);
       case 'gif':
@@ -393,10 +406,12 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
       !_timeAbove(earlier, later) &&
       later.id != firstUnread;
 
-  /// Whether [message] is drawn in a bubble. A few emoji alone are drawn
-  /// large and bare, and a bare emoji has no corners to join.
+  /// Whether [message] is drawn as a bubble whose corners can join its
+  /// neighbours'. A few emoji alone are drawn large and bare, and pictures
+  /// are a block of their own: neither has a sender's corner to tuck.
   static bool _inBubble(DirectMessage message) =>
-      _Bubble.jumboCountOf(message) == null;
+      _Bubble.jumboCountOf(message) == null &&
+      !message.media.any((m) => m.isVisual);
 
   /// Who wrote [message], as the quote labels it.
   String _authorOf(
@@ -676,8 +691,13 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
               : continues
                   ? (message.replyToId == null ? 2 : SpacingTokens.space8)
                   : SpacingTokens.space12,
+          // Only a message with words: those are what is sealed. Pictures
+          // alone have nothing to seal -- attachments are stored in the clear,
+          // which docs/E2EE.md says -- and marking every photo as a lapse
+          // was a lock beside each one.
           unsealed: sealedFrom >= 0 &&
               at > sealedFrom &&
+              message.body.trim().isNotEmpty &&
               !message.encrypted &&
               !message.sending &&
               !message.failed,
@@ -959,12 +979,80 @@ class _Bubble extends StatelessWidget {
     );
   }
 
-  /// The bubble: colour, shape, and what is in it.
+  /// What the message holds: its pictures, then its words in a bubble.
   ///
-  /// [overlapping] when it rides over a quoted message. It then takes a rim in
-  /// the page colour, so where the two meet reads as one shape in front of
-  /// another rather than as two shapes run together.
+  /// The pictures are their own rounded block, not something inside the
+  /// bubble. They used to sit in it with a few points of padding, which drew
+  /// a frame of the bubble's colour round every photo -- a thick blue one on
+  /// your own -- and a grid that did not fill the bubble left more of it on
+  /// one side than the other.
+  ///
+  /// [overlapping] when it rides over a quoted message. The top of it then
+  /// takes a rim in the page colour, so where the two meet reads as one shape
+  /// in front of another rather than as two shapes run together.
   Widget _box(
+    BuildContext context,
+    ColorScheme scheme, {
+    required bool overlapping,
+  }) {
+    final visual = message.media.where((m) => m.isVisual).toList();
+    final hasWords = message.unreadable ||
+        message.body.trim().isNotEmpty ||
+        message.media.any((m) => m.isVoice);
+
+    final pictures = visual.isEmpty
+        ? null
+        : _pictures(context, scheme, visual, overlapping: overlapping);
+    final words = hasWords
+        ? _bubble(
+            context,
+            scheme,
+            overlapping: overlapping && pictures == null,
+          )
+        : null;
+
+    if (pictures != null && words != null) {
+      return Column(
+        crossAxisAlignment:
+            mine ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [pictures, const SizedBox(height: 2), words],
+      );
+    }
+    return pictures ?? words ?? const SizedBox.shrink();
+  }
+
+  /// A message's pictures: at most three tiles, with the rest counted on the
+  /// third, at a fixed share of the screen so one photo and four line up.
+  Widget _pictures(
+    BuildContext context,
+    ColorScheme scheme,
+    List<PostMedia> visual, {
+    required bool overlapping,
+  }) {
+    Widget grid = SizedBox(
+      width: MediaQuery.sizeOf(context).width * 0.66,
+      child: MediaGrid(
+        media: visual,
+        radius: RadiusTokens.radius16,
+        maxTiles: 3,
+      ),
+    );
+    if (message.failed) grid = Opacity(opacity: 0.5, child: grid);
+    if (!overlapping) return grid;
+    return Container(
+      padding: const EdgeInsets.all(2),
+      decoration: BoxDecoration(
+        color: scheme.surface,
+        borderRadius: BorderRadius.circular(RadiusTokens.radius16 + 2),
+      ),
+      child: grid,
+    );
+  }
+
+  /// The bubble: colour, shape, and the words -- or a recording, which is a
+  /// player rather than a picture and so stays in it.
+  Widget _bubble(
     BuildContext context,
     ColorScheme scheme, {
     required bool overlapping,
@@ -982,12 +1070,9 @@ class _Bubble extends StatelessWidget {
       constraints: BoxConstraints(
         maxWidth: MediaQuery.sizeOf(context).width * 0.75,
       ),
-      // A picture fills the bubble nearly to its edge; words get room. At
-      // this padding one line of body text makes a bubble exactly as tall as
-      // its corners are round, which is what draws it as a pill.
-      padding: message.media.isNotEmpty
-          ? const EdgeInsets.all(SpacingTokens.space4)
-          : const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      // At this padding one line of body text makes a bubble exactly as tall
+      // as its corners are round, which is what draws it as a pill.
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: message.failed
             ? scheme.error.withValues(alpha: 0.12)
@@ -1016,39 +1101,23 @@ class _Bubble extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          // A recording is a player, not a picture, so it is split out the
-          // same way a post's is.
           for (final voice in message.media.where((m) => m.isVoice))
             VoicePostPlayer(media: voice),
-          if (message.media.any((m) => m.isVisual))
-            ClipRRect(
-              borderRadius: BorderRadius.circular(RadiusTokens.radius16),
-              child: MediaGrid(
-                media: message.media.where((m) => m.isVisual).toList(),
-                radius: RadiusTokens.radius16,
-              ),
-            ),
           if (hasText)
-            Padding(
-              // Words under a picture get the room the bubble gave up for it.
-              padding: message.media.isNotEmpty
-                  ? const EdgeInsets.fromLTRB(10, SpacingTokens.space8, 10, 6)
-                  : EdgeInsets.zero,
-              child: Text(
-                // Said, not shown as ciphertext, and set apart from anything
-                // somebody actually wrote: in italics, a step quieter.
-                message.unreadable
-                    ? AppLocalizations.of(context).ui(
-                        'ui_dm_unreadable',
-                        'This message cannot be read on this device.',
-                      )
-                    : message.body,
-                style: TextStyle(
-                  fontSize: TypographyTokens.fontSize3,
-                  height: 1.3,
-                  fontStyle: message.unreadable ? FontStyle.italic : null,
-                  color: message.unreadable ? ink.withValues(alpha: 0.7) : ink,
-                ),
+            Text(
+              // Said, not shown as ciphertext, and set apart from anything
+              // somebody actually wrote: in italics, a step quieter.
+              message.unreadable
+                  ? AppLocalizations.of(context).ui(
+                      'ui_dm_unreadable',
+                      'This message cannot be read on this device.',
+                    )
+                  : message.body,
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize3,
+                height: 1.3,
+                fontStyle: message.unreadable ? FontStyle.italic : null,
+                color: message.unreadable ? ink.withValues(alpha: 0.7) : ink,
               ),
             ),
         ],

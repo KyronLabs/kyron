@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Ei päästä päähän salattu",
   "ui_dm_sent": "Lähetetty",
   "ui_dm_seen": "Nähty",
-  "ui_dm_sending": "Lähetetään…"
+  "ui_dm_sending": "Lähetetään…",
+  "ui_dm_take_photo": "Ota kuva"
 }

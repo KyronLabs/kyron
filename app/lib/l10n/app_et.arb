@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Pole otspunktkrüpteeritud",
   "ui_dm_sent": "Saadetud",
   "ui_dm_seen": "Nähtud",
-  "ui_dm_sending": "Saatmine…"
+  "ui_dm_sending": "Saatmine…",
+  "ui_dm_take_photo": "Tee foto"
 }

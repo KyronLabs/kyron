@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Өтпелі шифрланбаған",
   "ui_dm_sent": "Жіберілді",
   "ui_dm_seen": "Көрілді",
-  "ui_dm_sending": "Жіберілуде…"
+  "ui_dm_sending": "Жіберілуде…",
+  "ui_dm_take_photo": "Суретке түсіру"
 }

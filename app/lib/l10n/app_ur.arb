@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "اینڈ ٹو اینڈ مرموز نہیں",
   "ui_dm_sent": "بھیج دیا گیا",
   "ui_dm_seen": "دیکھ لیا گیا",
-  "ui_dm_sending": "بھیجا جا رہا ہے…"
+  "ui_dm_sending": "بھیجا جا رہا ہے…",
+  "ui_dm_take_photo": "تصویر لیں"
 }

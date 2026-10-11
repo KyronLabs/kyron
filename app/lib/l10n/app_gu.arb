@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "એન્ડ-ટુ-એન્ડ એન્ક્રિપ્ટેડ નથી",
   "ui_dm_sent": "મોકલ્યો",
   "ui_dm_seen": "જોયો",
-  "ui_dm_sending": "મોકલી રહ્યાં છીએ…"
+  "ui_dm_sending": "મોકલી રહ્યાં છીએ…",
+  "ui_dm_take_photo": "ફોટો લો"
 }

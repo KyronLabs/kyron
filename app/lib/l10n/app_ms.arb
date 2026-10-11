@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "Tidak disulitkan hujung ke hujung",
   "ui_dm_sent": "Dihantar",
   "ui_dm_seen": "Dilihat",
-  "ui_dm_sending": "Menghantar…"
+  "ui_dm_sending": "Menghantar…",
+  "ui_dm_take_photo": "Ambil foto"
 }

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "לא מוצפנת מקצה לקצה",
   "ui_dm_sent": "נשלחה",
   "ui_dm_seen": "נצפתה",
-  "ui_dm_sending": "בשליחה…"
+  "ui_dm_sending": "בשליחה…",
+  "ui_dm_take_photo": "צילום תמונה"
 }

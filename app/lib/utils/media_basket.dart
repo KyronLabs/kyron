@@ -70,6 +70,30 @@ class MediaBasket extends ChangeNotifier {
     }
   }
 
+  /// Takes a photo with the camera and starts its upload. Returns a message
+  /// to show the reader, or null when it went fine -- or when they backed out
+  /// without taking one.
+  ///
+  /// Scaled to 2048 across and saved at 85% quality: straight off a phone's
+  /// sensor a photo is 4 to 12 MB, which is a slow upload over mobile data
+  /// for a picture that is shown a third of a screen wide.
+  Future<String?> capture() async {
+    if (!hasRoom) return 'A post can carry at most $limit attachments.';
+    try {
+      final shot = await ImagePicker().pickImage(
+        source: ImageSource.camera,
+        maxWidth: 2048,
+        maxHeight: 2048,
+        imageQuality: 85,
+      );
+      if (shot == null) return null;
+      await _upload(PendingMedia(path: shot.path, kind: MediaKind.image));
+      return null;
+    } catch (_) {
+      return 'Could not open the camera.';
+    }
+  }
+
   /// The server's limit, mirrored so an oversized file is refused here rather
   /// than after uploading it and being told 413.
   static const maxAttachmentBytes = 25 * 1024 * 1024;

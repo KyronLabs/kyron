@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "ከጫፍ እስከ ጫፍ አልተመሰጠረም",
   "ui_dm_sent": "ተልኳል",
   "ui_dm_seen": "ታይቷል",
-  "ui_dm_sending": "በመላክ ላይ…"
+  "ui_dm_sending": "በመላክ ላይ…",
+  "ui_dm_take_photo": "ፎቶ አንሳ"
 }

@@ -614,5 +614,6 @@
   "ui_dm_not_encrypted": "未端到端加密",
   "ui_dm_sent": "已发送",
   "ui_dm_seen": "已读",
-  "ui_dm_sending": "正在发送…"
+  "ui_dm_sending": "正在发送…",
+  "ui_dm_take_photo": "拍照"
 }
