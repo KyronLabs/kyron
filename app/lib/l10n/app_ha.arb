@@ -622,5 +622,21 @@
   "ui_media_saving": "Ana ajiyewa…",
   "ui_media_saved": "An ajiye a hotunanka",
   "ui_media_save_failed": "Ba a iya ajiyewa ba. Sake gwadawa.",
-  "ui_media_save_denied": "Bari Kyron ya ƙara zuwa hotunanka don ajiye wannan."
+  "ui_media_save_denied": "Bari Kyron ya ƙara zuwa hotunanka don ajiye wannan.",
+  "ui_status_all_ok": "Duk tsare-tsare suna aiki",
+  "ui_status_uptime": "Lokacin aiki",
+  "ui_status_last_60": "Kwanaki 60 da suka wuce",
+  "ui_status_60_days_ago": "Kwanaki 60 da suka gabata",
+  "ui_status_today": "Yau",
+  "ui_status_api": "API",
+  "ui_status_database": "Rumbun bayanai",
+  "ui_status_auth": "Shiga",
+  "ui_status_incidents": "Abubuwan da suka faru kwanan nan",
+  "ui_status_no_incidents": "Babu wani abu da ya faru cikin kwanaki 60 da suka wuce.",
+  "ui_status_ongoing": "Yana gudana",
+  "ui_status_no_data": "Babu bayanai",
+  "ui_status_details": "Bayanai",
+  "ui_status_footnote": "Kyron yana duba kansa duk bayan minti 5 yayin da yake aiki. Rana mai launin toka ba ta da wani dubawa.",
+  "ui_status_unavailable": "Tarihin lokacin aiki bai samu ba tukuna.",
+  "ui_status_degraded": "Wasu tsare-tsare suna da matsala"
 }

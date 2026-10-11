@@ -622,5 +622,21 @@
   "ui_media_saving": "جارٍ الحفظ…",
   "ui_media_saved": "تم الحفظ في صورك",
   "ui_media_save_failed": "تعذّر الحفظ. حاول مرة أخرى.",
-  "ui_media_save_denied": "اسمح لـ Kyron بالإضافة إلى صورك لحفظ هذا."
+  "ui_media_save_denied": "اسمح لـ Kyron بالإضافة إلى صورك لحفظ هذا.",
+  "ui_status_all_ok": "جميع الأنظمة تعمل",
+  "ui_status_uptime": "مدة التشغيل",
+  "ui_status_last_60": "آخر 60 يومًا",
+  "ui_status_60_days_ago": "قبل 60 يومًا",
+  "ui_status_today": "اليوم",
+  "ui_status_api": "API",
+  "ui_status_database": "قاعدة البيانات",
+  "ui_status_auth": "تسجيل الدخول",
+  "ui_status_incidents": "الحوادث الأخيرة",
+  "ui_status_no_incidents": "لا حوادث في آخر 60 يومًا.",
+  "ui_status_ongoing": "مستمرة",
+  "ui_status_no_data": "لا بيانات",
+  "ui_status_details": "التفاصيل",
+  "ui_status_footnote": "يفحص Kyron نفسه كل 5 دقائق أثناء تشغيله. اليوم الرمادي لم تُجرَ فيه أي فحوصات.",
+  "ui_status_unavailable": "سجل مدة التشغيل غير متاح بعد.",
+  "ui_status_degraded": "تواجه بعض الأنظمة مشكلات"
 }

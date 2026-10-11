@@ -622,5 +622,21 @@
   "ui_media_saving": "בשמירה…",
   "ui_media_saved": "נשמר בתמונות שלך",
   "ui_media_save_failed": "לא ניתן לשמור. אפשר לנסות שוב.",
-  "ui_media_save_denied": "יש לאפשר ל-Kyron להוסיף לתמונות שלך כדי לשמור את זה."
+  "ui_media_save_denied": "יש לאפשר ל-Kyron להוסיף לתמונות שלך כדי לשמור את זה.",
+  "ui_status_all_ok": "כל המערכות פועלות",
+  "ui_status_uptime": "זמינות",
+  "ui_status_last_60": "60 הימים האחרונים",
+  "ui_status_60_days_ago": "לפני 60 יום",
+  "ui_status_today": "היום",
+  "ui_status_api": "API",
+  "ui_status_database": "מסד נתונים",
+  "ui_status_auth": "התחברות",
+  "ui_status_incidents": "תקלות אחרונות",
+  "ui_status_no_incidents": "אין תקלות ב-60 הימים האחרונים.",
+  "ui_status_ongoing": "בתהליך",
+  "ui_status_no_data": "אין נתונים",
+  "ui_status_details": "פרטים",
+  "ui_status_footnote": "Kyron בודק את עצמו כל 5 דקות כל עוד הוא פועל. ביום אפור לא היו בדיקות.",
+  "ui_status_unavailable": "היסטוריית הזמינות עדיין לא זמינה.",
+  "ui_status_degraded": "בחלק מהמערכות יש בעיות"
 }

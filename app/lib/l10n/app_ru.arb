@@ -622,5 +622,21 @@
   "ui_media_saving": "Сохранение…",
   "ui_media_saved": "Сохранено в фото",
   "ui_media_save_failed": "Не удалось сохранить. Попробуйте ещё раз.",
-  "ui_media_save_denied": "Разрешите Kyron добавлять в ваши фото, чтобы сохранить это."
+  "ui_media_save_denied": "Разрешите Kyron добавлять в ваши фото, чтобы сохранить это.",
+  "ui_status_all_ok": "Все системы работают",
+  "ui_status_uptime": "Доступность",
+  "ui_status_last_60": "Последние 60 дней",
+  "ui_status_60_days_ago": "60 дней назад",
+  "ui_status_today": "Сегодня",
+  "ui_status_api": "API",
+  "ui_status_database": "База данных",
+  "ui_status_auth": "Вход",
+  "ui_status_incidents": "Недавние инциденты",
+  "ui_status_no_incidents": "За последние 60 дней инцидентов не было.",
+  "ui_status_ongoing": "Продолжается",
+  "ui_status_no_data": "Нет данных",
+  "ui_status_details": "Подробности",
+  "ui_status_footnote": "Kyron проверяет себя каждые 5 минут, пока работает. В серый день проверок не было.",
+  "ui_status_unavailable": "История доступности пока недоступна.",
+  "ui_status_degraded": "В некоторых системах есть проблемы"
 }

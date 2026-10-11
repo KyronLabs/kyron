@@ -1285,6 +1285,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "A kò lè fi pamọ́. Gbìyànjú lẹ́ẹ̀kan sí i."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Gba Kyron láàyè láti fi kún àwọn fọ́tò rẹ kí o lè fi èyí pamọ́."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Gbogbo ètò ń ṣiṣẹ́"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Àkókò iṣẹ́"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Ọjọ́ 60 tó kọjá"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Ọjọ́ 60 sẹ́yìn"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Òní"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Ibi ìpamọ́ dátà"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Ìwọlé"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìṣẹ̀lẹ̀ àìpẹ́"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Kò sí ìṣẹ̀lẹ̀ kankan ní ọjọ́ 60 tó kọjá."),
+      "ui_status_ongoing":
+          MessageLookupByLibrary.simpleMessage("Ó ń lọ lọ́wọ́"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Kò sí dátà"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Àlàyé"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron máa ń ṣàyẹ̀wò ara rẹ̀ ní gbogbo ìṣẹ́jú 5 nígbà tó bá ń ṣiṣẹ́. Ọjọ́ eérú kò ní àyẹ̀wò kankan."),
+      "ui_status_unavailable":
+          MessageLookupByLibrary.simpleMessage("Ìtàn àkókò iṣẹ́ kò tíì sí."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Àwọn ètò kan ní ìṣòro"),
     };
 
 final messageLookup = MessageLookup();

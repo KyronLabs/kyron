@@ -622,5 +622,21 @@
   "ui_media_saving": "সংরক্ষণ হচ্ছে…",
   "ui_media_saved": "আপনার ছবিতে সংরক্ষিত হয়েছে",
   "ui_media_save_failed": "সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।",
-  "ui_media_save_denied": "এটি সংরক্ষণ করতে Kyron-কে আপনার ছবিতে যোগ করার অনুমতি দিন।"
+  "ui_media_save_denied": "এটি সংরক্ষণ করতে Kyron-কে আপনার ছবিতে যোগ করার অনুমতি দিন।",
+  "ui_status_all_ok": "সব সিস্টেম চালু আছে",
+  "ui_status_uptime": "আপটাইম",
+  "ui_status_last_60": "গত 60 দিন",
+  "ui_status_60_days_ago": "60 দিন আগে",
+  "ui_status_today": "আজ",
+  "ui_status_api": "API",
+  "ui_status_database": "ডেটাবেস",
+  "ui_status_auth": "সাইন-ইন",
+  "ui_status_incidents": "সাম্প্রতিক ঘটনা",
+  "ui_status_no_incidents": "গত 60 দিনে কোনো ঘটনা নেই।",
+  "ui_status_ongoing": "চলছে",
+  "ui_status_no_data": "কোনো ডেটা নেই",
+  "ui_status_details": "বিস্তারিত",
+  "ui_status_footnote": "Kyron চলার সময় প্রতি 5 মিনিটে নিজেকে পরীক্ষা করে। ধূসর দিনে কোনো পরীক্ষা হয়নি।",
+  "ui_status_unavailable": "আপটাইমের ইতিহাস এখনও পাওয়া যাচ্ছে না।",
+  "ui_status_degraded": "কিছু সিস্টেমে সমস্যা হচ্ছে"
 }

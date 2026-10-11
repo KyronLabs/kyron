@@ -1349,6 +1349,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Salvestamine ebaõnnestus. Proovi uuesti."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Luba Kyronil sinu fotodele lisada, et seda salvestada."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Kõik süsteemid töötavad"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Tööaeg"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Viimased 60 päeva"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 päeva tagasi"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Täna"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Andmebaas"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Sisselogimine"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Hiljutised intsidendid"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Viimase 60 päeva jooksul intsidente pole."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Käimas"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Andmed puuduvad"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Üksikasjad"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron kontrollib end töötamise ajal iga 5 minuti järel. Hallil päeval kontrolle ei tehtud."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Tööaja ajalugu pole veel saadaval."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Mõnel süsteemil on probleeme"),
     };
 
 final messageLookup = MessageLookup();

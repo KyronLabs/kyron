@@ -1361,6 +1361,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kon dit nie stoor nie. Probeer weer."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Laat Kyron toe om by jou foto's te voeg om dit te stoor."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Alle stelsels werk"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Beskikbaarheid"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Laaste 60 dae"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 dae gelede"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Vandag"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Databasis"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Aanmelding"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Onlangse voorvalle"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Geen voorvalle in die laaste 60 dae nie."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Aan die gang"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Geen data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Besonderhede"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron kontroleer homself elke 5 minute terwyl dit loop. 'n Grys dag het geen kontroles gehad nie."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Beskikbaarheidsgeskiedenis is nog nie beskikbaar nie."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Sommige stelsels het probleme"),
     };
 
 final messageLookup = MessageLookup();

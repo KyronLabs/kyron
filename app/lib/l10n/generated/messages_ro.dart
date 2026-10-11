@@ -1288,6 +1288,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Nu s-a putut salva. Încearcă din nou."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Permite-i lui Kyron să adauge în fotografiile tale pentru a salva asta."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Toate sistemele funcționează"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Disponibilitate"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Ultimele 60 de zile"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Acum 60 de zile"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Astăzi"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Bază de date"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Conectare"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Incidente recente"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Niciun incident în ultimele 60 de zile."),
+      "ui_status_ongoing":
+          MessageLookupByLibrary.simpleMessage("În desfășurare"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Fără date"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Detalii"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron se verifică la fiecare 5 minute cât timp rulează. O zi gri nu a avut verificări."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Istoricul disponibilității nu este încă disponibil."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Unele sisteme au probleme"),
     };
 
 final messageLookup = MessageLookup();

@@ -622,5 +622,21 @@
   "ui_media_saving": "सेव्ह करत आहे…",
   "ui_media_saved": "तुमच्या फोटोंमध्ये सेव्ह केले",
   "ui_media_save_failed": "सेव्ह करता आले नाही. पुन्हा प्रयत्न करा.",
-  "ui_media_save_denied": "हे सेव्ह करण्यासाठी Kyron ला तुमच्या फोटोंमध्ये जोडू द्या."
+  "ui_media_save_denied": "हे सेव्ह करण्यासाठी Kyron ला तुमच्या फोटोंमध्ये जोडू द्या.",
+  "ui_status_all_ok": "सर्व प्रणाली कार्यरत आहेत",
+  "ui_status_uptime": "अपटाइम",
+  "ui_status_last_60": "मागील 60 दिवस",
+  "ui_status_60_days_ago": "60 दिवसांपूर्वी",
+  "ui_status_today": "आज",
+  "ui_status_api": "API",
+  "ui_status_database": "डेटाबेस",
+  "ui_status_auth": "साइन-इन",
+  "ui_status_incidents": "अलीकडील घटना",
+  "ui_status_no_incidents": "मागील 60 दिवसांत कोणतीही घटना नाही.",
+  "ui_status_ongoing": "सुरू आहे",
+  "ui_status_no_data": "डेटा नाही",
+  "ui_status_details": "तपशील",
+  "ui_status_footnote": "Kyron चालू असताना दर 5 मिनिटांनी स्वतःची तपासणी करते. राखाडी दिवशी कोणतीही तपासणी झाली नाही.",
+  "ui_status_unavailable": "अपटाइमचा इतिहास अद्याप उपलब्ध नाही.",
+  "ui_status_degraded": "काही प्रणालींमध्ये समस्या आहेत"
 }

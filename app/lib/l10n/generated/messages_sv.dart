@@ -1286,6 +1286,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Det gick inte att spara. Försök igen."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Låt Kyron lägga till i dina bilder för att spara detta."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Alla system i drift"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Drifttid"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Senaste 60 dagarna"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("För 60 dagar sedan"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("I dag"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Databas"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Inloggning"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Senaste incidenter"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Inga incidenter de senaste 60 dagarna."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Pågår"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Inga data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Detaljer"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron kontrollerar sig själv var 5:e minut medan den körs. En grå dag hade inga kontroller."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Drifttidshistoriken är inte tillgänglig än."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Vissa system har problem"),
     };
 
 final messageLookup = MessageLookup();

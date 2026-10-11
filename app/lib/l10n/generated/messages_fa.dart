@@ -1286,6 +1286,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ذخیره نشد. دوباره امتحان کنید."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "برای ذخیرهٔ این، به Kyron اجازه دهید به عکس‌های شما اضافه کند."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("همهٔ سامانه‌ها فعال‌اند"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("زمان فعالیت"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("۶۰ روز گذشته"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("۶۰ روز پیش"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("امروز"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("پایگاه داده"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("ورود"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("رخدادهای اخیر"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "در ۶۰ روز گذشته رخدادی نبوده است."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("در جریان"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("بدون داده"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("جزئیات"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron هنگام اجرا هر ۵ دقیقه خودش را بررسی می‌کند. روز خاکستری هیچ بررسی‌ای نداشته است."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "تاریخچهٔ زمان فعالیت هنوز در دسترس نیست."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("برخی سامانه‌ها مشکل دارند"),
     };
 
 final messageLookup = MessageLookup();

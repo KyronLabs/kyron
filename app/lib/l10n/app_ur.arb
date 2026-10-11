@@ -622,5 +622,21 @@
   "ui_media_saving": "محفوظ ہو رہا ہے…",
   "ui_media_saved": "آپ کی تصاویر میں محفوظ ہو گیا",
   "ui_media_save_failed": "محفوظ نہیں ہو سکا۔ دوبارہ کوشش کریں۔",
-  "ui_media_save_denied": "اسے محفوظ کرنے کے لیے Kyron کو اپنی تصاویر میں شامل کرنے کی اجازت دیں۔"
+  "ui_media_save_denied": "اسے محفوظ کرنے کے لیے Kyron کو اپنی تصاویر میں شامل کرنے کی اجازت دیں۔",
+  "ui_status_all_ok": "تمام نظام کام کر رہے ہیں",
+  "ui_status_uptime": "اپ ٹائم",
+  "ui_status_last_60": "پچھلے 60 دن",
+  "ui_status_60_days_ago": "60 دن پہلے",
+  "ui_status_today": "آج",
+  "ui_status_api": "API",
+  "ui_status_database": "ڈیٹا بیس",
+  "ui_status_auth": "سائن ان",
+  "ui_status_incidents": "حالیہ واقعات",
+  "ui_status_no_incidents": "پچھلے 60 دنوں میں کوئی واقعہ نہیں ہوا۔",
+  "ui_status_ongoing": "جاری ہے",
+  "ui_status_no_data": "کوئی ڈیٹا نہیں",
+  "ui_status_details": "تفصیلات",
+  "ui_status_footnote": "Kyron چلتے ہوئے ہر 5 منٹ بعد اپنی جانچ کرتا ہے۔ سرمئی دن کوئی جانچ نہیں ہوئی۔",
+  "ui_status_unavailable": "اپ ٹائم کی تاریخ ابھی دستیاب نہیں۔",
+  "ui_status_degraded": "کچھ نظاموں میں مسائل ہیں"
 }

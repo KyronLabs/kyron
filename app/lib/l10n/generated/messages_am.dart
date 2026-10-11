@@ -1184,6 +1184,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ማስቀመጥ አልተቻለም። እንደገና ይሞክሩ።"),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "ይህን ለማስቀመጥ Kyron ወደ ፎቶዎችዎ እንዲያክል ይፍቀዱ።"),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("ሁሉም ሥርዓቶች እየሠሩ ነው"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("የሥራ ጊዜ"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("ያለፉት 60 ቀናት"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("ከ60 ቀናት በፊት"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("ዛሬ"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("የውሂብ ጎታ"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("መግቢያ"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("የቅርብ ጊዜ ችግሮች"),
+      "ui_status_no_incidents":
+          MessageLookupByLibrary.simpleMessage("ባለፉት 60 ቀናት ምንም ችግር አልነበረም።"),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("በመካሄድ ላይ"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("ምንም ውሂብ የለም"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("ዝርዝሮች"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron በሚሠራበት ጊዜ በየ5 ደቂቃው ራሱን ይፈትሻል። ግራጫ ቀን ምንም ፍተሻ አልነበረውም።"),
+      "ui_status_unavailable":
+          MessageLookupByLibrary.simpleMessage("የሥራ ጊዜ ታሪክ ገና አይገኝም።"),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("አንዳንድ ሥርዓቶች ችግር ገጥሟቸዋል"),
     };
 
 final messageLookup = MessageLookup();

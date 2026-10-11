@@ -622,5 +622,21 @@
   "ui_media_saving": "Αποθήκευση…",
   "ui_media_saved": "Αποθηκεύτηκε στις φωτογραφίες σας",
   "ui_media_save_failed": "Δεν ήταν δυνατή η αποθήκευση. Δοκιμάστε ξανά.",
-  "ui_media_save_denied": "Επιτρέψτε στο Kyron να προσθέτει στις φωτογραφίες σας για να το αποθηκεύσετε."
+  "ui_media_save_denied": "Επιτρέψτε στο Kyron να προσθέτει στις φωτογραφίες σας για να το αποθηκεύσετε.",
+  "ui_status_all_ok": "Όλα τα συστήματα λειτουργούν",
+  "ui_status_uptime": "Χρόνος λειτουργίας",
+  "ui_status_last_60": "Τελευταίες 60 ημέρες",
+  "ui_status_60_days_ago": "Πριν από 60 ημέρες",
+  "ui_status_today": "Σήμερα",
+  "ui_status_api": "API",
+  "ui_status_database": "Βάση δεδομένων",
+  "ui_status_auth": "Σύνδεση",
+  "ui_status_incidents": "Πρόσφατα περιστατικά",
+  "ui_status_no_incidents": "Κανένα περιστατικό τις τελευταίες 60 ημέρες.",
+  "ui_status_ongoing": "Σε εξέλιξη",
+  "ui_status_no_data": "Χωρίς δεδομένα",
+  "ui_status_details": "Λεπτομέρειες",
+  "ui_status_footnote": "Το Kyron ελέγχει τον εαυτό του κάθε 5 λεπτά όσο λειτουργεί. Μια γκρι ημέρα δεν είχε ελέγχους.",
+  "ui_status_unavailable": "Το ιστορικό λειτουργίας δεν είναι ακόμη διαθέσιμο.",
+  "ui_status_degraded": "Ορισμένα συστήματα έχουν προβλήματα"
 }

@@ -1289,6 +1289,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Не вдалося зберегти. Спробуйте ще раз."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Дозвольте Kyron додавати до ваших фото, щоб зберегти це."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Усі системи працюють"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Доступність"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Останні 60 днів"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 днів тому"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Сьогодні"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("База даних"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Вхід"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Нещодавні інциденти"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "За останні 60 днів інцидентів не було."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Триває"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Немає даних"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Подробиці"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron перевіряє себе кожні 5 хвилин, поки працює. У сірий день перевірок не було."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Історія доступності ще недоступна."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("У деяких системах є проблеми"),
     };
 
 final messageLookup = MessageLookup();

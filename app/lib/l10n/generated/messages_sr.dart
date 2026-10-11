@@ -1285,6 +1285,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Чување није успело. Покушајте поново."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Дозволите Kyron-у да додаје у ваше фотографије да бисте ово сачували."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Сви системи раде"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Доступност"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Последњих 60 дана"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Пре 60 дана"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Данас"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("База података"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Пријава"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Недавни инциденти"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Нема инцидената у последњих 60 дана."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("У току"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Нема података"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Детаљи"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron проверава сам себе на сваких 5 минута док ради. Сиви дан није имао провере."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Историја доступности још није доступна."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Неки системи имају проблема"),
     };
 
 final messageLookup = MessageLookup();

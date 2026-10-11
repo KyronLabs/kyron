@@ -1578,6 +1578,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Could not save it. Try again."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Allow Kyron to add to your photos to save this."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("All systems operational"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Uptime"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("Last 60 days"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 days ago"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Today"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Database"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Sign-in"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Recent incidents"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "No incidents in the last 60 days."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Ongoing"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("No data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Details"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron checks itself every 5 minutes while it is running. A grey day had no checks."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Uptime history is not available yet."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Some systems are having problems"),
     };
 
 final messageLookup = MessageLookup();

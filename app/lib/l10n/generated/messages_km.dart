@@ -1287,6 +1287,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "មិនអាចរក្សាទុកបានទេ។ សូមព្យាយាមម្តងទៀត។"),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "អនុញ្ញាតឱ្យ Kyron បន្ថែមទៅរូបថតរបស់អ្នក ដើម្បីរក្សាទុកនេះ។"),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("ប្រព័ន្ធទាំងអស់កំពុងដំណើរការ"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("ពេលដំណើរការ"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("60 ថ្ងៃចុងក្រោយ"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 ថ្ងៃមុន"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("ថ្ងៃនេះ"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("មូលដ្ឋានទិន្នន័យ"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("ការចូល"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("ឧប្បត្តិហេតុថ្មីៗ"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "គ្មានឧប្បត្តិហេតុក្នុង 60 ថ្ងៃចុងក្រោយទេ។"),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("កំពុងបន្ត"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("គ្មានទិន្នន័យ"),
+      "ui_status_details":
+          MessageLookupByLibrary.simpleMessage("ព័ត៌មានលម្អិត"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron ពិនិត្យខ្លួនឯងរៀងរាល់ 5 នាទីពេលកំពុងដំណើរការ។ ថ្ងៃពណ៌ប្រផេះគ្មានការពិនិត្យទេ។"),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "ប្រវត្តិពេលដំណើរការមិនទាន់មានទេ។"),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("ប្រព័ន្ធមួយចំនួនកំពុងមានបញ្ហា"),
     };
 
 final messageLookup = MessageLookup();

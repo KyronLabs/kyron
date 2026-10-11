@@ -97,3 +97,128 @@ class ServiceStatusNotifier extends StateNotifier<AsyncValue<ServiceStatus>> {
     }
   }
 }
+
+/// One component's checks on one day.
+class StatusDay {
+  final int checks;
+  final int failures;
+
+  const StatusDay({required this.checks, required this.failures});
+
+  /// The share of checks that failed, 0 to 1.
+  double get failureRate => checks == 0 ? 0 : failures / checks;
+}
+
+/// One component's history: its uptime over the window, and its days.
+class StatusComponent {
+  /// `api`, `database` or `auth` -- named on screen by the app, in the
+  /// reader's language.
+  final String id;
+
+  /// Percent of checks passed over the window; null when there were none.
+  final double? uptime;
+
+  /// Keyed by UTC calendar day, `YYYY-MM-DD`. A day not here had no checks.
+  final Map<String, StatusDay> days;
+
+  const StatusComponent({
+    required this.id,
+    required this.uptime,
+    required this.days,
+  });
+
+  factory StatusComponent.fromJson(Map<String, dynamic> json) =>
+      StatusComponent(
+        id: json['id'] as String? ?? '',
+        uptime: (json['uptime'] as num?)?.toDouble(),
+        days: {
+          for (final day in (json['days'] as List<dynamic>? ?? const [])
+              .whereType<Map<String, dynamic>>())
+            day['day'] as String? ?? '': StatusDay(
+              checks: (day['checks'] as num?)?.toInt() ?? 0,
+              failures: (day['failures'] as num?)?.toInt() ?? 0,
+            ),
+        },
+      );
+}
+
+/// A stretch of time one component was failing its checks.
+class StatusIncident {
+  final String component;
+  final DateTime startedAt;
+
+  /// Null while it is still going on.
+  final DateTime? endedAt;
+  final String? detail;
+
+  const StatusIncident({
+    required this.component,
+    required this.startedAt,
+    this.endedAt,
+    this.detail,
+  });
+
+  bool get ongoing => endedAt == null;
+
+  factory StatusIncident.fromJson(Map<String, dynamic> json) => StatusIncident(
+        component: json['component'] as String? ?? '',
+        startedAt:
+            DateTime.tryParse(json['startedAt'] as String? ?? '')?.toLocal() ??
+                DateTime.now(),
+        endedAt: DateTime.tryParse(json['endedAt'] as String? ?? '')?.toLocal(),
+        detail: json['detail'] as String?,
+      );
+}
+
+/// What GET /health/history says: how each part of the service has done
+/// over the last [days] days, and what went wrong in them.
+class ServiceHistory {
+  final int days;
+
+  /// How often the service checks itself.
+  final int intervalMinutes;
+  final List<StatusComponent> components;
+  final List<StatusIncident> incidents;
+
+  const ServiceHistory({
+    required this.days,
+    required this.intervalMinutes,
+    required this.components,
+    required this.incidents,
+  });
+
+  factory ServiceHistory.fromJson(Map<String, dynamic> json) => ServiceHistory(
+        days: (json['days'] as num?)?.toInt() ?? 60,
+        intervalMinutes: (json['intervalMinutes'] as num?)?.toInt() ?? 5,
+        components: (json['components'] as List<dynamic>? ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(StatusComponent.fromJson)
+            .toList(),
+        incidents: (json['incidents'] as List<dynamic>? ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(StatusIncident.fromJson)
+            .toList(),
+      );
+}
+
+/// The last sixty days. Read again whenever the status screen is.
+///
+/// Null when the server has no history to give -- one deployed before the
+/// endpoint existed answers 404 -- which the screen says plainly rather than
+/// drawing sixty grey bars as if they meant something.
+final serviceHistoryProvider =
+    FutureProvider.autoDispose<ServiceHistory?>((ref) async {
+  try {
+    final res = await ref
+        .read(apiClientProvider)
+        .dio
+        .get<Map<String, dynamic>>('/health/history', queryParameters: {
+      'days': 60,
+    });
+    final data = res.data;
+    return data == null ? null : ServiceHistory.fromJson(data);
+  } on DioException catch (e) {
+    if (e.response?.statusCode == 404) return null;
+    rethrow;
+  }
+});

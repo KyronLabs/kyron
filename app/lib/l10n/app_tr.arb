@@ -622,5 +622,21 @@
   "ui_media_saving": "Kaydediliyor…",
   "ui_media_saved": "Fotoğraflarınıza kaydedildi",
   "ui_media_save_failed": "Kaydedilemedi. Tekrar deneyin.",
-  "ui_media_save_denied": "Bunu kaydetmek için Kyron'un fotoğraflarınıza eklemesine izin verin."
+  "ui_media_save_denied": "Bunu kaydetmek için Kyron'un fotoğraflarınıza eklemesine izin verin.",
+  "ui_status_all_ok": "Tüm sistemler çalışıyor",
+  "ui_status_uptime": "Çalışma süresi",
+  "ui_status_last_60": "Son 60 gün",
+  "ui_status_60_days_ago": "60 gün önce",
+  "ui_status_today": "Bugün",
+  "ui_status_api": "API",
+  "ui_status_database": "Veritabanı",
+  "ui_status_auth": "Giriş",
+  "ui_status_incidents": "Son olaylar",
+  "ui_status_no_incidents": "Son 60 günde olay yok.",
+  "ui_status_ongoing": "Devam ediyor",
+  "ui_status_no_data": "Veri yok",
+  "ui_status_details": "Ayrıntılar",
+  "ui_status_footnote": "Kyron çalışırken kendini her 5 dakikada bir denetler. Gri bir günde denetim yapılmadı.",
+  "ui_status_unavailable": "Çalışma süresi geçmişi henüz mevcut değil.",
+  "ui_status_degraded": "Bazı sistemlerde sorun var"
 }

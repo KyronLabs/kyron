@@ -622,5 +622,21 @@
   "ui_media_saving": "Ukládání…",
   "ui_media_saved": "Uloženo do fotek",
   "ui_media_save_failed": "Nepodařilo se uložit. Zkuste to znovu.",
-  "ui_media_save_denied": "Povolte Kyronu přidávat do fotek, abyste to mohli uložit."
+  "ui_media_save_denied": "Povolte Kyronu přidávat do fotek, abyste to mohli uložit.",
+  "ui_status_all_ok": "Všechny systémy fungují",
+  "ui_status_uptime": "Dostupnost",
+  "ui_status_last_60": "Posledních 60 dní",
+  "ui_status_60_days_ago": "Před 60 dny",
+  "ui_status_today": "Dnes",
+  "ui_status_api": "API",
+  "ui_status_database": "Databáze",
+  "ui_status_auth": "Přihlášení",
+  "ui_status_incidents": "Nedávné incidenty",
+  "ui_status_no_incidents": "Za posledních 60 dní žádné incidenty.",
+  "ui_status_ongoing": "Probíhá",
+  "ui_status_no_data": "Žádná data",
+  "ui_status_details": "Podrobnosti",
+  "ui_status_footnote": "Kyron se za běhu kontroluje každých 5 minut. Šedý den neměl žádné kontroly.",
+  "ui_status_unavailable": "Historie dostupnosti zatím není k dispozici.",
+  "ui_status_degraded": "Některé systémy mají potíže"
 }

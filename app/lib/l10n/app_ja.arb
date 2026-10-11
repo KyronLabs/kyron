@@ -622,5 +622,21 @@
   "ui_media_saving": "保存中…",
   "ui_media_saved": "写真に保存しました",
   "ui_media_save_failed": "保存できませんでした。もう一度お試しください。",
-  "ui_media_save_denied": "保存するには、Kyron に写真への追加を許可してください。"
+  "ui_media_save_denied": "保存するには、Kyron に写真への追加を許可してください。",
+  "ui_status_all_ok": "すべてのシステムが稼働中",
+  "ui_status_uptime": "稼働率",
+  "ui_status_last_60": "過去60日間",
+  "ui_status_60_days_ago": "60日前",
+  "ui_status_today": "今日",
+  "ui_status_api": "API",
+  "ui_status_database": "データベース",
+  "ui_status_auth": "サインイン",
+  "ui_status_incidents": "最近のインシデント",
+  "ui_status_no_incidents": "過去60日間にインシデントはありません。",
+  "ui_status_ongoing": "継続中",
+  "ui_status_no_data": "データなし",
+  "ui_status_details": "詳細",
+  "ui_status_footnote": "Kyronは稼働中、5分ごとに自己チェックを行います。灰色の日はチェックがありませんでした。",
+  "ui_status_unavailable": "稼働履歴はまだありません。",
+  "ui_status_degraded": "一部のシステムで問題が発生しています"
 }

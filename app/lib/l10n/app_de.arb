@@ -622,5 +622,21 @@
   "ui_media_saving": "Wird gespeichert…",
   "ui_media_saved": "In deinen Fotos gespeichert",
   "ui_media_save_failed": "Konnte nicht gespeichert werden. Versuch es noch einmal.",
-  "ui_media_save_denied": "Erlaube Kyron, etwas zu deinen Fotos hinzuzufügen, um dies zu speichern."
+  "ui_media_save_denied": "Erlaube Kyron, etwas zu deinen Fotos hinzuzufügen, um dies zu speichern.",
+  "ui_status_all_ok": "Alle Systeme betriebsbereit",
+  "ui_status_uptime": "Verfügbarkeit",
+  "ui_status_last_60": "Letzte 60 Tage",
+  "ui_status_60_days_ago": "Vor 60 Tagen",
+  "ui_status_today": "Heute",
+  "ui_status_api": "API",
+  "ui_status_database": "Datenbank",
+  "ui_status_auth": "Anmeldung",
+  "ui_status_incidents": "Letzte Vorfälle",
+  "ui_status_no_incidents": "Keine Vorfälle in den letzten 60 Tagen.",
+  "ui_status_ongoing": "Andauernd",
+  "ui_status_no_data": "Keine Daten",
+  "ui_status_details": "Details",
+  "ui_status_footnote": "Kyron prüft sich alle 5 Minuten selbst, solange es läuft. An einem grauen Tag gab es keine Prüfungen.",
+  "ui_status_unavailable": "Der Verfügbarkeitsverlauf ist noch nicht verfügbar.",
+  "ui_status_degraded": "Einige Systeme haben Probleme"
 }

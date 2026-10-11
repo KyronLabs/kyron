@@ -622,5 +622,21 @@
   "ui_media_saving": "ಉಳಿಸಲಾಗುತ್ತಿದೆ…",
   "ui_media_saved": "ನಿಮ್ಮ ಫೋಟೋಗಳಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ",
   "ui_media_save_failed": "ಉಳಿಸಲಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
-  "ui_media_save_denied": "ಇದನ್ನು ಉಳಿಸಲು ನಿಮ್ಮ ಫೋಟೋಗಳಿಗೆ ಸೇರಿಸಲು Kyron ಗೆ ಅನುಮತಿಸಿ."
+  "ui_media_save_denied": "ಇದನ್ನು ಉಳಿಸಲು ನಿಮ್ಮ ಫೋಟೋಗಳಿಗೆ ಸೇರಿಸಲು Kyron ಗೆ ಅನುಮತಿಸಿ.",
+  "ui_status_all_ok": "ಎಲ್ಲಾ ವ್ಯವಸ್ಥೆಗಳು ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿವೆ",
+  "ui_status_uptime": "ಅಪ್‌ಟೈಮ್",
+  "ui_status_last_60": "ಕಳೆದ 60 ದಿನಗಳು",
+  "ui_status_60_days_ago": "60 ದಿನಗಳ ಹಿಂದೆ",
+  "ui_status_today": "ಇಂದು",
+  "ui_status_api": "API",
+  "ui_status_database": "ಡೇಟಾಬೇಸ್",
+  "ui_status_auth": "ಸೈನ್-ಇನ್",
+  "ui_status_incidents": "ಇತ್ತೀಚಿನ ಘಟನೆಗಳು",
+  "ui_status_no_incidents": "ಕಳೆದ 60 ದಿನಗಳಲ್ಲಿ ಯಾವುದೇ ಘಟನೆಗಳಿಲ್ಲ.",
+  "ui_status_ongoing": "ನಡೆಯುತ್ತಿದೆ",
+  "ui_status_no_data": "ಡೇಟಾ ಇಲ್ಲ",
+  "ui_status_details": "ವಿವರಗಳು",
+  "ui_status_footnote": "Kyron ಚಾಲನೆಯಲ್ಲಿರುವಾಗ ಪ್ರತಿ 5 ನಿಮಿಷಕ್ಕೊಮ್ಮೆ ತನ್ನನ್ನು ಪರಿಶೀಲಿಸುತ್ತದೆ. ಬೂದು ದಿನದಲ್ಲಿ ಯಾವುದೇ ಪರಿಶೀಲನೆ ನಡೆದಿಲ್ಲ.",
+  "ui_status_unavailable": "ಅಪ್‌ಟೈಮ್ ಇತಿಹಾಸ ಇನ್ನೂ ಲಭ್ಯವಿಲ್ಲ.",
+  "ui_status_degraded": "ಕೆಲವು ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ ಸಮಸ್ಯೆ ಇದೆ"
 }

@@ -622,5 +622,21 @@
   "ui_media_saving": "Gemmer…",
   "ui_media_saved": "Gemt i dine billeder",
   "ui_media_save_failed": "Kunne ikke gemme det. Prøv igen.",
-  "ui_media_save_denied": "Giv Kyron lov til at tilføje til dine billeder for at gemme dette."
+  "ui_media_save_denied": "Giv Kyron lov til at tilføje til dine billeder for at gemme dette.",
+  "ui_status_all_ok": "Alle systemer kører",
+  "ui_status_uptime": "Oppetid",
+  "ui_status_last_60": "Seneste 60 dage",
+  "ui_status_60_days_ago": "For 60 dage siden",
+  "ui_status_today": "I dag",
+  "ui_status_api": "API",
+  "ui_status_database": "Database",
+  "ui_status_auth": "Log ind",
+  "ui_status_incidents": "Seneste hændelser",
+  "ui_status_no_incidents": "Ingen hændelser de seneste 60 dage.",
+  "ui_status_ongoing": "I gang",
+  "ui_status_no_data": "Ingen data",
+  "ui_status_details": "Detaljer",
+  "ui_status_footnote": "Kyron tjekker sig selv hvert 5. minut, mens den kører. En grå dag havde ingen tjek.",
+  "ui_status_unavailable": "Oppetidshistorik er ikke tilgængelig endnu.",
+  "ui_status_degraded": "Nogle systemer har problemer"
 }

@@ -622,5 +622,21 @@
   "ui_media_saving": "Zapisywanie…",
   "ui_media_saved": "Zapisano w zdjęciach",
   "ui_media_save_failed": "Nie udało się zapisać. Spróbuj ponownie.",
-  "ui_media_save_denied": "Pozwól Kyronowi dodawać do zdjęć, aby to zapisać."
+  "ui_media_save_denied": "Pozwól Kyronowi dodawać do zdjęć, aby to zapisać.",
+  "ui_status_all_ok": "Wszystkie systemy działają",
+  "ui_status_uptime": "Dostępność",
+  "ui_status_last_60": "Ostatnie 60 dni",
+  "ui_status_60_days_ago": "60 dni temu",
+  "ui_status_today": "Dziś",
+  "ui_status_api": "API",
+  "ui_status_database": "Baza danych",
+  "ui_status_auth": "Logowanie",
+  "ui_status_incidents": "Ostatnie incydenty",
+  "ui_status_no_incidents": "Brak incydentów w ostatnich 60 dniach.",
+  "ui_status_ongoing": "Trwa",
+  "ui_status_no_data": "Brak danych",
+  "ui_status_details": "Szczegóły",
+  "ui_status_footnote": "Kyron sprawdza się co 5 minut, gdy działa. W szary dzień nie było sprawdzeń.",
+  "ui_status_unavailable": "Historia dostępności nie jest jeszcze dostępna.",
+  "ui_status_degraded": "Niektóre systemy mają problemy"
 }

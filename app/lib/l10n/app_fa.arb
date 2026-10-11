@@ -622,5 +622,21 @@
   "ui_media_saving": "در حال ذخیره…",
   "ui_media_saved": "در عکس‌های شما ذخیره شد",
   "ui_media_save_failed": "ذخیره نشد. دوباره امتحان کنید.",
-  "ui_media_save_denied": "برای ذخیرهٔ این، به Kyron اجازه دهید به عکس‌های شما اضافه کند."
+  "ui_media_save_denied": "برای ذخیرهٔ این، به Kyron اجازه دهید به عکس‌های شما اضافه کند.",
+  "ui_status_all_ok": "همهٔ سامانه‌ها فعال‌اند",
+  "ui_status_uptime": "زمان فعالیت",
+  "ui_status_last_60": "۶۰ روز گذشته",
+  "ui_status_60_days_ago": "۶۰ روز پیش",
+  "ui_status_today": "امروز",
+  "ui_status_api": "API",
+  "ui_status_database": "پایگاه داده",
+  "ui_status_auth": "ورود",
+  "ui_status_incidents": "رخدادهای اخیر",
+  "ui_status_no_incidents": "در ۶۰ روز گذشته رخدادی نبوده است.",
+  "ui_status_ongoing": "در جریان",
+  "ui_status_no_data": "بدون داده",
+  "ui_status_details": "جزئیات",
+  "ui_status_footnote": "Kyron هنگام اجرا هر ۵ دقیقه خودش را بررسی می‌کند. روز خاکستری هیچ بررسی‌ای نداشته است.",
+  "ui_status_unavailable": "تاریخچهٔ زمان فعالیت هنوز در دسترس نیست.",
+  "ui_status_degraded": "برخی سامانه‌ها مشکل دارند"
 }

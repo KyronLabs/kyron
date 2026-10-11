@@ -622,5 +622,21 @@
   "ui_media_saving": "Gardando…",
   "ui_media_saved": "Gardado nas túas fotos",
   "ui_media_save_failed": "Non se puido gardar. Téntao de novo.",
-  "ui_media_save_denied": "Permite que Kyron engada ás túas fotos para gardar isto."
+  "ui_media_save_denied": "Permite que Kyron engada ás túas fotos para gardar isto.",
+  "ui_status_all_ok": "Todos os sistemas funcionan",
+  "ui_status_uptime": "Dispoñibilidade",
+  "ui_status_last_60": "Últimos 60 días",
+  "ui_status_60_days_ago": "Hai 60 días",
+  "ui_status_today": "Hoxe",
+  "ui_status_api": "API",
+  "ui_status_database": "Base de datos",
+  "ui_status_auth": "Inicio de sesión",
+  "ui_status_incidents": "Incidencias recentes",
+  "ui_status_no_incidents": "Ningunha incidencia nos últimos 60 días.",
+  "ui_status_ongoing": "En curso",
+  "ui_status_no_data": "Sen datos",
+  "ui_status_details": "Detalles",
+  "ui_status_footnote": "Kyron compróbase cada 5 minutos mentres está en marcha. Un día gris non tivo comprobacións.",
+  "ui_status_unavailable": "O historial de dispoñibilidade aínda non está dispoñible.",
+  "ui_status_degraded": "Algúns sistemas teñen problemas"
 }

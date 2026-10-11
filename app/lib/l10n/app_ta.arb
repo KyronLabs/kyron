@@ -622,5 +622,21 @@
   "ui_media_saving": "சேமிக்கிறது…",
   "ui_media_saved": "உங்கள் படங்களில் சேமிக்கப்பட்டது",
   "ui_media_save_failed": "சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.",
-  "ui_media_save_denied": "இதைச் சேமிக்க உங்கள் படங்களில் சேர்க்க Kyron-ஐ அனுமதிக்கவும்."
+  "ui_media_save_denied": "இதைச் சேமிக்க உங்கள் படங்களில் சேர்க்க Kyron-ஐ அனுமதிக்கவும்.",
+  "ui_status_all_ok": "அனைத்து அமைப்புகளும் இயங்குகின்றன",
+  "ui_status_uptime": "இயக்க நேரம்",
+  "ui_status_last_60": "கடந்த 60 நாட்கள்",
+  "ui_status_60_days_ago": "60 நாட்களுக்கு முன்",
+  "ui_status_today": "இன்று",
+  "ui_status_api": "API",
+  "ui_status_database": "தரவுத்தளம்",
+  "ui_status_auth": "உள்நுழைவு",
+  "ui_status_incidents": "சமீபத்திய சம்பவங்கள்",
+  "ui_status_no_incidents": "கடந்த 60 நாட்களில் சம்பவங்கள் இல்லை.",
+  "ui_status_ongoing": "நடந்துகொண்டிருக்கிறது",
+  "ui_status_no_data": "தரவு இல்லை",
+  "ui_status_details": "விவரங்கள்",
+  "ui_status_footnote": "Kyron இயங்கும்போது ஒவ்வொரு 5 நிமிடத்துக்கும் தன்னைச் சோதிக்கிறது. சாம்பல் நாளில் சோதனைகள் எதுவும் இல்லை.",
+  "ui_status_unavailable": "இயக்க நேர வரலாறு இன்னும் கிடைக்கவில்லை.",
+  "ui_status_degraded": "சில அமைப்புகளில் சிக்கல் உள்ளது"
 }

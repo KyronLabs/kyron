@@ -1289,6 +1289,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Nem sikerült menteni. Próbáld újra."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Engedélyezd, hogy a Kyron hozzáadjon a fotóidhoz, hogy ezt elmenthesd."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Minden rendszer működik"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Rendelkezésre állás"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Elmúlt 60 nap"),
+      "ui_status_60_days_ago": MessageLookupByLibrary.simpleMessage("60 napja"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Ma"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Adatbázis"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Bejelentkezés"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Legutóbbi incidensek"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Nem volt incidens az elmúlt 60 napban."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Folyamatban"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Nincs adat"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Részletek"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "A Kyron működés közben 5 percenként ellenőrzi magát. A szürke napon nem volt ellenőrzés."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "A rendelkezésre állási előzmények még nem érhetők el."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Néhány rendszerrel problémák vannak"),
     };
 
 final messageLookup = MessageLookup();

@@ -1287,6 +1287,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Сақтау мүмкін болмады. Қайталап көріңіз."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Мұны сақтау үшін Kyron-ға суреттеріңізге қосуға рұқсат беріңіз."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Барлық жүйе жұмыс істеп тұр"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Жұмыс уақыты"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("Соңғы 60 күн"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 күн бұрын"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Бүгін"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Дерекқор"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Кіру"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Соңғы оқиғалар"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Соңғы 60 күнде оқиға болған жоқ."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Жалғасуда"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Дерек жоқ"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Толығырақ"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron жұмыс істеп тұрғанда әр 5 минут сайын өзін тексереді. Сұр күні тексеру болмаған."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Жұмыс уақытының тарихы әлі қолжетімді емес."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Кейбір жүйелерде ақау бар"),
     };
 
 final messageLookup = MessageLookup();

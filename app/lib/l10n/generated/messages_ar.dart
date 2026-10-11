@@ -1291,6 +1291,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("تعذّر الحفظ. حاول مرة أخرى."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "اسمح لـ Kyron بالإضافة إلى صورك لحفظ هذا."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("جميع الأنظمة تعمل"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("مدة التشغيل"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("آخر 60 يومًا"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("قبل 60 يومًا"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("اليوم"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("قاعدة البيانات"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("الحوادث الأخيرة"),
+      "ui_status_no_incidents":
+          MessageLookupByLibrary.simpleMessage("لا حوادث في آخر 60 يومًا."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("مستمرة"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("لا بيانات"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("التفاصيل"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "يفحص Kyron نفسه كل 5 دقائق أثناء تشغيله. اليوم الرمادي لم تُجرَ فيه أي فحوصات."),
+      "ui_status_unavailable":
+          MessageLookupByLibrary.simpleMessage("سجل مدة التشغيل غير متاح بعد."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("تواجه بعض الأنظمة مشكلات"),
     };
 
 final messageLookup = MessageLookup();

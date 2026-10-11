@@ -1286,6 +1286,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Enweghị ike ichekwa ya. Nwaa ọzọ."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Kwe ka Kyron tinye na foto gị iji chekwaa nke a."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Sistemụ niile na-arụ ọrụ"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Oge ọrụ"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Ụbọchị 60 gara aga"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Ụbọchị 60 gara aga"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Taa"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Nchekwa data"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Ịbanye"),
+      "ui_status_incidents": MessageLookupByLibrary.simpleMessage(
+          "Ihe ndị mere n'oge na-adịbeghị anya"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịghị ihe mere n'ime ụbọchị 60 gara aga."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Na-aga n'ihu"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Enweghị data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Nkọwa"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron na-enyocha onwe ya kwa nkeji 5 mgbe ọ na-arụ ọrụ. Ụbọchị isi awọ enweghị nnyocha ọ bụla."),
+      "ui_status_unavailable":
+          MessageLookupByLibrary.simpleMessage("Akụkọ oge ọrụ adịbeghị."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Ụfọdụ sistemụ nwere nsogbu"),
     };
 
 final messageLookup = MessageLookup();

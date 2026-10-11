@@ -1289,6 +1289,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Nie udało się zapisać. Spróbuj ponownie."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Pozwól Kyronowi dodawać do zdjęć, aby to zapisać."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Wszystkie systemy działają"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Dostępność"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Ostatnie 60 dni"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 dni temu"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Dziś"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Baza danych"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Logowanie"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Ostatnie incydenty"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Brak incydentów w ostatnich 60 dniach."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Trwa"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Brak danych"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Szczegóły"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron sprawdza się co 5 minut, gdy działa. W szary dzień nie było sprawdzeń."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Historia dostępności nie jest jeszcze dostępna."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Niektóre systemy mają problemy"),
     };
 
 final messageLookup = MessageLookup();

@@ -1452,6 +1452,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Δεν ήταν δυνατή η αποθήκευση. Δοκιμάστε ξανά."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Επιτρέψτε στο Kyron να προσθέτει στις φωτογραφίες σας για να το αποθηκεύσετε."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Όλα τα συστήματα λειτουργούν"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Χρόνος λειτουργίας"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Τελευταίες 60 ημέρες"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Πριν από 60 ημέρες"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Σήμερα"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Βάση δεδομένων"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Σύνδεση"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Πρόσφατα περιστατικά"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Κανένα περιστατικό τις τελευταίες 60 ημέρες."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Σε εξέλιξη"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Χωρίς δεδομένα"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Λεπτομέρειες"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Το Kyron ελέγχει τον εαυτό του κάθε 5 λεπτά όσο λειτουργεί. Μια γκρι ημέρα δεν είχε ελέγχους."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Το ιστορικό λειτουργίας δεν είναι ακόμη διαθέσιμο."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Ορισμένα συστήματα έχουν προβλήματα"),
     };
 
 final messageLookup = MessageLookup();

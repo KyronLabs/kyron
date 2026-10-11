@@ -1285,6 +1285,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kaydedilemedi. Tekrar deneyin."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Bunu kaydetmek için Kyron'un fotoğraflarınıza eklemesine izin verin."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Tüm sistemler çalışıyor"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Çalışma süresi"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("Son 60 gün"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 gün önce"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Bugün"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Veritabanı"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Giriş"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Son olaylar"),
+      "ui_status_no_incidents":
+          MessageLookupByLibrary.simpleMessage("Son 60 günde olay yok."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Devam ediyor"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Veri yok"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Ayrıntılar"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron çalışırken kendini her 5 dakikada bir denetler. Gri bir günde denetim yapılmadı."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Çalışma süresi geçmişi henüz mevcut değil."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Bazı sistemlerde sorun var"),
     };
 
 final messageLookup = MessageLookup();

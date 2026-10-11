@@ -1288,6 +1288,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "சேமிக்க முடியவில்லை. மீண்டும் முயலவும்."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "இதைச் சேமிக்க உங்கள் படங்களில் சேர்க்க Kyron-ஐ அனுமதிக்கவும்."),
+      "ui_status_all_ok": MessageLookupByLibrary.simpleMessage(
+          "அனைத்து அமைப்புகளும் இயங்குகின்றன"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("இயக்க நேரம்"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("கடந்த 60 நாட்கள்"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 நாட்களுக்கு முன்"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("இன்று"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("தரவுத்தளம்"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("உள்நுழைவு"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("சமீபத்திய சம்பவங்கள்"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "கடந்த 60 நாட்களில் சம்பவங்கள் இல்லை."),
+      "ui_status_ongoing":
+          MessageLookupByLibrary.simpleMessage("நடந்துகொண்டிருக்கிறது"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("தரவு இல்லை"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("விவரங்கள்"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron இயங்கும்போது ஒவ்வொரு 5 நிமிடத்துக்கும் தன்னைச் சோதிக்கிறது. சாம்பல் நாளில் சோதனைகள் எதுவும் இல்லை."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "இயக்க நேர வரலாறு இன்னும் கிடைக்கவில்லை."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "சில அமைப்புகளில் சிக்கல் உள்ளது"),
     };
 
 final messageLookup = MessageLookup();

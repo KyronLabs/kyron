@@ -1290,6 +1290,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "შენახვა ვერ მოხერხდა. სცადეთ ხელახლა."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "ამის შესანახად ნება დართეთ Kyron-ს, დაამატოს თქვენს ფოტოებში."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("ყველა სისტემა მუშაობს"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("მუშაობის დრო"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("ბოლო 60 დღე"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 დღის წინ"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("დღეს"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("მონაცემთა ბაზა"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("შესვლა"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("ბოლო ინციდენტები"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "ბოლო 60 დღეში ინციდენტი არ ყოფილა."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("მიმდინარეობს"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("მონაცემები არ არის"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("დეტალები"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron მუშაობისას ყოველ 5 წუთში ამოწმებს საკუთარ თავს. ნაცრისფერ დღეს შემოწმება არ ყოფილა."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "მუშაობის ისტორია ჯერ მიუწვდომელია."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "ზოგიერთ სისტემას პრობლემები აქვს"),
     };
 
 final messageLookup = MessageLookup();

@@ -1286,6 +1286,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ba a iya ajiyewa ba. Sake gwadawa."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Bari Kyron ya ƙara zuwa hotunanka don ajiye wannan."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Duk tsare-tsare suna aiki"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Lokacin aiki"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Kwanaki 60 da suka wuce"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Kwanaki 60 da suka gabata"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Yau"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Rumbun bayanai"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Shiga"),
+      "ui_status_incidents": MessageLookupByLibrary.simpleMessage(
+          "Abubuwan da suka faru kwanan nan"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Babu wani abu da ya faru cikin kwanaki 60 da suka wuce."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Yana gudana"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Babu bayanai"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Bayanai"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron yana duba kansa duk bayan minti 5 yayin da yake aiki. Rana mai launin toka ba ta da wani dubawa."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Tarihin lokacin aiki bai samu ba tukuna."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Wasu tsare-tsare suna da matsala"),
     };
 
 final messageLookup = MessageLookup();

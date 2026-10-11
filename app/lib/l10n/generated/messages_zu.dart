@@ -1290,6 +1290,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Akukwazanga ukulondoloza. Zama futhi."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Vumela i-Kyron ingeze ezithombeni zakho ukuze ulondoloze lokhu."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Zonke izinhlelo ziyasebenza"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Isikhathi sokusebenza"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Izinsuku ezingu-60 ezedlule"),
+      "ui_status_60_days_ago": MessageLookupByLibrary.simpleMessage(
+          "Ezinsukwini ezingu-60 ezedlule"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Namuhla"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Isizindalwazi"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Ukungena"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Izigameko zakamuva"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Azikho izigameko ezinsukwini ezingu-60 ezedlule."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Kuyaqhubeka"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Ayikho idatha"),
+      "ui_status_details":
+          MessageLookupByLibrary.simpleMessage("Imininingwane"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "I-Kyron iyazihlola njalo ngemizuzu emi-5 lapho isebenza. Usuku olumpunga lwalungenalo ukuhlolwa."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Umlando wesikhathi sokusebenza awukatholakali okwamanje."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Ezinye izinhlelo zinezinkinga"),
     };
 
 final messageLookup = MessageLookup();

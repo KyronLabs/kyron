@@ -1289,6 +1289,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tidak dapat menyimpan. Coba lagi."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Izinkan Kyron menambahkan ke foto Anda untuk menyimpan ini."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Semua sistem berjalan"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Waktu aktif"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("60 hari terakhir"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 hari lalu"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Hari ini"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Basis data"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Masuk"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Insiden terbaru"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Tidak ada insiden dalam 60 hari terakhir."),
+      "ui_status_ongoing":
+          MessageLookupByLibrary.simpleMessage("Sedang berlangsung"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Tidak ada data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Detail"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron memeriksa dirinya setiap 5 menit selama berjalan. Hari abu-abu tidak memiliki pemeriksaan."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Riwayat waktu aktif belum tersedia."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Beberapa sistem mengalami masalah"),
     };
 
 final messageLookup = MessageLookup();

@@ -1287,6 +1287,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Không thể lưu. Hãy thử lại."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Cho phép Kyron thêm vào ảnh của bạn để lưu mục này."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Mọi hệ thống đều hoạt động"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Thời gian hoạt động"),
+      "ui_status_last_60": MessageLookupByLibrary.simpleMessage("60 ngày qua"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 ngày trước"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database":
+          MessageLookupByLibrary.simpleMessage("Cơ sở dữ liệu"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Sự cố gần đây"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Không có sự cố nào trong 60 ngày qua."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Đang diễn ra"),
+      "ui_status_no_data":
+          MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Chi tiết"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron tự kiểm tra mỗi 5 phút khi đang chạy. Ngày màu xám không có lần kiểm tra nào."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Chưa có lịch sử thời gian hoạt động."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "Một số hệ thống đang gặp sự cố"),
     };
 
 final messageLookup = MessageLookup();

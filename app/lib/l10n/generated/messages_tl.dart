@@ -1287,6 +1287,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Hindi ito ma-save. Subukang muli."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Payagan ang Kyron na magdagdag sa iyong mga larawan para ma-save ito."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Gumagana ang lahat ng sistema"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Uptime"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Huling 60 araw"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 araw na ang nakalipas"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Ngayon"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Database"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Pag-sign in"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Mga kamakailang insidente"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Walang insidente sa huling 60 araw."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Nagpapatuloy"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Walang data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Mga detalye"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Sinusuri ng Kyron ang sarili nito bawat 5 minuto habang tumatakbo. Walang pagsusuri ang araw na kulay abo."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Hindi pa available ang kasaysayan ng uptime."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "May problema ang ilang sistema"),
     };
 
 final messageLookup = MessageLookup();

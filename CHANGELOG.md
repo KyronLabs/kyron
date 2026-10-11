@@ -93,6 +93,17 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Uptime history on the service status screen.** The API checks itself
+  every five minutes while it runs -- that it is up, that the database
+  answers, that Supabase Auth answers -- and keeps a count per component per
+  day, with an incident for each run of failures (`GET /health/history`).
+  The screen opens with one line on whether everything works (amber, naming
+  what is failing, when an incident is open even though /health is fine),
+  then a bar a day for the last sixty days per component with its uptime,
+  the recent incidents, and the details it showed before. A day with no
+  checks -- the service asleep or down, which it cannot tell apart -- is
+  grey, never green. In all 68 catalogs.
+
 - **Save to device, from the media viewer.** A ⋯ button in the viewer's top
   bar opens a sheet with Save to device, Share and Copy link. Saving
   downloads the photo, GIF or clip and adds it to the phone's photos (`gal`;

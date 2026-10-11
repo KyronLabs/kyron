@@ -622,5 +622,21 @@
   "ui_media_saving": "සුරකිමින්…",
   "ui_media_saved": "ඔබේ ඡායාරූපවලට සුරැකිණි",
   "ui_media_save_failed": "සුරැකිය නොහැකි විය. නැවත උත්සාහ කරන්න.",
-  "ui_media_save_denied": "මෙය සුරැකීමට ඔබේ ඡායාරූපවලට එක් කිරීමට Kyron හට ඉඩ දෙන්න."
+  "ui_media_save_denied": "මෙය සුරැකීමට ඔබේ ඡායාරූපවලට එක් කිරීමට Kyron හට ඉඩ දෙන්න.",
+  "ui_status_all_ok": "සියලු පද්ධති ක්‍රියාත්මකයි",
+  "ui_status_uptime": "ක්‍රියාකාරී කාලය",
+  "ui_status_last_60": "පසුගිය දින 60",
+  "ui_status_60_days_ago": "දින 60කට පෙර",
+  "ui_status_today": "අද",
+  "ui_status_api": "API",
+  "ui_status_database": "දත්ත සමුදාය",
+  "ui_status_auth": "පුරනය",
+  "ui_status_incidents": "මෑත සිදුවීම්",
+  "ui_status_no_incidents": "පසුගිය දින 60 තුළ සිදුවීම් නැත.",
+  "ui_status_ongoing": "සිදුවෙමින් පවතී",
+  "ui_status_no_data": "දත්ත නැත",
+  "ui_status_details": "විස්තර",
+  "ui_status_footnote": "Kyron ක්‍රියාත්මක වන අතරතුර සෑම මිනිත්තු 5කට වරක් තමා පරීක්ෂා කරයි. අළු පැහැති දිනයක පරීක්ෂා කිරීම් නොතිබුණි.",
+  "ui_status_unavailable": "ක්‍රියාකාරී කාල ඉතිහාසය තවම නොමැත.",
+  "ui_status_degraded": "සමහර පද්ධතිවල ගැටලු ඇත"
 }

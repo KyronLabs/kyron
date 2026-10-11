@@ -1287,6 +1287,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "සුරැකිය නොහැකි විය. නැවත උත්සාහ කරන්න."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "මෙය සුරැකීමට ඔබේ ඡායාරූපවලට එක් කිරීමට Kyron හට ඉඩ දෙන්න."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("සියලු පද්ධති ක්‍රියාත්මකයි"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("ක්‍රියාකාරී කාලය"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("පසුගිය දින 60"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("දින 60කට පෙර"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("අද"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("දත්ත සමුදාය"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("පුරනය"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("මෑත සිදුවීම්"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "පසුගිය දින 60 තුළ සිදුවීම් නැත."),
+      "ui_status_ongoing":
+          MessageLookupByLibrary.simpleMessage("සිදුවෙමින් පවතී"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("දත්ත නැත"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("විස්තර"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron ක්‍රියාත්මක වන අතරතුර සෑම මිනිත්තු 5කට වරක් තමා පරීක්ෂා කරයි. අළු පැහැති දිනයක පරීක්ෂා කිරීම් නොතිබුණි."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "ක්‍රියාකාරී කාල ඉතිහාසය තවම නොමැත."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("සමහර පද්ධතිවල ගැටලු ඇත"),
     };
 
 final messageLookup = MessageLookup();

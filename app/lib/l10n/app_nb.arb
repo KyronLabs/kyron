@@ -622,5 +622,21 @@
   "ui_media_saving": "Lagrer…",
   "ui_media_saved": "Lagret i bildene dine",
   "ui_media_save_failed": "Kunne ikke lagre. Prøv igjen.",
-  "ui_media_save_denied": "La Kyron legge til i bildene dine for å lagre dette."
+  "ui_media_save_denied": "La Kyron legge til i bildene dine for å lagre dette.",
+  "ui_status_all_ok": "Alle systemer i drift",
+  "ui_status_uptime": "Oppetid",
+  "ui_status_last_60": "Siste 60 dager",
+  "ui_status_60_days_ago": "For 60 dager siden",
+  "ui_status_today": "I dag",
+  "ui_status_api": "API",
+  "ui_status_database": "Database",
+  "ui_status_auth": "Innlogging",
+  "ui_status_incidents": "Nylige hendelser",
+  "ui_status_no_incidents": "Ingen hendelser de siste 60 dagene.",
+  "ui_status_ongoing": "Pågår",
+  "ui_status_no_data": "Ingen data",
+  "ui_status_details": "Detaljer",
+  "ui_status_footnote": "Kyron sjekker seg selv hvert 5. minutt mens den kjører. En grå dag hadde ingen sjekker.",
+  "ui_status_unavailable": "Oppetidshistorikk er ikke tilgjengelig ennå.",
+  "ui_status_degraded": "Noen systemer har problemer"
 }

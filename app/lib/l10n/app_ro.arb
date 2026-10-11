@@ -622,5 +622,21 @@
   "ui_media_saving": "Se salvează…",
   "ui_media_saved": "Salvat în fotografiile tale",
   "ui_media_save_failed": "Nu s-a putut salva. Încearcă din nou.",
-  "ui_media_save_denied": "Permite-i lui Kyron să adauge în fotografiile tale pentru a salva asta."
+  "ui_media_save_denied": "Permite-i lui Kyron să adauge în fotografiile tale pentru a salva asta.",
+  "ui_status_all_ok": "Toate sistemele funcționează",
+  "ui_status_uptime": "Disponibilitate",
+  "ui_status_last_60": "Ultimele 60 de zile",
+  "ui_status_60_days_ago": "Acum 60 de zile",
+  "ui_status_today": "Astăzi",
+  "ui_status_api": "API",
+  "ui_status_database": "Bază de date",
+  "ui_status_auth": "Conectare",
+  "ui_status_incidents": "Incidente recente",
+  "ui_status_no_incidents": "Niciun incident în ultimele 60 de zile.",
+  "ui_status_ongoing": "În desfășurare",
+  "ui_status_no_data": "Fără date",
+  "ui_status_details": "Detalii",
+  "ui_status_footnote": "Kyron se verifică la fiecare 5 minute cât timp rulează. O zi gri nu a avut verificări.",
+  "ui_status_unavailable": "Istoricul disponibilității nu este încă disponibil.",
+  "ui_status_degraded": "Unele sisteme au probleme"
 }

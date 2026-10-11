@@ -1291,6 +1291,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "സംരക്ഷിക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "ഇത് സംരക്ഷിക്കാൻ നിങ്ങളുടെ ഫോട്ടോകളിലേക്ക് ചേർക്കാൻ Kyron-നെ അനുവദിക്കുക."),
+      "ui_status_all_ok": MessageLookupByLibrary.simpleMessage(
+          "എല്ലാ സിസ്റ്റങ്ങളും പ്രവർത്തിക്കുന്നു"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("അപ്‌ടൈം"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("കഴിഞ്ഞ 60 ദിവസം"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 ദിവസം മുമ്പ്"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("ഇന്ന്"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("ഡാറ്റാബേസ്"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("സൈൻ ഇൻ"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("സമീപകാല സംഭവങ്ങൾ"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "കഴിഞ്ഞ 60 ദിവസത്തിൽ സംഭവങ്ങളൊന്നുമില്ല."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("തുടരുന്നു"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("ഡാറ്റയില്ല"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("വിശദാംശങ്ങൾ"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron പ്രവർത്തിക്കുമ്പോൾ ഓരോ 5 മിനിറ്റിലും സ്വയം പരിശോധിക്കുന്നു. ചാരനിറമുള്ള ദിവസം പരിശോധനകളൊന്നും ഉണ്ടായിരുന്നില്ല."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "അപ്‌ടൈം ചരിത്രം ഇതുവരെ ലഭ്യമല്ല."),
+      "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
+          "ചില സിസ്റ്റങ്ങളിൽ പ്രശ്നങ്ങളുണ്ട്"),
     };
 
 final messageLookup = MessageLookup();

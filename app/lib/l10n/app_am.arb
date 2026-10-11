@@ -622,5 +622,21 @@
   "ui_media_saving": "በማስቀመጥ ላይ…",
   "ui_media_saved": "ወደ ፎቶዎችዎ ተቀምጧል",
   "ui_media_save_failed": "ማስቀመጥ አልተቻለም። እንደገና ይሞክሩ።",
-  "ui_media_save_denied": "ይህን ለማስቀመጥ Kyron ወደ ፎቶዎችዎ እንዲያክል ይፍቀዱ።"
+  "ui_media_save_denied": "ይህን ለማስቀመጥ Kyron ወደ ፎቶዎችዎ እንዲያክል ይፍቀዱ።",
+  "ui_status_all_ok": "ሁሉም ሥርዓቶች እየሠሩ ነው",
+  "ui_status_uptime": "የሥራ ጊዜ",
+  "ui_status_last_60": "ያለፉት 60 ቀናት",
+  "ui_status_60_days_ago": "ከ60 ቀናት በፊት",
+  "ui_status_today": "ዛሬ",
+  "ui_status_api": "API",
+  "ui_status_database": "የውሂብ ጎታ",
+  "ui_status_auth": "መግቢያ",
+  "ui_status_incidents": "የቅርብ ጊዜ ችግሮች",
+  "ui_status_no_incidents": "ባለፉት 60 ቀናት ምንም ችግር አልነበረም።",
+  "ui_status_ongoing": "በመካሄድ ላይ",
+  "ui_status_no_data": "ምንም ውሂብ የለም",
+  "ui_status_details": "ዝርዝሮች",
+  "ui_status_footnote": "Kyron በሚሠራበት ጊዜ በየ5 ደቂቃው ራሱን ይፈትሻል። ግራጫ ቀን ምንም ፍተሻ አልነበረውም።",
+  "ui_status_unavailable": "የሥራ ጊዜ ታሪክ ገና አይገኝም።",
+  "ui_status_degraded": "አንዳንድ ሥርዓቶች ችግር ገጥሟቸዋል"
 }

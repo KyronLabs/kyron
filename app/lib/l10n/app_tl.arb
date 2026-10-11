@@ -622,5 +622,21 @@
   "ui_media_saving": "Sine-save…",
   "ui_media_saved": "Na-save sa iyong mga larawan",
   "ui_media_save_failed": "Hindi ito ma-save. Subukang muli.",
-  "ui_media_save_denied": "Payagan ang Kyron na magdagdag sa iyong mga larawan para ma-save ito."
+  "ui_media_save_denied": "Payagan ang Kyron na magdagdag sa iyong mga larawan para ma-save ito.",
+  "ui_status_all_ok": "Gumagana ang lahat ng sistema",
+  "ui_status_uptime": "Uptime",
+  "ui_status_last_60": "Huling 60 araw",
+  "ui_status_60_days_ago": "60 araw na ang nakalipas",
+  "ui_status_today": "Ngayon",
+  "ui_status_api": "API",
+  "ui_status_database": "Database",
+  "ui_status_auth": "Pag-sign in",
+  "ui_status_incidents": "Mga kamakailang insidente",
+  "ui_status_no_incidents": "Walang insidente sa huling 60 araw.",
+  "ui_status_ongoing": "Nagpapatuloy",
+  "ui_status_no_data": "Walang data",
+  "ui_status_details": "Mga detalye",
+  "ui_status_footnote": "Sinusuri ng Kyron ang sarili nito bawat 5 minuto habang tumatakbo. Walang pagsusuri ang araw na kulay abo.",
+  "ui_status_unavailable": "Hindi pa available ang kasaysayan ng uptime.",
+  "ui_status_degraded": "May problema ang ilang sistema"
 }

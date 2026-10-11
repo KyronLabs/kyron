@@ -622,5 +622,21 @@
   "ui_media_saving": "Đang lưu…",
   "ui_media_saved": "Đã lưu vào ảnh của bạn",
   "ui_media_save_failed": "Không thể lưu. Hãy thử lại.",
-  "ui_media_save_denied": "Cho phép Kyron thêm vào ảnh của bạn để lưu mục này."
+  "ui_media_save_denied": "Cho phép Kyron thêm vào ảnh của bạn để lưu mục này.",
+  "ui_status_all_ok": "Mọi hệ thống đều hoạt động",
+  "ui_status_uptime": "Thời gian hoạt động",
+  "ui_status_last_60": "60 ngày qua",
+  "ui_status_60_days_ago": "60 ngày trước",
+  "ui_status_today": "Hôm nay",
+  "ui_status_api": "API",
+  "ui_status_database": "Cơ sở dữ liệu",
+  "ui_status_auth": "Đăng nhập",
+  "ui_status_incidents": "Sự cố gần đây",
+  "ui_status_no_incidents": "Không có sự cố nào trong 60 ngày qua.",
+  "ui_status_ongoing": "Đang diễn ra",
+  "ui_status_no_data": "Không có dữ liệu",
+  "ui_status_details": "Chi tiết",
+  "ui_status_footnote": "Kyron tự kiểm tra mỗi 5 phút khi đang chạy. Ngày màu xám không có lần kiểm tra nào.",
+  "ui_status_unavailable": "Chưa có lịch sử thời gian hoạt động.",
+  "ui_status_degraded": "Một số hệ thống đang gặp sự cố"
 }

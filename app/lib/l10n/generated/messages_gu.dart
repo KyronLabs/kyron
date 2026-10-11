@@ -1287,6 +1287,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "સાચવી શકાયું નહીં. ફરી પ્રયાસ કરો."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "આ સાચવવા માટે Kyron ને તમારા ફોટામાં ઉમેરવાની મંજૂરી આપો."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("બધી સિસ્ટમ કાર્યરત છે"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("અપટાઇમ"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("છેલ્લા 60 દિવસ"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("60 દિવસ પહેલાં"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("આજે"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("ડેટાબેઝ"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("સાઇન-ઇન"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("તાજેતરની ઘટનાઓ"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "છેલ્લા 60 દિવસમાં કોઈ ઘટના નથી."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("ચાલુ છે"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("કોઈ ડેટા નથી"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("વિગતો"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron ચાલુ હોય ત્યારે દર 5 મિનિટે પોતાને તપાસે છે. ભૂખરા દિવસે કોઈ તપાસ થઈ ન હતી."),
+      "ui_status_unavailable":
+          MessageLookupByLibrary.simpleMessage("અપટાઇમ ઇતિહાસ હજી ઉપલબ્ધ નથી."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("કેટલીક સિસ્ટમમાં સમસ્યા છે"),
     };
 
 final messageLookup = MessageLookup();

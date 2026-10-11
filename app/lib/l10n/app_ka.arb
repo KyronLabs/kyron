@@ -622,5 +622,21 @@
   "ui_media_saving": "ინახება…",
   "ui_media_saved": "შეინახა თქვენს ფოტოებში",
   "ui_media_save_failed": "შენახვა ვერ მოხერხდა. სცადეთ ხელახლა.",
-  "ui_media_save_denied": "ამის შესანახად ნება დართეთ Kyron-ს, დაამატოს თქვენს ფოტოებში."
+  "ui_media_save_denied": "ამის შესანახად ნება დართეთ Kyron-ს, დაამატოს თქვენს ფოტოებში.",
+  "ui_status_all_ok": "ყველა სისტემა მუშაობს",
+  "ui_status_uptime": "მუშაობის დრო",
+  "ui_status_last_60": "ბოლო 60 დღე",
+  "ui_status_60_days_ago": "60 დღის წინ",
+  "ui_status_today": "დღეს",
+  "ui_status_api": "API",
+  "ui_status_database": "მონაცემთა ბაზა",
+  "ui_status_auth": "შესვლა",
+  "ui_status_incidents": "ბოლო ინციდენტები",
+  "ui_status_no_incidents": "ბოლო 60 დღეში ინციდენტი არ ყოფილა.",
+  "ui_status_ongoing": "მიმდინარეობს",
+  "ui_status_no_data": "მონაცემები არ არის",
+  "ui_status_details": "დეტალები",
+  "ui_status_footnote": "Kyron მუშაობისას ყოველ 5 წუთში ამოწმებს საკუთარ თავს. ნაცრისფერ დღეს შემოწმება არ ყოფილა.",
+  "ui_status_unavailable": "მუშაობის ისტორია ჯერ მიუწვდომელია.",
+  "ui_status_degraded": "ზოგიერთ სისტემას პრობლემები აქვს"
 }

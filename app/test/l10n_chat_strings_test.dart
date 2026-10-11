@@ -41,6 +41,22 @@ const _keys = [
   'ui_media_saved',
   'ui_media_save_failed',
   'ui_media_save_denied',
+  'ui_status_all_ok',
+  'ui_status_uptime',
+  'ui_status_last_60',
+  'ui_status_60_days_ago',
+  'ui_status_today',
+  'ui_status_api',
+  'ui_status_database',
+  'ui_status_auth',
+  'ui_status_incidents',
+  'ui_status_no_incidents',
+  'ui_status_ongoing',
+  'ui_status_no_data',
+  'ui_status_details',
+  'ui_status_footnote',
+  'ui_status_unavailable',
+  'ui_status_degraded',
 ];
 
 void main() {

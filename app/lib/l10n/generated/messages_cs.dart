@@ -1357,6 +1357,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Nepodařilo se uložit. Zkuste to znovu."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Povolte Kyronu přidávat do fotek, abyste to mohli uložit."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Všechny systémy fungují"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Dostupnost"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Posledních 60 dní"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Před 60 dny"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Dnes"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Databáze"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Přihlášení"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Nedávné incidenty"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Za posledních 60 dní žádné incidenty."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Probíhá"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Žádná data"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("Podrobnosti"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron se za běhu kontroluje každých 5 minut. Šedý den neměl žádné kontroly."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Historie dostupnosti zatím není k dispozici."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Některé systémy mají potíže"),
     };
 
 final messageLookup = MessageLookup();

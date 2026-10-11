@@ -1288,6 +1288,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Neizdevās saglabāt. Mēģiniet vēlreiz."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "Atļaujiet Kyron pievienot jūsu fotoattēliem, lai to saglabātu."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("Visas sistēmas darbojas"),
+      "ui_status_uptime":
+          MessageLookupByLibrary.simpleMessage("Darbspējas laiks"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("Pēdējās 60 dienas"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("Pirms 60 dienām"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("Šodien"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("Datubāze"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("Pierakstīšanās"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("Nesenie incidenti"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "Pēdējo 60 dienu laikā incidentu nav bijis."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("Notiek"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("Nav datu"),
+      "ui_status_details":
+          MessageLookupByLibrary.simpleMessage("Sīkāka informācija"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron darbības laikā pārbauda sevi ik pēc 5 minūtēm. Pelēkā dienā pārbaužu nebija."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "Darbspējas vēsture vēl nav pieejama."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("Dažām sistēmām ir problēmas"),
     };
 
 final messageLookup = MessageLookup();

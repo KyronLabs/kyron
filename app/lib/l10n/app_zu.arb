@@ -622,5 +622,21 @@
   "ui_media_saving": "Iyalondoloza…",
   "ui_media_saved": "Kulondolozwe ezithombeni zakho",
   "ui_media_save_failed": "Akukwazanga ukulondoloza. Zama futhi.",
-  "ui_media_save_denied": "Vumela i-Kyron ingeze ezithombeni zakho ukuze ulondoloze lokhu."
+  "ui_media_save_denied": "Vumela i-Kyron ingeze ezithombeni zakho ukuze ulondoloze lokhu.",
+  "ui_status_all_ok": "Zonke izinhlelo ziyasebenza",
+  "ui_status_uptime": "Isikhathi sokusebenza",
+  "ui_status_last_60": "Izinsuku ezingu-60 ezedlule",
+  "ui_status_60_days_ago": "Ezinsukwini ezingu-60 ezedlule",
+  "ui_status_today": "Namuhla",
+  "ui_status_api": "API",
+  "ui_status_database": "Isizindalwazi",
+  "ui_status_auth": "Ukungena",
+  "ui_status_incidents": "Izigameko zakamuva",
+  "ui_status_no_incidents": "Azikho izigameko ezinsukwini ezingu-60 ezedlule.",
+  "ui_status_ongoing": "Kuyaqhubeka",
+  "ui_status_no_data": "Ayikho idatha",
+  "ui_status_details": "Imininingwane",
+  "ui_status_footnote": "I-Kyron iyazihlola njalo ngemizuzu emi-5 lapho isebenza. Usuku olumpunga lwalungenalo ukuhlolwa.",
+  "ui_status_unavailable": "Umlando wesikhathi sokusebenza awukatholakali okwamanje.",
+  "ui_status_degraded": "Ezinye izinhlelo zinezinkinga"
 }

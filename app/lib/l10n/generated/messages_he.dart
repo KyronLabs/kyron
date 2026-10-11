@@ -1286,6 +1286,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "לא ניתן לשמור. אפשר לנסות שוב."),
       "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
           "יש לאפשר ל-Kyron להוסיף לתמונות שלך כדי לשמור את זה."),
+      "ui_status_all_ok":
+          MessageLookupByLibrary.simpleMessage("כל המערכות פועלות"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("זמינות"),
+      "ui_status_last_60":
+          MessageLookupByLibrary.simpleMessage("60 הימים האחרונים"),
+      "ui_status_60_days_ago":
+          MessageLookupByLibrary.simpleMessage("לפני 60 יום"),
+      "ui_status_today": MessageLookupByLibrary.simpleMessage("היום"),
+      "ui_status_api": MessageLookupByLibrary.simpleMessage("API"),
+      "ui_status_database": MessageLookupByLibrary.simpleMessage("מסד נתונים"),
+      "ui_status_auth": MessageLookupByLibrary.simpleMessage("התחברות"),
+      "ui_status_incidents":
+          MessageLookupByLibrary.simpleMessage("תקלות אחרונות"),
+      "ui_status_no_incidents": MessageLookupByLibrary.simpleMessage(
+          "אין תקלות ב-60 הימים האחרונים."),
+      "ui_status_ongoing": MessageLookupByLibrary.simpleMessage("בתהליך"),
+      "ui_status_no_data": MessageLookupByLibrary.simpleMessage("אין נתונים"),
+      "ui_status_details": MessageLookupByLibrary.simpleMessage("פרטים"),
+      "ui_status_footnote": MessageLookupByLibrary.simpleMessage(
+          "Kyron בודק את עצמו כל 5 דקות כל עוד הוא פועל. ביום אפור לא היו בדיקות."),
+      "ui_status_unavailable": MessageLookupByLibrary.simpleMessage(
+          "היסטוריית הזמינות עדיין לא זמינה."),
+      "ui_status_degraded":
+          MessageLookupByLibrary.simpleMessage("בחלק מהמערכות יש בעיות"),
     };
 
 final messageLookup = MessageLookup();

@@ -622,5 +622,21 @@
   "ui_media_saving": "Opslaan…",
   "ui_media_saved": "Opgeslagen in je foto's",
   "ui_media_save_failed": "Kon het niet opslaan. Probeer het opnieuw.",
-  "ui_media_save_denied": "Sta Kyron toe iets aan je foto's toe te voegen om dit op te slaan."
+  "ui_media_save_denied": "Sta Kyron toe iets aan je foto's toe te voegen om dit op te slaan.",
+  "ui_status_all_ok": "Alle systemen operationeel",
+  "ui_status_uptime": "Beschikbaarheid",
+  "ui_status_last_60": "Afgelopen 60 dagen",
+  "ui_status_60_days_ago": "60 dagen geleden",
+  "ui_status_today": "Vandaag",
+  "ui_status_api": "API",
+  "ui_status_database": "Database",
+  "ui_status_auth": "Inloggen",
+  "ui_status_incidents": "Recente incidenten",
+  "ui_status_no_incidents": "Geen incidenten in de afgelopen 60 dagen.",
+  "ui_status_ongoing": "Bezig",
+  "ui_status_no_data": "Geen gegevens",
+  "ui_status_details": "Details",
+  "ui_status_footnote": "Kyron controleert zichzelf elke 5 minuten zolang het draait. Op een grijze dag waren er geen controles.",
+  "ui_status_unavailable": "De beschikbaarheidsgeschiedenis is nog niet beschikbaar.",
+  "ui_status_degraded": "Sommige systemen hebben problemen"
 }
