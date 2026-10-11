@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 
-/// The app's Android manifest has to merge with every plugin's.
+/// The app's Android manifest has to parse, and merge with every plugin's.
 ///
 /// The merger refuses a permission declared twice with different
 /// `maxSdkVersion` values, and only an Android build runs it -- which pull
@@ -22,7 +22,44 @@ Map<String, String> _maxSdkByPermission(String manifest) => {
             name[1]!: max[1]!,
     };
 
+/// The XML and property-list files the platform builds read.
+Iterable<File> _platformXml() => [
+      for (final root in ['android', 'ios'])
+        if (Directory(root).existsSync())
+          ...Directory(root).listSync(recursive: true).whereType<File>().where(
+                (f) =>
+                    (f.path.endsWith('.xml') || f.path.endsWith('.plist')) &&
+                    !f.path.contains('/build/') &&
+                    !f.path.contains('/.gradle/') &&
+                    !f.path.contains('/Pods/'),
+              ),
+    ];
+
 void main() {
+  test('no comment in a platform XML file breaks the XML', () {
+    // XML forbids "--" inside a comment, and a comment ending in "-". A
+    // manifest comment with " -- " in it parsed nowhere but the merger, which
+    // refused the whole file: "Error parsing AndroidManifest.xml", and no
+    // APK. Nothing else in the repository parses these files.
+    final broken = <String>[];
+    var files = 0;
+    for (final file in _platformXml()) {
+      files++;
+      final text = file.readAsStringSync();
+      for (final comment in RegExp(r'<!--([\s\S]*?)-->').allMatches(text)) {
+        final body = comment[1]!;
+        if (body.contains('--') || body.endsWith('-')) {
+          final line = '\n'.allMatches(text.substring(0, comment.start)).length;
+          broken.add('${file.path}:${line + 1}');
+        }
+      }
+    }
+
+    expect(files, greaterThan(3));
+    expect(broken, isEmpty,
+        reason: 'comments XML refuses:\n${broken.join('\n')}');
+  });
+
   test('no permission is capped at a different SDK than a plugin caps it', () {
     final app = _maxSdkByPermission(
       File('android/app/src/main/AndroidManifest.xml').readAsStringSync(),

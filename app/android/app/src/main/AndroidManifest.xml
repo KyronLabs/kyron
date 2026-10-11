@@ -13,8 +13,10 @@
          permission (gal asks for none there when no album is named, and the
          app names none). 28, not the 29 gal's README gives: 29 is for saving
          into an album, and camera_android_camerax declares this same
-         permission with 28 -- the manifest merger refuses two different
-         values, which is what broke the release build. -->
+         permission with 28. The manifest merger refuses two different
+         values, which is what broke the release build. (No double hyphen
+         in this comment: XML forbids one inside a comment, and the merger
+         refuses the whole file over it.) -->
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28"/>

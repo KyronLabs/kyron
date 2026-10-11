@@ -14,6 +14,13 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **The Android release build still failed, on a manifest it could not
+  parse.** The comment explaining the SDK 28 cap contained a double hyphen,
+  which XML forbids inside a comment, so the manifest merger rejected the
+  whole file. The comment is reworded. A test now checks every comment in
+  the Android and iOS XML and plist files, and the fix was checked against
+  the real merger (`:app:processReleaseMainManifest`): it fails on the old
+  manifest and passes on the new one.
 - **The Android release build failed after "Save to device" was added.**
   The app declared WRITE_EXTERNAL_STORAGE up to SDK 29 and
   camera_android_camerax declares it up to 28; the manifest merger refuses
