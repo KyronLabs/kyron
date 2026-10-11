@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "You replied",
   "dmReplied": "${name} replied",
   "ui_dm_attach": "Add to message",
-  "ui_dm_send_heart": "Send a heart",
   "ui_dm_new": "New message",
   "ui_dm_starter": "Nothing said yet. A wave is a good start.",
   "ui_dm_wave": "👋  Wave",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Remove your reaction",
   "ui_dm_someone": "Someone",
   "ui_dm_quote_message": "Message",
-  "ui_dm_quote_attachment": "Attachment"
+  "ui_dm_quote_attachment": "Attachment",
+  "ui_dm_unreadable": "This message cannot be read on this device.",
+  "ui_dm_preview_sealed": "Encrypted message",
+  "ui_dm_e2ee_notice": "Messages are end-to-end encrypted",
+  "ui_dm_not_encrypted": "Not end-to-end encrypted",
+  "ui_dm_sent": "Sent",
+  "ui_dm_seen": "Seen",
+  "ui_dm_sending": "Sending…"
 }

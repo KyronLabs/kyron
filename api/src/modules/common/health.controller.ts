@@ -2,6 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { SupabaseTokenService } from '../auth/supabase-token.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
+import { PushService } from '../push/push.service';
 
 @Controller('health')
 export class HealthController {
@@ -9,6 +10,7 @@ export class HealthController {
     private readonly supabaseToken: SupabaseTokenService,
     private readonly prisma: PrismaService,
     private readonly supabase: SupabaseService,
+    private readonly push: PushService,
   ) {}
 
   @Get()
@@ -47,6 +49,11 @@ export class HealthController {
       database: databaseReachable ? 'reachable' : 'unreachable',
       ...(databaseDetail ? { databaseDetail } : {}),
       mirrorTables,
+      // Whether this deployment can send a push at all. Without
+      // FCM_SERVICE_ACCOUNT_JSON every notification is dropped, and the only
+      // symptom is a phone that never buzzes -- indistinguishable, from the
+      // outside, from every other reason a notification might not arrive.
+      push: this.push.isConfigured ? 'configured' : 'off',
       // Which identity provider this deployment will accept tokens from, and
       // which signatures it can check. Every authenticated route fails when
       // either is wrong, and the only symptom used to be a 401 that looked

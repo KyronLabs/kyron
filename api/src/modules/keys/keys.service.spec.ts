@@ -71,6 +71,15 @@ describe('KeysService', () => {
       );
     });
 
+    it('lists the freshest devices first, so a cap drops the stale ones', async () => {
+      const { service, messageKey } = build();
+      await service.forConversation('me', 'c1');
+
+      expect(messageKey.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({ orderBy: { updatedAt: 'desc' } }),
+      );
+    });
+
     it('does not confirm a conversation the reader is not in', async () => {
       const { service, messageKey } = build();
 

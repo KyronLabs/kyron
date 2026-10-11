@@ -1323,7 +1323,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Vaše odpověď"),
       "dmReplied": (Object a0) => "Odpověď od $a0",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Přidat do zprávy"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Poslat srdce"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Nová zpráva"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Zatím nic. Zamávání je dobrý začátek."),
@@ -1335,6 +1334,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Někdo"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Zpráva"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Příloha"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Tuto zprávu nelze na tomto zařízení přečíst."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Šifrovaná zpráva"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("Zprávy jsou koncově šifrované"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Bez koncového šifrování"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Odesláno"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Zobrazeno"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Odesílání…"),
     };
 
 final messageLookup = MessageLookup();

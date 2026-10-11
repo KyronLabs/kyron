@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Vaše odpověď",
   "dmReplied": "Odpověď od ${name}",
   "ui_dm_attach": "Přidat do zprávy",
-  "ui_dm_send_heart": "Poslat srdce",
   "ui_dm_new": "Nová zpráva",
   "ui_dm_starter": "Zatím nic. Zamávání je dobrý začátek.",
   "ui_dm_wave": "👋  Zamávat",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Odebrat vaši reakci",
   "ui_dm_someone": "Někdo",
   "ui_dm_quote_message": "Zpráva",
-  "ui_dm_quote_attachment": "Příloha"
+  "ui_dm_quote_attachment": "Příloha",
+  "ui_dm_unreadable": "Tuto zprávu nelze na tomto zařízení přečíst.",
+  "ui_dm_preview_sealed": "Šifrovaná zpráva",
+  "ui_dm_e2ee_notice": "Zprávy jsou koncově šifrované",
+  "ui_dm_not_encrypted": "Bez koncového šifrování",
+  "ui_dm_sent": "Odesláno",
+  "ui_dm_seen": "Zobrazeno",
+  "ui_dm_sending": "Odesílání…"
 }

@@ -1251,7 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Kun amsa"),
       "dmReplied": (Object a0) => "Amsa daga $a0",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Ƙara cikin saƙo"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Aika zuciya"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Sabon saƙo"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Ba a faɗi komai ba tukuna. Gaisuwa farawa ce mai kyau."),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Saƙo"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Abin haɗe"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Ba za a iya karanta wannan saƙon a wannan na'urar ba."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Saƙon da aka ɓoye"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "An ɓoye saƙonni daga ƙarshe zuwa ƙarshe"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Ba a ɓoye shi daga ƙarshe zuwa ƙarshe ba"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("An aika"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("An gani"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Ana aikawa…"),
     };
 
 final messageLookup = MessageLookup();

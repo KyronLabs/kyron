@@ -18,7 +18,6 @@ import 'package:kyron_app/l10n/generated/messages_all.dart';
 const _keys = [
   'ui_dm_you_replied',
   'ui_dm_attach',
-  'ui_dm_send_heart',
   'ui_dm_new',
   'ui_dm_starter',
   'ui_dm_wave',
@@ -27,6 +26,13 @@ const _keys = [
   'ui_dm_someone',
   'ui_dm_quote_message',
   'ui_dm_quote_attachment',
+  'ui_dm_unreadable',
+  'ui_dm_preview_sealed',
+  'ui_dm_e2ee_notice',
+  'ui_dm_not_encrypted',
+  'ui_dm_sent',
+  'ui_dm_seen',
+  'ui_dm_sending',
 ];
 
 void main() {

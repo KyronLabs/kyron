@@ -1054,7 +1054,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("답장했습니다"),
       "dmReplied": (Object a0) => "$a0님이 답장했습니다",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("메시지에 추가"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("하트 보내기"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("새 메시지"),
       "ui_dm_starter":
           MessageLookupByLibrary.simpleMessage("아직 아무 말도 없어요. 손을 흔들며 시작해 보세요."),
@@ -1065,6 +1064,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("누군가"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("메시지"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("첨부 파일"),
+      "ui_dm_unreadable":
+          MessageLookupByLibrary.simpleMessage("이 기기에서는 이 메시지를 읽을 수 없습니다."),
+      "ui_dm_preview_sealed": MessageLookupByLibrary.simpleMessage("암호화된 메시지"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("메시지는 종단 간 암호화됩니다"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("종단 간 암호화되지 않음"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("전송됨"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("읽음"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("보내는 중…"),
     };
 
 final messageLookup = MessageLookup();

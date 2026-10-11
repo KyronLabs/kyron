@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Kun amsa",
   "dmReplied": "Amsa daga ${name}",
   "ui_dm_attach": "Ƙara cikin saƙo",
-  "ui_dm_send_heart": "Aika zuciya",
   "ui_dm_new": "Sabon saƙo",
   "ui_dm_starter": "Ba a faɗi komai ba tukuna. Gaisuwa farawa ce mai kyau.",
   "ui_dm_wave": "👋  Gaisuwa",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Cire martaninku",
   "ui_dm_someone": "Wani",
   "ui_dm_quote_message": "Saƙo",
-  "ui_dm_quote_attachment": "Abin haɗe"
+  "ui_dm_quote_attachment": "Abin haɗe",
+  "ui_dm_unreadable": "Ba za a iya karanta wannan saƙon a wannan na'urar ba.",
+  "ui_dm_preview_sealed": "Saƙon da aka ɓoye",
+  "ui_dm_e2ee_notice": "An ɓoye saƙonni daga ƙarshe zuwa ƙarshe",
+  "ui_dm_not_encrypted": "Ba a ɓoye shi daga ƙarshe zuwa ƙarshe ba",
+  "ui_dm_sent": "An aika",
+  "ui_dm_seen": "An gani",
+  "ui_dm_sending": "Ana aikawa…"
 }

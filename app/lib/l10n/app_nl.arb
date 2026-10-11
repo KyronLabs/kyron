@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Je antwoordde",
   "dmReplied": "${name} antwoordde",
   "ui_dm_attach": "Toevoegen aan bericht",
-  "ui_dm_send_heart": "Stuur een hartje",
   "ui_dm_new": "Nieuw bericht",
   "ui_dm_starter": "Nog niets gezegd. Een zwaai is een goed begin.",
   "ui_dm_wave": "👋  Zwaaien",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Je reactie verwijderen",
   "ui_dm_someone": "Iemand",
   "ui_dm_quote_message": "Bericht",
-  "ui_dm_quote_attachment": "Bijlage"
+  "ui_dm_quote_attachment": "Bijlage",
+  "ui_dm_unreadable": "Dit bericht kan op dit apparaat niet worden gelezen.",
+  "ui_dm_preview_sealed": "Versleuteld bericht",
+  "ui_dm_e2ee_notice": "Berichten zijn end-to-end versleuteld",
+  "ui_dm_not_encrypted": "Niet end-to-end versleuteld",
+  "ui_dm_sent": "Verzonden",
+  "ui_dm_seen": "Gezien",
+  "ui_dm_sending": "Verzenden…"
 }

@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Erantzun duzu"),
       "dmReplied": (Object a0) => "$a0(e)k erantzun du",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Gehitu mezuari"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Bidali bihotz bat"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Mezu berria"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Oraindik ez da ezer esan. Agur bat hasiera ona da."),
@@ -1267,6 +1265,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Mezua"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Eranskina"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Mezu hau ezin da gailu honetan irakurri."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Mezu enkriptatua"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Mezuak muturretik muturrera enkriptatuta daude"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Ez dago muturretik muturrera enkriptatuta"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Bidalita"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Ikusita"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Bidaltzen…"),
     };
 
 final messageLookup = MessageLookup();

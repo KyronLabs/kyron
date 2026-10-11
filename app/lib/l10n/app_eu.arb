@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Erantzun duzu",
   "dmReplied": "${name}(e)k erantzun du",
   "ui_dm_attach": "Gehitu mezuari",
-  "ui_dm_send_heart": "Bidali bihotz bat",
   "ui_dm_new": "Mezu berria",
   "ui_dm_starter": "Oraindik ez da ezer esan. Agur bat hasiera ona da.",
   "ui_dm_wave": "👋  Agurtu",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Kendu zure erreakzioa",
   "ui_dm_someone": "Norbait",
   "ui_dm_quote_message": "Mezua",
-  "ui_dm_quote_attachment": "Eranskina"
+  "ui_dm_quote_attachment": "Eranskina",
+  "ui_dm_unreadable": "Mezu hau ezin da gailu honetan irakurri.",
+  "ui_dm_preview_sealed": "Mezu enkriptatua",
+  "ui_dm_e2ee_notice": "Mezuak muturretik muturrera enkriptatuta daude",
+  "ui_dm_not_encrypted": "Ez dago muturretik muturrera enkriptatuta",
+  "ui_dm_sent": "Bidalita",
+  "ui_dm_seen": "Ikusita",
+  "ui_dm_sending": "Bidaltzen…"
 }

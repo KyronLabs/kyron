@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Vaš odgovor",
   "dmReplied": "Odgovor od ${name}",
   "ui_dm_attach": "Dodaj v sporočilo",
-  "ui_dm_send_heart": "Pošlji srce",
   "ui_dm_new": "Novo sporočilo",
   "ui_dm_starter": "Nič še ni bilo rečeno. Pomahanje je dober začetek.",
   "ui_dm_wave": "👋  Pomahaj",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Odstrani svojo reakcijo",
   "ui_dm_someone": "Nekdo",
   "ui_dm_quote_message": "Sporočilo",
-  "ui_dm_quote_attachment": "Priloga"
+  "ui_dm_quote_attachment": "Priloga",
+  "ui_dm_unreadable": "Tega sporočila ni mogoče prebrati v tej napravi.",
+  "ui_dm_preview_sealed": "Šifrirano sporočilo",
+  "ui_dm_e2ee_notice": "Sporočila so šifrirana od konca do konca",
+  "ui_dm_not_encrypted": "Ni šifrirano od konca do konca",
+  "ui_dm_sent": "Poslano",
+  "ui_dm_seen": "Videno",
+  "ui_dm_sending": "Pošiljanje…"
 }

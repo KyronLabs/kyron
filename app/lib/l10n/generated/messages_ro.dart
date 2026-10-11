@@ -1251,8 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Ai răspuns"),
       "dmReplied": (Object a0) => "$a0 a răspuns",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Adaugă la mesaj"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Trimite o inimă"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Mesaj nou"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Încă nu s-a spus nimic. Un salut cu mâna e un început bun."),
@@ -1265,6 +1263,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Mesaj"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Atașament"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Acest mesaj nu poate fi citit pe acest dispozitiv."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Mesaj criptat"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Mesajele sunt criptate integral"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Nu este criptat integral"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Trimis"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Văzut"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Se trimite…"),
     };
 
 final messageLookup = MessageLookup();

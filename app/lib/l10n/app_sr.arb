@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Ваш одговор",
   "dmReplied": "Одговор од ${name}",
   "ui_dm_attach": "Додај у поруку",
-  "ui_dm_send_heart": "Пошаљи срце",
   "ui_dm_new": "Нова порука",
   "ui_dm_starter": "Још ништа није речено. Махање је добар почетак.",
   "ui_dm_wave": "👋  Махни",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Уклони своју реакцију",
   "ui_dm_someone": "Неко",
   "ui_dm_quote_message": "Порука",
-  "ui_dm_quote_attachment": "Прилог"
+  "ui_dm_quote_attachment": "Прилог",
+  "ui_dm_unreadable": "Ова порука се не може прочитати на овом уређају.",
+  "ui_dm_preview_sealed": "Шифрована порука",
+  "ui_dm_e2ee_notice": "Поруке су шифроване с краја на крај",
+  "ui_dm_not_encrypted": "Није шифровано с краја на крај",
+  "ui_dm_sent": "Послато",
+  "ui_dm_seen": "Виђено",
+  "ui_dm_sending": "Слање…"
 }

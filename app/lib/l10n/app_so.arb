@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Waad ka jawaabtay",
   "dmReplied": "${name} ayaa ka jawaabay",
   "ui_dm_attach": "Ku dar fariinta",
-  "ui_dm_send_heart": "Dir qalbi",
   "ui_dm_new": "Fariin cusub",
   "ui_dm_starter": "Weli waxba lama odhan. Gacan ruxid waa bilow wanaagsan.",
   "ui_dm_wave": "👋  Gacan ruxo",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Ka saar falcelintaada",
   "ui_dm_someone": "Qof",
   "ui_dm_quote_message": "Fariin",
-  "ui_dm_quote_attachment": "Lifaaq"
+  "ui_dm_quote_attachment": "Lifaaq",
+  "ui_dm_unreadable": "Fariintan laguma akhrin karo qalabkan.",
+  "ui_dm_preview_sealed": "Fariin la sireeyay",
+  "ui_dm_e2ee_notice": "Fariimaha waxaa la sireeyay dhammaad ilaa dhammaad",
+  "ui_dm_not_encrypted": "Lama sirin dhammaad ilaa dhammaad",
+  "ui_dm_sent": "La diray",
+  "ui_dm_seen": "La arkay",
+  "ui_dm_sending": "Waa la dirayaa…"
 }

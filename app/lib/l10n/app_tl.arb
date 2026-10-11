@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Sumagot ka",
   "dmReplied": "Sumagot si ${name}",
   "ui_dm_attach": "Idagdag sa mensahe",
-  "ui_dm_send_heart": "Magpadala ng puso",
   "ui_dm_new": "Bagong mensahe",
   "ui_dm_starter": "Wala pang nasasabi. Magandang simula ang pagkaway.",
   "ui_dm_wave": "👋  Kumaway",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Alisin ang iyong reaksyon",
   "ui_dm_someone": "Isang tao",
   "ui_dm_quote_message": "Mensahe",
-  "ui_dm_quote_attachment": "Kalakip"
+  "ui_dm_quote_attachment": "Kalakip",
+  "ui_dm_unreadable": "Hindi mababasa ang mensaheng ito sa device na ito.",
+  "ui_dm_preview_sealed": "Naka-encrypt na mensahe",
+  "ui_dm_e2ee_notice": "Naka-end-to-end encrypt ang mga mensahe",
+  "ui_dm_not_encrypted": "Hindi naka-end-to-end encrypt",
+  "ui_dm_sent": "Naipadala",
+  "ui_dm_seen": "Nakita",
+  "ui_dm_sending": "Ipinapadala…"
 }

@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "तपाईंले जवाफ दिनुभयो",
   "dmReplied": "${name} ले जवाफ दिनुभयो",
   "ui_dm_attach": "सन्देशमा थप्नुहोस्",
-  "ui_dm_send_heart": "मुटु पठाउनुहोस्",
   "ui_dm_new": "नयाँ सन्देश",
   "ui_dm_starter": "अहिलेसम्म केही भनिएको छैन। हात हल्लाउनु राम्रो सुरुवात हो।",
   "ui_dm_wave": "👋  हात हल्लाउनुहोस्",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "आफ्नो प्रतिक्रिया हटाउनुहोस्",
   "ui_dm_someone": "कोही",
   "ui_dm_quote_message": "सन्देश",
-  "ui_dm_quote_attachment": "संलग्नक"
+  "ui_dm_quote_attachment": "संलग्नक",
+  "ui_dm_unreadable": "यो सन्देश यो यन्त्रमा पढ्न सकिँदैन।",
+  "ui_dm_preview_sealed": "इन्क्रिप्ट गरिएको सन्देश",
+  "ui_dm_e2ee_notice": "सन्देशहरू एन्ड-टु-एन्ड इन्क्रिप्ट गरिएका छन्",
+  "ui_dm_not_encrypted": "एन्ड-टु-एन्ड इन्क्रिप्ट गरिएको छैन",
+  "ui_dm_sent": "पठाइयो",
+  "ui_dm_seen": "देखियो",
+  "ui_dm_sending": "पठाउँदै…"
 }

@@ -1414,8 +1414,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 απάντησε",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Προσθήκη στο μήνυμα"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Στείλτε μια καρδιά"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Νέο μήνυμα"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Τίποτα ακόμη. Ένας χαιρετισμός είναι καλή αρχή."),
@@ -1429,6 +1427,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Μήνυμα"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Συνημμένο"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Αυτό το μήνυμα δεν μπορεί να διαβαστεί σε αυτήν τη συσκευή."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Κρυπτογραφημένο μήνυμα"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Τα μηνύματα είναι κρυπτογραφημένα από άκρο σε άκρο"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Χωρίς κρυπτογράφηση από άκρο σε άκρο"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Στάλθηκε"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Προβλήθηκε"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Αποστολή…"),
     };
 
 final messageLookup = MessageLookup();

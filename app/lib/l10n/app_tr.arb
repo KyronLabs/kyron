@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Yanıtladın",
   "dmReplied": "${name} yanıtladı",
   "ui_dm_attach": "Mesaja ekle",
-  "ui_dm_send_heart": "Kalp gönder",
   "ui_dm_new": "Yeni mesaj",
   "ui_dm_starter": "Henüz bir şey söylenmedi. El sallamak iyi bir başlangıç.",
   "ui_dm_wave": "👋  El salla",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Tepkini kaldır",
   "ui_dm_someone": "Biri",
   "ui_dm_quote_message": "Mesaj",
-  "ui_dm_quote_attachment": "Ek"
+  "ui_dm_quote_attachment": "Ek",
+  "ui_dm_unreadable": "Bu mesaj bu cihazda okunamıyor.",
+  "ui_dm_preview_sealed": "Şifreli mesaj",
+  "ui_dm_e2ee_notice": "Mesajlar uçtan uca şifrelidir",
+  "ui_dm_not_encrypted": "Uçtan uca şifreli değil",
+  "ui_dm_sent": "Gönderildi",
+  "ui_dm_seen": "Görüldü",
+  "ui_dm_sending": "Gönderiliyor…"
 }

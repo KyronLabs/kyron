@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Waad ka jawaabtay"),
       "dmReplied": (Object a0) => "$a0 ayaa ka jawaabay",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Ku dar fariinta"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Dir qalbi"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Fariin cusub"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Weli waxba lama odhan. Gacan ruxid waa bilow wanaagsan."),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Qof"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Fariin"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Lifaaq"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Fariintan laguma akhrin karo qalabkan."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Fariin la sireeyay"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Fariimaha waxaa la sireeyay dhammaad ilaa dhammaad"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Lama sirin dhammaad ilaa dhammaad"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("La diray"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("La arkay"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Waa la dirayaa…"),
     };
 
 final messageLookup = MessageLookup();

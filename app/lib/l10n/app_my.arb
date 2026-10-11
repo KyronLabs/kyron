@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "သင် ပြန်စာပို့ခဲ့သည်",
   "dmReplied": "${name} ပြန်စာပို့ခဲ့သည်",
   "ui_dm_attach": "မက်ဆေ့ချ်ထဲ ထည့်ရန်",
-  "ui_dm_send_heart": "နှလုံးသား ပို့ရန်",
   "ui_dm_new": "မက်ဆေ့ချ်အသစ်",
   "ui_dm_starter": "ဘာမှ မပြောရသေးပါ။ လက်ပြခြင်းသည် ကောင်းမွန်သော အစတစ်ခုဖြစ်သည်။",
   "ui_dm_wave": "👋  လက်ပြရန်",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "သင့်တုံ့ပြန်မှုကို ဖယ်ရှားရန်",
   "ui_dm_someone": "တစ်စုံတစ်ယောက်",
   "ui_dm_quote_message": "မက်ဆေ့ချ်",
-  "ui_dm_quote_attachment": "ပူးတွဲဖိုင်"
+  "ui_dm_quote_attachment": "ပူးတွဲဖိုင်",
+  "ui_dm_unreadable": "ဤမက်ဆေ့ချ်ကို ဤစက်ပေါ်တွင် ဖတ်၍မရပါ။",
+  "ui_dm_preview_sealed": "ကုဒ်ဝှက်ထားသော မက်ဆေ့ချ်",
+  "ui_dm_e2ee_notice": "မက်ဆေ့ချ်များကို အစမှအဆုံး ကုဒ်ဝှက်ထားသည်",
+  "ui_dm_not_encrypted": "အစမှအဆုံး ကုဒ်ဝှက်မထားပါ",
+  "ui_dm_sent": "ပို့ပြီး",
+  "ui_dm_seen": "မြင်ပြီး",
+  "ui_dm_sending": "ပို့နေသည်…"
 }

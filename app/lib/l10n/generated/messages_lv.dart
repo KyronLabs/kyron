@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Jūs atbildējāt"),
       "dmReplied": (Object a0) => "$a0 atbildēja",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Pievienot ziņai"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Sūtīt sirsniņu"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Jauna ziņa"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Vēl nekas nav teikts. Pamāšana ir labs sākums."),
@@ -1267,6 +1265,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Ziņa"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Pielikums"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Šo ziņojumu nevar izlasīt šajā ierīcē."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Šifrēts ziņojums"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("Ziņojumi ir pilnībā šifrēti"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Nav pilnībā šifrēts"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Nosūtīts"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Redzēts"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Sūta…"),
     };
 
 final messageLookup = MessageLookup();

@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Du hast geantwortet",
   "dmReplied": "${name} hat geantwortet",
   "ui_dm_attach": "Zur Nachricht hinzufügen",
-  "ui_dm_send_heart": "Ein Herz senden",
   "ui_dm_new": "Neue Nachricht",
   "ui_dm_starter": "Noch nichts gesagt. Ein Winken ist ein guter Anfang.",
   "ui_dm_wave": "👋  Winken",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Deine Reaktion entfernen",
   "ui_dm_someone": "Jemand",
   "ui_dm_quote_message": "Nachricht",
-  "ui_dm_quote_attachment": "Anhang"
+  "ui_dm_quote_attachment": "Anhang",
+  "ui_dm_unreadable": "Diese Nachricht kann auf diesem Gerät nicht gelesen werden.",
+  "ui_dm_preview_sealed": "Verschlüsselte Nachricht",
+  "ui_dm_e2ee_notice": "Nachrichten sind Ende-zu-Ende-verschlüsselt",
+  "ui_dm_not_encrypted": "Nicht Ende-zu-Ende-verschlüsselt",
+  "ui_dm_sent": "Gesendet",
+  "ui_dm_seen": "Gesehen",
+  "ui_dm_sending": "Wird gesendet…"
 }

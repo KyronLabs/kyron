@@ -1251,7 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("התשובה שלך"),
       "dmReplied": (Object a0) => "תשובה מאת $a0",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("הוספה להודעה"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("שליחת לב"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("הודעה חדשה"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "עדיין לא נאמר דבר. נפנוף הוא התחלה טובה."),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("הודעה"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("קובץ מצורף"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן לקרוא את ההודעה הזו במכשיר הזה."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("הודעה מוצפנת"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("ההודעות מוצפנות מקצה לקצה"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("לא מוצפנת מקצה לקצה"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("נשלחה"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("נצפתה"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("בשליחה…"),
     };
 
 final messageLookup = MessageLookup();

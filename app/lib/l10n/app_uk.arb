@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Ви відповіли",
   "dmReplied": "Відповідь від ${name}",
   "ui_dm_attach": "Додати до повідомлення",
-  "ui_dm_send_heart": "Надіслати серце",
   "ui_dm_new": "Нове повідомлення",
   "ui_dm_starter": "Ще нічого не сказано. Помахати рукою — гарний початок.",
   "ui_dm_wave": "👋  Помахати",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Прибрати вашу реакцію",
   "ui_dm_someone": "Хтось",
   "ui_dm_quote_message": "Повідомлення",
-  "ui_dm_quote_attachment": "Вкладення"
+  "ui_dm_quote_attachment": "Вкладення",
+  "ui_dm_unreadable": "Це повідомлення неможливо прочитати на цьому пристрої.",
+  "ui_dm_preview_sealed": "Зашифроване повідомлення",
+  "ui_dm_e2ee_notice": "Повідомлення захищені наскрізним шифруванням",
+  "ui_dm_not_encrypted": "Без наскрізного шифрування",
+  "ui_dm_sent": "Надіслано",
+  "ui_dm_seen": "Переглянуто",
+  "ui_dm_sending": "Надсилання…"
 }

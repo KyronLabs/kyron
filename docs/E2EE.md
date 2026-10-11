@@ -13,23 +13,52 @@ believe it protects.
 half is written to the same secure storage the session token lives in and never
 leaves the device. The public half goes to `PUT /keys` with an opaque device id.
 
-**Sealing.** To write in a conversation the app fetches the members' public keys
-(`GET /keys/conversation/:id`), derives a shared secret per key with X25519, and
-runs it through HKDF-SHA256 — the raw exchange output is not uniformly
-distributed and feeding it straight to a cipher is the classic way to weaken an
-otherwise sound scheme.
+**Sealing.** To write in a conversation the app fetches every device key in it
+(`GET /keys/conversation/:id`, freshest first): the other person's, and the
+writer's own. The message is sealed once, with **XChaCha20-Poly1305**, under a
+random key made for that message alone. That key is then sealed again for each
+device, under a key derived from X25519 between the writer's secret half and
+that device's public one, run through HKDF-SHA256 — the raw exchange output is
+not uniformly distributed, and feeding it straight to a cipher is the classic
+way to weaken an otherwise sound scheme. Every nonce is fresh, drawn from the
+platform's secure source; an AEAD makes a changed byte a refusal rather than a
+different plaintext.
 
-The message is sealed with **XChaCha20-Poly1305**, an AEAD: a changed byte is a
-refusal, not a different plaintext. The nonce is fresh per message, drawn from
-the platform's secure source.
+The writer's own devices are on the list because otherwise they could not read
+their own messages after a restart. The list is capped at sixteen devices — a
+reinstall publishes a new key and the old one stays listed — and the cap drops
+the stalest of the writer's own installs first.
 
-**On the wire.** `k1.<nonce>.<ciphertext>.<mac>`, each part base64url, in the
-same column a plain message used. The `k1` prefix is a version — a scheme that
-cannot be changed is one that has to be right first time.
+If the other person has published no key yet, the message is sent as written
+and the bubble says so. It is never sealed for the writer alone.
 
-**Reading.** The app tries each shared secret it holds. Anything that does not
-parse as a sealed message is a plain one and passes through untouched, which is
-what everything written before this existed looks like.
+**On the wire.** `k2.<sender>.<nonce>.<ciphertext>.<mac>.<keys>`, where
+`<keys>` is one `<device id>:<nonce>:<sealed key>:<mac>` per device, joined by
+`~`, every part base64url. The version prefix is there because a scheme that
+cannot be changed is one that has to be right first time — and this one was
+not.
+
+**Reading.** A device finds its own entry by its key's id, derives the same
+key from its secret half and the sender's public key carried in the envelope,
+and opens the message key and then the message. It needs nothing from the
+network, which is how the conversation list shows the last message without
+fetching anybody's keys. Anything that does not parse as sealed is a plain
+message and passes through untouched.
+
+### What `k1` got wrong
+
+The first version, `k1.<nonce>.<ciphertext>.<mac>`, sealed each message under
+one pairwise key: whichever the server happened to list first. The list
+included the writer's own key and had no order, and when the writer's came
+first the message was sealed under a secret derived from the writer's key
+twice over, which only the writer can compute. They could read everything they
+sent; the person they sent it to could read none of it, and saw "This message
+cannot be read on this device."
+
+`k2` replaced it on 11 October 2026. `k1` messages are still opened where they
+can be, and never written. **The ones sealed the wrong way stay unreadable to
+their recipient** — no key that could open them exists anywhere except on the
+sender's device — and will read again only if they are sent again.
 
 ## What it does not protect
 
@@ -37,15 +66,17 @@ what everything written before this existed looks like.
 
 A key belongs to a device, not an account. Consequences:
 
-- **A second device cannot read what the first received.** Sign in on a tablet
-  and the history stays unreadable there.
+- **A new device cannot read what arrived before it existed.** Messages are
+  sealed for the devices that were listed when they were sent. Sign in on a
+  tablet and everything from then on reads there; the history before it does
+  not.
 - **Losing the device loses the history.** There is no key backup and no
   recovery. Signing out deletes the secret half deliberately: it is that
   device's identity and it leaves with the account that made it.
-- **Only the first key is used when sealing.** Somebody with a phone and a
-  tablet has two published keys; a message is currently sealed under one, so it
-  arrives readable on one device and not the other. Sealing per device needs the
-  wire to carry several ciphertexts, and that is the next change.
+- **Stale keys linger.** An uninstalled app never withdraws its key, so it
+  stays listed and keeps being sealed for, up to the cap, until the account
+  signs out of it. Harmless — nobody holds its secret half — but it makes
+  envelopes larger than they need to be.
 
 ### No forward secrecy
 
@@ -88,15 +119,19 @@ database leak, not against an actively malicious server.**
   it wakes, fetches the message, opens it on the device and draws the
   notification. Not built.
 - **Nothing is sealed unless both sides have published a key.** A conversation
-  with somebody on an older build sends as it always did. The bubble carries a
-  lock when the message was sealed, so the reader is told which they got rather
-  than left to assume.
+  with somebody on an older build sends as it always did. The thread says
+  "Messages are end-to-end encrypted" once, above the first sealed message,
+  and any message after that point that went as written carries an open lock
+  beside it — so the reader is told which they got rather than left to
+  assume. History from before that point is plain throughout and is not
+  marked message by message. (This used to be a lock under every run of
+  messages: the same thing said a hundred times down a screen, with the
+  exception, which is what matters, no easier to spot.)
 
 ## What would close each gap
 
 | Gap | What it needs |
 |:--|:--|
-| One device only | Seal per recipient key; carry several ciphertexts on the wire |
 | No forward secrecy | A double ratchet. Large, and the right eventual answer |
 | No verification | Fingerprint comparison in the UI, and a warning when a key changes |
 | Attachments in the clear | Encrypt the file before upload; the key travels in the sealed message |

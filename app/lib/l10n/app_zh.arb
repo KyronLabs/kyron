@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "你回复了",
   "dmReplied": "${name} 回复了",
   "ui_dm_attach": "添加到消息",
-  "ui_dm_send_heart": "发送爱心",
   "ui_dm_new": "新消息",
   "ui_dm_starter": "还没有说过话。挥个手是个好开始。",
   "ui_dm_wave": "👋  挥手",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "移除你的回应",
   "ui_dm_someone": "某人",
   "ui_dm_quote_message": "消息",
-  "ui_dm_quote_attachment": "附件"
+  "ui_dm_quote_attachment": "附件",
+  "ui_dm_unreadable": "无法在此设备上阅读这条消息。",
+  "ui_dm_preview_sealed": "加密消息",
+  "ui_dm_e2ee_notice": "消息已端到端加密",
+  "ui_dm_not_encrypted": "未端到端加密",
+  "ui_dm_sent": "已发送",
+  "ui_dm_seen": "已读",
+  "ui_dm_sending": "正在发送…"
 }

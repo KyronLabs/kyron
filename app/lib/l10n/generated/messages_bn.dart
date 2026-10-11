@@ -1338,8 +1338,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("আপনি উত্তর দিয়েছেন"),
       "dmReplied": (Object a0) => "$a0 উত্তর দিয়েছেন",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("বার্তায় যোগ করুন"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("একটি হার্ট পাঠান"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("নতুন বার্তা"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "এখনও কিছু বলা হয়নি। হাত নাড়ানো একটি ভালো শুরু।"),
@@ -1353,6 +1351,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("বার্তা"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("সংযুক্তি"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "এই বার্তাটি এই ডিভাইসে পড়া যাবে না।"),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("এনক্রিপ্ট করা বার্তা"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "বার্তাগুলি এন্ড-টু-এন্ড এনক্রিপ্ট করা"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "এন্ড-টু-এন্ড এনক্রিপ্ট করা নয়"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("পাঠানো হয়েছে"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("দেখা হয়েছে"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("পাঠানো হচ্ছে…"),
     };
 
 final messageLookup = MessageLookup();

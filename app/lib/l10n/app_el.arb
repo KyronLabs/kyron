@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Απαντήσατε",
   "dmReplied": "${name} απάντησε",
   "ui_dm_attach": "Προσθήκη στο μήνυμα",
-  "ui_dm_send_heart": "Στείλτε μια καρδιά",
   "ui_dm_new": "Νέο μήνυμα",
   "ui_dm_starter": "Τίποτα ακόμη. Ένας χαιρετισμός είναι καλή αρχή.",
   "ui_dm_wave": "👋  Χαιρετισμός",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Αφαίρεση της αντίδρασής σας",
   "ui_dm_someone": "Κάποιος",
   "ui_dm_quote_message": "Μήνυμα",
-  "ui_dm_quote_attachment": "Συνημμένο"
+  "ui_dm_quote_attachment": "Συνημμένο",
+  "ui_dm_unreadable": "Αυτό το μήνυμα δεν μπορεί να διαβαστεί σε αυτήν τη συσκευή.",
+  "ui_dm_preview_sealed": "Κρυπτογραφημένο μήνυμα",
+  "ui_dm_e2ee_notice": "Τα μηνύματα είναι κρυπτογραφημένα από άκρο σε άκρο",
+  "ui_dm_not_encrypted": "Χωρίς κρυπτογράφηση από άκρο σε άκρο",
+  "ui_dm_sent": "Στάλθηκε",
+  "ui_dm_seen": "Προβλήθηκε",
+  "ui_dm_sending": "Αποστολή…"
 }

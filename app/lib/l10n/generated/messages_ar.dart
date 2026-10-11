@@ -1258,7 +1258,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("لقد رددت"),
       "dmReplied": (Object a0) => "ردّ $a0",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("إضافة إلى الرسالة"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("أرسل قلبًا"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("رسالة جديدة"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "لم يُقل شيء بعد. التلويح بداية جيدة."),
@@ -1270,6 +1269,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("شخص ما"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("رسالة"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("مرفق"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "لا يمكن قراءة هذه الرسالة على هذا الجهاز."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("رسالة مشفّرة"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "الرسائل مشفّرة تشفيرًا تامًا بين الطرفين"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "غير مشفّرة تشفيرًا تامًا بين الطرفين"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("أُرسلت"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("شوهدت"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("جارٍ الإرسال…"),
     };
 
 final messageLookup = MessageLookup();

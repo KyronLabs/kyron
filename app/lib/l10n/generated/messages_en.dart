@@ -1543,7 +1543,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("You replied"),
       "dmReplied": (Object a0) => "$a0 replied",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Add to message"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Send a heart"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("New message"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Nothing said yet. A wave is a good start."),
@@ -1557,6 +1556,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Message"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Attachment"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "This message cannot be read on this device."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Encrypted message"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Messages are end-to-end encrypted"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Not end-to-end encrypted"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Sent"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Seen"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Sending…"),
     };
 
 final messageLookup = MessageLookup();

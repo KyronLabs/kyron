@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Ị zaghachiri",
   "dmReplied": "${name} zaghachiri",
   "ui_dm_attach": "Tinye na ozi",
-  "ui_dm_send_heart": "Zipu obi",
   "ui_dm_new": "Ozi ọhụrụ",
   "ui_dm_starter": "Ọ nweghị ihe a kwuru ka. Ịfụ aka bụ mmalite dị mma.",
   "ui_dm_wave": "👋  Fụọ aka",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Wepu mmeghachi omume gị",
   "ui_dm_someone": "Mmadụ",
   "ui_dm_quote_message": "Ozi",
-  "ui_dm_quote_attachment": "Ihe mgbakwunye"
+  "ui_dm_quote_attachment": "Ihe mgbakwunye",
+  "ui_dm_unreadable": "A pụghị ịgụ ozi a na ngwaọrụ a.",
+  "ui_dm_preview_sealed": "Ozi ezoro ezo",
+  "ui_dm_e2ee_notice": "E zoro ozi niile site na njedebe ruo na njedebe",
+  "ui_dm_not_encrypted": "Ezoghị ya site na njedebe ruo na njedebe",
+  "ui_dm_sent": "Ezigara",
+  "ui_dm_seen": "A hụrụ ya",
+  "ui_dm_sending": "Na-eziga…"
 }

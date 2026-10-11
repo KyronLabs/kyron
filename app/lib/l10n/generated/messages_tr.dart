@@ -1251,7 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Yanıtladın"),
       "dmReplied": (Object a0) => "$a0 yanıtladı",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Mesaja ekle"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Kalp gönder"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Yeni mesaj"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Henüz bir şey söylenmedi. El sallamak iyi bir başlangıç."),
@@ -1264,6 +1263,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Biri"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Mesaj"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Ek"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Bu mesaj bu cihazda okunamıyor."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Şifreli mesaj"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("Mesajlar uçtan uca şifrelidir"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Uçtan uca şifreli değil"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Gönderildi"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Görüldü"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Gönderiliyor…"),
     };
 
 final messageLookup = MessageLookup();

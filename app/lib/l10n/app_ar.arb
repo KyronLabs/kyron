@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "لقد رددت",
   "dmReplied": "ردّ ${name}",
   "ui_dm_attach": "إضافة إلى الرسالة",
-  "ui_dm_send_heart": "أرسل قلبًا",
   "ui_dm_new": "رسالة جديدة",
   "ui_dm_starter": "لم يُقل شيء بعد. التلويح بداية جيدة.",
   "ui_dm_wave": "👋  لوِّح",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "إزالة تفاعلك",
   "ui_dm_someone": "شخص ما",
   "ui_dm_quote_message": "رسالة",
-  "ui_dm_quote_attachment": "مرفق"
+  "ui_dm_quote_attachment": "مرفق",
+  "ui_dm_unreadable": "لا يمكن قراءة هذه الرسالة على هذا الجهاز.",
+  "ui_dm_preview_sealed": "رسالة مشفّرة",
+  "ui_dm_e2ee_notice": "الرسائل مشفّرة تشفيرًا تامًا بين الطرفين",
+  "ui_dm_not_encrypted": "غير مشفّرة تشفيرًا تامًا بين الطرفين",
+  "ui_dm_sent": "أُرسلت",
+  "ui_dm_seen": "شوهدت",
+  "ui_dm_sending": "جارٍ الإرسال…"
 }

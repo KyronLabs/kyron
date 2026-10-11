@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 atsakė",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Pridėti prie žinutės"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Siųsti širdelę"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Nauja žinutė"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Dar nieko nepasakyta. Pamojavimas – gera pradžia."),
@@ -1266,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Kažkas"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Žinutė"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Priedas"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Šios žinutės negalima perskaityti šiame įrenginyje."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Užšifruota žinutė"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Žinutės yra visapusiškai užšifruotos"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Neužšifruota visapusiškai"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Išsiųsta"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Matyta"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Siunčiama…"),
     };
 
 final messageLookup = MessageLookup();

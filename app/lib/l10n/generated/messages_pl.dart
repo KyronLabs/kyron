@@ -1253,7 +1253,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "Odpowiedź od $a0",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Dodaj do wiadomości"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Wyślij serce"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Nowa wiadomość"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Jeszcze nic nie zostało powiedziane. Pomachanie to dobry początek."),
@@ -1267,6 +1266,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Wiadomość"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Załącznik"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Tej wiadomości nie można odczytać na tym urządzeniu."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Zaszyfrowana wiadomość"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Wiadomości są szyfrowane end-to-end"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Bez szyfrowania end-to-end"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Wysłano"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Wyświetlono"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Wysyłanie…"),
     };
 
 final messageLookup = MessageLookup();

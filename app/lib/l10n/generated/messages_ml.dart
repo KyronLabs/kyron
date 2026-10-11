@@ -1253,8 +1253,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 മറുപടി നൽകി",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("സന്ദേശത്തിലേക്ക് ചേർക്കുക"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("ഒരു ഹൃദയം അയയ്ക്കുക"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("പുതിയ സന്ദേശം"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "ഇതുവരെ ഒന്നും പറഞ്ഞിട്ടില്ല. കൈവീശൽ നല്ലൊരു തുടക്കമാണ്."),
@@ -1268,6 +1266,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("സന്ദേശം"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("അറ്റാച്ച്മെന്റ്"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "ഈ സന്ദേശം ഈ ഉപകരണത്തിൽ വായിക്കാൻ കഴിയില്ല."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("എൻക്രിപ്റ്റ് ചെയ്ത സന്ദേശം"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "സന്ദേശങ്ങൾ എൻഡ്-ടു-എൻഡ് എൻക്രിപ്റ്റ് ചെയ്തവയാണ്"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "എൻഡ്-ടു-എൻഡ് എൻക്രിപ്റ്റ് ചെയ്തിട്ടില്ല"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("അയച്ചു"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("കണ്ടു"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("അയയ്ക്കുന്നു…"),
     };
 
 final messageLookup = MessageLookup();

@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Atsakėte",
   "dmReplied": "${name} atsakė",
   "ui_dm_attach": "Pridėti prie žinutės",
-  "ui_dm_send_heart": "Siųsti širdelę",
   "ui_dm_new": "Nauja žinutė",
   "ui_dm_starter": "Dar nieko nepasakyta. Pamojavimas – gera pradžia.",
   "ui_dm_wave": "👋  Pamojuoti",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Pašalinti savo reakciją",
   "ui_dm_someone": "Kažkas",
   "ui_dm_quote_message": "Žinutė",
-  "ui_dm_quote_attachment": "Priedas"
+  "ui_dm_quote_attachment": "Priedas",
+  "ui_dm_unreadable": "Šios žinutės negalima perskaityti šiame įrenginyje.",
+  "ui_dm_preview_sealed": "Užšifruota žinutė",
+  "ui_dm_e2ee_notice": "Žinutės yra visapusiškai užšifruotos",
+  "ui_dm_not_encrypted": "Neužšifruota visapusiškai",
+  "ui_dm_sent": "Išsiųsta",
+  "ui_dm_seen": "Matyta",
+  "ui_dm_sending": "Siunčiama…"
 }

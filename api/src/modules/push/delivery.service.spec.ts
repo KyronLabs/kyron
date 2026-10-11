@@ -36,7 +36,11 @@ describe('DeliveryService', () => {
   } as const;
   const alert: PushMessage = { title: 'Kyron', body: 'Somebody liked it.' };
 
-  it('uses the socket and stays off the phone when the app is open', async () => {
+  it('pushes even with a socket open, which a backgrounded app keeps', async () => {
+    // This used to skip the push for anybody connected, and a phone with the
+    // screen off and the socket still alive heard about nothing. The phone,
+    // not this server, knows whether the app is in front: it hands a push to
+    // an app on screen instead of showing it.
     const socket = new FakeSocket();
     realtime.register('me', socket);
 
@@ -44,9 +48,7 @@ describe('DeliveryService', () => {
     await Promise.resolve();
 
     expect(socket.sent).toHaveLength(1);
-    // A phone that buzzes for something already on screen is the thing this
-    // check exists to prevent.
-    expect(push.sent).toEqual([]);
+    expect(push.sent).toEqual([{ userId: 'me', message: alert }]);
   });
 
   it('pushes when nobody is connected', async () => {
@@ -56,8 +58,7 @@ describe('DeliveryService', () => {
     expect(push.sent).toEqual([{ userId: 'me', message: alert }]);
   });
 
-  it('decides per person, not per event', async () => {
-    // Two people in one conversation are rarely in the same place.
+  it('tells everyone by both routes, connected or not', async () => {
     const socket = new FakeSocket();
     realtime.register('here', socket);
 
@@ -65,7 +66,7 @@ describe('DeliveryService', () => {
     await Promise.resolve();
 
     expect(socket.sent).toHaveLength(1);
-    expect(push.sent.map((s) => s.userId)).toEqual(['away']);
+    expect(push.sent.map((s) => s.userId)).toEqual(['here', 'away']);
   });
 
   it('sends no push when the caller offered none', async () => {

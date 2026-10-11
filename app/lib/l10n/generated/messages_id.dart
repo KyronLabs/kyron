@@ -1253,7 +1253,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 membalas",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Tambahkan ke pesan"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Kirim hati"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Pesan baru"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Belum ada yang dikatakan. Lambaian tangan adalah awal yang baik."),
@@ -1267,6 +1266,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Pesan"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Lampiran"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Pesan ini tidak dapat dibaca di perangkat ini."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Pesan terenkripsi"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("Pesan terenkripsi end-to-end"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Tidak terenkripsi end-to-end"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Terkirim"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Dilihat"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Mengirim…"),
     };
 
 final messageLookup = MessageLookup();

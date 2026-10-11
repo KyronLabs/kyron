@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "আপনি উত্তর দিয়েছেন",
   "dmReplied": "${name} উত্তর দিয়েছেন",
   "ui_dm_attach": "বার্তায় যোগ করুন",
-  "ui_dm_send_heart": "একটি হার্ট পাঠান",
   "ui_dm_new": "নতুন বার্তা",
   "ui_dm_starter": "এখনও কিছু বলা হয়নি। হাত নাড়ানো একটি ভালো শুরু।",
   "ui_dm_wave": "👋  হাত নাড়ুন",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "আপনার প্রতিক্রিয়া সরান",
   "ui_dm_someone": "কেউ একজন",
   "ui_dm_quote_message": "বার্তা",
-  "ui_dm_quote_attachment": "সংযুক্তি"
+  "ui_dm_quote_attachment": "সংযুক্তি",
+  "ui_dm_unreadable": "এই বার্তাটি এই ডিভাইসে পড়া যাবে না।",
+  "ui_dm_preview_sealed": "এনক্রিপ্ট করা বার্তা",
+  "ui_dm_e2ee_notice": "বার্তাগুলি এন্ড-টু-এন্ড এনক্রিপ্ট করা",
+  "ui_dm_not_encrypted": "এন্ড-টু-এন্ড এনক্রিপ্ট করা নয়",
+  "ui_dm_sent": "পাঠানো হয়েছে",
+  "ui_dm_seen": "দেখা হয়েছে",
+  "ui_dm_sending": "পাঠানো হচ্ছে…"
 }

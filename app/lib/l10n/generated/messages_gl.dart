@@ -1251,8 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Respondiches"),
       "dmReplied": (Object a0) => "$a0 respondeu",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Engadir á mensaxe"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Enviar un corazón"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Mensaxe nova"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Aínda non se dixo nada. Un saúdo é un bo comezo."),
@@ -1265,6 +1263,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Alguén"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Mensaxe"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Anexo"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Esta mensaxe non se pode ler neste dispositivo."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Mensaxe cifrada"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "As mensaxes están cifradas de extremo a extremo"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Sen cifrado de extremo a extremo"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Enviada"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Vista"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Enviando…"),
     };
 
 final messageLookup = MessageLookup();

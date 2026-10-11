@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Anda membalas",
   "dmReplied": "${name} membalas",
   "ui_dm_attach": "Tambahkan ke pesan",
-  "ui_dm_send_heart": "Kirim hati",
   "ui_dm_new": "Pesan baru",
   "ui_dm_starter": "Belum ada yang dikatakan. Lambaian tangan adalah awal yang baik.",
   "ui_dm_wave": "👋  Lambaikan tangan",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Hapus reaksi Anda",
   "ui_dm_someone": "Seseorang",
   "ui_dm_quote_message": "Pesan",
-  "ui_dm_quote_attachment": "Lampiran"
+  "ui_dm_quote_attachment": "Lampiran",
+  "ui_dm_unreadable": "Pesan ini tidak dapat dibaca di perangkat ini.",
+  "ui_dm_preview_sealed": "Pesan terenkripsi",
+  "ui_dm_e2ee_notice": "Pesan terenkripsi end-to-end",
+  "ui_dm_not_encrypted": "Tidak terenkripsi end-to-end",
+  "ui_dm_sent": "Terkirim",
+  "ui_dm_seen": "Dilihat",
+  "ui_dm_sending": "Mengirim…"
 }

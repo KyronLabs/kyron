@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "तुम्ही उत्तर दिले",
   "dmReplied": "${name} यांनी उत्तर दिले",
   "ui_dm_attach": "संदेशात जोडा",
-  "ui_dm_send_heart": "हृदय पाठवा",
   "ui_dm_new": "नवीन संदेश",
   "ui_dm_starter": "अजून काहीही बोलले गेले नाही. हात हलवणे ही चांगली सुरुवात आहे.",
   "ui_dm_wave": "👋  हात हलवा",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "तुमची प्रतिक्रिया काढा",
   "ui_dm_someone": "कोणीतरी",
   "ui_dm_quote_message": "संदेश",
-  "ui_dm_quote_attachment": "जोडणी"
+  "ui_dm_quote_attachment": "जोडणी",
+  "ui_dm_unreadable": "हा संदेश या डिव्हाइसवर वाचता येत नाही.",
+  "ui_dm_preview_sealed": "एन्क्रिप्ट केलेला संदेश",
+  "ui_dm_e2ee_notice": "संदेश एंड-टू-एंड एन्क्रिप्ट केलेले आहेत",
+  "ui_dm_not_encrypted": "एंड-टू-एंड एन्क्रिप्ट केलेला नाही",
+  "ui_dm_sent": "पाठवला",
+  "ui_dm_seen": "पाहिला",
+  "ui_dm_sending": "पाठवत आहे…"
 }

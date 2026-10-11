@@ -1251,7 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Ị zaghachiri"),
       "dmReplied": (Object a0) => "$a0 zaghachiri",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Tinye na ozi"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Zipu obi"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Ozi ọhụrụ"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Ọ nweghị ihe a kwuru ka. Ịfụ aka bụ mmalite dị mma."),
@@ -1264,6 +1263,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Ozi"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Ihe mgbakwunye"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "A pụghị ịgụ ozi a na ngwaọrụ a."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Ozi ezoro ezo"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "E zoro ozi niile site na njedebe ruo na njedebe"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Ezoghị ya site na njedebe ruo na njedebe"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Ezigara"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("A hụrụ ya"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Na-eziga…"),
     };
 
 final messageLookup = MessageLookup();

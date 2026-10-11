@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Vaš odgovor",
   "dmReplied": "Odgovor od ${name}",
   "ui_dm_attach": "Dodaj u poruku",
-  "ui_dm_send_heart": "Pošalji srce",
   "ui_dm_new": "Nova poruka",
   "ui_dm_starter": "Još ništa nije rečeno. Mahanje je dobar početak.",
   "ui_dm_wave": "👋  Mahni",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Ukloni svoju reakciju",
   "ui_dm_someone": "Netko",
   "ui_dm_quote_message": "Poruka",
-  "ui_dm_quote_attachment": "Privitak"
+  "ui_dm_quote_attachment": "Privitak",
+  "ui_dm_unreadable": "Ova se poruka ne može pročitati na ovom uređaju.",
+  "ui_dm_preview_sealed": "Šifrirana poruka",
+  "ui_dm_e2ee_notice": "Poruke su sveobuhvatno šifrirane",
+  "ui_dm_not_encrypted": "Nije sveobuhvatno šifrirano",
+  "ui_dm_sent": "Poslano",
+  "ui_dm_seen": "Viđeno",
+  "ui_dm_sending": "Slanje…"
 }

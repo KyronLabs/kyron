@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("អ្នកបានឆ្លើយតប"),
       "dmReplied": (Object a0) => "$a0 បានឆ្លើយតប",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("បន្ថែមទៅសារ"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ផ្ញើបេះដូង"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("សារថ្មី"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "មិនទាន់មានអ្វីនិយាយនៅឡើយទេ។ ការគ្រវីដៃគឺជាការចាប់ផ្ដើមដ៏ល្អ។"),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("សារ"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("ឯកសារភ្ជាប់"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចអានសារនេះនៅលើឧបករណ៍នេះបានទេ។"),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("សារដែលបានអ៊ិនគ្រីប"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "សារត្រូវបានអ៊ិនគ្រីបពីចុងម្ខាងទៅចុងម្ខាង"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "មិនបានអ៊ិនគ្រីបពីចុងម្ខាងទៅចុងម្ខាងទេ"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("បានផ្ញើ"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("បានឃើញ"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("កំពុងផ្ញើ…"),
     };
 
 final messageLookup = MessageLookup();

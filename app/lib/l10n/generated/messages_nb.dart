@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 svarte",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Legg til i melding"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Send et hjerte"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Ny melding"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Ingenting er sagt ennå. Et vink er en god start."),
@@ -1266,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Noen"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Melding"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Vedlegg"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Denne meldingen kan ikke leses på denne enheten."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Kryptert melding"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Meldinger er ende-til-ende-krypterte"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Ikke ende-til-ende-kryptert"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Sendt"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Sett"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Sender…"),
     };
 
 final messageLookup = MessageLookup();

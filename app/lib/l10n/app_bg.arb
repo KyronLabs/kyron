@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Вие отговорихте",
   "dmReplied": "${name} отговори",
   "ui_dm_attach": "Добавяне към съобщението",
-  "ui_dm_send_heart": "Изпрати сърце",
   "ui_dm_new": "Ново съобщение",
   "ui_dm_starter": "Още нищо не е казано. Едно махване е добро начало.",
   "ui_dm_wave": "👋  Махни",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Премахни реакцията си",
   "ui_dm_someone": "Някой",
   "ui_dm_quote_message": "Съобщение",
-  "ui_dm_quote_attachment": "Прикачен файл"
+  "ui_dm_quote_attachment": "Прикачен файл",
+  "ui_dm_unreadable": "Това съобщение не може да бъде прочетено на това устройство.",
+  "ui_dm_preview_sealed": "Шифровано съобщение",
+  "ui_dm_e2ee_notice": "Съобщенията са шифровани от край до край",
+  "ui_dm_not_encrypted": "Не е шифровано от край до край",
+  "ui_dm_sent": "Изпратено",
+  "ui_dm_seen": "Видяно",
+  "ui_dm_sending": "Изпраща се…"
 }

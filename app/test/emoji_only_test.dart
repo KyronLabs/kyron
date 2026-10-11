@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:kyron_app/utils/emoji_only.dart';
 
 /// A message that is only a few emoji is drawn large and without a bubble.
@@ -63,5 +64,12 @@ void main() {
   test('draws fewer emoji larger', () {
     expect(jumboEmojiSize(1), greaterThan(jumboEmojiSize(2)));
     expect(jumboEmojiSize(2), greaterThan(jumboEmojiSize(3)));
+  });
+
+  test('draws them large enough to read as the message', () {
+    // One at 37.5 read as a slightly big emoji, not a message made of one.
+    expect(jumboEmojiSize(1),
+        greaterThanOrEqualTo(TypographyTokens.fontSize3 * 4));
+    expect(jumboEmojiSize(3), greaterThanOrEqualTo(TypographyTokens.fontSize9));
   });
 }

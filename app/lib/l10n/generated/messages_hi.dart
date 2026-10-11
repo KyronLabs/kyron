@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("आपने जवाब दिया"),
       "dmReplied": (Object a0) => "$a0 ने जवाब दिया",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("संदेश में जोड़ें"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("दिल भेजें"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("नया संदेश"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "अभी तक कुछ नहीं कहा गया। हाथ हिलाना एक अच्छी शुरुआत है।"),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("संदेश"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("अटैचमेंट"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "यह संदेश इस डिवाइस पर नहीं पढ़ा जा सकता।"),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("एन्क्रिप्ट किया गया संदेश"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "संदेश एंड-टू-एंड एन्क्रिप्टेड हैं"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("एंड-टू-एंड एन्क्रिप्टेड नहीं"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("भेजा गया"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("देखा गया"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("भेजा जा रहा है…"),
     };
 
 final messageLookup = MessageLookup();

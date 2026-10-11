@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 válaszolt",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Hozzáadás az üzenethez"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Szív küldése"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Új üzenet"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Még semmi sem hangzott el. Egy integetés jó kezdet."),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Üzenet"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Melléklet"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Ez az üzenet ezen az eszközön nem olvasható."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Titkosított üzenet"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Az üzenetek végpontok közötti titkosítással védettek"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Nincs végpontok közötti titkosítás"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Elküldve"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Látta"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Küldés…"),
     };
 
 final messageLookup = MessageLookup();

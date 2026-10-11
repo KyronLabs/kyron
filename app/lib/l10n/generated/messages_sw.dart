@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 alijibu",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Ongeza kwenye ujumbe"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Tuma moyo"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Ujumbe mpya"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Hakuna kilichosemwa bado. Kupunga mkono ni mwanzo mzuri."),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Ujumbe"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Kiambatisho"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Ujumbe huu hauwezi kusomwa kwenye kifaa hiki."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Ujumbe uliosimbwa"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Ujumbe umesimbwa kwa njia fiche kutoka mwanzo hadi mwisho"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Haujasimbwa kwa njia fiche kutoka mwanzo hadi mwisho"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Umetumwa"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Umeonekana"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Inatuma…"),
     };
 
 final messageLookup = MessageLookup();

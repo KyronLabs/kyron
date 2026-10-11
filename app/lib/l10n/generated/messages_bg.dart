@@ -1349,7 +1349,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 отговори",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Добавяне към съобщението"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Изпрати сърце"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Ново съобщение"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Още нищо не е казано. Едно махване е добро начало."),
@@ -1363,6 +1362,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Съобщение"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Прикачен файл"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Това съобщение не може да бъде прочетено на това устройство."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Шифровано съобщение"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Съобщенията са шифровани от край до край"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Не е шифровано от край до край"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Изпратено"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Видяно"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Изпраща се…"),
     };
 
 final messageLookup = MessageLookup();

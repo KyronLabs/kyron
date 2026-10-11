@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("شما پاسخ دادید"),
       "dmReplied": (Object a0) => "$a0 پاسخ داد",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("افزودن به پیام"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ارسال قلب"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("پیام جدید"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "هنوز چیزی گفته نشده. یک دست تکان دادن شروع خوبی است."),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("کسی"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("پیام"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("پیوست"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "این پیام در این دستگاه قابل خواندن نیست."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("پیام رمزگذاری‌شده"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "پیام‌ها رمزگذاری سرتاسری شده‌اند"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("بدون رمزگذاری سرتاسری"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("ارسال شد"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("دیده شد"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("در حال ارسال…"),
     };
 
 final messageLookup = MessageLookup();

@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "Դուք պատասխանեցիք",
   "dmReplied": "${name} պատասխանեց",
   "ui_dm_attach": "Ավելացնել հաղորդագրությանը",
-  "ui_dm_send_heart": "Ուղարկել սիրտ",
   "ui_dm_new": "Նոր հաղորդագրություն",
   "ui_dm_starter": "Դեռ ոչինչ չի ասվել։ Ձեռքով ողջույնը լավ սկիզբ է։",
   "ui_dm_wave": "👋  Ողջունել",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "Հեռացնել ձեր արձագանքը",
   "ui_dm_someone": "Ինչ-որ մեկը",
   "ui_dm_quote_message": "Հաղորդագրություն",
-  "ui_dm_quote_attachment": "Կցորդ"
+  "ui_dm_quote_attachment": "Կցորդ",
+  "ui_dm_unreadable": "Այս հաղորդագրությունը հնարավոր չէ կարդալ այս սարքում։",
+  "ui_dm_preview_sealed": "Գաղտնագրված հաղորդագրություն",
+  "ui_dm_e2ee_notice": "Հաղորդագրությունները ծայրից ծայր գաղտնագրված են",
+  "ui_dm_not_encrypted": "Ծայրից ծայր գաղտնագրված չէ",
+  "ui_dm_sent": "Ուղարկված է",
+  "ui_dm_seen": "Դիտված է",
+  "ui_dm_sending": "Ուղարկվում է…"
 }

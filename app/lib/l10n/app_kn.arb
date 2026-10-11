@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "ನೀವು ಉತ್ತರಿಸಿದ್ದೀರಿ",
   "dmReplied": "${name} ಉತ್ತರಿಸಿದ್ದಾರೆ",
   "ui_dm_attach": "ಸಂದೇಶಕ್ಕೆ ಸೇರಿಸಿ",
-  "ui_dm_send_heart": "ಹೃದಯ ಕಳುಹಿಸಿ",
   "ui_dm_new": "ಹೊಸ ಸಂದೇಶ",
   "ui_dm_starter": "ಇನ್ನೂ ಏನೂ ಹೇಳಿಲ್ಲ. ಕೈ ಬೀಸುವುದು ಒಳ್ಳೆಯ ಆರಂಭ.",
   "ui_dm_wave": "👋  ಕೈ ಬೀಸಿ",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತೆಗೆದುಹಾಕಿ",
   "ui_dm_someone": "ಯಾರೋ",
   "ui_dm_quote_message": "ಸಂದೇಶ",
-  "ui_dm_quote_attachment": "ಲಗತ್ತು"
+  "ui_dm_quote_attachment": "ಲಗತ್ತು",
+  "ui_dm_unreadable": "ಈ ಸಂದೇಶವನ್ನು ಈ ಸಾಧನದಲ್ಲಿ ಓದಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+  "ui_dm_preview_sealed": "ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ ಸಂದೇಶ",
+  "ui_dm_e2ee_notice": "ಸಂದೇಶಗಳು ಎಂಡ್-ಟು-ಎಂಡ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗಿವೆ",
+  "ui_dm_not_encrypted": "ಎಂಡ್-ಟು-ಎಂಡ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗಿಲ್ಲ",
+  "ui_dm_sent": "ಕಳುಹಿಸಲಾಗಿದೆ",
+  "ui_dm_seen": "ನೋಡಲಾಗಿದೆ",
+  "ui_dm_sending": "ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ…"
 }

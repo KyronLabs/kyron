@@ -70,11 +70,12 @@ int? jumboEmojiCount(String text) {
 /// way every messaging app that does this scales them, so one emoji is a
 /// statement and three still fit on a narrow phone without wrapping.
 ///
-/// The top three steps of the type scale rather than sizes of their own. One
-/// emoji at 37.5 is two and a half times body text, which is about where the
-/// apps people already use draw it.
+/// One emoji is four times body text. This used to be the top three steps of
+/// the type scale -- one at 37.5 -- and on a phone that read as a slightly
+/// big emoji rather than a message made of one. Three at the top of the type
+/// scale is still under half the width of the narrowest phone.
 double jumboEmojiSize(int count) => switch (count) {
-      1 => TypographyTokens.fontSize9,
-      2 => TypographyTokens.fontSize8,
-      _ => TypographyTokens.fontSize7,
+      1 => TypographyTokens.fontSize3 * 4,
+      2 => TypographyTokens.fontSize9 * 1.3,
+      _ => TypographyTokens.fontSize9,
     };

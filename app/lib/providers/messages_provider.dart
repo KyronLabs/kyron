@@ -56,14 +56,53 @@ class ConversationListState {
 class ConversationListNotifier extends StateNotifier<ConversationListState> {
   final MessagesRepository _repo;
 
+  /// Opens each row's last message, so the list shows what was said rather
+  /// than the ciphertext the server holds. Null in tests that draw no
+  /// sealed messages.
+  final MessageVault? _vault;
+
   /// Whether this list is the Unread tab. Narrowed by the server rather than
   /// here: filtering a page after it arrives gives short pages and a tab that
   /// looks empty while there is more behind the cursor.
   final bool unreadOnly;
 
-  ConversationListNotifier(this._repo, {required this.unreadOnly})
-      : super(const ConversationListState()) {
+  ConversationListNotifier(
+    this._repo, {
+    required this.unreadOnly,
+    MessageVault? vault,
+  })  : _vault = vault,
+        super(const ConversationListState()) {
     refresh();
+  }
+
+  /// Opens each row's last message on the device.
+  ///
+  /// The list used to print the body as the server sent it, which for a
+  /// sealed message is `k2.` and a few hundred characters of base64. Opened
+  /// offline: a `k2` envelope needs only this device's key, and fetching
+  /// every conversation's keys to draw one line each is not worth it. What
+  /// cannot be opened is marked unreadable and drawn as "Encrypted message",
+  /// never as ciphertext.
+  Future<List<Conversation>> _open(List<Conversation> rows) async {
+    final opened = <Conversation>[];
+    for (final row in rows) {
+      final last = row.lastMessage;
+      if (last == null || !SealedEnvelope.looksSealed(last.body)) {
+        opened.add(row);
+        continue;
+      }
+      final plain = await _vault?.openOffline(last.body, row.id);
+      opened.add(
+        row.copyWith(
+          lastMessage: last.copyWith(
+            body: plain ?? '',
+            encrypted: true,
+            unreadable: plain == null,
+          ),
+        ),
+      );
+    }
+    return opened;
   }
 
   Future<void> refresh() async {
@@ -71,7 +110,7 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
     try {
       final page = await _repo.conversations(unreadOnly: unreadOnly);
       state = ConversationListState(
-        items: page.items,
+        items: await _open(page.items),
         cursor: page.nextCursor,
         loadingFirstPage: false,
       );
@@ -93,8 +132,9 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
         cursor: cursor,
         unreadOnly: unreadOnly,
       );
+      final more = await _open(page.items);
       state = state.copyWith(
-        items: [...state.items, ...page.items],
+        items: [...state.items, ...more],
         cursor: page.nextCursor,
         clearCursor: page.nextCursor == null,
         loadingMore: false,
@@ -144,6 +184,7 @@ final conversationListProvider = StateNotifierProvider.family<
   return ConversationListNotifier(
     ref.read(messagesRepositoryProvider),
     unreadOnly: unreadOnly,
+    vault: ref.read(messageVaultProvider),
   );
 });
 
@@ -292,8 +333,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   Future<List<DirectMessage>> _open(List<DirectMessage> messages) async {
     final opened = <DirectMessage>[];
     for (final message in messages) {
-      final sealed = SealedMessage.tryDecode(message.body);
-      if (sealed == null) {
+      if (!SealedEnvelope.looksSealed(message.body)) {
         opened.add(message);
         continue;
       }

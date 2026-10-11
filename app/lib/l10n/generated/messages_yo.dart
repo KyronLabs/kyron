@@ -1251,8 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("O fèsì"),
       "dmReplied": (Object a0) => "$a0 fèsì",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Fi kún ìfiránṣẹ́"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Fi ọkàn ránṣẹ́"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Ìfiránṣẹ́ tuntun"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "A kò tíì sọ nǹkan kan. Fífi ọwọ́ júwe jẹ́ ìbẹ̀rẹ̀ tó dára."),
@@ -1265,6 +1263,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Ẹnìkan"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Ìfiránṣẹ́"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Àsomọ́"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "A kò lè ka ìfiránṣẹ́ yìí lórí ẹ̀rọ yìí."),
+      "ui_dm_preview_sealed": MessageLookupByLibrary.simpleMessage(
+          "Ìfiránṣẹ́ tí a ti fi kóòdù pa mọ́"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "A ti fi kóòdù pa àwọn ìfiránṣẹ́ mọ́ láti òpin dé òpin"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "A kò fi kóòdù pa á mọ́ láti òpin dé òpin"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Ti fi ránṣẹ́"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Ti rí i"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Ń fi ránṣẹ́…"),
     };
 
 final messageLookup = MessageLookup();

@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "Sumagot si $a0",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Idagdag sa mensahe"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Magpadala ng puso"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Bagong mensahe"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Wala pang nasasabi. Magandang simula ang pagkaway."),
@@ -1266,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Isang tao"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Mensahe"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Kalakip"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Hindi mababasa ang mensaheng ito sa device na ito."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Naka-encrypt na mensahe"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Naka-end-to-end encrypt ang mga mensahe"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Hindi naka-end-to-end encrypt"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Naipadala"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Nakita"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Ipinapadala…"),
     };
 
 final messageLookup = MessageLookup();

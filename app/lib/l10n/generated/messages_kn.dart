@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ನೀವು ಉತ್ತರಿಸಿದ್ದೀರಿ"),
       "dmReplied": (Object a0) => "$a0 ಉತ್ತರಿಸಿದ್ದಾರೆ",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("ಸಂದೇಶಕ್ಕೆ ಸೇರಿಸಿ"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("ಹೃದಯ ಕಳುಹಿಸಿ"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("ಹೊಸ ಸಂದೇಶ"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "ಇನ್ನೂ ಏನೂ ಹೇಳಿಲ್ಲ. ಕೈ ಬೀಸುವುದು ಒಳ್ಳೆಯ ಆರಂಭ."),
@@ -1265,6 +1264,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("ಯಾರೋ"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("ಸಂದೇಶ"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("ಲಗತ್ತು"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "ಈ ಸಂದೇಶವನ್ನು ಈ ಸಾಧನದಲ್ಲಿ ಓದಲು ಸಾಧ್ಯವಿಲ್ಲ."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ ಸಂದೇಶ"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "ಸಂದೇಶಗಳು ಎಂಡ್-ಟು-ಎಂಡ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗಿವೆ"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "ಎಂಡ್-ಟು-ಎಂಡ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗಿಲ್ಲ"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("ಕಳುಹಿಸಲಾಗಿದೆ"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("ನೋಡಲಾಗಿದೆ"),
+      "ui_dm_sending":
+          MessageLookupByLibrary.simpleMessage("ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ…"),
     };
 
 final messageLookup = MessageLookup();

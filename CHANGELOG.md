@@ -12,6 +12,56 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Messages arrived as "This message cannot be read on this device."** Each
+  message was sealed under whichever single key the server listed first, and
+  the list included the sender's own key and had no order. When the sender's
+  came first, the message was sealed with a secret only the sender could
+  compute: they read everything they sent, and the person they sent it to read
+  none of it. Messages are now sealed once and the key wrapped for every
+  device in the conversation — the other person's and your own — in a new
+  `k2` format that also opens without a network request. Messages already
+  sealed the wrong way stay unreadable to their recipient; the key that would
+  open them exists only on the sender's phone. `docs/E2EE.md` has the detail.
+
+- **No notification while the app was in the background.** A push was sent
+  only to people with no socket open, but Android keeps a backgrounded app's
+  socket alive for minutes, so a message that arrived with the screen off went
+  to a socket nobody was looking at. Every push is sent now, and the phone —
+  which hands a notification to an app that is in front instead of showing it
+  — decides. `GET /health` also says whether push is configured at all, since
+  without `FCM_SERVICE_ACCOUNT_JSON` nothing is delivered and the only symptom
+  is silence.
+
+- **The conversation list showed sealed messages as ciphertext** — `k2.` and
+  a few hundred characters of base64 under the person's name. Each preview is
+  now opened on the device, without fetching anybody's keys; one that cannot
+  be opened reads "Encrypted message". The key is also waited for while it
+  loads after sign-in, where previews and messages opened in that moment used
+  to be drawn as unreadable.
+
+- **Long messages in Japanese, Hindi, Arabic and other scripts would not
+  send.** The 4,000-character limit was applied to the sealed body, which is
+  several times longer than what was typed when a character takes three bytes.
+  The limit is now on what is typed, and sealed bodies have their own ceiling.
+
+### Changed
+
+- **The chat screen is laid out the way Threads and Instagram lay one out.**
+  Bubbles are pills; one person's messages with no pause between them stack
+  tight and tuck their corners in where they meet, so a run reads as one
+  column; the time is a centred line above a turn after a pause of fifteen
+  minutes or a change of day, instead of under every run; "Sent", "Seen" or
+  "Sending…" appears once, under your newest message. The box is one line of
+  text tall, with no focus outline and no heart beside it — Send is always
+  there, dimmed until there is something to send — and stops at the 4,000
+  characters the server takes. A message that cannot be opened says so in
+  italics. A message of emoji alone is drawn larger: one is four times body
+  text. The lock under every run is gone; the thread says once, where
+  encryption starts, that messages are end-to-end encrypted, and marks any
+  later message that was not. New strings are in all 68 catalogs.
+
 ### Added
 
 - **Reactions, "is typing", and "New messages" in chats.** Double-tap a

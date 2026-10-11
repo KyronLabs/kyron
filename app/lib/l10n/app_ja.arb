@@ -599,7 +599,6 @@
   "ui_dm_you_replied": "あなたが返信しました",
   "dmReplied": "${name}さんが返信しました",
   "ui_dm_attach": "メッセージに追加",
-  "ui_dm_send_heart": "ハートを送る",
   "ui_dm_new": "新しいメッセージ",
   "ui_dm_starter": "まだ何も話していません。まずは手を振ってみましょう。",
   "ui_dm_wave": "👋  手を振る",
@@ -608,5 +607,12 @@
   "ui_dm_reaction_remove": "リアクションを取り消す",
   "ui_dm_someone": "誰か",
   "ui_dm_quote_message": "メッセージ",
-  "ui_dm_quote_attachment": "添付ファイル"
+  "ui_dm_quote_attachment": "添付ファイル",
+  "ui_dm_unreadable": "このメッセージはこの端末では読めません。",
+  "ui_dm_preview_sealed": "暗号化されたメッセージ",
+  "ui_dm_e2ee_notice": "メッセージはエンドツーエンドで暗号化されています",
+  "ui_dm_not_encrypted": "エンドツーエンドで暗号化されていません",
+  "ui_dm_sent": "送信済み",
+  "ui_dm_seen": "既読",
+  "ui_dm_sending": "送信中…"
 }

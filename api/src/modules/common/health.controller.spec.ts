@@ -4,6 +4,7 @@ import { HealthController } from './health.controller';
 import { SupabaseTokenService } from '../auth/supabase-token.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
+import { PushService } from '../push/push.service';
 
 /**
  * /health is the only way to see, from outside the machine, which identity
@@ -28,6 +29,7 @@ describe('HealthController', () => {
     databaseReachable = true,
     diagnosis: string | null = null,
     mirrorTables: boolean | 'throws' = true,
+    pushConfigured = true,
   ) => {
     const moduleRef = await Test.createTestingModule({
       controllers: [HealthController],
@@ -40,6 +42,7 @@ describe('HealthController', () => {
             diagnoseHost: () => Promise.resolve(diagnosis),
           },
         },
+        { provide: PushService, useValue: { isConfigured: pushConfigured } },
         {
           provide: SupabaseService,
           useValue: {
@@ -215,5 +218,12 @@ describe('HealthController', () => {
       issuer: null,
       accepts: [],
     });
+  });
+
+  it('says whether push is configured, so a silent phone can be explained', async () => {
+    expect((await (await controller()).health()).push).toBe('configured');
+    expect(
+      (await (await controller(true, null, true, false)).health()).push,
+    ).toBe('off');
   });
 });

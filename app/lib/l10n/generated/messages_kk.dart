@@ -1252,7 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Сіз жауап бердіңіз"),
       "dmReplied": (Object a0) => "$a0 жауап берді",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Хабарламаға қосу"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Жүрек жіберу"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Жаңа хабарлама"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Әлі ештеңе айтылмады. Қол бұлғау — жақсы бастама."),
@@ -1265,6 +1264,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Біреу"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Хабарлама"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Тіркеме"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Бұл хабарды осы құрылғыда оқу мүмкін емес."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Шифрланған хабар"),
+      "ui_dm_e2ee_notice":
+          MessageLookupByLibrary.simpleMessage("Хабарлар өтпелі шифрланған"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Өтпелі шифрланбаған"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Жіберілді"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Көрілді"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Жіберілуде…"),
     };
 
 final messageLookup = MessageLookup();

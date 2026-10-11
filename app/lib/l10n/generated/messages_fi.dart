@@ -1251,7 +1251,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Vastasit"),
       "dmReplied": (Object a0) => "$a0 vastasi",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Lisää viestiin"),
-      "ui_dm_send_heart": MessageLookupByLibrary.simpleMessage("Lähetä sydän"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Uusi viesti"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Mitään ei ole vielä sanottu. Vilkutus on hyvä alku."),
@@ -1264,6 +1263,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_someone": MessageLookupByLibrary.simpleMessage("Joku"),
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Viesti"),
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Liite"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Tätä viestiä ei voi lukea tällä laitteella."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Salattu viesti"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Viestit ovat päästä päähän salattuja"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("Ei päästä päähän salattu"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Lähetetty"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Nähty"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Lähetetään…"),
     };
 
 final messageLookup = MessageLookup();

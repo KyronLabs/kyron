@@ -1253,8 +1253,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "$a0 ပြန်စာပို့ခဲ့သည်",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်ထဲ ထည့်ရန်"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("နှလုံးသား ပို့ရန်"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်အသစ်"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "ဘာမှ မပြောရသေးပါ။ လက်ပြခြင်းသည် ကောင်းမွန်သော အစတစ်ခုဖြစ်သည်။"),
@@ -1268,6 +1266,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("ပူးတွဲဖိုင်"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "ဤမက်ဆေ့ချ်ကို ဤစက်ပေါ်တွင် ဖတ်၍မရပါ။"),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("ကုဒ်ဝှက်ထားသော မက်ဆေ့ချ်"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "မက်ဆေ့ချ်များကို အစမှအဆုံး ကုဒ်ဝှက်ထားသည်"),
+      "ui_dm_not_encrypted":
+          MessageLookupByLibrary.simpleMessage("အစမှအဆုံး ကုဒ်ဝှက်မထားပါ"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("ပို့ပြီး"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("မြင်ပြီး"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("ပို့နေသည်…"),
     };
 
 final messageLookup = MessageLookup();

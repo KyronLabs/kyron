@@ -1252,8 +1252,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "dmReplied": (Object a0) => "U-$a0 uphendulile",
       "ui_dm_attach":
           MessageLookupByLibrary.simpleMessage("Engeza emlayezweni"),
-      "ui_dm_send_heart":
-          MessageLookupByLibrary.simpleMessage("Thumela inhliziyo"),
       "ui_dm_new": MessageLookupByLibrary.simpleMessage("Umlayezo omusha"),
       "ui_dm_starter": MessageLookupByLibrary.simpleMessage(
           "Akukho okushiwoyo okwamanje. Ukuphakamisa isandla kuyisiqalo esihle."),
@@ -1268,6 +1266,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_message": MessageLookupByLibrary.simpleMessage("Umlayezo"),
       "ui_dm_quote_attachment":
           MessageLookupByLibrary.simpleMessage("Okunamathiselwe"),
+      "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
+          "Lo mlayezo awukwazi ukufundwa kule divayisi."),
+      "ui_dm_preview_sealed":
+          MessageLookupByLibrary.simpleMessage("Umlayezo obethelwe"),
+      "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
+          "Imilayezo ibethelwe kusukela ekuqaleni kuya ekugcineni"),
+      "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Awubethelwe kusukela ekuqaleni kuya ekugcineni"),
+      "ui_dm_sent": MessageLookupByLibrary.simpleMessage("Uthunyelwe"),
+      "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Ubonwe"),
+      "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Iyathumela…"),
     };
 
 final messageLookup = MessageLookup();
