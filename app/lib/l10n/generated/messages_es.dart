@@ -1398,6 +1398,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Enviando…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Hacer una foto"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Más opciones"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Guardar en el dispositivo"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Compartir"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Guardando…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Guardado en tus fotos"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "No se pudo guardar. Inténtalo de nuevo."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Permite que Kyron añada a tus fotos para guardar esto."),
     };
 
 final messageLookup = MessageLookup();

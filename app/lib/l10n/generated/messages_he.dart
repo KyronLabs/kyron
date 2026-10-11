@@ -1276,6 +1276,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("נצפתה"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("בשליחה…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("צילום תמונה"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("אפשרויות נוספות"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("שמירה במכשיר"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("שיתוף"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("בשמירה…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("נשמר בתמונות שלך"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן לשמור. אפשר לנסות שוב."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "יש לאפשר ל-Kyron להוסיף לתמונות שלך כדי לשמור את זה."),
     };
 
 final messageLookup = MessageLookup();

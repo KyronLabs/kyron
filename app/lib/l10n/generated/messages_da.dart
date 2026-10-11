@@ -1315,6 +1315,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Sender…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Tag et billede"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Flere muligheder"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Gem på enheden"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Del"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Gemmer…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Gemt i dine billeder"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke gemme det. Prøv igen."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Giv Kyron lov til at tilføje til dine billeder for at gemme dette."),
     };
 
 final messageLookup = MessageLookup();

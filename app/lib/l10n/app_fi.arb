@@ -615,5 +615,12 @@
   "ui_dm_sent": "Lähetetty",
   "ui_dm_seen": "Nähty",
   "ui_dm_sending": "Lähetetään…",
-  "ui_dm_take_photo": "Ota kuva"
+  "ui_dm_take_photo": "Ota kuva",
+  "ui_media_more": "Lisää vaihtoehtoja",
+  "ui_media_save": "Tallenna laitteelle",
+  "ui_media_share": "Jaa",
+  "ui_media_saving": "Tallennetaan…",
+  "ui_media_saved": "Tallennettu kuviisi",
+  "ui_media_save_failed": "Tallennus epäonnistui. Yritä uudelleen.",
+  "ui_media_save_denied": "Anna Kyronin lisätä kuviisi, jotta voit tallentaa tämän."
 }

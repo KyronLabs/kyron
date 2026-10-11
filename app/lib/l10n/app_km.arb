@@ -615,5 +615,12 @@
   "ui_dm_sent": "បានផ្ញើ",
   "ui_dm_seen": "បានឃើញ",
   "ui_dm_sending": "កំពុងផ្ញើ…",
-  "ui_dm_take_photo": "ថតរូប"
+  "ui_dm_take_photo": "ថតរូប",
+  "ui_media_more": "ជម្រើសច្រើនទៀត",
+  "ui_media_save": "រក្សាទុកក្នុងឧបករណ៍",
+  "ui_media_share": "ចែករំលែក",
+  "ui_media_saving": "កំពុងរក្សាទុក…",
+  "ui_media_saved": "បានរក្សាទុកក្នុងរូបថតរបស់អ្នក",
+  "ui_media_save_failed": "មិនអាចរក្សាទុកបានទេ។ សូមព្យាយាមម្តងទៀត។",
+  "ui_media_save_denied": "អនុញ្ញាតឱ្យ Kyron បន្ថែមទៅរូបថតរបស់អ្នក ដើម្បីរក្សាទុកនេះ។"
 }

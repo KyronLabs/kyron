@@ -615,5 +615,12 @@
   "ui_dm_sent": "ပို့ပြီး",
   "ui_dm_seen": "မြင်ပြီး",
   "ui_dm_sending": "ပို့နေသည်…",
-  "ui_dm_take_photo": "ဓာတ်ပုံရိုက်ရန်"
+  "ui_dm_take_photo": "ဓာတ်ပုံရိုက်ရန်",
+  "ui_media_more": "နောက်ထပ် ရွေးချယ်စရာများ",
+  "ui_media_save": "စက်ထဲ သိမ်းရန်",
+  "ui_media_share": "မျှဝေရန်",
+  "ui_media_saving": "သိမ်းနေသည်…",
+  "ui_media_saved": "သင့်ဓာတ်ပုံများထဲ သိမ်းပြီး",
+  "ui_media_save_failed": "မသိမ်းနိုင်ပါ။ ထပ်စမ်းကြည့်ပါ။",
+  "ui_media_save_denied": "၎င်းကို သိမ်းရန် Kyron ကို သင့်ဓာတ်ပုံများထဲ ထည့်ခွင့်ပြုပါ။"
 }

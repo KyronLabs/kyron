@@ -1278,6 +1278,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Bidaltzen…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Atera argazki bat"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Aukera gehiago"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Gorde gailuan"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Partekatu"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Gordetzen…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Zure argazkietan gorde da"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da gorde. Saiatu berriro."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Utzi Kyron-i zure argazkietara gehitzen hau gordetzeko."),
     };
 
 final messageLookup = MessageLookup();

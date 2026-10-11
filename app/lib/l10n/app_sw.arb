@@ -615,5 +615,12 @@
   "ui_dm_sent": "Umetumwa",
   "ui_dm_seen": "Umeonekana",
   "ui_dm_sending": "Inatuma…",
-  "ui_dm_take_photo": "Piga picha"
+  "ui_dm_take_photo": "Piga picha",
+  "ui_media_more": "Chaguo zaidi",
+  "ui_media_save": "Hifadhi kwenye kifaa",
+  "ui_media_share": "Shiriki",
+  "ui_media_saving": "Inahifadhi…",
+  "ui_media_saved": "Imehifadhiwa kwenye picha zako",
+  "ui_media_save_failed": "Imeshindwa kuhifadhi. Jaribu tena.",
+  "ui_media_save_denied": "Ruhusu Kyron iongeze kwenye picha zako ili kuhifadhi hii."
 }

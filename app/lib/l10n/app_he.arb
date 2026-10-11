@@ -615,5 +615,12 @@
   "ui_dm_sent": "נשלחה",
   "ui_dm_seen": "נצפתה",
   "ui_dm_sending": "בשליחה…",
-  "ui_dm_take_photo": "צילום תמונה"
+  "ui_dm_take_photo": "צילום תמונה",
+  "ui_media_more": "אפשרויות נוספות",
+  "ui_media_save": "שמירה במכשיר",
+  "ui_media_share": "שיתוף",
+  "ui_media_saving": "בשמירה…",
+  "ui_media_saved": "נשמר בתמונות שלך",
+  "ui_media_save_failed": "לא ניתן לשמור. אפשר לנסות שוב.",
+  "ui_media_save_denied": "יש לאפשר ל-Kyron להוסיף לתמונות שלך כדי לשמור את זה."
 }

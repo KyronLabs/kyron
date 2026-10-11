@@ -615,5 +615,12 @@
   "ui_dm_sent": "Gestuur",
   "ui_dm_seen": "Gesien",
   "ui_dm_sending": "Stuur tans…",
-  "ui_dm_take_photo": "Neem 'n foto"
+  "ui_dm_take_photo": "Neem 'n foto",
+  "ui_media_more": "Meer opsies",
+  "ui_media_save": "Stoor op toestel",
+  "ui_media_share": "Deel",
+  "ui_media_saving": "Stoor tans…",
+  "ui_media_saved": "In jou foto's gestoor",
+  "ui_media_save_failed": "Kon dit nie stoor nie. Probeer weer.",
+  "ui_media_save_denied": "Laat Kyron toe om by jou foto's te voeg om dit te stoor."
 }

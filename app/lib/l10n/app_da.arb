@@ -615,5 +615,12 @@
   "ui_dm_sent": "Sendt",
   "ui_dm_seen": "Set",
   "ui_dm_sending": "Sender…",
-  "ui_dm_take_photo": "Tag et billede"
+  "ui_dm_take_photo": "Tag et billede",
+  "ui_media_more": "Flere muligheder",
+  "ui_media_save": "Gem på enheden",
+  "ui_media_share": "Del",
+  "ui_media_saving": "Gemmer…",
+  "ui_media_saved": "Gemt i dine billeder",
+  "ui_media_save_failed": "Kunne ikke gemme det. Prøv igen.",
+  "ui_media_save_denied": "Giv Kyron lov til at tilføje til dine billeder for at gemme dette."
 }

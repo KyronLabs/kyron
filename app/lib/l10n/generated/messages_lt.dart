@@ -1276,6 +1276,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Matyta"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Siunčiama…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Fotografuoti"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("Daugiau parinkčių"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Išsaugoti įrenginyje"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Bendrinti"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Išsaugoma…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Išsaugota jūsų nuotraukose"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko išsaugoti. Bandykite dar kartą."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Leiskite Kyron pridėti prie jūsų nuotraukų, kad tai išsaugotumėte."),
     };
 
 final messageLookup = MessageLookup();

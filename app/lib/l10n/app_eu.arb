@@ -615,5 +615,12 @@
   "ui_dm_sent": "Bidalita",
   "ui_dm_seen": "Ikusita",
   "ui_dm_sending": "Bidaltzen…",
-  "ui_dm_take_photo": "Atera argazki bat"
+  "ui_dm_take_photo": "Atera argazki bat",
+  "ui_media_more": "Aukera gehiago",
+  "ui_media_save": "Gorde gailuan",
+  "ui_media_share": "Partekatu",
+  "ui_media_saving": "Gordetzen…",
+  "ui_media_saved": "Zure argazkietan gorde da",
+  "ui_media_save_failed": "Ezin izan da gorde. Saiatu berriro.",
+  "ui_media_save_denied": "Utzi Kyron-i zure argazkietara gehitzen hau gordetzeko."
 }

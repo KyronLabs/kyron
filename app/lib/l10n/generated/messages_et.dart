@@ -1338,6 +1338,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Nähtud"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Saatmine…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Tee foto"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Rohkem valikuid"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Salvesta seadmesse"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Jaga"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Salvestamine…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Salvestatud sinu fotodesse"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Salvestamine ebaõnnestus. Proovi uuesti."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Luba Kyronil sinu fotodele lisada, et seda salvestada."),
     };
 
 final messageLookup = MessageLookup();

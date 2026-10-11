@@ -615,5 +615,12 @@
   "ui_dm_sent": "Yuborildi",
   "ui_dm_seen": "Ko‘rildi",
   "ui_dm_sending": "Yuborilmoqda…",
-  "ui_dm_take_photo": "Suratga olish"
+  "ui_dm_take_photo": "Suratga olish",
+  "ui_media_more": "Boshqa amallar",
+  "ui_media_save": "Qurilmaga saqlash",
+  "ui_media_share": "Ulashish",
+  "ui_media_saving": "Saqlanmoqda…",
+  "ui_media_saved": "Rasmlaringizga saqlandi",
+  "ui_media_save_failed": "Saqlab bo‘lmadi. Qayta urinib ko‘ring.",
+  "ui_media_save_denied": "Buni saqlash uchun Kyron’ga rasmlaringizga qo‘shishga ruxsat bering."
 }

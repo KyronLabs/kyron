@@ -615,5 +615,12 @@
   "ui_dm_sent": "Gesendet",
   "ui_dm_seen": "Gesehen",
   "ui_dm_sending": "Wird gesendet…",
-  "ui_dm_take_photo": "Foto aufnehmen"
+  "ui_dm_take_photo": "Foto aufnehmen",
+  "ui_media_more": "Weitere Optionen",
+  "ui_media_save": "Auf Gerät speichern",
+  "ui_media_share": "Teilen",
+  "ui_media_saving": "Wird gespeichert…",
+  "ui_media_saved": "In deinen Fotos gespeichert",
+  "ui_media_save_failed": "Konnte nicht gespeichert werden. Versuch es noch einmal.",
+  "ui_media_save_denied": "Erlaube Kyron, etwas zu deinen Fotos hinzuzufügen, um dies zu speichern."
 }

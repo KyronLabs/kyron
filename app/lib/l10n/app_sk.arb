@@ -615,5 +615,12 @@
   "ui_dm_sent": "Odoslané",
   "ui_dm_seen": "Zobrazené",
   "ui_dm_sending": "Odosiela sa…",
-  "ui_dm_take_photo": "Odfotiť"
+  "ui_dm_take_photo": "Odfotiť",
+  "ui_media_more": "Ďalšie možnosti",
+  "ui_media_save": "Uložiť do zariadenia",
+  "ui_media_share": "Zdieľať",
+  "ui_media_saving": "Ukladá sa…",
+  "ui_media_saved": "Uložené do fotiek",
+  "ui_media_save_failed": "Nepodarilo sa uložiť. Skúste to znova.",
+  "ui_media_save_denied": "Povoľte Kyronu pridávať do fotiek, aby ste to mohli uložiť."
 }

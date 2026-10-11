@@ -615,5 +615,12 @@
   "ui_dm_sent": "Poslano",
   "ui_dm_seen": "Videno",
   "ui_dm_sending": "Pošiljanje…",
-  "ui_dm_take_photo": "Posnemi fotografijo"
+  "ui_dm_take_photo": "Posnemi fotografijo",
+  "ui_media_more": "Več možnosti",
+  "ui_media_save": "Shrani v napravo",
+  "ui_media_share": "Deli",
+  "ui_media_saving": "Shranjevanje…",
+  "ui_media_saved": "Shranjeno v fotografije",
+  "ui_media_save_failed": "Shranjevanje ni uspelo. Poskusite znova.",
+  "ui_media_save_denied": "Dovolite Kyronu dodajanje v vaše fotografije, da to shranite."
 }

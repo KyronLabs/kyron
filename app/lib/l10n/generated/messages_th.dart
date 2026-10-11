@@ -1275,6 +1275,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("เห็นแล้ว"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("กำลังส่ง…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("ถ่ายรูป"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("ตัวเลือกเพิ่มเติม"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("บันทึกลงอุปกรณ์"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("แชร์"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("กำลังบันทึก…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("บันทึกลงในรูปภาพของคุณแล้ว"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("บันทึกไม่ได้ ลองอีกครั้ง"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "อนุญาตให้ Kyron เพิ่มลงในรูปภาพของคุณเพื่อบันทึกสิ่งนี้"),
     };
 
 final messageLookup = MessageLookup();

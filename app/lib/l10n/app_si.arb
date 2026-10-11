@@ -615,5 +615,12 @@
   "ui_dm_sent": "යැව්වා",
   "ui_dm_seen": "දුටුවා",
   "ui_dm_sending": "යවමින්…",
-  "ui_dm_take_photo": "ඡායාරූපයක් ගන්න"
+  "ui_dm_take_photo": "ඡායාරූපයක් ගන්න",
+  "ui_media_more": "තවත් විකල්ප",
+  "ui_media_save": "උපාංගයට සුරකින්න",
+  "ui_media_share": "බෙදාගන්න",
+  "ui_media_saving": "සුරකිමින්…",
+  "ui_media_saved": "ඔබේ ඡායාරූපවලට සුරැකිණි",
+  "ui_media_save_failed": "සුරැකිය නොහැකි විය. නැවත උත්සාහ කරන්න.",
+  "ui_media_save_denied": "මෙය සුරැකීමට ඔබේ ඡායාරූපවලට එක් කිරීමට Kyron හට ඉඩ දෙන්න."
 }

@@ -1278,6 +1278,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Դիտված է"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Ուղարկվում է…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Լուսանկարել"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Այլ տարբերակներ"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Պահել սարքում"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Կիսվել"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Պահվում է…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Պահվեց ձեր լուսանկարներում"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց պահել։ Կրկին փորձեք։"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Թույլ տվեք Kyron-ին ավելացնել ձեր լուսանկարներին՝ սա պահելու համար։"),
     };
 
 final messageLookup = MessageLookup();

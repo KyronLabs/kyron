@@ -615,5 +615,12 @@
   "ui_dm_sent": "전송됨",
   "ui_dm_seen": "읽음",
   "ui_dm_sending": "보내는 중…",
-  "ui_dm_take_photo": "사진 찍기"
+  "ui_dm_take_photo": "사진 찍기",
+  "ui_media_more": "옵션 더보기",
+  "ui_media_save": "기기에 저장",
+  "ui_media_share": "공유",
+  "ui_media_saving": "저장 중…",
+  "ui_media_saved": "사진에 저장됨",
+  "ui_media_save_failed": "저장하지 못했습니다. 다시 시도하세요.",
+  "ui_media_save_denied": "저장하려면 Kyron이 사진에 추가하도록 허용하세요."
 }

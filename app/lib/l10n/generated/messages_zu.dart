@@ -1279,6 +1279,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Iyathumela…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Thatha isithombe"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Ezinye izinketho"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Londoloza kudivayisi"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Yabelana"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Iyalondoloza…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage(
+          "Kulondolozwe ezithombeni zakho"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Akukwazanga ukulondoloza. Zama futhi."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Vumela i-Kyron ingeze ezithombeni zakho ukuze ulondoloze lokhu."),
     };
 
 final messageLookup = MessageLookup();

@@ -615,5 +615,12 @@
   "ui_dm_sent": "Ուղարկված է",
   "ui_dm_seen": "Դիտված է",
   "ui_dm_sending": "Ուղարկվում է…",
-  "ui_dm_take_photo": "Լուսանկարել"
+  "ui_dm_take_photo": "Լուսանկարել",
+  "ui_media_more": "Այլ տարբերակներ",
+  "ui_media_save": "Պահել սարքում",
+  "ui_media_share": "Կիսվել",
+  "ui_media_saving": "Պահվում է…",
+  "ui_media_saved": "Պահվեց ձեր լուսանկարներում",
+  "ui_media_save_failed": "Չհաջողվեց պահել։ Կրկին փորձեք։",
+  "ui_media_save_denied": "Թույլ տվեք Kyron-ին ավելացնել ձեր լուսանկարներին՝ սա պահելու համար։"
 }

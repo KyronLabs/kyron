@@ -1175,6 +1175,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("ታይቷል"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("በመላክ ላይ…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("ፎቶ አንሳ"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("ተጨማሪ አማራጮች"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("ወደ መሣሪያ አስቀምጥ"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("አጋራ"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("በማስቀመጥ ላይ…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage("ወደ ፎቶዎችዎ ተቀምጧል"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("ማስቀመጥ አልተቻለም። እንደገና ይሞክሩ።"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "ይህን ለማስቀመጥ Kyron ወደ ፎቶዎችዎ እንዲያክል ይፍቀዱ።"),
     };
 
 final messageLookup = MessageLookup();

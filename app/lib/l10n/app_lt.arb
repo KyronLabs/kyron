@@ -615,5 +615,12 @@
   "ui_dm_sent": "Išsiųsta",
   "ui_dm_seen": "Matyta",
   "ui_dm_sending": "Siunčiama…",
-  "ui_dm_take_photo": "Fotografuoti"
+  "ui_dm_take_photo": "Fotografuoti",
+  "ui_media_more": "Daugiau parinkčių",
+  "ui_media_save": "Išsaugoti įrenginyje",
+  "ui_media_share": "Bendrinti",
+  "ui_media_saving": "Išsaugoma…",
+  "ui_media_saved": "Išsaugota jūsų nuotraukose",
+  "ui_media_save_failed": "Nepavyko išsaugoti. Bandykite dar kartą.",
+  "ui_media_save_denied": "Leiskite Kyron pridėti prie jūsų nuotraukų, kad tai išsaugotumėte."
 }

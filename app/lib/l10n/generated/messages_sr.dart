@@ -1274,6 +1274,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Виђено"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Слање…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Сликај"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Још опција"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Сачувај на уређај"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Подели"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Чување…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Сачувано у ваше фотографије"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Чување није успело. Покушајте поново."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Дозволите Kyron-у да додаје у ваше фотографије да бисте ово сачували."),
     };
 
 final messageLookup = MessageLookup();

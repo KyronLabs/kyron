@@ -615,5 +615,12 @@
   "ui_dm_sent": "Nosūtīts",
   "ui_dm_seen": "Redzēts",
   "ui_dm_sending": "Sūta…",
-  "ui_dm_take_photo": "Uzņemt fotoattēlu"
+  "ui_dm_take_photo": "Uzņemt fotoattēlu",
+  "ui_media_more": "Vairāk iespēju",
+  "ui_media_save": "Saglabāt ierīcē",
+  "ui_media_share": "Kopīgot",
+  "ui_media_saving": "Saglabā…",
+  "ui_media_saved": "Saglabāts jūsu fotoattēlos",
+  "ui_media_save_failed": "Neizdevās saglabāt. Mēģiniet vēlreiz.",
+  "ui_media_save_denied": "Atļaujiet Kyron pievienot jūsu fotoattēliem, lai to saglabātu."
 }

@@ -93,6 +93,14 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Save to device, from the media viewer.** A ⋯ button in the viewer's top
+  bar opens a sheet with Save to device, Share and Copy link. Saving
+  downloads the photo, GIF or clip and adds it to the phone's photos (`gal`;
+  no permission on Android 10 and later, storage on 9 and below, add-only
+  library access on iOS). The count -- now "2 / 4" -- sits at the exact
+  centre of the bar; it was pushed to one side by one button on the left
+  and two on the right. In all 68 catalogs.
+
 - **A camera in a chat's attachments.** "Take a photo" opens the camera and
   sends what it takes, scaled to 2048 px at 85% quality rather than the
   4–12 MB a phone's sensor produces. In all 68 catalogs.

@@ -1277,6 +1277,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Жіберілуде…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Суретке түсіру"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Басқа опциялар"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Құрылғыға сақтау"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Бөлісу"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Сақталуда…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Суреттеріңізге сақталды"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Сақтау мүмкін болмады. Қайталап көріңіз."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Мұны сақтау үшін Kyron-ға суреттеріңізге қосуға рұқсат беріңіз."),
     };
 
 final messageLookup = MessageLookup();

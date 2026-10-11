@@ -615,5 +615,12 @@
   "ui_dm_sent": "Saadetud",
   "ui_dm_seen": "Nähtud",
   "ui_dm_sending": "Saatmine…",
-  "ui_dm_take_photo": "Tee foto"
+  "ui_dm_take_photo": "Tee foto",
+  "ui_media_more": "Rohkem valikuid",
+  "ui_media_save": "Salvesta seadmesse",
+  "ui_media_share": "Jaga",
+  "ui_media_saving": "Salvestamine…",
+  "ui_media_saved": "Salvestatud sinu fotodesse",
+  "ui_media_save_failed": "Salvestamine ebaõnnestus. Proovi uuesti.",
+  "ui_media_save_denied": "Luba Kyronil sinu fotodele lisada, et seda salvestada."
 }

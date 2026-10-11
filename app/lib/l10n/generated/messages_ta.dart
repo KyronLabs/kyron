@@ -1277,6 +1277,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("அனுப்புகிறது…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("புகைப்படம் எடு"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("மேலும் விருப்பங்கள்"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("சாதனத்தில் சேமி"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("பகிர்"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("சேமிக்கிறது…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் படங்களில் சேமிக்கப்பட்டது"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "சேமிக்க முடியவில்லை. மீண்டும் முயலவும்."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "இதைச் சேமிக்க உங்கள் படங்களில் சேர்க்க Kyron-ஐ அனுமதிக்கவும்."),
     };
 
 final messageLookup = MessageLookup();

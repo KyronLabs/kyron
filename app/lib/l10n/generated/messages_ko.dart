@@ -1075,6 +1075,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("읽음"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("보내는 중…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("사진 찍기"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("옵션 더보기"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("기기에 저장"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("공유"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("저장 중…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage("사진에 저장됨"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("저장하지 못했습니다. 다시 시도하세요."),
+      "ui_media_save_denied":
+          MessageLookupByLibrary.simpleMessage("저장하려면 Kyron이 사진에 추가하도록 허용하세요."),
     };
 
 final messageLookup = MessageLookup();

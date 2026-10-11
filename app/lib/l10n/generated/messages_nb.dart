@@ -1276,6 +1276,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Sett"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Sender…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Ta et bilde"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("Flere alternativer"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Lagre på enheten"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Del"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Lagrer…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Lagret i bildene dine"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("Kunne ikke lagre. Prøv igjen."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "La Kyron legge til i bildene dine for å lagre dette."),
     };
 
 final messageLookup = MessageLookup();

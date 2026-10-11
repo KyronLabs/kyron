@@ -615,5 +615,12 @@
   "ui_dm_sent": "გაგზავნილია",
   "ui_dm_seen": "ნანახია",
   "ui_dm_sending": "იგზავნება…",
-  "ui_dm_take_photo": "ფოტოს გადაღება"
+  "ui_dm_take_photo": "ფოტოს გადაღება",
+  "ui_media_more": "მეტი პარამეტრი",
+  "ui_media_save": "მოწყობილობაზე შენახვა",
+  "ui_media_share": "გაზიარება",
+  "ui_media_saving": "ინახება…",
+  "ui_media_saved": "შეინახა თქვენს ფოტოებში",
+  "ui_media_save_failed": "შენახვა ვერ მოხერხდა. სცადეთ ხელახლა.",
+  "ui_media_save_denied": "ამის შესანახად ნება დართეთ Kyron-ს, დაამატოს თქვენს ფოტოებში."
 }

@@ -1276,6 +1276,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("देखा गया"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("भेजा जा रहा है…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("फ़ोटो लें"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("अधिक विकल्प"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("डिवाइस में सहेजें"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("शेयर करें"),
+      "ui_media_saving":
+          MessageLookupByLibrary.simpleMessage("सहेजा जा रहा है…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("आपकी फ़ोटो में सहेजा गया"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "सहेजा नहीं जा सका। फिर से कोशिश करें।"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "इसे सहेजने के लिए Kyron को अपनी फ़ोटो में जोड़ने दें।"),
     };
 
 final messageLookup = MessageLookup();

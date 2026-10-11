@@ -615,5 +615,12 @@
   "ui_dm_sent": "送信済み",
   "ui_dm_seen": "既読",
   "ui_dm_sending": "送信中…",
-  "ui_dm_take_photo": "写真を撮る"
+  "ui_dm_take_photo": "写真を撮る",
+  "ui_media_more": "その他のオプション",
+  "ui_media_save": "端末に保存",
+  "ui_media_share": "共有",
+  "ui_media_saving": "保存中…",
+  "ui_media_saved": "写真に保存しました",
+  "ui_media_save_failed": "保存できませんでした。もう一度お試しください。",
+  "ui_media_save_denied": "保存するには、Kyron に写真への追加を許可してください。"
 }

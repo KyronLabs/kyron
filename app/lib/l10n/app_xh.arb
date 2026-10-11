@@ -615,5 +615,12 @@
   "ui_dm_sent": "Uthunyelwe",
   "ui_dm_seen": "Ubonwe",
   "ui_dm_sending": "Iyathumela…",
-  "ui_dm_take_photo": "Thatha umfanekiso"
+  "ui_dm_take_photo": "Thatha umfanekiso",
+  "ui_media_more": "Ezinye iinketho",
+  "ui_media_save": "Gcina kwisixhobo",
+  "ui_media_share": "Yabelana",
+  "ui_media_saving": "Iyagcina…",
+  "ui_media_saved": "Igcinwe kwiifoto zakho",
+  "ui_media_save_failed": "Ayikwazanga ukugcina. Zama kwakhona.",
+  "ui_media_save_denied": "Vumela uKyron ukuba yongeze kwiifoto zakho ukuze ugcine oku."
 }

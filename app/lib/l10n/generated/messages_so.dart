@@ -1276,6 +1276,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("La arkay"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Waa la dirayaa…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Sawir qaad"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("Doorashooyin kale"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Ku kaydi qalabka"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("La wadaag"),
+      "ui_media_saving":
+          MessageLookupByLibrary.simpleMessage("Waa la kaydinayaa…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage(
+          "Waxaa lagu kaydiyay sawiradaada"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama kaydin karin. Isku day mar kale."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "U oggolow Kyron inuu ku daro sawiradaada si aad tan u kaydiso."),
     };
 
 final messageLookup = MessageLookup();

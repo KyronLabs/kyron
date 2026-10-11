@@ -615,5 +615,12 @@
   "ui_dm_sent": "Göndərildi",
   "ui_dm_seen": "Baxıldı",
   "ui_dm_sending": "Göndərilir…",
-  "ui_dm_take_photo": "Şəkil çək"
+  "ui_dm_take_photo": "Şəkil çək",
+  "ui_media_more": "Digər seçimlər",
+  "ui_media_save": "Cihaza saxla",
+  "ui_media_share": "Paylaş",
+  "ui_media_saving": "Saxlanılır…",
+  "ui_media_saved": "Şəkillərinizə saxlanıldı",
+  "ui_media_save_failed": "Saxlamaq alınmadı. Yenidən cəhd edin.",
+  "ui_media_save_denied": "Bunu saxlamaq üçün Kyron-a şəkillərinizə əlavə etməyə icazə verin."
 }

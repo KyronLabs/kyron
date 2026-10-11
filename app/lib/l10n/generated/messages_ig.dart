@@ -1275,6 +1275,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("A hụrụ ya"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Na-eziga…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("See foto"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Nhọrọ ndị ọzọ"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Chekwaa na ngwaọrụ"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Kesaa"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Na-echekwa…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Echekwara ya na foto gị"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike ichekwa ya. Nwaa ọzọ."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Kwe ka Kyron tinye na foto gị iji chekwaa nke a."),
     };
 
 final messageLookup = MessageLookup();

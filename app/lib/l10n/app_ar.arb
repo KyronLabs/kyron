@@ -615,5 +615,12 @@
   "ui_dm_sent": "أُرسلت",
   "ui_dm_seen": "شوهدت",
   "ui_dm_sending": "جارٍ الإرسال…",
-  "ui_dm_take_photo": "التقط صورة"
+  "ui_dm_take_photo": "التقط صورة",
+  "ui_media_more": "خيارات أخرى",
+  "ui_media_save": "حفظ على الجهاز",
+  "ui_media_share": "مشاركة",
+  "ui_media_saving": "جارٍ الحفظ…",
+  "ui_media_saved": "تم الحفظ في صورك",
+  "ui_media_save_failed": "تعذّر الحفظ. حاول مرة أخرى.",
+  "ui_media_save_denied": "اسمح لـ Kyron بالإضافة إلى صورك لحفظ هذا."
 }

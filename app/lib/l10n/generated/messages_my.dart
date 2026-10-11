@@ -1279,6 +1279,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("ပို့နေသည်…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံရိုက်ရန်"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("နောက်ထပ် ရွေးချယ်စရာများ"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("စက်ထဲ သိမ်းရန်"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("မျှဝေရန်"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("သိမ်းနေသည်…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("သင့်ဓာတ်ပုံများထဲ သိမ်းပြီး"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "မသိမ်းနိုင်ပါ။ ထပ်စမ်းကြည့်ပါ။"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "၎င်းကို သိမ်းရန် Kyron ကို သင့်ဓာတ်ပုံများထဲ ထည့်ခွင့်ပြုပါ။"),
     };
 
 final messageLookup = MessageLookup();

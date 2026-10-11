@@ -1074,6 +1074,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("既読"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("送信中…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("写真を撮る"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("その他のオプション"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("端末に保存"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("共有"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("保存中…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage("写真に保存しました"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("保存できませんでした。もう一度お試しください。"),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "保存するには、Kyron に写真への追加を許可してください。"),
     };
 
 final messageLookup = MessageLookup();

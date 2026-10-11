@@ -34,6 +34,13 @@ const _keys = [
   'ui_dm_seen',
   'ui_dm_sending',
   'ui_dm_take_photo',
+  'ui_media_more',
+  'ui_media_save',
+  'ui_media_share',
+  'ui_media_saving',
+  'ui_media_saved',
+  'ui_media_save_failed',
+  'ui_media_save_denied',
 ];
 
 void main() {

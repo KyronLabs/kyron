@@ -615,5 +615,12 @@
   "ui_dm_sent": "Sendt",
   "ui_dm_seen": "Sett",
   "ui_dm_sending": "Sender…",
-  "ui_dm_take_photo": "Ta et bilde"
+  "ui_dm_take_photo": "Ta et bilde",
+  "ui_media_more": "Flere alternativer",
+  "ui_media_save": "Lagre på enheten",
+  "ui_media_share": "Del",
+  "ui_media_saving": "Lagrer…",
+  "ui_media_saved": "Lagret i bildene dine",
+  "ui_media_save_failed": "Kunne ikke lagre. Prøv igjen.",
+  "ui_media_save_denied": "La Kyron legge til i bildene dine for å lagre dette."
 }

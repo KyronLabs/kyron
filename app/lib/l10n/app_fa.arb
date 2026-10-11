@@ -615,5 +615,12 @@
   "ui_dm_sent": "ارسال شد",
   "ui_dm_seen": "دیده شد",
   "ui_dm_sending": "در حال ارسال…",
-  "ui_dm_take_photo": "عکس بگیرید"
+  "ui_dm_take_photo": "عکس بگیرید",
+  "ui_media_more": "گزینه‌های بیشتر",
+  "ui_media_save": "ذخیره در دستگاه",
+  "ui_media_share": "اشتراک‌گذاری",
+  "ui_media_saving": "در حال ذخیره…",
+  "ui_media_saved": "در عکس‌های شما ذخیره شد",
+  "ui_media_save_failed": "ذخیره نشد. دوباره امتحان کنید.",
+  "ui_media_save_denied": "برای ذخیرهٔ این، به Kyron اجازه دهید به عکس‌های شما اضافه کند."
 }

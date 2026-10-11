@@ -615,5 +615,12 @@
   "ui_dm_sent": "पठाइयो",
   "ui_dm_seen": "देखियो",
   "ui_dm_sending": "पठाउँदै…",
-  "ui_dm_take_photo": "फोटो खिच्नुहोस्"
+  "ui_dm_take_photo": "फोटो खिच्नुहोस्",
+  "ui_media_more": "थप विकल्पहरू",
+  "ui_media_save": "यन्त्रमा सुरक्षित गर्नुहोस्",
+  "ui_media_share": "सेयर गर्नुहोस्",
+  "ui_media_saving": "सुरक्षित गर्दै…",
+  "ui_media_saved": "तपाईंका फोटोहरूमा सुरक्षित गरियो",
+  "ui_media_save_failed": "सुरक्षित गर्न सकिएन। फेरि प्रयास गर्नुहोस्।",
+  "ui_media_save_denied": "यो सुरक्षित गर्न Kyron लाई तपाईंका फोटोहरूमा थप्न दिनुहोस्।"
 }

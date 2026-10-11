@@ -1276,6 +1276,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Umeonekana"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Inatuma…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Piga picha"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Chaguo zaidi"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Hifadhi kwenye kifaa"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Shiriki"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Inahifadhi…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage(
+          "Imehifadhiwa kwenye picha zako"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kuhifadhi. Jaribu tena."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Ruhusu Kyron iongeze kwenye picha zako ili kuhifadhi hii."),
     };
 
 final messageLookup = MessageLookup();

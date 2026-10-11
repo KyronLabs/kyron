@@ -615,5 +615,12 @@
   "ui_dm_sent": "Verzonden",
   "ui_dm_seen": "Gezien",
   "ui_dm_sending": "Verzenden…",
-  "ui_dm_take_photo": "Foto maken"
+  "ui_dm_take_photo": "Foto maken",
+  "ui_media_more": "Meer opties",
+  "ui_media_save": "Opslaan op apparaat",
+  "ui_media_share": "Delen",
+  "ui_media_saving": "Opslaan…",
+  "ui_media_saved": "Opgeslagen in je foto's",
+  "ui_media_save_failed": "Kon het niet opslaan. Probeer het opnieuw.",
+  "ui_media_save_denied": "Sta Kyron toe iets aan je foto's toe te voegen om dit op te slaan."
 }

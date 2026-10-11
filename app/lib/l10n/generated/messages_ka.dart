@@ -1279,6 +1279,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("იგზავნება…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("ფოტოს გადაღება"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("მეტი პარამეტრი"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("მოწყობილობაზე შენახვა"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("გაზიარება"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("ინახება…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("შეინახა თქვენს ფოტოებში"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "შენახვა ვერ მოხერხდა. სცადეთ ხელახლა."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "ამის შესანახად ნება დართეთ Kyron-ს, დაამატოს თქვენს ფოტოებში."),
     };
 
 final messageLookup = MessageLookup();

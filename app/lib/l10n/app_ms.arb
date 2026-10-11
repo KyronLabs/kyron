@@ -615,5 +615,12 @@
   "ui_dm_sent": "Dihantar",
   "ui_dm_seen": "Dilihat",
   "ui_dm_sending": "Menghantar…",
-  "ui_dm_take_photo": "Ambil foto"
+  "ui_dm_take_photo": "Ambil foto",
+  "ui_media_more": "Lagi pilihan",
+  "ui_media_save": "Simpan ke peranti",
+  "ui_media_share": "Kongsi",
+  "ui_media_saving": "Menyimpan…",
+  "ui_media_saved": "Disimpan ke foto anda",
+  "ui_media_save_failed": "Tidak dapat menyimpan. Cuba lagi.",
+  "ui_media_save_denied": "Benarkan Kyron menambah pada foto anda untuk menyimpan ini."
 }

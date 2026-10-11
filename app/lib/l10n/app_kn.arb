@@ -615,5 +615,12 @@
   "ui_dm_sent": "ಕಳುಹಿಸಲಾಗಿದೆ",
   "ui_dm_seen": "ನೋಡಲಾಗಿದೆ",
   "ui_dm_sending": "ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ…",
-  "ui_dm_take_photo": "ಫೋಟೋ ತೆಗೆಯಿರಿ"
+  "ui_dm_take_photo": "ಫೋಟೋ ತೆಗೆಯಿರಿ",
+  "ui_media_more": "ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳು",
+  "ui_media_save": "ಸಾಧನದಲ್ಲಿ ಉಳಿಸಿ",
+  "ui_media_share": "ಹಂಚಿಕೊಳ್ಳಿ",
+  "ui_media_saving": "ಉಳಿಸಲಾಗುತ್ತಿದೆ…",
+  "ui_media_saved": "ನಿಮ್ಮ ಫೋಟೋಗಳಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ",
+  "ui_media_save_failed": "ಉಳಿಸಲಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "ui_media_save_denied": "ಇದನ್ನು ಉಳಿಸಲು ನಿಮ್ಮ ಫೋಟೋಗಳಿಗೆ ಸೇರಿಸಲು Kyron ಗೆ ಅನುಮತಿಸಿ."
 }

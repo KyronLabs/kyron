@@ -615,5 +615,12 @@
   "ui_dm_sent": "Gönderildi",
   "ui_dm_seen": "Görüldü",
   "ui_dm_sending": "Gönderiliyor…",
-  "ui_dm_take_photo": "Fotoğraf çek"
+  "ui_dm_take_photo": "Fotoğraf çek",
+  "ui_media_more": "Diğer seçenekler",
+  "ui_media_save": "Cihaza kaydet",
+  "ui_media_share": "Paylaş",
+  "ui_media_saving": "Kaydediliyor…",
+  "ui_media_saved": "Fotoğraflarınıza kaydedildi",
+  "ui_media_save_failed": "Kaydedilemedi. Tekrar deneyin.",
+  "ui_media_save_denied": "Bunu kaydetmek için Kyron'un fotoğraflarınıza eklemesine izin verin."
 }

@@ -1275,6 +1275,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Ti rí i"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Ń fi ránṣẹ́…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Ya fọ́tò"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Àwọn àṣàyàn míì"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Fi pamọ́ sí ẹ̀rọ"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Pín"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Ń fi pamọ́…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage(
+          "A ti fi pamọ́ sí àwọn fọ́tò rẹ"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "A kò lè fi pamọ́. Gbìyànjú lẹ́ẹ̀kan sí i."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Gba Kyron láàyè láti fi kún àwọn fọ́tò rẹ kí o lè fi èyí pamọ́."),
     };
 
 final messageLookup = MessageLookup();

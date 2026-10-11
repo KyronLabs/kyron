@@ -1276,6 +1276,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Se trimite…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Fă o fotografie"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("Mai multe opțiuni"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Salvează pe dispozitiv"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Distribuie"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Se salvează…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Salvat în fotografiile tale"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu s-a putut salva. Încearcă din nou."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Permite-i lui Kyron să adauge în fotografiile tale pentru a salva asta."),
     };
 
 final messageLookup = MessageLookup();

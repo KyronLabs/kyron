@@ -1346,6 +1346,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Zobrazeno"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Odesílání…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Vyfotit"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Další možnosti"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Uložit do zařízení"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Sdílet"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Ukládání…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Uloženo do fotek"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepodařilo se uložit. Zkuste to znovu."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Povolte Kyronu přidávat do fotek, abyste to mohli uložit."),
     };
 
 final messageLookup = MessageLookup();

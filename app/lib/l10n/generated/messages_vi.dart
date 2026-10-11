@@ -1277,6 +1277,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Đã xem"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Đang gửi…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Chụp ảnh"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Tùy chọn khác"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Lưu vào thiết bị"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Chia sẻ"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Đang lưu…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Đã lưu vào ảnh của bạn"),
+      "ui_media_save_failed":
+          MessageLookupByLibrary.simpleMessage("Không thể lưu. Hãy thử lại."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Cho phép Kyron thêm vào ảnh của bạn để lưu mục này."),
     };
 
 final messageLookup = MessageLookup();

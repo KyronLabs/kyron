@@ -966,6 +966,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("已读"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("正在发送…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("拍照"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("更多选项"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("保存到设备"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("分享"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("正在保存…"),
+      "ui_media_saved": MessageLookupByLibrary.simpleMessage("已保存到你的照片"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage("无法保存，请重试。"),
+      "ui_media_save_denied":
+          MessageLookupByLibrary.simpleMessage("请允许 Kyron 添加到你的照片以保存此内容。"),
     };
 
 final messageLookup = MessageLookup();

@@ -615,5 +615,12 @@
   "ui_dm_sent": "મોકલ્યો",
   "ui_dm_seen": "જોયો",
   "ui_dm_sending": "મોકલી રહ્યાં છીએ…",
-  "ui_dm_take_photo": "ફોટો લો"
+  "ui_dm_take_photo": "ફોટો લો",
+  "ui_media_more": "વધુ વિકલ્પો",
+  "ui_media_save": "ઉપકરણમાં સાચવો",
+  "ui_media_share": "શેર કરો",
+  "ui_media_saving": "સાચવી રહ્યાં છીએ…",
+  "ui_media_saved": "તમારા ફોટામાં સાચવ્યું",
+  "ui_media_save_failed": "સાચવી શકાયું નહીં. ફરી પ્રયાસ કરો.",
+  "ui_media_save_denied": "આ સાચવવા માટે Kyron ને તમારા ફોટામાં ઉમેરવાની મંજૂરી આપો."
 }

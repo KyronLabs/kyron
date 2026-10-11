@@ -615,5 +615,12 @@
   "ui_dm_sent": "పంపబడింది",
   "ui_dm_seen": "చూడబడింది",
   "ui_dm_sending": "పంపుతోంది…",
-  "ui_dm_take_photo": "ఫోటో తీయండి"
+  "ui_dm_take_photo": "ఫోటో తీయండి",
+  "ui_media_more": "మరిన్ని ఎంపికలు",
+  "ui_media_save": "పరికరంలో సేవ్ చేయండి",
+  "ui_media_share": "షేర్ చేయండి",
+  "ui_media_saving": "సేవ్ చేస్తోంది…",
+  "ui_media_saved": "మీ ఫోటోలలో సేవ్ చేయబడింది",
+  "ui_media_save_failed": "సేవ్ చేయడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి.",
+  "ui_media_save_denied": "దీన్ని సేవ్ చేయడానికి మీ ఫోటోలకు జోడించేందుకు Kyron ను అనుమతించండి."
 }

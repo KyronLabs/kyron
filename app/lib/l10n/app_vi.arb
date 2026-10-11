@@ -615,5 +615,12 @@
   "ui_dm_sent": "Đã gửi",
   "ui_dm_seen": "Đã xem",
   "ui_dm_sending": "Đang gửi…",
-  "ui_dm_take_photo": "Chụp ảnh"
+  "ui_dm_take_photo": "Chụp ảnh",
+  "ui_media_more": "Tùy chọn khác",
+  "ui_media_save": "Lưu vào thiết bị",
+  "ui_media_share": "Chia sẻ",
+  "ui_media_saving": "Đang lưu…",
+  "ui_media_saved": "Đã lưu vào ảnh của bạn",
+  "ui_media_save_failed": "Không thể lưu. Hãy thử lại.",
+  "ui_media_save_denied": "Cho phép Kyron thêm vào ảnh của bạn để lưu mục này."
 }

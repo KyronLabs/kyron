@@ -615,5 +615,12 @@
   "ui_dm_sent": "Naipadala",
   "ui_dm_seen": "Nakita",
   "ui_dm_sending": "Ipinapadala…",
-  "ui_dm_take_photo": "Kumuha ng litrato"
+  "ui_dm_take_photo": "Kumuha ng litrato",
+  "ui_media_more": "Iba pang opsyon",
+  "ui_media_save": "I-save sa device",
+  "ui_media_share": "Ibahagi",
+  "ui_media_saving": "Sine-save…",
+  "ui_media_saved": "Na-save sa iyong mga larawan",
+  "ui_media_save_failed": "Hindi ito ma-save. Subukang muli.",
+  "ui_media_save_denied": "Payagan ang Kyron na magdagdag sa iyong mga larawan para ma-save ito."
 }

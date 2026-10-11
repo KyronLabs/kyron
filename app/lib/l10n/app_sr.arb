@@ -615,5 +615,12 @@
   "ui_dm_sent": "Послато",
   "ui_dm_seen": "Виђено",
   "ui_dm_sending": "Слање…",
-  "ui_dm_take_photo": "Сликај"
+  "ui_dm_take_photo": "Сликај",
+  "ui_media_more": "Још опција",
+  "ui_media_save": "Сачувај на уређај",
+  "ui_media_share": "Подели",
+  "ui_media_saving": "Чување…",
+  "ui_media_saved": "Сачувано у ваше фотографије",
+  "ui_media_save_failed": "Чување није успело. Покушајте поново.",
+  "ui_media_save_denied": "Дозволите Kyron-у да додаје у ваше фотографије да бисте ово сачували."
 }

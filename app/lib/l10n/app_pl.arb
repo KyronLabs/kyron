@@ -615,5 +615,12 @@
   "ui_dm_sent": "Wysłano",
   "ui_dm_seen": "Wyświetlono",
   "ui_dm_sending": "Wysyłanie…",
-  "ui_dm_take_photo": "Zrób zdjęcie"
+  "ui_dm_take_photo": "Zrób zdjęcie",
+  "ui_media_more": "Więcej opcji",
+  "ui_media_save": "Zapisz na urządzeniu",
+  "ui_media_share": "Udostępnij",
+  "ui_media_saving": "Zapisywanie…",
+  "ui_media_saved": "Zapisano w zdjęciach",
+  "ui_media_save_failed": "Nie udało się zapisać. Spróbuj ponownie.",
+  "ui_media_save_denied": "Pozwól Kyronowi dodawać do zdjęć, aby to zapisać."
 }

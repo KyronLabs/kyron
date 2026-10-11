@@ -615,5 +615,12 @@
   "ui_dm_sent": "Uthunyelwe",
   "ui_dm_seen": "Ubonwe",
   "ui_dm_sending": "Iyathumela…",
-  "ui_dm_take_photo": "Thatha isithombe"
+  "ui_dm_take_photo": "Thatha isithombe",
+  "ui_media_more": "Ezinye izinketho",
+  "ui_media_save": "Londoloza kudivayisi",
+  "ui_media_share": "Yabelana",
+  "ui_media_saving": "Iyalondoloza…",
+  "ui_media_saved": "Kulondolozwe ezithombeni zakho",
+  "ui_media_save_failed": "Akukwazanga ukulondoloza. Zama futhi.",
+  "ui_media_save_denied": "Vumela i-Kyron ingeze ezithombeni zakho ukuze ulondoloze lokhu."
 }

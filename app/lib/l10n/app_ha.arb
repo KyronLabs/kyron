@@ -615,5 +615,12 @@
   "ui_dm_sent": "An aika",
   "ui_dm_seen": "An gani",
   "ui_dm_sending": "Ana aikawa…",
-  "ui_dm_take_photo": "Ɗauki hoto"
+  "ui_dm_take_photo": "Ɗauki hoto",
+  "ui_media_more": "Ƙarin zaɓuɓɓuka",
+  "ui_media_save": "Ajiye a na'ura",
+  "ui_media_share": "Raba",
+  "ui_media_saving": "Ana ajiyewa…",
+  "ui_media_saved": "An ajiye a hotunanka",
+  "ui_media_save_failed": "Ba a iya ajiyewa ba. Sake gwadawa.",
+  "ui_media_save_denied": "Bari Kyron ya ƙara zuwa hotunanka don ajiye wannan."
 }

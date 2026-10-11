@@ -1277,6 +1277,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Gezien"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Verzenden…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Foto maken"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Meer opties"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Opslaan op apparaat"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Delen"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Opslaan…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Opgeslagen in je foto's"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Kon het niet opslaan. Probeer het opnieuw."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Sta Kyron toe iets aan je foto's toe te voegen om dit op te slaan."),
     };
 
 final messageLookup = MessageLookup();

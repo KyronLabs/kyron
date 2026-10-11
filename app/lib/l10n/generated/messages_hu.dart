@@ -1277,6 +1277,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Küldés…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Fénykép készítése"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("További lehetőségek"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Mentés az eszközre"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Megosztás"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Mentés…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Elmentve a fotóid közé"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült menteni. Próbáld újra."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Engedélyezd, hogy a Kyron hozzáadjon a fotóidhoz, hogy ezt elmenthesd."),
     };
 
 final messageLookup = MessageLookup();

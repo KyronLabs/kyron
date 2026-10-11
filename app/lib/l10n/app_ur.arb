@@ -615,5 +615,12 @@
   "ui_dm_sent": "بھیج دیا گیا",
   "ui_dm_seen": "دیکھ لیا گیا",
   "ui_dm_sending": "بھیجا جا رہا ہے…",
-  "ui_dm_take_photo": "تصویر لیں"
+  "ui_dm_take_photo": "تصویر لیں",
+  "ui_media_more": "مزید اختیارات",
+  "ui_media_save": "آلے میں محفوظ کریں",
+  "ui_media_share": "شیئر کریں",
+  "ui_media_saving": "محفوظ ہو رہا ہے…",
+  "ui_media_saved": "آپ کی تصاویر میں محفوظ ہو گیا",
+  "ui_media_save_failed": "محفوظ نہیں ہو سکا۔ دوبارہ کوشش کریں۔",
+  "ui_media_save_denied": "اسے محفوظ کرنے کے لیے Kyron کو اپنی تصاویر میں شامل کرنے کی اجازت دیں۔"
 }

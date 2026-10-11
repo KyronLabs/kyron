@@ -1278,6 +1278,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Sūta…"),
       "ui_dm_take_photo":
           MessageLookupByLibrary.simpleMessage("Uzņemt fotoattēlu"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Vairāk iespēju"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Saglabāt ierīcē"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Kopīgot"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Saglabā…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Saglabāts jūsu fotoattēlos"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās saglabāt. Mēģiniet vēlreiz."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Atļaujiet Kyron pievienot jūsu fotoattēliem, lai to saglabātu."),
     };
 
 final messageLookup = MessageLookup();

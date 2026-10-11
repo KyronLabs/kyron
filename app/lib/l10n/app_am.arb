@@ -615,5 +615,12 @@
   "ui_dm_sent": "ተልኳል",
   "ui_dm_seen": "ታይቷል",
   "ui_dm_sending": "በመላክ ላይ…",
-  "ui_dm_take_photo": "ፎቶ አንሳ"
+  "ui_dm_take_photo": "ፎቶ አንሳ",
+  "ui_media_more": "ተጨማሪ አማራጮች",
+  "ui_media_save": "ወደ መሣሪያ አስቀምጥ",
+  "ui_media_share": "አጋራ",
+  "ui_media_saving": "በማስቀመጥ ላይ…",
+  "ui_media_saved": "ወደ ፎቶዎችዎ ተቀምጧል",
+  "ui_media_save_failed": "ማስቀመጥ አልተቻለም። እንደገና ይሞክሩ።",
+  "ui_media_save_denied": "ይህን ለማስቀመጥ Kyron ወደ ፎቶዎችዎ እንዲያክል ይፍቀዱ።"
 }

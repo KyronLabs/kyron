@@ -1276,6 +1276,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("An gani"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Ana aikawa…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Ɗauki hoto"),
+      "ui_media_more": MessageLookupByLibrary.simpleMessage("Ƙarin zaɓuɓɓuka"),
+      "ui_media_save": MessageLookupByLibrary.simpleMessage("Ajiye a na'ura"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Raba"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Ana ajiyewa…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("An ajiye a hotunanka"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Ba a iya ajiyewa ba. Sake gwadawa."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Bari Kyron ya ƙara zuwa hotunanka don ajiye wannan."),
     };
 
 final messageLookup = MessageLookup();

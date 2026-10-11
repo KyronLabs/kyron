@@ -615,5 +615,12 @@
   "ui_dm_sent": "La diray",
   "ui_dm_seen": "La arkay",
   "ui_dm_sending": "Waa la dirayaa…",
-  "ui_dm_take_photo": "Sawir qaad"
+  "ui_dm_take_photo": "Sawir qaad",
+  "ui_media_more": "Doorashooyin kale",
+  "ui_media_save": "Ku kaydi qalabka",
+  "ui_media_share": "La wadaag",
+  "ui_media_saving": "Waa la kaydinayaa…",
+  "ui_media_saved": "Waxaa lagu kaydiyay sawiradaada",
+  "ui_media_save_failed": "Lama kaydin karin. Isku day mar kale.",
+  "ui_media_save_denied": "U oggolow Kyron inuu ku daro sawiradaada si aad tan u kaydiso."
 }

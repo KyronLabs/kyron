@@ -615,5 +615,12 @@
   "ui_dm_sent": "Ezigara",
   "ui_dm_seen": "A hụrụ ya",
   "ui_dm_sending": "Na-eziga…",
-  "ui_dm_take_photo": "See foto"
+  "ui_dm_take_photo": "See foto",
+  "ui_media_more": "Nhọrọ ndị ọzọ",
+  "ui_media_save": "Chekwaa na ngwaọrụ",
+  "ui_media_share": "Kesaa",
+  "ui_media_saving": "Na-echekwa…",
+  "ui_media_saved": "Echekwara ya na foto gị",
+  "ui_media_save_failed": "Enweghị ike ichekwa ya. Nwaa ọzọ.",
+  "ui_media_save_denied": "Kwe ka Kyron tinye na foto gị iji chekwaa nke a."
 }

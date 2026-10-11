@@ -1275,6 +1275,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_seen": MessageLookupByLibrary.simpleMessage("Nähty"),
       "ui_dm_sending": MessageLookupByLibrary.simpleMessage("Lähetetään…"),
       "ui_dm_take_photo": MessageLookupByLibrary.simpleMessage("Ota kuva"),
+      "ui_media_more":
+          MessageLookupByLibrary.simpleMessage("Lisää vaihtoehtoja"),
+      "ui_media_save":
+          MessageLookupByLibrary.simpleMessage("Tallenna laitteelle"),
+      "ui_media_share": MessageLookupByLibrary.simpleMessage("Jaa"),
+      "ui_media_saving": MessageLookupByLibrary.simpleMessage("Tallennetaan…"),
+      "ui_media_saved":
+          MessageLookupByLibrary.simpleMessage("Tallennettu kuviisi"),
+      "ui_media_save_failed": MessageLookupByLibrary.simpleMessage(
+          "Tallennus epäonnistui. Yritä uudelleen."),
+      "ui_media_save_denied": MessageLookupByLibrary.simpleMessage(
+          "Anna Kyronin lisätä kuviisi, jotta voit tallentaa tämän."),
     };
 
 final messageLookup = MessageLookup();

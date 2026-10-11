@@ -2,13 +2,17 @@ import '../l10n/app_localizations.dart';
 
 // lib/widgets/media_viewer.dart
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gal/gal.dart';
+import 'package:http/http.dart' as http;
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
@@ -21,6 +25,7 @@ import '../services/video_stage.dart';
 import '../utils/decode_size.dart';
 import '../utils/deferred_rebuild.dart';
 
+import 'action_sheet.dart';
 import 'inline_video.dart';
 import 'playback_bar.dart';
 import 'toast.dart';
@@ -315,8 +320,7 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
                   index: _index,
                   total: widget.media.length,
                   onClose: () => Navigator.of(context).pop(),
-                  onCopyLink: _copyLink,
-                  onShare: _share,
+                  onMore: _openOptions,
                 ),
               ),
             ),
@@ -372,6 +376,129 @@ class _MediaViewerState extends ConsumerState<MediaViewer> {
     );
   }
 
+  /// What can be done with the one on screen, as a sheet: save it, share it,
+  /// copy its link. Two of these were icons in the top bar, unlabelled, and
+  /// saving was not there at all.
+  Future<void> _openOptions() async {
+    final l10n = AppLocalizations.of(context);
+    final choice = await ActionSheet.show<String>(
+      context,
+      actions: [
+        SheetAction(
+          value: 'save',
+          label: l10n.ui('ui_media_save', 'Save to device'),
+          icon: Iconsax.document_download_copy,
+        ),
+        SheetAction(
+          value: 'share',
+          label: l10n.ui('ui_media_share', 'Share'),
+          icon: Iconsax.share_copy,
+        ),
+        SheetAction(
+          value: 'copy',
+          label: l10n.literalcopyLink,
+          icon: Iconsax.copy_copy,
+        ),
+      ],
+    );
+    if (!mounted) return;
+    switch (choice) {
+      case 'save':
+        await _save();
+      case 'share':
+        await _share();
+      case 'copy':
+        await _copyLink();
+    }
+  }
+
+  /// Whether a save is under way, so a second tap does not start another.
+  bool _saving = false;
+
+  /// Downloads the one on screen and adds it to the phone's photos.
+  ///
+  /// Through a file rather than bytes in memory: a clip can be 25 MB, and a
+  /// file keeps its format -- a GIF saved from bytes can come out a still.
+  Future<void> _save() async {
+    if (_saving) return;
+    final item = _current;
+    final l10n = AppLocalizations.of(context);
+    void say(String message, IconData icon) {
+      if (!mounted) return;
+      Toast.show(context, message, spot: ToastSpot.middle, icon: icon);
+    }
+
+    _saving = true;
+    File? file;
+    try {
+      if (!await Gal.hasAccess() && !await Gal.requestAccess()) {
+        say(
+          l10n.ui(
+            'ui_media_save_denied',
+            'Allow Kyron to add to your photos to save this.',
+          ),
+          Iconsax.gallery_slash_copy,
+        );
+        return;
+      }
+      say(l10n.ui('ui_media_saving', 'Saving…'),
+          Iconsax.document_download_copy);
+      file = await _download(item);
+      if (item.isVideo) {
+        await Gal.putVideo(file.path);
+      } else {
+        await Gal.putImage(file.path);
+      }
+      say(
+        l10n.ui('ui_media_saved', 'Saved to your photos'),
+        Iconsax.tick_circle_copy,
+      );
+    } catch (error) {
+      AppLog.instance.error('media', 'Could not save ${item.url}: $error');
+      say(
+        l10n.ui('ui_media_save_failed', 'Could not save it. Try again.'),
+        Iconsax.warning_2_copy,
+      );
+    } finally {
+      _saving = false;
+      // The copy in the temporary directory, once the gallery has its own.
+      final downloaded = file;
+      if (downloaded != null) {
+        unawaited(downloaded.delete().then((_) {}, onError: (_) {}));
+      }
+    }
+  }
+
+  /// The file behind [item], in the temporary directory, under the
+  /// extension its URL carries so the gallery knows what it is.
+  static Future<File> _download(PostMedia item) async {
+    final uri = Uri.parse(item.url);
+    final last = uri.pathSegments.isEmpty ? '' : uri.pathSegments.last;
+    final dot = last.lastIndexOf('.');
+    final extension = dot > 0 && last.length - dot <= 5
+        ? last.substring(dot)
+        : item.isVideo
+            ? '.mp4'
+            : item.kind == MediaKind.gif
+                ? '.gif'
+                : '.jpg';
+    final dir = await getTemporaryDirectory();
+    final file = File('${dir.path}/kyron-${item.id}$extension');
+
+    final client = http.Client();
+    try {
+      final response = await client.send(http.Request('GET', uri));
+      if (response.statusCode != 200) {
+        throw HttpException('HTTP ${response.statusCode}', uri: uri);
+      }
+      final sink = file.openWrite();
+      await response.stream.pipe(sink);
+      return file;
+    } finally {
+      client.close();
+    }
+  }
+
   Future<void> _copyLink() async {
     await Clipboard.setData(ClipboardData(text: _current.url));
     if (!mounted) return;
@@ -397,48 +524,60 @@ class _TopBar extends StatelessWidget {
   final int index;
   final int total;
   final VoidCallback onClose;
-  final VoidCallback onCopyLink;
-  final VoidCallback onShare;
+
+  /// Save, share, copy link -- as a sheet.
+  final VoidCallback onMore;
 
   const _TopBar({
     required this.index,
     required this.total,
     required this.onClose,
-    required this.onCopyLink,
-    required this.onShare,
+    required this.onMore,
   });
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Row(
-        children: [
-          IconButton(
-            icon: const Icon(Iconsax.close_circle_copy, color: Colors.white),
-            tooltip: 'Close',
-            onPressed: onClose,
-          ),
-          const Spacer(),
-          if (total > 1)
-            Text(
-              '${index + 1} of $total',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: TypographyTokens.fontSize2,
+      // The count in a stack of its own rather than between two spacers: with
+      // one button on the left and two on the right, the spacers split what
+      // was left unevenly and the count sat off to one side. Now it is at
+      // the centre of the bar whatever the buttons either side of it are.
+      child: SizedBox(
+        height: kToolbarHeight,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            if (total > 1)
+              Text(
+                '${index + 1} / $total',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: TypographyTokens.fontSize3,
+                  fontWeight: FontWeight.w600,
+                  fontFeatures: [FontFeature.tabularFigures()],
+                ),
               ),
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Iconsax.close_circle_copy,
+                    color: Colors.white,
+                  ),
+                  tooltip: MaterialLocalizations.of(context).closeButtonLabel,
+                  onPressed: onClose,
+                ),
+                const Spacer(),
+                IconButton(
+                  icon: const Icon(Iconsax.more_copy, color: Colors.white),
+                  tooltip: AppLocalizations.of(context)
+                      .ui('ui_media_more', 'More options'),
+                  onPressed: onMore,
+                ),
+              ],
             ),
-          const Spacer(),
-          IconButton(
-            icon: const Icon(Iconsax.copy_copy, color: Colors.white),
-            tooltip: AppLocalizations.of(context).literalcopyLink,
-            onPressed: onCopyLink,
-          ),
-          IconButton(
-            icon: const Icon(Iconsax.share_copy, color: Colors.white),
-            tooltip: 'Share',
-            onPressed: onShare,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
