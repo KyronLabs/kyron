@@ -14,6 +14,23 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **A voice post was taller than the reply box, and its fill moved in
+  steps.** The player is now the reply box's height, with the play icon
+  alone in the text colour. The fill is clipped at exactly how far playback
+  has got and read every frame, so it runs through the middle of a bar like
+  a progress bar instead of jumping a bar at a time. In a chat bubble it is
+  held to 48 points.
+- **The picture and clip buttons sat far apart.** Every IconButton reserves
+  a 48-point target around itself; side by side that was the gap. Both
+  composers shrink-wrap their buttons now, and the reply box has one gallery
+  button (photos and clips in one picker) and a GIF button, which replies
+  could not carry before.
+- **A reply's name sat low beside its avatar**, centred in the menu button's
+  height. The header is the height of its own line.
+- **Scrolling near the top of a chat could jump the view** by however much
+  the list's length estimate changed, whether or not older messages were
+  being loaded. It only makes room when a load has actually started.
+
 - **Every toast underlined its words in double yellow, in the wrong font.**
   Toasts are drawn on the root overlay, above every screen's Scaffold, where
   nothing supplies a text style, so Flutter fell back to its debug one. The
@@ -132,6 +149,30 @@ section for that version, so what is written here is what people read.
   The limit is now on what is typed, and sealed bodies have their own ceiling.
 
 ### Added
+
+- **Voice notes in direct messages.** With the box empty, the button where
+  Send goes is a microphone: it opens the recorder already listening, and
+  the note is sent as its own message, answering whatever was being
+  answered. The bubble appears at once and plays from the phone while it
+  uploads; a failed one retries with the recording rather than as an empty
+  message. Like photos, voice notes are stored unencrypted (docs/E2EE.md).
+- **A tap on a quoted message goes to it.** The thread pages back until the
+  original is loaded, scrolls it into view and points it out -- it swells a
+  little and settles under a tint that fades. A quote of a deleted message
+  says it is gone.
+- **A conversation details page**, from the menu in the chat's header: the
+  person, Profile / Mute / Wallpaper, the photos, clips and voice notes
+  shared in the conversation (with a full page of them), mute, report, block
+  and remove. Blocking or removing there closes the thread as well.
+  `GET /messages/:id/media` pages the shared attachments by message.
+- **Chat wallpapers**, per conversation and per phone: five built in (four
+  quiet washes with light and dark versions, and a dot texture) and any
+  image dropped into the `wallpapers/` folder of the media bucket, listed by
+  `GET /messages/wallpapers` without a release. The picker previews the
+  choice on two sample bubbles.
+- **The post author's like on a reply** shows as their face with a heart
+  beside the reply's menu. Comments carry `authorLike`, read for a whole page
+  in one query; the author sees it the moment they like a reply.
 
 - **Uptime history on the service status screen.** The API checks itself
   every five minutes while it runs -- that it is up, that the database

@@ -1314,6 +1314,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Taariikhda waqtiga shaqada weli lama heli karo."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Nidaamyada qaar ayaa dhibaato qaba"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("Duub fariin cod ah"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Diyaar u ah in la diro"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Fariintaas halkan kuma jirto mar dambe."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("U gudub fariinta"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Fariin cod ah"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Qoraaga ayaa jeclaaday"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "Ku dar sawir ama muuqaal gaaban"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Warbaahin"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Fariimaha codka"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Sheekaysi"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Sawirka gidaarka"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Aamusi ogeysiisyada"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Jooji helitaanka ogeysiisyada wadahadalkan"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Mar dambe fariin kuuma soo diri karaan"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Midna"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Sawir"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Codka waa la furay."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama saari karin. Isku day mar kale."),
+      "ui_dm_info_profile":
+          MessageLookupByLibrary.simpleMessage("Bogga shakhsiga"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Fur codka"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Sawirada iyo muuqaallada aad wadaagto halkan ayay ka muuqdaan."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Arag dhammaan"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Sawirro iyo muuqaallo"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Sidan ayuu sheekaysigaagu u ekaan doonaa."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Wuu fiican yahay."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Ceeryaamo"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Gabbal"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Cagaar"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Ciid"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Dhibcoyin"),
     };
 
 final messageLookup = MessageLookup();

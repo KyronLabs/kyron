@@ -30,8 +30,10 @@ class ReplyBar extends StatelessWidget {
 
   /// Whether another attachment fits.
   final bool canAttach;
-  final VoidCallback onAddPhoto;
-  final VoidCallback onAddClip;
+
+  /// Photos and clips, from one gallery picker.
+  final VoidCallback onAddMedia;
+  final VoidCallback onAddGif;
 
   final List<PendingMedia> media;
   final void Function(String path) onRemoveMedia;
@@ -57,8 +59,8 @@ class ReplyBar extends StatelessWidget {
     required this.sending,
     required this.onSend,
     required this.canAttach,
-    required this.onAddPhoto,
-    required this.onAddClip,
+    required this.onAddMedia,
+    required this.onAddGif,
     required this.media,
     required this.onRemoveMedia,
     required this.onRetryMedia,
@@ -94,8 +96,14 @@ class ReplyBar extends StatelessWidget {
           color: color,
           visualDensity: VisualDensity.compact,
           padding: EdgeInsets.zero,
+          // Without this the button reserves a 48-point target around its
+          // own box, and two of them side by side sat that far apart: the
+          // gap between the picture and the clip buttons.
+          style: const ButtonStyle(
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
           constraints: const BoxConstraints.tightFor(
-            width: 36,
+            width: 32,
             height: fieldHeight,
           ),
         );
@@ -220,19 +228,25 @@ class ReplyBar extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // A picture and a clip a tap away while the box is
-                      // empty; they step aside once something is being
-                      // written, which is when the room matters more.
+                      // The gallery and a GIF a tap away while the box is
+                      // empty, tight together at its end; they step aside
+                      // once something is being written, which is when the
+                      // room matters more. One gallery button picks photos
+                      // and clips both, which is what left room for GIF
+                      // without the box growing a third button.
                       if (!typing) ...[
                         button(
                           icon: Iconsax.gallery_copy,
-                          tooltip: l10n.literaladdAPhoto,
-                          onPressed: canAttach ? onAddPhoto : null,
+                          tooltip: l10n.ui(
+                            'ui_add_photo_or_clip',
+                            'Add a photo or clip',
+                          ),
+                          onPressed: canAttach ? onAddMedia : null,
                         ),
                         button(
-                          icon: Iconsax.video_copy,
-                          tooltip: l10n.literaladdAClip,
-                          onPressed: canAttach ? onAddClip : null,
+                          icon: Iconsax.emoji_happy_copy,
+                          tooltip: l10n.literaladdAGif,
+                          onPressed: canAttach ? onAddGif : null,
                         ),
                       ],
                     ],

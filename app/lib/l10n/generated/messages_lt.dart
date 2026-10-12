@@ -1315,6 +1315,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Veikimo istorija dar nepasiekiama."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Kai kuriose sistemose kilo problemų"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Įrašyti balso žinutę"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Paruošta siųsti"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Tos žinutės čia nebėra."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("Eiti į žinutę"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Balso žinutė"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Patiko autoriui"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Pridėti nuotrauką ar klipą"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Medija"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Balso žinutės"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Pokalbis"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Ekrano fonas"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Nutildyti pranešimus"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Nebegauti pranešimų apie šį pokalbį"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("Jie nebegalės jums rašyti"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Nėra"),
+      "ui_dm_wallpaper_photo":
+          MessageLookupByLibrary.simpleMessage("Nuotrauka"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Nutildymas išjungtas."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko pašalinti. Bandykite dar kartą."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profilis"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Įjungti garsą"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Jūsų bendrinamos nuotraukos ir klipai rodomi čia."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Žiūrėti viską"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Nuotraukos ir klipai"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Taip atrodys jūsų pokalbis."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Atrodo gerai."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Rūkas"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Sutemos"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Šalavijas"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Smėlis"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Taškeliai"),
     };
 
 final messageLookup = MessageLookup();

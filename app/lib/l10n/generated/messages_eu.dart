@@ -1313,6 +1313,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Erabilgarritasunaren historia ez dago oraindik erabilgarri."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Sistema batzuek arazoak dituzte"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Grabatu ahots-ohar bat"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Bidaltzeko prest"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Mezu hori jada ez dago hemen."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("Joan mezura"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Ahots-oharra"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Egileak atsegin du"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "Gehitu argazki bat edo klip bat"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Multimedia"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Ahots-oharrak"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Txata"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Horma-papera"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Isilarazi jakinarazpenak"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Utzi elkarrizketa honi buruzko jakinarazpenak jasotzeari"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Jada ezin dizute mezurik bidali"),
+      "ui_dm_wallpaper_none":
+          MessageLookupByLibrary.simpleMessage("Bat ere ez"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Argazkia"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Isilarazpena kendu da."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da kendu. Saiatu berriro."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profila"),
+      "ui_dm_unmute":
+          MessageLookupByLibrary.simpleMessage("Kendu isilarazpena"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Partekatzen dituzun argazkiak eta klipak hemen agertzen dira."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Ikusi guztiak"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Argazkiak eta klipak"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Horrela ikusiko da zure txata."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Ondo dago."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Lainoa"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Ilunabarra"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salbia"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Harea"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Puntuak"),
     };
 
 final messageLookup = MessageLookup();

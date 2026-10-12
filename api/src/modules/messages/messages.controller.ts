@@ -12,6 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
+import { WallpapersService } from './wallpapers.service';
 import { ListConversationsDto, ListMessagesDto } from './dto/list-messages.dto';
 import { SendMessageDto } from './dto/send-message.dto';
 import { ReactDto } from './dto/react.dto';
@@ -24,7 +25,10 @@ import type { AuthRequest } from '../../common/types/auth-request';
 // direct messages.
 @UseGuards(AuthGuard)
 export class MessagesController {
-  constructor(private readonly svc: MessagesService) {}
+  constructor(
+    private readonly svc: MessagesService,
+    private readonly wallpapers: WallpapersService,
+  ) {}
 
   /** The reader's conversations, whichever moved last at the top. */
   @Get()
@@ -73,6 +77,31 @@ export class MessagesController {
   @Put(':id/block')
   block(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
     return this.svc.blockOther(req.user.id, id);
+  }
+
+  /**
+   * The wallpapers a chat can be drawn on. Declared above `:id`, which would
+   * otherwise take "wallpapers" for a conversation id and refuse it.
+   */
+  @Get('wallpapers')
+  listWallpapers() {
+    return this.wallpapers.list();
+  }
+
+  /**
+   * Every photo, clip, GIF and voice note in a conversation, newest first,
+   * for its info page. Paged by message.
+   */
+  @Get(':id/media')
+  media(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Query() query: ListMessagesDto,
+  ) {
+    return this.svc.sharedMedia(req.user.id, id, {
+      limit: query.limit,
+      cursor: query.cursor,
+    });
   }
 
   @Get(':id')

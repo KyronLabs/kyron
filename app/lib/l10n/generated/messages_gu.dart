@@ -1311,6 +1311,50 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("અપટાઇમ ઇતિહાસ હજી ઉપલબ્ધ નથી."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("કેટલીક સિસ્ટમમાં સમસ્યા છે"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("વૉઇસ નોટ રેકોર્ડ કરો"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("મોકલવા માટે તૈયાર"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("તે સંદેશ હવે અહીં નથી."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("સંદેશ પર જાઓ"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("વૉઇસ નોટ"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("લેખકને ગમ્યું"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("ફોટો અથવા ક્લિપ ઉમેરો"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("મીડિયા"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("વૉઇસ નોટ્સ"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("ચેટ"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("વૉલપેપર"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("સૂચનાઓ મ્યૂટ કરો"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "આ વાતચીત વિશે સૂચનાઓ મેળવવાનું બંધ કરો"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "તેઓ હવે તમને સંદેશ મોકલી શકશે નહીં"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("કોઈ નહીં"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("ફોટો"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("અનમ્યૂટ કર્યું."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "દૂર કરી શકાયું નહીં. ફરી પ્રયાસ કરો."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("પ્રોફાઇલ"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("અનમ્યૂટ કરો"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "તમે શેર કરો છો તે ફોટા અને ક્લિપ્સ અહીં દેખાય છે."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("બધું જુઓ"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("ફોટા અને ક્લિપ્સ"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("તમારી ચેટ આવી દેખાશે."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("સારું લાગે છે."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("ધુમ્મસ"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("સંધ્યા"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("સેજ"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("રેતી"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ટપકાં"),
     };
 
 final messageLookup = MessageLookup();

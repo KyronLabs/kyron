@@ -482,12 +482,71 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     }
   }
 
+  /// Sends a voice note.
+  ///
+  /// The bubble appears at once and plays from the file on this phone while
+  /// the recording goes up, then it is sent like any other attachment. Its
+  /// own path rather than [send]'s, because [send] takes attachments that
+  /// are already uploaded, and a voice note is recorded and sent in one go --
+  /// there is no box for it to wait in.
+  Future<void> sendVoice(
+    PendingMedia recording, {
+    required String senderId,
+    required Future<PendingMedia> Function(PendingMedia recording) upload,
+    String? replyToId,
+  }) async {
+    final placeholder = DirectMessage(
+      id: 'pending-${_pending++}',
+      body: '',
+      senderId: senderId,
+      createdAt: DateTime.now(),
+      sending: true,
+      replyToId: replyToId,
+      media: [recording.asPlaceholder],
+    );
+    state = state.copyWith(messages: [...state.messages, placeholder]);
+
+    try {
+      final uploaded = await upload(recording);
+      final sent = await _repo.send(
+        _conversationId,
+        '',
+        media: [uploaded],
+        replyToId: replyToId,
+      );
+      _replace(placeholder.id, sent.copyWith(body: ''));
+    } catch (_) {
+      // Kept, so retrying sends the recording rather than an empty message.
+      _resend[placeholder.id] = () => sendVoice(
+            recording,
+            senderId: senderId,
+            upload: upload,
+            replyToId: replyToId,
+          );
+      _replace(
+        placeholder.id,
+        placeholder.copyWith(sending: false, failed: true),
+      );
+    }
+  }
+
+  /// How to send again a failed message that was more than its words. A
+  /// voice note's words are empty, and retrying those sent nothing at all.
+  final Map<String, Future<void> Function()> _resend = {};
+
   /// Sends a failed message again, from the bubble that says it failed.
   ///
-  /// Text only: the attachments were uploaded against the failed attempt and
-  /// their local files may be gone, so a retry that promised to resend them
-  /// could silently drop them.
+  /// Text only, except for a voice note: other attachments were uploaded
+  /// against the failed attempt and their local files may be gone, so a
+  /// retry that promised to resend them could silently drop them. A voice
+  /// note is the recording, kept for exactly this.
   Future<void> retry(DirectMessage message) async {
+    final again = _resend.remove(message.id);
+    if (again != null) {
+      _drop(message.id);
+      await again();
+      return;
+    }
     _drop(message.id);
     // Still an answer to the same message. Without this a failed reply came
     // back as a loose remark, and the thread stopped making sense.

@@ -14,6 +14,7 @@ import '../utils/format_count.dart';
 
 import 'media_grid.dart';
 import 'post_card.dart' show PostAvatar, age, openAuthor;
+import 'post_action_colors.dart';
 import 'post_text.dart';
 import 'toast.dart';
 import 'thread.dart' show ThreadGeometry;
@@ -162,6 +163,14 @@ class _Header extends StatelessWidget {
 
   const _Header({required this.comment, required this.onAction});
 
+  /// How tall the line is: the name's own height, not the menu button's.
+  ///
+  /// The row used to take its height from the 28-point button at its end and
+  /// centre the name in that, which sat the name a few points down from the
+  /// top of the avatar beside it -- low enough to read as a second line
+  /// rather than the start of the reply.
+  static const double height = 20;
+
   /// Identity takes the only flex.
   ///
   /// The obvious spelling -- Flexible(name), Text(time), Spacer(), button --
@@ -171,43 +180,106 @@ class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final authorLike = comment.authorLike;
 
-    return Row(
-      children: [
-        Expanded(
-          child: Row(
-            children: [
-              Flexible(
-                child: GestureDetector(
-                  onTap: () => openAuthor(context, comment.author),
-                  child: Text(
-                    comment.author.displayName,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: TypographyTokens.fontSize2,
+    return SizedBox(
+      height: height,
+      child: Row(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Flexible(
+                  child: GestureDetector(
+                    onTap: () => openAuthor(context, comment.author),
+                    child: Text(
+                      comment.author.displayName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: TypographyTokens.fontSize2,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(width: SpacingTokens.space8),
-              Text(
-                age(comment.createdAt),
-                style: TextStyle(
-                  fontSize: TypographyTokens.fontSize1,
-                  color: scheme.onSurface.withValues(alpha: 0.45),
+                const SizedBox(width: SpacingTokens.space8),
+                Text(
+                  age(comment.createdAt),
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize1,
+                    color: scheme.onSurface.withValues(alpha: 0.45),
+                  ),
+                ),
+                if (comment.byAuthor) ...[
+                  const SizedBox(width: SpacingTokens.space8),
+                  const AuthorBadge(),
+                ],
+              ],
+            ),
+          ),
+          if (authorLike != null) ...[
+            AuthorLikedBadge(author: authorLike),
+            const SizedBox(width: SpacingTokens.space4),
+          ],
+          _Overflow(comment: comment, onAction: onAction),
+        ],
+      ),
+    );
+  }
+}
+
+/// The post's author liked this reply: their face, with a heart on it.
+///
+/// Beside the menu rather than in the action row, because it is not
+/// something the reader can do -- it is something that happened, and a
+/// face in the row of buttons reads as one more button.
+class AuthorLikedBadge extends StatelessWidget {
+  final FeedAuthor author;
+
+  const AuthorLikedBadge({super.key, required this.author});
+
+  static const double size = 20;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final label = AppLocalizations.of(context)
+        .ui('ui_liked_by_author', 'Liked by the author');
+
+    return Tooltip(
+      message: label,
+      child: Semantics(
+        label: label,
+        excludeSemantics: true,
+        child: SizedBox.square(
+          dimension: size,
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              PostAvatar(author: author, radius: size / 2),
+              // The heart on the face's lower corner, ringed in the page's
+              // colour so the two read as stacked rather than overlapping.
+              Positioned(
+                right: -3,
+                bottom: -3,
+                child: Container(
+                  padding: const EdgeInsets.all(1.5),
+                  decoration: BoxDecoration(
+                    color: scheme.surface,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Iconsax.heart,
+                    size: 10,
+                    color: PostActionColors.like,
+                  ),
                 ),
               ),
-              if (comment.byAuthor) ...[
-                const SizedBox(width: SpacingTokens.space8),
-                const AuthorBadge(),
-              ],
             ],
           ),
         ),
-        _Overflow(comment: comment, onAction: onAction),
-      ],
+      ),
     );
   }
 }
@@ -266,7 +338,12 @@ class _Overflow extends StatelessWidget {
       tooltip: 'More',
       padding: EdgeInsets.zero,
       visualDensity: VisualDensity.compact,
-      constraints: const BoxConstraints(minWidth: 28, minHeight: 28),
+      // As tall as the line it ends, wider than it is tall so it is still an
+      // easy target from the side a thumb comes from.
+      constraints: const BoxConstraints(
+        minWidth: 32,
+        minHeight: _Header.height,
+      ),
       iconSize: 16,
       icon: Icon(
         Iconsax.more_copy,

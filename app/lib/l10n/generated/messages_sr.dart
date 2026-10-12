@@ -1311,6 +1311,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Историја доступности још није доступна."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Неки системи имају проблема"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Сними гласовну поруку"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Спремно за слање"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Те поруке више нема."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("Иди на поруку"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Гласовна порука"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Аутору се свиђа"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Додај фотографију или снимак"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Медији"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Гласовне поруке"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Ћаскање"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Позадина"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Искључи обавештења"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Престани да примаш обавештења о овом разговору"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("Више ти не могу слати поруке"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Ништа"),
+      "ui_dm_wallpaper_photo":
+          MessageLookupByLibrary.simpleMessage("Фотографија"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("Звук укључен."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Уклањање није успело. Покушај поново."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Профил"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Укључи звук"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Фотографије и снимци које делиш појављују се овде."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Прикажи све"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Фотографије и снимци"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Овако ће изгледати твоје ћаскање."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Изгледа добро."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Измаглица"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Сумрак"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Жалфија"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Песак"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Тачкице"),
     };
 
 final messageLookup = MessageLookup();

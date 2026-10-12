@@ -1398,6 +1398,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "আপটাইমের ইতিহাস এখনও পাওয়া যাচ্ছে না।"),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("কিছু সিস্টেমে সমস্যা হচ্ছে"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("ভয়েস নোট রেকর্ড করুন"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("পাঠানোর জন্য প্রস্তুত"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("সেই মেসেজটি আর এখানে নেই।"),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("মেসেজে যান"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("ভয়েস নোট"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("লেখক পছন্দ করেছেন"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("একটি ছবি বা ক্লিপ যোগ করুন"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("মিডিয়া"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("ভয়েস নোটগুলি"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("চ্যাট"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("ওয়ালপেপার"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("বিজ্ঞপ্তি নীরব করুন"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "এই কথোপকথন সম্পর্কে বিজ্ঞপ্তি পাওয়া বন্ধ করুন"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "তারা আর আপনাকে মেসেজ পাঠাতে পারবে না"),
+      "ui_dm_wallpaper_none":
+          MessageLookupByLibrary.simpleMessage("কোনোটি নয়"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("ছবি"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("নীরবতা তুলে নেওয়া হয়েছে।"),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "সরানো যায়নি। আবার চেষ্টা করুন।"),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("প্রোফাইল"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("নীরবতা তুলুন"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "আপনি যে ছবি ও ক্লিপ শেয়ার করেন সেগুলি এখানে দেখা যায়।"),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("সব দেখুন"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("ছবি ও ক্লিপ"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("আপনার চ্যাট এরকম দেখাবে।"),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("ভালো দেখাচ্ছে।"),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("কুয়াশা"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("গোধূলি"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("সেজ"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("বালি"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("বিন্দু"),
     };
 
 final messageLookup = MessageLookup();

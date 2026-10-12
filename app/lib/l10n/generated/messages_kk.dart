@@ -1310,6 +1310,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Жұмыс уақытының тарихы әлі қолжетімді емес."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Кейбір жүйелерде ақау бар"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Дауыстық хабар жазу"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Жіберуге дайын"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Бұл хабар енді жоқ."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("Хабарға өту"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Дауыстық хабар"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Авторға ұнады"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Фото не клип қосу"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Медиа"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Дауыстық хабарлар"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Чат"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Тұсқағаз"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Хабарландыруларды өшіру"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Бұл сөйлесу туралы хабарландыру алуды тоқтату"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Олар енді сізге хабар жаза алмайды"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Жоқ"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Фото"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("Дыбыс қосылды."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Жою мүмкін болмады. Қайталап көріңіз."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Профиль"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Дыбысын қосу"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Сіз бөліскен фотолар мен клиптер осында көрсетіледі."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Барлығын көру"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Фотолар мен клиптер"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Чатыңыз осылай көрінеді."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Жақсы көрінеді."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Тұман"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Ымырт"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Шалфей"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Құм"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Нүктелер"),
     };
 
 final messageLookup = MessageLookup();

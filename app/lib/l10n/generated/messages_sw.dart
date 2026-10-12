@@ -1312,6 +1312,51 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Historia ya muda wa kufanya kazi bado haipatikani."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Baadhi ya mifumo ina matatizo"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Rekodi ujumbe wa sauti"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Tayari kutumwa"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Ujumbe huo haupo hapa tena."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Nenda kwenye ujumbe"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Ujumbe wa sauti"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Mwandishi ameipenda"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Ongeza picha au klipu"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Midia"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Jumbe za sauti"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Gumzo"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Mandhari"),
+      "ui_dm_info_mute_row": MessageLookupByLibrary.simpleMessage("Zima arifa"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Acha kupokea arifa kuhusu mazungumzo haya"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Hawawezi tena kukutumia ujumbe"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Hakuna"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Picha"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Sauti imerejeshwa."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kuondoa. Jaribu tena."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Wasifu"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Rejesha sauti"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Picha na klipu unazoshiriki huonekana hapa."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Ona zote"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("Picha na klipu"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Hivi ndivyo gumzo lako litakavyoonekana."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Inaonekana vizuri."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Ukungu"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Machweo"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Kijani"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Mchanga"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Vitone"),
     };
 
 final messageLookup = MessageLookup();

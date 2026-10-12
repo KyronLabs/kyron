@@ -1312,6 +1312,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "История доступности пока недоступна."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "В некоторых системах есть проблемы"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Записать голосовое сообщение"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Готово к отправке"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Этого сообщения больше нет."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Перейти к сообщению"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Голосовое сообщение"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Понравилось автору"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Добавить фото или клип"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Медиа"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Голосовые сообщения"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Чат"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Обои"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Отключить уведомления"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Больше не получать уведомления об этом разговоре"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Они больше не смогут вам писать"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Нет"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Фото"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Уведомления включены."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Не удалось удалить. Попробуйте ещё раз."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Профиль"),
+      "ui_dm_unmute":
+          MessageLookupByLibrary.simpleMessage("Включить уведомления"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Здесь появляются фото и клипы, которыми вы делитесь."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Смотреть все"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("Фото и клипы"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Так будет выглядеть ваш чат."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Выглядит хорошо."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Туман"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Сумерки"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Шалфей"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Песок"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Точки"),
     };
 
 final messageLookup = MessageLookup();

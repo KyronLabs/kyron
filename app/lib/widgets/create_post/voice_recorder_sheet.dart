@@ -25,20 +25,29 @@ import '../voice_waveform.dart';
 class VoiceRecorderSheet {
   /// Opens the recorder and answers with the recording, or null if it was
   /// cancelled or never started.
-  static Future<PendingMedia?> show(BuildContext context) {
+  ///
+  /// [forMessage] is the chat's voice note: it starts listening as soon as
+  /// it opens, since the microphone button was the "start", and it ends in
+  /// Send rather than Attach, since nothing else is going with it.
+  static Future<PendingMedia?> show(
+    BuildContext context, {
+    bool forMessage = false,
+  }) {
     return showModalBottomSheet<PendingMedia>(
       context: context,
       isScrollControlled: true,
       isDismissible: false,
       enableDrag: false,
       showDragHandle: true,
-      builder: (_) => const _Sheet(),
+      builder: (_) => _Sheet(forMessage: forMessage),
     );
   }
 }
 
 class _Sheet extends StatefulWidget {
-  const _Sheet();
+  final bool forMessage;
+
+  const _Sheet({required this.forMessage});
 
   @override
   State<_Sheet> createState() => _SheetState();
@@ -82,6 +91,16 @@ class _SheetState extends State<_Sheet> {
   static const _maxSamples = 20000;
 
   @override
+  void initState() {
+    super.initState();
+    if (widget.forMessage) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted && _stage == _Stage.idle) unawaited(_start());
+      });
+    }
+  }
+
+  @override
   void dispose() {
     _ticker?.cancel();
     unawaited(_amplitudes?.cancel());
@@ -95,8 +114,8 @@ class _SheetState extends State<_Sheet> {
     if (!await _recorder.hasPermission()) {
       setState(
         () => _failure =
-            'Kyron needs permission to use the microphone to record a voice '
-                'post. You can grant it in your device settings.',
+            'Kyron needs permission to use the microphone to record. You '
+                'can grant it in your device settings.',
       );
       return;
     }
@@ -231,15 +250,23 @@ class _SheetState extends State<_Sheet> {
               Expanded(
                 child: Text(
                     switch (_stage) {
-                      _Stage.idle => AppLocalizations.of(
-                          context,
-                        ).ui('voice_record_post', 'Record a voice post'),
+                      _Stage.idle => widget.forMessage
+                          ? AppLocalizations.of(
+                              context,
+                            ).ui('ui_dm_voice', 'Record a voice note')
+                          : AppLocalizations.of(
+                              context,
+                            ).ui('voice_record_post', 'Record a voice post'),
                       _Stage.recording => AppLocalizations.of(
                           context,
                         ).ui('voice_recording', 'Recording…'),
-                      _Stage.recorded => AppLocalizations.of(
-                          context,
-                        ).ui('voice_ready_attach', 'Ready to attach'),
+                      _Stage.recorded => widget.forMessage
+                          ? AppLocalizations.of(
+                              context,
+                            ).ui('voice_ready_send', 'Ready to send')
+                          : AppLocalizations.of(
+                              context,
+                            ).ui('voice_ready_attach', 'Ready to attach'),
                     },
                     style: Theme.of(context).textTheme.titleMedium),
               ),
@@ -315,9 +342,13 @@ class _SheetState extends State<_Sheet> {
                   const SizedBox(width: SpacingTokens.space12),
                   Expanded(
                     child: ActionButton(
-                      label: AppLocalizations.of(context)
-                          .ui('voice_attach', 'Attach'),
-                      icon: Iconsax.tick_circle_copy,
+                      label: widget.forMessage
+                          ? AppLocalizations.of(context).send
+                          : AppLocalizations.of(context)
+                              .ui('voice_attach', 'Attach'),
+                      icon: widget.forMessage
+                          ? Iconsax.send_1
+                          : Iconsax.tick_circle_copy,
                       expand: true,
                       onPressed: _use,
                     ),

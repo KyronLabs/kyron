@@ -8,6 +8,7 @@ import '../models/post_comment.dart';
 import '../models/post_media.dart';
 import '../repositories/feed_repository.dart';
 import '../utils/api_error_message.dart';
+import '../utils/media_basket.dart' show pickGalleryMedia;
 import 'feed_provider.dart';
 
 /// One post and its thread.
@@ -244,17 +245,18 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
   /// Moved before the request lands and put back if it fails: a heart that
   /// fills and stays filled while the server disagrees is worse than one that
   /// flickers.
-  Future<String?> toggleCommentLike(PostComment comment) async {
+  /// [asAuthor] is the reader, when the reader wrote the post.
+  Future<String?> toggleCommentLike(
+    PostComment comment, {
+    FeedAuthor? asAuthor,
+  }) async {
     final wanted = !comment.liked;
-    _replaceComment(
-      comment.copyWith(
-        liked: wanted,
-        likes: (comment.likes + (wanted ? 1 : -1)).clamp(0, 1 << 31),
-      ),
-    );
+    _replaceComment(comment.withLike(wanted, asAuthor: asAuthor));
     try {
       final likes = await _repo.setCommentLike(comment.id, wanted);
-      _replaceComment(comment.copyWith(liked: wanted, likes: likes));
+      _replaceComment(
+        comment.withLike(wanted, likes: likes, asAuthor: asAuthor),
+      );
       return null;
     } catch (error) {
       _replaceComment(comment);
@@ -297,6 +299,33 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
 
   /// Picks images or a clip for the comment and uploads them straight away, so
   /// a slow upload happens while the reply is still being written.
+  /// Photos and clips from the gallery in one picker.
+  Future<String?> attachFromGallery() async {
+    if (!state.canAttach) {
+      return 'A comment can carry at most ${PostDetailState.maxMedia} attachments.';
+    }
+    try {
+      final picked = await pickGalleryMedia(
+        room: PostDetailState.maxMedia - state.media.length,
+      );
+      for (final item in picked.items) {
+        await _upload(item);
+      }
+      return picked.message;
+    } catch (_) {
+      return 'Could not open your gallery.';
+    }
+  }
+
+  /// A file already on the device -- a GIF the picker has just fetched.
+  Future<String?> attachFile(String path, MediaKind kind) async {
+    if (!state.canAttach) {
+      return 'A comment can carry at most ${PostDetailState.maxMedia} attachments.';
+    }
+    await _upload(PendingMedia(path: path, kind: kind));
+    return null;
+  }
+
   Future<String?> attach({required bool video}) async {
     if (!state.canAttach) {
       return 'A comment can carry at most ${PostDetailState.maxMedia} attachments.';

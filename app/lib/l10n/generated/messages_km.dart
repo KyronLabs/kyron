@@ -1314,6 +1314,49 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ប្រវត្តិពេលដំណើរការមិនទាន់មានទេ។"),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("ប្រព័ន្ធមួយចំនួនកំពុងមានបញ្ហា"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("ថតសារជាសំឡេង"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("រួចរាល់សម្រាប់ផ្ញើ"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("សារនោះលែងមាននៅទីនេះទៀតហើយ។"),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("ទៅកាន់សារ"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("សារជាសំឡេង"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("អ្នកនិពន្ធបានចូលចិត្ត"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("បន្ថែមរូបថត ឬឃ្លីប"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("មេឌៀ"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("សារជាសំឡេង"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("ជជែក"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("ផ្ទាំងរូបភាព"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("បិទសំឡេងការជូនដំណឹង"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "ឈប់ទទួលការជូនដំណឹងអំពីការសន្ទនានេះ"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "ពួកគេមិនអាចផ្ញើសារមកអ្នកបានទៀតទេ"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("គ្មាន"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("រូបថត"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("បានបើកសំឡេងវិញ។"),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចដកចេញបានទេ។ សូមព្យាយាមម្ដងទៀត។"),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("ប្រូហ្វាល់"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("បើកសំឡេងវិញ"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "រូបថត និងឃ្លីបដែលអ្នកចែករំលែកនឹងបង្ហាញនៅទីនេះ។"),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("មើលទាំងអស់"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("រូបថត និងឃ្លីប"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "នេះជារបៀបដែលការជជែករបស់អ្នកនឹងមើលទៅ។"),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("មើលទៅល្អ។"),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("អ័ព្ទ"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("ព្រលប់"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("បៃតងស្រាល"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ខ្សាច់"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ចំណុច"),
     };
 
 final messageLookup = MessageLookup();

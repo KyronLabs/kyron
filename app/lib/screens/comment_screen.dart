@@ -6,7 +6,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../models/feed_post.dart' show FeedAuthor;
 import '../models/post_comment.dart';
+import '../models/post_media.dart' show MediaKind;
+import '../providers/current_user_provider.dart';
 import '../providers/comment_thread_provider.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../repositories/moderation_repository.dart' show ReportTarget;
@@ -17,6 +20,7 @@ import '../utils/media_basket.dart';
 import '../widgets/comment_tile.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/jump_to_end.dart';
+import '../widgets/gif_picker_sheet.dart';
 import '../widgets/reply_bar.dart';
 import '../widgets/thread.dart';
 import '../widgets/toast.dart';
@@ -64,8 +68,15 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
     if (mounted) setState(() {});
   }
 
-  Future<void> _attach({required bool video}) async {
-    final message = await _media.attach(video: video);
+  Future<void> _attachFromGallery() async {
+    final message = await _media.attachFromGallery();
+    if (message != null && mounted) Toast.show(context, message);
+  }
+
+  Future<void> _attachGif() async {
+    final path = await GifPickerSheet.show(context);
+    if (path == null || !mounted) return;
+    final message = await _media.attachFile(path, MediaKind.gif);
     if (message != null && mounted) Toast.show(context, message);
   }
 
@@ -273,7 +284,19 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
   }
 
   Future<void> _like(PostComment comment) async {
-    final error = await _notifier.toggleLike(comment);
+    // Shown as the author's like at once when the reader wrote the post.
+    final me = ref.read(currentUserProvider).asData?.value;
+    final authorId =
+        ref.read(commentThreadProvider(widget.commentId)).postAuthorId;
+    final asAuthor = me != null && me.id == authorId
+        ? FeedAuthor(
+            id: me.id,
+            name: me.name,
+            username: me.username,
+            avatarUrl: me.avatarUrl,
+          )
+        : null;
+    final error = await _notifier.toggleLike(comment, asAuthor: asAuthor);
     if (error != null && mounted) Toast.show(context, error);
   }
 
@@ -294,8 +317,8 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
       sending: _sending,
       onSend: _send,
       canAttach: _media.hasRoom,
-      onAddPhoto: () => _attach(video: false),
-      onAddClip: () => _attach(video: true),
+      onAddMedia: _attachFromGallery,
+      onAddGif: _attachGif,
       media: _media.items,
       onRemoveMedia: _media.remove,
       onRetryMedia: _media.retry,

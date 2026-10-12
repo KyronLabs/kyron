@@ -2,12 +2,15 @@ import { Module } from '@nestjs/common';
 import { MessagesController } from './messages.controller';
 import { MessagesService } from './messages.service';
 import { SupabaseTokenModule } from '../auth/supabase-token.module';
+import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
+import { WallpapersService } from './wallpapers.service';
 
 @Module({
   // AuthGuard needs SupabaseTokenService in scope to be constructible.
-  imports: [SupabaseTokenModule],
+  // Storage, for the wallpaper folder.
+  imports: [SupabaseTokenModule, SupabaseModule],
   controllers: [MessagesController],
-  providers: [MessagesService],
+  providers: [MessagesService, WallpapersService],
   exports: [MessagesService],
 })
 export class MessagesModule {}

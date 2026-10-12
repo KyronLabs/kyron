@@ -1311,6 +1311,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Hindi pa available ang kasaysayan ng uptime."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "May problema ang ilang sistema"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Mag-record ng voice note"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Handa nang ipadala"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Wala na rito ang mensaheng iyon."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Pumunta sa mensahe"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Voice note"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Nagustuhan ng may-akda"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng larawan o clip"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Media"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Mga voice note"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Chat"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Wallpaper"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("I-mute ang mga notification"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Huwag nang makatanggap ng notification tungkol sa usapang ito"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Hindi ka na nila mapapadalhan ng mensahe"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Wala"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Larawan"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("Na-unmute na."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi ito maalis. Subukang muli."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profile"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("I-unmute"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Lalabas dito ang mga larawan at clip na ibinabahagi mo."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Tingnan lahat"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Mga larawan at clip"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Ganito ang magiging hitsura ng chat mo."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Maganda."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Ulap"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Takipsilim"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Sage"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Buhangin"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Tuldok"),
     };
 
 final messageLookup = MessageLookup();

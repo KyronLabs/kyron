@@ -1315,6 +1315,49 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("سجل مدة التشغيل غير متاح بعد."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("تواجه بعض الأنظمة مشكلات"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("تسجيل رسالة صوتية"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("جاهزة للإرسال"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("لم تعد هذه الرسالة موجودة."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("الانتقال إلى الرسالة"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("رسالة صوتية"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("أعجب بها الكاتب"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("إضافة صورة أو مقطع"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("الوسائط"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("الرسائل الصوتية"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("الدردشة"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("الخلفية"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("كتم الإشعارات"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "إيقاف الإشعارات بشأن هذه المحادثة"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("لم يعد بإمكانهم مراسلتك"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("بلا"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("صورة"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("تم إلغاء الكتم."),
+      "ui_dm_remove_failed":
+          MessageLookupByLibrary.simpleMessage("تعذرت الإزالة. حاول مرة أخرى."),
+      "ui_dm_info_profile":
+          MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("إلغاء الكتم"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "تظهر هنا الصور والمقاطع التي تشاركها."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("الصور والمقاطع"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("هكذا ستبدو دردشتك."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("تبدو جيدة."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("ضباب"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("غسق"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("مريمية"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("رمل"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("نقاط"),
     };
 
 final messageLookup = MessageLookup();

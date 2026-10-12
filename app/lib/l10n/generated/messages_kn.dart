@@ -1313,6 +1313,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ಅಪ್‌ಟೈಮ್ ಇತಿಹಾಸ ಇನ್ನೂ ಲಭ್ಯವಿಲ್ಲ."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "ಕೆಲವು ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ ಸಮಸ್ಯೆ ಇದೆ"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("ಧ್ವನಿ ಟಿಪ್ಪಣಿ ರೆಕಾರ್ಡ್ ಮಾಡಿ"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("ಕಳುಹಿಸಲು ಸಿದ್ಧವಾಗಿದೆ"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("ಆ ಸಂದೇಶ ಇನ್ನು ಇಲ್ಲಿಲ್ಲ."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("ಸಂದೇಶಕ್ಕೆ ಹೋಗಿ"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("ಧ್ವನಿ ಟಿಪ್ಪಣಿ"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("ಲೇಖಕರು ಇಷ್ಟಪಟ್ಟಿದ್ದಾರೆ"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("ಫೋಟೋ ಅಥವಾ ಕ್ಲಿಪ್ ಸೇರಿಸಿ"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("ಮಾಧ್ಯಮ"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("ಧ್ವನಿ ಟಿಪ್ಪಣಿಗಳು"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("ಚಾಟ್"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("ವಾಲ್‌ಪೇಪರ್"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("ಅಧಿಸೂಚನೆಗಳನ್ನು ಮ್ಯೂಟ್ ಮಾಡಿ"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "ಈ ಸಂಭಾಷಣೆಯ ಕುರಿತು ಅಧಿಸೂಚನೆ ಪಡೆಯುವುದನ್ನು ನಿಲ್ಲಿಸಿ"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "ಅವರು ಇನ್ನು ನಿಮಗೆ ಸಂದೇಶ ಕಳುಹಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ"),
+      "ui_dm_wallpaper_none":
+          MessageLookupByLibrary.simpleMessage("ಯಾವುದೂ ಇಲ್ಲ"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("ಫೋಟೋ"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("ಅನ್‌ಮ್ಯೂಟ್ ಮಾಡಲಾಗಿದೆ."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "ತೆಗೆದುಹಾಕಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("ಪ್ರೊಫೈಲ್"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("ಅನ್‌ಮ್ಯೂಟ್ ಮಾಡಿ"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಹಂಚಿಕೊಳ್ಳುವ ಫೋಟೋಗಳು ಮತ್ತು ಕ್ಲಿಪ್‌ಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("ಎಲ್ಲವನ್ನೂ ನೋಡಿ"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("ಫೋಟೋಗಳು ಮತ್ತು ಕ್ಲಿಪ್‌ಗಳು"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮ ಚಾಟ್ ಹೀಗೆ ಕಾಣುತ್ತದೆ."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("ಚೆನ್ನಾಗಿ ಕಾಣುತ್ತಿದೆ."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("ಮಂಜು"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("ಮುಸ್ಸಂಜೆ"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("ಸೇಜ್"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ಮರಳು"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ಚುಕ್ಕೆಗಳು"),
     };
 
 final messageLookup = MessageLookup();

@@ -1310,6 +1310,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Drifttidshistoriken är inte tillgänglig än."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Vissa system har problem"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Spela in ett röstmeddelande"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Redo att skicka"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Det meddelandet finns inte längre."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Gå till meddelandet"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Röstmeddelande"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Gillad av författaren"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "Lägg till ett foto eller klipp"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Media"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Röstmeddelanden"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Chatt"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Bakgrund"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Stäng av aviseringar"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Sluta få aviseringar om den här konversationen"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "De kan inte längre skicka meddelanden till dig"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Ingen"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Ljudet är på igen."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Det gick inte att ta bort. Försök igen."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Slå på ljud"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Foton och klipp du delar visas här."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Visa alla"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Foton och klipp"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Så här kommer din chatt att se ut."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Ser bra ut."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Dimma"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Skymning"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvia"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Sand"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Prickar"),
     };
 
 final messageLookup = MessageLookup();

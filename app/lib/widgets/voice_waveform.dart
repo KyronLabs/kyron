@@ -46,6 +46,12 @@ class VoiceWaveform extends StatelessWidget {
   static const double barGap = 2.0;
   static const double slot = barWidth + barGap;
 
+  /// How far across the drawn bars playback has got, in pixels, for [bars]
+  /// bars at [progress]. Continuous, so the fill can stop part-way through a
+  /// bar rather than jumping to the next one.
+  static double playedExtent(int bars, double progress) =>
+      bars * slot * progress.clamp(0.0, 1.0);
+
   /// Folds a full-resolution set of readings down to [bars] of them.
   ///
   /// Each bar is the loudest reading it stands for. Taking the first instead
@@ -210,7 +216,7 @@ class _WaveformPainter extends CustomPainter {
       ..strokeWidth = VoiceWaveform.barWidth;
 
     final middle = size.height / 2;
-    final playedUpTo = fits * progress;
+    final bars = <(Offset, Offset)>[];
 
     for (var i = 0; i < fits; i++) {
       // Each drawn bar is the loudest sample it stands for, not the first --
@@ -225,13 +231,25 @@ class _WaveformPainter extends CustomPainter {
 
       final height = _barHeight(level, size.height);
       final x = i * slot + VoiceWaveform.barWidth / 2;
-
-      canvas.drawLine(
-        Offset(x, middle - height / 2),
-        Offset(x, middle + height / 2),
-        i < playedUpTo ? filled : track,
-      );
+      bars.add(
+          (Offset(x, middle - height / 2), Offset(x, middle + height / 2)));
     }
+
+    // The whole row in the track colour, then the played part over it,
+    // clipped at exactly how far playback has got. Filling whole bars made
+    // the fill advance a bar at a time, in visible steps; clipped, it moves
+    // through the middle of a bar like a progress bar does.
+    for (final (top, bottom) in bars) {
+      canvas.drawLine(top, bottom, track);
+    }
+    final played = VoiceWaveform.playedExtent(fits, progress);
+    if (played <= 0) return;
+    canvas.save();
+    canvas.clipRect(Rect.fromLTWH(0, 0, played, size.height));
+    for (final (top, bottom) in bars) {
+      canvas.drawLine(top, bottom, filled);
+    }
+    canvas.restore();
   }
 
   @override

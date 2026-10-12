@@ -1479,6 +1479,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Το ιστορικό λειτουργίας δεν είναι ακόμη διαθέσιμο."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Ορισμένα συστήματα έχουν προβλήματα"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage(
+          "Ηχογράφηση φωνητικού μηνύματος"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Έτοιμο για αποστολή"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Αυτό το μήνυμα δεν υπάρχει πια."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Μετάβαση στο μήνυμα"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Φωνητικό μήνυμα"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Αρέσει στον συντάκτη"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Προσθήκη φωτογραφίας ή κλιπ"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Πολυμέσα"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Φωνητικά μηνύματα"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Συνομιλία"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Ταπετσαρία"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Σίγαση ειδοποιήσεων"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Διακοπή ειδοποιήσεων για αυτή τη συνομιλία"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Δεν μπορούν πλέον να σας στείλουν μήνυμα"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Καμία"),
+      "ui_dm_wallpaper_photo":
+          MessageLookupByLibrary.simpleMessage("Φωτογραφία"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Η σίγαση καταργήθηκε."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η κατάργηση. Δοκιμάστε ξανά."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Προφίλ"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Κατάργηση σίγασης"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Οι φωτογραφίες και τα κλιπ που μοιράζεστε εμφανίζονται εδώ."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Προβολή όλων"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Φωτογραφίες και κλιπ"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Έτσι θα φαίνεται η συνομιλία σας."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Φαίνεται ωραίο."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Ομίχλη"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Σούρουπο"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Φασκόμηλο"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Άμμος"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Κουκκίδες"),
     };
 
 final messageLookup = MessageLookup();

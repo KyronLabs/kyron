@@ -12,6 +12,12 @@ import 'package:kyron_app/providers/messages_provider.dart';
 import 'package:kyron_app/repositories/keys_repository.dart';
 import 'package:kyron_app/repositories/messages_repository.dart';
 import 'package:kyron_app/screens/thread_screen.dart';
+import 'package:kyron_app/screens/chat_wallpaper_screen.dart';
+import 'package:kyron_app/screens/conversation_info_screen.dart';
+import 'package:kyron_app/models/chat_wallpaper.dart';
+import 'package:kyron_app/providers/chat_wallpaper_provider.dart';
+import 'package:kyron_app/widgets/chat_wallpaper_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/services/message_crypto.dart';
 import 'package:kyron_app/services/message_vault.dart';
@@ -33,6 +39,7 @@ class _Repo extends MessagesRepository {
 
   final List<String> bodies = [];
   final List<String?> repliedTo = [];
+  final List<List<PendingMedia>> sentMedia = [];
   final List<(String, String)> reacted = [];
   final List<String> unreacted = [];
   int typingSent = 0;
@@ -72,6 +79,7 @@ class _Repo extends MessagesRepository {
   }) async {
     bodies.add(body);
     repliedTo.add(replyToId);
+    sentMedia.add(media);
     return DirectMessage(
       id: 'sent-${bodies.length}',
       body: body,
@@ -83,6 +91,30 @@ class _Repo extends MessagesRepository {
 
   @override
   Future<void> markRead(String id) async {}
+
+  final List<String> hidden = [];
+
+  @override
+  Future<void> hide(String conversationId) async => hidden.add(conversationId);
+
+  @override
+  Future<void> setMuted(String conversationId, bool muted) async {}
+
+  @override
+  Future<SharedMediaPage> sharedMedia(
+    String conversationId, {
+    String? cursor,
+    int limit = 30,
+  }) async =>
+      const SharedMediaPage(items: []);
+
+  @override
+  Future<List<RemoteWallpaper>> wallpapers() async => const [
+        RemoteWallpaper(
+          id: '01-quiet-dunes.jpg',
+          url: 'https://cdn.invalid/wallpapers/01-quiet-dunes.jpg',
+        ),
+      ];
 }
 
 class _Me extends CurrentUserNotifier {
@@ -130,6 +162,7 @@ Future<_Repo> _open(
             id,
           ),
         ),
+        messagesRepositoryProvider.overrideWithValue(repo),
       ],
       child: const MaterialApp(
         home: ThreadScreen(args: ThreadArgs(conversationId: 'c1')),
@@ -251,7 +284,9 @@ void main() {
         );
 
     expect(find.byIcon(Iconsax.heart), findsNothing);
-    expect(send().onPressed, isNull);
+    // Nothing to send, so the place Send goes holds the microphone.
+    expect(find.byIcon(Iconsax.send_1), findsNothing);
+    expect(find.byKey(const ValueKey('composer-voice')), findsOneWidget);
 
     await tester.enterText(find.byType(TextField), 'same');
     await tester.pump();
@@ -649,5 +684,222 @@ void main() {
     await tester.pump();
 
     expect(repo.typingSent, 1);
+  });
+
+  testWidgets('a tap on a quote goes to the message and points it out',
+      (tester) async {
+    // A long thread: the message being answered is far above the screen,
+    // and its row has not even been built.
+    final thread = <DirectMessage>[
+      _msg(
+        'last',
+        'about that',
+        'me',
+        DateTime(2026, 1, 3, 9),
+        replyToId: 'first',
+      ),
+      for (var i = 58; i >= 1; i--)
+        _msg('m$i', 'message number $i', i.isEven ? 'me' : 'them',
+            DateTime(2026, 1, 2, 9, i)),
+      _msg('first', 'the very first thing', 'them', DateTime(2026, 1, 1, 9)),
+    ];
+    await _open(tester, thread);
+
+    // Opened at the newest, so the first message is nowhere on screen: the
+    // only place its words appear is the quote of it.
+    expect(find.text('the very first thing'), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('quote-last')));
+    for (var i = 0; i < 40; i++) {
+      await tester.pump(const Duration(milliseconds: 50));
+      if (find.byKey(const ValueKey('pulsing-first')).evaluate().isNotEmpty) {
+        break;
+      }
+    }
+
+    // There, on screen, and being pointed out.
+    expect(find.byKey(const ValueKey('pulsing-first')), findsOneWidget);
+    expect(
+      find
+          .descendant(
+            of: find.byKey(const ValueKey('pulsing-first')),
+            matching: find.text('the very first thing'),
+          )
+          .hitTestable(),
+      findsOneWidget,
+    );
+
+    // And then it settles back to an ordinary bubble.
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('pulsing-first')), findsNothing);
+  });
+
+  testWidgets('a quote of a message that is gone says so', (tester) async {
+    await _open(tester, [
+      _msg('r', 'replying', 'me', DateTime(2026, 1, 3), replyToId: 'deleted'),
+    ]);
+
+    await tester.tap(find.byKey(const ValueKey('quote-r')));
+    await tester.pump();
+
+    expect(find.text('That message is no longer here.'), findsOneWidget);
+    await tester.pumpAndSettle(const Duration(seconds: 3));
+  });
+
+  group("the conversation's details", () {
+    Future<_Repo> details(WidgetTester tester) async {
+      SharedPreferences.setMockInitialValues({});
+      // A phone, so the pages are laid out the size they are used at.
+      tester.view.physicalSize = const Size(1170, 2532);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+      final repo = await _open(tester, [
+        _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+      ]);
+      await tester.tap(find.byTooltip('Details'));
+      await tester.pumpAndSettle();
+      return repo;
+    }
+
+    testWidgets('the header menu opens them, with the person and actions',
+        (tester) async {
+      await details(tester);
+
+      expect(find.byType(ConversationInfoScreen), findsOneWidget);
+      expect(find.text('Ada'), findsWidgets);
+      expect(find.text('Mute notifications'), findsOneWidget);
+      expect(find.text('Wallpaper'), findsWidgets);
+    });
+
+    testWidgets('a wallpaper chosen there is drawn behind the thread',
+        (tester) async {
+      await details(tester);
+
+      await tester.tap(find.text('Wallpaper').last);
+      await tester.pumpAndSettle();
+      expect(find.byType(ChatWallpaperScreen), findsOneWidget);
+      // The built-in ones, and the folder's, by the names they are given.
+      expect(find.text('Dusk'), findsOneWidget);
+      await tester.scrollUntilVisible(find.text('Quiet dunes'), 300);
+      expect(find.text('Quiet dunes'), findsOneWidget);
+      await tester.scrollUntilVisible(find.text('Dusk'), -300);
+
+      await tester.tap(find.text('Dusk'));
+      await tester.pumpAndSettle();
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+
+      final drawn = tester.widget<ChatWallpaperView>(
+        find.descendant(
+          of: find.byType(ThreadScreen),
+          matching: find.byType(ChatWallpaperView),
+        ),
+      );
+      expect(drawn.wallpaper.builtIn, BuiltInWallpaper.dusk);
+
+      // And it is this phone's choice for this conversation, kept.
+      final prefs = await SharedPreferences.getInstance();
+      expect(
+        prefs.getString(ChatWallpaperNotifier.keyFor('c1')),
+        'builtin:dusk',
+      );
+    });
+
+    testWidgets('removing the conversation there closes the thread too',
+        (tester) async {
+      final repo = await details(tester);
+
+      await tester.scrollUntilVisible(
+        find.byIcon(Iconsax.trash_copy),
+        200,
+        scrollable: find
+            .descendant(
+              of: find.byType(ConversationInfoScreen),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      await tester.tap(find.byIcon(Iconsax.trash_copy));
+      await tester.pumpAndSettle();
+      // The dialog's confirming button: the second of its two.
+      await tester.tap(
+        find
+            .descendant(
+              of: find.byType(AlertDialog),
+              matching: find.byType(TextButton),
+            )
+            .last,
+      );
+      await tester.pumpAndSettle();
+
+      expect(repo.hidden, ['c1']);
+      expect(find.byType(ConversationInfoScreen), findsNothing);
+      expect(find.byType(ThreadScreen), findsNothing);
+    });
+  });
+
+  group('a voice note', () {
+    ThreadNotifier notifier(_Repo repo) => ThreadNotifier(
+          repo,
+          MessageVault(KeysRepository(ApiClient())),
+          'c1',
+        );
+
+    const recording = PendingMedia(
+      path: '/tmp/note.m4a',
+      kind: MediaKind.voice,
+      duration: Duration(seconds: 4),
+      waveform: [10, 60, 30],
+    );
+
+    test('goes up, then is sent as its own message, answering', () async {
+      final repo = _Repo(const []);
+      final thread = notifier(repo);
+      await Future<void>.delayed(Duration.zero);
+
+      final uploaded = <String>[];
+      await thread.sendVoice(
+        recording,
+        senderId: 'me',
+        replyToId: 'm1',
+        upload: (r) async {
+          uploaded.add(r.path);
+          return r.copyWith(url: 'https://cdn.invalid/note.m4a');
+        },
+      );
+
+      expect(uploaded, ['/tmp/note.m4a']);
+      expect(repo.bodies, ['']);
+      expect(repo.repliedTo, ['m1']);
+      expect(repo.sentMedia.single.single.url, 'https://cdn.invalid/note.m4a');
+      expect(repo.sentMedia.single.single.isVoice, isTrue);
+    });
+
+    test('that failed is sent again as the recording, not as nothing',
+        () async {
+      final repo = _Repo(const []);
+      final thread = notifier(repo);
+      await Future<void>.delayed(Duration.zero);
+
+      var attempts = 0;
+      Future<PendingMedia> flaky(PendingMedia r) async {
+        attempts++;
+        if (attempts == 1) throw Exception('offline');
+        return r.copyWith(url: 'https://cdn.invalid/note.m4a');
+      }
+
+      await thread.sendVoice(recording, senderId: 'me', upload: flaky);
+      final failed = thread.state.messages.single;
+      expect(failed.failed, isTrue);
+      expect(repo.bodies, isEmpty);
+
+      await thread.retry(failed);
+
+      expect(attempts, 2);
+      expect(repo.sentMedia.single.single.isVoice, isTrue);
+      expect(thread.state.messages.where((m) => m.failed), isEmpty);
+    });
   });
 }

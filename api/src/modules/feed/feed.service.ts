@@ -148,12 +148,34 @@ export interface FeedComment {
   likes: number;
   /** Whether the reader is one of them. */
   liked: boolean;
+  /**
+   * The post's author, when they liked this comment; null otherwise.
+   *
+   * Carried whole rather than as a flag so the badge can show their face on
+   * a comment page opened on its own, which has no post in hand.
+   */
+  authorLike: {
+    id: string;
+    name: string | null;
+    username: string | null;
+    avatarUrl: string | null;
+  } | null;
 }
 
 export interface CommentPage {
   items: FeedComment[];
   nextCursor: string | null;
 }
+
+/** Which comments on a page the post's author liked, and who that is. */
+interface AuthorLikes {
+  liked: Set<string>;
+  author: FeedComment['authorLike'];
+}
+
+const AuthorLikes = {
+  none: { liked: new Set<string>(), author: null } as AuthorLikes,
+};
 
 /** What an author can see about their own post. */
 export interface PostAnalytics {
@@ -1768,11 +1790,21 @@ export class FeedService {
 
     const hasMore = rows.length > limit;
     const page = hasMore ? rows.slice(0, limit) : rows;
-    const faces = await this.replyFacesFor(page.map((row) => row.id));
+    const ids = page.map((row) => row.id);
+    const [faces, authorLikes] = await Promise.all([
+      this.replyFacesFor(ids),
+      this.authorLikesFor(ids, postAuthorId),
+    ]);
 
     return {
       items: page.map((row) =>
-        this.toFeedComment(row, viewerId, faces.get(row.id), postAuthorId),
+        this.toFeedComment(
+          row,
+          viewerId,
+          faces.get(row.id),
+          postAuthorId,
+          authorLikes,
+        ),
       ),
       nextCursor: hasMore ? page[page.length - 1].id : null,
     };
@@ -1856,6 +1888,7 @@ export class FeedService {
     viewerId: string,
     replyFaces: FeedComment['replyFaces'] = [],
     postAuthorId: string | null = null,
+    authorLikes: AuthorLikes = AuthorLikes.none,
   ): FeedComment {
     return {
       id: row.id,
@@ -1875,6 +1908,43 @@ export class FeedService {
       byAuthor: postAuthorId !== null && row.authorId === postAuthorId,
       likes: row._count.likes ?? 0,
       liked: (row.likes?.length ?? 0) > 0,
+      authorLike: authorLikes.liked.has(row.id) ? authorLikes.author : null,
+    };
+  }
+
+  /**
+   * Which of [commentIds] the post's author liked, and the author themselves
+   * if any.
+   *
+   * Two small reads for a whole page rather than a nested select per row: the
+   * row select already carries the reader's own like under `likes`, and a
+   * relation cannot be selected twice with two filters. The author is read
+   * only when they liked something, which on most pages they have not.
+   */
+  private async authorLikesFor(
+    commentIds: string[],
+    postAuthorId: string | null,
+  ): Promise<AuthorLikes> {
+    if (!postAuthorId || commentIds.length === 0) return AuthorLikes.none;
+    const likes = await this.prisma.commentLike.findMany({
+      where: { userId: postAuthorId, commentId: { in: commentIds } },
+      select: { commentId: true },
+    });
+    if (likes.length === 0) return AuthorLikes.none;
+
+    const author = await this.prisma.user.findUnique({
+      where: { id: postAuthorId },
+      select: this.authorShape,
+    });
+    if (!author) return AuthorLikes.none;
+    return {
+      liked: new Set(likes.map((like) => like.commentId)),
+      author: {
+        id: author.id,
+        name: author.name,
+        username: author.username,
+        avatarUrl: author.profile?.avatarUrl ?? null,
+      },
     };
   }
 
@@ -1902,7 +1972,7 @@ export class FeedService {
 
     const postAuthorId = root.post?.authorId ?? null;
 
-    const all: FeedComment[] = [];
+    const rowsInThread: CommentRow[] = [];
     let frontier = [root.id];
     for (let depth = 0; depth < FeedService.maxThreadDepth; depth++) {
       if (frontier.length === 0) break;
@@ -1912,18 +1982,25 @@ export class FeedService {
         take: FeedService.maxThreadNodes,
         select: this.commentShapeFor(viewerId),
       });
-      all.push(
-        ...rows.map((row) =>
-          this.toFeedComment(row, viewerId, [], postAuthorId),
-        ),
-      );
+      rowsInThread.push(...rows);
       frontier = rows.map((row) => row.id);
     }
 
+    // Once for the whole branch, after it is walked, rather than once a level.
+    const authorLikes = await this.authorLikesFor(
+      [root.id, ...rowsInThread.map((row) => row.id)],
+      postAuthorId,
+    );
+
     return {
       postId: root.postId,
-      root: this.toFeedComment(root, viewerId, [], postAuthorId),
-      replies: all,
+      // So the page can tell whether the reader wrote the post, and show
+      // their like on a reply as the author's the moment they make it.
+      postAuthorId,
+      root: this.toFeedComment(root, viewerId, [], postAuthorId, authorLikes),
+      replies: rowsInThread.map((row) =>
+        this.toFeedComment(row, viewerId, [], postAuthorId, authorLikes),
+      ),
     };
   }
 

@@ -1314,6 +1314,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Darbspējas vēsture vēl nav pieejama."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Dažām sistēmām ir problēmas"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Ierakstīt balss ziņu"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Gatavs sūtīšanai"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Šīs ziņas te vairs nav."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Pāriet uz ziņu"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Balss ziņa"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Autoram patīk"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "Pievienot fotoattēlu vai klipu"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Multivide"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Balss ziņas"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Tērzēšana"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Fona attēls"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Izslēgt paziņojumus"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Pārtraukt saņemt paziņojumus par šo sarunu"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("Viņi vairs nevar jums rakstīt"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Nav"),
+      "ui_dm_wallpaper_photo":
+          MessageLookupByLibrary.simpleMessage("Fotoattēls"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("Skaņa ieslēgta."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās noņemt. Mēģiniet vēlreiz."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profils"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Ieslēgt skaņu"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Šeit tiek rādīti jūsu kopīgotie fotoattēli un klipi."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Skatīt visu"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Fotoattēli un klipi"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Šādi izskatīsies jūsu tērzēšana."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Izskatās labi."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Migla"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Krēsla"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvija"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Smiltis"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Punktiņi"),
     };
 
 final messageLookup = MessageLookup();

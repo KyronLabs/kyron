@@ -1315,6 +1315,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Istoricul disponibilității nu este încă disponibil."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Unele sisteme au probleme"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Înregistrează un mesaj vocal"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Gata de trimis"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Acel mesaj nu mai este aici."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Mergi la mesaj"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Mesaj vocal"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Apreciat de autor"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "Adaugă o fotografie sau un clip"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Media"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Mesaje vocale"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Chat"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Imagine de fundal"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Dezactivează notificările"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Nu mai primi notificări despre această conversație"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("Nu îți mai pot trimite mesaje"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Niciunul"),
+      "ui_dm_wallpaper_photo":
+          MessageLookupByLibrary.simpleMessage("Fotografie"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Notificări reactivate."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu s-a putut elimina. Încearcă din nou."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute":
+          MessageLookupByLibrary.simpleMessage("Reactivează sunetul"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Fotografiile și clipurile pe care le distribui apar aici."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Vezi tot"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Fotografii și clipuri"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Așa va arăta chatul tău."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Arată bine."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Ceață"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Amurg"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvie"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Nisip"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Puncte"),
     };
 
 final messageLookup = MessageLookup();

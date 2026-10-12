@@ -1104,6 +1104,44 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("가동 기록을 아직 사용할 수 없습니다."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("일부 시스템에 문제가 있습니다"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("음성 메시지 녹음"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("보낼 준비 완료"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("해당 메시지는 더 이상 없습니다."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("메시지로 이동"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("음성 메시지"),
+      "ui_liked_by_author": MessageLookupByLibrary.simpleMessage("작성자가 좋아함"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("사진 또는 클립 추가"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("미디어"),
+      "ui_dm_info_voice_notes": MessageLookupByLibrary.simpleMessage("음성 메시지"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("채팅"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("배경화면"),
+      "ui_dm_info_mute_row": MessageLookupByLibrary.simpleMessage("알림 끄기"),
+      "ui_dm_info_mute_detail":
+          MessageLookupByLibrary.simpleMessage("이 대화에 대한 알림을 더 이상 받지 않습니다"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("상대방이 더 이상 메시지를 보낼 수 없습니다"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("없음"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("사진"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("알림을 다시 켰습니다."),
+      "ui_dm_remove_failed":
+          MessageLookupByLibrary.simpleMessage("삭제하지 못했습니다. 다시 시도하세요."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("프로필"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("알림 켜기"),
+      "ui_dm_info_no_media":
+          MessageLookupByLibrary.simpleMessage("공유한 사진과 클립이 여기에 표시됩니다."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("모두 보기"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("사진 및 클립"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("채팅이 이렇게 보입니다."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("좋아 보여요."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("안개"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("해질녘"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("세이지"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("모래"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("도트"),
     };
 
 final messageLookup = MessageLookup();

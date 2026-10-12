@@ -37,6 +37,11 @@ class PostComment {
   final int likes;
   final bool liked;
 
+  /// The post's author, when they liked it. Drawn as their face with a heart
+  /// beside the menu: of all the likes a reply can get, the one from the
+  /// person whose post it is says the most.
+  final FeedAuthor? authorLike;
+
   const PostComment({
     required this.id,
     required this.content,
@@ -50,6 +55,7 @@ class PostComment {
     this.media = const [],
     this.likes = 0,
     this.liked = false,
+    this.authorLike,
   });
 
   bool get isReply => parentId != null;
@@ -74,9 +80,21 @@ class PostComment {
         media: PostMedia.listFrom(json['media']),
         likes: (json['likes'] as num?)?.toInt() ?? 0,
         liked: json['liked'] == true,
+        authorLike: json['authorLike'] is Map<String, dynamic>
+            ? FeedAuthor.fromJson(json['authorLike'] as Map<String, dynamic>)
+            : null,
       );
 
-  PostComment copyWith({int? replies, int? likes, bool? liked}) => PostComment(
+  /// [authorLike] replaces the author's like when given; [clearAuthorLike]
+  /// takes it away. A null alone keeps what was there.
+  PostComment copyWith({
+    int? replies,
+    int? likes,
+    bool? liked,
+    FeedAuthor? authorLike,
+    bool clearAuthorLike = false,
+  }) =>
+      PostComment(
         id: id,
         content: content,
         createdAt: createdAt,
@@ -89,12 +107,27 @@ class PostComment {
         media: media,
         likes: likes ?? this.likes,
         liked: liked ?? this.liked,
+        authorLike: clearAuthorLike ? null : (authorLike ?? this.authorLike),
+      );
+
+  /// This comment with the reader's like set to [wanted]. When the reader is
+  /// the post's author -- [asAuthor] -- their like is the author's like too,
+  /// and the badge comes and goes with it.
+  PostComment withLike(bool wanted, {int? likes, FeedAuthor? asAuthor}) =>
+      copyWith(
+        liked: wanted,
+        likes: likes ?? (this.likes + (wanted ? 1 : -1)).clamp(0, 1 << 31),
+        authorLike: asAuthor != null && wanted ? asAuthor : null,
+        clearAuthorLike: asAuthor != null && !wanted,
       );
 }
 
 /// One comment, everything under it, and which post it belongs to.
 class CommentThread {
   final String postId;
+
+  /// Who wrote the post, so the page can tell whether the reader is them.
+  final String? postAuthorId;
   final PostComment root;
   final List<PostComment> replies;
 
@@ -102,10 +135,12 @@ class CommentThread {
     required this.postId,
     required this.root,
     required this.replies,
+    this.postAuthorId,
   });
 
   factory CommentThread.fromJson(Map<String, dynamic> json) => CommentThread(
         postId: json['postId'] as String? ?? '',
+        postAuthorId: json['postAuthorId'] as String?,
         root: PostComment.fromJson(
           (json['root'] as Map<String, dynamic>?) ?? const {},
         ),

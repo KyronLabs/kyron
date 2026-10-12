@@ -1374,6 +1374,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tööaja ajalugu pole veel saadaval."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Mõnel süsteemil on probleeme"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("Salvesta häälsõnum"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Valmis saatmiseks"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Seda sõnumit pole enam siin."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Mine sõnumi juurde"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Häälsõnum"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Autorile meeldib"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Lisa foto või klipp"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Meedia"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Häälsõnumid"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Vestlus"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Taustapilt"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Vaigista teavitused"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Lõpeta teavituste saamine selle vestluse kohta"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Nad ei saa sulle enam sõnumeid saata"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Puudub"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Vaigistus eemaldatud."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Eemaldamine ebaõnnestus. Proovi uuesti."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profiil"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Lõpeta vaigistus"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Siin kuvatakse fotod ja klipid, mida jagad."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Kuva kõik"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Fotod ja klipid"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Selline näeb sinu vestlus välja."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Näeb hea välja."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Udu"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Hämarik"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvei"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Liiv"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Täpid"),
     };
 
 final messageLookup = MessageLookup();

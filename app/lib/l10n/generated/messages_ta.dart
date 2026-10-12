@@ -1313,6 +1313,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "இயக்க நேர வரலாறு இன்னும் கிடைக்கவில்லை."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "சில அமைப்புகளில் சிக்கல் உள்ளது"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("குரல் குறிப்பைப் பதிவுசெய்"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("அனுப்பத் தயார்"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "அந்தச் செய்தி இனி இங்கு இல்லை."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("செய்திக்குச் செல்"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("குரல் குறிப்பு"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("எழுத்தாளர் விரும்பினார்"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("படம் அல்லது கிளிப்பைச் சேர்"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("மீடியா"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("குரல் குறிப்புகள்"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("அரட்டை"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("வால்பேப்பர்"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("அறிவிப்புகளை முடக்கு"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "இந்த உரையாடல் பற்றிய அறிவிப்புகளைப் பெறுவதை நிறுத்து"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "அவர்களால் இனி உங்களுக்குச் செய்தி அனுப்ப முடியாது"),
+      "ui_dm_wallpaper_none":
+          MessageLookupByLibrary.simpleMessage("எதுவுமில்லை"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("படம்"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("ஒலி இயக்கப்பட்டது."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "அகற்ற முடியவில்லை. மீண்டும் முயலவும்."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("சுயவிவரம்"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("ஒலியை இயக்கு"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் பகிரும் படங்களும் கிளிப்புகளும் இங்கே தோன்றும்."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("அனைத்தையும் காண்க"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("படங்களும் கிளிப்புகளும்"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் அரட்டை இப்படித் தோன்றும்."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("நன்றாக உள்ளது."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("பனிமூட்டம்"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("அந்தி"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("சேஜ்"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("மணல்"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("புள்ளிகள்"),
     };
 
 final messageLookup = MessageLookup();

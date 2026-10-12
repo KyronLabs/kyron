@@ -1315,6 +1315,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "അപ്‌ടൈം ചരിത്രം ഇതുവരെ ലഭ്യമല്ല."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "ചില സിസ്റ്റങ്ങളിൽ പ്രശ്നങ്ങളുണ്ട്"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage(
+          "വോയ്‌സ് നോട്ട് റെക്കോർഡ് ചെയ്യുക"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("അയയ്ക്കാൻ തയ്യാറാണ്"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("ആ സന്ദേശം ഇനി ഇവിടെയില്ല."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("സന്ദേശത്തിലേക്ക് പോകുക"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("വോയ്‌സ് നോട്ട്"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("രചയിതാവിന് ഇഷ്ടപ്പെട്ടു"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "ഫോട്ടോ അല്ലെങ്കിൽ ക്ലിപ്പ് ചേർക്കുക"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("മീഡിയ"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("വോയ്‌സ് നോട്ടുകൾ"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("ചാറ്റ്"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("വാൾപേപ്പർ"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("അറിയിപ്പുകൾ മ്യൂട്ട് ചെയ്യുക"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "ഈ സംഭാഷണത്തെക്കുറിച്ചുള്ള അറിയിപ്പുകൾ ലഭിക്കുന്നത് നിർത്തുക"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "അവർക്ക് ഇനി നിങ്ങൾക്ക് സന്ദേശം അയയ്ക്കാനാകില്ല"),
+      "ui_dm_wallpaper_none":
+          MessageLookupByLibrary.simpleMessage("ഒന്നുമില്ല"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("ഫോട്ടോ"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("അൺമ്യൂട്ട് ചെയ്തു."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "നീക്കം ചെയ്യാനായില്ല. വീണ്ടും ശ്രമിക്കുക."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("പ്രൊഫൈൽ"),
+      "ui_dm_unmute":
+          MessageLookupByLibrary.simpleMessage("അൺമ്യൂട്ട് ചെയ്യുക"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ പങ്കിടുന്ന ഫോട്ടോകളും ക്ലിപ്പുകളും ഇവിടെ കാണാം."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("എല്ലാം കാണുക"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("ഫോട്ടോകളും ക്ലിപ്പുകളും"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ ചാറ്റ് ഇങ്ങനെയായിരിക്കും."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("നന്നായിട്ടുണ്ട്."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("മൂടൽമഞ്ഞ്"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("സന്ധ്യ"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("സേജ്"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("മണൽ"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("കുത്തുകൾ"),
     };
 
 final messageLookup = MessageLookup();

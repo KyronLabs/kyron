@@ -1401,6 +1401,51 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "İşləmə tarixçəsi hələ mövcud deyil."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Bəzi sistemlərdə problemlər var"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("Səsli qeyd yaz"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Göndərməyə hazırdır"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Həmin mesaj artıq burada deyil."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("Mesaja keç"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Səsli qeyd"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Müəllif bəyəndi"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Şəkil və ya klip əlavə et"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Media"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Səsli qeydlər"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Söhbət"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Divar kağızı"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Bildirişləri səssizləşdir"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Bu söhbət haqqında bildiriş almağı dayandır"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Artıq sizə mesaj yaza bilməzlər"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Heç biri"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Şəkil"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("Səs açıldı."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Silmək mümkün olmadı. Yenidən cəhd edin."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Səsi aç"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Paylaşdığınız şəkil və kliplər burada görünür."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Hamısına bax"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Şəkillər və kliplər"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Söhbətiniz belə görünəcək."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Yaxşı görünür."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Duman"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Alaqaranlıq"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Adaçayı"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Qum"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Nöqtələr"),
     };
 
 final messageLookup = MessageLookup();

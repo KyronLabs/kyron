@@ -12,6 +12,7 @@ import 'package:kyron_app/widgets/hairline.dart';
 import 'package:kyron_app/widgets/quoted_post_card.dart';
 import 'package:kyron_app/widgets/reply_bar.dart';
 import 'package:kyron_app/widgets/voice_post_player.dart';
+import 'package:kyron_app/widgets/voice_waveform.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -48,8 +49,8 @@ Widget _bar(TextEditingController controller, {String? replyingTo}) => Scaffold(
           sending: false,
           onSend: () {},
           canAttach: true,
-          onAddPhoto: () {},
-          onAddClip: () {},
+          onAddMedia: () {},
+          onAddGif: () {},
           media: const [],
           onRemoveMedia: (_) {},
           onRetryMedia: (_) {},
@@ -88,19 +89,25 @@ void main() {
       expect(decoration.enabledBorder, InputBorder.none);
     });
 
-    testWidgets('keeps a photo and a clip inside the box until you type', (
+    testWidgets('keeps the gallery and a GIF inside the box until you type', (
       tester,
     ) async {
       final controller = TextEditingController();
       await _pump(tester, _bar(controller));
 
-      expect(find.byTooltip('Add a photo'), findsOneWidget);
+      // One gallery button for photos and clips both, and a GIF beside it,
+      // packed together: no gap between them wider than the buttons' own.
+      final gallery = tester.getRect(find.byTooltip('Add a photo or clip'));
+      final gif = tester.getRect(find.byTooltip('Add a GIF'));
+      expect(gif.left - gallery.right, lessThanOrEqualTo(0.5));
+      expect(gallery.width, lessThanOrEqualTo(32));
 
       controller.text = 'nice';
       await _pump(tester, _bar(controller));
 
       // Out of the way once there are words, when the room matters more.
-      expect(find.byTooltip('Add a photo'), findsNothing);
+      expect(find.byTooltip('Add a photo or clip'), findsNothing);
+      expect(find.byTooltip('Add a GIF'), findsNothing);
     });
 
     testWidgets('says who is being answered in a line, not a toolbar', (
@@ -239,6 +246,67 @@ void main() {
           )
           .where((c) => c.decoration is BoxDecoration);
       expect(framed, isEmpty);
+    });
+
+    testWidgets('a voice post is the height of the reply box', (tester) async {
+      // A 40-point disc, a 40-point waveform and a card's padding made a
+      // recording taller than anything else a post carries.
+      await _pump(
+        tester,
+        const Scaffold(body: VoicePostPlayer(media: voice)),
+      );
+
+      final card = find.descendant(
+        of: find.byType(VoicePostPlayer),
+        matching: find.byWidgetPredicate(
+          (w) => w is Container && w.decoration is BoxDecoration,
+        ),
+      );
+      expect(tester.getSize(card).height, VoicePostPlayer.height);
+      expect(VoicePostPlayer.height, lessThanOrEqualTo(44));
+    });
+
+    testWidgets('play is the icon alone, in the text colour', (tester) async {
+      await _pump(
+        tester,
+        const Scaffold(body: VoicePostPlayer(media: voice)),
+      );
+
+      final icon = tester.widget<Icon>(
+        find.descendant(
+          of: find.byType(VoicePostPlayer),
+          matching: find.byType(Icon),
+        ),
+      );
+      expect(icon.color, KyronTheme.lightTheme.colorScheme.onSurface);
+
+      // Nothing filled behind it: no disc, no tinted circle.
+      final discs = find.descendant(
+        of: find.byType(VoicePostPlayer),
+        matching: find.byWidgetPredicate(
+          (w) =>
+              (w is Material && w.color != null) ||
+              (w is Container &&
+                  w.decoration is BoxDecoration &&
+                  (w.decoration! as BoxDecoration).shape == BoxShape.circle),
+        ),
+      );
+      expect(discs, findsNothing);
+    });
+  });
+
+  group('the waveform fill', () {
+    test('stops part-way through a bar rather than at the next one', () {
+      // Filling whole bars moved the fill a bar at a time, in steps. Ten
+      // bars at 55% stops in the middle of the sixth, not at its edge.
+      final played = VoiceWaveform.playedExtent(10, 0.55);
+      expect(played, closeTo(5.5 * VoiceWaveform.slot, 0.001));
+      expect(played % VoiceWaveform.slot, isNot(closeTo(0, 0.001)));
+    });
+
+    test('never runs past either end', () {
+      expect(VoiceWaveform.playedExtent(10, -1), 0);
+      expect(VoiceWaveform.playedExtent(10, 2), 10 * VoiceWaveform.slot);
     });
   });
 }

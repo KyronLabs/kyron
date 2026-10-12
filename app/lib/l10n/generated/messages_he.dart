@@ -1310,6 +1310,46 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "היסטוריית הזמינות עדיין לא זמינה."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("בחלק מהמערכות יש בעיות"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("הקלטת הודעה קולית"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("מוכנה לשליחה"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("ההודעה הזו כבר לא כאן."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("מעבר להודעה"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("הודעה קולית"),
+      "ui_liked_by_author": MessageLookupByLibrary.simpleMessage("הכותב אהב"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("הוספת תמונה או קליפ"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("מדיה"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("הודעות קוליות"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("צ'אט"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("טפט"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("השתקת התראות"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "הפסקת קבלת התראות על השיחה הזו"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "הם כבר לא יכולים לשלוח לך הודעות"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("ללא"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("תמונה"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("ההשתקה בוטלה."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן היה להסיר. כדאי לנסות שוב."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("פרופיל"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("ביטול השתקה"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "תמונות וקליפים שתשתפו יופיעו כאן."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("הצגת הכול"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("תמונות וקליפים"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("כך ייראה הצ'אט שלך."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("נראה טוב."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("ערפל"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("דמדומים"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("מרווה"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("חול"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("נקודות"),
     };
 
 final messageLookup = MessageLookup();

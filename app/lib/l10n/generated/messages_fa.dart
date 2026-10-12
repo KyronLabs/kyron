@@ -1309,6 +1309,49 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "تاریخچهٔ زمان فعالیت هنوز در دسترس نیست."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("برخی سامانه‌ها مشکل دارند"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("ضبط پیام صوتی"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("آمادهٔ ارسال"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("این پیام دیگر اینجا نیست."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("رفتن به پیام"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("پیام صوتی"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("نویسنده پسندید"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("افزودن عکس یا کلیپ"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("رسانه"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("پیام‌های صوتی"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("گفتگو"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("کاغذدیواری"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("بی‌صدا کردن اعلان‌ها"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "دیگر دربارهٔ این گفتگو اعلان دریافت نکنید"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "دیگر نمی‌توانند به شما پیام دهند"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("هیچ"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("عکس"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("صدادار شد."),
+      "ui_dm_remove_failed":
+          MessageLookupByLibrary.simpleMessage("حذف نشد. دوباره امتحان کنید."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("نمایه"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("صدادار کردن"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "عکس‌ها و کلیپ‌هایی که هم‌رسانی می‌کنید اینجا نمایش داده می‌شوند."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("دیدن همه"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("عکس‌ها و کلیپ‌ها"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "گفتگوی شما این‌گونه دیده می‌شود."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("خوب به نظر می‌رسد."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("مه"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("شامگاه"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("مریم‌گلی"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("شن"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("نقطه‌ها"),
     };
 
 final messageLookup = MessageLookup();
