@@ -1377,6 +1377,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Не удалось отправить. Попробуйте ещё раз."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Фильтр"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Все"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Непрочитанные"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Без ответа"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Скрытые"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Ничего не скрыто"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Разговоры, которые вы убираете из списка, ждут здесь — на случай, если захотите их вернуть."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Он перемещается в Скрытые. У собеседника он остаётся, и он вернётся, если кто-то из вас снова напишет."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Вернуть"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Снова в вашем списке."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Подходящих разговоров нет."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Вас ничего не ждёт"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Каждый разговор заканчивается вашим словом."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Фото"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Фото"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Видео"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Сообщений пока нет"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Вы:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Вчера"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Сообщения"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Настройки сообщений"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Конфиденциальность"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Отчёты о прочтении"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Если это выключено, другие не увидят, когда вы прочитали их сообщения, а вы не увидите, когда они прочитали ваши."),
+      "ui_dm_typing_setting": MessageLookupByLibrary.simpleMessage(
+          "Показывать, когда вы печатаете"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Собеседник видит, что вы пишете."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Предпросмотр ссылок"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Чтобы сделать предпросмотр, ваш телефон открывает отправляемую ссылку, поэтому сайт видит запрос вашего телефона. Сервер Kyron никогда не видит ссылку."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Уведомления о сообщениях"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Сообщения защищены сквозным шифрованием. Kyron не может их прочитать, и ничто здесь этого не меняет."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Кому:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Недавние"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Люди"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Нет никого с таким именем."),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage(
+          "Отправить тестовое уведомление"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Сервер Kyron ещё не настроен на отправку уведомлений, поэтому ни одно не может прийти. Проблема на нашей стороне, а не в вашем телефоне."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Этот телефон не зарегистрирован для уведомлений. Проверьте, что уведомления Kyron разрешены в настройках телефона, и попробуйте снова."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Не удалось доставить уведомление на этот телефон. Попробуйте снова через минуту."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Отправлено. Оно должно прийти через несколько секунд."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Уведомления работают."),
     };
 
 final messageLookup = MessageLookup();

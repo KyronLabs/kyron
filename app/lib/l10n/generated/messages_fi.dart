@@ -1374,6 +1374,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Lähettäminen ei onnistunut. Yritä uudelleen."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Suodatin"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Kaikki"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Lukemattomat"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Vastaamattomat"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Piilotetut"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Ei mitään piilotettuna"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Listaltasi poistamasi keskustelut odottavat täällä siltä varalta, että haluat ne takaisin."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Se siirtyy piilotettuihin. Toinen pitää omansa, ja se palaa, jos jompikumpi kirjoittaa uudelleen."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Palauta"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Takaisin listallasi."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Ei vastaavia keskusteluja."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Mikään ei odota sinua"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Jokainen keskustelu päättyy sinun sanaasi."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Kuva"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Kuvat"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Ei vielä viestejä"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Sinä:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Eilen"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Viestit"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Viestiasetukset"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Yksityisyys"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Lukukuittaukset"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Kun tämä on pois päältä, muut eivät näe, milloin olet lukenut heidän viestinsä, etkä sinä näe, milloin he ovat lukeneet sinun viestisi."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Näytä, kun kirjoitat"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Henkilö, jolle kirjoitat, näkee, että kirjoitat."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Linkkien esikatselut"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Puhelimesi avaa lähettämäsi linkin esikatselun tekemiseksi, joten sivusto näkee puhelimesi pyynnön. Kyronin palvelin ei koskaan näe linkkiä."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Viestien ilmoitukset"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Viestit on salattu päästä päähän. Kyron ei voi lukea niitä, eikä mikään tässä muuta sitä."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Vastaanottaja:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Viimeisimmät"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Ihmiset"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Kukaan ei ole tuolla nimellä."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Lähetä testi-ilmoitus"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyronin palvelinta ei ole vielä määritetty lähettämään ilmoituksia, joten yksikään ei voi tulla perille. Vika on meidän päässämme, ei puhelimessasi."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Tätä puhelinta ei ole rekisteröity ilmoituksille. Tarkista, että Kyronin ilmoitukset on sallittu puhelimen asetuksissa, ja yritä uudelleen."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Ilmoitusta ei voitu toimittaa tähän puhelimeen. Yritä minuutin päästä uudelleen."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Lähetetty. Sen pitäisi saapua muutamassa sekunnissa."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Ilmoitukset toimivat."),
     };
 
 final messageLookup = MessageLookup();

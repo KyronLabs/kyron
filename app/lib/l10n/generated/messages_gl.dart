@@ -1375,6 +1375,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Non se puido enviar. Téntao de novo."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtro"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Todas"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Sen ler"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Sen resposta"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Agochadas"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Nada agochado"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "As conversas que quitas da túa lista agardan aquí, por se as queres recuperar."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Pasa a Agochadas. A outra persoa conserva a súa, e volve se algún de vós escribe de novo."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Recuperar"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("De volta na túa lista."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Ningunha conversa coincide."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Nada te agarda"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Todas as conversas rematan coa túa palabra."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Fotos"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Vídeo"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Aínda non hai mensaxes"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Ti:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Onte"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Mensaxes"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Axustes das mensaxes"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Privacidade"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Confirmacións de lectura"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Se o desactivas, os demais non verán cando liches as súas mensaxes, e ti non verás cando leron as túas."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Amosar cando escribes"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "A persoa á que escribes ve que estás a escribir."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Vistas previas de ligazóns"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "O teu teléfono abre a ligazón que envías para facer a vista previa, así que o sitio ve a petición do teu teléfono. O servidor de Kyron nunca ve a ligazón."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Notificacións das mensaxes"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "As mensaxes están cifradas de extremo a extremo. Kyron non as pode ler, e nada de aquí o cambia."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Para:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Recentes"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Persoas"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Ninguén con ese nome."),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage(
+          "Enviar unha notificación de proba"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "O servidor de Kyron aínda non está configurado para enviar notificacións, así que non pode chegar ningunha. O problema é noso, non do teu teléfono."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Este teléfono non está rexistrado para notificacións. Comproba que as notificacións de Kyron estean permitidas nos axustes do teléfono e téntao de novo."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Non se puido entregar a notificación a este teléfono. Téntao de novo nun minuto."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Enviada. Debería chegar nuns segundos."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("As notificacións funcionan."),
     };
 
 final messageLookup = MessageLookup();

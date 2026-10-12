@@ -1660,6 +1660,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "That could not be sent. Try again."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("All"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Unread"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Unanswered"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Hidden"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Nothing hidden"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Conversations you remove from your list wait here, in case you want them back."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "It moves to Hidden. The other person keeps theirs, and it comes back if either of you writes again."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Put back"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Back in your list."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("No conversations match."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Nothing waiting on you"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Every conversation ends on your word."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Photo"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Photos"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("No messages yet"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("You:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Messages"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Message settings"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Read receipts"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "When this is off, people won't see when you've read their messages, and you won't see when they've read yours."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Show when you're typing"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "The person you are writing to sees that you are writing."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Link previews"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Your phone opens a link you send to make its preview, so the site sees your phone ask. Kyron's server never sees the link."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Notifications for messages"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Messages are end-to-end encrypted. Kyron cannot read them, and nothing here changes that."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("To:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Recent"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("People"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Nobody by that name."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Send a test notification"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron's server is not set up to send notifications yet, so none can arrive. This is on our side, not your phone."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "This phone is not registered for notifications. Check that notifications are allowed for Kyron in your phone's settings, then try again."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "The notification could not be delivered to this phone. Try again in a minute."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Sent. It should arrive in a few seconds."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Notifications are working."),
     };
 
 final messageLookup = MessageLookup();

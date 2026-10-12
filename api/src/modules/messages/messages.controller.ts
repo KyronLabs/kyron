@@ -13,7 +13,11 @@ import {
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
 import { WallpapersService } from './wallpapers.service';
-import { ListConversationsDto, ListMessagesDto } from './dto/list-messages.dto';
+import {
+  ListConversationsDto,
+  ListMessagesDto,
+  MessagingSettingsDto,
+} from './dto/list-messages.dto';
 import { SendMessageDto } from './dto/send-message.dto';
 import { ReactDto } from './dto/react.dto';
 import { OpenConversationDto } from './dto/open-conversation.dto';
@@ -37,6 +41,7 @@ export class MessagesController {
       limit: query.limit,
       cursor: query.cursor,
       unreadOnly: query.unreadOnly ?? false,
+      filter: query.filter,
     });
   }
 
@@ -83,6 +88,17 @@ export class MessagesController {
    * The wallpapers a chat can be drawn on. Declared above `:id`, which would
    * otherwise take "wallpapers" for a conversation id and refuse it.
    */
+  /** The reader's messaging settings. Before ':id', which would take it. */
+  @Get('settings')
+  settings(@Req() req: AuthRequest) {
+    return this.svc.settings(req.user.id);
+  }
+
+  @Put('settings')
+  updateSettings(@Req() req: AuthRequest, @Body() dto: MessagingSettingsDto) {
+    return this.svc.updateSettings(req.user.id, dto);
+  }
+
   @Get('wallpapers')
   listWallpapers() {
     return this.wallpapers.list();
@@ -174,6 +190,12 @@ export class MessagesController {
   }
 
   /** Takes the conversation out of the reader's list, not out of existence. */
+  /** Back in the list, from Hidden. */
+  @Put(':id/restore')
+  unhide(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.unhide(req.user.id, id);
+  }
+
   @Delete(':id')
   hide(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
     return this.svc.hide(req.user.id, id);

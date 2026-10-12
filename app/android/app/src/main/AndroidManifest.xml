@@ -74,6 +74,17 @@
                 <data android:mimeType="image/*"/>
             </intent-filter>
         </activity>
+        <!-- What a push from Kyron looks like in the status bar: the leaf as
+             a white silhouette, which is all Android draws there. Without
+             it the full colour launcher icon is used and shows as a white
+             square. And the channel a push goes on when it names none:
+             MainActivity creates Messages and Activity. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_stat_kyron" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="activity" />
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

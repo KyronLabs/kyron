@@ -1377,6 +1377,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "పంపడం సాధ్యం కాలేదు. మళ్లీ ప్రయత్నించండి."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ఫిల్టర్"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("అన్నీ"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("చదవనివి"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("జవాబు ఇవ్వనివి"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("దాచినవి"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("ఏదీ దాచబడలేదు"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "మీ జాబితా నుండి తీసివేసిన సంభాషణలు, మళ్లీ కావాలంటే ఇక్కడ ఎదురుచూస్తాయి."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "ఇది దాచినవికి వెళ్తుంది. అవతలి వ్యక్తి తమదాన్ని ఉంచుకుంటారు, మీలో ఎవరైనా మళ్లీ రాస్తే ఇది తిరిగి వస్తుంది."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("తిరిగి ఉంచు"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("మళ్లీ మీ జాబితాలో."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("సరిపోలే సంభాషణలు లేవు."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("మీ కోసం ఏదీ ఎదురుచూడటం లేదు"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ప్రతి సంభాషణ మీ మాటతోనే ముగుస్తుంది."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ఫోటో"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("ఫోటోలు"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("వీడియో"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("ఇంకా సందేశాలు లేవు"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("మీరు:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("నిన్న"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("సందేశాలు"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("సందేశ సెట్టింగ్‌లు"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("గోప్యత"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("చదివిన రసీదులు"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "ఇది ఆఫ్‌లో ఉంటే, మీరు వారి సందేశాలు ఎప్పుడు చదివారో ఇతరులకు కనిపించదు, వారు మీవి ఎప్పుడు చదివారో మీకూ కనిపించదు."),
+      "ui_dm_typing_setting": MessageLookupByLibrary.simpleMessage(
+          "మీరు టైప్ చేస్తున్నప్పుడు చూపించు"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "మీరు రాస్తున్న వ్యక్తికి మీరు రాస్తున్నారని కనిపిస్తుంది."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("లింక్ ప్రివ్యూలు"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "ప్రివ్యూ చేయడానికి మీ ఫోన్ మీరు పంపే లింక్‌ను తెరుస్తుంది, కాబట్టి సైట్‌కు మీ ఫోన్ అభ్యర్థన కనిపిస్తుంది. Kyron సర్వర్ లింక్‌ను ఎప్పుడూ చూడదు."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("సందేశాల నోటిఫికేషన్‌లు"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "సందేశాలు ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడ్డాయి. Kyron వాటిని చదవలేదు, ఇక్కడ ఏదీ దాన్ని మార్చదు."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("వీరికి:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("ఇటీవలివి"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("వ్యక్తులు"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("ఆ పేరుతో ఎవరూ లేరు."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("పరీక్ష నోటిఫికేషన్ పంపు"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron సర్వర్ ఇంకా నోటిఫికేషన్‌లు పంపడానికి సెటప్ కాలేదు, కాబట్టి ఏదీ రాలేదు. సమస్య మా వైపు ఉంది, మీ ఫోన్‌లో కాదు."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "ఈ ఫోన్ నోటిఫికేషన్‌ల కోసం నమోదు కాలేదు. ఫోన్ సెట్టింగ్‌లలో Kyron నోటిఫికేషన్‌లకు అనుమతి ఉందో లేదో చూసి, మళ్లీ ప్రయత్నించండి."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "నోటిఫికేషన్‌ను ఈ ఫోన్‌కు అందించలేకపోయాం. ఒక నిమిషం తర్వాత మళ్లీ ప్రయత్నించండి."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "పంపబడింది. కొన్ని సెకన్లలో రావాలి."),
+      "ui_push_working": MessageLookupByLibrary.simpleMessage(
+          "నోటిఫికేషన్‌లు పనిచేస్తున్నాయి."),
     };
 
 final messageLookup = MessageLookup();

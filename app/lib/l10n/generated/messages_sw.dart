@@ -1372,6 +1372,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Haikuweza kutumwa. Jaribu tena."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Chuja"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Zote"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Hazijasomwa"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Hazijajibiwa"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Zilizofichwa"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Hakuna kilichofichwa"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Mazungumzo unayoondoa kwenye orodha yako yanasubiri hapa, iwapo utayataka tena."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Yanahamia Zilizofichwa. Mtu mwingine anabaki na yake, na yanarudi iwapo mmoja wenu ataandika tena."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Rudisha"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Yamerudi kwenye orodha yako."),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage(
+          "Hakuna mazungumzo yanayolingana."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Hakuna kinachokusubiri"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kila mazungumzo yanaishia kwa neno lako."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Picha"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Picha"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Bado hakuna ujumbe"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Wewe:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Jana"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Ujumbe"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Mipangilio ya ujumbe"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("Faragha"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Risiti za kusomwa"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Ikizimwa, watu hawataona ulipousoma ujumbe wao, nawe hutaona walipousoma wako."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Onyesha unapoandika"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Unayemwandikia anaona kwamba unaandika."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Maonyesho ya viungo"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Simu yako hufungua kiungo unachotuma ili kutengeneza onyesho lake, kwa hivyo tovuti huona ombi la simu yako. Seva ya Kyron haioni kiungo kamwe."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Arifa za ujumbe"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Ujumbe umesimbwa mwisho hadi mwisho. Kyron haiwezi kuusoma, na hakuna kitu hapa kinachobadilisha hilo."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Kwa:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Za karibuni"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Watu"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Hakuna mwenye jina hilo."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Tuma arifa ya majaribio"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Seva ya Kyron bado haijawekwa kutuma arifa, kwa hivyo hakuna inayoweza kufika. Tatizo liko upande wetu, si kwenye simu yako."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Simu hii haijasajiliwa kwa arifa. Hakikisha arifa za Kyron zimeruhusiwa kwenye mipangilio ya simu yako, kisha ujaribu tena."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Arifa haikuweza kufikishwa kwenye simu hii. Jaribu tena baada ya dakika moja."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Imetumwa. Inapaswa kufika ndani ya sekunde chache."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Arifa zinafanya kazi."),
     };
 
 final messageLookup = MessageLookup();

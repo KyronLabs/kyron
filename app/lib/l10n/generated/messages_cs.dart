@@ -1443,6 +1443,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Nepodařilo se odeslat. Zkuste to znovu."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Sledující"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtr"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Vše"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Nepřečtené"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Bez odpovědi"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Skryté"),
+      "ui_dm_hidden_none": MessageLookupByLibrary.simpleMessage("Nic skrytého"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Konverzace, které odeberete ze seznamu, čekají tady, kdybyste je chtěli zpět."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Přesune se do Skrytých. Druhá strana si tu svou ponechá a vrátí se, když jeden z vás znovu napíše."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Vrátit"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Zpět ve vašem seznamu."),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage(
+          "Žádné odpovídající konverzace."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Nic na vás nečeká"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Každá konverzace končí vaším slovem."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Fotka"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Fotky"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Zatím žádné zprávy"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Vy:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Včera"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Zprávy"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Nastavení zpráv"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Soukromí"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Potvrzení o přečtení"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Když je to vypnuté, lidé neuvidí, kdy jste si přečetli jejich zprávy, a vy neuvidíte, kdy si oni přečetli ty vaše."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Zobrazit, když píšete"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Člověk, kterému píšete, vidí, že píšete."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Náhledy odkazů"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Váš telefon otevře odkaz, který posíláte, aby vytvořil náhled, takže web uvidí požadavek vašeho telefonu. Server Kyronu odkaz nikdy neuvidí."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Oznámení o zprávách"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Zprávy jsou koncově šifrované. Kyron je nemůže číst a nic tady to nemění."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Komu:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Nedávné"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Lidé"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Nikdo s tímto jménem."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Poslat zkušební oznámení"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Server Kyronu zatím není nastavený na odesílání oznámení, takže žádné nemůže dorazit. Chyba je u nás, ne ve vašem telefonu."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Tento telefon není zaregistrovaný pro oznámení. Zkontrolujte, že má Kyron v nastavení telefonu povolená oznámení, a zkuste to znovu."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Oznámení se do tohoto telefonu nepodařilo doručit. Zkuste to znovu za minutu."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Odesláno. Mělo by dorazit během několika sekund."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Oznámení fungují."),
     };
 
 final messageLookup = MessageLookup();

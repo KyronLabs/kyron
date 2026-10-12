@@ -1373,6 +1373,71 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Det gick inte att skicka. Försök igen."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Alla"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Olästa"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Obesvarade"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Dolda"),
+      "ui_dm_hidden_none": MessageLookupByLibrary.simpleMessage("Inget dolt"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Konversationer du tar bort från listan väntar här, ifall du vill ha tillbaka dem."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Den flyttas till Dolda. Den andra behåller sin, och den kommer tillbaka om någon av er skriver igen."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Lägg tillbaka"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Tillbaka i din lista."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Inga konversationer matchar."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Inget väntar på dig"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Varje konversation slutar med ditt ord."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Foton"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Inga meddelanden än"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Du:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("I går"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Meddelanden"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Meddelandeinställningar"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Integritet"),
+      "ui_dm_read_receipts": MessageLookupByLibrary.simpleMessage("Läskvitton"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "När det är av ser andra inte när du har läst deras meddelanden, och du ser inte när de har läst dina."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Visa när du skriver"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Den du skriver till ser att du skriver."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Länkförhandsvisningar"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Din telefon öppnar en länk du skickar för att göra förhandsvisningen, så webbplatsen ser din telefon fråga. Kyrons server ser aldrig länken."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Aviseringar för meddelanden"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Meddelanden är totalsträckskrypterade. Kyron kan inte läsa dem, och inget här ändrar på det."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Till:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Senaste"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Personer"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Ingen med det namnet."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Skicka en testavisering"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyrons server är ännu inte inställd för att skicka aviseringar, så ingen kan komma fram. Felet ligger hos oss, inte i din telefon."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Den här telefonen är inte registrerad för aviseringar. Kontrollera att aviseringar för Kyron är tillåtna i telefonens inställningar och försök igen."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Aviseringen kunde inte levereras till den här telefonen. Försök igen om en minut."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Skickad. Den borde komma fram inom några sekunder."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Aviseringar fungerar."),
     };
 
 final messageLookup = MessageLookup();

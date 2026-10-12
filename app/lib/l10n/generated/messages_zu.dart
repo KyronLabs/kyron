@@ -1380,6 +1380,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Akukwazanga ukuthunyelwa. Zama futhi."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Hlunga"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Konke"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Okungafundiwe"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Okungaphendulwanga"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Okufihliwe"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Akukho okufihliwe"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Izingxoxo ozisusa ohlwini lwakho zilinda lapha, uma kwenzeka uzifuna futhi."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Iya kokuthi Okufihliwe. Omunye umuntu ugcina eyakhe, futhi iyabuya uma omunye wenu ebhala futhi."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Buyisela"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Isibuyile ohlwini lwakho."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Ayikho ingxoxo efanayo."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Akukho okukulindile"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Yonke ingxoxo iphela ngezwi lakho."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Isithombe"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Izithombe"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Ividiyo"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Ayikabi khona imilayezo"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Wena:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Izolo"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Imilayezo"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Izilungiselelo zemilayezo"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Ubumfihlo"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Amarisidi okufundiwe"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Uma lokhu kuvaliwe, abantu ngeke babone ukuthi uyifunde nini imilayezo yabo, nawe ngeke ubone ukuthi bayifunde nini eyakho."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Bonisa uma uthayipha"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Umuntu obhalela yena ubona ukuthi uyabhala."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Ukubuka kuqala kwezixhumanisi"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Ifoni yakho ivula isixhumanisi osithumelayo ukuze yenze ukubuka kwaso kuqala, ngakho isayithi libona isicelo sefoni yakho. Iseva ye-Kyron ayisiboni neze isixhumanisi."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Izaziso zemilayezo"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Imilayezo ibethelwe kusukela ekugcineni kuya ekugcineni. I-Kyron ayikwazi ukuyifunda, futhi akukho lutho lapha olushintsha lokho."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Kuya ku:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Okwakamuva"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Abantu"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Akekho onalelo gama."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Thumela isaziso sokuhlola"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Iseva ye-Kyron ayikasethwa ukuthumela izaziso, ngakho asikho esingafika. Inkinga ingasohlangothini lwethu, hhayi efonini yakho."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Le foni ayibhaliselwe izaziso. Hlola ukuthi izaziso ze-Kyron zivunyelwe kuzilungiselelo zefoni yakho, bese uzama futhi."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Isaziso asikwazanga ukulethwa kule foni. Zama futhi ngemva komzuzu."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Sithunyelwe. Kufanele sifike emizuzwaneni embalwa."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Izaziso ziyasebenza."),
     };
 
 final messageLookup = MessageLookup();

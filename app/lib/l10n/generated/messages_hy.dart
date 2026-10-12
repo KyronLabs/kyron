@@ -1378,6 +1378,75 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Չհաջողվեց ուղարկել։ Կրկին փորձեք։"),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Զտիչ"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Բոլորը"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Չկարդացված"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Անպատասխան"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Թաքցված"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Թաքցված ոչինչ չկա"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ձեր ցուցակից հեռացված զրույցները սպասում են այստեղ, եթե ուզենաք վերադարձնել։"),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Այն տեղափոխվում է Թաքցվածներ։ Մյուսը պահում է իրենը, և այն վերադառնում է, եթե ձեզնից մեկը նորից գրի։"),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Վերադարձնել"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Կրկին ձեր ցուցակում։"),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Համապատասխան զրույցներ չկան։"),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Ոչինչ ձեզ չի սպասում"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Յուրաքանչյուր զրույց ավարտվում է ձեր խոսքով։"),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Լուսանկար"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("Լուսանկարներ"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Տեսանյութ"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Դեռ հաղորդագրություններ չկան"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Դուք՝"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Երեկ"),
+      "ui_dm_settings":
+          MessageLookupByLibrary.simpleMessage("Հաղորդագրություններ"),
+      "ui_dm_settings_open": MessageLookupByLibrary.simpleMessage(
+          "Հաղորդագրությունների կարգավորումներ"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Գաղտնիություն"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Կարդալու հաստատումներ"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Երբ սա անջատված է, մարդիկ չեն տեսնի, երբ եք կարդացել նրանց հաղորդագրությունները, և դուք չեք տեսնի, երբ են նրանք կարդացել ձերը։"),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Ցույց տալ, երբ գրում եք"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Մարդը, ում գրում եք, տեսնում է, որ գրում եք։"),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Հղումների նախադիտումներ"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հեռախոսը բացում է ձեր ուղարկած հղումը՝ նախադիտում ստեղծելու համար, ուստի կայքը տեսնում է ձեր հեռախոսի հարցումը։ Kyron-ի սերվերը երբեք չի տեսնում հղումը։"),
+      "ui_dm_settings_notifications": MessageLookupByLibrary.simpleMessage(
+          "Հաղորդագրությունների ծանուցումներ"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Հաղորդագրությունները գաղտնագրված են ծայրից ծայր։ Kyron-ը չի կարող կարդալ դրանք, և այստեղ ոչինչ դա չի փոխում։"),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Ում՝"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Վերջինները"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Մարդիկ"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Այդ անունով ոչ ոք չկա։"),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Ուղարկել փորձնական ծանուցում"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ի սերվերը դեռ կարգավորված չէ ծանուցումներ ուղարկելու համար, ուստի ոչ մեկը չի կարող հասնել։ Խնդիրը մեր կողմում է, ոչ թե ձեր հեռախոսում։"),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Այս հեռախոսը գրանցված չէ ծանուցումների համար։ Ստուգեք, որ հեռախոսի կարգավորումներում Kyron-ի ծանուցումները թույլատրված են, ապա կրկին փորձեք։"),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Ծանուցումը չհաջողվեց հասցնել այս հեռախոսին։ Փորձեք մեկ րոպեից։"),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Ուղարկված է։ Այն պետք է հասնի մի քանի վայրկյանում։"),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Ծանուցումներն աշխատում են։"),
     };
 
 final messageLookup = MessageLookup();

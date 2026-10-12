@@ -1377,6 +1377,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("ပို့၍ မရပါ။ ထပ်စမ်းကြည့်ပါ။"),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("စစ်ထုတ်ရန်"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("အားလုံး"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("မဖတ်ရသေး"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("မပြန်ရသေး"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("ဝှက်ထားသည်"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("ဝှက်ထားသည့်အရာ မရှိပါ"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "စာရင်းမှ ဖယ်ထားသော စကားဝိုင်းများသည် ပြန်လိုချင်ပါက ဤနေရာတွင် စောင့်နေပါသည်။"),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "၎င်းသည် ဝှက်ထားသည်သို့ ရွှေ့သွားပါမည်။ တစ်ဖက်လူက သူ့ဟာကို သိမ်းထားပြီး သင်တို့ထဲမှ တစ်ယောက်ယောက် ထပ်ရေးလျှင် ပြန်ပေါ်လာပါမည်။"),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("ပြန်ထည့်ရန်"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("သင့်စာရင်းထဲ ပြန်ရောက်ပါပြီ။"),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("ကိုက်ညီသော စကားဝိုင်း မရှိပါ။"),
+      "ui_dm_unanswered_none": MessageLookupByLibrary.simpleMessage(
+          "သင့်ကို စောင့်နေသည့်အရာ မရှိပါ"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "စကားဝိုင်းတိုင်း သင့်စကားဖြင့် အဆုံးသတ်ထားပါသည်။"),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံ"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံများ"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("ဗီဒီယို"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ် မရှိသေးပါ"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("သင်-"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("မနေ့က"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်များ"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ် ဆက်တင်များ"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("ကိုယ်ရေးလုံခြုံမှု"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("ဖတ်ပြီးကြောင်း အသိပေးချက်"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "ပိတ်ထားလျှင် သင်သူတို့၏ မက်ဆေ့ချ်ကို ဖတ်ပြီးကြောင်း အခြားသူများ မမြင်ရဘဲ သူတို့ သင့်ဟာကို ဖတ်ပြီးကြောင်းလည်း သင် မမြင်ရပါ။"),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("စာရိုက်နေချိန် ပြရန်"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "သင်ရေးနေသူက သင်ရေးနေကြောင်း မြင်ရပါသည်။"),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("လင့်ခ် အစမ်းကြည့်ရှုမှု"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "အစမ်းကြည့်ရှုမှု ပြုလုပ်ရန် သင့်ဖုန်းက သင်ပို့သော လင့်ခ်ကို ဖွင့်သဖြင့် ဆိုက်က သင့်ဖုန်း၏ တောင်းဆိုမှုကို မြင်ရပါသည်။ Kyron ၏ ဆာဗာက လင့်ခ်ကို ဘယ်တော့မှ မမြင်ရပါ။"),
+      "ui_dm_settings_notifications": MessageLookupByLibrary.simpleMessage(
+          "မက်ဆေ့ချ် အကြောင်းကြားချက်များ"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "မက်ဆေ့ချ်များကို အစမှအဆုံး ကုဒ်ပြောင်းထားပါသည်။ Kyron ဖတ်၍ မရနိုင်ပြီး ဤနေရာရှိ မည်သည့်အရာကမျှ ၎င်းကို မပြောင်းလဲပါ။"),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("သို့-"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("မကြာသေးမီက"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("လူများ"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("ထိုအမည်ဖြင့် မည်သူမျှ မရှိပါ။"),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage(
+          "စမ်းသပ်အကြောင်းကြားချက် ပို့ရန်"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron ၏ ဆာဗာကို အကြောင်းကြားချက် ပို့ရန် မသတ်မှတ်ရသေးသဖြင့် မည်သည့်အကြောင်းကြားချက်မျှ ရောက်မလာနိုင်ပါ။ ပြဿနာသည် ကျွန်ုပ်တို့ဘက်တွင် ရှိပြီး သင့်ဖုန်းတွင် မဟုတ်ပါ။"),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "ဤဖုန်းကို အကြောင်းကြားချက်များအတွက် မှတ်ပုံမတင်ရသေးပါ။ ဖုန်းဆက်တင်တွင် Kyron အတွက် အကြောင်းကြားချက်များ ခွင့်ပြုထားကြောင်း စစ်ဆေးပြီး ထပ်စမ်းကြည့်ပါ။"),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "အကြောင်းကြားချက်ကို ဤဖုန်းသို့ ပို့၍ မရပါ။ တစ်မိနစ်အကြာတွင် ထပ်စမ်းကြည့်ပါ။"),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "ပို့ပြီးပါပြီ။ စက္ကန့်အနည်းငယ်အတွင်း ရောက်လာသင့်ပါသည်။"),
+      "ui_push_working": MessageLookupByLibrary.simpleMessage(
+          "အကြောင်းကြားချက်များ အလုပ်လုပ်နေပါသည်။"),
     };
 
 final messageLookup = MessageLookup();

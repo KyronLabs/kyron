@@ -9,6 +9,7 @@ import 'package:kyron_app/repositories/feed_repository.dart';
 import 'package:kyron_app/screens/community_composer_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/hairline.dart';
+import 'package:kyron_app/widgets/media_tray.dart';
 import 'package:kyron_app/widgets/quoted_post_card.dart';
 import 'package:kyron_app/widgets/reply_bar.dart';
 import 'package:kyron_app/widgets/voice_post_player.dart';
@@ -313,6 +314,84 @@ void main() {
 
     final waveform = tester.widget<VoiceWaveform>(find.byType(VoiceWaveform));
     expect(waveform.color, KyronTheme.lightTheme.colorScheme.onSurface);
+  });
+
+  testWidgets('a message attachment has no ALT badge; a post one does', (
+    tester,
+  ) async {
+    const ready = PendingMedia(
+      path: '/tmp/a.jpg',
+      kind: MediaKind.image,
+      url: 'https://cdn.invalid/a.jpg',
+    );
+    await _pump(
+      tester,
+      Scaffold(
+        body: Column(
+          children: [
+            MediaTray(
+              key: const ValueKey('message'),
+              media: const [ready],
+              onRemove: (_) {},
+              onRetry: (_) {},
+            ),
+            MediaTray(
+              key: const ValueKey('post'),
+              media: const [ready],
+              onRemove: (_) {},
+              onRetry: (_) {},
+              onDescribe: (_) {},
+            ),
+          ],
+        ),
+      ),
+    );
+
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('message')),
+        matching: find.text('+ ALT'),
+      ),
+      findsNothing,
+    );
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('post')),
+        matching: find.text('+ ALT'),
+      ),
+      findsOneWidget,
+    );
+  });
+
+  group('the waveform', () {
+    test('is as long for two seconds as for fourteen', () {
+      // A short note drew only its own few readings, so it was a stub beside
+      // a long one. Length is what the speed of the fill shows, not the row.
+      const width = 300.0;
+      final short = VoiceWaveform.barsFor([10, 80, 30, 60], width);
+      final long = VoiceWaveform.barsFor(
+        [for (var i = 0; i < 140; i++) (i * 37) % 100],
+        width,
+      );
+      expect(short.length, (width / VoiceWaveform.slot).floor());
+      expect(long.length, short.length);
+    });
+
+    test('a short one is stretched smoothly, through what was recorded', () {
+      final bars = VoiceWaveform.barsFor([0, 100], 10 * VoiceWaveform.slot);
+      expect(bars.first, 0);
+      expect(bars.last, 100);
+      // Rising step by step, not two blocks of the same reading.
+      for (var i = 1; i < bars.length; i++) {
+        expect(bars[i], greaterThan(bars[i - 1]));
+      }
+    });
+
+    test('a long one keeps its peaks', () {
+      final levels = List<int>.filled(400, 10)..[123] = 95;
+      final bars = VoiceWaveform.barsFor(levels, 40 * VoiceWaveform.slot);
+      expect(bars, contains(95));
+    });
   });
 
   group('the waveform fill', () {

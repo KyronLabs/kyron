@@ -1373,6 +1373,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("تعذّر الإرسال. حاول مرة أخرى."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("متابِع"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("تصفية"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("الكل"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("غير المقروءة"),
+      "ui_dm_filter_unanswered": MessageLookupByLibrary.simpleMessage("بلا رد"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("المخفية"),
+      "ui_dm_hidden_none": MessageLookupByLibrary.simpleMessage("لا شيء مخفي"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "المحادثات التي تزيلها من قائمتك تنتظر هنا، في حال أردت استعادتها."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "تنتقل إلى المخفية. يحتفظ الطرف الآخر بنسخته، وتعود إن كتب أحدكما مجددًا."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("إرجاع"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("عادت إلى قائمتك."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("لا محادثات مطابقة."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("لا شيء ينتظر ردك"),
+      "ui_dm_unanswered_none_detail":
+          MessageLookupByLibrary.simpleMessage("كل محادثة تنتهي بكلمتك."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("صورة"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("صور"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("فيديو"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("لا رسائل بعد"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("أنت:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("أمس"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("الرسائل"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("إعدادات الرسائل"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("الخصوصية"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("إشعارات القراءة"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "عند إيقافها، لن يرى الآخرون متى قرأت رسائلهم، ولن ترى متى قرؤوا رسائلك."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("أظهر عندما تكتب"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "يرى الشخص الذي تراسله أنك تكتب."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("معاينات الروابط"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "يفتح هاتفك الرابط الذي ترسله لإنشاء معاينته، فيرى الموقع طلب هاتفك. خادم Kyron لا يرى الرابط أبدًا."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("إشعارات الرسائل"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "الرسائل مشفرة من طرف إلى طرف. لا يستطيع Kyron قراءتها، ولا شيء هنا يغيّر ذلك."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("إلى:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("الأخيرة"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("أشخاص"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("لا أحد بهذا الاسم."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("إرسال إشعار تجريبي"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "خادم Kyron غير مهيأ لإرسال الإشعارات بعد، لذا لا يمكن أن يصل أي منها. المشكلة لدينا وليست في هاتفك."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "هذا الهاتف غير مسجل لتلقي الإشعارات. تأكد من السماح بإشعارات Kyron في إعدادات هاتفك، ثم حاول مرة أخرى."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "تعذّر توصيل الإشعار إلى هذا الهاتف. حاول مرة أخرى بعد دقيقة."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "أُرسل. يُفترض أن يصل خلال ثوانٍ."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("الإشعارات تعمل."),
     };
 
 final messageLookup = MessageLookup();

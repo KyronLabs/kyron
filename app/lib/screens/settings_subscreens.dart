@@ -7,6 +7,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../providers/preferences_provider.dart';
+import '../providers/push_provider.dart';
 import '../services/app_preferences.dart';
 
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
@@ -583,37 +584,116 @@ class SettingsNotificationsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final prefs = ref.watch(preferencesProvider);
     final notifier = ref.read(preferencesProvider.notifier);
+    final l10n = AppLocalizations.of(context);
 
     return SettingsScaffold(
-      title: AppLocalizations.of(context).notifications,
+      title: l10n.notifications,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SwitchListTile(
+            key: const ValueKey('push-switch'),
             value: prefs.pushEnabled,
-            onChanged: notifier.setPushEnabled,
-            title: Text(AppLocalizations.of(context).pushNotifications),
-            subtitle: Text(AppLocalizations.of(context).repliesFollowsMentions),
+            // Registers this phone, or takes it off the list. The switch
+            // used to save a preference that nothing read: off, and the
+            // notifications kept coming.
+            onChanged: (on) async {
+              await notifier.setPushEnabled(on);
+              final registrar = ref.read(pushRegistrarProvider);
+              await (on ? registrar.start() : registrar.stop());
+            },
+            title: Text(l10n.pushNotifications),
+            subtitle: Text(l10n.repliesFollowsMentions),
             contentPadding: EdgeInsets.zero,
           ),
           SwitchListTile(
             value: prefs.emailEnabled,
             onChanged: notifier.setEmailEnabled,
-            title: Text(AppLocalizations.of(context).emailNotifications),
-            subtitle: Text(AppLocalizations.of(context).securityAlerts),
+            title: Text(l10n.emailNotifications),
+            subtitle: Text(l10n.securityAlerts),
             contentPadding: EdgeInsets.zero,
           ),
-          const SizedBox(height: SpacingTokens.space16),
-          // Said plainly rather than implied. These switches record a
-          // preference; nothing sends anything yet, and a switch that looks
-          // live but is not is how people end up believing they turned
-          // something off.
-          const _Note(
-            'Kyron does not send notifications yet. These choices are saved '
-            'and will apply as soon as it does.',
-          ),
+          if (prefs.pushEnabled) ...[
+            const SizedBox(height: SpacingTokens.space8),
+            const _PushTest(),
+          ],
         ],
       ),
+    );
+  }
+}
+
+/// Sends a notification to this account, and says plainly which part is not
+/// working if one does not come.
+///
+/// Push fails in three places, all silently: the server's key, this phone's
+/// registration, and Google accepting the pair. "I never get notifications"
+/// needs to know which.
+class _PushTest extends ConsumerStatefulWidget {
+  const _PushTest();
+
+  @override
+  ConsumerState<_PushTest> createState() => _PushTestState();
+}
+
+class _PushTestState extends ConsumerState<_PushTest> {
+  bool _sending = false;
+
+  Future<void> _send() async {
+    final l10n = AppLocalizations.of(context);
+    setState(() => _sending = true);
+    String said;
+    try {
+      // Registered first, so a phone that never got as far as the server
+      // gets there now rather than failing the test for it.
+      await ref.read(pushRegistrarProvider).start();
+      final result = await ref.read(devicesRepositoryProvider).test();
+      said = !result.configured
+          ? l10n.ui(
+              'ui_push_test_off',
+              "Kyron's server is not set up to send notifications yet, so "
+                  'none can arrive. This is on our side, not your phone.',
+            )
+          : result.devices == 0
+              ? l10n.ui(
+                  'ui_push_test_no_device',
+                  'This phone is not registered for notifications. Check '
+                      "that notifications are allowed for Kyron in your phone's "
+                      'settings, then try again.',
+                )
+              : result.delivered == 0
+                  ? l10n.ui(
+                      'ui_push_test_rejected',
+                      'The notification could not be delivered to this '
+                          'phone. Try again in a minute.',
+                    )
+                  : l10n.ui(
+                      'ui_push_test_sent',
+                      'Sent. It should arrive in a few seconds.',
+                    );
+    } catch (error) {
+      said = describeApiError(error, sessionIsLive: true);
+    }
+    if (!mounted) return;
+    setState(() => _sending = false);
+    Toast.show(context, said, stay: const Duration(seconds: 6));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return ListTile(
+      key: const ValueKey('push-test'),
+      contentPadding: EdgeInsets.zero,
+      leading: const Icon(Iconsax.notification_bing_copy),
+      title: Text(l10n.ui('ui_push_test', 'Send a test notification')),
+      trailing: _sending
+          ? const SizedBox.square(
+              dimension: 18,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            )
+          : null,
+      onTap: _sending ? null : _send,
     );
   }
 }

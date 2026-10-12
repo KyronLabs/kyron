@@ -41,8 +41,11 @@ class LinkCardReader {
                 headers: const {
                   'Accept': 'text/html,application/xhtml+xml',
                   // Plenty of sites serve their card only to a client that
-                  // says what it is.
-                  'User-Agent': 'Mozilla/5.0 (compatible; KyronLinkCard/1.0)',
+                  // says what it is, and many only to the link-preview bots
+                  // they already know -- so this says it is one, the way
+                  // other messengers' readers do.
+                  'User-Agent': 'Mozilla/5.0 (compatible; KyronLinkCard/1.0; '
+                      'like Twitterbot; like facebookexternalhit)',
                 },
               ),
             );

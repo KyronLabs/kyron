@@ -1379,6 +1379,76 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Nepavyko išsiųsti. Bandykite dar kartą."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtras"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Visi"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Neperskaityti"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Neatsakyti"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Paslėpti"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Nieko nepaslėpta"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Pokalbiai, kuriuos pašalinate iš sąrašo, laukia čia, jei norėtumėte juos susigrąžinti."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Jis perkeliamas į Paslėptus. Kitas žmogus pasilieka savąjį, o pokalbis grįžta, jei kuris nors iš jūsų vėl parašo."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Grąžinti"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Vėl jūsų sąraše."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Atitinkančių pokalbių nėra."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Niekas jūsų nelaukia"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kiekvienas pokalbis baigiasi jūsų žodžiu."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Nuotrauka"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("Nuotraukos"),
+      "ui_dm_preview_video":
+          MessageLookupByLibrary.simpleMessage("Vaizdo įrašas"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Žinučių dar nėra"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Jūs:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Vakar"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Žinutės"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Žinučių nustatymai"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Privatumas"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Perskaitymo patvirtinimai"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Kai tai išjungta, kiti nematys, kada perskaitėte jų žinutes, o jūs nematysite, kada jie perskaitė jūsų."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Rodyti, kai rašote"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Žmogus, kuriam rašote, mato, kad rašote."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Nuorodų peržiūros"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Jūsų telefonas atidaro siunčiamą nuorodą, kad sukurtų peržiūrą, todėl svetainė mato jūsų telefono užklausą. Kyron serveris niekada nemato nuorodos."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Žinučių pranešimai"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Žinutės užšifruotos nuo galo iki galo. Kyron negali jų skaityti, ir niekas čia to nekeičia."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Kam:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Naujausi"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Žmonės"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Nėra nieko tokiu vardu."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Siųsti bandomąjį pranešimą"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron serveris dar nesukonfigūruotas siųsti pranešimų, todėl joks negali ateiti. Problema mūsų pusėje, ne jūsų telefone."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Šis telefonas neužregistruotas pranešimams. Patikrinkite, ar telefono nustatymuose leidžiami Kyron pranešimai, ir bandykite dar kartą."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Pranešimo nepavyko pristatyti į šį telefoną. Bandykite dar kartą po minutės."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Išsiųsta. Turėtų ateiti per kelias sekundes."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Pranešimai veikia."),
     };
 
 final messageLookup = MessageLookup();

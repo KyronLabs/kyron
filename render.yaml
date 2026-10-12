@@ -58,3 +58,9 @@ services:
         sync: false
       - key: CORS_ORIGIN
         sync: false
+      # The Firebase service account key, as one line of JSON. Without it the
+      # API cannot send a single push: GET /health reports push as "off", and
+      # Settings, Notifications, Send a test notification says so on a phone.
+      # See docs/PUSH.md.
+      - key: FCM_SERVICE_ACCOUNT_JSON
+        sync: false

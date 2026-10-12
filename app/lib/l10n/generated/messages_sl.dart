@@ -1376,6 +1376,76 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Ni bilo mogoče poslati. Poskusite znova."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Vse"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Neprebrano"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Brez odgovora"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Skrito"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Nič ni skrito"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Pogovori, ki jih odstranite s seznama, čakajo tukaj, če bi jih želeli nazaj."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Premakne se med Skrite. Druga oseba obdrži svojega, vrne pa se, če kdo od vaju spet piše."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Vrni"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Spet na vašem seznamu."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Ni ustreznih pogovorov."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Nič vas ne čaka"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Vsak pogovor se konča z vašo besedo."),
+      "ui_dm_preview_photo":
+          MessageLookupByLibrary.simpleMessage("Fotografija"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("Fotografije"),
+      "ui_dm_preview_video":
+          MessageLookupByLibrary.simpleMessage("Videoposnetek"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Še ni sporočil"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Vi:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Včeraj"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Sporočila"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Nastavitve sporočil"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Zasebnost"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Potrdila o branju"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Ko je to izklopljeno, drugi ne bodo videli, kdaj ste prebrali njihova sporočila, vi pa ne boste videli, kdaj so oni prebrali vaša."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Pokaži, ko tipkate"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Oseba, ki ji pišete, vidi, da pišete."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Predogledi povezav"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Vaš telefon odpre povezavo, ki jo pošljete, da naredi predogled, zato spletno mesto vidi zahtevo vašega telefona. Strežnik Kyrona povezave nikoli ne vidi."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Obvestila o sporočilih"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Sporočila so šifrirana od konca do konca. Kyron jih ne more brati in nič tukaj tega ne spremeni."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Za:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Nedavno"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Osebe"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Nikogar s tem imenom."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Pošlji preizkusno obvestilo"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Strežnik Kyrona še ni nastavljen za pošiljanje obvestil, zato nobeno ne more priti. Težava je pri nas, ne v vašem telefonu."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Ta telefon ni registriran za obvestila. Preverite, ali so obvestila za Kyron dovoljena v nastavitvah telefona, in poskusite znova."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Obvestila ni bilo mogoče dostaviti na ta telefon. Poskusite znova čez minuto."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Poslano. Moralo bi prispeti v nekaj sekundah."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Obvestila delujejo."),
     };
 
 final messageLookup = MessageLookup();

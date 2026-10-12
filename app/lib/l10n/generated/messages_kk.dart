@@ -1372,6 +1372,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Жіберу мүмкін болмады. Қайталап көріңіз."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Сүзгі"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Барлығы"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Оқылмаған"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Жауапсыз"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Жасырылған"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Ештеңе жасырылмаған"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Тізімнен алып тастаған әңгімелер қайтарғыңыз келсе, осында күтіп тұрады."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Ол Жасырылғандарға ауысады. Екінші адам өзінікін сақтайды, ал біреуіңіз қайта жазсаңыз, ол оралады."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Қайтару"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Тізіміңізге қайтты."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Сәйкес әңгіме жоқ."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Сізді ештеңе күтпейді"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Әр әңгіме сіздің сөзіңізбен аяқталады."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Фото"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Фотолар"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Бейне"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Әзірге хабар жоқ"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Сіз:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Кеше"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Хабарлар"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Хабар параметрлері"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Құпиялық"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Оқылғаны туралы белгі"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Бұл өшірулі болса, басқалар олардың хабарын қашан оқығаныңызды көрмейді, ал сіз олардың сіздікін қашан оқығанын көрмейсіз."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Жазып жатқаныңызды көрсету"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Сіз жазып отырған адам жазып жатқаныңызды көреді."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Сілтеме алдын ала қарауы"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Алдын ала қарау жасау үшін телефоныңыз жіберген сілтемеңізді ашады, сондықтан сайт телефоныңыздың сұрауын көреді. Kyron серверi сілтемені ешқашан көрмейді."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Хабар хабарландырулары"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Хабарлар ұштан-ұшқа шифрланған. Kyron оларды оқи алмайды және мұндағы ештеңе мұны өзгертпейді."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Кімге:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Соңғылар"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Адамдар"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Бұл атпен ешкім жоқ."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Сынақ хабарландыруын жіберу"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron серверi хабарландыру жіберуге әлі бапталмаған, сондықтан ешқайсысы келе алмайды. Мәселе біз жақта, телефоныңызда емес."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Бұл телефон хабарландыруларға тіркелмеген. Телефон параметрлерінде Kyron хабарландыруларына рұқсат берілгенін тексеріп, қайталап көріңіз."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Хабарландыру бұл телефонға жеткізілмеді. Бір минуттан кейін қайталап көріңіз."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Жіберілді. Бірнеше секундта келуі керек."),
+      "ui_push_working": MessageLookupByLibrary.simpleMessage(
+          "Хабарландырулар жұмыс істейді."),
     };
 
 final messageLookup = MessageLookup();

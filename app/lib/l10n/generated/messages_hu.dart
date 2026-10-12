@@ -1374,6 +1374,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Nem sikerült elküldeni. Próbáld újra."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Szűrő"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Összes"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Olvasatlan"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Megválaszolatlan"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Elrejtett"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Nincs elrejtett"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "A listádról eltávolított beszélgetések itt várnak, ha vissza szeretnéd őket."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Átkerül az Elrejtettek közé. A másik fél megtartja a sajátját, és visszajön, ha bármelyikőtök újra ír."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Visszahelyezés"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Újra a listádon."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Nincs egyező beszélgetés."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Semmi sem vár rád"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Minden beszélgetés a te szavaddal zárul."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Fénykép"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Fényképek"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Videó"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Még nincsenek üzenetek"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Te:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Tegnap"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Üzenetek"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Üzenetbeállítások"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Adatvédelem"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Olvasási visszaigazolások"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Ha ez ki van kapcsolva, mások nem látják, mikor olvastad az üzeneteiket, és te sem látod, mikor olvasták a tieidet."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Mutassa, amikor gépelsz"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Akinek írsz, látja, hogy éppen írsz."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Hivatkozás-előnézetek"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "A telefonod megnyitja az elküldött hivatkozást az előnézet elkészítéséhez, így a webhely látja a telefonod kérését. A Kyron szervere sosem látja a hivatkozást."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Üzenetértesítések"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Az üzenetek végpontok közötti titkosítással védettek. A Kyron nem tudja elolvasni őket, és ezen semmi sem változtat itt."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Címzett:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Legutóbbiak"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Emberek"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Senki sincs ilyen néven."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Próbaértesítés küldése"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "A Kyron szervere még nincs beállítva értesítések küldésére, így egy sem érkezhet meg. A hiba nálunk van, nem a telefonodban."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Ez a telefon nincs regisztrálva értesítésekre. Ellenőrizd, hogy a telefon beállításaiban engedélyezve vannak-e a Kyron értesítései, majd próbáld újra."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Az értesítést nem sikerült kézbesíteni erre a telefonra. Próbáld újra egy perc múlva."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Elküldve. Néhány másodpercen belül meg kell érkeznie."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Az értesítések működnek."),
     };
 
 final messageLookup = MessageLookup();

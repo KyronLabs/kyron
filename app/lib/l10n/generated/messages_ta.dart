@@ -1380,6 +1380,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "அனுப்ப முடியவில்லை. மீண்டும் முயலவும்."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("வடிகட்டி"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("அனைத்தும்"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("படிக்காதவை"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("பதிலளிக்காதவை"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("மறைக்கப்பட்டவை"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("எதுவும் மறைக்கப்படவில்லை"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "பட்டியலிலிருந்து நீக்கிய உரையாடல்கள், மீண்டும் வேண்டுமென்றால் இங்கே காத்திருக்கின்றன."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "இது மறைக்கப்பட்டவைக்குச் செல்கிறது. மற்றவர் தங்களுடையதை வைத்துக்கொள்கிறார், உங்களில் யாராவது மீண்டும் எழுதினால் இது திரும்பும்."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("திரும்ப வை"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("மீண்டும் உங்கள் பட்டியலில்."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("பொருந்தும் உரையாடல்கள் இல்லை."),
+      "ui_dm_unanswered_none": MessageLookupByLibrary.simpleMessage(
+          "உங்களுக்காக எதுவும் காத்திருக்கவில்லை"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ஒவ்வொரு உரையாடலும் உங்கள் வார்த்தையில் முடிகிறது."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("புகைப்படம்"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("புகைப்படங்கள்"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("வீடியோ"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("இன்னும் செய்திகள் இல்லை"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("நீங்கள்:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("நேற்று"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("செய்திகள்"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("செய்தி அமைப்புகள்"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("தனியுரிமை"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("படித்த ரசீதுகள்"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "இது முடக்கப்பட்டால், அவர்களின் செய்திகளை நீங்கள் எப்போது படித்தீர்கள் என்பது மற்றவர்களுக்குத் தெரியாது, அவர்கள் உங்களுடையதை எப்போது படித்தார்கள் என்பதும் உங்களுக்குத் தெரியாது."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("தட்டச்சு செய்யும்போது காட்டு"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் எழுதுபவர் நீங்கள் எழுதுவதைப் பார்க்கிறார்."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("இணைப்பு முன்னோட்டங்கள்"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "முன்னோட்டம் உருவாக்க உங்கள் ஃபோன் நீங்கள் அனுப்பும் இணைப்பைத் திறக்கிறது, எனவே தளம் உங்கள் ஃபோனின் கோரிக்கையைப் பார்க்கிறது. Kyron சேவையகம் இணைப்பை ஒருபோதும் பார்ப்பதில்லை."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("செய்தி அறிவிப்புகள்"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "செய்திகள் முனையிலிருந்து முனை வரை மறையாக்கம் செய்யப்பட்டுள்ளன. Kyron அவற்றைப் படிக்க முடியாது, இங்குள்ள எதுவும் அதை மாற்றாது."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("பெறுநர்:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("சமீபத்தியவை"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("நபர்கள்"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("அந்தப் பெயரில் யாரும் இல்லை."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("சோதனை அறிவிப்பை அனுப்பு"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron சேவையகம் இன்னும் அறிவிப்புகளை அனுப்ப அமைக்கப்படவில்லை, எனவே எதுவும் வர முடியாது. சிக்கல் எங்கள் பக்கம், உங்கள் ஃபோனில் இல்லை."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "இந்த ஃபோன் அறிவிப்புகளுக்குப் பதிவு செய்யப்படவில்லை. ஃபோன் அமைப்புகளில் Kyron அறிவிப்புகள் அனுமதிக்கப்பட்டுள்ளதா எனப் பார்த்து மீண்டும் முயலவும்."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "அறிவிப்பை இந்த ஃபோனுக்கு வழங்க முடியவில்லை. ஒரு நிமிடம் கழித்து மீண்டும் முயலவும்."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "அனுப்பப்பட்டது. சில நொடிகளில் வந்துவிட வேண்டும்."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("அறிவிப்புகள் வேலை செய்கின்றன."),
     };
 
 final messageLookup = MessageLookup();

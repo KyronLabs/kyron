@@ -1262,6 +1262,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("ሊላክ አልቻለም። እንደገና ይሞክሩ።"),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("ተከታይ"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ማጣሪያ"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("ሁሉም"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("ያልተነበቡ"),
+      "ui_dm_filter_unanswered": MessageLookupByLibrary.simpleMessage("ያልተመለሱ"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("የተደበቁ"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("ምንም የተደበቀ የለም"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ከዝርዝርዎ ያስወገዷቸው ውይይቶች መልሰው ቢፈልጓቸው እዚህ ይጠብቃሉ።"),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "ወደ የተደበቁ ይዛወራል። ሌላኛው ሰው የራሱን ይይዛል፣ ከሁለታችሁ አንዱ እንደገና ከጻፈ ይመለሳል።"),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("መልስ"),
+      "ui_dm_restored": MessageLookupByLibrary.simpleMessage("ወደ ዝርዝርዎ ተመልሷል።"),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("የሚዛመድ ውይይት የለም።"),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("እርስዎን የሚጠብቅ የለም"),
+      "ui_dm_unanswered_none_detail":
+          MessageLookupByLibrary.simpleMessage("እያንዳንዱ ውይይት በእርስዎ ቃል ይቋጫል።"),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ፎቶ"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("ፎቶዎች"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("ቪዲዮ"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("እስካሁን ምንም መልእክት የለም"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("እርስዎ፦"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("ትናንት"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("መልእክቶች"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("የመልእክት ቅንብሮች"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("ግላዊነት"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("የንባብ ማረጋገጫዎች"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "ይህ ሲጠፋ ሰዎች መልእክታቸውን ማንበብዎን አያዩም፣ እርስዎም የእርስዎን ማንበባቸውን አያዩም።"),
+      "ui_dm_typing_setting": MessageLookupByLibrary.simpleMessage("ሲተይቡ አሳይ"),
+      "ui_dm_typing_setting_detail":
+          MessageLookupByLibrary.simpleMessage("የሚጽፉለት ሰው እየጻፉ መሆንዎን ያያል።"),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("የአገናኝ ቅድመ እይታዎች"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "ስልክዎ ቅድመ እይታውን ለመፍጠር የሚልኩትን አገናኝ ይከፍታል፣ ስለዚህ ጣቢያው ስልክዎ ሲጠይቅ ያያል። የKyron አገልጋይ አገናኙን ፈጽሞ አያይም።"),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("የመልእክት ማሳወቂያዎች"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "መልእክቶች ከጫፍ እስከ ጫፍ የተመሰጠሩ ናቸው። Kyron ሊያነባቸው አይችልም፣ እዚህ ያለ ምንም ነገር ይህን አይቀይርም።"),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("ለ፦"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("የቅርብ ጊዜ"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("ሰዎች"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("በዚያ ስም ማንም የለም።"),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage("የሙከራ ማሳወቂያ ላክ"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "የKyron አገልጋይ ገና ማሳወቂያዎችን ለመላክ አልተዘጋጀም፣ ስለዚህ ምንም ሊደርስ አይችልም። ችግሩ በእኛ በኩል ነው እንጂ በስልክዎ አይደለም።"),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "ይህ ስልክ ለማሳወቂያዎች አልተመዘገበም። በስልክዎ ቅንብሮች ውስጥ ለKyron ማሳወቂያዎች መፈቀዳቸውን ያረጋግጡ፣ ከዚያ እንደገና ይሞክሩ።"),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "ማሳወቂያው ወደዚህ ስልክ ሊደርስ አልቻለም። ከአንድ ደቂቃ በኋላ እንደገና ይሞክሩ።"),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "ተልኳል። በጥቂት ሰከንዶች ውስጥ መድረስ አለበት።"),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("ማሳወቂያዎች እየሰሩ ነው።"),
     };
 
 final messageLookup = MessageLookup();

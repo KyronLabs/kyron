@@ -8,9 +8,9 @@ neither of them is code.
 ```
  something happens          DeliveryService              this handset
  (like, reply, DM)                 │
-        │                          ├── app open?  ──► the socket
+        │                          ├──► the socket, if the app is open
         └──────────────────────────┤
-                                   └── app closed? ──► PushService
+                                   └──► PushService, always
                                                           │
                                                     FCM HTTP v1
                                                           │
@@ -21,12 +21,17 @@ neither of them is code.
                                                   └────────────────┘
 ```
 
+The push goes whether or not a socket is open. A socket says nothing about
+whether the app is in front: one left open behind the lock screen used to
+swallow every push. The app decides what to do with a push that arrives
+while it is in front.
+
 | Piece | Where |
 |:--|:--|
 | Device token storage | `DeviceToken` in `api/prisma/schema.prisma` |
 | Register and forget | `PUT /devices`, `DELETE /devices` |
 | Sending | `PushService`, FCM HTTP v1, service-account signed |
-| Choosing socket or push | `DeliveryService` — the socket if the reader has the app open, a push if not |
+| Fanning out | `DeliveryService` — the socket for an open app, and a push |
 | Client registration | `PushRegistrar`, `DevicesRepository` |
 | The token itself | `FirebasePushTokens` in `lib/services/firebase_push.dart` |
 
@@ -45,14 +50,32 @@ permanent on both platforms.
 ## Configuring it
 
 **1. The server.** From the Firebase console, Project settings → Service
-accounts, download a service account key and set it as one line of JSON:
+accounts, generate a private key **for the same Firebase project as
+`google-services.json`** (a key from any other project is refused by FCM for
+every token the app registers). Set it on Render, Environment, as
+`FCM_SERVICE_ACCOUNT_JSON`, the whole file on one line:
 
 ```bash
-fly secrets set FCM_SERVICE_ACCOUNT_JSON="$(cat service-account.json | tr -d '\n')"
+tr -d '\n' < service-account.json   # paste the output as the value
 ```
 
 The API logs which project it is sending for at boot, and warns loudly when the
-variable is missing. It never silently pretends to send.
+variable is missing. It never silently pretends to send. `GET /health` says
+`"push": "configured"` or `"push": "off"`.
+
+**Checking it end to end.** Settings → Notifications → *Send a test
+notification* asks the server (`POST /devices/test`) to push to every phone
+this account has registered, and says which part failed: the server has no
+key, this phone has no token, or FCM refused it. A test that reports *Sent*
+and never shows up is the phone's side: notifications blocked for Kyron, or
+battery settings holding it back.
+
+**Android channels.** Messages arrive on the `messages` channel (high
+importance: heads-up and sound), everything else on `activity`.
+`MainActivity` creates both at launch, so a push that arrives before Flutter
+has started still has a channel to land in, and the manifest names
+`ic_stat_kyron` as the small icon: without it Android draws the launcher
+icon as a white square.
 
 **2. The app.** `app/android/app/google-services.json`, from Project settings →
 Your apps → Android. Nothing else: no `firebase_options.dart`, because the

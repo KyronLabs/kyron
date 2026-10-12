@@ -1369,6 +1369,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Gönderilemedi. Tekrar deneyin."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtre"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Tümü"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Okunmamış"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Yanıtlanmamış"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Gizli"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Gizli bir şey yok"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Listenden kaldırdığın sohbetler, geri istersen diye burada bekler."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Gizli'ye taşınır. Diğer kişi kendi sohbetini tutar ve ikinizden biri yeniden yazarsa geri gelir."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Geri koy"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Yeniden listende."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Eşleşen sohbet yok."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Seni bekleyen bir şey yok"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Her sohbet senin sözünle bitiyor."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Fotoğraf"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("Fotoğraflar"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Henüz mesaj yok"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Sen:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Dün"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Mesajlar"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Mesaj ayarları"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Gizlilik"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Okundu bilgisi"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Bu kapalıyken insanlar mesajlarını ne zaman okuduğunu göremez, sen de onların seninkileri ne zaman okuduğunu göremezsin."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Yazarken göster"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Yazdığın kişi yazmakta olduğunu görür."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Bağlantı önizlemeleri"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Önizlemeyi oluşturmak için telefonun gönderdiğin bağlantıyı açar, bu yüzden site telefonunun isteğini görür. Kyron sunucusu bağlantıyı asla görmez."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Mesaj bildirimleri"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Mesajlar uçtan uca şifrelidir. Kyron onları okuyamaz ve buradaki hiçbir şey bunu değiştirmez."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Kime:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Son"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Kişiler"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Bu adla kimse yok."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Deneme bildirimi gönder"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron sunucusu henüz bildirim göndermek için ayarlanmadı, bu yüzden hiçbiri ulaşamaz. Sorun bizde, telefonunda değil."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Bu telefon bildirimler için kayıtlı değil. Telefon ayarlarında Kyron bildirimlerine izin verildiğini kontrol et ve yeniden dene."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Bildirim bu telefona iletilemedi. Bir dakika sonra yeniden dene."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Gönderildi. Birkaç saniye içinde ulaşmalı."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Bildirimler çalışıyor."),
     };
 
 final messageLookup = MessageLookup();

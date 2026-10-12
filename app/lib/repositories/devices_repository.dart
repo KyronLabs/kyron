@@ -17,4 +17,36 @@ class DevicesRepository {
   /// Forgets it, on sign-out.
   Future<void> forget(String token) =>
       _api.dio.delete<void>('/devices', data: {'token': token});
+
+  /// Asks the server to send this account a notification now, and says how
+  /// far it got.
+  Future<PushTest> test() async {
+    final res = await _api.dio.post<Map<String, dynamic>>('/devices/test');
+    final data = res.data ?? const {};
+    return PushTest(
+      configured: data['configured'] == true,
+      devices: (data['devices'] as num?)?.toInt() ?? 0,
+      delivered: (data['delivered'] as num?)?.toInt() ?? 0,
+    );
+  }
+}
+
+/// What a test notification found: which of push's three halves -- the
+/// server's key, this account's registered phones, Google taking the
+/// message -- is the one not working.
+class PushTest {
+  /// Whether the server has a key to send with at all.
+  final bool configured;
+
+  /// How many phones this account has registered.
+  final int devices;
+
+  /// How many of them Google accepted the test for.
+  final int delivered;
+
+  const PushTest({
+    required this.configured,
+    required this.devices,
+    required this.delivered,
+  });
 }

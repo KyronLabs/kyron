@@ -1375,6 +1375,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Yuborib bo‘lmadi. Qayta urinib ko‘ring."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtr"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Hammasi"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("O‘qilmagan"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Javobsiz"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Yashirilgan"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Hech narsa yashirilmagan"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ro‘yxatingizdan olib tashlagan suhbatlaringiz, qaytarib olmoqchi bo‘lsangiz, shu yerda kutadi."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "U Yashirilganga o‘tadi. Boshqa odam o‘zinikini saqlab qoladi, va biringiz yana yozsa, u qaytadi."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Qaytarish"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Yana ro‘yxatingizda."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Mos suhbatlar yo‘q."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Sizni hech narsa kutmayapti"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Har bir suhbat sizning so‘zingiz bilan tugaydi."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Rasm"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Rasmlar"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Hali xabarlar yo‘q"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Siz:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Kecha"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Xabarlar"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Xabar sozlamalari"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Maxfiylik"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("O‘qilganlik belgilari"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Bu o‘chiq bo‘lsa, boshqalar ularning xabarlarini qachon o‘qiganingizni ko‘rmaydi, siz ham ular siznikini qachon o‘qiganini ko‘rmaysiz."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Yozayotganingizni ko‘rsatish"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Siz yozayotgan odam yozayotganingizni ko‘radi."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Havola ko‘rinishlari"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Ko‘rinish yaratish uchun telefoningiz siz yuborgan havolani ochadi, shuning uchun sayt telefoningiz so‘rovini ko‘radi. Kyron serveri havolani hech qachon ko‘rmaydi."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Xabarlar bildirishnomalari"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Xabarlar uchdan-uchgacha shifrlangan. Kyron ularni o‘qiy olmaydi va bu yerdagi hech narsa buni o‘zgartirmaydi."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Kimga:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("So‘nggi"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Odamlar"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Bunday ismli hech kim yo‘q."),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage(
+          "Sinov bildirishnomasini yuborish"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron serveri hali bildirishnomalar yuborishga sozlanmagan, shuning uchun hech biri kela olmaydi. Muammo bizda, telefoningizda emas."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Bu telefon bildirishnomalar uchun ro‘yxatdan o‘tmagan. Telefon sozlamalarida Kyron bildirishnomalariga ruxsat berilganini tekshiring va qayta urinib ko‘ring."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Bildirishnomani bu telefonga yetkazib bo‘lmadi. Bir daqiqadan so‘ng qayta urinib ko‘ring."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Yuborildi. Bir necha soniyada kelishi kerak."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Bildirishnomalar ishlayapti."),
     };
 
 final messageLookup = MessageLookup();

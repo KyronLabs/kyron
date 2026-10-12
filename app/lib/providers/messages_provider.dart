@@ -8,6 +8,8 @@ import '../models/conversation.dart';
 import '../models/message_link_card.dart';
 import '../models/post_media.dart';
 import '../repositories/messages_repository.dart';
+
+export '../repositories/messages_repository.dart' show ConversationFilter;
 import '../utils/api_error_message.dart';
 import 'api_client_provider.dart';
 import '../services/message_crypto.dart';
@@ -62,14 +64,14 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
   /// sealed messages.
   final MessageVault? _vault;
 
-  /// Whether this list is the Unread tab. Narrowed by the server rather than
-  /// here: filtering a page after it arrives gives short pages and a tab that
-  /// looks empty while there is more behind the cursor.
-  final bool unreadOnly;
+  /// Which conversations this list is. Narrowed by the server rather than
+  /// here: filtering a page after it arrives gives short pages and a list
+  /// that looks empty while there is more behind the cursor.
+  final ConversationFilter filter;
 
   ConversationListNotifier(
     this._repo, {
-    required this.unreadOnly,
+    this.filter = ConversationFilter.all,
     MessageVault? vault,
   })  : _vault = vault,
         super(const ConversationListState()) {
@@ -109,7 +111,7 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
   Future<void> refresh() async {
     state = const ConversationListState();
     try {
-      final page = await _repo.conversations(unreadOnly: unreadOnly);
+      final page = await _repo.conversations(filter: filter);
       state = ConversationListState(
         items: await _open(page.items),
         cursor: page.nextCursor,
@@ -129,10 +131,7 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
 
     state = state.copyWith(loadingMore: true);
     try {
-      final page = await _repo.conversations(
-        cursor: cursor,
-        unreadOnly: unreadOnly,
-      );
+      final page = await _repo.conversations(cursor: cursor, filter: filter);
       final more = await _open(page.items);
       state = state.copyWith(
         items: [...state.items, ...more],
@@ -162,6 +161,24 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
     );
     try {
       await _repo.hide(conversation.id);
+      return null;
+    } catch (error) {
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  /// Puts a hidden conversation back in the reader's list. Off this one --
+  /// the Hidden list -- at once, as [hide] does: a swiped row still in the
+  /// list after its swipe is an error, not a pause.
+  Future<String?> restore(Conversation conversation) async {
+    state = state.copyWith(
+      items: [
+        for (final row in state.items)
+          if (row.id != conversation.id) row,
+      ],
+    );
+    try {
+      await _repo.restore(conversation.id);
       return null;
     } catch (error) {
       return describeApiError(error, sessionIsLive: true);
@@ -233,10 +250,12 @@ class MessageSender {
 
 /// One per tab, so All and Unread each keep their own page and cursor.
 final conversationListProvider = StateNotifierProvider.family<
-    ConversationListNotifier, ConversationListState, bool>((ref, unreadOnly) {
+    ConversationListNotifier,
+    ConversationListState,
+    ConversationFilter>((ref, filter) {
   return ConversationListNotifier(
     ref.read(messagesRepositoryProvider),
-    unreadOnly: unreadOnly,
+    filter: filter,
     vault: ref.read(messageVaultProvider),
   );
 });
@@ -250,8 +269,10 @@ final conversationListProvider = StateNotifierProvider.family<
 /// should hold may refresh only the tab it happened on.
 Future<void> refreshConversations(WidgetRef ref) async {
   await Future.wait([
-    ref.read(conversationListProvider(false).notifier).refresh(),
-    ref.read(conversationListProvider(true).notifier).refresh(),
+    for (final filter in ConversationFilter.values)
+      if (filter == ConversationFilter.all ||
+          ref.exists(conversationListProvider(filter)))
+        ref.read(conversationListProvider(filter).notifier).refresh(),
   ]);
   ref.invalidate(unreadConversationsProvider);
 }
@@ -513,12 +534,13 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     List<PendingMedia> media = const [],
     String? replyToId,
     MessageLinkCard? linkCard,
+    Future<MessageLinkCard?>? linkCardLater,
   }) async {
     final text = body.trim();
     // A picture with no words is a message; an empty box is not.
     if (text.isEmpty && media.isEmpty) return;
     // A card is for a link in the words, and goes nowhere without them.
-    final card = text.isEmpty ? null : linkCard;
+    var card = text.isEmpty ? null : linkCard;
 
     final placeholder = DirectMessage(
       id: 'pending-${_pending++}',
@@ -533,6 +555,21 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       linkCard: card,
     );
     state = state.copyWith(messages: [...state.messages, placeholder]);
+
+    // A card still being read when Send was pressed is waited for, briefly,
+    // with the bubble already on screen. Sending without it used to be the
+    // rule, and pasting a link and sending at once -- which is how links are
+    // sent -- never carried a card at all.
+    if (card == null && linkCardLater != null && text.isNotEmpty) {
+      try {
+        card = await linkCardLater.timeout(cardWait);
+      } catch (_) {
+        card = null;
+      }
+      if (card != null) {
+        _replace(placeholder.id, placeholder.copyWith(linkCard: card));
+      }
+    }
 
     try {
       final sent = await MessageSender(_repo, _vault).send(
@@ -550,6 +587,11 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       );
     }
   }
+
+  /// The longest a message waits for its link card before going without one.
+  /// About what a slow page takes; a dead one is not worth holding a message
+  /// for longer.
+  static const cardWait = Duration(seconds: 4);
 
   /// Sends a voice note.
   ///

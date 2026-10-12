@@ -1,5 +1,7 @@
 package so.kyron.app
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -30,9 +32,39 @@ class MainActivity : FlutterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        createChannels()
         // Not on a re-creation: the intent is the one already handled, and
         // offering it again would open the share sheet a second time.
         if (savedInstanceState == null) waiting = read(intent)
+    }
+
+    /**
+     * The two kinds of notification Kyron sends, as channels the phone's
+     * settings list separately: Messages, which may pop up over whatever is
+     * on screen, and Activity -- likes, replies, follows -- which may not.
+     * A push naming a channel that does not exist lands in a catch-all one
+     * called Miscellaneous, at whatever importance that has.
+     *
+     * Creating a channel that exists already changes nothing, so this runs on
+     * every launch.
+     */
+    private fun createChannels() {
+        if (Build.VERSION.SDK_INT < 26) return
+        val manager = getSystemService(NotificationManager::class.java) ?: return
+        manager.createNotificationChannels(
+            listOf(
+                NotificationChannel(
+                    "messages",
+                    "Messages",
+                    NotificationManager.IMPORTANCE_HIGH,
+                ).apply { description = "Direct messages sent to you" },
+                NotificationChannel(
+                    "activity",
+                    "Activity",
+                    NotificationManager.IMPORTANCE_DEFAULT,
+                ).apply { description = "Likes, replies, mentions and new followers" },
+            ),
+        )
     }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {

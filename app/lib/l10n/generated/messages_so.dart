@@ -1377,6 +1377,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Lama diri karin. Isku day mar kale."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Shaandhee"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Dhammaan"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Aan la akhrin"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Aan laga jawaabin"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("La qariyay"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Waxba lama qarin"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Wada-hadallada aad ka saarto liiskaaga halkan ayay ku sugaan, haddii aad dib u rabto."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Waxay u wareegaysaa La qariyay. Qofka kale wuu haystaa kiisa, wayna soo noqotaa haddii midkiin mar kale qoro."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Dib u celi"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Mar kale liiskaaga ku jira."),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage(
+          "Wada-hadal ku habboon ma jiro."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Waxba ma sugayaan adiga"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Wada-hadal kasta wuxuu ku dhammaadaa eraygaaga."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Sawir"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Sawirro"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Muuqaal"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Weli fariin ma jirto"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Adiga:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Shalay"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Fariimaha"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Dejinta fariimaha"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Asturnaanta"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Caddaynta akhriska"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Marka tan la damiyo, dadku ma arki doonaan goorta aad akhriday fariimahooda, adiguna ma arki doontid goorta ay akhriyeen kuwaaga."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Muuji marka aad qorayso"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Qofka aad u qorayso wuxuu arkaa inaad qorayso."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Horudhacyada xiriirinta"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Taleefankaagu wuxuu furaa xiriirinta aad dirto si uu u sameeyo horudhaca, sidaas darteed goobtu waxay aragtaa codsiga taleefankaaga. Server-ka Kyron weligii ma arko xiriirinta."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Ogeysiisyada fariimaha"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Fariimuhu waa sir laga bilaabo dhammaadka ilaa dhammaadka. Kyron ma akhrin karo, waxna halkan kama beddelaan taas."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Ku:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Dhowaan"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Dad"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Ma jiro qof magacaas leh."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Dir ogeysiis tijaabo ah"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Server-ka Kyron weli looma diyaarin inuu diro ogeysiisyo, sidaas darteed midna ma iman karo. Dhibaatadu waa dhinacayaga, ma aha taleefankaaga."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Taleefankan looma diiwaangelin ogeysiisyada. Hubi in ogeysiisyada Kyron loo oggol yahay dejinta taleefankaaga, kadibna mar kale isku day."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Ogeysiiska lama gaarsiin karin taleefankan. Isku day mar kale daqiiqad kadib."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "La diray. Waa inuu yimaado dhowr ilbiriqsi gudahood."),
+      "ui_push_working": MessageLookupByLibrary.simpleMessage(
+          "Ogeysiisyadu way shaqaynayaan."),
     };
 
 final messageLookup = MessageLookup();

@@ -19,6 +19,8 @@ class AppPreferences {
   static const _kDataSaver = 'pref_data_saver';
   static const _kPrimaryLanguage = 'pref_primary_language';
   static const _kContentLanguages = 'pref_content_languages';
+  static const _kTypingShown = 'pref_dm_typing';
+  static const _kLinkPreviews = 'pref_dm_link_previews';
 
   /// The scales the font-size screen offers, smallest first.
   static const textScales = <double>[0.85, 1.0, 1.15, 1.3];
@@ -134,4 +136,18 @@ class AppPreferences {
 
   Future<void> writeDataSaver(bool enabled) async =>
       (await _prefs).setBool(_kDataSaver, enabled);
+
+  /// Whether the other person sees "typing" while this reader writes.
+  Future<bool> readTypingShown() async =>
+      (await _prefs).getBool(_kTypingShown) ?? true;
+
+  Future<void> writeTypingShown(bool shown) async =>
+      (await _prefs).setBool(_kTypingShown, shown);
+
+  /// Whether this phone reads a linked page to make a card for a message.
+  Future<bool> readLinkPreviews() async =>
+      (await _prefs).getBool(_kLinkPreviews) ?? true;
+
+  Future<void> writeLinkPreviews(bool enabled) async =>
+      (await _prefs).setBool(_kLinkPreviews, enabled);
 }

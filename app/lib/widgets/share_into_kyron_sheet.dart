@@ -13,40 +13,17 @@ import '../models/conversation.dart';
 import '../models/message_link_card.dart';
 import '../models/post_media.dart';
 import '../models/profile_summary.dart';
-import '../providers/api_client_provider.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../providers/keys_provider.dart';
 import '../providers/messages_provider.dart';
+import '../providers/people_search_provider.dart';
+import '../providers/preferences_provider.dart';
 import '../routes.dart';
 import '../services/link_card_reader.dart';
 import '../services/share_inbox.dart';
 import 'create_post/url_preview.dart' show firstLinkIn;
 import 'hairline.dart';
 import 'toast.dart';
-
-/// People to send a share to, found by name. The same search the Explore tab
-/// runs for people.
-final shareRecipientSearchProvider =
-    FutureProvider.autoDispose.family<List<ProfileSummary>, String>((
-  ref,
-  query,
-) async {
-  // Typing settles before anything is asked for.
-  var live = true;
-  ref.onDispose(() => live = false);
-  await Future<void>.delayed(const Duration(milliseconds: 300));
-  if (!live) return const [];
-
-  final res = await ref.read(apiClientProvider).dio.get<Map<String, dynamic>>(
-    '/profile/search',
-    queryParameters: {'q': query, 'limit': 20},
-  );
-  return ((res.data?['items'] as List<dynamic>?) ?? const [])
-      .whereType<Map<String, dynamic>>()
-      .map(ProfileSummary.fromJson)
-      .where((p) => !p.isSelf)
-      .toList();
-});
 
 /// What another app shared, and where in Kyron it can go: a new post, or one
 /// or more conversations at once, with a line of one's own beside it.
@@ -120,7 +97,10 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
 
   String? get _link {
     final text = widget.content.text;
-    return text == null ? null : firstLinkIn(text);
+    if (text == null || !ref.read(preferencesProvider).linkPreviews) {
+      return null;
+    }
+    return firstLinkIn(text);
   }
 
   @override
@@ -234,7 +214,8 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
     final l10n = AppLocalizations.of(context);
     final query = _query.toLowerCase();
 
-    final conversations = ref.watch(conversationListProvider(false));
+    final conversations =
+        ref.watch(conversationListProvider(ConversationFilter.all));
     final held = [
       for (final c in conversations.items)
         if (c.other != null &&
@@ -250,11 +231,9 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
     final found = query.length < 2
         ? const <_Target>[]
         : [
-            for (final p in ref
-                    .watch(shareRecipientSearchProvider(_query))
-                    .asData
-                    ?.value ??
-                const <ProfileSummary>[])
+            for (final p
+                in ref.watch(peopleSearchProvider(_query)).asData?.value ??
+                    const <ProfileSummary>[])
               if (!talkedTo.contains(p.id)) _Target.person(p),
           ];
     final targets = [...held, ...found];

@@ -1380,6 +1380,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Dat kon niet worden verzonden. Probeer het opnieuw."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Alle"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Ongelezen"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Onbeantwoord"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Verborgen"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Niets verborgen"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Gesprekken die je uit je lijst haalt, wachten hier voor het geval je ze terug wilt."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Het gaat naar Verborgen. De ander houdt het zijne, en het komt terug als een van jullie weer schrijft."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Terugzetten"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Weer in je lijst."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Geen gesprekken gevonden."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Er wacht niets op je"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Elk gesprek eindigt met jouw woord."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Foto's"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Nog geen berichten"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Jij:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Gisteren"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Berichten"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Berichtinstellingen"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Leesbevestigingen"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Als dit uit staat, zien anderen niet wanneer je hun berichten hebt gelezen, en zie jij niet wanneer zij de jouwe hebben gelezen."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Tonen wanneer je typt"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Degene aan wie je schrijft, ziet dat je aan het schrijven bent."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Linkvoorbeelden"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Je telefoon opent een link die je stuurt om het voorbeeld te maken, dus de site ziet je telefoon vragen. De server van Kyron ziet de link nooit."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Meldingen voor berichten"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Berichten zijn end-to-end versleuteld. Kyron kan ze niet lezen, en niets hier verandert dat."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Aan:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Recent"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Mensen"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Niemand met die naam."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Stuur een testmelding"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "De server van Kyron is nog niet ingesteld om meldingen te sturen, dus er kan er geen aankomen. Het ligt aan ons, niet aan je telefoon."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Deze telefoon is niet geregistreerd voor meldingen. Controleer of meldingen voor Kyron zijn toegestaan in de instellingen van je telefoon en probeer het opnieuw."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "De melding kon niet worden afgeleverd op deze telefoon. Probeer het over een minuut opnieuw."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Verstuurd. Hij zou binnen een paar seconden moeten aankomen."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Meldingen werken."),
     };
 
 final messageLookup = MessageLookup();

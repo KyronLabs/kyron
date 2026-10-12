@@ -103,29 +103,60 @@ export class PushService implements OnModuleInit {
    * token the platform rejects is deleted so it is not tried forever.
    */
   async sendTo(userId: string, message: PushMessage): Promise<void> {
-    if (!this.credentials) return;
+    await this.sendCounting(userId, message);
+  }
+
+  /**
+   * Sends somebody a notification so they can see push working -- or be told
+   * which part of it is not.
+   *
+   * Push has three halves that fail silently and separately: this server's
+   * key, the phone's registration, and Google accepting the pair. The answer
+   * names which, so "I never get notifications" has a cause on screen rather
+   * than a guess.
+   */
+  async test(userId: string): Promise<PushTestResult> {
+    const devices = await this.prisma.deviceToken.count({ where: { userId } });
+    if (!this.credentials) {
+      return { configured: false, devices, delivered: 0 };
+    }
+    const delivered = await this.sendCounting(userId, {
+      title: 'Kyron',
+      body: 'Notifications are working.',
+      data: { type: 'test' },
+    });
+    return { configured: true, devices, delivered };
+  }
+
+  /** Sends to every device somebody has, and answers how many took it. */
+  private async sendCounting(
+    userId: string,
+    message: PushMessage,
+  ): Promise<number> {
+    if (!this.credentials) return 0;
 
     const devices = await this.prisma.deviceToken.findMany({
       where: { userId },
       select: { token: true },
     });
-    if (devices.length === 0) return;
+    if (devices.length === 0) return 0;
 
     const accessToken = await this.authorize();
-    if (!accessToken) return;
+    if (!accessToken) return 0;
 
-    await Promise.all(
+    const outcomes = await Promise.all(
       devices.map((device) => this.deliver(device.token, message, accessToken)),
     );
+    return outcomes.filter((outcome) => outcome === 'sent').length;
   }
 
   private async deliver(
     token: string,
     message: PushMessage,
     accessToken: string,
-  ): Promise<void> {
+  ): Promise<'sent' | 'gone' | 'failed'> {
     const projectId = this.credentials?.project_id;
-    if (!projectId) return;
+    if (!projectId) return 'failed';
 
     try {
       const response = await fetch(FCM_SEND(projectId), {
@@ -134,31 +165,69 @@ export class PushService implements OnModuleInit {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          message: {
-            token,
-            notification: { title: message.title, body: message.body },
-            data: message.data ?? {},
-          },
-        }),
+        body: JSON.stringify({ message: PushService.payload(token, message) }),
       });
 
-      if (response.ok) return;
+      if (response.ok) return 'sent';
 
-      // 404 means the token is gone; 400 UNREGISTERED means the same thing in
-      // a different dress. Either way it will never work again, so it goes
-      // rather than being retried on every future notification.
-      if (response.status === 404 || response.status === 400) {
+      const detail = await response.text();
+      if (PushService.tokenIsGone(response.status, detail)) {
         await this.prisma.deviceToken.deleteMany({ where: { token } });
-        return;
+        return 'gone';
       }
 
-      this.logger.warn(
-        `Push rejected with ${response.status}: ${await response.text()}`,
-      );
+      this.logger.warn(`Push rejected with ${response.status}: ${detail}`);
+      return 'failed';
     } catch (error) {
       this.logger.warn(`Push could not be delivered: ${String(error)}`);
+      return 'failed';
     }
+  }
+
+  /**
+   * The FCM message for one device.
+   *
+   * High priority on Android, or a phone in Doze holds the notification until
+   * it next wakes on its own, which can be most of an hour. On a channel the
+   * app creates -- Messages, which may pop up over whatever is on screen, and
+   * Activity, which may not -- so people can silence one without the other.
+   * Messages from one conversation share a tag and replace each other rather
+   * than stacking, since each says only that something arrived.
+   */
+  static payload(token: string, message: PushMessage): object {
+    const data = message.data ?? {};
+    const isMessage = data.type === 'message';
+    return {
+      token,
+      notification: { title: message.title, body: message.body },
+      data,
+      android: {
+        priority: 'HIGH',
+        notification: {
+          channel_id: isMessage ? 'messages' : 'activity',
+          sound: 'default',
+          ...(isMessage && data.conversationId
+            ? { tag: `conversation-${data.conversationId}` }
+            : {}),
+        },
+      },
+      apns: { payload: { aps: { sound: 'default' } } },
+    };
+  }
+
+  /**
+   * Whether Google said this token will never work again.
+   *
+   * 404, or an error naming the token as unregistered or invalid. Not any
+   * 400: Google answers 400 for a malformed *message* too, and deleting on
+   * that wiped every device anybody had registered the first time one payload
+   * was wrong.
+   */
+  static tokenIsGone(status: number, detail: string): boolean {
+    if (status === 404) return true;
+    if (status !== 400) return false;
+    if (/UNREGISTERED/.test(detail)) return true;
+    return /registration token/i.test(detail) && /not a valid/i.test(detail);
   }
 
   /**
@@ -237,6 +306,16 @@ export class PushService implements OnModuleInit {
 
     return `${unsigned}.${signature}`;
   }
+}
+
+/** What a test notification found. */
+export interface PushTestResult {
+  /** Whether this server has a key to send with at all. */
+  configured: boolean;
+  /** How many phones the reader has registered. */
+  devices: number;
+  /** How many of them Google accepted the test for. */
+  delivered: number;
 }
 
 /** The fields this service needs from a Firebase service account key. */

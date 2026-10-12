@@ -1373,6 +1373,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Hindi ito maipadala. Subukang muli."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Salain"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Lahat"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Hindi pa nababasa"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Hindi pa nasasagot"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Nakatago"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Walang nakatago"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ang mga usapang inalis mo sa listahan ay naghihintay dito, kung sakaling gusto mo silang ibalik."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Lilipat ito sa Nakatago. Mananatili sa kabila ang kanila, at babalik ito kapag may sumulat ulit sa inyo."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Ibalik"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Nasa listahan mo na ulit."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Walang tumutugmang usapan."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Walang naghihintay sa iyo"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Bawat usapan ay nagtatapos sa salita mo."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Larawan"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("Mga larawan"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Wala pang mensahe"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Ikaw:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Kahapon"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Mga mensahe"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Mga setting ng mensahe"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Mga read receipt"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Kapag naka-off ito, hindi makikita ng iba kung kailan mo nabasa ang mga mensahe nila, at hindi mo rin makikita kung kailan nila nabasa ang sa iyo."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Ipakita kapag nagta-type ka"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Nakikita ng sinusulatan mo na nagsusulat ka."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Mga preview ng link"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Binubuksan ng iyong telepono ang link na ipinapadala mo para gawin ang preview nito, kaya nakikita ng site ang hiling ng iyong telepono. Hindi kailanman nakikita ng server ng Kyron ang link."),
+      "ui_dm_settings_notifications": MessageLookupByLibrary.simpleMessage(
+          "Mga notification para sa mensahe"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Naka-end-to-end encrypt ang mga mensahe. Hindi ito mababasa ng Kyron, at walang anumang dito na magbabago niyon."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Para kay:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Kamakailan"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Mga tao"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Walang may ganoong pangalan."),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage(
+          "Magpadala ng test na notification"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Hindi pa naka-set up ang server ng Kyron para magpadala ng mga notification, kaya walang makakarating. Nasa amin ang problema, hindi sa iyong telepono."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Hindi naka-rehistro ang teleponong ito para sa mga notification. Tingnan kung pinapayagan ang mga notification ng Kyron sa mga setting ng iyong telepono, saka subukan ulit."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Hindi maihatid ang notification sa teleponong ito. Subukan ulit pagkalipas ng isang minuto."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Naipadala na. Dapat itong dumating sa loob ng ilang segundo."),
+      "ui_push_working": MessageLookupByLibrary.simpleMessage(
+          "Gumagana ang mga notification."),
     };
 
 final messageLookup = MessageLookup();
