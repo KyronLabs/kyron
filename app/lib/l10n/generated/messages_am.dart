@@ -1207,6 +1207,47 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("የሥራ ጊዜ ታሪክ ገና አይገኝም።"),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("አንዳንድ ሥርዓቶች ችግር ገጥሟቸዋል"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("የድምጽ መልእክት ይቅረጹ"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("ለመላክ ዝግጁ"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("ያ መልእክት ከአሁን በኋላ እዚህ የለም።"),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("ወደ መልእክቱ ይሂዱ"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("የድምጽ መልእክት"),
+      "ui_liked_by_author": MessageLookupByLibrary.simpleMessage("ደራሲው ወድዶታል"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("ፎቶ ወይም ቪዲዮ ያክሉ"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("ሚዲያ"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("የድምጽ መልእክቶች"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("ውይይት"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("የግድግዳ ወረቀት"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("ማሳወቂያዎችን ድምጸ-ከል አድርግ"),
+      "ui_dm_info_mute_detail":
+          MessageLookupByLibrary.simpleMessage("ስለዚህ ውይይት ማሳወቂያ መቀበል ያቁሙ"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("ከአሁን በኋላ መልእክት ሊልኩልዎ አይችሉም"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("ምንም"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("ፎቶ"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("ድምጸ-ከል ተነስቷል።"),
+      "ui_dm_remove_failed":
+          MessageLookupByLibrary.simpleMessage("ሊወገድ አልቻለም። እንደገና ይሞክሩ።"),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("መገለጫ"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("ድምጸ-ከል አንሳ"),
+      "ui_dm_info_no_media":
+          MessageLookupByLibrary.simpleMessage("የሚያጋሯቸው ፎቶዎችና ቪዲዮዎች እዚህ ይታያሉ።"),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("ሁሉንም ይመልከቱ"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("ፎቶዎችና ቪዲዮዎች"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("ውይይትዎ እንዲህ ይመስላል።"),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("ጥሩ ይመስላል።"),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("ጭጋግ"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("ምሽት"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("አረንጓዴ"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("አሸዋ"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ነጥቦች"),
     };
 
 final messageLookup = MessageLookup();

@@ -1314,6 +1314,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "လည်ပတ်ချိန်မှတ်တမ်း မရရှိနိုင်သေးပါ။"),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("စနစ်အချို့တွင် ပြဿနာရှိနေသည်"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("အသံမှတ်စု မှတ်တမ်းတင်ရန်"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("ပို့ရန် အသင့်ဖြစ်ပြီ"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "ထိုမက်ဆေ့ချ် ဤနေရာတွင် မရှိတော့ပါ။"),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်သို့ သွားရန်"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("အသံမှတ်စု"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("ရေးသူက နှစ်သက်သည်"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "ဓာတ်ပုံ သို့မဟုတ် ကလစ် ထည့်ရန်"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("မီဒီယာ"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("အသံမှတ်စုများ"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("ချက်"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("နောက်ခံပုံ"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("အသိပေးချက်များကို အသံပိတ်ရန်"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "ဤစကားဝိုင်းနှင့်ပတ်သက်သော အသိပေးချက်များ ရပ်ရန်"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "သူတို့ သင့်ထံ မက်ဆေ့ချ် ပို့၍ မရတော့ပါ"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("မရှိ"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံ"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("အသံပြန်ဖွင့်ပြီး။"),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "ဖယ်ရှား၍ မရပါ။ ထပ်စမ်းကြည့်ပါ။"),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("ပရိုဖိုင်"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("အသံပြန်ဖွင့်ရန်"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "သင်မျှဝေသော ဓာတ်ပုံနှင့် ကလစ်များ ဤနေရာတွင် ပေါ်လာမည်။"),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("အားလုံးကြည့်ရန်"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံနှင့် ကလစ်များ"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("သင့်ချက်သည် ဤသို့ ပေါ်လာမည်။"),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("ကြည့်ကောင်းပါသည်။"),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("မြူ"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("ဆည်းဆာ"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("စိမ်းနု"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("သဲ"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("အစက်များ"),
     };
 
 final messageLookup = MessageLookup();

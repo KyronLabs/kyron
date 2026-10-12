@@ -1311,6 +1311,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Oppetidshistorikk er ikke tilgjengelig ennå."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Noen systemer har problemer"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Ta opp en talemelding"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Klar til å sende"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Den meldingen er ikke her lenger."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Gå til meldingen"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Talemelding"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Likt av forfatteren"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Legg til et bilde eller klipp"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Medier"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Talemeldinger"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Chat"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Bakgrunn"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Demp varsler"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Slutt å få varsler om denne samtalen"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "De kan ikke lenger sende deg meldinger"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Ingen"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Bilde"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Demping opphevet."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke fjerne den. Prøv igjen."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Opphev demping"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Bilder og klipp du deler, vises her."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Se alle"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Bilder og klipp"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Slik kommer chatten din til å se ut."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Ser bra ut."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Tåke"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Skumring"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvie"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Sand"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Prikker"),
     };
 
 final messageLookup = MessageLookup();

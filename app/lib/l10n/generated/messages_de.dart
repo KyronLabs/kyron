@@ -1422,6 +1422,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Der Verfügbarkeitsverlauf ist noch nicht verfügbar."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Einige Systeme haben Probleme"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Sprachnachricht aufnehmen"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Bereit zum Senden"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Diese Nachricht gibt es nicht mehr."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("Zur Nachricht"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Sprachnachricht"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Gefällt dem Autor"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Foto oder Clip hinzufügen"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Medien"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Sprachnachrichten"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Chat"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Hintergrund"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Mitteilungen stummschalten"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Keine Mitteilungen mehr zu dieser Unterhaltung erhalten"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Diese Person kann dir keine Nachrichten mehr senden"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Keiner"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Stummschaltung aufgehoben."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Konnte nicht entfernt werden. Versuch es noch einmal."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute":
+          MessageLookupByLibrary.simpleMessage("Stummschaltung aufheben"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Fotos und Clips, die du teilst, erscheinen hier."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Alle ansehen"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Fotos und Clips"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("So wird dein Chat aussehen."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Sieht gut aus."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Nebel"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Dämmerung"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salbei"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Sand"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Punkte"),
     };
 
 final messageLookup = MessageLookup();

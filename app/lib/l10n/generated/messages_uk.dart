@@ -1313,6 +1313,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Історія доступності ще недоступна."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("У деяких системах є проблеми"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage(
+          "Записати голосове повідомлення"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Готово до надсилання"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Цього повідомлення вже немає."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Перейти до повідомлення"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Голосове повідомлення"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Сподобалося авторові"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Додати фото або кліп"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Медіа"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Голосові повідомлення"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Чат"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Шпалери"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Вимкнути сповіщення"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Більше не отримувати сповіщень про цю розмову"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Вони більше не зможуть вам писати"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Немає"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Фото"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Сповіщення увімкнено."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося видалити. Спробуйте ще раз."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Профіль"),
+      "ui_dm_unmute":
+          MessageLookupByLibrary.simpleMessage("Увімкнути сповіщення"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Тут з'являються фото та кліпи, якими ви ділитеся."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Переглянути все"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("Фото та кліпи"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Так виглядатиме ваш чат."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Виглядає добре."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Туман"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Сутінки"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Шавлія"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Пісок"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Цятки"),
     };
 
 final messageLookup = MessageLookup();

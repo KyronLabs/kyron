@@ -1311,6 +1311,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Käytettävyyshistoria ei ole vielä saatavilla."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Joissakin järjestelmissä on ongelmia"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Nauhoita ääniviesti"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Valmis lähetettäväksi"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Sitä viestiä ei ole enää täällä."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Siirry viestiin"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Ääniviesti"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Kirjoittaja tykkää"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Lisää kuva tai leike"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Media"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Ääniviestit"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Keskustelu"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Taustakuva"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Mykistä ilmoitukset"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Lopeta tätä keskustelua koskevat ilmoitukset"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "He eivät voi enää lähettää sinulle viestejä"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Ei mitään"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Kuva"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Mykistys poistettu."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Poistaminen epäonnistui. Yritä uudelleen."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profiili"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Poista mykistys"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Jakamasi kuvat ja leikkeet näkyvät täällä."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Näytä kaikki"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Kuvat ja leikkeet"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Tältä keskustelusi näyttää."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Näyttää hyvältä."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Usva"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Hämärä"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvia"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Hiekka"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Pisteet"),
     };
 
 final messageLookup = MessageLookup();

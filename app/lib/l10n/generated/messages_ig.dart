@@ -1311,6 +1311,48 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Akụkọ oge ọrụ adịbeghị."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Ụfọdụ sistemụ nwere nsogbu"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("Dekọọ ozi olu"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("Njikere iziga"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Ozi ahụ adịghịzi ebe a."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Gaa na ozi ahụ"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Ozi olu"),
+      "ui_liked_by_author": MessageLookupByLibrary.simpleMessage(
+          "Onye dere ya nwere mmasị na ya"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Tinye foto ma ọ bụ vidiyo"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Mgbasa ozi"),
+      "ui_dm_info_voice_notes": MessageLookupByLibrary.simpleMessage("Ozi olu"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Mkparịta ụka"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Akwụkwọ mgbidi"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Mechie ọkwa"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Kwụsị ịnata ọkwa gbasara mkparịta ụka a"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Ha enweghịzi ike izitere gị ozi"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Ọ dịghị"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("Emepeghere ụda."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike iwepu ya. Nwaa ọzọ."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profaịlụ"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Mepee ụda"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Foto na vidiyo ị kesara na-apụta ebe a."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Hụ ha niile"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("Foto na vidiyo"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Otu a ka mkparịta ụka gị ga-adị."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Ọ dị mma."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Igwe ojii"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Mgbede"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Ndụ ndụ"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Aja"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Ntụpọ"),
     };
 
 final messageLookup = MessageLookup();

@@ -1313,6 +1313,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Imbali yexesha lokusebenza ayikafumaneki."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Ezinye iinkqubo zineengxaki"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Rekhoda umyalezo welizwi"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Ilungele ukuthunyelwa"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Loo myalezo awusekho apha."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Yiya kumyalezo"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Umyalezo welizwi"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Umbhali uyawuthanda"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Yongeza ifoto okanye iklip"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Imidiya"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Imiyalezo yelizwi"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Incoko"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Iphepha lodonga"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Thulisa izaziso"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Yeka ukufumana izaziso malunga nale ncoko"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Abasakwazi ukukuthumelela imiyalezo"),
+      "ui_dm_wallpaper_none":
+          MessageLookupByLibrary.simpleMessage("Akukho nanye"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Ifoto"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Akusathuliswanga."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Akukwazanga ukususwa. Zama kwakhona."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Iprofayile"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Yeka ukuthulisa"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Iifoto neeklip ozabelanayo zivela apha."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Bona zonke"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("Iifoto neeklip"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Nantsi indlela incoko yakho eya kubonakala ngayo."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Kubukeka kakuhle."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Inkungu"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Ngorhatya"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Luhlaza"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Isanti"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Amachaphaza"),
     };
 
 final messageLookup = MessageLookup();

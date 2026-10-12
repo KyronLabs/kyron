@@ -10,6 +10,7 @@ function serviceWith({
   comment = { id: 'c1', postId: 'p1' } as Record<string, unknown> | null,
   children = [] as Record<string, unknown>[][],
   likeCount = 0,
+  authorLiked = [] as string[],
 } = {}) {
   const created: unknown[] = [];
   const deleted: unknown[] = [];
@@ -30,6 +31,17 @@ function serviceWith({
         return Promise.resolve({ count: 1 });
       }),
       count: jest.fn().mockResolvedValue(likeCount),
+      findMany: jest.fn(() =>
+        Promise.resolve(authorLiked.map((commentId) => ({ commentId }))),
+      ),
+    },
+    user: {
+      findUnique: jest.fn().mockResolvedValue({
+        id: 'author',
+        name: 'Willow',
+        username: 'willow',
+        profile: { avatarUrl: 'https://cdn.invalid/willow.jpg' },
+      }),
     },
   };
 
@@ -125,5 +137,52 @@ describe('commentThread', () => {
     await expect(svc.commentThread(ME, 'c1')).rejects.toThrow(
       NotFoundException,
     );
+  });
+
+  it("carries the post author's face on the replies they liked", async () => {
+    // The badge beside a reply is the author's own picture with a heart, so
+    // the comment page -- which has no post in hand -- needs the face too.
+    const { svc, prisma } = serviceWith({
+      comment: {
+        ...row('c1', null),
+        postId: 'p1',
+        post: { authorId: 'author' },
+      },
+      children: [[row('c2', 'c1'), row('c3', 'c1')], []],
+      authorLiked: ['c2'],
+    });
+
+    const thread = await svc.commentThread(ME, 'c1');
+
+    expect(thread.root.authorLike).toBeNull();
+    expect(thread.replies.find((r) => r.id === 'c2')?.authorLike).toEqual({
+      id: 'author',
+      name: 'Willow',
+      username: 'willow',
+      avatarUrl: 'https://cdn.invalid/willow.jpg',
+    });
+    expect(thread.replies.find((r) => r.id === 'c3')?.authorLike).toBeNull();
+    // One read for the whole branch, not one per level.
+    expect(prisma.commentLike.findMany).toHaveBeenCalledTimes(1);
+    expect(prisma.commentLike.findMany).toHaveBeenCalledWith({
+      where: { userId: 'author', commentId: { in: ['c1', 'c2', 'c3'] } },
+      select: { commentId: true },
+    });
+  });
+
+  it('does not look the author up when they liked nothing', async () => {
+    const { svc, prisma } = serviceWith({
+      comment: {
+        ...row('c1', null),
+        postId: 'p1',
+        post: { authorId: 'author' },
+      },
+      children: [[row('c2', 'c1')], []],
+    });
+
+    const thread = await svc.commentThread(ME, 'c1');
+
+    expect(thread.replies[0].authorLike).toBeNull();
+    expect(prisma.user.findUnique).not.toHaveBeenCalled();
   });
 });

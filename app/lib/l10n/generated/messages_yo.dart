@@ -1311,6 +1311,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ìtàn àkókò iṣẹ́ kò tíì sí."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Àwọn ètò kan ní ìṣòro"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Ṣe àkọsílẹ̀ ìfiránṣẹ́ ohùn"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Ó ti ṣetán láti fi ránṣẹ́"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Ìfiránṣẹ́ yẹn kò sí níbí mọ́."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Lọ sí ìfiránṣẹ́ náà"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Ìfiránṣẹ́ ohùn"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Òǹkọ̀wé fẹ́ràn rẹ̀"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Fi fọ́tò tàbí fídíò kún un"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Mídíà"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìfiránṣẹ́ ohùn"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Ìwíregbè"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Àwòrán ẹ̀yìn"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Pa ohùn ìwífún mọ́"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Dẹ́kun gbígba ìwífún nípa ìjíròrò yìí"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Wọn kò lè fi ìfiránṣẹ́ ránṣẹ́ sí ọ mọ́"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Kò sí"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Fọ́tò"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("A ti ṣí ohùn padà."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "A kò lè yọ ọ́ kúrò. Gbìyànjú lẹ́ẹ̀kan sí i."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profaili"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Ṣí ohùn padà"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Àwọn fọ́tò àti fídíò tí o pín ń hàn níbí."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Wo gbogbo rẹ̀"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Fọ́tò àti fídíò"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Báyìí ni ìwíregbè rẹ yóò ṣe rí."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Ó dára."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Ìkùukùu"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Ìrọ̀lẹ́"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Ewé"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Iyanrìn"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Àmì kékeré"),
     };
 
 final messageLookup = MessageLookup();

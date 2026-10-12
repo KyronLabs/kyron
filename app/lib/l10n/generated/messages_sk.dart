@@ -1309,6 +1309,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "História dostupnosti zatiaľ nie je k dispozícii."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Niektoré systémy majú problémy"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Nahrať hlasovú správu"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Pripravené na odoslanie"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Táto správa tu už nie je."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Prejsť na správu"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Hlasová správa"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Autorovi sa to páči"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Pridať fotku alebo klip"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Médiá"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Hlasové správy"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Chat"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Tapeta"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Stlmiť upozornenia"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Prestať dostávať upozornenia o tejto konverzácii"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("Už vám nemôžu písať"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Žiadna"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Fotka"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Stlmenie zrušené."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepodarilo sa odstrániť. Skúste to znova."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Zrušiť stlmenie"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Fotky a klipy, ktoré zdieľate, sa zobrazia tu."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Zobraziť všetko"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("Fotky a klipy"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Takto bude vyzerať váš chat."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Vyzerá to dobre."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Hmla"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Súmrak"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Šalvia"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Piesok"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Bodky"),
     };
 
 final messageLookup = MessageLookup();

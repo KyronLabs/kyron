@@ -1313,6 +1313,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ක්‍රියාකාරී කාල ඉතිහාසය තවම නොමැත."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("සමහර පද්ධතිවල ගැටලු ඇත"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("හඬ සටහනක් පටිගත කරන්න"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("යැවීමට සූදානම්"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("එම පණිවිඩය තවදුරටත් මෙහි නැත."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("පණිවිඩයට යන්න"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("හඬ සටහන"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("කතුවරයා කැමති විය"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "ඡායාරූපයක් හෝ ක්ලිපයක් එක් කරන්න"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("මාධ්‍ය"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("හඬ සටහන්"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("කතාබහ"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("බිතුපත"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("දැනුම්දීම් නිහඬ කරන්න"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "මෙම සංවාදය ගැන දැනුම්දීම් ලැබීම නවත්වන්න"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔවුන්ට තවදුරටත් ඔබට පණිවිඩ යැවිය නොහැක"),
+      "ui_dm_wallpaper_none":
+          MessageLookupByLibrary.simpleMessage("කිසිවක් නැත"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("ඡායාරූපය"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("නිහඬ බව ඉවත් කළා."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "ඉවත් කළ නොහැකි විය. නැවත උත්සාහ කරන්න."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("පැතිකඩ"),
+      "ui_dm_unmute":
+          MessageLookupByLibrary.simpleMessage("නිහඬ බව ඉවත් කරන්න"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "ඔබ බෙදාගන්නා ඡායාරූප සහ ක්ලිප මෙහි පෙන්වයි."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("සියල්ල බලන්න"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("ඡායාරූප සහ ක්ලිප"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ කතාබහ මේ ආකාරයට පෙනෙනු ඇත."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("හොඳින් පෙනේ."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("මීදුම"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("සැන්දෑව"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("සේජ්"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("වැලි"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("තිත්"),
     };
 
 final messageLookup = MessageLookup();

@@ -15,16 +15,18 @@ import '../providers/current_user_provider.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
 import '../widgets/action_sheet.dart';
+import '../widgets/chat_wallpaper_view.dart';
+import '../providers/chat_wallpaper_provider.dart';
+import 'conversation_info_screen.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/jump_to_end.dart';
 import '../widgets/toast.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
-import '../repositories/moderation_repository.dart' show ReportTarget;
 import '../providers/composer_provider.dart' show ComposerState;
 import '../utils/media_basket.dart';
 import '../widgets/media_tray.dart';
-import 'report_screen.dart';
 import '../widgets/media_grid.dart';
+import '../widgets/create_post/voice_recorder_sheet.dart';
 import '../widgets/voice_post_player.dart';
 import '../widgets/skeleton.dart';
 import '../widgets/kyron_app_bar.dart';
@@ -56,11 +58,29 @@ class ThreadScreen extends ConsumerStatefulWidget {
   ConsumerState<ThreadScreen> createState() => _ThreadScreenState();
 }
 
-class _ThreadScreenState extends ConsumerState<ThreadScreen> {
+class _ThreadScreenState extends ConsumerState<ThreadScreen>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _box = TextEditingController();
   final ScrollController _scroll = ScrollController();
   final FocusNode _focus = FocusNode();
   bool _canSend = false;
+
+  /// Each message's row, by id, so a quote can bring the message it quotes
+  /// into view. Rows are built lazily, so this is how one off screen is
+  /// found once the list has been moved near it.
+  final Map<String, GlobalKey> _rows = {};
+
+  /// The message a quote was just followed to, while it is being pointed
+  /// out.
+  String? _pulsing;
+
+  /// Set while the list is being moved to a quoted message, so reaching the
+  /// top on the way does not start loading older pages under it.
+  bool _jumping = false;
+  late final AnimationController _pulse = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1100),
+  );
 
   @override
   void initState() {
@@ -78,6 +98,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     _scroll.removeListener(_onScroll);
     _scroll.dispose();
     _focus.dispose();
+    _pulse.dispose();
     super.dispose();
   }
 
@@ -135,6 +156,33 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     if (message != null && mounted) Toast.show(context, message);
   }
 
+  /// Records a voice note and sends it as its own message, answering
+  /// whatever was being answered.
+  Future<void> _recordVoice() async {
+    final me = ref.read(currentUserProvider).asData?.value.id;
+    if (me == null) {
+      Toast.show(context, AppLocalizations.of(context).literalyouAreSignedOut);
+      return;
+    }
+    FocusManager.instance.primaryFocus?.unfocus();
+    final recording = await VoiceRecorderSheet.show(context, forMessage: true);
+    if (recording == null || !mounted) return;
+
+    final answering = _replyingTo;
+    setState(() => _replyingTo = null);
+    unawaited(HapticFeedback.selectionClick());
+    final feed = ref.read(feedRepositoryProvider);
+    unawaited(
+      ref.read(threadProvider(widget.args.conversationId).notifier).sendVoice(
+            recording,
+            senderId: me,
+            upload: feed.uploadMedia,
+            replyToId: answering?.id,
+          ),
+    );
+    _toNewest(animate: true);
+  }
+
   /// Everything that can go in a message besides words, behind one button,
   /// so the box itself has the room.
   Future<void> _openAttachments() async {
@@ -184,141 +232,30 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
     _focus.requestFocus();
   }
 
-  /// Mute, block, or leave. What a conversation offers besides reading it.
-  /// The conversation's actions, as a sheet.
-  ///
-  /// Mute and Unmute are one entry, not two: the reader is in one of those
-  /// states and a menu offering both cannot say which.
-  Future<void> _openMenu(bool muted, MessagePerson? other) async {
-    final choice = await ActionSheet.show<String>(
+  /// The conversation's info page: the person, what has been shared, the
+  /// wallpaper, and mute, report, block and remove. Blocking or removing
+  /// takes the conversation out of the list, so this screen goes with it.
+  Future<void> _openInfo(List<MessagePerson> people) async {
+    final result = await ConversationInfoScreen.open(
       context,
-      title: other?.displayName.toUpperCase(),
-      actions: [
-        muted
-            ? SheetAction(
-                value: 'unmute',
-                label: 'Unmute',
-                icon: Iconsax.volume_high_copy,
-                detail: 'Be notified about this conversation again',
-              )
-            : SheetAction(
-                value: 'mute',
-                label: AppLocalizations.of(context).mute,
-                icon: Iconsax.volume_slash_copy,
-                detail: 'Stop being notified about this conversation',
-              ),
-        SheetAction(
-          value: 'report',
-          label: AppLocalizations.of(context).report,
-          icon: Iconsax.flag_copy,
-        ),
-        SheetAction(
-          value: 'block',
-          label: AppLocalizations.of(context).block,
-          icon: Iconsax.slash_copy,
-          detail: 'They can no longer message you',
-          destructive: true,
-        ),
-        SheetAction(
-          value: 'leave',
-          label: AppLocalizations.of(context).literalremoveThisConversation,
-          icon: Iconsax.trash_copy,
-          destructive: true,
-        ),
-      ],
+      conversationId: widget.args.conversationId,
+      people: people,
     );
-    if (choice == null || !mounted) return;
-    await _conversationAction(choice);
-  }
-
-  Future<void> _conversationAction(String action) async {
-    final notifier = ref.read(
-      threadProvider(widget.args.conversationId).notifier,
-    );
-
-    switch (action) {
-      case 'mute':
-        final error = await notifier.setMuted(true);
-        if (!mounted) return;
-        Toast.show(
-          context,
-          error ??
-              AppLocalizations.of(context).literalmutedYouWillNotBeNotified,
-        );
-      case 'unmute':
-        final error = await notifier.setMuted(false);
-        if (!mounted) return;
-        Toast.show(context, error ?? 'Unmuted.');
-      case 'block':
-        final sure = await _confirm(
-          title: AppLocalizations.of(context).literalblockThisAccount,
-          detail: 'They cannot message you, and this conversation leaves your '
-              'list. You can undo it from Settings.',
-          confirm: 'Block',
-        );
-        if (!sure || !mounted) return;
-        final error = await notifier.blockOther();
-        if (!mounted) return;
-        if (error != null) {
-          Toast.show(context, error);
-        } else {
-          Navigator.pop(context);
-        }
-      case 'report':
-        final other = ref
-            .read(threadProvider(widget.args.conversationId))
-            .people
-            .firstOrNull;
-        if (other == null || !mounted) return;
-        await ReportScreen.open(
-          context,
-          target: ReportTarget.user,
-          targetId: other.id,
-          subject: other.handle ?? other.displayName,
-        );
-      case 'leave':
-        final sure = await _confirm(
-          title: AppLocalizations.of(context).removeConversation,
-          detail: 'It disappears from your list. The other person keeps '
-              'theirs, and it comes back if either of you writes again.',
-          confirm: 'Remove',
-        );
-        if (!sure || !mounted) return;
-        await ref
-            .read(messagesRepositoryProvider)
-            .hide(widget.args.conversationId);
-        if (mounted) Navigator.pop(context);
+    if (result == ConversationInfoResult.closed && mounted) {
+      Navigator.pop(context);
     }
   }
 
-  Future<bool> _confirm({
-    required String title,
-    required String detail,
-    required String confirm,
-  }) async =>
-      await showDialog<bool>(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(title),
-          content: Text(detail),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context, false),
-              child: Text(AppLocalizations.of(context).cancel),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, true),
-              child: Text(confirm),
-            ),
-          ],
-        ),
-      ) ??
-      false;
-
   void _onScroll() {
-    if (!_scroll.hasClients) return;
+    if (!_scroll.hasClients || _jumping) return;
     // Older messages are above, so the top edge is what asks for more.
     if (_scroll.position.pixels <= 300) {
+      // Nothing older to fetch, or a fetch already going: nothing will be
+      // added above, so there is nothing to make room for. Without this the
+      // "make room" below ran on every scroll near the top and moved the
+      // view by however much the list's own estimate of its length changed.
+      final state = ref.read(threadProvider(widget.args.conversationId));
+      if (state.cursor == null || state.loadingMore) return;
       final before = _scroll.position.maxScrollExtent;
       ref.read(threadProvider(widget.args.conversationId).notifier).loadMore();
       // Prepending grows the list above the reader. Without putting the
@@ -330,6 +267,92 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
         if (added > 0) _scroll.jumpTo(_scroll.position.pixels + added);
       });
     }
+  }
+
+  /// Follows a quote to the message it quotes: pages back until that message
+  /// is loaded, scrolls it into view, and points it out.
+  Future<void> _openAnswered(String id) async {
+    final provider = threadProvider(widget.args.conversationId);
+    final notifier = ref.read(provider.notifier);
+
+    // Older than anything loaded: page back until it is, or there is nothing
+    // older. Bounded, so a quote of something long deleted cannot page
+    // through a whole history.
+    for (var pages = 0; pages < 20; pages++) {
+      final state = ref.read(provider);
+      if (state.messages.any((m) => m.id == id) || state.cursor == null) break;
+      await notifier.loadMore();
+      if (!mounted) return;
+    }
+
+    if (!ref.read(provider).messages.any((m) => m.id == id)) {
+      if (mounted) {
+        Toast.show(
+          context,
+          AppLocalizations.of(context)
+              .ui('ui_dm_quote_gone', 'That message is no longer here.'),
+        );
+      }
+      return;
+    }
+
+    // Let the list take in whatever was just loaded before measuring it.
+    await WidgetsBinding.instance.endOfFrame;
+    _jumping = true;
+    final arrived = await _bringIntoView(id);
+    _jumping = false;
+    if (!arrived || !mounted) return;
+
+    unawaited(HapticFeedback.selectionClick());
+    setState(() => _pulsing = id);
+    await _pulse.forward(from: 0);
+    if (mounted && _pulsing == id) setState(() => _pulsing = null);
+  }
+
+  /// Scrolls until the row for [id] is built, then settles it a little above
+  /// the middle of the screen. Answers whether it got there.
+  Future<bool> _bringIntoView(String id) async {
+    for (var step = 0; step < 80; step++) {
+      if (!mounted || !_scroll.hasClients) return false;
+      final row = _rows[id]?.currentContext;
+      if (row != null && row.mounted) {
+        await Scrollable.ensureVisible(
+          row,
+          alignment: 0.4,
+          duration: MotionTokens.normal,
+          curve: Curves.easeInOutCubic,
+        );
+        return true;
+      }
+
+      // Off screen, so not built. Which way to go is told by which rows are
+      // built: all after it means it is above, all before means below.
+      final messages =
+          ref.read(threadProvider(widget.args.conversationId)).messages;
+      final index = messages.indexWhere((m) => m.id == id);
+      if (index < 0) return false;
+      final built = <int>[
+        for (var i = 0; i < messages.length; i++)
+          if (_rows[messages[i].id]?.currentContext != null) i,
+      ];
+      final position = _scroll.position;
+      final page = position.viewportDimension * 0.85;
+      final double to;
+      if (built.isEmpty) {
+        to = messages.length < 2
+            ? position.pixels
+            : position.maxScrollExtent * index / (messages.length - 1);
+      } else if (index < built.first) {
+        to = position.pixels - page;
+      } else {
+        to = position.pixels + page;
+      }
+      _scroll.jumpTo(
+        to.clamp(position.minScrollExtent, position.maxScrollExtent),
+      );
+      await WidgetsBinding.instance.endOfFrame;
+    }
+    return false;
   }
 
   /// Puts the newest message back on screen.
@@ -524,9 +547,10 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
         ),
         actions: [
           IconButton(
-            tooltip: 'More',
+            tooltip:
+                AppLocalizations.of(context).ui('ui_status_details', 'Details'),
             icon: const Icon(Iconsax.more_copy, size: 20),
-            onPressed: () => _openMenu(state.muted, other),
+            onPressed: () => _openInfo(people),
           ),
         ],
       ),
@@ -536,6 +560,15 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
             Expanded(
               child: Stack(
                 children: [
+                  // Behind the messages, never behind the box they are
+                  // written in: the composer keeps the page's own colour.
+                  Positioned.fill(
+                    child: ChatWallpaperView(
+                      wallpaper: ref.watch(
+                        chatWallpaperProvider(widget.args.conversationId),
+                      ),
+                    ),
+                  ),
                   Positioned.fill(
                     child: _body(state, notifier, me, people, self),
                   ),
@@ -562,6 +595,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
               onAttach: _attach,
               onAttachments: _openAttachments,
               onGif: _attachGif,
+              onVoice: _recordVoice,
               replyingTo: _replyingTo,
               replyingToAuthor: switch (_replyingTo) {
                 final answering? => _authorOf(answering, me, state.people),
@@ -725,6 +759,10 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
           // Resolved here rather than sent by the server: it holds ciphertext
           // and could not quote it. This list is decrypted.
           answered: state.answered(message),
+          onOpenAnswered: switch (message.replyToId) {
+            final id? => () => _openAnswered(id),
+            _ => null,
+          },
           answeredAuthor: switch (state.answered(message)) {
             final answered? => _authorOf(answered, me, state.people),
             _ => null,
@@ -740,6 +778,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
         );
 
         return Column(
+          key: _rows.putIfAbsent(message.id, GlobalKey.new),
           crossAxisAlignment:
               mine ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
@@ -748,7 +787,15 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
             // Above the first message the reader had not seen when they
             // opened the thread -- where they left off, marked.
             if (dividerAbove) const _NewMessagesDivider(),
-            bubble,
+            if (message.id == _pulsing)
+              _Pulse(
+                key: ValueKey('pulsing-${message.id}'),
+                animation: _pulse,
+                alignment: mine ? Alignment.centerRight : Alignment.centerLeft,
+                child: bubble,
+              )
+            else
+              bubble,
             // Whether it went, said once: under your newest message, the way
             // a chat says "Seen", rather than a line under every run. One
             // that failed says so wherever it is, with a way to try again.
@@ -821,6 +868,9 @@ class _Bubble extends StatelessWidget {
   /// Who wrote [answered], in words.
   final String? answeredAuthor;
 
+  /// Takes the reader to the message this one answers.
+  final VoidCallback? onOpenAnswered;
+
   const _Bubble({
     required this.message,
     required this.mine,
@@ -838,6 +888,7 @@ class _Bubble extends StatelessWidget {
     this.onRemove,
     this.answered,
     this.answeredAuthor,
+    this.onOpenAnswered,
   });
 
   /// The avatar's width plus the gap after it, which every bubble from the
@@ -886,6 +937,17 @@ class _Bubble extends StatelessWidget {
       );
     }
 
+    // The message's own gestures go on the message, and not on the quote
+    // above it: inside the double-tap's reach, a tap on the quote had to wait
+    // out the double-tap window before it went anywhere.
+    content = GestureDetector(
+      onLongPress: () => _openOptions(context),
+      // A heart on a double tap. Not on a message the server does not have
+      // yet: there is nothing for it to attach to.
+      onDoubleTap: _canReact ? onToggleHeart : null,
+      child: content,
+    );
+
     if (message.replyToId != null) {
       content = Column(
         crossAxisAlignment:
@@ -919,7 +981,19 @@ class _Bubble extends StatelessWidget {
           // edge. One exchange, read as one.
           OverlapStack(
             alignEnd: mine,
-            back: _QuotedMessage(answered: answered),
+            // A tap on the quote goes to what it quotes. The quote is a
+            // piece of the conversation above; it should lead there.
+            back: Semantics(
+              button: onOpenAnswered != null,
+              label: AppLocalizations.of(context)
+                  .ui('ui_dm_quote_open', 'Go to the message'),
+              child: GestureDetector(
+                key: ValueKey('quote-${message.id}'),
+                behavior: HitTestBehavior.opaque,
+                onTap: onOpenAnswered,
+                child: _QuotedMessage(answered: answered),
+              ),
+            ),
             front: content,
           ),
         ],
@@ -968,13 +1042,7 @@ class _Bubble extends StatelessWidget {
               // id the server knows -- there is nothing to answer.
               enabled: !message.sending && !message.failed,
               onReply: onReply,
-              child: GestureDetector(
-                onLongPress: () => _openOptions(context),
-                // A heart on a double tap. Not on a message the server does
-                // not have yet: there is nothing for it to attach to.
-                onDoubleTap: _canReact ? onToggleHeart : null,
-                child: content,
-              ),
+              child: content,
             ),
           ),
           if (!mine && marker != null) marker,
@@ -1071,8 +1139,13 @@ class _Bubble extends StatelessWidget {
         maxWidth: MediaQuery.sizeOf(context).width * 0.75,
       ),
       // At this padding one line of body text makes a bubble exactly as tall
-      // as its corners are round, which is what draws it as a pill.
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      // as its corners are round, which is what draws it as a pill. A voice
+      // note alone is held tighter: its play button is already a full
+      // target, and the text bubble's padding round that made it half as
+      // tall again as a line of text.
+      padding: !hasText && message.media.any((m) => m.isVoice)
+          ? const EdgeInsets.fromLTRB(4, 4, 14, 4)
+          : const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: message.failed
             ? scheme.error.withValues(alpha: 0.12)
@@ -1109,7 +1182,6 @@ class _Bubble extends StatelessWidget {
               media: voice,
               framed: false,
               ink: mine && !message.failed ? scheme.onPrimary : null,
-              onInk: mine && !message.failed ? scheme.primary : null,
             ),
             if (hasText) const SizedBox(height: SpacingTokens.space8),
           ],
@@ -1301,6 +1373,9 @@ class _Composer extends StatelessWidget {
   final VoidCallback onAttachments;
   final VoidCallback onGif;
 
+  /// Records a voice note and sends it.
+  final VoidCallback onVoice;
+
   /// The message being answered, while one is.
   final DirectMessage? replyingTo;
   final String? replyingToAuthor;
@@ -1319,6 +1394,7 @@ class _Composer extends StatelessWidget {
     required this.onAttach,
     required this.onAttachments,
     required this.onGif,
+    required this.onVoice,
     required this.onCancelReply,
     this.replyingTo,
     this.replyingToAuthor,
@@ -1339,14 +1415,22 @@ class _Composer extends StatelessWidget {
       required VoidCallback? onPressed,
       double size = 22,
       Color? color,
+      Key? key,
     }) =>
         IconButton(
+          key: key,
           onPressed: onPressed,
           tooltip: tooltip,
           icon: Icon(icon, size: size),
           color: color,
           visualDensity: VisualDensity.compact,
           padding: EdgeInsets.zero,
+          // Without this the button reserves a 48-point target around its
+          // own box, and two of them side by side sat that far apart: the
+          // gap between the picture and the clip buttons.
+          style: const ButtonStyle(
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
           constraints: const BoxConstraints.tightFor(width: 36, height: 40),
         );
 
@@ -1496,12 +1580,24 @@ class _Composer extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: SpacingTokens.space4),
-              button(
-                icon: Iconsax.send_1,
-                tooltip: l10n.send,
-                onPressed: canSend ? onSend : null,
-                color: scheme.primary,
-              ),
+              // Send while there is something to send; the microphone while
+              // there is not. The same place, so a voice note is one tap from
+              // an empty box, the way every messenger puts it.
+              if (typing || media.isNotEmpty)
+                button(
+                  icon: Iconsax.send_1,
+                  tooltip: l10n.send,
+                  onPressed: canSend ? onSend : null,
+                  color: scheme.primary,
+                )
+              else
+                button(
+                  key: const ValueKey('composer-voice'),
+                  icon: Iconsax.microphone_2,
+                  tooltip: l10n.ui('ui_dm_voice', 'Record a voice note'),
+                  onPressed: onVoice,
+                  color: scheme.primary,
+                ),
             ],
           ),
         ],
@@ -1640,7 +1736,9 @@ class _QuotedMessage extends StatelessWidget {
                 'This message cannot be read on this device.',
               )
             : message.isEmpty || message.body.trim().isEmpty
-                ? l10n.ui('ui_dm_quote_attachment', 'Attachment')
+                ? message.media.any((m) => m.isVoice)
+                    ? l10n.ui('ui_dm_quote_voice', 'Voice note')
+                    : l10n.ui('ui_dm_quote_attachment', 'Attachment')
                 : message.body.trim();
     final aside = message == null || message.unreadable;
 
@@ -1671,6 +1769,75 @@ class _QuotedMessage extends StatelessWidget {
           fontStyle: aside ? FontStyle.italic : null,
         ),
       ),
+    );
+  }
+}
+
+/// A message being pointed out, after a quote was followed to it.
+///
+/// It swells a little and settles, with a tint behind it that fades, so the
+/// eye lands on it wherever the scroll left it. Drawn around the bubble
+/// without taking any room, so nothing on the screen moves but the bubble.
+class _Pulse extends StatelessWidget {
+  const _Pulse({
+    super.key,
+    required this.animation,
+    required this.alignment,
+    required this.child,
+  });
+
+  final Animation<double> animation;
+  final Alignment alignment;
+  final Widget child;
+
+  /// Up quickly, back slowly: a nudge rather than a bounce.
+  static final Animatable<double> _scale = TweenSequence<double>([
+    TweenSequenceItem(
+      tween: Tween(begin: 1.0, end: 1.06)
+          .chain(CurveTween(curve: Curves.easeOutCubic)),
+      weight: 30,
+    ),
+    TweenSequenceItem(
+      tween: Tween(begin: 1.06, end: 1.0)
+          .chain(CurveTween(curve: Curves.easeInOutCubic)),
+      weight: 70,
+    ),
+  ]);
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return AnimatedBuilder(
+      animation: animation,
+      child: child,
+      builder: (context, child) {
+        final t = animation.value;
+        final tint = scheme.primary.withValues(
+          alpha: 0.16 * (1 - Curves.easeIn.transform(t)),
+        );
+        return Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              left: -SpacingTokens.space8,
+              right: -SpacingTokens.space8,
+              top: -SpacingTokens.space4,
+              bottom: -SpacingTokens.space4,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: tint,
+                  borderRadius: BorderRadius.circular(RadiusTokens.radius20),
+                ),
+              ),
+            ),
+            Transform.scale(
+              scale: _scale.transform(t),
+              alignment: alignment,
+              child: child,
+            ),
+          ],
+        );
+      },
     );
   }
 }

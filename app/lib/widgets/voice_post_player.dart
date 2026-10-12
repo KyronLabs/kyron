@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:just_audio/just_audio.dart';
@@ -21,11 +22,10 @@ import '../l10n/app_localizations.dart';
 /// past is unobtrusive; audio that starts on its own is not, and there is no
 /// muted state that would still be worth playing.
 ///
-/// Drawn as a card in a post: the corner a post's pictures have and the
-/// hairline its quoted posts have, so a recording reads as one more thing a
-/// post can carry rather than a control bolted onto it. It used to be a pill,
-/// and a full-width pill with a pale button at one end and a waveform in the
-/// middle looked like a slider nobody had asked for.
+/// Drawn as a card in a post, the height of the reply box: the corner a
+/// post's pictures have and the hairline its quoted posts have. The play
+/// button is the icon alone, in the text colour -- a coloured disc behind it
+/// made a recording the loudest thing in a post.
 class VoicePostPlayer extends StatefulWidget {
   final PostMedia media;
 
@@ -33,35 +33,44 @@ class VoicePostPlayer extends StatefulWidget {
   /// bubble is already the frame and a card in it is a box in a box.
   final bool framed;
 
-  /// What the player is drawn in: the button, the played bars, the clock.
-  /// The accent by default. A bubble filled with the accent hands its own
-  /// ink, or the waveform would be drawn in the colour it sits on.
+  /// What the player is drawn in: the icon, the played bars and the clock.
+  /// The text colour for the icon and the accent for the bars by default. A
+  /// bubble filled with the accent hands its own ink, or the bars would be
+  /// drawn in the colour they sit on.
   final Color? ink;
-
-  /// The icon on the button, which is filled with [ink].
-  final Color? onInk;
 
   const VoicePostPlayer({
     super.key,
     required this.media,
     this.framed = true,
     this.ink,
-    this.onInk,
   });
 
-  /// The play button's size: the design system's small button height, so it
-  /// is a comfortable target and the same size as the other small controls.
+  /// The whole card's height: the reply box's, so the two read as the same
+  /// size of thing.
+  static const double height = 44;
+
+  /// The play button's target. The icon in it is smaller; the target is not.
   static const double buttonSize = 40;
 
-  /// How tall the waveform is drawn, the same as the button beside it.
-  static const double waveformHeight = buttonSize;
+  static const double iconSize = 24;
+
+  /// How tall the waveform is drawn.
+  static const double waveformHeight = 24;
 
   @override
   State<VoicePostPlayer> createState() => _VoicePostPlayerState();
 }
 
-class _VoicePostPlayerState extends State<VoicePostPlayer> {
+class _VoicePostPlayerState extends State<VoicePostPlayer>
+    with SingleTickerProviderStateMixin {
   AudioPlayer? _player;
+
+  /// Reads the position every frame while playing. The player's own stream
+  /// reports a few times a second, so a fill drawn from it moves in steps;
+  /// its `position` is interpolated against the clock, so reading it once a
+  /// frame moves the fill continuously, like a progress bar.
+  late final Ticker _frames = createTicker(_onFrame);
   StreamSubscription<Duration>? _positions;
   StreamSubscription<PlayerState>? _states;
 
@@ -75,8 +84,15 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
   Duration get _total =>
       _player?.duration ?? widget.media.duration ?? Duration.zero;
 
+  void _onFrame(Duration _) {
+    final player = _player;
+    if (player == null || !mounted) return;
+    setState(() => _position = player.position);
+  }
+
   @override
   void dispose() {
+    _frames.dispose();
     unawaited(_positions?.cancel());
     unawaited(_states?.cancel());
     unawaited(_player?.dispose());
@@ -109,7 +125,14 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
 
     final player = AudioPlayer();
     try {
-      await player.setUrl(widget.media.url);
+      // A voice note still going up plays from the file on this phone; a
+      // bare path is not a URL, and handed to setUrl it does not play.
+      final source = widget.media.url;
+      if (source.startsWith('/')) {
+        await player.setFilePath(source);
+      } else {
+        await player.setUrl(source);
+      }
     } catch (_) {
       await player.dispose();
       if (!mounted) return null;
@@ -125,12 +148,22 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
       return null;
     }
 
+    // At rest -- after a seek, say -- the stream is what moves the fill;
+    // while playing, the frame ticker does.
     _positions = player.positionStream.listen((position) {
-      if (mounted) setState(() => _position = position);
+      if (mounted && !_frames.isActive) setState(() => _position = position);
     });
     _states = player.playerStateStream.listen((state) {
       if (!mounted) return;
       setState(() => _playing = state.playing);
+      final running =
+          state.playing && state.processingState != ProcessingState.completed;
+      if (running && !_frames.isActive) {
+        unawaited(_frames.start());
+      } else if (!running && _frames.isActive) {
+        _frames.stop();
+        _position = player.position;
+      }
       // Back to the start when it ends, so pressing play again replays it
       // rather than doing nothing at the tail.
       if (state.processingState == ProcessingState.completed) {
@@ -170,7 +203,8 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final ink = widget.ink ?? scheme.primary;
+    final icon = widget.ink ?? scheme.onSurface;
+    final bars = widget.ink ?? scheme.primary;
     final quiet = widget.ink ?? scheme.onSurface;
     final total = _total;
     final progress = total.inMilliseconds == 0
@@ -182,17 +216,18 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
         _PlayButton(
           playing: _playing,
           loading: _loading,
-          color: ink,
-          iconColor: widget.onInk ?? scheme.onPrimary,
+          color: icon,
           onPressed: _failure == null ? _toggle : null,
         ),
-        const SizedBox(width: SpacingTokens.space12),
+        const SizedBox(width: SpacingTokens.space4),
         Expanded(
           child: _failure != null
               ? Text(
                   _failure!,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: TypographyTokens.fontSize2,
+                    fontSize: TypographyTokens.fontSize1,
                     height: TypographyTokens.lineHeightSnug,
                     color: scheme.error,
                   ),
@@ -208,7 +243,10 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
                       child: VoiceWaveform(
                         levels: widget.media.waveform,
                         progress: progress,
-                        color: ink,
+                        // Read every frame already; easing on top of that
+                        // would only make the fill trail the sound.
+                        smoothing: Duration.zero,
+                        color: bars,
                         trackColor: quiet.withValues(
                           alpha: widget.ink == null ? 0.22 : 0.35,
                         ),
@@ -223,7 +261,7 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
           // which is what tells you whether a post is worth starting.
           _clock(_playing ? total - _position : total),
           style: TextStyle(
-            fontSize: TypographyTokens.fontSize2,
+            fontSize: TypographyTokens.fontSize1,
             fontWeight: FontWeight.w600,
             fontFeatures: const [FontFeature.tabularFigures()],
             color: quiet.withValues(alpha: 0.6),
@@ -237,11 +275,10 @@ class _VoicePostPlayerState extends State<VoicePostPlayer> {
     return Padding(
       padding: const EdgeInsets.only(top: SpacingTokens.space8),
       child: Container(
-        padding: const EdgeInsets.fromLTRB(
-          SpacingTokens.space12,
-          SpacingTokens.space12,
-          SpacingTokens.space16,
-          SpacingTokens.space12,
+        height: VoicePostPlayer.height,
+        padding: const EdgeInsets.only(
+          left: SpacingTokens.space2,
+          right: SpacingTokens.space12,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
@@ -264,14 +301,12 @@ class _PlayButton extends StatelessWidget {
   final bool playing;
   final bool loading;
   final Color color;
-  final Color iconColor;
   final VoidCallback? onPressed;
 
   const _PlayButton({
     required this.playing,
     required this.loading,
     required this.color,
-    required this.iconColor,
     required this.onPressed,
   });
 
@@ -280,41 +315,37 @@ class _PlayButton extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final label =
         playing ? l10n.ui('ui_pause', 'Pause') : l10n.ui('ui_play', 'Play');
-    // Greyed with the rest of a recording that cannot be played, rather than
-    // a bright button that does nothing.
-    final fill = onPressed == null ? color.withValues(alpha: 0.35) : color;
+    // Faded with a recording that cannot be played, rather than a button
+    // that looks ready and does nothing.
+    final ink = onPressed == null ? color.withValues(alpha: 0.35) : color;
 
     return Tooltip(
       message: label,
       child: Semantics(
         button: true,
         label: label,
-        child: Material(
-          color: fill,
-          shape: const CircleBorder(),
-          clipBehavior: Clip.antiAlias,
-          child: InkWell(
-            onTap: onPressed,
-            child: SizedBox.square(
-              dimension: VoicePostPlayer.buttonSize,
+        // The icon and nothing behind it. The splash is the only thing a
+        // press draws, and it is round and gone when the finger lifts.
+        child: InkResponse(
+          onTap: onPressed,
+          radius: VoicePostPlayer.buttonSize / 2,
+          child: SizedBox.square(
+            dimension: VoicePostPlayer.buttonSize,
+            child: Center(
               child: loading
-                  ? Padding(
-                      padding: const EdgeInsets.all(11),
+                  ? SizedBox.square(
+                      dimension: 18,
                       child: CircularProgressIndicator(
                         strokeWidth: 2,
-                        color: iconColor,
+                        color: ink,
                       ),
                     )
-                  : Padding(
-                      // A triangle's weight sits left of its box's centre;
-                      // nudged so it looks centred, which is the only centre
-                      // anyone sees.
-                      padding: EdgeInsets.only(left: playing ? 0 : 2),
-                      child: Icon(
-                        playing ? Iconsax.pause : Iconsax.play,
-                        size: 18,
-                        color: iconColor,
-                      ),
+                  : Icon(
+                      // The filled glyphs: an outline at this size reads as
+                      // a symbol, not a button.
+                      playing ? Iconsax.pause : Iconsax.play,
+                      size: VoicePostPlayer.iconSize,
+                      color: ink,
                     ),
             ),
           ),

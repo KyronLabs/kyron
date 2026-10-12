@@ -1313,6 +1313,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "A rendelkezésre állási előzmények még nem érhetők el."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Néhány rendszerrel problémák vannak"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Hangüzenet felvétele"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("Küldésre kész"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Ez az üzenet már nincs itt."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Ugrás az üzenethez"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Hangüzenet"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("A szerzőnek tetszik"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Fotó vagy klip hozzáadása"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Média"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Hangüzenetek"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Csevegés"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Háttérkép"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Értesítések némítása"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ne kapj értesítést erről a beszélgetésről"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("Már nem tudnak üzenni neked"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Nincs"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Fotó"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Némítás feloldva."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült eltávolítani. Próbáld újra."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Némítás feloldása"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Az általad megosztott fotók és klipek itt jelennek meg."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Összes megtekintése"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Fotók és klipek"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Így fog kinézni a csevegésed."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Jól néz ki."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Pára"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Alkony"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Zsálya"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Homok"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Pöttyök"),
     };
 
 final messageLookup = MessageLookup();

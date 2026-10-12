@@ -1312,6 +1312,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "اپ ٹائم کی تاریخ ابھی دستیاب نہیں۔"),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("کچھ نظاموں میں مسائل ہیں"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("وائس نوٹ ریکارڈ کریں"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("بھیجنے کے لیے تیار"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("وہ پیغام اب یہاں نہیں ہے۔"),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("پیغام پر جائیں"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("وائس نوٹ"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("مصنف کو پسند آیا"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("تصویر یا کلپ شامل کریں"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("میڈیا"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("وائس نوٹس"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("چیٹ"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("وال پیپر"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("اطلاعات خاموش کریں"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "اس گفتگو کے بارے میں اطلاعات لینا بند کریں"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "وہ اب آپ کو پیغام نہیں بھیج سکتے"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("کوئی نہیں"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("تصویر"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("آواز بحال کر دی گئی۔"),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "ہٹایا نہیں جا سکا۔ دوبارہ کوشش کریں۔"),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("پروفائل"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("آواز بحال کریں"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "آپ جو تصاویر اور کلپس شیئر کرتے ہیں وہ یہاں دکھائی دیتی ہیں۔"),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("سب دیکھیں"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("تصاویر اور کلپس"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("آپ کی چیٹ ایسی دکھائی دے گی۔"),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("اچھا لگ رہا ہے۔"),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("دھند"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("شام"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("سیج"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ریت"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("نقطے"),
     };
 
 final messageLookup = MessageLookup();

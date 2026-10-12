@@ -1103,6 +1103,45 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("稼働履歴はまだありません。"),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("一部のシステムで問題が発生しています"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("ボイスメッセージを録音"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("送信の準備ができました"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("そのメッセージはもうありません。"),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("メッセージへ移動"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("ボイスメッセージ"),
+      "ui_liked_by_author": MessageLookupByLibrary.simpleMessage("投稿者がいいねしました"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("写真またはクリップを追加"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("メディア"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("ボイスメッセージ"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("チャット"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("壁紙"),
+      "ui_dm_info_mute_row": MessageLookupByLibrary.simpleMessage("通知をミュート"),
+      "ui_dm_info_mute_detail":
+          MessageLookupByLibrary.simpleMessage("この会話の通知を停止します"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("相手はあなたにメッセージを送れなくなります"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("なし"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("写真"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("ミュートを解除しました。"),
+      "ui_dm_remove_failed":
+          MessageLookupByLibrary.simpleMessage("削除できませんでした。もう一度お試しください。"),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("プロフィール"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("ミュート解除"),
+      "ui_dm_info_no_media":
+          MessageLookupByLibrary.simpleMessage("共有した写真やクリップがここに表示されます。"),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("すべて表示"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("写真とクリップ"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("チャットはこのように表示されます。"),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("いい感じです。"),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("ミスト"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("夕暮れ"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("セージ"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("サンド"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ドット"),
     };
 
 final messageLookup = MessageLookup();

@@ -1436,6 +1436,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "El historial de disponibilidad aún no está disponible."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Algunos sistemas tienen problemas"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Grabar una nota de voz"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Lista para enviar"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Ese mensaje ya no está aquí."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("Ir al mensaje"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Nota de voz"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Le gusta al autor"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Agregar una foto o un clip"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Multimedia"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Notas de voz"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Chat"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Fondo de pantalla"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Silenciar notificaciones"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Dejar de recibir notificaciones de esta conversación"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Ya no pueden enviarte mensajes"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Ninguno"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Ya no está silenciada."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "No se pudo eliminar. Inténtalo de nuevo."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Perfil"),
+      "ui_dm_unmute":
+          MessageLookupByLibrary.simpleMessage("Dejar de silenciar"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Aquí aparecen las fotos y los clips que compartes."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Ver todo"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("Fotos y clips"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Así se verá tu chat."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Se ve bien."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Niebla"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Atardecer"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvia"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Arena"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Puntos"),
     };
 
 final messageLookup = MessageLookup();

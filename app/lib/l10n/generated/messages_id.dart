@@ -1315,6 +1315,48 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Riwayat waktu aktif belum tersedia."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Beberapa sistem mengalami masalah"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("Rekam pesan suara"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("Siap dikirim"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Pesan itu sudah tidak ada di sini."),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("Buka pesan"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Pesan suara"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Disukai penulis"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Tambahkan foto atau klip"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Media"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Pesan suara"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Chat"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Wallpaper"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Bisukan notifikasi"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Berhenti menerima notifikasi tentang percakapan ini"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Mereka tidak bisa mengirimi Anda pesan lagi"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Tidak ada"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Suara diaktifkan."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat menghapusnya. Coba lagi."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Bunyikan"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Foto dan klip yang Anda bagikan muncul di sini."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Lihat semua"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("Foto dan klip"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Begini tampilan chat Anda."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Terlihat bagus."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Kabut"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Senja"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Sage"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Pasir"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Titik-titik"),
     };
 
 final messageLookup = MessageLookup();

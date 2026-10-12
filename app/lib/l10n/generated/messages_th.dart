@@ -1312,6 +1312,48 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ยังไม่มีประวัติเวลาทำงาน"),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("บางระบบมีปัญหา"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("บันทึกข้อความเสียง"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("พร้อมส่ง"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "ข้อความนั้นไม่มีอยู่ที่นี่แล้ว"),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("ไปที่ข้อความ"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("ข้อความเสียง"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("ผู้เขียนถูกใจ"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("เพิ่มรูปภาพหรือคลิป"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("สื่อ"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("ข้อความเสียง"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("แชท"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("วอลเปเปอร์"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("ปิดเสียงการแจ้งเตือน"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "หยุดรับการแจ้งเตือนเกี่ยวกับการสนทนานี้"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "พวกเขาจะส่งข้อความถึงคุณไม่ได้อีก"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("ไม่มี"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("รูปภาพ"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("เปิดเสียงแล้ว"),
+      "ui_dm_remove_failed":
+          MessageLookupByLibrary.simpleMessage("ลบไม่ได้ โปรดลองอีกครั้ง"),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("โปรไฟล์"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("เปิดเสียง"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "รูปภาพและคลิปที่คุณแชร์จะแสดงที่นี่"),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("ดูทั้งหมด"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("รูปภาพและคลิป"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("แชทของคุณจะมีหน้าตาแบบนี้"),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("ดูดีเลย"),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("หมอก"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("สนธยา"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("เสจ"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ทราย"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("จุด"),
     };
 
 final messageLookup = MessageLookup();

@@ -1315,6 +1315,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "მუშაობის ისტორია ჯერ მიუწვდომელია."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "ზოგიერთ სისტემას პრობლემები აქვს"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("ხმოვანი შეტყობინების ჩაწერა"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("მზადაა გასაგზავნად"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("ეს შეტყობინება აქ აღარ არის."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("შეტყობინებაზე გადასვლა"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("ხმოვანი შეტყობინება"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("ავტორს მოეწონა"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("ფოტოს ან კლიპის დამატება"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("მედია"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("ხმოვანი შეტყობინებები"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("ჩატი"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("ფონი"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("შეტყობინებების დადუმება"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "ამ საუბრის შესახებ შეტყობინებების შეწყვეტა"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("მათ აღარ შეუძლიათ მოგწერონ"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("არცერთი"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("ფოტო"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("ხმა ჩაირთო."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "წაშლა ვერ მოხერხდა. სცადეთ ხელახლა."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("პროფილი"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("ხმის ჩართვა"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "თქვენ მიერ გაზიარებული ფოტოები და კლიპები აქ გამოჩნდება."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("ყველას ნახვა"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("ფოტოები და კლიპები"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("ასე გამოიყურება თქვენი ჩატი."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("კარგად გამოიყურება."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("ნისლი"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("ბინდი"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("სალბი"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ქვიშა"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("წერტილები"),
     };
 
 final messageLookup = MessageLookup();

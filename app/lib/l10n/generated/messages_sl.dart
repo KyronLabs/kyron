@@ -1312,6 +1312,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Zgodovina razpoložljivosti še ni na voljo."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Nekateri sistemi imajo težave"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Posnemi glasovno sporočilo"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Pripravljeno za pošiljanje"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Tega sporočila ni več."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Pojdi na sporočilo"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Glasovno sporočilo"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Všeč avtorju"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "Dodaj fotografijo ali posnetek"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Mediji"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Glasovna sporočila"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Klepet"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Ozadje"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Utišaj obvestila"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ne prejemaj več obvestil o tem pogovoru"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Ne morejo vam več pošiljati sporočil"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Brez"),
+      "ui_dm_wallpaper_photo":
+          MessageLookupByLibrary.simpleMessage("Fotografija"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Utišanje preklicano."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Odstranitev ni uspela. Poskusite znova."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Prekliči utišanje"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Tukaj se prikažejo fotografije in posnetki, ki jih delite."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Prikaži vse"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Fotografije in posnetki"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Tako bo videti vaš klepet."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Videti je dobro."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Meglica"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Mrak"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Žajbelj"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Pesek"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Pike"),
     };
 
 final messageLookup = MessageLookup();

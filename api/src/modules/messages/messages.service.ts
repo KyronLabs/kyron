@@ -685,6 +685,59 @@ export class MessagesService {
     } as const;
   }
 
+  /**
+   * The attachments in a conversation, newest first, each with the message it
+   * came in and when -- for the conversation's info page.
+   *
+   * Paged by message rather than by attachment, so the cursor is a message id
+   * like every other page of this thread, and an album is never split
+   * across two pages.
+   */
+  async sharedMedia(
+    viewerId: string,
+    conversationId: string,
+    { limit = DEFAULT_LIMIT, cursor }: { limit?: number; cursor?: string } = {},
+  ) {
+    await this.requireMembership(viewerId, conversationId);
+    const take = Math.min(Math.max(limit, 1), 60);
+
+    if (cursor) {
+      // A cursor from another conversation would page through this one from
+      // an arbitrary point. Refused rather than quietly misread.
+      const anchor = await this.prisma.message.findFirst({
+        where: { id: cursor, conversationId },
+        select: { id: true },
+      });
+      if (!anchor) throw new NotFoundException('That page no longer exists.');
+    }
+
+    const rows = await this.prisma.message.findMany({
+      where: { conversationId, deletedAt: null, media: { some: {} } },
+      orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+      take: take + 1,
+      ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
+      select: {
+        id: true,
+        senderId: true,
+        createdAt: true,
+        media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+      },
+    });
+
+    const page = rows.slice(0, take);
+    return {
+      items: page.flatMap((message) =>
+        message.media.map((media) => ({
+          ...media,
+          messageId: message.id,
+          senderId: message.senderId,
+          createdAt: message.createdAt,
+        })),
+      ),
+      nextCursor: rows.length > take ? page[page.length - 1].id : null,
+    };
+  }
+
   /** Marks everything in a conversation as read. */
   async markRead(viewerId: string, conversationId: string) {
     const conversation = await this.requireMembership(viewerId, conversationId);

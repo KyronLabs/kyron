@@ -993,6 +993,41 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_status_unavailable":
           MessageLookupByLibrary.simpleMessage("暂无正常运行时间记录。"),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage("部分系统出现问题"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage("录制语音消息"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("准备发送"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage("该消息已不在。"),
+      "ui_dm_quote_open": MessageLookupByLibrary.simpleMessage("前往该消息"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("语音消息"),
+      "ui_liked_by_author": MessageLookupByLibrary.simpleMessage("作者已点赞"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage("添加照片或短片"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("媒体"),
+      "ui_dm_info_voice_notes": MessageLookupByLibrary.simpleMessage("语音消息"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("聊天"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("壁纸"),
+      "ui_dm_info_mute_row": MessageLookupByLibrary.simpleMessage("关闭通知"),
+      "ui_dm_info_mute_detail":
+          MessageLookupByLibrary.simpleMessage("不再接收此对话的通知"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("对方将无法再给你发消息"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("无"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("照片"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("已取消静音。"),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage("无法移除，请重试。"),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("个人资料"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("取消静音"),
+      "ui_dm_info_no_media":
+          MessageLookupByLibrary.simpleMessage("你分享的照片和短片会显示在这里。"),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("查看全部"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("照片和短片"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("聊天效果如下。"),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("看起来不错。"),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("薄雾"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("黄昏"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("鼠尾草"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("沙"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("圆点"),
     };
 
 final messageLookup = MessageLookup();

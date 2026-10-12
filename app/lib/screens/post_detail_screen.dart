@@ -23,6 +23,8 @@ import '../widgets/poll_card.dart';
 import '../widgets/post_actions_row.dart';
 import '../widgets/community_avatar.dart';
 import '../widgets/post_card.dart';
+import '../models/post_media.dart' show MediaKind;
+import '../widgets/gif_picker_sheet.dart';
 import '../widgets/reply_bar.dart';
 import '../widgets/post_options_sheet.dart';
 import '../widgets/post_text.dart';
@@ -318,8 +320,8 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
       sending: state.isSending,
       onSend: _send,
       canAttach: state.canAttach,
-      onAddPhoto: () => _attach(video: false),
-      onAddClip: () => _attach(video: true),
+      onAddMedia: _attachFromGallery,
+      onAddGif: _attachGif,
       media: state.media,
       onRemoveMedia: _notifier.detach,
       onRetryMedia: _notifier.retryAttachment,
@@ -332,8 +334,15 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
     );
   }
 
-  Future<void> _attach({required bool video}) async {
-    final message = await _notifier.attach(video: video);
+  Future<void> _attachFromGallery() async {
+    final message = await _notifier.attachFromGallery();
+    if (message != null && mounted) Toast.show(context, message);
+  }
+
+  Future<void> _attachGif() async {
+    final path = await GifPickerSheet.show(context);
+    if (path == null || !mounted) return;
+    final message = await _notifier.attachFile(path, MediaKind.gif);
     if (message != null && mounted) Toast.show(context, message);
   }
 
@@ -358,7 +367,15 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
       Navigator.pushNamed(context, Routes.comment, arguments: comment.id);
 
   Future<void> _likeComment(PostComment comment) async {
-    final error = await _notifier.toggleCommentLike(comment);
+    // The post's author liking a reply is the author's like, and its badge
+    // should be there the moment they make it.
+    final post = ref.read(postDetailProvider(widget.postId)).post;
+    final me = ref.read(currentUserProvider).asData?.value;
+    final asAuthor = post != null && me != null && post.author.id == me.id
+        ? post.author
+        : null;
+    final error =
+        await _notifier.toggleCommentLike(comment, asAuthor: asAuthor);
     if (error != null && mounted) Toast.show(context, error);
   }
 

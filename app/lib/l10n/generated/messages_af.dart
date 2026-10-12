@@ -1386,6 +1386,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Beskikbaarheidsgeskiedenis is nog nie beskikbaar nie."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Sommige stelsels het probleme"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Neem 'n stemnota op"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Gereed om te stuur"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Daardie boodskap is nie meer hier nie."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Gaan na die boodskap"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Stemnota"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Die outeur hou hiervan"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Voeg 'n foto of greep by"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Media"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Stemnotas"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Klets"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("Muurpapier"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Demp kennisgewings"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Hou op om oor hierdie gesprek in kennis gestel te word"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Hulle kan jou nie meer boodskappe stuur nie"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Geen"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("Ontdemp."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Kon dit nie verwyder nie. Probeer weer."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profiel"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Ontdemp"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Foto's en grepe wat jy deel, verskyn hier."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Sien alles"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Foto's en grepe"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("So sal jou klets lyk."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Lyk goed."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Newel"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Skemer"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salie"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Sand"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Kolle"),
     };
 
 final messageLookup = MessageLookup();

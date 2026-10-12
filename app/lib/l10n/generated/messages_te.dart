@@ -1313,6 +1313,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "అప్‌టైమ్ చరిత్ర ఇంకా అందుబాటులో లేదు."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "కొన్ని సిస్టమ్‌లలో సమస్యలు ఉన్నాయి"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("వాయిస్ నోట్ రికార్డ్ చేయండి"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("పంపడానికి సిద్ధంగా ఉంది"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("ఆ సందేశం ఇక ఇక్కడ లేదు."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("సందేశానికి వెళ్లండి"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("వాయిస్ నోట్"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("రచయితకు నచ్చింది"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("ఫోటో లేదా క్లిప్ జోడించండి"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("మీడియా"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("వాయిస్ నోట్‌లు"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("చాట్"),
+      "ui_dm_info_wallpaper":
+          MessageLookupByLibrary.simpleMessage("వాల్‌పేపర్"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("నోటిఫికేషన్‌లను మ్యూట్ చేయండి"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "ఈ సంభాషణ గురించి నోటిఫికేషన్‌లు పొందడం ఆపండి"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("వారు ఇకపై మీకు సందేశం పంపలేరు"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("ఏదీ లేదు"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("ఫోటో"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("అన్‌మ్యూట్ చేయబడింది."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "తీసివేయడం సాధ్యం కాలేదు. మళ్లీ ప్రయత్నించండి."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("ప్రొఫైల్"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("అన్‌మ్యూట్ చేయండి"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "మీరు షేర్ చేసే ఫోటోలు, క్లిప్‌లు ఇక్కడ కనిపిస్తాయి."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("అన్నీ చూడండి"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("ఫోటోలు, క్లిప్‌లు"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("మీ చాట్ ఇలా కనిపిస్తుంది."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("బాగుంది."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("పొగమంచు"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("సంధ్య"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("సేజ్"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ఇసుక"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("చుక్కలు"),
     };
 
 final messageLookup = MessageLookup();

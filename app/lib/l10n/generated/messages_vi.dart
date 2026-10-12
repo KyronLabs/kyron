@@ -1313,6 +1313,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Chưa có lịch sử thời gian hoạt động."),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Một số hệ thống đang gặp sự cố"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Ghi âm tin nhắn thoại"),
+      "voice_ready_send": MessageLookupByLibrary.simpleMessage("Sẵn sàng gửi"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Tin nhắn đó không còn ở đây nữa."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Đi tới tin nhắn"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Tin nhắn thoại"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Tác giả đã thích"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Thêm ảnh hoặc clip"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Phương tiện"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Tin nhắn thoại"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Trò chuyện"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Hình nền"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Tắt thông báo"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ngừng nhận thông báo về cuộc trò chuyện này"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Họ sẽ không thể nhắn tin cho bạn nữa"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Không có"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Ảnh"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Đã bật lại thông báo."),
+      "ui_dm_remove_failed":
+          MessageLookupByLibrary.simpleMessage("Không thể xóa. Hãy thử lại."),
+      "ui_dm_info_profile":
+          MessageLookupByLibrary.simpleMessage("Trang cá nhân"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Bật thông báo"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Ảnh và clip bạn chia sẻ sẽ hiển thị ở đây."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Xem tất cả"),
+      "ui_dm_media_tab": MessageLookupByLibrary.simpleMessage("Ảnh và clip"),
+      "ui_dm_wallpaper_sample_theirs": MessageLookupByLibrary.simpleMessage(
+          "Cuộc trò chuyện của bạn sẽ trông như thế này."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Trông ổn đấy."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Sương mù"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Hoàng hôn"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Xô thơm"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Cát"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Chấm bi"),
     };
 
 final messageLookup = MessageLookup();

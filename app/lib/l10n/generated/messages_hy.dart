@@ -1314,6 +1314,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Աշխատաժամանակի պատմությունը դեռ հասանելի չէ։"),
       "ui_status_degraded": MessageLookupByLibrary.simpleMessage(
           "Որոշ համակարգերում խնդիրներ կան"),
+      "ui_dm_voice": MessageLookupByLibrary.simpleMessage(
+          "Ձայնագրել ձայնային հաղորդագրություն"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Պատրաստ է ուղարկելու"),
+      "ui_dm_quote_gone": MessageLookupByLibrary.simpleMessage(
+          "Այդ հաղորդագրությունն այլևս այստեղ չէ։"),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Անցնել հաղորդագրությանը"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Ձայնային հաղորդագրություն"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Հեղինակը հավանել է"),
+      "ui_add_photo_or_clip": MessageLookupByLibrary.simpleMessage(
+          "Ավելացնել լուսանկար կամ տեսահոլովակ"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Մեդիա"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Ձայնային հաղորդագրություններ"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Զրույց"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Պաստառ"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Անջատել ծանուցումները"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Դադարեցնել այս զրույցի մասին ծանուցումները"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Նրանք այլևս չեն կարող ձեզ գրել"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Ոչ մեկը"),
+      "ui_dm_wallpaper_photo":
+          MessageLookupByLibrary.simpleMessage("Լուսանկար"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("Ձայնը միացված է։"),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց հեռացնել։ Փորձեք կրկին։"),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Պրոֆիլ"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Միացնել ձայնը"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Ձեր կիսված լուսանկարներն ու տեսահոլովակները կհայտնվեն այստեղ։"),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Տեսնել բոլորը"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Լուսանկարներ և տեսահոլովակներ"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Ձեր զրույցն այսպես կերևա։"),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Լավ է երևում։"),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Մշուշ"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Մթնշաղ"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Եղեսպակ"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Ավազ"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Կետեր"),
     };
 
 final messageLookup = MessageLookup();

@@ -1315,6 +1315,52 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ishlash vaqti tarixi hali mavjud emas."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Ba’zi tizimlarda muammo bor"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Ovozli xabar yozib olish"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Yuborishga tayyor"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Bu xabar endi bu yerda yo‘q."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Xabarga o‘tish"),
+      "ui_dm_quote_voice": MessageLookupByLibrary.simpleMessage("Ovozli xabar"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Muallifga yoqdi"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Rasm yoki klip qo‘shish"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Media"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Ovozli xabarlar"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Chat"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Fon rasmi"),
+      "ui_dm_info_mute_row": MessageLookupByLibrary.simpleMessage(
+          "Bildirishnomalarni ovozsiz qilish"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Bu suhbat haqida bildirishnoma olishni to‘xtatish"),
+      "ui_dm_info_block_detail": MessageLookupByLibrary.simpleMessage(
+          "Ular endi sizga xabar yoza olmaydi"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Yo‘q"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Rasm"),
+      "ui_dm_unmuted": MessageLookupByLibrary.simpleMessage("Ovoz yoqildi."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "O‘chirib bo‘lmadi. Qayta urinib ko‘ring."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Profil"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Ovozini yoqish"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Siz ulashgan rasm va kliplar shu yerda ko‘rinadi."),
+      "ui_dm_info_see_all":
+          MessageLookupByLibrary.simpleMessage("Hammasini ko‘rish"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Rasmlar va kliplar"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Chatingiz shunday ko‘rinadi."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Yaxshi ko‘rinadi."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Tuman"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Shom"),
+      "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Mavrak"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Qum"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Nuqtalar"),
     };
 
 final messageLookup = MessageLookup();

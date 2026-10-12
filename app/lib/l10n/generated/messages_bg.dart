@@ -1411,6 +1411,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Историята на работата още не е налична."),
       "ui_status_degraded":
           MessageLookupByLibrary.simpleMessage("Някои системи имат проблеми"),
+      "ui_dm_voice":
+          MessageLookupByLibrary.simpleMessage("Запиши гласово съобщение"),
+      "voice_ready_send":
+          MessageLookupByLibrary.simpleMessage("Готово за изпращане"),
+      "ui_dm_quote_gone":
+          MessageLookupByLibrary.simpleMessage("Това съобщение вече го няма."),
+      "ui_dm_quote_open":
+          MessageLookupByLibrary.simpleMessage("Към съобщението"),
+      "ui_dm_quote_voice":
+          MessageLookupByLibrary.simpleMessage("Гласово съобщение"),
+      "ui_liked_by_author":
+          MessageLookupByLibrary.simpleMessage("Харесано от автора"),
+      "ui_add_photo_or_clip":
+          MessageLookupByLibrary.simpleMessage("Добави снимка или клип"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Мултимедия"),
+      "ui_dm_info_voice_notes":
+          MessageLookupByLibrary.simpleMessage("Гласови съобщения"),
+      "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Чат"),
+      "ui_dm_info_wallpaper": MessageLookupByLibrary.simpleMessage("Тапет"),
+      "ui_dm_info_mute_row":
+          MessageLookupByLibrary.simpleMessage("Заглуши известията"),
+      "ui_dm_info_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Спрете да получавате известия за този разговор"),
+      "ui_dm_info_block_detail":
+          MessageLookupByLibrary.simpleMessage("Вече не могат да ви пишат"),
+      "ui_dm_wallpaper_none": MessageLookupByLibrary.simpleMessage("Без"),
+      "ui_dm_wallpaper_photo": MessageLookupByLibrary.simpleMessage("Снимка"),
+      "ui_dm_unmuted":
+          MessageLookupByLibrary.simpleMessage("Звукът е включен."),
+      "ui_dm_remove_failed": MessageLookupByLibrary.simpleMessage(
+          "Не можа да бъде премахнат. Опитайте отново."),
+      "ui_dm_info_profile": MessageLookupByLibrary.simpleMessage("Профил"),
+      "ui_dm_unmute": MessageLookupByLibrary.simpleMessage("Включи звука"),
+      "ui_dm_info_no_media": MessageLookupByLibrary.simpleMessage(
+          "Снимките и клиповете, които споделяте, се показват тук."),
+      "ui_dm_info_see_all": MessageLookupByLibrary.simpleMessage("Виж всички"),
+      "ui_dm_media_tab":
+          MessageLookupByLibrary.simpleMessage("Снимки и клипове"),
+      "ui_dm_wallpaper_sample_theirs":
+          MessageLookupByLibrary.simpleMessage("Ето как ще изглежда чатът ви."),
+      "ui_dm_wallpaper_sample_mine":
+          MessageLookupByLibrary.simpleMessage("Изглежда добре."),
+      "ui_wallpaper_mist": MessageLookupByLibrary.simpleMessage("Мъгла"),
+      "ui_wallpaper_dusk": MessageLookupByLibrary.simpleMessage("Здрач"),
+      "ui_wallpaper_sage":
+          MessageLookupByLibrary.simpleMessage("Градински чай"),
+      "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Пясък"),
+      "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Точки"),
     };
 
 final messageLookup = MessageLookup();
