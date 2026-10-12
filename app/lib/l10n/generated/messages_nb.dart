@@ -1373,6 +1373,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Det kunne ikke sendes. Prøv igjen."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Alle"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Uleste"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Ubesvarte"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Skjulte"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Ingenting skjult"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Samtaler du fjerner fra listen, venter her i tilfelle du vil ha dem tilbake."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Den flyttes til Skjulte. Den andre beholder sin, og den kommer tilbake hvis en av dere skriver igjen."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Legg tilbake"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Tilbake i listen din."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Ingen samtaler passer."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Ingenting venter på deg"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Alle samtaler slutter med ditt ord."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Bilde"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Bilder"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Ingen meldinger ennå"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Du:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("I går"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Meldinger"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Meldingsinnstillinger"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Personvern"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Lesebekreftelser"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Når dette er av, ser ikke andre når du har lest meldingene deres, og du ser ikke når de har lest dine."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Vis når du skriver"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Den du skriver til, ser at du skriver."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Forhåndsvisning av lenker"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Telefonen din åpner en lenke du sender for å lage forhåndsvisningen, så nettstedet ser at telefonen din spør. Kyrons server ser aldri lenken."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Varsler om meldinger"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Meldinger er ende-til-ende-kryptert. Kyron kan ikke lese dem, og ingenting her endrer det."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Til:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Nylige"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Personer"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Ingen med det navnet."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Send et testvarsel"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyrons server er ennå ikke satt opp til å sende varsler, så ingen kan komme frem. Feilen er hos oss, ikke i telefonen din."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Denne telefonen er ikke registrert for varsler. Sjekk at varsler for Kyron er tillatt i telefonens innstillinger, og prøv igjen."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Varselet kunne ikke leveres til denne telefonen. Prøv igjen om et minutt."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Sendt. Det bør komme frem i løpet av noen sekunder."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Varsler fungerer."),
     };
 
 final messageLookup = MessageLookup();

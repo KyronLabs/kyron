@@ -1474,6 +1474,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Не можа да се изпрати. Опитайте отново."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Последовател"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Филтър"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Всички"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Непрочетени"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Без отговор"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Скрити"),
+      "ui_dm_hidden_none": MessageLookupByLibrary.simpleMessage("Няма скрити"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Разговорите, които премахнете от списъка си, чакат тук, ако решите да ги върнете."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Преместват се в Скрити. Другият човек запазва своя, а разговорът се връща, ако някой от вас пише отново."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Върни"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Отново в списъка ви."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Няма съвпадащи разговори."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Нищо не ви чака"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Всеки разговор завършва с вашата дума."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Снимка"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Снимки"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Видео"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Все още няма съобщения"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Вие:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Вчера"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Съобщения"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Настройки на съобщенията"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Поверителност"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Потвърждения за прочитане"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Когато това е изключено, хората няма да виждат кога сте прочели съобщенията им, а вие няма да виждате кога са прочели вашите."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Показвай, когато пишете"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Човекът, на когото пишете, вижда, че пишете."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Визуализации на връзки"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Телефонът ви отваря връзката, която изпращате, за да направи визуализацията, затова сайтът вижда заявката на телефона ви. Сървърът на Kyron никога не вижда връзката."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Известия за съобщения"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Съобщенията са шифровани от край до край. Kyron не може да ги чете и нищо тук не променя това."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("До:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Скорошни"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Хора"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Няма никой с това име."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Изпрати тестово известие"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Сървърът на Kyron все още не е настроен да изпраща известия, така че никое не може да пристигне. Проблемът е при нас, не в телефона ви."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Този телефон не е регистриран за известия. Проверете дали известията за Kyron са разрешени в настройките на телефона, след което опитайте отново."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Известието не можа да бъде доставено на този телефон. Опитайте отново след минута."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Изпратено. Би трябвало да пристигне след няколко секунди."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Известията работят."),
     };
 
 final messageLookup = MessageLookup();

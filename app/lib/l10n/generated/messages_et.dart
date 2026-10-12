@@ -1435,6 +1435,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Seda ei saanud saata. Proovi uuesti."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Jälgija"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Kõik"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Lugemata"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Vastamata"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Peidetud"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Midagi pole peidetud"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Vestlused, mille loendist eemaldad, ootavad siin juhuks, kui tahad need tagasi."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "See liigub peidetute hulka. Teine pool jätab enda oma alles ja see tuleb tagasi, kui kumbki teist uuesti kirjutab."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Pane tagasi"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Jälle sinu loendis."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Sobivaid vestlusi pole."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Miski ei oota sind"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Iga vestlus lõpeb sinu sõnaga."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Fotod"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Sõnumeid veel pole"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Sina:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Eile"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Sõnumid"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Sõnumite seaded"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Privaatsus"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Lugemiskinnitused"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Kui see on väljas, ei näe teised, millal sa nende sõnumeid lugesid, ja sina ei näe, millal nemad sinu omi lugesid."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Näita, kui kirjutad"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Inimene, kellele kirjutad, näeb, et sa kirjutad."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Lingi eelvaated"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Sinu telefon avab saadetava lingi, et eelvaade teha, nii et sait näeb sinu telefoni päringut. Kyroni server ei näe linki kunagi."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Sõnumite teavitused"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Sõnumid on otsast lõpuni krüpteeritud. Kyron ei saa neid lugeda ja miski siin seda ei muuda."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Kellele:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Hiljutised"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Inimesed"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Sellise nimega kedagi pole."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Saada testteavitus"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyroni server pole veel teavituste saatmiseks seadistatud, nii et ükski ei saa kohale jõuda. Viga on meie poolel, mitte sinu telefonis."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "See telefon pole teavitusteks registreeritud. Kontrolli, et Kyroni teavitused oleksid telefoni seadetes lubatud, ja proovi uuesti."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Teavitust ei õnnestunud sellesse telefoni toimetada. Proovi minuti pärast uuesti."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Saadetud. See peaks mõne sekundiga kohale jõudma."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Teavitused töötavad."),
     };
 
 final messageLookup = MessageLookup();

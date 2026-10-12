@@ -21,6 +21,13 @@ class PreferencesState {
   final AppTheme theme;
   final bool dataSaver;
 
+  /// Whether the other person in a chat sees "typing" while this reader
+  /// writes.
+  final bool typingShown;
+
+  /// Whether a link in a message gets a card, read by this phone.
+  final bool linkPreviews;
+
   /// False until the stored values have been read once.
   final bool isLoaded;
 
@@ -33,6 +40,8 @@ class PreferencesState {
     this.emailEnabled = true,
     this.theme = AppTheme.system,
     this.dataSaver = false,
+    this.typingShown = true,
+    this.linkPreviews = true,
     this.isLoaded = false,
   });
 
@@ -45,6 +54,8 @@ class PreferencesState {
     bool? emailEnabled,
     AppTheme? theme,
     bool? dataSaver,
+    bool? typingShown,
+    bool? linkPreviews,
     bool? isLoaded,
   }) =>
       PreferencesState(
@@ -56,6 +67,8 @@ class PreferencesState {
         emailEnabled: emailEnabled ?? this.emailEnabled,
         theme: theme ?? this.theme,
         dataSaver: dataSaver ?? this.dataSaver,
+        typingShown: typingShown ?? this.typingShown,
+        linkPreviews: linkPreviews ?? this.linkPreviews,
         isLoaded: isLoaded ?? this.isLoaded,
       );
 }
@@ -77,6 +90,8 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
       _store.readDataSaver(),
       _store.readPrimaryLanguage(),
       _store.readContentLanguages(),
+      _store.readTypingShown(),
+      _store.readLinkPreviews(),
     ]);
     if (!mounted) return;
     state = PreferencesState(
@@ -88,6 +103,8 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
       dataSaver: results[5] as bool,
       primaryLanguage: results[6] as Language,
       contentLanguages: results[7] as List<Language>,
+      typingShown: results[8] as bool,
+      linkPreviews: results[9] as bool,
       isLoaded: true,
     );
   }
@@ -118,6 +135,16 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
   Future<void> setPushEnabled(bool enabled) async {
     state = state.copyWith(pushEnabled: enabled);
     await _store.writePushEnabled(enabled);
+  }
+
+  Future<void> setTypingShown(bool shown) async {
+    state = state.copyWith(typingShown: shown);
+    await _store.writeTypingShown(shown);
+  }
+
+  Future<void> setLinkPreviews(bool enabled) async {
+    state = state.copyWith(linkPreviews: enabled);
+    await _store.writeLinkPreviews(enabled);
   }
 
   Future<void> setEmailEnabled(bool enabled) async {

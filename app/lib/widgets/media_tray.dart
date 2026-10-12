@@ -19,7 +19,11 @@ class MediaTray extends ConsumerWidget {
   final List<PendingMedia> media;
   final void Function(String path) onRemove;
   final void Function(String path) onRetry;
-  final void Function(PendingMedia item) onDescribe;
+
+  /// Opens the description editor. Null where a description has nowhere to
+  /// go -- a direct message, read by the one person it is sent to -- and
+  /// then no ALT badge is drawn.
+  final void Function(PendingMedia item)? onDescribe;
 
   /// Smaller inside a comment box than under the composer.
   final double height;
@@ -29,7 +33,7 @@ class MediaTray extends ConsumerWidget {
     required this.media,
     required this.onRemove,
     required this.onRetry,
-    required this.onDescribe,
+    this.onDescribe,
     this.height = 108,
   });
 
@@ -49,7 +53,8 @@ class MediaTray extends ConsumerWidget {
           item: media[index],
           onRemove: () => onRemove(media[index].path),
           onRetry: () => onRetry(media[index].path),
-          onDescribe: () => onDescribe(media[index]),
+          onDescribe:
+              onDescribe == null ? null : () => onDescribe!(media[index]),
         ),
       ),
     );
@@ -60,13 +65,13 @@ class _Tile extends StatelessWidget {
   final PendingMedia item;
   final VoidCallback onRemove;
   final VoidCallback onRetry;
-  final VoidCallback onDescribe;
+  final VoidCallback? onDescribe;
 
   const _Tile({
     required this.item,
     required this.onRemove,
     required this.onRetry,
-    required this.onDescribe,
+    this.onDescribe,
   });
 
   @override
@@ -133,7 +138,7 @@ class _Tile extends StatelessWidget {
               onTap: onRemove,
             ),
           ),
-          if (item.isReady)
+          if (item.isReady && onDescribe != null)
             Positioned(
               left: 2,
               bottom: 2,

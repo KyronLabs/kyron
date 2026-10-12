@@ -1372,6 +1372,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "មិនអាចផ្ញើបានទេ។ សូមព្យាយាមម្តងទៀត។"),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("តម្រង"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("ទាំងអស់"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("មិនទាន់អាន"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់ឆ្លើយ"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("បានលាក់"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("គ្មានអ្វីត្រូវបានលាក់ទេ"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ការសន្ទនាដែលអ្នកដកចេញពីបញ្ជីរង់ចាំនៅទីនេះ ក្រែងអ្នកចង់យកវាមកវិញ។"),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "វាផ្លាស់ទៅបានលាក់។ ម្ខាងទៀតរក្សារបស់ខ្លួន ហើយវានឹងត្រលប់មកវិញ ប្រសិនបើម្នាក់ក្នុងចំណោមអ្នកសរសេរម្តងទៀត។"),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("ដាក់វិញ"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("ត្រលប់ក្នុងបញ្ជីរបស់អ្នកវិញ។"),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("គ្មានការសន្ទនាត្រូវគ្នាទេ។"),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("គ្មានអ្វីរង់ចាំអ្នកទេ"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "រាល់ការសន្ទនាបញ្ចប់ដោយពាក្យរបស់អ្នក។"),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("រូបថត"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("រូបថត"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("វីដេអូ"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានសារនៅឡើយ"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("អ្នក៖"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("ម្សិលមិញ"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("សារ"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("ការកំណត់សារ"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("ឯកជនភាព"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("បង្កាន់ដៃអាន"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "នៅពេលបិទ អ្នកដទៃនឹងមិនឃើញពេលអ្នកអានសាររបស់ពួកគេទេ ហើយអ្នកក៏មិនឃើញពេលពួកគេអានសាររបស់អ្នកដែរ។"),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("បង្ហាញពេលអ្នកកំពុងវាយ"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "អ្នកដែលអ្នកកំពុងសរសេរទៅឃើញថាអ្នកកំពុងសរសេរ។"),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("ការមើលតំណជាមុន"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "ទូរសព្ទរបស់អ្នកបើកតំណដែលអ្នកផ្ញើដើម្បីបង្កើតការមើលជាមុន ដូច្នេះគេហទំព័រឃើញសំណើពីទូរសព្ទរបស់អ្នក។ ម៉ាស៊ីនមេ Kyron មិនដែលឃើញតំណនោះទេ។"),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("ការជូនដំណឹងសារ"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "សារត្រូវបានអ៊ីនគ្រីបពីចុងម្ខាងទៅចុងម្ខាង។ Kyron មិនអាចអានវាបានទេ ហើយគ្មានអ្វីនៅទីនេះផ្លាស់ប្តូររឿងនោះទេ។"),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("ទៅ៖"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("ថ្មីៗ"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("មនុស្ស"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("គ្មាននរណាមានឈ្មោះនោះទេ។"),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("ផ្ញើការជូនដំណឹងសាកល្បង"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "ម៉ាស៊ីនមេ Kyron មិនទាន់រៀបចំសម្រាប់ផ្ញើការជូនដំណឹងនៅឡើយ ដូច្នេះគ្មានការជូនដំណឹងណាមកដល់ទេ។ បញ្ហានៅខាងយើង មិនមែននៅទូរសព្ទរបស់អ្នកទេ។"),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "ទូរសព្ទនេះមិនបានចុះឈ្មោះសម្រាប់ការជូនដំណឹងទេ។ សូមពិនិត្យថាការជូនដំណឹងសម្រាប់ Kyron ត្រូវបានអនុញ្ញាតក្នុងការកំណត់ទូរសព្ទ រួចព្យាយាមម្តងទៀត។"),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចបញ្ជូនការជូនដំណឹងទៅទូរសព្ទនេះបានទេ។ សូមព្យាយាមម្តងទៀតក្នុងមួយនាទី។"),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "បានផ្ញើ។ វាគួរតែមកដល់ក្នុងប៉ុន្មានវិនាទី។"),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("ការជូនដំណឹងកំពុងដំណើរការ។"),
     };
 
 final messageLookup = MessageLookup();

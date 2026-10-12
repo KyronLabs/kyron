@@ -23,6 +23,7 @@ import '../widgets/jump_to_end.dart';
 import '../widgets/toast.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../providers/composer_provider.dart' show ComposerState;
+import '../providers/preferences_provider.dart';
 import '../utils/media_basket.dart';
 import '../widgets/media_tray.dart';
 import '../widgets/media_grid.dart';
@@ -132,7 +133,9 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
     setState(_recalculate);
     _watchLink();
     // Throttled by the notifier, so this can be called on every keystroke.
-    if (_box.text.trim().isNotEmpty) {
+    // Not at all for somebody who turned "typing" off in messaging settings.
+    if (_box.text.trim().isNotEmpty &&
+        ref.read(preferencesProvider).typingShown) {
       unawaited(
         ref
             .read(threadProvider(widget.args.conversationId).notifier)
@@ -144,7 +147,11 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
   /// Follows the first link in the box, settling on it only once typing
   /// pauses, so "https://ex", "https://exa" and so on are not each read.
   void _watchLink() {
-    final link = firstLinkIn(_box.text);
+    // No card at all for somebody who turned link previews off: the page is
+    // never read, so the site never hears from this phone.
+    final link = ref.read(preferencesProvider).linkPreviews
+        ? firstLinkIn(_box.text)
+        : null;
     if (link == _link) {
       _linkPause?.cancel();
       return;
@@ -159,13 +166,17 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
     });
   }
 
-  /// The card to send with the message: made, kept, and for a link still in
-  /// it. Null while it is being made -- sending does not wait for a page.
-  MessageLinkCard? get _cardToSend {
-    final link = _link;
+  /// The card for the link in the message about to go, made or on its way.
+  ///
+  /// Read from the words at the moment Send is pressed rather than from what
+  /// the pause in typing settled on: a link pasted and sent at once never
+  /// waited out the pause, and went without a card. Null when there is no
+  /// link, or the writer took its card off.
+  Future<MessageLinkCard?>? get _cardToSend {
+    if (!ref.read(preferencesProvider).linkPreviews) return null;
+    final link = firstLinkIn(_box.text);
     if (link == null || link == _droppedLink) return null;
-    if (firstLinkIn(_box.text) != link) return null;
-    return ref.read(messageLinkCardProvider(link)).asData?.value;
+    return ref.read(messageLinkCardProvider(link).future);
   }
 
   /// Whether the list is at, or near, its newest message -- the only time
@@ -447,7 +458,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
           senderId: me,
           media: quick == null ? _media.ready : const [],
           replyToId: answering?.id,
-          linkCard: card,
+          linkCardLater: card,
         );
     if (quick == null) _media.clear();
     _toNewest(animate: true);
@@ -1643,7 +1654,8 @@ class _Composer extends StatelessWidget {
                 height: 84,
                 onRemove: media.remove,
                 onRetry: media.retry,
-                onDescribe: (item) => media.describe(item.path, item.alt ?? ''),
+                // No ALT here: a description is for strangers reading a
+                // post, and a message has one reader, who was there.
               ),
             ),
           Row(
@@ -1776,9 +1788,41 @@ class _LinkDraft extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final card = ref.watch(messageLinkCardProvider(url)).asData?.value;
-    if (card == null) return const SizedBox.shrink();
+    final reading = ref.watch(messageLinkCardProvider(url));
     final scheme = Theme.of(context).colorScheme;
+    // While the page is read: a quiet line saying a preview is coming, so a
+    // link that will carry one does not look like one that will not.
+    if (reading.isLoading) {
+      return Padding(
+        key: const ValueKey('link-draft-loading'),
+        padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
+        child: Row(
+          children: [
+            SizedBox.square(
+              dimension: 12,
+              child: CircularProgressIndicator(
+                strokeWidth: 1.5,
+                color: scheme.onSurface.withValues(alpha: 0.45),
+              ),
+            ),
+            const SizedBox(width: SpacingTokens.space8),
+            Expanded(
+              child: Text(
+                Uri.tryParse(url)?.host ?? url,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize1,
+                  color: scheme.onSurface.withValues(alpha: 0.55),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+    final card = reading.asData?.value;
+    if (card == null) return const SizedBox.shrink();
     final image = card.image;
 
     return Padding(

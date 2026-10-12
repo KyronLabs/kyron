@@ -1379,6 +1379,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "ვერ გაიგზავნა. სცადეთ ხელახლა."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ფილტრი"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("ყველა"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("წაუკითხავი"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("უპასუხო"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("დამალული"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("დამალული არაფერია"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "სიიდან ამოღებული საუბრები აქ გელოდებათ, თუ მათი დაბრუნება მოგინდებათ."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "ის დამალულებში გადადის. მეორე მხარე თავისას ინახავს და ის ბრუნდება, თუ რომელიმე თქვენგანი ისევ დაწერს."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("დაბრუნება"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("ისევ თქვენს სიაშია."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("შესაბამისი საუბრები არ არის."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("არაფერი გელოდებათ"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ყველა საუბარი თქვენი სიტყვით მთავრდება."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ფოტო"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("ფოტოები"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("ვიდეო"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("შეტყობინებები ჯერ არ არის"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("თქვენ:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("გუშინ"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("შეტყობინებები"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("შეტყობინებების პარამეტრები"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("კონფიდენციალურობა"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("წაკითხვის დადასტურება"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "როცა ეს გამორთულია, სხვები ვერ დაინახავენ, როდის წაიკითხეთ მათი შეტყობინებები, და თქვენც ვერ დაინახავთ, როდის წაიკითხეს მათ თქვენი."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("აჩვენე, როცა წერთ"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "ადამიანი, ვისაც წერთ, ხედავს, რომ წერთ."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("ბმულების გადახედვა"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "გადახედვის შესაქმნელად თქვენი ტელეფონი ხსნის გაგზავნილ ბმულს, ამიტომ საიტი ხედავს თქვენი ტელეფონის მოთხოვნას. Kyron-ის სერვერი ბმულს ვერასდროს ხედავს."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("შეტყობინებების ნოტიფიკაციები"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "შეტყობინებები დაშიფრულია ბოლოდან ბოლომდე. Kyron ვერ კითხულობს მათ და აქ არაფერი ცვლის ამას."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("ვის:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("ბოლო"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("ადამიანები"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("ამ სახელით არავინაა."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("საცდელი შეტყობინების გაგზავნა"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ის სერვერი ჯერ არ არის მომართული შეტყობინებების გასაგზავნად, ამიტომ ვერცერთი ვერ მოვა. პრობლემა ჩვენს მხარეზეა და არა თქვენს ტელეფონში."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "ეს ტელეფონი შეტყობინებებისთვის არ არის რეგისტრირებული. შეამოწმეთ, რომ ტელეფონის პარამეტრებში Kyron-ის შეტყობინებები დაშვებულია, და სცადეთ ხელახლა."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "შეტყობინება ამ ტელეფონზე ვერ მიიტანა. სცადეთ ერთ წუთში."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "გაიგზავნა. რამდენიმე წამში უნდა მოვიდეს."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("შეტყობინებები მუშაობს."),
     };
 
 final messageLookup = MessageLookup();

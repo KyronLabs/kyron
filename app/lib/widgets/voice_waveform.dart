@@ -77,6 +77,35 @@ class VoiceWaveform extends StatelessWidget {
     return List<int>.unmodifiable(out);
   }
 
+  /// The bars to draw across [width]: always as many as fit, whatever the
+  /// recording's length.
+  ///
+  /// A two-second note used to draw only its twenty readings, so it was a
+  /// stub of a waveform beside a fourteen-second one, as if length were what
+  /// the row showed. Length is what the playback speed shows. So a short
+  /// recording is stretched to the row, each bar read between the two
+  /// readings either side of it -- a smooth line through what was recorded,
+  /// not the same reading repeated in blocks -- and a long one is folded
+  /// into it, each bar the loudest of the readings it stands for.
+  static List<int> barsFor(List<int> levels, double width) {
+    if (levels.isEmpty || width <= 0) return const [];
+    final count = (width / slot).floor().clamp(1, 1 << 16);
+    if (levels.length >= count) return downsample(levels, count);
+    if (levels.length == 1) return List<int>.filled(count, levels.first);
+
+    final last = levels.length - 1;
+    return [
+      for (var i = 0; i < count; i++)
+        () {
+          final at = count == 1 ? 0.0 : i * last / (count - 1);
+          final below = at.floor();
+          final above = at.ceil();
+          final mix = at - below;
+          return (levels[below] * (1 - mix) + levels[above] * mix).round();
+        }(),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
@@ -198,13 +227,11 @@ class _WaveformPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (levels.isEmpty || size.width <= 0) return;
 
-    // Bars are drawn at a fixed width and spacing, and only as many as fit --
-    // stretching forty bars across a full-width row turns a short recording
-    // into a picket fence.
+    // Bars at a fixed width and spacing, as many as fit, whatever the
+    // recording's length: see [VoiceWaveform.barsFor].
     const slot = VoiceWaveform.slot;
-
-    final fits = (size.width / slot).floor().clamp(1, levels.length);
-    final step = levels.length / fits;
+    final drawn = VoiceWaveform.barsFor(levels, size.width);
+    final fits = drawn.length;
 
     final filled = Paint()
       ..color = color
@@ -219,17 +246,7 @@ class _WaveformPainter extends CustomPainter {
     final bars = <(Offset, Offset)>[];
 
     for (var i = 0; i < fits; i++) {
-      // Each drawn bar is the loudest sample it stands for, not the first --
-      // taking the first drops every peak that falls between two slots and
-      // flattens the whole waveform.
-      var level = 0;
-      final from = (i * step).floor();
-      final to = ((i + 1) * step).ceil().clamp(0, levels.length);
-      for (var j = from; j < to; j++) {
-        if (levels[j] > level) level = levels[j];
-      }
-
-      final height = _barHeight(level, size.height);
+      final height = _barHeight(drawn[i], size.height);
       final x = i * slot + VoiceWaveform.barWidth / 2;
       bars.add(
           (Offset(x, middle - height / 2), Offset(x, middle + height / 2)));
@@ -257,7 +274,7 @@ class _WaveformPainter extends CustomPainter {
       old.progress != progress ||
       old.color != color ||
       old.trackColor != trackColor ||
-      old.levels.length != levels.length;
+      old.levels != levels;
 }
 
 class _LivePainter extends CustomPainter {

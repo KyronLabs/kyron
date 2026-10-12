@@ -1408,6 +1408,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Det kunne ikke sendes. Prøv igen."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Følger"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Alle"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Ulæste"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Ubesvarede"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Skjulte"),
+      "ui_dm_hidden_none": MessageLookupByLibrary.simpleMessage("Intet skjult"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Samtaler, du fjerner fra din liste, venter her, hvis du vil have dem tilbage."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Den flyttes til Skjulte. Den anden beholder sin, og den kommer tilbage, hvis en af jer skriver igen."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Læg tilbage"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Tilbage på din liste."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Ingen samtaler passer."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Intet venter på dig"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Alle samtaler slutter med dit ord."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Fotos"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Ingen beskeder endnu"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Dig:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("I går"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Beskeder"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Indstillinger for beskeder"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Privatliv"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Læsekvitteringer"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Når dette er slået fra, kan andre ikke se, hvornår du har læst deres beskeder, og du kan ikke se, hvornår de har læst dine."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Vis, når du skriver"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Den, du skriver til, kan se, at du skriver."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Linkeksempler"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Din telefon åbner et link, du sender, for at lave eksemplet, så siden ser din telefon spørge. Kyrons server ser aldrig linket."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Notifikationer om beskeder"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Beskeder er end-to-end-krypterede. Kyron kan ikke læse dem, og intet her ændrer det."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Til:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Seneste"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Personer"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Ingen med det navn."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Send en testnotifikation"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyrons server er endnu ikke sat op til at sende notifikationer, så ingen kan nå frem. Fejlen er hos os, ikke i din telefon."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Denne telefon er ikke registreret til notifikationer. Tjek, at notifikationer er tilladt for Kyron i telefonens indstillinger, og prøv igen."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Notifikationen kunne ikke leveres til denne telefon. Prøv igen om et minut."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Sendt. Den burde nå frem om få sekunder."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Notifikationer virker."),
     };
 
 final messageLookup = MessageLookup();

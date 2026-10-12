@@ -9,6 +9,7 @@ import 'current_user_provider.dart';
 import 'keys_provider.dart';
 import 'identity_provider.dart';
 import 'push_provider.dart';
+import 'preferences_provider.dart';
 
 enum AuthStatus { unknown, unauthenticated, authenticating, authenticated }
 
@@ -189,8 +190,13 @@ class AuthNotifier extends Notifier<AuthState> {
     // The push token, which can have rotated while the app was closed -- a
     // server holding the old one pushes into nothing. Asked for after
     // sign-in rather than before it: that is when asking about
-    // notifications is a question rather than an ambush.
-    unawaited(ref.read(pushRegistrarProvider).start());
+    // notifications is a question rather than an ambush. Not when the
+    // reader turned notifications off in settings: the switch used to save
+    // a preference that nothing read, and this phone was registered anyway.
+    unawaited(() async {
+      final wanted = await ref.read(appPreferencesProvider).readPushEnabled();
+      if (wanted) await ref.read(pushRegistrarProvider).start();
+    }());
   }
 
   Future<void> logout() async {

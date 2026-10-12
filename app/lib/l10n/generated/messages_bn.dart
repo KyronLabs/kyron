@@ -1461,6 +1461,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "পাঠানো যায়নি। আবার চেষ্টা করুন।"),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("অনুসারী"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ফিল্টার"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("সব"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("অপঠিত"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("উত্তরহীন"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("লুকানো"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("কিছুই লুকানো নেই"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "তালিকা থেকে সরানো কথোপকথনগুলো এখানে অপেক্ষা করে, যদি আবার ফিরিয়ে আনতে চান।"),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "এটি লুকানোতে চলে যায়। অন্যজন তাঁরটা রাখেন, আর আপনাদের কেউ আবার লিখলে এটি ফিরে আসে।"),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("ফিরিয়ে আনুন"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("আবার আপনার তালিকায়।"),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("কোনো কথোপকথন মেলেনি।"),
+      "ui_dm_unanswered_none": MessageLookupByLibrary.simpleMessage(
+          "আপনার জন্য কিছু অপেক্ষা করছে না"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "প্রতিটি কথোপকথন আপনার কথাতেই শেষ।"),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ছবি"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("ছবিগুলো"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("ভিডিও"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("এখনও কোনো বার্তা নেই"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("আপনি:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("গতকাল"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("বার্তা"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("বার্তার সেটিংস"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("গোপনীয়তা"),
+      "ui_dm_read_receipts": MessageLookupByLibrary.simpleMessage("পঠিত রসিদ"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "এটি বন্ধ থাকলে কেউ দেখবে না আপনি কখন তাদের বার্তা পড়েছেন, আর আপনিও দেখবেন না তারা কখন আপনারটা পড়েছে।"),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("টাইপ করার সময় দেখান"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "যাঁকে লিখছেন তিনি দেখতে পান যে আপনি লিখছেন।"),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("লিঙ্ক প্রিভিউ"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "প্রিভিউ বানাতে আপনার ফোন পাঠানো লিঙ্কটি খোলে, তাই সাইটটি আপনার ফোনের অনুরোধ দেখে। Kyron-এর সার্ভার কখনও লিঙ্কটি দেখে না।"),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("বার্তার বিজ্ঞপ্তি"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "বার্তাগুলো এন্ড-টু-এন্ড এনক্রিপ্ট করা। Kyron সেগুলো পড়তে পারে না, আর এখানকার কিছুই তা বদলায় না।"),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("প্রতি:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("সাম্প্রতিক"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("মানুষ"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("এই নামে কেউ নেই।"),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage(
+          "একটি পরীক্ষামূলক বিজ্ঞপ্তি পাঠান"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron-এর সার্ভার এখনও বিজ্ঞপ্তি পাঠানোর জন্য প্রস্তুত নয়, তাই কোনোটিই আসতে পারে না। সমস্যাটা আমাদের দিকে, আপনার ফোনে নয়।"),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "এই ফোনটি বিজ্ঞপ্তির জন্য নিবন্ধিত নয়। ফোনের সেটিংসে Kyron-এর বিজ্ঞপ্তি অনুমোদিত কিনা দেখে আবার চেষ্টা করুন।"),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "বিজ্ঞপ্তিটি এই ফোনে পৌঁছানো যায়নি। এক মিনিট পরে আবার চেষ্টা করুন।"),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "পাঠানো হয়েছে। কয়েক সেকেন্ডের মধ্যে পৌঁছানোর কথা।"),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("বিজ্ঞপ্তি কাজ করছে।"),
     };
 
 final messageLookup = MessageLookup();

@@ -1371,6 +1371,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ਫਿਲਟਰ"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("ਸਾਰੇ"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("ਨਾ ਪੜ੍ਹੇ"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("ਬਿਨਾਂ ਜਵਾਬ"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("ਲੁਕਾਏ ਹੋਏ"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("ਕੁਝ ਵੀ ਲੁਕਾਇਆ ਨਹੀਂ"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੀ ਸੂਚੀ ਵਿੱਚੋਂ ਹਟਾਈਆਂ ਗੱਲਬਾਤਾਂ ਇੱਥੇ ਉਡੀਕ ਕਰਦੀਆਂ ਹਨ, ਜੇ ਤੁਸੀਂ ਉਹਨਾਂ ਨੂੰ ਵਾਪਸ ਚਾਹੋ।"),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "ਇਹ ਲੁਕਾਏ ਹੋਏ ਵਿੱਚ ਚਲੀ ਜਾਂਦੀ ਹੈ। ਦੂਜਾ ਵਿਅਕਤੀ ਆਪਣੀ ਰੱਖਦਾ ਹੈ, ਅਤੇ ਤੁਹਾਡੇ ਵਿੱਚੋਂ ਕੋਈ ਮੁੜ ਲਿਖੇ ਤਾਂ ਇਹ ਵਾਪਸ ਆ ਜਾਂਦੀ ਹੈ।"),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("ਵਾਪਸ ਰੱਖੋ"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("ਮੁੜ ਤੁਹਾਡੀ ਸੂਚੀ ਵਿੱਚ।"),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("ਕੋਈ ਗੱਲਬਾਤ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ।"),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੀ ਉਡੀਕ ਵਿੱਚ ਕੁਝ ਨਹੀਂ"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ਹਰ ਗੱਲਬਾਤ ਤੁਹਾਡੀ ਗੱਲ 'ਤੇ ਮੁੱਕਦੀ ਹੈ।"),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ਫ਼ੋਟੋ"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("ਫ਼ੋਟੋਆਂ"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("ਵੀਡੀਓ"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("ਹਾਲੇ ਕੋਈ ਸੁਨੇਹਾ ਨਹੀਂ"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("ਤੁਸੀਂ:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("ਕੱਲ੍ਹ"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("ਸੁਨੇਹੇ"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("ਸੁਨੇਹਾ ਸੈਟਿੰਗਾਂ"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("ਪਰਦੇਦਾਰੀ"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("ਪੜ੍ਹਨ ਦੀਆਂ ਰਸੀਦਾਂ"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "ਇਸ ਦੇ ਬੰਦ ਹੋਣ 'ਤੇ ਲੋਕ ਨਹੀਂ ਵੇਖਣਗੇ ਕਿ ਤੁਸੀਂ ਉਹਨਾਂ ਦੇ ਸੁਨੇਹੇ ਕਦੋਂ ਪੜ੍ਹੇ, ਅਤੇ ਤੁਸੀਂ ਵੀ ਨਹੀਂ ਵੇਖੋਗੇ ਕਿ ਉਹਨਾਂ ਨੇ ਤੁਹਾਡੇ ਕਦੋਂ ਪੜ੍ਹੇ।"),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("ਟਾਈਪ ਕਰਦੇ ਸਮੇਂ ਦਿਖਾਓ"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "ਜਿਸਨੂੰ ਤੁਸੀਂ ਲਿਖ ਰਹੇ ਹੋ ਉਹ ਵੇਖਦਾ ਹੈ ਕਿ ਤੁਸੀਂ ਲਿਖ ਰਹੇ ਹੋ।"),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("ਲਿੰਕ ਪੂਰਵਦਰਸ਼ਨ"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "ਪੂਰਵਦਰਸ਼ਨ ਬਣਾਉਣ ਲਈ ਤੁਹਾਡਾ ਫ਼ੋਨ ਭੇਜਿਆ ਲਿੰਕ ਖੋਲ੍ਹਦਾ ਹੈ, ਇਸ ਲਈ ਸਾਈਟ ਤੁਹਾਡੇ ਫ਼ੋਨ ਦੀ ਬੇਨਤੀ ਵੇਖਦੀ ਹੈ। Kyron ਦਾ ਸਰਵਰ ਲਿੰਕ ਕਦੇ ਨਹੀਂ ਵੇਖਦਾ।"),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("ਸੁਨੇਹਿਆਂ ਦੀਆਂ ਸੂਚਨਾਵਾਂ"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "ਸੁਨੇਹੇ ਸਿਰੇ-ਤੋਂ-ਸਿਰੇ ਤੱਕ ਇਨਕ੍ਰਿਪਟ ਕੀਤੇ ਹੋਏ ਹਨ। Kyron ਉਹਨਾਂ ਨੂੰ ਪੜ੍ਹ ਨਹੀਂ ਸਕਦਾ, ਅਤੇ ਇੱਥੇ ਕੁਝ ਵੀ ਇਸਨੂੰ ਨਹੀਂ ਬਦਲਦਾ।"),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("ਨੂੰ:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("ਹਾਲੀਆ"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("ਲੋਕ"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("ਉਸ ਨਾਂ ਦਾ ਕੋਈ ਨਹੀਂ।"),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage("ਟੈਸਟ ਸੂਚਨਾ ਭੇਜੋ"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron ਦਾ ਸਰਵਰ ਹਾਲੇ ਸੂਚਨਾਵਾਂ ਭੇਜਣ ਲਈ ਸੈੱਟ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਕੋਈ ਵੀ ਨਹੀਂ ਪਹੁੰਚ ਸਕਦੀ। ਸਮੱਸਿਆ ਸਾਡੇ ਪਾਸੇ ਹੈ, ਤੁਹਾਡੇ ਫ਼ੋਨ ਵਿੱਚ ਨਹੀਂ।"),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "ਇਹ ਫ਼ੋਨ ਸੂਚਨਾਵਾਂ ਲਈ ਰਜਿਸਟਰ ਨਹੀਂ ਹੈ। ਫ਼ੋਨ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਵਿੱਚ Kyron ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਦੀ ਇਜਾਜ਼ਤ ਜਾਂਚੋ, ਫਿਰ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "ਸੂਚਨਾ ਇਸ ਫ਼ੋਨ ਤੱਕ ਨਹੀਂ ਪਹੁੰਚਾਈ ਜਾ ਸਕੀ। ਇੱਕ ਮਿੰਟ ਬਾਅਦ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "ਭੇਜ ਦਿੱਤੀ। ਕੁਝ ਸਕਿੰਟਾਂ ਵਿੱਚ ਪਹੁੰਚ ਜਾਣੀ ਚਾਹੀਦੀ ਹੈ।"),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("ਸੂਚਨਾਵਾਂ ਕੰਮ ਕਰ ਰਹੀਆਂ ਹਨ।"),
     };
 
 final messageLookup = MessageLookup();

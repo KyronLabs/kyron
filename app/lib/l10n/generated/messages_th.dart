@@ -1369,6 +1369,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("ส่งไม่ได้ ลองอีกครั้ง"),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ตัวกรอง"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("ทั้งหมด"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("ยังไม่อ่าน"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("ยังไม่ตอบ"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("ซ่อนไว้"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("ไม่มีอะไรถูกซ่อน"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "บทสนทนาที่คุณนำออกจากรายการจะรออยู่ที่นี่ เผื่อคุณต้องการกลับมา"),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "บทสนทนาจะย้ายไปที่ซ่อนไว้ อีกฝ่ายยังมีของเขาอยู่ และจะกลับมาหากคนใดคนหนึ่งเขียนอีกครั้ง"),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("นำกลับมา"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("กลับมาอยู่ในรายการของคุณแล้ว"),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("ไม่มีบทสนทนาที่ตรงกัน"),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("ไม่มีอะไรรอคุณอยู่"),
+      "ui_dm_unanswered_none_detail":
+          MessageLookupByLibrary.simpleMessage("ทุกบทสนทนาจบด้วยคำของคุณ"),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("รูปภาพ"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("รูปภาพ"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("วิดีโอ"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("ยังไม่มีข้อความ"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("คุณ:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("เมื่อวาน"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("ข้อความ"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("การตั้งค่าข้อความ"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("ความเป็นส่วนตัว"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("การแจ้งว่าอ่านแล้ว"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "เมื่อปิดไว้ คนอื่นจะไม่เห็นว่าคุณอ่านข้อความของเขาเมื่อไร และคุณก็จะไม่เห็นว่าเขาอ่านของคุณเมื่อไร"),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("แสดงเมื่อคุณกำลังพิมพ์"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "คนที่คุณเขียนถึงจะเห็นว่าคุณกำลังเขียน"),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("ตัวอย่างลิงก์"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "โทรศัพท์ของคุณจะเปิดลิงก์ที่คุณส่งเพื่อสร้างตัวอย่าง เว็บไซต์จึงเห็นคำขอจากโทรศัพท์ของคุณ เซิร์ฟเวอร์ของ Kyron ไม่เคยเห็นลิงก์"),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("การแจ้งเตือนข้อความ"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "ข้อความเข้ารหัสตั้งแต่ต้นทางถึงปลายทาง Kyron อ่านไม่ได้ และไม่มีอะไรที่นี่เปลี่ยนแปลงสิ่งนั้น"),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("ถึง:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("ล่าสุด"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("ผู้คน"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("ไม่มีใครชื่อนั้น"),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("ส่งการแจ้งเตือนทดสอบ"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "เซิร์ฟเวอร์ของ Kyron ยังไม่ได้ตั้งค่าให้ส่งการแจ้งเตือน จึงไม่มีการแจ้งเตือนใดมาถึงได้ ปัญหาอยู่ที่เรา ไม่ใช่โทรศัพท์ของคุณ"),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "โทรศัพท์เครื่องนี้ยังไม่ได้ลงทะเบียนรับการแจ้งเตือน ตรวจสอบว่าอนุญาตการแจ้งเตือนของ Kyron ในการตั้งค่าโทรศัพท์แล้ว แล้วลองอีกครั้ง"),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "ส่งการแจ้งเตือนไปยังโทรศัพท์เครื่องนี้ไม่ได้ ลองอีกครั้งในอีกหนึ่งนาที"),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "ส่งแล้ว ควรมาถึงภายในไม่กี่วินาที"),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("การแจ้งเตือนใช้งานได้"),
     };
 
 final messageLookup = MessageLookup();

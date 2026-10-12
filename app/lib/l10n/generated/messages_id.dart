@@ -1372,6 +1372,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Tidak dapat dikirim. Coba lagi."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Semua"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Belum dibaca"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Belum dibalas"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Disembunyikan"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Tidak ada yang disembunyikan"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Percakapan yang kamu hapus dari daftar menunggu di sini, kalau-kalau kamu ingin mengembalikannya."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Percakapan pindah ke Disembunyikan. Orang lain tetap menyimpan miliknya, dan percakapan kembali jika salah satu dari kalian menulis lagi."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Kembalikan"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Kembali ke daftarmu."),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage(
+          "Tidak ada percakapan yang cocok."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Tidak ada yang menunggumu"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Setiap percakapan berakhir dengan kata-katamu."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Belum ada pesan"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Kamu:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Kemarin"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Pesan"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Pengaturan pesan"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("Privasi"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Tanda dibaca"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Jika dimatikan, orang lain tidak akan melihat kapan kamu membaca pesan mereka, dan kamu tidak akan melihat kapan mereka membaca pesanmu."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Tampilkan saat kamu mengetik"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Orang yang kamu kirimi pesan melihat bahwa kamu sedang menulis."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Pratinjau tautan"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Ponselmu membuka tautan yang kamu kirim untuk membuat pratinjaunya, jadi situs melihat permintaan ponselmu. Server Kyron tidak pernah melihat tautan itu."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Notifikasi pesan"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Pesan dienkripsi end-to-end. Kyron tidak dapat membacanya, dan tidak ada apa pun di sini yang mengubah itu."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Kepada:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Terbaru"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Orang"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Tidak ada yang bernama itu."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Kirim notifikasi uji"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Server Kyron belum disiapkan untuk mengirim notifikasi, jadi tidak ada yang bisa sampai. Masalahnya ada di pihak kami, bukan di ponselmu."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Ponsel ini belum terdaftar untuk notifikasi. Pastikan notifikasi untuk Kyron diizinkan di pengaturan ponsel, lalu coba lagi."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Notifikasi tidak dapat dikirim ke ponsel ini. Coba lagi sebentar lagi."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Terkirim. Seharusnya tiba dalam beberapa detik."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Notifikasi berfungsi."),
     };
 
 final messageLookup = MessageLookup();

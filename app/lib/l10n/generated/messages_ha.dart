@@ -1372,6 +1372,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Ba a iya aikawa ba. Sake gwadawa."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Tace"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Duka"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Ba a karanta ba"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Ba a amsa ba"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Ɓoyayyu"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Babu abin da aka ɓoye"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Tattaunawar da ka cire daga jerinka suna jira a nan, idan kana son dawo da su."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Tana komawa Ɓoyayyu. Ɗayan yana riƙe tasa, kuma tana dawowa idan ɗayanku ya sake rubutawa."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Mayar"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Ta dawo cikin jerinka."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Babu tattaunawar da ta dace."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Babu abin da ke jiran ka"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kowace tattaunawa tana ƙarewa da kalmarka."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Hoto"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Hotuna"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Bidiyo"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Babu saƙonni tukuna"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Kai:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Jiya"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Saƙonni"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Saitunan saƙonni"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("Sirri"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Rasitin karantawa"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Idan wannan a kashe yake, mutane ba za su ga lokacin da ka karanta saƙonninsu ba, kai ma ba za ka ga lokacin da suka karanta naka ba."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Nuna lokacin da kake rubutu"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Wanda kake rubuta wa yana ganin kana rubutu."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Samfotin hanyoyin haɗi"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Wayarka tana buɗe hanyar haɗin da ka aika don yin samfoti, don haka shafin yana ganin buƙatar wayarka. Sabar Kyron ba ta taɓa ganin hanyar haɗin ba."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Sanarwar saƙonni"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "An ɓoye saƙonni daga ƙarshe zuwa ƙarshe. Kyron ba zai iya karanta su ba, kuma babu abin da ke nan da ke canza hakan."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Zuwa:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Na kwanan nan"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Mutane"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Babu wanda ke da wannan suna."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Aika sanarwar gwaji"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Ba a saita sabar Kyron don aika sanarwa ba tukuna, don haka babu wadda za ta iso. Matsalar tana wurinmu, ba a wayarka ba."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Ba a yi rajistar wannan wayar don sanarwa ba. Duba cewa an ba Kyron izinin sanarwa a saitunan wayarka, sannan ka sake gwadawa."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Ba a iya isar da sanarwar zuwa wannan wayar ba. Sake gwadawa bayan minti ɗaya."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "An aika. Ya kamata ta iso cikin 'yan daƙiƙoƙi."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Sanarwa tana aiki."),
     };
 
 final messageLookup = MessageLookup();

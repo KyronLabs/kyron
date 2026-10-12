@@ -1370,6 +1370,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "મોકલી શકાયું નહીં. ફરી પ્રયાસ કરો."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ફિલ્ટર"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("બધા"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("ન વાંચેલા"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("જવાબ વગરના"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("છુપાવેલા"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("કંઈ છુપાવેલું નથી"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "તમારી સૂચિમાંથી દૂર કરેલી વાતચીતો અહીં રાહ જુએ છે, જો તમે તેમને પાછી લાવવા માંગો તો."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "તે છુપાવેલામાં જાય છે. બીજી વ્યક્તિ પોતાની રાખે છે, અને તમારામાંથી કોઈ ફરી લખે તો તે પાછી આવે છે."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("પાછું લાવો"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("ફરી તમારી સૂચિમાં."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("કોઈ વાતચીત મળતી નથી."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("તમારી રાહ જોતું કંઈ નથી"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "દરેક વાતચીત તમારા શબ્દ પર પૂરી થાય છે."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ફોટો"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("ફોટા"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("વિડિયો"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("હજી કોઈ સંદેશ નથી"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("તમે:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("ગઈકાલે"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("સંદેશા"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("સંદેશ સેટિંગ્સ"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("ગોપનીયતા"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("વાંચ્યાની રસીદ"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "આ બંધ હોય ત્યારે લોકો જોઈ શકશે નહીં કે તમે તેમના સંદેશા ક્યારે વાંચ્યા, અને તમે પણ જોઈ શકશો નહીં કે તેમણે તમારા ક્યારે વાંચ્યા."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("તમે લખો ત્યારે બતાવો"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "તમે જેને લખો છો તે જુએ છે કે તમે લખી રહ્યા છો."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("લિંક પૂર્વાવલોકન"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "પૂર્વાવલોકન બનાવવા તમારો ફોન તમે મોકલેલી લિંક ખોલે છે, તેથી સાઇટ તમારા ફોનની વિનંતી જુએ છે. Kyronનું સર્વર લિંક ક્યારેય જોતું નથી."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("સંદેશાની સૂચનાઓ"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "સંદેશા એન્ડ-ટુ-એન્ડ એન્ક્રિપ્ટેડ છે. Kyron તેમને વાંચી શકતું નથી, અને અહીંનું કંઈ પણ તે બદલતું નથી."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("પ્રતિ:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("તાજેતરના"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("લોકો"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("એ નામનું કોઈ નથી."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("પરીક્ષણ સૂચના મોકલો"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyronનું સર્વર હજી સૂચનાઓ મોકલવા માટે ગોઠવાયું નથી, તેથી કોઈ પણ આવી શકતી નથી. સમસ્યા અમારી બાજુ છે, તમારા ફોનમાં નહીં."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "આ ફોન સૂચનાઓ માટે નોંધાયેલો નથી. ફોનની સેટિંગ્સમાં Kyron માટે સૂચનાઓની મંજૂરી છે કે નહીં તે તપાસો, પછી ફરી પ્રયાસ કરો."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "સૂચના આ ફોન સુધી પહોંચાડી શકાઈ નહીં. એક મિનિટ પછી ફરી પ્રયાસ કરો."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "મોકલ્યું. થોડી સેકન્ડમાં પહોંચવું જોઈએ."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("સૂચનાઓ કામ કરે છે."),
     };
 
 final messageLookup = MessageLookup();

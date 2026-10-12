@@ -65,6 +65,12 @@ model User {
   // is what makes them unread: anything after it has not been looked at.
   notificationsSeenAt DateTime? @db.Timestamptz()
 
+  // Whether the people this account writes to are told it has read their
+  // messages -- and, both ways, whether it is told when they have read its.
+  // A trade, as every messenger that offers it makes it: off for one side
+  // means neither sees "Seen".
+  readReceipts Boolean @default(true)
+
   // Timestamps
   createdAt DateTime  @default(now()) @db.Timestamptz()
   updatedAt DateTime  @updatedAt @db.Timestamptz()

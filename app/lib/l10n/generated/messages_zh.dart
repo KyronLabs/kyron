@@ -1040,6 +1040,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("已发送，但有人没收到。"),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage("无法发送。请重试。"),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("粉丝"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("筛选"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("全部"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("未读"),
+      "ui_dm_filter_unanswered": MessageLookupByLibrary.simpleMessage("未回复"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("已隐藏"),
+      "ui_dm_hidden_none": MessageLookupByLibrary.simpleMessage("没有隐藏的对话"),
+      "ui_dm_hidden_none_detail":
+          MessageLookupByLibrary.simpleMessage("你从列表中移除的对话会在这里等着，以防你想找回。"),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "它会移到已隐藏。对方保留自己的对话，你们任何一方再发消息时它就会回来。"),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("放回"),
+      "ui_dm_restored": MessageLookupByLibrary.simpleMessage("已回到你的列表。"),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage("没有匹配的对话。"),
+      "ui_dm_unanswered_none": MessageLookupByLibrary.simpleMessage("没有在等你回复的"),
+      "ui_dm_unanswered_none_detail":
+          MessageLookupByLibrary.simpleMessage("每段对话都以你的话结束。"),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("照片"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("照片"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("视频"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none": MessageLookupByLibrary.simpleMessage("还没有消息"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("你："),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("昨天"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("消息"),
+      "ui_dm_settings_open": MessageLookupByLibrary.simpleMessage("消息设置"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("隐私"),
+      "ui_dm_read_receipts": MessageLookupByLibrary.simpleMessage("已读回执"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "关闭后，别人看不到你何时读了他们的消息，你也看不到他们何时读了你的。"),
+      "ui_dm_typing_setting": MessageLookupByLibrary.simpleMessage("显示你正在输入"),
+      "ui_dm_typing_setting_detail":
+          MessageLookupByLibrary.simpleMessage("你正在写信的人会看到你在输入。"),
+      "ui_dm_link_previews": MessageLookupByLibrary.simpleMessage("链接预览"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "你的手机会打开你发送的链接来生成预览，因此网站会看到你手机的请求。Kyron 的服务器从不会看到链接。"),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("消息通知"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "消息采用端到端加密。Kyron 无法读取，这里的任何设置都不会改变这一点。"),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("收件人："),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("最近"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("用户"),
+      "ui_dm_new_nobody": MessageLookupByLibrary.simpleMessage("没有叫这个名字的人。"),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage("发送测试通知"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron 的服务器尚未配置发送通知，因此不会有通知送达。问题在我们这边，不在你的手机。"),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "此手机未注册通知。请在手机设置中确认已允许 Kyron 的通知，然后重试。"),
+      "ui_push_test_rejected":
+          MessageLookupByLibrary.simpleMessage("无法将通知送达此手机。请一分钟后重试。"),
+      "ui_push_test_sent":
+          MessageLookupByLibrary.simpleMessage("已发送。几秒钟内应该会到达。"),
+      "ui_push_working": MessageLookupByLibrary.simpleMessage("通知运行正常。"),
     };
 
 final messageLookup = MessageLookup();

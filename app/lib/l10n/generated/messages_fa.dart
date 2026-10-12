@@ -1366,6 +1366,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("ارسال نشد. دوباره تلاش کنید."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("فیلتر"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("همه"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("خوانده‌نشده"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("بی‌پاسخ"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("پنهان"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("چیزی پنهان نیست"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "گفت‌وگوهایی که از فهرستتان حذف می‌کنید اینجا منتظر می‌مانند، اگر خواستید برشان گردانید."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "به پنهان منتقل می‌شود. طرف مقابل نسخهٔ خودش را نگه می‌دارد، و اگر یکی از شما دوباره بنویسد برمی‌گردد."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("بازگرداندن"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("دوباره در فهرست شما."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("هیچ گفت‌وگویی مطابقت ندارد."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("چیزی منتظر شما نیست"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "هر گفت‌وگو با حرف شما تمام می‌شود."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("عکس"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("عکس‌ها"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("ویدیو"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("هنوز پیامی نیست"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("شما:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("دیروز"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("پیام‌ها"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("تنظیمات پیام"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("حریم خصوصی"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("رسید خواندن"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "وقتی خاموش است، دیگران نمی‌بینند که کی پیامشان را خوانده‌اید، و شما هم نمی‌بینید کی پیام‌های شما را خوانده‌اند."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("نمایش هنگام نوشتن"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "کسی که برایش می‌نویسید می‌بیند که در حال نوشتن هستید."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("پیش‌نمایش پیوندها"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "تلفن شما پیوندی را که می‌فرستید باز می‌کند تا پیش‌نمایش بسازد، پس سایت درخواست تلفن شما را می‌بیند. سرور Kyron هرگز پیوند را نمی‌بیند."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("اعلان‌های پیام"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "پیام‌ها رمزگذاری سرتاسری دارند. Kyron نمی‌تواند آن‌ها را بخواند، و هیچ چیز اینجا این را تغییر نمی‌دهد."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("به:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("اخیر"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("افراد"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("کسی با این نام نیست."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("ارسال اعلان آزمایشی"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "سرور Kyron هنوز برای ارسال اعلان آماده نیست، پس هیچ اعلانی نمی‌رسد. مشکل از طرف ماست، نه تلفن شما."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "این تلفن برای اعلان‌ها ثبت نشده است. بررسی کنید اعلان‌های Kyron در تنظیمات تلفن مجاز باشند، سپس دوباره تلاش کنید."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "اعلان به این تلفن نرسید. یک دقیقهٔ دیگر دوباره تلاش کنید."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "ارسال شد. باید ظرف چند ثانیه برسد."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("اعلان‌ها کار می‌کنند."),
     };
 
 final messageLookup = MessageLookup();

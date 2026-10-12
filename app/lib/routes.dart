@@ -33,6 +33,8 @@ import 'screens/profile_screen.dart';
 import 'screens/video_feed_screen.dart';
 import 'screens/notifications_screen.dart';
 import 'screens/composer_screen.dart';
+import 'screens/messaging_settings_screen.dart';
+import 'screens/new_message_screen.dart';
 import 'services/share_inbox.dart' show SharedContent;
 import 'screens/onboard_step1_screen.dart';
 import 'screens/onboard_step2_screen.dart';
@@ -67,6 +69,8 @@ class Routes {
   static const hashtag = '/tag';
   static const topic = '/topic';
   static const thread = '/thread';
+  static const newMessage = '/messages/new';
+  static const messagingSettings = '/settings/messaging';
   static const community = '/community';
   static const drafts = '/composer/drafts';
   static const mutedWords = '/settings/muted-words';
@@ -294,6 +298,12 @@ class Routes {
               ? CommunityScreen(slug: slug)
               : const _UnknownRoute(name: community),
         );
+
+      case newMessage:
+        return _page(const NewMessageScreen());
+
+      case messagingSettings:
+        return _page(const MessagingSettingsScreen());
 
       case thread:
         final threadArgs = settings.arguments;

@@ -1374,6 +1374,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("Không gửi được. Hãy thử lại."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Bộ lọc"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Tất cả"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Chưa đọc"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Chưa trả lời"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Đã ẩn"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Không có gì bị ẩn"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Các cuộc trò chuyện bạn gỡ khỏi danh sách sẽ chờ ở đây, phòng khi bạn muốn lấy lại."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Nó chuyển sang Đã ẩn. Người kia vẫn giữ của họ, và nó sẽ quay lại nếu một trong hai người viết tiếp."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Đưa trở lại"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Đã trở lại danh sách của bạn."),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage(
+          "Không có cuộc trò chuyện nào khớp."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Không có gì đang chờ bạn"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Mọi cuộc trò chuyện đều kết thúc bằng lời của bạn."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Ảnh"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Ảnh"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Chưa có tin nhắn"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Bạn:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Hôm qua"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Tin nhắn"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Cài đặt tin nhắn"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Quyền riêng tư"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Xác nhận đã đọc"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Khi tắt, mọi người sẽ không thấy lúc bạn đọc tin nhắn của họ, và bạn cũng sẽ không thấy lúc họ đọc tin nhắn của bạn."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Hiển thị khi bạn đang nhập"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Người bạn đang viết cho sẽ thấy bạn đang viết."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Xem trước liên kết"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Điện thoại của bạn mở liên kết bạn gửi để tạo bản xem trước, nên trang web thấy yêu cầu từ điện thoại của bạn. Máy chủ của Kyron không bao giờ thấy liên kết."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Thông báo tin nhắn"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Tin nhắn được mã hóa đầu cuối. Kyron không thể đọc chúng, và không gì ở đây thay đổi điều đó."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Đến:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Gần đây"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Mọi người"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Không có ai tên như vậy."),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage("Gửi thông báo thử"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Máy chủ của Kyron chưa được thiết lập để gửi thông báo, nên không thông báo nào có thể đến. Lỗi ở phía chúng tôi, không phải điện thoại của bạn."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Điện thoại này chưa được đăng ký nhận thông báo. Hãy kiểm tra xem thông báo của Kyron đã được cho phép trong cài đặt điện thoại chưa, rồi thử lại."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Không thể gửi thông báo đến điện thoại này. Hãy thử lại sau một phút."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Đã gửi. Thông báo sẽ đến trong vài giây."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Thông báo đang hoạt động."),
     };
 
 final messageLookup = MessageLookup();

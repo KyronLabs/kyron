@@ -78,7 +78,7 @@ class _FakeMessages extends MessagesRepository {
   Future<ConversationPage> conversations({
     String? cursor,
     int limit = 30,
-    bool unreadOnly = false,
+    ConversationFilter filter = ConversationFilter.all,
   }) async {
     if (listFails) throw _Down();
     return ConversationPage(items: rows);
@@ -292,7 +292,7 @@ void main() {
 
     test('clears a badge once the thread has been opened', () async {
       final repo = _FakeMessages(rows: [row('a', unread: 3)]);
-      final notifier = ConversationListNotifier(repo, unreadOnly: false);
+      final notifier = ConversationListNotifier(repo);
       await pumpEventQueue();
 
       notifier.markRead('a');
@@ -302,7 +302,7 @@ void main() {
 
     test('takes a removed conversation off the list at once', () async {
       final repo = _FakeMessages(rows: [row('a'), row('b')]);
-      final notifier = ConversationListNotifier(repo, unreadOnly: false);
+      final notifier = ConversationListNotifier(repo);
       await pumpEventQueue();
 
       await notifier.hide(notifier.state.items.first);
@@ -345,7 +345,6 @@ void main() {
       );
       final notifier = ConversationListNotifier(
         repo,
-        unreadOnly: false,
         vault: MessageVault(KeysRepository(ApiClient()))..adopt(bo),
       );
       await notifier.refresh();
@@ -369,7 +368,7 @@ void main() {
         // while there is more behind the cursor.
         var askedUnread = false;
         final repo = _UnreadSpy(() => askedUnread = true);
-        ConversationListNotifier(repo, unreadOnly: true);
+        ConversationListNotifier(repo, filter: ConversationFilter.unread);
         await pumpEventQueue();
         expect(askedUnread, isTrue);
       },
@@ -385,9 +384,9 @@ class _UnreadSpy extends MessagesRepository {
   Future<ConversationPage> conversations({
     String? cursor,
     int limit = 30,
-    bool unreadOnly = false,
+    ConversationFilter filter = ConversationFilter.all,
   }) async {
-    if (unreadOnly) onUnread();
+    if (filter == ConversationFilter.unread) onUnread();
     return const ConversationPage();
   }
 }

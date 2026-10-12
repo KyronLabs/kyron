@@ -1495,6 +1495,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "No s'ha pogut enviar. Torna-ho a provar."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Seguidor"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtre"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Tot"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("No llegits"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Sense resposta"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Amagats"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("No hi ha res amagat"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Les converses que treus de la llista esperen aquí, per si les vols recuperar."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Passa a Amagats. L'altra persona conserva la seva, i torna si algun dels dos torna a escriure."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Recupera"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Torna a ser a la llista."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Cap conversa coincideix."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("No tens res pendent"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Totes les converses acaben amb la teva paraula."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Fotos"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Vídeo"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Encara no hi ha missatges"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Tu:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Ahir"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Missatges"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Configuració dels missatges"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Privadesa"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Confirmacions de lectura"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Si ho desactives, la gent no veurà quan has llegit els seus missatges, i tu no veuràs quan han llegit els teus."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Mostra quan escrius"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "La persona a qui escrius veu que estàs escrivint."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Previsualitzacions d'enllaços"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "El teu telèfon obre l'enllaç que envies per fer-ne la previsualització, així que el lloc veu la petició del teu telèfon. El servidor de Kyron no veu mai l'enllaç."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Notificacions de missatges"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Els missatges estan xifrats d'extrem a extrem. Kyron no els pot llegir, i res d'aquí no ho canvia."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Per a:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Recents"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Persones"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Ningú amb aquest nom."),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage(
+          "Envia una notificació de prova"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "El servidor de Kyron encara no està configurat per enviar notificacions, així que no en pot arribar cap. El problema és nostre, no del teu telèfon."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Aquest telèfon no està registrat per a notificacions. Comprova que les notificacions de Kyron estiguin permeses a la configuració del telèfon i torna-ho a provar."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut lliurar la notificació a aquest telèfon. Torna-ho a provar d'aquí a un minut."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Enviada. Hauria d'arribar en pocs segons."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Les notificacions funcionen."),
     };
 
 final messageLookup = MessageLookup();

@@ -480,3 +480,155 @@ describe('hiding a conversation', () => {
     ]);
   });
 });
+
+describe('read receipts', () => {
+  function withReceipts(mine: boolean, theirs: boolean) {
+    return {
+      id: 'c1',
+      members: [
+        {
+          userId: ME,
+          lastReadAt: new Date('2026-01-01'),
+          user: { ...person(ME), readReceipts: mine },
+        },
+        {
+          userId: THEM,
+          lastReadAt: new Date('2026-02-02'),
+          user: { ...person(THEM), readReceipts: theirs },
+        },
+      ],
+    };
+  }
+
+  const read = {
+    id: 'm1',
+    body: 'before',
+    senderId: ME,
+    createdAt: new Date('2026-01-01'),
+  };
+
+  it('off on their side: nothing reads as seen', async () => {
+    const { service, prisma } = serviceWith({
+      conversation: withReceipts(true, false),
+    });
+    stubReads(prisma, [read]);
+    const { items } = await service.messages(ME, 'c1');
+    expect(items[0].seen).toBe(false);
+  });
+
+  it('off on mine: I am not told either, the way the setting promises', async () => {
+    const { service, prisma } = serviceWith({
+      conversation: withReceipts(false, true),
+    });
+    stubReads(prisma, [read]);
+    const { items } = await service.messages(ME, 'c1');
+    expect(items[0].seen).toBe(false);
+  });
+
+  it('off: reading a thread tells nobody', async () => {
+    const { service, realtime } = serviceWith({
+      conversation: withReceipts(false, true),
+    });
+    await service.markRead(ME, 'c1');
+    expect(realtime.told).toEqual([]);
+  });
+
+  it('on: reading a thread tells the other side', async () => {
+    const { service, realtime } = serviceWith({
+      conversation: withReceipts(true, true),
+    });
+    await service.markRead(ME, 'c1');
+    expect(realtime.told.map((t) => t.event.type)).toEqual(['message.read']);
+  });
+});
+
+describe('the conversation list', () => {
+  function row(
+    lastSender: string,
+    media: unknown[] = [],
+    theirRead = new Date('2026-05-05'),
+  ) {
+    return {
+      id: 'c1',
+      lastMessageAt: new Date('2026-04-04'),
+      members: [
+        {
+          userId: ME,
+          lastReadAt: new Date('2026-04-04'),
+          user: { ...person(ME), readReceipts: true },
+        },
+        {
+          userId: THEM,
+          lastReadAt: theirRead,
+          user: { ...person(THEM), readReceipts: true },
+        },
+      ],
+      messages: [
+        {
+          id: 'm9',
+          body: '',
+          senderId: lastSender,
+          createdAt: new Date('2026-04-04'),
+          media,
+        },
+      ],
+    };
+  }
+
+  it('carries the last message’s attachments, so a voice note is not blank', async () => {
+    const { service, prisma } = serviceWith();
+    (prisma.conversation.findMany as jest.Mock).mockResolvedValue([
+      row(ME, [{ id: 'v1', kind: 'VOICE', url: 'https://cdn.invalid/v.m4a' }]),
+    ]);
+    const { items } = await service.list(ME);
+    expect(items[0].lastMessage?.media).toHaveLength(1);
+  });
+
+  it('says whether the reader’s own last message has been seen', async () => {
+    const { service, prisma } = serviceWith();
+    (prisma.conversation.findMany as jest.Mock).mockResolvedValue([
+      row(ME),
+      { ...row(ME, [], new Date('2026-01-01')), id: 'c2' },
+    ]);
+    const { items } = await service.list(ME);
+    expect(items.map((i) => i.lastMessage?.seen)).toEqual([true, false]);
+  });
+
+  it('Unanswered is the ones ending on the other person’s word', async () => {
+    const { service, prisma } = serviceWith();
+    (prisma as unknown as { $queryRaw: jest.Mock }).$queryRaw = jest
+      .fn()
+      .mockResolvedValue([
+        { conversationId: 'c1', senderId: THEM },
+        { conversationId: 'c2', senderId: ME },
+      ]);
+    await service.list(ME, { filter: 'unanswered' });
+    const [query] = (prisma.conversation.findMany as jest.Mock).mock
+      .calls[0] as unknown[];
+    expect(query).toEqual(
+      containing({ where: containing({ id: { in: ['c1'] } }) }),
+    );
+  });
+
+  it('Hidden lists the ones the reader removed', async () => {
+    const { service, prisma } = serviceWith();
+    await service.list(ME, { filter: 'hidden' });
+    const [query] = (prisma.conversation.findMany as jest.Mock).mock
+      .calls[0] as unknown[];
+    expect(query).toEqual(
+      containing({
+        where: containing({
+          members: { some: { userId: ME, hiddenAt: { not: null } } },
+        }),
+      }),
+    );
+  });
+
+  it('restoring one puts it back', async () => {
+    const { service, calls } = serviceWith({ conversation: membership(null) });
+    await service.unhide(ME, 'c1');
+    expect(calls.memberUpdates).toContainEqual(
+      containing({ data: { hiddenAt: null } }),
+    );
+  });
+});

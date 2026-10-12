@@ -1364,6 +1364,71 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("לא ניתן היה לשלוח. נסו שוב."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("סינון"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("הכול"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("לא נקראו"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("ללא מענה"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("מוסתרות"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("אין שום דבר מוסתר"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "שיחות שתסירו מהרשימה מחכות כאן, למקרה שתרצו אותן בחזרה."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "היא עוברת למוסתרות. הצד השני שומר את שלו, והיא חוזרת אם מישהו מכם כותב שוב."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("החזרה"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("חזרה לרשימה שלכם."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("אין שיחות תואמות."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("שום דבר לא מחכה לכם"),
+      "ui_dm_unanswered_none_detail":
+          MessageLookupByLibrary.simpleMessage("כל שיחה מסתיימת במילה שלכם."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("תמונה"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("תמונות"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("סרטון"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("אין עדיין הודעות"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("אתם:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("אתמול"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("הודעות"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("הגדרות הודעות"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("פרטיות"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("אישורי קריאה"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "כשזה כבוי, אחרים לא יראו מתי קראתם את ההודעות שלהם, ואתם לא תראו מתי הם קראו את שלכם."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("להציג כשאתם מקלידים"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "מי שאתם כותבים לו רואה שאתם כותבים."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("תצוגות מקדימות של קישורים"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "הטלפון שלכם פותח את הקישור שאתם שולחים כדי ליצור תצוגה מקדימה, ולכן האתר רואה את הבקשה של הטלפון שלכם. השרת של Kyron לעולם לא רואה את הקישור."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("התראות על הודעות"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "ההודעות מוצפנות מקצה לקצה. Kyron לא יכול לקרוא אותן, ושום דבר כאן לא משנה זאת."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("אל:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("אחרונים"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("אנשים"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("אין אף אחד בשם הזה."),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage("שליחת התראת בדיקה"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "השרת של Kyron עדיין לא מוגדר לשליחת התראות, ולכן אף אחת לא יכולה להגיע. הבעיה אצלנו, לא בטלפון שלכם."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "הטלפון הזה לא רשום להתראות. ודאו שההתראות של Kyron מותרות בהגדרות הטלפון, ונסו שוב."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן היה למסור את ההתראה לטלפון הזה. נסו שוב בעוד דקה."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "נשלחה. היא אמורה להגיע בעוד כמה שניות."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("ההתראות עובדות."),
     };
 
 final messageLookup = MessageLookup();

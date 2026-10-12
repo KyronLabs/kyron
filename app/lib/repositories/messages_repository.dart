@@ -4,6 +4,20 @@ import '../services/api_client.dart';
 import '../models/chat_wallpaper.dart';
 import '../models/post_media.dart';
 
+/// Which conversations a list shows.
+enum ConversationFilter {
+  all,
+
+  /// Holding something the reader has not read.
+  unread,
+
+  /// Ending on the other person's word: waiting on a reply.
+  unanswered,
+
+  /// Removed from the list by the reader, to be put back or left.
+  hidden,
+}
+
 class MessagesRepository {
   final ApiClient _api;
 
@@ -13,17 +27,37 @@ class MessagesRepository {
   Future<ConversationPage> conversations({
     String? cursor,
     int limit = 30,
-    bool unreadOnly = false,
+    ConversationFilter filter = ConversationFilter.all,
   }) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/messages',
       queryParameters: {
         'limit': limit,
         if (cursor != null) 'cursor': cursor,
-        if (unreadOnly) 'unreadOnly': true,
+        if (filter != ConversationFilter.all) 'filter': filter.name,
+        // What a server from before filters understood as the Unread tab.
+        if (filter == ConversationFilter.unread) 'unreadOnly': true,
       },
     );
     return ConversationPage.fromJson(res.data ?? const {});
+  }
+
+  /// Puts a conversation the reader removed back in their list.
+  Future<void> restore(String conversationId) =>
+      _api.dio.put<void>('/messages/$conversationId/restore');
+
+  /// Whether the reader shares read receipts.
+  Future<bool> readReceipts() async {
+    final res = await _api.dio.get<Map<String, dynamic>>('/messages/settings');
+    return res.data?['readReceipts'] != false;
+  }
+
+  Future<bool> setReadReceipts(bool on) async {
+    final res = await _api.dio.put<Map<String, dynamic>>(
+      '/messages/settings',
+      data: {'readReceipts': on},
+    );
+    return res.data?['readReceipts'] != false;
   }
 
   /// How many conversations hold something unread. Drives the tab badge.

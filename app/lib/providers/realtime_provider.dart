@@ -112,9 +112,9 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
 }
 
 void _refreshConversationLists(Ref ref) {
-  for (final unreadOnly in [false, true]) {
-    if (ref.exists(conversationListProvider(unreadOnly))) {
-      ref.read(conversationListProvider(unreadOnly).notifier).refresh();
+  for (final filter in ConversationFilter.values) {
+    if (ref.exists(conversationListProvider(filter))) {
+      ref.read(conversationListProvider(filter).notifier).refresh();
     }
   }
   ref.invalidate(unreadConversationsProvider);

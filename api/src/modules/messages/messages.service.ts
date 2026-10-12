@@ -8,6 +8,7 @@ import {
 import { MediaKind, Prisma } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
+import type { ConversationFilter } from './dto/list-messages.dto';
 
 /** The other person in a conversation, as a list row needs them. */
 export interface MessagePerson {
@@ -28,6 +29,12 @@ export interface ConversationSummary {
     body: string;
     senderId: string;
     createdAt: Date;
+    /** Its attachments, so a voice note or a photo says what it is rather
+     * than nothing. */
+    media: MessageMedia[];
+    /** The reader's own last message, read by the other side. Always false
+     * when either of them has read receipts off. */
+    seen: boolean;
   } | null;
   /** Messages from the other side the reader has not seen. */
   unread: number;
@@ -180,16 +187,25 @@ export class MessagesService {
   /** The reader's conversations, whichever moved last at the top. */
   async list(
     viewerId: string,
-    { limit = DEFAULT_LIMIT, cursor, unreadOnly = false } = {} as {
+    { limit = DEFAULT_LIMIT, cursor, unreadOnly = false, filter } = {} as {
       limit?: number;
       cursor?: string;
       unreadOnly?: boolean;
+      filter?: ConversationFilter;
     },
   ) {
+    const which: ConversationFilter = filter ?? (unreadOnly ? 'unread' : 'all');
+    const hidden = which === 'hidden';
+
     // Narrowed before paging, not after. Filtering a page down afterwards
     // gives short pages and an "Unread" tab that looks empty while there is
     // more behind the cursor.
-    const only = unreadOnly ? await this.unreadConversationIds(viewerId) : null;
+    const only =
+      which === 'unread'
+        ? await this.unreadConversationIds(viewerId)
+        : which === 'unanswered'
+          ? await this.unansweredConversationIds(viewerId)
+          : null;
     if (only !== null && only.length === 0) {
       return { items: [] as ConversationSummary[], nextCursor: null };
     }
@@ -197,7 +213,12 @@ export class MessagesService {
     const rows = await this.prisma.conversation.findMany({
       where: {
         ...(only ? { id: { in: only } } : {}),
-        members: { some: { userId: viewerId, hiddenAt: null } },
+        members: {
+          some: {
+            userId: viewerId,
+            hiddenAt: hidden ? { not: null } : null,
+          },
+        },
         // A conversation nobody has said anything in yet is a draft, not a
         // thread, and it should not sit at the top of the list.
         messages: { some: { deletedAt: null } },
@@ -212,14 +233,20 @@ export class MessagesService {
           select: {
             userId: true,
             lastReadAt: true,
-            user: { select: this.personShape },
+            user: { select: { ...this.personShape, readReceipts: true } },
           },
         },
         messages: {
           where: { deletedAt: null },
           orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
           take: 1,
-          select: { id: true, body: true, senderId: true, createdAt: true },
+          select: {
+            id: true,
+            body: true,
+            senderId: true,
+            createdAt: true,
+            media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+          },
         },
       },
     });
@@ -256,15 +283,27 @@ export class MessagesService {
       unreadCounts.map((row) => [row.conversationId, row._count.id]),
     );
 
-    const items: ConversationSummary[] = page.map((row) => ({
-      id: row.id,
-      people: row.members
-        .filter((m) => m.userId !== viewerId)
-        .map((m) => this.toPerson(m.user)),
-      lastMessage: row.messages[0] ?? null,
-      unread: unreadOf.get(row.id) ?? 0,
-      lastMessageAt: row.lastMessageAt,
-    }));
+    const items: ConversationSummary[] = page.map((row) => {
+      const last = row.messages[0];
+      const readUpTo = this.readUpTo(viewerId, row.members);
+      return {
+        id: row.id,
+        people: row.members
+          .filter((m) => m.userId !== viewerId)
+          .map((m) => this.toPerson(m.user)),
+        lastMessage: last
+          ? {
+              ...last,
+              seen:
+                last.senderId === viewerId &&
+                readUpTo !== null &&
+                last.createdAt <= readUpTo,
+            }
+          : null,
+        unread: unreadOf.get(row.id) ?? 0,
+        lastMessageAt: row.lastMessageAt,
+      };
+    });
 
     return {
       items,
@@ -298,6 +337,94 @@ export class MessagesService {
       select: { conversationId: true },
     });
     return rows.map((row) => row.conversationId);
+  }
+
+  /**
+   * Which of the reader's conversations end on the other person's word: the
+   * ones waiting on a reply.
+   *
+   * The last message of each, in one query, rather than each conversation's
+   * messages fetched to find it.
+   */
+  private async unansweredConversationIds(viewerId: string): Promise<string[]> {
+    const rows = await this.prisma.$queryRaw<
+      Array<{ conversationId: string; senderId: string }>
+    >`
+      SELECT DISTINCT ON (m."conversationId") m."conversationId", m."senderId"
+      FROM "Message" m
+      JOIN "ConversationMember" cm
+        ON cm."conversationId" = m."conversationId"
+       AND cm."userId" = ${viewerId}::uuid
+       AND cm."hiddenAt" IS NULL
+      WHERE m."deletedAt" IS NULL
+      ORDER BY m."conversationId", m."createdAt" DESC, m."id" DESC
+    `;
+    return rows
+      .filter((row) => row.senderId !== viewerId)
+      .map((row) => row.conversationId);
+  }
+
+  /**
+   * How far everybody else in a conversation has read, as far as the reader
+   * may know it: the earliest of their read marks, or null when any of them
+   * has never opened it -- or when read receipts are off on either side,
+   * which is the trade the setting makes.
+   */
+  private readUpTo(
+    viewerId: string,
+    members: ReadonlyArray<{
+      userId: string;
+      lastReadAt: Date | null;
+      user: { readReceipts?: boolean };
+    }>,
+  ): Date | null {
+    // Only an explicit false is off: the column defaults to on.
+    const me = members.find((m) => m.userId === viewerId);
+    if (me?.user.readReceipts === false) return null;
+    const others = members.filter((m) => m.userId !== viewerId);
+    if (others.length === 0) return null;
+    let earliest: Date | null = null;
+    for (const other of others) {
+      if (other.user.readReceipts === false || other.lastReadAt === null) {
+        return null;
+      }
+      if (earliest === null || other.lastReadAt < earliest) {
+        earliest = other.lastReadAt;
+      }
+    }
+    return earliest;
+  }
+
+  /** The reader's messaging settings. */
+  async settings(viewerId: string): Promise<{ readReceipts: boolean }> {
+    const user = await this.prisma.user.findUnique({
+      where: { id: viewerId },
+      select: { readReceipts: true },
+    });
+    return { readReceipts: user?.readReceipts ?? true };
+  }
+
+  /** Changes them. */
+  async updateSettings(
+    viewerId: string,
+    settings: { readReceipts: boolean },
+  ): Promise<{ readReceipts: boolean }> {
+    const user = await this.prisma.user.update({
+      where: { id: viewerId },
+      data: { readReceipts: settings.readReceipts },
+      select: { readReceipts: true },
+    });
+    return { readReceipts: user.readReceipts };
+  }
+
+  /** Puts a conversation the reader removed back in their list. */
+  async unhide(viewerId: string, conversationId: string) {
+    await this.requireMembership(viewerId, conversationId);
+    await this.prisma.conversationMember.updateMany({
+      where: { conversationId, userId: viewerId },
+      data: { hiddenAt: null },
+    });
+    return { ok: true };
   }
 
   /** How many conversations have something in them the reader has not read. */
@@ -365,19 +492,9 @@ export class MessagesService {
 
     // Seen means everyone else has read past it, so the earliest of their read
     // marks is the one that decides. Anyone who has never opened the thread
-    // makes the whole thing unseen.
-    const others = conversation.members.filter((m) => m.userId !== viewerId);
-    const allOpened =
-      others.length > 0 && others.every((m) => m.lastReadAt !== null);
-    const otherRead = allOpened
-      ? others.reduce<Date>(
-          (earliest, m) =>
-            (m.lastReadAt as Date) < earliest
-              ? (m.lastReadAt as Date)
-              : earliest,
-          others[0].lastReadAt as Date,
-        )
-      : null;
+    // makes the whole thing unseen, and so does read receipts being off on
+    // either side.
+    const otherRead = this.readUpTo(viewerId, conversation.members);
 
     const rows = await this.prisma.message.findMany({
       where: { conversationId, deletedAt: null },
@@ -786,7 +903,10 @@ export class MessagesService {
     // The other side's own bubbles are now seen, and their ticks should fill
     // in without waiting for them to pull the thread. No push with it: a
     // phone that buzzes because somebody read a message is a phone nobody
-    // wants.
+    // wants. Not at all with read receipts off: the event itself says the
+    // message was read.
+    const me = conversation.members.find((m) => m.userId === viewerId);
+    if (me?.user.readReceipts === false) return { ok: true };
     this.delivery.tellMany(
       conversation.members.map((m) => m.userId).filter((id) => id !== viewerId),
       { type: 'message.read', conversationId, readerId: viewerId },
@@ -873,7 +993,7 @@ export class MessagesService {
             userId: true,
             lastReadAt: true,
             mutedAt: true,
-            user: { select: this.personShape },
+            user: { select: { ...this.personShape, readReceipts: true } },
           },
         },
       },

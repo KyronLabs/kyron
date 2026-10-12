@@ -1378,6 +1378,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ಫಿಲ್ಟರ್"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("ಎಲ್ಲವೂ"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("ಓದದವು"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("ಉತ್ತರಿಸದವು"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("ಮರೆಮಾಡಿದವು"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("ಯಾವುದನ್ನೂ ಮರೆಮಾಡಿಲ್ಲ"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ಪಟ್ಟಿಯಿಂದ ತೆಗೆದ ಸಂಭಾಷಣೆಗಳು, ನೀವು ಮರಳಿ ಬಯಸಿದರೆ ಎಂದು ಇಲ್ಲಿ ಕಾಯುತ್ತವೆ."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "ಇದು ಮರೆಮಾಡಿದವಕ್ಕೆ ಹೋಗುತ್ತದೆ. ಇನ್ನೊಬ್ಬರು ತಮ್ಮದನ್ನು ಇಟ್ಟುಕೊಳ್ಳುತ್ತಾರೆ, ನಿಮ್ಮಲ್ಲಿ ಯಾರಾದರೂ ಮತ್ತೆ ಬರೆದರೆ ಇದು ಮರಳುತ್ತದೆ."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("ಮರಳಿ ಇಡಿ"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("ಮತ್ತೆ ನಿಮ್ಮ ಪಟ್ಟಿಯಲ್ಲಿ."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("ಯಾವುದೇ ಸಂಭಾಷಣೆ ಹೊಂದುವುದಿಲ್ಲ."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("ನಿಮಗಾಗಿ ಏನೂ ಕಾಯುತ್ತಿಲ್ಲ"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ಪ್ರತಿಯೊಂದು ಸಂಭಾಷಣೆಯೂ ನಿಮ್ಮ ಮಾತಿನಲ್ಲೇ ಮುಗಿಯುತ್ತದೆ."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ಫೋಟೋ"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("ಫೋಟೋಗಳು"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("ವೀಡಿಯೊ"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("ಇನ್ನೂ ಸಂದೇಶಗಳಿಲ್ಲ"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("ನೀವು:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("ನಿನ್ನೆ"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("ಸಂದೇಶಗಳು"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("ಸಂದೇಶ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("ಗೌಪ್ಯತೆ"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("ಓದಿದ ರಸೀದಿಗಳು"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "ಇದು ಆಫ್ ಆಗಿದ್ದರೆ, ನೀವು ಅವರ ಸಂದೇಶ ಓದಿದ್ದನ್ನು ಇತರರು ನೋಡುವುದಿಲ್ಲ, ಅವರು ನಿಮ್ಮದನ್ನು ಓದಿದ್ದನ್ನು ನೀವೂ ನೋಡುವುದಿಲ್ಲ."),
+      "ui_dm_typing_setting": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಟೈಪ್ ಮಾಡುತ್ತಿರುವಾಗ ತೋರಿಸಿ"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಬರೆಯುತ್ತಿರುವವರಿಗೆ ನೀವು ಬರೆಯುತ್ತಿರುವುದು ಕಾಣುತ್ತದೆ."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("ಲಿಂಕ್ ಪೂರ್ವವೀಕ್ಷಣೆಗಳು"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "ಪೂರ್ವವೀಕ್ಷಣೆ ಮಾಡಲು ನಿಮ್ಮ ಫೋನ್ ನೀವು ಕಳುಹಿಸುವ ಲಿಂಕ್ ಅನ್ನು ತೆರೆಯುತ್ತದೆ, ಹಾಗಾಗಿ ಸೈಟ್ ನಿಮ್ಮ ಫೋನ್‌ನ ವಿನಂತಿಯನ್ನು ನೋಡುತ್ತದೆ. Kyron ಸರ್ವರ್ ಲಿಂಕ್ ಅನ್ನು ಎಂದಿಗೂ ನೋಡುವುದಿಲ್ಲ."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("ಸಂದೇಶಗಳ ಅಧಿಸೂಚನೆಗಳು"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "ಸಂದೇಶಗಳು ಎಂಡ್-ಟು-ಎಂಡ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗಿವೆ. Kyron ಅವನ್ನು ಓದಲಾರದು, ಇಲ್ಲಿನ ಯಾವುದೂ ಅದನ್ನು ಬದಲಿಸುವುದಿಲ್ಲ."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("ಇವರಿಗೆ:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("ಇತ್ತೀಚಿನವು"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("ಜನರು"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("ಆ ಹೆಸರಿನವರು ಯಾರೂ ಇಲ್ಲ."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("ಪರೀಕ್ಷಾ ಅಧಿಸೂಚನೆ ಕಳುಹಿಸಿ"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron ಸರ್ವರ್ ಇನ್ನೂ ಅಧಿಸೂಚನೆಗಳನ್ನು ಕಳುಹಿಸಲು ಸಿದ್ಧಗೊಂಡಿಲ್ಲ, ಹಾಗಾಗಿ ಯಾವುದೂ ಬರಲಾರದು. ಸಮಸ್ಯೆ ನಮ್ಮ ಕಡೆಯಿದೆ, ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಅಲ್ಲ."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "ಈ ಫೋನ್ ಅಧಿಸೂಚನೆಗಳಿಗೆ ನೋಂದಾಯಿತವಾಗಿಲ್ಲ. ಫೋನ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Kyron ಅಧಿಸೂಚನೆಗಳಿಗೆ ಅನುಮತಿ ಇದೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸಿ, ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "ಅಧಿಸೂಚನೆಯನ್ನು ಈ ಫೋನ್‌ಗೆ ತಲುಪಿಸಲಾಗಲಿಲ್ಲ. ಒಂದು ನಿಮಿಷದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "ಕಳುಹಿಸಲಾಗಿದೆ. ಕೆಲವೇ ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಬರಬೇಕು."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("ಅಧಿಸೂಚನೆಗಳು ಕೆಲಸ ಮಾಡುತ್ತಿವೆ."),
     };
 
 final messageLookup = MessageLookup();

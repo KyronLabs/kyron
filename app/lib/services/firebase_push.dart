@@ -1,4 +1,6 @@
 // lib/services/firebase_push.dart
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -20,6 +22,35 @@ import 'push_registrar.dart';
 class FirebasePushTokens implements PushTokenSource {
   FirebasePushTokens._();
 
+  static final _ready = Completer<bool>();
+
+  /// Completes with true once Firebase has started on this install, and with
+  /// false if it could not. Notification taps wait on it: a tap that launched
+  /// the app arrives before sign-in has started Firebase.
+  static Future<bool> get ready => _ready.future;
+
+  static void _settle(bool started) {
+    if (!_ready.isCompleted) _ready.complete(started);
+  }
+
+  /// What a tapped notification carried, once Firebase is up: the one that
+  /// opened the app, then any tapped while it runs. Nothing on a platform or
+  /// build without push.
+  static Stream<Map<String, dynamic>> taps() async* {
+    if (!await ready) return;
+    final opened = await FirebaseMessaging.instance.getInitialMessage();
+    if (opened != null) yield opened.data;
+    yield* FirebaseMessaging.onMessageOpenedApp.map((m) => m.data);
+  }
+
+  /// Notifications that arrive while the app is in front. The phone shows
+  /// none of these itself -- it hands them to the app -- so anything worth
+  /// showing is the app's to show.
+  static Stream<RemoteMessage> inFront() async* {
+    if (!await ready) return;
+    yield* FirebaseMessaging.onMessage;
+  }
+
   /// Starts Firebase and hands back a token source, or null when there is not
   /// one to be had.
   ///
@@ -35,6 +66,7 @@ class FirebasePushTokens implements PushTokenSource {
     // helpfully -- it fails obscurely, inside a C++ SDK that has no project
     // to read. firebase_messaging has no Windows implementation at all.
     if (!PlatformSupport.current.push) {
+      _settle(false);
       AppLog.instance.info(
         'push',
         'Push is not available on ${PlatformSupport.current.name}, so this '
@@ -49,7 +81,9 @@ class FirebasePushTokens implements PushTokenSource {
       // firebase_options.dart would be a third copy of the same values, kept
       // in step by hand.
       await Firebase.initializeApp();
+      _settle(true);
     } catch (error) {
+      _settle(false);
       // Almost always the missing config file. Said plainly, because the
       // symptom otherwise is silence: no notification ever arrives and
       // nothing anywhere says why.

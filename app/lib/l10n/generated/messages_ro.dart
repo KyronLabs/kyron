@@ -1378,6 +1378,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Nu s-a putut trimite. Încearcă din nou."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtru"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Toate"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Necitite"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Fără răspuns"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Ascunse"),
+      "ui_dm_hidden_none": MessageLookupByLibrary.simpleMessage("Nimic ascuns"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Conversațiile pe care le scoți din listă așteaptă aici, în caz că le vrei înapoi."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Trece la Ascunse. Cealaltă persoană o păstrează pe a ei, iar conversația revine dacă unul dintre voi scrie din nou."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Pune înapoi"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Din nou în lista ta."),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage(
+          "Nicio conversație nu se potrivește."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Nimic nu te așteaptă"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Fiecare conversație se încheie cu vorba ta."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Fotografie"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("Fotografii"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Videoclip"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Încă nu există mesaje"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Tu:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Ieri"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Mesaje"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Setări pentru mesaje"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Confidențialitate"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Confirmări de citire"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Când e dezactivat, ceilalți nu vor vedea când le-ai citit mesajele, iar tu nu vei vedea când ți le-au citit pe ale tale."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Arată când scrii"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Persoana căreia îi scrii vede că scrii."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Previzualizări de linkuri"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Telefonul tău deschide linkul pe care îl trimiți ca să facă previzualizarea, așa că site-ul vede cererea telefonului tău. Serverul Kyron nu vede niciodată linkul."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Notificări pentru mesaje"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Mesajele sunt criptate integral. Kyron nu le poate citi, și nimic de aici nu schimbă asta."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Către:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Recente"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Persoane"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Nimeni cu acest nume."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Trimite o notificare de test"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Serverul Kyron nu este încă configurat să trimită notificări, așa că niciuna nu poate ajunge. Problema e la noi, nu la telefonul tău."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Acest telefon nu este înregistrat pentru notificări. Verifică dacă notificările Kyron sunt permise în setările telefonului, apoi încearcă din nou."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Notificarea nu a putut fi livrată pe acest telefon. Încearcă din nou peste un minut."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Trimisă. Ar trebui să sosească în câteva secunde."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Notificările funcționează."),
     };
 
 final messageLookup = MessageLookup();

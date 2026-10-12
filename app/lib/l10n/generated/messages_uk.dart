@@ -1378,6 +1378,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Не вдалося надіслати. Спробуйте ще раз."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Фільтр"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Усі"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Непрочитані"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Без відповіді"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Приховані"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Нічого не приховано"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Розмови, які ви прибираєте зі списку, чекають тут, якщо захочете їх повернути."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Вона переходить до Прихованих. Інша людина зберігає свою, а розмова повернеться, якщо хтось із вас знову напише."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Повернути"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Знову у вашому списку."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Немає відповідних розмов."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Ніщо не чекає на вас"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Кожна розмова закінчується вашим словом."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Фото"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Фото"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Відео"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Ще немає повідомлень"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Ви:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Учора"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Повідомлення"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Налаштування повідомлень"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Конфіденційність"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Звіти про прочитання"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Коли це вимкнено, люди не бачитимуть, коли ви прочитали їхні повідомлення, а ви не бачитимете, коли вони прочитали ваші."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Показувати, що ви друкуєте"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Людина, якій ви пишете, бачить, що ви пишете."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Попередній перегляд посилань"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Ваш телефон відкриває посилання, яке ви надсилаєте, щоб створити попередній перегляд, тож сайт бачить запит вашого телефона. Сервер Kyron ніколи не бачить посилання."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Сповіщення про повідомлення"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Повідомлення мають наскрізне шифрування. Kyron не може їх читати, і ніщо тут цього не змінює."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Кому:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Нещодавні"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Люди"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Нікого з таким ім'ям."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Надіслати тестове сповіщення"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Сервер Kyron ще не налаштовано для надсилання сповіщень, тож жодне не може надійти. Проблема на нашому боці, а не у вашому телефоні."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Цей телефон не зареєстровано для сповіщень. Перевірте, чи дозволено сповіщення Kyron у налаштуваннях телефона, і спробуйте ще раз."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося доставити сповіщення на цей телефон. Спробуйте ще раз за хвилину."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Надіслано. Має надійти за кілька секунд."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Сповіщення працюють."),
     };
 
 final messageLookup = MessageLookup();

@@ -1376,6 +1376,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "යැවිය නොහැකි විය. නැවත උත්සාහ කරන්න."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("පෙරහන"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("සියල්ල"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("නොකියවූ"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("පිළිතුරු නොදුන්"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("සඟවන ලද"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("කිසිවක් සඟවා නැත"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ ලැයිස්තුවෙන් ඉවත් කළ සංවාද, ආපසු අවශ්‍ය නම් මෙහි රැඳී සිටී."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "එය සඟවන ලද වෙත යයි. අනෙක් පුද්ගලයා ඔවුන්ගේ එක තබා ගන්නා අතර, ඔබෙන් කෙනෙක් නැවත ලිව්වොත් එය ආපසු එයි."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("ආපසු තබන්න"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("නැවත ඔබේ ලැයිස්තුවේ."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("ගැළපෙන සංවාද නැත."),
+      "ui_dm_unanswered_none": MessageLookupByLibrary.simpleMessage(
+          "ඔබ එනතුරු කිසිවක් බලා සිටින්නේ නැත"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "සෑම සංවාදයක්ම ඔබේ වචනයෙන් අවසන් වේ."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ඡායාරූපය"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("ඡායාරූප"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("වීඩියෝව"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("තවම පණිවිඩ නැත"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("ඔබ:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("ඊයේ"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("පණිවිඩ"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("පණිවිඩ සැකසීම්"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("පෞද්ගලිකත්වය"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("කියවූ බවට රිසිට්පත්"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "මෙය අක්‍රිය විට, ඔබ ඔවුන්ගේ පණිවිඩ කියවූ විට අන් අයට නොපෙනෙන අතර, ඔවුන් ඔබේ ඒවා කියවූ විට ඔබටත් නොපෙනේ."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("ඔබ ටයිප් කරන විට පෙන්වන්න"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබ ලියන පුද්ගලයාට ඔබ ලියන බව පෙනේ."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("සබැඳි පෙරදසුන්"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "පෙරදසුන සෑදීමට ඔබේ දුරකථනය ඔබ යවන සබැඳිය විවෘත කරයි, එබැවින් වෙබ් අඩවියට ඔබේ දුරකථනයේ ඉල්ලීම පෙනේ. Kyron සේවාදායකය කිසිදා සබැඳිය නොදකී."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("පණිවිඩ දැනුම්දීම්"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "පණිවිඩ අන්තයේ සිට අන්තය දක්වා සංකේතනය කර ඇත. Kyron ට ඒවා කියවිය නොහැකි අතර, මෙහි කිසිවක් එය වෙනස් නොකරයි."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("වෙත:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("මෑත"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("පුද්ගලයින්"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("ඒ නමින් කිසිවෙක් නැත."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("පරීක්ෂණ දැනුම්දීමක් යවන්න"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron සේවාදායකය තවම දැනුම්දීම් යැවීමට සකසා නැත, එබැවින් කිසිවක් පැමිණිය නොහැක. ගැටලුව අපේ පැත්තේ, ඔබේ දුරකථනයේ නොවේ."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "මෙම දුරකථනය දැනුම්දීම් සඳහා ලියාපදිංචි කර නැත. දුරකථන සැකසීම්වල Kyron සඳහා දැනුම්දීම් ඉඩ දී ඇත්දැයි පරීක්ෂා කර නැවත උත්සාහ කරන්න."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "දැනුම්දීම මෙම දුරකථනයට ලබා දිය නොහැකි විය. මිනිත්තුවකින් නැවත උත්සාහ කරන්න."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "යැව්වා. තත්පර කිහිපයකින් පැමිණිය යුතුය."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("දැනුම්දීම් ක්‍රියා කරයි."),
     };
 
 final messageLookup = MessageLookup();

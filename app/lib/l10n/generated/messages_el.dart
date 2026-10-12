@@ -1545,6 +1545,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Δεν ήταν δυνατή η αποστολή. Δοκιμάστε ξανά."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Ακόλουθος"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Φίλτρο"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Όλες"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Μη αναγνωσμένες"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Χωρίς απάντηση"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Κρυφές"),
+      "ui_dm_hidden_none": MessageLookupByLibrary.simpleMessage("Τίποτα κρυφό"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Οι συνομιλίες που αφαιρείτε από τη λίστα σας περιμένουν εδώ, σε περίπτωση που τις θέλετε πίσω."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Μετακινείται στις Κρυφές. Ο άλλος κρατά τη δική του, και επιστρέφει αν κάποιος από εσάς γράψει ξανά."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Επαναφορά"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Ξανά στη λίστα σας."),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage(
+          "Καμία συνομιλία δεν ταιριάζει."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Τίποτα δεν σας περιμένει"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Κάθε συνομιλία τελειώνει με τη δική σας λέξη."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Φωτογραφία"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("Φωτογραφίες"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Βίντεο"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Δεν υπάρχουν ακόμα μηνύματα"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Εσείς:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Χθες"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Μηνύματα"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Ρυθμίσεις μηνυμάτων"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Απόρρητο"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Επιβεβαιώσεις ανάγνωσης"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Όταν είναι απενεργοποιημένο, οι άλλοι δεν θα βλέπουν πότε διαβάσατε τα μηνύματά τους, και εσείς δεν θα βλέπετε πότε διάβασαν τα δικά σας."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Εμφάνιση όταν πληκτρολογείτε"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Το άτομο στο οποίο γράφετε βλέπει ότι γράφετε."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Προεπισκοπήσεις συνδέσμων"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Το τηλέφωνό σας ανοίγει τον σύνδεσμο που στέλνετε για να φτιάξει την προεπισκόπηση, οπότε ο ιστότοπος βλέπει το αίτημα του τηλεφώνου σας. Ο διακομιστής του Kyron δεν βλέπει ποτέ τον σύνδεσμο."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Ειδοποιήσεις μηνυμάτων"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Τα μηνύματα είναι κρυπτογραφημένα από άκρο σε άκρο. Το Kyron δεν μπορεί να τα διαβάσει, και τίποτα εδώ δεν το αλλάζει αυτό."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Προς:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Πρόσφατα"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Άτομα"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Κανείς με αυτό το όνομα."),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage(
+          "Αποστολή δοκιμαστικής ειδοποίησης"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Ο διακομιστής του Kyron δεν έχει ρυθμιστεί ακόμα για αποστολή ειδοποιήσεων, οπότε καμία δεν μπορεί να φτάσει. Το πρόβλημα είναι σε εμάς, όχι στο τηλέφωνό σας."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Αυτό το τηλέφωνο δεν είναι καταχωρισμένο για ειδοποιήσεις. Ελέγξτε ότι επιτρέπονται οι ειδοποιήσεις για το Kyron στις ρυθμίσεις του τηλεφώνου και δοκιμάστε ξανά."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Η ειδοποίηση δεν μπόρεσε να παραδοθεί σε αυτό το τηλέφωνο. Δοκιμάστε ξανά σε ένα λεπτό."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Στάλθηκε. Θα πρέπει να φτάσει σε λίγα δευτερόλεπτα."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Οι ειδοποιήσεις λειτουργούν."),
     };
 
 final messageLookup = MessageLookup();

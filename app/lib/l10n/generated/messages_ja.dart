@@ -1156,6 +1156,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("送信できませんでした。もう一度お試しください。"),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("フォロワー"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("フィルター"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("すべて"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("未読"),
+      "ui_dm_filter_unanswered": MessageLookupByLibrary.simpleMessage("未返信"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("非表示"),
+      "ui_dm_hidden_none": MessageLookupByLibrary.simpleMessage("非表示のものはありません"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "リストから外した会話はここで待っています。元に戻したいときのために。"),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "非表示に移ります。相手の会話は残り、どちらかがまたメッセージを送ると戻ってきます。"),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("元に戻す"),
+      "ui_dm_restored": MessageLookupByLibrary.simpleMessage("リストに戻りました。"),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("一致する会話はありません。"),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("返信待ちはありません"),
+      "ui_dm_unanswered_none_detail":
+          MessageLookupByLibrary.simpleMessage("どの会話もあなたの言葉で終わっています。"),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("写真"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("写真"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("動画"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("まだメッセージはありません"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("あなた:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("昨日"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("メッセージ"),
+      "ui_dm_settings_open": MessageLookupByLibrary.simpleMessage("メッセージ設定"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("プライバシー"),
+      "ui_dm_read_receipts": MessageLookupByLibrary.simpleMessage("既読表示"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "オフにすると、相手はあなたがメッセージを読んだことがわからなくなり、あなたも相手が読んだことがわからなくなります。"),
+      "ui_dm_typing_setting": MessageLookupByLibrary.simpleMessage("入力中を表示"),
+      "ui_dm_typing_setting_detail":
+          MessageLookupByLibrary.simpleMessage("相手に、あなたが入力中であることが表示されます。"),
+      "ui_dm_link_previews": MessageLookupByLibrary.simpleMessage("リンクのプレビュー"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "プレビューを作るため、送信するリンクをあなたのスマホが開きます。そのためサイトにはスマホからのアクセスが見えます。Kyronのサーバーがリンクを見ることはありません。"),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("メッセージの通知"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "メッセージはエンドツーエンドで暗号化されています。Kyronは読めず、ここでの設定はそれを変えません。"),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("宛先:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("最近"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("ユーザー"),
+      "ui_dm_new_nobody": MessageLookupByLibrary.simpleMessage("その名前の人はいません。"),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage("テスト通知を送る"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyronのサーバーはまだ通知を送る設定になっていないため、通知は届きません。原因はこちら側で、お使いのスマホではありません。"),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "このスマホは通知用に登録されていません。スマホの設定でKyronの通知が許可されているか確認してから、もう一度お試しください。"),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "このスマホに通知を届けられませんでした。1分後にもう一度お試しください。"),
+      "ui_push_test_sent":
+          MessageLookupByLibrary.simpleMessage("送信しました。数秒で届くはずです。"),
+      "ui_push_working": MessageLookupByLibrary.simpleMessage("通知は正常に動作しています。"),
     };
 
 final messageLookup = MessageLookup();

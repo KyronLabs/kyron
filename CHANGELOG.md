@@ -14,6 +14,35 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **No push notification had ever arrived.** The server had no Firebase key,
+  so every push was dropped before it left; `GET /health` said `push: off`.
+  That is configuration (docs/PUSH.md), but the app had its own gaps: no
+  Android channels, so Android 8+ put every push in a silent default; no
+  small icon, so the one that did show was a white square; nothing happened
+  on tapping one; and the Notifications switch in Settings did nothing.
+  Messages now come on a high-importance channel with sound, others on an
+  activity channel; a tap opens the conversation or the notifications page;
+  the switch registers and unregisters this phone; and *Send a test
+  notification* says which part is broken: the server, this phone's token,
+  or delivery. A phone's token is forgotten only when FCM says it is gone,
+  not on any 400, which also covers a malformed request.
+- **A short voice note drew a short waveform.** The bars were one per
+  recorded level, so a two-second note was a stub and a minute was a solid
+  block. Every note now draws the same width, resampled to fit; only the
+  speed of the fill differs.
+- **"+ALT" on photos attached to a message.** Descriptions are a post
+  feature; the message composer no longer offers one.
+- **The conversation list said "You:" and nothing else.** It was never sent
+  a message's attachments, so a voice note or a photo was blank. It reads
+  "Voice note", "Photo", "Photos", "Video" or "GIF" now. Times read as a time
+  today, "Yesterday", a weekday this week and a date after that, in the
+  phone's language. Your own last message says "Sent" or "Seen" beside it.
+- **A link pasted and sent at once went without its card.** The card is
+  read on the sender's phone, and the message left before it was ready. Send
+  now waits up to four seconds for it, with the message already showing, and
+  the composer shows the link being read. The page is asked for as a link
+  previewer, which more sites answer.
+
 - **A link card with no picture broke the feed.** The card's picture-less
   row was stretched to the height it was given, and a scrolling list gives
   none, so every title-only card failed to lay out. It is as tall as its
@@ -162,6 +191,14 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Message settings.** A gear on Messages opens them: read receipts (held by
+  the server and reciprocal: off means nobody sees yours and you see nobody's),
+  whether the other person sees you typing, and link previews. A new
+  `User.readReceipts` column; `GET` and `PUT /messages/settings`.
+- **A new message button.** Messages had no way to start a conversation; it
+  took finding the person's profile first. The new screen offers the people
+  you already talk to and searches everyone else.
+
 - **Link previews in messages, without the server seeing the link.** A post's
   card is read by the server; a direct message is sealed before it leaves the
   phone, so its card is made on the sender's phone instead: the page is read
@@ -231,6 +268,13 @@ section for that version, so what is written here is what people read.
   4–12 MB a phone's sensor produces. In all 68 catalogs.
 
 ### Changed
+
+- **Messages has a filter menu and a Hidden chip instead of All and Unread
+  tabs.** The menu picks All, Unread or Unanswered (the conversations whose
+  last word is the other person's), and there is a search box. Hidden lists
+  the conversations you removed from your list, and a swipe puts one back
+  (`PUT /messages/:id/restore`). Filters go to the server as `filter`;
+  `unreadOnly` still works for older builds.
 
 - **The wallpaper picker previews before it changes anything.** The
   preview stays at the top while the choices scroll; tapping one previews it,

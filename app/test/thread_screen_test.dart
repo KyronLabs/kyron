@@ -9,6 +9,7 @@ import 'package:kyron_app/models/current_user.dart';
 import 'package:kyron_app/models/post_media.dart';
 import 'package:kyron_app/providers/current_user_provider.dart';
 import 'package:kyron_app/providers/messages_provider.dart';
+import 'package:kyron_app/providers/preferences_provider.dart';
 import 'package:kyron_app/repositories/keys_repository.dart';
 import 'package:kyron_app/repositories/messages_repository.dart';
 import 'package:kyron_app/screens/thread_screen.dart';
@@ -181,6 +182,13 @@ Future<_Repo> _open(
   return repo;
 }
 
+/// Reads the stored preferences in, as the app's root does at launch.
+Future<void> _loadPreferences(WidgetTester tester) async {
+  ProviderScope.containerOf(tester.element(find.byType(ThreadScreen)))
+      .read(preferencesProvider);
+  await tester.pumpAndSettle();
+}
+
 class _NoPages extends LinkCardReader {
   @override
   Future<MessageLinkCard?> read(String url) async => null;
@@ -231,7 +239,12 @@ void main() {
   // unlocked it. An empty store is a phone with no key yet -- which is what
   // these screens are drawn against -- and without one the read goes to a
   // platform channel no test has.
-  setUp(() => FlutterSecureStorage.setMockInitialValues({}));
+  setUp(() {
+    FlutterSecureStorage.setMockInitialValues({});
+    // Fresh preferences for every test: one that turns link previews off
+    // must not leave them off for the next.
+    SharedPreferences.setMockInitialValues({});
+  });
 
   testWidgets('a message of only emoji is drawn large; with words it is not',
       (tester) async {
@@ -882,6 +895,41 @@ void main() {
     });
   });
 
+  group('message settings, in a chat', () {
+    testWidgets('with "typing" off, nothing says the reader is typing', (
+      tester,
+    ) async {
+      SharedPreferences.setMockInitialValues({'pref_dm_typing': false});
+      final repo = await _open(tester, const []);
+      await _loadPreferences(tester);
+
+      await tester.enterText(find.byType(TextField), 'hello');
+      await tester.pump();
+
+      expect(repo.typingSent, 0);
+    });
+
+    testWidgets('with link previews off, no page is read', (tester) async {
+      SharedPreferences.setMockInitialValues({'pref_dm_link_previews': false});
+      final reader = _OnePage(
+        const MessageLinkCard(url: 'https://example.com/a', title: 'A'),
+      );
+      final repo = await _open(tester, const [], reader: reader);
+      await _loadPreferences(tester);
+
+      await tester.enterText(
+        find.byType(TextField),
+        'look https://example.com/a',
+      );
+      await tester.pump(const Duration(milliseconds: 700));
+      await tester.tap(find.byIcon(Iconsax.send_1));
+      await tester.pumpAndSettle();
+
+      expect(reader.asked, isEmpty);
+      expect(repo.cards.single, isNull);
+    });
+  });
+
   group('a long-pressed message', () {
     testWidgets('floats where it was, reactions above and options below', (
       tester,
@@ -1073,6 +1121,29 @@ void main() {
       expect(find.text('A post worth reading'), findsOneWidget);
 
       await tester.tap(find.byTooltip('Send'));
+      await tester.pumpAndSettle();
+
+      final sent = MessageLinkCard.tryDecode(
+        repo.cards.single!,
+        body: repo.bodies.single,
+      );
+      expect(sent?.title, 'A post worth reading');
+    });
+
+    testWidgets('pasted and sent at once, it still goes with its card', (
+      tester,
+    ) async {
+      // Sending used to take only a card already made, and a link pasted and
+      // sent straight away never waited out the pause in typing that starts
+      // one -- so the way most links are sent carried no card at all.
+      final repo = await _open(tester, const [], reader: _OnePage(page));
+
+      await tester.enterText(
+        find.byType(TextField),
+        'look https://example.com/post',
+      );
+      await tester.pump();
+      await tester.tap(find.byIcon(Iconsax.send_1));
       await tester.pumpAndSettle();
 
       final sent = MessageLinkCard.tryDecode(

@@ -12,11 +12,16 @@ class SimpleAppBar extends StatelessWidget {
   final VoidCallback onAvatarTap;
   final VoidCallback? onSettingsTap;
 
+  /// In place of search and settings, for a page that has its own: Messages
+  /// puts a new-message button and its own settings here.
+  final List<SimpleBarAction>? actions;
+
   const SimpleAppBar({
     super.key,
     required this.title,
     required this.onAvatarTap,
     this.onSettingsTap,
+    this.actions,
   });
 
   @override
@@ -56,22 +61,49 @@ class SimpleAppBar extends StatelessWidget {
           // boxes, two logical pixels apart. A default IconButton is 48 across
           // with eight of its own padding, which put these three times as far
           // apart as the ones on the page next door.
-          _Action(
-            icon: Iconsax.search_normal_1_copy,
-            tooltip: AppLocalizations.of(context).search,
-            onPressed: () => Navigator.pushNamed(context, Routes.search),
-          ),
-          const SizedBox(width: 2),
-          _Action(
-            icon: Iconsax.setting_2_copy,
-            tooltip: AppLocalizations.of(context).settings,
-            onPressed: onSettingsTap ??
-                () => Navigator.pushNamed(context, Routes.settings),
-          ),
+          for (final (index, action) in (actions ??
+                  [
+                    SimpleBarAction(
+                      icon: Iconsax.search_normal_1_copy,
+                      tooltip: AppLocalizations.of(context).search,
+                      onPressed: () =>
+                          Navigator.pushNamed(context, Routes.search),
+                    ),
+                    SimpleBarAction(
+                      icon: Iconsax.setting_2_copy,
+                      tooltip: AppLocalizations.of(context).settings,
+                      onPressed: onSettingsTap ??
+                          () => Navigator.pushNamed(context, Routes.settings),
+                    ),
+                  ])
+              .indexed) ...[
+            if (index > 0) const SizedBox(width: 2),
+            _Action(
+              key: action.key,
+              icon: action.icon,
+              tooltip: action.tooltip,
+              onPressed: action.onPressed,
+            ),
+          ],
         ],
       ),
     );
   }
+}
+
+/// One of the buttons at the end of the bar.
+class SimpleBarAction {
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onPressed;
+  final Key? key;
+
+  const SimpleBarAction({
+    required this.icon,
+    required this.tooltip,
+    required this.onPressed,
+    this.key,
+  });
 }
 
 class _Action extends StatelessWidget {
@@ -80,6 +112,7 @@ class _Action extends StatelessWidget {
   final VoidCallback onPressed;
 
   const _Action({
+    super.key,
     required this.icon,
     required this.tooltip,
     required this.onPressed,

@@ -1376,6 +1376,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Neizdevās nosūtīt. Mēģiniet vēlreiz."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtrs"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Visas"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Nelasītās"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Neatbildētās"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Paslēptās"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Nekas nav paslēpts"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Sarunas, ko noņemat no saraksta, gaida šeit, ja gribēsiet tās atgūt."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Tā pāriet uz Paslēptajām. Otrs cilvēks patur savējo, un tā atgriežas, ja kāds no jums atkal raksta."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Atjaunot"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Atkal jūsu sarakstā."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Nav atbilstošu sarunu."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Nekas jūs negaida"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Katra saruna beidzas ar jūsu vārdu."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Vēl nav ziņu"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Jūs:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Vakar"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Ziņas"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Ziņu iestatījumi"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Privātums"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Izlasīšanas apstiprinājumi"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Kad tas ir izslēgts, citi neredzēs, kad esat izlasījis viņu ziņas, un jūs neredzēsiet, kad viņi izlasījuši jūsējās."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Rādīt, kad rakstāt"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Cilvēks, kuram rakstāt, redz, ka rakstāt."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Saišu priekšskatījumi"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Jūsu tālrunis atver nosūtīto saiti, lai izveidotu priekšskatījumu, tāpēc vietne redz jūsu tālruņa pieprasījumu. Kyron serveris saiti nekad neredz."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Ziņu paziņojumi"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Ziņas ir pilnībā šifrētas. Kyron tās nevar izlasīt, un nekas šeit to nemaina."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Kam:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Nesenās"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Cilvēki"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Nav neviena ar šādu vārdu."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Sūtīt testa paziņojumu"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron serveris vēl nav iestatīts paziņojumu sūtīšanai, tāpēc neviens nevar pienākt. Problēma ir mūsu pusē, nevis jūsu tālrunī."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Šis tālrunis nav reģistrēts paziņojumiem. Pārbaudiet, vai tālruņa iestatījumos Kyron paziņojumi ir atļauti, un mēģiniet vēlreiz."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Paziņojumu neizdevās piegādāt uz šo tālruni. Mēģiniet vēlreiz pēc minūtes."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Nosūtīts. Tam vajadzētu pienākt pēc dažām sekundēm."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Paziņojumi darbojas."),
     };
 
 final messageLookup = MessageLookup();

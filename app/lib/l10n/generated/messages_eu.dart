@@ -1376,6 +1376,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Ezin izan da bidali. Saiatu berriro."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Iragazkia"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Guztiak"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("Irakurri gabeak"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Erantzunik gabeak"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Ezkutuak"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Ez dago ezer ezkutatuta"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Zerrendatik kentzen dituzun elkarrizketak hemen daude zain, berreskuratu nahi badituzu."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Ezkutuetara pasatzen da. Besteak berea gordetzen du, eta itzuli egiten da zuetako batek berriro idazten badu."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Berreskuratu"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Berriro zure zerrendan."),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage(
+          "Ez dago bat datorren elkarrizketarik."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Ezerk ez zaitu zain"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Elkarrizketa guztiak zure hitzarekin amaitzen dira."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Argazkia"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Argazkiak"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Bideoa"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago mezurik"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Zu:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Atzo"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Mezuak"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Mezuen ezarpenak"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("Pribatutasuna"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Irakurketa-baieztapenak"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Desaktibatuta badago, besteek ez dute ikusiko noiz irakurri dituzun haien mezuak, eta zuk ez duzu ikusiko noiz irakurri dituzten zureak."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Erakutsi idazten ari zarenean"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Idazten diozun pertsonak ikusten du idazten ari zarela."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Esteken aurrebistak"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Zure telefonoak bidaltzen duzun esteka irekitzen du aurrebista egiteko, beraz guneak zure telefonoaren eskaera ikusten du. Kyronen zerbitzariak ez du inoiz esteka ikusten."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Mezuen jakinarazpenak"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Mezuak muturretik muturrera enkriptatuta daude. Kyronek ezin ditu irakurri, eta hemengo ezerk ez du hori aldatzen."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Nori:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Azkenak"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Pertsonak"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Ez dago izen horretako inor."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Bidali proba-jakinarazpen bat"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyronen zerbitzaria ez dago oraindik jakinarazpenak bidaltzeko konfiguratuta, beraz ezin da bat ere iritsi. Arazoa gurea da, ez zure telefonoarena."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "Telefono hau ez dago jakinarazpenetarako erregistratuta. Egiaztatu telefonoaren ezarpenetan Kyronen jakinarazpenak baimenduta daudela, eta saiatu berriro."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da jakinarazpena telefono honetara bidali. Saiatu berriro minutu batean."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "Bidalita. Segundo gutxitan iritsi beharko luke."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Jakinarazpenak badabiltza."),
     };
 
 final messageLookup = MessageLookup();

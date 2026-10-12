@@ -1382,6 +1382,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "അയയ്ക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ഫിൽട്ടർ"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("എല്ലാം"),
+      "ui_dm_filter_unread":
+          MessageLookupByLibrary.simpleMessage("വായിക്കാത്തവ"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("മറുപടി നൽകാത്തവ"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("മറച്ചവ"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("ഒന്നും മറച്ചിട്ടില്ല"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "പട്ടികയിൽ നിന്ന് നീക്കിയ സംഭാഷണങ്ങൾ തിരികെ വേണമെങ്കിൽ ഇവിടെ കാത്തിരിക്കുന്നു."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "ഇത് മറച്ചവയിലേക്ക് മാറുന്നു. മറ്റേയാൾ തന്റേത് സൂക്ഷിക്കും, നിങ്ങളിൽ ആരെങ്കിലും വീണ്ടും എഴുതിയാൽ ഇത് തിരിച്ചുവരും."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("തിരികെ വെക്കുക"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("വീണ്ടും നിങ്ങളുടെ പട്ടികയിൽ."),
+      "ui_dm_search_none": MessageLookupByLibrary.simpleMessage(
+          "പൊരുത്തപ്പെടുന്ന സംഭാഷണങ്ങളില്ല."),
+      "ui_dm_unanswered_none": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളെ ഒന്നും കാത്തിരിക്കുന്നില്ല"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "എല്ലാ സംഭാഷണവും നിങ്ങളുടെ വാക്കിൽ അവസാനിക്കുന്നു."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("ഫോട്ടോ"),
+      "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("ഫോട്ടോകൾ"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("വീഡിയോ"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("ഇതുവരെ സന്ദേശങ്ങളില്ല"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("നിങ്ങൾ:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("ഇന്നലെ"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("സന്ദേശങ്ങൾ"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("സന്ദേശ ക്രമീകരണങ്ങൾ"),
+      "ui_dm_settings_privacy":
+          MessageLookupByLibrary.simpleMessage("സ്വകാര്യത"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("വായിച്ചതിന്റെ രസീതുകൾ"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "ഇത് ഓഫാണെങ്കിൽ, നിങ്ങൾ അവരുടെ സന്ദേശങ്ങൾ വായിച്ചത് മറ്റുള്ളവർ കാണില്ല, അവർ നിങ്ങളുടേത് വായിച്ചത് നിങ്ങളും കാണില്ല."),
+      "ui_dm_typing_setting": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ ടൈപ്പ് ചെയ്യുമ്പോൾ കാണിക്കുക"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ എഴുതുന്നയാൾ നിങ്ങൾ എഴുതുകയാണെന്ന് കാണുന്നു."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("ലിങ്ക് പ്രിവ്യൂകൾ"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "പ്രിവ്യൂ ഉണ്ടാക്കാൻ നിങ്ങൾ അയയ്ക്കുന്ന ലിങ്ക് നിങ്ങളുടെ ഫോൺ തുറക്കുന്നു, അതിനാൽ സൈറ്റ് നിങ്ങളുടെ ഫോണിന്റെ അഭ്യർത്ഥന കാണുന്നു. Kyron-ന്റെ സെർവർ ലിങ്ക് ഒരിക്കലും കാണുന്നില്ല."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("സന്ദേശങ്ങളുടെ അറിയിപ്പുകൾ"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "സന്ദേശങ്ങൾ എൻഡ്-ടു-എൻഡ് എൻക്രിപ്റ്റ് ചെയ്തവയാണ്. Kyron-ന് അവ വായിക്കാനാവില്ല, ഇവിടെയുള്ള ഒന്നും അത് മാറ്റുന്നില്ല."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("സ്വീകർത്താവ്:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("സമീപകാലം"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("ആളുകൾ"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("ആ പേരിൽ ആരുമില്ല."),
+      "ui_push_test": MessageLookupByLibrary.simpleMessage(
+          "ഒരു ടെസ്റ്റ് അറിയിപ്പ് അയയ്ക്കുക"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ന്റെ സെർവർ ഇതുവരെ അറിയിപ്പുകൾ അയയ്ക്കാൻ സജ്ജമാക്കിയിട്ടില്ല, അതിനാൽ ഒന്നും എത്തില്ല. പ്രശ്നം ഞങ്ങളുടെ ഭാഗത്താണ്, നിങ്ങളുടെ ഫോണിലല്ല."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "ഈ ഫോൺ അറിയിപ്പുകൾക്കായി രജിസ്റ്റർ ചെയ്തിട്ടില്ല. ഫോണിന്റെ ക്രമീകരണങ്ങളിൽ Kyron-ന് അറിയിപ്പുകൾ അനുവദിച്ചിട്ടുണ്ടോ എന്ന് പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "അറിയിപ്പ് ഈ ഫോണിലേക്ക് എത്തിക്കാനായില്ല. ഒരു മിനിറ്റിന് ശേഷം വീണ്ടും ശ്രമിക്കുക."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "അയച്ചു. കുറച്ച് സെക്കൻഡിനുള്ളിൽ എത്തണം."),
+      "ui_push_working": MessageLookupByLibrary.simpleMessage(
+          "അറിയിപ്പുകൾ പ്രവർത്തിക്കുന്നു."),
     };
 
 final messageLookup = MessageLookup();

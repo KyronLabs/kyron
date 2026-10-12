@@ -16,6 +16,7 @@ import 'package:kyron_app/services/link_card_reader.dart';
 import 'package:kyron_app/services/message_vault.dart';
 import 'package:kyron_app/services/share_inbox.dart';
 import 'package:kyron_app/widgets/share_into_kyron_sheet.dart';
+import 'package:kyron_app/providers/people_search_provider.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:kyron_app/providers/api_client_provider.dart';
 import 'package:kyron_app/providers/composer_provider.dart';
@@ -36,7 +37,7 @@ class _Repo extends MessagesRepository {
   Future<ConversationPage> conversations({
     String? cursor,
     int limit = 30,
-    bool unreadOnly = false,
+    ConversationFilter filter = ConversationFilter.all,
   }) async =>
       ConversationPage(
         items: [
@@ -101,7 +102,7 @@ Future<_Repo> _pump(
           MessageVault(KeysRepository(ApiClient())),
         ),
         linkCardReaderProvider.overrideWithValue(_Reader()),
-        shareRecipientSearchProvider.overrideWith((ref, q) async => found),
+        peopleSearchProvider.overrideWith((ref, q) async => found),
       ],
       child: MaterialApp(
         theme: KyronTheme.lightTheme,

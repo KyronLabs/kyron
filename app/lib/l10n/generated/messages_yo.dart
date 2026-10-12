@@ -1375,6 +1375,73 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Kò ṣeé fi ránṣẹ́. Gbìyànjú lẹ́ẹ̀kan sí i."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Àlẹ̀mọ́"),
+      "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Gbogbo"),
+      "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Àìkà"),
+      "ui_dm_filter_unanswered":
+          MessageLookupByLibrary.simpleMessage("Àìdáhùn"),
+      "ui_dm_hidden": MessageLookupByLibrary.simpleMessage("Ìpamọ́"),
+      "ui_dm_hidden_none":
+          MessageLookupByLibrary.simpleMessage("Kò sí ohun tí a pa mọ́"),
+      "ui_dm_hidden_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìjíròrò tí o yọ kúrò nínú àkójọ rẹ ń dúró síbí, bí o bá fẹ́ dá wọn padà."),
+      "ui_dm_hide_detail": MessageLookupByLibrary.simpleMessage(
+          "Ó lọ sí Ìpamọ́. Ẹnì kejì ń tọ́jú tirẹ̀, yóò sì padà bí ọ̀kan nínú yín bá tún kọ̀wé."),
+      "ui_dm_restore": MessageLookupByLibrary.simpleMessage("Dá padà"),
+      "ui_dm_restored":
+          MessageLookupByLibrary.simpleMessage("Ó ti padà sínú àkójọ rẹ."),
+      "ui_dm_search_none":
+          MessageLookupByLibrary.simpleMessage("Kò sí ìjíròrò tó bá a mu."),
+      "ui_dm_unanswered_none":
+          MessageLookupByLibrary.simpleMessage("Kò sí ohun tó ń dúró dè ọ́"),
+      "ui_dm_unanswered_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Gbogbo ìjíròrò ló parí pẹ̀lú ọ̀rọ̀ rẹ."),
+      "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Fọ́tò"),
+      "ui_dm_preview_photos":
+          MessageLookupByLibrary.simpleMessage("Àwọn fọ́tò"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Fídíò"),
+      "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
+      "ui_dm_preview_none":
+          MessageLookupByLibrary.simpleMessage("Kò tíì sí ìfiránṣẹ́"),
+      "ui_dm_you_prefix": MessageLookupByLibrary.simpleMessage("Ìwọ:"),
+      "ui_dm_yesterday": MessageLookupByLibrary.simpleMessage("Àná"),
+      "ui_dm_settings": MessageLookupByLibrary.simpleMessage("Àwọn ìfiránṣẹ́"),
+      "ui_dm_settings_open":
+          MessageLookupByLibrary.simpleMessage("Ètò ìfiránṣẹ́"),
+      "ui_dm_settings_privacy": MessageLookupByLibrary.simpleMessage("Àṣírí"),
+      "ui_dm_read_receipts":
+          MessageLookupByLibrary.simpleMessage("Ìwé-ẹ̀rí kíkà"),
+      "ui_dm_read_receipts_detail": MessageLookupByLibrary.simpleMessage(
+          "Nígbà tí èyí bá wà ní pípa, àwọn ènìyàn kò ní rí ìgbà tí o ka ìfiránṣẹ́ wọn, ìwọ náà kò ní rí ìgbà tí wọ́n ka tìrẹ."),
+      "ui_dm_typing_setting":
+          MessageLookupByLibrary.simpleMessage("Fihàn nígbà tí o bá ń tẹ̀wé"),
+      "ui_dm_typing_setting_detail": MessageLookupByLibrary.simpleMessage(
+          "Ẹni tí o ń kọ̀wé sí ń rí pé o ń kọ̀wé."),
+      "ui_dm_link_previews":
+          MessageLookupByLibrary.simpleMessage("Àwòtẹ́lẹ̀ ìjápọ̀"),
+      "ui_dm_link_previews_detail": MessageLookupByLibrary.simpleMessage(
+          "Fóònù rẹ ń ṣí ìjápọ̀ tí o fi ránṣẹ́ láti ṣe àwòtẹ́lẹ̀ rẹ̀, nítorí náà ojú-òpó náà ń rí ìbéèrè fóònù rẹ. Olupin Kyron kò rí ìjápọ̀ náà rí."),
+      "ui_dm_settings_notifications":
+          MessageLookupByLibrary.simpleMessage("Ìwífún fún ìfiránṣẹ́"),
+      "ui_dm_settings_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìfiránṣẹ́ jẹ́ pípa láṣìírí láti òpin dé òpin. Kyron kò lè kà wọ́n, kò sì sí ohunkóhun níbí tó yí ìyẹn padà."),
+      "ui_dm_new_to": MessageLookupByLibrary.simpleMessage("Sí:"),
+      "ui_dm_new_recent": MessageLookupByLibrary.simpleMessage("Àìpẹ́"),
+      "ui_dm_new_people": MessageLookupByLibrary.simpleMessage("Àwọn ènìyàn"),
+      "ui_dm_new_nobody":
+          MessageLookupByLibrary.simpleMessage("Kò sí ẹni tó ń jẹ́ orúkọ yẹn."),
+      "ui_push_test":
+          MessageLookupByLibrary.simpleMessage("Fi ìwífún ìdánwò ránṣẹ́"),
+      "ui_push_test_off": MessageLookupByLibrary.simpleMessage(
+          "A kò tíì ṣètò olupin Kyron láti fi ìwífún ránṣẹ́, nítorí náà kò sí èyí tó lè dé. Ìṣòro náà wà lọ́dọ̀ wa, kì í ṣe fóònù rẹ."),
+      "ui_push_test_no_device": MessageLookupByLibrary.simpleMessage(
+          "A kò forúkọ fóònù yìí sílẹ̀ fún ìwífún. Ṣàyẹ̀wò pé a gba ìwífún Kyron láàyè nínú ètò fóònù rẹ, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí i."),
+      "ui_push_test_rejected": MessageLookupByLibrary.simpleMessage(
+          "A kò lè fi ìwífún náà dé fóònù yìí. Gbìyànjú lẹ́ẹ̀kan sí i lẹ́yìn ìṣẹ́jú kan."),
+      "ui_push_test_sent": MessageLookupByLibrary.simpleMessage(
+          "A ti fi ránṣẹ́. Ó yẹ kó dé láàárín ìṣẹ́jú-àáyá díẹ̀."),
+      "ui_push_working":
+          MessageLookupByLibrary.simpleMessage("Ìwífún ń ṣiṣẹ́."),
     };
 
 final messageLookup = MessageLookup();

@@ -15,6 +15,7 @@ import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/services/identity_vault.dart';
 import 'package:kyron_app/services/message_vault.dart';
 import 'package:kyron_app/services/push_registrar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Every way into a signed-in app starts the same things: the message key,
 /// the identifier, and the push token.
@@ -97,10 +98,14 @@ Future<(_Vault, _Identity, _Push, AuthState)> _launch(_Auth auth) async {
   );
   addTearDown(container.dispose);
   await container.read(authNotifierProvider.notifier).bootstrap();
+  // Push starts once the stored "notifications on" has been read.
+  await pumpEventQueue();
   return (vault, identity, push, container.read(authNotifierProvider));
 }
 
 void main() {
+  setUp(() => SharedPreferences.setMockInitialValues({}));
+
   test('a launch with a live token starts the session', () async {
     final (vault, identity, push, state) = await _launch(
       _Auth(tokenValid: true),
@@ -121,6 +126,16 @@ void main() {
     expect(vault.unlocks, 1, reason: 'the message key was never read');
     expect(identity.ensures, 1);
     expect(push.starts, 1, reason: 'the push token was never refreshed');
+  });
+
+  test('push is not started for somebody who turned it off', () async {
+    // The switch in Notifications used to save a preference nothing read:
+    // the phone was registered, and pushed to, whatever it said.
+    SharedPreferences.setMockInitialValues({'pref_push_enabled': false});
+    final (_, _, push, state) = await _launch(_Auth(tokenValid: true));
+
+    expect(state.status, AuthStatus.authenticated);
+    expect(push.starts, 0);
   });
 
   test('and a launch that cannot be refreshed starts nothing', () async {
