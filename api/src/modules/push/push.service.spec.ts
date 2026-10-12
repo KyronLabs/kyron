@@ -38,8 +38,17 @@ function configure(service: PushService) {
   delete process.env.FCM_SERVICE_ACCOUNT_JSON;
 }
 
-/** Google's token endpoint, then each send answered with [answers] in turn. */
-function mockGoogle(answers: Array<{ status: number; body?: string }>) {
+/**
+ * Google's token endpoint answering [token], then each send answered with
+ * [answers] in turn.
+ */
+function mockGoogle(
+  answers: Array<{ status: number; body?: string }>,
+  token: { status: number; body: string } = {
+    status: 200,
+    body: JSON.stringify({ access_token: 'at', expires_in: 3600 }),
+  },
+) {
   const sends: unknown[] = [];
   const queue = [...answers];
   jest
@@ -48,12 +57,7 @@ function mockGoogle(answers: Array<{ status: number; body?: string }>) {
       const address = url instanceof Request ? url.url : url.toString();
       if (address.includes('oauth2')) {
         return Promise.resolve(
-          new Response(
-            JSON.stringify({ access_token: 'at', expires_in: 3600 }),
-            {
-              status: 200,
-            },
-          ),
+          new Response(token.body, { status: token.status }),
         );
       }
       sends.push(JSON.parse(init?.body as string));
@@ -152,5 +156,108 @@ describe('a test notification', () => {
       delivered: 1,
     });
     expect(sends).toHaveLength(2);
+  });
+});
+
+describe('saying why push is not working', () => {
+  const refused = {
+    status: 400,
+    body: JSON.stringify({
+      error: 'invalid_grant',
+      error_description: 'Invalid JWT Signature.',
+    }),
+  };
+
+  it('says the key is missing, from boot', () => {
+    const { service } = serviceWith([]);
+    service.onModuleInit();
+
+    expect(service.status.push).toBe('off');
+    expect(service.status.problem).toMatch(
+      /FCM_SERVICE_ACCOUNT_JSON is not set/,
+    );
+  });
+
+  it('asks Google about the key at boot, and says when it is refused', async () => {
+    const { service } = serviceWith([]);
+    configure(service);
+    mockGoogle([], refused);
+    expect(service.status.push).toBe('configured');
+
+    service.onApplicationBootstrap();
+    await new Promise((resolve) => setImmediate(resolve));
+
+    expect(service.status.push).toBe('off');
+    expect(service.status.problem).toMatch(/Google refused/);
+    expect(service.status.problem).toMatch(/Invalid JWT Signature/);
+  });
+
+  it('a refused key makes the test say the server is not set up', async () => {
+    const { service } = serviceWith(['a']);
+    configure(service);
+    mockGoogle([], refused);
+    service.onApplicationBootstrap();
+    await new Promise((resolve) => setImmediate(resolve));
+
+    await expect(service.test('u1')).resolves.toEqual({
+      configured: false,
+      devices: 1,
+      delivered: 0,
+    });
+  });
+
+  it('a key accepted after a bad minute clears what was said', async () => {
+    const { service } = serviceWith(['a']);
+    configure(service);
+    mockGoogle([], { status: 503, body: 'unavailable' });
+    service.onApplicationBootstrap();
+    await new Promise((resolve) => setImmediate(resolve));
+    // Google having a bad minute is not the key being wrong.
+    expect(service.status.push).toBe('configured');
+    expect(service.status.problem).toBeDefined();
+
+    jest.restoreAllMocks();
+    mockGoogle([{ status: 200 }]);
+    await service.sendTo('u1', { title: 'x', body: 'y' });
+
+    expect(service.status).toEqual({ push: 'configured' });
+  });
+
+  it('names a key from the wrong Firebase project', async () => {
+    const { service } = serviceWith(['a']);
+    configure(service);
+    mockGoogle([
+      {
+        status: 403,
+        body: JSON.stringify({
+          error: {
+            code: 403,
+            message: 'SenderId mismatch',
+            status: 'PERMISSION_DENIED',
+            details: [{ errorCode: 'SENDER_ID_MISMATCH' }],
+          },
+        }),
+      },
+    ]);
+
+    await service.sendTo('u1', { title: 'x', body: 'y' });
+
+    expect(service.status.lastFailure).toMatch(/different Firebase project/);
+  });
+
+  it('names a project with the messaging API switched off', () => {
+    expect(
+      PushService.describeRejection(
+        403,
+        JSON.stringify({
+          error: {
+            message:
+              'Firebase Cloud Messaging API has not been used in project 1 ' +
+              'before or it is disabled.',
+            status: 'PERMISSION_DENIED',
+          },
+        }),
+      ),
+    ).toMatch(/Cloud Messaging API is off/);
   });
 });

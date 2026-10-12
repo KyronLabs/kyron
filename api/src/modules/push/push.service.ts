@@ -1,6 +1,16 @@
-import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  OnApplicationBootstrap,
+  OnModuleInit,
+} from '@nestjs/common';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import {
+  readSecretFiles,
+  readServiceAccount,
+  type ServiceAccount,
+} from './service-account';
 
 /** What a push says when it lands on a locked screen. */
 export interface PushMessage {
@@ -21,54 +31,72 @@ const SCOPE = 'https://www.googleapis.com/auth/firebase.messaging';
  * Sends a notification to somebody's phone.
  *
  * Configured by `FCM_SERVICE_ACCOUNT_JSON`, the service account key downloaded
- * from the Firebase console, as one line of JSON. Without it this class does
+ * from the Firebase console (or a Render secret file holding it; see
+ * `readServiceAccount` for what else it forgives). Without it this class does
  * nothing -- and says so once at boot and once per attempt at debug level,
  * rather than reporting success it did not have. A silent no-op here is worse
  * than no push at all: it looks like delivery works right up until somebody
  * checks why nobody is opening the app.
  */
 @Injectable()
-export class PushService implements OnModuleInit {
+export class PushService implements OnModuleInit, OnApplicationBootstrap {
   private readonly logger = new Logger(PushService.name);
 
   private credentials: ServiceAccount | null = null;
   private accessToken: { value: string; expiresAt: number } | null = null;
 
+  /** Why push is not working, in words /health can show. */
+  private problem: string | null = null;
+
+  /** Whether Google refused the key outright, as against being unreachable. */
+  private keyRefused = false;
+
+  /** The last thing Google said when it would not deliver a notification. */
+  private lastFailure: string | null = null;
+
   constructor(private readonly prisma: PrismaService) {}
 
   onModuleInit(): void {
-    const raw = process.env.FCM_SERVICE_ACCOUNT_JSON?.trim();
-    if (!raw) {
-      this.logger.warn(
-        'FCM_SERVICE_ACCOUNT_JSON is not set, so no push notification will ' +
-          'be delivered. Everything else works; people are simply never told ' +
-          'about anything while the app is closed.',
+    const reading = readServiceAccount(process.env, readSecretFiles());
+    if ('problem' in reading) {
+      this.problem = reading.problem;
+      this.logger.error(
+        `No push notification will be delivered. ${reading.problem}`,
       );
       return;
     }
+    this.credentials = reading.account;
+    this.logger.log(
+      `Push notifications are on, for Firebase project ` +
+        `${reading.account.project_id}, with the key from ${reading.source}.`,
+    );
+  }
 
-    try {
-      const parsed = JSON.parse(raw) as Partial<ServiceAccount>;
-      if (!parsed.project_id || !parsed.client_email || !parsed.private_key) {
-        throw new Error('missing project_id, client_email or private_key');
-      }
-      this.credentials = parsed as ServiceAccount;
-      this.logger.log(
-        `Push notifications are on, for Firebase project ${parsed.project_id}.`,
-      );
-    } catch (error) {
-      // Loudly, and without throwing: a malformed key should not stop the API
-      // from serving everything that has nothing to do with push.
-      this.logger.error(
-        `FCM_SERVICE_ACCOUNT_JSON is set but could not be read (${String(
-          error,
-        )}). No push notification will be delivered.`,
-      );
-    }
+  /**
+   * Asks Google for an access token once the app is up, rather than at the
+   * first notification: a key Google refuses then shows on /health from boot,
+   * not after somebody wonders why their phone is quiet. Not awaited, so a
+   * slow Google does not hold up the server starting.
+   */
+  onApplicationBootstrap(): void {
+    if (this.credentials) void this.authorize();
   }
 
   get isConfigured(): boolean {
-    return this.credentials !== null;
+    return this.credentials !== null && !this.keyRefused;
+  }
+
+  /** What /health says about push. */
+  get status(): {
+    push: 'configured' | 'off';
+    problem?: string;
+    lastFailure?: string;
+  } {
+    return {
+      push: this.isConfigured ? 'configured' : 'off',
+      ...(this.problem ? { problem: this.problem } : {}),
+      ...(this.lastFailure ? { lastFailure: this.lastFailure } : {}),
+    };
   }
 
   /** Remembers where to reach somebody, moving the token if it has moved. */
@@ -117,7 +145,7 @@ export class PushService implements OnModuleInit {
    */
   async test(userId: string): Promise<PushTestResult> {
     const devices = await this.prisma.deviceToken.count({ where: { userId } });
-    if (!this.credentials) {
+    if (!this.isConfigured) {
       return { configured: false, devices, delivered: 0 };
     }
     const delivered = await this.sendCounting(userId, {
@@ -168,7 +196,10 @@ export class PushService implements OnModuleInit {
         body: JSON.stringify({ message: PushService.payload(token, message) }),
       });
 
-      if (response.ok) return 'sent';
+      if (response.ok) {
+        this.lastFailure = null;
+        return 'sent';
+      }
 
       const detail = await response.text();
       if (PushService.tokenIsGone(response.status, detail)) {
@@ -176,6 +207,7 @@ export class PushService implements OnModuleInit {
         return 'gone';
       }
 
+      this.lastFailure = PushService.describeRejection(response.status, detail);
       this.logger.warn(`Push rejected with ${response.status}: ${detail}`);
       return 'failed';
     } catch (error) {
@@ -231,6 +263,49 @@ export class PushService implements OnModuleInit {
   }
 
   /**
+   * What Google's refusal to deliver means, for whoever has to fix it.
+   *
+   * Two refusals are configuration rather than the phone, and say nothing
+   * useful in Google's own words: a key from a different Firebase project
+   * than the app's, and a project where the messaging API is switched off.
+   */
+  static describeRejection(status: number, detail: string): string {
+    let code = '';
+    let message = '';
+    try {
+      const body = JSON.parse(detail) as {
+        error?: {
+          message?: string;
+          status?: string;
+          details?: Array<{ errorCode?: string }>;
+        };
+      };
+      code =
+        body.error?.details?.find((d) => d.errorCode)?.errorCode ??
+        body.error?.status ??
+        '';
+      message = body.error?.message ?? '';
+    } catch {
+      message = detail;
+    }
+
+    const said = `Google answered ${status}${code ? ` ${code}` : ''}`;
+    if (code === 'SENDER_ID_MISMATCH') {
+      return (
+        `${said}: the key is for a different Firebase project than the ` +
+        "app's google-services.json. Generate the key in the app's project."
+      );
+    }
+    if (/has not been used|is disabled|SERVICE_DISABLED/i.test(detail)) {
+      return (
+        `${said}: the Firebase Cloud Messaging API is off for the key's ` +
+        'project. Turn it on in the Google Cloud console, APIs and services.'
+      );
+    }
+    return `${said}: ${message.slice(0, 200)}`;
+  }
+
+  /**
    * An OAuth access token for the service account, cached until it expires.
    *
    * Signed here rather than through firebase-admin: the whole of what that
@@ -247,8 +322,20 @@ export class PushService implements OnModuleInit {
       return this.accessToken.value;
     }
 
+    let assertion: string;
     try {
-      const assertion = this.signAssertion(credentials, now);
+      assertion = this.signAssertion(credentials, now);
+    } catch (error) {
+      // Nothing to retry: a key that cannot sign never will.
+      this.keyRefused = true;
+      this.problem =
+        'The private_key in the service account key could not sign ' +
+        `(${String(error)}). Generate a new key and paste the whole file.`;
+      this.logger.error(this.problem);
+      return null;
+    }
+
+    try {
       const response = await fetch(TOKEN_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -259,10 +346,30 @@ export class PushService implements OnModuleInit {
       });
 
       if (!response.ok) {
-        this.logger.error(
-          `Could not authorise with Google (${response.status}). Push is off ` +
-            'until this is fixed.',
-        );
+        const answer = await response.text();
+        let reason = '';
+        try {
+          const body = JSON.parse(answer) as {
+            error?: string;
+            error_description?: string;
+          };
+          reason = [body.error, body.error_description]
+            .filter(Boolean)
+            .join(': ');
+        } catch {
+          reason = answer.slice(0, 200);
+        }
+        // A 4xx is Google saying no to this key, which retrying will not
+        // change; a 5xx is Google having a bad minute.
+        this.keyRefused = response.status < 500;
+        const said = `${response.status}${reason ? ` ${reason}` : ''}`;
+        this.problem = this.keyRefused
+          ? `Google refused the service account key (${said}). A key ` +
+            'deleted in the Google Cloud console is refused like this: ' +
+            'generate a new one.'
+          : `Google could not check the service account key just now ` +
+            `(${said}). It is asked again with the next notification.`;
+        this.logger.error(this.problem);
         return null;
       }
 
@@ -274,9 +381,12 @@ export class PushService implements OnModuleInit {
         value: body.access_token,
         expiresAt: now + body.expires_in,
       };
+      this.keyRefused = false;
+      this.problem = null;
       return body.access_token;
     } catch (error) {
-      this.logger.error(`Could not authorise with Google: ${String(error)}`);
+      this.problem = `Could not reach Google to authorise: ${String(error)}`;
+      this.logger.error(this.problem);
       return null;
     }
   }
@@ -302,7 +412,7 @@ export class PushService implements OnModuleInit {
     const unsigned = `${encode(header)}.${encode(claims)}`;
     const signature = createSign('RSA-SHA256')
       .update(unsigned)
-      .sign(credentials.private_key.replace(/\\n/g, '\n'), 'base64url');
+      .sign(credentials.private_key, 'base64url');
 
     return `${unsigned}.${signature}`;
   }
@@ -316,11 +426,4 @@ export interface PushTestResult {
   devices: number;
   /** How many of them Google accepted the test for. */
   delivered: number;
-}
-
-/** The fields this service needs from a Firebase service account key. */
-interface ServiceAccount {
-  project_id: string;
-  client_email: string;
-  private_key: string;
 }

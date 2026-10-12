@@ -14,6 +14,15 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **Push said "off" and nothing else.** Every way of getting the server's
+  Firebase key wrong looked the same from outside. `/health` now carries
+  `pushProblem`, which says which: not set or set without a redeploy, set
+  under a nearly-right name, cut off at its first line, the app's
+  google-services.json or the sign-in OAuth client pasted in its place, or a
+  key Google refuses. The key is checked with Google at boot rather than at
+  the first notification, and `pushLastFailure` names a key from the wrong
+  Firebase project. A Render secret file, a multi-line paste, base64 and a
+  value still in its shell quotes are all read.
 - **No push notification had ever arrived.** The server had no Firebase key,
   so every push was dropped before it left; `GET /health` said `push: off`.
   That is configuration (docs/PUSH.md), but the app had its own gaps: no
