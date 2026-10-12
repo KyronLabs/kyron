@@ -1360,6 +1360,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Ewé"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Iyanrìn"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Àmì kékeré"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Lò ó"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Lọ́wọ́lọ́wọ́"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Fi ránṣẹ́ láìsí àwòtẹ́lẹ̀"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Wá"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Gbé jáde"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Kọ ìfiránṣẹ́…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Fi ránṣẹ́"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Ti fi ránṣẹ́"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "Ti fi ránṣẹ́, ṣùgbọ́n kì í ṣe sí gbogbo ènìyàn."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Kò ṣeé fi ránṣẹ́. Gbìyànjú lẹ́ẹ̀kan sí i."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

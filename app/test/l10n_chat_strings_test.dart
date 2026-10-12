@@ -87,6 +87,17 @@ const _keys = [
   'ui_wallpaper_sage',
   'ui_wallpaper_sand',
   'ui_wallpaper_dots',
+  'ui_dm_wallpaper_apply',
+  'ui_dm_wallpaper_current',
+  'ui_dm_link_card_remove',
+  'ui_share_search',
+  'ui_share_post',
+  'ui_share_note',
+  'ui_share_send',
+  'ui_share_sent',
+  'ui_share_some_failed',
+  'ui_share_failed',
+  'ui_follower_one',
 ];
 
 void main() {

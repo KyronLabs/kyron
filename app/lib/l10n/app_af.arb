@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Skemer",
   "ui_wallpaper_sage": "Salie",
   "ui_wallpaper_sand": "Sand",
-  "ui_wallpaper_dots": "Kolle"
+  "ui_wallpaper_dots": "Kolle",
+  "ui_dm_wallpaper_apply": "Pas toe",
+  "ui_dm_wallpaper_current": "Huidige",
+  "ui_dm_link_card_remove": "Stuur sonder die voorskou",
+  "ui_share_search": "Soek",
+  "ui_share_post": "Plaas",
+  "ui_share_note": "Skryf 'n boodskap…",
+  "ui_share_send": "Stuur",
+  "ui_share_sent": "Gestuur",
+  "ui_share_some_failed": "Gestuur, maar nie aan almal nie.",
+  "ui_share_failed": "Dit kon nie gestuur word nie. Probeer weer.",
+  "ui_follower_one": "Volgeling"
 }

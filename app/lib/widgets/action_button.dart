@@ -1,6 +1,7 @@
 // lib/widgets/action_button.dart
 import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'hairline.dart';
 
 /// How much visual weight an [ActionButton] carries.
 enum ActionButtonKind {
@@ -186,6 +187,14 @@ class ActionIconButton extends StatelessWidget {
 
   final bool outlined;
 
+  /// A filled circle with a hairline round it, rather than an empty ring:
+  /// the shape a row of buttons beside a filled one reads as part of.
+  final bool filled;
+
+  /// Its diameter. Matched by the caller to whatever button it sits beside,
+  /// so a row of them is one height.
+  final double size;
+
   /// Shows a spinner in place of the glyph and refuses further taps, the same
   /// way [ActionButton] does. An icon button that fires a request needs it as
   /// much as a labelled one: without it a slow tap looks like a dead control.
@@ -197,6 +206,8 @@ class ActionIconButton extends StatelessWidget {
     required this.onPressed,
     required this.tooltip,
     this.outlined = true,
+    this.filled = false,
+    this.size = ActionButton.height,
     this.busy = false,
   });
 
@@ -213,24 +224,27 @@ class ActionIconButton extends StatelessWidget {
           onTap: busy ? null : onPressed,
           customBorder: const CircleBorder(),
           child: Container(
-            width: ActionButton.height,
-            height: ActionButton.height,
+            width: size,
+            height: size,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: outlined
-                  ? Border.all(color: scheme.outline.withValues(alpha: 0.4))
-                  : null,
+              color: filled ? scheme.surfaceContainerHighest : null,
+              border: filled
+                  ? Border.fromBorderSide(postRule(scheme))
+                  : outlined
+                      ? Border.all(color: scheme.outline.withValues(alpha: 0.4))
+                      : null,
             ),
             alignment: Alignment.center,
             child: busy
                 ? SizedBox.square(
-                    dimension: 16,
+                    dimension: size * 0.4,
                     child: CircularProgressIndicator(
                       strokeWidth: 2,
                       color: scheme.onSurface,
                     ),
                   )
-                : Icon(icon, size: 18, color: scheme.onSurface),
+                : Icon(icon, size: size * 0.45, color: scheme.onSurface),
           ),
         ),
       ),

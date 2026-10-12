@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Ukuhwalala",
   "ui_wallpaper_sage": "Okuluhlaza",
   "ui_wallpaper_sand": "Isihlabathi",
-  "ui_wallpaper_dots": "Amachashazi"
+  "ui_wallpaper_dots": "Amachashazi",
+  "ui_dm_wallpaper_apply": "Sebenzisa",
+  "ui_dm_wallpaper_current": "Okwamanje",
+  "ui_dm_link_card_remove": "Thumela ngaphandle kokubuka kuqala",
+  "ui_share_search": "Sesha",
+  "ui_share_post": "Shicilela",
+  "ui_share_note": "Bhala umlayezo…",
+  "ui_share_send": "Thumela",
+  "ui_share_sent": "Kuthunyelwe",
+  "ui_share_some_failed": "Kuthunyelwe, kodwa hhayi kuwo wonke umuntu.",
+  "ui_share_failed": "Akukwazanga ukuthunyelwa. Zama futhi.",
+  "ui_follower_one": "Follower"
 }

@@ -1142,6 +1142,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("세이지"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("모래"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("도트"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("적용"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("현재"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("미리보기 없이 보내기"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("검색"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("게시"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("메시지 작성…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("보내기"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("전송됨"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("전송했지만 일부에게는 보내지 못했어요."),
+      "ui_share_failed":
+          MessageLookupByLibrary.simpleMessage("보내지 못했어요. 다시 시도해 주세요."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("팔로워"),
     };
 
 final messageLookup = MessageLookup();

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "ਸ਼ਾਮ",
   "ui_wallpaper_sage": "ਸੇਜ",
   "ui_wallpaper_sand": "ਰੇਤ",
-  "ui_wallpaper_dots": "ਬਿੰਦੀਆਂ"
+  "ui_wallpaper_dots": "ਬਿੰਦੀਆਂ",
+  "ui_dm_wallpaper_apply": "ਲਾਗੂ ਕਰੋ",
+  "ui_dm_wallpaper_current": "ਮੌਜੂਦਾ",
+  "ui_dm_link_card_remove": "ਪੂਰਵਦਰਸ਼ਨ ਤੋਂ ਬਿਨਾਂ ਭੇਜੋ",
+  "ui_share_search": "ਖੋਜੋ",
+  "ui_share_post": "ਪੋਸਟ ਕਰੋ",
+  "ui_share_note": "ਸੁਨੇਹਾ ਲਿਖੋ…",
+  "ui_share_send": "ਭੇਜੋ",
+  "ui_share_sent": "ਭੇਜਿਆ ਗਿਆ",
+  "ui_share_some_failed": "ਭੇਜਿਆ ਗਿਆ, ਪਰ ਸਾਰਿਆਂ ਨੂੰ ਨਹੀਂ।",
+  "ui_share_failed": "ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+  "ui_follower_one": "Follower"
 }

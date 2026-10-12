@@ -1361,6 +1361,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvija"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Smiltis"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Punktiņi"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Lietot"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Pašreizējais"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Sūtīt bez priekšskatījuma"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Meklēt"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Publicēt"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Rakstiet ziņu…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Sūtīt"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Nosūtīts"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Nosūtīts, bet ne visiem."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās nosūtīt. Mēģiniet vēlreiz."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

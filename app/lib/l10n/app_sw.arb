@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Machweo",
   "ui_wallpaper_sage": "Kijani",
   "ui_wallpaper_sand": "Mchanga",
-  "ui_wallpaper_dots": "Vitone"
+  "ui_wallpaper_dots": "Vitone",
+  "ui_dm_wallpaper_apply": "Tumia",
+  "ui_dm_wallpaper_current": "Ya sasa",
+  "ui_dm_link_card_remove": "Tuma bila onyesho la kukagua",
+  "ui_share_search": "Tafuta",
+  "ui_share_post": "Chapisha",
+  "ui_share_note": "Andika ujumbe…",
+  "ui_share_send": "Tuma",
+  "ui_share_sent": "Imetumwa",
+  "ui_share_some_failed": "Imetumwa, lakini si kwa kila mtu.",
+  "ui_share_failed": "Haikuweza kutumwa. Jaribu tena.",
+  "ui_follower_one": "Follower"
 }

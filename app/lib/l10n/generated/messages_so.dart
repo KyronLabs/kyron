@@ -1363,6 +1363,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Cagaar"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Ciid"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Dhibcoyin"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Dabaq"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("Hadda"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Dir adigoon horudhac lahayn"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Raadi"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Daabac"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Qor fariin…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Dir"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("La diray"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "La diray, laakiin ma aha qof walba."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama diri karin. Isku day mar kale."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

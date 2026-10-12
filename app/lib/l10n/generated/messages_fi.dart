@@ -1359,6 +1359,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvia"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Hiekka"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Pisteet"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Käytä"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Nykyinen"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Lähetä ilman esikatselua"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Hae"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Julkaise"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Kirjoita viesti…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Lähetä"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Lähetetty"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Lähetetty, mutta ei kaikille."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Lähettäminen ei onnistunut. Yritä uudelleen."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Сутінки",
   "ui_wallpaper_sage": "Шавлія",
   "ui_wallpaper_sand": "Пісок",
-  "ui_wallpaper_dots": "Цятки"
+  "ui_wallpaper_dots": "Цятки",
+  "ui_dm_wallpaper_apply": "Застосувати",
+  "ui_dm_wallpaper_current": "Поточні",
+  "ui_dm_link_card_remove": "Надіслати без попереднього перегляду",
+  "ui_share_search": "Пошук",
+  "ui_share_post": "Опублікувати",
+  "ui_share_note": "Напишіть повідомлення…",
+  "ui_share_send": "Надіслати",
+  "ui_share_sent": "Надіслано",
+  "ui_share_some_failed": "Надіслано, але не всім.",
+  "ui_share_failed": "Не вдалося надіслати. Спробуйте ще раз.",
+  "ui_follower_one": "Follower"
 }

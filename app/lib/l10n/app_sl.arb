@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Mrak",
   "ui_wallpaper_sage": "Žajbelj",
   "ui_wallpaper_sand": "Pesek",
-  "ui_wallpaper_dots": "Pike"
+  "ui_wallpaper_dots": "Pike",
+  "ui_dm_wallpaper_apply": "Uporabi",
+  "ui_dm_wallpaper_current": "Trenutno",
+  "ui_dm_link_card_remove": "Pošlji brez predogleda",
+  "ui_share_search": "Iskanje",
+  "ui_share_post": "Objavi",
+  "ui_share_note": "Napišite sporočilo…",
+  "ui_share_send": "Pošlji",
+  "ui_share_sent": "Poslano",
+  "ui_share_some_failed": "Poslano, a ne vsem.",
+  "ui_share_failed": "Ni bilo mogoče poslati. Poskusite znova.",
+  "ui_follower_one": "Follower"
 }

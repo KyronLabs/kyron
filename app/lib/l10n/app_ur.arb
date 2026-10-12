@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "شام",
   "ui_wallpaper_sage": "سیج",
   "ui_wallpaper_sand": "ریت",
-  "ui_wallpaper_dots": "نقطے"
+  "ui_wallpaper_dots": "نقطے",
+  "ui_dm_wallpaper_apply": "لاگو کریں",
+  "ui_dm_wallpaper_current": "موجودہ",
+  "ui_dm_link_card_remove": "پیش منظر کے بغیر بھیجیں",
+  "ui_share_search": "تلاش کریں",
+  "ui_share_post": "پوسٹ کریں",
+  "ui_share_note": "پیغام لکھیں…",
+  "ui_share_send": "بھیجیں",
+  "ui_share_sent": "بھیج دیا گیا",
+  "ui_share_some_failed": "بھیج دیا گیا، لیکن سب کو نہیں۔",
+  "ui_share_failed": "بھیجا نہیں جا سکا۔ دوبارہ کوشش کریں۔",
+  "ui_follower_one": "Follower"
 }

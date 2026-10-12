@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "ಮುಸ್ಸಂಜೆ",
   "ui_wallpaper_sage": "ಸೇಜ್",
   "ui_wallpaper_sand": "ಮರಳು",
-  "ui_wallpaper_dots": "ಚುಕ್ಕೆಗಳು"
+  "ui_wallpaper_dots": "ಚುಕ್ಕೆಗಳು",
+  "ui_dm_wallpaper_apply": "ಅನ್ವಯಿಸಿ",
+  "ui_dm_wallpaper_current": "ಪ್ರಸ್ತುತ",
+  "ui_dm_link_card_remove": "ಪೂರ್ವವೀಕ್ಷಣೆ ಇಲ್ಲದೆ ಕಳುಹಿಸಿ",
+  "ui_share_search": "ಹುಡುಕಿ",
+  "ui_share_post": "ಪೋಸ್ಟ್ ಮಾಡಿ",
+  "ui_share_note": "ಸಂದೇಶ ಬರೆಯಿರಿ…",
+  "ui_share_send": "ಕಳುಹಿಸಿ",
+  "ui_share_sent": "ಕಳುಹಿಸಲಾಗಿದೆ",
+  "ui_share_some_failed": "ಕಳುಹಿಸಲಾಗಿದೆ, ಆದರೆ ಎಲ್ಲರಿಗೂ ಅಲ್ಲ.",
+  "ui_share_failed": "ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "ui_follower_one": "Follower"
 }

@@ -1362,6 +1362,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salbia"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Harea"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Puntuak"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Aplikatu"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("Unekoa"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Bidali aurrebistarik gabe"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Bilatu"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Argitaratu"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Idatzi mezu bat…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Bidali"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Bidalita"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Bidalita, baina ez guztiei."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da bidali. Saiatu berriro."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Takipsilim",
   "ui_wallpaper_sage": "Sage",
   "ui_wallpaper_sand": "Buhangin",
-  "ui_wallpaper_dots": "Tuldok"
+  "ui_wallpaper_dots": "Tuldok",
+  "ui_dm_wallpaper_apply": "Ilapat",
+  "ui_dm_wallpaper_current": "Kasalukuyan",
+  "ui_dm_link_card_remove": "Ipadala nang walang preview",
+  "ui_share_search": "Maghanap",
+  "ui_share_post": "I-post",
+  "ui_share_note": "Sumulat ng mensahe…",
+  "ui_share_send": "Ipadala",
+  "ui_share_sent": "Naipadala",
+  "ui_share_some_failed": "Naipadala, pero hindi sa lahat.",
+  "ui_share_failed": "Hindi ito maipadala. Subukang muli.",
+  "ui_follower_one": "Follower"
 }

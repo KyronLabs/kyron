@@ -1350,6 +1350,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("מרווה"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("חול"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("נקודות"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("החלה"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("נוכחי"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("שליחה בלי התצוגה המקדימה"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("חיפוש"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("פרסום"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("כתבו הודעה…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("שליחה"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("נשלח"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("נשלח, אבל לא לכולם."),
+      "ui_share_failed":
+          MessageLookupByLibrary.simpleMessage("לא ניתן היה לשלוח. נסו שוב."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "सांझ",
   "ui_wallpaper_sage": "सेज",
   "ui_wallpaper_sand": "रेत",
-  "ui_wallpaper_dots": "बिंदु"
+  "ui_wallpaper_dots": "बिंदु",
+  "ui_dm_wallpaper_apply": "लागू करें",
+  "ui_dm_wallpaper_current": "मौजूदा",
+  "ui_dm_link_card_remove": "प्रीव्यू के बिना भेजें",
+  "ui_share_search": "खोजें",
+  "ui_share_post": "पोस्ट करें",
+  "ui_share_note": "संदेश लिखें…",
+  "ui_share_send": "भेजें",
+  "ui_share_sent": "भेजा गया",
+  "ui_share_some_failed": "भेजा गया, पर सभी को नहीं।",
+  "ui_share_failed": "भेजा नहीं जा सका। फिर से कोशिश करें।",
+  "ui_follower_one": "Follower"
 }

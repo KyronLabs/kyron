@@ -1364,6 +1364,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvie"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Nisip"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Puncte"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Aplică"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("Actual"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Trimite fără previzualizare"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Caută"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Publică"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Scrie un mesaj…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Trimite"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Trimis"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Trimis, dar nu tuturor."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu s-a putut trimite. Încearcă din nou."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

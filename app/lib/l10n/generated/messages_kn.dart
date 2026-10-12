@@ -1363,6 +1363,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("ಸೇಜ್"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ಮರಳು"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ಚುಕ್ಕೆಗಳು"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("ಅನ್ವಯಿಸಿ"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("ಪ್ರಸ್ತುತ"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("ಪೂರ್ವವೀಕ್ಷಣೆ ಇಲ್ಲದೆ ಕಳುಹಿಸಿ"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("ಹುಡುಕಿ"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("ಪೋಸ್ಟ್ ಮಾಡಿ"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("ಸಂದೇಶ ಬರೆಯಿರಿ…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("ಕಳುಹಿಸಿ"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("ಕಳುಹಿಸಲಾಗಿದೆ"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "ಕಳುಹಿಸಲಾಗಿದೆ, ಆದರೆ ಎಲ್ಲರಿಗೂ ಅಲ್ಲ."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

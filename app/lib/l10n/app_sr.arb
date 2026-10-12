@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Сумрак",
   "ui_wallpaper_sage": "Жалфија",
   "ui_wallpaper_sand": "Песак",
-  "ui_wallpaper_dots": "Тачкице"
+  "ui_wallpaper_dots": "Тачкице",
+  "ui_dm_wallpaper_apply": "Примени",
+  "ui_dm_wallpaper_current": "Тренутна",
+  "ui_dm_link_card_remove": "Пошаљи без прегледа",
+  "ui_share_search": "Претрага",
+  "ui_share_post": "Објави",
+  "ui_share_note": "Напиши поруку…",
+  "ui_share_send": "Пошаљи",
+  "ui_share_sent": "Послато",
+  "ui_share_some_failed": "Послато, али не свима.",
+  "ui_share_failed": "Слање није успело. Покушај поново.",
+  "ui_follower_one": "Follower"
 }

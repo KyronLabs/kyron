@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "গোধূলি",
   "ui_wallpaper_sage": "সেজ",
   "ui_wallpaper_sand": "বালি",
-  "ui_wallpaper_dots": "বিন্দু"
+  "ui_wallpaper_dots": "বিন্দু",
+  "ui_dm_wallpaper_apply": "প্রয়োগ করুন",
+  "ui_dm_wallpaper_current": "বর্তমান",
+  "ui_dm_link_card_remove": "প্রিভিউ ছাড়া পাঠান",
+  "ui_share_search": "খুঁজুন",
+  "ui_share_post": "পোস্ট করুন",
+  "ui_share_note": "একটি বার্তা লিখুন…",
+  "ui_share_send": "পাঠান",
+  "ui_share_sent": "পাঠানো হয়েছে",
+  "ui_share_some_failed": "পাঠানো হয়েছে, তবে সবাইকে নয়।",
+  "ui_share_failed": "পাঠানো যায়নি। আবার চেষ্টা করুন।",
+  "ui_follower_one": "অনুসারী"
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/models/post_comment.dart';
+import 'package:kyron_app/utils/format_count.dart';
 import 'package:kyron_app/widgets/comment_tile.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
@@ -100,5 +101,12 @@ void main() {
         isNull,
       );
     });
+  });
+
+  test('one follower is one follower', () {
+    expect(countOf(1, 'follower'), '1 follower');
+    expect(countOf(2, 'follower'), '2 followers');
+    expect(countOf(0, 'follower'), '0 followers');
+    expect(countOf(1200, 'follower'), '1.2K followers');
   });
 }

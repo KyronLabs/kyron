@@ -1357,6 +1357,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Sage"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Buhangin"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Tuldok"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Ilapat"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Kasalukuyan"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Ipadala nang walang preview"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Maghanap"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("I-post"),
+      "ui_share_note":
+          MessageLookupByLibrary.simpleMessage("Sumulat ng mensahe…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Ipadala"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Naipadala"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "Naipadala, pero hindi sa lahat."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi ito maipadala. Subukang muli."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

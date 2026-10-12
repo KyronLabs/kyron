@@ -34,9 +34,8 @@ class VoicePostPlayer extends StatefulWidget {
   final bool framed;
 
   /// What the player is drawn in: the icon, the played bars and the clock.
-  /// The text colour for the icon and the accent for the bars by default. A
-  /// bubble filled with the accent hands its own ink, or the bars would be
-  /// drawn in the colour they sit on.
+  /// The text colour by default. A bubble filled with the accent hands its
+  /// own ink, or the bars would be drawn in the colour they sit on.
   final Color? ink;
 
   const VoicePostPlayer({
@@ -204,7 +203,9 @@ class _VoicePostPlayerState extends State<VoicePostPlayer>
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final icon = widget.ink ?? scheme.onSurface;
-    final bars = widget.ink ?? scheme.primary;
+    // The text colour, not the accent: black on a light page, white on a
+    // dark one. In the accent, a recording was the bluest thing in a post.
+    final bars = widget.ink ?? scheme.onSurface;
     final quiet = widget.ink ?? scheme.onSurface;
     final total = _total;
     final progress = total.inMilliseconds == 0

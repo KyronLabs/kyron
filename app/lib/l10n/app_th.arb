@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "สนธยา",
   "ui_wallpaper_sage": "เสจ",
   "ui_wallpaper_sand": "ทราย",
-  "ui_wallpaper_dots": "จุด"
+  "ui_wallpaper_dots": "จุด",
+  "ui_dm_wallpaper_apply": "ใช้",
+  "ui_dm_wallpaper_current": "ปัจจุบัน",
+  "ui_dm_link_card_remove": "ส่งโดยไม่มีตัวอย่าง",
+  "ui_share_search": "ค้นหา",
+  "ui_share_post": "โพสต์",
+  "ui_share_note": "เขียนข้อความ…",
+  "ui_share_send": "ส่ง",
+  "ui_share_sent": "ส่งแล้ว",
+  "ui_share_some_failed": "ส่งแล้ว แต่ไม่ถึงทุกคน",
+  "ui_share_failed": "ส่งไม่ได้ ลองอีกครั้ง",
+  "ui_follower_one": "Follower"
 }

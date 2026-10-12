@@ -1446,6 +1446,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Adaçayı"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Qum"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Nöqtələr"),
+      "ui_dm_wallpaper_apply":
+          MessageLookupByLibrary.simpleMessage("Tətbiq et"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("Cari"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Önizləməsiz göndər"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Axtar"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Paylaş"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Mesaj yazın…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Göndər"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Göndərildi"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Göndərildi, amma hamıya yox."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Göndərmək mümkün olmadı. Yenidən cəhd edin."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("İzləyici"),
     };
 
 final messageLookup = MessageLookup();

@@ -128,6 +128,7 @@ export class MessagesController {
       dto.body ?? '',
       dto.media ?? [],
       dto.replyToId,
+      dto.linkCard,
     );
   }
 

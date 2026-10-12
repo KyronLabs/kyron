@@ -299,6 +299,63 @@ describe('sending', () => {
     ).rejects.toBeInstanceOf(BadRequestException);
   });
 
+  describe('a link card', () => {
+    it('is stored as the sender sealed it', async () => {
+      const { service, calls } = serviceWith({
+        conversation: membership(null),
+      });
+      await service.send(ME, 'c1', 'k2.body', [], undefined, 'k2.card');
+      expect(calls.messageCreates[0]).toEqual(
+        containing({ data: containing({ linkCard: 'k2.card' }) }),
+      );
+    });
+
+    it('is never left open beside sealed words', async () => {
+      // The card is about the address in the message. Stored open next to a
+      // sealed body, it would put that address in this database in the
+      // clear.
+      const { service, calls } = serviceWith({
+        conversation: membership(null),
+      });
+      await expect(
+        service.send(ME, 'c1', 'k2.body', [], undefined, '{"url":"x"}'),
+      ).rejects.toBeInstanceOf(BadRequestException);
+      expect(calls.messageCreates).toHaveLength(0);
+    });
+
+    it('needs words to be about', async () => {
+      const { service } = serviceWith({ conversation: membership(null) });
+      await expect(
+        service.send(
+          ME,
+          'c1',
+          '',
+          [{ url: 'https://cdn.invalid/a.jpg' }],
+          undefined,
+          'k2.card',
+        ),
+      ).rejects.toBeInstanceOf(BadRequestException);
+    });
+
+    it('is bounded, so it cannot carry a file', async () => {
+      const { service } = serviceWith({ conversation: membership(null) });
+      const huge = `k2.${'x'.repeat(MessagesService.maxLinkCard)}`;
+      await expect(
+        service.send(ME, 'c1', 'k2.body', [], undefined, huge),
+      ).rejects.toBeInstanceOf(BadRequestException);
+    });
+
+    it('is null when there is none', async () => {
+      const { service, calls } = serviceWith({
+        conversation: membership(null),
+      });
+      await service.send(ME, 'c1', 'hello');
+      expect(calls.messageCreates[0]).toEqual(
+        containing({ data: containing({ linkCard: null }) }),
+      );
+    });
+  });
+
   it('a message that answers nothing carries no reply', async () => {
     const { service, calls } = serviceWith({
       conversation: membership(null),

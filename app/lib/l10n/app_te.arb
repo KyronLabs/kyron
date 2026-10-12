@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "సంధ్య",
   "ui_wallpaper_sage": "సేజ్",
   "ui_wallpaper_sand": "ఇసుక",
-  "ui_wallpaper_dots": "చుక్కలు"
+  "ui_wallpaper_dots": "చుక్కలు",
+  "ui_dm_wallpaper_apply": "వర్తింపజేయి",
+  "ui_dm_wallpaper_current": "ప్రస్తుతం",
+  "ui_dm_link_card_remove": "ప్రివ్యూ లేకుండా పంపు",
+  "ui_share_search": "శోధించు",
+  "ui_share_post": "పోస్ట్ చేయి",
+  "ui_share_note": "సందేశం రాయండి…",
+  "ui_share_send": "పంపు",
+  "ui_share_sent": "పంపబడింది",
+  "ui_share_some_failed": "పంపబడింది, కానీ అందరికీ కాదు.",
+  "ui_share_failed": "పంపడం సాధ్యం కాలేదు. మళ్లీ ప్రయత్నించండి.",
+  "ui_follower_one": "Follower"
 }

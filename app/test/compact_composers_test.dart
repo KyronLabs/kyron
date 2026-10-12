@@ -295,6 +295,26 @@ void main() {
     });
   });
 
+  testWidgets('the played bars are the text colour, not the accent',
+      (tester) async {
+    await _pump(
+      tester,
+      const Scaffold(
+        body: VoicePostPlayer(
+          media: PostMedia(
+            id: 'v1',
+            kind: MediaKind.voice,
+            url: 'https://example.com/v.m4a',
+            waveform: [10, 50, 90],
+          ),
+        ),
+      ),
+    );
+
+    final waveform = tester.widget<VoiceWaveform>(find.byType(VoiceWaveform));
+    expect(waveform.color, KyronTheme.lightTheme.colorScheme.onSurface);
+  });
+
   group('the waveform fill', () {
     test('stops part-way through a bar rather than at the next one', () {
       // Filling whole bars moved the fill a bar at a time, in steps. Ten

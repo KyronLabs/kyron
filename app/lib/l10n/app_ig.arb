@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Mgbede",
   "ui_wallpaper_sage": "Ndụ ndụ",
   "ui_wallpaper_sand": "Aja",
-  "ui_wallpaper_dots": "Ntụpọ"
+  "ui_wallpaper_dots": "Ntụpọ",
+  "ui_dm_wallpaper_apply": "Tinye ya",
+  "ui_dm_wallpaper_current": "Nke ugbu a",
+  "ui_dm_link_card_remove": "Ziga na-enweghị nlele mbụ",
+  "ui_share_search": "Chọọ",
+  "ui_share_post": "Biputa",
+  "ui_share_note": "Dee ozi…",
+  "ui_share_send": "Ziga",
+  "ui_share_sent": "E zigala",
+  "ui_share_some_failed": "E zigala, mana ọ bụghị nye mmadụ niile.",
+  "ui_share_failed": "Enweghị ike iziga ya. Nwaa ọzọ.",
+  "ui_follower_one": "Follower"
 }

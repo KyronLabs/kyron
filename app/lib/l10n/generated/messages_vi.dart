@@ -1359,6 +1359,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Xô thơm"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Cát"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Chấm bi"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Áp dụng"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Hiện tại"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Gửi không kèm bản xem trước"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Đăng"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Viết tin nhắn…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Gửi"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Đã gửi"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "Đã gửi, nhưng không phải đến tất cả."),
+      "ui_share_failed":
+          MessageLookupByLibrary.simpleMessage("Không gửi được. Hãy thử lại."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

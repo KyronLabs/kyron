@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Σούρουπο",
   "ui_wallpaper_sage": "Φασκόμηλο",
   "ui_wallpaper_sand": "Άμμος",
-  "ui_wallpaper_dots": "Κουκκίδες"
+  "ui_wallpaper_dots": "Κουκκίδες",
+  "ui_dm_wallpaper_apply": "Εφαρμογή",
+  "ui_dm_wallpaper_current": "Τρέχουσα",
+  "ui_dm_link_card_remove": "Αποστολή χωρίς την προεπισκόπηση",
+  "ui_share_search": "Αναζήτηση",
+  "ui_share_post": "Δημοσίευση",
+  "ui_share_note": "Γράψτε ένα μήνυμα…",
+  "ui_share_send": "Αποστολή",
+  "ui_share_sent": "Στάλθηκε",
+  "ui_share_some_failed": "Στάλθηκε, αλλά όχι σε όλους.",
+  "ui_share_failed": "Δεν ήταν δυνατή η αποστολή. Δοκιμάστε ξανά.",
+  "ui_follower_one": "Ακόλουθος"
 }

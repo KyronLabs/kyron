@@ -1354,6 +1354,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("เสจ"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ทราย"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("จุด"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("ใช้"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("ปัจจุบัน"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("ส่งโดยไม่มีตัวอย่าง"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("ค้นหา"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("โพสต์"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("เขียนข้อความ…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("ส่ง"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("ส่งแล้ว"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("ส่งแล้ว แต่ไม่ถึงทุกคน"),
+      "ui_share_failed":
+          MessageLookupByLibrary.simpleMessage("ส่งไม่ได้ ลองอีกครั้ง"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

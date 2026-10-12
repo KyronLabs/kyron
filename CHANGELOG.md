@@ -14,6 +14,18 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **A link card with no picture broke the feed.** The card's picture-less
+  row was stretched to the height it was given, and a scrolling list gives
+  none, so every title-only card failed to lay out. It is as tall as its
+  words now.
+- **"1 followers" and "1 Followers".** Explore, the mention picker,
+  community tiles and the profile all say one follower, member or post in
+  the singular. The profile's label is in all 69 catalogs.
+- **Dates and labels were unreadable on a chat wallpaper, and replies had a
+  white ring.** Times, "You replied", receipts, the encryption notice and
+  "New messages" sit on a small pill of the page's colour when there is a
+  wallpaper behind them. The ring that set a reply apart from its quote is
+  drawn only on the plain page, where it is the page's colour.
 - **A voice post was taller than the reply box, and its fill moved in
   steps.** The player is now the reply box's height, with the play icon
   alone in the text colour. The fill is clipped at exactly how far playback
@@ -150,6 +162,27 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Link previews in messages, without the server seeing the link.** A post's
+  card is read by the server; a direct message is sealed before it leaves the
+  phone, so its card is made on the sender's phone instead: the page is read
+  there, its picture cut to the card and shrunk to a small JPEG, and the whole
+  card sealed beside the words in a new `Message.linkCard` column. Readers
+  never contact the linked site. A card only draws for a link that appears in
+  the message's own words, the sender can take it off before sending, and the
+  server refuses an open card beside sealed words. Documented in
+  docs/E2EE.md.
+- **Sharing into Kyron from other apps (Android).** Kyron is in the share
+  sheet for text, links and pictures. A sheet like Threads' opens: what is
+  being shared, a search, then Post and the people most recently talked to,
+  ticked as they are tapped, with a line of one's own and Send. Post opens
+  the composer with the share in it; Send writes to everybody ticked, sealed
+  like any message, with a link card for a shared link. People not talked to
+  yet are found by searching. iOS needs a share extension target and is not
+  built.
+- **A long-pressed message floats.** The chat blurs behind it, the message
+  stays sharp where it was, the quick reactions sit above it and Reply, Copy
+  and Delete below. A message near the bottom moves up to make room. This
+  replaces the sheet that covered the message it was about.
 - **Voice notes in direct messages.** With the box empty, the button where
   Send goes is a microphone: it opens the recorder already listening, and
   the note is sent as its own message, answering whatever was being
@@ -199,6 +232,18 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- **The wallpaper picker previews before it changes anything.** The
+  preview stays at the top while the choices scroll; tapping one previews it,
+  ringed in the accent, and Apply at the top right is what sets it. The one
+  in use carries a "Current" tag, so the two are never confused. The folder's
+  wallpapers load behind skeletons, and files named by a machine have no
+  caption.
+- **The chat composer has room round it.** Twelve points on every side and
+  sixteen below, and eight between the box and its buttons.
+- **Profile share and message buttons are filled circles** with the hairline
+  outline, the height of the Follow button beside them.
+- **A voice note's played bars are the text colour**, black in light mode,
+  rather than the accent.
 - **Outlines inside a post are hairlines.** A quoted post, a link card and a
   voice post were outlined a full logical pixel at a darker tone -- heavier
   than the rule between whole posts. They now share that rule, from one

@@ -113,7 +113,7 @@ class _PersonTileState extends ConsumerState<PersonTile> {
                     children: [
                       _Stat(
                         icon: Iconsax.profile_2user_copy,
-                        text: '${formatCount(_person.followers)} followers',
+                        text: countOf(_person.followers, 'follower'),
                       ),
                     ],
                   ),

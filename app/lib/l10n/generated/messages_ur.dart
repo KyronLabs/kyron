@@ -1358,6 +1358,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("سیج"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ریت"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("نقطے"),
+      "ui_dm_wallpaper_apply":
+          MessageLookupByLibrary.simpleMessage("لاگو کریں"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("موجودہ"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("پیش منظر کے بغیر بھیجیں"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("تلاش کریں"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("پوسٹ کریں"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("پیغام لکھیں…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("بھیجیں"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("بھیج دیا گیا"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "بھیج دیا گیا، لیکن سب کو نہیں۔"),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "بھیجا نہیں جا سکا۔ دوبارہ کوشش کریں۔"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Krēsla",
   "ui_wallpaper_sage": "Salvija",
   "ui_wallpaper_sand": "Smiltis",
-  "ui_wallpaper_dots": "Punktiņi"
+  "ui_wallpaper_dots": "Punktiņi",
+  "ui_dm_wallpaper_apply": "Lietot",
+  "ui_dm_wallpaper_current": "Pašreizējais",
+  "ui_dm_link_card_remove": "Sūtīt bez priekšskatījuma",
+  "ui_share_search": "Meklēt",
+  "ui_share_post": "Publicēt",
+  "ui_share_note": "Rakstiet ziņu…",
+  "ui_share_send": "Sūtīt",
+  "ui_share_sent": "Nosūtīts",
+  "ui_share_some_failed": "Nosūtīts, bet ne visiem.",
+  "ui_share_failed": "Neizdevās nosūtīt. Mēģiniet vēlreiz.",
+  "ui_follower_one": "Follower"
 }

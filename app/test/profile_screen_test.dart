@@ -6,6 +6,7 @@ import 'package:kyron_app/models/profile_model.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/providers/profile_provider.dart';
 import 'package:kyron_app/screens/profile_screen.dart';
+import 'package:kyron_app/widgets/action_button.dart';
 
 const _me = ProfileModel(
   id: 'u1',
@@ -22,8 +23,8 @@ const _me = ProfileModel(
 );
 
 class _StubProfile extends ProfileNotifier {
-  _StubProfile(super.ref, super.username) {
-    state = const AsyncData(_me);
+  _StubProfile(super.ref, super.username, [ProfileModel profile = _me]) {
+    state = AsyncData(profile);
   }
   @override
   Future<void> load({bool force = false}) async {}
@@ -78,7 +79,8 @@ void main() {
     await tester.pump(const Duration(seconds: 3));
 
     expect(find.text('Epigone'), findsWidgets);
-    expect(find.text('Followers'), findsOneWidget);
+    // One follower: the fixture's.
+    expect(find.text('Follower'), findsOneWidget);
     expect(find.text('Following'), findsOneWidget);
     // Kyron Points sat beside these. Anybody could award any account any
     // number of them, and the programme they belonged to had been withdrawn,
@@ -104,7 +106,7 @@ void main() {
       await tester.pump(const Duration(seconds: 3));
 
       expect(tester.takeException(), isNull, reason: entry.key);
-      expect(find.text('Followers'), findsOneWidget);
+      expect(find.text('Follower'), findsOneWidget);
     });
   }
 
@@ -122,4 +124,77 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(find.text('post a'), findsOneWidget);
   });
+
+  for (final (count, label) in [(1, 'Follower'), (2, 'Followers')]) {
+    testWidgets('$count reads as "$count $label"', (tester) async {
+      final profile = ProfileModel(
+        id: 'u1',
+        name: 'Epigone',
+        username: 'epigone',
+        followers: count,
+        following: 0,
+        posts: 0,
+        isOwnProfile: true,
+      );
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            profileProvider.overrideWith(
+              (ref, username) => _StubProfile(ref, username, profile),
+            ),
+            postListProvider.overrideWith(
+              (ref, source) => _StubPosts(ref, source, const FeedState()),
+            ),
+          ],
+          child: const MaterialApp(home: ProfileScreen()),
+        ),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 3));
+
+      expect(find.text(label), findsOneWidget);
+    });
+  }
+
+  for (final own in [true, false]) {
+    testWidgets(
+        'the round buttons are as tall as the one beside them '
+        '(${own ? 'own' : "somebody else's"} profile)', (tester) async {
+      final profile = ProfileModel(
+        id: 'u1',
+        name: 'Epigone',
+        username: 'epigone',
+        followers: 1,
+        following: 0,
+        posts: 0,
+        isOwnProfile: own,
+      );
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            profileProvider.overrideWith(
+              (ref, username) => _StubProfile(ref, username, profile),
+            ),
+            postListProvider.overrideWith(
+              (ref, source) => _StubPosts(ref, source, const FeedState()),
+            ),
+          ],
+          child: const MaterialApp(home: ProfileScreen()),
+        ),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 3));
+
+      final beside = tester.getSize(find.byType(ActionButton)).height;
+      final share = tester.getSize(find.byKey(const ValueKey('profile-share')));
+      expect(share.height, beside);
+      expect(share.width, share.height, reason: 'a circle');
+      if (!own) {
+        expect(
+          tester.getSize(find.byKey(const ValueKey('profile-message'))).height,
+          beside,
+        );
+      }
+    });
+  }
 }

@@ -33,6 +33,7 @@ import 'screens/profile_screen.dart';
 import 'screens/video_feed_screen.dart';
 import 'screens/notifications_screen.dart';
 import 'screens/composer_screen.dart';
+import 'services/share_inbox.dart' show SharedContent;
 import 'screens/onboard_step1_screen.dart';
 import 'screens/onboard_step2_screen.dart';
 import 'screens/onboard_step3_screen.dart';
@@ -247,6 +248,10 @@ class Routes {
       // A QuotedPost argument opens the composer to quote it.
       case composer:
         final quoting = settings.arguments;
+        // Something another app shared, to post.
+        if (quoting is SharedContent) {
+          return _page(ComposerScreen(shared: quoting));
+        }
         return _page(
           ComposerScreen(
             quoting: switch (quoting) {

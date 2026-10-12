@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Sumrak",
   "ui_wallpaper_sage": "Kadulja",
   "ui_wallpaper_sand": "Pijesak",
-  "ui_wallpaper_dots": "Točkice"
+  "ui_wallpaper_dots": "Točkice",
+  "ui_dm_wallpaper_apply": "Primijeni",
+  "ui_dm_wallpaper_current": "Trenutačna",
+  "ui_dm_link_card_remove": "Pošalji bez pretpregleda",
+  "ui_share_search": "Pretraži",
+  "ui_share_post": "Objavi",
+  "ui_share_note": "Napišite poruku…",
+  "ui_share_send": "Pošalji",
+  "ui_share_sent": "Poslano",
+  "ui_share_some_failed": "Poslano, ali ne svima.",
+  "ui_share_failed": "Nije se moglo poslati. Pokušajte ponovno.",
+  "ui_follower_one": "Follower"
 }

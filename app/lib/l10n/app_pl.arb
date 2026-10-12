@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Zmierzch",
   "ui_wallpaper_sage": "Szałwia",
   "ui_wallpaper_sand": "Piasek",
-  "ui_wallpaper_dots": "Kropki"
+  "ui_wallpaper_dots": "Kropki",
+  "ui_dm_wallpaper_apply": "Zastosuj",
+  "ui_dm_wallpaper_current": "Obecna",
+  "ui_dm_link_card_remove": "Wyślij bez podglądu",
+  "ui_share_search": "Szukaj",
+  "ui_share_post": "Opublikuj",
+  "ui_share_note": "Napisz wiadomość…",
+  "ui_share_send": "Wyślij",
+  "ui_share_sent": "Wysłano",
+  "ui_share_some_failed": "Wysłano, ale nie do wszystkich.",
+  "ui_share_failed": "Nie udało się wysłać. Spróbuj ponownie.",
+  "ui_follower_one": "Follower"
 }

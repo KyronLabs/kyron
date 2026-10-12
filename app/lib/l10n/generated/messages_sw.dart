@@ -1357,6 +1357,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Kijani"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Mchanga"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Vitone"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Tumia"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Ya sasa"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Tuma bila onyesho la kukagua"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Tafuta"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Chapisha"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Andika ujumbe…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Tuma"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Imetumwa"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "Imetumwa, lakini si kwa kila mtu."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Haikuweza kutumwa. Jaribu tena."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

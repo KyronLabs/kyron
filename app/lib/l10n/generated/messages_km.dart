@@ -1357,6 +1357,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("បៃតងស្រាល"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ខ្សាច់"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ចំណុច"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("អនុវត្ត"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("បច្ចុប្បន្ន"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("ផ្ញើដោយគ្មានការមើលជាមុន"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("ស្វែងរក"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("បង្ហោះ"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("សរសេរសារ…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("ផ្ញើ"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("បានផ្ញើ"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "បានផ្ញើ ប៉ុន្តែមិនមែនទៅគ្រប់គ្នាទេ។"),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចផ្ញើបានទេ។ សូមព្យាយាមម្តងទៀត។"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

@@ -29,6 +29,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'config/supabase_config.dart';
 import 'utils/route_watch.dart';
+import 'services/share_inbox.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -180,12 +181,30 @@ class _KyronAppState extends ConsumerState<KyronApp> {
   bool _isInitialized = false;
 
   StreamSubscription<AuthState>? _authEvents;
+  StreamSubscription<SharedContent>? _shares;
 
   @override
   void initState() {
     super.initState();
     _initializeApp();
     _watchForExternalSessions();
+    _watchForShares();
+  }
+
+  /// Holds whatever another app shares to Kyron until the signed-in app is
+  /// there to offer it; MainContainer opens the sheet.
+  void _watchForShares() {
+    final inbox = ref.read(shareInboxProvider);
+    _shares = inbox.incoming.listen(
+      (content) => ref.read(pendingShareProvider.notifier).state = content,
+    );
+    unawaited(
+      inbox.take().then((content) {
+        if (content != null && mounted) {
+          ref.read(pendingShareProvider.notifier).state = content;
+        }
+      }),
+    );
   }
 
   /// Acts on the sessions that arrive from outside the app.
@@ -247,6 +266,7 @@ class _KyronAppState extends ConsumerState<KyronApp> {
   @override
   void dispose() {
     _authEvents?.cancel();
+    _shares?.cancel();
     super.dispose();
   }
 

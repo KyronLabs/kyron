@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Solpor",
   "ui_wallpaper_sage": "Salvia",
   "ui_wallpaper_sand": "Area",
-  "ui_wallpaper_dots": "Puntos"
+  "ui_wallpaper_dots": "Puntos",
+  "ui_dm_wallpaper_apply": "Aplicar",
+  "ui_dm_wallpaper_current": "Actual",
+  "ui_dm_link_card_remove": "Enviar sen a vista previa",
+  "ui_share_search": "Buscar",
+  "ui_share_post": "Publicar",
+  "ui_share_note": "Escribe unha mensaxe…",
+  "ui_share_send": "Enviar",
+  "ui_share_sent": "Enviado",
+  "ui_share_some_failed": "Enviado, pero non a todos.",
+  "ui_share_failed": "Non se puido enviar. Téntao de novo.",
+  "ui_follower_one": "Follower"
 }

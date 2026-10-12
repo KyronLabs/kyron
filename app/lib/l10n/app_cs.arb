@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Soumrak",
   "ui_wallpaper_sage": "Šalvěj",
   "ui_wallpaper_sand": "Písek",
-  "ui_wallpaper_dots": "Tečky"
+  "ui_wallpaper_dots": "Tečky",
+  "ui_dm_wallpaper_apply": "Použít",
+  "ui_dm_wallpaper_current": "Aktuální",
+  "ui_dm_link_card_remove": "Odeslat bez náhledu",
+  "ui_share_search": "Hledat",
+  "ui_share_post": "Zveřejnit",
+  "ui_share_note": "Napište zprávu…",
+  "ui_share_send": "Odeslat",
+  "ui_share_sent": "Odesláno",
+  "ui_share_some_failed": "Odesláno, ale ne všem.",
+  "ui_share_failed": "Nepodařilo se odeslat. Zkuste to znovu.",
+  "ui_follower_one": "Sledující"
 }

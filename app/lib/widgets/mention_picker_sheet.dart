@@ -330,7 +330,7 @@ class _PersonRow extends StatelessWidget {
                   Text(
                     // The handle is what gets written into the post, so it is
                     // always shown -- even when it is also the line above.
-                    '@$handle · ${formatCount(person.followers)} followers',
+                    '@$handle · ${countOf(person.followers, 'follower')}',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

@@ -1360,6 +1360,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Žajbelj"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Pesek"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Pike"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Uporabi"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Trenutno"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Pošlji brez predogleda"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Iskanje"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Objavi"),
+      "ui_share_note":
+          MessageLookupByLibrary.simpleMessage("Napišite sporočilo…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Pošlji"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Poslano"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Poslano, a ne vsem."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Ni bilo mogoče poslati. Poskusite znova."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

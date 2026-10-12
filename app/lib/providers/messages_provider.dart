@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 import '../models/conversation.dart';
+import '../models/message_link_card.dart';
 import '../models/post_media.dart';
 import '../repositories/messages_repository.dart';
 import '../utils/api_error_message.dart';
@@ -178,6 +179,58 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
   }
 }
 
+/// Seals one message and sends it: the words, and the card for a link in
+/// them.
+///
+/// The one place a message is sealed on its way out, so the thread and the
+/// share sheet cannot come to disagree about what leaves the phone readable.
+class MessageSender {
+  final MessagesRepository _repo;
+  final MessageVault _vault;
+
+  MessageSender(this._repo, this._vault);
+
+  /// Sends [text] to [conversationId] and answers the message as the reader
+  /// should see it: the words, not the ciphertext, and whether it was sealed.
+  Future<DirectMessage> send(
+    String conversationId,
+    String text, {
+    List<PendingMedia> media = const [],
+    String? replyToId,
+    MessageLinkCard? linkCard,
+  }) async {
+    // Sealed if both sides have published a key, and sent as it was written
+    // if not. Never silently one when the reader was shown the other: the
+    // bubble carries which it was.
+    final sealed =
+        text.isEmpty ? null : await _vault.seal(text, conversationId);
+    // The card goes the way the words went. Sealed words with a card that
+    // could not be sealed go without it: an open card would put the address
+    // on the server, which is exactly what sealing the words was for.
+    final card = text.isEmpty ? null : linkCard;
+    final String? wireCard;
+    if (card == null) {
+      wireCard = null;
+    } else if (sealed == null) {
+      wireCard = card.encode();
+    } else {
+      wireCard = await _vault.seal(card.encode(), conversationId);
+    }
+    final sent = await _repo.send(
+      conversationId,
+      sealed ?? text,
+      media: media,
+      replyToId: replyToId,
+      linkCard: wireCard,
+    );
+    return sent.copyWith(
+      body: text,
+      encrypted: sealed != null,
+      linkCard: wireCard == null ? null : card,
+    );
+  }
+}
+
 /// One per tab, so All and Unread each keep their own page and cursor.
 final conversationListProvider = StateNotifierProvider.family<
     ConversationListNotifier, ConversationListState, bool>((ref, unreadOnly) {
@@ -334,19 +387,38 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     final opened = <DirectMessage>[];
     for (final message in messages) {
       if (!SealedEnvelope.looksSealed(message.body)) {
-        opened.add(message);
+        opened.add(await _withCard(message));
         continue;
       }
       final plain = await _vault.open(message.body, _conversationId);
       opened.add(
-        message.copyWith(
-          body: plain ?? 'This message cannot be read on this device.',
-          encrypted: true,
-          unreadable: plain == null,
+        await _withCard(
+          message.copyWith(
+            body: plain ?? 'This message cannot be read on this device.',
+            encrypted: true,
+            unreadable: plain == null,
+          ),
         ),
       );
     }
     return opened;
+  }
+
+  /// [message] with its link card opened and checked, when it has one.
+  ///
+  /// The card is the sender's word about a page, and is read as such: it has
+  /// to point at a link the words themselves show, or it is dropped. One
+  /// that arrived open beside sealed words was not made by this app -- the
+  /// server refuses that pair -- and is dropped too.
+  Future<DirectMessage> _withCard(DirectMessage message) async {
+    final raw = message.linkCardRaw;
+    if (raw == null || message.unreadable) return message;
+    final sealed = SealedEnvelope.looksSealed(raw);
+    if (message.encrypted && !sealed) return message;
+    final json = sealed ? await _vault.open(raw, _conversationId) : raw;
+    if (json == null) return message;
+    final card = MessageLinkCard.tryDecode(json, body: message.body);
+    return card == null ? message : message.copyWith(linkCard: card);
   }
 
   Future<void> refresh() async {
@@ -440,10 +512,13 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
     required String senderId,
     List<PendingMedia> media = const [],
     String? replyToId,
+    MessageLinkCard? linkCard,
   }) async {
     final text = body.trim();
     // A picture with no words is a message; an empty box is not.
     if (text.isEmpty && media.isEmpty) return;
+    // A card is for a link in the words, and goes nowhere without them.
+    final card = text.isEmpty ? null : linkCard;
 
     final placeholder = DirectMessage(
       id: 'pending-${_pending++}',
@@ -455,25 +530,19 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       // Shown from the local file while it goes up, so the bubble is not an
       // empty box for the length of the upload.
       media: media.map((item) => item.asPlaceholder).toList(),
+      linkCard: card,
     );
     state = state.copyWith(messages: [...state.messages, placeholder]);
 
     try {
-      // Sealed if both sides have published a key, and sent as it was written
-      // if not. Never silently one when the reader was shown the other: the
-      // bubble carries which it was.
-      final sealed =
-          text.isEmpty ? null : await _vault.seal(text, _conversationId);
-      final sent = await _repo.send(
+      final sent = await MessageSender(_repo, _vault).send(
         _conversationId,
-        sealed ?? text,
+        text,
         media: media,
         replyToId: replyToId,
+        linkCard: card,
       );
-      _replace(
-        placeholder.id,
-        sent.copyWith(body: text, encrypted: sealed != null),
-      );
+      _replace(placeholder.id, sent);
     } catch (_) {
       _replace(
         placeholder.id,
@@ -554,6 +623,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
       message.body,
       senderId: message.senderId,
       replyToId: message.replyToId,
+      linkCard: message.linkCard,
     );
   }
 

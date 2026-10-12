@@ -1360,6 +1360,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Шалфей"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Песок"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Точки"),
+      "ui_dm_wallpaper_apply":
+          MessageLookupByLibrary.simpleMessage("Применить"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Текущие"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Отправить без превью"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Поиск"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Опубликовать"),
+      "ui_share_note":
+          MessageLookupByLibrary.simpleMessage("Напишите сообщение…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Отправить"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Отправлено"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Отправлено, но не всем."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Не удалось отправить. Попробуйте ещё раз."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

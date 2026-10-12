@@ -1355,6 +1355,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("સેજ"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("રેતી"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ટપકાં"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("લાગુ કરો"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("વર્તમાન"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("પૂર્વાવલોકન વિના મોકલો"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("શોધો"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("પોસ્ટ કરો"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("સંદેશ લખો…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("મોકલો"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("મોકલ્યું"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("મોકલ્યું, પણ બધાને નહીં."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "મોકલી શકાયું નહીં. ફરી પ્રયાસ કરો."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

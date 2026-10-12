@@ -1,8 +1,12 @@
 // lib/screens/main_container.dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/notifications_provider.dart';
+import '../services/share_inbox.dart';
+import '../widgets/share_into_kyron_sheet.dart';
 import '../utils/layout.dart';
 import '../widgets/bottom_nav_v4.dart';
 import '../widgets/nav_destinations.dart';
@@ -44,6 +48,25 @@ class _MainContainerState extends ConsumerState<MainContainer>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    // A share from another app: the one that opened the app is already
+    // waiting; one that arrives later is listened for.
+    ref.listenManual<SharedContent?>(
+      pendingShareProvider,
+      (_, content) => _offer(content),
+      fireImmediately: true,
+    );
+  }
+
+  /// Opens the share sheet for [content], once the frame it arrived in is
+  /// drawn, and forgets it so it is offered only once.
+  void _offer(SharedContent? content) {
+    if (content == null) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      if (ref.read(pendingShareProvider) != content) return;
+      ref.read(pendingShareProvider.notifier).state = null;
+      unawaited(ShareIntoKyronSheet.show(context, content));
+    });
   }
 
   /// Refreshes the bell's count when the app comes back to the foreground.

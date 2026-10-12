@@ -1363,6 +1363,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Šalavijas"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Smėlis"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Taškeliai"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Taikyti"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Dabartinis"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Siųsti be peržiūros"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Ieškoti"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Skelbti"),
+      "ui_share_note":
+          MessageLookupByLibrary.simpleMessage("Parašykite žinutę…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Siųsti"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Išsiųsta"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Išsiųsta, bet ne visiems."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko išsiųsti. Bandykite dar kartą."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

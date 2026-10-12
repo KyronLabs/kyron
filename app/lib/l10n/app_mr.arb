@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "संधिप्रकाश",
   "ui_wallpaper_sage": "सेज",
   "ui_wallpaper_sand": "वाळू",
-  "ui_wallpaper_dots": "ठिपके"
+  "ui_wallpaper_dots": "ठिपके",
+  "ui_dm_wallpaper_apply": "लागू करा",
+  "ui_dm_wallpaper_current": "सध्याचा",
+  "ui_dm_link_card_remove": "पूर्वावलोकनाशिवाय पाठवा",
+  "ui_share_search": "शोधा",
+  "ui_share_post": "पोस्ट करा",
+  "ui_share_note": "संदेश लिहा…",
+  "ui_share_send": "पाठवा",
+  "ui_share_sent": "पाठवले",
+  "ui_share_some_failed": "पाठवले, पण सर्वांना नाही.",
+  "ui_share_failed": "पाठवता आले नाही. पुन्हा प्रयत्न करा.",
+  "ui_follower_one": "Follower"
 }

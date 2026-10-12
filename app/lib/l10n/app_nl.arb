@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Schemering",
   "ui_wallpaper_sage": "Salie",
   "ui_wallpaper_sand": "Zand",
-  "ui_wallpaper_dots": "Stippen"
+  "ui_wallpaper_dots": "Stippen",
+  "ui_dm_wallpaper_apply": "Toepassen",
+  "ui_dm_wallpaper_current": "Huidige",
+  "ui_dm_link_card_remove": "Verzenden zonder voorbeeld",
+  "ui_share_search": "Zoeken",
+  "ui_share_post": "Plaatsen",
+  "ui_share_note": "Schrijf een bericht…",
+  "ui_share_send": "Verzenden",
+  "ui_share_sent": "Verzonden",
+  "ui_share_some_failed": "Verzonden, maar niet naar iedereen.",
+  "ui_share_failed": "Dat kon niet worden verzonden. Probeer het opnieuw.",
+  "ui_follower_one": "Follower"
 }

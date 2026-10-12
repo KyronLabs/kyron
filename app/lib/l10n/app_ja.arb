@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "夕暮れ",
   "ui_wallpaper_sage": "セージ",
   "ui_wallpaper_sand": "サンド",
-  "ui_wallpaper_dots": "ドット"
+  "ui_wallpaper_dots": "ドット",
+  "ui_dm_wallpaper_apply": "適用",
+  "ui_dm_wallpaper_current": "現在",
+  "ui_dm_link_card_remove": "プレビューなしで送信",
+  "ui_share_search": "検索",
+  "ui_share_post": "投稿",
+  "ui_share_note": "メッセージを入力…",
+  "ui_share_send": "送信",
+  "ui_share_sent": "送信済み",
+  "ui_share_some_failed": "送信しましたが、届かなかった人がいます。",
+  "ui_share_failed": "送信できませんでした。もう一度お試しください。",
+  "ui_follower_one": "フォロワー"
 }

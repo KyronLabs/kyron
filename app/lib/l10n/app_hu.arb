@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Alkony",
   "ui_wallpaper_sage": "Zsálya",
   "ui_wallpaper_sand": "Homok",
-  "ui_wallpaper_dots": "Pöttyök"
+  "ui_wallpaper_dots": "Pöttyök",
+  "ui_dm_wallpaper_apply": "Alkalmaz",
+  "ui_dm_wallpaper_current": "Jelenlegi",
+  "ui_dm_link_card_remove": "Küldés előnézet nélkül",
+  "ui_share_search": "Keresés",
+  "ui_share_post": "Közzététel",
+  "ui_share_note": "Írj üzenetet…",
+  "ui_share_send": "Küldés",
+  "ui_share_sent": "Elküldve",
+  "ui_share_some_failed": "Elküldve, de nem mindenkinek.",
+  "ui_share_failed": "Nem sikerült elküldeni. Próbáld újra.",
+  "ui_follower_one": "Follower"
 }

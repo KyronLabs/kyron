@@ -1361,6 +1361,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Luhlaza"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Isanti"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Amachaphaza"),
+      "ui_dm_wallpaper_apply":
+          MessageLookupByLibrary.simpleMessage("Sebenzisa"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Okwangoku"),
+      "ui_dm_link_card_remove": MessageLookupByLibrary.simpleMessage(
+          "Thumela ngaphandle kombonakalo wangaphambili"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Khangela"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Papasha"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Bhala umyalezo…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Thumela"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Ithunyelwe"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "Ithunyelwe, kodwa ayingabo bonke."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Ayikwazanga ukuthunyelwa. Zama kwakhona."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

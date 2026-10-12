@@ -1362,6 +1362,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("စိမ်းနု"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("သဲ"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("အစက်များ"),
+      "ui_dm_wallpaper_apply":
+          MessageLookupByLibrary.simpleMessage("အသုံးပြုရန်"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("လက်ရှိ"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("အစမ်းကြည့်ရှုမှုမပါဘဲ ပို့ရန်"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("ရှာရန်"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("ပို့စ်တင်ရန်"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ် ရေးပါ…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("ပို့ရန်"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("ပို့ပြီး"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "ပို့ပြီးပါပြီ၊ သို့သော် လူတိုင်းထံ မရောက်ပါ။"),
+      "ui_share_failed":
+          MessageLookupByLibrary.simpleMessage("ပို့၍ မရပါ။ ထပ်စမ်းကြည့်ပါ။"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

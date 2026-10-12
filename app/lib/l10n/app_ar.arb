@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "غسق",
   "ui_wallpaper_sage": "مريمية",
   "ui_wallpaper_sand": "رمل",
-  "ui_wallpaper_dots": "نقاط"
+  "ui_wallpaper_dots": "نقاط",
+  "ui_dm_wallpaper_apply": "تطبيق",
+  "ui_dm_wallpaper_current": "الحالية",
+  "ui_dm_link_card_remove": "إرسال دون المعاينة",
+  "ui_share_search": "بحث",
+  "ui_share_post": "نشر",
+  "ui_share_note": "اكتب رسالة…",
+  "ui_share_send": "إرسال",
+  "ui_share_sent": "أُرسلت",
+  "ui_share_some_failed": "أُرسلت، لكن ليس إلى الجميع.",
+  "ui_share_failed": "تعذّر الإرسال. حاول مرة أخرى.",
+  "ui_follower_one": "متابِع"
 }

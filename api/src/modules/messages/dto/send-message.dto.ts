@@ -35,6 +35,17 @@ export class SendMessageDto {
   @IsUUID()
   replyToId?: string;
 
+  /**
+   * The card for the first link in the body, sealed on the sender's phone.
+   *
+   * Room for a small picture: the card carries its own copy, so a reader is
+   * never sent to the linked site to fetch it. The service checks the rest.
+   */
+  @IsOptional()
+  @IsString()
+  @MaxLength(96000, { message: 'That link card is too large.' })
+  linkCard?: string;
+
   /** Attachments, already uploaded. The same shape a post's take. */
   @IsOptional()
   @IsArray()

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Ilunabarra",
   "ui_wallpaper_sage": "Salbia",
   "ui_wallpaper_sand": "Harea",
-  "ui_wallpaper_dots": "Puntuak"
+  "ui_wallpaper_dots": "Puntuak",
+  "ui_dm_wallpaper_apply": "Aplikatu",
+  "ui_dm_wallpaper_current": "Unekoa",
+  "ui_dm_link_card_remove": "Bidali aurrebistarik gabe",
+  "ui_share_search": "Bilatu",
+  "ui_share_post": "Argitaratu",
+  "ui_share_note": "Idatzi mezu bat…",
+  "ui_share_send": "Bidali",
+  "ui_share_sent": "Bidalita",
+  "ui_share_some_failed": "Bidalita, baina ez guztiei.",
+  "ui_share_failed": "Ezin izan da bidali. Saiatu berriro.",
+  "ui_follower_one": "Follower"
 }

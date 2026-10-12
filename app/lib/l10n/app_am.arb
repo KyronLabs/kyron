@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "ምሽት",
   "ui_wallpaper_sage": "አረንጓዴ",
   "ui_wallpaper_sand": "አሸዋ",
-  "ui_wallpaper_dots": "ነጥቦች"
+  "ui_wallpaper_dots": "ነጥቦች",
+  "ui_dm_wallpaper_apply": "ተግብር",
+  "ui_dm_wallpaper_current": "የአሁኑ",
+  "ui_dm_link_card_remove": "ያለ ቅድመ እይታው ላክ",
+  "ui_share_search": "ፈልግ",
+  "ui_share_post": "ለጥፍ",
+  "ui_share_note": "መልእክት ይጻፉ…",
+  "ui_share_send": "ላክ",
+  "ui_share_sent": "ተልኳል",
+  "ui_share_some_failed": "ተልኳል፣ ግን ለሁሉም አይደለም።",
+  "ui_share_failed": "ሊላክ አልቻለም። እንደገና ይሞክሩ።",
+  "ui_follower_one": "ተከታይ"
 }

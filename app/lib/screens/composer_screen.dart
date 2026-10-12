@@ -15,6 +15,7 @@ import '../providers/composer_provider.dart';
 import '../providers/current_user_provider.dart';
 import '../routes.dart';
 import '../utils/mention_token.dart';
+import '../services/share_inbox.dart';
 import '../widgets/create_post/char_counter.dart';
 import '../widgets/create_post/poll_editor.dart';
 import '../widgets/create_post/voice_recorder_sheet.dart';
@@ -49,11 +50,15 @@ class ComposerScreen extends ConsumerStatefulWidget {
   /// create menu.
   final bool startWithVoice;
 
+  /// Text and pictures another app shared, to start the post with.
+  final SharedContent? shared;
+
   const ComposerScreen({
     super.key,
     this.quoting,
     this.startWithPoll = false,
     this.startWithVoice = false,
+    this.shared,
   });
 
   @override
@@ -97,6 +102,24 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
       // draft does not throw its recording away.
       if (widget.startWithVoice && ref.read(composerProvider).media.isEmpty) {
         unawaited(_recordVoice());
+      }
+
+      // A share goes after whatever is already being written rather than
+      // over it: a half-written post is somebody's work.
+      final shared = widget.shared;
+      if (shared != null) {
+        final notifier = ref.read(composerProvider.notifier);
+        final text = shared.text;
+        if (text != null) {
+          final existing = ref.read(composerProvider).content.trimRight();
+          notifier.updateContent(
+            existing.isEmpty ? text : '$existing\n\n$text',
+          );
+        }
+        for (final path in shared.files) {
+          if (!ref.read(composerProvider).canAddMedia) break;
+          unawaited(notifier.attachFile(path, MediaKind.image));
+        }
       }
 
       // The provider may already hold a restored draft.

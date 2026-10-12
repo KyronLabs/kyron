@@ -1393,6 +1393,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvie"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Sand"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Prikker"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Anvend"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Nuværende"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Send uden forhåndsvisningen"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Søg"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Del opslag"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Skriv en besked…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Send"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Sendt"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Sendt, men ikke til alle."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Det kunne ikke sendes. Prøv igen."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Følger"),
     };
 
 final messageLookup = MessageLookup();

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "דמדומים",
   "ui_wallpaper_sage": "מרווה",
   "ui_wallpaper_sand": "חול",
-  "ui_wallpaper_dots": "נקודות"
+  "ui_wallpaper_dots": "נקודות",
+  "ui_dm_wallpaper_apply": "החלה",
+  "ui_dm_wallpaper_current": "נוכחי",
+  "ui_dm_link_card_remove": "שליחה בלי התצוגה המקדימה",
+  "ui_share_search": "חיפוש",
+  "ui_share_post": "פרסום",
+  "ui_share_note": "כתבו הודעה…",
+  "ui_share_send": "שליחה",
+  "ui_share_sent": "נשלח",
+  "ui_share_some_failed": "נשלח, אבל לא לכולם.",
+  "ui_share_failed": "לא ניתן היה לשלוח. נסו שוב.",
+  "ui_follower_one": "Follower"
 }
