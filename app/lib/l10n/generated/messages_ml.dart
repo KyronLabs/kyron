@@ -1365,6 +1365,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("സേജ്"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("മണൽ"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("കുത്തുകൾ"),
+      "ui_dm_wallpaper_apply":
+          MessageLookupByLibrary.simpleMessage("പ്രയോഗിക്കുക"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("നിലവിലുള്ളത്"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("പ്രിവ്യൂ ഇല്ലാതെ അയയ്ക്കുക"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("തിരയുക"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("പോസ്റ്റ് ചെയ്യുക"),
+      "ui_share_note":
+          MessageLookupByLibrary.simpleMessage("ഒരു സന്ദേശം എഴുതുക…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("അയയ്ക്കുക"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("അയച്ചു"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "അയച്ചു, പക്ഷേ എല്ലാവർക്കുമല്ല."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "അയയ്ക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

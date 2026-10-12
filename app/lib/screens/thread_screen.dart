@@ -36,6 +36,12 @@ import '../utils/emoji_only.dart';
 import '../widgets/gif_picker_sheet.dart';
 import '../widgets/overlap_stack.dart';
 import '../widgets/swipe_to_reply.dart';
+import '../widgets/message_focus.dart';
+import '../models/message_link_card.dart';
+import '../services/link_card_reader.dart';
+import '../widgets/create_post/url_preview.dart' show firstLinkIn;
+import '../widgets/hairline.dart';
+import '../widgets/link_preview_card.dart' show LinkCard;
 
 /// Which conversation, and who is in it.
 ///
@@ -82,6 +88,14 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
     duration: const Duration(milliseconds: 1100),
   );
 
+  /// The link whose card is being made for the message being written, once
+  /// the typing has paused on it.
+  String? _link;
+
+  /// A link whose card the writer took off. It stays off for that link.
+  String? _droppedLink;
+  Timer? _linkPause;
+
   @override
   void initState() {
     super.initState();
@@ -99,6 +113,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
     _scroll.dispose();
     _focus.dispose();
     _pulse.dispose();
+    _linkPause?.cancel();
     super.dispose();
   }
 
@@ -115,6 +130,7 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
 
   void _onTyping() {
     setState(_recalculate);
+    _watchLink();
     // Throttled by the notifier, so this can be called on every keystroke.
     if (_box.text.trim().isNotEmpty) {
       unawaited(
@@ -123,6 +139,33 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
             .sendTyping(),
       );
     }
+  }
+
+  /// Follows the first link in the box, settling on it only once typing
+  /// pauses, so "https://ex", "https://exa" and so on are not each read.
+  void _watchLink() {
+    final link = firstLinkIn(_box.text);
+    if (link == _link) {
+      _linkPause?.cancel();
+      return;
+    }
+    _linkPause?.cancel();
+    if (link == null) {
+      setState(() => _link = null);
+      return;
+    }
+    _linkPause = Timer(const Duration(milliseconds: 600), () {
+      if (mounted) setState(() => _link = link);
+    });
+  }
+
+  /// The card to send with the message: made, kept, and for a link still in
+  /// it. Null while it is being made -- sending does not wait for a page.
+  MessageLinkCard? get _cardToSend {
+    final link = _link;
+    if (link == null || link == _droppedLink) return null;
+    if (firstLinkIn(_box.text) != link) return null;
+    return ref.read(messageLinkCardProvider(link)).asData?.value;
   }
 
   /// Whether the list is at, or near, its newest message -- the only time
@@ -391,14 +434,20 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
     }
     final text = quick ?? _box.text;
     final answering = _replyingTo;
+    final card = quick == null ? _cardToSend : null;
     if (quick == null) _box.clear();
-    setState(() => _replyingTo = null);
+    setState(() {
+      _replyingTo = null;
+      _link = null;
+      _droppedLink = null;
+    });
     unawaited(HapticFeedback.selectionClick());
     await ref.read(threadProvider(widget.args.conversationId).notifier).send(
           text,
           senderId: me,
           media: quick == null ? _media.ready : const [],
           replyToId: answering?.id,
+          linkCard: card,
         );
     if (quick == null) _media.clear();
     _toNewest(animate: true);
@@ -570,7 +619,14 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
                     ),
                   ),
                   Positioned.fill(
-                    child: _body(state, notifier, me, people, self),
+                    child: _WallpaperScope(
+                      onWallpaper: !ref
+                          .watch(
+                            chatWallpaperProvider(widget.args.conversationId),
+                          )
+                          .isNone,
+                      child: _body(state, notifier, me, people, self),
+                    ),
                   ),
                   // Above the composer, clear of the last bubble. A chat is
                   // read from the bottom, so this brings the reader back to
@@ -602,6 +658,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
                 _ => null,
               },
               onCancelReply: () => setState(() => _replyingTo = null),
+              link: _link == _droppedLink ? null : _link,
+              onDropLink: () => setState(() => _droppedLink = _link),
             ),
           ],
         ),
@@ -940,12 +998,26 @@ class _Bubble extends StatelessWidget {
     // The message's own gestures go on the message, and not on the quote
     // above it: inside the double-tap's reach, a tap on the quote had to wait
     // out the double-tap window before it went anywhere.
-    content = GestureDetector(
-      onLongPress: () => _openOptions(context),
-      // A heart on a double tap. Not on a message the server does not have
-      // yet: there is nothing for it to attach to.
-      onDoubleTap: _canReact ? onToggleHeart : null,
-      child: content,
+    final lifted = content;
+    content = Builder(
+      builder: (inner) => GestureDetector(
+        // From where the message is, so it can be lifted out of the page in
+        // place rather than described in a sheet that covers it.
+        onLongPress: () => _openOptions(context, inner, lifted),
+        // A heart on a double tap. Not on a message the server does not
+        // have yet: there is nothing for it to attach to.
+        onDoubleTap: _canReact ? onToggleHeart : null,
+        child: ValueListenableBuilder<String?>(
+          valueListenable: _focused,
+          // Hidden while it is lifted: the copy above the blur is the
+          // message, and the original showing through under it is a ghost.
+          builder: (_, focused, child) => Opacity(
+            opacity: focused == message.id ? 0 : 1,
+            child: child,
+          ),
+          child: lifted,
+        ),
+      ),
     );
 
     if (message.replyToId != null) {
@@ -961,19 +1033,21 @@ class _Bubble extends StatelessWidget {
               SpacingTokens.space4,
               SpacingTokens.space4,
             ),
-            child: Text(
-              mine
-                  ? AppLocalizations.of(context)
-                      .ui('ui_dm_you_replied', 'You replied')
-                  : AppLocalizations.of(context).dmReplied(
-                      sender?.displayName ??
-                          answeredAuthor ??
-                          AppLocalizations.of(context)
-                              .ui('ui_dm_someone', 'Someone'),
-                    ),
-              style: TextStyle(
-                fontSize: TypographyTokens.fontSize1,
-                color: scheme.onSurface.withValues(alpha: 0.55),
+            child: _ChromeLabel(
+              child: Text(
+                mine
+                    ? AppLocalizations.of(context)
+                        .ui('ui_dm_you_replied', 'You replied')
+                    : AppLocalizations.of(context).dmReplied(
+                        sender?.displayName ??
+                            answeredAuthor ??
+                            AppLocalizations.of(context)
+                                .ui('ui_dm_someone', 'Someone'),
+                      ),
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize1,
+                  color: scheme.onSurface.withValues(alpha: 0.55),
+                ),
               ),
             ),
           ),
@@ -1133,19 +1207,28 @@ class _Bubble extends StatelessWidget {
         : mine
             ? scheme.onPrimary
             : scheme.onSurface;
+    final card = hasText && !message.unreadable ? message.linkCard : null;
+    final width = MediaQuery.sizeOf(context).width;
 
     return Container(
-      constraints: BoxConstraints(
-        maxWidth: MediaQuery.sizeOf(context).width * 0.75,
-      ),
+      constraints: BoxConstraints(maxWidth: width * 0.75),
+      // A card sets the bubble's width -- the share of the screen a message's
+      // pictures take -- rather than the words under it, which would squeeze
+      // its picture to the width of "look".
+      width: card == null ? null : width * 0.66,
       // At this padding one line of body text makes a bubble exactly as tall
       // as its corners are round, which is what draws it as a pill. A voice
       // note alone is held tighter: its play button is already a full
       // target, and the text bubble's padding round that made it half as
-      // tall again as a line of text.
-      padding: !hasText && message.media.any((m) => m.isVoice)
-          ? const EdgeInsets.fromLTRB(4, 4, 14, 4)
-          : const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      // tall again as a line of text. A card runs to the bubble's edges:
+      // inset, it was framed in the bubble's colour, the thick blue frame
+      // the pictures were taken out of the bubble to be rid of.
+      padding: card != null
+          ? EdgeInsets.zero
+          : !hasText && message.media.any((m) => m.isVoice)
+              ? const EdgeInsets.fromLTRB(4, 4, 14, 4)
+              : const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      clipBehavior: card != null ? Clip.antiAlias : Clip.none,
       decoration: BoxDecoration(
         color: message.failed
             ? scheme.error.withValues(alpha: 0.12)
@@ -1158,8 +1241,12 @@ class _Bubble extends StatelessWidget {
                 // apps this was measured against use. `Highest` is for
                 // something there is one of.
                 : scheme.surfaceContainer,
-        border:
-            overlapping ? Border.all(color: scheme.surface, width: 2) : null,
+        // The page's colour round a reply that rides over its quote, so the
+        // two read as stacked. Not on a wallpaper: there the page's colour
+        // is not what is behind it, and the ring showed as a white circle.
+        border: overlapping && !_WallpaperScope.of(context)
+            ? Border.all(color: scheme.surface, width: 2)
+            : null,
         // Round all round, except where it meets the message above or below
         // from the same person: there, on the sender's side, the corners
         // tuck in.
@@ -1171,7 +1258,10 @@ class _Bubble extends StatelessWidget {
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // A card spans the bubble, whatever the length of its title.
+        crossAxisAlignment: card != null
+            ? CrossAxisAlignment.stretch
+            : CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           // Unframed: the bubble is the frame. In the sender's own bubble,
@@ -1185,21 +1275,43 @@ class _Bubble extends StatelessWidget {
             ),
             if (hasText) const SizedBox(height: SpacingTokens.space8),
           ],
+          // The link's card first, the words that carried it under it: the
+          // order a reader meets them in every messenger.
+          if (card != null)
+            LinkCard(
+              key: ValueKey('link-card-${message.id}'),
+              preview: card.asPreview,
+              image: card.image == null ? null : MemoryImage(card.image!),
+              ink: ink,
+              // A shade of whatever the bubble is, rather than a hairline
+              // inside an edge that is already there.
+              fill: mine && !message.failed
+                  ? Colors.black.withValues(alpha: 0.14)
+                  : scheme.onSurface.withValues(alpha: 0.05),
+              // The bubble's own corners clip it.
+              radius: 0,
+              placeholder: false,
+            ),
           if (hasText)
-            Text(
-              // Said, not shown as ciphertext, and set apart from anything
-              // somebody actually wrote: in italics, a step quieter.
-              message.unreadable
-                  ? AppLocalizations.of(context).ui(
-                      'ui_dm_unreadable',
-                      'This message cannot be read on this device.',
-                    )
-                  : message.body,
-              style: TextStyle(
-                fontSize: TypographyTokens.fontSize3,
-                height: 1.3,
-                fontStyle: message.unreadable ? FontStyle.italic : null,
-                color: message.unreadable ? ink.withValues(alpha: 0.7) : ink,
+            Padding(
+              padding: card == null
+                  ? EdgeInsets.zero
+                  : const EdgeInsets.fromLTRB(14, 8, 14, 10),
+              child: Text(
+                // Said, not shown as ciphertext, and set apart from anything
+                // somebody actually wrote: in italics, a step quieter.
+                message.unreadable
+                    ? AppLocalizations.of(context).ui(
+                        'ui_dm_unreadable',
+                        'This message cannot be read on this device.',
+                      )
+                    : message.body,
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize3,
+                  height: 1.3,
+                  fontStyle: message.unreadable ? FontStyle.italic : null,
+                  color: message.unreadable ? ink.withValues(alpha: 0.7) : ink,
+                ),
               ),
             ),
         ],
@@ -1213,19 +1325,44 @@ class _Bubble extends StatelessWidget {
   ///
   /// This used to be long-press-to-delete and nothing else, which meant a long
   /// press on somebody else's message did nothing at all.
-  Future<void> _openOptions(BuildContext context) async {
+  Future<void> _openOptions(
+    BuildContext context,
+    BuildContext at,
+    Widget lifted,
+  ) async {
     final copyable = message.body.trim().isNotEmpty && !message.unreadable;
+    final box = at.findRenderObject();
+    if (box is! RenderBox || !box.hasSize) return;
+    final rect = box.localToGlobal(Offset.zero) & box.size;
 
+    unawaited(HapticFeedback.mediumImpact());
     final mineReaction = me == null ? null : message.reactionOf(me!);
-    final chosen = await ActionSheet.show<String>(
+    _focused.value = message.id;
+    final chosen = await MessageFocus.show(
       context,
-      // The quick reactions first, above everything else: reacting is the
+      rect: rect,
+      alignEnd: mine,
+      // Drawn again with the page's own text style and wallpaper setting, so
+      // the copy is the message exactly. The overlay has no Material of its
+      // own: without one the copy's words took the framework's fallback
+      // style, set differently enough to overflow the space they had.
+      message: Material(
+        type: MaterialType.transparency,
+        child: DefaultTextStyle(
+          style: DefaultTextStyle.of(context).style,
+          child: _WallpaperScope(
+            onWallpaper: _WallpaperScope.of(context),
+            child: lifted,
+          ),
+        ),
+      ),
+      // The quick reactions above, everything else below: reacting is the
       // thing most often done to a message somebody else sent.
-      header: !_canReact || onReact == null
+      reactions: !_canReact || onReact == null
           ? null
-          : (sheet) => _ReactionRow(
+          : (choose) => _ReactionRow(
                 selected: mineReaction,
-                onPick: (emoji) => Navigator.pop(sheet, 'react:$emoji'),
+                onPick: (emoji) => choose('react:$emoji'),
               ),
       actions: [
         SheetAction(
@@ -1248,6 +1385,7 @@ class _Bubble extends StatelessWidget {
           ),
       ],
     );
+    _focused.value = null;
     if (chosen == null || !context.mounted) return;
 
     switch (chosen) {
@@ -1307,16 +1445,18 @@ class _Receipt extends StatelessWidget {
         top: SpacingTokens.space4,
         right: SpacingTokens.space4,
       ),
-      child: Text(
-        message.sending
-            ? l10n.ui('ui_dm_sending', 'Sending…')
-            : message.seen
-                ? l10n.ui('ui_dm_seen', 'Seen')
-                : l10n.ui('ui_dm_sent', 'Sent'),
-        style: TextStyle(
-          fontSize: TypographyTokens.fontSize1,
-          fontWeight: FontWeight.w500,
-          color: scheme.onSurface.withValues(alpha: 0.5),
+      child: _ChromeLabel(
+        child: Text(
+          message.sending
+              ? l10n.ui('ui_dm_sending', 'Sending…')
+              : message.seen
+                  ? l10n.ui('ui_dm_seen', 'Seen')
+                  : l10n.ui('ui_dm_sent', 'Sent'),
+          style: TextStyle(
+            fontSize: TypographyTokens.fontSize1,
+            fontWeight: FontWeight.w500,
+            color: scheme.onSurface.withValues(alpha: 0.5),
+          ),
         ),
       ),
     );
@@ -1381,6 +1521,10 @@ class _Composer extends StatelessWidget {
   final String? replyingToAuthor;
   final VoidCallback onCancelReply;
 
+  /// The link whose card will go with the message, while there is one.
+  final String? link;
+  final VoidCallback onDropLink;
+
   /// The longest message, in what is typed. The server holds the same line;
   /// stopping here is better than a message that is refused once sent.
   static const maxLength = 4000;
@@ -1396,8 +1540,10 @@ class _Composer extends StatelessWidget {
     required this.onGif,
     required this.onVoice,
     required this.onCancelReply,
+    required this.onDropLink,
     this.replyingTo,
     this.replyingToAuthor,
+    this.link,
   });
 
   @override
@@ -1444,11 +1590,14 @@ class _Composer extends StatelessWidget {
           ),
         ),
       ),
+      // Room on every side, the same as the thread's own margin: at eight
+      // points the + and the microphone sat on the screen's edge and the box
+      // ran almost the full width between them.
       padding: EdgeInsets.only(
-        left: SpacingTokens.space8,
-        right: SpacingTokens.space8,
-        top: SpacingTokens.space8,
-        bottom: keyboardUp ? SpacingTokens.space8 : SpacingTokens.space12,
+        left: SpacingTokens.space12,
+        right: SpacingTokens.space12,
+        top: SpacingTokens.space12,
+        bottom: keyboardUp ? SpacingTokens.space12 : SpacingTokens.space16,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -1480,6 +1629,12 @@ class _Composer extends StatelessWidget {
                 ],
               ),
             ),
+          if (link != null)
+            _LinkDraft(
+              key: ValueKey('link-draft-$link'),
+              url: link!,
+              onDrop: onDropLink,
+            ),
           if (media.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
@@ -1501,7 +1656,7 @@ class _Composer extends StatelessWidget {
                 onPressed: media.hasRoom ? onAttachments : null,
                 size: 24,
               ),
-              const SizedBox(width: SpacingTokens.space4),
+              const SizedBox(width: SpacingTokens.space8),
               Expanded(
                 child: Container(
                   constraints: const BoxConstraints(minHeight: 40),
@@ -1579,7 +1734,7 @@ class _Composer extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: SpacingTokens.space4),
+              const SizedBox(width: SpacingTokens.space8),
               // Send while there is something to send; the microphone while
               // there is not. The same place, so a voice note is one tap from
               // an empty box, the way every messenger puts it.
@@ -1601,6 +1756,95 @@ class _Composer extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// The card that will go with the message, above the box while it is
+/// written: what the reader will see, and a way to send without it.
+///
+/// Nothing at all while the page is being read and when it has no card. A
+/// placeholder there would jump the box up and back for every link with
+/// nothing to show, and a message sent before the card is ready simply goes
+/// without one.
+class _LinkDraft extends ConsumerWidget {
+  final String url;
+  final VoidCallback onDrop;
+
+  const _LinkDraft({super.key, required this.url, required this.onDrop});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final card = ref.watch(messageLinkCardProvider(url)).asData?.value;
+    if (card == null) return const SizedBox.shrink();
+    final scheme = Theme.of(context).colorScheme;
+    final image = card.image;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
+      child: Container(
+        height: 56,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+          border: Border.fromBorderSide(postRule(scheme)),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Row(
+          children: [
+            if (image != null)
+              SizedBox(
+                width: 56,
+                height: 56,
+                child: Image.memory(image, fit: BoxFit.cover),
+              ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: SpacingTokens.space12,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      card.asPreview.label,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: TypographyTokens.fontSize1,
+                        fontWeight: FontWeight.w600,
+                        color: scheme.onSurface.withValues(alpha: 0.6),
+                      ),
+                    ),
+                    if (card.title != null)
+                      Text(
+                        card.title!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: TypographyTokens.fontSize2,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            IconButton(
+              key: const ValueKey('link-draft-drop'),
+              onPressed: onDrop,
+              tooltip: AppLocalizations.of(context)
+                  .ui('ui_dm_link_card_remove', 'Send without the preview'),
+              icon: Icon(
+                Iconsax.close_circle_copy,
+                size: 18,
+                color: scheme.onSurface.withValues(alpha: 0.55),
+              ),
+              visualDensity: VisualDensity.compact,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -1755,7 +1999,11 @@ class _QuotedMessage extends StatelessWidget {
         SpacingTokens.space8 + 14,
       ),
       decoration: BoxDecoration(
-        color: scheme.onSurface.withValues(alpha: 0.10),
+        // A tint of the text colour on the plain page; something solid on a
+        // wallpaper, where a tint lets the picture through the words.
+        color: _WallpaperScope.of(context)
+            ? scheme.surfaceContainerHighest.withValues(alpha: 0.94)
+            : scheme.onSurface.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(RadiusTokens.radius20),
       ),
       child: Text(
@@ -1769,6 +2017,48 @@ class _QuotedMessage extends StatelessWidget {
           fontStyle: aside ? FontStyle.italic : null,
         ),
       ),
+    );
+  }
+}
+
+/// Whether the thread is drawn on a wallpaper. Read by the things that sit
+/// loose on the page -- the time, "New messages", the receipts -- which are
+/// legible on a plain page and not on a picture.
+class _WallpaperScope extends InheritedWidget {
+  const _WallpaperScope({required this.onWallpaper, required super.child});
+
+  final bool onWallpaper;
+
+  static bool of(BuildContext context) =>
+      context
+          .dependOnInheritedWidgetOfExactType<_WallpaperScope>()
+          ?.onWallpaper ??
+      false;
+
+  @override
+  bool updateShouldNotify(_WallpaperScope old) =>
+      old.onWallpaper != onWallpaper;
+}
+
+/// A small label set on a pill of the page's colour when the thread has a
+/// wallpaper, and left bare when it does not. Muted text straight on a photo
+/// is muted text nobody can read.
+class _ChromeLabel extends StatelessWidget {
+  const _ChromeLabel({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_WallpaperScope.of(context)) return child;
+    final scheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+      decoration: BoxDecoration(
+        color: scheme.surface.withValues(alpha: 0.88),
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+      ),
+      child: child,
     );
   }
 }
@@ -2014,22 +2304,19 @@ class _ReactionRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    // As wide as the six of them and no wider: a pill over the message, not
+    // a toolbar across the screen.
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        SpacingTokens.space12,
-        0,
-        SpacingTokens.space12,
-        SpacingTokens.space8,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space4),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.min,
         children: [
           for (final emoji in _quickReactions)
             InkResponse(
               onTap: () => onPick(emoji),
               radius: 26,
               child: Container(
-                padding: const EdgeInsets.all(SpacingTokens.space8),
+                padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: emoji == selected
@@ -2038,7 +2325,7 @@ class _ReactionRow extends StatelessWidget {
                 ),
                 child: Text(
                   emoji,
-                  style: const TextStyle(fontSize: TypographyTokens.fontSize7),
+                  style: const TextStyle(fontSize: TypographyTokens.fontSize6),
                 ),
               ),
             ),
@@ -2047,6 +2334,10 @@ class _ReactionRow extends StatelessWidget {
     );
   }
 }
+
+/// The message lifted out of the page by a long press, while it is. One at a
+/// time, so one notifier for the screen.
+final ValueNotifier<String?> _focused = ValueNotifier<String?>(null);
 
 /// The pill on a bubble's corner saying who reacted with what.
 ///
@@ -2236,12 +2527,14 @@ class _NewMessagesDivider extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: SpacingTokens.space12,
             ),
-            child: Text(
-              AppLocalizations.of(context)
-                  .ui('ui_dm_new_messages', 'New messages'),
-              style: TextStyle(
-                fontSize: TypographyTokens.fontSize1,
-                color: muted,
+            child: _ChromeLabel(
+              child: Text(
+                AppLocalizations.of(context)
+                    .ui('ui_dm_new_messages', 'New messages'),
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize1,
+                  color: muted,
+                ),
               ),
             ),
           ),
@@ -2293,15 +2586,17 @@ class _TimeHeader extends StatelessWidget {
           bottom: SpacingTokens.space8,
         ),
         child: Center(
-          child: Text(
-            _stamp(context, at),
-            style: TextStyle(
-              fontSize: TypographyTokens.fontSize1,
-              fontWeight: FontWeight.w500,
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withValues(alpha: 0.5),
+          child: _ChromeLabel(
+            child: Text(
+              _stamp(context, at),
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSurface
+                    .withValues(alpha: 0.6),
+              ),
             ),
           ),
         ),
@@ -2328,25 +2623,29 @@ class _EncryptionNotice extends StatelessWidget {
         horizontal: SpacingTokens.space24,
         vertical: SpacingTokens.space16,
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Iconsax.lock_copy, size: 13, color: muted),
-          const SizedBox(width: SpacingTokens.space4),
-          Flexible(
-            child: Text(
-              AppLocalizations.of(context).ui(
-                'ui_dm_e2ee_notice',
-                'Messages are end-to-end encrypted',
+      child: Center(
+        child: _ChromeLabel(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Iconsax.lock_copy, size: 13, color: muted),
+              const SizedBox(width: SpacingTokens.space4),
+              Flexible(
+                child: Text(
+                  AppLocalizations.of(context).ui(
+                    'ui_dm_e2ee_notice',
+                    'Messages are end-to-end encrypted',
+                  ),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize1,
+                    color: muted,
+                  ),
+                ),
               ),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: TypographyTokens.fontSize1,
-                color: muted,
-              ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

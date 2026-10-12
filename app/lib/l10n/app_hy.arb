@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Մթնշաղ",
   "ui_wallpaper_sage": "Եղեսպակ",
   "ui_wallpaper_sand": "Ավազ",
-  "ui_wallpaper_dots": "Կետեր"
+  "ui_wallpaper_dots": "Կետեր",
+  "ui_dm_wallpaper_apply": "Կիրառել",
+  "ui_dm_wallpaper_current": "Ընթացիկ",
+  "ui_dm_link_card_remove": "Ուղարկել առանց նախադիտման",
+  "ui_share_search": "Որոնել",
+  "ui_share_post": "Հրապարակել",
+  "ui_share_note": "Գրեք հաղորդագրություն…",
+  "ui_share_send": "Ուղարկել",
+  "ui_share_sent": "Ուղարկված է",
+  "ui_share_some_failed": "Ուղարկված է, բայց ոչ բոլորին։",
+  "ui_share_failed": "Չհաջողվեց ուղարկել։ Կրկին փորձեք։",
+  "ui_follower_one": "Follower"
 }

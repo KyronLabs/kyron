@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Alacakaranlık",
   "ui_wallpaper_sage": "Adaçayı",
   "ui_wallpaper_sand": "Kum",
-  "ui_wallpaper_dots": "Noktalar"
+  "ui_wallpaper_dots": "Noktalar",
+  "ui_dm_wallpaper_apply": "Uygula",
+  "ui_dm_wallpaper_current": "Geçerli",
+  "ui_dm_link_card_remove": "Önizleme olmadan gönder",
+  "ui_share_search": "Ara",
+  "ui_share_post": "Paylaş",
+  "ui_share_note": "Bir mesaj yaz…",
+  "ui_share_send": "Gönder",
+  "ui_share_sent": "Gönderildi",
+  "ui_share_some_failed": "Gönderildi, ancak herkese değil.",
+  "ui_share_failed": "Gönderilemedi. Tekrar deneyin.",
+  "ui_follower_one": "Follower"
 }

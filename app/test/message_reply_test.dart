@@ -41,6 +41,7 @@ class _Repo extends MessagesRepository {
     String body, {
     List<PendingMedia> media = const [],
     String? replyToId,
+    String? linkCard,
   }) async {
     bodies.add(body);
     repliedTo.add(replyToId);

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "ბინდი",
   "ui_wallpaper_sage": "სალბი",
   "ui_wallpaper_sand": "ქვიშა",
-  "ui_wallpaper_dots": "წერტილები"
+  "ui_wallpaper_dots": "წერტილები",
+  "ui_dm_wallpaper_apply": "გამოყენება",
+  "ui_dm_wallpaper_current": "მიმდინარე",
+  "ui_dm_link_card_remove": "გაგზავნა გადახედვის გარეშე",
+  "ui_share_search": "ძიება",
+  "ui_share_post": "გამოქვეყნება",
+  "ui_share_note": "დაწერეთ შეტყობინება…",
+  "ui_share_send": "გაგზავნა",
+  "ui_share_sent": "გაიგზავნა",
+  "ui_share_some_failed": "გაიგზავნა, მაგრამ არა ყველასთან.",
+  "ui_share_failed": "ვერ გაიგზავნა. სცადეთ ხელახლა.",
+  "ui_follower_one": "Follower"
 }

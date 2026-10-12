@@ -1028,6 +1028,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("鼠尾草"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("沙"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("圆点"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("应用"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("当前"),
+      "ui_dm_link_card_remove": MessageLookupByLibrary.simpleMessage("不带预览发送"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("搜索"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("发帖"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("写条消息…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("发送"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("已发送"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("已发送，但有人没收到。"),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage("无法发送。请重试。"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("粉丝"),
     };
 
 final messageLookup = MessageLookup();

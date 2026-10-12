@@ -718,7 +718,10 @@ class _Counts extends StatelessWidget {
       children: [
         _Count(
           value: profile.followers,
-          label: AppLocalizations.of(context).followers,
+          // "1 Followers" read as a typo on every new account's profile.
+          label: profile.followers == 1
+              ? AppLocalizations.of(context).ui('ui_follower_one', 'Follower')
+              : AppLocalizations.of(context).followers,
           onTap: () => Navigator.pushNamed(
             context,
             Routes.followers,
@@ -825,14 +828,21 @@ class _ActionsState extends ConsumerState<_Actions> {
   @override
   Widget build(BuildContext context) {
     final profile = widget.profile;
+    // As tall as the button they sit beside: Follow is the compact one, Edit
+    // profile on your own page the full one.
+    final size =
+        profile.isOwnProfile ? ActionButton.height : ActionButton.compactHeight;
 
     return Row(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         ActionIconButton(
+          key: const ValueKey('profile-share'),
           icon: Iconsax.export_1_copy,
           tooltip: AppLocalizations.of(context).literalshareThisProfile,
+          filled: true,
+          size: size,
           onPressed: () => shareProfile(profile),
         ),
         const SizedBox(width: SpacingTokens.space8),
@@ -841,8 +851,11 @@ class _ActionsState extends ConsumerState<_Actions> {
         // first.
         if (!profile.isOwnProfile) ...[
           ActionIconButton(
+            key: const ValueKey('profile-message'),
             icon: Iconsax.message_text_copy,
             tooltip: AppLocalizations.of(context).message,
+            filled: true,
+            size: size,
             busy: _opening,
             onPressed: _message,
           ),

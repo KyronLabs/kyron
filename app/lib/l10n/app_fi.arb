@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Hämärä",
   "ui_wallpaper_sage": "Salvia",
   "ui_wallpaper_sand": "Hiekka",
-  "ui_wallpaper_dots": "Pisteet"
+  "ui_wallpaper_dots": "Pisteet",
+  "ui_dm_wallpaper_apply": "Käytä",
+  "ui_dm_wallpaper_current": "Nykyinen",
+  "ui_dm_link_card_remove": "Lähetä ilman esikatselua",
+  "ui_share_search": "Hae",
+  "ui_share_post": "Julkaise",
+  "ui_share_note": "Kirjoita viesti…",
+  "ui_share_send": "Lähetä",
+  "ui_share_sent": "Lähetetty",
+  "ui_share_some_failed": "Lähetetty, mutta ei kaikille.",
+  "ui_share_failed": "Lähettäminen ei onnistunut. Yritä uudelleen.",
+  "ui_follower_one": "Follower"
 }

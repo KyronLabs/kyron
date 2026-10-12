@@ -21,6 +21,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/services/message_crypto.dart';
 import 'package:kyron_app/services/message_vault.dart';
+import 'package:kyron_app/services/link_card_reader.dart';
+import 'package:kyron_app/models/message_link_card.dart';
 import 'package:kyron_app/utils/emoji_only.dart';
 import 'package:kyron_app/widgets/media_grid.dart';
 import 'package:kyron_app/widgets/overlap_stack.dart';
@@ -40,6 +42,7 @@ class _Repo extends MessagesRepository {
   final List<String> bodies = [];
   final List<String?> repliedTo = [];
   final List<List<PendingMedia>> sentMedia = [];
+  final List<String?> cards = [];
   final List<(String, String)> reacted = [];
   final List<String> unreacted = [];
   int typingSent = 0;
@@ -76,10 +79,12 @@ class _Repo extends MessagesRepository {
     String body, {
     List<PendingMedia> media = const [],
     String? replyToId,
+    String? linkCard,
   }) async {
     bodies.add(body);
     repliedTo.add(replyToId);
     sentMedia.add(media);
+    cards.add(linkCard);
     return DirectMessage(
       id: 'sent-${bodies.length}',
       body: body,
@@ -149,11 +154,14 @@ Future<_Repo> _open(
   WidgetTester tester,
   List<DirectMessage> thread, {
   DateTime? lastReadAt,
+  LinkCardReader? reader,
 }) async {
   final repo = _Repo(thread, lastReadAt: lastReadAt);
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
+        // Never the network: a link typed in a test reads no page.
+        linkCardReaderProvider.overrideWithValue(reader ?? _NoPages()),
         currentUserProvider.overrideWith((ref) => _Me(ref)),
         threadProvider.overrideWith(
           (ref, id) => ThreadNotifier(
@@ -171,6 +179,29 @@ Future<_Repo> _open(
   );
   await tester.pumpAndSettle();
   return repo;
+}
+
+class _NoPages extends LinkCardReader {
+  @override
+  Future<MessageLinkCard?> read(String url) async => null;
+}
+
+/// Answers every link with the same card.
+class _OnePage extends LinkCardReader {
+  _OnePage(this.card);
+  final MessageLinkCard card;
+  final List<String> asked = [];
+
+  @override
+  Future<MessageLinkCard?> read(String url) async {
+    asked.add(url);
+    return MessageLinkCard(
+      url: url,
+      title: card.title,
+      siteName: card.siteName,
+      image: card.image,
+    );
+  }
 }
 
 /// A message sealed for a device that is not this one. The vault in these
@@ -784,10 +815,21 @@ void main() {
       expect(find.text('Quiet dunes'), findsOneWidget);
       await tester.scrollUntilVisible(find.text('Dusk'), -300);
 
+      // A tap previews; nothing changes until Apply.
+      TextButton apply() => tester.widget<TextButton>(
+            find.byKey(const ValueKey('wallpaper-apply')),
+          );
+      expect(apply().onPressed, isNull);
       await tester.tap(find.text('Dusk'));
       await tester.pumpAndSettle();
-      await tester.pageBack();
+      final prefsBefore = await SharedPreferences.getInstance();
+      expect(prefsBefore.getString(ChatWallpaperNotifier.keyFor('c1')), isNull);
+      expect(apply().onPressed, isNotNull);
+
+      await tester.tap(find.byKey(const ValueKey('wallpaper-apply')));
       await tester.pumpAndSettle();
+      // Apply goes back to the details page; back again to the thread.
+      expect(find.byType(ChatWallpaperScreen), findsNothing);
       await tester.pageBack();
       await tester.pumpAndSettle();
 
@@ -837,6 +879,225 @@ void main() {
       expect(repo.hidden, ['c1']);
       expect(find.byType(ConversationInfoScreen), findsNothing);
       expect(find.byType(ThreadScreen), findsNothing);
+    });
+  });
+
+  group('a long-pressed message', () {
+    testWidgets('floats where it was, reactions above and options below', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(1170, 2532);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+      await _open(tester, [
+        _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+      ]);
+      final before = tester.getRect(find.text('made it home'));
+
+      await tester.longPress(find.text('made it home'));
+      await tester.pumpAndSettle();
+
+      // The page behind is blurred, and a tap on it is caught there.
+      expect(
+        find.byKey(const ValueKey('message-focus-backdrop')),
+        findsOneWidget,
+      );
+      final lifted = find.descendant(
+        of: find.byKey(const ValueKey('message-focus-message')),
+        matching: find.text('made it home'),
+      );
+      expect(lifted, findsOneWidget);
+      // Lifted in place, not moved somewhere else on the screen.
+      expect(tester.getCenter(lifted).dy, closeTo(before.center.dy, 2));
+
+      final reactions = tester.getRect(find.text('😂').last);
+      final reply = tester.getRect(
+        find.byKey(const ValueKey('message-focus-reply')),
+      );
+      expect(reactions.bottom, lessThanOrEqualTo(tester.getRect(lifted).top));
+      expect(reply.top, greaterThanOrEqualTo(tester.getRect(lifted).bottom));
+      // From the sender's side: their message, so the left.
+      expect(reply.left, lessThan(200));
+    });
+
+    testWidgets('the copy is set exactly as the message is', (tester) async {
+      // The overlay has no Material of its own. Without the page's text style
+      // carried over, the copy's words took the framework's fallback --
+      // another size, and on a phone a yellow underline -- and a long message
+      // overflowed the space it had been measured into.
+      const long = 'it took two trains and a bus, and the second train sat '
+          'outside the station for forty minutes for no reason anyone gave';
+      await _open(tester, [
+        _msg('m1', long, 'them', DateTime(2026, 1, 1, 9)),
+      ]);
+      final before = tester.getSize(find.text(long));
+
+      await tester.longPress(find.text(long));
+      await tester.pumpAndSettle();
+
+      final copy = find.descendant(
+        of: find.byKey(const ValueKey('message-focus-message')),
+        matching: find.text(long),
+      );
+      expect(tester.getSize(copy), before);
+      final style = DefaultTextStyle.of(tester.element(copy)).style;
+      expect(style.decoration, isNot(TextDecoration.underline));
+    });
+
+    testWidgets('the original is hidden while its copy floats', (
+      tester,
+    ) async {
+      await _open(tester, [
+        _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+      ]);
+
+      await tester.longPress(find.text('made it home'));
+      await tester.pumpAndSettle();
+
+      final hidden = tester.widgetList<Opacity>(
+        find.ancestor(
+          of: find.text('made it home').first,
+          matching: find.byType(Opacity),
+        ),
+      );
+      expect(hidden.any((o) => o.opacity == 0), isTrue);
+
+      // A tap off it puts everything back, with nothing done.
+      await tester.tapAt(const Offset(20, 120));
+      await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey('message-focus-backdrop')),
+        findsNothing,
+      );
+      final shown = tester.widgetList<Opacity>(
+        find.ancestor(
+          of: find.text('made it home'),
+          matching: find.byType(Opacity),
+        ),
+      );
+      expect(shown.every((o) => o.opacity == 1), isTrue);
+    });
+
+    testWidgets('Reply from the menu answers that message', (tester) async {
+      final repo = await _open(tester, [
+        _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+      ]);
+
+      await tester.longPress(find.text('made it home'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('message-focus-reply')));
+      await tester.pumpAndSettle();
+
+      await tester.enterText(find.byType(TextField), 'good');
+      await tester.pump();
+      await tester.tap(find.byIcon(Iconsax.send_1));
+      await tester.pumpAndSettle();
+      expect(repo.repliedTo, ['m1']);
+    });
+
+    testWidgets('a message at the bottom moves up to make room for its menu', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(1170, 2532);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+      await _open(tester, [
+        // Newest first, as the server sends them: line 29 is at the bottom.
+        for (var i = 29; i >= 0; i--)
+          _msg('m$i', 'line $i', 'them', DateTime(2026, 1, 1, 9, i)),
+      ]);
+
+      await tester.longPress(find.text('line 29'));
+      await tester.pumpAndSettle();
+
+      // The last row of the menu is on the screen, and the message moved up
+      // to make room for it rather than the menu going off the bottom.
+      final screen = tester.view.physicalSize / tester.view.devicePixelRatio;
+      final last = find.byKey(const ValueKey('message-focus-copy'));
+      expect(tester.getRect(last).bottom, lessThan(screen.height));
+      final lifted = find.descendant(
+        of: find.byKey(const ValueKey('message-focus-message')),
+        matching: find.text('line 29'),
+      );
+      expect(
+        tester.getRect(lifted).bottom,
+        lessThan(tester.getRect(last).top),
+      );
+    });
+  });
+
+  group('a link card', () {
+    const page = MessageLinkCard(
+      url: 'https://example.com/post',
+      title: 'A post worth reading',
+      siteName: 'Example',
+    );
+
+    testWidgets('is drawn in the bubble, above the words', (tester) async {
+      const body = 'look https://example.com/post';
+      await _open(tester, [
+        DirectMessage(
+          id: 'm1',
+          body: body,
+          senderId: 'them',
+          createdAt: DateTime(2026),
+          linkCardRaw: page.encode(),
+        ),
+      ]);
+
+      final card = find.byKey(const ValueKey('link-card-m1'));
+      expect(card, findsOneWidget);
+      expect(find.text('A post worth reading'), findsOneWidget);
+      expect(
+        tester.getTopLeft(card).dy,
+        lessThan(tester.getTopLeft(find.text(body)).dy),
+      );
+    });
+
+    testWidgets('is made while the link is written, and sent with it', (
+      tester,
+    ) async {
+      final reader = _OnePage(page);
+      final repo = await _open(tester, const [], reader: reader);
+
+      await tester.enterText(
+        find.byType(TextField),
+        'look https://example.com/post',
+      );
+      // Read once the typing settles, not on every character.
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(reader.asked, isEmpty);
+      await tester.pump(const Duration(milliseconds: 700));
+      await tester.pump();
+      expect(reader.asked, ['https://example.com/post']);
+      expect(find.text('A post worth reading'), findsOneWidget);
+
+      await tester.tap(find.byTooltip('Send'));
+      await tester.pumpAndSettle();
+
+      final sent = MessageLinkCard.tryDecode(
+        repo.cards.single!,
+        body: repo.bodies.single,
+      );
+      expect(sent?.title, 'A post worth reading');
+    });
+
+    testWidgets('taken off, the message goes without it', (tester) async {
+      final repo = await _open(tester, const [], reader: _OnePage(page));
+
+      await tester.enterText(
+        find.byType(TextField),
+        'look https://example.com/post',
+      );
+      await tester.pump(const Duration(milliseconds: 700));
+      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('link-draft-drop')));
+      await tester.pump();
+      expect(find.text('A post worth reading'), findsNothing);
+
+      await tester.tap(find.byTooltip('Send'));
+      await tester.pumpAndSettle();
+      expect(repo.cards.single, isNull);
     });
   });
 

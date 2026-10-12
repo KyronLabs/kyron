@@ -1420,6 +1420,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Salvei"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Liiv"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Täpid"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Rakenda"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Praegune"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Saada ilma eelvaateta"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Otsi"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Postita"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Kirjuta sõnum…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Saada"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Saadetud"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Saadetud, aga mitte kõigile."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Seda ei saanud saata. Proovi uuesti."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Jälgija"),
     };
 
 final messageLookup = MessageLookup();

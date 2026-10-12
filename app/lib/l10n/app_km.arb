@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "ព្រលប់",
   "ui_wallpaper_sage": "បៃតងស្រាល",
   "ui_wallpaper_sand": "ខ្សាច់",
-  "ui_wallpaper_dots": "ចំណុច"
+  "ui_wallpaper_dots": "ចំណុច",
+  "ui_dm_wallpaper_apply": "អនុវត្ត",
+  "ui_dm_wallpaper_current": "បច្ចុប្បន្ន",
+  "ui_dm_link_card_remove": "ផ្ញើដោយគ្មានការមើលជាមុន",
+  "ui_share_search": "ស្វែងរក",
+  "ui_share_post": "បង្ហោះ",
+  "ui_share_note": "សរសេរសារ…",
+  "ui_share_send": "ផ្ញើ",
+  "ui_share_sent": "បានផ្ញើ",
+  "ui_share_some_failed": "បានផ្ញើ ប៉ុន្តែមិនមែនទៅគ្រប់គ្នាទេ។",
+  "ui_share_failed": "មិនអាចផ្ញើបានទេ។ សូមព្យាយាមម្តងទៀត។",
+  "ui_follower_one": "Follower"
 }

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Ìrọ̀lẹ́",
   "ui_wallpaper_sage": "Ewé",
   "ui_wallpaper_sand": "Iyanrìn",
-  "ui_wallpaper_dots": "Àmì kékeré"
+  "ui_wallpaper_dots": "Àmì kékeré",
+  "ui_dm_wallpaper_apply": "Lò ó",
+  "ui_dm_wallpaper_current": "Lọ́wọ́lọ́wọ́",
+  "ui_dm_link_card_remove": "Fi ránṣẹ́ láìsí àwòtẹ́lẹ̀",
+  "ui_share_search": "Wá",
+  "ui_share_post": "Gbé jáde",
+  "ui_share_note": "Kọ ìfiránṣẹ́…",
+  "ui_share_send": "Fi ránṣẹ́",
+  "ui_share_sent": "Ti fi ránṣẹ́",
+  "ui_share_some_failed": "Ti fi ránṣẹ́, ṣùgbọ́n kì í ṣe sí gbogbo ènìyàn.",
+  "ui_share_failed": "Kò ṣeé fi ránṣẹ́. Gbìyànjú lẹ́ẹ̀kan sí i.",
+  "ui_follower_one": "Follower"
 }

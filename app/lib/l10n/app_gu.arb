@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "સંધ્યા",
   "ui_wallpaper_sage": "સેજ",
   "ui_wallpaper_sand": "રેતી",
-  "ui_wallpaper_dots": "ટપકાં"
+  "ui_wallpaper_dots": "ટપકાં",
+  "ui_dm_wallpaper_apply": "લાગુ કરો",
+  "ui_dm_wallpaper_current": "વર્તમાન",
+  "ui_dm_link_card_remove": "પૂર્વાવલોકન વિના મોકલો",
+  "ui_share_search": "શોધો",
+  "ui_share_post": "પોસ્ટ કરો",
+  "ui_share_note": "સંદેશ લખો…",
+  "ui_share_send": "મોકલો",
+  "ui_share_sent": "મોકલ્યું",
+  "ui_share_some_failed": "મોકલ્યું, પણ બધાને નહીં.",
+  "ui_share_failed": "મોકલી શકાયું નહીં. ફરી પ્રયાસ કરો.",
+  "ui_follower_one": "Follower"
 }

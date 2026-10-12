@@ -18,3 +18,9 @@ String _trim(double value) {
       ? rounded.toStringAsFixed(0)
       : rounded.toStringAsFixed(1);
 }
+
+/// A count with its noun, in the singular for exactly one: "1 follower",
+/// "2 followers", "1.2K followers". The noun was always written plural, so
+/// somebody with one follower was shown "1 followers".
+String countOf(int value, String singular, {String? plural}) =>
+    '${formatCount(value)} ${value == 1 ? singular : plural ?? '${singular}s'}';

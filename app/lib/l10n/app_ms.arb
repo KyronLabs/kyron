@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Senja",
   "ui_wallpaper_sage": "Sage",
   "ui_wallpaper_sand": "Pasir",
-  "ui_wallpaper_dots": "Titik"
+  "ui_wallpaper_dots": "Titik",
+  "ui_dm_wallpaper_apply": "Guna",
+  "ui_dm_wallpaper_current": "Semasa",
+  "ui_dm_link_card_remove": "Hantar tanpa pratonton",
+  "ui_share_search": "Cari",
+  "ui_share_post": "Siarkan",
+  "ui_share_note": "Tulis mesej…",
+  "ui_share_send": "Hantar",
+  "ui_share_sent": "Dihantar",
+  "ui_share_some_failed": "Dihantar, tetapi bukan kepada semua orang.",
+  "ui_share_failed": "Tidak dapat dihantar. Cuba lagi.",
+  "ui_follower_one": "Follower"
 }

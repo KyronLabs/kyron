@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Dusk",
   "ui_wallpaper_sage": "Sage",
   "ui_wallpaper_sand": "Sand",
-  "ui_wallpaper_dots": "Dots"
+  "ui_wallpaper_dots": "Dots",
+  "ui_dm_wallpaper_apply": "Apply",
+  "ui_dm_wallpaper_current": "Current",
+  "ui_dm_link_card_remove": "Send without the preview",
+  "ui_share_search": "Search",
+  "ui_share_post": "Post",
+  "ui_share_note": "Write a message…",
+  "ui_share_send": "Send",
+  "ui_share_sent": "Sent",
+  "ui_share_some_failed": "Sent, but not to everybody.",
+  "ui_share_failed": "That could not be sent. Try again.",
+  "ui_follower_one": "Follower"
 }

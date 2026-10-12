@@ -1142,6 +1142,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("セージ"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("サンド"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ドット"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("適用"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("現在"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("プレビューなしで送信"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("検索"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("投稿"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("メッセージを入力…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("送信"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("送信済み"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("送信しましたが、届かなかった人がいます。"),
+      "ui_share_failed":
+          MessageLookupByLibrary.simpleMessage("送信できませんでした。もう一度お試しください。"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("フォロワー"),
     };
 
 final messageLookup = MessageLookup();

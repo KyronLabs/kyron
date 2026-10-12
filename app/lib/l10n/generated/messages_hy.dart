@@ -1362,6 +1362,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Եղեսպակ"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Ավազ"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Կետեր"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Կիրառել"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Ընթացիկ"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Ուղարկել առանց նախադիտման"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Որոնել"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Հրապարակել"),
+      "ui_share_note":
+          MessageLookupByLibrary.simpleMessage("Գրեք հաղորդագրություն…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Ուղարկել"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Ուղարկված է"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Ուղարկված է, բայց ոչ բոլորին։"),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց ուղարկել։ Կրկին փորձեք։"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Hoàng hôn",
   "ui_wallpaper_sage": "Xô thơm",
   "ui_wallpaper_sand": "Cát",
-  "ui_wallpaper_dots": "Chấm bi"
+  "ui_wallpaper_dots": "Chấm bi",
+  "ui_dm_wallpaper_apply": "Áp dụng",
+  "ui_dm_wallpaper_current": "Hiện tại",
+  "ui_dm_link_card_remove": "Gửi không kèm bản xem trước",
+  "ui_share_search": "Tìm kiếm",
+  "ui_share_post": "Đăng",
+  "ui_share_note": "Viết tin nhắn…",
+  "ui_share_send": "Gửi",
+  "ui_share_sent": "Đã gửi",
+  "ui_share_some_failed": "Đã gửi, nhưng không phải đến tất cả.",
+  "ui_share_failed": "Không gửi được. Hãy thử lại.",
+  "ui_follower_one": "Follower"
 }

@@ -925,6 +925,16 @@ model Message {
   /// holds the thread decrypted already and resolves the quote itself.
   replyToId String? @db.Uuid
 
+  /// The card for the first link in the message, made on the sender's phone
+  /// and sealed the way the body is.
+  ///
+  /// Not fetched by this server, as a post's card is: that would have the
+  /// server read the address out of a message it otherwise cannot read. The
+  /// sender's phone reads the page, shrinks its picture, and seals the lot;
+  /// readers draw it without asking the linked site for anything. Null for a
+  /// message with no link, or one whose sender took the card off.
+  linkCard String? @db.Text
+
   createdAt DateTime  @default(now()) @db.Timestamptz()
   // Soft delete, for the same reason posts have one: a removed message still
   // holds its place in a cursor.

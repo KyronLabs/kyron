@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Shom",
   "ui_wallpaper_sage": "Mavrak",
   "ui_wallpaper_sand": "Qum",
-  "ui_wallpaper_dots": "Nuqtalar"
+  "ui_wallpaper_dots": "Nuqtalar",
+  "ui_dm_wallpaper_apply": "Qo‘llash",
+  "ui_dm_wallpaper_current": "Joriy",
+  "ui_dm_link_card_remove": "Oldindan ko‘rishsiz yuborish",
+  "ui_share_search": "Qidirish",
+  "ui_share_post": "Joylash",
+  "ui_share_note": "Xabar yozing…",
+  "ui_share_send": "Yuborish",
+  "ui_share_sent": "Yuborildi",
+  "ui_share_some_failed": "Yuborildi, lekin hammaga emas.",
+  "ui_share_failed": "Yuborib bo‘lmadi. Qayta urinib ko‘ring.",
+  "ui_follower_one": "Follower"
 }

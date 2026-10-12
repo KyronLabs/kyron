@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "සැන්දෑව",
   "ui_wallpaper_sage": "සේජ්",
   "ui_wallpaper_sand": "වැලි",
-  "ui_wallpaper_dots": "තිත්"
+  "ui_wallpaper_dots": "තිත්",
+  "ui_dm_wallpaper_apply": "යොදන්න",
+  "ui_dm_wallpaper_current": "වත්මන්",
+  "ui_dm_link_card_remove": "පෙරදසුන නොමැතිව යවන්න",
+  "ui_share_search": "සොයන්න",
+  "ui_share_post": "පළ කරන්න",
+  "ui_share_note": "පණිවිඩයක් ලියන්න…",
+  "ui_share_send": "යවන්න",
+  "ui_share_sent": "යැව්වා",
+  "ui_share_some_failed": "යැව්වා, නමුත් සියලු දෙනාටම නොවේ.",
+  "ui_share_failed": "යැවිය නොහැකි විය. නැවත උත්සාහ කරන්න.",
+  "ui_follower_one": "Follower"
 }

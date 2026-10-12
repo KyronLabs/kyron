@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Amurg",
   "ui_wallpaper_sage": "Salvie",
   "ui_wallpaper_sand": "Nisip",
-  "ui_wallpaper_dots": "Puncte"
+  "ui_wallpaper_dots": "Puncte",
+  "ui_dm_wallpaper_apply": "Aplică",
+  "ui_dm_wallpaper_current": "Actual",
+  "ui_dm_link_card_remove": "Trimite fără previzualizare",
+  "ui_share_search": "Caută",
+  "ui_share_post": "Publică",
+  "ui_share_note": "Scrie un mesaj…",
+  "ui_share_send": "Trimite",
+  "ui_share_sent": "Trimis",
+  "ui_share_some_failed": "Trimis, dar nu tuturor.",
+  "ui_share_failed": "Nu s-a putut trimite. Încearcă din nou.",
+  "ui_follower_one": "Follower"
 }

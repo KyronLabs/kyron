@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Hämarik",
   "ui_wallpaper_sage": "Salvei",
   "ui_wallpaper_sand": "Liiv",
-  "ui_wallpaper_dots": "Täpid"
+  "ui_wallpaper_dots": "Täpid",
+  "ui_dm_wallpaper_apply": "Rakenda",
+  "ui_dm_wallpaper_current": "Praegune",
+  "ui_dm_link_card_remove": "Saada ilma eelvaateta",
+  "ui_share_search": "Otsi",
+  "ui_share_post": "Postita",
+  "ui_share_note": "Kirjuta sõnum…",
+  "ui_share_send": "Saada",
+  "ui_share_sent": "Saadetud",
+  "ui_share_some_failed": "Saadetud, aga mitte kõigile.",
+  "ui_share_failed": "Seda ei saanud saata. Proovi uuesti.",
+  "ui_follower_one": "Jälgija"
 }

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Crepúsculo",
   "ui_wallpaper_sage": "Sálvia",
   "ui_wallpaper_sand": "Areia",
-  "ui_wallpaper_dots": "Pontos"
+  "ui_wallpaper_dots": "Pontos",
+  "ui_dm_wallpaper_apply": "Aplicar",
+  "ui_dm_wallpaper_current": "Atual",
+  "ui_dm_link_card_remove": "Enviar sem a pré-visualização",
+  "ui_share_search": "Pesquisar",
+  "ui_share_post": "Publicar",
+  "ui_share_note": "Escreva uma mensagem…",
+  "ui_share_send": "Enviar",
+  "ui_share_sent": "Enviado",
+  "ui_share_some_failed": "Enviado, mas não para todos.",
+  "ui_share_failed": "Não foi possível enviar. Tente novamente.",
+  "ui_follower_one": "Follower"
 }

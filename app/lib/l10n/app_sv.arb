@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Skymning",
   "ui_wallpaper_sage": "Salvia",
   "ui_wallpaper_sand": "Sand",
-  "ui_wallpaper_dots": "Prickar"
+  "ui_wallpaper_dots": "Prickar",
+  "ui_dm_wallpaper_apply": "Använd",
+  "ui_dm_wallpaper_current": "Nuvarande",
+  "ui_dm_link_card_remove": "Skicka utan förhandsvisning",
+  "ui_share_search": "Sök",
+  "ui_share_post": "Publicera",
+  "ui_share_note": "Skriv ett meddelande…",
+  "ui_share_send": "Skicka",
+  "ui_share_sent": "Skickat",
+  "ui_share_some_failed": "Skickat, men inte till alla.",
+  "ui_share_failed": "Det gick inte att skicka. Försök igen.",
+  "ui_follower_one": "Follower"
 }

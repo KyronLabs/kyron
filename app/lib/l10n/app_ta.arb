@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "அந்தி",
   "ui_wallpaper_sage": "சேஜ்",
   "ui_wallpaper_sand": "மணல்",
-  "ui_wallpaper_dots": "புள்ளிகள்"
+  "ui_wallpaper_dots": "புள்ளிகள்",
+  "ui_dm_wallpaper_apply": "பயன்படுத்து",
+  "ui_dm_wallpaper_current": "தற்போதையது",
+  "ui_dm_link_card_remove": "முன்னோட்டம் இல்லாமல் அனுப்பு",
+  "ui_share_search": "தேடு",
+  "ui_share_post": "இடுகையிடு",
+  "ui_share_note": "ஒரு செய்தியை எழுதுங்கள்…",
+  "ui_share_send": "அனுப்பு",
+  "ui_share_sent": "அனுப்பப்பட்டது",
+  "ui_share_some_failed": "அனுப்பப்பட்டது, ஆனால் அனைவருக்கும் அல்ல.",
+  "ui_share_failed": "அனுப்ப முடியவில்லை. மீண்டும் முயலவும்.",
+  "ui_follower_one": "Follower"
 }

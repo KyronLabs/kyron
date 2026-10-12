@@ -1362,6 +1362,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("სალბი"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ქვიშა"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("წერტილები"),
+      "ui_dm_wallpaper_apply":
+          MessageLookupByLibrary.simpleMessage("გამოყენება"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("მიმდინარე"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("გაგზავნა გადახედვის გარეშე"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("ძიება"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("გამოქვეყნება"),
+      "ui_share_note":
+          MessageLookupByLibrary.simpleMessage("დაწერეთ შეტყობინება…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("გაგზავნა"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("გაიგზავნა"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "გაიგზავნა, მაგრამ არა ყველასთან."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "ვერ გაიგზავნა. სცადეთ ხელახლა."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

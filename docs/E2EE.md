@@ -105,6 +105,18 @@ database leak, not against an actively malicious server.**
   was chosen over sealing them, for now, as the same trade attachments make;
   the two should be sealed together. The realtime event for a reaction still
   carries only ids, and the emoji is fetched over an authenticated request.
+- **Link cards are sealed, and made by the sender.** The card under a link
+  in a message — title, site, a small copy of the picture — is read from the
+  page by the sender's phone and sealed beside the words, never fetched by
+  the server the way a post's card is: asking the server would hand it the
+  address out of a message it otherwise cannot read. The trade is the one
+  Signal and WhatsApp make. The linked site sees one request, from the
+  sender, who is sharing the link anyway. Readers draw the card from what
+  arrived and never contact the site, so it cannot learn who read the
+  message or when. A reader's phone accepts a card only for a link that
+  appears in the message's own words, so a card cannot dress one address up
+  as another; the sender can take the card off before sending; and the
+  server refuses an open card beside sealed words.
 - **Metadata is not, and cannot be.** The server knows who is talking to whom,
   how often, at what times, and how long each message is. That is what it needs
   to route and page conversations at all.

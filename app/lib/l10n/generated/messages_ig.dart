@@ -1353,6 +1353,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Ndụ ndụ"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Aja"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Ntụpọ"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Tinye ya"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Nke ugbu a"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Ziga na-enweghị nlele mbụ"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Chọọ"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Biputa"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Dee ozi…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Ziga"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("E zigala"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "E zigala, mana ọ bụghị nye mmadụ niile."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike iziga ya. Nwaa ọzọ."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

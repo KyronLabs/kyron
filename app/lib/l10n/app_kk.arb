@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Ымырт",
   "ui_wallpaper_sage": "Шалфей",
   "ui_wallpaper_sand": "Құм",
-  "ui_wallpaper_dots": "Нүктелер"
+  "ui_wallpaper_dots": "Нүктелер",
+  "ui_dm_wallpaper_apply": "Қолдану",
+  "ui_dm_wallpaper_current": "Ағымдағы",
+  "ui_dm_link_card_remove": "Алдын ала қараусыз жіберу",
+  "ui_share_search": "Іздеу",
+  "ui_share_post": "Жариялау",
+  "ui_share_note": "Хабарлама жазыңыз…",
+  "ui_share_send": "Жіберу",
+  "ui_share_sent": "Жіберілді",
+  "ui_share_some_failed": "Жіберілді, бірақ барлығына емес.",
+  "ui_share_failed": "Жіберу мүмкін болмады. Қайталап көріңіз.",
+  "ui_follower_one": "Follower"
 }

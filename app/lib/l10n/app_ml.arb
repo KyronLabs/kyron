@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "സന്ധ്യ",
   "ui_wallpaper_sage": "സേജ്",
   "ui_wallpaper_sand": "മണൽ",
-  "ui_wallpaper_dots": "കുത്തുകൾ"
+  "ui_wallpaper_dots": "കുത്തുകൾ",
+  "ui_dm_wallpaper_apply": "പ്രയോഗിക്കുക",
+  "ui_dm_wallpaper_current": "നിലവിലുള്ളത്",
+  "ui_dm_link_card_remove": "പ്രിവ്യൂ ഇല്ലാതെ അയയ്ക്കുക",
+  "ui_share_search": "തിരയുക",
+  "ui_share_post": "പോസ്റ്റ് ചെയ്യുക",
+  "ui_share_note": "ഒരു സന്ദേശം എഴുതുക…",
+  "ui_share_send": "അയയ്ക്കുക",
+  "ui_share_sent": "അയച്ചു",
+  "ui_share_some_failed": "അയച്ചു, പക്ഷേ എല്ലാവർക്കുമല്ല.",
+  "ui_share_failed": "അയയ്ക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക.",
+  "ui_follower_one": "Follower"
 }

@@ -1359,6 +1359,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Zsálya"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Homok"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Pöttyök"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Alkalmaz"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Jelenlegi"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Küldés előnézet nélkül"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Keresés"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Közzététel"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Írj üzenetet…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Küldés"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Elküldve"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Elküldve, de nem mindenkinek."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült elküldeni. Próbáld újra."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

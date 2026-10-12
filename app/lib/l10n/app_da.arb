@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Skumring",
   "ui_wallpaper_sage": "Salvie",
   "ui_wallpaper_sand": "Sand",
-  "ui_wallpaper_dots": "Prikker"
+  "ui_wallpaper_dots": "Prikker",
+  "ui_dm_wallpaper_apply": "Anvend",
+  "ui_dm_wallpaper_current": "Nuværende",
+  "ui_dm_link_card_remove": "Send uden forhåndsvisningen",
+  "ui_share_search": "Søg",
+  "ui_share_post": "Del opslag",
+  "ui_share_note": "Skriv en besked…",
+  "ui_share_send": "Send",
+  "ui_share_sent": "Sendt",
+  "ui_share_some_failed": "Sendt, men ikke til alle.",
+  "ui_share_failed": "Det kunne ikke sendes. Prøv igen.",
+  "ui_follower_one": "Følger"
 }

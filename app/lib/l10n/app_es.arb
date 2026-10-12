@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Atardecer",
   "ui_wallpaper_sage": "Salvia",
   "ui_wallpaper_sand": "Arena",
-  "ui_wallpaper_dots": "Puntos"
+  "ui_wallpaper_dots": "Puntos",
+  "ui_dm_wallpaper_apply": "Aplicar",
+  "ui_dm_wallpaper_current": "Actual",
+  "ui_dm_link_card_remove": "Enviar sin la vista previa",
+  "ui_share_search": "Buscar",
+  "ui_share_post": "Publicar",
+  "ui_share_note": "Escribe un mensaje…",
+  "ui_share_send": "Enviar",
+  "ui_share_sent": "Enviado",
+  "ui_share_some_failed": "Enviado, pero no a todos.",
+  "ui_share_failed": "No se pudo enviar. Inténtalo de nuevo.",
+  "ui_follower_one": "Seguidor"
 }

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Senja",
   "ui_wallpaper_sage": "Sage",
   "ui_wallpaper_sand": "Pasir",
-  "ui_wallpaper_dots": "Titik-titik"
+  "ui_wallpaper_dots": "Titik-titik",
+  "ui_dm_wallpaper_apply": "Terapkan",
+  "ui_dm_wallpaper_current": "Saat ini",
+  "ui_dm_link_card_remove": "Kirim tanpa pratinjau",
+  "ui_share_search": "Cari",
+  "ui_share_post": "Posting",
+  "ui_share_note": "Tulis pesan…",
+  "ui_share_send": "Kirim",
+  "ui_share_sent": "Terkirim",
+  "ui_share_some_failed": "Terkirim, tetapi tidak ke semua orang.",
+  "ui_share_failed": "Tidak dapat dikirim. Coba lagi.",
+  "ui_follower_one": "Follower"
 }

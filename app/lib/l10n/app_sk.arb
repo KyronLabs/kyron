@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Súmrak",
   "ui_wallpaper_sage": "Šalvia",
   "ui_wallpaper_sand": "Piesok",
-  "ui_wallpaper_dots": "Bodky"
+  "ui_wallpaper_dots": "Bodky",
+  "ui_dm_wallpaper_apply": "Použiť",
+  "ui_dm_wallpaper_current": "Aktuálna",
+  "ui_dm_link_card_remove": "Odoslať bez náhľadu",
+  "ui_share_search": "Hľadať",
+  "ui_share_post": "Uverejniť",
+  "ui_share_note": "Napíšte správu…",
+  "ui_share_send": "Odoslať",
+  "ui_share_sent": "Odoslané",
+  "ui_share_some_failed": "Odoslané, ale nie všetkým.",
+  "ui_share_failed": "Nepodarilo sa odoslať. Skúste to znova.",
+  "ui_follower_one": "Follower"
 }

@@ -102,8 +102,8 @@ class _CommunityTileState extends ConsumerState<CommunityTile> {
                   const SizedBox(height: 2),
                   Text(
                     // Two real numbers rather than one made-up one.
-                    '${_count(community.members, 'member')} · '
-                    '${_count(community.posts, 'post')}',
+                    '${countOf(community.members, 'member')} · '
+                    '${countOf(community.posts, 'post')}',
                     style: TextStyle(
                       fontSize: TypographyTokens.fontSize1,
                       color: scheme.onSurface.withValues(alpha: 0.55),
@@ -146,9 +146,6 @@ class _CommunityTileState extends ConsumerState<CommunityTile> {
       ),
     );
   }
-
-  String _count(int value, String noun) =>
-      '${formatCount(value)} $noun${value == 1 ? '' : 's'}';
 }
 
 /// A community's picture, or the first letter of its name.

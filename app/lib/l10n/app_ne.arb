@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "साँझ",
   "ui_wallpaper_sage": "सेज",
   "ui_wallpaper_sand": "बालुवा",
-  "ui_wallpaper_dots": "थोप्लाहरू"
+  "ui_wallpaper_dots": "थोप्लाहरू",
+  "ui_dm_wallpaper_apply": "लागू गर्नुहोस्",
+  "ui_dm_wallpaper_current": "हालको",
+  "ui_dm_link_card_remove": "पूर्वावलोकन बिना पठाउनुहोस्",
+  "ui_share_search": "खोज्नुहोस्",
+  "ui_share_post": "पोस्ट गर्नुहोस्",
+  "ui_share_note": "सन्देश लेख्नुहोस्…",
+  "ui_share_send": "पठाउनुहोस्",
+  "ui_share_sent": "पठाइयो",
+  "ui_share_some_failed": "पठाइयो, तर सबैलाई होइन।",
+  "ui_share_failed": "पठाउन सकिएन। फेरि प्रयास गर्नुहोस्।",
+  "ui_follower_one": "Follower"
 }

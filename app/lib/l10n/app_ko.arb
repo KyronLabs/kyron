@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "해질녘",
   "ui_wallpaper_sage": "세이지",
   "ui_wallpaper_sand": "모래",
-  "ui_wallpaper_dots": "도트"
+  "ui_wallpaper_dots": "도트",
+  "ui_dm_wallpaper_apply": "적용",
+  "ui_dm_wallpaper_current": "현재",
+  "ui_dm_link_card_remove": "미리보기 없이 보내기",
+  "ui_share_search": "검색",
+  "ui_share_post": "게시",
+  "ui_share_note": "메시지 작성…",
+  "ui_share_send": "보내기",
+  "ui_share_sent": "전송됨",
+  "ui_share_some_failed": "전송했지만 일부에게는 보내지 못했어요.",
+  "ui_share_failed": "보내지 못했어요. 다시 시도해 주세요.",
+  "ui_follower_one": "팔로워"
 }

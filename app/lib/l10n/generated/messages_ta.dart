@@ -1363,6 +1363,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("சேஜ்"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("மணல்"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("புள்ளிகள்"),
+      "ui_dm_wallpaper_apply":
+          MessageLookupByLibrary.simpleMessage("பயன்படுத்து"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("தற்போதையது"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("முன்னோட்டம் இல்லாமல் அனுப்பு"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("தேடு"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("இடுகையிடு"),
+      "ui_share_note":
+          MessageLookupByLibrary.simpleMessage("ஒரு செய்தியை எழுதுங்கள்…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("அனுப்பு"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("அனுப்பப்பட்டது"),
+      "ui_share_some_failed": MessageLookupByLibrary.simpleMessage(
+          "அனுப்பப்பட்டது, ஆனால் அனைவருக்கும் அல்ல."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "அனுப்ப முடியவில்லை. மீண்டும் முயலவும்."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

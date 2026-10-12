@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Сумерки",
   "ui_wallpaper_sage": "Шалфей",
   "ui_wallpaper_sand": "Песок",
-  "ui_wallpaper_dots": "Точки"
+  "ui_wallpaper_dots": "Точки",
+  "ui_dm_wallpaper_apply": "Применить",
+  "ui_dm_wallpaper_current": "Текущие",
+  "ui_dm_link_card_remove": "Отправить без превью",
+  "ui_share_search": "Поиск",
+  "ui_share_post": "Опубликовать",
+  "ui_share_note": "Напишите сообщение…",
+  "ui_share_send": "Отправить",
+  "ui_share_sent": "Отправлено",
+  "ui_share_some_failed": "Отправлено, но не всем.",
+  "ui_share_failed": "Не удалось отправить. Попробуйте ещё раз.",
+  "ui_follower_one": "Follower"
 }

@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Sutemos",
   "ui_wallpaper_sage": "Šalavijas",
   "ui_wallpaper_sand": "Smėlis",
-  "ui_wallpaper_dots": "Taškeliai"
+  "ui_wallpaper_dots": "Taškeliai",
+  "ui_dm_wallpaper_apply": "Taikyti",
+  "ui_dm_wallpaper_current": "Dabartinis",
+  "ui_dm_link_card_remove": "Siųsti be peržiūros",
+  "ui_share_search": "Ieškoti",
+  "ui_share_post": "Skelbti",
+  "ui_share_note": "Parašykite žinutę…",
+  "ui_share_send": "Siųsti",
+  "ui_share_sent": "Išsiųsta",
+  "ui_share_some_failed": "Išsiųsta, bet ne visiems.",
+  "ui_share_failed": "Nepavyko išsiųsti. Bandykite dar kartą.",
+  "ui_follower_one": "Follower"
 }

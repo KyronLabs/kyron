@@ -1645,6 +1645,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Sage"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Sand"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Dots"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Apply"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Current"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Send without the preview"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Search"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Post"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Write a message…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Send"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Sent"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Sent, but not to everybody."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "That could not be sent. Try again."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

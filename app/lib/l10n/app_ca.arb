@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Capvespre",
   "ui_wallpaper_sage": "Sàlvia",
   "ui_wallpaper_sand": "Sorra",
-  "ui_wallpaper_dots": "Punts"
+  "ui_wallpaper_dots": "Punts",
+  "ui_dm_wallpaper_apply": "Aplica",
+  "ui_dm_wallpaper_current": "Actual",
+  "ui_dm_link_card_remove": "Envia sense la previsualització",
+  "ui_share_search": "Cerca",
+  "ui_share_post": "Publica",
+  "ui_share_note": "Escriu un missatge…",
+  "ui_share_send": "Envia",
+  "ui_share_sent": "Enviat",
+  "ui_share_some_failed": "Enviat, però no a tothom.",
+  "ui_share_failed": "No s'ha pogut enviar. Torna-ho a provar.",
+  "ui_follower_one": "Seguidor"
 }

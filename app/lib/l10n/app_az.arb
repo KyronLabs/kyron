@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Alaqaranlıq",
   "ui_wallpaper_sage": "Adaçayı",
   "ui_wallpaper_sand": "Qum",
-  "ui_wallpaper_dots": "Nöqtələr"
+  "ui_wallpaper_dots": "Nöqtələr",
+  "ui_dm_wallpaper_apply": "Tətbiq et",
+  "ui_dm_wallpaper_current": "Cari",
+  "ui_dm_link_card_remove": "Önizləməsiz göndər",
+  "ui_share_search": "Axtar",
+  "ui_share_post": "Paylaş",
+  "ui_share_note": "Mesaj yazın…",
+  "ui_share_send": "Göndər",
+  "ui_share_sent": "Göndərildi",
+  "ui_share_some_failed": "Göndərildi, amma hamıya yox.",
+  "ui_share_failed": "Göndərmək mümkün olmadı. Yenidən cəhd edin.",
+  "ui_follower_one": "İzləyici"
 }

@@ -1,3 +1,4 @@
+import 'message_link_card.dart';
 import 'post_media.dart';
 
 // lib/models/conversation.dart
@@ -118,6 +119,13 @@ class DirectMessage {
   /// Who reacted, and with what. One each at most.
   final List<MessageReaction> reactions;
 
+  /// The link card as it arrived: sealed, like the body, until it is opened.
+  final String? linkCardRaw;
+
+  /// The card for the link in it, once opened and checked. Null when there
+  /// is none, or it did not survive the checks in [MessageLinkCard.tryDecode].
+  final MessageLinkCard? linkCard;
+
   const DirectMessage({
     required this.id,
     required this.body,
@@ -131,6 +139,8 @@ class DirectMessage {
     this.unreadable = false,
     this.replyToId,
     this.reactions = const [],
+    this.linkCardRaw,
+    this.linkCard,
   });
 
   /// The emoji [userId] reacted with, or null.
@@ -155,6 +165,7 @@ class DirectMessage {
         media: PostMedia.listFrom(json['media']),
         replyToId: json['replyToId'] as String?,
         reactions: MessageReaction.listFrom(json['reactions']),
+        linkCardRaw: json['linkCard'] as String?,
       );
 
   DirectMessage copyWith({
@@ -166,6 +177,7 @@ class DirectMessage {
     bool? unreadable,
     String? replyToId,
     List<MessageReaction>? reactions,
+    MessageLinkCard? linkCard,
   }) =>
       DirectMessage(
         id: id,
@@ -180,6 +192,8 @@ class DirectMessage {
         unreadable: unreadable ?? this.unreadable,
         replyToId: replyToId ?? this.replyToId,
         reactions: reactions ?? this.reactions,
+        linkCardRaw: linkCardRaw,
+        linkCard: linkCard ?? this.linkCard,
       );
 }
 

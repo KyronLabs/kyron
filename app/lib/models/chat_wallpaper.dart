@@ -108,13 +108,25 @@ class RemoteWallpaper {
 
   /// A name for the picker, from the file's: "02-quiet-dunes.jpg" reads as
   /// "Quiet dunes". The leading number is how a curator orders them.
-  String get label {
+  ///
+  /// None for a file named by a machine -- a hash, or a camera's numbering --
+  /// since "F15a5ff689c6" under a picture says nothing about it. The picture
+  /// is its own label then.
+  String? get label {
     var name = id;
     final dot = name.lastIndexOf('.');
     if (dot > 0) name = name.substring(0, dot);
+    // "name (1)": a second copy, as a download folder names it.
+    name = name.replaceFirst(RegExp(r'\s*\(\d+\)$'), '');
+    if (_machineNamed.hasMatch(name)) return null;
     name = name.replaceFirst(RegExp(r'^\d+[-_ ]*'), '');
     name = name.replaceAll(RegExp(r'[-_]+'), ' ').trim();
-    if (name.isEmpty) return 'Wallpaper';
+    if (name.isEmpty) return null;
     return name[0].toUpperCase() + name.substring(1);
   }
+
+  static final _machineNamed = RegExp(
+    r'^([0-9a-f]{12,}|(img|dsc|pxl|screenshot|photo)[-_ ]?[\d_ -]+)$',
+    caseSensitive: false,
+  );
 }

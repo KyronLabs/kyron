@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "黄昏",
   "ui_wallpaper_sage": "鼠尾草",
   "ui_wallpaper_sand": "沙",
-  "ui_wallpaper_dots": "圆点"
+  "ui_wallpaper_dots": "圆点",
+  "ui_dm_wallpaper_apply": "应用",
+  "ui_dm_wallpaper_current": "当前",
+  "ui_dm_link_card_remove": "不带预览发送",
+  "ui_share_search": "搜索",
+  "ui_share_post": "发帖",
+  "ui_share_note": "写条消息…",
+  "ui_share_send": "发送",
+  "ui_share_sent": "已发送",
+  "ui_share_some_failed": "已发送，但有人没收到。",
+  "ui_share_failed": "无法发送。请重试。",
+  "ui_follower_one": "粉丝"
 }

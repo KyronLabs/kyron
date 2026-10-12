@@ -1529,6 +1529,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Φασκόμηλο"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Άμμος"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Κουκκίδες"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Εφαρμογή"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Τρέχουσα"),
+      "ui_dm_link_card_remove": MessageLookupByLibrary.simpleMessage(
+          "Αποστολή χωρίς την προεπισκόπηση"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Αναζήτηση"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Δημοσίευση"),
+      "ui_share_note":
+          MessageLookupByLibrary.simpleMessage("Γράψτε ένα μήνυμα…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Αποστολή"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Στάλθηκε"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Στάλθηκε, αλλά όχι σε όλους."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η αποστολή. Δοκιμάστε ξανά."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Ακόλουθος"),
     };
 
 final messageLookup = MessageLookup();

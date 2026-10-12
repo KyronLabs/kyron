@@ -1361,6 +1361,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("సేజ్"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("ఇసుక"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("చుక్కలు"),
+      "ui_dm_wallpaper_apply":
+          MessageLookupByLibrary.simpleMessage("వర్తింపజేయి"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("ప్రస్తుతం"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("ప్రివ్యూ లేకుండా పంపు"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("శోధించు"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("పోస్ట్ చేయి"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("సందేశం రాయండి…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("పంపు"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("పంపబడింది"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("పంపబడింది, కానీ అందరికీ కాదు."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "పంపడం సాధ్యం కాలేదు. మళ్లీ ప్రయత్నించండి."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

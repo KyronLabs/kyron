@@ -1352,6 +1352,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("مریم‌گلی"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("شن"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("نقطه‌ها"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("اعمال"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("فعلی"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("ارسال بدون پیش‌نمایش"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("جستجو"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("پست"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("پیامی بنویسید…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("ارسال"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("ارسال شد"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("ارسال شد، اما نه برای همه."),
+      "ui_share_failed":
+          MessageLookupByLibrary.simpleMessage("ارسال نشد. دوباره تلاش کنید."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

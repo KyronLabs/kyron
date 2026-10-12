@@ -72,6 +72,11 @@ export interface MessageItem {
    * read; the client has the thread decrypted and resolves the quote itself.
    */
   replyToId: string | null;
+  /**
+   * The card for a link in it, sealed by the sender like the body. Opaque
+   * here: see the column's note in the schema.
+   */
+  linkCard: string | null;
   media: MessageMedia[];
 }
 
@@ -138,6 +143,14 @@ export class MessagesService {
   static isSealed(body: string): boolean {
     return /^k[12]\./.test(body);
   }
+
+  /**
+   * The longest a link card may be: a title, a line of description and a
+   * picture shrunk to a few tens of kilobytes, sealed. Larger than a body
+   * because of the picture, and bounded so a card is not a way to store a
+   * file in a row.
+   */
+  static readonly maxLinkCard = 96000;
 
   /** How many attachments one message may carry. Same as a post's. */
   static readonly maxMedia = 10;
@@ -379,6 +392,7 @@ export class MessagesService {
         // The id of what each one answers. The quoted text is not sent: this
         // server holds ciphertext, and the client has the thread decrypted.
         replyToId: true,
+        linkCard: true,
         media: { select: this.mediaShape, orderBy: { position: 'asc' } },
         reactions: {
           select: this.reactionShape,
@@ -424,6 +438,7 @@ export class MessagesService {
     body: string,
     media: MessageMediaInput[] = [],
     replyToId?: string,
+    linkCard?: string,
   ) {
     const text = body.trim();
     // A picture with no words is a message; an empty box is not.
@@ -442,6 +457,26 @@ export class MessagesService {
       throw new BadRequestException(
         `A message cannot exceed ${MessagesService.maxBody} characters.`,
       );
+    }
+
+    const card = linkCard?.trim() || null;
+    if (card) {
+      // A card is for a link in the words; with no words there is no link.
+      if (!text) {
+        throw new BadRequestException('A link card needs a message with it.');
+      }
+      if (card.length > MessagesService.maxLinkCard) {
+        throw new BadRequestException('That link card is too large.');
+      }
+      // Sealed words with an open card would put the address -- the one
+      // thing in the message the card is about -- in this database in the
+      // clear. Refused rather than stored: the client sealed one and not the
+      // other, and that is a bug to hear about, not to keep.
+      if (MessagesService.isSealed(text) && !MessagesService.isSealed(card)) {
+        throw new BadRequestException(
+          'A sealed message needs its link card sealed too.',
+        );
+      }
     }
 
     const conversation = await this.requireMembership(viewerId, conversationId);
@@ -474,6 +509,7 @@ export class MessagesService {
           senderId: viewerId,
           body: text,
           replyToId: replyToId ?? null,
+          linkCard: card,
           ...(media.length > 0
             ? {
                 media: {
@@ -498,6 +534,7 @@ export class MessagesService {
           senderId: true,
           createdAt: true,
           replyToId: true,
+          linkCard: true,
           media: { select: this.mediaShape, orderBy: { position: 'asc' } },
         },
       }),

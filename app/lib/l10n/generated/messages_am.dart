@@ -1248,6 +1248,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("አረንጓዴ"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("አሸዋ"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("ነጥቦች"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("ተግብር"),
+      "ui_dm_wallpaper_current": MessageLookupByLibrary.simpleMessage("የአሁኑ"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("ያለ ቅድመ እይታው ላክ"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("ፈልግ"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("ለጥፍ"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("መልእክት ይጻፉ…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("ላክ"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("ተልኳል"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("ተልኳል፣ ግን ለሁሉም አይደለም።"),
+      "ui_share_failed":
+          MessageLookupByLibrary.simpleMessage("ሊላክ አልቻለም። እንደገና ይሞክሩ።"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("ተከታይ"),
     };
 
 final messageLookup = MessageLookup();

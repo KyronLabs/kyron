@@ -668,5 +668,16 @@
   "ui_wallpaper_dusk": "Dämmerung",
   "ui_wallpaper_sage": "Salbei",
   "ui_wallpaper_sand": "Sand",
-  "ui_wallpaper_dots": "Punkte"
+  "ui_wallpaper_dots": "Punkte",
+  "ui_dm_wallpaper_apply": "Übernehmen",
+  "ui_dm_wallpaper_current": "Aktuell",
+  "ui_dm_link_card_remove": "Ohne Vorschau senden",
+  "ui_share_search": "Suchen",
+  "ui_share_post": "Posten",
+  "ui_share_note": "Nachricht schreiben…",
+  "ui_share_send": "Senden",
+  "ui_share_sent": "Gesendet",
+  "ui_share_some_failed": "Gesendet, aber nicht an alle.",
+  "ui_share_failed": "Das konnte nicht gesendet werden. Versuche es noch einmal.",
+  "ui_follower_one": "Follower"
 }

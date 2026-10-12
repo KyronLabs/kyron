@@ -1356,6 +1356,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallpaper_sage": MessageLookupByLibrary.simpleMessage("Šalvia"),
       "ui_wallpaper_sand": MessageLookupByLibrary.simpleMessage("Piesok"),
       "ui_wallpaper_dots": MessageLookupByLibrary.simpleMessage("Bodky"),
+      "ui_dm_wallpaper_apply": MessageLookupByLibrary.simpleMessage("Použiť"),
+      "ui_dm_wallpaper_current":
+          MessageLookupByLibrary.simpleMessage("Aktuálna"),
+      "ui_dm_link_card_remove":
+          MessageLookupByLibrary.simpleMessage("Odoslať bez náhľadu"),
+      "ui_share_search": MessageLookupByLibrary.simpleMessage("Hľadať"),
+      "ui_share_post": MessageLookupByLibrary.simpleMessage("Uverejniť"),
+      "ui_share_note": MessageLookupByLibrary.simpleMessage("Napíšte správu…"),
+      "ui_share_send": MessageLookupByLibrary.simpleMessage("Odoslať"),
+      "ui_share_sent": MessageLookupByLibrary.simpleMessage("Odoslané"),
+      "ui_share_some_failed":
+          MessageLookupByLibrary.simpleMessage("Odoslané, ale nie všetkým."),
+      "ui_share_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepodarilo sa odoslať. Skúste to znova."),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
     };
 
 final messageLookup = MessageLookup();

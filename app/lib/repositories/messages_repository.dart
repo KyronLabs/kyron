@@ -59,11 +59,14 @@ class MessagesRepository {
     String body, {
     List<PendingMedia> media = const [],
     String? replyToId,
+    String? linkCard,
   }) async {
     final res = await _api.dio.post<Map<String, dynamic>>(
       '/messages/$conversationId',
       data: {
         'body': body,
+        // Sealed with the words when they are; see MessageLinkCard.
+        if (linkCard != null) 'linkCard': linkCard,
         // The id of what is being answered, and nothing else about it. The
         // server cannot read either message; the quote is drawn from the copy
         // this phone already decrypted.
