@@ -55,6 +55,7 @@ export class HealthController {
         ? 'verified'
         : `${status.state}: ${status.detail}`;
 
+    const pushStatus = this.push.status;
     return {
       // Deliberately still "ok" with the database down, and still HTTP 200.
       // The process is serving; reporting unhealthy would take the machine out
@@ -69,7 +70,16 @@ export class HealthController {
       // FCM_SERVICE_ACCOUNT_JSON every notification is dropped, and the only
       // symptom is a phone that never buzzes -- indistinguishable, from the
       // outside, from every other reason a notification might not arrive.
-      push: this.push.isConfigured ? 'configured' : 'off',
+      //
+      // "off" alone could not be acted on: not set, set under another name,
+      // cut off, the wrong file and a key Google refuses all read the same.
+      // `pushProblem` says which, and `pushLastFailure` what Google last said
+      // when it would not deliver one. Neither repeats any of the key.
+      push: pushStatus.push,
+      ...(pushStatus.problem ? { pushProblem: pushStatus.problem } : {}),
+      ...(pushStatus.lastFailure
+        ? { pushLastFailure: pushStatus.lastFailure }
+        : {}),
       // Which identity provider this deployment will accept tokens from, and
       // which signatures it can check. Every authenticated route fails when
       // either is wrong, and the only symptom used to be a 401 that looked

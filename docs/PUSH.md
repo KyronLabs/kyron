@@ -59,9 +59,27 @@ every token the app registers). Set it on Render, Environment, as
 tr -d '\n' < service-account.json   # paste the output as the value
 ```
 
-The API logs which project it is sending for at boot, and warns loudly when the
-variable is missing. It never silently pretends to send. `GET /health` says
-`"push": "configured"` or `"push": "off"`.
+A Render **secret file** holding the key works too, under any name, when the
+variable is not set. The value may be the file as downloaded (many lines),
+one line, base64, or still in the quotes from a command line.
+
+At boot the API reads the key and asks Google for an access token with it, so
+a key Google refuses shows straight away rather than at the first
+notification. It never silently pretends to send. `GET /health` says
+`"push": "configured"` or `"push": "off"`, and when it is off, `pushProblem`
+says why in plain words:
+
+| `pushProblem` starts | Means |
+|:--|:--|
+| `FCM_SERVICE_ACCOUNT_JSON is not set on this service` | Not on this service, under a different name (named if so), or set with *Save only* and never redeployed |
+| `... stops after N characters, so it was cut off` | Pasted through a `.env` import, which keeps only a value's first line |
+| `... holds google-services.json` | The app's config file, not the server's key |
+| `... holds an OAuth client` | The Google sign-in client, not the server's key |
+| `Google refused the service account key` | Deleted or disabled key: generate a new one |
+
+`pushLastFailure` is what Google last said when it would not deliver one;
+`SENDER_ID_MISMATCH` there means the key is from a different Firebase project
+than `google-services.json`. None of this repeats any part of the key.
 
 **Checking it end to end.** Settings → Notifications → *Send a test
 notification* asks the server (`POST /devices/test`) to push to every phone

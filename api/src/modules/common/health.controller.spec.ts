@@ -43,7 +43,18 @@ describe('HealthController', () => {
             diagnoseHost: () => Promise.resolve(diagnosis),
           },
         },
-        { provide: PushService, useValue: { isConfigured: pushConfigured } },
+        {
+          provide: PushService,
+          useValue: {
+            status: pushConfigured
+              ? { push: 'configured' }
+              : {
+                  push: 'off',
+                  problem:
+                    'FCM_SERVICE_ACCOUNT_JSON is not set on this service.',
+                },
+          },
+        },
         {
           provide: StatusHistoryService,
           useValue: { history: (days: number) => Promise.resolve({ days }) },
@@ -240,5 +251,17 @@ describe('HealthController', () => {
     expect(
       (await (await controller(true, null, true, false)).health()).push,
     ).toBe('off');
+  });
+
+  it('says why push is off, and carries nothing when it is on', async () => {
+    const on = await (await controller()).health();
+    expect(on).not.toHaveProperty('pushProblem');
+    expect(on).not.toHaveProperty('pushLastFailure');
+
+    const off = await (await controller(true, null, true, false)).health();
+    expect(off).toMatchObject({
+      push: 'off',
+      pushProblem: 'FCM_SERVICE_ACCOUNT_JSON is not set on this service.',
+    });
   });
 });
