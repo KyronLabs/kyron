@@ -748,10 +748,12 @@
   "ui_community_discover_none": "لم يبقَ شيء للانضمام إليه",
   "ui_community_discover_none_detail": "أنت في كل مجتمع على Kyron. أنشئ مجتمعًا آخر.",
   "ui_community_discover_search_detail": "جرّب كلمة أخرى، أو أنشئ مجتمعًا بهذا الاسم.",
-  "ui_community_last_post": "آخر منشور",
-  "ui_community_none_yet": "لا شيء بعد",
-  "ui_community_catch_up": "تابِع الجديد",
-  "ui_community_open": "فتح",
   "ui_community_write": "اكتب منشورًا",
-  "ui_community_members": "الأعضاء:"
+  "ui_community_members": "الأعضاء:",
+  "ui_toast_posted": "تم النشر",
+  "ui_toast_view": "عرض",
+  "ui_toast_open": "فتح",
+  "ui_dm_online": "متصل",
+  "ui_dm_show_online": "أظهر عندما تكون متصلًا",
+  "ui_dm_show_online_detail": "يرى من تراسلهم نقطة خضراء ما دام Kyron مفتوحًا لديك. عند إيقافها، لن ترى نقاطهم أنت أيضًا."
 }

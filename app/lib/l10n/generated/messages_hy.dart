@@ -1500,15 +1500,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Փորձեք այլ բառ կամ ստեղծեք այդ անունով համայնք։"),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Վերջին գրառումը"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Դեռ չկա"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Տեսնել նորերը"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Բացել"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Գրել գրառում"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Անդամներ՝"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Հրապարակվեց"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Դիտել"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Բացել"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Առցանց"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Ցույց տալ, երբ առցանց եք"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Մարդիկ, ում գրում եք, տեսնում են կանաչ կետ, երբ Kyron-ը բաց է ձեզ մոտ։ Երբ սա անջատված է, դուք էլ չեք տեսնի նրանցը։"),
     };
 
 final messageLookup = MessageLookup();

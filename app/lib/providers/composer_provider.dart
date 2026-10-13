@@ -586,6 +586,17 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     return warning;
   }
 
+  /// The post the last [post] made, for the screen to offer to open. Kept
+  /// out of the state for the same reason as [_warning].
+  String? _postedId;
+
+  /// The id of the post just made, if one was. Reading it clears it.
+  String? takePostedId() {
+    final id = _postedId;
+    _postedId = null;
+    return id;
+  }
+
   Future<bool> post() async {
     if (!state.canPost) return false;
 
@@ -595,6 +606,7 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
     final attachedPoll = state.poll;
     final attachedMedia = state.media.where((m) => m.isReady).length;
     _warning = null;
+    _postedId = null;
 
     try {
       final FeedPost created = await _ref.read(feedRepositoryProvider).create(
@@ -626,6 +638,8 @@ class ComposerNotifier extends StateNotifier<ComposerState> {
               '$attachedMedia attachments.',
         );
       }
+
+      _postedId = created.id;
 
       // Straight to the top of the feed, so the post is visible the moment
       // the screen closes rather than after the next refresh.

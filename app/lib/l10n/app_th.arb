@@ -748,10 +748,12 @@
   "ui_community_discover_none": "ไม่เหลือชุมชนให้เข้าร่วมแล้ว",
   "ui_community_discover_none_detail": "คุณอยู่ในทุกชุมชนบน Kyron แล้ว สร้างชุมชนใหม่อีกสักแห่ง",
   "ui_community_discover_search_detail": "ลองคำอื่น หรือสร้างชุมชนด้วยชื่อนั้น",
-  "ui_community_last_post": "โพสต์ล่าสุด",
-  "ui_community_none_yet": "ยังไม่มี",
-  "ui_community_catch_up": "ดูที่ใหม่",
-  "ui_community_open": "เปิด",
   "ui_community_write": "เขียนโพสต์",
-  "ui_community_members": "สมาชิก:"
+  "ui_community_members": "สมาชิก:",
+  "ui_toast_posted": "โพสต์แล้ว",
+  "ui_toast_view": "ดู",
+  "ui_toast_open": "เปิด",
+  "ui_dm_online": "ออนไลน์",
+  "ui_dm_show_online": "แสดงเมื่อคุณออนไลน์",
+  "ui_dm_show_online_detail": "คนที่คุณส่งข้อความด้วยจะเห็นจุดสีเขียวขณะที่คุณเปิด Kyron อยู่ เมื่อปิดไว้ คุณก็จะไม่เห็นของเขาเช่นกัน"
 }

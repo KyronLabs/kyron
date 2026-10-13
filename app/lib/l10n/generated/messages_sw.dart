@@ -1491,17 +1491,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Jaribu neno lingine, au anzisha jumuiya kwa jina hilo."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Chapisho la mwisho"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Bado hakuna"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Pata yaliyopita"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Fungua"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Andika chapisho"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Wanachama:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Imechapishwa"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Tazama"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Fungua"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Mtandaoni"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Onyesha ukiwa mtandaoni"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Watu unaowatumia ujumbe huona kitone cha kijani wakati Kyron iko wazi kwako. Ikizimwa, nawe hutaona chao."),
     };
 
 final messageLookup = MessageLookup();

@@ -748,10 +748,12 @@
   "ui_community_discover_none": "ചേരാൻ ഒന്നും ബാക്കിയില്ല",
   "ui_community_discover_none_detail": "Kyron-ലെ എല്ലാ കമ്മ്യൂണിറ്റികളിലും നിങ്ങളുണ്ട്. മറ്റൊന്ന് തുടങ്ങുക.",
   "ui_community_discover_search_detail": "മറ്റൊരു വാക്ക് ശ്രമിക്കുക, അല്ലെങ്കിൽ ആ പേരിൽ ഒരു കമ്മ്യൂണിറ്റി തുടങ്ങുക.",
-  "ui_community_last_post": "അവസാന പോസ്റ്റ്",
-  "ui_community_none_yet": "ഇതുവരെ ഇല്ല",
-  "ui_community_catch_up": "പുതിയത് കാണുക",
-  "ui_community_open": "തുറക്കുക",
   "ui_community_write": "പോസ്റ്റ് എഴുതുക",
-  "ui_community_members": "അംഗങ്ങൾ:"
+  "ui_community_members": "അംഗങ്ങൾ:",
+  "ui_toast_posted": "പോസ്റ്റ് ചെയ്തു",
+  "ui_toast_view": "കാണുക",
+  "ui_toast_open": "തുറക്കുക",
+  "ui_dm_online": "ഓൺലൈൻ",
+  "ui_dm_show_online": "ഓൺലൈനായിരിക്കുമ്പോൾ കാണിക്കുക",
+  "ui_dm_show_online_detail": "നിങ്ങൾ സന്ദേശം അയയ്ക്കുന്നവർക്ക്, നിങ്ങൾ Kyron തുറന്നിരിക്കുമ്പോൾ ഒരു പച്ച കുത്ത് കാണാം. ഇത് ഓഫാണെങ്കിൽ, അവരുടേത് നിങ്ങളും കാണില്ല."
 }

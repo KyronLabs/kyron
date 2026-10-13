@@ -14,6 +14,31 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **A message notification opened the feed.** The tap was listened for by
+  the signed-in screen itself, which a cold start builds only after the
+  splash and the onboarding check, so a tap that arrived first had nobody to
+  hear it. It is now caught from launch and held until the app is there to
+  open it, over the tab it starts on. Activity notifications open what they
+  are about: a like, reply or repost opens the post, and a follow opens the
+  follower's profile (the server now sends which), rather than the
+  notifications page. Repeat notifications about one post replace each
+  other instead of stacking, which also keeps Android from bundling them
+  under a summary whose tap goes nowhere in particular.
+
+- **"Continue with Google" always opened the browser.** The phone's own
+  account sheet was never shown: the app left Google's web client id to be
+  found in the Firebase configuration, which comes from a different Google
+  Cloud project and has never carried it, so Android refused before a sheet
+  could open. The app names the client itself now. It also no longer takes an
+  instant "dismissal" at face value -- that is how Android reports an app it
+  does not recognise -- and goes to the browser instead of doing nothing.
+  The sheet needs an Android OAuth client in the same project as the web
+  client; docs/AUTH_GOOGLE.md has the one step.
+- **Tapping Google made the email button vanish.** The other ways in were
+  switched off, and a switched-off filled button is drawn as a pale smudge.
+  They now fade back and stop taking taps, and the Google mark turns into a
+  spinner while the label stays.
+
 - **Push said "off" and nothing else.** Every way of getting the server's
   Firebase key wrong looked the same from outside. `/health` now carries
   `pushProblem`, which says which: not set or set without a redeploy, set
@@ -200,6 +225,41 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **How the rooster was made, and how to make another.**
+  docs/ROUNDED_PIXEL_ART.md is the style written down -- the rooster's
+  measurements, the design rules for choosing and framing a subject, how
+  to put a new picture in the app with the same arrival -- and
+  `scripts/rounded_pixels.py` turns a cut-out into one, with each step
+  available to look at.
+
+- **See who is online.** A green dot on the picture of anybody you message
+  who has Kyron open, in the conversation list and at the top of the
+  conversation, where "Online" takes the place of their handle. Online
+  means the app is open and in front: the app tells the server when it goes
+  to the background, because a phone keeps its connection for minutes after
+  that. Only the people you have a conversation with can see it, never
+  across a block, and leaving takes fifteen seconds to show, so changing
+  networks does not make the dot blink. **Show when you're online** in
+  Messages settings turns it off, and off is mutual, as with read receipts:
+  you see nobody's either. A reconnecting app is sent who is online now
+  rather than trusting what it last heard.
+
+- **Toasts that open what they are about.** "Posted" (from the composer
+  and from a community) has **View**, which opens the post; "Draft saved"
+  has **Drafts**; a conversation restored from Hidden, or a share sent to
+  one person, has **Open**; a filed report has **View**, which opens it.
+  A toast with a button stays five seconds rather than two and a half, so
+  there is time to reach it. The others -- copied, muted, hidden, failures --
+  are about something already in front of you, or nothing, and stay as they
+  were.
+
+- **New messages show on the Messages tab.** A red count of unread
+  conversations sits on its icon, in the bottom bar and the side rail. It
+  was fetched and kept fresh by the socket all along, and drawn nowhere, so
+  the only way to know was to go and look. Reading a conversation brings it
+  down, and coming back to the app re-asks, since anything that arrived
+  meanwhile came as a push rather than over the socket.
+
 - **Community settings.** A gear on Communities opens them: whether posts from
   your communities also appear in Home (held by the server, and it governs
   both Home tabs; a new `User.communityPostsInHome` column, `GET` and
@@ -286,6 +346,29 @@ section for that version, so what is written here is what people read.
   4–12 MB a phone's sensor produces. In all 68 catalogs.
 
 ### Changed
+
+- **Community cards are calmer.** About half the height: a smaller picture,
+  the name, members and your role, the newest post with how many are new,
+  and a Follow-sized button to write there. The "Last post" time at the foot
+  is gone, and so is Open, which did what tapping the card does. Discover
+  cards share the same header, with a Join button that is the Follow button
+  in all but the word, and what the community is for under it across the
+  card's width -- so a long description no longer makes one card twice the
+  height of the next and leaves Join floating. The filter chip is hidden in
+  Discover, where it filtered nothing.
+- **One size for small buttons.** The chips over Messages and Communities
+  (filter, Hidden, Discover) and Edit profile and Share on your own profile
+  are the size of the Follow button on anybody else's.
+
+- **The welcome screen's buttons and edge.** The Google button is a solid
+  pill -- black on the light screen, light on the dark one, in Google's own
+  colours -- at the same height as the email button under it. The rounded
+  card with a shadow under the picture is gone: the ways in sit on the
+  picture's own off-white, meeting it at a straight edge between two rows of
+  the rooster's squares. On a wide window they keep a phone's width.
+- **The rooster loops.** It arrives from the eye outward, holds for four
+  seconds, leaves the way it came and arrives again; still, as before, for
+  anybody who has asked their phone not to animate.
 
 - **The welcome screen's picture is a rooster in big rounded pixels.** The
   meadow of cut-out photographs -- fronds, grass, lavender, a tulip and two

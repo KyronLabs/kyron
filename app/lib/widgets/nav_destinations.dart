@@ -1,6 +1,7 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 /// One of the four places the app can be.
 class NavDestination {
@@ -75,4 +76,60 @@ abstract final class NavDestinations {
 
   /// The index the compose button sits at in the bottom bar.
   static const int composeIndex = 2;
+}
+
+/// How many of something are waiting behind a destination, on its icon.
+///
+/// Red, which is what every phone has taught people a waiting count looks
+/// like, with a ring of the bar's own colour round it so it reads as sitting
+/// on the icon rather than smudged into it. Nothing at all at zero. Nine and
+/// over is "9+": past that the number is not news, the fact is.
+class NavBadge extends StatelessWidget {
+  final int count;
+  final Widget child;
+
+  const NavBadge({super.key, required this.count, required this.child});
+
+  static const red = Color(0xFFFF3B30);
+
+  @override
+  Widget build(BuildContext context) {
+    if (count <= 0) return child;
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    // The bar's and the rail's own surface.
+    final ring = dark ? KyronTheme.darkSurface : KyronTheme.lightSurface;
+    final text = count > 9 ? '9+' : '$count';
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        child,
+        Positioned(
+          top: -5,
+          right: -9,
+          child: Container(
+            key: const ValueKey('nav-badge'),
+            constraints: const BoxConstraints(minWidth: 18),
+            height: 18,
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: red,
+              borderRadius: BorderRadius.circular(9),
+              border: Border.all(color: ring, width: 2),
+            ),
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontSize: TypographyTokens.fontSize0,
+                height: 1,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }

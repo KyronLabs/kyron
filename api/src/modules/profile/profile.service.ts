@@ -190,7 +190,8 @@ export class ProfileService {
       {
         title: 'Kyron',
         body: 'Somebody started following you.',
-        data: { type: 'notification', kind: 'follow' },
+        // Who, so a tap opens their profile rather than a list to find it in.
+        data: { type: 'notification', kind: 'follow', actorId: userId },
       },
     );
 

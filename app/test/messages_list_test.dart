@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/widgets/toast.dart';
+import 'package:kyron_app/widgets/action_button.dart';
 import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/conversation.dart';
 import 'package:kyron_app/models/current_user.dart';
+import 'package:kyron_app/providers/presence_provider.dart';
 import 'package:kyron_app/providers/current_user_provider.dart';
 import 'package:kyron_app/models/post_media.dart';
 import 'package:kyron_app/models/profile_summary.dart';
@@ -50,10 +53,18 @@ Conversation _conversation(
   String name, {
   DirectMessage? last,
   int unread = 0,
+  bool online = false,
 }) =>
     Conversation(
       id: id,
-      people: [MessagePerson(id: 'u-$id', name: name, username: name)],
+      people: [
+        MessagePerson(
+          id: 'u-$id',
+          name: name,
+          username: name,
+          online: online,
+        ),
+      ],
       lastMessage: last,
       unread: unread,
       lastMessageAt: last?.createdAt ?? DateTime(2026, 10, 1),
@@ -113,6 +124,18 @@ class _Repo extends MessagesRepository {
     if (failReceipts) throw StateError('down');
     receiptChanges.add(on);
     return receipts = on;
+  }
+
+  bool online = true;
+  final List<bool> onlineChanges = [];
+
+  @override
+  Future<bool> showOnline() async => online;
+
+  @override
+  Future<bool> setShowOnline(bool on) async {
+    onlineChanges.add(on);
+    return online = on;
   }
 }
 
@@ -300,6 +323,47 @@ void main() {
       expect(find.text('Wee'), findsOneWidget);
     });
 
+    testWidgets('a green dot on whoever has the app open', (tester) async {
+      await _pump(
+        tester,
+        _messages(),
+        lists: {
+          ConversationFilter.all: [
+            _conversation('c1', 'Here', last: _msg(body: 'hi'), online: true),
+            _conversation('c2', 'Away', last: _msg(body: 'bye')),
+          ],
+        },
+      );
+
+      expect(find.byKey(const ValueKey('online-u-c1')), findsOneWidget);
+      expect(find.byKey(const ValueKey('online-u-c2')), findsNothing);
+
+      // Then the socket says otherwise, and it is believed over the page.
+      final container = ProviderScope.containerOf(
+        tester.element(find.byType(MessagesScreen)),
+      );
+      container.read(presenceProvider.notifier).changed('u-c2', true);
+      container.read(presenceProvider.notifier).changed('u-c1', false);
+      await tester.pump();
+
+      expect(find.byKey(const ValueKey('online-u-c1')), findsNothing);
+      expect(find.byKey(const ValueKey('online-u-c2')), findsOneWidget);
+    });
+
+    testWidgets('its chips are the size of a Follow button', (tester) async {
+      // They were 36 tall with a lighter label: between Follow and the
+      // full-size buttons, and like neither.
+      await _pump(tester, _messages(), lists: lists);
+
+      for (final key in ['messages-filter', 'messages-hidden']) {
+        expect(
+          tester.getSize(find.byKey(ValueKey(key))).height,
+          ActionButton.compactHeight,
+          reason: key,
+        );
+      }
+    });
+
     testWidgets('Hidden shows what was removed, and a swipe puts it back', (
       tester,
     ) async {
@@ -312,7 +376,9 @@ void main() {
       await tester.drag(find.text('Old'), const Offset(500, 0));
       await tester.pumpAndSettle();
       expect(repo.restored, ['c9']);
-      await tester.pump(const Duration(seconds: 4));
+      // Back in the other list, out of sight: the toast is the way to it.
+      expect(find.text('Open'), findsOneWidget);
+      await tester.pump(Toast.stayWithAction + const Duration(seconds: 1));
     });
 
     testWidgets('the search box narrows the list by name', (tester) async {
@@ -415,6 +481,27 @@ void main() {
       );
       expect(tile.value, isFalse, reason: 'the server did not take it');
       await tester.pump(const Duration(seconds: 4));
+    });
+
+    testWidgets(
+        'showing when you are online is the server’s, and off '
+        'hides everybody’s at once', (tester) async {
+      final repo = await _pump(
+        tester,
+        const MessagingSettingsScreen(),
+      );
+      final container = ProviderScope.containerOf(
+        tester.element(find.byType(MessagingSettingsScreen)),
+      );
+      container.read(presenceProvider.notifier).snapshot(['u-c1']);
+
+      await tester.tap(find.byKey(const ValueKey('setting-show-online')));
+      await tester.pumpAndSettle();
+
+      expect(repo.onlineChanges, [false]);
+      // The trade read receipts make: hide yours, see nobody's.
+      expect(container.read(presenceProvider).online, isEmpty);
+      expect(container.read(presenceProvider).live, isTrue);
     });
 
     testWidgets('typing and link previews are kept on this phone', (

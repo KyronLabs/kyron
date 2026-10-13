@@ -1498,17 +1498,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "သင်သည် Kyron ရှိ အသိုင်းအဝိုင်းတိုင်းတွင် ရှိနေသည်။ နောက်တစ်ခု စတင်ပါ။"),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "အခြားစကားလုံး စမ်းကြည့်ပါ သို့မဟုတ် ထိုအမည်ဖြင့် အသိုင်းအဝိုင်း စတင်ပါ။"),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("နောက်ဆုံးပို့စ်"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("မရှိသေးပါ"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("အသစ်များ ကြည့်ရန်"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("ဖွင့်ရန်"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("ပို့စ် ရေးရန်"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("အဖွဲ့ဝင်များ-"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("တင်ပြီးပါပြီ"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("ကြည့်ရန်"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("ဖွင့်ရန်"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("အွန်လိုင်း"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("အွန်လိုင်းဖြစ်နေချိန် ပြရန်"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "သင် မက်ဆေ့ချ်ပို့သူများသည် သင် Kyron ဖွင့်ထားချိန်တွင် အစိမ်းရောင်အစက်ကို မြင်ရပါသည်။ ပိတ်ထားလျှင် သူတို့၏ အစက်ကိုလည်း သင် မမြင်ရပါ။"),
     };
 
 final messageLookup = MessageLookup();

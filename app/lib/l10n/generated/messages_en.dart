@@ -1777,14 +1777,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Try a different word, or start a community by that name."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Last post"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("None yet"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Catch up"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Open"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Write a post"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Members:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Posted"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("View"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Open"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Show when you're online"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "People you message see a green dot while you have Kyron open. When this is off, you won't see theirs either."),
     };
 
 final messageLookup = MessageLookup();

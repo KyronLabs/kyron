@@ -1495,15 +1495,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Mēģiniet citu vārdu vai izveidojiet kopienu ar šo nosaukumu."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Pēdējais ieraksts"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Vēl nav"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Panākt"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Atvērt"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Rakstīt ierakstu"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Dalībnieki:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Publicēts"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Skatīt"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Atvērt"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Tiešsaistē"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Rādīt, kad esat tiešsaistē"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Cilvēki, kuriem rakstāt, redz zaļu punktu, kamēr jums ir atvērts Kyron. Kad tas ir izslēgts, arī jūs neredzēsiet viņējo."),
     };
 
 final messageLookup = MessageLookup();

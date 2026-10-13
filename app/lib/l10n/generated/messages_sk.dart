@@ -1490,15 +1490,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Skúste iné slovo alebo založte komunitu s týmto názvom."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Posledný príspevok"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Zatiaľ žiadny"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Dobehnúť"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Otvoriť"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Napísať príspevok"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Členovia:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Zverejnené"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Zobraziť"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Otvoriť"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Zobraziť, keď ste online"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Ľudia, ktorým píšete, vidia zelenú bodku, kým máte otvorený Kyron. Keď je to vypnuté, ani vy neuvidíte tú ich."),
     };
 
 final messageLookup = MessageLookup();

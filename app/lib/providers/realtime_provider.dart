@@ -6,6 +6,7 @@ import '../services/realtime_client.dart';
 import 'api_client_provider.dart';
 import 'messages_provider.dart';
 import 'notifications_provider.dart';
+import 'presence_provider.dart';
 import 'current_user_provider.dart';
 
 /// The socket, for the life of the app.
@@ -107,6 +108,21 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
         if (ref.exists(notificationListProvider(kind))) {
           ref.read(notificationListProvider(kind).notifier).refresh();
         }
+      }
+
+    case 'presence':
+      final who = event.data['userId'];
+      final online = event.data['online'];
+      if (who is String && online is bool) {
+        ref.read(presenceProvider.notifier).changed(who, online);
+      }
+
+    case 'presence.snapshot':
+      final online = event.data['online'];
+      if (online is List) {
+        ref
+            .read(presenceProvider.notifier)
+            .snapshot(online.whereType<String>());
       }
   }
 }

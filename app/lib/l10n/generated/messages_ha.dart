@@ -1492,16 +1492,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Gwada wata kalma, ko fara al'umma da wannan sunan."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Rubutu na ƙarshe"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Babu tukuna"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Cim ma sababbi"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Buɗe"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Rubuta rubutu"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Mambobi:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("An wallafa"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Duba"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Buɗe"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("A kan layi"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Nuna lokacin da kake kan layi"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Mutanen da kake aika wa saƙo suna ganin ɗigo kore yayin da Kyron ke buɗe a wurinka. Idan wannan a kashe yake, kai ma ba za ka ga nasu ba."),
     };
 
 final messageLookup = MessageLookup();

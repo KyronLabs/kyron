@@ -748,10 +748,12 @@
   "ui_community_discover_none": "சேர எதுவும் மீதமில்லை",
   "ui_community_discover_none_detail": "Kyron இல் உள்ள எல்லா சமூகங்களிலும் நீங்கள் உள்ளீர்கள். இன்னொன்றைத் தொடங்குங்கள்.",
   "ui_community_discover_search_detail": "வேறு சொல்லை முயலுங்கள், அல்லது அந்தப் பெயரில் ஒரு சமூகத்தைத் தொடங்குங்கள்.",
-  "ui_community_last_post": "கடைசி இடுகை",
-  "ui_community_none_yet": "இன்னும் இல்லை",
-  "ui_community_catch_up": "புதியவற்றைப் பார்",
-  "ui_community_open": "திற",
   "ui_community_write": "இடுகை எழுது",
-  "ui_community_members": "உறுப்பினர்கள்:"
+  "ui_community_members": "உறுப்பினர்கள்:",
+  "ui_toast_posted": "பதிவிடப்பட்டது",
+  "ui_toast_view": "பார்",
+  "ui_toast_open": "திற",
+  "ui_dm_online": "ஆன்லைன்",
+  "ui_dm_show_online": "நீங்கள் ஆன்லைனில் இருக்கும்போது காட்டு",
+  "ui_dm_show_online_detail": "நீங்கள் செய்தி அனுப்புபவர்கள், நீங்கள் Kyron-ஐத் திறந்திருக்கும்போது ஒரு பச்சைப் புள்ளியைப் பார்ப்பார்கள். இது முடக்கப்பட்டால், அவர்களுடையதை நீங்களும் பார்க்க முடியாது."
 }

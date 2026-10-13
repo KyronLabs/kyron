@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import 'action_button.dart';
 import 'hairline.dart';
 
 /// The controls over Messages and Communities: a search box, a row of chips,
@@ -69,6 +70,12 @@ class ListSearchField extends StatelessWidget {
 }
 
 /// A rounded chip, outlined with the hairline, filled when it is in force.
+///
+/// The size of the Follow button on a profile -- [ActionButton.compactHeight]
+/// tall, its semibold label and 18-point icon, the same padding --
+/// so every small pill in the app is one size. These were 36 tall with a
+/// lighter, smaller label, between Follow and the full-size buttons, and
+/// looked like neither.
 class ListChip extends StatelessWidget {
   final bool selected;
   final VoidCallback onTap;
@@ -89,38 +96,66 @@ class ListChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final ink = scheme.onSurface;
+    final padding = switch ((icon != null, label != null)) {
+      // Icon alone: as near round as a pill gets without being a circle,
+      // which would read as a different kind of control.
+      (true, false) => const EdgeInsets.symmetric(horizontal: 11),
+      (true, true) => const EdgeInsetsDirectional.only(start: 10, end: 14),
+      _ => const EdgeInsets.symmetric(horizontal: 14),
+    };
     Widget chip = Material(
       color: selected ? scheme.surfaceContainerHighest : Colors.transparent,
       shape: StadiumBorder(side: postRule(scheme)),
       child: InkWell(
         onTap: onTap,
         customBorder: const StadiumBorder(),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: label == null ? SpacingTokens.space16 : 14,
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (icon != null) Icon(icon, size: 18, color: ink),
-              if (icon != null && label != null)
-                const SizedBox(width: SpacingTokens.space4),
-              if (label != null)
-                Text(
-                  label!,
-                  style: TextStyle(
-                    fontSize: TypographyTokens.fontSize2,
-                    fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
-                    color: ink,
+        child: SizedBox(
+          height: ActionButton.compactHeight,
+          child: Padding(
+            padding: padding,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (icon != null) Icon(icon, size: 18, color: ink),
+                if (icon != null && label != null)
+                  const SizedBox(width: SpacingTokens.space4),
+                if (label != null)
+                  Text(
+                    label!,
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize2,
+                      fontWeight: FontWeight.w600,
+                      color: ink,
+                    ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
     if (tooltip != null) chip = Tooltip(message: tooltip!, child: chip);
     return Semantics(selected: selected, button: true, child: chip);
+  }
+}
+
+/// The row of [ListChip]s under a list's search box: one chip high, scrolling
+/// sideways when the chips do not fit.
+class ListChipRow extends StatelessWidget {
+  final List<Widget> children;
+
+  const ListChipRow({super.key, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: ActionButton.compactHeight,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
+        children: children,
+      ),
+    );
   }
 }
 

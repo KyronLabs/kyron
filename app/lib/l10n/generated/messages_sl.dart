@@ -1498,15 +1498,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Poskusite drugo besedo ali ustvarite skupnost s tem imenom."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Zadnja objava"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Še nobene"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Ujemi"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Odpri"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Napiši objavo"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Člani:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Objavljeno"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Poglej"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Odpri"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Na spletu"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Pokaži, ko ste na spletu"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Ljudje, s katerimi si dopisujete, vidijo zeleno piko, ko imate Kyron odprt. Ko je to izklopljeno, tudi vi ne boste videli njihove."),
     };
 
 final messageLookup = MessageLookup();

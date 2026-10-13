@@ -6,13 +6,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart' show RemoteMessage;
 
+import '../providers/messages_provider.dart';
 import '../providers/notifications_provider.dart';
+import '../providers/realtime_provider.dart';
 import '../l10n/app_localizations.dart';
-import '../routes.dart';
 import '../services/firebase_push.dart';
+import '../services/push_tap.dart';
 import '../services/share_inbox.dart';
 import '../widgets/toast.dart';
-import 'thread_screen.dart' show ThreadArgs;
 import '../widgets/share_into_kyron_sheet.dart';
 import '../utils/layout.dart';
 import '../widgets/bottom_nav_v4.dart';
@@ -62,31 +63,10 @@ class _MainContainerState extends ConsumerState<MainContainer>
       (_, content) => _offer(content),
       fireImmediately: true,
     );
-    // A notification tapped -- the one that opened the app, or one tapped
-    // while it runs -- goes where it is about, rather than to the feed.
-    _taps = FirebasePushTokens.taps().listen(_open);
     _inFront = FirebasePushTokens.inFront().listen(_shown);
   }
 
-  StreamSubscription<Map<String, dynamic>>? _taps;
   StreamSubscription<RemoteMessage>? _inFront;
-
-  void _open(Map<String, dynamic> data) {
-    if (!mounted) return;
-    final navigator = Navigator.of(context);
-    switch (data['type']) {
-      case 'message':
-        final id = data['conversationId'];
-        if (id is String && id.isNotEmpty) {
-          navigator.pushNamed(
-            Routes.thread,
-            arguments: ThreadArgs(conversationId: id),
-          );
-        }
-      case 'notification':
-        navigator.pushNamed(Routes.notifications);
-    }
-  }
 
   /// A notification that arrived with the app in front, which the phone hands
   /// over rather than shows. Only the test is shown: anything else has
@@ -121,19 +101,42 @@ class _MainContainerState extends ConsumerState<MainContainer>
   /// to move a number nobody is looking at.
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    // Online means the app is in front. Not inactive, which is a phone call
+    // sliding over it or the notification shade, and over in a moment.
+    switch (state) {
+      case AppLifecycleState.resumed:
+        ref.read(realtimeClientProvider).setAway(false);
+      case AppLifecycleState.paused:
+      case AppLifecycleState.hidden:
+      case AppLifecycleState.detached:
+        ref.read(realtimeClientProvider).setAway(true);
+      case AppLifecycleState.inactive:
+        break;
+    }
     if (state == AppLifecycleState.resumed) {
       ref.invalidate(unreadNotificationsProvider);
+      // A message that arrived while the app was away came as a push, not
+      // over the socket, so nothing has moved the count since.
+      ref.invalidate(unreadConversationsProvider);
     }
   }
 
   @override
   void dispose() {
-    _taps?.cancel();
     _inFront?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     _navHideProgress.dispose();
     super.dispose();
   }
+
+  /// What waits behind each tab: unread conversations on Messages, so a
+  /// message that arrives while the reader is elsewhere is seen without
+  /// going to look. Kept live by the socket (realtime_provider.dart), by
+  /// reading a conversation, and by coming back to the app.
+  static Map<int, int> _badges(WidgetRef ref) => {
+        NavDestinations.messages.index:
+            ref.watch(unreadConversationsProvider).value ?? 0,
+      };
 
   void _onNavTap(int index) {
     if (index == NavDestinations.composeIndex) return; // Skip FAB
@@ -197,8 +200,12 @@ class _MainContainerState extends ConsumerState<MainContainer>
     // window dragged narrow is a phone-shaped space and gets the phone's
     // layout, and a tablet held wide gets the rail. Which operating system
     // this is was never the question.
-    if (Layout.hasRail(context)) return _wide();
-    return _tall();
+    //
+    // A tapped notification opens over either: whatever it is about, rather
+    // than the feed.
+    return PushTapOpener(
+      child: Layout.hasRail(context) ? _wide() : _tall(),
+    );
   }
 
   /// A window: navigation down the side, nothing across the bottom.
@@ -207,7 +214,13 @@ class _MainContainerState extends ConsumerState<MainContainer>
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SideRail(currentIndex: _currentIndex, onSelect: _onNavTap),
+          Consumer(
+            builder: (context, ref, _) => SideRail(
+              currentIndex: _currentIndex,
+              onSelect: _onNavTap,
+              badges: _badges(ref),
+            ),
+          ),
           // The drawer slides over the page and not over the rail, so the
           // rail stays reachable while it is open.
           Expanded(
@@ -234,7 +247,15 @@ class _MainContainerState extends ConsumerState<MainContainer>
           valueListenable: _navHideProgress,
           // The nav itself is built once and passed through, so a scroll frame
           // moves an existing subtree instead of rebuilding one.
-          child: BottomNavV4(currentIndex: _currentIndex, onTap: _onNavTap),
+          // Only the bar listens for the count: rebuilding this whole
+          // screen rebuilds the feed under it.
+          child: Consumer(
+            builder: (context, ref, _) => BottomNavV4(
+              currentIndex: _currentIndex,
+              onTap: _onNavTap,
+              badges: _badges(ref),
+            ),
+          ),
           builder: (context, progress, child) => Transform.translate(
             // Slide down by the nav height plus safe area.
             offset: Offset(0, 80 * progress),

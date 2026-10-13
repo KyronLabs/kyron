@@ -393,8 +393,18 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   /// placeholder id.
   int _pending = 0;
 
-  ThreadNotifier(this._repo, this._vault, this._conversationId)
-      : super(const ThreadState()) {
+  /// Called once the server has the conversation as read, so the tab's
+  /// count can drop: reading a conversation used to leave the badge where
+  /// it was until something else happened to refresh it.
+  final void Function()? _onRead;
+
+  ThreadNotifier(
+    this._repo,
+    this._vault,
+    this._conversationId, {
+    void Function()? onRead,
+  })  : _onRead = onRead,
+        super(const ThreadState()) {
     refresh();
   }
 
@@ -855,6 +865,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   Future<void> _markRead() async {
     try {
       await _repo.markRead(_conversationId);
+      _onRead?.call();
     } catch (_) {
       // Not worth a message. The badge is stale for a moment and corrects
       // itself the next time the list is read.
@@ -883,5 +894,6 @@ final threadProvider =
     ref.read(messagesRepositoryProvider),
     ref.read(messageVaultProvider),
     conversationId,
+    onRead: () => ref.invalidate(unreadConversationsProvider),
   ),
 );

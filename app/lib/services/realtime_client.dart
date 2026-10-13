@@ -58,6 +58,33 @@ class RealtimeClient {
   bool _wanted = false;
   bool get isConnected => _channel != null;
 
+  /// Whether the app is in the background. Told to the server, which counts
+  /// only an app in front as online: a phone keeps its socket for minutes
+  /// after the app is put away, and "has a socket" is not "is here".
+  bool _away = false;
+
+  /// The app went to the background, or came back.
+  void setAway(bool away) {
+    if (_away == away) return;
+    _away = away;
+    _sayWhere();
+  }
+
+  void _sayWhere() {
+    final channel = _channel;
+    if (channel == null) return;
+    try {
+      channel.sink.add(
+        jsonEncode({'type': 'presence', 'state': _away ? 'away' : 'here'}),
+      );
+    } catch (error) {
+      // A socket that will not take a frame is one about to report itself
+      // closed; the reconnect says where the app is again.
+      AppLog.instance
+          .error('realtime', 'Could not say where the app is: $error');
+    }
+  }
+
   /// Opens the socket, and keeps it open until [stop].
   void start() {
     if (_wanted) return;
@@ -101,6 +128,9 @@ class RealtimeClient {
         onDone: () => _onClosed(null),
         cancelOnError: true,
       );
+      // A new socket counts as here. One opened by a retry while the app is
+      // in the background has to say otherwise straight away.
+      if (_away) _sayWhere();
     } catch (error) {
       AppLog.instance.error('realtime', 'Could not open the socket: $error');
       _channel = null;

@@ -10,11 +10,17 @@ class MessagePerson {
   final String? username;
   final String? avatarUrl;
 
+  /// Online when the page this came on was read: the app open and in front,
+  /// where both sides show it. Live changes come over the socket
+  /// (presenceProvider), which wins once it has said anything.
+  final bool online;
+
   const MessagePerson({
     required this.id,
     this.name,
     this.username,
     this.avatarUrl,
+    this.online = false,
   });
 
   factory MessagePerson.fromJson(Map<String, dynamic> json) => MessagePerson(
@@ -22,6 +28,7 @@ class MessagePerson {
         name: json['name'] as String?,
         username: json['username'] as String?,
         avatarUrl: json['avatarUrl'] as String?,
+        online: json['online'] == true,
       );
 
   String get displayName {

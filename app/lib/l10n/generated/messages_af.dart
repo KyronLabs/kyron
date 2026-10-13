@@ -1566,14 +1566,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Jy is in elke gemeenskap op Kyron. Begin nog een."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "Probeer 'n ander woord, of begin 'n gemeenskap met daardie naam."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Laaste plasing"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Nog geen"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Haal in"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Maak oop"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Skryf 'n plasing"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Lede:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Geplaas"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Bekyk"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Maak oop"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Aanlyn"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Wys wanneer jy aanlyn is"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Mense vir wie jy boodskappe stuur, sien 'n groen kolletjie terwyl jy Kyron oop het. As dit af is, sien jy ook nie hulle s'n nie."),
     };
 
 final messageLookup = MessageLookup();

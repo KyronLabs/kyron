@@ -1493,16 +1493,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Próbálj másik szót, vagy indíts közösséget ezzel a névvel."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Legutóbbi bejegyzés"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Még nincs"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Felzárkózás"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Megnyitás"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Bejegyzés írása"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Tagok:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Közzétéve"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Megtekintés"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Megnyitás"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Elérhető"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Mutassa, amikor elérhető vagy"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Akiknek üzensz, zöld pöttyöt látnak, amíg nálad nyitva van a Kyron. Ha ez ki van kapcsolva, te sem látod az övékét."),
     };
 
 final messageLookup = MessageLookup();

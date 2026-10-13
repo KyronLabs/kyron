@@ -10,6 +10,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/conversation.dart';
 import '../utils/conversation_text.dart';
 import '../widgets/list_controls.dart';
+import '../widgets/online_dot.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
 import '../widgets/app_drawer.dart';
@@ -153,33 +154,26 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
             hint: l10n.ui('ui_share_search', 'Search'),
           ),
         ),
-        SizedBox(
-          height: 36,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(
-              horizontal: SpacingTokens.space16,
+        ListChipRow(
+          children: [
+            Builder(
+              builder: (chip) => ListChip(
+                key: const ValueKey('messages-filter'),
+                selected: filtered,
+                onTap: () => _chooseFilter(chip),
+                icon: Iconsax.filter_copy,
+                label: filtered ? _filterName(l10n, _filter) : null,
+                tooltip: l10n.ui('ui_dm_filter', 'Filter'),
+              ),
             ),
-            children: [
-              Builder(
-                builder: (chip) => ListChip(
-                  key: const ValueKey('messages-filter'),
-                  selected: filtered,
-                  onTap: () => _chooseFilter(chip),
-                  icon: Iconsax.filter_copy,
-                  label: filtered ? _filterName(l10n, _filter) : null,
-                  tooltip: l10n.ui('ui_dm_filter', 'Filter'),
-                ),
-              ),
-              const SizedBox(width: SpacingTokens.space8),
-              ListChip(
-                key: const ValueKey('messages-hidden'),
-                selected: _showingHidden,
-                onTap: () => setState(() => _showingHidden = !_showingHidden),
-                label: l10n.ui('ui_dm_hidden', 'Hidden'),
-              ),
-            ],
-          ),
+            const SizedBox(width: SpacingTokens.space8),
+            ListChip(
+              key: const ValueKey('messages-hidden'),
+              selected: _showingHidden,
+              onTap: () => setState(() => _showingHidden = !_showingHidden),
+              label: l10n.ui('ui_dm_hidden', 'Hidden'),
+            ),
+          ],
         ),
         const SizedBox(height: SpacingTokens.space8),
         Divider(
@@ -268,6 +262,14 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
     Toast.show(
       context,
       error ?? l10n.ui('ui_dm_restored', 'Back in your list.'),
+      // Restored from Hidden, it is in the other list now, out of sight: the
+      // way to it is here.
+      action: error != null
+          ? null
+          : ToastAction(
+              l10n.ui('ui_toast_open', 'Open'),
+              () => _open(conversation),
+            ),
     );
     await refreshConversations(ref);
   }
@@ -500,13 +502,17 @@ class _ConversationRow extends StatelessWidget {
           ),
           child: Row(
             children: [
-              CircleAvatar(
-                radius: 24,
-                backgroundColor: scheme.primary.withValues(alpha: 0.15),
-                foregroundImage: other?.avatarUrl == null
-                    ? null
-                    : NetworkImage(other!.avatarUrl!),
-                child: Icon(Iconsax.user_copy, size: 20, color: scheme.primary),
+              OnlineDot(
+                person: other,
+                child: CircleAvatar(
+                  radius: 24,
+                  backgroundColor: scheme.primary.withValues(alpha: 0.15),
+                  foregroundImage: other?.avatarUrl == null
+                      ? null
+                      : NetworkImage(other!.avatarUrl!),
+                  child:
+                      Icon(Iconsax.user_copy, size: 20, color: scheme.primary),
+                ),
               ),
               const SizedBox(width: SpacingTokens.space12),
               Expanded(

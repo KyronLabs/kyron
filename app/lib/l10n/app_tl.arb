@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Wala nang masasalihan",
   "ui_community_discover_none_detail": "Kasali ka na sa bawat komunidad sa Kyron. Magsimula ng isa pa.",
   "ui_community_discover_search_detail": "Sumubok ng ibang salita, o magsimula ng komunidad na may ganoong pangalan.",
-  "ui_community_last_post": "Huling post",
-  "ui_community_none_yet": "Wala pa",
-  "ui_community_catch_up": "Humabol",
-  "ui_community_open": "Buksan",
   "ui_community_write": "Sumulat ng post",
-  "ui_community_members": "Mga miyembro:"
+  "ui_community_members": "Mga miyembro:",
+  "ui_toast_posted": "Na-post na",
+  "ui_toast_view": "Tingnan",
+  "ui_toast_open": "Buksan",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Ipakita kapag online ka",
+  "ui_dm_show_online_detail": "Nakikita ng mga kausap mo ang berdeng tuldok habang bukas ang Kyron mo. Kapag naka-off ito, hindi mo rin makikita ang sa kanila."
 }

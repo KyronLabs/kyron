@@ -1498,16 +1498,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "სცადეთ სხვა სიტყვა ან შექმენით თემი ამ სახელით."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("ბოლო პოსტი"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("ჯერ არ არის"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("ახლების ნახვა"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("გახსნა"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("პოსტის დაწერა"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("წევრები:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("გამოქვეყნდა"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("ნახვა"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("გახსნა"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("ონლაინ"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("აჩვენე, როცა ონლაინ ხართ"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "ადამიანები, ვისაც წერთ, ხედავენ მწვანე წერტილს, სანამ Kyron გახსნილი გაქვთ. როცა ეს გამორთულია, თქვენც ვერ დაინახავთ მათსას."),
     };
 
 final messageLookup = MessageLookup();

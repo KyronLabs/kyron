@@ -88,6 +88,28 @@ describe('a message to a phone', () => {
     );
   });
 
+  it('one notification per post and one for followers, not a stack', () => {
+    // At four, Android bundles them under a summary whose tap carries nothing
+    // to say where it was meant to go.
+    const tagOf = (data: Record<string, string>) =>
+      (
+        PushService.payload('t', { title: 'Kyron', body: 'x', data }) as {
+          android: { notification: { tag?: string } };
+        }
+      ).android.notification.tag;
+
+    expect(tagOf({ type: 'notification', kind: 'like', postId: 'p1' })).toBe(
+      'post-p1',
+    );
+    expect(tagOf({ type: 'notification', kind: 'comment', postId: 'p1' })).toBe(
+      'post-p1',
+    );
+    expect(tagOf({ type: 'notification', kind: 'follow', actorId: 'u' })).toBe(
+      'follows',
+    );
+    expect(tagOf({ type: 'test' })).toBeUndefined();
+  });
+
   it('everything else goes on the Activity channel', () => {
     const payload = PushService.payload('t', {
       title: 'Kyron',

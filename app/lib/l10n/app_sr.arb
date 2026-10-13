@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Нема више чему да се придружиш",
   "ui_community_discover_none_detail": "У свакој си заједници на Kyron-у. Покрени још једну.",
   "ui_community_discover_search_detail": "Пробај другу реч или покрени заједницу с тим називом.",
-  "ui_community_last_post": "Последња објава",
-  "ui_community_none_yet": "Још ниједна",
-  "ui_community_catch_up": "Сустигни",
-  "ui_community_open": "Отвори",
   "ui_community_write": "Напиши објаву",
-  "ui_community_members": "Чланови:"
+  "ui_community_members": "Чланови:",
+  "ui_toast_posted": "Објављено",
+  "ui_toast_view": "Погледај",
+  "ui_toast_open": "Отвори",
+  "ui_dm_online": "На мрежи",
+  "ui_dm_show_online": "Прикажи кад си на мрежи",
+  "ui_dm_show_online_detail": "Људи којима пишеш виде зелену тачку док ти је Kyron отворен. Када је ово искључено, ни ти нећеш видети њихову."
 }

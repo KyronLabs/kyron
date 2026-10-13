@@ -828,10 +828,10 @@ class _ActionsState extends ConsumerState<_Actions> {
   @override
   Widget build(BuildContext context) {
     final profile = widget.profile;
-    // As tall as the button they sit beside: Follow is the compact one, Edit
-    // profile on your own page the full one.
-    final size =
-        profile.isOwnProfile ? ActionButton.height : ActionButton.compactHeight;
+    // One size on every profile, yours included: the compact one Follow has
+    // always been. Edit profile used the full-size button, so your own page's
+    // header was a size bigger than everybody else's for no reason.
+    const size = ActionButton.compactHeight;
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -864,6 +864,8 @@ class _ActionsState extends ConsumerState<_Actions> {
         Flexible(
           child: profile.isOwnProfile
               ? ActionButton(
+                  key: const ValueKey('profile-edit'),
+                  compact: true,
                   label: AppLocalizations.of(context).editProfile,
                   icon: Iconsax.edit_2_copy,
                   kind: ActionButtonKind.outlined,

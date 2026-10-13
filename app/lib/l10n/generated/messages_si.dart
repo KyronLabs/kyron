@@ -1495,16 +1495,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ඔබ Kyron හි සෑම ප්‍රජාවකම සිටී. තවත් එකක් ආරම්භ කරන්න."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "වෙනත් වචනයක් උත්සාහ කරන්න, නැතහොත් එම නමින් ප්‍රජාවක් ආරම්භ කරන්න."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("අවසන් පළ කිරීම"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("තවම නැත"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("අලුත් ඒවා බලන්න"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("විවෘත කරන්න"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("පළ කිරීමක් ලියන්න"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("සාමාජිකයින්:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("පළ කළා"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("බලන්න"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("විවෘත කරන්න"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("සබැඳිව"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("ඔබ සබැඳිව සිටින විට පෙන්වන්න"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබ පණිවිඩ යවන අයට, ඔබ Kyron විවෘතව තබා ඇති විට කොළ පැහැති තිතක් පෙනේ. මෙය අක්‍රිය විට, ඔවුන්ගේ එකද ඔබට නොපෙනේ."),
     };
 
 final messageLookup = MessageLookup();

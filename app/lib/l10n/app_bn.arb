@@ -748,10 +748,12 @@
   "ui_community_discover_none": "যোগ দেওয়ার মতো আর কিছু নেই",
   "ui_community_discover_none_detail": "আপনি Kyron-এর প্রতিটি কমিউনিটিতে আছেন। আরেকটি শুরু করুন।",
   "ui_community_discover_search_detail": "অন্য শব্দ দিয়ে চেষ্টা করুন, অথবা ওই নামে একটি কমিউনিটি শুরু করুন।",
-  "ui_community_last_post": "শেষ পোস্ট",
-  "ui_community_none_yet": "এখনও নেই",
-  "ui_community_catch_up": "নতুনগুলো দেখুন",
-  "ui_community_open": "খুলুন",
   "ui_community_write": "পোস্ট লিখুন",
-  "ui_community_members": "সদস্য:"
+  "ui_community_members": "সদস্য:",
+  "ui_toast_posted": "পোস্ট হয়েছে",
+  "ui_toast_view": "দেখুন",
+  "ui_toast_open": "খুলুন",
+  "ui_dm_online": "অনলাইন",
+  "ui_dm_show_online": "অনলাইন থাকলে দেখান",
+  "ui_dm_show_online_detail": "আপনি যাদের বার্তা পাঠান, আপনার Kyron খোলা থাকলে তারা একটি সবুজ বিন্দু দেখে। এটি বন্ধ থাকলে আপনিও তাদেরটা দেখবেন না।"
 }

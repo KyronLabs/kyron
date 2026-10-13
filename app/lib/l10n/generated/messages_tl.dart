@@ -1493,15 +1493,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kasali ka na sa bawat komunidad sa Kyron. Magsimula ng isa pa."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "Sumubok ng ibang salita, o magsimula ng komunidad na may ganoong pangalan."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Huling post"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Wala pa"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Humabol"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Buksan"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Sumulat ng post"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Mga miyembro:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Na-post na"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Tingnan"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Buksan"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Ipakita kapag online ka"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Nakikita ng mga kausap mo ang berdeng tuldok habang bukas ang Kyron mo. Kapag naka-off ito, hindi mo rin makikita ang sa kanila."),
     };
 
 final messageLookup = MessageLookup();

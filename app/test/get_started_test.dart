@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:ui' as ui;
 
@@ -33,6 +34,13 @@ import 'support/fake_google_platform.dart';
 /// the buttons actually do, what somebody agrees to before any of it, and what
 /// happens when the one flow that leaves the app -- a password reset -- has to
 /// be finished somewhere else.
+
+/// An account sheet that is up and has not been answered.
+class _HangingGoogle extends FakeGooglePlatform {
+  @override
+  Future<AuthenticationResults> authenticate(AuthenticateParameters params) =>
+      Completer<AuthenticationResults>().future;
+}
 
 /// Records what was asked of Supabase without going near it.
 class _FakeAuth extends AuthRepository {
@@ -248,6 +256,85 @@ void main() {
       await AppLog.instance.flush();
 
       expect(auth.googleStarts, 1);
+    });
+
+    testWidgets('the Google button stands exactly as tall as the email one', (
+      tester,
+    ) async {
+      // It was eight pixels taller, and outlined where the button under it is
+      // filled: two buttons for the same decision that did not look related.
+      await tester.pumpWidget(app(const WelcomeScreen()));
+      await tester.pumpAndSettle();
+
+      final google = tester.getSize(
+        find.descendant(
+          of: find.byType(GoogleButton),
+          matching: find.byType(Material),
+        ),
+      );
+      final email = tester.getSize(
+        find.descendant(
+          of: find.byType(FilledButton),
+          matching: find.byType(Material),
+        ),
+      );
+      expect(google.height, email.height);
+
+      // And solid: no outline round it.
+      final material = tester.widget<Material>(
+        find.descendant(
+          of: find.byType(GoogleButton),
+          matching: find.byType(Material),
+        ),
+      );
+      expect(material.shape, isA<StadiumBorder>());
+      expect((material.shape! as StadiumBorder).side, BorderSide.none);
+    });
+
+    testWidgets('while Google is asked, the others step back, not vanish', (
+      tester,
+    ) async {
+      // Tapping Google used to switch the email button off, and a switched-
+      // off filled button is a pale grey smudge: the blue button under it
+      // disappeared in one frame. Now it fades, keeps its colour, and only
+      // stops taking taps.
+      PlatformSupport.current = PlatformSupport.mobile;
+      GoogleSignInPlatform.instance = _HangingGoogle();
+      await tester.pumpWidget(app(const WelcomeScreen()));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Continue with Google'));
+      await tester.pumpAndSettle();
+      // Agreed by hand: the spinner that starts behind the closing sheet
+      // never settles.
+      await tester.tap(find.text('Agree and continue'));
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 1));
+
+      // The mark has given way to a spinner; the label is still there.
+      expect(find.byKey(const ValueKey('google-busy')), findsOneWidget);
+      expect(find.text('Continue with Google'), findsOneWidget);
+
+      // Still a live, blue button -- just further away.
+      final email = tester.widget<FilledButton>(find.byType(FilledButton));
+      expect(email.onPressed, isNotNull);
+      final fade = tester.widget<AnimatedOpacity>(
+        find
+            .ancestor(
+              of: find.byType(FilledButton),
+              matching: find.byType(AnimatedOpacity),
+            )
+            .first,
+      );
+      expect(fade.opacity, lessThan(1));
+      expect(fade.opacity, greaterThan(0.2));
+
+      // And it does not answer while Google is being asked.
+      await tester.tap(find.text('Continue with email'), warnIfMissed: false);
+      // Not settled: the spinner turns for as long as the sheet is up.
+      await tester.pump(const Duration(seconds: 1));
+      expect(find.byType(WelcomeScreen), findsOneWidget);
+      await AppLog.instance.flush();
     });
 
     testWidgets('says so rather than opening a browser that cannot come back', (
@@ -557,20 +644,67 @@ void main() {
       await tester.pump();
     }
 
-    testWidgets('arrives once, then holds still', (tester) async {
+    testWidgets('arrives, holds, leaves the way it came, and comes back', (
+      tester,
+    ) async {
       await pumpArt(tester);
-      expect(tester.hasRunningAnimations, isTrue);
+      expect(tester.hasRunningAnimations, isTrue, reason: 'arriving');
 
-      await tester.pumpAndSettle();
-      expect(tester.hasRunningAnimations, isFalse);
+      // Holding: a timer, not an animation, so nothing repaints while the
+      // picture stands still.
+      await tester.pump(RoosterArt.arriving);
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(tester.hasRunningAnimations, isFalse, reason: 'holding');
+
+      await tester.pump(RoosterArt.holding);
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(tester.hasRunningAnimations, isTrue, reason: 'leaving');
+
+      await tester.pump(RoosterArt.leaving);
+      await tester.pump(const Duration(milliseconds: 50));
+      expect(tester.hasRunningAnimations, isFalse, reason: 'resting');
+
+      await tester.pump(RoosterArt.resting);
+      await tester.pump(const Duration(milliseconds: 50));
+      expect(tester.hasRunningAnimations, isTrue, reason: 'arriving again');
+
+      // Gone with the screen, timers and all.
+      await tester.pumpWidget(const SizedBox());
     });
 
-    testWidgets('is all there at once when the phone asks for no motion', (
+    testWidgets('is all there, and stays, when the phone asks for no motion', (
       tester,
     ) async {
       await pumpArt(tester, still: true);
-
       expect(tester.hasRunningAnimations, isFalse);
+
+      // No loop either.
+      await tester.pump(RoosterArt.holding + RoosterArt.resting);
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(tester.hasRunningAnimations, isFalse);
+    });
+
+    test('is cut between two rows of squares, never through one', () {
+      // Whatever sits under the picture meets it with a straight edge, and
+      // an edge through a row leaves a line of half-squares along it.
+      for (final (size, inset) in [
+        (const Size(390, 388), 47.0),
+        (const Size(360, 240), 24.0),
+        (const Size(412, 380), 0.0),
+        (const Size(1200, 380), 0.0),
+      ]) {
+        final height = RoosterArt.fitHeight(size, inset);
+        expect(height, lessThanOrEqualTo(size.height));
+        expect(height, greaterThan(size.height - 40));
+
+        final (:scale, :origin) =
+            RoosterArt.layout(Size(size.width, height), inset);
+        final rows = ((height - origin.dy) / scale - RoosterArt.gridOrigin.dy) /
+            RoosterArt.pitch.height;
+        expect(rows, closeTo(rows.roundToDouble(), 1e-6), reason: '$size');
+        // And the head is never what gives way.
+        expect(origin.dy + 975 * scale, lessThanOrEqualTo(height + 0.01));
+      }
     });
 
     testWidgets('asks for dark status bar icons over its light ground', (

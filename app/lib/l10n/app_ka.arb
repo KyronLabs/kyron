@@ -748,10 +748,12 @@
   "ui_community_discover_none": "შესაერთებელი აღარაფერი დარჩა",
   "ui_community_discover_none_detail": "Kyron-ის ყველა თემში ხართ. შექმენით კიდევ ერთი.",
   "ui_community_discover_search_detail": "სცადეთ სხვა სიტყვა ან შექმენით თემი ამ სახელით.",
-  "ui_community_last_post": "ბოლო პოსტი",
-  "ui_community_none_yet": "ჯერ არ არის",
-  "ui_community_catch_up": "ახლების ნახვა",
-  "ui_community_open": "გახსნა",
   "ui_community_write": "პოსტის დაწერა",
-  "ui_community_members": "წევრები:"
+  "ui_community_members": "წევრები:",
+  "ui_toast_posted": "გამოქვეყნდა",
+  "ui_toast_view": "ნახვა",
+  "ui_toast_open": "გახსნა",
+  "ui_dm_online": "ონლაინ",
+  "ui_dm_show_online": "აჩვენე, როცა ონლაინ ხართ",
+  "ui_dm_show_online_detail": "ადამიანები, ვისაც წერთ, ხედავენ მწვანე წერტილს, სანამ Kyron გახსნილი გაქვთ. როცა ეს გამორთულია, თქვენც ვერ დაინახავთ მათსას."
 }

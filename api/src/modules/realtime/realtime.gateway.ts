@@ -25,9 +25,11 @@ const HEARTBEAT_MS = 30_000;
 /**
  * The socket a signed-in reader holds open.
  *
- * Read-only from the client's side: it sends nothing but a `ping`, and the
- * server tells it what happened. Everything a client can *do* is a REST call
- * that already exists, so there is no second, less-guarded way to write.
+ * Read-only from the client's side, but for one frame: the app says whether
+ * it is in front or in the background (`{"type":"presence","state":"away"}`
+ * or `"here"`), which is a fact about this socket and changes nothing
+ * stored. Everything a client can *do* is a REST call that already exists,
+ * so there is no second, less-guarded way to write.
  */
 @WebSocketGateway({ path: '/realtime' })
 export class RealtimeGateway
@@ -72,7 +74,37 @@ export class RealtimeGateway
     this.realtime.register(claims.sub, socket);
 
     socket.on('pong', () => this.alive.add(socket));
+    socket.on('message', (data: unknown) => {
+      const away = RealtimeGateway.presenceFrame(data);
+      if (away !== null) this.realtime.setAway(claims.sub, socket, away);
+    });
     this.startHeartbeat();
+  }
+
+  /**
+   * What a frame from the app says about where it is: true for the
+   * background, false for in front, null for anything else -- which is
+   * ignored, not answered, since nothing else is expected.
+   */
+  static presenceFrame(data: unknown): boolean | null {
+    const text =
+      typeof data === 'string'
+        ? data
+        : Buffer.isBuffer(data)
+          ? data.toString('utf8')
+          : null;
+    // Small, or not a presence frame: nobody gets to make this parse a
+    // megabyte of JSON.
+    if (text === null || text.length > 200) return null;
+    try {
+      const frame = JSON.parse(text) as { type?: unknown; state?: unknown };
+      if (frame?.type !== 'presence') return null;
+      if (frame.state === 'away') return true;
+      if (frame.state === 'here') return false;
+      return null;
+    } catch {
+      return null;
+    }
   }
 
   handleDisconnect(socket: WebSocket): void {

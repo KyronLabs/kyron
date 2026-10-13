@@ -748,10 +748,12 @@
   "ui_community_discover_none": "सामील होण्यासारखे काही उरले नाही",
   "ui_community_discover_none_detail": "तुम्ही Kyron वरील प्रत्येक समुदायात आहात. आणखी एक सुरू करा.",
   "ui_community_discover_search_detail": "दुसरा शब्द वापरून पाहा, किंवा त्या नावाने समुदाय सुरू करा.",
-  "ui_community_last_post": "शेवटची पोस्ट",
-  "ui_community_none_yet": "अजून नाही",
-  "ui_community_catch_up": "नवीन पाहा",
-  "ui_community_open": "उघडा",
   "ui_community_write": "पोस्ट लिहा",
-  "ui_community_members": "सदस्य:"
+  "ui_community_members": "सदस्य:",
+  "ui_toast_posted": "पोस्ट झाली",
+  "ui_toast_view": "पहा",
+  "ui_toast_open": "उघडा",
+  "ui_dm_online": "ऑनलाइन",
+  "ui_dm_show_online": "तुम्ही ऑनलाइन असताना दाखवा",
+  "ui_dm_show_online_detail": "तुम्ही ज्यांना संदेश पाठवता त्यांना, तुम्ही Kyron उघडे ठेवल्यावर हिरवा ठिपका दिसतो. हे बंद असताना तुम्हालाही त्यांचा दिसणार नाही."
 }

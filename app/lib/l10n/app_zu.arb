@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Akukho okusele okungajoyinwa",
   "ui_community_discover_none_detail": "Usemphakathini ngamunye ku-Kyron. Qala omunye.",
   "ui_community_discover_search_detail": "Zama elinye igama, noma uqale umphakathi onalelo gama.",
-  "ui_community_last_post": "Okuthunyelwe kokugcina",
-  "ui_community_none_yet": "Akukabi khona",
-  "ui_community_catch_up": "Bona okusha",
-  "ui_community_open": "Vula",
   "ui_community_write": "Bhala okuthunyelwe",
-  "ui_community_members": "Amalungu:"
+  "ui_community_members": "Amalungu:",
+  "ui_toast_posted": "Kuthunyelwe",
+  "ui_toast_view": "Buka",
+  "ui_toast_open": "Vula",
+  "ui_dm_online": "Ku-inthanethi",
+  "ui_dm_show_online": "Bonisa uma use-inthanethi",
+  "ui_dm_show_online_detail": "Abantu obathumelela imilayezo babona ichashaza eliluhlaza uma uvule i-Kyron. Uma lokhu kuvaliwe, nawe ngeke ubone elabo."
 }

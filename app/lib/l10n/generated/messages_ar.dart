@@ -1489,16 +1489,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "جرّب كلمة أخرى، أو أنشئ مجتمعًا بهذا الاسم."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("آخر منشور"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("لا شيء بعد"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("تابِع الجديد"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("فتح"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("اكتب منشورًا"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("الأعضاء:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("تم النشر"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("عرض"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("فتح"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("متصل"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("أظهر عندما تكون متصلًا"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "يرى من تراسلهم نقطة خضراء ما دام Kyron مفتوحًا لديك. عند إيقافها، لن ترى نقاطهم أنت أيضًا."),
     };
 
 final messageLookup = MessageLookup();

@@ -1494,16 +1494,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Tente outra palavra, ou crie uma comunidade com esse nome."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Última publicação"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Nenhuma ainda"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Pôr em dia"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Abrir"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Escrever publicação"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Membros:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Publicado"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Ver"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Abrir"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage(
+          "Mostrar quando você está online"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "As pessoas com quem você conversa veem um ponto verde enquanto o Kyron está aberto. Desativado, você também não verá o delas."),
     };
 
 final messageLookup = MessageLookup();

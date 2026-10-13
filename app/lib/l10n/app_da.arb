@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Intet tilbage at blive medlem af",
   "ui_community_discover_none_detail": "Du er med i alle fællesskaber på Kyron. Start et nyt.",
   "ui_community_discover_search_detail": "Prøv et andet ord, eller start et fællesskab med det navn.",
-  "ui_community_last_post": "Seneste opslag",
-  "ui_community_none_yet": "Ingen endnu",
-  "ui_community_catch_up": "Indhent",
-  "ui_community_open": "Åbn",
   "ui_community_write": "Skriv et opslag",
-  "ui_community_members": "Medlemmer:"
+  "ui_community_members": "Medlemmer:",
+  "ui_toast_posted": "Slået op",
+  "ui_toast_view": "Se",
+  "ui_toast_open": "Åbn",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Vis, når du er online",
+  "ui_dm_show_online_detail": "Folk, du skriver med, ser en grøn prik, mens du har Kyron åben. Når dette er slået fra, kan du heller ikke se deres."
 }

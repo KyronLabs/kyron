@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Nebeliko prie ko prisijungti",
   "ui_community_discover_none_detail": "Esate visose Kyron bendruomenėse. Sukurkite dar vieną.",
   "ui_community_discover_search_detail": "Pabandykite kitą žodį arba sukurkite bendruomenę tokiu pavadinimu.",
-  "ui_community_last_post": "Paskutinis įrašas",
-  "ui_community_none_yet": "Dar nėra",
-  "ui_community_catch_up": "Pasivyti",
-  "ui_community_open": "Atidaryti",
   "ui_community_write": "Rašyti įrašą",
-  "ui_community_members": "Nariai:"
+  "ui_community_members": "Nariai:",
+  "ui_toast_posted": "Paskelbta",
+  "ui_toast_view": "Peržiūrėti",
+  "ui_toast_open": "Atidaryti",
+  "ui_dm_online": "Prisijungęs",
+  "ui_dm_show_online": "Rodyti, kai esate prisijungę",
+  "ui_dm_show_online_detail": "Žmonės, kuriems rašote, mato žalią tašką, kol jūsų Kyron atidarytas. Kai tai išjungta, ir jūs nematysite jų taško."
 }

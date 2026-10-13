@@ -229,6 +229,7 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
   static payload(token: string, message: PushMessage): object {
     const data = message.data ?? {};
     const isMessage = data.type === 'message';
+    const tag = PushService.tagFor(data);
     return {
       token,
       notification: { title: message.title, body: message.body },
@@ -238,13 +239,33 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
         notification: {
           channel_id: isMessage ? 'messages' : 'activity',
           sound: 'default',
-          ...(isMessage && data.conversationId
-            ? { tag: `conversation-${data.conversationId}` }
-            : {}),
+          ...(tag ? { tag } : {}),
         },
       },
       apns: { payload: { aps: { sound: 'default' } } },
     };
+  }
+
+  /**
+   * Which notification on the phone a new one replaces.
+   *
+   * One per conversation, one per post, and one for new followers: a third
+   * like on the same post updates the notification already there instead of
+   * stacking a third. Fewer of them matters beyond tidiness -- at four,
+   * Android bundles an app's notifications under a summary of its own
+   * making, and a tap on that summary opens the app with nothing to say
+   * where it was meant to go.
+   */
+  static tagFor(data: Record<string, string>): string | undefined {
+    if (data.type === 'message') {
+      return data.conversationId
+        ? `conversation-${data.conversationId}`
+        : undefined;
+    }
+    if (data.type !== 'notification') return undefined;
+    if (data.postId) return `post-${data.postId}`;
+    if (data.kind === 'follow') return 'follows';
+    return undefined;
   }
 
   /**

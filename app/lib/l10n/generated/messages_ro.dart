@@ -1499,16 +1499,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Încearcă alt cuvânt sau creează o comunitate cu acest nume."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Ultima postare"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Încă niciuna"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Recuperează"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Deschide"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Scrie o postare"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Membri:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Publicat"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Vezi"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Deschide"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Arată când ești online"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Persoanele cărora le scrii văd un punct verde cât timp ai Kyron deschis. Când e dezactivat, nici tu nu-l vei vedea pe al lor."),
     };
 
 final messageLookup = MessageLookup();

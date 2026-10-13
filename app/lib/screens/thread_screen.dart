@@ -20,6 +20,7 @@ import '../providers/chat_wallpaper_provider.dart';
 import 'conversation_info_screen.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/jump_to_end.dart';
+import '../widgets/online_dot.dart';
 import '../widgets/toast.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../providers/composer_provider.dart' show ComposerState;
@@ -556,19 +557,23 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
                   ),
           child: Row(
             children: [
-              CircleAvatar(
-                radius: 16,
-                backgroundColor: Theme.of(context)
-                    .colorScheme
-                    .primary
-                    .withValues(alpha: .15),
-                foregroundImage: other?.avatarUrl == null
-                    ? null
-                    : NetworkImage(other!.avatarUrl!),
-                child: Icon(
-                  Iconsax.user_copy,
-                  size: 16,
-                  color: Theme.of(context).colorScheme.primary,
+              OnlineDot(
+                person: other,
+                size: 11,
+                child: CircleAvatar(
+                  radius: 16,
+                  backgroundColor: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: .15),
+                  foregroundImage: other?.avatarUrl == null
+                      ? null
+                      : NetworkImage(other!.avatarUrl!),
+                  child: Icon(
+                    Iconsax.user_copy,
+                    size: 16,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
               ),
               const SizedBox(width: SpacingTokens.space8),
@@ -586,7 +591,24 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    if (other?.handle != null)
+                    // Online in place of the handle while they are: the
+                    // one thing about them worth knowing at that moment.
+                    if (isOnline(ref, other))
+                      Text(
+                        AppLocalizations.of(context)
+                            .ui('ui_dm_online', 'Online'),
+                        key: const ValueKey('thread-online'),
+                        maxLines: 1,
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize1,
+                          fontWeight: FontWeight.w600,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withValues(alpha: 0.6),
+                        ),
+                      )
+                    else if (other?.handle != null)
                       Text(
                         other!.handle!,
                         maxLines: 1,

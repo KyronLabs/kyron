@@ -1488,16 +1488,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Prova ett annat ord, eller starta en gemenskap med det namnet."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Senaste inlägg"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Inget än"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Kom ikapp"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Öppna"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Skriv ett inlägg"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Medlemmar:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Publicerat"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Visa"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Öppna"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Visa när du är online"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Personer du skriver med ser en grön prick medan du har Kyron öppet. När det är av ser du inte heller deras."),
     };
 
 final messageLookup = MessageLookup();

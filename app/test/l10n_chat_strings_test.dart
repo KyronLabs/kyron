@@ -166,12 +166,14 @@ const _keys = [
   'ui_community_discover_none',
   'ui_community_discover_none_detail',
   'ui_community_discover_search_detail',
-  'ui_community_last_post',
-  'ui_community_none_yet',
-  'ui_community_catch_up',
-  'ui_community_open',
   'ui_community_write',
   'ui_community_members',
+  'ui_toast_posted',
+  'ui_toast_view',
+  'ui_toast_open',
+  'ui_dm_online',
+  'ui_dm_show_online',
+  'ui_dm_show_online_detail',
 ];
 
 void main() {

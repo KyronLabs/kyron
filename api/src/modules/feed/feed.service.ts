@@ -799,7 +799,7 @@ export class FeedService {
           })
           .then((r) => r.count),
       );
-      this.tellAuthor(post.authorId, viewerId, 'repost');
+      this.tellAuthor(post.authorId, viewerId, 'repost', postId);
       return { reposted, reposts };
     }
 
@@ -1343,7 +1343,7 @@ export class FeedService {
             .deleteMany({ where: { userId: viewerId, postId } })
             .then((r) => -r.count),
     );
-    if (liked) this.tellAuthor(post.authorId, viewerId, 'like');
+    if (liked) this.tellAuthor(post.authorId, viewerId, 'like', postId);
     return { liked, likes };
   }
 
@@ -1484,18 +1484,24 @@ export class FeedService {
    * Never to themselves: liking your own post is not news. Only on the way in
    * -- unliking is not an event anyone wants to hear about.
    */
-  private tellAuthor(authorId: string, actorId: string, kind: string): void {
+  private tellAuthor(
+    authorId: string,
+    actorId: string,
+    kind: string,
+    postId: string,
+  ): void {
     if (authorId === actorId) return;
     this.delivery.tell(
       authorId,
-      { type: 'notification.new', kind, actorId },
-      // Deliberately without a name. Resolving the actor would be a query per
-      // like on a post that is going well, and the app opens the
-      // notifications screen from here, which has the names already.
+      { type: 'notification.new', kind, actorId, postId },
+      // Deliberately without a name: resolving the actor would be a query per
+      // like on a post that is going well. The post it is about goes in the
+      // data, so a tap opens that post -- it used to carry only the kind, and
+      // the app could do no better than the notifications page.
       {
         title: 'Kyron',
         body: PUSH_COPY[kind] ?? 'Something happened on one of your posts.',
-        data: { type: 'notification', kind },
+        data: { type: 'notification', kind, postId, actorId },
       },
     );
   }
@@ -1691,14 +1697,14 @@ export class FeedService {
     });
     // The post's author hears about a comment; so does the person being
     // answered, when the reply is under somebody else's comment.
-    this.tellAuthor(post.authorId, authorId, 'comment');
+    this.tellAuthor(post.authorId, authorId, 'comment', postId);
     if (threadParentId) {
       const parent = await this.prisma.comment.findUnique({
         where: { id: threadParentId },
         select: { authorId: true },
       });
       if (parent && parent.authorId !== post.authorId) {
-        this.tellAuthor(parent.authorId, authorId, 'comment');
+        this.tellAuthor(parent.authorId, authorId, 'comment', postId);
       }
     }
 

@@ -1501,16 +1501,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron-ലെ എല്ലാ കമ്മ്യൂണിറ്റികളിലും നിങ്ങളുണ്ട്. മറ്റൊന്ന് തുടങ്ങുക."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "മറ്റൊരു വാക്ക് ശ്രമിക്കുക, അല്ലെങ്കിൽ ആ പേരിൽ ഒരു കമ്മ്യൂണിറ്റി തുടങ്ങുക."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("അവസാന പോസ്റ്റ്"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("ഇതുവരെ ഇല്ല"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("പുതിയത് കാണുക"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("തുറക്കുക"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("പോസ്റ്റ് എഴുതുക"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("അംഗങ്ങൾ:"),
+      "ui_toast_posted":
+          MessageLookupByLibrary.simpleMessage("പോസ്റ്റ് ചെയ്തു"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("കാണുക"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("തുറക്കുക"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("ഓൺലൈൻ"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("ഓൺലൈനായിരിക്കുമ്പോൾ കാണിക്കുക"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ സന്ദേശം അയയ്ക്കുന്നവർക്ക്, നിങ്ങൾ Kyron തുറന്നിരിക്കുമ്പോൾ ഒരു പച്ച കുത്ത് കാണാം. ഇത് ഓഫാണെങ്കിൽ, അവരുടേത് നിങ്ങളും കാണില്ല."),
     };
 
 final messageLookup = MessageLookup();

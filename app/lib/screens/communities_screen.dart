@@ -157,14 +157,11 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen> {
                 : l10n.ui('ui_share_search', 'Search'),
           ),
         ),
-        SizedBox(
-          height: 36,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(
-              horizontal: SpacingTokens.space16,
-            ),
-            children: [
+        ListChipRow(
+          children: [
+            // Only over the reader's own communities, which is all it
+            // filters: in Discover it sat there doing nothing when tapped.
+            if (!_discovering) ...[
               Builder(
                 builder: (chip) => ListChip(
                   key: const ValueKey('communities-filter'),
@@ -176,16 +173,16 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen> {
                 ),
               ),
               const SizedBox(width: SpacingTokens.space8),
-              ListChip(
-                key: const ValueKey('communities-discover'),
-                selected: _discovering,
-                onTap: () => setState(() => _discovering = !_discovering),
-                label: l10n.ui('ui_community_discover', 'Discover'),
-              ),
             ],
-          ),
+            ListChip(
+              key: const ValueKey('communities-discover'),
+              selected: _discovering,
+              onTap: () => setState(() => _discovering = !_discovering),
+              label: l10n.ui('ui_community_discover', 'Discover'),
+            ),
+          ],
         ),
-        const SizedBox(height: SpacingTokens.space12),
+        const SizedBox(height: SpacingTokens.space8),
         Expanded(
           child: ColoredBox(
             color: communityPageColor(context),
@@ -343,13 +340,13 @@ class _MyListState extends ConsumerState<_MyList> {
               physics: const AlwaysScrollableScrollPhysics(),
               padding: EdgeInsets.fromLTRB(
                 SpacingTokens.space16,
-                SpacingTokens.space4,
+                SpacingTokens.space12,
                 SpacingTokens.space16,
                 _listFootroom(context),
               ),
               itemCount: shown.length + (state.loadingMore ? 1 : 0),
               separatorBuilder: (_, __) =>
-                  const SizedBox(height: SpacingTokens.space12),
+                  const SizedBox(height: SpacingTokens.space8),
               itemBuilder: (context, index) {
                 if (index >= shown.length) {
                   return const Padding(
@@ -469,13 +466,13 @@ class _DiscoverListState extends ConsumerState<_DiscoverList> {
               physics: const AlwaysScrollableScrollPhysics(),
               padding: EdgeInsets.fromLTRB(
                 SpacingTokens.space16,
-                SpacingTokens.space4,
+                SpacingTokens.space12,
                 SpacingTokens.space16,
                 _listFootroom(context),
               ),
               itemCount: state.items.length,
               separatorBuilder: (_, __) =>
-                  const SizedBox(height: SpacingTokens.space12),
+                  const SizedBox(height: SpacingTokens.space8),
               itemBuilder: (context, index) {
                 final community = state.items[index];
                 return DiscoverCommunityCard(

@@ -186,6 +186,9 @@ void main() {
       await tester.pump(const Duration(seconds: 3));
 
       final beside = tester.getSize(find.byType(ActionButton)).height;
+      // Follow's size on every profile: your own page's Edit profile used to
+      // be a size bigger than anybody else's Follow.
+      expect(beside, ActionButton.compactHeight);
       final share = tester.getSize(find.byKey(const ValueKey('profile-share')));
       expect(share.height, beside);
       expect(share.width, share.height, reason: 'a circle');

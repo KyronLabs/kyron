@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Nichts mehr zum Beitreten",
   "ui_community_discover_none_detail": "Du bist in jeder Gemeinschaft auf Kyron. Gründe eine weitere.",
   "ui_community_discover_search_detail": "Versuch ein anderes Wort, oder gründe eine Gemeinschaft mit diesem Namen.",
-  "ui_community_last_post": "Letzter Beitrag",
-  "ui_community_none_yet": "Noch keiner",
-  "ui_community_catch_up": "Aufholen",
-  "ui_community_open": "Öffnen",
   "ui_community_write": "Beitrag schreiben",
-  "ui_community_members": "Mitglieder:"
+  "ui_community_members": "Mitglieder:",
+  "ui_toast_posted": "Gepostet",
+  "ui_toast_view": "Ansehen",
+  "ui_toast_open": "Öffnen",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Anzeigen, wenn du online bist",
+  "ui_dm_show_online_detail": "Wem du schreibst, sieht einen grünen Punkt, solange du Kyron geöffnet hast. Wenn das aus ist, siehst du ihren auch nicht."
 }

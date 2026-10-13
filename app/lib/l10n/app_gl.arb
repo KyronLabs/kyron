@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Non queda nada ao que unirse",
   "ui_community_discover_none_detail": "Estás en todas as comunidades de Kyron. Crea outra.",
   "ui_community_discover_search_detail": "Proba outra palabra, ou crea unha comunidade con ese nome.",
-  "ui_community_last_post": "Última publicación",
-  "ui_community_none_yet": "Aínda ningunha",
-  "ui_community_catch_up": "Poñerse ao día",
-  "ui_community_open": "Abrir",
   "ui_community_write": "Escribir unha publicación",
-  "ui_community_members": "Membros:"
+  "ui_community_members": "Membros:",
+  "ui_toast_posted": "Publicado",
+  "ui_toast_view": "Ver",
+  "ui_toast_open": "Abrir",
+  "ui_dm_online": "En liña",
+  "ui_dm_show_online": "Amosar cando estás en liña",
+  "ui_dm_show_online_detail": "As persoas ás que escribes ven un punto verde mentres tes Kyron aberto. Se o desactivas, ti tampouco verás o seu."
 }

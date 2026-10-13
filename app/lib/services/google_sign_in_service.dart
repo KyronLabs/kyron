@@ -39,23 +39,34 @@ enum GoogleOutcome {
 ///
 /// ## What it needs, and what happens without it
 ///
-/// On Android the plugin reads the OAuth clients out of
-/// `google-services.json`: it needs a **web** client (`client_type: 3`) for
-/// the ID token's audience, and an **Android** client (`client_type: 1`)
-/// registered with the signing certificate's SHA-1. `kyron-1` currently has
-/// neither -- its `google-services.json` carries no `oauth_client` entries at
-/// all -- which is the same gap that makes the browser flow answer
-/// `Error 401: deleted_client`. Until both exist in Google Cloud and Supabase
-/// holds the web client's id and secret, no Google sign-in of any kind can
-/// succeed. See docs/AUTH_GOOGLE.md.
+/// Two OAuth clients, in the **same** Google Cloud project: the **web**
+/// client Supabase signs in as, which is the ID token's audience and is named
+/// below as [serverClientId]; and an **Android** client registered with the
+/// package name and the signing certificate's SHA-1, which is how Credential
+/// Manager decides the app asking is allowed to ask.
+///
+/// The web client used to be left for the plugin to find in
+/// `google-services.json`. It never could: that file is Firebase's, from
+/// project `kyron-1`, and the web client lives in a different Google Cloud
+/// project altogether, so the file carries no `oauth_client` for it. Every
+/// attempt ended in "serverClientId must be provided" and went to the browser
+/// -- which is why the account sheet never once appeared. See
+/// docs/AUTH_GOOGLE.md.
 ///
 /// So a configuration failure is not swallowed and is not fatal: it is logged
-/// by name and answered with [GoogleOutcome.useBrowser], which at least ends
-/// on Google's own error page rather than a sheet that closes with nothing.
+/// by name and answered with [GoogleOutcome.useBrowser], which still signs
+/// the reader in, just less gracefully.
 class GoogleSignInService {
-  GoogleSignInService({SupabaseClient? client}) : _given = client;
+  GoogleSignInService({SupabaseClient? client, DateTime Function()? clock})
+      : _given = client,
+        _clock = clock ?? DateTime.now;
 
   final SupabaseClient? _given;
+  final DateTime Function() _clock;
+
+  /// Faster than a person can see a sheet arrive and send it away: the sheet
+  /// alone takes most of this to slide up.
+  static const tooQuick = Duration(milliseconds: 900);
 
   /// Resolved when there is a token to exchange, not when this is built.
   /// Every path that ends in [GoogleOutcome.useBrowser] or
@@ -68,12 +79,18 @@ class GoogleSignInService {
   /// underneath it instead, which is what this actually talks to.
   GoogleSignIn get _google => GoogleSignIn.instance;
 
-  /// Set from the build when `google-services.json` is not the source of
-  /// truth -- the id of the *web* OAuth client, which is what the ID token is
-  /// minted for. Empty on Android with a complete `google-services.json`,
-  /// which is the intended shape.
+  /// The *web* OAuth client: the one Supabase's Google provider is set up
+  /// with, and so the audience the ID token has to be minted for.
+  ///
+  /// Not a secret. A client id is in the address bar of every Google consent
+  /// screen; it is the client *secret* that is kept, and that lives in
+  /// Supabase. Named here because nothing else on the phone can supply it --
+  /// see the class comment -- and a build can still point somewhere else with
+  /// `--dart-define=GOOGLE_SERVER_CLIENT_ID=...`.
   static const String serverClientId = String.fromEnvironment(
     'GOOGLE_SERVER_CLIENT_ID',
+    defaultValue:
+        '601078807832-b3n2mcc7h16fjvvom372for7id18cdpj.apps.googleusercontent.com',
   );
 
   /// Why the browser is being used, when it is. Null while nothing has been
@@ -123,15 +140,24 @@ class GoogleSignInService {
     }
 
     final GoogleSignInAccount account;
+    final asked = _clock();
     try {
       account = await _google.authenticate();
     } on GoogleSignInException catch (error) {
       if (error.code == GoogleSignInExceptionCode.canceled ||
           error.code == GoogleSignInExceptionCode.interrupted) {
-        // Dismissing the sheet is an answer, not a fault. Note that Android's
-        // Credential Manager also reports some configuration errors this way
-        // and the plugin cannot tell them apart, which is worth knowing when
-        // a sheet closes immediately and nothing happens.
+        // Android's Credential Manager reports some configuration errors --
+        // an app it does not recognise, chiefly -- as the sheet being
+        // dismissed, and the plugin cannot tell them apart. Time can: nobody
+        // sees a sheet slide up and closes it inside [tooQuick]. Left as a
+        // dismissal, that was a Google button that did nothing at all.
+        if (_clock().difference(asked) < tooQuick) {
+          reason = 'the account sheet closed before anyone could have used '
+              'it, which is what an unregistered app looks like';
+          AppLog.instance.error('auth', reason!);
+          return GoogleOutcome.useBrowser;
+        }
+        // Dismissing the sheet is an answer, not a fault.
         return GoogleOutcome.cancelled;
       }
       reason = 'Google refused the request (${error.code.name}): '

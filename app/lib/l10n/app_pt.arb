@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Não sobrou nada para entrar",
   "ui_community_discover_none_detail": "Você está em todas as comunidades do Kyron. Crie outra.",
   "ui_community_discover_search_detail": "Tente outra palavra, ou crie uma comunidade com esse nome.",
-  "ui_community_last_post": "Última publicação",
-  "ui_community_none_yet": "Nenhuma ainda",
-  "ui_community_catch_up": "Pôr em dia",
-  "ui_community_open": "Abrir",
   "ui_community_write": "Escrever publicação",
-  "ui_community_members": "Membros:"
+  "ui_community_members": "Membros:",
+  "ui_toast_posted": "Publicado",
+  "ui_toast_view": "Ver",
+  "ui_toast_open": "Abrir",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Mostrar quando você está online",
+  "ui_dm_show_online_detail": "As pessoas com quem você conversa veem um ponto verde enquanto o Kyron está aberto. Desativado, você também não verá o delas."
 }

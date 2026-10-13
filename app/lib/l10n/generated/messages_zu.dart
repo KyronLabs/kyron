@@ -1501,16 +1501,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Zama elinye igama, noma uqale umphakathi onalelo gama."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Okuthunyelwe kokugcina"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Akukabi khona"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Bona okusha"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Vula"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Bhala okuthunyelwe"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Amalungu:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Kuthunyelwe"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Buka"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Vula"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Ku-inthanethi"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Bonisa uma use-inthanethi"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Abantu obathumelela imilayezo babona ichashaza eliluhlaza uma uvule i-Kyron. Uma lokhu kuvaliwe, nawe ngeke ubone elabo."),
     };
 
 final messageLookup = MessageLookup();

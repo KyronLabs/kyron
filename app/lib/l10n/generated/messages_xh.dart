@@ -1497,16 +1497,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Zama elinye igama, okanye uqale uluntu olunelo gama."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Isithumelo sokugqibela"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Akukabikho"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Funda okutsha"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Vula"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Bhala isithumelo"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Amalungu:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Kupapashiwe"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Jonga"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Vula"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Ukwi-intanethi"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Bonisa xa ukwi-intanethi"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Abantu othumela kubo imiyalezo babona ichaphaza eliluhlaza xa uvule i-Kyron. Xa oku kucinyiwe, nawe awuzukubona elabo."),
     };
 
 final messageLookup = MessageLookup();

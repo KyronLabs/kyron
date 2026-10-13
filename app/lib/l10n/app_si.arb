@@ -748,10 +748,12 @@
   "ui_community_discover_none": "එක්වීමට කිසිවක් ඉතිරි නැත",
   "ui_community_discover_none_detail": "ඔබ Kyron හි සෑම ප්‍රජාවකම සිටී. තවත් එකක් ආරම්භ කරන්න.",
   "ui_community_discover_search_detail": "වෙනත් වචනයක් උත්සාහ කරන්න, නැතහොත් එම නමින් ප්‍රජාවක් ආරම්භ කරන්න.",
-  "ui_community_last_post": "අවසන් පළ කිරීම",
-  "ui_community_none_yet": "තවම නැත",
-  "ui_community_catch_up": "අලුත් ඒවා බලන්න",
-  "ui_community_open": "විවෘත කරන්න",
   "ui_community_write": "පළ කිරීමක් ලියන්න",
-  "ui_community_members": "සාමාජිකයින්:"
+  "ui_community_members": "සාමාජිකයින්:",
+  "ui_toast_posted": "පළ කළා",
+  "ui_toast_view": "බලන්න",
+  "ui_toast_open": "විවෘත කරන්න",
+  "ui_dm_online": "සබැඳිව",
+  "ui_dm_show_online": "ඔබ සබැඳිව සිටින විට පෙන්වන්න",
+  "ui_dm_show_online_detail": "ඔබ පණිවිඩ යවන අයට, ඔබ Kyron විවෘතව තබා ඇති විට කොළ පැහැති තිතක් පෙනේ. මෙය අක්‍රිය විට, ඔවුන්ගේ එකද ඔබට නොපෙනේ."
 }

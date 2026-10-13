@@ -1501,14 +1501,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Esate visose Kyron bendruomenėse. Sukurkite dar vieną."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "Pabandykite kitą žodį arba sukurkite bendruomenę tokiu pavadinimu."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Paskutinis įrašas"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Dar nėra"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Pasivyti"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Atidaryti"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Rašyti įrašą"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Nariai:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Paskelbta"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Peržiūrėti"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Atidaryti"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Prisijungęs"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Rodyti, kai esate prisijungę"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Žmonės, kuriems rašote, mato žalią tašką, kol jūsų Kyron atidarytas. Kai tai išjungta, ir jūs nematysite jų taško."),
     };
 
 final messageLookup = MessageLookup();

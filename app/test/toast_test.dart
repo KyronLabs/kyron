@@ -182,4 +182,58 @@ void main() {
     expect(() => Toast.showOn(overlay, 'gone'), returnsNormally);
     expect(Toast.isShowing, isFalse);
   });
+
+  testWidgets('can open what it is about, and goes once it has', (
+    tester,
+  ) async {
+    // "Posted", and then nothing: the reader had to go and find the post.
+    final ctx = await _pump(tester);
+    var opened = 0;
+    Toast.show(ctx, 'Posted', action: ToastAction('View', () => opened++));
+    await tester.pumpAndSettle();
+
+    expect(find.text('View'), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('toast-action')));
+    await tester.pump();
+
+    expect(opened, 1);
+    expect(Toast.isShowing, isFalse);
+  });
+
+  testWidgets('one with a button stays long enough to reach it', (
+    tester,
+  ) async {
+    final ctx = await _pump(tester);
+    Toast.show(ctx, 'Posted', action: ToastAction('View', () {}));
+    await tester.pump(Toast.stay + const Duration(milliseconds: 200));
+    expect(Toast.isShowing, isTrue, reason: 'gone before it could be pressed');
+
+    await tester.pump(Toast.stayWithAction);
+    expect(Toast.isShowing, isFalse);
+  });
+
+  testWidgets('its button sits at the end of a bottom toast', (tester) async {
+    final ctx = await _pump(tester);
+    Toast.show(ctx, 'Sent', action: ToastAction('Open', () {}));
+    await tester.pumpAndSettle();
+
+    // At the card's far edge (the card is 420 wide, in the middle of an
+    // 800-wide screen, with 16 inside it), not against the words.
+    final button = tester.getRect(find.byKey(const ValueKey('toast-action')));
+    expect(button.right, closeTo(400 + 210 - 16, 1));
+    // And the button does not make the toast any taller than one without.
+    expect(button.height, lessThanOrEqualTo(Toast.minHeight));
+    expect(
+      tester
+          .getSize(find
+              .ancestor(
+                of: find.text('Sent'),
+                matching: find.byType(Container),
+              )
+              .first)
+          .height,
+      lessThan(80),
+    );
+    await clear(tester);
+  });
 }

@@ -1526,16 +1526,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Prøv et andet ord, eller start et fællesskab med det navn."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Seneste opslag"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Ingen endnu"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Indhent"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Åbn"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Skriv et opslag"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Medlemmer:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Slået op"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Se"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Åbn"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Vis, når du er online"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Folk, du skriver med, ser en grøn prik, mens du har Kyron åben. Når dette er slået fra, kan du heller ikke se deres."),
     };
 
 final messageLookup = MessageLookup();

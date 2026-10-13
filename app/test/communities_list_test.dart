@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/widgets/action_button.dart';
 import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/community.dart';
 import 'package:kyron_app/models/current_user.dart';
@@ -318,18 +319,20 @@ void main() {
       expect(_text(tester, 'community-preview-id-design'), 'You: shipped it');
       expect(_text(tester, 'community-preview-id-quiet'), 'No posts yet');
       expect(find.text('3'), findsOneWidget);
-      expect(
-        _text(tester, 'community-when-id-gardeners').replaceAll(' ', ' '),
-        '9:41 AM',
-      );
+      // No time on the card: it was the loudest thing on it, and the order
+      // of the list already says which community moved last.
+      expect(find.text('Last post'), findsNothing);
+      expect(find.textContaining('9:41'), findsNothing);
       // No tabs, and no floating button: the bar at the top does that job.
       expect(find.byType(TabBar), findsNothing);
       expect(find.byType(FloatingActionButton), findsNothing);
     });
 
-    testWidgets(
-        'a card with something new says Catch up, in the filled '
-        'weight; one without says Open', (tester) async {
+    testWidgets('a card is the card: no Open button, and no footer', (
+      tester,
+    ) async {
+      // Open did what tapping the card did, and the footer under a rule said
+      // when the last post was in type bigger than the post.
       await _pump(
         tester,
         _communities(),
@@ -343,34 +346,25 @@ void main() {
         ),
       );
 
-      Text label(String id) => tester.widget<Text>(
-            find.descendant(
-              of: find.byKey(ValueKey('community-open-id-$id')),
-              matching: find.byType(Text),
-            ),
-          );
-      expect(label('busy').data, 'Catch up');
-      expect(label('calm').data, 'Open');
-      // And the card says when the last post was, at its foot.
-      expect(find.text('Last post'), findsNWidgets(2));
+      expect(find.text('Open'), findsNothing);
+      expect(find.text('Catch up'), findsNothing);
+      expect(find.text('None yet'), findsNothing);
       expect(
         tester
             .widget<Text>(find.byKey(const ValueKey('community-meta-id-busy')))
             .data,
         'Members: 3',
       );
-    });
-
-    testWidgets('says None yet where nobody has posted', (tester) async {
-      await _pump(
-        tester,
-        _communities(),
-        repo: _Repo(mine: {
-          CommunityFilter.all: [_community('quiet')]
-        }),
+      // Writing is the one thing worth a button, at Follow's size.
+      expect(
+        tester.getSize(find.byKey(const ValueKey('community-write-id-busy'))),
+        const Size.square(ActionButton.compactHeight),
       );
-
-      expect(_text(tester, 'community-when-id-quiet'), 'None yet');
+      // And the whole card is not much taller than its picture.
+      expect(
+        tester.getSize(find.byKey(const ValueKey('community-id-busy'))).height,
+        lessThan(100),
+      );
     });
 
     testWidgets('names the reader’s role beside the members', (tester) async {
@@ -514,6 +508,16 @@ void main() {
 
       await tester.tap(find.byKey(const ValueKey('communities-discover')));
       await tester.pumpAndSettle();
+      // The filter only ever applied to the reader's own communities, so it
+      // is not offered here.
+      expect(find.byKey(const ValueKey('communities-filter')), findsNothing);
+      // Join is the Follow button: same size, same weight.
+      expect(
+        tester
+            .getSize(find.byKey(const ValueKey('discover-join-id-runners')))
+            .height,
+        ActionButton.compactHeight,
+      );
       await tester.tap(find.byKey(const ValueKey('discover-join-id-runners')));
       await tester.pumpAndSettle();
 

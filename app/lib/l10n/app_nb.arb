@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Ingenting igjen å bli med i",
   "ui_community_discover_none_detail": "Du er med i alle fellesskap på Kyron. Start et nytt.",
   "ui_community_discover_search_detail": "Prøv et annet ord, eller start et fellesskap med det navnet.",
-  "ui_community_last_post": "Siste innlegg",
-  "ui_community_none_yet": "Ingen ennå",
-  "ui_community_catch_up": "Ta igjen",
-  "ui_community_open": "Åpne",
   "ui_community_write": "Skriv et innlegg",
-  "ui_community_members": "Medlemmer:"
+  "ui_community_members": "Medlemmer:",
+  "ui_toast_posted": "Publisert",
+  "ui_toast_view": "Vis",
+  "ui_toast_open": "Åpne",
+  "ui_dm_online": "Pålogget",
+  "ui_dm_show_online": "Vis når du er pålogget",
+  "ui_dm_show_online_detail": "Folk du skriver med, ser en grønn prikk mens du har Kyron åpen. Når dette er av, ser du heller ikke deres."
 }

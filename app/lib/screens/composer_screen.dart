@@ -503,18 +503,29 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
     // Named rather than folded into "Posted": something that went out
     // incomplete should not report the same success as something that did not.
     final warning = notifier.takeWarning();
+    final postedId = notifier.takePostedId();
+    final l10n = AppLocalizations.of(context);
 
     HapticFeedback.heavyImpact();
     _textController.clear();
-    Navigator.pop(context);
+    // Held before the pop: the button is pressed after this screen has gone.
+    final navigator = Navigator.of(context);
+    navigator.pop();
     Toast.show(
       context,
-      warning ?? 'Posted',
+      warning ?? l10n.ui('ui_toast_posted', 'Posted'),
       icon: warning == null ? Iconsax.tick_circle : Iconsax.info_circle,
       // A warning is a sentence to read, not a word to glance at.
-      stay: warning == null
-          ? const Duration(seconds: 2)
-          : const Duration(seconds: 6),
+      stay: warning == null ? null : const Duration(seconds: 6),
+      action: postedId == null
+          ? null
+          : ToastAction(
+              l10n.ui('ui_toast_view', 'View'),
+              () => navigator.pushNamed(
+                Routes.postDetail,
+                arguments: postedId,
+              ),
+            ),
     );
   }
 
@@ -538,11 +549,16 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
         await notifier.saveDraft();
         notifier.clear();
         if (!mounted) return;
-        Navigator.pop(context);
+        final navigator = Navigator.of(context);
+        navigator.pop();
         Toast.show(
           context,
           AppLocalizations.of(context).literaldraftSaved,
           icon: Iconsax.archive_tick,
+          action: ToastAction(
+            AppLocalizations.of(context).drafts,
+            () => navigator.pushNamed(Routes.drafts),
+          ),
         );
       case DraftChoice.discard:
         await notifier.discardDraft();

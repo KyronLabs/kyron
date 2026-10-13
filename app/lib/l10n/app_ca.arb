@@ -748,10 +748,12 @@
   "ui_community_discover_none": "No queda res per unir-s'hi",
   "ui_community_discover_none_detail": "Ets a totes les comunitats de Kyron. Crea'n una altra.",
   "ui_community_discover_search_detail": "Prova una altra paraula, o crea una comunitat amb aquest nom.",
-  "ui_community_last_post": "Darrera publicació",
-  "ui_community_none_yet": "Encara cap",
-  "ui_community_catch_up": "Posa't al dia",
-  "ui_community_open": "Obre",
   "ui_community_write": "Escriu una publicació",
-  "ui_community_members": "Membres:"
+  "ui_community_members": "Membres:",
+  "ui_toast_posted": "Publicat",
+  "ui_toast_view": "Mostra",
+  "ui_toast_open": "Obre",
+  "ui_dm_online": "En línia",
+  "ui_dm_show_online": "Mostra quan estàs en línia",
+  "ui_dm_show_online_detail": "Les persones a qui escrius veuen un punt verd mentre tens Kyron obert. Si ho desactives, tu tampoc no veuràs el seu."
 }

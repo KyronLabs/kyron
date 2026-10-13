@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Wax lagu biiro ma harin",
   "ui_community_discover_none_detail": "Waxaad ku jirtaa bulsho kasta oo Kyron ah. Bilow mid kale.",
   "ui_community_discover_search_detail": "Isku day eray kale, ama bilow bulsho magacaas leh.",
-  "ui_community_last_post": "Qoraalkii ugu dambeeyay",
-  "ui_community_none_yet": "Weli ma jiro",
-  "ui_community_catch_up": "La soco",
-  "ui_community_open": "Fur",
   "ui_community_write": "Qor qoraal",
-  "ui_community_members": "Xubnaha:"
+  "ui_community_members": "Xubnaha:",
+  "ui_toast_posted": "Waa la daabacay",
+  "ui_toast_view": "Eeg",
+  "ui_toast_open": "Fur",
+  "ui_dm_online": "Khadka ku jira",
+  "ui_dm_show_online": "Muuji marka aad khadka ku jirto",
+  "ui_dm_show_online_detail": "Dadka aad fariimaha u dirto waxay arkaan dhibic cagaaran inta Kyron kuu furan yahay. Marka tan la damiyo, adiguna ma arki doontid tooda."
 }

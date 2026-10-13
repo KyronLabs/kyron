@@ -202,6 +202,9 @@ describe('FeedService', () => {
     ),
   };
 
+  /** What the service under test told people, push included. */
+  let delivery: RecordingDelivery;
+
   const service = async (extra: Record<string, unknown> = {}) => {
     const prisma: Record<string, unknown> = {
       post,
@@ -234,7 +237,7 @@ describe('FeedService', () => {
         RankingService,
         { provide: PrismaService, useValue: prisma },
         { provide: ModerationService, useValue: moderation },
-        { provide: DeliveryService, useValue: new RecordingDelivery() },
+        { provide: DeliveryService, useValue: delivery },
       ],
     }).compile();
     return moduleRef.get(FeedService);
@@ -242,6 +245,7 @@ describe('FeedService', () => {
 
   beforeEach(() => {
     jest.resetAllMocks();
+    delivery = new RecordingDelivery();
     postLike = relation();
     postSave = relation();
     repost = relation();
@@ -653,6 +657,25 @@ describe('FeedService', () => {
       await expect(
         (await service()).setLiked(VIEWER, 'p1', false),
       ).resolves.toEqual({ liked: false, likes: 0 });
+    });
+
+    it('tells the author with the post in the push, so a tap opens it', async () => {
+      // It used to carry only the kind, and the app could do no better than
+      // open the notifications page.
+      post.findFirst.mockResolvedValue({ id: 'p1', authorId: 'author' });
+      post.update.mockResolvedValue({ likeCount: 1 });
+      postLike.createMany.mockResolvedValue({ count: 1 });
+
+      await (await service()).setLiked(VIEWER, 'p1', true);
+
+      expect(delivery.told).toHaveLength(1);
+      expect(delivery.told[0].userIds).toEqual(['author']);
+      expect(delivery.told[0].push?.data).toEqual({
+        type: 'notification',
+        kind: 'like',
+        postId: 'p1',
+        actorId: VIEWER,
+      });
     });
 
     it('refuses to like a post that is deleted or missing', async () => {

@@ -748,10 +748,12 @@
   "ui_community_discover_none": "Už nie je ku čomu sa pridať",
   "ui_community_discover_none_detail": "Ste vo všetkých komunitách na Kyrone. Založte ďalšiu.",
   "ui_community_discover_search_detail": "Skúste iné slovo alebo založte komunitu s týmto názvom.",
-  "ui_community_last_post": "Posledný príspevok",
-  "ui_community_none_yet": "Zatiaľ žiadny",
-  "ui_community_catch_up": "Dobehnúť",
-  "ui_community_open": "Otvoriť",
   "ui_community_write": "Napísať príspevok",
-  "ui_community_members": "Členovia:"
+  "ui_community_members": "Členovia:",
+  "ui_toast_posted": "Zverejnené",
+  "ui_toast_view": "Zobraziť",
+  "ui_toast_open": "Otvoriť",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Zobraziť, keď ste online",
+  "ui_dm_show_online_detail": "Ľudia, ktorým píšete, vidia zelenú bodku, kým máte otvorený Kyron. Keď je to vypnuté, ani vy neuvidíte tú ich."
 }

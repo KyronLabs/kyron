@@ -1499,16 +1499,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron இல் உள்ள எல்லா சமூகங்களிலும் நீங்கள் உள்ளீர்கள். இன்னொன்றைத் தொடங்குங்கள்."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "வேறு சொல்லை முயலுங்கள், அல்லது அந்தப் பெயரில் ஒரு சமூகத்தைத் தொடங்குங்கள்."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("கடைசி இடுகை"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("இன்னும் இல்லை"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("புதியவற்றைப் பார்"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("திற"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("இடுகை எழுது"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("உறுப்பினர்கள்:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("பதிவிடப்பட்டது"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("பார்"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("திற"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("ஆன்லைன்"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் ஆன்லைனில் இருக்கும்போது காட்டு"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் செய்தி அனுப்புபவர்கள், நீங்கள் Kyron-ஐத் திறந்திருக்கும்போது ஒரு பச்சைப் புள்ளியைப் பார்ப்பார்கள். இது முடக்கப்பட்டால், அவர்களுடையதை நீங்களும் பார்க்க முடியாது."),
     };
 
 final messageLookup = MessageLookup();

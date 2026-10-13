@@ -1,4 +1,5 @@
 // lib/widgets/rooster_art.dart
+import 'dart:async';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
@@ -15,9 +16,16 @@ import 'package:flutter/services.dart';
 /// colours are the artwork's, including the off-white it is painted on, and
 /// the same in both themes: this is a picture, not a surface.
 ///
-/// What is drawn is the arrival: the first time the screen shows, the
-/// squares come in from the eye outward, each a rounded tile of the picture
-/// growing into place, and the whole settles into the exact image.
+/// What is drawn is a loop. The squares come in from the eye outward, each
+/// a rounded tile of the picture growing into place, and the whole settles
+/// into the exact image. It holds there, long enough to be a picture rather
+/// than a screensaver; then the squares go back the way they came, from the
+/// edges in, the eye last, and after a breath the bird arrives again. The
+/// return is the arrival played backwards, so there is no frame anywhere in
+/// the loop that jumps.
+///
+/// docs/ROUNDED_PIXEL_ART.md is how the picture was made and how to make
+/// another one like it.
 class RoosterArt extends StatefulWidget {
   const RoosterArt({super.key});
 
@@ -67,9 +75,19 @@ class RoosterArt extends StatefulWidget {
   /// The eye: where the squares arrive from.
   static const eye = (row: 8, column: 8);
 
-  /// How far down the artwork the wattles end. Everything above this always
-  /// fits in the frame.
-  static const _headDepth = 975.0;
+  /// How long each part of the loop takes. The arrival is the part people
+  /// liked, so it keeps its pace; leaving is a little quicker, because
+  /// nobody is waiting for it.
+  static const arriving = Duration(milliseconds: 1400);
+  static const holding = Duration(milliseconds: 4200);
+  static const leaving = Duration(milliseconds: 1100);
+  static const resting = Duration(milliseconds: 300);
+
+  /// How far down the artwork the frame always reaches: to the foot of the
+  /// eighteenth row of squares, where the wattles end. A row boundary rather
+  /// than the wattles' own edge, so that when this is what limits the size
+  /// the frame stops between two rows of squares instead of through one.
+  static final _headDepth = gridOrigin.dy + 18 * pitch.height;
 
   /// The scale from the artwork's pixels to the frame's, and where the
   /// artwork's top left corner goes, in a frame of [size] with [topInset]
@@ -92,19 +110,43 @@ class RoosterArt extends StatefulWidget {
     );
   }
 
+  /// The tallest frame no taller than [size] whose foot is the foot of a row
+  /// of squares.
+  ///
+  /// Whatever sits under the picture cuts it with a straight edge, and an
+  /// edge through the middle of a row leaves a line of half-squares along
+  /// it, which reads as a mistake. Between two rows it reads as the end of
+  /// the picture.
+  static double fitHeight(Size size, double topInset) {
+    final (:scale, :origin) = layout(size, topInset);
+    if (scale <= 0) return size.height;
+    final rowHeight = pitch.height * scale;
+    final firstRow = origin.dy + gridOrigin.dy * scale;
+    // A hair of slack, so that a frame already on a boundary is not taken
+    // for one a fraction of a pixel short of it.
+    final rows = ((size.height - firstRow) / rowHeight + 1e-6).floor();
+    if (rows >= squares.length) return size.height;
+    return math.min(size.height, firstRow + rows * rowHeight);
+  }
+
   @override
   State<RoosterArt> createState() => _RoosterArtState();
 }
 
 class _RoosterArtState extends State<RoosterArt>
     with SingleTickerProviderStateMixin {
-  /// The squares arriving, once, when the picture first shows. Still after
-  /// that: a first screen that keeps moving is a first screen that is hard
-  /// to read.
+  /// 0 is no squares, 1 the exact picture. Forwards is the arrival and
+  /// backwards the leaving, so the two are the same motion.
   late final AnimationController _arrival = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 1400),
-  );
+    duration: RoosterArt.arriving,
+    reverseDuration: RoosterArt.leaving,
+  )..addStatusListener(_next);
+
+  /// The hold, and the breath between leaving and arriving again. A timer
+  /// rather than a longer animation, so the picture is not repainted sixty
+  /// times a second for the four seconds it is standing still.
+  Timer? _pause;
 
   ImageStream? _stream;
   late final ImageStreamListener _listener = ImageStreamListener(_loaded);
@@ -120,23 +162,43 @@ class _RoosterArtState extends State<RoosterArt>
     _stream = stream..addListener(_listener);
   }
 
+  bool get _still => MediaQuery.disableAnimationsOf(context);
+
   void _loaded(ImageInfo info, bool synchronousCall) {
     if (!mounted) return;
     final first = _image == null;
     setState(() => _image = info.image);
     if (!first) return;
     // Not before the picture is here: arriving over nothing would be the
-    // animation playing to an empty frame. All at once for anybody who has
-    // asked their phone not to animate.
-    if (MediaQuery.disableAnimationsOf(context)) {
+    // animation playing to an empty frame. All at once, and then still, for
+    // anybody who has asked their phone not to animate.
+    if (_still) {
       _arrival.value = 1;
     } else {
       _arrival.forward();
     }
   }
 
+  void _next(AnimationStatus status) {
+    _pause?.cancel();
+    switch (status) {
+      case AnimationStatus.completed:
+        _pause = Timer(RoosterArt.holding, () {
+          if (mounted && !_still) _arrival.reverse();
+        });
+      case AnimationStatus.dismissed:
+        _pause = Timer(RoosterArt.resting, () {
+          if (mounted) _arrival.forward();
+        });
+      case AnimationStatus.forward:
+      case AnimationStatus.reverse:
+        break;
+    }
+  }
+
   @override
   void dispose() {
+    _pause?.cancel();
     _stream?.removeListener(_listener);
     _arrival.dispose();
     super.dispose();

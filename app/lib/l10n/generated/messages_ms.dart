@@ -1491,16 +1491,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Cuba perkataan lain, atau mulakan komuniti dengan nama itu."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Siaran terakhir"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Belum ada"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Lihat baharu"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Buka"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Tulis siaran"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Ahli:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Disiarkan"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Lihat"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Buka"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Dalam talian"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage(
+          "Tunjukkan semasa anda dalam talian"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Orang yang anda hantar mesej nampak titik hijau semasa Kyron anda dibuka. Apabila dimatikan, anda juga tidak akan nampak titik mereka."),
     };
 
 final messageLookup = MessageLookup();

@@ -1487,13 +1487,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "બીજો શબ્દ અજમાવો, અથવા તે નામથી સમુદાય શરૂ કરો."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("છેલ્લી પોસ્ટ"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("હજી નથી"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("નવું જુઓ"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("ખોલો"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("પોસ્ટ લખો"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("સભ્યો:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("પોસ્ટ થઈ ગઈ"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("જુઓ"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("ખોલો"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("ઑનલાઇન"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("તમે ઑનલાઇન હો ત્યારે બતાવો"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "તમે જેમને સંદેશ મોકલો છો તેઓ, તમે Kyron ખુલ્લું રાખો ત્યારે લીલું ટપકું જુએ છે. આ બંધ હોય ત્યારે તમે પણ તેમનું જોઈ શકશો નહીં."),
     };
 
 final messageLookup = MessageLookup();

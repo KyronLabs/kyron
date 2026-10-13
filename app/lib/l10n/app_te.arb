@@ -748,10 +748,12 @@
   "ui_community_discover_none": "చేరడానికి ఏమీ మిగల్లేదు",
   "ui_community_discover_none_detail": "మీరు Kyron లోని ప్రతి కమ్యూనిటీలో ఉన్నారు. మరొకటి ప్రారంభించండి.",
   "ui_community_discover_search_detail": "వేరే పదం ప్రయత్నించండి, లేదా ఆ పేరుతో కమ్యూనిటీ ప్రారంభించండి.",
-  "ui_community_last_post": "చివరి పోస్ట్",
-  "ui_community_none_yet": "ఇంకా లేదు",
-  "ui_community_catch_up": "కొత్తవి చూడండి",
-  "ui_community_open": "తెరవండి",
   "ui_community_write": "పోస్ట్ రాయండి",
-  "ui_community_members": "సభ్యులు:"
+  "ui_community_members": "సభ్యులు:",
+  "ui_toast_posted": "పోస్ట్ అయింది",
+  "ui_toast_view": "చూడండి",
+  "ui_toast_open": "తెరవండి",
+  "ui_dm_online": "ఆన్‌లైన్",
+  "ui_dm_show_online": "మీరు ఆన్‌లైన్‌లో ఉన్నప్పుడు చూపించు",
+  "ui_dm_show_online_detail": "మీరు సందేశం పంపే వారికి, మీరు Kyron తెరిచి ఉంచినప్పుడు ఒక ఆకుపచ్చ చుక్క కనిపిస్తుంది. ఇది ఆఫ్‌లో ఉంటే, వారిది మీకూ కనిపించదు."
 }

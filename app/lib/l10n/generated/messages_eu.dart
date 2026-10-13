@@ -1495,16 +1495,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron-eko komunitate guztietan zaude. Sortu beste bat."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "Saiatu beste hitz batekin, edo sortu izen horrekin komunitate bat."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Azken argitalpena"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Oraindik ez"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Jarri egunean"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Ireki"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Idatzi argitalpen bat"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Kideak:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Argitaratuta"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Ikusi"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Ireki"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Konektatuta"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage(
+          "Erakutsi konektatuta zaudenean"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Idazten diezunek puntu berde bat ikusten dute Kyron irekita duzun bitartean. Desaktibatuta badago, zuk ere ez duzu haiena ikusiko."),
     };
 
 final messageLookup = MessageLookup();
