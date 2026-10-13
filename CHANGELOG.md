@@ -225,6 +225,13 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **How the rooster was made, and how to make another.**
+  docs/ROUNDED_PIXEL_ART.md is the style written down -- the rooster's
+  measurements, the design rules for choosing and framing a subject, how
+  to put a new picture in the app with the same arrival -- and
+  `scripts/rounded_pixels.py` turns a cut-out into one, with each step
+  available to look at.
+
 - **See who is online.** A green dot on the picture of anybody you message
   who has Kyron open, in the conversation list and at the top of the
   conversation, where "Online" takes the place of their handle. Online
