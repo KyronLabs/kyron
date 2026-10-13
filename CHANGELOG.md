@@ -200,6 +200,15 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Community settings.** A gear on Communities opens them: whether posts from
+  your communities also appear in Home (held by the server, and it governs
+  both Home tabs; a new `User.communityPostsInHome` column, `GET` and
+  `PUT /communities/settings`), whether the list shows new-post counts, and
+  the communities you run, each one tap from managing it.
+- **New community as a page of its own**, opened from the bar at the top of
+  Communities, showing the address while the name is typed. It was a sheet
+  behind a floating button that the keyboard pushed half off the screen.
+
 - **Message settings.** A gear on Messages opens them: read receipts (held by
   the server and reciprocal: off means nobody sees yours and you see nobody's),
   whether the other person sees you typing, and link previews. A new
@@ -277,6 +286,18 @@ section for that version, so what is written here is what people read.
   4–12 MB a phone's sensor produces. In all 68 catalogs.
 
 ### Changed
+
+- **Communities is laid out like Messages.** One row per community with its
+  newest post ("Ada: ...", "You: ...", or "Photo" for a post with no words),
+  when it was posted, and how many posts are new since you last opened it,
+  the busiest at the top. A filter menu (All, New posts, Yours to run) and a
+  Discover chip replace the two tabs, with a search box over both. Opening a
+  community clears its count (`PUT /communities/:slug/read`, a new
+  `CommunityMember.lastReadAt` column). Previews follow the same blocks,
+  mutes and hidden posts as the community's page. There is no separate feed
+  of community posts: Home already carries them, and the rows say what is
+  new. Names that would collide with the app's own routes (mine, discover,
+  settings) can no longer be taken.
 
 - **Messages has a filter menu and a Hidden chip instead of All and Unread
   tabs.** The menu picks All, Unread or Unanswered (the conversations whose

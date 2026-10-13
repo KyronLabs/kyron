@@ -1562,6 +1562,60 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Enviada. Hauria d'arribar en pocs segons."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Les notificacions funcionen."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Encara no hi ha publicacions"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Comunitat nova"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nom"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "L'adreça es fa a partir del nom."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("La gent la trobarà a"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "En seràs el propietari. Un cop existeixi, s'hi poden afegir una imatge, un bàner i moderadors des de la seva pàgina."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Inici"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Publicacions de comunitats a Inici"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Les publicacions de les teves comunitats també apareixen a Inici. Desactivat, es queden aquí a Comunitats, on cadascuna mostra què hi ha de nou."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("La teva llista"),
+      "ui_community_counts": MessageLookupByLibrary.simpleMessage(
+          "Recompte de publicacions noves"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Mostra quantes publicacions són noves a cada comunitat des de l'última vegada que la vas obrir."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Comunitats que gestiones"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Aquí hi ha les comunitats que crees o moderes."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Propietari"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderador"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Publicacions noves"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Les que gestiones"),
+      "ui_community_settings_open": MessageLookupByLibrary.simpleMessage(
+          "Configuració de les comunitats"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Descobreix"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Cap comunitat coincideix."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Res de nou"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Cada comunitat és com la vas deixar."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Encara no en gestiones cap"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("No queda res per unir-s'hi"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ets a totes les comunitats de Kyron. Crea'n una altra."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Prova una altra paraula, o crea una comunitat amb aquest nom."),
     };
 
 final messageLookup = MessageLookup();

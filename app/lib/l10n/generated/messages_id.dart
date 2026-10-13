@@ -1439,6 +1439,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Terkirim. Seharusnya tiba dalam beberapa detik."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Notifikasi berfungsi."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Belum ada postingan"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Komunitas baru"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nama"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Alamatnya dibuat dari nama."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Orang akan menemukannya di"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Kamu akan menjadi pemiliknya. Gambar, banner, dan moderator bisa ditambahkan dari halamannya setelah dibuat."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Beranda"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Postingan komunitas di Beranda"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Postingan dari komunitasmu juga muncul di Beranda. Jika dimatikan, postingan tetap di sini di Komunitas, tempat masing-masing menunjukkan apa yang baru."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Daftarmu"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Jumlah postingan baru"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Tunjukkan berapa postingan yang baru di tiap komunitas sejak terakhir kamu membukanya."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Komunitas yang kamu kelola"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Komunitas yang kamu buat atau moderasi tercantum di sini."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Pemilik"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Postingan baru"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Yang kamu kelola"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Pengaturan komunitas"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Jelajahi"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Tidak ada komunitas yang cocok."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Tidak ada yang baru"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Setiap komunitas masih seperti saat kamu tinggalkan."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Kamu belum mengelola satu pun"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Tidak ada lagi yang bisa diikuti"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kamu ada di setiap komunitas di Kyron. Buat satu lagi."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Coba kata lain, atau buat komunitas dengan nama itu."),
     };
 
 final messageLookup = MessageLookup();

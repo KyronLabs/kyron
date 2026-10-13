@@ -27,6 +27,9 @@ class _Repo extends CommunitiesRepository {
   Future<Community> bySlug(String slug) async => _community;
 
   @override
+  Future<void> markRead(String slug) async {}
+
+  @override
   Future<Community> setMembership(String slug, bool joined) async {
     memberships++;
     return _community = _community.copyWith(joined: joined);

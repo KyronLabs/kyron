@@ -1439,6 +1439,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Жіберілді. Бірнеше секундта келуі керек."),
       "ui_push_working": MessageLookupByLibrary.simpleMessage(
           "Хабарландырулар жұмыс істейді."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Әзірге жазбалар жоқ"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Жаңа қауымдастық"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Аты"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Мекенжайы атауынан жасалады."),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage(
+          "Адамдар оны мына мекенжайдан табады:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Сіз оның иесі боласыз. Сурет, баннер және модераторларды ол жасалғаннан кейін оның бетінен қосуға болады."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Басты бет"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Қауымдастық жазбалары Басты бетте"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Қауымдастықтарыңыздың жазбалары Басты бетте де көрінеді. Өшірілсе, олар осында, Қауымдастықтарда қалады, әрқайсысы жаңасын көрсетеді."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Тізіміңіз"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Жаңа жазбалар саны"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Әр қауымдастықта соңғы ашқаныңыздан бері қанша жазба жаңа екенін көрсету."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Сіз басқаратын қауымдастықтар"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Сіз құрған немесе модерациялайтын қауымдастықтар осында."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Иесі"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Модератор"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Жаңа жазбалар"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Сіз басқаратындар"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Қауымдастық параметрлері"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Ашу"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Сәйкес қауымдастық жоқ."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Жаңалық жоқ"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Әр қауымдастық сіз қалдырғандай."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Әлі ешқайсысын басқармайсыз"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Қосылатын ештеңе қалмады"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Сіз Kyron-дағы барлық қауымдастықтасыз. Тағы біреуін құрыңыз."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "Басқа сөзді қолданып көріңіз немесе осы атпен қауымдастық құрыңыз."),
     };
 
 final messageLookup = MessageLookup();

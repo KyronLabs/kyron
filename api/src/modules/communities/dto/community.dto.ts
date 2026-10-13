@@ -1,5 +1,6 @@
 import { Transform } from 'class-transformer';
 import {
+  IsBoolean,
   IsIn,
   IsInt,
   IsOptional,
@@ -9,6 +10,9 @@ import {
   MaxLength,
   Min,
 } from 'class-validator';
+
+/** Which of the reader's communities to list. */
+export type CommunityFilter = 'all' | 'unread' | 'running';
 
 export class ListCommunitiesDto {
   @IsOptional()
@@ -21,6 +25,20 @@ export class ListCommunitiesDto {
   @Min(1)
   @Max(50)
   limit?: number;
+
+  /**
+   * All of them; only those with posts the reader has not seen; or only
+   * those they own or moderate.
+   */
+  @IsOptional()
+  @IsIn(['all', 'unread', 'running'])
+  filter?: CommunityFilter;
+}
+
+/** The reader's settings for communities. */
+export class CommunitySettingsDto {
+  @IsBoolean()
+  postsInHome!: boolean;
 }
 
 export class DiscoverCommunitiesDto {

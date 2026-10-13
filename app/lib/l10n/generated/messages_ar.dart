@@ -1439,6 +1439,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "أُرسل. يُفترض أن يصل خلال ثوانٍ."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("الإشعارات تعمل."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("لا منشورات بعد"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("مجتمع جديد"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("الاسم"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("يُصنع عنوانه من الاسم."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("سيجده الناس على"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "ستكون مالكه. يمكن إضافة صورة ولافتة ومشرفين من صفحته بعد إنشائه."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("الرئيسية"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("منشورات المجتمعات في الرئيسية"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "تظهر منشورات مجتمعاتك في الرئيسية أيضًا. عند الإيقاف، تبقى هنا في المجتمعات، حيث يُظهر كل مجتمع ما هو جديد."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("قائمتك"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("عدد المنشورات الجديدة"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "إظهار عدد المنشورات الجديدة في كل مجتمع منذ آخر مرة فتحته."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("المجتمعات التي تديرها"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "تُدرج هنا المجتمعات التي تنشئها أو تشرف عليها."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("المالك"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("مشرف"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("منشورات جديدة"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("التي تديرها"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("إعدادات المجتمعات"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("استكشاف"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("لا توجد مجتمعات مطابقة."),
+      "ui_community_new_none": MessageLookupByLibrary.simpleMessage("لا جديد"),
+      "ui_community_new_none_detail":
+          MessageLookupByLibrary.simpleMessage("كل مجتمع كما تركته."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("لا تدير أي مجتمع بعد"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("لم يبقَ شيء للانضمام إليه"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "أنت في كل مجتمع على Kyron. أنشئ مجتمعًا آخر."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "جرّب كلمة أخرى، أو أنشئ مجتمعًا بهذا الاسم."),
     };
 
 final messageLookup = MessageLookup();

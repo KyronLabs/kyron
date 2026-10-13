@@ -1,6 +1,8 @@
 import '../l10n/app_localizations.dart';
 
 // lib/screens/communities_screen.dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,22 +11,30 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/community.dart';
 import '../providers/communities_provider.dart';
+import '../providers/current_user_provider.dart';
+import '../providers/preferences_provider.dart';
 import '../routes.dart';
-import '../utils/api_error_message.dart';
+import '../utils/conversation_text.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/bottom_nav_v4.dart';
+import '../widgets/community_avatar.dart';
 import '../widgets/community_tile.dart';
 import '../widgets/empty_state.dart';
-import '../widgets/section_tabs.dart';
+import '../widgets/list_controls.dart';
 import '../widgets/simple_app_bar.dart';
-import '../widgets/toast.dart';
 import '../widgets/skeleton.dart';
 
-/// Communities the reader is in, and communities to join.
+/// The communities the reader is in, one row each, the one with the newest
+/// post at the top -- and the ones they could join, behind a chip.
 ///
-/// What this replaces was ten rows of "My Community 1 - 234 members", twenty
-/// of "Community 1 - 1234 members" with a Join button that did nothing, and an
-/// Invites tab with no invites behind it in any sense.
+/// Laid out like Messages, because it is the same kind of list: places where
+/// something happens, each saying what happened last and how much is new. It
+/// was two tabs of names and member counts, which read the same every time it
+/// was opened, so nobody had a reason to open it.
+///
+/// No feed of posts here. Home already carries every post from the reader's
+/// communities, and a second feed of the same posts would be Home with less
+/// in it; each row says what is new and one tap reads it in its place.
 class CommunitiesScreen extends ConsumerStatefulWidget {
   final GlobalKey<AppDrawerState> drawerKey;
   final Function(double progress) onScrollProgress;
@@ -39,14 +49,26 @@ class CommunitiesScreen extends ConsumerStatefulWidget {
   ConsumerState<CommunitiesScreen> createState() => _CommunitiesScreenState();
 }
 
-class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen>
-    with SingleTickerProviderStateMixin {
-  late final TabController _tabs = TabController(length: 2, vsync: this);
+class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen> {
   bool _hidden = false;
+
+  /// Which of the reader's communities the list shows, from the filter menu.
+  CommunityFilter _filter = CommunityFilter.all;
+
+  /// Communities to join instead, from their own chip.
+  bool _discovering = false;
+
+  final _search = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _search.addListener(() => setState(() {}));
+  }
 
   @override
   void dispose() {
-    _tabs.dispose();
+    _search.dispose();
     super.dispose();
   }
 
@@ -62,81 +84,132 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen>
     return false;
   }
 
-  Future<void> _create() async {
-    final created = await showModalBottomSheet<Community>(
+  Future<void> _chooseFilter(BuildContext chip) async {
+    final l10n = AppLocalizations.of(context);
+    final picked = await showListFilterMenu<CommunityFilter>(
       context: context,
-      isScrollControlled: true,
-      useSafeArea: true,
-      builder: (_) => const _NewCommunitySheet(),
+      anchor: chip,
+      title: l10n.ui('ui_dm_filter', 'Filter'),
+      options: CommunityFilter.values,
+      current: _filter,
+      label: (filter) => _filterName(l10n, filter),
+      keyOf: (filter) => ValueKey('community-filter-${filter.name}'),
     );
-    if (created == null || !mounted) return;
-    ref.read(myCommunitiesProvider.notifier).add(created);
-    _tabs.animateTo(0);
-    await Navigator.pushNamed(
-      context,
-      Routes.community,
-      arguments: created.slug,
-    );
+    if (picked == null || !mounted) return;
+    setState(() {
+      _filter = picked;
+      _discovering = false;
+    });
   }
+
+  static String _filterName(AppLocalizations l10n, CommunityFilter f) =>
+      switch (f) {
+        CommunityFilter.all => l10n.ui('ui_dm_filter_all', 'All'),
+        CommunityFilter.unread =>
+          l10n.ui('ui_community_filter_new', 'New posts'),
+        CommunityFilter.running =>
+          l10n.ui('ui_community_filter_running', 'Yours to run'),
+      };
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    final l10n = AppLocalizations.of(context);
+    final scheme = Theme.of(context).colorScheme;
+    final filtered = _filter != CommunityFilter.all && !_discovering;
+
+    return Column(
       children: [
-        Column(
-          children: [
-            SafeArea(
-              bottom: false,
-              child: SimpleAppBar(
-                title: AppLocalizations.of(context).communities,
-                onAvatarTap: () =>
-                    widget.drawerKey.currentState?.toggleDrawer(),
+        SafeArea(
+          bottom: false,
+          child: SimpleAppBar(
+            title: l10n.communities,
+            onAvatarTap: () => widget.drawerKey.currentState?.toggleDrawer(),
+            actions: [
+              SimpleBarAction(
+                key: const ValueKey('communities-new'),
+                icon: Iconsax.add_square_copy,
+                tooltip: l10n.ui('ui_community_new', 'New community'),
+                onPressed: () =>
+                    Navigator.pushNamed(context, Routes.newCommunity),
               ),
+              SimpleBarAction(
+                key: const ValueKey('communities-settings'),
+                icon: Iconsax.setting_2_copy,
+                tooltip: l10n.ui(
+                  'ui_community_settings_open',
+                  'Community settings',
+                ),
+                onPressed: () =>
+                    Navigator.pushNamed(context, Routes.communitySettings),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(
+            SpacingTokens.space16,
+            SpacingTokens.space4,
+            SpacingTokens.space16,
+            SpacingTokens.space8,
+          ),
+          child: ListSearchField(
+            fieldKey: const ValueKey('communities-search'),
+            controller: _search,
+            hint: _discovering
+                ? l10n.searchCommunities
+                : l10n.ui('ui_share_search', 'Search'),
+          ),
+        ),
+        SizedBox(
+          height: 36,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space16,
             ),
-            SectionTabs(
-              controller: _tabs,
-              // No Invites tab. There is no invite in the model, so it was a
-              // tab nothing could ever have put anything in.
-              labels: const ['My communities', 'Discover'],
-            ),
-            Expanded(
-              child: NotificationListener<UserScrollNotification>(
-                onNotification: _onScroll,
-                // The chrome above sits inside a SafeArea, and it is a
-                // sibling of this body rather than its parent -- so the
-                // status bar inset is still on the MediaQuery down here. A
-                // scroll view built without an explicit padding quietly
-                // adopts it, which is what put a band of empty screen
-                // between the tab strip and the first row.
-                child: MediaQuery.removePadding(
-                  context: context,
-                  removeTop: true,
-                  child: TabBarView(
-                    controller: _tabs,
-                    children: [
-                      _MineTab(onCreate: _create),
-                      const _DiscoverTab(),
-                    ],
-                  ),
+            children: [
+              Builder(
+                builder: (chip) => ListChip(
+                  key: const ValueKey('communities-filter'),
+                  selected: filtered,
+                  onTap: () => _chooseFilter(chip),
+                  icon: Iconsax.filter_copy,
+                  label: filtered ? _filterName(l10n, _filter) : null,
+                  tooltip: l10n.ui('ui_dm_filter', 'Filter'),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(width: SpacingTokens.space8),
+              ListChip(
+                key: const ValueKey('communities-discover'),
+                selected: _discovering,
+                onTap: () => setState(() => _discovering = !_discovering),
+                label: l10n.ui('ui_community_discover', 'Discover'),
+              ),
+            ],
+          ),
         ),
-        // Clear of the bottom bar. The container extends the body behind it,
-        // so a button at the bottom of the screen is a button behind the nav.
-        Positioned(
-          right: SpacingTokens.space16,
-          bottom: BottomNavV4.height +
-              MediaQuery.paddingOf(context).bottom +
-              SpacingTokens.space16,
-          child: FloatingActionButton(
-            onPressed: _create,
-            tooltip: AppLocalizations.of(context).literalstartACommunity,
-            // Outlined, matching the create button in the bar right below
-            // it: the two sat one above the other showing the same plus in
-            // two different weights.
-            child: const Icon(Iconsax.add_copy),
+        const SizedBox(height: SpacingTokens.space8),
+        Divider(
+          height: 0.5,
+          thickness: 0.5,
+          color: scheme.outline.withValues(alpha: 0.15),
+        ),
+        Expanded(
+          child: NotificationListener<UserScrollNotification>(
+            onNotification: _onScroll,
+            // The bar above is a sibling inside its own SafeArea, so the
+            // status bar inset is still on the MediaQuery down here.
+            child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: _discovering
+                  ? _DiscoverList(query: _search.text.trim())
+                  : _MyList(
+                      key: ValueKey(_filter),
+                      filter: _filter,
+                      query: _search.text.trim(),
+                    ),
+            ),
           ),
         ),
       ],
@@ -144,24 +217,24 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen>
   }
 }
 
-/// How much room a list leaves under itself: the bottom bar, its safe area,
-/// and the floating button that sits above both.
+/// How much room a list leaves under itself for the bottom bar.
 double _listFootroom(BuildContext context) =>
     BottomNavV4.height +
     MediaQuery.paddingOf(context).bottom +
-    SpacingTokens.space40 +
     SpacingTokens.space16;
 
-class _MineTab extends ConsumerStatefulWidget {
-  final VoidCallback onCreate;
+/// The reader's own communities, narrowed by the search box.
+class _MyList extends ConsumerStatefulWidget {
+  final CommunityFilter filter;
+  final String query;
 
-  const _MineTab({required this.onCreate});
+  const _MyList({super.key, required this.filter, required this.query});
 
   @override
-  ConsumerState<_MineTab> createState() => _MineTabState();
+  ConsumerState<_MyList> createState() => _MyListState();
 }
 
-class _MineTabState extends ConsumerState<_MineTab> {
+class _MyListState extends ConsumerState<_MyList> {
   final ScrollController _scroll = ScrollController();
 
   @override
@@ -180,73 +253,104 @@ class _MineTabState extends ConsumerState<_MineTab> {
   void _onScroll() {
     if (!_scroll.hasClients) return;
     if (_scroll.position.pixels >= _scroll.position.maxScrollExtent - 400) {
-      ref.read(myCommunitiesProvider.notifier).loadMore();
+      ref.read(myCommunitiesProvider(widget.filter).notifier).loadMore();
     }
+  }
+
+  Future<void> _open(Community community) async {
+    await Navigator.pushNamed(
+      context,
+      Routes.community,
+      arguments: community.slug,
+    );
+    // Whatever was posted while it was open, by the reader or anybody else,
+    // belongs at the top of the list now.
+    if (mounted) await refreshMyCommunities(ref);
+  }
+
+  bool _matches(Community community) {
+    final query = widget.query.toLowerCase();
+    if (query.isEmpty) return true;
+    return community.name.toLowerCase().contains(query) ||
+        community.slug.contains(query);
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(myCommunitiesProvider);
-    final notifier = ref.read(myCommunitiesProvider.notifier);
+    final l10n = AppLocalizations.of(context);
+    final state = ref.watch(myCommunitiesProvider(widget.filter));
+    final notifier = ref.read(myCommunitiesProvider(widget.filter).notifier);
+    final me = ref.watch(currentUserProvider).asData?.value.id;
+    final counts = ref.watch(preferencesProvider).communityCounts;
 
-    if (state.loadingFirstPage) {
-      return SkeletonList.communities();
+    if (state.loadingFirstPage) return SkeletonList.communities();
+
+    final shown = state.items.where(_matches).toList();
+
+    EmptyState empty() {
+      if (state.error != null && state.items.isEmpty) {
+        return EmptyState.failed(
+          title: l10n.literalcouldNotLoadYourCommunities,
+          detail: state.error,
+          onAction: notifier.refresh,
+        );
+      }
+      if (state.items.isNotEmpty) {
+        return EmptyState(
+          art: EmptyArt.noMatch,
+          title: l10n.ui('ui_community_search_none', 'No communities match.'),
+        );
+      }
+      return switch (widget.filter) {
+        CommunityFilter.all => EmptyState(
+            art: EmptyArt.communities,
+            title: l10n.literalyouAreNotInAnyCommunities,
+            detail: l10n.communitiesEmptyDetail,
+            action: l10n.literalstartACommunity,
+            onAction: () => Navigator.pushNamed(context, Routes.newCommunity),
+          ),
+        CommunityFilter.unread => EmptyState(
+            art: EmptyArt.communities,
+            title: l10n.ui('ui_community_new_none', 'Nothing new'),
+            detail: l10n.ui(
+              'ui_community_new_none_detail',
+              'Every community is as you left it.',
+            ),
+          ),
+        CommunityFilter.running => EmptyState(
+            art: EmptyArt.communities,
+            title: l10n.ui('ui_community_running_none', 'You run none yet'),
+            detail: l10n.ui(
+              'ui_community_running_none_detail',
+              'Communities you start, or moderate, are listed here.',
+            ),
+          ),
+      };
     }
 
     return RefreshIndicator(
       onRefresh: notifier.refresh,
-      child: state.items.isEmpty
-          ? (state.error != null
-                  ? EmptyState.failed(
-                      title: AppLocalizations.of(context)
-                          .literalcouldNotLoadYourCommunities,
-                      detail: state.error,
-                      onAction: notifier.refresh,
-                    )
-                  : EmptyState(
-                      art: EmptyArt.communities,
-                      title: AppLocalizations.of(context)
-                          .literalyouAreNotInAnyCommunities,
-                      detail:
-                          AppLocalizations.of(context).communitiesEmptyDetail,
-                      action: 'Start a community',
-                      onAction: widget.onCreate,
-                    ))
-              .scrollable
-          : ListView.separated(
+      child: shown.isEmpty
+          ? empty().scrollable
+          : ListView.builder(
               controller: _scroll,
               physics: const AlwaysScrollableScrollPhysics(),
               padding: EdgeInsets.only(bottom: _listFootroom(context)),
-              itemCount: state.items.length + (state.loadingMore ? 1 : 0),
-              separatorBuilder: (context, index) => Divider(
-                height: 1,
-                thickness: 0.5,
-                indent: 76,
-                color: Theme.of(context)
-                    .colorScheme
-                    .outline
-                    .withValues(alpha: 0.15),
-              ),
+              itemCount: shown.length + (state.loadingMore ? 1 : 0),
               itemBuilder: (context, index) {
-                if (index >= state.items.length) {
+                if (index >= shown.length) {
                   return const Padding(
                     padding: EdgeInsets.all(SpacingTokens.space16),
                     child: Center(child: CircularProgressIndicator()),
                   );
                 }
-                final community = state.items[index];
-                return CommunityTile(
+                final community = shown[index];
+                return _CommunityRow(
+                  key: ValueKey('community-${community.id}'),
                   community: community,
-                  onOpen: () => Navigator.pushNamed(
-                    context,
-                    Routes.community,
-                    arguments: community.slug,
-                  ),
-                  // Left, so it belongs on Discover rather than here.
-                  onChanged: (next) {
-                    if (!next.joined) notifier.remove(next.id);
-                    ref.invalidate(discoverCommunitiesProvider);
-                  },
+                  mine: me != null && community.lastPost?.authorId == me,
+                  showCount: counts,
+                  onTap: () => _open(community),
                 );
               },
             ),
@@ -254,259 +358,256 @@ class _MineTabState extends ConsumerState<_MineTab> {
   }
 }
 
-class _DiscoverTab extends ConsumerStatefulWidget {
-  const _DiscoverTab();
+/// One community: its picture, its name, its newest post and when, and how
+/// many posts are new.
+class _CommunityRow extends StatelessWidget {
+  final Community community;
 
-  @override
-  ConsumerState<_DiscoverTab> createState() => _DiscoverTabState();
-}
+  /// Whether the newest post is the reader's own.
+  final bool mine;
 
-class _DiscoverTabState extends ConsumerState<_DiscoverTab> {
-  final TextEditingController _search = TextEditingController();
+  /// Whether to say how many are new, which the reader can turn off.
+  final bool showCount;
 
-  @override
-  void dispose() {
-    _search.dispose();
-    super.dispose();
-  }
+  final VoidCallback onTap;
+
+  const _CommunityRow({
+    super.key,
+    required this.community,
+    required this.mine,
+    required this.showCount,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(discoverCommunitiesProvider);
-    final notifier = ref.read(discoverCommunitiesProvider.notifier);
     final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+    final fresh = showCount && community.unread > 0;
+    final muted = scheme.onSurface.withValues(alpha: 0.55);
+    final when = community.lastPost?.createdAt ?? community.lastActivityAt;
 
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(
-            SpacingTokens.space16,
-            SpacingTokens.space12,
-            SpacingTokens.space16,
-            SpacingTokens.space8,
-          ),
-          child: TextField(
-            controller: _search,
-            textInputAction: TextInputAction.search,
-            onSubmitted: notifier.search,
-            decoration: InputDecoration(
-              hintText: AppLocalizations.of(context).searchCommunities,
-              isDense: true,
-              filled: true,
-              fillColor: scheme.surfaceContainerHighest.withValues(alpha: .45),
-              prefixIcon: const Icon(Iconsax.search_normal_1_copy, size: 18),
-              suffixIcon: _search.text.isEmpty
-                  ? null
-                  : IconButton(
-                      icon: const Icon(Iconsax.close_circle_copy, size: 18),
-                      tooltip: AppLocalizations.of(context).clear,
-                      onPressed: () {
-                        _search.clear();
-                        notifier.search('');
-                      },
-                    ),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: SpacingTokens.space16,
-                vertical: SpacingTokens.space12,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
-                borderSide: BorderSide.none,
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space16,
+          vertical: SpacingTokens.space12,
+        ),
+        child: Row(
+          children: [
+            CommunityAvatar(
+              avatarUrl: community.avatarUrl,
+              initial: community.name.trim().isEmpty
+                  ? '#'
+                  : community.name.trim()[0].toUpperCase(),
+              size: 48,
+            ),
+            const SizedBox(width: SpacingTokens.space12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          community.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: TypographyTokens.fontSize3,
+                            fontWeight:
+                                fresh ? FontWeight.w700 : FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      if (when != null) ...[
+                        const SizedBox(width: SpacingTokens.space8),
+                        Text(
+                          conversationTime(
+                            l10n,
+                            when,
+                            locale: Localizations.maybeLocaleOf(context)
+                                ?.toLanguageTag(),
+                          ),
+                          key: ValueKey('community-when-${community.id}'),
+                          style: TextStyle(
+                            fontSize: TypographyTokens.fontSize1,
+                            color: fresh ? scheme.primary : muted,
+                            fontWeight:
+                                fresh ? FontWeight.w700 : FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          communityPreview(
+                            l10n,
+                            community.lastPost,
+                            mine: mine,
+                          ),
+                          key: ValueKey('community-preview-${community.id}'),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: TypographyTokens.fontSize2,
+                            height: 1.3,
+                            color: fresh
+                                ? scheme.onSurface
+                                : scheme.onSurface.withValues(alpha: 0.6),
+                            fontWeight:
+                                fresh ? FontWeight.w600 : FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                      if (fresh) ...[
+                        const SizedBox(width: SpacingTokens.space8),
+                        CountBadge(count: community.unread),
+                      ],
+                    ],
+                  ),
+                ],
               ),
             ),
-          ),
+          ],
         ),
-        Expanded(
-          child: state.loadingFirstPage
-              ? Center(child: CircularProgressIndicator())
-              : RefreshIndicator(
-                  onRefresh: notifier.refresh,
-                  child: state.items.isEmpty
-                      ? (state.error != null
-                              ? EmptyState.failed(
-                                  title: AppLocalizations.of(context)
-                                      .literalcouldNotLoadCommunities,
-                                  detail: state.error,
-                                  onAction: notifier.refresh,
-                                )
-                              : EmptyState(
-                                  art: notifier.query.isEmpty
-                                      ? EmptyArt.communities
-                                      : EmptyArt.noMatch,
-                                  title: notifier.query.isEmpty
-                                      ? 'Nothing left to join'
-                                      : 'No communities match that',
-                                  detail: notifier.query.isEmpty
-                                      ? 'You are already in every community '
-                                          'on Kyron. Start another one.'
-                                      : 'Try a different word, or start a '
-                                          'community by that name.',
-                                ))
-                          .scrollable
-                      : ListView.separated(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          padding: EdgeInsets.only(
-                            bottom: _listFootroom(context),
-                          ),
-                          itemCount: state.items.length,
-                          separatorBuilder: (context, index) => Divider(
-                            height: 1,
-                            thickness: 0.5,
-                            indent: 76,
-                            color: scheme.outline.withValues(alpha: 0.15),
-                          ),
-                          itemBuilder: (context, index) {
-                            final community = state.items[index];
-                            return CommunityTile(
-                              community: community,
-                              onOpen: () => Navigator.pushNamed(
-                                context,
-                                Routes.community,
-                                arguments: community.slug,
-                              ),
-                              onChanged: (next) {
-                                if (next.joined) {
-                                  notifier.joined(next.id);
-                                  ref
-                                      .read(myCommunitiesProvider.notifier)
-                                      .add(next);
-                                }
-                              },
-                            );
-                          },
-                        ),
-                ),
-        ),
-      ],
+      ),
     );
   }
 }
 
-/// Starts a community. Name, an optional description, and the address it will
-/// have -- shown while the name is typed rather than after the fact.
-class _NewCommunitySheet extends ConsumerStatefulWidget {
-  const _NewCommunitySheet();
+/// Communities the reader is not in, busiest first, searched on the server
+/// as the box is typed into.
+class _DiscoverList extends ConsumerStatefulWidget {
+  final String query;
+
+  const _DiscoverList({required this.query});
 
   @override
-  ConsumerState<_NewCommunitySheet> createState() => _NewCommunitySheetState();
+  ConsumerState<_DiscoverList> createState() => _DiscoverListState();
 }
 
-class _NewCommunitySheetState extends ConsumerState<_NewCommunitySheet> {
-  final TextEditingController _name = TextEditingController();
-  final TextEditingController _description = TextEditingController();
-  bool _busy = false;
+class _DiscoverListState extends ConsumerState<_DiscoverList> {
+  Timer? _debounce;
 
   @override
   void initState() {
     super.initState();
-    _name.addListener(() => setState(() {}));
-  }
-
-  @override
-  void dispose() {
-    _name.dispose();
-    _description.dispose();
-    super.dispose();
-  }
-
-  /// The same rule the server applies, so what is shown is what will happen.
-  String get _slug => _name.text
-      .toLowerCase()
-      .trim()
-      .replaceAll(RegExp(r'[^a-z0-9]+'), '-')
-      .replaceAll(RegExp(r'^-+|-+$'), '');
-
-  bool get _canCreate => _slug.isNotEmpty && !_busy;
-
-  Future<void> _create() async {
-    if (!_canCreate) return;
-    setState(() => _busy = true);
-    try {
-      final created = await ref
-          .read(communitiesRepositoryProvider)
-          .create(_name.text, description: _description.text);
-      if (!mounted) return;
-      Navigator.pop(context, created);
-    } catch (error) {
-      if (!mounted) return;
-      setState(() => _busy = false);
-      Toast.show(context, describeApiError(error, sessionIsLive: true));
+    final notifier = ref.read(discoverCommunitiesProvider.notifier);
+    if (notifier.query != widget.query) {
+      // After the first frame: a provider may not be changed while the
+      // widget tree is being built.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) notifier.search(widget.query);
+      });
     }
   }
 
   @override
+  void didUpdateWidget(_DiscoverList old) {
+    super.didUpdateWidget(old);
+    if (old.query == widget.query) return;
+    // Not a request per keystroke.
+    _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 300), () {
+      if (mounted) {
+        ref.read(discoverCommunitiesProvider.notifier).search(widget.query);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final state = ref.watch(discoverCommunitiesProvider);
+    final notifier = ref.read(discoverCommunitiesProvider.notifier);
     final scheme = Theme.of(context).colorScheme;
 
-    return Padding(
-      padding: EdgeInsets.only(
-        left: SpacingTokens.space16,
-        right: SpacingTokens.space16,
-        top: SpacingTokens.space20,
-        bottom: MediaQuery.viewInsetsOf(context).bottom + SpacingTokens.space20,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Start a community',
-            style: TextStyle(
-              fontSize: TypographyTokens.fontSize5,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(height: SpacingTokens.space16),
-          TextField(
-            controller: _name,
-            autofocus: true,
-            maxLength: 60,
-            textCapitalization: TextCapitalization.words,
-            decoration: InputDecoration(
-              labelText: 'Name',
-              hintText: AppLocalizations.of(context).lagosDesign,
-              counterText: '',
-            ),
-          ),
-          const SizedBox(height: SpacingTokens.space4),
-          Text(
-            _slug.isEmpty
-                ? 'Its address is made from the name.'
-                : 'People will find it at c/$_slug',
-            style: TextStyle(
-              fontSize: TypographyTokens.fontSize1,
-              color: scheme.onSurface.withValues(alpha: 0.6),
-            ),
-          ),
-          const SizedBox(height: SpacingTokens.space16),
-          TextField(
-            controller: _description,
-            maxLength: 400,
-            maxLines: 3,
-            minLines: 2,
-            textCapitalization: TextCapitalization.sentences,
-            decoration: InputDecoration(
-              labelText: AppLocalizations.of(context).ui(
-                  'ui_communities_screen_what_is_it_for_optional_39b687',
-                  'What is it for? (optional)'),
-              alignLabelWithHint: true,
-            ),
-          ),
-          const SizedBox(height: SpacingTokens.space8),
-          SizedBox(
-            width: double.infinity,
-            child: FilledButton(
-              onPressed: _canCreate ? _create : null,
-              child: _busy
-                  ? const SizedBox.square(
-                      dimension: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2),
+    if (state.loadingFirstPage) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    return RefreshIndicator(
+      onRefresh: notifier.refresh,
+      child: state.items.isEmpty
+          ? (state.error != null
+                  ? EmptyState.failed(
+                      title: l10n.literalcouldNotLoadCommunities,
+                      detail: state.error,
+                      onAction: notifier.refresh,
                     )
-                  : Text(AppLocalizations.of(context).create),
+                  : EmptyState(
+                      art: notifier.query.isEmpty
+                          ? EmptyArt.communities
+                          : EmptyArt.noMatch,
+                      title: notifier.query.isEmpty
+                          ? l10n.ui(
+                              'ui_community_discover_none',
+                              'Nothing left to join',
+                            )
+                          : l10n.ui(
+                              'ui_community_search_none',
+                              'No communities match.',
+                            ),
+                      detail: notifier.query.isEmpty
+                          ? l10n.ui(
+                              'ui_community_discover_none_detail',
+                              'You are in every community on Kyron. Start '
+                                  'another one.',
+                            )
+                          : l10n.ui(
+                              'ui_community_discover_search_detail',
+                              'Try a different word, or start a community by '
+                                  'that name.',
+                            ),
+                      action: l10n.literalstartACommunity,
+                      onAction: () =>
+                          Navigator.pushNamed(context, Routes.newCommunity),
+                    ))
+              .scrollable
+          : ListView.separated(
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.only(bottom: _listFootroom(context)),
+              itemCount: state.items.length,
+              separatorBuilder: (context, index) => Divider(
+                height: 1,
+                thickness: 0.5,
+                indent: 76,
+                color: scheme.outline.withValues(alpha: 0.15),
+              ),
+              itemBuilder: (context, index) {
+                final community = state.items[index];
+                return CommunityTile(
+                  key: ValueKey('discover-${community.id}'),
+                  community: community,
+                  onOpen: () => Navigator.pushNamed(
+                    context,
+                    Routes.community,
+                    arguments: community.slug,
+                  ),
+                  onChanged: (next) {
+                    if (!next.joined) return;
+                    notifier.joined(next.id);
+                    ref
+                        .read(
+                            myCommunitiesProvider(CommunityFilter.all).notifier)
+                        .add(next);
+                  },
+                );
+              },
             ),
-          ),
-        ],
-      ),
     );
   }
 }

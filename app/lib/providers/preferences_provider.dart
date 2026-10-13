@@ -28,6 +28,9 @@ class PreferencesState {
   /// Whether a link in a message gets a card, read by this phone.
   final bool linkPreviews;
 
+  /// Whether the Communities list shows how many posts are new in each.
+  final bool communityCounts;
+
   /// False until the stored values have been read once.
   final bool isLoaded;
 
@@ -42,6 +45,7 @@ class PreferencesState {
     this.dataSaver = false,
     this.typingShown = true,
     this.linkPreviews = true,
+    this.communityCounts = true,
     this.isLoaded = false,
   });
 
@@ -56,6 +60,7 @@ class PreferencesState {
     bool? dataSaver,
     bool? typingShown,
     bool? linkPreviews,
+    bool? communityCounts,
     bool? isLoaded,
   }) =>
       PreferencesState(
@@ -69,6 +74,7 @@ class PreferencesState {
         dataSaver: dataSaver ?? this.dataSaver,
         typingShown: typingShown ?? this.typingShown,
         linkPreviews: linkPreviews ?? this.linkPreviews,
+        communityCounts: communityCounts ?? this.communityCounts,
         isLoaded: isLoaded ?? this.isLoaded,
       );
 }
@@ -92,6 +98,7 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
       _store.readContentLanguages(),
       _store.readTypingShown(),
       _store.readLinkPreviews(),
+      _store.readCommunityCounts(),
     ]);
     if (!mounted) return;
     state = PreferencesState(
@@ -105,6 +112,7 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
       contentLanguages: results[7] as List<Language>,
       typingShown: results[8] as bool,
       linkPreviews: results[9] as bool,
+      communityCounts: results[10] as bool,
       isLoaded: true,
     );
   }
@@ -145,6 +153,11 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
   Future<void> setLinkPreviews(bool enabled) async {
     state = state.copyWith(linkPreviews: enabled);
     await _store.writeLinkPreviews(enabled);
+  }
+
+  Future<void> setCommunityCounts(bool shown) async {
+    state = state.copyWith(communityCounts: shown);
+    await _store.writeCommunityCounts(shown);
   }
 
   Future<void> setEmailEnabled(bool enabled) async {

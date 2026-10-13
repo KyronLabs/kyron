@@ -1440,6 +1440,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Đã gửi. Thông báo sẽ đến trong vài giây."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Thông báo đang hoạt động."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Chưa có bài viết"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Cộng đồng mới"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Tên"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Địa chỉ được tạo từ tên."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Mọi người sẽ tìm thấy tại"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Bạn sẽ là chủ sở hữu. Ảnh, ảnh bìa và người kiểm duyệt có thể thêm từ trang của cộng đồng sau khi tạo."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Trang chủ"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Bài viết cộng đồng trên Trang chủ"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Bài viết từ các cộng đồng của bạn cũng hiện trên Trang chủ. Khi tắt, chúng ở lại đây trong Cộng đồng, nơi mỗi cộng đồng cho thấy điều gì mới."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Danh sách của bạn"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Số bài viết mới"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Hiển thị số bài viết mới trong mỗi cộng đồng kể từ lần cuối bạn mở."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Cộng đồng bạn quản lý"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Các cộng đồng bạn tạo hoặc kiểm duyệt được liệt kê ở đây."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Chủ sở hữu"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Người kiểm duyệt"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Bài viết mới"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Do bạn quản lý"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Cài đặt cộng đồng"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Khám phá"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Không có cộng đồng nào khớp."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Không có gì mới"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Mọi cộng đồng vẫn như lúc bạn rời đi."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Bạn chưa quản lý cộng đồng nào"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Không còn gì để tham gia"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Bạn đã ở trong mọi cộng đồng trên Kyron. Hãy tạo thêm một cộng đồng."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Thử một từ khác, hoặc tạo cộng đồng với tên đó."),
     };
 
 final messageLookup = MessageLookup();

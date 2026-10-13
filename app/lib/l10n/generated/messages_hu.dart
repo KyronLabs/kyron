@@ -1441,6 +1441,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Elküldve. Néhány másodpercen belül meg kell érkeznie."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Az értesítések működnek."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Még nincsenek bejegyzések"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Új közösség"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Név"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("A címe a névből készül."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Ezen a címen találják meg:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Te leszel a tulajdonosa. Képet, borítót és moderátorokat a létrehozása után az oldaláról adhatsz hozzá."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Kezdőlap"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Közösségi bejegyzések a Kezdőlapon"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "A közösségeid bejegyzései a Kezdőlapon is megjelennek. Kikapcsolva itt maradnak a Közösségekben, ahol mindegyik mutatja, mi újság."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("A listád"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Új bejegyzések száma"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Mutassa, hány új bejegyzés van az egyes közösségekben azóta, hogy utoljára megnyitottad."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Általad vezetett közösségek"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Az általad indított vagy moderált közösségek itt szerepelnek."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Tulajdonos"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderátor"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Új bejegyzések"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Általad vezetettek"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Közösségi beállítások"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Felfedezés"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Egyetlen közösség sem egyezik."),
+      "ui_community_new_none": MessageLookupByLibrary.simpleMessage("Semmi új"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Minden közösség olyan, ahogy hagytad."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Még egyet sem vezetsz"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Nincs már mihez csatlakozni"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "A Kyron minden közösségében benne vagy. Indíts egy újat."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Próbálj másik szót, vagy indíts közösséget ezzel a névvel."),
     };
 
 final messageLookup = MessageLookup();

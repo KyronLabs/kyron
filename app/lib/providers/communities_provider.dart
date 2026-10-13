@@ -46,28 +46,35 @@ class CommunityListState {
       );
 }
 
-/// The communities the reader is in.
+/// The communities the reader is in, the one with the newest post first --
+/// all of them, or those with something new, or those they run.
 class MyCommunitiesNotifier extends StateNotifier<CommunityListState> {
   final CommunitiesRepository _repo;
+  final CommunityFilter filter;
 
-  MyCommunitiesNotifier(this._repo) : super(const CommunityListState()) {
+  MyCommunitiesNotifier(this._repo, {this.filter = CommunityFilter.all})
+      : super(const CommunityListState()) {
     refresh();
   }
 
-  Future<void> refresh() async {
-    state = const CommunityListState();
+  /// Reads the first page again. [quiet] keeps what is on screen while it
+  /// does, for coming back to the list rather than opening it.
+  Future<void> refresh({bool quiet = false}) async {
+    if (!quiet || state.items.isEmpty) state = const CommunityListState();
     try {
-      final page = await _repo.mine();
+      final page = await _repo.mine(filter: filter);
       state = CommunityListState(
         items: page.items,
         cursor: page.nextCursor,
         loadingFirstPage: false,
       );
     } catch (error) {
-      state = CommunityListState(
-        loadingFirstPage: false,
-        error: describeApiError(error, sessionIsLive: true),
-      );
+      state = quiet && state.items.isNotEmpty
+          ? state.copyWith(loadingFirstPage: false)
+          : CommunityListState(
+              loadingFirstPage: false,
+              error: describeApiError(error, sessionIsLive: true),
+            );
     }
   }
 
@@ -77,7 +84,7 @@ class MyCommunitiesNotifier extends StateNotifier<CommunityListState> {
 
     state = state.copyWith(loadingMore: true);
     try {
-      final page = await _repo.mine(cursor: cursor);
+      final page = await _repo.mine(cursor: cursor, filter: filter);
       state = state.copyWith(
         items: [...state.items, ...page.items],
         cursor: page.nextCursor,
@@ -92,9 +99,10 @@ class MyCommunitiesNotifier extends StateNotifier<CommunityListState> {
     }
   }
 
-  /// Puts one at the top after it has been joined or started, so the tab shows
-  /// it without a round trip.
+  /// Puts one at the top after it has been joined or started, so the list
+  /// shows it without a round trip.
   void add(Community community) {
+    if (filter != CommunityFilter.all) return;
     if (state.items.any((c) => c.id == community.id)) return;
     state = state.copyWith(items: [community, ...state.items]);
   }
@@ -107,12 +115,38 @@ class MyCommunitiesNotifier extends StateNotifier<CommunityListState> {
       ],
     );
   }
+
+  /// The reader has opened it: nothing in it is new any more. Off the
+  /// Unread list altogether, since that list is what has something new.
+  void seen(String id) {
+    if (filter == CommunityFilter.unread) {
+      remove(id);
+      return;
+    }
+    state = state.copyWith(
+      items: [
+        for (final c in state.items) c.id == id ? c.copyWith(unread: 0) : c,
+      ],
+    );
+  }
 }
 
-final myCommunitiesProvider =
-    StateNotifierProvider<MyCommunitiesNotifier, CommunityListState>(
-  (ref) => MyCommunitiesNotifier(ref.read(communitiesRepositoryProvider)),
+final myCommunitiesProvider = StateNotifierProvider.family<
+    MyCommunitiesNotifier, CommunityListState, CommunityFilter>(
+  (ref, filter) => MyCommunitiesNotifier(
+    ref.read(communitiesRepositoryProvider),
+    filter: filter,
+  ),
 );
+
+/// Reads every list of the reader's communities again, quietly: All always,
+/// and whichever filtered lists have been opened.
+Future<void> refreshMyCommunities(WidgetRef ref) => Future.wait([
+      for (final filter in CommunityFilter.values)
+        if (filter == CommunityFilter.all ||
+            ref.exists(myCommunitiesProvider(filter)))
+          ref.read(myCommunitiesProvider(filter).notifier).refresh(quiet: true),
+    ]);
 
 /// Communities the reader is not in, busiest first, optionally searched.
 class DiscoverCommunitiesNotifier extends StateNotifier<CommunityListState> {
@@ -181,17 +215,21 @@ class CommunityNotifier extends StateNotifier<CommunityState> {
   final CommunitiesRepository _repo;
   final String _slug;
 
-  CommunityNotifier(this._repo, this._slug) : super(const CommunityState()) {
+  /// Told when a member has opened it, so their count of new posts can start
+  /// again. Not for somebody who is not in it: they have no count.
+  final void Function(Community community)? onOpened;
+
+  CommunityNotifier(this._repo, this._slug, {this.onOpened})
+      : super(const CommunityState()) {
     refresh();
   }
 
   Future<void> refresh() async {
     state = const CommunityState();
     try {
-      state = CommunityState(
-        community: await _repo.bySlug(_slug),
-        loading: false,
-      );
+      final community = await _repo.bySlug(_slug);
+      state = CommunityState(community: community, loading: false);
+      if (community.joined) onOpened?.call(community);
     } catch (error) {
       state = CommunityState(
         loading: false,
@@ -222,6 +260,22 @@ class CommunityNotifier extends StateNotifier<CommunityState> {
 
 final communityProvider =
     StateNotifierProvider.family<CommunityNotifier, CommunityState, String>(
-  (ref, slug) =>
-      CommunityNotifier(ref.read(communitiesRepositoryProvider), slug),
+  (ref, slug) {
+    final repo = ref.read(communitiesRepositoryProvider);
+    return CommunityNotifier(
+      repo,
+      slug,
+      onOpened: (community) {
+        // The count goes at once on every list that is showing it; the
+        // server is told behind that, and a failure only means the count
+        // comes back next time the list is read.
+        for (final filter in CommunityFilter.values) {
+          if (ref.exists(myCommunitiesProvider(filter))) {
+            ref.read(myCommunitiesProvider(filter).notifier).seen(community.id);
+          }
+        }
+        repo.markRead(community.slug).catchError((Object _) {});
+      },
+    );
+  },
 );

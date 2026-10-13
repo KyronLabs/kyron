@@ -1514,6 +1514,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Gestuur. Dit behoort binne 'n paar sekondes aan te kom."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Kennisgewings werk."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Nog geen plasings nie"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nuwe gemeenskap"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Naam"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Die adres word van die naam gemaak."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Mense sal dit vind by"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Jy sal dit besit. 'n Prent, 'n banier en moderators kan van sy blad af bygevoeg word sodra dit bestaan."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Tuis"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Gemeenskapplasings in Tuis"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Plasings uit jou gemeenskappe verskyn ook in Tuis. Af, bly hulle hier in Gemeenskappe, waar elkeen wys wat nuut is."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Jou lys"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Getal nuwe plasings"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Wys hoeveel plasings nuut is in elke gemeenskap sedert jy dit laas oopgemaak het."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Gemeenskappe wat jy bestuur"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Gemeenskappe wat jy begin of modereer, word hier gelys."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Eienaar"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nuwe plasings"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Joune om te bestuur"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Gemeenskapinstellings"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Ontdek"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Geen gemeenskappe pas nie."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Niks nuut nie"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Elke gemeenskap is soos jy dit gelos het."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Jy bestuur nog geen"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Niks oor om by aan te sluit nie"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Jy is in elke gemeenskap op Kyron. Begin nog een."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "Probeer 'n ander woord, of begin 'n gemeenskap met daardie naam."),
     };
 
 final messageLookup = MessageLookup();

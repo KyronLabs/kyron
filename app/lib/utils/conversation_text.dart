@@ -2,6 +2,7 @@
 import 'package:intl/intl.dart';
 
 import '../l10n/app_localizations.dart';
+import '../models/community.dart' show CommunityLastPost;
 import '../models/conversation.dart';
 import '../models/post_media.dart' show MediaKind;
 
@@ -22,9 +23,14 @@ String conversationPreview(AppLocalizations l10n, DirectMessage last) {
     // a blank where the line break fell.
     return body.replaceAll(RegExp(r'\s+'), ' ');
   }
-  final media = last.media;
+  return mediaPreview(l10n, [for (final m in last.media) m.kind]);
+}
+
+/// What a message or a post with no words carries, in a word: a voice note,
+/// a photo, several. Empty when it carries nothing.
+String mediaPreview(AppLocalizations l10n, List<MediaKind> media) {
   if (media.isEmpty) return '';
-  final kinds = media.map((m) => m.kind).toSet();
+  final kinds = media.toSet();
   if (kinds.length > 1) {
     return l10n.ui('ui_dm_quote_attachment', 'Attachment');
   }
@@ -36,6 +42,26 @@ String conversationPreview(AppLocalizations l10n, DirectMessage last) {
     MediaKind.video => l10n.ui('ui_dm_preview_video', 'Video'),
     MediaKind.gif => l10n.ui('ui_dm_preview_gif', 'GIF'),
   };
+}
+
+/// A community's newest post as one line, said by whom: "You: ..." for the
+/// reader's own, the author's name before anybody else's.
+String communityPreview(
+  AppLocalizations l10n,
+  CommunityLastPost? post, {
+  required bool mine,
+}) {
+  if (post == null) {
+    return l10n.ui('ui_community_no_posts', 'No posts yet');
+  }
+  final body = post.body.trim();
+  final what = body.isNotEmpty
+      ? body.replaceAll(RegExp(r'\s+'), ' ')
+      : mediaPreview(l10n, post.media);
+  final who = mine
+      ? l10n.ui('ui_dm_you_prefix', 'You:')
+      : '${post.authorName?.trim().isNotEmpty == true ? post.authorName!.trim() : l10n.ui('ui_dm_someone', 'Someone')}:';
+  return '$who $what';
 }
 
 /// When the last message was sent, the way a messenger says it: the time

@@ -1541,6 +1541,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Изпратено. Би трябвало да пристигне след няколко секунди."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Известията работят."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Още няма публикации"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Нова общност"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Име"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Адресът ѝ се образува от името."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Хората ще я намират на"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Вие ще я притежавате. Снимка, банер и модератори могат да се добавят от страницата ѝ, след като бъде създадена."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Начало"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Публикации от общности в Начало"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Публикациите от вашите общности се появяват и в Начало. Ако е изключено, остават тук, в Общности, където всяка показва какво е ново."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Вашият списък"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Брой нови публикации"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Показване колко публикации са нови във всяка общност, откакто сте я отворили за последно."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Общности, които управлявате"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Тук са изброени общностите, които създавате или модерирате."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Собственик"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Модератор"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Нови публикации"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Управлявани от вас"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Настройки на общностите"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Откриване"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Няма съвпадащи общности."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Няма нищо ново"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Всяка общност е такава, каквато сте я оставили."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Все още не управлявате нито една"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Няма какво повече да присъедините"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Членувате във всяка общност в Kyron. Създайте още една."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Опитайте друга дума или създайте общност с това име."),
     };
 
 final messageLookup = MessageLookup();

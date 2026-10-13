@@ -15,6 +15,7 @@ import {
 import { CommunityRole } from '@prisma/client';
 import { CommunitiesService } from './communities.service';
 import {
+  CommunitySettingsDto,
   CreateCommunityDto,
   DiscoverCommunitiesDto,
   ListCommunitiesDto,
@@ -47,7 +48,25 @@ export class CommunitiesController {
     return this.svc.mine(req.user.id, {
       limit: query.limit,
       cursor: query.cursor,
+      filter: query.filter,
+      // The feed's rules for what this reader may see, so a row never
+      // previews a post the community page would hide from them.
+      visible: (where) => this.feed.visibleWhere(where, req.user.id),
     });
+  }
+
+  /** The reader's settings for communities. Above ':slug', like 'mine'. */
+  @Get('settings')
+  settings(@Req() req: AuthRequest) {
+    return this.svc.settings(req.user.id);
+  }
+
+  @Put('settings')
+  updateSettings(
+    @Req() req: AuthRequest,
+    @Body() settings: CommunitySettingsDto,
+  ) {
+    return this.svc.updateSettings(req.user.id, settings);
   }
 
   /** Communities the reader is not in, busiest first. */
@@ -187,6 +206,12 @@ export class CommunitiesController {
   @Delete(':slug')
   remove(@Req() req: AuthRequest, @Param('slug') slug: string) {
     return this.svc.remove(req.user.id, slug);
+  }
+
+  /** The reader has looked: their count of new posts here starts again. */
+  @Put(':slug/read')
+  markRead(@Req() req: AuthRequest, @Param('slug') slug: string) {
+    return this.svc.markRead(req.user.id, slug);
   }
 
   @Put(':slug/membership')

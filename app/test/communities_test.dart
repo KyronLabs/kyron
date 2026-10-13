@@ -27,7 +27,11 @@ class _FakeCommunities extends CommunitiesRepository {
   final List<String?> searches = [];
 
   @override
-  Future<CommunityPage> mine({String? cursor, int limit = 20}) async {
+  Future<CommunityPage> mine({
+    String? cursor,
+    int limit = 20,
+    CommunityFilter filter = CommunityFilter.all,
+  }) async {
     if (fails) throw _Down();
     return CommunityPage(items: mineRows);
   }

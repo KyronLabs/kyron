@@ -6,8 +6,9 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { CommunityRole, Prisma } from '@prisma/client';
+import { CommunityRole, MediaKind, Prisma } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import type { CommunityFilter } from './dto/community.dto';
 
 /** A community as a list row or a header needs it. */
 export interface CommunitySummary {
@@ -25,6 +26,36 @@ export interface CommunitySummary {
   createdAt: Date;
 }
 
+/** The newest post in a community, as much of it as a list row shows. */
+export interface CommunityLastPost {
+  id: string;
+  authorId: string;
+  authorName: string | null;
+  /** The first of its words, so a row is not a whole post on the wire. */
+  body: string;
+  /** What it carries, in order, so a picture-only post says so. */
+  media: MediaKind[];
+  createdAt: Date;
+}
+
+/** One of the reader's communities, with what has happened in it. */
+export interface MyCommunity extends CommunitySummary {
+  lastPost: CommunityLastPost | null;
+  /** Posts by other people since the reader last opened it. */
+  unread: number;
+  /** Its newest post, or when the reader joined if it has none. */
+  lastActivityAt: Date;
+}
+
+/**
+ * Narrows a post query to what this reader may see -- blocks, mutes, hidden
+ * posts and muted words. The feed owns those rules; the controller hands them
+ * in, so a list row never previews a post the community page would hide.
+ */
+export type VisiblePosts = (
+  where: Prisma.PostWhereInput,
+) => Promise<Prisma.PostWhereInput>;
+
 /** One person in a community, as the member list shows them. */
 export interface CommunityMemberRow {
   id: string;
@@ -37,6 +68,18 @@ export interface CommunityMemberRow {
 }
 
 const DEFAULT_LIMIT = 20;
+
+/** More than anybody is in; the list is sorted in memory over all of them. */
+const MAX_MEMBERSHIPS = 500;
+
+/** How much of a post a list row is sent. */
+const PREVIEW_LENGTH = 160;
+
+/**
+ * Addresses a community cannot have: the routes that sit beside `:slug`. A
+ * community called "Settings" would otherwise be a page nobody could open.
+ */
+const RESERVED_SLUGS = new Set(['mine', 'discover', 'settings']);
 
 /**
  * Communities: a named place with members, and posts written into it rather
@@ -80,37 +123,184 @@ export class CommunitiesService {
       .slice(0, 40);
   }
 
-  /** The communities the reader is in, most recently joined first. */
+  /**
+   * The communities the reader is in, the one with the newest post first --
+   * each with that post and how many have come since the reader last looked.
+   *
+   * Sorted over every membership in memory rather than paged in the query:
+   * the order comes from the posts, not the membership rows, and nobody is in
+   * enough communities for that to matter. The cursor is still the last row's
+   * id, so a page boundary is a community rather than an offset that shifts
+   * when one of them gets a post.
+   */
   async mine(
     viewerId: string,
-    { limit = DEFAULT_LIMIT, cursor } = {} as {
+    {
+      limit = DEFAULT_LIMIT,
+      cursor,
+      filter = 'all',
+      visible = (where) => Promise.resolve(where),
+    } = {} as {
       limit?: number;
       cursor?: string;
+      filter?: CommunityFilter;
+      visible?: VisiblePosts;
     },
-  ) {
-    const rows = await this.prisma.communityMember.findMany({
-      where: { userId: viewerId, community: { deletedAt: null } },
-      orderBy: [{ joinedAt: 'desc' }, { communityId: 'desc' }],
-      take: limit + 1,
-      ...(cursor
-        ? {
-            cursor: {
-              communityId_userId: { communityId: cursor, userId: viewerId },
-            },
-            skip: 1,
-          }
-        : {}),
-      select: { role: true, community: { select: this.shape } },
+  ): Promise<{ items: MyCommunity[]; nextCursor: string | null }> {
+    const memberships = await this.prisma.communityMember.findMany({
+      where: {
+        userId: viewerId,
+        community: { deletedAt: null },
+        ...(filter === 'running'
+          ? { role: { in: [CommunityRole.OWNER, CommunityRole.MODERATOR] } }
+          : {}),
+      },
+      take: MAX_MEMBERSHIPS,
+      select: {
+        communityId: true,
+        role: true,
+        joinedAt: true,
+        lastReadAt: true,
+        community: { select: this.shape },
+      },
+    });
+    if (memberships.length === 0) return { items: [], nextCursor: null };
+
+    const posts = await visible({
+      deletedAt: null,
+      communityId: { in: memberships.map((m) => m.communityId) },
     });
 
-    const page = rows.slice(0, limit);
-    return {
-      items: page.map((row) =>
-        this.toSummary(row.community, { joined: true, role: row.role }),
+    const [latest, fresh] = await Promise.all([
+      this.prisma.post.groupBy({
+        by: ['communityId'],
+        where: posts,
+        _max: { createdAt: true },
+      }),
+      this.prisma.post.groupBy({
+        by: ['communityId'],
+        where: {
+          AND: [
+            posts,
+            { authorId: { not: viewerId } },
+            {
+              OR: memberships.map((m) => ({
+                communityId: m.communityId,
+                createdAt: { gt: m.lastReadAt ?? m.joinedAt },
+              })),
+            },
+          ],
+        },
+        _count: { _all: true },
+      }),
+    ]);
+    const latestAt = new Map(
+      latest.map((row) => [row.communityId, row._max.createdAt]),
+    );
+    const unreadOf = new Map(
+      fresh.map((row) => [row.communityId, row._count._all]),
+    );
+
+    const rows = memberships
+      .map((m) => ({
+        ...m,
+        unread: unreadOf.get(m.communityId) ?? 0,
+        lastActivityAt: latestAt.get(m.communityId) ?? m.joinedAt,
+        hasPosts: latestAt.get(m.communityId) != null,
+      }))
+      .filter((row) => filter !== 'unread' || row.unread > 0)
+      .sort(
+        (a, b) =>
+          b.lastActivityAt.getTime() - a.lastActivityAt.getTime() ||
+          b.communityId.localeCompare(a.communityId),
+      );
+
+    const after = cursor
+      ? rows.findIndex((row) => row.communityId === cursor) + 1
+      : 0;
+    const page = rows.slice(after, after + limit);
+
+    // The newest post of each on this page only: one small query apiece, for
+    // a page of twenty at most.
+    const lastPosts = await Promise.all(
+      page.map((row) =>
+        row.hasPosts
+          ? this.prisma.post.findFirst({
+              where: { AND: [posts, { communityId: row.communityId }] },
+              orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+              select: {
+                id: true,
+                authorId: true,
+                content: true,
+                createdAt: true,
+                author: { select: { name: true, username: true } },
+                media: { select: { kind: true }, orderBy: { position: 'asc' } },
+              },
+            })
+          : Promise.resolve(null),
       ),
+    );
+
+    return {
+      items: page.map((row, index) => {
+        const post = lastPosts[index];
+        return {
+          ...this.toSummary(row.community, { joined: true, role: row.role }),
+          lastPost: post
+            ? {
+                id: post.id,
+                authorId: post.authorId,
+                authorName: post.author.name?.trim() || post.author.username,
+                body: post.content.slice(0, PREVIEW_LENGTH),
+                media: post.media.map((m) => m.kind),
+                createdAt: post.createdAt,
+              }
+            : null,
+          unread: row.unread,
+          lastActivityAt: row.lastActivityAt,
+        };
+      }),
       nextCursor:
-        rows.length > limit ? page[page.length - 1].community.id : null,
+        after + limit < rows.length
+          ? (page[page.length - 1]?.communityId ?? null)
+          : null,
     };
+  }
+
+  /** Marks a community as looked at now, for the reader's new-post count. */
+  async markRead(viewerId: string, slug: string): Promise<{ ok: true }> {
+    // A non-member has no count to clear: nothing to update, and nothing to
+    // refuse either -- opening a community you are not in is not an error.
+    await this.prisma.communityMember.updateMany({
+      where: {
+        userId: viewerId,
+        community: { slug: slug.trim().toLowerCase(), deletedAt: null },
+      },
+      data: { lastReadAt: new Date() },
+    });
+    return { ok: true };
+  }
+
+  /** The reader's settings for communities. */
+  async settings(viewerId: string): Promise<{ postsInHome: boolean }> {
+    const user = await this.prisma.user.findUnique({
+      where: { id: viewerId },
+      select: { communityPostsInHome: true },
+    });
+    return { postsInHome: user?.communityPostsInHome ?? true };
+  }
+
+  /** Changes them. */
+  async updateSettings(
+    viewerId: string,
+    settings: { postsInHome: boolean },
+  ): Promise<{ postsInHome: boolean }> {
+    const user = await this.prisma.user.update({
+      where: { id: viewerId },
+      data: { communityPostsInHome: settings.postsInHome },
+      select: { communityPostsInHome: true },
+    });
+    return { postsInHome: user.communityPostsInHome };
   }
 
   /**
@@ -189,6 +379,9 @@ export class CommunitiesService {
       throw new BadRequestException(
         'A name needs at least one letter or number.',
       );
+    }
+    if (RESERVED_SLUGS.has(slug)) {
+      throw new ConflictException('That name is taken. Try another.');
     }
 
     const owned = await this.prisma.community.count({

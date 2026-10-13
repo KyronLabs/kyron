@@ -1446,6 +1446,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "გაიგზავნა. რამდენიმე წამში უნდა მოვიდეს."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("შეტყობინებები მუშაობს."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("პოსტები ჯერ არ არის"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("ახალი თემი"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("სახელი"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("მისამართი სახელისგან იქმნება."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("ხალხი მას იპოვის მისამართზე"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "თქვენ იქნებით მისი მფლობელი. სურათის, ბანერისა და მოდერატორების დამატება შეიძლება მისი გვერდიდან, როცა შეიქმნება."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("მთავარი"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("თემების პოსტები მთავარში"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "თქვენი თემების პოსტები მთავარშიც ჩანს. გამორთვისას ისინი აქ, თემებში რჩება, სადაც თითოეული აჩვენებს, რა არის ახალი."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("თქვენი სია"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("ახალი პოსტების რაოდენობა"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "აჩვენეთ, რამდენი პოსტია ახალი თითოეულ თემში მას შემდეგ, რაც ბოლოს გახსენით."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("თემები, რომლებსაც მართავთ"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "აქ არის თემები, რომლებიც შექმენით ან რომლებსაც მოდერირებთ."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("მფლობელი"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("მოდერატორი"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("ახალი პოსტები"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("თქვენ მიერ მართული"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("თემების პარამეტრები"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("აღმოჩენა"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("შესაბამისი თემი არ არის."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("ახალი არაფერია"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ყველა თემი ისეა, როგორც დატოვეთ."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("ჯერ არცერთს მართავთ"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("შესაერთებელი აღარაფერი დარჩა"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ის ყველა თემში ხართ. შექმენით კიდევ ერთი."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "სცადეთ სხვა სიტყვა ან შექმენით თემი ამ სახელით."),
     };
 
 final messageLookup = MessageLookup();

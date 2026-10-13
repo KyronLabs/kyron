@@ -133,6 +133,9 @@ class _OneCommunity extends CommunitiesRepository {
 
   @override
   Future<Community> bySlug(String slug) async => community;
+
+  @override
+  Future<void> markRead(String slug) async {}
 }
 
 void main() {
@@ -534,8 +537,11 @@ void main() {
       expect(community, contains('Iconsax.edit_2_copy'));
       expect(community, isNot(contains('Icon(Iconsax.edit_2)')));
 
-      expect(communities, contains('Iconsax.add_copy'));
-      expect(communities, isNot(contains('Icon(Iconsax.add)')));
+      // The create button moved from a floating disc to the bar at the top,
+      // beside settings, the way Messages has it; still the outline weight.
+      expect(communities, contains('Iconsax.add_square_copy'));
+      expect(communities, isNot(contains('Iconsax.add_square,')));
+      expect(communities, isNot(contains('FloatingActionButton')));
     });
   });
 }

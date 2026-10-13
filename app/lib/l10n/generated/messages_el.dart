@@ -1613,6 +1613,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Στάλθηκε. Θα πρέπει να φτάσει σε λίγα δευτερόλεπτα."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Οι ειδοποιήσεις λειτουργούν."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Δεν υπάρχουν αναρτήσεις ακόμα"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Νέα κοινότητα"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Όνομα"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Η διεύθυνσή της φτιάχνεται από το όνομα."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Θα τη βρίσκουν στο"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Θα είστε ο ιδιοκτήτης. Εικόνα, banner και συντονιστές προστίθενται από τη σελίδα της μόλις δημιουργηθεί."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Αρχική"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Αναρτήσεις κοινοτήτων στην Αρχική"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Οι αναρτήσεις από τις κοινότητές σας εμφανίζονται και στην Αρχική. Όταν είναι απενεργοποιημένο, μένουν εδώ στις Κοινότητες, όπου η καθεμία δείχνει τι νέο υπάρχει."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Η λίστα σας"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Πλήθος νέων αναρτήσεων"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Εμφάνιση του πόσες αναρτήσεις είναι νέες σε κάθε κοινότητα από την τελευταία φορά που την ανοίξατε."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Κοινότητες που διαχειρίζεστε"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Εδώ εμφανίζονται οι κοινότητες που ξεκινάτε ή συντονίζετε."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Ιδιοκτήτης"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Συντονιστής"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Νέες αναρτήσεις"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Που διαχειρίζεστε"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Ρυθμίσεις κοινοτήτων"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Ανακάλυψη"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Δεν ταιριάζει καμία κοινότητα."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Τίποτα νέο"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Κάθε κοινότητα είναι όπως την αφήσατε."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Δεν διαχειρίζεστε καμία ακόμα"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Δεν έμεινε τίποτα για να μπείτε"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Είστε σε κάθε κοινότητα του Kyron. Ξεκινήστε μια ακόμα."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Δοκιμάστε άλλη λέξη ή ξεκινήστε μια κοινότητα με αυτό το όνομα."),
     };
 
 final messageLookup = MessageLookup();

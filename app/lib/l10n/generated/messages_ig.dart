@@ -1434,6 +1434,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "E zigala. Ọ kwesịrị ịbịa n'ime sekọnd ole na ole."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Ọkwa na-arụ ọrụ."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Enweghị ozi ọ bụla ka"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Obodo ọhụrụ"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Aha"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "A na-esi n'aha mee adreesị ya."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Ndị mmadụ ga-ahụ ya na"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Ọ ga-abụ nke gị. Enwere ike ịgbakwunye foto, banner na ndị nlekọta site na ibe ya ozugbo ọ dị."),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("Ụlọ"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Ozi obodo na Ụlọ"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Ozi sitere n'obodo gị na-apụtakwa na Ụlọ. Ọ bụrụ na agbanyụọ ya, ha na-anọ ebe a n'Obodo, ebe nke ọ bụla na-egosi ihe ọhụrụ."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Ndepụta gị"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Ọnụ ọgụgụ ozi ọhụrụ"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Gosi ole ozi dị ọhụrụ n'obodo ọ bụla kemgbe i mepere ya oge ikpeazụ."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Obodo ị na-elekọta"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Obodo ị malitere ma ọ bụ na-elekọta ka edepụtara ebe a."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Onye nwe"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Onye nlekọta"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Ozi ọhụrụ"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Ndị ị na-elekọta"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Ntọala obodo"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Chọpụta"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Enweghị obodo dabara."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị ihe ọhụrụ"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Obodo ọ bụla dị ka i siri hapụ ya."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Ị naghị elekọta nke ọ bụla ka"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị ihe fọdụrụ isonye"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ị nọ n'obodo ọ bụla na Kyron. Malite ọzọ."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Nwaa okwu ọzọ, ma ọ bụ malite obodo nwere aha ahụ."),
     };
 
 final messageLookup = MessageLookup();

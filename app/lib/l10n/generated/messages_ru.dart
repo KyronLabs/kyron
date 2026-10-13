@@ -1445,6 +1445,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Отправлено. Оно должно прийти через несколько секунд."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Уведомления работают."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Пока нет публикаций"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Новое сообщество"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Название"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Адрес составляется из названия."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Его найдут по адресу"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Вы станете владельцем. Картинку, баннер и модераторов можно добавить на его странице, когда оно появится."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Главная"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Публикации сообществ на Главной"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Публикации ваших сообществ видны и на Главной. Если выключить, они останутся здесь, в Сообществах, где каждое показывает, что нового."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Ваш список"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Число новых публикаций"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Показывать, сколько публикаций появилось в каждом сообществе с тех пор, как вы открывали его в последний раз."),
+      "ui_community_settings_running": MessageLookupByLibrary.simpleMessage(
+          "Сообщества, которыми вы управляете"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Здесь сообщества, которые вы создали или модерируете."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Владелец"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Модератор"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Новые публикации"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Под вашим управлением"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Настройки сообществ"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Обзор"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Подходящих сообществ нет."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Ничего нового"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Все сообщества такие, какими вы их оставили."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Вы пока ничем не управляете"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Больше не к чему присоединиться"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Вы во всех сообществах Kyron. Создайте ещё одно."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "Попробуйте другое слово или создайте сообщество с таким названием."),
     };
 
 final messageLookup = MessageLookup();

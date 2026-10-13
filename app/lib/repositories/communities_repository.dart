@@ -9,13 +9,42 @@ class CommunitiesRepository {
 
   CommunitiesRepository(this._api);
 
-  /// The communities the reader is in.
-  Future<CommunityPage> mine({String? cursor, int limit = 20}) async {
+  /// The communities the reader is in, the one with the newest post first.
+  Future<CommunityPage> mine({
+    String? cursor,
+    int limit = 20,
+    CommunityFilter filter = CommunityFilter.all,
+  }) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/communities/mine',
-      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
+      queryParameters: {
+        'limit': limit,
+        if (cursor != null) 'cursor': cursor,
+        if (filter != CommunityFilter.all) 'filter': filter.name,
+      },
     );
     return CommunityPage.fromJson(res.data ?? const {});
+  }
+
+  /// The reader has opened it: its count of new posts starts again.
+  Future<void> markRead(String slug) => _api.dio.put<Map<String, dynamic>>(
+        '/communities/${Uri.encodeComponent(slug)}/read',
+      );
+
+  /// Whether posts from the reader's communities also appear in Home.
+  Future<bool> postsInHome() async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/communities/settings',
+    );
+    return res.data?['postsInHome'] != false;
+  }
+
+  Future<bool> setPostsInHome(bool on) async {
+    final res = await _api.dio.put<Map<String, dynamic>>(
+      '/communities/settings',
+      data: {'postsInHome': on},
+    );
+    return res.data?['postsInHome'] != false;
   }
 
   /// Communities the reader is not in, busiest first.

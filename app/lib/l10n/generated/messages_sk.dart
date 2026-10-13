@@ -1439,6 +1439,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Odoslané. Malo by prísť o pár sekúnd."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Upozornenia fungujú."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Zatiaľ žiadne príspevky"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Nová komunita"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Názov"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Adresa sa vytvorí z názvu."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Ľudia ju nájdu na adrese"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Budete jej vlastníkom. Obrázok, banner a moderátorov môžete pridať na jej stránke, keď vznikne."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Domov"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Príspevky komunít na Domove"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Príspevky z vašich komunít sa zobrazujú aj na Domove. Keď je to vypnuté, zostávajú tu v Komunitách, kde každá ukazuje, čo je nové."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Váš zoznam"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Počty nových príspevkov"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Ukazovať, koľko príspevkov je v každej komunite nových odvtedy, čo ste ju naposledy otvorili."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Komunity, ktoré spravujete"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Tu sú komunity, ktoré založíte alebo moderujete."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Vlastník"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderátor"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nové príspevky"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Spravované vami"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Nastavenia komunít"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Objaviť"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Žiadne komunity nezodpovedajú."),
+      "ui_community_new_none": MessageLookupByLibrary.simpleMessage("Nič nové"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Každá komunita je taká, ako ste ju nechali."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Zatiaľ nespravujete žiadnu"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Už nie je ku čomu sa pridať"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ste vo všetkých komunitách na Kyrone. Založte ďalšiu."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Skúste iné slovo alebo založte komunitu s týmto názvom."),
     };
 
 final messageLookup = MessageLookup();

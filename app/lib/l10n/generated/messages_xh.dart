@@ -1445,6 +1445,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Sithunyelwe. Kufuneka sifike kwimizuzwana embalwa."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Izaziso ziyasebenza."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Akukabikho zithumelo"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Uluntu olutsha"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Igama"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Idilesi yalo yenziwa ngegama."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Abantu baya kuyifumana ku"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Uya kuba ngumnini. Umfanekiso, ibhena kunye nabamongameli banokongezwa kwiphepha lalo xa sele lukhona."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Ekhaya"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Izithumelo zoluntu eKhaya"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Izithumelo ezivela kuluntu lwakho zibonakala naseKhaya. Xa kuvaliwe, zihlala apha kuLuntu, apho ngamnye ubonisa okutsha."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Uluhlu lwakho"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Inani lezithumelo ezintsha"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Bonisa ukuba zingaphi izithumelo ezintsha kuluntu ngalunye ukusukela oko walivula okokugqibela."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Uluntu oluqhubayo"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Uluntu oluqalayo okanye oluphathayo ludweliswe apha."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Umnini"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Umongameli"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Izithumelo ezintsha"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Oluqhubayo"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Iisetingi zoluntu"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Fumanisa"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Akukho luntu luhambelanayo."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Akukho nto intsha"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Uluntu ngalunye lunjengoko walushiya."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Akukabikho luntu oluqhubayo"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Akukho nto iseleyo yokujoyina"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ukuluntu ngalunye kwiKyron. Qala olunye."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Zama elinye igama, okanye uqale uluntu olunelo gama."),
     };
 
 final messageLookup = MessageLookup();

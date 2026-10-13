@@ -1450,6 +1450,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "അയച്ചു. കുറച്ച് സെക്കൻഡിനുള്ളിൽ എത്തണം."),
       "ui_push_working": MessageLookupByLibrary.simpleMessage(
           "അറിയിപ്പുകൾ പ്രവർത്തിക്കുന്നു."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("ഇതുവരെ പോസ്റ്റുകളില്ല"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("പുതിയ കമ്മ്യൂണിറ്റി"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("പേര്"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "അതിന്റെ വിലാസം പേരിൽ നിന്ന് ഉണ്ടാകുന്നു."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("ആളുകൾ ഇത് ഇവിടെ കണ്ടെത്തും:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളായിരിക്കും ഉടമ. ഉണ്ടായിക്കഴിഞ്ഞാൽ അതിന്റെ പേജിൽ നിന്ന് ചിത്രം, ബാനർ, മോഡറേറ്റർമാർ എന്നിവ ചേർക്കാം."),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("ഹോം"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "ഹോമിൽ കമ്മ്യൂണിറ്റി പോസ്റ്റുകൾ"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ കമ്മ്യൂണിറ്റികളിലെ പോസ്റ്റുകൾ ഹോമിലും കാണാം. ഓഫാക്കിയാൽ അവ ഇവിടെ കമ്മ്യൂണിറ്റികളിൽ നിൽക്കും, ഓരോന്നിലും പുതിയത് എന്തെന്ന് കാണിക്കും."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ ലിസ്റ്റ്"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("പുതിയ പോസ്റ്റുകളുടെ എണ്ണം"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "അവസാനം തുറന്നതിനുശേഷം ഓരോ കമ്മ്യൂണിറ്റിയിലും എത്ര പോസ്റ്റുകൾ പുതിയതാണെന്ന് കാണിക്കുക."),
+      "ui_community_settings_running": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ നടത്തുന്ന കമ്മ്യൂണിറ്റികൾ"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ തുടങ്ങുന്നതോ മോഡറേറ്റ് ചെയ്യുന്നതോ ആയ കമ്മ്യൂണിറ്റികൾ ഇവിടെയുണ്ട്."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("ഉടമ"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("മോഡറേറ്റർ"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("പുതിയ പോസ്റ്റുകൾ"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങൾ നടത്തുന്നവ"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("കമ്മ്യൂണിറ്റി ക്രമീകരണങ്ങൾ"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("കണ്ടെത്തുക"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "പൊരുത്തപ്പെടുന്ന കമ്മ്യൂണിറ്റികളില്ല."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("പുതിയതൊന്നുമില്ല"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ഓരോ കമ്മ്യൂണിറ്റിയും നിങ്ങൾ വിട്ടതുപോലെ തന്നെ."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ ഇതുവരെ ഒന്നും നടത്തുന്നില്ല"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("ചേരാൻ ഒന്നും ബാക്കിയില്ല"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ലെ എല്ലാ കമ്മ്യൂണിറ്റികളിലും നിങ്ങളുണ്ട്. മറ്റൊന്ന് തുടങ്ങുക."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "മറ്റൊരു വാക്ക് ശ്രമിക്കുക, അല്ലെങ്കിൽ ആ പേരിൽ ഒരു കമ്മ്യൂണിറ്റി തുടങ്ങുക."),
     };
 
 final messageLookup = MessageLookup();

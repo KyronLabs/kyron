@@ -1444,6 +1444,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Poslano. Trebala bi stići za nekoliko sekundi."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Obavijesti rade."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Još nema objava"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nova zajednica"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Naziv"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Adresa se stvara od naziva."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Ljudi će je pronaći na adresi"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Bit ćete njezin vlasnik. Sliku, natpis i moderatore možete dodati s njezine stranice kad bude stvorena."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Početna"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Objave zajednica na Početnoj"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Objave iz vaših zajednica pojavljuju se i na Početnoj. Kad je isključeno, ostaju ovdje u Zajednicama, gdje svaka pokazuje što je novo."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Vaš popis"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Broj novih objava"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Prikaži koliko je objava novo u svakoj zajednici otkad ste je zadnji put otvorili."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Zajednice koje vodite"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ovdje su zajednice koje pokrenete ili moderirate."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Vlasnik"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nove objave"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Koje vodite"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Postavke zajednica"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Otkrij"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Nijedna zajednica ne odgovara."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Ništa novo"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Svaka je zajednica onakva kakvu ste je ostavili."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Još ne vodite nijednu"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Nema se više čemu pridružiti"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "U svakoj ste zajednici na Kyronu. Pokrenite još jednu."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Pokušajte drugu riječ ili pokrenite zajednicu s tim nazivom."),
     };
 
 final messageLookup = MessageLookup();

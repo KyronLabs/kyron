@@ -11,6 +11,8 @@ import 'screens/coming_soon_screen.dart';
 import 'screens/drafts_screen.dart';
 import 'screens/hashtag_screen.dart';
 import 'screens/community_screen.dart';
+import 'screens/community_settings_screen.dart';
+import 'screens/new_community_screen.dart';
 import 'screens/thread_screen.dart';
 import 'screens/topic_screen.dart';
 import 'screens/muted_screens.dart';
@@ -71,6 +73,8 @@ class Routes {
   static const thread = '/thread';
   static const newMessage = '/messages/new';
   static const messagingSettings = '/settings/messaging';
+  static const newCommunity = '/communities/new';
+  static const communitySettings = '/settings/communities';
   static const community = '/community';
   static const drafts = '/composer/drafts';
   static const mutedWords = '/settings/muted-words';
@@ -304,6 +308,12 @@ class Routes {
 
       case messagingSettings:
         return _page(const MessagingSettingsScreen());
+
+      case newCommunity:
+        return _page(const NewCommunityScreen());
+
+      case communitySettings:
+        return _page(const CommunitySettingsScreen());
 
       case thread:
         final threadArgs = settings.arguments;

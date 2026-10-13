@@ -1439,6 +1439,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "An aika. Ya kamata ta iso cikin 'yan daƙiƙoƙi."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Sanarwa tana aiki."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Babu rubutu tukuna"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Sabuwar al'umma"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Suna"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Ana yin adireshinta daga sunan."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Mutane za su same ta a"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Kai ne za ka mallake ta. Ana iya ƙara hoto, banner da masu kula daga shafinta da zarar ta kasance."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Gida"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Rubutun al'umma a Gida"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Rubutu daga al'ummominka ma suna bayyana a Gida. Idan an kashe, suna zama a nan cikin Al'ummomi, inda kowacce ke nuna abin da ya sabunta."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Jerinka"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Adadin sababbin rubutu"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Nuna yawan rubutun da suka zama sababbi a kowace al'umma tun da ka buɗe ta na ƙarshe."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Al'ummomin da kake jagoranta"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Al'ummomin da ka fara ko kake kula da su suna nan."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Mai shi"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Mai kula"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Sababbin rubutu"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Waɗanda kake jagoranta"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Saitunan al'umma"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Gano"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Babu al'ummar da ta dace."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Babu sabon abu"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kowace al'umma tana yadda ka bar ta."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Ba ka jagorantar ko ɗaya tukuna"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Babu sauran abin shiga"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kana cikin kowace al'umma a Kyron. Fara wata."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Gwada wata kalma, ko fara al'umma da wannan sunan."),
     };
 
 final messageLookup = MessageLookup();

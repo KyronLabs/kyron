@@ -1502,6 +1502,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Saadetud. See peaks mõne sekundiga kohale jõudma."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Teavitused töötavad."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Postitusi veel pole"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Uus kogukond"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nimi"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Aadress tehakse nimest."),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage(
+          "Inimesed leiavad selle aadressilt"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Sinust saab selle omanik. Pildi, bänneri ja moderaatorid saab lisada selle lehelt, kui see on loodud."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Avaleht"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Kogukondade postitused avalehel"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Sinu kogukondade postitused ilmuvad ka avalehel. Välja lülitatuna jäävad need siia Kogukondadesse, kus igaüks näitab, mis on uut."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Sinu loend"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Uute postituste arv"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Näita, mitu postitust on igas kogukonnas uued pärast seda, kui sa selle viimati avasid."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Kogukonnad, mida sa juhid"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Siin on kogukonnad, mille sa lood või mida modereerid."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Omanik"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderaator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Uued postitused"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Sinu juhitavad"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Kogukondade seaded"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Avasta"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Ükski kogukond ei sobi."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Midagi uut pole"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Iga kogukond on nii, nagu sa selle jätsid."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Sa ei juhi veel ühtegi"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Pole enam midagi, millega liituda"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Oled Kyronis kõigis kogukondades. Loo veel üks."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Proovi muud sõna või loo selle nimega kogukond."),
     };
 
 final messageLookup = MessageLookup();

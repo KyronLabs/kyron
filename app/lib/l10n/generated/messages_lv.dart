@@ -1443,6 +1443,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Nosūtīts. Tam vajadzētu pienākt pēc dažām sekundēm."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Paziņojumi darbojas."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Vēl nav ierakstu"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Jauna kopiena"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nosaukums"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Adrese tiek veidota no nosaukuma."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Cilvēki to atradīs adresē"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Jūs būsiet tās īpašnieks. Attēlu, baneri un moderatorus var pievienot tās lapā, kad tā būs izveidota."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Sākums"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Kopienu ieraksti Sākumā"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Jūsu kopienu ieraksti redzami arī Sākumā. Izslēdzot tie paliek šeit, Kopienās, kur katra rāda, kas jauns."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Jūsu saraksts"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Jauno ierakstu skaits"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Rādīt, cik ierakstu katrā kopienā ir jauni kopš pēdējās reizes, kad to atvērāt."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Jūsu vadītās kopienas"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Šeit ir kopienas, ko izveidojat vai moderējat."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Īpašnieks"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderators"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Jauni ieraksti"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Jūsu vadītās"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Kopienu iestatījumi"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Atklāt"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Neviena kopiena neatbilst."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Nekā jauna"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Katra kopiena ir tāda, kādu to atstājāt."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Jūs vēl nevadāt nevienu"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Vairs nav kam pievienoties"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Jūs esat visās Kyron kopienās. Izveidojiet vēl vienu."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Mēģiniet citu vārdu vai izveidojiet kopienu ar šo nosaukumu."),
     };
 
 final messageLookup = MessageLookup();

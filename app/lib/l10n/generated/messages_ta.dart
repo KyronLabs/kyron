@@ -1448,6 +1448,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "அனுப்பப்பட்டது. சில நொடிகளில் வந்துவிட வேண்டும்."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("அறிவிப்புகள் வேலை செய்கின்றன."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("இன்னும் இடுகைகள் இல்லை"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("புதிய சமூகம்"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("பெயர்"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "அதன் முகவரி பெயரிலிருந்து உருவாகிறது."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("மக்கள் இதை இங்கே காண்பார்கள்:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் இதன் உரிமையாளர். உருவான பின் அதன் பக்கத்திலிருந்து படம், பதாகை, மட்டுறுத்துநர்களைச் சேர்க்கலாம்."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("முகப்பு"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("முகப்பில் சமூக இடுகைகள்"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் சமூகங்களின் இடுகைகள் முகப்பிலும் தோன்றும். முடக்கினால் அவை இங்கே சமூகங்களில் இருக்கும், அங்கு ஒவ்வொன்றும் புதியதைக் காட்டும்."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("உங்கள் பட்டியல்"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("புதிய இடுகைகளின் எண்ணிக்கை"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "கடைசியாகத் திறந்ததிலிருந்து ஒவ்வொரு சமூகத்திலும் எத்தனை இடுகைகள் புதியவை எனக் காட்டு."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("நீங்கள் நடத்தும் சமூகங்கள்"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் தொடங்கும் அல்லது மட்டுறுத்தும் சமூகங்கள் இங்கே பட்டியலிடப்படும்."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("உரிமையாளர்"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("மட்டுறுத்துநர்"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("புதிய இடுகைகள்"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("நீங்கள் நடத்துபவை"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("சமூக அமைப்புகள்"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("கண்டறி"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("பொருந்தும் சமூகங்கள் இல்லை."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("புதிதாக எதுவும் இல்லை"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ஒவ்வொரு சமூகமும் நீங்கள் விட்டுச் சென்றபடியே உள்ளது."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் இன்னும் எதையும் நடத்தவில்லை"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("சேர எதுவும் மீதமில்லை"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron இல் உள்ள எல்லா சமூகங்களிலும் நீங்கள் உள்ளீர்கள். இன்னொன்றைத் தொடங்குங்கள்."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "வேறு சொல்லை முயலுங்கள், அல்லது அந்தப் பெயரில் ஒரு சமூகத்தைத் தொடங்குங்கள்."),
     };
 
 final messageLookup = MessageLookup();

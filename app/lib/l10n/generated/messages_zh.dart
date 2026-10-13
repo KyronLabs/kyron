@@ -1093,6 +1093,48 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_push_test_sent":
           MessageLookupByLibrary.simpleMessage("已发送。几秒钟内应该会到达。"),
       "ui_push_working": MessageLookupByLibrary.simpleMessage("通知运行正常。"),
+      "ui_community_no_posts": MessageLookupByLibrary.simpleMessage("还没有帖子"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("新建社区"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("名称"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("地址由名称生成。"),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage("访问地址："),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "你将是社区的所有者。社区创建后，可以在它的页面添加图片、横幅和版主。"),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("首页"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage("在首页显示社区帖子"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "你所在社区的帖子也会出现在首页。关闭后，它们只留在社区里，每个社区都会显示有什么新内容。"),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("你的列表"),
+      "ui_community_counts": MessageLookupByLibrary.simpleMessage("新帖子数量"),
+      "ui_community_counts_detail":
+          MessageLookupByLibrary.simpleMessage("显示自你上次打开以来，每个社区有多少新帖子。"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("你管理的社区"),
+      "ui_community_running_none_detail":
+          MessageLookupByLibrary.simpleMessage("你创建或担任版主的社区会列在这里。"),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("所有者"),
+      "ui_community_role_moderator": MessageLookupByLibrary.simpleMessage("版主"),
+      "ui_community_filter_new": MessageLookupByLibrary.simpleMessage("新帖子"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("我管理的"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("社区设置"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("发现"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("没有匹配的社区。"),
+      "ui_community_new_none": MessageLookupByLibrary.simpleMessage("没有新内容"),
+      "ui_community_new_none_detail":
+          MessageLookupByLibrary.simpleMessage("每个社区都和你上次离开时一样。"),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("你还没有管理任何社区"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("没有可以加入的社区了"),
+      "ui_community_discover_none_detail":
+          MessageLookupByLibrary.simpleMessage("你已加入 Kyron 上的所有社区。再创建一个吧。"),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage("换个词试试，或者用这个名称创建一个社区。"),
     };
 
 final messageLookup = MessageLookup();

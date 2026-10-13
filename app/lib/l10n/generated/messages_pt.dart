@@ -1441,6 +1441,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Enviada. Deve chegar em alguns segundos."),
       "ui_push_working": MessageLookupByLibrary.simpleMessage(
           "As notificações estão funcionando."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Ainda não há publicações"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nova comunidade"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nome"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "O endereço é feito a partir do nome."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("As pessoas vão encontrá-la em"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Você será o dono. Uma imagem, um banner e moderadores podem ser adicionados pela página dela assim que existir."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Início"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Publicações das comunidades no Início"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "As publicações das suas comunidades também aparecem no Início. Desativado, elas ficam aqui em Comunidades, onde cada uma mostra o que há de novo."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Sua lista"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Contagem de publicações novas"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Mostra quantas publicações são novas em cada comunidade desde a última vez que você a abriu."),
+      "ui_community_settings_running": MessageLookupByLibrary.simpleMessage(
+          "Comunidades que você administra"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "As comunidades que você cria ou modera aparecem aqui."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Dono"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderador"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Publicações novas"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("As que você administra"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Configurações das comunidades"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Descobrir"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Nenhuma comunidade corresponde."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Nada de novo"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Cada comunidade está como você deixou."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Você ainda não administra nenhuma"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Não sobrou nada para entrar"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Você está em todas as comunidades do Kyron. Crie outra."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Tente outra palavra, ou crie uma comunidade com esse nome."),
     };
 
 final messageLookup = MessageLookup();

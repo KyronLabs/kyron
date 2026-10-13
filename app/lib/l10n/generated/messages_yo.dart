@@ -1442,6 +1442,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "A ti fi ránṣẹ́. Ó yẹ kó dé láàárín ìṣẹ́jú-àáyá díẹ̀."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Ìwífún ń ṣiṣẹ́."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Kò tíì sí àwọn ìfiránṣẹ́"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Àwùjọ tuntun"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Orúkọ"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Láti orúkọ ni a ti ń ṣe àdírẹ́sì rẹ̀."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Àwọn ènìyàn yóò rí i ní"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Ìwọ ni yóò ni ín. A lè fi àwòrán, àsíá àti àwọn alábòójútó kún un láti ojú-ìwé rẹ̀ nígbà tí ó bá wà."),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("Ilé"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìfiránṣẹ́ àwùjọ ní Ilé"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìfiránṣẹ́ láti àwọn àwùjọ rẹ tún ń hàn ní Ilé. Tí a bá pa á, wọ́n á dúró síbí ní Àwọn Àwùjọ, níbi tí ọ̀kọ̀ọ̀kan ti ń fi ohun tuntun hàn."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Àkójọ rẹ"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Iye àwọn ìfiránṣẹ́ tuntun"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Fi hàn iye ìfiránṣẹ́ tó jẹ́ tuntun nínú àwùjọ kọ̀ọ̀kan láti ìgbà tí o ṣí i kẹ́yìn."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Àwọn àwùjọ tí o ń darí"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Àwọn àwùjọ tí o dá sílẹ̀ tàbí tí o ń bójútó wà níbí."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Olùní"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Alábòójútó"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìfiránṣẹ́ tuntun"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Tí o ń darí"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Ètò àwùjọ"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Ṣàwárí"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Kò sí àwùjọ tó bá a mu."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Kò sí nǹkan tuntun"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Gbogbo àwùjọ wà bí o ṣe fi wọ́n sílẹ̀."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("O kò tíì ń darí ọ̀kankan"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Kò sí ohun tó kù láti dara pọ̀ mọ́"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "O wà nínú gbogbo àwùjọ lórí Kyron. Dá òmíràn sílẹ̀."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Gbìyànjú ọ̀rọ̀ mìíràn, tàbí dá àwùjọ sílẹ̀ pẹ̀lú orúkọ yẹn."),
     };
 
 final messageLookup = MessageLookup();

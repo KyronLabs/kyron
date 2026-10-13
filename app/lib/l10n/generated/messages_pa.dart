@@ -1437,6 +1437,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ਭੇਜ ਦਿੱਤੀ। ਕੁਝ ਸਕਿੰਟਾਂ ਵਿੱਚ ਪਹੁੰਚ ਜਾਣੀ ਚਾਹੀਦੀ ਹੈ।"),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("ਸੂਚਨਾਵਾਂ ਕੰਮ ਕਰ ਰਹੀਆਂ ਹਨ।"),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("ਹਾਲੇ ਕੋਈ ਪੋਸਟ ਨਹੀਂ"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("ਨਵਾਂ ਭਾਈਚਾਰਾ"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("ਨਾਮ"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("ਇਸਦਾ ਪਤਾ ਨਾਮ ਤੋਂ ਬਣਦਾ ਹੈ।"),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("ਲੋਕ ਇਸਨੂੰ ਇੱਥੇ ਲੱਭਣਗੇ:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਸੀਂ ਇਸਦੇ ਮਾਲਕ ਹੋਵੋਗੇ। ਬਣਨ ਤੋਂ ਬਾਅਦ ਇਸਦੇ ਪੰਨੇ ਤੋਂ ਤਸਵੀਰ, ਬੈਨਰ ਅਤੇ ਮਾਡਰੇਟਰ ਜੋੜੇ ਜਾ ਸਕਦੇ ਹਨ।"),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("ਹੋਮ"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("ਹੋਮ ਵਿੱਚ ਭਾਈਚਾਰੇ ਦੀਆਂ ਪੋਸਟਾਂ"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੇ ਭਾਈਚਾਰਿਆਂ ਦੀਆਂ ਪੋਸਟਾਂ ਹੋਮ ਵਿੱਚ ਵੀ ਦਿਸਦੀਆਂ ਹਨ। ਬੰਦ ਹੋਣ 'ਤੇ ਉਹ ਇੱਥੇ ਭਾਈਚਾਰਿਆਂ ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ, ਜਿੱਥੇ ਹਰ ਇੱਕ ਦਿਖਾਉਂਦਾ ਹੈ ਕਿ ਨਵਾਂ ਕੀ ਹੈ।"),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੀ ਸੂਚੀ"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("ਨਵੀਆਂ ਪੋਸਟਾਂ ਦੀ ਗਿਣਤੀ"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "ਦਿਖਾਓ ਕਿ ਪਿਛਲੀ ਵਾਰ ਖੋਲ੍ਹਣ ਤੋਂ ਬਾਅਦ ਹਰ ਭਾਈਚਾਰੇ ਵਿੱਚ ਕਿੰਨੀਆਂ ਪੋਸਟਾਂ ਨਵੀਆਂ ਹਨ।"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੇ ਚਲਾਏ ਭਾਈਚਾਰੇ"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ਜਿਹੜੇ ਭਾਈਚਾਰੇ ਤੁਸੀਂ ਸ਼ੁਰੂ ਜਾਂ ਮਾਡਰੇਟ ਕਰਦੇ ਹੋ, ਉਹ ਇੱਥੇ ਹਨ।"),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("ਮਾਲਕ"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("ਮਾਡਰੇਟਰ"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("ਨਵੀਆਂ ਪੋਸਟਾਂ"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੇ ਚਲਾਏ"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("ਭਾਈਚਾਰਾ ਸੈਟਿੰਗਾਂ"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("ਖੋਜੋ"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("ਕੋਈ ਭਾਈਚਾਰਾ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ।"),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("ਕੁਝ ਨਵਾਂ ਨਹੀਂ"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ਹਰ ਭਾਈਚਾਰਾ ਉਵੇਂ ਹੀ ਹੈ ਜਿਵੇਂ ਤੁਸੀਂ ਛੱਡਿਆ ਸੀ।"),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("ਤੁਸੀਂ ਹਾਲੇ ਕੋਈ ਨਹੀਂ ਚਲਾਉਂਦੇ"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("ਸ਼ਾਮਲ ਹੋਣ ਲਈ ਕੁਝ ਨਹੀਂ ਬਚਿਆ"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਸੀਂ Kyron ਦੇ ਹਰ ਭਾਈਚਾਰੇ ਵਿੱਚ ਹੋ। ਇੱਕ ਹੋਰ ਸ਼ੁਰੂ ਕਰੋ।"),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "ਕੋਈ ਹੋਰ ਸ਼ਬਦ ਅਜ਼ਮਾਓ, ਜਾਂ ਉਸ ਨਾਮ ਨਾਲ ਭਾਈਚਾਰਾ ਸ਼ੁਰੂ ਕਰੋ।"),
     };
 
 final messageLookup = MessageLookup();

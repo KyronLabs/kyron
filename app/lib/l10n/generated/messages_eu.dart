@@ -1444,6 +1444,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Bidalita. Segundo gutxitan iritsi beharko luke."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Jakinarazpenak badabiltza."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago argitalpenik"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Komunitate berria"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Izena"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Helbidea izenetik sortzen da."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Jendeak hemen aurkituko du:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Zu izango zara jabea. Irudia, bannerra eta moderatzaileak bere orritik gehi daitezke sortu ondoren."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Hasiera"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Komunitateetako argitalpenak Hasieran"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Zure komunitateetako argitalpenak Hasieran ere agertzen dira. Desaktibatuta, hemen geratzen dira Komunitateetan, non bakoitzak zer den berria erakusten duen."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Zure zerrenda"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Argitalpen berrien kopurua"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Erakutsi komunitate bakoitzean zenbat argitalpen diren berriak azkenekoz ireki zenuenetik."),
+      "ui_community_settings_running": MessageLookupByLibrary.simpleMessage(
+          "Zuk kudeatzen dituzun komunitateak"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Sortzen edo moderatzen dituzun komunitateak hemen zerrendatzen dira."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Jabea"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderatzailea"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Argitalpen berriak"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Zuk kudeatuak"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Komunitateen ezarpenak"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Aurkitu"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Ez dago bat datorren komunitaterik."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Ezer berririk ez"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Komunitate bakoitza utzi zenuen bezala dago."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Oraindik ez duzu bat ere kudeatzen"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Ez da ezer geratzen batzeko"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron-eko komunitate guztietan zaude. Sortu beste bat."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "Saiatu beste hitz batekin, edo sortu izen horrekin komunitate bat."),
     };
 
 final messageLookup = MessageLookup();

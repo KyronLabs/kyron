@@ -1443,6 +1443,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "යැව්වා. තත්පර කිහිපයකින් පැමිණිය යුතුය."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("දැනුම්දීම් ක්‍රියා කරයි."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("තවම පළ කිරීම් නැත"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("නව ප්‍රජාව"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("නම"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("එහි ලිපිනය නමෙන් සෑදේ."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("මිනිසුන් එය මෙහි සොයා ගනී:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබ එහි හිමිකරු වනු ඇත. නිර්මාණය වූ පසු එහි පිටුවෙන් පින්තූරයක්, බැනරයක් සහ උපපරිපාලකයින් එක් කළ හැක."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("මුල් පිටුව"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("මුල් පිටුවේ ප්‍රජා පළ කිරීම්"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ ප්‍රජාවන්හි පළ කිරීම් මුල් පිටුවේද දිස් වේ. අක්‍රිය කළ විට ඒවා මෙහි ප්‍රජාවන් තුළ රැඳේ, එහි සෑම එකක්ම අලුත් දේ පෙන්වයි."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("ඔබේ ලැයිස්තුව"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("නව පළ කිරීම් ගණන"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබ අවසන් වරට විවෘත කළ දා සිට එක් එක් ප්‍රජාවේ නව පළ කිරීම් කීයක් තිබේදැයි පෙන්වන්න."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("ඔබ පවත්වාගෙන යන ප්‍රජාවන්"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබ ආරම්භ කරන හෝ උපපරිපාලනය කරන ප්‍රජාවන් මෙහි ලැයිස්තුගත වේ."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("හිමිකරු"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("උපපරිපාලක"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("නව පළ කිරීම්"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("ඔබ පවත්වාගෙන යන"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("ප්‍රජා සැකසීම්"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("සොයා ගන්න"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("ගැළපෙන ප්‍රජාවක් නැත."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("අලුත් කිසිවක් නැත"),
+      "ui_community_new_none_detail":
+          MessageLookupByLibrary.simpleMessage("සෑම ප්‍රජාවක්ම ඔබ තැබූ ලෙසමය."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "ඔබ තවම කිසිවක් පවත්වාගෙන යන්නේ නැත"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("එක්වීමට කිසිවක් ඉතිරි නැත"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබ Kyron හි සෑම ප්‍රජාවකම සිටී. තවත් එකක් ආරම්භ කරන්න."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "වෙනත් වචනයක් උත්සාහ කරන්න, නැතහොත් එම නමින් ප්‍රජාවක් ආරම්භ කරන්න."),
     };
 
 final messageLookup = MessageLookup();

@@ -1442,6 +1442,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Yuborildi. Bir necha soniyada kelishi kerak."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Bildirishnomalar ishlayapti."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Hali postlar yo‘q"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Yangi hamjamiyat"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nomi"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Manzili nomidan yasaladi."),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage(
+          "Odamlar uni bu manzilda topadi:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Uning egasi siz bo‘lasiz. Rasm, banner va moderatorlarni u yaratilgach, sahifasidan qo‘shish mumkin."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Bosh sahifa"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Hamjamiyat postlari Bosh sahifada"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Hamjamiyatlaringiz postlari Bosh sahifada ham chiqadi. O‘chirilsa, ular shu yerda, Hamjamiyatlarda qoladi, har biri yangilikni ko‘rsatadi."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Ro‘yxatingiz"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Yangi postlar soni"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Har bir hamjamiyatda oxirgi marta ochganingizdan beri nechta post yangi ekanini ko‘rsatish."),
+      "ui_community_settings_running": MessageLookupByLibrary.simpleMessage(
+          "Siz boshqaradigan hamjamiyatlar"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Siz ochgan yoki moderatorlik qiladigan hamjamiyatlar shu yerda."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Egasi"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Yangi postlar"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Siz boshqaradiganlar"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Hamjamiyat sozlamalari"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Kashf etish"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Mos hamjamiyat yo‘q."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Yangilik yo‘q"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Har bir hamjamiyat siz qoldirgandek."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Hali birortasini boshqarmaysiz"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Qo‘shiladigan hech narsa qolmadi"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Siz Kyron’dagi barcha hamjamiyatlardasiz. Yana birini oching."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "Boshqa so‘zni sinab ko‘ring yoki shu nom bilan hamjamiyat oching."),
     };
 
 final messageLookup = MessageLookup();

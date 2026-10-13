@@ -9,7 +9,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/conversation.dart';
 import '../utils/conversation_text.dart';
-import '../widgets/hairline.dart';
+import '../widgets/list_controls.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
 import '../widgets/app_drawer.dart';
@@ -80,67 +80,18 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
   /// things.
   Future<void> _chooseFilter(BuildContext chip) async {
     final l10n = AppLocalizations.of(context);
-    final box = chip.findRenderObject() as RenderBox?;
-    final overlay =
-        Overlay.of(context).context.findRenderObject() as RenderBox?;
-    if (box == null || overlay == null) return;
-    final topLeft = box.localToGlobal(
-      Offset(0, box.size.height + SpacingTokens.space4),
-      ancestor: overlay,
-    );
-    final scheme = Theme.of(context).colorScheme;
-
-    final picked = await showMenu<ConversationFilter>(
+    final picked = await showListFilterMenu<ConversationFilter>(
       context: context,
-      position: RelativeRect.fromLTRB(
-        topLeft.dx,
-        topLeft.dy,
-        overlay.size.width - topLeft.dx,
-        0,
-      ),
-      color: scheme.surfaceContainerLow,
-      elevation: 6,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(RadiusTokens.radius16),
-      ),
-      constraints: const BoxConstraints(minWidth: 220),
-      items: [
-        PopupMenuItem<ConversationFilter>(
-          enabled: false,
-          height: 32,
-          child: Text(
-            l10n.ui('ui_dm_filter', 'Filter'),
-            style: TextStyle(
-              fontSize: TypographyTokens.fontSize1,
-              color: scheme.onSurface.withValues(alpha: 0.55),
-            ),
-          ),
-        ),
-        for (final filter in const [
-          ConversationFilter.all,
-          ConversationFilter.unread,
-          ConversationFilter.unanswered,
-        ])
-          PopupMenuItem<ConversationFilter>(
-            key: ValueKey('filter-${filter.name}'),
-            value: filter,
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 24,
-                  child: filter == _filter
-                      ? Icon(Iconsax.tick_circle_copy,
-                          size: 18, color: scheme.onSurface)
-                      : null,
-                ),
-                Text(
-                  _filterName(l10n, filter),
-                  style: const TextStyle(fontSize: TypographyTokens.fontSize3),
-                ),
-              ],
-            ),
-          ),
+      anchor: chip,
+      title: l10n.ui('ui_dm_filter', 'Filter'),
+      options: const [
+        ConversationFilter.all,
+        ConversationFilter.unread,
+        ConversationFilter.unanswered,
       ],
+      current: _filter,
+      label: (filter) => _filterName(l10n, filter),
+      keyOf: (filter) => ValueKey('filter-${filter.name}'),
     );
     if (picked == null || !mounted) return;
     setState(() {
@@ -196,7 +147,8 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
             SpacingTokens.space16,
             SpacingTokens.space8,
           ),
-          child: _SearchField(
+          child: ListSearchField(
+            fieldKey: const ValueKey('messages-search'),
             controller: _search,
             hint: l10n.ui('ui_share_search', 'Search'),
           ),
@@ -210,7 +162,7 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
             ),
             children: [
               Builder(
-                builder: (chip) => _Chip(
+                builder: (chip) => ListChip(
                   key: const ValueKey('messages-filter'),
                   selected: filtered,
                   onTap: () => _chooseFilter(chip),
@@ -220,7 +172,7 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
                 ),
               ),
               const SizedBox(width: SpacingTokens.space8),
-              _Chip(
+              ListChip(
                 key: const ValueKey('messages-hidden'),
                 selected: _showingHidden,
                 onTap: () => setState(() => _showingHidden = !_showingHidden),
@@ -251,112 +203,6 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
         ),
       ],
     );
-  }
-}
-
-/// The search box over the list. It narrows the conversations already
-/// loaded, by name or handle; finding somebody new is New message's job.
-class _SearchField extends StatelessWidget {
-  final TextEditingController controller;
-  final String hint;
-
-  const _SearchField({required this.controller, required this.hint});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Container(
-      height: 40,
-      padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space12),
-      decoration: BoxDecoration(
-        color: scheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(RadiusTokens.radius20),
-      ),
-      child: Row(
-        children: [
-          Icon(
-            Iconsax.search_normal_1_copy,
-            size: 18,
-            color: scheme.onSurface.withValues(alpha: 0.5),
-          ),
-          const SizedBox(width: SpacingTokens.space8),
-          Expanded(
-            child: TextField(
-              key: const ValueKey('messages-search'),
-              controller: controller,
-              textInputAction: TextInputAction.search,
-              style: const TextStyle(fontSize: TypographyTokens.fontSize3),
-              decoration: InputDecoration(
-                hintText: hint,
-                isDense: true,
-                filled: false,
-                border: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                contentPadding: EdgeInsets.zero,
-                constraints: const BoxConstraints(),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// A rounded chip, outlined with the hairline, filled when it is in force.
-class _Chip extends StatelessWidget {
-  final bool selected;
-  final VoidCallback onTap;
-  final IconData? icon;
-  final String? label;
-  final String? tooltip;
-
-  const _Chip({
-    super.key,
-    required this.selected,
-    required this.onTap,
-    this.icon,
-    this.label,
-    this.tooltip,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final ink = scheme.onSurface;
-    Widget chip = Material(
-      color: selected ? scheme.surfaceContainerHighest : Colors.transparent,
-      shape: StadiumBorder(side: postRule(scheme)),
-      child: InkWell(
-        onTap: onTap,
-        customBorder: const StadiumBorder(),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: label == null ? SpacingTokens.space16 : 14,
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (icon != null) Icon(icon, size: 18, color: ink),
-              if (icon != null && label != null)
-                const SizedBox(width: SpacingTokens.space4),
-              if (label != null)
-                Text(
-                  label!,
-                  style: TextStyle(
-                    fontSize: TypographyTokens.fontSize2,
-                    fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
-                    color: ink,
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
-    if (tooltip != null) chip = Tooltip(message: tooltip!, child: chip);
-    return Semantics(selected: selected, button: true, child: chip);
   }
 }
 
@@ -724,7 +570,7 @@ class _ConversationRow extends StatelessWidget {
                         ),
                         if (unread) ...[
                           const SizedBox(width: SpacingTokens.space8),
-                          _UnreadBadge(count: conversation.unread),
+                          CountBadge(count: conversation.unread),
                         ] else if (mine) ...[
                           // Where the reader's own last message stands, in
                           // the place a count would be: read or not yet.
@@ -738,35 +584,6 @@ class _ConversationRow extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _UnreadBadge extends StatelessWidget {
-  final int count;
-
-  const _UnreadBadge({required this.count});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Container(
-      constraints: const BoxConstraints(minWidth: 20),
-      height: 20,
-      alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: 6),
-      decoration: BoxDecoration(
-        color: scheme.primary,
-        borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
-      ),
-      child: Text(
-        count > 99 ? '99+' : '$count',
-        style: TextStyle(
-          fontSize: TypographyTokens.fontSize1,
-          fontWeight: FontWeight.w700,
-          color: scheme.onPrimary,
         ),
       ),
     );

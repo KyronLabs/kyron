@@ -1449,6 +1449,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Išsiųsta. Turėtų ateiti per kelias sekundes."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Pranešimai veikia."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Įrašų dar nėra"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nauja bendruomenė"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Pavadinimas"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Adresas sudaromas iš pavadinimo."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Žmonės ją ras adresu"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Būsite jos savininkas. Paveikslėlį, reklamjuostę ir moderatorius galėsite pridėti jos puslapyje, kai ji bus sukurta."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Pradžia"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Bendruomenių įrašai Pradžioje"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Jūsų bendruomenių įrašai rodomi ir Pradžioje. Išjungus jie lieka čia, Bendruomenėse, kur kiekviena rodo, kas nauja."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Jūsų sąrašas"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Naujų įrašų skaičius"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Rodyti, kiek įrašų kiekvienoje bendruomenėje nauji nuo tada, kai paskutinį kartą ją atidarėte."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Jūsų valdomos bendruomenės"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Čia rodomos bendruomenės, kurias sukūrėte ar moderuojate."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Savininkas"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderatorius"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nauji įrašai"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Jūsų valdomos"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Bendruomenių nustatymai"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Atrasti"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Jokia bendruomenė neatitinka."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Nieko naujo"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kiekviena bendruomenė tokia, kokią palikote."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Dar nevaldote nė vienos"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Nebeliko prie ko prisijungti"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Esate visose Kyron bendruomenėse. Sukurkite dar vieną."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "Pabandykite kitą žodį arba sukurkite bendruomenę tokiu pavadinimu."),
     };
 
 final messageLookup = MessageLookup();

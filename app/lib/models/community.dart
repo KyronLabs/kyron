@@ -1,4 +1,5 @@
 // lib/models/community.dart
+import 'post_media.dart';
 
 /// What the reader can do in a community.
 enum CommunityRole {
@@ -60,6 +61,16 @@ class Community {
   /// What they are in it, when they are. Null when they are not.
   final CommunityRole? role;
 
+  /// The newest post in it, for the reader's own list. Null when nobody has
+  /// posted, and on every other list.
+  final CommunityLastPost? lastPost;
+
+  /// Posts by other people since the reader last opened it.
+  final int unread;
+
+  /// Its newest post, or when the reader joined. Null off the reader's list.
+  final DateTime? lastActivityAt;
+
   const Community({
     required this.id,
     required this.slug,
@@ -71,6 +82,9 @@ class Community {
     this.posts = 0,
     this.joined = false,
     this.role,
+    this.lastPost,
+    this.unread = 0,
+    this.lastActivityAt,
   });
 
   factory Community.fromJson(Map<String, dynamic> json) => Community(
@@ -84,9 +98,23 @@ class Community {
         posts: (json['posts'] as num?)?.toInt() ?? 0,
         joined: json['joined'] == true,
         role: CommunityRole.fromWire(json['role'] as String?),
+        lastPost: json['lastPost'] is Map<String, dynamic>
+            ? CommunityLastPost.fromJson(
+                json['lastPost'] as Map<String, dynamic>,
+              )
+            : null,
+        unread: (json['unread'] as num?)?.toInt() ?? 0,
+        lastActivityAt:
+            DateTime.tryParse(json['lastActivityAt'] as String? ?? '')
+                ?.toLocal(),
       );
 
-  Community copyWith({bool? joined, int? members, CommunityRole? role}) =>
+  Community copyWith({
+    bool? joined,
+    int? members,
+    CommunityRole? role,
+    int? unread,
+  }) =>
       Community(
         id: id,
         slug: slug,
@@ -98,11 +126,61 @@ class Community {
         posts: posts,
         joined: joined ?? this.joined,
         role: role ?? this.role,
+        lastPost: lastPost,
+        unread: unread ?? this.unread,
+        lastActivityAt: lastActivityAt,
       );
 
   /// True when the reader may write into it. Members only: a community anybody
   /// can post into is a feed with a name on it.
   bool get canPost => joined;
+}
+
+/// The newest post in a community, as much as a list row shows.
+class CommunityLastPost {
+  final String id;
+  final String authorId;
+  final String? authorName;
+
+  /// Its first words; the server sends no more than a row needs.
+  final String body;
+  final List<MediaKind> media;
+  final DateTime createdAt;
+
+  const CommunityLastPost({
+    required this.id,
+    required this.authorId,
+    required this.body,
+    required this.createdAt,
+    this.authorName,
+    this.media = const [],
+  });
+
+  factory CommunityLastPost.fromJson(Map<String, dynamic> json) =>
+      CommunityLastPost(
+        id: json['id'] as String? ?? '',
+        authorId: json['authorId'] as String? ?? '',
+        authorName: json['authorName'] as String?,
+        body: json['body'] as String? ?? '',
+        media: [
+          for (final kind in json['media'] as List<dynamic>? ?? const [])
+            PostMedia.kindFromWire(kind),
+        ],
+        createdAt:
+            DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
+                DateTime.now(),
+      );
+}
+
+/// Which of the reader's communities to list.
+enum CommunityFilter {
+  all,
+
+  /// Only those with posts the reader has not seen.
+  unread,
+
+  /// Only those they own or moderate.
+  running,
 }
 
 /// One page of communities.
