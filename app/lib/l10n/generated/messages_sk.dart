@@ -1497,8 +1497,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("Zobraziť"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("Otvoriť"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Zobraziť, keď ste online"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Ľudia, ktorým píšete, vidia zelenú bodku, kým máte otvorený Kyron. Keď je to vypnuté, ani vy neuvidíte tú ich."),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Zobraziť, keď ste online"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Ľudia, ktorým píšete, vidia zelenú bodku, kým máte otvorený Kyron. Keď je to vypnuté, ani vy neuvidíte tú ich."),
     };
 
 final messageLookup = MessageLookup();

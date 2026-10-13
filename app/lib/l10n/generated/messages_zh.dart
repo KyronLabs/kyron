@@ -1142,7 +1142,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("打开"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("在线"),
       "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("显示你在线"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("和你聊天的人在你打开 Kyron 时会看到一个绿点。关闭后，你也看不到他们的。"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "和你聊天的人在你打开 Kyron 时会看到一个绿点。关闭后，你也看不到他们的。"),
     };
 
 final messageLookup = MessageLookup();

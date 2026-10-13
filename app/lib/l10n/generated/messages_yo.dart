@@ -1496,12 +1496,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Kọ ìfiránṣẹ́"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Àwọn ọmọ ẹgbẹ́:"),
-      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("A ti gbé e jáde"),
+      "ui_toast_posted":
+          MessageLookupByLibrary.simpleMessage("A ti gbé e jáde"),
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("Wò ó"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("Ṣí i"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("Lórí ayélujára"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Fihàn nígbà tí o bá wà lórí ayélujára"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Àwọn tí o ń fi ìfiránṣẹ́ ránṣẹ́ sí ń rí àmì aláwọ̀ ewé nígbà tí Kyron bá ṣí sílẹ̀ lọ́dọ̀ rẹ. Nígbà tí èyí bá wà ní pípa, ìwọ náà kò ní rí tiwọn."),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage(
+          "Fihàn nígbà tí o bá wà lórí ayélujára"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Àwọn tí o ń fi ìfiránṣẹ́ ránṣẹ́ sí ń rí àmì aláwọ̀ ewé nígbà tí Kyron bá ṣí sílẹ̀ lọ́dọ̀ rẹ. Nígbà tí èyí bá wà ní pípa, ìwọ náà kò ní rí tiwọn."),
     };
 
 final messageLookup = MessageLookup();

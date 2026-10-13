@@ -1506,8 +1506,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("பார்"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("திற"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("ஆன்லைன்"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("நீங்கள் ஆன்லைனில் இருக்கும்போது காட்டு"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("நீங்கள் செய்தி அனுப்புபவர்கள், நீங்கள் Kyron-ஐத் திறந்திருக்கும்போது ஒரு பச்சைப் புள்ளியைப் பார்ப்பார்கள். இது முடக்கப்பட்டால், அவர்களுடையதை நீங்களும் பார்க்க முடியாது."),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் ஆன்லைனில் இருக்கும்போது காட்டு"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் செய்தி அனுப்புபவர்கள், நீங்கள் Kyron-ஐத் திறந்திருக்கும்போது ஒரு பச்சைப் புள்ளியைப் பார்ப்பார்கள். இது முடக்கப்பட்டால், அவர்களுடையதை நீங்களும் பார்க்க முடியாது."),
     };
 
 final messageLookup = MessageLookup();

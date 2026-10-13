@@ -1266,7 +1266,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("열기"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("온라인"),
       "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("온라인 상태 표시"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("메시지를 주고받는 사람들은 내가 Kyron을 열어 두는 동안 초록 점을 봐요. 끄면 나도 상대방의 초록 점을 볼 수 없어요."),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "메시지를 주고받는 사람들은 내가 Kyron을 열어 두는 동안 초록 점을 봐요. 끄면 나도 상대방의 초록 점을 볼 수 없어요."),
     };
 
 final messageLookup = MessageLookup();

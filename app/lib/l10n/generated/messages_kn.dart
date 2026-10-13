@@ -1503,8 +1503,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("ನೋಡಿ"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("ತೆರೆಯಿರಿ"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("ಆನ್‌ಲೈನ್"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("ನೀವು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿರುವಾಗ ತೋರಿಸಿ"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("ನೀವು ಸಂದೇಶ ಕಳುಹಿಸುವವರು, ನೀವು Kyron ತೆರೆದಿರುವಾಗ ಹಸಿರು ಚುಕ್ಕೆಯನ್ನು ನೋಡುತ್ತಾರೆ. ಇದು ಆಫ್ ಆಗಿದ್ದರೆ, ನೀವೂ ಅವರದನ್ನು ನೋಡುವುದಿಲ್ಲ."),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿರುವಾಗ ತೋರಿಸಿ"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಸಂದೇಶ ಕಳುಹಿಸುವವರು, ನೀವು Kyron ತೆರೆದಿರುವಾಗ ಹಸಿರು ಚುಕ್ಕೆಯನ್ನು ನೋಡುತ್ತಾರೆ. ಇದು ಆಫ್ ಆಗಿದ್ದರೆ, ನೀವೂ ಅವರದನ್ನು ನೋಡುವುದಿಲ್ಲ."),
     };
 
 final messageLookup = MessageLookup();

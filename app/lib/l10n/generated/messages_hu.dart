@@ -1500,8 +1500,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("Megtekintés"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("Megnyitás"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("Elérhető"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Mutassa, amikor elérhető vagy"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Akiknek üzensz, zöld pöttyöt látnak, amíg nálad nyitva van a Kyron. Ha ez ki van kapcsolva, te sem látod az övékét."),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Mutassa, amikor elérhető vagy"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Akiknek üzensz, zöld pöttyöt látnak, amíg nálad nyitva van a Kyron. Ha ez ki van kapcsolva, te sem látod az övékét."),
     };
 
 final messageLookup = MessageLookup();

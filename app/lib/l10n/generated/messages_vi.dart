@@ -1499,8 +1499,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("Xem"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("Mở"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("Đang hoạt động"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Hiển thị khi bạn đang hoạt động"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Những người bạn nhắn tin sẽ thấy một chấm xanh khi bạn đang mở Kyron. Khi tắt, bạn cũng sẽ không thấy chấm của họ."),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage(
+          "Hiển thị khi bạn đang hoạt động"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Những người bạn nhắn tin sẽ thấy một chấm xanh khi bạn đang mở Kyron. Khi tắt, bạn cũng sẽ không thấy chấm của họ."),
     };
 
 final messageLookup = MessageLookup();

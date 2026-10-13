@@ -1504,8 +1504,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("Jonga"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("Vula"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("Ukwi-intanethi"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Bonisa xa ukwi-intanethi"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Abantu othumela kubo imiyalezo babona ichaphaza eliluhlaza xa uvule i-Kyron. Xa oku kucinyiwe, nawe awuzukubona elabo."),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Bonisa xa ukwi-intanethi"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Abantu othumela kubo imiyalezo babona ichaphaza eliluhlaza xa uvule i-Kyron. Xa oku kucinyiwe, nawe awuzukubona elabo."),
     };
 
 final messageLookup = MessageLookup();

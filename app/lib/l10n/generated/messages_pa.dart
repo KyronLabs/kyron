@@ -1493,8 +1493,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("ਵੇਖੋ"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("ਖੋਲ੍ਹੋ"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("ਔਨਲਾਈਨ"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("ਔਨਲਾਈਨ ਹੋਣ 'ਤੇ ਦਿਖਾਓ"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("ਜਿਨ੍ਹਾਂ ਨੂੰ ਤੁਸੀਂ ਸੁਨੇਹੇ ਭੇਜਦੇ ਹੋ, ਉਹ ਤੁਹਾਡਾ Kyron ਖੁੱਲ੍ਹਾ ਹੋਣ 'ਤੇ ਹਰਾ ਬਿੰਦੂ ਵੇਖਦੇ ਹਨ। ਇਸ ਦੇ ਬੰਦ ਹੋਣ 'ਤੇ ਤੁਸੀਂ ਵੀ ਉਹਨਾਂ ਦਾ ਨਹੀਂ ਵੇਖੋਗੇ।"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("ਔਨਲਾਈਨ ਹੋਣ 'ਤੇ ਦਿਖਾਓ"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "ਜਿਨ੍ਹਾਂ ਨੂੰ ਤੁਸੀਂ ਸੁਨੇਹੇ ਭੇਜਦੇ ਹੋ, ਉਹ ਤੁਹਾਡਾ Kyron ਖੁੱਲ੍ਹਾ ਹੋਣ 'ਤੇ ਹਰਾ ਬਿੰਦੂ ਵੇਖਦੇ ਹਨ। ਇਸ ਦੇ ਬੰਦ ਹੋਣ 'ਤੇ ਤੁਸੀਂ ਵੀ ਉਹਨਾਂ ਦਾ ਨਹੀਂ ਵੇਖੋਗੇ।"),
     };
 
 final messageLookup = MessageLookup();

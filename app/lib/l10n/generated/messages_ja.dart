@@ -1263,7 +1263,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("開く"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("オンライン"),
       "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("オンライン状態を表示"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("メッセージ相手には、あなたがKyronを開いている間、緑の点が表示されます。オフにすると、あなたにも相手の緑の点が表示されなくなります。"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "メッセージ相手には、あなたがKyronを開いている間、緑の点が表示されます。オフにすると、あなたにも相手の緑の点が表示されなくなります。"),
     };
 
 final messageLookup = MessageLookup();

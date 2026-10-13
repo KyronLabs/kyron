@@ -1496,8 +1496,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("عرض"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("فتح"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("متصل"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("أظهر عندما تكون متصلًا"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("يرى من تراسلهم نقطة خضراء ما دام Kyron مفتوحًا لديك. عند إيقافها، لن ترى نقاطهم أنت أيضًا."),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("أظهر عندما تكون متصلًا"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "يرى من تراسلهم نقطة خضراء ما دام Kyron مفتوحًا لديك. عند إيقافها، لن ترى نقاطهم أنت أيضًا."),
     };
 
 final messageLookup = MessageLookup();

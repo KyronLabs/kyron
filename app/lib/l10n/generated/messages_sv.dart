@@ -1496,8 +1496,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("Visa"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("Öppna"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Visa när du är online"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Personer du skriver med ser en grön prick medan du har Kyron öppet. När det är av ser du inte heller deras."),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Visa när du är online"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Personer du skriver med ser en grön prick medan du har Kyron öppet. När det är av ser du inte heller deras."),
     };
 
 final messageLookup = MessageLookup();

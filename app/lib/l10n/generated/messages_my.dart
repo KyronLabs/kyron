@@ -1506,8 +1506,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("ကြည့်ရန်"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("ဖွင့်ရန်"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("အွန်လိုင်း"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("အွန်လိုင်းဖြစ်နေချိန် ပြရန်"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("သင် မက်ဆေ့ချ်ပို့သူများသည် သင် Kyron ဖွင့်ထားချိန်တွင် အစိမ်းရောင်အစက်ကို မြင်ရပါသည်။ ပိတ်ထားလျှင် သူတို့၏ အစက်ကိုလည်း သင် မမြင်ရပါ။"),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("အွန်လိုင်းဖြစ်နေချိန် ပြရန်"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "သင် မက်ဆေ့ချ်ပို့သူများသည် သင် Kyron ဖွင့်ထားချိန်တွင် အစိမ်းရောင်အစက်ကို မြင်ရပါသည်။ ပိတ်ထားလျှင် သူတို့၏ အစက်ကိုလည်း သင် မမြင်ရပါ။"),
     };
 
 final messageLookup = MessageLookup();

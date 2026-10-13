@@ -1784,8 +1784,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("View"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("Open"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Show when you're online"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("People you message see a green dot while you have Kyron open. When this is off, you won't see theirs either."),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Show when you're online"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "People you message see a green dot while you have Kyron open. When this is off, you won't see theirs either."),
     };
 
 final messageLookup = MessageLookup();

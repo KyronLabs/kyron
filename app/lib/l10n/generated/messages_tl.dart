@@ -1501,8 +1501,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("Tingnan"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("Buksan"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Ipakita kapag online ka"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Nakikita ng mga kausap mo ang berdeng tuldok habang bukas ang Kyron mo. Kapag naka-off ito, hindi mo rin makikita ang sa kanila."),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("Ipakita kapag online ka"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Nakikita ng mga kausap mo ang berdeng tuldok habang bukas ang Kyron mo. Kapag naka-off ito, hindi mo rin makikita ang sa kanila."),
     };
 
 final messageLookup = MessageLookup();

@@ -1498,8 +1498,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("Lihat"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("Buka"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("Dalam talian"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Tunjukkan semasa anda dalam talian"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Orang yang anda hantar mesej nampak titik hijau semasa Kyron anda dibuka. Apabila dimatikan, anda juga tidak akan nampak titik mereka."),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage(
+          "Tunjukkan semasa anda dalam talian"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "Orang yang anda hantar mesej nampak titik hijau semasa Kyron anda dibuka. Apabila dimatikan, anda juga tidak akan nampak titik mereka."),
     };
 
 final messageLookup = MessageLookup();

@@ -1484,8 +1484,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_toast_view": MessageLookupByLibrary.simpleMessage("הצגה"),
       "ui_toast_open": MessageLookupByLibrary.simpleMessage("פתיחה"),
       "ui_dm_online": MessageLookupByLibrary.simpleMessage("מחובר/ת"),
-      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("להציג כשאתם מחוברים"),
-      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("האנשים שאתם מתכתבים איתם רואים נקודה ירוקה כש-Kyron פתוח אצלכם. כשזה כבוי, גם אתם לא תראו את שלהם."),
+      "ui_dm_show_online":
+          MessageLookupByLibrary.simpleMessage("להציג כשאתם מחוברים"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
+          "האנשים שאתם מתכתבים איתם רואים נקודה ירוקה כש-Kyron פתוח אצלכם. כשזה כבוי, גם אתם לא תראו את שלהם."),
     };
 
 final messageLookup = MessageLookup();
