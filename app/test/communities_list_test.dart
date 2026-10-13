@@ -111,6 +111,14 @@ class _Repo extends CommunitiesRepository {
   @override
   Future<void> markRead(String slug) async => read.add(slug);
 
+  final List<String> joined = [];
+
+  @override
+  Future<Community> setMembership(String slug, bool join) async {
+    joined.add(slug);
+    return _community(slug);
+  }
+
   @override
   Future<bool> postsInHome() async => inHome;
 
@@ -319,6 +327,68 @@ void main() {
       expect(find.byType(FloatingActionButton), findsNothing);
     });
 
+    testWidgets(
+        'a card with something new says Catch up, in the filled '
+        'weight; one without says Open', (tester) async {
+      await _pump(
+        tester,
+        _communities(),
+        repo: _Repo(
+          mine: {
+            CommunityFilter.all: [
+              _community('busy', last: _post(), unread: 2),
+              _community('calm', last: _post()),
+            ],
+          },
+        ),
+      );
+
+      Text label(String id) => tester.widget<Text>(
+            find.descendant(
+              of: find.byKey(ValueKey('community-open-id-$id')),
+              matching: find.byType(Text),
+            ),
+          );
+      expect(label('busy').data, 'Catch up');
+      expect(label('calm').data, 'Open');
+      // And the card says when the last post was, at its foot.
+      expect(find.text('Last post'), findsNWidgets(2));
+      expect(
+        tester
+            .widget<Text>(find.byKey(const ValueKey('community-meta-id-busy')))
+            .data,
+        'Members: 3',
+      );
+    });
+
+    testWidgets('says None yet where nobody has posted', (tester) async {
+      await _pump(
+        tester,
+        _communities(),
+        repo: _Repo(mine: {
+          CommunityFilter.all: [_community('quiet')]
+        }),
+      );
+
+      expect(_text(tester, 'community-when-id-quiet'), 'None yet');
+    });
+
+    testWidgets('names the reader’s role beside the members', (tester) async {
+      await _pump(
+        tester,
+        _communities(),
+        repo: _Repo(
+          mine: {
+            CommunityFilter.all: [
+              _community('mine', role: CommunityRole.owner),
+            ],
+          },
+        ),
+      );
+
+      expect(_text(tester, 'community-meta-id-mine'), 'Members: 3 · Owner');
+    });
+
     testWidgets('leaves the count off when the reader asked for that', (
       tester,
     ) async {
@@ -431,6 +501,29 @@ void main() {
       expect(repo.searches.last, 'bak');
       expect(find.byKey(const ValueKey('discover-id-bakers')), findsOneWidget);
       expect(find.byKey(const ValueKey('discover-id-runners')), findsNothing);
+    });
+
+    testWidgets(
+        'Join on a Discover card joins, and moves it to the reader’s '
+        'list', (tester) async {
+      final repo = await _pump(
+        tester,
+        _communities(),
+        repo: _Repo(discoverRows: [_community('runners', joined: false)]),
+      );
+
+      await tester.tap(find.byKey(const ValueKey('communities-discover')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('discover-join-id-runners')));
+      await tester.pumpAndSettle();
+
+      expect(repo.joined, ['runners']);
+      expect(find.byKey(const ValueKey('discover-id-runners')), findsNothing);
+
+      await tester.tap(find.byKey(const ValueKey('communities-discover')));
+      await tester.pumpAndSettle();
+      expect(
+          find.byKey(const ValueKey('community-id-runners')), findsOneWidget);
     });
 
     testWidgets('the bar starts a community and opens community settings', (

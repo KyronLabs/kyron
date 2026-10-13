@@ -747,5 +747,11 @@
   "ui_community_running_none": "Dar nevaldote nė vienos",
   "ui_community_discover_none": "Nebeliko prie ko prisijungti",
   "ui_community_discover_none_detail": "Esate visose Kyron bendruomenėse. Sukurkite dar vieną.",
-  "ui_community_discover_search_detail": "Pabandykite kitą žodį arba sukurkite bendruomenę tokiu pavadinimu."
+  "ui_community_discover_search_detail": "Pabandykite kitą žodį arba sukurkite bendruomenę tokiu pavadinimu.",
+  "ui_community_last_post": "Paskutinis įrašas",
+  "ui_community_none_yet": "Dar nėra",
+  "ui_community_catch_up": "Pasivyti",
+  "ui_community_open": "Atidaryti",
+  "ui_community_write": "Rašyti įrašą",
+  "ui_community_members": "Nariai:"
 }

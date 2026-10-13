@@ -1499,6 +1499,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron இல் உள்ள எல்லா சமூகங்களிலும் நீங்கள் உள்ளீர்கள். இன்னொன்றைத் தொடங்குங்கள்."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "வேறு சொல்லை முயலுங்கள், அல்லது அந்தப் பெயரில் ஒரு சமூகத்தைத் தொடங்குங்கள்."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("கடைசி இடுகை"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் இல்லை"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("புதியவற்றைப் பார்"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("திற"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("இடுகை எழுது"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("உறுப்பினர்கள்:"),
     };
 
 final messageLookup = MessageLookup();

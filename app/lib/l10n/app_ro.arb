@@ -747,5 +747,11 @@
   "ui_community_running_none": "Încă nu conduci niciuna",
   "ui_community_discover_none": "Nu a mai rămas nimic la care să te alături",
   "ui_community_discover_none_detail": "Ești în toate comunitățile de pe Kyron. Creează încă una.",
-  "ui_community_discover_search_detail": "Încearcă alt cuvânt sau creează o comunitate cu acest nume."
+  "ui_community_discover_search_detail": "Încearcă alt cuvânt sau creează o comunitate cu acest nume.",
+  "ui_community_last_post": "Ultima postare",
+  "ui_community_none_yet": "Încă niciuna",
+  "ui_community_catch_up": "Recuperează",
+  "ui_community_open": "Deschide",
+  "ui_community_write": "Scrie o postare",
+  "ui_community_members": "Membri:"
 }

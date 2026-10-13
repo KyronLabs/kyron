@@ -14,15 +14,13 @@ import '../providers/communities_provider.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/preferences_provider.dart';
 import '../routes.dart';
-import '../utils/conversation_text.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/bottom_nav_v4.dart';
-import '../widgets/community_avatar.dart';
-import '../widgets/community_tile.dart';
+import '../widgets/community_cards.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/list_controls.dart';
+import 'community_composer_screen.dart';
 import '../widgets/simple_app_bar.dart';
-import '../widgets/skeleton.dart';
 
 /// The communities the reader is in, one row each, the one with the newest
 /// post at the top -- and the ones they could join, behind a chip.
@@ -114,7 +112,6 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final scheme = Theme.of(context).colorScheme;
     final filtered = _filter != CommunityFilter.all && !_discovering;
 
     return Column(
@@ -188,27 +185,25 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen> {
             ],
           ),
         ),
-        const SizedBox(height: SpacingTokens.space8),
-        Divider(
-          height: 0.5,
-          thickness: 0.5,
-          color: scheme.outline.withValues(alpha: 0.15),
-        ),
+        const SizedBox(height: SpacingTokens.space12),
         Expanded(
-          child: NotificationListener<UserScrollNotification>(
-            onNotification: _onScroll,
-            // The bar above is a sibling inside its own SafeArea, so the
-            // status bar inset is still on the MediaQuery down here.
-            child: MediaQuery.removePadding(
-              context: context,
-              removeTop: true,
-              child: _discovering
-                  ? _DiscoverList(query: _search.text.trim())
-                  : _MyList(
-                      key: ValueKey(_filter),
-                      filter: _filter,
-                      query: _search.text.trim(),
-                    ),
+          child: ColoredBox(
+            color: communityPageColor(context),
+            child: NotificationListener<UserScrollNotification>(
+              onNotification: _onScroll,
+              // The bar above is a sibling inside its own SafeArea, so the
+              // status bar inset is still on the MediaQuery down here.
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: _discovering
+                    ? _DiscoverList(query: _search.text.trim())
+                    : _MyList(
+                        key: ValueKey(_filter),
+                        filter: _filter,
+                        query: _search.text.trim(),
+                      ),
+              ),
             ),
           ),
         ),
@@ -268,6 +263,17 @@ class _MyListState extends ConsumerState<_MyList> {
     if (mounted) await refreshMyCommunities(ref);
   }
 
+  /// Straight to writing in it, from the card, without opening it first.
+  Future<void> _write(Community community) async {
+    final posted = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => CommunityComposerScreen(community: community),
+      ),
+    );
+    if (posted == true && mounted) await refreshMyCommunities(ref);
+  }
+
   bool _matches(Community community) {
     final query = widget.query.toLowerCase();
     if (query.isEmpty) return true;
@@ -283,7 +289,7 @@ class _MyListState extends ConsumerState<_MyList> {
     final me = ref.watch(currentUserProvider).asData?.value.id;
     final counts = ref.watch(preferencesProvider).communityCounts;
 
-    if (state.loadingFirstPage) return SkeletonList.communities();
+    if (state.loadingFirstPage) return const CommunityCardsSkeleton();
 
     final shown = state.items.where(_matches).toList();
 
@@ -332,11 +338,18 @@ class _MyListState extends ConsumerState<_MyList> {
       onRefresh: notifier.refresh,
       child: shown.isEmpty
           ? empty().scrollable
-          : ListView.builder(
+          : ListView.separated(
               controller: _scroll,
               physics: const AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.only(bottom: _listFootroom(context)),
+              padding: EdgeInsets.fromLTRB(
+                SpacingTokens.space16,
+                SpacingTokens.space4,
+                SpacingTokens.space16,
+                _listFootroom(context),
+              ),
               itemCount: shown.length + (state.loadingMore ? 1 : 0),
+              separatorBuilder: (_, __) =>
+                  const SizedBox(height: SpacingTokens.space12),
               itemBuilder: (context, index) {
                 if (index >= shown.length) {
                   return const Padding(
@@ -345,139 +358,15 @@ class _MyListState extends ConsumerState<_MyList> {
                   );
                 }
                 final community = shown[index];
-                return _CommunityRow(
-                  key: ValueKey('community-${community.id}'),
+                return CommunityCard(
                   community: community,
                   mine: me != null && community.lastPost?.authorId == me,
                   showCount: counts,
-                  onTap: () => _open(community),
+                  onOpen: () => _open(community),
+                  onWrite: () => _write(community),
                 );
               },
             ),
-    );
-  }
-}
-
-/// One community: its picture, its name, its newest post and when, and how
-/// many posts are new.
-class _CommunityRow extends StatelessWidget {
-  final Community community;
-
-  /// Whether the newest post is the reader's own.
-  final bool mine;
-
-  /// Whether to say how many are new, which the reader can turn off.
-  final bool showCount;
-
-  final VoidCallback onTap;
-
-  const _CommunityRow({
-    super.key,
-    required this.community,
-    required this.mine,
-    required this.showCount,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final l10n = AppLocalizations.of(context);
-    final fresh = showCount && community.unread > 0;
-    final muted = scheme.onSurface.withValues(alpha: 0.55);
-    final when = community.lastPost?.createdAt ?? community.lastActivityAt;
-
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: SpacingTokens.space16,
-          vertical: SpacingTokens.space12,
-        ),
-        child: Row(
-          children: [
-            CommunityAvatar(
-              avatarUrl: community.avatarUrl,
-              initial: community.name.trim().isEmpty
-                  ? '#'
-                  : community.name.trim()[0].toUpperCase(),
-              size: 48,
-            ),
-            const SizedBox(width: SpacingTokens.space12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          community.name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: TypographyTokens.fontSize3,
-                            fontWeight:
-                                fresh ? FontWeight.w700 : FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      if (when != null) ...[
-                        const SizedBox(width: SpacingTokens.space8),
-                        Text(
-                          conversationTime(
-                            l10n,
-                            when,
-                            locale: Localizations.maybeLocaleOf(context)
-                                ?.toLanguageTag(),
-                          ),
-                          key: ValueKey('community-when-${community.id}'),
-                          style: TextStyle(
-                            fontSize: TypographyTokens.fontSize1,
-                            color: fresh ? scheme.primary : muted,
-                            fontWeight:
-                                fresh ? FontWeight.w700 : FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ],
-                  ),
-                  const SizedBox(height: 2),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          communityPreview(
-                            l10n,
-                            community.lastPost,
-                            mine: mine,
-                          ),
-                          key: ValueKey('community-preview-${community.id}'),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: TypographyTokens.fontSize2,
-                            height: 1.3,
-                            color: fresh
-                                ? scheme.onSurface
-                                : scheme.onSurface.withValues(alpha: 0.6),
-                            fontWeight:
-                                fresh ? FontWeight.w600 : FontWeight.normal,
-                          ),
-                        ),
-                      ),
-                      if (fresh) ...[
-                        const SizedBox(width: SpacingTokens.space8),
-                        CountBadge(count: community.unread),
-                      ],
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -533,7 +422,6 @@ class _DiscoverListState extends ConsumerState<_DiscoverList> {
     final l10n = AppLocalizations.of(context);
     final state = ref.watch(discoverCommunitiesProvider);
     final notifier = ref.read(discoverCommunitiesProvider.notifier);
-    final scheme = Theme.of(context).colorScheme;
 
     if (state.loadingFirstPage) {
       return const Center(child: CircularProgressIndicator());
@@ -579,17 +467,18 @@ class _DiscoverListState extends ConsumerState<_DiscoverList> {
               .scrollable
           : ListView.separated(
               physics: const AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.only(bottom: _listFootroom(context)),
-              itemCount: state.items.length,
-              separatorBuilder: (context, index) => Divider(
-                height: 1,
-                thickness: 0.5,
-                indent: 76,
-                color: scheme.outline.withValues(alpha: 0.15),
+              padding: EdgeInsets.fromLTRB(
+                SpacingTokens.space16,
+                SpacingTokens.space4,
+                SpacingTokens.space16,
+                _listFootroom(context),
               ),
+              itemCount: state.items.length,
+              separatorBuilder: (_, __) =>
+                  const SizedBox(height: SpacingTokens.space12),
               itemBuilder: (context, index) {
                 final community = state.items[index];
-                return CommunityTile(
+                return DiscoverCommunityCard(
                   key: ValueKey('discover-${community.id}'),
                   community: community,
                   onOpen: () => Navigator.pushNamed(
@@ -597,13 +486,12 @@ class _DiscoverListState extends ConsumerState<_DiscoverList> {
                     Routes.community,
                     arguments: community.slug,
                   ),
-                  onChanged: (next) {
-                    if (!next.joined) return;
-                    notifier.joined(next.id);
+                  onJoined: (joined) {
+                    notifier.joined(joined.id);
                     ref
                         .read(
                             myCommunitiesProvider(CommunityFilter.all).notifier)
-                        .add(next);
+                        .add(joined);
                   },
                 );
               },

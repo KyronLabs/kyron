@@ -1498,6 +1498,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "სცადეთ სხვა სიტყვა ან შექმენით თემი ამ სახელით."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("ბოლო პოსტი"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("ჯერ არ არის"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("ახლების ნახვა"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("გახსნა"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("პოსტის დაწერა"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("წევრები:"),
     };
 
 final messageLookup = MessageLookup();

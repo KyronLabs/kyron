@@ -747,5 +747,11 @@
   "ui_community_running_none": "Δεν διαχειρίζεστε καμία ακόμα",
   "ui_community_discover_none": "Δεν έμεινε τίποτα για να μπείτε",
   "ui_community_discover_none_detail": "Είστε σε κάθε κοινότητα του Kyron. Ξεκινήστε μια ακόμα.",
-  "ui_community_discover_search_detail": "Δοκιμάστε άλλη λέξη ή ξεκινήστε μια κοινότητα με αυτό το όνομα."
+  "ui_community_discover_search_detail": "Δοκιμάστε άλλη λέξη ή ξεκινήστε μια κοινότητα με αυτό το όνομα.",
+  "ui_community_last_post": "Τελευταία ανάρτηση",
+  "ui_community_none_yet": "Καμία ακόμα",
+  "ui_community_catch_up": "Δες τα νέα",
+  "ui_community_open": "Άνοιγμα",
+  "ui_community_write": "Γράψε ανάρτηση",
+  "ui_community_members": "Μέλη:"
 }

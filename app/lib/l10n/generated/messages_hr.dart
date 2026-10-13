@@ -1497,6 +1497,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Pokušajte drugu riječ ili pokrenite zajednicu s tim nazivom."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Zadnja objava"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Još nijedna"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Sustigni"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Otvori"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Napiši objavu"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Članovi:"),
     };
 
 final messageLookup = MessageLookup();

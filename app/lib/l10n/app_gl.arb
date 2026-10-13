@@ -747,5 +747,11 @@
   "ui_community_running_none": "Aínda non diriges ningunha",
   "ui_community_discover_none": "Non queda nada ao que unirse",
   "ui_community_discover_none_detail": "Estás en todas as comunidades de Kyron. Crea outra.",
-  "ui_community_discover_search_detail": "Proba outra palabra, ou crea unha comunidade con ese nome."
+  "ui_community_discover_search_detail": "Proba outra palabra, ou crea unha comunidade con ese nome.",
+  "ui_community_last_post": "Última publicación",
+  "ui_community_none_yet": "Aínda ningunha",
+  "ui_community_catch_up": "Poñerse ao día",
+  "ui_community_open": "Abrir",
+  "ui_community_write": "Escribir unha publicación",
+  "ui_community_members": "Membros:"
 }

@@ -747,5 +747,11 @@
   "ui_community_running_none": "Все още не управлявате нито една",
   "ui_community_discover_none": "Няма какво повече да присъедините",
   "ui_community_discover_none_detail": "Членувате във всяка общност в Kyron. Създайте още една.",
-  "ui_community_discover_search_detail": "Опитайте друга дума или създайте общност с това име."
+  "ui_community_discover_search_detail": "Опитайте друга дума или създайте общност с това име.",
+  "ui_community_last_post": "Последна публикация",
+  "ui_community_none_yet": "Още няма",
+  "ui_community_catch_up": "Наваксай",
+  "ui_community_open": "Отвори",
+  "ui_community_write": "Напиши публикация",
+  "ui_community_members": "Членове:"
 }

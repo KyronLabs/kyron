@@ -747,5 +747,11 @@
   "ui_community_running_none": "עדיין אין קהילה בניהולכם",
   "ui_community_discover_none": "לא נשאר למה להצטרף",
   "ui_community_discover_none_detail": "אתם בכל הקהילות ב-Kyron. הקימו עוד אחת.",
-  "ui_community_discover_search_detail": "נסו מילה אחרת, או הקימו קהילה בשם הזה."
+  "ui_community_discover_search_detail": "נסו מילה אחרת, או הקימו קהילה בשם הזה.",
+  "ui_community_last_post": "פוסט אחרון",
+  "ui_community_none_yet": "עדיין אין",
+  "ui_community_catch_up": "להתעדכן",
+  "ui_community_open": "פתיחה",
+  "ui_community_write": "כתיבת פוסט",
+  "ui_community_members": "חברים:"
 }

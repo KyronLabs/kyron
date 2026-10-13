@@ -1493,6 +1493,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kasali ka na sa bawat komunidad sa Kyron. Magsimula ng isa pa."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "Sumubok ng ibang salita, o magsimula ng komunidad na may ganoong pangalan."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Huling post"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Wala pa"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Humabol"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Buksan"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Sumulat ng post"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("Mga miyembro:"),
     };
 
 final messageLookup = MessageLookup();

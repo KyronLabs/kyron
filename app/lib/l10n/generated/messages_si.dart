@@ -1495,6 +1495,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ඔබ Kyron හි සෑම ප්‍රජාවකම සිටී. තවත් එකක් ආරම්භ කරන්න."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "වෙනත් වචනයක් උත්සාහ කරන්න, නැතහොත් එම නමින් ප්‍රජාවක් ආරම්භ කරන්න."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("අවසන් පළ කිරීම"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("තවම නැත"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("අලුත් ඒවා බලන්න"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("විවෘත කරන්න"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීමක් ලියන්න"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("සාමාජිකයින්:"),
     };
 
 final messageLookup = MessageLookup();

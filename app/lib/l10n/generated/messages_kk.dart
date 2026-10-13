@@ -1490,6 +1490,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Сіз Kyron-дағы барлық қауымдастықтасыз. Тағы біреуін құрыңыз."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "Басқа сөзді қолданып көріңіз немесе осы атпен қауымдастық құрыңыз."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Соңғы жазба"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Әзірге жоқ"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Жаңасын көру"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Ашу"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("Жазба жазу"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Мүшелер:"),
     };
 
 final messageLookup = MessageLookup();

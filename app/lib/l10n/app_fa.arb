@@ -747,5 +747,11 @@
   "ui_community_running_none": "هنوز هیچ‌کدام را اداره نمی‌کنید",
   "ui_community_discover_none": "چیزی برای پیوستن نمانده",
   "ui_community_discover_none_detail": "شما در همهٔ انجمن‌های Kyron هستید. یکی دیگر راه بیندازید.",
-  "ui_community_discover_search_detail": "واژهٔ دیگری را امتحان کنید، یا انجمنی با این نام راه بیندازید."
+  "ui_community_discover_search_detail": "واژهٔ دیگری را امتحان کنید، یا انجمنی با این نام راه بیندازید.",
+  "ui_community_last_post": "آخرین پست",
+  "ui_community_none_yet": "هنوز هیچ",
+  "ui_community_catch_up": "تازه‌ها را ببین",
+  "ui_community_open": "باز کردن",
+  "ui_community_write": "نوشتن پست",
+  "ui_community_members": "اعضا:"
 }

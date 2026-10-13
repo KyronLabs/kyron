@@ -1553,6 +1553,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Proovi muud sõna või loo selle nimega kogukond."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Viimane postitus"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Veel pole"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Järele jõuda"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Ava"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Kirjuta postitus"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Liikmed:"),
     };
 
 final messageLookup = MessageLookup();

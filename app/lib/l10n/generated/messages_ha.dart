@@ -1492,6 +1492,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Gwada wata kalma, ko fara al'umma da wannan sunan."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Rubutu na ƙarshe"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Babu tukuna"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Cim ma sababbi"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Buɗe"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Rubuta rubutu"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Mambobi:"),
     };
 
 final messageLookup = MessageLookup();

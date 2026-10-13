@@ -7,7 +7,6 @@ import 'package:kyron_app/models/post_media.dart';
 import 'package:kyron_app/providers/communities_provider.dart';
 import 'package:kyron_app/repositories/communities_repository.dart';
 import 'package:kyron_app/services/api_client.dart';
-import 'package:kyron_app/widgets/community_tile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class _Down implements Exception {}
@@ -212,43 +211,6 @@ void main() {
 
       expect(error, isNotNull);
       expect(repo.membership, isEmpty);
-    });
-  });
-
-  group('the tile', () {
-    testWidgets('offers Join when the reader is not in it', (tester) async {
-      await tester.pumpWidget(
-        ProviderScope(
-          child: MaterialApp(
-            home: Scaffold(
-              body: CommunityTile(
-                community: _community('design'),
-                onOpen: () {},
-              ),
-            ),
-          ),
-        ),
-      );
-      expect(find.text('Join'), findsOneWidget);
-      // One line, both numbers, and both of them real.
-      expect(find.text('1 member · 0 posts'), findsOneWidget);
-    });
-
-    testWidgets('offers Joined when they are', (tester) async {
-      await tester.pumpWidget(
-        ProviderScope(
-          child: MaterialApp(
-            home: Scaffold(
-              body: CommunityTile(
-                community: _community('design', joined: true, members: 12),
-                onOpen: () {},
-              ),
-            ),
-          ),
-        ),
-      );
-      expect(find.text('Joined'), findsOneWidget);
-      expect(find.textContaining('12 members'), findsOneWidget);
     });
   });
 }

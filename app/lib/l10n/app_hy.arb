@@ -747,5 +747,11 @@
   "ui_community_running_none": "Դեռ ոչ մեկը չեք ղեկավարում",
   "ui_community_discover_none": "Միանալու այլևս ոչինչ չկա",
   "ui_community_discover_none_detail": "Դուք Kyron-ի բոլոր համայնքներում եք։ Ստեղծեք ևս մեկը։",
-  "ui_community_discover_search_detail": "Փորձեք այլ բառ կամ ստեղծեք այդ անունով համայնք։"
+  "ui_community_discover_search_detail": "Փորձեք այլ բառ կամ ստեղծեք այդ անունով համայնք։",
+  "ui_community_last_post": "Վերջին գրառումը",
+  "ui_community_none_yet": "Դեռ չկա",
+  "ui_community_catch_up": "Տեսնել նորերը",
+  "ui_community_open": "Բացել",
+  "ui_community_write": "Գրել գրառում",
+  "ui_community_members": "Անդամներ՝"
 }

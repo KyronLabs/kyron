@@ -1490,6 +1490,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Skúste iné slovo alebo založte komunitu s týmto názvom."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Posledný príspevok"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Zatiaľ žiadny"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Dobehnúť"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Otvoriť"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Napísať príspevok"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Členovia:"),
     };
 
 final messageLookup = MessageLookup();

@@ -747,5 +747,11 @@
   "ui_community_running_none": "Vous n'en gérez aucune pour l'instant",
   "ui_community_discover_none": "Plus rien à rejoindre",
   "ui_community_discover_none_detail": "Vous êtes dans toutes les communautés de Kyron. Créez-en une autre.",
-  "ui_community_discover_search_detail": "Essayez un autre mot, ou créez une communauté de ce nom."
+  "ui_community_discover_search_detail": "Essayez un autre mot, ou créez une communauté de ce nom.",
+  "ui_community_last_post": "Dernière publication",
+  "ui_community_none_yet": "Aucune pour l'instant",
+  "ui_community_catch_up": "Rattraper",
+  "ui_community_open": "Ouvrir",
+  "ui_community_write": "Écrire une publication",
+  "ui_community_members": "Membres :"
 }

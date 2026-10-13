@@ -1566,6 +1566,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Jy is in elke gemeenskap op Kyron. Begin nog een."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "Probeer 'n ander woord, of begin 'n gemeenskap met daardie naam."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Laaste plasing"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Nog geen"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Haal in"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Maak oop"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Skryf 'n plasing"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Lede:"),
     };
 
 final messageLookup = MessageLookup();

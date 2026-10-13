@@ -747,5 +747,11 @@
   "ui_community_running_none": "మీరు ఇంకా ఏదీ నడపడం లేదు",
   "ui_community_discover_none": "చేరడానికి ఏమీ మిగల్లేదు",
   "ui_community_discover_none_detail": "మీరు Kyron లోని ప్రతి కమ్యూనిటీలో ఉన్నారు. మరొకటి ప్రారంభించండి.",
-  "ui_community_discover_search_detail": "వేరే పదం ప్రయత్నించండి, లేదా ఆ పేరుతో కమ్యూనిటీ ప్రారంభించండి."
+  "ui_community_discover_search_detail": "వేరే పదం ప్రయత్నించండి, లేదా ఆ పేరుతో కమ్యూనిటీ ప్రారంభించండి.",
+  "ui_community_last_post": "చివరి పోస్ట్",
+  "ui_community_none_yet": "ఇంకా లేదు",
+  "ui_community_catch_up": "కొత్తవి చూడండి",
+  "ui_community_open": "తెరవండి",
+  "ui_community_write": "పోస్ట్ రాయండి",
+  "ui_community_members": "సభ్యులు:"
 }

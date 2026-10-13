@@ -747,5 +747,11 @@
   "ui_community_running_none": "Weli ma maamusho mid",
   "ui_community_discover_none": "Wax lagu biiro ma harin",
   "ui_community_discover_none_detail": "Waxaad ku jirtaa bulsho kasta oo Kyron ah. Bilow mid kale.",
-  "ui_community_discover_search_detail": "Isku day eray kale, ama bilow bulsho magacaas leh."
+  "ui_community_discover_search_detail": "Isku day eray kale, ama bilow bulsho magacaas leh.",
+  "ui_community_last_post": "Qoraalkii ugu dambeeyay",
+  "ui_community_none_yet": "Weli ma jiro",
+  "ui_community_catch_up": "La soco",
+  "ui_community_open": "Fur",
+  "ui_community_write": "Qor qoraal",
+  "ui_community_members": "Xubnaha:"
 }

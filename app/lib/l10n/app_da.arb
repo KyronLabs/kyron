@@ -747,5 +747,11 @@
   "ui_community_running_none": "Du styrer ingen endnu",
   "ui_community_discover_none": "Intet tilbage at blive medlem af",
   "ui_community_discover_none_detail": "Du er med i alle fællesskaber på Kyron. Start et nyt.",
-  "ui_community_discover_search_detail": "Prøv et andet ord, eller start et fællesskab med det navn."
+  "ui_community_discover_search_detail": "Prøv et andet ord, eller start et fællesskab med det navn.",
+  "ui_community_last_post": "Seneste opslag",
+  "ui_community_none_yet": "Ingen endnu",
+  "ui_community_catch_up": "Indhent",
+  "ui_community_open": "Åbn",
+  "ui_community_write": "Skriv et opslag",
+  "ui_community_members": "Medlemmer:"
 }

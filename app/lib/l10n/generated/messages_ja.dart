@@ -1256,6 +1256,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyronのすべてのコミュニティに参加しています。新しく作りましょう。"),
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage("別の言葉で試すか、その名前でコミュニティを作りましょう。"),
+      "ui_community_last_post": MessageLookupByLibrary.simpleMessage("最新の投稿"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("まだありません"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("新着を見る"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("開く"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("投稿する"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("メンバー:"),
     };
 
 final messageLookup = MessageLookup();

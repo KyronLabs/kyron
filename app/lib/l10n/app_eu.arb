@@ -747,5 +747,11 @@
   "ui_community_running_none": "Oraindik ez duzu bat ere kudeatzen",
   "ui_community_discover_none": "Ez da ezer geratzen batzeko",
   "ui_community_discover_none_detail": "Kyron-eko komunitate guztietan zaude. Sortu beste bat.",
-  "ui_community_discover_search_detail": "Saiatu beste hitz batekin, edo sortu izen horrekin komunitate bat."
+  "ui_community_discover_search_detail": "Saiatu beste hitz batekin, edo sortu izen horrekin komunitate bat.",
+  "ui_community_last_post": "Azken argitalpena",
+  "ui_community_none_yet": "Oraindik ez",
+  "ui_community_catch_up": "Jarri egunean",
+  "ui_community_open": "Ireki",
+  "ui_community_write": "Idatzi argitalpen bat",
+  "ui_community_members": "Kideak:"
 }

@@ -747,5 +747,11 @@
   "ui_community_running_none": "Du leitest noch keine",
   "ui_community_discover_none": "Nichts mehr zum Beitreten",
   "ui_community_discover_none_detail": "Du bist in jeder Gemeinschaft auf Kyron. Gründe eine weitere.",
-  "ui_community_discover_search_detail": "Versuch ein anderes Wort, oder gründe eine Gemeinschaft mit diesem Namen."
+  "ui_community_discover_search_detail": "Versuch ein anderes Wort, oder gründe eine Gemeinschaft mit diesem Namen.",
+  "ui_community_last_post": "Letzter Beitrag",
+  "ui_community_none_yet": "Noch keiner",
+  "ui_community_catch_up": "Aufholen",
+  "ui_community_open": "Öffnen",
+  "ui_community_write": "Beitrag schreiben",
+  "ui_community_members": "Mitglieder:"
 }

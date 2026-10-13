@@ -747,5 +747,11 @@
   "ui_community_running_none": "Ba ka jagorantar ko ɗaya tukuna",
   "ui_community_discover_none": "Babu sauran abin shiga",
   "ui_community_discover_none_detail": "Kana cikin kowace al'umma a Kyron. Fara wata.",
-  "ui_community_discover_search_detail": "Gwada wata kalma, ko fara al'umma da wannan sunan."
+  "ui_community_discover_search_detail": "Gwada wata kalma, ko fara al'umma da wannan sunan.",
+  "ui_community_last_post": "Rubutu na ƙarshe",
+  "ui_community_none_yet": "Babu tukuna",
+  "ui_community_catch_up": "Cim ma sababbi",
+  "ui_community_open": "Buɗe",
+  "ui_community_write": "Rubuta rubutu",
+  "ui_community_members": "Mambobi:"
 }

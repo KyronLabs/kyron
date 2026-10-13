@@ -190,12 +190,6 @@ class SkeletonList extends StatelessWidget {
         itemBuilder: (context, index) => const _NotificationSkeleton(),
       );
 
-  /// Communities: a square badge rather than a round avatar.
-  factory SkeletonList.communities({int count = 6}) => SkeletonList(
-        count: count,
-        itemBuilder: (context, index) => const _CommunitySkeleton(),
-      );
-
   /// Chat bubbles, alternating sides.
   factory SkeletonList.messages({int count = 7}) => SkeletonList(
         count: count,
@@ -441,41 +435,6 @@ class _NotificationSkeleton extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-      );
-}
-
-class _CommunitySkeleton extends StatelessWidget {
-  const _CommunitySkeleton();
-
-  @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: SpacingTokens.space16,
-          vertical: SpacingTokens.space12,
-        ),
-        child: Row(
-          children: [
-            const SkeletonBox(
-                width: 48, height: 48, radius: RadiusTokens.radiusMd),
-            const SizedBox(width: SpacingTokens.space12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: SkeletonBox.line(width: 130, height: 13),
-                  ),
-                  SizedBox(height: SpacingTokens.space8),
-                  SkeletonBox.line(height: 11),
-                ],
-              ),
-            ),
-            const SizedBox(width: SpacingTokens.space8),
-            const SkeletonBox(width: 64, height: 30, radius: 15),
           ],
         ),
       );

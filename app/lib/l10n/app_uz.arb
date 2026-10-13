@@ -747,5 +747,11 @@
   "ui_community_running_none": "Hali birortasini boshqarmaysiz",
   "ui_community_discover_none": "Qo‘shiladigan hech narsa qolmadi",
   "ui_community_discover_none_detail": "Siz Kyron’dagi barcha hamjamiyatlardasiz. Yana birini oching.",
-  "ui_community_discover_search_detail": "Boshqa so‘zni sinab ko‘ring yoki shu nom bilan hamjamiyat oching."
+  "ui_community_discover_search_detail": "Boshqa so‘zni sinab ko‘ring yoki shu nom bilan hamjamiyat oching.",
+  "ui_community_last_post": "Oxirgi post",
+  "ui_community_none_yet": "Hali yo‘q",
+  "ui_community_catch_up": "Yangilarini ko‘rish",
+  "ui_community_open": "Ochish",
+  "ui_community_write": "Post yozish",
+  "ui_community_members": "A’zolar:"
 }

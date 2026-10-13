@@ -1594,6 +1594,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Опитайте друга дума или създайте общност с това име."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Последна публикация"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Още няма"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Наваксай"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Отвори"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Напиши публикация"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Членове:"),
     };
 
 final messageLookup = MessageLookup();

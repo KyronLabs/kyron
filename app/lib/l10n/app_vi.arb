@@ -747,5 +747,11 @@
   "ui_community_running_none": "Bạn chưa quản lý cộng đồng nào",
   "ui_community_discover_none": "Không còn gì để tham gia",
   "ui_community_discover_none_detail": "Bạn đã ở trong mọi cộng đồng trên Kyron. Hãy tạo thêm một cộng đồng.",
-  "ui_community_discover_search_detail": "Thử một từ khác, hoặc tạo cộng đồng với tên đó."
+  "ui_community_discover_search_detail": "Thử một từ khác, hoặc tạo cộng đồng với tên đó.",
+  "ui_community_last_post": "Bài viết gần nhất",
+  "ui_community_none_yet": "Chưa có",
+  "ui_community_catch_up": "Xem bài mới",
+  "ui_community_open": "Mở",
+  "ui_community_write": "Viết bài",
+  "ui_community_members": "Thành viên:"
 }

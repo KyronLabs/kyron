@@ -747,5 +747,11 @@
   "ui_community_running_none": "ನೀವು ಇನ್ನೂ ಯಾವುದನ್ನೂ ನಡೆಸುತ್ತಿಲ್ಲ",
   "ui_community_discover_none": "ಸೇರಲು ಏನೂ ಉಳಿದಿಲ್ಲ",
   "ui_community_discover_none_detail": "ನೀವು Kyron ನ ಪ್ರತಿ ಸಮುದಾಯದಲ್ಲೂ ಇದ್ದೀರಿ. ಇನ್ನೊಂದನ್ನು ಆರಂಭಿಸಿ.",
-  "ui_community_discover_search_detail": "ಬೇರೆ ಪದ ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಆ ಹೆಸರಿನಲ್ಲಿ ಸಮುದಾಯ ಆರಂಭಿಸಿ."
+  "ui_community_discover_search_detail": "ಬೇರೆ ಪದ ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಆ ಹೆಸರಿನಲ್ಲಿ ಸಮುದಾಯ ಆರಂಭಿಸಿ.",
+  "ui_community_last_post": "ಕೊನೆಯ ಪೋಸ್ಟ್",
+  "ui_community_none_yet": "ಇನ್ನೂ ಇಲ್ಲ",
+  "ui_community_catch_up": "ಹೊಸದನ್ನು ನೋಡಿ",
+  "ui_community_open": "ತೆರೆಯಿರಿ",
+  "ui_community_write": "ಪೋಸ್ಟ್ ಬರೆಯಿರಿ",
+  "ui_community_members": "ಸದಸ್ಯರು:"
 }

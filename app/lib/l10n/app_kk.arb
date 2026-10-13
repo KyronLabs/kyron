@@ -747,5 +747,11 @@
   "ui_community_running_none": "Әлі ешқайсысын басқармайсыз",
   "ui_community_discover_none": "Қосылатын ештеңе қалмады",
   "ui_community_discover_none_detail": "Сіз Kyron-дағы барлық қауымдастықтасыз. Тағы біреуін құрыңыз.",
-  "ui_community_discover_search_detail": "Басқа сөзді қолданып көріңіз немесе осы атпен қауымдастық құрыңыз."
+  "ui_community_discover_search_detail": "Басқа сөзді қолданып көріңіз немесе осы атпен қауымдастық құрыңыз.",
+  "ui_community_last_post": "Соңғы жазба",
+  "ui_community_none_yet": "Әзірге жоқ",
+  "ui_community_catch_up": "Жаңасын көру",
+  "ui_community_open": "Ашу",
+  "ui_community_write": "Жазба жазу",
+  "ui_community_members": "Мүшелер:"
 }

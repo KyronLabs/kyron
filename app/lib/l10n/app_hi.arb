@@ -747,5 +747,11 @@
   "ui_community_running_none": "आप अभी कोई नहीं चलाते",
   "ui_community_discover_none": "जुड़ने को कुछ नहीं बचा",
   "ui_community_discover_none_detail": "आप Kyron के हर समुदाय में हैं। एक और शुरू करें।",
-  "ui_community_discover_search_detail": "कोई दूसरा शब्द आज़माएँ, या उस नाम से समुदाय शुरू करें।"
+  "ui_community_discover_search_detail": "कोई दूसरा शब्द आज़माएँ, या उस नाम से समुदाय शुरू करें।",
+  "ui_community_last_post": "आख़िरी पोस्ट",
+  "ui_community_none_yet": "अभी कोई नहीं",
+  "ui_community_catch_up": "नया देखें",
+  "ui_community_open": "खोलें",
+  "ui_community_write": "पोस्ट लिखें",
+  "ui_community_members": "सदस्य:"
 }

@@ -747,5 +747,11 @@
   "ui_community_running_none": "Jūs vēl nevadāt nevienu",
   "ui_community_discover_none": "Vairs nav kam pievienoties",
   "ui_community_discover_none_detail": "Jūs esat visās Kyron kopienās. Izveidojiet vēl vienu.",
-  "ui_community_discover_search_detail": "Mēģiniet citu vārdu vai izveidojiet kopienu ar šo nosaukumu."
+  "ui_community_discover_search_detail": "Mēģiniet citu vārdu vai izveidojiet kopienu ar šo nosaukumu.",
+  "ui_community_last_post": "Pēdējais ieraksts",
+  "ui_community_none_yet": "Vēl nav",
+  "ui_community_catch_up": "Panākt",
+  "ui_community_open": "Atvērt",
+  "ui_community_write": "Rakstīt ierakstu",
+  "ui_community_members": "Dalībnieki:"
 }

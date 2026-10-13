@@ -747,5 +747,11 @@
   "ui_community_running_none": "Et johda vielä yhtään",
   "ui_community_discover_none": "Ei enää mitään, mihin liittyä",
   "ui_community_discover_none_detail": "Olet Kyronin jokaisessa yhteisössä. Perusta uusi.",
-  "ui_community_discover_search_detail": "Kokeile toista sanaa tai perusta yhteisö sillä nimellä."
+  "ui_community_discover_search_detail": "Kokeile toista sanaa tai perusta yhteisö sillä nimellä.",
+  "ui_community_last_post": "Viimeisin julkaisu",
+  "ui_community_none_yet": "Ei vielä",
+  "ui_community_catch_up": "Kuro kiinni",
+  "ui_community_open": "Avaa",
+  "ui_community_write": "Kirjoita julkaisu",
+  "ui_community_members": "Jäsenet:"
 }

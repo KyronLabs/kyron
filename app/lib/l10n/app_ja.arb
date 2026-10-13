@@ -747,5 +747,11 @@
   "ui_community_running_none": "運営しているコミュニティはまだありません",
   "ui_community_discover_none": "参加できるコミュニティは残っていません",
   "ui_community_discover_none_detail": "Kyronのすべてのコミュニティに参加しています。新しく作りましょう。",
-  "ui_community_discover_search_detail": "別の言葉で試すか、その名前でコミュニティを作りましょう。"
+  "ui_community_discover_search_detail": "別の言葉で試すか、その名前でコミュニティを作りましょう。",
+  "ui_community_last_post": "最新の投稿",
+  "ui_community_none_yet": "まだありません",
+  "ui_community_catch_up": "新着を見る",
+  "ui_community_open": "開く",
+  "ui_community_write": "投稿する",
+  "ui_community_members": "メンバー:"
 }

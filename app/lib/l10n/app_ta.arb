@@ -747,5 +747,11 @@
   "ui_community_running_none": "நீங்கள் இன்னும் எதையும் நடத்தவில்லை",
   "ui_community_discover_none": "சேர எதுவும் மீதமில்லை",
   "ui_community_discover_none_detail": "Kyron இல் உள்ள எல்லா சமூகங்களிலும் நீங்கள் உள்ளீர்கள். இன்னொன்றைத் தொடங்குங்கள்.",
-  "ui_community_discover_search_detail": "வேறு சொல்லை முயலுங்கள், அல்லது அந்தப் பெயரில் ஒரு சமூகத்தைத் தொடங்குங்கள்."
+  "ui_community_discover_search_detail": "வேறு சொல்லை முயலுங்கள், அல்லது அந்தப் பெயரில் ஒரு சமூகத்தைத் தொடங்குங்கள்.",
+  "ui_community_last_post": "கடைசி இடுகை",
+  "ui_community_none_yet": "இன்னும் இல்லை",
+  "ui_community_catch_up": "புதியவற்றைப் பார்",
+  "ui_community_open": "திற",
+  "ui_community_write": "இடுகை எழுது",
+  "ui_community_members": "உறுப்பினர்கள்:"
 }

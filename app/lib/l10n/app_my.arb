@@ -747,5 +747,11 @@
   "ui_community_running_none": "သင် မည်သည့်တစ်ခုကိုမျှ မစီမံရသေးပါ",
   "ui_community_discover_none": "ဝင်ရန် ဘာမျှ မကျန်တော့ပါ",
   "ui_community_discover_none_detail": "သင်သည် Kyron ရှိ အသိုင်းအဝိုင်းတိုင်းတွင် ရှိနေသည်။ နောက်တစ်ခု စတင်ပါ။",
-  "ui_community_discover_search_detail": "အခြားစကားလုံး စမ်းကြည့်ပါ သို့မဟုတ် ထိုအမည်ဖြင့် အသိုင်းအဝိုင်း စတင်ပါ။"
+  "ui_community_discover_search_detail": "အခြားစကားလုံး စမ်းကြည့်ပါ သို့မဟုတ် ထိုအမည်ဖြင့် အသိုင်းအဝိုင်း စတင်ပါ။",
+  "ui_community_last_post": "နောက်ဆုံးပို့စ်",
+  "ui_community_none_yet": "မရှိသေးပါ",
+  "ui_community_catch_up": "အသစ်များ ကြည့်ရန်",
+  "ui_community_open": "ဖွင့်ရန်",
+  "ui_community_write": "ပို့စ် ရေးရန်",
+  "ui_community_members": "အဖွဲ့ဝင်များ-"
 }

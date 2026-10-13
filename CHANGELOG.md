@@ -287,15 +287,19 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
-- **Communities is laid out like Messages.** One row per community with its
-  newest post ("Ada: ...", "You: ...", or "Photo" for a post with no words),
-  when it was posted, and how many posts are new since you last opened it,
-  the busiest at the top. A filter menu (All, New posts, Yours to run) and a
+- **Communities is a page of cards.** Each community you are in is a card:
+  its picture in a tile, the name, "Members: 12" and your role, the newest
+  post ("Ada: ...", "You: ...", or "Photo" for a post with no words) with a
+  count of what is new since you last opened it, and at the foot when the
+  last post was, a Catch up / Open button and a button to write in it --
+  filled when there is something new, outlined when there is not. Discover is
+  a shelf of smaller cards with a description and a Join pill. The busiest
+  community is at the top; a filter menu (All, New posts, Yours to run) and a
   Discover chip replace the two tabs, with a search box over both. Opening a
   community clears its count (`PUT /communities/:slug/read`, a new
   `CommunityMember.lastReadAt` column). Previews follow the same blocks,
   mutes and hidden posts as the community's page. There is no separate feed
-  of community posts: Home already carries them, and the rows say what is
+  of community posts: Home already carries them, and the cards say what is
   new. Names that would collide with the app's own routes (mine, discover,
   settings) can no longer be taken.
 

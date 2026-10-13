@@ -747,5 +747,11 @@
   "ui_community_running_none": "Akukabikho luntu oluqhubayo",
   "ui_community_discover_none": "Akukho nto iseleyo yokujoyina",
   "ui_community_discover_none_detail": "Ukuluntu ngalunye kwiKyron. Qala olunye.",
-  "ui_community_discover_search_detail": "Zama elinye igama, okanye uqale uluntu olunelo gama."
+  "ui_community_discover_search_detail": "Zama elinye igama, okanye uqale uluntu olunelo gama.",
+  "ui_community_last_post": "Isithumelo sokugqibela",
+  "ui_community_none_yet": "Akukabikho",
+  "ui_community_catch_up": "Funda okutsha",
+  "ui_community_open": "Vula",
+  "ui_community_write": "Bhala isithumelo",
+  "ui_community_members": "Amalungu:"
 }

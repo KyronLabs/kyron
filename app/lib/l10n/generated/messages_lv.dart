@@ -1495,6 +1495,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Mēģiniet citu vārdu vai izveidojiet kopienu ar šo nosaukumu."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Pēdējais ieraksts"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Vēl nav"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Panākt"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Atvērt"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Rakstīt ierakstu"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("Dalībnieki:"),
     };
 
 final messageLookup = MessageLookup();

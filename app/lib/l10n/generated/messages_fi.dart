@@ -1494,6 +1494,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Kokeile toista sanaa tai perusta yhteisö sillä nimellä."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Viimeisin julkaisu"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Ei vielä"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Kuro kiinni"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Avaa"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Kirjoita julkaisu"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Jäsenet:"),
     };
 
 final messageLookup = MessageLookup();
