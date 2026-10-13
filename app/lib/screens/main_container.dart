@@ -8,11 +8,10 @@ import 'package:firebase_messaging/firebase_messaging.dart' show RemoteMessage;
 
 import '../providers/notifications_provider.dart';
 import '../l10n/app_localizations.dart';
-import '../routes.dart';
 import '../services/firebase_push.dart';
+import '../services/push_tap.dart';
 import '../services/share_inbox.dart';
 import '../widgets/toast.dart';
-import 'thread_screen.dart' show ThreadArgs;
 import '../widgets/share_into_kyron_sheet.dart';
 import '../utils/layout.dart';
 import '../widgets/bottom_nav_v4.dart';
@@ -62,31 +61,10 @@ class _MainContainerState extends ConsumerState<MainContainer>
       (_, content) => _offer(content),
       fireImmediately: true,
     );
-    // A notification tapped -- the one that opened the app, or one tapped
-    // while it runs -- goes where it is about, rather than to the feed.
-    _taps = FirebasePushTokens.taps().listen(_open);
     _inFront = FirebasePushTokens.inFront().listen(_shown);
   }
 
-  StreamSubscription<Map<String, dynamic>>? _taps;
   StreamSubscription<RemoteMessage>? _inFront;
-
-  void _open(Map<String, dynamic> data) {
-    if (!mounted) return;
-    final navigator = Navigator.of(context);
-    switch (data['type']) {
-      case 'message':
-        final id = data['conversationId'];
-        if (id is String && id.isNotEmpty) {
-          navigator.pushNamed(
-            Routes.thread,
-            arguments: ThreadArgs(conversationId: id),
-          );
-        }
-      case 'notification':
-        navigator.pushNamed(Routes.notifications);
-    }
-  }
 
   /// A notification that arrived with the app in front, which the phone hands
   /// over rather than shows. Only the test is shown: anything else has
@@ -128,7 +106,6 @@ class _MainContainerState extends ConsumerState<MainContainer>
 
   @override
   void dispose() {
-    _taps?.cancel();
     _inFront?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     _navHideProgress.dispose();
@@ -197,8 +174,12 @@ class _MainContainerState extends ConsumerState<MainContainer>
     // window dragged narrow is a phone-shaped space and gets the phone's
     // layout, and a tablet held wide gets the rail. Which operating system
     // this is was never the question.
-    if (Layout.hasRail(context)) return _wide();
-    return _tall();
+    //
+    // A tapped notification opens over either: whatever it is about, rather
+    // than the feed.
+    return PushTapOpener(
+      child: Layout.hasRail(context) ? _wide() : _tall(),
+    );
   }
 
   /// A window: navigation down the side, nothing across the bottom.

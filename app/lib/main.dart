@@ -29,6 +29,8 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'config/supabase_config.dart';
 import 'utils/route_watch.dart';
+import 'services/firebase_push.dart';
+import 'services/push_tap.dart';
 import 'services/share_inbox.dart';
 
 void main() async {
@@ -182,6 +184,7 @@ class _KyronAppState extends ConsumerState<KyronApp> {
 
   StreamSubscription<AuthState>? _authEvents;
   StreamSubscription<SharedContent>? _shares;
+  StreamSubscription<Map<String, dynamic>>? _pushTaps;
 
   @override
   void initState() {
@@ -189,6 +192,17 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     _initializeApp();
     _watchForExternalSessions();
     _watchForShares();
+    _watchForPushTaps();
+  }
+
+  /// Holds a tapped notification until the signed-in app is there to open
+  /// it; MainContainer does the opening. Listened for here, from launch, and
+  /// not on that screen: a tap that starts the app arrives behind the splash
+  /// and the onboarding check, before the screen that would have heard it.
+  void _watchForPushTaps() {
+    _pushTaps = FirebasePushTokens.taps().listen(
+      (data) => ref.read(pendingPushTapProvider.notifier).state = data,
+    );
   }
 
   /// Holds whatever another app shares to Kyron until the signed-in app is
@@ -267,6 +281,7 @@ class _KyronAppState extends ConsumerState<KyronApp> {
   void dispose() {
     _authEvents?.cancel();
     _shares?.cancel();
+    _pushTaps?.cancel();
     super.dispose();
   }
 

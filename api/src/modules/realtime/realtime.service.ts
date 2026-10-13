@@ -17,7 +17,13 @@ export type RealtimeEvent =
   /** Somebody is writing in a conversation the reader is in. */
   | { type: 'message.typing'; conversationId: string; userId: string }
   /** Something happened that the notifications screen would show. */
-  | { type: 'notification.new'; kind: string; actorId: string };
+  | {
+      type: 'notification.new';
+      kind: string;
+      actorId: string;
+      /** The post it is about, when it is about one. */
+      postId?: string;
+    };
 
 /**
  * One socket, or none, per connection; one entry per reader.

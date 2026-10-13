@@ -14,6 +14,17 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **A message notification opened the feed.** The tap was listened for by
+  the signed-in screen itself, which a cold start builds only after the
+  splash and the onboarding check, so a tap that arrived first had nobody to
+  hear it. It is now caught from launch and held until the app is there to
+  open it, over the tab it starts on. Activity notifications open what they
+  are about: a like, reply or repost opens the post, and a follow opens the
+  follower's profile (the server now sends which), rather than the
+  notifications page. Repeat notifications about one post replace each
+  other instead of stacking, which also keeps Android from bundling them
+  under a summary whose tap goes nowhere in particular.
+
 - **"Continue with Google" always opened the browser.** The phone's own
   account sheet was never shown: the app left Google's web client id to be
   found in the Firebase configuration, which comes from a different Google
