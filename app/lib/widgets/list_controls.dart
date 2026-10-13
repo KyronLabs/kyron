@@ -72,7 +72,7 @@ class ListSearchField extends StatelessWidget {
 /// A rounded chip, outlined with the hairline, filled when it is in force.
 ///
 /// The size of the Follow button on a profile -- [ActionButton.compactHeight]
-/// tall, its 13-point semibold label and 18-point icon, the same padding --
+/// tall, its semibold label and 18-point icon, the same padding --
 /// so every small pill in the app is one size. These were 36 tall with a
 /// lighter, smaller label, between Follow and the full-size buttons, and
 /// looked like neither.
@@ -123,7 +123,7 @@ class ListChip extends StatelessWidget {
                   Text(
                     label!,
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: TypographyTokens.fontSize2,
                       fontWeight: FontWeight.w600,
                       color: ink,
                     ),

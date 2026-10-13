@@ -121,7 +121,7 @@ class NavBadge extends StatelessWidget {
             child: Text(
               text,
               style: const TextStyle(
-                fontSize: 9.5,
+                fontSize: TypographyTokens.fontSize0,
                 height: 1,
                 fontWeight: FontWeight.w700,
                 color: Colors.white,

@@ -40,7 +40,8 @@ enum GoogleAction {
 ///
 ///   light screens   #131314 ground, #E3E3E3 text   (Google's dark button)
 ///   dark screens    #F2F2F2 ground, #1F1F1F text   (Google's neutral one)
-///   type            Roboto Medium, 14
+///   type            Roboto Medium, 14 -- drawn at the scale's 13.1, the
+///                   nearest step; the app sets no type off its scale
 ///   logo            18 high, 12 clear of the text, never recoloured
 ///   height          at least 40
 ///
@@ -143,7 +144,7 @@ class GoogleButton extends StatelessWidget {
                         // rather than inheriting Kyron's face is deliberate:
                         // this button belongs to Google's identity, not ours.
                         fontFamily: 'Roboto',
-                        fontSize: 14,
+                        fontSize: TypographyTokens.fontSize2,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.25,
                         color: ink,
