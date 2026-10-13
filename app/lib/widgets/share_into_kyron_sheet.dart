@@ -21,6 +21,7 @@ import '../providers/preferences_provider.dart';
 import '../routes.dart';
 import '../services/link_card_reader.dart';
 import '../services/share_inbox.dart';
+import '../screens/thread_screen.dart' show ThreadArgs;
 import 'create_post/url_preview.dart' show firstLinkIn;
 import 'hairline.dart';
 import 'toast.dart';
@@ -150,6 +151,7 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
     final note = _note.text.trim();
 
     var failed = 0;
+    final sentTo = <String>[];
     try {
       // Pictures go up once, however many people they are going to.
       final pictures = <PendingMedia>[];
@@ -181,6 +183,7 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
               target.conversationId ?? await repo.openWith(target.userId!);
           await sender.send(id, text, media: pictures, linkCard: card);
           if (note.isNotEmpty) await sender.send(id, note);
+          sentTo.add(id);
         } catch (_) {
           failed++;
         }
@@ -200,11 +203,23 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
     }
     unawaited(refreshConversations(ref));
     navigator.pop();
+    // To one person, the conversation it went into is one tap away. To
+    // several, there is no one place to open.
+    final only = sentTo.length == 1 && failed == 0 ? sentTo.single : null;
     Toast.showOn(
       overlay,
       failed == 0
           ? l10n.ui('ui_share_sent', 'Sent')
           : l10n.ui('ui_share_some_failed', 'Sent, but not to everybody.'),
+      action: only == null
+          ? null
+          : ToastAction(
+              l10n.ui('ui_toast_open', 'Open'),
+              () => navigator.pushNamed(
+                Routes.thread,
+                arguments: ThreadArgs(conversationId: only),
+              ),
+            ),
     );
   }
 

@@ -8,6 +8,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../providers/preferences_provider.dart';
 import '../providers/push_provider.dart';
+import '../services/app_browser.dart';
 import '../services/app_preferences.dart';
 
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
@@ -822,8 +823,19 @@ class _SettingsFeedbackScreenState
           );
       if (!mounted) return;
       setState(() => _sending = false);
-      Toast.show(context, 'Sent. It is report #${filed.number}.');
-      Navigator.pop(context);
+      final navigator = Navigator.of(context);
+      Toast.show(
+        context,
+        'Sent. It is report #${filed.number}.',
+        // The report is public, and where any answer to it will be.
+        action: filed.url.isEmpty
+            ? null
+            : ToastAction(
+                AppLocalizations.of(context).ui('ui_toast_view', 'View'),
+                () => AppBrowser.open(navigator.context, filed.url),
+              ),
+      );
+      navigator.pop();
     } catch (error) {
       if (!mounted) return;
       setState(() {

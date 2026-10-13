@@ -18,6 +18,18 @@ enum ToastSpot {
   bottom,
 }
 
+/// Something a toast can do about what it says: open the post it reports
+/// as posted, the conversation it reports as sent.
+///
+/// A toast that says "Posted" and then disappears leaves the reader to go
+/// and find the post. One button, at the end of the line, does it.
+class ToastAction {
+  final String label;
+  final VoidCallback onPressed;
+
+  const ToastAction(this.label, this.onPressed);
+}
+
 /// A short message over whatever is on screen.
 ///
 /// An overlay rather than a SnackBar. A SnackBar belongs to the nearest
@@ -37,6 +49,10 @@ class Toast {
 
   /// How long a message stays. Long enough to read twice at this length.
   static const Duration stay = Duration(milliseconds: 2600);
+
+  /// How long one with something to press stays: long enough to read it,
+  /// decide, and reach the button.
+  static const Duration stayWithAction = Duration(seconds: 5);
 
   /// How long it takes to arrive and to leave.
   static const Duration motion = MotionTokens.fast;
@@ -58,8 +74,16 @@ class Toast {
     ToastSpot spot = ToastSpot.bottom,
     IconData? icon,
     Duration? stay,
+    ToastAction? action,
   }) =>
-      showOn(anchor(context), message, spot: spot, icon: icon, stay: stay);
+      showOn(
+        anchor(context),
+        message,
+        spot: spot,
+        icon: icon,
+        stay: stay,
+        action: action,
+      );
 
   /// Where a message would be drawn, captured now.
   ///
@@ -76,6 +100,7 @@ class Toast {
     ToastSpot spot = ToastSpot.bottom,
     IconData? icon,
     Duration? stay,
+    ToastAction? action,
   }) {
     // No overlay means no app to show it over. Silently doing nothing is
     // right here: a message is never worth crashing a screen for.
@@ -84,13 +109,21 @@ class Toast {
     dismiss();
 
     final entry = OverlayEntry(
-      builder: (context) =>
-          _Toast(message: message, spot: spot, icon: icon, onTap: dismiss),
+      builder: (context) => _Toast(
+        message: message,
+        spot: spot,
+        icon: icon,
+        action: action,
+        onTap: dismiss,
+      ),
     );
     _entry = entry;
     overlay.insert(entry);
 
-    _timer = Timer(stay ?? Toast.stay, dismiss);
+    _timer = Timer(
+      stay ?? (action == null ? Toast.stay : Toast.stayWithAction),
+      dismiss,
+    );
   }
 
   /// Takes the current message away, if there is one.
@@ -106,12 +139,14 @@ class _Toast extends StatefulWidget {
   final String message;
   final ToastSpot spot;
   final IconData? icon;
+  final ToastAction? action;
   final VoidCallback onTap;
 
   const _Toast({
     required this.message,
     required this.spot,
     required this.icon,
+    required this.action,
     required this.onTap,
   });
 
@@ -179,6 +214,9 @@ class _ToastState extends State<_Toast> with SingleTickerProviderStateMixin {
                   const SizedBox(width: SpacingTokens.space12),
                 ],
                 Flexible(
+                  // Along the bottom it takes the width, so a button after it
+                  // sits at the far end rather than against the words.
+                  fit: bottom ? FlexFit.tight : FlexFit.loose,
                   child: Text(
                     widget.message,
                     style: TextStyle(
@@ -189,6 +227,10 @@ class _ToastState extends State<_Toast> with SingleTickerProviderStateMixin {
                     ),
                   ),
                 ),
+                if (widget.action case final action?) ...[
+                  const SizedBox(width: SpacingTokens.space12),
+                  _ActionLabel(action: action),
+                ],
               ],
             ),
           ),
@@ -235,6 +277,60 @@ class _ToastState extends State<_Toast> with SingleTickerProviderStateMixin {
                 ),
               ),
               child: card,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The button at the end of a toast.
+///
+/// The accent, made light enough to read on the dark card in a light theme
+/// and left as it is on the light card in a dark one. The plain accent on
+/// near-black is a dark blue on black.
+class _ActionLabel extends StatelessWidget {
+  final ToastAction action;
+
+  const _ActionLabel({required this.action});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final colour = theme.brightness == Brightness.dark
+        ? scheme.primary
+        : Color.lerp(scheme.primary, Colors.white, 0.45)!;
+
+    return Semantics(
+      button: true,
+      child: InkWell(
+        key: const ValueKey('toast-action'),
+        borderRadius: BorderRadius.circular(Toast.radius),
+        onTap: () {
+          Toast.dismiss();
+          action.onPressed();
+        },
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 32, minWidth: 48),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space8,
+            ),
+            // Both factors: without the height one a Center is as tall as
+            // it is allowed to be, and the toast with it.
+            child: Center(
+              widthFactor: 1,
+              heightFactor: 1,
+              child: Text(
+                action.label,
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize3,
+                  fontWeight: FontWeight.w700,
+                  color: colour,
+                ),
+              ),
             ),
           ),
         ),

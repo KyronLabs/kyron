@@ -225,6 +225,15 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Toasts that open what they are about.** "Posted" (from the composer
+  and from a community) has **View**, which opens the post; "Draft saved"
+  has **Drafts**; a conversation restored from Hidden, or a share sent to
+  one person, has **Open**; a filed report has **View**, which opens it.
+  A toast with a button stays five seconds rather than two and a half, so
+  there is time to reach it. The others -- copied, muted, hidden, failures --
+  are about something already in front of you, or nothing, and stay as they
+  were.
+
 - **New messages show on the Messages tab.** A red count of unread
   conversations sits on its icon, in the bottom bar and the side rail. It
   was fetched and kept fresh by the socket all along, and drawn nowhere, so

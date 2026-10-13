@@ -261,6 +261,14 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
     Toast.show(
       context,
       error ?? l10n.ui('ui_dm_restored', 'Back in your list.'),
+      // Restored from Hidden, it is in the other list now, out of sight: the
+      // way to it is here.
+      action: error != null
+          ? null
+          : ToastAction(
+              l10n.ui('ui_toast_open', 'Open'),
+              () => _open(conversation),
+            ),
     );
     await refreshConversations(ref);
   }

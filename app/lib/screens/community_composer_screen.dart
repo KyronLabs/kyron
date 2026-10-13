@@ -12,6 +12,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/community.dart';
 import '../providers/communities_provider.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
+import '../routes.dart';
 import '../utils/api_error_message.dart';
 import '../providers/composer_provider.dart' show ComposerState;
 import '../utils/media_basket.dart';
@@ -110,11 +111,29 @@ class _CommunityComposerScreenState
     setState(() => _posting = true);
     unawaited(HapticFeedback.mediumImpact());
     try {
-      await ref
+      final created = await ref
           .read(communitiesRepositoryProvider)
           .post(widget.community.slug, _box.text.trim(), media: _media.ready);
       if (!mounted) return;
-      Navigator.pop(context, true);
+      final l10n = AppLocalizations.of(context);
+      final navigator = Navigator.of(context);
+      navigator.pop(true);
+      // Written from the Communities list, the post is somewhere the
+      // reader is not looking; the toast is the way to it.
+      Toast.show(
+        context,
+        l10n.ui('ui_toast_posted', 'Posted'),
+        icon: Iconsax.tick_circle,
+        action: created.id.isEmpty
+            ? null
+            : ToastAction(
+                l10n.ui('ui_toast_view', 'View'),
+                () => navigator.pushNamed(
+                  Routes.postDetail,
+                  arguments: created.id,
+                ),
+              ),
+      );
     } catch (error) {
       if (!mounted) return;
       setState(() => _posting = false);
