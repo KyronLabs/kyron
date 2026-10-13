@@ -1438,6 +1438,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "បានផ្ញើ។ វាគួរតែមកដល់ក្នុងប៉ុន្មានវិនាទី។"),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("ការជូនដំណឹងកំពុងដំណើរការ។"),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានការបង្ហោះនៅឡើយ"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("សហគមន៍ថ្មី"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("ឈ្មោះ"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "អាសយដ្ឋានរបស់វាត្រូវបានបង្កើតពីឈ្មោះ។"),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("មនុស្សនឹងរកឃើញវានៅ"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "អ្នកនឹងជាម្ចាស់។ រូបភាព បដា និងអ្នកសម្របសម្រួលអាចបន្ថែមពីទំព័ររបស់វា បន្ទាប់ពីវាត្រូវបានបង្កើត។"),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("ទំព័រដើម"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះសហគមន៍នៅទំព័រដើម"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "ការបង្ហោះពីសហគមន៍របស់អ្នកក៏បង្ហាញនៅទំព័រដើមដែរ។ ពេលបិទ វានៅទីនេះក្នុងសហគមន៍ ដែលនីមួយៗបង្ហាញអ្វីដែលថ្មី។"),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("បញ្ជីរបស់អ្នក"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("ចំនួនការបង្ហោះថ្មី"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "បង្ហាញថាមានការបង្ហោះថ្មីប៉ុន្មាននៅក្នុងសហគមន៍នីមួយៗ តាំងពីអ្នកបើកវាចុងក្រោយ។"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("សហគមន៍ដែលអ្នកគ្រប់គ្រង"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "សហគមន៍ដែលអ្នកចាប់ផ្ដើម ឬសម្របសម្រួល ត្រូវបានរាយនៅទីនេះ។"),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("ម្ចាស់"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("អ្នកសម្របសម្រួល"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះថ្មី"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("ដែលអ្នកគ្រប់គ្រង"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("ការកំណត់សហគមន៍"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("ស្វែងរក"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("គ្មានសហគមន៍ត្រូវគ្នាទេ។"),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("គ្មានអ្វីថ្មីទេ"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "សហគមន៍នីមួយៗនៅដដែលដូចអ្នកបានទុក។"),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "អ្នកមិនទាន់គ្រប់គ្រងមួយណានៅឡើយ"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("គ្មានអ្វីសល់សម្រាប់ចូលរួមទេ"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "អ្នកនៅក្នុងសហគមន៍ទាំងអស់នៅលើ Kyron។ ចាប់ផ្ដើមមួយទៀត។"),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "សាកល្បងពាក្យផ្សេង ឬចាប់ផ្ដើមសហគមន៍ដោយឈ្មោះនោះ។"),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះចុងក្រោយ"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មាន"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("មើលថ្មីៗ"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("បើក"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("សរសេរការបង្ហោះ"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("សមាជិក៖"),
     };
 
 final messageLookup = MessageLookup();

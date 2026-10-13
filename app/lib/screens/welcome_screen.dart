@@ -17,7 +17,7 @@ import '../routes.dart';
 import '../services/platform_support.dart';
 import '../widgets/app_button.dart';
 import '../widgets/app_language_selector.dart';
-import '../widgets/get_started_art.dart';
+import '../widgets/rooster_art.dart';
 import '../widgets/google_button.dart';
 import '../widgets/terms_gate.dart';
 
@@ -31,8 +31,9 @@ import '../widgets/terms_gate.dart';
 /// The shape is a picture the full width of the screen with a sheet of
 /// content lifted over it, because that is what the reader already knows from
 /// every app that does this well: the top says what kind of place this is and
-/// the bottom says what to do about it. The picture is [GetStartedArt], drawn
-/// rather than shipped, so it is right in both themes and at any size.
+/// the bottom says what to do about it. The picture is [RoosterArt]: a
+/// rooster in big rounded pixels, drawn rather than shipped, so it is sharp
+/// at any size.
 class WelcomeScreen extends ConsumerStatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -262,7 +263,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                 left: 0,
                 right: 0,
                 height: artHeight,
-                child: const GetStartedArt(),
+                child: const RoosterArt(),
               ),
               Positioned(
                 // Lifted over the picture so the two are one thing rather than

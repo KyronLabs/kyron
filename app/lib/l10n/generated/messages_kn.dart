@@ -1444,6 +1444,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ಕಳುಹಿಸಲಾಗಿದೆ. ಕೆಲವೇ ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಬರಬೇಕು."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("ಅಧಿಸೂಚನೆಗಳು ಕೆಲಸ ಮಾಡುತ್ತಿವೆ."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("ಇನ್ನೂ ಯಾವುದೇ ಪೋಸ್ಟ್‌ಗಳಿಲ್ಲ"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("ಹೊಸ ಸಮುದಾಯ"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("ಹೆಸರು"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("ಅದರ ವಿಳಾಸ ಹೆಸರಿನಿಂದ ಆಗುತ್ತದೆ."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("ಜನರು ಇದನ್ನು ಇಲ್ಲಿ ಕಾಣುತ್ತಾರೆ:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಇದರ ಮಾಲೀಕರಾಗುತ್ತೀರಿ. ಇದು ರಚನೆಯಾದ ನಂತರ ಇದರ ಪುಟದಿಂದ ಚಿತ್ರ, ಬ್ಯಾನರ್ ಮತ್ತು ಮಾಡರೇಟರ್‌ಗಳನ್ನು ಸೇರಿಸಬಹುದು."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("ಹೋಮ್"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("ಹೋಮ್‌ನಲ್ಲಿ ಸಮುದಾಯದ ಪೋಸ್ಟ್‌ಗಳು"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ಸಮುದಾಯಗಳ ಪೋಸ್ಟ್‌ಗಳು ಹೋಮ್‌ನಲ್ಲಿಯೂ ಕಾಣಿಸುತ್ತವೆ. ಆಫ್ ಮಾಡಿದರೆ, ಅವು ಇಲ್ಲೇ ಸಮುದಾಯಗಳಲ್ಲಿ ಉಳಿಯುತ್ತವೆ, ಅಲ್ಲಿ ಪ್ರತಿಯೊಂದೂ ಹೊಸದೇನು ಎಂದು ತೋರಿಸುತ್ತದೆ."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮ ಪಟ್ಟಿ"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("ಹೊಸ ಪೋಸ್ಟ್‌ಗಳ ಎಣಿಕೆ"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಕೊನೆಯದಾಗಿ ತೆರೆದ ನಂತರ ಪ್ರತಿ ಸಮುದಾಯದಲ್ಲಿ ಎಷ್ಟು ಪೋಸ್ಟ್‌ಗಳು ಹೊಸದು ಎಂದು ತೋರಿಸಿ."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("ನೀವು ನಡೆಸುವ ಸಮುದಾಯಗಳು"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಆರಂಭಿಸುವ ಅಥವಾ ಮಾಡರೇಟ್ ಮಾಡುವ ಸಮುದಾಯಗಳು ಇಲ್ಲಿ ಪಟ್ಟಿಯಾಗಿವೆ."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("ಮಾಲೀಕ"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("ಮಾಡರೇಟರ್"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("ಹೊಸ ಪೋಸ್ಟ್‌ಗಳು"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("ನೀವು ನಡೆಸುವವು"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("ಸಮುದಾಯ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("ಅನ್ವೇಷಿಸಿ"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "ಯಾವುದೇ ಸಮುದಾಯ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("ಹೊಸದೇನೂ ಇಲ್ಲ"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ಪ್ರತಿ ಸಮುದಾಯ ನೀವು ಬಿಟ್ಟಂತೆಯೇ ಇದೆ."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಇನ್ನೂ ಯಾವುದನ್ನೂ ನಡೆಸುತ್ತಿಲ್ಲ"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("ಸೇರಲು ಏನೂ ಉಳಿದಿಲ್ಲ"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು Kyron ನ ಪ್ರತಿ ಸಮುದಾಯದಲ್ಲೂ ಇದ್ದೀರಿ. ಇನ್ನೊಂದನ್ನು ಆರಂಭಿಸಿ."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "ಬೇರೆ ಪದ ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಆ ಹೆಸರಿನಲ್ಲಿ ಸಮುದಾಯ ಆರಂಭಿಸಿ."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("ಕೊನೆಯ ಪೋಸ್ಟ್"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("ಇನ್ನೂ ಇಲ್ಲ"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("ಹೊಸದನ್ನು ನೋಡಿ"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("ತೆರೆಯಿರಿ"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("ಪೋಸ್ಟ್ ಬರೆಯಿರಿ"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("ಸದಸ್ಯರು:"),
     };
 
 final messageLookup = MessageLookup();

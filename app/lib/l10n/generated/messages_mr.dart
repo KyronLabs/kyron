@@ -1436,6 +1436,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "पाठवले. काही सेकंदांत यायला हवे."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("सूचना काम करत आहेत."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("अजून पोस्ट नाहीत"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("नवीन समुदाय"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("नाव"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "त्याचा पत्ता नावावरून तयार होतो."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("लोकांना तो इथे सापडेल:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही त्याचे मालक असाल. तो तयार झाल्यावर त्याच्या पेजवरून चित्र, बॅनर आणि मॉडरेटर जोडता येतील."),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("होम"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("होममध्ये समुदायाच्या पोस्ट"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या समुदायांच्या पोस्ट होममध्येही दिसतात. बंद केल्यास त्या इथेच समुदायांमध्ये राहतात, जिथे प्रत्येक नवीन काय आहे ते दाखवतो."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("तुमची यादी"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("नवीन पोस्टची संख्या"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "शेवटचे उघडल्यापासून प्रत्येक समुदायात किती पोस्ट नवीन आहेत ते दाखवा."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("तुम्ही चालवता ते समुदाय"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही सुरू करता किंवा मॉडरेट करता ते समुदाय इथे दिसतात."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("मालक"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("मॉडरेटर"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("नवीन पोस्ट"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("तुम्ही चालवता ते"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("समुदाय सेटिंग्ज"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("शोधा"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("कोणताही समुदाय जुळत नाही."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("काही नवीन नाही"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "प्रत्येक समुदाय तुम्ही सोडला तसाच आहे."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("तुम्ही अजून एकही चालवत नाही"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "सामील होण्यासारखे काही उरले नाही"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही Kyron वरील प्रत्येक समुदायात आहात. आणखी एक सुरू करा."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "दुसरा शब्द वापरून पाहा, किंवा त्या नावाने समुदाय सुरू करा."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("शेवटची पोस्ट"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("अजून नाही"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("नवीन पाहा"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("उघडा"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("पोस्ट लिहा"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("सदस्य:"),
     };
 
 final messageLookup = MessageLookup();

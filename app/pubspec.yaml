@@ -93,7 +93,7 @@ flutter:
     - lib/assets/logo.svg
     - lib/assets/google.svg
     - lib/assets/google_g.svg
-    - lib/assets/nature/
+    - lib/assets/rooster.webp
     - lib/l10n/app_en.arb
     - lib/l10n/app_es.arb
     - lib/l10n/app_zh.arb

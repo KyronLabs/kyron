@@ -1437,6 +1437,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Gönderildi. Birkaç saniye içinde ulaşmalı."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Bildirimler çalışıyor."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Henüz gönderi yok"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Yeni topluluk"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Ad"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Adresi addan oluşturulur."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("İnsanlar onu şurada bulacak:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Sahibi sen olacaksın. Resim, kapak ve moderatörler oluşturulduktan sonra sayfasından eklenebilir."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Ana sayfa"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Topluluk gönderileri Ana sayfada"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Topluluklarının gönderileri Ana sayfada da görünür. Kapalıyken burada, Topluluklar'da kalır; her biri neyin yeni olduğunu gösterir."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Listen"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Yeni gönderi sayısı"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Her toplulukta, en son açmandan bu yana kaç gönderinin yeni olduğunu göster."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Yönettiğin topluluklar"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Başlattığın ya da moderatörü olduğun topluluklar burada."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Sahip"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderatör"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Yeni gönderiler"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Yönettiklerin"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Topluluk ayarları"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Keşfet"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Eşleşen topluluk yok."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Yeni bir şey yok"),
+      "ui_community_new_none_detail":
+          MessageLookupByLibrary.simpleMessage("Her topluluk bıraktığın gibi."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Henüz hiçbirini yönetmiyorsun"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Katılacak bir şey kalmadı"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron'daki tüm topluluklardasın. Bir tane daha başlat."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Başka bir kelime dene ya da bu adla bir topluluk başlat."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Son gönderi"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Henüz yok"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Yetiş"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Aç"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("Gönderi yaz"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Üyeler:"),
     };
 
 final messageLookup = MessageLookup();

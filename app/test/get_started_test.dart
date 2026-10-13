@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,7 +17,7 @@ import 'package:kyron_app/services/app_preferences.dart';
 import 'package:kyron_app/services/platform_support.dart';
 import 'package:kyron_app/utils/validators.dart';
 import 'package:kyron_app/widgets/app_logo.dart';
-import 'package:kyron_app/widgets/get_started_art.dart';
+import 'package:kyron_app/widgets/rooster_art.dart';
 import 'package:kyron_app/widgets/google_button.dart';
 import 'package:kyron_app/widgets/terms_gate.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -483,84 +485,111 @@ void main() {
   });
 
   group('the picture', () {
-    /// The file a drawn specimen actually came from, through the resize
-    /// wrapper [Image.asset] puts around the provider when given cacheWidth.
-    String assetOf(Element element) {
-      final provider = (element.widget as Image).image;
-      final inner = provider is ResizeImage ? provider.imageProvider : provider;
-      return inner is AssetImage ? inner.assetName : '';
-    }
+    test('is the artwork itself, shipped and declared', () async {
+      // Not a redrawing: the file, pixel for pixel, at the size it was made.
+      final file = File(RoosterArt.asset);
+      expect(file.existsSync(), isTrue);
+      expect(
+          File('pubspec.yaml').readAsStringSync(), contains(RoosterArt.asset));
 
-    List<String> drawnIn(WidgetTester tester) => find
-        .byType(Image)
-        .evaluate()
-        .map(assetOf)
-        .where((name) => name.startsWith('lib/assets/nature/'))
-        .map((name) => name.split('/').last)
-        .toList();
+      final codec = await ui.instantiateImageCodec(file.readAsBytesSync());
+      final frame = await codec.getNextFrame();
+      expect(frame.image.width, RoosterArt.imageSize.width);
+      expect(frame.image.height, RoosterArt.imageSize.height);
+      frame.image.dispose();
+    });
 
-    Future<void> pumpAt(WidgetTester tester, Size size) async {
-      await tester.binding.setSurfaceSize(const Size(900, 900));
-      addTearDown(() => tester.binding.setSurfaceSize(null));
+    test('knows which squares hold the bird, with the eye among them', () {
+      expect(RoosterArt.squares, hasLength(25));
+      expect(RoosterArt.squares.every((row) => row.length == 20), isTrue);
+      expect(
+        RoosterArt.squares.join().split('').where((c) => c == '#'),
+        hasLength(335),
+      );
+      expect(
+        RoosterArt.squares[RoosterArt.eye.row][RoosterArt.eye.column],
+        '#',
+      );
+    });
+
+    test('fills a phone from the right, the head clear of the status bar', () {
+      final (:scale, :origin) = RoosterArt.layout(const Size(390, 380), 47);
+
+      expect(origin.dy, 47);
+      // Cropped by the right edge, as the artwork is.
+      expect(
+          origin.dx + RoosterArt.imageSize.width * scale, closeTo(390, 0.01));
+      // The comb, head and wattles all in frame: the wattles end 975 pixels
+      // down the artwork.
+      expect(origin.dy + 975 * scale, lessThanOrEqualTo(380.01));
+    });
+
+    test('keeps the whole head in a wide, short window', () {
+      // A close-up of the comb is what filling the width of a desktop window
+      // would give. Smaller, on the right, instead.
+      final (:scale, :origin) = RoosterArt.layout(const Size(1200, 380), 0);
+
+      expect(origin.dy + 975 * scale, lessThanOrEqualTo(380.01));
+      expect(origin.dx, greaterThan(600));
+      expect(
+          origin.dx + RoosterArt.imageSize.width * scale, closeTo(1200, 0.01));
+    });
+
+    Future<void> pumpArt(WidgetTester tester, {bool still = false}) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: Center(
-              child: SizedBox(
-                width: size.width,
-                height: size.height,
-                child: const GetStartedArt(),
-              ),
+          home: MediaQuery(
+            data: MediaQueryData(
+              size: const Size(390, 844),
+              disableAnimations: still,
             ),
+            child: const SizedBox(width: 390, height: 380, child: RoosterArt()),
           ),
         ),
       );
+      // The picture decodes off the test clock.
+      await tester.runAsync(() async {
+        await precacheImage(
+          const AssetImage(RoosterArt.asset),
+          tester.element(find.byType(RoosterArt)),
+        );
+      });
+      await tester.pump();
     }
 
-    testWidgets('draws every specimen, from a file that is really shipped', (
-      tester,
-    ) async {
-      await pumpAt(tester, const Size(390, 380));
+    testWidgets('arrives once, then holds still', (tester) async {
+      await pumpArt(tester);
+      expect(tester.hasRunningAnimations, isTrue);
 
-      expect(drawnIn(tester)..sort(), [
-        'butterfly-green.webp',
-        'butterfly-red.webp',
-        'grass.webp',
-        'lavender.webp',
-        'palm.webp',
-        'tulip.webp',
-      ]);
-
-      // pubspec has to carry the folder, or every one of these is an
-      // errorBuilder returning an empty box. That failure is silent, and it
-      // is exactly what the first version of this picture did: it laid out
-      // perfectly, analysed clean, and rendered an empty rectangle.
-      expect(
-        File('pubspec.yaml').readAsStringSync(),
-        contains('lib/assets/nature/'),
-      );
-      for (final name in drawnIn(tester)) {
-        expect(
-          File('lib/assets/nature/$name').existsSync(),
-          isTrue,
-          reason: '$name is drawn but not in the repository',
-        );
-      }
+      await tester.pumpAndSettle();
+      expect(tester.hasRunningAnimations, isFalse);
     });
 
-    testWidgets('keeps the meadow and drops the sky when the frame is a band', (
+    testWidgets('is all there at once when the phone asks for no motion', (
       tester,
     ) async {
-      // What a resized desktop window leaves this widget: 160 pixels. The
-      // fronds and the high butterfly have nowhere to be in a band that
-      // short, and drawn anyway they lie across the flowers.
-      await pumpAt(tester, const Size(420, 160));
+      await pumpArt(tester, still: true);
 
-      final drawn = drawnIn(tester);
-      expect(drawn, contains('grass.webp'));
-      expect(drawn, contains('lavender.webp'));
-      expect(drawn, isNot(contains('palm.webp')));
-      expect(drawn, isNot(contains('butterfly-red.webp')));
+      expect(tester.hasRunningAnimations, isFalse);
+    });
+
+    testWidgets('asks for dark status bar icons over its light ground', (
+      tester,
+    ) async {
+      // In the dark theme too: the ground is the artwork's off-white either
+      // way, and light icons would be white on white.
+      await pumpArt(tester);
+      final region = tester.widget<AnnotatedRegion<SystemUiOverlayStyle>>(
+        find.byType(AnnotatedRegion<SystemUiOverlayStyle>).first,
+      );
+      expect(region.value.statusBarIconBrightness, Brightness.dark);
+      await tester.pumpAndSettle();
+    });
+
+    test('nothing of the meadow it replaced is left', () {
+      expect(File('pubspec.yaml').readAsStringSync(),
+          isNot(contains('lib/assets/nature/')));
+      expect(Directory('lib/assets/nature').existsSync(), isFalse);
     });
   });
 }

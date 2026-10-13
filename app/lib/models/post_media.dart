@@ -99,6 +99,9 @@ class PostMedia {
     return text.isEmpty ? null : text;
   }
 
+  /// What the API's name for a kind of attachment means here.
+  static MediaKind kindFromWire(Object? value) => _kindOf(value);
+
   static MediaKind _kindOf(Object? value) {
     switch ((value as String?)?.toUpperCase()) {
       case 'VIDEO':

@@ -1555,6 +1555,69 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Gesendet. Sie sollte in wenigen Sekunden ankommen."),
       "ui_push_working": MessageLookupByLibrary.simpleMessage(
           "Benachrichtigungen funktionieren."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Noch keine Beiträge"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Neue Gemeinschaft"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Name"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Die Adresse entsteht aus dem Namen."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Zu finden unter"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Du wirst Eigentümer. Bild, Banner und Moderatoren lassen sich auf ihrer Seite hinzufügen, sobald es sie gibt."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Startseite"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Gemeinschaftsbeiträge auf der Startseite"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Beiträge aus deinen Gemeinschaften erscheinen auch auf der Startseite. Aus, bleiben sie hier in Gemeinschaften, wo jede zeigt, was neu ist."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Deine Liste"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Anzahl neuer Beiträge"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Zeigen, wie viele Beiträge in jeder Gemeinschaft neu sind, seit du sie zuletzt geöffnet hast."),
+      "ui_community_settings_running": MessageLookupByLibrary.simpleMessage(
+          "Gemeinschaften, die du leitest"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Gemeinschaften, die du gründest oder moderierst, stehen hier."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Eigentümer"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Neue Beiträge"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Von dir geleitet"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Gemeinschafts-Einstellungen"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Entdecken"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Keine Gemeinschaften passen."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Nichts Neues"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Jede Gemeinschaft ist so, wie du sie verlassen hast."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Du leitest noch keine"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Nichts mehr zum Beitreten"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Du bist in jeder Gemeinschaft auf Kyron. Gründe eine weitere."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "Versuch ein anderes Wort, oder gründe eine Gemeinschaft mit diesem Namen."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Letzter Beitrag"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Noch keiner"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Aufholen"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Öffnen"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Beitrag schreiben"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("Mitglieder:"),
     };
 
 final messageLookup = MessageLookup();

@@ -71,6 +71,10 @@ model User {
   // means neither sees "Seen".
   readReceipts Boolean @default(true)
 
+  // Whether posts from this account's communities also appear in Home. Off,
+  // they stay in Communities, where each one shows what is new.
+  communityPostsInHome Boolean @default(true)
+
   // Timestamps
   createdAt DateTime  @default(now()) @db.Timestamptz()
   updatedAt DateTime  @updatedAt @db.Timestamptz()
@@ -208,6 +212,9 @@ model Post {
 
   @@index([authorId])
   @@index([communityId])
+  // The newest post in each community, and how many came after a member last
+  // looked: what every row of the Communities list is made of.
+  @@index([communityId, createdAt(sort: Desc)])
   // The feed's only ordering. id breaks ties so a cursor is stable when two
   // posts share a timestamp, which is common when seeding or importing.
   @@index([createdAt(sort: Desc), id(sort: Desc)])
@@ -1021,6 +1028,11 @@ model CommunityMember {
   userId      String        @db.Uuid
   role        CommunityRole @default(MEMBER)
   joinedAt    DateTime      @default(now()) @db.Timestamptz()
+
+  // When this member last opened the community. Posts by other people after
+  // it are what the Communities list counts as new; null means never opened
+  // since this was added, and joinedAt stands in for it.
+  lastReadAt DateTime? @db.Timestamptz()
 
   community Community @relation(fields: [communityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)

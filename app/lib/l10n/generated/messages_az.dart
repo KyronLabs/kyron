@@ -1528,6 +1528,67 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Göndərildi. Bir neçə saniyəyə gəlməlidir."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Bildirişlər işləyir."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Hələ paylaşım yoxdur"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Yeni icma"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Ad"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Ünvanı addan yaradılır."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("İnsanlar onu burada tapacaq:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Sahibi siz olacaqsınız. Şəkil, baner və moderatorlar yarandıqdan sonra onun səhifəsindən əlavə edilə bilər."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Ana səhifə"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "İcma paylaşımları Ana səhifədə"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "İcmalarınızın paylaşımları Ana səhifədə də görünür. Söndürüləndə burada, İcmalarda qalır, hər biri yeni olanı göstərir."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Siyahınız"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Yeni paylaşım sayı"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Hər icmada sonuncu dəfə açdığınızdan bəri neçə paylaşımın yeni olduğunu göstər."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("İdarə etdiyiniz icmalar"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Başlatdığınız və ya moderasiya etdiyiniz icmalar burada sadalanır."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Sahib"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Yeni paylaşımlar"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("İdarə etdikləriniz"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("İcma ayarları"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Kəşf et"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Uyğun icma yoxdur."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Yenilik yoxdur"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Hər icma onu tərk etdiyiniz kimidir."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Hələ heç birini idarə etmirsiniz"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Qoşulmaq üçün heç nə qalmayıb"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron-dakı bütün icmalardasınız. Başqasını başladın."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Başqa söz yoxlayın və ya bu adla icma başladın."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Son paylaşım"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Hələ yoxdur"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Yeniliklərə bax"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Aç"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Paylaşım yaz"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Üzvlər:"),
     };
 
 final messageLookup = MessageLookup();

@@ -1445,6 +1445,70 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Trimisă. Ar trebui să sosească în câteva secunde."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Notificările funcționează."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Încă nu sunt postări"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Comunitate nouă"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nume"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Adresa se face din nume."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Oamenii o vor găsi la"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Vei fi proprietarul ei. O imagine, un banner și moderatori pot fi adăugați din pagina ei, odată creată."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Acasă"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Postările comunităților în Acasă"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Postările din comunitățile tale apar și în Acasă. Dezactivat, rămân aici, în Comunități, unde fiecare arată ce e nou."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Lista ta"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Numărul de postări noi"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Arată câte postări sunt noi în fiecare comunitate de când ai deschis-o ultima dată."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Comunități pe care le conduci"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Aici sunt comunitățile pe care le creezi sau le moderezi."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Proprietar"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Postări noi"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Conduse de tine"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Setările comunităților"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Descoperă"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Nicio comunitate nu se potrivește."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Nimic nou"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Fiecare comunitate e cum ai lăsat-o."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Încă nu conduci niciuna"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Nu a mai rămas nimic la care să te alături"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ești în toate comunitățile de pe Kyron. Creează încă una."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Încearcă alt cuvânt sau creează o comunitate cu acest nume."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Ultima postare"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Încă niciuna"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Recuperează"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Deschide"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Scrie o postare"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Membri:"),
     };
 
 final messageLookup = MessageLookup();

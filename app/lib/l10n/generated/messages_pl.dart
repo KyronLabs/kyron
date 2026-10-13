@@ -1444,6 +1444,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Wysłano. Powinno dotrzeć w ciągu kilku sekund."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Powiadomienia działają."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Jeszcze nie ma postów"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nowa społeczność"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nazwa"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Adres powstaje z nazwy."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Ludzie znajdą ją pod adresem"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Będziesz jej właścicielem. Zdjęcie, baner i moderatorów dodasz na jej stronie, gdy już powstanie."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Główna"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Posty społeczności na Głównej"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Posty z Twoich społeczności pojawiają się też na Głównej. Po wyłączeniu zostają tutaj, w Społecznościach, gdzie każda pokazuje, co nowego."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Twoja lista"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Liczba nowych postów"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Pokazuj, ile postów jest nowych w każdej społeczności od czasu, gdy ostatnio ją otwierałeś."),
+      "ui_community_settings_running": MessageLookupByLibrary.simpleMessage(
+          "Społeczności, które prowadzisz"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Tu są społeczności, które zakładasz lub moderujesz."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Właściciel"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nowe posty"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Prowadzone przez Ciebie"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Ustawienia społeczności"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Odkrywaj"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Żadna społeczność nie pasuje."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Nic nowego"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Każda społeczność jest taka, jak ją zostawiłeś."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Nie prowadzisz jeszcze żadnej"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Nie ma już do czego dołączyć"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Jesteś we wszystkich społecznościach na Kyronie. Załóż kolejną."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Spróbuj innego słowa albo załóż społeczność o tej nazwie."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Ostatni post"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Jeszcze brak"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Nadrób"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Otwórz"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("Napisz post"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("Członkowie:"),
     };
 
 final messageLookup = MessageLookup();

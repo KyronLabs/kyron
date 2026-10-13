@@ -21,6 +21,7 @@ class AppPreferences {
   static const _kContentLanguages = 'pref_content_languages';
   static const _kTypingShown = 'pref_dm_typing';
   static const _kLinkPreviews = 'pref_dm_link_previews';
+  static const _kCommunityCounts = 'pref_community_counts';
 
   /// The scales the font-size screen offers, smallest first.
   static const textScales = <double>[0.85, 1.0, 1.15, 1.3];
@@ -150,4 +151,11 @@ class AppPreferences {
 
   Future<void> writeLinkPreviews(bool enabled) async =>
       (await _prefs).setBool(_kLinkPreviews, enabled);
+
+  /// Whether the Communities list shows how many posts are new in each.
+  Future<bool> readCommunityCounts() async =>
+      (await _prefs).getBool(_kCommunityCounts) ?? true;
+
+  Future<void> writeCommunityCounts(bool shown) async =>
+      (await _prefs).setBool(_kCommunityCounts, shown);
 }

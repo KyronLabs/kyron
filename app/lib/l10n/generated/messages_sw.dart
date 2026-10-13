@@ -1439,6 +1439,69 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Imetumwa. Inapaswa kufika ndani ya sekunde chache."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Arifa zinafanya kazi."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Bado hakuna machapisho"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Jumuiya mpya"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Jina"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Anwani yake hutengenezwa kutokana na jina."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Watu wataipata kwenye"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Utakuwa mmiliki wake. Picha, bango na wasimamizi wanaweza kuongezwa kutoka ukurasa wake ikishakuwepo."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Nyumbani"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Machapisho ya jumuiya Nyumbani"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Machapisho kutoka jumuiya zako pia huonekana Nyumbani. Ikizimwa, hubaki hapa kwenye Jumuiya, ambapo kila moja huonyesha kilicho kipya."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Orodha yako"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Idadi ya machapisho mapya"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Onyesha ni machapisho mangapi mapya katika kila jumuiya tangu ulipoifungua mara ya mwisho."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Jumuiya unazoendesha"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Jumuiya unazoanzisha au kusimamia zimeorodheshwa hapa."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Mmiliki"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Msimamizi"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Machapisho mapya"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Unazoendesha"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Mipangilio ya jumuiya"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Gundua"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Hakuna jumuiya inayolingana."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Hakuna jipya"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kila jumuiya iko kama ulivyoiacha."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Bado huendeshi yoyote"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Hakuna kilichobaki cha kujiunga"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Uko katika kila jumuiya kwenye Kyron. Anzisha nyingine."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Jaribu neno lingine, au anzisha jumuiya kwa jina hilo."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Chapisho la mwisho"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Bado hakuna"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Pata yaliyopita"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Fungua"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Andika chapisho"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("Wanachama:"),
     };
 
 final messageLookup = MessageLookup();

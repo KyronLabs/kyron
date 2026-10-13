@@ -1447,6 +1447,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ուղարկված է։ Այն պետք է հասնի մի քանի վայրկյանում։"),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Ծանուցումներն աշխատում են։"),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Դեռ գրառումներ չկան"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Նոր համայնք"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Անուն"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Հասցեն ստեղծվում է անունից։"),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage(
+          "Մարդիկ այն կգտնեն այս հասցեով՝"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Դուք կլինեք դրա սեփականատերը։ Նկար, պաստառ և մոդերատորներ կարելի է ավելացնել դրա էջից՝ ստեղծվելուց հետո։"),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Գլխավոր"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Համայնքների գրառումները Գլխավորում"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Ձեր համայնքների գրառումները երևում են նաև Գլխավորում։ Անջատված լինելու դեպքում մնում են այստեղ՝ Համայնքներում, որտեղ յուրաքանչյուրը ցույց է տալիս նորը։"),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Ձեր ցանկը"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Նոր գրառումների քանակը"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Ցույց տալ, թե յուրաքանչյուր համայնքում քանի գրառում է նոր վերջին բացելուց ի վեր։"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Ձեր ղեկավարած համայնքները"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ձեր ստեղծած կամ մոդերացրած համայնքները նշված են այստեղ։"),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Սեփականատեր"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Մոդերատոր"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Նոր գրառումներ"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Ձեր ղեկավարածները"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Համայնքների կարգավորումներ"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Բացահայտել"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Համապատասխան համայնքներ չկան։"),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Նորություն չկա"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Յուրաքանչյուր համայնք այնպիսին է, ինչպիսին թողել եք։"),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Դեռ ոչ մեկը չեք ղեկավարում"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Միանալու այլևս ոչինչ չկա"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Դուք Kyron-ի բոլոր համայնքներում եք։ Ստեղծեք ևս մեկը։"),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Փորձեք այլ բառ կամ ստեղծեք այդ անունով համայնք։"),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Վերջին գրառումը"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Դեռ չկա"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Տեսնել նորերը"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Բացել"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Գրել գրառում"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Անդամներ՝"),
     };
 
 final messageLookup = MessageLookup();

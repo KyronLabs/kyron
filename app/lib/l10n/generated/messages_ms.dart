@@ -1438,6 +1438,69 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Dihantar. Ia sepatutnya tiba dalam beberapa saat."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Pemberitahuan berfungsi."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Belum ada siaran"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Komuniti baharu"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nama"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Alamatnya dibuat daripada nama."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Orang akan menemuinya di"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Anda akan memilikinya. Gambar, sepanduk dan moderator boleh ditambah dari halamannya setelah ia wujud."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Utama"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Siaran komuniti di Utama"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Siaran daripada komuniti anda juga muncul di Utama. Jika dimatikan, ia kekal di sini dalam Komuniti, tempat setiap satu menunjukkan apa yang baharu."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Senarai anda"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Kiraan siaran baharu"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Tunjukkan berapa siaran yang baharu dalam setiap komuniti sejak kali terakhir anda membukanya."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Komuniti yang anda kendalikan"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Komuniti yang anda mulakan atau moderasi disenaraikan di sini."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Pemilik"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Siaran baharu"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Yang anda kendalikan"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Tetapan komuniti"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Teroka"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Tiada komuniti yang sepadan."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Tiada yang baharu"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Setiap komuniti masih seperti yang anda tinggalkan."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Anda belum mengendalikan apa-apa"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Tiada lagi yang boleh disertai"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Anda berada dalam setiap komuniti di Kyron. Mulakan satu lagi."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Cuba perkataan lain, atau mulakan komuniti dengan nama itu."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Siaran terakhir"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Belum ada"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Lihat baharu"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Buka"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Tulis siaran"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Ahli:"),
     };
 
 final messageLookup = MessageLookup();

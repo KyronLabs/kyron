@@ -1447,6 +1447,70 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Envoyée. Elle devrait arriver dans quelques secondes."),
       "ui_push_working": MessageLookupByLibrary.simpleMessage(
           "Les notifications fonctionnent."),
+      "ui_community_no_posts": MessageLookupByLibrary.simpleMessage(
+          "Aucune publication pour l'instant"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nouvelle communauté"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nom"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Son adresse est tirée du nom."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("On la trouvera à l'adresse"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Vous en serez propriétaire. Une image, une bannière et des modérateurs peuvent être ajoutés depuis sa page une fois créée."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Accueil"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Publications des communautés dans l'Accueil"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Les publications de vos communautés apparaissent aussi dans l'Accueil. Désactivé, elles restent ici dans Communautés, où chacune montre ce qui est nouveau."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Votre liste"),
+      "ui_community_counts": MessageLookupByLibrary.simpleMessage(
+          "Nombre de nouvelles publications"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Afficher combien de publications sont nouvelles dans chaque communauté depuis votre dernière visite."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Communautés que vous gérez"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Les communautés que vous créez ou modérez sont listées ici."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Propriétaire"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Modérateur"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nouvelles publications"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Celles que vous gérez"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Paramètres des communautés"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Découvrir"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Aucune communauté ne correspond."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Rien de nouveau"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Chaque communauté est telle que vous l'avez laissée."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Vous n'en gérez aucune pour l'instant"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Plus rien à rejoindre"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Vous êtes dans toutes les communautés de Kyron. Créez-en une autre."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Essayez un autre mot, ou créez une communauté de ce nom."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Dernière publication"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Aucune pour l'instant"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Rattraper"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Ouvrir"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Écrire une publication"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Membres :"),
     };
 
 final messageLookup = MessageLookup();

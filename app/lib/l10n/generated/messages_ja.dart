@@ -1212,6 +1212,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_push_test_sent":
           MessageLookupByLibrary.simpleMessage("送信しました。数秒で届くはずです。"),
       "ui_push_working": MessageLookupByLibrary.simpleMessage("通知は正常に動作しています。"),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("まだ投稿はありません"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("新しいコミュニティ"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("名前"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("アドレスは名前から作られます。"),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage("アドレス:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "あなたがオーナーになります。画像、バナー、モデレーターは作成後にそのページから追加できます。"),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("ホーム"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("コミュニティの投稿をホームに表示"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "参加しているコミュニティの投稿はホームにも表示されます。オフにすると、ここコミュニティに残り、それぞれ新着がわかります。"),
+      "ui_community_settings_list": MessageLookupByLibrary.simpleMessage("リスト"),
+      "ui_community_counts": MessageLookupByLibrary.simpleMessage("新着投稿の件数"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "最後に開いてから各コミュニティに何件の新着投稿があるかを表示します。"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("運営しているコミュニティ"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "作成したコミュニティやモデレーターを務めるコミュニティがここに表示されます。"),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("オーナー"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("モデレーター"),
+      "ui_community_filter_new": MessageLookupByLibrary.simpleMessage("新着投稿"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("運営中"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("コミュニティの設定"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("見つける"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("一致するコミュニティはありません。"),
+      "ui_community_new_none": MessageLookupByLibrary.simpleMessage("新着はありません"),
+      "ui_community_new_none_detail":
+          MessageLookupByLibrary.simpleMessage("どのコミュニティも前に見たときのままです。"),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("運営しているコミュニティはまだありません"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("参加できるコミュニティは残っていません"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyronのすべてのコミュニティに参加しています。新しく作りましょう。"),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage("別の言葉で試すか、その名前でコミュニティを作りましょう。"),
+      "ui_community_last_post": MessageLookupByLibrary.simpleMessage("最新の投稿"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("まだありません"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("新着を見る"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("開く"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("投稿する"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("メンバー:"),
     };
 
 final messageLookup = MessageLookup();

@@ -200,6 +200,15 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Community settings.** A gear on Communities opens them: whether posts from
+  your communities also appear in Home (held by the server, and it governs
+  both Home tabs; a new `User.communityPostsInHome` column, `GET` and
+  `PUT /communities/settings`), whether the list shows new-post counts, and
+  the communities you run, each one tap from managing it.
+- **New community as a page of its own**, opened from the bar at the top of
+  Communities, showing the address while the name is typed. It was a sheet
+  behind a floating button that the keyboard pushed half off the screen.
+
 - **Message settings.** A gear on Messages opens them: read receipts (held by
   the server and reciprocal: off means nobody sees yours and you see nobody's),
   whether the other person sees you typing, and link previews. A new
@@ -277,6 +286,33 @@ section for that version, so what is written here is what people read.
   4–12 MB a phone's sensor produces. In all 68 catalogs.
 
 ### Changed
+
+- **The welcome screen's picture is a rooster in big rounded pixels.** The
+  meadow of cut-out photographs -- fronds, grass, lavender, a tulip and two
+  butterflies -- is gone, with its six images and the script that cut them.
+  The rooster is the artwork itself, shipped losslessly so its colours are
+  exactly the artist's, on its own off-white in both themes, anchored top
+  right so the bird looks into the space on the left and the comb, head and
+  wattles always fit. The first time it shows, it arrives square by square
+  from the eye outward and settles into the exact picture; all at once for
+  anybody whose phone asks for less motion. The status bar icons go dark over
+  it in either theme.
+
+- **Communities is a page of cards.** Each community you are in is a card:
+  its picture in a tile, the name, "Members: 12" and your role, the newest
+  post ("Ada: ...", "You: ...", or "Photo" for a post with no words) with a
+  count of what is new since you last opened it, and at the foot when the
+  last post was, a Catch up / Open button and a button to write in it --
+  filled when there is something new, outlined when there is not. Discover is
+  a shelf of smaller cards with a description and a Join pill. The busiest
+  community is at the top; a filter menu (All, New posts, Yours to run) and a
+  Discover chip replace the two tabs, with a search box over both. Opening a
+  community clears its count (`PUT /communities/:slug/read`, a new
+  `CommunityMember.lastReadAt` column). Previews follow the same blocks,
+  mutes and hidden posts as the community's page. There is no separate feed
+  of community posts: Home already carries them, and the cards say what is
+  new. Names that would collide with the app's own routes (mine, discover,
+  settings) can no longer be taken.
 
 - **Messages has a filter menu and a Hidden chip instead of All and Unread
   tabs.** The menu picks All, Unread or Unanswered (the conversations whose

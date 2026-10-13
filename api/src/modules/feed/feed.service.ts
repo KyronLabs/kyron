@@ -476,7 +476,10 @@ export class FeedService {
     // members: pushing them at everybody is what makes people stop posting in
     // them, and hiding them from the members too is what made joining a
     // community mean remembering to go and look at it.
-    const mine = await this.joinedCommunityIds(viewerId);
+    // Unless the reader has asked for them to stay in Communities.
+    const mine = (await this.communityPostsInHome(viewerId))
+      ? await this.joinedCommunityIds(viewerId)
+      : [];
     const where = await this.withFilters(
       {
         deletedAt: null,
@@ -497,6 +500,14 @@ export class FeedService {
    * list is short, and `WHERE communityId IN (...)` against a literal list
    * plans far better than a correlated subquery over the candidate pool.
    */
+  private async communityPostsInHome(viewerId: string): Promise<boolean> {
+    const user = await this.prisma.user.findUnique({
+      where: { id: viewerId },
+      select: { communityPostsInHome: true },
+    });
+    return user?.communityPostsInHome ?? true;
+  }
+
   private async joinedCommunityIds(viewerId: string): Promise<string[]> {
     const rows = await this.prisma.communityMember.findMany({
       where: { userId: viewerId },
@@ -715,6 +726,19 @@ export class FeedService {
       followedIds: new Set(follows.map((f) => f.followingId)),
       topicIds: new Set(topics.map((t) => t.interestId)),
     };
+  }
+
+  /**
+   * Narrows any post query to what this reader may see: the same blocks,
+   * mutes, hidden posts and muted words every list here applies. For lists
+   * built elsewhere -- the Communities list previews a community's newest
+   * post, and must not preview one its page would hide.
+   */
+  visibleWhere(
+    where: Prisma.PostWhereInput,
+    viewerId: string,
+  ): Promise<Prisma.PostWhereInput> {
+    return this.withFilters(where, viewerId);
   }
 
   /** One account's posts, filtered by whom the reader has blocked. */
@@ -1095,9 +1119,16 @@ export class FeedService {
       select: { followingId: true },
     });
     const authorIds = [...follows.map((f) => f.followingId), viewerId];
+    const withCommunities = await this.communityPostsInHome(viewerId);
 
     const where = await this.withFilters(
-      { deletedAt: null, authorId: { in: authorIds } },
+      {
+        deletedAt: null,
+        authorId: { in: authorIds },
+        // Following is half of Home: the setting that keeps community posts
+        // out of one keeps them out of both.
+        ...(withCommunities ? {} : { communityId: null }),
+      },
       viewerId,
     );
     return this.page(where, viewerId, limit, cursor);

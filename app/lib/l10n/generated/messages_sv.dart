@@ -1438,6 +1438,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Skickad. Den borde komma fram inom några sekunder."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Aviseringar fungerar."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Inga inlägg än"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Ny gemenskap"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Namn"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Adressen görs av namnet."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Folk hittar den på"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Du äger den. En bild, en banner och moderatorer kan läggas till från dess sida när den finns."),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("Hem"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Gemenskapsinlägg i Hem"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Inlägg från dina gemenskaper visas också i Hem. Avstängt stannar de här i Gemenskaper, där var och en visar vad som är nytt."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Din lista"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Antal nya inlägg"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Visa hur många inlägg som är nya i varje gemenskap sedan du senast öppnade den."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Gemenskaper du driver"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Gemenskaper du startar eller modererar visas här."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Ägare"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nya inlägg"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Som du driver"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Inställningar för gemenskaper"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Upptäck"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Inga gemenskaper matchar."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Inget nytt"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Varje gemenskap är som du lämnade den."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Du driver ingen än"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Inget kvar att gå med i"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Du är med i alla gemenskaper på Kyron. Starta en till."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Prova ett annat ord, eller starta en gemenskap med det namnet."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Senaste inlägg"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Inget än"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Kom ikapp"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Öppna"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Skriv ett inlägg"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("Medlemmar:"),
     };
 
 final messageLookup = MessageLookup();

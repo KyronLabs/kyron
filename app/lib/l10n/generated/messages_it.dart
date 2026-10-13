@@ -1443,6 +1443,69 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Inviata. Dovrebbe arrivare in pochi secondi."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Le notifiche funzionano."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Ancora nessun post"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nuova community"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nome"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Il suo indirizzo nasce dal nome."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("La troveranno all'indirizzo"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Ne sarai il proprietario. Un'immagine, un banner e i moderatori si aggiungono dalla sua pagina, una volta creata."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Home"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Post delle community nella Home"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "I post delle tue community compaiono anche nella Home. Se disattivato, restano qui in Community, dove ognuna mostra cosa c'è di nuovo."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("La tua lista"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Conteggio dei nuovi post"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Mostra quanti post sono nuovi in ogni community dall'ultima volta che l'hai aperta."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Community che gestisci"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Qui trovi le community che crei o moderi."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Proprietario"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderatore"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nuovi post"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Gestite da te"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Impostazioni community"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Scopri"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Nessuna community corrisponde."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Niente di nuovo"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ogni community è come l'hai lasciata."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "Non ne gestisci ancora nessuna"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Non resta nulla a cui unirsi"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Sei in ogni community di Kyron. Creane un'altra."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Prova un'altra parola, o crea una community con quel nome."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Ultimo post"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Ancora nessuno"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Mettiti in pari"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Apri"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Scrivi un post"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Membri:"),
     };
 
 final messageLookup = MessageLookup();

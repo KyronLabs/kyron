@@ -1434,6 +1434,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ارسال شد. باید ظرف چند ثانیه برسد."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("اعلان‌ها کار می‌کنند."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("هنوز پستی نیست"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("انجمن جدید"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("نام"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("نشانی آن از نام ساخته می‌شود."),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage(
+          "مردم آن را اینجا پیدا می‌کنند:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "مالک آن شما خواهید بود. تصویر، بنر و ناظران را پس از ساخته شدن می‌توان از صفحهٔ آن افزود."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("خانه"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("پست‌های انجمن در خانه"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "پست‌های انجمن‌های شما در خانه هم نمایش داده می‌شوند. اگر خاموش باشد، همین‌جا در انجمن‌ها می‌مانند، جایی که هرکدام نشان می‌دهد چه چیزی تازه است."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("فهرست شما"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("شمار پست‌های تازه"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "نشان بده از آخرین باری که هر انجمن را باز کردی، چند پست در آن تازه است."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("انجمن‌هایی که اداره می‌کنید"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "انجمن‌هایی که راه می‌اندازید یا نظارت می‌کنید اینجا فهرست می‌شوند."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("مالک"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("ناظر"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("پست‌های تازه"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("اداره‌شده توسط شما"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("تنظیمات انجمن‌ها"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("کشف"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("هیچ انجمنی مطابقت ندارد."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("چیز تازه‌ای نیست"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "هر انجمن همان‌طور است که ترکش کردید."),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "هنوز هیچ‌کدام را اداره نمی‌کنید"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("چیزی برای پیوستن نمانده"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "شما در همهٔ انجمن‌های Kyron هستید. یکی دیگر راه بیندازید."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "واژهٔ دیگری را امتحان کنید، یا انجمنی با این نام راه بیندازید."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("آخرین پست"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("هنوز هیچ"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("تازه‌ها را ببین"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("باز کردن"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("نوشتن پست"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("اعضا:"),
     };
 
 final messageLookup = MessageLookup();

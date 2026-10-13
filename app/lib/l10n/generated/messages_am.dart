@@ -1324,6 +1324,64 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ተልኳል። በጥቂት ሰከንዶች ውስጥ መድረስ አለበት።"),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("ማሳወቂያዎች እየሰሩ ነው።"),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("እስካሁን ልጥፎች የሉም"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("አዲስ ማህበረሰብ"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("ስም"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("አድራሻው ከስሙ ይሠራል።"),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("ሰዎች የሚያገኙት በ"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "ባለቤቱ እርስዎ ይሆናሉ። ምስል፣ ባነር እና አወያዮች ከተፈጠረ በኋላ ከገጹ ሊታከሉ ይችላሉ።"),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("ቤት"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("የማህበረሰብ ልጥፎች በቤት ውስጥ"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "ከማህበረሰቦችዎ የሚወጡ ልጥፎች በቤት ውስጥም ይታያሉ። ሲጠፋ፣ እዚህ በማህበረሰቦች ውስጥ ይቆያሉ፣ እያንዳንዱም አዲስ የሆነውን ያሳያል።"),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("የእርስዎ ዝርዝር"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("የአዲስ ልጥፎች ብዛት"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "ለመጨረሻ ጊዜ ከከፈቱት ወዲህ በእያንዳንዱ ማህበረሰብ ውስጥ ስንት ልጥፎች አዲስ እንደሆኑ አሳይ።"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("የሚያስተዳድሯቸው ማህበረሰቦች"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "የሚጀምሯቸው ወይም የሚያወያዩዋቸው ማህበረሰቦች እዚህ ተዘርዝረዋል።"),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("ባለቤት"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("አወያይ"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("አዲስ ልጥፎች"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("የሚያስተዳድሯቸው"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("የማህበረሰብ ቅንብሮች"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("ያግኙ"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("የሚዛመዱ ማህበረሰቦች የሉም።"),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("አዲስ ነገር የለም"),
+      "ui_community_new_none_detail":
+          MessageLookupByLibrary.simpleMessage("እያንዳንዱ ማህበረሰብ እንደተዉት ነው።"),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("እስካሁን የሚያስተዳድሩት የለም"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("የሚቀላቀሉት የቀረ የለም"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "በKyron ላይ ባሉ ሁሉም ማህበረሰቦች ውስጥ ነዎት። ሌላ ይጀምሩ።"),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "ሌላ ቃል ይሞክሩ፣ ወይም በዚያ ስም ማህበረሰብ ይጀምሩ።"),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("የመጨረሻ ልጥፍ"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("እስካሁን የለም"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("ይከታተሉ"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("ክፈት"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("ልጥፍ ይጻፉ"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("አባላት፦"),
     };
 
 final messageLookup = MessageLookup();

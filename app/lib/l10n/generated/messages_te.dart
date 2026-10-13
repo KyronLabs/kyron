@@ -1443,6 +1443,69 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "పంపబడింది. కొన్ని సెకన్లలో రావాలి."),
       "ui_push_working": MessageLookupByLibrary.simpleMessage(
           "నోటిఫికేషన్‌లు పనిచేస్తున్నాయి."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("ఇంకా పోస్ట్‌లు లేవు"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("కొత్త కమ్యూనిటీ"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("పేరు"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "దాని చిరునామా పేరు నుండి తయారవుతుంది."),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage(
+          "ప్రజలు దీన్ని ఇక్కడ కనుగొంటారు:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "మీరే దీని యజమాని. ఇది తయారైన తర్వాత దీని పేజీ నుండి చిత్రం, బ్యానర్, మోడరేటర్‌లను జోడించవచ్చు."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("హోమ్"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("హోమ్‌లో కమ్యూనిటీ పోస్ట్‌లు"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "మీ కమ్యూనిటీల పోస్ట్‌లు హోమ్‌లో కూడా కనిపిస్తాయి. ఆఫ్ చేస్తే అవి ఇక్కడ కమ్యూనిటీలలోనే ఉంటాయి, అక్కడ ప్రతి ఒక్కటీ కొత్తది ఏమిటో చూపిస్తుంది."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("మీ జాబితా"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("కొత్త పోస్ట్‌ల సంఖ్య"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "చివరిసారి తెరిచినప్పటి నుండి ప్రతి కమ్యూనిటీలో ఎన్ని పోస్ట్‌లు కొత్తవో చూపించు."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("మీరు నడిపే కమ్యూనిటీలు"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "మీరు ప్రారంభించే లేదా మోడరేట్ చేసే కమ్యూనిటీలు ఇక్కడ ఉంటాయి."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("యజమాని"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("మోడరేటర్"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("కొత్త పోస్ట్‌లు"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("మీరు నడిపేవి"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("కమ్యూనిటీ సెట్టింగ్‌లు"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("కనుగొనండి"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("సరిపోలే కమ్యూనిటీలు లేవు."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("కొత్తది ఏమీ లేదు"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ప్రతి కమ్యూనిటీ మీరు వదిలినట్టే ఉంది."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("మీరు ఇంకా ఏదీ నడపడం లేదు"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("చేరడానికి ఏమీ మిగల్లేదు"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "మీరు Kyron లోని ప్రతి కమ్యూనిటీలో ఉన్నారు. మరొకటి ప్రారంభించండి."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "వేరే పదం ప్రయత్నించండి, లేదా ఆ పేరుతో కమ్యూనిటీ ప్రారంభించండి."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("చివరి పోస్ట్"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా లేదు"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("కొత్తవి చూడండి"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("తెరవండి"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్ రాయండి"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("సభ్యులు:"),
     };
 
 final messageLookup = MessageLookup();

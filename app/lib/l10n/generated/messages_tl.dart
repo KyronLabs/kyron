@@ -1441,6 +1441,67 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Naipadala na. Dapat itong dumating sa loob ng ilang segundo."),
       "ui_push_working": MessageLookupByLibrary.simpleMessage(
           "Gumagana ang mga notification."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Wala pang post"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Bagong komunidad"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Pangalan"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Ang address nito ay mula sa pangalan."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Makikita ito ng mga tao sa"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Ikaw ang may-ari nito. Puwedeng magdagdag ng larawan, banner at mga moderator mula sa page nito kapag nagawa na."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Home"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Mga post ng komunidad sa Home"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Lumalabas din sa Home ang mga post mula sa mga komunidad mo. Kapag naka-off, mananatili sila rito sa Mga Komunidad, kung saan ipinapakita ng bawat isa kung ano ang bago."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Ang listahan mo"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Bilang ng bagong post"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Ipakita kung ilang post ang bago sa bawat komunidad mula nang huli mo itong buksan."),
+      "ui_community_settings_running": MessageLookupByLibrary.simpleMessage(
+          "Mga komunidad na pinapatakbo mo"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Nakalista rito ang mga komunidad na sinimulan o mino-moderate mo."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("May-ari"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Mga bagong post"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Pinapatakbo mo"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Mga setting ng komunidad"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Tuklasin"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Walang tumutugmang komunidad."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Walang bago"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ang bawat komunidad ay gaya ng iniwan mo."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Wala ka pang pinapatakbo"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Wala nang masasalihan"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kasali ka na sa bawat komunidad sa Kyron. Magsimula ng isa pa."),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "Sumubok ng ibang salita, o magsimula ng komunidad na may ganoong pangalan."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Huling post"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Wala pa"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Humabol"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Buksan"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Sumulat ng post"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("Mga miyembro:"),
     };
 
 final messageLookup = MessageLookup();

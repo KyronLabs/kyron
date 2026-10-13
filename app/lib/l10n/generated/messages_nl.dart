@@ -1446,6 +1446,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Verstuurd. Hij zou binnen een paar seconden moeten aankomen."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Meldingen werken."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Nog geen berichten"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nieuwe community"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Naam"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Het adres wordt van de naam gemaakt."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Mensen vinden het op"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Jij wordt de eigenaar. Een afbeelding, een banner en moderators kun je toevoegen op de pagina zodra die bestaat."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Home"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Communityberichten in Home"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Berichten uit je community's verschijnen ook in Home. Uit blijven ze hier in Community's, waar elke community laat zien wat nieuw is."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Je lijst"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Aantal nieuwe berichten"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Laat zien hoeveel berichten nieuw zijn in elke community sinds je die het laatst opende."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Community's die je beheert"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Community's die je begint of modereert, staan hier."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Eigenaar"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nieuwe berichten"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Door jou beheerd"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Community-instellingen"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("Ontdekken"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Geen community's gevonden."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Niets nieuws"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Elke community is zoals je hem achterliet."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Je beheert er nog geen"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Niets meer om lid van te worden"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Je zit in elke community op Kyron. Begin er nog een."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Probeer een ander woord, of begin een community met die naam."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Laatste bericht"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Nog geen"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Bijlezen"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Openen"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Bericht schrijven"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Leden:"),
     };
 
 final messageLookup = MessageLookup();

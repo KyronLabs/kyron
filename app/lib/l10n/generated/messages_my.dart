@@ -1445,6 +1445,70 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ပို့ပြီးပါပြီ။ စက္ကန့်အနည်းငယ်အတွင်း ရောက်လာသင့်ပါသည်။"),
       "ui_push_working": MessageLookupByLibrary.simpleMessage(
           "အကြောင်းကြားချက်များ အလုပ်လုပ်နေပါသည်။"),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("ပို့စ်များ မရှိသေးပါ"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်းအသစ်"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("အမည်"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "၎င်း၏လိပ်စာကို အမည်မှ ပြုလုပ်သည်။"),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage(
+          "လူများ ၎င်းကို ဤနေရာတွင် တွေ့ပါမည်-"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "သင်သည် ပိုင်ရှင်ဖြစ်မည်။ ဖန်တီးပြီးနောက် ၎င်း၏စာမျက်နှာမှ ပုံ၊ နဖူးစည်းနှင့် စီမံသူများ ထည့်နိုင်သည်။"),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("ပင်မ"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "ပင်မတွင် အသိုင်းအဝိုင်းပို့စ်များ"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "သင့်အသိုင်းအဝိုင်းများမှ ပို့စ်များသည် ပင်မတွင်လည်း ပေါ်သည်။ ပိတ်ထားလျှင် ဤနေရာ အသိုင်းအဝိုင်းများတွင်သာ ကျန်ပြီး တစ်ခုချင်းစီက အသစ်ကို ပြသည်။"),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("သင့်စာရင်း"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("ပို့စ်အသစ် အရေအတွက်"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "နောက်ဆုံးဖွင့်ပြီးကတည်းက အသိုင်းအဝိုင်းတစ်ခုစီတွင် ပို့စ်အသစ် ဘယ်နှစ်ခုရှိသည်ကို ပြပါ။"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("သင်စီမံသော အသိုင်းအဝိုင်းများ"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "သင်စတင်သော သို့မဟုတ် စီမံသော အသိုင်းအဝိုင်းများကို ဤနေရာတွင် ဖော်ပြထားသည်။"),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("ပိုင်ရှင်"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("စီမံသူ"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("ပို့စ်အသစ်များ"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("သင်စီမံသည်များ"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်း ဆက်တင်များ"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("ရှာဖွေရန်"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "ကိုက်ညီသော အသိုင်းအဝိုင်း မရှိပါ။"),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("အသစ် မရှိပါ"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "အသိုင်းအဝိုင်းတိုင်း သင်ထားခဲ့သည့်အတိုင်း ရှိသည်။"),
+      "ui_community_running_none": MessageLookupByLibrary.simpleMessage(
+          "သင် မည်သည့်တစ်ခုကိုမျှ မစီမံရသေးပါ"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("ဝင်ရန် ဘာမျှ မကျန်တော့ပါ"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "သင်သည် Kyron ရှိ အသိုင်းအဝိုင်းတိုင်းတွင် ရှိနေသည်။ နောက်တစ်ခု စတင်ပါ။"),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "အခြားစကားလုံး စမ်းကြည့်ပါ သို့မဟုတ် ထိုအမည်ဖြင့် အသိုင်းအဝိုင်း စတင်ပါ။"),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("နောက်ဆုံးပို့စ်"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("မရှိသေးပါ"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("အသစ်များ ကြည့်ရန်"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("ဖွင့်ရန်"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("ပို့စ် ရေးရန်"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("အဖွဲ့ဝင်များ-"),
     };
 
 final messageLookup = MessageLookup();

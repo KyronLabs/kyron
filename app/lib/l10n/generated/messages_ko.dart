@@ -1213,6 +1213,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("보냈어요. 몇 초 안에 도착할 거예요."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("알림이 정상적으로 작동해요."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("아직 게시물이 없어요"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("새 커뮤니티"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("이름"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("주소는 이름으로 만들어져요."),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage("주소:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "내가 소유자가 돼요. 사진, 배너, 운영자는 만든 뒤 커뮤니티 페이지에서 추가할 수 있어요."),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("홈"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("커뮤니티 게시물을 홈에 표시"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "내 커뮤니티의 게시물이 홈에도 표시돼요. 끄면 여기 커뮤니티에만 남고, 각 커뮤니티에 새 소식이 표시돼요."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("내 목록"),
+      "ui_community_counts": MessageLookupByLibrary.simpleMessage("새 게시물 수"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "마지막으로 연 뒤 각 커뮤니티에 새 게시물이 몇 개인지 표시해요."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("내가 운영하는 커뮤니티"),
+      "ui_community_running_none_detail":
+          MessageLookupByLibrary.simpleMessage("내가 만들었거나 운영하는 커뮤니티가 여기에 표시돼요."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("소유자"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("운영자"),
+      "ui_community_filter_new": MessageLookupByLibrary.simpleMessage("새 게시물"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("내가 운영 중"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("커뮤니티 설정"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("둘러보기"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("일치하는 커뮤니티가 없어요."),
+      "ui_community_new_none": MessageLookupByLibrary.simpleMessage("새 소식 없음"),
+      "ui_community_new_none_detail":
+          MessageLookupByLibrary.simpleMessage("모든 커뮤니티가 마지막으로 본 그대로예요."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("아직 운영하는 커뮤니티가 없어요"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("더 가입할 커뮤니티가 없어요"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron의 모든 커뮤니티에 가입했어요. 새로 만들어 보세요."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "다른 단어로 찾아보거나, 그 이름으로 커뮤니티를 만들어 보세요."),
+      "ui_community_last_post": MessageLookupByLibrary.simpleMessage("최근 게시물"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("아직 없음"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("새 글 보기"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("열기"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("글쓰기"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("멤버:"),
     };
 
 final messageLookup = MessageLookup();

@@ -336,6 +336,31 @@ describe('FeedService', () => {
       ]);
     });
 
+    it('keeps them out of Following too, which is the other half of Home', async () => {
+      user.findUnique.mockResolvedValueOnce({
+        communityPostsInHome: false,
+      } as never);
+      follow.findMany.mockResolvedValue([] as never);
+      post.findMany.mockResolvedValue([]);
+
+      await (await service()).listFollowing(VIEWER);
+
+      const [args] = post.findMany.mock.calls[0] as [
+        { where: Record<string, unknown> },
+      ];
+      expect(args.where.communityId).toBeNull();
+    });
+
+    it('keeps community posts out when the reader asked for that', async () => {
+      // Settings, Communities: their posts stay in Communities.
+      user.findUnique.mockResolvedValueOnce({
+        communityPostsInHome: false,
+      } as never);
+      communityMember.findMany.mockResolvedValue([{ communityId: 'c1' }]);
+
+      expect((await listedWhere()).OR).toEqual([{ communityId: null }]);
+    });
+
     it('asks only for the communities this reader is in', async () => {
       communityMember.findMany.mockResolvedValue([{ communityId: 'c1' }]);
       await listedWhere();

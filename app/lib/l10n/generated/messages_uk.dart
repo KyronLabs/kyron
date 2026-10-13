@@ -1446,6 +1446,69 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Надіслано. Має надійти за кілька секунд."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Сповіщення працюють."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Ще немає дописів"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Нова спільнота"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Назва"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Адреса утворюється з назви."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Її знайдуть за адресою"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Ви будете власником. Зображення, банер і модераторів можна додати на її сторінці, щойно вона з'явиться."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Головна"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Дописи спільнот на Головній"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Дописи з ваших спільнот видно й на Головній. Якщо вимкнути, вони залишаються тут, у Спільнотах, де кожна показує, що нового."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Ваш список"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Кількість нових дописів"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Показувати, скільки дописів нових у кожній спільноті відтоді, як ви її востаннє відкривали."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Спільноти, якими ви керуєте"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Тут спільноти, які ви створили або модеруєте."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Власник"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Модератор"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Нові дописи"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Під вашим керуванням"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Налаштування спільнот"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Огляд"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Немає відповідних спільнот."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Нічого нового"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Кожна спільнота така, якою ви її залишили."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Ви поки нічим не керуєте"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Більше нема до чого приєднатися"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ви в усіх спільнотах Kyron. Створіть ще одну."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Спробуйте інше слово або створіть спільноту з такою назвою."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Останній допис"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Поки немає"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Наздогнати"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Відкрити"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Написати допис"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Учасники:"),
     };
 
 final messageLookup = MessageLookup();

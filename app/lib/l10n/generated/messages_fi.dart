@@ -1442,6 +1442,67 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Lähetetty. Sen pitäisi saapua muutamassa sekunnissa."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Ilmoitukset toimivat."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Ei vielä julkaisuja"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Uusi yhteisö"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Nimi"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Osoite muodostetaan nimestä."),
+      "ui_community_address": MessageLookupByLibrary.simpleMessage(
+          "Ihmiset löytävät sen osoitteesta"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Sinusta tulee sen omistaja. Kuvan, bannerin ja moderaattorit voi lisätä sen sivulta, kun se on luotu."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Koti"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Yhteisöjen julkaisut Kodissa"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Yhteisöjesi julkaisut näkyvät myös Kodissa. Pois päältä ne pysyvät täällä Yhteisöissä, joissa jokainen näyttää, mitä on uutta."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Sinun listasi"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Uusien julkaisujen määrä"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Näytä, montako julkaisua kussakin yhteisössä on uusia sen jälkeen, kun viimeksi avasit sen."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Yhteisöt, joita johdat"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Tässä ovat yhteisöt, jotka perustat tai joita moderoit."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Omistaja"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderaattori"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Uudet julkaisut"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Sinun johtamasi"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Yhteisöasetukset"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Löydä"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Mikään yhteisö ei vastaa."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Ei mitään uutta"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Jokainen yhteisö on niin kuin sen jätit."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Et johda vielä yhtään"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Ei enää mitään, mihin liittyä"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Olet Kyronin jokaisessa yhteisössä. Perusta uusi."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Kokeile toista sanaa tai perusta yhteisö sillä nimellä."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Viimeisin julkaisu"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Ei vielä"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Kuro kiinni"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Avaa"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Kirjoita julkaisu"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Jäsenet:"),
     };
 
 final messageLookup = MessageLookup();

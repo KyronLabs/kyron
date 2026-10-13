@@ -1440,6 +1440,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Sendt. Det bør komme frem i løpet av noen sekunder."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Varsler fungerer."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Ingen innlegg ennå"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nytt fellesskap"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Navn"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Adressen lages av navnet."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Folk finner det på"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Du eier det. Et bilde, et banner og moderatorer kan legges til fra siden når det finnes."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Hjem"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Fellesskapsinnlegg i Hjem"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Innlegg fra fellesskapene dine vises også i Hjem. Slått av blir de her i Fellesskap, der hvert enkelt viser hva som er nytt."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Listen din"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Antall nye innlegg"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Vis hvor mange innlegg som er nye i hvert fellesskap siden du sist åpnet det."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Fellesskap du styrer"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Fellesskap du starter eller modererer, står her."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Eier"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nye innlegg"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("De du styrer"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Innstillinger for fellesskap"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Utforsk"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Ingen fellesskap passer."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Ingenting nytt"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Hvert fellesskap er som du forlot det."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Du styrer ingen ennå"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Ingenting igjen å bli med i"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Du er med i alle fellesskap på Kyron. Start et nytt."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Prøv et annet ord, eller start et fellesskap med det navnet."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Siste innlegg"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Ingen ennå"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Ta igjen"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Åpne"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Skriv et innlegg"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("Medlemmer:"),
     };
 
 final messageLookup = MessageLookup();

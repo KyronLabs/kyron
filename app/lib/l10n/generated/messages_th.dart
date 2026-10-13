@@ -1436,6 +1436,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ส่งแล้ว ควรมาถึงภายในไม่กี่วินาที"),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("การแจ้งเตือนใช้งานได้"),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("ยังไม่มีโพสต์"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("ชุมชนใหม่"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("ชื่อ"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("ที่อยู่สร้างจากชื่อ"),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("ผู้คนจะพบได้ที่"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "คุณจะเป็นเจ้าของ เพิ่มรูปภาพ แบนเนอร์ และผู้ดูแลได้จากหน้าของชุมชนเมื่อสร้างแล้ว"),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("หน้าหลัก"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("โพสต์ชุมชนในหน้าหลัก"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "โพสต์จากชุมชนของคุณจะแสดงในหน้าหลักด้วย หากปิดไว้ โพสต์จะอยู่ที่นี่ในชุมชน ซึ่งแต่ละแห่งจะแสดงสิ่งที่ใหม่"),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("รายการของคุณ"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("จำนวนโพสต์ใหม่"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "แสดงจำนวนโพสต์ใหม่ในแต่ละชุมชนนับจากที่คุณเปิดครั้งล่าสุด"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("ชุมชนที่คุณดูแล"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ชุมชนที่คุณสร้างหรือดูแลจะแสดงที่นี่"),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("เจ้าของ"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("ผู้ดูแล"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("โพสต์ใหม่"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("ที่คุณดูแล"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("การตั้งค่าชุมชน"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("สำรวจ"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("ไม่มีชุมชนที่ตรงกัน"),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("ไม่มีอะไรใหม่"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ทุกชุมชนยังเหมือนตอนที่คุณออกไป"),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("คุณยังไม่ได้ดูแลชุมชนใด"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("ไม่เหลือชุมชนให้เข้าร่วมแล้ว"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "คุณอยู่ในทุกชุมชนบน Kyron แล้ว สร้างชุมชนใหม่อีกสักแห่ง"),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "ลองคำอื่น หรือสร้างชุมชนด้วยชื่อนั้น"),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("โพสต์ล่าสุด"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("ยังไม่มี"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("ดูที่ใหม่"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("เปิด"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("เขียนโพสต์"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("สมาชิก:"),
     };
 
 final messageLookup = MessageLookup();

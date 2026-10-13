@@ -1439,6 +1439,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "بھیج دی گئی۔ چند سیکنڈ میں پہنچ جانی چاہیے۔"),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("اطلاعات کام کر رہی ہیں۔"),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("ابھی کوئی پوسٹ نہیں"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("نئی کمیونٹی"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("نام"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("اس کا پتہ نام سے بنتا ہے۔"),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("لوگ اسے یہاں پائیں گے:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "آپ اس کے مالک ہوں گے۔ بننے کے بعد اس کے صفحے سے تصویر، بینر اور ناظم شامل کیے جا سکتے ہیں۔"),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("ہوم"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("ہوم میں کمیونٹی کی پوسٹس"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "آپ کی کمیونٹیز کی پوسٹس ہوم میں بھی نظر آتی ہیں۔ بند ہونے پر وہ یہیں کمیونٹیز میں رہتی ہیں، جہاں ہر ایک دکھاتی ہے کہ نیا کیا ہے۔"),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("آپ کی فہرست"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("نئی پوسٹس کی تعداد"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "دکھائیں کہ آخری بار کھولنے کے بعد سے ہر کمیونٹی میں کتنی پوسٹس نئی ہیں۔"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("آپ کی چلائی کمیونٹیز"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "جو کمیونٹیز آپ شروع کرتے ہیں یا جن کی نظامت کرتے ہیں وہ یہاں ہیں۔"),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("مالک"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("ناظم"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("نئی پوسٹس"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("آپ کی چلائی"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("کمیونٹی کی ترتیبات"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("دریافت کریں"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("کوئی مماثل کمیونٹی نہیں۔"),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("کچھ نیا نہیں"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ہر کمیونٹی ویسی ہی ہے جیسی آپ نے چھوڑی تھی۔"),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("آپ ابھی کوئی نہیں چلاتے"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("شامل ہونے کو کچھ نہیں بچا"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "آپ Kyron کی ہر کمیونٹی میں ہیں۔ ایک اور شروع کریں۔"),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "کوئی اور لفظ آزمائیں، یا اس نام سے کمیونٹی شروع کریں۔"),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("آخری پوسٹ"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("ابھی کوئی نہیں"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("نئی دیکھیں"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("کھولیں"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("پوسٹ لکھیں"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("اراکین:"),
     };
 
 final messageLookup = MessageLookup();

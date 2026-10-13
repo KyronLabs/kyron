@@ -1442,6 +1442,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Послато. Требало би да стигне за неколико секунди."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Обавештења раде."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Још нема објава"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Нова заједница"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Назив"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Адреса се прави од назива."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Људи ће је наћи на адреси"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Ти ћеш бити власник. Слику, банер и модераторе можеш додати на њеној страници када буде направљена."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Почетна"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Објаве заједница на Почетној"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Објаве из твојих заједница појављују се и на Почетној. Када је искључено, остају овде у Заједницама, где свака показује шта је ново."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Твоја листа"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Број нових објава"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Прикажи колико је објава ново у свакој заједници откад си је последњи пут отворио."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Заједнице које водиш"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Овде су заједнице које покренеш или модерираш."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Власник"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Модератор"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Нове објаве"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Које водиш"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Подешавања заједница"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Откриј"),
+      "ui_community_search_none": MessageLookupByLibrary.simpleMessage(
+          "Ниједна заједница се не поклапа."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Ништа ново"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Свака заједница је онаква какву си је оставио."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Још не водиш ниједну"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Нема више чему да се придружиш"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "У свакој си заједници на Kyron-у. Покрени још једну."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Пробај другу реч или покрени заједницу с тим називом."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Последња објава"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Још ниједна"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Сустигни"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Отвори"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Напиши објаву"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Чланови:"),
     };
 
 final messageLookup = MessageLookup();

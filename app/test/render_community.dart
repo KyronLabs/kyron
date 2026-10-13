@@ -37,6 +37,9 @@ class _Repo extends CommunitiesRepository {
   _Repo() : super(ApiClient());
   @override
   Future<Community> bySlug(String slug) async => _community;
+
+  @override
+  Future<void> markRead(String slug) async {}
 }
 
 class _Feed extends FeedRepository {

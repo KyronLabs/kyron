@@ -1445,6 +1445,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "La diray. Waa inuu yimaado dhowr ilbiriqsi gudahood."),
       "ui_push_working": MessageLookupByLibrary.simpleMessage(
           "Ogeysiisyadu way shaqaynayaan."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Weli qoraallo ma jiraan"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("Bulsho cusub"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Magac"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Cinwaankeeda waxaa laga sameeyaa magaca."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Dadku waxay ka heli doonaan"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Adiga ayaa lahaan doona. Sawir, calan iyo maamulayaal waxaa lagu dari karaa boggeeda marka ay jirto."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Hoyga"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Qoraallada bulshada ee Hoyga"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Qoraallada bulshooyinkaagu waxay sidoo kale ka muuqdaan Hoyga. Marka la damiyo, halkan ayay ku jiraan Bulshooyinka, halkaas oo mid kastaa muujiyo waxa cusub."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Liiskaaga"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Tirada qoraallada cusub"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Muuji inta qoraal ee cusub ee bulsho kasta tan iyo markii ugu dambeysay ee aad furtay."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Bulshooyinka aad maamusho"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Bulshooyinka aad bilowdo ama aad maamusho halkan ayay ku qoran yihiin."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Milkiile"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Maamule"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Qoraallo cusub"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Kuwa aad maamusho"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Dejinta bulshooyinka"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Soo hel"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Bulsho ku habboon ma jirto."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Wax cusub ma jiraan"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Bulsho kastaa sidii aad uga tagtay ayay tahay."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Weli ma maamusho mid"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Wax lagu biiro ma harin"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Waxaad ku jirtaa bulsho kasta oo Kyron ah. Bilow mid kale."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Isku day eray kale, ama bilow bulsho magacaas leh."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Qoraalkii ugu dambeeyay"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Weli ma jiro"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("La soco"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Fur"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("Qor qoraal"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Xubnaha:"),
     };
 
 final messageLookup = MessageLookup();

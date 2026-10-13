@@ -1527,6 +1527,64 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "পাঠানো হয়েছে। কয়েক সেকেন্ডের মধ্যে পৌঁছানোর কথা।"),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("বিজ্ঞপ্তি কাজ করছে।"),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("এখনও কোনো পোস্ট নেই"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("নতুন কমিউনিটি"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("নাম"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("এর ঠিকানা নাম থেকে তৈরি হয়।"),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("মানুষ এটি খুঁজে পাবে এখানে:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "এর মালিক আপনি হবেন। তৈরি হওয়ার পর এর পেজ থেকে ছবি, ব্যানার আর মডারেটর যোগ করা যাবে।"),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("হোম"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("হোমে কমিউনিটির পোস্ট"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "আপনার কমিউনিটিগুলোর পোস্ট হোমেও দেখা যায়। বন্ধ থাকলে এগুলো এখানে কমিউনিটিতে থাকে, যেখানে প্রতিটি দেখায় কী নতুন।"),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("আপনার তালিকা"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("নতুন পোস্টের সংখ্যা"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "শেষবার খোলার পর থেকে প্রতিটি কমিউনিটিতে কতগুলো পোস্ট নতুন তা দেখান।"),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("আপনি যে কমিউনিটিগুলো চালান"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "আপনি যে কমিউনিটি শুরু বা মডারেট করেন, সেগুলো এখানে তালিকাভুক্ত।"),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("মালিক"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("মডারেটর"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("নতুন পোস্ট"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("আপনার পরিচালনায়"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("কমিউনিটি সেটিংস"),
+      "ui_community_discover":
+          MessageLookupByLibrary.simpleMessage("খুঁজে দেখুন"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("কোনো কমিউনিটি মেলেনি।"),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("নতুন কিছু নেই"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "প্রতিটি কমিউনিটি আপনি যেমন রেখে গিয়েছিলেন তেমনই আছে।"),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("আপনি এখনও কোনোটি চালান না"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("যোগ দেওয়ার মতো আর কিছু নেই"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "আপনি Kyron-এর প্রতিটি কমিউনিটিতে আছেন। আরেকটি শুরু করুন।"),
+      "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
+          "অন্য শব্দ দিয়ে চেষ্টা করুন, অথবা ওই নামে একটি কমিউনিটি শুরু করুন।"),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("শেষ পোস্ট"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("এখনও নেই"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("নতুনগুলো দেখুন"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("খুলুন"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("পোস্ট লিখুন"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("সদস্য:"),
     };
 
 final messageLookup = MessageLookup();

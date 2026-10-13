@@ -1429,6 +1429,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "נשלחה. היא אמורה להגיע בעוד כמה שניות."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("ההתראות עובדות."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("עדיין אין פוסטים"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("קהילה חדשה"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("שם"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("הכתובת שלה נוצרת מהשם."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("אפשר יהיה למצוא אותה בכתובת"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "הקהילה תהיה בבעלותכם. אפשר להוסיף תמונה, באנר ומנחים מהדף שלה אחרי שתיווצר."),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("בית"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("פוסטים מקהילות בבית"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "פוסטים מהקהילות שלכם מופיעים גם בבית. כשזה כבוי, הם נשארים כאן בקהילות, שבהן כל אחת מראה מה חדש."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("הרשימה שלכם"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("מספר פוסטים חדשים"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "הצגת מספר הפוסטים החדשים בכל קהילה מאז שפתחתם אותה לאחרונה."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("קהילות בניהולכם"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "כאן מופיעות הקהילות שהקמתם או שאתם מנחים."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("בעלים"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("מנחה"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("פוסטים חדשים"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("בניהולכם"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("הגדרות קהילות"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("גילוי"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("אין קהילות תואמות."),
+      "ui_community_new_none": MessageLookupByLibrary.simpleMessage("אין חדש"),
+      "ui_community_new_none_detail":
+          MessageLookupByLibrary.simpleMessage("כל קהילה כפי שהשארתם אותה."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("עדיין אין קהילה בניהולכם"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("לא נשאר למה להצטרף"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "אתם בכל הקהילות ב-Kyron. הקימו עוד אחת."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "נסו מילה אחרת, או הקימו קהילה בשם הזה."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("פוסט אחרון"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("להתעדכן"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("פתיחה"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("כתיבת פוסט"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("חברים:"),
     };
 
 final messageLookup = MessageLookup();

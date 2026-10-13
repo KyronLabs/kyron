@@ -1726,6 +1726,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Sent. It should arrive in a few seconds."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Notifications are working."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("No posts yet"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("New community"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Name"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "Its address is made from the name."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("People will find it at"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "You will own it. A picture, a banner and moderators can be added from its page once it exists."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Home"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Community posts in Home"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Posts from your communities also appear in Home. Off, they stay here in Communities, where each one shows what is new."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Your list"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("New-post counts"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Show how many posts are new in each community since you last opened it."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Communities you run"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Communities you start, or moderate, are listed here."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Owner"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("New posts"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Yours to run"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Community settings"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Discover"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("No communities match."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Nothing new"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Every community is as you left it."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("You run none yet"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Nothing left to join"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "You are in every community on Kyron. Start another one."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Try a different word, or start a community by that name."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Last post"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("None yet"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Catch up"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Open"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Write a post"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Members:"),
     };
 
 final messageLookup = MessageLookup();

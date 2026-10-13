@@ -1474,6 +1474,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Sendt. Den burde nå frem om få sekunder."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Notifikationer virker."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Ingen opslag endnu"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Nyt fællesskab"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Navn"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Adressen laves ud fra navnet."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Folk finder det på"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Du ejer det. Et billede, et banner og moderatorer kan tilføjes fra siden, når det findes."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Hjem"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("Fællesskabsopslag i Hjem"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Opslag fra dine fællesskaber vises også i Hjem. Slået fra bliver de her i Fællesskaber, hvor hvert enkelt viser, hvad der er nyt."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Din liste"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Antal nye opslag"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Vis hvor mange opslag der er nye i hvert fællesskab, siden du sidst åbnede det."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Fællesskaber du styrer"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Fællesskaber du starter eller modererer, står her."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("Ejer"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Moderator"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Nye opslag"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Dem du styrer"),
+      "ui_community_settings_open": MessageLookupByLibrary.simpleMessage(
+          "Indstillinger for fællesskaber"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Opdag"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Ingen fællesskaber passer."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Intet nyt"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Alle fællesskaber er, som du forlod dem."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Du styrer ingen endnu"),
+      "ui_community_discover_none": MessageLookupByLibrary.simpleMessage(
+          "Intet tilbage at blive medlem af"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Du er med i alle fællesskaber på Kyron. Start et nyt."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Prøv et andet ord, eller start et fællesskab med det navn."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Seneste opslag"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Ingen endnu"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Indhent"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Åbn"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Skriv et opslag"),
+      "ui_community_members":
+          MessageLookupByLibrary.simpleMessage("Medlemmer:"),
     };
 
 final messageLookup = MessageLookup();

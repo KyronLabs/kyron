@@ -1437,6 +1437,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "મોકલ્યું. થોડી સેકન્ડમાં પહોંચવું જોઈએ."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("સૂચનાઓ કામ કરે છે."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("હજી કોઈ પોસ્ટ નથી"),
+      "ui_community_new": MessageLookupByLibrary.simpleMessage("નવો સમુદાય"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("નામ"),
+      "ui_community_address_hint": MessageLookupByLibrary.simpleMessage(
+          "તેનું સરનામું નામમાંથી બને છે."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("લોકો તેને અહીં શોધશે:"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "તમે તેના માલિક હશો. તે બન્યા પછી તેના પેજ પરથી ચિત્ર, બેનર અને મોડરેટર ઉમેરી શકાય છે."),
+      "ui_community_settings_home": MessageLookupByLibrary.simpleMessage("હોમ"),
+      "ui_community_in_home":
+          MessageLookupByLibrary.simpleMessage("હોમમાં સમુદાયની પોસ્ટ"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "તમારા સમુદાયોની પોસ્ટ હોમમાં પણ દેખાય છે. બંધ હોય ત્યારે તે અહીં સમુદાયોમાં રહે છે, જ્યાં દરેક બતાવે છે કે શું નવું છે."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("તમારી યાદી"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("નવી પોસ્ટની સંખ્યા"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "છેલ્લે ખોલ્યા પછી દરેક સમુદાયમાં કેટલી પોસ્ટ નવી છે તે બતાવો."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("તમે ચલાવો છો તે સમુદાયો"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "તમે શરૂ કરો કે મોડરેટ કરો તે સમુદાયો અહીં સૂચિબદ્ધ છે."),
+      "ui_community_role_owner": MessageLookupByLibrary.simpleMessage("માલિક"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("મોડરેટર"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("નવી પોસ્ટ"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("તમારા સંચાલનમાં"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("સમુદાય સેટિંગ્સ"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("શોધો"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("કોઈ સમુદાય મેળ ખાતો નથી."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("કંઈ નવું નથી"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "દરેક સમુદાય તમે છોડ્યો હતો તેવો જ છે."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("તમે હજી કોઈ ચલાવતા નથી"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("જોડાવા માટે કંઈ બાકી નથી"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "તમે Kyron પરના દરેક સમુદાયમાં છો. બીજો શરૂ કરો."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "બીજો શબ્દ અજમાવો, અથવા તે નામથી સમુદાય શરૂ કરો."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("છેલ્લી પોસ્ટ"),
+      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("હજી નથી"),
+      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("નવું જુઓ"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("ખોલો"),
+      "ui_community_write": MessageLookupByLibrary.simpleMessage("પોસ્ટ લખો"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("સભ્યો:"),
     };
 
 final messageLookup = MessageLookup();

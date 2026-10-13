@@ -1448,6 +1448,69 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Sithunyelwe. Kufanele sifike emizuzwaneni embalwa."),
       "ui_push_working":
           MessageLookupByLibrary.simpleMessage("Izaziso ziyasebenza."),
+      "ui_community_no_posts":
+          MessageLookupByLibrary.simpleMessage("Akukabi khona okuthunyelwe"),
+      "ui_community_new":
+          MessageLookupByLibrary.simpleMessage("Umphakathi omusha"),
+      "ui_community_name": MessageLookupByLibrary.simpleMessage("Igama"),
+      "ui_community_address_hint":
+          MessageLookupByLibrary.simpleMessage("Ikheli lawo lenziwa ngegama."),
+      "ui_community_address":
+          MessageLookupByLibrary.simpleMessage("Abantu bazowuthola ku"),
+      "ui_community_new_detail": MessageLookupByLibrary.simpleMessage(
+          "Uzoba ngumnikazi wawo. Isithombe, isibhengezo nabaqondisi kungengezwa ekhasini lawo uma usukhona."),
+      "ui_community_settings_home":
+          MessageLookupByLibrary.simpleMessage("Ekhaya"),
+      "ui_community_in_home": MessageLookupByLibrary.simpleMessage(
+          "Okuthunyelwe komphakathi Ekhaya"),
+      "ui_community_in_home_detail": MessageLookupByLibrary.simpleMessage(
+          "Okuthunyelwe yimiphakathi yakho kubonakala nase-Ekhaya. Uma kuvaliwe, kuhlala lapha eMiphakathini, lapho ngamunye ubonisa okusha."),
+      "ui_community_settings_list":
+          MessageLookupByLibrary.simpleMessage("Uhlu lwakho"),
+      "ui_community_counts":
+          MessageLookupByLibrary.simpleMessage("Inani lokuthunyelwe okusha"),
+      "ui_community_counts_detail": MessageLookupByLibrary.simpleMessage(
+          "Bonisa ukuthi kungakanani okuthunyelwe okusha emphakathini ngamunye kusukela ugcina ukuwuvula."),
+      "ui_community_settings_running":
+          MessageLookupByLibrary.simpleMessage("Imiphakathi oyiphethe"),
+      "ui_community_running_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Imiphakathi oyiqalayo noma oyiqondisayo ibalwe lapha."),
+      "ui_community_role_owner":
+          MessageLookupByLibrary.simpleMessage("Umnikazi"),
+      "ui_community_role_moderator":
+          MessageLookupByLibrary.simpleMessage("Umqondisi"),
+      "ui_community_filter_new":
+          MessageLookupByLibrary.simpleMessage("Okuthunyelwe okusha"),
+      "ui_community_filter_running":
+          MessageLookupByLibrary.simpleMessage("Oyiphethe"),
+      "ui_community_settings_open":
+          MessageLookupByLibrary.simpleMessage("Izilungiselelo zomphakathi"),
+      "ui_community_discover": MessageLookupByLibrary.simpleMessage("Thola"),
+      "ui_community_search_none":
+          MessageLookupByLibrary.simpleMessage("Ayikho imiphakathi efanayo."),
+      "ui_community_new_none":
+          MessageLookupByLibrary.simpleMessage("Akukho okusha"),
+      "ui_community_new_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Umphakathi ngamunye unjengoba wawushiya."),
+      "ui_community_running_none":
+          MessageLookupByLibrary.simpleMessage("Awukabi nawo omphethe"),
+      "ui_community_discover_none":
+          MessageLookupByLibrary.simpleMessage("Akukho okusele okungajoyinwa"),
+      "ui_community_discover_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Usemphakathini ngamunye ku-Kyron. Qala omunye."),
+      "ui_community_discover_search_detail":
+          MessageLookupByLibrary.simpleMessage(
+              "Zama elinye igama, noma uqale umphakathi onalelo gama."),
+      "ui_community_last_post":
+          MessageLookupByLibrary.simpleMessage("Okuthunyelwe kokugcina"),
+      "ui_community_none_yet":
+          MessageLookupByLibrary.simpleMessage("Akukabi khona"),
+      "ui_community_catch_up":
+          MessageLookupByLibrary.simpleMessage("Bona okusha"),
+      "ui_community_open": MessageLookupByLibrary.simpleMessage("Vula"),
+      "ui_community_write":
+          MessageLookupByLibrary.simpleMessage("Bhala okuthunyelwe"),
+      "ui_community_members": MessageLookupByLibrary.simpleMessage("Amalungu:"),
     };
 
 final messageLookup = MessageLookup();
