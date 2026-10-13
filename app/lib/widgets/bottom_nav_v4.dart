@@ -15,10 +15,16 @@ class BottomNavV4 extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
 
+  /// How many things are waiting behind a destination, by its index: unread
+  /// conversations on Messages. Shown on the icon, so a message that arrives
+  /// while the reader is on another tab is seen without going to look.
+  final Map<int, int> badges;
+
   const BottomNavV4({
     super.key,
     required this.currentIndex,
     required this.onTap,
+    this.badges = const {},
   });
 
   @override
@@ -89,10 +95,12 @@ class BottomNavV4 extends StatelessWidget {
     final colour =
         isActive ? scheme.primary : scheme.onSurface.withValues(alpha: .6);
 
+    final waiting = badges[index] ?? 0;
+
     return Semantics(
       button: true,
       selected: isActive,
-      label: label,
+      label: waiting > 0 ? '$label, $waiting' : label,
       child: GestureDetector(
         // Opaque, so the whole cell answers rather than only the pixels the
         // icon and the label happen to paint. deferToChild -- the default --
@@ -102,7 +110,11 @@ class BottomNavV4 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(isActive ? activeIcon : icon, size: 22, color: colour),
+            NavBadge(
+              count: waiting,
+              child:
+                  Icon(isActive ? activeIcon : icon, size: 22, color: colour),
+            ),
             const SizedBox(height: 2),
             Text(
               label,

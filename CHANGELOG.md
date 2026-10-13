@@ -225,6 +225,13 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **New messages show on the Messages tab.** A red count of unread
+  conversations sits on its icon, in the bottom bar and the side rail. It
+  was fetched and kept fresh by the socket all along, and drawn nowhere, so
+  the only way to know was to go and look. Reading a conversation brings it
+  down, and coming back to the app re-asks, since anything that arrived
+  meanwhile came as a push rather than over the socket.
+
 - **Community settings.** A gear on Communities opens them: whether posts from
   your communities also appear in Home (held by the server, and it governs
   both Home tabs; a new `User.communityPostsInHome` column, `GET` and

@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart' show RemoteMessage;
 
+import '../providers/messages_provider.dart';
 import '../providers/notifications_provider.dart';
 import '../l10n/app_localizations.dart';
 import '../services/firebase_push.dart';
@@ -101,6 +102,9 @@ class _MainContainerState extends ConsumerState<MainContainer>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       ref.invalidate(unreadNotificationsProvider);
+      // A message that arrived while the app was away came as a push, not
+      // over the socket, so nothing has moved the count since.
+      ref.invalidate(unreadConversationsProvider);
     }
   }
 
@@ -111,6 +115,15 @@ class _MainContainerState extends ConsumerState<MainContainer>
     _navHideProgress.dispose();
     super.dispose();
   }
+
+  /// What waits behind each tab: unread conversations on Messages, so a
+  /// message that arrives while the reader is elsewhere is seen without
+  /// going to look. Kept live by the socket (realtime_provider.dart), by
+  /// reading a conversation, and by coming back to the app.
+  static Map<int, int> _badges(WidgetRef ref) => {
+        NavDestinations.messages.index:
+            ref.watch(unreadConversationsProvider).value ?? 0,
+      };
 
   void _onNavTap(int index) {
     if (index == NavDestinations.composeIndex) return; // Skip FAB
@@ -188,7 +201,13 @@ class _MainContainerState extends ConsumerState<MainContainer>
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SideRail(currentIndex: _currentIndex, onSelect: _onNavTap),
+          Consumer(
+            builder: (context, ref, _) => SideRail(
+              currentIndex: _currentIndex,
+              onSelect: _onNavTap,
+              badges: _badges(ref),
+            ),
+          ),
           // The drawer slides over the page and not over the rail, so the
           // rail stays reachable while it is open.
           Expanded(
@@ -215,7 +234,15 @@ class _MainContainerState extends ConsumerState<MainContainer>
           valueListenable: _navHideProgress,
           // The nav itself is built once and passed through, so a scroll frame
           // moves an existing subtree instead of rebuilding one.
-          child: BottomNavV4(currentIndex: _currentIndex, onTap: _onNavTap),
+          // Only the bar listens for the count: rebuilding this whole
+          // screen rebuilds the feed under it.
+          child: Consumer(
+            builder: (context, ref, _) => BottomNavV4(
+              currentIndex: _currentIndex,
+              onTap: _onNavTap,
+              badges: _badges(ref),
+            ),
+          ),
           builder: (context, progress, child) => Transform.translate(
             // Slide down by the nav height plus safe area.
             offset: Offset(0, 80 * progress),

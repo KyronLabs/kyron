@@ -24,10 +24,15 @@ class SideRail extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onSelect;
 
+  /// What is waiting behind a destination, by its index, as on the bottom
+  /// bar.
+  final Map<int, int> badges;
+
   const SideRail({
     super.key,
     required this.currentIndex,
     required this.onSelect,
+    this.badges = const {},
   });
 
   @override
@@ -57,6 +62,7 @@ class SideRail extends StatelessWidget {
               _RailItem(
                 destination: destination,
                 active: destination.index == currentIndex,
+                waiting: badges[destination.index] ?? 0,
                 onTap: () => onSelect(destination.index),
               ),
             const SizedBox(height: SpacingTokens.space16),
@@ -108,11 +114,13 @@ class _Brand extends StatelessWidget {
 class _RailItem extends StatefulWidget {
   final NavDestination destination;
   final bool active;
+  final int waiting;
   final VoidCallback onTap;
 
   const _RailItem({
     required this.destination,
     required this.active,
+    required this.waiting,
     required this.onTap,
   });
 
@@ -133,7 +141,9 @@ class _RailItemState extends State<_RailItem> {
     return Semantics(
       button: true,
       selected: active,
-      label: widget.destination.localizedLabel(context),
+      label: widget.waiting > 0
+          ? '${widget.destination.localizedLabel(context)}, ${widget.waiting}'
+          : widget.destination.localizedLabel(context),
       excludeSemantics: true,
       child: MouseRegion(
         // A pointer has a hover state and a phone does not. Without it nothing
@@ -166,12 +176,15 @@ class _RailItemState extends State<_RailItem> {
               ),
               child: Row(
                 children: [
-                  Icon(
-                    active
-                        ? widget.destination.activeIcon
-                        : widget.destination.icon,
-                    size: 22,
-                    color: colour,
+                  NavBadge(
+                    count: widget.waiting,
+                    child: Icon(
+                      active
+                          ? widget.destination.activeIcon
+                          : widget.destination.icon,
+                      size: 22,
+                      color: colour,
+                    ),
                   ),
                   const SizedBox(width: SpacingTokens.space16),
                   Text(
