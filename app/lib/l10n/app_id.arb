@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Tidak ada lagi yang bisa diikuti",
   "ui_community_discover_none_detail": "Kamu ada di setiap komunitas di Kyron. Buat satu lagi.",
   "ui_community_discover_search_detail": "Coba kata lain, atau buat komunitas dengan nama itu.",
-  "ui_community_last_post": "Postingan terakhir",
-  "ui_community_none_yet": "Belum ada",
-  "ui_community_catch_up": "Lihat yang baru",
-  "ui_community_open": "Buka",
   "ui_community_write": "Tulis postingan",
   "ui_community_members": "Anggota:"
 }

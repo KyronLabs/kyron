@@ -1485,12 +1485,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "واژهٔ دیگری را امتحان کنید، یا انجمنی با این نام راه بیندازید."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("آخرین پست"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("هنوز هیچ"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("تازه‌ها را ببین"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("باز کردن"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("نوشتن پست"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("اعضا:"),
     };

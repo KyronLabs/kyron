@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Pole enam midagi, millega liituda",
   "ui_community_discover_none_detail": "Oled Kyronis kõigis kogukondades. Loo veel üks.",
   "ui_community_discover_search_detail": "Proovi muud sõna või loo selle nimega kogukond.",
-  "ui_community_last_post": "Viimane postitus",
-  "ui_community_none_yet": "Veel pole",
-  "ui_community_catch_up": "Järele jõuda",
-  "ui_community_open": "Ava",
   "ui_community_write": "Kirjuta postitus",
   "ui_community_members": "Liikmed:"
 }

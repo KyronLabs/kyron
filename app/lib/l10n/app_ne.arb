@@ -748,10 +748,6 @@
   "ui_community_discover_none": "सामेल हुन केही बाँकी छैन",
   "ui_community_discover_none_detail": "तपाईं Kyron का सबै समुदायमा हुनुहुन्छ। अर्को सुरु गर्नुहोस्।",
   "ui_community_discover_search_detail": "अर्को शब्द प्रयास गर्नुहोस्, वा त्यो नाममा समुदाय सुरु गर्नुहोस्।",
-  "ui_community_last_post": "अन्तिम पोस्ट",
-  "ui_community_none_yet": "अहिले छैन",
-  "ui_community_catch_up": "नयाँ हेर्नुहोस्",
-  "ui_community_open": "खोल्नुहोस्",
   "ui_community_write": "पोस्ट लेख्नुहोस्",
   "ui_community_members": "सदस्यहरू:"
 }

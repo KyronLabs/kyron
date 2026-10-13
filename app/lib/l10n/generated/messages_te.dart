@@ -1496,13 +1496,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "వేరే పదం ప్రయత్నించండి, లేదా ఆ పేరుతో కమ్యూనిటీ ప్రారంభించండి."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("చివరి పోస్ట్"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("ఇంకా లేదు"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("కొత్తవి చూడండి"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("తెరవండి"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("పోస్ట్ రాయండి"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("సభ్యులు:"),

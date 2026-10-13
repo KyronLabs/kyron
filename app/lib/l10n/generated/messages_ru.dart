@@ -1497,12 +1497,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Вы во всех сообществах Kyron. Создайте ещё одно."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "Попробуйте другое слово или создайте сообщество с таким названием."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Последний пост"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Пока нет"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Наверстать"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Открыть"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("Написать"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Участники:"),

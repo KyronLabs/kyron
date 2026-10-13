@@ -1526,12 +1526,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Prøv et andet ord, eller start et fællesskab med det navn."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Seneste opslag"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Ingen endnu"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Indhent"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Åbn"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Skriv et opslag"),
       "ui_community_members":

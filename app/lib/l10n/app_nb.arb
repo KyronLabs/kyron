@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Ingenting igjen å bli med i",
   "ui_community_discover_none_detail": "Du er med i alle fellesskap på Kyron. Start et nytt.",
   "ui_community_discover_search_detail": "Prøv et annet ord, eller start et fellesskap med det navnet.",
-  "ui_community_last_post": "Siste innlegg",
-  "ui_community_none_yet": "Ingen ennå",
-  "ui_community_catch_up": "Ta igjen",
-  "ui_community_open": "Åpne",
   "ui_community_write": "Skriv et innlegg",
   "ui_community_members": "Medlemmer:"
 }

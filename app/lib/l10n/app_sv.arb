@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Inget kvar att gå med i",
   "ui_community_discover_none_detail": "Du är med i alla gemenskaper på Kyron. Starta en till.",
   "ui_community_discover_search_detail": "Prova ett annat ord, eller starta en gemenskap med det namnet.",
-  "ui_community_last_post": "Senaste inlägg",
-  "ui_community_none_yet": "Inget än",
-  "ui_community_catch_up": "Kom ikapp",
-  "ui_community_open": "Öppna",
   "ui_community_write": "Skriv ett inlägg",
   "ui_community_members": "Medlemmar:"
 }

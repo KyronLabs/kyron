@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Não sobrou nada para entrar",
   "ui_community_discover_none_detail": "Você está em todas as comunidades do Kyron. Crie outra.",
   "ui_community_discover_search_detail": "Tente outra palavra, ou crie uma comunidade com esse nome.",
-  "ui_community_last_post": "Última publicação",
-  "ui_community_none_yet": "Nenhuma ainda",
-  "ui_community_catch_up": "Pôr em dia",
-  "ui_community_open": "Abrir",
   "ui_community_write": "Escrever publicação",
   "ui_community_members": "Membros:"
 }

@@ -1135,10 +1135,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("你已加入 Kyron 上的所有社区。再创建一个吧。"),
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage("换个词试试，或者用这个名称创建一个社区。"),
-      "ui_community_last_post": MessageLookupByLibrary.simpleMessage("最新帖子"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("还没有"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("查看新帖"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("打开"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("发帖"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("成员："),
     };

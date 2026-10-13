@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Nothing left to join",
   "ui_community_discover_none_detail": "You are in every community on Kyron. Start another one.",
   "ui_community_discover_search_detail": "Try a different word, or start a community by that name.",
-  "ui_community_last_post": "Last post",
-  "ui_community_none_yet": "None yet",
-  "ui_community_catch_up": "Catch up",
-  "ui_community_open": "Open",
   "ui_community_write": "Write a post",
   "ui_community_members": "Members:"
 }

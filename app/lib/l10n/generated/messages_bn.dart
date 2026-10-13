@@ -1577,12 +1577,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "আপনি Kyron-এর প্রতিটি কমিউনিটিতে আছেন। আরেকটি শুরু করুন।"),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "অন্য শব্দ দিয়ে চেষ্টা করুন, অথবা ওই নামে একটি কমিউনিটি শুরু করুন।"),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("শেষ পোস্ট"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("এখনও নেই"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("নতুনগুলো দেখুন"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("খুলুন"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("পোস্ট লিখুন"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("সদস্য:"),
     };

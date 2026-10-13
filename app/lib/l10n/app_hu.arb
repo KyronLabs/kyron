@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Nincs már mihez csatlakozni",
   "ui_community_discover_none_detail": "A Kyron minden közösségében benne vagy. Indíts egy újat.",
   "ui_community_discover_search_detail": "Próbálj másik szót, vagy indíts közösséget ezzel a névvel.",
-  "ui_community_last_post": "Legutóbbi bejegyzés",
-  "ui_community_none_yet": "Még nincs",
-  "ui_community_catch_up": "Felzárkózás",
-  "ui_community_open": "Megnyitás",
   "ui_community_write": "Bejegyzés írása",
   "ui_community_members": "Tagok:"
 }

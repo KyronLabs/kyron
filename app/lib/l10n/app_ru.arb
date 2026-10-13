@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Больше не к чему присоединиться",
   "ui_community_discover_none_detail": "Вы во всех сообществах Kyron. Создайте ещё одно.",
   "ui_community_discover_search_detail": "Попробуйте другое слово или создайте сообщество с таким названием.",
-  "ui_community_last_post": "Последний пост",
-  "ui_community_none_yet": "Пока нет",
-  "ui_community_catch_up": "Наверстать",
-  "ui_community_open": "Открыть",
   "ui_community_write": "Написать",
   "ui_community_members": "Участники:"
 }

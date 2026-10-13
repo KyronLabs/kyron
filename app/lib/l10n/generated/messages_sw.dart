@@ -1491,13 +1491,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Jaribu neno lingine, au anzisha jumuiya kwa jina hilo."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Chapisho la mwisho"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Bado hakuna"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Pata yaliyopita"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Fungua"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Andika chapisho"),
       "ui_community_members":

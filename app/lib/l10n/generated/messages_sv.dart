@@ -1488,12 +1488,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Prova ett annat ord, eller starta en gemenskap med det namnet."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Senaste inlägg"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Inget än"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Kom ikapp"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Öppna"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Skriv ett inlägg"),
       "ui_community_members":

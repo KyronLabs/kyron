@@ -1259,10 +1259,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "다른 단어로 찾아보거나, 그 이름으로 커뮤니티를 만들어 보세요."),
-      "ui_community_last_post": MessageLookupByLibrary.simpleMessage("최근 게시물"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("아직 없음"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("새 글 보기"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("열기"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("글쓰기"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("멤버:"),
     };

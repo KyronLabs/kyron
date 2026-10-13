@@ -1499,13 +1499,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Încearcă alt cuvânt sau creează o comunitate cu acest nume."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Ultima postare"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Încă niciuna"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Recuperează"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Deschide"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Scrie o postare"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Membri:"),

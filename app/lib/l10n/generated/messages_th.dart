@@ -1488,12 +1488,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "ลองคำอื่น หรือสร้างชุมชนด้วยชื่อนั้น"),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("โพสต์ล่าสุด"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("ยังไม่มี"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("ดูที่ใหม่"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("เปิด"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("เขียนโพสต์"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("สมาชิก:"),
     };

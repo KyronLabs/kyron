@@ -1478,12 +1478,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "נסו מילה אחרת, או הקימו קהילה בשם הזה."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("פוסט אחרון"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("עדיין אין"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("להתעדכן"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("פתיחה"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("כתיבת פוסט"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("חברים:"),
     };

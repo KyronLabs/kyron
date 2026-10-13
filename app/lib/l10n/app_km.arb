@@ -748,10 +748,6 @@
   "ui_community_discover_none": "គ្មានអ្វីសល់សម្រាប់ចូលរួមទេ",
   "ui_community_discover_none_detail": "អ្នកនៅក្នុងសហគមន៍ទាំងអស់នៅលើ Kyron។ ចាប់ផ្ដើមមួយទៀត។",
   "ui_community_discover_search_detail": "សាកល្បងពាក្យផ្សេង ឬចាប់ផ្ដើមសហគមន៍ដោយឈ្មោះនោះ។",
-  "ui_community_last_post": "ការបង្ហោះចុងក្រោយ",
-  "ui_community_none_yet": "មិនទាន់មាន",
-  "ui_community_catch_up": "មើលថ្មីៗ",
-  "ui_community_open": "បើក",
   "ui_community_write": "សរសេរការបង្ហោះ",
   "ui_community_members": "សមាជិក៖"
 }

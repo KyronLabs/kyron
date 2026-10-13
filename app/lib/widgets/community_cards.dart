@@ -13,17 +13,20 @@ import '../providers/communities_provider.dart';
 import '../utils/api_error_message.dart';
 import '../utils/conversation_text.dart';
 import '../utils/format_count.dart';
-import 'hairline.dart';
+import 'action_button.dart';
 import 'list_controls.dart';
 import 'skeleton.dart';
 import 'toast.dart';
 
-/// Communities as cards: a picture in a tile, the name and what it is, the
-/// newest post, and what to do about it at the foot.
+/// Communities as cards: a picture in a tile, the name and what it is, and
+/// the newest post.
 ///
 /// Cards rather than rows so the Communities list reads as places, not as a
-/// second inbox: Messages is a list of conversations, one line each, and this
-/// was laid out the same way until the two were hard to tell apart.
+/// second inbox. They were bigger: an 84-pixel picture, then a rule, then a
+/// footer saying when the last post was in type larger than the post itself,
+/// and two big buttons, one of which -- Open -- did what tapping the card
+/// already did. About 170 pixels for three facts. Now it is the three facts
+/// and the one action that is not opening it.
 
 /// The ground the cards sit on: a shade under the page in light, so white
 /// cards stand off it; the page itself in dark, where the cards are the
@@ -42,7 +45,9 @@ Color _cardColor(BuildContext context) {
       : theme.colorScheme.surface;
 }
 
-const _cardRadius = 22.0;
+const _cardRadius = 20.0;
+const _cardPadding = EdgeInsets.all(SpacingTokens.space12);
+const _tile = 56.0;
 
 /// "Members: 12" -- a label and a number, the way the card's other facts
 /// read, rather than "12 members", which needs a plural every language forms
@@ -50,11 +55,9 @@ const _cardRadius = 22.0;
 String _members(AppLocalizations l10n, int count) =>
     '${l10n.ui('ui_community_members', 'Members:')} ${formatCount(count)}';
 
-/// One of the reader's communities.
-///
-/// The foot carries the two things worth doing from the list -- reading it,
-/// and writing in it -- filled when there is something new, outlined when
-/// there is not, so the communities with news stand out down the page.
+/// One of the reader's communities: picture, name, members and the reader's
+/// part in it, the newest post with how many are new, and a button to write
+/// there. The card itself opens the community.
 class CommunityCard extends StatelessWidget {
   final Community community;
 
@@ -81,12 +84,10 @@ class CommunityCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
     final muted = scheme.onSurface.withValues(alpha: 0.55);
-    final fresh = community.unread > 0;
     // Counts off means nothing on the card says how much is new, so nothing
     // on it should shout about it either.
-    final loud = fresh && showCount;
+    final loud = community.unread > 0 && showCount;
     final post = community.lastPost;
-    final when = post?.createdAt;
     final role = switch (community.role) {
       CommunityRole.owner => l10n.ui('ui_community_role_owner', 'Owner'),
       CommunityRole.moderator =>
@@ -102,142 +103,78 @@ class CommunityCard extends StatelessWidget {
       child: InkWell(
         onTap: onOpen,
         child: Padding(
-          padding: const EdgeInsets.all(SpacingTokens.space12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          padding: _cardPadding,
+          child: Row(
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CommunityPictureTile(community: community, size: 84),
-                  const SizedBox(width: 14),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: SpacingTokens.space4),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            community.name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: TypographyTokens.fontSize5,
-                              fontWeight: FontWeight.w600,
-                              height: 1.2,
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          Text(
-                            [
-                              _members(l10n, community.members),
-                              if (role != null) role,
-                            ].join(' · '),
-                            key: ValueKey('community-meta-${community.id}'),
+              CommunityPictureTile(community: community, size: _tile),
+              const SizedBox(width: SpacingTokens.space12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      community.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: TypographyTokens.fontSize4,
+                        fontWeight: FontWeight.w600,
+                        height: 1.25,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      [
+                        _members(l10n, community.members),
+                        if (role != null) role,
+                      ].join(' · '),
+                      key: ValueKey('community-meta-${community.id}'),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: TypographyTokens.fontSize1,
+                        color: muted,
+                      ),
+                    ),
+                    const SizedBox(height: SpacingTokens.space4),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            communityPreview(l10n, post, mine: mine),
+                            key: ValueKey('community-preview-${community.id}'),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: TypographyTokens.fontSize2,
-                              color: muted,
+                              height: 1.3,
+                              fontWeight:
+                                  loud ? FontWeight.w600 : FontWeight.w400,
+                              color: post == null
+                                  ? muted
+                                  : scheme.onSurface.withValues(
+                                      alpha: loud ? 1 : 0.75,
+                                    ),
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  communityPreview(l10n, post, mine: mine),
-                                  key: ValueKey(
-                                    'community-preview-${community.id}',
-                                  ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: TypographyTokens.fontSize3,
-                                    fontWeight: loud
-                                        ? FontWeight.w600
-                                        : FontWeight.w400,
-                                    color: post == null
-                                        ? muted
-                                        : scheme.onSurface.withValues(
-                                            alpha: loud ? 1 : 0.8,
-                                          ),
-                                  ),
-                                ),
-                              ),
-                              if (loud) ...[
-                                const SizedBox(width: SpacingTokens.space8),
-                                CountBadge(count: community.unread),
-                              ],
-                            ],
-                          ),
+                        ),
+                        if (loud) ...[
+                          const SizedBox(width: SpacingTokens.space8),
+                          CountBadge(count: community.unread),
                         ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: SpacingTokens.space12),
-              Divider(
-                height: 1,
-                thickness: 0.5,
-                color: postRule(scheme).color,
-              ),
-              const SizedBox(height: SpacingTokens.space12),
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          l10n.ui('ui_community_last_post', 'Last post'),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: TypographyTokens.fontSize2,
-                            color: muted,
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          when == null
-                              ? l10n.ui('ui_community_none_yet', 'None yet')
-                              : conversationTime(
-                                  l10n,
-                                  when,
-                                  locale: Localizations.maybeLocaleOf(context)
-                                      ?.toLanguageTag(),
-                                ),
-                          key: ValueKey('community-when-${community.id}'),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: TypographyTokens.fontSize5,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
                       ],
                     ),
-                  ),
-                  const SizedBox(width: SpacingTokens.space8),
-                  CardPill(
-                    key: ValueKey('community-open-${community.id}'),
-                    label: loud
-                        ? l10n.ui('ui_community_catch_up', 'Catch up')
-                        : l10n.ui('ui_community_open', 'Open'),
-                    filled: loud,
-                    onPressed: onOpen,
-                  ),
-                  const SizedBox(width: SpacingTokens.space8),
-                  CardRoundButton(
-                    key: ValueKey('community-write-${community.id}'),
-                    icon: Iconsax.edit_2_copy,
-                    tooltip: l10n.ui('ui_community_write', 'Write a post'),
-                    filled: loud,
-                    onPressed: onWrite,
-                  ),
-                ],
+                  ],
+                ),
+              ),
+              const SizedBox(width: SpacingTokens.space12),
+              ActionIconButton(
+                key: ValueKey('community-write-${community.id}'),
+                icon: Iconsax.edit_2_copy,
+                tooltip: l10n.ui('ui_community_write', 'Write a post'),
+                filled: true,
+                size: ActionButton.compactHeight,
+                onPressed: onWrite,
               ),
             ],
           ),
@@ -247,7 +184,15 @@ class CommunityCard extends StatelessWidget {
   }
 }
 
-/// A community the reader is not in, with a Join pill at its foot.
+/// A community the reader is not in.
+///
+/// The header is the same as a [CommunityCard]'s -- picture, name, members --
+/// so the two lists read as one kind of thing, with Join where the write
+/// button would be: the Follow button, in all but the word, since that is
+/// what joining is. What it is for runs the width of the card under them,
+/// rather than squeezed beside the picture, where a long description made
+/// one card twice the height of the next and left the Join button floating
+/// at whatever height the words stopped.
 class DiscoverCommunityCard extends ConsumerStatefulWidget {
   final Community community;
   final VoidCallback onOpen;
@@ -300,68 +245,65 @@ class _DiscoverCommunityCardState extends ConsumerState<DiscoverCommunityCard> {
       child: InkWell(
         onTap: widget.onOpen,
         child: Padding(
-          padding: const EdgeInsets.all(14),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: _cardPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CommunityPictureTile(community: community, size: 72),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      community.name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: TypographyTokens.fontSize5,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2,
-                      ),
-                    ),
-                    if (description != null && description.isNotEmpty) ...[
-                      const SizedBox(height: SpacingTokens.space4),
-                      Text(
-                        description,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: TypographyTokens.fontSize2,
-                          height: 1.35,
-                          color: scheme.onSurface.withValues(alpha: 0.6),
-                        ),
-                      ),
-                    ],
-                    const SizedBox(height: 10),
-                    Row(
+              Row(
+                children: [
+                  CommunityPictureTile(community: community, size: _tile),
+                  const SizedBox(width: SpacingTokens.space12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: Text(
-                            _members(l10n, community.members),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: TypographyTokens.fontSize2,
-                              fontWeight: FontWeight.w600,
-                              color: scheme.onSurface.withValues(alpha: 0.65),
-                            ),
+                        Text(
+                          community.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: TypographyTokens.fontSize4,
+                            fontWeight: FontWeight.w600,
+                            height: 1.25,
                           ),
                         ),
-                        CardPill(
-                          key: ValueKey('discover-join-${community.id}'),
-                          label: l10n.ui('ui_join', 'Join'),
-                          icon: Iconsax.add_copy,
-                          filled: true,
-                          compact: true,
-                          busy: _busy,
-                          onPressed: _join,
+                        const SizedBox(height: 2),
+                        Text(
+                          _members(l10n, community.members),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: TypographyTokens.fontSize1,
+                            color: scheme.onSurface.withValues(alpha: 0.55),
+                          ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: SpacingTokens.space12),
+                  ActionButton(
+                    key: ValueKey('discover-join-${community.id}'),
+                    compact: true,
+                    label: l10n.ui('ui_join', 'Join'),
+                    icon: Iconsax.add,
+                    busy: _busy,
+                    onPressed: _join,
+                  ),
+                ],
               ),
+              if (description != null && description.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                Text(
+                  description,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize2,
+                    height: 1.4,
+                    color: scheme.onSurface.withValues(alpha: 0.7),
+                  ),
+                ),
+              ],
             ],
           ),
         ),
@@ -392,7 +334,7 @@ class CommunityPictureTile extends StatelessWidget {
     final ground = scheme.surfaceContainerHighest;
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(size * 0.22),
+      borderRadius: BorderRadius.circular(size * 0.24),
       child: SizedBox.square(
         dimension: size,
         child: ColoredBox(
@@ -420,124 +362,6 @@ class CommunityPictureTile extends StatelessWidget {
   }
 }
 
-/// A pill-shaped button: filled in the text colour when it is the thing to
-/// do, outlined when it is only there.
-class CardPill extends StatelessWidget {
-  final String label;
-  final IconData? icon;
-  final bool filled;
-  final bool compact;
-  final bool busy;
-  final VoidCallback onPressed;
-
-  const CardPill({
-    super.key,
-    required this.label,
-    required this.filled,
-    required this.onPressed,
-    this.icon,
-    this.compact = false,
-    this.busy = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final ink =
-        filled ? scheme.surface : scheme.onSurface.withValues(alpha: 0.7);
-    final height = compact ? 36.0 : 44.0;
-
-    return Material(
-      color: filled ? scheme.onSurface : Colors.transparent,
-      shape: StadiumBorder(
-        side: filled
-            ? BorderSide.none
-            : BorderSide(color: scheme.outline.withValues(alpha: 0.35)),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: busy ? null : onPressed,
-        child: SizedBox(
-          height: height,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: compact ? 14 : 20),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (busy)
-                  SizedBox.square(
-                    dimension: 14,
-                    child:
-                        CircularProgressIndicator(strokeWidth: 2, color: ink),
-                  )
-                else if (icon != null)
-                  Icon(icon, size: 16, color: ink),
-                if (busy || icon != null) const SizedBox(width: 6),
-                Text(
-                  label,
-                  style: TextStyle(
-                    fontSize: compact
-                        ? TypographyTokens.fontSize2
-                        : TypographyTokens.fontSize3,
-                    fontWeight: FontWeight.w600,
-                    color: ink,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// The round button beside a [CardPill], in the same weight.
-class CardRoundButton extends StatelessWidget {
-  final IconData icon;
-  final String tooltip;
-  final bool filled;
-  final VoidCallback onPressed;
-
-  const CardRoundButton({
-    super.key,
-    required this.icon,
-    required this.tooltip,
-    required this.filled,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Tooltip(
-      message: tooltip,
-      child: Material(
-        color: filled ? scheme.onSurface : Colors.transparent,
-        shape: CircleBorder(
-          side: filled
-              ? BorderSide.none
-              : BorderSide(color: scheme.outline.withValues(alpha: 0.35)),
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: onPressed,
-          child: SizedBox.square(
-            dimension: 44,
-            child: Icon(
-              icon,
-              size: 18,
-              color: filled
-                  ? scheme.surface
-                  : scheme.onSurface.withValues(alpha: 0.7),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 /// The shape of the cards while they load.
 class CommunityCardsSkeleton extends StatelessWidget {
   const CommunityCardsSkeleton({super.key});
@@ -548,56 +372,33 @@ class CommunityCardsSkeleton extends StatelessWidget {
       child: ListView.separated(
         physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.all(SpacingTokens.space16),
-        itemCount: 3,
+        itemCount: 4,
         separatorBuilder: (_, __) =>
-            const SizedBox(height: SpacingTokens.space12),
+            const SizedBox(height: SpacingTokens.space8),
         itemBuilder: (context, _) => Container(
-          padding: const EdgeInsets.all(SpacingTokens.space12),
+          padding: _cardPadding,
           decoration: BoxDecoration(
             color: _cardColor(context),
             borderRadius: BorderRadius.circular(_cardRadius),
           ),
-          child: const Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: const Row(
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SkeletonBox(width: 84, height: 84, radius: 18),
-                  SizedBox(width: 14),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        SizedBox(height: SpacingTokens.space8),
-                        SkeletonBox.line(width: 140, height: 16),
-                        SizedBox(height: 10),
-                        SkeletonBox.line(width: 90),
-                        SizedBox(height: 14),
-                        SkeletonBox.line(height: 14),
-                      ],
-                    ),
-                  ),
-                ],
+              SkeletonBox(width: _tile, height: _tile, radius: _tile * 0.24),
+              SizedBox(width: SpacingTokens.space12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SkeletonBox.line(width: 130, height: 15),
+                    SizedBox(height: 7),
+                    SkeletonBox.line(width: 80, height: 11),
+                    SizedBox(height: 9),
+                    SkeletonBox.line(height: 13),
+                  ],
+                ),
               ),
-              SizedBox(height: 25),
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SkeletonBox.line(width: 60),
-                        SizedBox(height: 6),
-                        SkeletonBox.line(width: 80, height: 16),
-                      ],
-                    ),
-                  ),
-                  SkeletonBox(width: 88, height: 44, radius: 22),
-                  SizedBox(width: SpacingTokens.space8),
-                  SkeletonBox.circle(size: 44),
-                ],
-              ),
+              SizedBox(width: SpacingTokens.space12),
+              SkeletonBox.circle(size: ActionButton.compactHeight),
             ],
           ),
         ),

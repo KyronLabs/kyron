@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Більше нема до чого приєднатися",
   "ui_community_discover_none_detail": "Ви в усіх спільнотах Kyron. Створіть ще одну.",
   "ui_community_discover_search_detail": "Спробуйте інше слово або створіть спільноту з такою назвою.",
-  "ui_community_last_post": "Останній допис",
-  "ui_community_none_yet": "Поки немає",
-  "ui_community_catch_up": "Наздогнати",
-  "ui_community_open": "Відкрити",
   "ui_community_write": "Написати допис",
   "ui_community_members": "Учасники:"
 }

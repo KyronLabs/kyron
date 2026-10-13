@@ -748,10 +748,6 @@
   "ui_community_discover_none": "没有可以加入的社区了",
   "ui_community_discover_none_detail": "你已加入 Kyron 上的所有社区。再创建一个吧。",
   "ui_community_discover_search_detail": "换个词试试，或者用这个名称创建一个社区。",
-  "ui_community_last_post": "最新帖子",
-  "ui_community_none_yet": "还没有",
-  "ui_community_catch_up": "查看新帖",
-  "ui_community_open": "打开",
   "ui_community_write": "发帖",
   "ui_community_members": "成员："
 }

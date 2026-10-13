@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Hakuna kilichobaki cha kujiunga",
   "ui_community_discover_none_detail": "Uko katika kila jumuiya kwenye Kyron. Anzisha nyingine.",
   "ui_community_discover_search_detail": "Jaribu neno lingine, au anzisha jumuiya kwa jina hilo.",
-  "ui_community_last_post": "Chapisho la mwisho",
-  "ui_community_none_yet": "Bado hakuna",
-  "ui_community_catch_up": "Pata yaliyopita",
-  "ui_community_open": "Fungua",
   "ui_community_write": "Andika chapisho",
   "ui_community_members": "Wanachama:"
 }

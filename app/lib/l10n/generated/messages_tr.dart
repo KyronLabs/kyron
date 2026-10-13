@@ -1488,12 +1488,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Başka bir kelime dene ya da bu adla bir topluluk başlat."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Son gönderi"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Henüz yok"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Yetiş"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Aç"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("Gönderi yaz"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Üyeler:"),
     };

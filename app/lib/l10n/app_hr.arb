@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Nema se više čemu pridružiti",
   "ui_community_discover_none_detail": "U svakoj ste zajednici na Kyronu. Pokrenite još jednu.",
   "ui_community_discover_search_detail": "Pokušajte drugu riječ ili pokrenite zajednicu s tim nazivom.",
-  "ui_community_last_post": "Zadnja objava",
-  "ui_community_none_yet": "Još nijedna",
-  "ui_community_catch_up": "Sustigni",
-  "ui_community_open": "Otvori",
   "ui_community_write": "Napiši objavu",
   "ui_community_members": "Članovi:"
 }

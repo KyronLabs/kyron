@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Nie ma już do czego dołączyć",
   "ui_community_discover_none_detail": "Jesteś we wszystkich społecznościach na Kyronie. Załóż kolejną.",
   "ui_community_discover_search_detail": "Spróbuj innego słowa albo załóż społeczność o tej nazwie.",
-  "ui_community_last_post": "Ostatni post",
-  "ui_community_none_yet": "Jeszcze brak",
-  "ui_community_catch_up": "Nadrób",
-  "ui_community_open": "Otwórz",
   "ui_community_write": "Napisz post",
   "ui_community_members": "Członkowie:"
 }

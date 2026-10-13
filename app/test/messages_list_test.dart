@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/widgets/action_button.dart';
 import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/conversation.dart';
 import 'package:kyron_app/models/current_user.dart';
@@ -298,6 +299,20 @@ void main() {
       expect(repo.asked, contains(ConversationFilter.unread));
       expect(find.text('Archieee'), findsNothing);
       expect(find.text('Wee'), findsOneWidget);
+    });
+
+    testWidgets('its chips are the size of a Follow button', (tester) async {
+      // They were 36 tall with a lighter label: between Follow and the
+      // full-size buttons, and like neither.
+      await _pump(tester, _messages(), lists: lists);
+
+      for (final key in ['messages-filter', 'messages-hidden']) {
+        expect(
+          tester.getSize(find.byKey(ValueKey(key))).height,
+          ActionButton.compactHeight,
+          reason: key,
+        );
+      }
     });
 
     testWidgets('Hidden shows what was removed, and a swipe puts it back', (

@@ -748,10 +748,6 @@
   "ui_community_discover_none": "No queda res per unir-s'hi",
   "ui_community_discover_none_detail": "Ets a totes les comunitats de Kyron. Crea'n una altra.",
   "ui_community_discover_search_detail": "Prova una altra paraula, o crea una comunitat amb aquest nom.",
-  "ui_community_last_post": "Darrera publicació",
-  "ui_community_none_yet": "Encara cap",
-  "ui_community_catch_up": "Posa't al dia",
-  "ui_community_open": "Obre",
   "ui_community_write": "Escriu una publicació",
   "ui_community_members": "Membres:"
 }

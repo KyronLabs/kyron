@@ -1499,13 +1499,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Спробуйте інше слово або створіть спільноту з такою назвою."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Останній допис"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Поки немає"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Наздогнати"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Відкрити"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Написати допис"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Учасники:"),

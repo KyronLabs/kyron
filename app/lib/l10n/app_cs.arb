@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Už není k čemu se přidat",
   "ui_community_discover_none_detail": "Jste ve všech komunitách na Kyronu. Založte další.",
   "ui_community_discover_search_detail": "Zkuste jiné slovo, nebo založte komunitu s tímto názvem.",
-  "ui_community_last_post": "Poslední příspěvek",
-  "ui_community_none_yet": "Zatím žádný",
-  "ui_community_catch_up": "Dohnat",
-  "ui_community_open": "Otevřít",
   "ui_community_write": "Napsat příspěvek",
   "ui_community_members": "Členové:"
 }

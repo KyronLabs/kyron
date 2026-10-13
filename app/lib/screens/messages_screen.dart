@@ -153,33 +153,26 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
             hint: l10n.ui('ui_share_search', 'Search'),
           ),
         ),
-        SizedBox(
-          height: 36,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(
-              horizontal: SpacingTokens.space16,
+        ListChipRow(
+          children: [
+            Builder(
+              builder: (chip) => ListChip(
+                key: const ValueKey('messages-filter'),
+                selected: filtered,
+                onTap: () => _chooseFilter(chip),
+                icon: Iconsax.filter_copy,
+                label: filtered ? _filterName(l10n, _filter) : null,
+                tooltip: l10n.ui('ui_dm_filter', 'Filter'),
+              ),
             ),
-            children: [
-              Builder(
-                builder: (chip) => ListChip(
-                  key: const ValueKey('messages-filter'),
-                  selected: filtered,
-                  onTap: () => _chooseFilter(chip),
-                  icon: Iconsax.filter_copy,
-                  label: filtered ? _filterName(l10n, _filter) : null,
-                  tooltip: l10n.ui('ui_dm_filter', 'Filter'),
-                ),
-              ),
-              const SizedBox(width: SpacingTokens.space8),
-              ListChip(
-                key: const ValueKey('messages-hidden'),
-                selected: _showingHidden,
-                onTap: () => setState(() => _showingHidden = !_showingHidden),
-                label: l10n.ui('ui_dm_hidden', 'Hidden'),
-              ),
-            ],
-          ),
+            const SizedBox(width: SpacingTokens.space8),
+            ListChip(
+              key: const ValueKey('messages-hidden'),
+              selected: _showingHidden,
+              onTap: () => setState(() => _showingHidden = !_showingHidden),
+              label: l10n.ui('ui_dm_hidden', 'Hidden'),
+            ),
+          ],
         ),
         const SizedBox(height: SpacingTokens.space8),
         Divider(

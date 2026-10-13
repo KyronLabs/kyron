@@ -1493,13 +1493,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Próbálj másik szót, vagy indíts közösséget ezzel a névvel."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Legutóbbi bejegyzés"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Még nincs"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Felzárkózás"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Megnyitás"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Bejegyzés írása"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Tagok:"),

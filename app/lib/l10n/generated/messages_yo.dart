@@ -1492,13 +1492,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Gbìyànjú ọ̀rọ̀ mìíràn, tàbí dá àwùjọ sílẹ̀ pẹ̀lú orúkọ yẹn."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Ìfiránṣẹ́ tó kẹ́yìn"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Kò tíì sí"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Wo àwọn tuntun"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Ṣí i"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Kọ ìfiránṣẹ́"),
       "ui_community_members":

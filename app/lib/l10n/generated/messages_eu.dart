@@ -1495,13 +1495,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron-eko komunitate guztietan zaude. Sortu beste bat."),
       "ui_community_discover_search_detail": MessageLookupByLibrary.simpleMessage(
           "Saiatu beste hitz batekin, edo sortu izen horrekin komunitate bat."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Azken argitalpena"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Oraindik ez"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Jarri egunean"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Ireki"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Idatzi argitalpen bat"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Kideak:"),

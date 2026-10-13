@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Katılacak bir şey kalmadı",
   "ui_community_discover_none_detail": "Kyron'daki tüm topluluklardasın. Bir tane daha başlat.",
   "ui_community_discover_search_detail": "Başka bir kelime dene ya da bu adla bir topluluk başlat.",
-  "ui_community_last_post": "Son gönderi",
-  "ui_community_none_yet": "Henüz yok",
-  "ui_community_catch_up": "Yetiş",
-  "ui_community_open": "Aç",
   "ui_community_write": "Gönderi yaz",
   "ui_community_members": "Üyeler:"
 }

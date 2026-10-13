@@ -1500,12 +1500,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Փորձեք այլ բառ կամ ստեղծեք այդ անունով համայնք։"),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Վերջին գրառումը"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Դեռ չկա"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Տեսնել նորերը"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Բացել"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Գրել գրառում"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Անդամներ՝"),

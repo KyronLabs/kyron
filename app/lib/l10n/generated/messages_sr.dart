@@ -1495,12 +1495,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Пробај другу реч или покрени заједницу с тим називом."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Последња објава"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Још ниједна"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("Сустигни"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Отвори"),
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Напиши објаву"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Чланови:"),

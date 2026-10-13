@@ -748,10 +748,6 @@
   "ui_community_discover_none": "የሚቀላቀሉት የቀረ የለም",
   "ui_community_discover_none_detail": "በKyron ላይ ባሉ ሁሉም ማህበረሰቦች ውስጥ ነዎት። ሌላ ይጀምሩ።",
   "ui_community_discover_search_detail": "ሌላ ቃል ይሞክሩ፣ ወይም በዚያ ስም ማህበረሰብ ይጀምሩ።",
-  "ui_community_last_post": "የመጨረሻ ልጥፍ",
-  "ui_community_none_yet": "እስካሁን የለም",
-  "ui_community_catch_up": "ይከታተሉ",
-  "ui_community_open": "ክፈት",
   "ui_community_write": "ልጥፍ ይጻፉ",
   "ui_community_members": "አባላት፦"
 }

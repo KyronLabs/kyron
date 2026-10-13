@@ -1497,12 +1497,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Isku day eray kale, ama bilow bulsho magacaas leh."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Qoraalkii ugu dambeeyay"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("Weli ma jiro"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("La soco"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Fur"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("Qor qoraal"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Xubnaha:"),
     };

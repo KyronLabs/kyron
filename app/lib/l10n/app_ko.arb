@@ -748,10 +748,6 @@
   "ui_community_discover_none": "더 가입할 커뮤니티가 없어요",
   "ui_community_discover_none_detail": "Kyron의 모든 커뮤니티에 가입했어요. 새로 만들어 보세요.",
   "ui_community_discover_search_detail": "다른 단어로 찾아보거나, 그 이름으로 커뮤니티를 만들어 보세요.",
-  "ui_community_last_post": "최근 게시물",
-  "ui_community_none_yet": "아직 없음",
-  "ui_community_catch_up": "새 글 보기",
-  "ui_community_open": "열기",
   "ui_community_write": "글쓰기",
   "ui_community_members": "멤버:"
 }

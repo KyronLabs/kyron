@@ -166,10 +166,6 @@ const _keys = [
   'ui_community_discover_none',
   'ui_community_discover_none_detail',
   'ui_community_discover_search_detail',
-  'ui_community_last_post',
-  'ui_community_none_yet',
-  'ui_community_catch_up',
-  'ui_community_open',
   'ui_community_write',
   'ui_community_members',
 ];

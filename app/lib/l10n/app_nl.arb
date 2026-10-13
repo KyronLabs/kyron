@@ -748,10 +748,6 @@
   "ui_community_discover_none": "Niets meer om lid van te worden",
   "ui_community_discover_none_detail": "Je zit in elke community op Kyron. Begin er nog een.",
   "ui_community_discover_search_detail": "Probeer een ander woord, of begin een community met die naam.",
-  "ui_community_last_post": "Laatste bericht",
-  "ui_community_none_yet": "Nog geen",
-  "ui_community_catch_up": "Bijlezen",
-  "ui_community_open": "Openen",
   "ui_community_write": "Bericht schrijven",
   "ui_community_members": "Leden:"
 }

@@ -1374,12 +1374,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "ሌላ ቃል ይሞክሩ፣ ወይም በዚያ ስም ማህበረሰብ ይጀምሩ።"),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("የመጨረሻ ልጥፍ"),
-      "ui_community_none_yet":
-          MessageLookupByLibrary.simpleMessage("እስካሁን የለም"),
-      "ui_community_catch_up": MessageLookupByLibrary.simpleMessage("ይከታተሉ"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("ክፈት"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("ልጥፍ ይጻፉ"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("አባላት፦"),
     };

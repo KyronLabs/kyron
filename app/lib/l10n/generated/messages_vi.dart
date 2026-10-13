@@ -1492,12 +1492,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_discover_search_detail":
           MessageLookupByLibrary.simpleMessage(
               "Thử một từ khác, hoặc tạo cộng đồng với tên đó."),
-      "ui_community_last_post":
-          MessageLookupByLibrary.simpleMessage("Bài viết gần nhất"),
-      "ui_community_none_yet": MessageLookupByLibrary.simpleMessage("Chưa có"),
-      "ui_community_catch_up":
-          MessageLookupByLibrary.simpleMessage("Xem bài mới"),
-      "ui_community_open": MessageLookupByLibrary.simpleMessage("Mở"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("Viết bài"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Thành viên:"),

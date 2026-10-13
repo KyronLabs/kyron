@@ -301,6 +301,19 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- **Community cards are calmer.** About half the height: a smaller picture,
+  the name, members and your role, the newest post with how many are new,
+  and a Follow-sized button to write there. The "Last post" time at the foot
+  is gone, and so is Open, which did what tapping the card does. Discover
+  cards share the same header, with a Join button that is the Follow button
+  in all but the word, and what the community is for under it across the
+  card's width -- so a long description no longer makes one card twice the
+  height of the next and leaves Join floating. The filter chip is hidden in
+  Discover, where it filtered nothing.
+- **One size for small buttons.** The chips over Messages and Communities
+  (filter, Hidden, Discover) and Edit profile and Share on your own profile
+  are the size of the Follow button on anybody else's.
+
 - **The welcome screen's buttons and edge.** The Google button is a solid
   pill -- black on the light screen, light on the dark one, in Google's own
   colours -- at the same height as the email button under it. The rounded
