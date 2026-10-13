@@ -23,7 +23,18 @@ export type RealtimeEvent =
       actorId: string;
       /** The post it is about, when it is about one. */
       postId?: string;
-    };
+    }
+  /**
+   * Somebody the reader talks to opened the app or put it away. Only ever
+   * sent where both of them show their own (PresenceService).
+   */
+  | { type: 'presence'; userId: string; online: boolean }
+  /**
+   * Everybody the reader may see who is online right now, sent to a socket
+   * as it connects: whatever changed while it was gone was not sent to it,
+   * so the app starts again from this rather than from what it last heard.
+   */
+  | { type: 'presence.snapshot'; online: string[] };
 
 /**
  * One socket, or none, per connection; one entry per reader.
@@ -41,13 +52,54 @@ export class RealtimeService {
   /** Reader id to their open sockets. Somebody on a phone and a laptop has two. */
   private readonly sockets = new Map<string, Set<Sendable>>();
 
+  /**
+   * Sockets whose app has said it is in the background.
+   *
+   * A phone keeps its socket for a while after the app is put away -- until
+   * the system reclaims it, which can be minutes -- so "has a socket" is not
+   * "is here". The app says which it is (`presence` frames, see the
+   * gateway), and this is where that is kept.
+   */
+  private readonly away = new WeakSet<Sendable>();
+
+  /** Told whenever somebody's [isOnline] may have changed. */
+  private readonly presenceListeners: ((userId: string) => void)[] = [];
+
+  /** Told about each socket as it connects. */
+  private readonly connectListeners: ((
+    userId: string,
+    socket: Sendable,
+  ) => void)[] = [];
+
   register(userId: string, socket: Sendable): void {
     const existing = this.sockets.get(userId);
     if (existing) {
       existing.add(socket);
-      return;
+    } else {
+      this.sockets.set(userId, new Set([socket]));
     }
-    this.sockets.set(userId, new Set([socket]));
+    this.presenceMayHaveChanged(userId);
+    for (const listener of this.connectListeners) {
+      try {
+        listener(userId, socket);
+      } catch (error) {
+        this.logger.warn(`A connect listener failed: ${String(error)}`);
+      }
+    }
+  }
+
+  /** Asks to be told about each socket as it connects. */
+  onConnect(listener: (userId: string, socket: Sendable) => void): void {
+    this.connectListeners.push(listener);
+  }
+
+  /** Says something to one socket only -- the one that just connected. */
+  sendTo(socket: Sendable, event: RealtimeEvent): void {
+    try {
+      socket.send(JSON.stringify(event));
+    } catch (error) {
+      this.logger.warn(`Could not write to a new socket: ${String(error)}`);
+    }
   }
 
   unregister(userId: string, socket: Sendable): void {
@@ -57,11 +109,50 @@ export class RealtimeService {
     // Dropped rather than left empty: a reader who signs out on their last
     // device should not keep a key in this map for the life of the process.
     if (open.size === 0) this.sockets.delete(userId);
+    this.presenceMayHaveChanged(userId);
+  }
+
+  /** The app on [socket] went to the background, or came back. */
+  setAway(userId: string, socket: Sendable, away: boolean): void {
+    if (away) {
+      this.away.add(socket);
+    } else {
+      this.away.delete(socket);
+    }
+    this.presenceMayHaveChanged(userId);
   }
 
   /** Whether anybody is listening. Lets a caller skip work nobody will see. */
   isConnected(userId: string): boolean {
     return (this.sockets.get(userId)?.size ?? 0) > 0;
+  }
+
+  /**
+   * Whether [userId] has the app open and in front, on any device. Says
+   * nothing about whether anybody may be told so -- that is PresenceService.
+   */
+  isOnline(userId: string): boolean {
+    const open = this.sockets.get(userId);
+    if (!open) return false;
+    for (const socket of open) {
+      if (!this.away.has(socket)) return true;
+    }
+    return false;
+  }
+
+  /** Asks to be told when somebody's [isOnline] may have changed. */
+  onPresence(listener: (userId: string) => void): void {
+    this.presenceListeners.push(listener);
+  }
+
+  private presenceMayHaveChanged(userId: string): void {
+    for (const listener of this.presenceListeners) {
+      try {
+        listener(userId);
+      } catch (error) {
+        this.logger.warn(`A presence listener failed: ${String(error)}`);
+      }
+    }
   }
 
   /** Tells one reader something, on every device they have open. */
@@ -91,7 +182,10 @@ export class RealtimeService {
           open.delete(socket);
         }
       }
-      if (open.size === 0) this.sockets.delete(userId);
+      if (open.size === 0) {
+        this.sockets.delete(userId);
+        this.presenceMayHaveChanged(userId);
+      }
     }
   }
 

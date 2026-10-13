@@ -225,6 +225,18 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **See who is online.** A green dot on the picture of anybody you message
+  who has Kyron open, in the conversation list and at the top of the
+  conversation, where "Online" takes the place of their handle. Online
+  means the app is open and in front: the app tells the server when it goes
+  to the background, because a phone keeps its connection for minutes after
+  that. Only the people you have a conversation with can see it, never
+  across a block, and leaving takes fifteen seconds to show, so changing
+  networks does not make the dot blink. **Show when you're online** in
+  Messages settings turns it off, and off is mutual, as with read receipts:
+  you see nobody's either. A reconnecting app is sent who is online now
+  rather than trusting what it last heard.
+
 - **Toasts that open what they are about.** "Posted" (from the composer
   and from a community) has **View**, which opens the post; "Draft saved"
   has **Drafts**; a conversation restored from Hidden, or a share sent to

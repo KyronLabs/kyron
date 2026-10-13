@@ -40,8 +40,13 @@ export class ListConversationsDto {
 export type ConversationFilter = 'all' | 'unread' | 'unanswered' | 'hidden';
 
 export class MessagingSettingsDto {
+  @IsOptional()
   @IsBoolean()
-  readReceipts!: boolean;
+  readReceipts?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  showOnline?: boolean;
 }
 
 export class ListMessagesDto {

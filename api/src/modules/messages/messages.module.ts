@@ -3,6 +3,7 @@ import { MessagesController } from './messages.controller';
 import { MessagesService } from './messages.service';
 import { SupabaseTokenModule } from '../auth/supabase-token.module';
 import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
+import { PresenceService } from './presence.service';
 import { WallpapersService } from './wallpapers.service';
 
 @Module({
@@ -10,7 +11,7 @@ import { WallpapersService } from './wallpapers.service';
   // Storage, for the wallpaper folder.
   imports: [SupabaseTokenModule, SupabaseModule],
   controllers: [MessagesController],
-  providers: [MessagesService, WallpapersService],
+  providers: [MessagesService, PresenceService, WallpapersService],
   exports: [MessagesService],
 })
 export class MessagesModule {}

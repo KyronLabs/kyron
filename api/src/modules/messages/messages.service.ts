@@ -4,11 +4,13 @@ import {
   Injectable,
   Logger,
   NotFoundException,
+  Optional,
 } from '@nestjs/common';
 import { MediaKind, Prisma } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import type { ConversationFilter } from './dto/list-messages.dto';
+import { PresenceService } from './presence.service';
 
 /** The other person in a conversation, as a list row needs them. */
 export interface MessagePerson {
@@ -16,6 +18,9 @@ export interface MessagePerson {
   name: string | null;
   username: string | null;
   avatarUrl: string | null;
+  /** The app open and in front, where both sides show it (PresenceService).
+   * Kept current afterwards by `presence` events on the socket. */
+  online: boolean;
 }
 
 /** One conversation, as the list shows it. */
@@ -39,6 +44,14 @@ export interface ConversationSummary {
   /** Messages from the other side the reader has not seen. */
   unread: number;
   lastMessageAt: Date;
+}
+
+/** What the reader has chosen about their messages. */
+export interface MessagingSettings {
+  readReceipts: boolean;
+  /** Whether the people they talk to see when they are online. Off is
+   * mutual: they see nobody's either. */
+  showOnline: boolean;
 }
 
 /** One attachment on a message. The same shape a post's carries. */
@@ -128,6 +141,9 @@ export class MessagesService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly delivery: DeliveryService,
+    // Optional so a service built by hand -- in a spec -- needs no socket
+    // server: nobody is online there.
+    @Optional() private readonly presence?: PresenceService,
   ) {}
 
   /** The longest one message may be. */
@@ -182,6 +198,7 @@ export class MessagesService {
     name: true,
     username: true,
     profile: { select: { avatarUrl: true } },
+    showOnline: true,
   } as const;
 
   /** The reader's conversations, whichever moved last at the top. */
@@ -283,14 +300,18 @@ export class MessagesService {
       unreadCounts.map((row) => [row.conversationId, row._count.id]),
     );
 
+    const blocked = await this.blockedWith(viewerId);
     const items: ConversationSummary[] = page.map((row) => {
       const last = row.messages[0];
       const readUpTo = this.readUpTo(viewerId, row.members);
+      const viewerShows = this.showsOnline(viewerId, row.members);
       return {
         id: row.id,
         people: row.members
           .filter((m) => m.userId !== viewerId)
-          .map((m) => this.toPerson(m.user)),
+          .map((m) =>
+            this.toPerson(m.user, viewerShows && !blocked.has(m.userId)),
+          ),
         lastMessage: last
           ? {
               ...last,
@@ -396,25 +417,43 @@ export class MessagesService {
   }
 
   /** The reader's messaging settings. */
-  async settings(viewerId: string): Promise<{ readReceipts: boolean }> {
+  async settings(viewerId: string): Promise<MessagingSettings> {
     const user = await this.prisma.user.findUnique({
       where: { id: viewerId },
-      select: { readReceipts: true },
+      select: { readReceipts: true, showOnline: true },
     });
-    return { readReceipts: user?.readReceipts ?? true };
+    return {
+      readReceipts: user?.readReceipts ?? true,
+      showOnline: user?.showOnline ?? true,
+    };
   }
 
-  /** Changes them. */
+  /**
+   * Changes them. Either may be left out: a client from before one existed
+   * sends only the other, and must not switch it off by omission.
+   */
   async updateSettings(
     viewerId: string,
-    settings: { readReceipts: boolean },
-  ): Promise<{ readReceipts: boolean }> {
+    settings: Partial<MessagingSettings>,
+  ): Promise<MessagingSettings> {
     const user = await this.prisma.user.update({
       where: { id: viewerId },
-      data: { readReceipts: settings.readReceipts },
-      select: { readReceipts: true },
+      data: {
+        ...(settings.readReceipts !== undefined
+          ? { readReceipts: settings.readReceipts }
+          : {}),
+        ...(settings.showOnline !== undefined
+          ? { showOnline: settings.showOnline }
+          : {}),
+      },
+      select: { readReceipts: true, showOnline: true },
     });
-    return { readReceipts: user.readReceipts };
+    if (settings.showOnline !== undefined) {
+      // The people who could see the dot are told now, not the next time
+      // the app opens.
+      await this.presence?.settingChanged(viewerId, user.showOnline);
+    }
+    return { readReceipts: user.readReceipts, showOnline: user.showOnline };
   }
 
   /** Puts a conversation the reader removed back in their list. */
@@ -495,6 +534,7 @@ export class MessagesService {
     // makes the whole thing unseen, and so does read receipts being off on
     // either side.
     const otherRead = this.readUpTo(viewerId, conversation.members);
+    const blocked = await this.blockedWith(viewerId);
 
     const rows = await this.prisma.message.findMany({
       where: { conversationId, deletedAt: null },
@@ -532,7 +572,13 @@ export class MessagesService {
       nextCursor: rows.length > limit ? page[page.length - 1].id : null,
       people: conversation.members
         .filter((m) => m.userId !== viewerId)
-        .map((m) => this.toPerson(m.user)),
+        .map((m) =>
+          this.toPerson(
+            m.user,
+            this.showsOnline(viewerId, conversation.members) &&
+              !blocked.has(m.userId),
+          ),
+        ),
       // So the thread's menu can offer Mute or Unmute rather than both, which
       // is a menu that cannot say which state the reader is already in.
       muted:
@@ -963,18 +1009,52 @@ export class MessagesService {
     return { ok: true };
   }
 
-  private toPerson(user: {
-    id: string;
-    name: string | null;
-    username: string | null;
-    profile: { avatarUrl: string | null } | null;
-  }): MessagePerson {
+  private toPerson(
+    user: {
+      id: string;
+      name: string | null;
+      username: string | null;
+      profile: { avatarUrl: string | null } | null;
+      showOnline?: boolean;
+    },
+    viewerShows = false,
+  ): MessagePerson {
     return {
       id: user.id,
       name: user.name,
       username: user.username,
       avatarUrl: user.profile?.avatarUrl ?? null,
+      online: this.presence?.visible(viewerShows, user) ?? false,
     };
+  }
+
+  /**
+   * Everybody the reader has blocked or been blocked by. Presence never
+   * crosses a block, in either direction; nor does anything else here, but
+   * the conversation itself stays in the list, so this has to be said.
+   */
+  private async blockedWith(viewerId: string): Promise<Set<string>> {
+    if (!this.presence) return new Set();
+    const rows = await this.prisma.block.findMany({
+      where: { OR: [{ blockerId: viewerId }, { blockedId: viewerId }] },
+      select: { blockerId: true, blockedId: true },
+    });
+    return new Set(
+      rows.map((row) =>
+        row.blockerId === viewerId ? row.blockedId : row.blockerId,
+      ),
+    );
+  }
+
+  /** Whether the reader shows their own presence, from the members already
+   * loaded. Only an explicit false is off: the column defaults to on. */
+  private showsOnline(
+    viewerId: string,
+    members: ReadonlyArray<{ userId: string; user: { showOnline?: boolean } }>,
+  ): boolean {
+    return (
+      members.find((m) => m.userId === viewerId)?.user.showOnline !== false
+    );
   }
 
   /**

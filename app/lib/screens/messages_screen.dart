@@ -10,6 +10,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/conversation.dart';
 import '../utils/conversation_text.dart';
 import '../widgets/list_controls.dart';
+import '../widgets/online_dot.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
 import '../widgets/app_drawer.dart';
@@ -501,13 +502,17 @@ class _ConversationRow extends StatelessWidget {
           ),
           child: Row(
             children: [
-              CircleAvatar(
-                radius: 24,
-                backgroundColor: scheme.primary.withValues(alpha: 0.15),
-                foregroundImage: other?.avatarUrl == null
-                    ? null
-                    : NetworkImage(other!.avatarUrl!),
-                child: Icon(Iconsax.user_copy, size: 20, color: scheme.primary),
+              OnlineDot(
+                person: other,
+                child: CircleAvatar(
+                  radius: 24,
+                  backgroundColor: scheme.primary.withValues(alpha: 0.15),
+                  foregroundImage: other?.avatarUrl == null
+                      ? null
+                      : NetworkImage(other!.avatarUrl!),
+                  child:
+                      Icon(Iconsax.user_copy, size: 20, color: scheme.primary),
+                ),
               ),
               const SizedBox(width: SpacingTokens.space12),
               Expanded(

@@ -71,6 +71,11 @@ model User {
   // means neither sees "Seen".
   readReceipts Boolean @default(true)
 
+  // Whether the people this account talks to see a green dot while it has
+  // the app open. The same trade as read receipts: off means this account
+  // sees nobody's either, so it cannot watch for others without being seen.
+  showOnline Boolean @default(true)
+
   // Whether posts from this account's communities also appear in Home. Off,
   // they stay in Communities, where each one shows what is new.
   communityPostsInHome Boolean @default(true)

@@ -8,6 +8,7 @@ import 'package:firebase_messaging/firebase_messaging.dart' show RemoteMessage;
 
 import '../providers/messages_provider.dart';
 import '../providers/notifications_provider.dart';
+import '../providers/realtime_provider.dart';
 import '../l10n/app_localizations.dart';
 import '../services/firebase_push.dart';
 import '../services/push_tap.dart';
@@ -100,6 +101,18 @@ class _MainContainerState extends ConsumerState<MainContainer>
   /// to move a number nobody is looking at.
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    // Online means the app is in front. Not inactive, which is a phone call
+    // sliding over it or the notification shade, and over in a moment.
+    switch (state) {
+      case AppLifecycleState.resumed:
+        ref.read(realtimeClientProvider).setAway(false);
+      case AppLifecycleState.paused:
+      case AppLifecycleState.hidden:
+      case AppLifecycleState.detached:
+        ref.read(realtimeClientProvider).setAway(true);
+      case AppLifecycleState.inactive:
+        break;
+    }
     if (state == AppLifecycleState.resumed) {
       ref.invalidate(unreadNotificationsProvider);
       // A message that arrived while the app was away came as a push, not

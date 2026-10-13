@@ -1,5 +1,11 @@
 # Signing in with Google
 
+> **Since October 2026 the phone's own account sheet comes first**, and the
+> browser flow below is the fallback. How the sheet works, what it needs in
+> Google Cloud, and how to tell its failures apart is in
+> [AUTH_GOOGLE.md](AUTH_GOOGLE.md); this page still describes the browser
+> half accurately.
+
 The app half is finished. Google sign-in works the moment the provider is
 switched on in the Supabase dashboard; nothing else in the repository has to
 change, and no Firebase project is involved.

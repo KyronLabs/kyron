@@ -7,6 +7,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:kyron_app/models/conversation.dart';
 import 'package:kyron_app/models/current_user.dart';
 import 'package:kyron_app/models/post_media.dart';
+import 'package:kyron_app/providers/presence_provider.dart';
 import 'package:kyron_app/providers/current_user_provider.dart';
 import 'package:kyron_app/providers/messages_provider.dart';
 import 'package:kyron_app/providers/preferences_provider.dart';
@@ -244,6 +245,22 @@ void main() {
     // Fresh preferences for every test: one that turns link previews off
     // must not leave them off for the next.
     SharedPreferences.setMockInitialValues({});
+  });
+
+  testWidgets('the header says when the other person has the app open', (
+    tester,
+  ) async {
+    await _open(tester, const []);
+    expect(find.byKey(const ValueKey('thread-online')), findsNothing);
+
+    ProviderScope.containerOf(tester.element(find.byType(ThreadScreen)))
+        .read(presenceProvider.notifier)
+        .snapshot(['them']);
+    await tester.pump();
+
+    expect(find.byKey(const ValueKey('thread-online')), findsOneWidget);
+    expect(find.text('Online'), findsOneWidget);
+    expect(find.byKey(const ValueKey('online-them')), findsOneWidget);
   });
 
   testWidgets('a message of only emoji is drawn large; with words it is not',

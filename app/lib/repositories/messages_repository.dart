@@ -60,6 +60,20 @@ class MessagesRepository {
     return res.data?['readReceipts'] != false;
   }
 
+  /// Whether the reader shows the people they talk to when they are online.
+  Future<bool> showOnline() async {
+    final res = await _api.dio.get<Map<String, dynamic>>('/messages/settings');
+    return res.data?['showOnline'] != false;
+  }
+
+  Future<bool> setShowOnline(bool on) async {
+    final res = await _api.dio.put<Map<String, dynamic>>(
+      '/messages/settings',
+      data: {'showOnline': on},
+    );
+    return res.data?['showOnline'] != false;
+  }
+
   /// How many conversations hold something unread. Drives the tab badge.
   Future<int> unreadCount() async {
     final res = await _api.dio.get<Map<String, dynamic>>('/messages/unread');
