@@ -28,10 +28,30 @@ void main() {
       ),
     );
 
-    final s = service();
+    // A person: the sheet was up for a few seconds before it went.
+    var now = DateTime(2026, 10, 13, 9);
+    final s = GoogleSignInService(
+      clock: () => now = now.add(const Duration(seconds: 3)),
+    );
     expect(await s.signIn(), GoogleOutcome.cancelled);
     // Nothing to explain, so nothing is said.
     expect(s.reason, isNull);
+  });
+
+  test('takes a "dismissal" faster than a person for the failure it is',
+      () async {
+    // Credential Manager reports an app it does not recognise as the sheet
+    // being cancelled. Believed, that was a Google button that did nothing.
+    GoogleSignInPlatform.instance = FakeGooglePlatform(
+      throws: const GoogleSignInException(
+        code: GoogleSignInExceptionCode.canceled,
+      ),
+    );
+
+    final now = DateTime(2026, 10, 13, 9);
+    final s = GoogleSignInService(clock: () => now);
+    expect(await s.signIn(), GoogleOutcome.useBrowser);
+    expect(s.reason, contains('closed before anyone could have used it'));
   });
 
   test('falls back, and says why, when Google mints no ID token', () async {
@@ -69,6 +89,27 @@ void main() {
     final s = service();
     expect(await s.signIn(), GoogleOutcome.useBrowser);
     expect(s.reason, contains('could not be initialised'));
+  });
+
+  test('names the web client, rather than hoping the Firebase file does',
+      () async {
+    // google-services.json is Firebase's, from a different Google Cloud
+    // project than the web client, so it never carried one -- and without it
+    // Android answers "serverClientId must be provided" before a sheet can
+    // open. Every Google sign-in went to the browser because of that.
+    final fake = FakeGooglePlatform(result: googleResults());
+    GoogleSignInPlatform.instance = fake;
+
+    await service().signIn();
+
+    expect(
+      fake.initialisedWith?.serverClientId,
+      endsWith('.apps.googleusercontent.com'),
+    );
+    expect(
+      fake.initialisedWith?.serverClientId,
+      GoogleSignInService.serverClientId,
+    );
   });
 
   test('hands Google a hashed nonce, never the value it commits to', () async {

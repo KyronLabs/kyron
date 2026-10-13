@@ -1,6 +1,7 @@
 import '../l10n/app_localizations.dart';
 
 // lib/screens/welcome_screen.dart
+import 'dart:async';
 import 'dart:math' as math;
 
 import '../services/google_sign_in_service.dart';
@@ -28,12 +29,17 @@ import '../widgets/terms_gate.dart';
 /// -- a greeting for a returning reader, shown to somebody who had never been
 /// here, above a control that depressed and then sat there. Both are gone.
 ///
-/// The shape is a picture the full width of the screen with a sheet of
-/// content lifted over it, because that is what the reader already knows from
-/// every app that does this well: the top says what kind of place this is and
-/// the bottom says what to do about it. The picture is [RoosterArt]: a
-/// rooster in big rounded pixels, drawn rather than shipped, so it is sharp
-/// at any size.
+/// The shape is a picture the full width of the screen with the ways in
+/// under it: the top says what kind of place this is and the bottom says what
+/// to do about it. The picture is [RoosterArt], a rooster in big rounded
+/// pixels.
+///
+/// The two meet at a straight edge, on the line between two rows of the
+/// rooster's squares. It was a card with rounded corners and a shadow, lifted
+/// over the picture -- a third shape between the two, competing with the
+/// rounded squares of the art, and its shadow a grey smear across a picture
+/// that has none. In light mode the ways in sit on the picture's own
+/// off-white, so the edge is only there where the bird is.
 class WelcomeScreen extends ConsumerStatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -55,6 +61,17 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
   Future<bool> _agreed() =>
       TermsGate.require(context, preferences: ref.read(appPreferencesProvider));
 
+  /// Lets go of the busy state if a sign-in that succeeded never moved the
+  /// app on -- the profile could not be fetched, say -- so the screen does
+  /// not sit on a spinner for ever.
+  Timer? _stuck;
+
+  @override
+  void dispose() {
+    _stuck?.cancel();
+    super.dispose();
+  }
+
   Future<void> _continueWithGoogle() async {
     if (_busy != null) return;
 
@@ -73,6 +90,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
     }
 
     setState(() => _busy = _Path.google);
+    var signedIn = false;
     try {
       // The device's own account picker first. On Android that is Credential
       // Manager: a sheet over Kyron listing the accounts already signed in on
@@ -84,8 +102,11 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
 
       switch (outcome) {
         case GoogleOutcome.signedIn:
-          // main.dart is listening; by the time it routes, this screen may be
-          // gone.
+          // main.dart is listening, and replaces this screen once the profile
+          // is in. The spinner stays until then: dropping it now would put
+          // the buttons back, live, for the second or so before the screen
+          // goes -- which reads as the sign-in having failed.
+          signedIn = true;
           return;
         case GoogleOutcome.cancelled:
           // The sheet was dismissed. That is an answer, and saying anything
@@ -109,10 +130,18 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
     } catch (error) {
       if (mounted) _sayFailed(error);
     } finally {
-      // Cleared as soon as the browser is up, not when somebody signs in:
-      // this screen is behind it, and a spinner left running would still be
-      // running if they came back without finishing.
-      if (mounted) setState(() => _busy = null);
+      // Otherwise cleared as soon as the browser is up, not when somebody
+      // signs in: this screen is behind it, and a spinner left running would
+      // still be running if they came back without finishing.
+      if (mounted) {
+        if (signedIn) {
+          _stuck = Timer(const Duration(seconds: 20), () {
+            if (mounted) setState(() => _busy = null);
+          });
+        } else {
+          setState(() => _busy = null);
+        }
+      }
     }
   }
 
@@ -229,49 +258,37 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final dark = Theme.of(context).brightness == Brightness.dark;
+    final ground = _Sheet.groundOf(context);
 
     return Scaffold(
       // The picture runs to the very top edge, behind the status bar, which
-      // is the whole point of it -- so no SafeArea out here. The sheet takes
-      // its own insets below.
-      backgroundColor: dark ? KyronTheme.darkBackground : Colors.white,
+      // is the whole point of it -- so no SafeArea out here. The ways in
+      // take their own insets below.
+      backgroundColor: ground,
       body: LayoutBuilder(
         builder: (context, box) {
           // Getting on for half the screen, so the picture is a picture --
-          // but never more than leaves the sheet room for both ways in, which
-          // is what a resized desktop window and a small phone both ask for.
-          final artHeight = math.max(
+          // but never more than leaves room for both ways in, which is what a
+          // resized desktop window and a small phone both ask for. Then
+          // brought up to the nearest line between two rows of squares, so
+          // the edge under it does not cut a row in half.
+          final wanted = math.max(
             120.0,
             math.min(
               box.maxHeight * 0.46,
               math.min(380.0, box.maxHeight - _sheetFloor),
             ),
           );
+          final artHeight = RoosterArt.fitHeight(
+            Size(box.maxWidth, wanted),
+            MediaQuery.paddingOf(context).top,
+          );
 
-          // Both children positioned, and the fit explicit. A bare Stack
-          // sizes itself to its largest *unpositioned* child, so putting the
-          // picture in as a plain SizedBox made the whole Stack as tall as
-          // the picture -- and the sheet, pinned to its bottom, came out 28
-          // pixels high and clipped away everything in it. The screen laid
-          // out perfectly and rendered as an empty white page.
-          return Stack(
-            fit: StackFit.expand,
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                height: artHeight,
-                child: const RoosterArt(),
-              ),
-              Positioned(
-                // Lifted over the picture so the two are one thing rather than
-                // a photograph with a form under it.
-                top: artHeight - _overlap,
-                left: 0,
-                right: 0,
-                bottom: 0,
+              SizedBox(height: artHeight, child: const RoosterArt()),
+              Expanded(
                 child: _Sheet(
                   busy: _busy,
                   onGoogle: _continueWithGoogle,
@@ -287,9 +304,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
     );
   }
 
-  static const double _overlap = 28;
-
-  /// What the sheet needs to hold the headline, both buttons and the footer
+  /// What the ways in need to hold the headline, both buttons and the footer
   /// without scrolling. Below this the picture gives way rather than the
   /// buttons going under the fold.
   static const double _sheetFloor = 400;
@@ -311,30 +326,24 @@ class _Sheet extends StatelessWidget {
     required this.onTerms,
   });
 
+  /// The picture's own off-white by day, so the ways in and the picture are
+  /// one surface and the straight edge between them shows only where the
+  /// bird is. The picture keeps its colours at night, so there the edge is
+  /// the whole width: a photograph above the page, not a card on it.
+  static Color groundOf(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+          ? KyronTheme.darkBackground
+          : RoosterArt.ground;
+
   @override
   Widget build(BuildContext context) {
     final dark = Theme.of(context).brightness == Brightness.dark;
-    final ground = dark ? KyronTheme.darkBackground : Colors.white;
     final ink = dark ? KyronTheme.darkTextPrimary : KyronTheme.lightTextPrimary;
     final quiet =
         dark ? KyronTheme.darkTextSecondary : KyronTheme.lightTextSecondary;
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: ground,
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(RadiusTokens.radius20 + 8),
-        ),
-        // A lifted edge rather than a drawn line: the picture behind it is
-        // busy, and a hairline over that reads as a seam.
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: dark ? 0.45 : 0.10),
-            blurRadius: 24,
-            offset: const Offset(0, -6),
-          ),
-        ],
-      ),
+    return ColoredBox(
+      color: groundOf(context),
       child: SafeArea(
         top: false,
         child: LayoutBuilder(
@@ -353,90 +362,106 @@ class _Sheet extends StatelessWidget {
               constraints: BoxConstraints(
                 minHeight: math.max(0, box.maxHeight - _padTop - _padBottom),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    AppLocalizations.of(context).postItSayItShowIt,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: TypographyTokens.fontSize7,
-                      fontWeight: FontWeight.w700,
-                      height: 1.15,
-                      letterSpacing: -0.4,
-                      color: ink,
-                    ),
-                  ),
-                  const SizedBox(height: SpacingTokens.space12),
-                  Text(
-                    AppLocalizations.of(context).textVoiceVideoPeopleRooms,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: TypographyTokens.fontSize3,
-                      height: 1.45,
-                      color: quiet,
-                    ),
-                  ),
-                  const SizedBox(height: SpacingTokens.space28),
-                  GoogleButton(
-                    onTap: onGoogle,
-                    isLoading: busy == _Path.google,
-                  ),
-                  const SizedBox(height: SpacingTokens.space12),
-                  AppButton(
-                    label: AppLocalizations.of(context).continueWithEmail,
-                    icon: Iconsax.sms,
-                    onTap: onEmail,
-                    enabled: busy == null,
-                  ),
-                  const SizedBox(height: SpacingTokens.space16),
-                  Row(
+              // A phone's width at most: on a desktop window the buttons ran
+              // the whole width of the screen, a metre of blue to say
+              // "Continue with email".
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: _maxWidth),
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        AppLocalizations.of(context).alreadyOnKyron,
-                        style: TextStyle(
-                          fontSize: TypographyTokens.fontSize2,
-                          color: quiet,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: busy == null ? onLogIn : null,
-                        style: TextButton.styleFrom(
-                          minimumSize: const Size(0, 36),
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: SpacingTokens.space8,
-                          ),
-                        ),
-                        child: Text(AppLocalizations.of(context).logIn),
-                      ),
-                    ],
-                  ),
-                  const Divider(height: SpacingTokens.space24),
-                  // The legal line opens the same summary the gate shows rather
-                  // than throwing the reader straight out to a wall of clauses.
-                  // Nobody has ever read a document they had to leave the screen
-                  // to find; the full ones are one tap further in, for whoever
-                  // wants them.
-                  Center(
-                    child: TextButton(
-                      onPressed: () => onTerms(),
-                      child: Text(
-                        AppLocalizations.of(context)
-                            .byContinuingAgreeTermsPrivacy,
+                        AppLocalizations.of(context).postItSayItShowIt,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: TypographyTokens.fontSize1,
-                          fontWeight: FontWeight.w400,
+                          fontSize: TypographyTokens.fontSize7,
+                          fontWeight: FontWeight.w700,
+                          height: 1.15,
+                          letterSpacing: -0.4,
+                          color: ink,
+                        ),
+                      ),
+                      const SizedBox(height: SpacingTokens.space12),
+                      Text(
+                        AppLocalizations.of(context).textVoiceVideoPeopleRooms,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize3,
+                          height: 1.45,
                           color: quiet,
                         ),
                       ),
-                    ),
+                      const SizedBox(height: SpacingTokens.space28),
+                      _Receding(
+                        away: busy != null && busy != _Path.google,
+                        child: GoogleButton(
+                          onTap: onGoogle,
+                          isLoading: busy == _Path.google,
+                        ),
+                      ),
+                      const SizedBox(height: SpacingTokens.space12),
+                      _Receding(
+                        away: busy != null && busy != _Path.email,
+                        child: AppButton(
+                          label: AppLocalizations.of(context).continueWithEmail,
+                          icon: Iconsax.sms,
+                          onTap: onEmail,
+                        ),
+                      ),
+                      const SizedBox(height: SpacingTokens.space16),
+                      _Receding(
+                        away: busy != null && busy != _Path.login,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context).alreadyOnKyron,
+                              style: TextStyle(
+                                fontSize: TypographyTokens.fontSize2,
+                                color: quiet,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: onLogIn,
+                              style: TextButton.styleFrom(
+                                minimumSize: const Size(0, 36),
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: SpacingTokens.space8,
+                                ),
+                              ),
+                              child: Text(AppLocalizations.of(context).logIn),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Divider(height: SpacingTokens.space24),
+                      // The legal line opens the same summary the gate shows rather
+                      // than throwing the reader straight out to a wall of clauses.
+                      // Nobody has ever read a document they had to leave the screen
+                      // to find; the full ones are one tap further in, for whoever
+                      // wants them.
+                      Center(
+                        child: TextButton(
+                          onPressed: () => onTerms(),
+                          child: Text(
+                            AppLocalizations.of(context)
+                                .byContinuingAgreeTermsPrivacy,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: TypographyTokens.fontSize1,
+                              fontWeight: FontWeight.w400,
+                              color: quiet,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Center(child: AppLanguageSelector()),
+                    ],
                   ),
-                  Center(child: AppLanguageSelector()),
-                ],
+                ),
               ),
             ),
           ),
@@ -447,5 +472,33 @@ class _Sheet extends StatelessWidget {
 
   /// Named because the minimum height above has to subtract exactly these.
   static const double _padTop = SpacingTokens.space28;
+  static const double _maxWidth = 440;
   static const double _padBottom = SpacingTokens.space20;
+}
+
+/// A way in that steps back while another one is being taken.
+///
+/// It fades and stops taking taps, and keeps its colours. The buttons used to
+/// be switched off instead, and a switched-off filled button is drawn in a
+/// pale grey at a twelfth of its colour: tapping Google turned the blue
+/// button under it into a smudge in a single frame, which looked like the
+/// screen breaking rather than like waiting.
+class _Receding extends StatelessWidget {
+  final bool away;
+  final Widget child;
+
+  const _Receding({required this.away, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return IgnorePointer(
+      ignoring: away,
+      child: AnimatedOpacity(
+        opacity: away ? 0.4 : 1,
+        duration: KyronTheme.motionNormal,
+        curve: Curves.easeOutCubic,
+        child: child,
+      ),
+    );
+  }
 }

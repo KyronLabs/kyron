@@ -14,6 +14,20 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **"Continue with Google" always opened the browser.** The phone's own
+  account sheet was never shown: the app left Google's web client id to be
+  found in the Firebase configuration, which comes from a different Google
+  Cloud project and has never carried it, so Android refused before a sheet
+  could open. The app names the client itself now. It also no longer takes an
+  instant "dismissal" at face value -- that is how Android reports an app it
+  does not recognise -- and goes to the browser instead of doing nothing.
+  The sheet needs an Android OAuth client in the same project as the web
+  client; docs/AUTH_GOOGLE.md has the one step.
+- **Tapping Google made the email button vanish.** The other ways in were
+  switched off, and a switched-off filled button is drawn as a pale smudge.
+  They now fade back and stop taking taps, and the Google mark turns into a
+  spinner while the label stays.
+
 - **Push said "off" and nothing else.** Every way of getting the server's
   Firebase key wrong looked the same from outside. `/health` now carries
   `pushProblem`, which says which: not set or set without a redeploy, set
@@ -286,6 +300,16 @@ section for that version, so what is written here is what people read.
   4–12 MB a phone's sensor produces. In all 68 catalogs.
 
 ### Changed
+
+- **The welcome screen's buttons and edge.** The Google button is a solid
+  pill -- black on the light screen, light on the dark one, in Google's own
+  colours -- at the same height as the email button under it. The rounded
+  card with a shadow under the picture is gone: the ways in sit on the
+  picture's own off-white, meeting it at a straight edge between two rows of
+  the rooster's squares. On a wide window they keep a phone's width.
+- **The rooster loops.** It arrives from the eye outward, holds for four
+  seconds, leaves the way it came and arrives again; still, as before, for
+  anybody who has asked their phone not to animate.
 
 - **The welcome screen's picture is a rooster in big rounded pixels.** The
   meadow of cut-out photographs -- fronds, grass, lavender, a tulip and two
