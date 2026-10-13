@@ -287,6 +287,17 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- **The welcome screen's picture is a rooster in big rounded pixels.** The
+  meadow of cut-out photographs -- fronds, grass, lavender, a tulip and two
+  butterflies -- is gone, with its six images and the script that cut them.
+  The rooster is the artwork itself, shipped losslessly so its colours are
+  exactly the artist's, on its own off-white in both themes, anchored top
+  right so the bird looks into the space on the left and the comb, head and
+  wattles always fit. The first time it shows, it arrives square by square
+  from the eye outward and settles into the exact picture; all at once for
+  anybody whose phone asks for less motion. The status bar icons go dark over
+  it in either theme.
+
 - **Communities is a page of cards.** Each community you are in is a card:
   its picture in a tile, the name, "Members: 12" and your role, the newest
   post ("Ada: ...", "You: ...", or "Photo" for a post with no words) with a
