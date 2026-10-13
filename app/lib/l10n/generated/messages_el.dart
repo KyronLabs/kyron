@@ -1669,6 +1669,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Γράψε ανάρτηση"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Μέλη:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Δημοσιεύτηκε"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Προβολή"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Άνοιγμα"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Σε σύνδεση"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Εμφάνιση όταν είστε σε σύνδεση"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Τα άτομα με τα οποία συνομιλείτε βλέπουν μια πράσινη κουκκίδα όσο έχετε το Kyron ανοιχτό. Όταν είναι απενεργοποιημένο, δεν θα βλέπετε ούτε τη δική τους."),
     };
 
 final messageLookup = MessageLookup();

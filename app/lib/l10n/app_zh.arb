@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "你已加入 Kyron 上的所有社区。再创建一个吧。",
   "ui_community_discover_search_detail": "换个词试试，或者用这个名称创建一个社区。",
   "ui_community_write": "发帖",
-  "ui_community_members": "成员："
+  "ui_community_members": "成员：",
+  "ui_toast_posted": "已发布",
+  "ui_toast_view": "查看",
+  "ui_toast_open": "打开",
+  "ui_dm_online": "在线",
+  "ui_dm_show_online": "显示你在线",
+  "ui_dm_show_online_detail": "和你聊天的人在你打开 Kyron 时会看到一个绿点。关闭后，你也看不到他们的。"
 }

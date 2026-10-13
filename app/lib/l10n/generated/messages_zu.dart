@@ -1504,6 +1504,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Bhala okuthunyelwe"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Amalungu:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Kuthunyelwe"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Buka"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Vula"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Ku-inthanethi"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Bonisa uma use-inthanethi"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Abantu obathumelela imilayezo babona ichashaza eliluhlaza uma uvule i-Kyron. Uma lokhu kuvaliwe, nawe ngeke ubone elabo."),
     };
 
 final messageLookup = MessageLookup();

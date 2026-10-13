@@ -1492,6 +1492,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("សរសេរការបង្ហោះ"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("សមាជិក៖"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("បានបង្ហោះ"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("មើល"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("បើក"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("អនឡាញ"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("បង្ហាញពេលអ្នកអនឡាញ"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("អ្នកដែលអ្នកផ្ញើសារទៅ ឃើញចំណុចពណ៌បៃតង ខណៈពេលអ្នកបើក Kyron។ នៅពេលបិទ អ្នកក៏មិនឃើញរបស់ពួកគេដែរ។"),
     };
 
 final messageLookup = MessageLookup();

@@ -1261,6 +1261,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "다른 단어로 찾아보거나, 그 이름으로 커뮤니티를 만들어 보세요."),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("글쓰기"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("멤버:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("게시됨"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("보기"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("열기"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("온라인"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("온라인 상태 표시"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("메시지를 주고받는 사람들은 내가 Kyron을 열어 두는 동안 초록 점을 봐요. 끄면 나도 상대방의 초록 점을 볼 수 없어요."),
     };
 
 final messageLookup = MessageLookup();

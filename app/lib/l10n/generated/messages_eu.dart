@@ -1498,6 +1498,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Idatzi argitalpen bat"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Kideak:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Argitaratuta"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Ikusi"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Ireki"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Konektatuta"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Erakutsi konektatuta zaudenean"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Idazten diezunek puntu berde bat ikusten dute Kyron irekita duzun bitartean. Desaktibatuta badago, zuk ere ez duzu haiena ikusiko."),
     };
 
 final messageLookup = MessageLookup();

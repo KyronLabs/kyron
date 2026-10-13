@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Olet Kyronin jokaisessa yhteisössä. Perusta uusi.",
   "ui_community_discover_search_detail": "Kokeile toista sanaa tai perusta yhteisö sillä nimellä.",
   "ui_community_write": "Kirjoita julkaisu",
-  "ui_community_members": "Jäsenet:"
+  "ui_community_members": "Jäsenet:",
+  "ui_toast_posted": "Julkaistu",
+  "ui_toast_view": "Näytä",
+  "ui_toast_open": "Avaa",
+  "ui_dm_online": "Verkossa",
+  "ui_dm_show_online": "Näytä, kun olet verkossa",
+  "ui_dm_show_online_detail": "Ihmiset, joille viestit, näkevät vihreän pisteen, kun Kyron on sinulla auki. Kun tämä on pois päältä, et näe heidänkään pistettään."
 }

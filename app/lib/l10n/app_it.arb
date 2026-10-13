@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Sei in ogni community di Kyron. Creane un'altra.",
   "ui_community_discover_search_detail": "Prova un'altra parola, o crea una community con quel nome.",
   "ui_community_write": "Scrivi un post",
-  "ui_community_members": "Membri:"
+  "ui_community_members": "Membri:",
+  "ui_toast_posted": "Pubblicato",
+  "ui_toast_view": "Vedi",
+  "ui_toast_open": "Apri",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Mostra quando sei online",
+  "ui_dm_show_online_detail": "Le persone a cui scrivi vedono un punto verde mentre hai Kyron aperto. Se lo disattivi, nemmeno tu vedrai il loro."
 }

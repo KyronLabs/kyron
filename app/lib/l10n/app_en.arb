@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "You are in every community on Kyron. Start another one.",
   "ui_community_discover_search_detail": "Try a different word, or start a community by that name.",
   "ui_community_write": "Write a post",
-  "ui_community_members": "Members:"
+  "ui_community_members": "Members:",
+  "ui_toast_posted": "Posted",
+  "ui_toast_view": "View",
+  "ui_toast_open": "Open",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Show when you're online",
+  "ui_dm_show_online_detail": "People you message see a green dot while you have Kyron open. When this is off, you won't see theirs either."
 }

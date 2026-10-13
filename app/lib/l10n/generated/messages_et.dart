@@ -1556,6 +1556,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Kirjuta postitus"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Liikmed:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Postitatud"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Vaata"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Ava"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Võrgus"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Näita, kui oled võrgus"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Inimesed, kellega sa suhtled, näevad rohelist täppi, kui Kyron on sul lahti. Kui see on väljas, ei näe sina ka nende oma."),
     };
 
 final messageLookup = MessageLookup();

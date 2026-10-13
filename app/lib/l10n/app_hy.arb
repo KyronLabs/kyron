@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Դուք Kyron-ի բոլոր համայնքներում եք։ Ստեղծեք ևս մեկը։",
   "ui_community_discover_search_detail": "Փորձեք այլ բառ կամ ստեղծեք այդ անունով համայնք։",
   "ui_community_write": "Գրել գրառում",
-  "ui_community_members": "Անդամներ՝"
+  "ui_community_members": "Անդամներ՝",
+  "ui_toast_posted": "Հրապարակվեց",
+  "ui_toast_view": "Դիտել",
+  "ui_toast_open": "Բացել",
+  "ui_dm_online": "Առցանց",
+  "ui_dm_show_online": "Ցույց տալ, երբ առցանց եք",
+  "ui_dm_show_online_detail": "Մարդիկ, ում գրում եք, տեսնում են կանաչ կետ, երբ Kyron-ը բաց է ձեզ մոտ։ Երբ սա անջատված է, դուք էլ չեք տեսնի նրանցը։"
 }

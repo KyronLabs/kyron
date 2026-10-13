@@ -1503,6 +1503,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Bericht schrijven"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Leden:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Geplaatst"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Bekijken"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Openen"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Online"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Tonen wanneer je online bent"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Mensen met wie je chat, zien een groene stip zolang je Kyron open hebt. Als dit uit staat, zie jij die van hen ook niet."),
     };
 
 final messageLookup = MessageLookup();

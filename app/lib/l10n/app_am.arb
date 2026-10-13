@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "በKyron ላይ ባሉ ሁሉም ማህበረሰቦች ውስጥ ነዎት። ሌላ ይጀምሩ።",
   "ui_community_discover_search_detail": "ሌላ ቃል ይሞክሩ፣ ወይም በዚያ ስም ማህበረሰብ ይጀምሩ።",
   "ui_community_write": "ልጥፍ ይጻፉ",
-  "ui_community_members": "አባላት፦"
+  "ui_community_members": "አባላት፦",
+  "ui_toast_posted": "ተለጥፏል",
+  "ui_toast_view": "ይመልከቱ",
+  "ui_toast_open": "ክፈት",
+  "ui_dm_online": "መስመር ላይ",
+  "ui_dm_show_online": "መስመር ላይ ሲሆኑ አሳይ",
+  "ui_dm_show_online_detail": "መልእክት የሚልኩላቸው ሰዎች Kyron ክፍት ሲሆን አረንጓዴ ነጥብ ያያሉ። ይህ ሲጠፋ የእነሱንም አያዩም።"
 }

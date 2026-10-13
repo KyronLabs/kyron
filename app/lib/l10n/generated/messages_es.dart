@@ -1620,6 +1620,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Escribir una publicación"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Miembros:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Publicado"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Ver"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Abrir"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("En línea"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Mostrar cuando estás en línea"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Las personas a las que escribes ven un punto verde mientras tienes Kyron abierto. Si lo desactivas, tú tampoco verás el suyo."),
     };
 
 final messageLookup = MessageLookup();

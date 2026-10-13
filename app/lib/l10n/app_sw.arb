@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Uko katika kila jumuiya kwenye Kyron. Anzisha nyingine.",
   "ui_community_discover_search_detail": "Jaribu neno lingine, au anzisha jumuiya kwa jina hilo.",
   "ui_community_write": "Andika chapisho",
-  "ui_community_members": "Wanachama:"
+  "ui_community_members": "Wanachama:",
+  "ui_toast_posted": "Imechapishwa",
+  "ui_toast_view": "Tazama",
+  "ui_toast_open": "Fungua",
+  "ui_dm_online": "Mtandaoni",
+  "ui_dm_show_online": "Onyesha ukiwa mtandaoni",
+  "ui_dm_show_online_detail": "Watu unaowatumia ujumbe huona kitone cha kijani wakati Kyron iko wazi kwako. Ikizimwa, nawe hutaona chao."
 }

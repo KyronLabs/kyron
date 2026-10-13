@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "អ្នកនៅក្នុងសហគមន៍ទាំងអស់នៅលើ Kyron។ ចាប់ផ្ដើមមួយទៀត។",
   "ui_community_discover_search_detail": "សាកល្បងពាក្យផ្សេង ឬចាប់ផ្ដើមសហគមន៍ដោយឈ្មោះនោះ។",
   "ui_community_write": "សរសេរការបង្ហោះ",
-  "ui_community_members": "សមាជិក៖"
+  "ui_community_members": "សមាជិក៖",
+  "ui_toast_posted": "បានបង្ហោះ",
+  "ui_toast_view": "មើល",
+  "ui_toast_open": "បើក",
+  "ui_dm_online": "អនឡាញ",
+  "ui_dm_show_online": "បង្ហាញពេលអ្នកអនឡាញ",
+  "ui_dm_show_online_detail": "អ្នកដែលអ្នកផ្ញើសារទៅ ឃើញចំណុចពណ៌បៃតង ខណៈពេលអ្នកបើក Kyron។ នៅពេលបិទ អ្នកក៏មិនឃើញរបស់ពួកគេដែរ។"
 }

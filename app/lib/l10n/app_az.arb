@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Kyron-dakı bütün icmalardasınız. Başqasını başladın.",
   "ui_community_discover_search_detail": "Başqa söz yoxlayın və ya bu adla icma başladın.",
   "ui_community_write": "Paylaşım yaz",
-  "ui_community_members": "Üzvlər:"
+  "ui_community_members": "Üzvlər:",
+  "ui_toast_posted": "Paylaşıldı",
+  "ui_toast_view": "Bax",
+  "ui_toast_open": "Aç",
+  "ui_dm_online": "Onlayn",
+  "ui_dm_show_online": "Onlayn olduğunuzu göstər",
+  "ui_dm_show_online_detail": "Yazışdığınız insanlar Kyron açıq olanda yaşıl nöqtə görür. Bu söndürüldükdə siz də onlarınkını görməyəcəksiniz."
 }

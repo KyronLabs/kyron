@@ -1498,6 +1498,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Напиши објаву"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Чланови:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Објављено"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Погледај"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Отвори"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("На мрежи"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Прикажи кад си на мрежи"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Људи којима пишеш виде зелену тачку док ти је Kyron отворен. Када је ово искључено, ни ти нећеш видети њихову."),
     };
 
 final messageLookup = MessageLookup();

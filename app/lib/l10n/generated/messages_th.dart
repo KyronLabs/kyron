@@ -1490,6 +1490,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "ลองคำอื่น หรือสร้างชุมชนด้วยชื่อนั้น"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("เขียนโพสต์"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("สมาชิก:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("โพสต์แล้ว"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("ดู"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("เปิด"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("ออนไลน์"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("แสดงเมื่อคุณออนไลน์"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("คนที่คุณส่งข้อความด้วยจะเห็นจุดสีเขียวขณะที่คุณเปิด Kyron อยู่ เมื่อปิดไว้ คุณก็จะไม่เห็นของเขาเช่นกัน"),
     };
 
 final messageLookup = MessageLookup();

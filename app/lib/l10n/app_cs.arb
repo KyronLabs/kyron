@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Jste ve všech komunitách na Kyronu. Založte další.",
   "ui_community_discover_search_detail": "Zkuste jiné slovo, nebo založte komunitu s tímto názvem.",
   "ui_community_write": "Napsat příspěvek",
-  "ui_community_members": "Členové:"
+  "ui_community_members": "Členové:",
+  "ui_toast_posted": "Zveřejněno",
+  "ui_toast_view": "Zobrazit",
+  "ui_toast_open": "Otevřít",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Zobrazit, když jste online",
+  "ui_dm_show_online_detail": "Lidé, kterým píšete, vidí zelenou tečku, když máte Kyron otevřený. Když je to vypnuté, neuvidíte ani tu jejich."
 }

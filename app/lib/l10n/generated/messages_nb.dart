@@ -1496,6 +1496,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Skriv et innlegg"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Medlemmer:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Publisert"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Vis"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Åpne"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Pålogget"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Vis når du er pålogget"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Folk du skriver med, ser en grønn prikk mens du har Kyron åpen. Når dette er av, ser du heller ikke deres."),
     };
 
 final messageLookup = MessageLookup();

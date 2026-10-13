@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Ești în toate comunitățile de pe Kyron. Creează încă una.",
   "ui_community_discover_search_detail": "Încearcă alt cuvânt sau creează o comunitate cu acest nume.",
   "ui_community_write": "Scrie o postare",
-  "ui_community_members": "Membri:"
+  "ui_community_members": "Membri:",
+  "ui_toast_posted": "Publicat",
+  "ui_toast_view": "Vezi",
+  "ui_toast_open": "Deschide",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Arată când ești online",
+  "ui_dm_show_online_detail": "Persoanele cărora le scrii văd un punct verde cât timp ai Kyron deschis. Când e dezactivat, nici tu nu-l vei vedea pe al lor."
 }

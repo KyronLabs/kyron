@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "אתם בכל הקהילות ב-Kyron. הקימו עוד אחת.",
   "ui_community_discover_search_detail": "נסו מילה אחרת, או הקימו קהילה בשם הזה.",
   "ui_community_write": "כתיבת פוסט",
-  "ui_community_members": "חברים:"
+  "ui_community_members": "חברים:",
+  "ui_toast_posted": "פורסם",
+  "ui_toast_view": "הצגה",
+  "ui_toast_open": "פתיחה",
+  "ui_dm_online": "מחובר/ת",
+  "ui_dm_show_online": "להציג כשאתם מחוברים",
+  "ui_dm_show_online_detail": "האנשים שאתם מתכתבים איתם רואים נקודה ירוקה כש-Kyron פתוח אצלכם. כשזה כבוי, גם אתם לא תראו את שלהם."
 }

@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Anda berada dalam setiap komuniti di Kyron. Mulakan satu lagi.",
   "ui_community_discover_search_detail": "Cuba perkataan lain, atau mulakan komuniti dengan nama itu.",
   "ui_community_write": "Tulis siaran",
-  "ui_community_members": "Ahli:"
+  "ui_community_members": "Ahli:",
+  "ui_toast_posted": "Disiarkan",
+  "ui_toast_view": "Lihat",
+  "ui_toast_open": "Buka",
+  "ui_dm_online": "Dalam talian",
+  "ui_dm_show_online": "Tunjukkan semasa anda dalam talian",
+  "ui_dm_show_online_detail": "Orang yang anda hantar mesej nampak titik hijau semasa Kyron anda dibuka. Apabila dimatikan, anda juga tidak akan nampak titik mereka."
 }

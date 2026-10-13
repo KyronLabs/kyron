@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Ви в усіх спільнотах Kyron. Створіть ще одну.",
   "ui_community_discover_search_detail": "Спробуйте інше слово або створіть спільноту з такою назвою.",
   "ui_community_write": "Написати допис",
-  "ui_community_members": "Учасники:"
+  "ui_community_members": "Учасники:",
+  "ui_toast_posted": "Опубліковано",
+  "ui_toast_view": "Переглянути",
+  "ui_toast_open": "Відкрити",
+  "ui_dm_online": "У мережі",
+  "ui_dm_show_online": "Показувати, коли ви в мережі",
+  "ui_dm_show_online_detail": "Ті, з ким ви листуєтеся, бачать зелену крапку, поки у вас відкритий Kyron. Коли це вимкнено, ви теж не бачитимете їхньої."
 }

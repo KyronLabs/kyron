@@ -1496,6 +1496,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Boshqa so‘zni sinab ko‘ring yoki shu nom bilan hamjamiyat oching."),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("Post yozish"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("A’zolar:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("E’lon qilindi"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Ko‘rish"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Ochish"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Onlayn"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Onlayn ekaningizni ko‘rsatish"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Siz yozishadigan odamlar Kyron ochiq turganda yashil nuqtani ko‘radi. Bu o‘chiq bo‘lsa, siz ham ularnikini ko‘rmaysiz."),
     };
 
 final messageLookup = MessageLookup();

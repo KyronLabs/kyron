@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "V vseh skupnostih na Kyronu ste. Ustvarite še eno.",
   "ui_community_discover_search_detail": "Poskusite drugo besedo ali ustvarite skupnost s tem imenom.",
   "ui_community_write": "Napiši objavo",
-  "ui_community_members": "Člani:"
+  "ui_community_members": "Člani:",
+  "ui_toast_posted": "Objavljeno",
+  "ui_toast_view": "Poglej",
+  "ui_toast_open": "Odpri",
+  "ui_dm_online": "Na spletu",
+  "ui_dm_show_online": "Pokaži, ko ste na spletu",
+  "ui_dm_show_online_detail": "Ljudje, s katerimi si dopisujete, vidijo zeleno piko, ko imate Kyron odprt. Ko je to izklopljeno, tudi vi ne boste videli njihove."
 }

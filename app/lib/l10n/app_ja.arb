@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Kyronのすべてのコミュニティに参加しています。新しく作りましょう。",
   "ui_community_discover_search_detail": "別の言葉で試すか、その名前でコミュニティを作りましょう。",
   "ui_community_write": "投稿する",
-  "ui_community_members": "メンバー:"
+  "ui_community_members": "メンバー:",
+  "ui_toast_posted": "投稿しました",
+  "ui_toast_view": "表示",
+  "ui_toast_open": "開く",
+  "ui_dm_online": "オンライン",
+  "ui_dm_show_online": "オンライン状態を表示",
+  "ui_dm_show_online_detail": "メッセージ相手には、あなたがKyronを開いている間、緑の点が表示されます。オフにすると、あなたにも相手の緑の点が表示されなくなります。"
 }

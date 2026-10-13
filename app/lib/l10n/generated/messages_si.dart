@@ -1499,6 +1499,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("පළ කිරීමක් ලියන්න"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("සාමාජිකයින්:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("පළ කළා"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("බලන්න"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("විවෘත කරන්න"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("සබැඳිව"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("ඔබ සබැඳිව සිටින විට පෙන්වන්න"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("ඔබ පණිවිඩ යවන අයට, ඔබ Kyron විවෘතව තබා ඇති විට කොළ පැහැති තිතක් පෙනේ. මෙය අක්‍රිය විට, ඔවුන්ගේ එකද ඔබට නොපෙනේ."),
     };
 
 final messageLookup = MessageLookup();

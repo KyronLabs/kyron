@@ -1480,6 +1480,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "נסו מילה אחרת, או הקימו קהילה בשם הזה."),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("כתיבת פוסט"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("חברים:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("פורסם"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("הצגה"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("פתיחה"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("מחובר/ת"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("להציג כשאתם מחוברים"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("האנשים שאתם מתכתבים איתם רואים נקודה ירוקה כש-Kyron פתוח אצלכם. כשזה כבוי, גם אתם לא תראו את שלהם."),
     };
 
 final messageLookup = MessageLookup();

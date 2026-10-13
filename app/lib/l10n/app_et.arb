@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Oled Kyronis kõigis kogukondades. Loo veel üks.",
   "ui_community_discover_search_detail": "Proovi muud sõna või loo selle nimega kogukond.",
   "ui_community_write": "Kirjuta postitus",
-  "ui_community_members": "Liikmed:"
+  "ui_community_members": "Liikmed:",
+  "ui_toast_posted": "Postitatud",
+  "ui_toast_view": "Vaata",
+  "ui_toast_open": "Ava",
+  "ui_dm_online": "Võrgus",
+  "ui_dm_show_online": "Näita, kui oled võrgus",
+  "ui_dm_show_online_detail": "Inimesed, kellega sa suhtled, näevad rohelist täppi, kui Kyron on sul lahti. Kui see on väljas, ei näe sina ka nende oma."
 }

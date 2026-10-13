@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "သင်သည် Kyron ရှိ အသိုင်းအဝိုင်းတိုင်းတွင် ရှိနေသည်။ နောက်တစ်ခု စတင်ပါ။",
   "ui_community_discover_search_detail": "အခြားစကားလုံး စမ်းကြည့်ပါ သို့မဟုတ် ထိုအမည်ဖြင့် အသိုင်းအဝိုင်း စတင်ပါ။",
   "ui_community_write": "ပို့စ် ရေးရန်",
-  "ui_community_members": "အဖွဲ့ဝင်များ-"
+  "ui_community_members": "အဖွဲ့ဝင်များ-",
+  "ui_toast_posted": "တင်ပြီးပါပြီ",
+  "ui_toast_view": "ကြည့်ရန်",
+  "ui_toast_open": "ဖွင့်ရန်",
+  "ui_dm_online": "အွန်လိုင်း",
+  "ui_dm_show_online": "အွန်လိုင်းဖြစ်နေချိန် ပြရန်",
+  "ui_dm_show_online_detail": "သင် မက်ဆေ့ချ်ပို့သူများသည် သင် Kyron ဖွင့်ထားချိန်တွင် အစိမ်းရောင်အစက်ကို မြင်ရပါသည်။ ပိတ်ထားလျှင် သူတို့၏ အစက်ကိုလည်း သင် မမြင်ရပါ။"
 }

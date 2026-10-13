@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "आप Kyron के हर समुदाय में हैं। एक और शुरू करें।",
   "ui_community_discover_search_detail": "कोई दूसरा शब्द आज़माएँ, या उस नाम से समुदाय शुरू करें।",
   "ui_community_write": "पोस्ट लिखें",
-  "ui_community_members": "सदस्य:"
+  "ui_community_members": "सदस्य:",
+  "ui_toast_posted": "पोस्ट हो गई",
+  "ui_toast_view": "देखें",
+  "ui_toast_open": "खोलें",
+  "ui_dm_online": "ऑनलाइन",
+  "ui_dm_show_online": "ऑनलाइन होने पर दिखाएँ",
+  "ui_dm_show_online_detail": "जिन्हें आप संदेश भेजते हैं, वे आपका Kyron खुला होने पर एक हरा बिंदु देखते हैं। इसे बंद रखने पर आप भी उनका नहीं देख पाएँगे।"
 }

@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Bạn đã ở trong mọi cộng đồng trên Kyron. Hãy tạo thêm một cộng đồng.",
   "ui_community_discover_search_detail": "Thử một từ khác, hoặc tạo cộng đồng với tên đó.",
   "ui_community_write": "Viết bài",
-  "ui_community_members": "Thành viên:"
+  "ui_community_members": "Thành viên:",
+  "ui_toast_posted": "Đã đăng",
+  "ui_toast_view": "Xem",
+  "ui_toast_open": "Mở",
+  "ui_dm_online": "Đang hoạt động",
+  "ui_dm_show_online": "Hiển thị khi bạn đang hoạt động",
+  "ui_dm_show_online_detail": "Những người bạn nhắn tin sẽ thấy một chấm xanh khi bạn đang mở Kyron. Khi tắt, bạn cũng sẽ không thấy chấm của họ."
 }

@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Du är med i alla gemenskaper på Kyron. Starta en till.",
   "ui_community_discover_search_detail": "Prova ett annat ord, eller starta en gemenskap med det namnet.",
   "ui_community_write": "Skriv ett inlägg",
-  "ui_community_members": "Medlemmar:"
+  "ui_community_members": "Medlemmar:",
+  "ui_toast_posted": "Publicerat",
+  "ui_toast_view": "Visa",
+  "ui_toast_open": "Öppna",
+  "ui_dm_online": "Online",
+  "ui_dm_show_online": "Visa när du är online",
+  "ui_dm_show_online_detail": "Personer du skriver med ser en grön prick medan du har Kyron öppet. När det är av ser du inte heller deras."
 }

@@ -1499,6 +1499,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Rakstīt ierakstu"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Dalībnieki:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Publicēts"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Skatīt"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Atvērt"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Tiešsaistē"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Rādīt, kad esat tiešsaistē"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Cilvēki, kuriem rakstāt, redz zaļu punktu, kamēr jums ir atvērts Kyron. Kad tas ir izslēgts, arī jūs neredzēsiet viņējo."),
     };
 
 final messageLookup = MessageLookup();

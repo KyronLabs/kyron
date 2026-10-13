@@ -1487,6 +1487,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "واژهٔ دیگری را امتحان کنید، یا انجمنی با این نام راه بیندازید."),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("نوشتن پست"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("اعضا:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("منتشر شد"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("مشاهده"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("باز کردن"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("آنلاین"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("نمایش وقتی آنلاین هستید"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("کسانی که با آنها پیام‌رسانی می‌کنید، وقتی Kyron برایتان باز است یک نقطهٔ سبز می‌بینند. وقتی خاموش است، شما هم نقطهٔ آنها را نمی‌بینید."),
     };
 
 final messageLookup = MessageLookup();

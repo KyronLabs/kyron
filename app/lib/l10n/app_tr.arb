@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Kyron'daki tüm topluluklardasın. Bir tane daha başlat.",
   "ui_community_discover_search_detail": "Başka bir kelime dene ya da bu adla bir topluluk başlat.",
   "ui_community_write": "Gönderi yaz",
-  "ui_community_members": "Üyeler:"
+  "ui_community_members": "Üyeler:",
+  "ui_toast_posted": "Paylaşıldı",
+  "ui_toast_view": "Görüntüle",
+  "ui_toast_open": "Aç",
+  "ui_dm_online": "Çevrimiçi",
+  "ui_dm_show_online": "Çevrimiçi olduğunu göster",
+  "ui_dm_show_online_detail": "Mesajlaştığın kişiler, Kyron açıkken yeşil bir nokta görür. Bu kapalıyken sen de onlarınkini göremezsin."
 }

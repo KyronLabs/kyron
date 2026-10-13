@@ -1579,6 +1579,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "অন্য শব্দ দিয়ে চেষ্টা করুন, অথবা ওই নামে একটি কমিউনিটি শুরু করুন।"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("পোস্ট লিখুন"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("সদস্য:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("পোস্ট হয়েছে"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("দেখুন"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("খুলুন"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("অনলাইন"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("অনলাইন থাকলে দেখান"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("আপনি যাদের বার্তা পাঠান, আপনার Kyron খোলা থাকলে তারা একটি সবুজ বিন্দু দেখে। এটি বন্ধ থাকলে আপনিও তাদেরটা দেখবেন না।"),
     };
 
 final messageLookup = MessageLookup();

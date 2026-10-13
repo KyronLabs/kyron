@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Jy is in elke gemeenskap op Kyron. Begin nog een.",
   "ui_community_discover_search_detail": "Probeer 'n ander woord, of begin 'n gemeenskap met daardie naam.",
   "ui_community_write": "Skryf 'n plasing",
-  "ui_community_members": "Lede:"
+  "ui_community_members": "Lede:",
+  "ui_toast_posted": "Geplaas",
+  "ui_toast_view": "Bekyk",
+  "ui_toast_open": "Maak oop",
+  "ui_dm_online": "Aanlyn",
+  "ui_dm_show_online": "Wys wanneer jy aanlyn is",
+  "ui_dm_show_online_detail": "Mense vir wie jy boodskappe stuur, sien 'n groen kolletjie terwyl jy Kyron oop het. As dit af is, sien jy ook nie hulle s'n nie."
 }

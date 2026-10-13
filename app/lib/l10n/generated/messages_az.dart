@@ -1582,6 +1582,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write":
           MessageLookupByLibrary.simpleMessage("Paylaşım yaz"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Üzvlər:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Paylaşıldı"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Bax"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Aç"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Onlayn"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Onlayn olduğunuzu göstər"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Yazışdığınız insanlar Kyron açıq olanda yaşıl nöqtə görür. Bu söndürüldükdə siz də onlarınkını görməyəcəksiniz."),
     };
 
 final messageLookup = MessageLookup();

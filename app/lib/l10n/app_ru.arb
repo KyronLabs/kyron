@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Вы во всех сообществах Kyron. Создайте ещё одно.",
   "ui_community_discover_search_detail": "Попробуйте другое слово или создайте сообщество с таким названием.",
   "ui_community_write": "Написать",
-  "ui_community_members": "Участники:"
+  "ui_community_members": "Участники:",
+  "ui_toast_posted": "Опубликовано",
+  "ui_toast_view": "Посмотреть",
+  "ui_toast_open": "Открыть",
+  "ui_dm_online": "В сети",
+  "ui_dm_show_online": "Показывать, когда вы в сети",
+  "ui_dm_show_online_detail": "Те, с кем вы переписываетесь, видят зелёную точку, пока у вас открыт Kyron. Если это выключено, вы тоже не увидите их точку."
 }

@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Kana cikin kowace al'umma a Kyron. Fara wata.",
   "ui_community_discover_search_detail": "Gwada wata kalma, ko fara al'umma da wannan sunan.",
   "ui_community_write": "Rubuta rubutu",
-  "ui_community_members": "Mambobi:"
+  "ui_community_members": "Mambobi:",
+  "ui_toast_posted": "An wallafa",
+  "ui_toast_view": "Duba",
+  "ui_toast_open": "Buɗe",
+  "ui_dm_online": "A kan layi",
+  "ui_dm_show_online": "Nuna lokacin da kake kan layi",
+  "ui_dm_show_online_detail": "Mutanen da kake aika wa saƙo suna ganin ɗigo kore yayin da Kyron ke buɗe a wurinka. Idan wannan a kashe yake, kai ma ba za ka ga nasu ba."
 }

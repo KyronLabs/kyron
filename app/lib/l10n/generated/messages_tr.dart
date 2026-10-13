@@ -1490,6 +1490,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "Başka bir kelime dene ya da bu adla bir topluluk başlat."),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("Gönderi yaz"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Üyeler:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Paylaşıldı"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Görüntüle"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Aç"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Çevrimiçi"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Çevrimiçi olduğunu göster"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Mesajlaştığın kişiler, Kyron açıkken yeşil bir nokta görür. Bu kapalıyken sen de onlarınkini göremezsin."),
     };
 
 final messageLookup = MessageLookup();

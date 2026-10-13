@@ -1489,6 +1489,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "ਕੋਈ ਹੋਰ ਸ਼ਬਦ ਅਜ਼ਮਾਓ, ਜਾਂ ਉਸ ਨਾਮ ਨਾਲ ਭਾਈਚਾਰਾ ਸ਼ੁਰੂ ਕਰੋ।"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("ਪੋਸਟ ਲਿਖੋ"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("ਮੈਂਬਰ:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("ਪੋਸਟ ਹੋ ਗਈ"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("ਵੇਖੋ"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("ਖੋਲ੍ਹੋ"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("ਔਨਲਾਈਨ"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("ਔਨਲਾਈਨ ਹੋਣ 'ਤੇ ਦਿਖਾਓ"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("ਜਿਨ੍ਹਾਂ ਨੂੰ ਤੁਸੀਂ ਸੁਨੇਹੇ ਭੇਜਦੇ ਹੋ, ਉਹ ਤੁਹਾਡਾ Kyron ਖੁੱਲ੍ਹਾ ਹੋਣ 'ਤੇ ਹਰਾ ਬਿੰਦੂ ਵੇਖਦੇ ਹਨ। ਇਸ ਦੇ ਬੰਦ ਹੋਣ 'ਤੇ ਤੁਸੀਂ ਵੀ ਉਹਨਾਂ ਦਾ ਨਹੀਂ ਵੇਖੋਗੇ।"),
     };
 
 final messageLookup = MessageLookup();

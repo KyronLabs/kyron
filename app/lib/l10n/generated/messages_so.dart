@@ -1499,6 +1499,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "Isku day eray kale, ama bilow bulsho magacaas leh."),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("Qor qoraal"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Xubnaha:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Waa la daabacay"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Eeg"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Fur"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Khadka ku jira"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Muuji marka aad khadka ku jirto"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Dadka aad fariimaha u dirto waxay arkaan dhibic cagaaran inta Kyron kuu furan yahay. Marka tan la damiyo, adiguna ma arki doontid tooda."),
     };
 
 final messageLookup = MessageLookup();

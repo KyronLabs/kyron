@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "O wà nínú gbogbo àwùjọ lórí Kyron. Dá òmíràn sílẹ̀.",
   "ui_community_discover_search_detail": "Gbìyànjú ọ̀rọ̀ mìíràn, tàbí dá àwùjọ sílẹ̀ pẹ̀lú orúkọ yẹn.",
   "ui_community_write": "Kọ ìfiránṣẹ́",
-  "ui_community_members": "Àwọn ọmọ ẹgbẹ́:"
+  "ui_community_members": "Àwọn ọmọ ẹgbẹ́:",
+  "ui_toast_posted": "A ti gbé e jáde",
+  "ui_toast_view": "Wò ó",
+  "ui_toast_open": "Ṣí i",
+  "ui_dm_online": "Lórí ayélujára",
+  "ui_dm_show_online": "Fihàn nígbà tí o bá wà lórí ayélujára",
+  "ui_dm_show_online_detail": "Àwọn tí o ń fi ìfiránṣẹ́ ránṣẹ́ sí ń rí àmì aláwọ̀ ewé nígbà tí Kyron bá ṣí sílẹ̀ lọ́dọ̀ rẹ. Nígbà tí èyí bá wà ní pípa, ìwọ náà kò ní rí tiwọn."
 }

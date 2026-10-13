@@ -1487,6 +1487,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "Nwaa okwu ọzọ, ma ọ bụ malite obodo nwere aha ahụ."),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("Dee ozi"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("Ndị otu:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Ebipụtala"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Lee"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Mepee"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("Nọ n'ịntanetị"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Gosi mgbe ị nọ n'ịntanetị"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Ndị ị na-ezigara ozi na-ahụ ntụpọ akwụkwọ ndụ mgbe Kyron mepere n'ekwentị gị. Mgbe nke a gbanyụrụ, ị gaghịkwa ahụ nke ha."),
     };
 
 final messageLookup = MessageLookup();

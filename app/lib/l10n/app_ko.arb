@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Kyron의 모든 커뮤니티에 가입했어요. 새로 만들어 보세요.",
   "ui_community_discover_search_detail": "다른 단어로 찾아보거나, 그 이름으로 커뮤니티를 만들어 보세요.",
   "ui_community_write": "글쓰기",
-  "ui_community_members": "멤버:"
+  "ui_community_members": "멤버:",
+  "ui_toast_posted": "게시됨",
+  "ui_toast_view": "보기",
+  "ui_toast_open": "열기",
+  "ui_dm_online": "온라인",
+  "ui_dm_show_online": "온라인 상태 표시",
+  "ui_dm_show_online_detail": "메시지를 주고받는 사람들은 내가 Kyron을 열어 두는 동안 초록 점을 봐요. 끄면 나도 상대방의 초록 점을 볼 수 없어요."
 }

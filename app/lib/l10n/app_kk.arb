@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Сіз Kyron-дағы барлық қауымдастықтасыз. Тағы біреуін құрыңыз.",
   "ui_community_discover_search_detail": "Басқа сөзді қолданып көріңіз немесе осы атпен қауымдастық құрыңыз.",
   "ui_community_write": "Жазба жазу",
-  "ui_community_members": "Мүшелер:"
+  "ui_community_members": "Мүшелер:",
+  "ui_toast_posted": "Жарияланды",
+  "ui_toast_view": "Көру",
+  "ui_toast_open": "Ашу",
+  "ui_dm_online": "Желіде",
+  "ui_dm_show_online": "Желіде екеніңізді көрсету",
+  "ui_dm_show_online_detail": "Сіз хат жазатын адамдар Kyron ашық тұрғанда жасыл нүктені көреді. Бұл өшірулі болса, сіз де олардікін көрмейсіз."
 }

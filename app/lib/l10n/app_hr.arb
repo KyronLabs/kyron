@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "U svakoj ste zajednici na Kyronu. Pokrenite još jednu.",
   "ui_community_discover_search_detail": "Pokušajte drugu riječ ili pokrenite zajednicu s tim nazivom.",
   "ui_community_write": "Napiši objavu",
-  "ui_community_members": "Članovi:"
+  "ui_community_members": "Članovi:",
+  "ui_toast_posted": "Objavljeno",
+  "ui_toast_view": "Prikaži",
+  "ui_toast_open": "Otvori",
+  "ui_dm_online": "Na mreži",
+  "ui_dm_show_online": "Prikaži kad ste na mreži",
+  "ui_dm_show_online_detail": "Ljudi kojima pišete vide zelenu točku dok imate otvoren Kyron. Kad je ovo isključeno, ni vi nećete vidjeti njihovu."
 }

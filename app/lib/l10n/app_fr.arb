@@ -749,5 +749,11 @@
   "ui_community_discover_none_detail": "Vous êtes dans toutes les communautés de Kyron. Créez-en une autre.",
   "ui_community_discover_search_detail": "Essayez un autre mot, ou créez une communauté de ce nom.",
   "ui_community_write": "Écrire une publication",
-  "ui_community_members": "Membres :"
+  "ui_community_members": "Membres :",
+  "ui_toast_posted": "Publié",
+  "ui_toast_view": "Voir",
+  "ui_toast_open": "Ouvrir",
+  "ui_dm_online": "En ligne",
+  "ui_dm_show_online": "Indiquer quand vous êtes en ligne",
+  "ui_dm_show_online_detail": "Les personnes à qui vous écrivez voient un point vert tant que Kyron est ouvert. Désactivé, vous ne verrez pas non plus le leur."
 }

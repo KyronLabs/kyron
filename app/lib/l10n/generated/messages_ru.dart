@@ -1500,6 +1500,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_community_write": MessageLookupByLibrary.simpleMessage("Написать"),
       "ui_community_members":
           MessageLookupByLibrary.simpleMessage("Участники:"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("Опубликовано"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("Посмотреть"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("Открыть"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("В сети"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("Показывать, когда вы в сети"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("Те, с кем вы переписываетесь, видят зелёную точку, пока у вас открыт Kyron. Если это выключено, вы тоже не увидите их точку."),
     };
 
 final messageLookup = MessageLookup();

@@ -1376,6 +1376,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
               "ሌላ ቃል ይሞክሩ፣ ወይም በዚያ ስም ማህበረሰብ ይጀምሩ።"),
       "ui_community_write": MessageLookupByLibrary.simpleMessage("ልጥፍ ይጻፉ"),
       "ui_community_members": MessageLookupByLibrary.simpleMessage("አባላት፦"),
+      "ui_toast_posted": MessageLookupByLibrary.simpleMessage("ተለጥፏል"),
+      "ui_toast_view": MessageLookupByLibrary.simpleMessage("ይመልከቱ"),
+      "ui_toast_open": MessageLookupByLibrary.simpleMessage("ክፈት"),
+      "ui_dm_online": MessageLookupByLibrary.simpleMessage("መስመር ላይ"),
+      "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("መስመር ላይ ሲሆኑ አሳይ"),
+      "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage("መልእክት የሚልኩላቸው ሰዎች Kyron ክፍት ሲሆን አረንጓዴ ነጥብ ያያሉ። ይህ ሲጠፋ የእነሱንም አያዩም።"),
     };
 
 final messageLookup = MessageLookup();
