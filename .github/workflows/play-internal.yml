@@ -1,0 +1,195 @@
+name: Play internal testing
+
+# A signed App Bundle for the Play Console's internal testing track, on
+# demand. Separate from the tagged release because that one also builds
+# Windows, needs a changelog section and a version bump, and has never been
+# run -- none of which should stand between a commit and the testers.
+#
+# Everything uploaded to Play comes from here, so this workflow's run number
+# is the one versionCode sequence Play sees. Play refuses a versionCode it has
+# already had, and refuses one lower than the newest on the track.
+on:
+  workflow_dispatch:
+    inputs:
+      status:
+        description: >-
+          Release status. "draft" until the app's first release has been
+          rolled out from the Play Console; Play refuses anything else on a
+          draft app.
+        required: true
+        type: choice
+        options:
+          - completed
+          - draft
+        default: completed
+
+permissions:
+  contents: read
+
+concurrency:
+  group: play-internal
+  cancel-in-progress: false
+
+env:
+  KYRON_BUILD_NUMBER: ${{ github.run_number }}
+
+jobs:
+  bundle:
+    name: Build and upload the App Bundle
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    env:
+      # Secrets cannot be read in `if:`, so whether there is one is.
+      HAS_PLAY_CREDENTIALS: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Read the version
+        id: version
+        run: |
+          version=$(sed -nE 's/^version: ([0-9]+\.[0-9]+\.[0-9]+).*/\1/p' pubspec.yaml)
+          test -n "$version" || { echo "No version in pubspec.yaml"; exit 1; }
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      # Dispatch can build any branch, including one CI never saw.
+      - name: Test
+        run: flutter test
+
+      # As in the release workflow: without it the bundle builds cleanly and
+      # every install is unreachable by push while the app is closed.
+      - name: Write the Firebase configuration
+        working-directory: .
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: |
+          test -n "$GOOGLE_SERVICES_JSON" || {
+            echo "GOOGLE_SERVICES_JSON is required. See docs/PUSH.md."
+            exit 1
+          }
+          printf '%s' "$GOOGLE_SERVICES_JSON" > app/android/app/google-services.json
+          python3 -c "import json; json.load(open('app/android/app/google-services.json'))" || {
+            echo "GOOGLE_SERVICES_JSON is not valid JSON."
+            exit 1
+          }
+
+      # All four, checked by name. An empty password otherwise surfaces as a
+      # Gradle "keystore was tampered with" that names none of them.
+      - name: Write the upload key
+        working-directory: .
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: |
+          set -euo pipefail
+          missing=
+          for name in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_PASSWORD ANDROID_KEY_ALIAS; do
+            test -n "${!name}" || missing="$missing $name"
+          done
+          test -z "$missing" || { echo "Missing secrets:$missing"; exit 1; }
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > app/android/upload-keystore.jks
+          cat > app/android/key.properties <<EOF
+          storePassword=$ANDROID_KEYSTORE_PASSWORD
+          keyPassword=$ANDROID_KEY_PASSWORD
+          keyAlias=$ANDROID_KEY_ALIAS
+          storeFile=../upload-keystore.jks
+          EOF
+
+      - name: Build the App Bundle
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+        run: |
+          flutter build appbundle --release \
+            --build-number "$KYRON_BUILD_NUMBER" \
+            ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
+            ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"}
+
+      # app/android/app/build.gradle.kts falls back to the debug key when
+      # key.properties is missing, and that bundle builds without complaint.
+      # Play then refuses it as signed with the wrong key -- after the upload,
+      # or worse, the first upload enrols the wrong key. So the bundle's
+      # certificate is compared with the upload key's, byte for byte.
+      - name: Check the bundle is signed with the upload key
+        id: bundle
+        working-directory: .
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+          src=app/build/app/outputs/bundle/release/app-release.aab
+          test -f "$src" || { echo "Missing $src"; exit 1; }
+
+          expected=$(keytool -exportcert -keystore app/android/upload-keystore.jks \
+            -alias "$ANDROID_KEY_ALIAS" -storepass "$ANDROID_KEYSTORE_PASSWORD" | sha256sum | cut -d' ' -f1)
+          signed=$(python3 scripts/apk-certificate.py "$src")
+          echo "$signed"
+          # Every certificate in it, not the first: one line is the norm for
+          # a bundle, and anything else should be looked at.
+          if echo "$signed" | awk '{print $2}' | grep -vqx "$expected"; then
+            echo "The bundle is not signed with the upload key ($expected)."
+            exit 1
+          fi
+
+          out="kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
+          mkdir -p play
+          cp "$src" "play/$out"
+          echo "file=play/$out" >> "$GITHUB_OUTPUT"
+          ls -lh play
+
+      # Always kept, uploaded to Play or not. Play's API will not take an
+      # app's very first bundle -- that one goes in through the Console by
+      # hand -- and this is where it comes from.
+      - name: Keep the bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: kyron-${{ steps.version.outputs.version }}+${{ github.run_number }}-aab
+          path: play/*.aab
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload to the internal testing track
+        if: env.HAS_PLAY_CREDENTIALS == 'true'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: so.kyron.app
+          releaseFiles: ${{ steps.bundle.outputs.file }}
+          releaseName: ${{ steps.version.outputs.version }} (${{ github.run_number }})
+          track: internal
+          status: ${{ inputs.status }}
+
+      - name: Say what happened
+        working-directory: .
+        run: |
+          if [ "$HAS_PLAY_CREDENTIALS" = true ]; then
+            echo "Uploaded to the internal testing track." >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo "Built and signed, **not uploaded**: PLAY_SERVICE_ACCOUNT_JSON is not set."
+              echo
+              echo "Download the artifact from this run and upload it in the Play Console:"
+              echo "Testing → Internal testing → Create new release. See docs/PLAY.md."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
