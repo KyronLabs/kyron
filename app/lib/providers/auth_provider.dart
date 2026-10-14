@@ -220,6 +220,22 @@ class AuthNotifier extends Notifier<AuthState> {
     state = AuthState.unauth();
   }
 
+  /// Signs out after the account itself has been deleted.
+  ///
+  /// The same as [logout], except that it cannot fail: the server now refuses
+  /// this session, so withdrawing the key and the push token are expected to
+  /// fail, and a sign-out that threw here would leave the app showing an
+  /// account that no longer exists.
+  Future<void> accountDeleted() async {
+    try {
+      await logout();
+    } catch (e) {
+      _log('sign-out after deletion', e);
+      ref.read(currentUserProvider.notifier).clear();
+      state = AuthState.unauth();
+    }
+  }
+
   Future<bool> refreshTokens() async {
     try {
       final ok = await _repo.refresh();

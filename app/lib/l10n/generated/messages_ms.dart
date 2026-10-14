@@ -1488,6 +1488,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Foto dan klip yang disiarkan orang akan dipaparkan di sini."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Ikut"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Padam akaun"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Ini akan memadamkan akaun Kyron anda secara kekal. Ia tidak boleh dibuat asal."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Profil, siaran, balasan, suka dan siaran semula anda"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Mesej anda, termasuk yang anda hantar kepada orang lain, serta foto dan nota suara di dalamnya"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Pengikut anda, orang yang anda ikuti dan tetapan anda"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Komuniti yang anda mulakan akan diserahkan kepada moderator atau ahli yang paling lama. Komuniti tanpa orang lain akan ditutup."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Padam akaun anda?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Anda tidak akan dapat mendapatkan semula apa-apa daripadanya."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Akaun anda telah dipadam."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Akaun dipadam"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Akaun ini telah dipadam, jadi mesej tidak lagi boleh dihantar di sini."),
     };
 
 final messageLookup = MessageLookup();

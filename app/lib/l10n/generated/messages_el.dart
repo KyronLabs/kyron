@@ -1662,6 +1662,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Οι φωτογραφίες και τα κλιπ που δημοσιεύουν οι άλλοι θα εμφανίζονται εδώ."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Ακολούθηση"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Διαγραφή λογαριασμού"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Με αυτό διαγράφεται οριστικά ο λογαριασμός σας στο Kyron. Δεν μπορεί να αναιρεθεί."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Το προφίλ, οι αναρτήσεις, οι απαντήσεις, τα «μου αρέσει» και οι κοινοποιήσεις σας"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Τα μηνύματά σας, μαζί με όσα στείλατε σε άλλους, και οι φωτογραφίες και τα φωνητικά μηνύματα που περιέχουν"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Οι ακόλουθοί σας, τα άτομα που ακολουθείτε και οι ρυθμίσεις σας"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Οι κοινότητες που δημιουργήσατε περνούν στον συντονιστή ή στο μέλος με τη μεγαλύτερη παρουσία. Μια κοινότητα χωρίς άλλα μέλη κλείνει."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Διαγραφή του λογαριασμού σας;"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Δεν θα μπορείτε να ανακτήσετε τίποτα από αυτά."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Ο λογαριασμός σας διαγράφηκε."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Διαγραμμένος λογαριασμός"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Αυτός ο λογαριασμός έχει διαγραφεί, οπότε δεν μπορούν πλέον να σταλούν μηνύματα εδώ."),
     };
 
 final messageLookup = MessageLookup();

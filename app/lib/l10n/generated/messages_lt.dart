@@ -1498,6 +1498,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Čia bus rodomos žmonių paskelbtos nuotraukos ir klipai."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Sekti"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Ištrinti paskyrą"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Taip visam laikui ištrinsite savo Kyron paskyrą. To atšaukti negalima."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Jūsų profilis, įrašai, atsakymai, patiktukai ir pakartotiniai įrašai"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Jūsų žinutės, įskaitant tas, kurias išsiuntėte kitiems, ir jose esančios nuotraukos bei balso žinutės"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Jūsų sekėjai, žmonės, kuriuos sekate, ir jūsų nustatymai"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Jūsų įkurtos bendruomenės atitenka ilgiausiai joje esančiam moderatoriui ar nariui. Bendruomenė, kurioje nėra nieko kito, uždaroma."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Ištrinti jūsų paskyrą?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Nieko iš to nebegalėsite susigrąžinti."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Jūsų paskyra ištrinta."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Ištrinta paskyra"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Ši paskyra ištrinta, todėl čia nebegalima siųsti žinučių."),
     };
 
 final messageLookup = MessageLookup();

@@ -1575,6 +1575,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "İnsanların paylaşdığı şəkillər və kliplər burada görünəcək."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("İzlə"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Hesabı sil"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Bu, Kyron hesabınızı həmişəlik silir. Geri qaytarmaq mümkün deyil."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Profiliniz, paylaşımlarınız, cavablarınız, bəyənmələriniz və təkrar paylaşımlarınız"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Mesajlarınız, başqalarına göndərdikləriniz də daxil olmaqla, və onlardakı şəkillər və səsli qeydlər"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "İzləyiciləriniz, izlədiyiniz insanlar və parametrləriniz"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Yaratdığınız icmalar ən uzun müddət xidmət edən moderatora və ya üzvə keçir. İçində başqa heç kim olmayan icma bağlanır."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Hesabınız silinsin?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Heç birini geri qaytara bilməyəcəksiniz."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Hesabınız silindi."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Silinmiş hesab"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Bu hesab silinib, ona görə də artıq bura mesaj göndərmək mümkün deyil."),
     };
 
 final messageLookup = MessageLookup();

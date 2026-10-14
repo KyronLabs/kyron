@@ -1499,6 +1499,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "ആളുകൾ പോസ്റ്റ് ചെയ്യുന്ന ഫോട്ടോകളും ക്ലിപ്പുകളും ഇവിടെ കാണാം."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("ഫോളോ ചെയ്യുക"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("അക്കൗണ്ട് ഇല്ലാതാക്കുക"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "ഇത് നിങ്ങളുടെ Kyron അക്കൗണ്ട് സ്ഥിരമായി ഇല്ലാതാക്കും. ഇത് പഴയപടിയാക്കാനാകില്ല."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പ്രൊഫൈൽ, പോസ്റ്റുകൾ, മറുപടികൾ, ലൈക്കുകൾ, റീപോസ്റ്റുകൾ"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ സന്ദേശങ്ങൾ, മറ്റുള്ളവർക്ക് അയച്ചവ ഉൾപ്പെടെ, അവയിലെ ഫോട്ടോകളും വോയ്സ് നോട്ടുകളും"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ ഫോളോവർമാർ, നിങ്ങൾ ഫോളോ ചെയ്യുന്നവർ, നിങ്ങളുടെ ക്രമീകരണങ്ങൾ"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ തുടങ്ങിയ കമ്മ്യൂണിറ്റികൾ ഏറ്റവും കൂടുതൽ കാലമായുള്ള മോഡറേറ്റർക്കോ അംഗത്തിനോ കൈമാറും. മറ്റാരുമില്ലാത്ത കമ്മ്യൂണിറ്റി അടയ്ക്കും."),
+      "ui_delete_account_confirm_title": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് ഇല്ലാതാക്കണോ?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "ഇതിൽ ഒന്നും നിങ്ങൾക്ക് തിരികെ ലഭിക്കില്ല."),
+      "ui_delete_account_done": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് ഇല്ലാതാക്കി."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("ഇല്ലാതാക്കിയ അക്കൗണ്ട്"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "ഈ അക്കൗണ്ട് ഇല്ലാതാക്കിയതിനാൽ ഇവിടേക്ക് ഇനി സന്ദേശങ്ങൾ അയയ്ക്കാനാകില്ല."),
     };
 
 final messageLookup = MessageLookup();

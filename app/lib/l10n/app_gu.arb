@@ -752,5 +752,16 @@
   "ui_explore_communities": "જોડાવા માટે સમુદાયો",
   "ui_explore_grid_empty": "હજી જોવા જેવું કંઈ નથી",
   "ui_explore_grid_empty_detail": "લોકો જે ફોટા અને ક્લિપ્સ પોસ્ટ કરે છે તે અહીં દેખાશે.",
-  "ui_follow": "ફૉલો કરો"
+  "ui_follow": "ફૉલો કરો",
+  "ui_delete_account": "એકાઉન્ટ ડિલીટ કરો",
+  "ui_delete_account_intro": "આનાથી તમારું Kyron એકાઉન્ટ કાયમ માટે ડિલીટ થઈ જશે. તેને પાછું લાવી શકાશે નહીં.",
+  "ui_delete_account_posts": "તમારી પ્રોફાઇલ, પોસ્ટ, જવાબો, લાઇક અને રીપોસ્ટ",
+  "ui_delete_account_messages": "તમારા સંદેશા, બીજાને મોકલેલા સહિત, અને તેમાંના ફોટા અને વૉઇસ નોટ",
+  "ui_delete_account_people": "તમારા ફૉલોઅર્સ, તમે જેમને ફૉલો કરો છો તે લોકો અને તમારી સેટિંગ્સ",
+  "ui_delete_account_communities": "તમે શરૂ કરેલા સમુદાયો સૌથી લાંબા સમયથી રહેલા મોડરેટર કે સભ્યને સોંપાશે. જેમાં બીજું કોઈ નથી તે બંધ થઈ જશે.",
+  "ui_delete_account_confirm_title": "તમારું એકાઉન્ટ ડિલીટ કરવું છે?",
+  "ui_delete_account_confirm_detail": "તમે તેમાંથી કંઈ પણ પાછું મેળવી શકશો નહીં.",
+  "ui_delete_account_done": "તમારું એકાઉન્ટ ડિલીટ થઈ ગયું છે.",
+  "ui_dm_deleted_account": "ડિલીટ થયેલું એકાઉન્ટ",
+  "ui_dm_deleted_account_detail": "આ એકાઉન્ટ ડિલીટ થઈ ગયું છે, તેથી અહીં હવે સંદેશા મોકલી શકાશે નહીં."
 }

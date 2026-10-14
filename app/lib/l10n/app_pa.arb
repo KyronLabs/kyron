@@ -752,5 +752,16 @@
   "ui_explore_communities": "ਸ਼ਾਮਲ ਹੋਣ ਲਈ ਭਾਈਚਾਰੇ",
   "ui_explore_grid_empty": "ਹਾਲੇ ਦੇਖਣ ਲਈ ਕੁਝ ਨਹੀਂ",
   "ui_explore_grid_empty_detail": "ਲੋਕ ਜੋ ਫ਼ੋਟੋਆਂ ਅਤੇ ਕਲਿੱਪਾਂ ਪੋਸਟ ਕਰਦੇ ਹਨ, ਉਹ ਇੱਥੇ ਦਿਖਾਈ ਦੇਣਗੀਆਂ।",
-  "ui_follow": "ਫ਼ਾਲੋ ਕਰੋ"
+  "ui_follow": "ਫ਼ਾਲੋ ਕਰੋ",
+  "ui_delete_account": "ਖਾਤਾ ਮਿਟਾਓ",
+  "ui_delete_account_intro": "ਇਸ ਨਾਲ ਤੁਹਾਡਾ Kyron ਖਾਤਾ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟ ਜਾਵੇਗਾ। ਇਸਨੂੰ ਵਾਪਸ ਨਹੀਂ ਲਿਆਂਦਾ ਜਾ ਸਕਦਾ।",
+  "ui_delete_account_posts": "ਤੁਹਾਡੀ ਪ੍ਰੋਫਾਈਲ, ਪੋਸਟਾਂ, ਜਵਾਬ, ਲਾਈਕ ਅਤੇ ਰੀਪੋਸਟ",
+  "ui_delete_account_messages": "ਤੁਹਾਡੇ ਸੁਨੇਹੇ, ਦੂਜਿਆਂ ਨੂੰ ਭੇਜੇ ਸਮੇਤ, ਅਤੇ ਉਹਨਾਂ ਵਿਚਲੀਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੌਇਸ ਨੋਟ",
+  "ui_delete_account_people": "ਤੁਹਾਡੇ ਫ਼ਾਲੋਅਰ, ਜਿਨ੍ਹਾਂ ਨੂੰ ਤੁਸੀਂ ਫ਼ਾਲੋ ਕਰਦੇ ਹੋ ਉਹ ਲੋਕ, ਅਤੇ ਤੁਹਾਡੀਆਂ ਸੈਟਿੰਗਾਂ",
+  "ui_delete_account_communities": "ਤੁਹਾਡੇ ਸ਼ੁਰੂ ਕੀਤੇ ਭਾਈਚਾਰੇ ਸਭ ਤੋਂ ਪੁਰਾਣੇ ਸੰਚਾਲਕ ਜਾਂ ਮੈਂਬਰ ਨੂੰ ਸੌਂਪ ਦਿੱਤੇ ਜਾਣਗੇ। ਜਿਸ ਵਿੱਚ ਹੋਰ ਕੋਈ ਨਹੀਂ, ਉਹ ਬੰਦ ਹੋ ਜਾਵੇਗਾ।",
+  "ui_delete_account_confirm_title": "ਕੀ ਆਪਣਾ ਖਾਤਾ ਮਿਟਾਉਣਾ ਹੈ?",
+  "ui_delete_account_confirm_detail": "ਤੁਸੀਂ ਇਸ ਵਿੱਚੋਂ ਕੁਝ ਵੀ ਵਾਪਸ ਨਹੀਂ ਲੈ ਸਕੋਗੇ।",
+  "ui_delete_account_done": "ਤੁਹਾਡਾ ਖਾਤਾ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।",
+  "ui_dm_deleted_account": "ਮਿਟਾਇਆ ਗਿਆ ਖਾਤਾ",
+  "ui_dm_deleted_account_detail": "ਇਹ ਖਾਤਾ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ, ਇਸ ਲਈ ਇੱਥੇ ਹੁਣ ਸੁਨੇਹੇ ਨਹੀਂ ਭੇਜੇ ਜਾ ਸਕਦੇ।"
 }

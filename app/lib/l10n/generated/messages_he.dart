@@ -1474,6 +1474,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "תמונות וקליפים שאנשים מפרסמים יופיעו כאן."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("מעקב"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("מחיקת החשבון"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "פעולה זו מוחקת לצמיתות את חשבון ה-Kyron שלך. אי אפשר לבטל אותה."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "הפרופיל, הפוסטים, התגובות, הלייקים והשיתופים שלך"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "ההודעות שלך, כולל אלה ששלחת לאחרים, והתמונות וההודעות הקוליות שבהן"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "העוקבים שלך, האנשים שבמעקב שלך וההגדרות שלך"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "קהילות שהקמת יעברו למנהל או לחבר הוותיק ביותר בהן. קהילה שאין בה אף אחד אחר תיסגר."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("למחוק את החשבון?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "לא תהיה אפשרות לשחזר שום דבר מזה."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("החשבון שלך נמחק."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("חשבון שנמחק"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "החשבון הזה נמחק, ולכן אי אפשר לשלוח לכאן הודעות יותר."),
     };
 
 final messageLookup = MessageLookup();

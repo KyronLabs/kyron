@@ -752,5 +752,16 @@
   "ui_explore_communities": "Comunități la care să te alături",
   "ui_explore_grid_empty": "Încă nu e nimic de văzut",
   "ui_explore_grid_empty_detail": "Fotografiile și clipurile publicate de alții vor apărea aici.",
-  "ui_follow": "Urmărește"
+  "ui_follow": "Urmărește",
+  "ui_delete_account": "Șterge contul",
+  "ui_delete_account_intro": "Astfel îți ștergi definitiv contul Kyron. Acțiunea nu poate fi anulată.",
+  "ui_delete_account_posts": "Profilul, postările, răspunsurile, aprecierile și redistribuirile tale",
+  "ui_delete_account_messages": "Mesajele tale, inclusiv cele trimise altor persoane, și fotografiile și mesajele vocale din ele",
+  "ui_delete_account_people": "Urmăritorii tăi, persoanele pe care le urmărești și setările tale",
+  "ui_delete_account_communities": "Comunitățile pe care le-ai creat trec la moderatorul sau membrul cu cea mai mare vechime. O comunitate fără alți membri se închide.",
+  "ui_delete_account_confirm_title": "Ștergi contul?",
+  "ui_delete_account_confirm_detail": "Nu vei putea recupera nimic din toate acestea.",
+  "ui_delete_account_done": "Contul tău a fost șters.",
+  "ui_dm_deleted_account": "Cont șters",
+  "ui_dm_deleted_account_detail": "Acest cont a fost șters, așa că nu mai pot fi trimise mesaje aici."
 }

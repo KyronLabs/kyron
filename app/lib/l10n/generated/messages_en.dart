@@ -1774,6 +1774,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Photos and clips people post will show up here."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Follow"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Delete account"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "This permanently deletes your Kyron account. It can't be undone."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Your profile, posts, replies, likes and reposts"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Your messages, including the ones you sent to other people, and the photos and voice notes in them"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Your followers, the people you follow, and your settings"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Communities you started go to their longest-serving moderator or member. One with nobody else in it is closed."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Delete your account?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "You won't be able to get any of it back."),
+      "ui_delete_account_done": MessageLookupByLibrary.simpleMessage(
+          "Your account has been deleted."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Deleted account"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "This account has been deleted, so messages can no longer be sent here."),
     };
 
 final messageLookup = MessageLookup();

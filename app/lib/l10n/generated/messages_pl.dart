@@ -1494,6 +1494,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Tutaj pojawią się zdjęcia i klipy publikowane przez innych."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Obserwuj"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Usuń konto"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Spowoduje to trwałe usunięcie Twojego konta Kyron. Tej operacji nie można cofnąć."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Twój profil, posty, odpowiedzi, polubienia i udostępnienia"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Twoje wiadomości, także te wysłane innym, oraz zdjęcia i wiadomości głosowe w nich"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Twoi obserwujący, osoby, które obserwujesz, i Twoje ustawienia"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Założone przez Ciebie społeczności przejmie najdłużej działający moderator lub członek. Społeczność bez innych osób zostanie zamknięta."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Usunąć Twoje konto?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Nie będzie można niczego odzyskać."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Twoje konto zostało usunięte."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Usunięte konto"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "To konto zostało usunięte, więc nie można już tu wysyłać wiadomości."),
     };
 
 final messageLookup = MessageLookup();

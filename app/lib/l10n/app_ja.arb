@@ -752,5 +752,16 @@
   "ui_explore_communities": "参加できるコミュニティ",
   "ui_explore_grid_empty": "まだ表示するものがありません",
   "ui_explore_grid_empty_detail": "みんなが投稿した写真とクリップがここに表示されます。",
-  "ui_follow": "フォロー"
+  "ui_follow": "フォロー",
+  "ui_delete_account": "アカウントを削除",
+  "ui_delete_account_intro": "Kyronアカウントが完全に削除されます。元に戻すことはできません。",
+  "ui_delete_account_posts": "プロフィール、投稿、返信、いいね、リポスト",
+  "ui_delete_account_messages": "メッセージ（他の人に送ったものを含む）と、その中の写真やボイスメモ",
+  "ui_delete_account_people": "フォロワー、フォロー中のユーザー、設定",
+  "ui_delete_account_communities": "あなたが作成したコミュニティは、最も長く在籍しているモデレーターまたはメンバーに引き継がれます。他に誰もいないコミュニティは閉鎖されます。",
+  "ui_delete_account_confirm_title": "アカウントを削除しますか？",
+  "ui_delete_account_confirm_detail": "削除したものは一切元に戻せません。",
+  "ui_delete_account_done": "アカウントを削除しました。",
+  "ui_dm_deleted_account": "削除されたアカウント",
+  "ui_dm_deleted_account_detail": "このアカウントは削除されたため、ここにはメッセージを送信できなくなりました。"
 }

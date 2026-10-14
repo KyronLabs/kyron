@@ -1495,6 +1495,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "ადამიანების გამოქვეყნებული ფოტოები და კლიპები აქ გამოჩნდება."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("გამოწერა"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("ანგარიშის წაშლა"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "ეს სამუდამოდ წაშლის თქვენს Kyron ანგარიშს. მისი გაუქმება შეუძლებელია."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "თქვენი პროფილი, პოსტები, პასუხები, მოწონებები და გაზიარებები"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "თქვენი შეტყობინებები, სხვებისთვის გაგზავნილების ჩათვლით, და მათში არსებული ფოტოები და ხმოვანი შეტყობინებები"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "თქვენი გამომწერები, ადამიანები, რომლებსაც გამოიწერთ, და თქვენი პარამეტრები"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "თქვენ მიერ შექმნილი საზოგადოებები გადაეცემა ყველაზე დიდი ხნის მოდერატორს ან წევრს. საზოგადოება, რომელშიც სხვა არავინაა, დაიხურება."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("წაიშალოს თქვენი ანგარიში?"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("ვერაფერს დაიბრუნებთ."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("თქვენი ანგარიში წაიშალა."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("წაშლილი ანგარიში"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "ეს ანგარიში წაშლილია, ამიტომ აქ შეტყობინებების გაგზავნა აღარ შეიძლება."),
     };
 
 final messageLookup = MessageLookup();

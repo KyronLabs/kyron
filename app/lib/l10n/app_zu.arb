@@ -752,5 +752,16 @@
   "ui_explore_communities": "Imiphakathi ongajoyina kuyo",
   "ui_explore_grid_empty": "Akukho okokubuka okwamanje",
   "ui_explore_grid_empty_detail": "Izithombe namaklip abantu abawathumelayo azovela lapha.",
-  "ui_follow": "Landela"
+  "ui_follow": "Landela",
+  "ui_delete_account": "Susa i-akhawunti",
+  "ui_delete_account_intro": "Lokhu kuzosusa unomphela i-akhawunti yakho ye-Kyron. Akukwazi ukuhlehliswa.",
+  "ui_delete_account_posts": "Iphrofayela yakho, okuthunyelwe, izimpendulo, okuthandayo nokuthunyelwe kabusha",
+  "ui_delete_account_messages": "Imilayezo yakho, kuhlanganise neyo oyithumele kwabanye, nezithombe namanothi ezwi akuyo",
+  "ui_delete_account_people": "Abalandeli bakho, abantu obalandelayo, nezilungiselelo zakho",
+  "ui_delete_account_communities": "Imiphakathi oyiqalile izodluliselwa kumlawuli noma ilungu elihlale isikhathi eside kakhulu. Umphakathi ongenamuntu omunye uzovalwa.",
+  "ui_delete_account_confirm_title": "Susa i-akhawunti yakho?",
+  "ui_delete_account_confirm_detail": "Ngeke ukwazi ukubuyisa noma yini kukho.",
+  "ui_delete_account_done": "I-akhawunti yakho isusiwe.",
+  "ui_dm_deleted_account": "I-akhawunti esusiwe",
+  "ui_dm_deleted_account_detail": "Le akhawunti isusiwe, ngakho imilayezo ayisakwazi ukuthunyelwa lapha."
 }

@@ -1497,6 +1497,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Մարդկանց հրապարակած լուսանկարներն ու տեսահոլովակները կհայտնվեն այստեղ։"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Հետևել"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Ջնջել հաշիվը"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Սա ընդմիշտ կջնջի ձեր Kyron հաշիվը։ Այն հնարավոր չէ հետ շրջել։"),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Ձեր պրոֆիլը, գրառումները, պատասխանները, հավանումները և վերահրապարակումները"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հաղորդագրությունները, այդ թվում՝ ուրիշներին ուղարկվածները, և դրանցում եղած լուսանկարներն ու ձայնային հաղորդագրությունները"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հետևորդները, ձեր հետևած մարդիկ և ձեր կարգավորումները"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Ձեր ստեղծած համայնքները կանցնեն ամենաերկար այնտեղ գտնվող մոդերատորին կամ անդամին։ Համայնքը, որտեղ ուրիշ ոչ ոք չկա, կփակվի։"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Ջնջե՞լ ձեր հաշիվը։"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Դուք չեք կարողանա դրանից որևէ բան վերականգնել։"),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Ձեր հաշիվը ջնջվել է։"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Ջնջված հաշիվ"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Այս հաշիվը ջնջվել է, ուստի այստեղ այլևս հնարավոր չէ հաղորդագրություններ ուղարկել։"),
     };
 
 final messageLookup = MessageLookup();

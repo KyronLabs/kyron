@@ -523,7 +523,11 @@ class _ConversationRow extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            conversation.title,
+                            // Empty once the other side deleted their account.
+                            conversation.people.isEmpty
+                                ? l10n.ui(
+                                    'ui_dm_deleted_account', 'Deleted account')
+                                : conversation.title,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(

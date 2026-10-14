@@ -1493,6 +1493,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "මිනිසුන් පළ කරන ඡායාරූප සහ ක්ලිප මෙහි පෙන්වනු ඇත."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("අනුගමනය කරන්න"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("ගිණුම මකන්න"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "මෙය ඔබගේ Kyron ගිණුම ස්ථිරවම මකා දමයි. මෙය අහෝසි කළ නොහැක."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ පැතිකඩ, පළ කිරීම්, පිළිතුරු, කැමැත්ත සහ නැවත පළ කිරීම්"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ පණිවිඩ, අන් අයට යැවූ ඒවා ද ඇතුළුව, සහ ඒවායේ ඇති ඡායාරූප සහ හඬ සටහන්"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ අනුගාමිකයින්, ඔබ අනුගමනය කරන අය සහ ඔබගේ සැකසීම්"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "ඔබ ආරම්භ කළ ප්‍රජාවන් දිගුම කාලයක් සිටින උපපරිපාලකයාට හෝ සාමාජිකයාට පැවරේ. වෙන කිසිවෙකු නැති ප්‍රජාවක් වසා දමනු ලැබේ."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("ඔබගේ ගිණුම මකන්නද?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබට එයින් කිසිවක් නැවත ලබා ගත නොහැක."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("ඔබගේ ගිණුම මකා දමා ඇත."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("මකා දැමූ ගිණුම"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "මෙම ගිණුම මකා දමා ඇති බැවින් මෙතැනට තවදුරටත් පණිවිඩ යැවිය නොහැක."),
     };
 
 final messageLookup = MessageLookup();

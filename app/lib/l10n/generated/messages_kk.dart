@@ -1486,6 +1486,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Адамдар жариялаған фотолар мен клиптер осында көрінеді."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Жазылу"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Аккаунтты жою"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Бұл Kyron аккаунтыңызды біржола жояды. Мұны қайтару мүмкін емес."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Профиліңіз, жазбаларыңыз, жауаптарыңыз, ұнатуларыңыз және қайта жариялауларыңыз"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Хабарларыңыз, басқаларға жібергендеріңізді қоса, және олардағы фотолар мен дауыстық хабарлар"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Жазылушыларыңыз, өзіңіз жазылған адамдар және параметрлеріңіз"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Сіз құрған қауымдастықтар ең ұзақ жүрген модераторға немесе мүшеге өтеді. Басқа ешкім жоқ қауымдастық жабылады."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңыз жойылсын ба?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Оның ешқайсысын қайтара алмайсыз."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңыз жойылды."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Жойылған аккаунт"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Бұл аккаунт жойылды, сондықтан бұл жерге енді хабар жіберу мүмкін емес."),
     };
 
 final messageLookup = MessageLookup();

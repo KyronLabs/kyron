@@ -752,5 +752,16 @@
   "ui_explore_communities": "Comunidades ás que unirte",
   "ui_explore_grid_empty": "Aínda non hai nada que ver",
   "ui_explore_grid_empty_detail": "As fotos e os clips que publique a xente aparecerán aquí.",
-  "ui_follow": "Seguir"
+  "ui_follow": "Seguir",
+  "ui_delete_account": "Eliminar a conta",
+  "ui_delete_account_intro": "Isto elimina para sempre a túa conta de Kyron. Non se pode desfacer.",
+  "ui_delete_account_posts": "O teu perfil, publicacións, respostas, gústames e republicacións",
+  "ui_delete_account_messages": "As túas mensaxes, incluídas as que enviaches a outras persoas, e as fotos e notas de voz que conteñen",
+  "ui_delete_account_people": "As persoas que te seguen, as que segues e a túa configuración",
+  "ui_delete_account_communities": "As comunidades que creaches pasan ao moderador ou membro máis antigo. Se non queda ninguén máis, péchase.",
+  "ui_delete_account_confirm_title": "Queres eliminar a túa conta?",
+  "ui_delete_account_confirm_detail": "Non poderás recuperar nada.",
+  "ui_delete_account_done": "Eliminouse a túa conta.",
+  "ui_dm_deleted_account": "Conta eliminada",
+  "ui_dm_deleted_account_detail": "Esta conta eliminouse, así que xa non se poden enviar mensaxes aquí."
 }

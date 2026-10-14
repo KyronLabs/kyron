@@ -1487,6 +1487,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Tu sa zobrazia fotky a klipy, ktoré ľudia zverejnia."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Sledovať"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Odstrániť účet"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Týmto natrvalo odstránite svoj účet Kyron. Tento krok sa nedá vrátiť."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Váš profil, príspevky, odpovede, páči sa mi a zdieľania"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Vaše správy vrátane tých, ktoré ste poslali iným, a fotky a hlasové správy v nich"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Vaši sledovatelia, ľudia, ktorých sledujete, a vaše nastavenia"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Komunity, ktoré ste založili, prejdú na najdlhšie pôsobiaceho moderátora alebo člena. Komunita, v ktorej nie je nikto iný, sa zatvorí."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Odstrániť váš účet?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Nič z toho už nebudete môcť získať späť."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Váš účet bol odstránený."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Odstránený účet"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Tento účet bol odstránený, takže sem už nemožno posielať správy."),
     };
 
 final messageLookup = MessageLookup();

@@ -35,6 +35,7 @@ import 'screens/profile_screen.dart';
 import 'screens/video_feed_screen.dart';
 import 'screens/notifications_screen.dart';
 import 'screens/composer_screen.dart';
+import 'screens/delete_account_screen.dart';
 import 'screens/messaging_settings_screen.dart';
 import 'screens/new_message_screen.dart';
 import 'services/share_inbox.dart' show SharedContent;
@@ -73,6 +74,7 @@ class Routes {
   static const thread = '/thread';
   static const newMessage = '/messages/new';
   static const messagingSettings = '/settings/messaging';
+  static const deleteAccount = '/settings/delete-account';
   static const newCommunity = '/communities/new';
   static const communitySettings = '/settings/communities';
   static const community = '/community';
@@ -308,6 +310,9 @@ class Routes {
 
       case messagingSettings:
         return _page(const MessagingSettingsScreen());
+
+      case deleteAccount:
+        return _page(const DeleteAccountScreen());
 
       case newCommunity:
         return _page(const NewCommunityScreen());

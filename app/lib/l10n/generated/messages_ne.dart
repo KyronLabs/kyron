@@ -1492,6 +1492,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "मानिसहरूले पोस्ट गर्ने फोटो र क्लिपहरू यहाँ देखिनेछन्।"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("फलो गर्नुहोस्"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("खाता मेटाउनुहोस्"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "यसले तपाईंको Kyron खाता स्थायी रूपमा मेटाउँछ। यसलाई पूर्ववत् गर्न सकिँदैन।"),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "तपाईंको प्रोफाइल, पोस्ट, जवाफ, लाइक र रिपोस्ट"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "तपाईंका सन्देशहरू, अरूलाई पठाएका सहित, र तिनमा भएका फोटो र भ्वाइस नोटहरू"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "तपाईंका फलोअरहरू, तपाईंले फलो गर्ने मानिसहरू र तपाईंका सेटिङहरू"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "तपाईंले सुरु गर्नुभएका समुदायहरू सबैभन्दा लामो समयदेखिका मोडरेटर वा सदस्यलाई सुम्पिइनेछन्। अरू कोही नभएको समुदाय बन्द गरिनेछ।"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("तपाईंको खाता मेटाउने?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "तपाईं यसबाट केही पनि फिर्ता पाउन सक्नुहुने छैन।"),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("तपाईंको खाता मेटाइयो।"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("मेटाइएको खाता"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "यो खाता मेटाइएको छ, त्यसैले यहाँ अब सन्देश पठाउन सकिँदैन।"),
     };
 
 final messageLookup = MessageLookup();

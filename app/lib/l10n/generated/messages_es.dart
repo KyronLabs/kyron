@@ -1613,6 +1613,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Las fotos y los clips que publique la gente aparecerán aquí."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Seguir"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Eliminar cuenta"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Esto elimina tu cuenta de Kyron de forma permanente. No se puede deshacer."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Tu perfil, publicaciones, respuestas, me gusta y republicaciones"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Tus mensajes, incluidos los que enviaste a otras personas, y las fotos y notas de voz que contienen"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Tus seguidores, las personas a las que sigues y tu configuración"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Las comunidades que creaste pasan al moderador o miembro con más antigüedad. Si no queda nadie más, se cierra."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("¿Eliminar tu cuenta?"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("No podrás recuperar nada."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Se eliminó tu cuenta."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Cuenta eliminada"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Esta cuenta se eliminó, así que ya no se pueden enviar mensajes aquí."),
     };
 
 final messageLookup = MessageLookup();

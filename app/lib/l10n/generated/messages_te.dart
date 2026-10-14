@@ -1493,6 +1493,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "ప్రజలు పోస్ట్ చేసే ఫోటోలు, క్లిప్‌లు ఇక్కడ కనిపిస్తాయి."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("ఫాలో చేయి"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("ఖాతాను తొలగించు"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "ఇది మీ Kyron ఖాతాను శాశ్వతంగా తొలగిస్తుంది. దీన్ని రద్దు చేయలేరు."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "మీ ప్రొఫైల్, పోస్ట్‌లు, ప్రత్యుత్తరాలు, లైక్‌లు, రీపోస్ట్‌లు"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "మీ సందేశాలు, ఇతరులకు పంపినవి సహా, వాటిలోని ఫోటోలు, వాయిస్ నోట్‌లు"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "మీ ఫాలోవర్లు, మీరు ఫాలో అయ్యే వ్యక్తులు, మీ సెట్టింగ్‌లు"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "మీరు ప్రారంభించిన కమ్యూనిటీలు ఎక్కువ కాలంగా ఉన్న మోడరేటర్‌కు లేదా సభ్యునికి వెళ్తాయి. ఇంకెవరూ లేని కమ్యూనిటీని మూసివేస్తారు."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("మీ ఖాతాను తొలగించాలా?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "దీనిలో దేన్నీ మీరు తిరిగి పొందలేరు."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("మీ ఖాతా తొలగించబడింది."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("తొలగించిన ఖాతా"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "ఈ ఖాతా తొలగించబడింది, కాబట్టి ఇకపై ఇక్కడ సందేశాలు పంపలేరు."),
     };
 
 final messageLookup = MessageLookup();

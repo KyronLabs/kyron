@@ -752,5 +752,16 @@
   "ui_explore_communities": "مجتمعات للانضمام إليها",
   "ui_explore_grid_empty": "لا شيء لمشاهدته بعد",
   "ui_explore_grid_empty_detail": "ستظهر هنا الصور والمقاطع التي ينشرها الناس.",
-  "ui_follow": "متابعة"
+  "ui_follow": "متابعة",
+  "ui_delete_account": "حذف الحساب",
+  "ui_delete_account_intro": "سيؤدي هذا إلى حذف حسابك على Kyron نهائيًا. لا يمكن التراجع عن ذلك.",
+  "ui_delete_account_posts": "ملفك الشخصي ومنشوراتك وردودك وإعجاباتك وإعادات نشرك",
+  "ui_delete_account_messages": "رسائلك، بما فيها التي أرسلتها إلى الآخرين، والصور والملاحظات الصوتية فيها",
+  "ui_delete_account_people": "متابعوك والأشخاص الذين تتابعهم وإعداداتك",
+  "ui_delete_account_communities": "تنتقل المجتمعات التي أنشأتها إلى أقدم مشرف أو عضو فيها. ويُغلق المجتمع الذي لا يوجد فيه أحد غيرك.",
+  "ui_delete_account_confirm_title": "هل تريد حذف حسابك؟",
+  "ui_delete_account_confirm_detail": "لن تتمكن من استعادة أي شيء منه.",
+  "ui_delete_account_done": "تم حذف حسابك.",
+  "ui_dm_deleted_account": "حساب محذوف",
+  "ui_dm_deleted_account_detail": "تم حذف هذا الحساب، لذا لم يعد بالإمكان إرسال رسائل هنا."
 }

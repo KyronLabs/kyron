@@ -1494,6 +1494,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Здесь появятся фото и клипы, которые публикуют люди."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Подписаться"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Удалить аккаунт"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Ваш аккаунт Kyron будет удалён навсегда. Это действие нельзя отменить."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Ваш профиль, публикации, ответы, отметки «Нравится» и репосты"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Ваши сообщения, включая отправленные другим людям, а также фото и голосовые сообщения в них"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Ваши подписчики, люди, на которых вы подписаны, и ваши настройки"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Созданные вами сообщества перейдут к модератору или участнику, который состоит в них дольше всех. Сообщество, в котором больше никого нет, будет закрыто."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Удалить ваш аккаунт?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Вы не сможете ничего из этого вернуть."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Ваш аккаунт удалён."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Удалённый аккаунт"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Этот аккаунт удалён, поэтому сюда больше нельзя отправлять сообщения."),
     };
 
 final messageLookup = MessageLookup();

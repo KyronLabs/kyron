@@ -1489,6 +1489,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Picha na klipu ambazo watu huchapisha zitaonekana hapa."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Fuata"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Futa akaunti"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Hii itafuta akaunti yako ya Kyron kabisa. Haiwezi kutenduliwa."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Wasifu wako, machapisho, majibu, vipendwa na machapisho uliyoshiriki tena"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Ujumbe wako, pamoja na ule uliowatumia wengine, na picha na ujumbe wa sauti ndani yake"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Wafuasi wako, watu unaowafuata na mipangilio yako"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Jumuiya ulizoanzisha zitakabidhiwa kwa msimamizi au mwanachama aliyedumu zaidi. Jumuiya isiyo na mtu mwingine itafungwa."),
+      "ui_delete_account_confirm_title": MessageLookupByLibrary.simpleMessage(
+          "Ungependa kufuta akaunti yako?"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("Hutaweza kurejesha chochote."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Akaunti yako imefutwa."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Akaunti iliyofutwa"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Akaunti hii imefutwa, kwa hivyo ujumbe hauwezi kutumwa hapa tena."),
     };
 
 final messageLookup = MessageLookup();

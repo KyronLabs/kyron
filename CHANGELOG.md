@@ -12,6 +12,26 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Added
+
+- **Delete your account.** Settings → Delete account says what goes -- your
+  profile, posts, replies, likes and reposts, your messages including the ones
+  you sent, your followers and settings, and everything you uploaded -- asks
+  once more, and deletes it, sign-in included (`DELETE /account`). Communities
+  you started go to their longest-serving moderator or member rather than being
+  left with nobody to run them, and one with nobody else in it is closed; bans
+  you made as a moderator stay in force; other people's posts are recounted so
+  their likes and replies stop counting yours. What is left under the account's
+  id is an empty row marked deleted, so a phone still signed in cannot
+  quietly be given a new account by its unexpired session. For a request made
+  without the app, `npm run account:delete -- <email>` does the same from the
+  server, and the terms-and-privacy site has a page saying how to ask. Google
+  Play requires both.
+- **"Deleted account" in Messages.** A conversation whose other side deleted
+  their account says so, in the list and the thread, and the message box gives
+  way to a line saying nothing more can be sent there -- the server refuses it
+  too, rather than storing a message nobody would ever read.
+
 ## [0.1.1] - 2026-10-14
 ### Fixed
 

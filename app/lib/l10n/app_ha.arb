@@ -752,5 +752,16 @@
   "ui_explore_communities": "Al'ummomin da za ka shiga",
   "ui_explore_grid_empty": "Babu abin kallo tukuna",
   "ui_explore_grid_empty_detail": "Hotuna da bidiyoyin da mutane suke wallafawa za su bayyana a nan.",
-  "ui_follow": "Bi"
+  "ui_follow": "Bi",
+  "ui_delete_account": "Goge asusu",
+  "ui_delete_account_intro": "Wannan zai goge asusunka na Kyron gaba ɗaya. Ba za a iya mayar da shi ba.",
+  "ui_delete_account_posts": "Bayanan martabarka, rubuce-rubucenka, amsoshinka, abubuwan da ka so da sake wallafawa",
+  "ui_delete_account_messages": "Saƙonninka, har da waɗanda ka aika wa wasu, da hotuna da saƙonnin murya da ke cikinsu",
+  "ui_delete_account_people": "Mabiyanka, mutanen da kake bi, da saitunanka",
+  "ui_delete_account_communities": "Al'ummomin da ka kafa za su koma ga mai sa ido ko memba mafi daɗewa a ciki. Wanda babu kowa a ciki za a rufe shi.",
+  "ui_delete_account_confirm_title": "Ka goge asusunka?",
+  "ui_delete_account_confirm_detail": "Ba za ka iya dawo da komai daga ciki ba.",
+  "ui_delete_account_done": "An goge asusunka.",
+  "ui_dm_deleted_account": "Asusun da aka goge",
+  "ui_dm_deleted_account_detail": "An goge wannan asusun, don haka ba za a iya aika saƙonni a nan ba kuma."
 }

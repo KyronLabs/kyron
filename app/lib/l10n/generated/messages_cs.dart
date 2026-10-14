@@ -1557,6 +1557,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Zde se zobrazí fotky a klipy, které lidé zveřejní."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Sledovat"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Smazat účet"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Tímto trvale smažete svůj účet Kyron. Tento krok nelze vrátit."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Váš profil, příspěvky, odpovědi, lajky a sdílení"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Vaše zprávy, včetně těch, které jste poslali ostatním, a fotky a hlasové zprávy v nich"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Vaši sledující, lidé, které sledujete, a vaše nastavení"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Komunity, které jste založili, přejdou na nejdéle působícího moderátora nebo člena. Komunita, ve které nikdo jiný není, se zavře."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Smazat váš účet?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Nic z toho už nebudete moct získat zpět."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Váš účet byl smazán."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Smazaný účet"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Tento účet byl smazán, takže sem už nelze posílat zprávy."),
     };
 
 final messageLookup = MessageLookup();

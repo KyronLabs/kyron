@@ -752,5 +752,16 @@
   "ui_explore_communities": "Qo'shilish mumkin bo'lgan hamjamiyatlar",
   "ui_explore_grid_empty": "Hozircha ko'radigan hech narsa yo'q",
   "ui_explore_grid_empty_detail": "Odamlar joylagan rasmlar va kliplar shu yerda chiqadi.",
-  "ui_follow": "Kuzatish"
+  "ui_follow": "Kuzatish",
+  "ui_delete_account": "Hisobni o'chirish",
+  "ui_delete_account_intro": "Bu Kyron hisobingizni butunlay o'chirib yuboradi. Buni ortga qaytarib bo'lmaydi.",
+  "ui_delete_account_posts": "Profilingiz, postlaringiz, javoblaringiz, layklaringiz va qayta joylashlaringiz",
+  "ui_delete_account_messages": "Xabarlaringiz, boshqalarga yuborganlaringiz ham, va ulardagi rasmlar hamda ovozli xabarlar",
+  "ui_delete_account_people": "Obunachilaringiz, siz kuzatayotgan odamlar va sozlamalaringiz",
+  "ui_delete_account_communities": "Siz ochgan hamjamiyatlar eng uzoq vaqtdan beri bor moderator yoki a'zoga o'tadi. Boshqa hech kim qolmagan hamjamiyat yopiladi.",
+  "ui_delete_account_confirm_title": "Hisobingiz o'chirilsinmi?",
+  "ui_delete_account_confirm_detail": "Undan hech narsani qaytarib ololmaysiz.",
+  "ui_delete_account_done": "Hisobingiz o'chirildi.",
+  "ui_dm_deleted_account": "O'chirilgan hisob",
+  "ui_dm_deleted_account_detail": "Bu hisob o'chirilgan, shuning uchun bu yerga endi xabar yuborib bo'lmaydi."
 }

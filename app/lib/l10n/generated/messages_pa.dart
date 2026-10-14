@@ -1483,6 +1483,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "ਲੋਕ ਜੋ ਫ਼ੋਟੋਆਂ ਅਤੇ ਕਲਿੱਪਾਂ ਪੋਸਟ ਕਰਦੇ ਹਨ, ਉਹ ਇੱਥੇ ਦਿਖਾਈ ਦੇਣਗੀਆਂ।"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("ਫ਼ਾਲੋ ਕਰੋ"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("ਖਾਤਾ ਮਿਟਾਓ"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "ਇਸ ਨਾਲ ਤੁਹਾਡਾ Kyron ਖਾਤਾ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟ ਜਾਵੇਗਾ। ਇਸਨੂੰ ਵਾਪਸ ਨਹੀਂ ਲਿਆਂਦਾ ਜਾ ਸਕਦਾ।"),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੀ ਪ੍ਰੋਫਾਈਲ, ਪੋਸਟਾਂ, ਜਵਾਬ, ਲਾਈਕ ਅਤੇ ਰੀਪੋਸਟ"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੇ ਸੁਨੇਹੇ, ਦੂਜਿਆਂ ਨੂੰ ਭੇਜੇ ਸਮੇਤ, ਅਤੇ ਉਹਨਾਂ ਵਿਚਲੀਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੌਇਸ ਨੋਟ"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੇ ਫ਼ਾਲੋਅਰ, ਜਿਨ੍ਹਾਂ ਨੂੰ ਤੁਸੀਂ ਫ਼ਾਲੋ ਕਰਦੇ ਹੋ ਉਹ ਲੋਕ, ਅਤੇ ਤੁਹਾਡੀਆਂ ਸੈਟਿੰਗਾਂ"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੇ ਸ਼ੁਰੂ ਕੀਤੇ ਭਾਈਚਾਰੇ ਸਭ ਤੋਂ ਪੁਰਾਣੇ ਸੰਚਾਲਕ ਜਾਂ ਮੈਂਬਰ ਨੂੰ ਸੌਂਪ ਦਿੱਤੇ ਜਾਣਗੇ। ਜਿਸ ਵਿੱਚ ਹੋਰ ਕੋਈ ਨਹੀਂ, ਉਹ ਬੰਦ ਹੋ ਜਾਵੇਗਾ।"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("ਕੀ ਆਪਣਾ ਖਾਤਾ ਮਿਟਾਉਣਾ ਹੈ?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਸੀਂ ਇਸ ਵਿੱਚੋਂ ਕੁਝ ਵੀ ਵਾਪਸ ਨਹੀਂ ਲੈ ਸਕੋਗੇ।"),
+      "ui_delete_account_done": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡਾ ਖਾਤਾ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("ਮਿਟਾਇਆ ਗਿਆ ਖਾਤਾ"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "ਇਹ ਖਾਤਾ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ, ਇਸ ਲਈ ਇੱਥੇ ਹੁਣ ਸੁਨੇਹੇ ਨਹੀਂ ਭੇਜੇ ਜਾ ਸਕਦੇ।"),
     };
 
 final messageLookup = MessageLookup();

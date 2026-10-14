@@ -752,5 +752,16 @@
   "ui_explore_communities": "شامل ہونے کے لیے کمیونٹیز",
   "ui_explore_grid_empty": "ابھی دیکھنے کو کچھ نہیں",
   "ui_explore_grid_empty_detail": "لوگ جو تصاویر اور کلپس پوسٹ کرتے ہیں وہ یہاں نظر آئیں گی۔",
-  "ui_follow": "فالو کریں"
+  "ui_follow": "فالو کریں",
+  "ui_delete_account": "اکاؤنٹ حذف کریں",
+  "ui_delete_account_intro": "اس سے آپ کا Kyron اکاؤنٹ مستقل طور پر حذف ہو جائے گا۔ اسے واپس نہیں لایا جا سکتا۔",
+  "ui_delete_account_posts": "آپ کی پروفائل، پوسٹس، جوابات، لائکس اور ری پوسٹس",
+  "ui_delete_account_messages": "آپ کے پیغامات، دوسروں کو بھیجے گئے پیغامات سمیت، اور ان میں موجود تصاویر اور وائس نوٹس",
+  "ui_delete_account_people": "آپ کے فالوورز، وہ لوگ جنہیں آپ فالو کرتے ہیں، اور آپ کی ترتیبات",
+  "ui_delete_account_communities": "آپ کی شروع کی گئی کمیونٹیز سب سے پرانے موڈریٹر یا رکن کو سونپ دی جائیں گی۔ جس میں کوئی اور نہ ہو وہ بند کر دی جائے گی۔",
+  "ui_delete_account_confirm_title": "اپنا اکاؤنٹ حذف کریں؟",
+  "ui_delete_account_confirm_detail": "آپ اس میں سے کچھ بھی واپس حاصل نہیں کر سکیں گے۔",
+  "ui_delete_account_done": "آپ کا اکاؤنٹ حذف کر دیا گیا ہے۔",
+  "ui_dm_deleted_account": "حذف شدہ اکاؤنٹ",
+  "ui_dm_deleted_account_detail": "یہ اکاؤنٹ حذف ہو چکا ہے، اس لیے یہاں مزید پیغامات نہیں بھیجے جا سکتے۔"
 }

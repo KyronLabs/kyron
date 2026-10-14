@@ -1493,6 +1493,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Šeit parādīsies cilvēku publicētie fotoattēli un klipi."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Sekot"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Dzēst kontu"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Tādējādi jūsu Kyron konts tiks neatgriezeniski dzēsts. To nevar atsaukt."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Jūsu profils, ieraksti, atbildes, patīk atzīmes un atkārtotās publikācijas"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Jūsu ziņas, arī tās, ko nosūtījāt citiem, un tajās esošie foto un balss ziņas"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Jūsu sekotāji, cilvēki, kuriem sekojat, un jūsu iestatījumi"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Jūsu izveidotās kopienas tiek nodotas moderatoram vai dalībniekam, kurš tajā ir visilgāk. Kopiena, kurā nav neviena cita, tiek slēgta."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Vai dzēst jūsu kontu?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Neko no tā vairs nevarēsiet atgūt."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Jūsu konts ir dzēsts."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Dzēsts konts"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Šis konts ir dzēsts, tāpēc šeit vairs nevar sūtīt ziņas."),
     };
 
 final messageLookup = MessageLookup();

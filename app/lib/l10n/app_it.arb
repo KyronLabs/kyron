@@ -752,5 +752,16 @@
   "ui_explore_communities": "Community a cui unirti",
   "ui_explore_grid_empty": "Ancora niente da vedere",
   "ui_explore_grid_empty_detail": "Le foto e le clip pubblicate dalle persone appariranno qui.",
-  "ui_follow": "Segui"
+  "ui_follow": "Segui",
+  "ui_delete_account": "Elimina account",
+  "ui_delete_account_intro": "In questo modo il tuo account Kyron viene eliminato per sempre. L'operazione non può essere annullata.",
+  "ui_delete_account_posts": "Il tuo profilo, i post, le risposte, i Mi piace e le ricondivisioni",
+  "ui_delete_account_messages": "I tuoi messaggi, compresi quelli che hai inviato ad altri, con le foto e i messaggi vocali che contengono",
+  "ui_delete_account_people": "I tuoi follower, le persone che segui e le tue impostazioni",
+  "ui_delete_account_communities": "Le community che hai creato passano al moderatore o al membro presente da più tempo. Una community senza nessun altro viene chiusa.",
+  "ui_delete_account_confirm_title": "Eliminare il tuo account?",
+  "ui_delete_account_confirm_detail": "Non potrai recuperarne nulla.",
+  "ui_delete_account_done": "Il tuo account è stato eliminato.",
+  "ui_dm_deleted_account": "Account eliminato",
+  "ui_dm_deleted_account_detail": "Questo account è stato eliminato, quindi non è più possibile inviare messaggi qui."
 }

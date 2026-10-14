@@ -752,5 +752,16 @@
   "ui_explore_communities": "Społeczności, do których możesz dołączyć",
   "ui_explore_grid_empty": "Na razie nie ma tu nic do oglądania",
   "ui_explore_grid_empty_detail": "Tutaj pojawią się zdjęcia i klipy publikowane przez innych.",
-  "ui_follow": "Obserwuj"
+  "ui_follow": "Obserwuj",
+  "ui_delete_account": "Usuń konto",
+  "ui_delete_account_intro": "Spowoduje to trwałe usunięcie Twojego konta Kyron. Tej operacji nie można cofnąć.",
+  "ui_delete_account_posts": "Twój profil, posty, odpowiedzi, polubienia i udostępnienia",
+  "ui_delete_account_messages": "Twoje wiadomości, także te wysłane innym, oraz zdjęcia i wiadomości głosowe w nich",
+  "ui_delete_account_people": "Twoi obserwujący, osoby, które obserwujesz, i Twoje ustawienia",
+  "ui_delete_account_communities": "Założone przez Ciebie społeczności przejmie najdłużej działający moderator lub członek. Społeczność bez innych osób zostanie zamknięta.",
+  "ui_delete_account_confirm_title": "Usunąć Twoje konto?",
+  "ui_delete_account_confirm_detail": "Nie będzie można niczego odzyskać.",
+  "ui_delete_account_done": "Twoje konto zostało usunięte.",
+  "ui_dm_deleted_account": "Usunięte konto",
+  "ui_dm_deleted_account_detail": "To konto zostało usunięte, więc nie można już tu wysyłać wiadomości."
 }

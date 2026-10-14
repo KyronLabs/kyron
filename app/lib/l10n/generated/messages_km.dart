@@ -1486,6 +1486,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "រូបថត និងឃ្លីបដែលមនុស្សបង្ហោះនឹងបង្ហាញនៅទីនេះ។"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("តាមដាន"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("លុបគណនី"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "វានឹងលុបគណនី Kyron របស់អ្នកជាអចិន្ត្រៃយ៍។ មិនអាចត្រឡប់វិញបានទេ។"),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "ប្រវត្តិរូប ការបង្ហោះ ការឆ្លើយតប ការចូលចិត្ត និងការបង្ហោះឡើងវិញរបស់អ្នក"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "សាររបស់អ្នក រួមទាំងសារដែលអ្នកបានផ្ញើទៅអ្នកដទៃ និងរូបថត និងសារជាសំឡេងនៅក្នុងនោះ"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "អ្នកតាមដានរបស់អ្នក មនុស្សដែលអ្នកតាមដាន និងការកំណត់របស់អ្នក"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "សហគមន៍ដែលអ្នកបានបង្កើតនឹងប្រគល់ទៅអ្នកសម្របសម្រួល ឬសមាជិកដែលនៅយូរជាងគេ។ សហគមន៍ដែលគ្មាននរណាផ្សេងនឹងត្រូវបិទ។"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("លុបគណនីរបស់អ្នកឬ?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "អ្នកនឹងមិនអាចយកអ្វីមកវិញបានទេ។"),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("គណនីរបស់អ្នកត្រូវបានលុបហើយ។"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("គណនីដែលបានលុប"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "គណនីនេះត្រូវបានលុបហើយ ដូច្នេះមិនអាចផ្ញើសារមកទីនេះទៀតបានទេ។"),
     };
 
 final messageLookup = MessageLookup();

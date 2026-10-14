@@ -752,5 +752,16 @@
   "ui_explore_communities": "ሊቀላቀሏቸው የሚችሉ ማህበረሰቦች",
   "ui_explore_grid_empty": "እስካሁን የሚታይ ነገር የለም",
   "ui_explore_grid_empty_detail": "ሰዎች የሚለጥፏቸው ፎቶዎችና ቪዲዮዎች እዚህ ይታያሉ።",
-  "ui_follow": "ተከተል"
+  "ui_follow": "ተከተል",
+  "ui_delete_account": "መለያ ሰርዝ",
+  "ui_delete_account_intro": "ይህ የKyron መለያዎን እስከመጨረሻው ይሰርዘዋል። መቀልበስ አይቻልም።",
+  "ui_delete_account_posts": "መገለጫዎ፣ ልጥፎችዎ፣ ምላሾችዎ፣ መውደዶችዎ እና ድጋሚ ልጥፎችዎ",
+  "ui_delete_account_messages": "መልእክቶችዎ፣ ለሌሎች የላኳቸውንም ጨምሮ፣ እና በውስጣቸው ያሉ ፎቶዎችና የድምፅ መልእክቶች",
+  "ui_delete_account_people": "ተከታዮችዎ፣ የሚከተሏቸው ሰዎች እና ቅንብሮችዎ",
+  "ui_delete_account_communities": "የጀመሯቸው ማህበረሰቦች ረጅም ጊዜ ላገለገለው አወያይ ወይም አባል ይተላለፋሉ። ሌላ ማንም የሌለበት ማህበረሰብ ይዘጋል።",
+  "ui_delete_account_confirm_title": "መለያዎን ይሰርዙ?",
+  "ui_delete_account_confirm_detail": "ምንም ነገር መልሰው ማግኘት አይችሉም።",
+  "ui_delete_account_done": "መለያዎ ተሰርዟል።",
+  "ui_dm_deleted_account": "የተሰረዘ መለያ",
+  "ui_dm_deleted_account_detail": "ይህ መለያ ተሰርዟል፣ ስለዚህ ከአሁን በኋላ እዚህ መልእክት መላክ አይቻልም።"
 }

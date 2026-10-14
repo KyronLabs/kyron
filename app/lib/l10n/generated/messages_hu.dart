@@ -1490,6 +1490,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Az emberek által közzétett fotók és klipek itt jelennek meg."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Követés"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Fiók törlése"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Ezzel véglegesen törlöd a Kyron-fiókodat. Nem vonható vissza."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "A profilod, bejegyzéseid, válaszaid, kedveléseid és megosztásaid"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Az üzeneteid, a másoknak küldötteket is beleértve, valamint a bennük lévő fotók és hangüzenetek"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "A követőid, az általad követett emberek és a beállításaid"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Az általad alapított közösségek a legrégebbi moderátorhoz vagy taghoz kerülnek. Az a közösség, amelyben senki más nincs, megszűnik."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Törlöd a fiókodat?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Semmit sem tudsz majd visszaszerezni belőle."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("A fiókodat töröltük."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Törölt fiók"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Ezt a fiókot törölték, ezért ide már nem lehet üzenetet küldeni."),
     };
 
 final messageLookup = MessageLookup();

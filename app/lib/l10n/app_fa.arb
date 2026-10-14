@@ -752,5 +752,16 @@
   "ui_explore_communities": "انجمن‌هایی برای پیوستن",
   "ui_explore_grid_empty": "هنوز چیزی برای دیدن نیست",
   "ui_explore_grid_empty_detail": "عکس‌ها و کلیپ‌هایی که دیگران منتشر می‌کنند اینجا نشان داده می‌شوند.",
-  "ui_follow": "دنبال کردن"
+  "ui_follow": "دنبال کردن",
+  "ui_delete_account": "حذف حساب",
+  "ui_delete_account_intro": "با این کار حساب Kyron شما برای همیشه حذف می‌شود. این کار برگشت‌پذیر نیست.",
+  "ui_delete_account_posts": "نمایه، پست‌ها، پاسخ‌ها، پسندها و بازنشرهای شما",
+  "ui_delete_account_messages": "پیام‌های شما، از جمله آن‌هایی که برای دیگران فرستاده‌اید، و عکس‌ها و پیام‌های صوتی داخل آن‌ها",
+  "ui_delete_account_people": "دنبال‌کنندگان شما، افرادی که دنبال می‌کنید و تنظیمات شما",
+  "ui_delete_account_communities": "انجمن‌هایی که ساخته‌اید به قدیمی‌ترین ناظر یا عضو آن‌ها سپرده می‌شوند. انجمنی که عضو دیگری ندارد بسته می‌شود.",
+  "ui_delete_account_confirm_title": "حساب شما حذف شود؟",
+  "ui_delete_account_confirm_detail": "دیگر نمی‌توانید هیچ‌کدام را برگردانید.",
+  "ui_delete_account_done": "حساب شما حذف شد.",
+  "ui_dm_deleted_account": "حساب حذف‌شده",
+  "ui_dm_deleted_account_detail": "این حساب حذف شده است، بنابراین دیگر نمی‌توان اینجا پیام فرستاد."
 }

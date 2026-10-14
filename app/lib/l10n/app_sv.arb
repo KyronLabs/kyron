@@ -752,5 +752,16 @@
   "ui_explore_communities": "Gemenskaper att gå med i",
   "ui_explore_grid_empty": "Inget att titta på än",
   "ui_explore_grid_empty_detail": "Foton och klipp som folk lägger upp visas här.",
-  "ui_follow": "Följ"
+  "ui_follow": "Följ",
+  "ui_delete_account": "Radera konto",
+  "ui_delete_account_intro": "Det här raderar ditt Kyron-konto permanent. Det går inte att ångra.",
+  "ui_delete_account_posts": "Din profil, dina inlägg, svar, gillamarkeringar och delningar",
+  "ui_delete_account_messages": "Dina meddelanden, även de du har skickat till andra, och bilderna och röstmeddelandena i dem",
+  "ui_delete_account_people": "Dina följare, personerna du följer och dina inställningar",
+  "ui_delete_account_communities": "Gemenskaper du har startat går över till den moderator eller medlem som varit med längst. En gemenskap utan andra medlemmar stängs.",
+  "ui_delete_account_confirm_title": "Vill du radera ditt konto?",
+  "ui_delete_account_confirm_detail": "Du kan inte få tillbaka något av det.",
+  "ui_delete_account_done": "Ditt konto har raderats.",
+  "ui_dm_deleted_account": "Raderat konto",
+  "ui_dm_deleted_account_detail": "Det här kontot har raderats, så det går inte längre att skicka meddelanden hit."
 }

@@ -752,5 +752,16 @@
   "ui_explore_communities": "Közösségek, amelyekhez csatlakozhatsz",
   "ui_explore_grid_empty": "Még nincs mit nézni",
   "ui_explore_grid_empty_detail": "Az emberek által közzétett fotók és klipek itt jelennek meg.",
-  "ui_follow": "Követés"
+  "ui_follow": "Követés",
+  "ui_delete_account": "Fiók törlése",
+  "ui_delete_account_intro": "Ezzel véglegesen törlöd a Kyron-fiókodat. Nem vonható vissza.",
+  "ui_delete_account_posts": "A profilod, bejegyzéseid, válaszaid, kedveléseid és megosztásaid",
+  "ui_delete_account_messages": "Az üzeneteid, a másoknak küldötteket is beleértve, valamint a bennük lévő fotók és hangüzenetek",
+  "ui_delete_account_people": "A követőid, az általad követett emberek és a beállításaid",
+  "ui_delete_account_communities": "Az általad alapított közösségek a legrégebbi moderátorhoz vagy taghoz kerülnek. Az a közösség, amelyben senki más nincs, megszűnik.",
+  "ui_delete_account_confirm_title": "Törlöd a fiókodat?",
+  "ui_delete_account_confirm_detail": "Semmit sem tudsz majd visszaszerezni belőle.",
+  "ui_delete_account_done": "A fiókodat töröltük.",
+  "ui_dm_deleted_account": "Törölt fiók",
+  "ui_dm_deleted_account_detail": "Ezt a fiókot törölték, ezért ide már nem lehet üzenetet küldeni."
 }

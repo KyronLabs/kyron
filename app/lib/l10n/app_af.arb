@@ -752,5 +752,16 @@
   "ui_explore_communities": "Gemeenskappe om by aan te sluit",
   "ui_explore_grid_empty": "Nog niks om na te kyk nie",
   "ui_explore_grid_empty_detail": "Foto's en grepe wat mense plaas, sal hier verskyn.",
-  "ui_follow": "Volg"
+  "ui_follow": "Volg",
+  "ui_delete_account": "Skrap rekening",
+  "ui_delete_account_intro": "Dit skrap jou Kyron-rekening permanent. Dit kan nie ongedaan gemaak word nie.",
+  "ui_delete_account_posts": "Jou profiel, plasings, antwoorde, laaiks en herplasings",
+  "ui_delete_account_messages": "Jou boodskappe, insluitend dié wat jy aan ander mense gestuur het, en die foto's en stemnotas daarin",
+  "ui_delete_account_people": "Jou volgers, die mense wat jy volg, en jou instellings",
+  "ui_delete_account_communities": "Gemeenskappe wat jy begin het, gaan na hul langsdienende moderator of lid. Een met niemand anders daarin word gesluit.",
+  "ui_delete_account_confirm_title": "Skrap jou rekening?",
+  "ui_delete_account_confirm_detail": "Jy sal niks daarvan kan terugkry nie.",
+  "ui_delete_account_done": "Jou rekening is geskrap.",
+  "ui_dm_deleted_account": "Geskrapte rekening",
+  "ui_dm_deleted_account_detail": "Hierdie rekening is geskrap, so boodskappe kan nie meer hierheen gestuur word nie."
 }

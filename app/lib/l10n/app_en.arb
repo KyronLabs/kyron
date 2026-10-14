@@ -752,5 +752,16 @@
   "ui_explore_communities": "Communities to join",
   "ui_explore_grid_empty": "Nothing to look at yet",
   "ui_explore_grid_empty_detail": "Photos and clips people post will show up here.",
-  "ui_follow": "Follow"
+  "ui_follow": "Follow",
+  "ui_delete_account": "Delete account",
+  "ui_delete_account_intro": "This permanently deletes your Kyron account. It can't be undone.",
+  "ui_delete_account_posts": "Your profile, posts, replies, likes and reposts",
+  "ui_delete_account_messages": "Your messages, including the ones you sent to other people, and the photos and voice notes in them",
+  "ui_delete_account_people": "Your followers, the people you follow, and your settings",
+  "ui_delete_account_communities": "Communities you started go to their longest-serving moderator or member. One with nobody else in it is closed.",
+  "ui_delete_account_confirm_title": "Delete your account?",
+  "ui_delete_account_confirm_detail": "You won't be able to get any of it back.",
+  "ui_delete_account_done": "Your account has been deleted.",
+  "ui_dm_deleted_account": "Deleted account",
+  "ui_dm_deleted_account_detail": "This account has been deleted, so messages can no longer be sent here."
 }

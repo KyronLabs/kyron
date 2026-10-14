@@ -114,6 +114,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Widget _settingsRow({
+    Key? key,
     required IconData icon,
     required String label,
     String? subtitle,
@@ -122,6 +123,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     String? helpText,
   }) {
     return GestureDetector(
+      key: key,
       onTap: onTap,
       onLongPress: helpText != null ? () => _showTooltip(helpText) : null,
       // No horizontal drag handler here. There used to be one, announcing
@@ -607,6 +609,22 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 // sign-out over the top of the first.
                 onTap: _loggingOut ? null : _showLogoutConfirmation,
               ),
+            ),
+            // Required of any app that lets people make an account, and only
+            // findable if it is where people look: here, beside signing out.
+            _settingsRow(
+              key: const ValueKey('settings-delete-account'),
+              icon: Iconsax.trash_copy,
+              label: AppLocalizations.of(context)
+                  .ui('ui_delete_account', 'Delete account'),
+              trailing: const Icon(
+                Iconsax.arrow_right_3_copy,
+                size: 20,
+                color: Colors.red,
+              ),
+              onTap: _loggingOut
+                  ? null
+                  : () => Navigator.pushNamed(context, Routes.deleteAccount),
             ),
             const SizedBox(height: 40),
           ],

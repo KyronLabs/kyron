@@ -1490,6 +1490,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Odamlar joylagan rasmlar va kliplar shu yerda chiqadi."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Kuzatish"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Hisobni o'chirish"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Bu Kyron hisobingizni butunlay o'chirib yuboradi. Buni ortga qaytarib bo'lmaydi."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Profilingiz, postlaringiz, javoblaringiz, layklaringiz va qayta joylashlaringiz"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Xabarlaringiz, boshqalarga yuborganlaringiz ham, va ulardagi rasmlar hamda ovozli xabarlar"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Obunachilaringiz, siz kuzatayotgan odamlar va sozlamalaringiz"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Siz ochgan hamjamiyatlar eng uzoq vaqtdan beri bor moderator yoki a'zoga o'tadi. Boshqa hech kim qolmagan hamjamiyat yopiladi."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Hisobingiz o'chirilsinmi?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Undan hech narsani qaytarib ololmaysiz."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Hisobingiz o'chirildi."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("O'chirilgan hisob"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Bu hisob o'chirilgan, shuning uchun bu yerga endi xabar yuborib bo'lmaydi."),
     };
 
 final messageLookup = MessageLookup();

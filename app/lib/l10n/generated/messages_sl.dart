@@ -1495,6 +1495,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Tukaj se bodo prikazale fotografije in posnetki, ki jih objavijo ljudje."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Sledi"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Izbriši račun"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "S tem trajno izbrišete svoj račun Kyron. Tega ni mogoče razveljaviti."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Vaš profil, objave, odgovori, všečki in ponovne objave"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Vaša sporočila, vključno s tistimi, ki ste jih poslali drugim, ter fotografije in glasovna sporočila v njih"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Vaši sledilci, ljudje, ki jim sledite, in vaše nastavitve"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Skupnosti, ki ste jih ustanovili, preidejo na moderatorja ali člana z najdaljšim stažem. Skupnost, v kateri ni nikogar drugega, se zapre."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Želite izbrisati svoj račun?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Ničesar od tega ne boste mogli dobiti nazaj."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Vaš račun je izbrisan."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Izbrisan račun"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Ta račun je izbrisan, zato sem ni več mogoče pošiljati sporočil."),
     };
 
 final messageLookup = MessageLookup();

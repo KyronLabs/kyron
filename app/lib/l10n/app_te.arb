@@ -752,5 +752,16 @@
   "ui_explore_communities": "చేరదగిన కమ్యూనిటీలు",
   "ui_explore_grid_empty": "ఇంకా చూడటానికి ఏమీ లేదు",
   "ui_explore_grid_empty_detail": "ప్రజలు పోస్ట్ చేసే ఫోటోలు, క్లిప్‌లు ఇక్కడ కనిపిస్తాయి.",
-  "ui_follow": "ఫాలో చేయి"
+  "ui_follow": "ఫాలో చేయి",
+  "ui_delete_account": "ఖాతాను తొలగించు",
+  "ui_delete_account_intro": "ఇది మీ Kyron ఖాతాను శాశ్వతంగా తొలగిస్తుంది. దీన్ని రద్దు చేయలేరు.",
+  "ui_delete_account_posts": "మీ ప్రొఫైల్, పోస్ట్‌లు, ప్రత్యుత్తరాలు, లైక్‌లు, రీపోస్ట్‌లు",
+  "ui_delete_account_messages": "మీ సందేశాలు, ఇతరులకు పంపినవి సహా, వాటిలోని ఫోటోలు, వాయిస్ నోట్‌లు",
+  "ui_delete_account_people": "మీ ఫాలోవర్లు, మీరు ఫాలో అయ్యే వ్యక్తులు, మీ సెట్టింగ్‌లు",
+  "ui_delete_account_communities": "మీరు ప్రారంభించిన కమ్యూనిటీలు ఎక్కువ కాలంగా ఉన్న మోడరేటర్‌కు లేదా సభ్యునికి వెళ్తాయి. ఇంకెవరూ లేని కమ్యూనిటీని మూసివేస్తారు.",
+  "ui_delete_account_confirm_title": "మీ ఖాతాను తొలగించాలా?",
+  "ui_delete_account_confirm_detail": "దీనిలో దేన్నీ మీరు తిరిగి పొందలేరు.",
+  "ui_delete_account_done": "మీ ఖాతా తొలగించబడింది.",
+  "ui_dm_deleted_account": "తొలగించిన ఖాతా",
+  "ui_dm_deleted_account_detail": "ఈ ఖాతా తొలగించబడింది, కాబట్టి ఇకపై ఇక్కడ సందేశాలు పంపలేరు."
 }

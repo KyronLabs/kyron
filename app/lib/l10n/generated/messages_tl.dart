@@ -1491,6 +1491,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Dito lalabas ang mga larawan at clip na ipino-post ng mga tao."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("I-follow"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("I-delete ang account"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Permanente nitong ide-delete ang iyong Kyron account. Hindi na ito maibabalik."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Ang iyong profile, mga post, sagot, like at repost"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Ang iyong mga mensahe, kasama ang mga ipinadala mo sa iba, at ang mga larawan at voice note sa mga ito"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Ang iyong mga follower, ang mga taong fina-follow mo, at ang iyong mga setting"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Ang mga komunidad na sinimulan mo ay mapupunta sa pinakamatagal na moderator o miyembro. Isasara ang komunidad na wala nang ibang tao."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("I-delete ang iyong account?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Hindi mo na mababawi ang alinman dito."),
+      "ui_delete_account_done": MessageLookupByLibrary.simpleMessage(
+          "Na-delete na ang iyong account."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Na-delete na account"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Na-delete na ang account na ito, kaya hindi na makakapagpadala ng mensahe rito."),
     };
 
 final messageLookup = MessageLookup();

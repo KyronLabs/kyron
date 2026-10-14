@@ -752,5 +752,16 @@
   "ui_explore_communities": "Bendruomenės, prie kurių galite prisijungti",
   "ui_explore_grid_empty": "Kol kas nėra ką žiūrėti",
   "ui_explore_grid_empty_detail": "Čia bus rodomos žmonių paskelbtos nuotraukos ir klipai.",
-  "ui_follow": "Sekti"
+  "ui_follow": "Sekti",
+  "ui_delete_account": "Ištrinti paskyrą",
+  "ui_delete_account_intro": "Taip visam laikui ištrinsite savo Kyron paskyrą. To atšaukti negalima.",
+  "ui_delete_account_posts": "Jūsų profilis, įrašai, atsakymai, patiktukai ir pakartotiniai įrašai",
+  "ui_delete_account_messages": "Jūsų žinutės, įskaitant tas, kurias išsiuntėte kitiems, ir jose esančios nuotraukos bei balso žinutės",
+  "ui_delete_account_people": "Jūsų sekėjai, žmonės, kuriuos sekate, ir jūsų nustatymai",
+  "ui_delete_account_communities": "Jūsų įkurtos bendruomenės atitenka ilgiausiai joje esančiam moderatoriui ar nariui. Bendruomenė, kurioje nėra nieko kito, uždaroma.",
+  "ui_delete_account_confirm_title": "Ištrinti jūsų paskyrą?",
+  "ui_delete_account_confirm_detail": "Nieko iš to nebegalėsite susigrąžinti.",
+  "ui_delete_account_done": "Jūsų paskyra ištrinta.",
+  "ui_dm_deleted_account": "Ištrinta paskyra",
+  "ui_dm_deleted_account_detail": "Ši paskyra ištrinta, todėl čia nebegalima siųsti žinučių."
 }

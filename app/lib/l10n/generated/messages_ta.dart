@@ -1496,6 +1496,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "மக்கள் இடுகையிடும் படங்களும் கிளிப்புகளும் இங்கே தோன்றும்."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("பின்தொடர்"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("கணக்கை நீக்கு"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "இது உங்கள் Kyron கணக்கை நிரந்தரமாக நீக்கும். இதைச் செயல்தவிர்க்க முடியாது."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் சுயவிவரம், இடுகைகள், பதில்கள், விருப்பங்கள் மற்றும் மறுபதிவுகள்"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் செய்திகள், மற்றவர்களுக்கு அனுப்பியவை உட்பட, அவற்றில் உள்ள படங்கள் மற்றும் குரல் குறிப்புகள்"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "உங்களைப் பின்தொடர்பவர்கள், நீங்கள் பின்தொடர்பவர்கள் மற்றும் உங்கள் அமைப்புகள்"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் தொடங்கிய சமூகங்கள் நீண்ட காலமாக உள்ள மதிப்பீட்டாளர் அல்லது உறுப்பினரிடம் ஒப்படைக்கப்படும். வேறு யாரும் இல்லாத சமூகம் மூடப்படும்."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("உங்கள் கணக்கை நீக்கவா?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "இதில் எதையும் உங்களால் திரும்பப் பெற முடியாது."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("உங்கள் கணக்கு நீக்கப்பட்டது."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("நீக்கப்பட்ட கணக்கு"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "இந்தக் கணக்கு நீக்கப்பட்டதால், இனி இங்கே செய்திகளை அனுப்ப முடியாது."),
     };
 
 final messageLookup = MessageLookup();

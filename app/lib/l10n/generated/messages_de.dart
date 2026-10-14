@@ -1605,6 +1605,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Fotos und Clips, die andere posten, erscheinen hier."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Folgen"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Konto löschen"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Dadurch wird dein Kyron-Konto dauerhaft gelöscht. Das lässt sich nicht rückgängig machen."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Dein Profil, deine Beiträge, Antworten, Likes und Reposts"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Deine Nachrichten, auch die, die du an andere gesendet hast, samt Fotos und Sprachnachrichten darin"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Deine Follower, die Personen, denen du folgst, und deine Einstellungen"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Von dir gegründete Communities gehen an die Person über, die dort am längsten moderiert oder Mitglied ist. Eine Community ohne weitere Mitglieder wird geschlossen."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Dein Konto löschen?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Du kannst nichts davon wiederherstellen."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Dein Konto wurde gelöscht."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Gelöschtes Konto"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Dieses Konto wurde gelöscht. Hier können keine Nachrichten mehr gesendet werden."),
     };
 
 final messageLookup = MessageLookup();

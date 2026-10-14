@@ -538,6 +538,11 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
     // header shows before that.
     final people = state.people.isNotEmpty ? state.people : widget.args.people;
     final other = people.isEmpty ? null : people.first;
+    // Nobody else in it once it has loaded: the other side deleted their
+    // account. Their messages went with it; the reader's stay, and there is
+    // nobody to send anything new to.
+    final gone =
+        other == null && !state.loadingFirstPage && state.error == null;
 
     return Scaffold(
       appBar: KyronAppBar(
@@ -583,7 +588,11 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      other?.displayName ?? 'Conversation',
+                      other?.displayName ??
+                          (gone
+                              ? AppLocalizations.of(context).ui(
+                                  'ui_dm_deleted_account', 'Deleted account')
+                              : 'Conversation'),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -675,25 +684,28 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
                 ],
               ),
             ),
-            _Composer(
-              controller: _box,
-              focus: _focus,
-              canSend: _canSend,
-              onSend: _send,
-              media: _media,
-              onAttach: _attach,
-              onAttachments: _openAttachments,
-              onGif: _attachGif,
-              onVoice: _recordVoice,
-              replyingTo: _replyingTo,
-              replyingToAuthor: switch (_replyingTo) {
-                final answering? => _authorOf(answering, me, state.people),
-                _ => null,
-              },
-              onCancelReply: () => setState(() => _replyingTo = null),
-              link: _link == _droppedLink ? null : _link,
-              onDropLink: () => setState(() => _droppedLink = _link),
-            ),
+            if (gone)
+              const _GoneNotice()
+            else
+              _Composer(
+                controller: _box,
+                focus: _focus,
+                canSend: _canSend,
+                onSend: _send,
+                media: _media,
+                onAttach: _attach,
+                onAttachments: _openAttachments,
+                onGif: _attachGif,
+                onVoice: _recordVoice,
+                replyingTo: _replyingTo,
+                replyingToAuthor: switch (_replyingTo) {
+                  final answering? => _authorOf(answering, me, state.people),
+                  _ => null,
+                },
+                onCancelReply: () => setState(() => _replyingTo = null),
+                link: _link == _droppedLink ? null : _link,
+                onDropLink: () => setState(() => _droppedLink = _link),
+              ),
           ],
         ),
       ),
@@ -1534,6 +1546,33 @@ class _NotSent extends StatelessWidget {
 /// high with a heart beside it, inside a bar of its own -- most of the bottom
 /// of the screen for a box that usually holds a few words -- and it picked up
 /// the theme's focus outline, a blue ring that belongs to forms.
+/// Where the composer was, in a conversation whose other side deleted their
+/// account.
+class _GoneNotice extends StatelessWidget {
+  const _GoneNotice();
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return SafeArea(
+      top: false,
+      child: Padding(
+        key: const ValueKey('thread-gone'),
+        padding: const EdgeInsets.all(SpacingTokens.space16),
+        child: Text(
+          AppLocalizations.of(context).ui(
+            'ui_dm_deleted_account_detail',
+            'This account has been deleted, so messages can no longer be '
+                'sent here.',
+          ),
+          textAlign: TextAlign.center,
+          style: TextStyle(color: scheme.onSurface.withValues(alpha: .6)),
+        ),
+      ),
+    );
+  }
+}
+
 class _Composer extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focus;

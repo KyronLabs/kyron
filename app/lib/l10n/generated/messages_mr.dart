@@ -1482,6 +1482,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "लोक पोस्ट करत असलेले फोटो आणि क्लिप्स इथे दिसतील."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("फॉलो करा"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("खाते हटवा"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "यामुळे तुमचे Kyron खाते कायमचे हटवले जाईल. हे पूर्ववत करता येणार नाही."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "तुमचे प्रोफाइल, पोस्ट, उत्तरे, लाइक आणि रीपोस्ट"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "तुमचे संदेश, इतरांना पाठवलेल्या संदेशांसह, आणि त्यांतील फोटो व व्हॉइस नोट्स"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "तुमचे फॉलोअर्स, तुम्ही फॉलो करता ते लोक आणि तुमची सेटिंग्ज"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही सुरू केलेले समुदाय सर्वात जुन्या मॉडरेटर किंवा सदस्याकडे जातील. ज्यात इतर कोणी नाही तो बंद होईल."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("तुमचे खाते हटवायचे?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "यातील काहीही तुम्हाला परत मिळणार नाही."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("तुमचे खाते हटवले आहे."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("हटवलेले खाते"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "हे खाते हटवले गेले आहे, त्यामुळे येथे आता संदेश पाठवता येणार नाहीत."),
     };
 
 final messageLookup = MessageLookup();

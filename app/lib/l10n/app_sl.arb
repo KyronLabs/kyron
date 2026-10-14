@@ -752,5 +752,16 @@
   "ui_explore_communities": "Skupnosti, ki se jim lahko pridružite",
   "ui_explore_grid_empty": "Za zdaj ni ničesar za ogled",
   "ui_explore_grid_empty_detail": "Tukaj se bodo prikazale fotografije in posnetki, ki jih objavijo ljudje.",
-  "ui_follow": "Sledi"
+  "ui_follow": "Sledi",
+  "ui_delete_account": "Izbriši račun",
+  "ui_delete_account_intro": "S tem trajno izbrišete svoj račun Kyron. Tega ni mogoče razveljaviti.",
+  "ui_delete_account_posts": "Vaš profil, objave, odgovori, všečki in ponovne objave",
+  "ui_delete_account_messages": "Vaša sporočila, vključno s tistimi, ki ste jih poslali drugim, ter fotografije in glasovna sporočila v njih",
+  "ui_delete_account_people": "Vaši sledilci, ljudje, ki jim sledite, in vaše nastavitve",
+  "ui_delete_account_communities": "Skupnosti, ki ste jih ustanovili, preidejo na moderatorja ali člana z najdaljšim stažem. Skupnost, v kateri ni nikogar drugega, se zapre.",
+  "ui_delete_account_confirm_title": "Želite izbrisati svoj račun?",
+  "ui_delete_account_confirm_detail": "Ničesar od tega ne boste mogli dobiti nazaj.",
+  "ui_delete_account_done": "Vaš račun je izbrisan.",
+  "ui_dm_deleted_account": "Izbrisan račun",
+  "ui_dm_deleted_account_detail": "Ta račun je izbrisan, zato sem ni več mogoče pošiljati sporočil."
 }

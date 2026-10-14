@@ -752,5 +752,16 @@
   "ui_explore_communities": "Komuniti untuk disertai",
   "ui_explore_grid_empty": "Belum ada apa-apa untuk dilihat",
   "ui_explore_grid_empty_detail": "Foto dan klip yang disiarkan orang akan dipaparkan di sini.",
-  "ui_follow": "Ikut"
+  "ui_follow": "Ikut",
+  "ui_delete_account": "Padam akaun",
+  "ui_delete_account_intro": "Ini akan memadamkan akaun Kyron anda secara kekal. Ia tidak boleh dibuat asal.",
+  "ui_delete_account_posts": "Profil, siaran, balasan, suka dan siaran semula anda",
+  "ui_delete_account_messages": "Mesej anda, termasuk yang anda hantar kepada orang lain, serta foto dan nota suara di dalamnya",
+  "ui_delete_account_people": "Pengikut anda, orang yang anda ikuti dan tetapan anda",
+  "ui_delete_account_communities": "Komuniti yang anda mulakan akan diserahkan kepada moderator atau ahli yang paling lama. Komuniti tanpa orang lain akan ditutup.",
+  "ui_delete_account_confirm_title": "Padam akaun anda?",
+  "ui_delete_account_confirm_detail": "Anda tidak akan dapat mendapatkan semula apa-apa daripadanya.",
+  "ui_delete_account_done": "Akaun anda telah dipadam.",
+  "ui_dm_deleted_account": "Akaun dipadam",
+  "ui_dm_deleted_account_detail": "Akaun ini telah dipadam, jadi mesej tidak lagi boleh dihantar di sini."
 }

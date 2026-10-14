@@ -1486,6 +1486,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "لوگ جو تصاویر اور کلپس پوسٹ کرتے ہیں وہ یہاں نظر آئیں گی۔"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("فالو کریں"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("اکاؤنٹ حذف کریں"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "اس سے آپ کا Kyron اکاؤنٹ مستقل طور پر حذف ہو جائے گا۔ اسے واپس نہیں لایا جا سکتا۔"),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "آپ کی پروفائل، پوسٹس، جوابات، لائکس اور ری پوسٹس"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "آپ کے پیغامات، دوسروں کو بھیجے گئے پیغامات سمیت، اور ان میں موجود تصاویر اور وائس نوٹس"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "آپ کے فالوورز، وہ لوگ جنہیں آپ فالو کرتے ہیں، اور آپ کی ترتیبات"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "آپ کی شروع کی گئی کمیونٹیز سب سے پرانے موڈریٹر یا رکن کو سونپ دی جائیں گی۔ جس میں کوئی اور نہ ہو وہ بند کر دی جائے گی۔"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("اپنا اکاؤنٹ حذف کریں؟"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "آپ اس میں سے کچھ بھی واپس حاصل نہیں کر سکیں گے۔"),
+      "ui_delete_account_done": MessageLookupByLibrary.simpleMessage(
+          "آپ کا اکاؤنٹ حذف کر دیا گیا ہے۔"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("حذف شدہ اکاؤنٹ"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "یہ اکاؤنٹ حذف ہو چکا ہے، اس لیے یہاں مزید پیغامات نہیں بھیجے جا سکتے۔"),
     };
 
 final messageLookup = MessageLookup();
