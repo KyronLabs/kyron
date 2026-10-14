@@ -332,9 +332,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Ръководства и отговори на често задавани въпроси",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("никнейм"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Хаштагите се появяват тук, когато хората започнат да ги използват.",
-      ),
       "helpAndSupport":
           MessageLookupByLibrary.simpleMessage("Помощ и поддръжка"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("Център за помощ"),
@@ -441,9 +438,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "Не може да зареди известията",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Не може да зареди предложенията",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "Не може да зареди членовете",
       ),
@@ -462,12 +456,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "Не може да зареди този отговор",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Не може да зареди темите",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Не може да зареди популярното",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "Не може да зареди популярните тагове",
@@ -591,9 +579,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "Все още няма препубликации",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Все още няма теми",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "Няма популярен таг, който да съвпада",
       ),
@@ -605,9 +590,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Все още няма никого тук",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Няма останали за предложение",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -923,9 +905,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "passwordTooShort": MessageLookupByLibrary.simpleMessage(
         "Паролата е твърде къса",
       ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Вече следвате всички, които Kyron би поставил тук.",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "Избери интересите си",
       ),
@@ -1091,9 +1070,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("Система"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Следвай собствените настройки за светъл/тъмен режим на телефона",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Темите се задават от Kyron и в момента няма налични. Върнете се по-късно.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Преведи"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1605,6 +1581,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Показвай, когато сте на линия"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Хората, на които пишете, виждат зелена точка, докато Kyron е отворен при вас. Когато това е изключено, няма да виждате и техните."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("Търсете хора и публикации"),
+      "ui_explore_communities": MessageLookupByLibrary.simpleMessage(
+          "Общности, към които да се присъедините"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Още няма какво да се види"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Снимките и клиповете, които хората публикуват, ще се появяват тук."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Следвай"),
     };
 
 final messageLookup = MessageLookup();

@@ -35,6 +35,9 @@ class PostListSource {
   /// Posts carrying a video. The top bar's Videos tab.
   static const videos = PostListSource._('videos');
 
+  /// Posts with a picture or a video, ranked. The grid on Explore.
+  static const explore = PostListSource._('explore');
+
   /// One account's posts, for a profile screen.
   factory PostListSource.author(String userId) =>
       PostListSource._('author', userId);
@@ -141,6 +144,8 @@ class PostListNotifier extends StateNotifier<FeedState> {
         return _repo.following(cursor: cursor);
       case 'videos':
         return _repo.videos(cursor: cursor);
+      case 'explore':
+        return _repo.explore(cursor: cursor);
       case 'author':
         return _repo.byAuthor(_source.userId!, cursor: cursor);
       case 'author:media':

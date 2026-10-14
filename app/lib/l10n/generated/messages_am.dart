@@ -301,9 +301,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "መመሪያዎች እና የተደጋጋሚ ጥያቄዎች መልሶች",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("የእርስዎ ስም"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "ሰዎች ሲጀምሩ ሃሽታጎች እዚያ ይታያሉ።",
-      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("ድጋፍ እና ዕጣ እገዛ"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("የእገዛ ማዕከል"),
       "home": MessageLookupByLibrary.simpleMessage("ቤት"),
@@ -386,9 +383,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "ማሳወቂያዎችን ማስገባት አልቻለም",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "ምክሮችን ማስገባት አልቻለም",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "አባላቱን ማስገባት አልቻለም",
       ),
@@ -407,12 +401,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "ይህን መልስ ማስገባት አልቻለም",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "ርዕሶችን ማስገባት አልቻለም",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "የሚወዷውን ነገር ማስገባት አልቻለም",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "የሚስማሙ መለያዎችን ማስገባት አልቻለም",
@@ -517,8 +505,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "እስካሁን የተዘረጋ ፖስቶች የሉም",
       ),
-      "literalnoTopicsYet":
-          MessageLookupByLibrary.simpleMessage("እስካሁን ርዕሶች የሉም"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "ማንኛውም የሚስማሙ መለያ አይደለም",
       ),
@@ -528,9 +514,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet":
           MessageLookupByLibrary.simpleMessage("እስካሁን አይነቡም"),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "ለማስመከቻ የቀረ ማንም የለም",
-      ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
         "በዚህ እውቅ የለም",
@@ -796,9 +779,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "password": MessageLookupByLibrary.simpleMessage("የይለፍ ቃል"),
       "passwordTooShort":
           MessageLookupByLibrary.simpleMessage("የይለፍ ቃል አጭር ነው"),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Kyron እየገናኘ እርስዎ እያንዳንዱን አስተካክላለሁ።",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "እንፈልጋለን የሚፈልጉትን ይምረጡ",
       ),
@@ -929,9 +909,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("System"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "የስልኩን ማብራሪያ ወይም ጨለማ ቅንብር ይከተላሉ",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "ርዕሶች በKyron ይቀመጣሉ፣ እና አሁን ምንም የለም። እባክዎ በቅርብ ይመለሱ።",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("ትርጉም"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1384,6 +1361,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("መስመር ላይ ሲሆኑ አሳይ"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "መልእክት የሚልኩላቸው ሰዎች Kyron ክፍት ሲሆን አረንጓዴ ነጥብ ያያሉ። ይህ ሲጠፋ የእነሱንም አያዩም።"),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("ሰዎችንና ልጥፎችን ይፈልጉ"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("ሊቀላቀሏቸው የሚችሉ ማህበረሰቦች"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("እስካሁን የሚታይ ነገር የለም"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "ሰዎች የሚለጥፏቸው ፎቶዎችና ቪዲዮዎች እዚህ ይታያሉ።"),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("ተከተል"),
     };
 
 final messageLookup = MessageLookup();

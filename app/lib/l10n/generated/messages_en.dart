@@ -394,22 +394,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Add a hashtag"),
       "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
       "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending",
-      ),
       "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
         "Nothing is trending yet",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Could not load topics",
-      ),
-      "literalnoTopicsYet":
-          MessageLookupByLibrary.simpleMessage("No topics yet"),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Could not load suggestions",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Nobody left to suggest",
       ),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
@@ -732,15 +718,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
         "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Topics are set up by Kyron, and there are none right now. Check back soon.",
-      ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "You already follow everyone Kyron would put here.",
       ),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "Find one on Discover, or start your own.",
@@ -1788,6 +1765,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Show when you're online"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "People you message see a green dot while you have Kyron open. When this is off, you won't see theirs either."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("Search people and posts"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("Communities to join"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Nothing to look at yet"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Photos and clips people post will show up here."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Follow"),
     };
 
 final messageLookup = MessageLookup();

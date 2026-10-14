@@ -347,6 +347,18 @@ section for that version, so what is written here is what people read.
 
 ### Changed
 
+- **Explore is one page, and shows what people post.** It was three tabs --
+  hashtags, a topic catalogue, people -- and all three were thin: the
+  catalogue had never been filled, almost every "trending" tag had been used
+  once, and the people were a tab away. Meanwhile two posts in three carry a
+  picture or a clip, and Explore showed none of them. Now: a search box;
+  people to follow and communities to join, as short sideways strips you can
+  act on without leaving; the tags actually in use lately, shown only once
+  there are three used at least twice; and below, an endless three-column
+  grid of photos and clips from across Kyron (new `GET /feed/explore`), with
+  people you don't follow yet first and the best of the last few days ahead
+  of the rest. Topics are gone from Explore until there are topics to show.
+
 - **Community cards are calmer.** About half the height: a smaller picture,
   the name, members and your role, the newest post with how many are new,
   and a Follow-sized button to write there. The "Last post" time at the foot

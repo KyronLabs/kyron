@@ -57,6 +57,11 @@ class FeedRepository {
   Future<FeedPage> videos({String? cursor, int limit = 20}) =>
       _page('/feed/videos', cursor, limit);
 
+  /// Posts with a picture or a video, ranked, people the reader does not
+  /// follow first: the grid on Explore.
+  Future<FeedPage> explore({String? cursor, int limit = 30}) =>
+      _page('/feed/explore', cursor, limit);
+
   /// Post search. At least one of [query] and [from] has to be given.
   Future<FeedPage> search({
     String? query,

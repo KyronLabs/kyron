@@ -312,21 +312,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literaladdAHashtag": MessageLookupByLibrary.simpleMessage("해시태그 추가"),
       "literaldraftSaved": MessageLookupByLibrary.simpleMessage("임시 저장됨"),
       "literalnoDrafts": MessageLookupByLibrary.simpleMessage("저장된 초안이 없습니다"),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "인기 항목을 불러올 수 없습니다",
-      ),
       "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
         "아직 인기 있는 항목이 없습니다",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "주제를 불러올 수 없습니다",
-      ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage("아직 주제가 없습니다"),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "추천을 불러올 수 없습니다",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "추천할 사람이 더 이상 없습니다",
       ),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
@@ -584,15 +571,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
         "Kyron의 문구는 아직 번역 중이라 대부분의 화면은 당분간 영어로 표시됩니다.",
-      ),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "사람들이 해시태그를 사용하기 시작하면 여기에 나타납니다.",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "주제는 Kyron에서 설정합니다. 현재는 항목이 없습니다. 나중에 다시 확인하세요.",
-      ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "여기에 Kyron이 넣을 사람들은 이미 모두 팔로우하고 있습니다.",
       ),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "둘러보기에서 찾거나 직접 커뮤니티를 시작하세요.",
@@ -1268,6 +1246,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("온라인 상태 표시"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "메시지를 주고받는 사람들은 내가 Kyron을 열어 두는 동안 초록 점을 봐요. 끄면 나도 상대방의 초록 점을 볼 수 없어요."),
+      "ui_explore_search": MessageLookupByLibrary.simpleMessage("사람 및 게시물 검색"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("가입할 만한 커뮤니티"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("아직 볼 것이 없어요"),
+      "ui_explore_grid_empty_detail":
+          MessageLookupByLibrary.simpleMessage("사람들이 올린 사진과 클립이 여기에 표시됩니다."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("팔로우"),
     };
 
 final messageLookup = MessageLookup();

@@ -326,9 +326,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Guides and answers to common questions",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -423,9 +420,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "Could not load notifications",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Could not load suggestions",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "Could not load the members",
       ),
@@ -444,12 +438,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "Could not load this reply",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Could not load topics",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "Could not load trending tags",
@@ -553,8 +541,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("No replies yet"),
       "literalnoRepostsYet":
           MessageLookupByLibrary.simpleMessage("No reposts yet"),
-      "literalnoTopicsYet":
-          MessageLookupByLibrary.simpleMessage("No topics yet"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "No trending tag matches that",
       ),
@@ -565,9 +551,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Nobody here yet",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Nobody left to suggest",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -864,9 +847,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "passwordTooShort": MessageLookupByLibrary.simpleMessage(
         "Password too short",
       ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "You already follow everyone Kyron would put here.",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "Pick your interests",
       ),
@@ -1015,9 +995,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("System"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Follow the phone’s own light or dark setting",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Topics are set up by Kyron, and there are none right now. Check back soon.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Translate"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1510,6 +1487,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("အွန်လိုင်းဖြစ်နေချိန် ပြရန်"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "သင် မက်ဆေ့ချ်ပို့သူများသည် သင် Kyron ဖွင့်ထားချိန်တွင် အစိမ်းရောင်အစက်ကို မြင်ရပါသည်။ ပိတ်ထားလျှင် သူတို့၏ အစက်ကိုလည်း သင် မမြင်ရပါ။"),
+      "ui_explore_search": MessageLookupByLibrary.simpleMessage(
+          "လူများနှင့် ပို့စ်များကို ရှာရန်"),
+      "ui_explore_communities": MessageLookupByLibrary.simpleMessage(
+          "ပါဝင်နိုင်သော အသိုင်းအဝိုင်းများ"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("ကြည့်စရာ မရှိသေးပါ"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "လူများ တင်သော ဓာတ်ပုံနှင့် ကလစ်များကို ဤနေရာတွင် ပြပါမည်။"),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("ဖော်လိုလုပ်ရန်"),
     };
 
 final messageLookup = MessageLookup();

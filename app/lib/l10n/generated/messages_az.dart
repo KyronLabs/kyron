@@ -336,9 +336,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Ümumi suallara dair bələdçilər və cavablar",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("İstifadəçi adı"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Hashtaglər insanlar istifadə etdikcə burada görünəcək.",
-      ),
       "helpAndSupport":
           MessageLookupByLibrary.simpleMessage("Yardım və Dəstək"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("Yardım Mərkəzi"),
@@ -443,9 +440,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "Bildirişlər yüklənmədi",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Təkliflər yüklənmədi",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "Üzvlər yüklənmədi",
       ),
@@ -464,12 +458,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "Bu cavab yüklənmədi",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Mövzular yüklənmədi",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Trend olanlar yüklənmədi",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "Trend olan teqlər yüklənmədi",
@@ -595,9 +583,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "Hələ yenidən paylaşım yoxdur",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Hələ mövzular yoxdur",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "Heç bir trend teqi uyğun gəlmir",
       ),
@@ -609,9 +594,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Hələ heç kim yoxdur",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Təklif üçün qalmış heç kim yoxdur",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -925,9 +907,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "password": MessageLookupByLibrary.simpleMessage("Şifrə"),
       "passwordTooShort":
           MessageLookupByLibrary.simpleMessage("Şifrə çox qısadır"),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Kyronun buraya əlavə edəcəyi hər kəsi artıq izləyirsiniz.",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "Maraqlarınızı seçin",
       ),
@@ -1086,9 +1065,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("Sistem"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Telefonun işıq/qaranlıq parametrlərini izləyin",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Mövzular Kyron tərəfindən hazırlanır və hazırda yoxdur. Biraz sonra yoxlayın.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Tərcümə et"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1590,6 +1566,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Onlayn olduğunuzu göstər"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Yazışdığınız insanlar Kyron açıq olanda yaşıl nöqtə görür. Bu söndürüldükdə siz də onlarınkını görməyəcəksiniz."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("İnsan və paylaşım axtar"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("Qoşulmaq üçün icmalar"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Hələ baxmalı bir şey yoxdur"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "İnsanların paylaşdığı şəkillər və kliplər burada görünəcək."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("İzlə"),
     };
 
 final messageLookup = MessageLookup();

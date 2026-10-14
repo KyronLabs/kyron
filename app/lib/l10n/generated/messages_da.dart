@@ -328,9 +328,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Vejledninger og svar på almindelige spørgsmål",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("brugernavn"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags dukker op her, når folk begynder at bruge dem.",
-      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("Hjælp & support"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("Hjælpecenter"),
       "home": MessageLookupByLibrary.simpleMessage("Hjem"),
@@ -432,9 +429,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "Kunne ikke indlæse notifikationer",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Kunne ikke indlæse forslag",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "Kunne ikke indlæse medlemmerne",
       ),
@@ -453,12 +447,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "Kunne ikke indlæse dette svar",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Kunne ikke indlæse emner",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Kunne ikke indlæse populære emner",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "Kunne ikke indlæse populære tags",
@@ -579,9 +567,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "Ingen delinger endnu",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Ingen emner endnu",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "Ingen populære tags matcher det",
       ),
@@ -592,9 +577,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Ingen her endnu",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Ingen tilbage at foreslå",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -891,9 +873,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "passwordTooShort": MessageLookupByLibrary.simpleMessage(
         "Adgangskode for kort",
       ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Du følger allerede alle, som Kyron ville sætte her.",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "Vælg dine interesser",
       ),
@@ -1046,9 +1025,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("System"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Følg telefonens eget lys- eller mørkeindstilling",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Emner oprettes af Kyron, og der er ingen lige nu. Kig forbi igen snart.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Oversæt"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1538,6 +1514,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Vis, når du er online"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Folk, du skriver med, ser en grøn prik, mens du har Kyron åben. Når dette er slået fra, kan du heller ikke se deres."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("Søg efter folk og opslag"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("Fællesskaber at deltage i"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Intet at se endnu"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Fotos og klip, som folk slår op, vises her."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Følg"),
     };
 
 final messageLookup = MessageLookup();

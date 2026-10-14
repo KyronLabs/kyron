@@ -344,9 +344,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Οδηγοί και απαντήσεις σε συχνές ερωτήσεις",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("Όνομα χρήστη"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Εδώ θα εμφανίζονται τα hashtags μόλις οι χρήστες αρχίσουν να τα χρησιμοποιούν.",
-      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage(
         "Βοήθεια & Υποστήριξη",
       ),
@@ -466,9 +463,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "Δεν ήταν δυνατή η φόρτωση των ειδοποιήσεων",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Δεν ήταν δυνατή η φόρτωση προτάσεων",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "Δεν ήταν δυνατή η φόρτωση των μελών",
       ),
@@ -487,12 +481,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "Δεν ήταν δυνατή η φόρτωση αυτής της απάντησης",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Δεν ήταν δυνατή η φόρτωση των θεμάτων",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Δεν ήταν δυνατή η φόρτωση των τάσεων",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "Δεν ήταν δυνατή η φόρτωση των δημοφιλών ετικετών",
@@ -625,9 +613,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "Δεν υπάρχουν αναδημοσιεύσεις ακόμα",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Δεν υπάρχουν θέματα ακόμα",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "Καμία δημοφιλής ετικέτα δεν ταιριάζει με αυτό",
       ),
@@ -639,9 +624,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Κανείς εδώ ακόμα",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Δεν έμεινε κανείς για πρόταση",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -974,9 +956,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "passwordTooShort": MessageLookupByLibrary.simpleMessage(
         "Ο κωδικός πρόσβασης είναι πολύ σύντομος",
       ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Ακολουθείτε ήδη όλους όσους θα έβαζε εδώ ο Kyron.",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "Επιλέξτε τα ενδιαφέροντά σας",
       ),
@@ -1148,9 +1127,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("Σύστημα"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Ακολουθεί την ρύθμιση φωτεινού/σκοτεινού του τηλεφώνου",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Τα θέματα διαμορφώνονται από τον Kyron και αυτήν τη στιγμή δεν υπάρχουν. Επιστρέψτε σύντομα.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Μετάφραση"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1677,6 +1653,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Εμφάνιση όταν είστε σε σύνδεση"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Τα άτομα με τα οποία συνομιλείτε βλέπουν μια πράσινη κουκκίδα όσο έχετε το Kyron ανοιχτό. Όταν είναι απενεργοποιημένο, δεν θα βλέπετε ούτε τη δική τους."),
+      "ui_explore_search": MessageLookupByLibrary.simpleMessage(
+          "Αναζήτηση ατόμων και αναρτήσεων"),
+      "ui_explore_communities": MessageLookupByLibrary.simpleMessage(
+          "Κοινότητες για να γίνετε μέλος"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Τίποτα για να δείτε ακόμα"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Οι φωτογραφίες και τα κλιπ που δημοσιεύουν οι άλλοι θα εμφανίζονται εδώ."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Ακολούθηση"),
     };
 
 final messageLookup = MessageLookup();
