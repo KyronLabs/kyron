@@ -171,3 +171,23 @@ describe('AuthGuard when the handle is taken', () => {
     ).rejects.toMatchObject({ status: 500 });
   });
 });
+
+describe('AuthGuard and deleted accounts', () => {
+  it('refuses a token for a deleted account rather than making a new one', async () => {
+    // What a deletion leaves under the id: an empty row marked DELETED. An
+    // access token outlives the sign-in by up to an hour, and without the
+    // row this would provision a fresh account on the next request.
+    const deleted = {
+      id: 'u1',
+      name: null,
+      username: null,
+      status: 'DELETED',
+    } as Row & { status: string };
+    const { guard, creates } = guardWith(deleted);
+
+    await expect(guard.resolveSupabaseUser(subject({}))).rejects.toThrow(
+      'This account has been deleted.',
+    );
+    expect(creates).toHaveLength(0);
+  });
+});

@@ -19,6 +19,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { ProfileModule } from './modules/profile/profile.module';
 import { LinksModule } from './modules/links/links.module';
 import { FeedbackModule } from './modules/feedback/feedback.module';
+import { AccountModule } from './modules/account/account.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { FeedbackModule } from './modules/feedback/feedback.module';
     ProfileModule,
     LinksModule,
     FeedbackModule,
+    AccountModule,
   ],
   controllers: [],
   providers: [],

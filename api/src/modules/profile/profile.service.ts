@@ -169,6 +169,12 @@ export class ProfileService {
     if (userId === targetId) {
       throw new BadRequestException('Cannot follow yourself');
     }
+    // Including a deleted account, which keeps an empty row under its id.
+    const target = await this.prisma.user.findFirst({
+      where: { id: targetId, deletedAt: null },
+      select: { id: true },
+    });
+    if (!target) throw new NotFoundException('That account does not exist.');
 
     await this.prisma.follow.upsert({
       where: {

@@ -13,7 +13,7 @@ import {
 import { Reflector } from '@nestjs/core';
 import { PrismaService } from '@/infrastructure/prisma/prisma.service';
 import { Request } from 'express';
-import { User, UserRole, EmailStatus } from '@prisma/client';
+import { AccountStatus, User, UserRole, EmailStatus } from '@prisma/client';
 import {
   SupabaseTokenService,
   type SupabaseClaims,
@@ -94,6 +94,13 @@ export class AuthGuard implements CanActivate {
     const existing = await this.prisma.user.findUnique({
       where: { id: claims.sub },
     });
+    // A deleted account keeps an empty row under its id for exactly this: an
+    // access token outlives the sign-in it came from, and without the row a
+    // phone still holding one would be given a fresh account by the branch
+    // below, on the first request after the deletion.
+    if (existing?.status === AccountStatus.DELETED) {
+      throw new UnauthorizedException('This account has been deleted.');
+    }
     if (existing) return this.backfill(existing, { name, username });
 
     const email = claims.email ?? `${claims.sub}@users.noreply.kyron.so`;

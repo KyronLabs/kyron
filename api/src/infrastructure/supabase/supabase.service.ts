@@ -246,6 +246,59 @@ export class SupabaseService {
     return this.client;
   }
 
+  /**
+   * Removes the sign-in itself, so the email and the Google account it was
+   * made with can no longer reach it.
+   *
+   * An account Supabase no longer has counts as removed: deleting is retried
+   * when the rest of the work fails, and a second attempt must not fail on
+   * the half the first one finished.
+   */
+  async deleteAuthUser(id: string): Promise<void> {
+    const { error } = await this.client.auth.admin.deleteUser(id);
+    if (!error) return;
+    if (error.status === 404 || /not found/i.test(error.message)) return;
+    throw new Error(`Supabase could not delete the sign-in: ${error.message}`);
+  }
+
+  /**
+   * Every object in a folder whose name starts with [prefix], as full paths.
+   *
+   * Uploads are named `<userId>_...` in a flat folder, so this is how one
+   * person's files are found. The prefix is checked again here rather than
+   * trusted to the storage API's search, which matches more loosely.
+   */
+  async listByPrefix(folder: string, prefix: string): Promise<string[]> {
+    const pageSize = 1000;
+    const found: string[] = [];
+    for (let offset = 0; ; offset += pageSize) {
+      const { data, error } = await this.client.storage
+        .from(this.bucketName)
+        .list(folder, { search: prefix, limit: pageSize, offset });
+      if (error) {
+        throw new Error(`Supabase list failed in ${folder}: ${error.message}`);
+      }
+      const page = (data ?? []) as Array<{ name: string }>;
+      for (const file of page) {
+        if (file.name.startsWith(prefix)) found.push(`${folder}/${file.name}`);
+      }
+      if (page.length < pageSize) return found;
+    }
+  }
+
+  /** Deletes objects by path, a batch at a time. */
+  async removeFiles(paths: readonly string[]): Promise<void> {
+    const batch = 100;
+    for (let i = 0; i < paths.length; i += batch) {
+      const { error } = await this.client.storage
+        .from(this.bucketName)
+        .remove(paths.slice(i, i + batch));
+      if (error) {
+        throw new Error(`Supabase remove failed: ${error.message}`);
+      }
+    }
+  }
+
   getAvatarFolder() {
     return this.avatarFolder;
   }
