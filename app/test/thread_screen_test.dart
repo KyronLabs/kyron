@@ -34,12 +34,18 @@ import 'package:kyron_app/widgets/overlap_stack.dart';
 /// and how a thread is laid out -- turns, times, receipts, and what it says
 /// about encryption.
 class _Repo extends MessagesRepository {
-  _Repo(this.thread, {this.lastReadAt})
-      : super(ApiClient()..dio.interceptors.clear());
+  _Repo(
+    this.thread, {
+    this.lastReadAt,
+    this.people = const [MessagePerson(id: 'them', name: 'Ada')],
+  }) : super(ApiClient()..dio.interceptors.clear());
 
   /// Newest first, the way the server sends a page.
   final List<DirectMessage> thread;
   final DateTime? lastReadAt;
+
+  /// Everybody else in it. Empty once they have deleted their account.
+  final List<MessagePerson> people;
 
   final List<String> bodies = [];
   final List<String?> repliedTo = [];
@@ -57,7 +63,7 @@ class _Repo extends MessagesRepository {
   }) async =>
       MessagePage(
         items: thread,
-        people: const [MessagePerson(id: 'them', name: 'Ada')],
+        people: people,
         lastReadAt: lastReadAt,
       );
 
@@ -157,8 +163,11 @@ Future<_Repo> _open(
   List<DirectMessage> thread, {
   DateTime? lastReadAt,
   LinkCardReader? reader,
+  List<MessagePerson>? people,
 }) async {
-  final repo = _Repo(thread, lastReadAt: lastReadAt);
+  final repo = people == null
+      ? _Repo(thread, lastReadAt: lastReadAt)
+      : _Repo(thread, lastReadAt: lastReadAt, people: people);
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
@@ -261,6 +270,22 @@ void main() {
     expect(find.byKey(const ValueKey('thread-online')), findsOneWidget);
     expect(find.text('Online'), findsOneWidget);
     expect(find.byKey(const ValueKey('online-them')), findsOneWidget);
+  });
+
+  testWidgets('a conversation whose other side deleted their account says so',
+      (tester) async {
+    // The deletion takes their membership and their messages; the reader's
+    // stay, and there is nobody left to send anything to.
+    await _open(
+      tester,
+      [_msg('m1', 'still here', 'me', DateTime(2026, 1, 1, 9))],
+      people: const [],
+    );
+
+    expect(find.text('Deleted account'), findsOneWidget);
+    expect(find.byKey(const ValueKey('thread-gone')), findsOneWidget);
+    expect(find.byType(TextField), findsNothing);
+    expect(find.text('still here'), findsOneWidget);
   });
 
   testWidgets('a message of only emoji is drawn large; with words it is not',

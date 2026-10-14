@@ -752,5 +752,16 @@
   "ui_explore_communities": "Community's om lid van te worden",
   "ui_explore_grid_empty": "Nog niets om te bekijken",
   "ui_explore_grid_empty_detail": "Foto's en clips die mensen plaatsen, verschijnen hier.",
-  "ui_follow": "Volgen"
+  "ui_follow": "Volgen",
+  "ui_delete_account": "Account verwijderen",
+  "ui_delete_account_intro": "Hiermee verwijder je je Kyron-account definitief. Dit kan niet ongedaan worden gemaakt.",
+  "ui_delete_account_posts": "Je profiel, berichten, reacties, likes en reposts",
+  "ui_delete_account_messages": "Je berichten, ook die je naar anderen hebt gestuurd, en de foto's en spraakberichten daarin",
+  "ui_delete_account_people": "Je volgers, de mensen die je volgt en je instellingen",
+  "ui_delete_account_communities": "Community's die je bent begonnen, gaan naar de moderator of het lid dat er het langst bij is. Een community zonder anderen wordt gesloten.",
+  "ui_delete_account_confirm_title": "Je account verwijderen?",
+  "ui_delete_account_confirm_detail": "Je kunt er niets van terugkrijgen.",
+  "ui_delete_account_done": "Je account is verwijderd.",
+  "ui_dm_deleted_account": "Verwijderd account",
+  "ui_dm_deleted_account_detail": "Dit account is verwijderd, dus hier kunnen geen berichten meer worden verstuurd."
 }

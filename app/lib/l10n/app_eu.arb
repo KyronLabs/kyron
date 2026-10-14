@@ -752,5 +752,16 @@
   "ui_explore_communities": "Batzeko komunitateak",
   "ui_explore_grid_empty": "Oraindik ez dago ezer ikusteko",
   "ui_explore_grid_empty_detail": "Jendeak argitaratzen dituen argazkiak eta klipak hemen agertuko dira.",
-  "ui_follow": "Jarraitu"
+  "ui_follow": "Jarraitu",
+  "ui_delete_account": "Ezabatu kontua",
+  "ui_delete_account_intro": "Honek betiko ezabatzen du zure Kyron kontua. Ezin da desegin.",
+  "ui_delete_account_posts": "Zure profila, argitalpenak, erantzunak, atsegiteak eta birbidalketak",
+  "ui_delete_account_messages": "Zure mezuak, besteei bidalitakoak barne, eta haietako argazkiak eta ahots-oharrak",
+  "ui_delete_account_people": "Zure jarraitzaileak, jarraitzen dituzun pertsonak eta zure ezarpenak",
+  "ui_delete_account_communities": "Sortu dituzun komunitateak antzinatasun handieneko moderatzaile edo kideari pasatzen zaizkio. Beste inor ez duen komunitatea itxi egiten da.",
+  "ui_delete_account_confirm_title": "Zure kontua ezabatu nahi duzu?",
+  "ui_delete_account_confirm_detail": "Ezin izango duzu ezer berreskuratu.",
+  "ui_delete_account_done": "Zure kontua ezabatu da.",
+  "ui_dm_deleted_account": "Ezabatutako kontua",
+  "ui_dm_deleted_account_detail": "Kontu hau ezabatu egin da, beraz, ezin da hona mezurik bidali."
 }

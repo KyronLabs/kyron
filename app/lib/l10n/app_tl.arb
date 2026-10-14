@@ -752,5 +752,16 @@
   "ui_explore_communities": "Mga komunidad na puwedeng salihan",
   "ui_explore_grid_empty": "Wala pang makikita",
   "ui_explore_grid_empty_detail": "Dito lalabas ang mga larawan at clip na ipino-post ng mga tao.",
-  "ui_follow": "I-follow"
+  "ui_follow": "I-follow",
+  "ui_delete_account": "I-delete ang account",
+  "ui_delete_account_intro": "Permanente nitong ide-delete ang iyong Kyron account. Hindi na ito maibabalik.",
+  "ui_delete_account_posts": "Ang iyong profile, mga post, sagot, like at repost",
+  "ui_delete_account_messages": "Ang iyong mga mensahe, kasama ang mga ipinadala mo sa iba, at ang mga larawan at voice note sa mga ito",
+  "ui_delete_account_people": "Ang iyong mga follower, ang mga taong fina-follow mo, at ang iyong mga setting",
+  "ui_delete_account_communities": "Ang mga komunidad na sinimulan mo ay mapupunta sa pinakamatagal na moderator o miyembro. Isasara ang komunidad na wala nang ibang tao.",
+  "ui_delete_account_confirm_title": "I-delete ang iyong account?",
+  "ui_delete_account_confirm_detail": "Hindi mo na mababawi ang alinman dito.",
+  "ui_delete_account_done": "Na-delete na ang iyong account.",
+  "ui_dm_deleted_account": "Na-delete na account",
+  "ui_dm_deleted_account_detail": "Na-delete na ang account na ito, kaya hindi na makakapagpadala ng mensahe rito."
 }

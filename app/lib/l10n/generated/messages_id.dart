@@ -1489,6 +1489,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Foto dan klip yang diposting orang akan muncul di sini."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Ikuti"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Hapus akun"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Ini akan menghapus akun Kyron Anda secara permanen. Tindakan ini tidak dapat dibatalkan."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Profil, postingan, balasan, suka, dan postingan ulang Anda"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Pesan Anda, termasuk yang Anda kirim ke orang lain, beserta foto dan pesan suara di dalamnya"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Pengikut Anda, orang yang Anda ikuti, dan pengaturan Anda"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Komunitas yang Anda buat akan diserahkan ke moderator atau anggota paling lama. Komunitas tanpa anggota lain akan ditutup."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Hapus akun Anda?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Anda tidak akan bisa mendapatkannya kembali."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Akun Anda telah dihapus."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Akun yang dihapus"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Akun ini telah dihapus, jadi pesan tidak bisa lagi dikirim ke sini."),
     };
 
 final messageLookup = MessageLookup();

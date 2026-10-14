@@ -1497,6 +1497,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Foto's en clips die mensen plaatsen, verschijnen hier."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Volgen"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Account verwijderen"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Hiermee verwijder je je Kyron-account definitief. Dit kan niet ongedaan worden gemaakt."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Je profiel, berichten, reacties, likes en reposts"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Je berichten, ook die je naar anderen hebt gestuurd, en de foto's en spraakberichten daarin"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Je volgers, de mensen die je volgt en je instellingen"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Community's die je bent begonnen, gaan naar de moderator of het lid dat er het langst bij is. Een community zonder anderen wordt gesloten."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Je account verwijderen?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Je kunt er niets van terugkrijgen."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Je account is verwijderd."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Verwijderd account"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Dit account is verwijderd, dus hier kunnen geen berichten meer worden verstuurd."),
     };
 
 final messageLookup = MessageLookup();

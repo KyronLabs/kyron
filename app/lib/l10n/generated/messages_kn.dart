@@ -1493,6 +1493,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "ಜನರು ಪೋಸ್ಟ್ ಮಾಡುವ ಫೋಟೋಗಳು ಮತ್ತು ಕ್ಲಿಪ್‌ಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("ಫಾಲೋ ಮಾಡಿ"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("ಖಾತೆ ಅಳಿಸಿ"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "ಇದು ನಿಮ್ಮ Kyron ಖಾತೆಯನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸುತ್ತದೆ. ಇದನ್ನು ರದ್ದುಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ಪ್ರೊಫೈಲ್, ಪೋಸ್ಟ್‌ಗಳು, ಪ್ರತ್ಯುತ್ತರಗಳು, ಲೈಕ್‌ಗಳು ಮತ್ತು ರೀಪೋಸ್ಟ್‌ಗಳು"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ಸಂದೇಶಗಳು, ಇತರರಿಗೆ ಕಳುಹಿಸಿದವು ಸೇರಿದಂತೆ, ಮತ್ತು ಅವುಗಳಲ್ಲಿನ ಫೋಟೋಗಳು ಮತ್ತು ಧ್ವನಿ ಸಂದೇಶಗಳು"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ಫಾಲೋವರ್‌ಗಳು, ನೀವು ಫಾಲೋ ಮಾಡುವವರು ಮತ್ತು ನಿಮ್ಮ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಆರಂಭಿಸಿದ ಸಮುದಾಯಗಳು ಅತಿ ಹೆಚ್ಚು ಕಾಲ ಇರುವ ಮಾಡರೇಟರ್ ಅಥವಾ ಸದಸ್ಯರಿಗೆ ಹೋಗುತ್ತವೆ. ಬೇರೆ ಯಾರೂ ಇಲ್ಲದ ಸಮುದಾಯವನ್ನು ಮುಚ್ಚಲಾಗುತ್ತದೆ."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಅಳಿಸಬೇಕೇ?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "ಇದರಲ್ಲಿ ಯಾವುದನ್ನೂ ನೀವು ಮರಳಿ ಪಡೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಅಳಿಸಲಾಗಿದೆ."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("ಅಳಿಸಲಾದ ಖಾತೆ"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "ಈ ಖಾತೆಯನ್ನು ಅಳಿಸಲಾಗಿದೆ, ಹಾಗಾಗಿ ಇಲ್ಲಿ ಇನ್ನು ಸಂದೇಶ ಕಳುಹಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."),
     };
 
 final messageLookup = MessageLookup();

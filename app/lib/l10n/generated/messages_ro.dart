@@ -1496,6 +1496,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Fotografiile și clipurile publicate de alții vor apărea aici."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Urmărește"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Șterge contul"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Astfel îți ștergi definitiv contul Kyron. Acțiunea nu poate fi anulată."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Profilul, postările, răspunsurile, aprecierile și redistribuirile tale"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Mesajele tale, inclusiv cele trimise altor persoane, și fotografiile și mesajele vocale din ele"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Urmăritorii tăi, persoanele pe care le urmărești și setările tale"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Comunitățile pe care le-ai creat trec la moderatorul sau membrul cu cea mai mare vechime. O comunitate fără alți membri se închide."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Ștergi contul?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Nu vei putea recupera nimic din toate acestea."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Contul tău a fost șters."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Cont șters"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Acest cont a fost șters, așa că nu mai pot fi trimise mesaje aici."),
     };
 
 final messageLookup = MessageLookup();

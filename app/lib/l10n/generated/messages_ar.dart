@@ -1485,6 +1485,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "ستظهر هنا الصور والمقاطع التي ينشرها الناس."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("متابعة"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "سيؤدي هذا إلى حذف حسابك على Kyron نهائيًا. لا يمكن التراجع عن ذلك."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "ملفك الشخصي ومنشوراتك وردودك وإعجاباتك وإعادات نشرك"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "رسائلك، بما فيها التي أرسلتها إلى الآخرين، والصور والملاحظات الصوتية فيها"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "متابعوك والأشخاص الذين تتابعهم وإعداداتك"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "تنتقل المجتمعات التي أنشأتها إلى أقدم مشرف أو عضو فيها. ويُغلق المجتمع الذي لا يوجد فيه أحد غيرك."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("هل تريد حذف حسابك؟"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "لن تتمكن من استعادة أي شيء منه."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("تم حذف حسابك."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("حساب محذوف"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "تم حذف هذا الحساب، لذا لم يعد بالإمكان إرسال رسائل هنا."),
     };
 
 final messageLookup = MessageLookup();

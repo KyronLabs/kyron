@@ -1491,6 +1491,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Ihmisten julkaisemat kuvat ja leikkeet näkyvät täällä."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Seuraa"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Poista tili"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Tämä poistaa Kyron-tilisi pysyvästi. Toimintoa ei voi kumota."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Profiilisi, julkaisusi, vastauksesi, tykkäyksesi ja uudelleenjulkaisusi"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Viestisi, myös muille lähettämäsi, sekä niiden kuvat ja ääniviestit"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Seuraajasi, seuraamasi ihmiset ja asetuksesi"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Perustamasi yhteisöt siirtyvät pisimpään mukana olleelle valvojalle tai jäsenelle. Yhteisö, jossa ei ole ketään muuta, suljetaan."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Poistetaanko tilisi?"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("Et saa mitään siitä takaisin."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Tilisi on poistettu."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Poistettu tili"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Tämä tili on poistettu, joten tänne ei voi enää lähettää viestejä."),
     };
 
 final messageLookup = MessageLookup();

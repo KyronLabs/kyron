@@ -752,5 +752,16 @@
   "ui_explore_communities": "Kopienas, kurām pievienoties",
   "ui_explore_grid_empty": "Vēl nav ko skatīties",
   "ui_explore_grid_empty_detail": "Šeit parādīsies cilvēku publicētie fotoattēli un klipi.",
-  "ui_follow": "Sekot"
+  "ui_follow": "Sekot",
+  "ui_delete_account": "Dzēst kontu",
+  "ui_delete_account_intro": "Tādējādi jūsu Kyron konts tiks neatgriezeniski dzēsts. To nevar atsaukt.",
+  "ui_delete_account_posts": "Jūsu profils, ieraksti, atbildes, patīk atzīmes un atkārtotās publikācijas",
+  "ui_delete_account_messages": "Jūsu ziņas, arī tās, ko nosūtījāt citiem, un tajās esošie foto un balss ziņas",
+  "ui_delete_account_people": "Jūsu sekotāji, cilvēki, kuriem sekojat, un jūsu iestatījumi",
+  "ui_delete_account_communities": "Jūsu izveidotās kopienas tiek nodotas moderatoram vai dalībniekam, kurš tajā ir visilgāk. Kopiena, kurā nav neviena cita, tiek slēgta.",
+  "ui_delete_account_confirm_title": "Vai dzēst jūsu kontu?",
+  "ui_delete_account_confirm_detail": "Neko no tā vairs nevarēsiet atgūt.",
+  "ui_delete_account_done": "Jūsu konts ir dzēsts.",
+  "ui_dm_deleted_account": "Dzēsts konts",
+  "ui_dm_deleted_account_detail": "Šis konts ir dzēsts, tāpēc šeit vairs nevar sūtīt ziņas."
 }

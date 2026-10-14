@@ -32,3 +32,33 @@ describe('ProfileService.isUuid', () => {
     }
   });
 });
+
+describe('ProfileService.follow', () => {
+  function serviceWith(target: { id: string } | null) {
+    const prisma = {
+      user: { findFirst: jest.fn().mockResolvedValue(target) },
+      follow: { upsert: jest.fn().mockResolvedValue({}) },
+    };
+    const service = new ProfileService(
+      {} as never,
+      prisma as never,
+      {} as never,
+    );
+    return { service, prisma };
+  }
+
+  it('refuses an account that does not exist or was deleted', async () => {
+    // A deleted account keeps an empty row under its id, so the id alone is
+    // not enough to follow by.
+    const { service, prisma } = serviceWith(null);
+
+    await expect(service.follow('me', 'gone')).rejects.toThrow(
+      'That account does not exist.',
+    );
+    expect(prisma.user.findFirst).toHaveBeenCalledWith({
+      where: { id: 'gone', deletedAt: null },
+      select: { id: true },
+    });
+    expect(prisma.follow.upsert).not.toHaveBeenCalled();
+  });
+});

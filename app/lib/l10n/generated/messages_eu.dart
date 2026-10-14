@@ -1492,6 +1492,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Jendeak argitaratzen dituen argazkiak eta klipak hemen agertuko dira."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Jarraitu"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Ezabatu kontua"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Honek betiko ezabatzen du zure Kyron kontua. Ezin da desegin."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Zure profila, argitalpenak, erantzunak, atsegiteak eta birbidalketak"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Zure mezuak, besteei bidalitakoak barne, eta haietako argazkiak eta ahots-oharrak"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Zure jarraitzaileak, jarraitzen dituzun pertsonak eta zure ezarpenak"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Sortu dituzun komunitateak antzinatasun handieneko moderatzaile edo kideari pasatzen zaizkio. Beste inor ez duen komunitatea itxi egiten da."),
+      "ui_delete_account_confirm_title": MessageLookupByLibrary.simpleMessage(
+          "Zure kontua ezabatu nahi duzu?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Ezin izango duzu ezer berreskuratu."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Zure kontua ezabatu da."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Ezabatutako kontua"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Kontu hau ezabatu egin da, beraz, ezin da hona mezurik bidali."),
     };
 
 final messageLookup = MessageLookup();

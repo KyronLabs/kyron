@@ -1549,6 +1549,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Siia ilmuvad fotod ja klipid, mida inimesed postitavad."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Jälgi"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Kustuta konto"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "See kustutab sinu Kyroni konto jäädavalt. Seda ei saa tagasi võtta."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Sinu profiil, postitused, vastused, meeldimised ja jagamised"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Sinu sõnumid, ka need, mille saatsid teistele, ning neis olevad fotod ja häälsõnumid"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Sinu jälgijad, inimesed, keda jälgid, ja sinu seaded"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Sinu loodud kogukonnad lähevad kõige kauem tegutsenud moderaatorile või liikmele. Kogukond, kus pole kedagi teist, suletakse."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Kas kustutada sinu konto?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Sa ei saa sellest midagi tagasi."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Sinu konto on kustutatud."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Kustutatud konto"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "See konto on kustutatud, seega siia ei saa enam sõnumeid saata."),
     };
 
 final messageLookup = MessageLookup();

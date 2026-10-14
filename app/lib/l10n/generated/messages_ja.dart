@@ -1250,6 +1250,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail":
           MessageLookupByLibrary.simpleMessage("みんなが投稿した写真とクリップがここに表示されます。"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("フォロー"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("アカウントを削除"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Kyronアカウントが完全に削除されます。元に戻すことはできません。"),
+      "ui_delete_account_posts":
+          MessageLookupByLibrary.simpleMessage("プロフィール、投稿、返信、いいね、リポスト"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "メッセージ（他の人に送ったものを含む）と、その中の写真やボイスメモ"),
+      "ui_delete_account_people":
+          MessageLookupByLibrary.simpleMessage("フォロワー、フォロー中のユーザー、設定"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "あなたが作成したコミュニティは、最も長く在籍しているモデレーターまたはメンバーに引き継がれます。他に誰もいないコミュニティは閉鎖されます。"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("アカウントを削除しますか？"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("削除したものは一切元に戻せません。"),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("アカウントを削除しました。"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("削除されたアカウント"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "このアカウントは削除されたため、ここにはメッセージを送信できなくなりました。"),
     };
 
 final messageLookup = MessageLookup();

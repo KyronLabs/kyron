@@ -752,5 +752,16 @@
   "ui_explore_communities": "Kogukonnad, millega liituda",
   "ui_explore_grid_empty": "Veel pole midagi vaadata",
   "ui_explore_grid_empty_detail": "Siia ilmuvad fotod ja klipid, mida inimesed postitavad.",
-  "ui_follow": "Jälgi"
+  "ui_follow": "Jälgi",
+  "ui_delete_account": "Kustuta konto",
+  "ui_delete_account_intro": "See kustutab sinu Kyroni konto jäädavalt. Seda ei saa tagasi võtta.",
+  "ui_delete_account_posts": "Sinu profiil, postitused, vastused, meeldimised ja jagamised",
+  "ui_delete_account_messages": "Sinu sõnumid, ka need, mille saatsid teistele, ning neis olevad fotod ja häälsõnumid",
+  "ui_delete_account_people": "Sinu jälgijad, inimesed, keda jälgid, ja sinu seaded",
+  "ui_delete_account_communities": "Sinu loodud kogukonnad lähevad kõige kauem tegutsenud moderaatorile või liikmele. Kogukond, kus pole kedagi teist, suletakse.",
+  "ui_delete_account_confirm_title": "Kas kustutada sinu konto?",
+  "ui_delete_account_confirm_detail": "Sa ei saa sellest midagi tagasi.",
+  "ui_delete_account_done": "Sinu konto on kustutatud.",
+  "ui_dm_deleted_account": "Kustutatud konto",
+  "ui_dm_deleted_account_detail": "See konto on kustutatud, seega siia ei saa enam sõnumeid saata."
 }

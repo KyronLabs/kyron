@@ -1572,6 +1572,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "মানুষ যে ছবি ও ক্লিপ পোস্ট করে, সেগুলো এখানে দেখা যাবে।"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("ফলো করুন"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট মুছুন"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "এটি আপনার Kyron অ্যাকাউন্ট স্থায়ীভাবে মুছে দেবে। এটি আর ফিরিয়ে আনা যাবে না।"),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "আপনার প্রোফাইল, পোস্ট, উত্তর, লাইক ও রিপোস্ট"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "আপনার বার্তা, অন্যদের পাঠানো বার্তাসহ, এবং সেগুলোর ছবি ও ভয়েস নোট"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "আপনার ফলোয়ার, আপনি যাদের ফলো করেন, এবং আপনার সেটিংস"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "আপনার শুরু করা কমিউনিটিগুলো সবচেয়ে পুরোনো মডারেটর বা সদস্যের কাছে যাবে। যেখানে আর কেউ নেই, সেটি বন্ধ হয়ে যাবে।"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("আপনার অ্যাকাউন্ট মুছবেন?"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("এর কিছুই আর ফিরে পাবেন না।"),
+      "ui_delete_account_done": MessageLookupByLibrary.simpleMessage(
+          "আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে।"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("মুছে ফেলা অ্যাকাউন্ট"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "এই অ্যাকাউন্টটি মুছে ফেলা হয়েছে, তাই এখানে আর বার্তা পাঠানো যাবে না।"),
     };
 
 final messageLookup = MessageLookup();

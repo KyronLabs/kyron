@@ -179,6 +179,17 @@ const _keys = [
   'ui_explore_grid_empty',
   'ui_explore_grid_empty_detail',
   'ui_follow',
+  'ui_delete_account',
+  'ui_delete_account_intro',
+  'ui_delete_account_posts',
+  'ui_delete_account_messages',
+  'ui_delete_account_people',
+  'ui_delete_account_communities',
+  'ui_delete_account_confirm_title',
+  'ui_delete_account_confirm_detail',
+  'ui_delete_account_done',
+  'ui_dm_deleted_account',
+  'ui_dm_deleted_account_detail',
 ];
 
 void main() {

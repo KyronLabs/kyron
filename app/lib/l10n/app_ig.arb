@@ -752,5 +752,16 @@
   "ui_explore_communities": "Obodo ị ga-esonye na ha",
   "ui_explore_grid_empty": "O nweghị ihe a ga-ele ugbu a",
   "ui_explore_grid_empty_detail": "Foto na vidiyo ndị mmadụ na-ebipụta ga-apụta ebe a.",
-  "ui_follow": "Soro"
+  "ui_follow": "Soro",
+  "ui_delete_account": "Hichapụ akaụntụ",
+  "ui_delete_account_intro": "Nke a ga-ehichapụ akaụntụ Kyron gị kpamkpam. A gaghị enwe ike ịlaghachi ya.",
+  "ui_delete_account_posts": "Profaịlụ gị, edemede gị, nzaghachi gị, ihe ndị ị masịrị na ndị ị bịpụtaghachiri",
+  "ui_delete_account_messages": "Ozi gị, gụnyere ndị i zigaara ndị ọzọ, na foto na ozi olu dị n'ime ha",
+  "ui_delete_account_people": "Ndị na-eso gị, ndị ị na-eso, na ntọala gị",
+  "ui_delete_account_communities": "Obodo ndị ị malitere ga-agaru onye nlekọta ma ọ bụ onye otu kacha ogologo oge nọrọ na ya. A ga-emechi nke na-enweghị onye ọzọ.",
+  "ui_delete_account_confirm_title": "Ị ga-ehichapụ akaụntụ gị?",
+  "ui_delete_account_confirm_detail": "Ị gaghị enweta ihe ọ bụla n'ime ya ọzọ.",
+  "ui_delete_account_done": "E hichapụla akaụntụ gị.",
+  "ui_dm_deleted_account": "Akaụntụ e hichapụrụ",
+  "ui_dm_deleted_account_detail": "E hichapụla akaụntụ a, ya mere a gaghị enwe ike izite ozi ebe a ọzọ."
 }

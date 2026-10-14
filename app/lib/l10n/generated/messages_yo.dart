@@ -1491,6 +1491,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Àwọn fọ́tò àti fídíò tí àwọn ènìyàn fí síta yóò hàn níbí."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Tẹ̀lé"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Pa àkáǹtì rẹ́"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Èyí yóò pa àkáǹtì Kyron rẹ rẹ́ pátápátá. A kò lè dá a padà."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Profaili rẹ, àwọn ìfìwéránṣẹ́, ìdáhùn, àwọn ohun tí o fẹ́ràn àti àtúnpín rẹ"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìfiránṣẹ́ rẹ, pẹ̀lú èyí tí o fi ránṣẹ́ sí àwọn ẹlòmíràn, àti àwọn fọ́tò àti àkọsílẹ̀ ohùn inú wọn"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Àwọn olùtẹ̀lé rẹ, àwọn ènìyàn tí o ń tẹ̀lé, àti àwọn ètò rẹ"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Àwọn àwùjọ tí o dá sílẹ̀ yóò bọ́ sọ́wọ́ alábòójútó tàbí ọmọ ẹgbẹ́ tó pẹ́ jù níbẹ̀. Àwùjọ tí kò sí ẹlòmíràn nínú rẹ̀ yóò di títì."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Pa àkáǹtì rẹ rẹ́?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "O kò ní lè rí ohunkóhun nínú rẹ̀ gbà padà."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("A ti pa àkáǹtì rẹ rẹ́."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Àkáǹtì tí a ti pa rẹ́"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "A ti pa àkáǹtì yìí rẹ́, nítorí náà a kò lè fi ìfiránṣẹ́ ránṣẹ́ síbí mọ́."),
     };
 
 final messageLookup = MessageLookup();

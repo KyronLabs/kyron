@@ -752,5 +752,16 @@
   "ui_explore_communities": "Àwọn àwùjọ tí o lè darapọ̀ mọ́",
   "ui_explore_grid_empty": "Kò sí nǹkan láti wò síbẹ̀",
   "ui_explore_grid_empty_detail": "Àwọn fọ́tò àti fídíò tí àwọn ènìyàn fí síta yóò hàn níbí.",
-  "ui_follow": "Tẹ̀lé"
+  "ui_follow": "Tẹ̀lé",
+  "ui_delete_account": "Pa àkáǹtì rẹ́",
+  "ui_delete_account_intro": "Èyí yóò pa àkáǹtì Kyron rẹ rẹ́ pátápátá. A kò lè dá a padà.",
+  "ui_delete_account_posts": "Profaili rẹ, àwọn ìfìwéránṣẹ́, ìdáhùn, àwọn ohun tí o fẹ́ràn àti àtúnpín rẹ",
+  "ui_delete_account_messages": "Àwọn ìfiránṣẹ́ rẹ, pẹ̀lú èyí tí o fi ránṣẹ́ sí àwọn ẹlòmíràn, àti àwọn fọ́tò àti àkọsílẹ̀ ohùn inú wọn",
+  "ui_delete_account_people": "Àwọn olùtẹ̀lé rẹ, àwọn ènìyàn tí o ń tẹ̀lé, àti àwọn ètò rẹ",
+  "ui_delete_account_communities": "Àwọn àwùjọ tí o dá sílẹ̀ yóò bọ́ sọ́wọ́ alábòójútó tàbí ọmọ ẹgbẹ́ tó pẹ́ jù níbẹ̀. Àwùjọ tí kò sí ẹlòmíràn nínú rẹ̀ yóò di títì.",
+  "ui_delete_account_confirm_title": "Pa àkáǹtì rẹ rẹ́?",
+  "ui_delete_account_confirm_detail": "O kò ní lè rí ohunkóhun nínú rẹ̀ gbà padà.",
+  "ui_delete_account_done": "A ti pa àkáǹtì rẹ rẹ́.",
+  "ui_dm_deleted_account": "Àkáǹtì tí a ti pa rẹ́",
+  "ui_dm_deleted_account_detail": "A ti pa àkáǹtì yìí rẹ́, nítorí náà a kò lè fi ìfiránṣẹ́ ránṣẹ́ síbí mọ́."
 }

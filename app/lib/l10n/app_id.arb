@@ -752,5 +752,16 @@
   "ui_explore_communities": "Komunitas untuk bergabung",
   "ui_explore_grid_empty": "Belum ada yang bisa dilihat",
   "ui_explore_grid_empty_detail": "Foto dan klip yang diposting orang akan muncul di sini.",
-  "ui_follow": "Ikuti"
+  "ui_follow": "Ikuti",
+  "ui_delete_account": "Hapus akun",
+  "ui_delete_account_intro": "Ini akan menghapus akun Kyron Anda secara permanen. Tindakan ini tidak dapat dibatalkan.",
+  "ui_delete_account_posts": "Profil, postingan, balasan, suka, dan postingan ulang Anda",
+  "ui_delete_account_messages": "Pesan Anda, termasuk yang Anda kirim ke orang lain, beserta foto dan pesan suara di dalamnya",
+  "ui_delete_account_people": "Pengikut Anda, orang yang Anda ikuti, dan pengaturan Anda",
+  "ui_delete_account_communities": "Komunitas yang Anda buat akan diserahkan ke moderator atau anggota paling lama. Komunitas tanpa anggota lain akan ditutup.",
+  "ui_delete_account_confirm_title": "Hapus akun Anda?",
+  "ui_delete_account_confirm_detail": "Anda tidak akan bisa mendapatkannya kembali.",
+  "ui_delete_account_done": "Akun Anda telah dihapus.",
+  "ui_dm_deleted_account": "Akun yang dihapus",
+  "ui_dm_deleted_account_detail": "Akun ini telah dihapus, jadi pesan tidak bisa lagi dikirim ke sini."
 }

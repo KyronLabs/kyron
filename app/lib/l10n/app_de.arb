@@ -752,5 +752,16 @@
   "ui_explore_communities": "Communities zum Beitreten",
   "ui_explore_grid_empty": "Noch nichts zu sehen",
   "ui_explore_grid_empty_detail": "Fotos und Clips, die andere posten, erscheinen hier.",
-  "ui_follow": "Folgen"
+  "ui_follow": "Folgen",
+  "ui_delete_account": "Konto löschen",
+  "ui_delete_account_intro": "Dadurch wird dein Kyron-Konto dauerhaft gelöscht. Das lässt sich nicht rückgängig machen.",
+  "ui_delete_account_posts": "Dein Profil, deine Beiträge, Antworten, Likes und Reposts",
+  "ui_delete_account_messages": "Deine Nachrichten, auch die, die du an andere gesendet hast, samt Fotos und Sprachnachrichten darin",
+  "ui_delete_account_people": "Deine Follower, die Personen, denen du folgst, und deine Einstellungen",
+  "ui_delete_account_communities": "Von dir gegründete Communities gehen an die Person über, die dort am längsten moderiert oder Mitglied ist. Eine Community ohne weitere Mitglieder wird geschlossen.",
+  "ui_delete_account_confirm_title": "Dein Konto löschen?",
+  "ui_delete_account_confirm_detail": "Du kannst nichts davon wiederherstellen.",
+  "ui_delete_account_done": "Dein Konto wurde gelöscht.",
+  "ui_dm_deleted_account": "Gelöschtes Konto",
+  "ui_dm_deleted_account_detail": "Dieses Konto wurde gelöscht. Hier können keine Nachrichten mehr gesendet werden."
 }

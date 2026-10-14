@@ -1484,6 +1484,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "รูปภาพและคลิปที่ผู้คนโพสต์จะแสดงที่นี่"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("ติดตาม"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("ลบบัญชี"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "การดำเนินการนี้จะลบบัญชี Kyron ของคุณอย่างถาวรและไม่สามารถย้อนกลับได้"),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "โปรไฟล์ โพสต์ การตอบกลับ การถูกใจ และการรีโพสต์ของคุณ"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "ข้อความของคุณ รวมถึงข้อความที่คุณส่งถึงผู้อื่น และรูปภาพและข้อความเสียงในนั้น"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "ผู้ติดตามของคุณ คนที่คุณติดตาม และการตั้งค่าของคุณ"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "ชุมชนที่คุณสร้างจะถูกส่งต่อให้ผู้ดูแลหรือสมาชิกที่อยู่นานที่สุด ชุมชนที่ไม่มีใครอื่นจะถูกปิด"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("ลบบัญชีของคุณใช่ไหม"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "คุณจะไม่สามารถกู้คืนสิ่งใดได้เลย"),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("ลบบัญชีของคุณแล้ว"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("บัญชีที่ถูกลบ"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "บัญชีนี้ถูกลบแล้ว จึงไม่สามารถส่งข้อความมาที่นี่ได้อีก"),
     };
 
 final messageLookup = MessageLookup();

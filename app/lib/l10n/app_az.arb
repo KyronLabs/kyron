@@ -752,5 +752,16 @@
   "ui_explore_communities": "Qoşulmaq üçün icmalar",
   "ui_explore_grid_empty": "Hələ baxmalı bir şey yoxdur",
   "ui_explore_grid_empty_detail": "İnsanların paylaşdığı şəkillər və kliplər burada görünəcək.",
-  "ui_follow": "İzlə"
+  "ui_follow": "İzlə",
+  "ui_delete_account": "Hesabı sil",
+  "ui_delete_account_intro": "Bu, Kyron hesabınızı həmişəlik silir. Geri qaytarmaq mümkün deyil.",
+  "ui_delete_account_posts": "Profiliniz, paylaşımlarınız, cavablarınız, bəyənmələriniz və təkrar paylaşımlarınız",
+  "ui_delete_account_messages": "Mesajlarınız, başqalarına göndərdikləriniz də daxil olmaqla, və onlardakı şəkillər və səsli qeydlər",
+  "ui_delete_account_people": "İzləyiciləriniz, izlədiyiniz insanlar və parametrləriniz",
+  "ui_delete_account_communities": "Yaratdığınız icmalar ən uzun müddət xidmət edən moderatora və ya üzvə keçir. İçində başqa heç kim olmayan icma bağlanır.",
+  "ui_delete_account_confirm_title": "Hesabınız silinsin?",
+  "ui_delete_account_confirm_detail": "Heç birini geri qaytara bilməyəcəksiniz.",
+  "ui_delete_account_done": "Hesabınız silindi.",
+  "ui_dm_deleted_account": "Silinmiş hesab",
+  "ui_dm_deleted_account_detail": "Bu hesab silinib, ona görə də artıq bura mesaj göndərmək mümkün deyil."
 }

@@ -1486,6 +1486,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Foton och klipp som folk lägger upp visas här."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Följ"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Radera konto"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Det här raderar ditt Kyron-konto permanent. Det går inte att ångra."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Din profil, dina inlägg, svar, gillamarkeringar och delningar"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Dina meddelanden, även de du har skickat till andra, och bilderna och röstmeddelandena i dem"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Dina följare, personerna du följer och dina inställningar"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Gemenskaper du har startat går över till den moderator eller medlem som varit med längst. En gemenskap utan andra medlemmar stängs."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Vill du radera ditt konto?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Du kan inte få tillbaka något av det."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Ditt konto har raderats."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Raderat konto"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Det här kontot har raderats, så det går inte längre att skicka meddelanden hit."),
     };
 
 final messageLookup = MessageLookup();

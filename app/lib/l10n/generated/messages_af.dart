@@ -1562,6 +1562,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Foto's en grepe wat mense plaas, sal hier verskyn."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Volg"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Skrap rekening"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Dit skrap jou Kyron-rekening permanent. Dit kan nie ongedaan gemaak word nie."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Jou profiel, plasings, antwoorde, laaiks en herplasings"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Jou boodskappe, insluitend dié wat jy aan ander mense gestuur het, en die foto's en stemnotas daarin"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Jou volgers, die mense wat jy volg, en jou instellings"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Gemeenskappe wat jy begin het, gaan na hul langsdienende moderator of lid. Een met niemand anders daarin word gesluit."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Skrap jou rekening?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Jy sal niks daarvan kan terugkry nie."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Jou rekening is geskrap."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Geskrapte rekening"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Hierdie rekening is geskrap, so boodskappe kan nie meer hierheen gestuur word nie."),
     };
 
 final messageLookup = MessageLookup();

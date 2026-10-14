@@ -199,6 +199,19 @@ describe('reading a conversation', () => {
 });
 
 describe('sending', () => {
+  it('refuses a conversation whose other side deleted their account', async () => {
+    // The deletion takes their membership with it, leaving the reader alone
+    // in the thread. A message stored there would be read by nobody.
+    const alone = membership(null);
+    alone.members = alone.members.filter((m) => m.userId === ME);
+    const { service, calls } = serviceWith({ conversation: alone });
+
+    await expect(service.send(ME, 'c1', 'hello?')).rejects.toThrow(
+      'This account has been deleted',
+    );
+    expect(calls.messageCreates).toHaveLength(0);
+  });
+
   it('refuses an empty message', async () => {
     const { service } = serviceWith({ conversation: membership(null) });
     await expect(service.send(ME, 'c1', '   ')).rejects.toBeInstanceOf(

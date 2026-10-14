@@ -38,7 +38,7 @@ does today. Where something is planned rather than built, it says so.
 
 | Area | What it does |
 |:--|:--|
-| **Accounts** | Email and password or Google over Supabase Auth, JWT verified against JWKS, onboarding gate, a password reset that says what happens next — [turning Google on](docs/GOOGLE_SIGN_IN.md) |
+| **Accounts** | Email and password or Google over Supabase Auth, JWT verified against JWKS, onboarding gate, a password reset that says what happens next — [turning Google on](docs/GOOGLE_SIGN_IN.md). Deleting the account from Settings, sign-in and all; a request by email is handled with `npm run account:delete` in `api/` |
 | **Notifications** | Delivered over the socket when the app is open and as a push when it is not — [how it is wired and what it needs](docs/PUSH.md) |
 | **Feed** | Ranked by interests, who you follow, what you have liked, how long you read, what you have asked to see less of, and recency; cursor-paged |
 | **Posts** | Text, photos, video, polls, voice recordings, link previews, quotes, reposts |

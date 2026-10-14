@@ -1131,6 +1131,26 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail":
           MessageLookupByLibrary.simpleMessage("大家发布的照片和短片会显示在这里。"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("关注"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("删除账号"),
+      "ui_delete_account_intro":
+          MessageLookupByLibrary.simpleMessage("这会永久删除你的 Kyron 账号，且无法撤销。"),
+      "ui_delete_account_posts":
+          MessageLookupByLibrary.simpleMessage("你的个人资料、帖子、回复、赞和转发"),
+      "ui_delete_account_messages":
+          MessageLookupByLibrary.simpleMessage("你的消息（包括你发给别人的消息），以及其中的照片和语音消息"),
+      "ui_delete_account_people":
+          MessageLookupByLibrary.simpleMessage("你的粉丝、你关注的人和你的设置"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "你创建的社区将移交给加入最久的版主或成员。没有其他人的社区将被关闭。"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("要删除你的账号吗？"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("删除后将无法恢复任何内容。"),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("你的账号已删除。"),
+      "ui_dm_deleted_account": MessageLookupByLibrary.simpleMessage("已删除的账号"),
+      "ui_dm_deleted_account_detail":
+          MessageLookupByLibrary.simpleMessage("此账号已删除，因此无法再在这里发送消息。"),
     };
 
 final messageLookup = MessageLookup();

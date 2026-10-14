@@ -643,6 +643,13 @@ export class MessagesService {
     }
 
     const conversation = await this.requireMembership(viewerId, conversationId);
+    // Nobody else in it: the other side deleted their account. A message
+    // stored here would be read by nobody, ever.
+    if (!conversation.members.some((m) => m.userId !== viewerId)) {
+      throw new BadRequestException(
+        'This account has been deleted, so messages can no longer be sent here.',
+      );
+    }
     for (const member of conversation.members) {
       if (member.userId !== viewerId) {
         await this.requireNoBlock(viewerId, member.userId);

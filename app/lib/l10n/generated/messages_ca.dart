@@ -1612,6 +1612,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Les fotos i els clips que publiqui la gent apareixeran aquí."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Segueix"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Suprimeix el compte"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Això suprimeix definitivament el teu compte de Kyron. No es pot desfer."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "El teu perfil, publicacions, respostes, m'agrades i republicacions"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Els teus missatges, inclosos els que has enviat a altres persones, i les fotos i notes de veu que contenen"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Els teus seguidors, les persones que segueixes i la teva configuració"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Les comunitats que has creat passen al moderador o membre amb més antiguitat. Si no hi ha ningú més, es tanca."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Vols suprimir el teu compte?"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("No en podràs recuperar res."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("S'ha suprimit el teu compte."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Compte suprimit"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Aquest compte s'ha suprimit, així que ja no s'hi poden enviar missatges."),
     };
 
 final messageLookup = MessageLookup();

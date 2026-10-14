@@ -1481,6 +1481,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Foto na vidiyo ndị mmadụ na-ebipụta ga-apụta ebe a."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Soro"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Hichapụ akaụntụ"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Nke a ga-ehichapụ akaụntụ Kyron gị kpamkpam. A gaghị enwe ike ịlaghachi ya."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Profaịlụ gị, edemede gị, nzaghachi gị, ihe ndị ị masịrị na ndị ị bịpụtaghachiri"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Ozi gị, gụnyere ndị i zigaara ndị ọzọ, na foto na ozi olu dị n'ime ha"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Ndị na-eso gị, ndị ị na-eso, na ntọala gị"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Obodo ndị ị malitere ga-agaru onye nlekọta ma ọ bụ onye otu kacha ogologo oge nọrọ na ya. A ga-emechi nke na-enweghị onye ọzọ."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Ị ga-ehichapụ akaụntụ gị?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Ị gaghị enweta ihe ọ bụla n'ime ya ọzọ."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("E hichapụla akaụntụ gị."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Akaụntụ e hichapụrụ"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "E hichapụla akaụntụ a, ya mere a gaghị enwe ike izite ozi ebe a ọzọ."),
     };
 
 final messageLookup = MessageLookup();

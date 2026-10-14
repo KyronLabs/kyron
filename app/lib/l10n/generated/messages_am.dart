@@ -1370,6 +1370,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "ሰዎች የሚለጥፏቸው ፎቶዎችና ቪዲዮዎች እዚህ ይታያሉ።"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("ተከተል"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("መለያ ሰርዝ"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "ይህ የKyron መለያዎን እስከመጨረሻው ይሰርዘዋል። መቀልበስ አይቻልም።"),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "መገለጫዎ፣ ልጥፎችዎ፣ ምላሾችዎ፣ መውደዶችዎ እና ድጋሚ ልጥፎችዎ"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "መልእክቶችዎ፣ ለሌሎች የላኳቸውንም ጨምሮ፣ እና በውስጣቸው ያሉ ፎቶዎችና የድምፅ መልእክቶች"),
+      "ui_delete_account_people":
+          MessageLookupByLibrary.simpleMessage("ተከታዮችዎ፣ የሚከተሏቸው ሰዎች እና ቅንብሮችዎ"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "የጀመሯቸው ማህበረሰቦች ረጅም ጊዜ ላገለገለው አወያይ ወይም አባል ይተላለፋሉ። ሌላ ማንም የሌለበት ማህበረሰብ ይዘጋል።"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("መለያዎን ይሰርዙ?"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("ምንም ነገር መልሰው ማግኘት አይችሉም።"),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("መለያዎ ተሰርዟል።"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("የተሰረዘ መለያ"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "ይህ መለያ ተሰርዟል፣ ስለዚህ ከአሁን በኋላ እዚህ መልእክት መላክ አይቻልም።"),
     };
 
 final messageLookup = MessageLookup();

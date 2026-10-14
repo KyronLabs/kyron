@@ -1481,6 +1481,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "عکس‌ها و کلیپ‌هایی که دیگران منتشر می‌کنند اینجا نشان داده می‌شوند."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("دنبال کردن"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("حذف حساب"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "با این کار حساب Kyron شما برای همیشه حذف می‌شود. این کار برگشت‌پذیر نیست."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "نمایه، پست‌ها، پاسخ‌ها، پسندها و بازنشرهای شما"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "پیام‌های شما، از جمله آن‌هایی که برای دیگران فرستاده‌اید، و عکس‌ها و پیام‌های صوتی داخل آن‌ها"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "دنبال‌کنندگان شما، افرادی که دنبال می‌کنید و تنظیمات شما"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "انجمن‌هایی که ساخته‌اید به قدیمی‌ترین ناظر یا عضو آن‌ها سپرده می‌شوند. انجمنی که عضو دیگری ندارد بسته می‌شود."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("حساب شما حذف شود؟"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "دیگر نمی‌توانید هیچ‌کدام را برگردانید."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("حساب شما حذف شد."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("حساب حذف‌شده"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "این حساب حذف شده است، بنابراین دیگر نمی‌توان اینجا پیام فرستاد."),
     };
 
 final messageLookup = MessageLookup();

@@ -1496,6 +1496,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "လူများ တင်သော ဓာတ်ပုံနှင့် ကလစ်များကို ဤနေရာတွင် ပြပါမည်။"),
       "ui_follow": MessageLookupByLibrary.simpleMessage("ဖော်လိုလုပ်ရန်"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("အကောင့် ဖျက်ရန်"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "၎င်းသည် သင့် Kyron အကောင့်ကို အပြီးတိုင် ဖျက်ပါမည်။ ပြန်ပြင်၍ မရပါ။"),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "သင့်ပရိုဖိုင်၊ ပို့စ်များ၊ ပြန်စာများ၊ နှစ်သက်မှုများနှင့် ပြန်တင်မှုများ"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "အခြားသူများထံ ပို့ခဲ့သည်များအပါအဝင် သင့်မက်ဆေ့ချ်များနှင့် ၎င်းတို့ထဲရှိ ဓာတ်ပုံနှင့် အသံမှတ်စုများ"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "သင့်နောက်လိုက်များ၊ သင်လိုက်နေသူများနှင့် သင့်ဆက်တင်များ"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "သင်စတင်ခဲ့သော အသိုင်းအဝိုင်းများကို အကြာဆုံးရှိနေသော စီမံသူ သို့မဟုတ် အဖွဲ့ဝင်ထံ လွှဲပေးပါမည်။ အခြားမည်သူမျှ မရှိသော အသိုင်းအဝိုင်းကို ပိတ်ပါမည်။"),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("သင့်အကောင့်ကို ဖျက်မလား။"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "၎င်းမှ မည်သည့်အရာကိုမျှ ပြန်ရနိုင်မည် မဟုတ်ပါ။"),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("သင့်အကောင့်ကို ဖျက်ပြီးပါပြီ။"),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("ဖျက်ထားသော အကောင့်"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "ဤအကောင့်ကို ဖျက်ထားပြီးဖြစ်၍ ဤနေရာသို့ မက်ဆေ့ချ် ပို့၍ မရတော့ပါ။"),
     };
 
 final messageLookup = MessageLookup();

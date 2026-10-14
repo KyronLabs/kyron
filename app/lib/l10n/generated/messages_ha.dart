@@ -1489,6 +1489,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Hotuna da bidiyoyin da mutane suke wallafawa za su bayyana a nan."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Bi"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Goge asusu"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Wannan zai goge asusunka na Kyron gaba ɗaya. Ba za a iya mayar da shi ba."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Bayanan martabarka, rubuce-rubucenka, amsoshinka, abubuwan da ka so da sake wallafawa"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Saƙonninka, har da waɗanda ka aika wa wasu, da hotuna da saƙonnin murya da ke cikinsu"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Mabiyanka, mutanen da kake bi, da saitunanka"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Al'ummomin da ka kafa za su koma ga mai sa ido ko memba mafi daɗewa a ciki. Wanda babu kowa a ciki za a rufe shi."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Ka goge asusunka?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Ba za ka iya dawo da komai daga ciki ba."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("An goge asusunka."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Asusun da aka goge"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "An goge wannan asusun, don haka ba za a iya aika saƙonni a nan ba kuma."),
     };
 
 final messageLookup = MessageLookup();

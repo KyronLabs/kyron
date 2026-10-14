@@ -752,5 +752,16 @@
   "ui_explore_communities": "ชุมชนที่น่าเข้าร่วม",
   "ui_explore_grid_empty": "ยังไม่มีอะไรให้ดู",
   "ui_explore_grid_empty_detail": "รูปภาพและคลิปที่ผู้คนโพสต์จะแสดงที่นี่",
-  "ui_follow": "ติดตาม"
+  "ui_follow": "ติดตาม",
+  "ui_delete_account": "ลบบัญชี",
+  "ui_delete_account_intro": "การดำเนินการนี้จะลบบัญชี Kyron ของคุณอย่างถาวรและไม่สามารถย้อนกลับได้",
+  "ui_delete_account_posts": "โปรไฟล์ โพสต์ การตอบกลับ การถูกใจ และการรีโพสต์ของคุณ",
+  "ui_delete_account_messages": "ข้อความของคุณ รวมถึงข้อความที่คุณส่งถึงผู้อื่น และรูปภาพและข้อความเสียงในนั้น",
+  "ui_delete_account_people": "ผู้ติดตามของคุณ คนที่คุณติดตาม และการตั้งค่าของคุณ",
+  "ui_delete_account_communities": "ชุมชนที่คุณสร้างจะถูกส่งต่อให้ผู้ดูแลหรือสมาชิกที่อยู่นานที่สุด ชุมชนที่ไม่มีใครอื่นจะถูกปิด",
+  "ui_delete_account_confirm_title": "ลบบัญชีของคุณใช่ไหม",
+  "ui_delete_account_confirm_detail": "คุณจะไม่สามารถกู้คืนสิ่งใดได้เลย",
+  "ui_delete_account_done": "ลบบัญชีของคุณแล้ว",
+  "ui_dm_deleted_account": "บัญชีที่ถูกลบ",
+  "ui_dm_deleted_account_detail": "บัญชีนี้ถูกลบแล้ว จึงไม่สามารถส่งข้อความมาที่นี่ได้อีก"
 }

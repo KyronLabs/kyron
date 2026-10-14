@@ -1489,6 +1489,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Ảnh và clip mọi người đăng sẽ hiện ở đây."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Theo dõi"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Xóa tài khoản"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Thao tác này sẽ xóa vĩnh viễn tài khoản Kyron của bạn và không thể hoàn tác."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Hồ sơ, bài viết, câu trả lời, lượt thích và bài đăng lại của bạn"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Tin nhắn của bạn, kể cả tin nhắn bạn đã gửi cho người khác, cùng ảnh và tin nhắn thoại trong đó"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Người theo dõi bạn, những người bạn theo dõi và cài đặt của bạn"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Cộng đồng bạn tạo sẽ được chuyển cho người kiểm duyệt hoặc thành viên lâu năm nhất. Cộng đồng không còn ai khác sẽ bị đóng."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Xóa tài khoản của bạn?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Bạn sẽ không thể khôi phục bất kỳ thứ gì."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Tài khoản của bạn đã bị xóa."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Tài khoản đã xóa"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản này đã bị xóa nên không thể gửi tin nhắn ở đây nữa."),
     };
 
 final messageLookup = MessageLookup();

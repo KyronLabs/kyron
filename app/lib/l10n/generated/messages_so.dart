@@ -1494,6 +1494,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Sawirrada iyo muuqaallada ay dadku dhigaan ayaa halkan ka soo muuqan doona."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Raac"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Tirtir akoonka"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Tani waxay si joogto ah u tirtiraysaa akoonkaaga Kyron. Dib looma celin karo."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Astaantaada, qoraalladaada, jawaabahaaga, waxyaabaha aad jeclaatay iyo dib-u-daabacaadahaaga"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Fariimahaaga, oo ay ku jiraan kuwii aad u dirtay dad kale, iyo sawirrada iyo codadka ku jira"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Kuwa ku raaca, dadka aad raacdo, iyo dejimahaaga"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Bulshooyinka aad bilowday waxaa loo wareejinayaa maamulaha ama xubinta ugu waqtiga dheer. Bulsho aan qof kale ku jirin waa la xirayaa."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Ma tirtirtaa akoonkaaga?"),
+      "ui_delete_account_confirm_detail":
+          MessageLookupByLibrary.simpleMessage("Waxba kama soo celin kartid."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Akoonkaaga waa la tirtiray."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Akoon la tirtiray"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Akoonkan waa la tirtiray, sidaa darteed fariimo halkan looma diri karo mar dambe."),
     };
 
 final messageLookup = MessageLookup();

@@ -752,5 +752,16 @@
   "ui_explore_communities": "Yhteisöjä, joihin liittyä",
   "ui_explore_grid_empty": "Ei vielä mitään katsottavaa",
   "ui_explore_grid_empty_detail": "Ihmisten julkaisemat kuvat ja leikkeet näkyvät täällä.",
-  "ui_follow": "Seuraa"
+  "ui_follow": "Seuraa",
+  "ui_delete_account": "Poista tili",
+  "ui_delete_account_intro": "Tämä poistaa Kyron-tilisi pysyvästi. Toimintoa ei voi kumota.",
+  "ui_delete_account_posts": "Profiilisi, julkaisusi, vastauksesi, tykkäyksesi ja uudelleenjulkaisusi",
+  "ui_delete_account_messages": "Viestisi, myös muille lähettämäsi, sekä niiden kuvat ja ääniviestit",
+  "ui_delete_account_people": "Seuraajasi, seuraamasi ihmiset ja asetuksesi",
+  "ui_delete_account_communities": "Perustamasi yhteisöt siirtyvät pisimpään mukana olleelle valvojalle tai jäsenelle. Yhteisö, jossa ei ole ketään muuta, suljetaan.",
+  "ui_delete_account_confirm_title": "Poistetaanko tilisi?",
+  "ui_delete_account_confirm_detail": "Et saa mitään siitä takaisin.",
+  "ui_delete_account_done": "Tilisi on poistettu.",
+  "ui_dm_deleted_account": "Poistettu tili",
+  "ui_dm_deleted_account_detail": "Tämä tili on poistettu, joten tänne ei voi enää lähettää viestejä."
 }

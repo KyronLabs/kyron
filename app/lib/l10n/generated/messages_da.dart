@@ -1523,6 +1523,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Fotos og klip, som folk slår op, vises her."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Følg"),
+      "ui_delete_account": MessageLookupByLibrary.simpleMessage("Slet konto"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Dette sletter din Kyron-konto permanent. Det kan ikke fortrydes."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Din profil, dine opslag, svar, likes og delinger"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Dine beskeder, også dem du har sendt til andre, og billeder og talebeskeder i dem"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Dine følgere, de personer du følger, og dine indstillinger"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Fællesskaber, du har startet, overgår til den moderator eller det medlem, der har været med længst. Et fællesskab uden andre medlemmer lukkes."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Vil du slette din konto?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Du kan ikke få noget af det tilbage."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Din konto er slettet."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Slettet konto"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Denne konto er slettet, så der kan ikke længere sendes beskeder her."),
     };
 
 final messageLookup = MessageLookup();

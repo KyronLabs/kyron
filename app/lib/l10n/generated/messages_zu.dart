@@ -1498,6 +1498,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Izithombe namaklip abantu abawathumelayo azovela lapha."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Landela"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Susa i-akhawunti"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Lokhu kuzosusa unomphela i-akhawunti yakho ye-Kyron. Akukwazi ukuhlehliswa."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Iphrofayela yakho, okuthunyelwe, izimpendulo, okuthandayo nokuthunyelwe kabusha"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Imilayezo yakho, kuhlanganise neyo oyithumele kwabanye, nezithombe namanothi ezwi akuyo"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Abalandeli bakho, abantu obalandelayo, nezilungiselelo zakho"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Imiphakathi oyiqalile izodluliselwa kumlawuli noma ilungu elihlale isikhathi eside kakhulu. Umphakathi ongenamuntu omunye uzovalwa."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Susa i-akhawunti yakho?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Ngeke ukwazi ukubuyisa noma yini kukho."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("I-akhawunti yakho isusiwe."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("I-akhawunti esusiwe"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Le akhawunti isusiwe, ngakho imilayezo ayisakwazi ukuthunyelwa lapha."),
     };
 
 final messageLookup = MessageLookup();

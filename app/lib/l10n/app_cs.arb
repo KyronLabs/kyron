@@ -752,5 +752,16 @@
   "ui_explore_communities": "Komunity, ke kterým se můžete připojit",
   "ui_explore_grid_empty": "Zatím tu není nic k vidění",
   "ui_explore_grid_empty_detail": "Zde se zobrazí fotky a klipy, které lidé zveřejní.",
-  "ui_follow": "Sledovat"
+  "ui_follow": "Sledovat",
+  "ui_delete_account": "Smazat účet",
+  "ui_delete_account_intro": "Tímto trvale smažete svůj účet Kyron. Tento krok nelze vrátit.",
+  "ui_delete_account_posts": "Váš profil, příspěvky, odpovědi, lajky a sdílení",
+  "ui_delete_account_messages": "Vaše zprávy, včetně těch, které jste poslali ostatním, a fotky a hlasové zprávy v nich",
+  "ui_delete_account_people": "Vaši sledující, lidé, které sledujete, a vaše nastavení",
+  "ui_delete_account_communities": "Komunity, které jste založili, přejdou na nejdéle působícího moderátora nebo člena. Komunita, ve které nikdo jiný není, se zavře.",
+  "ui_delete_account_confirm_title": "Smazat váš účet?",
+  "ui_delete_account_confirm_detail": "Nic z toho už nebudete moct získat zpět.",
+  "ui_delete_account_done": "Váš účet byl smazán.",
+  "ui_dm_deleted_account": "Smazaný účet",
+  "ui_dm_deleted_account_detail": "Tento účet byl smazán, takže sem už nelze posílat zprávy."
 }

@@ -1492,6 +1492,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Овде ће се појавити фотографије и снимци које људи објављују."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Прати"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Избриши налог"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Овим се трајно брише ваш Kyron налог. То се не може опозвати."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Ваш профил, објаве, одговори, свиђања и поновне објаве"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Ваше поруке, укључујући оне које сте послали другима, и фотографије и гласовне поруке у њима"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Ваши пратиоци, људи које пратите и ваша подешавања"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Заједнице које сте покренули прелазе на модератора или члана који је најдуже у њима. Заједница у којој нема никог другог се затвара."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Избрисати ваш налог?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Ништа од тога нећете моћи да вратите."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Ваш налог је избрисан."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Избрисан налог"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Овај налог је избрисан, па се овде више не могу слати поруке."),
     };
 
 final messageLookup = MessageLookup();

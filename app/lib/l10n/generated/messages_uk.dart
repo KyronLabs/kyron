@@ -1496,6 +1496,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Тут з'являтимуться фото та кліпи, які публікують люди."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Стежити"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Видалити обліковий запис"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Це назавжди видалить ваш обліковий запис Kyron. Цю дію не можна скасувати."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Ваш профіль, дописи, відповіді, вподобання та репости"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Ваші повідомлення, зокрема надіслані іншим, а також фото й голосові повідомлення в них"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Ваші підписники, люди, на яких ви підписані, і ваші налаштування"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Створені вами спільноти перейдуть до модератора або учасника, який перебуває в них найдовше. Спільноту, у якій більше нікого немає, буде закрито."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Видалити ваш обліковий запис?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Ви не зможете нічого з цього повернути."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Ваш обліковий запис видалено."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Видалений обліковий запис"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Цей обліковий запис видалено, тому сюди більше не можна надсилати повідомлення."),
     };
 
 final messageLookup = MessageLookup();

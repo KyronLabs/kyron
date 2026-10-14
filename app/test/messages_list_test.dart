@@ -297,6 +297,29 @@ void main() {
       ],
     };
 
+    testWidgets('a conversation with nobody left in it says Deleted account',
+        (tester) async {
+      // What a deletion leaves on the other side: the thread, their own
+      // messages, and nobody to name it after.
+      await _pump(
+        tester,
+        _messages(),
+        lists: {
+          ConversationFilter.all: [
+            // No people: the default, and what the deletion left.
+            Conversation(
+              id: 'gone',
+              lastMessage: _msg(body: 'are you there?'),
+              lastMessageAt: DateTime(2026, 10, 12),
+            ),
+          ],
+        },
+      );
+
+      expect(find.text('Deleted account'), findsOneWidget);
+      expect(find.text('Empty conversation'), findsNothing);
+    });
+
     testWidgets('says what was sent, and whether it was seen', (tester) async {
       await _pump(tester, _messages(), lists: lists);
 

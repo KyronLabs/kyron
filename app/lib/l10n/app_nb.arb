@@ -752,5 +752,16 @@
   "ui_explore_communities": "Fellesskap du kan bli med i",
   "ui_explore_grid_empty": "Ingenting å se ennå",
   "ui_explore_grid_empty_detail": "Bilder og klipp som folk legger ut, vises her.",
-  "ui_follow": "Følg"
+  "ui_follow": "Følg",
+  "ui_delete_account": "Slett konto",
+  "ui_delete_account_intro": "Dette sletter Kyron-kontoen din permanent. Det kan ikke angres.",
+  "ui_delete_account_posts": "Profilen din, innleggene, svarene, likerklikkene og delingene dine",
+  "ui_delete_account_messages": "Meldingene dine, også de du har sendt til andre, og bildene og talemeldingene i dem",
+  "ui_delete_account_people": "Følgerne dine, personene du følger, og innstillingene dine",
+  "ui_delete_account_communities": "Fellesskap du har startet, går til moderatoren eller medlemmet som har vært med lengst. Et fellesskap uten andre medlemmer stenges.",
+  "ui_delete_account_confirm_title": "Vil du slette kontoen din?",
+  "ui_delete_account_confirm_detail": "Du får ikke tilbake noe av det.",
+  "ui_delete_account_done": "Kontoen din er slettet.",
+  "ui_dm_deleted_account": "Slettet konto",
+  "ui_dm_deleted_account_detail": "Denne kontoen er slettet, så det kan ikke lenger sendes meldinger hit."
 }

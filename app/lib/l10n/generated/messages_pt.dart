@@ -1491,6 +1491,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "As fotos e os clipes que as pessoas publicarem aparecerão aqui."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Seguir"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Excluir conta"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Isso exclui permanentemente sua conta do Kyron. Não é possível desfazer."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Seu perfil, publicações, respostas, curtidas e republicações"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Suas mensagens, incluindo as que você enviou para outras pessoas, e as fotos e notas de voz nelas"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Seus seguidores, as pessoas que você segue e suas configurações"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "As comunidades que você criou passam para o moderador ou membro mais antigo. Uma comunidade sem mais ninguém é encerrada."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Excluir sua conta?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Você não poderá recuperar nada disso."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Sua conta foi excluída."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Conta excluída"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Esta conta foi excluída, então não é mais possível enviar mensagens aqui."),
     };
 
 final messageLookup = MessageLookup();

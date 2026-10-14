@@ -1590,6 +1590,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Снимките и клиповете, които хората публикуват, ще се появяват тук."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Следвай"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Изтриване на профила"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Това изтрива завинаги профила ви в Kyron. Действието не може да бъде отменено."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Профилът ви, публикациите, отговорите, харесванията и споделянията ви"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Съобщенията ви, включително изпратените до други хора, и снимките и гласовите бележки в тях"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Последователите ви, хората, които следвате, и настройките ви"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Общностите, които сте създали, преминават към най-дълго служилия модератор или член. Общност, в която няма никой друг, се закрива."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Да се изтрие ли профилът ви?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Няма да можете да възстановите нищо от това."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Профилът ви е изтрит."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Изтрит профил"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Този профил е изтрит, така че вече не могат да се изпращат съобщения тук."),
     };
 
 final messageLookup = MessageLookup();

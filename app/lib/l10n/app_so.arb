@@ -752,5 +752,16 @@
   "ui_explore_communities": "Bulshooyin aad ku biiri karto",
   "ui_explore_grid_empty": "Weli wax la daawado ma jiraan",
   "ui_explore_grid_empty_detail": "Sawirrada iyo muuqaallada ay dadku dhigaan ayaa halkan ka soo muuqan doona.",
-  "ui_follow": "Raac"
+  "ui_follow": "Raac",
+  "ui_delete_account": "Tirtir akoonka",
+  "ui_delete_account_intro": "Tani waxay si joogto ah u tirtiraysaa akoonkaaga Kyron. Dib looma celin karo.",
+  "ui_delete_account_posts": "Astaantaada, qoraalladaada, jawaabahaaga, waxyaabaha aad jeclaatay iyo dib-u-daabacaadahaaga",
+  "ui_delete_account_messages": "Fariimahaaga, oo ay ku jiraan kuwii aad u dirtay dad kale, iyo sawirrada iyo codadka ku jira",
+  "ui_delete_account_people": "Kuwa ku raaca, dadka aad raacdo, iyo dejimahaaga",
+  "ui_delete_account_communities": "Bulshooyinka aad bilowday waxaa loo wareejinayaa maamulaha ama xubinta ugu waqtiga dheer. Bulsho aan qof kale ku jirin waa la xirayaa.",
+  "ui_delete_account_confirm_title": "Ma tirtirtaa akoonkaaga?",
+  "ui_delete_account_confirm_detail": "Waxba kama soo celin kartid.",
+  "ui_delete_account_done": "Akoonkaaga waa la tirtiray.",
+  "ui_dm_deleted_account": "Akoon la tirtiray",
+  "ui_dm_deleted_account_detail": "Akoonkan waa la tirtiray, sidaa darteed fariimo halkan looma diri karo mar dambe."
 }

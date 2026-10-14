@@ -1498,6 +1498,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
           "Les photos et clips que les gens publient apparaîtront ici."),
       "ui_follow": MessageLookupByLibrary.simpleMessage("Suivre"),
+      "ui_delete_account":
+          MessageLookupByLibrary.simpleMessage("Supprimer le compte"),
+      "ui_delete_account_intro": MessageLookupByLibrary.simpleMessage(
+          "Cette action supprime définitivement votre compte Kyron. Elle est irréversible."),
+      "ui_delete_account_posts": MessageLookupByLibrary.simpleMessage(
+          "Votre profil, vos publications, réponses, mentions J'aime et republications"),
+      "ui_delete_account_messages": MessageLookupByLibrary.simpleMessage(
+          "Vos messages, y compris ceux que vous avez envoyés à d'autres personnes, ainsi que les photos et messages vocaux qu'ils contiennent"),
+      "ui_delete_account_people": MessageLookupByLibrary.simpleMessage(
+          "Vos abonnés, les personnes que vous suivez et vos paramètres"),
+      "ui_delete_account_communities": MessageLookupByLibrary.simpleMessage(
+          "Les communautés que vous avez créées passent au modérateur ou au membre le plus ancien. Une communauté sans autre membre est fermée."),
+      "ui_delete_account_confirm_title":
+          MessageLookupByLibrary.simpleMessage("Supprimer votre compte ?"),
+      "ui_delete_account_confirm_detail": MessageLookupByLibrary.simpleMessage(
+          "Vous ne pourrez rien en récupérer."),
+      "ui_delete_account_done":
+          MessageLookupByLibrary.simpleMessage("Votre compte a été supprimé."),
+      "ui_dm_deleted_account":
+          MessageLookupByLibrary.simpleMessage("Compte supprimé"),
+      "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
+          "Ce compte a été supprimé : il n'est plus possible d'envoyer des messages ici."),
     };
 
 final messageLookup = MessageLookup();
