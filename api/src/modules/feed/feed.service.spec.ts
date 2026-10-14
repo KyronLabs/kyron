@@ -688,6 +688,121 @@ describe('FeedService', () => {
     });
   });
 
+  describe('listExplore', () => {
+    const HOUR = 3_600_000;
+    const candidate = (
+      id: string,
+      authorId: string,
+      hoursAgo: number,
+      likes = 0,
+    ) =>
+      ({
+        ...row(id, new Date(Date.now() - hoursAgo * HOUR)),
+        authorId,
+        likeCount: likes,
+      }) as unknown as Row;
+
+    it('asks for picture and video posts that are not the reader’s own', async () => {
+      post.findMany.mockResolvedValueOnce([]);
+      follow.findMany.mockResolvedValue([]);
+      await (await service()).listExplore(VIEWER, 20);
+
+      const where = (post.findMany.mock.calls[0][0] as { where: unknown })
+        .where;
+      expect(where).toEqual(
+        expect.objectContaining({
+          deletedAt: null,
+          NOT: [{ authorId: VIEWER }],
+          media: { some: { kind: { in: ['IMAGE', 'VIDEO'] } } },
+        }),
+      );
+    });
+
+    it('puts strangers before the people the reader follows, best first', async () => {
+      // Explore is for finding; the people they follow are already in Home.
+      post.findMany
+        .mockResolvedValueOnce([
+          candidate('followed-hit', 'friend', 1, 50),
+          candidate('stranger-new', 'stranger', 1, 0),
+          candidate('stranger-hit', 'stranger', 30, 40),
+          candidate('stranger-old', 'stranger', 300, 0),
+        ])
+        .mockImplementationOnce((args: unknown) => {
+          const ids = (args as { where: { id: { in: string[] } } }).where.id.in;
+          // Out of order on purpose: the page keeps the ranking's order.
+          return Promise.resolve([...ids].reverse().map((id) => row(id)));
+        });
+      follow.findMany.mockResolvedValue([{ followingId: 'friend' }]);
+
+      const page = await (await service()).listExplore(VIEWER, 20);
+
+      expect(page.items.map((p) => p.id)).toEqual([
+        'stranger-hit',
+        'stranger-new',
+        'stranger-old',
+        'followed-hit',
+      ]);
+      expect(page.nextCursor).toBeNull();
+    });
+
+    it('pages against the clock of the first page, so nothing reshuffles', async () => {
+      const pool = Array.from({ length: 5 }, (_, i) =>
+        candidate(`p${i}`, 'stranger', i + 1),
+      );
+      post.findMany
+        .mockResolvedValueOnce(pool)
+        .mockImplementationOnce((args: unknown) =>
+          Promise.resolve(
+            (args as { where: { id: { in: string[] } } }).where.id.in.map(
+              (id) => row(id),
+            ),
+          ),
+        );
+      follow.findMany.mockResolvedValue([]);
+
+      const first = await (await service()).listExplore(VIEWER, 2);
+      expect(first.items.map((p) => p.id)).toEqual(['p0', 'p1']);
+      expect(first.nextCursor).toMatch(/^r\d+-2$/);
+
+      post.findMany
+        .mockResolvedValueOnce(pool)
+        .mockImplementationOnce((args: unknown) =>
+          Promise.resolve(
+            (args as { where: { id: { in: string[] } } }).where.id.in.map(
+              (id) => row(id),
+            ),
+          ),
+        );
+      const second = await (
+        await service()
+      ).listExplore(VIEWER, 2, first.nextCursor!);
+      expect(second.items.map((p) => p.id)).toEqual(['p2', 'p3']);
+      // Same minute carried forward.
+      expect(second.nextCursor?.split('-')[0]).toBe(
+        first.nextCursor?.split('-')[0],
+      );
+    });
+
+    it('scores a reply or a repost above a like, and newness above nothing', () => {
+      const now = Date.now();
+      const at = new Date(now - 10 * HOUR);
+      const base = {
+        createdAt: at,
+        likeCount: 0,
+        commentCount: 0,
+        repostCount: 0,
+      };
+      expect(
+        FeedService.exploreScore({ ...base, commentCount: 1 }, now),
+      ).toBeGreaterThan(
+        FeedService.exploreScore({ ...base, likeCount: 1 }, now),
+      );
+      expect(
+        FeedService.exploreScore({ ...base, createdAt: new Date(now) }, now),
+      ).toBeGreaterThan(FeedService.exploreScore(base, now));
+    });
+  });
+
   describe('listSaved', () => {
     it("reads only the reader's own saves, newest first", async () => {
       postSave.findMany.mockResolvedValue([]);
