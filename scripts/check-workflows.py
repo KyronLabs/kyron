@@ -191,6 +191,49 @@ def check_wiring(name: str) -> list[str]:
     return said
 
 
+def check_release_trigger() -> list[str]:
+    """That cutting a release starts the build of it.
+
+    "Create Versioned Release" bumps the version, tags it and pushes the tag
+    with the workflow's own GITHUB_TOKEN -- and GitHub starts no workflow for
+    an event that token caused. So the Release workflow's `on: push: tags`
+    never fires for a tag pushed there: the version is bumped, the tag is
+    up, and nothing builds it. Dispatch is the documented exception, so the
+    release has to be asked for by name.
+    """
+    said: list[str] = []
+    cut = yaml.safe_load((WORKFLOWS / "create-release.yml").read_text(encoding="utf-8"))
+    release = yaml.safe_load((WORKFLOWS / "flutter-release.yml").read_text(encoding="utf-8"))
+
+    # PyYAML reads the key `on` as the boolean True.
+    triggers = release.get("on", release.get(True)) or {}
+    if "workflow_dispatch" not in triggers:
+        said.append(
+            "flutter-release.yml: no workflow_dispatch trigger, so "
+            "create-release.yml has no way to start it -- a tag pushed with "
+            "GITHUB_TOKEN does not"
+        )
+
+    runs = "\n".join(
+        str(step.get("run", ""))
+        for job in (cut.get("jobs") or {}).values()
+        for step in job.get("steps", [])
+    )
+    if "git push" in runs and "gh workflow run flutter-release.yml" not in runs:
+        said.append(
+            "create-release.yml: pushes the tag and stops there. A push made "
+            "with GITHUB_TOKEN starts no workflow, so the release is never "
+            "built; dispatch flutter-release.yml on the tag"
+        )
+    elif (cut.get("permissions") or {}).get("actions") != "write":
+        said.append(
+            "create-release.yml: dispatching a workflow needs "
+            "`permissions: actions: write`"
+        )
+
+    return said
+
+
 def main() -> int:
     problems: list[str] = []
     for name, publish_job in PUBLISHING.items():
@@ -201,6 +244,8 @@ def main() -> int:
 
     for name in PUBLISHING:
         problems += check_install_guard(name)
+
+    problems += check_release_trigger()
 
     if problems:
         for problem in problems:

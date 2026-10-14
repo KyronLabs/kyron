@@ -152,13 +152,20 @@ jobs:
       # build N instead of being refused.
       #
       # `ANDROID_DEV_KEYSTORE_BASE64` if it is set, so development builds can
-      # have a key of their own; otherwise the release key, so this works
-      # today without anybody creating a second secret. Taken as a set rather
-      # than field by field -- half of one keystore and half of another is a
-      # build failure with a confusing message.
+      # have a key of their own, taken as a set rather than field by field --
+      # half of one keystore and half of another is a build failure with a
+      # confusing message.
       #
-      # With neither -- which is the state this repository is actually in --
-      # the key committed at app/android/dev-signing/. There is always a key.
+      # Never the release key. That is the Play upload key, and it used to be
+      # the fallback here: so adding it as a secret, to publish to Play, would
+      # quietly re-sign every development build with it, and every phone
+      # carrying the last one would refuse the next as a different app until
+      # it was uninstalled. The upload key signs what goes to Play and nothing
+      # else.
+      #
+      # Without a development key -- which is the state this repository is
+      # actually in -- the key committed at app/android/dev-signing/. There is
+      # always a key.
       # A build signed with one nobody has seen before is a build nobody can
       # install, and "set a secret first" is not an answer a fork can use.
       - name: Write the signing key
@@ -168,10 +175,6 @@ jobs:
           DEV_STORE_PASSWORD: ${{ secrets.ANDROID_DEV_KEYSTORE_PASSWORD }}
           DEV_KEY_PASSWORD: ${{ secrets.ANDROID_DEV_KEY_PASSWORD }}
           DEV_KEY_ALIAS: ${{ secrets.ANDROID_DEV_KEY_ALIAS }}
-          RELEASE_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-          RELEASE_STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          RELEASE_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-          RELEASE_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
         run: |
           set -euo pipefail
           if [ -n "$DEV_KEYSTORE" ]; then
@@ -180,12 +183,6 @@ jobs:
             store_password=$DEV_STORE_PASSWORD
             key_password=$DEV_KEY_PASSWORD
             key_alias=$DEV_KEY_ALIAS
-          elif [ -n "$RELEASE_KEYSTORE" ]; then
-            which=release
-            keystore=$RELEASE_KEYSTORE
-            store_password=$RELEASE_STORE_PASSWORD
-            key_password=$RELEASE_KEY_PASSWORD
-            key_alias=$RELEASE_KEY_ALIAS
           else
             # The key in the repository. Not a fallback to nothing: there is
             # always a key, because a build signed with a key nobody has seen

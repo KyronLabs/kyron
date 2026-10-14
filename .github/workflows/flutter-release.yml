@@ -4,6 +4,10 @@ on:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
+  # How "Create Versioned Release" starts it: that workflow pushes the tag
+  # with its own token, and a push made with that token starts nothing. Run by
+  # hand, pick the version tag under "Use workflow from", not a branch.
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -53,6 +57,16 @@ jobs:
         env:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
+          # Dispatched by hand, this can be pointed at a branch. Say that
+          # plainly rather than "Tag main does not match pubspec version".
+          case "$GITHUB_REF" in
+            refs/tags/v*) ;;
+            *)
+              echo "Release builds a version tag, and this run is on $GITHUB_REF."
+              echo "Run it from a vX.Y.Z tag, or use Create Versioned Release."
+              exit 1
+              ;;
+          esac
           pubspec_version=$(sed -nE 's/^version: ([0-9]+\.[0-9]+\.[0-9]+).*/\1/p' pubspec.yaml)
           tag_version="${RELEASE_TAG#v}"
           test "$pubspec_version" = "$tag_version" || {
@@ -347,13 +361,19 @@ jobs:
         run: |
           {
             echo 'notes<<KYRON_NOTES_EOF'
-            python3 scripts/changelog.py show "$VERSION"
+            # GitHub refuses a release body over 125,000 characters, at the
+            # end of the run. The section is cut between entries to leave
+            # room for the install notes below it.
+            python3 scripts/changelog.py show "$VERSION" --max 120000
             echo 'KYRON_NOTES_EOF'
           } >> "$GITHUB_ENV"
 
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v2
         with:
+          # Named, not inferred from the event: started by a dispatch, the
+          # run's ref is still the tag, but saying so costs nothing.
+          tag_name: ${{ github.ref_name }}
           name: Kyron ${{ needs.checks.outputs.version }}
           # The changelog, not GitHub's generated notes. Generated notes cover
           # everything since the previous tag, and the previous tag is nearly

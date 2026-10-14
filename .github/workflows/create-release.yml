@@ -15,6 +15,8 @@ on:
 
 permissions:
   contents: write
+  # To start the Release workflow on the tag; see the last step.
+  actions: write
 
 # Two of these at once would race on the version bump and push, and the loser
 # would tag a version it did not write.
@@ -45,6 +47,40 @@ jobs:
       - name: Require notes under Unreleased
         run: python3 scripts/changelog.py unreleased
 
+      # The same JDK the release build signs with; the check below reads the
+      # key through it.
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # Also before the bump. Release needs these to sign the bundle and give
+      # it push, and it reads them only once the tag exists -- so a missing or
+      # mistyped one left a version committed and tagged with nothing built
+      # under it. The upload key's fingerprints are public; they go in the
+      # run summary to compare with Play Console's upload key certificate.
+      - name: Check the release secrets
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          fingerprints=$(scripts/check-release-secrets.sh)
+          {
+            echo "### Upload key"
+            echo
+            echo "Play Console → Test and release → App integrity → Upload key"
+            echo "certificate should show the same."
+            echo
+            echo '```'
+            echo "$fingerprints"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Bump pubspec version
         id: version
         run: |
@@ -64,3 +100,21 @@ jobs:
           git commit -m "chore(release): v${VERSION}"
           git tag -a "v${VERSION}" -m "Kyron v${VERSION}"
           git push origin main "v${VERSION}"
+
+      # The tag alone starts nothing. It was pushed with this workflow's own
+      # GITHUB_TOKEN, and GitHub runs no workflow for an event that token
+      # caused -- so the Release workflow's `on: push: tags` never fires for
+      # it, and the version would be bumped and tagged with nothing built.
+      # A dispatch is the documented exception, so the release is asked for
+      # by name, on the tag just pushed. scripts/check-workflows.py holds
+      # this in place.
+      - name: Start the release build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh workflow run flutter-release.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref "v${VERSION}"
+          echo "Release started for v${VERSION}: the bundle, APKs and Windows" \
+            "app will be on the GitHub release when it finishes." >> "$GITHUB_STEP_SUMMARY"
