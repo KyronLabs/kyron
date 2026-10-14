@@ -332,9 +332,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Průvodci a odpovědi na časté otázky",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("uživatelské jméno"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Hashtagy se tu objeví, jakmile je lidé začnou používat.",
-      ),
       "helpAndSupport":
           MessageLookupByLibrary.simpleMessage("Nápověda a podpora"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("Centrum nápovědy"),
@@ -440,9 +437,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "Nepodařilo se načíst oznámení",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Nepodařilo se načíst návrhy",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "Nepodařilo se načíst členy",
       ),
@@ -461,12 +455,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "Nepodařilo se načíst tuto odpověď",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Nepodařilo se načíst témata",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Nepodařilo se načíst trendy",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "Nepodařilo se načíst populární tagy",
@@ -586,9 +574,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "Zatím žádná sdílení",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Zatím žádná témata",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "Žádný populární tag neodpovídá",
       ),
@@ -599,9 +584,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Zatím tu nikdo není",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Někdo už nezbyl k navržení",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -914,9 +896,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "passwordTooShort": MessageLookupByLibrary.simpleMessage(
         "Heslo je příliš krátké",
       ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Už sledujete všechny lidi, které by Kyron sem dal.",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "Vyberte své zájmy",
       ),
@@ -1077,9 +1056,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("Systém"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Řídit podle nastavení telefonu pro světlý nebo tmavý režim",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Témata nastavuje Kyron a momentálně žádná nejsou. Zkontrolujte to brzy znovu.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Přeložit"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1572,6 +1548,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Zobrazit, když jste online"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Lidé, kterým píšete, vidí zelenou tečku, když máte Kyron otevřený. Když je to vypnuté, neuvidíte ani tu jejich."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("Hledat lidi a příspěvky"),
+      "ui_explore_communities": MessageLookupByLibrary.simpleMessage(
+          "Komunity, ke kterým se můžete připojit"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Zatím tu není nic k vidění"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Zde se zobrazí fotky a klipy, které lidé zveřejní."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Sledovat"),
     };
 
 final messageLookup = MessageLookup();

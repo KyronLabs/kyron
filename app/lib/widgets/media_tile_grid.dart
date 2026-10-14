@@ -35,11 +35,28 @@ class MediaTileGrid extends StatelessWidget {
   /// full screen among the other clips rather than as a post to read.
   final void Function(FeedPost post)? onOpen;
 
+  /// How many columns. Two on a profile and the Videos tab; three on
+  /// Explore, where the point is to see a lot at a glance.
+  final int columns;
+
+  /// Pictures only: no caption and counts over the bottom of each tile, just
+  /// a small mark for a clip or for a post with more than one picture. At
+  /// three columns a tile is too small to carry words.
+  final bool compact;
+
+  /// Round the whole grid. Defaults to one gap all round; a page whose
+  /// other content sits on a wider gutter passes that, so the tiles line up
+  /// under its headings.
+  final EdgeInsetsGeometry? padding;
+
   const MediaTileGrid({
     super.key,
     required this.posts,
     this.videosOnly = false,
     this.onOpen,
+    this.columns = 2,
+    this.compact = false,
+    this.padding,
   });
 
   /// Bounds on how extreme a tile's shape may get.
@@ -63,18 +80,21 @@ class MediaTileGrid extends StatelessWidget {
       return const SliverToBoxAdapter(child: SizedBox.shrink());
     }
 
+    final gap = compact ? SpacingTokens.space4 : SpacingTokens.space8;
     return SliverPadding(
-      padding: const EdgeInsets.all(SpacingTokens.space8),
+      padding: padding ?? EdgeInsets.all(gap),
       sliver: SliverMasonryGrid.count(
-        crossAxisCount: 2,
-        mainAxisSpacing: SpacingTokens.space8,
-        crossAxisSpacing: SpacingTokens.space8,
+        crossAxisCount: columns,
+        mainAxisSpacing: gap,
+        crossAxisSpacing: gap,
         childCount: tiles.length,
         itemBuilder: (context, index) => _Tile(
           post: tiles[index].post,
           media: tiles[index].media,
           ratio: ratioOf(tiles[index].media),
           onOpen: onOpen,
+          columns: columns,
+          compact: compact,
         ),
       ),
     );
@@ -121,11 +141,16 @@ class _Tile extends StatelessWidget {
   final double ratio;
   final void Function(FeedPost post)? onOpen;
 
+  final int columns;
+  final bool compact;
+
   const _Tile({
     required this.post,
     required this.media,
     required this.ratio,
     this.onOpen,
+    this.columns = 2,
+    this.compact = false,
   });
 
   @override
@@ -162,8 +187,8 @@ class _Tile extends StatelessWidget {
                   : Image.network(
                       media.url,
                       fit: BoxFit.cover,
-                      // Two columns, so half the screen wide.
-                      cacheWidth: decodeWidth(context, fraction: 0.5),
+                      // A column's share of the screen.
+                      cacheWidth: decodeWidth(context, fraction: 1 / columns),
                       filterQuality: FilterQuality.low,
                       errorBuilder: (_, __, ___) => ColoredBox(
                         color: scheme.surfaceContainerHighest,
@@ -180,80 +205,93 @@ class _Tile extends StatelessWidget {
             ),
 
             // Marks a clip on a wall that also carries stills.
-            if (media.isVideo)
-              Positioned(
+            if (media.isVideo && !compact)
+              const Positioned(
                 right: 8,
                 top: 8,
                 child: _Chip(icon: Iconsax.play, label: 'Video'),
               ),
 
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: IgnorePointer(
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(8, 16, 8, 6),
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0x00000000), Color(0xB3000000)],
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (caption.isNotEmpty)
-                        Text(
-                          caption,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: TypographyTokens.fontSize1,
-                            fontWeight: FontWeight.w600,
-                            height: 1.25,
-                          ),
-                        ),
-                      const SizedBox(height: 2),
-                      Row(
-                        children: [
-                          const Icon(
-                            Iconsax.heart_copy,
-                            size: 12,
-                            color: Colors.white70,
-                          ),
-                          const SizedBox(width: 3),
-                          Text(
-                            formatCount(post.likes),
-                            style: const TextStyle(
-                              color: Colors.white70,
-                              fontSize: TypographyTokens.fontSize1,
-                            ),
-                          ),
-                          const SizedBox(width: SpacingTokens.space8),
-                          const Icon(
-                            Iconsax.message_copy,
-                            size: 12,
-                            color: Colors.white70,
-                          ),
-                          const SizedBox(width: 3),
-                          Text(
-                            formatCount(post.comments),
-                            style: const TextStyle(
-                              color: Colors.white70,
-                              fontSize: TypographyTokens.fontSize1,
-                            ),
-                          ),
-                        ],
+            if (compact)
+              Positioned(
+                right: 6,
+                top: 6,
+                child: _Mark(
+                  icon: media.isVideo
+                      ? Iconsax.video_play
+                      : post.media.where((m) => m.isVisual).length > 1
+                          ? Iconsax.gallery
+                          : null,
+                ),
+              )
+            else
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: IgnorePointer(
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(8, 16, 8, 6),
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0x00000000), Color(0xB3000000)],
                       ),
-                    ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (caption.isNotEmpty)
+                          Text(
+                            caption,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: TypographyTokens.fontSize1,
+                              fontWeight: FontWeight.w600,
+                              height: 1.25,
+                            ),
+                          ),
+                        const SizedBox(height: 2),
+                        Row(
+                          children: [
+                            const Icon(
+                              Iconsax.heart_copy,
+                              size: 12,
+                              color: Colors.white70,
+                            ),
+                            const SizedBox(width: 3),
+                            Text(
+                              formatCount(post.likes),
+                              style: const TextStyle(
+                                color: Colors.white70,
+                                fontSize: TypographyTokens.fontSize1,
+                              ),
+                            ),
+                            const SizedBox(width: SpacingTokens.space8),
+                            const Icon(
+                              Iconsax.message_copy,
+                              size: 12,
+                              color: Colors.white70,
+                            ),
+                            const SizedBox(width: 3),
+                            Text(
+                              formatCount(post.comments),
+                              style: const TextStyle(
+                                color: Colors.white70,
+                                fontSize: TypographyTokens.fontSize1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),
@@ -265,7 +303,7 @@ class _Chip extends StatelessWidget {
   final IconData icon;
   final String label;
 
-  _Chip({required this.icon, required this.label});
+  const _Chip({required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -290,6 +328,28 @@ class _Chip extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// The small mark in the corner of a compact tile: a clip, or more than one
+/// picture behind it. Nothing for a single still, which is most of them.
+class _Mark extends StatelessWidget {
+  final IconData? icon;
+
+  const _Mark({required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    final glyph = icon;
+    if (glyph == null) return const SizedBox.shrink();
+    // A shadow rather than a backing chip: on a tile a third of the screen
+    // wide, a chip covers a corner of the picture.
+    return Icon(
+      glyph,
+      size: 18,
+      color: Colors.white,
+      shadows: const [Shadow(color: Color(0x80000000), blurRadius: 6)],
     );
   }
 }

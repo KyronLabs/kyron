@@ -94,6 +94,15 @@ export class FeedController {
     return this.svc.listFollowing(req.user.id, query.limit, query.cursor);
   }
 
+  /**
+   * Posts with a picture or a video, ranked, from people the reader does not
+   * follow first. The grid on Explore.
+   */
+  @Get('explore')
+  explore(@Req() req: AuthRequest, @Query() query: ListFeedDto) {
+    return this.svc.listExplore(req.user.id, query.limit, query.cursor);
+  }
+
   /** Posts carrying a video. The top bar's Videos tab. */
   @Get('videos')
   videos(@Req() req: AuthRequest, @Query() query: ListFeedDto) {

@@ -507,27 +507,9 @@ class AppLocalizations {
       Intl.message('literaldraftSaved', name: 'literaldraftSaved');
   String get literalnoDrafts =>
       Intl.message('literalnoDrafts', name: 'literalnoDrafts');
-  String get literalcouldNotLoadTrending => Intl.message(
-        'literalcouldNotLoadTrending',
-        name: 'literalcouldNotLoadTrending',
-      );
   String get literalnothingIsTrendingYet => Intl.message(
         'literalnothingIsTrendingYet',
         name: 'literalnothingIsTrendingYet',
-      );
-  String get literalcouldNotLoadTopics => Intl.message(
-        'literalcouldNotLoadTopics',
-        name: 'literalcouldNotLoadTopics',
-      );
-  String get literalnoTopicsYet =>
-      Intl.message('literalnoTopicsYet', name: 'literalnoTopicsYet');
-  String get literalcouldNotLoadSuggestions => Intl.message(
-        'literalcouldNotLoadSuggestions',
-        name: 'literalcouldNotLoadSuggestions',
-      );
-  String get literalnobodyLeftToSuggest => Intl.message(
-        'literalnobodyLeftToSuggest',
-        name: 'literalnobodyLeftToSuggest',
       );
   String get literalyouExampleCom =>
       Intl.message('literalyouExampleCom', name: 'literalyouExampleCom');
@@ -932,12 +914,6 @@ class AppLocalizations {
         'kyronWordsStillBeingTranslated',
         name: 'kyronWordsStillBeingTranslated',
       );
-  String get hashtagsEmptyDetail =>
-      Intl.message('hashtagsEmptyDetail', name: 'hashtagsEmptyDetail');
-  String get topicsEmptyDetail =>
-      Intl.message('topicsEmptyDetail', name: 'topicsEmptyDetail');
-  String get peopleEmptyDetail =>
-      Intl.message('peopleEmptyDetail', name: 'peopleEmptyDetail');
   String get communitiesEmptyDetail =>
       Intl.message('communitiesEmptyDetail', name: 'communitiesEmptyDetail');
   String get messagesCaughtUp =>

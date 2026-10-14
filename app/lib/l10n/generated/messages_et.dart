@@ -329,9 +329,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Juhendid ja vastused sagedastele küsimustele",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("käepide"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Hashtagid ilmuvad siia, kui inimesed hakkavad neid kasutama.",
-      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("Abi ja tugi"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("Abikeskus"),
       "home": MessageLookupByLibrary.simpleMessage("Avaleht"),
@@ -434,9 +431,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "Teavitusi ei saanud laadida",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Soovitusi ei saanud laadida",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "Liikmeid ei saanud laadida",
       ),
@@ -455,12 +449,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "Vastust ei saanud laadida",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Teemasid ei saanud laadida",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Populaarseid teemasid ei saanud laadida",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "Trendikaid silte ei saanud laadida",
@@ -578,9 +566,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "Uuestijagamisi veel pole",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Teemasid veel pole",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "Ükski trendikas silt ei vasta sellele",
       ),
@@ -591,9 +576,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Siin pole veel kedagi",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Enam pole kedagi soovitada",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -903,9 +885,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "passwordTooShort": MessageLookupByLibrary.simpleMessage(
         "Parool on liiga lühike",
       ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Sa juba jälgid kõiki inimesi, keda Kyron siia paneks.",
-      ),
       "pickYourInterests":
           MessageLookupByLibrary.simpleMessage("Vali oma huvid"),
       "post": MessageLookupByLibrary.simpleMessage("Postitus"),
@@ -1059,9 +1038,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("Süsteem"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Kasuta telefoni enda hele/tume seadistust",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Teemad seadistatakse Kyroni poolt ja praegu pole ühtegi. Tule peagi tagasi.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Tõlgi"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1564,6 +1540,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Näita, kui oled võrgus"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Inimesed, kellega sa suhtled, näevad rohelist täppi, kui Kyron on sul lahti. Kui see on väljas, ei näe sina ka nende oma."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("Otsi inimesi ja postitusi"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("Kogukonnad, millega liituda"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Veel pole midagi vaadata"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Siia ilmuvad fotod ja klipid, mida inimesed postitavad."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Jälgi"),
     };
 
 final messageLookup = MessageLookup();

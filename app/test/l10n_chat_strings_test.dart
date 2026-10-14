@@ -174,6 +174,11 @@ const _keys = [
   'ui_dm_online',
   'ui_dm_show_online',
   'ui_dm_show_online_detail',
+  'ui_explore_search',
+  'ui_explore_communities',
+  'ui_explore_grid_empty',
+  'ui_explore_grid_empty_detail',
+  'ui_follow',
 ];
 
 void main() {

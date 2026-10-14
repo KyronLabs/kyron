@@ -341,9 +341,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Anleitungen und Antworten auf häufige Fragen",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("Benutzername"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags erscheinen hier, sobald Leute sie zu benutzen beginnen.",
-      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("Hilfe & Support"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("Hilfezentrum"),
       "home": MessageLookupByLibrary.simpleMessage("Startseite"),
@@ -449,9 +446,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "Benachrichtigungen konnten nicht geladen werden",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Vorschläge konnten nicht geladen werden",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "Mitglieder konnten nicht geladen werden",
       ),
@@ -470,12 +464,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "Diese Antwort konnte nicht geladen werden",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Themen konnten nicht geladen werden",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Trends konnten nicht geladen werden",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "Konnte Trend-Tags nicht laden",
@@ -597,9 +585,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "Noch keine Reposts",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Noch keine Themen",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "Kein Trend-Tag passt dazu",
       ),
@@ -611,9 +596,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Noch niemand hier",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Niemanden mehr zum Vorschlagen",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -934,9 +916,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "password": MessageLookupByLibrary.simpleMessage("Passwort"),
       "passwordTooShort":
           MessageLookupByLibrary.simpleMessage("Passwort zu kurz"),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Sie folgen bereits allen, die Kyron hier platzieren würde.",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "Wähle deine Interessen",
       ),
@@ -1102,9 +1081,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("System"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Der Hell-/Dunkel-Einstellung des Telefons folgen",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Themen werden von Kyron eingerichtet, und es sind derzeit keine vorhanden. Schauen Sie bald wieder vorbei.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Übersetzen"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1620,6 +1596,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Anzeigen, wenn du online bist"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Wem du schreibst, sieht einen grünen Punkt, solange du Kyron geöffnet hast. Wenn das aus ist, siehst du ihren auch nicht."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("Personen und Beiträge suchen"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("Communities zum Beitreten"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Noch nichts zu sehen"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Fotos und Clips, die andere posten, erscheinen hier."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Folgen"),
     };
 
 final messageLookup = MessageLookup();

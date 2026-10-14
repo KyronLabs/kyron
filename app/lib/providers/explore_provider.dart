@@ -6,8 +6,8 @@ import '../models/profile_summary.dart';
 import '../repositories/feed_repository.dart';
 import '../repositories/profile_repository.dart';
 import '../utils/api_error_message.dart';
-import 'api_client_provider.dart';
 import 'feed_provider.dart';
+import 'profile_provider.dart';
 
 /// A list that is read once and shown whole.
 ///
@@ -117,7 +117,7 @@ class TopicsNotifier extends StateNotifier<ExploreList<Topic>> {
 
 final topicsProvider =
     StateNotifierProvider<TopicsNotifier, ExploreList<Topic>>((ref) {
-  return TopicsNotifier(ProfileRepository(ref.read(apiClientProvider)));
+  return TopicsNotifier(ref.read(profileRepositoryProvider));
 });
 
 /// Accounts worth following, best match first.
@@ -220,7 +220,5 @@ class SuggestedPeopleNotifier extends StateNotifier<SuggestedPeopleState> {
 
 final suggestedPeopleProvider =
     StateNotifierProvider<SuggestedPeopleNotifier, SuggestedPeopleState>((ref) {
-  return SuggestedPeopleNotifier(
-    ProfileRepository(ref.read(apiClientProvider)),
-  );
+  return SuggestedPeopleNotifier(ref.read(profileRepositoryProvider));
 });

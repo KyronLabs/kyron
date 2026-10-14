@@ -271,19 +271,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literaladdAHashtag": MessageLookupByLibrary.simpleMessage("添加话题标签"),
       "literaldraftSaved": MessageLookupByLibrary.simpleMessage("草稿已保存"),
       "literalnoDrafts": MessageLookupByLibrary.simpleMessage("暂无草稿"),
-      "literalcouldNotLoadTrending":
-          MessageLookupByLibrary.simpleMessage("无法加载趋势"),
       "literalnothingIsTrendingYet":
           MessageLookupByLibrary.simpleMessage("暂时没有热点"),
-      "literalcouldNotLoadTopics":
-          MessageLookupByLibrary.simpleMessage("无法加载话题"),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage("暂无话题"),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "无法加载推荐",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "没有更多可推荐的人",
-      ),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
@@ -499,15 +488,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
         "Kyron 的文案仍在翻译中，所以目前大多数界面仍为英文。",
-      ),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "当大家开始使用这些标签时，它们会出现在这里。",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "话题由 Kyron 设置，目前还没有。稍后再来看看。",
-      ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "你已关注 Kyron 会推荐的所有人。",
       ),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "去“发现”找一个，或创建你自己的。",
@@ -1144,6 +1124,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("显示你在线"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "和你聊天的人在你打开 Kyron 时会看到一个绿点。关闭后，你也看不到他们的。"),
+      "ui_explore_search": MessageLookupByLibrary.simpleMessage("搜索用户和帖子"),
+      "ui_explore_communities": MessageLookupByLibrary.simpleMessage("可加入的社区"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("暂时没有可看的内容"),
+      "ui_explore_grid_empty_detail":
+          MessageLookupByLibrary.simpleMessage("大家发布的照片和短片会显示在这里。"),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("关注"),
     };
 
 final messageLookup = MessageLookup();

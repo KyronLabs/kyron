@@ -338,9 +338,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "গাইড ও সাধারণ প্রশ্নের উত্তর",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "হ্যাশট্যাগ এখানে দেখা যাবে যখন মানুষ এগুলো ব্যবহার করতে শুরু করবে।",
-      ),
       "helpAndSupport":
           MessageLookupByLibrary.simpleMessage("সহায়তা ও সাপোর্ট"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("সহায়তা কেন্দ্র"),
@@ -454,9 +451,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "বিজ্ঞপ্তি লোড করা যায়নি",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "সাজেশন লোড করা যায়নি",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "সদস্যরা লোড করা যায়নি",
       ),
@@ -475,12 +469,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "এই উত্তর লোড করা যায়নি",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "টপিক লোড করা যায়নি",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "ট্রেন্ডিং লোড করা যায়নি",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "ট্রেন্ডিং ট্যাগ লোড করা যায়নি",
@@ -600,9 +588,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "এখনও কোনো রিপোস্ট নেই",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "এখনও কোনো টপিক নেই",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "কোনো ট্রেন্ডিং ট্যাগ মিলছে না",
       ),
@@ -614,9 +599,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "এখানে এখনও কেউ নেই",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "কোনো সুপারিশ করার লোক নেই",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -925,9 +907,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "passwordTooShort": MessageLookupByLibrary.simpleMessage(
         "পাসওয়ার্ড খুব সংক্ষিপ্ত",
       ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "আপনি ইতিমধ্যেই Kyron এখানে যাদের দেখাবে তাদের সকলকেই অনুসরণ করছেন।",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "আপনার আগ্রহ নির্বাচন করুন",
       ),
@@ -1085,9 +1064,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("System"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "ফোনের নিজস্ব লাইট বা ডার্ক সেটিং অনুসরণ করুন",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "টপিকগুলি Kyron দ্বারা সেট করা হয় এবং এখন কোনও টপিক নেই। পরে আবার দেখুন।",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("অনুবাদ করুন"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1587,6 +1563,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("অনলাইন থাকলে দেখান"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "আপনি যাদের বার্তা পাঠান, আপনার Kyron খোলা থাকলে তারা একটি সবুজ বিন্দু দেখে। এটি বন্ধ থাকলে আপনিও তাদেরটা দেখবেন না।"),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("লোকজন ও পোস্ট খুঁজুন"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("যোগ দেওয়ার মতো কমিউনিটি"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("এখনও দেখার মতো কিছু নেই"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "মানুষ যে ছবি ও ক্লিপ পোস্ট করে, সেগুলো এখানে দেখা যাবে।"),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("ফলো করুন"),
     };
 
 final messageLookup = MessageLookup();

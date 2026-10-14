@@ -321,9 +321,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "أدلة وإجابات على الأسئلة الشائعة",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("المعرّف"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "تظهر الوسوم هنا عندما يبدأ الناس باستخدامها.",
-      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("مساعدة ودعم"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("مركز المساعدة"),
       "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
@@ -419,9 +416,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "تعذّر تحميل الإشعارات",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "تعذّر تحميل الاقتراحات",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "تعذّر تحميل الأعضاء",
       ),
@@ -440,12 +434,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "تعذّر تحميل هذا الرد",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "تعذّر تحميل المواضيع",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "تعذّر تحميل الرائج",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "تعذّر تحميل الوسوم الرائجة",
@@ -559,9 +547,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "لا إعادة نشر بعد",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "لا توجد مواضيع بعد",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "لا وسم رائج يطابق ذلك",
       ),
@@ -573,9 +558,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "لا أحد هنا بعد",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "لا أحد متبقٍ للاقتراح",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -868,9 +850,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "passwordTooShort": MessageLookupByLibrary.simpleMessage(
         "كلمة المرور قصيرة جدًا",
       ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "أنت بالفعل تتابع كل من كان Kyron سيضعه هنا.",
-      ),
       "pickYourInterests":
           MessageLookupByLibrary.simpleMessage("اختر اهتماماتك"),
       "post": MessageLookupByLibrary.simpleMessage("نشر"),
@@ -1019,9 +998,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("النظام"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "اتباع إعدادات الضوء أو الظلام الخاصة بالهاتف",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "يتم إعداد المواضيع بواسطة Kyron، ولا توجد أي الآن. عُد لاحقًا.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("ترجمة"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1500,6 +1476,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("أظهر عندما تكون متصلًا"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "يرى من تراسلهم نقطة خضراء ما دام Kyron مفتوحًا لديك. عند إيقافها، لن ترى نقاطهم أنت أيضًا."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("ابحث عن أشخاص ومنشورات"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("مجتمعات للانضمام إليها"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("لا شيء لمشاهدته بعد"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "ستظهر هنا الصور والمقاطع التي ينشرها الناس."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("متابعة"),
     };
 
 final messageLookup = MessageLookup();

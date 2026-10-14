@@ -335,9 +335,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Gidse en antwoorde op algemene vrae",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("handvatsel"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Hutsmerke verskyn hier soos mense dit begin gebruik.",
-      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage(
         "Hulp & Ondersteuning",
       ),
@@ -445,9 +442,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "Kon kennisgewings nie laai nie",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "Kon voorstelle nie laai nie",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "Kon die lede nie laai nie",
       ),
@@ -466,12 +460,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "Kon hierdie antwoord nie laai nie",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "Kon onderwerpe nie laai nie",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "Kon trending nie laai nie",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "Kon gewilde etikette nie laai nie",
@@ -590,9 +578,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "Nog geen hersendings nie",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Nog geen onderwerpe nie",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "Geen gewilde etiket pas daarmee nie",
       ),
@@ -604,9 +589,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Nog niemand hier nie",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "Niemand oor om voor te stel nie",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -916,9 +898,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "password": MessageLookupByLibrary.simpleMessage("Wagwoord"),
       "passwordTooShort":
           MessageLookupByLibrary.simpleMessage("Wagwoord te kort"),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Jy volg reeds almal wat Kyron hier sou plaas.",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "Kies jou belangstellings",
       ),
@@ -1075,9 +1054,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("Stelsel"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Volg die telefoon se eie lig- of donker-instelling",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Onderwerpe word deur Kyron opgestel, en daar is tans geen nie. Gaan later kyk.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Vertaal"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1577,6 +1553,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Wys wanneer jy aanlyn is"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Mense vir wie jy boodskappe stuur, sien 'n groen kolletjie terwyl jy Kyron oop het. As dit af is, sien jy ook nie hulle s'n nie."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("Soek mense en plasings"),
+      "ui_explore_communities": MessageLookupByLibrary.simpleMessage(
+          "Gemeenskappe om by aan te sluit"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Nog niks om na te kyk nie"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Foto's en grepe wat mense plaas, sal hier verskyn."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Volg"),
     };
 
 final messageLookup = MessageLookup();

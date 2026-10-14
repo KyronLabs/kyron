@@ -343,9 +343,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Guies i respostes a preguntes comunes",
       ),
       "handle": MessageLookupByLibrary.simpleMessage("Identificador"),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Les etiquetes apareixeran aquí a mesura que la gent les comenci a utilitzar.",
-      ),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("Ajuda i suport"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("Centre d'ajuda"),
       "home": MessageLookupByLibrary.simpleMessage("Inici"),
@@ -458,9 +455,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
         "No s'han pogut carregar les notificacions",
       ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "No s'han pogut carregar les suggerències",
-      ),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
         "No s'han pogut carregar els membres",
       ),
@@ -479,12 +473,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
         "No s'ha pogut carregar aquesta resposta",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "No s'han pogut carregar els temes",
-      ),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "No s'han pogut carregar les tendències",
       ),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
         "No s'han pogut carregar les etiquetes de tendència",
@@ -610,9 +598,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
         "Encara no hi ha republicacions",
       ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Encara no hi ha temes",
-      ),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
         "Cap etiqueta en tendència coincideix",
       ),
@@ -624,9 +609,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
         "Encara no hi ha ningú",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "No queda ningú per suggerir",
       ),
       "literalnormalised": (Object a0) => "#${a0}",
       "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
@@ -946,9 +928,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "passwordTooShort": MessageLookupByLibrary.simpleMessage(
         "Contrasenya massa curta",
       ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Ja segueixes tothom que Kyron posaria aquí.",
-      ),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
         "Tria els teus interessos",
       ),
@@ -1111,9 +1090,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theme_system": MessageLookupByLibrary.simpleMessage("Sistema"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Segueix la configuració de clar/fosc del telèfon",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Els temes els configura Kyron, i ara mateix no n'hi ha cap. Torna més tard.",
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Traduir"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
@@ -1627,6 +1603,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Mostra quan estàs en línia"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Les persones a qui escrius veuen un punt verd mentre tens Kyron obert. Si ho desactives, tu tampoc no veuràs el seu."),
+      "ui_explore_search":
+          MessageLookupByLibrary.simpleMessage("Cerca persones i publicacions"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("Comunitats per unir-t'hi"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Encara no hi ha res per veure"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Les fotos i els clips que publiqui la gent apareixeran aquí."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Segueix"),
     };
 
 final messageLookup = MessageLookup();

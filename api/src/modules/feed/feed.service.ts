@@ -1155,6 +1155,136 @@ export class FeedService {
   }
 
   /**
+   * The grid on Explore: posts with a picture or a video, best first, from
+   * the people the reader does not follow before the people they do.
+   *
+   * Pictures because that is what most posts here are -- two in three carry
+   * one -- and a grid of them is the fastest way to see what a place is
+   * like. Unfollowed first because Explore is for finding; the people the
+   * reader follows are already in Home. They come after rather than not at
+   * all, because on a network this size everybody follows a third of
+   * everybody else, and a grid of strangers only would run out in a row.
+   *
+   * Ranked in memory over the most recent [explorePool] candidates: score is
+   * engagement over age, with age to the power 1.2 rather than a news
+   * ranking's 1.8, so a liked post holds its place for days rather than
+   * hours (a week-old post needs about seventy times the engagement of a
+   * three-hour-old one, against nearly six hundred times). With little
+   * engagement about, that makes it mostly newest first, which is right for
+   * a small network. The cursor carries the minute the first page was ranked
+   * at (`r<minute>-<n>`), so later pages are scored against the same clock;
+   * a like landing between pages can still move a post, and the app drops
+   * the repeat.
+   */
+  async listExplore(
+    viewerId: string,
+    limit = DEFAULT_LIMIT,
+    cursor?: string,
+  ): Promise<FeedPage> {
+    const { minute, offset } = FeedService.exploreCursor(cursor);
+    const now = minute * 60_000;
+
+    const where = await this.withFilters(
+      {
+        deletedAt: null,
+        // NOT rather than authorId: withFilters owns authorId for blocks.
+        NOT: [{ authorId: viewerId }],
+        media: {
+          some: { kind: { in: [MediaKind.IMAGE, MediaKind.VIDEO] } },
+        },
+      },
+      viewerId,
+    );
+
+    const [candidates, follows] = await Promise.all([
+      this.prisma.post.findMany({
+        where,
+        orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+        take: FeedService.explorePool,
+        select: {
+          id: true,
+          authorId: true,
+          createdAt: true,
+          likeCount: true,
+          commentCount: true,
+          repostCount: true,
+        },
+      }),
+      this.prisma.follow.findMany({
+        where: { followerId: viewerId },
+        select: { followingId: true },
+      }),
+    ]);
+
+    const followed = new Set(follows.map((row) => row.followingId));
+    const ranked = candidates
+      .map((post) => ({
+        id: post.id,
+        followed: followed.has(post.authorId),
+        score: FeedService.exploreScore(post, now),
+      }))
+      .sort(
+        (a, b) =>
+          Number(a.followed) - Number(b.followed) ||
+          b.score - a.score ||
+          a.id.localeCompare(b.id),
+      );
+
+    const ids = ranked.slice(offset, offset + limit).map((row) => row.id);
+    if (ids.length === 0) return { items: [], nextCursor: null };
+
+    const rows = await this.prisma.post.findMany({
+      where: { id: { in: ids } },
+      select: this.shapeFor(viewerId),
+    });
+    const byId = new Map(rows.map((row) => [row.id, row]));
+    const items = ids.flatMap((id) => {
+      const row = byId.get(id);
+      return row ? [this.toFeedPost(row)] : [];
+    });
+
+    const next = offset + limit;
+    return {
+      items,
+      nextCursor: next < ranked.length ? `r${minute}-${next}` : null,
+    };
+  }
+
+  /** How many of the newest picture posts Explore ranks among. */
+  static readonly explorePool = 300;
+
+  /**
+   * Engagement over age. A reply or a repost is worth two likes -- each is
+   * somebody deciding the post was worth answering or passing on -- and the
+   * one added to it means a post nobody has touched yet still ranks by how
+   * new it is rather than all tying at nothing.
+   */
+  static exploreScore(
+    post: {
+      createdAt: Date;
+      likeCount: number;
+      commentCount: number;
+      repostCount: number;
+    },
+    now: number,
+  ): number {
+    const hours = Math.max(0, (now - post.createdAt.getTime()) / 3_600_000);
+    const weight =
+      1 + post.likeCount + 2 * post.commentCount + 2 * post.repostCount;
+    return weight / Math.pow(hours + 2, 1.2);
+  }
+
+  /** The minute a ranking was made at, and how far into it a page starts. */
+  static exploreCursor(cursor?: string): { minute: number; offset: number } {
+    const match = cursor ? /^r(\d{1,10})-(\d{1,7})$/i.exec(cursor) : null;
+    if (match) {
+      return { minute: Number(match[1]), offset: Number(match[2]) };
+    }
+    // A first page, or a cursor from some other list: start afresh.
+    return { minute: Math.floor(Date.now() / 60_000), offset: 0 };
+  }
+
+  /**
    * Records one vote and answers with the poll as it now stands.
    *
    * The unique index on (pollId, userId) is what actually enforces one vote

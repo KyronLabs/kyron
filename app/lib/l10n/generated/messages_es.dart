@@ -441,23 +441,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Borrador guardado",
       ),
       "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Sin borradores"),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "No se pudieron cargar las tendencias",
-      ),
       "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
         "Aún no hay tendencias",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "No se pudieron cargar los temas",
-      ),
-      "literalnoTopicsYet": MessageLookupByLibrary.simpleMessage(
-        "Aún no hay temas",
-      ),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "No se pudieron cargar las sugerencias",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "No hay nadie más para sugerir",
       ),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
@@ -817,15 +802,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
         "Las palabras de Kyron todavía se están traduciendo, por lo que la mayoría de las pantallas seguirán en inglés por ahora.",
-      ),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Los hashtags aparecerán aquí cuando la gente empiece a usarlos.",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Kyron configura los temas y ahora no hay ninguno. Vuelve a comprobarlo pronto.",
-      ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Ya sigues a todas las personas que Kyron mostraría aquí.",
       ),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "Encuentra una en Descubrir o crea la tuya.",
@@ -1628,6 +1604,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Mostrar cuando estás en línea"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "Las personas a las que escribes ven un punto verde mientras tienes Kyron abierto. Si lo desactivas, tú tampoco verás el suyo."),
+      "ui_explore_search": MessageLookupByLibrary.simpleMessage(
+          "Buscar personas y publicaciones"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("Comunidades a las que unirte"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("Aún no hay nada que ver"),
+      "ui_explore_grid_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Las fotos y los clips que publique la gente aparecerán aquí."),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("Seguir"),
     };
 
 final messageLookup = MessageLookup();

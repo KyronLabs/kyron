@@ -313,22 +313,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literaladdAHashtag": MessageLookupByLibrary.simpleMessage("ハッシュタグを追加"),
       "literaldraftSaved": MessageLookupByLibrary.simpleMessage("下書きを保存しました"),
       "literalnoDrafts": MessageLookupByLibrary.simpleMessage("下書きはありません"),
-      "literalcouldNotLoadTrending": MessageLookupByLibrary.simpleMessage(
-        "トレンドを読み込めませんでした",
-      ),
       "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
         "まだトレンドがありません",
-      ),
-      "literalcouldNotLoadTopics": MessageLookupByLibrary.simpleMessage(
-        "トピックを読み込めませんでした",
-      ),
-      "literalnoTopicsYet":
-          MessageLookupByLibrary.simpleMessage("まだトピックがありません"),
-      "literalcouldNotLoadSuggestions": MessageLookupByLibrary.simpleMessage(
-        "おすすめを読み込めませんでした",
-      ),
-      "literalnobodyLeftToSuggest": MessageLookupByLibrary.simpleMessage(
-        "これ以上提案する人はいません",
       ),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
@@ -583,15 +569,6 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
         "Kyronの文言はまだ翻訳中のため、現時点ではほとんどの画面が英語のままになっています。",
-      ),
-      "hashtagsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "人々が使い始めると、ここにハッシュタグが表示されます。",
-      ),
-      "topicsEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "トピックはKyronが設定しますが、現在はありません。後で確認してください。",
-      ),
-      "peopleEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "ここに表示されるであろうユーザーは、既にすべてフォローしています。",
       ),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "「Discover」で見つけるか、自分で作成してください。",
@@ -1265,6 +1242,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_show_online": MessageLookupByLibrary.simpleMessage("オンライン状態を表示"),
       "ui_dm_show_online_detail": MessageLookupByLibrary.simpleMessage(
           "メッセージ相手には、あなたがKyronを開いている間、緑の点が表示されます。オフにすると、あなたにも相手の緑の点が表示されなくなります。"),
+      "ui_explore_search": MessageLookupByLibrary.simpleMessage("ユーザーと投稿を検索"),
+      "ui_explore_communities":
+          MessageLookupByLibrary.simpleMessage("参加できるコミュニティ"),
+      "ui_explore_grid_empty":
+          MessageLookupByLibrary.simpleMessage("まだ表示するものがありません"),
+      "ui_explore_grid_empty_detail":
+          MessageLookupByLibrary.simpleMessage("みんなが投稿した写真とクリップがここに表示されます。"),
+      "ui_follow": MessageLookupByLibrary.simpleMessage("フォロー"),
     };
 
 final messageLookup = MessageLookup();

@@ -1,33 +1,45 @@
-import '../l10n/app_localizations.dart';
-
 // lib/screens/explore_screen.dart
-import 'dart:math' as math;
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../l10n/app_localizations.dart';
+import '../models/community.dart';
 import '../models/explore_entry.dart';
+import '../models/profile_summary.dart';
+import '../providers/communities_provider.dart';
 import '../providers/explore_provider.dart';
+import '../providers/feed_provider.dart';
+import '../providers/profile_provider.dart';
 import '../routes.dart';
-import '../utils/format_count.dart';
+import '../utils/api_error_message.dart';
+import '../widgets/action_button.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/bottom_nav_v4.dart';
+import '../widgets/community_cards.dart';
 import '../widgets/empty_state.dart';
-import '../widgets/person_tile.dart';
-import '../widgets/section_tabs.dart';
+import '../widgets/list_controls.dart';
+import '../widgets/media_tile_grid.dart';
 import '../widgets/simple_app_bar.dart';
-import '../widgets/toast.dart';
-import 'topic_screen.dart';
 import '../widgets/skeleton.dart';
+import '../widgets/toast.dart';
 
-/// What is happening on Kyron that the reader is not already following.
+/// What is on Kyron that the reader has not found yet, on one page.
 ///
-/// Three answers to that, and all three are read from the network. What this
-/// replaces was twenty rows of "Trending #1 -- 1234 posts", twenty tiles of
-/// "Topic 1" and twenty rows of "User 1": a page that looked identical whether
-/// the network was busy, empty or unreachable.
+/// It was three tabs -- trending hashtags, a topic catalogue, people -- and
+/// all three were thin: the catalogue was empty, almost every "trending" tag
+/// had been used once, and the people were a tab away. Meanwhile two posts in
+/// three carry a picture or a clip, and Explore showed none of them.
+///
+/// So: a search box, because Explore is where people go looking; short
+/// sideways strips of people and communities, because at this size finding
+/// them is most of what discovery is; the tags actually being used, when
+/// there are any; and under it all, an endless grid of what people post.
 class ExploreScreen extends ConsumerStatefulWidget {
   final GlobalKey<AppDrawerState> drawerKey;
   final Function(double progress) onScrollProgress;
@@ -42,29 +54,38 @@ class ExploreScreen extends ConsumerStatefulWidget {
   ConsumerState<ExploreScreen> createState() => _ExploreScreenState();
 }
 
-class _ExploreScreenState extends ConsumerState<ExploreScreen>
-    with SingleTickerProviderStateMixin {
-  late final TabController _tabs = TabController(length: 3, vsync: this);
+class _ExploreScreenState extends ConsumerState<ExploreScreen> {
+  final ScrollController _scroll = ScrollController();
 
   /// Whether the bottom bar has been hidden. Toggled rather than reported per
   /// frame: the container animates on the change, not on the offset.
   bool _hidden = false;
 
+  static const _grid = PostListSource.explore;
+
+  @override
+  void initState() {
+    super.initState();
+    _scroll.addListener(_onScrolled);
+  }
+
   @override
   void dispose() {
-    _tabs.dispose();
+    _scroll.removeListener(_onScrolled);
+    _scroll.dispose();
     super.dispose();
   }
 
-  /// Hides the bottom bar going down, brings it back coming up.
-  ///
-  /// One listener for all three tabs. Each of them scrolls its own list, and a
-  /// controller per tab meant only whichever one happened to be attached
-  /// reported anything.
-  ///
-  /// Filtered by axis, not by depth. The tab strip is itself a scroll view, so
-  /// the one notification that arrives here at depth zero is the sideways
-  /// swipe between tabs -- which is not what hides a bottom bar.
+  void _onScrolled() {
+    if (!_scroll.hasClients) return;
+    final position = _scroll.position;
+    if (position.pixels >= position.maxScrollExtent - 600) {
+      ref.read(postListProvider(_grid).notifier).loadMore();
+    }
+  }
+
+  /// Hides the bottom bar going down, brings it back coming up. Vertical
+  /// only: the strips scroll sideways, and that is not what hides a bar.
   bool _onScroll(UserScrollNotification notification) {
     if (notification.metrics.axis != Axis.vertical) return false;
     final direction = notification.direction;
@@ -78,35 +99,73 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen>
     return false;
   }
 
+  Future<void> _refresh() async {
+    await Future.wait([
+      ref.read(postListProvider(_grid).notifier).refresh(),
+      ref.read(suggestedPeopleProvider.notifier).refresh(),
+      ref.read(discoverCommunitiesProvider.notifier).refresh(),
+      ref.read(trendingProvider.notifier).refresh(),
+    ]);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final grid = ref.watch(postListProvider(_grid));
+
     return Column(
       children: [
         SafeArea(
           bottom: false,
           child: SimpleAppBar(
-            title: AppLocalizations.of(context).explore,
+            title: l10n.explore,
             onAvatarTap: () => widget.drawerKey.currentState?.toggleDrawer(),
+            // Settings only: search is the box right under the bar, and a
+            // magnifying glass beside a search box is the same thing twice.
+            actions: [
+              SimpleBarAction(
+                icon: Iconsax.setting_2_copy,
+                tooltip: l10n.settings,
+                onPressed: () => Navigator.pushNamed(context, Routes.settings),
+              ),
+            ],
           ),
-        ),
-        SectionTabs(
-          controller: _tabs,
-          labels: const ['Trending', 'Topics', 'People'],
         ),
         Expanded(
           child: NotificationListener<UserScrollNotification>(
             onNotification: _onScroll,
-            // The top chrome above already sits inside a SafeArea, and it is a
-            // sibling of this body rather than its parent -- so the status bar
-            // inset is still on the MediaQuery down here. A scroll view built
-            // without an explicit padding quietly adopts it, which is what put
-            // a band of empty screen between the tab strip and the first row.
+            // The bar above sits in its own SafeArea as a sibling, so the
+            // status bar inset is still on the MediaQuery down here.
             child: MediaQuery.removePadding(
               context: context,
               removeTop: true,
-              child: TabBarView(
-                controller: _tabs,
-                children: const [_TrendingTab(), _TopicsTab(), _PeopleTab()],
+              child: RefreshIndicator(
+                onRefresh: _refresh,
+                child: CustomScrollView(
+                  key: const ValueKey('explore-scroll'),
+                  controller: _scroll,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  slivers: [
+                    const SliverToBoxAdapter(child: _SearchBox()),
+                    const SliverToBoxAdapter(child: _PeopleStrip()),
+                    const SliverToBoxAdapter(child: _CommunityStrip()),
+                    const SliverToBoxAdapter(child: _TagStrip()),
+                    SliverToBoxAdapter(
+                      child: _Heading(
+                        l10n.ui('ui_dm_media_tab', 'Photos and clips'),
+                      ),
+                    ),
+                    ..._gridSlivers(context, grid),
+                    SliverToBoxAdapter(
+                      // Clear of the bottom bar, which floats over the page.
+                      child: SizedBox(
+                        height: BottomNavV4.height +
+                            MediaQuery.paddingOf(context).bottom +
+                            SpacingTokens.space16,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -114,372 +173,574 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen>
       ],
     );
   }
+
+  List<Widget> _gridSlivers(BuildContext context, FeedState grid) {
+    final l10n = AppLocalizations.of(context);
+    if (grid.isLoadingFirstPage && grid.posts.isEmpty) {
+      return const [_GridSkeleton()];
+    }
+    if (grid.error != null && grid.posts.isEmpty) {
+      return [
+        SliverToBoxAdapter(
+          child: EmptyState.failed(
+            title: l10n.literalcouldNotLoadThesePosts,
+            detail: grid.error,
+            onAction: ref.read(postListProvider(_grid).notifier).refresh,
+          ),
+        ),
+      ];
+    }
+    if (grid.isEmpty) {
+      return [
+        SliverToBoxAdapter(
+          child: EmptyState(
+            art: EmptyArt.trending,
+            title: l10n.ui('ui_explore_grid_empty', 'Nothing to look at yet'),
+            detail: l10n.ui(
+              'ui_explore_grid_empty_detail',
+              'Photos and clips people post will show up here.',
+            ),
+          ),
+        ),
+      ];
+    }
+    return [
+      MediaTileGrid(
+        key: const ValueKey('explore-grid'),
+        posts: grid.posts,
+        columns: 3,
+        compact: true,
+        // On the page's gutter, under the heading, like the strips above.
+        padding: const EdgeInsets.fromLTRB(
+          SpacingTokens.space16,
+          SpacingTokens.space4,
+          SpacingTokens.space16,
+          SpacingTokens.space4,
+        ),
+      ),
+      if (grid.isLoadingMore)
+        const SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.all(SpacingTokens.space16),
+            child: Center(child: CircularProgressIndicator()),
+          ),
+        ),
+    ];
+  }
 }
 
-/// The hashtags being used right now.
-class _TrendingTab extends ConsumerWidget {
-  const _TrendingTab();
+/// A search box that opens search: the full screen, with its filters, is
+/// where typing happens. This only has to look like what it is.
+class _SearchBox extends StatelessWidget {
+  const _SearchBox();
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        SpacingTokens.space16,
+        SpacingTokens.space4,
+        SpacingTokens.space16,
+        SpacingTokens.space8,
+      ),
+      child: Semantics(
+        button: true,
+        label: l10n.ui('ui_explore_search', 'Search people and posts'),
+        excludeSemantics: true,
+        child: Material(
+          color: scheme.surfaceContainer,
+          borderRadius: BorderRadius.circular(RadiusTokens.radius20),
+          child: InkWell(
+            key: const ValueKey('explore-search'),
+            borderRadius: BorderRadius.circular(RadiusTokens.radius20),
+            onTap: () => Navigator.pushNamed(context, Routes.search),
+            child: SizedBox(
+              height: 40,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: SpacingTokens.space12,
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Iconsax.search_normal_1_copy,
+                      size: 18,
+                      color: scheme.onSurface.withValues(alpha: 0.5),
+                    ),
+                    const SizedBox(width: SpacingTokens.space8),
+                    Expanded(
+                      child: Text(
+                        l10n.ui('ui_explore_search', 'Search people and posts'),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize3,
+                          color: scheme.onSurface.withValues(alpha: 0.5),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A section's name, over its strip or the grid.
+class _Heading extends StatelessWidget {
+  final String text;
+
+  const _Heading(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        SpacingTokens.space16,
+        SpacingTokens.space16,
+        SpacingTokens.space16,
+        SpacingTokens.space8,
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontSize: TypographyTokens.fontSize4,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+}
+
+/// A row of cards that scrolls sideways, under a heading.
+class _Strip extends StatelessWidget {
+  final String title;
+  final double height;
+  final int count;
+  final Widget Function(BuildContext context, int index) itemBuilder;
+  final Key? listKey;
+
+  const _Strip({
+    required this.title,
+    required this.height,
+    required this.count,
+    required this.itemBuilder,
+    this.listKey,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _Heading(title),
+        SizedBox(
+          height: height,
+          child: ListView.separated(
+            key: listKey,
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space16,
+            ),
+            itemCount: count,
+            separatorBuilder: (_, __) =>
+                const SizedBox(width: SpacingTokens.space8),
+            itemBuilder: itemBuilder,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// The card both strips are made of: the same size, the same hairline, the
+/// same button at the foot, so the two read as one kind of thing.
+class _Card extends StatelessWidget {
+  final double width;
+  final VoidCallback onTap;
+  final List<Widget> children;
+
+  const _Card({
+    super.key,
+    required this.width,
+    required this.onTap,
+    required this.children,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return SizedBox(
+      width: width,
+      child: Material(
+        color: scheme.surface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
+          side: BorderSide(color: scheme.outline.withValues(alpha: 0.18)),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(SpacingTokens.space12),
+            child: Column(children: children),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+const double _cardWidth = 148;
+
+/// People to follow. Gone from the page once there is nobody left to
+/// suggest, rather than a heading over nothing.
+class _PeopleStrip extends ConsumerWidget {
+  const _PeopleStrip();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(suggestedPeopleProvider);
+    if (state.loadingFirstPage) return const _StripSkeleton();
+    if (state.people.isEmpty) return const SizedBox.shrink();
+
+    return _Strip(
+      title: AppLocalizations.of(context).literaldiscoverPeople,
+      height: 196,
+      count: state.people.length,
+      listKey: const ValueKey('explore-people'),
+      itemBuilder: (context, index) => _PersonCard(
+        person: state.people[index],
+        onFollowed: ref.read(suggestedPeopleProvider.notifier).followed,
+      ),
+    );
+  }
+}
+
+class _PersonCard extends ConsumerStatefulWidget {
+  final ProfileSummary person;
+  final ValueChanged<ProfileSummary> onFollowed;
+
+  const _PersonCard({required this.person, required this.onFollowed});
+
+  @override
+  ConsumerState<_PersonCard> createState() => _PersonCardState();
+}
+
+class _PersonCardState extends ConsumerState<_PersonCard> {
+  bool _busy = false;
+
+  Future<void> _follow() async {
+    setState(() => _busy = true);
+    unawaited(HapticFeedback.selectionClick());
+    try {
+      await ref.read(profileRepositoryProvider).follow(widget.person.id);
+      // Followed, so no longer a suggestion: off the strip.
+      widget.onFollowed(widget.person.copyWith(isFollowing: true));
+    } catch (error) {
+      if (!mounted) return;
+      setState(() => _busy = false);
+      Toast.show(context, describeApiError(error, sessionIsLive: true));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final person = widget.person;
+    final scheme = Theme.of(context).colorScheme;
+    final name = person.name?.trim();
+    final handle = person.handle;
+
+    return _Card(
+      key: ValueKey('explore-person-${person.id}'),
+      width: _cardWidth,
+      onTap: () =>
+          openProfile(context, username: person.username, userId: person.id),
+      children: [
+        CircleAvatar(
+          radius: 32,
+          backgroundColor: scheme.primary.withValues(alpha: 0.15),
+          foregroundImage:
+              person.avatarUrl == null ? null : NetworkImage(person.avatarUrl!),
+          child: Icon(Iconsax.user_copy, size: 24, color: scheme.primary),
+        ),
+        const SizedBox(height: SpacingTokens.space8),
+        Text(
+          name == null || name.isEmpty ? (handle ?? '') : name,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: TypographyTokens.fontSize3,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        if (handle != null)
+          Text(
+            handle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize1,
+              color: scheme.onSurface.withValues(alpha: 0.55),
+            ),
+          ),
+        const Spacer(),
+        SizedBox(
+          width: double.infinity,
+          child: ActionButton(
+            key: ValueKey('explore-follow-${person.id}'),
+            compact: true,
+            label: AppLocalizations.of(context).ui('ui_follow', 'Follow'),
+            icon: Iconsax.add,
+            busy: _busy,
+            onPressed: _follow,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Communities the reader is not in. They were only to be found two taps
+/// into Communities.
+class _CommunityStrip extends ConsumerWidget {
+  const _CommunityStrip();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(discoverCommunitiesProvider);
+    if (state.loadingFirstPage) return const _StripSkeleton();
+    if (state.items.isEmpty) return const SizedBox.shrink();
+
+    return _Strip(
+      title: AppLocalizations.of(context)
+          .ui('ui_explore_communities', 'Communities to join'),
+      height: 196,
+      count: state.items.length,
+      listKey: const ValueKey('explore-communities'),
+      itemBuilder: (context, index) =>
+          _CommunityCard(community: state.items[index]),
+    );
+  }
+}
+
+class _CommunityCard extends ConsumerStatefulWidget {
+  final Community community;
+
+  const _CommunityCard({required this.community});
+
+  @override
+  ConsumerState<_CommunityCard> createState() => _CommunityCardState();
+}
+
+class _CommunityCardState extends ConsumerState<_CommunityCard> {
+  bool _busy = false;
+
+  Future<void> _join() async {
+    setState(() => _busy = true);
+    unawaited(HapticFeedback.selectionClick());
+    try {
+      final joined = await ref
+          .read(communitiesRepositoryProvider)
+          .setMembership(widget.community.slug, true);
+      // In the reader's list now, and out of the ones they are not in --
+      // here and under Discover alike, since this is that same list.
+      ref.read(discoverCommunitiesProvider.notifier).joined(joined.id);
+      ref.read(myCommunitiesProvider(CommunityFilter.all).notifier).add(joined);
+    } catch (error) {
+      if (!mounted) return;
+      setState(() => _busy = false);
+      Toast.show(context, describeApiError(error, sessionIsLive: true));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final community = widget.community;
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+
+    return _Card(
+      key: ValueKey('explore-community-${community.id}'),
+      width: _cardWidth,
+      onTap: () => Navigator.pushNamed(
+        context,
+        Routes.community,
+        arguments: community.slug,
+      ),
+      children: [
+        CommunityPictureTile(community: community, size: 64),
+        const SizedBox(height: SpacingTokens.space8),
+        Text(
+          community.name,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: TypographyTokens.fontSize3,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        Text(
+          '${l10n.ui('ui_community_members', 'Members:')} '
+          '${community.members}',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: TypographyTokens.fontSize1,
+            color: scheme.onSurface.withValues(alpha: 0.55),
+          ),
+        ),
+        const Spacer(),
+        SizedBox(
+          width: double.infinity,
+          child: ActionButton(
+            key: ValueKey('explore-join-${community.id}'),
+            compact: true,
+            label: l10n.ui('ui_join', 'Join'),
+            icon: Iconsax.add,
+            busy: _busy,
+            onPressed: _join,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// The tags people are actually using this week.
+///
+/// Only those used at least [minUses] times in the week, and only once
+/// there are [minTags] of them. Almost every hashtag here has been used once,
+/// and a ranking of things used once is a list in no order dressed up as a
+/// ranking.
+class _TagStrip extends ConsumerWidget {
+  const _TagStrip();
+
+  static const minUses = 2;
+  static const minTags = 3;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(trendingProvider);
-    final notifier = ref.read(trendingProvider.notifier);
+    final tags = trendingNow(state.items);
+    if (tags.length < minTags) return const SizedBox.shrink();
 
-    if (state.loading) {
-      return Center(child: CircularProgressIndicator());
-    }
-
-    return RefreshIndicator(
-      onRefresh: notifier.refresh,
-      child: state.items.isEmpty
-          ? (state.error != null
-                  ? EmptyState.failed(
-                      title: AppLocalizations.of(context)
-                          .literalcouldNotLoadTrending,
-                      detail: state.error,
-                      onAction: notifier.refresh,
-                    )
-                  : EmptyState(
-                      art: EmptyArt.trending,
-                      title: AppLocalizations.of(context)
-                          .literalnothingIsTrendingYet,
-                      detail: AppLocalizations.of(context).hashtagsEmptyDetail,
-                    ))
-              .scrollable
-          : ListView.separated(
-              physics: const AlwaysScrollableScrollPhysics(),
-              padding: const EdgeInsets.symmetric(
-                vertical: SpacingTokens.space8,
-              ),
-              itemCount: state.items.length,
-              separatorBuilder: (context, index) => Divider(
-                height: 1,
-                thickness: 0.5,
-                indent: SpacingTokens.space16,
-                color: Theme.of(context)
-                    .colorScheme
-                    .outline
-                    .withValues(alpha: 0.15),
-              ),
-              itemBuilder: (context, index) =>
-                  _TrendingRow(rank: index + 1, tag: state.items[index]),
-            ),
-    );
-  }
-}
-
-class _TrendingRow extends StatelessWidget {
-  final int rank;
-  final TrendingTag tag;
-
-  const _TrendingRow({required this.rank, required this.tag});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final muted = scheme.onSurface.withValues(alpha: 0.6);
-
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: SpacingTokens.space16,
-        vertical: SpacingTokens.space4,
-      ),
-      // The position is worth showing: it is the only thing that says this is
-      // a ranking rather than a list in no particular order.
-      leading: SizedBox(
-        width: 24,
-        child: Text(
-          '$rank',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontWeight: FontWeight.w700, color: muted),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _Heading(
+          AppLocalizations.of(context)
+              .ui('interest_trending_now', 'Trending now'),
         ),
-      ),
-      title: Text(
-        '#${tag.tag}',
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: TypographyTokens.fontSize3,
-        ),
-      ),
-      subtitle: Text(
-        // Two numbers, because they answer different questions: how big this
-        // tag is, and why it is on this list at all.
-        '${formatCount(tag.posts)} ${tag.posts == 1 ? 'post' : 'posts'}'
-        '${tag.recent > 0 ? ' · ${formatCount(tag.recent)} this week' : ''}',
-        style: TextStyle(fontSize: TypographyTokens.fontSize2, color: muted),
-      ),
-      onTap: () =>
-          Navigator.pushNamed(context, Routes.hashtag, arguments: tag.tag),
-    );
-  }
-}
-
-/// The topic catalogue: what a reader can say they are into.
-class _TopicsTab extends ConsumerWidget {
-  const _TopicsTab();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(topicsProvider);
-    final notifier = ref.read(topicsProvider.notifier);
-
-    if (state.loading) {
-      return Center(child: CircularProgressIndicator());
-    }
-
-    return RefreshIndicator(
-      onRefresh: notifier.refresh,
-      child: state.items.isEmpty
-          ? (state.error != null
-                  ? EmptyState.failed(
-                      title: AppLocalizations.of(context)
-                          .literalcouldNotLoadTopics,
-                      detail: state.error,
-                      onAction: notifier.refresh,
-                    )
-                  : EmptyState(
-                      art: EmptyArt.topics,
-                      title: AppLocalizations.of(context).literalnoTopicsYet,
-                      detail: AppLocalizations.of(context).topicsEmptyDetail,
-                    ))
-              .scrollable
-          : GridView.builder(
-              physics: const AlwaysScrollableScrollPhysics(),
-              padding: const EdgeInsets.all(SpacingTokens.space16),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: SpacingTokens.space12,
-                mainAxisSpacing: SpacingTokens.space12,
-                // A height, not a ratio. A ratio is a fixed number of pixels
-                // once the column width is known, and at the largest text
-                // scale the app allows a two-line name and a count are taller
-                // than that -- which is a card that overflows rather than one
-                // that grows.
-                mainAxisExtent: _topicCardHeight(context),
-              ),
-              itemCount: state.items.length,
-              itemBuilder: (context, index) => _TopicCard(
-                topic: state.items[index],
-                onToggle: () async {
-                  final error = await notifier.toggle(state.items[index]);
-                  if (error != null && context.mounted) {
-                    Toast.show(context, error);
-                  }
-                },
-              ),
-            ),
-    );
-  }
-}
-
-class _TopicCard extends StatelessWidget {
-  final Topic topic;
-  final VoidCallback onToggle;
-
-  const _TopicCard({required this.topic, required this.onToggle});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final on = topic.following;
-
-    return Material(
-      color: on
-          ? scheme.primary.withValues(alpha: 0.1)
-          : scheme.surfaceContainerHighest.withValues(alpha: 0.3),
-      borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
-        // The card opens the topic; the tick follows it. Two things a card can
-        // do needs the more useful one on the card itself.
-        onTap: () => Navigator.pushNamed(
-          context,
-          Routes.topic,
-          arguments: TopicArgs(slug: topic.slug, name: topic.name),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(RadiusTokens.radiusLg),
-            border: Border.all(
-              color: on
-                  ? scheme.primary.withValues(alpha: 0.5)
-                  : scheme.outline.withValues(alpha: 0.1),
-            ),
-          ),
-          padding: const EdgeInsets.all(SpacingTokens.space12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Text(
-                      topic.name,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: TypographyTokens.fontSize3,
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: onToggle,
-                    visualDensity: VisualDensity.compact,
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(
-                      minWidth: 36,
-                      minHeight: 36,
-                    ),
-                    tooltip: on
-                        ? 'Stop following ${topic.name}'
-                        : 'Follow ${topic.name}',
-                    icon: Icon(
-                      on ? Iconsax.tick_circle : Iconsax.add_circle_copy,
-                      size: 22,
-                      color: on
-                          ? scheme.primary
-                          : scheme.onSurface.withValues(alpha: 0.5),
-                    ),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              Text(
-                topic.people == 1
-                    ? '1 person'
-                    : '${formatCount(topic.people)} people',
-                style: TextStyle(
-                  fontSize: TypographyTokens.fontSize2,
-                  color: scheme.onSurface.withValues(alpha: 0.6),
+        ListChipRow(
+          children: [
+            for (final (index, tag) in tags.indexed) ...[
+              if (index > 0) const SizedBox(width: SpacingTokens.space8),
+              ListChip(
+                key: ValueKey('explore-tag-${tag.tag}'),
+                selected: false,
+                label: '#${tag.tag}',
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  Routes.hashtag,
+                  arguments: tag.tag,
                 ),
               ),
             ],
-          ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+/// The tags worth calling trending: used at least [minUses] times this week,
+/// busiest first, as the server ranked them.
+List<TrendingTag> trendingNow(
+  List<TrendingTag> tags, {
+  int minUses = _TagStrip.minUses,
+}) =>
+    [
+      for (final tag in tags)
+        if (tag.recent >= minUses) tag,
+    ];
+
+/// The shape of a strip while it loads.
+class _StripSkeleton extends StatelessWidget {
+  const _StripSkeleton();
+
+  @override
+  Widget build(BuildContext context) {
+    return SkeletonGroup(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(
+          SpacingTokens.space16,
+          SpacingTokens.space16,
+          0,
+          0,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SkeletonBox.line(width: 140, height: 16),
+            const SizedBox(height: SpacingTokens.space12),
+            SizedBox(
+              height: 196,
+              child: ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                separatorBuilder: (_, __) =>
+                    const SizedBox(width: SpacingTokens.space8),
+                itemBuilder: (_, __) => const SkeletonBox(
+                  width: _cardWidth,
+                  height: 196,
+                  radius: RadiusTokens.radiusLg,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-/// Accounts worth following, best match first.
-class _PeopleTab extends ConsumerStatefulWidget {
-  const _PeopleTab();
-
-  @override
-  ConsumerState<_PeopleTab> createState() => _PeopleTabState();
-}
-
-class _PeopleTabState extends ConsumerState<_PeopleTab> {
-  final ScrollController _scroll = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    _scroll.addListener(_onScroll);
-  }
-
-  @override
-  void dispose() {
-    _scroll.removeListener(_onScroll);
-    _scroll.dispose();
-    super.dispose();
-  }
-
-  void _onScroll() {
-    if (!_scroll.hasClients) return;
-    final position = _scroll.position;
-    if (position.pixels >= position.maxScrollExtent - 400) {
-      ref.read(suggestedPeopleProvider.notifier).loadMore();
-    }
-  }
+/// The shape of the grid while its first page loads.
+class _GridSkeleton extends StatelessWidget {
+  const _GridSkeleton();
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(suggestedPeopleProvider);
-    final notifier = ref.read(suggestedPeopleProvider.notifier);
-
-    if (state.loadingFirstPage) {
-      return SkeletonList.people();
-    }
-
-    return RefreshIndicator(
-      onRefresh: notifier.refresh,
-      child: state.people.isEmpty
-          ? (state.error != null
-                  ? EmptyState.failed(
-                      title: AppLocalizations.of(context)
-                          .literalcouldNotLoadSuggestions,
-                      detail: state.error,
-                      onAction: notifier.refresh,
-                    )
-                  : EmptyState(
-                      art: EmptyArt.people,
-                      title: AppLocalizations.of(context)
-                          .literalnobodyLeftToSuggest,
-                      detail: AppLocalizations.of(context).peopleEmptyDetail,
-                      action: 'Refresh',
-                      onAction: notifier.refresh,
-                    ))
-              .scrollable
-          : ListView.separated(
-              controller: _scroll,
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: state.people.length + (state.loadingMore ? 1 : 0),
-              separatorBuilder: (context, index) => Divider(
-                height: 1,
-                thickness: 0.5,
-                indent: 72,
-                color: Theme.of(context)
-                    .colorScheme
-                    .outline
-                    .withValues(alpha: 0.15),
+    return SliverPadding(
+      padding: const EdgeInsets.all(SpacingTokens.space4),
+      sliver: SliverGrid.count(
+        crossAxisCount: 3,
+        mainAxisSpacing: SpacingTokens.space4,
+        crossAxisSpacing: SpacingTokens.space4,
+        childAspectRatio: 0.8,
+        children: [
+          for (var i = 0; i < 9; i++)
+            const SkeletonGroup(
+              child: SkeletonBox(
+                width: double.infinity,
+                height: double.infinity,
+                radius: RadiusTokens.radiusMd,
               ),
-              itemBuilder: (context, index) {
-                if (index >= state.people.length) {
-                  return const Padding(
-                    padding: EdgeInsets.all(SpacingTokens.space16),
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                }
-
-                final person = state.people[index];
-                return PersonTile(
-                  person: person,
-                  // Followed, so no longer a suggestion. Leaving it here with
-                  // a Following button on it is a list that never gets shorter
-                  // however much you use it.
-                  onChanged: (updated) {
-                    if (updated.isFollowing) notifier.followed(updated);
-                  },
-                  onOpen: () => openProfile(
-                    context,
-                    username: person.username,
-                    userId: person.id,
-                  ),
-                );
-              },
             ),
+        ],
+      ),
     );
   }
-}
-
-/// How tall a topic card has to be to hold what is in it.
-///
-/// Two lines of name -- or the tick beside it, whichever is taller -- then the
-/// count, at whatever text scale the reader has chosen. Deliberately an upper
-/// bound: a line box is taller than its font size by an amount that depends on
-/// the font, and the cost of guessing high is a few pixels of space at the
-/// bottom of a card rather than a card that overflows.
-double _topicCardHeight(BuildContext context) {
-  final scale = MediaQuery.textScalerOf(context);
-  final name = math.max(scale.scale(15) * 1.6 * 2, 40);
-  final count = scale.scale(13) * 1.8;
-  return math.max(
-    112,
-    SpacingTokens.space12 * 2 + name + SpacingTokens.space8 + count,
-  );
 }
