@@ -8,6 +8,8 @@ notes for a versioned release would have covered whatever happened since the
 last debug build, which is usually nothing.
 
     changelog.py show <version>   print one version's section, for release notes
+    changelog.py show <version> --max <n>
+                                  the same, cut to at most n characters
     changelog.py unreleased       print the Unreleased section
     changelog.py release <version> stamp Unreleased as <version>, dated today
 """
@@ -51,14 +53,41 @@ def is_empty(body: str | None) -> bool:
     return not any(line.lstrip().startswith("-") for line in body.splitlines())
 
 
-def show(version: str) -> int:
+def fit(body: str, version: str, limit: int) -> str:
+    """The section, cut between entries to fit in `limit` characters.
+
+    GitHub refuses a release body over 125,000 characters, and refuses it at
+    the very end -- after every platform has been built. The first versioned
+    release carries everything since the project began, which is most of
+    that already. So a long section is cut at the last whole entry that fits,
+    and ends with where to read the rest.
+    """
+    if len(body) <= limit:
+        return body
+    version = version.lstrip("v")
+    rest = (
+        f"\n\n*Cut short to fit on this page. The full notes are in "
+        f"[CHANGELOG.md]({REPO}/blob/v{version}/CHANGELOG.md).*"
+    )
+    room = max(0, limit - len(rest))
+    # The start of the first entry that would not fit, so no entry is cut
+    # through the middle.
+    cut = body.rfind("\n- ", 0, room)
+    kept = body[: cut if cut > 0 else room].rstrip().splitlines()
+    # A heading left with nothing under it reads as an empty section.
+    while kept and (not kept[-1].strip() or kept[-1].startswith("#")):
+        kept.pop()
+    return "\n".join(kept) + rest
+
+
+def show(version: str, limit: int | None = None) -> int:
     content = CHANGELOG.read_text(encoding="utf-8")
     # Accept both "1.2.3" and "v1.2.3"; tags carry the v, headings do not.
     body = body_of(content, version.lstrip("v"))
     if body is None:
         print(f"CHANGELOG.md has no section for {version}", file=sys.stderr)
         return 1
-    print(body)
+    print(body if limit is None else fit(body, version, limit))
     return 0
 
 
@@ -131,6 +160,8 @@ def main() -> int:
         return unreleased()
     if len(args) == 2 and args[0] == "show":
         return show(args[1])
+    if len(args) == 4 and args[0] == "show" and args[2] == "--max" and args[3].isdigit():
+        return show(args[1], int(args[3]))
     if len(args) == 2 and args[0] == "release":
         return release(args[1])
 

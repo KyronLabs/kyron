@@ -179,12 +179,14 @@ shipped now, and every build produces both:
 | **Release**, on a `vX.Y.Z` tag | `*-windows-x64.zip` | signed APKs, per architecture and universal, plus an `.aab` |
 
 To cut a release, run **Create Versioned Release** and choose `patch`, `minor`
-or `major`: it bumps the version, commits, and tags `vX.Y.Z`, which starts
-**Release**. Both platforms build in parallel from one set of checks and are
-published together — the publish job waits for both, so a release is never
-half of one. `scripts/check-workflows.py` checks that shape on every pull
-request, because a release workflow that has quietly lost a platform still
-parses and still runs.
+or `major`. It checks the signing secrets first, then bumps the version,
+commits, tags `vX.Y.Z` and starts **Release** on that tag. (It has to start it
+by name: a tag pushed with a workflow's own token starts no other workflow.)
+Both platforms build in parallel from one set of checks and are published
+together — the publish job waits for both, so a release is never half of one.
+`scripts/check-workflows.py` checks that shape on every pull request, because
+a release workflow that has quietly lost a platform still parses and still
+runs.
 
 The Windows app is a folder, not a file: the zip carries `Kyron.exe` with
 `flutter_windows.dll`, the plugin DLLs and the `data` directory beside it. It
@@ -192,10 +194,35 @@ is not code-signed, so Windows warns that the publisher is unknown. Not every
 feature is there yet — [what runs where](app/lib/services/platform_support.dart).
 
 Release signing needs `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`,
-`ANDROID_KEY_ALIAS` and `ANDROID_KEY_PASSWORD` as repository secrets. The
-keystore is an upload key and must never be committed. A release build fails
-when the secret is missing rather than shipping something signed with the debug
-key.
+`ANDROID_KEY_ALIAS` and `ANDROID_KEY_PASSWORD` as repository secrets, and push
+needs `GOOGLE_SERVICES_JSON`. The keystore is the Play upload key and must never
+be committed. **Create Versioned Release** opens it with those passwords
+(`scripts/check-release-secrets.sh`) before it changes anything, and prints the
+key's fingerprints in its run summary. Development builds never use it: they
+are signed with a development key, so adding the upload key does not change
+what is on anybody's phone.
+
+### Google Play
+
+The `.aab` on the release is what goes to Play; the APKs are for installing by
+hand. In Play Console → **Test and release → Testing → Internal testing →
+Create new release**, upload `kyron-X.Y.Z+N.aab`. With Play App Signing (the
+default), Google re-signs it with the app signing key and keeps the key that
+signed this upload as the upload key — the fingerprints in the run summary
+should match **App integrity → Upload key certificate**.
+
+Three things follow from Google re-signing it:
+
+- A phone with a development or GitHub release build on it must uninstall that
+  first. It is the same package signed with a different key, and Android will
+  not install one over the other.
+- Google sign-in on a Play install needs the **app signing** key's SHA-1, from
+  App integrity, as an Android OAuth client. The upload key's is not the one on
+  the phone. [docs/AUTH_GOOGLE.md](docs/AUTH_GOOGLE.md) has the table.
+- Every upload needs a higher version code than the last. A release's is
+  100000 plus its run number in the Release workflow, so each release is above
+  the one before. Re-running a release reuses its number: after an upload,
+  cut a new version rather than re-running the old one.
 
 ---
 

@@ -14,6 +14,20 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **Cutting a release would have built nothing.** Create Versioned Release
+  pushed its tag with the workflow's own token, and GitHub starts no workflow
+  for a push made with that token -- so the version would have been bumped and
+  tagged, and Release would never have run. It now starts Release on the tag
+  by name, and `scripts/check-workflows.py` fails a pull request that loses
+  that. It also checks the signing secrets before it changes anything (that
+  each is set, that the keystore opens, that the key's own password unlocks
+  it, and that the Firebase file is for this app), so a missing one stops it
+  before a version is spent rather than after. Release notes too long for a
+  GitHub release are cut between entries with a link to the rest, instead of
+  failing the publish after every platform has built. Development builds no
+  longer fall back to the release key: adding it, to publish to Play, would
+  have re-signed them and every installed copy would have refused the next.
+
 - **A message notification opened the feed.** The tap was listened for by
   the signed-in screen itself, which a cold start builds only after the
   splash and the onboarding check, so a tap that arrived first had nobody to
