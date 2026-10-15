@@ -214,3 +214,9 @@ jobs:
       # JDK, nothing from pip.
       - name: Check the APK certificate reader
         run: python3 scripts/test_apk_certificate.py
+
+      # And the one scripts/check-aab.sh stands on: the version code inside
+      # a Play bundle, read out of aapt2's protobuf manifest, which is
+      # compared with the build number before anything is published.
+      - name: Check the bundle manifest reader
+        run: python3 scripts/test_aab_manifest.py

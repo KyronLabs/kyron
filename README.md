@@ -167,16 +167,18 @@ cd api && npx tsc --noEmit && npx eslint src && npx jest
 ## ◈ Builds and releases
 
 The Flutter client lives in `app/`. Its version is `MAJOR.MINOR.PATCH+BUILD` in
-`app/pubspec.yaml`; GitHub Actions supplies the build number from the run
-number, so every artifact has a unique Android version code.
+`app/pubspec.yaml`; GitHub Actions supplies the build number, which is the
+number of commits behind the one being built (`scripts/build-number.sh`). Both
+build workflows count the same way, so version codes rise across development
+builds and releases alike — which phones and Play both require.
 
 Kyron is one app on several platforms. Windows and Android are the two being
 shipped now, and every build produces both:
 
 | | Windows | Android |
 |---|---|---|
-| **Development build**, on every push to `main` | `*-windows-x64.zip` | debug APKs, per architecture and universal |
-| **Release**, on a `vX.Y.Z` tag | `*-windows-x64.zip` | signed APKs, per architecture and universal, plus an `.aab` |
+| **Development build**, on every push to `main` | `*-windows-x64.zip` | APKs signed with the development key, per architecture and universal, plus a Play `.aab` |
+| **Release**, on a `vX.Y.Z` tag | `*-windows-x64.zip` | APKs signed with the upload key, per architecture and universal, plus a Play `.aab` |
 
 To cut a release, run **Create Versioned Release** and choose `patch`, `minor`
 or `major`. It checks the signing secrets first, then bumps the version,
@@ -198,18 +200,26 @@ Release signing needs `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`,
 needs `GOOGLE_SERVICES_JSON`. The keystore is the Play upload key and must never
 be committed. **Create Versioned Release** opens it with those passwords
 (`scripts/check-release-secrets.sh`) before it changes anything, and prints the
-key's fingerprints in its run summary. Development builds never use it: they
-are signed with a development key, so adding the upload key does not change
-what is on anybody's phone.
+key's fingerprints in its run summary. A development build's APKs never use
+it — they are signed with the development key, so adding the upload key does
+not change what is on anybody's phone. It signs only that build's `.aab`, which
+Play re-signs before anybody installs it.
 
 ### Google Play
 
-The `.aab` on the release is what goes to Play; the APKs are for installing by
-hand. In Play Console → **Test and release → Testing → Internal testing →
-Create new release**, upload `kyron-X.Y.Z+N.aab`. With Play App Signing (the
-default), Google re-signs it with the app signing key and keeps the key that
-signed this upload as the upload key — the fingerprints in the run summary
-should match **App integrity → Upload key certificate**.
+The `.aab` is what goes to Play; the APKs are for installing by hand. Every
+build has one: a development build's, to put the newest `main` in front of
+internal testers, and a release's, for a version with a name and notes. Both
+are checked before they are published (`scripts/check-aab.sh`): signed with
+the upload key, and carrying the version code their build number gives.
+
+In Play Console → **Test and release → Testing → Internal testing → Create new
+release**, upload `kyron-X.Y.Z+N.aab`. With Play App Signing (the default),
+Google re-signs it with the app signing key and keeps the key that signed this
+upload as the upload key — the fingerprints in Create Versioned Release's run
+summary should match **App integrity → Upload key certificate**. Use a release
+for anything beyond internal testing: a development build's version name is
+the last release's, so in Play two different builds can both read `0.1.1`.
 
 Three things follow from Google re-signing it:
 
@@ -219,10 +229,12 @@ Three things follow from Google re-signing it:
 - Google sign-in on a Play install needs the **app signing** key's SHA-1, from
   App integrity, as an Android OAuth client. The upload key's is not the one on
   the phone. [docs/AUTH_GOOGLE.md](docs/AUTH_GOOGLE.md) has the table.
-- Every upload needs a higher version code than the last. A release's is
-  100000 plus its run number in the Release workflow, so each release is above
-  the one before. Re-running a release reuses its number: after an upload,
-  cut a new version rather than re-running the old one.
+- Every upload needs a higher version code than the last. Each build's is
+  100000 plus the commit count, so anything built from later on `main` is
+  above anything built before it, whichever workflow built it. The flip side:
+  once a bundle is uploaded, an older one cannot follow it, and a re-run of
+  the same commit carries the same number. Never force-push `main` — a
+  shorter history would number builds below ones already published.
 
 ---
 
