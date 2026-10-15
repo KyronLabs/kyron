@@ -69,13 +69,7 @@ def check(name: str, publish_job: str) -> list[str]:
                 f"release can be published without it"
             )
 
-    # One build number for the whole run. Per-job, the two platforms out of one
-    # tag would carry different ones.
-    if "KYRON_BUILD_NUMBER" not in (workflow.get("env") or {}):
-        said.append(
-            f"{name}: KYRON_BUILD_NUMBER is not set at workflow level, so the "
-            f"platforms can disagree about which build this is"
-        )
+    said += check_build_number(name, workflow, [*PLATFORMS, publish_job])
 
     # And the publish job checks the files are there. download-artifact
     # answering with nothing is not an error, so without this a Windows build
@@ -88,6 +82,97 @@ def check(name: str, publish_job: str) -> list[str]:
             said.append(
                 f"{name}: {publish_job!r} does not check for {expected} before "
                 f"publishing"
+            )
+
+    return said
+
+
+# Where the build number comes from, in every workflow that publishes.
+COUNTER = "scripts/build-number.sh"
+
+
+def check_build_number(name: str, workflow: dict, readers: list[str]) -> list[str]:
+    """One build number for the whole run, and the same kind in both workflows.
+
+    Per-job, the two platforms out of one tag would carry different ones. And
+    it is the commit count, worked out once by scripts/build-number.sh, not
+    the run number: each workflow has its own run number, so the development
+    builds were at 119 when Release ran for the first time as 1, and one
+    development bundle uploaded to Play would have put every release after it
+    below the number Play requires. A workflow-level `github.run_number` is
+    exactly what this file used to require; it is now what it refuses.
+    """
+    jobs = workflow["jobs"]
+    said: list[str] = []
+
+    if "KYRON_BUILD_NUMBER" in (workflow.get("env") or {}):
+        said.append(
+            f"{name}: KYRON_BUILD_NUMBER is set at workflow level, where nothing "
+            f"but the run number is available -- a counter of its own, which "
+            f"the other workflow's builds overtake. Count it with {COUNTER} "
+            f"in the first job and pass it on"
+        )
+
+    counters = [
+        job
+        for job, spec in jobs.items()
+        if any(COUNTER in str(step.get("run", "")) for step in spec.get("steps", []))
+    ]
+    if len(counters) != 1:
+        return said + [
+            f"{name}: {len(counters)} jobs run {COUNTER}; the build number is "
+            f"worked out once, by one job, so every job reads the same answer"
+        ]
+    counter = counters[0]
+    spec = jobs[counter]
+
+    # A shallow checkout has one commit, and the script refuses it -- but on
+    # the pull request rather than the release, please.
+    checkouts = [
+        step
+        for step in spec.get("steps", [])
+        if str(step.get("uses", "")).startswith("actions/checkout")
+    ]
+    if not checkouts or (checkouts[0].get("with") or {}).get("fetch-depth") != 0:
+        said.append(
+            f"{name}: {counter!r} counts commits without checking out with "
+            f"fetch-depth: 0, so it has one commit to count"
+        )
+
+    step_ids = [
+        step.get("id")
+        for step in spec.get("steps", [])
+        if COUNTER in str(step.get("run", ""))
+    ]
+    outputs = [
+        output
+        for output, expression in (spec.get("outputs") or {}).items()
+        if any(f"steps.{step}.outputs" in str(expression) for step in step_ids if step)
+    ]
+    if not outputs:
+        return said + [
+            f"{name}: {counter!r} runs {COUNTER} but has no output carrying "
+            f"its answer to the jobs that build"
+        ]
+    expected = "${{ needs.%s.outputs.%s }}" % (counter, outputs[0])
+
+    for reader in readers:
+        job = jobs.get(reader)
+        if job is None:
+            continue
+        value = (job.get("env") or {}).get("KYRON_BUILD_NUMBER")
+        if value != expected:
+            said.append(
+                f"{name}: {reader!r} sets KYRON_BUILD_NUMBER to {value!r} rather "
+                f"than {expected}, so it can disagree about which build this is"
+            )
+        needs = job.get("needs") or []
+        if isinstance(needs, str):
+            needs = [needs]
+        if counter not in needs:
+            said.append(
+                f"{name}: {reader!r} reads {counter!r}'s build number without "
+                f"needing {counter!r}, so it reads as empty"
             )
 
     return said
@@ -154,6 +239,43 @@ def check_install_guard(name: str) -> list[str]:
             )
 
     return said
+
+
+# What stands between a bundle and Play refusing it.
+BUNDLE_CHECK = "scripts/check-aab.sh"
+
+
+def check_bundle(name: str) -> list[str]:
+    """That the Android job builds a bundle for Play, and checks it first.
+
+    Only releases used to build one, so the newest code could not go to
+    Play's testers without cutting a version. And nothing read back the one
+    a release built: a bundle signed with the development key, or carrying a
+    version code Play had already seen, uploads and is then refused.
+    """
+    jobs = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))["jobs"]
+    steps = (jobs.get("android") or {}).get("steps") or []
+    runs = [str(step.get("run", "")) for step in steps]
+
+    builds = [i for i, run in enumerate(runs) if "flutter build appbundle" in run]
+    if not builds:
+        return [f"{name}: the 'android' job builds no app bundle, so it has nothing for Play"]
+
+    checks = [i for i, run in enumerate(runs) if BUNDLE_CHECK in run and "--build" in run]
+    if not checks or max(checks) < min(builds):
+        return [
+            f"{name}: the 'android' job never runs {BUNDLE_CHECK} --build on its "
+            f"bundle, so a wrong key or a used version code is found by Play"
+        ]
+
+    uploads = [
+        i
+        for i, step in enumerate(steps)
+        if str(step.get("uses", "")).startswith("actions/upload-artifact")
+    ]
+    if uploads and max(checks) > min(uploads):
+        return [f"{name}: {BUNDLE_CHECK} runs after the upload, when it can stop nothing"]
+    return []
 
 
 def check_wiring(name: str) -> list[str]:
@@ -244,6 +366,7 @@ def main() -> int:
 
     for name in PUBLISHING:
         problems += check_install_guard(name)
+        problems += check_bundle(name)
 
     problems += check_release_trigger()
 
@@ -253,7 +376,7 @@ def main() -> int:
         return 1
 
     names = ", ".join(sorted(PUBLISHING))
-    print(f"{names}: both platforms, one build number, one release.")
+    print(f"{names}: both platforms, one counted build number, a checked bundle, one release.")
     return 0
 
 

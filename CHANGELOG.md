@@ -31,6 +31,28 @@ section for that version, so what is written here is what people read.
   their account says so, in the list and the thread, and the message box gives
   way to a line saying nothing more can be sent there -- the server refuses it
   too, rather than storing a message nobody would ever read.
+- **Every development build has a Play bundle.** Only versioned releases used
+  to build an `.aab`, so the newest `main` could reach Play's internal testers
+  only by cutting a version. Each development build now carries
+  `kyron-X.Y.Z+N.aab`, signed with the upload key and checked before it is
+  published. Its APKs are still signed with the development key, so nothing
+  changes on phones that have them.
+
+### Fixed
+
+- **Development and release bundles would have collided in Play.** Each
+  workflow numbered builds with its own run counter -- development builds were
+  at 119 when the first release ran as 1 -- so one development bundle uploaded
+  to Play would have left every release after it below the version code Play
+  requires. Both now number a build by the commits behind it, one sequence that
+  only rises along `main`; the next build is above every number already
+  published. Release bundles are now checked for the upload key's signature and
+  their version code too, and the signing passwords are no longer written
+  through a shell heredoc that would have mangled a `$` or a backtick in one.
+- **"Latest" on GitHub was a development build.** Development builds were
+  published as full releases so that "Latest" pointed somewhere while no
+  versioned release existed. One does now, so they are prereleases again, and
+  "Latest" is the version that shipped.
 
 ## [0.1.1] - 2026-10-14
 ### Fixed

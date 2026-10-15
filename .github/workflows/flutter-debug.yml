@@ -18,10 +18,10 @@ concurrency:
   group: debug-build-${{ github.ref }}
   cancel-in-progress: true
 
-# Set once, at the top, so the Android APKs and the Windows zip out of one push
-# carry the same build number rather than one each.
-env:
-  KYRON_BUILD_NUMBER: ${{ github.run_number }}
+# The build number is worked out once, in the first job, and every job after
+# it reads that one answer -- so the APKs, the bundle and the Windows zip out of
+# one push carry the same number rather than one each. It is the commit count,
+# shared with the Release workflow: scripts/build-number.sh says why.
 
 jobs:
   version:
@@ -29,6 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
+      build: ${{ steps.build.outputs.build }}
       notes: ${{ steps.notes.outputs.notes }}
     steps:
       - name: Checkout
@@ -45,6 +46,14 @@ jobs:
           version=$(sed -nE 's/^version: ([0-9]+\.[0-9]+\.[0-9]+).*/\1/p' pubspec.yaml)
           test -n "$version"
           echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      # The same number Release gives a tag, counted the same way, so one
+      # sequence runs through both and a bundle from either is above every
+      # bundle from before it. The full history fetched above is what lets
+      # it count.
+      - name: Number the build
+        id: build
+        run: echo "build=$(scripts/build-number.sh)" >> "$GITHUB_OUTPUT"
 
       # Every one of these releases shipped with an empty body, so the releases
       # page was thirty-odd identically-titled builds with no way to tell what
@@ -76,9 +85,11 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
   android:
-    name: Build the Android development APKs
+    name: Build the Android development APKs and Play bundle
     needs: version
     runs-on: ubuntu-latest
+    env:
+      KYRON_BUILD_NUMBER: ${{ needs.version.outputs.build }}
     defaults:
       run:
         working-directory: app
@@ -161,7 +172,8 @@ jobs:
       # quietly re-sign every development build with it, and every phone
       # carrying the last one would refuse the next as a different app until
       # it was uninstalled. The upload key signs what goes to Play and nothing
-      # else.
+      # else -- here, the bundle built after the APKs, which is not installed
+      # by hand.
       #
       # Without a development key -- which is the state this repository is
       # actually in -- the key committed at app/android/dev-signing/. There is
@@ -313,6 +325,65 @@ jobs:
             scripts/check-apks.sh debug-artifacts/*.apk
           fi
 
+      # And the bundle for Play, from the same commit and with the same number.
+      #
+      # Only versioned releases used to make one, so the newest code was never
+      # something Play could be given without cutting a version -- a bump, a
+      # changelog section, a tag and a public release, to put a build in front
+      # of internal testers. Now every development build carries one, and a
+      # release is for when there is a version to name.
+      #
+      # Signed with the upload key, which is what Play requires and what it
+      # replaces with the app signing key before anybody installs it. So this
+      # changes nothing on anybody's phone: the APKs above are still the
+      # development key's, and checked as such before this step rewrites
+      # key.properties.
+      #
+      # Required here, where the secrets are, so a deleted one is a failed
+      # build rather than a bundle that quietly stopped appearing. A fork has
+      # none of them and gets the APKs.
+      - name: Build the Play bundle
+        working-directory: .
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+          VERSION: ${{ needs.version.outputs.version }}
+          CANONICAL: ${{ github.repository == 'KyronLabs/kyron' }}
+        run: |
+          set -euo pipefail
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ] || [ -z "$GOOGLE_SERVICES_JSON" ]; then
+            if [ "$CANONICAL" = true ]; then
+              echo "No upload key or no GOOGLE_SERVICES_JSON, so no Play bundle."
+              echo "Both are repository secrets; README.md, Builds and releases."
+              exit 1
+            fi
+            echo "::notice::No upload key in this repository, so no Play bundle."
+            exit 0
+          fi
+
+          # Push is not optional in something going to Play.
+          test -f app/android/app/google-services.json
+
+          scripts/write-upload-key.sh
+          ( cd app && flutter build appbundle --release \
+              --build-number "$KYRON_BUILD_NUMBER" \
+              ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
+              ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
+
+          src=app/build/app/outputs/bundle/release/app-release.aab
+          test -f "$src" || { echo "Missing $src"; exit 1; }
+          # No -dev: nothing about it is a development build's but the
+          # version name, which is the last release's.
+          bundle="debug-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
+          mv "$src" "$bundle"
+          scripts/check-aab.sh --keystore app/android/upload-keystore.jks \
+            --build "$KYRON_BUILD_NUMBER" "$bundle"
+
       - name: Hand the Android build to the publish job
         uses: actions/upload-artifact@v4
         with:
@@ -325,6 +396,8 @@ jobs:
     name: Build the Windows development app
     needs: version
     runs-on: windows-latest
+    env:
+      KYRON_BUILD_NUMBER: ${{ needs.version.outputs.build }}
     defaults:
       run:
         working-directory: app
@@ -397,6 +470,8 @@ jobs:
     name: Publish the development build
     needs: [version, android, windows]
     runs-on: ubuntu-latest
+    env:
+      KYRON_BUILD_NUMBER: ${{ needs.version.outputs.build }}
     steps:
       - name: Collect both platforms
         uses: actions/download-artifact@v4
@@ -417,20 +492,22 @@ jobs:
           test -f "debug-artifacts/${stem}-windows-x64.zip"
           test -f "debug-artifacts/${stem}-arm64-v8a.apk"
 
-      # Published as a normal release, not a prerelease: GitHub's "Latest"
-      # badge and /releases/latest only ever consider non-prereleases, so while
-      # every build was a prerelease the endpoint returned 404 and no build ever
-      # showed as current. make_latest is explicit because tag names sort
-      # lexicographically -- debug-0.1.0-9 sorts after debug-0.1.0-20.
+      # A prerelease, so that GitHub's "Latest" is the version that shipped
+      # rather than the newest commit. These were published as "Latest" while
+      # no versioned release existed, because /releases/latest considers only
+      # non-prereleases and answered 404 -- and the comment here said to
+      # switch once one did. v0.1.1 does; development build 119 then took
+      # "Latest" from it.
       #
-      # Once a versioned release exists this should become prerelease: true,
-      # so that "Latest" means the shipped build rather than the newest commit.
+      # Tagged and titled with the build number, which is the commit count
+      # (scripts/build-number.sh), so the number on the release page is the
+      # one in the files and in Play's version code.
       - name: Publish development release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: debug-${{ needs.version.outputs.version }}-${{ github.run_number }}
+          tag_name: debug-${{ needs.version.outputs.version }}-${{ needs.version.outputs.build }}
           target_commitish: ${{ github.sha }}
-          name: Kyron ${{ needs.version.outputs.version }} development build ${{ github.run_number }}
+          name: Kyron ${{ needs.version.outputs.version }} development build ${{ needs.version.outputs.build }}
           body: |
             ${{ needs.version.outputs.notes }}
 
@@ -450,6 +527,13 @@ jobs:
             Every APK here is the same build and carries the same version, so
             it does not matter which you try first.
 
+            **Google Play** — the `.aab` is this build for Play, signed with
+            the upload key: Play Console → Test and release → Internal
+            testing → Create new release. It cannot be installed by hand.
+            Its version name is the last release's; its version code is
+            100000 plus the build number in its name, and above every build
+            before it.
+
             **Coming from build 78 or earlier, uninstall Kyron first.** Those
             builds were signed with a different key — a new one each time, for
             74 to 77 — and Android will not accept an update whose signature
@@ -466,7 +550,7 @@ jobs:
             If those six words still appear on a clean phone, the download was
             interrupted — check the file is the full size shown here and try
             again on a stable connection.
-          prerelease: false
-          make_latest: true
+          prerelease: true
+          make_latest: false
           generate_release_notes: false
           files: debug-artifacts/*

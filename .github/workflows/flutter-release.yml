@@ -19,12 +19,12 @@ concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false
 
-# Set once, at the top, so the Android APKs and the Windows zip carry the same
-# build number. They used to be one job, so this was automatic; now that they
-# are two, a per-job default would let one platform ship as +41 and the other
-# as +42 out of the same tag.
-env:
-  KYRON_BUILD_NUMBER: ${{ github.run_number }}
+# The build number is worked out once, in the checks job, and every job after
+# it reads that one answer -- so the APKs, the bundle and the Windows zip out of
+# one tag carry the same number. It is the tag's commit count, not this
+# workflow's run number: the development builds count the same way, so a
+# release's bundle and theirs are one rising sequence in Play. Why that matters
+# is in scripts/build-number.sh.
 
 jobs:
   # Everything that does not need a platform toolchain, once, before either
@@ -39,9 +39,18 @@ jobs:
         working-directory: app
     outputs:
       version: ${{ steps.version.outputs.version }}
+      build: ${{ steps.build.outputs.build }}
     steps:
       - name: Checkout release tag
         uses: actions/checkout@v4
+        with:
+          # The whole history, which the build number is counted from.
+          fetch-depth: 0
+
+      - name: Number the build
+        id: build
+        working-directory: .
+        run: echo "build=$(scripts/build-number.sh)" >> "$GITHUB_OUTPUT"
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -96,6 +105,8 @@ jobs:
     name: Build the Android release
     needs: checks
     runs-on: ubuntu-latest
+    env:
+      KYRON_BUILD_NUMBER: ${{ needs.checks.outputs.build }}
     defaults:
       run:
         working-directory: app
@@ -146,22 +157,19 @@ jobs:
             exit 1
           }
 
+      # The same script the development builds' Play bundle uses. It used to
+      # be written here inline, with the passwords pasted into an unquoted
+      # heredoc -- where a `$` or a backtick in one would have been expanded
+      # by the shell and the build would have failed on a password that was
+      # right.
       - name: Decode Android signing key
         working-directory: .
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-        run: |
-          test -n "$ANDROID_KEYSTORE_BASE64" || {
-            echo "ANDROID_KEYSTORE_BASE64 is required for a distributable release."
-            exit 1
-          }
-          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > app/android/upload-keystore.jks
-          cat > app/android/key.properties <<EOF
-          storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
-          keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
-          storeFile=../upload-keystore.jks
-          EOF
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: scripts/write-upload-key.sh
 
       # One `flutter build` per architecture, rather than `--split-per-abi`.
       # All of them are published: the per-architecture ones are roughly a
@@ -223,16 +231,23 @@ jobs:
                 ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"}
 
       # The APKs are already collected; this is the bundle, which is what
-      # goes to the Play Store and is not installable by hand.
+      # goes to the Play Store and is not installable by hand. Checked for
+      # the upload key's signature and its version code before it goes
+      # anywhere: Play refuses either wrong, after the upload.
       - name: Collect the bundle
         working-directory: .
         env:
           VERSION: ${{ needs.checks.outputs.version }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
         run: |
           set -euo pipefail
           src=app/build/app/outputs/bundle/release/app-release.aab
           test -f "$src" || { echo "Missing $src"; exit 1; }
-          cp "$src" "release-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
+          bundle="release-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
+          cp "$src" "$bundle"
+          scripts/check-aab.sh --keystore app/android/upload-keystore.jks \
+            --build "$KYRON_BUILD_NUMBER" "$bundle"
           ls -lh release-artifacts
 
       # The same check the development builds get, for the same reason: a
@@ -259,6 +274,8 @@ jobs:
     name: Build the Windows release
     needs: checks
     runs-on: windows-latest
+    env:
+      KYRON_BUILD_NUMBER: ${{ needs.checks.outputs.build }}
     defaults:
       run:
         working-directory: app
@@ -330,6 +347,8 @@ jobs:
     name: Publish the release
     needs: [checks, android, windows]
     runs-on: ubuntu-latest
+    env:
+      KYRON_BUILD_NUMBER: ${{ needs.checks.outputs.build }}
     steps:
       - name: Checkout release tag
         uses: actions/checkout@v4
