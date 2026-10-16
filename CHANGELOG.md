@@ -12,6 +12,7 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-10-16
 ### Fixed
 
 - **Google sign-in could stop without an explanation.** Failed browser launches
@@ -1677,6 +1678,7 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/KyronLabs/kyron/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/KyronLabs/kyron/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/KyronLabs/kyron/releases/tag/v0.1.1
