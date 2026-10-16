@@ -157,11 +157,21 @@ class AuthRepository {
   /// Needs Google enabled under Authentication -> Providers in the Supabase
   /// dashboard. Without that the browser opens on Supabase's own
   /// "Unsupported provider" page, which nothing here can intercept.
-  Future<bool> startGoogleSignIn() => _auth.signInWithOAuth(
-        OAuthProvider.google,
-        redirectTo: SupabaseConfig.authRedirect,
-        authScreenLaunchMode: LaunchMode.externalApplication,
-      );
+  ///
+  /// Supabase returns `false` when it cannot start the browser instead of
+  /// throwing. Turn that silent result into an error so the welcome screen's
+  /// existing error path can tell the reader what happened.
+  Future<bool> startGoogleSignIn() async {
+    final started = await _auth.signInWithOAuth(
+      OAuthProvider.google,
+      redirectTo: SupabaseConfig.authRedirect,
+      authScreenLaunchMode: LaunchMode.externalApplication,
+    );
+    if (!started) {
+      throw const StateError('Supabase could not start Google sign-in.');
+    }
+    return true;
+  }
 
   /// Takes up a session established outside the app and caches the account
   /// behind it.
