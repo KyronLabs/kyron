@@ -21,37 +21,19 @@ void main() {
     expect(outcome, GoogleOutcome.useBrowser);
   });
 
-  test('treats a dismissed sheet as an answer, not a failure', () async {
-    GoogleSignInPlatform.instance = FakeGooglePlatform(
-      throws: const GoogleSignInException(
-        code: GoogleSignInExceptionCode.canceled,
-      ),
-    );
-
-    // A person: the sheet was up for a few seconds before it went.
-    var now = DateTime(2026, 10, 13, 9);
-    final s = GoogleSignInService(
-      clock: () => now = now.add(const Duration(seconds: 3)),
-    );
-    expect(await s.signIn(), GoogleOutcome.cancelled);
-    // Nothing to explain, so nothing is said.
-    expect(s.reason, isNull);
-  });
-
-  test('takes a "dismissal" faster than a person for the failure it is',
+  test('falls back to the browser when the account picker is dismissed',
       () async {
-    // Credential Manager reports an app it does not recognise as the sheet
-    // being cancelled. Believed, that was a Google button that did nothing.
     GoogleSignInPlatform.instance = FakeGooglePlatform(
       throws: const GoogleSignInException(
         code: GoogleSignInExceptionCode.canceled,
       ),
     );
 
-    final now = DateTime(2026, 10, 13, 9);
-    final s = GoogleSignInService(clock: () => now);
+    // Android also reports several configuration failures as cancellation;
+    // the browser path gives those failures somewhere visible to land.
+    final s = service();
     expect(await s.signIn(), GoogleOutcome.useBrowser);
-    expect(s.reason, contains('closed before anyone could have used it'));
+    expect(s.reason, contains('trying browser sign-in'));
   });
 
   test('falls back, and says why, when Google mints no ID token', () async {

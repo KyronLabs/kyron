@@ -109,8 +109,17 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
           signedIn = true;
           return;
         case GoogleOutcome.cancelled:
-          // The sheet was dismissed. That is an answer, and saying anything
-          // about it would be nagging.
+          // A real dismissal is not an exception, but it must not look like a
+          // broken button: the old code simply stopped the spinner and gave
+          // the reader no explanation. This is especially important because
+          // some Android Credential Manager configuration failures are
+          // reported by the plugin as a cancellation.
+          _sayGoogleNotice(
+            AppLocalizations.of(context).ui(
+              'googleSignInCancelled',
+              'Google sign-in was cancelled.',
+            ),
+          );
           return;
         case GoogleOutcome.useBrowser:
           break;
@@ -173,6 +182,15 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
         ),
         backgroundColor: KyronTheme.errorPink,
         duration: const Duration(seconds: 6),
+      ),
+    );
+  }
+
+  void _sayGoogleNotice(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 4),
       ),
     );
   }

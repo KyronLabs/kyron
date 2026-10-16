@@ -12,8 +12,9 @@ enum GoogleOutcome {
   /// A session exists. The caller can carry on.
   signedIn,
 
-  /// The sheet opened and the reader dismissed it. Not an error, and not
-  /// something to show a message about.
+  /// The sheet opened and the reader dismissed it. The browser flow is still
+  /// available when the platform reports a configuration failure as a
+  /// cancellation, so callers can decide whether to offer that fallback.
   cancelled,
 
   /// There is no native sheet here, or the project is not registered for one.
@@ -57,16 +58,9 @@ enum GoogleOutcome {
 /// by name and answered with [GoogleOutcome.useBrowser], which still signs
 /// the reader in, just less gracefully.
 class GoogleSignInService {
-  GoogleSignInService({SupabaseClient? client, DateTime Function()? clock})
-      : _given = client,
-        _clock = clock ?? DateTime.now;
+  GoogleSignInService({SupabaseClient? client}) : _given = client;
 
   final SupabaseClient? _given;
-  final DateTime Function() _clock;
-
-  /// Faster than a person can see a sheet arrive and send it away: the sheet
-  /// alone takes most of this to slide up.
-  static const tooQuick = Duration(milliseconds: 900);
 
   /// Resolved when there is a token to exchange, not when this is built.
   /// Every path that ends in [GoogleOutcome.useBrowser] or
@@ -140,7 +134,6 @@ class GoogleSignInService {
     }
 
     final GoogleSignInAccount account;
-    final asked = _clock();
     try {
       account = await _google.authenticate();
     } on GoogleSignInException catch (error) {
@@ -148,17 +141,13 @@ class GoogleSignInService {
           error.code == GoogleSignInExceptionCode.interrupted) {
         // Android's Credential Manager reports some configuration errors --
         // an app it does not recognise, chiefly -- as the sheet being
-        // dismissed, and the plugin cannot tell them apart. Time can: nobody
-        // sees a sheet slide up and closes it inside [tooQuick]. Left as a
-        // dismissal, that was a Google button that did nothing at all.
-        if (_clock().difference(asked) < tooQuick) {
-          reason = 'the account sheet closed before anyone could have used '
-              'it, which is what an unregistered app looks like';
-          AppLog.instance.error('auth', reason!);
-          return GoogleOutcome.useBrowser;
-        }
-        // Dismissing the sheet is an answer, not a fault.
-        return GoogleOutcome.cancelled;
+        // dismissed, and the plugin cannot tell them apart from a person
+        // closing it. Treat both as a browser fallback: leaving the reader on
+        // the welcome screen made a broken Google button indistinguishable
+        // from a successful cancellation.
+        reason = 'the Google account picker closed; trying browser sign-in';
+        AppLog.instance.error('auth', reason!);
+        return GoogleOutcome.useBrowser;
       }
       reason = 'Google refused the request (${error.code.name}): '
           '${error.description ?? 'no detail'}';
