@@ -168,7 +168,7 @@ class AuthRepository {
       authScreenLaunchMode: LaunchMode.externalApplication,
     );
     if (!started) {
-      throw const StateError('Supabase could not start Google sign-in.');
+      throw StateError('Supabase could not start Google sign-in.');
     }
     return true;
   }

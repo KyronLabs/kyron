@@ -12,6 +12,12 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Google sign-in could stop without an explanation.** Failed browser launches
+  now show an error, and Android account-picker cancellations fall back to the
+  browser sign-in flow instead of silently clearing the loading state.
+
 ## [0.1.2] - 2026-10-15
 ### Added
 
