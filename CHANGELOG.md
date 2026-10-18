@@ -12,6 +12,16 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Added
+
+- **Bundles go to Play by themselves.** Once a Play service account is set
+  up (README.md, Google Play), every checked bundle -- each development
+  build's and each release's -- is sent to the internal testing track by CI,
+  with its commit list or changelog as the notes. Uploading to Play Console
+  by hand was the only way, so testers got whatever somebody last remembered
+  to upload. The upload goes through Play's API directly from a script in
+  this repository, so the key is handled by nothing from outside it.
+
 ### Fixed
 
 - **An account made with Google had no way in from "Log in".** "Already on
