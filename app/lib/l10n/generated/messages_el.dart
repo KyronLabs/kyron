@@ -1684,6 +1684,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Διαγραμμένος λογαριασμός"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Αυτός ο λογαριασμός έχει διαγραφεί, οπότε δεν μπορούν πλέον να σταλούν μηνύματα εδώ."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Εγγραφήκατε με Google; Χρησιμοποιήστε τη «Σύνδεση με Google»."),
     };
 
 final messageLookup = MessageLookup();

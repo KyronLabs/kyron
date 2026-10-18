@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "دیگر نمی‌توانید هیچ‌کدام را برگردانید.",
   "ui_delete_account_done": "حساب شما حذف شد.",
   "ui_dm_deleted_account": "حساب حذف‌شده",
-  "ui_dm_deleted_account_detail": "این حساب حذف شده است، بنابراین دیگر نمی‌توان اینجا پیام فرستاد."
+  "ui_dm_deleted_account_detail": "این حساب حذف شده است، بنابراین دیگر نمی‌توان اینجا پیام فرستاد.",
+  "ui_login_google_hint": "با Google ثبت‌نام کرده‌اید؟ به‌جای آن از «Sign in with Google» استفاده کنید."
 }

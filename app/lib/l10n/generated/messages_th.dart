@@ -1505,6 +1505,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("บัญชีที่ถูกลบ"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "บัญชีนี้ถูกลบแล้ว จึงไม่สามารถส่งข้อความมาที่นี่ได้อีก"),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "สมัครด้วย Google ใช่ไหม ใช้ «Sign in with Google» แทน"),
     };
 
 final messageLookup = MessageLookup();

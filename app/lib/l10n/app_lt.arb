@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Nieko iš to nebegalėsite susigrąžinti.",
   "ui_delete_account_done": "Jūsų paskyra ištrinta.",
   "ui_dm_deleted_account": "Ištrinta paskyra",
-  "ui_dm_deleted_account_detail": "Ši paskyra ištrinta, todėl čia nebegalima siųsti žinučių."
+  "ui_dm_deleted_account_detail": "Ši paskyra ištrinta, todėl čia nebegalima siųsti žinučių.",
+  "ui_login_google_hint": "Užsiregistravote per „Google“? Naudokite „Sign in with Google“."
 }

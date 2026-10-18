@@ -1518,6 +1518,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ဖျက်ထားသော အကောင့်"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "ဤအကောင့်ကို ဖျက်ထားပြီးဖြစ်၍ ဤနေရာသို့ မက်ဆေ့ချ် ပို့၍ မရတော့ပါ။"),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Google ဖြင့် စာရင်းသွင်းခဲ့ပါသလား။ «Sign in with Google» ကို အစားသုံးပါ။"),
     };
 
 final messageLookup = MessageLookup();

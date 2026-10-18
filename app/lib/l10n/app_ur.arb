@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "آپ اس میں سے کچھ بھی واپس حاصل نہیں کر سکیں گے۔",
   "ui_delete_account_done": "آپ کا اکاؤنٹ حذف کر دیا گیا ہے۔",
   "ui_dm_deleted_account": "حذف شدہ اکاؤنٹ",
-  "ui_dm_deleted_account_detail": "یہ اکاؤنٹ حذف ہو چکا ہے، اس لیے یہاں مزید پیغامات نہیں بھیجے جا سکتے۔"
+  "ui_dm_deleted_account_detail": "یہ اکاؤنٹ حذف ہو چکا ہے، اس لیے یہاں مزید پیغامات نہیں بھیجے جا سکتے۔",
+  "ui_login_google_hint": "Google سے سائن اپ کیا تھا؟ اس کے بجائے «Sign in with Google» استعمال کریں۔"
 }

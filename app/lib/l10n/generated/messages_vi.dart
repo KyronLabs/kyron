@@ -1511,6 +1511,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Tài khoản đã xóa"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Tài khoản này đã bị xóa nên không thể gửi tin nhắn ở đây nữa."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Đã đăng ký bằng Google? Hãy dùng “Sign in with Google”."),
     };
 
 final messageLookup = MessageLookup();

@@ -36,6 +36,55 @@ void main() {
     expect(s.reason, contains('trying browser sign-in'));
   });
 
+  test('names the setting to fix when Google refuses this build', () async {
+    // What a Play install gets when the app signing certificate is not
+    // registered: the account is picked, and the refusal arrives as a
+    // cancellation. The browser then signs in fine, so the log is the only
+    // place left that says the in-app sheet is broken, and why.
+    GoogleSignInPlatform.instance = FakeGooglePlatform(
+      throws: const GoogleSignInException(
+        code: GoogleSignInExceptionCode.canceled,
+        description: '[16] Account reauth failed.',
+      ),
+    );
+
+    final s = service();
+    expect(await s.signIn(), GoogleOutcome.useBrowser);
+    expect(s.reason, contains('[16] Account reauth failed.'));
+    expect(s.reason, contains('SHA-1 is not registered'));
+  });
+
+  test('keeps Google\'s words even when they are not a known refusal',
+      () async {
+    GoogleSignInPlatform.instance = FakeGooglePlatform(
+      throws: const GoogleSignInException(
+        code: GoogleSignInExceptionCode.canceled,
+        description: 'activity is cancelled by the user.',
+      ),
+    );
+
+    final s = service();
+    expect(await s.signIn(), GoogleOutcome.useBrowser);
+    expect(s.reason, contains('activity is cancelled by the user.'));
+    expect(s.reason, isNot(contains('not registered')));
+  });
+
+  test('tells a refusal from a dismissal by its words', () {
+    for (final refusal in [
+      '[16] Account reauth failed.',
+      '16: [16] Account reauth failed.',
+      '[10] Developer console is not set up correctly.',
+    ]) {
+      expect(GoogleSignInService.refusedAsCancel(refusal), isTrue,
+          reason: refusal);
+    }
+    expect(
+      GoogleSignInService.refusedAsCancel('activity is cancelled by the user.'),
+      isFalse,
+    );
+    expect(GoogleSignInService.refusedAsCancel(''), isFalse);
+  });
+
   test('falls back, and says why, when Google mints no ID token', () async {
     // What a project with no web OAuth client looks like from here: the sheet
     // completes, and hands back nothing to exchange.

@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "O kò ní lè rí ohunkóhun nínú rẹ̀ gbà padà.",
   "ui_delete_account_done": "A ti pa àkáǹtì rẹ rẹ́.",
   "ui_dm_deleted_account": "Àkáǹtì tí a ti pa rẹ́",
-  "ui_dm_deleted_account_detail": "A ti pa àkáǹtì yìí rẹ́, nítorí náà a kò lè fi ìfiránṣẹ́ ránṣẹ́ síbí mọ́."
+  "ui_dm_deleted_account_detail": "A ti pa àkáǹtì yìí rẹ́, nítorí náà a kò lè fi ìfiránṣẹ́ ránṣẹ́ síbí mọ́.",
+  "ui_login_google_hint": "Ṣé o forúkọsílẹ̀ pẹ̀lú Google? Lo «Sign in with Google» dípò rẹ̀."
 }

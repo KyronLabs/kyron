@@ -4,15 +4,13 @@ import '../l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:math' as math;
 
-import '../services/google_sign_in_service.dart';
-import '../services/app_log.dart';
+import '../services/google_sign_in_flow.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
-import '../providers/auth_provider.dart';
 import '../providers/preferences_provider.dart';
 import '../routes.dart';
 import '../services/platform_support.dart';
@@ -97,45 +95,34 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
       // the phone, one tap, no browser and nothing typed. It hands back an ID
       // token, which Supabase exchanges for a session on the spot -- so
       // unlike the browser flow, nothing depends on a redirect coming back.
-      final google = GoogleSignInService();
-      final outcome = await google.signIn();
-
-      switch (outcome) {
-        case GoogleOutcome.signedIn:
+      // The browser when the sheet cannot do it: google_sign_in_flow.dart,
+      // shared with the log-in screen.
+      switch (await continueWithGoogle(ref)) {
+        case GoogleFlowEnd.signedIn:
           // main.dart is listening, and replaces this screen once the profile
           // is in. The spinner stays until then: dropping it now would put
           // the buttons back, live, for the second or so before the screen
           // goes -- which reads as the sign-in having failed.
           signedIn = true;
-          return;
-        case GoogleOutcome.cancelled:
+        case GoogleFlowEnd.dismissed:
           // A real dismissal is not an exception, but it must not look like a
           // broken button: the old code simply stopped the spinner and gave
           // the reader no explanation. This is especially important because
           // some Android Credential Manager configuration failures are
           // reported by the plugin as a cancellation.
-          _sayGoogleNotice(
-            AppLocalizations.of(context).ui(
-              'googleSignInCancelled',
-              'Google sign-in was cancelled.',
-            ),
-          );
-          return;
-        case GoogleOutcome.useBrowser:
+          if (mounted) {
+            _sayGoogleNotice(
+              AppLocalizations.of(context).ui(
+                'googleSignInCancelled',
+                'Google sign-in was cancelled.',
+              ),
+            );
+          }
+        case GoogleFlowEnd.inBrowser:
+          // The browser has it now. The session arrives over the redirect and
+          // main.dart routes on it, because by then this screen may be gone.
           break;
       }
-
-      // No sheet here, or the project is not registered for one. The browser
-      // still works when Google's side is configured, so it is the fallback
-      // rather than a dead end -- and the reason is in the log, because
-      // "nothing happened" is the worst thing this could report.
-      AppLog.instance.info(
-        'auth',
-        'Falling back to the browser for Google: ${google.reason}',
-      );
-      await ref.read(authNotifierProvider.notifier).startGoogleSignIn();
-      // The browser has it now. The session arrives over the redirect and
-      // main.dart routes on it, because by then this screen may be gone.
     } catch (error) {
       if (mounted) _sayFailed(error);
     } finally {

@@ -1514,6 +1514,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Dzēsts konts"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Šis konts ir dzēsts, tāpēc šeit vairs nevar sūtīt ziņas."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Reģistrējāties ar Google? Izmantojiet “Sign in with Google”."),
     };
 
 final messageLookup = MessageLookup();

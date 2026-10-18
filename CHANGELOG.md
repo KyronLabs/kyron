@@ -12,6 +12,20 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Fixed
+
+- **An account made with Google had no way in from "Log in".** "Already on
+  Kyron? Log in" led to an email and a password field and nothing else, and
+  an account made with "Continue with Google" has no password. The log-in
+  screen now has "Sign in with Google", the same flow as the welcome
+  screen's, and a password that fails there points to it.
+- **A refused Google sheet left no trace of why.** Since 0.1.3 the app goes
+  to the browser whenever the account sheet closes, which signs people in
+  but hid the reason the sheet failed. The System log now records Google's
+  own words, and says plainly when they mean this install's signing
+  certificate is not registered -- the reason the sheet fails on Play
+  installs. docs/AUTH_GOOGLE.md has the fix.
+
 ## [0.1.3] - 2026-10-16
 ### Fixed
 

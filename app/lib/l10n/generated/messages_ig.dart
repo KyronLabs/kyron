@@ -1503,6 +1503,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Akaụntụ e hichapụrụ"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "E hichapụla akaụntụ a, ya mere a gaghị enwe ike izite ozi ebe a ọzọ."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Ị debanyere aha na Google? Jiri «Sign in with Google» kama."),
     };
 
 final messageLookup = MessageLookup();

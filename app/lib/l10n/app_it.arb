@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Non potrai recuperarne nulla.",
   "ui_delete_account_done": "Il tuo account è stato eliminato.",
   "ui_dm_deleted_account": "Account eliminato",
-  "ui_dm_deleted_account_detail": "Questo account è stato eliminato, quindi non è più possibile inviare messaggi qui."
+  "ui_dm_deleted_account_detail": "Questo account è stato eliminato, quindi non è più possibile inviare messaggi qui.",
+  "ui_login_google_hint": "Ti sei registrato con Google? Usa invece «Sign in with Google»."
 }

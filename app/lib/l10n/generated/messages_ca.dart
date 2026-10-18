@@ -1634,6 +1634,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Compte suprimit"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Aquest compte s'ha suprimit, així que ja no s'hi poden enviar missatges."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "T'has registrat amb Google? Fes servir «Inicia sessió amb Google»."),
     };
 
 final messageLookup = MessageLookup();

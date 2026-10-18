@@ -1518,6 +1518,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ջնջված հաշիվ"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Այս հաշիվը ջնջվել է, ուստի այստեղ այլևս հնարավոր չէ հաղորդագրություններ ուղարկել։"),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Գրանցվե՞լ եք Google-ով։ Փոխարենը օգտագործեք «Sign in with Google»։"),
     };
 
 final messageLookup = MessageLookup();

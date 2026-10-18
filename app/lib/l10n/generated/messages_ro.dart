@@ -1518,6 +1518,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Cont șters"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Acest cont a fost șters, așa că nu mai pot fi trimise mesaje aici."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Te-ai înregistrat cu Google? Folosește în schimb „Sign in with Google”."),
     };
 
 final messageLookup = MessageLookup();

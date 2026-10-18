@@ -190,6 +190,7 @@ const _keys = [
   'ui_delete_account_done',
   'ui_dm_deleted_account',
   'ui_dm_deleted_account_detail',
+  'ui_login_google_hint',
 ];
 
 void main() {

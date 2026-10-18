@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Je kunt er niets van terugkrijgen.",
   "ui_delete_account_done": "Je account is verwijderd.",
   "ui_dm_deleted_account": "Verwijderd account",
-  "ui_dm_deleted_account_detail": "Dit account is verwijderd, dus hier kunnen geen berichten meer worden verstuurd."
+  "ui_dm_deleted_account_detail": "Dit account is verwijderd, dus hier kunnen geen berichten meer worden verstuurd.",
+  "ui_login_google_hint": "Aangemeld met Google? Gebruik in plaats daarvan ‘Sign in with Google’."
 }

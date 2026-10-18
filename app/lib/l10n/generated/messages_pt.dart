@@ -1513,6 +1513,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Conta excluída"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Esta conta foi excluída, então não é mais possível enviar mensagens aqui."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Cadastrou-se com o Google? Use “Sign in with Google”."),
     };
 
 final messageLookup = MessageLookup();

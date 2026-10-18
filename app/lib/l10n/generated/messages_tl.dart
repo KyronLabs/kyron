@@ -1513,6 +1513,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Na-delete na account"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Na-delete na ang account na ito, kaya hindi na makakapagpadala ng mensahe rito."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Nag-sign up gamit ang Google? Gamitin na lang ang “Sign in with Google”."),
     };
 
 final messageLookup = MessageLookup();

@@ -1596,6 +1596,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Silinmiş hesab"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Bu hesab silinib, ona görə də artıq bura mesaj göndərmək mümkün deyil."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Google ilə qeydiyyatdan keçmisiniz? Əvəzində «Google ilə daxil ol» seçin."),
     };
 
 final messageLookup = MessageLookup();

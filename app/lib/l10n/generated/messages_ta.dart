@@ -1518,6 +1518,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("நீக்கப்பட்ட கணக்கு"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "இந்தக் கணக்கு நீக்கப்பட்டதால், இனி இங்கே செய்திகளை அனுப்ப முடியாது."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Google மூலம் பதிவு செய்தீர்களா? பதிலாக «Sign in with Google» ஐப் பயன்படுத்துங்கள்."),
     };
 
 final messageLookup = MessageLookup();

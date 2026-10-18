@@ -1507,6 +1507,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Raderat konto"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Det här kontot har raderats, så det går inte längre att skicka meddelanden hit."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Registrerad med Google? Använd ”Sign in with Google” i stället."),
     };
 
 final messageLookup = MessageLookup();

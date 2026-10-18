@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Vous ne pourrez rien en récupérer.",
   "ui_delete_account_done": "Votre compte a été supprimé.",
   "ui_dm_deleted_account": "Compte supprimé",
-  "ui_dm_deleted_account_detail": "Ce compte a été supprimé : il n'est plus possible d'envoyer des messages ici."
+  "ui_dm_deleted_account_detail": "Ce compte a été supprimé : il n'est plus possible d'envoyer des messages ici.",
+  "ui_login_google_hint": "Inscrit avec Google ? Utilisez plutôt « Sign in with Google »."
 }

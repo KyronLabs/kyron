@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Você não poderá recuperar nada disso.",
   "ui_delete_account_done": "Sua conta foi excluída.",
   "ui_dm_deleted_account": "Conta excluída",
-  "ui_dm_deleted_account_detail": "Esta conta foi excluída, então não é mais possível enviar mensagens aqui."
+  "ui_dm_deleted_account_detail": "Esta conta foi excluída, então não é mais possível enviar mensagens aqui.",
+  "ui_login_google_hint": "Cadastrou-se com o Google? Use “Sign in with Google”."
 }

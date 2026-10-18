@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Hindi mo na mababawi ang alinman dito.",
   "ui_delete_account_done": "Na-delete na ang iyong account.",
   "ui_dm_deleted_account": "Na-delete na account",
-  "ui_dm_deleted_account_detail": "Na-delete na ang account na ito, kaya hindi na makakapagpadala ng mensahe rito."
+  "ui_dm_deleted_account_detail": "Na-delete na ang account na ito, kaya hindi na makakapagpadala ng mensahe rito.",
+  "ui_login_google_hint": "Nag-sign up gamit ang Google? Gamitin na lang ang “Sign in with Google”."
 }

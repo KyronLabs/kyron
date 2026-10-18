@@ -1515,6 +1515,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Conta eliminada"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Esta conta eliminouse, así que xa non se poden enviar mensaxes aquí."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Rexistrácheste con Google? Usa «Sign in with Google»."),
     };
 
 final messageLookup = MessageLookup();
