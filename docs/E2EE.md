@@ -198,7 +198,7 @@ every answer is sealed for one device's key.
 | Attachments in the clear | Encrypt the file before upload; the key travels in the sealed message |
 | Reactions readable | Send a reaction as a small sealed message that names the one it reacts to |
 | Push shows no preview | A data-only push the app opens on the device and draws itself |
-| No backup | A recovery phrase the user writes down, encrypting the secret half; or Android's Block Store, which keeps a small secret across reinstalls and new phones, sealed with the screen lock |
+| No backup | A recovery phrase the user writes down, encrypting the secret half; or Android's Block Store, which restores a small secret to a new phone during setup, end-to-end encrypted (whether it also survives a reinstall on the same phone needs testing before relying on it) |
 | Signed-out key stays on the phone | "Sign out and remove from this phone", which erases it |
 
 ## Honestly
