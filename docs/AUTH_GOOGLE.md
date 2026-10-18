@@ -43,20 +43,26 @@
   `AE:03:5B:A3:CA:98:83:04:CB:8E:E5:CD:A1:1B:DE:94:1A:EF:A5:BF` (read back
   out of build 115's APK).
 
-- **On Play installs the sheet is refused; the browser signs in.** Seen on
-  the first Play internal-testing builds (0.1.1+647 onwards). Every sign-in
-  from them reached Supabase through `/authorize` and `/callback` -- the
-  browser -- and none as an ID token, so the sheet failed on the phone,
-  before Google minted anything. A Play install is signed with Google's
-  **app signing** certificate, not the upload key and not the development
-  key, and Credential Manager only trusts a certificate registered as an
-  Android client beside the web client. The development key is registered,
-  which is why sideloaded builds get the sheet. To fix it, add an Android
-  client to project `601078807832` with the **app signing key certificate**
-  SHA-1 from Play Console → Test and release → App integrity → App signing
-  (step 1 below). The app's System log (Settings → About → System log) now
-  carries Google's own words when the sheet fails: `[16] Account reauth
-  failed` or `[10] Developer console is not set up correctly` both mean this.
+- **Play installs: fixed on 18 October.** The first Play internal-testing
+  builds (0.1.1+647 onwards) never got the sheet: every sign-in from them
+  reached Supabase through `/authorize` and `/callback` -- the browser --
+  and none as an ID token. A Play install is signed with Google's **app
+  signing** certificate, not the upload key and not the development key,
+  and Credential Manager only trusts a certificate registered as an Android
+  client beside the web client. Registering the app signing key
+  certificate's SHA-1 on an Android client in project `601078807832` fixed
+  it: the first ID-token sign-in from a Play install arrived within minutes.
+  Linking the Cloud project in Play Console had nothing to do with it --
+  that link is for Play's own APIs.
+- **One Android client per signing key.** The Play fingerprint was first
+  put in place of the development one, by editing the existing client,
+  which took the sheet away from every sideloaded build. Add a client for
+  each key; never edit one key into another. The table in step 1 lists all
+  three.
+- When the sheet fails, the app's System log (Settings → About → System
+  log) carries Google's own words: `[16] Account reauth failed` or `[10]
+  Developer console is not set up correctly` both mean the certificate that
+  signed this install is not registered.
 
 The rest of this document is the full setup, for a new project or a new
 signing key.
