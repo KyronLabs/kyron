@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Ziņa",
   "ui_dm_quote_attachment": "Pielikums",
   "ui_dm_unreadable": "Šo ziņojumu nevar izlasīt šajā ierīcē.",
+  "ui_dm_waiting": "Gaida šo ziņojumu. Tas var aizņemt kādu laiku.",
   "ui_dm_preview_sealed": "Šifrēts ziņojums",
   "ui_dm_e2ee_notice": "Ziņojumi ir pilnībā šifrēti",
   "ui_dm_not_encrypted": "Nav pilnībā šifrēts",

@@ -1244,6 +1244,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Pielikums"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Šo ziņojumu nevar izlasīt šajā ierīcē."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Gaida šo ziņojumu. Tas var aizņemt kādu laiku."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Šifrēts ziņojums"),
       "ui_dm_e2ee_notice":

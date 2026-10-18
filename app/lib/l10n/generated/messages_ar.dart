@@ -1247,6 +1247,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("مرفق"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "لا يمكن قراءة هذه الرسالة على هذا الجهاز."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "في انتظار هذه الرسالة. قد يستغرق ذلك بعض الوقت."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("رسالة مشفّرة"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

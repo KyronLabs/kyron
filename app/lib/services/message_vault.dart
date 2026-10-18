@@ -1,10 +1,12 @@
 // lib/services/message_vault.dart
+import 'dart:async';
 import 'dart:math';
 
 import 'package:cryptography/cryptography.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import '../models/key_share.dart';
 import '../repositories/keys_repository.dart';
 import 'app_log.dart';
 import 'message_crypto.dart';
@@ -112,6 +114,8 @@ class MessageVault {
       // because a run of these means nobody can write to this device.
       AppLog.instance.error('e2ee', 'Could not publish the key: $error');
     }
+    // Whatever was asked of this device while it was away.
+    unawaited(answerPending());
   }
 
   /// The keypair being read from storage, while it is. [unlock] is not
@@ -218,6 +222,7 @@ class MessageVault {
     _mine = null;
     _loading = null;
     _account = null;
+    _asked.clear();
     _sharedByConversation.clear();
     _devicesByConversation.clear();
     _unwrapKeys.clear();
@@ -323,14 +328,23 @@ class MessageVault {
 
   /// Opens one, or answers null if this was never sealed or cannot be opened.
   ///
-  /// A `k2` envelope opens with this device's key alone, no network. A `k1`
-  /// message, the old single-key form, needs the conversation's keys.
-  Future<String?> open(String body, String conversationId) async {
+  /// A `k2` envelope opens with this device's key alone, no network -- or,
+  /// when it was not sealed for this device, with one of [shares]: its key
+  /// sealed again for this device by one that could open it. [card] when
+  /// this is the message's link card, whose key rides second in a share. A
+  /// `k1` message, the old single-key form, needs the conversation's keys.
+  Future<String?> open(
+    String body,
+    String conversationId, {
+    List<KeyShare> shares = const [],
+    bool card = false,
+  }) async {
     final envelope = SealedEnvelope.tryDecode(body);
     if (envelope != null) {
       final mine = await _key();
       if (mine == null) return null;
-      return _crypto.openEnvelope(envelope, mine: mine);
+      return await _crypto.openEnvelope(envelope, mine: mine) ??
+          await _openShared(envelope, mine, shares, card: card);
     }
 
     final sealed = SealedMessage.tryDecode(body);
@@ -350,12 +364,19 @@ class MessageVault {
   /// Opens [body] using only what this device holds -- for a list of
   /// conversations, where fetching every conversation's keys to show one line
   /// each is not worth it. A `k2` envelope always opens here if it was sealed
-  /// for this device; a `k1` message only if its keys were already fetched.
-  Future<String?> openOffline(String body, String conversationId) async {
+  /// for this device, or one of [shares] was; a `k1` message only if its keys
+  /// were already fetched.
+  Future<String?> openOffline(
+    String body,
+    String conversationId, {
+    List<KeyShare> shares = const [],
+  }) async {
     final envelope = SealedEnvelope.tryDecode(body);
     if (envelope != null) {
       final mine = await _key();
-      return mine == null ? null : _crypto.openEnvelope(envelope, mine: mine);
+      if (mine == null) return null;
+      return await _crypto.openEnvelope(envelope, mine: mine) ??
+          await _openShared(envelope, mine, shares, card: false);
     }
     final sealed = SealedMessage.tryDecode(body);
     final cached = _sharedByConversation[conversationId];
@@ -366,6 +387,171 @@ class MessageVault {
       } catch (_) {}
     }
     return null;
+  }
+
+  Future<String?> _openShared(
+    SealedEnvelope envelope,
+    SimpleKeyPair mine,
+    List<KeyShare> shares, {
+    required bool card,
+  }) async {
+    if (shares.isEmpty) return null;
+    final ownKey = MessageCrypto.encodePublicKey(await mine.extractPublicKey());
+    final start = card ? _keyLength : 0;
+    for (final share in shares) {
+      if (share.publicKey != ownKey) continue;
+      final keys = await _crypto.openShare(share.sealed, mine: mine);
+      if (keys == null || keys.length < start + _keyLength) continue;
+      final plain = await _crypto.openWithContentKey(
+        envelope,
+        keys.sublist(start, start + _keyLength),
+      );
+      if (plain != null) return plain;
+    }
+    return null;
+  }
+
+  /// A message key's length: XChaCha20's 256 bits.
+  static const _keyLength = 32;
+
+  /// How far back a device may ask for keys. Matches the server's
+  /// `KeySharesService.windowDays`, which refuses older ones anyway: past
+  /// it, asking would only say "waiting" about a message nobody will answer.
+  static const shareWindow = Duration(days: 30);
+
+  /// Whether a message this device cannot open is one worth asking for.
+  static bool canAskFor(String body, DateTime sentAt) =>
+      body.startsWith('k2.') && DateTime.now().difference(sentAt) < shareWindow;
+
+  /// Whether anybody could answer this device if it asked: it has a key, and
+  /// a device id to have published it under. A thread says "Waiting for
+  /// this message" only then -- otherwise nothing is coming.
+  Future<bool> canBeAnswered() async {
+    final account = _account ?? _signedIn();
+    if (account == null || await _key() == null) return false;
+    return await _storage.read(key: _deviceIdName(account)) != null;
+  }
+
+  /// Messages already asked for since the vault was unlocked, so a thread
+  /// drawn twice does not ask twice.
+  final _asked = <String>{};
+
+  /// Asks the conversation's other devices for the keys of [messageIds],
+  /// which this device was not sealed for.
+  ///
+  /// Whoever can open them -- the sender's phone, another of this person's
+  /// own -- seals each key again for this device when it is next online
+  /// ([answerPending]), and the thread opens them then. Once per message per
+  /// session; a failure is forgotten so the next look asks again.
+  Future<void> requestKeys(
+    String conversationId,
+    Iterable<String> messageIds,
+  ) async {
+    final fresh = [
+      for (final id in messageIds)
+        if (_asked.add(id)) id,
+    ];
+    if (fresh.isEmpty) return;
+    final account = _account ?? _signedIn();
+    final device = account == null
+        ? null
+        : await _storage.read(key: _deviceIdName(account));
+    if (device == null || await _key() == null) {
+      _asked.removeAll(fresh);
+      return;
+    }
+    try {
+      for (var i = 0; i < fresh.length; i += 100) {
+        await _keys.requestShares(
+          conversationId,
+          device,
+          fresh.sublist(i, min(i + 100, fresh.length)),
+        );
+      }
+    } catch (error) {
+      _asked.removeAll(fresh);
+      AppLog.instance.error('e2ee', 'Could not ask for keys: $error');
+    }
+  }
+
+  Future<int>? _answering;
+  bool _answerAgain = false;
+
+  /// Answers every request this device can: for each message somebody's
+  /// device is waiting on that this one can open, its key sealed for theirs.
+  ///
+  /// Run after unlocking, when the socket connects, and whenever the server
+  /// says a request arrived. One run at a time; a call during a run makes it
+  /// go round once more, so a request that arrived meanwhile is not left.
+  /// Answers how many it answered.
+  Future<int> answerPending() {
+    if (_answering != null) {
+      _answerAgain = true;
+      return _answering!;
+    }
+    final run = () async {
+      var answered = 0;
+      do {
+        _answerAgain = false;
+        answered += await _answerOnce();
+      } while (_answerAgain);
+      return answered;
+    }();
+    _answering = run;
+    return run.whenComplete(() => _answering = null);
+  }
+
+  Future<int> _answerOnce() async {
+    final mine = await _key();
+    if (mine == null) return 0;
+    final ownKey = MessageCrypto.encodePublicKey(await mine.extractPublicKey());
+
+    final List<KeyRequest> pending;
+    try {
+      pending = await _keys.pendingRequests();
+    } catch (error) {
+      AppLog.instance.error('e2ee', 'Could not fetch key requests: $error');
+      return 0;
+    }
+
+    final answers = <({String id, String sealed})>[];
+    for (final request in pending) {
+      if (request.publicKey == ownKey) continue;
+      final device = MessageCrypto.tryDecodePublicKey(request.publicKey);
+      final envelope = SealedEnvelope.tryDecode(request.body);
+      if (device == null || envelope == null) continue;
+      // Only a message this device was sealed for. One it was handed a share
+      // of is left to the devices that were.
+      final bodyKey = await _crypto.contentKeyOf(envelope, mine: mine);
+      if (bodyKey == null) continue;
+      final card = request.linkCard == null
+          ? null
+          : SealedEnvelope.tryDecode(request.linkCard!);
+      final cardKey =
+          card == null ? null : await _crypto.contentKeyOf(card, mine: mine);
+      answers.add((
+        id: request.id,
+        sealed: await _crypto.sealShare(
+          [...bodyKey, ...?cardKey],
+          mine: mine,
+          device: device,
+        ),
+      ));
+    }
+    if (answers.isEmpty) return 0;
+
+    try {
+      for (var i = 0; i < answers.length; i += 100) {
+        await _keys.shareKeys(
+          answers.sublist(i, min(i + 100, answers.length)),
+        );
+      }
+    } catch (error) {
+      AppLog.instance.error('e2ee', 'Could not answer key requests: $error');
+      return 0;
+    }
+    AppLog.instance.info('e2ee', 'Answered ${answers.length} key requests');
+    return answers.length;
   }
 
   /// Every device in a conversation, freshest first, cached for

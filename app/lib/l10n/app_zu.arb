@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Umlayezo",
   "ui_dm_quote_attachment": "Okunamathiselwe",
   "ui_dm_unreadable": "Lo mlayezo awukwazi ukufundwa kule divayisi.",
+  "ui_dm_waiting": "Kulindwe lo mlayezo. Lokhu kungase kuthathe isikhathi esithile.",
   "ui_dm_preview_sealed": "Umlayezo obethelwe",
   "ui_dm_e2ee_notice": "Imilayezo ibethelwe kusukela ekuqaleni kuya ekugcineni",
   "ui_dm_not_encrypted": "Awubethelwe kusukela ekuqaleni kuya ekugcineni",

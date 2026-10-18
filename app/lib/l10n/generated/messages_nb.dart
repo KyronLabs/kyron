@@ -1243,6 +1243,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Vedlegg"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Denne meldingen kan ikke leses på denne enheten."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Venter på denne meldingen. Dette kan ta litt tid."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Kryptert melding"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Mesaj",
   "ui_dm_quote_attachment": "Ek",
   "ui_dm_unreadable": "Bu mesaj bu cihazda okunamıyor.",
+  "ui_dm_waiting": "Bu mesaj bekleniyor. Bu biraz zaman alabilir.",
   "ui_dm_preview_sealed": "Şifreli mesaj",
   "ui_dm_e2ee_notice": "Mesajlar uçtan uca şifrelidir",
   "ui_dm_not_encrypted": "Uçtan uca şifreli değil",

@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Meddelande",
   "ui_dm_quote_attachment": "Bilaga",
   "ui_dm_unreadable": "Det här meddelandet kan inte läsas på den här enheten.",
+  "ui_dm_waiting": "Väntar på det här meddelandet. Det kan ta en stund.",
   "ui_dm_preview_sealed": "Krypterat meddelande",
   "ui_dm_e2ee_notice": "Meddelanden är end-to-end-krypterade",
   "ui_dm_not_encrypted": "Inte end-to-end-krypterat",

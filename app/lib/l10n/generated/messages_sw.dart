@@ -1243,6 +1243,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Kiambatisho"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Ujumbe huu hauwezi kusomwa kwenye kifaa hiki."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Inasubiri ujumbe huu. Huenda ikachukua muda."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Ujumbe uliosimbwa"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

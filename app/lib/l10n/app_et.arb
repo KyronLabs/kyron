@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Sõnum",
   "ui_dm_quote_attachment": "Manus",
   "ui_dm_unreadable": "Seda sõnumit ei saa selles seadmes lugeda.",
+  "ui_dm_waiting": "Ootan seda sõnumit. See võib veidi aega võtta.",
   "ui_dm_preview_sealed": "Krüpteeritud sõnum",
   "ui_dm_e2ee_notice": "Sõnumid on otspunktkrüpteeritud",
   "ui_dm_not_encrypted": "Pole otspunktkrüpteeritud",

@@ -1244,6 +1244,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Lampiran"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Mesej ini tidak dapat dibaca pada peranti ini."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Menunggu mesej ini. Ini mungkin mengambil sedikit masa."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Mesej disulitkan"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

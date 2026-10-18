@@ -1242,6 +1242,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Àsomọ́"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "A kò lè ka ìfiránṣẹ́ yìí lórí ẹ̀rọ yìí."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Ń dúró de ìfiránṣẹ́ yìí. Èyí lè gba ìgbà díẹ̀."),
       "ui_dm_preview_sealed": MessageLookupByLibrary.simpleMessage(
           "Ìfiránṣẹ́ tí a ti fi kóòdù pa mọ́"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

@@ -1242,6 +1242,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Priloga"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Tega sporočila ni mogoče prebrati v tej napravi."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Čakanje na to sporočilo. To lahko traja nekaj časa."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Šifrirano sporočilo"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

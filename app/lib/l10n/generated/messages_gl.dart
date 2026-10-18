@@ -1242,6 +1242,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Anexo"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Esta mensaxe non se pode ler neste dispositivo."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Agardando esta mensaxe. Isto pode levar un tempo."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Mensaxe cifrada"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

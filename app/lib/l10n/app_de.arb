@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Nachricht",
   "ui_dm_quote_attachment": "Anhang",
   "ui_dm_unreadable": "Diese Nachricht kann auf diesem Gerät nicht gelesen werden.",
+  "ui_dm_waiting": "Warten auf diese Nachricht. Das kann eine Weile dauern.",
   "ui_dm_preview_sealed": "Verschlüsselte Nachricht",
   "ui_dm_e2ee_notice": "Nachrichten sind Ende-zu-Ende-verschlüsselt",
   "ui_dm_not_encrypted": "Nicht Ende-zu-Ende-verschlüsselt",

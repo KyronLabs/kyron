@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Zpráva",
   "ui_dm_quote_attachment": "Příloha",
   "ui_dm_unreadable": "Tuto zprávu nelze na tomto zařízení přečíst.",
+  "ui_dm_waiting": "Čeká se na tuto zprávu. Může to chvíli trvat.",
   "ui_dm_preview_sealed": "Šifrovaná zpráva",
   "ui_dm_e2ee_notice": "Zprávy jsou koncově šifrované",
   "ui_dm_not_encrypted": "Bez koncového šifrování",

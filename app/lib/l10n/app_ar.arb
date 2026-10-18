@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "رسالة",
   "ui_dm_quote_attachment": "مرفق",
   "ui_dm_unreadable": "لا يمكن قراءة هذه الرسالة على هذا الجهاز.",
+  "ui_dm_waiting": "في انتظار هذه الرسالة. قد يستغرق ذلك بعض الوقت.",
   "ui_dm_preview_sealed": "رسالة مشفّرة",
   "ui_dm_e2ee_notice": "الرسائل مشفّرة تشفيرًا تامًا بين الطرفين",
   "ui_dm_not_encrypted": "غير مشفّرة تشفيرًا تامًا بين الطرفين",

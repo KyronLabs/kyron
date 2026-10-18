@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Melding",
   "ui_dm_quote_attachment": "Vedlegg",
   "ui_dm_unreadable": "Denne meldingen kan ikke leses på denne enheten.",
+  "ui_dm_waiting": "Venter på denne meldingen. Dette kan ta litt tid.",
   "ui_dm_preview_sealed": "Kryptert melding",
   "ui_dm_e2ee_notice": "Meldinger er ende-til-ende-krypterte",
   "ui_dm_not_encrypted": "Ikke ende-til-ende-kryptert",

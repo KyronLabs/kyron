@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Mesaj",
   "ui_dm_quote_attachment": "Atașament",
   "ui_dm_unreadable": "Acest mesaj nu poate fi citit pe acest dispozitiv.",
+  "ui_dm_waiting": "Se așteaptă acest mesaj. Poate dura ceva timp.",
   "ui_dm_preview_sealed": "Mesaj criptat",
   "ui_dm_e2ee_notice": "Mesajele sunt criptate integral",
   "ui_dm_not_encrypted": "Nu este criptat integral",

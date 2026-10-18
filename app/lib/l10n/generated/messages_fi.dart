@@ -1242,6 +1242,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Liite"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Tätä viestiä ei voi lukea tällä laitteella."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Odotetaan tätä viestiä. Tämä voi kestää hetken."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Salattu viesti"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

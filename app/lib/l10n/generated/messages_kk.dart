@@ -1243,6 +1243,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Тіркеме"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Бұл хабарды осы құрылғыда оқу мүмкін емес."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Бұл хабар күтілуде. Біраз уақыт кетуі мүмкін."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Шифрланған хабар"),
       "ui_dm_e2ee_notice":

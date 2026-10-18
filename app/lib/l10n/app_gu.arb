@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "સંદેશ",
   "ui_dm_quote_attachment": "જોડાણ",
   "ui_dm_unreadable": "આ સંદેશ આ ઉપકરણ પર વાંચી શકાતો નથી.",
+  "ui_dm_waiting": "આ સંદેશની રાહ જોવાઈ રહી છે. આમાં થોડો સમય લાગી શકે છે.",
   "ui_dm_preview_sealed": "એન્ક્રિપ્ટેડ સંદેશ",
   "ui_dm_e2ee_notice": "સંદેશા એન્ડ-ટુ-એન્ડ એન્ક્રિપ્ટેડ છે",
   "ui_dm_not_encrypted": "એન્ડ-ટુ-એન્ડ એન્ક્રિપ્ટેડ નથી",

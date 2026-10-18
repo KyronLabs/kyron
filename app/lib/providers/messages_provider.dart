@@ -94,7 +94,11 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
         opened.add(row);
         continue;
       }
-      final plain = await _vault?.openOffline(last.body, row.id);
+      final plain = await _vault?.openOffline(
+        last.body,
+        row.id,
+        shares: last.keyShares,
+      );
       opened.add(
         row.copyWith(
           lastMessage: last.copyWith(
@@ -414,25 +418,86 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   /// whose app has no key yet, is plain and passes through unchanged. A
   /// message that is sealed and cannot be opened says so rather than showing
   /// its ciphertext, which is unreadable either way but frightening on top.
+  ///
+  /// One this device was never sealed for -- it did not exist yet, or its
+  /// key was lost -- is asked for: a device that can open it seals its key
+  /// for this one, and it reads "Waiting for this message" until then.
   Future<List<DirectMessage>> _open(List<DirectMessage> messages) async {
     final opened = <DirectMessage>[];
+    final ask = <String>[];
+    bool? answerable;
     for (final message in messages) {
       if (!SealedEnvelope.looksSealed(message.body)) {
         opened.add(await _withCard(message));
         continue;
       }
-      final plain = await _vault.open(message.body, _conversationId);
+      final plain = await _vault.open(
+        message.body,
+        _conversationId,
+        shares: message.keyShares,
+      );
+      final waiting = plain == null &&
+          !message.sending &&
+          MessageVault.canAskFor(message.body, message.createdAt) &&
+          (answerable ??= await _vault.canBeAnswered());
+      if (waiting) ask.add(message.id);
       opened.add(
         await _withCard(
           message.copyWith(
             body: plain ?? 'This message cannot be read on this device.',
             encrypted: true,
             unreadable: plain == null,
+            awaitingKey: waiting,
           ),
         ),
       );
     }
+    if (ask.isNotEmpty) unawaited(_vault.requestKeys(_conversationId, ask));
     return opened;
+  }
+
+  /// Opens again the messages that were waiting for a key, now that one of
+  /// this reader's requests has been answered.
+  ///
+  /// The newest page is read again for its shares, and only messages that
+  /// were waiting are touched -- the thread is not emptied and redrawn, so
+  /// nothing blinks under the reader.
+  Future<void> keysArrived() async {
+    if (state.loadingFirstPage) return;
+    if (!state.messages.any((m) => m.awaitingKey)) return;
+    try {
+      final page = await _repo.messages(_conversationId);
+      final fetched = {for (final m in page.items) m.id: m};
+      final reopened = <String, DirectMessage>{};
+      for (final held in state.messages) {
+        final fresh = fetched[held.id];
+        if (!held.awaitingKey || fresh == null || fresh.keyShares.isEmpty) {
+          continue;
+        }
+        final plain = await _vault.open(
+          fresh.body,
+          _conversationId,
+          shares: fresh.keyShares,
+        );
+        if (plain == null) continue;
+        reopened[held.id] = await _withCard(
+          fresh.copyWith(
+            body: plain,
+            encrypted: true,
+            unreadable: false,
+            awaitingKey: false,
+          ),
+        );
+      }
+      if (reopened.isEmpty) return;
+      state = state.copyWith(
+        messages: [
+          for (final m in state.messages) reopened[m.id] ?? m,
+        ],
+      );
+    } catch (_) {
+      // Still waiting; the next look asks again.
+    }
   }
 
   /// [message] with its link card opened and checked, when it has one.
@@ -442,11 +507,18 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
   /// that arrived open beside sealed words was not made by this app -- the
   /// server refuses that pair -- and is dropped too.
   Future<DirectMessage> _withCard(DirectMessage message) async {
-    final raw = message.linkCardRaw;
-    if (raw == null || message.unreadable) return message;
-    final sealed = SealedEnvelope.looksSealed(raw);
+    final cardRaw = message.linkCardRaw;
+    if (cardRaw == null || message.unreadable) return message;
+    final sealed = SealedEnvelope.looksSealed(cardRaw);
     if (message.encrypted && !sealed) return message;
-    final json = sealed ? await _vault.open(raw, _conversationId) : raw;
+    final json = sealed
+        ? await _vault.open(
+            cardRaw,
+            _conversationId,
+            shares: message.keyShares,
+            card: true,
+          )
+        : cardRaw;
     if (json == null) return message;
     final card = MessageLinkCard.tryDecode(json, body: message.body);
     return card == null ? message : message.copyWith(linkCard: card);

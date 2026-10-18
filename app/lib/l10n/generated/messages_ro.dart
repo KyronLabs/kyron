@@ -1242,6 +1242,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Atașament"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Acest mesaj nu poate fi citit pe acest dispozitiv."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Se așteaptă acest mesaj. Poate dura ceva timp."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Mesaj criptat"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

@@ -16,6 +16,14 @@ export type RealtimeEvent =
   | { type: 'message.reaction'; conversationId: string; messageId: string }
   /** Somebody is writing in a conversation the reader is in. */
   | { type: 'message.typing'; conversationId: string; userId: string }
+  /**
+   * A device in a conversation the reader is in asked for the keys of
+   * messages it was not sealed for. Any of the reader's devices that can open
+   * them answers (KeySharesService).
+   */
+  | { type: 'message.keys.requested'; conversationId: string }
+  /** One of the reader's requests was answered: the thread can open more. */
+  | { type: 'message.keys.shared'; conversationId: string }
   /** Something happened that the notifications screen would show. */
   | {
       type: 'notification.new';

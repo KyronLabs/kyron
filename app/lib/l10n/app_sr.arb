@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Порука",
   "ui_dm_quote_attachment": "Прилог",
   "ui_dm_unreadable": "Ова порука се не може прочитати на овом уређају.",
+  "ui_dm_waiting": "Чека се ова порука. То може потрајати.",
   "ui_dm_preview_sealed": "Шифрована порука",
   "ui_dm_e2ee_notice": "Поруке су шифроване с краја на крај",
   "ui_dm_not_encrypted": "Није шифровано с краја на крај",

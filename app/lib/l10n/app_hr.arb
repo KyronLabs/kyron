@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Poruka",
   "ui_dm_quote_attachment": "Privitak",
   "ui_dm_unreadable": "Ova se poruka ne može pročitati na ovom uređaju.",
+  "ui_dm_waiting": "Čeka se ova poruka. To može potrajati.",
   "ui_dm_preview_sealed": "Šifrirana poruka",
   "ui_dm_e2ee_notice": "Poruke su sveobuhvatno šifrirane",
   "ui_dm_not_encrypted": "Nije sveobuhvatno šifrirano",

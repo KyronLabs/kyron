@@ -1,5 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/models/key_share.dart';
 import 'package:kyron_app/repositories/keys_repository.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/services/message_crypto.dart';
@@ -21,6 +22,9 @@ class _Keys extends KeysRepository {
 
   final published = <PublishedKey>[];
   final withdrawn = <String>[];
+
+  @override
+  Future<List<KeyRequest>> pendingRequests() async => const [];
 
   @override
   Future<void> publish(String publicKey, String deviceId) async {

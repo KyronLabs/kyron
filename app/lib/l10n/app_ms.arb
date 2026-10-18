@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Mesej",
   "ui_dm_quote_attachment": "Lampiran",
   "ui_dm_unreadable": "Mesej ini tidak dapat dibaca pada peranti ini.",
+  "ui_dm_waiting": "Menunggu mesej ini. Ini mungkin mengambil sedikit masa.",
   "ui_dm_preview_sealed": "Mesej disulitkan",
   "ui_dm_e2ee_notice": "Mesej disulitkan hujung ke hujung",
   "ui_dm_not_encrypted": "Tidak disulitkan hujung ke hujung",

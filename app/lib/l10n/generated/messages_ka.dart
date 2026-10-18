@@ -1245,6 +1245,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("დანართი"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "ამ შეტყობინების წაკითხვა ამ მოწყობილობაზე შეუძლებელია."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "ამ შეტყობინების მოლოდინში. ამას შეიძლება გარკვეული დრო დასჭირდეს."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("დაშიფრული შეტყობინება"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

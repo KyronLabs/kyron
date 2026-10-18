@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Wiadomość",
   "ui_dm_quote_attachment": "Załącznik",
   "ui_dm_unreadable": "Tej wiadomości nie można odczytać na tym urządzeniu.",
+  "ui_dm_waiting": "Oczekiwanie na tę wiadomość. Może to chwilę potrwać.",
   "ui_dm_preview_sealed": "Zaszyfrowana wiadomość",
   "ui_dm_e2ee_notice": "Wiadomości są szyfrowane end-to-end",
   "ui_dm_not_encrypted": "Bez szyfrowania end-to-end",

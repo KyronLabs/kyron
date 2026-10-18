@@ -8,6 +8,7 @@ import 'messages_provider.dart';
 import 'notifications_provider.dart';
 import 'presence_provider.dart';
 import 'current_user_provider.dart';
+import 'keys_provider.dart';
 
 /// The socket, for the life of the app.
 final realtimeClientProvider = Provider<RealtimeClient>((ref) {
@@ -100,6 +101,20 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
         ref.read(threadProvider(typingIn).notifier).otherTyping(who);
       }
 
+    case 'message.keys.requested':
+      // A device in one of this reader's conversations is waiting on a
+      // message it was not sealed for. This one may be able to open it.
+      ref.read(messageVaultProvider).answerPending();
+
+    case 'message.keys.shared':
+      // Somebody answered: the waiting messages in that thread can open.
+      final sharedIn = event.conversationId;
+      if (sharedIn != null && ref.exists(threadProvider(sharedIn))) {
+        ref.read(threadProvider(sharedIn).notifier).keysArrived();
+      }
+      // The list's preview may be one of them.
+      _refreshConversationLists(ref);
+
     case 'notification.new':
       // The badge always; the list only where a tab is actually built, since
       // invalidating a family key nobody holds would construct it.
@@ -118,6 +133,9 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
       }
 
     case 'presence.snapshot':
+      // Sent as the socket connects, which is also when this device comes
+      // back from wherever it was: answer what was asked of it meanwhile.
+      ref.read(messageVaultProvider).answerPending();
       final online = event.data['online'];
       if (online is List) {
         ref

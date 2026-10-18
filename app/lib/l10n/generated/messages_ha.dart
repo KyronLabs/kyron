@@ -1243,6 +1243,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Abin haɗe"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Ba za a iya karanta wannan saƙon a wannan na'urar ba."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Ana jiran wannan saƙon. Wannan zai iya ɗaukar ɗan lokaci."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Saƙon da aka ɓoye"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

@@ -1242,6 +1242,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("जोडणी"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "हा संदेश या डिव्हाइसवर वाचता येत नाही."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "या संदेशाची प्रतीक्षा करत आहे. याला थोडा वेळ लागू शकतो."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("एन्क्रिप्ट केलेला संदेश"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

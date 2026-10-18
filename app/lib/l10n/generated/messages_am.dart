@@ -1142,6 +1142,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("አባሪ"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "ይህ መልእክት በዚህ መሣሪያ ላይ ሊነበብ አይችልም።"),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "ይህን መልእክት በመጠበቅ ላይ። ትንሽ ጊዜ ሊወስድ ይችላል።"),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("የተመሰጠረ መልእክት"),
       "ui_dm_e2ee_notice":

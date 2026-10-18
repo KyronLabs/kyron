@@ -1245,6 +1245,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Вкладення"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Це повідомлення неможливо прочитати на цьому пристрої."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Очікування цього повідомлення. Це може зайняти деякий час."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Зашифроване повідомлення"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

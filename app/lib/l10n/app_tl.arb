@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Mensahe",
   "ui_dm_quote_attachment": "Kalakip",
   "ui_dm_unreadable": "Hindi mababasa ang mensaheng ito sa device na ito.",
+  "ui_dm_waiting": "Hinihintay ang mensaheng ito. Maaaring matagalan ito.",
   "ui_dm_preview_sealed": "Naka-encrypt na mensahe",
   "ui_dm_e2ee_notice": "Naka-end-to-end encrypt ang mga mensahe",
   "ui_dm_not_encrypted": "Hindi naka-end-to-end encrypt",

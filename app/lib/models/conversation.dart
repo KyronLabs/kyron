@@ -1,3 +1,4 @@
+import 'key_share.dart';
 import 'message_link_card.dart';
 import 'post_media.dart';
 
@@ -114,6 +115,13 @@ class DirectMessage {
   /// carries an explanation rather than the ciphertext.
   final bool unreadable;
 
+  /// Unreadable, and asked for: a device that can open it will seal its key
+  /// for this one when it is next online (MessageVault.requestKeys).
+  final bool awaitingKey;
+
+  /// Its key, sealed again for this reader's devices it was not sealed for.
+  final List<KeyShare> keyShares;
+
   /// The message this one answers, if it answers one.
   ///
   /// An id, never a copy of the words. A direct message is sealed before it
@@ -144,6 +152,8 @@ class DirectMessage {
     this.media = const [],
     this.encrypted = false,
     this.unreadable = false,
+    this.awaitingKey = false,
+    this.keyShares = const [],
     this.replyToId,
     this.reactions = const [],
     this.linkCardRaw,
@@ -173,6 +183,7 @@ class DirectMessage {
         replyToId: json['replyToId'] as String?,
         reactions: MessageReaction.listFrom(json['reactions']),
         linkCardRaw: json['linkCard'] as String?,
+        keyShares: KeyShare.listFrom(json['keyShares']),
       );
 
   DirectMessage copyWith({
@@ -182,6 +193,7 @@ class DirectMessage {
     bool? seen,
     bool? encrypted,
     bool? unreadable,
+    bool? awaitingKey,
     String? replyToId,
     List<MessageReaction>? reactions,
     MessageLinkCard? linkCard,
@@ -197,6 +209,8 @@ class DirectMessage {
         media: media,
         encrypted: encrypted ?? this.encrypted,
         unreadable: unreadable ?? this.unreadable,
+        awaitingKey: awaitingKey ?? this.awaitingKey,
+        keyShares: keyShares,
         replyToId: replyToId ?? this.replyToId,
         reactions: reactions ?? this.reactions,
         linkCardRaw: linkCardRaw,

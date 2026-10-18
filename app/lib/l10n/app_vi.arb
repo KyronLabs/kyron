@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Tin nhắn",
   "ui_dm_quote_attachment": "Tệp đính kèm",
   "ui_dm_unreadable": "Không thể đọc tin nhắn này trên thiết bị này.",
+  "ui_dm_waiting": "Đang chờ tin nhắn này. Việc này có thể mất một lúc.",
   "ui_dm_preview_sealed": "Tin nhắn được mã hóa",
   "ui_dm_e2ee_notice": "Tin nhắn được mã hóa đầu cuối",
   "ui_dm_not_encrypted": "Không được mã hóa đầu cuối",

@@ -1405,6 +1405,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Συνημμένο"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Αυτό το μήνυμα δεν μπορεί να διαβαστεί σε αυτήν τη συσκευή."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Αναμονή για αυτό το μήνυμα. Αυτό μπορεί να διαρκέσει λίγο."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Κρυπτογραφημένο μήνυμα"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

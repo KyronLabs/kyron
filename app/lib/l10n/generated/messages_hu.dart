@@ -1243,6 +1243,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Melléklet"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Ez az üzenet ezen az eszközön nem olvasható."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Várakozás erre az üzenetre. Ez eltarthat egy ideig."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Titkosított üzenet"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

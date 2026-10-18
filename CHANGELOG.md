@@ -14,6 +14,14 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **"Waiting for this message" instead of "cannot be read".** A message is
+  sealed for the devices that existed when it was sent, so a new phone or a
+  reinstall could never read what came before it. Now the new device asks,
+  and the sender's phone -- or another of the reader's own -- seals the
+  message's key again for it the next time it is online; the message opens
+  then. The server carries the request and the answer and can read neither.
+  Messages from the last 30 days only; docs/E2EE.md says why, and what it
+  costs against a malicious server.
 - **Releases go to Play by themselves.** Once a Play service account is set
   up (README.md, Google Play), each versioned release's bundle is sent to
   the internal testing track by CI once it has been checked, with the
@@ -25,6 +33,15 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
+- **Message keys belong to the account, and survive sign-out.** There was
+  one key per install, deleted on every sign-out, so switching accounts on a
+  phone -- or signing out and back in -- made a new key, and every message
+  sent to the old one could never be opened there again. Each account now
+  has its own key on each phone, kept across sign-out and erased only when
+  the account is deleted; another account signing in on the same phone never
+  reads it. The update moves a phone's existing key to whoever is signed in,
+  so nothing already sent to it is lost. The verifiable identifier (DID) had
+  the same fault, and changed on every sign-in; it is kept the same way.
 - **One layout on every Android version.** Targeting SDK 35 and later,
   Android 15 draws apps edge to edge whatever they ask for; before 15 they
   only are if they say so. Kyron didn't, so it was edge to edge on new

@@ -1304,6 +1304,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Manus"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Seda sõnumit ei saa selles seadmes lugeda."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Ootan seda sõnumit. See võib veidi aega võtta."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Krüpteeritud sõnum"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
