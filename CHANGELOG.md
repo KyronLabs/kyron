@@ -22,6 +22,7 @@ section for that version, so what is written here is what people read.
   to upload. The upload goes through Play's API directly from a script in
   this repository, so the key is handled by nothing from outside it.
 
+## [0.1.4] - 2026-10-18
 ### Fixed
 
 - **An account made with Google had no way in from "Log in".** "Already on
@@ -1702,7 +1703,8 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.4...HEAD
+[0.1.4]: https://github.com/KyronLabs/kyron/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/KyronLabs/kyron/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/KyronLabs/kyron/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/KyronLabs/kyron/releases/tag/v0.1.1
