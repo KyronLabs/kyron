@@ -236,100 +236,103 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
     showModalBottomSheet(
       context: context,
-      builder: (context) => Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Who is actually being signed out. This asked about "@alice" for
-            // everyone, so it named an account nobody was signed in as.
-            Row(
+      builder: (context) => SafeArea(
+          top: false,
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(16)),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  radius: 22,
-                  backgroundColor:
-                      Theme.of(context).colorScheme.surfaceContainerHighest,
-                  foregroundImage:
-                      avatarUrl == null ? null : NetworkImage(avatarUrl),
-                  child: Icon(
-                    Iconsax.user_copy,
-                    size: 20,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: .5),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        _handle,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: TypographyTokens.fontSize4,
-                          fontWeight: FontWeight.w600,
-                        ),
+                // Who is actually being signed out. This asked about "@alice" for
+                // everyone, so it named an account nobody was signed in as.
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 22,
+                      backgroundColor:
+                          Theme.of(context).colorScheme.surfaceContainerHighest,
+                      foregroundImage:
+                          avatarUrl == null ? null : NetworkImage(avatarUrl),
+                      child: Icon(
+                        Iconsax.user_copy,
+                        size: 20,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onSurface
+                            .withValues(alpha: .5),
                       ),
-                      Text(
-                        _email,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Text(
-              AppLocalizations.of(context).logOutQuestion,
-              style: TextStyle(
-                fontSize: TypographyTokens.fontSize6,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              AppLocalizations.of(context).ui(
-                'ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001',
-                'You will need to sign in again to get back to your account.',
-              ),
-            ),
-            const SizedBox(height: 24),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: Text(AppLocalizations.of(context).cancel),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
                     ),
-                    onPressed: _performLogout,
-                    child: Text(AppLocalizations.of(context).logOut),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            _handle,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: TypographyTokens.fontSize4,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            _email,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  AppLocalizations.of(context).logOutQuestion,
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize6,
+                    fontWeight: FontWeight.bold,
                   ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  AppLocalizations.of(context).ui(
+                    'ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001',
+                    'You will need to sign in again to get back to your account.',
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text(AppLocalizations.of(context).cancel),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                        ),
+                        onPressed: _performLogout,
+                        child: Text(AppLocalizations.of(context).logOut),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-      ),
+          )),
     );
   }
 

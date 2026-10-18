@@ -147,7 +147,8 @@ class _InterestTabsState extends ConsumerState<InterestTabs> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => const AddInterestSheet(),
+      builder: (context) =>
+          const SafeArea(top: false, child: AddInterestSheet()),
     );
   }
 }

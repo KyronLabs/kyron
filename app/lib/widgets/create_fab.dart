@@ -121,12 +121,14 @@ class CreateFab extends StatelessWidget {
     final chosen = await showModalBottomSheet<String>(
       context: context,
       backgroundColor: Colors.transparent,
-      builder: (_) => LongPressSheet(
-        items: {
-          for (final entry in _options.entries)
-            labels[entry.key]!: entry.value.icon,
-        },
-      ),
+      builder: (_) => SafeArea(
+          top: false,
+          child: LongPressSheet(
+            items: {
+              for (final entry in _options.entries)
+                labels[entry.key]!: entry.value.icon,
+            },
+          )),
     );
 
     final route = _options.entries

@@ -23,6 +23,24 @@ section for that version, so what is written here is what people read.
   directly from a script in this repository, so the key is handled by
   nothing from outside it.
 
+### Fixed
+
+- **One layout on every Android version.** Targeting SDK 35 and later,
+  Android 15 draws apps edge to edge whatever they ask for; before 15 they
+  only are if they say so. Kyron didn't, so it was edge to edge on new
+  phones and not on older ones -- and became edge to edge on older ones
+  partway through a session, the first time the photo viewer closed. It now
+  asks for it from the start (`enableEdgeToEdge()`), which is also what
+  Play's "edge-to-edge may not display for all users" warning asks for.
+- **Sheets no longer sit under the navigation bar.** Flutter keeps a bottom
+  sheet clear of the status bar but not of the navigation bar, so on an
+  edge-to-edge screen eight of Kyron's sheets ran their last row under it --
+  with three-button navigation, most of the sign-out sheet's "Log Out"
+  button. They make room for it now.
+- **The tab bar hides all the way.** Scrolling hid it by a fixed 80 pixels,
+  enough for a gesture bar and not for three-button navigation, which left a
+  32-pixel strip of it on screen.
+
 ## [0.1.4] - 2026-10-18
 ### Fixed
 

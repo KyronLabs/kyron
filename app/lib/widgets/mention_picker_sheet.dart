@@ -41,7 +41,8 @@ class MentionPickerSheet {
       showDragHandle: true,
       isScrollControlled: true,
       useSafeArea: true,
-      builder: (context) => _MentionPicker(initialQuery: initialQuery),
+      builder: (context) => SafeArea(
+          top: false, child: _MentionPicker(initialQuery: initialQuery)),
     );
   }
 }
