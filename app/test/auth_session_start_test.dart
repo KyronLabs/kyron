@@ -48,9 +48,13 @@ class _Auth extends AuthRepository {
 class _Vault extends MessageVault {
   _Vault() : super(KeysRepository(ApiClient()));
   int unlocks = 0;
+  String? account;
 
   @override
-  Future<void> unlock() async => unlocks++;
+  Future<void> unlock(String account) async {
+    unlocks++;
+    this.account = account;
+  }
 }
 
 class _Identity extends IdentityVault {
@@ -58,7 +62,7 @@ class _Identity extends IdentityVault {
   int ensures = 0;
 
   @override
-  Future<String?> ensure() async {
+  Future<String?> ensure([String? account]) async {
     ensures++;
     return null;
   }
@@ -113,6 +117,7 @@ void main() {
 
     expect(state.status, AuthStatus.authenticated);
     expect(vault.unlocks, 1);
+    expect(vault.account, 'u1', reason: 'the key is the account\'s');
     expect(identity.ensures, 1);
     expect(push.starts, 1);
   });

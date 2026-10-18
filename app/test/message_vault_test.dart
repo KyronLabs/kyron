@@ -143,11 +143,13 @@ void main() {
     final keys = _Keys([await ada.published(), await bo.published()]);
     final sealed = (await ada.vault(keys).seal('hello', 'c1'))!;
     FlutterSecureStorage.setMockInitialValues({
-      'dm_secret_key_v1': await MessageCrypto.encodeSecret(bo.pair),
+      MessageVault.secretKeyName('bo'): await MessageCrypto.encodeSecret(
+        bo.pair,
+      ),
     });
 
     final reader = MessageVault(keys);
-    final unlocking = reader.unlock();
+    final unlocking = reader.unlock('bo');
     expect(await reader.openOffline(sealed, 'c1'), 'hello');
     await unlocking;
   });
@@ -162,10 +164,12 @@ void main() {
     final keys = _Keys([await ada.published(), await bo.published()]);
     final sealed = (await ada.vault(keys).seal('still here', 'c1'))!;
     FlutterSecureStorage.setMockInitialValues({
-      'dm_secret_key_v1': await MessageCrypto.encodeSecret(bo.pair),
+      MessageVault.secretKeyName('bo'): await MessageCrypto.encodeSecret(
+        bo.pair,
+      ),
     });
 
-    final reader = MessageVault(keys);
+    final reader = MessageVault(keys, signedIn: () => 'bo');
 
     expect(await reader.open(sealed, 'c1'), 'still here');
     // And can seal again, rather than sending the next message in the clear.
@@ -180,12 +184,14 @@ void main() {
     final bo = await _device('bo');
     final keys = _Keys([await ada.published(), await bo.published()]);
 
-    final vault = MessageVault(keys);
+    final vault = MessageVault(keys, signedIn: () => 'bo');
 
     expect(await vault.seal('hello', 'c1'), isNull);
     expect(vault.isReady, isFalse);
     expect(
-      await const FlutterSecureStorage().read(key: 'dm_secret_key_v1'),
+      await const FlutterSecureStorage().read(
+        key: MessageVault.secretKeyName('bo'),
+      ),
       isNull,
     );
   });

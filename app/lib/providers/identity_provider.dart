@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../repositories/identity_repository.dart';
 import '../services/identity_vault.dart';
 import 'api_client_provider.dart';
+import 'auth_provider.dart';
 
 final identityRepositoryProvider = Provider<IdentityRepository>(
   (ref) => IdentityRepository(ref.read(apiClientProvider)),
@@ -11,7 +12,10 @@ final identityRepositoryProvider = Provider<IdentityRepository>(
 
 /// This account's verifiable identifier, for the life of the app.
 final identityVaultProvider = Provider<IdentityVault>(
-  (ref) => IdentityVault(ref.read(identityRepositoryProvider)),
+  (ref) => IdentityVault(
+    ref.read(identityRepositoryProvider),
+    signedIn: () => ref.read(authNotifierProvider).user?.id,
+  ),
 );
 
 /// The identifier, once it has been established.
