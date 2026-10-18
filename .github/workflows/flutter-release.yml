@@ -340,20 +340,26 @@ jobs:
           if-no-files-found: error
           retention-days: 1
 
-  # Every bundle that passed scripts/check-aab.sh goes on to Play's internal
-  # testing track, so testers get it without anybody downloading it from here
-  # and uploading it to Play Console by hand. Only an app's very first bundle
-  # has to go through Play Console; this is all the ones after.
+  # A release's bundle goes on to Play's internal testing track once it has
+  # passed scripts/check-aab.sh, so testers get each version without anybody
+  # downloading it from here and uploading it to Play Console by hand. Only
+  # an app's very first bundle has to go through Play Console.
+  #
+  # Releases only, deliberately. A development build's bundle carries the
+  # last release's version name, so in Play two different builds would both
+  # read "0.1.3", and testers would get every merge to main. What reaches
+  # testers is what somebody chose to cut as a version; a development bundle
+  # can still be uploaded by hand from its GitHub release.
   #
   # Its own job, so a Play outage or a revoked key fails this and not the
   # GitHub release, which is published either way. And the bundle it sends
   # is the one the android job built and checked, out of that job's
-  # artifact -- never a second build of the same commit.
+  # artifact -- never a second build of the same tag.
   #
   # Needs the PLAY_SERVICE_ACCOUNT_JSON secret: a service account allowed to
   # release to testing tracks (README.md, Google Play). Without it the job
   # says so and stops, so a fork, or this repository before it is set up,
-  # builds exactly as it did.
+  # releases exactly as it did.
   play:
     name: Send the bundle to Play internal testing
     needs: [checks, android]

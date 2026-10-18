@@ -278,12 +278,13 @@ def check_bundle(name: str) -> list[str]:
     return []
 
 
-# What sends a bundle to Play.
+# What sends a bundle to Play, and the one workflow allowed to.
 PLAY_UPLOAD = "scripts/play-upload.py"
+PLAY_SENDER = "flutter-release.yml"
 
 
 def check_play_upload(name: str) -> list[str]:
-    """That what goes to Play is the bundle the android job built and checked.
+    """That only releases go to Play, as the bundle the android job checked.
 
     Play keeps every version code it is sent, and a bad bundle on a testing
     track is in front of testers within minutes. So the job that sends one
@@ -297,6 +298,14 @@ def check_play_upload(name: str) -> list[str]:
         runs = "\n".join(str(step.get("run", "")) for step in spec.get("steps", []))
         if PLAY_UPLOAD not in runs:
             continue
+        # Versioned releases only. A development bundle carries the last
+        # release's version name, and sending each one would put every merge
+        # to main in front of testers. They can be uploaded by hand.
+        if name != PLAY_SENDER:
+            said.append(
+                f"{name}: {job!r} sends a bundle to Play. Only {PLAY_SENDER} "
+                f"does -- testers get what was cut as a version, not every build"
+            )
         needs = spec.get("needs") or []
         if isinstance(needs, str):
             needs = [needs]

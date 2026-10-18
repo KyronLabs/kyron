@@ -14,13 +14,14 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
-- **Bundles go to Play by themselves.** Once a Play service account is set
-  up (README.md, Google Play), every checked bundle -- each development
-  build's and each release's -- is sent to the internal testing track by CI,
-  with its commit list or changelog as the notes. Uploading to Play Console
-  by hand was the only way, so testers got whatever somebody last remembered
-  to upload. The upload goes through Play's API directly from a script in
-  this repository, so the key is handled by nothing from outside it.
+- **Releases go to Play by themselves.** Once a Play service account is set
+  up (README.md, Google Play), each versioned release's bundle is sent to
+  the internal testing track by CI once it has been checked, with the
+  release's changelog section as the notes. Uploading to Play Console by
+  hand was the only way. Development builds are not sent: testers get what
+  was cut as a version, not every merge. The upload goes through Play's API
+  directly from a script in this repository, so the key is handled by
+  nothing from outside it.
 
 ## [0.1.4] - 2026-10-18
 ### Fixed
