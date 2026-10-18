@@ -1520,6 +1520,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("I-akhawunti esusiwe"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Le akhawunti isusiwe, ngakho imilayezo ayisakwazi ukuthunyelwa lapha."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Ubhalise nge-Google? Sebenzisa u-“Sign in with Google” esikhundleni salokho."),
     };
 
 final messageLookup = MessageLookup();

@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "ვერაფერს დაიბრუნებთ.",
   "ui_delete_account_done": "თქვენი ანგარიში წაიშალა.",
   "ui_dm_deleted_account": "წაშლილი ანგარიში",
-  "ui_dm_deleted_account_detail": "ეს ანგარიში წაშლილია, ამიტომ აქ შეტყობინებების გაგზავნა აღარ შეიძლება."
+  "ui_dm_deleted_account_detail": "ეს ანგარიში წაშლილია, ამიტომ აქ შეტყობინებების გაგზავნა აღარ შეიძლება.",
+  "ui_login_google_hint": "Google-ით დარეგისტრირდით? ამის ნაცვლად გამოიყენეთ „Sign in with Google“."
 }

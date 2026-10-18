@@ -1514,6 +1514,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Избрисан налог"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Овај налог је избрисан, па се овде више не могу слати поруке."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Регистровали сте се преко Google-а? Уместо тога користите „Sign in with Google”."),
     };
 
 final messageLookup = MessageLookup();

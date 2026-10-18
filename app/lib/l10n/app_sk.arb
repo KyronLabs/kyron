@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Nič z toho už nebudete môcť získať späť.",
   "ui_delete_account_done": "Váš účet bol odstránený.",
   "ui_dm_deleted_account": "Odstránený účet",
-  "ui_dm_deleted_account_detail": "Tento účet bol odstránený, takže sem už nemožno posielať správy."
+  "ui_dm_deleted_account_detail": "Tento účet bol odstránený, takže sem už nemožno posielať správy.",
+  "ui_login_google_hint": "Zaregistrovali ste sa cez Google? Použite radšej „Sign in with Google“."
 }

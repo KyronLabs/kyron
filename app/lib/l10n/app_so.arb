@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Waxba kama soo celin kartid.",
   "ui_delete_account_done": "Akoonkaaga waa la tirtiray.",
   "ui_dm_deleted_account": "Akoon la tirtiray",
-  "ui_dm_deleted_account_detail": "Akoonkan waa la tirtiray, sidaa darteed fariimo halkan looma diri karo mar dambe."
+  "ui_dm_deleted_account_detail": "Akoonkan waa la tirtiray, sidaa darteed fariimo halkan looma diri karo mar dambe.",
+  "ui_login_google_hint": "Ma ku diiwaangashantay Google? Halkii isticmaal «Sign in with Google»."
 }

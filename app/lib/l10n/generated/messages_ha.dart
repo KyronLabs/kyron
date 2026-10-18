@@ -1510,6 +1510,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Asusun da aka goge"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "An goge wannan asusun, don haka ba za a iya aika saƙonni a nan ba kuma."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Ka yi rajista da Google? Yi amfani da «Sign in with Google» maimakon haka."),
     };
 
 final messageLookup = MessageLookup();

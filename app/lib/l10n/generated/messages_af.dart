@@ -1584,6 +1584,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Geskrapte rekening"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Hierdie rekening is geskrap, so boodskappe kan nie meer hierheen gestuur word nie."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Met Google aangesluit? Gebruik eerder “Meld aan met Google”."),
     };
 
 final messageLookup = MessageLookup();

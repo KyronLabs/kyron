@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Et saa mitään siitä takaisin.",
   "ui_delete_account_done": "Tilisi on poistettu.",
   "ui_dm_deleted_account": "Poistettu tili",
-  "ui_dm_deleted_account_detail": "Tämä tili on poistettu, joten tänne ei voi enää lähettää viestejä."
+  "ui_dm_deleted_account_detail": "Tämä tili on poistettu, joten tänne ei voi enää lähettää viestejä.",
+  "ui_login_google_hint": "Rekisteröidyitkö Googlella? Käytä sen sijaan painiketta ”Sign in with Google”."
 }

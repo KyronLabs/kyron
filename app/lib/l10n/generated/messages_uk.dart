@@ -1518,6 +1518,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Видалений обліковий запис"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Цей обліковий запис видалено, тому сюди більше не можна надсилати повідомлення."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Реєструвалися через Google? Скористайтеся «Sign in with Google»."),
     };
 
 final messageLookup = MessageLookup();

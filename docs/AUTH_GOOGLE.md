@@ -43,6 +43,27 @@
   `AE:03:5B:A3:CA:98:83:04:CB:8E:E5:CD:A1:1B:DE:94:1A:EF:A5:BF` (read back
   out of build 115's APK).
 
+- **Play installs: fixed on 18 October.** The first Play internal-testing
+  builds (0.1.1+647 onwards) never got the sheet: every sign-in from them
+  reached Supabase through `/authorize` and `/callback` -- the browser --
+  and none as an ID token. A Play install is signed with Google's **app
+  signing** certificate, not the upload key and not the development key,
+  and Credential Manager only trusts a certificate registered as an Android
+  client beside the web client. Registering the app signing key
+  certificate's SHA-1 on an Android client in project `601078807832` fixed
+  it: the first ID-token sign-in from a Play install arrived within minutes.
+  Linking the Cloud project in Play Console had nothing to do with it --
+  that link is for Play's own APIs.
+- **One Android client per signing key.** The Play fingerprint was first
+  put in place of the development one, by editing the existing client,
+  which took the sheet away from every sideloaded build. Add a client for
+  each key; never edit one key into another. The table in step 1 lists all
+  three.
+- When the sheet fails, the app's System log (Settings → About → System
+  log) carries Google's own words: `[16] Account reauth failed` or `[10]
+  Developer console is not set up correctly` both mean the certificate that
+  signed this install is not registered.
+
 The rest of this document is the full setup, for a new project or a new
 signing key.
 
@@ -73,8 +94,15 @@ authenticates as:
   | build | SHA-1 |
   |:--|:--|
   | development (`app/android/dev-signing/kyron-dev.jks`) | `AE:03:5B:A3:CA:98:83:04:CB:8E:E5:CD:A1:1B:DE:94:1A:EF:A5:BF` |
-  | release | whatever `ANDROID_KEYSTORE_BASE64` holds |
-  | Play Store | the Play App Signing certificate, from Play Console → Setup → App signing |
+  | release APKs on GitHub (the upload key, `ANDROID_KEYSTORE_BASE64`) | `4E:B5:E8:BE:91:64:89:07:70:5E:FF:01:F6:53:45:5A:9D:CB:9C:7B` |
+  | Play Store | the **app signing key certificate**, from Play Console → Test and release → App integrity → App signing. Not the upload key's, which is listed on the same page |
+
+  A package name and SHA-1 pair can belong to one Cloud project only. If
+  Google answers "already in use" when you add one, it is registered
+  somewhere else -- often the Firebase project, `kyron-1`, which makes an
+  Android client of its own for every fingerprint added under its project
+  settings. That one does not count: it is not beside the web client.
+  Remove the fingerprint there, then add it here.
 
   Read a keystore's own with:
 
@@ -139,6 +167,7 @@ nothing to report.
 |:--|:--|
 | `Error 401: deleted_client` in a browser tab | Supabase holds a client id Google no longer has. Step 1 and 2. |
 | the sheet opens, you pick an account, nothing happens | almost always a missing or wrong SHA-1 for *this* build's signing key. Android's Credential Manager reports several configuration errors as "cancelled" and the plugin cannot tell them from a real dismissal. |
+| the sheet opens, you pick an account, and the browser opens instead | the same thing, on a build that falls back (0.1.3 onwards). The System log has Google's words: `[16] Account reauth failed` or `[10] Developer console is not set up correctly` mean the certificate that signed this install is not registered. On a Play install that is the app signing key, never the upload key. |
 | "serverClientId must be provided" in the log | the build has no web client id. Step 3. |
 | "Google returned no ID token" in the log | the web client id is wrong for this project. Step 3. |
 | the browser opens at all on a phone | the native path was not taken; the log line says which of the above it was. |

@@ -12,9 +12,12 @@ import 'package:kyron_app/providers/auth_provider.dart';
 import 'package:kyron_app/repositories/auth_repository.dart';
 import 'package:kyron_app/routes.dart';
 import 'package:kyron_app/screens/forgot_password_screen.dart';
+import 'package:kyron_app/screens/login_screen.dart';
 import 'package:kyron_app/screens/welcome_screen.dart';
 import 'package:kyron_app/services/app_log.dart';
 import 'package:kyron_app/services/app_preferences.dart';
+import 'package:kyron_app/services/google_sign_in_flow.dart';
+import 'package:kyron_app/services/google_sign_in_service.dart';
 import 'package:kyron_app/services/platform_support.dart';
 import 'package:kyron_app/utils/validators.dart';
 import 'package:kyron_app/widgets/app_logo.dart';
@@ -42,10 +45,33 @@ class _HangingGoogle extends FakeGooglePlatform {
       Completer<AuthenticationResults>().future;
 }
 
+/// The device's account sheet, answering however the test says.
+class _Sheet extends GoogleSignInService {
+  _Sheet(this.outcome);
+
+  final GoogleOutcome outcome;
+  int asked = 0;
+
+  @override
+  Future<GoogleOutcome> signIn() async {
+    asked++;
+    return outcome;
+  }
+}
+
 /// Records what was asked of Supabase without going near it.
 class _FakeAuth extends AuthRepository {
   int googleStarts = 0;
   final resetsSentTo = <String>[];
+
+  @override
+  Future<LoginResponse> loginWithUser({
+    required String email,
+    required String password,
+  }) async =>
+      // What Supabase says to a password tried on an account made with
+      // Google, which has none.
+      throw const AuthException('Invalid login credentials');
 
   /// Thrown by the next call, then cleared.
   Object? nextFailure;
@@ -82,8 +108,12 @@ void main() {
 
   tearDown(() => PlatformSupport.current = null);
 
-  Widget app(Widget home) => ProviderScope(
-        overrides: [authRepositoryProvider.overrideWithValue(auth)],
+  Widget app(Widget home, {GoogleSignInService? sheet}) => ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(auth),
+          if (sheet != null)
+            googleSignInServiceProvider.overrideWithValue(sheet),
+        ],
         child: MaterialApp(
           theme: KyronTheme.lightTheme,
           home: home,
@@ -401,6 +431,75 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(find.text('Before you start'), findsOneWidget);
+    });
+  });
+
+  group('the log-in screen', () {
+    // "Already on Kyron? Log in" is where somebody coming back goes. It had an
+    // email and a password field and nothing else, so an account made with
+    // "Continue with Google" -- which has no password -- had no way in from
+    // it at all.
+    testWidgets('lets an account made with Google sign in with it', (
+      tester,
+    ) async {
+      PlatformSupport.current = PlatformSupport.mobile;
+      final sheet = _Sheet(GoogleOutcome.useBrowser);
+      await tester.pumpWidget(app(const LoginScreen(), sheet: sheet));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Sign in with Google'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('login-google')));
+      await tester.pumpAndSettle();
+      await AppLog.instance.flush();
+
+      expect(sheet.asked, 1);
+      expect(auth.googleStarts, 1,
+          reason: 'the sheet could not, the browser can');
+    });
+
+    testWidgets('says so when the sheet reports a dismissal', (tester) async {
+      PlatformSupport.current = PlatformSupport.mobile;
+      await tester.pumpWidget(
+        app(const LoginScreen(), sheet: _Sheet(GoogleOutcome.cancelled)),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const ValueKey('login-google')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Google sign-in was cancelled.'), findsOneWidget);
+      expect(auth.googleStarts, 0);
+      await tester.pump(const Duration(seconds: 5));
+    });
+
+    testWidgets('a password that fails points a Google account the right way', (
+      tester,
+    ) async {
+      PlatformSupport.current = PlatformSupport.mobile;
+      await tester.pumpWidget(app(const LoginScreen()));
+      await tester.pumpAndSettle();
+
+      await tester.enterText(
+          find.byType(TextFormField).first, 'ama@example.com');
+      await tester.enterText(find.byType(TextFormField).last, 'not-a-password');
+      await tester.tap(find.text('Login'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.textContaining('Signed up with Google? Use Sign in with Google'),
+        findsOneWidget,
+      );
+      await tester.pump(const Duration(seconds: 5));
+    });
+
+    testWidgets('does not offer Google where it cannot come back', (
+      tester,
+    ) async {
+      PlatformSupport.current = PlatformSupport.desktop;
+      await tester.pumpWidget(app(const LoginScreen()));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(GoogleButton), findsNothing);
     });
   });
 

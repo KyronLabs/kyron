@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,7 +14,10 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/auth_provider.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
+import '../services/google_sign_in_flow.dart';
+import '../services/platform_support.dart';
 import '../utils/validators.dart';
+import '../widgets/google_button.dart';
 import '../widgets/kyron_app_bar.dart';
 
 import '../l10n/app_localizations.dart';
@@ -30,12 +35,77 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _password = TextEditingController();
 
   bool _isLoading = false;
+  bool _googleBusy = false;
+
+  /// Lets go of the spinner if a Google sign-in that succeeded never moved
+  /// the app on -- the profile could not be fetched, say.
+  Timer? _stuck;
+
+  /// Whether Google can be offered here at all. Only where the browser's
+  /// redirect can come back: the welcome screen explains the rest.
+  bool get _googleHere => PlatformSupport.current.authRedirect;
 
   @override
   void dispose() {
+    _stuck?.cancel();
     _email.dispose();
     _password.dispose();
     super.dispose();
+  }
+
+  /// An account made with "Continue with Google" has no password, so this
+  /// screen used to be a dead end for it: the way back in was a button on
+  /// the screen before, under a label that read like it was for new
+  /// accounts. The same flow as the welcome screen's.
+  Future<void> _google() async {
+    if (_googleBusy || _isLoading) return;
+    setState(() => _googleBusy = true);
+    var signedIn = false;
+    try {
+      switch (await continueWithGoogle(ref)) {
+        case GoogleFlowEnd.signedIn:
+          // main.dart adopts the session and takes the app to its root,
+          // this screen with it. The spinner stays until it does.
+          signedIn = true;
+        case GoogleFlowEnd.dismissed:
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  AppLocalizations.of(context).ui(
+                    'googleSignInCancelled',
+                    'Google sign-in was cancelled.',
+                  ),
+                ),
+              ),
+            );
+          }
+        case GoogleFlowEnd.inBrowser:
+          break;
+      }
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              AppLocalizations.of(context).couldNotOpenGoogleSignIn('$error'),
+            ),
+            backgroundColor: KyronTheme.errorPink,
+            duration: const Duration(seconds: 6),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        if (signedIn) {
+          _stuck = Timer(const Duration(seconds: 20), () {
+            if (mounted) setState(() => _googleBusy = false);
+          });
+        } else {
+          setState(() => _googleBusy = false);
+        }
+      }
+    }
   }
 
   Future<void> _submit() async {
@@ -57,10 +127,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       // CRITICAL FIX: Navigate to home with cleared stack
       Navigator.pushNamedAndRemoveUntil(context, Routes.home, (_) => false);
     } else {
+      final l10n = AppLocalizations.of(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            AppLocalizations.of(context).loginFailed,
+            // The likeliest reason a right email fails: the account was made
+            // with Google and has no password to match.
+            _googleHere
+                ? '${l10n.loginFailed}\n${l10n.ui('ui_login_google_hint', 'Signed up with Google? Use Sign in with Google instead.')}'
+                : l10n.loginFailed,
             style: const TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.red,
@@ -117,6 +192,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 label: AppLocalizations.of(context).login,
                 onTap: _submit,
                 isLoading: _isLoading,
+                enabled: !_googleBusy,
               ),
 
               const SizedBox(height: 12),
@@ -148,6 +224,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
 
               const SizedBox(height: 12),
+
+              if (_googleHere) ...[
+                GoogleButton(
+                  key: const ValueKey('login-google'),
+                  action: GoogleAction.signIn,
+                  onTap: _isLoading ? null : _google,
+                  isLoading: _googleBusy,
+                ),
+                const SizedBox(height: 12),
+              ],
 
               TextButton(
                 onPressed: () => Navigator.of(context).pushNamed(Routes.signup),

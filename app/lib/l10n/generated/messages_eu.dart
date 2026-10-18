@@ -1514,6 +1514,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ezabatutako kontua"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Kontu hau ezabatu egin da, beraz, ezin da hona mezurik bidali."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Google-ekin erregistratu zinen? Erabili «Sign in with Google»."),
     };
 
 final messageLookup = MessageLookup();

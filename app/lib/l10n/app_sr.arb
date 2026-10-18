@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Ништа од тога нећете моћи да вратите.",
   "ui_delete_account_done": "Ваш налог је избрисан.",
   "ui_dm_deleted_account": "Избрисан налог",
-  "ui_dm_deleted_account_detail": "Овај налог је избрисан, па се овде више не могу слати поруке."
+  "ui_dm_deleted_account_detail": "Овај налог је избрисан, па се овде више не могу слати поруке.",
+  "ui_login_google_hint": "Регистровали сте се преко Google-а? Уместо тога користите „Sign in with Google”."
 }

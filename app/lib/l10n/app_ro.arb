@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Nu vei putea recupera nimic din toate acestea.",
   "ui_delete_account_done": "Contul tău a fost șters.",
   "ui_dm_deleted_account": "Cont șters",
-  "ui_dm_deleted_account_detail": "Acest cont a fost șters, așa că nu mai pot fi trimise mesaje aici."
+  "ui_dm_deleted_account_detail": "Acest cont a fost șters, așa că nu mai pot fi trimise mesaje aici.",
+  "ui_login_google_hint": "Te-ai înregistrat cu Google? Folosește în schimb „Sign in with Google”."
 }

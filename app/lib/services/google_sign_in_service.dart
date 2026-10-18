@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:crypto/crypto.dart';
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -145,7 +146,22 @@ class GoogleSignInService {
         // closing it. Treat both as a browser fallback: leaving the reader on
         // the welcome screen made a broken Google button indistinguishable
         // from a successful cancellation.
-        reason = 'the Google account picker closed; trying browser sign-in';
+        //
+        // Google's own words go in the log, though. They are the only thing
+        // that says which it was, and which setting is wrong: on a Play
+        // install whose signing certificate is not registered, the sheet
+        // opens, the account is picked, and this arrives as
+        // "[16] Account reauth failed" -- the browser then signs in fine,
+        // which hides the problem from everyone but the log.
+        final detail = error.description ?? '';
+        reason = refusedAsCancel(detail)
+            ? 'Google would not sign this build in (${error.code.name}: '
+                "$detail). This install's signing certificate SHA-1 is not "
+                'registered as an Android OAuth client beside the web client '
+                '-- see docs/AUTH_GOOGLE.md; trying browser sign-in'
+            : 'the Google account picker closed (${error.code.name}: '
+                "${detail.isEmpty ? 'no detail' : detail}); trying browser "
+                'sign-in';
         AppLog.instance.error('auth', reason!);
         return GoogleOutcome.useBrowser;
       }
@@ -179,6 +195,24 @@ class GoogleSignInService {
     reason = null;
     return GoogleOutcome.signedIn;
   }
+
+  /// Whether a "cancelled" from Credential Manager is really Google saying no.
+  ///
+  /// Matched on the message, since the code is the same as a dismissal's:
+  ///
+  /// - `[16] Account reauth failed` -- an account picked, and refused for
+  ///   this install's signing certificate.
+  /// - `[10]` / "Developer console is not set up correctly" -- Google's
+  ///   DEVELOPER_ERROR, which no person can cause by closing a sheet.
+  ///
+  /// Both go to the browser anyway; this decides what the log says about it.
+  @visibleForTesting
+  static bool refusedAsCancel(String detail) => _refusal.hasMatch(detail);
+
+  static final RegExp _refusal = RegExp(
+    r'reauth|developer console|\[10\]',
+    caseSensitive: false,
+  );
 
   /// 32 bytes of randomness, URL-safe, as the nonce Google commits to.
   ///

@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "यातील काहीही तुम्हाला परत मिळणार नाही.",
   "ui_delete_account_done": "तुमचे खाते हटवले आहे.",
   "ui_dm_deleted_account": "हटवलेले खाते",
-  "ui_dm_deleted_account_detail": "हे खाते हटवले गेले आहे, त्यामुळे येथे आता संदेश पाठवता येणार नाहीत."
+  "ui_dm_deleted_account_detail": "हे खाते हटवले गेले आहे, त्यामुळे येथे आता संदेश पाठवता येणार नाहीत.",
+  "ui_login_google_hint": "Google ने साइन अप केले होते? त्याऐवजी «Sign in with Google» वापरा."
 }

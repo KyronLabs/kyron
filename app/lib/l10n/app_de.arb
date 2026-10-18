@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Du kannst nichts davon wiederherstellen.",
   "ui_delete_account_done": "Dein Konto wurde gelöscht.",
   "ui_dm_deleted_account": "Gelöschtes Konto",
-  "ui_dm_deleted_account_detail": "Dieses Konto wurde gelöscht. Hier können keine Nachrichten mehr gesendet werden."
+  "ui_dm_deleted_account_detail": "Dieses Konto wurde gelöscht. Hier können keine Nachrichten mehr gesendet werden.",
+  "ui_login_google_hint": "Mit Google registriert? Nutze stattdessen „Mit Google anmelden“."
 }

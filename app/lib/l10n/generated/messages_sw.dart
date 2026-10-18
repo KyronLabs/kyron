@@ -1510,6 +1510,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Akaunti iliyofutwa"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Akaunti hii imefutwa, kwa hivyo ujumbe hauwezi kutumwa hapa tena."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Ulijisajili kwa Google? Tumia «Sign in with Google» badala yake."),
     };
 
 final messageLookup = MessageLookup();

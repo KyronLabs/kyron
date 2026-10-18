@@ -1151,6 +1151,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_deleted_account": MessageLookupByLibrary.simpleMessage("已删除的账号"),
       "ui_dm_deleted_account_detail":
           MessageLookupByLibrary.simpleMessage("此账号已删除，因此无法再在这里发送消息。"),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "是用 Google 注册的吗？请改用“使用 Google 登录”。"),
     };
 
 final messageLookup = MessageLookup();

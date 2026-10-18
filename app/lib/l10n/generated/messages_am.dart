@@ -1391,6 +1391,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("የተሰረዘ መለያ"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "ይህ መለያ ተሰርዟል፣ ስለዚህ ከአሁን በኋላ እዚህ መልእክት መላክ አይቻልም።"),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "በGoogle ተመዝግበዋል? በምትኩ «በGoogle ይግቡ»ን ይጠቀሙ።"),
     };
 
 final messageLookup = MessageLookup();

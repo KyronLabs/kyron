@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Akusayi kukwazi ukubuyisa nantoni na kuyo.",
   "ui_delete_account_done": "Iakhawunti yakho icinyiwe.",
   "ui_dm_deleted_account": "Iakhawunti ecinyiweyo",
-  "ui_dm_deleted_account_detail": "Le akhawunti icinyiwe, ngoko imiyalezo ayisenako ukuthunyelwa apha."
+  "ui_dm_deleted_account_detail": "Le akhawunti icinyiwe, ngoko imiyalezo ayisenako ukuthunyelwa apha.",
+  "ui_login_google_hint": "Ubhalise nge-Google? Sebenzisa u-“Sign in with Google” endaweni yoko."
 }

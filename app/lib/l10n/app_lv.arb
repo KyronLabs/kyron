@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Neko no tā vairs nevarēsiet atgūt.",
   "ui_delete_account_done": "Jūsu konts ir dzēsts.",
   "ui_dm_deleted_account": "Dzēsts konts",
-  "ui_dm_deleted_account_detail": "Šis konts ir dzēsts, tāpēc šeit vairs nevar sūtīt ziņas."
+  "ui_dm_deleted_account_detail": "Šis konts ir dzēsts, tāpēc šeit vairs nevar sūtīt ziņas.",
+  "ui_login_google_hint": "Reģistrējāties ar Google? Izmantojiet “Sign in with Google”."
 }

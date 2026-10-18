@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "削除したものは一切元に戻せません。",
   "ui_delete_account_done": "アカウントを削除しました。",
   "ui_dm_deleted_account": "削除されたアカウント",
-  "ui_dm_deleted_account_detail": "このアカウントは削除されたため、ここにはメッセージを送信できなくなりました。"
+  "ui_dm_deleted_account_detail": "このアカウントは削除されたため、ここにはメッセージを送信できなくなりました。",
+  "ui_login_google_hint": "Googleで登録しましたか？代わりに「Googleでサインイン」を使ってください。"
 }

@@ -1520,6 +1520,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ištrinta paskyra"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Ši paskyra ištrinta, todėl čia nebegalima siųsti žinučių."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Užsiregistravote per „Google“? Naudokite „Sign in with Google“."),
     };
 
 final messageLookup = MessageLookup();

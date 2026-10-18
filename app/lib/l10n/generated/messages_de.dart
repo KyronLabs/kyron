@@ -1627,6 +1627,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Gelöschtes Konto"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Dieses Konto wurde gelöscht. Hier können keine Nachrichten mehr gesendet werden."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Mit Google registriert? Nutze stattdessen „Mit Google anmelden“."),
     };
 
 final messageLookup = MessageLookup();

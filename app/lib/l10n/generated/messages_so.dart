@@ -1516,6 +1516,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Akoon la tirtiray"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Akoonkan waa la tirtiray, sidaa darteed fariimo halkan looma diri karo mar dambe."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Ma ku diiwaangashantay Google? Halkii isticmaal «Sign in with Google»."),
     };
 
 final messageLookup = MessageLookup();

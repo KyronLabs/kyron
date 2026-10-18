@@ -1511,6 +1511,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Törölt fiók"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Ezt a fiókot törölték, ezért ide már nem lehet üzenetet küldeni."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Google-lel regisztráltál? Használd inkább a „Sign in with Google” gombot."),
     };
 
 final messageLookup = MessageLookup();

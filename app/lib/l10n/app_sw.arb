@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Hutaweza kurejesha chochote.",
   "ui_delete_account_done": "Akaunti yako imefutwa.",
   "ui_dm_deleted_account": "Akaunti iliyofutwa",
-  "ui_dm_deleted_account_detail": "Akaunti hii imefutwa, kwa hivyo ujumbe hauwezi kutumwa hapa tena."
+  "ui_dm_deleted_account_detail": "Akaunti hii imefutwa, kwa hivyo ujumbe hauwezi kutumwa hapa tena.",
+  "ui_login_google_hint": "Ulijisajili kwa Google? Tumia «Sign in with Google» badala yake."
 }

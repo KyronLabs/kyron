@@ -1517,6 +1517,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("წაშლილი ანგარიში"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "ეს ანგარიში წაშლილია, ამიტომ აქ შეტყობინებების გაგზავნა აღარ შეიძლება."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Google-ით დარეგისტრირდით? ამის ნაცვლად გამოიყენეთ „Sign in with Google“."),
     };
 
 final messageLookup = MessageLookup();

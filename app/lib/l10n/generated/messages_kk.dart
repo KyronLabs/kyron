@@ -1508,6 +1508,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Жойылған аккаунт"),
       "ui_dm_deleted_account_detail": MessageLookupByLibrary.simpleMessage(
           "Бұл аккаунт жойылды, сондықтан бұл жерге енді хабар жіберу мүмкін емес."),
+      "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
+          "Google арқылы тіркелдіңіз бе? Оның орнына «Sign in with Google» түймесін пайдаланыңыз."),
     };
 
 final messageLookup = MessageLookup();

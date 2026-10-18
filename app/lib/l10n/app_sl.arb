@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Ničesar od tega ne boste mogli dobiti nazaj.",
   "ui_delete_account_done": "Vaš račun je izbrisan.",
   "ui_dm_deleted_account": "Izbrisan račun",
-  "ui_dm_deleted_account_detail": "Ta račun je izbrisan, zato sem ni več mogoče pošiljati sporočil."
+  "ui_dm_deleted_account_detail": "Ta račun je izbrisan, zato sem ni več mogoče pošiljati sporočil.",
+  "ui_login_google_hint": "Ste se registrirali z Googlom? Namesto tega uporabite »Sign in with Google«."
 }

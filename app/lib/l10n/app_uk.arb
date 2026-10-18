@@ -763,5 +763,6 @@
   "ui_delete_account_confirm_detail": "Ви не зможете нічого з цього повернути.",
   "ui_delete_account_done": "Ваш обліковий запис видалено.",
   "ui_dm_deleted_account": "Видалений обліковий запис",
-  "ui_dm_deleted_account_detail": "Цей обліковий запис видалено, тому сюди більше не можна надсилати повідомлення."
+  "ui_dm_deleted_account_detail": "Цей обліковий запис видалено, тому сюди більше не можна надсилати повідомлення.",
+  "ui_login_google_hint": "Реєструвалися через Google? Скористайтеся «Sign in with Google»."
 }
