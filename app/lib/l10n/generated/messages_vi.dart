@@ -1244,6 +1244,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Tệp đính kèm"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Không thể đọc tin nhắn này trên thiết bị này."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Đang chờ tin nhắn này. Việc này có thể mất một lúc."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Tin nhắn được mã hóa"),
       "ui_dm_e2ee_notice":

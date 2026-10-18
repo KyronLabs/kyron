@@ -1340,6 +1340,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Прикачен файл"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Това съобщение не може да бъде прочетено на това устройство."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Изчакване на това съобщение. Това може да отнеме известно време."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Шифровано съобщение"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

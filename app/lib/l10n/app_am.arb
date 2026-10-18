@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "መልእክት",
   "ui_dm_quote_attachment": "አባሪ",
   "ui_dm_unreadable": "ይህ መልእክት በዚህ መሣሪያ ላይ ሊነበብ አይችልም።",
+  "ui_dm_waiting": "ይህን መልእክት በመጠበቅ ላይ። ትንሽ ጊዜ ሊወስድ ይችላል።",
   "ui_dm_preview_sealed": "የተመሰጠረ መልእክት",
   "ui_dm_e2ee_notice": "መልእክቶች ከጫፍ እስከ ጫፍ የተመሰጠሩ ናቸው",
   "ui_dm_not_encrypted": "ከጫፍ እስከ ጫፍ አልተመሰጠረም",

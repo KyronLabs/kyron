@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Xabar",
   "ui_dm_quote_attachment": "Biriktirma",
   "ui_dm_unreadable": "Bu xabarni ushbu qurilmada o‘qib bo‘lmaydi.",
+  "ui_dm_waiting": "Bu xabar kutilmoqda. Bu biroz vaqt olishi mumkin.",
   "ui_dm_preview_sealed": "Shifrlangan xabar",
   "ui_dm_e2ee_notice": "Xabarlar uchdan-uchgacha shifrlangan",
   "ui_dm_not_encrypted": "Uchdan-uchgacha shifrlanmagan",

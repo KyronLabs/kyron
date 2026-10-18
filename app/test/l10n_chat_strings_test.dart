@@ -27,6 +27,7 @@ const _keys = [
   'ui_dm_quote_message',
   'ui_dm_quote_attachment',
   'ui_dm_unreadable',
+  'ui_dm_waiting',
   'ui_dm_preview_sealed',
   'ui_dm_e2ee_notice',
   'ui_dm_not_encrypted',

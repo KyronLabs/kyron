@@ -87,9 +87,12 @@ function serviceWith(stub: Stub = {}) {
 const containing = (shape: Record<string, unknown>): unknown =>
   expect.objectContaining(shape);
 
-/** The stubbed read, typed so the spec is not full of `any`. */
-function stubReads(prisma: PrismaService, rows: unknown[]) {
-  (prisma.message.findMany as jest.Mock).mockResolvedValue(rows);
+/** The stubbed read, typed so the spec is not full of `any`. Every row has
+ * the relations the query selects, empty unless the test says otherwise. */
+function stubReads(prisma: PrismaService, rows: object[]) {
+  (prisma.message.findMany as jest.Mock).mockResolvedValue(
+    rows.map((row) => ({ keyShares: [], ...row })),
+  );
 }
 
 /** A conversation the reader is in, with the other side's read mark. */
@@ -184,7 +187,7 @@ describe('reading a conversation', () => {
     const { service, prisma } = serviceWith({
       conversation: membership(null),
     });
-    (prisma.message.findMany as jest.Mock).mockResolvedValue([
+    stubReads(prisma, [
       {
         id: 'm1',
         body: 'hi',
@@ -583,6 +586,7 @@ describe('the conversation list', () => {
           senderId: lastSender,
           createdAt: new Date('2026-04-04'),
           media,
+          keyShares: [],
         },
       ],
     };

@@ -278,6 +278,50 @@ def check_bundle(name: str) -> list[str]:
     return []
 
 
+# What sends a bundle to Play, and the one workflow allowed to.
+PLAY_UPLOAD = "scripts/play-upload.py"
+PLAY_SENDER = "flutter-release.yml"
+
+
+def check_play_upload(name: str) -> list[str]:
+    """That only releases go to Play, as the bundle the android job checked.
+
+    Play keeps every version code it is sent, and a bad bundle on a testing
+    track is in front of testers within minutes. So the job that sends one
+    waits for the android job -- whose bundle has been through
+    scripts/check-aab.sh by then -- and takes its artifact rather than
+    building the commit a second time.
+    """
+    jobs = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))["jobs"]
+    said: list[str] = []
+    for job, spec in jobs.items():
+        runs = "\n".join(str(step.get("run", "")) for step in spec.get("steps", []))
+        if PLAY_UPLOAD not in runs:
+            continue
+        # Versioned releases only. A development bundle carries the last
+        # release's version name, and sending each one would put every merge
+        # to main in front of testers. They can be uploaded by hand.
+        if name != PLAY_SENDER:
+            said.append(
+                f"{name}: {job!r} sends a bundle to Play. Only {PLAY_SENDER} "
+                f"does -- testers get what was cut as a version, not every build"
+            )
+        needs = spec.get("needs") or []
+        if isinstance(needs, str):
+            needs = [needs]
+        if "android" not in needs:
+            said.append(
+                f"{name}: {job!r} sends a bundle to Play without waiting for the "
+                f"'android' job, which is what checks it"
+            )
+        if "flutter build" in runs:
+            said.append(
+                f"{name}: {job!r} builds its own bundle for Play instead of "
+                f"sending the one the 'android' job checked"
+            )
+    return said
+
+
 def check_wiring(name: str) -> list[str]:
     """Every needs., and every output read across jobs, points at something."""
     text = (WORKFLOWS / name).read_text(encoding="utf-8")
@@ -367,6 +411,7 @@ def main() -> int:
     for name in PUBLISHING:
         problems += check_install_guard(name)
         problems += check_bundle(name)
+        problems += check_play_upload(name)
 
     problems += check_release_trigger()
 

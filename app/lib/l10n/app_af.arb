@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Boodskap",
   "ui_dm_quote_attachment": "Aanhangsel",
   "ui_dm_unreadable": "Hierdie boodskap kan nie op hierdie toestel gelees word nie.",
+  "ui_dm_waiting": "Wag vir hierdie boodskap. Dit kan ’n rukkie duur.",
   "ui_dm_preview_sealed": "Geënkripteerde boodskap",
   "ui_dm_e2ee_notice": "Boodskappe is end-tot-end-geënkripteer",
   "ui_dm_not_encrypted": "Nie end-tot-end-geënkripteer nie",

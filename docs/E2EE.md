@@ -9,9 +9,22 @@ believe it protects.
 
 ## How it works
 
-**Keys.** Every install makes an X25519 keypair on first sign-in. The secret
-half is written to the same secure storage the session token lives in and never
-leaves the device. The public half goes to `PUT /keys` with an opaque device id.
+**Keys.** Every account makes an X25519 keypair on each install the first time
+it signs in there. The secret half is written to the same secure storage the
+session token lives in, under that account's id, and never leaves the device.
+The public half goes to `PUT /keys` with an opaque device id, also per account,
+so the server is not told which accounts share a phone.
+
+Sign-out keeps both, and keeps the public half published: signing back in
+reads everything sealed to the key, including what arrived while signed out.
+Another account signing in on the same phone has its own key and never reads
+this one. Deleting the account erases the key from the phone.
+
+Until 18 October 2026 there was one key per install, and sign-out deleted it.
+Switching to another account and back -- or signing out and in again -- made a
+new key, and everything sealed to the old one could never be opened on that
+phone again. The update moves an install's existing key to the account signed
+in on it, so nothing already sealed to it is lost.
 
 **Sealing.** To write in a conversation the app fetches every device key in it
 (`GET /keys/conversation/:id`, freshest first): the other person's, and the
@@ -45,6 +58,28 @@ network, which is how the conversation list shows the last message without
 fetching anybody's keys. Anything that does not parse as sealed is a plain
 message and passes through untouched.
 
+**Devices that came later.** A message is sealed for the devices listed when it
+is sent, so a device that did not exist yet -- a new phone, a reinstall, a key
+lost to the old sign-out -- was never among them. Such a device now asks
+(`POST /messages/:id/keys/requests`), and the thread reads "Waiting for this
+message. This may take a while." Every other device in the conversation is
+told over the socket and checks on its next launch; any that can open the
+message -- the sender's phone, or another of the reader's own -- seals the
+message's key again, for the asking device's public key alone, under a key
+derived from X25519 between the two devices (`kyron/dm/v2/share`), and posts it
+(`POST /messages/keys/shares`). The asking device opens it with its secret half
+and the message reads. A link card's key travels in the same answer.
+
+The server stores the request and the answer and can read neither: the answer
+is sealed for one device's key. It checks that the answering key is one the
+answering account published, so a member cannot fill a request with noise in
+somebody else's name, and it hands each device only answers for its own
+account. The first answer stands. A device asks again only for a message it
+still cannot open, and asking again clears an answer that did not open.
+
+Only messages from the last **30 days** can be asked for or answered. That
+bound is deliberate; see "No key verification" below for why.
+
 ### What `k1` got wrong
 
 The first version, `k1.<nonce>.<ciphertext>.<mac>`, sealed each message under
@@ -62,21 +97,27 @@ sender's device — and will read again only if they are sent again.
 
 ## What it does not protect
 
-### One key per install
+### One key per account per install
 
-A key belongs to a device, not an account. Consequences:
+A key belongs to an account on one device. Consequences:
 
-- **A new device cannot read what arrived before it existed.** Messages are
-  sealed for the devices that were listed when they were sent. Sign in on a
-  tablet and everything from then on reads there; the history before it does
-  not.
-- **Losing the device loses the history.** There is no key backup and no
-  recovery. Signing out deletes the secret half deliberately: it is that
-  device's identity and it leaves with the account that made it.
+- **A new device reads older messages only when somebody answers for it.**
+  Messages are sealed for the devices that were listed when they were sent. A
+  new install asks for the last 30 days, and a message opens once a device
+  that has it comes online -- which, if the only such device was the one that
+  was wiped, is never. Older than 30 days, it does not ask.
+- **Losing every device loses the history.** There is no key backup and no
+  recovery phrase. Keys are no longer deleted on sign-out, but uninstalling
+  the app deletes them, and on Android a development build and a Play build
+  cannot replace each other without an uninstall.
+- **A signed-out key stays on the phone.** Somebody with the phone and the
+  means to read its secure storage -- a rooted handset, say -- could take a
+  signed-out account's key as they could a signed-in one's. Deleting the
+  account erases it; a "remove this account from this phone" choice at
+  sign-out does not exist yet.
 - **Stale keys linger.** An uninstalled app never withdraws its key, so it
-  stays listed and keeps being sealed for, up to the cap, until the account
-  signs out of it. Harmless — nobody holds its secret half — but it makes
-  envelopes larger than they need to be.
+  stays listed and keeps being sealed for, up to the cap. Harmless — nobody
+  holds its secret half — but it makes envelopes larger than they need to be.
 
 ### No forward secrecy
 
@@ -94,6 +135,14 @@ Every serious end-to-end system eventually grows a way for two people to compare
 a fingerprint out of band — in person, over the phone, on another service. That
 is not built. **Until it is, this protects against a passive server and a
 database leak, not against an actively malicious server.**
+
+Answering requests for keys widens what such a server could do. Before, a key
+it published under somebody's name read only what was sent after. Now it could
+also ask with that key and be answered, automatically, for the last 30 days of
+history. That is the trade for new devices being able to read at all — the
+same one WhatsApp's "Waiting for this message" makes — and the 30-day window
+is the bound on it. A passive server or a database leak still reads nothing:
+every answer is sealed for one device's key.
 
 ### Not everything is sealed
 
@@ -149,7 +198,8 @@ database leak, not against an actively malicious server.**
 | Attachments in the clear | Encrypt the file before upload; the key travels in the sealed message |
 | Reactions readable | Send a reaction as a small sealed message that names the one it reacts to |
 | Push shows no preview | A data-only push the app opens on the device and draws itself |
-| No backup | A recovery phrase the user writes down, encrypting the secret half |
+| No backup | A recovery phrase the user writes down, encrypting the secret half; or Android's Block Store, which restores a small secret to a new phone during setup, end-to-end encrypted (whether it also survives a reinstall on the same phone needs testing before relying on it) |
+| Signed-out key stays on the phone | "Sign out and remove from this phone", which erases it |
 
 ## Honestly
 

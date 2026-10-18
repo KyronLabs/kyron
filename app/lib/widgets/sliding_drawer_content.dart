@@ -604,71 +604,73 @@ class SlidingDrawerContent extends ConsumerWidget {
           top: Radius.circular(RadiusTokens.radius20),
         ),
       ),
-      builder: (sheetContext) => Padding(
-        padding: const EdgeInsets.all(SpacingTokens.space24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 40,
-              height: 4,
-              margin: const EdgeInsets.only(bottom: SpacingTokens.space20),
-              decoration: BoxDecoration(
-                color: scheme.onSurface.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(RadiusTokens.radius2),
-              ),
-            ),
-            Text(
-              AppLocalizations.of(context)
-                  .ui('ui_decentralized_id', 'Decentralized ID'),
-              style: TextStyle(
-                fontSize: TypographyTokens.fontSize5,
-                fontWeight: FontWeight.bold,
-                color: scheme.onSurface,
-              ),
-            ),
-            const SizedBox(height: SpacingTokens.space16),
-            Container(
-              padding: const EdgeInsets.all(SpacingTokens.space16),
-              decoration: BoxDecoration(
-                color: scheme.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
-                border: Border.all(
-                  color: scheme.outline.withValues(alpha: 0.2),
-                ),
-              ),
-              child: SelectableText(
-                did,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: TypographyTokens.fontSize2,
-                  fontFamily: 'monospace',
-                  color: scheme.onSurface,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            const SizedBox(height: SpacingTokens.space20),
-            FilledButton.icon(
-              onPressed: () async {
-                await Clipboard.setData(ClipboardData(text: did));
-                if (!sheetContext.mounted) return;
-                Navigator.pop(sheetContext);
-                ScaffoldMessenger.of(sheetContext).showSnackBar(
-                  SnackBar(
-                    content: Text(AppLocalizations.of(context).didCopied),
+      builder: (sheetContext) => SafeArea(
+          top: false,
+          child: Padding(
+            padding: const EdgeInsets.all(SpacingTokens.space24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 40,
+                  height: 4,
+                  margin: const EdgeInsets.only(bottom: SpacingTokens.space20),
+                  decoration: BoxDecoration(
+                    color: scheme.onSurface.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(RadiusTokens.radius2),
                   ),
-                );
-              },
-              icon: const Icon(Iconsax.copy_copy, size: 18),
-              label: Text(AppLocalizations.of(context).copy),
-              style: FilledButton.styleFrom(
-                minimumSize: const Size.fromHeight(48),
-              ),
+                ),
+                Text(
+                  AppLocalizations.of(context)
+                      .ui('ui_decentralized_id', 'Decentralized ID'),
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize5,
+                    fontWeight: FontWeight.bold,
+                    color: scheme.onSurface,
+                  ),
+                ),
+                const SizedBox(height: SpacingTokens.space16),
+                Container(
+                  padding: const EdgeInsets.all(SpacingTokens.space16),
+                  decoration: BoxDecoration(
+                    color: scheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+                    border: Border.all(
+                      color: scheme.outline.withValues(alpha: 0.2),
+                    ),
+                  ),
+                  child: SelectableText(
+                    did,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize2,
+                      fontFamily: 'monospace',
+                      color: scheme.onSurface,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: SpacingTokens.space20),
+                FilledButton.icon(
+                  onPressed: () async {
+                    await Clipboard.setData(ClipboardData(text: did));
+                    if (!sheetContext.mounted) return;
+                    Navigator.pop(sheetContext);
+                    ScaffoldMessenger.of(sheetContext).showSnackBar(
+                      SnackBar(
+                        content: Text(AppLocalizations.of(context).didCopied),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Iconsax.copy_copy, size: 18),
+                  label: Text(AppLocalizations.of(context).copy),
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size.fromHeight(48),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          )),
     );
   }
 }

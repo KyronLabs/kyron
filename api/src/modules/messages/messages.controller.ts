@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
 import { WallpapersService } from './wallpapers.service';
+import { KeySharesService } from './key-shares.service';
 import {
   ListConversationsDto,
   ListMessagesDto,
@@ -21,6 +22,7 @@ import {
 import { SendMessageDto } from './dto/send-message.dto';
 import { ReactDto } from './dto/react.dto';
 import { OpenConversationDto } from './dto/open-conversation.dto';
+import { RequestKeysDto, ShareKeysDto } from './dto/key-shares.dto';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 
@@ -32,6 +34,7 @@ export class MessagesController {
   constructor(
     private readonly svc: MessagesService,
     private readonly wallpapers: WallpapersService,
+    private readonly keyShares: KeySharesService,
   ) {}
 
   /** The reader's conversations, whichever moved last at the top. */
@@ -118,6 +121,36 @@ export class MessagesController {
       limit: query.limit,
       cursor: query.cursor,
     });
+  }
+
+  /**
+   * Requests for message keys that the reader's devices may be able to
+   * answer. See KeySharesService.
+   */
+  @Get('keys/requests')
+  keyRequests(@Req() req: AuthRequest) {
+    return this.keyShares.pending(req.user.id);
+  }
+
+  /** Answers them, with keys sealed for the devices that asked. */
+  @Post('keys/shares')
+  shareKeys(@Req() req: AuthRequest, @Body() dto: ShareKeysDto) {
+    return this.keyShares.answer(req.user.id, dto.shares);
+  }
+
+  /** Asks for the keys of messages this device was not sealed for. */
+  @Post(':id/keys/requests')
+  requestKeys(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() dto: RequestKeysDto,
+  ) {
+    return this.keyShares.request(
+      req.user.id,
+      id,
+      dto.deviceId,
+      dto.messageIds,
+    );
   }
 
   @Get(':id')

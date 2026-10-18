@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Messaggio",
   "ui_dm_quote_attachment": "Allegato",
   "ui_dm_unreadable": "Questo messaggio non può essere letto su questo dispositivo.",
+  "ui_dm_waiting": "In attesa di questo messaggio. Potrebbe volerci un po’.",
   "ui_dm_preview_sealed": "Messaggio crittografato",
   "ui_dm_e2ee_notice": "I messaggi sono crittografati end-to-end",
   "ui_dm_not_encrypted": "Non crittografato end-to-end",

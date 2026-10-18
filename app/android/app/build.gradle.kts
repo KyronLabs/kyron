@@ -179,3 +179,10 @@ if ((project.findProperty("split-per-abi") as String?)?.toBoolean() == true) {
 flutter {
     source = "../.."
 }
+
+dependencies {
+    // enableEdgeToEdge() in MainActivity. It came in androidx.activity 1.8;
+    // named here rather than left to whichever version the plugins happen to
+    // pull in.
+    implementation("androidx.activity:activity-ktx:1.10.1")
+}

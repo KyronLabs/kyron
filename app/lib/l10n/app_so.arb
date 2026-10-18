@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Fariin",
   "ui_dm_quote_attachment": "Lifaaq",
   "ui_dm_unreadable": "Fariintan laguma akhrin karo qalabkan.",
+  "ui_dm_waiting": "Waxaa la sugayaa fariintan. Tani waxay qaadan kartaa xoogaa waqti ah.",
   "ui_dm_preview_sealed": "Fariin la sireeyay",
   "ui_dm_e2ee_notice": "Fariimaha waxaa la sireeyay dhammaad ilaa dhammaad",
   "ui_dm_not_encrypted": "Lama sirin dhammaad ilaa dhammaad",

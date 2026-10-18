@@ -6,6 +6,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:kyron_app/models/conversation.dart';
 import 'package:kyron_app/models/current_user.dart';
+import 'package:kyron_app/models/key_share.dart';
 import 'package:kyron_app/models/post_media.dart';
 import 'package:kyron_app/providers/presence_provider.dart';
 import 'package:kyron_app/providers/current_user_provider.dart';
@@ -164,6 +165,7 @@ Future<_Repo> _open(
   DateTime? lastReadAt,
   LinkCardReader? reader,
   List<MessagePerson>? people,
+  MessageVault? vault,
 }) async {
   final repo = people == null
       ? _Repo(thread, lastReadAt: lastReadAt)
@@ -177,7 +179,7 @@ Future<_Repo> _open(
         threadProvider.overrideWith(
           (ref, id) => ThreadNotifier(
             repo,
-            MessageVault(KeysRepository(ApiClient())),
+            vault ?? MessageVault(KeysRepository(ApiClient())),
             id,
           ),
         ),
@@ -224,6 +226,27 @@ class _OnePage extends LinkCardReader {
 
 /// A message sealed for a device that is not this one. The vault in these
 /// tests has no key, so it cannot be opened -- which is the case being drawn.
+/// Keys that go nowhere, and remember what this device asked for.
+class _QuietKeys extends KeysRepository {
+  _QuietKeys() : super(ApiClient()..dio.interceptors.clear());
+
+  final asked = <String>[];
+
+  @override
+  Future<void> publish(String publicKey, String deviceId) async {}
+
+  @override
+  Future<List<KeyRequest>> pendingRequests() async => const [];
+
+  @override
+  Future<void> requestShares(
+    String conversationId,
+    String deviceId,
+    List<String> messageIds,
+  ) async =>
+      asked.addAll(messageIds);
+}
+
 final _sealedForSomebodyElse = SealedMessage(
   nonce: List.filled(24, 1),
   body: const [1, 2, 3],
@@ -509,6 +532,40 @@ void main() {
     expect(tester.widget<Text>(find.text(said)).style?.fontStyle,
         FontStyle.italic);
     expect(find.textContaining('k1.'), findsNothing);
+  });
+
+  testWidgets('one this device was never sealed for says it is waiting',
+      (tester) async {
+    // A new install reading a message sent before it existed. It has asked
+    // for the key; until a device that has it answers, it says so -- not
+    // "cannot be read", which would be untrue as well as alarming.
+    FlutterSecureStorage.setMockInitialValues({});
+    final keys = _QuietKeys();
+    final vault = MessageVault(keys);
+    final crypto = MessageCrypto();
+    final sender = await crypto.newKeyPair();
+    final someoneElse = await crypto.newKeyPair();
+    final sealed = (await crypto.sealForDevices(
+      'sent before this phone',
+      mine: sender,
+      devices: [await someoneElse.extractPublicKey()],
+    ))
+        .encode();
+    await tester.runAsync(() => vault.unlock('me'));
+
+    await _open(
+      tester,
+      [_msg('m1', sealed, 'them', DateTime.now())],
+      vault: vault,
+    );
+
+    const said = 'Waiting for this message. This may take a while.';
+    expect(find.text(said), findsOneWidget);
+    expect(tester.widget<Text>(find.text(said)).style?.fontStyle,
+        FontStyle.italic);
+    expect(
+        find.text('This message cannot be read on this device.'), findsNothing);
+    expect(keys.asked, ['m1']);
   });
 
   testWidgets('encryption is announced where it starts, and lapses marked',

@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "הודעה",
   "ui_dm_quote_attachment": "קובץ מצורף",
   "ui_dm_unreadable": "לא ניתן לקרוא את ההודעה הזו במכשיר הזה.",
+  "ui_dm_waiting": "ממתינים להודעה הזו. זה עשוי להימשך זמן מה.",
   "ui_dm_preview_sealed": "הודעה מוצפנת",
   "ui_dm_e2ee_notice": "ההודעות מוצפנות מקצה לקצה",
   "ui_dm_not_encrypted": "לא מוצפנת מקצה לקצה",

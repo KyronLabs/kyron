@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Saƙo",
   "ui_dm_quote_attachment": "Abin haɗe",
   "ui_dm_unreadable": "Ba za a iya karanta wannan saƙon a wannan na'urar ba.",
+  "ui_dm_waiting": "Ana jiran wannan saƙon. Wannan zai iya ɗaukar ɗan lokaci.",
   "ui_dm_preview_sealed": "Saƙon da aka ɓoye",
   "ui_dm_e2ee_notice": "An ɓoye saƙonni daga ƙarshe zuwa ƙarshe",
   "ui_dm_not_encrypted": "Ba a ɓoye shi daga ƙarshe zuwa ƙarshe ba",

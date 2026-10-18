@@ -1317,6 +1317,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Aanhangsel"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Hierdie boodskap kan nie op hierdie toestel gelees word nie."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Wag vir hierdie boodskap. Dit kan ’n rukkie duur."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Geënkripteerde boodskap"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

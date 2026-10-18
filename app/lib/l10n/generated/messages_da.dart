@@ -1280,6 +1280,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Vedhæftet fil"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Denne besked kan ikke læses på denne enhed."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Venter på denne besked. Det kan tage et stykke tid."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Krypteret besked"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

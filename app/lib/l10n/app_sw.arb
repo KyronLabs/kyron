@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Ujumbe",
   "ui_dm_quote_attachment": "Kiambatisho",
   "ui_dm_unreadable": "Ujumbe huu hauwezi kusomwa kwenye kifaa hiki.",
+  "ui_dm_waiting": "Inasubiri ujumbe huu. Huenda ikachukua muda.",
   "ui_dm_preview_sealed": "Ujumbe uliosimbwa",
   "ui_dm_e2ee_notice": "Ujumbe umesimbwa kwa njia fiche kutoka mwanzo hadi mwisho",
   "ui_dm_not_encrypted": "Haujasimbwa kwa njia fiche kutoka mwanzo hadi mwisho",

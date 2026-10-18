@@ -1243,6 +1243,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Lifaaq"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Fariintan laguma akhrin karo qalabkan."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Waxaa la sugayaa fariintan. Tani waxay qaadan kartaa xoogaa waqti ah."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Fariin la sireeyay"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

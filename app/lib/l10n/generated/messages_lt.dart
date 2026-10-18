@@ -1243,6 +1243,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("Priedas"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Šios žinutės negalima perskaityti šiame įrenginyje."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Laukiama šios žinutės. Tai gali užtrukti."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Užšifruota žinutė"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

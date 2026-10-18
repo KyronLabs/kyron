@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Хабарлама",
   "ui_dm_quote_attachment": "Тіркеме",
   "ui_dm_unreadable": "Бұл хабарды осы құрылғыда оқу мүмкін емес.",
+  "ui_dm_waiting": "Бұл хабар күтілуде. Біраз уақыт кетуі мүмкін.",
   "ui_dm_preview_sealed": "Шифрланған хабар",
   "ui_dm_e2ee_notice": "Хабарлар өтпелі шифрланған",
   "ui_dm_not_encrypted": "Өтпелі шифрланбаған",

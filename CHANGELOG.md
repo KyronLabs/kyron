@@ -12,6 +12,52 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Added
+
+- **"Waiting for this message" instead of "cannot be read".** A message is
+  sealed for the devices that existed when it was sent, so a new phone or a
+  reinstall could never read what came before it. Now the new device asks,
+  and the sender's phone -- or another of the reader's own -- seals the
+  message's key again for it the next time it is online; the message opens
+  then. The server carries the request and the answer and can read neither.
+  Messages from the last 30 days only; docs/E2EE.md says why, and what it
+  costs against a malicious server.
+- **Releases go to Play by themselves.** Once a Play service account is set
+  up (README.md, Google Play), each versioned release's bundle is sent to
+  the internal testing track by CI once it has been checked, with the
+  release's changelog section as the notes. Uploading to Play Console by
+  hand was the only way. Development builds are not sent: testers get what
+  was cut as a version, not every merge. The upload goes through Play's API
+  directly from a script in this repository, so the key is handled by
+  nothing from outside it.
+
+### Fixed
+
+- **Message keys belong to the account, and survive sign-out.** There was
+  one key per install, deleted on every sign-out, so switching accounts on a
+  phone -- or signing out and back in -- made a new key, and every message
+  sent to the old one could never be opened there again. Each account now
+  has its own key on each phone, kept across sign-out and erased only when
+  the account is deleted; another account signing in on the same phone never
+  reads it. The update moves a phone's existing key to whoever is signed in,
+  so nothing already sent to it is lost. The verifiable identifier (DID) had
+  the same fault, and changed on every sign-in; it is kept the same way.
+- **One layout on every Android version.** Targeting SDK 35 and later,
+  Android 15 draws apps edge to edge whatever they ask for; before 15 they
+  only are if they say so. Kyron didn't, so it was edge to edge on new
+  phones and not on older ones -- and became edge to edge on older ones
+  partway through a session, the first time the photo viewer closed. It now
+  asks for it from the start (`enableEdgeToEdge()`), which is also what
+  Play's "edge-to-edge may not display for all users" warning asks for.
+- **Sheets no longer sit under the navigation bar.** Flutter keeps a bottom
+  sheet clear of the status bar but not of the navigation bar, so on an
+  edge-to-edge screen eight of Kyron's sheets ran their last row under it --
+  with three-button navigation, most of the sign-out sheet's "Log Out"
+  button. They make room for it now.
+- **The tab bar hides all the way.** Scrolling hid it by a fixed 80 pixels,
+  enough for a gesture bar and not for three-button navigation, which left a
+  32-pixel strip of it on screen.
+
 ## [0.1.4] - 2026-10-18
 ### Fixed
 

@@ -340,6 +340,77 @@ jobs:
           if-no-files-found: error
           retention-days: 1
 
+  # A release's bundle goes on to Play's internal testing track once it has
+  # passed scripts/check-aab.sh, so testers get each version without anybody
+  # downloading it from here and uploading it to Play Console by hand. Only
+  # an app's very first bundle has to go through Play Console.
+  #
+  # Releases only, deliberately. A development build's bundle carries the
+  # last release's version name, so in Play two different builds would both
+  # read "0.1.3", and testers would get every merge to main. What reaches
+  # testers is what somebody chose to cut as a version; a development bundle
+  # can still be uploaded by hand from its GitHub release.
+  #
+  # Its own job, so a Play outage or a revoked key fails this and not the
+  # GitHub release, which is published either way. And the bundle it sends
+  # is the one the android job built and checked, out of that job's
+  # artifact -- never a second build of the same tag.
+  #
+  # Needs the PLAY_SERVICE_ACCOUNT_JSON secret: a service account allowed to
+  # release to testing tracks (README.md, Google Play). Without it the job
+  # says so and stops, so a fork, or this repository before it is set up,
+  # releases exactly as it did.
+  play:
+    name: Send the bundle to Play internal testing
+    needs: [checks, android]
+    runs-on: ubuntu-latest
+    env:
+      KYRON_BUILD_NUMBER: ${{ needs.checks.outputs.build }}
+    steps:
+      - name: Check Play is set up here
+        id: ready
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$PLAY_SERVICE_ACCOUNT_JSON" ]; then
+            echo "::notice::No PLAY_SERVICE_ACCOUNT_JSON secret, so this bundle was not sent to Play. README.md, Google Play, says how to set it up."
+            echo "send=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "send=yes" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.ready.outputs.send == 'yes'
+        uses: actions/checkout@v4
+
+      - name: Collect the checked bundle
+        if: steps.ready.outputs.send == 'yes'
+        uses: actions/download-artifact@v4
+        with:
+          name: android
+          path: incoming
+
+      # This version's changelog section; play-upload.py cuts it to Play's
+      # 500 characters.
+      - name: Write the release notes
+        if: steps.ready.outputs.send == 'yes'
+        env:
+          VERSION: ${{ needs.checks.outputs.version }}
+        run: python3 scripts/changelog.py show "$VERSION" > play-notes.txt
+
+      - name: Send it to the internal testing track
+        if: steps.ready.outputs.send == 'yes'
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          VERSION: ${{ needs.checks.outputs.version }}
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet google-auth requests
+          bundle="incoming/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
+          test -f "$bundle" || { echo "The android job's artifact has no $bundle."; exit 1; }
+          python3 scripts/play-upload.py --package so.kyron.app --track internal \
+            --name "${VERSION}" --notes-file play-notes.txt "$bundle"
+
   # One release, published once, with both platforms in it. Separate because
   # the two builds run on different operating systems and a release that
   # appeared after the first one finished would be missing the other.

@@ -122,6 +122,7 @@ model User {
   kyronPointEvents  KyronPointEvent[] // 🔥 NEW
   devices           DeviceToken[]
   messageKeys       MessageKey[]
+  messageKeyShares  MessageKeyShare[]
   messageReactions  MessageReaction[]
 
   @@index([email])
@@ -968,6 +969,7 @@ model Message {
   replies Message[] @relation("MessageReplies")
 
   reactions MessageReaction[]
+  keyShares MessageKeyShare[]
 
   @@index([conversationId, createdAt(sort: Desc), id(sort: Desc)])
   @@index([replyToId])
@@ -1098,6 +1100,38 @@ model MessageKey {
   updatedAt DateTime @updatedAt @db.Timestamptz()
 
   @@unique([userId, deviceId])
+  @@index([userId])
+}
+
+/// A message's key, sealed again for a device it was not sealed for when it
+/// was sent: one that did not exist yet, or whose key was lost.
+///
+/// A row starts as a request -- the device that cannot open the message asks,
+/// and [sealed] is null -- and any device in the conversation that can open
+/// the message answers it, by sealing the message's key for the asking
+/// device's public key. This server carries the request and the answer and
+/// can read neither the message nor its key: what it learns is that a device
+/// asked and another answered.
+model MessageKeyShare {
+  id        String  @id @default(uuid()) @db.Uuid
+  messageId String  @db.Uuid
+  message   Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  /// The account of the device that asked, so it is handed only its own.
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// The asking device's public key, as it published it.
+  publicKey String
+
+  /// `<answering device's public key>.<nonce>.<sealed key>.<mac>`, all
+  /// base64url. Null while the request waits for an answer.
+  sealed String?
+
+  createdAt  DateTime  @default(now()) @db.Timestamptz()
+  answeredAt DateTime? @db.Timestamptz()
+
+  @@unique([messageId, publicKey])
   @@index([userId])
 }
 

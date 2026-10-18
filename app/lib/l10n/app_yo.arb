@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Ìfiránṣẹ́",
   "ui_dm_quote_attachment": "Àsomọ́",
   "ui_dm_unreadable": "A kò lè ka ìfiránṣẹ́ yìí lórí ẹ̀rọ yìí.",
+  "ui_dm_waiting": "Ń dúró de ìfiránṣẹ́ yìí. Èyí lè gba ìgbà díẹ̀.",
   "ui_dm_preview_sealed": "Ìfiránṣẹ́ tí a ti fi kóòdù pa mọ́",
   "ui_dm_e2ee_notice": "A ti fi kóòdù pa àwọn ìfiránṣẹ́ mọ́ láti òpin dé òpin",
   "ui_dm_not_encrypted": "A kò fi kóòdù pa á mọ́ láti òpin dé òpin",

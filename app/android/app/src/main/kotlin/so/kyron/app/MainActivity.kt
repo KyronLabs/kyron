@@ -7,7 +7,8 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.OpenableColumns
-import io.flutter.embedding.android.FlutterActivity
+import androidx.activity.enableEdgeToEdge
+import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import java.io.File
@@ -23,14 +24,31 @@ import java.io.File
  * content:// address whose permission belongs to this activity and can lapse
  * once it moves on; a file in our own cache is ours to upload whenever the
  * person gets round to sending it.
+ *
+ * A [FlutterFragmentActivity] rather than a FlutterActivity, for one thing:
+ * [enableEdgeToEdge] belongs to androidx's ComponentActivity, which the plain
+ * FlutterActivity is not. It is the same engine hosted in a fragment.
  */
-class MainActivity : FlutterActivity() {
+class MainActivity : FlutterFragmentActivity() {
     private var channel: MethodChannel? = null
 
     /** A share that arrived before Flutter asked for it. Taken once. */
     private var waiting: Map<String, Any?>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Edge to edge on every Android version, not only from 15 on.
+        //
+        // Targeting SDK 35 or later, Android 15 draws every app edge to edge
+        // whatever it asks for; before 15 an app only is if it says so. So
+        // Kyron was edge to edge on new phones and not on older ones -- and
+        // on older ones it became edge to edge halfway through a session,
+        // the first time the media viewer closed and restored the system
+        // bars. Play flags that as "edge-to-edge may not display for all
+        // users". Asked for here, before the window is made, it is one
+        // layout everywhere: the screens already keep clear of the bars
+        // (SafeArea, the tab bar's own inset), because on Android 15 they
+        // have had to.
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         createChannels()
         // Not on a re-creation: the intent is the one already handled, and

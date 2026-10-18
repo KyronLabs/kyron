@@ -225,7 +225,8 @@ class _StoriesRibbonState extends State<StoriesRibbon> {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      builder: (_) => _ProfilePreviewSheet(handle: story.handle),
+      builder: (_) => SafeArea(
+          top: false, child: _ProfilePreviewSheet(handle: story.handle)),
     );
   }
 

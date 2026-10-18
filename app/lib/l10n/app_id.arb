@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Pesan",
   "ui_dm_quote_attachment": "Lampiran",
   "ui_dm_unreadable": "Pesan ini tidak dapat dibaca di perangkat ini.",
+  "ui_dm_waiting": "Menunggu pesan ini. Ini mungkin memerlukan beberapa waktu.",
   "ui_dm_preview_sealed": "Pesan terenkripsi",
   "ui_dm_e2ee_notice": "Pesan terenkripsi end-to-end",
   "ui_dm_not_encrypted": "Tidak terenkripsi end-to-end",

@@ -11,12 +11,14 @@ class EmojiPickerSheet {
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
-      builder: (context) => _EmojiPickerWidget(
-        onEmojiSelected: (emoji) {
-          selectedEmoji = emoji;
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) => SafeArea(
+          top: false,
+          child: _EmojiPickerWidget(
+            onEmojiSelected: (emoji) {
+              selectedEmoji = emoji;
+              Navigator.pop(context);
+            },
+          )),
     );
 
     return selectedEmoji;

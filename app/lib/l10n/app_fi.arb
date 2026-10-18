@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Viesti",
   "ui_dm_quote_attachment": "Liite",
   "ui_dm_unreadable": "Tätä viestiä ei voi lukea tällä laitteella.",
+  "ui_dm_waiting": "Odotetaan tätä viestiä. Tämä voi kestää hetken.",
   "ui_dm_preview_sealed": "Salattu viesti",
   "ui_dm_e2ee_notice": "Viestit ovat päästä päähän salattuja",
   "ui_dm_not_encrypted": "Ei päästä päähän salattu",

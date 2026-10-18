@@ -1345,12 +1345,17 @@ class _Bubble extends StatelessWidget {
               child: Text(
                 // Said, not shown as ciphertext, and set apart from anything
                 // somebody actually wrote: in italics, a step quieter.
-                message.unreadable
+                message.awaitingKey
                     ? AppLocalizations.of(context).ui(
-                        'ui_dm_unreadable',
-                        'This message cannot be read on this device.',
+                        'ui_dm_waiting',
+                        'Waiting for this message. This may take a while.',
                       )
-                    : message.body,
+                    : message.unreadable
+                        ? AppLocalizations.of(context).ui(
+                            'ui_dm_unreadable',
+                            'This message cannot be read on this device.',
+                          )
+                        : message.body,
                 style: TextStyle(
                   fontSize: TypographyTokens.fontSize3,
                   height: 1.3,

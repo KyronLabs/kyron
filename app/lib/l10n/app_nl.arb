@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Bericht",
   "ui_dm_quote_attachment": "Bijlage",
   "ui_dm_unreadable": "Dit bericht kan op dit apparaat niet worden gelezen.",
+  "ui_dm_waiting": "Wachten op dit bericht. Dit kan even duren.",
   "ui_dm_preview_sealed": "Versleuteld bericht",
   "ui_dm_e2ee_notice": "Berichten zijn end-to-end versleuteld",
   "ui_dm_not_encrypted": "Niet end-to-end versleuteld",

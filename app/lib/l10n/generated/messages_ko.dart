@@ -1044,6 +1044,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("첨부 파일"),
       "ui_dm_unreadable":
           MessageLookupByLibrary.simpleMessage("이 기기에서는 이 메시지를 읽을 수 없습니다."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "이 메시지를 기다리는 중입니다. 시간이 다소 걸릴 수 있습니다."),
       "ui_dm_preview_sealed": MessageLookupByLibrary.simpleMessage("암호화된 메시지"),
       "ui_dm_e2ee_notice":
           MessageLookupByLibrary.simpleMessage("메시지는 종단 간 암호화됩니다"),

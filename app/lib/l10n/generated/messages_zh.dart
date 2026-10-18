@@ -939,6 +939,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("附件"),
       "ui_dm_unreadable":
           MessageLookupByLibrary.simpleMessage("无法在此设备上阅读这条消息。"),
+      "ui_dm_waiting":
+          MessageLookupByLibrary.simpleMessage("正在等待这条消息。这可能需要一些时间。"),
       "ui_dm_preview_sealed": MessageLookupByLibrary.simpleMessage("加密消息"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage("消息已端到端加密"),
       "ui_dm_not_encrypted": MessageLookupByLibrary.simpleMessage("未端到端加密"),

@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Ozi",
   "ui_dm_quote_attachment": "Ihe mgbakwunye",
   "ui_dm_unreadable": "A pụghị ịgụ ozi a na ngwaọrụ a.",
+  "ui_dm_waiting": "Na-eche ozi a. Nke a nwere ike iwe oge ntakịrị.",
   "ui_dm_preview_sealed": "Ozi ezoro ezo",
   "ui_dm_e2ee_notice": "E zoro ozi niile site na njedebe ruo na njedebe",
   "ui_dm_not_encrypted": "Ezoghị ya site na njedebe ruo na njedebe",

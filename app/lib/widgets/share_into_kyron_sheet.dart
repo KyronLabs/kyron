@@ -44,7 +44,8 @@ class ShareIntoKyronSheet extends ConsumerStatefulWidget {
         isScrollControlled: true,
         useSafeArea: true,
         showDragHandle: true,
-        builder: (_) => ShareIntoKyronSheet(content: content),
+        builder: (_) =>
+            SafeArea(top: false, child: ShareIntoKyronSheet(content: content)),
       );
 
   @override

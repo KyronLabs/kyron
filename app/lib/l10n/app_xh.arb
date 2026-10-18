@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Umyalezo",
   "ui_dm_quote_attachment": "Isincamathelisi",
   "ui_dm_unreadable": "Lo myalezo awunakufundwa kwesi sixhobo.",
+  "ui_dm_waiting": "Ilindele lo myalezo. Oku kunokuthatha ixesha elithile.",
   "ui_dm_preview_sealed": "Umyalezo ofihliweyo",
   "ui_dm_e2ee_notice": "Imiyalezo ifihliwe ukusuka esiphelweni ukuya esiphelweni",
   "ui_dm_not_encrypted": "Awufihlwanga ukusuka esiphelweni ukuya esiphelweni",

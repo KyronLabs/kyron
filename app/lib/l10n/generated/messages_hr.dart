@@ -1242,6 +1242,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Privitak"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Ova se poruka ne može pročitati na ovom uređaju."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Čeka se ova poruka. To može potrajati."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Šifrirana poruka"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

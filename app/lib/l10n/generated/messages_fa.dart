@@ -1243,6 +1243,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("پیوست"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "این پیام در این دستگاه قابل خواندن نیست."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "در انتظار این پیام. ممکن است کمی طول بکشد."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("پیام رمزگذاری‌شده"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

@@ -1243,6 +1243,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_quote_attachment": MessageLookupByLibrary.simpleMessage("ඇමුණුම"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "මෙම පණිවිඩය මෙම උපාංගයේ කියවිය නොහැක."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "මෙම පණිවිඩය සඳහා රැඳී සිටිමින්. මෙයට යම් කාලයක් ගත විය හැක."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("සංකේතනය කළ පණිවිඩය"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

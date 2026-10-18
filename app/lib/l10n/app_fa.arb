@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "پیام",
   "ui_dm_quote_attachment": "پیوست",
   "ui_dm_unreadable": "این پیام در این دستگاه قابل خواندن نیست.",
+  "ui_dm_waiting": "در انتظار این پیام. ممکن است کمی طول بکشد.",
   "ui_dm_preview_sealed": "پیام رمزگذاری‌شده",
   "ui_dm_e2ee_notice": "پیام‌ها رمزگذاری سرتاسری شده‌اند",
   "ui_dm_not_encrypted": "بدون رمزگذاری سرتاسری",

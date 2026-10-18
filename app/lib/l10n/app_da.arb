@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Besked",
   "ui_dm_quote_attachment": "Vedhæftet fil",
   "ui_dm_unreadable": "Denne besked kan ikke læses på denne enhed.",
+  "ui_dm_waiting": "Venter på denne besked. Det kan tage et stykke tid.",
   "ui_dm_preview_sealed": "Krypteret besked",
   "ui_dm_e2ee_notice": "Beskeder er end-to-end-krypterede",
   "ui_dm_not_encrypted": "Ikke end-to-end-krypteret",

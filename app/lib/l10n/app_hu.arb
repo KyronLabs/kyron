@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Üzenet",
   "ui_dm_quote_attachment": "Melléklet",
   "ui_dm_unreadable": "Ez az üzenet ezen az eszközön nem olvasható.",
+  "ui_dm_waiting": "Várakozás erre az üzenetre. Ez eltarthat egy ideig.",
   "ui_dm_preview_sealed": "Titkosított üzenet",
   "ui_dm_e2ee_notice": "Az üzenetek végpontok közötti titkosítással védettek",
   "ui_dm_not_encrypted": "Nincs végpontok közötti titkosítás",

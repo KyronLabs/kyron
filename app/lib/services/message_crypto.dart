@@ -245,6 +245,16 @@ class MessageCrypto {
     SealedEnvelope envelope, {
     required SimpleKeyPair mine,
   }) async {
+    final key = await contentKeyOf(envelope, mine: mine);
+    return key == null ? null : openWithContentKey(envelope, key);
+  }
+
+  /// The key [envelope]'s message is sealed under, when it was sealed for
+  /// [mine]; null otherwise.
+  Future<List<int>?> contentKeyOf(
+    SealedEnvelope envelope, {
+    required SimpleKeyPair mine,
+  }) async {
     final wrapped = envelope.keys[await keyId(await mine.extractPublicKey())];
     final sender = tryDecodePublicKey(envelope.sender);
     if (wrapped == null || sender == null) return null;
@@ -254,8 +264,78 @@ class MessageCrypto {
         theirs: sender,
         purpose: _wrapPurpose,
       );
-      final contentKey = SecretKey(await _openBytes(wrapped, unwrap));
-      return utf8.decode(await _openBytes(envelope.content, contentKey));
+      return await _openBytes(wrapped, unwrap);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Opens [envelope]'s message with its key, or answers null when [key] is
+  /// not that key -- the cipher's tag says so, so a wrong key is a refusal,
+  /// never a different message.
+  Future<String?> openWithContentKey(
+    SealedEnvelope envelope,
+    List<int> key,
+  ) async {
+    try {
+      return utf8.decode(await _openBytes(envelope.content, SecretKey(key)));
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// What a key share is sealed under. Different again from [_wrapPurpose]:
+  /// when the answering device is the one that sent the message, the pair of
+  /// keys is the same, and the secret must not be.
+  static const _sharePurpose = 'kyron/dm/v2/share';
+
+  /// Message keys sealed by [mine] for [device]: a key share, on the wire
+  /// `<mine>.<nonce>.<sealed keys>.<mac>`, every part base64url.
+  ///
+  /// [keys] is the message's key, then its link card's when it has one.
+  Future<String> sealShare(
+    List<int> keys, {
+    required SimpleKeyPair mine,
+    required SimplePublicKey device,
+  }) async {
+    final key = await sharedSecret(
+      mine: mine,
+      theirs: device,
+      purpose: _sharePurpose,
+    );
+    final sealed = await _sealBytes(keys, key);
+    return [
+      encodePublicKey(await mine.extractPublicKey()),
+      base64Url.encode(sealed.nonce),
+      base64Url.encode(sealed.body),
+      base64Url.encode(sealed.mac),
+    ].join('.');
+  }
+
+  /// The keys in a share sealed for [mine], or null: not for this device,
+  /// altered, or not a share at all.
+  Future<List<int>?> openShare(
+    String share, {
+    required SimpleKeyPair mine,
+  }) async {
+    final parts = share.split('.');
+    if (parts.length != 4) return null;
+    final from = tryDecodePublicKey(parts[0]);
+    if (from == null) return null;
+    try {
+      final key = await sharedSecret(
+        mine: mine,
+        theirs: from,
+        purpose: _sharePurpose,
+      );
+      return await _openBytes(
+        SealedMessage(
+          nonce: base64Url.decode(parts[1]),
+          body: base64Url.decode(parts[2]),
+          mac: base64Url.decode(parts[3]),
+        ),
+        key,
+      );
     } catch (_) {
       return null;
     }
@@ -329,7 +409,7 @@ class MessageCrypto {
     try {
       final bytes = base64Url.decode(value);
       if (bytes.length != 32) return null;
-      return X25519().newKeyPairFromSeed(Uint8List.fromList(bytes));
+      return await X25519().newKeyPairFromSeed(Uint8List.fromList(bytes));
     } catch (_) {
       return null;
     }

@@ -220,3 +220,10 @@ jobs:
       # compared with the build number before anything is published.
       - name: Check the bundle manifest reader
         run: python3 scripts/test_aab_manifest.py
+
+      # And the Play upload, which runs only where the Play key is -- never
+      # on a pull request -- so this is the only place it is exercised
+      # before the day it matters. Against a fake Play, standard library
+      # only.
+      - name: Check the Play upload
+        run: python3 scripts/test_play_upload.py

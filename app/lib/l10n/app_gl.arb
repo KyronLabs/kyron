@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Mensaxe",
   "ui_dm_quote_attachment": "Anexo",
   "ui_dm_unreadable": "Esta mensaxe non se pode ler neste dispositivo.",
+  "ui_dm_waiting": "Agardando esta mensaxe. Isto pode levar un tempo.",
   "ui_dm_preview_sealed": "Mensaxe cifrada",
   "ui_dm_e2ee_notice": "As mensaxes están cifradas de extremo a extremo",
   "ui_dm_not_encrypted": "Sen cifrado de extremo a extremo",

@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Sporočilo",
   "ui_dm_quote_attachment": "Priloga",
   "ui_dm_unreadable": "Tega sporočila ni mogoče prebrati v tej napravi.",
+  "ui_dm_waiting": "Čakanje na to sporočilo. To lahko traja nekaj časa.",
   "ui_dm_preview_sealed": "Šifrirano sporočilo",
   "ui_dm_e2ee_notice": "Sporočila so šifrirana od konca do konca",
   "ui_dm_not_encrypted": "Ni šifrirano od konca do konca",

@@ -11,6 +11,7 @@ import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import type { ConversationFilter } from './dto/list-messages.dto';
 import { PresenceService } from './presence.service';
+import type { KeyShare } from './key-shares.service';
 
 /** The other person in a conversation, as a list row needs them. */
 export interface MessagePerson {
@@ -40,6 +41,9 @@ export interface ConversationSummary {
     /** The reader's own last message, read by the other side. Always false
      * when either of them has read receipts off. */
     seen: boolean;
+    /** Its key, sealed again for the reader's devices it was not sealed for
+     * (KeySharesService), so the preview opens where the thread would. */
+    keyShares: KeyShare[];
   } | null;
   /** Messages from the other side the reader has not seen. */
   unread: number;
@@ -98,6 +102,12 @@ export interface MessageItem {
    */
   linkCard: string | null;
   media: MessageMedia[];
+  /**
+   * The message's key sealed again for one of the reader's devices that it
+   * was not sealed for when it was sent. Empty for nearly every message. See
+   * KeySharesService.
+   */
+  keyShares: KeyShare[];
 }
 
 /** One attachment as the client sends it, after uploading the file. */
@@ -114,6 +124,16 @@ export interface MessageMediaInput {
 }
 
 const DEFAULT_LIMIT = 30;
+
+/** Shares as the client gets them: answered ones only, which the query
+ * already asks for and the column's type cannot say. */
+function answered(
+  shares: { publicKey: string; sealed: string | null }[],
+): KeyShare[] {
+  return shares.flatMap((s) =>
+    s.sealed === null ? [] : [{ publicKey: s.publicKey, sealed: s.sealed }],
+  );
+}
 
 /**
  * Direct messages.
@@ -263,6 +283,7 @@ export class MessagesService {
             senderId: true,
             createdAt: true,
             media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+            keyShares: this.keySharesFor(viewerId),
           },
         },
       },
@@ -315,6 +336,7 @@ export class MessagesService {
         lastMessage: last
           ? {
               ...last,
+              keyShares: answered(last.keyShares),
               seen:
                 last.senderId === viewerId &&
                 readUpTo !== null &&
@@ -555,12 +577,14 @@ export class MessagesService {
           select: this.reactionShape,
           orderBy: { createdAt: 'asc' },
         },
+        keyShares: this.keySharesFor(viewerId),
       },
     });
 
     const page = rows.slice(0, limit);
     const items: MessageItem[] = page.map((row) => ({
       ...row,
+      keyShares: answered(row.keyShares),
       seen:
         row.senderId === viewerId &&
         otherRead !== null &&
@@ -762,6 +786,14 @@ export class MessagesService {
   }
 
   /** What a message's attachments look like on the wire. */
+  /** The answered key shares for the reader's own devices, and only those. */
+  private keySharesFor(viewerId: string) {
+    return {
+      where: { userId: viewerId, sealed: { not: null } },
+      select: { publicKey: true, sealed: true },
+    } as const;
+  }
+
   private get reactionShape() {
     return { userId: true, emoji: true } as const;
   }

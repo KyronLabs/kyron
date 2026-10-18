@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Message",
   "ui_dm_quote_attachment": "Pièce jointe",
   "ui_dm_unreadable": "Ce message ne peut pas être lu sur cet appareil.",
+  "ui_dm_waiting": "En attente de ce message. Cela peut prendre un certain temps.",
   "ui_dm_preview_sealed": "Message chiffré",
   "ui_dm_e2ee_notice": "Les messages sont chiffrés de bout en bout",
   "ui_dm_not_encrypted": "Non chiffré de bout en bout",

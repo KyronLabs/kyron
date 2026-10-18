@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Mensagem",
   "ui_dm_quote_attachment": "Anexo",
   "ui_dm_unreadable": "Esta mensagem não pode ser lida neste dispositivo.",
+  "ui_dm_waiting": "Aguardando esta mensagem. Isso pode demorar um pouco.",
   "ui_dm_preview_sealed": "Mensagem criptografada",
   "ui_dm_e2ee_notice": "As mensagens são criptografadas de ponta a ponta",
   "ui_dm_not_encrypted": "Sem criptografia de ponta a ponta",

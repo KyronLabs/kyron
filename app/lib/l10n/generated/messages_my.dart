@@ -1245,6 +1245,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ပူးတွဲဖိုင်"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "ဤမက်ဆေ့ချ်ကို ဤစက်ပေါ်တွင် ဖတ်၍မရပါ။"),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "ဤမက်ဆေ့ချ်ကို စောင့်နေသည်။ အချိန်အနည်းငယ် ကြာနိုင်ပါသည်။"),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("ကုဒ်ဝှက်ထားသော မက်ဆေ့ချ်"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

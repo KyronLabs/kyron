@@ -54,7 +54,7 @@ class AuthNotifier extends Notifier<AuthState> {
 
       // If we have a valid token AND user data, we're authenticated
       if (hasValidToken && user != null) {
-        _startSession();
+        _startSession(user);
         state = AuthState.authenticated(user);
 
         // Load full profile data
@@ -72,7 +72,7 @@ class AuthNotifier extends Notifier<AuthState> {
           if (refreshed) {
             final refreshedUser = await _repo.getStoredUserData();
             if (refreshedUser != null) {
-              _startSession();
+              _startSession(refreshedUser);
               state = AuthState.authenticated(refreshedUser);
 
               // Load full profile data
@@ -159,7 +159,7 @@ class AuthNotifier extends Notifier<AuthState> {
   /// the clear.
   Future<void> _settle(User user) async {
     state = AuthState.authenticated(user);
-    _startSession();
+    _startSession(user);
 
     // Awaited: the app behind this draws the signed-in person.
     await ref.read(currentUserProvider.notifier).load();
@@ -180,13 +180,14 @@ class AuthNotifier extends Notifier<AuthState> {
   /// for it (MessageVault does), an account without an identifier works
   /// exactly as it did before identifiers existed, and none of it is worth
   /// holding the app on a spinner for.
-  void _startSession() {
-    // Makes this install's message keypair if it has none, and publishes the
-    // public half so other people can write to it in private.
-    unawaited(ref.read(messageVaultProvider).unlock());
+  void _startSession(User user) {
+    // Makes this account's message keypair on this install if it has none,
+    // and publishes the public half so other people can write to it in
+    // private.
+    unawaited(ref.read(messageVaultProvider).unlock(user.id));
     // This account's verifiable identifier: made on the device if it has
     // none, and claimed by proving it holds the key.
-    unawaited(ref.read(identityVaultProvider).ensure());
+    unawaited(ref.read(identityVaultProvider).ensure(user.id));
     // The push token, which can have rotated while the app was closed -- a
     // server holding the old one pushes into nothing. Asked for after
     // sign-in rather than before it: that is when asking about
@@ -200,16 +201,15 @@ class AuthNotifier extends Notifier<AuthState> {
   }
 
   Future<void> logout() async {
-    // Before the session goes, because withdrawing the published key needs
-    // one. The secret half is deleted either way: it is this device's
-    // identity, and it leaves with the account that made it.
+    // The message key and the identifier stay on this phone, under this
+    // account: they are what reads its messages and what it is known by, and
+    // deleting them on sign-out made every message sent to it before
+    // unreadable here once it signed back in. Another account signing in
+    // here reads only its own.
     await ref.read(messageVaultProvider).lock();
-    // The identifier belongs to the account that made it, exactly like the
-    // message key.
-    await ref.read(identityVaultProvider).forget();
-    // And the push token, on the same terms and for a blunter reason: left
-    // registered, it delivers this account's notifications to whoever holds
-    // the handset next.
+    // The push token does go, before the session does, because unregistering
+    // needs one: left registered, it delivers this account's notifications
+    // to whoever holds the handset next.
     await ref.read(pushRegistrarProvider).stop();
 
     await _repo.logout();
@@ -227,6 +227,17 @@ class AuthNotifier extends Notifier<AuthState> {
   /// fail, and a sign-out that threw here would leave the app showing an
   /// account that no longer exists.
   Future<void> accountDeleted() async {
+    // The keys sign-out keeps go with the account: nothing is left for them
+    // to read, and nobody can sign in as it again.
+    final gone = state.user?.id;
+    if (gone != null) {
+      try {
+        await ref.read(messageVaultProvider).erase(gone);
+        await ref.read(identityVaultProvider).erase(gone);
+      } catch (e) {
+        _log('erasing keys after deletion', e);
+      }
+    }
     try {
       await logout();
     } catch (e) {

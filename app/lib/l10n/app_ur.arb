@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "پیغام",
   "ui_dm_quote_attachment": "منسلکہ",
   "ui_dm_unreadable": "یہ پیغام اس آلے پر نہیں پڑھا جا سکتا۔",
+  "ui_dm_waiting": "اس پیغام کا انتظار ہے۔ اس میں کچھ وقت لگ سکتا ہے۔",
   "ui_dm_preview_sealed": "مرموز کردہ پیغام",
   "ui_dm_e2ee_notice": "پیغامات اینڈ ٹو اینڈ مرموز ہیں",
   "ui_dm_not_encrypted": "اینڈ ٹو اینڈ مرموز نہیں",

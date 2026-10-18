@@ -213,13 +213,46 @@ internal testers, and a release's, for a version with a name and notes. Both
 are checked before they are published (`scripts/check-aab.sh`): signed with
 the upload key, and carrying the version code their build number gives.
 
-In Play Console → **Test and release → Testing → Internal testing → Create new
-release**, upload `kyron-X.Y.Z+N.aab`. With Play App Signing (the default),
+Once it is set up (below), every **versioned release** sends its bundle to
+the **internal testing** track itself, with its changelog section as the
+notes, and testers get it within minutes. Development builds are not sent:
+their bundle carries the last release's version name, and testers would get
+every merge to `main`. To put one in front of testers anyway, or before this
+is set up: in Play Console → **Test and release → Testing → Internal testing
+→ Create new release**, upload `kyron-X.Y.Z+N.aab` from its GitHub release. With Play App Signing (the default),
 Google re-signs it with the app signing key and keeps the key that signed this
 upload as the upload key — the fingerprints in Create Versioned Release's run
 summary should match **App integrity → Upload key certificate**. Use a release
 for anything beyond internal testing: a development build's version name is
 the last release's, so in Play two different builds can both read `0.1.1`.
+
+#### Sending bundles to Play from CI
+
+Only an app's first bundle has to be uploaded by hand. After that,
+`scripts/play-upload.py` sends each release's through Play's Developer API,
+as a service account, from the "Send the bundle to Play internal testing"
+job in the Release workflow. Setting it up, once:
+
+1. **Google Cloud Console**, in the project linked to Play Console
+   (`601078807832`): APIs & Services → Library → enable the **Google Play
+   Android Developer API**.
+2. IAM & Admin → **Service accounts** → Create service account (any name,
+   e.g. `kyron-play-ci`; it needs no Cloud roles). Open it → Keys → Add key →
+   **JSON**. A key file downloads.
+3. **Play Console** → Users and permissions → **Invite new users** → the
+   service account's email (`…@….iam.gserviceaccount.com`) → App
+   permissions → Kyron → **Release apps to testing tracks**. Not admin, and
+   not production: a key that leaks can then reach testers and no one else.
+4. **GitHub** → Settings → Secrets and variables → Actions → new repository
+   secret **`PLAY_SERVICE_ACCOUNT_JSON`**, the whole key file pasted in.
+   Then delete the downloaded file. Never commit it, paste it anywhere else,
+   or put it in a chat.
+
+The next versioned release sends its bundle. A newly invited service account
+can take up to a day before Play lets it in; until then the job fails with
+"The caller does not have permission", and the GitHub release is published
+regardless. Without the secret the job says so and does nothing, which is
+what a fork sees.
 
 Three things follow from Google re-signing it:
 

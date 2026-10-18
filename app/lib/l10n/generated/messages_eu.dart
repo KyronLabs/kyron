@@ -1244,6 +1244,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Eranskina"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Mezu hau ezin da gailu honetan irakurri."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Mezu honen zain. Baliteke denbora pixka bat behar izatea."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Mezu enkriptatua"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

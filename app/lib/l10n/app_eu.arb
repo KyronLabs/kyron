@@ -601,6 +601,7 @@
   "ui_dm_quote_message": "Mezua",
   "ui_dm_quote_attachment": "Eranskina",
   "ui_dm_unreadable": "Mezu hau ezin da gailu honetan irakurri.",
+  "ui_dm_waiting": "Mezu honen zain. Baliteke denbora pixka bat behar izatea.",
   "ui_dm_preview_sealed": "Mezu enkriptatua",
   "ui_dm_e2ee_notice": "Mezuak muturretik muturrera enkriptatuta daude",
   "ui_dm_not_encrypted": "Ez dago muturretik muturrera enkriptatuta",

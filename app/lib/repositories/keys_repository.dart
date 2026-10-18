@@ -1,4 +1,5 @@
 // lib/repositories/keys_repository.dart
+import '../models/key_share.dart';
 import '../services/api_client.dart';
 
 /// One install's published public half.
@@ -46,4 +47,36 @@ class KeysRepository {
         .map(PublishedKey.fromJson)
         .toList();
   }
+
+  /// Asks, for this device, for the keys of messages it was not sealed for.
+  Future<void> requestShares(
+    String conversationId,
+    String deviceId,
+    List<String> messageIds,
+  ) =>
+      _api.dio.post<void>(
+        '/messages/$conversationId/keys/requests',
+        data: {'deviceId': deviceId, 'messageIds': messageIds},
+      );
+
+  /// Requests that this account's devices may be able to answer.
+  Future<List<KeyRequest>> pendingRequests() async {
+    final res = await _api.dio.get<List<dynamic>>('/messages/keys/requests');
+    return [
+      for (final item
+          in (res.data ?? const []).whereType<Map<String, dynamic>>())
+        if (KeyRequest.tryFrom(item) case final request?) request,
+    ];
+  }
+
+  /// Answers them.
+  Future<void> shareKeys(List<({String id, String sealed})> shares) =>
+      _api.dio.post<void>(
+        '/messages/keys/shares',
+        data: {
+          'shares': [
+            for (final s in shares) {'id': s.id, 'sealed': s.sealed},
+          ],
+        },
+      );
 }

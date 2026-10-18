@@ -99,7 +99,11 @@ Same trade as the message keys, for the same reason: the secret is generated on
 the device and never leaves it. Consequences:
 
 - **Reinstalling gives you a different identifier.** The old one stays on the
-  account until the new one replaces it.
+  account until the new one replaces it. Signing out does not: the key is
+  kept on the phone under the account's id, so signing back in keeps the same
+  identifier, and another account signing in there gets its own. (It used to
+  be deleted on sign-out, so every sign-in claimed a new one.) Deleting the
+  account erases it.
 - **A second device does not share it.** Signing in on a tablet makes a second
   key and claims a second identifier.
 - **Losing the device loses the identifier.** There is no backup and no way to

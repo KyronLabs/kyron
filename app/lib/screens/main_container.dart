@@ -257,8 +257,15 @@ class _MainContainerState extends ConsumerState<MainContainer>
             ),
           ),
           builder: (context, progress, child) => Transform.translate(
-            // Slide down by the nav height plus safe area.
-            offset: Offset(0, 80 * progress),
+            // Slide down by the whole bar: its own height and the inset
+            // under it. This was a flat 80, which covers a 16px gesture bar
+            // and nothing taller -- with three-button navigation (48px) a
+            // 32px strip of the bar stayed on screen after it "hid".
+            offset: Offset(
+              0,
+              (BottomNavV4.height + MediaQuery.paddingOf(context).bottom) *
+                  progress,
+            ),
             child: child,
           ),
         ),

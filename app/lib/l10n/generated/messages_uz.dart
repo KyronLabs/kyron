@@ -1244,6 +1244,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Biriktirma"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Bu xabarni ushbu qurilmada o‘qib bo‘lmaydi."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "Bu xabar kutilmoqda. Bu biroz vaqt olishi mumkin."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Shifrlangan xabar"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(

@@ -1361,6 +1361,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Fitxer adjunt"),
       "ui_dm_unreadable": MessageLookupByLibrary.simpleMessage(
           "Aquest missatge no es pot llegir en aquest dispositiu."),
+      "ui_dm_waiting": MessageLookupByLibrary.simpleMessage(
+          "S’està esperant aquest missatge. Pot trigar una estona."),
       "ui_dm_preview_sealed":
           MessageLookupByLibrary.simpleMessage("Missatge xifrat"),
       "ui_dm_e2ee_notice": MessageLookupByLibrary.simpleMessage(
