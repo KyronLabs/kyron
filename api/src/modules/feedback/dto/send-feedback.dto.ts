@@ -6,15 +6,19 @@ import {
   MinLength,
 } from 'class-validator';
 
-/** What somebody is telling us. Two kinds, because they are two labels. */
+/** What somebody is telling us. */
 export enum FeedbackKind {
   Bug = 'BUG',
   Idea = 'IDEA',
+  /** Somebody asking for help: Contact support writes one of these. */
+  Question = 'QUESTION',
+  /** An error report from About, usually carrying the app's log. */
+  Report = 'REPORT',
 }
 
 export class SendFeedbackDto {
   @IsEnum(FeedbackKind, {
-    message: 'Feedback is either a BUG or an IDEA.',
+    message: 'Feedback is a BUG, an IDEA, a QUESTION or a REPORT.',
   })
   kind!: FeedbackKind;
 
@@ -43,4 +47,13 @@ export class SendFeedbackDto {
   @IsString()
   @MaxLength(40)
   platform?: string;
+
+  /**
+   * The app's own log, attached to an error report when its sender chose
+   * to. The app trims it to its tail before sending.
+   */
+  @IsOptional()
+  @IsString()
+  @MaxLength(20000, { message: 'The attached log is too long.' })
+  log?: string;
 }

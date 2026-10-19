@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'models/onboarding_model.dart';
 import 'models/profile_model.dart';
+import 'repositories/feedback_repository.dart';
 import 'screens/about_screen.dart';
 import 'screens/ar_lens_screen.dart';
 import 'screens/about_subscreens.dart';
@@ -252,8 +253,14 @@ class Routes {
       case settingsContactSupport:
         return _page(const SettingsContactSupportScreen());
 
+      // A FeedbackKind starts the form on it: Contact support asks a question.
       case settingsFeedback:
-        return _page(const SettingsFeedbackScreen());
+        final kind = settings.arguments;
+        return _page(
+          kind is FeedbackKind
+              ? SettingsFeedbackScreen(kind: kind)
+              : const SettingsFeedbackScreen(),
+        );
 
       // A QuotedPost argument opens the composer to quote it.
       case composer:

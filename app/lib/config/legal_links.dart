@@ -18,13 +18,19 @@ class LegalLinks {
   static const privacyTitle = 'Privacy Policy';
 }
 
-/// Where the published help lives.
+/// Where to write, outside the app.
 ///
-/// Same reason as [LegalLinks], same mistake: this address was written out by
-/// hand on the help screen and again in settings.
+/// The addresses the published privacy policy names, so the app and the
+/// policy never disagree. There used to be a Help Centre at help.kyron.so and
+/// a support@kyron.so here: Kyron does not own kyron.so, so the one never
+/// loaded and mail to the other went to whoever registers the name.
+/// Everything else goes through the app, to the team's private inbox.
 class SupportLinks {
   const SupportLinks._();
 
-  static const helpCentre = 'https://help.kyron.so';
-  static const helpCentreTitle = 'Help Centre';
+  /// Harassment, threats, illegal content: what cannot wait for a report.
+  static const abuse = 'abuse@spidroid.com';
+
+  /// Questions about what is kept about somebody, and requests to see it.
+  static const privacy = 'privacy@spidroid.com';
 }

@@ -23,6 +23,25 @@ section for that version, so what is written here is what people read.
   language would not have shown. When Play will not send a release for
   review by itself, the run now says so and what to press, instead of
   reporting it as delivered. Production is refused outright.
+- **Feedback can be sent.** Send Feedback said "Feedback cannot be sent
+  right now" to everybody: it filed issues on the public GitHub repository
+  through a token the server never had, and would have published what
+  people wrote, with their account, if it had. It is now kept privately for
+  the Kyron team, tied to the account so we can answer by email, and
+  deleted with the account. The form offers a problem, an idea or a
+  question, and says the report number to quote.
+- **Error reports arrive.** Send error report opened a mail to
+  support@kyron.so, a domain Kyron does not own. It now sends the report,
+  and the app's log if you leave that on, to the same private inbox.
+- **Contact support has somewhere to go.** It said to "open an issue" and
+  linked nowhere. It now offers asking a question, reporting a problem, an
+  error report and the service status inside the app, and the safety and
+  privacy addresses the privacy policy names. The Help Centre rows are gone
+  until there is a Help Centre: help.kyron.so never loaded.
+- **Muted words can be added.** The field to type a word into did not
+  appear, so the screen said "add a word or a tag above" over nothing.
+- **Muted and blocked accounts are tabs**, in the same style as the rest of
+  the app, and say how to mute or block somebody when the list is empty.
 
 ### Added
 

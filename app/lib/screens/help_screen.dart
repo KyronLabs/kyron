@@ -35,17 +35,8 @@ class HelpScreen extends StatelessWidget {
         child: ListView(
           children: [
             _group(context, 'Get help'),
-            ListTile(
-              leading: const Icon(Iconsax.book_copy, size: 20),
-              title: Text(AppLocalizations.of(context).helpCentre),
-              subtitle: Text(AppLocalizations.of(context).guidesAndAnswers),
-              trailing: const Icon(Iconsax.export_3_copy, size: 16),
-              onTap: () => AppBrowser.open(
-                context,
-                SupportLinks.helpCentre,
-                title: SupportLinks.helpCentreTitle,
-              ),
-            ),
+            // No Help Centre: it was help.kyron.so, a domain Kyron does not
+            // own, so it never loaded. It comes back when there is one.
             ListTile(
               leading: const Icon(Iconsax.call_copy, size: 20),
               title: Text(AppLocalizations.of(context).contactSupport),

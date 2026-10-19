@@ -123,6 +123,7 @@ model User {
   devices           DeviceToken[]
   messageKeys       MessageKey[]
   messageKeyShares  MessageKeyShare[]
+  feedback          Feedback[]
   messageReactions  MessageReaction[]
 
   @@index([email])
@@ -1133,6 +1134,47 @@ model MessageKeyShare {
 
   @@unique([messageId, publicKey])
   @@index([userId])
+}
+
+/// What somebody told the team from inside the app: something broken, an
+/// idea, or an error report with the app's log attached.
+///
+/// Private. It used to be filed as an issue on the public repository, which
+/// needed a GitHub token on the server, published whatever people wrote --
+/// account details pasted into a bug report included -- and left the team no
+/// way to answer anybody privately. Here it is read by the team and nobody
+/// else, and it goes with the account when the account is deleted.
+model Feedback {
+  id     String @id @default(uuid()) @db.Uuid
+  /// What the sender is told to quote: "report #12".
+  number Int    @unique @default(autoincrement())
+
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  kind  FeedbackType
+  title String
+  body  String       @db.Text
+
+  /// The app's own log, when an error report chose to attach it.
+  log String? @db.Text
+
+  appVersion String?
+  platform   String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  @@index([createdAt(sort: Desc)])
+  @@index([userId])
+}
+
+enum FeedbackType {
+  BUG
+  IDEA
+  /// Somebody asking for help, from Contact support.
+  QUESTION
+  /// An error report from About, usually with the log.
+  REPORT
 }
 
 // ==========================================

@@ -10,8 +10,8 @@ export class FeedbackController {
   constructor(private readonly svc: FeedbackService) {}
 
   /**
-   * Whether reports can be filed, so the app can say why not *before*
-   * somebody writes one rather than after.
+   * Whether reports can be sent. Always, now that they are kept here; still
+   * answered, because installed apps ask before offering the form.
    */
   @Get()
   status() {
@@ -19,16 +19,18 @@ export class FeedbackController {
   }
 
   /**
-   * Files a bug or an idea as an issue, and answers with where it went.
+   * Keeps a bug, an idea or an error report for the team, and answers with
+   * the number to quote.
    *
-   * Behind the auth guard: an open endpoint that opens issues on a public
-   * repository is a spam pipe with a nice interface.
+   * Behind the auth guard: the report is tied to the account that sent it,
+   * so the team can follow up, and an open endpoint into an inbox people
+   * read by hand would be a spam pipe.
    */
   @Post()
   async send(@Req() req: AuthRequest, @Body() dto: SendFeedbackDto) {
-    // The account is used to count reports and for nothing else: it is not
-    // put in the issue, which is public.
-    const filed = await this.svc.file(dto, req.user?.id);
-    return { number: filed.number, url: filed.url };
+    const filed = await this.svc.file(dto, req.user.id);
+    // `url` stays, empty, for installed apps that read it: there is no
+    // public page for a private report.
+    return { number: filed.number, url: '' };
   }
 }
