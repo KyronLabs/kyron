@@ -5,6 +5,8 @@ import 'models/onboarding_model.dart';
 import 'models/profile_model.dart';
 import 'repositories/feedback_repository.dart';
 import 'screens/about_screen.dart';
+import 'screens/account_status_screen.dart';
+import 'screens/moderation_screens.dart';
 import 'screens/ar_lens_screen.dart';
 import 'screens/about_subscreens.dart';
 import 'models/feed_post.dart';
@@ -103,6 +105,14 @@ class Routes {
   static const settingsNotifications = '/settings/notifications';
   static const settingsContactSupport = '/settings/contact-support';
   static const settingsFeedback = '/settings/feedback';
+  static const accountStatus = '/settings/account-status';
+
+  /// The team's queues. Only offered to an account on the team; the server
+  /// answers 404 to anybody else.
+  static const moderation = '/moderation';
+
+  /// One account's record, for the team. Takes the account id.
+  static const moderationAccount = '/moderation/account';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -252,6 +262,17 @@ class Routes {
 
       case settingsContactSupport:
         return _page(const SettingsContactSupportScreen());
+
+      case accountStatus:
+        return _page(const AccountStatusScreen());
+
+      case moderation:
+        return _page(const ModerationQueueScreen());
+
+      case moderationAccount:
+        final id = settings.arguments;
+        if (id is! String) return _page(const ModerationQueueScreen());
+        return _page(ModerationAccountScreen(accountId: id));
 
       // A FeedbackKind starts the form on it: Contact support asks a question.
       case settingsFeedback:

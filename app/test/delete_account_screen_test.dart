@@ -12,6 +12,8 @@ import 'package:kyron_app/screens/settings_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/toast.dart';
 
+import 'support/signed_in_as.dart';
+
 /// Deleting an account from Settings: what the page says goes, the second
 /// question, and what happens on either answer.
 class _Account extends AccountRepository {
@@ -166,6 +168,7 @@ void main() {
 
     await tester.pumpWidget(
       ProviderScope(
+        overrides: [signedInAs()],
         child: MaterialApp(
           onGenerateRoute: (settings) {
             pushed.add(settings.name);

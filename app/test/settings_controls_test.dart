@@ -26,6 +26,7 @@ import 'package:video_player_platform_interface/video_player_platform_interface.
 import 'package:visibility_detector/visibility_detector.dart';
 
 import 'support/fake_video_platform.dart';
+import 'support/signed_in_as.dart';
 
 /// Waits for a notifier's first read off disk to land.
 Future<void> _settle() => Future<void>.delayed(Duration.zero);
@@ -272,16 +273,37 @@ void main() {
     /// `findsNothing` is true of every row below the fold whether or not it
     /// is there -- which is exactly how the check below would have passed
     /// while still offering a dead Location switch further down.
-    Future<void> pumpSettings(WidgetTester tester) async {
+    Future<void> pumpSettings(WidgetTester tester,
+        {String role = 'USER'}) async {
       addTearDown(tester.view.reset);
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(400, 4000);
 
       await tester.pumpWidget(
-        const ProviderScope(child: MaterialApp(home: SettingsScreen())),
+        ProviderScope(
+          overrides: [signedInAs(role: role)],
+          child: const MaterialApp(home: SettingsScreen()),
+        ),
       );
       await tester.pump();
     }
+
+    testWidgets('offers Account status to everybody', (tester) async {
+      await pumpSettings(tester);
+      expect(find.text('Account status'), findsOneWidget);
+    });
+
+    testWidgets('offers the moderation queue to the team', (tester) async {
+      await pumpSettings(tester, role: 'MODERATOR');
+      expect(find.text('Moderation'), findsOneWidget);
+    });
+
+    testWidgets('and to nobody else', (tester) async {
+      // The server answers anybody else with a 404 anyway; this is about not
+      // offering a door that does not open.
+      await pumpSettings(tester);
+      expect(find.text('Moderation'), findsNothing);
+    });
 
     testWidgets('offers no switch that nothing is behind', (tester) async {
       SharedPreferences.setMockInitialValues(<String, Object>{});

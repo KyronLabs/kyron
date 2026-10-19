@@ -34,6 +34,15 @@ String describeApiError(Object error, {bool sessionIsLive = false}) {
     case DioExceptionType.badResponse:
       final status = error.response?.statusCode;
       if (status == null) return 'Kyron returned an unreadable response.';
+      // A suspension or a ban. The server says which, and what can still be
+      // done; "sign in again" would be a loop that cannot fix it.
+      if (status == 403) {
+        final data = error.response?.data;
+        if (data is Map && data['code'] == 'ACCOUNT_RESTRICTED') {
+          final said = _serverMessage(data);
+          if (said != null) return said;
+        }
+      }
       if (status == 401 || status == 403) {
         // "Sign in again" is a loop when the session is already valid: the user
         // signs in, lands back on the same screen and gets the same error,

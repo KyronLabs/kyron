@@ -1,0 +1,311 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/models/account_standing.dart';
+import 'package:kyron_app/models/current_user.dart';
+import 'package:kyron_app/models/moderation_case.dart';
+import 'package:kyron_app/providers/current_user_provider.dart';
+import 'package:kyron_app/providers/enforcement_provider.dart';
+import 'package:kyron_app/repositories/enforcement_repository.dart';
+import 'package:kyron_app/repositories/moderation_repository.dart';
+import 'package:kyron_app/screens/moderation_screens.dart';
+import 'package:kyron_app/services/api_client.dart';
+import 'package:kyron_app/widgets/action_button.dart';
+
+/// The team's side: the queues, and the decisions. Reports used to be
+/// written down and read by nobody, because there was nowhere to read them.
+class _Team extends EnforcementRepository {
+  _Team({this.reports = const [], this.appeals = const []})
+      : super(ApiClient());
+
+  final List<ReportCase> reports;
+  final List<AppealCase> appeals;
+  final acts = <Map<String, Object?>>[];
+  final decisions = <(String, bool, String)>[];
+  final dismissed = <String>[];
+
+  @override
+  Future<List<ReportCase>> reportQueue() async => reports;
+
+  @override
+  Future<List<AppealCase>> appealQueue() async => appeals;
+
+  @override
+  Future<void> dismiss(ReportTarget target, String targetId) async =>
+      dismissed.add(targetId);
+
+  @override
+  Future<CaseAction> act({
+    required ModerationKind kind,
+    required ReportReason rule,
+    required String message,
+    String? subjectId,
+    String? note,
+    ReportTarget? target,
+    String? targetId,
+    bool removeContent = true,
+    int? days,
+  }) async {
+    acts.add({
+      'kind': kind,
+      'rule': rule,
+      'message': message,
+      'subjectId': subjectId,
+      'target': target,
+      'targetId': targetId,
+      'removeContent': removeContent,
+      'days': days,
+    });
+    return CaseAction(
+      notice: ModerationNotice(
+        id: 'new',
+        number: 21,
+        kind: kind,
+        rule: rule,
+        message: message,
+        createdAt: DateTime.now(),
+      ),
+    );
+  }
+
+  @override
+  Future<void> decide(
+    String appealId, {
+    required bool overturn,
+    required String response,
+  }) async =>
+      decisions.add((appealId, overturn, response));
+}
+
+const _ada = CaseAccount(id: 'ada', username: 'ada');
+
+/// Whoever is looking, on the team as [role].
+class _Me extends CurrentUserNotifier {
+  _Me(super.ref, this.role);
+  final String role;
+
+  @override
+  Future<void> load({bool force = false}) async {
+    state = AsyncData(
+      CurrentUser(
+        id: 'me',
+        username: 'me',
+        followers: 0,
+        following: 0,
+        posts: 0,
+        role: role,
+      ),
+    );
+  }
+}
+
+ReportCase _report({bool urgent = false, String id = 'p1'}) => ReportCase(
+      target: ReportTarget.post,
+      targetId: id,
+      subject: _ada,
+      content: 'buy followers cheap',
+      snapshot: 'buy followers cheap',
+      postId: id,
+      reasons: [
+        (
+          reason: urgent ? ReportReason.selfHarm : ReportReason.spam,
+          count: 2,
+        ),
+      ],
+      reports: [
+        CaseReport(
+          id: 'r1',
+          reason: urgent ? ReportReason.selfHarm : ReportReason.spam,
+          detail: 'Posted the same link forty times.',
+          createdAt: DateTime(2026, 10, 18),
+          reporter: 'cy',
+        ),
+      ],
+      firstAt: DateTime(2026, 10, 18),
+      urgent: urgent,
+    );
+
+Future<_Team> _open(
+  WidgetTester tester,
+  Widget home, {
+  _Team? team,
+  String role = 'MODERATOR',
+}) async {
+  final repo = team ?? _Team();
+  await tester.pumpWidget(
+    ProviderScope(
+      overrides: [
+        enforcementRepositoryProvider.overrideWithValue(repo),
+        currentUserProvider.overrideWith((ref) => _Me(ref, role)),
+      ],
+      child: MaterialApp(home: home),
+    ),
+  );
+  await tester.pumpAndSettle();
+  return repo;
+}
+
+Future<void> _tap(WidgetTester tester, Finder finder) async {
+  await tester.ensureVisible(finder);
+  await tester.pumpAndSettle();
+  await tester.tap(finder);
+  await tester.pumpAndSettle();
+}
+
+void main() {
+  testWidgets('the queue says what is waiting, and how much', (tester) async {
+    await _open(
+      tester,
+      const ModerationQueueScreen(),
+      team: _Team(reports: [_report(urgent: true)]),
+    );
+    expect(find.text('Reports (1)'), findsOneWidget);
+    expect(find.text('Post by @ada'), findsOneWidget);
+    expect(find.textContaining('Suicide or self-harm ×2'), findsOneWidget);
+  });
+
+  testWidgets('an empty queue says so', (tester) async {
+    await _open(tester, const ModerationQueueScreen());
+    expect(find.text('Nothing reported'), findsOneWidget);
+  });
+
+  testWidgets('an urgent case says what to do beyond the app', (tester) async {
+    await _open(tester, ReportCaseScreen(item: _report(urgent: true)));
+    expect(find.textContaining('emergency services'), findsOneWidget);
+  });
+
+  testWidgets('dismissing asks first, then closes the reports', (
+    tester,
+  ) async {
+    final team = await _open(tester, ReportCaseScreen(item: _report()));
+    await _tap(tester, find.text('Dismiss'));
+    expect(find.text('Dismiss these reports?'), findsOneWidget);
+    await _tap(tester, find.text('Dismiss').last);
+    expect(team.dismissed, ['p1']);
+    await tester.pump(const Duration(seconds: 6));
+  });
+
+  testWidgets('a decision starts from the reports, and says what it does', (
+    tester,
+  ) async {
+    final team = await _open(
+      tester,
+      const DecisionScreen(
+        subject: _ada,
+        target: ReportTarget.post,
+        targetId: 'p1',
+        rule: ReportReason.spam,
+      ),
+    );
+
+    // Removing the post is where a report about a post starts.
+    expect(find.text('Remove the post'), findsOneWidget);
+    final message = tester.widget<TextField>(find.byType(TextField).first);
+    expect(message.controller!.text, contains("rule on spam"));
+    expect(message.controller!.text, contains('It has been removed.'));
+
+    await _tap(tester, find.text('Suspend'));
+    await _tap(tester, find.text('3 days'));
+    expect(find.text('Suspend for 3 days'), findsOneWidget);
+    expect(
+      tester.widget<TextField>(find.byType(TextField).first).controller!.text,
+      contains('for 3 days'),
+    );
+
+    await _tap(tester, find.text('Suspend for 3 days'));
+    expect(team.acts.single, {
+      'kind': ModerationKind.suspend,
+      'rule': ReportReason.spam,
+      'message': contains('for 3 days'),
+      'subjectId': 'ada',
+      'target': ReportTarget.post,
+      'targetId': 'p1',
+      'removeContent': true,
+      'days': 3,
+    });
+    await tester.pump(const Duration(seconds: 6));
+  });
+
+  testWidgets('a warning can leave the post up', (tester) async {
+    final team = await _open(
+      tester,
+      const DecisionScreen(
+        subject: _ada,
+        target: ReportTarget.post,
+        targetId: 'p1',
+      ),
+    );
+    await _tap(tester, find.text('Warn'));
+    await _tap(tester, find.text('Take the post down too'));
+    await _tap(tester, find.text('Send warning'));
+    expect(team.acts.single['removeContent'], isFalse);
+    expect(team.acts.single['message'], contains('nothing is restricted'));
+    await tester.pump(const Duration(seconds: 6));
+  });
+
+  testWidgets('a ban asks once more', (tester) async {
+    final team = await _open(tester, const DecisionScreen(subject: _ada));
+    await _tap(tester, find.text('Ban'));
+    await _tap(tester, find.text('Ban @ada'));
+    expect(find.text('Ban @ada?'), findsOneWidget);
+    expect(team.acts, isEmpty);
+    await _tap(tester, find.text('Ban').last);
+    expect(team.acts.single['kind'], ModerationKind.ban);
+    await tester.pump(const Duration(seconds: 6));
+  });
+
+  AppealCase appeal({required bool mine}) => AppealCase(
+        id: 'ap1',
+        statement: 'I was quoting the scam to warn people about it.',
+        createdAt: DateTime(2026, 10, 19),
+        ownDecision: mine,
+        action: CaseAction(
+          notice: ModerationNotice(
+            id: 'a1',
+            number: 12,
+            kind: ModerationKind.remove,
+            rule: ReportReason.spam,
+            message: 'This post sells followers.',
+            target: ReportTarget.post,
+            snapshot: 'buy followers cheap',
+            createdAt: DateTime(2026, 10, 18),
+          ),
+          moderator: 'me',
+          subject: _ada,
+        ),
+      );
+
+  testWidgets('a moderator cannot hear an appeal against their own call', (
+    tester,
+  ) async {
+    await _open(tester, AppealCaseScreen(appeal: appeal(mine: true)));
+    expect(find.textContaining('somebody else on the team'), findsOneWidget);
+    final overturn = tester.widget<ActionButton>(
+      find.ancestor(
+        of: find.text('Overturn'),
+        matching: find.byType(ActionButton),
+      ),
+    );
+    expect(overturn.onPressed, isNull);
+  });
+
+  testWidgets('somebody else decides it, and says why', (tester) async {
+    final team = await _open(
+      tester,
+      AppealCaseScreen(appeal: appeal(mine: false)),
+    );
+    expect(find.text('I was quoting the scam to warn people about it.'),
+        findsOneWidget);
+    await _tap(tester, find.text('Overturn'));
+    await tester.enterText(
+      find.byType(TextField),
+      'It was a warning about the scam, not the scam.',
+    );
+    await tester.pump();
+    await _tap(tester, find.text('Overturn').last);
+    expect(team.decisions, [
+      ('ap1', true, 'It was a warning about the scam, not the scam.'),
+    ]);
+    await tester.pump(const Duration(seconds: 6));
+  });
+}

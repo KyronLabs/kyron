@@ -5,11 +5,13 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/feed_post.dart';
+import '../models/moderation_case.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/feed_provider.dart';
 import '../providers/moderation_provider.dart';
 import '../repositories/moderation_repository.dart';
 import '../routes.dart';
+import '../screens/moderation_screens.dart';
 import '../screens/report_screen.dart';
 import '../screens/translation_sheet.dart';
 import '../services/app_log.dart';
@@ -247,6 +249,30 @@ class _OptionsState extends ConsumerState<_Options> {
                   ),
                 ),
               ),
+              // The team can decide about a post where they find it, not only
+              // once somebody has reported it.
+              if (me?.isStaff ?? false)
+                _Item(
+                  icon: Iconsax.judge_copy,
+                  label: 'Decide about this post',
+                  subtitle: 'Moderation: remove it, warn, suspend or ban',
+                  onTap: () => _replace(
+                    () => Navigator.of(context).push<bool>(
+                      MaterialPageRoute(
+                        builder: (_) => DecisionScreen(
+                          subject: CaseAccount(
+                            id: _post.author.id,
+                            name: _post.author.name,
+                            username: _post.author.username,
+                            avatarUrl: _post.author.avatarUrl,
+                          ),
+                          target: ReportTarget.post,
+                          targetId: _post.id,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
             ],
 
             const SizedBox(height: SpacingTokens.space16),
