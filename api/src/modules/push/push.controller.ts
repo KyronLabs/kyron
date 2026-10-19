@@ -11,6 +11,7 @@ import {
 import { IsIn, IsString, MaxLength, MinLength } from 'class-validator';
 
 import { AuthGuard } from '../../common/guards/auth.guard';
+import { AllowRestricted } from '../../common/guards/standing';
 import type { AuthRequest } from '../../common/types/auth-request';
 import { PushService, PushTestResult } from './push.service';
 
@@ -38,8 +39,12 @@ export class ForgetDeviceDto {
 export class PushController {
   constructor(private readonly push: PushService) {}
 
-  /** Called on every launch, so a token that rotated is picked up. */
+  /**
+   * Called on every launch, so a token that rotated is picked up. Open to a
+   * banned account: the answer to its appeal arrives as a notification.
+   */
   @Put()
+  @AllowRestricted()
   async register(
     @Req() req: AuthRequest,
     @Body() dto: RegisterDeviceDto,
@@ -60,6 +65,7 @@ export class PushController {
 
   /** Called on sign-out. A token left behind delivers to the wrong person. */
   @Delete()
+  @AllowRestricted()
   async forget(@Body() dto: ForgetDeviceDto): Promise<{ forgotten: boolean }> {
     await this.push.forget(dto.token);
     return { forgotten: true };

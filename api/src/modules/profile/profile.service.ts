@@ -52,6 +52,10 @@ export class ProfileService {
             name: true,
             username: true,
             did: true,
+            // So the app knows to offer the moderation queue. Only ever
+            // read back by the account itself: /profile/:username does not
+            // say who is on the team.
+            role: true,
           },
         }),
 
@@ -236,11 +240,20 @@ export class ProfileService {
         name: true,
         username: true,
         did: true,
+        status: true,
         profile: { select: this.profileShape },
       },
     });
 
     if (!user) throw new NotFoundException('User not found');
+    // Gone for everybody but the team, posts included (FeedService). Said
+    // as what it is, rather than "not found", so somebody following a link
+    // is not left wondering whether they mistyped it.
+    if (user.status === AccountStatus.BANNED) {
+      throw new NotFoundException(
+        "This account has been banned for breaking Kyron's rules.",
+      );
+    }
 
     const [followers, following, posts, isFollowing] = await Promise.all([
       this.prisma.follow.count({
@@ -309,7 +322,11 @@ export class ProfileService {
     const q = query.trim();
     if (q.length < 2) return { items: [] };
 
-    const eligible = { id: { not: viewerId }, deletedAt: null };
+    const eligible = {
+      id: { not: viewerId },
+      deletedAt: null,
+      status: { notIn: [AccountStatus.BANNED, AccountStatus.DELETED] },
+    };
 
     const [exact, ranked] = await Promise.all([
       this.prisma.user.findFirst({

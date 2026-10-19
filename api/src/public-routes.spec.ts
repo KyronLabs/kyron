@@ -12,6 +12,7 @@ import {
 } from '@nestjs/core';
 
 import { AppModule } from './app.module';
+import { RESTRICTED_ACCESS } from './common/guards/standing';
 import { PrismaService } from './infrastructure/prisma/prisma.service';
 
 /**
@@ -42,8 +43,48 @@ const PUBLIC = new Map<string, string>([
   ['POST /auth/logout', 'legacy sign-in'],
 ]);
 
-/** "METHOD /path" for every route, with the names of its guards. */
-async function routes(): Promise<{ route: string; guards: string[] }[]> {
+/**
+ * Everything a banned account can still reach: enough to read why, appeal,
+ * hear the answer, contact support, and leave. Nothing that shows it the
+ * service or lets it add to it.
+ */
+const OPEN_TO_BANNED = [
+  'GET /moderation/standing',
+  'PUT /moderation/standing/seen',
+  'POST /moderation/actions/:id/appeal',
+  'DELETE /account',
+  'PUT /devices',
+  'DELETE /devices',
+  'DELETE /keys',
+  'GET /feedback',
+  'POST /feedback',
+];
+
+/**
+ * What a suspended account can still do beyond reading: protect itself.
+ */
+const OPEN_TO_SUSPENDED = [
+  'POST /reports',
+  'PUT /users/:id/block',
+  'DELETE /users/:id/block',
+  'PUT /users/:id/mute',
+  'DELETE /users/:id/mute',
+  'PUT /feed/posts/:id/mute',
+  'DELETE /feed/posts/:id/mute',
+  'POST /mutes/words',
+  'DELETE /mutes/words',
+  'PUT /feed/posts/:id/hide',
+  'DELETE /feed/posts/:id/hide',
+];
+
+interface Route {
+  route: string;
+  guards: string[];
+  access: string | undefined;
+}
+
+/** "METHOD /path" for every route, with its guards and restricted access. */
+async function routes(): Promise<Route[]> {
   const ref = await Test.createTestingModule({
     imports: [AppModule, DiscoveryModule],
   })
@@ -53,7 +94,7 @@ async function routes(): Promise<{ route: string; guards: string[] }[]> {
 
   const discovery = ref.get(DiscoveryService);
   const scanner = ref.get(MetadataScanner);
-  const found: { route: string; guards: string[] }[] = [];
+  const found: Route[] = [];
 
   for (const controller of discovery.getControllers()) {
     const type = controller.metatype as object;
@@ -83,6 +124,8 @@ async function routes(): Promise<{ route: string; guards: string[] }[]> {
       found.push({
         route,
         guards: [...onClass, ...onHandler].map((g) => g.name),
+        access: (Reflect.getMetadata(RESTRICTED_ACCESS, handler) ??
+          Reflect.getMetadata(RESTRICTED_ACCESS, type)) as string | undefined,
       });
     }
   }
@@ -92,7 +135,7 @@ async function routes(): Promise<{ route: string; guards: string[] }[]> {
 }
 
 describe('which routes answer without a sign-in', () => {
-  let all: { route: string; guards: string[] }[];
+  let all: Route[];
 
   beforeAll(async () => {
     all = await routes();
@@ -116,5 +159,43 @@ describe('which routes answer without a sign-in', () => {
     const routes = all.map((r) => r.route);
     expect(routes).not.toContain('GET /users/:id');
     expect(routes).not.toContain('POST /users');
+  });
+});
+
+describe('which routes a restricted account can still reach', () => {
+  let all: Route[];
+
+  beforeAll(async () => {
+    all = await routes();
+  });
+
+  it('a banned one: only these', () => {
+    const open = all
+      .filter((r) => r.access === 'banned')
+      .map((r) => r.route)
+      .sort();
+    expect(open).toEqual([...OPEN_TO_BANNED].sort());
+  });
+
+  it('a suspended one, beyond reading: only these', () => {
+    const open = all
+      .filter((r) => r.access === 'suspended')
+      .map((r) => r.route)
+      .sort();
+    expect(open).toEqual([...OPEN_TO_SUSPENDED].sort());
+  });
+
+  it("the team's routes are not among them", () => {
+    const team = all.filter(
+      (r) =>
+        r.route.startsWith('GET /moderation/reports') ||
+        r.route.startsWith('POST /moderation/actions') ||
+        r.route.includes('/moderation/appeals'),
+    );
+    expect(team.length).toBeGreaterThan(0);
+    for (const r of team) {
+      if (r.route === 'POST /moderation/actions/:id/appeal') continue;
+      expect(r.access).toBeUndefined();
+    }
   });
 });

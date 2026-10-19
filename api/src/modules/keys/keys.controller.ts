@@ -13,6 +13,7 @@ import {
 import { IsString, Matches, MaxLength, MinLength } from 'class-validator';
 
 import { AuthGuard } from '../../common/guards/auth.guard';
+import { AllowRestricted } from '../../common/guards/standing';
 import type { AuthRequest } from '../../common/types/auth-request';
 import { KeysService, type PublishedKey } from './keys.service';
 
@@ -46,8 +47,9 @@ export class KeysController {
     return this.keys.publish(req.user.id, dto.deviceId, dto.publicKey);
   }
 
-  /** Withdraws it, on sign-out. */
+  /** Withdraws it, on sign-out -- and on deleting the account, banned or not. */
   @Delete()
+  @AllowRestricted()
   async withdraw(
     @Req() req: AuthRequest,
     @Query('deviceId') deviceId: string,

@@ -17,6 +17,7 @@
     "prisma:studio": "prisma studio",
     "prisma:seed": "ts-node prisma/seed.ts",
     "account:delete": "ts-node -r tsconfig-paths/register src/infrastructure/scripts/delete-account.ts",
+    "account:role": "ts-node -r tsconfig-paths/register src/infrastructure/scripts/set-role.ts",
     "start:dev": "ts-node-dev --respawn --transpile-only src/main.ts",
     "start:prod": "node dist/src/main.js",
     "db:reset": "psql $DATABASE_URL -c 'DROP SCHEMA public CASCADE; CREATE SCHEMA public;'"

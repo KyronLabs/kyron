@@ -590,7 +590,11 @@ describe('FeedService', () => {
 
       expect(post.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { authorId: 'author-9', deletedAt: null },
+          where: {
+            authorId: 'author-9',
+            deletedAt: null,
+            author: { status: { not: 'BANNED' } },
+          },
         }),
       );
     });
@@ -810,7 +814,11 @@ describe('FeedService', () => {
 
       expect(postSave.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { userId: VIEWER, post: { deletedAt: null } },
+          where: {
+            userId: VIEWER,
+            // A banned account's posts leave the list too.
+            post: { deletedAt: null, author: { status: { not: 'BANNED' } } },
+          },
           orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
         }),
       );
@@ -964,7 +972,13 @@ describe('FeedService', () => {
 
       expect(comment.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { postId: 'p1', parentId: null, deletedAt: null },
+          where: {
+            postId: 'p1',
+            parentId: null,
+            deletedAt: null,
+            // Nor anything by a banned account.
+            author: { status: { not: 'BANNED' } },
+          },
           // A conversation reads in the order it happened, unlike every other
           // list here.
           orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
@@ -1690,7 +1704,11 @@ describe('FeedService', () => {
 
       expect(post.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { authorId: 'author-9', deletedAt: null },
+          where: {
+            authorId: 'author-9',
+            deletedAt: null,
+            author: { status: { not: 'BANNED' } },
+          },
         }),
       );
     });

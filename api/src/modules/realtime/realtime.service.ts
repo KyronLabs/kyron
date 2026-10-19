@@ -42,7 +42,15 @@ export type RealtimeEvent =
    * as it connects: whatever changed while it was gone was not sent to it,
    * so the app starts again from this rather than from what it last heard.
    */
-  | { type: 'presence.snapshot'; online: string[] };
+  | { type: 'presence.snapshot'; online: string[] }
+  /**
+   * Something changed in the reader's own standing: a decision about their
+   * account, an answer to their appeal, or an outcome for a report they
+   * made. The app asks GET /moderation/standing for what.
+   */
+  | { type: 'moderation.updated' }
+  /** A report or an appeal is waiting. Sent to the team only. */
+  | { type: 'moderation.queue' };
 
 /**
  * One socket, or none, per connection; one entry per reader.
