@@ -9,6 +9,8 @@ export interface NotificationActor {
   name: string | null;
   username: string | null;
   avatarUrl: string | null;
+  /** Somebody on the team checked it is who it says it is. */
+  verified: boolean;
 }
 
 /** One row on the notifications screen. */
@@ -254,6 +256,7 @@ export class NotificationsService {
     id: true,
     name: true,
     username: true,
+    verifiedAt: true,
     profile: { select: { avatarUrl: true } },
   } as const;
 
@@ -261,6 +264,7 @@ export class NotificationsService {
     id: string;
     name: string | null;
     username: string | null;
+    verifiedAt?: Date | null;
     profile: { avatarUrl: string | null } | null;
   }): NotificationActor {
     return {
@@ -268,6 +272,7 @@ export class NotificationsService {
       name: row.name,
       username: row.username,
       avatarUrl: row.profile?.avatarUrl ?? null,
+      verified: !!row.verifiedAt,
     };
   }
 

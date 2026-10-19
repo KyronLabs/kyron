@@ -158,6 +158,7 @@ export class ModerationService {
             id: true,
             name: true,
             username: true,
+            verifiedAt: true,
             profile: { select: { avatarUrl: true } },
           },
         },
@@ -173,6 +174,7 @@ export class ModerationService {
           name: row.targetUser!.name,
           username: row.targetUser!.username,
           avatarUrl: row.targetUser!.profile?.avatarUrl ?? null,
+          verified: !!row.targetUser!.verifiedAt,
           mutedAt: row.createdAt,
         })),
     };
@@ -188,6 +190,7 @@ export class ModerationService {
             id: true,
             name: true,
             username: true,
+            verifiedAt: true,
             profile: { select: { avatarUrl: true } },
           },
         },
@@ -201,6 +204,7 @@ export class ModerationService {
         name: row.blocked.name,
         username: row.blocked.username,
         avatarUrl: row.blocked.profile?.avatarUrl ?? null,
+        verified: !!row.blocked.verifiedAt,
         blockedAt: row.createdAt,
       })),
     };

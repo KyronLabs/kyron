@@ -108,6 +108,7 @@ describe('ProfileService.searchProfiles', () => {
       username: 'b',
       did: null,
       avatarUrl: null,
+      verified: false,
       bio: null,
       followers: 9,
     });

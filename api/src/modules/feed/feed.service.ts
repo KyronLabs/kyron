@@ -31,6 +31,8 @@ export interface FeedPost {
     name: string | null;
     username: string | null;
     avatarUrl: string | null;
+    /** Somebody on the team checked it is who it says it is. */
+    verified: boolean;
   };
   /** How many people have liked it. */
   likes: number;
@@ -129,6 +131,8 @@ export interface FeedComment {
     name: string | null;
     username: string | null;
     avatarUrl: string | null;
+    /** Somebody on the team checked it is who it says it is. */
+    verified: boolean;
   };
   /** Null on a top-level comment. */
   parentId: string | null;
@@ -170,6 +174,8 @@ export interface FeedComment {
     name: string | null;
     username: string | null;
     avatarUrl: string | null;
+    /** Somebody on the team checked it is who it says it is. */
+    verified: boolean;
   } | null;
 }
 
@@ -2037,6 +2043,7 @@ export class FeedService {
           name: row.author.name,
           username: row.author.username,
           avatarUrl: row.author.profile?.avatarUrl ?? null,
+          verified: !!row.author.verifiedAt,
         })),
       );
     });
@@ -2091,6 +2098,7 @@ export class FeedService {
         name: row.author.name,
         username: row.author.username,
         avatarUrl: row.author.profile?.avatarUrl ?? null,
+        verified: !!row.author.verifiedAt,
       },
       replies: row._count.replies,
       replyFaces,
@@ -2135,6 +2143,7 @@ export class FeedService {
         name: author.name,
         username: author.username,
         avatarUrl: author.profile?.avatarUrl ?? null,
+        verified: !!author.verifiedAt,
       },
     };
   }
@@ -2366,6 +2375,7 @@ export class FeedService {
     id: true,
     name: true,
     username: true,
+    verifiedAt: true,
     profile: { select: { avatarUrl: true } },
   } as const;
 
@@ -2426,6 +2436,7 @@ export class FeedService {
       name: author.name,
       username: author.username,
       avatarUrl: author.profile?.avatarUrl ?? null,
+      verified: !!author.verifiedAt,
     };
   }
 }
@@ -2441,6 +2452,7 @@ interface CommentRow {
     id: string;
     name: string | null;
     username: string | null;
+    verifiedAt?: Date | null;
     profile: { avatarUrl: string | null } | null;
   };
   _count: { replies: number; likes?: number };
@@ -2453,6 +2465,7 @@ interface AuthorRow {
   id: string;
   name: string | null;
   username: string | null;
+  verifiedAt?: Date | null;
   profile: { avatarUrl: string | null } | null;
 }
 

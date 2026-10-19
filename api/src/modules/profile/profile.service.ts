@@ -56,6 +56,7 @@ export class ProfileService {
             // read back by the account itself: /profile/:username does not
             // say who is on the team.
             role: true,
+            verifiedAt: true,
           },
         }),
 
@@ -93,14 +94,14 @@ export class ProfileService {
       });
 
       return {
-        user,
+        user: { ...user, verified: !!user.verifiedAt },
         profile: syncedProfile ?? this.emptyProfile,
         stats: { followers, following, posts },
       };
     }
 
     return {
-      user,
+      user: { ...user, verified: !!user.verifiedAt },
       profile: prismaProfile,
       stats: { followers, following, posts },
     };
@@ -241,6 +242,7 @@ export class ProfileService {
         username: true,
         did: true,
         status: true,
+        verifiedAt: true,
         profile: { select: this.profileShape },
       },
     });
@@ -289,6 +291,7 @@ export class ProfileService {
         name: user.name,
         username: user.username,
         did: user.did,
+        verified: !!user.verifiedAt,
       },
       profile: user.profile ?? this.emptyProfile,
       stats: {
@@ -364,6 +367,7 @@ export class ProfileService {
         username: user.username,
         did: user.did,
         avatarUrl: user.profile?.avatarUrl ?? null,
+        verified: !!user.verifiedAt,
         bio: user.profile?.bio ?? null,
         followers: user._count.followers,
       })),
@@ -432,6 +436,7 @@ export class ProfileService {
         username: person.username,
         did: person.did,
         avatarUrl: person.profile?.avatarUrl ?? null,
+        verified: !!person.verifiedAt,
         bio: person.profile?.bio ?? null,
         followers: person._count.followers,
         isFollowing: followedIds.has(person.id),
@@ -447,6 +452,7 @@ export class ProfileService {
     name: true,
     username: true,
     did: true,
+    verifiedAt: true,
     profile: { select: { avatarUrl: true, bio: true } },
     _count: { select: { followers: true } },
   } as const;
@@ -545,6 +551,43 @@ export class ProfileService {
     return publicUrl;
   }
 
+  /**
+   * Whether renaming [userId] to [name] takes its badge away, and if so
+   * records that and tells the account.
+   *
+   * Only a rename: a name set for the first time, or set to what it already
+   * was, keeps the badge. The handle is not checked here because nothing
+   * changes a handle once it is set.
+   */
+  private async badgeLapses(userId: string, name: string): Promise<boolean> {
+    const before = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { name: true, verifiedAt: true },
+    });
+    const was = before?.name?.trim() ?? '';
+    if (!before?.verifiedAt || !was || was === name.trim()) return false;
+
+    await this.prisma.auditLog.create({
+      data: {
+        userId,
+        action: 'verification.lapsed',
+        details: { reason: 'renamed', from: was, to: name.trim() },
+      },
+    });
+    this.delivery.tell(
+      userId,
+      { type: 'moderation.updated' },
+      {
+        title: 'Kyron',
+        body:
+          'Your verified badge was removed because your name changed. ' +
+          'Ask again from the menu and somebody will check the new one.',
+        data: { type: 'verification' },
+      },
+    );
+    return true;
+  }
+
   async updateProfile(
     userId: string,
     payload: {
@@ -558,13 +601,22 @@ export class ProfileService {
   ) {
     const { name, bio, location, website, coverUrl, interests } = payload;
 
+    // A verified account that renames itself loses the badge: the badge says
+    // somebody checked the account is who its name says, and a new name is
+    // a claim nobody has checked. Read before the write, so the old name is
+    // still there to compare.
+    const lapsed = name !== undefined && (await this.badgeLapses(userId, name));
+
     // Prisma is the source of truth and must succeed.
     await Promise.all([
       // Update Prisma User (if name changed)
       name !== undefined
         ? this.prisma.user.update({
             where: { id: userId },
-            data: { name: name ?? null },
+            data: {
+              name: name ?? null,
+              ...(lapsed ? { verifiedAt: null } : {}),
+            },
           })
         : Promise.resolve(),
 
@@ -910,6 +962,7 @@ export class ProfileService {
         username: person.username,
         did: person.did,
         avatarUrl: person.profile?.avatarUrl ?? null,
+        verified: !!person.verifiedAt,
         bio: person.profile?.bio ?? null,
         followers: person._count.followers,
         // Everyone here is someone the reader does not follow: that is what
