@@ -19,6 +19,9 @@ class CaseAccount {
   final DateTime? suspendedUntil;
   final DateTime? createdAt;
 
+  /// Carries the verified badge.
+  final bool verified;
+
   /// Decisions against it that still stand.
   final int standingActions;
 
@@ -31,6 +34,7 @@ class CaseAccount {
     this.status = StandingStatus.active,
     this.suspendedUntil,
     this.createdAt,
+    this.verified = false,
     this.standingActions = 0,
   });
 
@@ -47,6 +51,7 @@ class CaseAccount {
         status: StandingStatus.fromWire(json['status']),
         suspendedUntil: _date(json['suspendedUntil']),
         createdAt: _date(json['createdAt']),
+        verified: json['verified'] == true,
         standingActions: (json['standingActions'] as num?)?.toInt() ?? 0,
       );
 }

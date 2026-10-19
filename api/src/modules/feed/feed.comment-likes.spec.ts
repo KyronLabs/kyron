@@ -160,6 +160,7 @@ describe('commentThread', () => {
       name: 'Willow',
       username: 'willow',
       avatarUrl: 'https://cdn.invalid/willow.jpg',
+      verified: false,
     });
     expect(thread.replies.find((r) => r.id === 'c3')?.authorLike).toBeNull();
     // One read for the whole branch, not one per level.

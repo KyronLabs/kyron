@@ -499,6 +499,7 @@ export class CommunitiesService {
             id: true,
             name: true,
             username: true,
+            verifiedAt: true,
             profile: { select: { avatarUrl: true } },
           },
         },
@@ -512,6 +513,7 @@ export class CommunitiesService {
       name: row.user.name,
       username: row.user.username,
       avatarUrl: row.user.profile?.avatarUrl ?? null,
+      verified: !!row.user.verifiedAt,
       role: row.role,
       joinedAt: row.joinedAt,
     }));
@@ -705,6 +707,7 @@ export class CommunitiesService {
             id: true,
             name: true,
             username: true,
+            verifiedAt: true,
             profile: { select: { avatarUrl: true } },
           },
         },
@@ -716,6 +719,7 @@ export class CommunitiesService {
       name: row.user.name,
       username: row.user.username,
       avatarUrl: row.user.profile?.avatarUrl ?? null,
+      verified: !!row.user.verifiedAt,
       role: null,
       joinedAt: row.createdAt,
     }));

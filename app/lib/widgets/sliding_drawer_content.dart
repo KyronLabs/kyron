@@ -10,6 +10,8 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/current_user.dart';
 import '../providers/current_user_provider.dart';
 import '../routes.dart';
+import 'stamp.dart';
+import 'verified_badge.dart';
 import '../services/app_info.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
@@ -63,7 +65,7 @@ class SlidingDrawerContent extends ConsumerWidget {
             // Expanded, with no Spacer under it. Both were flexible before, so
             // the list and the gap below it split the leftover space evenly
             // and the last item was cut off halfway down.
-            Expanded(child: _navigation(context)),
+            Expanded(child: _navigation(context, userAsync.value)),
             _footer(context, scheme),
             SizedBox(
               height:
@@ -110,10 +112,10 @@ class SlidingDrawerContent extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: SpacingTokens.space12),
-          Text(
-            user.displayName,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+          NameWithBadge(
+            name: user.displayName,
+            verified: user.verified,
+            badgeSize: 16,
             style: TextStyle(
               fontSize: TypographyTokens.fontSize4,
               fontWeight: FontWeight.w600,
@@ -314,12 +316,31 @@ class SlidingDrawerContent extends ConsumerWidget {
         color: scheme.onSurface.withValues(alpha: 0.1),
       );
 
-  Widget _navigation(BuildContext context) {
+  Widget _navigation(BuildContext context, CurrentUser? user) {
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
       // Scrollable rather than shrink-wrapped: on a short screen, or at a
       // large text size, the items no longer have to fit to be reachable.
       children: [
+        // The way to the badge, as a stamp. First in the menu, because it
+        // is the one thing here that is not a place you have already been.
+        Padding(
+          padding: const EdgeInsets.fromLTRB(
+            SpacingTokens.space16,
+            SpacingTokens.space4,
+            SpacingTokens.space16,
+            SpacingTokens.space12,
+          ),
+          child: StampCard(
+            key: const ValueKey('drawer-verification'),
+            title:
+                (user?.verified ?? false) ? "You're verified" : 'Get verified',
+            subtitle: (user?.verified ?? false)
+                ? 'The badge is beside your name'
+                : 'A person checks it is really you',
+            onTap: () => _go(context, Routes.verification),
+          ),
+        ),
         _pillButton(
           context,
           icon: Iconsax.people_copy,

@@ -20,6 +20,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { LinksModule } from './modules/links/links.module';
 import { FeedbackModule } from './modules/feedback/feedback.module';
 import { AccountModule } from './modules/account/account.module';
+import { VerificationModule } from './modules/verification/verification.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { AccountModule } from './modules/account/account.module';
     LinksModule,
     FeedbackModule,
     AccountModule,
+    VerificationModule,
   ],
   controllers: [],
   providers: [],

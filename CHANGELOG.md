@@ -11,6 +11,27 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **Verification.** An account can ask for the verified badge from a new
+  stamp at the top of the sidebar. The badge says one thing: somebody on the
+  Kyron team checked the account is who it says it is. It gives no extra
+  reach and is not for sale. To ask, an account needs a photo, a name, a
+  bio, a week behind it and a clean record for the last 90 days, and it
+  sends links to pages it controls that name its Kyron account. Kyron never
+  asks for identity documents.
+- **The badge beside verified names**, wherever a name is shown: posts,
+  replies, profiles, people lists, notifications, messages and the sidebar.
+- **A Badges tab for the team**, in Settings → Moderation. Each request
+  shows the account, what it says, the links to check, and the requirements
+  as they stand now. Nobody answers their own request, and a "no" says why.
+  The team can also give or remove the badge from an account's record, with
+  a reason that goes on the record. See `docs/VERIFICATION.md`.
+
+### Changed
+
+- **Changing your name removes the badge**, because the badge vouches for
+  the name. You are told why and can ask again.
 
 ## [0.1.6] - 2026-10-19
 ### Security

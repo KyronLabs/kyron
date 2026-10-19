@@ -4,22 +4,26 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/account_standing.dart';
 import 'package:kyron_app/models/current_user.dart';
 import 'package:kyron_app/models/moderation_case.dart';
+import 'package:kyron_app/models/verification.dart';
 import 'package:kyron_app/providers/current_user_provider.dart';
 import 'package:kyron_app/providers/enforcement_provider.dart';
+import 'package:kyron_app/providers/verification_provider.dart';
 import 'package:kyron_app/repositories/enforcement_repository.dart';
 import 'package:kyron_app/repositories/moderation_repository.dart';
+import 'package:kyron_app/repositories/verification_repository.dart';
 import 'package:kyron_app/screens/moderation_screens.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/action_button.dart';
+import 'package:kyron_app/widgets/verified_badge.dart';
 
 /// The team's side: the queues, and the decisions. Reports used to be
 /// written down and read by nobody, because there was nowhere to read them.
 class _Team extends EnforcementRepository {
-  _Team({this.reports = const [], this.appeals = const []})
-      : super(ApiClient());
+  _Team({this.reports = const [], this.record}) : super(ApiClient());
 
   final List<ReportCase> reports;
-  final List<AppealCase> appeals;
+  final AccountRecord? record;
+  final List<AppealCase> appeals = const [];
   final acts = <Map<String, Object?>>[];
   final decisions = <(String, bool, String)>[];
   final dismissed = <String>[];
@@ -29,6 +33,9 @@ class _Team extends EnforcementRepository {
 
   @override
   Future<List<AppealCase>> appealQueue() async => appeals;
+
+  @override
+  Future<AccountRecord> account(String id) async => record!;
 
   @override
   Future<void> dismiss(ReportTarget target, String targetId) async =>
@@ -77,7 +84,66 @@ class _Team extends EnforcementRepository {
       decisions.add((appealId, overturn, response));
 }
 
+/// Requests for the badge, and what the team does with them.
+class _Badges extends VerificationRepository {
+  _Badges({this.waiting = const []}) : super(ApiClient());
+
+  final List<VerificationCase> waiting;
+  final decisions = <(String, bool, String?)>[];
+  final set = <(String, bool, String)>[];
+
+  @override
+  Future<List<VerificationCase>> queue() async => waiting;
+
+  @override
+  Future<void> decide(
+    String requestId, {
+    required bool approve,
+    String? response,
+  }) async =>
+      decisions.add((requestId, approve, response));
+
+  @override
+  Future<void> setVerified(
+    String accountId, {
+    required bool verified,
+    required String reason,
+  }) async =>
+      set.add((accountId, verified, reason));
+}
+
 const _ada = CaseAccount(id: 'ada', username: 'ada');
+
+VerificationCase _asking({bool own = false, bool ready = true}) =>
+    VerificationCase(
+      accountId: own ? 'me' : 'ada',
+      name: 'Ada Birds',
+      username: 'ada',
+      followers: 40,
+      posts: 12,
+      ownRequest: own,
+      request: VerificationRequestView(
+        id: 'v1',
+        number: 4,
+        category: VerificationCategory.creator,
+        about: 'I write about birds here and on my own site.',
+        links: const ['https://ada.example/about'],
+        status: VerificationRequestStatus.pending,
+        createdAt: DateTime(2026, 10, 18),
+      ),
+      requirements: [
+        const VerificationRequirement(
+          key: 'photo',
+          label: 'A profile photo',
+          met: true,
+        ),
+        VerificationRequirement(
+          key: 'standing',
+          label: 'Nothing on your record in the last 90 days',
+          met: ready,
+        ),
+      ],
+    );
 
 /// Whoever is looking, on the team as [role].
 class _Me extends CurrentUserNotifier {
@@ -129,6 +195,7 @@ Future<_Team> _open(
   WidgetTester tester,
   Widget home, {
   _Team? team,
+  _Badges? badges,
   String role = 'MODERATOR',
 }) async {
   final repo = team ?? _Team();
@@ -136,6 +203,7 @@ Future<_Team> _open(
     ProviderScope(
       overrides: [
         enforcementRepositoryProvider.overrideWithValue(repo),
+        verificationRepositoryProvider.overrideWithValue(badges ?? _Badges()),
         currentUserProvider.overrideWith((ref) => _Me(ref, role)),
       ],
       child: MaterialApp(home: home),
@@ -307,5 +375,133 @@ void main() {
       ('ap1', true, 'It was a warning about the scam, not the scam.'),
     ]);
     await tester.pump(const Duration(seconds: 6));
+  });
+
+  group('the badge', () {
+    testWidgets('requests wait in their own tab', (tester) async {
+      await _open(
+        tester,
+        const ModerationQueueScreen(),
+        badges: _Badges(waiting: [_asking(ready: false)]),
+      );
+      await _tap(tester, find.text('Badges (1)'));
+      expect(find.text('Ada Birds · Creator'), findsOneWidget);
+      expect(
+        find.textContaining('no longer meets the requirements'),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('nobody answers their own request', (tester) async {
+      await _open(tester, VerificationCaseScreen(item: _asking(own: true)));
+      expect(find.textContaining('somebody else on the team'), findsOneWidget);
+      for (final label in ['Verify', 'Turn down']) {
+        final button = tester.widget<ActionButton>(
+          find.ancestor(
+            of: find.text(label),
+            matching: find.byType(ActionButton),
+          ),
+        );
+        expect(button.onPressed, isNull, reason: label);
+      }
+    });
+
+    testWidgets('shows where to check, then a yes asks once more', (
+      tester,
+    ) async {
+      final badges = _Badges();
+      await _open(
+        tester,
+        VerificationCaseScreen(item: _asking()),
+        badges: badges,
+      );
+      expect(find.text('https://ada.example/about'), findsOneWidget);
+      expect(find.text('I write about birds here and on my own site.'),
+          findsOneWidget);
+
+      await _tap(tester, find.text('Verify'));
+      expect(find.text('Verify Ada Birds?'), findsOneWidget);
+      expect(badges.decisions, isEmpty);
+      await _tap(tester, find.text('Verify').last);
+      expect(badges.decisions, [('v1', true, null)]);
+      await tester.pump(const Duration(seconds: 6));
+    });
+
+    testWidgets('a no says what would have made it a yes', (tester) async {
+      final badges = _Badges();
+      await _open(
+        tester,
+        VerificationCaseScreen(item: _asking()),
+        badges: badges,
+      );
+      await _tap(tester, find.text('Turn down'));
+      expect(find.text('Turn this request down?'), findsOneWidget);
+      await tester.enterText(
+        find.byType(TextField),
+        'Neither link mentions this account.',
+      );
+      await tester.pump();
+      await _tap(tester, find.text('Turn down').last);
+      expect(badges.decisions, [
+        ('v1', false, 'Neither link mentions this account.'),
+      ]);
+      await tester.pump(const Duration(seconds: 6));
+    });
+
+    testWidgets('the record gives it directly, saying how it was checked', (
+      tester,
+    ) async {
+      // No handle, which is how some early accounts still are: the sheet
+      // names them, not "an account".
+      final badges = _Badges();
+      await _open(
+        tester,
+        const ModerationAccountScreen(accountId: 'yun'),
+        team: _Team(
+          record: const AccountRecord(
+            account: CaseAccount(id: 'yun', name: 'Yunnieee'),
+            openReports: 0,
+            actions: [],
+          ),
+        ),
+        badges: badges,
+        role: 'ADMIN',
+      );
+      await _tap(tester, find.text('Give the verified badge'));
+      expect(find.text('Verify Yunnieee?'), findsOneWidget);
+      await tester.enterText(
+        find.byType(TextField),
+        'Known to the team in person.',
+      );
+      await tester.pump();
+      await _tap(tester, find.text('Verify').last);
+      expect(badges.set, [('yun', true, 'Known to the team in person.')]);
+      await tester.pump(const Duration(seconds: 6));
+    });
+
+    testWidgets('the record shows the badge, and nobody changes their own', (
+      tester,
+    ) async {
+      await _open(
+        tester,
+        const ModerationAccountScreen(accountId: 'me'),
+        team: _Team(
+          record: const AccountRecord(
+            account: CaseAccount(id: 'me', name: 'Me', verified: true),
+            openReports: 0,
+            actions: [],
+          ),
+        ),
+        role: 'ADMIN',
+      );
+      expect(find.byType(VerifiedBadge), findsOneWidget);
+      final button = tester.widget<ActionButton>(
+        find.ancestor(
+          of: find.text('Remove the verified badge'),
+          matching: find.byType(ActionButton),
+        ),
+      );
+      expect(button.onPressed, isNull);
+    });
   });
 }

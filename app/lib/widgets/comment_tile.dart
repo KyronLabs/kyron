@@ -19,6 +19,7 @@ import 'post_text.dart';
 import 'toast.dart';
 import 'thread.dart' show ThreadGeometry;
 import 'voice_post_player.dart';
+import 'verified_badge.dart';
 
 /// What a comment offers besides reading it.
 enum CommentAction { copy, report, delete, openThread }
@@ -192,10 +193,10 @@ class _Header extends StatelessWidget {
                 Flexible(
                   child: GestureDetector(
                     onTap: () => openAuthor(context, comment.author),
-                    child: Text(
-                      comment.author.displayName,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    child: NameWithBadge(
+                      name: comment.author.displayName,
+                      verified: comment.author.verified,
+                      badgeSize: 13,
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: TypographyTokens.fontSize2,

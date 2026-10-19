@@ -23,6 +23,9 @@ class ProfileModel {
   final int following;
   final int posts;
 
+  /// Somebody on the Kyron team checked it is who it says it is.
+  final bool verified;
+
   /// Whether the viewer follows this account. Always false on your own.
   final bool isFollowing;
 
@@ -41,6 +44,7 @@ class ProfileModel {
     required this.followers,
     required this.following,
     required this.posts,
+    this.verified = false,
     this.isFollowing = false,
     this.isOwnProfile = false,
   });
@@ -66,6 +70,7 @@ class ProfileModel {
       followers: _int(stats['followers']),
       following: _int(stats['following']),
       posts: _int(stats['posts']),
+      verified: user['verified'] == true,
       isFollowing: stats['isFollowing'] == true,
       isOwnProfile: isOwnProfile,
     );
@@ -88,6 +93,7 @@ class ProfileModel {
         followers: user.followers,
         following: user.following,
         posts: user.posts,
+        verified: user.verified,
         isOwnProfile: true,
       );
 
@@ -109,6 +115,7 @@ class ProfileModel {
       followers: followers ?? this.followers,
       following: following,
       posts: posts,
+      verified: verified,
       isFollowing: isFollowing ?? this.isFollowing,
       isOwnProfile: isOwnProfile ?? this.isOwnProfile,
     );

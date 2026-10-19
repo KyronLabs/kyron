@@ -44,6 +44,7 @@ import '../services/link_card_reader.dart';
 import '../widgets/create_post/url_preview.dart' show firstLinkIn;
 import '../widgets/hairline.dart';
 import '../widgets/link_preview_card.dart' show LinkCard;
+import '../widgets/verified_badge.dart';
 
 /// Which conversation, and who is in it.
 ///
@@ -587,14 +588,13 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      other?.displayName ??
+                    NameWithBadge(
+                      name: other?.displayName ??
                           (gone
                               ? AppLocalizations.of(context).ui(
                                   'ui_dm_deleted_account', 'Deleted account')
                               : 'Conversation'),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                      verified: other?.verified ?? false,
                       style: const TextStyle(
                         fontSize: TypographyTokens.fontSize4,
                         fontWeight: FontWeight.w700,

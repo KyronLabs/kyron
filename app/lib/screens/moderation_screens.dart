@@ -7,7 +7,11 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/account_standing.dart';
 import '../models/moderation_case.dart';
 import '../providers/current_user_provider.dart';
+import '../models/verification.dart';
 import '../providers/enforcement_provider.dart';
+import '../providers/verification_provider.dart';
+import '../services/app_browser.dart';
+import '../widgets/verified_badge.dart';
 import '../repositories/moderation_repository.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
@@ -40,7 +44,7 @@ class ModerationQueueScreen extends ConsumerStatefulWidget {
 
 class _ModerationQueueScreenState extends ConsumerState<ModerationQueueScreen>
     with SingleTickerProviderStateMixin {
-  late final _tabs = TabController(length: 2, vsync: this);
+  late final _tabs = TabController(length: 3, vsync: this);
 
   @override
   void dispose() {
@@ -55,6 +59,15 @@ class _ModerationQueueScreenState extends ConsumerState<ModerationQueueScreen>
     if (decided ?? false) ref.invalidate(reportQueueProvider);
   }
 
+  Future<void> _openVerification(VerificationCase item) async {
+    final decided = await Navigator.of(context).push<bool>(
+      MaterialPageRoute(
+        builder: (_) => VerificationCaseScreen(item: item),
+      ),
+    );
+    if (decided ?? false) ref.invalidate(verificationQueueProvider);
+  }
+
   Future<void> _openAppeal(AppealCase item) async {
     final decided = await Navigator.of(context).push<bool>(
       MaterialPageRoute(builder: (_) => AppealCaseScreen(appeal: item)),
@@ -66,6 +79,7 @@ class _ModerationQueueScreenState extends ConsumerState<ModerationQueueScreen>
   Widget build(BuildContext context) {
     final reports = ref.watch(reportQueueProvider);
     final appeals = ref.watch(appealQueueProvider);
+    final verifications = ref.watch(verificationQueueProvider);
     String count(AsyncValue<List<Object>> value) =>
         value.value?.isNotEmpty ?? false ? ' (${value.value!.length})' : '';
 
@@ -79,7 +93,11 @@ class _ModerationQueueScreenState extends ConsumerState<ModerationQueueScreen>
         title: const Text('Moderation'),
         bottom: SectionTabs(
           controller: _tabs,
-          labels: ['Reports${count(reports)}', 'Appeals${count(appeals)}'],
+          labels: [
+            'Reports${count(reports)}',
+            'Appeals${count(appeals)}',
+            'Badges${count(verifications)}',
+          ],
         ),
       ),
       body: SafeArea(
@@ -101,6 +119,14 @@ class _ModerationQueueScreenState extends ConsumerState<ModerationQueueScreen>
               emptyDetail: 'When somebody asks for a decision to be looked '
                   'at again, it lands here.',
               item: (item) => _AppealTile(item, () => _openAppeal(item)),
+            ),
+            _Queue<VerificationCase>(
+              value: verifications,
+              onRefresh: () async => ref.invalidate(verificationQueueProvider),
+              emptyTitle: 'Nobody waiting for a badge',
+              emptyDetail: 'Requests to be verified land here, oldest first.',
+              item: (item) =>
+                  _VerificationTile(item, () => _openVerification(item)),
             ),
           ],
         ),
@@ -241,6 +267,211 @@ class _AppealTile extends StatelessWidget {
       ),
       trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
       onTap: onTap,
+    );
+  }
+}
+
+class _VerificationTile extends StatelessWidget {
+  final VerificationCase item;
+  final VoidCallback onTap;
+
+  const _VerificationTile(this.item, this.onTap);
+
+  @override
+  Widget build(BuildContext context) {
+    final faint =
+        Theme.of(context).colorScheme.onSurface.withValues(alpha: .55);
+    final ready = item.requirements.every((r) => r.met);
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: CircleAvatar(
+        radius: 18,
+        foregroundImage:
+            item.avatarUrl == null ? null : NetworkImage(item.avatarUrl!),
+        child: const Icon(Iconsax.user_copy, size: 18),
+      ),
+      title:
+          Text('${item.name ?? item.handle} · ${item.request.category.label}'),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(item.request.about,
+              maxLines: 2, overflow: TextOverflow.ellipsis),
+          Text(
+            'Request ${item.request.number} · sent '
+            '${standingDay(item.request.createdAt)}'
+            '${ready ? '' : ' · no longer meets the requirements'}',
+            style: TextStyle(color: faint),
+          ),
+        ],
+      ),
+      trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
+      onTap: onTap,
+    );
+  }
+}
+
+/// One request for the badge: who, what they say, and where to check.
+class VerificationCaseScreen extends ConsumerStatefulWidget {
+  final VerificationCase item;
+
+  const VerificationCaseScreen({super.key, required this.item});
+
+  @override
+  ConsumerState<VerificationCaseScreen> createState() =>
+      _VerificationCaseScreenState();
+}
+
+class _VerificationCaseScreenState
+    extends ConsumerState<VerificationCaseScreen> {
+  bool _sending = false;
+
+  Future<void> _answer({required bool approve}) async {
+    final item = widget.item;
+    String? response;
+    if (approve) {
+      final sure = await confirmSheet(
+        context,
+        title: 'Verify ${item.name ?? item.handle}?',
+        detail: 'The badge shows beside their name everywhere, and they are '
+            'told. Only say yes if the links show this account is theirs.',
+        confirm: 'Verify',
+      );
+      if (!sure) return;
+    } else {
+      response = await askForText(
+        context,
+        title: 'Turn this request down?',
+        detail: 'They are told, with what you write here, and can ask again '
+            'in 30 days. Say what would have made it a yes.',
+        hint: 'What was missing',
+        confirm: 'Turn down',
+      );
+      if (response == null) return;
+    }
+    if (!mounted) return;
+    setState(() => _sending = true);
+    try {
+      await ref.read(verificationRepositoryProvider).decide(
+            item.request.id,
+            approve: approve,
+            response: response,
+          );
+      if (!mounted) return;
+      Toast.show(context, approve ? 'Verified.' : 'Turned down.');
+      Navigator.of(context).pop(true);
+    } catch (error) {
+      if (!mounted) return;
+      setState(() => _sending = false);
+      Toast.show(context, describeApiError(error, sessionIsLive: true));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final item = widget.item;
+    final scheme = Theme.of(context).colorScheme;
+    final faint = scheme.onSurface.withValues(alpha: .55);
+    return SettingsScaffold(
+      title: 'Request ${item.request.number}',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (item.ownRequest) ...[
+            const _Warning(
+              'This is your own request, so somebody else on the team has '
+              'to answer it.',
+            ),
+            const SizedBox(height: SpacingTokens.space16),
+          ],
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: CircleAvatar(
+              radius: 22,
+              foregroundImage:
+                  item.avatarUrl == null ? null : NetworkImage(item.avatarUrl!),
+              child: const Icon(Iconsax.user_copy, size: 20),
+            ),
+            title: Text(item.name ?? item.handle),
+            subtitle: Text(
+              [
+                if (item.username != null) '@${item.username}',
+                '${item.followers} followers',
+                '${item.posts} posts',
+                if (item.joined != null) 'joined ${standingDay(item.joined!)}',
+              ].join(' · '),
+              style: TextStyle(color: faint),
+            ),
+            trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
+            onTap: () => Navigator.pushNamed(
+              context,
+              Routes.moderationAccount,
+              arguments: item.accountId,
+            ),
+          ),
+          if (item.bio != null) Text(item.bio!, style: TextStyle(color: faint)),
+          _Heading('As ${item.request.category.label.toLowerCase()}, they say'),
+          Quote(item.request.about),
+          const _Heading('Where to check'),
+          for (final link in item.request.links)
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Iconsax.link_21_copy, size: 20),
+              title: Text(link, maxLines: 2, overflow: TextOverflow.ellipsis),
+              trailing: const Icon(Iconsax.export_3_copy, size: 16),
+              onTap: () => AppBrowser.open(context, link),
+            ),
+          Text(
+            'Look for this Kyron account named on the page -- its name, or a '
+            'link to it. A page that does not mention Kyron proves the page '
+            'is theirs, not that this account is.',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          const _Heading('Requirements, as they stand now'),
+          for (final r in item.requirements)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: Row(
+                children: [
+                  Icon(
+                    r.met ? Iconsax.tick_circle : Iconsax.close_circle_copy,
+                    size: 18,
+                    color: r.met ? scheme.primary : scheme.error,
+                  ),
+                  const SizedBox(width: SpacingTokens.space8),
+                  Expanded(child: Text(r.label)),
+                ],
+              ),
+            ),
+          const SizedBox(height: SpacingTokens.space24),
+          Row(
+            children: [
+              Expanded(
+                child: ActionButton(
+                  label: 'Turn down',
+                  kind: ActionButtonKind.outlined,
+                  expand: true,
+                  busy: _sending,
+                  onPressed:
+                      item.ownRequest ? null : () => _answer(approve: false),
+                ),
+              ),
+              const SizedBox(width: SpacingTokens.space12),
+              Expanded(
+                child: ActionButton(
+                  label: 'Verify',
+                  icon: Iconsax.verify_copy,
+                  expand: true,
+                  busy: _sending,
+                  onPressed:
+                      item.ownRequest ? null : () => _answer(approve: true),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: SpacingTokens.space24),
+        ],
+      ),
     );
   }
 }
@@ -441,11 +672,12 @@ class AccountLine extends StatelessWidget {
             account.avatarUrl == null ? null : NetworkImage(account.avatarUrl!),
         child: const Icon(Iconsax.user_copy, size: 18),
       ),
-      title: Text(
-        [
+      title: NameWithBadge(
+        name: [
           account.handle,
           if (account.onTeam) '(${account.role.toLowerCase()})',
         ].join(' '),
+        verified: account.verified,
       ),
       subtitle: Text(
         [
@@ -784,6 +1016,40 @@ class ModerationAccountScreen extends ConsumerWidget {
 
   const ModerationAccountScreen({super.key, required this.accountId});
 
+  /// Gives or takes the badge without a request, on the record.
+  Future<void> _setBadge(
+    BuildContext context,
+    WidgetRef ref,
+    CaseAccount account,
+  ) async {
+    final giving = !account.verified;
+    final who = account.name ?? account.handle;
+    final reason = await askForText(
+      context,
+      title: giving ? 'Verify $who?' : 'Remove $who\'s badge?',
+      detail: giving
+          ? 'The badge shows beside their name everywhere, and they are '
+              'told. Say how you know it is them.'
+          : 'They are told, with what you write here, and can ask again.',
+      hint: giving ? 'How you checked' : 'Why it comes off',
+      confirm: giving ? 'Verify' : 'Remove',
+    );
+    if (reason == null || !context.mounted) return;
+    try {
+      await ref
+          .read(verificationRepositoryProvider)
+          .setVerified(account.id, verified: giving, reason: reason);
+      ref.invalidate(accountRecordProvider(accountId));
+      if (context.mounted) {
+        Toast.show(context, giving ? 'Verified.' : 'Badge removed.');
+      }
+    } catch (error) {
+      if (context.mounted) {
+        Toast.show(context, describeApiError(error, sessionIsLive: true));
+      }
+    }
+  }
+
   Future<void> _reverse(
     BuildContext context,
     WidgetRef ref,
@@ -814,6 +1080,7 @@ class ModerationAccountScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final record = ref.watch(accountRecordProvider(accountId));
+    final me = ref.watch(currentUserProvider).value?.id;
     final faint =
         Theme.of(context).colorScheme.onSurface.withValues(alpha: .55);
     return SettingsScaffold(
@@ -833,8 +1100,10 @@ class ModerationAccountScreen extends ConsumerWidget {
         data: (record) => Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              record.account.name ?? record.account.handle,
+            NameWithBadge(
+              name: record.account.name ?? record.account.handle,
+              verified: record.account.verified,
+              badgeSize: 18,
               style: const TextStyle(
                 fontSize: TypographyTokens.fontSize5,
                 fontWeight: FontWeight.w600,
@@ -864,6 +1133,19 @@ class ModerationAccountScreen extends ConsumerWidget {
                   ref.invalidate(accountRecordProvider(accountId));
                 }
               },
+            ),
+            const SizedBox(height: SpacingTokens.space8),
+            ActionButton(
+              label: record.account.verified
+                  ? 'Remove the verified badge'
+                  : 'Give the verified badge',
+              icon: Iconsax.verify_copy,
+              kind: ActionButtonKind.outlined,
+              expand: true,
+              // Nobody gives themselves the badge, or takes it off.
+              onPressed: record.account.id == me
+                  ? null
+                  : () => _setBadge(context, ref, record.account),
             ),
             const _Heading('Decisions'),
             if (record.actions.isEmpty)

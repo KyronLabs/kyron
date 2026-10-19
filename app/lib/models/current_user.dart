@@ -24,6 +24,9 @@ class CurrentUser {
   /// whether the moderation queue is offered. The server checks again.
   final String role;
 
+  /// Somebody on the Kyron team checked it is who it says it is.
+  final bool verified;
+
   const CurrentUser({
     required this.id,
     this.name,
@@ -38,6 +41,7 @@ class CurrentUser {
     required this.following,
     required this.posts,
     this.role = 'USER',
+    this.verified = false,
   });
 
   /// On the moderation team.
@@ -62,6 +66,7 @@ class CurrentUser {
       following: _int(stats['following']),
       posts: _int(stats['posts']),
       role: user['role'] as String? ?? 'USER',
+      verified: user['verified'] == true,
     );
   }
 
@@ -94,6 +99,7 @@ class CurrentUser {
         'username': username,
         'did': did,
         'role': role,
+        'verified': verified,
       },
       'profile': {
         'avatarUrl': avatarUrl,

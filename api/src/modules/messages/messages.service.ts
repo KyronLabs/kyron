@@ -19,6 +19,8 @@ export interface MessagePerson {
   name: string | null;
   username: string | null;
   avatarUrl: string | null;
+  /** Somebody on the team checked it is who it says it is. */
+  verified: boolean;
   /** The app open and in front, where both sides show it (PresenceService).
    * Kept current afterwards by `presence` events on the socket. */
   online: boolean;
@@ -217,6 +219,7 @@ export class MessagesService {
     id: true,
     name: true,
     username: true,
+    verifiedAt: true,
     profile: { select: { avatarUrl: true } },
     showOnline: true,
   } as const;
@@ -1053,6 +1056,7 @@ export class MessagesService {
       id: string;
       name: string | null;
       username: string | null;
+      verifiedAt?: Date | null;
       profile: { avatarUrl: string | null } | null;
       showOnline?: boolean;
     },
@@ -1063,6 +1067,7 @@ export class MessagesService {
       name: user.name,
       username: user.username,
       avatarUrl: user.profile?.avatarUrl ?? null,
+      verified: !!user.verifiedAt,
       online: this.presence?.visible(viewerShows, user) ?? false,
     };
   }

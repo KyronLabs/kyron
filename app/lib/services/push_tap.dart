@@ -32,6 +32,7 @@ typedef PushDestination = ({String route, Object? arguments});
 ///   moderation     (a decision, an appeal answered, a report's outcome)
 ///                                                 -> Account status
 ///   moderation.queue  (the team only)             -> the moderation queue
+///   verification   (an answer, or a badge lost)   -> Verification
 ///
 /// A like used to carry only its kind, so every activity notification
 /// opened the notifications page and left the reader to find the post.
@@ -61,6 +62,8 @@ PushDestination? pushDestination(Map<String, dynamic> data) {
       return (route: Routes.accountStatus, arguments: null);
     case 'moderation.queue':
       return (route: Routes.moderation, arguments: null);
+    case 'verification':
+      return (route: Routes.verification, arguments: null);
     default:
       // The test notification, and anything a newer server sends that this
       // build does not know: opening the app is all it can mean.

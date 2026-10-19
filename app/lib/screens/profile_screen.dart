@@ -26,6 +26,7 @@ import '../widgets/toast.dart';
 import '../widgets/empty_state.dart';
 import 'thread_screen.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../widgets/verified_badge.dart';
 
 /// Which of the profile's tabs is showing.
 enum ProfileTab { posts, media, likes }
@@ -641,8 +642,22 @@ class _Header extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            profile.displayName,
+          // The badge rides on the end of the name, so a name that wraps
+          // carries it on its last line rather than leaving it stranded.
+          Text.rich(
+            TextSpan(
+              text: profile.displayName,
+              children: [
+                if (profile.verified)
+                  const WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 6),
+                      child: VerifiedBadge(size: 22),
+                    ),
+                  ),
+              ],
+            ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(

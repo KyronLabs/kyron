@@ -165,11 +165,15 @@ class FeedAuthor {
   final String? username;
   final String? avatarUrl;
 
+  /// Somebody on the Kyron team checked it is who it says it is.
+  final bool verified;
+
   const FeedAuthor({
     required this.id,
     this.name,
     this.username,
     this.avatarUrl,
+    this.verified = false,
   });
 
   factory FeedAuthor.fromJson(Map<String, dynamic> json) => FeedAuthor(
@@ -177,6 +181,7 @@ class FeedAuthor {
         name: json['name'] as String?,
         username: json['username'] as String?,
         avatarUrl: json['avatarUrl'] as String?,
+        verified: json['verified'] == true,
       );
 
   /// What to show above a post.

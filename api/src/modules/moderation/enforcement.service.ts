@@ -37,6 +37,8 @@ export interface AccountSummary {
   status: AccountStatus;
   suspendedUntil: Date | null;
   createdAt: Date;
+  /** Carries the verified badge. */
+  verified: boolean;
   /** Decisions against it that still stand. */
   standingActions: number;
 }
@@ -985,6 +987,7 @@ export class EnforcementService {
           status: true,
           suspendedUntil: true,
           createdAt: true,
+          verifiedAt: true,
           profile: { select: { avatarUrl: true } },
         },
       }),
@@ -1002,6 +1005,7 @@ export class EnforcementService {
       name: u.name,
       username: u.username,
       avatarUrl: u.profile?.avatarUrl ?? null,
+      verified: !!u.verifiedAt,
       role: u.role,
       status: u.status,
       suspendedUntil: u.suspendedUntil,
