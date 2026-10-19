@@ -29,6 +29,9 @@ typedef PushDestination = ({String route, Object? arguments});
 ///   notification   postId (like, reply, repost)   -> that post
 ///   notification   actorId (follow)               -> their profile
 ///   notification   anything else                  -> the notifications page
+///   moderation     (a decision, an appeal answered, a report's outcome)
+///                                                 -> Account status
+///   moderation.queue  (the team only)             -> the moderation queue
 ///
 /// A like used to carry only its kind, so every activity notification
 /// opened the notifications page and left the reader to find the post.
@@ -54,6 +57,10 @@ PushDestination? pushDestination(Map<String, dynamic> data) {
         return (route: Routes.profile, arguments: actor);
       }
       return (route: Routes.notifications, arguments: null);
+    case 'moderation':
+      return (route: Routes.accountStatus, arguments: null);
+    case 'moderation.queue':
+      return (route: Routes.moderation, arguments: null);
     default:
       // The test notification, and anything a newer server sends that this
       // build does not know: opening the app is all it can mean.

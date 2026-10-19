@@ -66,6 +66,13 @@ enum ReportReason {
   final String label;
   final String detail;
 
+  /// The reason the server named, or [somethingElse] for one this build does
+  /// not know yet.
+  static ReportReason fromWire(Object? wire) => values.firstWhere(
+        (reason) => reason.wire == wire,
+        orElse: () => ReportReason.somethingElse,
+      );
+
   /// Reports that need a written explanation to be actionable.
   bool get needsDetail => this == ReportReason.somethingElse;
 }
@@ -77,6 +84,13 @@ enum ReportTarget {
 
   const ReportTarget(this.wire);
   final String wire;
+
+  static ReportTarget? fromWire(Object? wire) {
+    for (final target in values) {
+      if (target.wire == wire) return target;
+    }
+    return null;
+  }
 }
 
 /// Blocking, muting, hiding and reporting.

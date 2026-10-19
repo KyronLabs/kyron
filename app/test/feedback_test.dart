@@ -1,9 +1,8 @@
 // test/feedback_test.dart
 //
-// "Send Feedback" used to open an EmptyState saying feedback had nowhere to
-// go. It now files a real issue on the repository, through the API -- the
-// GitHub token stays on the server, because a token shipped inside an
-// installed app is a token anybody can read out of it.
+// "Send Feedback" said "Feedback cannot be sent right now" to everybody: it
+// filed public GitHub issues through a token the server never had. It now
+// goes to the API, which keeps it privately for the Kyron team.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,21 +14,25 @@ import 'package:kyron_app/widgets/action_button.dart';
 
 class _Refused implements Exception {
   @override
-  String toString() => 'GitHub would not take it';
+  String toString() => 'The server would not take it';
 }
 
 class _FakeFeedback extends FeedbackRepository {
   _FakeFeedback({this.available = true, this.sendFails = false})
       : super(ApiClient());
 
-  final bool available;
+  bool available;
+  int asked = 0;
   final bool sendFails;
 
   /// Every report this took, so a test can read back exactly what was filed.
   final List<Map<String, Object?>> filed = [];
 
   @override
-  Future<bool> isAvailable() async => available;
+  Future<bool> isAvailable() async {
+    asked++;
+    return available;
+  }
 
   @override
   Future<FiledReport> send({
@@ -38,6 +41,7 @@ class _FakeFeedback extends FeedbackRepository {
     required String body,
     String? appVersion,
     String? platform,
+    String? log,
   }) async {
     filed.add({
       'kind': kind,
@@ -47,10 +51,7 @@ class _FakeFeedback extends FeedbackRepository {
       'platform': platform,
     });
     if (sendFails) throw _Refused();
-    return const FiledReport(
-      number: 42,
-      url: 'https://github.com/KyronLabs/kyron/issues/42',
-    );
+    return const FiledReport(number: 42);
   }
 }
 
@@ -81,13 +82,29 @@ void main() {
     expect(find.byType(TextField), findsNothing);
   });
 
+  testWidgets('can ask again once the server is back', (tester) async {
+    // Unavailable now means unreachable: there is nothing left to configure.
+    // So "try again" is worth offering, and works.
+    final repo = _FakeFeedback(available: false);
+    await pump(tester, repo);
+
+    repo.available = true;
+    await tester.tap(find.text('Try again'));
+    await tester.pumpAndSettle();
+
+    expect(repo.asked, 2);
+    expect(find.byType(TextField), findsNWidgets(2));
+  });
+
   testWidgets('offers the form when it can', (tester) async {
     await pump(tester, _FakeFeedback());
 
     expect(find.byType(TextField), findsNWidgets(2));
-    for (final kind in FeedbackKind.values) {
+    for (final kind in FeedbackKind.offered) {
       expect(find.text(kind.label), findsOneWidget);
     }
+    // An error report has a screen of its own, with the log.
+    expect(find.text(FeedbackKind.report.label), findsNothing);
   });
 
   testWidgets('will not send until there is something to read', (tester) async {
@@ -177,7 +194,7 @@ void main() {
     expect(tester.widget<ActionButton>(sendButton()).onPressed, isNotNull);
   });
 
-  testWidgets('warns that the report will be public, and unattributed', (
+  testWidgets('says who reads it, and that it goes with the account', (
     tester,
   ) async {
     // Somebody about to paste a screenshot of their inbox into "what
@@ -187,10 +204,29 @@ void main() {
     final note = tester
         .widgetList<Text>(find.byType(Text))
         .map((t) => t.data ?? '')
-        .firstWhere((t) => t.contains('public repository'), orElse: () => '');
+        .firstWhere((t) => t.contains('Kyron team'), orElse: () => '');
 
-    expect(note, isNotEmpty, reason: 'no warning that the issue is public');
-    expect(note, contains('read by anybody'));
-    expect(note, contains('are not attached'));
+    expect(note, contains('Only the Kyron team reads this'));
+    expect(note, contains('your account'));
+    expect(note, contains('Deleting your account deletes it too'));
+  });
+
+  testWidgets('says the number to quote once it is sent', (tester) async {
+    final repo = _FakeFeedback();
+    await pump(tester, repo);
+
+    await tester.enterText(find.byType(TextField).first, 'No Post button');
+    await tester.enterText(
+      find.byType(TextField).last,
+      'The composer has no Post button on a small screen.',
+    );
+    await tester.pump();
+    await tester.ensureVisible(find.text('Send'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Send'));
+    await tester.pump();
+
+    expect(find.textContaining('report #42'), findsOneWidget);
+    await tester.pump(const Duration(seconds: 6));
   });
 }

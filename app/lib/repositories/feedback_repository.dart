@@ -1,29 +1,38 @@
 // lib/repositories/feedback_repository.dart
 import '../services/api_client.dart';
 
-/// What somebody is telling us. Two kinds, because they become two labels.
+/// What somebody is telling us.
 enum FeedbackKind {
-  bug('BUG', 'Something is broken'),
-  idea('IDEA', 'An idea');
+  bug('BUG', 'A problem'),
+  idea('IDEA', 'An idea'),
+
+  /// Somebody asking for help. Contact support opens the form on this.
+  question('QUESTION', 'A question'),
+
+  /// An error report from About, with the app's log when its sender chose.
+  report('REPORT', 'Error report');
+
+  /// The three the feedback form offers. An error report is its own screen.
+  static const offered = [bug, idea, question];
 
   const FeedbackKind(this.wire, this.label);
   final String wire;
   final String label;
 }
 
-/// Where a report ended up.
+/// What the sender is told once it has arrived: the number to quote if they
+/// write again.
 class FiledReport {
-  const FiledReport({required this.number, required this.url});
+  const FiledReport({required this.number});
   final int number;
-  final String url;
 }
 
-/// Sending a bug or an idea to the people who can act on it.
+/// Sending a bug, an idea, a question or an error report to the people who can act on it.
 ///
-/// It goes to the API, which files it as an issue on the repository. The
-/// GitHub token lives there and not here: a token shipped inside an installed
-/// application is a token anybody can read out of it, and it would carry write
-/// access to the repository.
+/// It goes to the API, which keeps it privately for the Kyron team, tied to
+/// the account so somebody can follow up. It used to be filed as a public
+/// GitHub issue, which needed a token the server never had -- so the screen
+/// told everybody feedback could not be sent.
 class FeedbackRepository {
   FeedbackRepository(this._api);
   final ApiClient _api;
@@ -43,6 +52,7 @@ class FeedbackRepository {
     required String body,
     String? appVersion,
     String? platform,
+    String? log,
   }) async {
     final res = await _api.dio.post<Map<String, dynamic>>(
       '/feedback',
@@ -52,11 +62,9 @@ class FeedbackRepository {
         'body': body,
         if (appVersion != null) 'appVersion': appVersion,
         if (platform != null) 'platform': platform,
+        if (log != null) 'log': log,
       },
     );
-    return FiledReport(
-      number: (res.data?['number'] as num?)?.toInt() ?? 0,
-      url: res.data?['url'] as String? ?? '',
-    );
+    return FiledReport(number: (res.data?['number'] as num?)?.toInt() ?? 0);
   }
 }

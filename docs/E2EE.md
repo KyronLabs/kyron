@@ -107,9 +107,10 @@ A key belongs to an account on one device. Consequences:
   that has it comes online -- which, if the only such device was the one that
   was wiped, is never. Older than 30 days, it does not ask.
 - **Losing every device loses the history.** There is no key backup and no
-  recovery phrase. Keys are no longer deleted on sign-out, but uninstalling
-  the app deletes them, and on Android a development build and a Play build
-  cannot replace each other without an uninstall.
+  recovery phrase yet -- the Kyron Vault, below, is the design for one. Keys
+  are no longer deleted on sign-out, but uninstalling the app deletes them,
+  and on Android a development build and a Play build cannot replace each
+  other without an uninstall.
 - **A signed-out key stays on the phone.** Somebody with the phone and the
   means to read its secure storage -- a rooted handset, say -- could take a
   signed-out account's key as they could a signed-in one's. Deleting the
@@ -198,8 +199,150 @@ every answer is sealed for one device's key.
 | Attachments in the clear | Encrypt the file before upload; the key travels in the sealed message |
 | Reactions readable | Send a reaction as a small sealed message that names the one it reacts to |
 | Push shows no preview | A data-only push the app opens on the device and draws itself |
-| No backup | A recovery phrase the user writes down, encrypting the secret half; or Android's Block Store, which restores a small secret to a new phone during setup, end-to-end encrypted (whether it also survives a reinstall on the same phone needs testing before relying on it) |
+| No backup | The Kyron Vault, below: every key the account has had, sealed under a key only the account's own unlockers can open |
 | Signed-out key stays on the phone | "Sign out and remove from this phone", which erases it |
+
+## Planned: the Kyron Vault
+
+**Status: designed, not built.** Waiting on a domain (kyron.so) to tie passkeys
+to the app. Nothing here is true of the app today.
+
+### The problem it solves
+
+A message is sealed for the device keys that existed when it was sent. Lose
+every device that held one of those keys -- a reinstall, a new phone, a phone
+in a river -- and the message is gone. "Waiting for this message" recovers it
+only when another device that holds the key comes online, and on 18 October
+2026 that was nobody: three messages had been sealed for the recipients'
+installs, since wiped, and for the Google test device that sent them, since
+thrown away.
+
+### The rule no design gets round
+
+To restore a key on a blank device, the device needs something only its owner
+has. If Kyron's server could restore a key from the login alone, Kyron could
+read the messages, and this would not be end-to-end encryption.
+
+Every system that does this well -- WhatsApp's backups, Signal's PIN, iCloud
+Advanced Data Protection, 1Password -- builds recovery from the same
+ingredients: a device the owner still has, something they know, a credential
+their platform syncs for them, or a server that cannot read what it guards
+because tamper-proof hardware stops it. The vault offers several and needs any
+one.
+
+### How it works
+
+**One Account Key per account.** 32 random bytes, made on the first device
+that turns the vault on. No server ever sees it.
+
+**The vault.** Every message key the account has ever had, on any device -- and
+its identity (DID) key -- sealed under the Account Key with
+XChaCha20-Poly1305, and stored on Kyron's server. Each entry's associated data
+names the account and the entry, so the server cannot move an entry to another
+account or pass one key off as another: it fails to open rather than opening
+as the wrong thing. A device adds its own key to the vault when it makes one.
+
+**Unlockers.** The Account Key is sealed again, separately, under each of the
+account's unlockers. Any one of them opens it. The server stores these sealed
+copies and can open none of them.
+
+| Unlocker | What the owner does | What it trusts |
+|:--|:--|:--|
+| Passkey | Touches the fingerprint sensor or looks at the camera | The platform's passkey sync -- Google Password Manager, iCloud Keychain -- which is itself end-to-end encrypted under the screen lock |
+| Another device | Points an old phone's camera at a QR code on the new one | Nothing: the key goes from screen to camera |
+| Recovery code | Writes down 24 words, once | Nothing but the paper |
+| Block Store (Android) | Nothing: restored with the phone | Google's backup, end-to-end encrypted under the screen lock |
+
+- **Passkey.** A passkey made for Kyron's domain, with the WebAuthn *PRF*
+  extension: asked with a fixed salt, the passkey returns the same 32-byte
+  secret every time, computed inside the authenticator, and never reveals its
+  private key. HKDF over that secret (`kyron/vault/v1/passkey`) is the key
+  that seals the Account Key. Passkeys sync across the owner's phones,
+  tablets and browsers, so a new phone signed in to the same Google or Apple
+  account has it already. This is how WhatsApp's passkey-encrypted backups,
+  launched in October 2025, work.
+- **Another device.** The new device shows a QR code holding a one-time
+  X25519 public key. The old device reads it with its camera, seals the
+  Account Key for that key, and sends it through the server. The server
+  carries it and cannot open it, and because the public key travelled by
+  camera it cannot swap in its own.
+- **Recovery code.** 256 random bits, shown as 24 words. Random enough that
+  HKDF is all it needs -- no slow password hashing, because there is nothing
+  to guess. Shown once, at setup, with the plain warning that whoever holds it
+  can read every message.
+- **Block Store.** On Android, the Account Key is also kept in Google Play
+  services' Block Store, one entry per account. Google documents that Block
+  Store survives an uninstall and reinstall when the owner has backup on, and
+  moves to a new phone restored during setup. Backed up to the cloud only when
+  `isEndToEndEncryptionAvailable()` says so -- Android 9 or later, with a
+  screen lock -- because without that, Google could read it. Block Store
+  checks the app's signature, so a development build and a Play build cannot
+  read each other's.
+
+**A new device.** Sign in. If the account has a vault, the app asks for the
+easiest unlocker it has -- Block Store silently, then the passkey, then
+"scan from your other phone", then the recovery code -- opens the Account Key,
+downloads the vault, and every message sealed for any key the account ever had
+opens at once. Nobody else has to be online. "Waiting for this message" stays,
+for messages from before the vault existed.
+
+**Several accounts on one phone.** One Account Key, one vault and one set of
+unlockers per account, as message keys already are.
+
+### Losing a device
+
+The lost device knows the Account Key, so removing it makes a new one: every
+vault entry is sealed again under it, every unlocker is sealed again, and the
+lost device's message key is withdrawn so nothing new is sealed for it. The
+passkey can be asked again on the spot. The recovery code cannot -- the device
+doing this does not know it, and keeping something that could reseal it would
+be keeping the code -- so **removing a device issues a new recovery code**,
+and the old one stops working.
+
+What the lost device could already read, it still can: its own key opens what
+was sealed for it. Removing it closes the future, not the past. That is true
+of every end-to-end system.
+
+### What it does not do
+
+- **It cannot recover from nothing.** No device, no passkey, no Block Store,
+  no recovery code: the history is gone. The app says so when the vault is set
+  up, not when it is too late.
+- **No PIN.** A 4- or 6-digit PIN guarded only by Kyron's server is a PIN
+  Kyron's server could try every value of in minutes, which is encryption in
+  name only. Signal makes PINs safe by checking them inside secure enclaves
+  that limit guesses even against Signal (Secure Value Recovery). If Kyron
+  ever offers a PIN, that is the bar, and it is real infrastructure.
+- **No new cryptography.** XChaCha20-Poly1305, X25519, HKDF-SHA256 and WebAuthn
+  PRF, as they are. What is new is putting them together for a social app's
+  direct messages, and the experience: "Welcome back -- touch to unlock your
+  messages."
+
+### What a server compromise gets
+
+| Attacker | Gets |
+|:--|:--|
+| A database leak | Sealed vault entries and sealed Account Keys: nothing readable |
+| An actively malicious server | Still not the Account Key. It can withhold the vault, or serve an old copy of it, which loses the keys added since -- a denial of service, not a disclosure |
+| Somebody with the recovery code | Everything. It is a password, and is shown as one |
+| Somebody in the owner's Google or Apple account, with their screen lock | The passkey, and so the vault: the same exposure as the rest of that account |
+
+### Before it can be built
+
+- **A domain.** Passkeys belong to a domain (the relying party). kyron.so
+  would serve `/.well-known/assetlinks.json` for Android and
+  `/.well-known/apple-app-site-association` for iOS, tying the app to it.
+- **PRF where it runs.** Google Password Manager supports PRF on Android;
+  third-party password managers on Android cannot offer it yet. iCloud
+  Keychain supports it from iOS 18. Windows to be checked when this is built.
+  Where PRF is missing, the device falls back to the QR code and the
+  recovery code.
+
+### Order
+
+1. The vault, with passkey and recovery-code unlockers.
+2. "Scan from your other phone".
+3. Block Store, as the silent first try on Android.
 
 ## Honestly
 

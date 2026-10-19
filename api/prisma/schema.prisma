@@ -28,7 +28,10 @@ enum EmailStatus {
 
 enum AccountStatus {
   ACTIVE
+  /// Read-only until suspendedUntil. See docs/MODERATION.md.
   SUSPENDED
+  /// Signed in only to see why, appeal, or delete the account.
+  BANNED
   DELETED
 }
 
@@ -80,6 +83,12 @@ model User {
   // they stay in Communities, where each one shows what is new.
   communityPostsInHome Boolean @default(true)
 
+  // When a suspension ends. Kept in step with status by
+  // ModerationService.applyStanding from the actions that are in force, so
+  // the guard can tell a running suspension from a finished one without a
+  // second query.
+  suspendedUntil DateTime? @db.Timestamptz()
+
   // Timestamps
   createdAt DateTime  @default(now()) @db.Timestamptz()
   updatedAt DateTime  @updatedAt @db.Timestamptz()
@@ -123,7 +132,14 @@ model User {
   devices           DeviceToken[]
   messageKeys       MessageKey[]
   messageKeyShares  MessageKeyShare[]
+  feedback          Feedback[]
   messageReactions  MessageReaction[]
+  moderationActions ModerationAction[]   @relation("ModerationSubject")
+  moderationTaken   ModerationAction[]   @relation("ModerationModerator")
+  moderationUndone  ModerationAction[]   @relation("ModerationReverser")
+  appeals           Appeal[]             @relation("AppealAuthor")
+  appealsDecided    Appeal[]             @relation("AppealReviewer")
+  reportsResolved   Report[]             @relation("ReportResolver")
 
   @@index([email])
   @@index([status])
@@ -742,13 +758,145 @@ model Report {
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()
 
-  reporter User @relation("Reporter", fields: [reporterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  // What came of it. Set together when somebody on the team closes it:
+  // dismissed, or acted on through [action].
+  resolvedAt   DateTime? @db.Timestamptz()
+  resolvedById String?   @db.Uuid
+  actionId     String?   @db.Uuid
+
+  reporter   User              @relation("Reporter", fields: [reporterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  resolvedBy User?             @relation("ReportResolver", fields: [resolvedById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  action     ModerationAction? @relation(fields: [actionId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
   // One report per person per thing. A second one is the same complaint, and
   // counting it twice would make a brigade look like a consensus.
   @@unique([reporterId, target, targetId])
   @@index([target, targetId])
   @@index([status, createdAt])
+  @@index([reporterId, createdAt(sort: Desc)])
+}
+
+// ==========================================
+// 11z. ENFORCEMENT AND APPEALS
+// ==========================================
+// See docs/MODERATION.md for the policy these carry out.
+
+/// What the team did about an account.
+///
+/// The account-level effect is [kind]; content removed as part of the same
+/// decision is [target]/[targetId], so "removed the post and suspended the
+/// account" is one decision with one notice and one appeal, not two.
+enum ModerationKind {
+  /// Content removed, nothing else.
+  REMOVE
+  /// A notice on the record. Nothing is restricted.
+  WARN
+  /// Read-only until endsAt.
+  SUSPEND
+  /// Until an appeal or the team reverses it.
+  BAN
+}
+
+enum AppealStatus {
+  OPEN
+  /// The decision stands.
+  UPHELD
+  /// The decision is reversed: content restored, restrictions lifted.
+  OVERTURNED
+}
+
+model ModerationAction {
+  id     String @id @default(uuid()) @db.Uuid
+  /// What the account and the team quote: "case 12".
+  number Int    @unique @default(autoincrement())
+
+  /// Null once the account is deleted. The record stays, without the
+  /// content it quoted: see AccountService.deleteData.
+  subjectId   String? @db.Uuid
+  /// Null once that moderator's account is deleted.
+  moderatorId String? @db.Uuid
+
+  kind ModerationKind
+  /// Which rule, in the same words a report uses.
+  rule ReportReason
+
+  /// What the account is told, in the moderator's words.
+  message String  @db.Text
+  /// For the team only. Never sent to the account.
+  note    String? @db.Text
+
+  /// The post or comment this decision is about, if it is about one.
+  target         ReportTarget?
+  targetId       String?       @db.Uuid
+  /// Whether this decision took it down. False when its author had already
+  /// deleted it, so overturning the decision does not bring back something
+  /// its author removed themselves.
+  removedContent Boolean       @default(false)
+  /// What it said when the decision was made.
+  snapshot       String?       @db.Text
+
+  /// When a SUSPEND ends.
+  endsAt DateTime? @db.Timestamptz()
+
+  createdAt DateTime  @default(now()) @db.Timestamptz()
+  /// When the account first opened the notice.
+  seenAt    DateTime? @db.Timestamptz()
+
+  /// Undone: by an appeal, or by the team on its own account of a mistake.
+  reversedAt   DateTime? @db.Timestamptz()
+  reversedById String?   @db.Uuid
+  reversal     String?   @db.Text
+
+  subject    User?    @relation("ModerationSubject", fields: [subjectId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  moderator  User?    @relation("ModerationModerator", fields: [moderatorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  reversedBy User?    @relation("ModerationReverser", fields: [reversedById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  appeal     Appeal?
+  reports    Report[]
+
+  @@index([subjectId, createdAt(sort: Desc)])
+  @@index([target, targetId])
+}
+
+/// One per decision: asking for it to be looked at again.
+model Appeal {
+  id        String @id @default(uuid()) @db.Uuid
+  actionId  String @unique @db.Uuid
+  userId    String @db.Uuid
+  /// Why the account thinks the decision was wrong.
+  statement String @db.Text
+
+  status     AppealStatus @default(OPEN)
+  reviewerId String?      @db.Uuid
+  /// What the account is told about the decision.
+  response   String?      @db.Text
+
+  createdAt DateTime  @default(now()) @db.Timestamptz()
+  decidedAt DateTime? @db.Timestamptz()
+  /// When the account first read the decision.
+  seenAt    DateTime? @db.Timestamptz()
+
+  action   ModerationAction @relation(fields: [actionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user     User             @relation("AppealAuthor", fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  reviewer User?            @relation("AppealReviewer", fields: [reviewerId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+
+  @@index([status, createdAt])
+}
+
+/// An email address that belongs to a banned account, kept as a hash.
+///
+/// Deleting a banned account removes the account and its address with it,
+/// and signing up again with the same address would start clean. A new
+/// account whose address hashes to one of these starts banned instead,
+/// under the same case, and can appeal it like the first.
+model BannedIdentity {
+  /// sha256 of the lower-cased, trimmed address.
+  emailHash String   @id
+  /// The ban it came from. Not a relation: the action can lose its subject,
+  /// and this must outlive both.
+  actionId  String   @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  @@index([actionId])
 }
 
 // ==========================================
@@ -1133,6 +1281,47 @@ model MessageKeyShare {
 
   @@unique([messageId, publicKey])
   @@index([userId])
+}
+
+/// What somebody told the team from inside the app: something broken, an
+/// idea, or an error report with the app's log attached.
+///
+/// Private. It used to be filed as an issue on the public repository, which
+/// needed a GitHub token on the server, published whatever people wrote --
+/// account details pasted into a bug report included -- and left the team no
+/// way to answer anybody privately. Here it is read by the team and nobody
+/// else, and it goes with the account when the account is deleted.
+model Feedback {
+  id     String @id @default(uuid()) @db.Uuid
+  /// What the sender is told to quote: "report #12".
+  number Int    @unique @default(autoincrement())
+
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  kind  FeedbackType
+  title String
+  body  String       @db.Text
+
+  /// The app's own log, when an error report chose to attach it.
+  log String? @db.Text
+
+  appVersion String?
+  platform   String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  @@index([createdAt(sort: Desc)])
+  @@index([userId])
+}
+
+enum FeedbackType {
+  BUG
+  IDEA
+  /// Somebody asking for help, from Contact support.
+  QUESTION
+  /// An error report from About, usually with the log.
+  REPORT
 }
 
 // ==========================================

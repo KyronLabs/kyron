@@ -12,6 +12,82 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Security
+
+- **Account details could be read without signing in.** `GET /users/:id`
+  answered anybody, with no sign-in, and returned the whole account row for
+  any id -- including the email address -- while every post carries its
+  author's id. `POST /users`, beside it, created accounts with any role the
+  request named, administrator included. Neither was used by any client;
+  both are gone. A test now lists every route that answers without a
+  sign-in and fails when one appears that is not on its list, and a sign-in
+  matched to an existing account by email address alone can no longer
+  inherit a staff role.
+- **A suspended account could do everything.** The account status column
+  was set by nothing and checked only by a password sign-in no client uses.
+  Suspensions and bans are now enforced on every request and on the realtime
+  connection.
+
+### Fixed
+
+- **Releases go to closed testing, where the testers are.** 0.1.5 was sent
+  to Play's internal testing track, which nobody tests on; Kyron's testers,
+  and Google's reviews, are on Closed testing - Alpha. Releases now go there
+  by default, and the `PLAY_TRACK` repository variable picks another testing
+  track. The release notes are written in the store listing's own default
+  language rather than always US English, which a listing in another
+  language would not have shown. When Play will not send a release for
+  review by itself, the run now says so and what to press, instead of
+  reporting it as delivered. Production is refused outright.
+- **Feedback can be sent.** Send Feedback said "Feedback cannot be sent
+  right now" to everybody: it filed issues on the public GitHub repository
+  through a token the server never had, and would have published what
+  people wrote, with their account, if it had. It is now kept privately for
+  the Kyron team, tied to the account so we can answer by email, and
+  deleted with the account. The form offers a problem, an idea or a
+  question, and says the report number to quote.
+- **Error reports arrive.** Send error report opened a mail to
+  support@kyron.so, a domain Kyron does not own. It now sends the report,
+  and the app's log if you leave that on, to the same private inbox.
+- **Contact support has somewhere to go.** It said to "open an issue" and
+  linked nowhere. It now offers asking a question, reporting a problem, an
+  error report and the service status inside the app, and the safety and
+  privacy addresses the privacy policy names. The Help Centre rows are gone
+  until there is a Help Centre: help.kyron.so never loaded.
+- **Muted words can be added.** The field to type a word into did not
+  appear, so the screen said "add a word or a tag above" over nothing.
+- **Muted and blocked accounts are tabs**, in the same style as the rest of
+  the app, and say how to mute or block somebody when the list is empty.
+
+### Added
+
+- **Reports are acted on, and decisions can be appealed.** The report button
+  had nothing behind it: reports were stored and never read. Now:
+  - **The team** (moderators and admins, appointed with
+    `npm run account:role`) gets a notification for each report, and works
+    from Settings > Moderation. Reports are grouped by what was reported,
+    urgent ones first. Each decision removes the post or reply, warns,
+    suspends for 1 to 365 days, or bans, with a message to the account in
+    the reviewer's own words.
+  - **The account** is always told. Settings > Account status lists every
+    decision with the rule, the message and what the post said. Each
+    decision can be appealed once, for six months, and somebody other than
+    whoever decided hears the appeal.
+  - **Suspended** accounts can read but not post. **Banned** accounts see
+    only why, the appeal, support and account deletion; their posts
+    disappear for everybody else, and come back if the ban is overturned.
+  - **Whoever reported** is told whether action was taken.
+  - **Deleting a banned account** does not lift the ban: a new account at
+    the same email address starts banned, and can appeal.
+  - docs/MODERATION.md has the policy, how to appoint the team, and what the
+    team must do outside the app.
+- **A written plan for message backups.** Not built yet: docs/E2EE.md now
+  describes the Kyron Vault, which would keep every message key an account
+  has had, sealed under a key that only the account's own passkey, another
+  of its devices, a written-down recovery code or Android's Block Store can
+  open -- so a new phone reads the whole history at once, and Kyron still
+  cannot. It waits on a domain for passkeys.
+
 ## [0.1.5] - 2026-10-19
 ### Added
 

@@ -214,8 +214,14 @@ are checked before they are published (`scripts/check-aab.sh`): signed with
 the upload key, and carrying the version code their build number gives.
 
 Once it is set up (below), every **versioned release** sends its bundle to
-the **internal testing** track itself, with its changelog section as the
-notes, and testers get it within minutes. Development builds are not sent:
+**Closed testing - Alpha**, where Kyron's testers are, with its changelog
+section as the notes in the listing's default language. Google reviews a
+closed testing release before testers get it -- Play Console → **Publishing
+overview** shows where it is. To send to another track, set the repository
+variable `PLAY_TRACK` (Settings → Secrets and variables → Actions →
+Variables) to Play's name for it: `internal` for internal testing, `beta` for
+open testing. Never production; the script refuses it, and that stays a
+decision made in Play Console. Development builds are not sent:
 their bundle carries the last release's version name, and testers would get
 every merge to `main`. To put one in front of testers anyway, or before this
 is set up: in Play Console → **Test and release → Testing → Internal testing
@@ -230,8 +236,8 @@ the last release's, so in Play two different builds can both read `0.1.1`.
 
 Only an app's first bundle has to be uploaded by hand. After that,
 `scripts/play-upload.py` sends each release's through Play's Developer API,
-as a service account, from the "Send the bundle to Play internal testing"
-job in the Release workflow. Setting it up, once:
+as a service account, from the "Send the bundle to Play testing" job in the
+Release workflow. Setting it up, once:
 
 1. **Google Cloud Console**, in the project linked to Play Console
    (`601078807832`): APIs & Services → Library → enable the **Google Play

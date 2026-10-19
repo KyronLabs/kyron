@@ -13,11 +13,26 @@ import {
 import { Reflector } from '@nestjs/core';
 import { PrismaService } from '@/infrastructure/prisma/prisma.service';
 import { Request } from 'express';
-import { AccountStatus, User, UserRole, EmailStatus } from '@prisma/client';
+import {
+  AccountStatus,
+  EmailStatus,
+  ModerationKind,
+  ReportReason,
+  User,
+  UserRole,
+} from '@prisma/client';
 import {
   SupabaseTokenService,
   type SupabaseClaims,
 } from '@/modules/auth/supabase-token.service';
+import {
+  RESTRICTED_ACCESS,
+  type RestrictedAccess,
+  emailHash,
+  refuses,
+  restrictedError,
+  restrictionOf,
+} from './standing';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -69,6 +84,28 @@ export class AuthGuard implements CanActivate {
 
     (request as any).user = user;
 
+    // Suspensions and bans, enforced here rather than in each service: the
+    // status column was set by nothing and read only by the password sign-in
+    // that no client uses, so a suspended account could do everything.
+    const restriction = restrictionOf(user);
+    if (restriction) {
+      const access = this.reflector.getAllAndOverride<
+        RestrictedAccess | undefined
+      >(RESTRICTED_ACCESS, [ctx.getHandler(), ctx.getClass()]);
+      if (refuses(restriction, request.method, access)) {
+        throw restrictedError(restriction);
+      }
+    } else if (user.status === AccountStatus.SUSPENDED) {
+      // Its time is up. Put the row right, so the next request -- and every
+      // list that reads the status -- sees an ordinary account again.
+      void this.prisma.user
+        .updateMany({
+          where: { id: user.id, status: AccountStatus.SUSPENDED },
+          data: { status: AccountStatus.ACTIVE, suspendedUntil: null },
+        })
+        .catch(() => undefined);
+    }
+
     const requiredRoles =
       this.reflector.get<UserRole[]>('roles', ctx.getHandler()) || [];
 
@@ -114,6 +151,25 @@ export class AuthGuard implements CanActivate {
       const recovered = await this.prisma.user.findFirst({
         where: { OR: [{ id: claims.sub }, { email }] },
       });
+      // A row matched by email alone was not made for this sign-in, and
+      // anything that could write an email into User -- POST /users could,
+      // with any role it was asked for -- would otherwise hand that row's
+      // role to whoever signs up with the address. A staff role is never
+      // inherited that way; it is granted to the account's own id.
+      if (
+        recovered &&
+        recovered.id !== claims.sub &&
+        recovered.role !== UserRole.USER
+      ) {
+        this.logger.error(
+          `Refused to sign ${claims.sub} in as ${recovered.id}: the rows ` +
+            `share an email address, and ${recovered.id} is ${recovered.role}.`,
+        );
+        throw new ForbiddenException(
+          'This sign-in matches an account Kyron cannot attach it to. ' +
+            'Contact support.',
+        );
+      }
       if (recovered) return this.backfill(recovered, { name, username });
 
       // Nothing to read back, so the collision was on the handle: `username`
@@ -161,13 +217,13 @@ export class AuthGuard implements CanActivate {
   }
 
   /** The row that mirrors a Supabase account. */
-  private createMirror(
+  private async createMirror(
     id: string,
     email: string,
     name: string | null,
     username: string | null,
   ): Promise<User> {
-    return this.prisma.user.create({
+    const created = await this.prisma.user.create({
       data: {
         id,
         email,
@@ -184,6 +240,47 @@ export class AuthGuard implements CanActivate {
         emailStatus: EmailStatus.VERIFIED,
         emailVerifiedAt: new Date(),
       },
+    });
+    return this.inheritBan(created);
+  }
+
+  /**
+   * A new account at the address of a banned one starts banned.
+   *
+   * Deleting a banned account and signing up again with the same address
+   * would otherwise wipe the ban. The new account gets a ban of its own,
+   * which says where it came from and can be appealed like any other -- an
+   * address can change hands, and the person now holding it can say so.
+   */
+  private async inheritBan(user: User): Promise<User> {
+    const ban = await this.prisma.bannedIdentity.findUnique({
+      where: { emailHash: emailHash(user.email) },
+    });
+    if (!ban) return user;
+
+    const original = await this.prisma.moderationAction.findUnique({
+      where: { id: ban.actionId },
+      select: { rule: true, number: true },
+    });
+    const ref = original ? ` (case ${original.number})` : '';
+    await this.prisma.moderationAction.create({
+      data: {
+        subjectId: user.id,
+        kind: ModerationKind.BAN,
+        rule: original?.rule ?? ReportReason.SOMETHING_ELSE,
+        message:
+          `This email address belongs to an account that was banned from ` +
+          `Kyron${ref}, so this account is banned too. If that account was ` +
+          `not yours, or its ban was a mistake, appeal and say so.`,
+        note: `Inherited by email address from case ${original?.number ?? '(deleted)'}.`,
+      },
+    });
+    this.logger.warn(
+      `Provisioned ${user.id} banned: its address belongs to a banned account${ref}.`,
+    );
+    return this.prisma.user.update({
+      where: { id: user.id },
+      data: { status: AccountStatus.BANNED },
     });
   }
 

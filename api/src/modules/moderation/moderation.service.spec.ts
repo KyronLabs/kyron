@@ -6,6 +6,7 @@ import {
   ReportReason,
   ReportTarget,
 } from '@prisma/client';
+import { EnforcementService } from './enforcement.service';
 import { ModerationService } from './moderation.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
@@ -50,6 +51,10 @@ describe('ModerationService', () => {
     const moduleRef = await Test.createTestingModule({
       providers: [
         ModerationService,
+        {
+          provide: EnforcementService,
+          useValue: { reportFiled: jest.fn().mockResolvedValue(undefined) },
+        },
         {
           provide: PrismaService,
           useValue: {

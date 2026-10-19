@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -8,12 +9,14 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../providers/preferences_provider.dart';
 import '../providers/push_provider.dart';
-import '../services/app_browser.dart';
 import '../services/app_preferences.dart';
 
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 
+import '../config/legal_links.dart';
 import '../providers/feedback_provider.dart';
+import '../routes.dart';
+import '../services/app_browser.dart';
 import '../repositories/feedback_repository.dart';
 import '../utils/api_error_message.dart';
 import '../services/app_info.dart';
@@ -699,25 +702,135 @@ class _PushTestState extends ConsumerState<_PushTest> {
   }
 }
 
+/// How to reach the Kyron team.
+///
+/// This said to "open an issue" and linked nowhere, and there is no issue
+/// tracker anybody using the app could be expected to find. Now each way in
+/// is one that arrives: the private inbox in the app for questions and
+/// problems, the log for crashes, and, for what should not wait on the app,
+/// the two addresses the published privacy policy names.
 class SettingsContactSupportScreen extends StatelessWidget {
   const SettingsContactSupportScreen({super.key});
 
+  /// Opens a mail to [address], or copies it when no mail app will.
+  ///
+  /// Plenty of phones have no mail app set up, and an address that nothing
+  /// happens on reads as a broken button.
+  static Future<void> _write(BuildContext context, String address) async {
+    final opened = await AppBrowser.leave(Uri(scheme: 'mailto', path: address));
+    if (opened || !context.mounted) return;
+    await Clipboard.setData(ClipboardData(text: address));
+    if (context.mounted) {
+      Toast.show(context, 'No mail app opened. $address is copied.');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final scheme = Theme.of(context).colorScheme;
+    final faint = scheme.onSurface.withValues(alpha: .55);
+
+    Widget row({
+      required IconData icon,
+      required String title,
+      required String detail,
+      required VoidCallback onTap,
+      bool leaves = false,
+    }) =>
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: Icon(icon, size: 20),
+          title: Text(title),
+          subtitle: Text(detail, style: TextStyle(color: faint)),
+          trailing: Icon(
+            leaves ? Iconsax.export_3_copy : Iconsax.arrow_right_3_copy,
+            size: leaves ? 16 : 18,
+          ),
+          onTap: onTap,
+        );
+
+    Widget group(String title) => Padding(
+          padding: const EdgeInsets.only(
+            top: SpacingTokens.space16,
+            bottom: SpacingTokens.space4,
+          ),
+          child: Text(
+            title.toUpperCase(),
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize1,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.8,
+              color: faint,
+            ),
+          ),
+        );
+
     return SettingsScaffold(
-      title: AppLocalizations.of(context).helpAndSupport,
+      title: l10n.contactSupport,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(AppLocalizations.of(context).gettingHelp,
-              style: Theme.of(context).textTheme.titleMedium),
-          const SizedBox(height: SpacingTokens.space8),
           Text(
-            AppLocalizations.of(context).supportEarlyExplanation,
+            'Write to the Kyron team from here. It reaches us privately, with '
+            'your account, and we answer at the email address on it.',
             style: Theme.of(context).textTheme.bodyMedium,
           ),
-          const SizedBox(height: SpacingTokens.space20),
-          _Note(AppLocalizations.of(context).supportInboxNotYet),
+          group('In the app'),
+          row(
+            icon: Iconsax.message_question_copy,
+            title: 'Ask a question',
+            detail: 'About your account, or how something works',
+            onTap: () => Navigator.pushNamed(
+              context,
+              Routes.settingsFeedback,
+              arguments: FeedbackKind.question,
+            ),
+          ),
+          row(
+            icon: Iconsax.danger_copy,
+            title: 'Report a problem',
+            detail: 'Something is broken or not doing what it should',
+            onTap: () => Navigator.pushNamed(
+              context,
+              Routes.settingsFeedback,
+              arguments: FeedbackKind.bug,
+            ),
+          ),
+          row(
+            icon: Iconsax.warning_2_copy,
+            title: l10n.sendErrorReport,
+            detail: 'If Kyron crashed: sends the app\'s log with it',
+            onTap: () => Navigator.pushNamed(context, Routes.aboutErrorReport),
+          ),
+          row(
+            icon: Iconsax.status_up_copy,
+            title: l10n.serviceStatus,
+            detail: 'Whether Kyron is down for everybody, or just you',
+            onTap: () => Navigator.pushNamed(context, Routes.aboutStatus),
+          ),
+          const SizedBox(height: SpacingTokens.space8),
+          const Hairline(),
+          group('By email'),
+          row(
+            icon: Iconsax.shield_cross_copy,
+            title: 'Safety and abuse',
+            detail: SupportLinks.abuse,
+            leaves: true,
+            onTap: () => _write(context, SupportLinks.abuse),
+          ),
+          row(
+            icon: Iconsax.lock_copy,
+            title: 'Privacy and your data',
+            detail: SupportLinks.privacy,
+            leaves: true,
+            onTap: () => _write(context, SupportLinks.privacy),
+          ),
+          const SizedBox(height: SpacingTokens.space12),
+          const _Note(
+            'To report a post or an account, use the menu on it: that tells '
+            'us exactly which one you mean.',
+          ),
         ],
       ),
     );
@@ -726,17 +839,20 @@ class SettingsContactSupportScreen extends StatelessWidget {
 
 /// Reporting a bug or asking for something, from inside the app.
 ///
-/// This screen used to say "Feedback has nowhere to go yet" and mean it: there
-/// was no endpoint, so a form would have accepted what somebody wrote and
-/// dropped it. There is one now, and it files an issue on the repository.
+/// What is written goes to the Kyron team and nobody else, with the account
+/// that sent it so somebody can follow up. It used to be filed as an issue on
+/// the public repository, and in practice was not filed at all: the token
+/// that needed was never set, so this screen said "Feedback cannot be sent
+/// right now" to everybody.
 ///
-/// Two things it is careful about. It asks the server whether reports can be
-/// filed *before* offering the form, so nobody writes three paragraphs into a
-/// box that cannot send them. And it says plainly that what they write will be
-/// public, because it will be: an issue on a public repository is readable by
-/// anybody.
+/// It still asks the server first, so nobody writes three paragraphs into a
+/// box that cannot send them -- which now only happens when the server cannot
+/// be reached at all.
 class SettingsFeedbackScreen extends ConsumerStatefulWidget {
-  const SettingsFeedbackScreen({super.key});
+  const SettingsFeedbackScreen({super.key, this.kind = FeedbackKind.bug});
+
+  /// Which kind the form starts on. Contact support opens it on a question.
+  final FeedbackKind kind;
 
   @override
   ConsumerState<SettingsFeedbackScreen> createState() =>
@@ -748,7 +864,7 @@ class _SettingsFeedbackScreenState
   final _title = TextEditingController();
   final _body = TextEditingController();
 
-  FeedbackKind _kind = FeedbackKind.bug;
+  late FeedbackKind _kind = widget.kind;
   bool _sending = false;
   String? _error;
 
@@ -777,6 +893,7 @@ class _SettingsFeedbackScreenState
 
   Future<void> _askIfItCanBeSent() async {
     unawaited(_readVersion());
+    if (_available != null) setState(() => _available = null);
     try {
       final can = await ref.read(feedbackRepositoryProvider).isAvailable();
       if (mounted) setState(() => _available = can);
@@ -823,19 +940,13 @@ class _SettingsFeedbackScreenState
           );
       if (!mounted) return;
       setState(() => _sending = false);
-      final navigator = Navigator.of(context);
       Toast.show(
         context,
-        'Sent. It is report #${filed.number}.',
-        // The report is public, and where any answer to it will be.
-        action: filed.url.isEmpty
-            ? null
-            : ToastAction(
-                AppLocalizations.of(context).ui('ui_toast_view', 'View'),
-                () => AppBrowser.open(navigator.context, filed.url),
-              ),
+        filed.number > 0
+            ? 'Sent -- thank you. It is report #${filed.number}.'
+            : 'Sent -- thank you.',
       );
-      navigator.pop();
+      Navigator.of(context).pop();
     } catch (error) {
       if (!mounted) return;
       setState(() {
@@ -845,43 +956,73 @@ class _SettingsFeedbackScreenState
     }
   }
 
+  /// Said about a question, the form's words are about a bug: "what
+  /// happened", "what you expected". So the long field's label and hint
+  /// follow the kind chosen.
+  ({String label, String hint, String title}) _words(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return switch (_kind) {
+      FeedbackKind.idea => (
+          label: 'What would help',
+          hint: 'What you would like, and what it would let you do.',
+          title: 'Let me pin a post to my profile',
+        ),
+      FeedbackKind.question => (
+          label: 'Your question',
+          hint: 'What you are trying to do, and where you are stuck.',
+          title: 'How do I mute a word?',
+        ),
+      _ => (
+          label: l10n.ui(
+              'ui_settings_subscreens_what_happened_977dd8', 'What happened'),
+          hint: '${l10n.literalwhatYouDidWhatYouExpectedWhatHappened}instead.',
+          title: l10n.theComposerNoPostButton,
+        ),
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final title = widget.kind == FeedbackKind.question
+        ? AppLocalizations.of(context).contactSupport
+        : AppLocalizations.of(context).literalsendFeedback;
+    final words = _words(context);
 
     if (_available == null) {
       return SettingsScaffold(
-        title: AppLocalizations.of(context).literalsendFeedback,
-        child: Center(child: CircularProgressIndicator()),
+        title: title,
+        child: const Center(child: CircularProgressIndicator()),
       );
     }
 
     if (_available == false) {
       return SettingsScaffold(
-        title: AppLocalizations.of(context).literalsendFeedback,
+        title: title,
         child: EmptyState(
           art: EmptyArt.messages,
           title:
               AppLocalizations.of(context).literalfeedbackCannotBeSentRightNow,
-          detail:
-              'This build cannot reach the place reports are filed. Said here '
-              'rather than in a form, so nothing you write is taken and lost.',
+          detail: 'Kyron could not be reached. Check your connection and try '
+              'again -- nothing has been written yet, so nothing is lost.',
+          action: AppLocalizations.of(context).ui('ui_try_again', 'Try again'),
+          onAction: _askIfItCanBeSent,
         ),
       );
     }
 
     return SettingsScaffold(
-      title: AppLocalizations.of(context).literalsendFeedback,
+      title: title,
       // A Column, not a ListView: SettingsScaffold already puts its child in a
       // scroll view, and a second one inside it is a vertical viewport given
       // unbounded height -- which does not lay out at all.
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Two, drawn rather than hidden behind a menu: there are only two.
+          // Drawn rather than hidden behind a menu: there are only three.
           Row(
             children: [
-              for (final kind in FeedbackKind.values) ...[
+              for (final kind in FeedbackKind.offered) ...[
                 Expanded(
                   child: ActionButton(
                     label: kind.label,
@@ -892,7 +1033,7 @@ class _SettingsFeedbackScreenState
                     onPressed: () => setState(() => _kind = kind),
                   ),
                 ),
-                if (kind != FeedbackKind.values.last)
+                if (kind != FeedbackKind.offered.last)
                   const SizedBox(width: SpacingTokens.space8),
               ],
             ],
@@ -905,7 +1046,7 @@ class _SettingsFeedbackScreenState
             decoration: InputDecoration(
               labelText: AppLocalizations.of(context).ui(
                   'ui_settings_subscreens_in_one_line_06bdaf', 'In one line'),
-              hintText: AppLocalizations.of(context).theComposerNoPostButton,
+              hintText: words.title,
             ),
           ),
           const SizedBox(height: SpacingTokens.space8),
@@ -915,19 +1056,15 @@ class _SettingsFeedbackScreenState
             maxLength: 4000,
             onChanged: (_) => setState(() {}),
             decoration: InputDecoration(
-              labelText: AppLocalizations.of(context).ui(
-                  'ui_settings_subscreens_what_happened_977dd8',
-                  'What happened'),
+              labelText: words.label,
               alignLabelWithHint: true,
-              hintText:
-                  '${AppLocalizations.of(context).literalwhatYouDidWhatYouExpectedWhatHappened}instead.',
+              hintText: words.hint,
             ),
           ),
           const _Note(
-            'This is filed as an issue on Kyron\'s public repository, so what '
-            'you write here can be read by anybody. Your name, handle and '
-            'email are not attached to it -- only the words above and which '
-            'version of the app you are running.',
+            'Only the Kyron team reads this. It is sent with your account, so '
+            'we can answer by email, and with which version of the app you '
+            'are running. Deleting your account deletes it too.',
           ),
           if (_error != null) ...[
             const SizedBox(height: SpacingTokens.space12),

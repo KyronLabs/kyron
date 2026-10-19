@@ -32,6 +32,11 @@ import 'utils/route_watch.dart';
 import 'services/firebase_push.dart';
 import 'services/push_tap.dart';
 import 'services/share_inbox.dart';
+import 'models/account_standing.dart';
+import 'providers/enforcement_provider.dart';
+import 'screens/account_status_screen.dart';
+import 'services/api_client.dart';
+import 'widgets/toast.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -193,6 +198,58 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     _watchForExternalSessions();
     _watchForShares();
     _watchForPushTaps();
+    ApiClient.onRestricted = _restricted;
+  }
+
+  /// Whether the banned screen is up, so a burst of refusals -- every tab
+  /// asking for its first page at once -- opens it once.
+  bool _showingBan = false;
+
+  /// When a suspended account was last reminded, so a screen that retries
+  /// does not repeat it every second.
+  DateTime? _remindedAt;
+
+  /// The API refused something because this account is suspended or banned.
+  ///
+  /// Heard here, from wherever in the app the request was made, because the
+  /// answer is the same everywhere: a ban replaces the app with the screen
+  /// that explains it, and a suspension says so once with the way to why.
+  void _restricted(AccountRestriction restriction) {
+    ref.read(restrictionProvider.notifier).state = restriction;
+    final navigator = appNavigatorKey.currentState;
+    if (navigator == null) return;
+
+    if (restriction.banned) {
+      if (_showingBan) return;
+      _showingBan = true;
+      navigator.pushAndRemoveUntil(
+        MaterialPageRoute<void>(
+          settings: const RouteSettings(name: '/restricted'),
+          builder: (_) => const RestrictedScreen(),
+        ),
+        (_) => false,
+      );
+      return;
+    }
+
+    final now = DateTime.now();
+    if (_remindedAt != null &&
+        now.difference(_remindedAt!) < const Duration(minutes: 1)) {
+      return;
+    }
+    _remindedAt = now;
+    final until = restriction.until;
+    Toast.showOn(
+      navigator.overlay,
+      until == null
+          ? 'Your account is suspended: you can read, but not post.'
+          : 'Your account is suspended until ${standingMoment(until)}: you '
+              'can read, but not post.',
+      action: ToastAction(
+        'Why?',
+        () => navigator.pushNamed(Routes.accountStatus),
+      ),
+    );
   }
 
   /// Holds a tapped notification until the signed-in app is there to open
@@ -282,6 +339,7 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     _authEvents?.cancel();
     _shares?.cancel();
     _pushTaps?.cancel();
+    if (ApiClient.onRestricted == _restricted) ApiClient.onRestricted = null;
     super.dispose();
   }
 
@@ -349,6 +407,12 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     final textScale = preferences.textScale;
     final theme = preferences.theme;
     final language = preferences.language;
+
+    // Cleared on sign-out, and when an accepted appeal lets the account back
+    // in: the next ban, on whatever account, opens the screen again.
+    ref.listen<AccountRestriction?>(restrictionProvider, (_, next) {
+      if (next == null) _showingBan = false;
+    });
 
     // Opens the socket and folds whatever arrives into the state it affects.
     // Watched here rather than on a screen: a message has to move the thread,

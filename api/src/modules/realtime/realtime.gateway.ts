@@ -7,6 +7,9 @@ import {
 import type { IncomingMessage } from 'http';
 import type { WebSocket } from 'ws';
 
+import { AccountStatus } from '@prisma/client';
+
+import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseTokenService } from '../auth/supabase-token.service';
 import { RealtimeService } from './realtime.service';
 
@@ -48,6 +51,7 @@ export class RealtimeGateway
   constructor(
     private readonly realtime: RealtimeService,
     private readonly supabaseToken: SupabaseTokenService,
+    private readonly prisma: PrismaService,
   ) {}
 
   async handleConnection(
@@ -66,6 +70,20 @@ export class RealtimeGateway
     const claims = await this.supabaseToken.verify(token);
     if (!claims?.sub) {
       socket.close(POLICY_VIOLATION, 'That token could not be verified.');
+      return;
+    }
+
+    // The same door AuthGuard keeps for HTTP. A banned account learns why
+    // from GET /moderation/standing, which it can still reach; it does not
+    // get to watch who is online or hear that messages arrived.
+    const account = await this.prisma.user
+      .findUnique({ where: { id: claims.sub }, select: { status: true } })
+      .catch(() => null);
+    if (
+      account?.status === AccountStatus.BANNED ||
+      account?.status === AccountStatus.DELETED
+    ) {
+      socket.close(POLICY_VIOLATION, 'This account cannot connect.');
       return;
     }
 

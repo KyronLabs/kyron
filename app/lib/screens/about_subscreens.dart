@@ -1,6 +1,7 @@
 import '../l10n/app_localizations.dart';
 
 // lib/screens/about_subscreens.dart
+import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,12 +9,16 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../providers/feedback_provider.dart';
 import '../providers/service_status_provider.dart';
+import '../repositories/feedback_repository.dart';
+import '../utils/api_error_message.dart';
+import '../widgets/action_button.dart';
+import '../widgets/toast.dart';
 import '../services/app_info.dart';
 import '../services/app_log.dart';
 import '../widgets/settings_scaffold.dart';
 import '../widgets/empty_state.dart';
-import '../services/app_browser.dart';
 import '../widgets/kyron_app_bar.dart';
 
 // ===========================================================================
@@ -841,24 +846,29 @@ class _Entry extends StatelessWidget {
 // ERROR REPORT
 // ===========================================================================
 
-/// Sending the log to support, with whatever the person wants to add.
-class ErrorReportScreen extends StatefulWidget {
+/// Sending the log to the Kyron team, with whatever the person wants to add.
+///
+/// It used to open a mail to support@kyron.so -- a domain Kyron does not
+/// own, so every report bounced, and anybody who registered it would have
+/// been sent people's logs. It now goes where feedback goes: privately to
+/// the team, through the API, with the account so somebody can follow up.
+class ErrorReportScreen extends ConsumerStatefulWidget {
   const ErrorReportScreen({super.key});
 
   @override
-  State<ErrorReportScreen> createState() => _ErrorReportScreenState();
+  ConsumerState<ErrorReportScreen> createState() => _ErrorReportScreenState();
 }
 
-class _ErrorReportScreenState extends State<ErrorReportScreen> {
-  static const _supportAddress = 'support@kyron.so';
-
-  /// How much of the log to attach. Comfortably inside what mail apps accept
-  /// in a mailto body, with room for the description above it.
-  static const _maxLogCharacters = 6000;
+class _ErrorReportScreenState extends ConsumerState<ErrorReportScreen> {
+  /// How much of the log to attach: its tail, inside the API's limit with
+  /// room to spare.
+  static const _maxLogCharacters = 15000;
 
   final _notes = TextEditingController();
   AppInfo? _info;
   bool _includeLog = true;
+  bool _sending = false;
+  String? _error;
 
   @override
   void initState() {
@@ -910,22 +920,37 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
                       'System log before sending.',
             ),
           ),
+          if (_error != null) ...[
+            const SizedBox(height: SpacingTokens.space8),
+            Text(
+              _error!,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.error,
+                fontSize: TypographyTokens.fontSize2,
+              ),
+            ),
+          ],
           const SizedBox(height: SpacingTokens.space16),
-          FilledButton.icon(
-            onPressed: _send,
-            icon: const Icon(Iconsax.send_1_copy, size: 18),
-            label: Text(AppLocalizations.of(context).sendToSupport),
+          ActionButton(
+            label: AppLocalizations.of(context).sendToSupport,
+            icon: Iconsax.send_1_copy,
+            expand: true,
+            busy: _sending,
+            onPressed: _sending ? null : _send,
           ),
           const SizedBox(height: SpacingTokens.space8),
-          OutlinedButton.icon(
+          ActionButton(
+            label: AppLocalizations.of(context).copyReportInstead,
+            icon: Iconsax.copy_copy,
+            kind: ActionButtonKind.outlined,
+            expand: true,
             onPressed: _copy,
-            icon: const Icon(Iconsax.copy_copy, size: 18),
-            label: Text(AppLocalizations.of(context).copyReportInstead),
           ),
           const SizedBox(height: SpacingTokens.space16),
           Text(
-            'The report opens in your mail app so you can read it before it '
-            'goes anywhere. Nothing is sent in the background.',
+            'Only the Kyron team reads this. It is sent with your account so '
+            'we can follow up. Read the log first under About › System log '
+            'if you want to see exactly what goes with it.',
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
@@ -959,28 +984,39 @@ class _ErrorReportScreenState extends State<ErrorReportScreen> {
   }
 
   Future<void> _send() async {
-    final subject = 'Kyron error report (${_info?.display ?? 'unknown'})';
-    // Built by hand rather than through Uri's queryParameters, which encodes
-    // spaces as '+'; several mail apps render those literally in the body.
-    final uri = Uri.parse(
-      'mailto:$_supportAddress'
-      '?subject=${Uri.encodeComponent(subject)}'
-      '&body=${Uri.encodeComponent(_compose())}',
-    );
-
-    // A mail app is not guaranteed to exist. Falling back to the clipboard is
-    // better than a button that appears to do nothing.
-    // A mail app, not a browser: no web view sends mail. AppBrowser.leave is
-    // the only call in the app allowed to hand a link to another app, and it
-    // answers false rather than throwing when nothing takes it.
-    final launched = await AppBrowser.leave(uri);
-
-    if (!mounted) return;
-    if (!launched) {
-      await _copy();
-      return;
+    setState(() {
+      _sending = true;
+      _error = null;
+    });
+    final notes = _notes.text.trim();
+    final log = AppLog.instance.asText();
+    try {
+      final filed = await ref.read(feedbackRepositoryProvider).send(
+            kind: FeedbackKind.report,
+            title: 'Error report',
+            body: notes.length >= 10 ? notes : '(no description given) $notes',
+            appVersion: _info?.display,
+            platform: defaultTargetPlatform.name,
+            log: _includeLog && log.isNotEmpty
+                ? _tail(log, _maxLogCharacters)
+                : null,
+          );
+      if (!mounted) return;
+      Toast.show(
+        context,
+        filed.number > 0
+            ? 'Sent -- thank you. It is report #${filed.number}.'
+            : 'Sent -- thank you.',
+      );
+      Navigator.pop(context);
+    } catch (error) {
+      if (!mounted) return;
+      setState(() {
+        _sending = false;
+        // Copy is still there for when sending is not.
+        _error = describeApiError(error);
+      });
     }
-    Navigator.pop(context);
   }
 
   /// The last [limit] characters, cut at a line boundary so the report does

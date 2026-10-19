@@ -20,6 +20,10 @@ class CurrentUser {
   final int following;
   final int posts;
 
+  /// USER, MODERATOR or ADMIN. Only ever this account's own: what decides
+  /// whether the moderation queue is offered. The server checks again.
+  final String role;
+
   const CurrentUser({
     required this.id,
     this.name,
@@ -33,7 +37,11 @@ class CurrentUser {
     required this.followers,
     required this.following,
     required this.posts,
+    this.role = 'USER',
   });
+
+  /// On the moderation team.
+  bool get isStaff => role == 'ADMIN' || role == 'MODERATOR';
 
   factory CurrentUser.fromJson(Map<String, dynamic> json) {
     final user = _map(json['user']);
@@ -53,6 +61,7 @@ class CurrentUser {
       followers: _int(stats['followers']),
       following: _int(stats['following']),
       posts: _int(stats['posts']),
+      role: user['role'] as String? ?? 'USER',
     );
   }
 
@@ -84,6 +93,7 @@ class CurrentUser {
         'name': name,
         'username': username,
         'did': did,
+        'role': role,
       },
       'profile': {
         'avatarUrl': avatarUrl,

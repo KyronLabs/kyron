@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/notification_model.dart';
 import '../services/realtime_client.dart';
 import 'api_client_provider.dart';
+import 'enforcement_provider.dart';
 import 'messages_provider.dart';
 import 'notifications_provider.dart';
 import 'presence_provider.dart';
@@ -124,6 +125,16 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
           ref.read(notificationListProvider(kind).notifier).refresh();
         }
       }
+
+    case 'moderation.updated':
+      // A decision about this account, an answer to its appeal, or an
+      // outcome for something it reported.
+      ref.invalidate(standingProvider);
+
+    case 'moderation.queue':
+      // The team only: a report or an appeal is waiting.
+      ref.invalidate(reportQueueProvider);
+      ref.invalidate(appealQueueProvider);
 
     case 'presence':
       final who = event.data['userId'];

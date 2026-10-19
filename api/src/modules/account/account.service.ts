@@ -4,7 +4,12 @@ import {
   Logger,
   ServiceUnavailableException,
 } from '@nestjs/common';
-import { AccountStatus, CommunityRole, Prisma } from '@prisma/client';
+import {
+  AccountStatus,
+  CommunityRole,
+  Prisma,
+  ReportTarget,
+} from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { MediaService } from '../media/media.service';
@@ -190,6 +195,41 @@ export class AccountService {
 
     // Re-encodes waiting on its clips; their files are about to go.
     await tx.mediaJob.deleteMany({ where: { userId } });
+
+    // Decisions about it stay on the record, so leaving does not undo a ban
+    // (BannedIdentity keeps the address) -- but without what it wrote. The
+    // case, the rule and the dates are the team's; the words were the
+    // account's, and they go with it like everything else it wrote.
+    const [ownPosts, ownComments] = [
+      await tx.post.findMany({
+        where: { authorId: userId },
+        select: { id: true },
+      }),
+      await tx.comment.findMany({
+        where: { authorId: userId },
+        select: { id: true },
+      }),
+    ];
+    await tx.moderationAction.updateMany({
+      where: { subjectId: userId },
+      data: { snapshot: null },
+    });
+    await tx.report.updateMany({
+      where: {
+        OR: [
+          { target: ReportTarget.USER, targetId: userId },
+          {
+            target: ReportTarget.POST,
+            targetId: { in: ownPosts.map((p) => p.id) },
+          },
+          {
+            target: ReportTarget.COMMENT,
+            targetId: { in: ownComments.map((c) => c.id) },
+          },
+        ],
+      },
+      data: { snapshot: null },
+    });
 
     // The account, and through the cascade everything hanging off it.
     await tx.user.delete({ where: { id: userId } });

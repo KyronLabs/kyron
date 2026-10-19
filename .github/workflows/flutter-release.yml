@@ -340,10 +340,17 @@ jobs:
           if-no-files-found: error
           retention-days: 1
 
-  # A release's bundle goes on to Play's internal testing track once it has
-  # passed scripts/check-aab.sh, so testers get each version without anybody
+  # A release's bundle goes on to a Play testing track once it has passed
+  # scripts/check-aab.sh, so testers get each version without anybody
   # downloading it from here and uploading it to Play Console by hand. Only
   # an app's very first bundle has to go through Play Console.
+  #
+  # Which track is the PLAY_TRACK repository variable (Settings -> Secrets
+  # and variables -> Actions -> Variables), in Play's own names: alpha is
+  # "Closed testing - Alpha", where Kyron's testers are; internal and beta
+  # are internal and open testing. Unset, it is alpha. It was internal at
+  # first, and 0.1.5 reached a track nobody was testing on. Closed and open
+  # testing releases are reviewed by Google before testers get them.
   #
   # Releases only, deliberately. A development build's bundle carries the
   # last release's version name, so in Play two different builds would both
@@ -361,11 +368,12 @@ jobs:
   # says so and stops, so a fork, or this repository before it is set up,
   # releases exactly as it did.
   play:
-    name: Send the bundle to Play internal testing
+    name: Send the bundle to Play testing
     needs: [checks, android]
     runs-on: ubuntu-latest
     env:
       KYRON_BUILD_NUMBER: ${{ needs.checks.outputs.build }}
+      PLAY_TRACK: ${{ vars.PLAY_TRACK || 'alpha' }}
     steps:
       - name: Check Play is set up here
         id: ready
@@ -398,7 +406,7 @@ jobs:
           VERSION: ${{ needs.checks.outputs.version }}
         run: python3 scripts/changelog.py show "$VERSION" > play-notes.txt
 
-      - name: Send it to the internal testing track
+      - name: Send it to the testing track
         if: steps.ready.outputs.send == 'yes'
         env:
           PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
@@ -408,7 +416,7 @@ jobs:
           python3 -m pip install --quiet google-auth requests
           bundle="incoming/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
           test -f "$bundle" || { echo "The android job's artifact has no $bundle."; exit 1; }
-          python3 scripts/play-upload.py --package so.kyron.app --track internal \
+          python3 scripts/play-upload.py --package so.kyron.app --track "$PLAY_TRACK" \
             --name "${VERSION}" --notes-file play-notes.txt "$bundle"
 
   # One release, published once, with both platforms in it. Separate because

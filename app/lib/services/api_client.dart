@@ -1,10 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../models/account_standing.dart';
 import 'app_log.dart';
 
 class ApiClient {
   late final Dio dio;
+
+  /// Told whenever the API refuses a request because this account is
+  /// suspended or banned, wherever in the app it was made. Set once at the
+  /// top of the app (RestrictionGate); a client in a test leaves it null.
+  static void Function(AccountRestriction restriction)? onRestricted;
 
   // 🔥 Routes that should NOT have Authorization header
   static const _publicRoutes = [
@@ -86,6 +92,14 @@ class ApiClient {
           '${err.response?.statusCode ?? err.type.name}'
           '${err.message == null ? '' : ': ${err.message}'}',
     );
+
+    // Refused because of a suspension or a ban: nothing to retry, and not a
+    // sign-in problem. Whoever made the request still hears the refusal;
+    // the top of the app hears it too, and shows why.
+    if (err.response?.statusCode == 403) {
+      final restriction = AccountRestriction.fromResponse(err.response?.data);
+      if (restriction != null) onRestricted?.call(restriction);
+    }
 
     // A 401 means the access token the SDK handed us was rejected. Ask Supabase
     // for a fresh session and replay the request once. Refresh itself is the

@@ -10,8 +10,12 @@ import '../models/profile_summary.dart';
 import '../providers/moderation_provider.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/action_button.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/hairline.dart';
+import '../widgets/section_tabs.dart';
 import '../widgets/skeleton.dart';
+import '../widgets/toast.dart';
 import '../widgets/kyron_app_bar.dart';
 
 /// Words and tags that keep posts out of your feed.
@@ -84,24 +88,37 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                     ),
                   ),
                   const SizedBox(height: SpacingTokens.space12),
+                  // The field and its button on one line, the button sized to
+                  // its label. It was a FilledButton, which the theme gives a
+                  // minimum size of Size.fromHeight -- infinitely wide -- and
+                  // beside a field in a Row that cannot be laid out: neither
+                  // was drawn, under an empty state saying "Add a word or a
+                  // tag above".
                   Row(
                     children: [
                       Expanded(
                         child: TextField(
                           controller: _controller,
                           enabled: !_busy,
+                          textInputAction: TextInputAction.done,
+                          onChanged: (_) => setState(() {}),
                           onSubmitted: (_) => _add(),
                           decoration: InputDecoration(
                             hintText:
                                 AppLocalizations.of(context).aWordPhraseOrTag,
-                            isDense: true,
+                            prefixIcon: const Icon(
+                              Iconsax.volume_slash_copy,
+                              size: 18,
+                            ),
                           ),
                         ),
                       ),
                       const SizedBox(width: SpacingTokens.space8),
-                      FilledButton(
-                        onPressed: _busy ? null : _add,
-                        child: Text(AppLocalizations.of(context).mute),
+                      ActionButton(
+                        label: AppLocalizations.of(context).mute,
+                        busy: _busy,
+                        onPressed:
+                            _controller.text.trim().length < 2 ? null : _add,
                       ),
                     ],
                   ),
@@ -123,7 +140,7 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
               ),
             Expanded(
               child: words == null
-                  ? Center(child: CircularProgressIndicator())
+                  ? const Center(child: CircularProgressIndicator())
                   : words.isEmpty
                       ? EmptyState(
                           art: EmptyArt.muted,
@@ -134,17 +151,22 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                         )
                       : ListView.separated(
                           itemCount: words.length,
-                          separatorBuilder: (_, __) => Divider(
-                            height: 1,
-                            color: scheme.outline.withValues(alpha: 0.15),
-                          ),
+                          separatorBuilder: (_, __) => const Hairline(),
                           itemBuilder: (context, index) => ListTile(
+                            leading: Icon(
+                              words[index].startsWith('#')
+                                  ? Iconsax.hashtag_copy
+                                  : Iconsax.text_copy,
+                              size: 18,
+                              color: scheme.onSurface.withValues(alpha: .6),
+                            ),
                             title: Text(words[index]),
                             trailing: IconButton(
                               icon: const Icon(Iconsax.close_circle_copy,
                                   size: 18),
                               tooltip: 'Unmute',
-                              onPressed: () => _remove(words[index]),
+                              onPressed:
+                                  _busy ? null : () => _remove(words[index]),
                             ),
                           ),
                         ),
@@ -157,9 +179,12 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
 
   Future<void> _add() async {
     final phrase = _controller.text.trim();
-    if (phrase.length < 2) return;
+    if (phrase.length < 2 || _busy) return;
 
-    setState(() => _busy = true);
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
     try {
       await ref.read(moderationRepositoryProvider).muteWord(phrase);
       _controller.clear();
@@ -174,10 +199,19 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
   }
 
   Future<void> _remove(String phrase) async {
-    setState(() => _busy = true);
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
     try {
       await ref.read(moderationRepositoryProvider).unmuteWord(phrase);
       await _load();
+    } catch (e) {
+      // It used to have no catch: a failed unmute threw out of the tap
+      // handler and the word just sat there, with nothing said.
+      if (mounted) {
+        setState(() => _error = describeApiError(e, sessionIsLive: true));
+      }
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -193,51 +227,59 @@ class MutedAccountsScreen extends ConsumerStatefulWidget {
       _MutedAccountsScreenState();
 }
 
-class _MutedAccountsScreenState extends ConsumerState<MutedAccountsScreen> {
+class _MutedAccountsScreenState extends ConsumerState<MutedAccountsScreen>
+    with SingleTickerProviderStateMixin {
+  late final _tabs = TabController(length: 2, vsync: this);
+
+  @override
+  void dispose() {
+    _tabs.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: KyronAppBar(
-          leading: IconButton(
-            icon: const Icon(Iconsax.arrow_left_copy),
-            onPressed: () => Navigator.pop(context),
-            tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-          ),
-          title: Text(AppLocalizations.of(context).mutedAndBlocked),
-          bottom: const TabBar(
-            tabs: [
-              Tab(text: 'Muted'),
-              Tab(text: 'Blocked'),
-            ],
-          ),
+    return Scaffold(
+      appBar: KyronAppBar(
+        leading: IconButton(
+          icon: const Icon(Iconsax.arrow_left_copy),
+          onPressed: () => Navigator.pop(context),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        body: SafeArea(
-          child: TabBarView(
-            children: [
-              _People(
-                load: () => ref.read(moderationRepositoryProvider).mutedUsers(),
-                unmute: (id) => ref
-                    .read(moderationRepositoryProvider)
-                    .setUserMuted(id, false),
-                action: 'Unmute',
-                emptyTitle: 'Nobody muted',
-                emptyDetail:
-                    'Muting an account hides their posts without telling them.',
-              ),
-              _People(
-                load: () =>
-                    ref.read(moderationRepositoryProvider).blockedUsers(),
-                unmute: (id) => ref
-                    .read(moderationRepositoryProvider)
-                    .setBlocked(id, false),
-                action: 'Unblock',
-                emptyTitle: 'Nobody blocked',
-                emptyDetail: 'Blocking hides you from each other, both ways.',
-              ),
-            ],
-          ),
+        title: Text(AppLocalizations.of(context).mutedAndBlocked),
+        // The tabs every other section uses. A bare TabBar here drew
+        // Material's own full-width divider and a stub of an indicator, in
+        // nobody else's style.
+        bottom: SectionTabs(controller: _tabs, labels: const [
+          'Muted',
+          'Blocked',
+        ]),
+      ),
+      body: SafeArea(
+        child: TabBarView(
+          controller: _tabs,
+          children: [
+            _People(
+              load: () => ref.read(moderationRepositoryProvider).mutedUsers(),
+              unmute: (id) => ref
+                  .read(moderationRepositoryProvider)
+                  .setUserMuted(id, false),
+              action: 'Unmute',
+              emptyTitle: 'Nobody muted',
+              emptyDetail:
+                  'Muting an account hides their posts without telling them. '
+                  'Mute someone from the menu on their profile or a post.',
+            ),
+            _People(
+              load: () => ref.read(moderationRepositoryProvider).blockedUsers(),
+              unmute: (id) =>
+                  ref.read(moderationRepositoryProvider).setBlocked(id, false),
+              action: 'Unblock',
+              emptyTitle: 'Nobody blocked',
+              emptyDetail: 'Blocking hides you from each other, both ways. '
+                  'Block someone from the menu on their profile.',
+            ),
+          ],
         ),
       ),
     );
@@ -297,8 +339,7 @@ class _PeopleState extends State<_People> {
 
         return ListView.separated(
           itemCount: people.length,
-          separatorBuilder: (_, __) =>
-              Divider(height: 1, color: scheme.outline.withValues(alpha: 0.15)),
+          separatorBuilder: (_, __) => const Hairline(),
           itemBuilder: (context, index) {
             final person = people[index];
             return ListTile(
@@ -317,12 +358,26 @@ class _PeopleState extends State<_People> {
                 username: person.username,
                 userId: person.id,
               ),
-              trailing: TextButton(
+              // The same outlined pill as Follow, so undoing a mute looks like
+              // the action it is rather than a link.
+              trailing: ActionButton(
+                label: widget.action,
+                compact: true,
+                kind: ActionButtonKind.outlined,
                 onPressed: () async {
-                  await widget.unmute(person.id);
+                  try {
+                    await widget.unmute(person.id);
+                  } catch (e) {
+                    if (context.mounted) {
+                      Toast.show(
+                        context,
+                        describeApiError(e, sessionIsLive: true),
+                      );
+                    }
+                    return;
+                  }
                   _reload();
                 },
-                child: Text(widget.action),
               ),
             );
           },

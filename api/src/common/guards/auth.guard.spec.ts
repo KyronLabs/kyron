@@ -31,6 +31,12 @@ function guardWith(
   const updates: unknown[] = [];
   const creates: unknown[] = [];
   const prisma = {
+    // No banned addresses unless a test says otherwise.
+    bannedIdentity: { findUnique: jest.fn().mockResolvedValue(null) },
+    moderationAction: {
+      findUnique: jest.fn().mockResolvedValue(null),
+      create: jest.fn().mockResolvedValue({}),
+    },
     user: {
       findUnique: jest.fn().mockResolvedValue(existing),
       findFirst: jest.fn().mockResolvedValue(null),
@@ -189,5 +195,157 @@ describe('AuthGuard and deleted accounts', () => {
       'This account has been deleted.',
     );
     expect(creates).toHaveLength(0);
+  });
+});
+
+describe('AuthGuard and a row that shares only an email address', () => {
+  /** A sign-in whose own row cannot be created: the address is taken. */
+  function collidingWith(row: Row & { role: string }) {
+    const made = guardWith(null, false, [], true);
+    const prisma = (made.guard as unknown as { prisma: { user: never } }).prisma
+      .user as unknown as { findFirst: jest.Mock };
+    prisma.findFirst.mockResolvedValue(row);
+    return made;
+  }
+
+  it('still attaches an account from before Supabase to its owner', async () => {
+    const legacy = { id: 'old', name: 'Ada', username: 'ada', role: 'USER' };
+    const { guard } = collidingWith(legacy);
+
+    await expect(guard.resolveSupabaseUser(subject({}))).resolves.toMatchObject(
+      { id: 'old' },
+    );
+  });
+
+  it('never hands over a staff role that way', async () => {
+    // POST /users created rows with any role and any address. Signing up
+    // with that address would have arrived here, as ADMIN.
+    const planted = { id: 'old', name: null, username: null, role: 'ADMIN' };
+    const { guard } = collidingWith(planted);
+
+    await expect(guard.resolveSupabaseUser(subject({}))).rejects.toMatchObject({
+      status: 403,
+    });
+  });
+});
+
+describe('AuthGuard and restricted accounts', () => {
+  /** A guard whose token always verifies, as [row]. */
+  function signedInAs(
+    row: { status: string; suspendedUntil?: Date | null },
+    access?: string,
+  ) {
+    const user = {
+      id: 'u1',
+      name: 'Ada',
+      username: 'ada',
+      role: 'USER',
+      ...row,
+    };
+    const updateMany = jest.fn().mockResolvedValue({ count: 1 });
+    const prisma = {
+      user: {
+        findUnique: jest.fn().mockResolvedValue(user),
+        update: jest.fn(),
+        updateMany,
+      },
+    };
+    const reflector = {
+      get: jest.fn().mockReturnValue([]),
+      getAllAndOverride: jest.fn().mockReturnValue(access),
+    };
+    const tokens = {
+      verify: jest.fn().mockResolvedValue({ sub: 'u1', email: 'a@b.c' }),
+      missingConfigFor: jest.fn().mockReturnValue(null),
+    };
+    const guard = new AuthGuard(
+      prisma as never,
+      reflector as never,
+      tokens as never,
+    );
+    return { guard, updateMany };
+  }
+
+  function request(method: string) {
+    const req = { method, headers: { authorization: 'Bearer t' } };
+    return {
+      switchToHttp: () => ({ getRequest: () => req }),
+      getHandler: () => undefined,
+      getClass: () => undefined,
+    } as never;
+  }
+
+  const week = new Date(Date.now() + 7 * 86_400_000);
+
+  it('lets a suspended account read', async () => {
+    const { guard } = signedInAs({ status: 'SUSPENDED', suspendedUntil: week });
+    await expect(guard.canActivate(request('GET'))).resolves.toBe(true);
+  });
+
+  it('refuses a suspended account anything that writes', async () => {
+    const { guard } = signedInAs({ status: 'SUSPENDED', suspendedUntil: week });
+    await expect(guard.canActivate(request('POST'))).rejects.toMatchObject({
+      status: 403,
+      response: { code: 'ACCOUNT_RESTRICTED', status: 'SUSPENDED' },
+    });
+  });
+
+  it('refuses a banned account even reading', async () => {
+    const { guard } = signedInAs({ status: 'BANNED' });
+    await expect(guard.canActivate(request('GET'))).rejects.toMatchObject({
+      status: 403,
+      response: { code: 'ACCOUNT_RESTRICTED', status: 'BANNED' },
+    });
+  });
+
+  it('but lets it reach what is opened to it', async () => {
+    const { guard } = signedInAs({ status: 'BANNED' }, 'banned');
+    await expect(guard.canActivate(request('POST'))).resolves.toBe(true);
+  });
+
+  it('ends a suspension whose time is up', async () => {
+    const { guard, updateMany } = signedInAs({
+      status: 'SUSPENDED',
+      suspendedUntil: new Date(Date.now() - 1000),
+    });
+    await expect(guard.canActivate(request('POST'))).resolves.toBe(true);
+    expect(updateMany).toHaveBeenCalledWith({
+      where: { id: 'u1', status: 'SUSPENDED' },
+      data: { status: 'ACTIVE', suspendedUntil: null },
+    });
+  });
+});
+
+describe('AuthGuard and a banned address', () => {
+  it('provisions a new account at that address banned, saying why', async () => {
+    const { guard, creates } = guardWith(null);
+    const prisma = (
+      guard as unknown as {
+        prisma: {
+          bannedIdentity: { findUnique: jest.Mock };
+          moderationAction: { findUnique: jest.Mock; create: jest.Mock };
+          user: { update: jest.Mock };
+        };
+      }
+    ).prisma;
+    prisma.bannedIdentity.findUnique.mockResolvedValue({ actionId: 'a1' });
+    prisma.moderationAction.findUnique.mockResolvedValue({
+      rule: 'SPAM',
+      number: 12,
+    });
+    prisma.user.update = jest.fn((args: { data: unknown }) =>
+      Promise.resolve({ id: 'u1', ...(args.data as object) }),
+    );
+
+    const user = await guard.resolveSupabaseUser(subject({}));
+
+    expect(creates).toHaveLength(1);
+    expect(user).toMatchObject({ status: 'BANNED' });
+    const [[made]] = prisma.moderationAction.create.mock.calls as [
+      [{ data: { kind: string; rule: string; message: string } }],
+    ];
+    expect(made.data).toMatchObject({ kind: 'BAN', rule: 'SPAM' });
+    expect(made.data.message).toContain('case 12');
+    expect(made.data.message).toContain('appeal');
   });
 });

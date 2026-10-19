@@ -95,6 +95,11 @@ function setup(s: Setup = {}) {
       ),
     },
     mediaJob: { deleteMany: jest.fn(record('mediaJob.deleteMany', {})) },
+    post: { findMany: jest.fn(() => Promise.resolve([{ id: 'p1' }])) },
+    moderationAction: {
+      updateMany: jest.fn(() => Promise.resolve({ count: 0 })),
+    },
+    report: { updateMany: jest.fn(() => Promise.resolve({ count: 0 })) },
     $executeRaw: jest.fn((query: { values: unknown[] }) => {
       calls.push('recount');
       return Promise.resolve((query.values[0] as string[]).length);
@@ -308,6 +313,22 @@ describe('AccountService', () => {
       await service.deleteData(tx as never, USER);
 
       expect(tx.$executeRaw).not.toHaveBeenCalled();
+    });
+
+    it('keeps decisions about it, without the words they quoted', async () => {
+      // Leaving must not wipe a ban -- the case stays, and BannedIdentity
+      // keeps the address -- but what the account wrote goes with it.
+      const { service, tx } = setup();
+
+      await service.deleteData(tx as never, USER);
+
+      expect(tx.moderationAction.updateMany).toHaveBeenCalledWith({
+        where: { subjectId: USER },
+        data: { snapshot: null },
+      });
+      expect(tx.report.updateMany).toHaveBeenCalledWith(
+        expect.objectContaining({ data: { snapshot: null } }),
+      );
     });
 
     it('drops re-encodes waiting on its clips', async () => {

@@ -1,14 +1,15 @@
-import { HttpStatus, ServiceUnavailableException } from '@nestjs/common';
-import { HttpException } from '@nestjs/common';
+import { HttpException, HttpStatus } from '@nestjs/common';
+
+import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { FeedbackService } from './feedback.service';
 import { FeedbackKind, SendFeedbackDto } from './dto/send-feedback.dto';
 
 /**
- * Filing a report from inside the app.
+ * Keeping a report from inside the app, for the team.
  *
- * Two properties are worth more than the happy path: the token never leaves
- * this server, and nothing identifying is added to a body that lands on a
- * public repository.
+ * It used to be filed as an issue on the public repository, and never was:
+ * the token it needed was not set, so every account was told feedback could
+ * not be sent. It is a private row now, which needs nothing set up.
  */
 function report(over: Partial<SendFeedbackDto> = {}): SendFeedbackDto {
   return {
@@ -19,165 +20,117 @@ function report(over: Partial<SendFeedbackDto> = {}): SendFeedbackDto {
   } as SendFeedbackDto;
 }
 
-describe('filing feedback', () => {
-  const env = { ...process.env };
-  let calls: { url: string; init: RequestInit }[] = [];
+/** The Feedback table, in memory. */
+function store() {
+  const rows: Record<string, unknown>[] = [];
+  const prisma = {
+    feedback: {
+      create: jest.fn(({ data }: { data: Record<string, unknown> }) => {
+        const row = { ...data, number: rows.length + 1 };
+        rows.push(row);
+        return Promise.resolve({ number: row.number });
+      }),
+    },
+  };
+  const service = new FeedbackService(prisma as unknown as PrismaService);
+  return { service, rows };
+}
 
-  beforeEach(() => {
-    calls = [];
-    process.env.GITHUB_ISSUE_REPO = 'KyronLabs/kyron';
-    process.env.GITHUB_ISSUE_TOKEN = 'a-secret-token';
-    global.fetch = jest.fn((url: string, init: RequestInit) => {
-      calls.push({ url: String(url), init });
-      return {
-        ok: true,
-        status: 201,
-        json: () => ({
-          number: 42,
-          html_url: 'https://github.com/KyronLabs/kyron/issues/42',
-        }),
-      };
-    }) as unknown as typeof fetch;
+describe('keeping feedback', () => {
+  it('is always available: there is nothing to configure', () => {
+    expect(store().service.isConfigured).toBe(true);
   });
 
-  afterEach(() => {
-    process.env = { ...env };
+  it('keeps the report, tied to the account that sent it', async () => {
+    const { service, rows } = store();
+
+    await expect(
+      service.file(
+        report({ appVersion: '0.1.5 (665)', platform: 'android' }),
+        'ada',
+      ),
+    ).resolves.toEqual({ number: 1 });
+
+    expect(rows).toEqual([
+      {
+        userId: 'ada',
+        kind: FeedbackKind.Bug,
+        title: 'The composer has no Post button',
+        body: 'I open the composer and there is nowhere to press.',
+        log: null,
+        appVersion: '0.1.5 (665)',
+        platform: 'android',
+        number: 1,
+      },
+    ]);
   });
 
-  /** The JSON body that went to GitHub. */
-  function sent(): { title: string; body: string; labels: string[] } {
-    const body = calls[0]?.init.body;
-    if (typeof body !== 'string') {
-      throw new Error('Expected GitHub request body to be a string');
-    }
-    return JSON.parse(body) as {
-      title: string;
-      body: string;
-      labels: string[];
-    };
-  }
-
-  it('answers with where the report went', async () => {
-    const filed = await new FeedbackService().file(report());
-    expect(filed).toEqual({
-      number: 42,
-      url: 'https://github.com/KyronLabs/kyron/issues/42',
+  it('keeps an error report with its log', async () => {
+    const { service, rows } = store();
+    await service.file(
+      report({
+        kind: FeedbackKind.Report,
+        title: 'Error report',
+        body: 'It crashed opening a chat.',
+        log: '  12:00 e2ee Could not fetch keys  \n',
+      }),
+      'ada',
+    );
+    expect(rows[0]).toMatchObject({
+      kind: FeedbackKind.Report,
+      log: '12:00 e2ee Could not fetch keys',
     });
   });
 
-  it('labels a bug and an idea differently', async () => {
-    const service = new FeedbackService();
-    await service.file(report());
-    expect(sent().labels).toEqual(['from-app', 'bug']);
-
-    calls = [];
-    await service.file(report({ kind: FeedbackKind.Idea }));
-    expect(sent().labels).toEqual(['from-app', 'enhancement']);
-  });
-
-  it('puts nothing in the issue that identifies who sent it', async () => {
-    // The body lands on a public repository. Only the words they wrote go in
-    // it -- no account id, no handle, no email. The issue number is what ties
-    // a report back to its sender, and it is given to them rather than posted.
-    await new FeedbackService().file(
-      report({ appVersion: '1.4.0', platform: 'android' }),
+  it('keeps the words as written, trimmed', async () => {
+    const { service, rows } = store();
+    await service.file(
+      report({ title: '  Spaces  ', body: '\n  around the words  \n' }),
+      'ada',
     );
-    const body = sent().body;
-
-    expect(body).toContain('nowhere to press');
-    expect(body).toContain('1.4.0');
-    expect(body).not.toMatch(/userId|@|email|token/i);
+    expect(rows[0]).toMatchObject({
+      title: 'Spaces',
+      body: 'around the words',
+    });
   });
 
-  it('never sends the token anywhere but GitHub', async () => {
-    await new FeedbackService().file(report());
-
-    expect(calls[0].url).toBe(
-      'https://api.github.com/repos/KyronLabs/kyron/issues',
-    );
-    expect(sent().body).not.toContain('a-secret-token');
-    expect(sent().title).not.toContain('a-secret-token');
+  it('numbers reports so the sender has something to quote', async () => {
+    const { service } = store();
+    await service.file(report(), 'ada');
+    await expect(service.file(report(), 'grace')).resolves.toEqual({
+      number: 2,
+    });
   });
 
-  it('fences the words so they cannot write Markdown of their own', async () => {
-    // An issue body is Markdown. Without a fence, text from a form can write
-    // headings, task lists, or an `@` mention that notifies a real person.
-    await new FeedbackService().file(
-      report({ body: '# Not a heading\n@someone\n- [ ] not a task' }),
-    );
-    const body = sent().body;
-
-    expect(body).toMatch(/```[\s\S]*# Not a heading[\s\S]*```/);
-  });
-
-  it('uses a longer fence when the words contain one', async () => {
-    // Three backticks would be closed by three backticks inside the message,
-    // and everything after that would be Markdown again.
-    await new FeedbackService().file(
-      report({ body: 'look:\n```\n@someone\n```\nthat' }),
-    );
-    const body = sent().body;
-
-    expect(body).toContain('````');
-    // The closing fence is the long one, so nothing escapes the block.
-    expect(body.trimEnd().endsWith('````')).toBe(true);
-  });
-
-  it('refuses rather than pretending, when there is nowhere to file', async () => {
-    // A form that accepts what somebody wrote and drops it is worse than one
-    // that refuses: they think it arrived.
-    delete process.env.GITHUB_ISSUE_TOKEN;
-    const service = new FeedbackService();
-
-    expect(service.isConfigured).toBe(false);
-    await expect(service.file(report())).rejects.toBeInstanceOf(
-      ServiceUnavailableException,
-    );
-    expect(calls).toHaveLength(0);
-  });
-
-  it('says nothing was sent when GitHub refuses', async () => {
-    global.fetch = jest.fn(() => ({
-      ok: false,
-      status: 403,
-      json: () => ({}),
-    })) as unknown as typeof fetch;
-
-    await expect(new FeedbackService().file(report())).rejects.toThrow(
-      /Nothing you wrote was sent/,
-    );
-  });
-
-  describe('how many one account may file', () => {
+  describe('how many one account may send', () => {
     // The API's own limit is 100 requests a minute, which is right for
-    // reading a feed and wrong for opening issues on a public repository.
+    // reading a feed and wrong for an inbox people read by hand.
     const cap = FeedbackService.PER_ACCOUNT;
 
+    afterEach(() => jest.restoreAllMocks());
+
     it('takes what somebody could plausibly write', async () => {
-      const service = new FeedbackService();
+      const { service, rows } = store();
       for (let i = 0; i < cap; i++) {
         await service.file(report({ title: `Report ${i}` }), 'ada');
       }
-      expect(calls).toHaveLength(cap);
+      expect(rows).toHaveLength(cap);
     });
 
-    it('refuses the next one, and does not file it', async () => {
-      const service = new FeedbackService();
-      for (let i = 0; i < cap; i++) {
-        await service.file(report(), 'ada');
-      }
+    it('refuses the next one, and does not keep it', async () => {
+      const { service, rows } = store();
+      for (let i = 0; i < cap; i++) await service.file(report(), 'ada');
 
       await expect(service.file(report(), 'ada')).rejects.toMatchObject({
         status: HttpStatus.TOO_MANY_REQUESTS,
       });
-      // The refusal has to stop it reaching GitHub, not just colour the reply.
-      expect(calls).toHaveLength(cap);
+      expect(rows).toHaveLength(cap);
     });
 
     it('says it is the limit, not a failure', async () => {
       // Somebody who hits it has done nothing wrong, and a message that reads
       // as "we lost it" gets the same report written again immediately.
-      const service = new FeedbackService();
+      const { service } = store();
       for (let i = 0; i < cap; i++) await service.file(report(), 'ada');
 
       await expect(service.file(report(), 'ada')).rejects.toThrow(
@@ -186,17 +139,15 @@ describe('filing feedback', () => {
     });
 
     it('counts each account separately', async () => {
-      const service = new FeedbackService();
+      const { service } = store();
       for (let i = 0; i < cap; i++) await service.file(report(), 'ada');
 
-      // Grace has filed nothing. One noisy account must not silence everyone.
-      await expect(service.file(report(), 'grace')).resolves.toMatchObject({
-        number: 42,
-      });
+      // Grace has sent nothing. One noisy account must not silence everyone.
+      await expect(service.file(report(), 'grace')).resolves.toBeDefined();
     });
 
-    it('lets an account file again once the window has passed', async () => {
-      const service = new FeedbackService();
+    it('lets an account send again once the window has passed', async () => {
+      const { service } = store();
       const start = Date.now();
       jest.spyOn(Date, 'now').mockReturnValue(start);
       for (let i = 0; i < cap; i++) await service.file(report(), 'ada');
@@ -207,25 +158,7 @@ describe('filing feedback', () => {
       jest
         .spyOn(Date, 'now')
         .mockReturnValue(start + FeedbackService.WINDOW_MS + 1);
-      await expect(service.file(report(), 'ada')).resolves.toMatchObject({
-        number: 42,
-      });
-      jest.spyOn(Date, 'now').mockRestore();
-    });
-
-    it('is not counted against when there was nowhere to file', async () => {
-      // A report refused because the server is unconfigured was never filed,
-      // so it must not use up one of the five.
-      delete process.env.GITHUB_ISSUE_TOKEN;
-      const service = new FeedbackService();
-      await expect(service.file(report(), 'ada')).rejects.toBeInstanceOf(
-        ServiceUnavailableException,
-      );
-
-      process.env.GITHUB_ISSUE_TOKEN = 'a-secret-token';
-      for (let i = 0; i < cap; i++) {
-        await expect(service.file(report(), 'ada')).resolves.toBeDefined();
-      }
+      await expect(service.file(report(), 'ada')).resolves.toBeDefined();
     });
   });
 });

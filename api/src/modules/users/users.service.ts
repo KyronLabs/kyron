@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import * as argon2 from 'argon2';
 
+// No role. Who is staff is decided in the database by the people who run
+// Kyron, never by a request: this used to accept ADMIN from its caller.
 type CreateUserPayload = {
   email: string;
   password: string;
   name?: string;
-  role?: string;
 };
 
 @Injectable()
@@ -25,12 +24,6 @@ export class UsersService {
       password: hash,
       name: data.name ?? null,
     };
-
-    // only set role if it's a valid enum member
-    const allowedRoles = new Set(['USER', 'ADMIN']);
-    if (data.role && allowedRoles.has(data.role)) {
-      payload.role = data.role;
-    }
 
     const user = await this.prisma.user.create({
       data: payload,

@@ -6,6 +6,7 @@ import {
   ReportTarget,
 } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { EnforcementService } from './enforcement.service';
 
 /** Everything one reader has asked not to see, read in a single round trip. */
 export interface FeedFilters {
@@ -20,7 +21,10 @@ export interface FeedFilters {
 export class ModerationService {
   private readonly logger = new Logger(ModerationService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly enforcement: EnforcementService,
+  ) {}
 
   /**
    * The reader's filters, gathered once per feed request.
@@ -292,6 +296,10 @@ export class ModerationService {
     });
 
     this.logger.log(`report ${report.id}: ${target} ${targetId} (${reason})`);
+    // Somebody on the team hears it arrived. A report used to be written
+    // down here and read by nobody: one sat unopened for as long as there
+    // was nobody whose job it was, and no screen to open it on.
+    await this.enforcement.reportFiled(reason).catch(() => undefined);
     return report;
   }
 

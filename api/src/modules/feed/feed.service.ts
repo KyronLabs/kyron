@@ -4,11 +4,22 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { InterestKind, MediaKind, Prisma, ReplyPolicy } from '@prisma/client';
+import {
+  AccountStatus,
+  InterestKind,
+  MediaKind,
+  Prisma,
+  ReplyPolicy,
+} from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { RankingService } from './ranking.service';
+
+/** Authors whose posts anybody may see: everybody but a banned account. */
+const notBanned = {
+  status: { not: AccountStatus.BANNED },
+} satisfies Prisma.UserWhereInput;
 
 /** A post as the feed returns it, with just enough of its author to render. */
 export interface FeedPost {
@@ -752,6 +763,10 @@ export class FeedService {
 
     return {
       ...where,
+      // A banned account's posts are gone for everybody but the team, the
+      // same as its profile. Not deleted: an overturned ban brings them
+      // back as they were.
+      ...(where.author ? {} : { author: notBanned }),
       ...(excluded.length ? { authorId: { notIn: excluded } } : {}),
       ...(hiddenIds.length || filters.mutedPhrases.length
         ? {
@@ -1026,7 +1041,12 @@ export class FeedService {
       if (!anchor) throw new NotFoundException('That page no longer exists.');
     }
 
-    const where = { userId: viewerId, post: { deletedAt: null } };
+    // A banned account's posts leave the reader's lists too, and come back
+    // with them if the ban is overturned.
+    const where = {
+      userId: viewerId,
+      post: { deletedAt: null, author: notBanned },
+    };
     const orderBy = [{ createdAt: 'desc' as const }, { id: 'desc' as const }];
     const take = limit + 1;
     // Spread as `...(cursor ? {...} : {})` and the key becomes optional, which
@@ -1092,6 +1112,9 @@ export class FeedService {
       {
         authorId,
         deletedAt: null,
+        // The profile answers "banned" for such an account; its posts are
+        // not to be had round the side of it by id.
+        author: notBanned,
         ...(kinds ? { media: { some: { kind: { in: kinds } } } } : {}),
       },
       viewerId,
@@ -1601,7 +1624,7 @@ export class FeedService {
     authorId: string;
   }> {
     const post = await this.prisma.post.findFirst({
-      where: { id: postId, deletedAt: null },
+      where: { id: postId, deletedAt: null, author: notBanned },
       select: { id: true, authorId: true },
     });
     if (!post) throw new NotFoundException('Post not found.');
@@ -1639,7 +1662,7 @@ export class FeedService {
   /** One post on its own, for the screen that shows it with its thread. */
   async getPost(postId: string, viewerId: string): Promise<FeedPost> {
     const post = await this.prisma.post.findFirst({
-      where: { id: postId, deletedAt: null },
+      where: { id: postId, deletedAt: null, author: notBanned },
       select: this.shapeFor(viewerId),
     });
     if (!post) throw new NotFoundException('Post not found.');
@@ -1947,7 +1970,8 @@ export class FeedService {
     }
 
     const rows = await this.prisma.comment.findMany({
-      where,
+      // A banned account's replies go with its posts.
+      where: { ...where, author: notBanned },
       orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
       take: limit + 1,
       cursor: cursor ? { id: cursor } : undefined,

@@ -18,8 +18,6 @@ import '../routes.dart';
 
 import 'dart:async';
 
-import '../config/legal_links.dart';
-import '../services/app_browser.dart';
 import '../widgets/kyron_app_bar.dart';
 
 import '../l10n/app_localizations.dart';
@@ -457,6 +455,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 'Who you have muted or blocked',
               ),
             ),
+            _settingsRow(
+              icon: Iconsax.shield_tick_copy,
+              label: 'Account status',
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+              onTap: () => Navigator.pushNamed(context, Routes.accountStatus),
+              helpText: 'Decisions about your account, appeals, and what '
+                  'came of your reports',
+            ),
+            // The team's queues, for the team. The server answers anybody
+            // else with a 404, so this is only about not offering a door
+            // that does not open.
+            if (ref.watch(currentUserProvider).value?.isStaff ?? false)
+              _settingsRow(
+                icon: Iconsax.judge_copy,
+                label: 'Moderation',
+                trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+                onTap: () => Navigator.pushNamed(context, Routes.moderation),
+                helpText: 'Reports and appeals waiting for review',
+              ),
             Divider(
               height: 1,
               thickness: 0.33,
@@ -540,18 +557,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
             // Help & Support Group (3 items)
             _groupHeader(AppLocalizations.of(context).helpAndSupport),
-            _settingsRow(
-              icon: Iconsax.info_circle_copy,
-              label: AppLocalizations.of(context).helpCentre,
-              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
-              onTap: () => AppBrowser.open(
-                context,
-                SupportLinks.helpCentre,
-                title: SupportLinks.helpCentreTitle,
-              ),
-              helpText: AppLocalizations.of(context)
-                  .ui('ui_settings_help_articles', 'Browse help articles'),
-            ),
+            // No Help Centre row: help.kyron.so is on a domain Kyron does
+            // not own, and never loaded.
             _settingsRow(
               icon: Iconsax.call_copy,
               label: AppLocalizations.of(context).literalcontactSupport,
