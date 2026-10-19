@@ -23,6 +23,10 @@ section for that version, so what is written here is what people read.
   sign-in and fails when one appears that is not on its list, and a sign-in
   matched to an existing account by email address alone can no longer
   inherit a staff role.
+- **A suspended account could do everything.** The account status column
+  was set by nothing and checked only by a password sign-in no client uses.
+  Suspensions and bans are now enforced on every request and on the realtime
+  connection.
 
 ### Fixed
 
@@ -57,6 +61,26 @@ section for that version, so what is written here is what people read.
 
 ### Added
 
+- **Reports are acted on, and decisions can be appealed.** The report button
+  had nothing behind it: reports were stored and never read. Now:
+  - **The team** (moderators and admins, appointed with
+    `npm run account:role`) gets a notification for each report, and works
+    from Settings > Moderation. Reports are grouped by what was reported,
+    urgent ones first. Each decision removes the post or reply, warns,
+    suspends for 1 to 365 days, or bans, with a message to the account in
+    the reviewer's own words.
+  - **The account** is always told. Settings > Account status lists every
+    decision with the rule, the message and what the post said. Each
+    decision can be appealed once, for six months, and somebody other than
+    whoever decided hears the appeal.
+  - **Suspended** accounts can read but not post. **Banned** accounts see
+    only why, the appeal, support and account deletion; their posts
+    disappear for everybody else, and come back if the ban is overturned.
+  - **Whoever reported** is told whether action was taken.
+  - **Deleting a banned account** does not lift the ban: a new account at
+    the same email address starts banned, and can appeal.
+  - docs/MODERATION.md has the policy, how to appoint the team, and what the
+    team must do outside the app.
 - **A written plan for message backups.** Not built yet: docs/E2EE.md now
   describes the Kyron Vault, which would keep every message key an account
   has had, sealed under a key that only the account's own passkey, another
