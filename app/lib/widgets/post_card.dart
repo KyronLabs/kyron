@@ -20,6 +20,7 @@ import 'repost_sheet.dart';
 import 'share_post_sheet.dart';
 import 'toast.dart';
 import 'hairline.dart';
+import 'verified_badge.dart';
 
 /// One post, wherever it appears.
 ///
@@ -96,10 +97,9 @@ class PostCard extends ConsumerWidget {
                         Flexible(
                           child: GestureDetector(
                             onTap: () => openAuthor(context, post.author),
-                            child: Text(
-                              post.author.displayName,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                            child: NameWithBadge(
+                              name: post.author.displayName,
+                              verified: post.author.verified,
                               style: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: TypographyTokens.fontSize3,

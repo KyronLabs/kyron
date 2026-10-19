@@ -41,6 +41,7 @@ import '../repositories/moderation_repository.dart' show ReportTarget;
 import 'report_screen.dart';
 import '../widgets/skeleton.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../widgets/verified_badge.dart';
 
 /// One post, with its comments and their replies.
 ///
@@ -480,10 +481,9 @@ class _Post extends ConsumerWidget {
                     children: [
                       if (community != null)
                         PostCommunityLine(community: community),
-                      Text(
-                        post.author.displayName,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      NameWithBadge(
+                        name: post.author.displayName,
+                        verified: post.author.verified,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: TypographyTokens.fontSize3,

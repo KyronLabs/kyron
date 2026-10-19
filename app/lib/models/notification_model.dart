@@ -10,11 +10,15 @@ class NotificationActor {
   final String? username;
   final String? avatarUrl;
 
+  /// Somebody on the Kyron team checked it is who it says it is.
+  final bool verified;
+
   const NotificationActor({
     required this.id,
     this.name,
     this.username,
     this.avatarUrl,
+    this.verified = false,
   });
 
   factory NotificationActor.fromJson(Map<String, dynamic> json) =>
@@ -23,6 +27,7 @@ class NotificationActor {
         name: json['name'] as String?,
         username: json['username'] as String?,
         avatarUrl: json['avatarUrl'] as String?,
+        verified: json['verified'] == true,
       );
 
   /// What the row calls them. Falls back through the display name and the

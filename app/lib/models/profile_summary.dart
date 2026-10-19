@@ -13,6 +13,9 @@ class ProfileSummary {
   final String? bio;
   final int followers;
 
+  /// Somebody on the Kyron team checked it is who it says it is.
+  final bool verified;
+
   /// Whether the reader already follows this person. Filled by the endpoints
   /// that return a list of people, so a row can carry a working Follow button
   /// without a request per row.
@@ -29,6 +32,7 @@ class ProfileSummary {
     this.avatarUrl,
     this.bio,
     this.followers = 0,
+    this.verified = false,
     this.isFollowing = false,
     this.isSelf = false,
   });
@@ -41,6 +45,7 @@ class ProfileSummary {
         avatarUrl: json['avatarUrl'] as String?,
         bio: json['bio'] as String?,
         followers: (json['followers'] as num?)?.toInt() ?? 0,
+        verified: json['verified'] == true,
         isFollowing: json['isFollowing'] == true,
         isSelf: json['isSelf'] == true,
       );
@@ -54,6 +59,7 @@ class ProfileSummary {
         avatarUrl: avatarUrl,
         bio: bio,
         followers: followers ?? this.followers,
+        verified: verified,
         isFollowing: isFollowing ?? this.isFollowing,
         isSelf: isSelf,
       );

@@ -11,6 +11,9 @@ class MessagePerson {
   final String? username;
   final String? avatarUrl;
 
+  /// Somebody on the Kyron team checked it is who it says it is.
+  final bool verified;
+
   /// Online when the page this came on was read: the app open and in front,
   /// where both sides show it. Live changes come over the socket
   /// (presenceProvider), which wins once it has said anything.
@@ -21,6 +24,7 @@ class MessagePerson {
     this.name,
     this.username,
     this.avatarUrl,
+    this.verified = false,
     this.online = false,
   });
 
@@ -29,6 +33,7 @@ class MessagePerson {
         name: json['name'] as String?,
         username: json['username'] as String?,
         avatarUrl: json['avatarUrl'] as String?,
+        verified: json['verified'] == true,
         online: json['online'] == true,
       );
 

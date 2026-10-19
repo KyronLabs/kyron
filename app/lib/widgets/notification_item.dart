@@ -4,6 +4,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/notification_model.dart';
+import 'verified_badge.dart';
 
 /// One thing somebody did, as a row.
 ///
@@ -100,6 +101,14 @@ class NotificationItem extends StatelessWidget {
                           text: actor.label,
                           style: const TextStyle(fontWeight: FontWeight.w700),
                         ),
+                        if (actor.verified)
+                          const WidgetSpan(
+                            alignment: PlaceholderAlignment.middle,
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 3),
+                              child: VerifiedBadge(size: 14),
+                            ),
+                          ),
                         TextSpan(text: ' ${notification.actionText}'),
                       ],
                     ),

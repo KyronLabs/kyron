@@ -5,6 +5,7 @@ import '../models/notification_model.dart';
 import '../services/realtime_client.dart';
 import 'api_client_provider.dart';
 import 'enforcement_provider.dart';
+import 'verification_provider.dart';
 import 'messages_provider.dart';
 import 'notifications_provider.dart';
 import 'presence_provider.dart';
@@ -127,14 +128,17 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
       }
 
     case 'moderation.updated':
-      // A decision about this account, an answer to its appeal, or an
-      // outcome for something it reported.
+      // A decision about this account, an answer to its appeal, an outcome
+      // for something it reported, or the badge given or taken.
       ref.invalidate(standingProvider);
+      ref.invalidate(verificationStatusProvider);
+      ref.read(currentUserProvider.notifier).refresh();
 
     case 'moderation.queue':
       // The team only: a report or an appeal is waiting.
       ref.invalidate(reportQueueProvider);
       ref.invalidate(appealQueueProvider);
+      ref.invalidate(verificationQueueProvider);
 
     case 'presence':
       final who = event.data['userId'];

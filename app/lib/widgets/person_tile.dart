@@ -14,6 +14,7 @@ import '../utils/format_count.dart';
 
 import 'action_button.dart';
 import 'toast.dart';
+import 'verified_badge.dart';
 
 /// One person in a list: search results, followers, following.
 ///
@@ -76,10 +77,9 @@ class _PersonTileState extends ConsumerState<PersonTile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    _person.displayName,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  NameWithBadge(
+                    name: _person.displayName,
+                    verified: _person.verified,
                     style: const TextStyle(
                       fontSize: TypographyTokens.fontSize3,
                       fontWeight: FontWeight.w700,
