@@ -12,6 +12,18 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Releases go to closed testing, where the testers are.** 0.1.5 was sent
+  to Play's internal testing track, which nobody tests on; Kyron's testers,
+  and Google's reviews, are on Closed testing - Alpha. Releases now go there
+  by default, and the `PLAY_TRACK` repository variable picks another testing
+  track. The release notes are written in the store listing's own default
+  language rather than always US English, which a listing in another
+  language would not have shown. When Play will not send a release for
+  review by itself, the run now says so and what to press, instead of
+  reporting it as delivered. Production is refused outright.
+
 ### Added
 
 - **A written plan for message backups.** Not built yet: docs/E2EE.md now
