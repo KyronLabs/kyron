@@ -114,6 +114,25 @@ export class AuthGuard implements CanActivate {
       const recovered = await this.prisma.user.findFirst({
         where: { OR: [{ id: claims.sub }, { email }] },
       });
+      // A row matched by email alone was not made for this sign-in, and
+      // anything that could write an email into User -- POST /users could,
+      // with any role it was asked for -- would otherwise hand that row's
+      // role to whoever signs up with the address. A staff role is never
+      // inherited that way; it is granted to the account's own id.
+      if (
+        recovered &&
+        recovered.id !== claims.sub &&
+        recovered.role !== UserRole.USER
+      ) {
+        this.logger.error(
+          `Refused to sign ${claims.sub} in as ${recovered.id}: the rows ` +
+            `share an email address, and ${recovered.id} is ${recovered.role}.`,
+        );
+        throw new ForbiddenException(
+          'This sign-in matches an account Kyron cannot attach it to. ' +
+            'Contact support.',
+        );
+      }
       if (recovered) return this.backfill(recovered, { name, username });
 
       // Nothing to read back, so the collision was on the handle: `username`

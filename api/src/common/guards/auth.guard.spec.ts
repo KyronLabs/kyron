@@ -191,3 +191,34 @@ describe('AuthGuard and deleted accounts', () => {
     expect(creates).toHaveLength(0);
   });
 });
+
+describe('AuthGuard and a row that shares only an email address', () => {
+  /** A sign-in whose own row cannot be created: the address is taken. */
+  function collidingWith(row: Row & { role: string }) {
+    const made = guardWith(null, false, [], true);
+    const prisma = (made.guard as unknown as { prisma: { user: never } }).prisma
+      .user as unknown as { findFirst: jest.Mock };
+    prisma.findFirst.mockResolvedValue(row);
+    return made;
+  }
+
+  it('still attaches an account from before Supabase to its owner', async () => {
+    const legacy = { id: 'old', name: 'Ada', username: 'ada', role: 'USER' };
+    const { guard } = collidingWith(legacy);
+
+    await expect(guard.resolveSupabaseUser(subject({}))).resolves.toMatchObject(
+      { id: 'old' },
+    );
+  });
+
+  it('never hands over a staff role that way', async () => {
+    // POST /users created rows with any role and any address. Signing up
+    // with that address would have arrived here, as ADMIN.
+    const planted = { id: 'old', name: null, username: null, role: 'ADMIN' };
+    const { guard } = collidingWith(planted);
+
+    await expect(guard.resolveSupabaseUser(subject({}))).rejects.toMatchObject({
+      status: 403,
+    });
+  });
+});

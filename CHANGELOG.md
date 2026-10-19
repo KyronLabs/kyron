@@ -12,6 +12,18 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Security
+
+- **Account details could be read without signing in.** `GET /users/:id`
+  answered anybody, with no sign-in, and returned the whole account row for
+  any id -- including the email address -- while every post carries its
+  author's id. `POST /users`, beside it, created accounts with any role the
+  request named, administrator included. Neither was used by any client;
+  both are gone. A test now lists every route that answers without a
+  sign-in and fails when one appears that is not on its list, and a sign-in
+  matched to an existing account by email address alone can no longer
+  inherit a staff role.
+
 ### Fixed
 
 - **Releases go to closed testing, where the testers are.** 0.1.5 was sent
