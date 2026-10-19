@@ -12,6 +12,15 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+### Added
+
+- **A written plan for message backups.** Not built yet: docs/E2EE.md now
+  describes the Kyron Vault, which would keep every message key an account
+  has had, sealed under a key that only the account's own passkey, another
+  of its devices, a written-down recovery code or Android's Block Store can
+  open -- so a new phone reads the whole history at once, and Kyron still
+  cannot. It waits on a domain for passkeys.
+
 ## [0.1.5] - 2026-10-19
 ### Added
 
