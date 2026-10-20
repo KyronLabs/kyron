@@ -302,33 +302,35 @@ export class CommunityChatsService {
     const name = CommunityChatsService.chatName(input.name);
     const description = CommunityChatsService.description(input.description);
 
-    const live = await this.prisma.communityChat.findMany({
-      where: { communityId: community.id, deletedAt: null },
-      select: { name: true, position: true },
-    });
-    if (live.length >= CommunityChatsService.maxChats) {
-      throw new ForbiddenException(
-        `A community can have at most ${CommunityChatsService.maxChats} chats.`,
-      );
-    }
-    if (live.some((c) => c.name.toLowerCase() === name.toLowerCase())) {
-      throw new ConflictException(
-        'This community already has a chat by that name.',
-      );
-    }
-
-    const chat = await this.prisma.communityChat.create({
-      data: {
-        communityId: community.id,
-        name,
-        description,
-        writers: input.writers ?? CommunityChatWriters.MEMBERS,
-        position: Math.max(-1, ...live.map((c) => c.position)) + 1,
-        createdById: viewerId,
-        // Whoever opens it is in it.
-        members: { create: { userId: viewerId, lastReadAt: new Date() } },
-      },
-      select: this.chatShape(viewerId),
+    const chat = await this.prisma.$transaction(async (tx) => {
+      await CommunityChatsService.takeTurns(tx, `chats:${community.id}`);
+      const live = await tx.communityChat.findMany({
+        where: { communityId: community.id, deletedAt: null },
+        select: { name: true, position: true },
+      });
+      if (live.length >= CommunityChatsService.maxChats) {
+        throw new ForbiddenException(
+          `A community can have at most ${CommunityChatsService.maxChats} chats.`,
+        );
+      }
+      if (live.some((c) => c.name.toLowerCase() === name.toLowerCase())) {
+        throw new ConflictException(
+          'This community already has a chat by that name.',
+        );
+      }
+      return tx.communityChat.create({
+        data: {
+          communityId: community.id,
+          name,
+          description,
+          writers: input.writers ?? CommunityChatWriters.MEMBERS,
+          position: Math.max(-1, ...live.map((c) => c.position)) + 1,
+          createdById: viewerId,
+          // Whoever opens it is in it.
+          members: { create: { userId: viewerId, lastReadAt: new Date() } },
+        },
+        select: this.chatShape(viewerId),
+      });
     });
     this.logger.log(
       `chat ${chat.id} opened in ${community.slug} by ${viewerId}`,
@@ -353,24 +355,11 @@ export class CommunityChatsService {
     await this.requireModerator(viewerId, chat.community.id);
 
     const data: Prisma.CommunityChatUpdateInput = {};
-    if (patch.name !== undefined) {
-      const name = CommunityChatsService.chatName(patch.name);
-      const clash = await this.prisma.communityChat.findFirst({
-        where: {
-          communityId: chat.community.id,
-          deletedAt: null,
-          id: { not: chat.id },
-          name: { equals: name, mode: 'insensitive' },
-        },
-        select: { id: true },
-      });
-      if (clash) {
-        throw new ConflictException(
-          'This community already has a chat by that name.',
-        );
-      }
-      data.name = name;
-    }
+    const name =
+      patch.name === undefined
+        ? undefined
+        : CommunityChatsService.chatName(patch.name);
+    if (name !== undefined) data.name = name;
     if (patch.description !== undefined) {
       data.description = CommunityChatsService.description(patch.description);
     }
@@ -390,7 +379,26 @@ export class CommunityChatsService {
     }
     if (patch.position !== undefined) data.position = patch.position;
 
-    await this.prisma.communityChat.update({ where: { id: chat.id }, data });
+    await this.prisma.$transaction(async (tx) => {
+      if (name !== undefined) {
+        await CommunityChatsService.takeTurns(tx, `chats:${chat.community.id}`);
+        const clash = await tx.communityChat.findFirst({
+          where: {
+            communityId: chat.community.id,
+            deletedAt: null,
+            id: { not: chat.id },
+            name: { equals: name, mode: 'insensitive' },
+          },
+          select: { id: true },
+        });
+        if (clash) {
+          throw new ConflictException(
+            'This community already has a chat by that name.',
+          );
+        }
+      }
+      await tx.communityChat.update({ where: { id: chat.id }, data });
+    });
     await this.tellChat(chat.id, {
       type: 'community.chat.updated',
       chatId: chat.id,
@@ -505,29 +513,32 @@ export class CommunityChatsService {
       }
     }
 
-    await this.throttle(viewerId, chat, moderator, now);
-
-    const message = await this.prisma.communityChatMessage.create({
-      data: {
-        chatId: chat.id,
-        senderId: viewerId,
-        body,
-        replyToId: input.replyToId ?? null,
-        createdAt: now,
-      },
-      select: { id: true },
-    });
-    await this.prisma.$transaction([
-      this.prisma.communityChat.update({
+    const message = await this.prisma.$transaction(async (tx) => {
+      // Requests sent side by side take turns here, so each one counts the
+      // messages before it. Otherwise fifty at once would each find none.
+      await CommunityChatsService.takeTurns(tx, `send:${chat.id}:${viewerId}`);
+      await CommunityChatsService.throttle(tx, viewerId, chat, moderator, now);
+      const made = await tx.communityChatMessage.create({
+        data: {
+          chatId: chat.id,
+          senderId: viewerId,
+          body,
+          replyToId: input.replyToId ?? null,
+          createdAt: now,
+        },
+        select: { id: true },
+      });
+      await tx.communityChat.update({
         where: { id: chat.id },
         data: { lastMessageAt: now },
-      }),
+      });
       // Their own message is not unread to them.
-      this.prisma.communityChatMember.updateMany({
+      await tx.communityChatMember.updateMany({
         where: { chatId: chat.id, userId: viewerId },
         data: { lastReadAt: now },
-      }),
-    ]);
+      });
+      return made;
+    });
 
     await this.tellChat(chat.id, {
       type: 'community.chat.message',
@@ -717,13 +728,28 @@ export class CommunityChatsService {
    * moderator. Counted from the messages themselves, so it holds across every
    * instance of the API without a store of its own.
    */
-  private async throttle(
+  /**
+   * Holds [key] until the transaction ends. A check followed by a write --
+   * how many chats a community has, how fast somebody is sending -- is only
+   * a limit if two requests cannot both pass the check before either writes.
+   * Transaction-scoped, so it is let go however the transaction ends, and
+   * safe behind a transaction-mode pooler.
+   */
+  private static async takeTurns(
+    tx: Prisma.TransactionClient,
+    key: string,
+  ): Promise<void> {
+    await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${`community-chat:${key}`}, 0))`;
+  }
+
+  private static async throttle(
+    tx: Prisma.TransactionClient,
     viewerId: string,
     chat: { id: string; slowModeSeconds: number },
     moderator: boolean,
     now: Date,
   ): Promise<void> {
-    const recent = await this.prisma.communityChatMessage.findMany({
+    const recent = await tx.communityChatMessage.findMany({
       where: {
         chatId: chat.id,
         senderId: viewerId,
@@ -741,7 +767,7 @@ export class CommunityChatsService {
       );
     }
     if (moderator || chat.slowModeSeconds <= 0) return;
-    const last = await this.prisma.communityChatMessage.findFirst({
+    const last = await tx.communityChatMessage.findFirst({
       where: { chatId: chat.id, senderId: viewerId },
       orderBy: { createdAt: 'desc' },
       select: { createdAt: true },

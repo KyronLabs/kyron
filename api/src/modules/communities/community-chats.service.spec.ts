@@ -25,6 +25,8 @@ interface Scene {
   message?: { id: string; senderId: string };
 }
 
+type Transaction = Promise<unknown>[] | ((tx: unknown) => Promise<unknown>);
+
 function service(scene: Scene) {
   const created: unknown[] = [];
   const sent = (scene.sent ?? []).map((m) => ({
@@ -145,8 +147,15 @@ function service(scene: Scene) {
       findMany: jest.fn(() => Promise.resolve([])),
     },
     block: { findMany: jest.fn(() => Promise.resolve([])) },
-    $transaction: jest.fn((ops: Promise<unknown>[]) => Promise.all(ops)),
+    $executeRaw: jest.fn(() => Promise.resolve(1)),
+    $transaction: jest.fn(
+      (ops: Transaction): Promise<unknown> => Promise.resolve(ops),
+    ),
   };
+  // Both forms: a list of writes, or a callback handed the client.
+  prisma.$transaction.mockImplementation((ops: Transaction) =>
+    typeof ops === 'function' ? ops(prisma) : Promise.all(ops),
+  );
   const svc = new CommunityChatsService(
     prisma as unknown as PrismaService,
     new RecordingDelivery(),
@@ -218,6 +227,24 @@ describe('who may read and write', () => {
       sent: [1, 2, 3, 4, 5].map((s) => ({ senderId: 'ada', secondsAgo: s })),
     });
     await expect(send(svc, 'ada')).rejects.toMatchObject({ status: 429 });
+  });
+
+  it('counts a sender’s messages only after taking their turn', async () => {
+    // Without this, requests sent side by side all count none before them.
+    const { svc, prisma } = service({
+      roles: { ada: CommunityRole.MEMBER },
+      joined: ['ada'],
+    });
+    await send(svc, 'ada');
+    const [lock] = prisma.$executeRaw.mock.calls as unknown as [
+      [TemplateStringsArray, string],
+    ];
+    expect(lock[0].join('?')).toContain('pg_advisory_xact_lock');
+    expect(lock[1]).toBe(`community-chat:send:${CHAT}:ada`);
+    const locked = prisma.$executeRaw.mock.invocationCallOrder[0];
+    const counted =
+      prisma.communityChatMessage.findMany.mock.invocationCallOrder[0];
+    expect(locked).toBeLessThan(counted);
   });
 
   it('holds members to slow mode, and not moderators', async () => {

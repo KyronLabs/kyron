@@ -156,6 +156,31 @@ run('community chats, against a real database', () => {
       // And closed again, so the tests after this have room.
       await chats.remove(ids.owner, made.id);
     });
+
+    it('opens one of a name when several ask at once', async () => {
+      // Connections open first, or the first request is done before the
+      // pool has made room for the rest, and nothing overlaps.
+      await Promise.all(
+        Array.from({ length: 8 }, () => prisma.$queryRaw`SELECT 1`),
+      );
+      const all = await Promise.allSettled(
+        Array.from({ length: 8 }, (_, i) =>
+          chats.create(i % 2 ? ids.mod : ids.owner, slug, {
+            name: i % 2 ? 'twins' : 'Twins',
+          }),
+        ),
+      );
+      expect(all.filter((r) => r.status === 'fulfilled')).toHaveLength(1);
+      const live = await prisma.communityChat.findMany({
+        where: {
+          communityId,
+          deletedAt: null,
+          name: { equals: 'twins', mode: 'insensitive' },
+        },
+      });
+      expect(live).toHaveLength(1);
+      await chats.remove(ids.owner, live[0].id);
+    });
   });
 
   describe('reading', () => {
@@ -242,6 +267,24 @@ run('community chats, against a real database', () => {
       );
       await chats.send(ids.mod, general, { body: 'see' }, later(1));
       await chats.update(ids.mod, general, { slowModeSeconds: 0 });
+    });
+
+    it('holds the burst when the requests arrive together', async () => {
+      // A script sends a dozen at once: each must count the ones before it.
+      const at = later(60);
+      const sent = await Promise.allSettled(
+        Array.from({ length: 12 }, (_, i) =>
+          chats.send(ids.ben, general, { body: `flood ${i}` }, at),
+        ),
+      );
+      const landed = sent.filter((r) => r.status === 'fulfilled');
+      expect(landed).toHaveLength(CommunityChatsService.burst);
+      for (const r of sent) {
+        if (r.status === 'rejected') {
+          expect(r.reason).toMatchObject({ status: 429 });
+        }
+      }
+      later(60);
     });
 
     it('answers only a message that is in the same chat and still up', async () => {
