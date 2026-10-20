@@ -126,6 +126,7 @@ run('community chats, against a real database', () => {
         name: 'General chat',
         joined: true,
         canModerate: true,
+        role: CommunityRole.MODERATOR,
         joinedCount: 1,
       });
       // One name once, whatever the case.
@@ -298,6 +299,13 @@ run('community chats, against a real database', () => {
       await expect(
         chats.deleteMessage(ids.mod, general, m.id),
       ).rejects.toMatchObject({ status: 403 });
+      // Each reader is told their place, so the app offers no more than this.
+      expect((await chats.get(ids.owner, general)).role).toBe(
+        CommunityRole.OWNER,
+      );
+      expect((await chats.get(ids.ada, general)).role).toBe(
+        CommunityRole.MEMBER,
+      );
     });
 
     it('lets go of a pin when the pinned message goes', async () => {

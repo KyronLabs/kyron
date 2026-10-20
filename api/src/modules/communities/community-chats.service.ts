@@ -36,6 +36,10 @@ export interface CommunityChatSummary {
   canWrite: boolean;
   /** The reader runs it: the community's owner or one of its moderators. */
   canModerate: boolean;
+  /** The reader's place in the community, so the app offers only what the
+   * server would allow -- an owner may take down a moderator's message, a
+   * moderator may not. */
+  role: CommunityRole;
   /** Messages from other people since the reader last read it. 0 when they
    * have not joined it. */
   unread: number;
@@ -972,6 +976,7 @@ export class CommunityChatsService {
         Boolean(membership) &&
         (chat.writers === CommunityChatWriters.MEMBERS || moderator),
       canModerate: moderator,
+      role,
       unread,
       lastMessageAt: chat.lastMessageAt,
       createdAt: chat.createdAt,
