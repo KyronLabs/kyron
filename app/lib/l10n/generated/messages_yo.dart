@@ -1022,6 +1022,64 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Kí ni ó wà fún (àṣàyàn)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Àwọn alábòójútó nìkan ló lè kọ̀wé"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Fún ìkéde. Gbogbo ènìyàn nínú àwùjọ ṣì lè kà kí wọ́n sì fèsì."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Pa ìjíròrò dé"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Kò sí ẹni tí yóò lè kà tàbí kọ̀wé nínú rẹ̀ mọ́. A kò lè yí èyí padà."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Ṣé kí a pa ìjíròrò yìí dé?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("A ti dà á kọ"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "A yọ ìfiránṣẹ́ náà kúrò fún gbogbo ènìyàn. Kyron pa ẹ̀dà kan mọ́ fún àyẹ̀wò."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "A yọ ìfiránṣẹ́ náà kúrò fún gbogbo ènìyàn nínú ìjíròrò."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Ṣàtúnṣe ìjíròrò"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("A kò lè ṣí ìjíròrò yìí."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Àwọn ìjíròrò"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Darapọ̀ mọ́ ìjíròrò"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Darapọ̀ mọ́ àwùjọ láti rí àwọn ìjíròrò rẹ̀ kí o sì kópa."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count ti darapọ̀"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Kúrò nínú ìjíròrò"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "O ṣì lè kà á níwọ̀n ìgbà tí o bá wà nínú àwùjọ."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Olùní àti àwọn alábòójútó nìkan ló lè kọ̀wé níbí."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Orúkọ ìjíròrò"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Ìjíròrò tuntun"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Kò sí ìjíròrò síbẹ̀."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Kò sí ìjíròrò síbẹ̀. Ṣí ọ̀kan fún àwùjọ."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìjíròrò àwùjọ kò ní ìfipamọ́ láti òpin dé òpin. Àwọn alábòójútó àwùjọ àti Kyron lè kà wọ́n."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Kàn án mọ́ òkè"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("O kò lè rí ìjíròrò yìí mọ́."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Ipò díẹ̀díẹ̀"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Bí ó ti pẹ́ tó tí a ń dúró láàárín àwọn ìfiránṣẹ́. Kò kan àwọn alábòójútó."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("Wákàtí 1"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Ìṣẹ́jú \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Ipò díẹ̀díẹ̀: ìfiránṣẹ́ kan ní gbogbo ìṣẹ́jú-àáyá \$seconds"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Pípa"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Ìṣẹ́jú-àáyá \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "O lè kà kí o sì fèsì gẹ́gẹ́ bí olùwòran. Darapọ̀ láti kọ̀wé."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Yọ kúrò ní òkè"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Ìwọ"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

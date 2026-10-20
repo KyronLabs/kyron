@@ -238,6 +238,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Traduccir"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Intentar de nuevo"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Para qué es (opcional)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Solo los moderadores pueden escribir"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Para anuncios. Todos en la comunidad pueden seguir leyendo y reaccionando."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Cerrar chat"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Nadie podrá leer ni escribir en él. No se puede deshacer."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("¿Cerrar este chat?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Copiado"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "El mensaje se elimina para todos. Kyron guarda una copia para revisarla."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "El mensaje se elimina para todos en el chat."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Editar chat"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("No se pudo abrir este chat."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chats"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Unirse al chat"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Únete a la comunidad para ver sus chats y participar."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count se unieron"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Salir del chat"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Podrás seguir leyéndolo mientras estés en la comunidad."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Solo el propietario y los moderadores pueden escribir aquí."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Nombre del chat"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Nuevo chat"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Aún no hay chats."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Aún no hay chats. Abre uno para la comunidad."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Los chats de comunidad no están cifrados de extremo a extremo. Los moderadores de la comunidad y Kyron pueden leerlos."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Fijar arriba"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("Ya no puedes ver este chat."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Modo lento"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Cuánto espera cada persona entre mensajes. No se aplica a los moderadores."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 hora"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minutos"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Modo lento: un mensaje cada \$seconds segundos"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Desactivado"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n segundos"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Puedes leer y reaccionar como espectador. Únete para escribir."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Dejar de fijar"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Tú"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Me gusta"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Guardados"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Añadir personas"),

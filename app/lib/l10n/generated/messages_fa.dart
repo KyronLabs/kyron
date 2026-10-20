@@ -1022,6 +1022,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("برای چیست (اختیاری)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("فقط ناظران می‌توانند بنویسند"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "برای اطلاعیه‌ها. همه اعضای انجمن همچنان می‌توانند بخوانند و واکنش نشان دهند."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("بستن گفتگو"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "دیگر هیچ‌کس نمی‌تواند در آن بخواند یا بنویسد. این کار برگشت‌پذیر نیست."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("این گفتگو بسته شود؟"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("کپی شد"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "پیام برای همه حذف می‌شود. Kyron یک نسخه برای بررسی نگه می‌دارد."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "پیام برای همه افراد گفتگو حذف می‌شود."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("ویرایش گفتگو"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("باز کردن این گفتگو ممکن نشد."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("گفتگوها"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("پیوستن به گفتگو"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "به انجمن بپیوندید تا گفتگوهای آن را ببینید و در آن‌ها شرکت کنید."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("پیوسته‌ها: \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("ترک گفتگو"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "تا وقتی در انجمن هستید همچنان می‌توانید آن را بخوانید."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "فقط مالک و ناظران می‌توانند اینجا بنویسند."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("نام گفتگو"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("گفتگوی جدید"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("هنوز گفتگویی نیست."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "هنوز گفتگویی نیست. یکی برای انجمن باز کنید."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "گفتگوهای انجمن رمزگذاری سرتاسری ندارند. ناظران انجمن و Kyron می‌توانند آن‌ها را بخوانند."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("سنجاق در بالا"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "دیگر نمی‌توانید این گفتگو را ببینید."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("حالت کند"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "مدت انتظار بین پیام‌ها. شامل ناظران نمی‌شود."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("۱ ساعت"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("دقیقه: \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "حالت کند: یک پیام هر \$seconds ثانیه"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("خاموش"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("ثانیه: \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "می‌توانید به‌عنوان تماشاگر بخوانید و واکنش نشان دهید. برای نوشتن بپیوندید."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("برداشتن سنجاق"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("شما"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

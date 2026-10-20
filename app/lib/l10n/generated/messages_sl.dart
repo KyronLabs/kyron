@@ -1022,6 +1022,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Čemu je namenjen (neobvezno)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Pišejo lahko samo moderatorji"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Za obvestila. Vsi v skupnosti lahko še vedno berejo in se odzivajo."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Zapri klepet"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Nihče ne bo mogel več brati ali pisati v njem. Tega ni mogoče razveljaviti."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Želite zapreti ta klepet?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kopirano"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Sporočilo bo odstranjeno za vse. Kyron obdrži kopijo za pregled."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Sporočilo bo odstranjeno za vse v klepetu."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Uredi klepet"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Tega klepeta ni bilo mogoče odpreti."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Klepeti"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Pridruži se klepetu"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Pridružite se skupnosti, da vidite njene klepete in sodelujete."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("Pridruženih: \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Zapusti klepet"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Dokler ste v skupnosti, ga lahko še vedno berete."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Tu lahko pišejo samo lastnik in moderatorji."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Ime klepeta"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Nov klepet"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("Še ni klepetov."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Še ni klepetov. Odprite enega za skupnost."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Klepeti skupnosti niso šifrirani od konca do konca. Moderatorji skupnosti in Kyron jih lahko berejo."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Pripni na vrh"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Tega klepeta ne morete več videti."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Počasni način"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Koliko časa je treba čakati med sporočili. Ne velja za moderatorje."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 ura"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Minute: \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Počasni način: eno sporočilo vsakih \$seconds s"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Izklopljeno"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Sekunde: \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Kot gledalec lahko berete in se odzivate. Pridružite se, da boste lahko pisali."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Odpni"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Vi"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

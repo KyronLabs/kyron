@@ -1022,6 +1022,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("ഇത് എന്തിനാണ് (ഓപ്ഷണൽ)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "മോഡറേറ്റർമാർക്ക് മാത്രമേ എഴുതാനാകൂ"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "അറിയിപ്പുകൾക്കായി. കമ്മ്യൂണിറ്റിയിലെ എല്ലാവർക്കും ഇപ്പോഴും വായിക്കാനും പ്രതികരിക്കാനും കഴിയും."),
+      "ui_cchat_close":
+          MessageLookupByLibrary.simpleMessage("ചാറ്റ് അടയ്ക്കുക"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "ഇതിൽ ഇനി ആർക്കും വായിക്കാനോ എഴുതാനോ കഴിയില്ല. ഇത് പഴയപടിയാക്കാനാകില്ല."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("ഈ ചാറ്റ് അടയ്ക്കണോ?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("പകർത്തി"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "സന്ദേശം എല്ലാവർക്കും നീക്കം ചെയ്യപ്പെടും. അവലോകനത്തിനായി Kyron ഒരു പകർപ്പ് സൂക്ഷിക്കുന്നു."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "സന്ദേശം ചാറ്റിലെ എല്ലാവർക്കും നീക്കം ചെയ്യപ്പെടും."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("ചാറ്റ് എഡിറ്റ് ചെയ്യുക"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("ഈ ചാറ്റ് തുറക്കാനായില്ല."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ചാറ്റുകൾ"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("ചാറ്റിൽ ചേരുക"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "ഇതിന്റെ ചാറ്റുകൾ കാണാനും പങ്കെടുക്കാനും കമ്മ്യൂണിറ്റിയിൽ ചേരുക."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count പേർ ചേർന്നു"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("ചാറ്റ് വിടുക"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ കമ്മ്യൂണിറ്റിയിൽ ഉള്ളിടത്തോളം ഇത് വായിക്കാം."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "ഇവിടെ ഉടമയ്ക്കും മോഡറേറ്റർമാർക്കും മാത്രമേ എഴുതാനാകൂ."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ചാറ്റിന്റെ പേര്"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("പുതിയ ചാറ്റ്"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("ഇതുവരെ ചാറ്റുകളില്ല."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "ഇതുവരെ ചാറ്റുകളില്ല. കമ്മ്യൂണിറ്റിക്കായി ഒന്ന് തുറക്കുക."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "കമ്മ്യൂണിറ്റി ചാറ്റുകൾ എൻഡ്-ടു-എൻഡ് എൻക്രിപ്റ്റ് ചെയ്തതല്ല. കമ്മ്യൂണിറ്റിയുടെ മോഡറേറ്റർമാർക്കും Kyron-നും അവ വായിക്കാനാകും."),
+      "ui_cchat_pin":
+          MessageLookupByLibrary.simpleMessage("മുകളിൽ പിൻ ചെയ്യുക"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾക്ക് ഇനി ഈ ചാറ്റ് കാണാനാകില്ല."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("സ്ലോ മോഡ്"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "സന്ദേശങ്ങൾക്കിടയിൽ എത്ര നേരം കാത്തിരിക്കണം. മോഡറേറ്റർമാർക്ക് ബാധകമല്ല."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 മണിക്കൂർ"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n മിനിറ്റ്"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "സ്ലോ മോഡ്: ഓരോ \$seconds സെക്കൻഡിലും ഒരു സന്ദേശം"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("ഓഫ്"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n സെക്കൻഡ്"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "കാഴ്ചക്കാരനായി വായിക്കാനും പ്രതികരിക്കാനും കഴിയും. എഴുതാൻ ചേരുക."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("അൺപിൻ ചെയ്യുക"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("നിങ്ങൾ"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

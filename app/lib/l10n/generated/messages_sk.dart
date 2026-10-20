@@ -1022,6 +1022,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Na čo slúži (voliteľné)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Písať môžu iba moderátori"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Na oznámenia. Všetci v komunite môžu ďalej čítať a reagovať."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Zavrieť chat"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Nikto v ňom už nebude môcť čítať ani písať. Túto akciu nemožno vrátiť."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Zavrieť tento chat?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Skopírované"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Správa sa odstráni pre všetkých. Kyron si ponechá kópiu na kontrolu."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Správa sa odstráni pre všetkých v chate."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Upraviť chat"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Tento chat sa nepodarilo otvoriť."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chaty"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Pripojiť sa k chatu"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Pripojte sa ku komunite, aby ste videli jej chaty a mohli sa zapojiť."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("Pripojení: \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Opustiť chat"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Kým ste v komunite, môžete ho ďalej čítať."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Písať sem môžu iba vlastník a moderátori."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Názov chatu"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Nový chat"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Zatiaľ žiadne chaty."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Zatiaľ žiadne chaty. Otvorte jeden pre komunitu."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Chaty komunity nie sú šifrované end-to-end. Moderátori komunity a Kyron ich môžu čítať."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Pripnúť hore"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Tento chat už nemôžete vidieť."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Pomalý režim"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Ako dlho sa čaká medzi správami. Neplatí pre moderátorov."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 hodina"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Minúty: \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Pomalý režim: jedna správa každých \$seconds s"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Vypnuté"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Sekundy: \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Ako divák môžete čítať a reagovať. Pripojte sa, aby ste mohli písať."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Odopnúť"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Vy"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

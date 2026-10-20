@@ -1022,6 +1022,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Čemu služi (neobavezno)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Pisati mogu samo moderatori"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Za obavijesti. Svi u zajednici i dalje mogu čitati i reagirati."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Zatvori chat"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Nitko u njemu više neće moći čitati ni pisati. To se ne može poništiti."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Zatvoriti ovaj chat?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kopirano"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Poruka se uklanja za sve. Kyron zadržava kopiju za pregled."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Poruka se uklanja za sve u chatu."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Uredi chat"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Ovaj chat nije moguće otvoriti."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chatovi"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Pridruži se chatu"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Pridružite se zajednici da biste vidjeli njezine chatove i sudjelovali."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("Pridruženo: \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Napusti chat"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Možete ga i dalje čitati dok ste u zajednici."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Ovdje mogu pisati samo vlasnik i moderatori."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Naziv chata"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Novi chat"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Još nema chatova."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Još nema chatova. Otvorite jedan za zajednicu."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Chatovi zajednice nisu šifrirani s kraja na kraj. Moderatori zajednice i Kyron mogu ih čitati."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Prikvači na vrh"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Ovaj chat više ne možete vidjeti."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Spori način"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Koliko se čeka između poruka. Ne vrijedi za moderatore."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 sat"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Minute: \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Spori način: jedna poruka svakih \$seconds s"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Isključeno"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Sekunde: \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Kao gledatelj možete čitati i reagirati. Pridružite se da biste pisali."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Otkvači"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Vi"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

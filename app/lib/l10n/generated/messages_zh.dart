@@ -143,6 +143,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("翻译"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("重试"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage("用途（可选）"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage("仅版主可以发言"),
+      "ui_cchat_announcements_detail":
+          MessageLookupByLibrary.simpleMessage("用于公告。社区中的所有人仍可阅读并回应。"),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("关闭聊天"),
+      "ui_cchat_close_detail":
+          MessageLookupByLibrary.simpleMessage("之后任何人都无法在其中阅读或发言。此操作无法撤销。"),
+      "ui_cchat_close_title": MessageLookupByLibrary.simpleMessage("要关闭这个聊天吗？"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("已复制"),
+      "ui_cchat_delete_other":
+          MessageLookupByLibrary.simpleMessage("该消息会对所有人删除。Kyron 会保留一份副本以供审核。"),
+      "ui_cchat_delete_own":
+          MessageLookupByLibrary.simpleMessage("该消息会对聊天中的所有人删除。"),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("编辑聊天"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage("无法打开这个聊天。"),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("聊天"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("加入聊天"),
+      "ui_cchat_join_community":
+          MessageLookupByLibrary.simpleMessage("加入社区即可查看并参与其聊天。"),
+      "ui_cchat_joined": MessageLookupByLibrary.simpleMessage("\$count 人已加入"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("退出聊天"),
+      "ui_cchat_leave_detail":
+          MessageLookupByLibrary.simpleMessage("只要你还在社区中，就仍然可以阅读它。"),
+      "ui_cchat_moderators_only":
+          MessageLookupByLibrary.simpleMessage("只有所有者和版主可以在这里发言。"),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("聊天名称"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("新建聊天"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("还没有聊天。"),
+      "ui_cchat_none_mod":
+          MessageLookupByLibrary.simpleMessage("还没有聊天。为社区开一个吧。"),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "社区聊天未采用端到端加密。社区的版主和 Kyron 可以阅读这些内容。"),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("置顶"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage("你已无法查看这个聊天。"),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("慢速模式"),
+      "ui_cchat_slow_detail":
+          MessageLookupByLibrary.simpleMessage("每条消息之间需要等待多久。不适用于版主。"),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 小时"),
+      "ui_cchat_slow_minutes": MessageLookupByLibrary.simpleMessage("\$n 分钟"),
+      "ui_cchat_slow_mode":
+          MessageLookupByLibrary.simpleMessage("慢速模式：每 \$seconds 秒一条消息"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("关闭"),
+      "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n 秒"),
+      "ui_cchat_spectator":
+          MessageLookupByLibrary.simpleMessage("你可以作为旁观者阅读和回应。加入后即可发言。"),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("取消置顶"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("你"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("已点赞"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("已保存"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("添加成员"),

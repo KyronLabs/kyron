@@ -1022,6 +1022,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Kam jis skirtas (neprivaloma)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Rašyti gali tik moderatoriai"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Skelbimams. Visi bendruomenėje vis tiek gali skaityti ir reaguoti."),
+      "ui_cchat_close":
+          MessageLookupByLibrary.simpleMessage("Uždaryti pokalbį"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Niekas nebegalės jame skaityti ar rašyti. To negalima atšaukti."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Uždaryti šį pokalbį?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Nukopijuota"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Žinutė pašalinama visiems. Kyron pasilieka kopiją peržiūrai."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Žinutė pašalinama visiems pokalbyje."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Redaguoti pokalbį"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko atidaryti šio pokalbio."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Pokalbiai"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Prisijungti prie pokalbio"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Prisijunkite prie bendruomenės, kad matytumėte jos pokalbius ir juose dalyvautumėte."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("Prisijungė: \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Palikti pokalbį"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Galėsite jį skaityti, kol esate bendruomenėje."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Čia rašyti gali tik savininkas ir moderatoriai."),
+      "ui_cchat_name":
+          MessageLookupByLibrary.simpleMessage("Pokalbio pavadinimas"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Naujas pokalbis"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Pokalbių dar nėra."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Pokalbių dar nėra. Atidarykite vieną bendruomenei."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Bendruomenės pokalbiai nėra užšifruoti visapusiškai. Bendruomenės moderatoriai ir Kyron gali juos skaityti."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Prisegti viršuje"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Nebegalite matyti šio pokalbio."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Lėtas režimas"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Kiek reikia laukti tarp žinučių. Netaikoma moderatoriams."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 valanda"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Minutės: \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Lėtas režimas: viena žinutė kas \$seconds s"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Išjungta"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Sekundės: \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Kaip žiūrovas galite skaityti ir reaguoti. Prisijunkite, kad galėtumėte rašyti."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Atsegti"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Jūs"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

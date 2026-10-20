@@ -1022,6 +1022,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Untuk apa (opsional)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Hanya moderator yang dapat menulis"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Untuk pengumuman. Semua orang di komunitas tetap dapat membaca dan bereaksi."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Tutup obrolan"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Tidak ada yang bisa membaca atau menulis di sini lagi. Tindakan ini tidak dapat dibatalkan."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Tutup obrolan ini?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Disalin"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Pesan dihapus untuk semua orang. Kyron menyimpan salinannya untuk ditinjau."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Pesan dihapus untuk semua orang di obrolan."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Edit obrolan"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat membuka obrolan ini."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Obrolan"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Gabung obrolan"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Bergabunglah dengan komunitas untuk melihat dan ikut serta dalam obrolannya."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count bergabung"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Keluar dari obrolan"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Anda tetap dapat membacanya selama berada di komunitas."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Hanya pemilik dan moderator yang dapat menulis di sini."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Nama obrolan"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Obrolan baru"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Belum ada obrolan."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Belum ada obrolan. Buka satu untuk komunitas."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Obrolan komunitas tidak dienkripsi end-to-end. Moderator komunitas dan Kyron dapat membacanya."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Sematkan di atas"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Anda tidak dapat melihat obrolan ini lagi."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Mode lambat"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Berapa lama orang menunggu di antara pesan. Tidak berlaku untuk moderator."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 jam"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n menit"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Mode lambat: satu pesan setiap \$seconds detik"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Mati"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n detik"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Anda dapat membaca dan bereaksi sebagai penonton. Bergabunglah untuk menulis."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Lepas sematan"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Anda"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

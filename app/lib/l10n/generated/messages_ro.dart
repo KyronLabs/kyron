@@ -1022,6 +1022,64 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("La ce folosește (opțional)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Doar moderatorii pot scrie"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Pentru anunțuri. Toți cei din comunitate pot citi și reacționa în continuare."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Închide chatul"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Nimeni nu va mai putea citi sau scrie în el. Acțiunea nu poate fi anulată."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Închizi acest chat?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Copiat"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Mesajul este eliminat pentru toți. Kyron păstrează o copie pentru verificare."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Mesajul este eliminat pentru toți cei din chat."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Editează chatul"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Chatul nu a putut fi deschis."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chaturi"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Intră în chat"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Alătură-te comunității ca să-i vezi chaturile și să participi."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count s-au alăturat"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Părăsește chatul"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Îl poți citi în continuare cât timp ești în comunitate."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Doar proprietarul și moderatorii pot scrie aici."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Numele chatului"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Chat nou"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Încă nu există chaturi."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Încă nu există chaturi. Deschide unul pentru comunitate."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Chaturile comunității nu sunt criptate end-to-end. Moderatorii comunității și Kyron le pot citi."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Fixează sus"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("Nu mai poți vedea acest chat."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Mod lent"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Cât se așteaptă între mesaje. Nu se aplică moderatorilor."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 oră"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minute"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Mod lent: un mesaj la fiecare \$seconds secunde"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Dezactivat"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n secunde"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Poți citi și reacționa ca spectator. Intră în chat ca să scrii."),
+      "ui_cchat_unpin":
+          MessageLookupByLibrary.simpleMessage("Anulează fixarea"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Tu"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

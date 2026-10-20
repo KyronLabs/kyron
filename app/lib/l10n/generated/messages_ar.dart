@@ -1025,6 +1025,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "لن يرى كل منكما الآخر على Kyron، وأي متابعة بينكما تُزال. لن يتم إبلاغهم.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("يحمل"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("الغرض منها (اختياري)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("يمكن للمشرفين فقط الكتابة"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "للإعلانات. لا يزال بإمكان الجميع في المجتمع القراءة والتفاعل."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("إغلاق الدردشة"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "لن يتمكن أحد من القراءة أو الكتابة فيها. لا يمكن التراجع عن ذلك."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("هل تريد إغلاق هذه الدردشة؟"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("تم النسخ"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "تُزال الرسالة للجميع. يحتفظ Kyron بنسخة للمراجعة."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "تُزال الرسالة لكل من في الدردشة."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("تعديل الدردشة"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("تعذّر فتح هذه الدردشة."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("الدردشات"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("الانضمام إلى الدردشة"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "انضم إلى المجتمع لترى دردشاته وتشارك فيها."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("المنضمون: \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("مغادرة الدردشة"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "يمكنك مواصلة قراءتها ما دمت في المجتمع."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "يمكن للمالك والمشرفين فقط الكتابة هنا."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("اسم الدردشة"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("دردشة جديدة"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("لا توجد دردشات بعد."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "لا توجد دردشات بعد. افتح دردشة للمجتمع."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "دردشات المجتمع غير مشفرة تشفيرًا تامًا بين الطرفين. يمكن لمشرفي المجتمع وKyron قراءتها."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("تثبيت في الأعلى"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "لم يعد بإمكانك رؤية هذه الدردشة."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("الوضع البطيء"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "مدة الانتظار بين الرسائل. لا ينطبق على المشرفين."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("ساعة واحدة"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("الدقائق: \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "الوضع البطيء: رسالة واحدة كل \$seconds ثانية"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("إيقاف"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("الثواني: \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "يمكنك القراءة والتفاعل كمشاهد. انضم لتكتب."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("إلغاء التثبيت"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("أنت"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("المجتمعات"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("ما الغرض؟ (اختياري)"),

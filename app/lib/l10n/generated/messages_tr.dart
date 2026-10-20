@@ -1022,6 +1022,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Ne için (isteğe bağlı)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Yalnızca moderatörler yazabilir"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Duyurular için. Topluluktaki herkes okumaya ve tepki vermeye devam edebilir."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Sohbeti kapat"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Artık kimse bu sohbette okuyamayacak veya yazamayacak. Bu geri alınamaz."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Bu sohbet kapatılsın mı?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kopyalandı"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Mesaj herkes için kaldırılır. Kyron inceleme için bir kopyasını saklar."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Mesaj sohbetteki herkes için kaldırılır."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Sohbeti düzenle"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Bu sohbet açılamadı."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Sohbetler"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Sohbete katıl"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Sohbetlerini görmek ve katılmak için topluluğa katıl."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count katıldı"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Sohbetten ayrıl"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Toplulukta olduğun sürece okumaya devam edebilirsin."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Buraya yalnızca sahip ve moderatörler yazabilir."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Sohbet adı"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Yeni sohbet"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Henüz sohbet yok."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Henüz sohbet yok. Topluluk için bir tane aç."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Topluluk sohbetleri uçtan uca şifreli değildir. Topluluğun moderatörleri ve Kyron bunları okuyabilir."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("En üste sabitle"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("Bu sohbeti artık göremezsin."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Yavaş mod"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Mesajlar arasında ne kadar beklenir. Moderatörler için geçerli değildir."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 saat"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n dakika"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Yavaş mod: her \$seconds saniyede bir mesaj"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Kapalı"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n saniye"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "İzleyici olarak okuyabilir ve tepki verebilirsin. Yazmak için katıl."),
+      "ui_cchat_unpin":
+          MessageLookupByLibrary.simpleMessage("Sabitlemeyi kaldır"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Sen"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

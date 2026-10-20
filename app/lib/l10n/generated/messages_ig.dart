@@ -1022,6 +1022,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Ihe ọ bụ maka (nhọrọ)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Ọ bụ naanị ndị nlekọta nwere ike ide"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Maka ọkwa. Onye ọ bụla nọ n'obodo ka nwere ike ịgụ na imeghachi omume."),
+      "ui_cchat_close":
+          MessageLookupByLibrary.simpleMessage("Mechie mkparịta ụka"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịghị onye ga-enwe ike ịgụ ma ọ bụ ide na ya ọzọ. A gaghị emeghari nke a."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Ị ga-emechi mkparịta ụka a?"),
+      "ui_cchat_copied":
+          MessageLookupByLibrary.simpleMessage("E depụtaghachila"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "A na-ewepụ ozi ahụ maka onye ọ bụla. Kyron na-edobe otu mbipụta maka nyocha."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "A na-ewepụ ozi ahụ maka onye ọ bụla nọ na mkparịta ụka."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Dezie mkparịta ụka"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike imeghe mkparịta ụka a."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Mkparịta ụka"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Sonye na mkparịta ụka"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Sonye n'obodo ka ị hụ mkparịta ụka ya ma sonye na ha."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count esonyela"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Hapụ mkparịta ụka"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Ị ka nwere ike ịgụ ya ma ọ bụrụhaala na ị nọ n'obodo."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Ọ bụ naanị onye nwe ya na ndị nlekọta nwere ike ide ebe a."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Aha mkparịta ụka"),
+      "ui_cchat_new":
+          MessageLookupByLibrary.simpleMessage("Mkparịta ụka ọhụrụ"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Enweghị mkparịta ụka ugbu a."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Enweghị mkparịta ụka ugbu a. Meghee otu maka obodo."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Ezoghị mkparịta ụka obodo site na njedebe ruo njedebe. Ndị nlekọta obodo na Kyron nwere ike ịgụ ha."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Pịnụ n'elu"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Ị nweghịzi ike ịhụ mkparịta ụka a."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Ọnọdụ nwayọ"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Ogologo oge mmadụ na-echere n'etiti ozi. Ọ metụtaghị ndị nlekọta."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("Awa 1"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Nkeji \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Ọnọdụ nwayọ: otu ozi kwa sekọnd \$seconds"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Agbanyụọ"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Sekọnd \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Ị nwere ike ịgụ na imeghachi omume dị ka onye na-ekiri. Sonye ka ị dee ihe."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Wepụ pịnụ"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Gị"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

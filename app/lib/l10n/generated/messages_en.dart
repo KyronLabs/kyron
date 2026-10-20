@@ -212,6 +212,60 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Translate"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("What it is for (optional)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Only moderators can write"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "For announcements. Everyone in the community can still read and react."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Close chat"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Nobody will be able to read or write in it. This cannot be undone."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Close this chat?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Copied"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "It is taken down for everyone. Kyron keeps a copy for review."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "It is taken down for everyone in the chat."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Edit chat"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Could not open this chat."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chats"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Join chat"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Join the community to see and take part in its chats."),
+      "ui_cchat_joined": MessageLookupByLibrary.simpleMessage("\$count joined"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Leave chat"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "You can still read it while you are in the community."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Only the owner and moderators can write here."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Chat name"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("New chat"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("No chats yet."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "No chats yet. Open one for the community."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Community chats are not end-to-end encrypted. The community's moderators and Kyron can read them."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Pin to the top"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "You cannot see this chat any more."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Slow mode"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "How long people wait between messages. Not moderators."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 hour"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minutes"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Slow mode: one message every \$seconds seconds"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Off"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n seconds"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "You can read and react as a spectator. Join to write."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Unpin"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("You"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Liked"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saved"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Add people"),

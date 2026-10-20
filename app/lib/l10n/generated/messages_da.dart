@@ -1052,6 +1052,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Ingen af jer vil se den anden på Kyron, og ethvert follow mellem jer fjernes. De får ikke besked.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Bærer"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Hvad den er til (valgfrit)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Kun moderatorer kan skrive"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Til meddelelser. Alle i fællesskabet kan stadig læse og reagere."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Luk chat"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Ingen vil kunne læse eller skrive i den. Det kan ikke fortrydes."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Luk denne chat?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kopieret"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Beskeden fjernes for alle. Kyron gemmer en kopi til gennemgang."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Beskeden fjernes for alle i chatten."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Rediger chat"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Kunne ikke åbne denne chat."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chats"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Deltag i chat"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Bliv medlem af fællesskabet for at se og deltage i dets chats."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count har tilmeldt sig"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Forlad chat"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Du kan stadig læse den, så længe du er i fællesskabet."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Kun ejeren og moderatorerne kan skrive her."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Chattens navn"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Ny chat"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Ingen chats endnu."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Ingen chats endnu. Åbn en for fællesskabet."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Fællesskabschats er ikke end-to-end-krypterede. Fællesskabets moderatorer og Kyron kan læse dem."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Fastgør øverst"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Du kan ikke længere se denne chat."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Langsom tilstand"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Hvor længe man venter mellem beskeder. Gælder ikke moderatorer."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 time"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minutter"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Langsom tilstand: én besked hvert \$seconds. sekund"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Fra"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n sekunder"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Du kan læse og reagere som tilskuer. Deltag for at skrive."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Frigør"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Dig"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Fællesskaber"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Hvad er det til? (valgfrit)"),

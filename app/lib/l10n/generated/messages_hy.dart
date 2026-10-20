@@ -1022,6 +1022,61 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Ինչի համար է (ըստ ցանկության)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Գրել կարող են միայն մոդերատորները"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Հայտարարությունների համար։ Համայնքում բոլորը դեռ կարող են կարդալ և արձագանքել։"),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Փակել զրույցը"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Այլևս ոչ ոք չի կարողանա կարդալ կամ գրել այնտեղ։ Սա հնարավոր չէ հետարկել։"),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Փակե՞լ այս զրույցը"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Պատճենվեց"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Հաղորդագրությունը հեռացվում է բոլորի համար։ Kyron-ը պահում է պատճենը ստուգման համար։"),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Հաղորդագրությունը հեռացվում է զրույցի բոլոր մասնակիցների համար։"),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Խմբագրել զրույցը"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Չհաջողվեց բացել այս զրույցը։"),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Զրույցներ"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Միանալ զրույցին"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Միացեք համայնքին՝ նրա զրույցները տեսնելու և մասնակցելու համար։"),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("Միացել են՝ \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Լքել զրույցը"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Քանի դեռ համայնքում եք, կարող եք շարունակել կարդալ այն։"),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Այստեղ գրել կարող են միայն սեփականատերը և մոդերատորները։"),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Զրույցի անունը"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Նոր զրույց"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Դեռ զրույցներ չկան։"),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Դեռ զրույցներ չկան։ Բացեք մեկը համայնքի համար։"),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Համայնքի զրույցները ծայրից ծայր գաղտնագրված չեն։ Համայնքի մոդերատորները և Kyron-ը կարող են կարդալ դրանք։"),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Ամրացնել վերևում"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Դուք այլևս չեք կարող տեսնել այս զրույցը։"),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Դանդաղ ռեժիմ"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Որքան պետք է սպասել հաղորդագրությունների միջև։ Չի վերաբերում մոդերատորներին։"),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 ժամ"),
+      "ui_cchat_slow_minutes": MessageLookupByLibrary.simpleMessage("\$n րոպե"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Դանդաղ ռեժիմ՝ մեկ հաղորդագրություն յուրաքանչյուր \$seconds վայրկյանը մեկ"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Անջատված"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n վայրկյան"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Որպես դիտող կարող եք կարդալ և արձագանքել։ Միացեք՝ գրելու համար։"),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Ապամրացնել"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Դուք"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

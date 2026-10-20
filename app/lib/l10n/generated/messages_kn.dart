@@ -1022,6 +1022,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("ಇದು ಯಾವುದಕ್ಕಾಗಿ (ಐಚ್ಛಿಕ)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("ಮಾಡರೇಟರ್‌ಗಳು ಮಾತ್ರ ಬರೆಯಬಹುದು"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "ಘೋಷಣೆಗಳಿಗಾಗಿ. ಸಮುದಾಯದಲ್ಲಿರುವ ಎಲ್ಲರೂ ಇನ್ನೂ ಓದಬಹುದು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("ಚಾಟ್ ಮುಚ್ಚಿ"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "ಇದರಲ್ಲಿ ಇನ್ನು ಯಾರೂ ಓದಲು ಅಥವಾ ಬರೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ. ಇದನ್ನು ರದ್ದುಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("ಈ ಚಾಟ್ ಮುಚ್ಚಬೇಕೇ?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("ನಕಲಿಸಲಾಗಿದೆ"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "ಸಂದೇಶವನ್ನು ಎಲ್ಲರಿಗೂ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ. ಪರಿಶೀಲನೆಗಾಗಿ Kyron ಒಂದು ಪ್ರತಿಯನ್ನು ಇಡುತ್ತದೆ."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "ಸಂದೇಶವನ್ನು ಚಾಟ್‌ನಲ್ಲಿರುವ ಎಲ್ಲರಿಗೂ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("ಚಾಟ್ ಎಡಿಟ್ ಮಾಡಿ"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("ಈ ಚಾಟ್ ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ಚಾಟ್‌ಗಳು"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("ಚಾಟ್‌ಗೆ ಸೇರಿ"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "ಇದರ ಚಾಟ್‌ಗಳನ್ನು ನೋಡಲು ಮತ್ತು ಭಾಗವಹಿಸಲು ಸಮುದಾಯಕ್ಕೆ ಸೇರಿ."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count ಮಂದಿ ಸೇರಿದ್ದಾರೆ"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("ಚಾಟ್ ತೊರೆಯಿರಿ"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಸಮುದಾಯದಲ್ಲಿರುವವರೆಗೂ ಇದನ್ನು ಓದಬಹುದು."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "ಇಲ್ಲಿ ಮಾಲೀಕರು ಮತ್ತು ಮಾಡರೇಟರ್‌ಗಳು ಮಾತ್ರ ಬರೆಯಬಹುದು."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ಚಾಟ್ ಹೆಸರು"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("ಹೊಸ ಚಾಟ್"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("ಇನ್ನೂ ಯಾವುದೇ ಚಾಟ್‌ಗಳಿಲ್ಲ."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "ಇನ್ನೂ ಯಾವುದೇ ಚಾಟ್‌ಗಳಿಲ್ಲ. ಸಮುದಾಯಕ್ಕಾಗಿ ಒಂದನ್ನು ತೆರೆಯಿರಿ."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "ಸಮುದಾಯ ಚಾಟ್‌ಗಳು ಎಂಡ್-ಟು-ಎಂಡ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗಿಲ್ಲ. ಸಮುದಾಯದ ಮಾಡರೇಟರ್‌ಗಳು ಮತ್ತು Kyron ಅವುಗಳನ್ನು ಓದಬಹುದು."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("ಮೇಲೆ ಪಿನ್ ಮಾಡಿ"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಇನ್ನು ಈ ಚಾಟ್ ನೋಡಲು ಸಾಧ್ಯವಿಲ್ಲ."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("ನಿಧಾನ ಮೋಡ್"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "ಸಂದೇಶಗಳ ನಡುವೆ ಎಷ್ಟು ಕಾಯಬೇಕು. ಮಾಡರೇಟರ್‌ಗಳಿಗೆ ಅನ್ವಯಿಸುವುದಿಲ್ಲ."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 ಗಂಟೆ"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n ನಿಮಿಷಗಳು"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "ನಿಧಾನ ಮೋಡ್: ಪ್ರತಿ \$seconds ಸೆಕೆಂಡುಗಳಿಗೆ ಒಂದು ಸಂದೇಶ"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("ಆಫ್"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n ಸೆಕೆಂಡುಗಳು"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ವೀಕ್ಷಕರಾಗಿ ಓದಬಹುದು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು. ಬರೆಯಲು ಸೇರಿ."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ಅನ್‌ಪಿನ್ ಮಾಡಿ"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("ನೀವು"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

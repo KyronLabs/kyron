@@ -935,6 +935,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "ሁለቱም በKyron ላይ አይገኙም፣ እና መካከላችሁ ያለው እርስዎ ይወገዳል። እነርሱ አይገልፁም።",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("ያዞረ"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage("ለምንድን ነው (አማራጭ)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("መጻፍ የሚችሉት አወያዮች ብቻ ናቸው"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "ለማስታወቂያዎች። በማህበረሰቡ ውስጥ ያሉ ሁሉ አሁንም ማንበብ እና ምላሽ መስጠት ይችላሉ።"),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("ውይይቱን ዝጋ"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "ማንም በውስጡ ማንበብም ሆነ መጻፍ አይችልም። ይህ ሊቀለበስ አይችልም።"),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("ይህ ውይይት ይዘጋ?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("ተቀድቷል"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "መልዕክቱ ለሁሉም ይወገዳል። Kyron ለግምገማ ቅጂ ያስቀምጣል።"),
+      "ui_cchat_delete_own":
+          MessageLookupByLibrary.simpleMessage("መልዕክቱ በውይይቱ ውስጥ ላሉ ሁሉ ይወገዳል።"),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("ውይይቱን አርትዕ"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("ይህን ውይይት መክፈት አልተቻለም።"),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ውይይቶች"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("ውይይቱን ተቀላቀል"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "ውይይቶቹን ለማየት እና ለመሳተፍ ማህበረሰቡን ይቀላቀሉ።"),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count ተቀላቅለዋል"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("ውይይቱን ተው"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "በማህበረሰቡ ውስጥ እስካሉ ድረስ ማንበብ ይችላሉ።"),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "እዚህ መጻፍ የሚችሉት ባለቤቱ እና አወያዮች ብቻ ናቸው።"),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("የውይይቱ ስም"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("አዲስ ውይይት"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("እስካሁን ውይይቶች የሉም።"),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "እስካሁን ውይይቶች የሉም። ለማህበረሰቡ አንድ ይክፈቱ።"),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "የማህበረሰብ ውይይቶች ከጫፍ እስከ ጫፍ የተመሰጠሩ አይደሉም። የማህበረሰቡ አወያዮች እና Kyron ሊያነቧቸው ይችላሉ።"),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("ከላይ ሰካ"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("ይህን ውይይት ከእንግዲህ ማየት አይችሉም።"),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("ቀርፋፋ ሁነታ"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "በመልዕክቶች መካከል ምን ያህል መጠበቅ እንዳለበት። ለአወያዮች አይመለከትም።"),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 ሰዓት"),
+      "ui_cchat_slow_minutes": MessageLookupByLibrary.simpleMessage("\$n ደቂቃ"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "ቀርፋፋ ሁነታ፦ በየ\$seconds ሰከንዱ አንድ መልዕክት"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("ጠፍቷል"),
+      "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n ሰከንድ"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "እንደ ተመልካች ማንበብ እና ምላሽ መስጠት ይችላሉ። ለመጻፍ ይቀላቀሉ።"),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ንቀል"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("እርስዎ"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("ማህበረሰቦች"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("ይህ ስለምንድን ነው? (አማራጭ)"),

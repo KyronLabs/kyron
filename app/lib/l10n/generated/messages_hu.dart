@@ -1022,6 +1022,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Mire való (nem kötelező)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Csak moderátorok írhatnak"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Közleményekhez. A közösségben mindenki továbbra is olvashat és reagálhat."),
+      "ui_cchat_close":
+          MessageLookupByLibrary.simpleMessage("Csevegés lezárása"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Senki sem fog tudni olvasni vagy írni benne. Ez nem vonható vissza."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Lezárod ezt a csevegést?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Másolva"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Az üzenet mindenki számára eltűnik. A Kyron megőriz egy másolatot ellenőrzésre."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Az üzenet a csevegésben mindenki számára eltűnik."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Csevegés szerkesztése"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült megnyitni ezt a csevegést."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Csevegések"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Csatlakozás a csevegéshez"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Csatlakozz a közösséghez, hogy lásd a csevegéseit és részt vehess bennük."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count csatlakozott"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Kilépés a csevegésből"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Amíg a közösség tagja vagy, továbbra is olvashatod."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Itt csak a tulajdonos és a moderátorok írhatnak."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Csevegés neve"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Új csevegés"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Még nincsenek csevegések."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Még nincsenek csevegések. Nyiss egyet a közösségnek."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "A közösségi csevegések nem végpontok közötti titkosításúak. A közösség moderátorai és a Kyron olvashatják őket."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Kitűzés felülre"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Ezt a csevegést már nem láthatod."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Lassú mód"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Mennyit kell várni két üzenet között. A moderátorokra nem vonatkozik."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 óra"),
+      "ui_cchat_slow_minutes": MessageLookupByLibrary.simpleMessage("\$n perc"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Lassú mód: \$seconds másodpercenként egy üzenet"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Ki"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n másodperc"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Nézőként olvashatsz és reagálhatsz. Csatlakozz, hogy írhass."),
+      "ui_cchat_unpin":
+          MessageLookupByLibrary.simpleMessage("Kitűzés megszüntetése"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Te"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
