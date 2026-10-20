@@ -1067,6 +1067,89 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("Ku dar dad"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ku dar"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Diid"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Fariimaha kooxdan waa la sir-qariyay bilow ilaa dhammaad, sida wada-hadal kasta."),
+      "ui_group_event_added": MessageLookupByLibrary.simpleMessage(
+          "\$actor wuxuu ku daray \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor wuxuu \$users ka dhigay maamule"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor wuxuu sameeyay kooxda"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor wuxuu dejiyay in dadka cusub ku biiraan xubno ahaan"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor wuxuu dejiyay in dadka cusub ku biiraan daawadayaal ahaan"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor wuu baxay"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor wuxuu \$users ka dhigay xubin"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor wuxuu \$users ka dhigay milkiile"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor wuxuu saaray \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor wuxuu kooxda u beddelay magaca \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor wuxuu \$users ka dhigay daawade"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Koox waxay yeelan kartaa ugu badnaan \$count qof."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Gacan ayaa la taagay. Maamulayaasha waa loo sheegay."),
+      "ui_group_hands": MessageLookupByLibrary.simpleMessage(
+          "\$count ayaa codsanaya inay qoraan"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Codsanaya inay qoraan"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Dadka dambe lagu daro waxay ku biiraan daawadayaal ahaan"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Ka bax kooxda"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Waxay ka bixi doontaa liiskaaga, mana arki doontid waxa la sheego kadib. Qof ayaa mar kale ku dari doona."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Ma ka baxaysaa kooxdan?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("U oggolow inay qoraan"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Dhig gacanta"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Ka dhig maamule"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Ka dhig milkiile"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Ka dhig daawade"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count xubnood"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("Xubnaha"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Magaca kooxda"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Samee wada-sheekeysi koox"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Hal milkiile ayaa jira. Waxaad ahaan doontaa maamule."),
+      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage(
+          "Ma \$name ka dhigaysaa milkiile?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Taag gacanta"),
+      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Ka saar kooxda"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Ka saar maamulka"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Mar dambe kuma jirtid kooxdan."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Magac beddel"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Maamule"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Xubin"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Daawade"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Daawade ahaan, halkan waad akhrin kartaa oo ka jawaabi kartaa."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Daawadayaashu way akhrin karaan, ka jawaabi karaan oo gacan taagi karaan si ay u codsadaan qoris."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Eeg astaanta"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("adiga"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Waxaad tahay daawade"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1182,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Tan horay ayaa loo furay."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Wuu dhacay"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Tan lama furi karin."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Hal mar ayuu furmaa, kadibna waa laga tirtiraa Kyron."),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("Eeg hal mar"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("La furay"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$count ka mid ah \$total ayaa furay"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Kaliya dadka aad u dirtay ayaa furi kara, hal mar."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("U dir si hal mar loo eego"),
+      "ui_once_tap":
+          MessageLookupByLibrary.simpleMessage("Taabo si aad u aragto"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

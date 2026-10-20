@@ -1067,6 +1067,83 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("เพิ่มคน"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("เพิ่ม"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("ปฏิเสธ"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "ข้อความในกลุ่มนี้เข้ารหัสตั้งแต่ต้นทางถึงปลายทาง เหมือนการสนทนาอื่นๆ"),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor เพิ่ม \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor ตั้ง \$users เป็นผู้ดูแล"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor สร้างกลุ่ม"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor ตั้งให้คนใหม่เข้าร่วมในฐานะสมาชิก"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ตั้งให้คนใหม่เข้าร่วมในฐานะผู้ชม"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor ออกจากกลุ่ม"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor ตั้ง \$users เป็นสมาชิก"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor ตั้ง \$users เป็นเจ้าของ"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor นำ \$users ออก"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor เปลี่ยนชื่อกลุ่มเป็น \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ตั้ง \$users เป็นผู้ชม"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "กลุ่มหนึ่งมีได้สูงสุด \$count คน"),
+      "ui_group_hand_raised":
+          MessageLookupByLibrary.simpleMessage("ยกมือแล้ว แจ้งผู้ดูแลแล้ว"),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count คนขอเขียน"),
+      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("ขอเขียน"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "คนที่ถูกเพิ่มภายหลังจะเข้าร่วมในฐานะผู้ชม"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("ออกจากกลุ่ม"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "กลุ่มจะหายไปจากรายการของคุณ และคุณจะไม่เห็นสิ่งที่พูดหลังจากนั้น ต้องมีคนเพิ่มคุณใหม่"),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("ออกจากกลุ่มนี้ไหม"),
+      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("ให้เขียนได้"),
+      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("ลดมือ"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("ตั้งเป็นผู้ดูแล"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("ตั้งเป็นเจ้าของ"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("ตั้งเป็นผู้ชม"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("สมาชิก \$count คน"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("สมาชิก"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("ชื่อกลุ่ม"),
+      "ui_group_new": MessageLookupByLibrary.simpleMessage("สร้างแชทกลุ่ม"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "เจ้าของมีได้คนเดียว คุณจะยังเป็นผู้ดูแล"),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("ตั้ง \$name เป็นเจ้าของไหม"),
+      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("ยกมือ"),
+      "ui_group_remove": MessageLookupByLibrary.simpleMessage("นำออกจากกลุ่ม"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("ถอดจากผู้ดูแล"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("คุณไม่ได้อยู่ในกลุ่มนี้แล้ว"),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("เปลี่ยนชื่อ"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("ผู้ดูแล"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("สมาชิก"),
+      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("ผู้ชม"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "ในฐานะผู้ชม คุณอ่านและแสดงความรู้สึกได้ที่นี่"),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "ผู้ชมอ่าน แสดงความรู้สึก และยกมือเพื่อขอเขียนได้"),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("ดูโปรไฟล์"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("คุณ"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("คุณเป็นผู้ชม"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1176,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already": MessageLookupByLibrary.simpleMessage("เปิดดูไปแล้ว"),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("หมดอายุ"),
+      "ui_once_failed": MessageLookupByLibrary.simpleMessage("เปิดไม่ได้"),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "เปิดได้ครั้งเดียว แล้วจะถูกลบออกจาก Kyron"),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("ดูครั้งเดียว"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("เปิดแล้ว"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "เปิดแล้ว \$count จาก \$total คน"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "เฉพาะคนที่คุณส่งให้เท่านั้นที่เปิดได้ ครั้งเดียว"),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("ส่งแบบดูครั้งเดียว"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("แตะเพื่อดู"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

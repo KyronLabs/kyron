@@ -1067,6 +1067,86 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("Tinye mmadụ"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Tinye"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Jụ"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Ozi dị n’otu a ka ezoro ezo site n’isi ruo n’ọgwụgwụ, dịka mkparịta ụka ọ bụla ọzọ."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor tinyere \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor mere \$users onye nchịkwa"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor mepụtara otu a"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor setịrị ka ndị ọhụrụ sonye dịka ndị otu"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor setịrị ka ndị ọhụrụ sonye dịka ndị na-ekiri"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor pụrụ"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor mere \$users onye otu"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor mere \$users onye nwe ya"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor wepụrụ \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor gbanwere aha otu a ka ọ bụrụ \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor mere \$users onye na-ekiri"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Otu nwere ike inwe mmadụ \$count kachasị."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "E weliri aka. A gwala ndị nchịkwa."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count na-arịọ ide ihe"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Na-arịọ ide ihe"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Ndị a tinyere mgbe e mesịrị na-esonye dịka ndị na-ekiri"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Pụọ n’otu"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Ọ ga-apụ na ndepụta gị, ị gaghịkwa ahụ ihe a ga-ekwu ma e mesịa. Mmadụ ga-atinyeghachi gị."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Ịpụ n’otu a?"),
+      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Hapụ ha dee"),
+      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Wedata aka"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Mee onye nchịkwa"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Mee onye nwe ya"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Mee onye na-ekiri"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("Ndị otu \$count"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("Ndị otu"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Aha otu"),
+      "ui_group_new": MessageLookupByLibrary.simpleMessage("Mepụta nkata otu"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Onye nwe ya bụ otu. Ị ga-anọgide dịka onye nchịkwa."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Mee \$name onye nwe ya?"),
+      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Welie aka"),
+      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Wepụ n’otu"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Wepụ dịka onye nchịkwa"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Ị nọghịzi n’otu a."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Gbanwee aha"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Onye nchịkwa"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Onye otu"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Onye na-ekiri"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Dịka onye na-ekiri, ị nwere ike ịgụ ma meghachi omume ebe a."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Ndị na-ekiri nwere ike ịgụ, meghachi omume ma welie aka ịrịọ ide ihe."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Lee profaịlụ"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("gị"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Ị bụ onye na-ekiri"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1179,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("E meghela nke a."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Agwụla"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike imeghe nke a."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Ọ na-emeghe otu ugboro, mgbe ahụ e hichapụ ya na Kyron."),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("Lee otu ugboro"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("E meghere"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$count n’ime \$total meghere ya"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Naanị ndị i zigaara ya nwere ike imeghe ya, otu ugboro."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Zipu ka e lee otu ugboro"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("Pịa ka ị hụ"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

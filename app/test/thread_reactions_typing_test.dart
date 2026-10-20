@@ -61,6 +61,7 @@ class _Repo extends MessagesRepository {
     List<PendingMedia> media = const [],
     String? replyToId,
     String? linkCard,
+    OnceUpload? once,
   }) async =>
       throw UnimplementedError();
 }

@@ -1067,6 +1067,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("Odam qo‘shish"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Qo‘shish"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Rad etish"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Bu guruhdagi xabarlar boshqa har qanday suhbat kabi uchidan-uchigacha shifrlangan."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor qo‘shdi: \$users"),
+      "ui_group_event_admin":
+          MessageLookupByLibrary.simpleMessage("\$actor admin qildi: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor guruh yaratdi"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor yangi odamlar a’zo sifatida qo‘shilishini belgiladi"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor yangi odamlar tomoshabin sifatida qo‘shilishini belgiladi"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor chiqib ketdi"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor a’zo qildi: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor egalikni topshirdi: \$users"),
+      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage(
+          "\$actor olib tashladi: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor guruh nomini \$title deb o‘zgartirdi"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor tomoshabin qildi: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Guruhda ko‘pi bilan \$count kishi bo‘lishi mumkin."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Qo‘l ko‘tarildi. Adminlarga xabar berildi."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("Yozmoqchi: \$count"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Yozmoqchilar"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Keyin qo‘shilganlar tomoshabin sifatida qo‘shiladi"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("Guruhdan chiqish"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "U ro‘yxatingizdan yo‘qoladi va keyin aytilganlarni ko‘rmaysiz. Kimdir sizni qayta qo‘shishi kerak bo‘ladi."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Bu guruhdan chiqasizmi?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Yozishga ruxsat berish"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Qo‘lni tushirish"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Admin qilish"),
+      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Ega qilish"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Tomoshabin qilish"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count a’zo"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("A’zolar"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Guruh nomi"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Guruh chatini yaratish"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Ega bitta bo‘ladi. Siz admin bo‘lib qolasiz."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name ega qilinsinmi?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Qo‘l ko‘tarish"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Guruhdan olib tashlash"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Adminlikdan olish"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Siz endi bu guruhda emassiz."),
+      "ui_group_rename":
+          MessageLookupByLibrary.simpleMessage("Nomini o‘zgartirish"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("A’zo"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Tomoshabin"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Tomoshabin sifatida bu yerda o‘qish va munosabat bildirishingiz mumkin."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Tomoshabinlar o‘qiy oladi, munosabat bildira oladi va yozish uchun qo‘l ko‘tara oladi."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Profilni ko‘rish"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("siz"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Siz tomoshabinsiz"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1184,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Bu allaqachon ochilgan."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Muddati o‘tgan"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Buni ochib bo‘lmadi."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Bir marta ochiladi, so‘ng Kyron’dan o‘chiriladi."),
+      "ui_once_label":
+          MessageLookupByLibrary.simpleMessage("Bir marta ko‘rish"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("Ochildi"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("\$total tadan \$count ochdi"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Buni faqat siz yuborgan odamlar bir marta ocha oladi."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Bir marta ko‘rishga yuborish"),
+      "ui_once_tap":
+          MessageLookupByLibrary.simpleMessage("Ko‘rish uchun bosing"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

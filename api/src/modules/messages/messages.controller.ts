@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   ParseUUIDPipe,
+  Patch,
   Post,
   Put,
   Query,
@@ -23,6 +24,14 @@ import { SendMessageDto } from './dto/send-message.dto';
 import { ReactDto } from './dto/react.dto';
 import { OpenConversationDto } from './dto/open-conversation.dto';
 import { RequestKeysDto, ShareKeysDto } from './dto/key-shares.dto';
+import {
+  AddMembersDto,
+  CreateGroupDto,
+  SetRoleDto,
+  UpdateGroupDto,
+} from './dto/groups.dto';
+import { GroupsService } from './groups.service';
+import { ViewOnceService } from './view-once.service';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 
@@ -35,7 +44,24 @@ export class MessagesController {
     private readonly svc: MessagesService,
     private readonly wallpapers: WallpapersService,
     private readonly keyShares: KeySharesService,
+    private readonly groups: GroupsService,
+    private readonly viewOnce: ViewOnceService,
   ) {}
+
+  /**
+   * Starts a group, with the reader as its owner.
+   *
+   * Declared above ':id' so a fixed name is not swallowed by the parameter.
+   */
+  @Post('groups')
+  createGroup(@Req() req: AuthRequest, @Body() dto: CreateGroupDto) {
+    return this.groups.create(
+      req.user.id,
+      dto.title,
+      dto.userIds,
+      dto.joinRole,
+    );
+  }
 
   /** The reader's conversations, whichever moved last at the top. */
   @Get()
@@ -178,7 +204,86 @@ export class MessagesController {
       dto.media ?? [],
       dto.replyToId,
       dto.linkCard,
+      dto.once,
     );
+  }
+
+  /** Renames a group, or changes what people added to it start as. */
+  @Patch(':id/group')
+  updateGroup(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() dto: UpdateGroupDto,
+  ) {
+    return this.groups.update(req.user.id, id, dto);
+  }
+
+  @Get(':id/members')
+  members(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.groups.members(req.user.id, id);
+  }
+
+  @Post(':id/members')
+  addMembers(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() dto: AddMembersDto,
+  ) {
+    return this.groups.add(req.user.id, id, dto.userIds);
+  }
+
+  /** Takes somebody out of a group; the reader's own id leaves it. */
+  @Delete(':id/members/:userId')
+  removeMember(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Param('userId', ParseUUIDPipe) userId: string,
+  ) {
+    return this.groups.remove(req.user.id, id, userId);
+  }
+
+  @Put(':id/members/:userId/role')
+  setRole(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @Body() dto: SetRoleDto,
+  ) {
+    return this.groups.setRole(req.user.id, id, userId, dto.role);
+  }
+
+  /** A spectator asks to write. */
+  @Put(':id/hand')
+  raiseHand(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.groups.raiseHand(req.user.id, id);
+  }
+
+  @Delete(':id/hand')
+  lowerHand(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.groups.lowerHand(req.user.id, id);
+  }
+
+  /** An admin says no to somebody's raised hand. */
+  @Delete(':id/members/:userId/hand')
+  dismissHand(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Param('userId', ParseUUIDPipe) userId: string,
+  ) {
+    return this.groups.lowerHand(req.user.id, id, userId);
+  }
+
+  /**
+   * Opens a view-once message, once: records it and answers a link that
+   * stops working in minutes. A second open is refused.
+   */
+  @Post(':id/items/:messageId/open')
+  openOnce(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Param('messageId', ParseUUIDPipe) messageId: string,
+  ) {
+    return this.viewOnce.open(req.user.id, id, messageId);
   }
 
   @Put(':id/read')

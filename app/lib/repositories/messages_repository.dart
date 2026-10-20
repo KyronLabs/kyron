@@ -1,4 +1,6 @@
 // lib/repositories/messages_repository.dart
+import 'package:dio/dio.dart';
+
 import '../models/conversation.dart';
 import '../services/api_client.dart';
 import '../models/chat_wallpaper.dart';
@@ -108,6 +110,7 @@ class MessagesRepository {
     List<PendingMedia> media = const [],
     String? replyToId,
     String? linkCard,
+    OnceUpload? once,
   }) async {
     final res = await _api.dio.post<Map<String, dynamic>>(
       '/messages/$conversationId',
@@ -122,10 +125,123 @@ class MessagesRepository {
         if (media.isNotEmpty)
           'media':
               media.where((m) => m.isReady).map((m) => m.toJson()).toList(),
+        // A reference to a private upload, never an address: the server
+        // turns it into a link for each person it went to, once.
+        if (once != null) 'once': once.toJson(),
       },
     );
     return DirectMessage.fromJson(res.data ?? const {});
   }
+
+  /// Uploads a photo, clip or voice note to be sent view once.
+  ///
+  /// Not [FeedRepository.uploadMedia]: that puts the file in the public
+  /// bucket, at an address anybody holding it can open for good. This goes
+  /// to a private one and answers with a reference only the API can turn
+  /// into a link. See docs/MESSAGING.md.
+  Future<OnceUpload> uploadOnce(PendingMedia pending) async {
+    final form = FormData.fromMap({
+      'file': await MultipartFile.fromFile(
+        pending.path,
+        filename: pending.path.split('/').last,
+      ),
+      if (pending.width != null) 'width': '${pending.width}',
+      if (pending.height != null) 'height': '${pending.height}',
+    });
+    final res = await _api.dio.post<Map<String, dynamic>>(
+      '/media/once',
+      data: form,
+      options: Options(headers: {'Content-Type': 'multipart/form-data'}),
+    );
+    final data = res.data ?? const {};
+    final ref = data['ref'] as String?;
+    if (ref == null) throw StateError('The upload returned no reference.');
+    return OnceUpload(
+      ref: ref,
+      kind: PostMedia.kindFromWire(data['kind']),
+      width: (data['width'] as num?)?.toInt() ?? pending.width,
+      height: (data['height'] as num?)?.toInt() ?? pending.height,
+      // A clip's length is read off the file by the server; a voice note's
+      // was measured while it was recorded.
+      duration: data['durationMs'] is num
+          ? Duration(milliseconds: (data['durationMs'] as num).toInt())
+          : pending.duration,
+      waveform: pending.waveform,
+    );
+  }
+
+  /// Opens a view-once message, once. The server records it and answers a
+  /// link that stops working in minutes; asking again is refused.
+  Future<OpenedOnce> openOnce(String conversationId, String messageId) async {
+    final res = await _api.dio.post<Map<String, dynamic>>(
+      '/messages/$conversationId/items/$messageId/open',
+    );
+    return OpenedOnce.fromJson(res.data ?? const {});
+  }
+
+  /// Starts a group with [userIds] and the reader as its owner, and answers
+  /// its id.
+  Future<String> createGroup(
+    String title,
+    List<String> userIds, {
+    MemberRole joinRole = MemberRole.member,
+  }) async {
+    final res = await _api.dio.post<Map<String, dynamic>>(
+      '/messages/groups',
+      data: {'title': title, 'userIds': userIds, 'joinRole': joinRole.wire},
+    );
+    return res.data?['id'] as String? ?? '';
+  }
+
+  /// Renames a group, or changes what people added to it start as.
+  Future<void> updateGroup(
+    String conversationId, {
+    String? title,
+    MemberRole? joinRole,
+  }) =>
+      _api.dio.patch<void>(
+        '/messages/$conversationId/group',
+        data: {
+          if (title != null) 'title': title,
+          if (joinRole != null) 'joinRole': joinRole.wire,
+        },
+      );
+
+  /// Everybody in a group, owner first.
+  Future<List<GroupMember>> members(String conversationId) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/messages/$conversationId/members',
+    );
+    return (res.data?['items'] as List<dynamic>? ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(GroupMember.fromJson)
+        .toList();
+  }
+
+  Future<void> addMembers(String conversationId, List<String> userIds) =>
+      _api.dio.post<void>(
+        '/messages/$conversationId/members',
+        data: {'userIds': userIds},
+      );
+
+  /// Takes somebody out of a group. The reader's own id leaves it.
+  Future<void> removeMember(String conversationId, String userId) =>
+      _api.dio.delete<void>('/messages/$conversationId/members/$userId');
+
+  Future<void> setRole(String conversationId, String userId, MemberRole role) =>
+      _api.dio.put<void>(
+        '/messages/$conversationId/members/$userId/role',
+        data: {'role': role.wire},
+      );
+
+  /// A spectator asks to write, or stops asking.
+  Future<void> setHandRaised(String conversationId, bool raised) => raised
+      ? _api.dio.put<void>('/messages/$conversationId/hand')
+      : _api.dio.delete<void>('/messages/$conversationId/hand');
+
+  /// An admin says no to somebody's raised hand.
+  Future<void> dismissHand(String conversationId, String userId) =>
+      _api.dio.delete<void>('/messages/$conversationId/members/$userId/hand');
 
   /// Silences a conversation for the reader. Their own setting, not the other
   /// side's -- muting somebody is not something they get to see or undo.
@@ -198,6 +314,35 @@ class MessagesRepository {
         .where((w) => w.url.isNotEmpty)
         .toList();
   }
+}
+
+/// A view-once attachment, uploaded and not yet sent.
+class OnceUpload {
+  final String ref;
+  final MediaKind kind;
+  final int? width;
+  final int? height;
+  final Duration? duration;
+  final List<int> waveform;
+
+  const OnceUpload({
+    required this.ref,
+    required this.kind,
+    this.width,
+    this.height,
+    this.duration,
+    this.waveform = const [],
+  });
+
+  Map<String, dynamic> toJson() => {
+        'ref': ref,
+        'kind': kind.name.toUpperCase(),
+        if (width != null) 'width': width,
+        if (height != null) 'height': height,
+        if (duration != null && duration!.inMilliseconds > 0)
+          'durationMs': duration!.inMilliseconds,
+        if (waveform.isNotEmpty) 'waveform': waveform,
+      };
 }
 
 /// One attachment from a conversation, with where and when it was sent.

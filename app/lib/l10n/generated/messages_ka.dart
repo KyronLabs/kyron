@@ -1067,6 +1067,89 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("ხალხის დამატება"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("დამატება"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("უარყოფა"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "ამ ჯგუფის შეტყობინებები ბოლომდე დაშიფრულია, როგორც ნებისმიერი სხვა საუბარი."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor-მა დაამატა: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor-მა ადმინად დანიშნა: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor-მა შექმნა ჯგუფი"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor-მა დააყენა, რომ ახლები წევრებად შემოვიდნენ"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor-მა დააყენა, რომ ახლები მაყურებლებად შემოვიდნენ"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor გავიდა"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor-მა წევრად დანიშნა: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor-მა მფლობელობა გადასცა: \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor-მა წაშალა: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor-მა ჯგუფს სახელი შეუცვალა: \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor-მა მაყურებლად დანიშნა: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "ჯგუფში შეიძლება იყოს მაქსიმუმ \$count ადამიანი."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "ხელი აწეულია. ადმინებს ეცნობათ."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("წერა სურთ: \$count"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("წერა სურთ"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "მოგვიანებით დამატებულები მაყურებლებად შემოდიან"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("ჯგუფიდან გასვლა"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "ის გაქრება თქვენი სიიდან და ვერ ნახავთ, რას იტყვიან შემდეგ. ვინმეს მოუწევს თქვენი ხელახლა დამატება."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("გახვალთ ამ ჯგუფიდან?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("წერის ნებართვა"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("ხელის დაშვება"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("ადმინად დანიშვნა"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("მფლობელად დანიშვნა"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("მაყურებლად დანიშვნა"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count წევრი"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("წევრები"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("ჯგუფის სახელი"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("ჯგუფური ჩატის შექმნა"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "მფლობელი ერთია. თქვენ ადმინად დარჩებით."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("გადაეცეს მფლობელობა \$name-ს?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("ხელის აწევა"),
+      "ui_group_remove": MessageLookupByLibrary.simpleMessage("ჯგუფიდან წაშლა"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("ადმინობის მოხსნა"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("თქვენ აღარ ხართ ამ ჯგუფში."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("სახელის შეცვლა"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("ადმინი"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("წევრი"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("მაყურებელი"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "როგორც მაყურებელს, აქ შეგიძლიათ წაიკითხოთ და გამოეხმაუროთ."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "მაყურებლებს შეუძლიათ წაიკითხონ, გამოეხმაურონ და ხელი ასწიონ წერის სათხოვნელად."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("პროფილის ნახვა"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("თქვენ"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("თქვენ მაყურებელი ხართ"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1182,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("ეს უკვე გაიხსნა."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("ვადა გაუვიდა"),
+      "ui_once_failed": MessageLookupByLibrary.simpleMessage("ვერ გაიხსნა."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "იხსნება ერთხელ, შემდეგ იშლება Kyron-იდან."),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("ერთხელ ნახვა"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("გახსნილია"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("გახსნა \$count-მა \$total-დან"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "მისი გახსნა მხოლოდ მათ შეუძლიათ, ვისაც გაუგზავნეთ, ერთხელ."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("ერთჯერადი ნახვისთვის გაგზავნა"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("შეეხეთ სანახავად"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

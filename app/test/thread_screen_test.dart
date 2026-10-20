@@ -89,6 +89,7 @@ class _Repo extends MessagesRepository {
     List<PendingMedia> media = const [],
     String? replyToId,
     String? linkCard,
+    OnceUpload? once,
   }) async {
     bodies.add(body);
     repliedTo.add(replyToId);

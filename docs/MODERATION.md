@@ -182,3 +182,7 @@ cd api
 DATABASE_URL=postgresql://... npx prisma migrate deploy
 MODERATION_TEST_DATABASE_URL=postgresql://... npx jest enforcement.db
 ```
+
+To run every database spec together, run them one at a time:
+`npx jest db.spec --runInBand`. They share the database, and run side by side
+one spec's posts land in another's feed.

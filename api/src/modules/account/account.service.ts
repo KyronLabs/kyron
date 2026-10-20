@@ -283,8 +283,6 @@ export class AccountService {
       for (const folder of folders) {
         found.push(...(await this.supabase.listByPrefix(folder, `${userId}_`)));
       }
-      if (found.length === 0) return 0;
-
       const bucket = this.supabase.getBucketName();
       const pictures = await this.prisma.community.findMany({
         select: { avatarUrl: true, bannerUrl: true },
@@ -298,7 +296,15 @@ export class AccountService {
 
       const doomed = found.filter((path) => !keep.has(path));
       await this.supabase.removeFiles(doomed);
-      return doomed.length;
+
+      // View-once attachments it sent and nobody opened yet. Their messages
+      // went with the account, so nothing would ever sweep these.
+      const private_ = await this.supabase.listPrivateByPrefix(
+        MediaService.onceFolder,
+        `${userId}_`,
+      );
+      await this.supabase.removePrivate(private_);
+      return doomed.length + private_.length;
     } catch (error) {
       this.logger.warn(
         `Deleted account ${userId} but not all of its files: ${String(error)}`,

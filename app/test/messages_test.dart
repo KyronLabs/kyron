@@ -52,6 +52,7 @@ class _FakeMessages extends MessagesRepository {
     List<PendingMedia> media = const [],
     String? replyToId,
     String? linkCard,
+    OnceUpload? once,
   }) async {
     sent.add(body);
     repliedTo.add(replyToId);

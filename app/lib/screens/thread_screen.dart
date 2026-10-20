@@ -15,6 +15,7 @@ import '../providers/current_user_provider.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
 import '../widgets/action_sheet.dart';
+import '../widgets/action_button.dart';
 import '../widgets/chat_wallpaper_view.dart';
 import '../providers/chat_wallpaper_provider.dart';
 import 'conversation_info_screen.dart';
@@ -33,7 +34,7 @@ import '../widgets/voice_post_player.dart';
 import '../widgets/skeleton.dart';
 import '../widgets/kyron_app_bar.dart';
 import '../models/current_user.dart';
-import '../models/post_media.dart' show MediaKind, PostMedia;
+import '../models/post_media.dart' show MediaKind, PendingMedia, PostMedia;
 import '../utils/emoji_only.dart';
 import '../widgets/gif_picker_sheet.dart';
 import '../widgets/overlap_stack.dart';
@@ -45,6 +46,10 @@ import '../widgets/create_post/url_preview.dart' show firstLinkIn;
 import '../widgets/hairline.dart';
 import '../widgets/link_preview_card.dart' show LinkCard;
 import '../widgets/verified_badge.dart';
+import '../widgets/view_once.dart';
+import '../widgets/group_avatar.dart';
+import '../utils/conversation_text.dart' show groupEventText, mediaPreview;
+import 'group_info_screen.dart';
 
 /// Which conversation, and who is in it.
 ///
@@ -55,7 +60,15 @@ class ThreadArgs {
   final String conversationId;
   final List<MessagePerson> people;
 
-  const ThreadArgs({required this.conversationId, this.people = const []});
+  /// A group's details, when it is one, so its name is up before the first
+  /// page lands.
+  final GroupSummary? group;
+
+  const ThreadArgs({
+    required this.conversationId,
+    this.people = const [],
+    this.group,
+  });
 }
 
 class ThreadScreen extends ConsumerStatefulWidget {
@@ -221,8 +234,19 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
       return;
     }
     FocusManager.instance.primaryFocus?.unfocus();
-    final recording = await VoiceRecorderSheet.show(context, forMessage: true);
+    final once = ValueNotifier(false);
+    final recording = await VoiceRecorderSheet.show(
+      context,
+      forMessage: true,
+      viewOnce: once,
+    );
+    final viewOnce = once.value;
+    once.dispose();
     if (recording == null || !mounted) return;
+    if (viewOnce) {
+      _sendOnce(recording, me);
+      return;
+    }
 
     final answering = _replyingTo;
     setState(() => _replyingTo = null);
@@ -237,6 +261,57 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
           ),
     );
     _toNewest(animate: true);
+  }
+
+  /// Picks a photo or clip, shows it, and sends it to be opened once.
+  Future<void> _pickOnce() async {
+    final me = ref.read(currentUserProvider).asData?.value.id;
+    if (me == null) {
+      Toast.show(context, AppLocalizations.of(context).literalyouAreSignedOut);
+      return;
+    }
+    final pending = await pickViewOnce(context);
+    if (pending == null || !mounted) return;
+    _sendOnce(pending, me);
+  }
+
+  void _sendOnce(PendingMedia pending, String me) {
+    final answering = _replyingTo;
+    setState(() => _replyingTo = null);
+    unawaited(HapticFeedback.selectionClick());
+    unawaited(
+      ref.read(threadProvider(widget.args.conversationId).notifier).sendOnce(
+            pending,
+            senderId: me,
+            replyToId: answering?.id,
+          ),
+    );
+    _toNewest(animate: true);
+  }
+
+  /// Opens a view-once message, or says why it will not.
+  Future<void> _openOnce(DirectMessage message, String? senderName) async {
+    final once = message.once;
+    if (once == null || message.sending || message.failed) return;
+    final me = ref.read(currentUserProvider).asData?.value.id;
+    final l10n = AppLocalizations.of(context);
+    if (message.senderId == me) {
+      Toast.show(
+        context,
+        l10n.ui(
+          'ui_once_own',
+          'Only the people you sent this to can open it, once.',
+        ),
+      );
+      return;
+    }
+    if (once.opened || once.gone) return;
+    await ViewOnceViewer.open(
+      context,
+      conversationId: widget.args.conversationId,
+      message: message,
+      senderName: senderName,
+    );
   }
 
   /// Everything that can go in a message besides words, behind one button,
@@ -266,6 +341,12 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
           label: AppLocalizations.of(context).literaladdAGif,
           icon: Iconsax.emoji_happy_copy,
         ),
+        SheetAction(
+          value: 'once',
+          label:
+              AppLocalizations.of(context).ui('ui_once_send', 'Send view once'),
+          icon: Iconsax.timer_1_copy,
+        ),
       ],
     );
     if (choice == null || !mounted) return;
@@ -278,6 +359,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
         await _attach(video: true);
       case 'gif':
         await _attachGif();
+      case 'once':
+        await _pickOnce();
     }
   }
 
@@ -292,6 +375,16 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
   /// wallpaper, and mute, report, block and remove. Blocking or removing
   /// takes the conversation out of the list, so this screen goes with it.
   Future<void> _openInfo(List<MessagePerson> people) async {
+    final group = ref.read(threadProvider(widget.args.conversationId)).group ??
+        widget.args.group;
+    if (group != null) {
+      final left = await GroupInfoScreen.open(
+        context,
+        conversationId: widget.args.conversationId,
+      );
+      if (left && mounted) Navigator.pop(context);
+      return;
+    }
     final result = await ConversationInfoScreen.open(
       context,
       conversationId: widget.args.conversationId,
@@ -492,6 +585,8 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
     String? firstUnread,
   ) =>
       earlier.senderId == later.senderId &&
+      earlier.event == null &&
+      later.event == null &&
       !_timeAbove(earlier, later) &&
       later.id != firstUnread;
 
@@ -538,12 +633,16 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
     // The list is the truth once it has landed; the arguments are what the
     // header shows before that.
     final people = state.people.isNotEmpty ? state.people : widget.args.people;
-    final other = people.isEmpty ? null : people.first;
+    final group = state.group ?? widget.args.group;
+    final other = group != null || people.isEmpty ? null : people.first;
     // Nobody else in it once it has loaded: the other side deleted their
     // account. Their messages went with it; the reader's stay, and there is
-    // nobody to send anything new to.
-    final gone =
-        other == null && !state.loadingFirstPage && state.error == null;
+    // nobody to send anything new to. Never a group: one with only the
+    // reader left in it is still theirs to write in.
+    final gone = group == null &&
+        other == null &&
+        !state.loadingFirstPage &&
+        state.error == null;
 
     return Scaffold(
       appBar: KyronAppBar(
@@ -553,89 +652,96 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           onPressed: () => Navigator.pop(context),
         ),
-        title: InkWell(
-          onTap: other == null
-              ? null
-              : () => openProfile(
-                    context,
-                    username: other.username,
-                    userId: other.id,
-                  ),
-          child: Row(
-            children: [
-              OnlineDot(
-                person: other,
-                size: 11,
-                child: CircleAvatar(
-                  radius: 16,
-                  backgroundColor: Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withValues(alpha: .15),
-                  foregroundImage: other?.avatarUrl == null
-                      ? null
-                      : NetworkImage(other!.avatarUrl!),
-                  child: Icon(
-                    Iconsax.user_copy,
-                    size: 16,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-              ),
-              const SizedBox(width: SpacingTokens.space8),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+        title: group != null
+            ? _GroupTitle(
+                group: group,
+                people: people,
+                onTap: () => _openInfo(people),
+              )
+            : InkWell(
+                onTap: other == null
+                    ? null
+                    : () => openProfile(
+                          context,
+                          username: other.username,
+                          userId: other.id,
+                        ),
+                child: Row(
                   children: [
-                    NameWithBadge(
-                      name: other?.displayName ??
-                          (gone
-                              ? AppLocalizations.of(context).ui(
-                                  'ui_dm_deleted_account', 'Deleted account')
-                              : 'Conversation'),
-                      verified: other?.verified ?? false,
-                      style: const TextStyle(
-                        fontSize: TypographyTokens.fontSize4,
-                        fontWeight: FontWeight.w700,
+                    OnlineDot(
+                      person: other,
+                      size: 11,
+                      child: CircleAvatar(
+                        radius: 16,
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withValues(alpha: .15),
+                        foregroundImage: other?.avatarUrl == null
+                            ? null
+                            : NetworkImage(other!.avatarUrl!),
+                        child: Icon(
+                          Iconsax.user_copy,
+                          size: 16,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                       ),
                     ),
-                    // Online in place of the handle while they are: the
-                    // one thing about them worth knowing at that moment.
-                    if (isOnline(ref, other))
-                      Text(
-                        AppLocalizations.of(context)
-                            .ui('ui_dm_online', 'Online'),
-                        key: const ValueKey('thread-online'),
-                        maxLines: 1,
-                        style: TextStyle(
-                          fontSize: TypographyTokens.fontSize1,
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSurface
-                              .withValues(alpha: 0.6),
-                        ),
-                      )
-                    else if (other?.handle != null)
-                      Text(
-                        other!.handle!,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: TypographyTokens.fontSize1,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSurface
-                              .withValues(alpha: 0.6),
-                        ),
+                    const SizedBox(width: SpacingTokens.space8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          NameWithBadge(
+                            name: other?.displayName ??
+                                (gone
+                                    ? AppLocalizations.of(context).ui(
+                                        'ui_dm_deleted_account',
+                                        'Deleted account')
+                                    : 'Conversation'),
+                            verified: other?.verified ?? false,
+                            style: const TextStyle(
+                              fontSize: TypographyTokens.fontSize4,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          // Online in place of the handle while they are: the
+                          // one thing about them worth knowing at that moment.
+                          if (isOnline(ref, other))
+                            Text(
+                              AppLocalizations.of(context)
+                                  .ui('ui_dm_online', 'Online'),
+                              key: const ValueKey('thread-online'),
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontSize: TypographyTokens.fontSize1,
+                                fontWeight: FontWeight.w600,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurface
+                                    .withValues(alpha: 0.6),
+                              ),
+                            )
+                          else if (other?.handle != null)
+                            Text(
+                              other!.handle!,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: TypographyTokens.fontSize1,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurface
+                                    .withValues(alpha: 0.6),
+                              ),
+                            ),
+                        ],
                       ),
+                    ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
         actions: [
           IconButton(
             tooltip:
@@ -648,6 +754,13 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
       body: SafeArea(
         child: Column(
           children: [
+            // For the admins: spectators asking to write, one tap from
+            // being answered.
+            if (group != null && group.role.isAdmin && group.handsRaised > 0)
+              _HandsBanner(
+                count: group.handsRaised,
+                onTap: () => _openInfo(people),
+              ),
             Expanded(
               child: Stack(
                 children: [
@@ -686,6 +799,33 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
             ),
             if (gone)
               const _GoneNotice()
+            else if (state.removed)
+              _GoneNotice(
+                text: AppLocalizations.of(context).ui(
+                  'ui_group_removed',
+                  'You are no longer in this group.',
+                ),
+              )
+            else if (!state.canWrite && group != null)
+              _SpectatorBar(
+                handRaised: group.handRaised,
+                onToggle: () async {
+                  final raising = !group.handRaised;
+                  final error = await notifier.setHandRaised(raising);
+                  if (!context.mounted) return;
+                  if (error != null) {
+                    Toast.show(context, error);
+                  } else if (raising) {
+                    Toast.show(
+                      context,
+                      AppLocalizations.of(context).ui(
+                        'ui_group_hand_raised',
+                        'Hand raised. The admins have been told.',
+                      ),
+                    );
+                  }
+                },
+              )
             else
               _Composer(
                 controller: _box,
@@ -800,6 +940,21 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
 
         final timeAbove = _timeAbove(previous, message);
         final dividerAbove = message.id == firstUnread;
+
+        // A line about the group, not something said: centred, quiet, and
+        // nobody's turn.
+        final event = message.event;
+        if (event != null) {
+          return Column(
+            key: _rows.putIfAbsent(message.id, GlobalKey.new),
+            children: [
+              if (timeAbove) _TimeHeader(at: message.createdAt),
+              if (dividerAbove) const _NewMessagesDivider(),
+              _EventLine(
+                  text: groupEventText(AppLocalizations.of(context), event)),
+            ],
+          );
+        }
         // A turn: one person's messages with nothing drawn between them. They
         // stack tight, share one avatar at the bottom, and their corners on
         // the sender's side tuck in where they meet -- so one message is a
@@ -858,6 +1013,24 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen>
           sender: mine
               ? null
               : people.where((p) => p.id == message.senderId).firstOrNull,
+          // In a group, who is speaking, over the first of each turn.
+          senderName: state.isGroup && !mine && !continues
+              ? people
+                      .where((p) => p.id == message.senderId)
+                      .firstOrNull
+                      ?.displayName ??
+                  AppLocalizations.of(context).ui('ui_dm_someone', 'Someone')
+              : null,
+          group: state.isGroup,
+          onOpenOnce: message.once == null
+              ? null
+              : () => _openOnce(
+                    message,
+                    people
+                        .where((p) => p.id == message.senderId)
+                        .firstOrNull
+                        ?.displayName,
+                  ),
           onReply: () => _startReply(message),
           // Resolved here rather than sent by the server: it holds ciphertext
           // and could not quote it. This list is decrypted.
@@ -974,6 +1147,16 @@ class _Bubble extends StatelessWidget {
   /// Takes the reader to the message this one answers.
   final VoidCallback? onOpenAnswered;
 
+  /// Who wrote it, over the first message of their turn in a group.
+  final String? senderName;
+
+  /// Whether this is in a group: a view-once message then says how many of
+  /// the people it went to have opened it.
+  final bool group;
+
+  /// Opens a view-once message.
+  final VoidCallback? onOpenOnce;
+
   const _Bubble({
     required this.message,
     required this.mine,
@@ -992,6 +1175,9 @@ class _Bubble extends StatelessWidget {
     this.answered,
     this.answeredAuthor,
     this.onOpenAnswered,
+    this.senderName,
+    this.group = false,
+    this.onOpenOnce,
   });
 
   /// The avatar's width plus the gap after it, which every bubble from the
@@ -1006,10 +1192,12 @@ class _Bubble extends StatelessWidget {
   ///
   /// Never for one that could not be opened: what it holds is not known, so
   /// it cannot be known to be emoji.
-  static int? jumboCountOf(DirectMessage message) =>
-      message.media.isEmpty && !message.unreadable
-          ? jumboEmojiCount(message.body)
-          : null;
+  static int? jumboCountOf(DirectMessage message) => message.media.isEmpty &&
+          !message.unreadable &&
+          message.once == null &&
+          message.event == null
+      ? jumboEmojiCount(message.body)
+      : null;
 
   @override
   Widget build(BuildContext context) {
@@ -1049,9 +1237,12 @@ class _Bubble extends StatelessWidget {
         // From where the message is, so it can be lifted out of the page in
         // place rather than described in a sheet that covers it.
         onLongPress: () => _openOptions(context, inner, lifted),
+        // A view-once message opens on a tap. It takes no double tap: a
+        // tap that waited out the double-tap window would feel broken.
+        onTap: onOpenOnce,
         // A heart on a double tap. Not on a message the server does not
         // have yet: there is nothing for it to attach to.
-        onDoubleTap: _canReact ? onToggleHeart : null,
+        onDoubleTap: _canReact && message.once == null ? onToggleHeart : null,
         child: ValueListenableBuilder<String?>(
           valueListenable: _focused,
           // Hidden while it is lifted: the copy above the blur is the
@@ -1115,6 +1306,34 @@ class _Bubble extends StatelessWidget {
             ),
             front: content,
           ),
+        ],
+      );
+    }
+
+    if (senderName != null) {
+      content = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              left: SpacingTokens.space12,
+              bottom: 2,
+            ),
+            child: _ChromeLabel(
+              child: Text(
+                senderName!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize1,
+                  fontWeight: FontWeight.w600,
+                  color: scheme.onSurface.withValues(alpha: 0.6),
+                ),
+              ),
+            ),
+          ),
+          content,
         ],
       );
     }
@@ -1189,6 +1408,7 @@ class _Bubble extends StatelessWidget {
     final visual = message.media.where((m) => m.isVisual).toList();
     final hasWords = message.unreadable ||
         message.body.trim().isNotEmpty ||
+        message.once != null ||
         message.media.any((m) => m.isVoice);
 
     final pictures = visual.isEmpty
@@ -1309,6 +1529,13 @@ class _Bubble extends StatelessWidget {
             : CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
+          if (message.once != null)
+            _OnceLabel(
+              once: message.once!,
+              mine: mine,
+              group: group,
+              ink: ink,
+            ),
           // Unframed: the bubble is the frame. In the sender's own bubble,
           // which is filled with the accent, it is drawn in the bubble's ink
           // -- in the accent it would be a waveform the colour of its page.
@@ -1554,7 +1781,10 @@ class _NotSent extends StatelessWidget {
 /// Where the composer was, in a conversation whose other side deleted their
 /// account.
 class _GoneNotice extends StatelessWidget {
-  const _GoneNotice();
+  /// What to say instead of the deleted account's line.
+  final String? text;
+
+  const _GoneNotice({this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -1565,11 +1795,12 @@ class _GoneNotice extends StatelessWidget {
         key: const ValueKey('thread-gone'),
         padding: const EdgeInsets.all(SpacingTokens.space16),
         child: Text(
-          AppLocalizations.of(context).ui(
-            'ui_dm_deleted_account_detail',
-            'This account has been deleted, so messages can no longer be '
-                'sent here.',
-          ),
+          text ??
+              AppLocalizations.of(context).ui(
+                'ui_dm_deleted_account_detail',
+                'This account has been deleted, so messages can no longer be '
+                    'sent here.',
+              ),
           textAlign: TextAlign.center,
           style: TextStyle(color: scheme.onSurface.withValues(alpha: .6)),
         ),
@@ -2757,6 +2988,280 @@ class _EncryptionNotice extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// A group's name in the thread's bar, over how many are in it -- or, for a
+/// spectator, what they are.
+class _GroupTitle extends StatelessWidget {
+  final GroupSummary group;
+  final List<MessagePerson> people;
+  final VoidCallback onTap;
+
+  const _GroupTitle({
+    required this.group,
+    required this.people,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final quiet = Theme.of(context).colorScheme.onSurface.withValues(alpha: .6);
+    return InkWell(
+      key: const ValueKey('thread-group-title'),
+      onTap: onTap,
+      child: Row(
+        children: [
+          GroupAvatar(people: people, radius: 16),
+          const SizedBox(width: SpacingTokens.space8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  group.title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: TypographyTokens.fontSize4,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  group.role == MemberRole.spectator
+                      ? l10n.ui('ui_group_you_spectate', 'You are a spectator')
+                      : l10n
+                          .ui('ui_group_member_count', r'$count members')
+                          .replaceAll(r'$count', '${group.memberCount}'),
+                  maxLines: 1,
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize1,
+                    color: quiet,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Under the bar, for a group's admins: how many spectators are asking to
+/// write.
+class _HandsBanner extends StatelessWidget {
+  final int count;
+  final VoidCallback onTap;
+
+  const _HandsBanner({required this.count, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Material(
+      color: scheme.primary.withValues(alpha: 0.08),
+      child: InkWell(
+        key: const ValueKey('thread-hands'),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingTokens.space16,
+            vertical: SpacingTokens.space8,
+          ),
+          child: Row(
+            children: [
+              Icon(Iconsax.message_question_copy,
+                  size: 16, color: scheme.primary),
+              const SizedBox(width: SpacingTokens.space8),
+              Expanded(
+                child: Text(
+                  AppLocalizations.of(context)
+                      .ui('ui_group_hands', r'$count asking to write')
+                      .replaceAll(r'$count', '$count'),
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize2,
+                    fontWeight: FontWeight.w600,
+                    color: scheme.primary,
+                  ),
+                ),
+              ),
+              Icon(Iconsax.arrow_right_3_copy, size: 16, color: scheme.primary),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Where the box is, for a spectator: what they can do here, and a hand to
+/// raise to ask for more.
+class _SpectatorBar extends StatelessWidget {
+  final bool handRaised;
+  final VoidCallback onToggle;
+
+  const _SpectatorBar({required this.handRaised, required this.onToggle});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+    return Container(
+      key: const ValueKey('thread-spectator'),
+      decoration: BoxDecoration(
+        color: scheme.surface,
+        border: Border(
+          top: BorderSide(
+            color: scheme.outline.withValues(alpha: 0.15),
+            width: 0.5,
+          ),
+        ),
+      ),
+      padding: const EdgeInsets.fromLTRB(
+        SpacingTokens.space16,
+        SpacingTokens.space12,
+        SpacingTokens.space12,
+        SpacingTokens.space16,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              l10n.ui(
+                'ui_group_spectator_note',
+                'You can read and react here as a spectator.',
+              ),
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize2,
+                color: scheme.onSurface.withValues(alpha: 0.65),
+              ),
+            ),
+          ),
+          const SizedBox(width: SpacingTokens.space8),
+          ActionButton(
+            key: const ValueKey('thread-hand'),
+            onPressed: onToggle,
+            kind:
+                handRaised ? ActionButtonKind.outlined : ActionButtonKind.tonal,
+            icon: handRaised
+                ? Iconsax.message_question
+                : Iconsax.message_question_copy,
+            label: handRaised
+                ? l10n.ui('ui_group_lower_hand', 'Lower hand')
+                : l10n.ui('ui_group_raise_hand', 'Raise hand'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// A line about the group -- somebody added, a new name -- centred between
+/// the messages.
+class _EventLine extends StatelessWidget {
+  final String text;
+
+  const _EventLine({required this.text});
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space24,
+          vertical: SpacingTokens.space8,
+        ),
+        child: Center(
+          child: _ChromeLabel(
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSurface
+                    .withValues(alpha: 0.55),
+              ),
+            ),
+          ),
+        ),
+      );
+}
+
+/// What a view-once message is, inside its bubble: the mark, the kind of
+/// thing, and where it stands -- to be opened, opened, or gone.
+class _OnceLabel extends StatelessWidget {
+  final ViewOnce once;
+  final bool mine;
+  final bool group;
+  final Color ink;
+
+  const _OnceLabel({
+    required this.once,
+    required this.mine,
+    required this.group,
+    required this.ink,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final String status;
+    final bool spent;
+    if (mine) {
+      spent = once.spent;
+      status = once.gone && once.openedCount == 0
+          ? l10n.ui('ui_once_expired', 'Expired')
+          : group && once.openedCount > 0
+              ? l10n
+                  .ui('ui_once_opened_by', r'Opened by $count of $total')
+                  .replaceAll(r'$count', '${once.openedCount}')
+                  .replaceAll(r'$total', '${once.recipients}')
+              : once.openedCount > 0
+                  ? l10n.ui('ui_once_opened', 'Opened')
+                  : l10n.ui('ui_once_label', 'View once');
+    } else {
+      spent = once.opened || once.gone;
+      status = once.opened
+          ? l10n.ui('ui_once_opened', 'Opened')
+          : once.gone
+              ? l10n.ui('ui_once_expired', 'Expired')
+              : l10n.ui('ui_once_tap', 'Tap to view');
+    }
+    return Row(
+      key: const ValueKey('once-label'),
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ViewOnceGlyph(size: 22, color: ink, spent: spent),
+        const SizedBox(width: SpacingTokens.space8),
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                mediaPreview(l10n, [once.kind]),
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize3,
+                  fontWeight: FontWeight.w600,
+                  color: spent ? ink.withValues(alpha: 0.6) : ink,
+                ),
+              ),
+              Text(
+                status,
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize1,
+                  color: ink.withValues(alpha: 0.7),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

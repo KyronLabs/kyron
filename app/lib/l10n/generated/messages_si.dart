@@ -1067,6 +1067,92 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add":
+          MessageLookupByLibrary.simpleMessage("පුද්ගලයින් එක් කරන්න"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("එක් කරන්න"),
+      "ui_group_dismiss":
+          MessageLookupByLibrary.simpleMessage("ප්‍රතික්ෂේප කරන්න"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "මෙම කණ්ඩායමේ පණිවිඩ වෙනත් ඕනෑම සංවාදයක් මෙන් අන්තයේ සිට අන්තයට සංකේතනය කර ඇත."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor එක් කළා: \$users"),
+      "ui_group_event_admin":
+          MessageLookupByLibrary.simpleMessage("\$actor පරිපාලක කළා: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor කණ්ඩායම සෑදුවා"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "අලුත් අය සාමාජිකයින් ලෙස එක්වන ලෙස \$actor සැකසුවා"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "අලුත් අය නරඹන්නන් ලෙස එක්වන ලෙස \$actor සැකසුවා"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor ඉවත් වුණා"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor සාමාජික කළා: \$users"),
+      "ui_group_event_owner":
+          MessageLookupByLibrary.simpleMessage("\$actor හිමිකරු කළා: \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor ඉවත් කළා: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor කණ්ඩායමේ නම \$title ලෙස වෙනස් කළා"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor නරඹන්නෙකු කළා: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "කණ්ඩායමක සිටිය හැක්කේ උපරිම \$count දෙනෙකි."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "අත ඔසවා ඇත. පරිපාලකයින්ට දන්වා ඇත."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count දෙනෙක් ලිවීමට කැමතියි"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("ලිවීමට කැමතියි"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "පසුව එක් කරන අය නරඹන්නන් ලෙස එක්වේ"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("කණ්ඩායමෙන් ඉවත් වන්න"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "එය ඔබේ ලැයිස්තුවෙන් ඉවත් වන අතර පසුව කියන දේ ඔබට නොපෙනේ. යමෙකුට ඔබව නැවත එක් කිරීමට සිදුවේ."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("මෙම කණ්ඩායමෙන් ඉවත් වෙනවාද?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("ලිවීමට ඉඩ දෙන්න"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("අත පහත් කරන්න"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("පරිපාලක කරන්න"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("හිමිකරු කරන්න"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("නරඹන්නෙකු කරන්න"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("සාමාජිකයින් \$count"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("සාමාජිකයින්"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("කණ්ඩායමේ නම"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("කණ්ඩායම් චැට් එකක් සාදන්න"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "හිමිකරු එක් අයෙකි. ඔබ පරිපාලක ලෙස සිටිනු ඇත."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name හිමිකරු කරනවාද?"),
+      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("අත ඔසවන්න"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("කණ්ඩායමෙන් ඉවත් කරන්න"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("පරිපාලක තනතුරෙන් ඉවත් කරන්න"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("ඔබ තවදුරටත් මෙම කණ්ඩායමේ නැත."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("නම වෙනස් කරන්න"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("පරිපාලක"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("සාමාජික"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("නරඹන්නා"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "නරඹන්නෙකු ලෙස ඔබට මෙහි කියවීමට සහ ප්‍රතිචාර දැක්වීමට හැක."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "නරඹන්නන්ට කියවීමට, ප්‍රතිචාර දැක්වීමට සහ ලිවීමට අවසර ඉල්ලා අත එසවීමට හැක."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("පැතිකඩ බලන්න"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("ඔබ"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("ඔබ නරඹන්නෙකි"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1185,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("මෙය දැනටමත් විවෘත කර ඇත."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("කල් ඉකුත් විය"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("මෙය විවෘත කළ නොහැකි විය."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "එක් වරක් විවෘත වේ, පසුව Kyron වෙතින් මකා දමයි."),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("එක් වරක් බලන්න"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("විවෘත කළා"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$total න් \$count දෙනෙක් විවෘත කළා"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "ඔබ යැවූ අයට පමණක් මෙය එක් වරක් විවෘත කළ හැක."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("එක් වරක් බැලීමට යවන්න"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("බැලීමට තට්ටු කරන්න"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

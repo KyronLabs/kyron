@@ -1166,6 +1166,88 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Troba persones a Kyron",
       ),
       "ui_from_account": MessageLookupByLibrary.simpleMessage("D'un compte"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("Afegeix persones"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Afegeix"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Descarta"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Els missatges d’aquest grup estan xifrats d’extrem a extrem, com qualsevol altra conversa."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor ha afegit \$users"),
+      "ui_group_event_admin":
+          MessageLookupByLibrary.simpleMessage("\$actor ha fet admin \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor ha creat el grup"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor ha fet que les persones noves s’uneixin com a membres"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ha fet que les persones noves s’uneixin com a espectadors"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor ha sortit"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor ha fet membre \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor ha fet propietari \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor ha tret \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor ha canviat el nom del grup a \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ha fet espectador \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Un grup pot tenir com a màxim \$count persones."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Mà aixecada. S’ha avisat els admins."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count demanen escriure"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Demanen escriure"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Les persones afegides després s’uneixen com a espectadors"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Surt del grup"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Desapareix de la teva llista i no veuràs què es diu després. Algú t’hauria de tornar a afegir."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Vols sortir d’aquest grup?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Deixa escriure"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Abaixa la mà"),
+      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Fes admin"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Fes propietari"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Fes espectador"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count membres"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("Membres"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Nom del grup"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Crea un xat de grup"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Només hi ha un propietari. Continuaràs com a admin."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Vols fer propietari \$name?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Aixeca la mà"),
+      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Treu del grup"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Treu com a admin"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Ja no formes part d’aquest grup."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Canvia el nom"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Membre"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Espectador"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Com a espectador, aquí pots llegir i reaccionar."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Els espectadors poden llegir, reaccionar i aixecar la mà per demanar escriure."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Mostra el perfil"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("tu"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Ets espectador"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Ajuda"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Anotat. Això ajuda a donar forma al que se't mostra.",
@@ -1202,6 +1284,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Saltar",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Això ja s’ha obert."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Caducat"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("No s’ha pogut obrir."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "S’obre una vegada i després s’elimina de Kyron."),
+      "ui_once_label":
+          MessageLookupByLibrary.simpleMessage("Visualització única"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("Obert"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("Obert per \$count de \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Només les persones a qui l’has enviat el poden obrir, una vegada."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Envia per veure una vegada"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("Toca per veure"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pausa"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Reprodueix"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

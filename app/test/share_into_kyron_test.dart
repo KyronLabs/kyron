@@ -66,6 +66,7 @@ class _Repo extends MessagesRepository {
     List<PendingMedia> media = const [],
     String? replyToId,
     String? linkCard,
+    OnceUpload? once,
   }) async {
     sent.add((id, body, linkCard));
     return DirectMessage(

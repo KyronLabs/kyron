@@ -1067,6 +1067,86 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("ಜನರನ್ನು ಸೇರಿಸಿ"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("ಸೇರಿಸಿ"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("ತಿರಸ್ಕರಿಸಿ"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "ಈ ಗುಂಪಿನ ಸಂದೇಶಗಳು ಬೇರೆ ಯಾವುದೇ ಸಂಭಾಷಣೆಯಂತೆ ಎಂಡ್-ಟು-ಎಂಡ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗಿವೆ."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor ಸೇರಿಸಿದರು: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor ನಿರ್ವಾಹಕರನ್ನಾಗಿ ಮಾಡಿದರು: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor ಗುಂಪನ್ನು ರಚಿಸಿದರು"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "ಹೊಸಬರು ಸದಸ್ಯರಾಗಿ ಸೇರುವಂತೆ \$actor ಹೊಂದಿಸಿದರು"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "ಹೊಸಬರು ವೀಕ್ಷಕರಾಗಿ ಸೇರುವಂತೆ \$actor ಹೊಂದಿಸಿದರು"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor ಹೊರಟರು"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor ಸದಸ್ಯರನ್ನಾಗಿ ಮಾಡಿದರು: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor ಮಾಲೀಕರನ್ನಾಗಿ ಮಾಡಿದರು: \$users"),
+      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage(
+          "\$actor ತೆಗೆದುಹಾಕಿದರು: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor ಗುಂಪಿನ ಹೆಸರನ್ನು \$title ಎಂದು ಬದಲಿಸಿದರು"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ವೀಕ್ಷಕರನ್ನಾಗಿ ಮಾಡಿದರು: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "ಒಂದು ಗುಂಪಿನಲ್ಲಿ ಗರಿಷ್ಠ \$count ಜನರಿರಬಹುದು."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "ಕೈ ಎತ್ತಲಾಗಿದೆ. ನಿರ್ವಾಹಕರಿಗೆ ತಿಳಿಸಲಾಗಿದೆ."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count ಜನ ಬರೆಯಲು ಬಯಸುತ್ತಾರೆ"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("ಬರೆಯಲು ಬಯಸುತ್ತಾರೆ"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "ನಂತರ ಸೇರಿಸಿದವರು ವೀಕ್ಷಕರಾಗಿ ಸೇರುತ್ತಾರೆ"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("ಗುಂಪಿನಿಂದ ಹೊರಬನ್ನಿ"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "ಇದು ನಿಮ್ಮ ಪಟ್ಟಿಯಿಂದ ಹೋಗುತ್ತದೆ ಮತ್ತು ನಂತರ ಹೇಳಿದ್ದನ್ನು ನೀವು ನೋಡುವುದಿಲ್ಲ. ಯಾರಾದರೂ ನಿಮ್ಮನ್ನು ಮತ್ತೆ ಸೇರಿಸಬೇಕು."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("ಈ ಗುಂಪಿನಿಂದ ಹೊರಬರುವುದೇ?"),
+      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("ಬರೆಯಲು ಬಿಡಿ"),
+      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("ಕೈ ಇಳಿಸಿ"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("ನಿರ್ವಾಹಕರನ್ನಾಗಿ ಮಾಡಿ"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("ಮಾಲೀಕರನ್ನಾಗಿ ಮಾಡಿ"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("ವೀಕ್ಷಕರನ್ನಾಗಿ ಮಾಡಿ"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count ಸದಸ್ಯರು"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("ಸದಸ್ಯರು"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("ಗುಂಪಿನ ಹೆಸರು"),
+      "ui_group_new": MessageLookupByLibrary.simpleMessage("ಗುಂಪು ಚಾಟ್ ರಚಿಸಿ"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "ಮಾಲೀಕರು ಒಬ್ಬರೇ. ನೀವು ನಿರ್ವಾಹಕರಾಗಿ ಮುಂದುವರಿಯುತ್ತೀರಿ."),
+      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage(
+          "\$name ಅವರನ್ನು ಮಾಲೀಕರನ್ನಾಗಿ ಮಾಡುವುದೇ?"),
+      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("ಕೈ ಎತ್ತಿ"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("ಗುಂಪಿನಿಂದ ತೆಗೆದುಹಾಕಿ"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("ನಿರ್ವಾಹಕ ಸ್ಥಾನದಿಂದ ತೆಗೆದುಹಾಕಿ"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("ನೀವು ಇನ್ನು ಈ ಗುಂಪಿನಲ್ಲಿಲ್ಲ."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("ಮರುಹೆಸರಿಸಿ"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("ನಿರ್ವಾಹಕ"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("ಸದಸ್ಯ"),
+      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("ವೀಕ್ಷಕ"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "ವೀಕ್ಷಕರಾಗಿ ನೀವು ಇಲ್ಲಿ ಓದಬಹುದು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "ವೀಕ್ಷಕರು ಓದಬಹುದು, ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು ಮತ್ತು ಬರೆಯಲು ಅನುಮತಿ ಕೇಳಲು ಕೈ ಎತ್ತಬಹುದು."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("ಪ್ರೊಫೈಲ್ ನೋಡಿ"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("ನೀವು"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("ನೀವು ವೀಕ್ಷಕರು"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1179,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("ಇದನ್ನು ಈಗಾಗಲೇ ತೆರೆಯಲಾಗಿದೆ."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("ಅವಧಿ ಮುಗಿದಿದೆ"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("ಇದನ್ನು ತೆರೆಯಲಾಗಲಿಲ್ಲ."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "ಒಮ್ಮೆ ತೆರೆಯುತ್ತದೆ, ನಂತರ Kyron ನಿಂದ ಅಳಿಸಲಾಗುತ್ತದೆ."),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("ಒಮ್ಮೆ ನೋಡಿ"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("ತೆರೆಯಲಾಗಿದೆ"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$total ರಲ್ಲಿ \$count ಜನ ತೆರೆದಿದ್ದಾರೆ"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಕಳುಹಿಸಿದವರು ಮಾತ್ರ ಇದನ್ನು ಒಮ್ಮೆ ತೆರೆಯಬಹುದು."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("ಒಮ್ಮೆ ನೋಡಲು ಕಳುಹಿಸಿ"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("ನೋಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

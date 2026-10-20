@@ -1067,6 +1067,86 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("Gehitu jendea"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Gehitu"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Baztertu"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Talde honetako mezuak muturretik muturrera enkriptatuta daude, beste edozein elkarrizketa bezala."),
+      "ui_group_event_added": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak gehitu ditu: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak admin egin ditu: \$users"),
+      "ui_group_event_created": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak taldea sortu du"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak ezarri du jende berria kide gisa sartzea"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak ezarri du jende berria ikusle gisa sartzea"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor irten da"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak kide egin ditu: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak jabe egin du: \$users"),
+      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak kendu ditu: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak taldeari izena aldatu dio: \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor erabiltzaileak ikusle egin ditu: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Talde batek gehienez \$count pertsona izan ditzake."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Eskua altxatuta. Adminei jakinarazi zaie."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count idazteko eskatzen"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Idazteko eskatzen"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Geroago gehitutakoak ikusle gisa sartzen dira"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Irten taldetik"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Zure zerrendatik desagertuko da eta ez duzu ikusiko gero esaten dena. Norbaitek berriro gehitu beharko zintuzke."),
+      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Talde honetatik irten nahi duzu?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Utzi idazten"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Jaitsi eskua"),
+      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Egin admin"),
+      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Egin jabe"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Egin ikusle"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count kide"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("Kideak"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Taldearen izena"),
+      "ui_group_new": MessageLookupByLibrary.simpleMessage("Sortu talde-txata"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Jabe bakarra dago. Admin gisa jarraituko duzu."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name jabe egin nahi duzu?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Altxatu eskua"),
+      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Kendu taldetik"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Kendu admin gisa"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Jada ez zaude talde honetan."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Aldatu izena"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Kidea"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Ikuslea"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Ikusle gisa, hemen irakurri eta erreakzionatu dezakezu."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Ikusleek irakurri, erreakzionatu eta eskua altxa dezakete idazteko baimena eskatzeko."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Ikusi profila"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("zu"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Ikuslea zara"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1179,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Hau dagoeneko ireki da."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Iraungita"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Ezin izan da ireki."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Behin irekitzen da, eta gero Kyronetik ezabatzen da."),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("Ikusi behin"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("Irekita"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$total(e)tik \$count(e)k ireki dute"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Bidali diezunek bakarrik ireki dezakete, behin."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Bidali behin ikusteko"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("Sakatu ikusteko"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

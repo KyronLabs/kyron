@@ -6,12 +6,22 @@ import {
   NotFoundException,
   Optional,
 } from '@nestjs/common';
-import { MediaKind, Prisma } from '@prisma/client';
+import {
+  ConversationKind,
+  MediaKind,
+  MemberRole,
+  Prisma,
+} from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import type { ConversationFilter } from './dto/list-messages.dto';
 import { PresenceService } from './presence.service';
 import type { KeyShare } from './key-shares.service';
+import {
+  type OnceMediaInput,
+  type OnceState,
+  ViewOnceService,
+} from './view-once.service';
 
 /** The other person in a conversation, as a list row needs them. */
 export interface MessagePerson {
@@ -26,11 +36,27 @@ export interface MessagePerson {
   online: boolean;
 }
 
+/** A group's own details, beside its members. Null on a direct thread. */
+export interface GroupSummary {
+  title: string;
+  /** How many people are in it, the reader included. */
+  memberCount: number;
+  /** What the reader may do in it. */
+  role: MemberRole;
+  /** What somebody added to it starts as. */
+  joinRole: MemberRole;
+  /** The reader is a spectator asking to write. */
+  handRaised: boolean;
+  /** How many spectators are asking to write. Admins only; 0 for others. */
+  handsRaised: number;
+}
+
 /** One conversation, as the list shows it. */
 export interface ConversationSummary {
   id: string;
-  /** Everyone in it but the reader. One person today; a list, so groups later
-   * do not change the shape the client already renders. */
+  kind: ConversationKind;
+  group: GroupSummary | null;
+  /** Everyone in it but the reader. */
   people: MessagePerson[];
   lastMessage: {
     id: string;
@@ -46,6 +72,9 @@ export interface ConversationSummary {
     /** Its key, sealed again for the reader's devices it was not sealed for
      * (KeySharesService), so the preview opens where the thread would. */
     keyShares: KeyShare[];
+    viewOnce: boolean;
+    /** A line about the conversation rather than in it. */
+    event: Prisma.JsonValue;
   } | null;
   /** Messages from the other side the reader has not seen. */
   unread: number;
@@ -110,6 +139,14 @@ export interface MessageItem {
    * KeySharesService.
    */
   keyShares: KeyShare[];
+  /** Its one attachment opens once for each person it went to. Its media
+   * then carry no address; see ViewOnceService. */
+  viewOnce: boolean;
+  /** Where a view-once message stands. Null for every other. */
+  once: OnceState | null;
+  /** A line about the conversation -- "Ada added Ben" -- rather than in it.
+   * Null for everything somebody wrote. */
+  event: Prisma.JsonValue;
 }
 
 /** One attachment as the client sends it, after uploading the file. */
@@ -182,7 +219,18 @@ export class MessagesService {
    * the app now enforces 4,000 on what is typed, and this is the ceiling on
    * what that can seal to.
    */
-  static readonly maxSealedBody = 24000;
+  static readonly maxSealedBody = 48000;
+
+  /**
+   * The most people in one group, the creator included.
+   *
+   * A message is sealed for every device in the conversation, about 120
+   * characters each. Thirty-two people on two devices each is 64 keys, which
+   * is what [maxSealedBody] leaves room for beside a long message. Past that a
+   * group stops being something end-to-end encryption of this kind can carry,
+   * and a channel for hundreds is a different, unsealed thing.
+   */
+  static readonly maxGroupMembers = 32;
 
   /** Whether a stored body is a sealed message, in any version. */
   static isSealed(body: string): boolean {
@@ -268,11 +316,17 @@ export class MessagesService {
       ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
       select: {
         id: true,
+        kind: true,
+        title: true,
+        joinRole: true,
         lastMessageAt: true,
         members: {
           select: {
             userId: true,
             lastReadAt: true,
+            role: true,
+            joinedAt: true,
+            handRaisedAt: true,
             user: { select: { ...this.personShape, readReceipts: true } },
           },
         },
@@ -285,6 +339,8 @@ export class MessagesService {
             body: true,
             senderId: true,
             createdAt: true,
+            viewOnce: true,
+            event: true,
             media: { select: this.mediaShape, orderBy: { position: 'asc' } },
             keyShares: this.keySharesFor(viewerId),
           },
@@ -331,6 +387,8 @@ export class MessagesService {
       const viewerShows = this.showsOnline(viewerId, row.members);
       return {
         id: row.id,
+        kind: row.kind,
+        group: this.groupSummary(viewerId, row),
         people: row.members
           .filter((m) => m.userId !== viewerId)
           .map((m) =>
@@ -339,6 +397,9 @@ export class MessagesService {
         lastMessage: last
           ? {
               ...last,
+              media: last.viewOnce
+                ? ViewOnceService.withoutAddress(last.media)
+                : last.media,
               keyShares: answered(last.keyShares),
               seen:
                 last.senderId === viewerId &&
@@ -515,8 +576,12 @@ export class MessagesService {
     if (!other) throw new NotFoundException('That account does not exist.');
     await this.requireNoBlock(viewerId, otherId);
 
+    // The direct one. A group with both of them in it is not "the
+    // conversation with this person", and finding it here would send a
+    // private message to everybody in the group.
     const existing = await this.prisma.conversation.findFirst({
       where: {
+        kind: ConversationKind.DIRECT,
         AND: [
           { members: { some: { userId: viewerId } } },
           { members: { some: { userId: otherId } } },
@@ -561,8 +626,17 @@ export class MessagesService {
     const otherRead = this.readUpTo(viewerId, conversation.members);
     const blocked = await this.blockedWith(viewerId);
 
+    // In a group, history starts when the reader joined. What was said
+    // before was sealed for the devices in it then, not theirs, and handing
+    // them rows they can never open is a wall of "cannot be read".
+    const me = conversation.members.find((m) => m.userId === viewerId);
+    const from =
+      conversation.kind === ConversationKind.GROUP && me
+        ? { createdAt: { gte: me.joinedAt } }
+        : {};
+
     const rows = await this.prisma.message.findMany({
-      where: { conversationId, deletedAt: null },
+      where: { conversationId, deletedAt: null, ...from },
       orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
       take: limit + 1,
       ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
@@ -575,6 +649,10 @@ export class MessagesService {
         // server holds ciphertext, and the client has the thread decrypted.
         replyToId: true,
         linkCard: true,
+        viewOnce: true,
+        mediaGoneAt: true,
+        event: true,
+        opens: { select: { userId: true } },
         media: { select: this.mediaShape, orderBy: { position: 'asc' } },
         reactions: {
           select: this.reactionShape,
@@ -585,8 +663,18 @@ export class MessagesService {
     });
 
     const page = rows.slice(0, limit);
-    const items: MessageItem[] = page.map((row) => ({
+    const items: MessageItem[] = page.map(({ opens, mediaGoneAt, ...row }) => ({
       ...row,
+      media: row.viewOnce
+        ? ViewOnceService.withoutAddress(row.media)
+        : row.media,
+      once: row.viewOnce
+        ? ViewOnceService.stateFor(
+            viewerId,
+            { ...row, mediaGoneAt, opens },
+            conversation.members,
+          )
+        : null,
       keyShares: answered(row.keyShares),
       seen:
         row.senderId === viewerId &&
@@ -597,6 +685,8 @@ export class MessagesService {
     return {
       items,
       nextCursor: rows.length > limit ? page[page.length - 1].id : null,
+      kind: conversation.kind,
+      group: this.groupSummary(viewerId, conversation),
       people: conversation.members
         .filter((m) => m.userId !== viewerId)
         .map((m) =>
@@ -629,10 +719,30 @@ export class MessagesService {
     media: MessageMediaInput[] = [],
     replyToId?: string,
     linkCard?: string,
+    once?: OnceMediaInput,
   ) {
     const text = body.trim();
+    if (once) {
+      // One thing, to be looked at once, and nothing that outlives it: words
+      // or a card under it would stay in the thread after it was gone.
+      if (text || media.length > 0 || linkCard) {
+        throw new BadRequestException(
+          'A view-once message is one photo, clip or voice note on its own.',
+        );
+      }
+      if (!ViewOnceService.kinds.has(once.kind)) {
+        throw new BadRequestException(
+          'Only a photo, a clip or a voice note can be sent view once.',
+        );
+      }
+      // Only a file the sender uploaded: a reference to somebody else's
+      // would let them send it on, opened or not.
+      if (!ViewOnceService.isOwnRef(once.ref, viewerId)) {
+        throw new BadRequestException('That attachment was not uploaded.');
+      }
+    }
     // A picture with no words is a message; an empty box is not.
-    if (!text && media.length === 0) {
+    if (!text && media.length === 0 && !once) {
       throw new BadRequestException('A message needs something in it.');
     }
     if (media.length > MessagesService.maxMedia) {
@@ -670,16 +780,32 @@ export class MessagesService {
     }
 
     const conversation = await this.requireMembership(viewerId, conversationId);
-    // Nobody else in it: the other side deleted their account. A message
-    // stored here would be read by nobody, ever.
-    if (!conversation.members.some((m) => m.userId !== viewerId)) {
-      throw new BadRequestException(
-        'This account has been deleted, so messages can no longer be sent here.',
+    const group = conversation.kind === ConversationKind.GROUP;
+    const sender = conversation.members.find((m) => m.userId === viewerId);
+    // A spectator reads, reacts and raises a hand. Refused here, not only
+    // hidden in the app, or the rule is a suggestion.
+    if (sender?.role === MemberRole.SPECTATOR) {
+      throw new ForbiddenException(
+        'You are a spectator in this group. Raise your hand to ask to write.',
       );
     }
-    for (const member of conversation.members) {
-      if (member.userId !== viewerId) {
-        await this.requireNoBlock(viewerId, member.userId);
+    // Nobody else in it: the other side deleted their account, or everybody
+    // left the group. A message stored here would be read by nobody, ever.
+    if (!conversation.members.some((m) => m.userId !== viewerId)) {
+      throw new BadRequestException(
+        group
+          ? 'Everybody else has left this group.'
+          : 'This account has been deleted, so messages can no longer be sent here.',
+      );
+    }
+    // A block is between two people. In a direct thread it closes the
+    // thread; in a group it does not silence the group for everybody else,
+    // the way it does not in any messenger.
+    if (!group) {
+      for (const member of conversation.members) {
+        if (member.userId !== viewerId) {
+          await this.requireNoBlock(viewerId, member.userId);
+        }
       }
     }
 
@@ -707,23 +833,43 @@ export class MessagesService {
           body: text,
           replyToId: replyToId ?? null,
           linkCard: card,
-          ...(media.length > 0
+          viewOnce: once !== undefined,
+          ...(once
             ? {
                 media: {
-                  create: media.map((item, index) => ({
-                    kind: item.kind ?? MediaKind.IMAGE,
-                    url: item.url,
-                    width: item.width ?? null,
-                    height: item.height ?? null,
-                    alt: item.alt ?? null,
-                    durationMs: item.durationMs ?? null,
-                    waveform: item.waveform ?? [],
-                    thumbnailUrl: item.thumbnailUrl ?? null,
-                    position: index,
-                  })),
+                  create: [
+                    {
+                      kind: once.kind,
+                      // No address, ever. The path is where it is; an open
+                      // turns it into a link that lasts minutes.
+                      url: '',
+                      privatePath: once.ref,
+                      width: once.width ?? null,
+                      height: once.height ?? null,
+                      durationMs: once.durationMs ?? null,
+                      waveform: once.waveform ?? [],
+                      position: 0,
+                    },
+                  ],
                 },
               }
-            : {}),
+            : media.length > 0
+              ? {
+                  media: {
+                    create: media.map((item, index) => ({
+                      kind: item.kind ?? MediaKind.IMAGE,
+                      url: item.url,
+                      width: item.width ?? null,
+                      height: item.height ?? null,
+                      alt: item.alt ?? null,
+                      durationMs: item.durationMs ?? null,
+                      waveform: item.waveform ?? [],
+                      thumbnailUrl: item.thumbnailUrl ?? null,
+                      position: index,
+                    })),
+                  },
+                }
+              : {}),
         },
         select: {
           id: true,
@@ -732,6 +878,8 @@ export class MessagesService {
           createdAt: true,
           replyToId: true,
           linkCard: true,
+          viewOnce: true,
+          event: true,
           media: { select: this.mediaShape, orderBy: { position: 'asc' } },
         },
       }),
@@ -757,17 +905,18 @@ export class MessagesService {
     // client fetches the message through the same endpoint it always has, so
     // there is no second shape of a message to keep in step, and nothing
     // readable leaks to a socket whose token has since been revoked.
-    const sender = conversation.members.find((m) => m.userId === viewerId);
+    const senderName =
+      sender?.user?.name?.trim() || sender?.user?.username?.trim() || null;
     this.delivery.tellMany(
       conversation.members.map((m) => m.userId).filter((id) => id !== viewerId),
       { type: 'message.new', conversationId, messageId: message.id },
       {
         // Defensively: this is a notification title, and a shape that does
         // not carry the sender should cost a generic push, never the message.
-        title:
-          sender?.user?.name?.trim() ||
-          sender?.user?.username?.trim() ||
-          'New message',
+        // A group's is its name, with who wrote it in the line under.
+        title: group
+          ? conversation.title?.trim() || 'Group'
+          : senderName || 'New message',
         // Never the message. This used to be the stored body, and the body of
         // a sealed message is ciphertext: the push is shown by the phone's
         // own notification system, with no chance for the app to open it
@@ -778,14 +927,37 @@ export class MessagesService {
         // and must not repeat an unsealed one, so the push says only that
         // something arrived. Showing the words again means opening them on
         // the device, in a push the app handles itself -- docs/E2EE.md.
-        body: media.length > 0 ? 'Sent an attachment' : 'Sent you a message',
+        body: [
+          group && senderName ? `${senderName}: ` : '',
+          once
+            ? 'Sent something to view once'
+            : media.length > 0
+              ? 'Sent an attachment'
+              : group
+                ? 'Sent a message'
+                : 'Sent you a message',
+        ].join(''),
         data: { type: 'message', conversationId },
       },
     );
 
     // The same shape as a message read from the thread, so the client parses
     // one kind of thing. Nobody has reacted to a message a moment old.
-    return { ...message, seen: false, reactions: [] };
+    return {
+      ...message,
+      media: message.viewOnce
+        ? ViewOnceService.withoutAddress(message.media)
+        : message.media,
+      once: message.viewOnce
+        ? ViewOnceService.stateFor(
+            viewerId,
+            { ...message, mediaGoneAt: null, opens: [] },
+            conversation.members,
+          )
+        : null,
+      seen: false,
+      reactions: [],
+    };
   }
 
   /** What a message's attachments look like on the wire. */
@@ -819,11 +991,7 @@ export class MessagesService {
       throw new BadRequestException('A reaction is one emoji.');
     }
     const conversation = await this.requireMembership(viewerId, conversationId);
-    for (const member of conversation.members) {
-      if (member.userId !== viewerId) {
-        await this.requireNoBlock(viewerId, member.userId);
-      }
-    }
+    await this.requireNoBlockInDirect(viewerId, conversation);
     await this.requireMessage(conversationId, messageId);
 
     await this.prisma.messageReaction.upsert({
@@ -878,11 +1046,10 @@ export class MessagesService {
    */
   async typing(viewerId: string, conversationId: string) {
     const conversation = await this.requireMembership(viewerId, conversationId);
-    for (const member of conversation.members) {
-      if (member.userId !== viewerId) {
-        await this.requireNoBlock(viewerId, member.userId);
-      }
-    }
+    await this.requireNoBlockInDirect(viewerId, conversation);
+    // A spectator cannot send what they would be typing.
+    const me = conversation.members.find((m) => m.userId === viewerId);
+    if (me?.role === MemberRole.SPECTATOR) return { ok: true };
     this.delivery.tellMany(
       conversation.members.map((m) => m.userId).filter((id) => id !== viewerId),
       { type: 'message.typing', conversationId, userId: viewerId },
@@ -954,7 +1121,14 @@ export class MessagesService {
     }
 
     const rows = await this.prisma.message.findMany({
-      where: { conversationId, deletedAt: null, media: { some: {} } },
+      // Never a view-once message: it has no address to show, and a grid of
+      // everything ever shared is exactly what it promised not to become.
+      where: {
+        conversationId,
+        deletedAt: null,
+        viewOnce: false,
+        media: { some: {} },
+      },
       orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
       take: take + 1,
       ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
@@ -1051,6 +1225,36 @@ export class MessagesService {
     return { ok: true };
   }
 
+  /** A group's details for [viewerId], or null for a direct thread. */
+  private groupSummary(
+    viewerId: string,
+    row: {
+      kind: ConversationKind;
+      title: string | null;
+      joinRole: MemberRole;
+      members: ReadonlyArray<{
+        userId: string;
+        role: MemberRole;
+        handRaisedAt: Date | null;
+      }>;
+    },
+  ): GroupSummary | null {
+    if (row.kind !== ConversationKind.GROUP) return null;
+    const me = row.members.find((m) => m.userId === viewerId);
+    const role = me?.role ?? MemberRole.MEMBER;
+    const admin = role === MemberRole.OWNER || role === MemberRole.ADMIN;
+    return {
+      title: row.title ?? 'Group',
+      memberCount: row.members.length,
+      role,
+      joinRole: row.joinRole,
+      handRaised: me?.handRaisedAt != null,
+      handsRaised: admin
+        ? row.members.filter((m) => m.handRaisedAt != null).length
+        : 0,
+    };
+  }
+
   private toPerson(
     user: {
       id: string;
@@ -1107,16 +1311,22 @@ export class MessagesService {
    * Not found rather than forbidden for one they are not in: whether a given
    * id names a real conversation is not something a stranger should learn.
    */
-  private async requireMembership(viewerId: string, conversationId: string) {
+  async requireMembership(viewerId: string, conversationId: string) {
     const conversation = await this.prisma.conversation.findFirst({
       where: { id: conversationId, members: { some: { userId: viewerId } } },
       select: {
         id: true,
+        kind: true,
+        title: true,
+        joinRole: true,
         members: {
           select: {
             userId: true,
             lastReadAt: true,
             mutedAt: true,
+            role: true,
+            joinedAt: true,
+            handRaisedAt: true,
             user: { select: { ...this.personShape, readReceipts: true } },
           },
         },
@@ -1160,6 +1370,13 @@ export class MessagesService {
     conversationId: string,
   ): Promise<{ ok: true; blockedId: string }> {
     const conversation = await this.requireMembership(viewerId, conversationId);
+    // Blocking is one person. In a group there is no "the other", and
+    // blocking whoever happens to be first would be blocking a stranger.
+    if (conversation.kind === ConversationKind.GROUP) {
+      throw new BadRequestException(
+        'Block a person from their profile. To stop hearing from a group, leave it.',
+      );
+    }
     const other = conversation.members.find((m) => m.userId !== viewerId);
     if (!other) {
       throw new BadRequestException('There is nobody else in this thread.');
@@ -1185,7 +1402,26 @@ export class MessagesService {
     return { ok: true, blockedId: other.userId };
   }
 
-  private async requireNoBlock(viewerId: string, otherId: string) {
+  /**
+   * A block closes a direct thread in both directions. In a group it is
+   * between two of its members, and does not close the group for either.
+   */
+  private async requireNoBlockInDirect(
+    viewerId: string,
+    conversation: {
+      kind: ConversationKind;
+      members: ReadonlyArray<{ userId: string }>;
+    },
+  ) {
+    if (conversation.kind === ConversationKind.GROUP) return;
+    for (const member of conversation.members) {
+      if (member.userId !== viewerId) {
+        await this.requireNoBlock(viewerId, member.userId);
+      }
+    }
+  }
+
+  async requireNoBlock(viewerId: string, otherId: string) {
     const block = await this.prisma.block.findFirst({
       where: {
         OR: [

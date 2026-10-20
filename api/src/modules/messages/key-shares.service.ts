@@ -93,13 +93,24 @@ export class KeySharesService {
       );
     }
 
+    // Never from before the asker joined. In a group that history was
+    // sealed for the people in it then, and a share would hand it to somebody
+    // added later -- which no group member agreed to by adding them.
+    const mine = await this.prisma.conversationMember.findMany({
+      where: { conversationId, userId: viewerId },
+      select: { userId: true, joinedAt: true },
+    });
+    const joinedAt = mine.find((m) => m.userId === viewerId)?.joinedAt;
+    const since = KeySharesService.since();
+    const from = joinedAt && joinedAt > since ? joinedAt : since;
+
     const found = await this.prisma.message.findMany({
       where: {
         id: { in: [...new Set(messageIds)] },
         conversationId,
         deletedAt: null,
         body: { startsWith: 'k2.' },
-        createdAt: { gte: KeySharesService.since() },
+        createdAt: { gte: from },
       },
       select: { id: true },
     });

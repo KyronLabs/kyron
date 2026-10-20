@@ -1067,6 +1067,89 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("Thêm người"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Thêm"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Từ chối"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Tin nhắn trong nhóm này được mã hóa đầu cuối, như mọi cuộc trò chuyện khác."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor đã thêm \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor đã đặt \$users làm quản trị viên"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor đã tạo nhóm"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor đã đặt người mới tham gia với tư cách thành viên"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor đã đặt người mới tham gia với tư cách người xem"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor đã rời nhóm"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor đã đặt \$users làm thành viên"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor đã đặt \$users làm chủ nhóm"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor đã xóa \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor đã đổi tên nhóm thành \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor đã đặt \$users làm người xem"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Một nhóm có tối đa \$count người."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Đã giơ tay. Quản trị viên đã được báo."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count người xin viết"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Xin viết"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Người được thêm sau sẽ tham gia với tư cách người xem"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Rời nhóm"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Nhóm sẽ biến mất khỏi danh sách và bạn sẽ không thấy những gì được nói sau đó. Cần có người thêm lại bạn."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Rời nhóm này?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Cho phép viết"),
+      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Hạ tay"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Đặt làm quản trị viên"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Đặt làm chủ nhóm"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Đặt làm người xem"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count thành viên"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("Thành viên"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Tên nhóm"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Tạo cuộc trò chuyện nhóm"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Nhóm chỉ có một chủ. Bạn vẫn là quản trị viên."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Đặt \$name làm chủ nhóm?"),
+      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Giơ tay"),
+      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Xóa khỏi nhóm"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Gỡ quyền quản trị viên"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Bạn không còn ở trong nhóm này."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Đổi tên"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Quản trị viên"),
+      "ui_group_role_member":
+          MessageLookupByLibrary.simpleMessage("Thành viên"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Người xem"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Là người xem, bạn có thể đọc và bày tỏ cảm xúc tại đây."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Người xem có thể đọc, bày tỏ cảm xúc và giơ tay để xin viết."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Xem hồ sơ"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("bạn"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Bạn là người xem"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1182,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Nội dung này đã được mở."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Đã hết hạn"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Không thể mở nội dung này."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Mở được một lần, sau đó bị xóa khỏi Kyron."),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("Xem một lần"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("Đã mở"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$count trên \$total người đã mở"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Chỉ những người bạn gửi mới mở được, một lần."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Gửi để xem một lần"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("Nhấn để xem"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

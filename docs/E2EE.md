@@ -148,7 +148,17 @@ every answer is sealed for one device's key.
 ### Not everything is sealed
 
 - **Attachments are not.** Photos, video and voice go to storage in the clear.
-  Only the text of a message is encrypted.
+  Only the text of a message is encrypted. A view-once attachment goes to a
+  private bucket instead of the public one, is handed out only through a
+  link that lasts minutes, once per person, and is deleted after — but it is
+  not sealed, and the server could read it until then
+  ([MESSAGING.md](MESSAGING.md)).
+- **A group's shape is not.** Who is in a group and as what, its name, and
+  the lines about it ("Ada added Ben") are stored readable: the server routes
+  by the first, and writes the last. What is said in it is sealed for every
+  member's devices, like any conversation. A message is sealed for at most 64
+  devices, everybody's freshest first, so the ceiling drops old installs
+  rather than people.
 - **Reactions are not, by decision.** The emoji somebody reacts with is stored
   readable beside the sealed message it reacts to, so the server knows that
   Ada answered a message with 😂 without knowing what the message said. That
@@ -196,7 +206,8 @@ every answer is sealed for one device's key.
 |:--|:--|
 | No forward secrecy | A double ratchet. Large, and the right eventual answer |
 | No verification | Fingerprint comparison in the UI, and a warning when a key changes |
-| Attachments in the clear | Encrypt the file before upload; the key travels in the sealed message |
+| Attachments in the clear | Encrypt the file before upload; the key travels in the sealed message. View once first |
+| Group names and event lines readable | Seal the name and the lines for the group, as a message is |
 | Reactions readable | Send a reaction as a small sealed message that names the one it reacts to |
 | Push shows no preview | A data-only push the app opens on the device and draws itself |
 | No backup | The Kyron Vault, below: every key the account has had, sealed under a key only the account's own unlockers can open |

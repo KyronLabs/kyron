@@ -25,6 +25,13 @@ export class SupabaseService {
   private readonly logger = new Logger(SupabaseService.name);
   private readonly client: SupabaseClient;
   private readonly bucketName: string;
+
+  /**
+   * Where view-once attachments go. Not public: nothing in it has an address
+   * anybody can keep, only links this API signs for a few minutes.
+   */
+  private readonly privateBucketName: string;
+  private privateBucketReady: Promise<void> | null = null;
   private readonly avatarFolder: string;
   private readonly coverFolder: string;
 
@@ -32,6 +39,8 @@ export class SupabaseService {
     const url = process.env.SUPABASE_URL;
     const key = process.env.SUPABASE_SERVICE_ROLE_KEY; // service role for server
     this.bucketName = process.env.SUPABASE_BUCKET_NAME || 'kyron-media';
+    this.privateBucketName =
+      process.env.SUPABASE_PRIVATE_BUCKET_NAME || 'kyron-private';
     this.avatarFolder = process.env.SUPABASE_AVATAR_FOLDER || 'avatars';
     this.coverFolder = process.env.SUPABASE_COVER_FOLDER || 'covers';
 
@@ -296,6 +305,111 @@ export class SupabaseService {
       if (error) {
         throw new Error(`Supabase remove failed: ${error.message}`);
       }
+    }
+  }
+
+  // ---------------------------
+  // The private bucket
+  // ---------------------------
+
+  /**
+   * Makes the private bucket the first time it is needed, and refuses to
+   * use one that is public.
+   *
+   * Made here rather than by hand in the dashboard so a new project works
+   * without a setup step anybody could forget. The check matters more than
+   * the making: a view-once photo in a public bucket has a lasting address,
+   * which is exactly what view-once promises it does not.
+   */
+  private ensurePrivateBucket(): Promise<void> {
+    this.privateBucketReady ??= (async () => {
+      const name = this.privateBucketName;
+      const found = await this.client.storage.getBucket(name);
+      if (found.data) {
+        if (found.data.public) {
+          throw new Error(
+            `Storage bucket ${name} is public; view-once attachments need a private one.`,
+          );
+        }
+        return;
+      }
+      const made = await this.client.storage.createBucket(name, {
+        public: false,
+      });
+      if (made.error && !/already exists/i.test(made.error.message)) {
+        throw new Error(
+          `Could not create bucket ${name}: ${made.error.message}`,
+        );
+      }
+    })().catch((error: unknown) => {
+      // Asked again next time rather than failing for ever.
+      this.privateBucketReady = null;
+      throw error;
+    });
+    return this.privateBucketReady;
+  }
+
+  /** Stores [fileBuf] at [path] in the private bucket. No address comes back. */
+  async uploadPrivate(
+    path: string,
+    fileBuf: Buffer,
+    contentType?: string,
+  ): Promise<void> {
+    await this.ensurePrivateBucket();
+    const { error } = await this.client.storage
+      .from(this.privateBucketName)
+      .upload(path, fileBuf, { contentType, upsert: false });
+    if (error) {
+      throw new Error(`Supabase private upload failed: ${error.message}`);
+    }
+  }
+
+  /** A link to a private object that stops working after [seconds]. */
+  async signPrivate(path: string, seconds: number): Promise<string> {
+    await this.ensurePrivateBucket();
+    const { data, error } = await this.client.storage
+      .from(this.privateBucketName)
+      .createSignedUrl(path, seconds);
+    if (error || !data?.signedUrl) {
+      throw new Error(
+        `Supabase could not sign ${path}: ${error?.message ?? 'no link'}`,
+      );
+    }
+    return data.signedUrl;
+  }
+
+  /** Deletes private objects. Ones already gone are not an error. */
+  async removePrivate(paths: readonly string[]): Promise<void> {
+    if (paths.length === 0) return;
+    await this.ensurePrivateBucket();
+    const batch = 100;
+    for (let i = 0; i < paths.length; i += batch) {
+      const { error } = await this.client.storage
+        .from(this.privateBucketName)
+        .remove(paths.slice(i, i + batch));
+      if (error) {
+        throw new Error(`Supabase private remove failed: ${error.message}`);
+      }
+    }
+  }
+
+  /** Every private object in [folder] whose name starts with [prefix]. */
+  async listPrivateByPrefix(folder: string, prefix: string): Promise<string[]> {
+    await this.ensurePrivateBucket();
+    const pageSize = 1000;
+    const found: string[] = [];
+    for (let offset = 0; ; offset += pageSize) {
+      const { data, error } = await this.client.storage
+        .from(this.privateBucketName)
+        .list(folder, { search: prefix, limit: pageSize, offset });
+      if (error) {
+        throw new Error(`Supabase private list failed: ${error.message}`);
+      }
+      const page = (data ?? []) as Array<{ name: string }>;
+      for (const file of page) {
+        if (file.name.startsWith(prefix)) found.push(`${folder}/${file.name}`);
+      }
+      if (page.length < pageSize) return found;
     }
   }
 

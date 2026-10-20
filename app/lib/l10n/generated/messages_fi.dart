@@ -1067,6 +1067,89 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("Lisää henkilöitä"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Lisää"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Hylkää"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Tämän ryhmän viestit ovat päästä päähän salattuja, kuten kaikki muutkin keskustelut."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor lisäsi: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor teki ylläpitäjäksi: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor loi ryhmän"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor asetti uudet henkilöt liittymään jäseninä"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor asetti uudet henkilöt liittymään katsojina"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor poistui"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor teki jäseneksi: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor teki omistajaksi: \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor poisti: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor nimesi ryhmän uudelleen: \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor teki katsojaksi: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Ryhmässä voi olla enintään \$count henkilöä."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Käsi nostettu. Ylläpitäjille on kerrottu."),
+      "ui_group_hands": MessageLookupByLibrary.simpleMessage(
+          "\$count pyytää kirjoitusoikeutta"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Pyytävät kirjoitusoikeutta"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Myöhemmin lisätyt liittyvät katsojina"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Poistu ryhmästä"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Se poistuu listaltasi, etkä näe, mitä sen jälkeen sanotaan. Jonkun pitäisi lisätä sinut uudelleen."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Poistutaanko ryhmästä?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Anna kirjoittaa"),
+      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Laske käsi"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Tee ylläpitäjäksi"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Tee omistajaksi"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Tee katsojaksi"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count jäsentä"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("Jäsenet"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Ryhmän nimi"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Luo ryhmäkeskustelu"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Omistajia on yksi. Jatkat ylläpitäjänä."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Tehdäänkö \$name omistajaksi?"),
+      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Nosta käsi"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Poista ryhmästä"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Poista ylläpitäjyys"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Et ole enää tässä ryhmässä."),
+      "ui_group_rename":
+          MessageLookupByLibrary.simpleMessage("Nimeä uudelleen"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Ylläpitäjä"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Jäsen"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Katsoja"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Katsojana voit lukea ja reagoida täällä."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Katsojat voivat lukea, reagoida ja nostaa käden pyytääkseen kirjoitusoikeutta."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Näytä profiili"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("sinä"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Olet katsoja"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1182,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Tämä on jo avattu."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Vanhentunut"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Tätä ei voitu avata."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Avautuu kerran ja poistetaan sitten Kyronista."),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("Katso kerran"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("Avattu"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("Avannut \$count / \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Vain ne, joille lähetit tämän, voivat avata sen, kerran."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Lähetä kerran katsottavaksi"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("Napauta nähdäksesi"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

@@ -124,6 +124,7 @@ model User {
   comments              Comment[]
   views                 PostView[]
   impressions           PostImpression[]
+  messageOpens          MessageOpen[]
   reposts               Repost[]
   hiddenPosts           HiddenPost[]
   mutes                 Mute[]                @relation("MuteOwner")
@@ -600,6 +601,11 @@ model Media {
   /// Null for anything that is not a video, and for videos posted before the
   /// composer started sending one.
   thumbnailUrl String?
+
+  /// Where a view-once attachment is, in the private bucket. Never sent to a
+  /// client: [url] is empty for one, and an open hands out a link that lasts
+  /// minutes. Null for everything else.
+  privatePath String?
 
   /// Order within its post or comment, 0 first.
   position Int @default(0)
@@ -1116,8 +1122,37 @@ model PollVote {
 // about: this is not end-to-end encrypted, and anything with the service role
 // can read it. What it does guarantee is that nobody else can -- every read
 // goes through membership, and a block closes the conversation both ways.
+/// Two people, or a named group. See docs/MESSAGING.md.
+enum ConversationKind {
+  DIRECT
+  GROUP
+}
+
+/// What somebody may do in a group. A direct conversation's two members are
+/// both MEMBER and nothing reads it there.
+enum MemberRole {
+  /// Started it, or was handed it. Names admins; cannot be removed.
+  OWNER
+  /// Adds and removes people, renames, decides who may write.
+  ADMIN
+  /// Writes.
+  MEMBER
+  /// Reads, reacts, and raises a hand to ask to write.
+  SPECTATOR
+}
+
 model Conversation {
   id String @id @default(uuid()) @db.Uuid
+
+  kind ConversationKind @default(DIRECT)
+
+  /// A group's name. Null for a direct conversation, which is called after
+  /// the other person.
+  title String?
+
+  /// What somebody added to a group starts as: able to write, or a spectator
+  /// until an admin says otherwise. Groups only.
+  joinRole MemberRole @default(MEMBER)
 
   createdAt DateTime @default(now()) @db.Timestamptz()
 
@@ -1150,6 +1185,12 @@ model ConversationMember {
   // Set when this member wants it quiet. Their own setting: muting is not
   // something the other side should be able to see or undo.
   mutedAt DateTime? @db.Timestamptz()
+
+  /// What they may do here. Meaningful in a group; MEMBER in a direct one.
+  role MemberRole @default(MEMBER)
+
+  /// A spectator asking to write. Cleared when an admin answers, either way.
+  handRaisedAt DateTime? @db.Timestamptz()
 
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
@@ -1184,14 +1225,32 @@ model Message {
   /// message with no link, or one whose sender took the card off.
   linkCard String? @db.Text
 
+  /// Its one attachment can be opened once by each person it was sent to,
+  /// and is then deleted. Kept in the private bucket and never given a
+  /// lasting address. See docs/MESSAGING.md.
+  viewOnce Boolean @default(false)
+
+  /// When a view-once attachment may be deleted: everybody has opened it, and
+  /// the last link handed out has run out.
+  purgeAfter DateTime? @db.Timestamptz()
+
+  /// When a view-once attachment was deleted from storage.
+  mediaGoneAt DateTime? @db.Timestamptz()
+
+  /// A line about the conversation rather than in it -- "Ada added Ben".
+  /// Readable, like membership itself, which the server has to know to
+  /// deliver anything. Null for everything somebody wrote.
+  event Json?
+
   createdAt DateTime  @default(now()) @db.Timestamptz()
   // Soft delete, for the same reason posts have one: a removed message still
   // holds its place in a cursor.
   deletedAt DateTime? @db.Timestamptz()
 
-  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  conversation Conversation  @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sender       User          @relation(fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   media        Media[]
+  opens        MessageOpen[]
 
   /// SetNull, not Cascade: deleting the message somebody answered must not
   /// delete their answer. The reply loses its quote and keeps its words.
@@ -1203,6 +1262,20 @@ model Message {
 
   @@index([conversationId, createdAt(sort: Desc), id(sort: Desc)])
   @@index([replyToId])
+  @@index([viewOnce, mediaGoneAt])
+}
+
+/// Who has opened a view-once message. One row each: the second open is
+/// refused, which is what makes it once.
+model MessageOpen {
+  messageId String   @db.Uuid
+  userId    String   @db.Uuid
+  openedAt  DateTime @default(now()) @db.Timestamptz()
+
+  message Message @relation(fields: [messageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([messageId, userId])
 }
 
 // ==========================================

@@ -71,6 +71,35 @@ export class MediaController {
       height,
     });
   }
+
+  /**
+   * Uploads a view-once attachment for a message.
+   *
+   * Into the private bucket, and answered with a reference rather than a URL:
+   * nothing about it should be addressable by anybody holding a link. The
+   * message it goes in turns the reference into a short-lived link, once, for
+   * each person it was sent to. See docs/MESSAGING.md.
+   */
+  @Post('once')
+  async uploadOnce(@Req() req: MultipartRequest) {
+    const file = await req.file();
+    if (!file) throw new BadRequestException('No file was uploaded.');
+    let buffer: Buffer;
+    try {
+      buffer = await file.toBuffer();
+    } catch (error) {
+      if (isTooLarge(error)) {
+        throw new PayloadTooLargeException(
+          `That file is larger than ${MediaService.maxBytes / (1024 * 1024)} MB.`,
+        );
+      }
+      throw error;
+    }
+    return this.svc.uploadOnce(req.user.id, buffer, file.mimetype, {
+      width: numberField(file, 'width'),
+      height: numberField(file, 'height'),
+    });
+  }
 }
 
 /** @fastify/multipart's own oversize error, by code rather than by class. */

@@ -66,10 +66,17 @@ describe('a conversation’s shared media', () => {
       ['a1', 'm1'],
     ]);
     expect(page.nextCursor).toBeNull();
-    // Only messages that carry something, and never deleted ones.
+    // Only messages that carry something, never deleted ones, and never a
+    // view-once one: it has no address, and a grid of everything shared is
+    // what it promised not to become.
     expect(prisma.message.findMany).toHaveBeenCalledWith(
       expect.objectContaining({
-        where: { conversationId: 'c1', deletedAt: null, media: { some: {} } },
+        where: {
+          conversationId: 'c1',
+          deletedAt: null,
+          viewOnce: false,
+          media: { some: {} },
+        },
         orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
       }),
     );

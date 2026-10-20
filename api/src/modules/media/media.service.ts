@@ -95,12 +95,84 @@ export class MediaService {
 
   static readonly folder = 'post-media';
 
-  async upload(
+  /** The private bucket's folder for view-once attachments. */
+  static readonly onceFolder = 'once';
+
+  /**
+   * Uploads a view-once attachment to the private bucket.
+   *
+   * The same checks as [upload], and less after them: no poster, which would
+   * be a public frame of a private clip, and no re-encode, which would write
+   * a public copy. What comes back is a reference only this API can turn
+   * into a link, and only for the people it was sent to. See
+   * docs/MESSAGING.md.
+   */
+  async uploadOnce(
     userId: string,
     buffer: Buffer,
     mimeType: string | undefined,
     dimensions: { width?: number; height?: number } = {},
-  ): Promise<UploadedMedia> {
+  ): Promise<{
+    ref: string;
+    kind: MediaKind;
+    width: number | null;
+    height: number | null;
+    durationMs: number | null;
+  }> {
+    const { sniffed, kind, measured } = this.check(buffer, mimeType);
+    if (kind === MediaKind.GIF) {
+      throw new BadRequestException(
+        'A GIF cannot be sent view once. Send it as it is.',
+      );
+    }
+
+    let durationMs: number | null = null;
+    if (kind === MediaKind.VIDEO) {
+      // Read, not prepared: preparing cuts a poster, and there is nowhere a
+      // view-once clip's poster may go.
+      const shape = (await this.transcode.probe(buffer)) ?? {
+        width: null,
+        height: null,
+        durationMs: null,
+      };
+      if (
+        shape.durationMs !== null &&
+        shape.durationMs > TranscodeService.maxDurationMs
+      ) {
+        const minutes = Math.round(TranscodeService.maxDurationMs / 60000);
+        throw new BadRequestException(
+          `A clip cannot run longer than ${minutes} minutes.`,
+        );
+      }
+      durationMs = shape.durationMs;
+      if (shape.width) dimensions = { ...dimensions, width: shape.width };
+      if (shape.height) dimensions = { ...dimensions, height: shape.height };
+    }
+
+    const ref = `${MediaService.onceFolder}/${userId}_${Date.now()}_${randomUUID()}.${EXTENSIONS[sniffed]}`;
+    await this.supabase.uploadPrivate(ref, buffer, sniffed);
+    this.logger.log(`view-once media uploaded by ${userId} (${kind})`);
+    return {
+      ref,
+      kind,
+      width: measured?.width ?? dimensions.width ?? null,
+      height: measured?.height ?? dimensions.height ?? null,
+      durationMs,
+    };
+  }
+
+  /**
+   * What every upload is held to: not empty, a kind this app takes, under
+   * its kind's ceiling, and an image that will decode.
+   */
+  private check(
+    buffer: Buffer,
+    mimeType: string | undefined,
+  ): {
+    sniffed: string;
+    kind: MediaKind;
+    measured: { width: number; height: number } | undefined;
+  } {
     if (!buffer || buffer.length === 0) {
       throw new BadRequestException('That file is empty.');
     }
@@ -137,6 +209,16 @@ export class MediaService {
         'That picture is too large to display. Try one under 50 megapixels.',
       );
     }
+    return { sniffed, kind, measured };
+  }
+
+  async upload(
+    userId: string,
+    buffer: Buffer,
+    mimeType: string | undefined,
+    dimensions: { width?: number; height?: number } = {},
+  ): Promise<UploadedMedia> {
+    const { sniffed, kind, measured } = this.check(buffer, mimeType);
 
     // A clip gets probed and a poster cut from it, both of which are quick.
     // Re-encoding is not, so it is queued rather than waited for -- see

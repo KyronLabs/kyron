@@ -1067,6 +1067,89 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add":
+          MessageLookupByLibrary.simpleMessage("Ավելացնել մարդկանց"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ավելացնել"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Մերժել"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Այս խմբի հաղորդագրությունները ծայրից ծայր գաղտնագրված են, ինչպես ցանկացած այլ զրույց։"),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor-ն ավելացրեց՝ \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor-ն ադմին դարձրեց՝ \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor-ն ստեղծեց խումբը"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor-ն սահմանեց, որ նորերը միանան որպես անդամ"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor-ն սահմանեց, որ նորերը միանան որպես դիտող"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor-ն լքեց խումբը"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor-ն անդամ դարձրեց՝ \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor-ն սեփականությունը փոխանցեց՝ \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor-ն հեռացրեց՝ \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor-ն խումբը վերանվանեց՝ \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor-ն դիտող դարձրեց՝ \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Խմբում կարող է լինել առավելագույնը \$count մարդ։"),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Ձեռքը բարձրացված է։ Ադմիններին տեղեկացվել է։"),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("Ուզում են գրել՝ \$count"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Ուզում են գրել"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Հետո ավելացվածները միանում են որպես դիտող"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Լքել խումբը"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Այն կանհետանա ձեր ցանկից, և չեք տեսնի, թե ինչ կասվի հետո։ Ինչ-որ մեկը պետք է նորից ավելացնի ձեզ։"),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Լքե՞լ այս խումբը"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Թույլ տալ գրել"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Իջեցնել ձեռքը"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Դարձնել ադմին"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Դարձնել սեփականատեր"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Դարձնել դիտող"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count անդամ"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("Անդամներ"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Խմբի անունը"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Ստեղծել խմբային զրույց"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Սեփականատերը մեկն է։ Դուք կմնաք ադմին։"),
+      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage(
+          "Դարձնե՞լ \$name-ին սեփականատեր"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Բարձրացնել ձեռքը"),
+      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Հեռացնել խմբից"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Հանել ադմինի դերից"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Դուք այլևս այս խմբում չեք։"),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Վերանվանել"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Ադմին"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Անդամ"),
+      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Դիտող"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Որպես դիտող՝ այստեղ կարող եք կարդալ և արձագանքել։"),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Դիտողները կարող են կարդալ, արձագանքել և ձեռք բարձրացնել՝ գրելու թույլտվություն խնդրելու համար։"),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Դիտել պրոֆիլը"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("դուք"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Դուք դիտող եք"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1182,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Սա արդեն բացվել է։"),
+      "ui_once_expired":
+          MessageLookupByLibrary.simpleMessage("Ժամկետն անցել է"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Չհաջողվեց բացել։"),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Բացվում է մեկ անգամ, հետո ջնջվում է Kyron-ից։"),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("Դիտել մեկ անգամ"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("Բացված է"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("Բացել են՝ \$count / \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Միայն նրանք, ում ուղարկել եք, կարող են բացել այն՝ մեկ անգամ։"),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Ուղարկել մեկանգամյա դիտման"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("Հպեք դիտելու համար"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

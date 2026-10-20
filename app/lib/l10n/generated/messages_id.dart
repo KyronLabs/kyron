@@ -1067,6 +1067,90 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("Tambahkan orang"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Tambahkan"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Tolak"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Pesan di grup ini terenkripsi end-to-end, seperti percakapan lainnya."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor menambahkan \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor menjadikan \$users admin"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor membuat grup"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor mengatur orang baru bergabung sebagai anggota"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor mengatur orang baru bergabung sebagai penonton"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor keluar"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor menjadikan \$users anggota"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor menjadikan \$users pemilik"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor mengeluarkan \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor mengganti nama grup menjadi \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor menjadikan \$users penonton"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Grup bisa berisi paling banyak \$count orang."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Tangan diangkat. Admin sudah diberi tahu."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count minta menulis"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Minta menulis"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Orang yang ditambahkan nanti bergabung sebagai penonton"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("Keluar dari grup"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Grup akan hilang dari daftar Anda dan Anda tidak akan melihat yang dikatakan setelahnya. Seseorang harus menambahkan Anda lagi."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Keluar dari grup ini?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Izinkan menulis"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Turunkan tangan"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Jadikan admin"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Jadikan pemilik"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Jadikan penonton"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count anggota"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("Anggota"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Nama grup"),
+      "ui_group_new": MessageLookupByLibrary.simpleMessage("Buat obrolan grup"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Hanya ada satu pemilik. Anda tetap menjadi admin."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Jadikan \$name pemilik?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Angkat tangan"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Keluarkan dari grup"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Hapus sebagai admin"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Anda tidak lagi berada di grup ini."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Ganti nama"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Anggota"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Penonton"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Sebagai penonton, Anda bisa membaca dan memberi reaksi di sini."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Penonton bisa membaca, memberi reaksi, dan mengangkat tangan untuk minta menulis."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Lihat profil"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("Anda"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Anda penonton"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1183,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Ini sudah dibuka."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Kedaluwarsa"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Ini tidak bisa dibuka."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Terbuka sekali, lalu dihapus dari Kyron."),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("Lihat sekali"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("Dibuka"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "Dibuka oleh \$count dari \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Hanya orang yang Anda kirimi yang bisa membukanya, sekali."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Kirim untuk dilihat sekali"),
+      "ui_once_tap":
+          MessageLookupByLibrary.simpleMessage("Ketuk untuk melihat"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

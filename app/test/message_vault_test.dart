@@ -237,4 +237,31 @@ void main() {
     // The sender's own device is always among them.
     expect(await ada.vault(keys).open(sealed, 'c1'), 'hi');
   });
+
+  test('in a group, the ceiling never shuts anybody out', () async {
+    final ada = await _device('ada');
+    // Somebody who has reinstalled more often than the ceiling allows,
+    // listed first, and two people after them with one phone each.
+    final drawer = [
+      for (var i = 0; i < MessageVault.maxDevices + 5; i++) await _device('bo'),
+    ];
+    final cy = await _device('cy');
+    final dee = await _device('dee');
+    final keys = _Keys([
+      await ada.published(),
+      for (final d in drawer) await d.published(),
+      await cy.published(),
+      await dee.published(),
+    ]);
+
+    final sealed = (await ada.vault(keys).seal('hi all', 'g1'))!;
+    expect(
+      SealedEnvelope.tryDecode(sealed)!.keys.length,
+      MessageVault.maxDevices,
+    );
+    expect(await cy.vault(keys).open(sealed, 'g1'), 'hi all');
+    expect(await dee.vault(keys).open(sealed, 'g1'), 'hi all');
+    // And the freshest of the many.
+    expect(await drawer.first.vault(keys).open(sealed, 'g1'), 'hi all');
+  });
 }

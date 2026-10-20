@@ -11,6 +11,8 @@ import '../models/conversation.dart';
 import '../utils/conversation_text.dart';
 import '../widgets/list_controls.dart';
 import '../widgets/online_dot.dart';
+import '../widgets/group_avatar.dart';
+import '../providers/current_user_provider.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
 import '../widgets/app_drawer.dart';
@@ -247,6 +249,7 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
       arguments: ThreadArgs(
         conversationId: conversation.id,
         people: conversation.people,
+        group: conversation.group,
       ),
     );
     // Whatever was said while the thread was open belongs in every list.
@@ -374,6 +377,7 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                 final conversation = items[index];
                 return _ConversationRow(
                   conversation: conversation,
+                  me: ref.watch(currentUserProvider).asData?.value.id,
                   hidden: hidden,
                   onTap: () => _open(conversation),
                   onRestore: () => _restore(conversation),
@@ -400,12 +404,16 @@ class _ConversationRow extends StatelessWidget {
   /// In the Hidden list, where a swipe puts it back rather than removes it.
   final bool hidden;
 
+  /// The reader, to tell their own last message from everybody else's.
+  final String? me;
+
   const _ConversationRow({
     required this.conversation,
     required this.onTap,
     required this.onHide,
     required this.onRestore,
     this.hidden = false,
+    this.me,
   });
 
   @override
@@ -415,14 +423,27 @@ class _ConversationRow extends StatelessWidget {
     final unread = conversation.unread > 0;
     final other = conversation.other;
     final last = conversation.lastMessage;
-    final mine = last != null && last.senderId != other?.id;
+    // By the reader's own id where it is known. Before, "not the other
+    // person" -- which in a group is everybody.
+    final mine = last != null &&
+        last.event == null &&
+        (me != null ? last.senderId == me : last.senderId != other?.id);
     final muted = scheme.onSurface.withValues(alpha: 0.55);
 
+    // In a group, whose the last message was, before it.
+    final speaker = conversation.isGroup && last != null && !mine
+        ? conversation.people
+            .where((p) => p.id == last.senderId)
+            .firstOrNull
+            ?.displayName
+        : null;
     final line = last == null
         ? l10n.ui('ui_dm_preview_none', 'No messages yet')
         : mine
             ? '${l10n.ui('ui_dm_you_prefix', 'You:')} ${conversationPreview(l10n, last)}'
-            : conversationPreview(l10n, last);
+            : speaker != null && last.event == null
+                ? '$speaker: ${conversationPreview(l10n, last)}'
+                : conversationPreview(l10n, last);
 
     return Dismissible(
       key: ValueKey(conversation.id),
@@ -502,18 +523,24 @@ class _ConversationRow extends StatelessWidget {
           ),
           child: Row(
             children: [
-              OnlineDot(
-                person: other,
-                child: CircleAvatar(
-                  radius: 24,
-                  backgroundColor: scheme.primary.withValues(alpha: 0.15),
-                  foregroundImage: other?.avatarUrl == null
-                      ? null
-                      : NetworkImage(other!.avatarUrl!),
-                  child:
-                      Icon(Iconsax.user_copy, size: 20, color: scheme.primary),
+              if (conversation.isGroup)
+                GroupAvatar(people: conversation.people)
+              else
+                OnlineDot(
+                  person: other,
+                  child: CircleAvatar(
+                    radius: 24,
+                    backgroundColor: scheme.primary.withValues(alpha: 0.15),
+                    foregroundImage: other?.avatarUrl == null
+                        ? null
+                        : NetworkImage(other!.avatarUrl!),
+                    child: Icon(
+                      Iconsax.user_copy,
+                      size: 20,
+                      color: scheme.primary,
+                    ),
+                  ),
                 ),
-              ),
               const SizedBox(width: SpacingTokens.space12),
               Expanded(
                 child: Column(
@@ -524,7 +551,7 @@ class _ConversationRow extends StatelessWidget {
                         Expanded(
                           child: Text(
                             // Empty once the other side deleted their account.
-                            conversation.people.isEmpty
+                            conversation.people.isEmpty && !conversation.isGroup
                                 ? l10n.ui(
                                     'ui_dm_deleted_account', 'Deleted account')
                                 : conversation.title,

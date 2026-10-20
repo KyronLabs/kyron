@@ -1067,6 +1067,88 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("បន្ថែមមនុស្ស"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("បន្ថែម"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("បដិសេធ"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "សារក្នុងក្រុមនេះត្រូវបានអ៊ិនគ្រីបពីចុងម្ខាងទៅចុងម្ខាង ដូចការសន្ទនាផ្សេងទៀតដែរ។"),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor បានបន្ថែម \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor បានតែងតាំង \$users ជាអ្នកគ្រប់គ្រង"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor បានបង្កើតក្រុម"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor បានកំណត់ឱ្យមនុស្សថ្មីចូលជាសមាជិក"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor បានកំណត់ឱ្យមនុស្សថ្មីចូលជាអ្នកមើល"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor បានចាកចេញ"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor បានតែងតាំង \$users ជាសមាជិក"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor បានតែងតាំង \$users ជាម្ចាស់"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor បានដក \$users ចេញ"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor បានប្ដូរឈ្មោះក្រុមទៅ \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor បានតែងតាំង \$users ជាអ្នកមើល"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "ក្រុមមួយអាចមានមនុស្សច្រើនបំផុត \$count នាក់។"),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "បានលើកដៃ។ អ្នកគ្រប់គ្រងបានទទួលដំណឹងហើយ។"),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count នាក់សុំសរសេរ"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("សុំសរសេរ"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "អ្នកដែលត្រូវបានបន្ថែមពេលក្រោយចូលជាអ្នកមើល"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("ចាកចេញពីក្រុម"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "វានឹងបាត់ពីបញ្ជីរបស់អ្នក ហើយអ្នកនឹងមិនឃើញអ្វីដែលនិយាយបន្ទាប់ទៀតទេ។ ត្រូវមាននរណាម្នាក់បន្ថែមអ្នកម្ដងទៀត។"),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("ចាកចេញពីក្រុមនេះឬ?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("អនុញ្ញាតឱ្យសរសេរ"),
+      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("ដាក់ដៃចុះ"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("តែងតាំងជាអ្នកគ្រប់គ្រង"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("តែងតាំងជាម្ចាស់"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("តែងតាំងជាអ្នកមើល"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("សមាជិក \$count នាក់"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("សមាជិក"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("ឈ្មោះក្រុម"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("បង្កើតការជជែកជាក្រុម"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "ម្ចាស់មានតែម្នាក់។ អ្នកនឹងនៅជាអ្នកគ្រប់គ្រង។"),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("តែងតាំង \$name ជាម្ចាស់ឬ?"),
+      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("លើកដៃ"),
+      "ui_group_remove": MessageLookupByLibrary.simpleMessage("ដកចេញពីក្រុម"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("ដកចេញពីអ្នកគ្រប់គ្រង"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("អ្នកលែងនៅក្នុងក្រុមនេះទៀតហើយ។"),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("ប្ដូរឈ្មោះ"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("អ្នកគ្រប់គ្រង"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("សមាជិក"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("អ្នកមើល"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "ក្នុងនាមជាអ្នកមើល អ្នកអាចអាន និងបញ្ចេញប្រតិកម្មនៅទីនេះ។"),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "អ្នកមើលអាចអាន បញ្ចេញប្រតិកម្ម និងលើកដៃដើម្បីសុំសរសេរ។"),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("មើលប្រវត្តិរូប"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("អ្នក"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("អ្នកជាអ្នកមើល"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1181,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("វាត្រូវបានបើករួចហើយ។"),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("ផុតកំណត់"),
+      "ui_once_failed": MessageLookupByLibrary.simpleMessage("មិនអាចបើកបានទេ។"),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "បើកបានតែម្ដង បន្ទាប់មកត្រូវបានលុបចេញពី Kyron។"),
+      "ui_once_label": MessageLookupByLibrary.simpleMessage("មើលតែម្ដង"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("បានបើក"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "បានបើក \$count ក្នុងចំណោម \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "មានតែអ្នកដែលអ្នកបានផ្ញើទៅប៉ុណ្ណោះដែលអាចបើកវាបាន តែម្ដង។"),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("ផ្ញើសម្រាប់មើលតែម្ដង"),
+      "ui_once_tap": MessageLookupByLibrary.simpleMessage("ចុចដើម្បីមើល"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

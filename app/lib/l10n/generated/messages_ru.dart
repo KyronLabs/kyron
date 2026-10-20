@@ -1067,6 +1067,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_group_add": MessageLookupByLibrary.simpleMessage("Добавить людей"),
+      "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Добавить"),
+      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Отклонить"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Сообщения в этой группе защищены сквозным шифрованием, как и в любом другом чате."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor добавляет: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor назначает администратором: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor создаёт группу"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor: новые участники входят как участники"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor: новые участники входят как зрители"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor выходит из группы"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor назначает участником: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor передаёт владение: \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor удаляет: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor переименовывает группу в \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor назначает зрителем: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "В группе может быть не больше \$count человек."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Рука поднята. Администраторы уведомлены."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("Хотят писать: \$count"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Хотят писать"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Добавленные позже входят как зрители"),
+      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Выйти из группы"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Она пропадёт из вашего списка, и вы не увидите, что будет написано потом. Кому-то придётся добавить вас снова."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Выйти из этой группы?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Разрешить писать"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Опустить руку"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Назначить администратором"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Передать владение"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Сделать зрителем"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("Участников: \$count"),
+      "ui_group_members": MessageLookupByLibrary.simpleMessage("Участники"),
+      "ui_group_name": MessageLookupByLibrary.simpleMessage("Название группы"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Создать групповой чат"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Владелец только один. Вы останетесь администратором."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Передать владение: \$name?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Поднять руку"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Удалить из группы"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Снять права администратора"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Вы больше не в этой группе."),
+      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Переименовать"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Администратор"),
+      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Участник"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Зритель"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Как зритель вы можете читать и реагировать."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Зрители могут читать, реагировать и поднять руку, чтобы попросить разрешения писать."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Открыть профиль"),
+      "ui_group_you": MessageLookupByLibrary.simpleMessage("вы"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Вы зритель"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1099,6 +1184,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Это уже открывали."),
+      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Срок истёк"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Не удалось открыть."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Открывается один раз, затем удаляется из Kyron."),
+      "ui_once_label":
+          MessageLookupByLibrary.simpleMessage("Одноразовый просмотр"),
+      "ui_once_opened": MessageLookupByLibrary.simpleMessage("Открыто"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("Открыли: \$count из \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Открыть это могут только те, кому вы отправили, и только один раз."),
+      "ui_once_send": MessageLookupByLibrary.simpleMessage(
+          "Отправить для одноразового просмотра"),
+      "ui_once_tap":
+          MessageLookupByLibrary.simpleMessage("Нажмите, чтобы посмотреть"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
