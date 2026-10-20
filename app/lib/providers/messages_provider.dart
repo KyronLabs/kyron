@@ -1,6 +1,7 @@
 // lib/providers/messages_provider.dart
 import 'dart:async';
 
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
@@ -281,6 +282,14 @@ Future<void> refreshConversations(WidgetRef ref) async {
   ref.invalidate(unreadConversationsProvider);
 }
 
+/// Everybody in a group, for its info page. Kept fresh by the
+/// `conversation.updated` event (realtime_provider).
+final groupMembersProvider =
+    FutureProvider.autoDispose.family<List<GroupMember>, String>(
+  (ref, conversationId) =>
+      ref.read(messagesRepositoryProvider).members(conversationId),
+);
+
 /// How many conversations hold something unread. Drives the tab's badge.
 final unreadConversationsProvider = FutureProvider<int>((ref) async {
   return ref.read(messagesRepositoryProvider).unreadCount();
@@ -311,6 +320,14 @@ class ThreadState {
   /// [ThreadNotifier.otherTyping].
   final String? typing;
 
+  /// A group's own details: its name, and what the reader may do in it.
+  /// Null for a conversation between two people.
+  final GroupSummary? group;
+
+  /// The reader is no longer in this group: they were taken out of it while
+  /// it was open.
+  final bool removed;
+
   const ThreadState({
     this.messages = const [],
     this.people = const [],
@@ -321,7 +338,15 @@ class ThreadState {
     this.muted = false,
     this.readUpTo,
     this.typing,
+    this.group,
+    this.removed = false,
   });
+
+  bool get isGroup => group != null;
+
+  /// Whether the reader may write here. Everybody may in a conversation
+  /// between two; in a group, everybody but a spectator.
+  bool get canWrite => !removed && (group?.role.canWrite ?? true);
 
   /// The first message the reader had not seen when they opened the thread,
   /// which is where "New messages" goes; null when there is nowhere useful to
@@ -374,6 +399,8 @@ class ThreadState {
     bool? muted,
     String? typing,
     bool clearTyping = false,
+    GroupSummary? group,
+    bool? removed,
   }) =>
       ThreadState(
         messages: messages ?? this.messages,
@@ -385,6 +412,8 @@ class ThreadState {
         muted: muted ?? this.muted,
         readUpTo: readUpTo,
         typing: clearTyping ? null : (typing ?? this.typing),
+        group: group ?? this.group,
+        removed: removed ?? this.removed,
       );
 }
 
@@ -537,6 +566,7 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
         loadingFirstPage: false,
         muted: page.muted,
         readUpTo: page.lastReadAt,
+        group: page.group,
       );
       await _markRead();
     } catch (error) {
@@ -562,6 +592,12 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
         for (final message in page.items.reversed)
           if (!known.contains(message.id)) message,
       ]);
+      // A group's name, its members and the reader's place in it can change
+      // with nothing new said -- a role given, a hand put down -- so they are
+      // taken from every page, not only one that brought messages.
+      if (page.group != null) {
+        state = state.copyWith(group: page.group, people: page.people);
+      }
       if (fresh.isEmpty) return;
 
       // Whoever was typing has sent it. The dots go now rather than lapsing a
@@ -574,9 +610,15 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
         clearTyping: sent,
       );
       await _markRead();
-    } catch (_) {
-      // Nothing to say. The message is still on the server and the next
-      // refresh or reopen will find it.
+    } catch (error) {
+      // Taken out of the group: the server no longer shows it to the
+      // reader. Anything else is nothing to say -- the message is still on
+      // the server and the next refresh or reopen will find it.
+      if (state.isGroup &&
+          error is DioException &&
+          error.response?.statusCode == 404) {
+        state = state.copyWith(removed: true);
+      }
     }
   }
 
@@ -720,6 +762,114 @@ class ThreadNotifier extends StateNotifier<ThreadState> {
         placeholder.id,
         placeholder.copyWith(sending: false, failed: true),
       );
+    }
+  }
+
+  /// Sends a photo, clip or voice note to be opened once by each person it
+  /// goes to, and deleted from the server after.
+  ///
+  /// Uploaded to the private bucket, not the public one every other
+  /// attachment goes to: the file must have no address anybody could keep.
+  /// The bubble is a placeholder from the start -- the sender cannot open
+  /// what they sent either.
+  Future<void> sendOnce(
+    PendingMedia pending, {
+    required String senderId,
+    String? replyToId,
+  }) async {
+    final placeholder = DirectMessage(
+      id: 'pending-${_pending++}',
+      body: '',
+      senderId: senderId,
+      createdAt: DateTime.now(),
+      sending: true,
+      replyToId: replyToId,
+      once: ViewOnce(
+        kind: pending.kind,
+        duration: pending.duration,
+        waveform: pending.waveform,
+      ),
+    );
+    state = state.copyWith(messages: [...state.messages, placeholder]);
+
+    try {
+      final upload = await _repo.uploadOnce(pending);
+      final sent = await _repo.send(
+        _conversationId,
+        '',
+        replyToId: replyToId,
+        once: upload,
+      );
+      _replace(placeholder.id, sent);
+    } catch (_) {
+      _resend[placeholder.id] = () => sendOnce(
+            pending,
+            senderId: senderId,
+            replyToId: replyToId,
+          );
+      _replace(
+        placeholder.id,
+        placeholder.copyWith(sending: false, failed: true),
+      );
+    }
+  }
+
+  /// Opens a view-once message, for the one time it can be.
+  ///
+  /// Marked opened once the server has said anything about it: it records
+  /// the open before it answers, and one it refuses (410) was opened or
+  /// deleted already. Not when the request never got there -- a dropped
+  /// connection is no reason to lock somebody out of what they never saw.
+  Future<OpenedOnce> openOnce(DirectMessage message) async {
+    final once = message.once;
+    try {
+      final opened = await _repo.openOnce(_conversationId, message.id);
+      if (once != null) {
+        _replace(
+          message.id,
+          message.copyWith(once: once.copyWith(opened: true)),
+        );
+      }
+      return opened;
+    } on DioException catch (error) {
+      if (once != null && error.response?.statusCode == 410) {
+        _replace(
+          message.id,
+          message.copyWith(once: once.copyWith(opened: true, gone: true)),
+        );
+      }
+      rethrow;
+    }
+  }
+
+  /// Somebody opened one of the reader's view-once messages. Counted here:
+  /// the event says which, and nothing more.
+  void onceOpened(String messageId) {
+    for (final message in state.messages) {
+      final once = message.once;
+      if (message.id != messageId || once == null) continue;
+      _replace(
+        messageId,
+        message.copyWith(
+          once: once.copyWith(
+            openedCount: (once.openedCount + 1).clamp(0, once.recipients),
+          ),
+        ),
+      );
+      return;
+    }
+  }
+
+  /// A spectator asks to write, or stops asking.
+  Future<String?> setHandRaised(bool raised) async {
+    final group = state.group;
+    if (group == null) return null;
+    try {
+      await _repo.setHandRaised(_conversationId, raised);
+      state = state.copyWith(group: group.copyWith(handRaised: raised));
+      return null;
+    } catch (error) {
+      return describeApiError(error, sessionIsLive: true);
     }
   }
 

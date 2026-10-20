@@ -87,6 +87,277 @@ class MessageReaction {
   int get hashCode => Object.hash(userId, emoji);
 }
 
+/// What somebody may do in a group.
+enum MemberRole {
+  /// Everything, and the only one who makes or unmakes admins.
+  owner,
+
+  /// Adds, removes, renames, and moves people between member and spectator.
+  admin,
+
+  /// Writes.
+  member,
+
+  /// Reads and reacts, and raises a hand to ask to write.
+  spectator;
+
+  static MemberRole fromWire(Object? value) =>
+      switch ((value as String?)?.toUpperCase()) {
+        'OWNER' => MemberRole.owner,
+        'ADMIN' => MemberRole.admin,
+        'SPECTATOR' => MemberRole.spectator,
+        _ => MemberRole.member,
+      };
+
+  String get wire => name.toUpperCase();
+
+  bool get isAdmin => this == owner || this == admin;
+
+  bool get canWrite => this != spectator;
+}
+
+/// A group's own details: what the list and the thread draw beside its
+/// members. Null on a conversation between two people.
+class GroupSummary {
+  final String title;
+
+  /// How many people are in it, the reader included.
+  final int memberCount;
+
+  /// What the reader may do in it.
+  final MemberRole role;
+
+  /// What somebody added to it starts as.
+  final MemberRole joinRole;
+
+  /// The reader is a spectator asking to write.
+  final bool handRaised;
+
+  /// How many spectators are asking to write. Counted for admins only.
+  final int handsRaised;
+
+  const GroupSummary({
+    required this.title,
+    this.memberCount = 1,
+    this.role = MemberRole.member,
+    this.joinRole = MemberRole.member,
+    this.handRaised = false,
+    this.handsRaised = 0,
+  });
+
+  static GroupSummary? fromJson(Object? json) {
+    if (json is! Map<String, dynamic>) return null;
+    return GroupSummary(
+      title: json['title'] as String? ?? 'Group',
+      memberCount: (json['memberCount'] as num?)?.toInt() ?? 1,
+      role: MemberRole.fromWire(json['role']),
+      joinRole: MemberRole.fromWire(json['joinRole']),
+      handRaised: json['handRaised'] == true,
+      handsRaised: (json['handsRaised'] as num?)?.toInt() ?? 0,
+    );
+  }
+
+  GroupSummary copyWith({bool? handRaised}) => GroupSummary(
+        title: title,
+        memberCount: memberCount,
+        role: role,
+        joinRole: joinRole,
+        handRaised: handRaised ?? this.handRaised,
+        handsRaised: handsRaised,
+      );
+}
+
+/// One person in a group, as its member list shows them.
+class GroupMember {
+  final MessagePerson person;
+  final MemberRole role;
+
+  /// A spectator asking to write. Shown to admins, and to themselves.
+  final bool handRaised;
+
+  const GroupMember({
+    required this.person,
+    this.role = MemberRole.member,
+    this.handRaised = false,
+  });
+
+  String get id => person.id;
+
+  factory GroupMember.fromJson(Map<String, dynamic> json) => GroupMember(
+        person: MessagePerson.fromJson(json),
+        role: MemberRole.fromWire(json['role']),
+        handRaised: json['handRaised'] == true,
+      );
+}
+
+/// A photo, clip or voice note that opens once for each person it went to,
+/// and is deleted from the server after. See docs/MESSAGING.md.
+class ViewOnce {
+  final MediaKind kind;
+
+  /// How long a clip or a voice note runs, when that is known.
+  final Duration? duration;
+
+  /// A voice note's loudness over time, for its placeholder.
+  final List<int> waveform;
+
+  /// The reader has opened it. Never true for whoever sent it.
+  final bool opened;
+
+  /// How many of the people it went to have opened it.
+  final int openedCount;
+
+  /// How many people it went to.
+  final int recipients;
+
+  /// Deleted, or too old to open. Nothing to open.
+  final bool gone;
+
+  const ViewOnce({
+    required this.kind,
+    this.duration,
+    this.waveform = const [],
+    this.opened = false,
+    this.openedCount = 0,
+    this.recipients = 1,
+    this.gone = false,
+  });
+
+  /// From a message that says it is one. Its attachment carries no address,
+  /// only what it is.
+  static ViewOnce? fromMessage(Map<String, dynamic> json) {
+    if (json['viewOnce'] != true) return null;
+    final media = json['media'];
+    final first = media is List && media.isNotEmpty && media.first is Map
+        ? media.first as Map<String, dynamic>
+        : const <String, dynamic>{};
+    final state = json['once'] is Map<String, dynamic>
+        ? json['once'] as Map<String, dynamic>
+        : const <String, dynamic>{};
+    return ViewOnce(
+      kind: PostMedia.kindFromWire(first['kind']),
+      duration: first['durationMs'] is num
+          ? Duration(milliseconds: (first['durationMs'] as num).toInt())
+          : null,
+      waveform: (first['waveform'] as List<dynamic>? ?? const [])
+          .whereType<num>()
+          .map((v) => v.toInt().clamp(0, 100))
+          .toList(),
+      opened: state['opened'] == true,
+      openedCount: (state['openedCount'] as num?)?.toInt() ?? 0,
+      recipients: (state['recipients'] as num?)?.toInt() ?? 1,
+      gone: state['gone'] == true,
+    );
+  }
+
+  /// Nobody it went to can still open it.
+  bool get spent => gone || (recipients > 0 && openedCount >= recipients);
+
+  ViewOnce copyWith({bool? opened, int? openedCount, bool? gone}) => ViewOnce(
+        kind: kind,
+        duration: duration,
+        waveform: waveform,
+        opened: opened ?? this.opened,
+        openedCount: openedCount ?? this.openedCount,
+        recipients: recipients,
+        gone: gone ?? this.gone,
+      );
+}
+
+/// A view-once attachment, opened: where to fetch it, for a few minutes.
+class OpenedOnce {
+  final String url;
+  final DateTime expiresAt;
+  final MediaKind kind;
+  final int? width;
+  final int? height;
+  final Duration? duration;
+  final List<int> waveform;
+
+  const OpenedOnce({
+    required this.url,
+    required this.expiresAt,
+    required this.kind,
+    this.width,
+    this.height,
+    this.duration,
+    this.waveform = const [],
+  });
+
+  factory OpenedOnce.fromJson(Map<String, dynamic> json) => OpenedOnce(
+        url: json['url'] as String? ?? '',
+        expiresAt:
+            DateTime.tryParse(json['expiresAt'] as String? ?? '')?.toLocal() ??
+                DateTime.now().add(const Duration(minutes: 2)),
+        kind: PostMedia.kindFromWire(json['kind']),
+        width: (json['width'] as num?)?.toInt(),
+        height: (json['height'] as num?)?.toInt(),
+        duration: json['durationMs'] is num
+            ? Duration(milliseconds: (json['durationMs'] as num).toInt())
+            : null,
+        waveform: (json['waveform'] as List<dynamic>? ?? const [])
+            .whereType<num>()
+            .map((v) => v.toInt().clamp(0, 100))
+            .toList(),
+      );
+}
+
+/// What a line about a group says happened -- "Ada added Ben".
+enum GroupEventType { created, renamed, added, removed, left, role, joinRole }
+
+/// A line about the conversation rather than in it. Names are as they were
+/// when it happened, so a line still reads after somebody leaves.
+class GroupEvent {
+  final GroupEventType type;
+  final String actorId;
+  final String actorName;
+
+  /// Who it happened to, for added, removed and role.
+  final List<({String id, String name})> users;
+
+  /// The group's name, for created and renamed.
+  final String? title;
+
+  /// The role given, for role and joinRole.
+  final MemberRole? role;
+
+  const GroupEvent({
+    required this.type,
+    required this.actorId,
+    required this.actorName,
+    this.users = const [],
+    this.title,
+    this.role,
+  });
+
+  static GroupEvent? fromJson(Object? json) {
+    if (json is! Map<String, dynamic>) return null;
+    final type =
+        GroupEventType.values.where((t) => t.name == json['type']).firstOrNull;
+    if (type == null) return null;
+    final actor = json['actor'] is Map<String, dynamic>
+        ? json['actor'] as Map<String, dynamic>
+        : const <String, dynamic>{};
+    return GroupEvent(
+      type: type,
+      actorId: actor['id'] as String? ?? '',
+      actorName: _name(actor['name']),
+      users: [
+        for (final u in (json['users'] as List<dynamic>? ?? const [])
+            .whereType<Map<String, dynamic>>())
+          (id: u['id'] as String? ?? '', name: _name(u['name'])),
+      ],
+      title: json['title'] as String?,
+      role: json['role'] == null ? null : MemberRole.fromWire(json['role']),
+    );
+  }
+
+  static String _name(Object? value) {
+    final name = (value as String?)?.trim();
+    return name == null || name.isEmpty ? 'Someone' : name;
+  }
+}
+
 class DirectMessage {
   final String id;
   final String body;
@@ -146,6 +417,13 @@ class DirectMessage {
   /// is none, or it did not survive the checks in [MessageLinkCard.tryDecode].
   final MessageLinkCard? linkCard;
 
+  /// Set when its one attachment opens once. Its [media] is then empty: the
+  /// server sends no address for it.
+  final ViewOnce? once;
+
+  /// Set when this is a line about the group rather than something said.
+  final GroupEvent? event;
+
   const DirectMessage({
     required this.id,
     required this.body,
@@ -163,7 +441,11 @@ class DirectMessage {
     this.reactions = const [],
     this.linkCardRaw,
     this.linkCard,
+    this.once,
+    this.event,
   });
+
+  bool get viewOnce => once != null;
 
   /// The emoji [userId] reacted with, or null.
   String? reactionOf(String userId) {
@@ -174,7 +456,8 @@ class DirectMessage {
   }
 
   /// A message with nothing in it is not a message, but a picture is.
-  bool get isEmpty => body.trim().isEmpty && media.isEmpty;
+  bool get isEmpty =>
+      body.trim().isEmpty && media.isEmpty && once == null && event == null;
 
   factory DirectMessage.fromJson(Map<String, dynamic> json) => DirectMessage(
         id: json['id'] as String? ?? '',
@@ -189,6 +472,8 @@ class DirectMessage {
         reactions: MessageReaction.listFrom(json['reactions']),
         linkCardRaw: json['linkCard'] as String?,
         keyShares: KeyShare.listFrom(json['keyShares']),
+        once: ViewOnce.fromMessage(json),
+        event: GroupEvent.fromJson(json['event']),
       );
 
   DirectMessage copyWith({
@@ -202,6 +487,7 @@ class DirectMessage {
     String? replyToId,
     List<MessageReaction>? reactions,
     MessageLinkCard? linkCard,
+    ViewOnce? once,
   }) =>
       DirectMessage(
         id: id,
@@ -220,6 +506,8 @@ class DirectMessage {
         reactions: reactions ?? this.reactions,
         linkCardRaw: linkCardRaw,
         linkCard: linkCard ?? this.linkCard,
+        once: once ?? this.once,
+        event: event,
       );
 }
 
@@ -227,9 +515,11 @@ class DirectMessage {
 class Conversation {
   final String id;
 
-  /// Everyone in it but you. One person today; a list so a group later does
-  /// not change the shape every screen already renders.
+  /// Everyone in it but you: one person, or a group's other members.
   final List<MessagePerson> people;
+
+  /// A group's own details. Null for a conversation between two people.
+  final GroupSummary? group;
 
   final DirectMessage? lastMessage;
 
@@ -241,10 +531,13 @@ class Conversation {
   const Conversation({
     required this.id,
     this.people = const [],
+    this.group,
     this.lastMessage,
     this.unread = 0,
     required this.lastMessageAt,
   });
+
+  bool get isGroup => group != null;
 
   factory Conversation.fromJson(Map<String, dynamic> json) {
     final last = json['lastMessage'];
@@ -254,6 +547,7 @@ class Conversation {
           .whereType<Map<String, dynamic>>()
           .map(MessagePerson.fromJson)
           .toList(),
+      group: GroupSummary.fromJson(json['group']),
       lastMessage:
           last is Map<String, dynamic> ? DirectMessage.fromJson(last) : null,
       unread: (json['unread'] as num?)?.toInt() ?? 0,
@@ -263,18 +557,22 @@ class Conversation {
     );
   }
 
-  /// What to call the thread. A group would join the names; one person is
-  /// their name.
-  String get title => people.isEmpty
-      ? 'Empty conversation'
-      : people.map((p) => p.displayName).join(', ');
+  /// What to call the thread: a group's name, or the other person's.
+  String get title =>
+      group?.title ??
+      (people.isEmpty
+          ? 'Empty conversation'
+          : people.map((p) => p.displayName).join(', '));
 
-  MessagePerson? get other => people.isEmpty ? null : people.first;
+  /// The other person in a conversation between two. Null in a group, where
+  /// there is no one "other" to name, call or block.
+  MessagePerson? get other => isGroup || people.isEmpty ? null : people.first;
 
   Conversation copyWith({DirectMessage? lastMessage, int? unread}) =>
       Conversation(
         id: id,
         people: people,
+        group: group,
         lastMessage: lastMessage ?? this.lastMessage,
         unread: unread ?? this.unread,
         lastMessageAt: lastMessage?.createdAt ?? lastMessageAt,
@@ -295,12 +593,16 @@ class MessagePage {
   /// they have never opened. What "New messages" is drawn above.
   final DateTime? lastReadAt;
 
+  /// A group's own details. Null for a conversation between two people.
+  final GroupSummary? group;
+
   const MessagePage({
     this.items = const [],
     this.nextCursor,
     this.people = const [],
     this.muted = false,
     this.lastReadAt,
+    this.group,
   });
 
   factory MessagePage.fromJson(Map<String, dynamic> json) => MessagePage(
@@ -317,6 +619,7 @@ class MessagePage {
         lastReadAt: DateTime.tryParse(
           json['lastReadAt'] as String? ?? '',
         )?.toLocal(),
+        group: GroupSummary.fromJson(json['group']),
       );
 }
 

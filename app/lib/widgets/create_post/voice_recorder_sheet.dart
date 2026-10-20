@@ -14,6 +14,7 @@ import 'package:record/record.dart';
 
 import '../../models/post_media.dart';
 import '../action_button.dart';
+import '../view_once.dart';
 import '../voice_waveform.dart';
 
 /// Recording a voice post.
@@ -29,9 +30,13 @@ class VoiceRecorderSheet {
   /// [forMessage] is the chat's voice note: it starts listening as soon as
   /// it opens, since the microphone button was the "start", and it ends in
   /// Send rather than Attach, since nothing else is going with it.
+  ///
+  /// [viewOnce], for a message, puts a switch over Send and holds what it
+  /// was left at: a voice note that opens once and is deleted after.
   static Future<PendingMedia?> show(
     BuildContext context, {
     bool forMessage = false,
+    ValueNotifier<bool>? viewOnce,
   }) {
     return showModalBottomSheet<PendingMedia>(
       context: context,
@@ -39,15 +44,16 @@ class VoiceRecorderSheet {
       isDismissible: false,
       enableDrag: false,
       showDragHandle: true,
-      builder: (_) => _Sheet(forMessage: forMessage),
+      builder: (_) => _Sheet(forMessage: forMessage, viewOnce: viewOnce),
     );
   }
 }
 
 class _Sheet extends StatefulWidget {
   final bool forMessage;
+  final ValueNotifier<bool>? viewOnce;
 
-  const _Sheet({required this.forMessage});
+  const _Sheet({required this.forMessage, this.viewOnce});
 
   @override
   State<_Sheet> createState() => _SheetState();
@@ -314,6 +320,28 @@ class _SheetState extends State<_Sheet> {
             ),
           ],
           const SizedBox(height: SpacingTokens.space20),
+          if (_stage == _Stage.recorded && widget.viewOnce != null) ...[
+            ValueListenableBuilder<bool>(
+              valueListenable: widget.viewOnce!,
+              builder: (context, once, _) => SwitchListTile.adaptive(
+                key: const ValueKey('voice-view-once'),
+                contentPadding: EdgeInsets.zero,
+                value: once,
+                onChanged: (on) => widget.viewOnce!.value = on,
+                secondary: ViewOnceGlyph(spent: !once, color: scheme.primary),
+                title: Text(
+                  AppLocalizations.of(context).ui('ui_once_label', 'View once'),
+                ),
+                subtitle: Text(
+                  AppLocalizations.of(context).ui(
+                    'ui_once_hint',
+                    'Opens once, then it is deleted from Kyron.',
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: SpacingTokens.space8),
+          ],
           switch (_stage) {
             _Stage.idle => ActionButton(
                 label: AppLocalizations.of(context).literalstartRecording,

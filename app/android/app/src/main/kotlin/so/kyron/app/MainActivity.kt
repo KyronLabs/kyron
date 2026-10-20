@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -98,6 +99,23 @@ class MainActivity : FlutterFragmentActivity() {
                 }
             }
         }
+        // While a view-once photo, clip or voice note is open: no
+        // screenshot, no screen recording, and a blank card in the recent
+        // apps rather than the picture. A view that anybody could keep with
+        // two buttons is not a view once. See docs/MESSAGING.md.
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, SECURE).setMethodCallHandler { call, result ->
+            when (call.method) {
+                "secure" -> {
+                    if (call.arguments == true) {
+                        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                    } else {
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                    }
+                    result.success(null)
+                }
+                else -> result.notImplemented()
+            }
+        }
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -177,6 +195,8 @@ class MainActivity : FlutterFragmentActivity() {
 
     private companion object {
         const val CHANNEL = "so.kyron.app/share"
+
+        const val SECURE = "so.kyron.app/secure"
 
         /** As many as a post or a message can carry. */
         const val MAX_FILES = 10

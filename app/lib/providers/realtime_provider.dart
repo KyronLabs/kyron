@@ -103,6 +103,30 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
         ref.read(threadProvider(typingIn).notifier).otherTyping(who);
       }
 
+    case 'message.opened':
+      // Somebody opened one of the reader's view-once messages.
+      final openedIn = event.conversationId;
+      final opened = event.messageId;
+      if (openedIn != null &&
+          opened != null &&
+          ref.exists(threadProvider(openedIn))) {
+        ref.read(threadProvider(openedIn).notifier).onceOpened(opened);
+      }
+
+    case 'conversation.updated':
+      // A group changed: its name, who is in it, or somebody's place in it.
+      // The event says which group, and the rest is read behind the same
+      // membership check as the thread -- which is also how somebody taken
+      // out of it finds out.
+      final changed = event.conversationId;
+      if (changed != null) {
+        if (ref.exists(threadProvider(changed))) {
+          ref.read(threadProvider(changed).notifier).pullNewest();
+        }
+        ref.invalidate(groupMembersProvider(changed));
+      }
+      _refreshConversationLists(ref);
+
     case 'message.keys.requested':
       // A device in one of this reader's conversations is waiting on a
       // message it was not sealed for. This one may be able to open it.

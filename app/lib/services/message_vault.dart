@@ -81,9 +81,13 @@ class MessageVault {
 
   /// The most devices one message is sealed for. Every reinstall publishes a
   /// new key and the old one stays listed, so without a ceiling an envelope
-  /// grows with every development build somebody has ever installed. The
-  /// freshest are kept.
-  static const maxDevices = 16;
+  /// grows with every development build somebody has ever installed.
+  ///
+  /// Sized for a group: 32 people and a phone or two each. Each device adds
+  /// about 120 characters, so a full envelope stays well inside the
+  /// server's limit on a sealed body. Who is dropped when it bites is
+  /// decided in [seal]: never anybody's freshest device.
+  static const maxDevices = 64;
 
   /// Whether this install has an identity yet.
   bool get isReady => _mine != null;
@@ -299,12 +303,23 @@ class MessageVault {
     // which would arrive as a message nobody else could ever read.
     if (others.isEmpty) return null;
 
-    // This device first, then the other person's (freshest first, as the
-    // server lists them), then this person's other installs -- so the
-    // ceiling, when it bites, drops the stalest of one's own.
+    // This device first; then everybody else's freshest, one each; then
+    // their second freshest, and so on; then this person's other installs.
+    // So the ceiling, when it bites, drops the stalest installs -- and in a
+    // group never takes somebody out altogether because somebody else has
+    // a drawer of old phones.
+    final byPerson = <String, List<String>>{};
+    for (final k in others) {
+      // Freshest first, as the server lists them.
+      (byPerson[k.userId] ??= []).add(k.publicKey);
+    }
     final ordered = [
       ownKey,
-      for (final k in others) k.publicKey,
+      for (var round = 0;
+          byPerson.values.any((keys) => keys.length > round);
+          round++)
+        for (final keys in byPerson.values)
+          if (keys.length > round) keys[round],
       for (final k in published)
         if (k.publicKey != ownKey && !others.contains(k)) k.publicKey,
     ];

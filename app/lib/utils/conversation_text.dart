@@ -14,6 +14,13 @@ import '../models/post_media.dart' show MediaKind;
 /// rather than nothing. It used to be nothing: the list was never sent the
 /// attachments, so "You:" stood alone beside every voice note.
 String conversationPreview(AppLocalizations l10n, DirectMessage last) {
+  final event = last.event;
+  if (event != null) return groupEventText(l10n, event);
+  final once = last.once;
+  if (once != null) {
+    return '${mediaPreview(l10n, [once.kind])} · '
+        '${l10n.ui('ui_once_label', 'View once')}';
+  }
   if (last.unreadable) {
     return l10n.ui('ui_dm_preview_sealed', 'Encrypted message');
   }
@@ -96,3 +103,56 @@ String conversationTime(
     return format('en_US').format(at);
   }
 }
+
+/// A line about a group, in words: "Ada added Ben, Cy".
+///
+/// Always the person's name, the reader's own included. "You" takes a
+/// different form of the verb in most of the languages this is translated
+/// into, and one string per person would double every one of these.
+String groupEventText(AppLocalizations l10n, GroupEvent event) {
+  final users = event.users.map((u) => u.name).join(', ');
+  final template = switch (event.type) {
+    GroupEventType.created =>
+      l10n.ui('ui_group_event_created', r'$actor created the group'),
+    GroupEventType.renamed =>
+      l10n.ui('ui_group_event_renamed', r'$actor renamed the group $title'),
+    GroupEventType.added =>
+      l10n.ui('ui_group_event_added', r'$actor added $users'),
+    GroupEventType.removed =>
+      l10n.ui('ui_group_event_removed', r'$actor removed $users'),
+    GroupEventType.left => l10n.ui('ui_group_event_left', r'$actor left'),
+    GroupEventType.role => switch (event.role) {
+        MemberRole.owner =>
+          l10n.ui('ui_group_event_owner', r'$actor made $users the owner'),
+        MemberRole.admin =>
+          l10n.ui('ui_group_event_admin', r'$actor made $users an admin'),
+        MemberRole.spectator => l10n.ui(
+            'ui_group_event_spectator', r'$actor made $users a spectator'),
+        _ => l10n.ui('ui_group_event_member', r'$actor made $users a member'),
+      },
+    GroupEventType.joinRole => event.role == MemberRole.spectator
+        ? l10n.ui('ui_group_event_join_spectator',
+            r'$actor set new people to join as spectators')
+        : l10n.ui('ui_group_event_join_member',
+            r'$actor set new people to join as members'),
+  };
+  // Replaced in one pass, so a name that happens to contain "$users" is
+  // printed as it is rather than substituted again.
+  return template.replaceAllMapped(
+    RegExp(r'\$(actor|users|title)'),
+    (m) => switch (m[1]) {
+      'actor' => event.actorName,
+      'users' => users,
+      _ => '“${event.title ?? ''}”',
+    },
+  );
+}
+
+/// What somebody may do in a group, as a word.
+String memberRoleLabel(AppLocalizations l10n, MemberRole role) =>
+    switch (role) {
+      MemberRole.owner => l10n.ui('ui_community_role_owner', 'Owner'),
+      MemberRole.admin => l10n.ui('ui_group_role_admin', 'Admin'),
+      MemberRole.member => l10n.ui('ui_group_role_member', 'Member'),
+      MemberRole.spectator => l10n.ui('ui_group_role_spectator', 'Spectator'),
+    };

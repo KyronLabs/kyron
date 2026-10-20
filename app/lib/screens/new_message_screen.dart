@@ -1,4 +1,6 @@
 // lib/screens/new_message_screen.dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -13,6 +15,7 @@ import '../routes.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/kyron_app_bar.dart';
 import '../widgets/toast.dart';
+import 'group_people_screen.dart';
 import 'thread_screen.dart' show ThreadArgs;
 
 /// Starting a conversation: somebody to write to, found by name, with the
@@ -91,6 +94,28 @@ class _NewMessageScreenState extends ConsumerState<NewMessageScreen> {
       setState(() => _opening = null);
       Toast.show(context, describeApiError(error, sessionIsLive: true));
     }
+  }
+
+  /// Chooses people, then a name, and opens the new group in place of this
+  /// screen.
+  Future<void> _newGroup() async {
+    final l10n = AppLocalizations.of(context);
+    final people = await pickPeople(
+      context,
+      title: l10n.ui('ui_group_new', 'Create group chat'),
+      action: l10n.continueAction,
+    );
+    if (people == null || people.isEmpty || !mounted) return;
+    final id = await Navigator.of(context).push<String>(
+      MaterialPageRoute(builder: (_) => NewGroupScreen(people: people)),
+    );
+    if (id == null || id.isEmpty || !mounted) return;
+    unawaited(refreshConversations(ref));
+    await Navigator.pushReplacementNamed(
+      context,
+      Routes.thread,
+      arguments: ThreadArgs(conversationId: id, people: people),
+    );
   }
 
   @override
@@ -202,6 +227,25 @@ class _NewMessageScreenState extends ConsumerState<NewMessageScreen> {
             child: ListView(
               padding: const EdgeInsets.only(bottom: SpacingTokens.space24),
               children: [
+                if (query.isEmpty)
+                  ListTile(
+                    key: const ValueKey('new-group'),
+                    onTap: _newGroup,
+                    leading: CircleAvatar(
+                      radius: 22,
+                      backgroundColor: scheme.primary.withValues(alpha: .15),
+                      child: Icon(
+                        Iconsax.profile_2user_copy,
+                        size: 20,
+                        color: scheme.primary,
+                      ),
+                    ),
+                    title: Text(
+                      l10n.ui('ui_group_new', 'Create group chat'),
+                      style: const TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
+                  ),
                 if (people.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(
