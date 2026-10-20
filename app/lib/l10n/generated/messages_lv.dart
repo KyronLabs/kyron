@@ -1067,53 +1067,93 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
-      "ui_group_add": MessageLookupByLibrary.simpleMessage("Pievienot cilvēkus"),
+      "ui_group_add":
+          MessageLookupByLibrary.simpleMessage("Pievienot cilvēkus"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Pievienot"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Noraidīt"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Ziņas šajā grupā ir pilnībā šifrētas, tāpat kā jebkura cita saruna."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor pievienoja: \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor iecēla par administratoru: \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor izveidoja grupu"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor iestatīja, ka jauni cilvēki pievienojas kā dalībnieki"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor iestatīja, ka jauni cilvēki pievienojas kā skatītāji"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor aizgāja"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor iecēla par dalībnieku: \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor nodeva īpašumtiesības: \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor noņēma: \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor pārdēvēja grupu par \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor iecēla par skatītāju: \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Grupā var būt ne vairāk kā \$count cilvēki."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Roka pacelta. Administratori ir informēti."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("Vēlas rakstīt: \$count"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Vēlas rakstīt"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Vēlāk pievienotie pievienojas kā skatītāji"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Ziņas šajā grupā ir pilnībā šifrētas, tāpat kā jebkura cita saruna."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor pievienoja: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor iecēla par administratoru: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor izveidoja grupu"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor iestatīja, ka jauni cilvēki pievienojas kā dalībnieki"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor iestatīja, ka jauni cilvēki pievienojas kā skatītāji"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor aizgāja"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor iecēla par dalībnieku: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor nodeva īpašumtiesības: \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor noņēma: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor pārdēvēja grupu par \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor iecēla par skatītāju: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Grupā var būt ne vairāk kā \$count cilvēki."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Roka pacelta. Administratori ir informēti."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("Vēlas rakstīt: \$count"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Vēlas rakstīt"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Vēlāk pievienotie pievienojas kā skatītāji"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("Pamest grupu"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Tā pazudīs no jūsu saraksta, un jūs neredzēsiet, kas tiks rakstīts pēc tam. Kādam jūs būtu jāpievieno vēlreiz."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Pamest šo grupu?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Ļaut rakstīt"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Nolaist roku"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Iecelt par administratoru"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Nodot īpašumtiesības"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Padarīt par skatītāju"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("Dalībnieki: \$count"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Tā pazudīs no jūsu saraksta, un jūs neredzēsiet, kas tiks rakstīts pēc tam. Kādam jūs būtu jāpievieno vēlreiz."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Pamest šo grupu?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Ļaut rakstīt"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Nolaist roku"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Iecelt par administratoru"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Nodot īpašumtiesības"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Padarīt par skatītāju"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("Dalībnieki: \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Dalībnieki"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Grupas nosaukums"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Izveidot grupas tērzēšanu"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Īpašnieks ir viens. Jūs paliksiet administrators."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Nodot īpašumtiesības: \$name?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Pacelt roku"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Noņemt no grupas"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Atņemt administratora tiesības"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Jūs vairs neesat šajā grupā."),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Izveidot grupas tērzēšanu"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Īpašnieks ir viens. Jūs paliksiet administrators."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Nodot īpašumtiesības: \$name?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Pacelt roku"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Noņemt no grupas"),
+      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage(
+          "Atņemt administratora tiesības"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Jūs vairs neesat šajā grupā."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Pārdēvēt"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Administrators"),
-      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Dalībnieks"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Skatītājs"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("Kā skatītājs šeit varat lasīt un reaģēt."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Skatītāji var lasīt, reaģēt un pacelt roku, lai lūgtu atļauju rakstīt."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Skatīt profilu"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrators"),
+      "ui_group_role_member":
+          MessageLookupByLibrary.simpleMessage("Dalībnieks"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Skatītājs"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Kā skatītājs šeit varat lasīt un reaģēt."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Skatītāji var lasīt, reaģēt un pacelt roku, lai lūgtu atļauju rakstīt."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Skatīt profilu"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("jūs"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Jūs esat skatītājs"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Jūs esat skatītājs"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,16 +1186,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Tas jau ir atvērts."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Tas jau ir atvērts."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Beidzies"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("To neizdevās atvērt."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Atveras vienreiz, pēc tam tiek dzēsts no Kyron."),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("To neizdevās atvērt."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Atveras vienreiz, pēc tam tiek dzēsts no Kyron."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Skatīt vienreiz"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Atvērts"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Atvēra: \$count no \$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("To var atvērt tikai tie, kam to nosūtījāt, un tikai vienreiz."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Sūtīt vienreizējai skatīšanai"),
-      "ui_once_tap": MessageLookupByLibrary.simpleMessage("Pieskarieties, lai skatītu"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("Atvēra: \$count no \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "To var atvērt tikai tie, kam to nosūtījāt, un tikai vienreiz."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Sūtīt vienreizējai skatīšanai"),
+      "ui_once_tap":
+          MessageLookupByLibrary.simpleMessage("Pieskarieties, lai skatītu"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

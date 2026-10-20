@@ -1070,50 +1070,86 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Pridať ľudí"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Pridať"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Zamietnuť"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Správy v tejto skupine sú šifrované end-to-end, rovnako ako každá iná konverzácia."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor pridáva: \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor menuje za admina: \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor vytvára skupinu"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor nastavuje, že noví ľudia sa pridajú ako členovia"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor nastavuje, že noví ľudia sa pridajú ako diváci"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor odchádza"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor menuje za člena: \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor odovzdáva vlastníctvo: \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor odoberá: \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor premenúva skupinu na \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor menuje za diváka: \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Skupina môže mať najviac \$count ľudí."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Ruka zdvihnutá. Admini o tom vedia."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("Chcú písať: \$count"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Chcú písať"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Ľudia pridaní neskôr sa pridajú ako diváci"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Správy v tejto skupine sú šifrované end-to-end, rovnako ako každá iná konverzácia."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor pridáva: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor menuje za admina: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor vytvára skupinu"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor nastavuje, že noví ľudia sa pridajú ako členovia"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor nastavuje, že noví ľudia sa pridajú ako diváci"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor odchádza"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor menuje za člena: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor odovzdáva vlastníctvo: \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor odoberá: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor premenúva skupinu na \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor menuje za diváka: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Skupina môže mať najviac \$count ľudí."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Ruka zdvihnutá. Admini o tom vedia."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("Chcú písať: \$count"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Chcú písať"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Ľudia pridaní neskôr sa pridajú ako diváci"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("Opustiť skupinu"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Zmizne z vášho zoznamu a neuvidíte, čo sa napíše potom. Niekto by vás musel pridať znova."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Opustiť túto skupinu?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Povoliť písanie"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Spustiť ruku"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Menovať za admina"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Odovzdať vlastníctvo"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Menovať za diváka"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("Členovia: \$count"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Zmizne z vášho zoznamu a neuvidíte, čo sa napíše potom. Niekto by vás musel pridať znova."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Opustiť túto skupinu?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Povoliť písanie"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Spustiť ruku"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Menovať za admina"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Odovzdať vlastníctvo"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Menovať za diváka"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("Členovia: \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Členovia"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Názov skupiny"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Vytvoriť skupinový chat"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Vlastník je len jeden. Zostanete adminom."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Odovzdať vlastníctvo: \$name?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Zdvihnúť ruku"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Odobrať zo skupiny"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Odobrať rolu admina"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Už nie ste v tejto skupine."),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Vytvoriť skupinový chat"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Vlastník je len jeden. Zostanete adminom."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Odovzdať vlastníctvo: \$name?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Zdvihnúť ruku"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Odobrať zo skupiny"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Odobrať rolu admina"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Už nie ste v tejto skupine."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Premenovať"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Člen"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Divák"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("Ako divák tu môžete čítať a reagovať."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Diváci môžu čítať, reagovať a zdvihnúť ruku, aby požiadali o písanie."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Zobraziť profil"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Ako divák tu môžete čítať a reagovať."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Diváci môžu čítať, reagovať a zdvihnúť ruku, aby požiadali o písanie."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Zobraziť profil"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("vy"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Ste divák"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Ste divák"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,15 +1182,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Toto už bolo otvorené."),
-      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Platnosť vypršala"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("Nepodarilo sa to otvoriť."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Otvorí sa raz a potom sa z Kyronu vymaže."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Toto už bolo otvorené."),
+      "ui_once_expired":
+          MessageLookupByLibrary.simpleMessage("Platnosť vypršala"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Nepodarilo sa to otvoriť."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Otvorí sa raz a potom sa z Kyronu vymaže."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Zobraziť raz"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Otvorené"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Otvorené: \$count z \$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Otvoriť to môžu len tí, ktorým ste to poslali, a to raz."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Odoslať na jednorazové zobrazenie"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("Otvorené: \$count z \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Otvoriť to môžu len tí, ktorým ste to poslali, a to raz."),
+      "ui_once_send": MessageLookupByLibrary.simpleMessage(
+          "Odoslať na jednorazové zobrazenie"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Ťuknutím zobrazíte"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),

@@ -1067,53 +1067,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
-      "ui_group_add": MessageLookupByLibrary.simpleMessage("వ్యక్తులను జోడించండి"),
+      "ui_group_add":
+          MessageLookupByLibrary.simpleMessage("వ్యక్తులను జోడించండి"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("జోడించండి"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("తిరస్కరించండి"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("ఈ గ్రూప్‌లోని మెసేజ్‌లు ఇతర ఏ సంభాషణలాగానైనా ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడ్డాయి."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor జోడించారు: \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor అడ్మిన్ చేశారు: \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor గ్రూప్‌ను సృష్టించారు"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("కొత్తవారు సభ్యులుగా చేరేలా \$actor సెట్ చేశారు"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("కొత్తవారు ప్రేక్షకులుగా చేరేలా \$actor సెట్ చేశారు"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor వెళ్లిపోయారు"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor సభ్యులుగా చేశారు: \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor యజమానిగా చేశారు: \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor తీసివేశారు: \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor గ్రూప్ పేరును \$title గా మార్చారు"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor ప్రేక్షకులుగా చేశారు: \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("ఒక గ్రూప్‌లో గరిష్టంగా \$count మంది ఉండవచ్చు."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("చెయ్యి ఎత్తారు. అడ్మిన్‌లకు తెలియజేశాం."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count మంది రాయాలనుకుంటున్నారు"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("రాయాలనుకుంటున్నారు"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("తర్వాత జోడించినవారు ప్రేక్షకులుగా చేరతారు"),
-      "ui_group_leave": MessageLookupByLibrary.simpleMessage("గ్రూప్ నుండి నిష్క్రమించండి"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("ఇది మీ జాబితా నుండి తొలగిపోతుంది, తర్వాత ఏమి చెప్పారో మీరు చూడలేరు. ఎవరైనా మిమ్మల్ని మళ్లీ జోడించాలి."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("ఈ గ్రూప్ నుండి నిష్క్రమించాలా?"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "ఈ గ్రూప్‌లోని మెసేజ్‌లు ఇతర ఏ సంభాషణలాగానైనా ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడ్డాయి."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor జోడించారు: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor అడ్మిన్ చేశారు: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor గ్రూప్‌ను సృష్టించారు"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "కొత్తవారు సభ్యులుగా చేరేలా \$actor సెట్ చేశారు"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "కొత్తవారు ప్రేక్షకులుగా చేరేలా \$actor సెట్ చేశారు"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor వెళ్లిపోయారు"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor సభ్యులుగా చేశారు: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor యజమానిగా చేశారు: \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor తీసివేశారు: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor గ్రూప్ పేరును \$title గా మార్చారు"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ప్రేక్షకులుగా చేశారు: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "ఒక గ్రూప్‌లో గరిష్టంగా \$count మంది ఉండవచ్చు."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "చెయ్యి ఎత్తారు. అడ్మిన్‌లకు తెలియజేశాం."),
+      "ui_group_hands": MessageLookupByLibrary.simpleMessage(
+          "\$count మంది రాయాలనుకుంటున్నారు"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("రాయాలనుకుంటున్నారు"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "తర్వాత జోడించినవారు ప్రేక్షకులుగా చేరతారు"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("గ్రూప్ నుండి నిష్క్రమించండి"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "ఇది మీ జాబితా నుండి తొలగిపోతుంది, తర్వాత ఏమి చెప్పారో మీరు చూడలేరు. ఎవరైనా మిమ్మల్ని మళ్లీ జోడించాలి."),
+      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage(
+          "ఈ గ్రూప్ నుండి నిష్క్రమించాలా?"),
       "ui_group_let_write": MessageLookupByLibrary.simpleMessage("రాయనివ్వండి"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("చెయ్యి దించండి"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("అడ్మిన్ చేయండి"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("యజమాని చేయండి"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("ప్రేక్షకుడిగా చేయండి"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count సభ్యులు"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("చెయ్యి దించండి"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("అడ్మిన్ చేయండి"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("యజమాని చేయండి"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("ప్రేక్షకుడిగా చేయండి"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count సభ్యులు"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("సభ్యులు"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("గ్రూప్ పేరు"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("గ్రూప్ చాట్ సృష్టించండి"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("యజమాని ఒక్కరే. మీరు అడ్మిన్‌గా కొనసాగుతారు."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("\$name ను యజమానిగా చేయాలా?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("చెయ్యి ఎత్తండి"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("గ్రూప్ నుండి తీసివేయండి"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("అడ్మిన్ నుండి తీసివేయండి"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("మీరు ఇక ఈ గ్రూప్‌లో లేరు."),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("గ్రూప్ చాట్ సృష్టించండి"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "యజమాని ఒక్కరే. మీరు అడ్మిన్‌గా కొనసాగుతారు."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name ను యజమానిగా చేయాలా?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("చెయ్యి ఎత్తండి"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("గ్రూప్ నుండి తీసివేయండి"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("అడ్మిన్ నుండి తీసివేయండి"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("మీరు ఇక ఈ గ్రూప్‌లో లేరు."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("పేరు మార్చండి"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("అడ్మిన్"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("సభ్యుడు"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("ప్రేక్షకుడు"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("ప్రేక్షకుడిగా మీరు ఇక్కడ చదవవచ్చు, స్పందించవచ్చు."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("ప్రేక్షకులు చదవవచ్చు, స్పందించవచ్చు, రాయడానికి అనుమతి కోసం చెయ్యి ఎత్తవచ్చు."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("ప్రొఫైల్ చూడండి"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("ప్రేక్షకుడు"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "ప్రేక్షకుడిగా మీరు ఇక్కడ చదవవచ్చు, స్పందించవచ్చు."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "ప్రేక్షకులు చదవవచ్చు, స్పందించవచ్చు, రాయడానికి అనుమతి కోసం చెయ్యి ఎత్తవచ్చు."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("ప్రొఫైల్ చూడండి"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("మీరు"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("మీరు ప్రేక్షకుడు"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("మీరు ప్రేక్షకుడు"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,15 +1184,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("ఇది ఇప్పటికే తెరవబడింది."),
-      "ui_once_expired": MessageLookupByLibrary.simpleMessage("గడువు ముగిసింది"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("దీన్ని తెరవలేకపోయాం."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("ఒక్కసారి తెరుచుకుంటుంది, తర్వాత Kyron నుండి తొలగించబడుతుంది."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("ఇది ఇప్పటికే తెరవబడింది."),
+      "ui_once_expired":
+          MessageLookupByLibrary.simpleMessage("గడువు ముగిసింది"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("దీన్ని తెరవలేకపోయాం."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "ఒక్కసారి తెరుచుకుంటుంది, తర్వాత Kyron నుండి తొలగించబడుతుంది."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("ఒక్కసారి చూడండి"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("తెరవబడింది"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("\$total లో \$count మంది తెరిచారు"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("మీరు పంపినవారు మాత్రమే దీన్ని ఒక్కసారి తెరవగలరు."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("ఒక్కసారి చూడటానికి పంపండి"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$total లో \$count మంది తెరిచారు"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "మీరు పంపినవారు మాత్రమే దీన్ని ఒక్కసారి తెరవగలరు."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("ఒక్కసారి చూడటానికి పంపండి"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("చూడటానికి నొక్కండి"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),

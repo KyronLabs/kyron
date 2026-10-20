@@ -1070,50 +1070,87 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Dodaj osebe"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Dodaj"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Zavrni"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Sporočila v tej skupini so šifrirana od konca do konca, tako kot vsak drug pogovor."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor je dodal(-a): \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor je za skrbnika imenoval(-a): \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor je ustvaril(-a) skupino"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor je nastavil(-a), da se novi pridružijo kot člani"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor je nastavil(-a), da se novi pridružijo kot gledalci"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor je zapustil(-a) skupino"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor je za člana imenoval(-a): \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor je lastništvo predal(-a): \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor je odstranil(-a): \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor je skupino preimenoval(-a) v \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor je za gledalca imenoval(-a): \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Skupina ima lahko največ \$count oseb."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Roka dvignjena. Skrbniki so obveščeni."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("Želijo pisati: \$count"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Želijo pisati"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Osebe, dodane pozneje, se pridružijo kot gledalci"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Sporočila v tej skupini so šifrirana od konca do konca, tako kot vsak drug pogovor."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor je dodal(-a): \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor je za skrbnika imenoval(-a): \$users"),
+      "ui_group_event_created": MessageLookupByLibrary.simpleMessage(
+          "\$actor je ustvaril(-a) skupino"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor je nastavil(-a), da se novi pridružijo kot člani"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor je nastavil(-a), da se novi pridružijo kot gledalci"),
+      "ui_group_event_left": MessageLookupByLibrary.simpleMessage(
+          "\$actor je zapustil(-a) skupino"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor je za člana imenoval(-a): \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor je lastništvo predal(-a): \$users"),
+      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage(
+          "\$actor je odstranil(-a): \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor je skupino preimenoval(-a) v \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor je za gledalca imenoval(-a): \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Skupina ima lahko največ \$count oseb."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Roka dvignjena. Skrbniki so obveščeni."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("Želijo pisati: \$count"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Želijo pisati"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Osebe, dodane pozneje, se pridružijo kot gledalci"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("Zapusti skupino"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Izgine z vašega seznama in ne boste videli, kaj bo napisano pozneje. Nekdo bi vas moral dodati znova."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Zapustim to skupino?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Dovoli pisanje"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Spusti roko"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Imenuj za skrbnika"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Predaj lastništvo"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Imenuj za gledalca"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("Člani: \$count"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Izgine z vašega seznama in ne boste videli, kaj bo napisano pozneje. Nekdo bi vas moral dodati znova."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Zapustim to skupino?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Dovoli pisanje"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Spusti roko"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Imenuj za skrbnika"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Predaj lastništvo"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Imenuj za gledalca"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("Člani: \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Člani"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Ime skupine"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Ustvari skupinski klepet"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Lastnik je en sam. Ostali boste skrbnik."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Predam lastništvo: \$name?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Dvigni roko"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Odstrani iz skupine"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Odvzemi vlogo skrbnika"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Niste več v tej skupini."),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Ustvari skupinski klepet"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Lastnik je en sam. Ostali boste skrbnik."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Predam lastništvo: \$name?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Dvigni roko"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Odstrani iz skupine"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Odvzemi vlogo skrbnika"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Niste več v tej skupini."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Preimenuj"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Skrbnik"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Član"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Gledalec"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("Kot gledalec lahko tukaj berete in se odzivate."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Gledalci lahko berejo, se odzivajo in dvignejo roko, da prosijo za pisanje."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Ogled profila"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Gledalec"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Kot gledalec lahko tukaj berete in se odzivate."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Gledalci lahko berejo, se odzivajo in dvignejo roko, da prosijo za pisanje."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Ogled profila"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("vi"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Ste gledalec"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Ste gledalec"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,15 +1183,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("To je bilo že odprto."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("To je bilo že odprto."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Poteklo"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("Tega ni bilo mogoče odpreti."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Odpre se enkrat, nato se izbriše iz Kyrona."),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Tega ni bilo mogoče odpreti."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Odpre se enkrat, nato se izbriše iz Kyrona."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Ogled enkrat"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Odprto"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Odprto: \$count od \$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Odprejo ga lahko le tisti, ki ste jim ga poslali, in to enkrat."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Pošlji za enkraten ogled"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("Odprto: \$count od \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Odprejo ga lahko le tisti, ki ste jim ga poslali, in to enkrat."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Pošlji za enkraten ogled"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Tapnite za ogled"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),

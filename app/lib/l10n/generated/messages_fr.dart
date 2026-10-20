@@ -1067,53 +1067,92 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
-      "ui_group_add": MessageLookupByLibrary.simpleMessage("Ajouter des personnes"),
+      "ui_group_add":
+          MessageLookupByLibrary.simpleMessage("Ajouter des personnes"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ajouter"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Ignorer"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Les messages de ce groupe sont chiffrés de bout en bout, comme toute autre conversation."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor a ajouté \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor a nommé \$users admin"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor a créé le groupe"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor fait rejoindre les nouveaux en tant que membres"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor fait rejoindre les nouveaux en tant que spectateurs"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor est parti"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor a fait de \$users un membre"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor a fait de \$users le propriétaire"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor a retiré \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor a renommé le groupe \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor a fait de \$users un spectateur"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Un groupe peut compter au plus \$count personnes."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Main levée. Les admins ont été prévenus."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count demandent à écrire"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Demandent à écrire"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Les personnes ajoutées plus tard rejoignent en spectateurs"),
-      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Quitter le groupe"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Il disparaît de votre liste et vous ne verrez pas ce qui sera dit ensuite. Quelqu’un devra vous ajouter à nouveau."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Quitter ce groupe ?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Autoriser à écrire"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Baisser la main"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Nommer admin"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Nommer propriétaire"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Passer en spectateur"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count membres"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Les messages de ce groupe sont chiffrés de bout en bout, comme toute autre conversation."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor a ajouté \$users"),
+      "ui_group_event_admin":
+          MessageLookupByLibrary.simpleMessage("\$actor a nommé \$users admin"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor a créé le groupe"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor fait rejoindre les nouveaux en tant que membres"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor fait rejoindre les nouveaux en tant que spectateurs"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor est parti"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor a fait de \$users un membre"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor a fait de \$users le propriétaire"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor a retiré \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor a renommé le groupe \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor a fait de \$users un spectateur"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Un groupe peut compter au plus \$count personnes."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Main levée. Les admins ont été prévenus."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count demandent à écrire"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Demandent à écrire"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Les personnes ajoutées plus tard rejoignent en spectateurs"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("Quitter le groupe"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Il disparaît de votre liste et vous ne verrez pas ce qui sera dit ensuite. Quelqu’un devra vous ajouter à nouveau."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Quitter ce groupe ?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Autoriser à écrire"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Baisser la main"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Nommer admin"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Nommer propriétaire"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Passer en spectateur"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count membres"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Membres"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Nom du groupe"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Créer une discussion de groupe"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Il n’y a qu’un propriétaire. Vous resterez admin."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Faire de \$name le propriétaire ?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Lever la main"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Retirer du groupe"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Retirer des admins"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Vous ne faites plus partie de ce groupe."),
+      "ui_group_new": MessageLookupByLibrary.simpleMessage(
+          "Créer une discussion de groupe"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Il n’y a qu’un propriétaire. Vous resterez admin."),
+      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage(
+          "Faire de \$name le propriétaire ?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Lever la main"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Retirer du groupe"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Retirer des admins"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Vous ne faites plus partie de ce groupe."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Renommer"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Membre"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Spectateur"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("En tant que spectateur, vous pouvez lire et réagir ici."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Les spectateurs peuvent lire, réagir et lever la main pour demander à écrire."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Voir le profil"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Spectateur"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "En tant que spectateur, vous pouvez lire et réagir ici."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Les spectateurs peuvent lire, réagir et lever la main pour demander à écrire."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Voir le profil"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("vous"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Vous êtes spectateur"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Vous êtes spectateur"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,15 +1185,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Ceci a déjà été ouvert."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Ceci a déjà été ouvert."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Expiré"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("Impossible d’ouvrir ceci."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("S’ouvre une fois, puis est supprimé de Kyron."),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Impossible d’ouvrir ceci."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "S’ouvre une fois, puis est supprimé de Kyron."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Vue unique"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Ouvert"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Ouvert par \$count sur \$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Seules les personnes à qui vous l’avez envoyé peuvent l’ouvrir, une fois."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Envoyer en vue unique"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "Ouvert par \$count sur \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Seules les personnes à qui vous l’avez envoyé peuvent l’ouvrir, une fois."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Envoyer en vue unique"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Touchez pour voir"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),

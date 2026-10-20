@@ -1131,50 +1131,85 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Voeg mense by"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Voeg by"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Wys af"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Boodskappe in hierdie groep is end-tot-end-geïnkripteer, net soos enige ander gesprek."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor het \$users bygevoeg"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor het \$users admin gemaak"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor het die groep geskep"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor laat nuwe mense as lede aansluit"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor laat nuwe mense as toeskouers aansluit"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor het verlaat"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor het \$users ’n lid gemaak"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor het \$users die eienaar gemaak"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor het \$users verwyder"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor het die groep hernoem na \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor het \$users ’n toeskouer gemaak"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("’n Groep kan hoogstens \$count mense hê."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Hand opgesteek. Die admins weet daarvan."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count wil skryf"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Wil skryf"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Mense wat later bygevoeg word, sluit as toeskouers aan"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Boodskappe in hierdie groep is end-tot-end-geïnkripteer, net soos enige ander gesprek."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor het \$users bygevoeg"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor het \$users admin gemaak"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor het die groep geskep"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor laat nuwe mense as lede aansluit"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor laat nuwe mense as toeskouers aansluit"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor het verlaat"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor het \$users ’n lid gemaak"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor het \$users die eienaar gemaak"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor het \$users verwyder"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor het die groep hernoem na \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor het \$users ’n toeskouer gemaak"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "’n Groep kan hoogstens \$count mense hê."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Hand opgesteek. Die admins weet daarvan."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count wil skryf"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Wil skryf"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Mense wat later bygevoeg word, sluit as toeskouers aan"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("Verlaat groep"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Dit verdwyn uit jou lys en jy sal nie sien wat daarna gesê word nie. Iemand sal jou weer moet byvoeg."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Verlaat hierdie groep?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Laat hulle skryf"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Laat sak hand"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Dit verdwyn uit jou lys en jy sal nie sien wat daarna gesê word nie. Iemand sal jou weer moet byvoeg."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Verlaat hierdie groep?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Laat hulle skryf"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Laat sak hand"),
       "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Maak admin"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Maak eienaar"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Maak toeskouer"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count lede"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Maak eienaar"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Maak toeskouer"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count lede"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Lede"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Groepnaam"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("Skep groepklets"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Daar is een eienaar. Jy bly ’n admin."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Maak \$name die eienaar?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Steek hand op"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Verwyder uit groep"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Verwyder as admin"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Jy is nie meer in hierdie groep nie."),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Daar is een eienaar. Jy bly ’n admin."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Maak \$name die eienaar?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Steek hand op"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Verwyder uit groep"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Verwyder as admin"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Jy is nie meer in hierdie groep nie."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Hernoem"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Lid"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Toeskouer"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("As toeskouer kan jy hier lees en reageer."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Toeskouers kan lees, reageer en hul hand opsteek om te vra om te skryf."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Bekyk profiel"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Toeskouer"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "As toeskouer kan jy hier lees en reageer."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Toeskouers kan lees, reageer en hul hand opsteek om te vra om te skryf."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Bekyk profiel"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("jy"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Jy is ’n toeskouer"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Jy is ’n toeskouer"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Hulp"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Genoteer. Dit help vorm wat aan jou gewys word.",
@@ -1210,15 +1245,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Slaan oor",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Dit is reeds oopgemaak."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Dit is reeds oopgemaak."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Verval"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("Dit kon nie oopgemaak word nie."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Gaan een keer oop en word dan van Kyron uitgevee."),
+      "ui_once_failed": MessageLookupByLibrary.simpleMessage(
+          "Dit kon nie oopgemaak word nie."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Gaan een keer oop en word dan van Kyron uitgevee."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Kyk een keer"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Oopgemaak"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Oopgemaak deur \$count van \$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Net die mense na wie jy dit gestuur het, kan dit oopmaak, een keer."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Stuur om een keer te kyk"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "Oopgemaak deur \$count van \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Net die mense na wie jy dit gestuur het, kan dit oopmaak, een keer."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Stuur om een keer te kyk"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Tik om te kyk"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pouse"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Speel"),

@@ -168,58 +168,87 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("사람 추가"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("추가"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("거절"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("이 그룹의 메시지는 다른 모든 대화처럼 종단간 암호화됩니다."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor 님이 \$users 님을 추가했습니다"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor 님이 \$users 님을 관리자로 지정했습니다"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor 님이 그룹을 만들었습니다"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor 님이 새 사람이 멤버로 참여하도록 설정했습니다"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor 님이 새 사람이 관전자로 참여하도록 설정했습니다"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor 님이 나갔습니다"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor 님이 \$users 님을 멤버로 지정했습니다"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor 님이 \$users 님을 소유자로 지정했습니다"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor 님이 \$users 님을 내보냈습니다"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor 님이 그룹 이름을 \$title(으)로 변경했습니다"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor 님이 \$users 님을 관전자로 지정했습니다"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("그룹 인원은 최대 \$count명입니다."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("손을 들었습니다. 관리자에게 알렸습니다."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count명이 글쓰기 요청 중"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("글쓰기 요청 중"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("나중에 추가된 사람은 관전자로 참여합니다"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "이 그룹의 메시지는 다른 모든 대화처럼 종단간 암호화됩니다."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor 님이 \$users 님을 추가했습니다"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor 님이 \$users 님을 관리자로 지정했습니다"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor 님이 그룹을 만들었습니다"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor 님이 새 사람이 멤버로 참여하도록 설정했습니다"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor 님이 새 사람이 관전자로 참여하도록 설정했습니다"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor 님이 나갔습니다"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor 님이 \$users 님을 멤버로 지정했습니다"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor 님이 \$users 님을 소유자로 지정했습니다"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor 님이 \$users 님을 내보냈습니다"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor 님이 그룹 이름을 \$title(으)로 변경했습니다"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor 님이 \$users 님을 관전자로 지정했습니다"),
+      "ui_group_full":
+          MessageLookupByLibrary.simpleMessage("그룹 인원은 최대 \$count명입니다."),
+      "ui_group_hand_raised":
+          MessageLookupByLibrary.simpleMessage("손을 들었습니다. 관리자에게 알렸습니다."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count명이 글쓰기 요청 중"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("글쓰기 요청 중"),
+      "ui_group_join_spectators":
+          MessageLookupByLibrary.simpleMessage("나중에 추가된 사람은 관전자로 참여합니다"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("그룹 나가기"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("목록에서 사라지고 이후의 대화는 볼 수 없습니다. 누군가 다시 추가해야 합니다."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("이 그룹에서 나갈까요?"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "목록에서 사라지고 이후의 대화는 볼 수 없습니다. 누군가 다시 추가해야 합니다."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("이 그룹에서 나갈까요?"),
       "ui_group_let_write": MessageLookupByLibrary.simpleMessage("글쓰기 허용"),
       "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("손 내리기"),
       "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("관리자로 지정"),
       "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("소유자로 지정"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("관전자로 지정"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("멤버 \$count명"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("관전자로 지정"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("멤버 \$count명"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("멤버"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("그룹 이름"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("그룹 채팅 만들기"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("소유자는 한 명입니다. 회원님은 관리자로 남습니다."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("\$name 님을 소유자로 지정할까요?"),
+      "ui_group_owner_detail":
+          MessageLookupByLibrary.simpleMessage("소유자는 한 명입니다. 회원님은 관리자로 남습니다."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name 님을 소유자로 지정할까요?"),
       "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("손 들기"),
       "ui_group_remove": MessageLookupByLibrary.simpleMessage("그룹에서 내보내기"),
       "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("관리자에서 해제"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("더 이상 이 그룹의 멤버가 아닙니다."),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("더 이상 이 그룹의 멤버가 아닙니다."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("이름 변경"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("관리자"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("멤버"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("관전자"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("관전자로서 여기에서 읽고 반응할 수 있습니다."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("관전자는 읽고 반응할 수 있으며, 손을 들어 글쓰기를 요청할 수 있습니다."),
+      "ui_group_spectator_note":
+          MessageLookupByLibrary.simpleMessage("관전자로서 여기에서 읽고 반응할 수 있습니다."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "관전자는 읽고 반응할 수 있으며, 손을 들어 글쓰기를 요청할 수 있습니다."),
       "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("프로필 보기"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("나"),
       "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("관전자입니다"),
       "ui_once_already": MessageLookupByLibrary.simpleMessage("이미 열어 본 항목입니다."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("만료됨"),
       "ui_once_failed": MessageLookupByLibrary.simpleMessage("열 수 없습니다."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("한 번 열리고 나면 Kyron에서 삭제됩니다."),
+      "ui_once_hint":
+          MessageLookupByLibrary.simpleMessage("한 번 열리고 나면 Kyron에서 삭제됩니다."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("한 번 보기"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("열람함"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("\$total명 중 \$count명 열람"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("보낸 상대만 한 번 열 수 있습니다."),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("\$total명 중 \$count명 열람"),
+      "ui_once_own":
+          MessageLookupByLibrary.simpleMessage("보낸 상대만 한 번 열 수 있습니다."),
       "ui_once_send": MessageLookupByLibrary.simpleMessage("한 번 보기로 보내기"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("탭하여 보기"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("리포스트 취소"),

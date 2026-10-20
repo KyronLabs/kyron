@@ -1070,50 +1070,83 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("افزودن افراد"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("افزودن"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("رد کردن"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("پیام‌های این گروه مانند هر گفتگوی دیگری رمزگذاری سرتاسری دارند."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor این افراد را افزود: \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor این افراد را مدیر کرد: \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor گروه را ساخت"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor تنظیم کرد که افراد جدید به‌عنوان عضو بپیوندند"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor تنظیم کرد که افراد جدید به‌عنوان تماشاگر بپیوندند"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor رفت"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor این افراد را عضو کرد: \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor مالکیت را واگذار کرد به: \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor این افراد را حذف کرد: \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor نام گروه را به \$title تغییر داد"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor این افراد را تماشاگر کرد: \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("هر گروه حداکثر \$count نفر می‌تواند داشته باشد."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("دست بالا رفت. به مدیران خبر داده شد."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count نفر می‌خواهند بنویسند"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("می‌خواهند بنویسند"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("افرادی که بعداً افزوده شوند به‌عنوان تماشاگر می‌پیوندند"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "پیام‌های این گروه مانند هر گفتگوی دیگری رمزگذاری سرتاسری دارند."),
+      "ui_group_event_added": MessageLookupByLibrary.simpleMessage(
+          "\$actor این افراد را افزود: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor این افراد را مدیر کرد: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor گروه را ساخت"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor تنظیم کرد که افراد جدید به‌عنوان عضو بپیوندند"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor تنظیم کرد که افراد جدید به‌عنوان تماشاگر بپیوندند"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor رفت"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor این افراد را عضو کرد: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor مالکیت را واگذار کرد به: \$users"),
+      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage(
+          "\$actor این افراد را حذف کرد: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor نام گروه را به \$title تغییر داد"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor این افراد را تماشاگر کرد: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "هر گروه حداکثر \$count نفر می‌تواند داشته باشد."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "دست بالا رفت. به مدیران خبر داده شد."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count نفر می‌خواهند بنویسند"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("می‌خواهند بنویسند"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "افرادی که بعداً افزوده شوند به‌عنوان تماشاگر می‌پیوندند"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("ترک گروه"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("از فهرست شما حذف می‌شود و آنچه بعد از آن گفته شود را نمی‌بینید. کسی باید دوباره شما را بیفزاید."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("این گروه را ترک می‌کنید؟"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("اجازهٔ نوشتن"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("پایین آوردن دست"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "از فهرست شما حذف می‌شود و آنچه بعد از آن گفته شود را نمی‌بینید. کسی باید دوباره شما را بیفزاید."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("این گروه را ترک می‌کنید؟"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("اجازهٔ نوشتن"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("پایین آوردن دست"),
       "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("مدیر کردن"),
       "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("مالک کردن"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("تماشاگر کردن"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count عضو"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("تماشاگر کردن"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count عضو"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("اعضا"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("نام گروه"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("ساخت گفتگوی گروهی"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("گروه یک مالک دارد. شما مدیر باقی می‌مانید."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("مالکیت به \$name واگذار شود؟"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("بالا بردن دست"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "گروه یک مالک دارد. شما مدیر باقی می‌مانید."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("مالکیت به \$name واگذار شود؟"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("بالا بردن دست"),
       "ui_group_remove": MessageLookupByLibrary.simpleMessage("حذف از گروه"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("برداشتن مدیریت"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("دیگر در این گروه نیستید."),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("برداشتن مدیریت"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("دیگر در این گروه نیستید."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("تغییر نام"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("مدیر"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("عضو"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("تماشاگر"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("به‌عنوان تماشاگر می‌توانید اینجا بخوانید و واکنش نشان دهید."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("تماشاگران می‌توانند بخوانند، واکنش نشان دهند و برای درخواست نوشتن دست بالا ببرند."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("دیدن نمایه"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("تماشاگر"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "به‌عنوان تماشاگر می‌توانید اینجا بخوانید و واکنش نشان دهید."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "تماشاگران می‌توانند بخوانند، واکنش نشان دهند و برای درخواست نوشتن دست بالا ببرند."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("دیدن نمایه"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("شما"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("شما تماشاگر هستید"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("شما تماشاگر هستید"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,16 +1179,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("این قبلاً باز شده است."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("این قبلاً باز شده است."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("منقضی شده"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("باز کردن آن ممکن نشد."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("یک بار باز می‌شود و سپس از Kyron حذف می‌شود."),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("باز کردن آن ممکن نشد."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "یک بار باز می‌شود و سپس از Kyron حذف می‌شود."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("یک‌بار دیدن"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("باز شد"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("\$count از \$total باز کردند"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("فقط کسانی که برایشان فرستادید می‌توانند یک بار بازش کنند."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("ارسال برای یک‌بار دیدن"),
-      "ui_once_tap": MessageLookupByLibrary.simpleMessage("برای دیدن ضربه بزنید"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("\$count از \$total باز کردند"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "فقط کسانی که برایشان فرستادید می‌توانند یک بار بازش کنند."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("ارسال برای یک‌بار دیدن"),
+      "ui_once_tap":
+          MessageLookupByLibrary.simpleMessage("برای دیدن ضربه بزنید"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

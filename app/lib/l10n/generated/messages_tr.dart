@@ -1070,50 +1070,84 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Kişi ekle"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ekle"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Reddet"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Bu gruptaki mesajlar, diğer tüm sohbetler gibi uçtan uca şifrelidir."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor şu kişileri ekledi: \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor şu kişileri yönetici yaptı: \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor grubu oluşturdu"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor yeni kişilerin üye olarak katılmasını ayarladı"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor yeni kişilerin izleyici olarak katılmasını ayarladı"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor ayrıldı"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor şu kişileri üye yaptı: \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor sahipliği devretti: \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor şu kişileri çıkardı: \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor grubun adını \$title olarak değiştirdi"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor şu kişileri izleyici yaptı: \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Bir grupta en fazla \$count kişi olabilir."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("El kaldırıldı. Yöneticilere haber verildi."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count kişi yazmak istiyor"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Yazmak istiyor"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Sonradan eklenenler izleyici olarak katılır"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Bu gruptaki mesajlar, diğer tüm sohbetler gibi uçtan uca şifrelidir."),
+      "ui_group_event_added": MessageLookupByLibrary.simpleMessage(
+          "\$actor şu kişileri ekledi: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor şu kişileri yönetici yaptı: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor grubu oluşturdu"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor yeni kişilerin üye olarak katılmasını ayarladı"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor yeni kişilerin izleyici olarak katılmasını ayarladı"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor ayrıldı"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor şu kişileri üye yaptı: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor sahipliği devretti: \$users"),
+      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage(
+          "\$actor şu kişileri çıkardı: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor grubun adını \$title olarak değiştirdi"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor şu kişileri izleyici yaptı: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Bir grupta en fazla \$count kişi olabilir."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "El kaldırıldı. Yöneticilere haber verildi."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count kişi yazmak istiyor"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Yazmak istiyor"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Sonradan eklenenler izleyici olarak katılır"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("Gruptan ayrıl"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Listenden kalkar ve sonrasında söylenenleri görmezsin. Birinin seni yeniden eklemesi gerekir."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Bu gruptan ayrılsın mı?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Yazmasına izin ver"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Listenden kalkar ve sonrasında söylenenleri görmezsin. Birinin seni yeniden eklemesi gerekir."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Bu gruptan ayrılsın mı?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Yazmasına izin ver"),
       "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Eli indir"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Yönetici yap"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Yönetici yap"),
       "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Sahip yap"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("İzleyici yap"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count üye"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("İzleyici yap"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count üye"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Üyeler"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Grup adı"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Grup sohbeti oluştur"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Tek bir sahip olur. Sen yönetici olarak kalırsın."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("\$name sahip yapılsın mı?"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Grup sohbeti oluştur"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Tek bir sahip olur. Sen yönetici olarak kalırsın."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name sahip yapılsın mı?"),
       "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("El kaldır"),
       "ui_group_remove": MessageLookupByLibrary.simpleMessage("Gruptan çıkar"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Yöneticilikten çıkar"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Artık bu grupta değilsin."),
-      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Yeniden adlandır"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Yöneticilikten çıkar"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Artık bu grupta değilsin."),
+      "ui_group_rename":
+          MessageLookupByLibrary.simpleMessage("Yeniden adlandır"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Yönetici"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Üye"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("İzleyici"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("İzleyici olarak burada okuyabilir ve tepki verebilirsin."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("İzleyiciler okuyabilir, tepki verebilir ve yazmak için el kaldırabilir."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Profili gör"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("İzleyici"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "İzleyici olarak burada okuyabilir ve tepki verebilirsin."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "İzleyiciler okuyabilir, tepki verebilir ve yazmak için el kaldırabilir."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Profili gör"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("sen"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("İzleyicisin"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("İzleyicisin"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,15 +1180,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Bu zaten açıldı."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Bu zaten açıldı."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Süresi doldu"),
       "ui_once_failed": MessageLookupByLibrary.simpleMessage("Bu açılamadı."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Bir kez açılır, ardından Kyron’dan silinir."),
-      "ui_once_label": MessageLookupByLibrary.simpleMessage("Bir kez görüntüle"),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Bir kez açılır, ardından Kyron’dan silinir."),
+      "ui_once_label":
+          MessageLookupByLibrary.simpleMessage("Bir kez görüntüle"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Açıldı"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("\$total kişiden \$count açtı"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Yalnızca gönderdiğin kişiler bunu bir kez açabilir."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Bir kez görüntülenmek üzere gönder"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("\$total kişiden \$count açtı"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Yalnızca gönderdiğin kişiler bunu bir kez açabilir."),
+      "ui_once_send": MessageLookupByLibrary.simpleMessage(
+          "Bir kez görüntülenmek üzere gönder"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Görmek için dokun"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),

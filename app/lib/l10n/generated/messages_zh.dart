@@ -148,37 +148,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("添加成员"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("添加"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("忽略"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("此群组中的消息与其他对话一样经过端到端加密。"),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor 添加了 \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor 将 \$users 设为管理员"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor 创建了群组"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor 设置新成员以成员身份加入"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor 设置新成员以旁观者身份加入"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor 退出了群组"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor 将 \$users 设为成员"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor 将 \$users 设为群主"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor 移除了 \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor 将群组重命名为 \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor 将 \$users 设为旁观者"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("一个群组最多可有 \$count 人。"),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("已举手。已通知管理员。"),
+      "ui_group_e2ee":
+          MessageLookupByLibrary.simpleMessage("此群组中的消息与其他对话一样经过端到端加密。"),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor 添加了 \$users"),
+      "ui_group_event_admin":
+          MessageLookupByLibrary.simpleMessage("\$actor 将 \$users 设为管理员"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor 创建了群组"),
+      "ui_group_event_join_member":
+          MessageLookupByLibrary.simpleMessage("\$actor 设置新成员以成员身份加入"),
+      "ui_group_event_join_spectator":
+          MessageLookupByLibrary.simpleMessage("\$actor 设置新成员以旁观者身份加入"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor 退出了群组"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor 将 \$users 设为成员"),
+      "ui_group_event_owner":
+          MessageLookupByLibrary.simpleMessage("\$actor 将 \$users 设为群主"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor 移除了 \$users"),
+      "ui_group_event_renamed":
+          MessageLookupByLibrary.simpleMessage("\$actor 将群组重命名为 \$title"),
+      "ui_group_event_spectator":
+          MessageLookupByLibrary.simpleMessage("\$actor 将 \$users 设为旁观者"),
+      "ui_group_full":
+          MessageLookupByLibrary.simpleMessage("一个群组最多可有 \$count 人。"),
+      "ui_group_hand_raised":
+          MessageLookupByLibrary.simpleMessage("已举手。已通知管理员。"),
       "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count 人请求发言"),
       "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("请求发言"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("之后加入的人以旁观者身份加入"),
+      "ui_group_join_spectators":
+          MessageLookupByLibrary.simpleMessage("之后加入的人以旁观者身份加入"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("退出群组"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("它会从你的列表中消失，你将看不到之后的内容。需要有人重新添加你。"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "它会从你的列表中消失，你将看不到之后的内容。需要有人重新添加你。"),
       "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("要退出此群组吗？"),
       "ui_group_let_write": MessageLookupByLibrary.simpleMessage("允许发言"),
       "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("放下手"),
       "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("设为管理员"),
       "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("设为群主"),
       "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("设为旁观者"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count 位成员"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count 位成员"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("成员"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("群组名称"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("创建群聊"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("群主只有一位。你将继续担任管理员。"),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("要将 \$name 设为群主吗？"),
+      "ui_group_owner_detail":
+          MessageLookupByLibrary.simpleMessage("群主只有一位。你将继续担任管理员。"),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("要将 \$name 设为群主吗？"),
       "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("举手"),
       "ui_group_remove": MessageLookupByLibrary.simpleMessage("移出群组"),
       "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("取消管理员"),
@@ -187,19 +206,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("管理员"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("成员"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("旁观者"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("作为旁观者，你可以在这里阅读和回应。"),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("旁观者可以阅读、回应，并举手请求发言。"),
+      "ui_group_spectator_note":
+          MessageLookupByLibrary.simpleMessage("作为旁观者，你可以在这里阅读和回应。"),
+      "ui_group_spectators_detail":
+          MessageLookupByLibrary.simpleMessage("旁观者可以阅读、回应，并举手请求发言。"),
       "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("查看个人资料"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("你"),
       "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("你是旁观者"),
       "ui_once_already": MessageLookupByLibrary.simpleMessage("此内容已被打开过。"),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("已过期"),
       "ui_once_failed": MessageLookupByLibrary.simpleMessage("无法打开。"),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("只能打开一次，之后会从 Kyron 删除。"),
+      "ui_once_hint":
+          MessageLookupByLibrary.simpleMessage("只能打开一次，之后会从 Kyron 删除。"),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("仅看一次"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("已打开"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("\$total 人中有 \$count 人已打开"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("只有你发送的对象可以打开，且只能打开一次。"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("\$total 人中有 \$count 人已打开"),
+      "ui_once_own":
+          MessageLookupByLibrary.simpleMessage("只有你发送的对象可以打开，且只能打开一次。"),
       "ui_once_send": MessageLookupByLibrary.simpleMessage("以仅看一次的方式发送"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("点按查看"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("撤销转发"),

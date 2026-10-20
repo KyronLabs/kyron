@@ -1071,50 +1071,88 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Ongeza watu"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ongeza"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Kataa"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Ujumbe katika kikundi hiki umesimbwa kutoka mwanzo hadi mwisho, kama mazungumzo mengine yoyote."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor amewaongeza \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor amemfanya \$users msimamizi"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor ameunda kikundi"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor ameweka watu wapya wajiunge kama wanachama"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor ameweka watu wapya wajiunge kama watazamaji"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor ameondoka"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor amemfanya \$users mwanachama"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor amemfanya \$users mmiliki"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor amemwondoa \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor amebadilisha jina la kikundi kuwa \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor amemfanya \$users mtazamaji"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Kikundi kinaweza kuwa na watu \$count zaidi."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Mkono umeinuliwa. Wasimamizi wamearifiwa."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count wanaomba kuandika"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Wanaomba kuandika"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Watakaoongezwa baadaye watajiunga kama watazamaji"),
-      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Ondoka kwenye kikundi"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Kitaondoka kwenye orodha yako na hutaona kinachosemwa baadaye. Mtu atahitaji kukuongeza tena."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Uondoke kwenye kikundi hiki?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Ruhusu kuandika"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Shusha mkono"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Fanya msimamizi"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Fanya mmiliki"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Fanya mtazamaji"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("Wanachama \$count"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Ujumbe katika kikundi hiki umesimbwa kutoka mwanzo hadi mwisho, kama mazungumzo mengine yoyote."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor amewaongeza \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor amemfanya \$users msimamizi"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor ameunda kikundi"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor ameweka watu wapya wajiunge kama wanachama"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ameweka watu wapya wajiunge kama watazamaji"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor ameondoka"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor amemfanya \$users mwanachama"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor amemfanya \$users mmiliki"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor amemwondoa \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor amebadilisha jina la kikundi kuwa \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor amemfanya \$users mtazamaji"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Kikundi kinaweza kuwa na watu \$count zaidi."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Mkono umeinuliwa. Wasimamizi wamearifiwa."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count wanaomba kuandika"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Wanaomba kuandika"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Watakaoongezwa baadaye watajiunga kama watazamaji"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("Ondoka kwenye kikundi"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Kitaondoka kwenye orodha yako na hutaona kinachosemwa baadaye. Mtu atahitaji kukuongeza tena."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Uondoke kwenye kikundi hiki?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Ruhusu kuandika"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Shusha mkono"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Fanya msimamizi"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Fanya mmiliki"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Fanya mtazamaji"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("Wanachama \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Wanachama"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Jina la kikundi"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Unda gumzo la kikundi"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Kuna mmiliki mmoja. Utabaki kuwa msimamizi."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Umfanye \$name mmiliki?"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Unda gumzo la kikundi"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Kuna mmiliki mmoja. Utabaki kuwa msimamizi."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Umfanye \$name mmiliki?"),
       "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Inua mkono"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Ondoa kwenye kikundi"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Ondoa kama msimamizi"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Huko tena kwenye kikundi hiki."),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Ondoa kwenye kikundi"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Ondoa kama msimamizi"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Huko tena kwenye kikundi hiki."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Badilisha jina"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Msimamizi"),
-      "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Mwanachama"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Mtazamaji"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("Kama mtazamaji, unaweza kusoma na kutoa hisia hapa."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Watazamaji wanaweza kusoma, kutoa hisia na kuinua mkono kuomba kuandika."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Tazama wasifu"),
+      "ui_group_role_member":
+          MessageLookupByLibrary.simpleMessage("Mwanachama"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Mtazamaji"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Kama mtazamaji, unaweza kusoma na kutoa hisia hapa."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Watazamaji wanaweza kusoma, kutoa hisia na kuinua mkono kuomba kuandika."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Tazama wasifu"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("wewe"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Wewe ni mtazamaji"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Wewe ni mtazamaji"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1147,15 +1185,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Hiki kimeshafunguliwa."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Hiki kimeshafunguliwa."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Muda umekwisha"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("Haikuweza kufunguliwa."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Hufunguka mara moja, kisha hufutwa kwenye Kyron."),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Haikuweza kufunguliwa."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Hufunguka mara moja, kisha hufutwa kwenye Kyron."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Tazama mara moja"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Imefunguliwa"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Imefunguliwa na \$count kati ya \$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Ni watu uliowatumia tu wanaoweza kukifungua, mara moja."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Tuma kutazamwa mara moja"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "Imefunguliwa na \$count kati ya \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Ni watu uliowatumia tu wanaoweza kukifungua, mara moja."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Tuma kutazamwa mara moja"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Gusa ili kutazama"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),

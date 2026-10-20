@@ -1142,50 +1142,82 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("লোক যোগ করুন"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("যোগ করুন"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("খারিজ করুন"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("এই গ্রুপের মেসেজ অন্য যেকোনো কথোপকথনের মতো এন্ড-টু-এন্ড এনক্রিপ্টেড।"),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor যোগ করেছেন: \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor অ্যাডমিন করেছেন: \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor গ্রুপটি তৈরি করেছেন"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor নতুনদের সদস্য হিসেবে যোগ দেওয়ার নিয়ম করেছেন"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor নতুনদের দর্শক হিসেবে যোগ দেওয়ার নিয়ম করেছেন"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor চলে গেছেন"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor সদস্য করেছেন: \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor মালিকানা দিয়েছেন: \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor সরিয়েছেন: \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor গ্রুপের নাম বদলে \$title রেখেছেন"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor দর্শক করেছেন: \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("একটি গ্রুপে সর্বোচ্চ \$count জন থাকতে পারেন।"),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("হাত তোলা হয়েছে। অ্যাডমিনদের জানানো হয়েছে।"),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count জন লিখতে চান"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("লিখতে চান"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("পরে যোগ হওয়া লোকেরা দর্শক হিসেবে যোগ দেন"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "এই গ্রুপের মেসেজ অন্য যেকোনো কথোপকথনের মতো এন্ড-টু-এন্ড এনক্রিপ্টেড।"),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor যোগ করেছেন: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor অ্যাডমিন করেছেন: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor গ্রুপটি তৈরি করেছেন"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor নতুনদের সদস্য হিসেবে যোগ দেওয়ার নিয়ম করেছেন"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor নতুনদের দর্শক হিসেবে যোগ দেওয়ার নিয়ম করেছেন"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor চলে গেছেন"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor সদস্য করেছেন: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor মালিকানা দিয়েছেন: \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor সরিয়েছেন: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor গ্রুপের নাম বদলে \$title রেখেছেন"),
+      "ui_group_event_spectator":
+          MessageLookupByLibrary.simpleMessage("\$actor দর্শক করেছেন: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "একটি গ্রুপে সর্বোচ্চ \$count জন থাকতে পারেন।"),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "হাত তোলা হয়েছে। অ্যাডমিনদের জানানো হয়েছে।"),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count জন লিখতে চান"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("লিখতে চান"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "পরে যোগ হওয়া লোকেরা দর্শক হিসেবে যোগ দেন"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("গ্রুপ ছাড়ুন"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("এটি আপনার তালিকা থেকে সরে যাবে এবং পরে কী বলা হয় তা আপনি দেখবেন না। কাউকে আবার আপনাকে যোগ করতে হবে।"),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("এই গ্রুপ ছাড়বেন?"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "এটি আপনার তালিকা থেকে সরে যাবে এবং পরে কী বলা হয় তা আপনি দেখবেন না। কাউকে আবার আপনাকে যোগ করতে হবে।"),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("এই গ্রুপ ছাড়বেন?"),
       "ui_group_let_write": MessageLookupByLibrary.simpleMessage("লিখতে দিন"),
       "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("হাত নামান"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("অ্যাডমিন করুন"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("অ্যাডমিন করুন"),
       "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("মালিক করুন"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("দর্শক করুন"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count জন সদস্য"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("দর্শক করুন"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count জন সদস্য"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("সদস্যরা"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("গ্রুপের নাম"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("গ্রুপ চ্যাট তৈরি করুন"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("মালিক একজনই। আপনি অ্যাডমিন থাকবেন।"),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("\$name-কে মালিক করবেন?"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("গ্রুপ চ্যাট তৈরি করুন"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "মালিক একজনই। আপনি অ্যাডমিন থাকবেন।"),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name-কে মালিক করবেন?"),
       "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("হাত তুলুন"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("গ্রুপ থেকে সরান"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("অ্যাডমিন থেকে সরান"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("আপনি আর এই গ্রুপে নেই।"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("গ্রুপ থেকে সরান"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("অ্যাডমিন থেকে সরান"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("আপনি আর এই গ্রুপে নেই।"),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("নাম বদলান"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("অ্যাডমিন"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("সদস্য"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("দর্শক"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("দর্শক হিসেবে আপনি এখানে পড়তে ও প্রতিক্রিয়া দিতে পারেন।"),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("দর্শকরা পড়তে, প্রতিক্রিয়া দিতে এবং লেখার অনুমতি চাইতে হাত তুলতে পারেন।"),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("প্রোফাইল দেখুন"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "দর্শক হিসেবে আপনি এখানে পড়তে ও প্রতিক্রিয়া দিতে পারেন।"),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "দর্শকরা পড়তে, প্রতিক্রিয়া দিতে এবং লেখার অনুমতি চাইতে হাত তুলতে পারেন।"),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("প্রোফাইল দেখুন"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("আপনি"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("আপনি দর্শক"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("আপনি দর্শক"),
       "ui_help": MessageLookupByLibrary.simpleMessage("সহায়তা"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "নোট করা হয়েছে। এটি আপনাকে যে দেখা হবে তা নির্ধারণে সাহায্য করে।",
@@ -1220,15 +1252,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "বাতিল",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("এটি আগেই খোলা হয়েছে।"),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("এটি আগেই খোলা হয়েছে।"),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("মেয়াদ শেষ"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("এটি খোলা যায়নি।"),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("একবার খোলে, তারপর Kyron থেকে মুছে যায়।"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("এটি খোলা যায়নি।"),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "একবার খোলে, তারপর Kyron থেকে মুছে যায়।"),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("একবার দেখুন"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("খোলা হয়েছে"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("\$total জনের মধ্যে \$count জন খুলেছেন"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("শুধু যাঁদের পাঠিয়েছেন তাঁরাই এটি একবার খুলতে পারবেন।"),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("একবার দেখার জন্য পাঠান"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$total জনের মধ্যে \$count জন খুলেছেন"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "শুধু যাঁদের পাঠিয়েছেন তাঁরাই এটি একবার খুলতে পারবেন।"),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("একবার দেখার জন্য পাঠান"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("দেখতে ট্যাপ করুন"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("বিরতি"),
       "ui_play": MessageLookupByLibrary.simpleMessage("চালান"),

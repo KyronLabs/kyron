@@ -1070,50 +1070,87 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Yongeza abantu"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Yongeza"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Yala"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Imiyalezo kweli qela ifihliwe ukusuka esiqalweni ukuya esiphelweni, njengayo nayiphi na incoko."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("U-\$actor wongeze u-\$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("U-\$actor wenze u-\$users umlawuli"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("U-\$actor wenze iqela"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("U-\$actor umisele ukuba abatsha bajoyine njengamalungu"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("U-\$actor umisele ukuba abatsha bajoyine njengababukeli"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("U-\$actor uphumile"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("U-\$actor wenze u-\$users ilungu"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("U-\$actor wenze u-\$users umnini"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("U-\$actor ukhuphe u-\$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("U-\$actor utshintshe igama leqela laba \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("U-\$actor wenze u-\$users umbukeli"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Iqela linokuba nabantu abangama-\$count kuphela."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Isandla siphakanyisiwe. Abalawuli baxelelwe."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("Abangama-\$count bacela ukubhala"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Bacela ukubhala"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Abongezwa kamva bajoyina njengababukeli"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Imiyalezo kweli qela ifihliwe ukusuka esiqalweni ukuya esiphelweni, njengayo nayiphi na incoko."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("U-\$actor wongeze u-\$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "U-\$actor wenze u-\$users umlawuli"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("U-\$actor wenze iqela"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "U-\$actor umisele ukuba abatsha bajoyine njengamalungu"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "U-\$actor umisele ukuba abatsha bajoyine njengababukeli"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("U-\$actor uphumile"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "U-\$actor wenze u-\$users ilungu"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "U-\$actor wenze u-\$users umnini"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("U-\$actor ukhuphe u-\$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "U-\$actor utshintshe igama leqela laba \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "U-\$actor wenze u-\$users umbukeli"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Iqela linokuba nabantu abangama-\$count kuphela."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Isandla siphakanyisiwe. Abalawuli baxelelwe."),
+      "ui_group_hands": MessageLookupByLibrary.simpleMessage(
+          "Abangama-\$count bacela ukubhala"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Bacela ukubhala"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Abongezwa kamva bajoyina njengababukeli"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("Phuma kwiqela"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Liza kuphuma kuluhlu lwakho kwaye akuzukubona oko kuthethwayo emva koko. Umntu kuya kufuneka akongeze kwakhona."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Uphuma kweli qela?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Bavumele babhale"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Thoba isandla"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Yenza umlawuli"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Yenza umnini"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Yenza umbukeli"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("Amalungu angama-\$count"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Liza kuphuma kuluhlu lwakho kwaye akuzukubona oko kuthethwayo emva koko. Umntu kuya kufuneka akongeze kwakhona."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Uphuma kweli qela?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Bavumele babhale"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Thoba isandla"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Yenza umlawuli"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Yenza umnini"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Yenza umbukeli"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("Amalungu angama-\$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Amalungu"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Igama leqela"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Yenza incoko yeqela"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Kukho umnini omnye. Uya kuhlala ungumlawuli."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Wenza u-\$name umnini?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Phakamisa isandla"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Yenza incoko yeqela"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Kukho umnini omnye. Uya kuhlala ungumlawuli."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Wenza u-\$name umnini?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Phakamisa isandla"),
       "ui_group_remove": MessageLookupByLibrary.simpleMessage("Khupha kwiqela"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Susa njengomlawuli"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Akusekho kweli qela."),
-      "ui_group_rename": MessageLookupByLibrary.simpleMessage("Thiya ngokutsha"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Susa njengomlawuli"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("Akusekho kweli qela."),
+      "ui_group_rename":
+          MessageLookupByLibrary.simpleMessage("Thiya ngokutsha"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Umlawuli"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Ilungu"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Umbukeli"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("Njengombukeli, unokufunda kwaye usabele apha."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Ababukeli banokufunda, basabele kwaye baphakamise isandla becela ukubhala."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Jonga iprofayile"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Umbukeli"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Njengombukeli, unokufunda kwaye usabele apha."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Ababukeli banokufunda, basabele kwaye baphakamise isandla becela ukubhala."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Jonga iprofayile"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("wena"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Ungumbukeli"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Ungumbukeli"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,15 +1183,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Oku sele kuvuliwe."),
-      "ui_once_expired": MessageLookupByLibrary.simpleMessage("Kuphelelwe lixesha"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("Oku akukwazanga ukuvulwa."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Kuvuleka kanye, emva koko kucinywe kwi-Kyron."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Oku sele kuvuliwe."),
+      "ui_once_expired":
+          MessageLookupByLibrary.simpleMessage("Kuphelelwe lixesha"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Oku akukwazanga ukuvulwa."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Kuvuleka kanye, emva koko kucinywe kwi-Kyron."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Jonga kanye"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Kuvuliwe"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Kuvulwe ngabangama-\$count kwabangama-\$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Ngabo kuphela obathumeleleyo abanokukuvula, kanye."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Thumela ukuze kujongwe kanye"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "Kuvulwe ngabangama-\$count kwabangama-\$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Ngabo kuphela obathumeleleyo abanokukuvula, kanye."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Thumela ukuze kujongwe kanye"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Cofa ukuze ujonge"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),

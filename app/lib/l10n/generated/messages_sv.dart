@@ -1067,53 +1067,90 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
-      "ui_group_add": MessageLookupByLibrary.simpleMessage("Lägg till personer"),
+      "ui_group_add":
+          MessageLookupByLibrary.simpleMessage("Lägg till personer"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Lägg till"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Avvisa"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Meddelanden i den här gruppen är end-to-end-krypterade, precis som andra konversationer."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor lade till \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor gjorde \$users till admin"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor skapade gruppen"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor lät nya personer gå med som medlemmar"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor lät nya personer gå med som åskådare"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor lämnade"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor gjorde \$users till medlem"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor gjorde \$users till ägare"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor tog bort \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor döpte om gruppen till \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor gjorde \$users till åskådare"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("En grupp kan ha högst \$count personer."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Handen uppräckt. Administratörerna har fått veta."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count vill skriva"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Vill skriva"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Personer som läggs till senare går med som åskådare"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Meddelanden i den här gruppen är end-to-end-krypterade, precis som andra konversationer."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor lade till \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor gjorde \$users till admin"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor skapade gruppen"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor lät nya personer gå med som medlemmar"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor lät nya personer gå med som åskådare"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor lämnade"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor gjorde \$users till medlem"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor gjorde \$users till ägare"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor tog bort \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor döpte om gruppen till \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor gjorde \$users till åskådare"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "En grupp kan ha högst \$count personer."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Handen uppräckt. Administratörerna har fått veta."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count vill skriva"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Vill skriva"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Personer som läggs till senare går med som åskådare"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("Lämna gruppen"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Den försvinner från din lista och du ser inte vad som sägs efteråt. Någon måste lägga till dig igen."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Lämna den här gruppen?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Låt dem skriva"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Ta ner handen"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Gör till admin"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Gör till ägare"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Gör till åskådare"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count medlemmar"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Den försvinner från din lista och du ser inte vad som sägs efteråt. Någon måste lägga till dig igen."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Lämna den här gruppen?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Låt dem skriva"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Ta ner handen"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Gör till admin"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Gör till ägare"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Gör till åskådare"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count medlemmar"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Medlemmar"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Gruppnamn"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("Skapa gruppchatt"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Det finns en ägare. Du blir kvar som admin."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Göra \$name till ägare?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Räck upp handen"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Ta bort ur gruppen"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Ta bort som admin"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Du är inte längre med i den här gruppen."),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Det finns en ägare. Du blir kvar som admin."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Göra \$name till ägare?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Räck upp handen"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Ta bort ur gruppen"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Ta bort som admin"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Du är inte längre med i den här gruppen."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Byt namn"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Medlem"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Åskådare"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("Som åskådare kan du läsa och reagera här."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Åskådare kan läsa, reagera och räcka upp handen för att be om att få skriva."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Visa profil"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Åskådare"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Som åskådare kan du läsa och reagera här."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Åskådare kan läsa, reagera och räcka upp handen för att be om att få skriva."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Visa profil"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("du"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Du är åskådare"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Du är åskådare"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,15 +1183,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Det här har redan öppnats."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Det här har redan öppnats."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Utgånget"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("Det gick inte att öppna."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Öppnas en gång och raderas sedan från Kyron."),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Det gick inte att öppna."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Öppnas en gång och raderas sedan från Kyron."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Visa en gång"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Öppnat"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Öppnat av \$count av \$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Bara de du skickade det till kan öppna det, en gång."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Skicka för att visas en gång"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("Öppnat av \$count av \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Bara de du skickade det till kan öppna det, en gång."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Skicka för att visas en gång"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Tryck för att visa"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),

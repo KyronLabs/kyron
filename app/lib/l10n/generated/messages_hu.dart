@@ -1067,53 +1067,90 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
-      "ui_group_add": MessageLookupByLibrary.simpleMessage("Személyek hozzáadása"),
+      "ui_group_add":
+          MessageLookupByLibrary.simpleMessage("Személyek hozzáadása"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Hozzáadás"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Elutasítás"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("A csoport üzenetei végpontok között titkosítottak, mint bármely más beszélgetés."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor hozzáadta: \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor adminná tette: \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor létrehozta a csoportot"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor beállította, hogy az újak tagként csatlakozzanak"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor beállította, hogy az újak nézőként csatlakozzanak"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor kilépett"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor taggá tette: \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor átadta a tulajdonjogot: \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor eltávolította: \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor átnevezte a csoportot: \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor nézővé tette: \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Egy csoportban legfeljebb \$count személy lehet."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Kéz feltéve. Az adminok értesültek."),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "A csoport üzenetei végpontok között titkosítottak, mint bármely más beszélgetés."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor hozzáadta: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor adminná tette: \$users"),
+      "ui_group_event_created": MessageLookupByLibrary.simpleMessage(
+          "\$actor létrehozta a csoportot"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor beállította, hogy az újak tagként csatlakozzanak"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor beállította, hogy az újak nézőként csatlakozzanak"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor kilépett"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor taggá tette: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor átadta a tulajdonjogot: \$users"),
+      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage(
+          "\$actor eltávolította: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor átnevezte a csoportot: \$title"),
+      "ui_group_event_spectator":
+          MessageLookupByLibrary.simpleMessage("\$actor nézővé tette: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Egy csoportban legfeljebb \$count személy lehet."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Kéz feltéve. Az adminok értesültek."),
       "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count írna"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Írni szeretnének"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("A később hozzáadottak nézőként csatlakoznak"),
-      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Kilépés a csoportból"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Eltűnik a listádról, és nem látod, mi hangzik el utána. Valakinek újra hozzá kellene adnia."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Kilépsz ebből a csoportból?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Írás engedélyezése"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Kéz leengedése"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Adminná tétel"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Tulajdonossá tétel"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Nézővé tétel"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count tag"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Írni szeretnének"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "A később hozzáadottak nézőként csatlakoznak"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("Kilépés a csoportból"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Eltűnik a listádról, és nem látod, mi hangzik el utána. Valakinek újra hozzá kellene adnia."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Kilépsz ebből a csoportból?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Írás engedélyezése"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Kéz leengedése"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Adminná tétel"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Tulajdonossá tétel"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Nézővé tétel"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count tag"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Tagok"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Csoport neve"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Csoportos csevegés létrehozása"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Egy tulajdonos van. Te admin maradsz."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Tulajdonossá teszed: \$name?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Kéz feltevése"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Eltávolítás a csoportból"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Admin jog elvétele"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Már nem vagy tagja ennek a csoportnak."),
+      "ui_group_new": MessageLookupByLibrary.simpleMessage(
+          "Csoportos csevegés létrehozása"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Egy tulajdonos van. Te admin maradsz."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Tulajdonossá teszed: \$name?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Kéz feltevése"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Eltávolítás a csoportból"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Admin jog elvétele"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Már nem vagy tagja ennek a csoportnak."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Átnevezés"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Tag"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Néző"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("Nézőként itt olvashatsz és reagálhatsz."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("A nézők olvashatnak, reagálhatnak, és feltehetik a kezüket, hogy írási jogot kérjenek."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Profil megtekintése"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Nézőként itt olvashatsz és reagálhatsz."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "A nézők olvashatnak, reagálhatnak, és feltehetik a kezüket, hogy írási jogot kérjenek."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Profil megtekintése"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("te"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Néző vagy"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Néző vagy"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,16 +1183,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Ezt már megnyitották."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Ezt már megnyitották."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Lejárt"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("Nem sikerült megnyitni."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Egyszer nyitható meg, utána törlődik a Kyronról."),
-      "ui_once_label": MessageLookupByLibrary.simpleMessage("Egyszeri megtekintés"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Nem sikerült megnyitni."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Egyszer nyitható meg, utána törlődik a Kyronról."),
+      "ui_once_label":
+          MessageLookupByLibrary.simpleMessage("Egyszeri megtekintés"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Megnyitva"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Megnyitotta: \$count / \$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Csak azok nyithatják meg, akiknek elküldted, egyszer."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Küldés egyszeri megtekintésre"),
-      "ui_once_tap": MessageLookupByLibrary.simpleMessage("Koppints a megtekintéshez"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "Megnyitotta: \$count / \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Csak azok nyithatják meg, akiknek elküldted, egyszer."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Küldés egyszeri megtekintésre"),
+      "ui_once_tap":
+          MessageLookupByLibrary.simpleMessage("Koppints a megtekintéshez"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

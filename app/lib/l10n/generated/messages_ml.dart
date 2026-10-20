@@ -1070,50 +1070,88 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("ആളുകളെ ചേർക്കുക"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("ചേർക്കുക"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("നിരസിക്കുക"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("ഈ ഗ്രൂപ്പിലെ സന്ദേശങ്ങൾ മറ്റേതൊരു സംഭാഷണത്തെയും പോലെ എൻഡ്-ടു-എൻഡ് എൻക്രിപ്റ്റ് ചെയ്തതാണ്."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor ചേർത്തു: \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor അഡ്മിനാക്കി: \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor ഗ്രൂപ്പ് സൃഷ്ടിച്ചു"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("പുതിയവർ അംഗങ്ങളായി ചേരുന്ന രീതിയിൽ \$actor ക്രമീകരിച്ചു"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("പുതിയവർ കാഴ്ചക്കാരായി ചേരുന്ന രീതിയിൽ \$actor ക്രമീകരിച്ചു"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor പോയി"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor അംഗമാക്കി: \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor ഉടമയാക്കി: \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor നീക്കം ചെയ്തു: \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor ഗ്രൂപ്പിന്റെ പേര് \$title എന്നാക്കി"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor കാഴ്ചക്കാരനാക്കി: \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("ഒരു ഗ്രൂപ്പിൽ പരമാവധി \$count പേർ ആകാം."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("കൈ ഉയർത്തി. അഡ്മിൻമാരെ അറിയിച്ചു."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count പേർ എഴുതാൻ ആഗ്രഹിക്കുന്നു"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("എഴുതാൻ ആഗ്രഹിക്കുന്നു"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("പിന്നീട് ചേർക്കുന്നവർ കാഴ്ചക്കാരായി ചേരും"),
-      "ui_group_leave": MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പിൽ നിന്ന് പുറത്തുപോകുക"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("ഇത് നിങ്ങളുടെ പട്ടികയിൽ നിന്ന് മാറും, പിന്നീട് പറയുന്നത് നിങ്ങൾ കാണില്ല. ആരെങ്കിലും നിങ്ങളെ വീണ്ടും ചേർക്കേണ്ടി വരും."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("ഈ ഗ്രൂപ്പിൽ നിന്ന് പുറത്തുപോകണോ?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("എഴുതാൻ അനുവദിക്കുക"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("കൈ താഴ്ത്തുക"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("അഡ്മിനാക്കുക"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "ഈ ഗ്രൂപ്പിലെ സന്ദേശങ്ങൾ മറ്റേതൊരു സംഭാഷണത്തെയും പോലെ എൻഡ്-ടു-എൻഡ് എൻക്രിപ്റ്റ് ചെയ്തതാണ്."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor ചേർത്തു: \$users"),
+      "ui_group_event_admin":
+          MessageLookupByLibrary.simpleMessage("\$actor അഡ്മിനാക്കി: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor ഗ്രൂപ്പ് സൃഷ്ടിച്ചു"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "പുതിയവർ അംഗങ്ങളായി ചേരുന്ന രീതിയിൽ \$actor ക്രമീകരിച്ചു"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "പുതിയവർ കാഴ്ചക്കാരായി ചേരുന്ന രീതിയിൽ \$actor ക്രമീകരിച്ചു"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor പോയി"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor അംഗമാക്കി: \$users"),
+      "ui_group_event_owner":
+          MessageLookupByLibrary.simpleMessage("\$actor ഉടമയാക്കി: \$users"),
+      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage(
+          "\$actor നീക്കം ചെയ്തു: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor ഗ്രൂപ്പിന്റെ പേര് \$title എന്നാക്കി"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor കാഴ്ചക്കാരനാക്കി: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "ഒരു ഗ്രൂപ്പിൽ പരമാവധി \$count പേർ ആകാം."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "കൈ ഉയർത്തി. അഡ്മിൻമാരെ അറിയിച്ചു."),
+      "ui_group_hands": MessageLookupByLibrary.simpleMessage(
+          "\$count പേർ എഴുതാൻ ആഗ്രഹിക്കുന്നു"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("എഴുതാൻ ആഗ്രഹിക്കുന്നു"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "പിന്നീട് ചേർക്കുന്നവർ കാഴ്ചക്കാരായി ചേരും"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പിൽ നിന്ന് പുറത്തുപോകുക"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "ഇത് നിങ്ങളുടെ പട്ടികയിൽ നിന്ന് മാറും, പിന്നീട് പറയുന്നത് നിങ്ങൾ കാണില്ല. ആരെങ്കിലും നിങ്ങളെ വീണ്ടും ചേർക്കേണ്ടി വരും."),
+      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage(
+          "ഈ ഗ്രൂപ്പിൽ നിന്ന് പുറത്തുപോകണോ?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("എഴുതാൻ അനുവദിക്കുക"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("കൈ താഴ്ത്തുക"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("അഡ്മിനാക്കുക"),
       "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("ഉടമയാക്കുക"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("കാഴ്ചക്കാരനാക്കുക"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count അംഗങ്ങൾ"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("കാഴ്ചക്കാരനാക്കുക"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count അംഗങ്ങൾ"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("അംഗങ്ങൾ"),
-      "ui_group_name": MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പിന്റെ പേര്"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പ് ചാറ്റ് സൃഷ്ടിക്കുക"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("ഉടമ ഒരാൾ മാത്രം. നിങ്ങൾ അഡ്മിനായി തുടരും."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("\$name ഉടമയാകണോ?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("കൈ ഉയർത്തുക"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പിൽ നിന്ന് നീക്കുക"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("അഡ്മിൻ സ്ഥാനത്ത് നിന്ന് നീക്കുക"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("നിങ്ങൾ ഇനി ഈ ഗ്രൂപ്പിൽ ഇല്ല."),
+      "ui_group_name":
+          MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പിന്റെ പേര്"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പ് ചാറ്റ് സൃഷ്ടിക്കുക"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "ഉടമ ഒരാൾ മാത്രം. നിങ്ങൾ അഡ്മിനായി തുടരും."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name ഉടമയാകണോ?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("കൈ ഉയർത്തുക"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പിൽ നിന്ന് നീക്കുക"),
+      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage(
+          "അഡ്മിൻ സ്ഥാനത്ത് നിന്ന് നീക്കുക"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങൾ ഇനി ഈ ഗ്രൂപ്പിൽ ഇല്ല."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("പേരുമാറ്റുക"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("അഡ്മിൻ"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("അംഗം"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("കാഴ്ചക്കാരൻ"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("കാഴ്ചക്കാരനായി നിങ്ങൾക്ക് ഇവിടെ വായിക്കാനും പ്രതികരിക്കാനും കഴിയും."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("കാഴ്ചക്കാർക്ക് വായിക്കാനും പ്രതികരിക്കാനും എഴുതാൻ അനുമതി ചോദിച്ച് കൈ ഉയർത്താനും കഴിയും."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("പ്രൊഫൈൽ കാണുക"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("കാഴ്ചക്കാരൻ"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "കാഴ്ചക്കാരനായി നിങ്ങൾക്ക് ഇവിടെ വായിക്കാനും പ്രതികരിക്കാനും കഴിയും."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "കാഴ്ചക്കാർക്ക് വായിക്കാനും പ്രതികരിക്കാനും എഴുതാൻ അനുമതി ചോദിച്ച് കൈ ഉയർത്താനും കഴിയും."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("പ്രൊഫൈൽ കാണുക"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("നിങ്ങൾ"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("നിങ്ങൾ കാഴ്ചക്കാരനാണ്"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങൾ കാഴ്ചക്കാരനാണ്"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,16 +1184,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("ഇത് ഇതിനകം തുറന്നു."),
-      "ui_once_expired": MessageLookupByLibrary.simpleMessage("കാലാവധി കഴിഞ്ഞു"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("ഇത് തുറക്കാനായില്ല."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("ഒരിക്കൽ തുറക്കും, പിന്നെ Kyron-ൽ നിന്ന് ഇല്ലാതാക്കും."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("ഇത് ഇതിനകം തുറന്നു."),
+      "ui_once_expired":
+          MessageLookupByLibrary.simpleMessage("കാലാവധി കഴിഞ്ഞു"),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("ഇത് തുറക്കാനായില്ല."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "ഒരിക്കൽ തുറക്കും, പിന്നെ Kyron-ൽ നിന്ന് ഇല്ലാതാക്കും."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("ഒരിക്കൽ കാണുക"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("തുറന്നു"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("\$total പേരിൽ \$count പേർ തുറന്നു"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("നിങ്ങൾ അയച്ചവർക്ക് മാത്രമേ ഇത് ഒരിക്കൽ തുറക്കാനാകൂ."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("ഒരിക്കൽ കാണാൻ അയയ്ക്കുക"),
-      "ui_once_tap": MessageLookupByLibrary.simpleMessage("കാണാൻ ടാപ്പ് ചെയ്യുക"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$total പേരിൽ \$count പേർ തുറന്നു"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ അയച്ചവർക്ക് മാത്രമേ ഇത് ഒരിക്കൽ തുറക്കാനാകൂ."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("ഒരിക്കൽ കാണാൻ അയയ്ക്കുക"),
+      "ui_once_tap":
+          MessageLookupByLibrary.simpleMessage("കാണാൻ ടാപ്പ് ചെയ്യുക"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

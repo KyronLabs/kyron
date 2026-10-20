@@ -982,48 +982,76 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("ሰዎችን አክል"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("አክል"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("አትቀበል"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("በዚህ ቡድን ያሉ መልዕክቶች እንደማንኛውም ውይይት ከጫፍ እስከ ጫፍ የተመሰጠሩ ናቸው።"),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor \$users ን አከለ"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor \$users ን አስተዳዳሪ አደረገ"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor ቡድኑን ፈጠረ"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor አዳዲስ ሰዎች እንደ አባል እንዲቀላቀሉ አደረገ"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor አዳዲስ ሰዎች እንደ ተመልካች እንዲቀላቀሉ አደረገ"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "በዚህ ቡድን ያሉ መልዕክቶች እንደማንኛውም ውይይት ከጫፍ እስከ ጫፍ የተመሰጠሩ ናቸው።"),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor \$users ን አከለ"),
+      "ui_group_event_admin":
+          MessageLookupByLibrary.simpleMessage("\$actor \$users ን አስተዳዳሪ አደረገ"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor ቡድኑን ፈጠረ"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor አዳዲስ ሰዎች እንደ አባል እንዲቀላቀሉ አደረገ"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor አዳዲስ ሰዎች እንደ ተመልካች እንዲቀላቀሉ አደረገ"),
       "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor ወጣ"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor \$users ን አባል አደረገ"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor \$users ን ባለቤት አደረገ"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor \$users ን አስወገደ"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor የቡድኑን ስም ወደ \$title ቀየረ"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor \$users ን ተመልካች አደረገ"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("አንድ ቡድን ቢበዛ \$count ሰዎች ሊኖሩት ይችላል።"),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("እጅ ተነስቷል። አስተዳዳሪዎች ተነግሯቸዋል።"),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count ለመጻፍ ይጠይቃሉ"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("ለመጻፍ ይጠይቃሉ"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("በኋላ የሚታከሉ ሰዎች እንደ ተመልካች ይቀላቀላሉ"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor \$users ን አባል አደረገ"),
+      "ui_group_event_owner":
+          MessageLookupByLibrary.simpleMessage("\$actor \$users ን ባለቤት አደረገ"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor \$users ን አስወገደ"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor የቡድኑን ስም ወደ \$title ቀየረ"),
+      "ui_group_event_spectator":
+          MessageLookupByLibrary.simpleMessage("\$actor \$users ን ተመልካች አደረገ"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "አንድ ቡድን ቢበዛ \$count ሰዎች ሊኖሩት ይችላል።"),
+      "ui_group_hand_raised":
+          MessageLookupByLibrary.simpleMessage("እጅ ተነስቷል። አስተዳዳሪዎች ተነግሯቸዋል።"),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count ለመጻፍ ይጠይቃሉ"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("ለመጻፍ ይጠይቃሉ"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "በኋላ የሚታከሉ ሰዎች እንደ ተመልካች ይቀላቀላሉ"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("ከቡድኑ ውጣ"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("ከዝርዝርህ ይጠፋል፣ ከዚያ በኋላ የሚባለውንም አታይም። አንድ ሰው እንደገና ሊያክልህ ይገባል።"),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("ከዚህ ቡድን ልትወጣ ነው?"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "ከዝርዝርህ ይጠፋል፣ ከዚያ በኋላ የሚባለውንም አታይም። አንድ ሰው እንደገና ሊያክልህ ይገባል።"),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("ከዚህ ቡድን ልትወጣ ነው?"),
       "ui_group_let_write": MessageLookupByLibrary.simpleMessage("እንዲጽፉ ፍቀድ"),
       "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("እጅ አውርድ"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("አስተዳዳሪ አድርግ"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("አስተዳዳሪ አድርግ"),
       "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("ባለቤት አድርግ"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("ተመልካች አድርግ"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count አባላት"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("ተመልካች አድርግ"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count አባላት"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("አባላት"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("የቡድን ስም"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("የቡድን ውይይት ፍጠር"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("ባለቤቱ አንድ ብቻ ነው። አንተ አስተዳዳሪ ሆነህ ትቆያለህ።"),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("\$name ባለቤት ይሁን?"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "ባለቤቱ አንድ ብቻ ነው። አንተ አስተዳዳሪ ሆነህ ትቆያለህ።"),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name ባለቤት ይሁን?"),
       "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("እጅ አንሳ"),
       "ui_group_remove": MessageLookupByLibrary.simpleMessage("ከቡድኑ አስወግድ"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("ከአስተዳዳሪነት አስወግድ"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("ከአሁን በኋላ በዚህ ቡድን ውስጥ የለህም።"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("ከአስተዳዳሪነት አስወግድ"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("ከአሁን በኋላ በዚህ ቡድን ውስጥ የለህም።"),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("ስም ቀይር"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("አስተዳዳሪ"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("አባል"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("ተመልካች"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("እንደ ተመልካች እዚህ ማንበብ እና ምላሽ መስጠት ትችላለህ።"),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("ተመልካቾች ማንበብ፣ ምላሽ መስጠት እና ለመጻፍ ለመጠየቅ እጅ ማንሳት ይችላሉ።"),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("መገለጫ ይመልከቱ"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "እንደ ተመልካች እዚህ ማንበብ እና ምላሽ መስጠት ትችላለህ።"),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "ተመልካቾች ማንበብ፣ ምላሽ መስጠት እና ለመጻፍ ለመጠየቅ እጅ ማንሳት ይችላሉ።"),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("መገለጫ ይመልከቱ"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("አንተ"),
       "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("ተመልካች ነህ"),
       "ui_help": MessageLookupByLibrary.simpleMessage("እገዛ"),
@@ -1062,11 +1090,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_already": MessageLookupByLibrary.simpleMessage("ይህ ቀድሞ ተከፍቷል።"),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("ጊዜው አልፏል"),
       "ui_once_failed": MessageLookupByLibrary.simpleMessage("ሊከፈት አልቻለም።"),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("አንድ ጊዜ ይከፈታል፣ ከዚያ ከ Kyron ይሰረዛል።"),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "አንድ ጊዜ ይከፈታል፣ ከዚያ ከ Kyron ይሰረዛል።"),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("አንድ ጊዜ እይ"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("ተከፍቷል"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("ከ\$total ውስጥ \$count ከፈቱት"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("የላክህላቸው ሰዎች ብቻ አንድ ጊዜ ሊከፍቱት ይችላሉ።"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("ከ\$total ውስጥ \$count ከፈቱት"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "የላክህላቸው ሰዎች ብቻ አንድ ጊዜ ሊከፍቱት ይችላሉ።"),
       "ui_once_send": MessageLookupByLibrary.simpleMessage("ለአንድ ጊዜ እይታ ላክ"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("ለማየት ንካ"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("አቁም"),

@@ -1068,53 +1068,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
-      "ui_group_add": MessageLookupByLibrary.simpleMessage("मानिसहरू थप्नुहोस्"),
+      "ui_group_add":
+          MessageLookupByLibrary.simpleMessage("मानिसहरू थप्नुहोस्"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("थप्नुहोस्"),
-      "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("अस्वीकार गर्नुहोस्"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("यो समूहका सन्देशहरू अरू कुनै पनि कुराकानीझैँ एन्ड-टु-एन्ड इन्क्रिप्टेड छन्।"),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor ले \$users लाई थप्नुभयो"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor ले \$users लाई एडमिन बनाउनुभयो"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor ले समूह बनाउनुभयो"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor ले नयाँ मानिसहरू सदस्यका रूपमा सामेल हुने बनाउनुभयो"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor ले नयाँ मानिसहरू दर्शकका रूपमा सामेल हुने बनाउनुभयो"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor जानुभयो"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor ले \$users लाई सदस्य बनाउनुभयो"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor ले \$users लाई मालिक बनाउनुभयो"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor ले \$users लाई हटाउनुभयो"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor ले समूहको नाम \$title बनाउनुभयो"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor ले \$users लाई दर्शक बनाउनुभयो"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("एउटा समूहमा बढीमा \$count जना हुन सक्छन्।"),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("हात उठाइयो। एडमिनहरूलाई जानकारी दिइयो।"),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count जना लेख्न चाहन्छन्"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("लेख्न चाहन्छन्"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("पछि थपिएका मानिसहरू दर्शकका रूपमा सामेल हुन्छन्"),
+      "ui_group_dismiss":
+          MessageLookupByLibrary.simpleMessage("अस्वीकार गर्नुहोस्"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "यो समूहका सन्देशहरू अरू कुनै पनि कुराकानीझैँ एन्ड-टु-एन्ड इन्क्रिप्टेड छन्।"),
+      "ui_group_event_added": MessageLookupByLibrary.simpleMessage(
+          "\$actor ले \$users लाई थप्नुभयो"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor ले \$users लाई एडमिन बनाउनुभयो"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor ले समूह बनाउनुभयो"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor ले नयाँ मानिसहरू सदस्यका रूपमा सामेल हुने बनाउनुभयो"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ले नयाँ मानिसहरू दर्शकका रूपमा सामेल हुने बनाउनुभयो"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor जानुभयो"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor ले \$users लाई सदस्य बनाउनुभयो"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor ले \$users लाई मालिक बनाउनुभयो"),
+      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage(
+          "\$actor ले \$users लाई हटाउनुभयो"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor ले समूहको नाम \$title बनाउनुभयो"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ले \$users लाई दर्शक बनाउनुभयो"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "एउटा समूहमा बढीमा \$count जना हुन सक्छन्।"),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "हात उठाइयो। एडमिनहरूलाई जानकारी दिइयो।"),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count जना लेख्न चाहन्छन्"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("लेख्न चाहन्छन्"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "पछि थपिएका मानिसहरू दर्शकका रूपमा सामेल हुन्छन्"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("समूह छोड्नुहोस्"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("यो तपाईंको सूचीबाट हट्छ र पछि भनिएको कुरा तपाईं देख्नुहुन्न। कसैले तपाईंलाई फेरि थप्नुपर्छ।"),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("यो समूह छोड्ने?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("लेख्न दिनुहोस्"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("हात तल गर्नुहोस्"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("एडमिन बनाउनुहोस्"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("मालिक बनाउनुहोस्"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("दर्शक बनाउनुहोस्"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count सदस्य"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "यो तपाईंको सूचीबाट हट्छ र पछि भनिएको कुरा तपाईं देख्नुहुन्न। कसैले तपाईंलाई फेरि थप्नुपर्छ।"),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("यो समूह छोड्ने?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("लेख्न दिनुहोस्"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("हात तल गर्नुहोस्"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("एडमिन बनाउनुहोस्"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("मालिक बनाउनुहोस्"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("दर्शक बनाउनुहोस्"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count सदस्य"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("सदस्यहरू"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("समूहको नाम"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("समूह च्याट बनाउनुहोस्"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("मालिक एक जना मात्र हुन्छ। तपाईं एडमिन रहनुहुनेछ।"),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("\$name लाई मालिक बनाउने?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("हात उठाउनुहोस्"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("समूहबाट हटाउनुहोस्"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("एडमिनबाट हटाउनुहोस्"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("तपाईं अब यो समूहमा हुनुहुन्न।"),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("समूह च्याट बनाउनुहोस्"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "मालिक एक जना मात्र हुन्छ। तपाईं एडमिन रहनुहुनेछ।"),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("\$name लाई मालिक बनाउने?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("हात उठाउनुहोस्"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("समूहबाट हटाउनुहोस्"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("एडमिनबाट हटाउनुहोस्"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("तपाईं अब यो समूहमा हुनुहुन्न।"),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("नाम बदल्नुहोस्"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("एडमिन"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("सदस्य"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("दर्शक"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("दर्शकका रूपमा तपाईं यहाँ पढ्न र प्रतिक्रिया दिन सक्नुहुन्छ।"),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("दर्शकहरू पढ्न, प्रतिक्रिया दिन र लेख्न अनुमति माग्न हात उठाउन सक्छन्।"),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("प्रोफाइल हेर्नुहोस्"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "दर्शकका रूपमा तपाईं यहाँ पढ्न र प्रतिक्रिया दिन सक्नुहुन्छ।"),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "दर्शकहरू पढ्न, प्रतिक्रिया दिन र लेख्न अनुमति माग्न हात उठाउन सक्छन्।"),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("प्रोफाइल हेर्नुहोस्"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("तपाईं"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("तपाईं दर्शक हुनुहुन्छ"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("तपाईं दर्शक हुनुहुन्छ"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1147,16 +1185,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("यो पहिल्यै खोलिसकिएको छ।"),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("यो पहिल्यै खोलिसकिएको छ।"),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("म्याद सकियो"),
       "ui_once_failed": MessageLookupByLibrary.simpleMessage("यो खोल्न सकिएन।"),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("एक पटक खुल्छ, त्यसपछि Kyron बाट मेटिन्छ।"),
-      "ui_once_label": MessageLookupByLibrary.simpleMessage("एक पटक हेर्नुहोस्"),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "एक पटक खुल्छ, त्यसपछि Kyron बाट मेटिन्छ।"),
+      "ui_once_label":
+          MessageLookupByLibrary.simpleMessage("एक पटक हेर्नुहोस्"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("खोलियो"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("\$total मध्ये \$count जनाले खोले"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("तपाईंले पठाएका मानिसहरूले मात्र यसलाई एक पटक खोल्न सक्छन्।"),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("एक पटक हेर्न पठाउनुहोस्"),
-      "ui_once_tap": MessageLookupByLibrary.simpleMessage("हेर्न ट्याप गर्नुहोस्"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "\$total मध्ये \$count जनाले खोले"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "तपाईंले पठाएका मानिसहरूले मात्र यसलाई एक पटक खोल्न सक्छन्।"),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("एक पटक हेर्न पठाउनुहोस्"),
+      "ui_once_tap":
+          MessageLookupByLibrary.simpleMessage("हेर्न ट्याप गर्नुहोस्"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(

@@ -1206,50 +1206,87 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Προσθήκη ατόμων"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Προσθήκη"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Απόρριψη"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Τα μηνύματα σε αυτή την ομάδα είναι κρυπτογραφημένα από άκρο σε άκρο, όπως κάθε άλλη συνομιλία."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor πρόσθεσε: \$users"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor έκανε διαχειριστή: \$users"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor δημιούργησε την ομάδα"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor όρισε τα νέα άτομα να μπαίνουν ως μέλη"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor όρισε τα νέα άτομα να μπαίνουν ως θεατές"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor αποχώρησε"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor έκανε μέλος: \$users"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor παρέδωσε την ιδιοκτησία σε: \$users"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor αφαίρεσε: \$users"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor μετονόμασε την ομάδα σε \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor έκανε θεατή: \$users"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Μια ομάδα μπορεί να έχει έως \$count άτομα."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("Το χέρι σηκώθηκε. Οι διαχειριστές ενημερώθηκαν."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count ζητούν να γράψουν"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Ζητούν να γράψουν"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Όσοι προστίθενται αργότερα μπαίνουν ως θεατές"),
-      "ui_group_leave": MessageLookupByLibrary.simpleMessage("Αποχώρηση από την ομάδα"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Φεύγει από τη λίστα σου και δεν θα βλέπεις τι λέγεται μετά. Κάποιος θα έπρεπε να σε προσθέσει ξανά."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Αποχώρηση από αυτή την ομάδα;"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Τα μηνύματα σε αυτή την ομάδα είναι κρυπτογραφημένα από άκρο σε άκρο, όπως κάθε άλλη συνομιλία."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor πρόσθεσε: \$users"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor έκανε διαχειριστή: \$users"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor δημιούργησε την ομάδα"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor όρισε τα νέα άτομα να μπαίνουν ως μέλη"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor όρισε τα νέα άτομα να μπαίνουν ως θεατές"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor αποχώρησε"),
+      "ui_group_event_member":
+          MessageLookupByLibrary.simpleMessage("\$actor έκανε μέλος: \$users"),
+      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage(
+          "\$actor παρέδωσε την ιδιοκτησία σε: \$users"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor αφαίρεσε: \$users"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor μετονόμασε την ομάδα σε \$title"),
+      "ui_group_event_spectator":
+          MessageLookupByLibrary.simpleMessage("\$actor έκανε θεατή: \$users"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Μια ομάδα μπορεί να έχει έως \$count άτομα."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "Το χέρι σηκώθηκε. Οι διαχειριστές ενημερώθηκαν."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count ζητούν να γράψουν"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Ζητούν να γράψουν"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Όσοι προστίθενται αργότερα μπαίνουν ως θεατές"),
+      "ui_group_leave":
+          MessageLookupByLibrary.simpleMessage("Αποχώρηση από την ομάδα"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Φεύγει από τη λίστα σου και δεν θα βλέπεις τι λέγεται μετά. Κάποιος θα έπρεπε να σε προσθέσει ξανά."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Αποχώρηση από αυτή την ομάδα;"),
       "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Να γράφει"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Κατέβασμα χεριού"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Ορισμός διαχειριστή"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Ορισμός ιδιοκτήτη"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Ορισμός θεατή"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("\$count μέλη"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Κατέβασμα χεριού"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Ορισμός διαχειριστή"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Ορισμός ιδιοκτήτη"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Ορισμός θεατή"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("\$count μέλη"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Μέλη"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Όνομα ομάδας"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Δημιουργία ομαδικής συνομιλίας"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Υπάρχει ένας ιδιοκτήτης. Θα παραμείνεις διαχειριστής."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Να γίνει \$name ιδιοκτήτης;"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Σήκωσε το χέρι"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Αφαίρεση από την ομάδα"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Αφαίρεση ως διαχειριστή"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("Δεν είσαι πια σε αυτή την ομάδα."),
+      "ui_group_new": MessageLookupByLibrary.simpleMessage(
+          "Δημιουργία ομαδικής συνομιλίας"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Υπάρχει ένας ιδιοκτήτης. Θα παραμείνεις διαχειριστής."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Να γίνει \$name ιδιοκτήτης;"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Σήκωσε το χέρι"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Αφαίρεση από την ομάδα"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Αφαίρεση ως διαχειριστή"),
+      "ui_group_removed": MessageLookupByLibrary.simpleMessage(
+          "Δεν είσαι πια σε αυτή την ομάδα."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Μετονομασία"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Διαχειριστής"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Διαχειριστής"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Μέλος"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Θεατής"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("Ως θεατής, εδώ μπορείς να διαβάζεις και να αντιδράς."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Οι θεατές μπορούν να διαβάζουν, να αντιδρούν και να σηκώνουν το χέρι για να ζητήσουν να γράψουν."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Προβολή προφίλ"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Ως θεατής, εδώ μπορείς να διαβάζεις και να αντιδράς."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Οι θεατές μπορούν να διαβάζουν, να αντιδρούν και να σηκώνουν το χέρι για να ζητήσουν να γράψουν."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Προβολή προφίλ"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("εσύ"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Είσαι θεατής"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Είσαι θεατής"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Βοήθεια"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Σημειώθηκε. Αυτό βοηθάει στο να καθοριστεί τι σας εμφανίζεται.",
@@ -1288,15 +1325,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Παράλειψη",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("Έχει ήδη ανοιχτεί."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("Έχει ήδη ανοιχτεί."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Έληξε"),
-      "ui_once_failed": MessageLookupByLibrary.simpleMessage("Δεν ήταν δυνατό να ανοίξει."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Ανοίγει μία φορά και μετά διαγράφεται από το Kyron."),
+      "ui_once_failed":
+          MessageLookupByLibrary.simpleMessage("Δεν ήταν δυνατό να ανοίξει."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Ανοίγει μία φορά και μετά διαγράφεται από το Kyron."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Προβολή μία φορά"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("Ανοίχτηκε"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("Το άνοιξαν \$count από \$total"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Μόνο όσοι το έλαβαν από σένα μπορούν να το ανοίξουν, μία φορά."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Αποστολή για προβολή μία φορά"),
+      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage(
+          "Το άνοιξαν \$count από \$total"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Μόνο όσοι το έλαβαν από σένα μπορούν να το ανοίξουν, μία φορά."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Αποστολή για προβολή μία φορά"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Πάτησε για προβολή"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Παύση"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Αναπαραγωγή"),

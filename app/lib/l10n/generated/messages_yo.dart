@@ -1067,53 +1067,92 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_from_account":
           MessageLookupByLibrary.simpleMessage("From an account"),
-      "ui_group_add": MessageLookupByLibrary.simpleMessage("Fi àwọn ènìyàn kún un"),
+      "ui_group_add":
+          MessageLookupByLibrary.simpleMessage("Fi àwọn ènìyàn kún un"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Fi kún un"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Kọ̀ ọ́"),
-      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage("Àwọn ìfiránṣẹ́ inú ẹgbẹ́ yìí ni a fi kóòdù pa mọ́ láti ìbẹ̀rẹ̀ dé òpin, bí ìjíròrò mìíràn."),
-      "ui_group_event_added": MessageLookupByLibrary.simpleMessage("\$actor fi \$users kún un"),
-      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage("\$actor sọ \$users di alákòóso"),
-      "ui_group_event_created": MessageLookupByLibrary.simpleMessage("\$actor ṣẹ̀dá ẹgbẹ́ náà"),
-      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage("\$actor ṣètò pé kí àwọn tuntun darapọ̀ bí ọmọ ẹgbẹ́"),
-      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage("\$actor ṣètò pé kí àwọn tuntun darapọ̀ bí olùwòran"),
-      "ui_group_event_left": MessageLookupByLibrary.simpleMessage("\$actor kúrò"),
-      "ui_group_event_member": MessageLookupByLibrary.simpleMessage("\$actor sọ \$users di ọmọ ẹgbẹ́"),
-      "ui_group_event_owner": MessageLookupByLibrary.simpleMessage("\$actor sọ \$users di oníǹkan"),
-      "ui_group_event_removed": MessageLookupByLibrary.simpleMessage("\$actor yọ \$users kúrò"),
-      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage("\$actor yí orúkọ ẹgbẹ́ padà sí \$title"),
-      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage("\$actor sọ \$users di olùwòran"),
-      "ui_group_full": MessageLookupByLibrary.simpleMessage("Ẹgbẹ́ kan lè ní ènìyàn \$count jù lọ."),
-      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage("A ti gbé ọwọ́ sókè. A ti sọ fún àwọn alákòóso."),
-      "ui_group_hands": MessageLookupByLibrary.simpleMessage("\$count ń béèrè láti kọ̀wé"),
-      "ui_group_hands_heading": MessageLookupByLibrary.simpleMessage("Ń béèrè láti kọ̀wé"),
-      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage("Àwọn tí a bá fi kún un lẹ́yìn yóò darapọ̀ bí olùwòran"),
+      "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìfiránṣẹ́ inú ẹgbẹ́ yìí ni a fi kóòdù pa mọ́ láti ìbẹ̀rẹ̀ dé òpin, bí ìjíròrò mìíràn."),
+      "ui_group_event_added":
+          MessageLookupByLibrary.simpleMessage("\$actor fi \$users kún un"),
+      "ui_group_event_admin": MessageLookupByLibrary.simpleMessage(
+          "\$actor sọ \$users di alákòóso"),
+      "ui_group_event_created":
+          MessageLookupByLibrary.simpleMessage("\$actor ṣẹ̀dá ẹgbẹ́ náà"),
+      "ui_group_event_join_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor ṣètò pé kí àwọn tuntun darapọ̀ bí ọmọ ẹgbẹ́"),
+      "ui_group_event_join_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor ṣètò pé kí àwọn tuntun darapọ̀ bí olùwòran"),
+      "ui_group_event_left":
+          MessageLookupByLibrary.simpleMessage("\$actor kúrò"),
+      "ui_group_event_member": MessageLookupByLibrary.simpleMessage(
+          "\$actor sọ \$users di ọmọ ẹgbẹ́"),
+      "ui_group_event_owner":
+          MessageLookupByLibrary.simpleMessage("\$actor sọ \$users di oníǹkan"),
+      "ui_group_event_removed":
+          MessageLookupByLibrary.simpleMessage("\$actor yọ \$users kúrò"),
+      "ui_group_event_renamed": MessageLookupByLibrary.simpleMessage(
+          "\$actor yí orúkọ ẹgbẹ́ padà sí \$title"),
+      "ui_group_event_spectator": MessageLookupByLibrary.simpleMessage(
+          "\$actor sọ \$users di olùwòran"),
+      "ui_group_full": MessageLookupByLibrary.simpleMessage(
+          "Ẹgbẹ́ kan lè ní ènìyàn \$count jù lọ."),
+      "ui_group_hand_raised": MessageLookupByLibrary.simpleMessage(
+          "A ti gbé ọwọ́ sókè. A ti sọ fún àwọn alákòóso."),
+      "ui_group_hands":
+          MessageLookupByLibrary.simpleMessage("\$count ń béèrè láti kọ̀wé"),
+      "ui_group_hands_heading":
+          MessageLookupByLibrary.simpleMessage("Ń béèrè láti kọ̀wé"),
+      "ui_group_join_spectators": MessageLookupByLibrary.simpleMessage(
+          "Àwọn tí a bá fi kún un lẹ́yìn yóò darapọ̀ bí olùwòran"),
       "ui_group_leave": MessageLookupByLibrary.simpleMessage("Kúrò nínú ẹgbẹ́"),
-      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage("Yóò kúrò nínú àkójọ rẹ, o kò sì ní rí ohun tí a bá sọ lẹ́yìn náà. Ẹnìkan yóò ní láti tún fi ọ́ kún un."),
-      "ui_group_leave_title": MessageLookupByLibrary.simpleMessage("Ṣé o fẹ́ kúrò nínú ẹgbẹ́ yìí?"),
-      "ui_group_let_write": MessageLookupByLibrary.simpleMessage("Jẹ́ kí wọ́n kọ̀wé"),
-      "ui_group_lower_hand": MessageLookupByLibrary.simpleMessage("Sọ ọwọ́ kalẹ̀"),
-      "ui_group_make_admin": MessageLookupByLibrary.simpleMessage("Sọ di alákòóso"),
-      "ui_group_make_owner": MessageLookupByLibrary.simpleMessage("Sọ di oníǹkan"),
-      "ui_group_make_spectator": MessageLookupByLibrary.simpleMessage("Sọ di olùwòran"),
-      "ui_group_member_count": MessageLookupByLibrary.simpleMessage("Ọmọ ẹgbẹ́ \$count"),
-      "ui_group_members": MessageLookupByLibrary.simpleMessage("Àwọn ọmọ ẹgbẹ́"),
+      "ui_group_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Yóò kúrò nínú àkójọ rẹ, o kò sì ní rí ohun tí a bá sọ lẹ́yìn náà. Ẹnìkan yóò ní láti tún fi ọ́ kún un."),
+      "ui_group_leave_title":
+          MessageLookupByLibrary.simpleMessage("Ṣé o fẹ́ kúrò nínú ẹgbẹ́ yìí?"),
+      "ui_group_let_write":
+          MessageLookupByLibrary.simpleMessage("Jẹ́ kí wọ́n kọ̀wé"),
+      "ui_group_lower_hand":
+          MessageLookupByLibrary.simpleMessage("Sọ ọwọ́ kalẹ̀"),
+      "ui_group_make_admin":
+          MessageLookupByLibrary.simpleMessage("Sọ di alákòóso"),
+      "ui_group_make_owner":
+          MessageLookupByLibrary.simpleMessage("Sọ di oníǹkan"),
+      "ui_group_make_spectator":
+          MessageLookupByLibrary.simpleMessage("Sọ di olùwòran"),
+      "ui_group_member_count":
+          MessageLookupByLibrary.simpleMessage("Ọmọ ẹgbẹ́ \$count"),
+      "ui_group_members":
+          MessageLookupByLibrary.simpleMessage("Àwọn ọmọ ẹgbẹ́"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Orúkọ ẹgbẹ́"),
-      "ui_group_new": MessageLookupByLibrary.simpleMessage("Ṣẹ̀dá ìjíròrò ẹgbẹ́"),
-      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage("Oníǹkan kan ṣoṣo ló wà. Ìwọ yóò wà bí alákòóso."),
-      "ui_group_owner_title": MessageLookupByLibrary.simpleMessage("Sọ \$name di oníǹkan?"),
-      "ui_group_raise_hand": MessageLookupByLibrary.simpleMessage("Gbé ọwọ́ sókè"),
-      "ui_group_remove": MessageLookupByLibrary.simpleMessage("Yọ kúrò nínú ẹgbẹ́"),
-      "ui_group_remove_admin": MessageLookupByLibrary.simpleMessage("Yọ kúrò ní alákòóso"),
-      "ui_group_removed": MessageLookupByLibrary.simpleMessage("O kò sí nínú ẹgbẹ́ yìí mọ́."),
+      "ui_group_new":
+          MessageLookupByLibrary.simpleMessage("Ṣẹ̀dá ìjíròrò ẹgbẹ́"),
+      "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
+          "Oníǹkan kan ṣoṣo ló wà. Ìwọ yóò wà bí alákòóso."),
+      "ui_group_owner_title":
+          MessageLookupByLibrary.simpleMessage("Sọ \$name di oníǹkan?"),
+      "ui_group_raise_hand":
+          MessageLookupByLibrary.simpleMessage("Gbé ọwọ́ sókè"),
+      "ui_group_remove":
+          MessageLookupByLibrary.simpleMessage("Yọ kúrò nínú ẹgbẹ́"),
+      "ui_group_remove_admin":
+          MessageLookupByLibrary.simpleMessage("Yọ kúrò ní alákòóso"),
+      "ui_group_removed":
+          MessageLookupByLibrary.simpleMessage("O kò sí nínú ẹgbẹ́ yìí mọ́."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Yí orúkọ padà"),
       "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Alákòóso"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Ọmọ ẹgbẹ́"),
-      "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Olùwòran"),
-      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage("Gẹ́gẹ́ bí olùwòran, o lè kà kí o sì fèsì níbí."),
-      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage("Àwọn olùwòran lè kà, fèsì, kí wọ́n sì gbé ọwọ́ sókè láti béèrè láti kọ̀wé."),
-      "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("Wo profaili"),
+      "ui_group_role_spectator":
+          MessageLookupByLibrary.simpleMessage("Olùwòran"),
+      "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
+          "Gẹ́gẹ́ bí olùwòran, o lè kà kí o sì fèsì níbí."),
+      "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
+          "Àwọn olùwòran lè kà, fèsì, kí wọ́n sì gbé ọwọ́ sókè láti béèrè láti kọ̀wé."),
+      "ui_group_view_profile":
+          MessageLookupByLibrary.simpleMessage("Wo profaili"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("ìwọ"),
-      "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("Olùwòran ni ọ́"),
+      "ui_group_you_spectate":
+          MessageLookupByLibrary.simpleMessage("Olùwòran ni ọ́"),
       "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
         "Noted. This helps shape what you are shown.",
@@ -1146,15 +1185,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage(
         "Skip",
       ),
-      "ui_once_already": MessageLookupByLibrary.simpleMessage("A ti ṣí èyí tẹ́lẹ̀."),
+      "ui_once_already":
+          MessageLookupByLibrary.simpleMessage("A ti ṣí èyí tẹ́lẹ̀."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Ó ti parí"),
       "ui_once_failed": MessageLookupByLibrary.simpleMessage("A kò lè ṣí èyí."),
-      "ui_once_hint": MessageLookupByLibrary.simpleMessage("Ó ń ṣí lẹ́ẹ̀kan, lẹ́yìn náà a ó pa á rẹ́ lórí Kyron."),
+      "ui_once_hint": MessageLookupByLibrary.simpleMessage(
+          "Ó ń ṣí lẹ́ẹ̀kan, lẹ́yìn náà a ó pa á rẹ́ lórí Kyron."),
       "ui_once_label": MessageLookupByLibrary.simpleMessage("Wò ó lẹ́ẹ̀kan"),
       "ui_once_opened": MessageLookupByLibrary.simpleMessage("A ti ṣí i"),
-      "ui_once_opened_by": MessageLookupByLibrary.simpleMessage("\$count nínú \$total ti ṣí i"),
-      "ui_once_own": MessageLookupByLibrary.simpleMessage("Àwọn tí o fi ránṣẹ́ sí nìkan ló lè ṣí i, lẹ́ẹ̀kan."),
-      "ui_once_send": MessageLookupByLibrary.simpleMessage("Fi ránṣẹ́ fún wíwò lẹ́ẹ̀kan"),
+      "ui_once_opened_by":
+          MessageLookupByLibrary.simpleMessage("\$count nínú \$total ti ṣí i"),
+      "ui_once_own": MessageLookupByLibrary.simpleMessage(
+          "Àwọn tí o fi ránṣẹ́ sí nìkan ló lè ṣí i, lẹ́ẹ̀kan."),
+      "ui_once_send":
+          MessageLookupByLibrary.simpleMessage("Fi ránṣẹ́ fún wíwò lẹ́ẹ̀kan"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Tẹ̀ láti wò ó"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
       "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
