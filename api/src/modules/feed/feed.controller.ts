@@ -20,6 +20,7 @@ import { ListFeedDto } from './dto/list-feed.dto';
 import { SearchPostsDto } from './dto/search-posts.dto';
 import { VotePollDto } from './dto/vote-poll.dto';
 import { RecordViewDto } from './dto/record-view.dto';
+import { RecordImpressionsDto } from './dto/record-impressions.dto';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 
@@ -224,6 +225,20 @@ export class FeedController {
     @Body() dto: RecordViewDto,
   ) {
     await this.svc.recordView(id, req.user.id, dto.dwellMs);
+    return { ok: true };
+  }
+
+  /**
+   * Posts that have been on the reader's screen in a feed. What For You uses
+   * to move on from what somebody has already scrolled past; read by nothing
+   * else, and never counted as a view.
+   */
+  @Post('impressions')
+  async impressions(
+    @Req() req: AuthRequest,
+    @Body() dto: RecordImpressionsDto,
+  ) {
+    await this.svc.recordImpressions(req.user.id, dto.postIds);
     return { ok: true };
   }
 

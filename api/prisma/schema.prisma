@@ -123,6 +123,7 @@ model User {
   saves                 PostSave[]
   comments              Comment[]
   views                 PostView[]
+  impressions           PostImpression[]
   reposts               Repost[]
   hiddenPosts           HiddenPost[]
   mutes                 Mute[]                @relation("MuteOwner")
@@ -214,15 +215,16 @@ model Post {
   commentCount Int @default(0)
   repostCount  Int @default(0)
 
-  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  likes    PostLike[]
-  saves    PostSave[]
-  comments Comment[]
-  views    PostView[]
-  media    Media[]
-  reposts  Repost[]
-  hashtags PostHashtag[]
-  topics   PostTopic[]
+  author      User             @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  likes       PostLike[]
+  saves       PostSave[]
+  comments    Comment[]
+  views       PostView[]
+  impressions PostImpression[]
+  media       Media[]
+  reposts     Repost[]
+  hashtags    PostHashtag[]
+  topics      PostTopic[]
 
   // Set when the post was written into a community rather than the feed.
   // Nullable, because most posts are not.
@@ -511,6 +513,31 @@ model PostView {
   @@unique([postId, viewerId])
   @@index([postId, createdAt])
   @@index([viewerId, lastViewedAt])
+}
+
+// What a feed has put in front of a reader, opened or not. PostView is what
+// they opened, and is what an author's view count reads; this is read by
+// nothing but ranking. Without it a post somebody scrolled past every day
+// looked unseen to the feed, and headed it every session.
+model PostImpression {
+  viewerId String @db.Uuid
+  postId   String @db.Uuid
+
+  /// How many sittings it has been on screen in. A report within ten minutes
+  /// of the last is the same sitting and does not count again.
+  count Int @default(1)
+
+  /// When it was last on screen, and the time before that. Ranking reads them
+  /// as they stood when the reader's session began, so page one's posts
+  /// moving down does not reshuffle page two.
+  lastAt DateTime  @default(now()) @db.Timestamptz()
+  prevAt DateTime? @db.Timestamptz()
+
+  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  viewer User @relation(fields: [viewerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([viewerId, postId])
+  @@index([postId])
 }
 
 // ==========================================

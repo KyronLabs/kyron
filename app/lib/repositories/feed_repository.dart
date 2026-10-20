@@ -374,6 +374,11 @@ class FeedRepository {
         data: dwellMs == null ? null : {'dwellMs': dwellMs},
       );
 
+  /// Tells For You these posts have been on screen, so the next session moves
+  /// on from them. Read by ranking only; never counted as a view.
+  Future<void> recordImpressions(List<String> postIds) =>
+      _api.dio.post<void>('/feed/impressions', data: {'postIds': postIds});
+
   /// How the post is doing. Answers 404 to anyone but its author.
   Future<PostAnalytics> analytics(String postId) async {
     final res = await _api.dio.get<Map<String, dynamic>>(

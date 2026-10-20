@@ -10,6 +10,14 @@ export interface RankingCandidate {
   reposts: number;
   /** How many times the reader has already opened it. */
   seenCount: number;
+  /**
+   * How many sittings the post has been on the reader's screen in a feed,
+   * opened or not, and when it last was. Without this the ranking only knew
+   * about posts somebody tapped into, so a post they scrolled past every day
+   * looked unseen and headed the feed every session.
+   */
+  shownCount?: number;
+  lastShownAt?: Date | null;
   /** Whether the reader follows the author. */
   followed: boolean;
   /** Topics this post is filed under. */
@@ -55,13 +63,28 @@ export interface RankedPage<T> {
  */
 @Injectable()
 export class RankingService {
-  /** Freshness halves this often. A day is roughly how long a post stays
-   * interesting on a network this size; shorter and the feed forgets
-   * yesterday, longer and it never moves. */
+  /**
+   * The shortest freshness half-life, for a busy network. A day is roughly
+   * how long a post stays interesting once there is plenty to read.
+   */
   static readonly halfLifeHours = 24;
 
-  /** Nothing older than this is a candidate, however popular. */
-  static readonly windowHours = 24 * 14;
+  /**
+   * And the longest, for a quiet one. A fixed day was right for a network
+   * writing hundreds of posts a day and wrong for one writing two: a
+   * week-old post scored a hundredth of a new one, so on a small network
+   * anything not from the last few days could never be seen again, however
+   * little else there was.
+   */
+  static readonly maxHalfLifeHours = 24 * 7;
+
+  /**
+   * Freshness halves over the time the network takes to write this many
+   * posts -- a page of them -- held between the two bounds above. "Old" is
+   * measured in posts written since, not in hours: a post is stale when there
+   * is a page of newer things to read, however long that took.
+   */
+  static readonly freshnessPosts = 20;
 
   /** Engagement weights. A comment is worth more than a like because it costs
    * more to leave, and a repost more still because it is an endorsement the
@@ -90,6 +113,18 @@ export class RankingService {
   /** And the floor under that, so the answer is "much less of this" rather
    * than a silent block the reader never chose. */
   static readonly dampedFloor = 0.05;
+
+  /** What is left of a score per sitting the post has been on screen. Gentler
+   * than opening it: scrolling past is a weaker sign of being done with
+   * something than reading it. */
+  static readonly shownMultiplier = 0.5;
+
+  /** However often it has been shown, it keeps this much. */
+  static readonly shownFloor = 0.05;
+
+  /** Having been shown something is forgotten by half this often, so a post
+   * passed over last week can come round again. */
+  static readonly shownHalfLifeHours = 48;
 
   /** Multiplier for a post by somebody the reader follows. */
   static readonly followedBoost = 1.6;
@@ -129,10 +164,11 @@ export class RankingService {
       now?: Date;
     },
   ): RankedPage<T> {
+    const halfLife = this.halfLifeFor(candidates, now);
     const scored = candidates
       .map((post) => ({
         post,
-        score: this.score(post, viewer, seed, now),
+        score: this.score(post, viewer, seed, now, halfLife),
       }))
       .sort((a, b) => {
         if (b.score !== a.score) return b.score - a.score;
@@ -148,18 +184,39 @@ export class RankingService {
     return { items: page, nextOffset };
   }
 
+  /**
+   * How fast freshness fades for this pool: the time the network took to
+   * write its newest [freshnessPosts] posts, held between a day and a week.
+   */
+  halfLifeFor(candidates: RankingCandidate[], now: Date): number {
+    if (candidates.length === 0) return RankingService.halfLifeHours;
+    const newestFirst = candidates
+      .map((post) => post.createdAt.getTime())
+      .sort((a, b) => b - a);
+    const nth =
+      newestFirst[
+        Math.min(RankingService.freshnessPosts, newestFirst.length) - 1
+      ];
+    const hours = (now.getTime() - nth) / 3_600_000;
+    return Math.min(
+      RankingService.maxHalfLifeHours,
+      Math.max(RankingService.halfLifeHours, hours),
+    );
+  }
+
   /** One post's score for one reader. */
   score(
     post: RankingCandidate,
     viewer: RankingViewer,
     seed: number,
     now: Date,
+    halfLifeHours = RankingService.halfLifeHours,
   ): number {
     const ageHours = Math.max(
       0,
       (now.getTime() - post.createdAt.getTime()) / 3_600_000,
     );
-    const freshness = Math.pow(0.5, ageHours / RankingService.halfLifeHours);
+    const freshness = Math.pow(0.5, ageHours / halfLifeHours);
 
     // Damped, so a post with a thousand likes outranks one with a hundred but
     // does not outrank everything for a fortnight.
@@ -192,7 +249,10 @@ export class RankingService {
     }
 
     const base = (0.6 + engagement) * freshness * affinity;
-    const seenAdjusted = base * this.seenDecay(post.seenCount);
+    const seenAdjusted =
+      base *
+      this.seenDecay(post.seenCount) *
+      this.shownDecay(post.shownCount ?? 0, post.lastShownAt ?? null, now);
 
     return seenAdjusted * this.wobble(post.id, seed);
   }
@@ -210,6 +270,29 @@ export class RankingService {
     return Math.max(
       RankingService.seenFloor,
       Math.pow(RankingService.seenMultiplier, seenCount),
+    );
+  }
+
+  /**
+   * What is left of a score after the post has been on the reader's screen
+   * in this many sittings, the last of them at [lastShownAt].
+   *
+   * This is what stops a feed opening on the same posts every time. It
+   * forgets: the count halves every [shownHalfLifeHours] since the post was
+   * last shown, so what was passed over a week ago can come back, and it
+   * floors, so a quiet feed still has something in it.
+   */
+  shownDecay(shown: number, lastShownAt: Date | null, now: Date): number {
+    if (shown <= 0 || !lastShownAt) return 1;
+    const hours = Math.max(
+      0,
+      (now.getTime() - lastShownAt.getTime()) / 3_600_000,
+    );
+    const remembered =
+      shown * Math.pow(0.5, hours / RankingService.shownHalfLifeHours);
+    return Math.max(
+      RankingService.shownFloor,
+      Math.pow(RankingService.shownMultiplier, remembered),
     );
   }
 

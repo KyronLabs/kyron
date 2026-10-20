@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 import '../providers/feed_provider.dart';
+import '../services/impression_reporter.dart';
 import '../routes.dart';
 import '../screens/video_feed_screen.dart';
 import 'post_card.dart';
@@ -10,7 +14,6 @@ import 'empty_state.dart';
 import 'media_tile_grid.dart';
 import 'skeleton.dart';
 import '../utils/layout.dart';
-import '../l10n/app_localizations.dart';
 
 /// A scrolling list of posts, with every state it can be in.
 ///
@@ -227,7 +230,7 @@ class _PostListViewState extends ConsumerState<PostListView> {
           );
         }
         final post = state.posts[index];
-        return PostCard(
+        final card = PostCard(
           // Keyed by the post, so a scrolled-away card's element is reused
           // for the same post rather than for whichever one lands in that
           // slot -- which handed a video's player to a different clip.
@@ -236,7 +239,57 @@ class _PostListViewState extends ConsumerState<PostListView> {
           source: widget.source,
           highlightTag: widget.highlightTag,
         );
+        // Only For You is ranked, so only For You reports what it showed.
+        if (widget.source != PostListSource.recent) return card;
+        return OnScreen(
+          key: ValueKey('on-screen-${post.id}'),
+          onShown: () => ref.read(impressionReporterProvider).shown(post.id),
+          child: card,
+        );
       },
     );
   }
+}
+
+/// Calls [onShown] once [child] has been at least half on screen for
+/// [ImpressionReporter.dwell] without leaving.
+class OnScreen extends StatefulWidget {
+  final VoidCallback onShown;
+  final Widget child;
+
+  const OnScreen({super.key, required this.onShown, required this.child});
+
+  @override
+  State<OnScreen> createState() => _OnScreenState();
+}
+
+class _OnScreenState extends State<OnScreen> {
+  Timer? _timer;
+  bool _done = false;
+
+  void _changed(VisibilityInfo info) {
+    if (_done) return;
+    if (info.visibleFraction >= 0.5) {
+      _timer ??= Timer(ImpressionReporter.dwell, () {
+        _done = true;
+        widget.onShown();
+      });
+    } else {
+      _timer?.cancel();
+      _timer = null;
+    }
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => VisibilityDetector(
+        key: widget.key ?? UniqueKey(),
+        onVisibilityChanged: _changed,
+        child: widget.child,
+      );
 }

@@ -546,6 +546,17 @@ export class FeedService {
    * ranking is recomputed per request, so an id names a position that may not
    * exist on the next page. Carrying the seed is what makes page two continue
    * page one rather than reshuffle under the reader.
+   *
+   * It also carries the moment the session began, and every page is ranked
+   * on the world as it stood then. Page one's posts are reported as shown
+   * while the reader is on them; ranked live, they would drop down the order
+   * and the offset for page two would land past posts nobody had seen yet.
+   *
+   * There is no age limit on the pool, only a size. It was the newest four
+   * hundred posts of the last fourteen days, which on a network writing a
+   * couple of posts a day was about twenty: For You held nineteen posts and
+   * ended, and nothing older could ever reach it again. Age is the
+   * freshness score's job, and it does it without hiding anything.
    */
   private async rankedPage(
     where: Prisma.PostWhereInput,
@@ -553,8 +564,7 @@ export class FeedService {
     limit: number,
     cursor?: string,
   ): Promise<FeedPage> {
-    const { seed, offset } = this.readRankCursor(cursor);
-    const since = new Date(Date.now() - RankingService.windowHours * 3_600_000);
+    const { seed, offset, asOf } = this.readRankCursor(cursor);
 
     // Rank on what ranking needs, then load only what is being shown.
     //
@@ -568,38 +578,50 @@ export class FeedService {
     // does, and it is the screen that opens first.
     const [candidateRows, viewer] = await Promise.all([
       this.prisma.post.findMany({
-        where: { ...where, createdAt: { gte: since } },
+        // Nothing written since the session began: a new post arriving
+        // between pages would push every later position down by one.
+        where: { ...where, createdAt: { lte: asOf } },
         orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
         // The pool, not the page. Wide enough that ranking has something to
         // choose between, bounded so one request cannot read the table.
         take: FeedService.candidatePool,
         select: FeedService.rankingShapeFor(viewerId),
       }),
-      this.rankingViewer(viewerId),
+      this.rankingViewer(viewerId, asOf),
     ]);
 
-    const candidates = candidateRows.map((row) => ({
-      id: row.id,
-      authorId: row.authorId,
-      createdAt: row.createdAt,
-      likes: row.likeCount,
-      comments: row.commentCount,
-      reposts: row.repostCount,
-      seenCount: row.views?.[0]?.count ?? 0,
-      followed: viewer.followedIds.has(row.authorId),
-      topicIds: (row.topics ?? []).map((t) => t.interestId),
-    }));
+    const candidates = candidateRows.map((row) => {
+      const view = row.views?.[0];
+      const shown = row.impressions?.[0];
+      // As they stood when the session began. The one change a session can
+      // make to a row is its own latest report, which is undone here.
+      const shownNow = shown && shown.lastAt >= asOf;
+      return {
+        id: row.id,
+        authorId: row.authorId,
+        createdAt: row.createdAt,
+        likes: row.likeCount,
+        comments: row.commentCount,
+        reposts: row.repostCount,
+        seenCount: view ? view.count - (view.lastViewedAt >= asOf ? 1 : 0) : 0,
+        shownCount: shown ? shown.count - (shownNow ? 1 : 0) : 0,
+        lastShownAt: shown ? (shownNow ? shown.prevAt : shown.lastAt) : null,
+        followed: viewer.followedIds.has(row.authorId),
+        topicIds: (row.topics ?? []).map((t) => t.interestId),
+      };
+    });
 
     const ranked = this.ranking.rank(candidates, viewer, {
       seed,
       offset,
       limit,
+      now: asOf,
     });
 
     const nextCursor =
       ranked.nextOffset === null
         ? null
-        : this.writeRankCursor(seed, ranked.nextOffset);
+        : this.writeRankCursor(seed, ranked.nextOffset, asOf);
 
     if (ranked.items.length === 0) return { items: [], nextCursor };
 
@@ -632,7 +654,16 @@ export class FeedService {
       id: true,
       authorId: true,
       createdAt: true,
-      views: { where: { viewerId }, select: { count: true }, take: 1 },
+      views: {
+        where: { viewerId },
+        select: { count: true, lastViewedAt: true },
+        take: 1,
+      },
+      impressions: {
+        where: { viewerId },
+        select: { count: true, lastAt: true, prevAt: true },
+        take: 1,
+      },
       topics: { select: { interestId: true } },
       likeCount: true,
       commentCount: true,
@@ -641,24 +672,38 @@ export class FeedService {
   }
 
   /**
-   * The seed and offset a ranked cursor carries.
+   * The seed, offset and session start a ranked cursor carries.
    *
    * A fresh seed on every first page is what makes two sessions read
    * differently; an unreadable cursor is treated as a fresh start rather than
-   * an error, because a stale client should get a feed, not a 400.
+   * an error, because a stale client should get a feed, not a 400. A cursor
+   * from before the session start was carried (`r<seed>-<offset>`) ranks as
+   * of now, which is what it always did.
    */
-  private readRankCursor(cursor?: string): { seed: number; offset: number } {
+  private readRankCursor(cursor?: string): {
+    seed: number;
+    offset: number;
+    asOf: Date;
+  } {
+    const now = new Date();
     if (cursor) {
-      const match = /^r(\d+)-(\d+)$/.exec(cursor);
+      const match = /^r(\d+)-(\d+)(?:-(\d+))?$/.exec(cursor);
       if (match) {
-        return { seed: Number(match[1]), offset: Number(match[2]) };
+        const started = match[3] ? new Date(Number(match[3])) : now;
+        return {
+          seed: Number(match[1]),
+          offset: Number(match[2]),
+          // Never the future: a made-up start would rank posts not yet
+          // written into a session that cannot have seen them.
+          asOf: started > now ? now : started,
+        };
       }
     }
-    return { seed: (Math.random() * 0xffffffff) >>> 0, offset: 0 };
+    return { seed: (Math.random() * 0xffffffff) >>> 0, offset: 0, asOf: now };
   }
 
-  private writeRankCursor(seed: number, offset: number): string {
-    return `r${seed}-${offset}`;
+  private writeRankCursor(seed: number, offset: number, asOf: Date): string {
+    return `r${seed}-${offset}-${asOf.getTime()}`;
   }
 
   /**
@@ -671,8 +716,13 @@ export class FeedService {
    * changed no subsequent feed is a button that does not work, whatever the
    * table says.
    */
-  private async rankingViewer(viewerId: string) {
-    const since = new Date(Date.now() - FeedService.affinityDays * 86_400_000);
+  private async rankingViewer(viewerId: string, asOf = new Date()) {
+    const since = new Date(
+      asOf.getTime() - FeedService.affinityDays * 86_400_000,
+    );
+    // Only what was known when the session began, for the same reason the
+    // posts are: liking something on page one must not reorder page two.
+    const before = { gte: since, lt: asOf };
     const [follows, likes, topics, interests, reads] = await Promise.all([
       this.prisma.follow.findMany({
         where: { followerId: viewerId },
@@ -681,7 +731,7 @@ export class FeedService {
       // Recent likes stand in for affinity: whose posts does this reader
       // actually touch, as opposed to whom did they follow once and forget.
       this.prisma.postLike.findMany({
-        where: { userId: viewerId, createdAt: { gte: since } },
+        where: { userId: viewerId, createdAt: before },
         orderBy: { createdAt: 'desc' },
         take: FeedService.affinitySample,
         select: { post: { select: { authorId: true } } },
@@ -694,7 +744,7 @@ export class FeedService {
       // a standing instruction, not a mood; expiring it after a month means
       // quietly putting back what the reader asked to have removed.
       this.prisma.interestSignal.findMany({
-        where: { userId: viewerId },
+        where: { userId: viewerId, createdAt: { lt: asOf } },
         orderBy: { createdAt: 'desc' },
         take: FeedService.affinitySample,
         select: { kind: true, post: { select: { authorId: true } } },
@@ -706,6 +756,10 @@ export class FeedService {
         where: {
           viewerId,
           lastViewedAt: { gte: since },
+          // First opened before the session began. A later open still adds
+          // its time to an older row, which can tip one past the threshold
+          // mid-session; that moves an author slightly, not a whole page.
+          createdAt: { lt: asOf },
           dwellMs: { gte: FeedService.dwellReadMs },
         },
         orderBy: { lastViewedAt: 'desc' },
@@ -743,6 +797,32 @@ export class FeedService {
       followedIds: new Set(follows.map((f) => f.followingId)),
       topicIds: new Set(topics.map((t) => t.interestId)),
     };
+  }
+
+  /**
+   * Notes that these posts have been on the reader's screen.
+   *
+   * One statement for the batch. A post seen again within ten minutes is the
+   * same sitting -- scrolling back up, or two feeds reporting the same card --
+   * and leaves the row alone; otherwise the count goes up and the previous
+   * time moves into [prevAt], which is what lets ranking read the row as it
+   * stood before this session touched it. Ids that name no post are skipped
+   * rather than failing the batch: a post deleted while it was on screen is
+   * normal.
+   */
+  async recordImpressions(viewerId: string, postIds: string[]): Promise<void> {
+    const ids = [...new Set(postIds)];
+    if (ids.length === 0) return;
+    await this.prisma.$executeRaw`
+      INSERT INTO "PostImpression" ("viewerId", "postId", "count", "lastAt")
+      SELECT ${viewerId}::uuid, p.id, 1, now()
+      FROM "Post" p
+      WHERE p.id = ANY(${ids}::uuid[])
+      ON CONFLICT ("viewerId", "postId") DO UPDATE
+        SET "count" = "PostImpression"."count" + 1,
+            "prevAt" = "PostImpression"."lastAt",
+            "lastAt" = EXCLUDED."lastAt"
+        WHERE "PostImpression"."lastAt" < now() - interval '10 minutes'`;
   }
 
   /**
@@ -2319,7 +2399,16 @@ export class FeedService {
       // Ranking needs these three and the shape is read everywhere, so they
       // are here rather than in a second query per page.
       authorId: true,
-      views: { where: { viewerId }, select: { count: true }, take: 1 },
+      views: {
+        where: { viewerId },
+        select: { count: true, lastViewedAt: true },
+        take: 1,
+      },
+      impressions: {
+        where: { viewerId },
+        select: { count: true, lastAt: true, prevAt: true },
+        take: 1,
+      },
       topics: { select: { interestId: true } },
       author: { select: this.authorShape },
       // Columns, not a relation `_count`: Prisma compiles that into an
