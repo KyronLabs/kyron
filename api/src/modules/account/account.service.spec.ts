@@ -19,6 +19,8 @@ interface Setup {
   reposted?: string[];
   commented?: string[];
   files?: Record<string, string[]>;
+  /** What is in the private bucket, by folder. */
+  privateFiles?: Record<string, string[]>;
   pictures?: Array<{ avatarUrl: string | null; bannerUrl: string | null }>;
   signInFails?: boolean;
   dataFails?: boolean;
@@ -135,6 +137,17 @@ function setup(s: Setup = {}) {
     }),
     removeFiles: jest.fn((paths: string[]) => {
       removed.push(...paths);
+      return Promise.resolve();
+    }),
+    listPrivateByPrefix: jest.fn((folder: string, prefix: string) =>
+      Promise.resolve(
+        (s.privateFiles?.[folder] ?? [])
+          .filter((name) => name.startsWith(prefix))
+          .map((name) => `${folder}/${name}`),
+      ),
+    ),
+    removePrivate: jest.fn((paths: string[]) => {
+      removed.push(...paths.map((path) => `private:${path}`));
       return Promise.resolve();
     }),
     getAvatarFolder: () => 'avatars',
@@ -365,6 +378,17 @@ describe('AccountService', () => {
           `post-media/${USER}_1_a.mp4.poster.jpg`,
         ].sort(),
       );
+    });
+
+    it('removes view-once attachments nobody opened, and only its own', async () => {
+      // Their messages went with the account, so nothing would ever sweep
+      // these from the private bucket.
+      const { service, removed } = setup({
+        privateFiles: { once: [`${USER}_1_a.jpg`, 'other_1_b.jpg'] },
+      });
+
+      await expect(service.removeFiles(USER)).resolves.toBe(1);
+      expect(removed).toEqual([`private:once/${USER}_1_a.jpg`]);
     });
 
     it('keeps a picture a community still shows', async () => {

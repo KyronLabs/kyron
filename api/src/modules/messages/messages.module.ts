@@ -6,6 +6,8 @@ import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
 import { PresenceService } from './presence.service';
 import { WallpapersService } from './wallpapers.service';
 import { KeySharesService } from './key-shares.service';
+import { GroupsService } from './groups.service';
+import { ViewOnceService } from './view-once.service';
 
 @Module({
   // AuthGuard needs SupabaseTokenService in scope to be constructible.
@@ -17,6 +19,8 @@ import { KeySharesService } from './key-shares.service';
     PresenceService,
     WallpapersService,
     KeySharesService,
+    GroupsService,
+    ViewOnceService,
   ],
   exports: [MessagesService],
 })

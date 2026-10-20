@@ -8,6 +8,13 @@ export type RealtimeEvent =
   | { type: 'message.read'; conversationId: string; readerId: string }
   /** A message was withdrawn. */
   | { type: 'message.deleted'; conversationId: string; messageId: string }
+  /** Somebody opened one of the reader's view-once messages. */
+  | { type: 'message.opened'; conversationId: string; messageId: string }
+  /**
+   * A group changed: its name, who is in it, who may write, or a raised
+   * hand. Ids only; the client reads the group again over HTTP.
+   */
+  | { type: 'conversation.updated'; conversationId: string }
   /**
    * Somebody reacted to a message, or took a reaction back. Ids only, like
    * every event here: the client asks for the reactions over HTTP, so nothing
