@@ -101,12 +101,19 @@ Stopping that takes device or network signals, which Kyron does not collect.
 
 Decisions about it stay on the record (case number, rule, dates, who
 decided), so leaving does not wipe a ban, but **not** what it wrote. The
-snapshot of its post is cleared from the decision and from any reports about
-it. Its appeals go with it. **The privacy policy should say this** (see
-below).
+snapshot of its post, reply or community chat message is cleared from the
+decision and from any reports about it. Its appeals go with it. **The privacy
+policy should say this** (see below).
 
 ## Reports
 
+- What can be reported: an account, a post, a reply, and a message in a
+  community chat. A community chat message can be reported only by somebody
+  in that community who can read it, and the report keeps a copy of the
+  words, the chat and the community, since a moderator may delete it from the
+  chat before the team looks. Taking one down hides it from the chat and lets
+  go of its pin; reversing that puts it back, unless its author or a
+  community moderator had deleted it themselves.
 - One per person per thing. A second report from the same person updates the
   first, so a brigade cannot look like a consensus.
 - The queue groups reports by the thing reported, and lists **urgent ones
@@ -155,7 +162,10 @@ say so, and to describe:
   allows;
 - that a new account at a banned address starts banned;
 - that decisions are kept after an account is deleted, without its content
-  (also the privacy policy).
+  (also the privacy policy);
+- that community chats are not end-to-end encrypted: what is said in them is
+  stored readable, and the community's moderators and Kyron's team can read
+  it (the privacy policy). Direct messages and groups still are.
 
 ## Known limits
 
@@ -164,8 +174,14 @@ say so, and to describe:
   reporting the account.
 - **Media is judged through its post.** Removing a post removes its media
   from view; there is no separate image review.
-- **Community moderation is separate.** Community bans (`CommunityBan`) are
-  run by each community's own moderators and are not covered here.
+- **Community moderation is separate.** Community bans (`CommunityBan`) and
+  deleting messages in a community's chats are run by each community's own
+  moderators and are not covered here ([MESSAGING.md](MESSAGING.md#community-chats)).
+  A community chat message deleted by a community moderator keeps its words,
+  so a report about it can still be judged.
+- **Staff on an app from before community chats** see a community chat
+  message report as a post, and acting on it fails safely ("No such post"):
+  the app sends the message's id as a post's. Update the app to judge them.
 - **No automatic escalation.** Repeated warnings do not turn into a
   suspension by themselves. The reviewer sees the account's record on every
   case and decides.

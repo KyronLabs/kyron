@@ -1,8 +1,10 @@
-# Messaging: groups and view once
+# Messaging: groups, view once and community chats
 
-What a conversation can be besides two people writing to each other, and what
-a photo, clip or voice note sent "view once" does and does not promise. The
-encryption under both is [E2EE.md](E2EE.md); this is what is built on it.
+What a conversation can be besides two people writing to each other, what a
+photo, clip or voice note sent "view once" does and does not promise, and the
+chats inside communities, which are a different thing. The encryption under
+groups and view once is [E2EE.md](E2EE.md); community chats are not
+end-to-end encrypted, and say so.
 
 ## Groups
 
@@ -19,8 +21,8 @@ kilobytes, which is fine. Three hundred is not, and neither is the time to
 seal it on a mid-range phone for every message. A group bigger than that is a
 different thing: a community chat everyone can join, which cannot be
 end-to-end encrypted in any meaningful sense (the server would have to hand
-the key to whoever turns up). That is not built, and when it is, it will say
-plainly that it is not encrypted.
+the key to whoever turns up). That is a [community chat](#community-chats),
+and it says plainly that it is not encrypted.
 
 The ceiling on how many devices one message is sealed for went from 16 to 64
 with groups, and the order changed: everybody's freshest device first, one
@@ -75,7 +77,9 @@ group's name. See *What the server knows*, below.
 ### What is not built
 
 - Polls, pinned messages, live rooms, a "joined" count: all in the Threads
-  screenshots, all on the community-chat side of the line above.
+  screenshots, all on the community-chat side of the line above. Community
+  chats have pins and a joined count; polls and live rooms are not built
+  anywhere.
 - Group photos. The avatar is two members' pictures.
 - Muting a group mutes it for the reader, as in a conversation between two.
   There is no "only admins can write" switch beyond making people spectators.
@@ -131,6 +135,96 @@ Be straight about this in the app and anywhere else it is described:
 - **Deleted means deleted from storage.** Storage providers keep backups on
   their own schedule; Supabase's are not under this app's control.
 
+## Community chats
+
+A community can have up to **20 chats**, each with a name (up to 40
+characters, one of each name per community whatever the case) and an optional
+line about what it is for. They are listed on the community's page, above its
+posts.
+
+**They are not end-to-end encrypted**, and every chat says so above its first
+message, as does the screen for opening one. A room anyone in a community can
+walk into cannot be sealed for all of them in any meaningful sense. Messages
+are stored as plain text the server, the community's moderators and Kyron's
+team can read. They live in their own tables (`CommunityChat`,
+`CommunityChatMember`, `CommunityChatMessage`, `CommunityChatReaction`), apart
+from conversations, and never touch the message vault. Supabase's own API
+roles have no grants on those tables and row-level security is on with no
+policies, so the only way in is the API.
+
+### Who can do what
+
+| | Read and react | Write | Delete | Open, edit, pin, close |
+|:--|:--|:--|:--|:--|
+| Not in the community | — | — | — | — |
+| In the community, not joined (a spectator) | yes | — | their own | — |
+| Joined | yes | yes, except in an announcements chat | their own | — |
+| A community moderator | yes | yes | their own, a member's, a former member's | yes |
+| The community's owner | yes | yes | anybody's | yes |
+
+- Being in the community is checked on **every request**, not remembered.
+  Somebody removed or banned from it loses every chat on their next request;
+  leaving it leaves all its chats in the same transaction.
+- **Joining** a chat is what lets somebody write in it, counts them in its
+  "joined" figure, gives them an unread count, and sends them live updates.
+  Reading needs only membership of the community.
+- An **announcements** chat (`writers: MODERATORS`) is written in by the owner
+  and moderators only. Everybody in the community can still read and react.
+- Closing a chat cannot be undone in the app. Its messages stay in the
+  database, shown to nobody, so a report already made about one can still be
+  reviewed.
+
+### Limits
+
+- A message is up to 2,000 characters.
+- Five messages in ten seconds per person per chat, for everyone (429).
+- Slow mode, per chat, from off to an hour between messages. The owner and
+  moderators are not slowed.
+- A reply has to answer a message in the same chat that is still up.
+- Each check and the write it guards run in one transaction under a Postgres
+  advisory lock -- per sender per chat for messages, per community for opening
+  and renaming chats -- so requests sent side by side cannot all pass the
+  check before any of them writes.
+
+### Taking messages down
+
+- An author who deletes their own message erases its words.
+- A moderator who deletes somebody else's takes it out of the chat but keeps
+  the words, for review. A moderator cannot delete the owner's or another
+  moderator's; the owner can delete anybody's. The app offers delete only
+  where the server would allow it.
+- Anybody in the community who can read a message can report it to Kyron
+  ([MODERATION.md](MODERATION.md)). A decision against it takes it down; a
+  reversal puts it back, unless its author or a moderator had already
+  deleted it.
+- Deleting a pinned message unpins it.
+- Blocks work both ways: neither side sees the other's messages, and a reply
+  to a hidden message shows as unavailable.
+- When an account is deleted its chat messages go with it, and the copies of
+  them in reports are cleared.
+
+### Live updates and reactions
+
+The server sends `community.chat.message`, `community.chat.message.deleted`,
+`community.chat.reaction` and `community.chat.updated` -- ids only, never the
+text -- to people who joined the chat and are still in the community. The app
+reads the message itself over HTTP, behind the same membership check, and only
+for a chat that is open. A spectator gets no live updates; their open chat
+asks again every 20 seconds. A message taken down stays down on screen even
+when a page asked for just before the takedown lands just after it.
+
+A reaction is a single emoji, one per person per message; a new one replaces
+the old. Reactions are shown as counts, and who reacted is not sent.
+
+### What is not built
+
+- Joined community chats in the Messages inbox. The API can list them
+  (`GET /community-chats/joined`); the app reaches chats from the community's
+  page.
+- Push notifications for community chats.
+- Photos, clips, voice notes and link cards: community chats are text.
+- Polls, live audio rooms, editing a message, search, muting a chat.
+
 ## What the server knows
 
 | | Sealed | Readable by the server |
@@ -143,6 +237,7 @@ Be straight about this in the app and anywhere else it is described:
 | Lines about the group | — | yes, the server writes them |
 | A view-once file | — | yes, until it is deleted |
 | Who opened a view-once message, when | — | yes |
+| Everything in a community chat | — | yes, it is not encrypted |
 
 ## Testing it
 
@@ -153,7 +248,14 @@ share refusal, one open, the sweep's timing and the 14-day expiry.
 without a database, so CI checks them. On the app side,
 `groups_and_view_once_test.dart` drives the screens.
 
+`community-chats.db.spec.ts` does the same for community chats: the grants,
+who may read, write and run them, limits (including requests sent side by
+side), takedowns, pins, blocks, reports and reversals, removal from the
+community, and a community closing. `community-chats.service.spec.ts` holds
+the rules CI can check, and `community_chats_test.dart` the screens.
+
 ```sh
 cd api
 MODERATION_TEST_DATABASE_URL=postgresql://... npx jest messages.groups.db
+MODERATION_TEST_DATABASE_URL=postgresql://... npx jest community-chats.db
 ```
