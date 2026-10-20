@@ -11,6 +11,29 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **Group chats.** Start one from New message → Create group chat: up to 32
+  people, end-to-end encrypted like any other conversation. A group has an
+  owner, admins, members and **spectators** — people who can read and react
+  but not write, and who can raise a hand to ask to. Admins add and remove
+  people, rename the group, answer raised hands, and can have everyone added
+  from then on join as a spectator. The owner makes admins and can hand the
+  group on. Changes show as a line in the conversation ("Ada added Ben").
+  Somebody added later sees what is said from then on, not before.
+- **View once, for photos, clips and voice notes.** In a conversation or a
+  group, + → Send view once, or the switch on a recorded voice note. Each
+  person it went to can open it once; then it is deleted from Kyron's
+  storage, and anything unopened goes after 14 days. On Android the screen
+  cannot be captured while it is open. On iPhone it can, and no phone can
+  stop another camera — docs/MESSAGING.md says what view once does and does
+  not promise.
+
+### Fixed
+
+- **Buttons were drawn in the phone's own font, not Inter.** Their labels
+  named a size and a weight but no typeface, and a button's label does not
+  inherit one.
 
 ## [0.1.8] - 2026-10-20
 ### Changed
