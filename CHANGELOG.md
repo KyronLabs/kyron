@@ -11,6 +11,8 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+
+## [0.1.9] - 2026-10-20
 ### Added
 
 - **Group chats.** Start one from New message → Create group chat: up to 32
@@ -1902,7 +1904,8 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.8...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.9...HEAD
+[0.1.9]: https://github.com/KyronLabs/kyron/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/KyronLabs/kyron/compare/v0.1.7...v0.1.8
 [0.1.7]: https://github.com/KyronLabs/kyron/compare/v0.1.6...v0.1.7
 [0.1.6]: https://github.com/KyronLabs/kyron/compare/v0.1.5...v0.1.6
