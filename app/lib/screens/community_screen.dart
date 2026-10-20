@@ -12,6 +12,7 @@ import '../providers/feed_provider.dart';
 import '../utils/format_count.dart';
 import '../widgets/action_button.dart';
 import '../widgets/community_avatar.dart';
+import '../widgets/community_chats_section.dart';
 import '../widgets/hairline.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/post_list_view.dart';
@@ -121,6 +122,10 @@ class CommunityScreen extends ConsumerWidget {
                           }
                         },
                       ),
+                      const Hairline(),
+                      // Above the posts: a community can have several chats,
+                      // and they are where it talks between posts.
+                      CommunityChatsSection(community: community),
                       const Hairline(),
                     ],
                   ),

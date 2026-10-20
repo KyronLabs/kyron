@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/community.dart';
+import 'package:kyron_app/models/community_chat.dart';
 import 'package:kyron_app/models/current_user.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/models/post_comment.dart';
 import 'package:kyron_app/providers/communities_provider.dart';
+import 'package:kyron_app/providers/community_chats_provider.dart';
 import 'package:kyron_app/providers/current_user_provider.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/repositories/communities_repository.dart';
@@ -22,6 +24,11 @@ import 'package:kyron_app/widgets/post_card.dart';
 import 'package:kyron_app/widgets/squircle.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+/// The community page lists its chats; these tests are about the rest of it.
+final _noChats = communityChatsProvider.overrideWith(
+  (ref, slug) async => const <CommunityChat>[],
+);
 
 const _gardeners = PostCommunity(
   id: 'c1',
@@ -78,6 +85,7 @@ Future<void> _card(
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
+        _noChats,
         feedRepositoryProvider.overrideWithValue(_Feed()),
         // Tapping the community's name opens its page, which loads it.
         communitiesRepositoryProvider.overrideWithValue(
@@ -227,6 +235,7 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
+            _noChats,
             feedRepositoryProvider.overrideWithValue(_OnePost()),
             currentUserRepositoryProvider.overrideWithValue(_Me()),
           ],
@@ -322,6 +331,7 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
+            _noChats,
             communitiesRepositoryProvider.overrideWithValue(
               _OneCommunity(community),
             ),
@@ -413,6 +423,7 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
+            _noChats,
             communitiesRepositoryProvider.overrideWithValue(
               _OneCommunity(community),
             ),

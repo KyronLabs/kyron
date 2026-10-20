@@ -31,9 +31,11 @@ String standingMoment(DateTime when) => _moment.format(when);
 
 /// What a decision did, as a title: "Post removed", "Suspended for 7 days".
 String decisionTitle(ModerationNotice notice) => switch (notice.kind) {
-      ModerationKind.remove => notice.target == ReportTarget.comment
-          ? 'Reply removed'
-          : 'Post removed',
+      ModerationKind.remove => switch (notice.target) {
+          ReportTarget.comment => 'Reply removed',
+          ReportTarget.communityMessage => 'Message removed',
+          _ => 'Post removed',
+        },
       ModerationKind.warn => 'Warning',
       ModerationKind.suspend => notice.endsAt == null
           ? 'Suspended'
@@ -308,7 +310,8 @@ class _ReportTile extends StatelessWidget {
     final what = switch (report.target) {
       ReportTarget.comment => 'A reply',
       ReportTarget.user => 'An account',
-      _ => 'A post',
+      ReportTarget.communityMessage => 'A community chat message',
+      ReportTarget.post || null => 'A post',
     };
     final outcome = switch (report.outcome) {
       ReportOutcome.pending => 'Waiting for review',
@@ -409,11 +412,12 @@ class _ModerationNoticeScreenState
           Quote(notice.message),
           if (notice.snapshot != null) ...[
             _Heading(
-              notice.target == ReportTarget.comment
-                  ? 'Your reply'
-                  : notice.target == ReportTarget.post
-                      ? 'Your post'
-                      : 'What it was about',
+              switch (notice.target) {
+                ReportTarget.comment => 'Your reply',
+                ReportTarget.post => 'Your post',
+                ReportTarget.communityMessage => 'Your message',
+                _ => 'What it was about',
+              },
             ),
             Quote(notice.snapshot!, italic: true),
           ],

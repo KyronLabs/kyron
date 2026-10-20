@@ -47,6 +47,7 @@ import '../widgets/hairline.dart';
 import '../widgets/link_preview_card.dart' show LinkCard;
 import '../widgets/verified_badge.dart';
 import '../widgets/view_once.dart';
+import '../widgets/quick_reaction_row.dart';
 import '../widgets/group_avatar.dart';
 import '../utils/conversation_text.dart' show groupEventText, mediaPreview;
 import 'group_info_screen.dart';
@@ -1637,7 +1638,7 @@ class _Bubble extends StatelessWidget {
       // thing most often done to a message somebody else sent.
       reactions: !_canReact || onReact == null
           ? null
-          : (choose) => _ReactionRow(
+          : (choose) => QuickReactionRow(
                 selected: mineReaction,
                 onPick: (emoji) => choose('react:$emoji'),
               ),
@@ -2626,51 +2627,6 @@ class _ChatStarter extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-/// The reactions most messages get, a tap away above a message's actions.
-const List<String> _quickReactions = ['❤️', '😂', '😮', '😢', '😡', '👍'];
-
-class _ReactionRow extends StatelessWidget {
-  const _ReactionRow({required this.selected, required this.onPick});
-
-  /// The reader's current reaction, drawn picked so choosing it again reads
-  /// as taking it back.
-  final String? selected;
-  final void Function(String emoji) onPick;
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    // As wide as the six of them and no wider: a pill over the message, not
-    // a toolbar across the screen.
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space4),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          for (final emoji in _quickReactions)
-            InkResponse(
-              onTap: () => onPick(emoji),
-              radius: 26,
-              child: Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: emoji == selected
-                      ? scheme.primary.withValues(alpha: 0.15)
-                      : null,
-                ),
-                child: Text(
-                  emoji,
-                  style: const TextStyle(fontSize: TypographyTokens.fontSize6),
-                ),
-              ),
-            ),
-        ],
       ),
     );
   }

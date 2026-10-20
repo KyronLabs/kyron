@@ -80,7 +80,11 @@ enum ReportReason {
 enum ReportTarget {
   post('POST'),
   comment('COMMENT'),
-  user('USER');
+  user('USER'),
+
+  /// A message in a community chat. Never a direct or group message: those
+  /// are sealed, and there is nothing a reviewer could read.
+  communityMessage('COMMUNITY_MESSAGE');
 
   const ReportTarget(this.wire);
   final String wire;
