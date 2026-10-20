@@ -765,5 +765,7 @@
   "ui_delete_account_done": "החשבון שלך נמחק.",
   "ui_dm_deleted_account": "חשבון שנמחק",
   "ui_dm_deleted_account_detail": "החשבון הזה נמחק, ולכן אי אפשר לשלוח לכאן הודעות יותר.",
-  "ui_login_google_hint": "נרשמת עם Google? אפשר להשתמש ב«Sign in with Google» במקום."
+  "ui_login_google_hint": "נרשמת עם Google? אפשר להשתמש ב«Sign in with Google» במקום.",
+  "ui_drawer_saved": "שמורים",
+  "ui_drawer_liked": "אהבתי"
 }

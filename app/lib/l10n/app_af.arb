@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Jou rekening is geskrap.",
   "ui_dm_deleted_account": "Geskrapte rekening",
   "ui_dm_deleted_account_detail": "Hierdie rekening is geskrap, so boodskappe kan nie meer hierheen gestuur word nie.",
-  "ui_login_google_hint": "Met Google aangesluit? Gebruik eerder “Meld aan met Google”."
+  "ui_login_google_hint": "Met Google aangesluit? Gebruik eerder “Meld aan met Google”.",
+  "ui_drawer_saved": "Gestoor",
+  "ui_drawer_liked": "Gehou van"
 }

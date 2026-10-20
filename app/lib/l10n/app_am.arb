@@ -765,5 +765,7 @@
   "ui_delete_account_done": "መለያዎ ተሰርዟል።",
   "ui_dm_deleted_account": "የተሰረዘ መለያ",
   "ui_dm_deleted_account_detail": "ይህ መለያ ተሰርዟል፣ ስለዚህ ከአሁን በኋላ እዚህ መልእክት መላክ አይቻልም።",
-  "ui_login_google_hint": "በGoogle ተመዝግበዋል? በምትኩ «በGoogle ይግቡ»ን ይጠቀሙ።"
+  "ui_login_google_hint": "በGoogle ተመዝግበዋል? በምትኩ «በGoogle ይግቡ»ን ይጠቀሙ።",
+  "ui_drawer_saved": "የተቀመጡ",
+  "ui_drawer_liked": "የወደድኳቸው"
 }

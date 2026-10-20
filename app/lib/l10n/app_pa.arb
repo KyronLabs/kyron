@@ -765,5 +765,7 @@
   "ui_delete_account_done": "ਤੁਹਾਡਾ ਖਾਤਾ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।",
   "ui_dm_deleted_account": "ਮਿਟਾਇਆ ਗਿਆ ਖਾਤਾ",
   "ui_dm_deleted_account_detail": "ਇਹ ਖਾਤਾ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ, ਇਸ ਲਈ ਇੱਥੇ ਹੁਣ ਸੁਨੇਹੇ ਨਹੀਂ ਭੇਜੇ ਜਾ ਸਕਦੇ।",
-  "ui_login_google_hint": "Google ਨਾਲ ਸਾਈਨ ਅੱਪ ਕੀਤਾ ਸੀ? ਇਸਦੀ ਬਜਾਏ «Sign in with Google» ਵਰਤੋ।"
+  "ui_login_google_hint": "Google ਨਾਲ ਸਾਈਨ ਅੱਪ ਕੀਤਾ ਸੀ? ਇਸਦੀ ਬਜਾਏ «Sign in with Google» ਵਰਤੋ।",
+  "ui_drawer_saved": "ਸੰਭਾਲੇ ਗਏ",
+  "ui_drawer_liked": "ਪਸੰਦ ਕੀਤੇ"
 }

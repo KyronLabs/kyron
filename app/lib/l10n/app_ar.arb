@@ -765,5 +765,7 @@
   "ui_delete_account_done": "تم حذف حسابك.",
   "ui_dm_deleted_account": "حساب محذوف",
   "ui_dm_deleted_account_detail": "تم حذف هذا الحساب، لذا لم يعد بالإمكان إرسال رسائل هنا.",
-  "ui_login_google_hint": "هل سجّلت باستخدام Google؟ استخدم «تسجيل الدخول بواسطة Google» بدلاً من ذلك."
+  "ui_login_google_hint": "هل سجّلت باستخدام Google؟ استخدم «تسجيل الدخول بواسطة Google» بدلاً من ذلك.",
+  "ui_drawer_saved": "المحفوظة",
+  "ui_drawer_liked": "الإعجابات"
 }

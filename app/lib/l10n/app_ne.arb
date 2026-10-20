@@ -765,5 +765,7 @@
   "ui_delete_account_done": "तपाईंको खाता मेटाइयो।",
   "ui_dm_deleted_account": "मेटाइएको खाता",
   "ui_dm_deleted_account_detail": "यो खाता मेटाइएको छ, त्यसैले यहाँ अब सन्देश पठाउन सकिँदैन।",
-  "ui_login_google_hint": "Google बाट साइन अप गर्नुभएको हो? बरु «Sign in with Google» प्रयोग गर्नुहोस्।"
+  "ui_login_google_hint": "Google बाट साइन अप गर्नुभएको हो? बरु «Sign in with Google» प्रयोग गर्नुहोस्।",
+  "ui_drawer_saved": "सुरक्षित गरिएका",
+  "ui_drawer_liked": "मन परेका"
 }

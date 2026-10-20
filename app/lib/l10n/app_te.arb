@@ -765,5 +765,7 @@
   "ui_delete_account_done": "మీ ఖాతా తొలగించబడింది.",
   "ui_dm_deleted_account": "తొలగించిన ఖాతా",
   "ui_dm_deleted_account_detail": "ఈ ఖాతా తొలగించబడింది, కాబట్టి ఇకపై ఇక్కడ సందేశాలు పంపలేరు.",
-  "ui_login_google_hint": "Google తో సైన్ అప్ చేశారా? బదులుగా «Sign in with Google» ఉపయోగించండి."
+  "ui_login_google_hint": "Google తో సైన్ అప్ చేశారా? బదులుగా «Sign in with Google» ఉపయోగించండి.",
+  "ui_drawer_saved": "సేవ్ చేసినవి",
+  "ui_drawer_liked": "నచ్చినవి"
 }

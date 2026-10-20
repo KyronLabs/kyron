@@ -765,5 +765,7 @@
   "ui_delete_account_done": "An goge asusunka.",
   "ui_dm_deleted_account": "Asusun da aka goge",
   "ui_dm_deleted_account_detail": "An goge wannan asusun, don haka ba za a iya aika saƙonni a nan ba kuma.",
-  "ui_login_google_hint": "Ka yi rajista da Google? Yi amfani da «Sign in with Google» maimakon haka."
+  "ui_login_google_hint": "Ka yi rajista da Google? Yi amfani da «Sign in with Google» maimakon haka.",
+  "ui_drawer_saved": "Ajiyayyu",
+  "ui_drawer_liked": "Waɗanda aka so"
 }

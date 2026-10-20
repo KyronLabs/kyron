@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Dein Konto wurde gelöscht.",
   "ui_dm_deleted_account": "Gelöschtes Konto",
   "ui_dm_deleted_account_detail": "Dieses Konto wurde gelöscht. Hier können keine Nachrichten mehr gesendet werden.",
-  "ui_login_google_hint": "Mit Google registriert? Nutze stattdessen „Mit Google anmelden“."
+  "ui_login_google_hint": "Mit Google registriert? Nutze stattdessen „Mit Google anmelden“.",
+  "ui_drawer_saved": "Gespeichert",
+  "ui_drawer_liked": "Gefällt mir"
 }

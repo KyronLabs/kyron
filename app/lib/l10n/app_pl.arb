@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Twoje konto zostało usunięte.",
   "ui_dm_deleted_account": "Usunięte konto",
   "ui_dm_deleted_account_detail": "To konto zostało usunięte, więc nie można już tu wysyłać wiadomości.",
-  "ui_login_google_hint": "Rejestracja przez Google? Użyj zamiast tego „Sign in with Google”."
+  "ui_login_google_hint": "Rejestracja przez Google? Użyj zamiast tego „Sign in with Google”.",
+  "ui_drawer_saved": "Zapisane",
+  "ui_drawer_liked": "Polubione"
 }

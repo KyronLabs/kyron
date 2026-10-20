@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Аккаунтыңыз жойылды.",
   "ui_dm_deleted_account": "Жойылған аккаунт",
   "ui_dm_deleted_account_detail": "Бұл аккаунт жойылды, сондықтан бұл жерге енді хабар жіберу мүмкін емес.",
-  "ui_login_google_hint": "Google арқылы тіркелдіңіз бе? Оның орнына «Sign in with Google» түймесін пайдаланыңыз."
+  "ui_login_google_hint": "Google арқылы тіркелдіңіз бе? Оның орнына «Sign in with Google» түймесін пайдаланыңыз.",
+  "ui_drawer_saved": "Сақталғандар",
+  "ui_drawer_liked": "Ұнағандар"
 }

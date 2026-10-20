@@ -765,5 +765,7 @@
   "ui_delete_account_done": "S'ha suprimit el teu compte.",
   "ui_dm_deleted_account": "Compte suprimit",
   "ui_dm_deleted_account_detail": "Aquest compte s'ha suprimit, així que ja no s'hi poden enviar missatges.",
-  "ui_login_google_hint": "T'has registrat amb Google? Fes servir «Inicia sessió amb Google»."
+  "ui_login_google_hint": "T'has registrat amb Google? Fes servir «Inicia sessió amb Google».",
+  "ui_drawer_saved": "Desats",
+  "ui_drawer_liked": "M'agraden"
 }

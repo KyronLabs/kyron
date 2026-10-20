@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Hisobingiz o'chirildi.",
   "ui_dm_deleted_account": "O'chirilgan hisob",
   "ui_dm_deleted_account_detail": "Bu hisob o'chirilgan, shuning uchun bu yerga endi xabar yuborib bo'lmaydi.",
-  "ui_login_google_hint": "Google orqali roʻyxatdan oʻtganmisiz? Oʻrniga «Sign in with Google» tugmasidan foydalaning."
+  "ui_login_google_hint": "Google orqali roʻyxatdan oʻtganmisiz? Oʻrniga «Sign in with Google» tugmasidan foydalaning.",
+  "ui_drawer_saved": "Saqlanganlar",
+  "ui_drawer_liked": "Yoqqanlar"
 }

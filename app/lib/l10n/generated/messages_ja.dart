@@ -164,6 +164,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("翻訳"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("再試行"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("いいね"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("保存済み"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("リポストを取り消す"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("パスワードを更新"),
       "useDifferentAddress":

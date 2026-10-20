@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Your account has been deleted.",
   "ui_dm_deleted_account": "Deleted account",
   "ui_dm_deleted_account_detail": "This account has been deleted, so messages can no longer be sent here.",
-  "ui_login_google_hint": "Signed up with Google? Use Sign in with Google instead."
+  "ui_login_google_hint": "Signed up with Google? Use Sign in with Google instead.",
+  "ui_drawer_saved": "Saved",
+  "ui_drawer_liked": "Liked"
 }

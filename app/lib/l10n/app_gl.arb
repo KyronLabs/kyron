@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Eliminouse a túa conta.",
   "ui_dm_deleted_account": "Conta eliminada",
   "ui_dm_deleted_account_detail": "Esta conta eliminouse, así que xa non se poden enviar mensaxes aquí.",
-  "ui_login_google_hint": "Rexistrácheste con Google? Usa «Sign in with Google»."
+  "ui_login_google_hint": "Rexistrácheste con Google? Usa «Sign in with Google».",
+  "ui_drawer_saved": "Gardados",
+  "ui_drawer_liked": "Gústanme"
 }

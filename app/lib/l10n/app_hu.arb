@@ -765,5 +765,7 @@
   "ui_delete_account_done": "A fiókodat töröltük.",
   "ui_dm_deleted_account": "Törölt fiók",
   "ui_dm_deleted_account_detail": "Ezt a fiókot törölték, ezért ide már nem lehet üzenetet küldeni.",
-  "ui_login_google_hint": "Google-lel regisztráltál? Használd inkább a „Sign in with Google” gombot."
+  "ui_login_google_hint": "Google-lel regisztráltál? Használd inkább a „Sign in with Google” gombot.",
+  "ui_drawer_saved": "Mentett",
+  "ui_drawer_liked": "Kedvelt"
 }

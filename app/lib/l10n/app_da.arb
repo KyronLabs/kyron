@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Din konto er slettet.",
   "ui_dm_deleted_account": "Slettet konto",
   "ui_dm_deleted_account_detail": "Denne konto er slettet, så der kan ikke længere sendes beskeder her.",
-  "ui_login_google_hint": "Oprettet med Google? Brug “Log ind med Google” i stedet."
+  "ui_login_google_hint": "Oprettet med Google? Brug “Log ind med Google” i stedet.",
+  "ui_drawer_saved": "Gemte",
+  "ui_drawer_liked": "Synes godt om"
 }

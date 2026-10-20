@@ -24,7 +24,9 @@ is.** That is all it says.
 
 ## Who can ask
 
-The sidebar opens with a stamp, "Get verified", that leads to the page. An
+For an account without the badge, the sidebar ends with a stamp, "Get
+verified", below Help & Support, that leads to the page. An account that has
+the badge does not see it: the badge beside its name already says so. An
 account can send a request when all of these hold, and the page lists them
 with a tick or not:
 

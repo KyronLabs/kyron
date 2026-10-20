@@ -1141,6 +1141,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "ID descentralitzat",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnòstics"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("M'agraden"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Desats"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage(
         "Encara no hi ha res aquí",
       ),

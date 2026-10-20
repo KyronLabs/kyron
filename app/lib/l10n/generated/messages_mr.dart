@@ -1044,6 +1044,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("आवडलेले"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("जतन केलेले"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
         "Follow a few accounts and their posts will show up here.",

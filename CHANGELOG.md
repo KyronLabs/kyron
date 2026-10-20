@@ -11,6 +11,16 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Changed
+
+- **The verified badge is the size of the name beside it.** It was drawn at
+  a full em or more, chosen by hand in each place, and looked larger than
+  the letters. It is now sized from the name's own text everywhere.
+- **The sidebar is shorter.** Saved and Liked share a row. The "Get
+  verified" stamp has moved below Help & Support, and is shown only to
+  accounts without the badge: the badge beside your name already says
+  you have it.
+
 ### Added
 
 - **Choose your handle.** Accounts made with Google never had a handle,

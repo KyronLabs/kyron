@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Ο λογαριασμός σας διαγράφηκε.",
   "ui_dm_deleted_account": "Διαγραμμένος λογαριασμός",
   "ui_dm_deleted_account_detail": "Αυτός ο λογαριασμός έχει διαγραφεί, οπότε δεν μπορούν πλέον να σταλούν μηνύματα εδώ.",
-  "ui_login_google_hint": "Εγγραφήκατε με Google; Χρησιμοποιήστε τη «Σύνδεση με Google»."
+  "ui_login_google_hint": "Εγγραφήκατε με Google; Χρησιμοποιήστε τη «Σύνδεση με Google».",
+  "ui_drawer_saved": "Αποθηκευμένα",
+  "ui_drawer_liked": "Μου αρέσουν"
 }

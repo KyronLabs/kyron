@@ -1178,6 +1178,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Διαγνωστικά"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Μου αρέσουν"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Αποθηκευμένα"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Τίποτα εδώ ακόμα"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
         "Ακολουθήστε μερικούς λογαριασμούς και οι δημοσιεύσεις τους θα εμφανιστούν εδώ.",

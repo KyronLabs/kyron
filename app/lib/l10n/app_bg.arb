@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Профилът ви е изтрит.",
   "ui_dm_deleted_account": "Изтрит профил",
   "ui_dm_deleted_account_detail": "Този профил е изтрит, така че вече не могат да се изпращат съобщения тук.",
-  "ui_login_google_hint": "Регистрирахте се с Google? Използвайте „Влез с Google“."
+  "ui_login_google_hint": "Регистрирахте се с Google? Използвайте „Влез с Google“.",
+  "ui_drawer_saved": "Запазени",
+  "ui_drawer_liked": "Харесани"
 }

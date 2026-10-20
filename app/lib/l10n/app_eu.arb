@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Zure kontua ezabatu da.",
   "ui_dm_deleted_account": "Ezabatutako kontua",
   "ui_dm_deleted_account_detail": "Kontu hau ezabatu egin da, beraz, ezin da hona mezurik bidali.",
-  "ui_login_google_hint": "Google-ekin erregistratu zinen? Erabili «Sign in with Google»."
+  "ui_login_google_hint": "Google-ekin erregistratu zinen? Erabili «Sign in with Google».",
+  "ui_drawer_saved": "Gordetakoak",
+  "ui_drawer_liked": "Gustukoak"
 }
