@@ -22,6 +22,7 @@ import { ProfileService } from './profile.service';
 import { SearchProfilesDto } from './dto/search-profiles.dto';
 import { ListFollowsDto } from './dto/list-follows.dto';
 import { ListSuggestedDto } from './dto/list-suggested.dto';
+import { ChooseHandleDto } from './dto/choose-handle.dto';
 import { Request } from 'express';
 
 /**
@@ -244,6 +245,23 @@ export class ProfileController {
     @Query() query: ListSuggestedDto,
   ) {
     return this.svc.listSuggested(req.user.id, query.limit, query.cursor);
+  }
+
+  /** Whether a handle is free for this account. */
+  @UseGuards(AuthGuard)
+  @Get('handle/available')
+  async handleAvailable(
+    @Req() req: AuthRequest,
+    @Query() query: ChooseHandleDto,
+  ) {
+    return this.svc.handleAvailability(req.user.id, query.handle);
+  }
+
+  /** Sets the handle on an account that has none. Once. */
+  @UseGuards(AuthGuard)
+  @Put('handle')
+  async chooseHandle(@Req() req: AuthRequest, @Body() dto: ChooseHandleDto) {
+    return this.svc.chooseHandle(req.user.id, dto.handle);
   }
 
   // ==========================================

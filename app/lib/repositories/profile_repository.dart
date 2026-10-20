@@ -1,4 +1,5 @@
 import '../models/explore_entry.dart';
+import '../models/handle_check.dart';
 import '../models/profile_model.dart';
 import '../models/profile_summary.dart';
 import '../services/api_client.dart';
@@ -14,6 +15,24 @@ class ProfileRepository {
       '/profile/${Uri.encodeComponent(username)}',
     );
     return ProfileModel.fromJson(res.data ?? const {});
+  }
+
+  /// Whether [handle] could be this account's.
+  Future<HandleCheck> handleAvailability(String handle) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/profile/handle/available',
+      queryParameters: {'handle': handle},
+    );
+    return HandleCheck.fromJson(res.data ?? const {});
+  }
+
+  /// Gives this account the handle it chose, once. Returns it as stored.
+  Future<String> chooseHandle(String handle) async {
+    final res = await _api.dio.put<Map<String, dynamic>>(
+      '/profile/handle',
+      data: {'handle': handle},
+    );
+    return res.data?['username'] as String? ?? handle;
   }
 
   Future<void> follow(String userId) =>

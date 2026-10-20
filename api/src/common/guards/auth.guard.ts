@@ -33,6 +33,7 @@ import {
   restrictedError,
   restrictionOf,
 } from './standing';
+import { handleProblem, normaliseHandle } from '../handles';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -288,20 +289,21 @@ export class AuthGuard implements CanActivate {
    * The handle the identity provider knows this account by.
    *
    * Kyron's own sign-up writes `username`; GitHub and Twitter write
-   * `user_name`; most OIDC providers write `preferred_username`. Normalised
-   * to what the rest of the schema stores, and dropped rather than mangled if
-   * what comes back is not a handle at all.
+   * `user_name`; most OIDC providers write `preferred_username`. Google
+   * writes none of them, which is why Google accounts arrive with no handle
+   * and are asked for one by the app. Normalised to what the rest of the
+   * schema stores, and dropped rather than mangled if what comes back is not
+   * a handle Kyron would accept from its own form (see common/handles.ts).
    */
   private handleFrom(meta: {
     username?: string;
     user_name?: string;
     preferred_username?: string;
   }): string | null {
-    const raw = (meta.username ?? meta.user_name ?? meta.preferred_username)
-      ?.trim()
-      .replace(/^@/, '');
+    const raw = meta.username ?? meta.user_name ?? meta.preferred_username;
     if (!raw) return null;
-    return /^[A-Za-z0-9_.]{2,30}$/.test(raw) ? raw : null;
+    const handle = normaliseHandle(raw);
+    return handleProblem(handle) ? null : handle;
   }
 
   /**

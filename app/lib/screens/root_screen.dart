@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kyron_app/screens/main_container.dart';
 
 import '../providers/auth_provider.dart';
+import '../providers/current_user_provider.dart';
+import '../screens/choose_handle_screen.dart';
 import '../screens/welcome_screen.dart';
 import '../screens/splash_screen.dart';
 import '../screens/onboard_step1_screen.dart';
@@ -69,7 +71,7 @@ class _RootScreenState extends ConsumerState<RootScreen> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const SplashScreen();
             }
-            if (snapshot.data ?? false) return const MainContainer();
+            if (snapshot.data ?? false) return const HandleGate();
 
             return OnboardStep1Screen(
               model: OnboardingModel()
@@ -79,5 +81,26 @@ class _RootScreenState extends ConsumerState<RootScreen> {
           },
         );
     }
+  }
+}
+
+/// The app, once the account has a handle; the handle step until then.
+///
+/// Waits for nothing: until the profile is known the app shows as normal, so
+/// a slow or failed /profile/me never holds anybody at a gate. An account
+/// without a handle sees the step once the profile arrives, and only then.
+class HandleGate extends ConsumerWidget {
+  /// What opens once there is a handle. The app, outside tests.
+  final Widget child;
+
+  const HandleGate({super.key, this.child = const MainContainer()});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final me = ref.watch(currentUserProvider).value;
+    if (me != null && (me.username?.trim().isEmpty ?? true)) {
+      return ChooseHandleScreen(name: me.name);
+    }
+    return child;
   }
 }
