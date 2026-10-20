@@ -157,6 +157,7 @@ Future<void> _drawer(WidgetTester tester, {required bool verified}) async {
       child: MaterialApp(
         routes: {
           Routes.verification: (_) => const Scaffold(body: Text('asking')),
+          Routes.likedPosts: (_) => const Scaffold(body: Text('liked list')),
         },
         home: Scaffold(body: SlidingDrawerContent(onCloseDrawer: () {})),
       ),
@@ -416,12 +417,23 @@ void main() {
     });
   });
 
-  group('the stamp in the sidebar', () {
-    testWidgets('offers the badge to an account without it', (tester) async {
+  group('the sidebar', () {
+    /// Where [finder] sits, top to bottom.
+    double top(WidgetTester tester, Finder finder) =>
+        tester.getTopLeft(finder).dy;
+
+    testWidgets('offers the badge to an account without it, last', (
+      tester,
+    ) async {
       await _drawer(tester, verified: false);
       final card = find.byKey(const ValueKey('drawer-verification'));
       expect(card, findsOneWidget);
       expect(find.text('Get verified'), findsOneWidget);
+      // After everything somebody opens the menu to reach.
+      expect(
+        top(tester, card),
+        greaterThan(top(tester, find.text('Help & Support'))),
+      );
       expect(
         find.descendant(
           of: find.byType(NameWithBadge),
@@ -435,12 +447,12 @@ void main() {
       expect(find.text('asking'), findsOneWidget);
     });
 
-    testWidgets('says so, and badges the name, once it is given', (
+    testWidgets('leaves it out once it is given: the name says so', (
       tester,
     ) async {
       await _drawer(tester, verified: true);
-      expect(find.text("You're verified"), findsOneWidget);
-      expect(find.text('Get verified'), findsNothing);
+      expect(find.byKey(const ValueKey('drawer-verification')), findsNothing);
+      expect(find.text("You're verified"), findsNothing);
       expect(
         find.descendant(
           of: find.byType(NameWithBadge),
@@ -448,6 +460,51 @@ void main() {
         ),
         findsOneWidget,
       );
+    });
+
+    testWidgets('puts Saved and Liked side by side, without "posts"', (
+      tester,
+    ) async {
+      await _drawer(tester, verified: true);
+      final saved = find.byKey(const ValueKey('drawer-saved'));
+      final liked = find.byKey(const ValueKey('drawer-liked'));
+      expect(find.descendant(of: saved, matching: find.text('Saved')),
+          findsOneWidget);
+      expect(find.descendant(of: liked, matching: find.text('Liked')),
+          findsOneWidget);
+      expect(find.textContaining('posts'), findsNothing);
+
+      // One row: the same height on screen, the same width, Saved first.
+      expect(top(tester, saved), top(tester, liked));
+      expect(tester.getSize(saved).width, tester.getSize(liked).width);
+      expect(
+        tester.getTopLeft(saved).dx,
+        lessThan(tester.getTopLeft(liked).dx),
+      );
+    });
+
+    testWidgets('fits a long translation on one line rather than wrapping', (
+      tester,
+    ) async {
+      await _drawer(tester, verified: true);
+      // Labels are scaled to fit, never wrapped or cut: a second line would
+      // not fit the pill.
+      final label = tester.widget<Text>(find.text('Saved'));
+      expect(label.maxLines, 1);
+      expect(
+        find.ancestor(of: find.text('Saved'), matching: find.byType(FittedBox)),
+        findsOneWidget,
+      );
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('goes to the right list from each half of the row', (
+      tester,
+    ) async {
+      await _drawer(tester, verified: true);
+      await tester.tap(find.byKey(const ValueKey('drawer-liked')));
+      await tester.pumpAndSettle();
+      expect(find.text('liked list'), findsOneWidget);
     });
   });
 
@@ -478,8 +535,30 @@ void main() {
       await show(tester, verified: true);
       expect(tester.takeException(), isNull);
       final badge = tester.getRect(find.byType(VerifiedBadge));
-      expect(badge.width, 15);
       expect(badge.right, lessThanOrEqualTo(120));
+    });
+
+    testWidgets("is the size of the name's capitals, at any size", (
+      tester,
+    ) async {
+      // It was a full em or more, set by hand at each use, and read as
+      // larger than the name beside it.
+      for (final fontSize in [13.1, 15.0, 20.6]) {
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: NameWithBadge(
+                name: 'Gremlin',
+                verified: true,
+                style: TextStyle(fontSize: fontSize),
+              ),
+            ),
+          ),
+        );
+        final badge = tester.getSize(find.byType(VerifiedBadge));
+        expect(badge.width, closeTo(fontSize * VerifiedBadge.perEm, 0.01));
+        expect(badge.width, lessThan(fontSize));
+      }
     });
   });
 }

@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Ваш аккаунт удалён.",
   "ui_dm_deleted_account": "Удалённый аккаунт",
   "ui_dm_deleted_account_detail": "Этот аккаунт удалён, поэтому сюда больше нельзя отправлять сообщения.",
-  "ui_login_google_hint": "Регистрировались через Google? Используйте «Sign in with Google»."
+  "ui_login_google_hint": "Регистрировались через Google? Используйте «Sign in with Google».",
+  "ui_drawer_saved": "Сохранённое",
+  "ui_drawer_liked": "Понравилось"
 }

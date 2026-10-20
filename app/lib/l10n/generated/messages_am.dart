@@ -955,6 +955,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("መገለጫዎች"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("የወደድኳቸው"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("የተቀመጡ"),
       "ui_feed_empty":
           MessageLookupByLibrary.simpleMessage("እዚህ እስካሁን ምንም የለም"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(

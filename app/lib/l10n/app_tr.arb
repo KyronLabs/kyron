@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Hesabın silindi.",
   "ui_dm_deleted_account": "Silinmiş hesap",
   "ui_dm_deleted_account_detail": "Bu hesap silindi, bu yüzden artık buraya mesaj gönderilemez.",
-  "ui_login_google_hint": "Google ile mi kaydoldunuz? Bunun yerine “Sign in with Google” seçeneğini kullanın."
+  "ui_login_google_hint": "Google ile mi kaydoldunuz? Bunun yerine “Sign in with Google” seçeneğini kullanın.",
+  "ui_drawer_saved": "Kaydedilenler",
+  "ui_drawer_liked": "Beğenilenler"
 }

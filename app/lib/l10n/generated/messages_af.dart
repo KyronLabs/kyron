@@ -1103,6 +1103,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Gedesentraliseerde ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostiek"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Gehou van"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Gestoor"),
       "ui_feed_empty":
           MessageLookupByLibrary.simpleMessage("Nog niks hier nie"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(

@@ -765,5 +765,7 @@
   "ui_delete_account_done": "നിങ്ങളുടെ അക്കൗണ്ട് ഇല്ലാതാക്കി.",
   "ui_dm_deleted_account": "ഇല്ലാതാക്കിയ അക്കൗണ്ട്",
   "ui_dm_deleted_account_detail": "ഈ അക്കൗണ്ട് ഇല്ലാതാക്കിയതിനാൽ ഇവിടേക്ക് ഇനി സന്ദേശങ്ങൾ അയയ്ക്കാനാകില്ല.",
-  "ui_login_google_hint": "Google ഉപയോഗിച്ചാണോ സൈൻ അപ്പ് ചെയ്തത്? പകരം «Sign in with Google» ഉപയോഗിക്കുക."
+  "ui_login_google_hint": "Google ഉപയോഗിച്ചാണോ സൈൻ അപ്പ് ചെയ്തത്? പകരം «Sign in with Google» ഉപയോഗിക്കുക.",
+  "ui_drawer_saved": "സംരക്ഷിച്ചവ",
+  "ui_drawer_liked": "ഇഷ്ടപ്പെട്ടവ"
 }

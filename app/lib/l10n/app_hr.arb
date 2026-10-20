@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Vaš račun je izbrisan.",
   "ui_dm_deleted_account": "Izbrisani račun",
   "ui_dm_deleted_account_detail": "Ovaj račun je izbrisan pa se ovdje više ne mogu slati poruke.",
-  "ui_login_google_hint": "Registrirali ste se putem Googlea? Umjesto toga upotrijebite „Sign in with Google”."
+  "ui_login_google_hint": "Registrirali ste se putem Googlea? Umjesto toga upotrijebite „Sign in with Google”.",
+  "ui_drawer_saved": "Spremljeno",
+  "ui_drawer_liked": "Sviđa mi se"
 }

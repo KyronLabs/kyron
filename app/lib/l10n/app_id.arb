@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Akun Anda telah dihapus.",
   "ui_dm_deleted_account": "Akun yang dihapus",
   "ui_dm_deleted_account_detail": "Akun ini telah dihapus, jadi pesan tidak bisa lagi dikirim ke sini.",
-  "ui_login_google_hint": "Daftar dengan Google? Gunakan “Sign in with Google” sebagai gantinya."
+  "ui_login_google_hint": "Daftar dengan Google? Gunakan “Sign in with Google” sebagai gantinya.",
+  "ui_drawer_saved": "Disimpan",
+  "ui_drawer_liked": "Disukai"
 }

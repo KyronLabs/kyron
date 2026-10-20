@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart'
+    show LicenseEntry, LicenseEntryWithLineBreaks, LicenseRegistry;
 import 'package:flutter/services.dart'; // Add this import
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -56,6 +58,10 @@ void main() async {
     milliseconds: 180,
   );
 
+  // Inter's licence goes wherever the font does, and Settings' open-source
+  // licences page is where this app lists what it ships.
+  LicenseRegistry.addLicense(_interLicence);
+
   // Fails here, with the name of the missing value, rather than as an opaque
   // authorization error on the first request.
   SupabaseConfig.assertConfigured();
@@ -69,6 +75,12 @@ void main() async {
   );
 
   runApp(const ProviderScope(child: KyronApp()));
+}
+
+/// The SIL Open Font License for Inter, read from the asset bundled with it.
+Stream<LicenseEntry> _interLicence() async* {
+  final text = await rootBundle.loadString('assets/fonts/Inter-OFL.txt');
+  yield LicenseEntryWithLineBreaks(const ['Inter'], text);
 }
 
 /// The theme, with the status bar told which way round to draw itself.

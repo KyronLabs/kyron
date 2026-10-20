@@ -649,11 +649,13 @@ class _Header extends ConsumerWidget {
               text: profile.displayName,
               children: [
                 if (profile.verified)
-                  const WidgetSpan(
+                  WidgetSpan(
                     alignment: PlaceholderAlignment.middle,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 6),
-                      child: VerifiedBadge(size: 22),
+                      padding: const EdgeInsets.only(left: 5),
+                      child: VerifiedBadge(
+                        size: VerifiedBadge.sizeFor(TypographyTokens.fontSize6),
+                      ),
                     ),
                   ),
               ],

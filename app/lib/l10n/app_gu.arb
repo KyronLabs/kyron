@@ -765,5 +765,7 @@
   "ui_delete_account_done": "તમારું એકાઉન્ટ ડિલીટ થઈ ગયું છે.",
   "ui_dm_deleted_account": "ડિલીટ થયેલું એકાઉન્ટ",
   "ui_dm_deleted_account_detail": "આ એકાઉન્ટ ડિલીટ થઈ ગયું છે, તેથી અહીં હવે સંદેશા મોકલી શકાશે નહીં.",
-  "ui_login_google_hint": "Google થી સાઇન અપ કર્યું હતું? તેના બદલે «Sign in with Google» વાપરો."
+  "ui_login_google_hint": "Google થી સાઇન અપ કર્યું હતું? તેના બદલે «Sign in with Google» વાપરો.",
+  "ui_drawer_saved": "સાચવેલા",
+  "ui_drawer_liked": "પસંદ કરેલા"
 }

@@ -6,12 +6,19 @@ import {
   Injectable,
   Logger,
   BadRequestException,
+  ConflictException,
   NotFoundException,
 } from '@nestjs/common';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import { AccountStatus } from '@prisma/client';
+import {
+  HANDLE_PROBLEMS,
+  type HandleProblem,
+  handleProblem,
+  normaliseHandle,
+} from '../../common/handles';
 
 @Injectable()
 export class ProfileService {
@@ -586,6 +593,89 @@ export class ProfileService {
       },
     );
     return true;
+  }
+
+  /**
+   * Whether a handle could be this account's.
+   *
+   * Taken is checked without regard to case, although every handle is stored
+   * lowercase: a row from before that was true must still block its twin.
+   */
+  async handleAvailability(
+    userId: string,
+    raw: string,
+  ): Promise<{
+    handle: string;
+    available: boolean;
+    reason?: HandleProblem | 'taken';
+  }> {
+    const handle = normaliseHandle(raw);
+    const problem = handleProblem(handle);
+    if (problem) return { handle, available: false, reason: problem };
+    const holder = await this.prisma.user.findFirst({
+      where: {
+        username: { equals: handle, mode: 'insensitive' },
+        NOT: { id: userId },
+      },
+      select: { id: true },
+    });
+    return holder
+      ? { handle, available: false, reason: 'taken' }
+      : { handle, available: true };
+  }
+
+  /**
+   * Gives an account with no handle the one it chose.
+   *
+   * Once only. Accounts made through Google never had one -- Google sends no
+   * username -- nor did an email sign-up that left the box empty or asked
+   * for one already taken, and until this there was no way to set it
+   * afterwards. Changing a handle is a different question (links, mentions,
+   * the verified badge) and this does not answer it.
+   */
+  async chooseHandle(
+    userId: string,
+    raw: string,
+  ): Promise<{ username: string }> {
+    const handle = normaliseHandle(raw);
+    const problem = handleProblem(handle);
+    if (problem) throw new BadRequestException(HANDLE_PROBLEMS[problem]);
+
+    const me = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { username: true },
+    });
+    if (!me) throw new NotFoundException('User not found');
+    if (me.username) {
+      if (me.username === handle) return { username: handle };
+      throw new ConflictException(
+        'This account already has a handle, and handles cannot be changed yet.',
+      );
+    }
+
+    const { available } = await this.handleAvailability(userId, handle);
+    if (!available) throw new ConflictException('That handle is taken.');
+
+    try {
+      // Only while it still has none: a sign-in filling one in from its
+      // provider at the same moment wins, and this says so.
+      const { count } = await this.prisma.user.updateMany({
+        where: { id: userId, username: null },
+        data: { username: handle },
+      });
+      if (count === 0) {
+        throw new ConflictException('This account already has a handle.');
+      }
+    } catch (error) {
+      // The unique index, when two people ask for one handle at once.
+      if ((error as { code?: string }).code === 'P2002') {
+        throw new ConflictException('That handle is taken.');
+      }
+      throw error;
+    }
+
+    this.logger.log(`handle chosen by ${userId}`);
+    return { username: handle };
   }
 
   async updateProfile(

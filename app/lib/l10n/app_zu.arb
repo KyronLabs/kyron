@@ -765,5 +765,7 @@
   "ui_delete_account_done": "I-akhawunti yakho isusiwe.",
   "ui_dm_deleted_account": "I-akhawunti esusiwe",
   "ui_dm_deleted_account_detail": "Le akhawunti isusiwe, ngakho imilayezo ayisakwazi ukuthunyelwa lapha.",
-  "ui_login_google_hint": "Ubhalise nge-Google? Sebenzisa u-“Sign in with Google” esikhundleni salokho."
+  "ui_login_google_hint": "Ubhalise nge-Google? Sebenzisa u-“Sign in with Google” esikhundleni salokho.",
+  "ui_drawer_saved": "Okulondoloziwe",
+  "ui_drawer_liked": "Okuthandwayo"
 }

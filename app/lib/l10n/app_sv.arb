@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Ditt konto har raderats.",
   "ui_dm_deleted_account": "Raderat konto",
   "ui_dm_deleted_account_detail": "Det här kontot har raderats, så det går inte längre att skicka meddelanden hit.",
-  "ui_login_google_hint": "Registrerad med Google? Använd ”Sign in with Google” i stället."
+  "ui_login_google_hint": "Registrerad med Google? Använd ”Sign in with Google” i stället.",
+  "ui_drawer_saved": "Sparade",
+  "ui_drawer_liked": "Gillade"
 }

@@ -1106,6 +1106,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralizované ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostika"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Líbí se mi"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Uložené"),
       "ui_feed_empty":
           MessageLookupByLibrary.simpleMessage("Zatím tu nic není"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(

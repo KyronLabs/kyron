@@ -18,6 +18,8 @@ function post(
     comments: over.comments ?? 0,
     reposts: over.reposts ?? 0,
     seenCount: over.seenCount ?? 0,
+    shownCount: over.shownCount ?? 0,
+    lastShownAt: over.lastShownAt ?? null,
     followed: over.followed ?? false,
     topicIds: over.topicIds ?? [],
   };
@@ -215,6 +217,145 @@ describe('RankingService', () => {
         'b',
         'c',
       ]);
+    });
+  });
+
+  describe('having been on screen', () => {
+    const hoursAgo = (h: number) => new Date(NOW.getTime() - h * 3_600_000);
+
+    it('moves down a post the reader has already scrolled past', () => {
+      // Before this only opening a post counted, so one scrolled past every
+      // day looked unseen and headed the feed every session.
+      const passed = score(
+        post('a', { shownCount: 1, lastShownAt: hoursAgo(1) }),
+      );
+
+      expect(passed).toBeLessThan(score(post('a')));
+      expect(passed).toBeGreaterThan(0);
+    });
+
+    it('moves it further each sitting it was shown in', () => {
+      const shown = (n: number) =>
+        score(post('a', { shownCount: n, lastShownAt: hoursAgo(1) }));
+
+      expect(shown(2)).toBeLessThan(shown(1));
+      expect(shown(3)).toBeLessThan(shown(2));
+    });
+
+    it('weighs scrolling past below opening', () => {
+      // Opening something is a stronger sign of being done with it.
+      expect(
+        score(post('a', { shownCount: 1, lastShownAt: hoursAgo(0) })),
+      ).toBeGreaterThan(score(post('a', { seenCount: 1 })));
+    });
+
+    it('forgets, so what was passed over last week can come round again', () => {
+      const yesterday = svc.shownDecay(2, hoursAgo(24), NOW);
+      const lastWeek = svc.shownDecay(2, hoursAgo(24 * 7), NOW);
+
+      expect(lastWeek).toBeGreaterThan(yesterday);
+      expect(lastWeek).toBeLessThan(1);
+    });
+
+    it('never retires a post entirely', () => {
+      expect(svc.shownDecay(500, hoursAgo(0), NOW)).toBe(
+        RankingService.shownFloor,
+      );
+    });
+
+    it('leaves a post nobody has shown them alone', () => {
+      expect(svc.shownDecay(0, null, NOW)).toBe(1);
+    });
+  });
+
+  describe('how fast freshness fades', () => {
+    const spread = (count: number, everyHours: number) =>
+      Array.from({ length: count }, (_, i) =>
+        post(`p${i}`, {
+          createdAt: new Date(NOW.getTime() - i * everyHours * 3_600_000),
+        }),
+      );
+
+    it('keeps a day on a busy network', () => {
+      // Four hundred posts in two hours: a day is plenty.
+      expect(svc.halfLifeFor(spread(400, 0.005), NOW)).toBe(
+        RankingService.halfLifeHours,
+      );
+    });
+
+    it('is the time the network took to write a page of posts', () => {
+      // A post every six hours: twenty of them took nineteen gaps.
+      expect(svc.halfLifeFor(spread(60, 6), NOW)).toBeCloseTo(19 * 6);
+    });
+
+    it('stops at a week on a very quiet one', () => {
+      // Otherwise a month-old post would count as new.
+      expect(svc.halfLifeFor(spread(60, 48), NOW)).toBe(
+        RankingService.maxHalfLifeHours,
+      );
+    });
+
+    it('uses the oldest post when there are fewer than a page', () => {
+      expect(svc.halfLifeFor(spread(5, 12), NOW)).toBeCloseTo(48);
+    });
+  });
+
+  describe('on a network the size of Kyron today', () => {
+    // What production looked like when For You stuck at nineteen posts: a
+    // hundred and four posts over seven weeks, twenty of them in the last
+    // fortnight, fourteen authors.
+    const DAY = 24;
+    const pool = Array.from({ length: 104 }, (_, i) =>
+      post(`p${i}`, {
+        authorId: `a${i % 14}`,
+        likes: i % 5,
+        createdAt: new Date(
+          NOW.getTime() -
+            (i < 20 ? i * 0.7 * DAY : 14 * DAY + (i - 20) * 0.4 * DAY) *
+              3_600_000,
+        ),
+      }),
+    );
+    const rankAll = (posts: RankingCandidate[]) =>
+      svc.rank(posts, nobody, { seed: 11, limit: 200, now: NOW }).items;
+
+    it('can reach every post, not just the last fortnight', () => {
+      expect(rankAll(pool)).toHaveLength(104);
+    });
+
+    it('opens on the newest for a reader who has seen nothing', () => {
+      const newest = new Set(pool.slice(0, 20).map((p) => p.id));
+      const top = rankAll(pool).slice(0, 10);
+
+      // Most of it, not all: a well-liked post from last week may edge in,
+      // which on a network this quiet is the point.
+      expect(top.filter((p) => newest.has(p.id)).length).toBeGreaterThanOrEqual(
+        8,
+      );
+    });
+
+    it('moves on to what they have not seen once they have scrolled past it', () => {
+      // The newest nineteen, shown three times today -- the feed as it was.
+      const shown = new Set(pool.slice(0, 19).map((p) => p.id));
+      const seenToday = pool.map((p) =>
+        shown.has(p.id)
+          ? {
+              ...p,
+              shownCount: 3,
+              lastShownAt: new Date(NOW.getTime() - 2 * 3_600_000),
+            }
+          : p,
+      );
+
+      const firstPage = rankAll(seenToday).slice(0, 20);
+      const unseen = firstPage.filter((p) => !shown.has(p.id));
+
+      // Most of the first page is new to them, and what they have seen is
+      // still there, further down, rather than gone.
+      expect(unseen.length).toBeGreaterThanOrEqual(12);
+      expect(rankAll(seenToday).filter((p) => shown.has(p.id))).toHaveLength(
+        19,
+      );
     });
   });
 

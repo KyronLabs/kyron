@@ -765,5 +765,7 @@
   "ui_delete_account_done": "आपका अकाउंट हटा दिया गया है।",
   "ui_dm_deleted_account": "हटाया गया अकाउंट",
   "ui_dm_deleted_account_detail": "यह अकाउंट हटा दिया गया है, इसलिए अब यहाँ संदेश नहीं भेजे जा सकते।",
-  "ui_login_google_hint": "Google से साइन अप किया था? इसके बजाय «Sign in with Google» इस्तेमाल करें।"
+  "ui_login_google_hint": "Google से साइन अप किया था? इसके बजाय «Sign in with Google» इस्तेमाल करें।",
+  "ui_drawer_saved": "सहेजे गए",
+  "ui_drawer_liked": "पसंद किए गए"
 }

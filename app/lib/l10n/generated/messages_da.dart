@@ -1074,6 +1074,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentraliseret ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostik"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Synes godt om"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Gemte"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Intet her endnu"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
         "Følg nogle få konti, så vises deres opslag her.",

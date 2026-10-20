@@ -64,17 +64,18 @@ There is no session table and no refresh handled by the API; Supabase owns both.
 
 ## The feed
 
-`RankingService` scores candidate posts rather than ordering by time. The
-signals are:
+`RankingService` scores the newest 400 posts the reader may see, with no age
+limit, rather than ordering by time. The signals are:
 
 - topics the reader has said they are interested in
-- authors the reader follows
-- authors whose posts the reader has liked before
-- recency, as a decay rather than a sort
+- authors the reader follows, likes, reads, or asked to see more or less of
+- recency, as a decay whose half-life follows how fast the network posts
+- what the reader has opened, and what has been on their screen in For You
 
-Paging is a cursor of the form `r<seed>-<offset>`, so the ranking a reader is
-part-way through stays stable while they page rather than reshuffling under
-them.
+Paging is a cursor of the form `r<seed>-<offset>-<session start>`, and every
+page is ranked as the world stood when the session began, so the ranking a
+reader is part-way through stays stable while they page rather than
+reshuffling under them. The whole of it is in [docs/FEED.md](docs/FEED.md).
 
 It is not a vector or embedding model. There is no ANN index and no Pinecone.
 

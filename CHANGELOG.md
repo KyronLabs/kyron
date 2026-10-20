@@ -11,6 +11,43 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Changed
+
+- **The verified badge is the size of the name beside it.** It was drawn at
+  a full em or more, chosen by hand in each place, and looked larger than
+  the letters. It is now sized from the name's own text everywhere.
+- **The sidebar is shorter.** Saved and Liked share a row. The "Get
+  verified" stamp has moved below Help & Support, and is shown only to
+  accounts without the badge: the badge beside your name already says
+  you have it.
+
+### Added
+
+- **Choose your handle.** Accounts made with Google never had a handle,
+  because Google does not send one and nothing asked, and neither did an
+  email sign-up that left the box empty or asked for one already taken. An
+  account with no handle is now asked for one once, after onboarding, with a
+  suggestion made from its name and a live check that it is free. Handles
+  are stored lowercase, so "Ada" and "ada" can no longer be two accounts,
+  and names like `kyron`, `admin` and `support` are reserved.
+
+### Fixed
+
+- **For You showed the same nineteen posts and then ended.** It only ever
+  considered posts from the last fourteen days, which on a network as quiet
+  as Kyron's was about twenty. It now ranks the newest 400 posts whatever
+  their age, and freshness fades with how fast people are posting rather
+  than by the clock.
+- **For You kept opening on the same posts.** It only knew about posts you
+  had opened, not ones you had scrolled past. The app now tells it what was
+  on screen, and the next session moves on to what you have not seen; what
+  you have seen comes back after a few days. Paging stays in order while
+  this is being recorded. See `docs/FEED.md`.
+- **The app now uses its own typeface.** The design asks for Inter, but the
+  font was declared in the wrong place and never shipped, so every screen
+  used the phone's default. Inter is about 4% wider, so a long name may
+  shorten a little sooner in tight places.
+
 
 ## [0.1.7] - 2026-10-19
 ### Added

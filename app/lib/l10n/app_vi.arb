@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Tài khoản của bạn đã bị xóa.",
   "ui_dm_deleted_account": "Tài khoản đã xóa",
   "ui_dm_deleted_account_detail": "Tài khoản này đã bị xóa nên không thể gửi tin nhắn ở đây nữa.",
-  "ui_login_google_hint": "Đã đăng ký bằng Google? Hãy dùng “Sign in with Google”."
+  "ui_login_google_hint": "Đã đăng ký bằng Google? Hãy dùng “Sign in with Google”.",
+  "ui_drawer_saved": "Đã lưu",
+  "ui_drawer_liked": "Đã thích"
 }

@@ -765,5 +765,7 @@
   "ui_delete_account_done": "គណនីរបស់អ្នកត្រូវបានលុបហើយ។",
   "ui_dm_deleted_account": "គណនីដែលបានលុប",
   "ui_dm_deleted_account_detail": "គណនីនេះត្រូវបានលុបហើយ ដូច្នេះមិនអាចផ្ញើសារមកទីនេះទៀតបានទេ។",
-  "ui_login_google_hint": "បានចុះឈ្មោះដោយ Google មែនទេ? សូមប្រើ «Sign in with Google» ជំនួសវិញ។"
+  "ui_login_google_hint": "បានចុះឈ្មោះដោយ Google មែនទេ? សូមប្រើ «Sign in with Google» ជំនួសវិញ។",
+  "ui_drawer_saved": "បានរក្សាទុក",
+  "ui_drawer_liked": "បានចូលចិត្ត"
 }

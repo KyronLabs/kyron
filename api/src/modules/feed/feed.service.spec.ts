@@ -5,7 +5,11 @@ import { FeedService } from './feed.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { MediaService } from '../media/media.service';
-import { RankingService } from './ranking.service';
+import {
+  RankingCandidate,
+  RankingService,
+  RankingViewer,
+} from './ranking.service';
 import { DeliveryService } from '../push/delivery.service';
 import { RecordingDelivery } from '../push/delivery.test-double';
 
@@ -31,7 +35,9 @@ const row = (id: string, createdAt = new Date()) => ({
   reposts: [] as { id: string }[],
   // Filtered to this reader too, and it carries the count rather than just
   // existing: ranking needs a first look told apart from a fourth.
-  views: [] as { count: number }[],
+  views: [] as { count: number; lastViewedAt?: Date }[],
+  // Every time a feed has put it on this reader's screen, opened or not.
+  impressions: [] as { count: number; lastAt: Date; prevAt: Date | null }[],
   topics: [] as { interestId: string }[],
   media: [] as never[],
   quotedPost: null,
@@ -410,14 +416,21 @@ describe('FeedService', () => {
       );
     });
 
-    it('bounds the pool to a recent window', async () => {
+    it('bounds the pool by size, never by age', async () => {
+      // It was the newest four hundred of the last fourteen days, which on a
+      // network writing a couple of posts a day was about twenty: For You
+      // held nineteen posts and ended, and nothing older could reach it.
       post.findMany.mockResolvedValue([]);
       await (await service()).listRecent(VIEWER);
 
       const [args] = post.findMany.mock.calls[0] as [
-        { where: { createdAt?: { gte?: Date } } },
+        {
+          where: { createdAt?: { gte?: Date; lte?: Date } };
+          take: number;
+        },
       ];
-      expect(args.where.createdAt?.gte).toBeInstanceOf(Date);
+      expect(args.where.createdAt?.gte).toBeUndefined();
+      expect(args.take).toBe(FeedService.candidatePool);
     });
 
     it('returns a page and a cursor that carries the session', async () => {
@@ -428,7 +441,9 @@ describe('FeedService', () => {
       // Not a post id: a ranking is recomputed per request, so an id names a
       // position that may not exist next time. The cursor carries the seed
       // and the offset instead.
-      expect(page.nextCursor).toMatch(/^r\d+-2$/);
+      // And the moment the session began, which every later page is ranked
+      // as of.
+      expect(page.nextCursor).toMatch(/^r\d+-2-\d+$/);
     });
 
     it('reports no cursor once the pool is exhausted', async () => {
@@ -538,6 +553,7 @@ describe('FeedService', () => {
         'commentCount',
         'createdAt',
         'id',
+        'impressions',
         'likeCount',
         'repostCount',
         'topics',
@@ -1123,7 +1139,7 @@ describe('FeedService', () => {
 
   describe('the signals ranking reads', () => {
     /** Runs one feed request and hands back the candidates it scored. */
-    const rankedWith = async () => {
+    const rankedWith = async (cursor?: string) => {
       const ranker = new RankingService();
       const seen = jest.spyOn(ranker, 'rank');
       const moduleRef = await Test.createTestingModule({
@@ -1154,8 +1170,12 @@ describe('FeedService', () => {
         ],
       }).compile();
 
-      await moduleRef.get(FeedService).listRecent(VIEWER);
-      return seen.mock.calls[0];
+      await moduleRef.get(FeedService).listRecent(VIEWER, 20, cursor);
+      return seen.mock.calls[0] as [
+        RankingCandidate[],
+        RankingViewer,
+        { seed: number; offset: number; now: Date },
+      ];
     };
 
     it('carries how many times the reader opened each post', async () => {
@@ -1242,9 +1262,76 @@ describe('FeedService', () => {
 
       await rankedWith();
 
-      expect(interestSignal.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({ where: { userId: VIEWER } }),
+      const [args] = interestSignal.findMany.mock.calls[0] as [
+        { where: { userId: string; createdAt: { gte?: Date; lt: Date } } },
+      ];
+      expect(args.where.userId).toBe(VIEWER);
+      // Bounded above by the session's start, so asking for less on page one
+      // does not reorder page two. Never below.
+      expect(args.where.createdAt.gte).toBeUndefined();
+    });
+
+    it('carries how often each post has been on screen, and when', async () => {
+      const lastAt = new Date(Date.now() - 3_600_000);
+      post.findMany.mockResolvedValue([
+        { ...row('p1'), impressions: [{ count: 3, lastAt, prevAt: null }] },
+      ]);
+
+      const [candidates] = await rankedWith();
+
+      // Before this the ranking knew only what was opened, so a post
+      // scrolled past every day looked unseen and headed every session.
+      expect(candidates[0].shownCount).toBe(3);
+      expect(candidates[0].lastShownAt).toEqual(lastAt);
+    });
+
+    it('reads page two as the world stood when page one was ranked', async () => {
+      const started = new Date(Date.now() - 60_000);
+      const before = new Date(started.getTime() - 86_400_000);
+      const during = new Date(started.getTime() + 30_000);
+      post.findMany.mockResolvedValue([
+        {
+          ...row('p1'),
+          // Shown and opened on page one, after the session began.
+          impressions: [{ count: 2, lastAt: during, prevAt: before }],
+          views: [{ count: 1, lastViewedAt: during }],
+        },
+      ]);
+
+      const [candidates, , options] = await rankedWith(
+        `r7-20-${started.getTime()}`,
       );
+
+      // Page one's own reports are undone. Counted, they would move page
+      // one's posts down the order and the offset for page two would land
+      // past posts nobody had been shown.
+      expect(candidates[0].shownCount).toBe(1);
+      expect(candidates[0].lastShownAt).toEqual(before);
+      expect(candidates[0].seenCount).toBe(0);
+      expect(options).toMatchObject({ seed: 7, offset: 20, now: started });
+
+      // And nothing written since joins the pool part way through.
+      const [args] = post.findMany.mock.calls[0] as [
+        { where: { createdAt: { lte: Date } } },
+      ];
+      expect(args.where.createdAt.lte).toEqual(started);
+    });
+
+    it('will not take a session start from the future', async () => {
+      post.findMany.mockResolvedValue([row('p1')]);
+      const later = Date.now() + 86_400_000;
+
+      const [, , options] = await rankedWith(`r7-20-${later}`);
+
+      expect(options.now.getTime()).toBeLessThanOrEqual(Date.now());
+    });
+
+    it('still reads a cursor from before the session start was carried', async () => {
+      post.findMany.mockResolvedValue([row('p1')]);
+
+      const [, , options] = await rankedWith('r7-20');
+
+      expect(options).toMatchObject({ seed: 7, offset: 20 });
     });
   });
 

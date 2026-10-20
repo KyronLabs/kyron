@@ -115,7 +115,6 @@ class SlidingDrawerContent extends ConsumerWidget {
           NameWithBadge(
             name: user.displayName,
             verified: user.verified,
-            badgeSize: 16,
             style: TextStyle(
               fontSize: TypographyTokens.fontSize4,
               fontWeight: FontWeight.w600,
@@ -317,79 +316,107 @@ class SlidingDrawerContent extends ConsumerWidget {
       );
 
   Widget _navigation(BuildContext context, CurrentUser? user) {
+    final l10n = AppLocalizations.of(context);
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
       // Scrollable rather than shrink-wrapped: on a short screen, or at a
       // large text size, the items no longer have to fit to be reachable.
       children: [
-        // The way to the badge, as a stamp. First in the menu, because it
-        // is the one thing here that is not a place you have already been.
-        Padding(
-          padding: const EdgeInsets.fromLTRB(
-            SpacingTokens.space16,
-            SpacingTokens.space4,
-            SpacingTokens.space16,
-            SpacingTokens.space12,
-          ),
-          child: StampCard(
-            key: const ValueKey('drawer-verification'),
-            title:
-                (user?.verified ?? false) ? "You're verified" : 'Get verified',
-            subtitle: (user?.verified ?? false)
-                ? 'The badge is beside your name'
-                : 'A person checks it is really you',
-            onTap: () => _go(context, Routes.verification),
-          ),
-        ),
         _pillButton(
           context,
           icon: Iconsax.people_copy,
-          label: AppLocalizations.of(context).communities,
+          label: l10n.communities,
           onTap: () {
             onCloseDrawer();
             onSelectTab?.call(communitiesTab);
           },
         ),
-        _pillButton(
-          context,
-          icon: Iconsax.archive_add_copy,
-          label: AppLocalizations.of(context).literalsavedPosts,
-          onTap: () => _go(context, Routes.savedPosts),
-        ),
-        _pillButton(
-          context,
-          icon: Iconsax.heart_copy,
-          label: AppLocalizations.of(context).literallikedPosts,
-          onTap: () => _go(context, Routes.likedPosts),
+        // Two lists of posts you kept, so one row: the word "posts" is what
+        // made them too long to share it.
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingTokens.space12,
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: _pillButton(
+                  context,
+                  key: const ValueKey('drawer-saved'),
+                  icon: Iconsax.archive_add_copy,
+                  label: l10n.ui('ui_drawer_saved', 'Saved'),
+                  inset: false,
+                  onTap: () => _go(context, Routes.savedPosts),
+                ),
+              ),
+              const SizedBox(width: SpacingTokens.space8),
+              Expanded(
+                child: _pillButton(
+                  context,
+                  key: const ValueKey('drawer-liked'),
+                  icon: Iconsax.heart_copy,
+                  label: l10n.ui('ui_drawer_liked', 'Liked'),
+                  inset: false,
+                  onTap: () => _go(context, Routes.likedPosts),
+                ),
+              ),
+            ],
+          ),
         ),
         _pillButton(
           context,
           icon: Iconsax.setting_copy,
-          label: AppLocalizations.of(context).settings,
+          label: l10n.settings,
           onTap: () => _go(context, Routes.settings),
         ),
         _pillButton(
           context,
           icon: Iconsax.info_circle_copy,
-          label: AppLocalizations.of(context).helpAndSupport,
+          label: l10n.helpAndSupport,
           onTap: () => _go(context, Routes.help),
         ),
+        // The way to the badge, for an account without it, after everything
+        // somebody opens the menu to reach. An account that has it is told
+        // so by the badge beside its name; a card saying so too was noise.
+        // Hidden until the account is known, so it never flashes at
+        // somebody who is verified.
+        if (user != null && !user.verified)
+          Padding(
+            // The pills' own margin, so its edges line up with theirs.
+            padding: const EdgeInsets.fromLTRB(
+              SpacingTokens.space12,
+              SpacingTokens.space12,
+              SpacingTokens.space12,
+              SpacingTokens.space4,
+            ),
+            child: StampCard(
+              key: const ValueKey('drawer-verification'),
+              title: 'Get verified',
+              subtitle: 'A person checks it is really you',
+              onTap: () => _go(context, Routes.verification),
+            ),
+          ),
       ],
     );
   }
 
+  /// One item of the menu. [inset] is false for a pill sharing a row, whose
+  /// row already carries the menu's side margin.
   Widget _pillButton(
     BuildContext context, {
+    Key? key,
     required IconData icon,
     required String label,
     String? badge,
+    bool inset = true,
     VoidCallback? onTap,
   }) {
     final scheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: SpacingTokens.space12,
+      key: key,
+      padding: EdgeInsets.symmetric(
+        horizontal: inset ? SpacingTokens.space12 : 0,
         vertical: SpacingTokens.space4,
       ),
       child: Material(
@@ -418,12 +445,20 @@ class SlidingDrawerContent extends ConsumerWidget {
                 ),
                 const SizedBox(width: SpacingTokens.space12),
                 Expanded(
-                  child: Text(
-                    label,
-                    style: TextStyle(
-                      fontSize: TypographyTokens.fontSize3,
-                      fontWeight: FontWeight.w500,
-                      color: scheme.onSurface,
+                  // One line, shrunk rather than wrapped: half a menu's width
+                  // holds "Saved" easily and "Zilizohifadhiwa" only smaller,
+                  // and a second line would not fit the pill.
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text(
+                      label,
+                      maxLines: 1,
+                      style: TextStyle(
+                        fontSize: TypographyTokens.fontSize3,
+                        fontWeight: FontWeight.w500,
+                        color: scheme.onSurface,
+                      ),
                     ),
                   ),
                 ),

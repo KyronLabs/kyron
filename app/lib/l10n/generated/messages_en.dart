@@ -212,6 +212,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Translate"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Liked"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saved"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
       "useDifferentAddress": MessageLookupByLibrary.simpleMessage(

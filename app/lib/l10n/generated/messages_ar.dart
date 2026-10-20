@@ -1046,6 +1046,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "المعرف اللامركزي",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("التشخيص"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("الإعجابات"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("المحفوظة"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("لا شيء هنا بعد"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
         "تابع بعض الحسابات وستظهر مشاركاتهم هنا.",

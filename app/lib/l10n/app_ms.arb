@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Akaun anda telah dipadam.",
   "ui_dm_deleted_account": "Akaun dipadam",
   "ui_dm_deleted_account_detail": "Akaun ini telah dipadam, jadi mesej tidak lagi boleh dihantar di sini.",
-  "ui_login_google_hint": "Daftar dengan Google? Guna “Sign in with Google” sebaliknya."
+  "ui_login_google_hint": "Daftar dengan Google? Guna “Sign in with Google” sebaliknya.",
+  "ui_drawer_saved": "Disimpan",
+  "ui_drawer_liked": "Disukai"
 }

@@ -143,6 +143,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("翻译"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("重试"),
+      "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("已点赞"),
+      "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("已保存"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("撤销转发"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("更新密码"),
       "useDifferentAddress": MessageLookupByLibrary.simpleMessage("使用其他地址"),

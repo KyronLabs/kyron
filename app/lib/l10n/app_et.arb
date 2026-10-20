@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Sinu konto on kustutatud.",
   "ui_dm_deleted_account": "Kustutatud konto",
   "ui_dm_deleted_account_detail": "See konto on kustutatud, seega siia ei saa enam sõnumeid saata.",
-  "ui_login_google_hint": "Liitusid Google'iga? Kasuta selle asemel nuppu „Logi sisse Google'iga“."
+  "ui_login_google_hint": "Liitusid Google'iga? Kasuta selle asemel nuppu „Logi sisse Google'iga“.",
+  "ui_drawer_saved": "Salvestatud",
+  "ui_drawer_liked": "Meeldinud"
 }

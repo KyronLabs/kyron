@@ -3,12 +3,22 @@ import 'package:flutter_riverpod/legacy.dart';
 
 import '../models/feed_post.dart';
 import '../repositories/feed_repository.dart';
+import '../services/impression_reporter.dart';
 import '../utils/api_error_message.dart';
 import 'api_client_provider.dart';
 
 final feedRepositoryProvider = Provider<FeedRepository>(
   (ref) => FeedRepository(ref.read(apiClientProvider)),
 );
+
+/// What For You has put on screen, reported so the next session moves on.
+final impressionReporterProvider = Provider<ImpressionReporter>((ref) {
+  final reporter = ImpressionReporter(
+    (ids) => ref.read(feedRepositoryProvider).recordImpressions(ids),
+  );
+  ref.onDispose(reporter.dispose);
+  return reporter;
+});
 
 /// Which list of posts a [PostListNotifier] reads.
 ///
@@ -165,6 +175,11 @@ class PostListNotifier extends StateNotifier<FeedState> {
 
   /// Loads the first page, replacing whatever is held.
   Future<void> refresh() async {
+    // A first page is a new ranking of For You, so what it shows counts as
+    // shown again.
+    if (_source == PostListSource.recent) {
+      _ref.read(impressionReporterProvider).startSession();
+    }
     state = state.copyWith(isLoadingFirstPage: true, clearError: true);
     try {
       final page = await _page();

@@ -765,5 +765,7 @@
   "ui_delete_account_done": "ลบบัญชีของคุณแล้ว",
   "ui_dm_deleted_account": "บัญชีที่ถูกลบ",
   "ui_dm_deleted_account_detail": "บัญชีนี้ถูกลบแล้ว จึงไม่สามารถส่งข้อความมาที่นี่ได้อีก",
-  "ui_login_google_hint": "สมัครด้วย Google ใช่ไหม ใช้ «Sign in with Google» แทน"
+  "ui_login_google_hint": "สมัครด้วย Google ใช่ไหม ใช้ «Sign in with Google» แทน",
+  "ui_drawer_saved": "ที่บันทึกไว้",
+  "ui_drawer_liked": "ที่ถูกใจ"
 }

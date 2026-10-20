@@ -765,5 +765,7 @@
   "ui_delete_account_done": "Ձեր հաշիվը ջնջվել է։",
   "ui_dm_deleted_account": "Ջնջված հաշիվ",
   "ui_dm_deleted_account_detail": "Այս հաշիվը ջնջվել է, ուստի այստեղ այլևս հնարավոր չէ հաղորդագրություններ ուղարկել։",
-  "ui_login_google_hint": "Գրանցվե՞լ եք Google-ով։ Փոխարենը օգտագործեք «Sign in with Google»։"
+  "ui_login_google_hint": "Գրանցվե՞լ եք Google-ով։ Փոխարենը օգտագործեք «Sign in with Google»։",
+  "ui_drawer_saved": "Պահպանված",
+  "ui_drawer_liked": "Հավանած"
 }

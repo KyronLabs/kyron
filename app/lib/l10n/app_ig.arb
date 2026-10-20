@@ -765,5 +765,7 @@
   "ui_delete_account_done": "E hichapụla akaụntụ gị.",
   "ui_dm_deleted_account": "Akaụntụ e hichapụrụ",
   "ui_dm_deleted_account_detail": "E hichapụla akaụntụ a, ya mere a gaghị enwe ike izite ozi ebe a ọzọ.",
-  "ui_login_google_hint": "Ị debanyere aha na Google? Jiri «Sign in with Google» kama."
+  "ui_login_google_hint": "Ị debanyere aha na Google? Jiri «Sign in with Google» kama.",
+  "ui_drawer_saved": "Echekwara",
+  "ui_drawer_liked": "Ndị m masịrị"
 }

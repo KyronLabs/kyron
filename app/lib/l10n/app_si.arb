@@ -765,5 +765,7 @@
   "ui_delete_account_done": "ඔබගේ ගිණුම මකා දමා ඇත.",
   "ui_dm_deleted_account": "මකා දැමූ ගිණුම",
   "ui_dm_deleted_account_detail": "මෙම ගිණුම මකා දමා ඇති බැවින් මෙතැනට තවදුරටත් පණිවිඩ යැවිය නොහැක.",
-  "ui_login_google_hint": "Google සමඟ ලියාපදිංචි වූවාද? ඒ වෙනුවට «Sign in with Google» භාවිත කරන්න."
+  "ui_login_google_hint": "Google සමඟ ලියාපදිංචි වූවාද? ඒ වෙනුවට «Sign in with Google» භාවිත කරන්න.",
+  "ui_drawer_saved": "සුරැකි",
+  "ui_drawer_liked": "කැමති"
 }

@@ -104,6 +104,24 @@ describe('AuthGuard account provisioning', () => {
     expect(creates[0]).toMatchObject({ username: undefined });
   });
 
+  it('stores a handle lowercase, so "Ada" cannot sit beside "ada"', async () => {
+    const { guard, creates } = guardWith(null);
+
+    await guard.resolveSupabaseUser(subject({ username: 'Ada_Birds' }));
+
+    expect(creates[0]).toMatchObject({ username: 'ada_birds' });
+  });
+
+  it('will not take a reserved handle from a sign-in either', async () => {
+    // The same rule as choosing one in the app: an account named "suggested"
+    // would have a profile nobody could open, and "kyron" speaks for Kyron.
+    const { guard, creates } = guardWith(null);
+
+    await guard.resolveSupabaseUser(subject({ preferred_username: 'kyron' }));
+
+    expect(creates[0]).toMatchObject({ username: undefined });
+  });
+
   it('fills in an account provisioned before any of this existed', async () => {
     // Every account made by the earlier guard has both of these empty, and
     // nothing else would ever set them.
