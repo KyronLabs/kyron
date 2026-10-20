@@ -109,8 +109,12 @@ class ActionButton extends StatelessWidget {
               ),
       ),
       shape: const WidgetStatePropertyAll(StadiumBorder()),
+      // The theme's typeface, named: a button's label does not inherit one,
+      // and without it every button was drawn in the platform's font rather
+      // than Inter.
       textStyle: WidgetStatePropertyAll(
         TextStyle(
+          fontFamily: Theme.of(context).textTheme.labelLarge?.fontFamily,
           fontSize: expand
               ? 16
               : compact
