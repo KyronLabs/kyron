@@ -9,6 +9,7 @@ import {
 import { CommunityRole, MediaKind, Prisma } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import type { CommunityFilter } from './dto/community.dto';
+import { CommunityChatsService } from './community-chats.service';
 
 /** A community as a list row or a header needs it. */
 export interface CommunitySummary {
@@ -458,9 +459,14 @@ export class CommunitiesService {
           'You started this community, so you cannot leave it.',
         );
       }
-      await this.prisma.communityMember.deleteMany({
-        where: { communityId: community.id, userId: viewerId },
-      });
+      await this.prisma.$transaction([
+        this.prisma.communityMember.deleteMany({
+          where: { communityId: community.id, userId: viewerId },
+        }),
+        // Out of its chats as well. Reading them is decided by the
+        // membership just deleted; this keeps the "joined" counts honest.
+        CommunityChatsService.leaveAllIn(this.prisma, community.id, viewerId),
+      ]);
     }
 
     return this.bySlug(viewerId, slug);
@@ -656,6 +662,7 @@ export class CommunitiesService {
       this.prisma.communityMember.deleteMany({
         where: { communityId: community.id, userId },
       }),
+      CommunityChatsService.leaveAllIn(this.prisma, community.id, userId),
       this.prisma.communityBan.upsert({
         where: {
           communityId_userId: { communityId: community.id, userId },

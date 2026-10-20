@@ -52,9 +52,10 @@ export class ActDto {
   note?: string;
 
   @IsOptional()
-  @IsIn([ReportTarget.POST, ReportTarget.COMMENT], {
-    message: 'target is POST or COMMENT.',
-  })
+  @IsIn(
+    [ReportTarget.POST, ReportTarget.COMMENT, ReportTarget.COMMUNITY_MESSAGE],
+    { message: 'target is POST, COMMENT or COMMUNITY_MESSAGE.' },
+  )
   target?: ReportTarget;
 
   @IsOptional()
@@ -79,7 +80,9 @@ export class ActDto {
 
 /** Closing a report with nothing done. */
 export class DismissDto {
-  @IsEnum(ReportTarget, { message: 'target is POST, COMMENT or USER.' })
+  @IsEnum(ReportTarget, {
+    message: 'target is POST, COMMENT, COMMUNITY_MESSAGE or USER.',
+  })
   target!: ReportTarget;
 
   @IsUUID('4', { message: 'targetId must be an id.' })

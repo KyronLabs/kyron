@@ -21,6 +21,22 @@ export type RealtimeEvent =
    * readable reaches a socket whose token has since been revoked.
    */
   | { type: 'message.reaction'; conversationId: string; messageId: string }
+  /**
+   * Something happened in a community chat the reader has joined: a message
+   * arrived, went, or was reacted to; or the chat itself changed (renamed,
+   * a pin, who may write, closed). Ids only: the client reads what changed
+   * over HTTP, behind the same check of community membership as the page --
+   * which is how somebody removed from the community stops seeing it.
+   */
+  | {
+      type:
+        | 'community.chat.message'
+        | 'community.chat.message.deleted'
+        | 'community.chat.reaction';
+      chatId: string;
+      messageId: string;
+    }
+  | { type: 'community.chat.updated'; chatId: string }
   /** Somebody is writing in a conversation the reader is in. */
   | { type: 'message.typing'; conversationId: string; userId: string }
   /**

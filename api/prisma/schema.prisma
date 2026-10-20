@@ -99,55 +99,60 @@ model User {
   deletedAt DateTime? @db.Timestamptz()
 
   // Relations
-  profile               UserProfile?
-  emailVerification     EmailVerification?
-  sessions              UserSession[]
-  refreshTokens         RefreshToken[]
-  passwordResets        PasswordReset[]
-  auditLogs             AuditLog[]
-  interests             UserInterest[]
-  conversations         ConversationMember[]
-  messagesSent          Message[]
-  communities           CommunityMember[]
-  communityBans         CommunityBan[]        @relation("CommunityBanned")
-  communityBansMade     CommunityBan[]        @relation("CommunityBanner")
-  posts                 Post[]
+  profile                UserProfile?
+  emailVerification      EmailVerification?
+  sessions               UserSession[]
+  refreshTokens          RefreshToken[]
+  passwordResets         PasswordReset[]
+  auditLogs              AuditLog[]
+  interests              UserInterest[]
+  conversations          ConversationMember[]
+  messagesSent           Message[]
+  communities            CommunityMember[]
+  communityBans          CommunityBan[]          @relation("CommunityBanned")
+  communityBansMade      CommunityBan[]          @relation("CommunityBanner")
+  communityChatsMade     CommunityChat[]         @relation("CommunityChatCreator")
+  communityChats         CommunityChatMember[]
+  communityChatMessages  CommunityChatMessage[]  @relation("CommunityChatSender")
+  communityChatRemovals  CommunityChatMessage[]  @relation("CommunityChatRemover")
+  communityChatReactions CommunityChatReaction[]
+  posts                  Post[]
   // These two read backwards from their relation names, so they are spelled
   // out. `Follow.follower` holds followerId, so its back-reference is the set
   // of follows this account *made* -- the people it follows. Named the other
   // way round, `_count.followers` silently returned the following count.
-  following             Follow[]              @relation("follower")
-  followers             Follow[]              @relation("following")
-  likes                 PostLike[]
-  commentLikes          CommentLike[]
-  saves                 PostSave[]
-  comments              Comment[]
-  views                 PostView[]
-  impressions           PostImpression[]
-  messageOpens          MessageOpen[]
-  reposts               Repost[]
-  hiddenPosts           HiddenPost[]
-  mutes                 Mute[]                @relation("MuteOwner")
-  mutedBy               Mute[]                @relation("MuteTarget")
-  blocking              Block[]               @relation("Blocker")
-  blockedBy             Block[]               @relation("Blocked")
-  reportsMade           Report[]              @relation("Reporter")
-  interestSignals       InterestSignal[]
-  pollVotes             PollVote[]
-  kyronPointEvents      KyronPointEvent[] // 🔥 NEW
-  devices               DeviceToken[]
-  messageKeys           MessageKey[]
-  messageKeyShares      MessageKeyShare[]
-  feedback              Feedback[]
-  messageReactions      MessageReaction[]
-  moderationActions     ModerationAction[]    @relation("ModerationSubject")
-  moderationTaken       ModerationAction[]    @relation("ModerationModerator")
-  moderationUndone      ModerationAction[]    @relation("ModerationReverser")
-  appeals               Appeal[]              @relation("AppealAuthor")
-  appealsDecided        Appeal[]              @relation("AppealReviewer")
-  reportsResolved       Report[]              @relation("ReportResolver")
-  verificationRequests  VerificationRequest[] @relation("VerificationApplicant")
-  verificationsReviewed VerificationRequest[] @relation("VerificationReviewer")
+  following              Follow[]                @relation("follower")
+  followers              Follow[]                @relation("following")
+  likes                  PostLike[]
+  commentLikes           CommentLike[]
+  saves                  PostSave[]
+  comments               Comment[]
+  views                  PostView[]
+  impressions            PostImpression[]
+  messageOpens           MessageOpen[]
+  reposts                Repost[]
+  hiddenPosts            HiddenPost[]
+  mutes                  Mute[]                  @relation("MuteOwner")
+  mutedBy                Mute[]                  @relation("MuteTarget")
+  blocking               Block[]                 @relation("Blocker")
+  blockedBy              Block[]                 @relation("Blocked")
+  reportsMade            Report[]                @relation("Reporter")
+  interestSignals        InterestSignal[]
+  pollVotes              PollVote[]
+  kyronPointEvents       KyronPointEvent[] // 🔥 NEW
+  devices                DeviceToken[]
+  messageKeys            MessageKey[]
+  messageKeyShares       MessageKeyShare[]
+  feedback               Feedback[]
+  messageReactions       MessageReaction[]
+  moderationActions      ModerationAction[]      @relation("ModerationSubject")
+  moderationTaken        ModerationAction[]      @relation("ModerationModerator")
+  moderationUndone       ModerationAction[]      @relation("ModerationReverser")
+  appeals                Appeal[]                @relation("AppealAuthor")
+  appealsDecided         Appeal[]                @relation("AppealReviewer")
+  reportsResolved        Report[]                @relation("ReportResolver")
+  verificationRequests   VerificationRequest[]   @relation("VerificationApplicant")
+  verificationsReviewed  VerificationRequest[]   @relation("VerificationReviewer")
 
   @@index([email])
   @@index([status])
@@ -682,6 +687,9 @@ enum ReportTarget {
   POST
   COMMENT
   USER
+  /// A message in a community chat. Never a direct or group message: those
+  /// are sealed, and the server has nothing to show a reviewer.
+  COMMUNITY_MESSAGE
 }
 
 enum ReportReason {
@@ -1308,6 +1316,7 @@ model Community {
   members CommunityMember[]
   posts   Post[]
   bans    CommunityBan[]
+  chats   CommunityChat[]
 
   @@index([slug])
   @@index([createdAt(sort: Desc), id(sort: Desc)])
@@ -1589,4 +1598,117 @@ model ServiceIncident {
 
   @@index([startedAt])
   @@index([component, endedAt])
+}
+
+/// Who may write in a community chat. Reading is for every member of the
+/// community either way.
+enum CommunityChatWriters {
+  /// Anyone in the community who has joined the chat.
+  MEMBERS
+  /// The owner and moderators only: an announcements channel.
+  MODERATORS
+}
+
+/// A chat room inside a community. A community can have several.
+///
+/// Not end-to-end encrypted, and not a kind of Conversation, on purpose. Its
+/// members are whoever is in the community, which can be thousands of people
+/// who never agreed on keys; sealing for all of them is not possible, and
+/// pretending would be worse than saying so. Kept in tables of its own so the
+/// direct-message code -- which seals everything, and promises as much -- can
+/// never be handed one of these by mistake. See docs/MESSAGING.md.
+model CommunityChat {
+  id          String  @id @default(uuid()) @db.Uuid
+  communityId String  @db.Uuid
+  name        String
+  description String? @db.Text
+
+  writers CommunityChatWriters @default(MEMBERS)
+
+  /// Seconds somebody who is not a moderator waits between messages. 0 is
+  /// off.
+  slowModeSeconds Int @default(0)
+
+  /// Where it sits in the community's list, lowest first.
+  position Int @default(0)
+
+  /// The one message held at the top. Cleared if that message goes.
+  pinnedMessageId String? @unique @db.Uuid
+
+  /// Who opened it. Null once they have deleted their account: the chat is
+  /// the community's, and everyone else's messages in it stay.
+  createdById   String?   @db.Uuid
+  createdAt     DateTime  @default(now()) @db.Timestamptz()
+  lastMessageAt DateTime? @db.Timestamptz()
+
+  /// Closed by the community's owner or a moderator. Its messages stay for
+  /// moderation and are shown to nobody.
+  deletedAt DateTime? @db.Timestamptz()
+
+  community     Community              @relation(fields: [communityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdBy     User?                  @relation("CommunityChatCreator", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  pinnedMessage CommunityChatMessage?  @relation("CommunityChatPin", fields: [pinnedMessageId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  members       CommunityChatMember[]
+  messages      CommunityChatMessage[] @relation("CommunityChatMessages")
+
+  @@index([communityId, position])
+}
+
+/// Somebody who has joined a community chat: it is in their list, counts
+/// toward "joined", and they may write in it. Being in the community is what
+/// lets them read it; this is not.
+model CommunityChatMember {
+  chatId     String    @db.Uuid
+  userId     String    @db.Uuid
+  joinedAt   DateTime  @default(now()) @db.Timestamptz()
+  lastReadAt DateTime? @db.Timestamptz()
+
+  chat CommunityChat @relation(fields: [chatId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user User          @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([chatId, userId])
+  @@index([userId])
+}
+
+/// One message in a community chat. Readable by the server: see
+/// CommunityChat.
+model CommunityChatMessage {
+  id        String  @id @default(uuid()) @db.Uuid
+  chatId    String  @db.Uuid
+  senderId  String  @db.Uuid
+  body      String  @db.Text
+  replyToId String? @db.Uuid
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  /// Taken down: by its author (who also empties [body]), a community
+  /// moderator, or Kyron's moderation (which keeps [body], so an appeal can
+  /// put it back). Shown to nobody once set.
+  deletedAt   DateTime? @db.Timestamptz()
+  deletedById String?   @db.Uuid
+
+  chat      CommunityChat           @relation("CommunityChatMessages", fields: [chatId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sender    User                    @relation("CommunityChatSender", fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  deletedBy User?                   @relation("CommunityChatRemover", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  replyTo   CommunityChatMessage?   @relation("CommunityChatReplies", fields: [replyToId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  replies   CommunityChatMessage[]  @relation("CommunityChatReplies")
+  pinnedIn  CommunityChat?          @relation("CommunityChatPin")
+  reactions CommunityChatReaction[]
+
+  @@index([chatId, createdAt(sort: Desc), id(sort: Desc)])
+  @@index([senderId, createdAt(sort: Desc)])
+}
+
+/// One person's reaction to a community chat message. One each.
+model CommunityChatReaction {
+  messageId String   @db.Uuid
+  userId    String   @db.Uuid
+  emoji     String
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  message CommunityChatMessage @relation(fields: [messageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user    User                 @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([messageId, userId])
+  @@index([userId])
 }

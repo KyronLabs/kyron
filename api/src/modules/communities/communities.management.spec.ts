@@ -49,6 +49,9 @@ function serviceWith({
       findUnique: jest.fn().mockResolvedValue(null),
       findMany: jest.fn().mockResolvedValue([]),
     },
+    communityChatMember: {
+      deleteMany: jest.fn(record('chatMember.deleteMany')),
+    },
     $transaction: jest.fn((ops: Promise<unknown>[]) => Promise.all(ops)),
   } as unknown as PrismaService;
 
@@ -113,13 +116,14 @@ describe('community management', () => {
   describe('removing somebody', () => {
     it('deletes the membership and records the ban together', async () => {
       // Both or neither: a deleted membership without the ban is a removal
-      // undone by tapping Join.
+      // undone by tapping Join. And out of its chats in the same breath.
       const { svc, writes } = serviceWith();
 
       await svc.removeMember(OWNER, 'design', 'them', 'spam');
 
       expect(writes.map((w) => w.table)).toEqual([
         'member.deleteMany',
+        'chatMember.deleteMany',
         'ban.upsert',
       ]);
     });

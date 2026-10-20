@@ -200,13 +200,17 @@ export class AccountService {
     // (BannedIdentity keeps the address) -- but without what it wrote. The
     // case, the rule and the dates are the team's; the words were the
     // account's, and they go with it like everything else it wrote.
-    const [ownPosts, ownComments] = [
+    const [ownPosts, ownComments, ownChatMessages] = [
       await tx.post.findMany({
         where: { authorId: userId },
         select: { id: true },
       }),
       await tx.comment.findMany({
         where: { authorId: userId },
+        select: { id: true },
+      }),
+      await tx.communityChatMessage.findMany({
+        where: { senderId: userId },
         select: { id: true },
       }),
     ];
@@ -225,6 +229,10 @@ export class AccountService {
           {
             target: ReportTarget.COMMENT,
             targetId: { in: ownComments.map((c) => c.id) },
+          },
+          {
+            target: ReportTarget.COMMUNITY_MESSAGE,
+            targetId: { in: ownChatMessages.map((m) => m.id) },
           },
         ],
       },

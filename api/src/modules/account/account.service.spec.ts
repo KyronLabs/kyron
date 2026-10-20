@@ -98,6 +98,9 @@ function setup(s: Setup = {}) {
     },
     mediaJob: { deleteMany: jest.fn(record('mediaJob.deleteMany', {})) },
     post: { findMany: jest.fn(() => Promise.resolve([{ id: 'p1' }])) },
+    communityChatMessage: {
+      findMany: jest.fn(() => Promise.resolve([{ id: 'cm1' }])),
+    },
     moderationAction: {
       updateMany: jest.fn(() => Promise.resolve({ count: 0 })),
     },
@@ -342,6 +345,14 @@ describe('AccountService', () => {
       expect(tx.report.updateMany).toHaveBeenCalledWith(
         expect.objectContaining({ data: { snapshot: null } }),
       );
+      // Its community chat messages too: those are words it wrote.
+      const [{ where }] = tx.report.updateMany.mock.calls[0] as unknown as [
+        { where: { OR: unknown[] } },
+      ];
+      expect(where.OR).toContainEqual({
+        target: 'COMMUNITY_MESSAGE',
+        targetId: { in: ['cm1'] },
+      });
     });
 
     it('drops re-encodes waiting on its clips', async () => {
