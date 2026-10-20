@@ -10,6 +10,17 @@ import 'package:flutter/material.dart';
 /// same perforation as the stamp that offers it (StampCard), so the badge
 /// and the place you ask for it read as one thing.
 class VerifiedBadge extends StatelessWidget {
+  /// How big beside a name, as a share of the name's font size.
+  ///
+  /// It was set by hand at each use and came out a full em or more: a solid
+  /// disc that size reads larger than the letters beside it. At 0.8 the
+  /// scalloped edge lands on the height of the capitals, so it looks the
+  /// size of the text.
+  static const double perEm = 0.8;
+
+  /// The badge's size beside text of [fontSize].
+  static double sizeFor(double fontSize) => fontSize * perEm;
+
   final double size;
 
   /// Defaults to the theme's primary colour.
@@ -89,18 +100,20 @@ class _RosettePainter extends CustomPainter {
 
 /// A name with the badge after it when [verified], for a single line that
 /// ellipsises the name and never the badge.
+///
+/// The badge is sized from the name's own font size, so it matches the text
+/// wherever the name appears. Centred on the line, which for this typeface
+/// puts it on the middle of the capitals.
 class NameWithBadge extends StatelessWidget {
   final String name;
   final bool verified;
   final TextStyle? style;
-  final double badgeSize;
 
   const NameWithBadge({
     super.key,
     required this.name,
     required this.verified,
     this.style,
-    this.badgeSize = 15,
   });
 
   @override
@@ -112,13 +125,15 @@ class NameWithBadge extends StatelessWidget {
       style: style,
     );
     if (!verified) return text;
+    final fontSize =
+        DefaultTextStyle.of(context).style.merge(style).fontSize ?? 14;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(child: text),
         Padding(
-          padding: const EdgeInsets.only(left: 4),
-          child: VerifiedBadge(size: badgeSize),
+          padding: EdgeInsets.only(left: fontSize * 0.25),
+          child: VerifiedBadge(size: VerifiedBadge.sizeFor(fontSize)),
         ),
       ],
     );

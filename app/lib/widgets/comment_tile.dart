@@ -196,7 +196,6 @@ class _Header extends StatelessWidget {
                     child: NameWithBadge(
                       name: comment.author.displayName,
                       verified: comment.author.verified,
-                      badgeSize: 13,
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: TypographyTokens.fontSize2,

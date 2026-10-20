@@ -102,11 +102,15 @@ class NotificationItem extends StatelessWidget {
                           style: const TextStyle(fontWeight: FontWeight.w700),
                         ),
                         if (actor.verified)
-                          const WidgetSpan(
+                          WidgetSpan(
                             alignment: PlaceholderAlignment.middle,
                             child: Padding(
-                              padding: EdgeInsets.only(left: 3),
-                              child: VerifiedBadge(size: 14),
+                              padding: const EdgeInsets.only(left: 3),
+                              child: VerifiedBadge(
+                                size: VerifiedBadge.sizeFor(
+                                  TypographyTokens.fontSize3,
+                                ),
+                              ),
                             ),
                           ),
                         TextSpan(text: ' ${notification.actionText}'),

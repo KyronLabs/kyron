@@ -1103,7 +1103,6 @@ class ModerationAccountScreen extends ConsumerWidget {
             NameWithBadge(
               name: record.account.name ?? record.account.handle,
               verified: record.account.verified,
-              badgeSize: 18,
               style: const TextStyle(
                 fontSize: TypographyTokens.fontSize5,
                 fontWeight: FontWeight.w600,
