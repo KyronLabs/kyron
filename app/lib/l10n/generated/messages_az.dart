@@ -1092,6 +1092,64 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Heç biriniz Kyron-da digərinizi görməyəcək və aranızdakı hər hansı izləmə silinəcək. Onlara xəbər verilməyəcək.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Daşıyan"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Nə üçündür (istəyə bağlı)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Yalnız moderatorlar yaza bilər"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Elanlar üçün. İcmadakı hər kəs oxumağa və reaksiya verməyə davam edə bilər."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Söhbəti bağla"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Artıq heç kim burada oxuya və ya yaza bilməyəcək. Bunu geri qaytarmaq olmaz."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Bu söhbət bağlansın?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kopyalandı"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Mesaj hamı üçün silinir. Kyron yoxlama üçün surətini saxlayır."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Mesaj söhbətdəki hamı üçün silinir."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Söhbəti redaktə et"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Bu söhbəti açmaq mümkün olmadı."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Söhbətlər"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Söhbətə qoşul"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Söhbətlərini görmək və iştirak etmək üçün icmaya qoşulun."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("Qoşulanlar: \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Söhbətdən çıx"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "İcmada olduğunuz müddətdə onu oxumağa davam edə bilərsiniz."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Burada yalnız sahib və moderatorlar yaza bilər."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Söhbətin adı"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Yeni söhbət"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Hələ söhbət yoxdur."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Hələ söhbət yoxdur. İcma üçün birini açın."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "İcma söhbətləri tam şifrələnmir. İcmanın moderatorları və Kyron onları oxuya bilər."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Yuxarıda sabitlə"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Artıq bu söhbəti görə bilməzsiniz."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Yavaş rejim"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Mesajlar arasında nə qədər gözləmək lazımdır. Moderatorlara aid deyil."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 saat"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n dəqiqə"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Yavaş rejim: hər \$seconds saniyədə bir mesaj"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Söndürülüb"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n saniyə"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "İzləyici kimi oxuya və reaksiya verə bilərsiniz. Yazmaq üçün qoşulun."),
+      "ui_cchat_unpin":
+          MessageLookupByLibrary.simpleMessage("Sabitləməni ləğv et"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Siz"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("İcmalar"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Bu nə üçündür? (istəyə bağlı)"),

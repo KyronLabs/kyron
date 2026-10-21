@@ -163,6 +163,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("번역"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("다시 시도"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage("용도 (선택 사항)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("운영자만 쓸 수 있음"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "공지용입니다. 커뮤니티의 모든 사람은 계속 읽고 반응할 수 있습니다."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("채팅 닫기"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "아무도 이 채팅을 읽거나 쓸 수 없게 됩니다. 되돌릴 수 없습니다."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("이 채팅을 닫을까요?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("복사됨"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "메시지가 모두에게서 삭제됩니다. Kyron은 검토를 위해 사본을 보관합니다."),
+      "ui_cchat_delete_own":
+          MessageLookupByLibrary.simpleMessage("메시지가 채팅의 모두에게서 삭제됩니다."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("채팅 편집"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("이 채팅을 열 수 없습니다."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("채팅"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("채팅 참여"),
+      "ui_cchat_join_community":
+          MessageLookupByLibrary.simpleMessage("커뮤니티에 가입하면 채팅을 보고 참여할 수 있습니다."),
+      "ui_cchat_joined": MessageLookupByLibrary.simpleMessage("\$count명 참여"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("채팅 나가기"),
+      "ui_cchat_leave_detail":
+          MessageLookupByLibrary.simpleMessage("커뮤니티에 있는 동안에는 계속 읽을 수 있습니다."),
+      "ui_cchat_moderators_only":
+          MessageLookupByLibrary.simpleMessage("여기에는 소유자와 운영자만 쓸 수 있습니다."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("채팅 이름"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("새 채팅"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("아직 채팅이 없습니다."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "아직 채팅이 없습니다. 커뮤니티를 위해 하나 열어 보세요."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "커뮤니티 채팅은 종단간 암호화되지 않습니다. 커뮤니티 운영자와 Kyron이 읽을 수 있습니다."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("맨 위에 고정"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("이 채팅을 더 이상 볼 수 없습니다."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("슬로 모드"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "메시지 사이에 기다려야 하는 시간입니다. 운영자에게는 적용되지 않습니다."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1시간"),
+      "ui_cchat_slow_minutes": MessageLookupByLibrary.simpleMessage("\$n분"),
+      "ui_cchat_slow_mode":
+          MessageLookupByLibrary.simpleMessage("슬로 모드: \$seconds초마다 메시지 1개"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("끄기"),
+      "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n초"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "관전자로서 읽고 반응할 수 있습니다. 쓰려면 참여하세요."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("고정 해제"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("나"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("좋아요"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("저장됨"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("사람 추가"),

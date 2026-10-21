@@ -1022,6 +1022,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage(
+          "Dùng để làm gì (không bắt buộc)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Chỉ người kiểm duyệt mới có thể viết"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Dành cho thông báo. Mọi người trong cộng đồng vẫn có thể đọc và bày tỏ cảm xúc."),
+      "ui_cchat_close":
+          MessageLookupByLibrary.simpleMessage("Đóng cuộc trò chuyện"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Sẽ không ai có thể đọc hoặc viết trong đó nữa. Không thể hoàn tác."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Đóng cuộc trò chuyện này?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Đã sao chép"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Tin nhắn bị gỡ đối với mọi người. Kyron giữ một bản sao để xem xét."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Tin nhắn bị gỡ đối với mọi người trong cuộc trò chuyện."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Sửa cuộc trò chuyện"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Không thể mở cuộc trò chuyện này."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Trò chuyện"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Tham gia trò chuyện"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Tham gia cộng đồng để xem và tham gia các cuộc trò chuyện của cộng đồng."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count người đã tham gia"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Rời cuộc trò chuyện"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Bạn vẫn có thể đọc khi còn ở trong cộng đồng."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Chỉ chủ sở hữu và người kiểm duyệt mới có thể viết ở đây."),
+      "ui_cchat_name":
+          MessageLookupByLibrary.simpleMessage("Tên cuộc trò chuyện"),
+      "ui_cchat_new":
+          MessageLookupByLibrary.simpleMessage("Cuộc trò chuyện mới"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Chưa có cuộc trò chuyện nào."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Chưa có cuộc trò chuyện nào. Hãy mở một cuộc cho cộng đồng."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Trò chuyện cộng đồng không được mã hóa đầu cuối. Người kiểm duyệt của cộng đồng và Kyron có thể đọc."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Ghim lên đầu"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Bạn không thể xem cuộc trò chuyện này nữa."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Chế độ chậm"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Thời gian phải chờ giữa các tin nhắn. Không áp dụng cho người kiểm duyệt."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 giờ"),
+      "ui_cchat_slow_minutes": MessageLookupByLibrary.simpleMessage("\$n phút"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Chế độ chậm: một tin nhắn mỗi \$seconds giây"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Tắt"),
+      "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n giây"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Bạn có thể đọc và bày tỏ cảm xúc với tư cách người xem. Tham gia để viết."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Bỏ ghim"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Bạn"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

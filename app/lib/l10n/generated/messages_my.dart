@@ -1022,6 +1022,67 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("ဘာအတွက်လဲ (မဖြစ်မနေမဟုတ်)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("စီမံသူများသာ ရေးနိုင်သည်"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "ကြေညာချက်များအတွက်။ အသိုင်းအဝိုင်းရှိ လူတိုင်း ဆက်လက်ဖတ်ရှုပြီး တုံ့ပြန်နိုင်သည်။"),
+      "ui_cchat_close":
+          MessageLookupByLibrary.simpleMessage("ချက်တ်ကို ပိတ်ရန်"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "မည်သူမျှ ယင်းတွင် ဖတ်ရန် သို့မဟုတ် ရေးရန် မရတော့ပါ။ ပြန်ပြင်၍ မရပါ။"),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("ဤချက်တ်ကို ပိတ်မလား။"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("ကူးယူပြီး"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "မက်ဆေ့ချ်ကို လူတိုင်းအတွက် ဖယ်ရှားသည်။ Kyron သည် စိစစ်ရန် မိတ္တူတစ်စောင် သိမ်းထားသည်။"),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "မက်ဆေ့ချ်ကို ချက်တ်ရှိ လူတိုင်းအတွက် ဖယ်ရှားသည်။"),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("ချက်တ်ကို တည်းဖြတ်ရန်"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("ဤချက်တ်ကို ဖွင့်၍မရပါ။"),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ချက်တ်များ"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("ချက်တ်သို့ ဝင်ရန်"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "၎င်း၏ ချက်တ်များကို ကြည့်ရှုပြီး ပါဝင်ရန် အသိုင်းအဝိုင်းသို့ ဝင်ပါ။"),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count ဦး ဝင်ထား"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("ချက်တ်မှ ထွက်ရန်"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "အသိုင်းအဝိုင်းထဲ ရှိနေသရွေ့ ဆက်ဖတ်နိုင်ပါသည်။"),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "ဤနေရာတွင် ပိုင်ရှင်နှင့် စီမံသူများသာ ရေးနိုင်သည်။"),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ချက်တ်အမည်"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("ချက်တ်အသစ်"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("ချက်တ် မရှိသေးပါ။"),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "ချက်တ် မရှိသေးပါ။ အသိုင်းအဝိုင်းအတွက် တစ်ခု ဖွင့်ပါ။"),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "အသိုင်းအဝိုင်း ချက်တ်များကို အစမှအဆုံး ကုဒ်ဝှက်မထားပါ။ အသိုင်းအဝိုင်း၏ စီမံသူများနှင့် Kyron ဖတ်နိုင်သည်။"),
+      "ui_cchat_pin":
+          MessageLookupByLibrary.simpleMessage("အပေါ်ဆုံးတွင် ပင်ထိုးရန်"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("ဤချက်တ်ကို သင် မမြင်ရတော့ပါ။"),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("နှေးကွေးမုဒ်"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "မက်ဆေ့ချ်များကြား မည်မျှ စောင့်ရမည်။ စီမံသူများနှင့် မသက်ဆိုင်ပါ။"),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 နာရီ"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n မိနစ်"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "နှေးကွေးမုဒ်- \$seconds စက္ကန့်တိုင်း မက်ဆေ့ချ်တစ်စောင်"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("ပိတ်"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n စက္ကန့်"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "ကြည့်ရှုသူအဖြစ် ဖတ်ရှုပြီး တုံ့ပြန်နိုင်သည်။ ရေးရန် ဝင်ပါ။"),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ပင်ဖြုတ်ရန်"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("သင်"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

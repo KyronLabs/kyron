@@ -1119,6 +1119,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Cap dels dos veureu l'altre a Kyron, i qualsevol seguiment entre vosaltres s'elimina. No se'ls avisa.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Que porta"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Per a què serveix (opcional)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Només els moderadors hi poden escriure"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Per a anuncis. Tothom de la comunitat encara pot llegir i reaccionar."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Tanca el xat"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Ningú no hi podrà llegir ni escriure. No es pot desfer."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Vols tancar aquest xat?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Copiat"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "El missatge s’elimina per a tothom. Kyron en conserva una còpia per revisar-lo."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "El missatge s’elimina per a tothom al xat."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Edita el xat"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "No s’ha pogut obrir aquest xat."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Xats"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Uneix-te al xat"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Uneix-te a la comunitat per veure’n els xats i participar-hi."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count s’hi han unit"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Surt del xat"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "El podràs continuar llegint mentre siguis a la comunitat."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Només el propietari i els moderadors hi poden escriure."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Nom del xat"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Xat nou"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Encara no hi ha xats."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Encara no hi ha xats. Obre’n un per a la comunitat."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Els xats de comunitat no estan xifrats d’extrem a extrem. Els moderadors de la comunitat i Kyron els poden llegir."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Fixa a dalt"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("Ja no pots veure aquest xat."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Mode lent"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Quant s’ha d’esperar entre missatges. No s’aplica als moderadors."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 hora"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minuts"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Mode lent: un missatge cada \$seconds segons"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Desactivat"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n segons"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Pots llegir i reaccionar com a espectador. Uneix-t’hi per escriure."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Deixa de fixar"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Tu"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Comunitats"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Per a què serveix? (opcional)"),

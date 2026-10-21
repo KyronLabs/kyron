@@ -1155,6 +1155,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Κανείς από τους δύο δεν θα βλέπει τον άλλον στο Kyron, και οποιαδήποτε ακολουθία μεταξύ σας αφαιρείται. Δεν ειδοποιούνται.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Κουβαλώντας"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage(
+          "Σε τι χρησιμεύει (προαιρετικό)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Μόνο οι συντονιστές μπορούν να γράφουν"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Για ανακοινώσεις. Όλοι στην κοινότητα μπορούν ακόμα να διαβάζουν και να αντιδρούν."),
+      "ui_cchat_close":
+          MessageLookupByLibrary.simpleMessage("Κλείσιμο συνομιλίας"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Κανείς δεν θα μπορεί να διαβάσει ή να γράψει σε αυτήν. Δεν αναιρείται."),
+      "ui_cchat_close_title": MessageLookupByLibrary.simpleMessage(
+          "Κλείσιμο αυτής της συνομιλίας;"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Αντιγράφηκε"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Το μήνυμα αφαιρείται για όλους. Το Kyron κρατά ένα αντίγραφο για έλεγχο."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Το μήνυμα αφαιρείται για όλους στη συνομιλία."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Επεξεργασία συνομιλίας"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατό να ανοίξει αυτή η συνομιλία."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Συνομιλίες"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Συμμετοχή στη συνομιλία"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Γίνετε μέλος της κοινότητας για να βλέπετε τις συνομιλίες της και να συμμετέχετε."),
+      "ui_cchat_joined": MessageLookupByLibrary.simpleMessage("Μέλη: \$count"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Αποχώρηση από τη συνομιλία"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Μπορείτε ακόμα να τη διαβάζετε όσο είστε στην κοινότητα."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Εδώ μπορούν να γράφουν μόνο ο ιδιοκτήτης και οι συντονιστές."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Όνομα συνομιλίας"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Νέα συνομιλία"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage(
+          "Δεν υπάρχουν ακόμα συνομιλίες."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Δεν υπάρχουν ακόμα συνομιλίες. Ανοίξτε μία για την κοινότητα."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Οι συνομιλίες κοινότητας δεν έχουν κρυπτογράφηση από άκρο σε άκρο. Οι συντονιστές της κοινότητας και το Kyron μπορούν να τις διαβάσουν."),
+      "ui_cchat_pin":
+          MessageLookupByLibrary.simpleMessage("Καρφίτσωμα στην κορυφή"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Δεν μπορείτε πλέον να βλέπετε αυτή τη συνομιλία."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Αργή λειτουργία"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Πόσο περιμένει κανείς ανάμεσα στα μηνύματα. Δεν ισχύει για συντονιστές."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 ώρα"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n λεπτά"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Αργή λειτουργία: ένα μήνυμα κάθε \$seconds δευτερόλεπτα"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Ανενεργή"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n δευτερόλεπτα"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Ως θεατής μπορείτε να διαβάζετε και να αντιδράτε. Γίνετε μέλος για να γράψετε."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Ξεκαρφίτσωμα"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Εσείς"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Κοινότητες"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage(

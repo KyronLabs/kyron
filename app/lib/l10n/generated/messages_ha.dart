@@ -1022,6 +1022,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Don me ne (na zaɓi)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Masu kula ne kawai za su iya rubutu"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Don sanarwa. Kowa a cikin al'umma har yanzu zai iya karantawa da mayar da martani."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Rufe hira"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Babu wanda zai iya karantawa ko rubutu a cikinta. Ba za a iya mayar da wannan ba."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("A rufe wannan hirar?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("An kwafa"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Ana cire saƙon ga kowa. Kyron yana ajiye kwafi don dubawa."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Ana cire saƙon ga kowa a cikin hirar."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Gyara hira"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Ba a iya buɗe wannan hirar ba."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Hirarraki"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Shiga hira"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Shiga al'ummar don ganin hirarrakinta da shiga cikinsu."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count sun shiga"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Bar hira"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Za ka iya ci gaba da karanta ta muddin kana cikin al'ummar."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Mai shi da masu kula ne kawai za su iya rubutu a nan."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Sunan hira"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Sabuwar hira"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Babu hira tukuna."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Babu hira tukuna. Buɗe ɗaya don al'ummar."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Hirarrakin al'umma ba a ɓoye su daga farko zuwa ƙarshe ba. Masu kula da al'ummar da Kyron za su iya karanta su."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Maƙala a sama"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Ba za ka iya ganin wannan hirar ba kuma."),
+      "ui_cchat_slow":
+          MessageLookupByLibrary.simpleMessage("Yanayin a hankali"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Tsawon lokacin jira tsakanin saƙonni. Bai shafi masu kula ba."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("Awa 1"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Minti \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Yanayin a hankali: saƙo ɗaya kowane daƙiƙa \$seconds"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("A kashe"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Daƙiƙa \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Za ka iya karantawa da mayar da martani a matsayin ɗan kallo. Shiga don yin rubutu."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Cire maƙalawa"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Kai"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

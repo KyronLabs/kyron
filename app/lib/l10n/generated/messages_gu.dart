@@ -1022,6 +1022,61 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("આ શેના માટે છે (વૈકલ્પિક)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("ફક્ત મોડરેટર લખી શકે છે"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "જાહેરાતો માટે. સમુદાયમાં બધા હજી પણ વાંચી અને પ્રતિક્રિયા આપી શકે છે."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("ચેટ બંધ કરો"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "તેમાં કોઈ વાંચી કે લખી શકશે નહીં. આ પૂર્વવત્ કરી શકાતું નથી."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("આ ચેટ બંધ કરીએ?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("કૉપિ કર્યું"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "સંદેશ બધા માટે દૂર કરાય છે. Kyron સમીક્ષા માટે એક નકલ રાખે છે."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "સંદેશ ચેટમાં બધા માટે દૂર કરાય છે."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("ચેટમાં ફેરફાર કરો"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("આ ચેટ ખોલી શકાઈ નહીં."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ચેટ"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("ચેટમાં જોડાઓ"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "તેની ચેટ જોવા અને ભાગ લેવા માટે સમુદાયમાં જોડાઓ."),
+      "ui_cchat_joined": MessageLookupByLibrary.simpleMessage("\$count જોડાયા"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("ચેટ છોડો"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "તમે સમુદાયમાં હો ત્યાં સુધી તેને વાંચી શકો છો."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "અહીં ફક્ત માલિક અને મોડરેટર લખી શકે છે."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ચેટનું નામ"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("નવી ચેટ"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("હજી કોઈ ચેટ નથી."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "હજી કોઈ ચેટ નથી. સમુદાય માટે એક ખોલો."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "સમુદાય ચેટ એન્ડ-ટુ-એન્ડ એન્ક્રિપ્ટેડ નથી. સમુદાયના મોડરેટર અને Kyron તેને વાંચી શકે છે."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("સૌથી ઉપર પિન કરો"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("તમે હવે આ ચેટ જોઈ શકતા નથી."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("ધીમો મોડ"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "સંદેશાઓ વચ્ચે કેટલી રાહ જોવી. મોડરેટરને લાગુ નથી."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 કલાક"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n મિનિટ"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "ધીમો મોડ: દર \$seconds સેકન્ડે એક સંદેશ"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("બંધ"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n સેકન્ડ"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "તમે દર્શક તરીકે વાંચી અને પ્રતિક્રિયા આપી શકો છો. લખવા માટે જોડાઓ."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("અનપિન કરો"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("તમે"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

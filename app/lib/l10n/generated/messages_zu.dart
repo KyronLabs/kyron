@@ -1022,6 +1022,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Okwenzelwe ini (ongakukhetha)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Abaqondisi kuphela abangabhala"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Okwezimemezelo. Wonke umuntu emphakathini usengafunda futhi asabele."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Vala ingxoxo"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Akekho ozokwazi ukufunda noma ukubhala kuyo. Lokhu akunakuhlehliswa."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Uvale le ngxoxo?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kukopishiwe"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Umlayezo ususwa kuwo wonke umuntu. I-Kyron igcina ikhophi ukuze ibuyekezwe."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Umlayezo ususwa kuwo wonke umuntu osengxoxweni."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Hlela ingxoxo"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Ayikwazanga ukuvula le ngxoxo."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Izingxoxo"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Joyina ingxoxo"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Joyina umphakathi ukuze ubone futhi ubambe iqhaza ezingxoxweni zawo."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count bajoyinile"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Shiya ingxoxo"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Usengayifunda uma nje usemphakathini."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Umnikazi nabaqondisi kuphela abangabhala lapha."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Igama lengxoxo"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Ingxoxo entsha"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Azikho izingxoxo okwamanje."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Azikho izingxoxo okwamanje. Vula eyodwa yomphakathi."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Izingxoxo zomphakathi azibethelwe ukusuka ekugcineni kuya ekugcineni. Abaqondisi bomphakathi ne-Kyron bangazifunda."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Phina phezulu"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("Awusakwazi ukubona le ngxoxo."),
+      "ui_cchat_slow":
+          MessageLookupByLibrary.simpleMessage("Imodi ehamba kancane"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Isikhathi sokulinda phakathi kwemilayezo. Akusebenzi kubaqondisi."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("Ihora eli-1"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Imizuzu engu-\$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Imodi ehamba kancane: umlayezo owodwa njalo ngemizuzwana engu-\$seconds"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Valiwe"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Imizuzwana engu-\$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Ungafunda futhi usabele njengombukeli. Joyina ukuze ubhale."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Susa ukuphina"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Wena"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

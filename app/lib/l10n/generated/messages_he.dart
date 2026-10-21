@@ -1022,6 +1022,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("למה היא נועדה (לא חובה)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("רק מנחים יכולים לכתוב"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "להודעות. כל מי שבקהילה עדיין יכול לקרוא ולהגיב."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("סגירת הצ׳אט"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "אף אחד לא יוכל לקרוא או לכתוב בו. אי אפשר לבטל את זה."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("לסגור את הצ׳אט הזה?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("הועתק"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "ההודעה מוסרת אצל כולם. Kyron שומרת עותק לבדיקה."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "ההודעה מוסרת אצל כל מי שבצ׳אט."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("עריכת הצ׳אט"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לפתוח את הצ׳אט הזה."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("צ׳אטים"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("הצטרפות לצ׳אט"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "הצטרפו לקהילה כדי לראות את הצ׳אטים שלה ולהשתתף."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("הצטרפו: \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("יציאה מהצ׳אט"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "אפשר להמשיך לקרוא אותו כל עוד נמצאים בקהילה."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "רק הבעלים והמנחים יכולים לכתוב כאן."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("שם הצ׳אט"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("צ׳אט חדש"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("אין עדיין צ׳אטים."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "אין עדיין צ׳אטים. פתחו אחד לקהילה."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "צ׳אטים של קהילות אינם מוצפנים מקצה לקצה. מנחי הקהילה ו-Kyron יכולים לקרוא אותם."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("הצמדה למעלה"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("אין לך יותר גישה לצ׳אט הזה."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("מצב איטי"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "כמה זמן ממתינים בין הודעות. לא חל על מנחים."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("שעה אחת"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("דקות: \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "מצב איטי: הודעה אחת בכל \$seconds שניות"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("כבוי"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("שניות: \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "אפשר לקרוא ולהגיב כצופה. הצטרפו כדי לכתוב."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ביטול הצמדה"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("את/ה"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

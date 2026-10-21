@@ -1022,6 +1022,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("இது எதற்காக (விருப்பத்தேர்வு)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "மட்டுறுத்துநர்கள் மட்டுமே எழுத முடியும்"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "அறிவிப்புகளுக்காக. சமூகத்தில் உள்ள அனைவரும் இன்னும் படிக்கவும் எதிர்வினையாற்றவும் முடியும்."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("அரட்டையை மூடு"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "இதில் இனி யாரும் படிக்கவோ எழுதவோ முடியாது. இதைச் செயல்தவிர்க்க முடியாது."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("இந்த அரட்டையை மூடவா?"),
+      "ui_cchat_copied":
+          MessageLookupByLibrary.simpleMessage("நகலெடுக்கப்பட்டது"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "செய்தி அனைவருக்கும் அகற்றப்படும். மதிப்பாய்வுக்காக Kyron ஒரு நகலை வைத்திருக்கும்."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "செய்தி அரட்டையில் உள்ள அனைவருக்கும் அகற்றப்படும்."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("அரட்டையைத் திருத்து"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "இந்த அரட்டையைத் திறக்க முடியவில்லை."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("அரட்டைகள்"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("அரட்டையில் சேர்"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "இதன் அரட்டைகளைப் பார்க்கவும் பங்கேற்கவும் சமூகத்தில் சேருங்கள்."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count பேர் சேர்ந்துள்ளனர்"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("அரட்டையிலிருந்து வெளியேறு"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் சமூகத்தில் இருக்கும் வரை இதைப் படிக்கலாம்."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "இங்கே உரிமையாளரும் மட்டுறுத்துநர்களும் மட்டுமே எழுத முடியும்."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("அரட்டையின் பெயர்"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("புதிய அரட்டை"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("இன்னும் அரட்டைகள் இல்லை."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "இன்னும் அரட்டைகள் இல்லை. சமூகத்திற்காக ஒன்றைத் திறங்கள்."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "சமூக அரட்டைகள் முழுமையாக மறைகுறியாக்கப்படவில்லை. சமூகத்தின் மட்டுறுத்துநர்களும் Kyron-உம் அவற்றைப் படிக்க முடியும்."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("மேலே பின் செய்"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "இந்த அரட்டையை இனி உங்களால் பார்க்க முடியாது."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("மெதுவான பயன்முறை"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "செய்திகளுக்கு இடையே எவ்வளவு காத்திருக்க வேண்டும். மட்டுறுத்துநர்களுக்குப் பொருந்தாது."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 மணிநேரம்"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n நிமிடங்கள்"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "மெதுவான பயன்முறை: ஒவ்வொரு \$seconds விநாடிக்கும் ஒரு செய்தி"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("முடக்கம்"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n விநாடிகள்"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "பார்வையாளராகப் படிக்கவும் எதிர்வினையாற்றவும் முடியும். எழுத சேருங்கள்."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("பின்னை அகற்று"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("நீங்கள்"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

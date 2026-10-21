@@ -1022,6 +1022,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Nima uchun (ixtiyoriy)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Faqat moderatorlar yoza oladi"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "E’lonlar uchun. Hamjamiyatdagi hamma o‘qishda va munosabat bildirishda davom etishi mumkin."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Chatni yopish"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Unda endi hech kim o‘qiy yoki yoza olmaydi. Buni bekor qilib bo‘lmaydi."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Bu chat yopilsinmi?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Nusxa olindi"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Xabar hamma uchun olib tashlanadi. Kyron tekshirish uchun nusxasini saqlaydi."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Xabar chatdagi hamma uchun olib tashlanadi."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Chatni tahrirlash"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Bu chatni ochib bo‘lmadi."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chatlar"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Chatga qo‘shilish"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Chatlarini ko‘rish va qatnashish uchun hamjamiyatga qo‘shiling."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("Qo‘shilganlar: \$count"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Chatdan chiqish"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Hamjamiyatda ekansiz, uni o‘qishda davom etishingiz mumkin."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Bu yerda faqat egasi va moderatorlar yoza oladi."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Chat nomi"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Yangi chat"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Hali chatlar yo‘q."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Hali chatlar yo‘q. Hamjamiyat uchun bittasini oching."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Hamjamiyat chatlari uchdan-uchgacha shifrlanmagan. Hamjamiyat moderatorlari va Kyron ularni o‘qiy oladi."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Yuqoriga qadash"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Bu chatni endi ko‘ra olmaysiz."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Sekin rejim"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Xabarlar orasida qancha kutish kerak. Moderatorlarga taalluqli emas."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 soat"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n daqiqa"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Sekin rejim: har \$seconds soniyada bitta xabar"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("O‘chiq"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n soniya"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Tomoshabin sifatida o‘qishingiz va munosabat bildirishingiz mumkin. Yozish uchun qo‘shiling."),
+      "ui_cchat_unpin":
+          MessageLookupByLibrary.simpleMessage("Qadashni olib tashlash"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Siz"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

@@ -1022,6 +1022,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage(
+          "Ni kwa ajili ya nini (si lazima)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Wasimamizi pekee wanaweza kuandika"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Kwa matangazo. Kila mtu katika jumuiya bado anaweza kusoma na kujibu kwa hisia."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Funga gumzo"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Hakuna atakayeweza kusoma wala kuandika ndani yake. Hili haliwezi kutenduliwa."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Ufunge gumzo hili?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Imenakiliwa"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Ujumbe unaondolewa kwa kila mtu. Kyron huhifadhi nakala kwa ajili ya ukaguzi."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Ujumbe unaondolewa kwa kila mtu kwenye gumzo."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Hariri gumzo"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindikana kufungua gumzo hili."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Gumzo"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Jiunge na gumzo"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Jiunge na jumuiya ili uone na ushiriki katika magumzo yake."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count wamejiunga"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Ondoka kwenye gumzo"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Bado unaweza kulisoma ukiwa ndani ya jumuiya."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Mmiliki na wasimamizi pekee wanaweza kuandika hapa."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Jina la gumzo"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Gumzo jipya"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Bado hakuna magumzo."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Bado hakuna magumzo. Fungua moja kwa ajili ya jumuiya."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Magumzo ya jumuiya hayajasimbwa kutoka mwanzo hadi mwisho. Wasimamizi wa jumuiya na Kyron wanaweza kuyasoma."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Bandika juu"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("Huwezi tena kuona gumzo hili."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Hali ya polepole"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Muda wa kusubiri kati ya jumbe. Haiwahusu wasimamizi."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("Saa 1"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Dakika \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Hali ya polepole: ujumbe mmoja kila sekunde \$seconds"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Imezimwa"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Sekunde \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Unaweza kusoma na kujibu kwa hisia kama mtazamaji. Jiunge ili uandike."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Bandua"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Wewe"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

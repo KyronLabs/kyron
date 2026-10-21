@@ -6,6 +6,7 @@ import '../services/realtime_client.dart';
 import 'api_client_provider.dart';
 import 'enforcement_provider.dart';
 import 'verification_provider.dart';
+import 'community_chats_provider.dart';
 import 'messages_provider.dart';
 import 'notifications_provider.dart';
 import 'presence_provider.dart';
@@ -126,6 +127,31 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
         ref.invalidate(groupMembersProvider(changed));
       }
       _refreshConversationLists(ref);
+
+    case 'community.chat.message' || 'community.chat.reaction':
+      // Only for a chat that is open; the community's own list is read again
+      // whenever it is opened.
+      final chatId = event.data['chatId'] as String?;
+      if (chatId != null && ref.exists(communityChatProvider(chatId))) {
+        ref.read(communityChatProvider(chatId).notifier).pullNewest();
+      }
+
+    case 'community.chat.message.deleted':
+      final chatId = event.data['chatId'] as String?;
+      final gone = event.messageId;
+      if (chatId != null &&
+          gone != null &&
+          ref.exists(communityChatProvider(chatId))) {
+        ref.read(communityChatProvider(chatId).notifier).withdrawn(gone);
+      }
+
+    case 'community.chat.updated':
+      // Renamed, a pin, who may write, closed. Read again over HTTP, where
+      // the server decides whether this reader may still see it at all.
+      final chatId = event.data['chatId'] as String?;
+      if (chatId != null && ref.exists(communityChatProvider(chatId))) {
+        ref.read(communityChatProvider(chatId).notifier).refreshChat();
+      }
 
     case 'message.keys.requested':
       // A device in one of this reader's conversations is waiting on a

@@ -1022,6 +1022,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Waar hij voor is (optioneel)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Alleen moderators kunnen schrijven"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Voor aankondigingen. Iedereen in de community kan nog steeds lezen en reageren."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Chat sluiten"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Niemand kan er nog in lezen of schrijven. Dit kan niet ongedaan worden gemaakt."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Deze chat sluiten?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Gekopieerd"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Het bericht wordt voor iedereen verwijderd. Kyron bewaart een kopie voor beoordeling."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Het bericht wordt voor iedereen in de chat verwijderd."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Chat bewerken"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Kan deze chat niet openen."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chats"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Deelnemen aan chat"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Word lid van de community om de chats te zien en mee te doen."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count deelnemers"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Chat verlaten"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Je kunt hem blijven lezen zolang je in de community zit."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Alleen de eigenaar en moderators kunnen hier schrijven."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Naam van de chat"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Nieuwe chat"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("Nog geen chats."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Nog geen chats. Open er een voor de community."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Communitychats zijn niet end-to-end versleuteld. De moderators van de community en Kyron kunnen ze lezen."),
+      "ui_cchat_pin":
+          MessageLookupByLibrary.simpleMessage("Bovenaan vastzetten"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Je kunt deze chat niet meer zien."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Langzame modus"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Hoe lang mensen wachten tussen berichten. Niet voor moderators."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 uur"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minuten"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Langzame modus: één bericht per \$seconds seconden"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Uit"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n seconden"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Je kunt als toeschouwer lezen en reageren. Doe mee om te schrijven."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Losmaken"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Jij"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

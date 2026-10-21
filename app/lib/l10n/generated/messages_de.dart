@@ -1108,6 +1108,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Keiner von euch wird den anderen auf Kyron sehen, und bestehende Follows zwischen euch werden aufgehoben. Die andere Person wird nicht benachrichtigt.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Trägt"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Wofür er da ist (optional)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Nur Moderatoren können schreiben"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Für Ankündigungen. Alle in der Community können weiterhin lesen und reagieren."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Chat schließen"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Niemand kann darin mehr lesen oder schreiben. Das kann nicht rückgängig gemacht werden."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Diesen Chat schließen?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kopiert"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Die Nachricht wird für alle entfernt. Kyron bewahrt eine Kopie zur Überprüfung auf."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Die Nachricht wird für alle im Chat entfernt."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Chat bearbeiten"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Dieser Chat konnte nicht geöffnet werden."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chats"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Chat beitreten"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Tritt der Community bei, um ihre Chats zu sehen und mitzumachen."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count beigetreten"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Chat verlassen"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Du kannst ihn weiterhin lesen, solange du in der Community bist."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Nur der Eigentümer und die Moderatoren können hier schreiben."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Name des Chats"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Neuer Chat"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Noch keine Chats."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Noch keine Chats. Eröffne einen für die Community."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Community-Chats sind nicht Ende-zu-Ende-verschlüsselt. Die Moderatoren der Community und Kyron können sie lesen."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Oben anheften"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Du kannst diesen Chat nicht mehr sehen."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Langsamer Modus"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Wie lange man zwischen Nachrichten warten muss. Gilt nicht für Moderatoren."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 Stunde"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n Minuten"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Langsamer Modus: eine Nachricht alle \$seconds Sekunden"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Aus"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n Sekunden"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Du kannst als Zuschauer lesen und reagieren. Tritt bei, um zu schreiben."),
+      "ui_cchat_unpin":
+          MessageLookupByLibrary.simpleMessage("Nicht mehr anheften"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Du"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Wofür ist es? (optional)"),

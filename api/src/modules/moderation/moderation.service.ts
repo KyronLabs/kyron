@@ -284,7 +284,7 @@ export class ModerationService {
     reason: ReportReason,
     detail?: string,
   ) {
-    const snapshot = await this.snapshotOf(target, targetId);
+    const snapshot = await this.snapshotOf(reporterId, target, targetId);
     if (snapshot === null) throw new NotFoundException('Nothing to report.');
 
     const report = await this.prisma.report.upsert({
@@ -308,9 +308,38 @@ export class ModerationService {
   }
 
   private async snapshotOf(
+    reporterId: string,
     target: ReportTarget,
     targetId: string,
   ): Promise<string | null> {
+    if (target === ReportTarget.COMMUNITY_MESSAGE) {
+      // Only by somebody who could read it: a member of the community it was
+      // said in, while it is still up. Anybody else is reporting an id.
+      const message = await this.prisma.communityChatMessage.findFirst({
+        where: {
+          id: targetId,
+          deletedAt: null,
+          chat: {
+            deletedAt: null,
+            community: {
+              deletedAt: null,
+              members: { some: { userId: reporterId } },
+            },
+          },
+        },
+        select: {
+          body: true,
+          senderId: true,
+          chat: {
+            select: { name: true, community: { select: { slug: true } } },
+          },
+        },
+      });
+      return message
+        ? `community chat message by ${message.senderId} in ` +
+            `c/${message.chat.community.slug} › ${message.chat.name}: ${message.body}`
+        : null;
+    }
     if (target === ReportTarget.POST) {
       const post = await this.prisma.post.findUnique({
         where: { id: targetId },
@@ -327,6 +356,7 @@ export class ModerationService {
         ? `comment by ${comment.authorId}: ${comment.content}`
         : null;
     }
+    if (target !== ReportTarget.USER) return null;
     const user = await this.prisma.user.findUnique({
       where: { id: targetId },
       select: { username: true, name: true },

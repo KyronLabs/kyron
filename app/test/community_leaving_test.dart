@@ -2,14 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/community.dart';
+import 'package:kyron_app/models/community_chat.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/providers/communities_provider.dart';
+import 'package:kyron_app/providers/community_chats_provider.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/repositories/communities_repository.dart';
 import 'package:kyron_app/repositories/feed_repository.dart';
 import 'package:kyron_app/screens/community_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+
+/// The community page lists its chats; these tests are about the rest of it.
+final _noChats = communityChatsProvider.overrideWith(
+  (ref, slug) async => const <CommunityChat>[],
+);
 
 /// Leaving a community was one tap on a button in its header, labelled
 /// "Joined". No question, nothing to say it had happened, and the button then
@@ -68,6 +75,7 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
+          _noChats,
           communitiesRepositoryProvider.overrideWithValue(repo),
           feedRepositoryProvider.overrideWithValue(_Feed()),
         ],

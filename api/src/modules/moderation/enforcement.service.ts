@@ -222,7 +222,7 @@ export class EnforcementService {
       [...groups.values()]
         .filter((g) => g[0].target === target)
         .map((g) => g[0].targetId);
-    const [posts, comments] = await Promise.all([
+    const [posts, comments, chatMessages] = await Promise.all([
       this.prisma.post.findMany({
         where: { id: { in: ids(ReportTarget.POST) } },
         select: { id: true, authorId: true, content: true, deletedAt: true },
@@ -237,16 +237,32 @@ export class EnforcementService {
           postId: true,
         },
       }),
+      this.prisma.communityChatMessage.findMany({
+        where: { id: { in: ids(ReportTarget.COMMUNITY_MESSAGE) } },
+        select: { id: true, senderId: true, body: true, deletedAt: true },
+      }),
     ]);
     const postById = new Map(posts.map((p) => [p.id, p]));
     const commentById = new Map(comments.map((c) => [c.id, c]));
+    const chatMessageById = new Map(chatMessages.map((m) => [m.id, m]));
 
-    const subjectOf = (target: ReportTarget, id: string) =>
-      target === ReportTarget.USER
-        ? id
-        : target === ReportTarget.POST
-          ? postById.get(id)?.authorId
-          : commentById.get(id)?.authorId;
+    const subjectOf = (
+      target: ReportTarget,
+      id: string,
+    ): string | undefined => {
+      switch (target) {
+        case ReportTarget.USER:
+          return id;
+        case ReportTarget.POST:
+          return postById.get(id)?.authorId;
+        case ReportTarget.COMMENT:
+          return commentById.get(id)?.authorId;
+        case ReportTarget.COMMUNITY_MESSAGE:
+          return chatMessageById.get(id)?.senderId;
+        default:
+          return unreachable(target);
+      }
+    };
     const subjectIds = [
       ...new Set(
         [...groups.values()]
@@ -262,16 +278,23 @@ export class EnforcementService {
       const { target, targetId } = group[0];
       const post = postById.get(targetId);
       const comment = commentById.get(targetId);
-      const live =
-        target === ReportTarget.POST
-          ? post && !post.deletedAt
-            ? post.content
-            : null
-          : target === ReportTarget.COMMENT
-            ? comment && !comment.deletedAt
-              ? comment.content
-              : null
-            : null;
+      const chatMessage = chatMessageById.get(targetId);
+      const live = (() => {
+        switch (target) {
+          case ReportTarget.POST:
+            return post && !post.deletedAt ? post.content : null;
+          case ReportTarget.COMMENT:
+            return comment && !comment.deletedAt ? comment.content : null;
+          case ReportTarget.COMMUNITY_MESSAGE:
+            return chatMessage && !chatMessage.deletedAt
+              ? chatMessage.body
+              : null;
+          case ReportTarget.USER:
+            return null;
+          default:
+            return unreachable(target);
+        }
+      })();
       const subjectId = subjectOf(target, targetId);
 
       const counts = new Map<ReportReason, number>();
@@ -895,6 +918,21 @@ export class EnforcementService {
         deleted: post.deletedAt !== null,
       };
     }
+    if (target === ReportTarget.COMMUNITY_MESSAGE) {
+      const message = await this.prisma.communityChatMessage.findUnique({
+        where: { id: targetId },
+        select: { senderId: true, body: true, deletedAt: true },
+      });
+      if (!message) throw new NotFoundException('No such message.');
+      return {
+        authorId: message.senderId,
+        text: message.body,
+        deleted: message.deletedAt !== null,
+      };
+    }
+    if (target !== ReportTarget.COMMENT) {
+      throw new BadRequestException('Say which post, comment or message.');
+    }
     const comment = await this.prisma.comment.findUnique({
       where: { id: targetId },
       select: { authorId: true, content: true, deletedAt: true },
@@ -925,6 +963,20 @@ export class EnforcementService {
       });
       return count > 0;
     }
+    if (target === ReportTarget.COMMUNITY_MESSAGE) {
+      // Its words are kept, unlike its author deleting it, so reversing the
+      // decision can put it back as it was.
+      const { count } = await tx.communityChatMessage.updateMany({
+        where: { id: targetId, deletedAt: null },
+        data: { deletedAt: now },
+      });
+      await tx.communityChat.updateMany({
+        where: { pinnedMessageId: targetId },
+        data: { pinnedMessageId: null },
+      });
+      return count > 0;
+    }
+    if (target !== ReportTarget.COMMENT) return false;
     const comment = await tx.comment.findUnique({
       where: { id: targetId },
       select: { postId: true },
@@ -957,6 +1009,21 @@ export class EnforcementService {
       });
       return;
     }
+    if (target === ReportTarget.COMMUNITY_MESSAGE) {
+      // Only what a decision took down: its words still there, and no
+      // community moderator's name on the removal.
+      await tx.communityChatMessage.updateMany({
+        where: {
+          id: targetId,
+          deletedAt: { not: null },
+          deletedById: null,
+          body: { not: '' },
+        },
+        data: { deletedAt: null },
+      });
+      return;
+    }
+    if (target !== ReportTarget.COMMENT) return;
     const comment = await tx.comment.findUnique({
       where: { id: targetId },
       select: { postId: true },
@@ -1136,7 +1203,9 @@ export function noticeFor(action: {
       ? 'Your reply was removed'
       : action.target === ReportTarget.POST
         ? 'Your post was removed'
-        : null;
+        : action.target === ReportTarget.COMMUNITY_MESSAGE
+          ? 'Your message in a community chat was removed'
+          : null;
   const body = (() => {
     switch (action.kind) {
       case ModerationKind.REMOVE:
@@ -1162,4 +1231,13 @@ export function noticeFor(action: {
 function readable(snapshot: string | null): string | null {
   if (!snapshot) return null;
   return snapshot.replace(/^(post|comment) by [0-9a-f-]{36}: /, '');
+}
+
+/**
+ * Where a switch over every report target ends. A target added to the enum
+ * and not handled is a compile error here, rather than a case that quietly
+ * falls through to somebody else's branch at run time.
+ */
+function unreachable(target: never): never {
+  throw new Error(`Unhandled report target: ${String(target)}`);
 }

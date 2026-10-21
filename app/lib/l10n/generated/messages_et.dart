@@ -1066,6 +1066,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Mõlemad te ei näe teineteist Kyronis ning kõik jälgimised teie vahel eemaldatakse. Neid sellest ei teavitata.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Sisaldab"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Milleks see on (valikuline)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Kirjutada saavad ainult moderaatorid"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Teadaanneteks. Kõik kogukonnas saavad endiselt lugeda ja reageerida."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Sulge vestlus"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Keegi ei saa selles enam lugeda ega kirjutada. Seda ei saa tagasi võtta."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Kas sulgeda see vestlus?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kopeeritud"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Sõnum eemaldatakse kõigi jaoks. Kyron hoiab ülevaatuseks koopiat alles."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Sõnum eemaldatakse kõigi jaoks vestluses."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Muuda vestlust"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Seda vestlust ei õnnestunud avada."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Vestlused"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Liitu vestlusega"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Liitu kogukonnaga, et näha selle vestlusi ja osaleda."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("Liitunud: \$count"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Lahku vestlusest"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Saad seda endiselt lugeda, kuni oled kogukonnas."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Siia saavad kirjutada ainult omanik ja moderaatorid."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Vestluse nimi"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Uus vestlus"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Vestlusi veel pole."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Vestlusi veel pole. Ava üks kogukonnale."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Kogukonna vestlused ei ole otspunktkrüpteeritud. Kogukonna moderaatorid ja Kyron saavad neid lugeda."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Kinnita üles"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("Sa ei näe seda vestlust enam."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Aeglane režiim"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Kui kaua sõnumite vahel oodatakse. Moderaatoritele ei kehti."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 tund"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minutit"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Aeglane režiim: üks sõnum iga \$seconds sekundi järel"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Väljas"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n sekundit"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Saad vaatajana lugeda ja reageerida. Kirjutamiseks liitu."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Vabasta"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Sina"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Kogukonnad"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Milleks see on? (valikuline)"),

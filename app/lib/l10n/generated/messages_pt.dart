@@ -1022,6 +1022,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Para que serve (opcional)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Só os moderadores podem escrever"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Para anúncios. Todos na comunidade ainda podem ler e reagir."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Fechar chat"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Ninguém poderá ler nem escrever nele. Isso não pode ser desfeito."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Fechar este chat?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Copiado"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "A mensagem é removida para todos. O Kyron guarda uma cópia para análise."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "A mensagem é removida para todos no chat."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Editar chat"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Não foi possível abrir este chat."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chats"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Entrar no chat"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Entre na comunidade para ver os chats dela e participar."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count entraram"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Sair do chat"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Você ainda pode lê-lo enquanto estiver na comunidade."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Só o dono e os moderadores podem escrever aqui."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Nome do chat"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Novo chat"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Ainda não há chats."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Ainda não há chats. Abra um para a comunidade."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Os chats de comunidade não têm criptografia de ponta a ponta. Os moderadores da comunidade e o Kyron podem lê-los."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Fixar no topo"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Você não pode mais ver este chat."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Modo lento"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Quanto tempo cada pessoa espera entre mensagens. Não vale para moderadores."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 hora"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minutos"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Modo lento: uma mensagem a cada \$seconds segundos"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Desligado"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n segundos"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Você pode ler e reagir como espectador. Entre para escrever."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Desafixar"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Você"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

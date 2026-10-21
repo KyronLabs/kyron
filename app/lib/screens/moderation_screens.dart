@@ -192,7 +192,8 @@ String _whose(ReportCase item) {
   return switch (item.target) {
     ReportTarget.comment => 'Reply by $who',
     ReportTarget.user => 'Account $who',
-    _ => 'Post by $who',
+    ReportTarget.communityMessage => 'Community chat message by $who',
+    ReportTarget.post => 'Post by $who',
   };
 }
 
@@ -713,7 +714,8 @@ String noticeTemplate({
   final what = switch (target) {
     ReportTarget.comment => 'This reply',
     ReportTarget.post => 'This post',
-    _ => 'Your account',
+    ReportTarget.communityMessage => 'This message',
+    ReportTarget.user || null => 'Your account',
   };
   final why = switch (rule) {
     ReportReason.spam =>
@@ -835,9 +837,11 @@ class _DecisionScreenState extends ConsumerState<DecisionScreen> {
   }
 
   String get _verb => switch (_kind) {
-        ModerationKind.remove => widget.target == ReportTarget.comment
-            ? 'Remove the reply'
-            : 'Remove the post',
+        ModerationKind.remove => switch (widget.target) {
+            ReportTarget.comment => 'Remove the reply',
+            ReportTarget.communityMessage => 'Remove the message',
+            _ => 'Remove the post',
+          },
         ModerationKind.warn => 'Send warning',
         ModerationKind.suspend =>
           'Suspend for ${_days == 1 ? '1 day' : '$_days days'}',
@@ -930,9 +934,11 @@ class _DecisionScreenState extends ConsumerState<DecisionScreen> {
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
               title: Text(
-                widget.target == ReportTarget.comment
-                    ? 'Take the reply down too'
-                    : 'Take the post down too',
+                switch (widget.target) {
+                  ReportTarget.comment => 'Take the reply down too',
+                  ReportTarget.communityMessage => 'Take the message down too',
+                  _ => 'Take the post down too',
+                },
               ),
               value: _remove,
               onChanged: (value) => _choose(() => _remove = value),

@@ -1022,6 +1022,67 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage(
+          "Kam tā paredzēta (nav obligāti)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Rakstīt var tikai moderatori"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Paziņojumiem. Visi kopienā joprojām var lasīt un reaģēt."),
+      "ui_cchat_close":
+          MessageLookupByLibrary.simpleMessage("Aizvērt tērzēšanu"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Neviens tajā vairs nevarēs ne lasīt, ne rakstīt. To nevar atsaukt."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Vai aizvērt šo tērzēšanu?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Nokopēts"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Ziņa tiek noņemta visiem. Kyron patur kopiju pārskatīšanai."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Ziņa tiek noņemta visiem tērzēšanā."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Rediģēt tērzēšanu"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās atvērt šo tērzēšanu."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Tērzēšanas"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Pievienoties tērzēšanai"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Pievienojieties kopienai, lai redzētu tās tērzēšanas un piedalītos."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("Pievienojušies: \$count"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Pamest tērzēšanu"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Jūs to joprojām varat lasīt, kamēr esat kopienā."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Šeit rakstīt var tikai īpašnieks un moderatori."),
+      "ui_cchat_name":
+          MessageLookupByLibrary.simpleMessage("Tērzēšanas nosaukums"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Jauna tērzēšana"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Vēl nav tērzēšanu."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Vēl nav tērzēšanu. Atveriet vienu kopienai."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Kopienas tērzēšanas nav šifrētas pilnībā. Kopienas moderatori un Kyron tās var lasīt."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Piespraust augšā"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Jūs vairs nevarat redzēt šo tērzēšanu."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Lēnais režīms"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Cik ilgi jāgaida starp ziņām. Neattiecas uz moderatoriem."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 stunda"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("Minūtes: \$n"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Lēnais režīms: viena ziņa ik pēc \$seconds s"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Izslēgts"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("Sekundes: \$n"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Kā skatītājs jūs varat lasīt un reaģēt. Pievienojieties, lai rakstītu."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Atspraust"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Jūs"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

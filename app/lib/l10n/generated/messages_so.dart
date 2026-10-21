@@ -1022,6 +1022,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage(
+          "Waa maxay ujeeddadiisu (ikhtiyaari)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Maamulayaasha oo keliya ayaa wax qori kara"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Ogeysiisyada. Qof kasta oo bulshada ku jira wali wuu akhrin karaa oo ka jawaabi karaa."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Xir sheekada"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Qofna kuma akhrin karo kumana qori karo. Tan dib looma celin karo."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Ma xiraysaa sheekadan?"),
+      "ui_cchat_copied":
+          MessageLookupByLibrary.simpleMessage("Waa la koobiyeeyay"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Fariinta waa laga saaraa qof kasta. Kyron waxay haysaa nuqul dib-u-eegis ah."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Fariinta waa laga saaraa qof kasta oo sheekada ku jira."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Wax ka beddel sheekada"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Sheekadan lama furi karo."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Sheekooyin"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Ku biir sheekada"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Ku biir bulshada si aad u aragto oo uga qayb qaadato sheekooyinkeeda."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count ayaa ku biiray"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Ka bax sheekada"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Wali waad akhrin kartaa inta aad bulshada ku jirto."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Milkiilaha iyo maamulayaasha oo keliya ayaa halkan wax ku qori kara."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Magaca sheekada"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Sheeko cusub"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Weli ma jiraan sheekooyin."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Weli ma jiraan sheekooyin. Mid u fur bulshada."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Sheekooyinka bulshada laguma sireeyo bilow ilaa dhammaad. Maamulayaasha bulshada iyo Kyron way akhrin karaan."),
+      "ui_cchat_pin":
+          MessageLookupByLibrary.simpleMessage("Ku dheji xagga sare"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Mar dambe ma arki kartid sheekadan."),
+      "ui_cchat_slow":
+          MessageLookupByLibrary.simpleMessage("Habka gaabiska ah"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Inta la sugo inta u dhexeysa fariimaha. Kuma khuseyso maamulayaasha."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 saac"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n daqiiqo"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Habka gaabiska ah: hal fariin \$seconds ilbiriqsi kasta"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Dami"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n ilbiriqsi"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Waad akhrin kartaa oo ka jawaabi kartaa adigoo daawade ah. Ku biir si aad wax u qorto."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Ka fur"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Adiga"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

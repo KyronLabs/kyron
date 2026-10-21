@@ -1022,6 +1022,60 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("ใช้สำหรับอะไร (ไม่บังคับ)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("เฉพาะผู้ดูแลที่เขียนได้"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "สำหรับประกาศ ทุกคนในชุมชนยังอ่านและแสดงความรู้สึกได้"),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("ปิดแชท"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "จะไม่มีใครอ่านหรือเขียนในแชทนี้ได้อีก การดำเนินการนี้ย้อนกลับไม่ได้"),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("ปิดแชทนี้ไหม"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("คัดลอกแล้ว"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "ข้อความจะถูกนำออกสำหรับทุกคน Kyron เก็บสำเนาไว้เพื่อตรวจสอบ"),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "ข้อความจะถูกนำออกสำหรับทุกคนในแชท"),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("แก้ไขแชท"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("เปิดแชทนี้ไม่ได้"),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("แชท"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("เข้าร่วมแชท"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "เข้าร่วมชุมชนเพื่อดูและมีส่วนร่วมในแชทของชุมชน"),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("เข้าร่วมแล้ว \$count คน"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("ออกจากแชท"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "คุณยังอ่านได้ตราบใดที่ยังอยู่ในชุมชน"),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "เฉพาะเจ้าของและผู้ดูแลที่เขียนที่นี่ได้"),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ชื่อแชท"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("แชทใหม่"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("ยังไม่มีแชท"),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "ยังไม่มีแชท เปิดแชทให้ชุมชนสักห้อง"),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "แชทของชุมชนไม่ได้เข้ารหัสตั้งแต่ต้นทางถึงปลายทาง ผู้ดูแลชุมชนและ Kyron อ่านได้"),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("ปักหมุดไว้ด้านบน"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "คุณไม่สามารถดูแชทนี้ได้อีกแล้ว"),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("โหมดช้า"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "ต้องรอนานเท่าใดระหว่างข้อความ ไม่มีผลกับผู้ดูแล"),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 ชั่วโมง"),
+      "ui_cchat_slow_minutes": MessageLookupByLibrary.simpleMessage("\$n นาที"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "โหมดช้า: หนึ่งข้อความทุก \$seconds วินาที"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("ปิด"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n วินาที"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "คุณอ่านและแสดงความรู้สึกได้ในฐานะผู้ชม เข้าร่วมเพื่อเขียน"),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("เลิกปักหมุด"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("คุณ"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

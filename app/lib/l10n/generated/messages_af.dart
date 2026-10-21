@@ -1081,6 +1081,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Nie een van julle sal die ander op Kyron sien nie, en enige volg tussen julle word verwyder. Hulle word nie ingelig nie.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Dra"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Waarvoor dit is (opsioneel)"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("Slegs moderators kan skryf"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Vir aankondigings. Almal in die gemeenskap kan steeds lees en reageer."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Sluit klets"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Niemand sal meer daarin kan lees of skryf nie. Dit kan nie ontdoen word nie."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Sluit hierdie klets?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Gekopieer"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Die boodskap word vir almal verwyder. Kyron hou 'n kopie vir hersiening."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Die boodskap word vir almal in die klets verwyder."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Wysig klets"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Kon nie hierdie klets oopmaak nie."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Kletse"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Sluit by klets aan"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Sluit by die gemeenskap aan om sy kletse te sien en deel te neem."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count het aangesluit"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Verlaat klets"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Jy kan dit steeds lees solank jy in die gemeenskap is."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Slegs die eienaar en moderators kan hier skryf."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Kletsnaam"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Nuwe klets"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Nog geen kletse nie."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Nog geen kletse nie. Maak een oop vir die gemeenskap."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Gemeenskapkletse is nie end-tot-end-geënkripteer nie. Die gemeenskap se moderators en Kyron kan dit lees."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Speld bo vas"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Jy kan nie meer hierdie klets sien nie."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Stadige modus"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Hoe lank mense tussen boodskappe wag. Nie vir moderators nie."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 uur"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minute"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Stadige modus: een boodskap elke \$seconds sekondes"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Af"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n sekondes"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Jy kan as toeskouer lees en reageer. Sluit aan om te skryf."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Maak los"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Jy"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Gemeenskappe"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Waarvoor is dit? (opsioneel)"),

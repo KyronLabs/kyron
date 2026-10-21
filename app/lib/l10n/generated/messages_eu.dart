@@ -1022,6 +1022,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Zertarako den (aukerakoa)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Moderatzaileek bakarrik idatz dezakete"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Iragarpenetarako. Komunitateko guztiek irakurri eta erreakzionatu dezakete oraindik."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Itxi txata"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Inork ezingo du bertan irakurri edo idatzi. Ezin da desegin."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Txat hau itxi nahi duzu?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kopiatuta"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Mezua guztientzat kentzen da. Kyronek kopia bat gordetzen du berrikusteko."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Mezua txateko guztientzat kentzen da."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Editatu txata"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Ezin izan da txat hau ireki."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Txatak"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Batu txatera"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Batu komunitatera haren txatak ikusteko eta parte hartzeko."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count batu dira"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Irten txatetik"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Komunitatean zauden bitartean irakurtzen jarrai dezakezu."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Jabeak eta moderatzaileek bakarrik idatz dezakete hemen."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Txataren izena"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Txat berria"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Ez dago txatik oraindik."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Ez dago txatik oraindik. Ireki bat komunitatearentzat."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Komunitateko txatak ez daude muturretik muturrera enkriptatuta. Komunitateko moderatzaileek eta Kyronek irakur ditzakete."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Ainguratu goian"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Ezin duzu txat hau gehiago ikusi."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Modu motela"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Mezuen artean zenbat itxaron behar den. Ez da moderatzaileei aplikatzen."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("Ordu 1"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minutu"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Modu motela: mezu bat \$seconds segundoro"),
+      "ui_cchat_slow_off":
+          MessageLookupByLibrary.simpleMessage("Desaktibatuta"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n segundo"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Ikusle gisa irakurri eta erreakzionatu dezakezu. Batu idazteko."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Kendu aingura"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Zu"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

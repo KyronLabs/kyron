@@ -1022,6 +1022,61 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about":
+          MessageLookupByLibrary.simpleMessage("Para saan ito (opsyonal)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Mga moderator lang ang makakasulat"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Para sa mga anunsyo. Lahat sa komunidad ay makakabasa at makakapag-react pa rin."),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Isara ang chat"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Wala nang makakabasa o makakasulat dito. Hindi na ito maibabalik."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Isara ang chat na ito?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Nakopya"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Aalisin ang mensahe para sa lahat. May itatagong kopya ang Kyron para sa pagsusuri."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Aalisin ang mensahe para sa lahat sa chat."),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("I-edit ang chat"),
+      "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi mabuksan ang chat na ito."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Mga chat"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("Sumali sa chat"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Sumali sa komunidad para makita at makilahok sa mga chat nito."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count ang sumali"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("Umalis sa chat"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Mababasa mo pa rin ito habang nasa komunidad ka."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Ang may-ari at mga moderator lang ang makakasulat dito."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Pangalan ng chat"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Bagong chat"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("Wala pang chat."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Wala pang chat. Magbukas ng isa para sa komunidad."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Hindi end-to-end encrypted ang mga chat ng komunidad. Mababasa ito ng mga moderator ng komunidad at ng Kyron."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("I-pin sa itaas"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Hindi mo na makikita ang chat na ito."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Slow mode"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Gaano katagal maghihintay sa pagitan ng mga mensahe. Hindi para sa mga moderator."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 oras"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minuto"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Slow mode: isang mensahe bawat \$seconds segundo"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Naka-off"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n segundo"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Makakabasa at makakapag-react ka bilang manonood. Sumali para makasulat."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("I-unpin"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Ikaw"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

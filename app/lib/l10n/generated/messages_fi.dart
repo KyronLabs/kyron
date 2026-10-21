@@ -1022,6 +1022,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
       ),
       "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage(
+          "Mitä varten se on (valinnainen)"),
+      "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
+          "Vain moderaattorit voivat kirjoittaa"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "Tiedotteille. Kaikki yhteisössä voivat edelleen lukea ja reagoida."),
+      "ui_cchat_close":
+          MessageLookupByLibrary.simpleMessage("Sulje keskustelu"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "Kukaan ei voi enää lukea tai kirjoittaa siihen. Tätä ei voi perua."),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("Suljetaanko tämä keskustelu?"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("Kopioitu"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "Viesti poistetaan kaikilta. Kyron säilyttää kopion tarkistusta varten."),
+      "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
+          "Viesti poistetaan kaikilta keskustelussa."),
+      "ui_cchat_edit":
+          MessageLookupByLibrary.simpleMessage("Muokkaa keskustelua"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("Keskustelua ei voitu avata."),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Keskustelut"),
+      "ui_cchat_join":
+          MessageLookupByLibrary.simpleMessage("Liity keskusteluun"),
+      "ui_cchat_join_community": MessageLookupByLibrary.simpleMessage(
+          "Liity yhteisöön nähdäksesi sen keskustelut ja osallistuaksesi."),
+      "ui_cchat_joined":
+          MessageLookupByLibrary.simpleMessage("\$count liittynyt"),
+      "ui_cchat_leave":
+          MessageLookupByLibrary.simpleMessage("Poistu keskustelusta"),
+      "ui_cchat_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Voit yhä lukea sitä niin kauan kuin olet yhteisössä."),
+      "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
+          "Vain omistaja ja moderaattorit voivat kirjoittaa tänne."),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Keskustelun nimi"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Uusi keskustelu"),
+      "ui_cchat_none":
+          MessageLookupByLibrary.simpleMessage("Ei vielä keskusteluja."),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "Ei vielä keskusteluja. Avaa yksi yhteisölle."),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "Yhteisökeskustelut eivät ole päästä päähän salattuja. Yhteisön moderaattorit ja Kyron voivat lukea niitä."),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Kiinnitä ylös"),
+      "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
+          "Et voi enää nähdä tätä keskustelua."),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Hidas tila"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "Kuinka kauan viestien välillä odotetaan. Ei koske moderaattoreita."),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 tunti"),
+      "ui_cchat_slow_minutes":
+          MessageLookupByLibrary.simpleMessage("\$n minuuttia"),
+      "ui_cchat_slow_mode": MessageLookupByLibrary.simpleMessage(
+          "Hidas tila: yksi viesti \$seconds sekunnin välein"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("Pois"),
+      "ui_cchat_slow_seconds":
+          MessageLookupByLibrary.simpleMessage("\$n sekuntia"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "Voit lukea ja reagoida katsojana. Liity kirjoittaaksesi."),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Irrota"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Sinä"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),

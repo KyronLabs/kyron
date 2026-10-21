@@ -164,6 +164,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("翻訳"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("再試行"),
+      "ui_cchat_about": MessageLookupByLibrary.simpleMessage("用途（任意）"),
+      "ui_cchat_announcements":
+          MessageLookupByLibrary.simpleMessage("モデレーターのみ投稿できます"),
+      "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
+          "お知らせ用です。コミュニティの全員が引き続き閲覧とリアクションができます。"),
+      "ui_cchat_close": MessageLookupByLibrary.simpleMessage("チャットを閉じる"),
+      "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
+          "誰もこのチャットを閲覧・投稿できなくなります。この操作は元に戻せません。"),
+      "ui_cchat_close_title":
+          MessageLookupByLibrary.simpleMessage("このチャットを閉じますか？"),
+      "ui_cchat_copied": MessageLookupByLibrary.simpleMessage("コピーしました"),
+      "ui_cchat_delete_other": MessageLookupByLibrary.simpleMessage(
+          "メッセージは全員の画面から削除されます。Kyron は確認のためにコピーを保持します。"),
+      "ui_cchat_delete_own":
+          MessageLookupByLibrary.simpleMessage("メッセージはチャットの全員の画面から削除されます。"),
+      "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("チャットを編集"),
+      "ui_cchat_failed":
+          MessageLookupByLibrary.simpleMessage("このチャットを開けませんでした。"),
+      "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("チャット"),
+      "ui_cchat_join": MessageLookupByLibrary.simpleMessage("チャットに参加"),
+      "ui_cchat_join_community":
+          MessageLookupByLibrary.simpleMessage("コミュニティに参加すると、チャットの閲覧と参加ができます。"),
+      "ui_cchat_joined": MessageLookupByLibrary.simpleMessage("\$count 人が参加中"),
+      "ui_cchat_leave": MessageLookupByLibrary.simpleMessage("チャットから退出"),
+      "ui_cchat_leave_detail":
+          MessageLookupByLibrary.simpleMessage("コミュニティにいる間は引き続き閲覧できます。"),
+      "ui_cchat_moderators_only":
+          MessageLookupByLibrary.simpleMessage("ここではオーナーとモデレーターのみ投稿できます。"),
+      "ui_cchat_name": MessageLookupByLibrary.simpleMessage("チャット名"),
+      "ui_cchat_new": MessageLookupByLibrary.simpleMessage("新しいチャット"),
+      "ui_cchat_none": MessageLookupByLibrary.simpleMessage("まだチャットはありません。"),
+      "ui_cchat_none_mod": MessageLookupByLibrary.simpleMessage(
+          "まだチャットはありません。コミュニティのために作成しましょう。"),
+      "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
+          "コミュニティチャットはエンドツーエンドで暗号化されていません。コミュニティのモデレーターと Kyron が閲覧できます。"),
+      "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("上部に固定"),
+      "ui_cchat_shut":
+          MessageLookupByLibrary.simpleMessage("このチャットはもう表示できません。"),
+      "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("低速モード"),
+      "ui_cchat_slow_detail": MessageLookupByLibrary.simpleMessage(
+          "メッセージ間の待ち時間です。モデレーターには適用されません。"),
+      "ui_cchat_slow_hour": MessageLookupByLibrary.simpleMessage("1 時間"),
+      "ui_cchat_slow_minutes": MessageLookupByLibrary.simpleMessage("\$n 分"),
+      "ui_cchat_slow_mode":
+          MessageLookupByLibrary.simpleMessage("低速モード：\$seconds 秒ごとに 1 件"),
+      "ui_cchat_slow_off": MessageLookupByLibrary.simpleMessage("オフ"),
+      "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n 秒"),
+      "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
+          "観覧者として閲覧とリアクションができます。投稿するには参加してください。"),
+      "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("固定を解除"),
+      "ui_cchat_you": MessageLookupByLibrary.simpleMessage("あなた"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("いいね"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("保存済み"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("メンバーを追加"),
