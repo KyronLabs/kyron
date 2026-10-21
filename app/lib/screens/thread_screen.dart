@@ -3148,8 +3148,12 @@ class _EventLine extends StatelessWidget {
       );
 }
 
-/// What a view-once message is, inside its bubble: the mark, the kind of
-/// thing, and where it stands -- to be opened, opened, or gone.
+/// What a view-once message is, inside its bubble: the mark and one line --
+/// the kind of thing while it can be opened, where it stands once it cannot.
+///
+/// One line, the height of a line of text, so a view-once message is a pill
+/// like any other. The ring already says "view once"; a second line saying
+/// it again made the bubble half as tall again as a message.
 class _OnceLabel extends StatelessWidget {
   final ViewOnce once;
   final bool mine;
@@ -3166,8 +3170,11 @@ class _OnceLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final String status;
+    final kind = mediaPreview(l10n, [once.kind]);
     final bool spent;
+
+    // Where it stands, when that is news: null while it waits to be opened.
+    final String? status;
     if (mine) {
       spent = once.spent;
       status = once.gone && once.openedCount == 0
@@ -3179,42 +3186,52 @@ class _OnceLabel extends StatelessWidget {
                   .replaceAll(r'$total', '${once.recipients}')
               : once.openedCount > 0
                   ? l10n.ui('ui_once_opened', 'Opened')
-                  : l10n.ui('ui_once_label', 'View once');
+                  : null;
     } else {
       spent = once.opened || once.gone;
       status = once.opened
           ? l10n.ui('ui_once_opened', 'Opened')
           : once.gone
               ? l10n.ui('ui_once_expired', 'Expired')
-              : l10n.ui('ui_once_tap', 'Tap to view');
+              : null;
     }
+    const line = TextStyle(fontSize: TypographyTokens.fontSize3, height: 1.3);
     return Row(
       key: const ValueKey('once-label'),
       mainAxisSize: MainAxisSize.min,
       children: [
-        ViewOnceGlyph(size: 22, color: ink, spent: spent),
+        ViewOnceGlyph(size: 18, color: ink, spent: spent),
         const SizedBox(width: SpacingTokens.space8),
         Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                mediaPreview(l10n, [once.kind]),
-                style: TextStyle(
-                  fontSize: TypographyTokens.fontSize3,
-                  fontWeight: FontWeight.w600,
-                  color: spent ? ink.withValues(alpha: 0.6) : ink,
-                ),
-              ),
-              Text(
-                status,
-                style: TextStyle(
-                  fontSize: TypographyTokens.fontSize1,
-                  color: ink.withValues(alpha: 0.7),
-                ),
-              ),
-            ],
+          child: Text.rich(
+            // Spent, the status is all there is to say. Still to be opened,
+            // the kind leads and anything more follows, quieter, on the same
+            // line.
+            spent || status == null
+                ? TextSpan(
+                    text: spent ? status ?? kind : kind,
+                    style: line.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: spent ? ink.withValues(alpha: 0.6) : ink,
+                    ),
+                  )
+                : TextSpan(
+                    children: [
+                      TextSpan(
+                        text: kind,
+                        style: line.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: ink,
+                        ),
+                      ),
+                      TextSpan(
+                        text: ' · $status',
+                        style: line.copyWith(color: ink.withValues(alpha: 0.7)),
+                      ),
+                    ],
+                  ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],
