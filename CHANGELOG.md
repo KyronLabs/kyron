@@ -11,6 +11,8 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+
+## [0.1.10] - 2026-10-21
 ### Added
 
 - **Community chats, several to a community.** A community's page lists its
@@ -1918,7 +1920,8 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.9...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.10...HEAD
+[0.1.10]: https://github.com/KyronLabs/kyron/compare/v0.1.9...v0.1.10
 [0.1.9]: https://github.com/KyronLabs/kyron/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/KyronLabs/kyron/compare/v0.1.7...v0.1.8
 [0.1.7]: https://github.com/KyronLabs/kyron/compare/v0.1.6...v0.1.7
