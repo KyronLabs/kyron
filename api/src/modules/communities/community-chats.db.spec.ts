@@ -844,6 +844,7 @@ run('community chats, against a real database', () => {
       });
       expect(items.find((i) => i.targetId === rude.id)?.media).toEqual([
         {
+          id: expect.any(String) as unknown,
           kind: MediaKind.IMAGE,
           url: expect.stringContaining(theirs) as unknown,
         },

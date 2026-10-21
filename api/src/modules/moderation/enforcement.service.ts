@@ -65,7 +65,7 @@ export interface QueueItem {
    * it. Kept through a community moderator's delete, which keeps the files
    * for this. Empty for anything else.
    */
-  media: { kind: MediaKind; url: string }[];
+  media: { id: string; kind: MediaKind; url: string }[];
   reasons: { reason: ReportReason; count: number }[];
   reports: {
     id: string;
@@ -260,7 +260,7 @@ export class EnforcementService {
           deletedAt: true,
           media: {
             orderBy: { position: 'asc' },
-            select: { kind: true, privatePath: true },
+            select: { id: true, kind: true, privatePath: true },
           },
         },
       }),
@@ -370,10 +370,10 @@ export class EnforcementService {
   private async chatMediaLinks(
     messages: {
       id: string;
-      media: { kind: MediaKind; privatePath: string | null }[];
+      media: { id: string; kind: MediaKind; privatePath: string | null }[];
     }[],
-  ): Promise<Map<string, { kind: MediaKind; url: string }[]>> {
-    const byMessage = new Map<string, { kind: MediaKind; url: string }[]>();
+  ): Promise<Map<string, QueueItem['media']>> {
+    const byMessage = new Map<string, QueueItem['media']>();
     const paths = messages
       .flatMap((m) => m.media.map((f) => f.privatePath))
       .filter((p): p is string => !!p);
@@ -390,6 +390,7 @@ export class EnforcementService {
         message.id,
         message.media
           .map((f) => ({
+            id: f.id,
             kind: f.kind,
             url: (f.privatePath && links.get(f.privatePath)) ?? '',
           }))
