@@ -22,6 +22,8 @@ import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/community_avatar.dart';
 import 'package:kyron_app/widgets/post_card.dart';
 import 'package:kyron_app/widgets/squircle.dart';
+import 'package:kyron_app/widgets/glass_icon_button.dart';
+import 'package:kyron_app/widgets/community_chats_section.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -354,13 +356,65 @@ void main() {
       posts: 2,
     );
 
-    testWidgets('has no app bar above the banner', (tester) async {
-      // The bar left a strip of surface colour between the status bar and the
-      // picture, and put the community's name on screen twice.
+    testWidgets('has a see-through bar with only its controls in it', (
+      tester,
+    ) async {
+      // A bar with a colour of its own left a strip of surface between the
+      // status bar and the picture, and put the community's name on screen
+      // twice. The profile's bar -- clear, controls only -- does neither.
       await pump(tester, community);
 
-      expect(find.byType(AppBar), findsNothing);
+      final bar = tester.widget<AppBar>(find.byType(AppBar));
+      expect(bar.backgroundColor, Colors.transparent);
+      expect(bar.title, isNull);
       expect(find.text('Gardeners'), findsOneWidget);
+    });
+
+    testWidgets("its top controls are the profile page's, not bigger", (
+      tester,
+    ) async {
+      // They were 44-pixel discs, a size heavier than the profile's for the
+      // same job over the same kind of picture.
+      await pump(tester, community);
+
+      expect(find.byType(GlassIconButton), findsNWidgets(3));
+      final discs = find.descendant(
+        of: find.byType(GlassIconButton),
+        matching: find.byWidgetPredicate(
+          (w) =>
+              w is Container &&
+              w.decoration is BoxDecoration &&
+              (w.decoration as BoxDecoration).shape == BoxShape.circle &&
+              (w.decoration as BoxDecoration).color == const Color(0x59000000),
+        ),
+      );
+      expect(discs, findsNWidgets(3));
+      for (final disc in discs.evaluate()) {
+        expect(tester.getSize(find.byWidget(disc.widget)), const Size(36, 36));
+      }
+      // Still easy to hit.
+      expect(
+        tester.getSize(find.byType(GlassIconButton).first).height,
+        greaterThanOrEqualTo(44),
+      );
+    });
+
+    testWidgets('keeps its chats in a sheet, not between header and posts', (
+      tester,
+    ) async {
+      // A section above the posts pushed every post a screen down, on every
+      // visit, for a list most visits do not open.
+      await pump(tester, community);
+      expect(find.byType(CommunityChatsSection), findsNothing);
+
+      await tester.tap(find.byKey(const ValueKey('community-chats-button')));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.byKey(const ValueKey('community-chats-sheet')),
+        findsOneWidget,
+      );
+      expect(find.text('Chats'), findsOneWidget);
     });
 
     testWidgets('puts the banner at the very top of the screen', (
@@ -484,12 +538,10 @@ void main() {
     });
 
     testWidgets(
-      'the floating button is centred and clears the home indicator',
+      'the floating button is in the bottom-right corner, clear of the inset',
       (tester) async {
-        // Centred, because this is the same disc the bottom bar carries one
-        // screen back and it should not move between the two. It was in the
-        // bottom-right corner: a different shape, colour and place from the
-        // create button on the page this one is opened from.
+        // In the corner, where a thumb is and a create button is expected.
+        // Centred, it sat over the middle of every post, where the words are.
         //
         // Vertically it still has to clear the gesture inset. A floating button
         // is placed 16 above the *body*, and this body runs to the bottom of
@@ -507,9 +559,9 @@ void main() {
           reason: 'the button is inside the gesture inset',
         );
         expect(
-          fab.center.dx,
-          closeTo(screen.width / 2, 1),
-          reason: 'the button is not centred: $fab on a $screen screen',
+          screen.width - fab.right,
+          closeTo(16, 1),
+          reason: 'the button is not in the corner: $fab on a $screen screen',
         );
       },
     );

@@ -13,10 +13,45 @@ import '../screens/community_chat_settings_screen.dart';
 import '../utils/api_error_message.dart';
 import 'list_controls.dart' show CountBadge;
 
-/// A community's chats, on its page, above its posts.
+/// A community's chats, in a sheet opened from the top of its page.
+///
+/// They were a section between the community's header and its posts, which
+/// pushed the posts a screen further down for everybody, on every visit, to
+/// show a list most visits do not open. A chat opened from the sheet comes
+/// back to it, so going from one chat to the next is two taps.
+class CommunityChatsSheet {
+  const CommunityChatsSheet._();
+
+  static Future<void> show(BuildContext context, Community community) =>
+      showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        useSafeArea: true,
+        showDragHandle: true,
+        builder: (sheet) => ConstrainedBox(
+          // As tall as its chats, up to most of the screen.
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.sizeOf(sheet).height * 0.75,
+          ),
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom:
+                  SpacingTokens.space16 + MediaQuery.paddingOf(sheet).bottom,
+            ),
+            child: CommunityChatsSection(
+              key: const ValueKey('community-chats-sheet'),
+              community: community,
+            ),
+          ),
+        ),
+      );
+}
+
+/// What the chats sheet holds: its heading, a New chat button for whoever
+/// may open one, and the chats.
 ///
 /// Only asked for when the reader is in the community: the server refuses
-/// anybody else, and a section that loads only to say "no" is worse than one
+/// anybody else, and a list that loads only to say "no" is worse than one
 /// that says why up front.
 class CommunityChatsSection extends ConsumerWidget {
   final Community community;
@@ -32,7 +67,7 @@ class CommunityChatsSection extends ConsumerWidget {
     final heading = Padding(
       padding: const EdgeInsets.fromLTRB(
         SpacingTokens.space16,
-        SpacingTokens.space12,
+        0,
         SpacingTokens.space8,
         SpacingTokens.space4,
       ),
@@ -41,10 +76,9 @@ class CommunityChatsSection extends ConsumerWidget {
           Expanded(
             child: Text(
               l10n.ui('ui_cchat_heading', 'Chats'),
-              style: TextStyle(
-                fontSize: TypographyTokens.fontSize2,
+              style: const TextStyle(
+                fontSize: TypographyTokens.fontSize5,
                 fontWeight: FontWeight.w700,
-                color: scheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ),
