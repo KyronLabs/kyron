@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Wasimamizi pekee wanaweza kuandika"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Kwa matangazo. Kila mtu katika jumuiya bado anaweza kusoma na kujibu kwa hisia."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Ongeza picha au kura"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Picha na video"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Funga gumzo"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Hakuna atakayeweza kusoma wala kuandika ndani yake. Hili haliwezi kutenduliwa."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Ujumbe unaondolewa kwa kila mtu kwenye gumzo."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Hariri gumzo"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Hariri"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("imehaririwa"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Unahariri ujumbe wako"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Imeshindikana kufungua gumzo hili."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Gumzo"),
@@ -1053,6 +1061,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Bado unaweza kulisoma ukiwa ndani ya jumuiya."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Mmiliki na wasimamizi pekee wanaweza kuandika hapa."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Nyamazisha"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Hakuna arifa kutoka kwake, na halihesabiwi kwenye Ujumbe."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Jina la gumzo"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Gumzo jipya"),
       "ui_cchat_none":
@@ -1062,6 +1073,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Magumzo ya jumuiya hayajasimbwa kutoka mwanzo hadi mwisho. Wasimamizi wa jumuiya na Kyron wanaweza kuyasoma."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Bandika juu"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("Ongeza jibu"),
+      "ui_cchat_poll_close": MessageLookupByLibrary.simpleMessage("Funga kura"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Imefungwa"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Kila mtu huona wangapi walichagua kila jibu, kamwe si nani."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Ruhusu kuchagua kadhaa"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Kura mpya"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Chagua moja"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("Jibu \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Kura: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Swali"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Kila jibu linaweza kuwa kwenye kura mara moja tu."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Chagua moja au zaidi"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count wamejibu"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Tafuta kwenye gumzo hili"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Tafuta kwenye gumzo hili"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Hakuna kilichopatikana."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("Huwezi tena kuona gumzo hili."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Hali ya polepole"),
@@ -1077,7 +1113,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sekunde \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Unaweza kusoma na kujibu kwa hisia kama mtazamaji. Jiunge ili uandike."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Kitu ulichochagua kinazidi 25 MB na kimeachwa."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Ujumbe huo ni wa zamani mno kuonyeshwa."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Rejesha sauti"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Bandua"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Rekodi ujumbe wa sauti"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Wewe"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1127,6 +1170,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Ongeza watu"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ongeza"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Ongeza jina la kikundi"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Kataa"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Ujumbe katika kikundi hiki umesimbwa kutoka mwanzo hadi mwisho, kama mazungumzo mengine yoyote."),
@@ -1182,6 +1227,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Wanachama \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Wanachama"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Jina la kikundi"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Kwanza lipe kikundi jina."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Unda gumzo la kikundi"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1205,6 +1252,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kama mtazamaji, unaweza kusoma na kutoa hisia hapa."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Watazamaji wanaweza kusoma, kutoa hisia na kuinua mkono kuomba kuandika."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Mapendekezo"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Tazama wasifu"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("wewe"),

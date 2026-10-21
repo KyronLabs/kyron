@@ -940,6 +940,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("መጻፍ የሚችሉት አወያዮች ብቻ ናቸው"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "ለማስታወቂያዎች። በማህበረሰቡ ውስጥ ያሉ ሁሉ አሁንም ማንበብ እና ምላሽ መስጠት ይችላሉ።"),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage("ፎቶ ወይም ምርጫ ያክሉ"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("ፎቶዎች እና ቪዲዮዎች"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("ውይይቱን ዝጋ"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "ማንም በውስጡ ማንበብም ሆነ መጻፍ አይችልም። ይህ ሊቀለበስ አይችልም።"),
@@ -951,6 +954,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own":
           MessageLookupByLibrary.simpleMessage("መልዕክቱ በውይይቱ ውስጥ ላሉ ሁሉ ይወገዳል።"),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("ውይይቱን አርትዕ"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("ያርትዑ"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("ተስተካክሏል"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("መልእክትዎን እያርትዑ ነው"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("ይህን ውይይት መክፈት አልተቻለም።"),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ውይይቶች"),
@@ -964,6 +971,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "በማህበረሰቡ ውስጥ እስካሉ ድረስ ማንበብ ይችላሉ።"),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "እዚህ መጻፍ የሚችሉት ባለቤቱ እና አወያዮች ብቻ ናቸው።"),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("ድምጸ-ከል ያድርጉ"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "ከዚህ ማሳወቂያ አይመጣም፣ እና በመልእክቶች ቁጥር ውስጥ አይቆጠርም።"),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("የውይይቱ ስም"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("አዲስ ውይይት"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("እስካሁን ውይይቶች የሉም።"),
@@ -972,6 +982,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "የማህበረሰብ ውይይቶች ከጫፍ እስከ ጫፍ የተመሰጠሩ አይደሉም። የማህበረሰቡ አወያዮች እና Kyron ሊያነቧቸው ይችላሉ።"),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("ከላይ ሰካ"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("መልስ ያክሉ"),
+      "ui_cchat_poll_close": MessageLookupByLibrary.simpleMessage("ምርጫውን ይዝጉ"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("ተዘግቷል"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "ሁሉም ሰው እያንዳንዱን መልስ ስንት ሰው እንደመረጠ ያያል፣ ማን እንደመረጠ ግን በጭራሽ።"),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("ብዙ መምረጥ ይፍቀዱ"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("አዲስ ምርጫ"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("አንዱን ይምረጡ"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("መልስ \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("ምርጫ፦ \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("ጥያቄ"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "እያንዳንዱ መልስ በምርጫ ውስጥ አንድ ጊዜ ብቻ ሊገኝ ይችላል።"),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("አንድ ወይም ከዚያ በላይ ይምረጡ"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count መልሰዋል"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("በዚህ ውይይት ውስጥ ይፈልጉ"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("በዚህ ውይይት ውስጥ ይፈልጉ"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("ምንም አልተገኘም።"),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("ይህን ውይይት ከእንግዲህ ማየት አይችሉም።"),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("ቀርፋፋ ሁነታ"),
@@ -985,7 +1020,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n ሰከንድ"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "እንደ ተመልካች ማንበብ እና ምላሽ መስጠት ይችላሉ። ለመጻፍ ይቀላቀሉ።"),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "ከመረጡት አንዱ ከ25 MB በላይ ስለሆነ ቀርቷል።"),
+      "ui_cchat_too_far":
+          MessageLookupByLibrary.simpleMessage("ያ መልእክት ለማሳየት በጣም የቆየ ነው።"),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("ድምጸ-ከል ያንሱ"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ንቀል"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("የድምፅ መልእክት ይቅዱ"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("እርስዎ"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("ማህበረሰቦች"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1033,6 +1074,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_from_account": MessageLookupByLibrary.simpleMessage("ከአካውንት ውስጥ"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("ሰዎችን አክል"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("አክል"),
+      "ui_group_add_name": MessageLookupByLibrary.simpleMessage("የቡድን ስም ያክሉ"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("አትቀበል"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "በዚህ ቡድን ያሉ መልዕክቶች እንደማንኛውም ውይይት ከጫፍ እስከ ጫፍ የተመሰጠሩ ናቸው።"),
@@ -1083,6 +1125,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count አባላት"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("አባላት"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("የቡድን ስም"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("መጀመሪያ ቡድኑን ይሰይሙ።"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("የቡድን ውይይት ፍጠር"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "ባለቤቱ አንድ ብቻ ነው። አንተ አስተዳዳሪ ሆነህ ትቆያለህ።"),
@@ -1102,6 +1146,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "እንደ ተመልካች እዚህ ማንበብ እና ምላሽ መስጠት ትችላለህ።"),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "ተመልካቾች ማንበብ፣ ምላሽ መስጠት እና ለመጻፍ ለመጠየቅ እጅ ማንሳት ይችላሉ።"),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("የተጠቆሙ"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("መገለጫ ይመልከቱ"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("አንተ"),

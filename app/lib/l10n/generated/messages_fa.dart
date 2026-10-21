@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("فقط ناظران می‌توانند بنویسند"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "برای اطلاعیه‌ها. همه اعضای انجمن همچنان می‌توانند بخوانند و واکنش نشان دهند."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("افزودن عکس یا نظرسنجی"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("عکس‌ها و ویدیوها"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("بستن گفتگو"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "دیگر هیچ‌کس نمی‌تواند در آن بخواند یا بنویسد. این کار برگشت‌پذیر نیست."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "پیام برای همه افراد گفتگو حذف می‌شود."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("ویرایش گفتگو"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("ویرایش"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("ویرایش‌شده"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("در حال ویرایش پیام خود هستید"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("باز کردن این گفتگو ممکن نشد."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("گفتگوها"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "تا وقتی در انجمن هستید همچنان می‌توانید آن را بخوانید."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "فقط مالک و ناظران می‌توانند اینجا بنویسند."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("بی‌صدا کردن"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "اعلانی از آن دریافت نمی‌کنید و در شمار پیام‌ها حساب نمی‌شود."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("نام گفتگو"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("گفتگوی جدید"),
       "ui_cchat_none":
@@ -1061,6 +1072,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "گفتگوهای انجمن رمزگذاری سرتاسری ندارند. ناظران انجمن و Kyron می‌توانند آن‌ها را بخوانند."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("سنجاق در بالا"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("افزودن پاسخ"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("بستن نظرسنجی"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("بسته شد"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "همه می‌بینند چند نفر هر پاسخ را انتخاب کرده‌اند، اما هرگز نمی‌بینند چه کسانی."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("اجازهٔ انتخاب چند پاسخ"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("نظرسنجی جدید"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("یکی را انتخاب کنید"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("پاسخ \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("نظرسنجی: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("پرسش"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "هر پاسخ فقط یک بار می‌تواند در نظرسنجی باشد."),
+      "ui_cchat_poll_several": MessageLookupByLibrary.simpleMessage(
+          "یک یا چند گزینه را انتخاب کنید"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count نفر پاسخ دادند"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("جستجو در این گفتگو"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("جستجو در این گفتگو"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("چیزی پیدا نشد."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "دیگر نمی‌توانید این گفتگو را ببینید."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("حالت کند"),
@@ -1076,7 +1114,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ثانیه: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "می‌توانید به‌عنوان تماشاگر بخوانید و واکنش نشان دهید. برای نوشتن بپیوندید."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "یکی از موارد انتخابی شما بیش از 25 مگابایت است و کنار گذاشته شد."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "این پیام برای نمایش بیش از حد قدیمی است."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("لغو بی‌صدا"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("برداشتن سنجاق"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("ضبط پیام صوتی"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("شما"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1125,6 +1169,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("افزودن افراد"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("افزودن"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("افزودن نام گروه"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("رد کردن"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "پیام‌های این گروه مانند هر گفتگوی دیگری رمزگذاری سرتاسری دارند."),
@@ -1177,6 +1223,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count عضو"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("اعضا"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("نام گروه"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("ابتدا برای گروه نامی بگذارید."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("ساخت گفتگوی گروهی"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "گروه یک مالک دارد. شما مدیر باقی می‌مانید."),
@@ -1198,6 +1246,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "به‌عنوان تماشاگر می‌توانید اینجا بخوانید و واکنش نشان دهید."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "تماشاگران می‌توانند بخوانند، واکنش نشان دهند و برای درخواست نوشتن دست بالا ببرند."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("پیشنهادها"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("دیدن نمایه"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("شما"),

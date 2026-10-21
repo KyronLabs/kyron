@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "மட்டுறுத்துநர்கள் மட்டுமே எழுத முடியும்"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "அறிவிப்புகளுக்காக. சமூகத்தில் உள்ள அனைவரும் இன்னும் படிக்கவும் எதிர்வினையாற்றவும் முடியும்."),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "புகைப்படம் அல்லது வாக்கெடுப்பைச் சேர்"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("புகைப்படங்களும் வீடியோக்களும்"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("அரட்டையை மூடு"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "இதில் இனி யாரும் படிக்கவோ எழுதவோ முடியாது. இதைச் செயல்தவிர்க்க முடியாது."),
@@ -1041,6 +1045,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "செய்தி அரட்டையில் உள்ள அனைவருக்கும் அகற்றப்படும்."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("அரட்டையைத் திருத்து"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("திருத்து"),
+      "ui_cchat_edited":
+          MessageLookupByLibrary.simpleMessage("திருத்தப்பட்டது"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் செய்தியைத் திருத்துகிறீர்கள்"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "இந்த அரட்டையைத் திறக்க முடியவில்லை."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("அரட்டைகள்"),
@@ -1055,6 +1064,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "நீங்கள் சமூகத்தில் இருக்கும் வரை இதைப் படிக்கலாம்."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "இங்கே உரிமையாளரும் மட்டுறுத்துநர்களும் மட்டுமே எழுத முடியும்."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("ஒலியடக்கு"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "இதிலிருந்து அறிவிப்புகள் வராது, மேலும் இது செய்திகளின் எண்ணிக்கையில் சேராது."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("அரட்டையின் பெயர்"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("புதிய அரட்டை"),
       "ui_cchat_none":
@@ -1064,6 +1076,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "சமூக அரட்டைகள் முழுமையாக மறைகுறியாக்கப்படவில்லை. சமூகத்தின் மட்டுறுத்துநர்களும் Kyron-உம் அவற்றைப் படிக்க முடியும்."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("மேலே பின் செய்"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("பதிலைச் சேர்"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("வாக்கெடுப்பை மூடு"),
+      "ui_cchat_poll_closed":
+          MessageLookupByLibrary.simpleMessage("மூடப்பட்டது"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "ஒவ்வொரு பதிலையும் எத்தனை பேர் தேர்ந்தெடுத்தனர் என்பதை அனைவரும் பார்ப்பார்கள், யார் என்பதை ஒருபோதும் அல்ல."),
+      "ui_cchat_poll_multiple": MessageLookupByLibrary.simpleMessage(
+          "பலவற்றைத் தேர்ந்தெடுக்க அனுமதி"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("புதிய வாக்கெடுப்பு"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("ஒன்றைத் தேர்ந்தெடுக்கவும்"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("பதில் \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("வாக்கெடுப்பு: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("கேள்வி"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "ஒவ்வொரு பதிலும் வாக்கெடுப்பில் ஒருமுறை மட்டுமே இருக்கலாம்."),
+      "ui_cchat_poll_several": MessageLookupByLibrary.simpleMessage(
+          "ஒன்று அல்லது அதற்கு மேல் தேர்ந்தெடுக்கவும்"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count பேர் பதிலளித்தனர்"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("இந்த அரட்டையில் தேடு"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("இந்த அரட்டையில் தேடு"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("எதுவும் கிடைக்கவில்லை."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "இந்த அரட்டையை இனி உங்களால் பார்க்க முடியாது."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("மெதுவான பயன்முறை"),
@@ -1079,7 +1120,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n விநாடிகள்"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "பார்வையாளராகப் படிக்கவும் எதிர்வினையாற்றவும் முடியும். எழுத சேருங்கள்."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் தேர்ந்தெடுத்த ஒன்று 25 MB-ஐ விடப் பெரியது, அதனால் விடப்பட்டது."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "அந்தச் செய்தி காட்ட முடியாத அளவுக்குப் பழையது."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("ஒலியடக்கத்தை நீக்கு"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("பின்னை அகற்று"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("குரல் குறிப்பைப் பதிவுசெய்"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("நீங்கள்"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1128,6 +1177,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("நபர்களைச் சேர்"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("சேர்"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("குழுவின் பெயரைச் சேர்"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("நிராகரி"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "இந்தக் குழுவின் செய்திகள் மற்ற எந்த உரையாடலையும் போல முழுமையாக என்க்ரிப்ட் செய்யப்பட்டவை."),
@@ -1182,6 +1233,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count உறுப்பினர்கள்"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("உறுப்பினர்கள்"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("குழுவின் பெயர்"),
+      "ui_group_name_first": MessageLookupByLibrary.simpleMessage(
+          "முதலில் குழுவுக்குப் பெயரிடவும்."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("குழு அரட்டையை உருவாக்கு"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1206,6 +1259,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "பார்வையாளராக நீங்கள் இங்கே படிக்கவும் எதிர்வினையாற்றவும் முடியும்."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "பார்வையாளர்கள் படிக்கலாம், எதிர்வினையாற்றலாம், எழுத அனுமதி கேட்டுக் கையை உயர்த்தலாம்."),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("பரிந்துரைகள்"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("சுயவிவரத்தைப் பார்"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("நீங்கள்"),

@@ -1125,6 +1125,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Només els moderadors hi poden escriure"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Per a anuncis. Tothom de la comunitat encara pot llegir i reaccionar."),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "Afegeix una foto o una enquesta"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Fotos i vídeos"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Tanca el xat"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Ningú no hi podrà llegir ni escriure. No es pot desfer."),
@@ -1136,6 +1140,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "El missatge s’elimina per a tothom al xat."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Edita el xat"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Edita"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("editat"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Estàs editant el missatge"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "No s’ha pogut obrir aquest xat."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Xats"),
@@ -1149,6 +1157,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "El podràs continuar llegint mentre siguis a la comunitat."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Només el propietari i els moderadors hi poden escriure."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Silencia"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "No en rebràs notificacions i no compta a Missatges."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Nom del xat"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Xat nou"),
       "ui_cchat_none":
@@ -1158,6 +1169,36 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Els xats de comunitat no estan xifrats d’extrem a extrem. Els moderadors de la comunitat i Kyron els poden llegir."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Fixa a dalt"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Afegeix una resposta"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Tanca l'enquesta"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Tancada"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Tothom veu quantes persones han triat cada resposta, mai qui."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Permet triar-ne diverses"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Enquesta nova"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Tria'n una"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Resposta \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Enquesta: \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("Pregunta"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Cada resposta només pot aparèixer una vegada en una enquesta."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Tria'n una o més"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count han respost"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Cerca en aquest xat"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Cerca en aquest xat"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("No s'ha trobat res."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("Ja no pots veure aquest xat."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Mode lent"),
@@ -1173,7 +1214,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n segons"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Pots llegir i reaccionar com a espectador. Uneix-t’hi per escriure."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Una cosa que has triat supera els 25 MB i s'ha deixat fora."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Aquest missatge és massa antic per mostrar-lo."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Deixa de silenciar"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Deixa de fixar"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Grava una nota de veu"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Tu"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Comunitats"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1224,6 +1273,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_from_account": MessageLookupByLibrary.simpleMessage("D'un compte"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Afegeix persones"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Afegeix"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Afegeix el nom del grup"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Descarta"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Els missatges d’aquest grup estan xifrats d’extrem a extrem, com qualsevol altra conversa."),
@@ -1277,6 +1328,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count membres"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Membres"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Nom del grup"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Primer posa un nom al grup."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Crea un xat de grup"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1299,6 +1352,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Com a espectador, aquí pots llegir i reaccionar."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Els espectadors poden llegir, reaccionar i aixecar la mà per demanar escriure."),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("Suggeriments"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Mostra el perfil"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("tu"),

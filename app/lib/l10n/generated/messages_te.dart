@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("మోడరేటర్‌లు మాత్రమే రాయగలరు"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "ప్రకటనల కోసం. కమ్యూనిటీలో అందరూ ఇంకా చదవగలరు, స్పందించగలరు."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("ఫోటో లేదా పోల్ జోడించు"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("ఫోటోలు మరియు వీడియోలు"),
       "ui_cchat_close":
           MessageLookupByLibrary.simpleMessage("చాట్‌ను మూసివేయి"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
@@ -1040,6 +1044,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "సందేశం చాట్‌లోని అందరికీ తీసివేయబడుతుంది."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("చాట్‌ను సవరించు"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("సవరించు"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("సవరించబడింది"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage(
+          "మీరు మీ సందేశాన్ని సవరిస్తున్నారు"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "ఈ చాట్‌ను తెరవడం సాధ్యం కాలేదు."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("చాట్‌లు"),
@@ -1054,6 +1062,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "మీరు కమ్యూనిటీలో ఉన్నంత వరకు దీన్ని చదవగలరు."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "ఇక్కడ యజమాని, మోడరేటర్‌లు మాత్రమే రాయగలరు."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("మ్యూట్ చేయి"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "దీని నుండి నోటిఫికేషన్‌లు రావు, మరియు ఇది సందేశాల లెక్కలో చేరదు."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("చాట్ పేరు"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("కొత్త చాట్"),
       "ui_cchat_none":
@@ -1063,6 +1074,36 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "కమ్యూనిటీ చాట్‌లు ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడవు. కమ్యూనిటీ మోడరేటర్‌లు, Kyron వాటిని చదవగలరు."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("పైన పిన్ చేయి"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("సమాధానం జోడించు"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("పోల్ మూసివేయి"),
+      "ui_cchat_poll_closed":
+          MessageLookupByLibrary.simpleMessage("మూసివేయబడింది"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "ప్రతి సమాధానాన్ని ఎంతమంది ఎంచుకున్నారో అందరూ చూస్తారు, ఎవరో ఎప్పుడూ కాదు."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("అనేకం ఎంచుకోనివ్వు"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("కొత్త పోల్"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("ఒకటి ఎంచుకోండి"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("సమాధానం \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("పోల్: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("ప్రశ్న"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "ప్రతి సమాధానం పోల్‌లో ఒక్కసారి మాత్రమే ఉండగలదు."),
+      "ui_cchat_poll_several": MessageLookupByLibrary.simpleMessage(
+          "ఒకటి లేదా అంతకంటే ఎక్కువ ఎంచుకోండి"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count మంది సమాధానమిచ్చారు"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("ఈ చాట్‌లో వెతుకు"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("ఈ చాట్‌లో వెతుకు"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("ఏమీ కనబడలేదు."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("మీరు ఇకపై ఈ చాట్‌ను చూడలేరు."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("నెమ్మది మోడ్"),
@@ -1078,7 +1119,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n సెకన్లు"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "మీరు ప్రేక్షకుడిగా చదవగలరు, స్పందించగలరు. రాయడానికి చేరండి."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "మీరు ఎంచుకున్న ఒకటి 25 MB కంటే పెద్దది, కాబట్టి వదిలేయబడింది."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "ఆ సందేశం చూపించడానికి చాలా పాతది."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("అన్‌మ్యూట్ చేయి"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("అన్‌పిన్ చేయి"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("వాయిస్ నోట్ రికార్డ్ చేయి"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("మీరు"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1128,6 +1177,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("వ్యక్తులను జోడించండి"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("జోడించండి"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("గ్రూప్ పేరు జోడించు"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("తిరస్కరించండి"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "ఈ గ్రూప్‌లోని మెసేజ్‌లు ఇతర ఏ సంభాషణలాగానైనా ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్ట్ చేయబడ్డాయి."),
@@ -1182,6 +1233,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count సభ్యులు"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("సభ్యులు"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("గ్రూప్ పేరు"),
+      "ui_group_name_first": MessageLookupByLibrary.simpleMessage(
+          "ముందుగా గ్రూప్‌కు పేరు పెట్టండి."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("గ్రూప్ చాట్ సృష్టించండి"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1205,6 +1258,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ప్రేక్షకుడిగా మీరు ఇక్కడ చదవవచ్చు, స్పందించవచ్చు."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "ప్రేక్షకులు చదవవచ్చు, స్పందించవచ్చు, రాయడానికి అనుమతి కోసం చెయ్యి ఎత్తవచ్చు."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("సూచించినవి"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("ప్రొఫైల్ చూడండి"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("మీరు"),

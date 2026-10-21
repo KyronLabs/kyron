@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Rakstīt var tikai moderatori"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Paziņojumiem. Visi kopienā joprojām var lasīt un reaģēt."),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "Pievienot fotoattēlu vai aptauju"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Fotoattēli un video"),
       "ui_cchat_close":
           MessageLookupByLibrary.simpleMessage("Aizvērt tērzēšanu"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
@@ -1041,6 +1045,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ziņa tiek noņemta visiem tērzēšanā."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("Rediģēt tērzēšanu"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Rediģēt"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("rediģēts"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Jūs rediģējat savu ziņu"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Neizdevās atvērt šo tērzēšanu."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Tērzēšanas"),
@@ -1056,6 +1064,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Jūs to joprojām varat lasīt, kamēr esat kopienā."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Šeit rakstīt var tikai īpašnieks un moderatori."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Izslēgt skaņu"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Nebūs paziņojumu no tās, un tā netiek ieskaitīta Ziņu skaitā."),
       "ui_cchat_name":
           MessageLookupByLibrary.simpleMessage("Tērzēšanas nosaukums"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Jauna tērzēšana"),
@@ -1066,6 +1077,37 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Kopienas tērzēšanas nav šifrētas pilnībā. Kopienas moderatori un Kyron tās var lasīt."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Piespraust augšā"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Pievienot atbildi"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Slēgt aptauju"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Slēgta"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Visi redz, cik cilvēku izvēlējās katru atbildi, bet nekad – kas."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Ļaut izvēlēties vairākas"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Jauna aptauja"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("Izvēlieties vienu"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Atbilde \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Aptauja: \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("Jautājums"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Katra atbilde aptaujā var būt tikai vienreiz."),
+      "ui_cchat_poll_several": MessageLookupByLibrary.simpleMessage(
+          "Izvēlieties vienu vai vairākas"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Atbildējuši: \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Meklēt šajā tērzēšanā"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Meklēt šajā tērzēšanā"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Nekas netika atrasts."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Jūs vairs nevarat redzēt šo tērzēšanu."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Lēnais režīms"),
@@ -1081,7 +1123,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sekundes: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Kā skatītājs jūs varat lasīt un reaģēt. Pievienojieties, lai rakstītu."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Kaut kas no izvēlētā pārsniedz 25 MB un tika izlaists."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Šī ziņa ir pārāk tālu pagātnē, lai to parādītu."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Ieslēgt skaņu"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Atspraust"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Ierakstīt balss ziņu"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Jūs"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1131,6 +1180,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("Pievienot cilvēkus"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Pievienot"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Pievienot grupas nosaukumu"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Noraidīt"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Ziņas šajā grupā ir pilnībā šifrētas, tāpat kā jebkura cita saruna."),
@@ -1185,6 +1236,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Dalībnieki: \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Dalībnieki"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Grupas nosaukums"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Vispirms nosauciet grupu."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Izveidot grupas tērzēšanu"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1210,6 +1263,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kā skatītājs šeit varat lasīt un reaģēt."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Skatītāji var lasīt, reaģēt un pacelt roku, lai lūgtu atļauju rakstīt."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Ieteiktie"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Skatīt profilu"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("jūs"),

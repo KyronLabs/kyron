@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ngabongameli kuphela abanokubhala"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Zezaziso. Wonke umntu oluntwini usenokufunda aze asabele."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Yongeza ifoto okanye uvoto"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Iifoto neevidiyo"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Vala incoko"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Akukho mntu uya kukwazi ukufunda okanye ukubhala kuyo. Oku akunakubuyiselwa."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Umyalezo ususwa kuye wonke umntu osencokweni."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Hlela incoko"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Hlela"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("ihleliwe"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Uhlela umyalezo wakho"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Ayikwazanga ukuvula le ncoko."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Iincoko"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Usenokuyifunda nje ukuba usekuluntu."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Ngumnini nabongameli kuphela abanokubhala apha."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Thulisa"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Akukho zaziso ezivela kuyo, kwaye ayibalwa kwiMiyalezo."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Igama lencoko"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Incoko entsha"),
       "ui_cchat_none":
@@ -1062,6 +1073,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Iincoko zoluntu azifihlwanga ukusuka ekuqaleni ukuya ekupheleni. Abongameli boluntu ne-Kyron banokuzifunda."),
       "ui_cchat_pin":
           MessageLookupByLibrary.simpleMessage("Qhoboshela phezulu"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Yongeza impendulo"),
+      "ui_cchat_poll_close": MessageLookupByLibrary.simpleMessage("Vala uvoto"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Luvaliwe"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Wonke umntu ubona ukuba bangaphi abakhethe impendulo nganye, hayi ukuba ngoobani."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Vumela ukukhetha ezininzi"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Uvoto olutsha"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Khetha enye"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Impendulo \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Uvoto: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Umbuzo"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Impendulo nganye ingaba kuvoto kanye kuphela."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Khetha enye okanye ngaphezulu"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Baphendule: \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Khangela kule ncoko"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Khangela kule ncoko"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Akukho nto ifunyenweyo."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("Awusakwazi ukubona le ncoko."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Imo ecothayo"),
@@ -1077,7 +1116,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Imizuzwana eli-\$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Ungafunda kwaye usabele njengombukeli. Joyina ukuze ubhale."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Into oyikhethileyo ingaphezu kwe-25 MB kwaye ishiywe ngaphandle."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Lo myalezo usemva kakhulu ukuba ungaboniswa."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Susa ukuthula"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Khulula"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Rekhoda umyalezo welizwi"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Wena"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1126,6 +1172,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Yongeza abantu"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Yongeza"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Yongeza igama leqela"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Yala"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Imiyalezo kweli qela ifihliwe ukusuka esiqalweni ukuya esiphelweni, njengayo nayiphi na incoko."),
@@ -1180,6 +1228,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Amalungu angama-\$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Amalungu"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Igama leqela"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Qala unike iqela igama."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Yenza incoko yeqela"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1203,6 +1253,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Njengombukeli, unokufunda kwaye usabele apha."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Ababukeli banokufunda, basabele kwaye baphakamise isandla becela ukubhala."),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("Ezicetyiswayo"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Jonga iprofayile"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("wena"),

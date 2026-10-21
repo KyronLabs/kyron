@@ -168,6 +168,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("운영자만 쓸 수 있음"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "공지용입니다. 커뮤니티의 모든 사람은 계속 읽고 반응할 수 있습니다."),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage("사진 또는 투표 추가"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("사진 및 동영상"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("채팅 닫기"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "아무도 이 채팅을 읽거나 쓸 수 없게 됩니다. 되돌릴 수 없습니다."),
@@ -179,6 +182,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own":
           MessageLookupByLibrary.simpleMessage("메시지가 채팅의 모두에게서 삭제됩니다."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("채팅 편집"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("수정"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("수정됨"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage("메시지 수정 중"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("이 채팅을 열 수 없습니다."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("채팅"),
@@ -191,6 +197,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("커뮤니티에 있는 동안에는 계속 읽을 수 있습니다."),
       "ui_cchat_moderators_only":
           MessageLookupByLibrary.simpleMessage("여기에는 소유자와 운영자만 쓸 수 있습니다."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("알림 끄기"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "이 채팅의 알림을 받지 않으며 메시지 수에도 포함되지 않습니다."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("채팅 이름"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("새 채팅"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("아직 채팅이 없습니다."),
@@ -199,6 +208,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "커뮤니티 채팅은 종단간 암호화되지 않습니다. 커뮤니티 운영자와 Kyron이 읽을 수 있습니다."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("맨 위에 고정"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("답변 추가"),
+      "ui_cchat_poll_close": MessageLookupByLibrary.simpleMessage("투표 종료"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("종료됨"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "모두가 각 답변을 몇 명이 골랐는지 볼 수 있지만, 누가 골랐는지는 볼 수 없습니다."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("여러 개 선택 허용"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("새 투표"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("하나를 선택하세요"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("답변 \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("투표: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("질문"),
+      "ui_cchat_poll_repeated":
+          MessageLookupByLibrary.simpleMessage("한 투표에 같은 답변은 한 번만 넣을 수 있습니다."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("하나 이상 선택하세요"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count명 응답"),
+      "ui_cchat_search": MessageLookupByLibrary.simpleMessage("이 채팅에서 검색"),
+      "ui_cchat_search_hint": MessageLookupByLibrary.simpleMessage("이 채팅에서 검색"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("찾은 항목이 없습니다."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("이 채팅을 더 이상 볼 수 없습니다."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("슬로 모드"),
@@ -212,12 +244,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n초"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "관전자로서 읽고 반응할 수 있습니다. 쓰려면 참여하세요."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "선택한 항목 중 25MB를 넘는 것이 있어 제외했습니다."),
+      "ui_cchat_too_far":
+          MessageLookupByLibrary.simpleMessage("너무 오래된 메시지라 표시할 수 없습니다."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("알림 켜기"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("고정 해제"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("음성 메시지 녹음"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("나"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("좋아요"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("저장됨"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("사람 추가"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("추가"),
+      "ui_group_add_name": MessageLookupByLibrary.simpleMessage("그룹 이름 추가"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("거절"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "이 그룹의 메시지는 다른 모든 대화처럼 종단간 암호화됩니다."),
@@ -268,6 +307,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("멤버 \$count명"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("멤버"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("그룹 이름"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("먼저 그룹 이름을 정하세요."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("그룹 채팅 만들기"),
       "ui_group_owner_detail":
           MessageLookupByLibrary.simpleMessage("소유자는 한 명입니다. 회원님은 관리자로 남습니다."),
@@ -286,6 +327,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("관전자로서 여기에서 읽고 반응할 수 있습니다."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "관전자는 읽고 반응할 수 있으며, 손을 들어 글쓰기를 요청할 수 있습니다."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("추천"),
       "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("프로필 보기"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("나"),
       "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("관전자입니다"),

@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Գրել կարող են միայն մոդերատորները"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Հայտարարությունների համար։ Համայնքում բոլորը դեռ կարող են կարդալ և արձագանքել։"),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "Ավելացնել լուսանկար կամ հարցում"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Լուսանկարներ և տեսանյութեր"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Փակել զրույցը"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Այլևս ոչ ոք չի կարողանա կարդալ կամ գրել այնտեղ։ Սա հնարավոր չէ հետարկել։"),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Հաղորդագրությունը հեռացվում է զրույցի բոլոր մասնակիցների համար։"),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Խմբագրել զրույցը"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Խմբագրել"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("խմբագրված"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage(
+          "Դուք խմբագրում եք ձեր հաղորդագրությունը"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Չհաջողվեց բացել այս զրույցը։"),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Զրույցներ"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Քանի դեռ համայնքում եք, կարող եք շարունակել կարդալ այն։"),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Այստեղ գրել կարող են միայն սեփականատերը և մոդերատորները։"),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Անջատել ձայնը"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ծանուցումներ չեն գա դրանից, և այն չի հաշվվի Հաղորդագրությունների թվում։"),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Զրույցի անունը"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Նոր զրույց"),
       "ui_cchat_none":
@@ -1061,6 +1072,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Համայնքի զրույցները ծայրից ծայր գաղտնագրված չեն։ Համայնքի մոդերատորները և Kyron-ը կարող են կարդալ դրանք։"),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Ամրացնել վերևում"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Ավելացնել պատասխան"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Փակել հարցումը"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Փակված է"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Բոլորը տեսնում են, թե քանիսն են ընտրել յուրաքանչյուր պատասխանը, բայց երբեք՝ ովքեր։"),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Թույլ տալ մի քանի ընտրություն"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Նոր հարցում"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Ընտրեք մեկը"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Պատասխան \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Հարցում՝ \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Հարց"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Յուրաքանչյուր պատասխան հարցման մեջ կարող է լինել միայն մեկ անգամ։"),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Ընտրեք մեկը կամ ավելին"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Պատասխանել է՝ \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Որոնել այս զրույցում"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Որոնել այս զրույցում"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Ոչինչ չի գտնվել։"),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Դուք այլևս չեք կարող տեսնել այս զրույցը։"),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Դանդաղ ռեժիմ"),
@@ -1075,7 +1114,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n վայրկյան"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Որպես դիտող կարող եք կարդալ և արձագանքել։ Միացեք՝ գրելու համար։"),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Ձեր ընտրածներից մեկը 25 ՄԲ-ից մեծ է և դուրս է մնացել։"),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Այդ հաղորդագրությունը չափազանց հին է ցուցադրելու համար։"),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Միացնել ձայնը"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Ապամրացնել"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage(
+          "Ձայնագրել ձայնային հաղորդագրություն"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Դուք"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1125,6 +1171,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("Ավելացնել մարդկանց"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ավելացնել"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Ավելացնել խմբի անունը"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Մերժել"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Այս խմբի հաղորդագրությունները ծայրից ծայր գաղտնագրված են, ինչպես ցանկացած այլ զրույց։"),
@@ -1179,6 +1227,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count անդամ"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Անդամներ"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Խմբի անունը"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Նախ խմբին անուն տվեք։"),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Ստեղծել խմբային զրույց"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1200,6 +1250,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Որպես դիտող՝ այստեղ կարող եք կարդալ և արձագանքել։"),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Դիտողները կարող են կարդալ, արձագանքել և ձեռք բարձրացնել՝ գրելու թույլտվություն խնդրելու համար։"),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Առաջարկվող"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Դիտել պրոֆիլը"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("դուք"),

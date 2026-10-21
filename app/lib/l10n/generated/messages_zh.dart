@@ -147,6 +147,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage("仅版主可以发言"),
       "ui_cchat_announcements_detail":
           MessageLookupByLibrary.simpleMessage("用于公告。社区中的所有人仍可阅读并回应。"),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage("添加照片或投票"),
+      "ui_cchat_attach_gallery": MessageLookupByLibrary.simpleMessage("照片和视频"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("关闭聊天"),
       "ui_cchat_close_detail":
           MessageLookupByLibrary.simpleMessage("之后任何人都无法在其中阅读或发言。此操作无法撤销。"),
@@ -157,6 +159,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own":
           MessageLookupByLibrary.simpleMessage("该消息会对聊天中的所有人删除。"),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("编辑聊天"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("编辑"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("已编辑"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage("正在编辑你的消息"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage("无法打开这个聊天。"),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("聊天"),
       "ui_cchat_join": MessageLookupByLibrary.simpleMessage("加入聊天"),
@@ -168,6 +173,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("只要你还在社区中，就仍然可以阅读它。"),
       "ui_cchat_moderators_only":
           MessageLookupByLibrary.simpleMessage("只有所有者和版主可以在这里发言。"),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("静音"),
+      "ui_cchat_mute_detail":
+          MessageLookupByLibrary.simpleMessage("不会收到它的通知，也不计入“消息”的数量。"),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("聊天名称"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("新建聊天"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("还没有聊天。"),
@@ -176,6 +184,26 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "社区聊天未采用端到端加密。社区的版主和 Kyron 可以阅读这些内容。"),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("置顶"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("添加选项"),
+      "ui_cchat_poll_close": MessageLookupByLibrary.simpleMessage("结束投票"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("已结束"),
+      "ui_cchat_poll_detail":
+          MessageLookupByLibrary.simpleMessage("所有人都能看到每个选项有多少人选，但看不到是谁。"),
+      "ui_cchat_poll_multiple": MessageLookupByLibrary.simpleMessage("允许多选"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("新建投票"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("选择一项"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("选项 \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("投票：\$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("问题"),
+      "ui_cchat_poll_repeated":
+          MessageLookupByLibrary.simpleMessage("同一投票中每个选项只能出现一次。"),
+      "ui_cchat_poll_several": MessageLookupByLibrary.simpleMessage("选择一项或多项"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count 人已回答"),
+      "ui_cchat_search": MessageLookupByLibrary.simpleMessage("在此聊天中搜索"),
+      "ui_cchat_search_hint": MessageLookupByLibrary.simpleMessage("在此聊天中搜索"),
+      "ui_cchat_search_none": MessageLookupByLibrary.simpleMessage("未找到任何内容。"),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage("你已无法查看这个聊天。"),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("慢速模式"),
       "ui_cchat_slow_detail":
@@ -188,12 +216,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n 秒"),
       "ui_cchat_spectator":
           MessageLookupByLibrary.simpleMessage("你可以作为旁观者阅读和回应。加入后即可发言。"),
+      "ui_cchat_too_big":
+          MessageLookupByLibrary.simpleMessage("你选择的某个文件超过 25 MB，已被略去。"),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage("该消息太久远，无法显示。"),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("取消静音"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("取消置顶"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("录制语音消息"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("你"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("已点赞"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("已保存"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("添加成员"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("添加"),
+      "ui_group_add_name": MessageLookupByLibrary.simpleMessage("添加群组名称"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("忽略"),
       "ui_group_e2ee":
           MessageLookupByLibrary.simpleMessage("此群组中的消息与其他对话一样经过端到端加密。"),
@@ -240,6 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count 位成员"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("成员"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("群组名称"),
+      "ui_group_name_first": MessageLookupByLibrary.simpleMessage("请先为群组命名。"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("创建群聊"),
       "ui_group_owner_detail":
           MessageLookupByLibrary.simpleMessage("群主只有一位。你将继续担任管理员。"),
@@ -257,6 +292,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("作为旁观者，你可以在这里阅读和回应。"),
       "ui_group_spectators_detail":
           MessageLookupByLibrary.simpleMessage("旁观者可以阅读、回应，并举手请求发言。"),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("建议"),
       "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("查看个人资料"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("你"),
       "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("你是旁观者"),

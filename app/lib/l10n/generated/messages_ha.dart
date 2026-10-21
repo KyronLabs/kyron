@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Masu kula ne kawai za su iya rubutu"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Don sanarwa. Kowa a cikin al'umma har yanzu zai iya karantawa da mayar da martani."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Ƙara hoto ko ƙuri'a"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Hotuna da bidiyo"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Rufe hira"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Babu wanda zai iya karantawa ko rubutu a cikinta. Ba za a iya mayar da wannan ba."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Ana cire saƙon ga kowa a cikin hirar."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Gyara hira"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Gyara"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("an gyara"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Ana gyara saƙon"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Ba a iya buɗe wannan hirar ba."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Hirarraki"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Za ka iya ci gaba da karanta ta muddin kana cikin al'ummar."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Mai shi da masu kula ne kawai za su iya rubutu a nan."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Yi shiru"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Babu sanarwa daga gare shi, kuma ba a ƙirga shi a cikin Saƙonni."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Sunan hira"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Sabuwar hira"),
       "ui_cchat_none":
@@ -1061,6 +1072,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Hirarrakin al'umma ba a ɓoye su daga farko zuwa ƙarshe ba. Masu kula da al'ummar da Kyron za su iya karanta su."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Maƙala a sama"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("Ƙara amsa"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Rufe ƙuri'a"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("An rufe"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Kowa yana ganin mutane nawa suka zaɓi kowace amsa, amma ba wane ne ba."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Bari a zaɓi da yawa"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Sabuwar ƙuri'a"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Zaɓi ɗaya"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("Amsa \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Ƙuri'a: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Tambaya"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Kowace amsa za ta iya kasancewa sau ɗaya kawai a ƙuri'a."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Zaɓi ɗaya ko fiye"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count sun amsa"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Bincika a wannan hira"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Bincika a wannan hira"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Ba a sami komai ba."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Ba za ka iya ganin wannan hirar ba kuma."),
       "ui_cchat_slow":
@@ -1077,7 +1115,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Daƙiƙa \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Za ka iya karantawa da mayar da martani a matsayin ɗan kallo. Shiga don yin rubutu."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Wani abu da aka zaɓa ya wuce 25 MB kuma an bar shi."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Wannan saƙon ya yi nisa a baya don a nuna shi."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Cire shiru"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Cire maƙalawa"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Naɗi saƙon murya"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Kai"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1126,6 +1171,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Ƙara mutane"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ƙara"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Ƙara sunan rukuni"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Ƙi"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Saƙonni a wannan rukunin an ɓoye su daga farko zuwa ƙarshe, kamar kowace tattaunawa."),
@@ -1181,6 +1228,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Mambobi \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Mambobi"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Sunan rukuni"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Fara sanya wa rukunin suna."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Ƙirƙiri hira ta rukuni"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1204,6 +1253,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "A matsayin ɗan kallo, za ka iya karantawa da mayar da martani a nan."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "’Yan kallo za su iya karantawa, mayar da martani kuma su ɗaga hannu don neman rubutu."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Shawarwari"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Duba bayanan martaba"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("kai"),

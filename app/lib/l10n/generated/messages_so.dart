@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Maamulayaasha oo keliya ayaa wax qori kara"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Ogeysiisyada. Qof kasta oo bulshada ku jira wali wuu akhrin karaa oo ka jawaabi karaa."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Ku dar sawir ama codbixin"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Sawirro iyo fiidiyowyo"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Xir sheekada"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Qofna kuma akhrin karo kumana qori karo. Tan dib looma celin karo."),
@@ -1041,6 +1045,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Fariinta waa laga saaraa qof kasta oo sheekada ku jira."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("Wax ka beddel sheekada"),
+      "ui_cchat_edit_message":
+          MessageLookupByLibrary.simpleMessage("Wax ka beddel"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("la beddelay"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage(
+          "Waxaad beddelaysaa fariintaada"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Sheekadan lama furi karo."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Sheekooyin"),
@@ -1054,6 +1063,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Wali waad akhrin kartaa inta aad bulshada ku jirto."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Milkiilaha iyo maamulayaasha oo keliya ayaa halkan wax ku qori kara."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Aamusii"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ogeysiis kama imaanayo, laguma tiriyo Fariimaha."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Magaca sheekada"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Sheeko cusub"),
       "ui_cchat_none":
@@ -1064,6 +1076,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Sheekooyinka bulshada laguma sireeyo bilow ilaa dhammaad. Maamulayaasha bulshada iyo Kyron way akhrin karaan."),
       "ui_cchat_pin":
           MessageLookupByLibrary.simpleMessage("Ku dheji xagga sare"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Ku dar jawaab"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Xir codbixinta"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("La xiray"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Qof walba wuxuu arkaa inta dooratay jawaab kasta, marnaba cidda."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("U oggolow inay doortaan dhowr"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Codbixin cusub"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Dooro mid"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Jawaabta \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Codbixin: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Su'aal"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Jawaab kasta hal mar oo keliya ayay ku jiri kartaa codbixinta."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Dooro mid ama ka badan"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count ayaa jawaabay"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Ka raadi sheekadan"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Ka raadi sheekadan"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Waxba lama helin."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Mar dambe ma arki kartid sheekadan."),
       "ui_cchat_slow":
@@ -1080,7 +1121,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n ilbiriqsi"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Waad akhrin kartaa oo ka jawaabi kartaa adigoo daawade ah. Ku biir si aad wax u qorto."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Wax aad dooratay ayaa ka badan 25 MB, waana laga reebay."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Fariintaas aad bay u fog tahay in la muujiyo."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Ka qaad aamusnaanta"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Ka fur"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Duub fariin cod ah"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Adiga"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1129,6 +1178,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Ku dar dad"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ku dar"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Ku dar magaca kooxda"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Diid"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Fariimaha kooxdan waa la sir-qariyay bilow ilaa dhammaad, sida wada-hadal kasta."),
@@ -1183,6 +1234,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count xubnood"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Xubnaha"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Magaca kooxda"),
+      "ui_group_name_first": MessageLookupByLibrary.simpleMessage(
+          "Marka hore kooxda magac u bixi."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Samee wada-sheekeysi koox"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1205,6 +1258,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Daawade ahaan, halkan waad akhrin kartaa oo ka jawaabi kartaa."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Daawadayaashu way akhrin karaan, ka jawaabi karaan oo gacan taagi karaan si ay u codsadaan qoris."),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("La soo jeediyay"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Eeg astaanta"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("adiga"),

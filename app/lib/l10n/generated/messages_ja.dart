@@ -169,6 +169,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("モデレーターのみ投稿できます"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "お知らせ用です。コミュニティの全員が引き続き閲覧とリアクションができます。"),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage("写真やアンケートを追加"),
+      "ui_cchat_attach_gallery": MessageLookupByLibrary.simpleMessage("写真と動画"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("チャットを閉じる"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "誰もこのチャットを閲覧・投稿できなくなります。この操作は元に戻せません。"),
@@ -180,6 +182,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own":
           MessageLookupByLibrary.simpleMessage("メッセージはチャットの全員の画面から削除されます。"),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("チャットを編集"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("編集"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("編集済み"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage("メッセージを編集中"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("このチャットを開けませんでした。"),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("チャット"),
@@ -192,6 +197,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("コミュニティにいる間は引き続き閲覧できます。"),
       "ui_cchat_moderators_only":
           MessageLookupByLibrary.simpleMessage("ここではオーナーとモデレーターのみ投稿できます。"),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("ミュート"),
+      "ui_cchat_mute_detail":
+          MessageLookupByLibrary.simpleMessage("通知が届かなくなり、メッセージの件数にも含まれません。"),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("チャット名"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("新しいチャット"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("まだチャットはありません。"),
@@ -200,6 +208,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "コミュニティチャットはエンドツーエンドで暗号化されていません。コミュニティのモデレーターと Kyron が閲覧できます。"),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("上部に固定"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("選択肢を追加"),
+      "ui_cchat_poll_close": MessageLookupByLibrary.simpleMessage("アンケートを締め切る"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("締め切り済み"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "各選択肢を何人が選んだかは全員に見えますが、誰が選んだかは見えません。"),
+      "ui_cchat_poll_multiple": MessageLookupByLibrary.simpleMessage("複数選択を許可"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("新しいアンケート"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("1つ選んでください"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("選択肢 \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("アンケート: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("質問"),
+      "ui_cchat_poll_repeated":
+          MessageLookupByLibrary.simpleMessage("同じ選択肢は1つのアンケートに1回しか入れられません。"),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("1つ以上選んでください"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count人が回答"),
+      "ui_cchat_search": MessageLookupByLibrary.simpleMessage("このチャット内を検索"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("このチャット内を検索"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("見つかりませんでした。"),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("このチャットはもう表示できません。"),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("低速モード"),
@@ -213,12 +244,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n 秒"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "観覧者として閲覧とリアクションができます。投稿するには参加してください。"),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "選んだものの中に25 MBを超えるものがあったため、除外しました。"),
+      "ui_cchat_too_far":
+          MessageLookupByLibrary.simpleMessage("そのメッセージは古すぎて表示できません。"),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("ミュート解除"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("固定を解除"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("ボイスメッセージを録音"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("あなた"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("いいね"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("保存済み"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("メンバーを追加"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("追加"),
+      "ui_group_add_name": MessageLookupByLibrary.simpleMessage("グループ名を追加"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("却下"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "このグループのメッセージは、他の会話と同じくエンドツーエンドで暗号化されています。"),
@@ -266,6 +304,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("メンバー \$count 人"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("メンバー"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("グループ名"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("先にグループに名前を付けてください。"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("グループチャットを作成"),
       "ui_group_owner_detail":
           MessageLookupByLibrary.simpleMessage("オーナーは1人です。あなたは管理者として残ります。"),
@@ -284,6 +324,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("観覧者として、ここで閲覧とリアクションができます。"),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "観覧者は閲覧やリアクションができ、手を挙げて発言を希望できます。"),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("おすすめ"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("プロフィールを見る"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("あなた"),

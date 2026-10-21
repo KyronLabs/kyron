@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Alleen moderators kunnen schrijven"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Voor aankondigingen. Iedereen in de community kan nog steeds lezen en reageren."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Foto of poll toevoegen"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Foto's en video's"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Chat sluiten"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Niemand kan er nog in lezen of schrijven. Dit kan niet ongedaan worden gemaakt."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Het bericht wordt voor iedereen in de chat verwijderd."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Chat bewerken"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Bewerken"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("bewerkt"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Je bewerkt je bericht"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Kan deze chat niet openen."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chats"),
@@ -1053,6 +1061,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Je kunt hem blijven lezen zolang je in de community zit."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Alleen de eigenaar en moderators kunnen hier schrijven."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Dempen"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Geen meldingen hiervan, en de chat telt niet mee bij Berichten."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Naam van de chat"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Nieuwe chat"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("Nog geen chats."),
@@ -1062,6 +1073,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Communitychats zijn niet end-to-end versleuteld. De moderators van de community en Kyron kunnen ze lezen."),
       "ui_cchat_pin":
           MessageLookupByLibrary.simpleMessage("Bovenaan vastzetten"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Antwoord toevoegen"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Poll sluiten"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Gesloten"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Iedereen ziet hoeveel mensen elk antwoord kozen, nooit wie."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Meerdere keuzes toestaan"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Nieuwe poll"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Kies er één"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Antwoord \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Poll: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Vraag"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Elk antwoord mag maar één keer in een poll staan."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Kies er één of meer"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count hebben geantwoord"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Zoeken in deze chat"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Zoeken in deze chat"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Niets gevonden."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Je kunt deze chat niet meer zien."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Langzame modus"),
@@ -1077,7 +1116,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n seconden"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Je kunt als toeschouwer lezen en reageren. Doe mee om te schrijven."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Iets wat je koos is groter dan 25 MB en is weggelaten."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Dat bericht ligt te ver terug om te tonen."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Dempen opheffen"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Losmaken"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Spraakbericht opnemen"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Jij"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1126,6 +1173,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Mensen toevoegen"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Toevoegen"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Groepsnaam toevoegen"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Afwijzen"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Berichten in deze groep zijn end-to-end versleuteld, net als elk ander gesprek."),
@@ -1180,6 +1229,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count leden"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Leden"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Groepsnaam"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Geef de groep eerst een naam."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("Groepschat maken"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "Er is één eigenaar. Je blijft beheerder."),
@@ -1202,6 +1253,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Als toeschouwer kun je hier lezen en reageren."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Toeschouwers kunnen lezen, reageren en hun hand opsteken om te vragen of ze mogen schrijven."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Voorgesteld"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Profiel bekijken"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("jij"),

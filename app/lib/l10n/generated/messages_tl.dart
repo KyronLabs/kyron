@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Mga moderator lang ang makakasulat"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Para sa mga anunsyo. Lahat sa komunidad ay makakabasa at makakapag-react pa rin."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng larawan o poll"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Mga larawan at video"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Isara ang chat"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Wala nang makakabasa o makakasulat dito. Hindi na ito maibabalik."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Aalisin ang mensahe para sa lahat sa chat."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("I-edit ang chat"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("I-edit"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("na-edit"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Ine-edit mo ang iyong mensahe"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Hindi mabuksan ang chat na ito."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Mga chat"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Mababasa mo pa rin ito habang nasa komunidad ka."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Ang may-ari at mga moderator lang ang makakasulat dito."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("I-mute"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Walang notification mula rito, at hindi ito kasama sa bilang ng Messages."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Pangalan ng chat"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Bagong chat"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("Wala pang chat."),
@@ -1060,6 +1071,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Hindi end-to-end encrypted ang mga chat ng komunidad. Mababasa ito ng mga moderator ng komunidad at ng Kyron."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("I-pin sa itaas"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng sagot"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Isara ang poll"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Sarado na"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Nakikita ng lahat kung ilan ang pumili sa bawat sagot, pero hindi kailanman kung sino."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Payagang pumili ng ilan"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Bagong poll"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("Pumili ng isa"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("Sagot \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Poll: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Tanong"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Isang beses lang puwedeng lumabas ang bawat sagot sa poll."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Pumili ng isa o higit pa"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count ang sumagot"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Maghanap sa chat na ito"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Maghanap sa chat na ito"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Walang nahanap."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Hindi mo na makikita ang chat na ito."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Slow mode"),
@@ -1075,7 +1114,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n segundo"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Makakabasa at makakapag-react ka bilang manonood. Sumali para makasulat."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "May napili kang lampas 25 MB kaya hindi isinama."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Masyado nang luma ang mensaheng iyon para maipakita."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("I-unmute"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("I-unpin"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Mag-record ng voice note"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Ikaw"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1124,6 +1170,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Magdagdag ng tao"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Idagdag"),
+      "ui_group_add_name": MessageLookupByLibrary.simpleMessage(
+          "Magdagdag ng pangalan ng grupo"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Tanggihan"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Ang mga mensahe sa grupong ito ay end-to-end encrypted, tulad ng ibang usapan."),
@@ -1179,6 +1227,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Mga miyembro"),
       "ui_group_name":
           MessageLookupByLibrary.simpleMessage("Pangalan ng grupo"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Pangalanan muna ang grupo."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Gumawa ng group chat"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1203,6 +1253,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Bilang manonood, puwede kang magbasa at mag-react dito."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Ang mga manonood ay puwedeng magbasa, mag-react at magtaas ng kamay para humiling na magsulat."),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("Iminumungkahi"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Tingnan ang profile"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("ikaw"),

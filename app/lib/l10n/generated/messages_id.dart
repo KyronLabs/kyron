@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Hanya moderator yang dapat menulis"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Untuk pengumuman. Semua orang di komunitas tetap dapat membaca dan bereaksi."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Tambahkan foto atau polling"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Foto dan video"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Tutup obrolan"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Tidak ada yang bisa membaca atau menulis di sini lagi. Tindakan ini tidak dapat dibatalkan."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Pesan dihapus untuk semua orang di obrolan."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Edit obrolan"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Edit"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("diedit"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Anda sedang mengedit pesan"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Tidak dapat membuka obrolan ini."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Obrolan"),
@@ -1053,6 +1061,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Anda tetap dapat membacanya selama berada di komunitas."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Hanya pemilik dan moderator yang dapat menulis di sini."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Bisukan"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Tidak ada notifikasi darinya, dan tidak dihitung di Pesan."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Nama obrolan"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Obrolan baru"),
       "ui_cchat_none":
@@ -1062,6 +1073,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Obrolan komunitas tidak dienkripsi end-to-end. Moderator komunitas dan Kyron dapat membacanya."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Sematkan di atas"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Tambahkan jawaban"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Tutup polling"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Ditutup"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Semua orang melihat berapa yang memilih tiap jawaban, tidak pernah siapa."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Izinkan memilih beberapa"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Polling baru"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Pilih satu"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Jawaban \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Polling: \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("Pertanyaan"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Setiap jawaban hanya boleh ada sekali dalam polling."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Pilih satu atau lebih"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count menjawab"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Cari di obrolan ini"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Cari di obrolan ini"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Tidak ditemukan apa pun."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Anda tidak dapat melihat obrolan ini lagi."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Mode lambat"),
@@ -1077,7 +1117,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n detik"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Anda dapat membaca dan bereaksi sebagai penonton. Bergabunglah untuk menulis."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Sesuatu yang Anda pilih lebih dari 25 MB dan tidak disertakan."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Pesan itu terlalu lama untuk ditampilkan."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Bunyikan"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Lepas sematan"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Rekam pesan suara"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Anda"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1126,6 +1173,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Tambahkan orang"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Tambahkan"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Tambahkan nama grup"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Tolak"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Pesan di grup ini terenkripsi end-to-end, seperti percakapan lainnya."),
@@ -1181,6 +1230,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count anggota"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Anggota"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Nama grup"),
+      "ui_group_name_first": MessageLookupByLibrary.simpleMessage(
+          "Beri nama grup terlebih dahulu."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("Buat obrolan grup"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "Hanya ada satu pemilik. Anda tetap menjadi admin."),
@@ -1203,6 +1254,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Sebagai penonton, Anda bisa membaca dan memberi reaksi di sini."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Penonton bisa membaca, memberi reaksi, dan mengangkat tangan untuk minta menulis."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Disarankan"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Lihat profil"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("Anda"),

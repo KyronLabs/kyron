@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "មានតែអ្នកសម្របសម្រួលទេដែលអាចសរសេរបាន"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "សម្រាប់សេចក្តីប្រកាស។ អ្នកទាំងអស់គ្នាក្នុងសហគមន៍នៅតែអាចអាន និងប្រតិកម្មបាន។"),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("បន្ថែមរូបថត ឬការស្ទង់មតិ"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("រូបថត និងវីដេអូ"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("បិទការជជែក"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "គ្មាននរណាម្នាក់អាចអាន ឬសរសេរក្នុងនោះបានទៀតទេ។ មិនអាចត្រឡប់វិញបានទេ។"),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "សារត្រូវបានដកចេញសម្រាប់អ្នកទាំងអស់គ្នាក្នុងការជជែក។"),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("កែការជជែក"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("កែ"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("បានកែ"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("អ្នកកំពុងកែសារ"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("មិនអាចបើកការជជែកនេះបានទេ។"),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ការជជែក"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "អ្នកនៅតែអាចអានវាបាន ដរាបណាអ្នកនៅក្នុងសហគមន៍។"),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "មានតែម្ចាស់ និងអ្នកសម្របសម្រួលទេដែលអាចសរសេរនៅទីនេះ។"),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("បិទសំឡេង"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "គ្មានការជូនដំណឹងពីវាទេ ហើយវាមិនត្រូវបានរាប់ក្នុងសារទេ។"),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ឈ្មោះការជជែក"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("ការជជែកថ្មី"),
       "ui_cchat_none":
@@ -1061,6 +1072,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "ការជជែករបស់សហគមន៍មិនត្រូវបានអ៊ិនគ្រីបពីចុងដល់ចុងទេ។ អ្នកសម្របសម្រួលសហគមន៍ និង Kyron អាចអានវាបាន។"),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("ខ្ទាស់នៅខាងលើ"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("បន្ថែមចម្លើយ"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("បិទការស្ទង់មតិ"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("បានបិទ"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "អ្នកទាំងអស់គ្នាឃើញថាមានប៉ុន្មាននាក់ជ្រើសចម្លើយនីមួយៗ ប៉ុន្តែមិនដែលឃើញថាជានរណាទេ។"),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("អនុញ្ញាតឱ្យជ្រើសច្រើន"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("ការស្ទង់មតិថ្មី"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("ជ្រើសមួយ"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("ចម្លើយ \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("ការស្ទង់មតិ៖ \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("សំណួរ"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "ចម្លើយនីមួយៗអាចមានតែម្តងក្នុងការស្ទង់មតិ។"),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("ជ្រើសមួយ ឬច្រើន"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count នាក់បានឆ្លើយ"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("ស្វែងរកក្នុងការជជែកនេះ"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("ស្វែងរកក្នុងការជជែកនេះ"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("រកមិនឃើញអ្វីទេ។"),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "អ្នកមិនអាចមើលការជជែកនេះបានទៀតទេ។"),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("របៀបយឺត"),
@@ -1075,7 +1114,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n វិនាទី"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "អ្នកអាចអាន និងប្រតិកម្មជាអ្នកមើល។ ចូលរួមដើម្បីសរសេរ។"),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "អ្វីមួយដែលអ្នកបានជ្រើសធំជាង 25 MB ហើយត្រូវបានទុកចោល។"),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "សារនោះចាស់ពេកមិនអាចបង្ហាញបានទេ។"),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("បើកសំឡេង"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ឈប់ខ្ទាស់"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("ថតសារជាសំឡេង"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("អ្នក"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1124,6 +1169,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("បន្ថែមមនុស្ស"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("បន្ថែម"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("បន្ថែមឈ្មោះក្រុម"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("បដិសេធ"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "សារក្នុងក្រុមនេះត្រូវបានអ៊ិនគ្រីបពីចុងម្ខាងទៅចុងម្ខាង ដូចការសន្ទនាផ្សេងទៀតដែរ។"),
@@ -1177,6 +1224,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("សមាជិក \$count នាក់"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("សមាជិក"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("ឈ្មោះក្រុម"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("សូមដាក់ឈ្មោះក្រុមជាមុនសិន។"),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("បង្កើតការជជែកជាក្រុម"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1199,6 +1248,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ក្នុងនាមជាអ្នកមើល អ្នកអាចអាន និងបញ្ចេញប្រតិកម្មនៅទីនេះ។"),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "អ្នកមើលអាចអាន បញ្ចេញប្រតិកម្ម និងលើកដៃដើម្បីសុំសរសេរ។"),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("បានណែនាំ"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("មើលប្រវត្តិរូប"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("អ្នក"),

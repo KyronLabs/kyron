@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Yalnızca moderatörler yazabilir"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Duyurular için. Topluluktaki herkes okumaya ve tepki vermeye devam edebilir."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Fotoğraf veya anket ekle"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Fotoğraflar ve videolar"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Sohbeti kapat"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Artık kimse bu sohbette okuyamayacak veya yazamayacak. Bu geri alınamaz."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Mesaj sohbetteki herkes için kaldırılır."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Sohbeti düzenle"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Düzenle"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("düzenlendi"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Mesajını düzenliyorsun"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Bu sohbet açılamadı."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Sohbetler"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Toplulukta olduğun sürece okumaya devam edebilirsin."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Buraya yalnızca sahip ve moderatörler yazabilir."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Sessize al"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ondan bildirim gelmez ve Mesajlar sayısına katılmaz."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Sohbet adı"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Yeni sohbet"),
       "ui_cchat_none":
@@ -1061,6 +1072,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Topluluk sohbetleri uçtan uca şifreli değildir. Topluluğun moderatörleri ve Kyron bunları okuyabilir."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("En üste sabitle"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("Yanıt ekle"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Anketi kapat"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Kapandı"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Herkes her yanıtı kaç kişinin seçtiğini görür, kimlerin seçtiğini asla."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Birden fazla seçime izin ver"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Yeni anket"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Birini seç"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("Yanıt \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Anket: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Soru"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Her yanıt bir ankette yalnızca bir kez olabilir."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Bir veya daha fazlasını seç"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count kişi yanıtladı"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Bu sohbette ara"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Bu sohbette ara"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Hiçbir şey bulunamadı."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("Bu sohbeti artık göremezsin."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Yavaş mod"),
@@ -1076,8 +1113,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n saniye"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "İzleyici olarak okuyabilir ve tepki verebilirsin. Yazmak için katıl."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Seçtiğin bir şey 25 MB'tan büyük ve dışarıda bırakıldı."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "O mesaj gösterilemeyecek kadar geride."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Sesi aç"),
       "ui_cchat_unpin":
           MessageLookupByLibrary.simpleMessage("Sabitlemeyi kaldır"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Sesli mesaj kaydet"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Sen"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1126,6 +1170,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Kişi ekle"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ekle"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Grup adı ekle"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Reddet"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Bu gruptaki mesajlar, diğer tüm sohbetler gibi uçtan uca şifrelidir."),
@@ -1178,6 +1224,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count üye"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Üyeler"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Grup adı"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Önce gruba bir ad ver."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Grup sohbeti oluştur"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1200,6 +1248,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "İzleyici olarak burada okuyabilir ve tepki verebilirsin."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "İzleyiciler okuyabilir, tepki verebilir ve yazmak için el kaldırabilir."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Önerilenler"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Profili gör"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("sen"),

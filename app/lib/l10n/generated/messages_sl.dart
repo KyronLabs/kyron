@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Pišejo lahko samo moderatorji"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Za obvestila. Vsi v skupnosti lahko še vedno berejo in se odzivajo."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Dodaj fotografijo ali anketo"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Fotografije in videoposnetki"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Zapri klepet"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Nihče ne bo mogel več brati ali pisati v njem. Tega ni mogoče razveljaviti."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Sporočilo bo odstranjeno za vse v klepetu."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Uredi klepet"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Uredi"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("urejeno"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Urejate svoje sporočilo"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Tega klepeta ni bilo mogoče odpreti."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Klepeti"),
@@ -1053,6 +1061,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Dokler ste v skupnosti, ga lahko še vedno berete."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Tu lahko pišejo samo lastnik in moderatorji."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Utišaj"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Brez obvestil iz tega klepeta in se ne šteje v Sporočila."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Ime klepeta"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Nov klepet"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("Še ni klepetov."),
@@ -1061,6 +1072,36 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Klepeti skupnosti niso šifrirani od konca do konca. Moderatorji skupnosti in Kyron jih lahko berejo."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Pripni na vrh"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Dodaj odgovor"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Zapri anketo"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Zaprta"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Vsi vidijo, koliko jih je izbralo posamezen odgovor, nikoli pa kdo."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Dovoli več izbir"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Nova anketa"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("Izberite enega"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Odgovor \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Anketa: \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("Vprašanje"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Vsak odgovor je lahko v anketi le enkrat."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Izberite enega ali več"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Odgovorilo: \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Išči v tem klepetu"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Išči v tem klepetu"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Ni zadetkov."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Tega klepeta ne morete več videti."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Počasni način"),
@@ -1076,7 +1117,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sekunde: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Kot gledalec lahko berete in se odzivate. Pridružite se, da boste lahko pisali."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Nekaj, kar ste izbrali, presega 25 MB in je bilo izpuščeno."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "To sporočilo je preveč nazaj, da bi ga prikazali."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Prekliči utišanje"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Odpni"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Posnemi glasovno sporočilo"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Vi"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1125,6 +1174,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Dodaj osebe"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Dodaj"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Dodaj ime skupine"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Zavrni"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Sporočila v tej skupini so šifrirana od konca do konca, tako kot vsak drug pogovor."),
@@ -1179,6 +1230,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Člani: \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Člani"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Ime skupine"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Najprej poimenujte skupino."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Ustvari skupinski klepet"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1202,6 +1255,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kot gledalec lahko tukaj berete in se odzivate."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Gledalci lahko berejo, se odzivajo in dvignejo roko, da prosijo za pisanje."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Predlagano"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Ogled profila"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("vi"),

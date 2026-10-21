@@ -1161,6 +1161,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Μόνο οι συντονιστές μπορούν να γράφουν"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Για ανακοινώσεις. Όλοι στην κοινότητα μπορούν ακόμα να διαβάζουν και να αντιδρούν."),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "Προσθήκη φωτογραφίας ή δημοσκόπησης"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Φωτογραφίες και βίντεο"),
       "ui_cchat_close":
           MessageLookupByLibrary.simpleMessage("Κλείσιμο συνομιλίας"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
@@ -1174,6 +1178,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Το μήνυμα αφαιρείται για όλους στη συνομιλία."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("Επεξεργασία συνομιλίας"),
+      "ui_cchat_edit_message":
+          MessageLookupByLibrary.simpleMessage("Επεξεργασία"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("επεξεργασμένο"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Επεξεργάζεστε το μήνυμά σας"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Δεν ήταν δυνατό να ανοίξει αυτή η συνομιλία."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Συνομιλίες"),
@@ -1188,6 +1197,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Μπορείτε ακόμα να τη διαβάζετε όσο είστε στην κοινότητα."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Εδώ μπορούν να γράφουν μόνο ο ιδιοκτήτης και οι συντονιστές."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Σίγαση"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Χωρίς ειδοποιήσεις από αυτή, και δεν μετράει στα Μηνύματα."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Όνομα συνομιλίας"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Νέα συνομιλία"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage(
@@ -1198,6 +1210,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Οι συνομιλίες κοινότητας δεν έχουν κρυπτογράφηση από άκρο σε άκρο. Οι συντονιστές της κοινότητας και το Kyron μπορούν να τις διαβάσουν."),
       "ui_cchat_pin":
           MessageLookupByLibrary.simpleMessage("Καρφίτσωμα στην κορυφή"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Προσθήκη απάντησης"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Κλείσιμο δημοσκόπησης"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Έκλεισε"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Όλοι βλέπουν πόσοι επέλεξαν κάθε απάντηση, ποτέ ποιοι."),
+      "ui_cchat_poll_multiple": MessageLookupByLibrary.simpleMessage(
+          "Να επιτρέπονται πολλές επιλογές"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Νέα δημοσκόπηση"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Επιλέξτε μία"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Απάντηση \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Δημοσκόπηση: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Ερώτηση"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Κάθε απάντηση μπορεί να υπάρχει μία φορά σε μια δημοσκόπηση."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Επιλέξτε μία ή περισσότερες"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Απάντησαν: \$count"),
+      "ui_cchat_search": MessageLookupByLibrary.simpleMessage(
+          "Αναζήτηση σε αυτή τη συνομιλία"),
+      "ui_cchat_search_hint": MessageLookupByLibrary.simpleMessage(
+          "Αναζήτηση σε αυτή τη συνομιλία"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Δεν βρέθηκε τίποτα."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Δεν μπορείτε πλέον να βλέπετε αυτή τη συνομιλία."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Αργή λειτουργία"),
@@ -1213,7 +1254,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n δευτερόλεπτα"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Ως θεατής μπορείτε να διαβάζετε και να αντιδράτε. Γίνετε μέλος για να γράψετε."),
+      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
+          "Κάτι που επιλέξατε ξεπερνά τα 25 MB και παραλείφθηκε."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Αυτό το μήνυμα είναι πολύ παλιό για να εμφανιστεί."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Κατάργηση σίγασης"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Ξεκαρφίτσωμα"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage(
+          "Ηχογράφηση φωνητικού μηνύματος"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Εσείς"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Κοινότητες"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1265,6 +1314,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Προσθήκη ατόμων"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Προσθήκη"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Προσθήκη ονόματος ομάδας"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Απόρριψη"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Τα μηνύματα σε αυτή την ομάδα είναι κρυπτογραφημένα από άκρο σε άκρο, όπως κάθε άλλη συνομιλία."),
@@ -1319,6 +1370,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count μέλη"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Μέλη"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Όνομα ομάδας"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Δώστε πρώτα όνομα στην ομάδα."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage(
           "Δημιουργία ομαδικής συνομιλίας"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1342,6 +1395,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ως θεατής, εδώ μπορείς να διαβάζεις και να αντιδράς."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Οι θεατές μπορούν να διαβάζουν, να αντιδρούν και να σηκώνουν το χέρι για να ζητήσουν να γράψουν."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Προτάσεις"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Προβολή προφίλ"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("εσύ"),
