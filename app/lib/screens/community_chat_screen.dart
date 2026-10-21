@@ -1,27 +1,37 @@
 // lib/screens/community_chat_screen.dart
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/community.dart' show CommunityRole;
 import '../models/community_chat.dart';
+import '../models/post_media.dart';
 import '../providers/community_chats_provider.dart';
 import '../providers/current_user_provider.dart';
 import '../repositories/moderation_repository.dart' show ReportTarget;
+import '../utils/conversation_text.dart' show mediaPreview;
+import '../utils/media_basket.dart' show MediaBasket, mediaKindOf;
 import '../widgets/action_button.dart';
 import '../widgets/action_sheet.dart';
+import '../widgets/create_post/voice_recorder_sheet.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../widgets/media_grid.dart';
 import '../widgets/quick_reaction_row.dart';
 import '../widgets/toast.dart';
 import '../widgets/verified_badge.dart';
+import '../widgets/voice_post_player.dart';
+import 'community_chat_search_screen.dart';
 import 'community_chat_settings_screen.dart';
+import 'community_poll_screen.dart';
 import 'report_screen.dart';
 
 /// One chat inside a community.
@@ -56,6 +66,15 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
   final _scroll = ScrollController();
   final _focus = FocusNode();
   CommunityChatMessage? _replyingTo;
+
+  /// The reader's own message whose words the composer is changing.
+  CommunityChatMessage? _editing;
+
+  /// A message just found by a search, lit for a moment where it was said.
+  String? _highlight;
+  final _highlightKey = GlobalKey();
+  Timer? _unlight;
+
   bool _settled = false;
 
   /// While the reader has not joined, nothing is pushed to them as it
@@ -78,6 +97,7 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
 
   @override
   void dispose() {
+    _unlight?.cancel();
     _poll?.cancel();
     _box.dispose();
     _scroll.dispose();
@@ -111,6 +131,13 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
     final me = _me;
     if (me == null) return;
     final text = _box.text;
+    final editing = _editing;
+    if (editing != null) {
+      _box.clear();
+      setState(() => _editing = null);
+      await _after(_notifier.edit(editing, text));
+      return;
+    }
     final answering = _replyingTo;
     _box.clear();
     setState(() => _replyingTo = null);
@@ -118,6 +145,169 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
     final error = await _notifier.send(text, me: me, replyingTo: answering);
     _toNewest();
     if (error != null && mounted) Toast.show(context, error);
+  }
+
+  /// Sends what was picked or recorded, with whatever is in the box as the
+  /// words under it.
+  Future<void> _sendMedia(List<PendingMedia> media) async {
+    final me = _me;
+    if (me == null || media.isEmpty) return;
+    final caption = _box.text;
+    final answering = _replyingTo;
+    _box.clear();
+    setState(() => _replyingTo = null);
+    unawaited(HapticFeedback.selectionClick());
+    final sending = _notifier.sendMedia(
+      media,
+      me: me,
+      caption: caption,
+      replyingTo: answering,
+    );
+    _toNewest();
+    final error = await sending;
+    if (error != null && mounted) Toast.show(context, error);
+  }
+
+  /// Photos and clips, a photo from the camera, or a poll.
+  Future<void> _attach(CommunityChat chat) async {
+    final l10n = AppLocalizations.of(context);
+    final choice = await ActionSheet.show<String>(
+      context,
+      actions: [
+        SheetAction(
+          value: 'gallery',
+          label: l10n.ui('ui_cchat_attach_gallery', 'Photos and videos'),
+          icon: Iconsax.gallery_copy,
+        ),
+        SheetAction(
+          value: 'camera',
+          label: l10n.ui('ui_dm_take_photo', 'Take a photo'),
+          icon: Iconsax.camera_copy,
+        ),
+        SheetAction(
+          value: 'poll',
+          label: l10n.ui('ui_cchat_poll_new', 'New poll'),
+          icon: Iconsax.chart_2_copy,
+        ),
+      ],
+    );
+    if (choice == null || !mounted) return;
+    switch (choice) {
+      case 'poll':
+        final poll = await CommunityPollScreen.open(context);
+        final me = _me;
+        if (poll == null || me == null || !mounted) return;
+        _toNewest();
+        await _after(
+          _notifier.sendPoll(
+            poll.question,
+            poll.options,
+            me: me,
+            multiple: poll.multiple,
+          ),
+        );
+      case 'camera':
+        final XFile? shot;
+        try {
+          shot = await ImagePicker().pickImage(
+            source: ImageSource.camera,
+            maxWidth: 2048,
+            maxHeight: 2048,
+            imageQuality: 85,
+          );
+        } catch (_) {
+          return;
+        }
+        if (shot == null || !mounted) return;
+        await _sendMedia(
+            [PendingMedia(path: shot.path, kind: MediaKind.image)]);
+      case 'gallery':
+        final List<XFile> picked;
+        try {
+          picked = await ImagePicker().pickMultipleMedia(limit: _maxMedia);
+        } catch (_) {
+          return;
+        }
+        if (picked.isEmpty || !mounted) return;
+        final media = <PendingMedia>[];
+        var tooBig = false;
+        for (final file in picked.take(_maxMedia)) {
+          if (await file.length() > MediaBasket.maxAttachmentBytes) {
+            tooBig = true;
+            continue;
+          }
+          media.add(PendingMedia(path: file.path, kind: mediaKindOf(file)));
+        }
+        if (!mounted) return;
+        if (tooBig) {
+          Toast.show(
+            context,
+            l10n.ui(
+              'ui_cchat_too_big',
+              'Something you picked is over 25 MB and was left out.',
+            ),
+          );
+        }
+        await _sendMedia(media);
+    }
+  }
+
+  /// The most a message carries. The server holds the same line.
+  static const _maxMedia = 4;
+
+  /// A voice note, sent as its own message.
+  Future<void> _recordVoice() async {
+    FocusManager.instance.primaryFocus?.unfocus();
+    final recording = await VoiceRecorderSheet.show(context, forMessage: true);
+    if (recording == null || !mounted) return;
+    await _sendMedia([recording]);
+  }
+
+  Future<void> _search(CommunityChat chat) async {
+    final found = await CommunityChatSearchScreen.open(context, chat.id);
+    if (found == null || !mounted) return;
+    await _jumpTo(found);
+  }
+
+  /// Shows a message where it was said: reads back until it is held, then
+  /// brings it into view and lights it for a moment.
+  Future<void> _jumpTo(String messageId) async {
+    final l10n = AppLocalizations.of(context);
+    final held = await _notifier.loadUntil(messageId);
+    if (!mounted) return;
+    if (!held) {
+      Toast.show(
+        context,
+        l10n.ui('ui_cchat_too_far', 'That message is too far back to show.'),
+      );
+      return;
+    }
+    setState(() => _highlight = messageId);
+    // Built only once it is near the screen: move towards it until it is.
+    for (var i = 0; i < 8 && mounted; i++) {
+      await WidgetsBinding.instance.endOfFrame;
+      final there = _highlightKey.currentContext;
+      if (there != null) {
+        if (!there.mounted) break;
+        await Scrollable.ensureVisible(
+          there,
+          alignment: 0.3,
+          duration: const Duration(milliseconds: 250),
+        );
+        break;
+      }
+      if (!_scroll.hasClients) break;
+      final messages = ref.read(communityChatProvider(widget.chatId)).messages;
+      final at = messages.indexWhere((m) => m.id == messageId);
+      if (at < 0) break;
+      _scroll.jumpTo(
+        _scroll.position.maxScrollExtent * (at + 1) / (messages.length + 1),
+      );
+    }
+    _unlight?.cancel();
+    _unlight = Timer(const Duration(seconds: 2), () {
+      if (mounted) setState(() => _highlight = null);
+    });
   }
 
   Future<void> _after(Future<String?> attempt) async {
@@ -155,11 +345,28 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
             label: l10n.reply,
             icon: Iconsax.undo_copy,
           ),
-        SheetAction(
-          value: 'copy',
-          label: l10n.literalcopyText,
-          icon: Iconsax.copy_copy,
-        ),
+        if (message.body.trim().isNotEmpty)
+          SheetAction(
+            value: 'copy',
+            label: l10n.literalcopyText,
+            icon: Iconsax.copy_copy,
+          ),
+        if (mine && message.editableAt(DateTime.now()))
+          SheetAction(
+            value: 'edit',
+            label: l10n.ui('ui_cchat_edit_message', 'Edit'),
+            icon: Iconsax.edit_2_copy,
+          ),
+        if (message.poll != null &&
+            !message.poll!.closed &&
+            !message.sending &&
+            !message.failed &&
+            (mine || chat.canModerate))
+          SheetAction(
+            value: 'close-poll',
+            label: l10n.ui('ui_cchat_poll_close', 'Close poll'),
+            icon: Iconsax.lock_1_copy,
+          ),
         if (chat.canModerate && !message.failed)
           SheetAction(
             value: 'pin',
@@ -199,6 +406,16 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
       case 'copy':
         await Clipboard.setData(ClipboardData(text: message.body));
         if (mounted) Toast.show(context, l10n.ui('ui_cchat_copied', 'Copied'));
+      case 'edit':
+        setState(() {
+          _replyingTo = null;
+          _editing = message;
+        });
+        _box.text = message.body;
+        _box.selection = TextSelection.collapsed(offset: _box.text.length);
+        _focus.requestFocus();
+      case 'close-poll':
+        await _after(_notifier.closePoll(message));
       case 'pin':
         await _after(_notifier.pin(pinned ? null : message));
       case 'report':
@@ -391,9 +608,13 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
             message.createdAt.difference(previous.createdAt) >
                 const Duration(minutes: 15);
         return _MessageTile(
-          key: ValueKey('cchat-${message.id}'),
+          key: message.id == _highlight
+              ? _highlightKey
+              : ValueKey('cchat-${message.id}'),
           message: message,
           mine: message.sender.id == me,
+          lit: message.id == _highlight,
+          onVote: (chosen) => _after(_notifier.vote(message, chosen)),
           newTurn: newTurn,
           onOptions: chat == null ? null : () => _options(chat, message),
           onReact: (emoji) => _after(_notifier.toggleReaction(message, emoji)),
@@ -473,6 +694,7 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
     }
 
     final canSend = _box.text.trim().isNotEmpty;
+    final editing = _editing;
     return Container(
       decoration: bar,
       padding: const EdgeInsets.fromLTRB(
@@ -484,6 +706,33 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          if (editing != null)
+            Row(
+              key: const ValueKey('cchat-editing'),
+              children: [
+                Icon(Iconsax.edit_2_copy, size: 16, color: scheme.primary),
+                const SizedBox(width: SpacingTokens.space8),
+                Expanded(
+                  child: Text(
+                    l10n.ui('ui_cchat_editing', 'Editing your message'),
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize2,
+                      fontWeight: FontWeight.w600,
+                      color: scheme.primary,
+                    ),
+                  ),
+                ),
+                IconButton(
+                  key: const ValueKey('cchat-editing-cancel'),
+                  tooltip: l10n.cancel,
+                  icon: const Icon(Iconsax.close_circle_copy, size: 18),
+                  onPressed: () {
+                    _box.clear();
+                    setState(() => _editing = null);
+                  },
+                ),
+              ],
+            ),
           if (_replyingTo != null)
             Row(
               children: [
@@ -520,6 +769,13 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              if (editing == null)
+                IconButton(
+                  key: const ValueKey('cchat-attach'),
+                  tooltip: l10n.ui('ui_cchat_attach', 'Add a photo or a poll'),
+                  icon: const Icon(Iconsax.add_circle_copy),
+                  onPressed: () => _attach(chat),
+                ),
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(
@@ -551,13 +807,26 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
                 ),
               ),
               const SizedBox(width: SpacingTokens.space8),
-              IconButton(
-                key: const ValueKey('cchat-send'),
-                tooltip: l10n.send,
-                onPressed: canSend ? _send : null,
-                icon: const Icon(Iconsax.send_1),
-                color: scheme.primary,
-              ),
+              // Nothing written: the microphone, as in a conversation. A
+              // voice note goes on its own, so not while editing.
+              if (!canSend && editing == null)
+                IconButton(
+                  key: const ValueKey('cchat-voice'),
+                  tooltip: l10n.ui('ui_cchat_voice', 'Record a voice note'),
+                  onPressed: _recordVoice,
+                  icon: const Icon(Iconsax.microphone_2_copy),
+                  color: scheme.primary,
+                )
+              else
+                IconButton(
+                  key: const ValueKey('cchat-send'),
+                  tooltip: editing == null ? l10n.send : l10n.save,
+                  onPressed: canSend ? _send : null,
+                  icon: Icon(
+                    editing == null ? Iconsax.send_1 : Iconsax.tick_circle,
+                  ),
+                  color: scheme.primary,
+                ),
             ],
           ),
         ],
@@ -571,6 +840,28 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
       context,
       title: chat.name,
       actions: [
+        SheetAction(
+          value: 'search',
+          label: l10n.ui('ui_cchat_search', 'Search this chat'),
+          icon: Iconsax.search_normal_1_copy,
+        ),
+        if (chat.joined)
+          SheetAction(
+            value: chat.muted ? 'unmute' : 'mute',
+            label: chat.muted
+                ? l10n.ui('ui_cchat_unmute', 'Unmute')
+                : l10n.ui('ui_cchat_mute', 'Mute'),
+            icon: chat.muted
+                ? Iconsax.volume_high_copy
+                : Iconsax.volume_slash_copy,
+            detail: chat.muted
+                ? null
+                : l10n.ui(
+                    'ui_cchat_mute_detail',
+                    'No notifications from it, and it is left out of the '
+                        'Messages count.',
+                  ),
+          ),
         if (chat.canModerate)
           SheetAction(
             value: 'edit',
@@ -609,6 +900,10 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
     );
     if (choice == null || !mounted) return;
     switch (choice) {
+      case 'search':
+        await _search(chat);
+      case 'mute' || 'unmute':
+        await _after(_notifier.setMuted(choice == 'mute'));
       case 'edit':
         final changed = await CommunityChatSettingsScreen.edit(context, chat);
         if (changed && mounted) await _notifier.refreshChat();
@@ -701,6 +996,20 @@ class _PinnedBanner extends StatelessWidget {
 
   const _PinnedBanner({required this.message});
 
+  /// Its words, or what it carried when it has none.
+  String _pinnedLine(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    if (message.poll != null) {
+      return l10n
+          .ui('ui_cchat_poll_preview', r'Poll: $question')
+          .replaceAll(r'$question', message.body);
+    }
+    if (message.body.trim().isNotEmpty || message.media.isEmpty) {
+      return message.body;
+    }
+    return mediaPreview(l10n, [for (final m in message.media) m.kind]);
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
@@ -718,7 +1027,7 @@ class _PinnedBanner extends StatelessWidget {
           const SizedBox(width: SpacingTokens.space8),
           Expanded(
             child: Text(
-              '${message.sender.displayName}: ${message.body}',
+              '${message.sender.displayName}: ${_pinnedLine(context)}',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(fontSize: TypographyTokens.fontSize2),
@@ -769,8 +1078,12 @@ class _MessageTile extends StatelessWidget {
 
   /// The first of a run by one person: their name and avatar go here.
   final bool newTurn;
+
+  /// Just found by a search: lit for a moment.
+  final bool lit;
   final VoidCallback? onOptions;
   final void Function(String emoji) onReact;
+  final void Function(List<String> optionIds) onVote;
   final VoidCallback onRetry;
 
   const _MessageTile({
@@ -780,7 +1093,9 @@ class _MessageTile extends StatelessWidget {
     required this.newTurn,
     required this.onOptions,
     required this.onReact,
+    required this.onVote,
     required this.onRetry,
+    this.lit = false,
   });
 
   @override
@@ -795,7 +1110,13 @@ class _MessageTile extends StatelessWidget {
             ? l10n.ui('ui_community_role_moderator', 'Moderator')
             : null;
 
-    return Padding(
+    final faded = message.failed || message.sending;
+    final visual = message.media.where((m) => !m.isVoice).toList();
+    final voice = message.media.where((m) => m.isVoice).toList();
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      color: lit ? scheme.primary.withValues(alpha: 0.08) : Colors.transparent,
       padding: EdgeInsets.only(top: newTurn ? SpacingTokens.space12 : 2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -869,16 +1190,66 @@ class _MessageTile extends StatelessWidget {
                       ),
                     ),
                   if (message.replyTo != null) _Quote(reply: message.replyTo!),
-                  Text(
-                    message.body,
-                    style: TextStyle(
-                      fontSize: TypographyTokens.fontSize3,
-                      height: 1.35,
-                      color: message.failed || message.sending
-                          ? scheme.onSurface.withValues(alpha: 0.5)
-                          : scheme.onSurface,
-                    ),
-                  ),
+                  if (message.poll != null)
+                    _PollCard(
+                      question: message.body,
+                      poll: message.poll!,
+                      // The asker sees how it is going from the start; anybody
+                      // else once they have answered, or it has closed.
+                      showResults: mine || message.poll!.answered,
+                      enabled: !faded,
+                      onVote: onVote,
+                    )
+                  else ...[
+                    if (message.pendingMedia.isNotEmpty)
+                      _PendingMedia(media: message.pendingMedia)
+                    else ...[
+                      for (final note in voice)
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: SpacingTokens.space4),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 300),
+                            child: VoicePostPlayer(media: note),
+                          ),
+                        ),
+                      if (visual.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: SpacingTokens.space4),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 300),
+                            child: MediaGrid(media: visual),
+                          ),
+                        ),
+                    ],
+                    if (message.body.isNotEmpty)
+                      Text.rich(
+                        TextSpan(
+                          text: message.body,
+                          children: [
+                            if (message.edited)
+                              TextSpan(
+                                text:
+                                    '  ${l10n.ui('ui_cchat_edited', 'edited')}',
+                                style: TextStyle(
+                                  fontSize: TypographyTokens.fontSize1,
+                                  color:
+                                      scheme.onSurface.withValues(alpha: 0.45),
+                                ),
+                              ),
+                          ],
+                        ),
+                        key: ValueKey('cchat-body-${message.id}'),
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize3,
+                          height: 1.35,
+                          color: faded
+                              ? scheme.onSurface.withValues(alpha: 0.5)
+                              : scheme.onSurface,
+                        ),
+                      ),
+                  ],
                   if (message.failed)
                     Padding(
                       padding: const EdgeInsets.only(top: 2),
@@ -949,6 +1320,278 @@ class _ReactionPill extends StatelessWidget {
         child: Text(
           '$emoji $count',
           style: const TextStyle(fontSize: TypographyTokens.fontSize2),
+        ),
+      ),
+    );
+  }
+}
+
+/// What is on its way, from the phone's own files, while it uploads.
+class _PendingMedia extends StatelessWidget {
+  final List<PendingMedia> media;
+
+  const _PendingMedia({required this.media});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: SpacingTokens.space4),
+      child: Wrap(
+        spacing: SpacingTokens.space4,
+        runSpacing: SpacingTokens.space4,
+        children: [
+          for (final item in media)
+            ClipRRect(
+              borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+              child: SizedBox.square(
+                dimension: media.length == 1 ? 160 : 96,
+                child: item.kind == MediaKind.image ||
+                        item.kind == MediaKind.gif
+                    ? Opacity(
+                        opacity: 0.6,
+                        child: Image.file(
+                          File(item.path),
+                          fit: BoxFit.cover,
+                          cacheWidth: 320,
+                          errorBuilder: (_, __, ___) =>
+                              ColoredBox(color: scheme.surfaceContainerHighest),
+                        ),
+                      )
+                    : ColoredBox(
+                        color: scheme.surfaceContainerHighest,
+                        child: Icon(
+                          item.kind == MediaKind.voice
+                              ? Iconsax.microphone_2_copy
+                              : Iconsax.video_copy,
+                          color: scheme.onSurface.withValues(alpha: 0.5),
+                        ),
+                      ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// A poll in a chat: its question, each answer, and -- once the reader has
+/// answered, or it is theirs, or it has closed -- how many chose each, as a
+/// bar. Counts only: nobody's choice is shown to anybody.
+class _PollCard extends StatelessWidget {
+  final String question;
+  final ChatPoll poll;
+  final bool showResults;
+  final bool enabled;
+  final void Function(List<String> optionIds) onVote;
+
+  const _PollCard({
+    required this.question,
+    required this.poll,
+    required this.showResults,
+    required this.enabled,
+    required this.onVote,
+  });
+
+  void _tap(String optionId) {
+    final mine = poll.mine;
+    if (!poll.multiple) {
+      // The same answer again takes it back.
+      onVote(mine.contains(optionId) ? const [] : [optionId]);
+      return;
+    }
+    onVote(
+      mine.contains(optionId)
+          ? [
+              for (final id in mine)
+                if (id != optionId) id
+            ]
+          : [...mine, optionId],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+    final results = showResults || poll.closed;
+    final open = enabled && !poll.closed && poll.id.isNotEmpty;
+    return Container(
+      key: const ValueKey('cchat-poll'),
+      constraints: const BoxConstraints(maxWidth: 340),
+      margin: const EdgeInsets.only(bottom: SpacingTokens.space4),
+      padding: const EdgeInsets.all(SpacingTokens.space12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+        border: Border.all(color: scheme.outline.withValues(alpha: 0.25)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            question,
+            style: const TextStyle(
+              fontSize: TypographyTokens.fontSize3,
+              fontWeight: FontWeight.w700,
+              height: 1.3,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            poll.closed
+                ? l10n.ui('ui_cchat_poll_closed', 'Closed')
+                : poll.multiple
+                    ? l10n.ui('ui_cchat_poll_several', 'Choose one or more')
+                    : l10n.ui('ui_cchat_poll_one', 'Choose one'),
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize1,
+              color: scheme.onSurface.withValues(alpha: 0.55),
+            ),
+          ),
+          const SizedBox(height: SpacingTokens.space8),
+          for (final option in poll.options)
+            Padding(
+              padding: const EdgeInsets.only(bottom: SpacingTokens.space4),
+              child: _PollOption(
+                key: ValueKey('cchat-poll-option-${option.id}'),
+                text: option.text,
+                share: poll.voters == 0 ? 0 : option.votes / poll.voters,
+                chosen: poll.mine.contains(option.id),
+                results: results,
+                multiple: poll.multiple,
+                onTap: open ? () => _tap(option.id) : null,
+              ),
+            ),
+          const SizedBox(height: 2),
+          Text(
+            l10n
+                .ui('ui_cchat_poll_voters', r'$count answered')
+                .replaceAll(r'$count', '${poll.voters}'),
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize1,
+              color: scheme.onSurface.withValues(alpha: 0.55),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _PollOption extends StatelessWidget {
+  final String text;
+
+  /// Of the people who answered, how many chose this: 0 to 1.
+  final double share;
+  final bool chosen;
+  final bool results;
+  final bool multiple;
+  final VoidCallback? onTap;
+
+  const _PollOption({
+    super.key,
+    required this.text,
+    required this.share,
+    required this.chosen,
+    required this.results,
+    required this.multiple,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final radius = BorderRadius.circular(RadiusTokens.radius12);
+    return Semantics(
+      button: onTap != null,
+      selected: chosen,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: radius,
+        child: ClipRRect(
+          borderRadius: radius,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: ColoredBox(
+                  color: scheme.onSurface.withValues(alpha: 0.04),
+                ),
+              ),
+              if (results)
+                Positioned.fill(
+                  child: FractionallySizedBox(
+                    alignment: Alignment.centerLeft,
+                    widthFactor: share.clamp(0, 1),
+                    child: ColoredBox(
+                      color: chosen
+                          ? scheme.primary.withValues(alpha: 0.22)
+                          : scheme.onSurface.withValues(alpha: 0.08),
+                    ),
+                  ),
+                ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+                child: Row(
+                  children: [
+                    _Mark(chosen: chosen, multiple: multiple),
+                    const SizedBox(width: SpacingTokens.space8),
+                    Expanded(
+                      child: Text(
+                        text,
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize2,
+                          fontWeight:
+                              chosen ? FontWeight.w600 : FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    if (results) ...[
+                      const SizedBox(width: SpacingTokens.space8),
+                      Text(
+                        '${(share * 100).round()}%',
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize1,
+                          fontWeight: FontWeight.w600,
+                          color: scheme.onSurface.withValues(alpha: 0.6),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Chosen or not, on a poll's answer: a filled tick, or an empty ring -- a
+/// rounded square where several may be chosen, as a checkbox is.
+class _Mark extends StatelessWidget {
+  final bool chosen;
+  final bool multiple;
+
+  const _Mark({required this.chosen, required this.multiple});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    if (chosen) {
+      return Icon(Iconsax.tick_circle, size: 18, color: scheme.primary);
+    }
+    return Container(
+      width: 16,
+      height: 16,
+      margin: const EdgeInsets.all(1),
+      decoration: BoxDecoration(
+        shape: multiple ? BoxShape.rectangle : BoxShape.circle,
+        borderRadius: multiple ? BorderRadius.circular(4) : null,
+        border: Border.all(
+          color: scheme.onSurface.withValues(alpha: 0.35),
+          width: 1.5,
         ),
       ),
     );

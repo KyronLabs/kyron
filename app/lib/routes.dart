@@ -14,6 +14,7 @@ import 'models/feed_post.dart';
 import 'screens/coming_soon_screen.dart';
 import 'screens/drafts_screen.dart';
 import 'screens/hashtag_screen.dart';
+import 'screens/community_chat_screen.dart';
 import 'screens/community_screen.dart';
 import 'screens/community_settings_screen.dart';
 import 'screens/new_community_screen.dart';
@@ -82,6 +83,9 @@ class Routes {
   static const newCommunity = '/communities/new';
   static const communitySettings = '/settings/communities';
   static const community = '/community';
+
+  /// One chat in a community, by its id: where a push about it opens.
+  static const communityChat = '/community-chat';
   static const drafts = '/composer/drafts';
   static const mutedWords = '/settings/muted-words';
   static const mutedAccounts = '/settings/muted-accounts';
@@ -336,6 +340,14 @@ class Routes {
           slug is String && slug.isNotEmpty
               ? CommunityScreen(slug: slug)
               : const _UnknownRoute(name: community),
+        );
+
+      case communityChat:
+        final chatId = settings.arguments;
+        return _page(
+          chatId is String && chatId.isNotEmpty
+              ? CommunityChatScreen(chatId: chatId)
+              : const _UnknownRoute(name: communityChat),
         );
 
       case newMessage:

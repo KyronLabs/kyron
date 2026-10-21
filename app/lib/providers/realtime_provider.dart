@@ -1,4 +1,6 @@
 // lib/providers/realtime_provider.dart
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/notification_model.dart';
@@ -40,6 +42,34 @@ final realtimeBridgeProvider = Provider<void>((ref) {
     if (event != null) applyRealtimeEvent(ref, event);
   });
 });
+
+/// Reads the Messages list's community chats and the badge again, a moment
+/// after the last thing said in any of them: a lively room is one request
+/// every couple of seconds, not one a line.
+final chatListRefresherProvider = Provider<ChatListRefresher>((ref) {
+  final refresher = ChatListRefresher(ref);
+  ref.onDispose(refresher.dispose);
+  return refresher;
+});
+
+class ChatListRefresher {
+  final Ref _ref;
+  Timer? _timer;
+
+  ChatListRefresher(this._ref);
+
+  static const wait = Duration(seconds: 2);
+
+  void soon() {
+    _timer?.cancel();
+    _timer = Timer(wait, () {
+      _ref.invalidate(joinedChatsProvider);
+      _ref.invalidate(unreadConversationsProvider);
+    });
+  }
+
+  void dispose() => _timer?.cancel();
+}
 
 /// Folds an event into whatever state it affects.
 ///
@@ -128,12 +158,23 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
       }
       _refreshConversationLists(ref);
 
-    case 'community.chat.message' || 'community.chat.reaction':
-      // Only for a chat that is open; the community's own list is read again
-      // whenever it is opened.
+    case 'community.chat.message':
+      // Into the chat at once if it is open; the Messages list and the badge
+      // a moment later, together with whatever else arrives meanwhile.
       final chatId = event.data['chatId'] as String?;
       if (chatId != null && ref.exists(communityChatProvider(chatId))) {
         ref.read(communityChatProvider(chatId).notifier).pullNewest();
+      }
+      ref.read(chatListRefresherProvider).soon();
+
+    case 'community.chat.reaction' ||
+          'community.chat.message.edited' ||
+          'community.chat.poll':
+      // Only for a chat that is open, and a beat later: a poll in a big room
+      // is a vote a second, and the screen needs the counts, not each one.
+      final chatId = event.data['chatId'] as String?;
+      if (chatId != null && ref.exists(communityChatProvider(chatId))) {
+        ref.read(communityChatProvider(chatId).notifier).pullSoon();
       }
 
     case 'community.chat.message.deleted':
@@ -144,6 +185,7 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
           ref.exists(communityChatProvider(chatId))) {
         ref.read(communityChatProvider(chatId).notifier).withdrawn(gone);
       }
+      ref.read(chatListRefresherProvider).soon();
 
     case 'community.chat.updated':
       // Renamed, a pin, who may write, closed. Read again over HTTP, where
@@ -152,6 +194,7 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
       if (chatId != null && ref.exists(communityChatProvider(chatId))) {
         ref.read(communityChatProvider(chatId).notifier).refreshChat();
       }
+      ref.read(chatListRefresherProvider).soon();
 
     case 'message.keys.requested':
       // A device in one of this reader's conversations is waiting on a

@@ -1,9 +1,12 @@
 // lib/providers/community_chats_provider.dart
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 import '../models/community_chat.dart';
+import '../models/post_media.dart';
 import '../repositories/community_chats_repository.dart';
 import '../utils/api_error_message.dart';
 import 'api_client_provider.dart';
@@ -17,6 +20,13 @@ final communityChatsRepositoryProvider = Provider<CommunityChatsRepository>(
 final communityChatsProvider =
     FutureProvider.autoDispose.family<List<CommunityChat>, String>(
   (ref, slug) => ref.read(communityChatsRepositoryProvider).list(slug),
+);
+
+/// The chats the reader has joined, across their communities, for the
+/// Messages list. Read again when one of them changes (realtime_provider),
+/// a moment later, so a busy room is one request rather than one a line.
+final joinedChatsProvider = FutureProvider.autoDispose<List<CommunityChat>>(
+  (ref) => ref.read(communityChatsRepositoryProvider).joined(),
 );
 
 /// One open chat.
@@ -176,49 +186,215 @@ class CommunityChatNotifier extends StateNotifier<CommunityChatState> {
     String text, {
     required ChatPerson me,
     CommunityChatMessage? replyingTo,
-  }) async {
-    final body = text.trim();
-    if (body.isEmpty) return null;
+  }) =>
+      _say(_Draft(body: text.trim(), replyingTo: replyingTo), me);
+
+  /// Sends photos, clips or a voice note, with [caption] under them. Shown
+  /// from the phone's own files while they upload.
+  Future<String?> sendMedia(
+    List<PendingMedia> media, {
+    required ChatPerson me,
+    String caption = '',
+    CommunityChatMessage? replyingTo,
+  }) =>
+      _say(
+        _Draft(body: caption.trim(), replyingTo: replyingTo, media: media),
+        me,
+      );
+
+  /// Asks a poll: [question], and two to ten answers.
+  Future<String?> sendPoll(
+    String question,
+    List<String> options, {
+    required ChatPerson me,
+    bool multiple = false,
+  }) =>
+      _say(
+        _Draft(
+          body: question.trim(),
+          poll: (options: options, multiple: multiple),
+        ),
+        me,
+      );
+
+  Future<String?> _say(_Draft draft, ChatPerson me) async {
+    if (draft.body.isEmpty && draft.media.isEmpty) return null;
+    final reply = draft.replyingTo;
+    final poll = draft.poll;
     final placeholder = CommunityChatMessage(
       id: 'pending-${_pending++}',
-      body: body,
+      body: draft.body,
       sender: me,
       createdAt: DateTime.now(),
       sending: true,
-      replyTo: replyingTo == null
+      pendingMedia: draft.media,
+      poll: poll == null
+          ? null
+          : ChatPoll(
+              id: '',
+              multiple: poll.multiple,
+              options: [
+                for (final (i, text) in poll.options.indexed)
+                  ChatPollOption(id: 'pending-option-$i', text: text),
+              ],
+            ),
+      replyTo: reply == null
           ? null
           : ChatReply(
-              id: replyingTo.id,
-              senderName: replyingTo.sender.displayName,
-              body: replyingTo.body,
+              id: reply.id,
+              senderName: reply.sender.displayName,
+              body: reply.body,
             ),
     );
     state = state.copyWith(messages: [...state.messages, placeholder]);
+    // Files uploaded on an earlier try go again as they are: uploading them
+    // anew would leave the first copies in the bucket, unsent, every time
+    // slow mode said wait.
+    final uploads = [...draft.uploaded];
     try {
-      final sent = await _repo.send(chatId, body, replyToId: replyingTo?.id);
+      for (final file in draft.media.skip(uploads.length)) {
+        uploads.add(await _repo.upload(file));
+      }
+      final sent = await _repo.send(
+        chatId,
+        draft.body,
+        replyToId: reply?.id,
+        media: uploads,
+        poll: poll,
+      );
       if (!mounted) return null;
       _replace(placeholder.id, sent);
       return null;
     } catch (error) {
       if (!mounted) return null;
+      if (uploads.isNotEmpty &&
+          error is DioException &&
+          error.response?.statusCode == 409) {
+        // Its files are in a message already: this one, sent on an earlier
+        // try whose answer never came back. Show that one, not a failure.
+        _drop(placeholder.id);
+        await pullNewest();
+        return null;
+      }
       _replace(
           placeholder.id, placeholder.copyWith(sending: false, failed: true));
-      _resend[placeholder.id] = (body: body, replyingTo: replyingTo);
+      _resend[placeholder.id] = draft.withUploads(uploads);
       return describeApiError(error, sessionIsLive: true);
     }
   }
 
-  final Map<String, ({String body, CommunityChatMessage? replyingTo})> _resend =
-      {};
+  final Map<String, _Draft> _resend = {};
 
   Future<String?> retry(CommunityChatMessage failed, {required ChatPerson me}) {
     final again = _resend.remove(failed.id);
     _drop(failed.id);
-    return send(
-      again?.body ?? failed.body,
-      me: me,
-      replyingTo: again?.replyingTo,
+    return _say(
+      again ??
+          _Draft(
+            body: failed.body,
+            media: failed.pendingMedia,
+          ),
+      me,
     );
+  }
+
+  /// Changes the words of the reader's own message. Shown changed at once;
+  /// put back if the server refuses.
+  Future<String?> edit(CommunityChatMessage message, String text) async {
+    final body = text.trim();
+    if (body == message.body.trim()) return null;
+    _replace(
+      message.id,
+      message.copyWith(body: body, editedAt: DateTime.now()),
+    );
+    try {
+      final edited = await _repo.edit(chatId, message.id, body);
+      if (mounted) _replace(message.id, edited);
+      return null;
+    } catch (error) {
+      if (mounted) _replace(message.id, message);
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  /// Answers a poll with [optionIds], or takes the answer back with none.
+  /// The bars move first; put back if the server refuses.
+  Future<String?> vote(
+    CommunityChatMessage message,
+    List<String> optionIds,
+  ) async {
+    final poll = message.poll;
+    if (poll == null || poll.closed) return null;
+    _replace(message.id, message.copyWith(poll: poll.answering(optionIds)));
+    try {
+      if (optionIds.isEmpty) {
+        await _repo.unvote(chatId, message.id);
+      } else {
+        final answered = await _repo.vote(chatId, message.id, optionIds);
+        if (mounted) _replace(message.id, answered);
+      }
+      return null;
+    } catch (error) {
+      if (mounted) _replace(message.id, message);
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  Future<String?> closePoll(CommunityChatMessage message) async {
+    final poll = message.poll;
+    if (poll == null || poll.closed) return null;
+    _replace(message.id, message.copyWith(poll: poll.closing()));
+    try {
+      await _repo.closePoll(chatId, message.id);
+      return null;
+    } catch (error) {
+      if (mounted) _replace(message.id, message);
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  /// Mutes the chat for the reader, or unmutes it.
+  Future<String?> setMuted(bool muted) async {
+    final chat = state.chat;
+    if (chat == null) return null;
+    state = state.copyWith(chat: chat.copyWith(muted: muted));
+    try {
+      await _repo.setMuted(chatId, muted);
+      return null;
+    } catch (error) {
+      if (mounted) state = state.copyWith(chat: chat);
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  Timer? _pull;
+
+  /// [pullNewest], a moment from now, once: a burst of votes or messages is
+  /// one request for all of them.
+  void pullSoon() {
+    _pull?.cancel();
+    _pull = Timer(const Duration(milliseconds: 400), () {
+      if (mounted) pullNewest();
+    });
+  }
+
+  /// Reads further back until [messageId] is held -- a search result, to
+  /// be shown where it was said -- or there is no further back to go.
+  /// Answers whether it is held.
+  Future<bool> loadUntil(String messageId, {int pages = 20}) async {
+    for (var i = 0; i < pages; i++) {
+      if (state.byId(messageId) != null) return true;
+      if (state.cursor == null) break;
+      await loadMore();
+      if (!mounted) return false;
+    }
+    return state.byId(messageId) != null;
+  }
+
+  @override
+  void dispose() {
+    _pull?.cancel();
+    super.dispose();
   }
 
   Future<String?> delete(CommunityChatMessage message) async {
@@ -337,3 +513,30 @@ final communityChatProvider = StateNotifierProvider.autoDispose
     chatId,
   ),
 );
+
+/// What a message was to be, kept to send again if it did not go.
+class _Draft {
+  final String body;
+  final CommunityChatMessage? replyingTo;
+  final List<PendingMedia> media;
+  final ({List<String> options, bool multiple})? poll;
+
+  /// The first of [media] that went up on an earlier try, in order.
+  final List<ChatUpload> uploaded;
+
+  const _Draft({
+    required this.body,
+    this.replyingTo,
+    this.media = const [],
+    this.poll,
+    this.uploaded = const [],
+  });
+
+  _Draft withUploads(List<ChatUpload> uploads) => _Draft(
+        body: body,
+        replyingTo: replyingTo,
+        media: media,
+        poll: poll,
+        uploaded: List.unmodifiable(uploads),
+      );
+}

@@ -181,23 +181,30 @@ class PickMark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return AnimatedContainer(
+    // Iconsax's bold tick in a circle is that circle filled, the tick cut out
+    // of it: chosen, at a glance, in the page's own ink.
+    return AnimatedSwitcher(
       duration: const Duration(milliseconds: 120),
-      width: 24,
-      height: 24,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: chosen ? scheme.onSurface : Colors.transparent,
-        border: chosen
-            ? null
-            : Border.all(
-                color: scheme.onSurface.withValues(alpha: 0.25),
-                width: 1.5,
-              ),
-      ),
       child: chosen
-          ? Icon(Icons.check_rounded, size: 16, color: scheme.surface)
-          : null,
+          ? Icon(
+              Iconsax.tick_circle,
+              key: const ValueKey('chosen'),
+              size: 27,
+              color: scheme.onSurface,
+            )
+          : Container(
+              key: const ValueKey('open'),
+              width: 24,
+              height: 24,
+              margin: const EdgeInsets.all(1.5),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: scheme.onSurface.withValues(alpha: 0.25),
+                  width: 1.5,
+                ),
+              ),
+            ),
     );
   }
 }
