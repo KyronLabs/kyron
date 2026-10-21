@@ -11,6 +11,34 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **Community chats in the Messages list**, among conversations by when each
+  was last spoken in, with a count of what is new. The Messages count
+  includes them.
+- **Notifications for community chats**: one when something new arrives
+  after you last read a chat, not one per message, and one for a reply to
+  you. **Mute** a chat from its menu to stop them and leave it out of the
+  count.
+- **Photos, clips and voice notes in community chats**, up to four pictures
+  or clips in a message, or one voice note. They are kept in private storage
+  behind links that last an hour.
+- **Polls in community chats**: two to ten answers, one or several each.
+  Everybody sees how many chose each answer, never who. The asker or a
+  moderator closes it.
+- **Edit your message** in a community chat for 15 minutes; it shows
+  "edited". **Search a chat** and jump to where something was said.
+- **Moderation**: a reported chat message's pictures and voice notes are
+  shown on its case, and earlier versions of an edited message are kept.
+
+### Changed
+
+- **Choosing people for a group** looks like a list of people: a "To:" line
+  with the people chosen as small chips, suggested people with their
+  pictures, and the group's name at the top. The name is still required.
+  The "everyone added joins as a spectator" switch is in the group's info.
+- **A view-once message is one line** — an icon and what it is ("Photo",
+  "Opened") — about the height of a line of text, instead of a tall card.
 
 ## [0.1.10] - 2026-10-21
 ### Added

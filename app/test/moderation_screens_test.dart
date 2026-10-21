@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/account_standing.dart';
 import 'package:kyron_app/models/current_user.dart';
 import 'package:kyron_app/models/moderation_case.dart';
+import 'package:kyron_app/models/post_media.dart';
 import 'package:kyron_app/models/verification.dart';
 import 'package:kyron_app/providers/current_user_provider.dart';
 import 'package:kyron_app/providers/enforcement_provider.dart';
@@ -14,7 +15,9 @@ import 'package:kyron_app/repositories/verification_repository.dart';
 import 'package:kyron_app/screens/moderation_screens.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/action_button.dart';
+import 'package:kyron_app/widgets/media_grid.dart';
 import 'package:kyron_app/widgets/verified_badge.dart';
+import 'package:kyron_app/widgets/voice_post_player.dart';
 
 /// The team's side: the queues, and the decisions. Reports used to be
 /// written down and read by nobody, because there was nowhere to read them.
@@ -240,6 +243,31 @@ void main() {
   testWidgets('an urgent case says what to do beyond the app', (tester) async {
     await _open(tester, ReportCaseScreen(item: _report(urgent: true)));
     expect(find.textContaining('emergency services'), findsOneWidget);
+  });
+
+  testWidgets('a reported chat message shows what it carried', (
+    tester,
+  ) async {
+    // The team is not in the community and cannot open the chat: without
+    // these, a picture reported as abuse could not be looked at.
+    final item = ReportCase.fromJson({
+      'target': 'COMMUNITY_MESSAGE',
+      'targetId': 'm1',
+      'content': 'look at this',
+      'media': [
+        {'id': 'a', 'kind': 'IMAGE', 'url': 'https://signed.invalid/a.jpg'},
+        {'id': 'b', 'kind': 'VOICE', 'url': 'https://signed.invalid/b.m4a'},
+      ],
+      'reasons': [
+        {'reason': 'HARASSMENT', 'count': 1},
+      ],
+      'reports': [],
+      'firstAt': '2026-10-18T00:00:00Z',
+    });
+    expect(item.media.map((m) => m.kind), [MediaKind.image, MediaKind.voice]);
+    await _open(tester, ReportCaseScreen(item: item));
+    expect(find.byType(MediaGrid), findsOneWidget);
+    expect(find.byType(VoicePostPlayer), findsOneWidget);
   });
 
   testWidgets('dismissing asks first, then closes the reports', (

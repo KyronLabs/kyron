@@ -402,6 +402,21 @@ describe('AccountService', () => {
       expect(removed).toEqual([`private:once/${USER}_1_a.jpg`]);
     });
 
+    it('removes what it sent in community chats, and only its own', async () => {
+      // The messages cascade with the account; their files in the private
+      // bucket do not. Uploads never sent are in the same folder.
+      const { service, removed } = setup({
+        privateFiles: {
+          chat: [`${USER}_1_a.jpg`, `${USER}_2_b.m4a`, 'other_1_c.jpg'],
+        },
+      });
+
+      await expect(service.removeFiles(USER)).resolves.toBe(2);
+      expect(removed.sort()).toEqual(
+        [`private:chat/${USER}_1_a.jpg`, `private:chat/${USER}_2_b.m4a`].sort(),
+      );
+    });
+
     it('keeps a picture a community still shows', async () => {
       const { service, removed } = setup({
         files: { 'post-media': [`${USER}_1_banner.jpg`, `${USER}_2_post.jpg`] },

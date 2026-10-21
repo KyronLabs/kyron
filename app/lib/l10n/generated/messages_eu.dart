@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Moderatzaileek bakarrik idatz dezakete"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Iragarpenetarako. Komunitateko guztiek irakurri eta erreakzionatu dezakete oraindik."),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "Gehitu argazki bat edo inkesta bat"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Argazkiak eta bideoak"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Itxi txata"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Inork ezingo du bertan irakurri edo idatzi. Ezin da desegin."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Mezua txateko guztientzat kentzen da."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Editatu txata"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Editatu"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("editatua"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Zure mezua editatzen ari zara"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Ezin izan da txat hau ireki."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Txatak"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Komunitatean zauden bitartean irakurtzen jarrai dezakezu."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Jabeak eta moderatzaileek bakarrik idatz dezakete hemen."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Isilarazi"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ez duzu jakinarazpenik jasoko, eta ez da Mezuetan zenbatuko."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Txataren izena"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Txat berria"),
       "ui_cchat_none":
@@ -1061,6 +1072,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Komunitateko txatak ez daude muturretik muturrera enkriptatuta. Komunitateko moderatzaileek eta Kyronek irakur ditzakete."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Ainguratu goian"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Gehitu erantzun bat"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Itxi inkesta"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Itxita"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Denek ikusten dute zenbatek aukeratu duten erantzun bakoitza, inoiz ez nork."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Utzi hainbat aukeratzen"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Inkesta berria"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Aukeratu bat"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("\$n. erantzuna"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Inkesta: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Galdera"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Erantzun bakoitza behin bakarrik ager daiteke inkesta batean."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Aukeratu bat edo gehiago"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count lagunek erantzun dute"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Bilatu txat honetan"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Bilatu txat honetan"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Ez da ezer aurkitu."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Ezin duzu txat hau gehiago ikusi."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Modu motela"),
@@ -1077,7 +1117,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n segundo"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Ikusle gisa irakurri eta erreakzionatu dezakezu. Batu idazteko."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Mezu hori atzeegi dago erakusteko."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Aukeratu duzun zerbait handiegia da bidaltzeko, eta kanpoan utzi da."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Desaktibatu isilarazpena"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Kendu aingura"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Grabatu ahots-ohar bat"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Zu"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1126,6 +1174,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Gehitu jendea"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Gehitu"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Gehitu taldearen izena"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Baztertu"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Talde honetako mezuak muturretik muturrera enkriptatuta daude, beste edozein elkarrizketa bezala."),
@@ -1178,6 +1228,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count kide"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Kideak"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Taldearen izena"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Eman izena taldeari lehenik."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("Sortu talde-txata"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "Jabe bakarra dago. Admin gisa jarraituko duzu."),
@@ -1199,6 +1251,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ikusle gisa, hemen irakurri eta erreakzionatu dezakezu."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Ikusleek irakurri, erreakzionatu eta eskua altxa dezakete idazteko baimena eskatzeko."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Iradokiak"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Ikusi profila"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("zu"),

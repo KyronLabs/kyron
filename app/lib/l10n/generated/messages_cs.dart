@@ -1090,6 +1090,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Psát mohou jen moderátoři"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Pro oznámení. Všichni v komunitě mohou dál číst a reagovat."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Přidat fotku nebo anketu"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Fotky a videa"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Zavřít chat"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Nikdo v něm už nebude moci číst ani psát. Tuto akci nelze vrátit."),
@@ -1101,6 +1105,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Zpráva bude odstraněna pro všechny v chatu."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Upravit chat"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Upravit"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("upraveno"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Upravujete svou zprávu"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Tento chat se nepodařilo otevřít."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chaty"),
@@ -1115,6 +1123,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Dokud jste v komunitě, můžete ho dál číst."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Psát sem mohou jen vlastník a moderátoři."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Ztlumit"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Žádná oznámení z tohoto chatu a nezapočítává se do Zpráv."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Název chatu"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Nový chat"),
       "ui_cchat_none":
@@ -1124,6 +1135,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Chaty komunity nejsou šifrovány end-to-end. Moderátoři komunity a Kyron je mohou číst."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Připnout nahoru"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Přidat odpověď"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Ukončit anketu"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Ukončeno"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Všichni vidí, kolik lidí zvolilo kterou odpověď, nikdy kdo."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Povolit více odpovědí"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Nová anketa"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("Vyberte jednu"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Odpověď \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Anketa: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Otázka"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Každá odpověď může být v anketě jen jednou."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Vyberte jednu nebo více"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Odpovědělo: \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Hledat v tomto chatu"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Hledat v tomto chatu"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Nic nenalezeno."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("Tento chat už nemůžete vidět."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Pomalý režim"),
@@ -1139,7 +1179,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sekundy: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Jako divák můžete číst a reagovat. Připojte se, abyste mohli psát."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Tato zpráva je v historii příliš daleko, aby se dala zobrazit."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Něco z vybraného je příliš velké na odeslání a bylo vynecháno."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Zrušit ztlumení"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Odepnout"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Nahrát hlasovou zprávu"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Vy"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Komunity"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1189,6 +1237,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_from_account": MessageLookupByLibrary.simpleMessage("Z účtu"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Přidat lidi"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Přidat"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Přidat název skupiny"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Zamítnout"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Zprávy v této skupině jsou koncově šifrované, stejně jako každá jiná konverzace."),
@@ -1243,6 +1293,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Členové: \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Členové"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Název skupiny"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Nejprve skupinu pojmenujte."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Vytvořit skupinový chat"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1265,6 +1317,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Jako divák zde můžete číst a reagovat."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Diváci mohou číst, reagovat a zvednout ruku, aby požádali o psaní."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Návrhy"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Zobrazit profil"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("vy"),

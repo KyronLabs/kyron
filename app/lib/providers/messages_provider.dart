@@ -13,6 +13,7 @@ import '../repositories/messages_repository.dart';
 export '../repositories/messages_repository.dart' show ConversationFilter;
 import '../utils/api_error_message.dart';
 import 'api_client_provider.dart';
+import 'community_chats_provider.dart' show communityChatsRepositoryProvider;
 import '../services/message_crypto.dart';
 import '../services/message_vault.dart';
 import 'keys_provider.dart';
@@ -290,9 +291,20 @@ final groupMembersProvider =
       ref.read(messagesRepositoryProvider).members(conversationId),
 );
 
-/// How many conversations hold something unread. Drives the tab's badge.
+/// How many conversations hold something unread, and how many joined,
+/// unmuted community chats have something new. Drives the tab's badge.
+///
+/// The community chats' share is best effort: a failure there costs the
+/// badge their part, not the direct messages' count with it.
 final unreadConversationsProvider = FutureProvider<int>((ref) async {
-  return ref.read(messagesRepositoryProvider).unreadCount();
+  final direct = await ref.read(messagesRepositoryProvider).unreadCount();
+  var chats = 0;
+  try {
+    chats = await ref.read(communityChatsRepositoryProvider).unreadChats();
+  } catch (_) {
+    // Left out until the next read.
+  }
+  return direct + chats;
 });
 
 /// One thread.

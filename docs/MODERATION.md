@@ -111,7 +111,13 @@ policy should say this** (see below).
   community chat. A community chat message can be reported only by somebody
   in that community who can read it, and the report keeps a copy of the
   words, the chat and the community, since a moderator may delete it from the
-  chat before the team looks. Taking one down hides it from the chat and lets
+  chat before the team looks. The copy also says what the message carried
+  (`[image]`, `[voice]`, and a poll's answers as `[poll: a / b]`, which can be
+  the abuse as much as its question). The team sees the pictures and voice
+  notes themselves on the case, behind links that last a quarter of an hour:
+  they are not in the community and cannot open the chat. A message's earlier
+  versions are kept when its author edits it, so it can be judged on what it
+  said, not on what it was changed to. Taking one down hides it from the chat and lets
   go of its pin; reversing that puts it back, unless its author or a
   community moderator had deleted it themselves.
 - One per person per thing. A second report from the same person updates the
@@ -173,7 +179,12 @@ say so, and to describe:
   the server holds nothing readable. The defence there is blocking, and
   reporting the account.
 - **Media is judged through its post.** Removing a post removes its media
-  from view; there is no separate image review.
+  from view; there is no separate image review. A community chat message's
+  pictures are shown on its case (above), and kept when a community
+  moderator deletes it; its author deleting it erases them, as it erases the
+  words.
+- **Earlier versions of an edited chat message are kept but not yet shown**
+  on the case. The snapshot is what it said when first reported.
 - **Community moderation is separate.** Community bans (`CommunityBan`) and
   deleting messages in a community's chats are run by each community's own
   moderators and are not covered here ([MESSAGING.md](MESSAGING.md#community-chats)).

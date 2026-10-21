@@ -5,10 +5,12 @@ import {
   Injectable,
   Logger,
   NotFoundException,
+  Optional,
 } from '@nestjs/common';
 import {
   AccountStatus,
   AppealStatus,
+  MediaKind,
   ModerationKind,
   Prisma,
   ReportReason,
@@ -19,6 +21,7 @@ import {
 
 import { emailHash } from '../../common/guards/standing';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { DeliveryService } from '../push/delivery.service';
 
 /** Who is asking, as AuthGuard resolved them. */
@@ -55,6 +58,14 @@ export interface QueueItem {
   snapshot: string | null;
   /** The post a comment is on, so the app can open it in place. */
   postId: string | null;
+  /**
+   * What a reported community chat message carried, with links that last
+   * a quarter of an hour. The team cannot open the chat -- they are not in
+   * the community -- and a photo reported as abuse is judged by looking at
+   * it. Kept through a community moderator's delete, which keeps the files
+   * for this. Empty for anything else.
+   */
+  media: { id: string; kind: MediaKind; url: string }[];
   reasons: { reason: ReportReason; count: number }[];
   reports: {
     id: string;
@@ -178,6 +189,9 @@ export class EnforcementService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly delivery: DeliveryService,
+    // Optional so a spec that does not look at chat media can build this
+    // without a store; the app always has one (ModerationModule).
+    @Optional() private readonly storage?: SupabaseService,
   ) {}
 
   static isStaff(role: UserRole): boolean {
@@ -239,9 +253,19 @@ export class EnforcementService {
       }),
       this.prisma.communityChatMessage.findMany({
         where: { id: { in: ids(ReportTarget.COMMUNITY_MESSAGE) } },
-        select: { id: true, senderId: true, body: true, deletedAt: true },
+        select: {
+          id: true,
+          senderId: true,
+          body: true,
+          deletedAt: true,
+          media: {
+            orderBy: { position: 'asc' },
+            select: { id: true, kind: true, privatePath: true },
+          },
+        },
       }),
     ]);
+    const chatMediaOf = await this.chatMediaLinks(chatMessages);
     const postById = new Map(posts.map((p) => [p.id, p]));
     const commentById = new Map(comments.map((c) => [c.id, c]));
     const chatMessageById = new Map(chatMessages.map((m) => [m.id, m]));
@@ -307,6 +331,7 @@ export class EnforcementService {
         subject: subjectId ? (subjects.get(subjectId) ?? null) : null,
         content: live,
         snapshot: readable(group[0].snapshot),
+        media: chatMediaOf.get(targetId) ?? [],
         postId:
           target === ReportTarget.POST
             ? targetId
@@ -335,6 +360,44 @@ export class EnforcementService {
         a.firstAt.getTime() - b.firstAt.getTime(),
     );
     return { items };
+  }
+
+  /**
+   * Links, a quarter of an hour long, to what reported chat messages carry,
+   * by message. Signed together. If the store cannot be reached the queue
+   * still opens, without them.
+   */
+  private async chatMediaLinks(
+    messages: {
+      id: string;
+      media: { id: string; kind: MediaKind; privatePath: string | null }[];
+    }[],
+  ): Promise<Map<string, QueueItem['media']>> {
+    const byMessage = new Map<string, QueueItem['media']>();
+    const paths = messages
+      .flatMap((m) => m.media.map((f) => f.privatePath))
+      .filter((p): p is string => !!p);
+    if (paths.length === 0 || !this.storage) return byMessage;
+    let links = new Map<string, string>();
+    try {
+      links = await this.storage.signPrivateMany(paths, 15 * 60);
+    } catch (error) {
+      this.logger.warn(`could not sign reported media: ${String(error)}`);
+      return byMessage;
+    }
+    for (const message of messages) {
+      byMessage.set(
+        message.id,
+        message.media
+          .map((f) => ({
+            id: f.id,
+            kind: f.kind,
+            url: (f.privatePath && links.get(f.privatePath)) ?? '',
+          }))
+          .filter((f) => f.url),
+      );
+    }
+    return byMessage;
   }
 
   /** One account, with every decision about it and what is open against it. */

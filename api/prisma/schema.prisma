@@ -116,6 +116,7 @@ model User {
   communityChatMessages  CommunityChatMessage[]  @relation("CommunityChatSender")
   communityChatRemovals  CommunityChatMessage[]  @relation("CommunityChatRemover")
   communityChatReactions CommunityChatReaction[]
+  communityChatVotes     CommunityChatPollVote[]
   posts                  Post[]
   // These two read backwards from their relation names, so they are spelled
   // out. `Follow.follower` holds followerId, so its back-reference is the set
@@ -568,12 +569,18 @@ enum ReplyPolicy {
 // would duplicate every column and every upload path for no gain: a picture
 // attached to a reply is the same picture attached to a post.
 model Media {
-  id        String    @id @default(uuid()) @db.Uuid
-  postId    String?   @db.Uuid
-  commentId String?   @db.Uuid
-  messageId String?   @db.Uuid
-  kind      MediaKind @default(IMAGE)
-  url       String
+  id        String  @id @default(uuid()) @db.Uuid
+  postId    String? @db.Uuid
+  commentId String? @db.Uuid
+  messageId String? @db.Uuid
+
+  /// A photo, clip or voice note in a community chat. Always in the private
+  /// bucket ([privatePath]); [url] is empty and reading the message hands
+  /// out a link that lasts an hour, behind the same check as its words.
+  communityMessageId String? @db.Uuid
+
+  kind MediaKind @default(IMAGE)
+  url  String
 
   // Stored so a list can reserve the right space before the bytes arrive.
   // Without them every image pops the layout as it loads.
@@ -621,9 +628,12 @@ model Media {
   comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   message Message? @relation(fields: [messageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
+  communityMessage CommunityChatMessage? @relation(fields: [communityMessageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
   @@index([postId, position])
   @@index([commentId, position])
   @@index([messageId, position])
+  @@index([communityMessageId, position])
 }
 
 // ==========================================
@@ -1663,6 +1673,14 @@ model CommunityChatMember {
   joinedAt   DateTime  @default(now()) @db.Timestamptz()
   lastReadAt DateTime? @db.Timestamptz()
 
+  /// Muted by this member: no pushes from it, and it is not counted in the
+  /// Messages badge. Still listed, still counted as unread in the list.
+  mutedAt DateTime? @db.Timestamptz()
+
+  /// When this member was last pushed about this chat. One push per run of
+  /// unread messages: not again until they have read past this.
+  notifiedAt DateTime? @db.Timestamptz()
+
   chat CommunityChat @relation(fields: [chatId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user User          @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
@@ -1687,13 +1705,20 @@ model CommunityChatMessage {
   deletedAt   DateTime? @db.Timestamptz()
   deletedById String?   @db.Uuid
 
-  chat      CommunityChat           @relation("CommunityChatMessages", fields: [chatId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  sender    User                    @relation("CommunityChatSender", fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  deletedBy User?                   @relation("CommunityChatRemover", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  replyTo   CommunityChatMessage?   @relation("CommunityChatReplies", fields: [replyToId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  replies   CommunityChatMessage[]  @relation("CommunityChatReplies")
-  pinnedIn  CommunityChat?          @relation("CommunityChatPin")
+  /// When its author last changed its words. Null if never. What it said
+  /// before is in [edits], for review.
+  editedAt DateTime? @db.Timestamptz()
+
+  chat      CommunityChat              @relation("CommunityChatMessages", fields: [chatId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sender    User                       @relation("CommunityChatSender", fields: [senderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  deletedBy User?                      @relation("CommunityChatRemover", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  replyTo   CommunityChatMessage?      @relation("CommunityChatReplies", fields: [replyToId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  replies   CommunityChatMessage[]     @relation("CommunityChatReplies")
+  pinnedIn  CommunityChat?             @relation("CommunityChatPin")
   reactions CommunityChatReaction[]
+  edits     CommunityChatMessageEdit[]
+  media     Media[]
+  poll      CommunityChatPoll?
 
   @@index([chatId, createdAt(sort: Desc), id(sort: Desc)])
   @@index([senderId, createdAt(sort: Desc)])
@@ -1711,4 +1736,66 @@ model CommunityChatReaction {
 
   @@id([messageId, userId])
   @@index([userId])
+}
+
+/// What a community chat message said before one of its edits. Kept so a
+/// message edited after it was reported is judged on what it said, and so
+/// an edit cannot quietly rewrite what others answered.
+model CommunityChatMessageEdit {
+  id        String   @id @default(uuid()) @db.Uuid
+  messageId String   @db.Uuid
+  body      String   @db.Text
+  editedAt  DateTime @default(now()) @db.Timestamptz()
+
+  message CommunityChatMessage @relation(fields: [messageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([messageId, editedAt])
+}
+
+/// A poll asked in a community chat. Its message carries the question as its
+/// body, so search, previews and reports read it like any other message.
+/// Apart from posts' polls (Poll), which belong to a post and always close
+/// at a set time.
+model CommunityChatPoll {
+  id        String @id @default(uuid()) @db.Uuid
+  messageId String @unique @db.Uuid
+
+  /// Several answers each, or one.
+  multiple Boolean @default(false)
+
+  /// Closed by whoever asked it, or a moderator. Null while open.
+  closedAt DateTime? @db.Timestamptz()
+
+  message CommunityChatMessage      @relation(fields: [messageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  options CommunityChatPollOption[]
+  votes   CommunityChatPollVote[]
+}
+
+model CommunityChatPollOption {
+  id       String @id @default(uuid()) @db.Uuid
+  pollId   String @db.Uuid
+  text     String
+  /// As the asker wrote them, 0 first.
+  position Int    @default(0)
+
+  poll  CommunityChatPoll       @relation(fields: [pollId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  votes CommunityChatPollVote[]
+
+  @@index([pollId, position])
+}
+
+/// One person's answer. Counted, never listed: who voted for what is not
+/// sent to anybody.
+model CommunityChatPollVote {
+  pollId    String   @db.Uuid
+  optionId  String   @db.Uuid
+  userId    String   @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  poll   CommunityChatPoll       @relation(fields: [pollId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  option CommunityChatPollOption @relation(fields: [optionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user   User                    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([optionId, userId])
+  @@index([pollId, userId])
 }

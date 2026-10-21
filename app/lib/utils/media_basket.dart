@@ -113,6 +113,16 @@ class MediaBasket extends ChangeNotifier {
   /// than after uploading it and being told 413.
   static const maxAttachmentBytes = 25 * 1024 * 1024;
 
+  /// What each kind may weigh, as the server holds it
+  /// (`MediaService.maxBytesFor`): a clip needs the 25 MB, a photo is
+  /// refused past 8. Checked here, a file that would be refused is left out
+  /// before it is uploaded rather than after.
+  static int maxBytesFor(MediaKind kind) => switch (kind) {
+        MediaKind.video => maxAttachmentBytes,
+        MediaKind.gif || MediaKind.voice => 12 * 1024 * 1024,
+        MediaKind.image => 8 * 1024 * 1024,
+      };
+
   /// Adds a file that is already on the device -- a GIF the picker has just
   /// downloaded -- and starts its upload. Returns a message to show the
   /// reader, or null when it went fine.

@@ -78,7 +78,7 @@ group's name. See *What the server knows*, below.
 
 - Polls, pinned messages, live rooms, a "joined" count: all in the Threads
   screenshots, all on the community-chat side of the line above. Community
-  chats have pins and a joined count; polls and live rooms are not built
+  chats have pins, polls and a joined count; live rooms are not built
   anywhere.
 - Group photos. The avatar is two members' pictures.
 - Muting a group mutes it for the reader, as in a conversation between two.
@@ -148,9 +148,11 @@ walk into cannot be sealed for all of them in any meaningful sense. Messages
 are stored as plain text the server, the community's moderators and Kyron's
 team can read. They live in their own tables (`CommunityChat`,
 `CommunityChatMember`, `CommunityChatMessage`, `CommunityChatReaction`), apart
-from conversations, and never touch the message vault. Supabase's own API
-roles have no grants on those tables and row-level security is on with no
-policies, so the only way in is the API.
+from conversations, and never touch the message vault. Edits, polls and
+votes have tables of their own (`CommunityChatMessageEdit`,
+`CommunityChatPoll`, `CommunityChatPollOption`, `CommunityChatPollVote`).
+Supabase's own API roles have no grants on any of them and row-level security
+is on with no policies, so the only way in is the API.
 
 ### Who can do what
 
@@ -181,16 +183,24 @@ policies, so the only way in is the API.
 - Slow mode, per chat, from off to an hour between messages. The owner and
   moderators are not slowed.
 - A reply has to answer a message in the same chat that is still up.
+- Up to **4** photos or clips in a message, or one voice note. A message with
+  something attached may have no words.
+- A poll has **2 to 10** answers of up to 100 characters, none twice
+  (whatever the case).
+- An author can change their words for **15 minutes**, at most 10 times.
+- A search needs 2 characters and takes at most 100.
 - Each check and the write it guards run in one transaction under a Postgres
-  advisory lock -- per sender per chat for messages, per community for opening
-  and renaming chats -- so requests sent side by side cannot all pass the
-  check before any of them writes.
+  advisory lock -- per sender per chat for messages, per sender for anything
+  with files attached, per person per poll for votes, per community for
+  opening and renaming chats -- so requests sent side by side cannot all pass
+  the check before any of them writes.
 
 ### Taking messages down
 
-- An author who deletes their own message erases its words.
+- An author who deletes their own message erases it: its words, its earlier
+  versions, its files from storage, and its poll.
 - A moderator who deletes somebody else's takes it out of the chat but keeps
-  the words, for review. A moderator cannot delete the owner's or another
+  the words, the earlier versions and the files, for review. A moderator cannot delete the owner's or another
   moderator's; the owner can delete anybody's. The app offers delete only
   where the server would allow it.
 - Anybody in the community who can read a message can report it to Kyron
@@ -203,27 +213,100 @@ policies, so the only way in is the API.
 - When an account is deleted its chat messages go with it, and the copies of
   them in reports are cleared.
 
+### Photos, clips and voice notes
+
+They go to the **private** bucket (`kyron-private`, folder `chat/`), the one
+view once uses, not the public one posts use: a chat is for the people in the
+community, so its pictures should not sit at a public address. The upload
+(`POST /media/chat`) answers a reference, never an address. The message
+carries the reference; every response that includes the message carries
+instead a signed link that lasts **an hour**, made in one batch per page.
+
+- A reference names its uploader, and only they can send it. Each upload goes
+  in one message: sending it twice is refused (409), checked under a lock
+  every one of the uploader's sends with files takes, so two sends of one
+  file to two chats at once cannot both pass. Taking one down deletes the
+  file the other would still point at.
+- The app sizes gallery photos as the camera does (2048 px, quality 85) and
+  checks each file against the server's limit for its kind (a photo 8 MB, a
+  voice note or GIF 12 MB, a clip 25 MB) before uploading. On Android, sizing
+  flattens an animated GIF from the gallery to its first frame.
+- A retry after a failed send sends the files already uploaded rather than
+  new copies. A 409 on a retry means the first try went through and its
+  answer was lost, so the app shows that message instead of a failure.
+
+### Polls
+
+A message can be a poll: its words are the question. One answer each, or
+several where the asker allows it. Everybody sees how many chose each answer
+and how many answered, **never who**: the votes are stored (one row per
+person per answer) and no response carries them. Anybody who can read the
+chat can answer, spectators included, as with reactions. Tapping the answer
+you gave takes it back. The asker or a moderator can close a poll, after
+which it shows its results and takes no more answers. A poll cannot be
+edited.
+
+### Editing and search
+
+- An author can change their words for 15 minutes, while they can still
+  write in the chat. Each earlier version is kept (`CommunityChatMessageEdit`)
+  so a report can be judged on what was said, not on what it was changed to.
+  The message shows "edited".
+- Search looks through one chat's messages, whatever the case, and answers
+  the newest 30. `%`, `_` and `\` are searched for as themselves. Deleted
+  messages and anybody blocked either way are never found. Picking a result
+  reads back through the chat to it and shows it where it was said.
+
+### In the Messages list, and notifications
+
+The chats somebody joined sit in the Messages list among their conversations,
+by when each was last spoken in, under All and Unread. A chat older than the
+oldest conversation loaded waits until the list reaches back to it, so it
+never sits above conversations that belong first. The Messages count adds
+the joined chats with something unseen (`GET /community-chats/unread`).
+
+**Muting** a chat (from its menu) stops its notifications and leaves it out
+of that count. It stays in the list, with its own unread figure, faded.
+
+**One push per run of unread messages.** The first new message after you
+last read the chat pushes; the ones after it do not, until you read it
+again. A reply to you pushes even mid-run. Nothing is pushed into a mute,
+across a block either way, or to somebody no longer in the community. Who
+gets one is chosen and marked in a single statement, so two messages a
+moment apart cannot both push the same person. A push carries the chat's
+name and the start of the message: community chats are not encrypted, so
+there is nothing to hide from the notification, but it does pass through
+Apple's or Google's servers.
+
 ### Live updates and reactions
 
 The server sends `community.chat.message`, `community.chat.message.deleted`,
-`community.chat.reaction` and `community.chat.updated` -- ids only, never the
+`community.chat.message.edited`, `community.chat.reaction`,
+`community.chat.poll` and `community.chat.updated` -- ids only, never the
 text -- to people who joined the chat and are still in the community. The app
 reads the message itself over HTTP, behind the same membership check, and only
 for a chat that is open. A spectator gets no live updates; their open chat
 asks again every 20 seconds. A message taken down stays down on screen even
 when a page asked for just before the takedown lands just after it.
 
+Edits, votes and reactions arrive in bursts; the open chat reads again once,
+a moment after the last of them, and the Messages list a couple of seconds
+after a change in any joined chat, rather than once per event.
+
 A reaction is a single emoji, one per person per message; a new one replaces
 the old. Reactions are shown as counts, and who reacted is not sent.
 
 ### What is not built
 
-- Joined community chats in the Messages inbox. The API can list them
-  (`GET /community-chats/joined`); the app reaches chats from the community's
-  page.
-- Push notifications for community chats.
-- Photos, clips, voice notes and link cards: community chats are text.
-- Polls, live audio rooms, editing a message, search, muting a chat.
+- **Live audio rooms.** They need a media server (an SFU such as LiveKit),
+  TURN, and keys kept as secrets: infrastructure and a running cost, not just
+  code. The Live entry still opens "coming soon".
+- **Link cards** in community chats.
+- **Uploads that are never sent** stay in the private bucket until their
+  uploader's account is deleted. A sweep of `chat/` files older than a day
+  that no message holds would close that.
+- The pictures are not end-to-end encrypted, like everything else in a
+  community chat.
 
 ## What the server knows
 
@@ -238,6 +321,7 @@ the old. Reactions are shown as counts, and who reacted is not sent.
 | A view-once file | — | yes, until it is deleted |
 | Who opened a view-once message, when | — | yes |
 | Everything in a community chat | — | yes, it is not encrypted |
+| Who answered what in a community chat poll | — | yes, stored, never shown |
 
 ## Testing it
 
@@ -251,7 +335,9 @@ without a database, so CI checks them. On the app side,
 `community-chats.db.spec.ts` does the same for community chats: the grants,
 who may read, write and run them, limits (including requests sent side by
 side), takedowns, pins, blocks, reports and reversals, removal from the
-community, and a community closing. `community-chats.service.spec.ts` holds
+community, and a community closing; then muting, the badge, one push per
+run, edits, search, pictures (one upload in one message, even sent to two
+chats at once) and polls (one answer from taps on several at once). `community-chats.service.spec.ts` holds
 the rules CI can check, and `community_chats_test.dart` the screens.
 
 ```sh

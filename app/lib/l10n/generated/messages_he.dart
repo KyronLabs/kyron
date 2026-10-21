@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("רק מנחים יכולים לכתוב"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "להודעות. כל מי שבקהילה עדיין יכול לקרוא ולהגיב."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("הוספת תמונה או סקר"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("תמונות וסרטונים"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("סגירת הצ׳אט"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "אף אחד לא יוכל לקרוא או לכתוב בו. אי אפשר לבטל את זה."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "ההודעה מוסרת אצל כל מי שבצ׳אט."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("עריכת הצ׳אט"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("עריכה"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("נערכה"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("עריכת ההודעה שלך"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("לא ניתן לפתוח את הצ׳אט הזה."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("צ׳אטים"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "אפשר להמשיך לקרוא אותו כל עוד נמצאים בקהילה."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "רק הבעלים והמנחים יכולים לכתוב כאן."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("השתקה"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "בלי התראות ממנו, והוא לא נספר בהודעות."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("שם הצ׳אט"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("צ׳אט חדש"),
       "ui_cchat_none":
@@ -1061,6 +1072,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "צ׳אטים של קהילות אינם מוצפנים מקצה לקצה. מנחי הקהילה ו-Kyron יכולים לקרוא אותם."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("הצמדה למעלה"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("הוספת תשובה"),
+      "ui_cchat_poll_close": MessageLookupByLibrary.simpleMessage("סגירת הסקר"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("נסגר"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "כולם רואים כמה בחרו בכל תשובה, אף פעם לא מי."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("לאפשר לבחור כמה תשובות"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("סקר חדש"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("יש לבחור תשובה אחת"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("תשובה \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("סקר: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("שאלה"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "כל תשובה יכולה להופיע בסקר פעם אחת בלבד."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("יש לבחור תשובה אחת או יותר"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count ענו"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("חיפוש בצ׳אט הזה"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("חיפוש בצ׳אט הזה"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("לא נמצא דבר."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("אין לך יותר גישה לצ׳אט הזה."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("מצב איטי"),
@@ -1076,7 +1113,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("שניות: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "אפשר לקרוא ולהגיב כצופה. הצטרפו כדי לכתוב."),
+      "ui_cchat_too_far":
+          MessageLookupByLibrary.simpleMessage("ההודעה הזו ישנה מדי להצגה."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "אחד הפריטים שנבחרו גדול מדי לשליחה ולא נכלל."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("ביטול השתקה"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ביטול הצמדה"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("הקלטת הודעה קולית"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("את/ה"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1125,6 +1169,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("הוספת אנשים"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("הוספה"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("הוספת שם לקבוצה"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("דחייה"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "ההודעות בקבוצה הזו מוצפנות מקצה לקצה, כמו בכל שיחה אחרת."),
@@ -1177,6 +1223,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count חברים"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("חברים"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("שם הקבוצה"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("קודם צריך לתת לקבוצה שם."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("יצירת צ׳אט קבוצתי"),
       "ui_group_owner_detail":
           MessageLookupByLibrary.simpleMessage("יש בעלים אחד. תישאר/י מנהל/ת."),
@@ -1196,6 +1244,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("כצופה, אפשר לקרוא ולהגיב כאן."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "צופים יכולים לקרוא, להגיב ולהרים יד כדי לבקש לכתוב."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("הצעות"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("הצגת פרופיל"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("את/ה"),

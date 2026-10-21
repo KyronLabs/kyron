@@ -228,7 +228,7 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
    */
   static payload(token: string, message: PushMessage): object {
     const data = message.data ?? {};
-    const isMessage = data.type === 'message';
+    const isMessage = data.type === 'message' || data.type === 'community.chat';
     const tag = PushService.tagFor(data);
     return {
       token,
@@ -249,7 +249,8 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
   /**
    * Which notification on the phone a new one replaces.
    *
-   * One per conversation, one per post, and one for new followers: a third
+   * One per conversation, one per community chat, one per post, and one for
+   * new followers: a third
    * like on the same post updates the notification already there instead of
    * stacking a third. Fewer of them matters beyond tidiness -- at four,
    * Android bundles an app's notifications under a summary of its own
@@ -261,6 +262,11 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
       return data.conversationId
         ? `conversation-${data.conversationId}`
         : undefined;
+    }
+    // One per community chat: a busy room replaces its own notification
+    // rather than filling the shade.
+    if (data.type === 'community.chat') {
+      return data.chatId ? `community-chat-${data.chatId}` : undefined;
     }
     if (data.type !== 'notification') return undefined;
     if (data.postId) return `post-${data.postId}`;

@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Bare moderatorer kan skrive"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "For kunngjøringer. Alle i fellesskapet kan fortsatt lese og reagere."),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "Legg til et bilde eller en avstemning"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Bilder og videoer"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Lukk chatten"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Ingen vil kunne lese eller skrive i den. Dette kan ikke angres."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Meldingen fjernes for alle i chatten."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Rediger chat"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Rediger"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("redigert"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Du redigerer meldingen din"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Kunne ikke åpne denne chatten."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chatter"),
@@ -1053,6 +1061,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Du kan fortsatt lese den så lenge du er i fellesskapet."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Bare eieren og moderatorene kan skrive her."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Slå av lyd"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ingen varsler fra den, og den telles ikke med i Meldinger."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Navn på chatten"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Ny chat"),
       "ui_cchat_none":
@@ -1062,6 +1073,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Fellesskapschatter er ikke ende-til-ende-kryptert. Fellesskapets moderatorer og Kyron kan lese dem."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Fest øverst"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Legg til et svar"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Avslutt avstemningen"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Avsluttet"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Alle ser hvor mange som valgte hvert svar, aldri hvem."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("La folk velge flere"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Ny avstemning"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Velg ett"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("Svar \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Avstemning: \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("Spørsmål"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Hvert svar kan bare være med én gang i en avstemning."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Velg ett eller flere"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count har svart"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Søk i denne chatten"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Søk i denne chatten"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Fant ingenting."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Du kan ikke lenger se denne chatten."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Saktemodus"),
@@ -1077,7 +1117,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n sekunder"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Du kan lese og reagere som tilskuer. Bli med for å skrive."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Den meldingen ligger for langt tilbake til å vises."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Noe du valgte, er for stort til å sendes og ble utelatt."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Slå på lyd"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Løsne"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Ta opp en talemelding"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Du"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1126,6 +1173,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Legg til personer"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Legg til"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Legg til gruppenavn"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Avvis"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Meldinger i denne gruppen er ende-til-ende-krypterte, som alle andre samtaler."),
@@ -1180,6 +1229,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count medlemmer"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Medlemmer"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Gruppenavn"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Gi gruppen et navn først."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Opprett gruppechat"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1203,6 +1254,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Som tilskuer kan du lese og reagere her."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Tilskuere kan lese, reagere og rekke opp hånden for å be om å få skrive."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Forslag"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Se profil"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("deg"),

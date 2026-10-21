@@ -100,6 +100,32 @@ export class MediaController {
       height: numberField(file, 'height'),
     });
   }
+
+  /**
+   * Uploads a photo, clip or voice note for a community chat: into the
+   * private bucket, answered with a reference. Who may see it is decided
+   * when the message is read, by the chat's own checks.
+   */
+  @Post('chat')
+  async uploadChat(@Req() req: MultipartRequest) {
+    const file = await req.file();
+    if (!file) throw new BadRequestException('No file was uploaded.');
+    let buffer: Buffer;
+    try {
+      buffer = await file.toBuffer();
+    } catch (error) {
+      if (isTooLarge(error)) {
+        throw new PayloadTooLargeException(
+          `That file is larger than ${MediaService.maxBytes / (1024 * 1024)} MB.`,
+        );
+      }
+      throw error;
+    }
+    return this.svc.uploadChat(req.user.id, buffer, file.mimetype, {
+      width: numberField(file, 'width'),
+      height: numberField(file, 'height'),
+    });
+  }
 }
 
 /** @fastify/multipart's own oversize error, by code rather than by class. */

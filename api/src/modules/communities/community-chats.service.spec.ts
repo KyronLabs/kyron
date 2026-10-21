@@ -1,6 +1,7 @@
-import { CommunityChatWriters, CommunityRole } from '@prisma/client';
+import { CommunityChatWriters, CommunityRole, MediaKind } from '@prisma/client';
 
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { RecordingPrivateStorage } from '../../infrastructure/supabase/private-storage.test-double';
 import { RecordingDelivery } from '../push/delivery.test-double';
 import { CommunityChatsService } from './community-chats.service';
 
@@ -147,6 +148,22 @@ function service(scene: Scene) {
       findMany: jest.fn(() => Promise.resolve([])),
     },
     block: { findMany: jest.fn(() => Promise.resolve([])) },
+    media: {
+      count: jest.fn(() => Promise.resolve(0)),
+      findMany: jest.fn(() => Promise.resolve([])),
+      createMany: jest.fn(() => Promise.resolve({ count: 0 })),
+      deleteMany: jest.fn(() => Promise.resolve({ count: 0 })),
+    },
+    communityChatPoll: {
+      findMany: jest.fn(() => Promise.resolve([])),
+      create: jest.fn(() => Promise.resolve({})),
+      deleteMany: jest.fn(() => Promise.resolve({ count: 0 })),
+    },
+    communityChatMessageEdit: {
+      deleteMany: jest.fn(() => Promise.resolve({ count: 0 })),
+    },
+    // Nobody to push to.
+    $queryRaw: jest.fn(() => Promise.resolve([])),
     $executeRaw: jest.fn(() => Promise.resolve(1)),
     $transaction: jest.fn(
       (ops: Transaction): Promise<unknown> => Promise.resolve(ops),
@@ -159,6 +176,7 @@ function service(scene: Scene) {
   const svc = new CommunityChatsService(
     prisma as unknown as PrismaService,
     new RecordingDelivery(),
+    new RecordingPrivateStorage().asService,
   );
   return { svc, created, prisma };
 }
@@ -314,5 +332,138 @@ describe('reactions', () => {
     await expect(svc.react('ada', CHAT, 'm1', 'lol')).rejects.toMatchObject({
       status: 400,
     });
+  });
+});
+
+describe('what a message may carry', () => {
+  const ADA = '0b6b6c2a-0000-4000-8000-000000000001';
+  const own = (ext: string, n = 1) => `chat/${ADA}_${n}_abc.${ext}`;
+
+  it('is the sender’s own uploads, from the chat folder, each once', () => {
+    expect(() =>
+      CommunityChatsService.attachments(ADA, [{ ref: 'chat/other_1_abc.jpg' }]),
+    ).toThrow('That file was not uploaded here.');
+    expect(() =>
+      CommunityChatsService.attachments(ADA, [
+        { ref: `once/${ADA}_1_abc.jpg` },
+      ]),
+    ).toThrow('That file was not uploaded here.');
+    expect(() =>
+      CommunityChatsService.attachments(ADA, [
+        { ref: `chat/${ADA}_1_../../x.jpg` },
+      ]),
+    ).toThrow('That file was not uploaded here.');
+    expect(() =>
+      CommunityChatsService.attachments(ADA, [
+        { ref: own('jpg') },
+        { ref: own('jpg') },
+      ]),
+    ).toThrow('The same file is in there twice.');
+  });
+
+  it('is four at most, and a voice note alone', () => {
+    expect(() =>
+      CommunityChatsService.attachments(
+        ADA,
+        [1, 2, 3, 4, 5].map((n) => ({ ref: own('jpg', n) })),
+      ),
+    ).toThrow('at most 4');
+    expect(() =>
+      CommunityChatsService.attachments(ADA, [
+        { ref: own('m4a', 1) },
+        { ref: own('jpg', 2) },
+      ]),
+    ).toThrow('A voice note goes on its own.');
+  });
+
+  it('is what the server named the file, not what the phone says', () => {
+    const [voice] = CommunityChatsService.attachments(ADA, [
+      { ref: own('m4a'), durationMs: 4000, waveform: [3, 140, -2], width: 9 },
+    ]);
+    expect(voice).toMatchObject({
+      kind: MediaKind.VOICE,
+      durationMs: 4000,
+      waveform: [3, 100, 0],
+    });
+    const [photo] = CommunityChatsService.attachments(ADA, [
+      { ref: own('jpg'), durationMs: 4000, waveform: [3] },
+    ]);
+    // A still has no length and no waveform, whatever was sent.
+    expect(photo).toMatchObject({
+      kind: MediaKind.IMAGE,
+      durationMs: null,
+      waveform: [],
+    });
+    expect(() =>
+      CommunityChatsService.attachments(ADA, [{ ref: own('exe') }]),
+    ).toThrow('not one a chat can carry');
+  });
+});
+
+describe('a poll’s answers', () => {
+  it('are two to ten, trimmed, and each once whatever the case', () => {
+    expect(CommunityChatsService.pollOptions([' Yes ', 'No  thanks'])).toEqual([
+      'Yes',
+      'No thanks',
+    ]);
+    expect(() => CommunityChatsService.pollOptions(['Only'])).toThrow();
+    expect(() =>
+      CommunityChatsService.pollOptions(
+        Array.from({ length: 11 }, (_, i) => `${i}`),
+      ),
+    ).toThrow();
+    expect(() => CommunityChatsService.pollOptions(['Yes', 'yes'])).toThrow(
+      'once',
+    );
+    expect(() => CommunityChatsService.pollOptions(['Yes', ' '])).toThrow(
+      'empty',
+    );
+    expect(() =>
+      CommunityChatsService.pollOptions(['Yes', 'x'.repeat(101)]),
+    ).toThrow('100');
+  });
+});
+
+describe('what a push says', () => {
+  it('is the words, cut short, or what was sent', () => {
+    const say = (
+      body: string,
+      media: { kind: MediaKind }[] = [],
+      poll: unknown = null,
+    ) => CommunityChatsService.preview({ body, media, poll });
+    expect(say('hello   there')).toBe('hello there');
+    expect(say('x'.repeat(150))).toHaveLength(100);
+    expect(say('', [{ kind: MediaKind.IMAGE }])).toBe('Photo');
+    expect(say('', [{ kind: MediaKind.VOICE }])).toBe('Voice note');
+    expect(say('look', [{ kind: MediaKind.IMAGE }])).toBe('look');
+    expect(say('Saturday?', [], {})).toBe('Poll: Saturday?');
+  });
+});
+
+describe('searching a chat', () => {
+  it('looks for a % or an _ as itself, not as a wildcard', async () => {
+    const { svc, prisma } = service({
+      roles: { ada: CommunityRole.MEMBER },
+      joined: [],
+    });
+    await svc.search('ada', CHAT, '50%_off');
+    expect(prisma.communityChatMessage.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          body: { contains: '50\\%\\_off', mode: 'insensitive' },
+        }) as unknown,
+      }),
+    );
+  });
+
+  it('runs on nothing shorter than two letters', async () => {
+    const { svc, prisma } = service({
+      roles: { ada: CommunityRole.MEMBER },
+      joined: [],
+    });
+    await expect(svc.search('ada', CHAT, ' k ')).resolves.toEqual({
+      items: [],
+    });
+    expect(prisma.communityChatMessage.findMany).not.toHaveBeenCalled();
   });
 });

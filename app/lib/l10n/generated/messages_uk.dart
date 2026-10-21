@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Писати можуть лише модератори"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Для оголошень. Усі в спільноті й далі можуть читати та реагувати."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Додати фото або опитування"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Фото й відео"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Закрити чат"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Ніхто більше не зможе читати чи писати в ньому. Цю дію не можна скасувати."),
@@ -1039,6 +1043,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Повідомлення видаляється для всіх у чаті."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Редагувати чат"),
+      "ui_cchat_edit_message":
+          MessageLookupByLibrary.simpleMessage("Редагувати"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("змінено"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Ви редагуєте повідомлення"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Не вдалося відкрити цей чат."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Чати"),
@@ -1053,6 +1062,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ви зможете читати його, доки перебуваєте в спільноті."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Писати тут можуть лише власник і модератори."),
+      "ui_cchat_mute":
+          MessageLookupByLibrary.simpleMessage("Вимкнути сповіщення"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Сповіщень із цього чату не буде, і він не враховується в лічильнику повідомлень."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Назва чату"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Новий чат"),
       "ui_cchat_none":
@@ -1062,6 +1075,37 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Чати спільнот не мають наскрізного шифрування. Модератори спільноти та Kyron можуть їх читати."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Закріпити вгорі"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Додати відповідь"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Закрити опитування"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Закрито"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Усі бачать, скільки людей вибрали кожну відповідь, але не хто саме."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Дозволити кілька відповідей"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Нове опитування"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("Виберіть одну"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Відповідь \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Опитування: \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("Запитання"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Кожна відповідь може бути в опитуванні лише один раз."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Виберіть одну або кілька"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Відповіли: \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Пошук у цьому чаті"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Пошук у цьому чаті"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Нічого не знайдено."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Ви більше не можете бачити цей чат."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Повільний режим"),
@@ -1077,7 +1121,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Секунд: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Ви можете читати й реагувати як глядач. Приєднайтеся, щоб писати."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Це повідомлення надто далеко в історії, щоб його показати."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Щось із вибраного завелике для надсилання, тож його не додано."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Увімкнути сповіщення"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Відкріпити"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage(
+          "Записати голосове повідомлення"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Ви"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1126,6 +1178,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Додати людей"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Додати"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Додати назву групи"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Відхилити"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Повідомлення в цій групі захищено наскрізним шифруванням, як і в будь-якій іншій розмові."),
@@ -1180,6 +1234,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Учасників: \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Учасники"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Назва групи"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Спершу назвіть групу."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Створити груповий чат"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1203,6 +1259,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Як глядач ви можете читати й реагувати."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Глядачі можуть читати, реагувати й підняти руку, щоб попросити дозволу писати."),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("Рекомендовані"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Переглянути профіль"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("ви"),

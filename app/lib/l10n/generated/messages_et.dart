@@ -1072,6 +1072,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kirjutada saavad ainult moderaatorid"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Teadaanneteks. Kõik kogukonnas saavad endiselt lugeda ja reageerida."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Lisa foto või küsitlus"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Fotod ja videod"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Sulge vestlus"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Keegi ei saa selles enam lugeda ega kirjutada. Seda ei saa tagasi võtta."),
@@ -1083,6 +1087,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Sõnum eemaldatakse kõigi jaoks vestluses."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Muuda vestlust"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Muuda"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("muudetud"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Muudad oma sõnumit"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Seda vestlust ei õnnestunud avada."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Vestlused"),
@@ -1097,6 +1105,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Saad seda endiselt lugeda, kuni oled kogukonnas."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Siia saavad kirjutada ainult omanik ja moderaatorid."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Vaigista"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Sellest ei tule teavitusi ja see ei lähe Sõnumite arvu sisse."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Vestluse nimi"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Uus vestlus"),
       "ui_cchat_none":
@@ -1106,6 +1117,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Kogukonna vestlused ei ole otspunktkrüpteeritud. Kogukonna moderaatorid ja Kyron saavad neid lugeda."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Kinnita üles"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("Lisa vastus"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Sulge küsitlus"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Suletud"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Kõik näevad, mitu inimest iga vastuse valis, aga mitte kunagi, kes."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Luba valida mitu"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Uus küsitlus"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Vali üks"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Vastus \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Küsitlus: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Küsimus"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Iga vastus saab küsitluses olla ainult korra."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Vali üks või mitu"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Vastas \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Otsi sellest vestlusest"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Otsi sellest vestlusest"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Midagi ei leitud."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("Sa ei näe seda vestlust enam."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Aeglane režiim"),
@@ -1121,7 +1159,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n sekundit"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Saad vaatajana lugeda ja reageerida. Kirjutamiseks liitu."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "See sõnum on liiga kaugel minevikus, et seda näidata."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Midagi, mille valisid, on saatmiseks liiga suur ja jäeti välja."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Tühista vaigistus"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Vabasta"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Salvesta häälsõnum"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Sina"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Kogukonnad"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1173,6 +1219,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Kasutajakontolt"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Lisa inimesi"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Lisa"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Lisa grupi nimi"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Lükka tagasi"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Selle grupi sõnumid on otspunktkrüpteeritud nagu iga teine vestlus."),
@@ -1227,6 +1275,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count liiget"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Liikmed"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Grupi nimi"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Anna grupile kõigepealt nimi."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("Loo grupivestlus"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "Omanikke on üks. Sa jääd administraatoriks."),
@@ -1249,6 +1299,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Vaatajana saad siin lugeda ja reageerida."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Vaatajad saavad lugeda, reageerida ja kätt tõsta, et kirjutamisõigust küsida."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Soovitused"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Vaata profiili"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("sina"),

@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ọ bụ naanị ndị nlekọta nwere ike ide"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Maka ọkwa. Onye ọ bụla nọ n'obodo ka nwere ike ịgụ na imeghachi omume."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Tinye foto ma ọ bụ ntuli aka"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Foto na vidiyo"),
       "ui_cchat_close":
           MessageLookupByLibrary.simpleMessage("Mechie mkparịta ụka"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
@@ -1042,6 +1046,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "A na-ewepụ ozi ahụ maka onye ọ bụla nọ na mkparịta ụka."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("Dezie mkparịta ụka"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Dezie"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("edeziri"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Ị na-edezi ozi gị"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Enweghị ike imeghe mkparịta ụka a."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Mkparịta ụka"),
@@ -1057,6 +1065,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ị ka nwere ike ịgụ ya ma ọ bụrụhaala na ị nọ n'obodo."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Ọ bụ naanị onye nwe ya na ndị nlekọta nwere ike ide ebe a."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Mee ka ọ dị jụụ"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịghị ọkwa ga-esi na ya, a gaghịkwa agụnye ya na ọnụ ọgụgụ Ozi."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Aha mkparịta ụka"),
       "ui_cchat_new":
           MessageLookupByLibrary.simpleMessage("Mkparịta ụka ọhụrụ"),
@@ -1067,6 +1078,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Ezoghị mkparịta ụka obodo site na njedebe ruo njedebe. Ndị nlekọta obodo na Kyron nwere ike ịgụ ha."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Pịnụ n'elu"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("Tinye azịza"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Mechie ntuli aka"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Emechiela"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Onye ọ bụla na-ahụ ole họọrọ azịza ọ bụla, ọ dịghị mgbe ndị ọ bụ."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Kwe ka a họrọ ọtụtụ"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Ntuli aka ọhụrụ"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Họrọ otu"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("Azịza \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Ntuli aka: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Ajụjụ"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Azịza ọ bụla nwere ike ịdị na ntuli aka naanị otu ugboro."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Họrọ otu ma ọ bụ karịa"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count azaala"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Chọọ n'ime mkparịta ụka a"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Chọọ n'ime mkparịta ụka a"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị ihe a hụrụ."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Ị nweghịzi ike ịhụ mkparịta ụka a."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Ọnọdụ nwayọ"),
@@ -1082,7 +1120,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sekọnd \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Ị nwere ike ịgụ na imeghachi omume dị ka onye na-ekiri. Sonye ka ị dee ihe."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Ozi ahụ dị anya azụ nke ukwuu ka e gosi ya."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Ihe ị họọrọ buru ibu nke ukwuu iziga, ya mere a hapụrụ ya."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Kwụsị ịdị jụụ"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Wepụ pịnụ"),
+      "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("Dekọọ ozi olu"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Gị"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1131,6 +1175,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Tinye mmadụ"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Tinye"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Tinye aha otu"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Jụ"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Ozi dị n’otu a ka ezoro ezo site n’isi ruo n’ọgwụgwụ, dịka mkparịta ụka ọ bụla ọzọ."),
@@ -1183,6 +1229,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ndị otu \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Ndị otu"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Aha otu"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Buru ụzọ nye otu ahụ aha."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("Mepụta nkata otu"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "Onye nwe ya bụ otu. Ị ga-anọgide dịka onye nchịkwa."),
@@ -1204,6 +1252,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Dịka onye na-ekiri, ị nwere ike ịgụ ma meghachi omume ebe a."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Ndị na-ekiri nwere ike ịgụ, meghachi omume ma welie aka ịrịọ ide ihe."),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("Ndị a tụrụ aro"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Lee profaịlụ"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("gị"),

@@ -7,8 +7,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../models/community_chat.dart';
 import '../models/conversation.dart';
+import '../providers/community_chats_provider.dart';
 import '../utils/conversation_text.dart';
+import '../widgets/community_avatar.dart';
+import 'community_chat_screen.dart';
 import '../widgets/list_controls.dart';
 import '../widgets/online_dot.dart';
 import '../widgets/group_avatar.dart';
@@ -277,6 +281,27 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
     await refreshConversations(ref);
   }
 
+  Future<void> _openChat(CommunityChat chat) async {
+    await CommunityChatScreen.open(context, chat);
+    // Read while it was open, perhaps muted: the row and the badge say so.
+    if (!mounted) return;
+    ref.invalidate(joinedChatsProvider);
+    ref.invalidate(unreadConversationsProvider);
+  }
+
+  /// When [entry] -- a conversation or a community chat -- was last spoken
+  /// in, for the order they are listed in together.
+  static DateTime _when(Object entry) => entry is Conversation
+      ? entry.lastMessage?.createdAt ?? entry.lastMessageAt
+      : (entry as CommunityChat).activeAt;
+
+  bool _chatMatches(CommunityChat chat) {
+    final query = widget.query.toLowerCase();
+    if (query.isEmpty) return true;
+    return chat.name.toLowerCase().contains(query) ||
+        chat.communityName.toLowerCase().contains(query);
+  }
+
   /// Whether [conversation] is one the search box is asking for.
   bool _matches(Conversation conversation) {
     final query = widget.query.toLowerCase();
@@ -301,9 +326,36 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
     final items = state.items.where(_matches).toList();
     final hidden = widget.filter == ConversationFilter.hidden;
 
+    // The reader's community chats, in among their conversations by when
+    // each was last spoken in. Not in Unanswered or Hidden, which mean
+    // nothing for a room. Only as far back as the conversations loaded so
+    // far reach: further, and a chat would sit above a conversation that
+    // belongs before it once the next page arrives.
+    final listsChats = widget.filter == ConversationFilter.all ||
+        widget.filter == ConversationFilter.unread;
+    final joined = listsChats
+        ? ref.watch(joinedChatsProvider).asData?.value ??
+            const <CommunityChat>[]
+        : const <CommunityChat>[];
+    final reach = state.cursor != null && state.items.isNotEmpty
+        ? _when(state.items.last)
+        : null;
+    final chats = [
+      for (final chat in joined)
+        if ((widget.filter != ConversationFilter.unread || chat.unread > 0) &&
+            _chatMatches(chat) &&
+            (reach == null || !chat.activeAt.isBefore(reach)))
+          chat,
+    ];
+    final entries = <Object>[...items, ...chats]
+      ..sort((a, b) => _when(b).compareTo(_when(a)));
+
     return RefreshIndicator(
-      onRefresh: notifier.refresh,
-      child: items.isEmpty
+      onRefresh: () async {
+        ref.invalidate(joinedChatsProvider);
+        await notifier.refresh();
+      },
+      child: entries.isEmpty
           ? (state.error != null
                   ? EmptyState.failed(
                       title: l10n.literalcouldNotLoadYourMessages,
@@ -357,7 +409,7 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
           : ListView.separated(
               controller: _scroll,
               physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: items.length + (state.loadingMore ? 1 : 0),
+              itemCount: entries.length + (state.loadingMore ? 1 : 0),
               separatorBuilder: (context, index) => Divider(
                 height: 1,
                 thickness: 0.5,
@@ -368,13 +420,20 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                     .withValues(alpha: 0.15),
               ),
               itemBuilder: (context, index) {
-                if (index >= items.length) {
+                if (index >= entries.length) {
                   return const Padding(
                     padding: EdgeInsets.all(SpacingTokens.space16),
                     child: Center(child: CircularProgressIndicator()),
                   );
                 }
-                final conversation = items[index];
+                final entry = entries[index];
+                if (entry is CommunityChat) {
+                  return _CommunityChatRow(
+                    chat: entry,
+                    onTap: () => _openChat(entry),
+                  );
+                }
+                final conversation = entry as Conversation;
                 return _ConversationRow(
                   conversation: conversation,
                   me: ref.watch(currentUserProvider).asData?.value.id,
@@ -621,6 +680,150 @@ class _ConversationRow extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// One of the reader's community chats, as a row among their conversations:
+/// the community's picture, the chat's name, and the community and the last
+/// thing said under it.
+class _CommunityChatRow extends StatelessWidget {
+  final CommunityChat chat;
+  final VoidCallback onTap;
+
+  const _CommunityChatRow({required this.chat, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+    final unread = chat.unread > 0;
+    final quiet = scheme.onSurface.withValues(alpha: 0.55);
+    final last = chat.lastMessage;
+    final said = last == null
+        ? null
+        : last.poll
+            ? l10n
+                .ui('ui_cchat_poll_preview', r'Poll: $question')
+                .replaceAll(r'$question', last.body)
+            : last.body.trim().isNotEmpty || last.media == null
+                ? last.body
+                : mediaPreview(l10n, [last.media!]);
+    final line = said == null
+        ? l10n.ui('ui_dm_preview_none', 'No messages yet')
+        : last!.mine
+            ? '${l10n.ui('ui_dm_you_prefix', 'You:')} $said'
+            : last.senderName != null
+                ? '${last.senderName}: $said'
+                : said;
+
+    return InkWell(
+      key: ValueKey('inbox-chat-${chat.id}'),
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space16,
+          vertical: SpacingTokens.space12,
+        ),
+        child: Row(
+          children: [
+            CommunityAvatar(
+              avatarUrl: chat.communityAvatarUrl,
+              initial: chat.communityName.isEmpty
+                  ? '#'
+                  : chat.communityName.characters.first.toUpperCase(),
+              size: 48,
+            ),
+            const SizedBox(width: SpacingTokens.space12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      // The name and its muted mark take what the time
+                      // leaves, so the time sits at the edge like a
+                      // conversation's does.
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                chat.name,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: TypographyTokens.fontSize3,
+                                  fontWeight: unread
+                                      ? FontWeight.w700
+                                      : FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            if (chat.muted) ...[
+                              const SizedBox(width: SpacingTokens.space4),
+                              Icon(
+                                Iconsax.volume_slash_copy,
+                                key: ValueKey('inbox-chat-muted-${chat.id}'),
+                                size: 14,
+                                color: quiet,
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: SpacingTokens.space8),
+                      Text(
+                        conversationTime(
+                          l10n,
+                          chat.activeAt,
+                          locale: Localizations.maybeLocaleOf(context)
+                              ?.toLanguageTag(),
+                        ),
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize1,
+                          color: unread && !chat.muted ? scheme.primary : quiet,
+                          fontWeight:
+                              unread ? FontWeight.w700 : FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          '${chat.communityName} · $line',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: TypographyTokens.fontSize2,
+                            height: 1.3,
+                            color: unread
+                                ? scheme.onSurface
+                                : scheme.onSurface.withValues(alpha: 0.6),
+                            fontWeight:
+                                unread ? FontWeight.w600 : FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                      if (unread) ...[
+                        const SizedBox(width: SpacingTokens.space8),
+                        // Muted, the count is there to read, not to call.
+                        Opacity(
+                          opacity: chat.muted ? 0.45 : 1,
+                          child: CountBadge(count: chat.unread),
+                        ),
+                      ],
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

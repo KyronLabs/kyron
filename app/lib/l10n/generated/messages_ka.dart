@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "წერა მხოლოდ მოდერატორებს შეუძლიათ"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "განცხადებებისთვის. თემის ყველა წევრს კვლავ შეუძლია წაკითხვა და რეაგირება."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("ფოტოს ან გამოკითხვის დამატება"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("ფოტოები და ვიდეოები"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("ჩატის დახურვა"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "მასში ვეღარავინ წაიკითხავს ან დაწერს. ამის გაუქმება შეუძლებელია."),
@@ -1040,6 +1044,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "შეტყობინება ჩატში ყველასთვის წაიშლება."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("ჩატის რედაქტირება"),
+      "ui_cchat_edit_message":
+          MessageLookupByLibrary.simpleMessage("რედაქტირება"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("რედაქტირებული"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage(
+          "თქვენ არედაქტირებთ შეტყობინებას"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("ამ ჩატის გახსნა ვერ მოხერხდა."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ჩატები"),
@@ -1053,6 +1062,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "სანამ თემში ხართ, მისი კითხვა კვლავ შეგიძლიათ."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "აქ წერა მხოლოდ მფლობელსა და მოდერატორებს შეუძლიათ."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("დადუმება"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "მისგან შეტყობინებებს არ მიიღებთ და ის არ ჩაითვლება შეტყობინებების რაოდენობაში."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ჩატის სახელი"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("ახალი ჩატი"),
       "ui_cchat_none":
@@ -1062,6 +1074,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "თემის ჩატები არ არის ბოლომდე დაშიფრული. თემის მოდერატორებსა და Kyron-ს შეუძლიათ მათი წაკითხვა."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("ზემოთ მიმაგრება"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("პასუხის დამატება"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("გამოკითხვის დახურვა"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("დახურულია"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "ყველა ხედავს, რამდენმა აირჩია თითოეული პასუხი, მაგრამ არასდროს — ვინ."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("რამდენიმე არჩევანის დაშვება"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("ახალი გამოკითხვა"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("აირჩიეთ ერთი"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("პასუხი \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("გამოკითხვა: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("კითხვა"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "თითოეული პასუხი გამოკითხვაში მხოლოდ ერთხელ შეიძლება იყოს."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("აირჩიეთ ერთი ან მეტი"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("უპასუხა: \$count"),
+      "ui_cchat_search": MessageLookupByLibrary.simpleMessage("ძიება ამ ჩატში"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("ძიება ამ ჩატში"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("ვერაფერი მოიძებნა."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("ამ ჩატს ვეღარ ხედავთ."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("ნელი რეჟიმი"),
@@ -1075,7 +1115,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n წამი"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "როგორც მაყურებელს, შეგიძლიათ წაკითხვა და რეაგირება. დასაწერად შეუერთდით."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "ეს შეტყობინება ზედმეტად ძველია საჩვენებლად."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "თქვენ მიერ არჩეულთაგან ერთ-ერთი გასაგზავნად ზედმეტად დიდია და გამოტოვებულია."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("დადუმების მოხსნა"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("მოხსნა"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("ხმოვანი შეტყობინების ჩაწერა"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("თქვენ"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1124,6 +1172,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("ხალხის დამატება"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("დამატება"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("ჯგუფის სახელის დამატება"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("უარყოფა"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "ამ ჯგუფის შეტყობინებები ბოლომდე დაშიფრულია, როგორც ნებისმიერი სხვა საუბარი."),
@@ -1178,6 +1228,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count წევრი"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("წევრები"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("ჯგუფის სახელი"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("ჯერ ჯგუფს სახელი დაარქვით."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("ჯგუფური ჩატის შექმნა"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1200,6 +1252,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "როგორც მაყურებელს, აქ შეგიძლიათ წაიკითხოთ და გამოეხმაუროთ."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "მაყურებლებს შეუძლიათ წაიკითხონ, გამოეხმაურონ და ხელი ასწიონ წერის სათხოვნელად."),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("შემოთავაზებული"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("პროფილის ნახვა"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("თქვენ"),

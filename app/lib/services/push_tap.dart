@@ -26,6 +26,7 @@ typedef PushDestination = ({String route, Object? arguments});
 /// What the server sends (`api/src/modules/push`):
 ///
 ///   message        conversationId                 -> that conversation
+///   community.chat chatId                         -> that community chat
 ///   notification   postId (like, reply, repost)   -> that post
 ///   notification   actorId (follow)               -> their profile
 ///   notification   anything else                  -> the notifications page
@@ -50,6 +51,10 @@ PushDestination? pushDestination(Map<String, dynamic> data) {
         route: Routes.thread,
         arguments: ThreadArgs(conversationId: conversation),
       );
+    case 'community.chat':
+      final chat = text('chatId');
+      if (chat == null) return null;
+      return (route: Routes.communityChat, arguments: chat);
     case 'notification':
       final post = text('postId');
       if (post != null) return (route: Routes.postDetail, arguments: post);

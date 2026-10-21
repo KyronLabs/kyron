@@ -14,6 +14,7 @@ import '../providers/people_search_provider.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../widgets/people_picking.dart';
 import '../widgets/toast.dart';
 import 'group_people_screen.dart';
 import 'thread_screen.dart' show ThreadArgs;
@@ -33,28 +34,14 @@ class NewMessageScreen extends ConsumerStatefulWidget {
 /// Somebody who can be written to: from a conversation already held, or
 /// from a search.
 class _Person {
-  final String id;
-  final String name;
-  final String? handle;
-  final String? avatarUrl;
+  final MessagePerson person;
 
   /// Set when there is a conversation with them already.
   final String? conversationId;
 
-  const _Person({
-    required this.id,
-    required this.name,
-    this.handle,
-    this.avatarUrl,
-    this.conversationId,
-  });
+  const _Person(this.person, {this.conversationId});
 
-  MessagePerson get asPerson => MessagePerson(
-        id: id,
-        name: name,
-        username: handle,
-        avatarUrl: avatarUrl,
-      );
+  String get id => person.id;
 }
 
 class _NewMessageScreenState extends ConsumerState<NewMessageScreen> {
@@ -87,7 +74,7 @@ class _NewMessageScreenState extends ConsumerState<NewMessageScreen> {
       await Navigator.pushReplacementNamed(
         context,
         Routes.thread,
-        arguments: ThreadArgs(conversationId: id, people: [person.asPerson]),
+        arguments: ThreadArgs(conversationId: id, people: [person.person]),
       );
     } catch (error) {
       if (!mounted) return;
@@ -96,25 +83,15 @@ class _NewMessageScreenState extends ConsumerState<NewMessageScreen> {
     }
   }
 
-  /// Chooses people, then a name, and opens the new group in place of this
-  /// screen.
+  /// Starts a group, and opens it in place of this screen.
   Future<void> _newGroup() async {
-    final l10n = AppLocalizations.of(context);
-    final people = await pickPeople(
-      context,
-      title: l10n.ui('ui_group_new', 'Create group chat'),
-      action: l10n.continueAction,
-    );
-    if (people == null || people.isEmpty || !mounted) return;
-    final id = await Navigator.of(context).push<String>(
-      MaterialPageRoute(builder: (_) => NewGroupScreen(people: people)),
-    );
-    if (id == null || id.isEmpty || !mounted) return;
+    final made = await startGroup(context);
+    if (made == null || made.id.isEmpty || !mounted) return;
     unawaited(refreshConversations(ref));
     await Navigator.pushReplacementNamed(
       context,
       Routes.thread,
-      arguments: ThreadArgs(conversationId: id, people: people),
+      arguments: ThreadArgs(conversationId: made.id, people: made.people),
     );
   }
 
@@ -128,13 +105,7 @@ class _NewMessageScreenState extends ConsumerState<NewMessageScreen> {
       for (final c
           in ref.watch(conversationListProvider(ConversationFilter.all)).items)
         if (c.other != null)
-          c.other!.id: _Person(
-            id: c.other!.id,
-            name: c.other!.displayName,
-            handle: c.other!.username,
-            avatarUrl: c.other!.avatarUrl,
-            conversationId: c.id,
-          ),
+          c.other!.id: _Person(c.other!, conversationId: c.id),
     };
 
     final List<_Person> people;
@@ -149,12 +120,12 @@ class _NewMessageScreenState extends ConsumerState<NewMessageScreen> {
             const <ProfileSummary>[])
           talkedTo[p.id] ??
               _Person(
-                id: p.id,
-                name: p.name?.trim().isNotEmpty == true
-                    ? p.name!.trim()
-                    : '@${p.username ?? ''}',
-                handle: p.username,
-                avatarUrl: p.avatarUrl,
+                MessagePerson(
+                  id: p.id,
+                  name: p.name,
+                  username: p.username,
+                  avatarUrl: p.avatarUrl,
+                ),
               ),
       ];
     }
@@ -172,55 +143,51 @@ class _NewMessageScreenState extends ConsumerState<NewMessageScreen> {
               SpacingTokens.space16,
               SpacingTokens.space8,
               SpacingTokens.space16,
-              SpacingTokens.space8,
+              SpacingTokens.space4,
             ),
-            child: Container(
-              height: 40,
-              padding: const EdgeInsets.symmetric(
-                horizontal: SpacingTokens.space12,
-              ),
-              decoration: BoxDecoration(
-                color: scheme.surfaceContainer,
-                borderRadius: BorderRadius.circular(RadiusTokens.radius20),
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    l10n.ui('ui_dm_new_to', 'To:'),
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: scheme.onSurface.withValues(alpha: 0.7),
+            child: Row(
+              children: [
+                Text(
+                  l10n.ui('ui_dm_new_to', 'To:'),
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize3,
+                    color: scheme.onSurface.withValues(alpha: 0.45),
+                  ),
+                ),
+                const SizedBox(width: SpacingTokens.space8),
+                Expanded(
+                  child: TextField(
+                    key: const ValueKey('new-message-search'),
+                    controller: _query,
+                    textAlignVertical: TextAlignVertical.center,
+                    autofocus: true,
+                    textInputAction: TextInputAction.search,
+                    style: const TextStyle(
+                      fontSize: TypographyTokens.fontSize3,
+                    ),
+                    decoration: InputDecoration(
+                      hintText: l10n.ui('ui_share_search', 'Search'),
+                      hintStyle: TextStyle(
+                        color: scheme.onSurface.withValues(alpha: 0.35),
+                      ),
+                      isDense: true,
+                      filled: false,
+                      border: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.zero,
+                      // Not the theme's 44-point floor: this field sits in a
+                      // line of its own height, and centred its text in 44.
+                      constraints: const BoxConstraints(),
                     ),
                   ),
-                  const SizedBox(width: SpacingTokens.space8),
-                  Expanded(
-                    child: TextField(
-                      key: const ValueKey('new-message-search'),
-                      controller: _query,
-                      autofocus: true,
-                      textInputAction: TextInputAction.search,
-                      style: const TextStyle(
-                        fontSize: TypographyTokens.fontSize3,
-                      ),
-                      decoration: InputDecoration(
-                        hintText: l10n.ui('ui_share_search', 'Search'),
-                        isDense: true,
-                        filled: false,
-                        border: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(),
-                      ),
-                    ),
+                ),
+                if (searching)
+                  const SizedBox.square(
+                    dimension: 14,
+                    child: CircularProgressIndicator(strokeWidth: 1.5),
                   ),
-                  if (searching)
-                    const SizedBox.square(
-                      dimension: 14,
-                      child: CircularProgressIndicator(strokeWidth: 1.5),
-                    ),
-                ],
-              ),
+              ],
             ),
           ),
           Expanded(
@@ -228,71 +195,31 @@ class _NewMessageScreenState extends ConsumerState<NewMessageScreen> {
               padding: const EdgeInsets.only(bottom: SpacingTokens.space24),
               children: [
                 if (query.isEmpty)
-                  ListTile(
+                  PickRow(
                     key: const ValueKey('new-group'),
                     onTap: _newGroup,
                     leading: CircleAvatar(
                       radius: 22,
-                      backgroundColor: scheme.primary.withValues(alpha: .15),
+                      backgroundColor: scheme.onSurface.withValues(alpha: .06),
                       child: Icon(
                         Iconsax.profile_2user_copy,
                         size: 20,
-                        color: scheme.primary,
+                        color: scheme.onSurface,
                       ),
                     ),
-                    title: Text(
-                      l10n.ui('ui_group_new', 'Create group chat'),
-                      style: const TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
-                  ),
-                if (people.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      SpacingTokens.space16,
-                      SpacingTokens.space8,
-                      SpacingTokens.space16,
-                      SpacingTokens.space4,
-                    ),
-                    child: Text(
-                      heading,
-                      style: TextStyle(
-                        fontSize: TypographyTokens.fontSize1,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.3,
-                        color: scheme.onSurface.withValues(alpha: 0.55),
-                      ),
+                    title: l10n.ui('ui_group_new', 'Create group chat'),
+                    trailing: Icon(
+                      Iconsax.arrow_right_3_copy,
+                      size: 18,
+                      color: scheme.onSurface.withValues(alpha: 0.4),
                     ),
                   ),
+                if (people.isNotEmpty) PeopleHeading(heading),
                 for (final person in people)
-                  ListTile(
+                  PersonPickRow(
                     key: ValueKey('new-message-${person.id}'),
+                    person: person.person,
                     onTap: () => _open(person),
-                    leading: CircleAvatar(
-                      radius: 22,
-                      backgroundColor: scheme.primary.withValues(alpha: .15),
-                      foregroundImage: person.avatarUrl == null
-                          ? null
-                          : NetworkImage(person.avatarUrl!),
-                      child: Icon(
-                        Iconsax.user_copy,
-                        size: 20,
-                        color: scheme.primary,
-                      ),
-                    ),
-                    title: Text(
-                      person.name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    subtitle: person.handle == null
-                        ? null
-                        : Text(
-                            '@${person.handle}',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
                     trailing: _opening == person.id
                         ? const SizedBox.square(
                             dimension: 18,

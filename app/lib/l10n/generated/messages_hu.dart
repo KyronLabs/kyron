@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Csak moderátorok írhatnak"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Közleményekhez. A közösségben mindenki továbbra is olvashat és reagálhat."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Fotó vagy szavazás hozzáadása"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Fotók és videók"),
       "ui_cchat_close":
           MessageLookupByLibrary.simpleMessage("Csevegés lezárása"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
@@ -1041,6 +1045,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Az üzenet a csevegésben mindenki számára eltűnik."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("Csevegés szerkesztése"),
+      "ui_cchat_edit_message":
+          MessageLookupByLibrary.simpleMessage("Szerkesztés"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("szerkesztve"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Szerkeszted az üzenetedet"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Nem sikerült megnyitni ezt a csevegést."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Csevegések"),
@@ -1056,6 +1065,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Amíg a közösség tagja vagy, továbbra is olvashatod."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Itt csak a tulajdonos és a moderátorok írhatnak."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Némítás"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Nem kapsz róla értesítést, és nem számít bele az Üzenetek számába."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Csevegés neve"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Új csevegés"),
       "ui_cchat_none":
@@ -1065,6 +1077,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "A közösségi csevegések nem végpontok közötti titkosításúak. A közösség moderátorai és a Kyron olvashatják őket."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Kitűzés felülre"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Válasz hozzáadása"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Szavazás lezárása"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Lezárva"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Mindenki látja, hányan választották az egyes válaszokat, de azt soha, hogy kik."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Több választás engedélyezése"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Új szavazás"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("Válassz egyet"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("\$n. válasz"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Szavazás: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Kérdés"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Minden válasz csak egyszer szerepelhet egy szavazásban."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Válassz egyet vagy többet"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count válaszolt"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Keresés ebben a csevegésben"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Keresés ebben a csevegésben"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Nincs találat."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Ezt a csevegést már nem láthatod."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Lassú mód"),
@@ -1079,8 +1120,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n másodperc"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Nézőként olvashatsz és reagálhatsz. Csatlakozz, hogy írhass."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Ez az üzenet túl régi ahhoz, hogy megjelenítsük."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Valami, amit kiválasztottál, túl nagy a küldéshez, ezért kimaradt."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Némítás feloldása"),
       "ui_cchat_unpin":
           MessageLookupByLibrary.simpleMessage("Kitűzés megszüntetése"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Hangüzenet felvétele"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Te"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1130,6 +1179,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("Személyek hozzáadása"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Hozzáadás"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Csoportnév hozzáadása"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Elutasítás"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "A csoport üzenetei végpontok között titkosítottak, mint bármely más beszélgetés."),
@@ -1184,6 +1235,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count tag"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Tagok"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Csoport neve"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Előbb nevezd el a csoportot."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage(
           "Csoportos csevegés létrehozása"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1206,6 +1259,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Nézőként itt olvashatsz és reagálhatsz."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "A nézők olvashatnak, reagálhatnak, és feltehetik a kezüket, hogy írási jogot kérjenek."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Javasoltak"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Profil megtekintése"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("te"),

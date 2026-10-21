@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Писать могут только модераторы"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Для объявлений. Все в сообществе по-прежнему могут читать и реагировать."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Добавить фото или опрос"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Фото и видео"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Закрыть чат"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Никто больше не сможет читать или писать в нём. Это нельзя отменить."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Сообщение удаляется для всех в чате."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Изменить чат"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Изменить"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("изменено"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Вы редактируете сообщение"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Не удалось открыть этот чат."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Чаты"),
@@ -1052,6 +1060,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Вы сможете читать его, пока состоите в сообществе."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Писать здесь могут только владелец и модераторы."),
+      "ui_cchat_mute":
+          MessageLookupByLibrary.simpleMessage("Отключить уведомления"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Уведомлений из этого чата не будет, и он не учитывается в счётчике сообщений."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Название чата"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Новый чат"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("Чатов пока нет."),
@@ -1060,6 +1072,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Чаты сообществ не защищены сквозным шифрованием. Модераторы сообщества и Kyron могут их читать."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Закрепить наверху"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Добавить ответ"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Закрыть опрос"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Закрыт"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Все видят, сколько человек выбрали каждый ответ, но не кто именно."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Разрешить несколько ответов"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Новый опрос"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("Выберите один"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("Ответ \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Опрос: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Вопрос"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Каждый ответ может быть в опросе только один раз."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Выберите один или несколько"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Ответили: \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Поиск в этом чате"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Поиск в этом чате"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Ничего не найдено."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Вы больше не можете видеть этот чат."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Медленный режим"),
@@ -1075,7 +1115,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Секунд: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Вы можете читать и реагировать как зритель. Вступите, чтобы писать."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Это сообщение слишком далеко в истории, чтобы его показать."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Что-то из выбранного слишком велико для отправки и не было добавлено."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Включить уведомления"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Открепить"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Записать голосовое сообщение"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Вы"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1124,6 +1172,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Добавить людей"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Добавить"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Добавить название группы"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Отклонить"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Сообщения в этой группе защищены сквозным шифрованием, как и в любом другом чате."),
@@ -1178,6 +1228,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Участников: \$count"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Участники"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Название группы"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Сначала назовите группу."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Создать групповой чат"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1202,6 +1254,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Как зритель вы можете читать и реагировать."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Зрители могут читать, реагировать и поднять руку, чтобы попросить разрешения писать."),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("Рекомендуемые"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Открыть профиль"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("вы"),

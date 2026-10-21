@@ -1,5 +1,6 @@
 // lib/models/community_chat.dart
 import 'community.dart' show CommunityRole;
+import 'post_media.dart';
 
 /// Who may write in a community chat. Every member of the community may read
 /// it either way.
@@ -47,14 +48,26 @@ class CommunityChat {
   final CommunityRole myRole;
 
   final int unread;
+
+  /// The reader muted it: nothing is pushed from it, and it is not counted
+  /// in the Messages badge.
+  final bool muted;
+
   final DateTime? lastMessageAt;
 
   /// The one message held at the top, when there is one. Only on a chat read
   /// by itself, not in a list.
   final CommunityChatMessage? pinned;
 
-  /// The newest message, for a row in a list of joined chats.
-  final ({String? senderName, String body, bool mine})? lastMessage;
+  /// The newest message, for a row in a list of joined chats: its words, or
+  /// what it carried when it had none.
+  final ({
+    String? senderName,
+    String body,
+    bool mine,
+    MediaKind? media,
+    bool poll,
+  })? lastMessage;
 
   const CommunityChat({
     required this.id,
@@ -72,12 +85,40 @@ class CommunityChat {
     this.canModerate = false,
     this.myRole = CommunityRole.member,
     this.unread = 0,
+    this.muted = false,
     this.lastMessageAt,
     this.pinned,
     this.lastMessage,
   });
 
   bool get announcements => writers == ChatWriters.moderators;
+
+  /// When something was last said in it, or when it opened: where it goes in
+  /// a list ordered by what is newest.
+  DateTime get activeAt =>
+      lastMessageAt ?? DateTime.fromMillisecondsSinceEpoch(0);
+
+  CommunityChat copyWith({bool? muted, int? unread}) => CommunityChat(
+        id: id,
+        communityId: communityId,
+        communitySlug: communitySlug,
+        communityName: communityName,
+        communityAvatarUrl: communityAvatarUrl,
+        name: name,
+        description: description,
+        writers: writers,
+        slowModeSeconds: slowModeSeconds,
+        joinedCount: joinedCount,
+        joined: joined,
+        canWrite: canWrite,
+        canModerate: canModerate,
+        myRole: myRole,
+        unread: unread ?? this.unread,
+        muted: muted ?? this.muted,
+        lastMessageAt: lastMessageAt,
+        pinned: pinned,
+        lastMessage: lastMessage,
+      );
 
   factory CommunityChat.fromJson(Map<String, dynamic> json) {
     final community = json['community'] is Map<String, dynamic>
@@ -101,6 +142,7 @@ class CommunityChat {
       canModerate: json['canModerate'] == true,
       myRole: _role(json['role']) ?? CommunityRole.member,
       unread: (json['unread'] as num?)?.toInt() ?? 0,
+      muted: json['muted'] == true,
       lastMessageAt:
           DateTime.tryParse(json['lastMessageAt'] as String? ?? '')?.toLocal(),
       pinned: pinned is Map<String, dynamic>
@@ -111,6 +153,10 @@ class CommunityChat {
               senderName: last['senderName'] as String?,
               body: last['body'] as String? ?? '',
               mine: last['mine'] == true,
+              media: last['media'] == null
+                  ? null
+                  : PostMedia.kindFromWire(last['media']),
+              poll: last['poll'] == true,
             )
           : null,
     );
@@ -181,6 +227,101 @@ class ChatReply {
   }
 }
 
+/// One answer a poll offers, and how many chose it.
+class ChatPollOption {
+  final String id;
+  final String text;
+  final int votes;
+
+  const ChatPollOption({required this.id, required this.text, this.votes = 0});
+}
+
+/// A poll asked in a chat. What was asked is the message's body. Counts,
+/// never names: who chose what is not sent to anybody.
+class ChatPoll {
+  final String id;
+  final bool multiple;
+  final bool closed;
+  final List<ChatPollOption> options;
+
+  /// How many people have answered, whatever they chose.
+  final int voters;
+
+  /// What the reader chose.
+  final List<String> mine;
+
+  const ChatPoll({
+    required this.id,
+    required this.options,
+    this.multiple = false,
+    this.closed = false,
+    this.voters = 0,
+    this.mine = const [],
+  });
+
+  bool get answered => mine.isNotEmpty;
+
+  /// Answers given, across every option: more than [voters] when people may
+  /// choose several.
+  int get votes => options.fold(0, (sum, o) => sum + o.votes);
+
+  static ChatPoll? fromJson(Object? json) {
+    if (json is! Map<String, dynamic>) return null;
+    return ChatPoll(
+      id: json['id'] as String? ?? '',
+      multiple: json['multiple'] == true,
+      closed: json['closed'] == true,
+      voters: (json['voters'] as num?)?.toInt() ?? 0,
+      mine: [
+        for (final id in (json['mine'] as List<dynamic>? ?? const []))
+          if (id is String) id,
+      ],
+      options: [
+        for (final o in (json['options'] as List<dynamic>? ?? const [])
+            .whereType<Map<String, dynamic>>())
+          ChatPollOption(
+            id: o['id'] as String? ?? '',
+            text: o['text'] as String? ?? '',
+            votes: (o['votes'] as num?)?.toInt() ?? 0,
+          ),
+      ],
+    );
+  }
+
+  /// The reader's answer is now [chosen] -- none to take it back -- with the
+  /// counts moved to match, so the bars move before the server answers.
+  ChatPoll answering(List<String> chosen) {
+    final before = mine.toSet();
+    final after = chosen.toSet();
+    return ChatPoll(
+      id: id,
+      multiple: multiple,
+      closed: closed,
+      voters: voters - (before.isEmpty ? 0 : 1) + (after.isEmpty ? 0 : 1),
+      mine: chosen,
+      options: [
+        for (final o in options)
+          ChatPollOption(
+            id: o.id,
+            text: o.text,
+            votes: o.votes -
+                (before.contains(o.id) ? 1 : 0) +
+                (after.contains(o.id) ? 1 : 0),
+          ),
+      ],
+    );
+  }
+
+  ChatPoll closing() => ChatPoll(
+        id: id,
+        multiple: multiple,
+        closed: true,
+        voters: voters,
+        mine: mine,
+        options: options,
+      );
+}
+
 /// One message in a community chat.
 class CommunityChatMessage {
   final String id;
@@ -197,6 +338,23 @@ class CommunityChatMessage {
 
   final DateTime createdAt;
 
+  /// When its author last changed its words; null if never.
+  final DateTime? editedAt;
+
+  /// Until when the reader may still change it: theirs, and not a poll.
+  /// Null for anything they may not.
+  final DateTime? editableUntil;
+
+  /// Photos, clips or a voice note, with links that last an hour.
+  final List<PostMedia> media;
+
+  /// What it asks, when it is a poll; the question is [body].
+  final ChatPoll? poll;
+
+  /// What is on its way, from the phone, while it uploads: shown in place of
+  /// [media] until the server's copy comes back.
+  final List<PendingMedia> pendingMedia;
+
   /// On its way to the server, or refused by it.
   final bool sending;
   final bool failed;
@@ -209,9 +367,26 @@ class CommunityChatMessage {
     this.replyTo,
     this.reactions = const [],
     this.mine,
+    this.editedAt,
+    this.editableUntil,
+    this.media = const [],
+    this.poll,
+    this.pendingMedia = const [],
     this.sending = false,
     this.failed = false,
   });
+
+  bool get edited => editedAt != null;
+
+  /// Whether the reader may change its words at [now].
+  bool editableAt(DateTime now) {
+    final until = editableUntil;
+    return until != null &&
+        now.isBefore(until) &&
+        poll == null &&
+        !sending &&
+        !failed;
+  }
 
   factory CommunityChatMessage.fromJson(Map<String, dynamic> json) =>
       CommunityChatMessage(
@@ -233,6 +408,12 @@ class CommunityChatMessage {
               ),
         ],
         mine: json['mine'] as String?,
+        editedAt:
+            DateTime.tryParse(json['editedAt'] as String? ?? '')?.toLocal(),
+        editableUntil: DateTime.tryParse(json['editableUntil'] as String? ?? '')
+            ?.toLocal(),
+        media: PostMedia.listFrom(json['media']),
+        poll: ChatPoll.fromJson(json['poll']),
         createdAt:
             DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
                 DateTime.now(),
@@ -255,28 +436,34 @@ class CommunityChatMessage {
     final next = [
       for (final e in counts.entries) (emoji: e.key, count: e.value),
     ]..sort((a, b) => b.count.compareTo(a.count));
-    return CommunityChatMessage(
-      id: id,
-      body: body,
-      sender: sender,
-      createdAt: createdAt,
-      replyTo: replyTo,
-      reactions: next,
-      mine: emoji,
-      sending: sending,
-      failed: failed,
-    );
+    return copyWith(reactions: next, mine: emoji, clearMine: emoji == null);
   }
 
-  CommunityChatMessage copyWith({bool? sending, bool? failed}) =>
+  /// Everything carried over but what is named: one place that lists every
+  /// field, so a new one cannot be dropped by a copy that forgot it.
+  CommunityChatMessage copyWith({
+    String? body,
+    List<({String emoji, int count})>? reactions,
+    String? mine,
+    bool clearMine = false,
+    DateTime? editedAt,
+    ChatPoll? poll,
+    bool? sending,
+    bool? failed,
+  }) =>
       CommunityChatMessage(
         id: id,
-        body: body,
+        body: body ?? this.body,
         sender: sender,
         createdAt: createdAt,
         replyTo: replyTo,
-        reactions: reactions,
-        mine: mine,
+        reactions: reactions ?? this.reactions,
+        mine: clearMine ? null : (mine ?? this.mine),
+        editedAt: editedAt ?? this.editedAt,
+        editableUntil: editableUntil,
+        media: media,
+        poll: poll ?? this.poll,
+        pendingMedia: pendingMedia,
         sending: sending ?? this.sending,
         failed: failed ?? this.failed,
       );

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/models/community_chat.dart';
+import 'package:kyron_app/providers/community_chats_provider.dart';
 import 'package:kyron_app/widgets/toast.dart';
 import 'package:kyron_app/widgets/action_button.dart';
 import 'package:kyron_app/l10n/app_localizations.dart';
@@ -81,6 +83,9 @@ class _Repo extends MessagesRepository {
   final List<bool> receiptChanges = [];
   bool failReceipts = false;
 
+  /// Set to say there is more to read past the first page.
+  String? more;
+
   @override
   Future<ConversationPage> conversations({
     String? cursor,
@@ -88,7 +93,10 @@ class _Repo extends MessagesRepository {
     ConversationFilter filter = ConversationFilter.all,
   }) async {
     asked.add(filter);
-    return ConversationPage(items: byFilter[filter] ?? const []);
+    return ConversationPage(
+      items: cursor == null ? byFilter[filter] ?? const [] : const [],
+      nextCursor: cursor == null ? more : null,
+    );
   }
 
   @override
@@ -156,17 +164,21 @@ Future<_Repo> _pump(
   Map<ConversationFilter, List<Conversation>> lists = const {},
   List<ProfileSummary> found = const [],
   List<RouteSettings>? routes,
+  List<CommunityChat> chats = const [],
+  String? more,
 }) async {
   tester.view.physicalSize = const Size(1170, 2532);
   tester.view.devicePixelRatio = 3;
   addTearDown(tester.view.reset);
-  final repo = _Repo({...lists});
+  final repo = _Repo({...lists})..more = more;
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
         currentUserProvider.overrideWith((ref) => _Me(ref)),
         messagesRepositoryProvider.overrideWithValue(repo),
         peopleSearchProvider.overrideWith((ref, q) async => found),
+        // The reader's community chats, which the list mixes in.
+        joinedChatsProvider.overrideWith((ref) async => chats),
       ],
       child: MaterialApp(
         theme: KyronTheme.lightTheme,
@@ -539,6 +551,134 @@ void main() {
       final prefs = await SharedPreferences.getInstance();
       expect(prefs.getBool('pref_dm_typing'), isFalse);
       expect(prefs.getBool('pref_dm_link_previews'), isFalse);
+    });
+  });
+
+  group('the reader’s community chats, in the list', () {
+    CommunityChat chat(
+      String id,
+      String name,
+      DateTime at, {
+      int unread = 0,
+      bool muted = false,
+    }) =>
+        CommunityChat(
+          id: id,
+          communityId: 'c1',
+          communitySlug: 'birders',
+          communityName: 'Birders',
+          name: name,
+          joined: true,
+          unread: unread,
+          muted: muted,
+          lastMessageAt: at,
+          lastMessage: (
+            senderName: 'Ada',
+            body: 'Kingfisher!',
+            mine: false,
+            media: null,
+            poll: false,
+          ),
+        );
+    final conversations = {
+      ConversationFilter.all: [
+        _conversation('a', 'Newest', last: _msg(at: DateTime(2026, 10, 12))),
+        _conversation('b', 'Oldest', last: _msg(at: DateTime(2026, 10, 1))),
+      ],
+    };
+
+    testWidgets('sit among conversations by when each was last spoken in', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        _messages(),
+        lists: conversations,
+        chats: [chat('k1', 'General', DateTime(2026, 10, 5))],
+      );
+      double y(String text) => tester.getTopLeft(find.text(text)).dy;
+      expect(y('Newest'), lessThan(y('General')));
+      expect(y('General'), lessThan(y('Oldest')));
+      expect(find.text('Birders · Ada: Kingfisher!'), findsOneWidget);
+    });
+
+    testWidgets('wait until the conversations loaded reach back to them', (
+      tester,
+    ) async {
+      // Older than the oldest conversation on the page, with a page still to
+      // come: shown now, it would sit above conversations that belong first.
+      await _pump(
+        tester,
+        _messages(),
+        lists: conversations,
+        more: 'next',
+        chats: [
+          chat('k1', 'General', DateTime(2026, 10, 5)),
+          chat('k2', 'Archive talk', DateTime(2026, 9, 1)),
+        ],
+      );
+      expect(find.text('General'), findsOneWidget);
+      expect(find.text('Archive talk'), findsNothing);
+    });
+
+    testWidgets('say when they are muted, and how many are new', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        _messages(),
+        lists: conversations,
+        chats: [
+          chat('k1', 'General', DateTime(2026, 10, 5), unread: 3, muted: true),
+        ],
+      );
+      expect(
+        find.byKey(const ValueKey('inbox-chat-muted-k1')),
+        findsOneWidget,
+      );
+      expect(find.text('3'), findsOneWidget);
+    });
+
+    testWidgets('keep their time at the edge, in line with a conversation’s', (
+      tester,
+    ) async {
+      // A Flexible name and a Spacer split the free width between them, and
+      // the time sat halfway along the row.
+      await _pump(
+        tester,
+        _messages(),
+        lists: conversations,
+        chats: [
+          chat('k1', 'General', DateTime(2026, 10, 5), unread: 3, muted: true),
+        ],
+      );
+      final chatTime = tester.getTopRight(
+        find.descendant(
+          of: find.byKey(const ValueKey('inbox-chat-k1')),
+          matching: find.text(conversationTime(_l10n, DateTime(2026, 10, 5))),
+        ),
+      );
+      final conversationTimeAt =
+          tester.getTopRight(find.byKey(const ValueKey('when-a')));
+      expect(chatTime.dx, moreOrLessEquals(conversationTimeAt.dx));
+    });
+
+    testWidgets('are found by the search box, by chat or community', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        _messages(),
+        lists: conversations,
+        chats: [chat('k1', 'General', DateTime(2026, 10, 5))],
+      );
+      await tester.enterText(
+        find.byKey(const ValueKey('messages-search')),
+        'bird',
+      );
+      await tester.pump();
+      expect(find.text('General'), findsOneWidget);
+      expect(find.text('Newest'), findsNothing);
     });
   });
 }

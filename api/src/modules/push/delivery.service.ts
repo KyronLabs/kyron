@@ -45,6 +45,13 @@ export class DeliveryService {
     for (const userId of new Set(userIds)) this.pushLater(userId, push);
   }
 
+  /** A push alone, for something the socket has already been told about:
+   * a community chat raises its event for everybody in it, and pushes only
+   * to some. */
+  pushMany(userIds: readonly string[], push: PushMessage): void {
+    for (const userId of new Set(userIds)) this.pushLater(userId, push);
+  }
+
   /**
    * Sends without making the caller wait.
    *

@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("เฉพาะผู้ดูแลที่เขียนได้"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "สำหรับประกาศ ทุกคนในชุมชนยังอ่านและแสดงความรู้สึกได้"),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("เพิ่มรูปภาพหรือโพล"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("รูปภาพและวิดีโอ"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("ปิดแชท"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "จะไม่มีใครอ่านหรือเขียนในแชทนี้ได้อีก การดำเนินการนี้ย้อนกลับไม่ได้"),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "ข้อความจะถูกนำออกสำหรับทุกคนในแชท"),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("แก้ไขแชท"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("แก้ไข"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("แก้ไขแล้ว"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("กำลังแก้ไขข้อความของคุณ"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("เปิดแชทนี้ไม่ได้"),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("แชท"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "คุณยังอ่านได้ตราบใดที่ยังอยู่ในชุมชน"),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "เฉพาะเจ้าของและผู้ดูแลที่เขียนที่นี่ได้"),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("ปิดเสียง"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "จะไม่มีการแจ้งเตือนจากแชทนี้ และจะไม่นับรวมในจำนวนข้อความ"),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ชื่อแชท"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("แชทใหม่"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("ยังไม่มีแชท"),
@@ -1060,6 +1071,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "แชทของชุมชนไม่ได้เข้ารหัสตั้งแต่ต้นทางถึงปลายทาง ผู้ดูแลชุมชนและ Kyron อ่านได้"),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("ปักหมุดไว้ด้านบน"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("เพิ่มคำตอบ"),
+      "ui_cchat_poll_close": MessageLookupByLibrary.simpleMessage("ปิดโพล"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("ปิดแล้ว"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "ทุกคนเห็นว่ามีกี่คนเลือกแต่ละคำตอบ แต่ไม่เห็นว่าใครเลือก"),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("ให้เลือกได้หลายคำตอบ"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("โพลใหม่"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("เลือกหนึ่งคำตอบ"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("คำตอบที่ \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("โพล: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("คำถาม"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "แต่ละคำตอบใส่ในโพลได้เพียงครั้งเดียว"),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("เลือกหนึ่งคำตอบขึ้นไป"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("ตอบแล้ว \$count คน"),
+      "ui_cchat_search": MessageLookupByLibrary.simpleMessage("ค้นหาในแชทนี้"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("ค้นหาในแชทนี้"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("ไม่พบสิ่งใด"),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "คุณไม่สามารถดูแชทนี้ได้อีกแล้ว"),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("โหมดช้า"),
@@ -1074,7 +1111,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n วินาที"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "คุณอ่านและแสดงความรู้สึกได้ในฐานะผู้ชม เข้าร่วมเพื่อเขียน"),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "ข้อความนั้นเก่าเกินกว่าจะแสดงได้"),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "มีบางอย่างที่คุณเลือกมีขนาดใหญ่เกินกว่าจะส่งได้ จึงถูกตัดออก"),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("เปิดเสียง"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("เลิกปักหมุด"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("บันทึกข้อความเสียง"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("คุณ"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1123,6 +1167,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("เพิ่มคน"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("เพิ่ม"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("เพิ่มชื่อกลุ่ม"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("ปฏิเสธ"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "ข้อความในกลุ่มนี้เข้ารหัสตั้งแต่ต้นทางถึงปลายทาง เหมือนการสนทนาอื่นๆ"),
@@ -1174,6 +1220,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("สมาชิก \$count คน"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("สมาชิก"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("ชื่อกลุ่ม"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("ตั้งชื่อกลุ่มก่อน"),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("สร้างแชทกลุ่ม"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "เจ้าของมีได้คนเดียว คุณจะยังเป็นผู้ดูแล"),
@@ -1193,6 +1241,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ในฐานะผู้ชม คุณอ่านและแสดงความรู้สึกได้ที่นี่"),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "ผู้ชมอ่าน แสดงความรู้สึก และยกมือเพื่อขอเขียนได้"),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("แนะนำ"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("ดูโปรไฟล์"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("คุณ"),

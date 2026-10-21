@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Bara moderatorer kan skriva"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "För tillkännagivanden. Alla i communityn kan fortfarande läsa och reagera."),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "Lägg till ett foto eller en omröstning"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Foton och videor"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Stäng chatten"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Ingen kommer att kunna läsa eller skriva i den. Det går inte att ångra."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Meddelandet tas bort för alla i chatten."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Redigera chatt"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Redigera"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("redigerat"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Du redigerar ditt meddelande"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Det gick inte att öppna chatten."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chattar"),
@@ -1052,6 +1060,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Du kan fortfarande läsa den så länge du är med i communityn."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Bara ägaren och moderatorerna kan skriva här."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Stäng av ljud"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Inga aviseringar från den, och den räknas inte i Meddelanden."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Chattens namn"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Ny chatt"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("Inga chattar än."),
@@ -1060,6 +1071,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Communitychattar är inte end-to-end-krypterade. Communityns moderatorer och Kyron kan läsa dem."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Fäst högst upp"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Lägg till ett svar"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Stäng omröstningen"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Stängd"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Alla ser hur många som valde varje svar, aldrig vilka."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Låt folk välja flera"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Ny omröstning"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Välj ett"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("Svar \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Omröstning: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Fråga"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Varje svar kan bara finnas en gång i en omröstning."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Välj ett eller flera"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count har svarat"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Sök i den här chatten"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Sök i den här chatten"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Inget hittades."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Du kan inte längre se den här chatten."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Långsamt läge"),
@@ -1075,7 +1114,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n sekunder"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Du kan läsa och reagera som åskådare. Gå med för att skriva."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Det meddelandet ligger för långt bak för att visas."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Något du valde är för stort för att skickas och togs bort."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Slå på ljud"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Lossa"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Spela in ett röstmeddelande"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Du"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1125,6 +1171,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("Lägg till personer"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Lägg till"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Lägg till gruppnamn"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Avvisa"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Meddelanden i den här gruppen är end-to-end-krypterade, precis som andra konversationer."),
@@ -1179,6 +1227,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count medlemmar"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Medlemmar"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Gruppnamn"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Ge gruppen ett namn först."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("Skapa gruppchatt"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "Det finns en ägare. Du blir kvar som admin."),
@@ -1201,6 +1251,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Som åskådare kan du läsa och reagera här."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Åskådare kan läsa, reagera och räcka upp handen för att be om att få skriva."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Förslag"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Visa profil"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("du"),

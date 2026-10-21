@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Chỉ người kiểm duyệt mới có thể viết"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Dành cho thông báo. Mọi người trong cộng đồng vẫn có thể đọc và bày tỏ cảm xúc."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Thêm ảnh hoặc bình chọn"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Ảnh và video"),
       "ui_cchat_close":
           MessageLookupByLibrary.simpleMessage("Đóng cuộc trò chuyện"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
@@ -1041,6 +1045,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tin nhắn bị gỡ đối với mọi người trong cuộc trò chuyện."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("Sửa cuộc trò chuyện"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Sửa"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("đã sửa"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Bạn đang sửa tin nhắn"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Không thể mở cuộc trò chuyện này."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Trò chuyện"),
@@ -1056,6 +1064,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Bạn vẫn có thể đọc khi còn ở trong cộng đồng."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Chỉ chủ sở hữu và người kiểm duyệt mới có thể viết ở đây."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Tắt thông báo"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Không có thông báo từ cuộc trò chuyện này, và nó không được tính trong Tin nhắn."),
       "ui_cchat_name":
           MessageLookupByLibrary.simpleMessage("Tên cuộc trò chuyện"),
       "ui_cchat_new":
@@ -1067,6 +1078,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Trò chuyện cộng đồng không được mã hóa đầu cuối. Người kiểm duyệt của cộng đồng và Kyron có thể đọc."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Ghim lên đầu"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Thêm câu trả lời"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Đóng bình chọn"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Đã đóng"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Mọi người thấy có bao nhiêu người chọn mỗi câu trả lời, nhưng không bao giờ thấy ai chọn."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Cho phép chọn nhiều"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Bình chọn mới"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Chọn một"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Câu trả lời \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Bình chọn: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Câu hỏi"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Mỗi câu trả lời chỉ được có một lần trong bình chọn."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Chọn một hoặc nhiều"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count người đã trả lời"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Tìm trong cuộc trò chuyện này"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Tìm trong cuộc trò chuyện này"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Không tìm thấy gì."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Bạn không thể xem cuộc trò chuyện này nữa."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Chế độ chậm"),
@@ -1080,7 +1120,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n giây"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Bạn có thể đọc và bày tỏ cảm xúc với tư cách người xem. Tham gia để viết."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Tin nhắn đó quá cũ để hiển thị."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Có thứ bạn chọn quá lớn để gửi nên đã bị bỏ ra."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Bật thông báo"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Bỏ ghim"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Ghi âm tin nhắn thoại"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Bạn"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1129,6 +1176,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Thêm người"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Thêm"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Thêm tên nhóm"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Từ chối"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Tin nhắn trong nhóm này được mã hóa đầu cuối, như mọi cuộc trò chuyện khác."),
@@ -1182,6 +1231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count thành viên"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Thành viên"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Tên nhóm"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Hãy đặt tên nhóm trước."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Tạo cuộc trò chuyện nhóm"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1205,6 +1256,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Là người xem, bạn có thể đọc và bày tỏ cảm xúc tại đây."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Người xem có thể đọc, bày tỏ cảm xúc và giơ tay để xin viết."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Gợi ý"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Xem hồ sơ"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("bạn"),

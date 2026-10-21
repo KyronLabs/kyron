@@ -1,4 +1,5 @@
 import { Global, Module } from '@nestjs/common';
+import { SupabaseModule } from '../../infrastructure/supabase/supabase.module';
 import { SupabaseTokenModule } from '../auth/supabase-token.module';
 import { EnforcementController } from './enforcement.controller';
 import { EnforcementService } from './enforcement.service';
@@ -11,7 +12,8 @@ import { ModerationService } from './moderation.service';
 @Module({
   // SupabaseTokenService is what AuthGuard uses to verify access tokens;
   // without it in scope Nest cannot construct the guard on this controller.
-  imports: [SupabaseTokenModule],
+  // SupabaseService signs links to reported community chat media.
+  imports: [SupabaseTokenModule, SupabaseModule],
   controllers: [ModerationController, EnforcementController],
   providers: [ModerationService, EnforcementService],
   exports: [ModerationService, EnforcementService],

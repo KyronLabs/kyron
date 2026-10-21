@@ -305,12 +305,19 @@ export class AccountService {
       const doomed = found.filter((path) => !keep.has(path));
       await this.supabase.removeFiles(doomed);
 
-      // View-once attachments it sent and nobody opened yet. Their messages
-      // went with the account, so nothing would ever sweep these.
-      const private_ = await this.supabase.listPrivateByPrefix(
-        MediaService.onceFolder,
-        `${userId}_`,
-      );
+      // View-once attachments it sent and nobody opened yet, and what it
+      // sent in community chats -- or uploaded and never sent. Their
+      // messages went with the account, so nothing would ever sweep these.
+      const private_ = [
+        ...(await this.supabase.listPrivateByPrefix(
+          MediaService.onceFolder,
+          `${userId}_`,
+        )),
+        ...(await this.supabase.listPrivateByPrefix(
+          MediaService.chatFolder,
+          `${userId}_`,
+        )),
+      ];
       await this.supabase.removePrivate(private_);
       return doomed.length + private_.length;
     } catch (error) {

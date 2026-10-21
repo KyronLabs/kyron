@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Rašyti gali tik moderatoriai"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Skelbimams. Visi bendruomenėje vis tiek gali skaityti ir reaguoti."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Pridėti nuotrauką ar apklausą"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Nuotraukos ir vaizdo įrašai"),
       "ui_cchat_close":
           MessageLookupByLibrary.simpleMessage("Uždaryti pokalbį"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
@@ -1041,6 +1045,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Žinutė pašalinama visiems pokalbyje."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("Redaguoti pokalbį"),
+      "ui_cchat_edit_message":
+          MessageLookupByLibrary.simpleMessage("Redaguoti"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("redaguota"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Redaguojate savo žinutę"),
       "ui_cchat_failed": MessageLookupByLibrary.simpleMessage(
           "Nepavyko atidaryti šio pokalbio."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Pokalbiai"),
@@ -1055,6 +1064,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Galėsite jį skaityti, kol esate bendruomenėje."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Čia rašyti gali tik savininkas ir moderatoriai."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Nutildyti"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Jokių pranešimų iš jo, ir jis neįskaičiuojamas į Žinučių skaičių."),
       "ui_cchat_name":
           MessageLookupByLibrary.simpleMessage("Pokalbio pavadinimas"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Naujas pokalbis"),
@@ -1065,6 +1077,37 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Bendruomenės pokalbiai nėra užšifruoti visapusiškai. Bendruomenės moderatoriai ir Kyron gali juos skaityti."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Prisegti viršuje"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Pridėti atsakymą"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Uždaryti apklausą"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Uždaryta"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Visi mato, kiek žmonių pasirinko kiekvieną atsakymą, bet niekada – kas."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Leisti rinktis kelis"),
+      "ui_cchat_poll_new":
+          MessageLookupByLibrary.simpleMessage("Nauja apklausa"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("Pasirinkite vieną"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Atsakymas \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Apklausa: \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("Klausimas"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Kiekvienas atsakymas apklausoje gali būti tik kartą."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Pasirinkite vieną ar daugiau"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("Atsakė: \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Ieškoti šiame pokalbyje"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Ieškoti šiame pokalbyje"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Nieko nerasta."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Nebegalite matyti šio pokalbio."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Lėtas režimas"),
@@ -1080,7 +1123,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sekundės: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Kaip žiūrovas galite skaityti ir reaguoti. Prisijunkite, kad galėtumėte rašyti."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Ši žinutė per toli praeityje, kad būtų parodyta."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Kažkas, ką pasirinkote, per didelis išsiųsti ir buvo praleista."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Įjungti garsą"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Atsegti"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Įrašyti balso žinutę"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Jūs"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1129,6 +1179,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Pridėti žmonių"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Pridėti"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Pridėti grupės pavadinimą"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Atmesti"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Šios grupės žinutės užšifruotos ištisiniu šifravimu, kaip ir bet kuris kitas pokalbis."),
@@ -1185,6 +1237,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Nariai"),
       "ui_group_name":
           MessageLookupByLibrary.simpleMessage("Grupės pavadinimas"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Pirmiausia pavadinkite grupę."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Sukurti grupės pokalbį"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1209,6 +1263,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kaip žiūrovas čia galite skaityti ir reaguoti."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Žiūrovai gali skaityti, reaguoti ir pakelti ranką, kad paprašytų leidimo rašyti."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Siūlomi"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Peržiūrėti profilį"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("jūs"),

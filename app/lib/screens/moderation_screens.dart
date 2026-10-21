@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/account_standing.dart';
 import '../models/moderation_case.dart';
+import '../models/post_media.dart';
 import '../providers/current_user_provider.dart';
 import '../models/verification.dart';
 import '../providers/enforcement_provider.dart';
@@ -19,9 +20,11 @@ import '../widgets/action_button.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/hairline.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../widgets/media_grid.dart';
 import '../widgets/section_tabs.dart';
 import '../widgets/settings_scaffold.dart';
 import '../widgets/toast.dart';
+import '../widgets/voice_post_player.dart';
 import 'account_status_screen.dart';
 
 /// The team's side of enforcement: what has been reported, what has been
@@ -573,6 +576,10 @@ class _ReportCaseScreenState extends ConsumerState<ReportCaseScreen> {
                 'reported.',
                 style: TextStyle(color: faint),
               ),
+            ],
+            if (item.media.isNotEmpty) ...[
+              const SizedBox(height: SpacingTokens.space8),
+              _ReportedMedia(item.media),
             ],
             if (item.postId != null && item.content != null)
               Align(
@@ -1555,6 +1562,29 @@ class _TextSheetState extends State<_TextSheet> {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// What a reported chat message carried: its pictures and clips in a grid,
+/// a voice note to play. The links run out a quarter of an hour after the
+/// queue was read; going back to the queue reads it again.
+class _ReportedMedia extends StatelessWidget {
+  final List<PostMedia> media;
+
+  const _ReportedMedia(this.media);
+
+  @override
+  Widget build(BuildContext context) {
+    final voice = media.where((m) => m.kind == MediaKind.voice).toList();
+    final visual = media.where((m) => m.kind != MediaKind.voice).toList();
+    return Column(
+      key: const ValueKey('report-media'),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (final note in voice) VoicePostPlayer(media: note),
+        if (visual.isNotEmpty) MediaGrid(media: visual),
+      ],
     );
   }
 }

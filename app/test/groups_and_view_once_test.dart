@@ -506,7 +506,8 @@ void main() {
     testWidgets('opens once, and then is only "Opened"', (tester) async {
       final repo = _Repo(group: null, thread: [_once('m1', 'ada')]);
       await _thread(tester, repo);
-      expect(find.text('Tap to view'), findsOneWidget);
+      // The ring says it opens once; the line says what it is.
+      expect(find.text('Photo'), findsOneWidget);
 
       await tester.tap(find.byKey(const ValueKey('once-label')));
       await tester.pumpAndSettle();
@@ -527,7 +528,7 @@ void main() {
     testWidgets('is not the sender’s to open', (tester) async {
       final repo = _Repo(thread: [_once('m1', 'me', recipients: 2)]);
       await _thread(tester, repo);
-      expect(find.text('View once'), findsOneWidget);
+      expect(find.text('Photo'), findsOneWidget);
 
       await tester.tap(find.byKey(const ValueKey('once-label')));
       await tester.pump();
@@ -549,7 +550,41 @@ void main() {
       await _thread(tester, repo);
       _container(tester).read(threadProvider('g1').notifier).onceOpened('m1');
       await tester.pumpAndSettle();
-      expect(find.text('Opened by 1 of 2'), findsOneWidget);
+      expect(find.text('Photo · Opened by 1 of 2'), findsOneWidget);
+    });
+
+    testWidgets('is a pill the height of a line of text, not a card', (
+      tester,
+    ) async {
+      final repo = _Repo(
+        group: null,
+        thread: [
+          DirectMessage(
+            id: 't1',
+            body: 'hello',
+            senderId: 'ada',
+            createdAt: DateTime(2026, 10, 20, 9),
+          ),
+          _once('m1', 'ada'),
+        ],
+      );
+      await _thread(tester, repo);
+      Finder bubbleOf(Finder inside) => find
+          .ancestor(
+            of: inside,
+            matching: find.byWidgetPredicate(
+              (w) =>
+                  w is Container &&
+                  w.decoration is BoxDecoration &&
+                  (w.decoration! as BoxDecoration).borderRadius != null,
+            ),
+          )
+          .first;
+      final once =
+          tester.getSize(bubbleOf(find.byKey(const ValueKey('once-label'))));
+      final text = tester.getSize(bubbleOf(find.text('hello')));
+      // A hair over at most: the ring may stand a pixel proud of the line.
+      expect(once.height, lessThanOrEqualTo(text.height + 2));
     });
 
     test('counts an open only once the server has said something', () async {
@@ -790,22 +825,33 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('pick-ada')));
     await tester.tap(find.byKey(const ValueKey('pick-ben')));
     await tester.pump();
+    // Chosen, they are on the "To:" line; tapping one there lets them go.
+    expect(find.byKey(const ValueKey('chosen-ada')), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('chosen-ben')));
+    await tester.pump();
+    expect(find.byKey(const ValueKey('chosen-ben')), findsNothing);
+    await tester.tap(find.byKey(const ValueKey('pick-ben')));
+    await tester.pump();
+
+    // No name yet: asked for, and nothing made.
     await tester.tap(find.byKey(const ValueKey('pick-people-done')));
-    await tester.pumpAndSettle();
+    await tester.pump();
+    expect(find.text('Name the group first.'), findsOneWidget);
+    expect(repo.created, isEmpty);
+    await tester.pumpAndSettle(const Duration(seconds: 5));
 
     await tester.enterText(
       find.byKey(const ValueKey('new-group-name')),
       'Birders',
     );
-    await tester.tap(find.byKey(const ValueKey('new-group-spectators')));
-    await tester.pump();
-    await tester.tap(find.byKey(const ValueKey('new-group-create')));
+    await tester.tap(find.byKey(const ValueKey('pick-people-done')));
     await tester.pumpAndSettle();
 
     final (title, ids, joinRole) = repo.created.single;
     expect(title, 'Birders');
     expect(ids, ['ada', 'ben']);
-    expect(joinRole, MemberRole.spectator);
+    // Spectators-on-join is a setting of the group, made after.
+    expect(joinRole, MemberRole.member);
     expect(
       (routes.last.arguments as ThreadArgs).conversationId,
       'g-new',

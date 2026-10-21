@@ -218,6 +218,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Only moderators can write"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "For announcements. Everyone in the community can still read and react."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Add a photo or a poll"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Photos and videos"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Close chat"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Nobody will be able to read or write in it. This cannot be undone."),
@@ -229,6 +233,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "It is taken down for everyone in the chat."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Edit chat"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Edit"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("edited"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Editing your message"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Could not open this chat."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chats"),
@@ -241,6 +249,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "You can still read it while you are in the community."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Only the owner and moderators can write here."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Mute"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "No notifications from it, and it is left out of the Messages count."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Chat name"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("New chat"),
       "ui_cchat_none": MessageLookupByLibrary.simpleMessage("No chats yet."),
@@ -249,6 +260,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Community chats are not end-to-end encrypted. The community's moderators and Kyron can read them."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Pin to the top"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Add an answer"),
+      "ui_cchat_poll_close": MessageLookupByLibrary.simpleMessage("Close poll"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Closed"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Everyone sees how many chose each answer, never who."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Let people choose several"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("New poll"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Choose one"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Answer \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Poll: \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("Question"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Each answer can be in a poll once."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Choose one or more"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count answered"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Search this chat"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Search this chat"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Nothing found."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "You cannot see this chat any more."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Slow mode"),
@@ -264,12 +303,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n seconds"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "You can read and react as a spectator. Join to write."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "That message is too far back to show."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Something you picked is too large to send and was left out."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Unmute"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Unpin"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Record a voice note"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("You"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Liked"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saved"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Add people"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Add"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Add group name"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Dismiss"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Messages in this group are end-to-end encrypted, like any other conversation."),
@@ -321,6 +369,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count members"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Members"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Group name"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Name the group first."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("Create group chat"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "There is one owner. You will stay on as an admin."),
@@ -342,6 +392,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "You can read and react here as a spectator."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Spectators can read, react and raise a hand to ask to write."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Suggested"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("View profile"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("you"),

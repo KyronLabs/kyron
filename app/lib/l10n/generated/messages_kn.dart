@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ಮಾಡರೇಟರ್‌ಗಳು ಮಾತ್ರ ಬರೆಯಬಹುದು"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "ಘೋಷಣೆಗಳಿಗಾಗಿ. ಸಮುದಾಯದಲ್ಲಿರುವ ಎಲ್ಲರೂ ಇನ್ನೂ ಓದಬಹುದು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("ಫೋಟೋ ಅಥವಾ ಸಮೀಕ್ಷೆ ಸೇರಿಸಿ"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳು"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("ಚಾಟ್ ಮುಚ್ಚಿ"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "ಇದರಲ್ಲಿ ಇನ್ನು ಯಾರೂ ಓದಲು ಅಥವಾ ಬರೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ. ಇದನ್ನು ರದ್ದುಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."),
@@ -1039,6 +1043,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "ಸಂದೇಶವನ್ನು ಚಾಟ್‌ನಲ್ಲಿರುವ ಎಲ್ಲರಿಗೂ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("ಚಾಟ್ ಎಡಿಟ್ ಮಾಡಿ"),
+      "ui_cchat_edit_message":
+          MessageLookupByLibrary.simpleMessage("ಎಡಿಟ್ ಮಾಡಿ"),
+      "ui_cchat_edited":
+          MessageLookupByLibrary.simpleMessage("ಎಡಿಟ್ ಮಾಡಲಾಗಿದೆ"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ನಿಮ್ಮ ಸಂದೇಶವನ್ನು ಎಡಿಟ್ ಮಾಡುತ್ತಿದ್ದೀರಿ"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("ಈ ಚಾಟ್ ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ಚಾಟ್‌ಗಳು"),
@@ -1052,6 +1062,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ನೀವು ಸಮುದಾಯದಲ್ಲಿರುವವರೆಗೂ ಇದನ್ನು ಓದಬಹುದು."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "ಇಲ್ಲಿ ಮಾಲೀಕರು ಮತ್ತು ಮಾಡರೇಟರ್‌ಗಳು ಮಾತ್ರ ಬರೆಯಬಹುದು."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("ಮ್ಯೂಟ್ ಮಾಡಿ"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "ಇದರಿಂದ ಅಧಿಸೂಚನೆಗಳು ಬರುವುದಿಲ್ಲ, ಮತ್ತು ಇದು ಸಂದೇಶಗಳ ಎಣಿಕೆಯಲ್ಲಿ ಸೇರುವುದಿಲ್ಲ."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ಚಾಟ್ ಹೆಸರು"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("ಹೊಸ ಚಾಟ್"),
       "ui_cchat_none":
@@ -1061,6 +1074,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "ಸಮುದಾಯ ಚಾಟ್‌ಗಳು ಎಂಡ್-ಟು-ಎಂಡ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗಿಲ್ಲ. ಸಮುದಾಯದ ಮಾಡರೇಟರ್‌ಗಳು ಮತ್ತು Kyron ಅವುಗಳನ್ನು ಓದಬಹುದು."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("ಮೇಲೆ ಪಿನ್ ಮಾಡಿ"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("ಉತ್ತರ ಸೇರಿಸಿ"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("ಸಮೀಕ್ಷೆ ಮುಚ್ಚಿ"),
+      "ui_cchat_poll_closed":
+          MessageLookupByLibrary.simpleMessage("ಮುಚ್ಚಲಾಗಿದೆ"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "ಪ್ರತಿ ಉತ್ತರವನ್ನು ಎಷ್ಟು ಜನರು ಆರಿಸಿದರು ಎಂದು ಎಲ್ಲರೂ ನೋಡುತ್ತಾರೆ, ಯಾರು ಎಂದು ಎಂದಿಗೂ ಅಲ್ಲ."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("ಹಲವನ್ನು ಆರಿಸಲು ಬಿಡಿ"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("ಹೊಸ ಸಮೀಕ್ಷೆ"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("ಒಂದನ್ನು ಆರಿಸಿ"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("ಉತ್ತರ \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("ಸಮೀಕ್ಷೆ: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("ಪ್ರಶ್ನೆ"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "ಪ್ರತಿ ಉತ್ತರವು ಸಮೀಕ್ಷೆಯಲ್ಲಿ ಒಮ್ಮೆ ಮಾತ್ರ ಇರಬಹುದು."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("ಒಂದು ಅಥವಾ ಹೆಚ್ಚನ್ನು ಆರಿಸಿ"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count ಜನರು ಉತ್ತರಿಸಿದ್ದಾರೆ"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("ಈ ಚಾಟ್‌ನಲ್ಲಿ ಹುಡುಕಿ"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("ಈ ಚಾಟ್‌ನಲ್ಲಿ ಹುಡುಕಿ"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("ಏನೂ ಸಿಗಲಿಲ್ಲ."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "ನೀವು ಇನ್ನು ಈ ಚಾಟ್ ನೋಡಲು ಸಾಧ್ಯವಿಲ್ಲ."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("ನಿಧಾನ ಮೋಡ್"),
@@ -1076,7 +1117,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n ಸೆಕೆಂಡುಗಳು"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "ನೀವು ವೀಕ್ಷಕರಾಗಿ ಓದಬಹುದು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು. ಬರೆಯಲು ಸೇರಿ."),
+      "ui_cchat_too_far":
+          MessageLookupByLibrary.simpleMessage("ಆ ಸಂದೇಶ ತೋರಿಸಲು ತುಂಬಾ ಹಳೆಯದು."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಆರಿಸಿದ ಒಂದು ಕಳುಹಿಸಲು ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ, ಹಾಗಾಗಿ ಬಿಡಲಾಗಿದೆ."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("ಅನ್‌ಮ್ಯೂಟ್ ಮಾಡಿ"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ಅನ್‌ಪಿನ್ ಮಾಡಿ"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("ಧ್ವನಿ ಟಿಪ್ಪಣಿ ರೆಕಾರ್ಡ್ ಮಾಡಿ"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("ನೀವು"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1125,6 +1174,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("ಜನರನ್ನು ಸೇರಿಸಿ"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("ಸೇರಿಸಿ"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("ಗುಂಪಿನ ಹೆಸರು ಸೇರಿಸಿ"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("ತಿರಸ್ಕರಿಸಿ"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "ಈ ಗುಂಪಿನ ಸಂದೇಶಗಳು ಬೇರೆ ಯಾವುದೇ ಸಂಭಾಷಣೆಯಂತೆ ಎಂಡ್-ಟು-ಎಂಡ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗಿವೆ."),
@@ -1178,6 +1229,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count ಸದಸ್ಯರು"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("ಸದಸ್ಯರು"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("ಗುಂಪಿನ ಹೆಸರು"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("ಮೊದಲು ಗುಂಪಿಗೆ ಹೆಸರಿಡಿ."),
       "ui_group_new": MessageLookupByLibrary.simpleMessage("ಗುಂಪು ಚಾಟ್ ರಚಿಸಿ"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
           "ಮಾಲೀಕರು ಒಬ್ಬರೇ. ನೀವು ನಿರ್ವಾಹಕರಾಗಿ ಮುಂದುವರಿಯುತ್ತೀರಿ."),
@@ -1198,6 +1251,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ವೀಕ್ಷಕರಾಗಿ ನೀವು ಇಲ್ಲಿ ಓದಬಹುದು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "ವೀಕ್ಷಕರು ಓದಬಹುದು, ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು ಮತ್ತು ಬರೆಯಲು ಅನುಮತಿ ಕೇಳಲು ಕೈ ಎತ್ತಬಹುದು."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("ಸೂಚಿಸಿದವರು"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("ಪ್ರೊಫೈಲ್ ನೋಡಿ"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("ನೀವು"),

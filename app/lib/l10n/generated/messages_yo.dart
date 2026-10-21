@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Àwọn alábòójútó nìkan ló lè kọ̀wé"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Fún ìkéde. Gbogbo ènìyàn nínú àwùjọ ṣì lè kà kí wọ́n sì fèsì."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Fi fọ́tò tàbí ìdìbò kún un"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Àwọn fọ́tò àti fídíò"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Pa ìjíròrò dé"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Kò sí ẹni tí yóò lè kà tàbí kọ̀wé nínú rẹ̀ mọ́. A kò lè yí èyí padà."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "A yọ ìfiránṣẹ́ náà kúrò fún gbogbo ènìyàn nínú ìjíròrò."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Ṣàtúnṣe ìjíròrò"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Ṣàtúnṣe"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("a ti ṣàtúnṣe"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("O ń ṣàtúnṣe ìfiránṣẹ́ rẹ"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("A kò lè ṣí ìjíròrò yìí."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Àwọn ìjíròrò"),
@@ -1054,6 +1062,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "O ṣì lè kà á níwọ̀n ìgbà tí o bá wà nínú àwùjọ."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Olùní àti àwọn alábòójútó nìkan ló lè kọ̀wé níbí."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Pa ohùn rẹ́"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Kò ní sí ìfitónilétí láti ọ̀dọ̀ rẹ̀, a kò sì ní kà á mọ́ Àwọn ìfiránṣẹ́."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Orúkọ ìjíròrò"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Ìjíròrò tuntun"),
       "ui_cchat_none":
@@ -1063,6 +1074,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Àwọn ìjíròrò àwùjọ kò ní ìfipamọ́ láti òpin dé òpin. Àwọn alábòójútó àwùjọ àti Kyron lè kà wọ́n."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Kàn án mọ́ òkè"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Fi ìdáhùn kún un"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Pa ìdìbò dé"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Ti pa dé"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Gbogbo ènìyàn ń rí iye àwọn tó yan ìdáhùn kọ̀ọ̀kan, ṣùgbọ́n kì í ṣe ẹni tó yàn án."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Jẹ́ kí wọ́n yan ọ̀pọ̀"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Ìdìbò tuntun"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Yan ọ̀kan"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Ìdáhùn \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Ìdìbò: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Ìbéèrè"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Ìdáhùn kọ̀ọ̀kan lè wà nínú ìdìbò lẹ́ẹ̀kan ṣoṣo."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Yan ọ̀kan tàbí jù bẹ́ẹ̀ lọ"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count ti dáhùn"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Wá nínú ìjíròrò yìí"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Wá nínú ìjíròrò yìí"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("A kò rí nǹkankan."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("O kò lè rí ìjíròrò yìí mọ́."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Ipò díẹ̀díẹ̀"),
@@ -1078,7 +1117,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ìṣẹ́jú-àáyá \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "O lè kà kí o sì fèsì gẹ́gẹ́ bí olùwòran. Darapọ̀ láti kọ̀wé."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Ìfiránṣẹ́ yẹn ti pẹ́ jù láti fi hàn."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Nǹkan tí o yàn tóbi jù láti fi ránṣẹ́, a sì fi í sílẹ̀."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Ṣí ohùn"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Yọ kúrò ní òkè"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Ṣe àkọsílẹ̀ ìfiránṣẹ́ ohùn"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Ìwọ"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1128,6 +1174,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("Fi àwọn ènìyàn kún un"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Fi kún un"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Fi orúkọ ẹgbẹ́ kún un"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Kọ̀ ọ́"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Àwọn ìfiránṣẹ́ inú ẹgbẹ́ yìí ni a fi kóòdù pa mọ́ láti ìbẹ̀rẹ̀ dé òpin, bí ìjíròrò mìíràn."),
@@ -1183,6 +1231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_members":
           MessageLookupByLibrary.simpleMessage("Àwọn ọmọ ẹgbẹ́"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Orúkọ ẹgbẹ́"),
+      "ui_group_name_first": MessageLookupByLibrary.simpleMessage(
+          "Kọ́kọ́ fún ẹgbẹ́ náà ní orúkọ."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Ṣẹ̀dá ìjíròrò ẹgbẹ́"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1206,6 +1256,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Gẹ́gẹ́ bí olùwòran, o lè kà kí o sì fèsì níbí."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Àwọn olùwòran lè kà, fèsì, kí wọ́n sì gbé ọwọ́ sókè láti béèrè láti kọ̀wé."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Àwọn àbá"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Wo profaili"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("ìwọ"),

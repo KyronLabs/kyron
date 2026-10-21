@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Vain moderaattorit voivat kirjoittaa"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Tiedotteille. Kaikki yhteisössä voivat edelleen lukea ja reagoida."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("Lisää kuva tai kysely"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Kuvat ja videot"),
       "ui_cchat_close":
           MessageLookupByLibrary.simpleMessage("Sulje keskustelu"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
@@ -1041,6 +1045,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Viesti poistetaan kaikilta keskustelussa."),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("Muokkaa keskustelua"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Muokkaa"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("muokattu"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Muokkaat viestiäsi"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Keskustelua ei voitu avata."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Keskustelut"),
@@ -1056,6 +1064,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Voit yhä lukea sitä niin kauan kuin olet yhteisössä."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Vain omistaja ja moderaattorit voivat kirjoittaa tänne."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("Mykistä"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Ei ilmoituksia siitä, eikä sitä lasketa Viesteihin."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Keskustelun nimi"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Uusi keskustelu"),
       "ui_cchat_none":
@@ -1065,6 +1076,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Yhteisökeskustelut eivät ole päästä päähän salattuja. Yhteisön moderaattorit ja Kyron voivat lukea niitä."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Kiinnitä ylös"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Lisää vastaus"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Sulje kysely"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Suljettu"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Kaikki näkevät, kuinka moni valitsi kunkin vastauksen, mutta eivät koskaan keitä."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Salli useampi valinta"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Uusi kysely"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Valitse yksi"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Vastaus \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Kysely: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("Kysymys"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Kukin vastaus voi olla kyselyssä vain kerran."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Valitse yksi tai useampi"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count vastasi"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Hae tästä keskustelusta"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Hae tästä keskustelusta"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Mitään ei löytynyt."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "Et voi enää nähdä tätä keskustelua."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Hidas tila"),
@@ -1080,7 +1119,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n sekuntia"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Voit lukea ja reagoida katsojana. Liity kirjoittaaksesi."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Viesti on liian kaukana näytettäväksi."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Jokin valitsemasi on liian suuri lähetettäväksi, ja se jätettiin pois."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Poista mykistys"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Irrota"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Nauhoita ääniviesti"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Sinä"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1129,6 +1176,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Lisää henkilöitä"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Lisää"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Lisää ryhmän nimi"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Hylkää"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Tämän ryhmän viestit ovat päästä päähän salattuja, kuten kaikki muutkin keskustelut."),
@@ -1182,6 +1231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count jäsentä"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Jäsenet"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Ryhmän nimi"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("Nimeä ryhmä ensin."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Luo ryhmäkeskustelu"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1205,6 +1256,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Katsojana voit lukea ja reagoida täällä."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Katsojat voivat lukea, reagoida ja nostaa käden pyytääkseen kirjoitusoikeutta."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Ehdotetut"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Näytä profiili"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("sinä"),

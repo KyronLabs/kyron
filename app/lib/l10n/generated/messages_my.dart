@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("စီမံသူများသာ ရေးနိုင်သည်"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "ကြေညာချက်များအတွက်။ အသိုင်းအဝိုင်းရှိ လူတိုင်း ဆက်လက်ဖတ်ရှုပြီး တုံ့ပြန်နိုင်သည်။"),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "ဓာတ်ပုံ သို့မဟုတ် စစ်တမ်း ထည့်ရန်"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံများနှင့် ဗီဒီယိုများ"),
       "ui_cchat_close":
           MessageLookupByLibrary.simpleMessage("ချက်တ်ကို ပိတ်ရန်"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
@@ -1041,6 +1045,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "မက်ဆေ့ချ်ကို ချက်တ်ရှိ လူတိုင်းအတွက် ဖယ်ရှားသည်။"),
       "ui_cchat_edit":
           MessageLookupByLibrary.simpleMessage("ချက်တ်ကို တည်းဖြတ်ရန်"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("ပြင်ရန်"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("ပြင်ထားသည်"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("သင့်မက်ဆေ့ချ်ကို ပြင်နေသည်"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("ဤချက်တ်ကို ဖွင့်၍မရပါ။"),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("ချက်တ်များ"),
@@ -1056,6 +1064,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "အသိုင်းအဝိုင်းထဲ ရှိနေသရွေ့ ဆက်ဖတ်နိုင်ပါသည်။"),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "ဤနေရာတွင် ပိုင်ရှင်နှင့် စီမံသူများသာ ရေးနိုင်သည်။"),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("အသံပိတ်ရန်"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "၎င်းမှ အသိပေးချက်များ မလာတော့ဘဲ မက်ဆေ့ချ်များ အရေအတွက်တွင်လည်း မပါတော့ပါ။"),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("ချက်တ်အမည်"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("ချက်တ်အသစ်"),
       "ui_cchat_none":
@@ -1066,6 +1077,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "အသိုင်းအဝိုင်း ချက်တ်များကို အစမှအဆုံး ကုဒ်ဝှက်မထားပါ။ အသိုင်းအဝိုင်း၏ စီမံသူများနှင့် Kyron ဖတ်နိုင်သည်။"),
       "ui_cchat_pin":
           MessageLookupByLibrary.simpleMessage("အပေါ်ဆုံးတွင် ပင်ထိုးရန်"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("အဖြေ ထည့်ရန်"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("စစ်တမ်း ပိတ်ရန်"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("ပိတ်ပြီး"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "အဖြေတစ်ခုစီကို လူမည်မျှ ရွေးသည်ကို အားလုံးမြင်ရသော်လည်း မည်သူရွေးသည်ကို ဘယ်တော့မှ မမြင်ရပါ။"),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("အများအပြား ရွေးခွင့်ပြုရန်"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("စစ်တမ်းအသစ်"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("တစ်ခု ရွေးပါ"),
+      "ui_cchat_poll_option": MessageLookupByLibrary.simpleMessage("အဖြေ \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("စစ်တမ်း- \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("မေးခွန်း"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "အဖြေတစ်ခုစီသည် စစ်တမ်းတွင် တစ်ကြိမ်သာ ပါနိုင်သည်။"),
+      "ui_cchat_poll_several": MessageLookupByLibrary.simpleMessage(
+          "တစ်ခု သို့မဟုတ် ထို့ထက်ပို ရွေးပါ"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count ဦး ဖြေပြီး"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("ဤချက်တ်တွင် ရှာရန်"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("ဤချက်တ်တွင် ရှာရန်"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("ဘာမှ မတွေ့ပါ။"),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("ဤချက်တ်ကို သင် မမြင်ရတော့ပါ။"),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("နှေးကွေးမုဒ်"),
@@ -1081,7 +1119,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n စက္ကန့်"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "ကြည့်ရှုသူအဖြစ် ဖတ်ရှုပြီး တုံ့ပြန်နိုင်သည်။ ရေးရန် ဝင်ပါ။"),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "ထိုမက်ဆေ့ချ်သည် ပြသရန် အလွန်ဟောင်းနေသည်။"),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "သင်ရွေးထားသည့်အရာတစ်ခုသည် ပို့ရန် အလွန်ကြီးသဖြင့် ချန်ထားခဲ့သည်။"),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("အသံဖွင့်ရန်"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ပင်ဖြုတ်ရန်"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("အသံမက်ဆေ့ချ် မှတ်တမ်းတင်ရန်"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("သင်"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1130,6 +1175,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("လူထည့်ရန်"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("ထည့်ရန်"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("အဖွဲ့အမည် ထည့်ရန်"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("ပယ်ရန်"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "ဤအုပ်စုရှိ မက်ဆေ့ချ်များကို အခြားစကားဝိုင်းများကဲ့သို့ပင် အစမှအဆုံး ကုဒ်ဝှက်ထားသည်။"),
@@ -1184,6 +1231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("အဖွဲ့ဝင် \$count ဦး"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("အဖွဲ့ဝင်များ"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("အုပ်စုအမည်"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("အဖွဲ့ကို ဦးစွာ အမည်ပေးပါ။"),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("အုပ်စုချက်တ် ဖန်တီးရန်"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1207,6 +1256,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ကြည့်ရှုသူအဖြစ် ဤနေရာတွင် ဖတ်ရှုခြင်းနှင့် တုံ့ပြန်ခြင်း ပြုနိုင်သည်။"),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "ကြည့်ရှုသူများသည် ဖတ်ရှု၊ တုံ့ပြန်ပြီး ရေးခွင့်တောင်းရန် လက်ထောင်နိုင်သည်။"),
+      "ui_group_suggested":
+          MessageLookupByLibrary.simpleMessage("အကြံပြုထားသည်များ"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("ပရိုဖိုင် ကြည့်ရန်"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("သင်"),

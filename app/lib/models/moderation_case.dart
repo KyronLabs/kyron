@@ -1,6 +1,7 @@
 // lib/models/moderation_case.dart
 import '../repositories/moderation_repository.dart';
 import 'account_standing.dart';
+import 'post_media.dart';
 
 DateTime? _date(Object? value) =>
     value is String ? DateTime.tryParse(value)?.toLocal() : null;
@@ -98,6 +99,11 @@ class ReportCase {
 
   /// The post a reply is on, to open it in place.
   final String? postId;
+
+  /// What a reported community chat message carried, behind links that last
+  /// a quarter of an hour. The team is not in the community and cannot open
+  /// the chat, so this is the only way to look at a reported picture.
+  final List<PostMedia> media;
   final List<({ReportReason reason, int count})> reasons;
   final List<CaseReport> reports;
   final DateTime firstAt;
@@ -113,6 +119,7 @@ class ReportCase {
     this.content,
     this.snapshot,
     this.postId,
+    this.media = const [],
     this.urgent = false,
   });
 
@@ -133,6 +140,7 @@ class ReportCase {
       content: _text(json['content']),
       snapshot: _text(json['snapshot']),
       postId: _text(json['postId']),
+      media: PostMedia.listFrom(json['media']),
       reasons: [
         for (final row in (json['reasons'] as List<dynamic>? ?? const []))
           if (row is Map)

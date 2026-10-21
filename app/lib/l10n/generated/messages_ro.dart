@@ -1028,6 +1028,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Doar moderatorii pot scrie"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "Pentru anunțuri. Toți cei din comunitate pot citi și reacționa în continuare."),
+      "ui_cchat_attach": MessageLookupByLibrary.simpleMessage(
+          "Adaugă o fotografie sau un sondaj"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("Fotografii și videoclipuri"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("Închide chatul"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "Nimeni nu va mai putea citi sau scrie în el. Acțiunea nu poate fi anulată."),
@@ -1039,6 +1043,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "Mesajul este eliminat pentru toți cei din chat."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("Editează chatul"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("Editează"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("editat"),
+      "ui_cchat_editing":
+          MessageLookupByLibrary.simpleMessage("Îți editezi mesajul"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("Chatul nu a putut fi deschis."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("Chaturi"),
@@ -1053,6 +1061,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Îl poți citi în continuare cât timp ești în comunitate."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "Doar proprietarul și moderatorii pot scrie aici."),
+      "ui_cchat_mute":
+          MessageLookupByLibrary.simpleMessage("Dezactivează notificările"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "Fără notificări de la el, și nu intră în numărul de la Mesaje."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("Numele chatului"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("Chat nou"),
       "ui_cchat_none":
@@ -1062,6 +1074,35 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "Chaturile comunității nu sunt criptate end-to-end. Moderatorii comunității și Kyron le pot citi."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("Fixează sus"),
+      "ui_cchat_poll_add":
+          MessageLookupByLibrary.simpleMessage("Adaugă un răspuns"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("Închide sondajul"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("Închis"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Toți văd câți au ales fiecare răspuns, niciodată cine."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("Permite mai multe alegeri"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("Sondaj nou"),
+      "ui_cchat_poll_one": MessageLookupByLibrary.simpleMessage("Alege unul"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("Răspunsul \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("Sondaj: \$question"),
+      "ui_cchat_poll_question":
+          MessageLookupByLibrary.simpleMessage("Întrebare"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "Fiecare răspuns poate apărea o singură dată într-un sondaj."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("Alege unul sau mai multe"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("\$count au răspuns"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("Caută în acest chat"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("Caută în acest chat"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("Nu s-a găsit nimic."),
       "ui_cchat_shut":
           MessageLookupByLibrary.simpleMessage("Nu mai poți vedea acest chat."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("Mod lent"),
@@ -1077,8 +1118,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n secunde"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Poți citi și reacționa ca spectator. Intră în chat ca să scrii."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "Mesajul acela e prea în urmă ca să fie afișat."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Ceva ce ai ales e prea mare pentru a fi trimis și a fost lăsat deoparte."),
+      "ui_cchat_unmute":
+          MessageLookupByLibrary.simpleMessage("Activează notificările"),
       "ui_cchat_unpin":
           MessageLookupByLibrary.simpleMessage("Anulează fixarea"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("Înregistrează un mesaj vocal"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Tu"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1127,6 +1176,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("From an account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Adaugă persoane"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Adaugă"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("Adaugă numele grupului"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("Respinge"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "Mesajele din acest grup sunt criptate integral, ca orice altă conversație."),
@@ -1181,6 +1232,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count membri"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("Membri"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("Numele grupului"),
+      "ui_group_name_first": MessageLookupByLibrary.simpleMessage(
+          "Dă-i mai întâi un nume grupului."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("Creează un chat de grup"),
       "ui_group_owner_detail": MessageLookupByLibrary.simpleMessage(
@@ -1204,6 +1257,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ca spectator, aici poți citi și reacționa."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "Spectatorii pot citi, reacționa și ridica mâna pentru a cere să scrie."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("Sugestii"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("Vezi profilul"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("tu"),

@@ -1031,6 +1031,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("يمكن للمشرفين فقط الكتابة"),
       "ui_cchat_announcements_detail": MessageLookupByLibrary.simpleMessage(
           "للإعلانات. لا يزال بإمكان الجميع في المجتمع القراءة والتفاعل."),
+      "ui_cchat_attach":
+          MessageLookupByLibrary.simpleMessage("إضافة صورة أو استطلاع"),
+      "ui_cchat_attach_gallery":
+          MessageLookupByLibrary.simpleMessage("الصور والفيديوهات"),
       "ui_cchat_close": MessageLookupByLibrary.simpleMessage("إغلاق الدردشة"),
       "ui_cchat_close_detail": MessageLookupByLibrary.simpleMessage(
           "لن يتمكن أحد من القراءة أو الكتابة فيها. لا يمكن التراجع عن ذلك."),
@@ -1042,6 +1046,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_delete_own": MessageLookupByLibrary.simpleMessage(
           "تُزال الرسالة لكل من في الدردشة."),
       "ui_cchat_edit": MessageLookupByLibrary.simpleMessage("تعديل الدردشة"),
+      "ui_cchat_edit_message": MessageLookupByLibrary.simpleMessage("تعديل"),
+      "ui_cchat_edited": MessageLookupByLibrary.simpleMessage("معدّلة"),
+      "ui_cchat_editing": MessageLookupByLibrary.simpleMessage("تعديل رسالتك"),
       "ui_cchat_failed":
           MessageLookupByLibrary.simpleMessage("تعذّر فتح هذه الدردشة."),
       "ui_cchat_heading": MessageLookupByLibrary.simpleMessage("الدردشات"),
@@ -1056,6 +1063,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "يمكنك مواصلة قراءتها ما دمت في المجتمع."),
       "ui_cchat_moderators_only": MessageLookupByLibrary.simpleMessage(
           "يمكن للمالك والمشرفين فقط الكتابة هنا."),
+      "ui_cchat_mute": MessageLookupByLibrary.simpleMessage("كتم"),
+      "ui_cchat_mute_detail": MessageLookupByLibrary.simpleMessage(
+          "لا إشعارات منها، ولا تُحتسب في عدد الرسائل."),
       "ui_cchat_name": MessageLookupByLibrary.simpleMessage("اسم الدردشة"),
       "ui_cchat_new": MessageLookupByLibrary.simpleMessage("دردشة جديدة"),
       "ui_cchat_none":
@@ -1065,6 +1075,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_not_encrypted": MessageLookupByLibrary.simpleMessage(
           "دردشات المجتمع غير مشفرة تشفيرًا تامًا بين الطرفين. يمكن لمشرفي المجتمع وKyron قراءتها."),
       "ui_cchat_pin": MessageLookupByLibrary.simpleMessage("تثبيت في الأعلى"),
+      "ui_cchat_poll_add": MessageLookupByLibrary.simpleMessage("إضافة إجابة"),
+      "ui_cchat_poll_close":
+          MessageLookupByLibrary.simpleMessage("إغلاق الاستطلاع"),
+      "ui_cchat_poll_closed": MessageLookupByLibrary.simpleMessage("مغلق"),
+      "ui_cchat_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "يرى الجميع عدد من اختار كل إجابة، ولا يرون أبدًا من اختارها."),
+      "ui_cchat_poll_multiple":
+          MessageLookupByLibrary.simpleMessage("السماح باختيار أكثر من إجابة"),
+      "ui_cchat_poll_new": MessageLookupByLibrary.simpleMessage("استطلاع جديد"),
+      "ui_cchat_poll_one":
+          MessageLookupByLibrary.simpleMessage("اختر إجابة واحدة"),
+      "ui_cchat_poll_option":
+          MessageLookupByLibrary.simpleMessage("الإجابة \$n"),
+      "ui_cchat_poll_preview":
+          MessageLookupByLibrary.simpleMessage("استطلاع: \$question"),
+      "ui_cchat_poll_question": MessageLookupByLibrary.simpleMessage("السؤال"),
+      "ui_cchat_poll_repeated": MessageLookupByLibrary.simpleMessage(
+          "لا يمكن أن تتكرر أي إجابة في الاستطلاع."),
+      "ui_cchat_poll_several":
+          MessageLookupByLibrary.simpleMessage("اختر إجابة أو أكثر"),
+      "ui_cchat_poll_voters":
+          MessageLookupByLibrary.simpleMessage("أجاب \$count"),
+      "ui_cchat_search":
+          MessageLookupByLibrary.simpleMessage("البحث في هذه الدردشة"),
+      "ui_cchat_search_hint":
+          MessageLookupByLibrary.simpleMessage("البحث في هذه الدردشة"),
+      "ui_cchat_search_none":
+          MessageLookupByLibrary.simpleMessage("لم يُعثر على شيء."),
       "ui_cchat_shut": MessageLookupByLibrary.simpleMessage(
           "لم يعد بإمكانك رؤية هذه الدردشة."),
       "ui_cchat_slow": MessageLookupByLibrary.simpleMessage("الوضع البطيء"),
@@ -1080,7 +1118,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("الثواني: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "يمكنك القراءة والتفاعل كمشاهد. انضم لتكتب."),
+      "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
+          "هذه الرسالة قديمة جدًا بحيث لا يمكن عرضها."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "أحد ما اخترته كبير جدًا بحيث لا يمكن إرساله، وتم استبعاده."),
+      "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("إلغاء الكتم"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("إلغاء التثبيت"),
+      "ui_cchat_voice":
+          MessageLookupByLibrary.simpleMessage("تسجيل رسالة صوتية"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("أنت"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("المجتمعات"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
@@ -1128,6 +1173,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_from_account": MessageLookupByLibrary.simpleMessage("من حساب"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("إضافة أشخاص"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("إضافة"),
+      "ui_group_add_name":
+          MessageLookupByLibrary.simpleMessage("إضافة اسم المجموعة"),
       "ui_group_dismiss": MessageLookupByLibrary.simpleMessage("تجاهل"),
       "ui_group_e2ee": MessageLookupByLibrary.simpleMessage(
           "الرسائل في هذه المجموعة مشفّرة من طرف إلى طرف، مثل أي محادثة أخرى."),
@@ -1181,6 +1228,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$count أعضاء"),
       "ui_group_members": MessageLookupByLibrary.simpleMessage("الأعضاء"),
       "ui_group_name": MessageLookupByLibrary.simpleMessage("اسم المجموعة"),
+      "ui_group_name_first":
+          MessageLookupByLibrary.simpleMessage("سمِّ المجموعة أولًا."),
       "ui_group_new":
           MessageLookupByLibrary.simpleMessage("إنشاء محادثة جماعية"),
       "ui_group_owner_detail":
@@ -1202,6 +1251,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "بصفتك مشاهدًا، يمكنك القراءة والتفاعل هنا."),
       "ui_group_spectators_detail": MessageLookupByLibrary.simpleMessage(
           "يمكن للمشاهدين القراءة والتفاعل ورفع اليد لطلب الكتابة."),
+      "ui_group_suggested": MessageLookupByLibrary.simpleMessage("مقترحون"),
       "ui_group_view_profile":
           MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("أنت"),
