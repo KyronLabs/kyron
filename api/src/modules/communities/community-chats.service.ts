@@ -627,21 +627,25 @@ export class CommunityChatsService {
       repliedTo = answered.senderId;
     }
 
-    if (attachments.length > 0) {
-      // Each upload goes in one message. Twice, and taking one down -- which
-      // deletes its file -- would leave the other pointing at nothing.
-      const used = await this.prisma.media.count({
-        where: { privatePath: { in: attachments.map((a) => a.ref) } },
-      });
-      if (used > 0) {
-        throw new BadRequestException('That file has already been sent.');
-      }
-    }
-
     const message = await this.prisma.$transaction(async (tx) => {
       // Requests sent side by side take turns here, so each one counts the
       // messages before it. Otherwise fifty at once would each find none.
       await CommunityChatsService.takeTurns(tx, `send:${chat.id}:${viewerId}`);
+      if (attachments.length > 0) {
+        // Each upload goes in one message. Twice, and taking one down --
+        // which deletes its file -- would leave the other pointing at
+        // nothing. Only its uploader can send a file, so their sends with
+        // files take turns, in whichever chat, and each sees the one before.
+        await CommunityChatsService.takeTurns(tx, `media:${viewerId}`);
+        const used = await tx.media.count({
+          where: { privatePath: { in: attachments.map((a) => a.ref) } },
+        });
+        if (used > 0) {
+          // 409, not 400: most likely this very message, sent before and
+          // its answer lost on the way back.
+          throw new ConflictException('That file has already been sent.');
+        }
+      }
       await CommunityChatsService.throttle(tx, viewerId, chat, moderator, now);
       const made = await tx.communityChatMessage.create({
         data: {

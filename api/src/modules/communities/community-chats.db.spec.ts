@@ -749,7 +749,7 @@ run('community chats, against a real database', () => {
       ).rejects.toMatchObject({ status: 400 });
       await expect(
         chats.send(ids.ada, quiet, { media: [{ ref: photo }] }, later(11)),
-      ).rejects.toMatchObject({ status: 400 });
+      ).rejects.toMatchObject({ status: 409 });
       await expect(
         chats.send(
           ids.ada,
@@ -898,6 +898,27 @@ run('community chats, against a real database', () => {
           (i) => i.id === asked.id,
         )?.poll?.closed,
       ).toBe(true);
+    });
+
+    it('puts one upload in one message, even sent to two chats at once', async () => {
+      const photo = ref(ids.ada, 'jpg');
+      await Promise.all(
+        Array.from({ length: 6 }, () => prisma.$queryRaw`SELECT 1`),
+      );
+      const sent = await Promise.allSettled(
+        [quiet, general, quiet, general].map((chatId) =>
+          chats.send(ids.ada, chatId, { media: [{ ref: photo }] }, later(11)),
+        ),
+      );
+      expect(sent.filter((s) => s.status === 'fulfilled')).toHaveLength(1);
+      for (const s of sent) {
+        if (s.status === 'rejected') {
+          expect(s.reason).toMatchObject({ status: 409 });
+        }
+      }
+      expect(await prisma.media.count({ where: { privatePath: photo } })).toBe(
+        1,
+      );
     });
 
     it('takes one answer from taps on several at once', async () => {
