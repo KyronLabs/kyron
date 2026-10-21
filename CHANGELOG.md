@@ -11,21 +11,8 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
-
-## [0.1.10] - 2026-10-21
 ### Added
 
-- **Community chats, several to a community.** A community's page lists its
-  chats above its posts — up to 20, opened and run by its owner and
-  moderators. Anybody in the community can read a chat and react as a
-  spectator; joining it is what lets them write. A chat can be kept for
-  announcements, so only moderators write and everyone else reads and
-  reacts. Moderators can pin a message, set a slow mode, and delete
-  members' messages; the owner can delete anybody's. Any message can be
-  reported to Kyron. **Community chats are not end-to-end encrypted**, and
-  each one says so: the community's moderators and Kyron can read them.
-  Direct messages and groups are still end-to-end encrypted.
-  docs/MESSAGING.md has the rules and what is not built yet.
 - **Community chats in the Messages list**, among conversations by when each
   was last spoken in, with a count of what is new. The Messages count
   includes them.
@@ -52,6 +39,22 @@ section for that version, so what is written here is what people read.
   The "everyone added joins as a spectator" switch is in the group's info.
 - **A view-once message is one line** — an icon and what it is ("Photo",
   "Opened") — about the height of a line of text, instead of a tall card.
+
+## [0.1.10] - 2026-10-21
+### Added
+
+- **Community chats, several to a community.** A community's page lists its
+  chats above its posts — up to 20, opened and run by its owner and
+  moderators. Anybody in the community can read a chat and react as a
+  spectator; joining it is what lets them write. A chat can be kept for
+  announcements, so only moderators write and everyone else reads and
+  reacts. Moderators can pin a message, set a slow mode, and delete
+  members' messages; the owner can delete anybody's. Any message can be
+  reported to Kyron. **Community chats are not end-to-end encrypted**, and
+  each one says so: the community's moderators and Kyron can read them.
+  Direct messages and groups are still end-to-end encrypted.
+  docs/MESSAGING.md has the rules and what is not built yet (chats in the
+  Messages inbox, push notifications, photos and voice notes).
 
 ## [0.1.9] - 2026-10-20
 ### Added
