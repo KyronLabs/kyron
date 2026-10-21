@@ -23,7 +23,8 @@ export type RealtimeEvent =
   | { type: 'message.reaction'; conversationId: string; messageId: string }
   /**
    * Something happened in a community chat the reader has joined: a message
-   * arrived, went, or was reacted to; or the chat itself changed (renamed,
+   * arrived, went, was edited, reacted to or voted in; or the chat itself
+   * changed (renamed,
    * a pin, who may write, closed). Ids only: the client reads what changed
    * over HTTP, behind the same check of community membership as the page --
    * which is how somebody removed from the community stops seeing it.
@@ -32,7 +33,9 @@ export type RealtimeEvent =
       type:
         | 'community.chat.message'
         | 'community.chat.message.deleted'
-        | 'community.chat.reaction';
+        | 'community.chat.message.edited'
+        | 'community.chat.reaction'
+        | 'community.chat.poll';
       chatId: string;
       messageId: string;
     }

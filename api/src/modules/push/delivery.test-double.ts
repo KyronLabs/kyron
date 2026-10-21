@@ -41,6 +41,13 @@ export class RecordingDelivery extends DeliveryService {
     this.told.push({ userIds: [...userIds], event, push });
   }
 
+  /** Pushes with no event of their own. */
+  readonly pushed: { userIds: string[]; push: PushMessage }[] = [];
+
+  override pushMany(userIds: readonly string[], push: PushMessage): void {
+    this.pushed.push({ userIds: [...userIds], push });
+  }
+
   /** Everything of one type, for asserting on one thing at a time. */
   ofType(type: RealtimeEvent['type']): RealtimeEvent[] {
     return this.told.filter((t) => t.event.type === type).map((t) => t.event);

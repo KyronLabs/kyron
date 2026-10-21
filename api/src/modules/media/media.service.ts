@@ -19,6 +19,15 @@ export interface UploadedMedia {
   durationMs?: number | null;
 }
 
+/** A file in the private bucket: a reference to it, never an address. */
+export interface PrivateUpload {
+  ref: string;
+  kind: MediaKind;
+  width: number | null;
+  height: number | null;
+  durationMs: number | null;
+}
+
 /** The types accepted, and how each maps to a MediaKind. */
 const ACCEPTED: Record<string, MediaKind> = {
   'image/jpeg': MediaKind.IMAGE,
@@ -98,6 +107,9 @@ export class MediaService {
   /** The private bucket's folder for view-once attachments. */
   static readonly onceFolder = 'once';
 
+  /** The private bucket's folder for what is sent in community chats. */
+  static readonly chatFolder = 'chat';
+
   /**
    * Uploads a view-once attachment to the private bucket.
    *
@@ -112,15 +124,70 @@ export class MediaService {
     buffer: Buffer,
     mimeType: string | undefined,
     dimensions: { width?: number; height?: number } = {},
-  ): Promise<{
-    ref: string;
-    kind: MediaKind;
-    width: number | null;
-    height: number | null;
-    durationMs: number | null;
-  }> {
+  ): Promise<PrivateUpload> {
+    return this.uploadPrivately(
+      MediaService.onceFolder,
+      userId,
+      buffer,
+      mimeType,
+      {
+        dimensions,
+        allowGif: false,
+      },
+    );
+  }
+
+  /**
+   * Uploads a photo, clip or voice note for a community chat.
+   *
+   * Into the private bucket, like a view-once attachment, and answered with a
+   * reference: the message it goes in hands out links that last an hour, to
+   * people who can read the chat, so a message taken down takes its picture
+   * with it rather than leaving a public address behind.
+   */
+  async uploadChat(
+    userId: string,
+    buffer: Buffer,
+    mimeType: string | undefined,
+    dimensions: { width?: number; height?: number } = {},
+  ): Promise<PrivateUpload> {
+    return this.uploadPrivately(
+      MediaService.chatFolder,
+      userId,
+      buffer,
+      mimeType,
+      {
+        dimensions,
+        allowGif: true,
+      },
+    );
+  }
+
+  /**
+   * A reference [userId] uploaded into [folder], and nobody else's: the name
+   * starts with the uploader's id, and holds nothing that could walk out of
+   * the folder.
+   */
+  static isOwnPrivateRef(folder: string, ref: string, userId: string): boolean {
+    const prefix = `${folder}/${userId}_`;
+    return (
+      ref.startsWith(prefix) &&
+      /^[A-Za-z0-9_.-]+$/.test(ref.slice(prefix.length))
+    );
+  }
+
+  private async uploadPrivately(
+    folder: string,
+    userId: string,
+    buffer: Buffer,
+    mimeType: string | undefined,
+    {
+      dimensions,
+      allowGif,
+    }: { dimensions: { width?: number; height?: number }; allowGif: boolean },
+  ): Promise<PrivateUpload> {
     const { sniffed, kind, measured } = this.check(buffer, mimeType);
-    if (kind === MediaKind.GIF) {
+    if (kind === MediaKind.GIF && !allowGif) {
       throw new BadRequestException(
         'A GIF cannot be sent view once. Send it as it is.',
       );
@@ -128,8 +195,8 @@ export class MediaService {
 
     let durationMs: number | null = null;
     if (kind === MediaKind.VIDEO) {
-      // Read, not prepared: preparing cuts a poster, and there is nowhere a
-      // view-once clip's poster may go.
+      // Read, not prepared: preparing cuts a poster, and a poster would need
+      // a public home this file must not have.
       const shape = (await this.transcode.probe(buffer)) ?? {
         width: null,
         height: null,
@@ -149,9 +216,11 @@ export class MediaService {
       if (shape.height) dimensions = { ...dimensions, height: shape.height };
     }
 
-    const ref = `${MediaService.onceFolder}/${userId}_${Date.now()}_${randomUUID()}.${EXTENSIONS[sniffed]}`;
+    const ref = `${folder}/${userId}_${Date.now()}_${randomUUID()}.${EXTENSIONS[sniffed]}`;
     await this.supabase.uploadPrivate(ref, buffer, sniffed);
-    this.logger.log(`view-once media uploaded by ${userId} (${kind})`);
+    this.logger.log(
+      `private media uploaded by ${userId} into ${folder} (${kind})`,
+    );
     return {
       ref,
       kind,

@@ -378,6 +378,33 @@ export class SupabaseService {
     return data.signedUrl;
   }
 
+  /**
+   * Links to several private objects at once, each stopping after
+   * [seconds]: one round trip for a page of messages rather than one per
+   * picture. A path that could not be signed is left out of the answer, so
+   * one missing file costs its own picture, not the page.
+   */
+  async signPrivateMany(
+    paths: readonly string[],
+    seconds: number,
+  ): Promise<Map<string, string>> {
+    const signed = new Map<string, string>();
+    if (paths.length === 0) return signed;
+    await this.ensurePrivateBucket();
+    const { data, error } = await this.client.storage
+      .from(this.privateBucketName)
+      .createSignedUrls([...new Set(paths)], seconds);
+    if (error) {
+      throw new Error(`Supabase could not sign links: ${error.message}`);
+    }
+    for (const row of data ?? []) {
+      if (row.path && row.signedUrl && !row.error) {
+        signed.set(row.path, row.signedUrl);
+      }
+    }
+    return signed;
+  }
+
   /** Deletes private objects. Ones already gone are not an error. */
   async removePrivate(paths: readonly string[]): Promise<void> {
     if (paths.length === 0) return;

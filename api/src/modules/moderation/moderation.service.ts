@@ -333,12 +333,33 @@ export class ModerationService {
           chat: {
             select: { name: true, community: { select: { slug: true } } },
           },
+          media: { select: { kind: true } },
+          poll: {
+            select: {
+              options: { orderBy: { position: 'asc' }, select: { text: true } },
+            },
+          },
         },
       });
-      return message
-        ? `community chat message by ${message.senderId} in ` +
-            `c/${message.chat.community.slug} › ${message.chat.name}: ${message.body}`
-        : null;
+      if (!message) return null;
+      // What it carried, in words, so the record says a picture or a poll
+      // was there even after the message is gone -- and a poll's answers,
+      // which can be the abuse as much as its question.
+      const carried = [
+        message.media.length > 0
+          ? `[${message.media.map((m) => m.kind.toLowerCase()).join(', ')}]`
+          : '',
+        message.poll
+          ? `[poll: ${message.poll.options.map((o) => o.text).join(' / ')}]`
+          : '',
+      ]
+        .filter(Boolean)
+        .join(' ');
+      return (
+        `community chat message by ${message.senderId} in ` +
+        `c/${message.chat.community.slug} › ${message.chat.name}: ${message.body}` +
+        (carried ? ` ${carried}` : '')
+      );
     }
     if (target === ReportTarget.POST) {
       const post = await this.prisma.post.findUnique({

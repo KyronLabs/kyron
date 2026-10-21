@@ -110,6 +110,21 @@ describe('a message to a phone', () => {
     expect(tagOf({ type: 'test' })).toBeUndefined();
   });
 
+  it('a community chat is a message, one notification per chat', () => {
+    const payload = PushService.payload('t', {
+      title: 'General · Birders',
+      body: 'Ada: hello',
+      data: { type: 'community.chat', chatId: 'k1' },
+    }) as { android: { notification: { channel_id: string; tag?: string } } };
+
+    expect(payload.android.notification).toEqual(
+      expect.objectContaining({
+        channel_id: 'messages',
+        tag: 'community-chat-k1',
+      }),
+    );
+  });
+
   it('everything else goes on the Activity channel', () => {
     const payload = PushService.payload('t', {
       title: 'Kyron',

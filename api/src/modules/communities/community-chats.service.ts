@@ -8,9 +8,16 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { CommunityChatWriters, CommunityRole, Prisma } from '@prisma/client';
+import {
+  CommunityChatWriters,
+  CommunityRole,
+  MediaKind,
+  Prisma,
+} from '@prisma/client';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
+import { MediaService } from '../media/media.service';
 import { MessagesService } from '../messages/messages.service';
 import { DeliveryService } from '../push/delivery.service';
 
@@ -41,10 +48,47 @@ export interface CommunityChatSummary {
    * moderator may not. */
   role: CommunityRole;
   /** Messages from other people since the reader last read it. 0 when they
-   * have not joined it. */
+   * have not joined it. Not counting people the reader cannot see. */
   unread: number;
+  /** The reader has muted it: no pushes, and not in the Messages badge. */
+  muted: boolean;
   lastMessageAt: Date | null;
   createdAt: Date;
+}
+
+/** A photo, clip or voice note sent in a community chat. [url] lasts an
+ * hour, and only people who can read the chat are given one. */
+export interface CommunityChatMediaItem {
+  id: string;
+  kind: MediaKind;
+  url: string;
+  width: number | null;
+  height: number | null;
+  durationMs: number | null;
+  waveform: number[];
+}
+
+/** A poll asked in a chat. What was asked is the message's body. Counts,
+ * never names. */
+export interface CommunityChatPollItem {
+  id: string;
+  multiple: boolean;
+  closed: boolean;
+  options: { id: string; text: string; votes: number }[];
+  /** How many people have answered, whatever they chose. */
+  voters: number;
+  /** What the reader chose. */
+  mine: string[];
+}
+
+/** An attachment as a message is sent with it: a reference into the
+ * private bucket, from POST /media/chat, and what the phone measured. */
+export interface CommunityChatMediaInput {
+  ref: string;
+  width?: number;
+  height?: number;
+  durationMs?: number;
+  waveform?: number[];
 }
 
 /** Somebody who wrote in a community chat. */
@@ -80,6 +124,13 @@ export interface CommunityChatMessageItem {
   reactions: { emoji: string; count: number }[];
   /** The reader's own reaction, if any. */
   mine: string | null;
+  /** When its author last changed its words; null if never. */
+  editedAt: Date | null;
+  /** Until when the reader may still edit it: theirs, not a poll, and
+   * inside [CommunityChatsService.editWindowMs]. Null otherwise. */
+  editableUntil: Date | null;
+  media: CommunityChatMediaItem[];
+  poll: CommunityChatPollItem | null;
   createdAt: Date;
 }
 
@@ -94,6 +145,9 @@ export interface JoinedCommunityChat extends CommunityChatSummary {
     senderName: string | null;
     body: string;
     mine: boolean;
+    /** What it carried, for a preview with no words of its own. */
+    media: MediaKind | null;
+    poll: boolean;
   } | null;
 }
 
@@ -119,6 +173,7 @@ export class CommunityChatsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly delivery: DeliveryService,
+    private readonly supabase: SupabaseService,
   ) {}
 
   static readonly maxChats = 20;
@@ -132,6 +187,28 @@ export class CommunityChatsService {
 
   /** The longest slow mode a moderator can set: an hour between messages. */
   static readonly maxSlowModeSeconds = 3600;
+
+  /** How long after sending a message its author may still change it. */
+  static readonly editWindowMs = 15 * 60_000;
+
+  /** How many times one message may be changed. Each is kept. */
+  static readonly maxEdits = 10;
+
+  /** Attachments on one message. A voice note goes alone. */
+  static readonly maxMedia = 4;
+
+  static readonly minPollOptions = 2;
+  static readonly maxPollOptions = 10;
+  static readonly maxPollOption = 100;
+
+  /** How long a link to something sent in a chat works. */
+  static readonly mediaLinkSeconds = 3600;
+
+  /** Bars in a voice note's waveform, as the phone samples it. */
+  static readonly maxWaveform = 200;
+
+  /** The longest search a chat will run. */
+  static readonly maxQuery = 100;
 
   // ---- Reading -------------------------------------------------------------
 
@@ -147,9 +224,12 @@ export class CommunityChatsService {
       orderBy: [{ position: 'asc' }, { createdAt: 'asc' }],
       select: this.chatShape(viewerId),
     });
+    const blocked = await this.blockedWith(viewerId);
     return {
       items: await Promise.all(
-        chats.map((chat) => this.summarize(viewerId, chat, community, role)),
+        chats.map((chat) =>
+          this.summarize(viewerId, chat, community, role, blocked),
+        ),
       ),
     };
   }
@@ -161,8 +241,14 @@ export class CommunityChatsService {
       where: { id: chat.id },
       select: this.chatShape(viewerId),
     });
-    const summary = await this.summarize(viewerId, row, chat.community, role);
     const blocked = await this.blockedWith(viewerId);
+    const summary = await this.summarize(
+      viewerId,
+      row,
+      chat.community,
+      role,
+      blocked,
+    );
     const pinned =
       row.pinnedMessageId === null
         ? []
@@ -239,6 +325,10 @@ export class CommunityChatsService {
           },
         },
       },
+      // The liveliest hundred, not any hundred: taken before ordering, the
+      // cap kept whichever rows the database met first, and somebody in many
+      // chats could find the one they were just talking in missing.
+      orderBy: { chat: { lastMessageAt: { sort: 'desc', nulls: 'last' } } },
       take: 100,
     });
     const blocked = await this.blockedWith(viewerId);
@@ -251,6 +341,7 @@ export class CommunityChatsService {
           chat,
           chat.community,
           role,
+          blocked,
         );
         const last = await this.prisma.communityChatMessage.findFirst({
           where: {
@@ -263,6 +354,12 @@ export class CommunityChatsService {
             body: true,
             senderId: true,
             sender: { select: { name: true, username: true } },
+            media: {
+              orderBy: { position: 'asc' },
+              take: 1,
+              select: { kind: true },
+            },
+            poll: { select: { id: true } },
           },
         });
         return {
@@ -272,6 +369,8 @@ export class CommunityChatsService {
                 senderName: last.sender.name ?? last.sender.username,
                 body: last.body.slice(0, QUOTE_LENGTH),
                 mine: last.senderId === viewerId,
+                media: last.media[0]?.kind ?? null,
+                poll: last.poll !== null,
               }
             : null,
         };
@@ -335,7 +434,8 @@ export class CommunityChatsService {
     this.logger.log(
       `chat ${chat.id} opened in ${community.slug} by ${viewerId}`,
     );
-    return this.summarize(viewerId, chat, community, role);
+    // New: nothing in it yet, from anybody.
+    return this.summarize(viewerId, chat, community, role, new Set());
   }
 
   /** Renames a chat, or changes who may write in it, how often, or where it
@@ -478,38 +578,63 @@ export class CommunityChatsService {
     return { ok: true };
   }
 
-  /** Says something in a chat. */
+  /**
+   * Says something in a chat: words, up to [maxMedia] photos or clips (or
+   * one voice note) with or without words, or a poll -- [input.body] being
+   * its question.
+   */
   async send(
     viewerId: string,
     chatId: string,
-    input: { body: string; replyToId?: string },
+    input: {
+      body?: string;
+      replyToId?: string;
+      media?: CommunityChatMediaInput[];
+      poll?: { options: string[]; multiple?: boolean };
+    },
     now: Date = new Date(),
   ): Promise<CommunityChatMessageItem> {
     const { chat, role } = await this.access(viewerId, chatId);
-    const moderator = CommunityChatsService.moderates(role);
+    const moderator = await this.requireWriter(viewerId, chat, role);
 
-    const joined = await this.prisma.communityChatMember.findUnique({
-      where: { chatId_userId: { chatId: chat.id, userId: viewerId } },
-      select: { userId: true },
-    });
-    if (!joined) {
-      throw new ForbiddenException('Join this chat to write in it.');
+    const attachments = CommunityChatsService.attachments(
+      viewerId,
+      input.media ?? [],
+    );
+    const options = input.poll
+      ? CommunityChatsService.pollOptions(input.poll.options)
+      : null;
+    if (options && attachments.length > 0) {
+      throw new BadRequestException('A poll goes on its own.');
     }
-    if (chat.writers === CommunityChatWriters.MODERATORS && !moderator) {
-      throw new ForbiddenException('Only moderators can write in this chat.');
-    }
+    // A picture can go without words; anything else needs some.
+    const body =
+      attachments.length > 0
+        ? CommunityChatsService.caption(input.body ?? '')
+        : CommunityChatsService.body(input.body ?? '');
 
-    const body = CommunityChatsService.body(input.body);
-
+    let repliedTo: string | null = null;
     if (input.replyToId) {
       const answered = await this.prisma.communityChatMessage.findFirst({
         where: { id: input.replyToId, chatId: chat.id, deletedAt: null },
-        select: { id: true },
+        select: { id: true, senderId: true },
       });
       if (!answered) {
         throw new BadRequestException(
           'That message is no longer here to reply to.',
         );
+      }
+      repliedTo = answered.senderId;
+    }
+
+    if (attachments.length > 0) {
+      // Each upload goes in one message. Twice, and taking one down -- which
+      // deletes its file -- would leave the other pointing at nothing.
+      const used = await this.prisma.media.count({
+        where: { privatePath: { in: attachments.map((a) => a.ref) } },
+      });
+      if (used > 0) {
+        throw new BadRequestException('That file has already been sent.');
       }
     }
 
@@ -528,6 +653,33 @@ export class CommunityChatsService {
         },
         select: { id: true },
       });
+      if (attachments.length > 0) {
+        await tx.media.createMany({
+          data: attachments.map((a, position) => ({
+            communityMessageId: made.id,
+            kind: a.kind,
+            // Never an address: [privatePath] is, and it is never sent.
+            url: '',
+            privatePath: a.ref,
+            width: a.width,
+            height: a.height,
+            durationMs: a.durationMs,
+            waveform: a.waveform,
+            position,
+          })),
+        });
+      }
+      if (options) {
+        await tx.communityChatPoll.create({
+          data: {
+            messageId: made.id,
+            multiple: input.poll?.multiple === true,
+            options: {
+              create: options.map((text, position) => ({ text, position })),
+            },
+          },
+        });
+      }
       await tx.communityChat.update({
         where: { id: chat.id },
         data: { lastMessageAt: now },
@@ -551,7 +703,176 @@ export class CommunityChatsService {
       new Set<string>(),
       1,
     );
+    try {
+      await this.notify(chat, item, repliedTo, now);
+    } catch (error) {
+      // The message is said; a push that could not go is not its failure.
+      this.logger.warn(`chat ${chat.id}: push failed: ${String(error)}`);
+    }
     return item;
+  }
+
+  /**
+   * Changes the words of a message the reader sent, within
+   * [editWindowMs] of sending it. What it said before is kept
+   * (CommunityChatMessageEdit), for review; the chat shows it was edited.
+   * A poll cannot be: its answers were given to the question as asked.
+   */
+  async edit(
+    viewerId: string,
+    chatId: string,
+    messageId: string,
+    input: { body: string },
+    now: Date = new Date(),
+  ): Promise<CommunityChatMessageItem> {
+    const { chat, role } = await this.access(viewerId, chatId);
+    const message = await this.prisma.communityChatMessage.findFirst({
+      where: { id: messageId, chatId: chat.id, deletedAt: null },
+      select: {
+        id: true,
+        senderId: true,
+        body: true,
+        createdAt: true,
+        poll: { select: { id: true } },
+        _count: { select: { media: true, edits: true } },
+      },
+    });
+    if (!message) {
+      throw new NotFoundException('That message is no longer here.');
+    }
+    if (message.senderId !== viewerId) {
+      throw new ForbiddenException('You can only edit your own messages.');
+    }
+    // Still somebody who may write here: out of the chat, or in one that is
+    // now for moderators only, they do not get to rewrite what is in it.
+    await this.requireWriter(viewerId, chat, role);
+    if (message.poll) {
+      throw new BadRequestException('A poll cannot be edited.');
+    }
+    if (
+      now.getTime() - message.createdAt.getTime() >
+      CommunityChatsService.editWindowMs
+    ) {
+      throw new ForbiddenException(
+        'A message can be edited for 15 minutes after it is sent.',
+      );
+    }
+    if (message._count.edits >= CommunityChatsService.maxEdits) {
+      throw new ForbiddenException(
+        'This message has been edited as many times as it can be.',
+      );
+    }
+    const body =
+      message._count.media > 0
+        ? CommunityChatsService.caption(input.body)
+        : CommunityChatsService.body(input.body);
+
+    if (body !== message.body) {
+      await this.prisma.$transaction([
+        this.prisma.communityChatMessageEdit.create({
+          data: { messageId: message.id, body: message.body, editedAt: now },
+        }),
+        this.prisma.communityChatMessage.update({
+          where: { id: message.id },
+          data: { body, editedAt: now },
+        }),
+      ]);
+      await this.tellChat(chat.id, {
+        type: 'community.chat.message.edited',
+        chatId: chat.id,
+        messageId: message.id,
+      });
+    }
+    const [item] = await this.items(
+      viewerId,
+      { id: message.id },
+      new Set<string>(),
+      1,
+    );
+    return item;
+  }
+
+  /**
+   * Messages in a chat whose words hold [query], newest first. The same
+   * people are left out as anywhere else in the chat.
+   */
+  async search(
+    viewerId: string,
+    chatId: string,
+    query: string,
+  ): Promise<{ items: CommunityChatMessageItem[] }> {
+    const { chat } = await this.access(viewerId, chatId);
+    const words = (query ?? '').trim();
+    if (words.length < 2) return { items: [] };
+    if (words.length > CommunityChatsService.maxQuery) {
+      throw new BadRequestException('That search is too long.');
+    }
+    const blocked = await this.blockedWith(viewerId);
+    const items = await this.items(
+      viewerId,
+      {
+        chatId: chat.id,
+        deletedAt: null,
+        // Escaped: Prisma hands `contains` to LIKE as it is, so a search for
+        // "e_" matched every e followed by anything, and "%" matched all.
+        body: {
+          contains: words.replace(/[\\%_]/g, (c) => `\\${c}`),
+          mode: 'insensitive',
+        },
+        ...(blocked.size > 0 ? { senderId: { notIn: [...blocked] } } : {}),
+      },
+      blocked,
+      30,
+    );
+    return { items };
+  }
+
+  /** Mutes a chat for the reader, or unmutes it. Only one they have joined:
+   * nothing is pushed from any other. */
+  async setMuted(
+    viewerId: string,
+    chatId: string,
+    muted: boolean,
+  ): Promise<{ id: string; muted: boolean }> {
+    const { chat } = await this.access(viewerId, chatId);
+    const { count } = await this.prisma.communityChatMember.updateMany({
+      where: { chatId: chat.id, userId: viewerId },
+      data: { mutedAt: muted ? new Date() : null },
+    });
+    if (count === 0) {
+      throw new ForbiddenException('Join this chat to mute it.');
+    }
+    return { id: chat.id, muted };
+  }
+
+  /**
+   * How many of the reader's chats have something new in them, for the
+   * Messages badge: joined, not muted, in a community they are still in, and
+   * a message since they last read it from somebody they can see.
+   */
+  async unreadChats(viewerId: string): Promise<{ chats: number }> {
+    const rows = await this.prisma.$queryRaw<{ n: number }[]>`
+      SELECT count(*)::int AS n
+      FROM "CommunityChatMember" cm
+      JOIN "CommunityChat" c ON c.id = cm."chatId" AND c."deletedAt" IS NULL
+      JOIN "Community" co ON co.id = c."communityId" AND co."deletedAt" IS NULL
+      JOIN "CommunityMember" mem
+        ON mem."communityId" = c."communityId" AND mem."userId" = cm."userId"
+      WHERE cm."userId" = ${viewerId}::uuid
+        AND cm."mutedAt" IS NULL
+        AND EXISTS (
+          SELECT 1 FROM "CommunityChatMessage" m
+          WHERE m."chatId" = cm."chatId"
+            AND m."deletedAt" IS NULL
+            AND m."senderId" <> cm."userId"
+            AND m."createdAt" > COALESCE(cm."lastReadAt", cm."joinedAt")
+            AND NOT EXISTS (
+              SELECT 1 FROM "Block" b
+              WHERE (b."blockerId" = cm."userId" AND b."blockedId" = m."senderId")
+                 OR (b."blockerId" = m."senderId" AND b."blockedId" = cm."userId")
+            )
+        )`;
+    return { chats: rows[0]?.n ?? 0 };
   }
 
   /**
@@ -593,6 +914,15 @@ export class CommunityChatsService {
       }
     }
 
+    // Their own: unsaid, wholly -- its words, what they were before an edit,
+    // its pictures and its poll. Somebody else's: out of the chat, all of it
+    // kept for review.
+    const files = own
+      ? await this.prisma.media.findMany({
+          where: { communityMessageId: message.id },
+          select: { privatePath: true },
+        })
+      : [];
     await this.prisma.$transaction([
       this.prisma.communityChatMessage.update({
         where: { id: message.id },
@@ -606,7 +936,34 @@ export class CommunityChatsService {
         where: { id: chat.id, pinnedMessageId: message.id },
         data: { pinnedMessageId: null },
       }),
+      ...(own
+        ? [
+            this.prisma.communityChatMessageEdit.deleteMany({
+              where: { messageId: message.id },
+            }),
+            this.prisma.media.deleteMany({
+              where: { communityMessageId: message.id },
+            }),
+            this.prisma.communityChatPoll.deleteMany({
+              where: { messageId: message.id },
+            }),
+          ]
+        : []),
     ]);
+    const paths = files
+      .map((f) => f.privatePath)
+      .filter((p): p is string => !!p);
+    if (paths.length > 0) {
+      try {
+        await this.supabase.removePrivate(paths);
+      } catch (error) {
+        // The rows are gone, so nobody is handed a link to these again;
+        // the files wait for the account's own sweep.
+        this.logger.warn(
+          `message ${message.id}: files not removed: ${String(error)}`,
+        );
+      }
+    }
     await this.tellChat(chat.id, {
       type: 'community.chat.message.deleted',
       chatId: chat.id,
@@ -664,6 +1021,145 @@ export class CommunityChatsService {
     return { ok: true };
   }
 
+  // ---- Polls -----------------------------------------------------------------
+
+  /**
+   * Answers a poll, in place of any earlier answer. Anybody who can read the
+   * chat may, as with reacting: a spectator, or a member in a chat that is
+   * for announcements.
+   */
+  async vote(
+    viewerId: string,
+    chatId: string,
+    messageId: string,
+    optionIds: string[],
+  ): Promise<CommunityChatMessageItem> {
+    const { chat } = await this.access(viewerId, chatId);
+    const poll = await this.livePoll(viewerId, chat.id, messageId);
+    if (poll.closedAt) throw new ForbiddenException('This poll is closed.');
+    const chosen = [...new Set(optionIds ?? [])];
+    if (chosen.length === 0) {
+      throw new BadRequestException('Choose an answer.');
+    }
+    if (!poll.multiple && chosen.length > 1) {
+      throw new BadRequestException('This poll takes one answer.');
+    }
+    const offered = new Set(poll.options.map((o) => o.id));
+    if (chosen.some((id) => !offered.has(id))) {
+      throw new BadRequestException('That is not one of its answers.');
+    }
+    await this.prisma.$transaction(async (tx) => {
+      // Two taps on two answers, side by side: without turns, each clears
+      // nothing the other has written yet, and a one-answer poll ends up
+      // with two from one person.
+      await CommunityChatsService.takeTurns(tx, `vote:${poll.id}:${viewerId}`);
+      await tx.communityChatPollVote.deleteMany({
+        where: { pollId: poll.id, userId: viewerId },
+      });
+      await tx.communityChatPollVote.createMany({
+        data: chosen.map((optionId) => ({
+          pollId: poll.id,
+          optionId,
+          userId: viewerId,
+        })),
+      });
+    });
+    await this.tellChat(chat.id, {
+      type: 'community.chat.poll',
+      chatId: chat.id,
+      messageId,
+    });
+    const [item] = await this.items(
+      viewerId,
+      { id: messageId },
+      new Set<string>(),
+      1,
+    );
+    return item;
+  }
+
+  /** Takes the reader's answer back, while the poll is open. */
+  async unvote(
+    viewerId: string,
+    chatId: string,
+    messageId: string,
+  ): Promise<{ ok: true }> {
+    const { chat } = await this.access(viewerId, chatId);
+    const poll = await this.livePoll(viewerId, chat.id, messageId);
+    if (poll.closedAt) throw new ForbiddenException('This poll is closed.');
+    const { count } = await this.prisma.communityChatPollVote.deleteMany({
+      where: { pollId: poll.id, userId: viewerId },
+    });
+    if (count > 0) {
+      await this.tellChat(chat.id, {
+        type: 'community.chat.poll',
+        chatId: chat.id,
+        messageId,
+      });
+    }
+    return { ok: true };
+  }
+
+  /** Closes a poll: by whoever asked it, or the community's owner or a
+   * moderator. Its answers stay to be read. */
+  async closePoll(
+    viewerId: string,
+    chatId: string,
+    messageId: string,
+  ): Promise<{ ok: true }> {
+    const { chat, role } = await this.access(viewerId, chatId);
+    const poll = await this.livePoll(viewerId, chat.id, messageId);
+    if (poll.senderId !== viewerId && !CommunityChatsService.moderates(role)) {
+      throw new ForbiddenException(
+        'Only whoever asked it, or a moderator, can close a poll.',
+      );
+    }
+    if (!poll.closedAt) {
+      await this.prisma.communityChatPoll.update({
+        where: { id: poll.id },
+        data: { closedAt: new Date() },
+      });
+      await this.tellChat(chat.id, {
+        type: 'community.chat.poll',
+        chatId: chat.id,
+        messageId,
+      });
+    }
+    return { ok: true };
+  }
+
+  /** The poll a message is, if the message is still up and the reader can
+   * see who asked it. */
+  private async livePoll(viewerId: string, chatId: string, messageId: string) {
+    const blocked = await this.blockedWith(viewerId);
+    const message = await this.prisma.communityChatMessage.findFirst({
+      where: {
+        id: messageId,
+        chatId,
+        deletedAt: null,
+        ...(blocked.size > 0 ? { senderId: { notIn: [...blocked] } } : {}),
+      },
+      select: {
+        senderId: true,
+        poll: {
+          select: {
+            id: true,
+            multiple: true,
+            closedAt: true,
+            options: { select: { id: true } },
+          },
+        },
+      },
+    });
+    if (!message) {
+      throw new NotFoundException('That message is no longer here.');
+    }
+    if (!message.poll) {
+      throw new BadRequestException('That message is not a poll.');
+    }
+    return { ...message.poll, senderId: message.senderId };
+  }
+
   // ---- What the community module calls --------------------------------------
 
   /**
@@ -716,6 +1212,137 @@ export class CommunityChatsService {
       );
     }
     return body;
+  }
+
+  /** Words under a picture: trimmed, and allowed to be none. */
+  static caption(raw: string): string {
+    const body = (raw ?? '').trim();
+    if (body.length > CommunityChatsService.maxBody) {
+      throw new BadRequestException(
+        `A message can be at most ${CommunityChatsService.maxBody} characters.`,
+      );
+    }
+    return body;
+  }
+
+  /**
+   * What a message carries, checked: the reader's own uploads from POST
+   * /media/chat, no more than [maxMedia], a voice note on its own, and what
+   * each is read from the file's own name -- set by the server when it
+   * looked at the bytes -- rather than from what the client says it is.
+   */
+  static attachments(
+    viewerId: string,
+    raw: readonly CommunityChatMediaInput[],
+  ): {
+    ref: string;
+    kind: MediaKind;
+    width: number | null;
+    height: number | null;
+    durationMs: number | null;
+    waveform: number[];
+  }[] {
+    if (!raw || raw.length === 0) return [];
+    if (raw.length > CommunityChatsService.maxMedia) {
+      throw new BadRequestException(
+        `A message can carry at most ${CommunityChatsService.maxMedia} photos or clips.`,
+      );
+    }
+    const refs = new Set<string>();
+    const out = raw.map((a) => {
+      const ref = typeof a?.ref === 'string' ? a.ref : '';
+      if (
+        !MediaService.isOwnPrivateRef(MediaService.chatFolder, ref, viewerId)
+      ) {
+        throw new BadRequestException('That file was not uploaded here.');
+      }
+      if (refs.has(ref)) {
+        throw new BadRequestException('The same file is in there twice.');
+      }
+      refs.add(ref);
+      const kind = CommunityChatsService.kindOfRef(ref);
+      const count = (n: unknown, max: number): number | null =>
+        typeof n === 'number' && Number.isInteger(n) && n > 0 && n <= max
+          ? n
+          : null;
+      const waveform =
+        kind === MediaKind.VOICE && a.waveform
+          ? a.waveform
+              .slice(0, CommunityChatsService.maxWaveform)
+              .map((v: unknown) =>
+                typeof v === 'number' && Number.isFinite(v)
+                  ? Math.min(100, Math.max(0, Math.round(v)))
+                  : 0,
+              )
+          : [];
+      return {
+        ref,
+        kind,
+        width: count(a.width, 20_000),
+        height: count(a.height, 20_000),
+        durationMs:
+          kind === MediaKind.VOICE || kind === MediaKind.VIDEO
+            ? count(a.durationMs, 60 * 60_000)
+            : null,
+        waveform,
+      };
+    });
+    if (out.length > 1 && out.some((a) => a.kind === MediaKind.VOICE)) {
+      throw new BadRequestException('A voice note goes on its own.');
+    }
+    return out;
+  }
+
+  /** What an upload is, from the extension the server gave it. */
+  static kindOfRef(ref: string): MediaKind {
+    const extension = ref.slice(ref.lastIndexOf('.') + 1).toLowerCase();
+    switch (extension) {
+      case 'jpg':
+      case 'png':
+      case 'webp':
+      case 'heic':
+        return MediaKind.IMAGE;
+      case 'gif':
+        return MediaKind.GIF;
+      case 'mp4':
+      case 'mov':
+      case 'webm':
+        return MediaKind.VIDEO;
+      case 'm4a':
+        return MediaKind.VOICE;
+      default:
+        throw new BadRequestException('That file is not one a chat can carry.');
+    }
+  }
+
+  /** A poll's answers: two to ten, each a few words, none twice. */
+  static pollOptions(raw: readonly string[]): string[] {
+    if (!Array.isArray(raw)) {
+      throw new BadRequestException('A poll needs answers to choose from.');
+    }
+    const options = raw.map((o) =>
+      (typeof o === 'string' ? o : '').trim().replace(/\s+/g, ' '),
+    );
+    if (options.some((o) => !o)) {
+      throw new BadRequestException('An answer cannot be empty.');
+    }
+    if (
+      options.length < CommunityChatsService.minPollOptions ||
+      options.length > CommunityChatsService.maxPollOptions
+    ) {
+      throw new BadRequestException(
+        `A poll has between ${CommunityChatsService.minPollOptions} and ${CommunityChatsService.maxPollOptions} answers.`,
+      );
+    }
+    if (options.some((o) => o.length > CommunityChatsService.maxPollOption)) {
+      throw new BadRequestException(
+        `An answer can be at most ${CommunityChatsService.maxPollOption} characters.`,
+      );
+    }
+    if (new Set(options.map((o) => o.toLowerCase())).size !== options.length) {
+      throw new BadRequestException('Each answer can be in a poll once.');
+    }
+    return options;
   }
 
   static moderates(role: CommunityRole | null): boolean {
@@ -840,6 +1467,7 @@ export class CommunityChatsService {
   ): Promise<{
     chat: {
       id: string;
+      name: string;
       writers: CommunityChatWriters;
       slowModeSeconds: number;
       community: {
@@ -855,6 +1483,7 @@ export class CommunityChatsService {
       where: { id: chatId, deletedAt: null, community: { deletedAt: null } },
       select: {
         id: true,
+        name: true,
         writers: true,
         slowModeSeconds: true,
         community: {
@@ -865,6 +1494,109 @@ export class CommunityChatsService {
     if (!chat) throw new NotFoundException('That chat does not exist.');
     const role = await this.requireMember(viewerId, chat.community.id);
     return { chat, role };
+  }
+
+  /**
+   * Pushes a new message to the people who should hear about it, once.
+   *
+   * Joined, not muted, still in the community, and not on either side of a
+   * block with the sender. And once per run of unread messages: somebody
+   * already pushed about this chat is not pushed again until they have read
+   * past it -- a lively room is one buzz, not one per line. A reply to them
+   * is the exception; muted stays muted even then.
+   *
+   * Chosen and marked in one statement, so two messages a moment apart
+   * cannot both push the same person: the second finds them marked.
+   */
+  private async notify(
+    chat: { id: string; name: string; community: { name: string } },
+    item: CommunityChatMessageItem,
+    repliedTo: string | null,
+    now: Date,
+  ): Promise<void> {
+    const rows = await this.prisma.$queryRaw<{ userId: string }[]>`
+      UPDATE "CommunityChatMember" cm
+      SET "notifiedAt" = ${now}
+      FROM "CommunityChat" c
+      WHERE cm."chatId" = ${chat.id}::uuid
+        AND c.id = cm."chatId"
+        AND cm."userId" <> ${item.sender.id}::uuid
+        AND cm."mutedAt" IS NULL
+        AND EXISTS (
+          SELECT 1 FROM "CommunityMember" mem
+          WHERE mem."communityId" = c."communityId" AND mem."userId" = cm."userId"
+        )
+        AND NOT EXISTS (
+          SELECT 1 FROM "Block" b
+          WHERE (b."blockerId" = cm."userId" AND b."blockedId" = ${item.sender.id}::uuid)
+             OR (b."blockerId" = ${item.sender.id}::uuid AND b."blockedId" = cm."userId")
+        )
+        AND (
+          cm."notifiedAt" IS NULL
+          OR cm."notifiedAt" <= COALESCE(cm."lastReadAt", cm."joinedAt")
+          OR cm."userId" = ${repliedTo}::uuid
+        )
+      RETURNING cm."userId" AS "userId"`;
+    if (rows.length === 0) return;
+    const who = item.sender.name ?? item.sender.username ?? 'Someone';
+    this.delivery.pushMany(
+      rows.map((r) => r.userId),
+      {
+        title: `${chat.name} · ${chat.community.name}`,
+        body: `${who}: ${CommunityChatsService.preview(item)}`,
+        data: { type: 'community.chat', chatId: chat.id },
+      },
+    );
+  }
+
+  /** What a push says a message was: its words, or what it carried. */
+  static preview(item: {
+    body: string;
+    media: { kind: MediaKind }[];
+    poll: unknown;
+  }): string {
+    const words = item.body.trim().replace(/\s+/g, ' ');
+    if (item.poll) return `Poll: ${CommunityChatsService.clip(words)}`;
+    if (words) return CommunityChatsService.clip(words);
+    switch (item.media[0]?.kind) {
+      case MediaKind.IMAGE:
+        return 'Photo';
+      case MediaKind.GIF:
+        return 'GIF';
+      case MediaKind.VIDEO:
+        return 'Clip';
+      case MediaKind.VOICE:
+        return 'Voice note';
+      default:
+        return 'New message';
+    }
+  }
+
+  private static clip(words: string): string {
+    return words.length > 100 ? `${words.slice(0, 99)}…` : words;
+  }
+
+  /**
+   * Whether the reader may write in [chat] now -- joined, and allowed by who
+   * it is for -- answering whether they are one of its moderators.
+   */
+  private async requireWriter(
+    viewerId: string,
+    chat: { id: string; writers: CommunityChatWriters },
+    role: CommunityRole,
+  ): Promise<boolean> {
+    const moderator = CommunityChatsService.moderates(role);
+    const joined = await this.prisma.communityChatMember.findUnique({
+      where: { chatId_userId: { chatId: chat.id, userId: viewerId } },
+      select: { userId: true },
+    });
+    if (!joined) {
+      throw new ForbiddenException('Join this chat to write in it.');
+    }
+    if (chat.writers === CommunityChatWriters.MODERATORS && !moderator) {
+      throw new ForbiddenException('Only moderators can write in this chat.');
+    }
+    return moderator;
   }
 
   private async liveMessage(
@@ -894,8 +1626,8 @@ export class CommunityChatsService {
 
   /**
    * Tells everyone who has joined a chat -- and is still in its community --
-   * that something in it changed. Ids only; no push: a busy room is not
-   * worth a buzz per message.
+   * that something in it changed. Ids only, and no push: what is pushed, to
+   * whom, is [notify]'s to decide.
    */
   private async tellChat(
     chatId: string,
@@ -905,7 +1637,9 @@ export class CommunityChatsService {
           type:
             | 'community.chat.message'
             | 'community.chat.message.deleted'
-            | 'community.chat.reaction';
+            | 'community.chat.message.edited'
+            | 'community.chat.reaction'
+            | 'community.chat.poll';
           chatId: string;
           messageId: string;
         },
@@ -944,7 +1678,7 @@ export class CommunityChatsService {
       _count: { select: { members: true } },
       members: {
         where: { userId: viewerId },
-        select: { joinedAt: true, lastReadAt: true },
+        select: { joinedAt: true, lastReadAt: true, mutedAt: true },
       },
     } as const;
   }
@@ -961,7 +1695,11 @@ export class CommunityChatsService {
       lastMessageAt: Date | null;
       createdAt: Date;
       _count: { members: number };
-      members: { joinedAt: Date; lastReadAt: Date | null }[];
+      members: {
+        joinedAt: Date;
+        lastReadAt: Date | null;
+        mutedAt: Date | null;
+      }[];
     },
     community: {
       id: string;
@@ -970,15 +1708,18 @@ export class CommunityChatsService {
       avatarUrl: string | null;
     },
     role: CommunityRole,
+    blocked: ReadonlySet<string>,
   ): Promise<CommunityChatSummary> {
     const membership = chat.members[0];
     const moderator = CommunityChatsService.moderates(role);
+    // Not counting anybody the reader cannot see: a count of messages that
+    // are never shown said "3 new" over a chat with nothing new in it.
     const unread = membership
       ? await this.prisma.communityChatMessage.count({
           where: {
             chatId: chat.id,
             deletedAt: null,
-            senderId: { not: viewerId },
+            senderId: { notIn: [viewerId, ...blocked] },
             createdAt: { gt: membership.lastReadAt ?? membership.joinedAt },
           },
         })
@@ -1004,6 +1745,7 @@ export class CommunityChatsService {
       canModerate: moderator,
       role,
       unread,
+      muted: membership?.mutedAt != null,
       lastMessageAt: chat.lastMessageAt,
       createdAt: chat.createdAt,
     };
@@ -1027,6 +1769,7 @@ export class CommunityChatsService {
         chatId: true,
         body: true,
         createdAt: true,
+        editedAt: true,
         senderId: true,
         sender: {
           select: {
@@ -1052,7 +1795,7 @@ export class CommunityChatsService {
     if (rows.length === 0) return [];
 
     const ids = rows.map((r) => r.id);
-    const [counts, mine, roles] = await Promise.all([
+    const [counts, mine, roles, media, polls] = await Promise.all([
       this.prisma.communityChatReaction.groupBy({
         by: ['messageId', 'emoji'],
         where: { messageId: { in: ids } },
@@ -1069,8 +1812,37 @@ export class CommunityChatsService {
         },
         select: { userId: true, role: true },
       }),
+      this.prisma.media.findMany({
+        where: { communityMessageId: { in: ids } },
+        orderBy: { position: 'asc' },
+        select: {
+          id: true,
+          communityMessageId: true,
+          kind: true,
+          privatePath: true,
+          width: true,
+          height: true,
+          durationMs: true,
+          waveform: true,
+        },
+      }),
+      this.prisma.communityChatPoll.findMany({
+        where: { messageId: { in: ids } },
+        select: {
+          id: true,
+          messageId: true,
+          multiple: true,
+          closedAt: true,
+          options: {
+            orderBy: { position: 'asc' },
+            select: { id: true, text: true },
+          },
+        },
+      }),
     ]);
     const roleOf = new Map(roles.map((r) => [r.userId, r.role]));
+    const mediaOf = await this.mediaItems(media);
+    const pollOf = await this.pollItems(viewerId, polls);
     const mineOf = new Map(mine.map((r) => [r.messageId, r.emoji]));
     const reactionsOf = new Map<string, { emoji: string; count: number }[]>();
     for (const row of counts) {
@@ -1107,8 +1879,113 @@ export class CommunityChatsService {
           (a, b) => b.count - a.count,
         ),
         mine: mineOf.get(row.id) ?? null,
+        editedAt: row.editedAt,
+        editableUntil:
+          row.senderId === viewerId && !pollOf.has(row.id)
+            ? new Date(
+                row.createdAt.getTime() + CommunityChatsService.editWindowMs,
+              )
+            : null,
+        media: mediaOf.get(row.id) ?? [],
+        poll: pollOf.get(row.id) ?? null,
         createdAt: row.createdAt,
       };
     });
+  }
+
+  /**
+   * What messages carry, by message, each with a link that lasts
+   * [mediaLinkSeconds]. Signed together, in one round trip. If the store
+   * cannot be reached the messages still come back, their pictures without
+   * links, rather than the chat failing to open.
+   */
+  private async mediaItems(
+    rows: {
+      id: string;
+      communityMessageId: string | null;
+      kind: MediaKind;
+      privatePath: string | null;
+      width: number | null;
+      height: number | null;
+      durationMs: number | null;
+      waveform: number[];
+    }[],
+  ): Promise<Map<string, CommunityChatMediaItem[]>> {
+    const byMessage = new Map<string, CommunityChatMediaItem[]>();
+    if (rows.length === 0) return byMessage;
+    let links = new Map<string, string>();
+    try {
+      links = await this.supabase.signPrivateMany(
+        rows.map((r) => r.privatePath).filter((p): p is string => !!p),
+        CommunityChatsService.mediaLinkSeconds,
+      );
+    } catch (error) {
+      this.logger.warn(`could not sign chat media: ${String(error)}`);
+    }
+    for (const row of rows) {
+      if (!row.communityMessageId) continue;
+      const list = byMessage.get(row.communityMessageId) ?? [];
+      list.push({
+        id: row.id,
+        kind: row.kind,
+        url: (row.privatePath && links.get(row.privatePath)) ?? '',
+        width: row.width,
+        height: row.height,
+        durationMs: row.durationMs,
+        waveform: row.waveform,
+      });
+      byMessage.set(row.communityMessageId, list);
+    }
+    return byMessage;
+  }
+
+  /** Polls, by message: each answer's count, how many answered, and what
+   * the reader chose. */
+  private async pollItems(
+    viewerId: string,
+    polls: {
+      id: string;
+      messageId: string;
+      multiple: boolean;
+      closedAt: Date | null;
+      options: { id: string; text: string }[];
+    }[],
+  ): Promise<Map<string, CommunityChatPollItem>> {
+    const byMessage = new Map<string, CommunityChatPollItem>();
+    if (polls.length === 0) return byMessage;
+    const pollIds = polls.map((p) => p.id);
+    const [counts, voters, mine] = await Promise.all([
+      this.prisma.communityChatPollVote.groupBy({
+        by: ['optionId'],
+        where: { pollId: { in: pollIds } },
+        _count: { _all: true },
+      }),
+      this.prisma.$queryRaw<{ pollId: string; n: number }[]>`
+        SELECT "pollId", count(DISTINCT "userId")::int AS n
+        FROM "CommunityChatPollVote"
+        WHERE "pollId" IN (${Prisma.join(pollIds.map((id) => Prisma.sql`${id}::uuid`))})
+        GROUP BY "pollId"`,
+      this.prisma.communityChatPollVote.findMany({
+        where: { pollId: { in: pollIds }, userId: viewerId },
+        select: { pollId: true, optionId: true },
+      }),
+    ]);
+    const votesOf = new Map(counts.map((c) => [c.optionId, c._count._all]));
+    const votersOf = new Map(voters.map((v) => [v.pollId, v.n]));
+    for (const poll of polls) {
+      byMessage.set(poll.messageId, {
+        id: poll.id,
+        multiple: poll.multiple,
+        closed: poll.closedAt !== null,
+        options: poll.options.map((o) => ({
+          id: o.id,
+          text: o.text,
+          votes: votesOf.get(o.id) ?? 0,
+        })),
+        voters: votersOf.get(poll.id) ?? 0,
+        mine: mine.filter((m) => m.pollId === poll.id).map((m) => m.optionId),
+      });
+    }
+    return byMessage;
   }
 }
