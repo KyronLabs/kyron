@@ -301,6 +301,9 @@ export class MessagesService {
     const rows = await this.prisma.conversation.findMany({
       where: {
         ...(only ? { id: { in: only } } : {}),
+        // Groups, as a filter of their own, narrowed here like the rest so
+        // a page of groups is a full page.
+        ...(which === 'groups' ? { kind: ConversationKind.GROUP } : {}),
         members: {
           some: {
             userId: viewerId,

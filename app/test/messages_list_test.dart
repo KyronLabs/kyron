@@ -390,7 +390,11 @@ void main() {
       // full-size buttons, and like neither.
       await _pump(tester, _messages(), lists: lists);
 
-      for (final key in ['messages-filter', 'messages-hidden']) {
+      for (final key in [
+        'messages-filter',
+        'messages-groups',
+        'messages-hidden',
+      ]) {
         expect(
           tester.getSize(find.byKey(ValueKey(key))).height,
           ActionButton.compactHeight,
@@ -414,6 +418,72 @@ void main() {
       // Back in the other list, out of sight: the toast is the way to it.
       expect(find.text('Open'), findsOneWidget);
       await tester.pump(Toast.stayWithAction + const Duration(seconds: 1));
+    });
+
+    testWidgets('Groups lists the groups, and the community chats joined', (
+      tester,
+    ) async {
+      final repo = await _pump(
+        tester,
+        _messages(),
+        lists: {
+          ...lists,
+          ConversationFilter.groups: [
+            Conversation(
+              id: 'g1',
+              group: const GroupSummary(title: 'Birders', memberCount: 4),
+              lastMessage: _msg(body: 'Saturday?', sender: 'u-x'),
+              lastMessageAt: DateTime(2026, 10, 12, 18),
+            ),
+          ],
+        },
+        chats: [
+          CommunityChat(
+            id: 'k1',
+            communityId: 'c1',
+            communitySlug: 'birders',
+            communityName: 'Birders',
+            name: 'General',
+            joined: true,
+            lastMessageAt: DateTime(2026, 10, 12, 17),
+          ),
+        ],
+      );
+
+      await tester.tap(find.byKey(const ValueKey('messages-groups')));
+      await tester.pumpAndSettle();
+
+      // Narrowed by the server, so a page of groups is a full page.
+      expect(repo.asked.last, ConversationFilter.groups);
+      expect(find.text('Birders'), findsOneWidget);
+      expect(find.text('General'), findsOneWidget);
+      // Conversations between two are not groups.
+      expect(find.text('Wee'), findsNothing);
+    });
+
+    testWidgets('Groups and Hidden are one at a time', (tester) async {
+      final repo = await _pump(tester, _messages(), lists: lists);
+
+      await tester.tap(find.byKey(const ValueKey('messages-groups')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('messages-hidden')));
+      await tester.pumpAndSettle();
+      expect(repo.asked.last, ConversationFilter.hidden);
+      expect(find.text('Old'), findsOneWidget);
+
+      // And off again, back to everything.
+      await tester.tap(find.byKey(const ValueKey('messages-hidden')));
+      await tester.pumpAndSettle();
+      expect(find.text('Wee'), findsOneWidget);
+    });
+
+    testWidgets('Groups says when there are none', (tester) async {
+      await _pump(tester, _messages(), lists: lists);
+
+      await tester.tap(find.byKey(const ValueKey('messages-groups')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('No groups'), findsOneWidget);
     });
 
     testWidgets('the search box narrows the list by name', (tester) async {
