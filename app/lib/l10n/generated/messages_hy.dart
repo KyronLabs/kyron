@@ -1145,6 +1145,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Խմբեր"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Խմբեր չկան"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Այստեղ են այն խմբերը, որոնցում դուք եք, և համայնքների զրույցները, որոնց միանում եք։"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Հավանած"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Պահպանված"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1263,6 +1267,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Ընտրեք լեզուն"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1280,6 +1286,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Ձեր հաշիվը թարմացվեց"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "\$number գործով ձեր բողոքարկումը բավարարվեց"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Մենք կրկին քննեցինք \$number գործով ձեր բողոքարկումը, և որոշումն ուժի մեջ է մնում"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հաշիվն ընդմիշտ արգելափակվեց"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Գործ \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("սկսեց հետևել ձեզ"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("հավանեց ձեր գրառումը"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ավելի հին"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Համայնքի զրույցում ձեր հաղորդագրությունը հեռացվեց"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հրապարակածներից մեկը հեռացվեց"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Ձեր գրառումը հեռացվեց"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Ձեր պատասխանը հեռացվեց"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("պատասխանեց ձեր գրառմանը"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Մենք միջոցներ ձեռնարկեցինք ձեր բողոքի հիման վրա։ Շնորհակալություն, որ տեղեկացրիք։"),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Մենք քննեցինք ձեր բողոքը և մեր կանոնների խախտում չհայտնաբերեցինք։"),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Բողոքի պատճառ՝ \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("տարածեց ձեր գրառումը"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Մենք չեղարկեցինք \$number գործով որոշումը"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Ձեր հաշիվը կասեցված է"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հաշիվը կասեցված է մինչև \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Բոլորը"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Հետևորդներ"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Հավանումներ"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("Պատասխաններ"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Այս շաբաթ"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Այսօր"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հաշիվը նախազգուշացում ստացավ"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Երեկ"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1322,6 +1378,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Երբ թիմը որոշի, ծանուցում կստանաք, և կարող եք հետևել «Ձեր բողոքները» բաժնում։"),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Դիտել ձեր բողոքները"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Համայնքի զրույցի հաղորդագրություն"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Գրառում"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Պատասխան"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Միջոցներ են ձեռնարկվել"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Հաշիվ"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Որոշված է՝ \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Կանոնների խախտում չկա"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց բեռնել ձեր բողոքները"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Ինչի մասին եք բողոքել վերջին 90 օրում և ինչով է ավարտվել։ Երբ թիմը որոշում է, ծանուցում եք ստանում։ Նա, ում մասին բողոքում եք, երբեք չի իմանում, թե ով է բողոքել։"),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Բողոքներ չկան"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Երբ բողոքեք գրառման, պատասխանի, հաղորդագրության կամ հաշվի մասին, այն կհայտնվի այստեղ՝ արդյունքի հետ։"),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Քննվում է"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Բողոքը ներկայացվել է՝ \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Ինչի մասին եք բողոքել և ինչով է ավարտվել"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Ձեր բողոքները"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Երեխաների անվտանգություն"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Ոտնձգություն կամ բուլինգ"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Ատելության խոսք"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Անօրինական ապրանքներ կամ ծառայություններ"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Այլ անձի անունից հանդես գալը"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Մտավոր սեփականություն"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Կեղծ տեղեկություն"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Ինքնասպանություն կամ ինքնավնասում"),
+      "ui_rule_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Մեծահասակների համար բովանդակություն"),
+      "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("Այլ բան"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Սպամ"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Բռնություն կամ սպառնալիքներ"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1390,6 +1495,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Կրկին փորձել"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

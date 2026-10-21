@@ -1142,6 +1142,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("กลุ่ม"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("ไม่มีกลุ่ม"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "กลุ่มที่คุณอยู่และแชทชุมชนที่คุณเข้าร่วมจะแสดงที่นี่"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("ที่ถูกใจ"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("ที่บันทึกไว้"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1254,6 +1258,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("เลือกภาษาของคุณ"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1271,6 +1277,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("บัญชีของคุณได้รับการอัปเดต"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "คำอุทธรณ์ของคุณในเคส \$number ได้รับการยอมรับ"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "เราพิจารณาคำอุทธรณ์ของคุณในเคส \$number อีกครั้ง และคำตัดสินยังคงเดิม"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("บัญชีของคุณถูกแบนถาวร"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("เคส \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ติดตามคุณ"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("ถูกใจโพสต์ของคุณ"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("เก่ากว่า"),
+      "ui_notif_removed_message":
+          MessageLookupByLibrary.simpleMessage("ข้อความของคุณในแชทชุมชนถูกลบ"),
+      "ui_notif_removed_other":
+          MessageLookupByLibrary.simpleMessage("สิ่งที่คุณโพสต์ถูกลบ"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("โพสต์ของคุณถูกลบ"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("การตอบกลับของคุณถูกลบ"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("ตอบกลับโพสต์ของคุณ"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "เราดำเนินการกับสิ่งที่คุณรายงานแล้ว ขอบคุณที่แจ้งให้เราทราบ"),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "เราตรวจสอบสิ่งที่คุณรายงานแล้ว และไม่พบว่าละเมิดกฎของเรา"),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("รายงานเนื่องจาก: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("รีโพสต์โพสต์ของคุณ"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("เรากลับคำตัดสินในเคส \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("บัญชีของคุณถูกระงับ"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "บัญชีของคุณถูกระงับจนถึง \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("ทั้งหมด"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("การติดตาม"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("การถูกใจ"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("การตอบกลับ"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("สัปดาห์นี้"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("วันนี้"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("บัญชีของคุณได้รับคำเตือน"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("เมื่อวาน"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1310,6 +1364,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "คุณจะได้รับการแจ้งเตือนเมื่อทีมตัดสิน และติดตามได้ในรายงานของคุณ"),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("ดูรายงานของคุณ"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("ข้อความในแชทชุมชน"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("โพสต์"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("การตอบกลับ"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("ดำเนินการแล้ว"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("บัญชี"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("ตัดสินเมื่อ \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("ไม่ได้ละเมิดกฎ"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("โหลดรายงานของคุณไม่ได้"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "สิ่งที่คุณรายงานใน 90 วันที่ผ่านมาและผลลัพธ์ คุณจะได้รับการแจ้งเตือนเมื่อทีมตัดสิน ผู้ที่ถูกรายงานจะไม่มีวันรู้ว่าใครเป็นผู้รายงาน"),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("ไม่มีรายงาน"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "เมื่อคุณรายงานโพสต์ การตอบกลับ ข้อความ หรือบัญชี รายการนั้นจะแสดงที่นี่พร้อมผลลัพธ์"),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("กำลังตรวจสอบ"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("รายงานเมื่อ \$date"),
+      "ui_reports_settings_help":
+          MessageLookupByLibrary.simpleMessage("สิ่งที่คุณรายงานและผลลัพธ์"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("รายงานของคุณ"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("ความปลอดภัยของเด็ก"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("การคุกคามหรือกลั่นแกล้ง"),
+      "ui_rule_hate":
+          MessageLookupByLibrary.simpleMessage("คำพูดแสดงความเกลียดชัง"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("สินค้าหรือบริการผิดกฎหมาย"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("การแอบอ้างเป็นผู้อื่น"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("ทรัพย์สินทางปัญญา"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("ข้อมูลเท็จ"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("การฆ่าตัวตายหรือทำร้ายตัวเอง"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("เนื้อหาสำหรับผู้ใหญ่"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("อย่างอื่น"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("สแปม"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("ความรุนแรงหรือการข่มขู่"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1378,6 +1484,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("ลองอีกครั้ง"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

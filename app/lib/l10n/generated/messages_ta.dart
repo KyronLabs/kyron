@@ -1152,6 +1152,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("குழுக்கள்"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("குழுக்கள் இல்லை"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் உள்ள குழுக்களும், நீங்கள் சேரும் சமூக அரட்டைகளும் இங்கே காட்டப்படும்."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("விரும்பியவை"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("சேமித்தவை"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1273,6 +1278,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1290,6 +1297,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் கணக்கு புதுப்பிக்கப்பட்டது"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "வழக்கு \$number மீதான உங்கள் மேல்முறையீடு ஏற்கப்பட்டது"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "வழக்கு \$number மீதான உங்கள் மேல்முறையீட்டை மீண்டும் பார்த்தோம், முடிவு மாறாது"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் கணக்கு நிரந்தரமாகத் தடைசெய்யப்பட்டது"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("வழக்கு \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("உங்களைப் பின்தொடர்கிறார்"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("உங்கள் இடுகையை விரும்பினார்"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("பழையவை"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "சமூக அரட்டையில் உங்கள் செய்தி அகற்றப்பட்டது"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் பதிவிட்ட ஒன்று அகற்றப்பட்டது"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("உங்கள் இடுகை அகற்றப்பட்டது"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("உங்கள் பதில் அகற்றப்பட்டது"),
+      "ui_notif_replied": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் இடுகைக்குப் பதிலளித்தார்"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் புகாரளித்த ஒன்றின் மீது நடவடிக்கை எடுத்தோம். எங்களிடம் தெரிவித்ததற்கு நன்றி."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் புகாரளித்த ஒன்றைப் பார்த்தோம்; அது எங்கள் விதிகளை மீறியதாகக் காணவில்லை."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("புகாரின் காரணம்: \$reason"),
+      "ui_notif_reposted": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் இடுகையை மறுபகிர்வு செய்தார்"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "வழக்கு \$number இன் முடிவைத் திரும்பப் பெற்றோம்"),
+      "ui_notif_suspended": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் கணக்கு இடைநீக்கப்பட்டுள்ளது"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் கணக்கு \$date வரை இடைநீக்கப்பட்டுள்ளது"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("அனைத்தும்"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("பின்தொடர்தல்கள்"),
+      "ui_notif_tab_likes":
+          MessageLookupByLibrary.simpleMessage("விருப்பங்கள்"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("பதில்கள்"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("இந்த வாரம்"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("இன்று"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் கணக்குக்கு எச்சரிக்கை உள்ளது"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("நேற்று"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1331,6 +1388,60 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "குழு முடிவெடுக்கும்போது உங்களுக்கு அறிவிப்பு வரும்; உங்கள் புகார்களில் அதைப் பின்தொடரலாம்."),
+      "ui_report_see_reports": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் புகார்களைப் பார்க்கவும்"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("ஒரு சமூக அரட்டைச் செய்தி"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("ஒரு இடுகை"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("ஒரு பதில்"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("நடவடிக்கை எடுக்கப்பட்டது"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("ஒரு கணக்கு"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("முடிவு \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("எந்த விதியும் மீறப்படவில்லை"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் புகார்களை ஏற்ற முடியவில்லை"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "கடந்த 90 நாட்களில் நீங்கள் எதைப் புகாரளித்தீர்கள், அதற்கு என்ன ஆனது. குழு முடிவெடுக்கும்போது அறிவிப்பு வரும். நீங்கள் புகாரளிப்பவருக்கு யார் புகாரளித்தது என்று ஒருபோதும் சொல்லப்படாது."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("எதுவும் புகாரளிக்கப்படவில்லை"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ஒரு இடுகை, பதில், செய்தி அல்லது கணக்கைப் புகாரளிக்கும்போது, அதன் முடிவுடன் இங்கே காட்டப்படும்."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("மதிப்பாய்வில்"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("புகாரளித்தது \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் புகாரளித்தவையும் அவற்றின் முடிவும்"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("உங்கள் புகார்கள்"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("குழந்தைப் பாதுகாப்பு"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("துன்புறுத்தல் அல்லது மிரட்டல்"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("வெறுப்புப் பேச்சு"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "சட்டவிரோதப் பொருட்கள் அல்லது சேவைகள்"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("ஆள்மாறாட்டம்"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("அறிவுசார் சொத்து"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("தவறான தகவல்"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("தற்கொலை அல்லது சுயதீங்கு"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("வயது வந்தோருக்கான உள்ளடக்கம்"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("வேறு ஏதோ"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("ஸ்பேம்"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("வன்முறை அல்லது அச்சுறுத்தல்"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1399,6 +1510,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("மீண்டும் முயலவும்"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

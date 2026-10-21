@@ -1151,6 +1151,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Guruhlar"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("Guruhlar yo‘q"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Bu yerda siz a’zo bo‘lgan guruhlar va qo‘shilgan hamjamiyat chatlari ko‘rsatiladi."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Yoqqanlar"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saqlanganlar"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1272,6 +1277,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Tilni tanlang"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1289,6 +1296,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Hisobingiz yangilandi"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "\$number raqamli ish bo‘yicha apellyatsiyangiz qanoatlantirildi"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "\$number raqamli ish bo‘yicha apellyatsiyangizni qayta ko‘rib chiqdik, qaror kuchda qoladi"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("Hisobingiz butunlay bloklandi"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Ish \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("sizga obuna bo‘ldi"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("postingizni yoqtirdi"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Eskiroq"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Hamjamiyat chatidagi xabaringiz o‘chirildi"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Siz e’lon qilgan narsa o‘chirildi"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Postingiz o‘chirildi"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Javobingiz o‘chirildi"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("postingizga javob berdi"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Siz shikoyat qilgan narsa bo‘yicha choralar ko‘rdik. Xabar berganingiz uchun rahmat."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Siz shikoyat qilgan narsani ko‘rib chiqdik va qoidalarimiz buzilganini aniqlamadik."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Shikoyat sababi: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("postingizni ulashdi"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "\$number raqamli ish bo‘yicha qarorni bekor qildik"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Hisobingiz to‘xtatilgan"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Hisobingiz \$date gacha to‘xtatilgan"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Hammasi"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Obunachilar"),
+      "ui_notif_tab_likes":
+          MessageLookupByLibrary.simpleMessage("Yoqtirishlar"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Javoblar"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Shu hafta"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Bugun"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Hisobingiz ogohlantirish oldi"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Kecha"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1332,6 +1389,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Jamoa qaror qilganda bildirishnoma olasiz va uni Shikoyatlaringiz bo‘limida kuzatishingiz mumkin."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Shikoyatlaringizni ko‘rish"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Hamjamiyat chatidagi xabar"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Post"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Javob"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Choralar ko‘rildi"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Hisob"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Qaror sanasi: \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Qoida buzilmagan"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Shikoyatlaringizni yuklab bo‘lmadi"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "So‘nggi 90 kunda nimadan shikoyat qilganingiz va natijasi. Jamoa qaror qilganda bildirishnoma olasiz. Siz shikoyat qilgan kishi kim shikoyat qilganini hech qachon bilmaydi."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Shikoyatlar yo‘q"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Post, javob, xabar yoki hisobdan shikoyat qilganingizda, u natijasi bilan birga shu yerda ko‘rsatiladi."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Ko‘rib chiqilmoqda"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Shikoyat sanasi: \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Nimadan shikoyat qilganingiz va natijasi"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Shikoyatlaringiz"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Bolalar xavfsizligi"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Ta’qib yoki bezorilik"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Nafrat nutqi"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Noqonuniy tovarlar yoki xizmatlar"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Boshqa shaxs nomidan chiqish"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Intellektual mulk"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Yolg‘on ma’lumot"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "O‘z joniga qasd qilish yoki o‘ziga zarar yetkazish"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Kattalar uchun kontent"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Boshqa narsa"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Zo‘ravonlik yoki tahdidlar"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1400,6 +1510,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Qayta urinish"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

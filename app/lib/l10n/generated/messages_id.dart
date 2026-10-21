@@ -1148,6 +1148,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grup"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("Tidak ada grup"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Grup yang kamu ikuti dan obrolan komunitas yang kamu masuki ditampilkan di sini."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Disukai"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Disimpan"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1267,6 +1272,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Pilih bahasamu"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1284,6 +1291,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Akunmu diperbarui"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Bandingmu untuk kasus \$number diterima"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Kami meninjau kembali bandingmu untuk kasus \$number, dan keputusan tetap berlaku"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Akunmu telah diblokir permanen"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Kasus \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("mengikutimu"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("menyukai postinganmu"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Lebih lama"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Pesanmu di obrolan komunitas dihapus"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Sesuatu yang kamu posting dihapus"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Postinganmu dihapus"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Balasanmu dihapus"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("membalas postinganmu"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Kami telah menindak sesuatu yang kamu laporkan. Terima kasih sudah memberi tahu kami."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Kami meninjau sesuatu yang kamu laporkan dan tidak menemukan pelanggaran aturan kami."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Dilaporkan karena: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("memposting ulang postinganmu"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Kami membatalkan keputusan kasus \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Akunmu ditangguhkan"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Akunmu ditangguhkan hingga \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Semua"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Pengikut"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Suka"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Balasan"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Minggu ini"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Hari ini"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Akunmu mendapat peringatan"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Kemarin"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1326,6 +1380,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Kamu akan mendapat notifikasi saat tim memutuskan, dan bisa memantaunya di Laporanmu."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Lihat laporanmu"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Pesan obrolan komunitas"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Postingan"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Balasan"),
+      "ui_reports_actioned": MessageLookupByLibrary.simpleMessage("Ditindak"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Akun"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Diputuskan \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Tidak melanggar aturan"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("Laporanmu tidak dapat dimuat"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Apa yang kamu laporkan dalam 90 hari terakhir, dan hasilnya. Kamu mendapat notifikasi saat tim memutuskan. Orang yang kamu laporkan tidak pernah diberi tahu siapa yang melaporkannya."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Belum ada laporan"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Saat kamu melaporkan postingan, balasan, pesan, atau akun, laporan itu ditampilkan di sini beserta hasilnya."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Sedang ditinjau"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Dilaporkan \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Apa yang kamu laporkan, dan hasilnya"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Laporanmu"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Keselamatan anak"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Pelecehan atau perundungan"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Ujaran kebencian"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Barang atau jasa ilegal"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Peniruan identitas"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Kekayaan intelektual"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Informasi palsu"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Bunuh diri atau melukai diri"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Konten dewasa"),
+      "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("Lainnya"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Kekerasan atau ancaman"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1394,6 +1498,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Coba lagi"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

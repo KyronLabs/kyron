@@ -1148,6 +1148,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Àwọn ẹgbẹ́"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Kò sí ẹgbẹ́"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ẹgbẹ́ tí o wà nínú wọn, àti àwọn ìjíròrò àwùjọ tí o darapọ̀ mọ́, ni a fihàn níbí."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Tí a fẹ́ràn"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Tí a fipamọ́"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1269,6 +1273,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage("Yan èdè rẹ"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1286,6 +1291,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("A ti ṣe àtúnṣe àkọọ́lẹ̀ rẹ"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "A ti gba ẹ̀bẹ̀ rẹ lórí ẹjọ́ \$number"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "A tún wo ẹ̀bẹ̀ rẹ lórí ẹjọ́ \$number, ìpinnu náà sì dúró"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "A ti fòfin de àkọọ́lẹ̀ rẹ títí láé"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Ẹjọ́ \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("tẹ̀lé ọ"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("fẹ́ràn ìfiránṣẹ́ rẹ"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Àtijọ́"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "A ti yọ ìfiranṣẹ́ rẹ kúrò nínú ìjíròrò àwùjọ"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "A ti yọ ohun kan tí o firánṣẹ́ kúrò"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("A ti yọ ìfiránṣẹ́ rẹ kúrò"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("A ti yọ èsì rẹ kúrò"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("fèsì sí ìfiránṣẹ́ rẹ"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "A ti gbé ìgbésẹ̀ lórí ohun kan tí o jábọ̀. O ṣé fún sísọ fún wa."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "A wo ohun kan tí o jábọ̀, a kò sì rí i pé ó rú òfin wa."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("A jábọ̀ nítorí: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("tún ìfiránṣẹ́ rẹ fi ránṣẹ́"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "A ti yí ìpinnu ẹjọ́ \$number padà"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("A ti dá àkọọ́lẹ̀ rẹ dúró"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "A ti dá àkọọ́lẹ̀ rẹ dúró títí di \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Gbogbo"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìtẹ̀lé"),
+      "ui_notif_tab_likes":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìfẹ́ràn"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Àwọn èsì"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Ọ̀sẹ̀ yìí"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Òní"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Àkọọ́lẹ̀ rẹ ní ìkìlọ̀"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Àná"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1326,6 +1380,60 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Ìwọ yóò gba ìfitónilétí nígbà tí ẹgbẹ́ bá pinnu, o sì lè tẹ̀lé e nínú Àwọn ìjábọ̀ rẹ."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Wo àwọn ìjábọ̀ rẹ"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Ìfiranṣẹ́ ìjíròrò àwùjọ"),
+      "ui_reports_a_post":
+          MessageLookupByLibrary.simpleMessage("Ìfiránṣẹ́ kan"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Èsì kan"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("A ti gbé ìgbésẹ̀"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("Àkọọ́lẹ̀ kan"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("A pinnu ní \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Kò sí òfin tí a rú"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("A kò lè ṣí àwọn ìjábọ̀ rẹ"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Ohun tí o jábọ̀ láàrin ọjọ́ 90 sẹ́yìn, àti àbájáde rẹ̀. O máa ń gba ìfitónilétí nígbà tí ẹgbẹ́ bá pinnu. A kì í sọ fún ẹni tí o jábọ̀ ẹni tí ó jábọ̀ wọn."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Kò sí ìjábọ̀"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Nígbà tí o bá jábọ̀ ìfiránṣẹ́, èsì, ìfiranṣẹ́ tàbí àkọọ́lẹ̀, a máa fihàn níbí pẹ̀lú àbájáde rẹ̀."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Ó wà lábẹ́ àyẹ̀wò"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("A jábọ̀ ní \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Ohun tí o jábọ̀, àti àbájáde rẹ̀"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìjábọ̀ rẹ"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Ààbò ọmọdé"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Ìyọlẹ́nu tàbí ìfipá-ṣèkà"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Ọ̀rọ̀ ìkórìíra"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Ọjà tàbí iṣẹ́ tí kò bófin mu"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Ṣíṣe bí ẹlòmíràn"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Ohun-ìní ọgbọ́n"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Ìròyìn èké"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Ìpara-ẹni tàbí ṣíṣe ara-ẹni léṣe"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Àkóónú àgbàlagbà"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Nǹkan mìíràn"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Ìwà ipá tàbí ìhàlẹ̀"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1394,6 +1502,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again":
+          MessageLookupByLibrary.simpleMessage("Gbìyànjú lẹ́ẹ̀kan sí i"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

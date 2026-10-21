@@ -1145,6 +1145,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Mga grupo"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Walang grupo"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Dito nakalista ang mga grupong kinabibilangan mo at ang mga community chat na sinasalihan mo."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Nagustuhan"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Naka-save"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1267,6 +1271,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Piliin ang iyong wika"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1284,6 +1290,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Na-update ang iyong account"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Tinanggap ang apela mo sa kaso \$number"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Muli naming tiningnan ang apela mo sa kaso \$number, at nananatili ang desisyon"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Permanenteng na-ban ang iyong account"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Kaso \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("ay nag-follow sa iyo"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("ay nag-like sa post mo"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Mas luma"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Inalis ang mensahe mo sa isang community chat"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "May inalis na isang bagay na pinost mo"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Inalis ang post mo"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Inalis ang reply mo"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("ay nag-reply sa post mo"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Kumilos kami sa isang bagay na ini-report mo. Salamat sa pagsabi sa amin."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Tiningnan namin ang isang bagay na ini-report mo at hindi namin nakitang lumabag ito sa aming mga patakaran."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Ini-report dahil sa: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("ay nag-repost ng post mo"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Binawi namin ang desisyon sa kaso \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Suspendido ang iyong account"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Suspendido ang iyong account hanggang \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Lahat"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Mga follow"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Mga like"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Mga reply"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Ngayong linggo"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Ngayong araw"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("May babala ang iyong account"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Kahapon"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1326,6 +1382,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Makakatanggap ka ng notification kapag nagpasya ang team, at masusubaybayan mo ito sa Mga report mo."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Tingnan ang mga report mo"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Isang mensahe sa community chat"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Isang post"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Isang reply"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("May aksyong ginawa"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("Isang account"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Napagpasyahan \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Walang nilabag na patakaran"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi ma-load ang mga report mo"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Ang mga ini-report mo sa nakalipas na 90 araw, at kung ano ang kinahinatnan. Makakatanggap ka ng notification kapag nagpasya ang team. Hindi kailanman sinasabi sa ini-report mo kung sino ang nag-report."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Walang ini-report"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kapag nag-report ka ng post, reply, mensahe o account, nakalista ito rito kasama ang kinahinatnan."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Sinusuri"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Ini-report \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Ang mga ini-report mo, at ang kinahinatnan"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Mga report mo"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Kaligtasan ng bata"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Panliligalig o pambu-bully"),
+      "ui_rule_hate":
+          MessageLookupByLibrary.simpleMessage("Mapoot na pananalita"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Ilegal na produkto o serbisyo"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Pagpapanggap"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Intellectual property"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Maling impormasyon"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Pagpapakamatay o pananakit sa sarili"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Pang-adultong nilalaman"),
+      "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("Iba pa"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Karahasan o pagbabanta"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1394,6 +1502,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Subukan ulit"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

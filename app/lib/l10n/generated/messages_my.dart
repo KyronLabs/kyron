@@ -1150,6 +1150,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("အဖွဲ့များ"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("အဖွဲ့ မရှိပါ"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "သင်ပါဝင်သော အဖွဲ့များနှင့် သင်ဝင်ရောက်သော အသိုင်းအဝိုင်း ချက်တ်များကို ဤနေရာတွင် ပြသည်။"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("နှစ်သက်သည်"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("သိမ်းထားသည်"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1270,6 +1274,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("သင့်ဘာသာစကားကို ရွေးပါ"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1287,6 +1293,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
+          "သင့်အကောင့်ကို အပ်ဒိတ်လုပ်ပြီးပါပြီ"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "အမှု \$number အပေါ် သင့်အယူခံကို လက်ခံလိုက်ပါပြီ"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "အမှု \$number အပေါ် သင့်အယူခံကို ထပ်မံစစ်ဆေးခဲ့ပြီး ဆုံးဖြတ်ချက် မပြောင်းလဲပါ"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "သင့်အကောင့်ကို အပြီးအပိုင် ပိတ်ပင်လိုက်ပါပြီ"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("အမှု \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("က သင့်ကို ဖော်လိုလုပ်ခဲ့သည်"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("က သင့်ပို့စ်ကို ကြိုက်ခဲ့သည်"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("ယခင်က"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "အသိုင်းအဝိုင်း ချက်တ်ထဲရှိ သင့်မက်ဆေ့ချ်ကို ဖယ်ရှားလိုက်ပါပြီ"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "သင်တင်ခဲ့သော တစ်ခုခုကို ဖယ်ရှားလိုက်ပါပြီ"),
+      "ui_notif_removed_post": MessageLookupByLibrary.simpleMessage(
+          "သင့်ပို့စ်ကို ဖယ်ရှားလိုက်ပါပြီ"),
+      "ui_notif_removed_reply": MessageLookupByLibrary.simpleMessage(
+          "သင့်ပြန်စာကို ဖယ်ရှားလိုက်ပါပြီ"),
+      "ui_notif_replied": MessageLookupByLibrary.simpleMessage(
+          "က သင့်ပို့စ်ကို ပြန်စာရေးခဲ့သည်"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "သင်တိုင်ကြားခဲ့သည့်အရာအပေါ် ကျွန်ုပ်တို့ အရေးယူခဲ့ပါသည်။ အသိပေးသည့်အတွက် ကျေးဇူးတင်ပါသည်။"),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "သင်တိုင်ကြားခဲ့သည့်အရာကို စစ်ဆေးခဲ့ပြီး ကျွန်ုပ်တို့၏ စည်းမျဉ်းများကို ချိုးဖောက်သည်ဟု မတွေ့ရှိပါ။"),
+      "ui_notif_reported_for": MessageLookupByLibrary.simpleMessage(
+          "တိုင်ကြားရသည့်အကြောင်းရင်း- \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("က သင့်ပို့စ်ကို ပြန်တင်ခဲ့သည်"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "အမှု \$number ၏ ဆုံးဖြတ်ချက်ကို ပြန်လည်ရုပ်သိမ်းလိုက်ပါပြီ"),
+      "ui_notif_suspended": MessageLookupByLibrary.simpleMessage(
+          "သင့်အကောင့်ကို ဆိုင်းငံ့ထားသည်"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "သင့်အကောင့်ကို \$date အထိ ဆိုင်းငံ့ထားသည်"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("အားလုံး"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("ဖော်လိုများ"),
+      "ui_notif_tab_likes":
+          MessageLookupByLibrary.simpleMessage("ကြိုက်နှစ်သက်မှုများ"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("ပြန်စာများ"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ဤအပတ်"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("ယနေ့"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "သင့်အကောင့်တွင် သတိပေးချက်ရှိသည်"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("မနေ့က"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1327,6 +1384,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "အဖွဲ့က ဆုံးဖြတ်သည့်အခါ အသိပေးချက် ရရှိမည်ဖြစ်ပြီး သင့်တိုင်ကြားချက်များတွင် ဆက်လက်ကြည့်ရှုနိုင်သည်။"),
+      "ui_report_see_reports": MessageLookupByLibrary.simpleMessage(
+          "သင့်တိုင်ကြားချက်များကို ကြည့်ရန်"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "အသိုင်းအဝိုင်း ချက်တ် မက်ဆေ့ချ်တစ်ခု"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("ပို့စ်တစ်ခု"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("ပြန်စာတစ်ခု"),
+      "ui_reports_actioned": MessageLookupByLibrary.simpleMessage("အရေးယူပြီး"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("အကောင့်တစ်ခု"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("ဆုံးဖြတ်သည့်ရက် \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("စည်းမျဉ်း မချိုးဖောက်ပါ"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "သင့်တိုင်ကြားချက်များကို ဖွင့်၍မရပါ"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "ပြီးခဲ့သော ရက် 90 အတွင်း သင်တိုင်ကြားခဲ့သည့်အရာများနှင့် ရလဒ်။ အဖွဲ့က ဆုံးဖြတ်သည့်အခါ အသိပေးချက် ရရှိသည်။ သင်တိုင်ကြားသူကို မည်သူတိုင်ကြားသည်ကို ဘယ်တော့မှ မပြောပါ။"),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("တိုင်ကြားချက် မရှိပါ"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ပို့စ်၊ ပြန်စာ၊ မက်ဆေ့ချ် သို့မဟုတ် အကောင့်ကို တိုင်ကြားသည့်အခါ ၎င်းကို ရလဒ်နှင့်အတူ ဤနေရာတွင် ပြသည်။"),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("စစ်ဆေးနေသည်"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("တိုင်ကြားသည့်ရက် \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "သင်တိုင်ကြားခဲ့သည့်အရာများနှင့် ရလဒ်"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("သင့်တိုင်ကြားချက်များ"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("ကလေးသူငယ် ဘေးကင်းရေး"),
+      "ui_rule_harassment": MessageLookupByLibrary.simpleMessage(
+          "နှောင့်ယှက်ခြင်း သို့မဟုတ် အနိုင်ကျင့်ခြင်း"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("အမုန်းစကား"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "တရားမဝင် ကုန်ပစ္စည်း သို့မဟုတ် ဝန်ဆောင်မှု"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("အယောင်ဆောင်ခြင်း"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("ဉာဏပစ္စည်း"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("မှားယွင်းသော သတင်းအချက်အလက်"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "မိမိကိုယ်ကို သတ်သေခြင်း သို့မဟုတ် ထိခိုက်စေခြင်း"),
+      "ui_rule_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "အရွယ်ရောက်သူများအတွက် အကြောင်းအရာ"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("အခြားတစ်ခုခု"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("စပမ်"),
+      "ui_rule_violence": MessageLookupByLibrary.simpleMessage(
+          "အကြမ်းဖက်မှု သို့မဟုတ် ခြိမ်းခြောက်မှု"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1395,6 +1504,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("ထပ်စမ်းကြည့်ရန်"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

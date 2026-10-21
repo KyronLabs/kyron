@@ -1147,6 +1147,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("ჯგუფები"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("ჯგუფები არ არის"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "აქ ჩანს ჯგუფები, რომლებშიც ხართ, და თემების ჩატები, რომლებსაც უერთდებით."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("მოწონებული"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("შენახული"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1266,6 +1271,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage("აირჩიეთ ენა"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1283,6 +1289,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("თქვენი ანგარიში განახლდა"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "თქვენი გასაჩივრება საქმეზე \$number დაკმაყოფილდა"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "თქვენი გასაჩივრება საქმეზე \$number ხელახლა განვიხილეთ და გადაწყვეტილება ძალაში რჩება"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "თქვენი ანგარიში სამუდამოდ დაიბლოკა"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("საქმე \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("გამოგიწერათ"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("მოიწონა თქვენი პოსტი"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("უფრო ძველი"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "თქვენი შეტყობინება თემის ჩატში წაიშალა"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "თქვენ მიერ გამოქვეყნებული რაღაც წაიშალა"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("თქვენი პოსტი წაიშალა"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("თქვენი პასუხი წაიშალა"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("უპასუხა თქვენს პოსტს"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "თქვენს საჩივარზე ზომები მივიღეთ. გმადლობთ, რომ შეგვატყობინეთ."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "თქვენი საჩივარი განვიხილეთ და ჩვენი წესების დარღვევა ვერ დავადგინეთ."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("საჩივრის მიზეზი: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("გააზიარა თქვენი პოსტი"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "საქმეზე \$number გადაწყვეტილება გავაუქმეთ"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("თქვენი ანგარიში შეჩერებულია"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "თქვენი ანგარიში შეჩერებულია \$date-მდე"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("ყველა"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("გამომწერები"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("მოწონებები"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("პასუხები"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ამ კვირაში"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("დღეს"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "თქვენმა ანგარიშმა გაფრთხილება მიიღო"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("გუშინ"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1323,6 +1377,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "გუნდის გადაწყვეტილებისას შეტყობინებას მიიღებთ, ხოლო მიმდინარეობას „თქვენს საჩივრებში“ ნახავთ."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("თქვენი საჩივრების ნახვა"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("შეტყობინება თემის ჩატში"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("პოსტი"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("პასუხი"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("ზომები მიღებულია"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("ანგარიში"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("გადაწყდა: \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("წესები არ დარღვეულა"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "თქვენი საჩივრები ვერ ჩაიტვირთა"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "რაზეც საჩივარი შეიტანეთ ბოლო 90 დღეში და რით დასრულდა. შეტყობინებას იღებთ, როცა გუნდი გადაწყვეტს. ვისზეც საჩივარს შეიტანთ, ვერასდროს გაიგებს, ვინ შეიტანა."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("საჩივრები არ არის"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "როცა საჩივარს შეიტანთ პოსტზე, პასუხზე, შეტყობინებაზე ან ანგარიშზე, ის აქ გამოჩნდება შედეგთან ერთად."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("განხილვის პროცესშია"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("შეტანილია: \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "რაზეც საჩივარი შეიტანეთ და რით დასრულდა"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("თქვენი საჩივრები"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("ბავშვების უსაფრთხოება"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("შევიწროება ან ბულინგი"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("სიძულვილის ენა"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "უკანონო საქონელი ან მომსახურება"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("სხვის სახელით გამოსვლა"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("ინტელექტუალური საკუთრება"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("ცრუ ინფორმაცია"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "თვითმკვლელობა ან თვითდაზიანება"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("ზრდასრულთა კონტენტი"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("სხვა რამ"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("სპამი"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("ძალადობა ან მუქარა"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1391,6 +1498,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("ხელახლა ცდა"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

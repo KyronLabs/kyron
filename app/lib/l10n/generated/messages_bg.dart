@@ -1227,6 +1227,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Децентрализиран ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Диагностика"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Групи"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Няма групи"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Тук са групите, в които сте, и чатовете на общности, в които се присъедините."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Харесани"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Запазени"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage(
@@ -1349,6 +1353,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Присъедини се"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Присъединил се"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Език"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Изберете език"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Правна информация"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Харесай"),
       "ui_liked_posts":
@@ -1370,6 +1376,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Все още няма запазено",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Профилът ви е актуализиран"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Обжалването ви по случай \$number е уважено"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Прегледахме отново обжалването ви по случай \$number и решението остава в сила"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Профилът ви е блокиран за постоянно"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Случай \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ви последва"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("хареса публикацията ви"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("По-стари"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Съобщението ви в чат на общност е премахнато"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Нещо, което публикувахте, е премахнато"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Публикацията ви е премахната"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Отговорът ви е премахнат"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("отговори на публикацията ви"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Предприехме мерки във връзка с нещо, което докладвахте. Благодарим, че ни уведомихте."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Прегледахме нещо, което докладвахте, и не установихме нарушение на правилата ни."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Докладвано за: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("сподели публикацията ви"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("Отменихме случай \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Профилът ви е временно спрян"),
+      "ui_notif_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Профилът ви е спрян до \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Всички"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Последователи"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Харесвания"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Отговори"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Тази седмица"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Днес"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Профилът ви получи предупреждение"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Вчера"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Завърши",
@@ -1418,6 +1473,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Предпочитания"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Поверителност"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Ще получите известие, когато екипът реши, и можете да следите в раздела Вашите доклади."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Вижте докладите си"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Съобщение в чат на общност"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Публикация"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Отговор"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Предприети мерки"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Профил"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Решено на \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Няма нарушение на правилата"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Докладите ви не могат да се заредят"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Какво сте докладвали през последните 90 дни и какво е станало. Получавате известие, когато екипът реши. Никой, когото докладвате, не разбира кой го е докладвал."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Няма доклади"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Когато докладвате публикация, отговор, съобщение или профил, той се показва тук заедно с резултата."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("В процес на преглед"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Докладвано на \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Какво сте докладвали и какво е станало"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Вашите доклади"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Безопасност на децата"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Тормоз или преследване"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Реч на омразата"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Незаконни стоки или услуги"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Представяне за друг човек"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Интелектуална собственост"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Невярна информация"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Самоубийство или самонараняване"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Съдържание за възрастни"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Нещо друго"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Спам"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Насилие или заплахи"),
       "ui_saved_posts":
           MessageLookupByLibrary.simpleMessage("Запазени публикации"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
@@ -1492,6 +1599,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage(
         "Нишката е заглушена",
       ),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Опитайте отново"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Изключи звука"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Включи звука"),

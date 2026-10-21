@@ -252,6 +252,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("固定を解除"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("ボイスメッセージを録音"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("あなた"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("グループ"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("グループはありません"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "参加しているグループと、参加したコミュニティチャットがここに表示されます。"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("いいね"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("保存済み"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("メンバーを追加"),
@@ -330,6 +334,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("あなた"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("あなたは観覧者です"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage("言語を選択"),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("アカウントが更新されました"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "ケース \$number に対する異議申し立てが認められました"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "ケース \$number に対する異議申し立てを再確認しましたが、判断は変わりません"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("アカウントが永久に停止されました"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("ケース \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("があなたをフォローしました"),
+      "ui_notif_liked": MessageLookupByLibrary.simpleMessage("があなたの投稿にいいねしました"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("それ以前"),
+      "ui_notif_removed_message":
+          MessageLookupByLibrary.simpleMessage("コミュニティチャットのメッセージが削除されました"),
+      "ui_notif_removed_other":
+          MessageLookupByLibrary.simpleMessage("あなたが投稿したものが削除されました"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("あなたの投稿が削除されました"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("あなたの返信が削除されました"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("があなたの投稿に返信しました"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "あなたが報告した内容に対して措置を取りました。お知らせいただきありがとうございます。"),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "あなたが報告した内容を確認しましたが、ルール違反は見つかりませんでした。"),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("報告理由：\$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("があなたの投稿を再投稿しました"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("ケース \$number の判断を取り消しました"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("アカウントは一時停止中です"),
+      "ui_notif_suspended_until":
+          MessageLookupByLibrary.simpleMessage("アカウントは \$date まで一時停止中です"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("すべて"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("フォロー"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("いいね"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("返信"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("今週"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("今日"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage("アカウントに警告があります"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("昨日"),
       "ui_once_already": MessageLookupByLibrary.simpleMessage("すでに開封されています。"),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("期限切れ"),
       "ui_once_failed": MessageLookupByLibrary.simpleMessage("開けませんでした。"),
@@ -342,6 +393,47 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_own": MessageLookupByLibrary.simpleMessage("送信した相手だけが一度だけ開けます。"),
       "ui_once_send": MessageLookupByLibrary.simpleMessage("1回表示で送信"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("タップして表示"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "チームが判断すると通知が届きます。経過は「あなたの報告」で確認できます。"),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("あなたの報告を見る"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("コミュニティチャットのメッセージ"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("投稿"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("返信"),
+      "ui_reports_actioned": MessageLookupByLibrary.simpleMessage("措置済み"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("アカウント"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("\$date に判断"),
+      "ui_reports_dismissed": MessageLookupByLibrary.simpleMessage("ルール違反なし"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("報告を読み込めませんでした"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "過去 90 日間に報告した内容とその結果です。チームが判断すると通知が届きます。報告された人に、誰が報告したかが伝わることはありません。"),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("報告はありません"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "投稿、返信、メッセージ、アカウントを報告すると、その結果とともにここに表示されます。"),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("確認中"),
+      "ui_reports_sent_on": MessageLookupByLibrary.simpleMessage("\$date に報告"),
+      "ui_reports_settings_help":
+          MessageLookupByLibrary.simpleMessage("報告した内容とその結果"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("あなたの報告"),
+      "ui_rule_child_safety": MessageLookupByLibrary.simpleMessage("子どもの安全"),
+      "ui_rule_harassment": MessageLookupByLibrary.simpleMessage("嫌がらせやいじめ"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("ヘイトスピーチ"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("違法な商品やサービス"),
+      "ui_rule_impersonation": MessageLookupByLibrary.simpleMessage("なりすまし"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("知的財産"),
+      "ui_rule_misinformation": MessageLookupByLibrary.simpleMessage("虚偽の情報"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage("自殺や自傷行為"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("成人向けコンテンツ"),
+      "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("その他"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("スパム"),
+      "ui_rule_violence": MessageLookupByLibrary.simpleMessage("暴力や脅迫"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("もう一度試す"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("リポストを取り消す"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("パスワードを更新"),
       "useDifferentAddress":

@@ -312,6 +312,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Record a voice note"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("You"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Groups"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("No groups"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Groups you are in, and the community chats you join, are listed here."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Liked"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saved"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Add people"),
@@ -398,6 +402,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("you"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("You are a spectator"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Choose your language"),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Your account was updated"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Your appeal on case \$number was accepted"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "We looked at your appeal on case \$number again, and the decision stands"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("Your account has been banned"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Case \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("followed you"),
+      "ui_notif_liked": MessageLookupByLibrary.simpleMessage("liked your post"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Older"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Your message in a community chat was removed"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Something you posted was removed"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Your post was removed"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Your reply was removed"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("replied to your post"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "We acted on something you reported. Thank you for telling us."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "We looked at something you reported and did not find that it broke our rules."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Reported for: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("reposted your post"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("We reversed case \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Your account is suspended"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Your account is suspended until \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("All"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Follows"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Likes"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Replies"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("This week"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Today"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Your account has a warning"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("This has already been opened."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Expired"),
@@ -413,6 +465,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Only the people you sent this to can open it, once."),
       "ui_once_send": MessageLookupByLibrary.simpleMessage("Send view once"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Tap to view"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "You get a notification when the team decides, and you can follow it in Your reports."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("See your reports"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("A community chat message"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("A post"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("A reply"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Action taken"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("An account"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Decided \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("No rule broken"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Your reports could not be loaded"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "What you reported in the last 90 days, and what came of it. You get a notification when the team decides. Nobody you report is told who reported them."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Nothing reported"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "When you report a post, a reply, a message or an account, it is listed here with what came of it."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("In review"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Reported \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "What you reported, and what came of it"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Your reports"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Child safety"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Harassment or bullying"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Hate speech"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Illegal goods or services"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Impersonation"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Intellectual property"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("False information"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Suicide or self-harm"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Adult content"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Something else"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Violence or threats"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Try again"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
       "useDifferentAddress": MessageLookupByLibrary.simpleMessage(

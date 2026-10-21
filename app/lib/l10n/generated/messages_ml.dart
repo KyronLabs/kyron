@@ -1154,6 +1154,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പുകൾ"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പുകളില്ല"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുള്ള ഗ്രൂപ്പുകളും നിങ്ങൾ ചേരുന്ന കമ്മ്യൂണിറ്റി ചാറ്റുകളും ഇവിടെ കാണാം."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("ഇഷ്ടപ്പെട്ടവ"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("സംരക്ഷിച്ചവ"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1275,6 +1280,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1292,6 +1299,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് അപ്‌ഡേറ്റ് ചെയ്തു"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "കേസ് \$number-ലെ നിങ്ങളുടെ അപ്പീൽ അംഗീകരിച്ചു"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "കേസ് \$number-ലെ നിങ്ങളുടെ അപ്പീൽ ഞങ്ങൾ വീണ്ടും പരിശോധിച്ചു, തീരുമാനം മാറ്റമില്ല"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് സ്ഥിരമായി വിലക്കി"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("കേസ് \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളെ ഫോളോ ചെയ്തു"),
+      "ui_notif_liked": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പോസ്റ്റ് ലൈക്ക് ചെയ്തു"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("പഴയവ"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "കമ്മ്യൂണിറ്റി ചാറ്റിലെ നിങ്ങളുടെ സന്ദേശം നീക്കം ചെയ്തു"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ പോസ്റ്റ് ചെയ്ത ഒന്ന് നീക്കം ചെയ്തു"),
+      "ui_notif_removed_post": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പോസ്റ്റ് നീക്കം ചെയ്തു"),
+      "ui_notif_removed_reply": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ മറുപടി നീക്കം ചെയ്തു"),
+      "ui_notif_replied": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പോസ്റ്റിന് മറുപടി നൽകി"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ റിപ്പോർട്ട് ചെയ്ത ഒന്നിൽ ഞങ്ങൾ നടപടിയെടുത്തു. ഞങ്ങളെ അറിയിച്ചതിന് നന്ദി."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ റിപ്പോർട്ട് ചെയ്തത് ഞങ്ങൾ പരിശോധിച്ചു; അത് ഞങ്ങളുടെ നിയമങ്ങൾ ലംഘിച്ചതായി കണ്ടില്ല."),
+      "ui_notif_reported_for": MessageLookupByLibrary.simpleMessage(
+          "റിപ്പോർട്ടിന്റെ കാരണം: \$reason"),
+      "ui_notif_reposted": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പോസ്റ്റ് റീപോസ്റ്റ് ചെയ്തു"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "കേസ് \$number-ലെ തീരുമാനം ഞങ്ങൾ പിൻവലിച്ചു"),
+      "ui_notif_suspended": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് സസ്പെൻഡ് ചെയ്തിരിക്കുന്നു"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് \$date വരെ സസ്പെൻഡ് ചെയ്തിരിക്കുന്നു"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("എല്ലാം"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ഫോളോകൾ"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("ലൈക്കുകൾ"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("മറുപടികൾ"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ഈ ആഴ്ച"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("ഇന്ന്"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ടിന് ഒരു മുന്നറിയിപ്പുണ്ട്"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("ഇന്നലെ"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1335,6 +1390,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "ടീം തീരുമാനിക്കുമ്പോൾ നിങ്ങൾക്ക് അറിയിപ്പ് ലഭിക്കും, നിങ്ങളുടെ റിപ്പോർട്ടുകളിൽ അത് പിന്തുടരാം."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ റിപ്പോർട്ടുകൾ കാണുക"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "ഒരു കമ്മ്യൂണിറ്റി ചാറ്റ് സന്ദേശം"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("ഒരു പോസ്റ്റ്"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("ഒരു മറുപടി"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("നടപടിയെടുത്തു"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("ഒരു അക്കൗണ്ട്"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("തീരുമാനം \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("നിയമലംഘനമില്ല"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ റിപ്പോർട്ടുകൾ ലോഡ് ചെയ്യാനായില്ല"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "കഴിഞ്ഞ 90 ദിവസത്തിനുള്ളിൽ നിങ്ങൾ എന്ത് റിപ്പോർട്ട് ചെയ്തു, അതിന്റെ ഫലം എന്തായി. ടീം തീരുമാനിക്കുമ്പോൾ നിങ്ങൾക്ക് അറിയിപ്പ് ലഭിക്കും. നിങ്ങൾ റിപ്പോർട്ട് ചെയ്യുന്നയാളോട് ആരാണ് റിപ്പോർട്ട് ചെയ്തതെന്ന് ഒരിക്കലും പറയില്ല."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage(
+          "ഒന്നും റിപ്പോർട്ട് ചെയ്തിട്ടില്ല"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ ഒരു പോസ്റ്റ്, മറുപടി, സന്ദേശം അല്ലെങ്കിൽ അക്കൗണ്ട് റിപ്പോർട്ട് ചെയ്യുമ്പോൾ, അത് ഫലത്തോടൊപ്പം ഇവിടെ കാണാം."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("പരിശോധനയിൽ"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("റിപ്പോർട്ട് ചെയ്തത് \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ റിപ്പോർട്ട് ചെയ്തതും അതിന്റെ ഫലവും"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ റിപ്പോർട്ടുകൾ"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("കുട്ടികളുടെ സുരക്ഷ"),
+      "ui_rule_harassment": MessageLookupByLibrary.simpleMessage(
+          "ഉപദ്രവം അല്ലെങ്കിൽ ഭീഷണിപ്പെടുത്തൽ"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("വിദ്വേഷ പ്രസംഗം"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "നിയമവിരുദ്ധ സാധനങ്ങളോ സേവനങ്ങളോ"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("ആൾമാറാട്ടം"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("ബൗദ്ധിക സ്വത്ത്"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("തെറ്റായ വിവരം"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "ആത്മഹത്യ അല്ലെങ്കിൽ സ്വയം ദോഷം"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("മുതിർന്നവർക്കുള്ള ഉള്ളടക്കം"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("മറ്റെന്തെങ്കിലും"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("സ്പാം"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("അക്രമം അല്ലെങ്കിൽ ഭീഷണി"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1403,6 +1511,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again":
+          MessageLookupByLibrary.simpleMessage("വീണ്ടും ശ്രമിക്കുക"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

@@ -1144,6 +1144,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("ក្រុម"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("គ្មានក្រុម"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "ក្រុមដែលអ្នកនៅ និងការជជែកសហគមន៍ដែលអ្នកចូលរួម បង្ហាញនៅទីនេះ។"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("បានចូលចិត្ត"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("បានរក្សាទុក"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1261,6 +1265,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("ជ្រើសរើសភាសារបស់អ្នក"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1278,6 +1284,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
+          "គណនីរបស់អ្នកត្រូវបានធ្វើបច្ចុប្បន្នភាព"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "បណ្ដឹងឧទ្ធរណ៍របស់អ្នកលើករណី \$number ត្រូវបានទទួលយក"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "យើងបានពិនិត្យបណ្ដឹងឧទ្ធរណ៍របស់អ្នកលើករណី \$number ម្ដងទៀត ហើយការសម្រេចនៅដដែល"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "គណនីរបស់អ្នកត្រូវបានហាមឃាត់ជាអចិន្ត្រៃយ៍"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("ករណី \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("បានតាមដានអ្នក"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("បានចូលចិត្តការបង្ហោះរបស់អ្នក"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("ចាស់ជាង"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "សាររបស់អ្នកក្នុងការជជែកសហគមន៍ត្រូវបានដកចេញ"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "អ្វីមួយដែលអ្នកបានបង្ហោះត្រូវបានដកចេញ"),
+      "ui_notif_removed_post": MessageLookupByLibrary.simpleMessage(
+          "ការបង្ហោះរបស់អ្នកត្រូវបានដកចេញ"),
+      "ui_notif_removed_reply": MessageLookupByLibrary.simpleMessage(
+          "ការឆ្លើយតបរបស់អ្នកត្រូវបានដកចេញ"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("បានឆ្លើយតបការបង្ហោះរបស់អ្នក"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "យើងបានចាត់វិធានការលើអ្វីដែលអ្នកបានរាយការណ៍។ អរគុណដែលបានប្រាប់យើង។"),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "យើងបានពិនិត្យអ្វីដែលអ្នកបានរាយការណ៍ ហើយមិនឃើញថាវាបំពានច្បាប់របស់យើងទេ។"),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("មូលហេតុរាយការណ៍៖ \$reason"),
+      "ui_notif_reposted": MessageLookupByLibrary.simpleMessage(
+          "បានបង្ហោះឡើងវិញនូវការបង្ហោះរបស់អ្នក"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "យើងបានលុបចោលការសម្រេចលើករណី \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("គណនីរបស់អ្នកត្រូវបានផ្អាក"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "គណនីរបស់អ្នកត្រូវបានផ្អាករហូតដល់ \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("ទាំងអស់"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ការតាមដាន"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("ការចូលចិត្ត"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("ការឆ្លើយតប"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("សប្ដាហ៍នេះ"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("ថ្ងៃនេះ"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("គណនីរបស់អ្នកមានការព្រមាន"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("ម្សិលមិញ"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1318,6 +1373,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "អ្នកនឹងទទួលបានការជូនដំណឹងនៅពេលក្រុមសម្រេច ហើយអាចតាមដានវាក្នុងរបាយការណ៍របស់អ្នក។"),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("មើលរបាយការណ៍របស់អ្នក"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("សារក្នុងការជជែកសហគមន៍"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("ការបង្ហោះ"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("ការឆ្លើយតប"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("បានចាត់វិធានការ"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("គណនី"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("សម្រេចនៅ \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("មិនបំពានច្បាប់"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចផ្ទុករបាយការណ៍របស់អ្នកបានទេ"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "អ្វីដែលអ្នកបានរាយការណ៍ក្នុងរយៈពេល 90 ថ្ងៃចុងក្រោយ និងលទ្ធផល។ អ្នកទទួលបានការជូនដំណឹងនៅពេលក្រុមសម្រេច។ អ្នកដែលអ្នករាយការណ៍មិនដែលត្រូវបានប្រាប់ថាអ្នកណារាយការណ៍ឡើយ។"),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("គ្មានរបាយការណ៍"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "នៅពេលអ្នករាយការណ៍ការបង្ហោះ ការឆ្លើយតប សារ ឬគណនី វានឹងបង្ហាញនៅទីនេះជាមួយលទ្ធផល។"),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("កំពុងពិនិត្យ"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("បានរាយការណ៍ \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "អ្វីដែលអ្នកបានរាយការណ៍ និងលទ្ធផល"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("របាយការណ៍របស់អ្នក"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("សុវត្ថិភាពកុមារ"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("ការយាយី ឬការសម្លុត"),
+      "ui_rule_hate":
+          MessageLookupByLibrary.simpleMessage("ពាក្យសម្ដីស្អប់ខ្ពើម"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("ទំនិញ ឬសេវាខុសច្បាប់"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("ការក្លែងខ្លួន"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("កម្មសិទ្ធិបញ្ញា"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("ព័ត៌មានមិនពិត"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "ការធ្វើអត្តឃាត ឬធ្វើបាបខ្លួនឯង"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("ខ្លឹមសារសម្រាប់មនុស្សពេញវ័យ"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("អ្វីផ្សេងទៀត"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("សារឥតបានការ"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("អំពើហិង្សា ឬការគំរាមកំហែង"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1386,6 +1494,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("ព្យាយាមម្ដងទៀត"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

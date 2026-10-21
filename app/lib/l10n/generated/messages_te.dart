@@ -1151,6 +1151,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("గ్రూప్‌లు"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("గ్రూప్‌లు లేవు"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "మీరు ఉన్న గ్రూప్‌లు, మీరు చేరే కమ్యూనిటీ చాట్‌లు ఇక్కడ కనిపిస్తాయి."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("నచ్చినవి"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("సేవ్ చేసినవి"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1271,6 +1276,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("మీ భాషను ఎంచుకోండి"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1288,6 +1295,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("మీ ఖాతా అప్‌డేట్ అయింది"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "కేసు \$number పై మీ అప్పీల్ ఆమోదించబడింది"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "కేసు \$number పై మీ అప్పీల్‌ను మళ్లీ పరిశీలించాం, నిర్ణయం అలాగే ఉంది"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "మీ ఖాతా శాశ్వతంగా నిషేధించబడింది"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("కేసు \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("మిమ్మల్ని ఫాలో అయ్యారు"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("మీ పోస్ట్‌ను ఇష్టపడ్డారు"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("పాతవి"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "కమ్యూనిటీ చాట్‌లో మీ సందేశం తీసివేయబడింది"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "మీరు పోస్ట్ చేసినది ఒకటి తీసివేయబడింది"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("మీ పోస్ట్ తీసివేయబడింది"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("మీ ప్రత్యుత్తరం తీసివేయబడింది"),
+      "ui_notif_replied": MessageLookupByLibrary.simpleMessage(
+          "మీ పోస్ట్‌కు ప్రత్యుత్తరం ఇచ్చారు"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "మీరు రిపోర్ట్ చేసిన దానిపై చర్య తీసుకున్నాం. మాకు తెలియజేసినందుకు ధన్యవాదాలు."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "మీరు రిపోర్ట్ చేసిన దాన్ని పరిశీలించాం; అది మా నియమాలను ఉల్లంఘించినట్లు కనిపించలేదు."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("రిపోర్ట్ కారణం: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("మీ పోస్ట్‌ను రీపోస్ట్ చేశారు"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "కేసు \$number నిర్ణయాన్ని రద్దు చేశాం"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("మీ ఖాతా సస్పెండ్ చేయబడింది"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "మీ ఖాతా \$date వరకు సస్పెండ్ చేయబడింది"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("అన్నీ"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ఫాలోలు"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("ఇష్టాలు"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("ప్రత్యుత్తరాలు"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ఈ వారం"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("ఈ రోజు"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("మీ ఖాతాకు హెచ్చరిక ఉంది"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("నిన్న"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1330,6 +1386,61 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "బృందం నిర్ణయించినప్పుడు మీకు నోటిఫికేషన్ వస్తుంది, దాన్ని మీ రిపోర్ట్‌లలో అనుసరించవచ్చు."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("మీ రిపోర్ట్‌లు చూడండి"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("కమ్యూనిటీ చాట్ సందేశం"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("ఒక పోస్ట్"),
+      "ui_reports_a_reply":
+          MessageLookupByLibrary.simpleMessage("ఒక ప్రత్యుత్తరం"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("చర్య తీసుకోబడింది"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("ఒక ఖాతా"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("నిర్ణయం \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("ఏ నియమమూ ఉల్లంఘించబడలేదు"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "మీ రిపోర్ట్‌లను లోడ్ చేయలేకపోయాం"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "గత 90 రోజుల్లో మీరు ఏమి రిపోర్ట్ చేశారు, దాని ఫలితం ఏమిటి. బృందం నిర్ణయించినప్పుడు మీకు నోటిఫికేషన్ వస్తుంది. మీరు రిపోర్ట్ చేసిన వారికి ఎవరు రిపోర్ట్ చేశారో ఎప్పుడూ చెప్పబడదు."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("ఏదీ రిపోర్ట్ చేయలేదు"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "మీరు పోస్ట్, ప్రత్యుత్తరం, సందేశం లేదా ఖాతాను రిపోర్ట్ చేసినప్పుడు, అది దాని ఫలితంతో పాటు ఇక్కడ కనిపిస్తుంది."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("సమీక్షలో ఉంది"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("రిపోర్ట్ చేసింది \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "మీరు రిపోర్ట్ చేసినవి, వాటి ఫలితం"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("మీ రిపోర్ట్‌లు"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("పిల్లల భద్రత"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("వేధింపు లేదా బెదిరింపు"),
+      "ui_rule_hate":
+          MessageLookupByLibrary.simpleMessage("ద్వేషపూరిత ప్రసంగం"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "చట్టవిరుద్ధ వస్తువులు లేదా సేవలు"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("వేరొకరిలా నటించడం"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("మేధో సంపత్తి"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("తప్పుడు సమాచారం"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("ఆత్మహత్య లేదా స్వీయ హాని"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("పెద్దల కంటెంట్"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("ఇంకేదైనా"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("స్పామ్"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("హింస లేదా బెదిరింపులు"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1398,6 +1509,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again":
+          MessageLookupByLibrary.simpleMessage("మళ్లీ ప్రయత్నించండి"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

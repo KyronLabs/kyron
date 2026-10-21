@@ -1151,6 +1151,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Ryhmät"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Ei ryhmiä"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Tässä näkyvät ryhmät, joissa olet mukana, ja yhteisökeskustelut, joihin liityt."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Tykätyt"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Tallennetut"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1269,6 +1273,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Valitse kieli"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1286,6 +1292,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Tiliäsi on päivitetty"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Valituksesi tapauksesta \$number hyväksyttiin"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Kävimme valituksesi tapauksesta \$number uudelleen läpi, ja päätös pysyy voimassa"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("Tilisi on suljettu pysyvästi"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Tapaus \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("alkoi seurata sinua"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("tykkäsi julkaisustasi"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Vanhemmat"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Viestisi yhteisökeskustelussa poistettiin"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Jotain julkaisemaasi poistettiin"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Julkaisusi poistettiin"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Vastauksesi poistettiin"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("vastasi julkaisuusi"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Ryhdyimme toimiin raportoimasi asian vuoksi. Kiitos, että kerroit."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Tarkistimme raportoimasi asian, emmekä todenneet sen rikkovan sääntöjämme."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Raportoitu syystä: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("jakoi julkaisusi"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("Peruimme tapauksen \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Tilisi on jäädytetty"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Tilisi on jäädytetty \$date asti"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Kaikki"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Seuraajat"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Tykkäykset"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("Vastaukset"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Tällä viikolla"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Tänään"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Tilillesi on annettu varoitus"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Eilen"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1327,6 +1383,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Saat ilmoituksen, kun tiimi on päättänyt, ja voit seurata asiaa kohdassa Raportoimasi."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Näytä raportoimasi"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Viesti yhteisökeskustelussa"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Julkaisu"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Vastaus"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Toimiin ryhdytty"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Tili"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Päätetty \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Sääntöjä ei rikottu"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("Raportoimiasi ei voitu ladata"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Mitä olet raportoinut viimeisten 90 päivän aikana ja mitä siitä seurasi. Saat ilmoituksen, kun tiimi päättää. Kukaan, jonka raportoit, ei saa tietää, kuka raportoi."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Ei raportoituja"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kun raportoit julkaisun, vastauksen, viestin tai tilin, se näkyy tässä yhdessä sen kanssa, mitä siitä seurasi."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Käsittelyssä"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Raportoitu \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Mitä olet raportoinut ja mitä siitä seurasi"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Raportoimasi"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Lasten turvallisuus"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Häirintä tai kiusaaminen"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Vihapuhe"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Laittomat tuotteet tai palvelut"),
+      "ui_rule_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Toisena henkilönä esiintyminen"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Immateriaalioikeudet"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Väärä tieto"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Itsemurha tai itsensä vahingoittaminen"),
+      "ui_rule_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Aikuisille tarkoitettu sisältö"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Jokin muu"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Roskaposti"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Väkivalta tai uhkaukset"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1395,6 +1503,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Yritä uudelleen"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

@@ -69,7 +69,7 @@ class YourReportsScreen extends ConsumerWidget {
                 detail: l10n.ui(
                   'ui_reports_none_detail',
                   'When you report a post, a reply, a message or an '
-                      'account, it is listed here until the team decides.',
+                      'account, it is listed here with what came of it.',
                 ),
               )
             else

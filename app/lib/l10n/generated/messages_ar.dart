@@ -1148,6 +1148,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "المعرف اللامركزي",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("التشخيص"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("المجموعات"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("لا توجد مجموعات"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "تظهر هنا المجموعات التي أنت فيها ودردشات المجتمعات التي تنضم إليها."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("الإعجابات"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("المحفوظة"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("لا شيء هنا بعد"),
@@ -1264,6 +1269,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("انضم"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("منضم"),
       "ui_language": MessageLookupByLibrary.simpleMessage("اللغة"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage("اختر لغتك"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("قانوني"),
       "ui_like": MessageLookupByLibrary.simpleMessage("إعجاب"),
       "ui_liked_posts":
@@ -1282,6 +1288,51 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "لا شيء محفوظ بعد",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("تم تحديث حسابك"),
+      "ui_notif_appeal_accepted":
+          MessageLookupByLibrary.simpleMessage("قُبل طعنك في القضية \$number"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "راجعنا طعنك في القضية \$number مرة أخرى، ويبقى القرار قائمًا"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("تم حظر حسابك نهائيًا"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("القضية \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("بدأ متابعتك"),
+      "ui_notif_liked": MessageLookupByLibrary.simpleMessage("أُعجب بمنشورك"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("الأقدم"),
+      "ui_notif_removed_message":
+          MessageLookupByLibrary.simpleMessage("أُزيلت رسالتك في دردشة مجتمع"),
+      "ui_notif_removed_other":
+          MessageLookupByLibrary.simpleMessage("أُزيل شيء نشرته"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("أُزيل منشورك"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("أُزيل ردك"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("ردّ على منشورك"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "اتخذنا إجراءً بشأن شيء أبلغت عنه. شكرًا لإخبارنا."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "راجعنا شيئًا أبلغت عنه ولم نجد أنه يخالف قواعدنا."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("سبب البلاغ: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("أعاد نشر منشورك"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "ألغينا القرار في القضية \$number"),
+      "ui_notif_suspended": MessageLookupByLibrary.simpleMessage("حسابك موقوف"),
+      "ui_notif_suspended_until":
+          MessageLookupByLibrary.simpleMessage("حسابك موقوف حتى \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("الكل"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("المتابعون"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("الإعجابات"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("الردود"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("هذا الأسبوع"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("اليوم"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("تلقى حسابك تحذيرًا"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("أمس"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "إنهاء",
@@ -1322,6 +1373,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("التفضيلات"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("الخصوصية"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "سيصلك إشعار عندما يتخذ الفريق قراره، ويمكنك المتابعة في «بلاغاتك»."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("عرض بلاغاتك"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("رسالة في دردشة مجتمع"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("منشور"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("رد"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("تم اتخاذ إجراء"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("حساب"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("تقرّر في \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("لا مخالفة للقواعد"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("تعذّر تحميل بلاغاتك"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "ما أبلغت عنه خلال آخر 90 يومًا وما انتهى إليه. يصلك إشعار عندما يقرر الفريق. لا يعرف من تبلغ عنه من أبلغ عنه."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("لا توجد بلاغات"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "عندما تبلغ عن منشور أو رد أو رسالة أو حساب، يظهر هنا مع ما انتهى إليه."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("قيد المراجعة"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("أُبلغ عنه في \$date"),
+      "ui_reports_settings_help":
+          MessageLookupByLibrary.simpleMessage("ما أبلغت عنه وما انتهى إليه"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("بلاغاتك"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("سلامة الأطفال"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("التحرش أو التنمر"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("خطاب الكراهية"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("سلع أو خدمات غير قانونية"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("انتحال الشخصية"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("الملكية الفكرية"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("معلومات كاذبة"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("الانتحار أو إيذاء النفس"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("محتوى للبالغين"),
+      "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("شيء آخر"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("رسائل مزعجة"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("العنف أو التهديدات"),
       "ui_saved_posts":
           MessageLookupByLibrary.simpleMessage("المشاركات المحفوظة"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
@@ -1394,6 +1495,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("الشروط"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("هذه المشاركة"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("الموضوع مكتوم"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
       "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("إيقاف الصوت"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("تشغيل الصوت"),
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(

@@ -1153,6 +1153,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Групи"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Немає груп"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Тут групи, у яких ви є, і чати спільнот, до яких ви приєднуєтеся."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Вподобане"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Збережене"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1273,6 +1277,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Виберіть мову"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1290,6 +1296,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Ваш обліковий запис оновлено"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Вашу апеляцію у справі \$number задоволено"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Ми повторно розглянули вашу апеляцію у справі \$number, і рішення залишається чинним"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Ваш обліковий запис заблоковано назавжди"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Справа \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("підписався(-лася) на вас"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("вподобав(-ла) ваш допис"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Раніше"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Ваше повідомлення в чаті спільноти видалено"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Щось із опублікованого вами видалено"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Ваш допис видалено"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Вашу відповідь видалено"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("відповів(-ла) на ваш допис"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Ми вжили заходів за вашою скаргою. Дякуємо, що повідомили."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Ми перевірили вашу скаргу й не виявили порушень наших правил."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Причина скарги: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("поширив(-ла) ваш допис"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Ми скасували рішення у справі \$number"),
+      "ui_notif_suspended": MessageLookupByLibrary.simpleMessage(
+          "Ваш обліковий запис тимчасово заблоковано"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Ваш обліковий запис заблоковано до \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Усі"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Підписники"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Вподобання"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Відповіді"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Цього тижня"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Сьогодні"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Ваш обліковий запис отримав попередження"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Учора"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1333,6 +1388,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Ви отримаєте сповіщення, коли команда ухвалить рішення, а стежити за скаргою можна в розділі «Ваші скарги»."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Переглянути ваші скарги"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Повідомлення в чаті спільноти"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Допис"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Відповідь"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Вжито заходів"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("Обліковий запис"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Вирішено \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Порушень немає"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити ваші скарги"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Ваші скарги за останні 90 днів і чим вони завершилися. Ви отримуєте сповіщення, коли команда ухвалює рішення. Той, на кого ви поскаржилися, ніколи не дізнається, хто це зробив."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Скарг немає"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Коли ви поскаржитеся на допис, відповідь, повідомлення чи обліковий запис, скарга з’явиться тут разом із результатом."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("На розгляді"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Скарга від \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Ваші скарги і чим вони завершилися"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Ваші скарги"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Безпека дітей"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Цькування або булінг"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Мова ворожнечі"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Незаконні товари чи послуги"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Видавання себе за іншу особу"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Інтелектуальна власність"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Неправдива інформація"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Самогубство або самоушкодження"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Контент для дорослих"),
+      "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("Інше"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Спам"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Насильство або погрози"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1401,6 +1506,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

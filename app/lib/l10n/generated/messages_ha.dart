@@ -1146,6 +1146,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Rukunoni"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Babu rukuni"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Rukunonin da kake ciki, da hirarrakin al'umma da ka shiga, ana nuna su a nan."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Waɗanda aka so"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Ajiyayyu"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1266,6 +1270,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Zaɓi harshenka"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1283,6 +1289,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("An sabunta asusunka"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "An karɓi ɗaukaka ƙararka kan shari'a \$number"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Mun sake duba ɗaukaka ƙararka kan shari'a \$number, kuma hukuncin yana nan daram"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("An haramta asusunka har abada"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Shari'a \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ya bi ka"),
+      "ui_notif_liked": MessageLookupByLibrary.simpleMessage("ya so rubutunka"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Tsofaffi"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "An cire saƙonka a hirar al'umma"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "An cire wani abu da ka wallafa"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("An cire rubutunka"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("An cire amsarka"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("ya amsa rubutunka"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Mun ɗauki mataki kan wani abu da ka kai rahoto. Mun gode da ka sanar da mu."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Mun duba wani abu da ka kai rahoto kuma ba mu ga ya karya dokokinmu ba."),
+      "ui_notif_reported_for": MessageLookupByLibrary.simpleMessage(
+          "An kai rahoto saboda: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("ya sake wallafa rubutunka"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Mun soke hukuncin shari'a \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("An dakatar da asusunka"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "An dakatar da asusunka har zuwa \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Duka"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Masu bi"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Abubuwan so"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Amsoshi"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Wannan makon"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Yau"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Asusunka yana da gargaɗi"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Jiya"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1324,6 +1377,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Za ka sami sanarwa idan ƙungiyar ta yanke shawara, kuma za ka iya bibiyar sa a cikin Rahotanninka."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Duba rahotanninka"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Saƙon hirar al'umma"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Rubutu"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Amsa"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("An ɗauki mataki"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Asusu"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("An yanke hukunci \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Ba a karya doka ba"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("Ba a iya loda rahotanninka ba"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Abin da ka kai rahoto a cikin kwanaki 90 da suka gabata, da sakamakonsa. Kana samun sanarwa idan ƙungiyar ta yanke shawara. Wanda ka kai rahotonsa ba a taɓa faɗa masa wanda ya kai rahoto ba."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Babu rahoto"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Idan ka kai rahoton rubutu, amsa, saƙo ko asusu, ana nuna shi a nan tare da sakamakonsa."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Ana dubawa"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("An kai rahoto \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Abin da ka kai rahoto, da sakamakonsa"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Rahotanninka"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Tsaron yara"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Cin zarafi ko tsangwama"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Kalaman ƙiyayya"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Kayayyaki ko ayyuka na haram"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Yin sojan gona"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Mallakar fasaha"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Bayanan ƙarya"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Kashe kai ko cutar da kai"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Abun manya"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Wani abu daban"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Saƙon banza"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Tashin hankali ko barazana"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1392,6 +1495,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Sake gwadawa"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
