@@ -6,6 +6,8 @@ export const NOTIFICATION_KINDS = [
   'comment',
   'follow',
   'repost',
+  'account',
+  'report',
 ] as const;
 
 export class ListNotificationsDto {
@@ -27,4 +29,17 @@ export class ListNotificationsDto {
     message: `kind must be one of ${NOTIFICATION_KINDS.join(', ')}.`,
   })
   kind?: (typeof NOTIFICATION_KINDS)[number];
+
+  /** "moderation" adds decisions about the account and what came of its
+   * reports. An app from before those rows reads them as likes. */
+  @IsOptional()
+  @IsIn(['moderation'], { message: 'include must be moderation.' })
+  include?: 'moderation';
+}
+
+/** For the badge: the same opt-in as the list. */
+export class UnreadNotificationsDto {
+  @IsOptional()
+  @IsIn(['moderation'], { message: 'include must be moderation.' })
+  include?: 'moderation';
 }

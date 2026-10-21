@@ -1,6 +1,9 @@
 import { Controller, Get, Put, Query, Req, UseGuards } from '@nestjs/common';
 import { NotificationsService } from './notifications.service';
-import { ListNotificationsDto } from './dto/list-notifications.dto';
+import {
+  ListNotificationsDto,
+  UnreadNotificationsDto,
+} from './dto/list-notifications.dto';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 
@@ -16,13 +19,16 @@ export class NotificationsController {
       limit: query.limit,
       cursor: query.cursor,
       kind: query.kind,
+      moderation: query.include === 'moderation',
     });
   }
 
   /** Declared above nothing, but kept fixed-first out of habit. */
   @Get('unread')
-  unread(@Req() req: AuthRequest) {
-    return this.svc.unreadCount(req.user.id);
+  unread(@Req() req: AuthRequest, @Query() query: UnreadNotificationsDto) {
+    return this.svc.unreadCount(req.user.id, {
+      moderation: query.include === 'moderation',
+    });
   }
 
   @Put('seen')

@@ -1226,7 +1226,9 @@ export class EnforcementService {
     this.delivery.tellMany(
       unique,
       { type: 'moderation.updated' },
-      { title: 'Kyron', body, data: { type: 'moderation' } },
+      // About a report, so a tap opens the reader's reports rather than
+      // their account's standing, which this is not about.
+      { title: 'Kyron', body, data: { type: 'moderation', about: 'report' } },
     );
   }
 

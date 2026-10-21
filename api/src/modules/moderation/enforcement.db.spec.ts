@@ -19,6 +19,7 @@ import {
 } from '../../common/guards/standing';
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { AccountService } from '../account/account.service';
+import { NotificationsService } from '../notifications/notifications.service';
 import type { DeliveryService } from '../push/delivery.service';
 import { EnforcementService } from './enforcement.service';
 import { ModerationService } from './moderation.service';
@@ -388,6 +389,86 @@ run('enforcement, against a real database', () => {
     expect(
       standing.reports.find((r) => r.outcome === 'DISMISSED'),
     ).toBeDefined();
+  });
+
+  it('puts each in Notifications, for an app that asks', async () => {
+    const notifications = new NotificationsService(prisma as PrismaService);
+    const rows = async (who: string) =>
+      (await notifications.list(who, { moderation: true, limit: 50 })).items;
+
+    // Ada: suspended, appealed, appeal accepted. The reversal that came with
+    // it is the appeal's row, not one of its own.
+    const ada = (await rows(ids.ada)).filter((r) => r.kind === 'account');
+    expect(ada.map((r) => r.account?.event).sort()).toEqual([
+      'appeal',
+      'decision',
+    ]);
+    expect(ada.find((r) => r.account?.event === 'decision')).toMatchObject({
+      actor: null,
+      postSnippet: 'buy followers cheap',
+      account: {
+        kind: ModerationKind.SUSPEND,
+        rule: ReportReason.SPAM,
+        target: ReportTarget.POST,
+      },
+    });
+    expect(
+      ada.find((r) => r.account?.event === 'appeal')?.account?.overturned,
+    ).toBe(true);
+
+    // Bo: a warning and a ban, each reversed by the team with no appeal --
+    // so each reversal is a row of its own, after its decision.
+    const bo = (await rows(ids.bo)).filter((r) => r.kind === 'account');
+    const reversed = bo.filter((r) => r.account?.event === 'reversal');
+    expect(reversed.map((r) => r.account?.kind).sort()).toEqual([
+      ModerationKind.BAN,
+      ModerationKind.WARN,
+    ]);
+    expect(bo.filter((r) => r.account?.event === 'decision')).toHaveLength(2);
+    for (const row of reversed) {
+      const decision = bo.find(
+        (r) =>
+          r.account?.event === 'decision' &&
+          r.account.actionId === row.account?.actionId,
+      )!;
+      expect(row.createdAt.getTime()).toBeGreaterThan(
+        decision.createdAt.getTime(),
+      );
+    }
+
+    // Cy reported two things and both were acted on; Ada's report was not.
+    const cy = (await rows(ids.cy)).filter((r) => r.kind === 'report');
+    expect(cy.map((r) => r.report?.outcome)).toEqual(['ACTIONED', 'ACTIONED']);
+    expect(
+      cy.find((r) => r.report?.target === ReportTarget.POST),
+    ).toMatchObject({
+      postSnippet: 'buy followers cheap',
+      report: { reason: ReportReason.SPAM },
+    });
+    expect(
+      (await rows(ids.ada)).find((r) => r.kind === 'report')?.report?.outcome,
+    ).toBe('DISMISSED');
+
+    // Nobody on the team is named, anywhere in any of it.
+    const all = JSON.stringify([
+      ...(await rows(ids.ada)),
+      ...(await rows(ids.bo)),
+      ...(await rows(ids.cy)),
+    ]);
+    expect(all).not.toContain(ids.mod);
+    expect(all).not.toContain(ids.admin);
+
+    // An app from before these rows reads them as likes: it never gets them,
+    // in the list or in the badge.
+    const plain = await notifications.list(ids.ada, { limit: 50 });
+    expect(
+      plain.items.filter((r) => r.kind === 'account' || r.kind === 'report'),
+    ).toEqual([]);
+    const withThem = await notifications.unreadCount(ids.ada, {
+      moderation: true,
+    });
+    const without = await notifications.unreadCount(ids.ada);
+    expect(withThem.count - without.count).toBe(3);
   });
 
   it('leaving does not wipe a ban: the address comes back banned', async () => {
