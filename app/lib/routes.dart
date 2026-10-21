@@ -6,6 +6,7 @@ import 'models/profile_model.dart';
 import 'repositories/feedback_repository.dart';
 import 'screens/about_screen.dart';
 import 'screens/account_status_screen.dart';
+import 'screens/your_reports_screen.dart';
 import 'screens/moderation_screens.dart';
 import 'screens/verification_screen.dart';
 import 'screens/ar_lens_screen.dart';
@@ -111,6 +112,7 @@ class Routes {
   static const settingsContactSupport = '/settings/contact-support';
   static const settingsFeedback = '/settings/feedback';
   static const accountStatus = '/settings/account-status';
+  static const yourReports = '/settings/your-reports';
   static const verification = '/verification';
 
   /// The team's queues. Only offered to an account on the team; the server
@@ -271,6 +273,9 @@ class Routes {
 
       case accountStatus:
         return _page(const AccountStatusScreen());
+
+      case yourReports:
+        return _page(const YourReportsScreen());
 
       case verification:
         return _page(const VerificationScreen());

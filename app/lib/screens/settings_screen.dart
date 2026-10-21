@@ -460,8 +460,19 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               label: 'Account status',
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.accountStatus),
-              helpText: 'Decisions about your account, appeals, and what '
-                  'came of your reports',
+              helpText: 'Decisions about your account, and appeals',
+            ),
+            _settingsRow(
+              key: const ValueKey('settings-your-reports'),
+              icon: Iconsax.flag_copy,
+              label: AppLocalizations.of(context)
+                  .ui('ui_reports_title', 'Your reports'),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+              onTap: () => Navigator.pushNamed(context, Routes.yourReports),
+              helpText: AppLocalizations.of(context).ui(
+                'ui_reports_settings_help',
+                'What you reported, and what came of it',
+              ),
             ),
             // The team's queues, for the team. The server answers anybody
             // else with a 404, so this is only about not offering a door

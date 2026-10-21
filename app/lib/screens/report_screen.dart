@@ -1,4 +1,5 @@
 import '../l10n/app_localizations.dart';
+import '../routes.dart';
 
 // lib/screens/report_screen.dart
 import 'package:flutter/material.dart';
@@ -295,10 +296,34 @@ class _Sent extends StatelessWidget {
                 color: scheme.onSurface.withValues(alpha: .55),
               ),
             ),
+            const SizedBox(height: SpacingTokens.space12),
+            // Where it can be followed. It went into a queue with nothing to
+            // say what came of it except a push that is easy to miss.
+            Text(
+              AppLocalizations.of(context).ui(
+                'ui_report_follow_up',
+                'You get a notification when the team decides, and you can '
+                    'follow it in Your reports.',
+              ),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                color: scheme.onSurface.withValues(alpha: .55),
+              ),
+            ),
             const SizedBox(height: SpacingTokens.space24),
             FilledButton(
               onPressed: () => Navigator.pop(context),
               child: Text(AppLocalizations.of(context).done),
+            ),
+            TextButton(
+              key: const ValueKey('report-see-reports'),
+              onPressed: () =>
+                  Navigator.pushReplacementNamed(context, Routes.yourReports),
+              child: Text(
+                AppLocalizations.of(context)
+                    .ui('ui_report_see_reports', 'See your reports'),
+              ),
             ),
           ],
         ),

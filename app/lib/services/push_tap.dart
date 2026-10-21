@@ -30,8 +30,8 @@ typedef PushDestination = ({String route, Object? arguments});
 ///   notification   postId (like, reply, repost)   -> that post
 ///   notification   actorId (follow)               -> their profile
 ///   notification   anything else                  -> the notifications page
-///   moderation     (a decision, an appeal answered, a report's outcome)
-///                                                 -> Account status
+///   moderation     (a decision, an appeal answered) -> Account status
+///   moderation     about: report (its outcome)    -> Your reports
 ///   moderation.queue  (the team only)             -> the moderation queue
 ///   verification   (an answer, or a badge lost)   -> Verification
 ///
@@ -64,7 +64,11 @@ PushDestination? pushDestination(Map<String, dynamic> data) {
       }
       return (route: Routes.notifications, arguments: null);
     case 'moderation':
-      return (route: Routes.accountStatus, arguments: null);
+      // What came of a report is with the reader's reports; anything else
+      // is about their account.
+      return text('about') == 'report'
+          ? (route: Routes.yourReports, arguments: null)
+          : (route: Routes.accountStatus, arguments: null);
     case 'moderation.queue':
       return (route: Routes.moderation, arguments: null);
     case 'verification':

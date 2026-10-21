@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../config/legal_links.dart';
+import '../l10n/app_localizations.dart';
 import '../models/account_standing.dart';
 import '../providers/auth_provider.dart';
 import '../providers/enforcement_provider.dart';
@@ -131,11 +132,24 @@ class _AccountStatusScreenState extends ConsumerState<AccountStatusScreen> {
               for (final notice in standing.notices)
                 _NoticeTile(notice: notice, onTap: () => _open(notice)),
             ],
+            // What came of the reader's reports has a screen of its own,
+            // which is where anybody would look for it. Linked from here
+            // for whoever still does.
             if (standing.reports.isNotEmpty) ...[
-              const _Group('Things you reported'),
-              for (final report in standing.reports) _ReportTile(report),
+              const SizedBox(height: SpacingTokens.space16),
+              ListTile(
+                key: const ValueKey('account-status-your-reports'),
+                contentPadding: EdgeInsets.zero,
+                leading: const Icon(Iconsax.flag_copy, size: 20),
+                title: Text(
+                  AppLocalizations.of(context)
+                      .ui('ui_reports_title', 'Your reports'),
+                ),
+                trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
+                onTap: () => Navigator.pushNamed(context, Routes.yourReports),
+              ),
             ],
-            if (standing.notices.isEmpty && standing.reports.isEmpty) ...[
+            if (standing.notices.isEmpty) ...[
               const SizedBox(height: SpacingTokens.space16),
               Text(
                 'Nothing has been decided about your account. If the team '
@@ -296,41 +310,6 @@ class _NoticeTile extends StatelessWidget {
         ],
       ),
       onTap: onTap,
-    );
-  }
-}
-
-class _ReportTile extends StatelessWidget {
-  final ReportUpdate report;
-  const _ReportTile(this.report);
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final what = switch (report.target) {
-      ReportTarget.comment => 'A reply',
-      ReportTarget.user => 'An account',
-      ReportTarget.communityMessage => 'A community chat message',
-      ReportTarget.post || null => 'A post',
-    };
-    final outcome = switch (report.outcome) {
-      ReportOutcome.pending => 'Waiting for review',
-      ReportOutcome.actioned => 'Action taken',
-      ReportOutcome.dismissed => 'No rule broken',
-    };
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: const Icon(Iconsax.flag_copy, size: 20),
-      title: Text('$what, for ${report.reason.label.toLowerCase()}'),
-      subtitle: Text(
-        [
-          if (report.about != null) report.about!,
-          '$outcome · ${standingDay(report.createdAt)}',
-        ].join('\n'),
-        maxLines: 3,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(color: scheme.onSurface.withValues(alpha: .55)),
-      ),
     );
   }
 }

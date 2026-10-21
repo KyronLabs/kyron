@@ -38,7 +38,6 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen>
     NotificationType.comment,
     NotificationType.follow,
   ];
-  static const _tabLabels = ['All', 'Likes', 'Replies', 'Follows'];
 
   late final TabController _tabs = TabController(
     length: _tabKinds.length,
@@ -82,7 +81,17 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen>
       ),
       body: Column(
         children: [
-          SectionTabs(controller: _tabs, labels: _tabLabels),
+          SectionTabs(
+            controller: _tabs,
+            labels: [
+              AppLocalizations.of(context).ui('ui_notif_tab_all', 'All'),
+              AppLocalizations.of(context).ui('ui_notif_tab_likes', 'Likes'),
+              AppLocalizations.of(context)
+                  .ui('ui_notif_tab_replies', 'Replies'),
+              AppLocalizations.of(context)
+                  .ui('ui_notif_tab_follows', 'Follows'),
+            ],
+          ),
           Expanded(
             child: TabBarView(
               controller: _tabs,
@@ -131,12 +140,24 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
   }
 
   void _open(NotificationModel row) {
+    // Kyron's rows: what was decided is under Account status, and what came
+    // of a report is with the rest of the reader's reports.
+    if (row.type == NotificationType.account) {
+      Navigator.pushNamed(context, Routes.accountStatus);
+      return;
+    }
+    if (row.type == NotificationType.report) {
+      Navigator.pushNamed(context, Routes.yourReports);
+      return;
+    }
     final postId = row.postId;
     if (postId != null && postId.isNotEmpty) {
       Navigator.pushNamed(context, Routes.postDetail, arguments: postId);
       return;
     }
-    openProfile(context, username: row.actor.username, userId: row.actor.id);
+    final actor = row.actor;
+    if (actor == null) return;
+    openProfile(context, username: actor.username, userId: actor.id);
   }
 
   EmptyState _empty() => switch (widget.kind) {
@@ -160,7 +181,11 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
             title: AppLocalizations.of(context).literalnoRepostsYet,
             detail: AppLocalizations.of(context).notificationRepostsDetail,
           ),
-        null => EmptyState(
+        // Not tabs of their own: they are under All.
+        NotificationType.account ||
+        NotificationType.report ||
+        null =>
+          EmptyState(
             art: EmptyArt.caughtUp,
             title: AppLocalizations.of(context).literalyouAreAllCaughtUp,
             detail: AppLocalizations.of(context).notificationEmptyDetail,
@@ -182,6 +207,18 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
       for (final key in order)
         if (groups[key] != null) (key, groups[key]!),
     ];
+  }
+
+  /// A group's heading in the reader's language. The keys stay English: they
+  /// are what the rows are grouped by, not what is shown.
+  String _heading(String key) {
+    final l10n = AppLocalizations.of(context);
+    return switch (key) {
+      'Today' => l10n.ui('ui_notif_today', 'Today'),
+      'Yesterday' => l10n.ui('ui_notif_yesterday', 'Yesterday'),
+      'This week' => l10n.ui('ui_notif_this_week', 'This week'),
+      _ => l10n.ui('ui_notif_older', 'Older'),
+    };
   }
 
   @override
@@ -235,7 +272,7 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
                   SpacingTokens.space8,
                 ),
                 child: Text(
-                  heading.toUpperCase(),
+                  _heading(heading).toUpperCase(),
                   style: TextStyle(
                     fontSize: TypographyTokens.fontSize1,
                     fontWeight: FontWeight.w700,
