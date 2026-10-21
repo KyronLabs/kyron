@@ -883,11 +883,11 @@
   "ui_cchat_search": "Cari di obrolan ini",
   "ui_cchat_search_hint": "Cari di obrolan ini",
   "ui_cchat_search_none": "Tidak ditemukan apa pun.",
-  "ui_cchat_too_big": "Sesuatu yang Anda pilih lebih dari 25 MB dan tidak disertakan.",
   "ui_cchat_too_far": "Pesan itu terlalu lama untuk ditampilkan.",
   "ui_cchat_unmute": "Bunyikan",
   "ui_cchat_voice": "Rekam pesan suara",
   "ui_group_add_name": "Tambahkan nama grup",
   "ui_group_name_first": "Beri nama grup terlebih dahulu.",
-  "ui_group_suggested": "Disarankan"
+  "ui_group_suggested": "Disarankan",
+  "ui_cchat_too_large": "Sesuatu yang Anda pilih terlalu besar untuk dikirim dan tidak disertakan."
 }

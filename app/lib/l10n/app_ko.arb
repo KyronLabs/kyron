@@ -883,11 +883,11 @@
   "ui_cchat_search": "이 채팅에서 검색",
   "ui_cchat_search_hint": "이 채팅에서 검색",
   "ui_cchat_search_none": "찾은 항목이 없습니다.",
-  "ui_cchat_too_big": "선택한 항목 중 25MB를 넘는 것이 있어 제외했습니다.",
   "ui_cchat_too_far": "너무 오래된 메시지라 표시할 수 없습니다.",
   "ui_cchat_unmute": "알림 켜기",
   "ui_cchat_voice": "음성 메시지 녹음",
   "ui_group_add_name": "그룹 이름 추가",
   "ui_group_name_first": "먼저 그룹 이름을 정하세요.",
-  "ui_group_suggested": "추천"
+  "ui_group_suggested": "추천",
+  "ui_cchat_too_large": "선택한 항목 중 너무 커서 보낼 수 없는 것이 있어 제외했습니다."
 }

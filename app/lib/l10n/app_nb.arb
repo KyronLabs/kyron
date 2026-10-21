@@ -883,11 +883,11 @@
   "ui_cchat_search": "Søk i denne chatten",
   "ui_cchat_search_hint": "Søk i denne chatten",
   "ui_cchat_search_none": "Fant ingenting.",
-  "ui_cchat_too_big": "Noe du valgte, er over 25 MB og ble utelatt.",
   "ui_cchat_too_far": "Den meldingen ligger for langt tilbake til å vises.",
   "ui_cchat_unmute": "Slå på lyd",
   "ui_cchat_voice": "Ta opp en talemelding",
   "ui_group_add_name": "Legg til gruppenavn",
   "ui_group_name_first": "Gi gruppen et navn først.",
-  "ui_group_suggested": "Forslag"
+  "ui_group_suggested": "Forslag",
+  "ui_cchat_too_large": "Noe du valgte, er for stort til å sendes og ble utelatt."
 }

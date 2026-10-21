@@ -216,9 +216,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n 秒"),
       "ui_cchat_spectator":
           MessageLookupByLibrary.simpleMessage("你可以作为旁观者阅读和回应。加入后即可发言。"),
-      "ui_cchat_too_big":
-          MessageLookupByLibrary.simpleMessage("你选择的某个文件超过 25 MB，已被略去。"),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage("该消息太久远，无法显示。"),
+      "ui_cchat_too_large":
+          MessageLookupByLibrary.simpleMessage("你选择的某个文件太大，无法发送，已被略去。"),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("取消静音"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("取消置顶"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("录制语音消息"),

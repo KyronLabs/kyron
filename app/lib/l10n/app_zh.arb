@@ -883,11 +883,11 @@
   "ui_cchat_search": "在此聊天中搜索",
   "ui_cchat_search_hint": "在此聊天中搜索",
   "ui_cchat_search_none": "未找到任何内容。",
-  "ui_cchat_too_big": "你选择的某个文件超过 25 MB，已被略去。",
   "ui_cchat_too_far": "该消息太久远，无法显示。",
   "ui_cchat_unmute": "取消静音",
   "ui_cchat_voice": "录制语音消息",
   "ui_group_add_name": "添加群组名称",
   "ui_group_name_first": "请先为群组命名。",
-  "ui_group_suggested": "建议"
+  "ui_group_suggested": "建议",
+  "ui_cchat_too_large": "你选择的某个文件太大，无法发送，已被略去。"
 }

@@ -883,11 +883,11 @@
   "ui_cchat_search": "Bu söhbətdə axtar",
   "ui_cchat_search_hint": "Bu söhbətdə axtar",
   "ui_cchat_search_none": "Heç nə tapılmadı.",
-  "ui_cchat_too_big": "Seçdiyiniz bir şey 25 MB-dan böyükdür və çıxarıldı.",
   "ui_cchat_too_far": "Bu mesaj göstərilmək üçün çox geridədir.",
   "ui_cchat_unmute": "Səsi aç",
   "ui_cchat_voice": "Səsli mesaj yaz",
   "ui_group_add_name": "Qrup adı əlavə edin",
   "ui_group_name_first": "Əvvəlcə qrupa ad verin.",
-  "ui_group_suggested": "Təkliflər"
+  "ui_group_suggested": "Təkliflər",
+  "ui_cchat_too_large": "Seçdiyiniz bir şey göndərmək üçün çox böyükdür və çıxarıldı."
 }

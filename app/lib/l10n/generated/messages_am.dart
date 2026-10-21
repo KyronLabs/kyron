@@ -1020,10 +1020,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n ሰከንድ"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "እንደ ተመልካች ማንበብ እና ምላሽ መስጠት ይችላሉ። ለመጻፍ ይቀላቀሉ።"),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "ከመረጡት አንዱ ከ25 MB በላይ ስለሆነ ቀርቷል።"),
       "ui_cchat_too_far":
           MessageLookupByLibrary.simpleMessage("ያ መልእክት ለማሳየት በጣም የቆየ ነው።"),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "ከመረጡት አንዱ ለመላክ በጣም ትልቅ ስለሆነ ቀርቷል።"),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("ድምጸ-ከል ያንሱ"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ንቀል"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("የድምፅ መልእክት ይቅዱ"),

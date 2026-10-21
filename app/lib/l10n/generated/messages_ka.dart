@@ -1115,10 +1115,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n წამი"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "როგორც მაყურებელს, შეგიძლიათ წაკითხვა და რეაგირება. დასაწერად შეუერთდით."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "თქვენ მიერ არჩეულთაგან ერთ-ერთი 25 მბ-ზე მეტია და გამოტოვებულია."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "ეს შეტყობინება ზედმეტად ძველია საჩვენებლად."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "თქვენ მიერ არჩეულთაგან ერთ-ერთი გასაგზავნად ზედმეტად დიდია და გამოტოვებულია."),
       "ui_cchat_unmute":
           MessageLookupByLibrary.simpleMessage("დადუმების მოხსნა"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("მოხსნა"),

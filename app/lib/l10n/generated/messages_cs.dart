@@ -1179,10 +1179,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sekundy: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Jako divák můžete číst a reagovat. Připojte se, abyste mohli psát."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Něco z vybraného má přes 25 MB a bylo vynecháno."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Tato zpráva je v historii příliš daleko, aby se dala zobrazit."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Něco z vybraného je příliš velké na odeslání a bylo vynecháno."),
       "ui_cchat_unmute":
           MessageLookupByLibrary.simpleMessage("Zrušit ztlumení"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Odepnout"),

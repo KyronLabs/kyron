@@ -1123,10 +1123,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sekundės: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Kaip žiūrovas galite skaityti ir reaguoti. Prisijunkite, kad galėtumėte rašyti."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Kažkas, ką pasirinkote, viršija 25 MB ir buvo praleista."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Ši žinutė per toli praeityje, kad būtų parodyta."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Kažkas, ką pasirinkote, per didelis išsiųsti ir buvo praleista."),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Įjungti garsą"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Atsegti"),
       "ui_cchat_voice":

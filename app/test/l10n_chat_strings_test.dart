@@ -299,7 +299,7 @@ const _keys = [
   'ui_cchat_search',
   'ui_cchat_search_hint',
   'ui_cchat_search_none',
-  'ui_cchat_too_big',
+  'ui_cchat_too_large',
   'ui_cchat_too_far',
   'ui_cchat_unmute',
   'ui_cchat_voice',

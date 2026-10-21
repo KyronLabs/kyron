@@ -883,11 +883,11 @@
   "ui_cchat_search": "اس چیٹ میں تلاش کریں",
   "ui_cchat_search_hint": "اس چیٹ میں تلاش کریں",
   "ui_cchat_search_none": "کچھ نہیں ملا۔",
-  "ui_cchat_too_big": "آپ کی چنی ہوئی کوئی چیز 25 MB سے بڑی ہے اور چھوڑ دی گئی۔",
   "ui_cchat_too_far": "یہ پیغام دکھانے کے لیے بہت پرانا ہے۔",
   "ui_cchat_unmute": "آواز بحال کریں",
   "ui_cchat_voice": "صوتی پیغام ریکارڈ کریں",
   "ui_group_add_name": "گروپ کا نام شامل کریں",
   "ui_group_name_first": "پہلے گروپ کا نام رکھیں۔",
-  "ui_group_suggested": "تجاویز"
+  "ui_group_suggested": "تجاویز",
+  "ui_cchat_too_large": "آپ کی چنی ہوئی کوئی چیز بھیجنے کے لیے بہت بڑی ہے اور چھوڑ دی گئی۔"
 }

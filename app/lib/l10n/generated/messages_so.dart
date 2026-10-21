@@ -1121,10 +1121,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n ilbiriqsi"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Waad akhrin kartaa oo ka jawaabi kartaa adigoo daawade ah. Ku biir si aad wax u qorto."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Wax aad dooratay ayaa ka badan 25 MB, waana laga reebay."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Fariintaas aad bay u fog tahay in la muujiyo."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Wax aad dooratay ayaa aad ugu weyn in la diro, waana laga reebay."),
       "ui_cchat_unmute":
           MessageLookupByLibrary.simpleMessage("Ka qaad aamusnaanta"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Ka fur"),

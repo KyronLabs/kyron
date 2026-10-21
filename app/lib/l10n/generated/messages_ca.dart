@@ -1214,10 +1214,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n segons"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Pots llegir i reaccionar com a espectador. Uneix-t’hi per escriure."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Una cosa que has triat supera els 25 MB i s'ha deixat fora."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Aquest missatge és massa antic per mostrar-lo."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Una cosa que has triat és massa gran per enviar-la i s'ha deixat fora."),
       "ui_cchat_unmute":
           MessageLookupByLibrary.simpleMessage("Deixa de silenciar"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Deixa de fixar"),

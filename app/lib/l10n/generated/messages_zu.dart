@@ -1118,10 +1118,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Imizuzwana engu-\$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Ungafunda futhi usabele njengombukeli. Joyina ukuze ubhale."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Okuthile okukhethile kungaphezu kuka-25 MB futhi kushiywe ngaphandle."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Lowo mlayezo usemuva kakhulu ukuthi ungaboniswa."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Okuthile okukhethile kukhulu kakhulu ukuthi kuthunyelwe futhi kushiywe ngaphandle."),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Susa ukuthula"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Susa ukuphina"),
       "ui_cchat_voice":

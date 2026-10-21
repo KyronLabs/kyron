@@ -883,11 +883,11 @@
   "ui_cchat_search": "Chọọ n'ime mkparịta ụka a",
   "ui_cchat_search_hint": "Chọọ n'ime mkparịta ụka a",
   "ui_cchat_search_none": "Ọ dịghị ihe a hụrụ.",
-  "ui_cchat_too_big": "Ihe ị họọrọ karịrị 25 MB, ya mere a hapụrụ ya.",
   "ui_cchat_too_far": "Ozi ahụ dị anya azụ nke ukwuu ka e gosi ya.",
   "ui_cchat_unmute": "Kwụsị ịdị jụụ",
   "ui_cchat_voice": "Dekọọ ozi olu",
   "ui_group_add_name": "Tinye aha otu",
   "ui_group_name_first": "Buru ụzọ nye otu ahụ aha.",
-  "ui_group_suggested": "Ndị a tụrụ aro"
+  "ui_group_suggested": "Ndị a tụrụ aro",
+  "ui_cchat_too_large": "Ihe ị họọrọ buru ibu nke ukwuu iziga, ya mere a hapụrụ ya."
 }

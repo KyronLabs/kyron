@@ -883,11 +883,11 @@
   "ui_cchat_search": "Wá nínú ìjíròrò yìí",
   "ui_cchat_search_hint": "Wá nínú ìjíròrò yìí",
   "ui_cchat_search_none": "A kò rí nǹkankan.",
-  "ui_cchat_too_big": "Nǹkan tí o yàn ju 25 MB lọ, a sì fi í sílẹ̀.",
   "ui_cchat_too_far": "Ìfiránṣẹ́ yẹn ti pẹ́ jù láti fi hàn.",
   "ui_cchat_unmute": "Ṣí ohùn",
   "ui_cchat_voice": "Ṣe àkọsílẹ̀ ìfiránṣẹ́ ohùn",
   "ui_group_add_name": "Fi orúkọ ẹgbẹ́ kún un",
   "ui_group_name_first": "Kọ́kọ́ fún ẹgbẹ́ náà ní orúkọ.",
-  "ui_group_suggested": "Àwọn àbá"
+  "ui_group_suggested": "Àwọn àbá",
+  "ui_cchat_too_large": "Nǹkan tí o yàn tóbi jù láti fi ránṣẹ́, a sì fi í sílẹ̀."
 }

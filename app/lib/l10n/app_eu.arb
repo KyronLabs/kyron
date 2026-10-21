@@ -883,11 +883,11 @@
   "ui_cchat_search": "Bilatu txat honetan",
   "ui_cchat_search_hint": "Bilatu txat honetan",
   "ui_cchat_search_none": "Ez da ezer aurkitu.",
-  "ui_cchat_too_big": "Aukeratu duzun zerbaitek 25 MB baino gehiago ditu, eta kanpoan utzi da.",
   "ui_cchat_too_far": "Mezu hori atzeegi dago erakusteko.",
   "ui_cchat_unmute": "Desaktibatu isilarazpena",
   "ui_cchat_voice": "Grabatu ahots-ohar bat",
   "ui_group_add_name": "Gehitu taldearen izena",
   "ui_group_name_first": "Eman izena taldeari lehenik.",
-  "ui_group_suggested": "Iradokiak"
+  "ui_group_suggested": "Iradokiak",
+  "ui_cchat_too_large": "Aukeratu duzun zerbait handiegia da bidaltzeko, eta kanpoan utzi da."
 }

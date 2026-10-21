@@ -1116,10 +1116,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n seconden"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Je kunt als toeschouwer lezen en reageren. Doe mee om te schrijven."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Iets wat je koos is groter dan 25 MB en is weggelaten."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Dat bericht ligt te ver terug om te tonen."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Iets wat je koos is te groot om te versturen en is weggelaten."),
       "ui_cchat_unmute":
           MessageLookupByLibrary.simpleMessage("Dempen opheffen"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Losmaken"),

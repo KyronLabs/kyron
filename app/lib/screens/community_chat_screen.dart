@@ -224,7 +224,15 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
       case 'gallery':
         final List<XFile> picked;
         try {
-          picked = await ImagePicker().pickMultipleMedia(limit: _maxMedia);
+          // Photos sized as the camera's are: a phone's full-size picture
+          // is often past the server's 8 MB for one. Clips are left alone.
+          // On Android this flattens an animated GIF to its first frame.
+          picked = await ImagePicker().pickMultipleMedia(
+            limit: _maxMedia,
+            maxWidth: 2048,
+            maxHeight: 2048,
+            imageQuality: 85,
+          );
         } catch (_) {
           return;
         }
@@ -232,19 +240,20 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
         final media = <PendingMedia>[];
         var tooBig = false;
         for (final file in picked.take(_maxMedia)) {
-          if (await file.length() > MediaBasket.maxAttachmentBytes) {
+          final kind = mediaKindOf(file);
+          if (await file.length() > MediaBasket.maxBytesFor(kind)) {
             tooBig = true;
             continue;
           }
-          media.add(PendingMedia(path: file.path, kind: mediaKindOf(file)));
+          media.add(PendingMedia(path: file.path, kind: kind));
         }
         if (!mounted) return;
         if (tooBig) {
           Toast.show(
             context,
             l10n.ui(
-              'ui_cchat_too_big',
-              'Something you picked is over 25 MB and was left out.',
+              'ui_cchat_too_large',
+              'Something you picked is too large to send and was left out.',
             ),
           );
         }

@@ -1120,10 +1120,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n giây"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Bạn có thể đọc và bày tỏ cảm xúc với tư cách người xem. Tham gia để viết."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Có thứ bạn chọn lớn hơn 25 MB nên đã bị bỏ ra."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Tin nhắn đó quá cũ để hiển thị."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Có thứ bạn chọn quá lớn để gửi nên đã bị bỏ ra."),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Bật thông báo"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Bỏ ghim"),
       "ui_cchat_voice":

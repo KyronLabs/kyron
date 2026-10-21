@@ -883,11 +883,11 @@
   "ui_cchat_search": "ಈ ಚಾಟ್‌ನಲ್ಲಿ ಹುಡುಕಿ",
   "ui_cchat_search_hint": "ಈ ಚಾಟ್‌ನಲ್ಲಿ ಹುಡುಕಿ",
   "ui_cchat_search_none": "ಏನೂ ಸಿಗಲಿಲ್ಲ.",
-  "ui_cchat_too_big": "ನೀವು ಆರಿಸಿದ ಒಂದು 25 MB ಗಿಂತ ದೊಡ್ಡದಾಗಿದೆ, ಹಾಗಾಗಿ ಬಿಡಲಾಗಿದೆ.",
   "ui_cchat_too_far": "ಆ ಸಂದೇಶ ತೋರಿಸಲು ತುಂಬಾ ಹಳೆಯದು.",
   "ui_cchat_unmute": "ಅನ್‌ಮ್ಯೂಟ್ ಮಾಡಿ",
   "ui_cchat_voice": "ಧ್ವನಿ ಟಿಪ್ಪಣಿ ರೆಕಾರ್ಡ್ ಮಾಡಿ",
   "ui_group_add_name": "ಗುಂಪಿನ ಹೆಸರು ಸೇರಿಸಿ",
   "ui_group_name_first": "ಮೊದಲು ಗುಂಪಿಗೆ ಹೆಸರಿಡಿ.",
-  "ui_group_suggested": "ಸೂಚಿಸಿದವರು"
+  "ui_group_suggested": "ಸೂಚಿಸಿದವರು",
+  "ui_cchat_too_large": "ನೀವು ಆರಿಸಿದ ಒಂದು ಕಳುಹಿಸಲು ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ, ಹಾಗಾಗಿ ಬಿಡಲಾಗಿದೆ."
 }

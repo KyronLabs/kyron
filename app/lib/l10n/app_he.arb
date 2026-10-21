@@ -883,11 +883,11 @@
   "ui_cchat_search": "חיפוש בצ׳אט הזה",
   "ui_cchat_search_hint": "חיפוש בצ׳אט הזה",
   "ui_cchat_search_none": "לא נמצא דבר.",
-  "ui_cchat_too_big": "אחד הפריטים שנבחרו גדול מ־25 MB ולא נכלל.",
   "ui_cchat_too_far": "ההודעה הזו ישנה מדי להצגה.",
   "ui_cchat_unmute": "ביטול השתקה",
   "ui_cchat_voice": "הקלטת הודעה קולית",
   "ui_group_add_name": "הוספת שם לקבוצה",
   "ui_group_name_first": "קודם צריך לתת לקבוצה שם.",
-  "ui_group_suggested": "הצעות"
+  "ui_group_suggested": "הצעות",
+  "ui_cchat_too_large": "אחד הפריטים שנבחרו גדול מדי לשליחה ולא נכלל."
 }

@@ -1254,10 +1254,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n δευτερόλεπτα"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Ως θεατής μπορείτε να διαβάζετε και να αντιδράτε. Γίνετε μέλος για να γράψετε."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Κάτι που επιλέξατε ξεπερνά τα 25 MB και παραλείφθηκε."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Αυτό το μήνυμα είναι πολύ παλιό για να εμφανιστεί."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Κάτι που επιλέξατε είναι πολύ μεγάλο για αποστολή και παραλείφθηκε."),
       "ui_cchat_unmute":
           MessageLookupByLibrary.simpleMessage("Κατάργηση σίγασης"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Ξεκαρφίτσωμα"),

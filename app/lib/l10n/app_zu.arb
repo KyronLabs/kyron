@@ -883,11 +883,11 @@
   "ui_cchat_search": "Sesha kule ngxoxo",
   "ui_cchat_search_hint": "Sesha kule ngxoxo",
   "ui_cchat_search_none": "Akukho okutholakele.",
-  "ui_cchat_too_big": "Okuthile okukhethile kungaphezu kuka-25 MB futhi kushiywe ngaphandle.",
   "ui_cchat_too_far": "Lowo mlayezo usemuva kakhulu ukuthi ungaboniswa.",
   "ui_cchat_unmute": "Susa ukuthula",
   "ui_cchat_voice": "Rekhoda inothi lezwi",
   "ui_group_add_name": "Engeza igama leqembu",
   "ui_group_name_first": "Qala uqambe iqembu igama.",
-  "ui_group_suggested": "Okuphakanyisiwe"
+  "ui_group_suggested": "Okuphakanyisiwe",
+  "ui_cchat_too_large": "Okuthile okukhethile kukhulu kakhulu ukuthi kuthunyelwe futhi kushiywe ngaphandle."
 }

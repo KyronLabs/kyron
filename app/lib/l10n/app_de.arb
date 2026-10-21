@@ -883,11 +883,11 @@
   "ui_cchat_search": "Diesen Chat durchsuchen",
   "ui_cchat_search_hint": "Diesen Chat durchsuchen",
   "ui_cchat_search_none": "Nichts gefunden.",
-  "ui_cchat_too_big": "Etwas, das du ausgewählt hast, ist größer als 25 MB und wurde weggelassen.",
   "ui_cchat_too_far": "Diese Nachricht liegt zu weit zurück, um sie anzuzeigen.",
   "ui_cchat_unmute": "Stummschaltung aufheben",
   "ui_cchat_voice": "Sprachnachricht aufnehmen",
   "ui_group_add_name": "Gruppennamen hinzufügen",
   "ui_group_name_first": "Gib der Gruppe zuerst einen Namen.",
-  "ui_group_suggested": "Vorschläge"
+  "ui_group_suggested": "Vorschläge",
+  "ui_cchat_too_large": "Etwas, das du ausgewählt hast, ist zu groß zum Senden und wurde weggelassen."
 }

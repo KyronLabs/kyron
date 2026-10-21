@@ -1120,10 +1120,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n másodperc"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Nézőként olvashatsz és reagálhatsz. Csatlakozz, hogy írhass."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Valami, amit kiválasztottál, nagyobb 25 MB-nál, ezért kimaradt."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Ez az üzenet túl régi ahhoz, hogy megjelenítsük."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Valami, amit kiválasztottál, túl nagy a küldéshez, ezért kimaradt."),
       "ui_cchat_unmute":
           MessageLookupByLibrary.simpleMessage("Némítás feloldása"),
       "ui_cchat_unpin":

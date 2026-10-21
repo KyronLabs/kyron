@@ -244,10 +244,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_slow_seconds": MessageLookupByLibrary.simpleMessage("\$n초"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "관전자로서 읽고 반응할 수 있습니다. 쓰려면 참여하세요."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "선택한 항목 중 25MB를 넘는 것이 있어 제외했습니다."),
       "ui_cchat_too_far":
           MessageLookupByLibrary.simpleMessage("너무 오래된 메시지라 표시할 수 없습니다."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "선택한 항목 중 너무 커서 보낼 수 없는 것이 있어 제외했습니다."),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("알림 켜기"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("고정 해제"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("음성 메시지 녹음"),

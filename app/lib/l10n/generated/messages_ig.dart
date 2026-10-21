@@ -1120,10 +1120,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sekọnd \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Ị nwere ike ịgụ na imeghachi omume dị ka onye na-ekiri. Sonye ka ị dee ihe."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Ihe ị họọrọ karịrị 25 MB, ya mere a hapụrụ ya."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Ozi ahụ dị anya azụ nke ukwuu ka e gosi ya."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Ihe ị họọrọ buru ibu nke ukwuu iziga, ya mere a hapụrụ ya."),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Kwụsị ịdị jụụ"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Wepụ pịnụ"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("Dekọọ ozi olu"),

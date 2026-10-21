@@ -1119,10 +1119,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n စက္ကန့်"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "ကြည့်ရှုသူအဖြစ် ဖတ်ရှုပြီး တုံ့ပြန်နိုင်သည်။ ရေးရန် ဝင်ပါ။"),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "သင်ရွေးထားသည့်အရာတစ်ခုသည် 25 MB ထက်ကြီးသဖြင့် ချန်ထားခဲ့သည်။"),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "ထိုမက်ဆေ့ချ်သည် ပြသရန် အလွန်ဟောင်းနေသည်။"),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "သင်ရွေးထားသည့်အရာတစ်ခုသည် ပို့ရန် အလွန်ကြီးသဖြင့် ချန်ထားခဲ့သည်။"),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("အသံဖွင့်ရန်"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ပင်ဖြုတ်ရန်"),
       "ui_cchat_voice":

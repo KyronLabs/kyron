@@ -1113,10 +1113,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("שניות: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "אפשר לקרוא ולהגיב כצופה. הצטרפו כדי לכתוב."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "אחד הפריטים שנבחרו גדול מ־25 MB ולא נכלל."),
       "ui_cchat_too_far":
           MessageLookupByLibrary.simpleMessage("ההודעה הזו ישנה מדי להצגה."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "אחד הפריטים שנבחרו גדול מדי לשליחה ולא נכלל."),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("ביטול השתקה"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ביטול הצמדה"),
       "ui_cchat_voice":

@@ -883,11 +883,11 @@
   "ui_cchat_search": "Meklēt šajā tērzēšanā",
   "ui_cchat_search_hint": "Meklēt šajā tērzēšanā",
   "ui_cchat_search_none": "Nekas netika atrasts.",
-  "ui_cchat_too_big": "Kaut kas no izvēlētā pārsniedz 25 MB un tika izlaists.",
   "ui_cchat_too_far": "Šī ziņa ir pārāk tālu pagātnē, lai to parādītu.",
   "ui_cchat_unmute": "Ieslēgt skaņu",
   "ui_cchat_voice": "Ierakstīt balss ziņu",
   "ui_group_add_name": "Pievienot grupas nosaukumu",
   "ui_group_name_first": "Vispirms nosauciet grupu.",
-  "ui_group_suggested": "Ieteiktie"
+  "ui_group_suggested": "Ieteiktie",
+  "ui_cchat_too_large": "Kaut kas no izvēlētā ir pārāk liels nosūtīšanai un tika izlaists."
 }

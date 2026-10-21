@@ -883,11 +883,11 @@
   "ui_cchat_search": "Tìm trong cuộc trò chuyện này",
   "ui_cchat_search_hint": "Tìm trong cuộc trò chuyện này",
   "ui_cchat_search_none": "Không tìm thấy gì.",
-  "ui_cchat_too_big": "Có thứ bạn chọn lớn hơn 25 MB nên đã bị bỏ ra.",
   "ui_cchat_too_far": "Tin nhắn đó quá cũ để hiển thị.",
   "ui_cchat_unmute": "Bật thông báo",
   "ui_cchat_voice": "Ghi âm tin nhắn thoại",
   "ui_group_add_name": "Thêm tên nhóm",
   "ui_group_name_first": "Hãy đặt tên nhóm trước.",
-  "ui_group_suggested": "Gợi ý"
+  "ui_group_suggested": "Gợi ý",
+  "ui_cchat_too_large": "Có thứ bạn chọn quá lớn để gửi nên đã bị bỏ ra."
 }

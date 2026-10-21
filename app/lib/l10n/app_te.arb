@@ -883,11 +883,11 @@
   "ui_cchat_search": "ఈ చాట్‌లో వెతుకు",
   "ui_cchat_search_hint": "ఈ చాట్‌లో వెతుకు",
   "ui_cchat_search_none": "ఏమీ కనబడలేదు.",
-  "ui_cchat_too_big": "మీరు ఎంచుకున్న ఒకటి 25 MB కంటే పెద్దది, కాబట్టి వదిలేయబడింది.",
   "ui_cchat_too_far": "ఆ సందేశం చూపించడానికి చాలా పాతది.",
   "ui_cchat_unmute": "అన్‌మ్యూట్ చేయి",
   "ui_cchat_voice": "వాయిస్ నోట్ రికార్డ్ చేయి",
   "ui_group_add_name": "గ్రూప్ పేరు జోడించు",
   "ui_group_name_first": "ముందుగా గ్రూప్‌కు పేరు పెట్టండి.",
-  "ui_group_suggested": "సూచించినవి"
+  "ui_group_suggested": "సూచించినవి",
+  "ui_cchat_too_large": "మీరు ఎంచుకున్న ఒకటి పంపడానికి చాలా పెద్దది, కాబట్టి వదిలేయబడింది."
 }

@@ -1117,10 +1117,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Секунде: \$n"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "Као посматрач можете да читате и реагујете. Придружите се да бисте писали."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "Нешто што сте изабрали веће је од 25 MB и изостављено је."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "Та порука је предалеко у прошлости да би се приказала."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "Нешто што сте изабрали превелико је за слање и изостављено је."),
       "ui_cchat_unmute": MessageLookupByLibrary.simpleMessage("Укључи звук"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Откачи"),
       "ui_cchat_voice":

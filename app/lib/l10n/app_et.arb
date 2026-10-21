@@ -883,11 +883,11 @@
   "ui_cchat_search": "Otsi sellest vestlusest",
   "ui_cchat_search_hint": "Otsi sellest vestlusest",
   "ui_cchat_search_none": "Midagi ei leitud.",
-  "ui_cchat_too_big": "Midagi, mille valisid, on üle 25 MB ja jäeti välja.",
   "ui_cchat_too_far": "See sõnum on liiga kaugel minevikus, et seda näidata.",
   "ui_cchat_unmute": "Tühista vaigistus",
   "ui_cchat_voice": "Salvesta häälsõnum",
   "ui_group_add_name": "Lisa grupi nimi",
   "ui_group_name_first": "Anna grupile kõigepealt nimi.",
-  "ui_group_suggested": "Soovitused"
+  "ui_group_suggested": "Soovitused",
+  "ui_cchat_too_large": "Midagi, mille valisid, on saatmiseks liiga suur ja jäeti välja."
 }

@@ -21,6 +21,7 @@ import 'package:kyron_app/screens/community_poll_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/services/push_tap.dart';
 import 'package:kyron_app/services/realtime_client.dart';
+import 'package:kyron_app/utils/media_basket.dart';
 import 'package:kyron_app/widgets/community_chats_section.dart';
 import 'package:kyron_app/widgets/media_grid.dart';
 import 'package:kyron_app/widgets/voice_post_player.dart';
@@ -925,6 +926,16 @@ void main() {
       final asked = repo.sentPolls.single!;
       expect(asked.options, ['Saturday', 'Sunday']);
       expect(asked.multiple, isTrue);
+    });
+
+    test('leaves out what the server would refuse, by kind', () {
+      // MediaService.maxBytesFor. A photo under the old flat 25 MB check
+      // went up only to be refused at 8, and its message could never send.
+      const mb = 1024 * 1024;
+      expect(MediaBasket.maxBytesFor(MediaKind.image), 8 * mb);
+      expect(MediaBasket.maxBytesFor(MediaKind.gif), 12 * mb);
+      expect(MediaBasket.maxBytesFor(MediaKind.voice), 12 * mb);
+      expect(MediaBasket.maxBytesFor(MediaKind.video), 25 * mb);
     });
 
     test('uploads pictures before the message that carries them', () async {

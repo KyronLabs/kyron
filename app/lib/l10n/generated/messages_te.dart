@@ -1119,10 +1119,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("\$n సెకన్లు"),
       "ui_cchat_spectator": MessageLookupByLibrary.simpleMessage(
           "మీరు ప్రేక్షకుడిగా చదవగలరు, స్పందించగలరు. రాయడానికి చేరండి."),
-      "ui_cchat_too_big": MessageLookupByLibrary.simpleMessage(
-          "మీరు ఎంచుకున్న ఒకటి 25 MB కంటే పెద్దది, కాబట్టి వదిలేయబడింది."),
       "ui_cchat_too_far": MessageLookupByLibrary.simpleMessage(
           "ఆ సందేశం చూపించడానికి చాలా పాతది."),
+      "ui_cchat_too_large": MessageLookupByLibrary.simpleMessage(
+          "మీరు ఎంచుకున్న ఒకటి పంపడానికి చాలా పెద్దది, కాబట్టి వదిలేయబడింది."),
       "ui_cchat_unmute":
           MessageLookupByLibrary.simpleMessage("అన్‌మ్యూట్ చేయి"),
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("అన్‌పిన్ చేయి"),
