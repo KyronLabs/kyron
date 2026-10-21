@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/community.dart';
@@ -83,6 +84,7 @@ Future<void> _card(
   WidgetTester tester,
   FeedPost post, {
   _Pushes? pushes,
+  PostListSource source = PostListSource.recent,
 }) async {
   await tester.pumpWidget(
     ProviderScope(
@@ -100,7 +102,7 @@ Future<void> _card(
         onGenerateRoute: pushes?.route ?? Routes.onGenerateRoute,
         home: Scaffold(
           body: SingleChildScrollView(
-            child: PostCard(post: post, source: PostListSource.recent),
+            child: PostCard(post: post, source: source),
           ),
         ),
       ),
@@ -160,18 +162,60 @@ void main() {
       expect(find.text('Gardeners'), findsOneWidget);
     });
 
-    testWidgets('stacks the author on the community picture', (tester) async {
+    testWidgets("shows the author's own picture, not the community's", (
+      tester,
+    ) async {
+      // A community post stacked a small author on the community's picture:
+      // bigger than any other post's, and the place's face where the
+      // person's belongs.
       await _card(tester, _post(community: _gardeners));
 
-      expect(find.byType(StackedPostAvatar), findsOneWidget);
-      // The author is still there, in front of it.
       expect(find.byType(PostAvatar), findsOneWidget);
+      expect(find.byType(Squircle), findsNothing);
     });
 
-    testWidgets('draws the community as a squircle', (tester) async {
+    testWidgets('names the community beside the author, not on a line above', (
+      tester,
+    ) async {
+      // It had a line of its own above the name, for one word.
       await _card(tester, _post(community: _gardeners));
 
-      expect(find.byType(Squircle), findsOneWidget);
+      final name = tester.getRect(find.text('Ada'));
+      final tag = tester.getRect(find.byType(PostCommunityTag));
+      expect(tag.center.dy, closeTo(name.center.dy, 2));
+      expect(tag.left, greaterThan(name.right));
+      // In the handle's place.
+      expect(find.text('@ada'), findsNothing);
+    });
+
+    testWidgets("shows the author's whole name when there is room", (
+      tester,
+    ) async {
+      // Name, handle and a Spacer each got a third of the free width, so a
+      // name was cut with half the line empty after it.
+      tester.view.physicalSize = const Size(360, 640);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      for (final community in [_gardeners, null]) {
+        await _card(
+          tester,
+          FeedPost(
+            id: 'p1',
+            content: 'hi',
+            createdAt: DateTime(2026, 1, 1),
+            author:
+                const FeedAuthor(id: 'u1', username: 'yo', name: 'Yunnieee'),
+            community: community,
+          ),
+        );
+        expect(
+          tester
+              .renderObject<RenderParagraph>(find.text('Yunnieee'))
+              .didExceedMaxLines,
+          isFalse,
+          reason: community == null ? 'with a handle' : 'with a community',
+        );
+      }
     });
 
     testWidgets('opens the community when the name is tapped', (tester) async {
@@ -185,49 +229,43 @@ void main() {
       expect(find.byType(CommunityScreen), findsOneWidget);
     });
 
-    testWidgets('opens the community when its picture is tapped', (
-      tester,
-    ) async {
-      // The larger shape in the stack is the place. It used to open the
-      // author, which left nothing on the post big enough to hit that led to
-      // the community.
+    testWidgets("opens the author from the author's picture", (tester) async {
       final pushes = _Pushes();
       await _card(tester, _post(community: _gardeners), pushes: pushes);
 
-      // The corner the author's face does not cover.
-      final picture = find.byKey(const ValueKey('stacked-avatar-community'));
-      await tester.tapAt(tester.getTopLeft(picture) + const Offset(5, 5));
-      await tester.pump();
-
-      expect(pushes.names, [Routes.community]);
-    });
-
-    testWidgets("opens the author when the author's face is tapped", (
-      tester,
-    ) async {
-      final pushes = _Pushes();
-      await _card(tester, _post(community: _gardeners), pushes: pushes);
-
-      await tester.tap(find.byKey(const ValueKey('stacked-avatar-author')));
+      await tester.tap(find.byType(PostAvatar));
       await tester.pump();
 
       expect(pushes.names, [Routes.profile]);
     });
 
-    testWidgets('the whole community line is the target, not just its name', (
+    testWidgets('the chevron is part of the target, not just the name', (
       tester,
     ) async {
-      // At this size the letters alone are a sliver, and a miss lands on the
-      // post behind them and opens the post instead.
+      // A thumb that lands a little short of the word still gets there,
+      // rather than opening the post behind it.
       final pushes = _Pushes();
       await _card(tester, _post(community: _gardeners), pushes: pushes);
 
-      final line = find.byType(PostCommunityLine);
-      final box = tester.getRect(line);
-      await tester.tapAt(Offset(box.right - 8, box.center.dy));
+      final tag = tester.getRect(find.byType(PostCommunityTag));
+      await tester.tapAt(Offset(tag.left + 3, tag.center.dy));
       await tester.pump();
 
       expect(pushes.names, [Routes.community]);
+    });
+
+    testWidgets("says nothing about it on that community's own page", (
+      tester,
+    ) async {
+      // The same word on every post of the page that is that community.
+      await _card(
+        tester,
+        _post(community: _gardeners),
+        source: PostListSource.community('Gardeners'),
+      );
+
+      expect(find.byType(PostCommunityTag), findsNothing);
+      expect(find.text('@ada'), findsOneWidget);
     });
   });
 
@@ -257,8 +295,8 @@ void main() {
       // the place it came from.
       await page(tester);
 
-      expect(find.byType(PostCommunityLine), findsOneWidget);
-      expect(find.byType(StackedPostAvatar), findsOneWidget);
+      expect(find.byType(PostCommunityTag), findsOneWidget);
+      expect(find.byType(Squircle), findsNothing);
     });
 
     testWidgets('opens the community from its name', (tester) async {
@@ -272,10 +310,10 @@ void main() {
   });
 
   group('a post to the wall', () {
-    testWidgets('has no community line and no stack', (tester) async {
+    testWidgets('has no community tag', (tester) async {
       await _card(tester, _post());
 
-      expect(find.byType(StackedPostAvatar), findsNothing);
+      expect(find.byType(PostCommunityTag), findsNothing);
       expect(find.byType(Squircle), findsNothing);
       expect(find.byType(PostAvatar), findsOneWidget);
     });

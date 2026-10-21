@@ -72,6 +72,11 @@ class PostListSource {
   factory PostListSource.community(String slug) =>
       PostListSource._('community', slug.toLowerCase());
 
+  /// Whether this is the list of [slug]'s own posts: on that page, a post
+  /// need not say which community it is from.
+  bool isCommunity(String slug) =>
+      kind == 'community' && userId == slug.toLowerCase();
+
   @override
   bool operator ==(Object other) =>
       other is PostListSource && other.kind == kind && other.userId == userId;
