@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger, Optional } from '@nestjs/common';
 
 import { RealtimeEvent, RealtimeService } from '../realtime/realtime.service';
+import { Activity, ActivityPushService } from './activity-push.service';
 import { PushMessage, PushService } from './push.service';
 
 /**
@@ -22,9 +23,14 @@ import { PushMessage, PushService } from './push.service';
  */
 @Injectable()
 export class DeliveryService {
+  private readonly logger = new Logger(DeliveryService.name);
+
   constructor(
     private readonly realtime: RealtimeService,
     private readonly push: PushService,
+    // Optional so a spec that builds this by hand need not supply it; with
+    // none, activity is told over the socket and not pushed.
+    @Optional() private readonly activity?: ActivityPushService,
   ) {}
 
   /** One person. [push] is what their phone shows when the app is not in
@@ -43,6 +49,26 @@ export class DeliveryService {
     this.realtime.emitToMany(userIds, event);
     if (!push) return;
     for (const userId of new Set(userIds)) this.pushLater(userId, push);
+  }
+
+  /**
+   * Somebody did something to [userId]'s post or account. The socket hears
+   * at once; the push, which names who and says on what, is worked out
+   * afterwards, so the like or follow that caused it does not wait on the
+   * queries that takes.
+   */
+  tellActivity(userId: string, event: RealtimeEvent, activity: Activity): void {
+    this.realtime.emitTo(userId, event);
+    const words = this.activity;
+    if (!words) return;
+    void words
+      .message(userId, activity)
+      .then((message) => (message ? this.push.sendTo(userId, message) : null))
+      .catch((error: unknown) =>
+        this.logger.warn(
+          `no ${activity.kind} push for ${userId}: ${String(error)}`,
+        ),
+      );
   }
 
   /** A push alone, for something the socket has already been told about:

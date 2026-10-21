@@ -18,6 +18,10 @@ export interface PushMessage {
   body: string;
   /** Carried through so a tap can open the right screen. */
   data?: Record<string, string>;
+  /** A picture for the notification: the person it is about. Android shows
+   * it beside the words, and larger when the notification is opened out.
+   * Ignored on iPhone, which would need a notification service extension. */
+  image?: string;
 }
 
 /** Google's endpoint for a single send, per project. */
@@ -232,7 +236,11 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
     const tag = PushService.tagFor(data);
     return {
       token,
-      notification: { title: message.title, body: message.body },
+      notification: {
+        title: message.title,
+        body: message.body,
+        ...(message.image ? { image: message.image } : {}),
+      },
       data,
       android: {
         priority: 'HIGH',
@@ -249,8 +257,8 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
   /**
    * Which notification on the phone a new one replaces.
    *
-   * One per conversation, one per community chat, one per post, and one for
-   * new followers: a third
+   * One per conversation, one per community chat, one per post and kind,
+   * and one for new followers: a third
    * like on the same post updates the notification already there instead of
    * stacking a third. Fewer of them matters beyond tidiness -- at four,
    * Android bundles an app's notifications under a summary of its own
@@ -269,7 +277,10 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
       return data.chatId ? `community-chat-${data.chatId}` : undefined;
     }
     if (data.type !== 'notification') return undefined;
-    if (data.postId) return `post-${data.postId}`;
+    // One per post *and kind*: a reply that a like on the same post replaced
+    // was a reply nobody saw. Likes replace likes, and the newest says how
+    // many came before it (ActivityPushService).
+    if (data.postId) return `${data.kind ?? 'post'}-post-${data.postId}`;
     if (data.kind === 'follow') return 'follows';
     return undefined;
   }

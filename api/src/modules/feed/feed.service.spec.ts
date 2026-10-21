@@ -690,12 +690,14 @@ describe('FeedService', () => {
 
       expect(delivery.told).toHaveLength(1);
       expect(delivery.told[0].userIds).toEqual(['author']);
-      expect(delivery.told[0].push?.data).toEqual({
-        type: 'notification',
-        kind: 'like',
-        postId: 'p1',
-        actorId: VIEWER,
-      });
+      // The push itself -- who, which post, the data a tap opens -- is
+      // ActivityPushService's, worked out after this answers.
+      expect(delivery.activities).toEqual([
+        {
+          userId: 'author',
+          activity: { kind: 'like', actorId: VIEWER, postId: 'p1' },
+        },
+      ]);
     });
 
     it('refuses to like a post that is deleted or missing', async () => {

@@ -1,4 +1,5 @@
 import { RealtimeService, type Sendable } from '../realtime/realtime.service';
+import type { Activity, ActivityPushService } from './activity-push.service';
 import { DeliveryService } from './delivery.service';
 import type { PushMessage, PushService } from './push.service';
 
@@ -81,5 +82,65 @@ describe('DeliveryService', () => {
     await Promise.resolve();
 
     expect(push.sent).toHaveLength(1);
+  });
+
+  describe('activity', () => {
+    const like: Activity = { kind: 'like', actorId: 'a', postId: 'p1' };
+    const settle = () => new Promise((resolve) => setImmediate(resolve));
+
+    it('tells the socket at once and pushes the words worked out after', async () => {
+      const words = {
+        message: jest.fn(() =>
+          Promise.resolve({ title: 'Ada', body: 'Liked your post' }),
+        ),
+      };
+      delivery = new DeliveryService(
+        realtime,
+        push as unknown as PushService,
+        words as unknown as ActivityPushService,
+      );
+      const socket = new FakeSocket();
+      realtime.register('me', socket);
+
+      delivery.tellActivity('me', event, like);
+      // Before any of the push's work has run.
+      expect(socket.sent).toHaveLength(1);
+      await settle();
+
+      expect(words.message).toHaveBeenCalledWith('me', like);
+      expect(push.sent).toEqual([
+        { userId: 'me', message: { title: 'Ada', body: 'Liked your post' } },
+      ]);
+    });
+
+    it('pushes nothing when there are no words for it', async () => {
+      delivery = new DeliveryService(
+        realtime,
+        push as unknown as PushService,
+        {
+          message: () => Promise.resolve(null),
+        } as unknown as ActivityPushService,
+      );
+
+      delivery.tellActivity('me', event, like);
+      await settle();
+
+      expect(push.sent).toEqual([]);
+    });
+
+    it('survives the words failing', async () => {
+      delivery = new DeliveryService(
+        realtime,
+        push as unknown as PushService,
+        {
+          message: () => Promise.reject(new Error('db down')),
+        } as unknown as ActivityPushService,
+      );
+
+      delivery.tellActivity('me', event, like);
+      await settle();
+
+      expect(push.sent).toEqual([]);
+    });
   });
 });
