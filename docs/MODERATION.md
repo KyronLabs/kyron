@@ -13,8 +13,9 @@ because the only check was in a password sign-in no client uses.
 ## The principles
 
 1. **Nothing is done to an account that it is not told about.** Every
-   decision sends a notification and appears in Settings → Account status,
-   with the rule, the team's own words, and what the post or reply said.
+   decision sends a push, is a row in Notifications, and appears in
+   Settings → Account status, with the rule, the team's own words, and what
+   the post or reply said.
 2. **Every decision can be appealed, once, for six months.** The EU's Digital
    Services Act asks platforms it covers for at least six months; nothing
    about a smaller service makes a shorter window fairer.
@@ -129,7 +130,33 @@ policy should say this** (see below).
   is not.
 - Whoever reported is told the outcome, without detail: "we acted on
   something you reported", or "we did not find that it broke Kyron's rules".
-  Settings → Account status lists their reports and outcomes for 90 days.
+  It comes as a push and as a row in Notifications, and both open
+  **Settings → Your reports**: every report from the last 90 days, what it
+  was about, the rule, and where it stands (*In review*, *Action taken*, *No
+  rule broken*). The confirmation after sending a report says a notification
+  will follow and links there. It used to be a section at the foot of
+  Account status, which is about decisions against the account and is not
+  where anybody looks for what came of something they reported.
+
+### In Notifications
+
+Decisions and report outcomes are rows in Notifications beside likes and
+replies, worked out from the tables that already hold them, like every other
+row there: there is no notifications table to fan out into.
+
+| Row | From | Opens |
+|:--|:--|:--|
+| A decision (warning, removal, suspension, ban) | `ModerationAction` | Account status |
+| An appeal decided, either way | `Appeal.decidedAt` | Account status |
+| A decision reversed as a mistake | `ModerationAction.reversedAt` | Account status |
+| A report actioned or dismissed | `Report.resolvedAt` | Your reports |
+
+An appeal that overturns a decision also reverses it; that shows once, as the
+appeal's row. These rows have no actor, and the app draws them as from Kyron,
+with a shield or a flag, never as from a person. They count towards the
+unread figure like the rest. The API sends them only to an app that asks
+(`include=moderation` on `GET /notifications` and `GET /notifications/unread`),
+because an app from before them would not know what to draw.
 
 ## Appeals
 
@@ -196,7 +223,11 @@ say so, and to describe:
 - **No automatic escalation.** Repeated warnings do not turn into a
   suspension by themselves. The reviewer sees the account's record on every
   case and decides.
-- **English only.** The notices and screens are not translated yet.
+- **Partly translated.** The rows in Notifications, Your reports and the
+  report confirmation are in every language the app has. The pushes are
+  English only, because the server does not know which language a device is
+  set to; so are Account status, its appeal form and the rest of the report
+  form, which nobody has translated yet.
 
 ## Testing it
 

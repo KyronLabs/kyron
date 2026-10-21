@@ -11,6 +11,33 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **Notifications about your account.** A warning, a removal, a suspension
+  or a ban, an appeal decided, and a decision reversed are rows in
+  Notifications, from Kyron rather than from a person, and open Account
+  status.
+- **Your reports**, in Settings: everything you reported in the last 90
+  days, what it was about and where it stands — in review, action taken, or
+  no rule broken. When the team decides you get a push and a row in
+  Notifications, and both open it. The confirmation after you send a report
+  says so and links there.
+- **Groups in Messages**, beside Hidden: the groups you are in and the
+  community chats you joined.
+
+### Changed
+
+- **Notifications say who and what**, like Threads: the person's name as the
+  title ("Ada and 2 others"), what they did with the start of the post or
+  reply ("Liked your post: “…”"), and their picture on Android. A like no
+  longer replaces a reply about the same post on your phone.
+- **A community's page**: smaller back, chats and More buttons at the top,
+  the same as a profile's; its chats open in a sheet from the chats button,
+  which shows a dot when one has something new; **new post** is a button in
+  the bottom right corner.
+- **Community posts are as compact as any other post**: the author's own
+  picture, and the community's name in place of the @handle, left out inside
+  the community itself. Long names are no longer cut short.
 
 ## [0.1.11] - 2026-10-21
 ### Added
